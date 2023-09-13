@@ -1,4 +1,9 @@
 configVersion: 1.0.0
+management:
+  docChecksum: b7455e0e1fa58e0bf25b6867e5924a2f
+  docVersion: 1.0.0
+  speakeasyVersion: 1.83.2
+  generationVersion: 2.109.3
 generation:
   comments:
     disableComments: false
@@ -7,8 +12,14 @@ generation:
   sdkClassName: StackOne
   singleTagPerOp: false
   tagNamespacingDisabled: false
+features:
+  typescript:
+    core: 2.87.1
+    globalSecurity: 2.81.1
+    globalServerURLs: 2.82.0
+    methodSecurity: 2.81.1
 typescript:
-  version: 0.0.1
+  version: 0.1.0
   author: StackOne
   clientServerStatusCodesAsErrors: true
   maxMethodParams: 0
