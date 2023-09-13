@@ -22,7 +22,7 @@ jobs:
         - typescript
       mode: direct
       openapi_docs: |
-        - https://api2.eu1.stackone-dev.com/oas/stackone.yaml
+        - https://api2.eu1.stackone-dev.com/oas/stackone.json
       speakeasy_version: latest
     secrets:
       github_access_token: ${{ secrets.GITHUB_TOKEN }}
