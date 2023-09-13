@@ -12,13 +12,13 @@
 ### NPM
 
 ```bash
-npm add https://github.com/StackOneHQ/stackone-client-typescript
+npm add @stackone/stackone-client-ts
 ```
 
 ### Yarn
 
 ```bash
-yarn add https://github.com/StackOneHQ/stackone-client-typescript
+yarn add @stackone/stackone-client-ts
 ```
 <!-- End SDK Installation -->
 

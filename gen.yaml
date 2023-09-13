@@ -19,7 +19,7 @@ features:
     globalServerURLs: 2.82.0
     methodSecurity: 2.81.1
 typescript:
-  version: 0.1.0
+  version: 0.2.0
   author: StackOne
   clientServerStatusCodesAsErrors: true
   maxMethodParams: 0
