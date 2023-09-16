@@ -1,4 +1,4 @@
-# connectSessions
+# ConnectSessions
 
 ### Available Operations
 

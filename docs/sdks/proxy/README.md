@@ -1,4 +1,4 @@
-# proxy
+# Proxy
 
 ### Available Operations
 

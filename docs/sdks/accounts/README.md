@@ -1,4 +1,4 @@
-# accounts
+# Accounts
 
 ### Available Operations
 
