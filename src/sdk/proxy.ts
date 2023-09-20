@@ -33,7 +33,7 @@ export class Proxy {
         );
         const url: string = baseURL.replace(/\/$/, "") + "/unified/proxy";
 
-        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
         try {
             [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req, "proxyRequestBody", "json");
@@ -53,8 +53,7 @@ export class Proxy {
             ...config?.headers,
             ...properties.headers,
         };
-        if (reqBody == null || Object.keys(reqBody).length === 0)
-            throw new Error("request body is required");
+        if (reqBody == null) throw new Error("request body is required");
         headers["Accept"] = "*/*";
 
         headers[
