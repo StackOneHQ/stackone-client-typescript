@@ -24,6 +24,7 @@ export enum ProxyRequestBodyMethod {
     Put = "put",
     Delete = "delete",
     Patch = "patch",
+    Job = "job",
 }
 
 export class ProxyRequestBody extends SpeakeasyBase {
