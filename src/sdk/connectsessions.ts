@@ -21,7 +21,6 @@ export class ConnectSessions {
      */
     async connectSessionsAuthenticate(
         req: shared.ConnectSessionAuthenticate,
-        security: operations.ConnectSessionsAuthenticateSecurity,
         config?: AxiosRequestConfig
     ): Promise<operations.ConnectSessionsAuthenticateResponse> {
         if (!(req instanceof utils.SpeakeasyBase)) {
@@ -44,10 +43,14 @@ export class ConnectSessions {
             }
         }
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
-        if (!(security instanceof utils.SpeakeasyBase)) {
-            security = new operations.ConnectSessionsAuthenticateSecurity(security);
+        let globalSecurity = this.sdkConfiguration.security;
+        if (typeof globalSecurity === "function") {
+            globalSecurity = await globalSecurity();
         }
-        const properties = utils.parseSecurityProperties(security);
+        if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
+            globalSecurity = new shared.Security(globalSecurity);
+        }
+        const properties = utils.parseSecurityProperties(globalSecurity);
         const headers: RawAxiosRequestHeaders = {
             ...reqBodyHeaders,
             ...config?.headers,
@@ -122,7 +125,6 @@ export class ConnectSessions {
      */
     async connectSessionsCreate(
         req: shared.ConnectSessionCreate,
-        security: operations.ConnectSessionsCreateSecurity,
         config?: AxiosRequestConfig
     ): Promise<operations.ConnectSessionsCreateResponse> {
         if (!(req instanceof utils.SpeakeasyBase)) {
@@ -145,10 +147,14 @@ export class ConnectSessions {
             }
         }
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
-        if (!(security instanceof utils.SpeakeasyBase)) {
-            security = new operations.ConnectSessionsCreateSecurity(security);
+        let globalSecurity = this.sdkConfiguration.security;
+        if (typeof globalSecurity === "function") {
+            globalSecurity = await globalSecurity();
         }
-        const properties = utils.parseSecurityProperties(security);
+        if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
+            globalSecurity = new shared.Security(globalSecurity);
+        }
+        const properties = utils.parseSecurityProperties(globalSecurity);
         const headers: RawAxiosRequestHeaders = {
             ...reqBodyHeaders,
             ...config?.headers,

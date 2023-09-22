@@ -5,6 +5,7 @@
 import * as utils from "../internal/utils";
 import { Accounts } from "./accounts";
 import { ConnectSessions } from "./connectsessions";
+import * as shared from "./models/shared";
 import { Proxy } from "./proxy";
 import axios from "axios";
 import { AxiosInstance } from "axios";
@@ -18,6 +19,10 @@ export const ServerList = ["https://api.stackone-dev.com"] as const;
  * The available configuration options for the SDK
  */
 export type SDKProps = {
+    /**
+     * The security details required to authenticate the SDK
+     */
+    security?: shared.Security | (() => Promise<shared.Security>);
     /**
      * Allows overriding the default axios client used by the SDK
      */
@@ -40,12 +45,13 @@ export type SDKProps = {
 
 export class SDKConfiguration {
     defaultClient: AxiosInstance;
+    security?: shared.Security | (() => Promise<shared.Security>);
     serverURL: string;
     serverDefaults: any;
     language = "typescript";
     openapiDocVersion = "1.0.0";
-    sdkVersion = "0.2.4";
-    genVersion = "2.122.1";
+    sdkVersion = "0.3.0";
+    genVersion = "2.125.1";
     retryConfig?: utils.RetryConfig;
     public constructor(init?: Partial<SDKConfiguration>) {
         Object.assign(this, init);
@@ -73,6 +79,7 @@ export class StackOne {
         const defaultClient = props?.defaultClient ?? axios.create({ baseURL: serverURL });
         this.sdkConfiguration = new SDKConfiguration({
             defaultClient: defaultClient,
+            security: props?.security,
             serverURL: serverURL,
             retryConfig: props?.retryConfig,
         });

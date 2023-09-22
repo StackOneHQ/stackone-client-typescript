@@ -9,3 +9,4 @@ export * from "./connectsessiontoken";
 export * from "./linkedaccount";
 export * from "./linkedaccountmeta";
 export * from "./proxyrequestbody";
+export * from "./security";

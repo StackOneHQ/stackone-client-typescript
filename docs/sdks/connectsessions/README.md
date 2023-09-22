@@ -13,17 +13,18 @@ Authenticate Session
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
-import { ConnectSessionsAuthenticateResponse, ConnectSessionsAuthenticateSecurity } from "@stackone/stackone-client-ts/dist/sdk/models/operations";
+import { ConnectSessionsAuthenticateResponse } from "@stackone/stackone-client-ts/dist/sdk/models/operations";
 
-const sdk = new StackOne();
-const operationSecurity: ConnectSessionsAuthenticateSecurity = {
-  password: "",
-  username: "",
-};
+const sdk = new StackOne({
+  security: {
+    password: "",
+    username: "",
+  },
+});
 
 sdk.connectSessions.connectSessionsAuthenticate({
-  token: "odit",
-}, operationSecurity).then((res: ConnectSessionsAuthenticateResponse) => {
+  token: "iusto",
+}).then((res: ConnectSessionsAuthenticateResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -32,11 +33,10 @@ sdk.connectSessions.connectSessionsAuthenticate({
 
 ### Parameters
 
-| Parameter                                                                                                        | Type                                                                                                             | Required                                                                                                         | Description                                                                                                      |
-| ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
-| `request`                                                                                                        | [shared.ConnectSessionAuthenticate](../../models/shared/connectsessionauthenticate.md)                           | :heavy_check_mark:                                                                                               | The request object to use for the request.                                                                       |
-| `security`                                                                                                       | [operations.ConnectSessionsAuthenticateSecurity](../../models/operations/connectsessionsauthenticatesecurity.md) | :heavy_check_mark:                                                                                               | The security requirements to use for the request.                                                                |
-| `config`                                                                                                         | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                                     | :heavy_minus_sign:                                                                                               | Available config options for making requests.                                                                    |
+| Parameter                                                                              | Type                                                                                   | Required                                                                               | Description                                                                            |
+| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| `request`                                                                              | [shared.ConnectSessionAuthenticate](../../models/shared/connectsessionauthenticate.md) | :heavy_check_mark:                                                                     | The request object to use for the request.                                             |
+| `config`                                                                               | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                           | :heavy_minus_sign:                                                                     | Available config options for making requests.                                          |
 
 
 ### Response
@@ -52,26 +52,27 @@ Create Session
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
-import { ConnectSessionsCreateResponse, ConnectSessionsCreateSecurity } from "@stackone/stackone-client-ts/dist/sdk/models/operations";
+import { ConnectSessionsCreateResponse } from "@stackone/stackone-client-ts/dist/sdk/models/operations";
 import { ConnectSessionCreateCategories } from "@stackone/stackone-client-ts/dist/sdk/models/shared";
 
-const sdk = new StackOne();
-const operationSecurity: ConnectSessionsCreateSecurity = {
-  password: "",
-  username: "",
-};
+const sdk = new StackOne({
+  security: {
+    password: "",
+    username: "",
+  },
+});
 
 sdk.connectSessions.connectSessionsCreate({
   categories: [
-    ConnectSessionCreateCategories.Marketing,
+    ConnectSessionCreateCategories.Ats,
   ],
-  expiresIn: 1965.82,
+  expiresIn: 6886.61,
   metadata: {},
-  originOwnerId: "tenetur",
-  originOwnerName: "ipsam",
-  originUsername: "id",
-  provider: "possimus",
-}, operationSecurity).then((res: ConnectSessionsCreateResponse) => {
+  originOwnerId: "enim",
+  originOwnerName: "accusamus",
+  originUsername: "commodi",
+  provider: "repudiandae",
+}).then((res: ConnectSessionsCreateResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -80,11 +81,10 @@ sdk.connectSessions.connectSessionsCreate({
 
 ### Parameters
 
-| Parameter                                                                                            | Type                                                                                                 | Required                                                                                             | Description                                                                                          |
-| ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
-| `request`                                                                                            | [shared.ConnectSessionCreate](../../models/shared/connectsessioncreate.md)                           | :heavy_check_mark:                                                                                   | The request object to use for the request.                                                           |
-| `security`                                                                                           | [operations.ConnectSessionsCreateSecurity](../../models/operations/connectsessionscreatesecurity.md) | :heavy_check_mark:                                                                                   | The security requirements to use for the request.                                                    |
-| `config`                                                                                             | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                         | :heavy_minus_sign:                                                                                   | Available config options for making requests.                                                        |
+| Parameter                                                                  | Type                                                                       | Required                                                                   | Description                                                                |
+| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| `request`                                                                  | [shared.ConnectSessionCreate](../../models/shared/connectsessioncreate.md) | :heavy_check_mark:                                                         | The request object to use for the request.                                 |
+| `config`                                                                   | [AxiosRequestConfig](https://axios-http.com/docs/req_config)               | :heavy_minus_sign:                                                         | Available config options for making requests.                              |
 
 
 ### Response

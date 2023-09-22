@@ -21,7 +21,6 @@ export class Accounts {
      */
     async accountsDelete(
         req: operations.AccountsDeleteRequest,
-        security: operations.AccountsDeleteSecurity,
         config?: AxiosRequestConfig
     ): Promise<operations.AccountsDeleteResponse> {
         if (!(req instanceof utils.SpeakeasyBase)) {
@@ -34,10 +33,14 @@ export class Accounts {
         );
         const url: string = utils.generateURL(baseURL, "/accounts/{id}", req);
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
-        if (!(security instanceof utils.SpeakeasyBase)) {
-            security = new operations.AccountsDeleteSecurity(security);
+        let globalSecurity = this.sdkConfiguration.security;
+        if (typeof globalSecurity === "function") {
+            globalSecurity = await globalSecurity();
         }
-        const properties = utils.parseSecurityProperties(security);
+        if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
+            globalSecurity = new shared.Security(globalSecurity);
+        }
+        const properties = utils.parseSecurityProperties(globalSecurity);
         const headers: RawAxiosRequestHeaders = { ...config?.headers, ...properties.headers };
         headers["Accept"] = "application/json";
 
@@ -106,7 +109,6 @@ export class Accounts {
      */
     async accountsGet(
         req: operations.AccountsGetRequest,
-        security: operations.AccountsGetSecurity,
         config?: AxiosRequestConfig
     ): Promise<operations.AccountsGetResponse> {
         if (!(req instanceof utils.SpeakeasyBase)) {
@@ -119,10 +121,14 @@ export class Accounts {
         );
         const url: string = utils.generateURL(baseURL, "/accounts/{id}", req);
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
-        if (!(security instanceof utils.SpeakeasyBase)) {
-            security = new operations.AccountsGetSecurity(security);
+        let globalSecurity = this.sdkConfiguration.security;
+        if (typeof globalSecurity === "function") {
+            globalSecurity = await globalSecurity();
         }
-        const properties = utils.parseSecurityProperties(security);
+        if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
+            globalSecurity = new shared.Security(globalSecurity);
+        }
+        const properties = utils.parseSecurityProperties(globalSecurity);
         const headers: RawAxiosRequestHeaders = { ...config?.headers, ...properties.headers };
         headers["Accept"] = "application/json";
 
@@ -190,7 +196,6 @@ export class Accounts {
      */
     async accountsList(
         req: operations.AccountsListRequest,
-        security: operations.AccountsListSecurity,
         config?: AxiosRequestConfig
     ): Promise<operations.AccountsListResponse> {
         if (!(req instanceof utils.SpeakeasyBase)) {
@@ -203,10 +208,14 @@ export class Accounts {
         );
         const url: string = baseURL.replace(/\/$/, "") + "/accounts";
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
-        if (!(security instanceof utils.SpeakeasyBase)) {
-            security = new operations.AccountsListSecurity(security);
+        let globalSecurity = this.sdkConfiguration.security;
+        if (typeof globalSecurity === "function") {
+            globalSecurity = await globalSecurity();
         }
-        const properties = utils.parseSecurityProperties(security);
+        if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
+            globalSecurity = new shared.Security(globalSecurity);
+        }
+        const properties = utils.parseSecurityProperties(globalSecurity);
         const headers: RawAxiosRequestHeaders = { ...config?.headers, ...properties.headers };
         const queryParams: string = utils.serializeQueryParams(req);
         headers["Accept"] = "application/json";
@@ -278,7 +287,6 @@ export class Accounts {
      */
     async accountsMetaGet(
         req: operations.AccountsMetaGetRequest,
-        security: operations.AccountsMetaGetSecurity,
         config?: AxiosRequestConfig
     ): Promise<operations.AccountsMetaGetResponse> {
         if (!(req instanceof utils.SpeakeasyBase)) {
@@ -291,10 +299,14 @@ export class Accounts {
         );
         const url: string = utils.generateURL(baseURL, "/accounts/{id}/meta", req);
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
-        if (!(security instanceof utils.SpeakeasyBase)) {
-            security = new operations.AccountsMetaGetSecurity(security);
+        let globalSecurity = this.sdkConfiguration.security;
+        if (typeof globalSecurity === "function") {
+            globalSecurity = await globalSecurity();
         }
-        const properties = utils.parseSecurityProperties(security);
+        if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
+            globalSecurity = new shared.Security(globalSecurity);
+        }
+        const properties = utils.parseSecurityProperties(globalSecurity);
         const headers: RawAxiosRequestHeaders = { ...config?.headers, ...properties.headers };
         headers["Accept"] = "application/json";
 

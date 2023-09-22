@@ -2,8 +2,8 @@ configVersion: 1.0.0
 management:
   docChecksum: bd356a7a227aa29140d043b498b9caaa
   docVersion: 1.0.0
-  speakeasyVersion: 1.88.1
-  generationVersion: 2.122.1
+  speakeasyVersion: 1.89.0
+  generationVersion: 2.125.1
 generation:
   comments:
     disableComments: false
@@ -14,12 +14,11 @@ generation:
   tagNamespacingDisabled: false
 features:
   typescript:
-    core: 2.87.4
+    core: 2.87.5
     globalSecurity: 2.81.1
     globalServerURLs: 2.82.0
-    methodSecurity: 2.81.1
 typescript:
-  version: 0.2.4
+  version: 0.3.0
   author: StackOne
   clientServerStatusCodesAsErrors: true
   maxMethodParams: 0
