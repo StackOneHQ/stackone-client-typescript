@@ -49,19 +49,19 @@ sdk.accounts.accountsDelete({
 ## Available Resources and Operations
 
 
-### [Accounts](docs/sdks/accounts/README.md)
+### [accounts](docs/sdks/accounts/README.md)
 
 * [accountsDelete](docs/sdks/accounts/README.md#accountsdelete) - Delete Account
 * [accountsGet](docs/sdks/accounts/README.md#accountsget) - Get Account
 * [accountsList](docs/sdks/accounts/README.md#accountslist) - List Accounts
 * [accountsMetaGet](docs/sdks/accounts/README.md#accountsmetaget) - Get meta information of the account
 
-### [ConnectSessions](docs/sdks/connectsessions/README.md)
+### [connectSessions](docs/sdks/connectsessions/README.md)
 
 * [connectSessionsAuthenticate](docs/sdks/connectsessions/README.md#connectsessionsauthenticate) - Authenticate Session
 * [connectSessionsCreate](docs/sdks/connectsessions/README.md#connectsessionscreate) - Create Session
 
-### [Proxy](docs/sdks/proxy/README.md)
+### [proxy](docs/sdks/proxy/README.md)
 
 * [proxyRequestPost](docs/sdks/proxy/README.md#proxyrequestpost) - Proxy Request
 <!-- End SDK Available Operations -->
