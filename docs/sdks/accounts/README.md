@@ -26,7 +26,7 @@ const sdk = new StackOne({
 });
 
 sdk.accounts.accountsDelete({
-  id: "cb739205-9293-496f-aa75-96eb10faaa23",
+  id: "<ID>",
 }).then((res: AccountsDeleteResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -65,7 +65,7 @@ const sdk = new StackOne({
 });
 
 sdk.accounts.accountsGet({
-  id: "52c59559-07af-4f1a-ba2f-a9467739251a",
+  id: "<ID>",
 }).then((res: AccountsGetResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -104,8 +104,8 @@ const sdk = new StackOne({
 });
 
 sdk.accounts.accountsList({
-  originOwnerId: "animi",
-  provider: "enim",
+  originOwnerId: "budgetary Incredible THX",
+  provider: "parse",
 }).then((res: AccountsListResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -144,7 +144,7 @@ const sdk = new StackOne({
 });
 
 sdk.accounts.accountsMetaGet({
-  id: "2c3f5ad0-19da-41ff-a78f-097b0074f154",
+  id: "<ID>",
 }).then((res: AccountsMetaGetResponse) => {
   if (res.statusCode == 200) {
     // handle response

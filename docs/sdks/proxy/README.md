@@ -27,11 +27,11 @@ sdk.proxy.proxyRequestPost({
   proxyRequestBody: {
     body: {},
     headers: {},
-    method: ProxyRequestBodyMethod.Get,
+    method: ProxyRequestBodyMethod.Delete,
     path: "/employees/directory",
     url: "https://api.sample-integration.com/v1",
   },
-  xAccountId: "ipsum",
+  xAccountId: "Rustic Metal",
 }).then((res: ProxyRequestPostResponse) => {
   if (res.statusCode == 200) {
     // handle response

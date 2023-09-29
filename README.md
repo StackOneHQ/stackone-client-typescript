@@ -36,7 +36,7 @@ const sdk = new StackOne({
 });
 
 sdk.accounts.accountsDelete({
-  id: "a05dfc2d-df7c-4c78-8a1b-a928fc816742",
+  id: "<ID>",
 }).then((res: AccountsDeleteResponse) => {
   if (res.statusCode == 200) {
     // handle response
