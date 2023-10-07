@@ -16,22 +16,23 @@ Delete Account
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
-import { AccountsDeleteResponse } from "@stackone/stackone-client-ts/dist/sdk/models/operations";
 
-const sdk = new StackOne({
-  security: {
-    password: "",
-    username: "",
-  },
-});
+(async() => {
+  const sdk = new StackOne({
+    security: {
+      password: "",
+      username: "",
+    },
+  });
 
-sdk.accounts.accountsDelete({
-  id: "<ID>",
-}).then((res: AccountsDeleteResponse) => {
+  const res = await sdk.accounts.accountsDelete({
+    id: "<ID>",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -55,22 +56,23 @@ Get Account
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
-import { AccountsGetResponse } from "@stackone/stackone-client-ts/dist/sdk/models/operations";
 
-const sdk = new StackOne({
-  security: {
-    password: "",
-    username: "",
-  },
-});
+(async() => {
+  const sdk = new StackOne({
+    security: {
+      password: "",
+      username: "",
+    },
+  });
 
-sdk.accounts.accountsGet({
-  id: "<ID>",
-}).then((res: AccountsGetResponse) => {
+  const res = await sdk.accounts.accountsGet({
+    id: "<ID>",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -94,23 +96,21 @@ List Accounts
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
-import { AccountsListResponse } from "@stackone/stackone-client-ts/dist/sdk/models/operations";
 
-const sdk = new StackOne({
-  security: {
-    password: "",
-    username: "",
-  },
-});
+(async() => {
+  const sdk = new StackOne({
+    security: {
+      password: "",
+      username: "",
+    },
+  });
 
-sdk.accounts.accountsList({
-  originOwnerId: "budgetary Incredible THX",
-  provider: "parse",
-}).then((res: AccountsListResponse) => {
+  const res = await sdk.accounts.accountsList({});
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -134,22 +134,23 @@ Get meta information of the account
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
-import { AccountsMetaGetResponse } from "@stackone/stackone-client-ts/dist/sdk/models/operations";
 
-const sdk = new StackOne({
-  security: {
-    password: "",
-    username: "",
-  },
-});
+(async() => {
+  const sdk = new StackOne({
+    security: {
+      password: "",
+      username: "",
+    },
+  });
 
-sdk.accounts.accountsMetaGet({
-  id: "<ID>",
-}).then((res: AccountsMetaGetResponse) => {
+  const res = await sdk.accounts.accountsMetaGet({
+    id: "<ID>",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters

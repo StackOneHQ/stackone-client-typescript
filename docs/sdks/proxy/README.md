@@ -13,30 +13,30 @@ Proxy Request
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
-import { ProxyRequestPostResponse } from "@stackone/stackone-client-ts/dist/sdk/models/operations";
 import { ProxyRequestBodyMethod } from "@stackone/stackone-client-ts/dist/sdk/models/shared";
 
-const sdk = new StackOne({
-  security: {
-    password: "",
-    username: "",
-  },
-});
+(async() => {
+  const sdk = new StackOne({
+    security: {
+      password: "",
+      username: "",
+    },
+  });
 
-sdk.proxy.proxyRequestPost({
-  proxyRequestBody: {
-    body: {},
-    headers: {},
-    method: ProxyRequestBodyMethod.Delete,
-    path: "/employees/directory",
-    url: "https://api.sample-integration.com/v1",
-  },
-  xAccountId: "Rustic Metal",
-}).then((res: ProxyRequestPostResponse) => {
+  const res = await sdk.proxy.proxyRequestPost({
+    proxyRequestBody: {
+      body: {},
+      headers: {},
+      path: "/employees/directory",
+      url: "https://api.sample-integration.com/v1",
+    },
+    xAccountId: "Money Borders",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters

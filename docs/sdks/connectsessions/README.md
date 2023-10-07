@@ -14,22 +14,23 @@ Authenticate Session
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
-import { ConnectSessionsAuthenticateResponse } from "@stackone/stackone-client-ts/dist/sdk/models/operations";
 
-const sdk = new StackOne({
-  security: {
-    password: "",
-    username: "",
-  },
-});
+(async() => {
+  const sdk = new StackOne({
+    security: {
+      password: "",
+      username: "",
+    },
+  });
 
-sdk.connectSessions.connectSessionsAuthenticate({
-  token: "asperiores technologies",
-}).then((res: ConnectSessionsAuthenticateResponse) => {
+  const res = await sdk.connectSessions.connectSessionsAuthenticate({
+    token: "asperiores technologies",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -53,31 +54,34 @@ Create Session
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
-import { ConnectSessionsCreateResponse } from "@stackone/stackone-client-ts/dist/sdk/models/operations";
 import { ConnectSessionCreateCategories } from "@stackone/stackone-client-ts/dist/sdk/models/shared";
 
-const sdk = new StackOne({
-  security: {
-    password: "",
-    username: "",
-  },
-});
+(async() => {
+  const sdk = new StackOne({
+    security: {
+      password: "",
+      username: "",
+    },
+  });
 
-sdk.connectSessions.connectSessionsCreate({
-  categories: [
-    ConnectSessionCreateCategories.Crm,
-  ],
-  expiresIn: 6768.52,
-  metadata: {},
-  originOwnerId: "bandwidth Gasoline dedicated",
-  originOwnerName: "Officer",
-  originUsername: "Hybrid Bugatti",
-  provider: "Health lumen ack",
-}).then((res: ConnectSessionsCreateResponse) => {
+  const res = await sdk.connectSessions.connectSessionsCreate({
+    categories: [
+      ConnectSessionCreateCategories.Ats,
+      ConnectSessionCreateCategories.Hris,
+      ConnectSessionCreateCategories.Crm,
+      ConnectSessionCreateCategories.Crm,
+      ConnectSessionCreateCategories.Marketing,
+      ConnectSessionCreateCategories.Marketing,
+    ],
+    metadata: {},
+    originOwnerId: "bandwidth Gasoline dedicated",
+    originOwnerName: "Officer",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
