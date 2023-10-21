@@ -2,25 +2,29 @@ configVersion: 1.0.0
 management:
   docChecksum: bd356a7a227aa29140d043b498b9caaa
   docVersion: 1.0.0
-  speakeasyVersion: 1.96.1
-  generationVersion: 2.150.0
+  speakeasyVersion: 1.104.0
+  generationVersion: 2.169.0
 generation:
   comments:
     disableComments: false
     omitDescriptionIfSummaryPresent: false
   baseServerURL: ""
+  repoURL: https://github.com/StackOneHQ/stackone-client-typescript.git
   sdkClassName: StackOne
   singleTagPerOp: false
   tagNamespacingDisabled: false
 features:
   typescript:
-    core: 2.90.4
+    core: 2.93.0
     globalSecurity: 2.82.0
     globalServerURLs: 2.82.0
 typescript:
-  version: 0.7.0
+  version: 0.8.0
   author: StackOne
   clientServerStatusCodesAsErrors: true
   flattenGlobalSecurity: false
+  installationURL: https://github.com/StackOneHQ/stackone-client-typescript
   maxMethodParams: 0
   packageName: '@stackone/stackone-client-ts'
+  published: true
+  repoSubDirectory: .

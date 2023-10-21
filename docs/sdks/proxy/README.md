@@ -30,7 +30,7 @@ import { ProxyRequestBodyMethod } from "@stackone/stackone-client-ts/dist/sdk/mo
       path: "/employees/directory",
       url: "https://api.sample-integration.com/v1",
     },
-    xAccountId: "Money Borders",
+    xAccountId: "string",
   });
 
   if (res.statusCode == 200) {

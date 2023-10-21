@@ -4,21 +4,22 @@
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-(async() => {
-  const sdk = new StackOne({
-    security: {
-      password: "",
-      username: "",
-    },
-  });
+(async () => {
+    const sdk = new StackOne({
+        security: {
+            password: "",
+            username: "",
+        },
+    });
 
-  const res = await sdk.accounts.accountsDelete({
-    id: "<ID>",
-  });
+    const res = await sdk.accounts.accountsDelete({
+        id: "<ID>",
+    });
 
-  if (res.statusCode == 200) {
-    // handle response
-  }
+    if (res.statusCode == 200) {
+        // handle response
+    }
 })();
+
 ```
 <!-- End SDK Example Usage -->

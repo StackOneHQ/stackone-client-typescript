@@ -24,7 +24,7 @@ import { StackOne } from "@stackone/stackone-client-ts";
   });
 
   const res = await sdk.connectSessions.connectSessionsAuthenticate({
-    token: "asperiores technologies",
+    token: "string",
   });
 
   if (res.statusCode == 200) {
@@ -74,8 +74,8 @@ import { ConnectSessionCreateCategories } from "@stackone/stackone-client-ts/dis
       ConnectSessionCreateCategories.Marketing,
     ],
     metadata: {},
-    originOwnerId: "bandwidth Gasoline dedicated",
-    originOwnerName: "Officer",
+    originOwnerId: "string",
+    originOwnerName: "string",
   });
 
   if (res.statusCode == 200) {
