@@ -51,9 +51,9 @@ export class SDKConfiguration {
     serverDefaults: any;
     language = "typescript";
     openapiDocVersion = "1.0.0";
-    sdkVersion = "0.8.0";
+    sdkVersion = "0.8.1";
     genVersion = "2.169.0";
-    userAgent = "speakeasy-sdk/typescript 0.8.0 2.169.0 1.0.0 @stackone/stackone-client-ts";
+    userAgent = "speakeasy-sdk/typescript 0.8.1 2.169.0 1.0.0 @stackone/stackone-client-ts";
     retryConfig?: utils.RetryConfig;
     public constructor(init?: Partial<SDKConfiguration>) {
         Object.assign(this, init);
@@ -61,7 +61,7 @@ export class SDKConfiguration {
 }
 
 /**
- * StackOne Unified API: The documentation for the StackOne API
+ * StackOne: The documentation for the StackOne API
  */
 export class StackOne {
     public accounts: Accounts;
