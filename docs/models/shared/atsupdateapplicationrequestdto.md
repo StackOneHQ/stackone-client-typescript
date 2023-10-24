@@ -1,0 +1,14 @@
+# AtsUpdateApplicationRequestDto
+
+
+## Fields
+
+| Field                                                                   | Type                                                                    | Required                                                                | Description                                                             |
+| ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- |
+| `applicationStatus`                                                     | [ApplicationStatusEnum](../../models/shared/applicationstatusenum.md)   | :heavy_minus_sign:                                                      | N/A                                                                     |
+| `attachments`                                                           | [ApplicationAttachment](../../models/shared/applicationattachment.md)[] | :heavy_minus_sign:                                                      | N/A                                                                     |
+| `candidate`                                                             | [ApplicationCandidate](../../models/shared/applicationcandidate.md)     | :heavy_minus_sign:                                                      | N/A                                                                     |
+| `candidateId`                                                           | *string*                                                                | :heavy_minus_sign:                                                      | N/A                                                                     |
+| `jobId`                                                                 | *string*                                                                | :heavy_minus_sign:                                                      | N/A                                                                     |
+| `locationIds`                                                           | *string*[]                                                              | :heavy_minus_sign:                                                      | N/A                                                                     |
+| `questionnaire`                                                         | [Questionnaire](../../models/shared/questionnaire.md)                   | :heavy_minus_sign:                                                      | N/A                                                                     |

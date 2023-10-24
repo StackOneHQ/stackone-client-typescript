@@ -1,0 +1,9 @@
+# MarketingEmailTemplateCreateRequest
+
+
+## Fields
+
+| Field                                                                                                          | Type                                                                                                           | Required                                                                                                       | Description                                                                                                    |
+| -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| `marketingCreateEmailTemplateRequestDto`                                                                       | [shared.MarketingCreateEmailTemplateRequestDto](../../models/shared/marketingcreateemailtemplaterequestdto.md) | :heavy_check_mark:                                                                                             | N/A                                                                                                            |
+| `xAccountId`                                                                                                   | *string*                                                                                                       | :heavy_check_mark:                                                                                             | The account identifier                                                                                         |

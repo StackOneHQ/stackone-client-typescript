@@ -3,7 +3,7 @@
 
 ## Overview
 
-StackOne: The documentation for the StackOne API
+Marketing: The documentation for the StackOne Unified API - MARKETING
 
 ### Available Operations
 

@@ -4,9 +4,28 @@
 
 import * as utils from "../internal/utils";
 import { Accounts } from "./accounts";
+import { Applications } from "./applications";
+import { Campaigns } from "./campaigns";
+import { Candidates } from "./candidates";
+import { Companies } from "./companies";
 import { ConnectSessions } from "./connectsessions";
+import { Contacts } from "./contacts";
+import { Departments } from "./departments";
+import { Employees } from "./employees";
+import { Employments } from "./employments";
+import { Interviews } from "./interviews";
+import { InterviewStages } from "./interviewstages";
+import { JobPostings } from "./jobpostings";
+import { Jobs } from "./jobs";
+import { Lists } from "./lists";
+import { Locations } from "./locations";
 import * as shared from "./models/shared";
+import { Offers } from "./offers";
 import { Proxy } from "./proxy";
+import { RejectedReasons } from "./rejectedreasons";
+import { Templates } from "./templates";
+import { TimeOff } from "./timeoff";
+import { Users } from "./users";
 import axios from "axios";
 import { AxiosInstance } from "axios";
 
@@ -51,9 +70,9 @@ export class SDKConfiguration {
     serverDefaults: any;
     language = "typescript";
     openapiDocVersion = "1.0.0";
-    sdkVersion = "0.8.1";
-    genVersion = "2.169.0";
-    userAgent = "speakeasy-sdk/typescript 0.8.1 2.169.0 1.0.0 @stackone/stackone-client-ts";
+    sdkVersion = "0.8.2";
+    genVersion = "2.169.3";
+    userAgent = "speakeasy-sdk/typescript 0.8.2 2.169.3 1.0.0 @stackone/stackone-client-ts";
     retryConfig?: utils.RetryConfig;
     public constructor(init?: Partial<SDKConfiguration>) {
         Object.assign(this, init);
@@ -61,12 +80,31 @@ export class SDKConfiguration {
 }
 
 /**
- * StackOne: The documentation for the StackOne API
+ * Marketing: The documentation for the StackOne Unified API - MARKETING
  */
 export class StackOne {
     public accounts: Accounts;
+    public applications: Applications;
+    public campaigns: Campaigns;
+    public candidates: Candidates;
+    public companies: Companies;
     public connectSessions: ConnectSessions;
+    public contacts: Contacts;
+    public departments: Departments;
+    public employees: Employees;
+    public employments: Employments;
+    public interviewStages: InterviewStages;
+    public interviews: Interviews;
+    public jobPostings: JobPostings;
+    public jobs: Jobs;
+    public lists: Lists;
+    public locations: Locations;
+    public offers: Offers;
     public proxy: Proxy;
+    public rejectedReasons: RejectedReasons;
+    public templates: Templates;
+    public timeOff: TimeOff;
+    public users: Users;
 
     private sdkConfiguration: SDKConfiguration;
 
@@ -87,7 +125,26 @@ export class StackOne {
         });
 
         this.accounts = new Accounts(this.sdkConfiguration);
+        this.applications = new Applications(this.sdkConfiguration);
+        this.campaigns = new Campaigns(this.sdkConfiguration);
+        this.candidates = new Candidates(this.sdkConfiguration);
+        this.companies = new Companies(this.sdkConfiguration);
         this.connectSessions = new ConnectSessions(this.sdkConfiguration);
+        this.contacts = new Contacts(this.sdkConfiguration);
+        this.departments = new Departments(this.sdkConfiguration);
+        this.employees = new Employees(this.sdkConfiguration);
+        this.employments = new Employments(this.sdkConfiguration);
+        this.interviewStages = new InterviewStages(this.sdkConfiguration);
+        this.interviews = new Interviews(this.sdkConfiguration);
+        this.jobPostings = new JobPostings(this.sdkConfiguration);
+        this.jobs = new Jobs(this.sdkConfiguration);
+        this.lists = new Lists(this.sdkConfiguration);
+        this.locations = new Locations(this.sdkConfiguration);
+        this.offers = new Offers(this.sdkConfiguration);
         this.proxy = new Proxy(this.sdkConfiguration);
+        this.rejectedReasons = new RejectedReasons(this.sdkConfiguration);
+        this.templates = new Templates(this.sdkConfiguration);
+        this.timeOff = new TimeOff(this.sdkConfiguration);
+        this.users = new Users(this.sdkConfiguration);
     }
 }

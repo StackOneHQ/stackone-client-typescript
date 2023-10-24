@@ -1,0 +1,15 @@
+# Compensation
+
+
+## Fields
+
+| Field                                                                       | Type                                                                        | Required                                                                    | Description                                                                 |
+| --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
+| `currency`                                                                  | *string*                                                                    | :heavy_minus_sign:                                                          | N/A                                                                         |
+| `maxValue`                                                                  | *string*                                                                    | :heavy_minus_sign:                                                          | N/A                                                                         |
+| `minValue`                                                                  | *string*                                                                    | :heavy_minus_sign:                                                          | N/A                                                                         |
+| `name`                                                                      | *string*                                                                    | :heavy_minus_sign:                                                          | N/A                                                                         |
+| `payFrequency`                                                              | [CompensationPayFrequency](../../models/shared/compensationpayfrequency.md) | :heavy_minus_sign:                                                          | N/A                                                                         |
+| `payPeriod`                                                                 | [CompensationPayPeriod](../../models/shared/compensationpayperiod.md)       | :heavy_minus_sign:                                                          | N/A                                                                         |
+| `type`                                                                      | [CompensationType](../../models/shared/compensationtype.md)                 | :heavy_minus_sign:                                                          | N/A                                                                         |
+| `value`                                                                     | *string*                                                                    | :heavy_minus_sign:                                                          | N/A                                                                         |
