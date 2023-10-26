@@ -1,6 +1,6 @@
 configVersion: 1.0.0
 management:
-  docChecksum: 84e25bd8a9f05e70190d1c2fc7527d0a
+  docChecksum: 105b2dfc54bf76a838739d7e1e5b7915
   docVersion: 1.0.0
   speakeasyVersion: 1.107.0
   generationVersion: 2.171.0
@@ -19,7 +19,7 @@ features:
     globalSecurity: 2.82.0
     globalServerURLs: 2.82.0
 typescript:
-  version: 0.9.0
+  version: 0.9.1
   author: StackOne
   clientServerStatusCodesAsErrors: true
   flattenGlobalSecurity: false
