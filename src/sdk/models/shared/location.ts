@@ -8,9 +8,9 @@ import { Expose } from "class-transformer";
 export class Location extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "id" })
-    id: string;
+    id?: string;
 
     @SpeakeasyMetadata()
     @Expose({ name: "name" })
-    name: string;
+    name?: string;
 }

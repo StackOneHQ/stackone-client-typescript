@@ -3,9 +3,9 @@
 
 ### Available Operations
 
-* [proxyRequestPost](#proxyrequestpost) - Proxy Request
+* [proxyRequest](#proxyrequest) - Proxy Request
 
-## proxyRequestPost
+## proxyRequest
 
 Proxy Request
 
@@ -23,7 +23,7 @@ import { ProxyRequestBodyMethod } from "@stackone/stackone-client-ts/dist/sdk/mo
     },
   });
 
-  const res = await sdk.proxy.proxyRequestPost({
+  const res = await sdk.proxy.proxyRequest({
     proxyRequestBody: {
       body: {},
       headers: {},
@@ -41,13 +41,13 @@ import { ProxyRequestBodyMethod } from "@stackone/stackone-client-ts/dist/sdk/mo
 
 ### Parameters
 
-| Parameter                                                                                | Type                                                                                     | Required                                                                                 | Description                                                                              |
-| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| `request`                                                                                | [operations.ProxyRequestPostRequest](../../models/operations/proxyrequestpostrequest.md) | :heavy_check_mark:                                                                       | The request object to use for the request.                                               |
-| `config`                                                                                 | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                             | :heavy_minus_sign:                                                                       | Available config options for making requests.                                            |
+| Parameter                                                                                        | Type                                                                                             | Required                                                                                         | Description                                                                                      |
+| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
+| `request`                                                                                        | [operations.StackoneProxyRequestRequest](../../models/operations/stackoneproxyrequestrequest.md) | :heavy_check_mark:                                                                               | The request object to use for the request.                                                       |
+| `config`                                                                                         | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                     | :heavy_minus_sign:                                                                               | Available config options for making requests.                                                    |
 
 
 ### Response
 
-**Promise<[operations.ProxyRequestPostResponse](../../models/operations/proxyrequestpostresponse.md)>**
+**Promise<[operations.StackoneProxyRequestResponse](../../models/operations/stackoneproxyrequestresponse.md)>**
 

@@ -5,7 +5,7 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { EmployeeCustomFields } from "./employeecustomfields";
 import { Employment } from "./employment";
-import { Location } from "./location";
+import { HRISLocation } from "./hrislocation";
 import { Expose, Type } from "class-transformer";
 
 /**
@@ -302,8 +302,8 @@ export class Employee extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     @Expose({ name: "home_location" })
-    @Type(() => Location)
-    homeLocation?: Location;
+    @Type(() => HRISLocation)
+    homeLocation?: HRISLocation;
 
     /**
      * The employee ID
@@ -409,8 +409,8 @@ export class Employee extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     @Expose({ name: "work_location" })
-    @Type(() => Location)
-    workLocation?: Location;
+    @Type(() => HRISLocation)
+    workLocation?: HRISLocation;
 
     /**
      * The employee work phone number

@@ -17,12 +17,12 @@ export class ConnectSessions {
     }
 
     /**
-     * Authenticate Session
+     * Authenticate Connect Session
      */
-    async connectSessionsAuthenticate(
+    async authenticateConnectSession(
         req: shared.ConnectSessionAuthenticate,
         config?: AxiosRequestConfig
-    ): Promise<operations.ConnectSessionsAuthenticateResponse> {
+    ): Promise<operations.StackoneAuthenticateConnectSessionResponse> {
         if (!(req instanceof utils.SpeakeasyBase)) {
             req = new shared.ConnectSessionAuthenticate(req);
         }
@@ -77,8 +77,8 @@ export class ConnectSessions {
             throw new Error(`status code not found in response: ${httpRes}`);
         }
 
-        const res: operations.ConnectSessionsAuthenticateResponse =
-            new operations.ConnectSessionsAuthenticateResponse({
+        const res: operations.StackoneAuthenticateConnectSessionResponse =
+            new operations.StackoneAuthenticateConnectSessionResponse({
                 statusCode: httpRes.status,
                 contentType: contentType,
                 rawResponse: httpRes,
@@ -119,12 +119,12 @@ export class ConnectSessions {
     }
 
     /**
-     * Create Session
+     * Create Connect Session
      */
-    async connectSessionsCreate(
+    async createConnectSession(
         req: shared.ConnectSessionCreate,
         config?: AxiosRequestConfig
-    ): Promise<operations.ConnectSessionsCreateResponse> {
+    ): Promise<operations.StackoneCreateConnectSessionResponse> {
         if (!(req instanceof utils.SpeakeasyBase)) {
             req = new shared.ConnectSessionCreate(req);
         }
@@ -179,8 +179,8 @@ export class ConnectSessions {
             throw new Error(`status code not found in response: ${httpRes}`);
         }
 
-        const res: operations.ConnectSessionsCreateResponse =
-            new operations.ConnectSessionsCreateResponse({
+        const res: operations.StackoneCreateConnectSessionResponse =
+            new operations.StackoneCreateConnectSessionResponse({
                 statusCode: httpRes.status,
                 contentType: contentType,
                 rawResponse: httpRes,

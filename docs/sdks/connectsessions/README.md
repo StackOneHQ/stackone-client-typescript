@@ -3,12 +3,12 @@
 
 ### Available Operations
 
-* [connectSessionsAuthenticate](#connectsessionsauthenticate) - Authenticate Session
-* [connectSessionsCreate](#connectsessionscreate) - Create Session
+* [authenticateConnectSession](#authenticateconnectsession) - Authenticate Connect Session
+* [createConnectSession](#createconnectsession) - Create Connect Session
 
-## connectSessionsAuthenticate
+## authenticateConnectSession
 
-Authenticate Session
+Authenticate Connect Session
 
 ### Example Usage
 
@@ -23,7 +23,7 @@ import { StackOne } from "@stackone/stackone-client-ts";
     },
   });
 
-  const res = await sdk.connectSessions.connectSessionsAuthenticate({
+  const res = await sdk.connectSessions.authenticateConnectSession({
     token: "string",
   });
 
@@ -43,12 +43,12 @@ import { StackOne } from "@stackone/stackone-client-ts";
 
 ### Response
 
-**Promise<[operations.ConnectSessionsAuthenticateResponse](../../models/operations/connectsessionsauthenticateresponse.md)>**
+**Promise<[operations.StackoneAuthenticateConnectSessionResponse](../../models/operations/stackoneauthenticateconnectsessionresponse.md)>**
 
 
-## connectSessionsCreate
+## createConnectSession
 
-Create Session
+Create Connect Session
 
 ### Example Usage
 
@@ -64,14 +64,14 @@ import { ConnectSessionCreateCategories } from "@stackone/stackone-client-ts/dis
     },
   });
 
-  const res = await sdk.connectSessions.connectSessionsCreate({
+  const res = await sdk.connectSessions.createConnectSession({
     categories: [
       ConnectSessionCreateCategories.Ats,
       ConnectSessionCreateCategories.Hris,
-      ConnectSessionCreateCategories.Crm,
+      ConnectSessionCreateCategories.HrisLegacy,
       ConnectSessionCreateCategories.Crm,
       ConnectSessionCreateCategories.Marketing,
-      ConnectSessionCreateCategories.Marketing,
+      ConnectSessionCreateCategories.Stackone,
     ],
     metadata: {},
     originOwnerId: "string",
@@ -94,5 +94,5 @@ import { ConnectSessionCreateCategories } from "@stackone/stackone-client-ts/dis
 
 ### Response
 
-**Promise<[operations.ConnectSessionsCreateResponse](../../models/operations/connectsessionscreateresponse.md)>**
+**Promise<[operations.StackoneCreateConnectSessionResponse](../../models/operations/stackonecreateconnectsessionresponse.md)>**
 

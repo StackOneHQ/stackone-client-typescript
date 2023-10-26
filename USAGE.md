@@ -12,7 +12,7 @@ import { StackOne } from "@stackone/stackone-client-ts";
         },
     });
 
-    const res = await sdk.accounts.accountsDelete({
+    const res = await sdk.accounts.deleteAccount({
         id: "<ID>",
     });
 

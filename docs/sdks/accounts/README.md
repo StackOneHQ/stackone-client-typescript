@@ -3,14 +3,12 @@
 
 ### Available Operations
 
-* [accountsDelete](#accountsdelete) - Delete Account
-* [accountsGet](#accountsget) - Get Account
-* [accountsList](#accountslist) - List Accounts
-* [accountsMetaGet](#accountsmetaget) - Get meta information of the account
-* [crmAccountsGet](#crmaccountsget) - Get Account
-* [crmAccountsList](#crmaccountslist) - List Accounts
+* [deleteAccount](#deleteaccount) - Delete Account
+* [getAccount](#getaccount) - Get Account
+* [getAccountMetaInfo](#getaccountmetainfo) - Get meta information of the account
+* [listLinkedAccounts](#listlinkedaccounts) - List Accounts
 
-## accountsDelete
+## deleteAccount
 
 Delete Account
 
@@ -27,7 +25,7 @@ import { StackOne } from "@stackone/stackone-client-ts";
     },
   });
 
-  const res = await sdk.accounts.accountsDelete({
+  const res = await sdk.accounts.deleteAccount({
     id: "<ID>",
   });
 
@@ -39,18 +37,18 @@ import { StackOne } from "@stackone/stackone-client-ts";
 
 ### Parameters
 
-| Parameter                                                                            | Type                                                                                 | Required                                                                             | Description                                                                          |
-| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
-| `request`                                                                            | [operations.AccountsDeleteRequest](../../models/operations/accountsdeleterequest.md) | :heavy_check_mark:                                                                   | The request object to use for the request.                                           |
-| `config`                                                                             | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                         | :heavy_minus_sign:                                                                   | Available config options for making requests.                                        |
+| Parameter                                                                                          | Type                                                                                               | Required                                                                                           | Description                                                                                        |
+| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `request`                                                                                          | [operations.StackoneDeleteAccountRequest](../../models/operations/stackonedeleteaccountrequest.md) | :heavy_check_mark:                                                                                 | The request object to use for the request.                                                         |
+| `config`                                                                                           | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                       | :heavy_minus_sign:                                                                                 | Available config options for making requests.                                                      |
 
 
 ### Response
 
-**Promise<[operations.AccountsDeleteResponse](../../models/operations/accountsdeleteresponse.md)>**
+**Promise<[operations.StackoneDeleteAccountResponse](../../models/operations/stackonedeleteaccountresponse.md)>**
 
 
-## accountsGet
+## getAccount
 
 Get Account
 
@@ -67,7 +65,7 @@ import { StackOne } from "@stackone/stackone-client-ts";
     },
   });
 
-  const res = await sdk.accounts.accountsGet({
+  const res = await sdk.accounts.getAccount({
     id: "<ID>",
   });
 
@@ -79,56 +77,18 @@ import { StackOne } from "@stackone/stackone-client-ts";
 
 ### Parameters
 
-| Parameter                                                                      | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `request`                                                                      | [operations.AccountsGetRequest](../../models/operations/accountsgetrequest.md) | :heavy_check_mark:                                                             | The request object to use for the request.                                     |
-| `config`                                                                       | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                   | :heavy_minus_sign:                                                             | Available config options for making requests.                                  |
+| Parameter                                                                                    | Type                                                                                         | Required                                                                                     | Description                                                                                  |
+| -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| `request`                                                                                    | [operations.StackoneGetAccountRequest](../../models/operations/stackonegetaccountrequest.md) | :heavy_check_mark:                                                                           | The request object to use for the request.                                                   |
+| `config`                                                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                 | :heavy_minus_sign:                                                                           | Available config options for making requests.                                                |
 
 
 ### Response
 
-**Promise<[operations.AccountsGetResponse](../../models/operations/accountsgetresponse.md)>**
+**Promise<[operations.StackoneGetAccountResponse](../../models/operations/stackonegetaccountresponse.md)>**
 
 
-## accountsList
-
-List Accounts
-
-### Example Usage
-
-```typescript
-import { StackOne } from "@stackone/stackone-client-ts";
-
-(async() => {
-  const sdk = new StackOne({
-    security: {
-      password: "",
-      username: "",
-    },
-  });
-
-  const res = await sdk.accounts.accountsList({});
-
-  if (res.statusCode == 200) {
-    // handle response
-  }
-})();
-```
-
-### Parameters
-
-| Parameter                                                                        | Type                                                                             | Required                                                                         | Description                                                                      |
-| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| `request`                                                                        | [operations.AccountsListRequest](../../models/operations/accountslistrequest.md) | :heavy_check_mark:                                                               | The request object to use for the request.                                       |
-| `config`                                                                         | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                     | :heavy_minus_sign:                                                               | Available config options for making requests.                                    |
-
-
-### Response
-
-**Promise<[operations.AccountsListResponse](../../models/operations/accountslistresponse.md)>**
-
-
-## accountsMetaGet
+## getAccountMetaInfo
 
 Get meta information of the account
 
@@ -145,7 +105,7 @@ import { StackOne } from "@stackone/stackone-client-ts";
     },
   });
 
-  const res = await sdk.accounts.accountsMetaGet({
+  const res = await sdk.accounts.getAccountMetaInfo({
     id: "<ID>",
   });
 
@@ -157,62 +117,18 @@ import { StackOne } from "@stackone/stackone-client-ts";
 
 ### Parameters
 
-| Parameter                                                                              | Type                                                                                   | Required                                                                               | Description                                                                            |
-| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| `request`                                                                              | [operations.AccountsMetaGetRequest](../../models/operations/accountsmetagetrequest.md) | :heavy_check_mark:                                                                     | The request object to use for the request.                                             |
-| `config`                                                                               | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                           | :heavy_minus_sign:                                                                     | Available config options for making requests.                                          |
+| Parameter                                                                                                    | Type                                                                                                         | Required                                                                                                     | Description                                                                                                  |
+| ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                    | [operations.StackoneGetAccountMetaInfoRequest](../../models/operations/stackonegetaccountmetainforequest.md) | :heavy_check_mark:                                                                                           | The request object to use for the request.                                                                   |
+| `config`                                                                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                                 | :heavy_minus_sign:                                                                                           | Available config options for making requests.                                                                |
 
 
 ### Response
 
-**Promise<[operations.AccountsMetaGetResponse](../../models/operations/accountsmetagetresponse.md)>**
+**Promise<[operations.StackoneGetAccountMetaInfoResponse](../../models/operations/stackonegetaccountmetainforesponse.md)>**
 
 
-## crmAccountsGet
-
-Get Account
-
-### Example Usage
-
-```typescript
-import { StackOne } from "@stackone/stackone-client-ts";
-
-(async() => {
-  const sdk = new StackOne({
-    security: {
-      password: "",
-      username: "",
-    },
-  });
-
-  const res = await sdk.accounts.crmAccountsGet({
-    id: "<ID>",
-    proxy: {
-      "key": "string",
-    },
-    xAccountId: "string",
-  });
-
-  if (res.statusCode == 200) {
-    // handle response
-  }
-})();
-```
-
-### Parameters
-
-| Parameter                                                                            | Type                                                                                 | Required                                                                             | Description                                                                          |
-| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
-| `request`                                                                            | [operations.CrmAccountsGetRequest](../../models/operations/crmaccountsgetrequest.md) | :heavy_check_mark:                                                                   | The request object to use for the request.                                           |
-| `config`                                                                             | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                         | :heavy_minus_sign:                                                                   | Available config options for making requests.                                        |
-
-
-### Response
-
-**Promise<[operations.CrmAccountsGetResponse](../../models/operations/crmaccountsgetresponse.md)>**
-
-
-## crmAccountsList
+## listLinkedAccounts
 
 List Accounts
 
@@ -229,12 +145,7 @@ import { StackOne } from "@stackone/stackone-client-ts";
     },
   });
 
-  const res = await sdk.accounts.crmAccountsList({
-    proxy: {
-      "key": "string",
-    },
-    xAccountId: "string",
-  });
+  const res = await sdk.accounts.listLinkedAccounts({});
 
   if (res.statusCode == 200) {
     // handle response
@@ -244,13 +155,13 @@ import { StackOne } from "@stackone/stackone-client-ts";
 
 ### Parameters
 
-| Parameter                                                                              | Type                                                                                   | Required                                                                               | Description                                                                            |
-| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| `request`                                                                              | [operations.CrmAccountsListRequest](../../models/operations/crmaccountslistrequest.md) | :heavy_check_mark:                                                                     | The request object to use for the request.                                             |
-| `config`                                                                               | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                           | :heavy_minus_sign:                                                                     | Available config options for making requests.                                          |
+| Parameter                                                                                                    | Type                                                                                                         | Required                                                                                                     | Description                                                                                                  |
+| ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                    | [operations.StackoneListLinkedAccountsRequest](../../models/operations/stackonelistlinkedaccountsrequest.md) | :heavy_check_mark:                                                                                           | The request object to use for the request.                                                                   |
+| `config`                                                                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                                 | :heavy_minus_sign:                                                                                           | Available config options for making requests.                                                                |
 
 
 ### Response
 
-**Promise<[operations.CrmAccountsListResponse](../../models/operations/crmaccountslistresponse.md)>**
+**Promise<[operations.StackoneListLinkedAccountsResponse](../../models/operations/stackonelistlinkedaccountsresponse.md)>**
 

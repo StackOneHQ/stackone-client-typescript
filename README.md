@@ -35,7 +35,7 @@ import { StackOne } from "@stackone/stackone-client-ts";
         },
     });
 
-    const res = await sdk.accounts.accountsDelete({
+    const res = await sdk.accounts.deleteAccount({
         id: "<ID>",
     });
 
@@ -53,147 +53,102 @@ import { StackOne } from "@stackone/stackone-client-ts";
 
 ### [accounts](docs/sdks/accounts/README.md)
 
-* [accountsDelete](docs/sdks/accounts/README.md#accountsdelete) - Delete Account
-* [accountsGet](docs/sdks/accounts/README.md#accountsget) - Get Account
-* [accountsList](docs/sdks/accounts/README.md#accountslist) - List Accounts
-* [accountsMetaGet](docs/sdks/accounts/README.md#accountsmetaget) - Get meta information of the account
-* [crmAccountsGet](docs/sdks/accounts/README.md#crmaccountsget) - Get Account
-* [crmAccountsList](docs/sdks/accounts/README.md#crmaccountslist) - List Accounts
-
-### [applications](docs/sdks/applications/README.md)
-
-* [applicationPatch](docs/sdks/applications/README.md#applicationpatch) - Update Application (early access)
-* [applicationPost](docs/sdks/applications/README.md#applicationpost) - Create Application (early access)
-* [applicationsGet](docs/sdks/applications/README.md#applicationsget) - Get Application
-* [applicationsList](docs/sdks/applications/README.md#applicationslist) - List Applications
-* [applicationsOffersGet](docs/sdks/applications/README.md#applicationsoffersget) - Get Application Offer
-* [applicationsOffersList](docs/sdks/applications/README.md#applicationsofferslist) - List Application Offers
-
-### [campaigns](docs/sdks/campaigns/README.md)
-
-* [marketingCampaignsGet](docs/sdks/campaigns/README.md#marketingcampaignsget) - Get campaign
-* [marketingCampaignsList](docs/sdks/campaigns/README.md#marketingcampaignslist) - List campaigns
-
-### [candidates](docs/sdks/candidates/README.md)
-
-* [atsCandidatePatch](docs/sdks/candidates/README.md#atscandidatepatch) - Patch Candidate (early access)
-* [atsCandidatePost](docs/sdks/candidates/README.md#atscandidatepost) - Post Candidate (early access)
-* [atsCandidatesGet](docs/sdks/candidates/README.md#atscandidatesget) - Get Candidate
-* [atsCandidatesList](docs/sdks/candidates/README.md#atscandidateslist) - List Candidates
-* [candidateNoteCreate](docs/sdks/candidates/README.md#candidatenotecreate) - Create Candidate Note
-* [notesGet](docs/sdks/candidates/README.md#notesget) - Get Candidate Note
-* [notesList](docs/sdks/candidates/README.md#noteslist) - List Candidate Notes
-
-### [companies](docs/sdks/companies/README.md)
-
-* [hrisCompaniesGet](docs/sdks/companies/README.md#hriscompaniesget) - Get Company
-* [hrisCompaniesList](docs/sdks/companies/README.md#hriscompanieslist) - List Companies
+* [deleteAccount](docs/sdks/accounts/README.md#deleteaccount) - Delete Account
+* [getAccount](docs/sdks/accounts/README.md#getaccount) - Get Account
+* [getAccountMetaInfo](docs/sdks/accounts/README.md#getaccountmetainfo) - Get meta information of the account
+* [listLinkedAccounts](docs/sdks/accounts/README.md#listlinkedaccounts) - List Accounts
 
 ### [connectSessions](docs/sdks/connectsessions/README.md)
 
-* [connectSessionsAuthenticate](docs/sdks/connectsessions/README.md#connectsessionsauthenticate) - Authenticate Session
-* [connectSessionsCreate](docs/sdks/connectsessions/README.md#connectsessionscreate) - Create Session
-
-### [contacts](docs/sdks/contacts/README.md)
-
-* [contactsList](docs/sdks/contacts/README.md#contactslist) - List Contacts
-* [crmContactPatch](docs/sdks/contacts/README.md#crmcontactpatch) - Patch Contact (early access)
-* [crmContactPost](docs/sdks/contacts/README.md#crmcontactpost) - Creates a new Contact
-* [crmContactsGet](docs/sdks/contacts/README.md#crmcontactsget) - Get Contact
-
-### [departments](docs/sdks/departments/README.md)
-
-* [atsDepartmentsGet](docs/sdks/departments/README.md#atsdepartmentsget) - Get Department
-* [atsDepartmentsList](docs/sdks/departments/README.md#atsdepartmentslist) - List Departments
-
-### [employees](docs/sdks/employees/README.md)
-
-* [employeeCreate](docs/sdks/employees/README.md#employeecreate) - Creates an employee
-* [employeeTimeOffCreate](docs/sdks/employees/README.md#employeetimeoffcreate) - Create Employee Time Off Request
-* [employeeTimeOffList](docs/sdks/employees/README.md#employeetimeofflist) - List Employee Time Off Requests
-* [employeeUpdate](docs/sdks/employees/README.md#employeeupdate) - Updates an employee
-* [employeesTimeOffGet](docs/sdks/employees/README.md#employeestimeoffget) - Get Employees Time Off Request
-* [hrisEmployeesGet](docs/sdks/employees/README.md#hrisemployeesget) - Get Employee
-* [hrisEmployeesList](docs/sdks/employees/README.md#hrisemployeeslist) - List Employees
-
-### [employments](docs/sdks/employments/README.md)
-
-* [hrisEmploymentsGet](docs/sdks/employments/README.md#hrisemploymentsget) - Get Employment
-* [hrisEmploymentsList](docs/sdks/employments/README.md#hrisemploymentslist) - List Employments
-
-### [interviewStages](docs/sdks/interviewstages/README.md)
-
-* [atsInterviewStagesGet](docs/sdks/interviewstages/README.md#atsinterviewstagesget) - Get Interview Stage
-* [atsInterviewStagesList](docs/sdks/interviewstages/README.md#atsinterviewstageslist) - List Interview Stages
-
-### [interviews](docs/sdks/interviews/README.md)
-
-* [atsInterviewsGet](docs/sdks/interviews/README.md#atsinterviewsget) - Get Interview
-* [atsInterviewsList](docs/sdks/interviews/README.md#atsinterviewslist) - List Interviews
-
-### [jobPostings](docs/sdks/jobpostings/README.md)
-
-* [atsJobPostingsGet](docs/sdks/jobpostings/README.md#atsjobpostingsget) - Get Job Posting
-* [atsJobPostingsList](docs/sdks/jobpostings/README.md#atsjobpostingslist) - List Job Postings
-
-### [jobs](docs/sdks/jobs/README.md)
-
-* [atsJobsGet](docs/sdks/jobs/README.md#atsjobsget) - Get Job
-* [atsJobsList](docs/sdks/jobs/README.md#atsjobslist) - List Jobs
-
-### [lists](docs/sdks/lists/README.md)
-
-* [crmListsGet](docs/sdks/lists/README.md#crmlistsget) - Get Lists
-* [listsList](docs/sdks/lists/README.md#listslist) - List Lists
-
-### [locations](docs/sdks/locations/README.md)
-
-* [atsLocationsGet](docs/sdks/locations/README.md#atslocationsget) - Get Location
-* [atsLocationsList](docs/sdks/locations/README.md#atslocationslist) - List locations
-* [hrisLocationsGet](docs/sdks/locations/README.md#hrislocationsget) - Get location
-* [hrisLocationsList](docs/sdks/locations/README.md#hrislocationslist) - List locations
-
-### [offers](docs/sdks/offers/README.md)
-
-* [atsOffersList](docs/sdks/offers/README.md#atsofferslist) - List Offers
-* [offerCreate](docs/sdks/offers/README.md#offercreate) - Creates an offer
-* [offersGet](docs/sdks/offers/README.md#offersget) - Get Offer
+* [authenticateConnectSession](docs/sdks/connectsessions/README.md#authenticateconnectsession) - Authenticate Connect Session
+* [createConnectSession](docs/sdks/connectsessions/README.md#createconnectsession) - Create Connect Session
 
 ### [proxy](docs/sdks/proxy/README.md)
 
-* [proxyRequestPost](docs/sdks/proxy/README.md#proxyrequestpost) - Proxy Request
+* [proxyRequest](docs/sdks/proxy/README.md#proxyrequest) - Proxy Request
 
-### [rejectedReasons](docs/sdks/rejectedreasons/README.md)
+### [ats](docs/sdks/ats/README.md)
 
-* [atsRejectedReasonsGet](docs/sdks/rejectedreasons/README.md#atsrejectedreasonsget) - Get Rejected Reason
-* [atsRejectedReasonsList](docs/sdks/rejectedreasons/README.md#atsrejectedreasonslist) - List Rejected Reasons
+* [createApplication](docs/sdks/ats/README.md#createapplication) - Create Application (early access)
+* [createCandidate](docs/sdks/ats/README.md#createcandidate) - Create Candidate (early access)
+* [createCandidateNote](docs/sdks/ats/README.md#createcandidatenote) - Create Candidate Note
+* [createOffer](docs/sdks/ats/README.md#createoffer) - Creates an offer
+* [getApplication](docs/sdks/ats/README.md#getapplication) - Get Application
+* [getApplicationOffer](docs/sdks/ats/README.md#getapplicationoffer) - Get Application Offer
+* [getCandidate](docs/sdks/ats/README.md#getcandidate) - Get Candidate
+* [getCandidateNote](docs/sdks/ats/README.md#getcandidatenote) - Get Candidate Note
+* [getDepartment](docs/sdks/ats/README.md#getdepartment) - Get Department
+* [getInterview](docs/sdks/ats/README.md#getinterview) - Get Interview
+* [getInterviewStage](docs/sdks/ats/README.md#getinterviewstage) - Get Interview Stage
+* [getJob](docs/sdks/ats/README.md#getjob) - Get Job
+* [getJobPosting](docs/sdks/ats/README.md#getjobposting) - Get Job Posting
+* [getLocation](docs/sdks/ats/README.md#getlocation) - Get Location
+* [getOffer](docs/sdks/ats/README.md#getoffer) - Get Offer
+* [getRejectedReason](docs/sdks/ats/README.md#getrejectedreason) - Get Rejected Reason
+* [getUser](docs/sdks/ats/README.md#getuser) - Get User
+* [listApplications](docs/sdks/ats/README.md#listapplications) - List Applications
+* [listApplicationsOffers](docs/sdks/ats/README.md#listapplicationsoffers) - List Application Offers
+* [listCandidateNotes](docs/sdks/ats/README.md#listcandidatenotes) - List Candidate Notes
+* [listCandidates](docs/sdks/ats/README.md#listcandidates) - List Candidates
+* [listDepartments](docs/sdks/ats/README.md#listdepartments) - List Departments
+* [listInterviewStages](docs/sdks/ats/README.md#listinterviewstages) - List Interview Stages
+* [listInterviews](docs/sdks/ats/README.md#listinterviews) - List Interviews
+* [listJobPostings](docs/sdks/ats/README.md#listjobpostings) - List Job Postings
+* [listJobs](docs/sdks/ats/README.md#listjobs) - List Jobs
+* [listLocations](docs/sdks/ats/README.md#listlocations) - List locations
+* [listOffers](docs/sdks/ats/README.md#listoffers) - List Offers
+* [listRejectedReasons](docs/sdks/ats/README.md#listrejectedreasons) - List Rejected Reasons
+* [listUsers](docs/sdks/ats/README.md#listusers) - List Users
+* [updateApplication](docs/sdks/ats/README.md#updateapplication) - Update Application (early access)
+* [updateCandidate](docs/sdks/ats/README.md#updatecandidate) - Update Candidate (early access)
 
-### [templates](docs/sdks/templates/README.md)
+### [crm](docs/sdks/crm/README.md)
 
-* [marketingEmailTemplateCreate](docs/sdks/templates/README.md#marketingemailtemplatecreate) - Create email template
-* [marketingEmailTemplateUpdate](docs/sdks/templates/README.md#marketingemailtemplateupdate) - Update email template
-* [marketingEmailTemplatesGet](docs/sdks/templates/README.md#marketingemailtemplatesget) - Get email template
-* [marketingEmailTemplatesList](docs/sdks/templates/README.md#marketingemailtemplateslist) - List email templates
-* [marketingOmniChannelTemplateCreate](docs/sdks/templates/README.md#marketingomnichanneltemplatecreate) - Create omni-channel template
-* [marketingOmniChannelTemplateUpdate](docs/sdks/templates/README.md#marketingomnichanneltemplateupdate) - Update omni-channel template
-* [marketingOmniChannelTemplatesGet](docs/sdks/templates/README.md#marketingomnichanneltemplatesget) - Get omni-channel template
-* [marketingOmniChannelTemplatesList](docs/sdks/templates/README.md#marketingomnichanneltemplateslist) - List omni-channel templates
-* [marketingPushTemplateCreate](docs/sdks/templates/README.md#marketingpushtemplatecreate) - Create push template
-* [marketingPushTemplateUpdate](docs/sdks/templates/README.md#marketingpushtemplateupdate) - Update push template
-* [marketingPushTemplatesGet](docs/sdks/templates/README.md#marketingpushtemplatesget) - Get push template
-* [marketingPushTemplatesList](docs/sdks/templates/README.md#marketingpushtemplateslist) - List push templates
+* [createContact](docs/sdks/crm/README.md#createcontact) - Creates a new Contact
+* [getAccount](docs/sdks/crm/README.md#getaccount) - Get Account
+* [getContact](docs/sdks/crm/README.md#getcontact) - Get Contact
+* [getList](docs/sdks/crm/README.md#getlist) - Get List
+* [listAccounts](docs/sdks/crm/README.md#listaccounts) - List Accounts
+* [listContacts](docs/sdks/crm/README.md#listcontacts) - List Contacts
+* [listLists](docs/sdks/crm/README.md#listlists) - List Lists
+* [updateContact](docs/sdks/crm/README.md#updatecontact) - Update Contact (early access)
 
-### [timeOff](docs/sdks/timeoff/README.md)
+### [hris](docs/sdks/hris/README.md)
 
-* [hrisTimeOffGet](docs/sdks/timeoff/README.md#hristimeoffget) - Get time off request
-* [hrisTimeOffList](docs/sdks/timeoff/README.md#hristimeofflist) - List time off requests
-* [timeOffCreate](docs/sdks/timeoff/README.md#timeoffcreate) - Creates a time off request
-* [timeOffUpdate](docs/sdks/timeoff/README.md#timeoffupdate) - Update time off request
+* [createEmployee](docs/sdks/hris/README.md#createemployee) - Creates an employee
+* [createEmployeeTimeOffRequest](docs/sdks/hris/README.md#createemployeetimeoffrequest) - Create Employee Time Off Request
+* [createTimeOffRequest](docs/sdks/hris/README.md#createtimeoffrequest) - Creates a time off request
+* [getCompany](docs/sdks/hris/README.md#getcompany) - Get Company
+* [getEmployee](docs/sdks/hris/README.md#getemployee) - Get Employee
+* [getEmployeesTimeOffRequest](docs/sdks/hris/README.md#getemployeestimeoffrequest) - Get Employees Time Off Request
+* [getEmployment](docs/sdks/hris/README.md#getemployment) - Get Employment
+* [getLocation](docs/sdks/hris/README.md#getlocation) - Get Location
+* [getTimeOffRequest](docs/sdks/hris/README.md#gettimeoffrequest) - Get time off request
+* [listCompanies](docs/sdks/hris/README.md#listcompanies) - List Companies
+* [listEmployeeTimeOffRequests](docs/sdks/hris/README.md#listemployeetimeoffrequests) - List Employee Time Off Requests
+* [listEmployees](docs/sdks/hris/README.md#listemployees) - List Employees
+* [listEmployments](docs/sdks/hris/README.md#listemployments) - List Employments
+* [listLocations](docs/sdks/hris/README.md#listlocations) - List locations
+* [listTimeOffRequests](docs/sdks/hris/README.md#listtimeoffrequests) - List time off requests
+* [updateEmployee](docs/sdks/hris/README.md#updateemployee) - Updates an employee
+* [updateTimeOffRequest](docs/sdks/hris/README.md#updatetimeoffrequest) - Update time off request
 
-### [users](docs/sdks/users/README.md)
+### [marketing](docs/sdks/marketing/README.md)
 
-* [atsUsersGet](docs/sdks/users/README.md#atsusersget) - Get User
-* [atsUsersList](docs/sdks/users/README.md#atsuserslist) - List Users
+* [createEmailTemplate](docs/sdks/marketing/README.md#createemailtemplate) - Create email template
+* [createOmniChannelTemplate](docs/sdks/marketing/README.md#createomnichanneltemplate) - Create omni-channel template
+* [createPushTemplate](docs/sdks/marketing/README.md#createpushtemplate) - Create push template
+* [getCampaign](docs/sdks/marketing/README.md#getcampaign) - Get campaign
+* [getEmailTemplate](docs/sdks/marketing/README.md#getemailtemplate) - Get email template
+* [getOmniChannelTemplate](docs/sdks/marketing/README.md#getomnichanneltemplate) - Get omni-channel template
+* [getPushTemplate](docs/sdks/marketing/README.md#getpushtemplate) - Get push template
+* [listCampaigns](docs/sdks/marketing/README.md#listcampaigns) - List campaigns
+* [listEmailTemplates](docs/sdks/marketing/README.md#listemailtemplates) - List email templates
+* [listOmniChannelTemplates](docs/sdks/marketing/README.md#listomnichanneltemplates) - List omni-channel templates
+* [listPushTemplates](docs/sdks/marketing/README.md#listpushtemplates) - List push templates
+* [updateEmailTemplate](docs/sdks/marketing/README.md#updateemailtemplate) - Update email template
+* [updateOmniChannelTemplate](docs/sdks/marketing/README.md#updateomnichanneltemplate) - Update omni-channel template
+* [updatePushTemplate](docs/sdks/marketing/README.md#updatepushtemplate) - Update push template
 <!-- End SDK Available Operations -->
 
 
@@ -213,6 +168,41 @@ return value of `next` is `null`, then there are no more pages to be fetched.
 
 Here's an example of one such pagination call:
 <!-- End Pagination -->
+
+
+
+<!-- Start Error Handling -->
+# Error Handling
+
+Handling errors in your SDK should largely match your expectations.  All operations return a response object or throw an error.  If Error objects are specified in your OpenAPI Spec, the SDK will throw the appropriate Error type.
+
+
+<!-- End Error Handling -->
+
+
+
+<!-- Start Custom HTTP Client -->
+# Custom HTTP Client
+
+The Typescript SDK makes API calls using the (axios)[https://axios-http.com/docs/intro] HTTP library.  In order to provide a convenient way to configure timeouts, cookies, proxies, custom headers, and other low-level configuration, you can initialize the SDK client with a custom `AxiosInstance` object.
+
+
+For example, you could specify a header for every request that your sdk makes as follows:
+
+```typescript
+from @stackone/stackone-client-ts import StackOne;
+import axios;
+
+const httpClient = axios.create({
+    headers: {'x-custom-header': 'someValue'}
+})
+
+
+const sdk = new StackOne({defaultClient: httpClient});
+```
+
+
+<!-- End Custom HTTP Client -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 

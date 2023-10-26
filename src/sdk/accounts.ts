@@ -19,12 +19,12 @@ export class Accounts {
     /**
      * Delete Account
      */
-    async accountsDelete(
-        req: operations.AccountsDeleteRequest,
+    async deleteAccount(
+        req: operations.StackoneDeleteAccountRequest,
         config?: AxiosRequestConfig
-    ): Promise<operations.AccountsDeleteResponse> {
+    ): Promise<operations.StackoneDeleteAccountResponse> {
         if (!(req instanceof utils.SpeakeasyBase)) {
-            req = new operations.AccountsDeleteRequest(req);
+            req = new operations.StackoneDeleteAccountRequest(req);
         }
 
         const baseURL: string = utils.templateUrl(
@@ -61,11 +61,12 @@ export class Accounts {
             throw new Error(`status code not found in response: ${httpRes}`);
         }
 
-        const res: operations.AccountsDeleteResponse = new operations.AccountsDeleteResponse({
-            statusCode: httpRes.status,
-            contentType: contentType,
-            rawResponse: httpRes,
-        });
+        const res: operations.StackoneDeleteAccountResponse =
+            new operations.StackoneDeleteAccountResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
         const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
@@ -105,12 +106,12 @@ export class Accounts {
     /**
      * Get Account
      */
-    async accountsGet(
-        req: operations.AccountsGetRequest,
+    async getAccount(
+        req: operations.StackoneGetAccountRequest,
         config?: AxiosRequestConfig
-    ): Promise<operations.AccountsGetResponse> {
+    ): Promise<operations.StackoneGetAccountResponse> {
         if (!(req instanceof utils.SpeakeasyBase)) {
-            req = new operations.AccountsGetRequest(req);
+            req = new operations.StackoneGetAccountRequest(req);
         }
 
         const baseURL: string = utils.templateUrl(
@@ -147,11 +148,12 @@ export class Accounts {
             throw new Error(`status code not found in response: ${httpRes}`);
         }
 
-        const res: operations.AccountsGetResponse = new operations.AccountsGetResponse({
-            statusCode: httpRes.status,
-            contentType: contentType,
-            rawResponse: httpRes,
-        });
+        const res: operations.StackoneGetAccountResponse =
+            new operations.StackoneGetAccountResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
         const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
@@ -188,103 +190,14 @@ export class Accounts {
     }
 
     /**
-     * List Accounts
-     */
-    async accountsList(
-        req: operations.AccountsListRequest,
-        config?: AxiosRequestConfig
-    ): Promise<operations.AccountsListResponse> {
-        if (!(req instanceof utils.SpeakeasyBase)) {
-            req = new operations.AccountsListRequest(req);
-        }
-
-        const baseURL: string = utils.templateUrl(
-            this.sdkConfiguration.serverURL,
-            this.sdkConfiguration.serverDefaults
-        );
-        const url: string = baseURL.replace(/\/$/, "") + "/accounts";
-        const client: AxiosInstance = this.sdkConfiguration.defaultClient;
-        let globalSecurity = this.sdkConfiguration.security;
-        if (typeof globalSecurity === "function") {
-            globalSecurity = await globalSecurity();
-        }
-        if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
-            globalSecurity = new shared.Security(globalSecurity);
-        }
-        const properties = utils.parseSecurityProperties(globalSecurity);
-        const headers: RawAxiosRequestHeaders = { ...config?.headers, ...properties.headers };
-        const queryParams: string = utils.serializeQueryParams(req);
-        headers["Accept"] = "application/json";
-
-        headers["user-agent"] = this.sdkConfiguration.userAgent;
-
-        const httpRes: AxiosResponse = await client.request({
-            validateStatus: () => true,
-            url: url + queryParams,
-            method: "get",
-            headers: headers,
-            responseType: "arraybuffer",
-            ...config,
-        });
-
-        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-        if (httpRes?.status == null) {
-            throw new Error(`status code not found in response: ${httpRes}`);
-        }
-
-        const res: operations.AccountsListResponse = new operations.AccountsListResponse({
-            statusCode: httpRes.status,
-            contentType: contentType,
-            rawResponse: httpRes,
-        });
-        const decodedRes = new TextDecoder().decode(httpRes?.data);
-        switch (true) {
-            case httpRes?.status == 200:
-                if (utils.matchContentType(contentType, `application/json`)) {
-                    res.linkedAccounts = [];
-                    const resFieldDepth: number = utils.getResFieldDepth(res);
-                    res.linkedAccounts = utils.objectToClass(
-                        JSON.parse(decodedRes),
-                        shared.LinkedAccount,
-                        resFieldDepth
-                    );
-                } else {
-                    throw new errors.SDKError(
-                        "unknown content-type received: " + contentType,
-                        httpRes.status,
-                        decodedRes,
-                        httpRes
-                    );
-                }
-                break;
-            case httpRes?.status == 400 ||
-                httpRes?.status == 403 ||
-                httpRes?.status == 429 ||
-                (httpRes?.status >= 400 && httpRes?.status < 500) ||
-                httpRes?.status == 500 ||
-                httpRes?.status == 501 ||
-                (httpRes?.status >= 500 && httpRes?.status < 600):
-                throw new errors.SDKError(
-                    "API error occurred",
-                    httpRes.status,
-                    decodedRes,
-                    httpRes
-                );
-        }
-
-        return res;
-    }
-
-    /**
      * Get meta information of the account
      */
-    async accountsMetaGet(
-        req: operations.AccountsMetaGetRequest,
+    async getAccountMetaInfo(
+        req: operations.StackoneGetAccountMetaInfoRequest,
         config?: AxiosRequestConfig
-    ): Promise<operations.AccountsMetaGetResponse> {
+    ): Promise<operations.StackoneGetAccountMetaInfoResponse> {
         if (!(req instanceof utils.SpeakeasyBase)) {
-            req = new operations.AccountsMetaGetRequest(req);
+            req = new operations.StackoneGetAccountMetaInfoRequest(req);
         }
 
         const baseURL: string = utils.templateUrl(
@@ -321,11 +234,12 @@ export class Accounts {
             throw new Error(`status code not found in response: ${httpRes}`);
         }
 
-        const res: operations.AccountsMetaGetResponse = new operations.AccountsMetaGetResponse({
-            statusCode: httpRes.status,
-            contentType: contentType,
-            rawResponse: httpRes,
-        });
+        const res: operations.StackoneGetAccountMetaInfoResponse =
+            new operations.StackoneGetAccountMetaInfoResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
         const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
@@ -363,111 +277,21 @@ export class Accounts {
     }
 
     /**
-     * Get Account
-     */
-    async crmAccountsGet(
-        req: operations.CrmAccountsGetRequest,
-        config?: AxiosRequestConfig
-    ): Promise<operations.CrmAccountsGetResponse> {
-        if (!(req instanceof utils.SpeakeasyBase)) {
-            req = new operations.CrmAccountsGetRequest(req);
-        }
-
-        const baseURL: string = utils.templateUrl(
-            this.sdkConfiguration.serverURL,
-            this.sdkConfiguration.serverDefaults
-        );
-        const url: string = utils.generateURL(baseURL, "/unified/crm/accounts/{id}", req);
-        const client: AxiosInstance = this.sdkConfiguration.defaultClient;
-        let globalSecurity = this.sdkConfiguration.security;
-        if (typeof globalSecurity === "function") {
-            globalSecurity = await globalSecurity();
-        }
-        if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
-            globalSecurity = new shared.Security(globalSecurity);
-        }
-        const properties = utils.parseSecurityProperties(globalSecurity);
-        const headers: RawAxiosRequestHeaders = {
-            ...utils.getHeadersFromRequest(req),
-            ...config?.headers,
-            ...properties.headers,
-        };
-        const queryParams: string = utils.serializeQueryParams(req);
-        headers["Accept"] = "application/json";
-
-        headers["user-agent"] = this.sdkConfiguration.userAgent;
-
-        const httpRes: AxiosResponse = await client.request({
-            validateStatus: () => true,
-            url: url + queryParams,
-            method: "get",
-            headers: headers,
-            responseType: "arraybuffer",
-            ...config,
-        });
-
-        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-        if (httpRes?.status == null) {
-            throw new Error(`status code not found in response: ${httpRes}`);
-        }
-
-        const res: operations.CrmAccountsGetResponse = new operations.CrmAccountsGetResponse({
-            statusCode: httpRes.status,
-            contentType: contentType,
-            rawResponse: httpRes,
-        });
-        const decodedRes = new TextDecoder().decode(httpRes?.data);
-        switch (true) {
-            case httpRes?.status == 200:
-                if (utils.matchContentType(contentType, `application/json`)) {
-                    res.accountResult = utils.objectToClass(
-                        JSON.parse(decodedRes),
-                        shared.AccountResult
-                    );
-                } else {
-                    throw new errors.SDKError(
-                        "unknown content-type received: " + contentType,
-                        httpRes.status,
-                        decodedRes,
-                        httpRes
-                    );
-                }
-                break;
-            case httpRes?.status == 400 ||
-                httpRes?.status == 403 ||
-                httpRes?.status == 429 ||
-                (httpRes?.status >= 400 && httpRes?.status < 500) ||
-                httpRes?.status == 500 ||
-                httpRes?.status == 501 ||
-                (httpRes?.status >= 500 && httpRes?.status < 600):
-                throw new errors.SDKError(
-                    "API error occurred",
-                    httpRes.status,
-                    decodedRes,
-                    httpRes
-                );
-        }
-
-        return res;
-    }
-
-    /**
      * List Accounts
      */
-    async crmAccountsList(
-        req: operations.CrmAccountsListRequest,
+    async listLinkedAccounts(
+        req: operations.StackoneListLinkedAccountsRequest,
         config?: AxiosRequestConfig
-    ): Promise<operations.CrmAccountsListResponse> {
+    ): Promise<operations.StackoneListLinkedAccountsResponse> {
         if (!(req instanceof utils.SpeakeasyBase)) {
-            req = new operations.CrmAccountsListRequest(req);
+            req = new operations.StackoneListLinkedAccountsRequest(req);
         }
 
         const baseURL: string = utils.templateUrl(
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = baseURL.replace(/\/$/, "") + "/unified/crm/accounts";
+        const url: string = baseURL.replace(/\/$/, "") + "/accounts";
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
         let globalSecurity = this.sdkConfiguration.security;
         if (typeof globalSecurity === "function") {
@@ -477,11 +301,7 @@ export class Accounts {
             globalSecurity = new shared.Security(globalSecurity);
         }
         const properties = utils.parseSecurityProperties(globalSecurity);
-        const headers: RawAxiosRequestHeaders = {
-            ...utils.getHeadersFromRequest(req),
-            ...config?.headers,
-            ...properties.headers,
-        };
+        const headers: RawAxiosRequestHeaders = { ...config?.headers, ...properties.headers };
         const queryParams: string = utils.serializeQueryParams(req);
         headers["Accept"] = "application/json";
 
@@ -502,18 +322,22 @@ export class Accounts {
             throw new Error(`status code not found in response: ${httpRes}`);
         }
 
-        const res: operations.CrmAccountsListResponse = new operations.CrmAccountsListResponse({
-            statusCode: httpRes.status,
-            contentType: contentType,
-            rawResponse: httpRes,
-        });
+        const res: operations.StackoneListLinkedAccountsResponse =
+            new operations.StackoneListLinkedAccountsResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
         const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.accountsPaginated = utils.objectToClass(
+                    res.linkedAccounts = [];
+                    const resFieldDepth: number = utils.getResFieldDepth(res);
+                    res.linkedAccounts = utils.objectToClass(
                         JSON.parse(decodedRes),
-                        shared.AccountsPaginated
+                        shared.LinkedAccount,
+                        resFieldDepth
                     );
                 } else {
                     throw new errors.SDKError(

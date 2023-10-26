@@ -19,12 +19,12 @@ export class Proxy {
     /**
      * Proxy Request
      */
-    async proxyRequestPost(
-        req: operations.ProxyRequestPostRequest,
+    async proxyRequest(
+        req: operations.StackoneProxyRequestRequest,
         config?: AxiosRequestConfig
-    ): Promise<operations.ProxyRequestPostResponse> {
+    ): Promise<operations.StackoneProxyRequestResponse> {
         if (!(req instanceof utils.SpeakeasyBase)) {
-            req = new operations.ProxyRequestPostRequest(req);
+            req = new operations.StackoneProxyRequestRequest(req);
         }
 
         const baseURL: string = utils.templateUrl(
@@ -78,11 +78,12 @@ export class Proxy {
             throw new Error(`status code not found in response: ${httpRes}`);
         }
 
-        const res: operations.ProxyRequestPostResponse = new operations.ProxyRequestPostResponse({
-            statusCode: httpRes.status,
-            contentType: contentType,
-            rawResponse: httpRes,
-        });
+        const res: operations.StackoneProxyRequestResponse =
+            new operations.StackoneProxyRequestResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
         switch (true) {
             case httpRes?.status == 200:
                 break;
