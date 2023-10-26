@@ -22,11 +22,11 @@ jobs:
         - typescript
       mode: direct
       openapi_docs: |
-        - https://api2.eu1.stackone-dev.com/oas/stackone.json
-        - https://api2.eu1.stackone-dev.com/oas/hris.json
-        - https://api2.eu1.stackone-dev.com/oas/ats.json
-        - https://api2.eu1.stackone-dev.com/oas/crm.json
-        - https://api2.eu1.stackone-dev.com/oas/marketing.json
+        - https://api2.eu1.stackone.com/oas/stackone.json
+        - https://api2.eu1.stackone.com/oas/hris.json
+        - https://api2.eu1.stackone.com/oas/ats.json
+        - https://api2.eu1.stackone.com/oas/crm.json
+        - https://api2.eu1.stackone.com/oas/marketing.json
       publish_typescript: true
       speakeasy_version: latest
     secrets:
