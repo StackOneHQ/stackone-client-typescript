@@ -52,6 +52,7 @@ import { StackOne } from "@stackone/stackone-client-ts";
     xAccountId: "string",
   });
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -95,6 +96,7 @@ import { StackOne } from "@stackone/stackone-client-ts";
     },
     xAccountId: "string",
   });
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -140,6 +142,7 @@ import { StackOne } from "@stackone/stackone-client-ts";
     xAccountId: "string",
   });
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -184,6 +187,7 @@ import { StackOne } from "@stackone/stackone-client-ts";
     xAccountId: "string",
   });
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -226,6 +230,7 @@ import { StackOne } from "@stackone/stackone-client-ts";
     },
     xAccountId: "string",
   });
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -270,6 +275,7 @@ import { StackOne } from "@stackone/stackone-client-ts";
     xAccountId: "string",
   });
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -312,6 +318,7 @@ import { StackOne } from "@stackone/stackone-client-ts";
     },
     xAccountId: "string",
   });
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -372,6 +379,7 @@ import { StackOne } from "@stackone/stackone-client-ts";
     id: "<ID>",
     xAccountId: "string",
   });
+
 
   if (res.statusCode == 200) {
     // handle response

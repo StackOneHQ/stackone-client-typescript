@@ -183,6 +183,7 @@ import {
     xAccountId: "string",
   });
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -237,6 +238,7 @@ import { TimeOffStatusEnumValue, TimeOffTypeEnumValue } from "@stackone/stackone
     xAccountId: "string",
   });
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -290,6 +292,7 @@ import { TimeOffStatusEnumValue, TimeOffTypeEnumValue } from "@stackone/stackone
     xAccountId: "string",
   });
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -334,6 +337,7 @@ import { StackOne } from "@stackone/stackone-client-ts";
     xAccountId: "string",
   });
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -377,6 +381,7 @@ import { StackOne } from "@stackone/stackone-client-ts";
     },
     xAccountId: "string",
   });
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -423,6 +428,7 @@ import { StackOne } from "@stackone/stackone-client-ts";
     xAccountId: "string",
   });
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -466,6 +472,7 @@ import { StackOne } from "@stackone/stackone-client-ts";
     },
     xAccountId: "string",
   });
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -511,6 +518,7 @@ import { StackOne } from "@stackone/stackone-client-ts";
     xAccountId: "string",
   });
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -555,6 +563,7 @@ import { StackOne } from "@stackone/stackone-client-ts";
     xAccountId: "string",
   });
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -597,6 +606,7 @@ import { StackOne } from "@stackone/stackone-client-ts";
     },
     xAccountId: "string",
   });
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -642,6 +652,7 @@ import { StackOne } from "@stackone/stackone-client-ts";
     xAccountId: "string",
   });
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -684,6 +695,7 @@ import { StackOne } from "@stackone/stackone-client-ts";
     },
     xAccountId: "string",
   });
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -728,6 +740,7 @@ import { StackOne } from "@stackone/stackone-client-ts";
     xAccountId: "string",
   });
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -771,6 +784,7 @@ import { StackOne } from "@stackone/stackone-client-ts";
     xAccountId: "string",
   });
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -813,6 +827,7 @@ import { StackOne } from "@stackone/stackone-client-ts";
     },
     xAccountId: "string",
   });
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -996,6 +1011,7 @@ import {
     xAccountId: "string",
   });
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -1049,6 +1065,7 @@ import { TimeOffStatusEnumValue, TimeOffTypeEnumValue } from "@stackone/stackone
     id: "<ID>",
     xAccountId: "string",
   });
+
 
   if (res.statusCode == 200) {
     // handle response

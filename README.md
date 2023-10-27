@@ -200,6 +200,75 @@ const sdk = new StackOne({defaultClient: httpClient});
 ```
 <!-- End Custom HTTP Client -->
 
+
+
+<!-- Start Server Selection -->
+# Server Selection
+
+## Select Server by Index
+
+You can override the default server globally by passing a server index to the `serverIdx: number` optional parameter when initializing the SDK client instance. The selected server will then be used as the default on the operations that use it. This table lists the indexes associated with the available servers:
+
+| # | Server | Variables |
+| - | ------ | --------- |
+| 0 | `https://api.stackone.com` | None |
+
+For example:
+
+
+```typescript
+import { StackOne } from "@stackone/stackone-client-ts";
+
+(async () => {
+    const sdk = new StackOne({
+        security: {
+            password: "",
+            username: "",
+        },
+        serverIdx: 0,
+    });
+
+    const res = await sdk.accounts.deleteAccount({
+        id: "<ID>",
+    });
+
+    if (res.statusCode == 200) {
+        // handle response
+    }
+})();
+
+```
+
+
+## Override Server URL Per-Client
+
+The default server can also be overridden globally by passing a URL to the `serverURL: str` optional parameter when initializing the SDK client instance. For example:
+
+
+```typescript
+import { StackOne } from "@stackone/stackone-client-ts";
+
+(async () => {
+    const sdk = new StackOne({
+        security: {
+            password: "",
+            username: "",
+        },
+        serverURL: "https://api.stackone.com",
+    });
+
+    const res = await sdk.accounts.deleteAccount({
+        id: "<ID>",
+    });
+
+    if (res.statusCode == 200) {
+        // handle response
+    }
+})();
+
+```
+<!-- End Server Selection -->
+
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 
 

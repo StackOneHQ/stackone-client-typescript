@@ -17,7 +17,7 @@ import { AxiosInstance } from "axios";
 /**
  * Contains the list of servers available to the SDK
  */
-export const ServerList = ["https://api.stackone-dev.com"] as const;
+export const ServerList = ["https://api.stackone.com"] as const;
 
 /**
  * The available configuration options for the SDK
@@ -55,9 +55,9 @@ export class SDKConfiguration {
     serverDefaults: any;
     language = "typescript";
     openapiDocVersion = "1.0.0";
-    sdkVersion = "0.10.0";
-    genVersion = "2.172.0";
-    userAgent = "speakeasy-sdk/typescript 0.10.0 2.172.0 1.0.0 @stackone/stackone-client-ts";
+    sdkVersion = "0.10.1";
+    genVersion = "2.172.4";
+    userAgent = "speakeasy-sdk/typescript 0.10.1 2.172.4 1.0.0 @stackone/stackone-client-ts";
     retryConfig?: utils.RetryConfig;
     public constructor(init?: Partial<SDKConfiguration>) {
         Object.assign(this, init);

@@ -33,6 +33,7 @@ import { ProxyRequestBodyMethod } from "@stackone/stackone-client-ts/dist/sdk/mo
     xAccountId: "string",
   });
 
+
   if (res.statusCode == 200) {
     // handle response
   }

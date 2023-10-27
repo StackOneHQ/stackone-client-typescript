@@ -1,9 +1,9 @@
 configVersion: 1.0.0
 management:
-  docChecksum: 46a52a23e5de5b37bd9e3daa33a33774
+  docChecksum: c388e4f8f60888223c15faed90508c32
   docVersion: 1.0.0
-  speakeasyVersion: 1.108.0
-  generationVersion: 2.172.0
+  speakeasyVersion: 1.108.1
+  generationVersion: 2.172.4
 generation:
   comments:
     disableComments: false
@@ -21,7 +21,7 @@ features:
     groups: 2.81.2
     nameOverrides: 2.81.1
 typescript:
-  version: 0.10.0
+  version: 0.10.1
   author: StackOne
   clientServerStatusCodesAsErrors: true
   flattenGlobalSecurity: false

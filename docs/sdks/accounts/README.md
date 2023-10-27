@@ -29,6 +29,7 @@ import { StackOne } from "@stackone/stackone-client-ts";
     id: "<ID>",
   });
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -68,6 +69,7 @@ import { StackOne } from "@stackone/stackone-client-ts";
   const res = await sdk.accounts.getAccount({
     id: "<ID>",
   });
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -109,6 +111,7 @@ import { StackOne } from "@stackone/stackone-client-ts";
     id: "<ID>",
   });
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -146,6 +149,7 @@ import { StackOne } from "@stackone/stackone-client-ts";
   });
 
   const res = await sdk.accounts.listLinkedAccounts({});
+
 
   if (res.statusCode == 200) {
     // handle response

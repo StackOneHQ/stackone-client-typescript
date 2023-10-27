@@ -27,6 +27,7 @@ import { StackOne } from "@stackone/stackone-client-ts";
     token: "string",
   });
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -77,6 +78,7 @@ import { ConnectSessionCreateCategories } from "@stackone/stackone-client-ts/dis
     originOwnerId: "string",
     originOwnerName: "string",
   });
+
 
   if (res.statusCode == 200) {
     // handle response
