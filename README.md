@@ -110,7 +110,7 @@ import { StackOne } from "@stackone/stackone-client-ts";
 * [getList](docs/sdks/crm/README.md#getlist) - Get List
 * [listAccounts](docs/sdks/crm/README.md#listaccounts) - List Accounts
 * [listContacts](docs/sdks/crm/README.md#listcontacts) - List Contacts
-* [listLists](docs/sdks/crm/README.md#listlists) - List Lists
+* [listLists](docs/sdks/crm/README.md#listlists) - Get all Lists
 * [updateContact](docs/sdks/crm/README.md#updatecontact) - Update Contact (early access)
 
 ### [hris](docs/sdks/hris/README.md)

@@ -573,7 +573,7 @@ export class Crm {
     }
 
     /**
-     * List Lists
+     * Get all Lists
      */
     async listLists(
         req: operations.CrmListListsRequest,

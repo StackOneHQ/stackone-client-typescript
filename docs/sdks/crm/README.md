@@ -9,7 +9,7 @@
 * [getList](#getlist) - Get List
 * [listAccounts](#listaccounts) - List Accounts
 * [listContacts](#listcontacts) - List Contacts
-* [listLists](#listlists) - List Lists
+* [listLists](#listlists) - Get all Lists
 * [updateContact](#updatecontact) - Update Contact (early access)
 
 ## createContact
@@ -297,7 +297,7 @@ import { StackOne } from "@stackone/stackone-client-ts";
 
 ## listLists
 
-List Lists
+Get all Lists
 
 ### Example Usage
 

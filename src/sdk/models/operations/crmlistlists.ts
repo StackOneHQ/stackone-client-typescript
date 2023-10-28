@@ -64,7 +64,7 @@ export class CrmListListsResponse extends SpeakeasyBase {
     contentType: string;
 
     /**
-     * The list of lists was retrieved.
+     * The collection of lists was retrieved.
      */
     @SpeakeasyMetadata()
     listsPaginated?: shared.ListsPaginated;
