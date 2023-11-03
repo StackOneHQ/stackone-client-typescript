@@ -29,6 +29,10 @@ export class Account extends SpeakeasyBase {
     id: string;
 
     @SpeakeasyMetadata()
+    @Expose({ name: "industry" })
+    industry?: string;
+
+    @SpeakeasyMetadata()
     @Expose({ name: "name" })
     name: string;
 

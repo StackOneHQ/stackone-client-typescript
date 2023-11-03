@@ -277,3 +277,13 @@ Based on:
 - [typescript v0.10.7] .
 ### Releases
 - [NPM v0.10.7] https://www.npmjs.com/package/@stackone/stackone-client-ts/v/0.10.7 - .
+
+## 2023-11-03 00:09:58
+### Changes
+Based on:
+- OpenAPI Doc 1.0.0 
+- Speakeasy CLI 1.111.1 (2.173.0) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v0.10.8] .
+### Releases
+- [NPM v0.10.8] https://www.npmjs.com/package/@stackone/stackone-client-ts/v/0.10.8 - .
