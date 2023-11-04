@@ -1,6 +1,6 @@
 {
   "name": "@stackone/stackone-client-ts",
-  "version": "0.10.8",
+  "version": "0.10.9",
   "author": "StackOne",
   "scripts": {
     "prepare": "tsc --build",
