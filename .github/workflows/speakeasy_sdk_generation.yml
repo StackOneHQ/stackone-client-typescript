@@ -31,6 +31,6 @@ jobs:
       publish_typescript: true
       speakeasy_version: latest
     secrets:
-      github_access_token: ${{ secrets.GITHUB_TOKEN }}
+      github_access_token: ${{ secrets.SPEAKEASYBOT_TOKEN }}
       npm_token: ${{ secrets.NPM_TOKEN }}
       speakeasy_api_key: ${{ secrets.SPEAKEASY_API_KEY }}
