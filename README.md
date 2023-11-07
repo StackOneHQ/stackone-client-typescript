@@ -157,19 +157,7 @@ import { StackOne } from "@stackone/stackone-client-ts";
 
 <!-- End Dev Containers -->
 
-
-
-<!-- Start Pagination -->
-# Pagination
-
-Some of the endpoints in this SDK support pagination. To use pagination, you make your SDK calls as usual, but the
-returned response object will have a `next` method that can be called to pull down the next group of results. If the
-return value of `next` is `null`, then there are no more pages to be fetched.
-
-Here's an example of one such pagination call:
-<!-- End Pagination -->
-
-
+<!-- No Pagination -->
 
 <!-- Start Error Handling -->
 # Error Handling
@@ -200,74 +188,7 @@ const sdk = new StackOne({defaultClient: httpClient});
 ```
 <!-- End Custom HTTP Client -->
 
-
-
-<!-- Start Server Selection -->
-# Server Selection
-
-## Select Server by Index
-
-You can override the default server globally by passing a server index to the `serverIdx: number` optional parameter when initializing the SDK client instance. The selected server will then be used as the default on the operations that use it. This table lists the indexes associated with the available servers:
-
-| # | Server | Variables |
-| - | ------ | --------- |
-| 0 | `https://api.stackone.com` | None |
-
-For example:
-
-
-```typescript
-import { StackOne } from "@stackone/stackone-client-ts";
-
-(async () => {
-    const sdk = new StackOne({
-        security: {
-            password: "",
-            username: "",
-        },
-        serverIdx: 0,
-    });
-
-    const res = await sdk.accounts.deleteAccount({
-        id: "<ID>",
-    });
-
-    if (res.statusCode == 200) {
-        // handle response
-    }
-})();
-
-```
-
-
-## Override Server URL Per-Client
-
-The default server can also be overridden globally by passing a URL to the `serverURL: str` optional parameter when initializing the SDK client instance. For example:
-
-
-```typescript
-import { StackOne } from "@stackone/stackone-client-ts";
-
-(async () => {
-    const sdk = new StackOne({
-        security: {
-            password: "",
-            username: "",
-        },
-        serverURL: "https://api.stackone.com",
-    });
-
-    const res = await sdk.accounts.deleteAccount({
-        id: "<ID>",
-    });
-
-    if (res.statusCode == 200) {
-        // handle response
-    }
-})();
-
-```
-<!-- End Server Selection -->
+<!-- No Server Selection -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 
