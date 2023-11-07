@@ -1,6 +1,5 @@
 name: Generate
 permissions:
-  actions: write
   checks: write
   contents: write
   pull-requests: write
