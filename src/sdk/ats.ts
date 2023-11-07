@@ -3,9 +3,9 @@
  */
 
 import * as utils from "../internal/utils";
-import * as errors from "./models/errors";
-import * as operations from "./models/operations";
-import * as shared from "./models/shared";
+import * as errors from "../sdk/models/errors";
+import * as operations from "../sdk/models/operations";
+import * as shared from "../sdk/models/shared";
 import { SDKConfiguration } from "./sdk";
 import { AxiosInstance, AxiosRequestConfig, AxiosResponse, RawAxiosRequestHeaders } from "axios";
 
@@ -17,7 +17,7 @@ export class Ats {
     }
 
     /**
-     * Create Application (early access)
+     * Create Application
      */
     async createApplication(
         req: operations.AtsCreateApplicationRequest,
@@ -2827,7 +2827,7 @@ export class Ats {
     }
 
     /**
-     * Update Application (early access)
+     * Update Application
      */
     async updateApplication(
         req: operations.AtsUpdateApplicationRequest,

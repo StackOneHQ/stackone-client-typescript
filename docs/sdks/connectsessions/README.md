@@ -1,5 +1,5 @@
 # ConnectSessions
-(*connectSessions*)
+(*.connectSessions*)
 
 ### Available Operations
 

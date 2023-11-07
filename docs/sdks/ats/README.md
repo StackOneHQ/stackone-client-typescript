@@ -1,9 +1,9 @@
 # Ats
-(*ats*)
+(*.ats*)
 
 ### Available Operations
 
-* [createApplication](#createapplication) - Create Application (early access)
+* [createApplication](#createapplication) - Create Application
 * [createCandidate](#createcandidate) - Create Candidate (early access)
 * [createCandidateNote](#createcandidatenote) - Create Candidate Note
 * [createOffer](#createoffer) - Creates an offer
@@ -33,18 +33,18 @@
 * [listOffers](#listoffers) - List Offers
 * [listRejectedReasons](#listrejectedreasons) - List Rejected Reasons
 * [listUsers](#listusers) - List Users
-* [updateApplication](#updateapplication) - Update Application (early access)
+* [updateApplication](#updateapplication) - Update Application
 * [updateCandidate](#updatecandidate) - Update Candidate (early access)
 
 ## createApplication
 
-Create Application (early access)
+Create Application
 
 ### Example Usage
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
-import { AnswerEnumValue, ApplicationStatusEnumValue, AttachmentTypeValue } from "@stackone/stackone-client-ts/dist/sdk/models/shared";
+import { ApplicationStatusEnumValue, AttachmentTypeValue, Value } from "@stackone/stackone-client-ts/dist/sdk/models/shared";
 
 (async() => {
   const sdk = new StackOne({
@@ -1431,13 +1431,13 @@ import { StackOne } from "@stackone/stackone-client-ts";
 
 ## updateApplication
 
-Update Application (early access)
+Update Application
 
 ### Example Usage
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
-import { AnswerEnumValue, ApplicationStatusEnumValue, AttachmentTypeValue } from "@stackone/stackone-client-ts/dist/sdk/models/shared";
+import { ApplicationStatusEnumValue, AttachmentTypeValue, Value } from "@stackone/stackone-client-ts/dist/sdk/models/shared";
 
 (async() => {
   const sdk = new StackOne({

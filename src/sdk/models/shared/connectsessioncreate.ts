@@ -17,7 +17,7 @@ export enum ConnectSessionCreateCategories {
 /**
  * The metadata for the connection
  */
-export class ConnectSessionCreateMetadata extends SpeakeasyBase {}
+export class Metadata extends SpeakeasyBase {}
 
 export class ConnectSessionCreate extends SpeakeasyBase {
     /**
@@ -39,8 +39,8 @@ export class ConnectSessionCreate extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     @Expose({ name: "metadata" })
-    @Type(() => ConnectSessionCreateMetadata)
-    metadata?: ConnectSessionCreateMetadata;
+    @Type(() => Metadata)
+    metadata?: Metadata;
 
     /**
      * The origin owner identifier

@@ -1,5 +1,6 @@
 <!-- Start SDK Example Usage -->
 
+## List Employees
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
@@ -12,8 +13,11 @@ import { StackOne } from "@stackone/stackone-client-ts";
         },
     });
 
-    const res = await sdk.accounts.deleteAccount({
-        id: "<ID>",
+    const res = await sdk.hris.listEmployees({
+        proxy: {
+            key: "string",
+        },
+        xAccountId: "string",
     });
 
     if (res.statusCode == 200) {

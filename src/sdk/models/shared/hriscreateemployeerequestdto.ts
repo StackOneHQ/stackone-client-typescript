@@ -21,7 +21,7 @@ export class HrisCreateEmployeeRequestDtoAvatar extends SpeakeasyBase {
     url?: string;
 }
 
-export enum HrisCreateEmployeeRequestDtoEmploymentContractTypeValue {
+export enum HrisCreateEmployeeRequestDtoValue {
     FullTime = "full_time",
     Shifts = "shifts",
     PartTime = "part_time",
@@ -38,10 +38,10 @@ export class HrisCreateEmployeeRequestDtoEmploymentContractType extends Speakeas
 
     @SpeakeasyMetadata()
     @Expose({ name: "value" })
-    value: HrisCreateEmployeeRequestDtoEmploymentContractTypeValue;
+    value: HrisCreateEmployeeRequestDtoValue;
 }
 
-export enum HrisCreateEmployeeRequestDtoEmploymentStatusValue {
+export enum HrisCreateEmployeeRequestDtoSchemasValue {
     Active = "active",
     Pending = "pending",
     Terminated = "terminated",
@@ -59,10 +59,10 @@ export class HrisCreateEmployeeRequestDtoEmploymentStatus extends SpeakeasyBase 
 
     @SpeakeasyMetadata()
     @Expose({ name: "value" })
-    value: HrisCreateEmployeeRequestDtoEmploymentStatusValue;
+    value: HrisCreateEmployeeRequestDtoSchemasValue;
 }
 
-export enum HrisCreateEmployeeRequestDtoEmploymentTypeValue {
+export enum HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue {
     FullTime = "full_time",
     PartTime = "part_time",
     Contractor = "contractor",
@@ -91,10 +91,10 @@ export class HrisCreateEmployeeRequestDtoEmploymentType extends SpeakeasyBase {
 
     @SpeakeasyMetadata()
     @Expose({ name: "value" })
-    value: HrisCreateEmployeeRequestDtoEmploymentTypeValue;
+    value: HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue;
 }
 
-export enum HrisCreateEmployeeRequestDtoEthnicityValue {
+export enum HrisCreateEmployeeRequestDtoSchemasEthnicityValue {
     White = "white",
     BlackOrAfricanAmerican = "black_or_african_american",
     Asian = "asian",
@@ -117,10 +117,10 @@ export class HrisCreateEmployeeRequestDtoEthnicity extends SpeakeasyBase {
 
     @SpeakeasyMetadata()
     @Expose({ name: "value" })
-    value: HrisCreateEmployeeRequestDtoEthnicityValue;
+    value: HrisCreateEmployeeRequestDtoSchemasEthnicityValue;
 }
 
-export enum HrisCreateEmployeeRequestDtoGenderValue {
+export enum HrisCreateEmployeeRequestDtoSchemasGenderValue {
     Male = "male",
     Female = "female",
     NonBinary = "non_binary",
@@ -140,10 +140,10 @@ export class HrisCreateEmployeeRequestDtoGender extends SpeakeasyBase {
 
     @SpeakeasyMetadata()
     @Expose({ name: "value" })
-    value: HrisCreateEmployeeRequestDtoGenderValue;
+    value: HrisCreateEmployeeRequestDtoSchemasGenderValue;
 }
 
-export enum HrisCreateEmployeeRequestDtoMaritalStatusValue {
+export enum HrisCreateEmployeeRequestDtoSchemasMaritalStatusValue {
     Single = "single",
     Married = "married",
     CommonLaw = "common_law",
@@ -166,7 +166,7 @@ export class HrisCreateEmployeeRequestDtoMaritalStatus extends SpeakeasyBase {
 
     @SpeakeasyMetadata()
     @Expose({ name: "value" })
-    value: HrisCreateEmployeeRequestDtoMaritalStatusValue;
+    value: HrisCreateEmployeeRequestDtoSchemasMaritalStatusValue;
 }
 
 export class HrisCreateEmployeeRequestDto extends SpeakeasyBase {

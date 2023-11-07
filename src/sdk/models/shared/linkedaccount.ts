@@ -5,7 +5,7 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { Expose, Transform, Type } from "class-transformer";
 
-export class LinkedAccountCredentials extends SpeakeasyBase {}
+export class Credentials extends SpeakeasyBase {}
 
 export class LinkedAccount extends SpeakeasyBase {
     @SpeakeasyMetadata()
@@ -19,8 +19,8 @@ export class LinkedAccount extends SpeakeasyBase {
 
     @SpeakeasyMetadata()
     @Expose({ name: "credentials" })
-    @Type(() => LinkedAccountCredentials)
-    credentials?: LinkedAccountCredentials;
+    @Type(() => Credentials)
+    credentials?: Credentials;
 
     @SpeakeasyMetadata()
     @Expose({ name: "id" })

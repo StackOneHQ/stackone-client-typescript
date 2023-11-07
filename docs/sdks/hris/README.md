@@ -1,5 +1,5 @@
 # Hris
-(*hris*)
+(*.hris*)
 
 ### Available Operations
 
@@ -30,19 +30,19 @@ Creates an employee
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 import {
-  EmployeeCustomFieldsTypeValue,
-  EmploymentEmploymentContractTypeValue,
-  EmploymentEmploymentTypeValue,
-  EmploymentPayFrequencyValue,
-  EmploymentPayPeriodValue,
-  HrisCreateEmployeeRequestDtoEmploymentContractTypeValue,
-  HrisCreateEmployeeRequestDtoEmploymentStatusValue,
-  HrisCreateEmployeeRequestDtoEmploymentTypeValue,
-  HrisCreateEmployeeRequestDtoEthnicityValue,
-  HrisCreateEmployeeRequestDtoGenderValue,
-  HrisCreateEmployeeRequestDtoMaritalStatusValue,
-  HrisLocationsCreateRequestDtoCountryValue,
-  HrisLocationsCreateRequestDtoStateValue,
+  EmployeeCustomFieldsSchemasValue,
+  EmploymentSchemasPayFrequencyValue,
+  EmploymentSchemasPayPeriodValue,
+  EmploymentSchemasValue,
+  EmploymentValue,
+  HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue,
+  HrisCreateEmployeeRequestDtoSchemasEthnicityValue,
+  HrisCreateEmployeeRequestDtoSchemasGenderValue,
+  HrisCreateEmployeeRequestDtoSchemasMaritalStatusValue,
+  HrisCreateEmployeeRequestDtoSchemasValue,
+  HrisCreateEmployeeRequestDtoValue,
+  HrisLocationsCreateRequestDtoSchemasValue,
+  HrisLocationsCreateRequestDtoValue,
 } from "@stackone/stackone-client-ts/dist/sdk/models/shared";
 
 (async() => {
@@ -72,7 +72,7 @@ import {
           ],
           type: {
             sourceValue: "string",
-            value: EmployeeCustomFieldsTypeValue.Integer,
+            value: EmployeeCustomFieldsSchemasValue.Integer,
           },
           value: {},
           valueId: "value_456",
@@ -83,15 +83,15 @@ import {
       displayName: "Sir Issac Newton",
       employmentContractType: {
         sourceValue: "string",
-        value: HrisCreateEmployeeRequestDtoEmploymentContractTypeValue.PartTime,
+        value: HrisCreateEmployeeRequestDtoValue.PartTime,
       },
       employmentStatus: {
         sourceValue: "string",
-        value: HrisCreateEmployeeRequestDtoEmploymentStatusValue.Pending,
+        value: HrisCreateEmployeeRequestDtoSchemasValue.Pending,
       },
       employmentType: {
         sourceValue: "string",
-        value: HrisCreateEmployeeRequestDtoEmploymentTypeValue.Internal,
+        value: HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue.Internal,
       },
       employments: [
         {
@@ -100,22 +100,22 @@ import {
           employeeId: "1687-3",
           employmentContractType: {
             sourceValue: "string",
-            value: EmploymentEmploymentContractTypeValue.UnmappedValue,
+            value: EmploymentValue.UnmappedValue,
           },
           employmentType: {
             sourceValue: "string",
-            value: EmploymentEmploymentTypeValue.Contractor,
+            value: EmploymentSchemasValue.Contractor,
           },
           id: "123456",
           jobTitle: "Software Engineer",
           payCurrency: "USD",
           payFrequency: {
             sourceValue: "string",
-            value: EmploymentPayFrequencyValue.HalfYearly,
+            value: EmploymentSchemasPayFrequencyValue.HalfYearly,
           },
           payPeriod: {
             sourceValue: "string",
-            value: EmploymentPayPeriodValue.Year,
+            value: EmploymentSchemasPayPeriodValue.Year,
           },
           payRate: "40.00",
           updatedAt: "2023-06-14T01:00:00Z",
@@ -123,25 +123,25 @@ import {
       ],
       ethnicity: {
         sourceValue: "string",
-        value: HrisCreateEmployeeRequestDtoEthnicityValue.AmericanIndianOrAlaskaNative,
+        value: HrisCreateEmployeeRequestDtoSchemasEthnicityValue.AmericanIndianOrAlaskaNative,
       },
       firstName: "Issac",
       gender: {
         sourceValue: "string",
-        value: HrisCreateEmployeeRequestDtoGenderValue.Diverse,
+        value: HrisCreateEmployeeRequestDtoSchemasGenderValue.Diverse,
       },
       hireDate: "2022-01-01",
       homeLocation: {
         city: "Grantham",
         country: {
           sourceValue: "string",
-          value: HrisLocationsCreateRequestDtoCountryValue.Gb,
+          value: HrisLocationsCreateRequestDtoValue.Gb,
         },
         name: "Woolsthorpe Manor",
         phoneNumber: "+44 1476 860 364",
         state: {
           sourceValue: "string",
-          value: HrisLocationsCreateRequestDtoStateValue.AoHua,
+          value: HrisLocationsCreateRequestDtoSchemasValue.AoHua,
         },
         street1: "Water Lane",
         street2: "Woolsthorpe by Colsterworth",
@@ -152,7 +152,7 @@ import {
       managerId: "67890",
       maritalStatus: {
         sourceValue: "string",
-        value: HrisCreateEmployeeRequestDtoMaritalStatusValue.Single,
+        value: HrisCreateEmployeeRequestDtoSchemasMaritalStatusValue.Single,
       },
       name: "Issac Newton",
       personalEmail: "isaac.newton@example.com",
@@ -166,13 +166,13 @@ import {
         city: "Grantham",
         country: {
           sourceValue: "string",
-          value: HrisLocationsCreateRequestDtoCountryValue.Bg,
+          value: HrisLocationsCreateRequestDtoValue.Bg,
         },
         name: "Woolsthorpe Manor",
         phoneNumber: "+44 1476 860 364",
         state: {
           sourceValue: "string",
-          value: HrisLocationsCreateRequestDtoStateValue.Mm14,
+          value: HrisLocationsCreateRequestDtoSchemasValue.Mm14,
         },
         street1: "Water Lane",
         street2: "Woolsthorpe by Colsterworth",
@@ -857,19 +857,19 @@ Updates an employee
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 import {
-  EmployeeCustomFieldsTypeValue,
-  EmploymentEmploymentContractTypeValue,
-  EmploymentEmploymentTypeValue,
-  EmploymentPayFrequencyValue,
-  EmploymentPayPeriodValue,
-  HrisCreateEmployeeRequestDtoEmploymentContractTypeValue,
-  HrisCreateEmployeeRequestDtoEmploymentStatusValue,
-  HrisCreateEmployeeRequestDtoEmploymentTypeValue,
-  HrisCreateEmployeeRequestDtoEthnicityValue,
-  HrisCreateEmployeeRequestDtoGenderValue,
-  HrisCreateEmployeeRequestDtoMaritalStatusValue,
-  HrisLocationsCreateRequestDtoCountryValue,
-  HrisLocationsCreateRequestDtoStateValue,
+  EmployeeCustomFieldsSchemasValue,
+  EmploymentSchemasPayFrequencyValue,
+  EmploymentSchemasPayPeriodValue,
+  EmploymentSchemasValue,
+  EmploymentValue,
+  HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue,
+  HrisCreateEmployeeRequestDtoSchemasEthnicityValue,
+  HrisCreateEmployeeRequestDtoSchemasGenderValue,
+  HrisCreateEmployeeRequestDtoSchemasMaritalStatusValue,
+  HrisCreateEmployeeRequestDtoSchemasValue,
+  HrisCreateEmployeeRequestDtoValue,
+  HrisLocationsCreateRequestDtoSchemasValue,
+  HrisLocationsCreateRequestDtoValue,
 } from "@stackone/stackone-client-ts/dist/sdk/models/shared";
 
 (async() => {
@@ -899,7 +899,7 @@ import {
           ],
           type: {
             sourceValue: "string",
-            value: EmployeeCustomFieldsTypeValue.Float,
+            value: EmployeeCustomFieldsSchemasValue.Float,
           },
           value: {},
           valueId: "value_456",
@@ -910,15 +910,15 @@ import {
       displayName: "Sir Issac Newton",
       employmentContractType: {
         sourceValue: "string",
-        value: HrisCreateEmployeeRequestDtoEmploymentContractTypeValue.PartTime,
+        value: HrisCreateEmployeeRequestDtoValue.PartTime,
       },
       employmentStatus: {
         sourceValue: "string",
-        value: HrisCreateEmployeeRequestDtoEmploymentStatusValue.Terminated,
+        value: HrisCreateEmployeeRequestDtoSchemasValue.Terminated,
       },
       employmentType: {
         sourceValue: "string",
-        value: HrisCreateEmployeeRequestDtoEmploymentTypeValue.EmployerOfRecord,
+        value: HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue.EmployerOfRecord,
       },
       employments: [
         {
@@ -927,22 +927,22 @@ import {
           employeeId: "1687-3",
           employmentContractType: {
             sourceValue: "string",
-            value: EmploymentEmploymentContractTypeValue.FullTime,
+            value: EmploymentValue.FullTime,
           },
           employmentType: {
             sourceValue: "string",
-            value: EmploymentEmploymentTypeValue.PartTime,
+            value: EmploymentSchemasValue.PartTime,
           },
           id: "123456",
           jobTitle: "Software Engineer",
           payCurrency: "USD",
           payFrequency: {
             sourceValue: "string",
-            value: EmploymentPayFrequencyValue.Weekly,
+            value: EmploymentSchemasPayFrequencyValue.Weekly,
           },
           payPeriod: {
             sourceValue: "string",
-            value: EmploymentPayPeriodValue.Quarter,
+            value: EmploymentSchemasPayPeriodValue.Quarter,
           },
           payRate: "40.00",
           updatedAt: "2023-06-14T01:00:00Z",
@@ -950,25 +950,25 @@ import {
       ],
       ethnicity: {
         sourceValue: "string",
-        value: HrisCreateEmployeeRequestDtoEthnicityValue.TwoOrMoreRaces,
+        value: HrisCreateEmployeeRequestDtoSchemasEthnicityValue.TwoOrMoreRaces,
       },
       firstName: "Issac",
       gender: {
         sourceValue: "string",
-        value: HrisCreateEmployeeRequestDtoGenderValue.NotDisclosed,
+        value: HrisCreateEmployeeRequestDtoSchemasGenderValue.NotDisclosed,
       },
       hireDate: "2022-01-01",
       homeLocation: {
         city: "Grantham",
         country: {
           sourceValue: "string",
-          value: HrisLocationsCreateRequestDtoCountryValue.Ki,
+          value: HrisLocationsCreateRequestDtoValue.Ki,
         },
         name: "Woolsthorpe Manor",
         phoneNumber: "+44 1476 860 364",
         state: {
           sourceValue: "string",
-          value: HrisLocationsCreateRequestDtoStateValue.IeKe,
+          value: HrisLocationsCreateRequestDtoSchemasValue.IeKe,
         },
         street1: "Water Lane",
         street2: "Woolsthorpe by Colsterworth",
@@ -979,7 +979,7 @@ import {
       managerId: "67890",
       maritalStatus: {
         sourceValue: "string",
-        value: HrisCreateEmployeeRequestDtoMaritalStatusValue.DomesticPartnership,
+        value: HrisCreateEmployeeRequestDtoSchemasMaritalStatusValue.DomesticPartnership,
       },
       name: "Issac Newton",
       personalEmail: "isaac.newton@example.com",
@@ -993,13 +993,13 @@ import {
         city: "Grantham",
         country: {
           sourceValue: "string",
-          value: HrisLocationsCreateRequestDtoCountryValue.It,
+          value: HrisLocationsCreateRequestDtoValue.It,
         },
         name: "Woolsthorpe Manor",
         phoneNumber: "+44 1476 860 364",
         state: {
           sourceValue: "string",
-          value: HrisLocationsCreateRequestDtoStateValue.AoMox,
+          value: HrisLocationsCreateRequestDtoSchemasValue.AoMox,
         },
         street1: "Water Lane",
         street2: "Woolsthorpe by Colsterworth",

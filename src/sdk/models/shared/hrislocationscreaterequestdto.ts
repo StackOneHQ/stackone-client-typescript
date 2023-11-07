@@ -5,7 +5,7 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { Expose, Type } from "class-transformer";
 
-export enum HrisLocationsCreateRequestDtoCountryValue {
+export enum HrisLocationsCreateRequestDtoValue {
     Af = "AF",
     Al = "AL",
     Dz = "DZ",
@@ -267,10 +267,10 @@ export class HrisLocationsCreateRequestDtoCountry extends SpeakeasyBase {
 
     @SpeakeasyMetadata()
     @Expose({ name: "value" })
-    value: HrisLocationsCreateRequestDtoCountryValue;
+    value: HrisLocationsCreateRequestDtoValue;
 }
 
-export enum HrisLocationsCreateRequestDtoStateValue {
+export enum HrisLocationsCreateRequestDtoSchemasValue {
     Ad07 = "AD-07",
     Ad02 = "AD-02",
     Ad03 = "AD-03",
@@ -4100,14 +4100,14 @@ export enum HrisLocationsCreateRequestDtoStateValue {
 /**
  * The ISO3166-2 sub division where the location is situated
  */
-export class HrisLocationsCreateRequestDtoState extends SpeakeasyBase {
+export class State extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "source_value" })
     sourceValue: string;
 
     @SpeakeasyMetadata()
     @Expose({ name: "value" })
-    value: HrisLocationsCreateRequestDtoStateValue;
+    value: HrisLocationsCreateRequestDtoSchemasValue;
 }
 
 export class HrisLocationsCreateRequestDto extends SpeakeasyBase {
@@ -4145,8 +4145,8 @@ export class HrisLocationsCreateRequestDto extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     @Expose({ name: "state" })
-    @Type(() => HrisLocationsCreateRequestDtoState)
-    state?: HrisLocationsCreateRequestDtoState;
+    @Type(() => State)
+    state?: State;
 
     /**
      * The first line of the address

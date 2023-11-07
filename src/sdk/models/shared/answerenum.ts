@@ -5,12 +5,14 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { Expose } from "class-transformer";
 
-export enum AnswerEnumValue {
+export enum Value {
     ShortText = "short_text",
     LongText = "long_text",
-    MultipleChoice = "multiple_choice",
+    Attachment = "attachment",
+    MultiSelect = "multi_select",
+    SingleSelect = "single_select",
     Boolean = "boolean",
-    Integer = "integer",
+    Number = "number",
     Date = "date",
 }
 
@@ -21,5 +23,5 @@ export class AnswerEnum extends SpeakeasyBase {
 
     @SpeakeasyMetadata()
     @Expose({ name: "value" })
-    value?: AnswerEnumValue;
+    value?: Value;
 }

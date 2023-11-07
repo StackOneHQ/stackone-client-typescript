@@ -5,7 +5,7 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { Expose, Transform, Type } from "class-transformer";
 
-export enum EmploymentEmploymentContractTypeValue {
+export enum EmploymentValue {
     FullTime = "full_time",
     Shifts = "shifts",
     PartTime = "part_time",
@@ -22,10 +22,10 @@ export class EmploymentEmploymentContractType extends SpeakeasyBase {
 
     @SpeakeasyMetadata()
     @Expose({ name: "value" })
-    value: EmploymentEmploymentContractTypeValue;
+    value: EmploymentValue;
 }
 
-export enum EmploymentEmploymentTypeValue {
+export enum EmploymentSchemasValue {
     FullTime = "full_time",
     PartTime = "part_time",
     Contractor = "contractor",
@@ -54,10 +54,10 @@ export class EmploymentEmploymentType extends SpeakeasyBase {
 
     @SpeakeasyMetadata()
     @Expose({ name: "value" })
-    value: EmploymentEmploymentTypeValue;
+    value: EmploymentSchemasValue;
 }
 
-export enum EmploymentPayFrequencyValue {
+export enum EmploymentSchemasPayFrequencyValue {
     Hourly = "hourly",
     Weekly = "weekly",
     BiWeekly = "bi_weekly",
@@ -84,10 +84,10 @@ export class EmploymentPayFrequency extends SpeakeasyBase {
 
     @SpeakeasyMetadata()
     @Expose({ name: "value" })
-    value: EmploymentPayFrequencyValue;
+    value: EmploymentSchemasPayFrequencyValue;
 }
 
-export enum EmploymentPayPeriodValue {
+export enum EmploymentSchemasPayPeriodValue {
     Hour = "hour",
     Day = "day",
     Week = "week",
@@ -109,7 +109,7 @@ export class EmploymentPayPeriod extends SpeakeasyBase {
 
     @SpeakeasyMetadata()
     @Expose({ name: "value" })
-    value: EmploymentPayPeriodValue;
+    value: EmploymentSchemasPayPeriodValue;
 }
 
 export class Employment extends SpeakeasyBase {

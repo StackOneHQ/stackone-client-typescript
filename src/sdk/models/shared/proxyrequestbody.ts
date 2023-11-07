@@ -8,17 +8,17 @@ import { Expose, Type } from "class-transformer";
 /**
  * The body of the request
  */
-export class ProxyRequestBodyBody extends SpeakeasyBase {}
+export class Body extends SpeakeasyBase {}
 
 /**
  * The headers to send in the request
  */
-export class ProxyRequestBodyHeaders extends SpeakeasyBase {}
+export class Headers extends SpeakeasyBase {}
 
 /**
  * The method of the request
  */
-export enum ProxyRequestBodyMethod {
+export enum Method {
     Get = "get",
     Post = "post",
     Put = "put",
@@ -33,23 +33,23 @@ export class ProxyRequestBody extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     @Expose({ name: "body" })
-    @Type(() => ProxyRequestBodyBody)
-    body?: ProxyRequestBodyBody;
+    @Type(() => Body)
+    body?: Body;
 
     /**
      * The headers to send in the request
      */
     @SpeakeasyMetadata()
     @Expose({ name: "headers" })
-    @Type(() => ProxyRequestBodyHeaders)
-    headers?: ProxyRequestBodyHeaders;
+    @Type(() => Headers)
+    headers?: Headers;
 
     /**
      * The method of the request
      */
     @SpeakeasyMetadata()
     @Expose({ name: "method" })
-    method?: ProxyRequestBodyMethod;
+    method?: Method;
 
     /**
      * The path of the request including any query paramters

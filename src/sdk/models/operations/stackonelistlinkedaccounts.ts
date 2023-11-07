@@ -3,7 +3,7 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
-import * as shared from "../shared";
+import * as shared from "../../../sdk/models/shared";
 import { AxiosResponse } from "axios";
 
 export class StackoneListLinkedAccountsRequest extends SpeakeasyBase {
@@ -28,12 +28,6 @@ export class StackoneListLinkedAccountsResponse extends SpeakeasyBase {
     contentType: string;
 
     /**
-     * The list of accounts was retrieved.
-     */
-    @SpeakeasyMetadata({ elemType: shared.LinkedAccount })
-    linkedAccounts?: shared.LinkedAccount[];
-
-    /**
      * HTTP response status code for this operation
      */
     @SpeakeasyMetadata()
@@ -44,4 +38,10 @@ export class StackoneListLinkedAccountsResponse extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     rawResponse?: AxiosResponse;
+
+    /**
+     * The list of accounts was retrieved.
+     */
+    @SpeakeasyMetadata({ elemType: shared.LinkedAccount })
+    classes?: shared.LinkedAccount[];
 }

@@ -6,7 +6,7 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { Message } from "./message";
 import { Expose, Type } from "class-transformer";
 
-export enum CampaignChannels {
+export enum Channels {
     Email = "email",
     Sms = "sms",
     WebPush = "web_push",
@@ -23,7 +23,7 @@ export class Campaign extends SpeakeasyBase {
 
     @SpeakeasyMetadata()
     @Expose({ name: "channels" })
-    channels?: CampaignChannels[];
+    channels?: Channels[];
 
     @SpeakeasyMetadata()
     @Expose({ name: "created_at" })

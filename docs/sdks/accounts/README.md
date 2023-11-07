@@ -1,5 +1,5 @@
 # Accounts
-(*accounts*)
+(*.accounts*)
 
 ### Available Operations
 

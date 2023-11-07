@@ -5,10 +5,10 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { Compensation } from "./compensation";
 import { Location } from "./location";
-import { Questions } from "./questions";
+import { Questionnaire } from "./questionnaire";
 import { Expose, Type } from "class-transformer";
 
-export class JobPostingContent extends SpeakeasyBase {
+export class Content extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "html" })
     html?: string;
@@ -37,12 +37,12 @@ export enum JobPostingEmploymentType {
     UnmappedValue = "unmapped_value",
 }
 
-export enum JobPostingInternal {
+export enum Internal {
     True = "true",
     False = "false",
 }
 
-export enum JobPostingStatus {
+export enum Status {
     Live = "live",
     Draft = "draft",
     Closed = "closed",
@@ -57,8 +57,8 @@ export class JobPosting extends SpeakeasyBase {
 
     @SpeakeasyMetadata()
     @Expose({ name: "content" })
-    @Type(() => JobPostingContent)
-    content?: JobPostingContent;
+    @Type(() => Content)
+    content?: Content;
 
     @SpeakeasyMetadata()
     @Expose({ name: "created_at" })
@@ -86,7 +86,7 @@ export class JobPosting extends SpeakeasyBase {
 
     @SpeakeasyMetadata()
     @Expose({ name: "internal" })
-    internal?: JobPostingInternal;
+    internal?: Internal;
 
     @SpeakeasyMetadata()
     @Expose({ name: "job_id" })
@@ -97,14 +97,14 @@ export class JobPosting extends SpeakeasyBase {
     @Type(() => Location)
     locations?: Location[];
 
-    @SpeakeasyMetadata({ elemType: Questions })
-    @Expose({ name: "questions" })
-    @Type(() => Questions)
-    questions?: Questions[];
+    @SpeakeasyMetadata({ elemType: Questionnaire })
+    @Expose({ name: "questionnaires" })
+    @Type(() => Questionnaire)
+    questionnaires?: Questionnaire[];
 
     @SpeakeasyMetadata()
     @Expose({ name: "status" })
-    status?: JobPostingStatus;
+    status?: Status;
 
     @SpeakeasyMetadata()
     @Expose({ name: "title" })

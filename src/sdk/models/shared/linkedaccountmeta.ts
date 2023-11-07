@@ -5,7 +5,7 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { Expose, Type } from "class-transformer";
 
-export enum LinkedAccountMetaCategory {
+export enum Category {
     Ats = "ats",
     Hris = "hris",
     HrisLegacy = "hris-legacy",
@@ -14,17 +14,17 @@ export enum LinkedAccountMetaCategory {
     Stackone = "stackone",
 }
 
-export class LinkedAccountMetaModels extends SpeakeasyBase {}
+export class Models extends SpeakeasyBase {}
 
 export class LinkedAccountMeta extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "category" })
-    category: LinkedAccountMetaCategory;
+    category: Category;
 
     @SpeakeasyMetadata()
     @Expose({ name: "models" })
-    @Type(() => LinkedAccountMetaModels)
-    models: LinkedAccountMetaModels;
+    @Type(() => Models)
+    models: Models;
 
     @SpeakeasyMetadata()
     @Expose({ name: "provider" })

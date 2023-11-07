@@ -1,5 +1,5 @@
 # Marketing
-(*marketing*)
+(*.marketing*)
 
 ### Available Operations
 
@@ -86,7 +86,7 @@ Create omni-channel template
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
-import { MessageMessageType } from "@stackone/stackone-client-ts/dist/sdk/models/shared";
+import { MessageType } from "@stackone/stackone-client-ts/dist/sdk/models/shared";
 
 (async() => {
   const sdk = new StackOne({
@@ -101,7 +101,7 @@ import { MessageMessageType } from "@stackone/stackone-client-ts/dist/sdk/models
       messages: {
         id: "<ID>",
         messageContent: "string",
-        messageType: MessageMessageType.Unknown,
+        messageType: MessageType.Unknown,
         name: "string",
       },
       tags: [
@@ -614,7 +614,7 @@ Update omni-channel template
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
-import { MessageMessageType } from "@stackone/stackone-client-ts/dist/sdk/models/shared";
+import { MessageType } from "@stackone/stackone-client-ts/dist/sdk/models/shared";
 
 (async() => {
   const sdk = new StackOne({
@@ -629,7 +629,7 @@ import { MessageMessageType } from "@stackone/stackone-client-ts/dist/sdk/models
       messages: {
         id: "<ID>",
         messageContent: "string",
-        messageType: MessageMessageType.Email,
+        messageType: MessageType.Email,
         name: "string",
       },
       tags: [

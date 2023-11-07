@@ -1,5 +1,5 @@
 # Proxy
-(*proxy*)
+(*.proxy*)
 
 ### Available Operations
 
@@ -13,7 +13,7 @@ Proxy Request
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
-import { ProxyRequestBodyMethod } from "@stackone/stackone-client-ts/dist/sdk/models/shared";
+import { Method } from "@stackone/stackone-client-ts/dist/sdk/models/shared";
 
 (async() => {
   const sdk = new StackOne({

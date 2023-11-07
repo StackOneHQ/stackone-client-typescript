@@ -5,7 +5,7 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { Expose } from "class-transformer";
 
-export enum CompensationPayFrequency {
+export enum PayFrequency {
     Hourly = "hourly",
     Weekly = "weekly",
     BiWeekly = "bi_weekly",
@@ -22,7 +22,7 @@ export enum CompensationPayFrequency {
     HalfYearly = "half_yearly",
 }
 
-export enum CompensationPayPeriod {
+export enum PayPeriod {
     Hour = "hour",
     Day = "day",
     Week = "week",
@@ -35,7 +35,7 @@ export enum CompensationPayPeriod {
     UnmappedValue = "unmapped_value",
 }
 
-export enum CompensationType {
+export enum TypeT {
     Salary = "salary",
     Hourly = "hourly",
     Commission = "commission",
@@ -64,15 +64,15 @@ export class Compensation extends SpeakeasyBase {
 
     @SpeakeasyMetadata()
     @Expose({ name: "pay_frequency" })
-    payFrequency?: CompensationPayFrequency;
+    payFrequency?: PayFrequency;
 
     @SpeakeasyMetadata()
     @Expose({ name: "pay_period" })
-    payPeriod?: CompensationPayPeriod;
+    payPeriod?: PayPeriod;
 
     @SpeakeasyMetadata()
     @Expose({ name: "type" })
-    type?: CompensationType;
+    type?: TypeT;
 
     @SpeakeasyMetadata()
     @Expose({ name: "value" })

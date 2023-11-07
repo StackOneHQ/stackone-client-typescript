@@ -109,7 +109,6 @@ export * from "./proxyrequestbody";
 export * from "./pushmessagecontents";
 export * from "./pushmessages";
 export * from "./questionnaire";
-export * from "./questions";
 export * from "./rejectedreason";
 export * from "./rejectedreasonresult";
 export * from "./rejectedreasonspaginated";

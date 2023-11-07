@@ -7,7 +7,7 @@ import { HiringTeam } from "./hiringteam";
 import { JobStatusEnum } from "./jobstatusenum";
 import { Expose, Type } from "class-transformer";
 
-export enum JobConfidential {
+export enum Confidential {
     True = "true",
     False = "false",
 }
@@ -23,7 +23,7 @@ export class Job extends SpeakeasyBase {
 
     @SpeakeasyMetadata()
     @Expose({ name: "confidential" })
-    confidential?: JobConfidential;
+    confidential?: Confidential;
 
     @SpeakeasyMetadata()
     @Expose({ name: "created_at" })

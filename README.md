@@ -24,6 +24,8 @@ yarn add @stackone/stackone-client-ts
 
 ## SDK Example Usage
 <!-- Start SDK Example Usage -->
+## List Employees
+
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -35,8 +37,11 @@ import { StackOne } from "@stackone/stackone-client-ts";
         },
     });
 
-    const res = await sdk.accounts.deleteAccount({
-        id: "<ID>",
+    const res = await sdk.hris.listEmployees({
+        proxy: {
+            key: "string",
+        },
+        xAccountId: "string",
     });
 
     if (res.statusCode == 200) {
@@ -51,25 +56,21 @@ import { StackOne } from "@stackone/stackone-client-ts";
 ## Available Resources and Operations
 
 
-### [accounts](docs/sdks/accounts/README.md)
+### [.accounts](docs/sdks/accounts/README.md)
 
 * [deleteAccount](docs/sdks/accounts/README.md#deleteaccount) - Delete Account
 * [getAccount](docs/sdks/accounts/README.md#getaccount) - Get Account
 * [getAccountMetaInfo](docs/sdks/accounts/README.md#getaccountmetainfo) - Get meta information of the account
 * [listLinkedAccounts](docs/sdks/accounts/README.md#listlinkedaccounts) - List Accounts
 
-### [connectSessions](docs/sdks/connectsessions/README.md)
+### [.connectSessions](docs/sdks/connectsessions/README.md)
 
 * [authenticateConnectSession](docs/sdks/connectsessions/README.md#authenticateconnectsession) - Authenticate Connect Session
 * [createConnectSession](docs/sdks/connectsessions/README.md#createconnectsession) - Create Connect Session
 
-### [proxy](docs/sdks/proxy/README.md)
+### [.ats](docs/sdks/ats/README.md)
 
-* [proxyRequest](docs/sdks/proxy/README.md#proxyrequest) - Proxy Request
-
-### [ats](docs/sdks/ats/README.md)
-
-* [createApplication](docs/sdks/ats/README.md#createapplication) - Create Application (early access)
+* [createApplication](docs/sdks/ats/README.md#createapplication) - Create Application
 * [createCandidate](docs/sdks/ats/README.md#createcandidate) - Create Candidate (early access)
 * [createCandidateNote](docs/sdks/ats/README.md#createcandidatenote) - Create Candidate Note
 * [createOffer](docs/sdks/ats/README.md#createoffer) - Creates an offer
@@ -99,10 +100,10 @@ import { StackOne } from "@stackone/stackone-client-ts";
 * [listOffers](docs/sdks/ats/README.md#listoffers) - List Offers
 * [listRejectedReasons](docs/sdks/ats/README.md#listrejectedreasons) - List Rejected Reasons
 * [listUsers](docs/sdks/ats/README.md#listusers) - List Users
-* [updateApplication](docs/sdks/ats/README.md#updateapplication) - Update Application (early access)
+* [updateApplication](docs/sdks/ats/README.md#updateapplication) - Update Application
 * [updateCandidate](docs/sdks/ats/README.md#updatecandidate) - Update Candidate (early access)
 
-### [crm](docs/sdks/crm/README.md)
+### [.crm](docs/sdks/crm/README.md)
 
 * [createContact](docs/sdks/crm/README.md#createcontact) - Creates a new Contact
 * [getAccount](docs/sdks/crm/README.md#getaccount) - Get Account
@@ -113,7 +114,7 @@ import { StackOne } from "@stackone/stackone-client-ts";
 * [listLists](docs/sdks/crm/README.md#listlists) - Get all Lists
 * [updateContact](docs/sdks/crm/README.md#updatecontact) - Update Contact (early access)
 
-### [hris](docs/sdks/hris/README.md)
+### [.hris](docs/sdks/hris/README.md)
 
 * [createEmployee](docs/sdks/hris/README.md#createemployee) - Creates an employee
 * [createEmployeeTimeOffRequest](docs/sdks/hris/README.md#createemployeetimeoffrequest) - Create Employee Time Off Request
@@ -133,7 +134,7 @@ import { StackOne } from "@stackone/stackone-client-ts";
 * [updateEmployee](docs/sdks/hris/README.md#updateemployee) - Updates an employee
 * [updateTimeOffRequest](docs/sdks/hris/README.md#updatetimeoffrequest) - Update time off request
 
-### [marketing](docs/sdks/marketing/README.md)
+### [.marketing](docs/sdks/marketing/README.md)
 
 * [createEmailTemplate](docs/sdks/marketing/README.md#createemailtemplate) - Create email template
 * [createOmniChannelTemplate](docs/sdks/marketing/README.md#createomnichanneltemplate) - Create omni-channel template
@@ -149,6 +150,10 @@ import { StackOne } from "@stackone/stackone-client-ts";
 * [updateEmailTemplate](docs/sdks/marketing/README.md#updateemailtemplate) - Update email template
 * [updateOmniChannelTemplate](docs/sdks/marketing/README.md#updateomnichanneltemplate) - Update omni-channel template
 * [updatePushTemplate](docs/sdks/marketing/README.md#updatepushtemplate) - Update push template
+
+### [.proxy](docs/sdks/proxy/README.md)
+
+* [proxyRequest](docs/sdks/proxy/README.md#proxyrequest) - Proxy Request
 <!-- End SDK Available Operations -->
 
 
@@ -189,6 +194,46 @@ const sdk = new StackOne({defaultClient: httpClient});
 <!-- End Custom HTTP Client -->
 
 <!-- No Server Selection -->
+
+
+
+<!-- Start Authentication -->
+
+# Authentication
+
+## Per-Client Security Schemes
+
+Your SDK supports the following security schemes globally:
+
+| Name       | Type       | Scheme     |
+| ---------- | ---------- | ---------- |
+| `password` | http       | HTTP Basic |
+| `username` | http       | HTTP Basic |
+
+You can set the security parameters through the `security` optional parameter when initializing the SDK client instance. The selected scheme will be used by default to authenticate with the API for all operations that support it. For example:
+
+```typescript
+import { StackOne } from "@stackone/stackone-client-ts";
+
+(async () => {
+    const sdk = new StackOne({
+        security: {
+            password: "",
+            username: "",
+        },
+    });
+
+    const res = await sdk.accounts.deleteAccount({
+        id: "<ID>",
+    });
+
+    if (res.statusCode == 200) {
+        // handle response
+    }
+})();
+
+```
+<!-- End Authentication -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 

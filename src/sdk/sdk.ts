@@ -3,13 +3,13 @@
  */
 
 import * as utils from "../internal/utils";
+import * as shared from "../sdk/models/shared";
 import { Accounts } from "./accounts";
 import { Ats } from "./ats";
 import { ConnectSessions } from "./connectsessions";
 import { Crm } from "./crm";
 import { Hris } from "./hris";
 import { Marketing } from "./marketing";
-import * as shared from "./models/shared";
 import { Proxy } from "./proxy";
 import axios from "axios";
 import { AxiosInstance } from "axios";
@@ -55,9 +55,9 @@ export class SDKConfiguration {
     serverDefaults: any;
     language = "typescript";
     openapiDocVersion = "1.0.0";
-    sdkVersion = "0.10.10";
-    genVersion = "2.173.0";
-    userAgent = "speakeasy-sdk/typescript 0.10.10 2.173.0 1.0.0 @stackone/stackone-client-ts";
+    sdkVersion = "0.11.0";
+    genVersion = "2.181.1";
+    userAgent = "speakeasy-sdk/typescript 0.11.0 2.181.1 1.0.0 @stackone/stackone-client-ts";
     retryConfig?: utils.RetryConfig;
     public constructor(init?: Partial<SDKConfiguration>) {
         Object.assign(this, init);
@@ -70,11 +70,11 @@ export class SDKConfiguration {
 export class StackOne {
     public accounts: Accounts;
     public connectSessions: ConnectSessions;
-    public proxy: Proxy;
     public ats: Ats;
     public crm: Crm;
     public hris: Hris;
     public marketing: Marketing;
+    public proxy: Proxy;
 
     private sdkConfiguration: SDKConfiguration;
 
@@ -96,10 +96,10 @@ export class StackOne {
 
         this.accounts = new Accounts(this.sdkConfiguration);
         this.connectSessions = new ConnectSessions(this.sdkConfiguration);
-        this.proxy = new Proxy(this.sdkConfiguration);
         this.ats = new Ats(this.sdkConfiguration);
         this.crm = new Crm(this.sdkConfiguration);
         this.hris = new Hris(this.sdkConfiguration);
         this.marketing = new Marketing(this.sdkConfiguration);
+        this.proxy = new Proxy(this.sdkConfiguration);
     }
 }

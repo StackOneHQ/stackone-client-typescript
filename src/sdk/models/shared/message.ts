@@ -5,7 +5,7 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { Expose } from "class-transformer";
 
-export enum MessageMessageType {
+export enum MessageType {
     Email = "email",
     Sms = "sms",
     WebPush = "web_push",
@@ -28,7 +28,7 @@ export class Message extends SpeakeasyBase {
 
     @SpeakeasyMetadata()
     @Expose({ name: "message_type" })
-    messageType: MessageMessageType;
+    messageType: MessageType;
 
     @SpeakeasyMetadata()
     @Expose({ name: "name" })

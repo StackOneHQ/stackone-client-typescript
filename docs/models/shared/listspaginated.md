@@ -3,8 +3,8 @@
 
 ## Fields
 
-| Field                                 | Type                                  | Required                              | Description                           |
-| ------------------------------------- | ------------------------------------- | ------------------------------------- | ------------------------------------- |
-| `data`                                | [List](../../models/shared/list.md)[] | :heavy_check_mark:                    | N/A                                   |
-| `nextPage`                            | *string*                              | :heavy_check_mark:                    | N/A                                   |
-| `raw`                                 | *string*                              | :heavy_minus_sign:                    | N/A                                   |
+| Field                                        | Type                                         | Required                                     | Description                                  |
+| -------------------------------------------- | -------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
+| `data`                                       | [shared.List](../../models/shared/list.md)[] | :heavy_check_mark:                           | N/A                                          |
+| `nextPage`                                   | *string*                                     | :heavy_check_mark:                           | N/A                                          |
+| `raw`                                        | *string*                                     | :heavy_minus_sign:                           | N/A                                          |

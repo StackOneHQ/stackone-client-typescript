@@ -5,7 +5,7 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { Expose, Type } from "class-transformer";
 
-export enum HRISLocationCountryValue {
+export enum HRISLocationValue {
     Af = "AF",
     Al = "AL",
     Dz = "DZ",
@@ -260,17 +260,17 @@ export enum HRISLocationCountryValue {
 /**
  * The country code
  */
-export class HRISLocationCountry extends SpeakeasyBase {
+export class Country extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "source_value" })
     sourceValue: string;
 
     @SpeakeasyMetadata()
     @Expose({ name: "value" })
-    value: HRISLocationCountryValue;
+    value: HRISLocationValue;
 }
 
-export enum HRISLocationLocationTypeValue {
+export enum HRISLocationSchemasValue {
     Home = "home",
     Work = "work",
     UnmappedValue = "unmapped_value",
@@ -279,14 +279,14 @@ export enum HRISLocationLocationTypeValue {
 /**
  * The location type
  */
-export class HRISLocationLocationType extends SpeakeasyBase {
+export class LocationType extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "source_value" })
     sourceValue: string;
 
     @SpeakeasyMetadata()
     @Expose({ name: "value" })
-    value: HRISLocationLocationTypeValue;
+    value: HRISLocationSchemasValue;
 }
 
 export class HRISLocation extends SpeakeasyBase {
@@ -302,8 +302,8 @@ export class HRISLocation extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     @Expose({ name: "country" })
-    @Type(() => HRISLocationCountry)
-    country?: HRISLocationCountry;
+    @Type(() => Country)
+    country?: Country;
 
     /**
      * The created_at date
@@ -331,8 +331,8 @@ export class HRISLocation extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     @Expose({ name: "location_type" })
-    @Type(() => HRISLocationLocationType)
-    locationType?: HRISLocationLocationType;
+    @Type(() => LocationType)
+    locationType?: LocationType;
 
     /**
      * The name of the location

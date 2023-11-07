@@ -5,7 +5,7 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { Expose, Transform } from "class-transformer";
 
-export enum ConnectSessionCategories {
+export enum Categories {
     Ats = "ats",
     Hris = "hris",
     HrisLegacy = "hris-legacy",
@@ -17,7 +17,7 @@ export enum ConnectSessionCategories {
 export class ConnectSession extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "categories" })
-    categories?: ConnectSessionCategories[];
+    categories?: Categories[];
 
     @SpeakeasyMetadata()
     @Expose({ name: "created_at" })
