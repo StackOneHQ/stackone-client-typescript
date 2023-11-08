@@ -1,7 +1,6 @@
 name: Publish
 
-on:
-  on:
+"on":
   push:
     paths:
       - 'RELEASES.md'
