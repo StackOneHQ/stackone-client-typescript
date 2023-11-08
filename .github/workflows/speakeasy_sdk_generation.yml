@@ -20,7 +20,7 @@ jobs:
       force: ${{ github.event.inputs.force }}
       languages: |
         - typescript
-      mode: direct
+      mode: pr
       openapi_docs: |
         - https://api2.eu1.stackone.com/oas/stackone.json
         - https://api2.eu1.stackone.com/oas/hris.json
@@ -30,6 +30,6 @@ jobs:
       publish_typescript: true
       speakeasy_version: latest
     secrets:
-      github_access_token: ${{ secrets.SPEAKEASYBOT_TOKEN }}
+      github_access_token: ${{ secrets.GITHUB_TOKEN }}
       npm_token: ${{ secrets.NPM_TOKEN }}
       speakeasy_api_key: ${{ secrets.SPEAKEASY_API_KEY }}
