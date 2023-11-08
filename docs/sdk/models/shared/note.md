@@ -1,0 +1,13 @@
+# Note
+
+
+## Fields
+
+| Field                                                                           | Type                                                                            | Required                                                                        | Description                                                                     |
+| ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
+| `content`                                                                       | *string*[]                                                                      | :heavy_check_mark:                                                              | N/A                                                                             |
+| `createdAt`                                                                     | *string*                                                                        | :heavy_check_mark:                                                              | N/A                                                                             |
+| `deletedAt`                                                                     | *string*                                                                        | :heavy_check_mark:                                                              | N/A                                                                             |
+| `id`                                                                            | *string*                                                                        | :heavy_check_mark:                                                              | N/A                                                                             |
+| `updatedAt`                                                                     | *string*                                                                        | :heavy_check_mark:                                                              | N/A                                                                             |
+| `visibility`                                                                    | [shared.NotesVisibilityEnum](../../../sdk/models/shared/notesvisibilityenum.md) | :heavy_check_mark:                                                              | N/A                                                                             |
