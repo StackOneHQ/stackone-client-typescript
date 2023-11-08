@@ -1,0 +1,9 @@
+# TimeOffResult
+
+
+## Fields
+
+| Field                                                   | Type                                                    | Required                                                | Description                                             |
+| ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
+| `data`                                                  | [shared.TimeOff](../../../sdk/models/shared/timeoff.md) | :heavy_check_mark:                                      | N/A                                                     |
+| `raw`                                                   | *string*                                                | :heavy_minus_sign:                                      | N/A                                                     |

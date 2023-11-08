@@ -1,0 +1,15 @@
+# AtsUpdateCandidatesRequestDto
+
+
+## Fields
+
+| Field                                                                   | Type                                                                    | Required                                                                | Description                                                             |
+| ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- |
+| `applicationIds`                                                        | *string*[]                                                              | :heavy_minus_sign:                                                      | N/A                                                                     |
+| `company`                                                               | *string*                                                                | :heavy_minus_sign:                                                      | N/A                                                                     |
+| `emails`                                                                | [shared.CandidateEmail](../../../sdk/models/shared/candidateemail.md)[] | :heavy_minus_sign:                                                      | N/A                                                                     |
+| `firstName`                                                             | *string*                                                                | :heavy_minus_sign:                                                      | N/A                                                                     |
+| `lastName`                                                              | *string*                                                                | :heavy_minus_sign:                                                      | N/A                                                                     |
+| `name`                                                                  | *string*                                                                | :heavy_minus_sign:                                                      | N/A                                                                     |
+| `phone`                                                                 | *string*                                                                | :heavy_minus_sign:                                                      | N/A                                                                     |
+| `title`                                                                 | *string*                                                                | :heavy_minus_sign:                                                      | N/A                                                                     |

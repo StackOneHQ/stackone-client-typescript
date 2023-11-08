@@ -56,19 +56,19 @@ import { StackOne } from "@stackone/stackone-client-ts";
 ## Available Resources and Operations
 
 
-### [.accounts](docs/sdks/accounts/README.md)
+### [accounts](docs/sdks/accounts/README.md)
 
 * [deleteAccount](docs/sdks/accounts/README.md#deleteaccount) - Delete Account
 * [getAccount](docs/sdks/accounts/README.md#getaccount) - Get Account
 * [getAccountMetaInfo](docs/sdks/accounts/README.md#getaccountmetainfo) - Get meta information of the account
 * [listLinkedAccounts](docs/sdks/accounts/README.md#listlinkedaccounts) - List Accounts
 
-### [.connectSessions](docs/sdks/connectsessions/README.md)
+### [connectSessions](docs/sdks/connectsessions/README.md)
 
 * [authenticateConnectSession](docs/sdks/connectsessions/README.md#authenticateconnectsession) - Authenticate Connect Session
 * [createConnectSession](docs/sdks/connectsessions/README.md#createconnectsession) - Create Connect Session
 
-### [.ats](docs/sdks/ats/README.md)
+### [ats](docs/sdks/ats/README.md)
 
 * [createApplication](docs/sdks/ats/README.md#createapplication) - Create Application
 * [createCandidate](docs/sdks/ats/README.md#createcandidate) - Create Candidate (early access)
@@ -103,7 +103,7 @@ import { StackOne } from "@stackone/stackone-client-ts";
 * [updateApplication](docs/sdks/ats/README.md#updateapplication) - Update Application
 * [updateCandidate](docs/sdks/ats/README.md#updatecandidate) - Update Candidate (early access)
 
-### [.crm](docs/sdks/crm/README.md)
+### [crm](docs/sdks/crm/README.md)
 
 * [createContact](docs/sdks/crm/README.md#createcontact) - Creates a new Contact
 * [getAccount](docs/sdks/crm/README.md#getaccount) - Get Account
@@ -114,7 +114,7 @@ import { StackOne } from "@stackone/stackone-client-ts";
 * [listLists](docs/sdks/crm/README.md#listlists) - Get all Lists
 * [updateContact](docs/sdks/crm/README.md#updatecontact) - Update Contact (early access)
 
-### [.hris](docs/sdks/hris/README.md)
+### [hris](docs/sdks/hris/README.md)
 
 * [createEmployee](docs/sdks/hris/README.md#createemployee) - Creates an employee
 * [createEmployeeTimeOffRequest](docs/sdks/hris/README.md#createemployeetimeoffrequest) - Create Employee Time Off Request
@@ -134,7 +134,7 @@ import { StackOne } from "@stackone/stackone-client-ts";
 * [updateEmployee](docs/sdks/hris/README.md#updateemployee) - Updates an employee
 * [updateTimeOffRequest](docs/sdks/hris/README.md#updatetimeoffrequest) - Update time off request
 
-### [.marketing](docs/sdks/marketing/README.md)
+### [marketing](docs/sdks/marketing/README.md)
 
 * [createEmailTemplate](docs/sdks/marketing/README.md#createemailtemplate) - Create email template
 * [createOmniChannelTemplate](docs/sdks/marketing/README.md#createomnichanneltemplate) - Create omni-channel template
@@ -151,7 +151,7 @@ import { StackOne } from "@stackone/stackone-client-ts";
 * [updateOmniChannelTemplate](docs/sdks/marketing/README.md#updateomnichanneltemplate) - Update omni-channel template
 * [updatePushTemplate](docs/sdks/marketing/README.md#updatepushtemplate) - Update push template
 
-### [.proxy](docs/sdks/proxy/README.md)
+### [proxy](docs/sdks/proxy/README.md)
 
 * [proxyRequest](docs/sdks/proxy/README.md#proxyrequest) - Proxy Request
 <!-- End SDK Available Operations -->
@@ -167,7 +167,39 @@ import { StackOne } from "@stackone/stackone-client-ts";
 <!-- Start Error Handling -->
 # Error Handling
 
-Handling errors in your SDK should largely match your expectations.  All operations return a response object or throw an error.  If Error objects are specified in your OpenAPI Spec, the SDK will throw the appropriate Error type.
+Handling errors in this SDK should largely match your expectations.  All operations return a response object or throw an error.  If Error objects are specified in your OpenAPI Spec, the SDK will throw the appropriate Error type.
+
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
+
+
+## Example
+
+```typescript
+import { StackOne } from "@stackone/stackone-client-ts";
+
+(async () => {
+    const sdk = new StackOne({
+        security: {
+            password: "",
+            username: "",
+        },
+    });
+
+    let res;
+    try {
+        res = await sdk.accounts.deleteAccount({
+            id: "<ID>",
+        });
+    } catch (e) {}
+
+    if (res.statusCode == 200) {
+        // handle response
+    }
+})();
+
+```
 <!-- End Error Handling -->
 
 
@@ -198,12 +230,11 @@ const sdk = new StackOne({defaultClient: httpClient});
 
 
 <!-- Start Authentication -->
-
 # Authentication
 
 ## Per-Client Security Schemes
 
-Your SDK supports the following security schemes globally:
+This SDK supports the following security schemes globally:
 
 | Name       | Type       | Scheme     |
 | ---------- | ---------- | ---------- |

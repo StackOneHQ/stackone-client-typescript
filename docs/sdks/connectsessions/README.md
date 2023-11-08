@@ -1,5 +1,5 @@
 # ConnectSessions
-(*.connectSessions*)
+(*connectSessions*)
 
 ### Available Operations
 
@@ -27,7 +27,6 @@ import { StackOne } from "@stackone/stackone-client-ts";
     token: "string",
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -36,16 +35,20 @@ import { StackOne } from "@stackone/stackone-client-ts";
 
 ### Parameters
 
-| Parameter                                                                              | Type                                                                                   | Required                                                                               | Description                                                                            |
-| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| `request`                                                                              | [shared.ConnectSessionAuthenticate](../../models/shared/connectsessionauthenticate.md) | :heavy_check_mark:                                                                     | The request object to use for the request.                                             |
-| `config`                                                                               | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                           | :heavy_minus_sign:                                                                     | Available config options for making requests.                                          |
+| Parameter                                                                                  | Type                                                                                       | Required                                                                                   | Description                                                                                |
+| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
+| `request`                                                                                  | [shared.ConnectSessionAuthenticate](../../sdk/models/shared/connectsessionauthenticate.md) | :heavy_check_mark:                                                                         | The request object to use for the request.                                                 |
+| `config`                                                                                   | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                               | :heavy_minus_sign:                                                                         | Available config options for making requests.                                              |
 
 
 ### Response
 
-**Promise<[operations.StackoneAuthenticateConnectSessionResponse](../../models/operations/stackoneauthenticateconnectsessionresponse.md)>**
+**Promise<[operations.StackoneAuthenticateConnectSessionResponse](../../sdk/models/operations/stackoneauthenticateconnectsessionresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
 
 ## createConnectSession
 
@@ -79,7 +82,6 @@ import { ConnectSessionCreateCategories } from "@stackone/stackone-client-ts/dis
     originOwnerName: "string",
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -88,13 +90,17 @@ import { ConnectSessionCreateCategories } from "@stackone/stackone-client-ts/dis
 
 ### Parameters
 
-| Parameter                                                                  | Type                                                                       | Required                                                                   | Description                                                                |
-| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| `request`                                                                  | [shared.ConnectSessionCreate](../../models/shared/connectsessioncreate.md) | :heavy_check_mark:                                                         | The request object to use for the request.                                 |
-| `config`                                                                   | [AxiosRequestConfig](https://axios-http.com/docs/req_config)               | :heavy_minus_sign:                                                         | Available config options for making requests.                              |
+| Parameter                                                                      | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `request`                                                                      | [shared.ConnectSessionCreate](../../sdk/models/shared/connectsessioncreate.md) | :heavy_check_mark:                                                             | The request object to use for the request.                                     |
+| `config`                                                                       | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                   | :heavy_minus_sign:                                                             | Available config options for making requests.                                  |
 
 
 ### Response
 
-**Promise<[operations.StackoneCreateConnectSessionResponse](../../models/operations/stackonecreateconnectsessionresponse.md)>**
+**Promise<[operations.StackoneCreateConnectSessionResponse](../../sdk/models/operations/stackonecreateconnectsessionresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |
