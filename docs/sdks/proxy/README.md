@@ -1,5 +1,5 @@
 # Proxy
-(*.proxy*)
+(*proxy*)
 
 ### Available Operations
 
@@ -33,7 +33,6 @@ import { Method } from "@stackone/stackone-client-ts/dist/sdk/models/shared";
     xAccountId: "string",
   });
 
-
   if (res.statusCode == 200) {
     // handle response
   }
@@ -42,13 +41,17 @@ import { Method } from "@stackone/stackone-client-ts/dist/sdk/models/shared";
 
 ### Parameters
 
-| Parameter                                                                                        | Type                                                                                             | Required                                                                                         | Description                                                                                      |
-| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
-| `request`                                                                                        | [operations.StackoneProxyRequestRequest](../../models/operations/stackoneproxyrequestrequest.md) | :heavy_check_mark:                                                                               | The request object to use for the request.                                                       |
-| `config`                                                                                         | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                     | :heavy_minus_sign:                                                                               | Available config options for making requests.                                                    |
+| Parameter                                                                                            | Type                                                                                                 | Required                                                                                             | Description                                                                                          |
+| ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| `request`                                                                                            | [operations.StackoneProxyRequestRequest](../../sdk/models/operations/stackoneproxyrequestrequest.md) | :heavy_check_mark:                                                                                   | The request object to use for the request.                                                           |
+| `config`                                                                                             | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                         | :heavy_minus_sign:                                                                                   | Available config options for making requests.                                                        |
 
 
 ### Response
 
-**Promise<[operations.StackoneProxyRequestResponse](../../models/operations/stackoneproxyrequestresponse.md)>**
+**Promise<[operations.StackoneProxyRequestResponse](../../sdk/models/operations/stackoneproxyrequestresponse.md)>**
+### Errors
 
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 400-600         | */*             |

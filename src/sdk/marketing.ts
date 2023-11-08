@@ -31,7 +31,8 @@ export class Marketing {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = baseURL.replace(/\/$/, "") + "/unified/marketing/templates/email";
+        const operationUrl: string =
+            baseURL.replace(/\/$/, "") + "/unified/marketing/templates/email";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
@@ -68,7 +69,7 @@ export class Marketing {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -139,7 +140,7 @@ export class Marketing {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string =
+        const operationUrl: string =
             baseURL.replace(/\/$/, "") + "/unified/marketing/templates/omni_channel";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
@@ -177,7 +178,7 @@ export class Marketing {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -248,7 +249,8 @@ export class Marketing {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = baseURL.replace(/\/$/, "") + "/unified/marketing/templates/push";
+        const operationUrl: string =
+            baseURL.replace(/\/$/, "") + "/unified/marketing/templates/push";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
@@ -285,7 +287,7 @@ export class Marketing {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "post",
             headers: headers,
             responseType: "arraybuffer",
@@ -356,7 +358,11 @@ export class Marketing {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = utils.generateURL(baseURL, "/unified/marketing/campaigns/{id}", req);
+        const operationUrl: string = utils.generateURL(
+            baseURL,
+            "/unified/marketing/campaigns/{id}",
+            req
+        );
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
         let globalSecurity = this.sdkConfiguration.security;
         if (typeof globalSecurity === "function") {
@@ -378,7 +384,7 @@ export class Marketing {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url + queryParams,
+            url: operationUrl + queryParams,
             method: "get",
             headers: headers,
             responseType: "arraybuffer",
@@ -447,7 +453,7 @@ export class Marketing {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = utils.generateURL(
+        const operationUrl: string = utils.generateURL(
             baseURL,
             "/unified/marketing/templates/email/{id}",
             req
@@ -473,7 +479,7 @@ export class Marketing {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url + queryParams,
+            url: operationUrl + queryParams,
             method: "get",
             headers: headers,
             responseType: "arraybuffer",
@@ -543,7 +549,7 @@ export class Marketing {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = utils.generateURL(
+        const operationUrl: string = utils.generateURL(
             baseURL,
             "/unified/marketing/templates/omni_channel/{id}",
             req
@@ -569,7 +575,7 @@ export class Marketing {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url + queryParams,
+            url: operationUrl + queryParams,
             method: "get",
             headers: headers,
             responseType: "arraybuffer",
@@ -639,7 +645,7 @@ export class Marketing {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = utils.generateURL(
+        const operationUrl: string = utils.generateURL(
             baseURL,
             "/unified/marketing/templates/push/{id}",
             req
@@ -665,7 +671,7 @@ export class Marketing {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url + queryParams,
+            url: operationUrl + queryParams,
             method: "get",
             headers: headers,
             responseType: "arraybuffer",
@@ -735,7 +741,7 @@ export class Marketing {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = baseURL.replace(/\/$/, "") + "/unified/marketing/campaigns";
+        const operationUrl: string = baseURL.replace(/\/$/, "") + "/unified/marketing/campaigns";
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
         let globalSecurity = this.sdkConfiguration.security;
         if (typeof globalSecurity === "function") {
@@ -757,7 +763,7 @@ export class Marketing {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url + queryParams,
+            url: operationUrl + queryParams,
             method: "get",
             headers: headers,
             responseType: "arraybuffer",
@@ -826,7 +832,8 @@ export class Marketing {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = baseURL.replace(/\/$/, "") + "/unified/marketing/templates/email";
+        const operationUrl: string =
+            baseURL.replace(/\/$/, "") + "/unified/marketing/templates/email";
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
         let globalSecurity = this.sdkConfiguration.security;
         if (typeof globalSecurity === "function") {
@@ -848,7 +855,7 @@ export class Marketing {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url + queryParams,
+            url: operationUrl + queryParams,
             method: "get",
             headers: headers,
             responseType: "arraybuffer",
@@ -918,7 +925,7 @@ export class Marketing {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string =
+        const operationUrl: string =
             baseURL.replace(/\/$/, "") + "/unified/marketing/templates/omni_channel";
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
         let globalSecurity = this.sdkConfiguration.security;
@@ -941,7 +948,7 @@ export class Marketing {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url + queryParams,
+            url: operationUrl + queryParams,
             method: "get",
             headers: headers,
             responseType: "arraybuffer",
@@ -1011,7 +1018,8 @@ export class Marketing {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = baseURL.replace(/\/$/, "") + "/unified/marketing/templates/push";
+        const operationUrl: string =
+            baseURL.replace(/\/$/, "") + "/unified/marketing/templates/push";
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
         let globalSecurity = this.sdkConfiguration.security;
         if (typeof globalSecurity === "function") {
@@ -1033,7 +1041,7 @@ export class Marketing {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url + queryParams,
+            url: operationUrl + queryParams,
             method: "get",
             headers: headers,
             responseType: "arraybuffer",
@@ -1103,7 +1111,7 @@ export class Marketing {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = utils.generateURL(
+        const operationUrl: string = utils.generateURL(
             baseURL,
             "/unified/marketing/templates/email/{id}",
             req
@@ -1144,7 +1152,7 @@ export class Marketing {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "patch",
             headers: headers,
             responseType: "arraybuffer",
@@ -1215,7 +1223,7 @@ export class Marketing {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = utils.generateURL(
+        const operationUrl: string = utils.generateURL(
             baseURL,
             "/unified/marketing/templates/omni_channel/{id}",
             req
@@ -1256,7 +1264,7 @@ export class Marketing {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "patch",
             headers: headers,
             responseType: "arraybuffer",
@@ -1327,7 +1335,7 @@ export class Marketing {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = utils.generateURL(
+        const operationUrl: string = utils.generateURL(
             baseURL,
             "/unified/marketing/templates/push/{id}",
             req
@@ -1368,7 +1376,7 @@ export class Marketing {
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
-            url: url,
+            url: operationUrl,
             method: "patch",
             headers: headers,
             responseType: "arraybuffer",

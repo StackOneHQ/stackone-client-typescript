@@ -1,23 +1,23 @@
 configVersion: 1.0.0
 management:
-  docChecksum: 9d957bcb9f41f7db9506a27bfd1bc433
+  docChecksum: 15bbf72eee939b9b6ad47ef3b9d9bd21
   docVersion: 1.0.0
-  speakeasyVersion: 1.114.2
-  generationVersion: 2.181.1
+  speakeasyVersion: 1.116.0
+  generationVersion: 2.185.0
 generation:
   comments: {}
   sdkClassName: StackOne
   repoURL: https://github.com/StackOneHQ/stackone-client-typescript.git
 features:
   typescript:
-    core: 3.1.0
+    core: 3.1.2
     examples: 2.81.3
     globalSecurity: 2.82.0
     globalServerURLs: 2.82.0
     groups: 2.81.2
     nameOverrides: 2.81.1
 typescript:
-  version: 0.11.0
+  version: 0.11.1
   author: StackOne
   clientServerStatusCodesAsErrors: true
   flattenGlobalSecurity: false
@@ -29,8 +29,10 @@ typescript:
       operations: sdk/models/operations
       shared: sdk/models/shared
       webhooks: sdk/models/webhooks
+  inputModelSuffix: input
   installationURL: https://github.com/StackOneHQ/stackone-client-typescript
   maxMethodParams: 0
+  outputModelSuffix: output
   packageName: '@stackone/stackone-client-ts'
   published: true
   repoSubDirectory: .
