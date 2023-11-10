@@ -1,6 +1,5 @@
 <!-- Start SDK Example Usage -->
-
-## List Employees
+### List Employees
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
