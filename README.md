@@ -24,7 +24,7 @@ yarn add @stackone/stackone-client-ts
 
 ## SDK Example Usage
 <!-- Start SDK Example Usage -->
-## List Employees
+### List Employees
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
@@ -165,7 +165,7 @@ import { StackOne } from "@stackone/stackone-client-ts";
 <!-- No Pagination -->
 
 <!-- Start Error Handling -->
-# Error Handling
+## Error Handling
 
 Handling errors in this SDK should largely match your expectations.  All operations return a response object or throw an error.  If Error objects are specified in your OpenAPI Spec, the SDK will throw the appropriate Error type.
 
@@ -173,8 +173,7 @@ Handling errors in this SDK should largely match your expectations.  All operati
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 400-600         | */*             |
 
-
-## Example
+Example
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
@@ -205,10 +204,9 @@ import { StackOne } from "@stackone/stackone-client-ts";
 
 
 <!-- Start Custom HTTP Client -->
-# Custom HTTP Client
+## Custom HTTP Client
 
 The Typescript SDK makes API calls using the (axios)[https://axios-http.com/docs/intro] HTTP library.  In order to provide a convenient way to configure timeouts, cookies, proxies, custom headers, and other low-level configuration, you can initialize the SDK client with a custom `AxiosInstance` object.
-
 
 For example, you could specify a header for every request that your sdk makes as follows:
 
@@ -220,7 +218,6 @@ const httpClient = axios.create({
     headers: {'x-custom-header': 'someValue'}
 })
 
-
 const sdk = new StackOne({defaultClient: httpClient});
 ```
 <!-- End Custom HTTP Client -->
@@ -230,9 +227,9 @@ const sdk = new StackOne({defaultClient: httpClient});
 
 
 <!-- Start Authentication -->
-# Authentication
+## Authentication
 
-## Per-Client Security Schemes
+### Per-Client Security Schemes
 
 This SDK supports the following security schemes globally:
 
@@ -242,7 +239,6 @@ This SDK supports the following security schemes globally:
 | `username` | http       | HTTP Basic |
 
 You can set the security parameters through the `security` optional parameter when initializing the SDK client instance. The selected scheme will be used by default to authenticate with the API for all operations that support it. For example:
-
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
