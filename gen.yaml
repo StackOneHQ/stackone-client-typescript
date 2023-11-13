@@ -1,9 +1,9 @@
 configVersion: 1.0.0
 management:
-  docChecksum: 642d8bec595f1f32a83d8fa7ed33bf96
+  docChecksum: 1ad1f0b84559ef7c74bf18f1aa68d19a
   docVersion: 1.0.0
-  speakeasyVersion: 1.119.0
-  generationVersion: 2.188.1
+  speakeasyVersion: 1.119.1
+  generationVersion: 2.188.3
 generation:
   comments: {}
   sdkClassName: StackOne
@@ -19,7 +19,7 @@ features:
     groups: 2.81.2
     nameOverrides: 2.81.1
 typescript:
-  version: 0.11.7
+  version: 0.11.8
   author: StackOne
   clientServerStatusCodesAsErrors: true
   flattenGlobalSecurity: false
