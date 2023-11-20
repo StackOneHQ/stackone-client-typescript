@@ -5,6 +5,9 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { Expose } from "class-transformer";
 
+/**
+ * The type of the answer.
+ */
 export enum Value {
     ShortText = "short_text",
     LongText = "long_text",
@@ -17,10 +20,16 @@ export enum Value {
 }
 
 export class AnswerEnum extends SpeakeasyBase {
+    /**
+     * The source value of the answer type.
+     */
     @SpeakeasyMetadata()
     @Expose({ name: "source_value" })
     sourceValue?: string;
 
+    /**
+     * The type of the answer.
+     */
     @SpeakeasyMetadata()
     @Expose({ name: "value" })
     value?: Value;

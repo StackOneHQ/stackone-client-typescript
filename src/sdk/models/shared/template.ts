@@ -6,6 +6,9 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { Expose, Transform } from "class-transformer";
 
 export class Template extends SpeakeasyBase {
+    /**
+     * Date of creation
+     */
     @SpeakeasyMetadata()
     @Expose({ name: "created_at" })
     @Transform(({ value }) => new Date(value), { toClassOnly: true })
@@ -23,6 +26,9 @@ export class Template extends SpeakeasyBase {
     @Expose({ name: "tags" })
     tags?: string[];
 
+    /**
+     * Date of last update
+     */
     @SpeakeasyMetadata()
     @Expose({ name: "updated_at" })
     @Transform(({ value }) => new Date(value), { toClassOnly: true })

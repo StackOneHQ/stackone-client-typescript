@@ -1,5 +1,7 @@
 # RejectedReasonTypeEnumValue
 
+The type of the rejected reason.
+
 
 ## Values
 

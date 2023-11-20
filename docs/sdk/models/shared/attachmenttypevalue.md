@@ -1,5 +1,7 @@
 # AttachmentTypeValue
 
+The type of the attachment.
+
 
 ## Values
 

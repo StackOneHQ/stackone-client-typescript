@@ -7,10 +7,16 @@ import { AttachmentType } from "./attachmenttype";
 import { Expose, Type } from "class-transformer";
 
 export class ApplicationAttachment extends SpeakeasyBase {
+    /**
+     * The content of the attachment.
+     */
     @SpeakeasyMetadata()
     @Expose({ name: "content" })
     content?: string;
 
+    /**
+     * The file name of the attachment.
+     */
     @SpeakeasyMetadata()
     @Expose({ name: "file_name" })
     fileName?: string;
@@ -20,6 +26,9 @@ export class ApplicationAttachment extends SpeakeasyBase {
     @Type(() => AttachmentType)
     type?: AttachmentType[];
 
+    /**
+     * The URL of the attachment.
+     */
     @SpeakeasyMetadata()
     @Expose({ name: "url" })
     url?: string;

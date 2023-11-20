@@ -5,16 +5,25 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { Expose } from "class-transformer";
 
+/**
+ * The type of the attachment.
+ */
 export enum AttachmentTypeValue {
     Resume = "resume",
     UnmappedValue = "unmapped_value",
 }
 
 export class AttachmentType extends SpeakeasyBase {
+    /**
+     * The source value of the attachment type.
+     */
     @SpeakeasyMetadata()
     @Expose({ name: "source_value" })
     sourceValue?: string;
 
+    /**
+     * The type of the attachment.
+     */
     @SpeakeasyMetadata()
     @Expose({ name: "value" })
     value?: AttachmentTypeValue;

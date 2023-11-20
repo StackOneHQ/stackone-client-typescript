@@ -1,5 +1,7 @@
 # Value
 
+The type of the answer.
+
 
 ## Values
 

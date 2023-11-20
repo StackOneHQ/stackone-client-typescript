@@ -7,10 +7,16 @@ import { RejectedReasonTypeEnum } from "./rejectedreasontypeenum";
 import { Expose, Type } from "class-transformer";
 
 export class RejectedReason extends SpeakeasyBase {
+    /**
+     * The ID of the rejected reason.
+     */
     @SpeakeasyMetadata()
     @Expose({ name: "id" })
     id: string;
 
+    /**
+     * The label of the rejected reason.
+     */
     @SpeakeasyMetadata()
     @Expose({ name: "label" })
     label: string;

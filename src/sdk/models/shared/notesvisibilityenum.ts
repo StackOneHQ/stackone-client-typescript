@@ -5,16 +5,25 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { Expose } from "class-transformer";
 
+/**
+ * The visibility of the notes.
+ */
 export enum NotesVisibilityEnumValue {
     Private = "private",
     Public = "public",
 }
 
 export class NotesVisibilityEnum extends SpeakeasyBase {
+    /**
+     * The source value of the notes visibility.
+     */
     @SpeakeasyMetadata()
     @Expose({ name: "source_value" })
     sourceValue: string;
 
+    /**
+     * The visibility of the notes.
+     */
     @SpeakeasyMetadata()
     @Expose({ name: "value" })
     value: NotesVisibilityEnumValue;

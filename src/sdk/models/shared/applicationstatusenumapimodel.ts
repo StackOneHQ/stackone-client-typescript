@@ -5,7 +5,10 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { Expose } from "class-transformer";
 
-export enum ApplicationStatusEnumValue {
+/**
+ * The status of the application.
+ */
+export enum ApplicationStatusEnumApiModelValue {
     Active = "active",
     Converted = "converted",
     Hired = "hired",
@@ -14,12 +17,18 @@ export enum ApplicationStatusEnumValue {
     UnmappedValue = "unmapped_value",
 }
 
-export class ApplicationStatusEnum extends SpeakeasyBase {
+export class ApplicationStatusEnumApiModel extends SpeakeasyBase {
+    /**
+     * The source value of the application status.
+     */
     @SpeakeasyMetadata()
     @Expose({ name: "source_value" })
     sourceValue: string;
 
+    /**
+     * The status of the application.
+     */
     @SpeakeasyMetadata()
     @Expose({ name: "value" })
-    value: ApplicationStatusEnumValue;
+    value: ApplicationStatusEnumApiModelValue;
 }

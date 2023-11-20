@@ -7,4 +7,6 @@
 | --------------- | --------------- |
 | `Pending`       | pending         |
 | `Retracted`     | retracted       |
+| `Accepted`      | accepted        |
+| `Rejected`      | rejected        |
 | `UnmappedValue` | unmapped_value  |
