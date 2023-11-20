@@ -7,15 +7,24 @@ import { AnswerEnum } from "./answerenum";
 import { Expose, Type } from "class-transformer";
 
 export class Answer extends SpeakeasyBase {
+    /**
+     * Unique identifier of the answer
+     */
     @SpeakeasyMetadata()
     @Expose({ name: "id" })
     id?: string;
 
+    /**
+     * Type of the answer
+     */
     @SpeakeasyMetadata()
     @Expose({ name: "type" })
     @Type(() => AnswerEnum)
     type?: AnswerEnum;
 
+    /**
+     * Values of the answer
+     */
     @SpeakeasyMetadata()
     @Expose({ name: "values" })
     values: string[];

@@ -101,12 +101,14 @@ import { MessageType } from "@stackone/stackone-client-ts/dist/sdk/models/shared
 
   const res = await sdk.marketing.createOmniChannelTemplate({
     marketingCreateTemplateRequestDto: {
-      messages: {
-        id: "<ID>",
-        messageContent: "string",
-        messageType: MessageType.Unknown,
-        name: "string",
-      },
+      messages: [
+        {
+          id: "<ID>",
+          messageContent: "string",
+          messageType: MessageType.Unknown,
+          name: "string",
+        },
+      ],
       tags: [
         "string",
       ],
@@ -662,12 +664,14 @@ import { MessageType } from "@stackone/stackone-client-ts/dist/sdk/models/shared
 
   const res = await sdk.marketing.updateOmniChannelTemplate({
     marketingCreateTemplateRequestDto: {
-      messages: {
-        id: "<ID>",
-        messageContent: "string",
-        messageType: MessageType.Email,
-        name: "string",
-      },
+      messages: [
+        {
+          id: "<ID>",
+          messageContent: "string",
+          messageType: MessageType.Email,
+          name: "string",
+        },
+      ],
       tags: [
         "string",
       ],

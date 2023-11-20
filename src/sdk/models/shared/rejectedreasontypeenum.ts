@@ -5,6 +5,9 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { Expose } from "class-transformer";
 
+/**
+ * The type of the rejected reason.
+ */
 export enum RejectedReasonTypeEnumValue {
     RejectedByCandidate = "rejected_by_candidate",
     RejectedByOrganization = "rejected_by_organization",
@@ -14,10 +17,16 @@ export enum RejectedReasonTypeEnumValue {
 }
 
 export class RejectedReasonTypeEnum extends SpeakeasyBase {
+    /**
+     * The source value of the rejected reason type.
+     */
     @SpeakeasyMetadata()
     @Expose({ name: "source_value" })
     sourceValue: string;
 
+    /**
+     * The type of the rejected reason.
+     */
     @SpeakeasyMetadata()
     @Expose({ name: "value" })
     value: RejectedReasonTypeEnumValue;

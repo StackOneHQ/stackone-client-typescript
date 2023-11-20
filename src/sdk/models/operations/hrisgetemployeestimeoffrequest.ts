@@ -79,7 +79,7 @@ export class HrisGetEmployeesTimeOffRequestResponse extends SpeakeasyBase {
      * Raw HTTP response; suitable for custom response parsing
      */
     @SpeakeasyMetadata()
-    rawResponse?: AxiosResponse;
+    rawResponse: AxiosResponse;
 
     /**
      * The time off request related to the employee with the given identifiers was retrieved.

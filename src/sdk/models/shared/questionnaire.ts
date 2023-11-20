@@ -12,6 +12,9 @@ export class Questionnaire extends SpeakeasyBase {
     @Type(() => Answer)
     answers: Answer[];
 
+    /**
+     * Unique identifier of the questionnaire
+     */
     @SpeakeasyMetadata()
     @Expose({ name: "id" })
     id?: string;

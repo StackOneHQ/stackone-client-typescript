@@ -1,5 +1,7 @@
 # NotesVisibilityEnumValue
 
+The visibility of the notes.
+
 
 ## Values
 

@@ -7,35 +7,59 @@ import { CandidateEmail } from "./candidateemail";
 import { Expose, Type } from "class-transformer";
 
 export class AtsCreateCandidateRequestDto extends SpeakeasyBase {
+    /**
+     * List of candidate application IDs
+     */
     @SpeakeasyMetadata()
     @Expose({ name: "application_ids" })
     applicationIds?: string[];
 
+    /**
+     * Candidate company
+     */
     @SpeakeasyMetadata()
     @Expose({ name: "company" })
     company?: string;
 
+    /**
+     * List of candidate emails
+     */
     @SpeakeasyMetadata({ elemType: CandidateEmail })
     @Expose({ name: "emails" })
     @Type(() => CandidateEmail)
     emails: CandidateEmail[];
 
+    /**
+     * Candidate first name
+     */
     @SpeakeasyMetadata()
     @Expose({ name: "first_name" })
     firstName: string;
 
+    /**
+     * Candidate last name
+     */
     @SpeakeasyMetadata()
     @Expose({ name: "last_name" })
     lastName: string;
 
+    /**
+     * Candidate name
+     */
     @SpeakeasyMetadata()
     @Expose({ name: "name" })
     name: string;
 
+    /**
+     * Candidate phone number
+     */
     @SpeakeasyMetadata()
     @Expose({ name: "phone" })
     phone?: string;
 
+    /**
+     * Candidate title
+     */
     @SpeakeasyMetadata()
     @Expose({ name: "title" })
     title: string;

@@ -4,6 +4,8 @@
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { Compensation } from "./compensation";
+import { EmploymentContractTypeEnum } from "./employmentcontracttypeenum";
+import { EmploymentTypeEnum } from "./employmenttypeenum";
 import { Location } from "./location";
 import { Questionnaire } from "./questionnaire";
 import { Expose, Type } from "class-transformer";
@@ -16,25 +18,6 @@ export class Content extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "plain" })
     plain?: string;
-}
-
-export enum JobPostingEmploymentContractType {
-    FullTime = "full_time",
-    Shifts = "shifts",
-    PartTime = "part_time",
-    UnmappedValue = "unmapped_value",
-}
-
-export enum JobPostingEmploymentType {
-    Permanent = "permanent",
-    Contractor = "contractor",
-    Intern = "intern",
-    Apprentice = "apprentice",
-    Freelance = "freelance",
-    Temporary = "temporary",
-    Seasonal = "seasonal",
-    Volunteer = "volunteer",
-    UnmappedValue = "unmapped_value",
 }
 
 export enum Internal {
@@ -66,11 +49,13 @@ export class JobPosting extends SpeakeasyBase {
 
     @SpeakeasyMetadata()
     @Expose({ name: "employment_contract_type" })
-    employmentContractType?: JobPostingEmploymentContractType;
+    @Type(() => EmploymentContractTypeEnum)
+    employmentContractType?: EmploymentContractTypeEnum;
 
     @SpeakeasyMetadata()
     @Expose({ name: "employment_type" })
-    employmentType?: JobPostingEmploymentType;
+    @Type(() => EmploymentTypeEnum)
+    employmentType?: EmploymentTypeEnum;
 
     @SpeakeasyMetadata()
     @Expose({ name: "external_apply_url" })

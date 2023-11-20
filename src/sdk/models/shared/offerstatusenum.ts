@@ -8,6 +8,8 @@ import { Expose } from "class-transformer";
 export enum OfferStatusEnumValue {
     Pending = "pending",
     Retracted = "retracted",
+    Accepted = "accepted",
+    Rejected = "rejected",
     UnmappedValue = "unmapped_value",
 }
 

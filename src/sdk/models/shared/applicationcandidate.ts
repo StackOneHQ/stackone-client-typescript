@@ -6,14 +6,23 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { Expose } from "class-transformer";
 
 export class ApplicationCandidate extends SpeakeasyBase {
+    /**
+     * Email of the candidate
+     */
     @SpeakeasyMetadata()
     @Expose({ name: "email" })
     email?: string;
 
+    /**
+     * First name of the candidate
+     */
     @SpeakeasyMetadata()
     @Expose({ name: "first_name" })
     firstName?: string;
 
+    /**
+     * Last name of the candidate
+     */
     @SpeakeasyMetadata()
     @Expose({ name: "last_name" })
     lastName?: string;

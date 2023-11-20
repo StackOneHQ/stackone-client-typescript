@@ -1,4 +1,6 @@
-# JobPostingEmploymentContractType
+# EmploymentContractTypeEnumValue
+
+The employment contract type.
 
 
 ## Values

@@ -90,8 +90,8 @@ import {
         value: HrisCreateEmployeeRequestDtoSchemasValue.Pending,
       },
       employmentType: {
-        sourceValue: "string",
-        value: HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue.Internal,
+        sourceValue: "Permanent",
+        value: HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue.Permanent,
       },
       employments: [
         {
@@ -103,19 +103,19 @@ import {
             value: EmploymentValue.UnmappedValue,
           },
           employmentType: {
-            sourceValue: "string",
-            value: EmploymentSchemasValue.Contractor,
+            sourceValue: "Permanent",
+            value: EmploymentSchemasValue.Permanent,
           },
           id: "123456",
           jobTitle: "Software Engineer",
           payCurrency: "USD",
           payFrequency: {
             sourceValue: "string",
-            value: EmploymentSchemasPayFrequencyValue.HalfYearly,
+            value: EmploymentSchemasPayFrequencyValue.ProRata,
           },
           payPeriod: {
             sourceValue: "string",
-            value: EmploymentSchemasPayPeriodValue.Year,
+            value: EmploymentSchemasPayPeriodValue.Day,
           },
           payRate: "40.00",
           updatedAt: "2023-06-14T01:00:00Z",
@@ -123,25 +123,25 @@ import {
       ],
       ethnicity: {
         sourceValue: "string",
-        value: HrisCreateEmployeeRequestDtoSchemasEthnicityValue.AmericanIndianOrAlaskaNative,
+        value: HrisCreateEmployeeRequestDtoSchemasEthnicityValue.UnmappedValue,
       },
       firstName: "Issac",
       gender: {
         sourceValue: "string",
-        value: HrisCreateEmployeeRequestDtoSchemasGenderValue.Diverse,
+        value: HrisCreateEmployeeRequestDtoSchemasGenderValue.UnmappedValue,
       },
       hireDate: "2022-01-01",
       homeLocation: {
         city: "Grantham",
         country: {
           sourceValue: "string",
-          value: HrisLocationsCreateRequestDtoValue.Gb,
+          value: HrisLocationsCreateRequestDtoValue.Ki,
         },
         name: "Woolsthorpe Manor",
         phoneNumber: "+44 1476 860 364",
         state: {
           sourceValue: "string",
-          value: HrisLocationsCreateRequestDtoSchemasValue.AoHua,
+          value: HrisLocationsCreateRequestDtoSchemasValue.SyLa,
         },
         street1: "Water Lane",
         street2: "Woolsthorpe by Colsterworth",
@@ -152,13 +152,13 @@ import {
       managerId: "67890",
       maritalStatus: {
         sourceValue: "string",
-        value: HrisCreateEmployeeRequestDtoSchemasMaritalStatusValue.Single,
+        value: HrisCreateEmployeeRequestDtoSchemasMaritalStatusValue.UnmappedValue,
       },
       name: "Issac Newton",
       personalEmail: "isaac.newton@example.com",
       personalPhoneNumber: "+1234567890",
       startDate: "2022-01-01",
-      tenure: "2",
+      tenure: 2,
       terminationDate: "2023-06-14T00:00:00Z",
       workAnniversary: "2022-06-14T00:00:00Z",
       workEmail: "newton@example.com",
@@ -166,13 +166,13 @@ import {
         city: "Grantham",
         country: {
           sourceValue: "string",
-          value: HrisLocationsCreateRequestDtoValue.Bg,
+          value: HrisLocationsCreateRequestDtoValue.Ao,
         },
         name: "Woolsthorpe Manor",
         phoneNumber: "+44 1476 860 364",
         state: {
           sourceValue: "string",
-          value: HrisLocationsCreateRequestDtoSchemasValue.Mm14,
+          value: HrisLocationsCreateRequestDtoSchemasValue.AoCnn,
         },
         street1: "Water Lane",
         street2: "Woolsthorpe by Colsterworth",
@@ -962,8 +962,8 @@ import {
         value: HrisCreateEmployeeRequestDtoSchemasValue.Terminated,
       },
       employmentType: {
-        sourceValue: "string",
-        value: HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue.EmployerOfRecord,
+        sourceValue: "Permanent",
+        value: HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue.Permanent,
       },
       employments: [
         {
@@ -972,22 +972,22 @@ import {
           employeeId: "1687-3",
           employmentContractType: {
             sourceValue: "string",
-            value: EmploymentValue.FullTime,
+            value: EmploymentValue.UnmappedValue,
           },
           employmentType: {
-            sourceValue: "string",
-            value: EmploymentSchemasValue.PartTime,
+            sourceValue: "Permanent",
+            value: EmploymentSchemasValue.Permanent,
           },
           id: "123456",
           jobTitle: "Software Engineer",
           payCurrency: "USD",
           payFrequency: {
             sourceValue: "string",
-            value: EmploymentSchemasPayFrequencyValue.Weekly,
+            value: EmploymentSchemasPayFrequencyValue.BiWeekly,
           },
           payPeriod: {
             sourceValue: "string",
-            value: EmploymentSchemasPayPeriodValue.Quarter,
+            value: EmploymentSchemasPayPeriodValue.Hour,
           },
           payRate: "40.00",
           updatedAt: "2023-06-14T01:00:00Z",
@@ -995,7 +995,7 @@ import {
       ],
       ethnicity: {
         sourceValue: "string",
-        value: HrisCreateEmployeeRequestDtoSchemasEthnicityValue.TwoOrMoreRaces,
+        value: HrisCreateEmployeeRequestDtoSchemasEthnicityValue.BlackOrAfricanAmerican,
       },
       firstName: "Issac",
       gender: {
@@ -1007,13 +1007,13 @@ import {
         city: "Grantham",
         country: {
           sourceValue: "string",
-          value: HrisLocationsCreateRequestDtoValue.Ki,
+          value: HrisLocationsCreateRequestDtoValue.Pe,
         },
         name: "Woolsthorpe Manor",
         phoneNumber: "+44 1476 860 364",
         state: {
           sourceValue: "string",
-          value: HrisLocationsCreateRequestDtoSchemasValue.IeKe,
+          value: HrisLocationsCreateRequestDtoSchemasValue.PeAnc,
         },
         street1: "Water Lane",
         street2: "Woolsthorpe by Colsterworth",
@@ -1024,13 +1024,13 @@ import {
       managerId: "67890",
       maritalStatus: {
         sourceValue: "string",
-        value: HrisCreateEmployeeRequestDtoSchemasMaritalStatusValue.DomesticPartnership,
+        value: HrisCreateEmployeeRequestDtoSchemasMaritalStatusValue.Widowed,
       },
       name: "Issac Newton",
       personalEmail: "isaac.newton@example.com",
       personalPhoneNumber: "+1234567890",
       startDate: "2022-01-01",
-      tenure: "2",
+      tenure: 2,
       terminationDate: "2023-06-14T00:00:00Z",
       workAnniversary: "2022-06-14T00:00:00Z",
       workEmail: "newton@example.com",
@@ -1038,13 +1038,13 @@ import {
         city: "Grantham",
         country: {
           sourceValue: "string",
-          value: HrisLocationsCreateRequestDtoValue.It,
+          value: HrisLocationsCreateRequestDtoValue.Gu,
         },
         name: "Woolsthorpe Manor",
         phoneNumber: "+44 1476 860 364",
         state: {
           sourceValue: "string",
-          value: HrisLocationsCreateRequestDtoSchemasValue.AoMox,
+          value: HrisLocationsCreateRequestDtoSchemasValue.Mn035,
         },
         street1: "Water Lane",
         street2: "Woolsthorpe by Colsterworth",

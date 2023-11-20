@@ -46,6 +46,7 @@ export enum EmployeeSchemasValue {
     Pending = "pending",
     Terminated = "terminated",
     Leave = "leave",
+    Inactive = "inactive",
     UnmappedValue = "unmapped_value",
 }
 
@@ -62,22 +63,18 @@ export class EmploymentStatus extends SpeakeasyBase {
     value: EmployeeSchemasValue;
 }
 
+/**
+ * The type of the employment.
+ */
 export enum EmployeeSchemasEmploymentTypeValue {
-    FullTime = "full_time",
-    PartTime = "part_time",
+    Permanent = "permanent",
     Contractor = "contractor",
     Intern = "intern",
-    Permanent = "permanent",
     Apprentice = "apprentice",
     Freelance = "freelance",
-    Terminated = "terminated",
     Temporary = "temporary",
     Seasonal = "seasonal",
     Volunteer = "volunteer",
-    Probation = "probation",
-    Internal = "internal",
-    External = "external",
-    EmployerOfRecord = "employer_of_record",
     UnmappedValue = "unmapped_value",
 }
 
@@ -85,10 +82,16 @@ export enum EmployeeSchemasEmploymentTypeValue {
  * The employee employment type
  */
 export class EmploymentType extends SpeakeasyBase {
+    /**
+     * The source value of the employment type.
+     */
     @SpeakeasyMetadata()
     @Expose({ name: "source_value" })
     sourceValue: string;
 
+    /**
+     * The type of the employment.
+     */
     @SpeakeasyMetadata()
     @Expose({ name: "value" })
     value: EmployeeSchemasEmploymentTypeValue;
@@ -374,7 +377,7 @@ export class Employee extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     @Expose({ name: "tenure" })
-    tenure?: string;
+    tenure?: number;
 
     /**
      * The employee termination date

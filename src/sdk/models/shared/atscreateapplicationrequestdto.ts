@@ -3,17 +3,34 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
+import { Answer } from "./answer";
 import { ApplicationAttachment } from "./applicationattachment";
 import { ApplicationCandidate } from "./applicationcandidate";
-import { ApplicationStatusEnum } from "./applicationstatusenum";
-import { Questionnaire } from "./questionnaire";
+import { ApplicationStatusEnumApiModel } from "./applicationstatusenumapimodel";
 import { Expose, Type } from "class-transformer";
+
+/**
+ * Questionnaire associated with the application
+ */
+export class AtsCreateApplicationRequestDtoQuestionnaire extends SpeakeasyBase {
+    @SpeakeasyMetadata({ elemType: Answer })
+    @Expose({ name: "answers" })
+    @Type(() => Answer)
+    answers: Answer[];
+
+    /**
+     * Unique identifier of the questionnaire
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "id" })
+    id?: string;
+}
 
 export class AtsCreateApplicationRequestDto extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "application_status" })
-    @Type(() => ApplicationStatusEnum)
-    applicationStatus: ApplicationStatusEnum;
+    @Type(() => ApplicationStatusEnumApiModel)
+    applicationStatus: ApplicationStatusEnumApiModel;
 
     @SpeakeasyMetadata({ elemType: ApplicationAttachment })
     @Expose({ name: "attachments" })
@@ -25,20 +42,32 @@ export class AtsCreateApplicationRequestDto extends SpeakeasyBase {
     @Type(() => ApplicationCandidate)
     candidate: ApplicationCandidate;
 
+    /**
+     * Unique identifier of the candidate
+     */
     @SpeakeasyMetadata()
     @Expose({ name: "candidate_id" })
     candidateId?: string;
 
+    /**
+     * Unique identifier of the job
+     */
     @SpeakeasyMetadata()
     @Expose({ name: "job_id" })
     jobId?: string;
 
+    /**
+     * Unique identifiers of the locations
+     */
     @SpeakeasyMetadata()
     @Expose({ name: "location_ids" })
     locationIds?: string[];
 
+    /**
+     * Questionnaire associated with the application
+     */
     @SpeakeasyMetadata()
     @Expose({ name: "questionnaire" })
-    @Type(() => Questionnaire)
-    questionnaire: Questionnaire;
+    @Type(() => AtsCreateApplicationRequestDtoQuestionnaire)
+    questionnaire: AtsCreateApplicationRequestDtoQuestionnaire;
 }

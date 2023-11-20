@@ -46,6 +46,7 @@ export enum HrisCreateEmployeeRequestDtoSchemasValue {
     Pending = "pending",
     Terminated = "terminated",
     Leave = "leave",
+    Inactive = "inactive",
     UnmappedValue = "unmapped_value",
 }
 
@@ -62,22 +63,18 @@ export class HrisCreateEmployeeRequestDtoEmploymentStatus extends SpeakeasyBase 
     value: HrisCreateEmployeeRequestDtoSchemasValue;
 }
 
+/**
+ * The type of the employment.
+ */
 export enum HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue {
-    FullTime = "full_time",
-    PartTime = "part_time",
+    Permanent = "permanent",
     Contractor = "contractor",
     Intern = "intern",
-    Permanent = "permanent",
     Apprentice = "apprentice",
     Freelance = "freelance",
-    Terminated = "terminated",
     Temporary = "temporary",
     Seasonal = "seasonal",
     Volunteer = "volunteer",
-    Probation = "probation",
-    Internal = "internal",
-    External = "external",
-    EmployerOfRecord = "employer_of_record",
     UnmappedValue = "unmapped_value",
 }
 
@@ -85,10 +82,16 @@ export enum HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue {
  * The employee employment type
  */
 export class HrisCreateEmployeeRequestDtoEmploymentType extends SpeakeasyBase {
+    /**
+     * The source value of the employment type.
+     */
     @SpeakeasyMetadata()
     @Expose({ name: "source_value" })
     sourceValue: string;
 
+    /**
+     * The type of the employment.
+     */
     @SpeakeasyMetadata()
     @Expose({ name: "value" })
     value: HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue;
@@ -360,7 +363,7 @@ export class HrisCreateEmployeeRequestDto extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     @Expose({ name: "tenure" })
-    tenure?: string;
+    tenure?: number;
 
     /**
      * The employee termination date

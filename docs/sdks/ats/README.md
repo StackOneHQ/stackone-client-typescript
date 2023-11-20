@@ -44,7 +44,7 @@ Create Application
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
-import { ApplicationStatusEnumValue, AttachmentTypeValue, Value } from "@stackone/stackone-client-ts/dist/sdk/models/shared";
+import { ApplicationStatusEnumApiModelValue, AttachmentTypeValue, Value } from "@stackone/stackone-client-ts/dist/sdk/models/shared";
 
 (async() => {
   const sdk = new StackOne({
@@ -57,29 +57,50 @@ import { ApplicationStatusEnumValue, AttachmentTypeValue, Value } from "@stackon
   const res = await sdk.ats.createApplication({
     atsCreateApplicationRequestDto: {
       applicationStatus: {
-        sourceValue: "string",
-        value: ApplicationStatusEnumValue.Lead,
+        sourceValue: "Hired",
+        value: ApplicationStatusEnumApiModelValue.Hired,
       },
       attachments: [
         {
+          content: "Base64 encoded content",
+          fileName: "resume.pdf",
           type: [
-            {},
+            {
+              sourceValue: "Resume",
+              value: AttachmentTypeValue.Resume,
+            },
           ],
+          url: "http://example.com/resume.pdf",
         },
       ],
-      candidate: {},
+      candidate: {
+        email: "john.doe@example.com",
+        firstName: "John",
+        lastName: "Doe",
+      },
+      candidateId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
+      jobId: "4071538b-3cac-4fbf-ac76-f78ed250ffdd",
       locationIds: [
-        "string",
+        "dd8d41d1-5eb8-4408-9c87-9ba44604eae4",
       ],
       questionnaire: {
         answers: [
           {
-            type: {},
+            id: "answer_1",
+            type: {
+              sourceValue: "Short Text",
+              value: Value.ShortText,
+            },
             values: [
-              "string",
+              "Yes",
+              "No Travel",
+              "It sounds pretty cool.",
+              "Excel",
+              "Power Point",
             ],
           },
         ],
+        id: "questionnaire_1",
       },
     },
     xAccountId: "string",
@@ -128,18 +149,21 @@ import { StackOne } from "@stackone/stackone-client-ts";
   const res = await sdk.ats.createCandidate({
     atsCreateCandidateRequestDto: {
       applicationIds: [
-        "string",
+        "123e4567-e89b-12d3-a456-426614174000",
+        "523e1234-e89b-fdd2-a456-762545121101",
       ],
+      company: "Company Inc.",
       emails: [
         {
-          type: "string",
-          value: "string",
+          type: "personal",
+          value: "sestier.romain123@gmail.com",
         },
       ],
-      firstName: "Garett",
-      lastName: "Green",
-      name: "string",
-      title: "string",
+      firstName: "Romain",
+      lastName: "Sestier",
+      name: "Romain Sestier",
+      phone: "+16178294093",
+      title: "Software Engineer",
     },
     xAccountId: "string",
   });
@@ -191,8 +215,8 @@ import { NotesVisibilityEnumValue } from "@stackone/stackone-client-ts/dist/sdk/
         "string",
       ],
       visibility: {
-        sourceValue: "string",
-        value: NotesVisibilityEnumValue.Private,
+        sourceValue: "Public",
+        value: NotesVisibilityEnumValue.Public,
       },
     },
     id: "<ID>",
@@ -250,7 +274,7 @@ import { OfferStatusEnumValue } from "@stackone/stackone-client-ts/dist/sdk/mode
       ],
       offerStatus: {
         sourceValue: "string",
-        value: OfferStatusEnumValue.Retracted,
+        value: OfferStatusEnumValue.Accepted,
       },
       startDate: new Date("2022-03-14T09:37:29.175Z"),
     },
@@ -1527,7 +1551,7 @@ Update Application
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
-import { ApplicationStatusEnumValue, AttachmentTypeValue, Value } from "@stackone/stackone-client-ts/dist/sdk/models/shared";
+import { ApplicationStatusEnumApiModelValue, AttachmentTypeValue, Value } from "@stackone/stackone-client-ts/dist/sdk/models/shared";
 
 (async() => {
   const sdk = new StackOne({
@@ -1540,29 +1564,50 @@ import { ApplicationStatusEnumValue, AttachmentTypeValue, Value } from "@stackon
   const res = await sdk.ats.updateApplication({
     atsUpdateApplicationRequestDto: {
       applicationStatus: {
-        sourceValue: "string",
-        value: ApplicationStatusEnumValue.Converted,
+        sourceValue: "Hired",
+        value: ApplicationStatusEnumApiModelValue.Hired,
       },
       attachments: [
         {
+          content: "Base64 encoded content",
+          fileName: "resume.pdf",
           type: [
-            {},
+            {
+              sourceValue: "Resume",
+              value: AttachmentTypeValue.Resume,
+            },
           ],
+          url: "http://example.com/resume.pdf",
         },
       ],
-      candidate: {},
+      candidate: {
+        email: "john.doe@example.com",
+        firstName: "John",
+        lastName: "Doe",
+      },
+      candidateId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
+      jobId: "4071538b-3cac-4fbf-ac76-f78ed250ffdd",
       locationIds: [
-        "string",
+        "dd8d41d1-5eb8-4408-9c87-9ba44604eae4",
       ],
       questionnaire: {
         answers: [
           {
-            type: {},
+            id: "answer_1",
+            type: {
+              sourceValue: "Short Text",
+              value: Value.ShortText,
+            },
             values: [
-              "string",
+              "Yes",
+              "No Travel",
+              "It sounds pretty cool.",
+              "Excel",
+              "Power Point",
             ],
           },
         ],
+        id: "questionnaire_1",
       },
     },
     id: "<ID>",
@@ -1612,14 +1657,21 @@ import { StackOne } from "@stackone/stackone-client-ts";
   const res = await sdk.ats.updateCandidate({
     atsUpdateCandidatesRequestDto: {
       applicationIds: [
-        "string",
+        "123e4567-e89b-12d3-a456-426614174000",
+        "523e1234-e89b-fdd2-a456-762545121101",
       ],
+      company: "Company Inc.",
       emails: [
         {
-          type: "string",
-          value: "string",
+          type: "personal",
+          value: "sestier.romain123@gmail.com",
         },
       ],
+      firstName: "Romain",
+      lastName: "Sestier",
+      name: "Romain Sestier",
+      phone: "+16178294093",
+      title: "Software Engineer",
     },
     id: "<ID>",
     xAccountId: "string",

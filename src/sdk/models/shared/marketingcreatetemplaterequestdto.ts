@@ -11,10 +11,10 @@ export class MarketingCreateTemplateRequestDto extends SpeakeasyBase {
     @Expose({ name: "id" })
     id?: string;
 
-    @SpeakeasyMetadata()
+    @SpeakeasyMetadata({ elemType: Message })
     @Expose({ name: "messages" })
     @Type(() => Message)
-    messages?: Message;
+    messages?: Message[];
 
     @SpeakeasyMetadata()
     @Expose({ name: "name" })

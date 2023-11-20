@@ -1,4 +1,6 @@
-# JobPostingEmploymentType
+# EmploymentTypeEnumValue
+
+The type of the employment.
 
 
 ## Values

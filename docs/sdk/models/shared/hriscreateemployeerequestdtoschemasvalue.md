@@ -9,4 +9,5 @@
 | `Pending`       | pending         |
 | `Terminated`    | terminated      |
 | `Leave`         | leave           |
+| `Inactive`      | inactive        |
 | `UnmappedValue` | unmapped_value  |

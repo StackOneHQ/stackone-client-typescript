@@ -25,22 +25,18 @@ export class EmploymentEmploymentContractType extends SpeakeasyBase {
     value: EmploymentValue;
 }
 
+/**
+ * The type of the employment.
+ */
 export enum EmploymentSchemasValue {
-    FullTime = "full_time",
-    PartTime = "part_time",
+    Permanent = "permanent",
     Contractor = "contractor",
     Intern = "intern",
-    Permanent = "permanent",
     Apprentice = "apprentice",
     Freelance = "freelance",
-    Terminated = "terminated",
     Temporary = "temporary",
     Seasonal = "seasonal",
     Volunteer = "volunteer",
-    Probation = "probation",
-    Internal = "internal",
-    External = "external",
-    EmployerOfRecord = "employer_of_record",
     UnmappedValue = "unmapped_value",
 }
 
@@ -48,10 +44,16 @@ export enum EmploymentSchemasValue {
  * The type of employment (e.g., contractor, permanent)
  */
 export class EmploymentEmploymentType extends SpeakeasyBase {
+    /**
+     * The source value of the employment type.
+     */
     @SpeakeasyMetadata()
     @Expose({ name: "source_value" })
     sourceValue: string;
 
+    /**
+     * The type of the employment.
+     */
     @SpeakeasyMetadata()
     @Expose({ name: "value" })
     value: EmploymentSchemasValue;

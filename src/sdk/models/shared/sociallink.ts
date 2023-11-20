@@ -6,10 +6,16 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { Expose } from "class-transformer";
 
 export class SocialLink extends SpeakeasyBase {
+    /**
+     * Type of the social link
+     */
     @SpeakeasyMetadata()
     @Expose({ name: "type" })
     type: string;
 
+    /**
+     * URL of the social link
+     */
     @SpeakeasyMetadata()
     @Expose({ name: "url" })
     url: string;

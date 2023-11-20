@@ -1,4 +1,6 @@
-# ApplicationStatusEnumValue
+# ApplicationStatusEnumApiModelValue
+
+The status of the application.
 
 
 ## Values

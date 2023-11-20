@@ -3,19 +3,36 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
+import { Answer } from "./answer";
 import { ApplicationAttachment } from "./applicationattachment";
 import { ApplicationCandidate } from "./applicationcandidate";
-import { ApplicationStatusEnum } from "./applicationstatusenum";
+import { ApplicationStatusEnumApiModel } from "./applicationstatusenumapimodel";
 import { InterviewStage } from "./interviewstage";
-import { Questionnaire } from "./questionnaire";
 import { RejectedReason } from "./rejectedreason";
 import { Expose, Type } from "class-transformer";
+
+/**
+ * Questionnaire associated with the application
+ */
+export class ApplicationQuestionnaire extends SpeakeasyBase {
+    @SpeakeasyMetadata({ elemType: Answer })
+    @Expose({ name: "answers" })
+    @Type(() => Answer)
+    answers: Answer[];
+
+    /**
+     * Unique identifier of the questionnaire
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "id" })
+    id?: string;
+}
 
 export class Application extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "application_status" })
-    @Type(() => ApplicationStatusEnum)
-    applicationStatus: ApplicationStatusEnum;
+    @Type(() => ApplicationStatusEnumApiModel)
+    applicationStatus: ApplicationStatusEnumApiModel;
 
     @SpeakeasyMetadata({ elemType: ApplicationAttachment })
     @Expose({ name: "attachments" })
@@ -27,14 +44,23 @@ export class Application extends SpeakeasyBase {
     @Type(() => ApplicationCandidate)
     candidate: ApplicationCandidate;
 
+    /**
+     * Unique identifier of the candidate
+     */
     @SpeakeasyMetadata()
     @Expose({ name: "candidate_id" })
     candidateId?: string;
 
+    /**
+     * Date of creation
+     */
     @SpeakeasyMetadata()
     @Expose({ name: "created_at" })
     createdAt?: string;
 
+    /**
+     * Unique identifier of the application
+     */
     @SpeakeasyMetadata()
     @Expose({ name: "id" })
     id?: string;
@@ -44,31 +70,52 @@ export class Application extends SpeakeasyBase {
     @Type(() => InterviewStage)
     interviewStage?: InterviewStage[];
 
+    /**
+     * Unique identifier of the interview stage
+     */
     @SpeakeasyMetadata()
     @Expose({ name: "interview_stage_id" })
     interviewStageId?: string;
 
+    /**
+     * Unique identifier of the job
+     */
     @SpeakeasyMetadata()
     @Expose({ name: "job_id" })
     jobId?: string;
 
+    /**
+     * Unique identifier of the location
+     */
     @SpeakeasyMetadata()
     @Expose({ name: "location_id" })
     locationId?: string;
 
+    /**
+     * Unique identifiers of the locations
+     */
     @SpeakeasyMetadata()
     @Expose({ name: "location_ids" })
     locationIds?: string[];
 
+    /**
+     * Questionnaire associated with the application
+     */
     @SpeakeasyMetadata()
     @Expose({ name: "questionnaire" })
-    @Type(() => Questionnaire)
-    questionnaire: Questionnaire;
+    @Type(() => ApplicationQuestionnaire)
+    questionnaire: ApplicationQuestionnaire;
 
+    /**
+     * Date of rejection
+     */
     @SpeakeasyMetadata()
     @Expose({ name: "rejected_at" })
     rejectedAt?: string;
 
+    /**
+     * Unique identifiers of the rejection reasons
+     */
     @SpeakeasyMetadata()
     @Expose({ name: "rejected_reason_ids" })
     rejectedReasonIds?: string[];
@@ -78,6 +125,9 @@ export class Application extends SpeakeasyBase {
     @Type(() => RejectedReason)
     rejectedReasons?: RejectedReason[];
 
+    /**
+     * Date of last update
+     */
     @SpeakeasyMetadata()
     @Expose({ name: "updated_at" })
     updatedAt?: string;
