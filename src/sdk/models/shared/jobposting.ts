@@ -8,7 +8,7 @@ import { EmploymentContractTypeEnum } from "./employmentcontracttypeenum";
 import { EmploymentTypeEnum } from "./employmenttypeenum";
 import { Location } from "./location";
 import { Questionnaire } from "./questionnaire";
-import { Expose, Type } from "class-transformer";
+import { Expose, Transform, Type } from "class-transformer";
 
 export class Content extends SpeakeasyBase {
     @SpeakeasyMetadata()
@@ -43,9 +43,13 @@ export class JobPosting extends SpeakeasyBase {
     @Type(() => Content)
     content?: Content;
 
+    /**
+     * Date of creation
+     */
     @SpeakeasyMetadata()
     @Expose({ name: "created_at" })
-    createdAt?: string;
+    @Transform(({ value }) => new Date(value), { toClassOnly: true })
+    createdAt?: Date;
 
     @SpeakeasyMetadata()
     @Expose({ name: "employment_contract_type" })
@@ -95,7 +99,11 @@ export class JobPosting extends SpeakeasyBase {
     @Expose({ name: "title" })
     title?: string;
 
+    /**
+     * Date of last update
+     */
     @SpeakeasyMetadata()
     @Expose({ name: "updated_at" })
-    updatedAt?: string;
+    @Transform(({ value }) => new Date(value), { toClassOnly: true })
+    updatedAt?: Date;
 }

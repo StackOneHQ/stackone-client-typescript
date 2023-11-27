@@ -120,7 +120,8 @@ export class Employment extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     @Expose({ name: "created_at" })
-    createdAt?: string;
+    @Transform(({ value }) => new Date(value), { toClassOnly: true })
+    createdAt?: Date;
 
     /**
      * The effective date of the employment contract
@@ -202,5 +203,6 @@ export class Employment extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     @Expose({ name: "updated_at" })
-    updatedAt?: string;
+    @Transform(({ value }) => new Date(value), { toClassOnly: true })
+    updatedAt?: Date;
 }

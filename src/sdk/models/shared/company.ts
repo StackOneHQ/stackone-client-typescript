@@ -3,7 +3,7 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
-import { Expose } from "class-transformer";
+import { Expose, Transform } from "class-transformer";
 
 export class Company extends SpeakeasyBase {
     /**
@@ -11,7 +11,8 @@ export class Company extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     @Expose({ name: "created_at" })
-    createdAt?: string;
+    @Transform(({ value }) => new Date(value), { toClassOnly: true })
+    createdAt?: Date;
 
     @SpeakeasyMetadata()
     @Expose({ name: "display_name" })
@@ -30,5 +31,6 @@ export class Company extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     @Expose({ name: "updated_at" })
-    updatedAt?: string;
+    @Transform(({ value }) => new Date(value), { toClassOnly: true })
+    updatedAt?: Date;
 }

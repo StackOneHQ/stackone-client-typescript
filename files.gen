@@ -183,6 +183,8 @@ src/sdk/models/shared/crmcreatecontactrequestdto.ts
 src/sdk/models/shared/accountresult.ts
 src/sdk/models/shared/account.ts
 src/sdk/models/shared/accountaddress.ts
+src/sdk/models/shared/locationtypeenum.ts
+src/sdk/models/shared/countryenum.ts
 src/sdk/models/shared/listresult.ts
 src/sdk/models/shared/list.ts
 src/sdk/models/shared/listtypeenum.ts
@@ -224,6 +226,9 @@ src/sdk/models/shared/pushmessages.ts
 src/sdk/models/shared/pushmessagecontents.ts
 src/sdk/models/shared/campaignresult.ts
 src/sdk/models/shared/campaign.ts
+src/sdk/models/shared/statusenum.ts
+src/sdk/models/shared/scheduletypeenum.ts
+src/sdk/models/shared/channelsenum.ts
 src/sdk/models/shared/templateresult.ts
 src/sdk/models/shared/template.ts
 src/sdk/models/shared/campaignspaginated.ts
@@ -495,6 +500,10 @@ docs/sdk/models/shared/crmcreatecontactrequestdto.md
 docs/sdk/models/shared/accountresult.md
 docs/sdk/models/shared/account.md
 docs/sdk/models/shared/accountaddress.md
+docs/sdk/models/shared/locationtypeenumvalue.md
+docs/sdk/models/shared/locationtypeenum.md
+docs/sdk/models/shared/countryenumvalue.md
+docs/sdk/models/shared/countryenum.md
 docs/sdk/models/shared/listresult.md
 docs/sdk/models/shared/list.md
 docs/sdk/models/shared/listtypeenumvalue.md
@@ -585,8 +594,13 @@ docs/sdk/models/shared/marketingcreatepushtemplaterequestdto.md
 docs/sdk/models/shared/pushmessages.md
 docs/sdk/models/shared/pushmessagecontents.md
 docs/sdk/models/shared/campaignresult.md
-docs/sdk/models/shared/channels.md
 docs/sdk/models/shared/campaign.md
+docs/sdk/models/shared/statusenumvalue.md
+docs/sdk/models/shared/statusenum.md
+docs/sdk/models/shared/scheduletypeenumvalue.md
+docs/sdk/models/shared/scheduletypeenum.md
+docs/sdk/models/shared/channelsenumvalue.md
+docs/sdk/models/shared/channelsenum.md
 docs/sdk/models/shared/templateresult.md
 docs/sdk/models/shared/template.md
 docs/sdk/models/shared/campaignspaginated.md

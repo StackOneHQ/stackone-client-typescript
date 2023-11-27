@@ -5,7 +5,7 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { TimeOffStatusEnum } from "./timeoffstatusenum";
 import { TimeOffTypeEnum } from "./timeofftypeenum";
-import { Expose, Type } from "class-transformer";
+import { Expose, Transform, Type } from "class-transformer";
 
 export class HrisCreateTimeOffRequestDto extends SpeakeasyBase {
     /**
@@ -27,14 +27,16 @@ export class HrisCreateTimeOffRequestDto extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     @Expose({ name: "end_date" })
-    endDate?: string;
+    @Transform(({ value }) => new Date(value), { toClassOnly: true })
+    endDate?: Date;
 
     /**
      * The start date of the time off request
      */
     @SpeakeasyMetadata()
     @Expose({ name: "start_date" })
-    startDate?: string;
+    @Transform(({ value }) => new Date(value), { toClassOnly: true })
+    startDate?: Date;
 
     /**
      * The status of the time off request

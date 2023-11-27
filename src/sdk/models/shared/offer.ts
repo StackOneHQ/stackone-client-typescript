@@ -12,9 +12,13 @@ export class Offer extends SpeakeasyBase {
     @Expose({ name: "application_id" })
     applicationId: string;
 
+    /**
+     * Date of creation
+     */
     @SpeakeasyMetadata()
     @Expose({ name: "created_at" })
-    createdAt?: string;
+    @Transform(({ value }) => new Date(value), { toClassOnly: true })
+    createdAt?: Date;
 
     @SpeakeasyMetadata()
     @Expose({ name: "currency" })
@@ -38,12 +42,19 @@ export class Offer extends SpeakeasyBase {
     @Expose({ name: "salary" })
     salary?: number;
 
+    /**
+     * Date of creation
+     */
     @SpeakeasyMetadata()
     @Expose({ name: "start_date" })
     @Transform(({ value }) => new Date(value), { toClassOnly: true })
     startDate: Date;
 
+    /**
+     * Date of last update
+     */
     @SpeakeasyMetadata()
     @Expose({ name: "updated_at" })
-    updatedAt?: string;
+    @Transform(({ value }) => new Date(value), { toClassOnly: true })
+    updatedAt?: Date;
 }

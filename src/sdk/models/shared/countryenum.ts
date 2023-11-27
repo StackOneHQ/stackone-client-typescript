@@ -3,9 +3,12 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
-import { Expose, Transform, Type } from "class-transformer";
+import { Expose } from "class-transformer";
 
-export enum HRISLocationValue {
+/**
+ * The ISO 3166-1 alpha-2 code of the country.
+ */
+export enum CountryEnumValue {
     Af = "AF",
     Al = "AL",
     Dz = "DZ",
@@ -254,143 +257,20 @@ export enum HRISLocationValue {
     Ye = "YE",
     Zm = "ZM",
     Zw = "ZW",
-    UnmappedValue = "unmapped_value",
 }
 
-/**
- * The country code
- */
-export class Country extends SpeakeasyBase {
-    @SpeakeasyMetadata()
-    @Expose({ name: "source_value" })
-    sourceValue: string;
-
-    @SpeakeasyMetadata()
-    @Expose({ name: "value" })
-    value: HRISLocationValue;
-}
-
-/**
- * The type of the location.
- */
-export enum HRISLocationSchemasValue {
-    Home = "home",
-    Work = "work",
-    UnmappedValue = "unmapped_value",
-}
-
-/**
- * The location type
- */
-export class LocationType extends SpeakeasyBase {
+export class CountryEnum extends SpeakeasyBase {
     /**
-     * The source value of the location type.
+     * The source value of the ISO 3166-1 alpha-2 code of the country.
      */
     @SpeakeasyMetadata()
     @Expose({ name: "source_value" })
     sourceValue: string;
 
     /**
-     * The type of the location.
+     * The ISO 3166-1 alpha-2 code of the country.
      */
     @SpeakeasyMetadata()
     @Expose({ name: "value" })
-    value: HRISLocationSchemasValue;
-}
-
-export class HRISLocation extends SpeakeasyBase {
-    /**
-     * The city where the location is situated
-     */
-    @SpeakeasyMetadata()
-    @Expose({ name: "city" })
-    city?: string;
-
-    /**
-     * The country code
-     */
-    @SpeakeasyMetadata()
-    @Expose({ name: "country" })
-    @Type(() => Country)
-    country?: Country;
-
-    /**
-     * The created_at date
-     */
-    @SpeakeasyMetadata()
-    @Expose({ name: "created_at" })
-    @Transform(({ value }) => new Date(value), { toClassOnly: true })
-    createdAt?: Date;
-
-    /**
-     * The employee ID
-     */
-    @SpeakeasyMetadata()
-    @Expose({ name: "employee_id" })
-    employeeId?: string;
-
-    /**
-     * The unique ID of the location
-     */
-    @SpeakeasyMetadata()
-    @Expose({ name: "id" })
-    id?: string;
-
-    /**
-     * The location type
-     */
-    @SpeakeasyMetadata()
-    @Expose({ name: "location_type" })
-    @Type(() => LocationType)
-    locationType?: LocationType;
-
-    /**
-     * The name of the location
-     */
-    @SpeakeasyMetadata()
-    @Expose({ name: "name" })
-    name?: string;
-
-    /**
-     * The phone number of the location
-     */
-    @SpeakeasyMetadata()
-    @Expose({ name: "phone_number" })
-    phoneNumber?: string;
-
-    /**
-     * The state where the location is situated
-     */
-    @SpeakeasyMetadata()
-    @Expose({ name: "state" })
-    state?: string;
-
-    /**
-     * The first line of the address
-     */
-    @SpeakeasyMetadata()
-    @Expose({ name: "street_1" })
-    street1?: string;
-
-    /**
-     * The second line of the address
-     */
-    @SpeakeasyMetadata()
-    @Expose({ name: "street_2" })
-    street2?: string;
-
-    /**
-     * The updated_at date
-     */
-    @SpeakeasyMetadata()
-    @Expose({ name: "updated_at" })
-    @Transform(({ value }) => new Date(value), { toClassOnly: true })
-    updatedAt?: Date;
-
-    /**
-     * The ZIP code/Postal code of the location
-     */
-    @SpeakeasyMetadata()
-    @Expose({ name: "zip_code" })
-    zipCode?: string;
+    value: CountryEnumValue;
 }

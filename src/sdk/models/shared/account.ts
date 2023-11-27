@@ -4,7 +4,7 @@
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { AccountAddress } from "./accountaddress";
-import { Expose, Type } from "class-transformer";
+import { Expose, Transform, Type } from "class-transformer";
 
 export class Account extends SpeakeasyBase {
     @SpeakeasyMetadata({ elemType: AccountAddress })
@@ -16,9 +16,13 @@ export class Account extends SpeakeasyBase {
     @Expose({ name: "annual_revenue" })
     annualRevenue?: string;
 
+    /**
+     * Timestamp when the account was created
+     */
     @SpeakeasyMetadata()
     @Expose({ name: "created_at" })
-    createdAt?: string;
+    @Transform(({ value }) => new Date(value), { toClassOnly: true })
+    createdAt?: Date;
 
     @SpeakeasyMetadata()
     @Expose({ name: "description" })
@@ -40,13 +44,20 @@ export class Account extends SpeakeasyBase {
     @Expose({ name: "owner_id" })
     ownerId: string;
 
+    /**
+     * List of account phone numbers
+     */
     @SpeakeasyMetadata()
     @Expose({ name: "phone_numbers" })
     phoneNumbers?: string[];
 
+    /**
+     * Timestamp when the account was last updated
+     */
     @SpeakeasyMetadata()
     @Expose({ name: "updated_at" })
-    updatedAt?: string;
+    @Transform(({ value }) => new Date(value), { toClassOnly: true })
+    updatedAt?: Date;
 
     @SpeakeasyMetadata()
     @Expose({ name: "website" })

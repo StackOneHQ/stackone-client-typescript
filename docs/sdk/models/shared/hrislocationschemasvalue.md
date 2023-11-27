@@ -1,5 +1,7 @@
 # HRISLocationSchemasValue
 
+The type of the location.
+
 
 ## Values
 

@@ -6,26 +6,26 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { Expose } from "class-transformer";
 
 /**
- * The type of the list.
+ * The type of the location.
  */
-export enum ListTypeEnumValue {
-    Contacts = "contacts",
-    Companies = "companies",
+export enum LocationTypeEnumValue {
+    Home = "home",
+    Work = "work",
     UnmappedValue = "unmapped_value",
 }
 
-export class ListTypeEnum extends SpeakeasyBase {
+export class LocationTypeEnum extends SpeakeasyBase {
     /**
-     * The source value of the list type.
+     * The source value of the location type.
      */
     @SpeakeasyMetadata()
     @Expose({ name: "source_value" })
     sourceValue: string;
 
     /**
-     * The type of the list.
+     * The type of the location.
      */
     @SpeakeasyMetadata()
     @Expose({ name: "value" })
-    value: ListTypeEnumValue;
+    value: LocationTypeEnumValue;
 }

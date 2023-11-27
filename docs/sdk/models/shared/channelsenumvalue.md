@@ -1,4 +1,6 @@
-# Channels
+# ChannelsEnumValue
+
+The Channels of the campaign.
 
 
 ## Values

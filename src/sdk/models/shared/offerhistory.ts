@@ -6,9 +6,13 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { Expose, Transform } from "class-transformer";
 
 export class OfferHistory extends SpeakeasyBase {
+    /**
+     * Date of creation
+     */
     @SpeakeasyMetadata()
     @Expose({ name: "created_at" })
-    createdAt?: string;
+    @Transform(({ value }) => new Date(value), { toClassOnly: true })
+    createdAt?: Date;
 
     @SpeakeasyMetadata()
     @Expose({ name: "currency" })
@@ -18,12 +22,19 @@ export class OfferHistory extends SpeakeasyBase {
     @Expose({ name: "salary" })
     salary?: number;
 
+    /**
+     * Start Date of the offer
+     */
     @SpeakeasyMetadata()
     @Expose({ name: "start_date" })
     @Transform(({ value }) => new Date(value), { toClassOnly: true })
     startDate: Date;
 
+    /**
+     * Date of last update
+     */
     @SpeakeasyMetadata()
     @Expose({ name: "updated_at" })
-    updatedAt?: string;
+    @Transform(({ value }) => new Date(value), { toClassOnly: true })
+    updatedAt?: Date;
 }

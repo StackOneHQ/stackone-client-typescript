@@ -269,14 +269,16 @@ import { OfferStatusEnumValue } from "@stackone/stackone-client-ts/dist/sdk/mode
       applicationId: "string",
       offerHistory: [
         {
-          startDate: new Date("2022-09-24T09:28:11.477Z"),
+          createdAt: new Date("2022-08-12T20:29:56.964Z"),
+          startDate: new Date("2022-08-12T20:29:56.964Z"),
+          updatedAt: new Date("2022-08-13T22:30:12.304Z"),
         },
       ],
       offerStatus: {
         sourceValue: "string",
         value: OfferStatusEnumValue.Accepted,
       },
-      startDate: new Date("2022-03-14T09:37:29.175Z"),
+      startDate: new Date("2022-08-12T20:29:56.964Z"),
     },
     xAccountId: "string",
   });

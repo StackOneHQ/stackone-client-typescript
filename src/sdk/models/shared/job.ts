@@ -5,7 +5,7 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { HiringTeam } from "./hiringteam";
 import { JobStatusEnum } from "./jobstatusenum";
-import { Expose, Type } from "class-transformer";
+import { Expose, Transform, Type } from "class-transformer";
 
 export enum Confidential {
     True = "true",
@@ -25,9 +25,13 @@ export class Job extends SpeakeasyBase {
     @Expose({ name: "confidential" })
     confidential?: Confidential;
 
+    /**
+     * Date of creation
+     */
     @SpeakeasyMetadata()
     @Expose({ name: "created_at" })
-    createdAt: string;
+    @Transform(({ value }) => new Date(value), { toClassOnly: true })
+    createdAt: Date;
 
     @SpeakeasyMetadata()
     @Expose({ name: "department_ids" })
@@ -55,7 +59,11 @@ export class Job extends SpeakeasyBase {
     @Expose({ name: "title" })
     title: string;
 
+    /**
+     * Date of last update
+     */
     @SpeakeasyMetadata()
     @Expose({ name: "updated_at" })
-    updatedAt: string;
+    @Transform(({ value }) => new Date(value), { toClassOnly: true })
+    updatedAt: Date;
 }
