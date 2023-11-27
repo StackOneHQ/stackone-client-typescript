@@ -3,12 +3,12 @@
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `city`             | *string*           | :heavy_minus_sign: | N/A                |
-| `country`          | *string*           | :heavy_minus_sign: | N/A                |
-| `locationType`     | *string*           | :heavy_minus_sign: | N/A                |
-| `state`            | *string*           | :heavy_minus_sign: | N/A                |
-| `street1`          | *string*           | :heavy_minus_sign: | N/A                |
-| `street2`          | *string*           | :heavy_minus_sign: | N/A                |
-| `zipCode`          | *string*           | :heavy_minus_sign: | N/A                |
+| Field                                                                     | Type                                                                      | Required                                                                  | Description                                                               |
+| ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| `city`                                                                    | *string*                                                                  | :heavy_minus_sign:                                                        | N/A                                                                       |
+| `country`                                                                 | [shared.CountryEnum](../../../sdk/models/shared/countryenum.md)           | :heavy_minus_sign:                                                        | The country code                                                          |
+| `locationType`                                                            | [shared.LocationTypeEnum](../../../sdk/models/shared/locationtypeenum.md) | :heavy_minus_sign:                                                        | The location type                                                         |
+| `state`                                                                   | *string*                                                                  | :heavy_minus_sign:                                                        | N/A                                                                       |
+| `street1`                                                                 | *string*                                                                  | :heavy_minus_sign:                                                        | N/A                                                                       |
+| `street2`                                                                 | *string*                                                                  | :heavy_minus_sign:                                                        | N/A                                                                       |
+| `zipCode`                                                                 | *string*                                                                  | :heavy_minus_sign:                                                        | N/A                                                                       |

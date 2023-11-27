@@ -30,6 +30,9 @@ export class AtsCreateOfferRequestDto extends SpeakeasyBase {
     @Expose({ name: "salary" })
     salary?: number;
 
+    /**
+     * Date of creation
+     */
     @SpeakeasyMetadata()
     @Expose({ name: "start_date" })
     @Transform(({ value }) => new Date(value), { toClassOnly: true })

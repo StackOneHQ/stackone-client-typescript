@@ -6,26 +6,30 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { Expose } from "class-transformer";
 
 /**
- * The type of the list.
+ * The Channels of the campaign.
  */
-export enum ListTypeEnumValue {
-    Contacts = "contacts",
-    Companies = "companies",
+export enum ChannelsEnumValue {
+    Email = "email",
+    Sms = "sms",
+    WebPush = "web_push",
+    IosPush = "ios_push",
+    AndroidPush = "android_push",
+    Unknown = "unknown",
     UnmappedValue = "unmapped_value",
 }
 
-export class ListTypeEnum extends SpeakeasyBase {
+export class ChannelsEnum extends SpeakeasyBase {
     /**
-     * The source value of the list type.
+     * The source value of the Channels.
      */
     @SpeakeasyMetadata()
     @Expose({ name: "source_value" })
     sourceValue: string;
 
     /**
-     * The type of the list.
+     * The Channels of the campaign.
      */
     @SpeakeasyMetadata()
     @Expose({ name: "value" })
-    value: ListTypeEnumValue;
+    value: ChannelsEnumValue;
 }

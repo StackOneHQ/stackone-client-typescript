@@ -6,7 +6,7 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { EmployeeCustomFields } from "./employeecustomfields";
 import { Employment } from "./employment";
 import { HRISLocation } from "./hrislocation";
-import { Expose, Type } from "class-transformer";
+import { Expose, Transform, Type } from "class-transformer";
 
 /**
  * The employee avatar
@@ -193,7 +193,8 @@ export class Employee extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     @Expose({ name: "birthday" })
-    birthday?: string;
+    @Transform(({ value }) => new Date(value), { toClassOnly: true })
+    birthday?: Date;
 
     /**
      * The employee company name
@@ -207,7 +208,8 @@ export class Employee extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     @Expose({ name: "created_at" })
-    createdAt?: string;
+    @Transform(({ value }) => new Date(value), { toClassOnly: true })
+    createdAt?: Date;
 
     /**
      * The employee custom fields
@@ -222,7 +224,8 @@ export class Employee extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     @Expose({ name: "date_of_birth" })
-    dateOfBirth?: string;
+    @Transform(({ value }) => new Date(value), { toClassOnly: true })
+    dateOfBirth?: Date;
 
     /**
      * The employee department
@@ -283,7 +286,7 @@ export class Employee extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     @Expose({ name: "first_name" })
-    firstName?: string;
+    firstName: string;
 
     /**
      * The employee gender
@@ -298,7 +301,8 @@ export class Employee extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     @Expose({ name: "hire_date" })
-    hireDate?: string;
+    @Transform(({ value }) => new Date(value), { toClassOnly: true })
+    hireDate?: Date;
 
     /**
      * The employee home location
@@ -313,7 +317,7 @@ export class Employee extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     @Expose({ name: "id" })
-    id?: string;
+    id: string;
 
     /**
      * The employee job title
@@ -327,7 +331,7 @@ export class Employee extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     @Expose({ name: "last_name" })
-    lastName?: string;
+    lastName: string;
 
     /**
      * The employee manager ID
@@ -370,7 +374,8 @@ export class Employee extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     @Expose({ name: "start_date" })
-    startDate?: string;
+    @Transform(({ value }) => new Date(value), { toClassOnly: true })
+    startDate?: Date;
 
     /**
      * The employee tenure
@@ -384,28 +389,31 @@ export class Employee extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     @Expose({ name: "termination_date" })
-    terminationDate?: string;
+    @Transform(({ value }) => new Date(value), { toClassOnly: true })
+    terminationDate?: Date;
 
     /**
      * The updated_at date
      */
     @SpeakeasyMetadata()
     @Expose({ name: "updated_at" })
-    updatedAt?: string;
+    @Transform(({ value }) => new Date(value), { toClassOnly: true })
+    updatedAt?: Date;
 
     /**
      * The employee work anniversary
      */
     @SpeakeasyMetadata()
     @Expose({ name: "work_anniversary" })
-    workAnniversary?: string;
+    @Transform(({ value }) => new Date(value), { toClassOnly: true })
+    workAnniversary?: Date;
 
     /**
      * The employee work email
      */
     @SpeakeasyMetadata()
     @Expose({ name: "work_email" })
-    workEmail?: string;
+    workEmail: string;
 
     /**
      * The employee work location

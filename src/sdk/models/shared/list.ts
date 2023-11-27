@@ -4,12 +4,16 @@
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { ListTypeEnum } from "./listtypeenum";
-import { Expose, Type } from "class-transformer";
+import { Expose, Transform, Type } from "class-transformer";
 
 export class List extends SpeakeasyBase {
+    /**
+     * Timestamp when the list was created
+     */
     @SpeakeasyMetadata()
     @Expose({ name: "created_at" })
-    createdAt?: string;
+    @Transform(({ value }) => new Date(value), { toClassOnly: true })
+    createdAt?: Date;
 
     @SpeakeasyMetadata()
     @Expose({ name: "id" })
@@ -20,15 +24,22 @@ export class List extends SpeakeasyBase {
     items?: string[];
 
     @SpeakeasyMetadata()
-    @Expose({ name: "location_type" })
-    @Type(() => ListTypeEnum)
-    locationType?: ListTypeEnum;
-
-    @SpeakeasyMetadata()
     @Expose({ name: "name" })
     name: string;
 
+    /**
+     * The list type
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "type" })
+    @Type(() => ListTypeEnum)
+    type?: ListTypeEnum;
+
+    /**
+     * Timestamp when the list was last updated
+     */
     @SpeakeasyMetadata()
     @Expose({ name: "updated_at" })
-    updatedAt?: string;
+    @Transform(({ value }) => new Date(value), { toClassOnly: true })
+    updatedAt?: Date;
 }

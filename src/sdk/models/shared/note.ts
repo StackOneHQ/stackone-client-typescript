@@ -4,28 +4,40 @@
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { NotesVisibilityEnum } from "./notesvisibilityenum";
-import { Expose, Type } from "class-transformer";
+import { Expose, Transform, Type } from "class-transformer";
 
 export class Note extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "content" })
     content: string[];
 
+    /**
+     * Date of creation
+     */
     @SpeakeasyMetadata()
     @Expose({ name: "created_at" })
-    createdAt: string;
+    @Transform(({ value }) => new Date(value), { toClassOnly: true })
+    createdAt?: Date;
 
+    /**
+     * Date of Deletion
+     */
     @SpeakeasyMetadata()
     @Expose({ name: "deleted_at" })
-    deletedAt: string;
+    @Transform(({ value }) => new Date(value), { toClassOnly: true })
+    deletedAt?: Date;
 
     @SpeakeasyMetadata()
     @Expose({ name: "id" })
     id: string;
 
+    /**
+     * Date of last update
+     */
     @SpeakeasyMetadata()
     @Expose({ name: "updated_at" })
-    updatedAt: string;
+    @Transform(({ value }) => new Date(value), { toClassOnly: true })
+    updatedAt?: Date;
 
     @SpeakeasyMetadata()
     @Expose({ name: "visibility" })

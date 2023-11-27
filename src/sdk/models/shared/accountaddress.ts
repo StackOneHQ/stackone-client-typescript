@@ -3,20 +3,30 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
-import { Expose } from "class-transformer";
+import { CountryEnum } from "./countryenum";
+import { LocationTypeEnum } from "./locationtypeenum";
+import { Expose, Type } from "class-transformer";
 
 export class AccountAddress extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "city" })
     city?: string;
 
+    /**
+     * The country code
+     */
     @SpeakeasyMetadata()
     @Expose({ name: "country" })
-    country?: string;
+    @Type(() => CountryEnum)
+    country?: CountryEnum;
 
+    /**
+     * The location type
+     */
     @SpeakeasyMetadata()
     @Expose({ name: "location_type" })
-    locationType?: string;
+    @Type(() => LocationTypeEnum)
+    locationType?: LocationTypeEnum;
 
     @SpeakeasyMetadata()
     @Expose({ name: "state" })

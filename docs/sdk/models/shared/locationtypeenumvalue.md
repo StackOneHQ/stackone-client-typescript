@@ -1,12 +1,12 @@
-# ListTypeEnumValue
+# LocationTypeEnumValue
 
-The type of the list.
+The type of the location.
 
 
 ## Values
 
 | Name            | Value           |
 | --------------- | --------------- |
-| `Contacts`      | contacts        |
-| `Companies`     | companies       |
+| `Home`          | home            |
+| `Work`          | work            |
 | `UnmappedValue` | unmapped_value  |

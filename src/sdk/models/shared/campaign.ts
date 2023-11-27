@@ -3,31 +3,32 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
+import { ChannelsEnum } from "./channelsenum";
 import { Message } from "./message";
-import { Expose, Type } from "class-transformer";
-
-export enum Channels {
-    Email = "email",
-    Sms = "sms",
-    WebPush = "web_push",
-    IosPush = "ios_push",
-    AndroidPush = "android_push",
-    Unknown = "unknown",
-    UnmappedValue = "unmapped_value",
-}
+import { ScheduleTypeEnum } from "./scheduletypeenum";
+import { StatusEnum } from "./statusenum";
+import { Expose, Transform, Type } from "class-transformer";
 
 export class Campaign extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "archived" })
     archived?: boolean;
 
-    @SpeakeasyMetadata()
+    /**
+     * channels of the Campaign
+     */
+    @SpeakeasyMetadata({ elemType: ChannelsEnum })
     @Expose({ name: "channels" })
-    channels?: Channels[];
+    @Type(() => ChannelsEnum)
+    channels?: ChannelsEnum[];
 
+    /**
+     * The created_at date
+     */
     @SpeakeasyMetadata()
     @Expose({ name: "created_at" })
-    createdAt?: string;
+    @Transform(({ value }) => new Date(value), { toClassOnly: true })
+    createdAt?: Date;
 
     @SpeakeasyMetadata()
     @Expose({ name: "description" })
@@ -37,17 +38,25 @@ export class Campaign extends SpeakeasyBase {
     @Expose({ name: "draft" })
     draft?: boolean;
 
+    /**
+     * The first_sent_at date
+     */
     @SpeakeasyMetadata()
     @Expose({ name: "first_sent_at" })
-    firstSentAt?: string;
+    @Transform(({ value }) => new Date(value), { toClassOnly: true })
+    firstSentAt?: Date;
 
     @SpeakeasyMetadata()
     @Expose({ name: "id" })
     id?: string;
 
+    /**
+     * The last_sent_at date
+     */
     @SpeakeasyMetadata()
     @Expose({ name: "last_sent_at" })
-    lastSentAt?: string;
+    @Transform(({ value }) => new Date(value), { toClassOnly: true })
+    lastSentAt?: Date;
 
     @SpeakeasyMetadata({ elemType: Message })
     @Expose({ name: "messages" })
@@ -58,11 +67,31 @@ export class Campaign extends SpeakeasyBase {
     @Expose({ name: "name" })
     name: string;
 
+    /**
+     * The schedule type
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "schedule_type" })
+    @Type(() => ScheduleTypeEnum)
+    scheduleType?: ScheduleTypeEnum;
+
+    /**
+     * Status of the Campaign
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "status" })
+    @Type(() => StatusEnum)
+    status?: StatusEnum;
+
     @SpeakeasyMetadata()
     @Expose({ name: "tags" })
     tags?: string[];
 
+    /**
+     * The updated_at date
+     */
     @SpeakeasyMetadata()
     @Expose({ name: "updated_at" })
-    updatedAt?: string;
+    @Transform(({ value }) => new Date(value), { toClassOnly: true })
+    updatedAt?: Date;
 }

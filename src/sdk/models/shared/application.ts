@@ -9,7 +9,7 @@ import { ApplicationCandidate } from "./applicationcandidate";
 import { ApplicationStatusEnumApiModel } from "./applicationstatusenumapimodel";
 import { InterviewStage } from "./interviewstage";
 import { RejectedReason } from "./rejectedreason";
-import { Expose, Type } from "class-transformer";
+import { Expose, Transform, Type } from "class-transformer";
 
 /**
  * Questionnaire associated with the application
@@ -56,7 +56,8 @@ export class Application extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     @Expose({ name: "created_at" })
-    createdAt?: string;
+    @Transform(({ value }) => new Date(value), { toClassOnly: true })
+    createdAt?: Date;
 
     /**
      * Unique identifier of the application
@@ -111,7 +112,8 @@ export class Application extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     @Expose({ name: "rejected_at" })
-    rejectedAt?: string;
+    @Transform(({ value }) => new Date(value), { toClassOnly: true })
+    rejectedAt?: Date;
 
     /**
      * Unique identifiers of the rejection reasons
@@ -130,5 +132,6 @@ export class Application extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     @Expose({ name: "updated_at" })
-    updatedAt?: string;
+    @Transform(({ value }) => new Date(value), { toClassOnly: true })
+    updatedAt?: Date;
 }

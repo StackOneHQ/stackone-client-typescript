@@ -6,7 +6,7 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { EmployeeCustomFields } from "./employeecustomfields";
 import { Employment } from "./employment";
 import { HrisLocationsCreateRequestDto } from "./hrislocationscreaterequestdto";
-import { Expose, Type } from "class-transformer";
+import { Expose, Transform, Type } from "class-transformer";
 
 /**
  * The employee avatar
@@ -193,7 +193,8 @@ export class HrisCreateEmployeeRequestDto extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     @Expose({ name: "birthday" })
-    birthday?: string;
+    @Transform(({ value }) => new Date(value), { toClassOnly: true })
+    birthday?: Date;
 
     /**
      * The employee company name
@@ -215,7 +216,8 @@ export class HrisCreateEmployeeRequestDto extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     @Expose({ name: "date_of_birth" })
-    dateOfBirth?: string;
+    @Transform(({ value }) => new Date(value), { toClassOnly: true })
+    dateOfBirth?: Date;
 
     /**
      * The employee department
@@ -276,7 +278,7 @@ export class HrisCreateEmployeeRequestDto extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     @Expose({ name: "first_name" })
-    firstName?: string;
+    firstName: string;
 
     /**
      * The employee gender
@@ -291,7 +293,8 @@ export class HrisCreateEmployeeRequestDto extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     @Expose({ name: "hire_date" })
-    hireDate?: string;
+    @Transform(({ value }) => new Date(value), { toClassOnly: true })
+    hireDate?: Date;
 
     /**
      * The employee home location
@@ -313,7 +316,7 @@ export class HrisCreateEmployeeRequestDto extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     @Expose({ name: "last_name" })
-    lastName?: string;
+    lastName: string;
 
     /**
      * The employee manager ID
@@ -356,7 +359,8 @@ export class HrisCreateEmployeeRequestDto extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     @Expose({ name: "start_date" })
-    startDate?: string;
+    @Transform(({ value }) => new Date(value), { toClassOnly: true })
+    startDate?: Date;
 
     /**
      * The employee tenure
@@ -370,21 +374,23 @@ export class HrisCreateEmployeeRequestDto extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     @Expose({ name: "termination_date" })
-    terminationDate?: string;
+    @Transform(({ value }) => new Date(value), { toClassOnly: true })
+    terminationDate?: Date;
 
     /**
      * The employee work anniversary
      */
     @SpeakeasyMetadata()
     @Expose({ name: "work_anniversary" })
-    workAnniversary?: string;
+    @Transform(({ value }) => new Date(value), { toClassOnly: true })
+    workAnniversary?: Date;
 
     /**
      * The employee work email
      */
     @SpeakeasyMetadata()
     @Expose({ name: "work_email" })
-    workEmail?: string;
+    workEmail: string;
 
     /**
      * The employee work location

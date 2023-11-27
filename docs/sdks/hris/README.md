@@ -57,7 +57,7 @@ import {
     hrisCreateEmployeeRequestDto: {
       avatar: {},
       avatarUrl: "https://example.com/avatar.png",
-      birthday: "2023-06-14T00:00:00Z",
+      birthday: new Date("2023-06-14T00:00:00Z"),
       companyName: "Example Corp",
       customFields: [
         {
@@ -78,7 +78,7 @@ import {
           valueId: "value_456",
         },
       ],
-      dateOfBirth: "1990-01-01",
+      dateOfBirth: new Date("1990-01-01T00:00.000Z"),
       department: "Physics",
       displayName: "Sir Issac Newton",
       employmentContractType: {
@@ -95,7 +95,7 @@ import {
       },
       employments: [
         {
-          createdAt: "2023-06-14T01:00:00Z",
+          createdAt: new Date("2023-06-14T01:00:00Z"),
           effectiveDate: new Date("2023-07-01"),
           employeeId: "1687-3",
           employmentContractType: {
@@ -118,7 +118,7 @@ import {
             value: EmploymentSchemasPayPeriodValue.Day,
           },
           payRate: "40.00",
-          updatedAt: "2023-06-14T01:00:00Z",
+          updatedAt: new Date("2023-06-14T01:00:00Z"),
         },
       ],
       ethnicity: {
@@ -130,7 +130,7 @@ import {
         sourceValue: "string",
         value: HrisCreateEmployeeRequestDtoSchemasGenderValue.UnmappedValue,
       },
-      hireDate: "2022-01-01",
+      hireDate: new Date("2023-06-07T00:00.000Z"),
       homeLocation: {
         city: "Grantham",
         country: {
@@ -157,10 +157,10 @@ import {
       name: "Issac Newton",
       personalEmail: "isaac.newton@example.com",
       personalPhoneNumber: "+1234567890",
-      startDate: "2022-01-01",
+      startDate: new Date("2023-06-07T00:00.000Z"),
       tenure: 2,
-      terminationDate: "2023-06-14T00:00:00Z",
-      workAnniversary: "2022-06-14T00:00:00Z",
+      terminationDate: new Date("2023-06-14T00:00:00Z"),
+      workAnniversary: new Date("2022-06-14T00:00:00Z"),
       workEmail: "newton@example.com",
       workLocation: {
         city: "Grantham",
@@ -228,6 +228,8 @@ import { TimeOffStatusEnumValue, TimeOffTypeEnumValue } from "@stackone/stackone
     hrisCreateTimeOffRequestDto: {
       approverId: "1687-4",
       employeeId: "1687-3",
+      endDate: new Date("2023-06-18T01:00:00Z"),
+      startDate: new Date("2023-07-14T01:00:00Z"),
       status: {
         sourceValue: "string",
         value: TimeOffStatusEnumValue.UnmappedValue,
@@ -286,6 +288,8 @@ import { TimeOffStatusEnumValue, TimeOffTypeEnumValue } from "@stackone/stackone
     hrisCreateTimeOffRequestDto: {
       approverId: "1687-4",
       employeeId: "1687-3",
+      endDate: new Date("2023-06-18T01:00:00Z"),
+      startDate: new Date("2023-07-14T01:00:00Z"),
       status: {
         sourceValue: "string",
         value: TimeOffStatusEnumValue.UnmappedValue,
@@ -929,7 +933,7 @@ import {
     hrisCreateEmployeeRequestDto: {
       avatar: {},
       avatarUrl: "https://example.com/avatar.png",
-      birthday: "2023-06-14T00:00:00Z",
+      birthday: new Date("2023-06-14T00:00:00Z"),
       companyName: "Example Corp",
       customFields: [
         {
@@ -950,7 +954,7 @@ import {
           valueId: "value_456",
         },
       ],
-      dateOfBirth: "1990-01-01",
+      dateOfBirth: new Date("1990-01-01T00:00.000Z"),
       department: "Physics",
       displayName: "Sir Issac Newton",
       employmentContractType: {
@@ -967,7 +971,7 @@ import {
       },
       employments: [
         {
-          createdAt: "2023-06-14T01:00:00Z",
+          createdAt: new Date("2023-06-14T01:00:00Z"),
           effectiveDate: new Date("2023-07-01"),
           employeeId: "1687-3",
           employmentContractType: {
@@ -990,7 +994,7 @@ import {
             value: EmploymentSchemasPayPeriodValue.Hour,
           },
           payRate: "40.00",
-          updatedAt: "2023-06-14T01:00:00Z",
+          updatedAt: new Date("2023-06-14T01:00:00Z"),
         },
       ],
       ethnicity: {
@@ -1002,7 +1006,7 @@ import {
         sourceValue: "string",
         value: HrisCreateEmployeeRequestDtoSchemasGenderValue.NotDisclosed,
       },
-      hireDate: "2022-01-01",
+      hireDate: new Date("2023-06-07T00:00.000Z"),
       homeLocation: {
         city: "Grantham",
         country: {
@@ -1029,10 +1033,10 @@ import {
       name: "Issac Newton",
       personalEmail: "isaac.newton@example.com",
       personalPhoneNumber: "+1234567890",
-      startDate: "2022-01-01",
+      startDate: new Date("2023-06-07T00:00.000Z"),
       tenure: 2,
-      terminationDate: "2023-06-14T00:00:00Z",
-      workAnniversary: "2022-06-14T00:00:00Z",
+      terminationDate: new Date("2023-06-14T00:00:00Z"),
+      workAnniversary: new Date("2022-06-14T00:00:00Z"),
       workEmail: "newton@example.com",
       workLocation: {
         city: "Grantham",
@@ -1101,6 +1105,8 @@ import { TimeOffStatusEnumValue, TimeOffTypeEnumValue } from "@stackone/stackone
     hrisCreateTimeOffRequestDto: {
       approverId: "1687-4",
       employeeId: "1687-3",
+      endDate: new Date("2023-06-18T01:00:00Z"),
+      startDate: new Date("2023-07-14T01:00:00Z"),
       status: {
         sourceValue: "string",
         value: TimeOffStatusEnumValue.Approved,
