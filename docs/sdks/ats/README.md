@@ -44,7 +44,12 @@ Create Application
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
-import { ApplicationStatusEnumApiModelValue, AttachmentTypeValue, Value } from "@stackone/stackone-client-ts/dist/sdk/models/shared";
+import {
+  ApplicationStatusEnumApiModelValue,
+  AttachmentContentTypeValue,
+  AttachmentTypeValue,
+  Value,
+} from "@stackone/stackone-client-ts/dist/sdk/models/shared";
 
 (async() => {
   const sdk = new StackOne({
@@ -63,6 +68,10 @@ import { ApplicationStatusEnumApiModelValue, AttachmentTypeValue, Value } from "
       attachments: [
         {
           content: "Base64 encoded content",
+          contentType: {
+            sourceValue: "Text",
+            value: AttachmentContentTypeValue.Text,
+          },
           fileName: "resume.pdf",
           type: [
             {
@@ -269,16 +278,16 @@ import { OfferStatusEnumValue } from "@stackone/stackone-client-ts/dist/sdk/mode
       applicationId: "string",
       offerHistory: [
         {
-          createdAt: new Date("2022-08-12T20:29:56.964Z"),
-          startDate: new Date("2022-08-12T20:29:56.964Z"),
-          updatedAt: new Date("2022-08-13T22:30:12.304Z"),
+          createdAt: new Date("2021-01-01T01:01:01.000Z"),
+          startDate: new Date("2021-01-01T01:01:01.000Z"),
+          updatedAt: new Date("2021-01-01T01:01:01.000Z"),
         },
       ],
       offerStatus: {
-        sourceValue: "string",
-        value: OfferStatusEnumValue.Accepted,
+        sourceValue: "Pending",
+        value: OfferStatusEnumValue.Pending,
       },
-      startDate: new Date("2022-08-12T20:29:56.964Z"),
+      startDate: new Date("2021-01-01T01:01:01.000Z"),
     },
     xAccountId: "string",
   });
@@ -1553,7 +1562,12 @@ Update Application
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
-import { ApplicationStatusEnumApiModelValue, AttachmentTypeValue, Value } from "@stackone/stackone-client-ts/dist/sdk/models/shared";
+import {
+  ApplicationStatusEnumApiModelValue,
+  AttachmentContentTypeValue,
+  AttachmentTypeValue,
+  Value,
+} from "@stackone/stackone-client-ts/dist/sdk/models/shared";
 
 (async() => {
   const sdk = new StackOne({
@@ -1572,6 +1586,10 @@ import { ApplicationStatusEnumApiModelValue, AttachmentTypeValue, Value } from "
       attachments: [
         {
           content: "Base64 encoded content",
+          contentType: {
+            sourceValue: "Text",
+            value: AttachmentContentTypeValue.Text,
+          },
           fileName: "resume.pdf",
           type: [
             {

@@ -1,21 +1,11 @@
 # PayFrequency
 
+The pay frequency
 
-## Values
 
-| Name              | Value             |
-| ----------------- | ----------------- |
-| `Hourly`          | hourly            |
-| `Weekly`          | weekly            |
-| `BiWeekly`        | bi_weekly         |
-| `FourWeekly`      | four_weekly       |
-| `SemiMonthly`     | semi_monthly      |
-| `Monthly`         | monthly           |
-| `BiMonthly`       | bi_monthly        |
-| `Quarterly`       | quarterly         |
-| `SemiAnnually`    | semi_annually     |
-| `Yearly`          | yearly            |
-| `ThirteenMonthly` | thirteen_monthly  |
-| `ProRata`         | pro_rata          |
-| `UnmappedValue`   | unmapped_value    |
-| `HalfYearly`      | half_yearly       |
+## Fields
+
+| Field                                                                                                         | Type                                                                                                          | Required                                                                                                      | Description                                                                                                   | Example                                                                                                       |
+| ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
+| `sourceValue`                                                                                                 | *string*                                                                                                      | :heavy_check_mark:                                                                                            | The source value of the pay frequency.                                                                        | Hourly                                                                                                        |
+| `value`                                                                                                       | [shared.EmploymentSchemasPayFrequencyValue](../../../sdk/models/shared/employmentschemaspayfrequencyvalue.md) | :heavy_check_mark:                                                                                            | The pay frequency of the job postings.                                                                        | hourly                                                                                                        |

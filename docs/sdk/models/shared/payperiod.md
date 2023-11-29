@@ -1,17 +1,11 @@
 # PayPeriod
 
+The pay period
 
-## Values
 
-| Name             | Value            |
-| ---------------- | ---------------- |
-| `Hour`           | hour             |
-| `Day`            | day              |
-| `Week`           | week             |
-| `EveryTwoWeeks`  | every_two_weeks  |
-| `Month`          | month            |
-| `Quarter`        | quarter          |
-| `EverySixMonths` | every_six_months |
-| `Year`           | year             |
-| `None`           | none             |
-| `UnmappedValue`  | unmapped_value   |
+## Fields
+
+| Field                                                                                                   | Type                                                                                                    | Required                                                                                                | Description                                                                                             | Example                                                                                                 |
+| ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| `sourceValue`                                                                                           | *string*                                                                                                | :heavy_check_mark:                                                                                      | The source value of the pay period.                                                                     | Hour                                                                                                    |
+| `value`                                                                                                 | [shared.EmploymentSchemasPayPeriodValue](../../../sdk/models/shared/employmentschemaspayperiodvalue.md) | :heavy_check_mark:                                                                                      | The pay period of the job postings.                                                                     | hour                                                                                                    |

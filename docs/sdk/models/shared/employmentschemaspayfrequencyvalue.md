@@ -1,5 +1,7 @@
 # EmploymentSchemasPayFrequencyValue
 
+The pay frequency of the job postings.
+
 
 ## Values
 

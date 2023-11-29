@@ -1,4 +1,4 @@
-<!-- Start SDK Example Usage -->
+<!-- Start SDK Example Usage [usage] -->
 ### List Employees
 
 ```typescript
@@ -25,4 +25,4 @@ import { StackOne } from "@stackone/stackone-client-ts";
 })();
 
 ```
-<!-- End SDK Example Usage -->
+<!-- End SDK Example Usage [usage] -->

@@ -14,11 +14,17 @@ export class Interview extends SpeakeasyBase {
     @Expose({ name: "application_id" })
     applicationId: string;
 
+    /**
+     * Interview created date
+     */
     @SpeakeasyMetadata()
     @Expose({ name: "created_at" })
     @Transform(({ value }) => new Date(value), { toClassOnly: true })
     createdAt?: Date;
 
+    /**
+     * Interview end date
+     */
     @SpeakeasyMetadata()
     @Expose({ name: "end_at" })
     @Transform(({ value }) => new Date(value), { toClassOnly: true })
@@ -45,7 +51,7 @@ export class Interview extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "interview_status" })
     @Type(() => InterviewStatusEnum)
-    interviewStatus: InterviewStatusEnum;
+    interviewStatus?: InterviewStatusEnum;
 
     @SpeakeasyMetadata()
     @Expose({ name: "interviewer_ids" })
@@ -60,11 +66,17 @@ export class Interview extends SpeakeasyBase {
     @Expose({ name: "meeting_url" })
     meetingUrl?: string;
 
+    /**
+     * Interview start date
+     */
     @SpeakeasyMetadata()
     @Expose({ name: "start_at" })
     @Transform(({ value }) => new Date(value), { toClassOnly: true })
     startAt: Date;
 
+    /**
+     * Interview updated date
+     */
     @SpeakeasyMetadata()
     @Expose({ name: "updated_at" })
     @Transform(({ value }) => new Date(value), { toClassOnly: true })

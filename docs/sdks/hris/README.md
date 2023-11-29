@@ -57,7 +57,7 @@ import {
     hrisCreateEmployeeRequestDto: {
       avatar: {},
       avatarUrl: "https://example.com/avatar.png",
-      birthday: new Date("2023-06-14T00:00:00Z"),
+      birthday: new Date("2021-01-01T00:00:00Z"),
       companyName: "Example Corp",
       customFields: [
         {
@@ -95,8 +95,8 @@ import {
       },
       employments: [
         {
-          createdAt: new Date("2023-06-14T01:00:00Z"),
-          effectiveDate: new Date("2023-07-01"),
+          createdAt: new Date("2021-01-01T01:01:01.000Z"),
+          effectiveDate: new Date("2021-01-01T01:01:01.000Z"),
           employeeId: "1687-3",
           employmentContractType: {
             sourceValue: "string",
@@ -110,38 +110,38 @@ import {
           jobTitle: "Software Engineer",
           payCurrency: "USD",
           payFrequency: {
-            sourceValue: "string",
-            value: EmploymentSchemasPayFrequencyValue.ProRata,
+            sourceValue: "Hourly",
+            value: EmploymentSchemasPayFrequencyValue.Hourly,
           },
           payPeriod: {
-            sourceValue: "string",
-            value: EmploymentSchemasPayPeriodValue.Day,
+            sourceValue: "Hour",
+            value: EmploymentSchemasPayPeriodValue.Hour,
           },
           payRate: "40.00",
-          updatedAt: new Date("2023-06-14T01:00:00Z"),
+          updatedAt: new Date("2021-01-01T01:01:01.000Z"),
         },
       ],
       ethnicity: {
         sourceValue: "string",
-        value: HrisCreateEmployeeRequestDtoSchemasEthnicityValue.UnmappedValue,
+        value: HrisCreateEmployeeRequestDtoSchemasEthnicityValue.Other,
       },
       firstName: "Issac",
       gender: {
         sourceValue: "string",
-        value: HrisCreateEmployeeRequestDtoSchemasGenderValue.UnmappedValue,
+        value: HrisCreateEmployeeRequestDtoSchemasGenderValue.Female,
       },
-      hireDate: new Date("2023-06-07T00:00.000Z"),
+      hireDate: new Date("2021-01-01T00:00.000Z"),
       homeLocation: {
         city: "Grantham",
         country: {
           sourceValue: "string",
-          value: HrisLocationsCreateRequestDtoValue.Ki,
+          value: HrisLocationsCreateRequestDtoValue.Vg,
         },
         name: "Woolsthorpe Manor",
         phoneNumber: "+44 1476 860 364",
         state: {
           sourceValue: "string",
-          value: HrisLocationsCreateRequestDtoSchemasValue.SyLa,
+          value: HrisLocationsCreateRequestDtoSchemasValue.Tr73,
         },
         street1: "Water Lane",
         street2: "Woolsthorpe by Colsterworth",
@@ -152,27 +152,27 @@ import {
       managerId: "67890",
       maritalStatus: {
         sourceValue: "string",
-        value: HrisCreateEmployeeRequestDtoSchemasMaritalStatusValue.UnmappedValue,
+        value: HrisCreateEmployeeRequestDtoSchemasMaritalStatusValue.Widowed,
       },
       name: "Issac Newton",
       personalEmail: "isaac.newton@example.com",
       personalPhoneNumber: "+1234567890",
-      startDate: new Date("2023-06-07T00:00.000Z"),
+      startDate: new Date("2021-01-01T00:00.000Z"),
       tenure: 2,
-      terminationDate: new Date("2023-06-14T00:00:00Z"),
-      workAnniversary: new Date("2022-06-14T00:00:00Z"),
+      terminationDate: new Date("2021-01-01T00:00:00Z"),
+      workAnniversary: new Date("2021-01-01T00:00:00Z"),
       workEmail: "newton@example.com",
       workLocation: {
         city: "Grantham",
         country: {
           sourceValue: "string",
-          value: HrisLocationsCreateRequestDtoValue.Ao,
+          value: HrisLocationsCreateRequestDtoValue.Gs,
         },
         name: "Woolsthorpe Manor",
         phoneNumber: "+44 1476 860 364",
         state: {
           sourceValue: "string",
-          value: HrisLocationsCreateRequestDtoSchemasValue.AoCnn,
+          value: HrisLocationsCreateRequestDtoSchemasValue.Ug215,
         },
         street1: "Water Lane",
         street2: "Woolsthorpe by Colsterworth",
@@ -228,8 +228,8 @@ import { TimeOffStatusEnumValue, TimeOffTypeEnumValue } from "@stackone/stackone
     hrisCreateTimeOffRequestDto: {
       approverId: "1687-4",
       employeeId: "1687-3",
-      endDate: new Date("2023-06-18T01:00:00Z"),
-      startDate: new Date("2023-07-14T01:00:00Z"),
+      endDate: new Date("2021-01-01T01:01:01.000Z"),
+      startDate: new Date("2021-01-01T01:01:01.000Z"),
       status: {
         sourceValue: "string",
         value: TimeOffStatusEnumValue.UnmappedValue,
@@ -288,8 +288,8 @@ import { TimeOffStatusEnumValue, TimeOffTypeEnumValue } from "@stackone/stackone
     hrisCreateTimeOffRequestDto: {
       approverId: "1687-4",
       employeeId: "1687-3",
-      endDate: new Date("2023-06-18T01:00:00Z"),
-      startDate: new Date("2023-07-14T01:00:00Z"),
+      endDate: new Date("2021-01-01T01:01:01.000Z"),
+      startDate: new Date("2021-01-01T01:01:01.000Z"),
       status: {
         sourceValue: "string",
         value: TimeOffStatusEnumValue.UnmappedValue,
@@ -933,7 +933,7 @@ import {
     hrisCreateEmployeeRequestDto: {
       avatar: {},
       avatarUrl: "https://example.com/avatar.png",
-      birthday: new Date("2023-06-14T00:00:00Z"),
+      birthday: new Date("2021-01-01T00:00:00Z"),
       companyName: "Example Corp",
       customFields: [
         {
@@ -971,8 +971,8 @@ import {
       },
       employments: [
         {
-          createdAt: new Date("2023-06-14T01:00:00Z"),
-          effectiveDate: new Date("2023-07-01"),
+          createdAt: new Date("2021-01-01T01:01:01.000Z"),
+          effectiveDate: new Date("2021-01-01T01:01:01.000Z"),
           employeeId: "1687-3",
           employmentContractType: {
             sourceValue: "string",
@@ -986,15 +986,15 @@ import {
           jobTitle: "Software Engineer",
           payCurrency: "USD",
           payFrequency: {
-            sourceValue: "string",
-            value: EmploymentSchemasPayFrequencyValue.BiWeekly,
+            sourceValue: "Hourly",
+            value: EmploymentSchemasPayFrequencyValue.Hourly,
           },
           payPeriod: {
-            sourceValue: "string",
+            sourceValue: "Hour",
             value: EmploymentSchemasPayPeriodValue.Hour,
           },
           payRate: "40.00",
-          updatedAt: new Date("2023-06-14T01:00:00Z"),
+          updatedAt: new Date("2021-01-01T01:01:01.000Z"),
         },
       ],
       ethnicity: {
@@ -1004,20 +1004,20 @@ import {
       firstName: "Issac",
       gender: {
         sourceValue: "string",
-        value: HrisCreateEmployeeRequestDtoSchemasGenderValue.NotDisclosed,
+        value: HrisCreateEmployeeRequestDtoSchemasGenderValue.Male,
       },
-      hireDate: new Date("2023-06-07T00:00.000Z"),
+      hireDate: new Date("2021-01-01T00:00.000Z"),
       homeLocation: {
         city: "Grantham",
         country: {
           sourceValue: "string",
-          value: HrisLocationsCreateRequestDtoValue.Pe,
+          value: HrisLocationsCreateRequestDtoValue.Ba,
         },
         name: "Woolsthorpe Manor",
         phoneNumber: "+44 1476 860 364",
         state: {
           sourceValue: "string",
-          value: HrisLocationsCreateRequestDtoSchemasValue.PeAnc,
+          value: HrisLocationsCreateRequestDtoSchemasValue.PhSun,
         },
         street1: "Water Lane",
         street2: "Woolsthorpe by Colsterworth",
@@ -1028,27 +1028,27 @@ import {
       managerId: "67890",
       maritalStatus: {
         sourceValue: "string",
-        value: HrisCreateEmployeeRequestDtoSchemasMaritalStatusValue.Widowed,
+        value: HrisCreateEmployeeRequestDtoSchemasMaritalStatusValue.Separated,
       },
       name: "Issac Newton",
       personalEmail: "isaac.newton@example.com",
       personalPhoneNumber: "+1234567890",
-      startDate: new Date("2023-06-07T00:00.000Z"),
+      startDate: new Date("2021-01-01T00:00.000Z"),
       tenure: 2,
-      terminationDate: new Date("2023-06-14T00:00:00Z"),
-      workAnniversary: new Date("2022-06-14T00:00:00Z"),
+      terminationDate: new Date("2021-01-01T00:00:00Z"),
+      workAnniversary: new Date("2021-01-01T00:00:00Z"),
       workEmail: "newton@example.com",
       workLocation: {
         city: "Grantham",
         country: {
           sourceValue: "string",
-          value: HrisLocationsCreateRequestDtoValue.Gu,
+          value: HrisLocationsCreateRequestDtoValue.Np,
         },
         name: "Woolsthorpe Manor",
         phoneNumber: "+44 1476 860 364",
         state: {
           sourceValue: "string",
-          value: HrisLocationsCreateRequestDtoSchemasValue.Mn035,
+          value: HrisLocationsCreateRequestDtoSchemasValue.LsG,
         },
         street1: "Water Lane",
         street2: "Woolsthorpe by Colsterworth",
@@ -1105,8 +1105,8 @@ import { TimeOffStatusEnumValue, TimeOffTypeEnumValue } from "@stackone/stackone
     hrisCreateTimeOffRequestDto: {
       approverId: "1687-4",
       employeeId: "1687-3",
-      endDate: new Date("2023-06-18T01:00:00Z"),
-      startDate: new Date("2023-07-14T01:00:00Z"),
+      endDate: new Date("2021-01-01T01:01:01.000Z"),
+      startDate: new Date("2021-01-01T01:01:01.000Z"),
       status: {
         sourceValue: "string",
         value: TimeOffStatusEnumValue.Approved,

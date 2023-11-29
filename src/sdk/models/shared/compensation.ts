@@ -3,47 +3,10 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
-import { Expose } from "class-transformer";
-
-export enum PayFrequency {
-    Hourly = "hourly",
-    Weekly = "weekly",
-    BiWeekly = "bi_weekly",
-    FourWeekly = "four_weekly",
-    SemiMonthly = "semi_monthly",
-    Monthly = "monthly",
-    BiMonthly = "bi_monthly",
-    Quarterly = "quarterly",
-    SemiAnnually = "semi_annually",
-    Yearly = "yearly",
-    ThirteenMonthly = "thirteen_monthly",
-    ProRata = "pro_rata",
-    UnmappedValue = "unmapped_value",
-    HalfYearly = "half_yearly",
-}
-
-export enum PayPeriod {
-    Hour = "hour",
-    Day = "day",
-    Week = "week",
-    EveryTwoWeeks = "every_two_weeks",
-    Month = "month",
-    Quarter = "quarter",
-    EverySixMonths = "every_six_months",
-    Year = "year",
-    None = "none",
-    UnmappedValue = "unmapped_value",
-}
-
-export enum TypeT {
-    Salary = "salary",
-    Hourly = "hourly",
-    Commission = "commission",
-    Bonus = "bonus",
-    Equity = "equity",
-    Other = "other",
-    UnmappedValue = "unmapped_value",
-}
+import { CompensationTypeEnum } from "./compensationtypeenum";
+import { PayFrequencyEnum } from "./payfrequencyenum";
+import { PayPeriodEnum } from "./payperiodenum";
+import { Expose, Type } from "class-transformer";
 
 export class Compensation extends SpeakeasyBase {
     @SpeakeasyMetadata()
@@ -64,15 +27,18 @@ export class Compensation extends SpeakeasyBase {
 
     @SpeakeasyMetadata()
     @Expose({ name: "pay_frequency" })
-    payFrequency?: PayFrequency;
+    @Type(() => PayFrequencyEnum)
+    payFrequency?: PayFrequencyEnum;
 
     @SpeakeasyMetadata()
     @Expose({ name: "pay_period" })
-    payPeriod?: PayPeriod;
+    @Type(() => PayPeriodEnum)
+    payPeriod?: PayPeriodEnum;
 
     @SpeakeasyMetadata()
     @Expose({ name: "type" })
-    type?: TypeT;
+    @Type(() => CompensationTypeEnum)
+    type?: CompensationTypeEnum;
 
     @SpeakeasyMetadata()
     @Expose({ name: "value" })

@@ -5,6 +5,9 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { Expose } from "class-transformer";
 
+/**
+ * The status of the offer.
+ */
 export enum OfferStatusEnumValue {
     Pending = "pending",
     Retracted = "retracted",
@@ -14,10 +17,16 @@ export enum OfferStatusEnumValue {
 }
 
 export class OfferStatusEnum extends SpeakeasyBase {
+    /**
+     * The source value of the offer status.
+     */
     @SpeakeasyMetadata()
     @Expose({ name: "source_value" })
     sourceValue: string;
 
+    /**
+     * The status of the offer.
+     */
     @SpeakeasyMetadata()
     @Expose({ name: "value" })
     value: OfferStatusEnumValue;

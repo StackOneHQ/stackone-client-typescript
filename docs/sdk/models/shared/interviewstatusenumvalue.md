@@ -1,5 +1,7 @@
 # InterviewStatusEnumValue
 
+The status of the interview.
+
 
 ## Values
 
