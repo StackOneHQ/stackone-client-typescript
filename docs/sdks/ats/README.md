@@ -44,9 +44,14 @@ Create Application
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
-import { ApplicationStatusEnumApiModelValue, AttachmentTypeValue, Value } from "@stackone/stackone-client-ts/dist/sdk/models/shared";
+import {
+  ApplicationStatusEnumApiModelValue,
+  AttachmentContentTypeValue,
+  AttachmentTypeValue,
+  Value,
+} from "@stackone/stackone-client-ts/dist/sdk/models/shared";
 
-(async() => {
+async function run() {
   const sdk = new StackOne({
     security: {
       password: "",
@@ -63,6 +68,10 @@ import { ApplicationStatusEnumApiModelValue, AttachmentTypeValue, Value } from "
       attachments: [
         {
           content: "Base64 encoded content",
+          contentType: {
+            sourceValue: "Text",
+            value: AttachmentContentTypeValue.Text,
+          },
           fileName: "resume.pdf",
           type: [
             {
@@ -109,7 +118,9 @@ import { ApplicationStatusEnumApiModelValue, AttachmentTypeValue, Value } from "
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -138,7 +149,7 @@ Create Candidate (early access)
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-(async() => {
+async function run() {
   const sdk = new StackOne({
     security: {
       password: "",
@@ -171,7 +182,9 @@ import { StackOne } from "@stackone/stackone-client-ts";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -201,7 +214,7 @@ Create Candidate Note
 import { StackOne } from "@stackone/stackone-client-ts";
 import { NotesVisibilityEnumValue } from "@stackone/stackone-client-ts/dist/sdk/models/shared";
 
-(async() => {
+async function run() {
   const sdk = new StackOne({
     security: {
       password: "",
@@ -226,7 +239,9 @@ import { NotesVisibilityEnumValue } from "@stackone/stackone-client-ts/dist/sdk/
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -256,7 +271,7 @@ Creates an offer
 import { StackOne } from "@stackone/stackone-client-ts";
 import { OfferStatusEnumValue } from "@stackone/stackone-client-ts/dist/sdk/models/shared";
 
-(async() => {
+async function run() {
   const sdk = new StackOne({
     security: {
       password: "",
@@ -269,16 +284,16 @@ import { OfferStatusEnumValue } from "@stackone/stackone-client-ts/dist/sdk/mode
       applicationId: "string",
       offerHistory: [
         {
-          createdAt: new Date("2022-08-12T20:29:56.964Z"),
-          startDate: new Date("2022-08-12T20:29:56.964Z"),
-          updatedAt: new Date("2022-08-13T22:30:12.304Z"),
+          createdAt: new Date("2021-01-01T01:01:01.000Z"),
+          startDate: new Date("2021-01-01T01:01:01.000Z"),
+          updatedAt: new Date("2021-01-01T01:01:01.000Z"),
         },
       ],
       offerStatus: {
-        sourceValue: "string",
-        value: OfferStatusEnumValue.Accepted,
+        sourceValue: "Pending",
+        value: OfferStatusEnumValue.Pending,
       },
-      startDate: new Date("2022-08-12T20:29:56.964Z"),
+      startDate: new Date("2021-01-01T01:01:01.000Z"),
     },
     xAccountId: "string",
   });
@@ -286,7 +301,9 @@ import { OfferStatusEnumValue } from "@stackone/stackone-client-ts/dist/sdk/mode
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -315,7 +332,7 @@ Get Application
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-(async() => {
+async function run() {
   const sdk = new StackOne({
     security: {
       password: "",
@@ -334,7 +351,9 @@ import { StackOne } from "@stackone/stackone-client-ts";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -363,7 +382,7 @@ Get Application Offer
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-(async() => {
+async function run() {
   const sdk = new StackOne({
     security: {
       password: "",
@@ -383,7 +402,9 @@ import { StackOne } from "@stackone/stackone-client-ts";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -412,7 +433,7 @@ Get Candidate
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-(async() => {
+async function run() {
   const sdk = new StackOne({
     security: {
       password: "",
@@ -431,7 +452,9 @@ import { StackOne } from "@stackone/stackone-client-ts";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -460,7 +483,7 @@ Get Candidate Note
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-(async() => {
+async function run() {
   const sdk = new StackOne({
     security: {
       password: "",
@@ -480,7 +503,9 @@ import { StackOne } from "@stackone/stackone-client-ts";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -509,7 +534,7 @@ Get Department
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-(async() => {
+async function run() {
   const sdk = new StackOne({
     security: {
       password: "",
@@ -528,7 +553,9 @@ import { StackOne } from "@stackone/stackone-client-ts";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -557,7 +584,7 @@ Get Interview
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-(async() => {
+async function run() {
   const sdk = new StackOne({
     security: {
       password: "",
@@ -576,7 +603,9 @@ import { StackOne } from "@stackone/stackone-client-ts";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -605,7 +634,7 @@ Get Interview Stage
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-(async() => {
+async function run() {
   const sdk = new StackOne({
     security: {
       password: "",
@@ -624,7 +653,9 @@ import { StackOne } from "@stackone/stackone-client-ts";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -653,7 +684,7 @@ Get Job
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-(async() => {
+async function run() {
   const sdk = new StackOne({
     security: {
       password: "",
@@ -672,7 +703,9 @@ import { StackOne } from "@stackone/stackone-client-ts";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -701,7 +734,7 @@ Get Job Posting
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-(async() => {
+async function run() {
   const sdk = new StackOne({
     security: {
       password: "",
@@ -720,7 +753,9 @@ import { StackOne } from "@stackone/stackone-client-ts";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -749,7 +784,7 @@ Get Location
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-(async() => {
+async function run() {
   const sdk = new StackOne({
     security: {
       password: "",
@@ -768,7 +803,9 @@ import { StackOne } from "@stackone/stackone-client-ts";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -797,7 +834,7 @@ Get Offer
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-(async() => {
+async function run() {
   const sdk = new StackOne({
     security: {
       password: "",
@@ -816,7 +853,9 @@ import { StackOne } from "@stackone/stackone-client-ts";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -845,7 +884,7 @@ Get Rejected Reason
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-(async() => {
+async function run() {
   const sdk = new StackOne({
     security: {
       password: "",
@@ -864,7 +903,9 @@ import { StackOne } from "@stackone/stackone-client-ts";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -893,7 +934,7 @@ Get User
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-(async() => {
+async function run() {
   const sdk = new StackOne({
     security: {
       password: "",
@@ -912,7 +953,9 @@ import { StackOne } from "@stackone/stackone-client-ts";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -941,7 +984,7 @@ List Applications
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-(async() => {
+async function run() {
   const sdk = new StackOne({
     security: {
       password: "",
@@ -959,7 +1002,9 @@ import { StackOne } from "@stackone/stackone-client-ts";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -988,7 +1033,7 @@ List Application Offers
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-(async() => {
+async function run() {
   const sdk = new StackOne({
     security: {
       password: "",
@@ -1007,7 +1052,9 @@ import { StackOne } from "@stackone/stackone-client-ts";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -1036,7 +1083,7 @@ List Candidate Notes
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-(async() => {
+async function run() {
   const sdk = new StackOne({
     security: {
       password: "",
@@ -1055,7 +1102,9 @@ import { StackOne } from "@stackone/stackone-client-ts";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -1084,7 +1133,7 @@ List Candidates
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-(async() => {
+async function run() {
   const sdk = new StackOne({
     security: {
       password: "",
@@ -1102,7 +1151,9 @@ import { StackOne } from "@stackone/stackone-client-ts";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -1131,7 +1182,7 @@ List Departments
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-(async() => {
+async function run() {
   const sdk = new StackOne({
     security: {
       password: "",
@@ -1149,7 +1200,9 @@ import { StackOne } from "@stackone/stackone-client-ts";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -1178,7 +1231,7 @@ List Interview Stages
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-(async() => {
+async function run() {
   const sdk = new StackOne({
     security: {
       password: "",
@@ -1196,7 +1249,9 @@ import { StackOne } from "@stackone/stackone-client-ts";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -1225,7 +1280,7 @@ List Interviews
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-(async() => {
+async function run() {
   const sdk = new StackOne({
     security: {
       password: "",
@@ -1243,7 +1298,9 @@ import { StackOne } from "@stackone/stackone-client-ts";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -1272,7 +1329,7 @@ List Job Postings
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-(async() => {
+async function run() {
   const sdk = new StackOne({
     security: {
       password: "",
@@ -1290,7 +1347,9 @@ import { StackOne } from "@stackone/stackone-client-ts";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -1319,7 +1378,7 @@ List Jobs
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-(async() => {
+async function run() {
   const sdk = new StackOne({
     security: {
       password: "",
@@ -1337,7 +1396,9 @@ import { StackOne } from "@stackone/stackone-client-ts";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -1366,7 +1427,7 @@ List locations
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-(async() => {
+async function run() {
   const sdk = new StackOne({
     security: {
       password: "",
@@ -1384,7 +1445,9 @@ import { StackOne } from "@stackone/stackone-client-ts";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -1413,7 +1476,7 @@ List Offers
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-(async() => {
+async function run() {
   const sdk = new StackOne({
     security: {
       password: "",
@@ -1431,7 +1494,9 @@ import { StackOne } from "@stackone/stackone-client-ts";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -1460,7 +1525,7 @@ List Rejected Reasons
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-(async() => {
+async function run() {
   const sdk = new StackOne({
     security: {
       password: "",
@@ -1478,7 +1543,9 @@ import { StackOne } from "@stackone/stackone-client-ts";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -1507,7 +1574,7 @@ List Users
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-(async() => {
+async function run() {
   const sdk = new StackOne({
     security: {
       password: "",
@@ -1525,7 +1592,9 @@ import { StackOne } from "@stackone/stackone-client-ts";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -1553,9 +1622,14 @@ Update Application
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
-import { ApplicationStatusEnumApiModelValue, AttachmentTypeValue, Value } from "@stackone/stackone-client-ts/dist/sdk/models/shared";
+import {
+  ApplicationStatusEnumApiModelValue,
+  AttachmentContentTypeValue,
+  AttachmentTypeValue,
+  Value,
+} from "@stackone/stackone-client-ts/dist/sdk/models/shared";
 
-(async() => {
+async function run() {
   const sdk = new StackOne({
     security: {
       password: "",
@@ -1572,6 +1646,10 @@ import { ApplicationStatusEnumApiModelValue, AttachmentTypeValue, Value } from "
       attachments: [
         {
           content: "Base64 encoded content",
+          contentType: {
+            sourceValue: "Text",
+            value: AttachmentContentTypeValue.Text,
+          },
           fileName: "resume.pdf",
           type: [
             {
@@ -1619,7 +1697,9 @@ import { ApplicationStatusEnumApiModelValue, AttachmentTypeValue, Value } from "
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -1648,7 +1728,7 @@ Update Candidate (early access)
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-(async() => {
+async function run() {
   const sdk = new StackOne({
     security: {
       password: "",
@@ -1682,7 +1762,9 @@ import { StackOne } from "@stackone/stackone-client-ts";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters

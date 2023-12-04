@@ -15,7 +15,7 @@ Proxy Request
 import { StackOne } from "@stackone/stackone-client-ts";
 import { Method } from "@stackone/stackone-client-ts/dist/sdk/models/shared";
 
-(async() => {
+async function run() {
   const sdk = new StackOne({
     security: {
       password: "",
@@ -36,7 +36,9 @@ import { Method } from "@stackone/stackone-client-ts/dist/sdk/models/shared";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters

@@ -1,10 +1,10 @@
-<!-- Start SDK Example Usage -->
+<!-- Start SDK Example Usage [usage] -->
 ### List Employees
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-(async () => {
+async function run() {
     const sdk = new StackOne({
         security: {
             password: "",
@@ -22,7 +22,9 @@ import { StackOne } from "@stackone/stackone-client-ts";
     if (res.statusCode == 200) {
         // handle response
     }
-})();
+}
+
+run();
 
 ```
-<!-- End SDK Example Usage -->
+<!-- End SDK Example Usage [usage] -->

@@ -1,4 +1,6 @@
-# Status
+# JobPostingStatusEnumValue
+
+The status of the job postings.
 
 
 ## Values

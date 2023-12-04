@@ -17,7 +17,7 @@ export enum EmployeeCustomFieldsSchemasValue {
 /**
  * The type of the custom field.
  */
-export class EmployeeCustomFieldsType extends SpeakeasyBase {
+export class TypeT extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "source_value" })
     sourceValue: string;
@@ -66,8 +66,8 @@ export class EmployeeCustomFields extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     @Expose({ name: "type" })
-    @Type(() => EmployeeCustomFieldsType)
-    type?: EmployeeCustomFieldsType;
+    @Type(() => TypeT)
+    type?: TypeT;
 
     /**
      * The value associated with the custom field.

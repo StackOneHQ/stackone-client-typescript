@@ -9,6 +9,7 @@ import { ApplicationCandidate } from "./applicationcandidate";
 import { ApplicationStatusEnumApiModel } from "./applicationstatusenumapimodel";
 import { InterviewStage } from "./interviewstage";
 import { RejectedReason } from "./rejectedreason";
+import { ResultLink } from "./resultlink";
 import { Expose, Transform, Type } from "class-transformer";
 
 /**
@@ -126,6 +127,11 @@ export class Application extends SpeakeasyBase {
     @Expose({ name: "rejected_reasons" })
     @Type(() => RejectedReason)
     rejectedReasons?: RejectedReason[];
+
+    @SpeakeasyMetadata({ elemType: ResultLink })
+    @Expose({ name: "result_links" })
+    @Type(() => ResultLink)
+    resultLinks?: ResultLink[];
 
     /**
      * Date of last update

@@ -59,6 +59,9 @@ export class EmploymentEmploymentType extends SpeakeasyBase {
     value: EmploymentSchemasValue;
 }
 
+/**
+ * The pay frequency of the job postings.
+ */
 export enum EmploymentSchemasPayFrequencyValue {
     Hourly = "hourly",
     Weekly = "weekly",
@@ -79,16 +82,25 @@ export enum EmploymentSchemasPayFrequencyValue {
 /**
  * The pay frequency
  */
-export class EmploymentPayFrequency extends SpeakeasyBase {
+export class PayFrequency extends SpeakeasyBase {
+    /**
+     * The source value of the pay frequency.
+     */
     @SpeakeasyMetadata()
     @Expose({ name: "source_value" })
     sourceValue: string;
 
+    /**
+     * The pay frequency of the job postings.
+     */
     @SpeakeasyMetadata()
     @Expose({ name: "value" })
     value: EmploymentSchemasPayFrequencyValue;
 }
 
+/**
+ * The pay period of the job postings.
+ */
 export enum EmploymentSchemasPayPeriodValue {
     Hour = "hour",
     Day = "day",
@@ -98,17 +110,24 @@ export enum EmploymentSchemasPayPeriodValue {
     Quarter = "quarter",
     EverySixMonths = "every_six_months",
     Year = "year",
+    None = "none",
     UnmappedValue = "unmapped_value",
 }
 
 /**
  * The pay period
  */
-export class EmploymentPayPeriod extends SpeakeasyBase {
+export class PayPeriod extends SpeakeasyBase {
+    /**
+     * The source value of the pay period.
+     */
     @SpeakeasyMetadata()
     @Expose({ name: "source_value" })
     sourceValue: string;
 
+    /**
+     * The pay period of the job postings.
+     */
     @SpeakeasyMetadata()
     @Expose({ name: "value" })
     value: EmploymentSchemasPayPeriodValue;
@@ -180,16 +199,16 @@ export class Employment extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     @Expose({ name: "pay_frequency" })
-    @Type(() => EmploymentPayFrequency)
-    payFrequency?: EmploymentPayFrequency;
+    @Type(() => PayFrequency)
+    payFrequency?: PayFrequency;
 
     /**
      * The pay period
      */
     @SpeakeasyMetadata()
     @Expose({ name: "pay_period" })
-    @Type(() => EmploymentPayPeriod)
-    payPeriod?: EmploymentPayPeriod;
+    @Type(() => PayPeriod)
+    payPeriod?: PayPeriod;
 
     /**
      * The pay rate for the employee

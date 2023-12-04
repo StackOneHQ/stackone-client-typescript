@@ -3,6 +3,7 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
+import { AttachmentContentType } from "./attachmentcontenttype";
 import { AttachmentType } from "./attachmenttype";
 import { Expose, Type } from "class-transformer";
 
@@ -13,6 +14,11 @@ export class ApplicationAttachment extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "content" })
     content?: string;
+
+    @SpeakeasyMetadata()
+    @Expose({ name: "content_type" })
+    @Type(() => AttachmentContentType)
+    contentType?: AttachmentContentType;
 
     /**
      * The file name of the attachment.
