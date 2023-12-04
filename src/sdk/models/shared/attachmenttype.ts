@@ -10,6 +10,9 @@ import { Expose } from "class-transformer";
  */
 export enum AttachmentTypeValue {
     Resume = "resume",
+    GenericFile = "generic_file",
+    CoverLetter = "cover_letter",
+    Avatar = "avatar",
     UnmappedValue = "unmapped_value",
 }
 

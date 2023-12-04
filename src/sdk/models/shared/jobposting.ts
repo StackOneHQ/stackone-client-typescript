@@ -6,6 +6,7 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { Compensation } from "./compensation";
 import { EmploymentContractTypeEnum } from "./employmentcontracttypeenum";
 import { EmploymentTypeEnum } from "./employmenttypeenum";
+import { JobPostingStatusEnum } from "./jobpostingstatusenum";
 import { Location } from "./location";
 import { Questionnaire } from "./questionnaire";
 import { Expose, Transform, Type } from "class-transformer";
@@ -23,13 +24,6 @@ export class Content extends SpeakeasyBase {
 export enum Internal {
     True = "true",
     False = "false",
-}
-
-export enum Status {
-    Live = "live",
-    Draft = "draft",
-    Closed = "closed",
-    UnmappedValue = "unmapped_value",
 }
 
 export class JobPosting extends SpeakeasyBase {
@@ -93,7 +87,8 @@ export class JobPosting extends SpeakeasyBase {
 
     @SpeakeasyMetadata()
     @Expose({ name: "status" })
-    status?: Status;
+    @Type(() => JobPostingStatusEnum)
+    status?: JobPostingStatusEnum;
 
     @SpeakeasyMetadata()
     @Expose({ name: "title" })

@@ -6,6 +6,9 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { Expose, Transform } from "class-transformer";
 
 export class InterviewPart extends SpeakeasyBase {
+    /**
+     * Interview part created date
+     */
     @SpeakeasyMetadata()
     @Expose({ name: "created_at" })
     @Transform(({ value }) => new Date(value), { toClassOnly: true })
@@ -27,6 +30,9 @@ export class InterviewPart extends SpeakeasyBase {
     @Expose({ name: "meeting_url" })
     meetingUrl?: string;
 
+    /**
+     * Interview part updated date
+     */
     @SpeakeasyMetadata()
     @Expose({ name: "updated_at" })
     @Transform(({ value }) => new Date(value), { toClassOnly: true })

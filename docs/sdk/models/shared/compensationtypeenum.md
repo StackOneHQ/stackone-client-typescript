@@ -1,0 +1,9 @@
+# CompensationTypeEnum
+
+
+## Fields
+
+| Field                                                                                       | Type                                                                                        | Required                                                                                    | Description                                                                                 | Example                                                                                     |
+| ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
+| `sourceValue`                                                                               | *string*                                                                                    | :heavy_check_mark:                                                                          | The source value of the compensation type.                                                  | Salary                                                                                      |
+| `value`                                                                                     | [shared.CompensationTypeEnumValue](../../../sdk/models/shared/compensationtypeenumvalue.md) | :heavy_check_mark:                                                                          | The type of the compensation.                                                               | salary                                                                                      |

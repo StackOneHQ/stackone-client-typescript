@@ -5,6 +5,9 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { Expose } from "class-transformer";
 
+/**
+ * The status of the job.
+ */
 export enum JobStatusEnumValue {
     Published = "published",
     Draft = "draft",
@@ -17,10 +20,16 @@ export enum JobStatusEnumValue {
 }
 
 export class JobStatusEnum extends SpeakeasyBase {
+    /**
+     * The source value of the job status.
+     */
     @SpeakeasyMetadata()
     @Expose({ name: "source_value" })
     sourceValue: string;
 
+    /**
+     * The status of the job.
+     */
     @SpeakeasyMetadata()
     @Expose({ name: "value" })
     value: JobStatusEnumValue;

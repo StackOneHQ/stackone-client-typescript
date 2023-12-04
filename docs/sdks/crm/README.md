@@ -21,7 +21,7 @@ Creates a new Contact
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-(async() => {
+async function run() {
   const sdk = new StackOne({
     security: {
       password: "",
@@ -55,7 +55,9 @@ import { StackOne } from "@stackone/stackone-client-ts";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -84,7 +86,7 @@ Get Account
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-(async() => {
+async function run() {
   const sdk = new StackOne({
     security: {
       password: "",
@@ -103,7 +105,9 @@ import { StackOne } from "@stackone/stackone-client-ts";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -132,7 +136,7 @@ Get Contact
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-(async() => {
+async function run() {
   const sdk = new StackOne({
     security: {
       password: "",
@@ -151,7 +155,9 @@ import { StackOne } from "@stackone/stackone-client-ts";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -180,7 +186,7 @@ Get List
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-(async() => {
+async function run() {
   const sdk = new StackOne({
     security: {
       password: "",
@@ -199,7 +205,9 @@ import { StackOne } from "@stackone/stackone-client-ts";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -228,7 +236,7 @@ List Accounts
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-(async() => {
+async function run() {
   const sdk = new StackOne({
     security: {
       password: "",
@@ -246,7 +254,9 @@ import { StackOne } from "@stackone/stackone-client-ts";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -275,7 +285,7 @@ List Contacts
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-(async() => {
+async function run() {
   const sdk = new StackOne({
     security: {
       password: "",
@@ -293,7 +303,9 @@ import { StackOne } from "@stackone/stackone-client-ts";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -322,7 +334,7 @@ Get all Lists
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-(async() => {
+async function run() {
   const sdk = new StackOne({
     security: {
       password: "",
@@ -340,7 +352,9 @@ import { StackOne } from "@stackone/stackone-client-ts";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -369,7 +383,7 @@ Update Contact (early access)
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-(async() => {
+async function run() {
   const sdk = new StackOne({
     security: {
       password: "",
@@ -404,7 +418,9 @@ import { StackOne } from "@stackone/stackone-client-ts";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters

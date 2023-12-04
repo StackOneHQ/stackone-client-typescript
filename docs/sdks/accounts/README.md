@@ -17,7 +17,7 @@ Delete Account
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-(async() => {
+async function run() {
   const sdk = new StackOne({
     security: {
       password: "",
@@ -32,7 +32,9 @@ import { StackOne } from "@stackone/stackone-client-ts";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -61,7 +63,7 @@ Get Account
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-(async() => {
+async function run() {
   const sdk = new StackOne({
     security: {
       password: "",
@@ -76,7 +78,9 @@ import { StackOne } from "@stackone/stackone-client-ts";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -105,7 +109,7 @@ Get meta information of the account
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-(async() => {
+async function run() {
   const sdk = new StackOne({
     security: {
       password: "",
@@ -120,7 +124,9 @@ import { StackOne } from "@stackone/stackone-client-ts";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -149,7 +155,7 @@ List Accounts
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-(async() => {
+async function run() {
   const sdk = new StackOne({
     security: {
       password: "",
@@ -162,7 +168,9 @@ import { StackOne } from "@stackone/stackone-client-ts";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters

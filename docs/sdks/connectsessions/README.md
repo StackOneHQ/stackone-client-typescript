@@ -15,7 +15,7 @@ Authenticate Connect Session
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-(async() => {
+async function run() {
   const sdk = new StackOne({
     security: {
       password: "",
@@ -30,7 +30,9 @@ import { StackOne } from "@stackone/stackone-client-ts";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -60,7 +62,7 @@ Create Connect Session
 import { StackOne } from "@stackone/stackone-client-ts";
 import { ConnectSessionCreateCategories } from "@stackone/stackone-client-ts/dist/sdk/models/shared";
 
-(async() => {
+async function run() {
   const sdk = new StackOne({
     security: {
       password: "",
@@ -85,7 +87,9 @@ import { ConnectSessionCreateCategories } from "@stackone/stackone-client-ts/dis
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters

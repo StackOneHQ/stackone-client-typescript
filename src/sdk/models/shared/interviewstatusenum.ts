@@ -5,6 +5,9 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { Expose } from "class-transformer";
 
+/**
+ * The status of the interview.
+ */
 export enum InterviewStatusEnumValue {
     Unscheduled = "unscheduled",
     Scheduled = "scheduled",
@@ -15,10 +18,16 @@ export enum InterviewStatusEnumValue {
 }
 
 export class InterviewStatusEnum extends SpeakeasyBase {
+    /**
+     * The source value of the interview status.
+     */
     @SpeakeasyMetadata()
     @Expose({ name: "source_value" })
     sourceValue: string;
 
+    /**
+     * The status of the interview.
+     */
     @SpeakeasyMetadata()
     @Expose({ name: "value" })
     value: InterviewStatusEnumValue;

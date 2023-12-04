@@ -1,5 +1,7 @@
 # OfferStatusEnumValue
 
+The status of the offer.
+
 
 ## Values
 

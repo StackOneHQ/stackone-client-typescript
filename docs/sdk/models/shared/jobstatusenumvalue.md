@@ -1,5 +1,7 @@
 # JobStatusEnumValue
 
+The status of the job.
+
 
 ## Values
 

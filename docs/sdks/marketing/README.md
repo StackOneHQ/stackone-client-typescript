@@ -28,7 +28,7 @@ Create email template
 import { StackOne } from "@stackone/stackone-client-ts";
 import { MessageTypeEnumValue } from "@stackone/stackone-client-ts/dist/sdk/models/shared";
 
-(async() => {
+async function run() {
   const sdk = new StackOne({
     security: {
       password: "",
@@ -61,7 +61,9 @@ import { MessageTypeEnumValue } from "@stackone/stackone-client-ts/dist/sdk/mode
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -91,7 +93,7 @@ Create omni-channel template
 import { StackOne } from "@stackone/stackone-client-ts";
 import { MessageType } from "@stackone/stackone-client-ts/dist/sdk/models/shared";
 
-(async() => {
+async function run() {
   const sdk = new StackOne({
     security: {
       password: "",
@@ -119,7 +121,9 @@ import { MessageType } from "@stackone/stackone-client-ts/dist/sdk/models/shared
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -149,7 +153,7 @@ Create push template
 import { StackOne } from "@stackone/stackone-client-ts";
 import { MessageTypeEnumValue } from "@stackone/stackone-client-ts/dist/sdk/models/shared";
 
-(async() => {
+async function run() {
   const sdk = new StackOne({
     security: {
       password: "",
@@ -180,7 +184,9 @@ import { MessageTypeEnumValue } from "@stackone/stackone-client-ts/dist/sdk/mode
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -209,7 +215,7 @@ Get campaign
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-(async() => {
+async function run() {
   const sdk = new StackOne({
     security: {
       password: "",
@@ -228,7 +234,9 @@ import { StackOne } from "@stackone/stackone-client-ts";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -257,7 +265,7 @@ Get email template
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-(async() => {
+async function run() {
   const sdk = new StackOne({
     security: {
       password: "",
@@ -276,7 +284,9 @@ import { StackOne } from "@stackone/stackone-client-ts";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -305,7 +315,7 @@ Get omni-channel template
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-(async() => {
+async function run() {
   const sdk = new StackOne({
     security: {
       password: "",
@@ -324,7 +334,9 @@ import { StackOne } from "@stackone/stackone-client-ts";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -353,7 +365,7 @@ Get push template
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-(async() => {
+async function run() {
   const sdk = new StackOne({
     security: {
       password: "",
@@ -372,7 +384,9 @@ import { StackOne } from "@stackone/stackone-client-ts";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -401,7 +415,7 @@ List campaigns
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-(async() => {
+async function run() {
   const sdk = new StackOne({
     security: {
       password: "",
@@ -419,7 +433,9 @@ import { StackOne } from "@stackone/stackone-client-ts";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -448,7 +464,7 @@ List email templates
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-(async() => {
+async function run() {
   const sdk = new StackOne({
     security: {
       password: "",
@@ -466,7 +482,9 @@ import { StackOne } from "@stackone/stackone-client-ts";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -495,7 +513,7 @@ List omni-channel templates
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-(async() => {
+async function run() {
   const sdk = new StackOne({
     security: {
       password: "",
@@ -513,7 +531,9 @@ import { StackOne } from "@stackone/stackone-client-ts";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -542,7 +562,7 @@ List push templates
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-(async() => {
+async function run() {
   const sdk = new StackOne({
     security: {
       password: "",
@@ -560,7 +580,9 @@ import { StackOne } from "@stackone/stackone-client-ts";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -590,7 +612,7 @@ Update email template
 import { StackOne } from "@stackone/stackone-client-ts";
 import { MessageTypeEnumValue } from "@stackone/stackone-client-ts/dist/sdk/models/shared";
 
-(async() => {
+async function run() {
   const sdk = new StackOne({
     security: {
       password: "",
@@ -624,7 +646,9 @@ import { MessageTypeEnumValue } from "@stackone/stackone-client-ts/dist/sdk/mode
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -654,7 +678,7 @@ Update omni-channel template
 import { StackOne } from "@stackone/stackone-client-ts";
 import { MessageType } from "@stackone/stackone-client-ts/dist/sdk/models/shared";
 
-(async() => {
+async function run() {
   const sdk = new StackOne({
     security: {
       password: "",
@@ -683,7 +707,9 @@ import { MessageType } from "@stackone/stackone-client-ts/dist/sdk/models/shared
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -713,7 +739,7 @@ Update push template
 import { StackOne } from "@stackone/stackone-client-ts";
 import { MessageTypeEnumValue } from "@stackone/stackone-client-ts/dist/sdk/models/shared";
 
-(async() => {
+async function run() {
   const sdk = new StackOne({
     security: {
       password: "",
@@ -745,7 +771,9 @@ import { MessageTypeEnumValue } from "@stackone/stackone-client-ts/dist/sdk/mode
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
