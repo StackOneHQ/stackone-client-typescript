@@ -1,4 +1,4 @@
-# NotesVisibilityEnumValue
+# NoteValue
 
 The visibility of the notes.
 

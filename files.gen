@@ -125,7 +125,7 @@ src/sdk/models/shared/candidateemail.ts
 src/sdk/models/shared/atscreatecandidaterequestdto.ts
 src/sdk/models/shared/createcandidatenoteresult.ts
 src/sdk/models/shared/atscreatenotesrequestdto.ts
-src/sdk/models/shared/notesvisibilityenum.ts
+src/sdk/models/shared/notecontentapimodel.ts
 src/sdk/models/shared/createofferresult.ts
 src/sdk/models/shared/atscreateofferrequestdto.ts
 src/sdk/models/shared/offerstatusenum.ts
@@ -431,9 +431,10 @@ docs/sdk/models/shared/sociallink.md
 docs/sdk/models/shared/candidateemail.md
 docs/sdk/models/shared/atscreatecandidaterequestdto.md
 docs/sdk/models/shared/createcandidatenoteresult.md
+docs/sdk/models/shared/atscreatenotesrequestdtovalue.md
+docs/sdk/models/shared/visibility.md
 docs/sdk/models/shared/atscreatenotesrequestdto.md
-docs/sdk/models/shared/notesvisibilityenumvalue.md
-docs/sdk/models/shared/notesvisibilityenum.md
+docs/sdk/models/shared/notecontentapimodel.md
 docs/sdk/models/shared/createofferresult.md
 docs/sdk/models/shared/atscreateofferrequestdto.md
 docs/sdk/models/shared/offerstatusenumvalue.md
@@ -450,6 +451,8 @@ docs/sdk/models/shared/interviewstage.md
 docs/sdk/models/shared/offersresult.md
 docs/sdk/models/shared/offer.md
 docs/sdk/models/shared/noteresult.md
+docs/sdk/models/shared/notevalue.md
+docs/sdk/models/shared/notevisibility.md
 docs/sdk/models/shared/note.md
 docs/sdk/models/shared/departmentresult.md
 docs/sdk/models/shared/department.md

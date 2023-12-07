@@ -47,6 +47,7 @@ export enum HrisCreateEmployeeRequestDtoSchemasValue {
     Terminated = "terminated",
     Leave = "leave",
     Inactive = "inactive",
+    Unknown = "unknown",
     UnmappedValue = "unmapped_value",
 }
 

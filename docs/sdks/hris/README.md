@@ -993,7 +993,7 @@ async function run() {
       },
       employmentStatus: {
         sourceValue: "string",
-        value: HrisCreateEmployeeRequestDtoSchemasValue.Terminated,
+        value: HrisCreateEmployeeRequestDtoSchemasValue.Leave,
       },
       employmentType: {
         sourceValue: "Permanent",
