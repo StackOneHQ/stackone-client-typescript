@@ -3,13 +3,48 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
-import { NotesVisibilityEnum } from "./notesvisibilityenum";
+import { NoteContentApiModel } from "./notecontentapimodel";
 import { Expose, Transform, Type } from "class-transformer";
 
-export class Note extends SpeakeasyBase {
+/**
+ * The visibility of the notes.
+ */
+export enum NoteValue {
+    Private = "private",
+    Public = "public",
+}
+
+/**
+ * Visibility of the note
+ */
+export class NoteVisibility extends SpeakeasyBase {
+    /**
+     * The source value of the notes visibility.
+     */
     @SpeakeasyMetadata()
+    @Expose({ name: "source_value" })
+    sourceValue?: string;
+
+    /**
+     * The visibility of the notes.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "value" })
+    value?: NoteValue;
+}
+
+export class Note extends SpeakeasyBase {
+    /**
+     * Unique identifier of the author
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "author_id" })
+    authorId?: string;
+
+    @SpeakeasyMetadata({ elemType: NoteContentApiModel })
     @Expose({ name: "content" })
-    content: string[];
+    @Type(() => NoteContentApiModel)
+    content: NoteContentApiModel[];
 
     /**
      * Date of creation
@@ -39,8 +74,11 @@ export class Note extends SpeakeasyBase {
     @Transform(({ value }) => new Date(value), { toClassOnly: true })
     updatedAt?: Date;
 
+    /**
+     * Visibility of the note
+     */
     @SpeakeasyMetadata()
     @Expose({ name: "visibility" })
-    @Type(() => NotesVisibilityEnum)
-    visibility: NotesVisibilityEnum;
+    @Type(() => NoteVisibility)
+    visibility?: NoteVisibility;
 }

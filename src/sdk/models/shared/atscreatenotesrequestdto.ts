@@ -3,16 +3,54 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
-import { NotesVisibilityEnum } from "./notesvisibilityenum";
+import { NoteContentApiModel } from "./notecontentapimodel";
 import { Expose, Type } from "class-transformer";
 
-export class AtsCreateNotesRequestDto extends SpeakeasyBase {
-    @SpeakeasyMetadata()
-    @Expose({ name: "content" })
-    content: string[];
+/**
+ * The visibility of the notes.
+ */
+export enum AtsCreateNotesRequestDtoValue {
+    Private = "private",
+    Public = "public",
+}
 
+/**
+ * Visibility of the note
+ */
+export class Visibility extends SpeakeasyBase {
+    /**
+     * The source value of the notes visibility.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "source_value" })
+    sourceValue?: string;
+
+    /**
+     * The visibility of the notes.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "value" })
+    value?: AtsCreateNotesRequestDtoValue;
+}
+
+export class AtsCreateNotesRequestDto extends SpeakeasyBase {
+    /**
+     * Unique identifier of the author
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "author_id" })
+    authorId?: string;
+
+    @SpeakeasyMetadata({ elemType: NoteContentApiModel })
+    @Expose({ name: "content" })
+    @Type(() => NoteContentApiModel)
+    content: NoteContentApiModel[];
+
+    /**
+     * Visibility of the note
+     */
     @SpeakeasyMetadata()
     @Expose({ name: "visibility" })
-    @Type(() => NotesVisibilityEnum)
-    visibility: NotesVisibilityEnum;
+    @Type(() => Visibility)
+    visibility?: Visibility;
 }

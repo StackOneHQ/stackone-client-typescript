@@ -212,7 +212,7 @@ Create Candidate Note
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
-import { NotesVisibilityEnumValue } from "@stackone/stackone-client-ts/dist/sdk/models/shared";
+import { AtsCreateNotesRequestDtoValue } from "@stackone/stackone-client-ts/dist/sdk/models/shared";
 
 async function run() {
   const sdk = new StackOne({
@@ -224,12 +224,15 @@ async function run() {
 
   const res = await sdk.ats.createCandidateNote({
     atsCreateNotesRequestDto: {
+      authorId: "1234567890",
       content: [
-        "string",
+        {
+          body: "This candidate seems like a good fit for the role",
+        },
       ],
       visibility: {
         sourceValue: "Public",
-        value: NotesVisibilityEnumValue.Public,
+        value: AtsCreateNotesRequestDtoValue.Public,
       },
     },
     id: "<ID>",

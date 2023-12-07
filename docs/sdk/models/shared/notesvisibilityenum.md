@@ -1,9 +1,0 @@
-# NotesVisibilityEnum
-
-
-## Fields
-
-| Field                                                                                     | Type                                                                                      | Required                                                                                  | Description                                                                               | Example                                                                                   |
-| ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
-| `sourceValue`                                                                             | *string*                                                                                  | :heavy_check_mark:                                                                        | The source value of the notes visibility.                                                 | Public                                                                                    |
-| `value`                                                                                   | [shared.NotesVisibilityEnumValue](../../../sdk/models/shared/notesvisibilityenumvalue.md) | :heavy_check_mark:                                                                        | The visibility of the notes.                                                              | public                                                                                    |
