@@ -4,6 +4,7 @@
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { InterviewStage } from "./interviewstage";
+import { RawResponse } from "./rawresponse";
 import { Expose, Type } from "class-transformer";
 
 export class InterviewStagesPaginated extends SpeakeasyBase {
@@ -16,7 +17,8 @@ export class InterviewStagesPaginated extends SpeakeasyBase {
     @Expose({ name: "next_page" })
     nextPage: string;
 
-    @SpeakeasyMetadata()
+    @SpeakeasyMetadata({ elemType: RawResponse })
     @Expose({ name: "raw" })
-    raw?: string;
+    @Type(() => RawResponse)
+    raw?: RawResponse[];
 }

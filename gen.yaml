@@ -1,9 +1,9 @@
 configVersion: 1.0.0
 management:
-  docChecksum: eda4763f8bea686ee9f0730990d9f843
+  docChecksum: ce44206aa821accc06b88b5dd03e15ba
   docVersion: 1.0.0
-  speakeasyVersion: 1.125.2
-  generationVersion: 2.210.6
+  speakeasyVersion: 1.126.3
+  generationVersion: 2.214.3
 generation:
   comments: {}
   sdkClassName: StackOne
@@ -12,14 +12,14 @@ generation:
     optionalPropertyRendering: withExample
 features:
   typescript:
-    core: 3.1.4
+    core: 3.3.3
     examples: 2.81.3
-    globalSecurity: 2.82.0
+    globalSecurity: 2.82.1
     globalServerURLs: 2.82.1
     groups: 2.81.2
     nameOverrides: 2.81.1
 typescript:
-  version: 0.12.0
+  version: 0.13.0
   author: StackOne
   clientServerStatusCodesAsErrors: true
   flattenGlobalSecurity: false
@@ -38,3 +38,4 @@ typescript:
   packageName: '@stackone/stackone-client-ts'
   published: true
   repoSubDirectory: .
+  templateVersion: v1

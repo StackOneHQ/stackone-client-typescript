@@ -18,8 +18,7 @@ import { StackOne } from "@stackone/stackone-client-ts";
 async function run() {
   const sdk = new StackOne({
     security: {
-      password: "",
-      username: "",
+      password: "<YOUR_PASSWORD_HERE>",
     },
   });
 
@@ -65,8 +64,7 @@ import { ConnectSessionCreateCategories } from "@stackone/stackone-client-ts/dis
 async function run() {
   const sdk = new StackOne({
     security: {
-      password: "",
-      username: "",
+      password: "<YOUR_PASSWORD_HERE>",
     },
   });
 

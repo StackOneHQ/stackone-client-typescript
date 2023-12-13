@@ -10,10 +10,18 @@ import { Expose } from "class-transformer";
  */
 export enum ApplicationStatusEnumApiModelValue {
     Active = "active",
+    Assessment = "assessment",
+    BackgroundCheck = "background_check",
     Converted = "converted",
+    DeclinedByCandidate = "declined_by_candidate",
     Hired = "hired",
+    Interview = "interview",
     Lead = "lead",
+    Offer = "offer",
+    ReferenceCheck = "reference_check",
     Rejected = "rejected",
+    Review = "review",
+    Screen = "screen",
     UnmappedValue = "unmapped_value",
 }
 

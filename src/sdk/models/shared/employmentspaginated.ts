@@ -4,6 +4,7 @@
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { Employment } from "./employment";
+import { RawResponse } from "./rawresponse";
 import { Expose, Type } from "class-transformer";
 
 export class EmploymentsPaginated extends SpeakeasyBase {
@@ -16,7 +17,8 @@ export class EmploymentsPaginated extends SpeakeasyBase {
     @Expose({ name: "next_page" })
     nextPage: string;
 
-    @SpeakeasyMetadata()
+    @SpeakeasyMetadata({ elemType: RawResponse })
     @Expose({ name: "raw" })
-    raw?: string;
+    @Type(() => RawResponse)
+    raw?: RawResponse[];
 }

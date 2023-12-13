@@ -3,6 +3,7 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
+import { RawResponse } from "./rawresponse";
 import { Template } from "./template";
 import { Expose, Type } from "class-transformer";
 
@@ -12,7 +13,8 @@ export class TemplateResult extends SpeakeasyBase {
     @Type(() => Template)
     data: Template;
 
-    @SpeakeasyMetadata()
+    @SpeakeasyMetadata({ elemType: RawResponse })
     @Expose({ name: "raw" })
-    raw?: string;
+    @Type(() => RawResponse)
+    raw?: RawResponse[];
 }

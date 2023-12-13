@@ -3,6 +3,7 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
+import { RawResponse } from "./rawresponse";
 import { TimeOff } from "./timeoff";
 import { Expose, Type } from "class-transformer";
 
@@ -16,7 +17,8 @@ export class TimeOffPaginated extends SpeakeasyBase {
     @Expose({ name: "next_page" })
     nextPage: string;
 
-    @SpeakeasyMetadata()
+    @SpeakeasyMetadata({ elemType: RawResponse })
     @Expose({ name: "raw" })
-    raw?: string;
+    @Type(() => RawResponse)
+    raw?: RawResponse[];
 }
