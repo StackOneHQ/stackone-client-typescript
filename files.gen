@@ -119,6 +119,7 @@ src/sdk/models/shared/attachmenttype.ts
 src/sdk/models/shared/attachmentcontenttype.ts
 src/sdk/models/shared/applicationstatusenumapimodel.ts
 src/sdk/models/shared/candidateresult.ts
+src/sdk/models/shared/rawresponse.ts
 src/sdk/models/shared/candidate.ts
 src/sdk/models/shared/sociallink.ts
 src/sdk/models/shared/candidateemail.ts
@@ -399,6 +400,7 @@ docs/sdk/models/operations/marketingupdatepushtemplateresponse.md
 docs/sdk/models/operations/stackoneproxyrequestrequest.md
 docs/sdk/models/operations/stackoneproxyrequestresponse.md
 docs/sdk/models/shared/credentials.md
+docs/sdk/models/shared/setupinformation.md
 docs/sdk/models/shared/linkedaccount.md
 docs/sdk/models/shared/category.md
 docs/sdk/models/shared/models.md
@@ -426,6 +428,8 @@ docs/sdk/models/shared/attachmentcontenttype.md
 docs/sdk/models/shared/applicationstatusenumapimodelvalue.md
 docs/sdk/models/shared/applicationstatusenumapimodel.md
 docs/sdk/models/shared/candidateresult.md
+docs/sdk/models/shared/response.md
+docs/sdk/models/shared/rawresponse.md
 docs/sdk/models/shared/candidate.md
 docs/sdk/models/shared/sociallink.md
 docs/sdk/models/shared/candidateemail.md

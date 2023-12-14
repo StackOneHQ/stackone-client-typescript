@@ -4,6 +4,7 @@
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { HRISLocation } from "./hrislocation";
+import { RawResponse } from "./rawresponse";
 import { Expose, Type } from "class-transformer";
 
 export class HRISLocationResult extends SpeakeasyBase {
@@ -12,7 +13,8 @@ export class HRISLocationResult extends SpeakeasyBase {
     @Type(() => HRISLocation)
     data: HRISLocation;
 
-    @SpeakeasyMetadata()
+    @SpeakeasyMetadata({ elemType: RawResponse })
     @Expose({ name: "raw" })
-    raw?: string;
+    @Type(() => RawResponse)
+    raw?: RawResponse[];
 }

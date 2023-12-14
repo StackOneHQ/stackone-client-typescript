@@ -3,6 +3,7 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
+import { RawResponse } from "./rawresponse";
 import { User } from "./user";
 import { Expose, Type } from "class-transformer";
 
@@ -12,7 +13,8 @@ export class UserResult extends SpeakeasyBase {
     @Type(() => User)
     data: User;
 
-    @SpeakeasyMetadata()
+    @SpeakeasyMetadata({ elemType: RawResponse })
     @Expose({ name: "raw" })
-    raw: string;
+    @Type(() => RawResponse)
+    raw: RawResponse[];
 }

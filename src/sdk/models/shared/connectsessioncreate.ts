@@ -21,6 +21,13 @@ export class Metadata extends SpeakeasyBase {}
 
 export class ConnectSessionCreate extends SpeakeasyBase {
     /**
+     * The unique identifier for the account associated with this connect session. When this field is present, the hub will launch in edit mode using the retrieved token.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "account_id" })
+    accountId?: string;
+
+    /**
      * The categories of the provider to connect to
      */
     @SpeakeasyMetadata()

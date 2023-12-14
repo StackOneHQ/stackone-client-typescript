@@ -4,6 +4,7 @@
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { JobPosting } from "./jobposting";
+import { RawResponse } from "./rawresponse";
 import { Expose, Type } from "class-transformer";
 
 export class JobPostingResult extends SpeakeasyBase {
@@ -12,7 +13,8 @@ export class JobPostingResult extends SpeakeasyBase {
     @Type(() => JobPosting)
     data: JobPosting;
 
-    @SpeakeasyMetadata()
+    @SpeakeasyMetadata({ elemType: RawResponse })
     @Expose({ name: "raw" })
-    raw?: string;
+    @Type(() => RawResponse)
+    raw?: RawResponse[];
 }

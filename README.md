@@ -33,8 +33,7 @@ import { StackOne } from "@stackone/stackone-client-ts";
 async function run() {
     const sdk = new StackOne({
         security: {
-            password: "",
-            username: "",
+            password: "<YOUR_PASSWORD_HERE>",
         },
     });
 
@@ -179,8 +178,7 @@ import { StackOne } from "@stackone/stackone-client-ts";
 async function run() {
     const sdk = new StackOne({
         security: {
-            password: "",
-            username: "",
+            password: "<YOUR_PASSWORD_HERE>",
         },
     });
 
@@ -250,8 +248,7 @@ import { StackOne } from "@stackone/stackone-client-ts";
 async function run() {
     const sdk = new StackOne({
         security: {
-            password: "",
-            username: "",
+            password: "<YOUR_PASSWORD_HERE>",
         },
     });
 

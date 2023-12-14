@@ -7,6 +7,8 @@ import { Expose, Transform, Type } from "class-transformer";
 
 export class Credentials extends SpeakeasyBase {}
 
+export class SetupInformation extends SpeakeasyBase {}
+
 export class LinkedAccount extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "active" })
@@ -41,6 +43,11 @@ export class LinkedAccount extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "provider" })
     provider: string;
+
+    @SpeakeasyMetadata()
+    @Expose({ name: "setup_information" })
+    @Type(() => SetupInformation)
+    setupInformation?: SetupInformation;
 
     @SpeakeasyMetadata()
     @Expose({ name: "updated_at" })

@@ -4,6 +4,7 @@
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { ATSLocation } from "./atslocation";
+import { RawResponse } from "./rawresponse";
 import { Expose, Type } from "class-transformer";
 
 export class ATSLocationResult extends SpeakeasyBase {
@@ -12,7 +13,8 @@ export class ATSLocationResult extends SpeakeasyBase {
     @Type(() => ATSLocation)
     data: ATSLocation;
 
-    @SpeakeasyMetadata()
+    @SpeakeasyMetadata({ elemType: RawResponse })
     @Expose({ name: "raw" })
-    raw?: string;
+    @Type(() => RawResponse)
+    raw?: RawResponse[];
 }

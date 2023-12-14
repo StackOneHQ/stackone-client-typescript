@@ -18,8 +18,7 @@ import { Method } from "@stackone/stackone-client-ts/dist/sdk/models/shared";
 async function run() {
   const sdk = new StackOne({
     security: {
-      password: "",
-      username: "",
+      password: "<YOUR_PASSWORD_HERE>",
     },
   });
 
