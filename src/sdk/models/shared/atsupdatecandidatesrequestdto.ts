@@ -37,6 +37,13 @@ export class AtsUpdateCandidatesRequestDto extends SpeakeasyBase {
     firstName?: string;
 
     /**
+     * The ID of the candidate to update.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "id" })
+    id?: string;
+
+    /**
      * Candidate last name
      */
     @SpeakeasyMetadata()

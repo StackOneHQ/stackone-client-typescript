@@ -50,6 +50,13 @@ export class AtsUpdateApplicationRequestDto extends SpeakeasyBase {
     candidateId?: string;
 
     /**
+     * The ID of the application to update.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "id" })
+    id?: string;
+
+    /**
      * Unique identifier of the job
      */
     @SpeakeasyMetadata()
