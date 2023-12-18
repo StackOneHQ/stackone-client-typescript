@@ -38,3 +38,4 @@ typescript:
   packageName: '@stackone/stackone-client-ts'
   published: true
   repoSubDirectory: .
+  templateVersion: v2
