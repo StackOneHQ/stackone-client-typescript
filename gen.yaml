@@ -1,25 +1,27 @@
 configVersion: 1.0.0
 management:
-  docChecksum: eda4763f8bea686ee9f0730990d9f843
+  docChecksum: 9e9dce5f023a1b97bd289dac188fdaf0
   docVersion: 1.0.0
-  speakeasyVersion: 1.125.2
-  generationVersion: 2.210.6
+  speakeasyVersion: 1.127.0
+  generationVersion: 2.220.0
 generation:
   comments: {}
   sdkClassName: StackOne
   repoURL: https://github.com/StackOneHQ/stackone-client-typescript.git
   usageSnippets:
     optionalPropertyRendering: withExample
+  fixes:
+    nameResolutionDec2023: false
 features:
   typescript:
-    core: 3.1.4
+    core: 3.3.9
     examples: 2.81.3
-    globalSecurity: 2.82.0
+    globalSecurity: 2.82.2
     globalServerURLs: 2.82.1
     groups: 2.81.2
     nameOverrides: 2.81.1
 typescript:
-  version: 1.0.0
+  version: 1.1.0
   author: StackOne
   clientServerStatusCodesAsErrors: true
   flattenGlobalSecurity: false

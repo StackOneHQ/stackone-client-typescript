@@ -1,0 +1,12 @@
+# Field
+
+
+## Fields
+
+| Field                                                       | Type                                                        | Required                                                    | Description                                                 | Example                                                     |
+| ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- |
+| `id`                                                        | *string*                                                    | :heavy_minus_sign:                                          | The ID of the field                                         | field-456                                                   |
+| `label`                                                     | *string*                                                    | :heavy_minus_sign:                                          | The label of the field                                      | Problem Solving                                             |
+| `required`                                                  | *boolean*                                                   | :heavy_minus_sign:                                          | Indicates if the field is required                          | true                                                        |
+| `type`                                                      | [shared.FieldType](../../../sdk/models/shared/fieldtype.md) | :heavy_minus_sign:                                          | The type of the field                                       | text                                                        |
+| `values`                                                    | *string*[]                                                  | :heavy_minus_sign:                                          | The possible values for the field                           | ["Excellent","Good","Average","Poor"]                       |
