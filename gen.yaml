@@ -19,7 +19,7 @@ features:
     groups: 2.81.2
     nameOverrides: 2.81.1
 typescript:
-  version: 0.12.0
+  version: 1.0.0
   author: StackOne
   clientServerStatusCodesAsErrors: true
   flattenGlobalSecurity: false
