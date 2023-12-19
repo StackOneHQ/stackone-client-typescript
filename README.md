@@ -33,8 +33,7 @@ import { StackOne } from "@stackone/stackone-client-ts";
 async function run() {
     const sdk = new StackOne({
         security: {
-            password: "",
-            username: "",
+            password: "<YOUR_PASSWORD_HERE>",
         },
     });
 
@@ -45,9 +44,11 @@ async function run() {
         xAccountId: "string",
     });
 
-    if (res.statusCode == 200) {
-        // handle response
+    if (res?.statusCode !== 200) {
+        throw new Error("Unexpected status code: " + res?.statusCode || "-");
     }
+
+    // handle response
 }
 
 run();
@@ -64,6 +65,7 @@ run();
 * [getAccount](docs/sdks/accounts/README.md#getaccount) - Get Account
 * [getAccountMetaInfo](docs/sdks/accounts/README.md#getaccountmetainfo) - Get meta information of the account
 * [listLinkedAccounts](docs/sdks/accounts/README.md#listlinkedaccounts) - List Accounts
+* [updateAccount](docs/sdks/accounts/README.md#updateaccount) - Update Account
 
 ### [connectSessions](docs/sdks/connectsessions/README.md)
 
@@ -78,6 +80,7 @@ run();
 * [createOffer](docs/sdks/ats/README.md#createoffer) - Creates an offer
 * [getApplication](docs/sdks/ats/README.md#getapplication) - Get Application
 * [getApplicationOffer](docs/sdks/ats/README.md#getapplicationoffer) - Get Application Offer
+* [getApplicationScorecard](docs/sdks/ats/README.md#getapplicationscorecard) - Get Application Scorecard
 * [getCandidate](docs/sdks/ats/README.md#getcandidate) - Get Candidate
 * [getCandidateNote](docs/sdks/ats/README.md#getcandidatenote) - Get Candidate Note
 * [getDepartment](docs/sdks/ats/README.md#getdepartment) - Get Department
@@ -89,6 +92,7 @@ run();
 * [getOffer](docs/sdks/ats/README.md#getoffer) - Get Offer
 * [getRejectedReason](docs/sdks/ats/README.md#getrejectedreason) - Get Rejected Reason
 * [getUser](docs/sdks/ats/README.md#getuser) - Get User
+* [listApplicationScorecards](docs/sdks/ats/README.md#listapplicationscorecards) - List Application Scorecards
 * [listApplications](docs/sdks/ats/README.md#listapplications) - List Applications
 * [listApplicationsOffers](docs/sdks/ats/README.md#listapplicationsoffers) - List Application Offers
 * [listCandidateNotes](docs/sdks/ats/README.md#listcandidatenotes) - List Candidate Notes
@@ -165,40 +169,38 @@ run();
 <!-- Start Error Handling [errors] -->
 ## Error Handling
 
-Handling errors in this SDK should largely match your expectations.  All operations return a response object or throw an error.  If Error objects are specified in your OpenAPI Spec, the SDK will throw the appropriate Error type.
+All SDK methods return a response object or throw an error. If Error objects are specified in your OpenAPI Spec, the SDK will throw the appropriate Error type.
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 Example
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
+import * as errors from "@stackone/stackone-client-ts/sdk/models/errors";
 
 async function run() {
     const sdk = new StackOne({
         security: {
-            password: "",
-            username: "",
+            password: "<YOUR_PASSWORD_HERE>",
         },
     });
 
-    let res;
-    try {
-        res = await sdk.accounts.deleteAccount({
+    const res = await sdk.accounts
+        .deleteAccount({
             id: "<ID>",
-        });
-    } catch (err) {
-        if (err instanceof errors.SDKError) {
-            console.error(err); // handle exception
+        })
+        .catch((err) => {
             throw err;
-        }
+        });
+
+    if (res?.statusCode !== 200) {
+        throw new Error("Unexpected status code: " + res?.statusCode || "-");
     }
 
-    if (res.statusCode == 200) {
-        // handle response
-    }
+    // handle response
 }
 
 run();
@@ -211,19 +213,49 @@ run();
 <!-- Start Custom HTTP Client [http-client] -->
 ## Custom HTTP Client
 
-The Typescript SDK makes API calls using the [axios](https://axios-http.com/docs/intro) HTTP library.  In order to provide a convenient way to configure timeouts, cookies, proxies, custom headers, and other low-level configuration, you can initialize the SDK client with a custom `AxiosInstance` object.
+The TypeScript SDK makes API calls using an `HTTPClient` that wraps the native
+[Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API). This
+client is a thin wrapper around `fetch` and provides the ability to attach hooks
+around the request lifecycle that can be used to modify the request or handle
+errors and response.
 
-For example, you could specify a header for every request that your sdk makes as follows:
+The `HTTPClient` constructor takes an optional `fetcher` argument that can be
+used to integrate a third-party HTTP client or when writing tests to mock out
+the HTTP client and feed in fixtures.
+
+The following example shows how to use the `"beforeRequest"` hook to to add a
+custom header and a timeout to requests and how to use the `"requestError"` hook
+to log errors:
 
 ```typescript
-import { @stackone/stackone-client-ts } from "StackOne";
-import axios from "axios";
+import { StackOne } from "@stackone/stackone-client-ts";
+import { HTTPClient } from "@stackone/stackone-client-ts/lib/http";
 
-const httpClient = axios.create({
-    headers: {'x-custom-header': 'someValue'}
-})
+const httpClient = new HTTPClient({
+  // fetcher takes a function that has the same signature as native `fetch`.
+  fetcher: (request) => {
+    return fetch(request);
+  }
+});
 
-const sdk = new StackOne({defaultClient: httpClient});
+httpClient.addHook("beforeRequest", (request) => {
+  const nextRequest = new Request(request, {
+    signal: request.signal || AbortSignal.timeout(5000);
+  });
+
+  nextRequest.headers.set("x-custom-header", "custom value");
+
+  return nextRequest;
+});
+
+httpClient.addHook("requestError", (error, request) => {
+  console.group("Request Error");
+  console.log("Reason:", `${error}`);
+  console.log("Endpoint:", `${request.method} ${request.url}`);
+  console.groupEnd();
+});
+
+const sdk = new StackOne({ httpClient });
 ```
 <!-- End Custom HTTP Client [http-client] -->
 
@@ -250,8 +282,7 @@ import { StackOne } from "@stackone/stackone-client-ts";
 async function run() {
     const sdk = new StackOne({
         security: {
-            password: "",
-            username: "",
+            password: "<YOUR_PASSWORD_HERE>",
         },
     });
 
@@ -259,9 +290,11 @@ async function run() {
         id: "<ID>",
     });
 
-    if (res.statusCode == 200) {
-        // handle response
+    if (res?.statusCode !== 200) {
+        throw new Error("Unexpected status code: " + res?.statusCode || "-");
     }
+
+    // handle response
 }
 
 run();
