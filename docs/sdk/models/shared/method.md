@@ -12,4 +12,3 @@ The method of the request
 | `Put`    | put      |
 | `Delete` | delete   |
 | `Patch`  | patch    |
-| `Job`    | job      |

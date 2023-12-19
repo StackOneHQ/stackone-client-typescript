@@ -7,8 +7,7 @@ import { StackOne } from "@stackone/stackone-client-ts";
 async function run() {
     const sdk = new StackOne({
         security: {
-            password: "",
-            username: "",
+            password: "<YOUR_PASSWORD_HERE>",
         },
     });
 
@@ -19,9 +18,11 @@ async function run() {
         xAccountId: "string",
     });
 
-    if (res.statusCode == 200) {
-        // handle response
+    if (res?.statusCode !== 200) {
+        throw new Error("Unexpected status code: " + res?.statusCode || "-");
     }
+
+    // handle response
 }
 
 run();
