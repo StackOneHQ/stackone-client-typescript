@@ -5,6 +5,11 @@
 import * as shared from "../../../sdk/models/shared";
 import { z } from "zod";
 
+/**
+ * Query parameters that can be used to pass through parameters to the underlying provider request by surrounding them with "proxy" key
+ */
+export type AtsGetJobPostingQueryParamProxy = {};
+
 export type AtsGetJobPostingRequest = {
     /**
      * The comma separated list of fields to return in the response (if empty, all fields are returned)
@@ -15,6 +20,10 @@ export type AtsGetJobPostingRequest = {
      * The comma separated list of fields that will be included in the response
      */
     include?: string | null | undefined;
+    /**
+     * The unified cursor
+     */
+    next?: string | null | undefined;
     /**
      * The page number of the results to fetch
      *
@@ -28,7 +37,7 @@ export type AtsGetJobPostingRequest = {
     /**
      * Query parameters that can be used to pass through parameters to the underlying provider request by surrounding them with "proxy" key
      */
-    proxy?: Record<string, any> | undefined;
+    proxy?: AtsGetJobPostingQueryParamProxy | undefined;
     /**
      * Indicates that the raw request result is returned
      */
@@ -67,14 +76,31 @@ export type AtsGetJobPostingResponse = {
 };
 
 /** @internal */
+export namespace AtsGetJobPostingQueryParamProxy$ {
+    export type Inbound = {};
+
+    export const inboundSchema: z.ZodType<AtsGetJobPostingQueryParamProxy, z.ZodTypeDef, Inbound> =
+        z.object({});
+
+    export type Outbound = {};
+
+    export const outboundSchema: z.ZodType<
+        Outbound,
+        z.ZodTypeDef,
+        AtsGetJobPostingQueryParamProxy
+    > = z.object({});
+}
+
+/** @internal */
 export namespace AtsGetJobPostingRequest$ {
     export type Inbound = {
         fields?: string | null | undefined;
         id: string;
         include?: string | null | undefined;
+        next?: string | null | undefined;
         page?: string | null | undefined;
         page_size?: string | null | undefined;
-        proxy?: Record<string, any> | undefined;
+        proxy?: AtsGetJobPostingQueryParamProxy$.Inbound | undefined;
         raw?: boolean | null | undefined;
         sync_token?: string | null | undefined;
         updated_after?: string | null | undefined;
@@ -86,9 +112,10 @@ export namespace AtsGetJobPostingRequest$ {
             fields: z.string().nullable().optional(),
             id: z.string(),
             include: z.string().nullable().optional(),
+            next: z.string().nullable().optional(),
             page: z.string().nullable().optional(),
             page_size: z.string().nullable().optional(),
-            proxy: z.record(z.any()).optional(),
+            proxy: z.lazy(() => AtsGetJobPostingQueryParamProxy$.inboundSchema).optional(),
             raw: z.boolean().nullable().optional(),
             sync_token: z.string().nullable().optional(),
             updated_after: z.string().nullable().optional(),
@@ -99,6 +126,7 @@ export namespace AtsGetJobPostingRequest$ {
                 ...(v.fields === undefined ? null : { fields: v.fields }),
                 id: v.id,
                 ...(v.include === undefined ? null : { include: v.include }),
+                ...(v.next === undefined ? null : { next: v.next }),
                 ...(v.page === undefined ? null : { page: v.page }),
                 ...(v.page_size === undefined ? null : { pageSize: v.page_size }),
                 ...(v.proxy === undefined ? null : { proxy: v.proxy }),
@@ -113,9 +141,10 @@ export namespace AtsGetJobPostingRequest$ {
         fields?: string | null | undefined;
         id: string;
         include?: string | null | undefined;
+        next?: string | null | undefined;
         page?: string | null | undefined;
         page_size?: string | null | undefined;
-        proxy?: Record<string, any> | undefined;
+        proxy?: AtsGetJobPostingQueryParamProxy$.Outbound | undefined;
         raw?: boolean | null | undefined;
         sync_token?: string | null | undefined;
         updated_after?: string | null | undefined;
@@ -127,9 +156,10 @@ export namespace AtsGetJobPostingRequest$ {
             fields: z.string().nullable().optional(),
             id: z.string(),
             include: z.string().nullable().optional(),
+            next: z.string().nullable().optional(),
             page: z.string().nullable().optional(),
             pageSize: z.string().nullable().optional(),
-            proxy: z.record(z.any()).optional(),
+            proxy: z.lazy(() => AtsGetJobPostingQueryParamProxy$.outboundSchema).optional(),
             raw: z.boolean().nullable().optional(),
             syncToken: z.string().nullable().optional(),
             updatedAfter: z.string().nullable().optional(),
@@ -140,6 +170,7 @@ export namespace AtsGetJobPostingRequest$ {
                 ...(v.fields === undefined ? null : { fields: v.fields }),
                 id: v.id,
                 ...(v.include === undefined ? null : { include: v.include }),
+                ...(v.next === undefined ? null : { next: v.next }),
                 ...(v.page === undefined ? null : { page: v.page }),
                 ...(v.pageSize === undefined ? null : { page_size: v.pageSize }),
                 ...(v.proxy === undefined ? null : { proxy: v.proxy }),

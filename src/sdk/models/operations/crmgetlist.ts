@@ -5,12 +5,21 @@
 import * as shared from "../../../sdk/models/shared";
 import { z } from "zod";
 
+/**
+ * Query parameters that can be used to pass through parameters to the underlying provider request by surrounding them with "proxy" key
+ */
+export type CrmGetListQueryParamProxy = {};
+
 export type CrmGetListRequest = {
     /**
      * The comma separated list of fields to return in the response (if empty, all fields are returned)
      */
     fields?: string | null | undefined;
     id: string;
+    /**
+     * The unified cursor
+     */
+    next?: string | null | undefined;
     /**
      * The page number of the results to fetch
      *
@@ -24,7 +33,7 @@ export type CrmGetListRequest = {
     /**
      * Query parameters that can be used to pass through parameters to the underlying provider request by surrounding them with "proxy" key
      */
-    proxy?: Record<string, any> | undefined;
+    proxy?: CrmGetListQueryParamProxy | undefined;
     /**
      * Indicates that the raw request result is returned
      */
@@ -63,13 +72,27 @@ export type CrmGetListResponse = {
 };
 
 /** @internal */
+export namespace CrmGetListQueryParamProxy$ {
+    export type Inbound = {};
+
+    export const inboundSchema: z.ZodType<CrmGetListQueryParamProxy, z.ZodTypeDef, Inbound> =
+        z.object({});
+
+    export type Outbound = {};
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CrmGetListQueryParamProxy> =
+        z.object({});
+}
+
+/** @internal */
 export namespace CrmGetListRequest$ {
     export type Inbound = {
         fields?: string | null | undefined;
         id: string;
+        next?: string | null | undefined;
         page?: string | null | undefined;
         page_size?: string | null | undefined;
-        proxy?: Record<string, any> | undefined;
+        proxy?: CrmGetListQueryParamProxy$.Inbound | undefined;
         raw?: boolean | null | undefined;
         sync_token?: string | null | undefined;
         updated_after?: string | null | undefined;
@@ -80,9 +103,10 @@ export namespace CrmGetListRequest$ {
         .object({
             fields: z.string().nullable().optional(),
             id: z.string(),
+            next: z.string().nullable().optional(),
             page: z.string().nullable().optional(),
             page_size: z.string().nullable().optional(),
-            proxy: z.record(z.any()).optional(),
+            proxy: z.lazy(() => CrmGetListQueryParamProxy$.inboundSchema).optional(),
             raw: z.boolean().nullable().optional(),
             sync_token: z.string().nullable().optional(),
             updated_after: z.string().nullable().optional(),
@@ -92,6 +116,7 @@ export namespace CrmGetListRequest$ {
             return {
                 ...(v.fields === undefined ? null : { fields: v.fields }),
                 id: v.id,
+                ...(v.next === undefined ? null : { next: v.next }),
                 ...(v.page === undefined ? null : { page: v.page }),
                 ...(v.page_size === undefined ? null : { pageSize: v.page_size }),
                 ...(v.proxy === undefined ? null : { proxy: v.proxy }),
@@ -105,9 +130,10 @@ export namespace CrmGetListRequest$ {
     export type Outbound = {
         fields?: string | null | undefined;
         id: string;
+        next?: string | null | undefined;
         page?: string | null | undefined;
         page_size?: string | null | undefined;
-        proxy?: Record<string, any> | undefined;
+        proxy?: CrmGetListQueryParamProxy$.Outbound | undefined;
         raw?: boolean | null | undefined;
         sync_token?: string | null | undefined;
         updated_after?: string | null | undefined;
@@ -118,9 +144,10 @@ export namespace CrmGetListRequest$ {
         .object({
             fields: z.string().nullable().optional(),
             id: z.string(),
+            next: z.string().nullable().optional(),
             page: z.string().nullable().optional(),
             pageSize: z.string().nullable().optional(),
-            proxy: z.record(z.any()).optional(),
+            proxy: z.lazy(() => CrmGetListQueryParamProxy$.outboundSchema).optional(),
             raw: z.boolean().nullable().optional(),
             syncToken: z.string().nullable().optional(),
             updatedAfter: z.string().nullable().optional(),
@@ -130,6 +157,7 @@ export namespace CrmGetListRequest$ {
             return {
                 ...(v.fields === undefined ? null : { fields: v.fields }),
                 id: v.id,
+                ...(v.next === undefined ? null : { next: v.next }),
                 ...(v.page === undefined ? null : { page: v.page }),
                 ...(v.pageSize === undefined ? null : { page_size: v.pageSize }),
                 ...(v.proxy === undefined ? null : { proxy: v.proxy }),

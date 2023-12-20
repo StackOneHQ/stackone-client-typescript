@@ -349,9 +349,7 @@ async function run() {
 
   const res = await sdk.ats.getApplication({
     id: "<ID>",
-    proxy: {
-      "key": "string",
-    },
+    proxy: {},
     xAccountId: "string",
   });
 
@@ -401,9 +399,7 @@ async function run() {
 
   const res = await sdk.ats.getApplicationOffer({
     id: "<ID>",
-    proxy: {
-      "key": "string",
-    },
+    proxy: {},
     subResourceId: "string",
     xAccountId: "string",
   });
@@ -454,9 +450,7 @@ async function run() {
 
   const res = await sdk.ats.getApplicationScorecard({
     id: "<ID>",
-    proxy: {
-      "key": "string",
-    },
+    proxy: {},
     subResourceId: "string",
     xAccountId: "string",
   });
@@ -507,9 +501,7 @@ async function run() {
 
   const res = await sdk.ats.getCandidate({
     id: "<ID>",
-    proxy: {
-      "key": "string",
-    },
+    proxy: {},
     xAccountId: "string",
   });
 
@@ -559,9 +551,7 @@ async function run() {
 
   const res = await sdk.ats.getCandidateNote({
     id: "<ID>",
-    proxy: {
-      "key": "string",
-    },
+    proxy: {},
     subResourceId: "string",
     xAccountId: "string",
   });
@@ -612,9 +602,7 @@ async function run() {
 
   const res = await sdk.ats.getDepartment({
     id: "<ID>",
-    proxy: {
-      "key": "string",
-    },
+    proxy: {},
     xAccountId: "string",
   });
 
@@ -664,9 +652,7 @@ async function run() {
 
   const res = await sdk.ats.getInterview({
     id: "<ID>",
-    proxy: {
-      "key": "string",
-    },
+    proxy: {},
     xAccountId: "string",
   });
 
@@ -716,9 +702,7 @@ async function run() {
 
   const res = await sdk.ats.getInterviewStage({
     id: "<ID>",
-    proxy: {
-      "key": "string",
-    },
+    proxy: {},
     xAccountId: "string",
   });
 
@@ -768,9 +752,7 @@ async function run() {
 
   const res = await sdk.ats.getJob({
     id: "<ID>",
-    proxy: {
-      "key": "string",
-    },
+    proxy: {},
     xAccountId: "string",
   });
 
@@ -820,9 +802,7 @@ async function run() {
 
   const res = await sdk.ats.getJobPosting({
     id: "<ID>",
-    proxy: {
-      "key": "string",
-    },
+    proxy: {},
     xAccountId: "string",
   });
 
@@ -872,9 +852,7 @@ async function run() {
 
   const res = await sdk.ats.getLocation({
     id: "<ID>",
-    proxy: {
-      "key": "string",
-    },
+    proxy: {},
     xAccountId: "string",
   });
 
@@ -924,9 +902,7 @@ async function run() {
 
   const res = await sdk.ats.getOffer({
     id: "<ID>",
-    proxy: {
-      "key": "string",
-    },
+    proxy: {},
     xAccountId: "string",
   });
 
@@ -976,9 +952,7 @@ async function run() {
 
   const res = await sdk.ats.getRejectedReason({
     id: "<ID>",
-    proxy: {
-      "key": "string",
-    },
+    proxy: {},
     xAccountId: "string",
   });
 
@@ -1028,9 +1002,7 @@ async function run() {
 
   const res = await sdk.ats.getUser({
     id: "<ID>",
-    proxy: {
-      "key": "string",
-    },
+    proxy: {},
     xAccountId: "string",
   });
 
@@ -1080,9 +1052,7 @@ async function run() {
 
   const res = await sdk.ats.listApplicationScorecards({
     id: "<ID>",
-    proxy: {
-      "key": "string",
-    },
+    proxy: {},
     xAccountId: "string",
   });
 
@@ -1131,9 +1101,7 @@ async function run() {
   });
 
   const res = await sdk.ats.listApplications({
-    proxy: {
-      "key": "string",
-    },
+    proxy: {},
     xAccountId: "string",
   });
 
@@ -1183,9 +1151,7 @@ async function run() {
 
   const res = await sdk.ats.listApplicationsOffers({
     id: "<ID>",
-    proxy: {
-      "key": "string",
-    },
+    proxy: {},
     xAccountId: "string",
   });
 
@@ -1235,9 +1201,7 @@ async function run() {
 
   const res = await sdk.ats.listCandidateNotes({
     id: "<ID>",
-    proxy: {
-      "key": "string",
-    },
+    proxy: {},
     xAccountId: "string",
   });
 
@@ -1286,9 +1250,7 @@ async function run() {
   });
 
   const res = await sdk.ats.listCandidates({
-    proxy: {
-      "key": "string",
-    },
+    proxy: {},
     xAccountId: "string",
   });
 
@@ -1337,9 +1299,7 @@ async function run() {
   });
 
   const res = await sdk.ats.listDepartments({
-    proxy: {
-      "key": "string",
-    },
+    proxy: {},
     xAccountId: "string",
   });
 
@@ -1388,9 +1348,7 @@ async function run() {
   });
 
   const res = await sdk.ats.listInterviewStages({
-    proxy: {
-      "key": "string",
-    },
+    proxy: {},
     xAccountId: "string",
   });
 
@@ -1439,9 +1397,7 @@ async function run() {
   });
 
   const res = await sdk.ats.listInterviews({
-    proxy: {
-      "key": "string",
-    },
+    proxy: {},
     xAccountId: "string",
   });
 
@@ -1490,9 +1446,7 @@ async function run() {
   });
 
   const res = await sdk.ats.listJobPostings({
-    proxy: {
-      "key": "string",
-    },
+    proxy: {},
     xAccountId: "string",
   });
 
@@ -1541,9 +1495,7 @@ async function run() {
   });
 
   const res = await sdk.ats.listJobs({
-    proxy: {
-      "key": "string",
-    },
+    proxy: {},
     xAccountId: "string",
   });
 
@@ -1592,9 +1544,7 @@ async function run() {
   });
 
   const res = await sdk.ats.listLocations({
-    proxy: {
-      "key": "string",
-    },
+    proxy: {},
     xAccountId: "string",
   });
 
@@ -1643,9 +1593,7 @@ async function run() {
   });
 
   const res = await sdk.ats.listOffers({
-    proxy: {
-      "key": "string",
-    },
+    proxy: {},
     xAccountId: "string",
   });
 
@@ -1694,9 +1642,7 @@ async function run() {
   });
 
   const res = await sdk.ats.listRejectedReasons({
-    proxy: {
-      "key": "string",
-    },
+    proxy: {},
     xAccountId: "string",
   });
 
@@ -1745,9 +1691,7 @@ async function run() {
   });
 
   const res = await sdk.ats.listUsers({
-    proxy: {
-      "key": "string",
-    },
+    proxy: {},
     xAccountId: "string",
   });
 

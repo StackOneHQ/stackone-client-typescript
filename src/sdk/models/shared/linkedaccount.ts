@@ -15,7 +15,7 @@ export type LinkedAccount = {
     id: string;
     originOwnerId: string;
     originOwnerName: string;
-    originUsername: string;
+    originUsername?: string | null | undefined;
     provider: string;
     setupInformation?: SetupInformation | null | undefined;
     updatedAt: Date;
@@ -52,7 +52,7 @@ export namespace LinkedAccount$ {
         id: string;
         origin_owner_id: string;
         origin_owner_name: string;
-        origin_username: string;
+        origin_username?: string | null | undefined;
         provider: string;
         setup_information?: SetupInformation$.Inbound | null | undefined;
         updated_at: string;
@@ -72,7 +72,7 @@ export namespace LinkedAccount$ {
             id: z.string(),
             origin_owner_id: z.string(),
             origin_owner_name: z.string(),
-            origin_username: z.string(),
+            origin_username: z.string().nullable().optional(),
             provider: z.string(),
             setup_information: z
                 .lazy(() => SetupInformation$.inboundSchema)
@@ -91,7 +91,7 @@ export namespace LinkedAccount$ {
                 id: v.id,
                 originOwnerId: v.origin_owner_id,
                 originOwnerName: v.origin_owner_name,
-                originUsername: v.origin_username,
+                ...(v.origin_username === undefined ? null : { originUsername: v.origin_username }),
                 provider: v.provider,
                 ...(v.setup_information === undefined
                     ? null
@@ -107,7 +107,7 @@ export namespace LinkedAccount$ {
         id: string;
         origin_owner_id: string;
         origin_owner_name: string;
-        origin_username: string;
+        origin_username?: string | null | undefined;
         provider: string;
         setup_information?: SetupInformation$.Outbound | null | undefined;
         updated_at: string;
@@ -124,7 +124,7 @@ export namespace LinkedAccount$ {
             id: z.string(),
             originOwnerId: z.string(),
             originOwnerName: z.string(),
-            originUsername: z.string(),
+            originUsername: z.string().nullable().optional(),
             provider: z.string(),
             setupInformation: z
                 .lazy(() => SetupInformation$.outboundSchema)
@@ -140,7 +140,7 @@ export namespace LinkedAccount$ {
                 id: v.id,
                 origin_owner_id: v.originOwnerId,
                 origin_owner_name: v.originOwnerName,
-                origin_username: v.originUsername,
+                ...(v.originUsername === undefined ? null : { origin_username: v.originUsername }),
                 provider: v.provider,
                 ...(v.setupInformation === undefined
                     ? null
