@@ -26,23 +26,23 @@ export type Field = {
     /**
      * The ID of the field
      */
-    id?: string | undefined;
+    id?: string | null | undefined;
     /**
      * The label of the field
      */
-    label?: string | undefined;
+    label?: string | null | undefined;
     /**
      * Indicates if the field is required
      */
-    required?: boolean | undefined;
+    required?: boolean | null | undefined;
     /**
      * The type of the field
      */
-    type?: FieldType | undefined;
+    type?: FieldType | null | undefined;
     /**
      * The possible values for the field
      */
-    values?: Array<string> | undefined;
+    values?: Array<string> | null | undefined;
 };
 
 /** @internal */
@@ -51,20 +51,20 @@ export const FieldType$ = z.nativeEnum(FieldType);
 /** @internal */
 export namespace Field$ {
     export type Inbound = {
-        id?: string | undefined;
-        label?: string | undefined;
-        required?: boolean | undefined;
-        type?: FieldType | undefined;
-        values?: Array<string> | undefined;
+        id?: string | null | undefined;
+        label?: string | null | undefined;
+        required?: boolean | null | undefined;
+        type?: FieldType | null | undefined;
+        values?: Array<string> | null | undefined;
     };
 
     export const inboundSchema: z.ZodType<Field, z.ZodTypeDef, Inbound> = z
         .object({
-            id: z.string().optional(),
-            label: z.string().optional(),
-            required: z.boolean().optional(),
-            type: FieldType$.optional(),
-            values: z.array(z.string()).optional(),
+            id: z.string().nullable().optional(),
+            label: z.string().nullable().optional(),
+            required: z.boolean().nullable().optional(),
+            type: FieldType$.nullable().optional(),
+            values: z.array(z.string()).nullable().optional(),
         })
         .transform((v) => {
             return {
@@ -77,20 +77,20 @@ export namespace Field$ {
         });
 
     export type Outbound = {
-        id?: string | undefined;
-        label?: string | undefined;
-        required?: boolean | undefined;
-        type?: FieldType | undefined;
-        values?: Array<string> | undefined;
+        id?: string | null | undefined;
+        label?: string | null | undefined;
+        required?: boolean | null | undefined;
+        type?: FieldType | null | undefined;
+        values?: Array<string> | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Field> = z
         .object({
-            id: z.string().optional(),
-            label: z.string().optional(),
-            required: z.boolean().optional(),
-            type: FieldType$.optional(),
-            values: z.array(z.string()).optional(),
+            id: z.string().nullable().optional(),
+            label: z.string().nullable().optional(),
+            required: z.boolean().nullable().optional(),
+            type: FieldType$.nullable().optional(),
+            values: z.array(z.string()).nullable().optional(),
         })
         .transform((v) => {
             return {

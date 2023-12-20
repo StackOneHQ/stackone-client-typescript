@@ -14,13 +14,13 @@ export enum Confidential {
 export type Job = {
     code: string;
     companyId: string;
-    confidential?: Confidential | undefined;
+    confidential?: Confidential | null | undefined;
     /**
      * Date of creation
      */
     createdAt: Date;
     departmentIds: Array<string>;
-    hiringTeam?: Array<HiringTeam> | undefined;
+    hiringTeam?: Array<HiringTeam> | null | undefined;
     id: string;
     jobStatus: JobStatusEnum;
     locationIds: Array<string>;
@@ -39,10 +39,10 @@ export namespace Job$ {
     export type Inbound = {
         code: string;
         company_id: string;
-        confidential?: Confidential | undefined;
+        confidential?: Confidential | null | undefined;
         created_at: string;
         department_ids: Array<string>;
-        hiring_team?: Array<HiringTeam$.Inbound> | undefined;
+        hiring_team?: Array<HiringTeam$.Inbound> | null | undefined;
         id: string;
         job_status: JobStatusEnum$.Inbound;
         location_ids: Array<string>;
@@ -54,13 +54,13 @@ export namespace Job$ {
         .object({
             code: z.string(),
             company_id: z.string(),
-            confidential: Confidential$.optional(),
+            confidential: Confidential$.nullable().optional(),
             created_at: z
                 .string()
                 .datetime({ offset: true })
                 .transform((v) => new Date(v)),
             department_ids: z.array(z.string()),
-            hiring_team: z.array(HiringTeam$.inboundSchema).optional(),
+            hiring_team: z.array(HiringTeam$.inboundSchema).nullable().optional(),
             id: z.string(),
             job_status: JobStatusEnum$.inboundSchema,
             location_ids: z.array(z.string()),
@@ -89,10 +89,10 @@ export namespace Job$ {
     export type Outbound = {
         code: string;
         company_id: string;
-        confidential?: Confidential | undefined;
+        confidential?: Confidential | null | undefined;
         created_at: string;
         department_ids: Array<string>;
-        hiring_team?: Array<HiringTeam$.Outbound> | undefined;
+        hiring_team?: Array<HiringTeam$.Outbound> | null | undefined;
         id: string;
         job_status: JobStatusEnum$.Outbound;
         location_ids: Array<string>;
@@ -104,10 +104,10 @@ export namespace Job$ {
         .object({
             code: z.string(),
             companyId: z.string(),
-            confidential: Confidential$.optional(),
+            confidential: Confidential$.nullable().optional(),
             createdAt: z.date().transform((v) => v.toISOString()),
             departmentIds: z.array(z.string()),
-            hiringTeam: z.array(HiringTeam$.outboundSchema).optional(),
+            hiringTeam: z.array(HiringTeam$.outboundSchema).nullable().optional(),
             id: z.string(),
             jobStatus: JobStatusEnum$.outboundSchema,
             locationIds: z.array(z.string()),

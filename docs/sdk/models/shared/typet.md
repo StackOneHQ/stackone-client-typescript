@@ -1,11 +1,11 @@
 # TypeT
 
-The type of the custom field.
+Type of the answer
 
 
 ## Fields
 
-| Field                                                                                                     | Type                                                                                                      | Required                                                                                                  | Description                                                                                               |
-| --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
-| `sourceValue`                                                                                             | *string*                                                                                                  | :heavy_check_mark:                                                                                        | N/A                                                                                                       |
-| `value`                                                                                                   | [shared.EmployeeCustomFieldsSchemasValue](../../../sdk/models/shared/employeecustomfieldsschemasvalue.md) | :heavy_check_mark:                                                                                        | N/A                                                                                                       |
+| Field                                                           | Type                                                            | Required                                                        | Description                                                     | Example                                                         |
+| --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- |
+| `sourceValue`                                                   | *string*                                                        | :heavy_minus_sign:                                              | The source value of the answer type.                            | Short Text                                                      |
+| `value`                                                         | [shared.AnswerValue](../../../sdk/models/shared/answervalue.md) | :heavy_minus_sign:                                              | The type of the answer.                                         | short_text                                                      |

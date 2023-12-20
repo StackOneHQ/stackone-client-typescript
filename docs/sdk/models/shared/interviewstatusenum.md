@@ -1,9 +1,0 @@
-# InterviewStatusEnum
-
-
-## Fields
-
-| Field                                                                                     | Type                                                                                      | Required                                                                                  | Description                                                                               | Example                                                                                   |
-| ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
-| `sourceValue`                                                                             | *string*                                                                                  | :heavy_check_mark:                                                                        | The source value of the interview status.                                                 | Unscheduled                                                                               |
-| `value`                                                                                   | [shared.InterviewStatusEnumValue](../../../sdk/models/shared/interviewstatusenumvalue.md) | :heavy_check_mark:                                                                        | The status of the interview.                                                              | unscheduled                                                                               |

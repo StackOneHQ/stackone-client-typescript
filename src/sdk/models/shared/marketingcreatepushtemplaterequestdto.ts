@@ -6,19 +6,19 @@ import { PushMessages, PushMessages$ } from "./pushmessages";
 import { z } from "zod";
 
 export type MarketingCreatePushTemplateRequestDto = {
-    id?: string | undefined;
-    messages?: Array<PushMessages> | undefined;
-    name?: string | undefined;
-    tags?: Array<string> | undefined;
+    id?: string | null | undefined;
+    messages?: Array<PushMessages> | null | undefined;
+    name?: string | null | undefined;
+    tags?: Array<string> | null | undefined;
 };
 
 /** @internal */
 export namespace MarketingCreatePushTemplateRequestDto$ {
     export type Inbound = {
-        id?: string | undefined;
-        messages?: Array<PushMessages$.Inbound> | undefined;
-        name?: string | undefined;
-        tags?: Array<string> | undefined;
+        id?: string | null | undefined;
+        messages?: Array<PushMessages$.Inbound> | null | undefined;
+        name?: string | null | undefined;
+        tags?: Array<string> | null | undefined;
     };
 
     export const inboundSchema: z.ZodType<
@@ -27,10 +27,10 @@ export namespace MarketingCreatePushTemplateRequestDto$ {
         Inbound
     > = z
         .object({
-            id: z.string().optional(),
-            messages: z.array(PushMessages$.inboundSchema).optional(),
-            name: z.string().optional(),
-            tags: z.array(z.string()).optional(),
+            id: z.string().nullable().optional(),
+            messages: z.array(PushMessages$.inboundSchema).nullable().optional(),
+            name: z.string().nullable().optional(),
+            tags: z.array(z.string()).nullable().optional(),
         })
         .transform((v) => {
             return {
@@ -42,10 +42,10 @@ export namespace MarketingCreatePushTemplateRequestDto$ {
         });
 
     export type Outbound = {
-        id?: string | undefined;
-        messages?: Array<PushMessages$.Outbound> | undefined;
-        name?: string | undefined;
-        tags?: Array<string> | undefined;
+        id?: string | null | undefined;
+        messages?: Array<PushMessages$.Outbound> | null | undefined;
+        name?: string | null | undefined;
+        tags?: Array<string> | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<
@@ -54,10 +54,10 @@ export namespace MarketingCreatePushTemplateRequestDto$ {
         MarketingCreatePushTemplateRequestDto
     > = z
         .object({
-            id: z.string().optional(),
-            messages: z.array(PushMessages$.outboundSchema).optional(),
-            name: z.string().optional(),
-            tags: z.array(z.string()).optional(),
+            id: z.string().nullable().optional(),
+            messages: z.array(PushMessages$.outboundSchema).nullable().optional(),
+            name: z.string().nullable().optional(),
+            tags: z.array(z.string()).nullable().optional(),
         })
         .transform((v) => {
             return {

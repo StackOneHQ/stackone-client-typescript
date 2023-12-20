@@ -71,7 +71,7 @@ export enum EmploymentSchemasPayFrequencyValue {
 /**
  * The pay frequency
  */
-export type PayFrequency = {
+export type EmploymentPayFrequency = {
     /**
      * The source value of the pay frequency.
      */
@@ -101,7 +101,7 @@ export enum EmploymentSchemasPayPeriodValue {
 /**
  * The pay period
  */
-export type PayPeriod = {
+export type EmploymentPayPeriod = {
     /**
      * The source value of the pay period.
      */
@@ -116,11 +116,11 @@ export type Employment = {
     /**
      * The created_at date
      */
-    createdAt?: Date | undefined;
+    createdAt?: Date | null | undefined;
     /**
      * The effective date of the employment contract
      */
-    effectiveDate?: Date | undefined;
+    effectiveDate?: Date | null | undefined;
     /**
      * The employee ID associated with this employment
      */
@@ -128,39 +128,39 @@ export type Employment = {
     /**
      * The employment work schedule type (e.g., full-time, part-time)
      */
-    employmentContractType?: EmploymentEmploymentContractType | undefined;
+    employmentContractType?: EmploymentEmploymentContractType | null | undefined;
     /**
      * The type of employment (e.g., contractor, permanent)
      */
-    employmentType?: EmploymentEmploymentType | undefined;
+    employmentType?: EmploymentEmploymentType | null | undefined;
     /**
      * The unique ID of the employment
      */
-    id?: string | undefined;
+    id?: string | null | undefined;
     /**
      * The job title of the employee
      */
-    jobTitle?: string | undefined;
+    jobTitle?: string | null | undefined;
     /**
      * The currency used for pay
      */
-    payCurrency?: string | undefined;
+    payCurrency?: string | null | undefined;
     /**
      * The pay frequency
      */
-    payFrequency?: PayFrequency | undefined;
+    payFrequency?: EmploymentPayFrequency | null | undefined;
     /**
      * The pay period
      */
-    payPeriod?: PayPeriod | undefined;
+    payPeriod?: EmploymentPayPeriod | null | undefined;
     /**
      * The pay rate for the employee
      */
-    payRate?: string | undefined;
+    payRate?: string | null | undefined;
     /**
      * The updated_at date
      */
-    updatedAt?: Date | undefined;
+    updatedAt?: Date | null | undefined;
 };
 
 /** @internal */
@@ -252,13 +252,13 @@ export namespace EmploymentEmploymentType$ {
 export const EmploymentSchemasPayFrequencyValue$ = z.nativeEnum(EmploymentSchemasPayFrequencyValue);
 
 /** @internal */
-export namespace PayFrequency$ {
+export namespace EmploymentPayFrequency$ {
     export type Inbound = {
         source_value: string;
         value: EmploymentSchemasPayFrequencyValue;
     };
 
-    export const inboundSchema: z.ZodType<PayFrequency, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<EmploymentPayFrequency, z.ZodTypeDef, Inbound> = z
         .object({
             source_value: z.string(),
             value: EmploymentSchemasPayFrequencyValue$,
@@ -275,7 +275,7 @@ export namespace PayFrequency$ {
         value: EmploymentSchemasPayFrequencyValue;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, PayFrequency> = z
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, EmploymentPayFrequency> = z
         .object({
             sourceValue: z.string(),
             value: EmploymentSchemasPayFrequencyValue$,
@@ -292,13 +292,13 @@ export namespace PayFrequency$ {
 export const EmploymentSchemasPayPeriodValue$ = z.nativeEnum(EmploymentSchemasPayPeriodValue);
 
 /** @internal */
-export namespace PayPeriod$ {
+export namespace EmploymentPayPeriod$ {
     export type Inbound = {
         source_value: string;
         value: EmploymentSchemasPayPeriodValue;
     };
 
-    export const inboundSchema: z.ZodType<PayPeriod, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<EmploymentPayPeriod, z.ZodTypeDef, Inbound> = z
         .object({
             source_value: z.string(),
             value: EmploymentSchemasPayPeriodValue$,
@@ -315,7 +315,7 @@ export namespace PayPeriod$ {
         value: EmploymentSchemasPayPeriodValue;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, PayPeriod> = z
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, EmploymentPayPeriod> = z
         .object({
             sourceValue: z.string(),
             value: EmploymentSchemasPayPeriodValue$,
@@ -331,18 +331,18 @@ export namespace PayPeriod$ {
 /** @internal */
 export namespace Employment$ {
     export type Inbound = {
-        created_at?: string | undefined;
-        effective_date?: string | undefined;
+        created_at?: string | null | undefined;
+        effective_date?: string | null | undefined;
         employee_id: string;
-        employment_contract_type?: EmploymentEmploymentContractType$.Inbound | undefined;
-        employment_type?: EmploymentEmploymentType$.Inbound | undefined;
-        id?: string | undefined;
-        job_title?: string | undefined;
-        pay_currency?: string | undefined;
-        pay_frequency?: PayFrequency$.Inbound | undefined;
-        pay_period?: PayPeriod$.Inbound | undefined;
-        pay_rate?: string | undefined;
-        updated_at?: string | undefined;
+        employment_contract_type?: EmploymentEmploymentContractType$.Inbound | null | undefined;
+        employment_type?: EmploymentEmploymentType$.Inbound | null | undefined;
+        id?: string | null | undefined;
+        job_title?: string | null | undefined;
+        pay_currency?: string | null | undefined;
+        pay_frequency?: EmploymentPayFrequency$.Inbound | null | undefined;
+        pay_period?: EmploymentPayPeriod$.Inbound | null | undefined;
+        pay_rate?: string | null | undefined;
+        updated_at?: string | null | undefined;
     };
 
     export const inboundSchema: z.ZodType<Employment, z.ZodTypeDef, Inbound> = z
@@ -351,27 +351,40 @@ export namespace Employment$ {
                 .string()
                 .datetime({ offset: true })
                 .transform((v) => new Date(v))
+                .nullable()
                 .optional(),
             effective_date: z
                 .string()
                 .datetime({ offset: true })
                 .transform((v) => new Date(v))
+                .nullable()
                 .optional(),
             employee_id: z.string(),
             employment_contract_type: z
                 .lazy(() => EmploymentEmploymentContractType$.inboundSchema)
+                .nullable()
                 .optional(),
-            employment_type: z.lazy(() => EmploymentEmploymentType$.inboundSchema).optional(),
-            id: z.string().optional(),
-            job_title: z.string().optional(),
-            pay_currency: z.string().optional(),
-            pay_frequency: z.lazy(() => PayFrequency$.inboundSchema).optional(),
-            pay_period: z.lazy(() => PayPeriod$.inboundSchema).optional(),
-            pay_rate: z.string().optional(),
+            employment_type: z
+                .lazy(() => EmploymentEmploymentType$.inboundSchema)
+                .nullable()
+                .optional(),
+            id: z.string().nullable().optional(),
+            job_title: z.string().nullable().optional(),
+            pay_currency: z.string().nullable().optional(),
+            pay_frequency: z
+                .lazy(() => EmploymentPayFrequency$.inboundSchema)
+                .nullable()
+                .optional(),
+            pay_period: z
+                .lazy(() => EmploymentPayPeriod$.inboundSchema)
+                .nullable()
+                .optional(),
+            pay_rate: z.string().nullable().optional(),
             updated_at: z
                 .string()
                 .datetime({ offset: true })
                 .transform((v) => new Date(v))
+                .nullable()
                 .optional(),
         })
         .transform((v) => {
@@ -394,18 +407,18 @@ export namespace Employment$ {
         });
 
     export type Outbound = {
-        created_at?: string | undefined;
-        effective_date?: string | undefined;
+        created_at?: string | null | undefined;
+        effective_date?: string | null | undefined;
         employee_id: string;
-        employment_contract_type?: EmploymentEmploymentContractType$.Outbound | undefined;
-        employment_type?: EmploymentEmploymentType$.Outbound | undefined;
-        id?: string | undefined;
-        job_title?: string | undefined;
-        pay_currency?: string | undefined;
-        pay_frequency?: PayFrequency$.Outbound | undefined;
-        pay_period?: PayPeriod$.Outbound | undefined;
-        pay_rate?: string | undefined;
-        updated_at?: string | undefined;
+        employment_contract_type?: EmploymentEmploymentContractType$.Outbound | null | undefined;
+        employment_type?: EmploymentEmploymentType$.Outbound | null | undefined;
+        id?: string | null | undefined;
+        job_title?: string | null | undefined;
+        pay_currency?: string | null | undefined;
+        pay_frequency?: EmploymentPayFrequency$.Outbound | null | undefined;
+        pay_period?: EmploymentPayPeriod$.Outbound | null | undefined;
+        pay_rate?: string | null | undefined;
+        updated_at?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Employment> = z
@@ -413,25 +426,38 @@ export namespace Employment$ {
             createdAt: z
                 .date()
                 .transform((v) => v.toISOString())
+                .nullable()
                 .optional(),
             effectiveDate: z
                 .date()
                 .transform((v) => v.toISOString())
+                .nullable()
                 .optional(),
             employeeId: z.string(),
             employmentContractType: z
                 .lazy(() => EmploymentEmploymentContractType$.outboundSchema)
+                .nullable()
                 .optional(),
-            employmentType: z.lazy(() => EmploymentEmploymentType$.outboundSchema).optional(),
-            id: z.string().optional(),
-            jobTitle: z.string().optional(),
-            payCurrency: z.string().optional(),
-            payFrequency: z.lazy(() => PayFrequency$.outboundSchema).optional(),
-            payPeriod: z.lazy(() => PayPeriod$.outboundSchema).optional(),
-            payRate: z.string().optional(),
+            employmentType: z
+                .lazy(() => EmploymentEmploymentType$.outboundSchema)
+                .nullable()
+                .optional(),
+            id: z.string().nullable().optional(),
+            jobTitle: z.string().nullable().optional(),
+            payCurrency: z.string().nullable().optional(),
+            payFrequency: z
+                .lazy(() => EmploymentPayFrequency$.outboundSchema)
+                .nullable()
+                .optional(),
+            payPeriod: z
+                .lazy(() => EmploymentPayPeriod$.outboundSchema)
+                .nullable()
+                .optional(),
+            payRate: z.string().nullable().optional(),
             updatedAt: z
                 .date()
                 .transform((v) => v.toISOString())
+                .nullable()
                 .optional(),
         })
         .transform((v) => {

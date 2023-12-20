@@ -1,17 +1,24 @@
 # Value
 
-The type of the answer.
+The status of the application.
 
 
 ## Values
 
-| Name           | Value          |
-| -------------- | -------------- |
-| `ShortText`    | short_text     |
-| `LongText`     | long_text      |
-| `Attachment`   | attachment     |
-| `MultiSelect`  | multi_select   |
-| `SingleSelect` | single_select  |
-| `Boolean`      | boolean        |
-| `Number`       | number         |
-| `Date`         | date           |
+| Name                  | Value                 |
+| --------------------- | --------------------- |
+| `Active`              | active                |
+| `Assessment`          | assessment            |
+| `BackgroundCheck`     | background_check      |
+| `Converted`           | converted             |
+| `DeclinedByCandidate` | declined_by_candidate |
+| `Hired`               | hired                 |
+| `Interview`           | interview             |
+| `Lead`                | lead                  |
+| `Offer`               | offer                 |
+| `ReferenceCheck`      | reference_check       |
+| `Rejected`            | rejected              |
+| `Review`              | review                |
+| `Screen`              | screen                |
+| `New`                 | new                   |
+| `UnmappedValue`       | unmapped_value        |

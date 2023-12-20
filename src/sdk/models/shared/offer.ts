@@ -11,12 +11,12 @@ export type Offer = {
     /**
      * Date of creation
      */
-    createdAt?: Date | undefined;
-    currency?: string | undefined;
+    createdAt?: Date | null | undefined;
+    currency?: string | null | undefined;
     id: string;
-    offerHistory?: Array<OfferHistory> | undefined;
+    offerHistory?: Array<OfferHistory> | null | undefined;
     offerStatus: OfferStatusEnum;
-    salary?: number | undefined;
+    salary?: number | null | undefined;
     /**
      * Date of creation
      */
@@ -24,21 +24,21 @@ export type Offer = {
     /**
      * Date of last update
      */
-    updatedAt?: Date | undefined;
+    updatedAt?: Date | null | undefined;
 };
 
 /** @internal */
 export namespace Offer$ {
     export type Inbound = {
         application_id: string;
-        created_at?: string | undefined;
-        currency?: string | undefined;
+        created_at?: string | null | undefined;
+        currency?: string | null | undefined;
         id: string;
-        offer_history?: Array<OfferHistory$.Inbound> | undefined;
+        offer_history?: Array<OfferHistory$.Inbound> | null | undefined;
         offer_status: OfferStatusEnum$.Inbound;
-        salary?: number | undefined;
+        salary?: number | null | undefined;
         start_date: string;
-        updated_at?: string | undefined;
+        updated_at?: string | null | undefined;
     };
 
     export const inboundSchema: z.ZodType<Offer, z.ZodTypeDef, Inbound> = z
@@ -48,12 +48,13 @@ export namespace Offer$ {
                 .string()
                 .datetime({ offset: true })
                 .transform((v) => new Date(v))
+                .nullable()
                 .optional(),
-            currency: z.string().optional(),
+            currency: z.string().nullable().optional(),
             id: z.string(),
-            offer_history: z.array(OfferHistory$.inboundSchema).optional(),
+            offer_history: z.array(OfferHistory$.inboundSchema).nullable().optional(),
             offer_status: OfferStatusEnum$.inboundSchema,
-            salary: z.number().optional(),
+            salary: z.number().nullable().optional(),
             start_date: z
                 .string()
                 .datetime({ offset: true })
@@ -62,6 +63,7 @@ export namespace Offer$ {
                 .string()
                 .datetime({ offset: true })
                 .transform((v) => new Date(v))
+                .nullable()
                 .optional(),
         })
         .transform((v) => {
@@ -80,14 +82,14 @@ export namespace Offer$ {
 
     export type Outbound = {
         application_id: string;
-        created_at?: string | undefined;
-        currency?: string | undefined;
+        created_at?: string | null | undefined;
+        currency?: string | null | undefined;
         id: string;
-        offer_history?: Array<OfferHistory$.Outbound> | undefined;
+        offer_history?: Array<OfferHistory$.Outbound> | null | undefined;
         offer_status: OfferStatusEnum$.Outbound;
-        salary?: number | undefined;
+        salary?: number | null | undefined;
         start_date: string;
-        updated_at?: string | undefined;
+        updated_at?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Offer> = z
@@ -96,16 +98,18 @@ export namespace Offer$ {
             createdAt: z
                 .date()
                 .transform((v) => v.toISOString())
+                .nullable()
                 .optional(),
-            currency: z.string().optional(),
+            currency: z.string().nullable().optional(),
             id: z.string(),
-            offerHistory: z.array(OfferHistory$.outboundSchema).optional(),
+            offerHistory: z.array(OfferHistory$.outboundSchema).nullable().optional(),
             offerStatus: OfferStatusEnum$.outboundSchema,
-            salary: z.number().optional(),
+            salary: z.number().nullable().optional(),
             startDate: z.date().transform((v) => v.toISOString()),
             updatedAt: z
                 .date()
                 .transform((v) => v.toISOString())
+                .nullable()
                 .optional(),
         })
         .transform((v) => {

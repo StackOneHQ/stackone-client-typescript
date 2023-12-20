@@ -21,43 +21,43 @@ export type Scorecard = {
     /**
      * The application ID associated with the scorecard
      */
-    applicationId?: string | undefined;
+    applicationId?: string | null | undefined;
     /**
      * The author ID of the scorecard
      */
-    authorId?: string | undefined;
+    authorId?: string | null | undefined;
     /**
      * The candidate ID associated with the scorecard
      */
-    candidateId?: string | undefined;
+    candidateId?: string | null | undefined;
     /**
      * The creation date of the scorecard
      */
-    createdAt?: Date | undefined;
+    createdAt?: Date | null | undefined;
     /**
      * The scorecard ID
      */
-    id?: string | undefined;
+    id?: string | null | undefined;
     /**
      * The interview ID associated with the scorecard
      */
-    interviewId?: string | undefined;
+    interviewId?: string | null | undefined;
     /**
      * The label of the scorecard
      */
-    label?: string | undefined;
+    label?: string | null | undefined;
     /**
      * The overall recommendation
      */
-    overallRecommendation?: OverallRecommendation | undefined;
+    overallRecommendation?: OverallRecommendation | null | undefined;
     /**
      * The sections in the scorecard
      */
-    sections?: Array<ScorecardSection> | undefined;
+    sections?: Array<ScorecardSection> | null | undefined;
     /**
      * The update date of the scorecard
      */
-    updatedAt?: Date | undefined;
+    updatedAt?: Date | null | undefined;
 };
 
 /** @internal */
@@ -66,37 +66,39 @@ export const OverallRecommendation$ = z.nativeEnum(OverallRecommendation);
 /** @internal */
 export namespace Scorecard$ {
     export type Inbound = {
-        application_id?: string | undefined;
-        author_id?: string | undefined;
-        candidate_id?: string | undefined;
-        created_at?: string | undefined;
-        id?: string | undefined;
-        interview_id?: string | undefined;
-        label?: string | undefined;
-        overall_recommendation?: OverallRecommendation | undefined;
-        sections?: Array<ScorecardSection$.Inbound> | undefined;
-        updated_at?: string | undefined;
+        application_id?: string | null | undefined;
+        author_id?: string | null | undefined;
+        candidate_id?: string | null | undefined;
+        created_at?: string | null | undefined;
+        id?: string | null | undefined;
+        interview_id?: string | null | undefined;
+        label?: string | null | undefined;
+        overall_recommendation?: OverallRecommendation | null | undefined;
+        sections?: Array<ScorecardSection$.Inbound> | null | undefined;
+        updated_at?: string | null | undefined;
     };
 
     export const inboundSchema: z.ZodType<Scorecard, z.ZodTypeDef, Inbound> = z
         .object({
-            application_id: z.string().optional(),
-            author_id: z.string().optional(),
-            candidate_id: z.string().optional(),
+            application_id: z.string().nullable().optional(),
+            author_id: z.string().nullable().optional(),
+            candidate_id: z.string().nullable().optional(),
             created_at: z
                 .string()
                 .datetime({ offset: true })
                 .transform((v) => new Date(v))
+                .nullable()
                 .optional(),
-            id: z.string().optional(),
-            interview_id: z.string().optional(),
-            label: z.string().optional(),
-            overall_recommendation: OverallRecommendation$.optional(),
-            sections: z.array(ScorecardSection$.inboundSchema).optional(),
+            id: z.string().nullable().optional(),
+            interview_id: z.string().nullable().optional(),
+            label: z.string().nullable().optional(),
+            overall_recommendation: OverallRecommendation$.nullable().optional(),
+            sections: z.array(ScorecardSection$.inboundSchema).nullable().optional(),
             updated_at: z
                 .string()
                 .datetime({ offset: true })
                 .transform((v) => new Date(v))
+                .nullable()
                 .optional(),
         })
         .transform((v) => {
@@ -117,35 +119,37 @@ export namespace Scorecard$ {
         });
 
     export type Outbound = {
-        application_id?: string | undefined;
-        author_id?: string | undefined;
-        candidate_id?: string | undefined;
-        created_at?: string | undefined;
-        id?: string | undefined;
-        interview_id?: string | undefined;
-        label?: string | undefined;
-        overall_recommendation?: OverallRecommendation | undefined;
-        sections?: Array<ScorecardSection$.Outbound> | undefined;
-        updated_at?: string | undefined;
+        application_id?: string | null | undefined;
+        author_id?: string | null | undefined;
+        candidate_id?: string | null | undefined;
+        created_at?: string | null | undefined;
+        id?: string | null | undefined;
+        interview_id?: string | null | undefined;
+        label?: string | null | undefined;
+        overall_recommendation?: OverallRecommendation | null | undefined;
+        sections?: Array<ScorecardSection$.Outbound> | null | undefined;
+        updated_at?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Scorecard> = z
         .object({
-            applicationId: z.string().optional(),
-            authorId: z.string().optional(),
-            candidateId: z.string().optional(),
+            applicationId: z.string().nullable().optional(),
+            authorId: z.string().nullable().optional(),
+            candidateId: z.string().nullable().optional(),
             createdAt: z
                 .date()
                 .transform((v) => v.toISOString())
+                .nullable()
                 .optional(),
-            id: z.string().optional(),
-            interviewId: z.string().optional(),
-            label: z.string().optional(),
-            overallRecommendation: OverallRecommendation$.optional(),
-            sections: z.array(ScorecardSection$.outboundSchema).optional(),
+            id: z.string().nullable().optional(),
+            interviewId: z.string().nullable().optional(),
+            label: z.string().nullable().optional(),
+            overallRecommendation: OverallRecommendation$.nullable().optional(),
+            sections: z.array(ScorecardSection$.outboundSchema).nullable().optional(),
             updatedAt: z
                 .date()
                 .transform((v) => v.toISOString())
+                .nullable()
                 .optional(),
         })
         .transform((v) => {

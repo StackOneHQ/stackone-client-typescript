@@ -46,7 +46,7 @@ Create Application
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
-import { ApplicationStatusEnumApiModelValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { Value } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 async function run() {
   const sdk = new StackOne({
@@ -59,14 +59,14 @@ async function run() {
     atsCreateApplicationRequestDto: {
       applicationStatus: {
         sourceValue: "Hired",
-        value: ApplicationStatusEnumApiModelValue.Hired,
+        value: Value.Hired,
       },
       attachments: [
         {
           content: "Base64 encoded content",
           contentType: {
             sourceValue: "Text",
-            value: AttachmentContentTypeValue.Text,
+            value: ApplicationAttachmentValue.Text,
           },
           fileName: "resume.pdf",
           type: [
@@ -94,7 +94,7 @@ async function run() {
             id: "answer_1",
             type: {
               sourceValue: "Short Text",
-              value: Value.ShortText,
+              value: AnswerValue.ShortText,
             },
             values: [
               "Yes",
@@ -1787,7 +1787,7 @@ Update Application
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
-import { ApplicationStatusEnumApiModelValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { Value } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 async function run() {
   const sdk = new StackOne({
@@ -1800,14 +1800,14 @@ async function run() {
     atsUpdateApplicationRequestDto: {
       applicationStatus: {
         sourceValue: "Hired",
-        value: ApplicationStatusEnumApiModelValue.Hired,
+        value: Value.Hired,
       },
       attachments: [
         {
           content: "Base64 encoded content",
           contentType: {
             sourceValue: "Text",
-            value: AttachmentContentTypeValue.Text,
+            value: ApplicationAttachmentValue.Text,
           },
           fileName: "resume.pdf",
           type: [
@@ -1836,7 +1836,7 @@ async function run() {
             id: "answer_1",
             type: {
               sourceValue: "Short Text",
-              value: Value.ShortText,
+              value: AnswerValue.ShortText,
             },
             values: [
               "Yes",

@@ -11,13 +11,13 @@ export type SetupInformation = {};
 export type LinkedAccount = {
     active: boolean;
     createdAt: Date;
-    credentials?: Credentials | undefined;
+    credentials?: Credentials | null | undefined;
     id: string;
     originOwnerId: string;
     originOwnerName: string;
     originUsername: string;
     provider: string;
-    setupInformation?: SetupInformation | undefined;
+    setupInformation?: SetupInformation | null | undefined;
     updatedAt: Date;
 };
 
@@ -48,13 +48,13 @@ export namespace LinkedAccount$ {
     export type Inbound = {
         active: boolean;
         created_at: string;
-        credentials?: Credentials$.Inbound | undefined;
+        credentials?: Credentials$.Inbound | null | undefined;
         id: string;
         origin_owner_id: string;
         origin_owner_name: string;
         origin_username: string;
         provider: string;
-        setup_information?: SetupInformation$.Inbound | undefined;
+        setup_information?: SetupInformation$.Inbound | null | undefined;
         updated_at: string;
     };
 
@@ -65,13 +65,19 @@ export namespace LinkedAccount$ {
                 .string()
                 .datetime({ offset: true })
                 .transform((v) => new Date(v)),
-            credentials: z.lazy(() => Credentials$.inboundSchema).optional(),
+            credentials: z
+                .lazy(() => Credentials$.inboundSchema)
+                .nullable()
+                .optional(),
             id: z.string(),
             origin_owner_id: z.string(),
             origin_owner_name: z.string(),
             origin_username: z.string(),
             provider: z.string(),
-            setup_information: z.lazy(() => SetupInformation$.inboundSchema).optional(),
+            setup_information: z
+                .lazy(() => SetupInformation$.inboundSchema)
+                .nullable()
+                .optional(),
             updated_at: z
                 .string()
                 .datetime({ offset: true })
@@ -97,13 +103,13 @@ export namespace LinkedAccount$ {
     export type Outbound = {
         active: boolean;
         created_at: string;
-        credentials?: Credentials$.Outbound | undefined;
+        credentials?: Credentials$.Outbound | null | undefined;
         id: string;
         origin_owner_id: string;
         origin_owner_name: string;
         origin_username: string;
         provider: string;
-        setup_information?: SetupInformation$.Outbound | undefined;
+        setup_information?: SetupInformation$.Outbound | null | undefined;
         updated_at: string;
     };
 
@@ -111,13 +117,19 @@ export namespace LinkedAccount$ {
         .object({
             active: z.boolean(),
             createdAt: z.date().transform((v) => v.toISOString()),
-            credentials: z.lazy(() => Credentials$.outboundSchema).optional(),
+            credentials: z
+                .lazy(() => Credentials$.outboundSchema)
+                .nullable()
+                .optional(),
             id: z.string(),
             originOwnerId: z.string(),
             originOwnerName: z.string(),
             originUsername: z.string(),
             provider: z.string(),
-            setupInformation: z.lazy(() => SetupInformation$.outboundSchema).optional(),
+            setupInformation: z
+                .lazy(() => SetupInformation$.outboundSchema)
+                .nullable()
+                .optional(),
             updatedAt: z.date().transform((v) => v.toISOString()),
         })
         .transform((v) => {

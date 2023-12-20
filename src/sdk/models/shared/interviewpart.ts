@@ -8,26 +8,26 @@ export type InterviewPart = {
     /**
      * Interview part created date
      */
-    createdAt?: Date | undefined;
-    id?: string | undefined;
-    interviewerIds?: Array<string> | undefined;
-    meetingProvider?: string | undefined;
-    meetingUrl?: string | undefined;
+    createdAt?: Date | null | undefined;
+    id?: string | null | undefined;
+    interviewerIds?: Array<string> | null | undefined;
+    meetingProvider?: string | null | undefined;
+    meetingUrl?: string | null | undefined;
     /**
      * Interview part updated date
      */
-    updatedAt?: Date | undefined;
+    updatedAt?: Date | null | undefined;
 };
 
 /** @internal */
 export namespace InterviewPart$ {
     export type Inbound = {
-        created_at?: string | undefined;
-        id?: string | undefined;
-        interviewer_ids?: Array<string> | undefined;
-        meeting_provider?: string | undefined;
-        meeting_url?: string | undefined;
-        updated_at?: string | undefined;
+        created_at?: string | null | undefined;
+        id?: string | null | undefined;
+        interviewer_ids?: Array<string> | null | undefined;
+        meeting_provider?: string | null | undefined;
+        meeting_url?: string | null | undefined;
+        updated_at?: string | null | undefined;
     };
 
     export const inboundSchema: z.ZodType<InterviewPart, z.ZodTypeDef, Inbound> = z
@@ -36,15 +36,17 @@ export namespace InterviewPart$ {
                 .string()
                 .datetime({ offset: true })
                 .transform((v) => new Date(v))
+                .nullable()
                 .optional(),
-            id: z.string().optional(),
-            interviewer_ids: z.array(z.string()).optional(),
-            meeting_provider: z.string().optional(),
-            meeting_url: z.string().optional(),
+            id: z.string().nullable().optional(),
+            interviewer_ids: z.array(z.string()).nullable().optional(),
+            meeting_provider: z.string().nullable().optional(),
+            meeting_url: z.string().nullable().optional(),
             updated_at: z
                 .string()
                 .datetime({ offset: true })
                 .transform((v) => new Date(v))
+                .nullable()
                 .optional(),
         })
         .transform((v) => {
@@ -61,12 +63,12 @@ export namespace InterviewPart$ {
         });
 
     export type Outbound = {
-        created_at?: string | undefined;
-        id?: string | undefined;
-        interviewer_ids?: Array<string> | undefined;
-        meeting_provider?: string | undefined;
-        meeting_url?: string | undefined;
-        updated_at?: string | undefined;
+        created_at?: string | null | undefined;
+        id?: string | null | undefined;
+        interviewer_ids?: Array<string> | null | undefined;
+        meeting_provider?: string | null | undefined;
+        meeting_url?: string | null | undefined;
+        updated_at?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, InterviewPart> = z
@@ -74,14 +76,16 @@ export namespace InterviewPart$ {
             createdAt: z
                 .date()
                 .transform((v) => v.toISOString())
+                .nullable()
                 .optional(),
-            id: z.string().optional(),
-            interviewerIds: z.array(z.string()).optional(),
-            meetingProvider: z.string().optional(),
-            meetingUrl: z.string().optional(),
+            id: z.string().nullable().optional(),
+            interviewerIds: z.array(z.string()).nullable().optional(),
+            meetingProvider: z.string().nullable().optional(),
+            meetingUrl: z.string().nullable().optional(),
             updatedAt: z
                 .date()
                 .transform((v) => v.toISOString())
+                .nullable()
                 .optional(),
         })
         .transform((v) => {

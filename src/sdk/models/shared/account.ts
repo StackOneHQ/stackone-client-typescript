@@ -6,71 +6,70 @@ import { AccountAddress, AccountAddress$ } from "./accountaddress";
 import { z } from "zod";
 
 export type Account = {
-    addresses?: Array<AccountAddress> | undefined;
-    annualRevenue?: string | undefined;
+    addresses?: Array<AccountAddress> | null | undefined;
+    annualRevenue?: string | null | undefined;
     /**
      * Timestamp when the account was created
      */
-    createdAt?: Date | undefined;
-    description?: string | undefined;
+    createdAt?: Date | null | undefined;
+    description?: string | null | undefined;
     id: string;
     /**
      * Values of the industries
      */
-    industries?: Array<string> | undefined;
-    industry?: string | undefined;
+    industries?: Array<string> | null | undefined;
     name: string;
     ownerId: string;
     /**
      * List of account phone numbers
      */
-    phoneNumbers?: Array<string> | undefined;
+    phoneNumbers?: Array<string> | null | undefined;
     /**
      * Timestamp when the account was last updated
      */
-    updatedAt?: Date | undefined;
-    website?: string | undefined;
+    updatedAt?: Date | null | undefined;
+    website?: string | null | undefined;
 };
 
 /** @internal */
 export namespace Account$ {
     export type Inbound = {
-        addresses?: Array<AccountAddress$.Inbound> | undefined;
-        annual_revenue?: string | undefined;
-        created_at?: string | undefined;
-        description?: string | undefined;
+        addresses?: Array<AccountAddress$.Inbound> | null | undefined;
+        annual_revenue?: string | null | undefined;
+        created_at?: string | null | undefined;
+        description?: string | null | undefined;
         id: string;
-        industries?: Array<string> | undefined;
-        industry?: string | undefined;
+        industries?: Array<string> | null | undefined;
         name: string;
         owner_id: string;
-        phone_numbers?: Array<string> | undefined;
-        updated_at?: string | undefined;
-        website?: string | undefined;
+        phone_numbers?: Array<string> | null | undefined;
+        updated_at?: string | null | undefined;
+        website?: string | null | undefined;
     };
 
     export const inboundSchema: z.ZodType<Account, z.ZodTypeDef, Inbound> = z
         .object({
-            addresses: z.array(AccountAddress$.inboundSchema).optional(),
-            annual_revenue: z.string().optional(),
+            addresses: z.array(AccountAddress$.inboundSchema).nullable().optional(),
+            annual_revenue: z.string().nullable().optional(),
             created_at: z
                 .string()
                 .datetime({ offset: true })
                 .transform((v) => new Date(v))
+                .nullable()
                 .optional(),
-            description: z.string().optional(),
+            description: z.string().nullable().optional(),
             id: z.string(),
-            industries: z.array(z.string()).optional(),
-            industry: z.string().optional(),
+            industries: z.array(z.string()).nullable().optional(),
             name: z.string(),
             owner_id: z.string(),
-            phone_numbers: z.array(z.string()).optional(),
+            phone_numbers: z.array(z.string()).nullable().optional(),
             updated_at: z
                 .string()
                 .datetime({ offset: true })
                 .transform((v) => new Date(v))
+                .nullable()
                 .optional(),
-            website: z.string().optional(),
+            website: z.string().nullable().optional(),
         })
         .transform((v) => {
             return {
@@ -80,7 +79,6 @@ export namespace Account$ {
                 ...(v.description === undefined ? null : { description: v.description }),
                 id: v.id,
                 ...(v.industries === undefined ? null : { industries: v.industries }),
-                ...(v.industry === undefined ? null : { industry: v.industry }),
                 name: v.name,
                 ownerId: v.owner_id,
                 ...(v.phone_numbers === undefined ? null : { phoneNumbers: v.phone_numbers }),
@@ -90,40 +88,40 @@ export namespace Account$ {
         });
 
     export type Outbound = {
-        addresses?: Array<AccountAddress$.Outbound> | undefined;
-        annual_revenue?: string | undefined;
-        created_at?: string | undefined;
-        description?: string | undefined;
+        addresses?: Array<AccountAddress$.Outbound> | null | undefined;
+        annual_revenue?: string | null | undefined;
+        created_at?: string | null | undefined;
+        description?: string | null | undefined;
         id: string;
-        industries?: Array<string> | undefined;
-        industry?: string | undefined;
+        industries?: Array<string> | null | undefined;
         name: string;
         owner_id: string;
-        phone_numbers?: Array<string> | undefined;
-        updated_at?: string | undefined;
-        website?: string | undefined;
+        phone_numbers?: Array<string> | null | undefined;
+        updated_at?: string | null | undefined;
+        website?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Account> = z
         .object({
-            addresses: z.array(AccountAddress$.outboundSchema).optional(),
-            annualRevenue: z.string().optional(),
+            addresses: z.array(AccountAddress$.outboundSchema).nullable().optional(),
+            annualRevenue: z.string().nullable().optional(),
             createdAt: z
                 .date()
                 .transform((v) => v.toISOString())
+                .nullable()
                 .optional(),
-            description: z.string().optional(),
+            description: z.string().nullable().optional(),
             id: z.string(),
-            industries: z.array(z.string()).optional(),
-            industry: z.string().optional(),
+            industries: z.array(z.string()).nullable().optional(),
             name: z.string(),
             ownerId: z.string(),
-            phoneNumbers: z.array(z.string()).optional(),
+            phoneNumbers: z.array(z.string()).nullable().optional(),
             updatedAt: z
                 .date()
                 .transform((v) => v.toISOString())
+                .nullable()
                 .optional(),
-            website: z.string().optional(),
+            website: z.string().nullable().optional(),
         })
         .transform((v) => {
             return {
@@ -133,7 +131,6 @@ export namespace Account$ {
                 ...(v.description === undefined ? null : { description: v.description }),
                 id: v.id,
                 ...(v.industries === undefined ? null : { industries: v.industries }),
-                ...(v.industry === undefined ? null : { industry: v.industry }),
                 name: v.name,
                 owner_id: v.ownerId,
                 ...(v.phoneNumbers === undefined ? null : { phone_numbers: v.phoneNumbers }),

@@ -14,13 +14,13 @@ export enum Categories {
 }
 
 export type ConnectSession = {
-    categories?: Array<Categories> | undefined;
+    categories?: Array<Categories> | null | undefined;
     createdAt: Date;
     id: string;
     organizationId: string;
     originOwnerId: string;
     originOwnerName: string;
-    originUsername?: string | undefined;
+    originUsername?: string | null | undefined;
     projectId: string;
     provider: string;
 };
@@ -31,20 +31,20 @@ export const Categories$ = z.nativeEnum(Categories);
 /** @internal */
 export namespace ConnectSession$ {
     export type Inbound = {
-        categories?: Array<Categories> | undefined;
+        categories?: Array<Categories> | null | undefined;
         created_at: string;
         id: string;
         organization_id: string;
         origin_owner_id: string;
         origin_owner_name: string;
-        origin_username?: string | undefined;
+        origin_username?: string | null | undefined;
         project_id: string;
         provider: string;
     };
 
     export const inboundSchema: z.ZodType<ConnectSession, z.ZodTypeDef, Inbound> = z
         .object({
-            categories: z.array(Categories$).optional(),
+            categories: z.array(Categories$).nullable().optional(),
             created_at: z
                 .string()
                 .datetime({ offset: true })
@@ -53,7 +53,7 @@ export namespace ConnectSession$ {
             organization_id: z.string(),
             origin_owner_id: z.string(),
             origin_owner_name: z.string(),
-            origin_username: z.string().optional(),
+            origin_username: z.string().nullable().optional(),
             project_id: z.string(),
             provider: z.string(),
         })
@@ -72,26 +72,26 @@ export namespace ConnectSession$ {
         });
 
     export type Outbound = {
-        categories?: Array<Categories> | undefined;
+        categories?: Array<Categories> | null | undefined;
         created_at: string;
         id: string;
         organization_id: string;
         origin_owner_id: string;
         origin_owner_name: string;
-        origin_username?: string | undefined;
+        origin_username?: string | null | undefined;
         project_id: string;
         provider: string;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ConnectSession> = z
         .object({
-            categories: z.array(Categories$).optional(),
+            categories: z.array(Categories$).nullable().optional(),
             createdAt: z.date().transform((v) => v.toISOString()),
             id: z.string(),
             organizationId: z.string(),
             originOwnerId: z.string(),
             originOwnerName: z.string(),
-            originUsername: z.string().optional(),
+            originUsername: z.string().nullable().optional(),
             projectId: z.string(),
             provider: z.string(),
         })

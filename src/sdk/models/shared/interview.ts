@@ -5,27 +5,49 @@
 import { Interviewer, Interviewer$ } from "./interviewer";
 import { InterviewPart, InterviewPart$ } from "./interviewpart";
 import { InterviewStage, InterviewStage$ } from "./interviewstage";
-import { InterviewStatusEnum, InterviewStatusEnum$ } from "./interviewstatusenum";
 import { z } from "zod";
+
+/**
+ * The status of the interview.
+ */
+export enum InterviewValue {
+    Unscheduled = "unscheduled",
+    Scheduled = "scheduled",
+    Completed = "completed",
+    Cancelled = "cancelled",
+    PendingFeedback = "pending_feedback",
+    UnmappedValue = "unmapped_value",
+}
+
+export type InterviewStatus = {
+    /**
+     * The source value of the interview status.
+     */
+    sourceValue: string;
+    /**
+     * The status of the interview.
+     */
+    value: InterviewValue;
+};
 
 export type Interview = {
     applicationId: string;
     /**
      * Interview created date
      */
-    createdAt?: Date | undefined;
+    createdAt?: Date | null | undefined;
     /**
      * Interview end date
      */
     endAt: Date;
     id: string;
-    interviewParts?: Array<InterviewPart> | undefined;
-    interviewStage?: Array<InterviewStage> | undefined;
+    interviewParts?: Array<InterviewPart> | null | undefined;
+    interviewStage?: Array<InterviewStage> | null | undefined;
     interviewStageId: string;
-    interviewStatus?: InterviewStatusEnum | undefined;
+    interviewStatus?: InterviewStatus | null | undefined;
     interviewerIds: Array<string>;
-    interviewers?: Array<Interviewer> | undefined;
-    meetingUrl?: string | undefined;
+    interviewers?: Array<Interviewer> | null | undefined;
+    meetingUrl?: string | null | undefined;
     /**
      * Interview start date
      */
@@ -33,25 +55,65 @@ export type Interview = {
     /**
      * Interview updated date
      */
-    updatedAt?: Date | undefined;
+    updatedAt?: Date | null | undefined;
 };
+
+/** @internal */
+export const InterviewValue$ = z.nativeEnum(InterviewValue);
+
+/** @internal */
+export namespace InterviewStatus$ {
+    export type Inbound = {
+        source_value: string;
+        value: InterviewValue;
+    };
+
+    export const inboundSchema: z.ZodType<InterviewStatus, z.ZodTypeDef, Inbound> = z
+        .object({
+            source_value: z.string(),
+            value: InterviewValue$,
+        })
+        .transform((v) => {
+            return {
+                sourceValue: v.source_value,
+                value: v.value,
+            };
+        });
+
+    export type Outbound = {
+        source_value: string;
+        value: InterviewValue;
+    };
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, InterviewStatus> = z
+        .object({
+            sourceValue: z.string(),
+            value: InterviewValue$,
+        })
+        .transform((v) => {
+            return {
+                source_value: v.sourceValue,
+                value: v.value,
+            };
+        });
+}
 
 /** @internal */
 export namespace Interview$ {
     export type Inbound = {
         application_id: string;
-        created_at?: string | undefined;
+        created_at?: string | null | undefined;
         end_at: string;
         id: string;
-        interview_parts?: Array<InterviewPart$.Inbound> | undefined;
-        interview_stage?: Array<InterviewStage$.Inbound> | undefined;
+        interview_parts?: Array<InterviewPart$.Inbound> | null | undefined;
+        interview_stage?: Array<InterviewStage$.Inbound> | null | undefined;
         interview_stage_id: string;
-        interview_status?: InterviewStatusEnum$.Inbound | undefined;
+        interview_status?: InterviewStatus$.Inbound | null | undefined;
         interviewer_ids: Array<string>;
-        interviewers?: Array<Interviewer$.Inbound> | undefined;
-        meeting_url?: string | undefined;
+        interviewers?: Array<Interviewer$.Inbound> | null | undefined;
+        meeting_url?: string | null | undefined;
         start_at: string;
-        updated_at?: string | undefined;
+        updated_at?: string | null | undefined;
     };
 
     export const inboundSchema: z.ZodType<Interview, z.ZodTypeDef, Inbound> = z
@@ -61,19 +123,23 @@ export namespace Interview$ {
                 .string()
                 .datetime({ offset: true })
                 .transform((v) => new Date(v))
+                .nullable()
                 .optional(),
             end_at: z
                 .string()
                 .datetime({ offset: true })
                 .transform((v) => new Date(v)),
             id: z.string(),
-            interview_parts: z.array(InterviewPart$.inboundSchema).optional(),
-            interview_stage: z.array(InterviewStage$.inboundSchema).optional(),
+            interview_parts: z.array(InterviewPart$.inboundSchema).nullable().optional(),
+            interview_stage: z.array(InterviewStage$.inboundSchema).nullable().optional(),
             interview_stage_id: z.string(),
-            interview_status: InterviewStatusEnum$.inboundSchema.optional(),
+            interview_status: z
+                .lazy(() => InterviewStatus$.inboundSchema)
+                .nullable()
+                .optional(),
             interviewer_ids: z.array(z.string()),
-            interviewers: z.array(Interviewer$.inboundSchema).optional(),
-            meeting_url: z.string().optional(),
+            interviewers: z.array(Interviewer$.inboundSchema).nullable().optional(),
+            meeting_url: z.string().nullable().optional(),
             start_at: z
                 .string()
                 .datetime({ offset: true })
@@ -82,6 +148,7 @@ export namespace Interview$ {
                 .string()
                 .datetime({ offset: true })
                 .transform((v) => new Date(v))
+                .nullable()
                 .optional(),
         })
         .transform((v) => {
@@ -106,18 +173,18 @@ export namespace Interview$ {
 
     export type Outbound = {
         application_id: string;
-        created_at?: string | undefined;
+        created_at?: string | null | undefined;
         end_at: string;
         id: string;
-        interview_parts?: Array<InterviewPart$.Outbound> | undefined;
-        interview_stage?: Array<InterviewStage$.Outbound> | undefined;
+        interview_parts?: Array<InterviewPart$.Outbound> | null | undefined;
+        interview_stage?: Array<InterviewStage$.Outbound> | null | undefined;
         interview_stage_id: string;
-        interview_status?: InterviewStatusEnum$.Outbound | undefined;
+        interview_status?: InterviewStatus$.Outbound | null | undefined;
         interviewer_ids: Array<string>;
-        interviewers?: Array<Interviewer$.Outbound> | undefined;
-        meeting_url?: string | undefined;
+        interviewers?: Array<Interviewer$.Outbound> | null | undefined;
+        meeting_url?: string | null | undefined;
         start_at: string;
-        updated_at?: string | undefined;
+        updated_at?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Interview> = z
@@ -126,20 +193,25 @@ export namespace Interview$ {
             createdAt: z
                 .date()
                 .transform((v) => v.toISOString())
+                .nullable()
                 .optional(),
             endAt: z.date().transform((v) => v.toISOString()),
             id: z.string(),
-            interviewParts: z.array(InterviewPart$.outboundSchema).optional(),
-            interviewStage: z.array(InterviewStage$.outboundSchema).optional(),
+            interviewParts: z.array(InterviewPart$.outboundSchema).nullable().optional(),
+            interviewStage: z.array(InterviewStage$.outboundSchema).nullable().optional(),
             interviewStageId: z.string(),
-            interviewStatus: InterviewStatusEnum$.outboundSchema.optional(),
+            interviewStatus: z
+                .lazy(() => InterviewStatus$.outboundSchema)
+                .nullable()
+                .optional(),
             interviewerIds: z.array(z.string()),
-            interviewers: z.array(Interviewer$.outboundSchema).optional(),
-            meetingUrl: z.string().optional(),
+            interviewers: z.array(Interviewer$.outboundSchema).nullable().optional(),
+            meetingUrl: z.string().nullable().optional(),
             startAt: z.date().transform((v) => v.toISOString()),
             updatedAt: z
                 .date()
                 .transform((v) => v.toISOString())
+                .nullable()
                 .optional(),
         })
         .transform((v) => {

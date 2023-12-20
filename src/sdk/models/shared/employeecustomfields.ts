@@ -16,7 +16,7 @@ export enum EmployeeCustomFieldsSchemasValue {
 /**
  * The type of the custom field.
  */
-export type TypeT = {
+export type EmployeeCustomFieldsType = {
     sourceValue: string;
     value: EmployeeCustomFieldsSchemasValue;
 };
@@ -46,7 +46,7 @@ export type EmployeeCustomFields = {
     /**
      * The type of the custom field.
      */
-    type?: TypeT | undefined;
+    type?: EmployeeCustomFieldsType | undefined;
     /**
      * The value associated with the custom field.
      */
@@ -61,13 +61,13 @@ export type EmployeeCustomFields = {
 export const EmployeeCustomFieldsSchemasValue$ = z.nativeEnum(EmployeeCustomFieldsSchemasValue);
 
 /** @internal */
-export namespace TypeT$ {
+export namespace EmployeeCustomFieldsType$ {
     export type Inbound = {
         source_value: string;
         value: EmployeeCustomFieldsSchemasValue;
     };
 
-    export const inboundSchema: z.ZodType<TypeT, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<EmployeeCustomFieldsType, z.ZodTypeDef, Inbound> = z
         .object({
             source_value: z.string(),
             value: EmployeeCustomFieldsSchemasValue$,
@@ -84,7 +84,7 @@ export namespace TypeT$ {
         value: EmployeeCustomFieldsSchemasValue;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, TypeT> = z
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, EmployeeCustomFieldsType> = z
         .object({
             sourceValue: z.string(),
             value: EmployeeCustomFieldsSchemasValue$,
@@ -117,7 +117,7 @@ export namespace EmployeeCustomFields$ {
         id?: string | undefined;
         name?: string | undefined;
         options?: Array<string> | undefined;
-        type?: TypeT$.Inbound | undefined;
+        type?: EmployeeCustomFieldsType$.Inbound | undefined;
         value?: EmployeeCustomFieldsValue$.Inbound | undefined;
         value_id?: string | undefined;
     };
@@ -128,7 +128,7 @@ export namespace EmployeeCustomFields$ {
             id: z.string().optional(),
             name: z.string().optional(),
             options: z.array(z.string()).optional(),
-            type: z.lazy(() => TypeT$.inboundSchema).optional(),
+            type: z.lazy(() => EmployeeCustomFieldsType$.inboundSchema).optional(),
             value: z.lazy(() => EmployeeCustomFieldsValue$.inboundSchema).optional(),
             value_id: z.string().optional(),
         })
@@ -149,7 +149,7 @@ export namespace EmployeeCustomFields$ {
         id?: string | undefined;
         name?: string | undefined;
         options?: Array<string> | undefined;
-        type?: TypeT$.Outbound | undefined;
+        type?: EmployeeCustomFieldsType$.Outbound | undefined;
         value?: EmployeeCustomFieldsValue$.Outbound | undefined;
         value_id?: string | undefined;
     };
@@ -160,7 +160,7 @@ export namespace EmployeeCustomFields$ {
             id: z.string().optional(),
             name: z.string().optional(),
             options: z.array(z.string()).optional(),
-            type: z.lazy(() => TypeT$.outboundSchema).optional(),
+            type: z.lazy(() => EmployeeCustomFieldsType$.outboundSchema).optional(),
             value: z.lazy(() => EmployeeCustomFieldsValue$.outboundSchema).optional(),
             valueId: z.string().optional(),
         })

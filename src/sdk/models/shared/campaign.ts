@@ -4,98 +4,234 @@
 
 import { ChannelsEnum, ChannelsEnum$ } from "./channelsenum";
 import { Message, Message$ } from "./message";
-import { ScheduleTypeEnum, ScheduleTypeEnum$ } from "./scheduletypeenum";
-import { StatusEnum, StatusEnum$ } from "./statusenum";
 import { z } from "zod";
 
+/**
+ * The schedule type of the campaign.
+ */
+export enum CampaignValue {
+    Immediate = "immediate",
+    Scheduled = "scheduled",
+    Recurring = "recurring",
+    Custom = "custom",
+    Triggered = "triggered",
+}
+
+/**
+ * The schedule type
+ */
+export type ScheduleType = {
+    /**
+     * The source value of the schedule type.
+     */
+    sourceValue: string;
+    /**
+     * The schedule type of the campaign.
+     */
+    value: CampaignValue;
+};
+
+/**
+ * The Status of the campaign.
+ */
+export enum CampaignSchemasValue {
+    Draft = "draft",
+    Archived = "archived",
+    Live = "live",
+}
+
+/**
+ * Status of the Campaign
+ */
+export type Status = {
+    /**
+     * The source value of the Status.
+     */
+    sourceValue: string;
+    /**
+     * The Status of the campaign.
+     */
+    value: CampaignSchemasValue;
+};
+
 export type Campaign = {
-    archived?: boolean | undefined;
+    archived?: boolean | null | undefined;
     /**
      * channels of the Campaign
      */
-    channels?: Array<ChannelsEnum> | undefined;
+    channels?: Array<ChannelsEnum> | null | undefined;
     /**
      * The created_at date
      */
-    createdAt?: Date | undefined;
-    description?: string | undefined;
-    draft?: boolean | undefined;
+    createdAt?: Date | null | undefined;
+    description?: string | null | undefined;
+    draft?: boolean | null | undefined;
     /**
      * The first_sent_at date
      */
-    firstSentAt?: Date | undefined;
-    id?: string | undefined;
+    firstSentAt?: Date | null | undefined;
+    id?: string | null | undefined;
     /**
      * The last_sent_at date
      */
-    lastSentAt?: Date | undefined;
-    messages?: Array<Message> | undefined;
+    lastSentAt?: Date | null | undefined;
+    messages?: Array<Message> | null | undefined;
     name: string;
     /**
      * The schedule type
      */
-    scheduleType?: ScheduleTypeEnum | undefined;
+    scheduleType?: ScheduleType | null | undefined;
     /**
      * Status of the Campaign
      */
-    status?: StatusEnum | undefined;
-    tags?: Array<string> | undefined;
+    status?: Status | null | undefined;
+    tags?: Array<string> | null | undefined;
     /**
      * The updated_at date
      */
-    updatedAt?: Date | undefined;
+    updatedAt?: Date | null | undefined;
 };
+
+/** @internal */
+export const CampaignValue$ = z.nativeEnum(CampaignValue);
+
+/** @internal */
+export namespace ScheduleType$ {
+    export type Inbound = {
+        source_value: string;
+        value: CampaignValue;
+    };
+
+    export const inboundSchema: z.ZodType<ScheduleType, z.ZodTypeDef, Inbound> = z
+        .object({
+            source_value: z.string(),
+            value: CampaignValue$,
+        })
+        .transform((v) => {
+            return {
+                sourceValue: v.source_value,
+                value: v.value,
+            };
+        });
+
+    export type Outbound = {
+        source_value: string;
+        value: CampaignValue;
+    };
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ScheduleType> = z
+        .object({
+            sourceValue: z.string(),
+            value: CampaignValue$,
+        })
+        .transform((v) => {
+            return {
+                source_value: v.sourceValue,
+                value: v.value,
+            };
+        });
+}
+
+/** @internal */
+export const CampaignSchemasValue$ = z.nativeEnum(CampaignSchemasValue);
+
+/** @internal */
+export namespace Status$ {
+    export type Inbound = {
+        source_value: string;
+        value: CampaignSchemasValue;
+    };
+
+    export const inboundSchema: z.ZodType<Status, z.ZodTypeDef, Inbound> = z
+        .object({
+            source_value: z.string(),
+            value: CampaignSchemasValue$,
+        })
+        .transform((v) => {
+            return {
+                sourceValue: v.source_value,
+                value: v.value,
+            };
+        });
+
+    export type Outbound = {
+        source_value: string;
+        value: CampaignSchemasValue;
+    };
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Status> = z
+        .object({
+            sourceValue: z.string(),
+            value: CampaignSchemasValue$,
+        })
+        .transform((v) => {
+            return {
+                source_value: v.sourceValue,
+                value: v.value,
+            };
+        });
+}
 
 /** @internal */
 export namespace Campaign$ {
     export type Inbound = {
-        archived?: boolean | undefined;
-        channels?: Array<ChannelsEnum$.Inbound> | undefined;
-        created_at?: string | undefined;
-        description?: string | undefined;
-        draft?: boolean | undefined;
-        first_sent_at?: string | undefined;
-        id?: string | undefined;
-        last_sent_at?: string | undefined;
-        messages?: Array<Message$.Inbound> | undefined;
+        archived?: boolean | null | undefined;
+        channels?: Array<ChannelsEnum$.Inbound> | null | undefined;
+        created_at?: string | null | undefined;
+        description?: string | null | undefined;
+        draft?: boolean | null | undefined;
+        first_sent_at?: string | null | undefined;
+        id?: string | null | undefined;
+        last_sent_at?: string | null | undefined;
+        messages?: Array<Message$.Inbound> | null | undefined;
         name: string;
-        schedule_type?: ScheduleTypeEnum$.Inbound | undefined;
-        status?: StatusEnum$.Inbound | undefined;
-        tags?: Array<string> | undefined;
-        updated_at?: string | undefined;
+        schedule_type?: ScheduleType$.Inbound | null | undefined;
+        status?: Status$.Inbound | null | undefined;
+        tags?: Array<string> | null | undefined;
+        updated_at?: string | null | undefined;
     };
 
     export const inboundSchema: z.ZodType<Campaign, z.ZodTypeDef, Inbound> = z
         .object({
-            archived: z.boolean().optional(),
-            channels: z.array(ChannelsEnum$.inboundSchema).optional(),
+            archived: z.boolean().nullable().optional(),
+            channels: z.array(ChannelsEnum$.inboundSchema).nullable().optional(),
             created_at: z
                 .string()
                 .datetime({ offset: true })
                 .transform((v) => new Date(v))
+                .nullable()
                 .optional(),
-            description: z.string().optional(),
-            draft: z.boolean().optional(),
+            description: z.string().nullable().optional(),
+            draft: z.boolean().nullable().optional(),
             first_sent_at: z
                 .string()
                 .datetime({ offset: true })
                 .transform((v) => new Date(v))
+                .nullable()
                 .optional(),
-            id: z.string().optional(),
+            id: z.string().nullable().optional(),
             last_sent_at: z
                 .string()
                 .datetime({ offset: true })
                 .transform((v) => new Date(v))
+                .nullable()
                 .optional(),
-            messages: z.array(Message$.inboundSchema).optional(),
+            messages: z.array(Message$.inboundSchema).nullable().optional(),
             name: z.string(),
-            schedule_type: ScheduleTypeEnum$.inboundSchema.optional(),
-            status: StatusEnum$.inboundSchema.optional(),
-            tags: z.array(z.string()).optional(),
+            schedule_type: z
+                .lazy(() => ScheduleType$.inboundSchema)
+                .nullable()
+                .optional(),
+            status: z
+                .lazy(() => Status$.inboundSchema)
+                .nullable()
+                .optional(),
+            tags: z.array(z.string()).nullable().optional(),
             updated_at: z
                 .string()
                 .datetime({ offset: true })
                 .transform((v) => new Date(v))
+                .nullable()
                 .optional(),
         })
         .transform((v) => {
@@ -118,49 +254,59 @@ export namespace Campaign$ {
         });
 
     export type Outbound = {
-        archived?: boolean | undefined;
-        channels?: Array<ChannelsEnum$.Outbound> | undefined;
-        created_at?: string | undefined;
-        description?: string | undefined;
-        draft?: boolean | undefined;
-        first_sent_at?: string | undefined;
-        id?: string | undefined;
-        last_sent_at?: string | undefined;
-        messages?: Array<Message$.Outbound> | undefined;
+        archived?: boolean | null | undefined;
+        channels?: Array<ChannelsEnum$.Outbound> | null | undefined;
+        created_at?: string | null | undefined;
+        description?: string | null | undefined;
+        draft?: boolean | null | undefined;
+        first_sent_at?: string | null | undefined;
+        id?: string | null | undefined;
+        last_sent_at?: string | null | undefined;
+        messages?: Array<Message$.Outbound> | null | undefined;
         name: string;
-        schedule_type?: ScheduleTypeEnum$.Outbound | undefined;
-        status?: StatusEnum$.Outbound | undefined;
-        tags?: Array<string> | undefined;
-        updated_at?: string | undefined;
+        schedule_type?: ScheduleType$.Outbound | null | undefined;
+        status?: Status$.Outbound | null | undefined;
+        tags?: Array<string> | null | undefined;
+        updated_at?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Campaign> = z
         .object({
-            archived: z.boolean().optional(),
-            channels: z.array(ChannelsEnum$.outboundSchema).optional(),
+            archived: z.boolean().nullable().optional(),
+            channels: z.array(ChannelsEnum$.outboundSchema).nullable().optional(),
             createdAt: z
                 .date()
                 .transform((v) => v.toISOString())
+                .nullable()
                 .optional(),
-            description: z.string().optional(),
-            draft: z.boolean().optional(),
+            description: z.string().nullable().optional(),
+            draft: z.boolean().nullable().optional(),
             firstSentAt: z
                 .date()
                 .transform((v) => v.toISOString())
+                .nullable()
                 .optional(),
-            id: z.string().optional(),
+            id: z.string().nullable().optional(),
             lastSentAt: z
                 .date()
                 .transform((v) => v.toISOString())
+                .nullable()
                 .optional(),
-            messages: z.array(Message$.outboundSchema).optional(),
+            messages: z.array(Message$.outboundSchema).nullable().optional(),
             name: z.string(),
-            scheduleType: ScheduleTypeEnum$.outboundSchema.optional(),
-            status: StatusEnum$.outboundSchema.optional(),
-            tags: z.array(z.string()).optional(),
+            scheduleType: z
+                .lazy(() => ScheduleType$.outboundSchema)
+                .nullable()
+                .optional(),
+            status: z
+                .lazy(() => Status$.outboundSchema)
+                .nullable()
+                .optional(),
+            tags: z.array(z.string()).nullable().optional(),
             updatedAt: z
                 .date()
                 .transform((v) => v.toISOString())
+                .nullable()
                 .optional(),
         })
         .transform((v) => {

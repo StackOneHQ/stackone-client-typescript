@@ -19,25 +19,25 @@ export type AtsCreateApplicationRequestDtoQuestionnaire = {
     /**
      * Unique identifier of the questionnaire
      */
-    id?: string | undefined;
+    id?: string | null | undefined;
 };
 
 export type AtsCreateApplicationRequestDto = {
     applicationStatus: ApplicationStatusEnumApiModel;
-    attachments?: Array<ApplicationAttachment> | undefined;
+    attachments?: Array<ApplicationAttachment> | null | undefined;
     candidate: ApplicationCandidate;
     /**
      * Unique identifier of the candidate
      */
-    candidateId?: string | undefined;
+    candidateId?: string | null | undefined;
     /**
      * Unique identifier of the job
      */
-    jobId?: string | undefined;
+    jobId?: string | null | undefined;
     /**
      * Unique identifiers of the locations
      */
-    locationIds?: Array<string> | undefined;
+    locationIds?: Array<string> | null | undefined;
     /**
      * Questionnaire associated with the application
      */
@@ -48,7 +48,7 @@ export type AtsCreateApplicationRequestDto = {
 export namespace AtsCreateApplicationRequestDtoQuestionnaire$ {
     export type Inbound = {
         answers: Array<Answer$.Inbound>;
-        id?: string | undefined;
+        id?: string | null | undefined;
     };
 
     export const inboundSchema: z.ZodType<
@@ -58,7 +58,7 @@ export namespace AtsCreateApplicationRequestDtoQuestionnaire$ {
     > = z
         .object({
             answers: z.array(Answer$.inboundSchema),
-            id: z.string().optional(),
+            id: z.string().nullable().optional(),
         })
         .transform((v) => {
             return {
@@ -69,7 +69,7 @@ export namespace AtsCreateApplicationRequestDtoQuestionnaire$ {
 
     export type Outbound = {
         answers: Array<Answer$.Outbound>;
-        id?: string | undefined;
+        id?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<
@@ -79,7 +79,7 @@ export namespace AtsCreateApplicationRequestDtoQuestionnaire$ {
     > = z
         .object({
             answers: z.array(Answer$.outboundSchema),
-            id: z.string().optional(),
+            id: z.string().nullable().optional(),
         })
         .transform((v) => {
             return {
@@ -93,22 +93,22 @@ export namespace AtsCreateApplicationRequestDtoQuestionnaire$ {
 export namespace AtsCreateApplicationRequestDto$ {
     export type Inbound = {
         application_status: ApplicationStatusEnumApiModel$.Inbound;
-        attachments?: Array<ApplicationAttachment$.Inbound> | undefined;
+        attachments?: Array<ApplicationAttachment$.Inbound> | null | undefined;
         candidate: ApplicationCandidate$.Inbound;
-        candidate_id?: string | undefined;
-        job_id?: string | undefined;
-        location_ids?: Array<string> | undefined;
+        candidate_id?: string | null | undefined;
+        job_id?: string | null | undefined;
+        location_ids?: Array<string> | null | undefined;
         questionnaire: AtsCreateApplicationRequestDtoQuestionnaire$.Inbound;
     };
 
     export const inboundSchema: z.ZodType<AtsCreateApplicationRequestDto, z.ZodTypeDef, Inbound> = z
         .object({
             application_status: ApplicationStatusEnumApiModel$.inboundSchema,
-            attachments: z.array(ApplicationAttachment$.inboundSchema).optional(),
+            attachments: z.array(ApplicationAttachment$.inboundSchema).nullable().optional(),
             candidate: ApplicationCandidate$.inboundSchema,
-            candidate_id: z.string().optional(),
-            job_id: z.string().optional(),
-            location_ids: z.array(z.string()).optional(),
+            candidate_id: z.string().nullable().optional(),
+            job_id: z.string().nullable().optional(),
+            location_ids: z.array(z.string()).nullable().optional(),
             questionnaire: z.lazy(() => AtsCreateApplicationRequestDtoQuestionnaire$.inboundSchema),
         })
         .transform((v) => {
@@ -125,11 +125,11 @@ export namespace AtsCreateApplicationRequestDto$ {
 
     export type Outbound = {
         application_status: ApplicationStatusEnumApiModel$.Outbound;
-        attachments?: Array<ApplicationAttachment$.Outbound> | undefined;
+        attachments?: Array<ApplicationAttachment$.Outbound> | null | undefined;
         candidate: ApplicationCandidate$.Outbound;
-        candidate_id?: string | undefined;
-        job_id?: string | undefined;
-        location_ids?: Array<string> | undefined;
+        candidate_id?: string | null | undefined;
+        job_id?: string | null | undefined;
+        location_ids?: Array<string> | null | undefined;
         questionnaire: AtsCreateApplicationRequestDtoQuestionnaire$.Outbound;
     };
 
@@ -137,11 +137,11 @@ export namespace AtsCreateApplicationRequestDto$ {
         z
             .object({
                 applicationStatus: ApplicationStatusEnumApiModel$.outboundSchema,
-                attachments: z.array(ApplicationAttachment$.outboundSchema).optional(),
+                attachments: z.array(ApplicationAttachment$.outboundSchema).nullable().optional(),
                 candidate: ApplicationCandidate$.outboundSchema,
-                candidateId: z.string().optional(),
-                jobId: z.string().optional(),
-                locationIds: z.array(z.string()).optional(),
+                candidateId: z.string().nullable().optional(),
+                jobId: z.string().nullable().optional(),
+                locationIds: z.array(z.string()).nullable().optional(),
                 questionnaire: z.lazy(
                     () => AtsCreateApplicationRequestDtoQuestionnaire$.outboundSchema
                 ),

@@ -1,0 +1,11 @@
+# EmploymentPayFrequency
+
+The pay frequency
+
+
+## Fields
+
+| Field                                                                                                         | Type                                                                                                          | Required                                                                                                      | Description                                                                                                   | Example                                                                                                       |
+| ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
+| `sourceValue`                                                                                                 | *string*                                                                                                      | :heavy_check_mark:                                                                                            | The source value of the pay frequency.                                                                        | Hourly                                                                                                        |
+| `value`                                                                                                       | [shared.EmploymentSchemasPayFrequencyValue](../../../sdk/models/shared/employmentschemaspayfrequencyvalue.md) | :heavy_check_mark:                                                                                            | The pay frequency of the job postings.                                                                        | hourly                                                                                                        |

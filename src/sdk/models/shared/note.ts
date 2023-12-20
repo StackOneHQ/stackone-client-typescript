@@ -20,36 +20,36 @@ export type NoteVisibility = {
     /**
      * The source value of the notes visibility.
      */
-    sourceValue?: string | undefined;
+    sourceValue?: string | null | undefined;
     /**
      * The visibility of the notes.
      */
-    value?: NoteValue | undefined;
+    value?: NoteValue | null | undefined;
 };
 
 export type Note = {
     /**
      * Unique identifier of the author
      */
-    authorId?: string | undefined;
+    authorId?: string | null | undefined;
     content: Array<NoteContentApiModel>;
     /**
      * Date of creation
      */
-    createdAt?: Date | undefined;
+    createdAt?: Date | null | undefined;
     /**
      * Date of Deletion
      */
-    deletedAt?: Date | undefined;
+    deletedAt?: Date | null | undefined;
     id: string;
     /**
      * Date of last update
      */
-    updatedAt?: Date | undefined;
+    updatedAt?: Date | null | undefined;
     /**
      * Visibility of the note
      */
-    visibility?: NoteVisibility | undefined;
+    visibility?: NoteVisibility | null | undefined;
 };
 
 /** @internal */
@@ -58,14 +58,14 @@ export const NoteValue$ = z.nativeEnum(NoteValue);
 /** @internal */
 export namespace NoteVisibility$ {
     export type Inbound = {
-        source_value?: string | undefined;
-        value?: NoteValue | undefined;
+        source_value?: string | null | undefined;
+        value?: NoteValue | null | undefined;
     };
 
     export const inboundSchema: z.ZodType<NoteVisibility, z.ZodTypeDef, Inbound> = z
         .object({
-            source_value: z.string().optional(),
-            value: NoteValue$.optional(),
+            source_value: z.string().nullable().optional(),
+            value: NoteValue$.nullable().optional(),
         })
         .transform((v) => {
             return {
@@ -75,14 +75,14 @@ export namespace NoteVisibility$ {
         });
 
     export type Outbound = {
-        source_value?: string | undefined;
-        value?: NoteValue | undefined;
+        source_value?: string | null | undefined;
+        value?: NoteValue | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, NoteVisibility> = z
         .object({
-            sourceValue: z.string().optional(),
-            value: NoteValue$.optional(),
+            sourceValue: z.string().nullable().optional(),
+            value: NoteValue$.nullable().optional(),
         })
         .transform((v) => {
             return {
@@ -95,36 +95,42 @@ export namespace NoteVisibility$ {
 /** @internal */
 export namespace Note$ {
     export type Inbound = {
-        author_id?: string | undefined;
+        author_id?: string | null | undefined;
         content: Array<NoteContentApiModel$.Inbound>;
-        created_at?: string | undefined;
-        deleted_at?: string | undefined;
+        created_at?: string | null | undefined;
+        deleted_at?: string | null | undefined;
         id: string;
-        updated_at?: string | undefined;
-        visibility?: NoteVisibility$.Inbound | undefined;
+        updated_at?: string | null | undefined;
+        visibility?: NoteVisibility$.Inbound | null | undefined;
     };
 
     export const inboundSchema: z.ZodType<Note, z.ZodTypeDef, Inbound> = z
         .object({
-            author_id: z.string().optional(),
+            author_id: z.string().nullable().optional(),
             content: z.array(NoteContentApiModel$.inboundSchema),
             created_at: z
                 .string()
                 .datetime({ offset: true })
                 .transform((v) => new Date(v))
+                .nullable()
                 .optional(),
             deleted_at: z
                 .string()
                 .datetime({ offset: true })
                 .transform((v) => new Date(v))
+                .nullable()
                 .optional(),
             id: z.string(),
             updated_at: z
                 .string()
                 .datetime({ offset: true })
                 .transform((v) => new Date(v))
+                .nullable()
                 .optional(),
-            visibility: z.lazy(() => NoteVisibility$.inboundSchema).optional(),
+            visibility: z
+                .lazy(() => NoteVisibility$.inboundSchema)
+                .nullable()
+                .optional(),
         })
         .transform((v) => {
             return {
@@ -139,33 +145,39 @@ export namespace Note$ {
         });
 
     export type Outbound = {
-        author_id?: string | undefined;
+        author_id?: string | null | undefined;
         content: Array<NoteContentApiModel$.Outbound>;
-        created_at?: string | undefined;
-        deleted_at?: string | undefined;
+        created_at?: string | null | undefined;
+        deleted_at?: string | null | undefined;
         id: string;
-        updated_at?: string | undefined;
-        visibility?: NoteVisibility$.Outbound | undefined;
+        updated_at?: string | null | undefined;
+        visibility?: NoteVisibility$.Outbound | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Note> = z
         .object({
-            authorId: z.string().optional(),
+            authorId: z.string().nullable().optional(),
             content: z.array(NoteContentApiModel$.outboundSchema),
             createdAt: z
                 .date()
                 .transform((v) => v.toISOString())
+                .nullable()
                 .optional(),
             deletedAt: z
                 .date()
                 .transform((v) => v.toISOString())
+                .nullable()
                 .optional(),
             id: z.string(),
             updatedAt: z
                 .date()
                 .transform((v) => v.toISOString())
+                .nullable()
                 .optional(),
-            visibility: z.lazy(() => NoteVisibility$.outboundSchema).optional(),
+            visibility: z
+                .lazy(() => NoteVisibility$.outboundSchema)
+                .nullable()
+                .optional(),
         })
         .transform((v) => {
             return {

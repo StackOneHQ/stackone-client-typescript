@@ -4,7 +4,7 @@
 
 import { z } from "zod";
 
-export enum MessageType {
+export enum MessageMessageType {
     Email = "email",
     Sms = "sms",
     WebPush = "web_push",
@@ -18,28 +18,28 @@ export enum MessageType {
 
 export type Message = {
     id: string;
-    messageContent?: any | undefined;
-    messageType: MessageType;
+    messageContent?: any | null | undefined;
+    messageType: MessageMessageType;
     name: string;
 };
 
 /** @internal */
-export const MessageType$ = z.nativeEnum(MessageType);
+export const MessageMessageType$ = z.nativeEnum(MessageMessageType);
 
 /** @internal */
 export namespace Message$ {
     export type Inbound = {
         id: string;
-        message_content?: any | undefined;
-        message_type: MessageType;
+        message_content?: any | null | undefined;
+        message_type: MessageMessageType;
         name: string;
     };
 
     export const inboundSchema: z.ZodType<Message, z.ZodTypeDef, Inbound> = z
         .object({
             id: z.string(),
-            message_content: z.any().optional(),
-            message_type: MessageType$,
+            message_content: z.any().nullable().optional(),
+            message_type: MessageMessageType$,
             name: z.string(),
         })
         .transform((v) => {
@@ -53,16 +53,16 @@ export namespace Message$ {
 
     export type Outbound = {
         id: string;
-        message_content?: any | undefined;
-        message_type: MessageType;
+        message_content?: any | null | undefined;
+        message_type: MessageMessageType;
         name: string;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Message> = z
         .object({
             id: z.string(),
-            messageContent: z.any().optional(),
-            messageType: MessageType$,
+            messageContent: z.any().nullable().optional(),
+            messageType: MessageMessageType$,
             name: z.string(),
         })
         .transform((v) => {

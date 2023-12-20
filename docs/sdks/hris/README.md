@@ -33,11 +33,13 @@ import {
   HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue,
   HrisCreateEmployeeRequestDtoSchemasEthnicityValue,
   HrisCreateEmployeeRequestDtoSchemasGenderValue,
+  HrisCreateEmployeeRequestDtoSchemasHomeLocationStateValue,
+  HrisCreateEmployeeRequestDtoSchemasHomeLocationValue,
   HrisCreateEmployeeRequestDtoSchemasMaritalStatusValue,
   HrisCreateEmployeeRequestDtoSchemasValue,
+  HrisCreateEmployeeRequestDtoSchemasWorkLocationStateValue,
+  HrisCreateEmployeeRequestDtoSchemasWorkLocationValue,
   HrisCreateEmployeeRequestDtoValue,
-  HrisLocationsCreateRequestDtoSchemasValue,
-  HrisLocationsCreateRequestDtoValue,
 } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 async function run() {
@@ -129,13 +131,13 @@ async function run() {
         city: "Grantham",
         country: {
           sourceValue: "string",
-          value: HrisLocationsCreateRequestDtoValue.Vg,
+          value: HrisCreateEmployeeRequestDtoSchemasHomeLocationValue.Vg,
         },
         name: "Woolsthorpe Manor",
         phoneNumber: "+44 1476 860 364",
         state: {
           sourceValue: "string",
-          value: HrisLocationsCreateRequestDtoSchemasValue.Tr73,
+          value: HrisCreateEmployeeRequestDtoSchemasHomeLocationStateValue.Tr73,
         },
         street1: "Water Lane",
         street2: "Woolsthorpe by Colsterworth",
@@ -160,13 +162,13 @@ async function run() {
         city: "Grantham",
         country: {
           sourceValue: "string",
-          value: HrisLocationsCreateRequestDtoValue.Gs,
+          value: HrisCreateEmployeeRequestDtoSchemasWorkLocationValue.Gs,
         },
         name: "Woolsthorpe Manor",
         phoneNumber: "+44 1476 860 364",
         state: {
           sourceValue: "string",
-          value: HrisLocationsCreateRequestDtoSchemasValue.Ug215,
+          value: HrisCreateEmployeeRequestDtoSchemasWorkLocationStateValue.Ug215,
         },
         street1: "Water Lane",
         street2: "Woolsthorpe by Colsterworth",
@@ -213,7 +215,7 @@ Create Employee Time Off Request
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
-import { TimeOffStatusEnumValue, TimeOffTypeEnumValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { HrisCreateTimeOffRequestDtoSchemasValue, HrisCreateTimeOffRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 async function run() {
   const sdk = new StackOne({
@@ -230,11 +232,11 @@ async function run() {
       startDate: new Date("2021-01-01T01:01:01.000Z"),
       status: {
         sourceValue: "string",
-        value: TimeOffStatusEnumValue.UnmappedValue,
+        value: HrisCreateTimeOffRequestDtoValue.UnmappedValue,
       },
       type: {
         sourceValue: "string",
-        value: TimeOffTypeEnumValue.Vacation,
+        value: HrisCreateTimeOffRequestDtoSchemasValue.Vacation,
       },
     },
     id: "<ID>",
@@ -277,7 +279,7 @@ Creates a time off request
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
-import { TimeOffStatusEnumValue, TimeOffTypeEnumValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { HrisCreateTimeOffRequestDtoSchemasValue, HrisCreateTimeOffRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 async function run() {
   const sdk = new StackOne({
@@ -294,11 +296,11 @@ async function run() {
       startDate: new Date("2021-01-01T01:01:01.000Z"),
       status: {
         sourceValue: "string",
-        value: TimeOffStatusEnumValue.UnmappedValue,
+        value: HrisCreateTimeOffRequestDtoValue.UnmappedValue,
       },
       type: {
         sourceValue: "string",
-        value: TimeOffTypeEnumValue.Vacation,
+        value: HrisCreateTimeOffRequestDtoSchemasValue.Vacation,
       },
     },
     xAccountId: "string",
@@ -964,11 +966,13 @@ import {
   HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue,
   HrisCreateEmployeeRequestDtoSchemasEthnicityValue,
   HrisCreateEmployeeRequestDtoSchemasGenderValue,
+  HrisCreateEmployeeRequestDtoSchemasHomeLocationStateValue,
+  HrisCreateEmployeeRequestDtoSchemasHomeLocationValue,
   HrisCreateEmployeeRequestDtoSchemasMaritalStatusValue,
   HrisCreateEmployeeRequestDtoSchemasValue,
+  HrisCreateEmployeeRequestDtoSchemasWorkLocationStateValue,
+  HrisCreateEmployeeRequestDtoSchemasWorkLocationValue,
   HrisCreateEmployeeRequestDtoValue,
-  HrisLocationsCreateRequestDtoSchemasValue,
-  HrisLocationsCreateRequestDtoValue,
 } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 async function run() {
@@ -1060,13 +1064,13 @@ async function run() {
         city: "Grantham",
         country: {
           sourceValue: "string",
-          value: HrisLocationsCreateRequestDtoValue.Ba,
+          value: HrisCreateEmployeeRequestDtoSchemasHomeLocationValue.Ba,
         },
         name: "Woolsthorpe Manor",
         phoneNumber: "+44 1476 860 364",
         state: {
           sourceValue: "string",
-          value: HrisLocationsCreateRequestDtoSchemasValue.PhSun,
+          value: HrisCreateEmployeeRequestDtoSchemasHomeLocationStateValue.PhSun,
         },
         street1: "Water Lane",
         street2: "Woolsthorpe by Colsterworth",
@@ -1091,13 +1095,13 @@ async function run() {
         city: "Grantham",
         country: {
           sourceValue: "string",
-          value: HrisLocationsCreateRequestDtoValue.Np,
+          value: HrisCreateEmployeeRequestDtoSchemasWorkLocationValue.Np,
         },
         name: "Woolsthorpe Manor",
         phoneNumber: "+44 1476 860 364",
         state: {
           sourceValue: "string",
-          value: HrisLocationsCreateRequestDtoSchemasValue.LsG,
+          value: HrisCreateEmployeeRequestDtoSchemasWorkLocationStateValue.LsG,
         },
         street1: "Water Lane",
         street2: "Woolsthorpe by Colsterworth",
@@ -1145,7 +1149,7 @@ Update time off request
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
-import { TimeOffStatusEnumValue, TimeOffTypeEnumValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { HrisCreateTimeOffRequestDtoSchemasValue, HrisCreateTimeOffRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 async function run() {
   const sdk = new StackOne({
@@ -1162,11 +1166,11 @@ async function run() {
       startDate: new Date("2021-01-01T01:01:01.000Z"),
       status: {
         sourceValue: "string",
-        value: TimeOffStatusEnumValue.Approved,
+        value: HrisCreateTimeOffRequestDtoValue.Approved,
       },
       type: {
         sourceValue: "string",
-        value: TimeOffTypeEnumValue.Vacation,
+        value: HrisCreateTimeOffRequestDtoSchemasValue.Vacation,
       },
     },
     id: "<ID>",

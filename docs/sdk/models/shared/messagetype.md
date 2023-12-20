@@ -1,16 +1,9 @@
 # MessageType
 
 
-## Values
+## Fields
 
-| Name            | Value           |
-| --------------- | --------------- |
-| `Email`         | email           |
-| `Sms`           | sms             |
-| `WebPush`       | web_push        |
-| `IosPush`       | ios_push        |
-| `AndroidPush`   | android_push    |
-| `AppPush`       | app_push        |
-| `OmniChannel`   | omni_channel    |
-| `Unknown`       | unknown         |
-| `UnmappedValue` | unmapped_value  |
+| Field                                                                         | Type                                                                          | Required                                                                      | Description                                                                   |
+| ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| `sourceValue`                                                                 | *string*                                                                      | :heavy_check_mark:                                                            | N/A                                                                           |
+| `value`                                                                       | [shared.EmailMessagesValue](../../../sdk/models/shared/emailmessagesvalue.md) | :heavy_check_mark:                                                            | N/A                                                                           |

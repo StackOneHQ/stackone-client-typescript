@@ -4,15 +4,14 @@
 
 import { EmployeeCustomFields, EmployeeCustomFields$ } from "./employeecustomfields";
 import { Employment, Employment$ } from "./employment";
-import { HRISLocation, HRISLocation$ } from "./hrislocation";
 import { z } from "zod";
 
 /**
  * The employee avatar
  */
 export type Avatar = {
-    base64?: string | undefined;
-    url?: string | undefined;
+    base64?: string | null | undefined;
+    url?: string | null | undefined;
 };
 
 export enum EmployeeValue {
@@ -116,6 +115,347 @@ export type Gender = {
     value: EmployeeSchemasGenderValue;
 };
 
+export enum EmployeeSchemasHomeLocationValue {
+    Af = "AF",
+    Al = "AL",
+    Dz = "DZ",
+    As = "AS",
+    Ad = "AD",
+    Ao = "AO",
+    Ai = "AI",
+    Aq = "AQ",
+    Ag = "AG",
+    Ar = "AR",
+    Am = "AM",
+    Aw = "AW",
+    Au = "AU",
+    At = "AT",
+    Az = "AZ",
+    Bs = "BS",
+    Bh = "BH",
+    Bd = "BD",
+    Bb = "BB",
+    By = "BY",
+    Be = "BE",
+    Bz = "BZ",
+    Bj = "BJ",
+    Bm = "BM",
+    Bt = "BT",
+    Bo = "BO",
+    Bq = "BQ",
+    Ba = "BA",
+    Bw = "BW",
+    Bv = "BV",
+    Br = "BR",
+    Io = "IO",
+    Bn = "BN",
+    Bg = "BG",
+    Bf = "BF",
+    Bi = "BI",
+    Kh = "KH",
+    Cm = "CM",
+    Ca = "CA",
+    Cv = "CV",
+    Ky = "KY",
+    Cf = "CF",
+    Td = "TD",
+    Cl = "CL",
+    Cn = "CN",
+    Cx = "CX",
+    Cc = "CC",
+    Co = "CO",
+    Km = "KM",
+    Cg = "CG",
+    Cd = "CD",
+    Ck = "CK",
+    Cr = "CR",
+    Hr = "HR",
+    Cu = "CU",
+    Cw = "CW",
+    Cy = "CY",
+    Cz = "CZ",
+    Ci = "CI",
+    Dk = "DK",
+    Dj = "DJ",
+    Dm = "DM",
+    Do = "DO",
+    Ec = "EC",
+    Eg = "EG",
+    Sv = "SV",
+    Gq = "GQ",
+    Er = "ER",
+    Ee = "EE",
+    Et = "ET",
+    Fk = "FK",
+    Fo = "FO",
+    Fj = "FJ",
+    Fi = "FI",
+    Fr = "FR",
+    Gf = "GF",
+    Pf = "PF",
+    Tf = "TF",
+    Ga = "GA",
+    Gm = "GM",
+    Ge = "GE",
+    De = "DE",
+    Gh = "GH",
+    Gi = "GI",
+    Gr = "GR",
+    Gl = "GL",
+    Gd = "GD",
+    Gp = "GP",
+    Gu = "GU",
+    Gt = "GT",
+    Gg = "GG",
+    Gn = "GN",
+    Gw = "GW",
+    Gy = "GY",
+    Ht = "HT",
+    Hm = "HM",
+    Va = "VA",
+    Hn = "HN",
+    Hk = "HK",
+    Hu = "HU",
+    Is = "IS",
+    In = "IN",
+    Id = "ID",
+    Ir = "IR",
+    Iq = "IQ",
+    Ie = "IE",
+    Im = "IM",
+    Il = "IL",
+    It = "IT",
+    Jm = "JM",
+    Jp = "JP",
+    Je = "JE",
+    Jo = "JO",
+    Kz = "KZ",
+    Ke = "KE",
+    Ki = "KI",
+    Kp = "KP",
+    Kr = "KR",
+    Kw = "KW",
+    Kg = "KG",
+    La = "LA",
+    Lv = "LV",
+    Lb = "LB",
+    Ls = "LS",
+    Lr = "LR",
+    Ly = "LY",
+    Li = "LI",
+    Lt = "LT",
+    Lu = "LU",
+    Mo = "MO",
+    Mk = "MK",
+    Mg = "MG",
+    Mw = "MW",
+    My = "MY",
+    Mv = "MV",
+    Ml = "ML",
+    Mt = "MT",
+    Mh = "MH",
+    Mq = "MQ",
+    Mr = "MR",
+    Mu = "MU",
+    Yt = "YT",
+    Mx = "MX",
+    Fm = "FM",
+    Md = "MD",
+    Mc = "MC",
+    Mn = "MN",
+    Me = "ME",
+    Ms = "MS",
+    Ma = "MA",
+    Mz = "MZ",
+    Mm = "MM",
+    Na = "NA",
+    Nr = "NR",
+    Np = "NP",
+    Nl = "NL",
+    Nc = "NC",
+    Nz = "NZ",
+    Ni = "NI",
+    Ne = "NE",
+    Ng = "NG",
+    Nu = "NU",
+    Nf = "NF",
+    Mp = "MP",
+    No = "NO",
+    Om = "OM",
+    Pk = "PK",
+    Pw = "PW",
+    Ps = "PS",
+    Pa = "PA",
+    Pg = "PG",
+    Py = "PY",
+    Pe = "PE",
+    Ph = "PH",
+    Pn = "PN",
+    Pl = "PL",
+    Pt = "PT",
+    Pr = "PR",
+    Qa = "QA",
+    Ro = "RO",
+    Ru = "RU",
+    Rw = "RW",
+    Re = "RE",
+    Bl = "BL",
+    Sh = "SH",
+    Kn = "KN",
+    Lc = "LC",
+    Mf = "MF",
+    Pm = "PM",
+    Vc = "VC",
+    Ws = "WS",
+    Sm = "SM",
+    St = "ST",
+    Sa = "SA",
+    Sn = "SN",
+    Rs = "RS",
+    Sc = "SC",
+    Sl = "SL",
+    Sg = "SG",
+    Sx = "SX",
+    Sk = "SK",
+    Si = "SI",
+    Sb = "SB",
+    So = "SO",
+    Za = "ZA",
+    Gs = "GS",
+    Ss = "SS",
+    Es = "ES",
+    Lk = "LK",
+    Sd = "SD",
+    Sr = "SR",
+    Sj = "SJ",
+    Sz = "SZ",
+    Se = "SE",
+    Ch = "CH",
+    Sy = "SY",
+    Tw = "TW",
+    Tj = "TJ",
+    Tz = "TZ",
+    Th = "TH",
+    Tl = "TL",
+    Tg = "TG",
+    Tk = "TK",
+    To = "TO",
+    Tt = "TT",
+    Tn = "TN",
+    Tr = "TR",
+    Tm = "TM",
+    Tc = "TC",
+    Tv = "TV",
+    Ug = "UG",
+    Ua = "UA",
+    Ae = "AE",
+    Gb = "GB",
+    Us = "US",
+    Um = "UM",
+    Uy = "UY",
+    Uz = "UZ",
+    Vu = "VU",
+    Ve = "VE",
+    Vn = "VN",
+    Vg = "VG",
+    Vi = "VI",
+    Wf = "WF",
+    Eh = "EH",
+    Ye = "YE",
+    Zm = "ZM",
+    Zw = "ZW",
+    UnmappedValue = "unmapped_value",
+}
+
+/**
+ * The country code
+ */
+export type EmployeeCountry = {
+    sourceValue: string;
+    value: EmployeeSchemasHomeLocationValue;
+};
+
+/**
+ * The type of the location.
+ */
+export enum EmployeeSchemasHomeLocationLocationTypeValue {
+    Home = "home",
+    Work = "work",
+    UnmappedValue = "unmapped_value",
+}
+
+/**
+ * The location type
+ */
+export type EmployeeLocationType = {
+    /**
+     * The source value of the location type.
+     */
+    sourceValue: string;
+    /**
+     * The type of the location.
+     */
+    value: EmployeeSchemasHomeLocationLocationTypeValue;
+};
+
+/**
+ * The employee home location
+ */
+export type HomeLocation = {
+    /**
+     * The city where the location is situated
+     */
+    city?: string | null | undefined;
+    /**
+     * The country code
+     */
+    country?: EmployeeCountry | null | undefined;
+    /**
+     * The created_at date
+     */
+    createdAt?: Date | null | undefined;
+    /**
+     * The employee ID
+     */
+    employeeId?: string | null | undefined;
+    /**
+     * The unique ID of the location
+     */
+    id?: string | null | undefined;
+    /**
+     * The location type
+     */
+    locationType?: EmployeeLocationType | null | undefined;
+    /**
+     * The name of the location
+     */
+    name?: string | null | undefined;
+    /**
+     * The phone number of the location
+     */
+    phoneNumber?: string | null | undefined;
+    /**
+     * The state where the location is situated
+     */
+    state?: string | null | undefined;
+    /**
+     * The first line of the address
+     */
+    street1?: string | null | undefined;
+    /**
+     * The second line of the address
+     */
+    street2?: string | null | undefined;
+    /**
+     * The updated_at date
+     */
+    updatedAt?: Date | null | undefined;
+    /**
+     * The ZIP code/Postal code of the location
+     */
+    zipCode?: string | null | undefined;
+};
+
 export enum EmployeeSchemasMaritalStatusValue {
     Single = "single",
     Married = "married",
@@ -137,63 +477,404 @@ export type MaritalStatus = {
     value: EmployeeSchemasMaritalStatusValue;
 };
 
+export enum EmployeeSchemasWorkLocationValue {
+    Af = "AF",
+    Al = "AL",
+    Dz = "DZ",
+    As = "AS",
+    Ad = "AD",
+    Ao = "AO",
+    Ai = "AI",
+    Aq = "AQ",
+    Ag = "AG",
+    Ar = "AR",
+    Am = "AM",
+    Aw = "AW",
+    Au = "AU",
+    At = "AT",
+    Az = "AZ",
+    Bs = "BS",
+    Bh = "BH",
+    Bd = "BD",
+    Bb = "BB",
+    By = "BY",
+    Be = "BE",
+    Bz = "BZ",
+    Bj = "BJ",
+    Bm = "BM",
+    Bt = "BT",
+    Bo = "BO",
+    Bq = "BQ",
+    Ba = "BA",
+    Bw = "BW",
+    Bv = "BV",
+    Br = "BR",
+    Io = "IO",
+    Bn = "BN",
+    Bg = "BG",
+    Bf = "BF",
+    Bi = "BI",
+    Kh = "KH",
+    Cm = "CM",
+    Ca = "CA",
+    Cv = "CV",
+    Ky = "KY",
+    Cf = "CF",
+    Td = "TD",
+    Cl = "CL",
+    Cn = "CN",
+    Cx = "CX",
+    Cc = "CC",
+    Co = "CO",
+    Km = "KM",
+    Cg = "CG",
+    Cd = "CD",
+    Ck = "CK",
+    Cr = "CR",
+    Hr = "HR",
+    Cu = "CU",
+    Cw = "CW",
+    Cy = "CY",
+    Cz = "CZ",
+    Ci = "CI",
+    Dk = "DK",
+    Dj = "DJ",
+    Dm = "DM",
+    Do = "DO",
+    Ec = "EC",
+    Eg = "EG",
+    Sv = "SV",
+    Gq = "GQ",
+    Er = "ER",
+    Ee = "EE",
+    Et = "ET",
+    Fk = "FK",
+    Fo = "FO",
+    Fj = "FJ",
+    Fi = "FI",
+    Fr = "FR",
+    Gf = "GF",
+    Pf = "PF",
+    Tf = "TF",
+    Ga = "GA",
+    Gm = "GM",
+    Ge = "GE",
+    De = "DE",
+    Gh = "GH",
+    Gi = "GI",
+    Gr = "GR",
+    Gl = "GL",
+    Gd = "GD",
+    Gp = "GP",
+    Gu = "GU",
+    Gt = "GT",
+    Gg = "GG",
+    Gn = "GN",
+    Gw = "GW",
+    Gy = "GY",
+    Ht = "HT",
+    Hm = "HM",
+    Va = "VA",
+    Hn = "HN",
+    Hk = "HK",
+    Hu = "HU",
+    Is = "IS",
+    In = "IN",
+    Id = "ID",
+    Ir = "IR",
+    Iq = "IQ",
+    Ie = "IE",
+    Im = "IM",
+    Il = "IL",
+    It = "IT",
+    Jm = "JM",
+    Jp = "JP",
+    Je = "JE",
+    Jo = "JO",
+    Kz = "KZ",
+    Ke = "KE",
+    Ki = "KI",
+    Kp = "KP",
+    Kr = "KR",
+    Kw = "KW",
+    Kg = "KG",
+    La = "LA",
+    Lv = "LV",
+    Lb = "LB",
+    Ls = "LS",
+    Lr = "LR",
+    Ly = "LY",
+    Li = "LI",
+    Lt = "LT",
+    Lu = "LU",
+    Mo = "MO",
+    Mk = "MK",
+    Mg = "MG",
+    Mw = "MW",
+    My = "MY",
+    Mv = "MV",
+    Ml = "ML",
+    Mt = "MT",
+    Mh = "MH",
+    Mq = "MQ",
+    Mr = "MR",
+    Mu = "MU",
+    Yt = "YT",
+    Mx = "MX",
+    Fm = "FM",
+    Md = "MD",
+    Mc = "MC",
+    Mn = "MN",
+    Me = "ME",
+    Ms = "MS",
+    Ma = "MA",
+    Mz = "MZ",
+    Mm = "MM",
+    Na = "NA",
+    Nr = "NR",
+    Np = "NP",
+    Nl = "NL",
+    Nc = "NC",
+    Nz = "NZ",
+    Ni = "NI",
+    Ne = "NE",
+    Ng = "NG",
+    Nu = "NU",
+    Nf = "NF",
+    Mp = "MP",
+    No = "NO",
+    Om = "OM",
+    Pk = "PK",
+    Pw = "PW",
+    Ps = "PS",
+    Pa = "PA",
+    Pg = "PG",
+    Py = "PY",
+    Pe = "PE",
+    Ph = "PH",
+    Pn = "PN",
+    Pl = "PL",
+    Pt = "PT",
+    Pr = "PR",
+    Qa = "QA",
+    Ro = "RO",
+    Ru = "RU",
+    Rw = "RW",
+    Re = "RE",
+    Bl = "BL",
+    Sh = "SH",
+    Kn = "KN",
+    Lc = "LC",
+    Mf = "MF",
+    Pm = "PM",
+    Vc = "VC",
+    Ws = "WS",
+    Sm = "SM",
+    St = "ST",
+    Sa = "SA",
+    Sn = "SN",
+    Rs = "RS",
+    Sc = "SC",
+    Sl = "SL",
+    Sg = "SG",
+    Sx = "SX",
+    Sk = "SK",
+    Si = "SI",
+    Sb = "SB",
+    So = "SO",
+    Za = "ZA",
+    Gs = "GS",
+    Ss = "SS",
+    Es = "ES",
+    Lk = "LK",
+    Sd = "SD",
+    Sr = "SR",
+    Sj = "SJ",
+    Sz = "SZ",
+    Se = "SE",
+    Ch = "CH",
+    Sy = "SY",
+    Tw = "TW",
+    Tj = "TJ",
+    Tz = "TZ",
+    Th = "TH",
+    Tl = "TL",
+    Tg = "TG",
+    Tk = "TK",
+    To = "TO",
+    Tt = "TT",
+    Tn = "TN",
+    Tr = "TR",
+    Tm = "TM",
+    Tc = "TC",
+    Tv = "TV",
+    Ug = "UG",
+    Ua = "UA",
+    Ae = "AE",
+    Gb = "GB",
+    Us = "US",
+    Um = "UM",
+    Uy = "UY",
+    Uz = "UZ",
+    Vu = "VU",
+    Ve = "VE",
+    Vn = "VN",
+    Vg = "VG",
+    Vi = "VI",
+    Wf = "WF",
+    Eh = "EH",
+    Ye = "YE",
+    Zm = "ZM",
+    Zw = "ZW",
+    UnmappedValue = "unmapped_value",
+}
+
+/**
+ * The country code
+ */
+export type EmployeeSchemasCountry = {
+    sourceValue: string;
+    value: EmployeeSchemasWorkLocationValue;
+};
+
+/**
+ * The type of the location.
+ */
+export enum EmployeeSchemasWorkLocationLocationTypeValue {
+    Home = "home",
+    Work = "work",
+    UnmappedValue = "unmapped_value",
+}
+
+/**
+ * The location type
+ */
+export type EmployeeSchemasLocationType = {
+    /**
+     * The source value of the location type.
+     */
+    sourceValue: string;
+    /**
+     * The type of the location.
+     */
+    value: EmployeeSchemasWorkLocationLocationTypeValue;
+};
+
+/**
+ * The employee work location
+ */
+export type WorkLocation = {
+    /**
+     * The city where the location is situated
+     */
+    city?: string | null | undefined;
+    /**
+     * The country code
+     */
+    country?: EmployeeSchemasCountry | null | undefined;
+    /**
+     * The created_at date
+     */
+    createdAt?: Date | null | undefined;
+    /**
+     * The employee ID
+     */
+    employeeId?: string | null | undefined;
+    /**
+     * The unique ID of the location
+     */
+    id?: string | null | undefined;
+    /**
+     * The location type
+     */
+    locationType?: EmployeeSchemasLocationType | null | undefined;
+    /**
+     * The name of the location
+     */
+    name?: string | null | undefined;
+    /**
+     * The phone number of the location
+     */
+    phoneNumber?: string | null | undefined;
+    /**
+     * The state where the location is situated
+     */
+    state?: string | null | undefined;
+    /**
+     * The first line of the address
+     */
+    street1?: string | null | undefined;
+    /**
+     * The second line of the address
+     */
+    street2?: string | null | undefined;
+    /**
+     * The updated_at date
+     */
+    updatedAt?: Date | null | undefined;
+    /**
+     * The ZIP code/Postal code of the location
+     */
+    zipCode?: string | null | undefined;
+};
+
 export type Employee = {
     /**
      * The employee avatar
      */
-    avatar?: Avatar | undefined;
+    avatar?: Avatar | null | undefined;
     /**
      * The employee avatar Url
      */
-    avatarUrl?: string | undefined;
+    avatarUrl?: string | null | undefined;
     /**
      * The employee birthday
      */
-    birthday?: Date | undefined;
+    birthday?: Date | null | undefined;
     /**
      * The employee company name
      */
-    companyName?: string | undefined;
+    companyName?: string | null | undefined;
     /**
      * The created_at date
      */
-    createdAt?: Date | undefined;
+    createdAt?: Date | null | undefined;
     /**
      * The employee custom fields
      */
-    customFields?: Array<EmployeeCustomFields> | undefined;
+    customFields?: Array<EmployeeCustomFields> | null | undefined;
     /**
      * The employee date_of_birth
      */
-    dateOfBirth?: Date | undefined;
+    dateOfBirth?: Date | null | undefined;
     /**
      * The employee department
      */
-    department?: string | undefined;
+    department?: string | null | undefined;
     /**
      * The employee display name
      */
-    displayName?: string | undefined;
+    displayName?: string | null | undefined;
     /**
      * The employment work schedule type (e.g., full-time, part-time)
      */
-    employmentContractType?: EmploymentContractType | undefined;
+    employmentContractType?: EmploymentContractType | null | undefined;
     /**
      * The employee employment status
      */
-    employmentStatus?: EmploymentStatus | undefined;
+    employmentStatus?: EmploymentStatus | null | undefined;
     /**
      * The employee employment type
      */
-    employmentType?: EmploymentType | undefined;
+    employmentType?: EmploymentType | null | undefined;
     /**
      * The employee employments
      */
-    employments?: Array<Employment> | undefined;
+    employments?: Array<Employment> | null | undefined;
     /**
      * The employee ethnicity
      */
-    ethnicity?: Ethnicity | undefined;
+    ethnicity?: Ethnicity | null | undefined;
     /**
      * The employee first name
      */
@@ -201,15 +882,15 @@ export type Employee = {
     /**
      * The employee gender
      */
-    gender?: Gender | undefined;
+    gender?: Gender | null | undefined;
     /**
      * The employee hire date
      */
-    hireDate?: Date | undefined;
+    hireDate?: Date | null | undefined;
     /**
      * The employee home location
      */
-    homeLocation?: HRISLocation | undefined;
+    homeLocation?: HomeLocation | null | undefined;
     /**
      * The employee ID
      */
@@ -217,7 +898,7 @@ export type Employee = {
     /**
      * The employee job title
      */
-    jobTitle?: string | undefined;
+    jobTitle?: string | null | undefined;
     /**
      * The employee last name
      */
@@ -225,43 +906,43 @@ export type Employee = {
     /**
      * The employee manager ID
      */
-    managerId?: string | undefined;
+    managerId?: string | null | undefined;
     /**
      * The employee marital status
      */
-    maritalStatus?: MaritalStatus | undefined;
+    maritalStatus?: MaritalStatus | null | undefined;
     /**
      * The employee name
      */
-    name?: string | undefined;
+    name?: string | null | undefined;
     /**
      * The employee personal email
      */
-    personalEmail?: string | undefined;
+    personalEmail?: string | null | undefined;
     /**
      * The employee personal phone number
      */
-    personalPhoneNumber?: string | undefined;
+    personalPhoneNumber?: string | null | undefined;
     /**
      * The employee start date
      */
-    startDate?: Date | undefined;
+    startDate?: Date | null | undefined;
     /**
      * The employee tenure
      */
-    tenure?: number | undefined;
+    tenure?: number | null | undefined;
     /**
      * The employee termination date
      */
-    terminationDate?: Date | undefined;
+    terminationDate?: Date | null | undefined;
     /**
      * The updated_at date
      */
-    updatedAt?: Date | undefined;
+    updatedAt?: Date | null | undefined;
     /**
      * The employee work anniversary
      */
-    workAnniversary?: Date | undefined;
+    workAnniversary?: Date | null | undefined;
     /**
      * The employee work email
      */
@@ -269,24 +950,24 @@ export type Employee = {
     /**
      * The employee work location
      */
-    workLocation?: HRISLocation | undefined;
+    workLocation?: WorkLocation | null | undefined;
     /**
      * The employee work phone number
      */
-    workPhoneNumber?: string | undefined;
+    workPhoneNumber?: string | null | undefined;
 };
 
 /** @internal */
 export namespace Avatar$ {
     export type Inbound = {
-        base64?: string | undefined;
-        url?: string | undefined;
+        base64?: string | null | undefined;
+        url?: string | null | undefined;
     };
 
     export const inboundSchema: z.ZodType<Avatar, z.ZodTypeDef, Inbound> = z
         .object({
-            base64: z.string().optional(),
-            url: z.string().optional(),
+            base64: z.string().nullable().optional(),
+            url: z.string().nullable().optional(),
         })
         .transform((v) => {
             return {
@@ -296,14 +977,14 @@ export namespace Avatar$ {
         });
 
     export type Outbound = {
-        base64?: string | undefined;
-        url?: string | undefined;
+        base64?: string | null | undefined;
+        url?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Avatar> = z
         .object({
-            base64: z.string().optional(),
-            url: z.string().optional(),
+            base64: z.string().nullable().optional(),
+            url: z.string().nullable().optional(),
         })
         .transform((v) => {
             return {
@@ -514,6 +1195,221 @@ export namespace Gender$ {
 }
 
 /** @internal */
+export const EmployeeSchemasHomeLocationValue$ = z.nativeEnum(EmployeeSchemasHomeLocationValue);
+
+/** @internal */
+export namespace EmployeeCountry$ {
+    export type Inbound = {
+        source_value: string;
+        value: EmployeeSchemasHomeLocationValue;
+    };
+
+    export const inboundSchema: z.ZodType<EmployeeCountry, z.ZodTypeDef, Inbound> = z
+        .object({
+            source_value: z.string(),
+            value: EmployeeSchemasHomeLocationValue$,
+        })
+        .transform((v) => {
+            return {
+                sourceValue: v.source_value,
+                value: v.value,
+            };
+        });
+
+    export type Outbound = {
+        source_value: string;
+        value: EmployeeSchemasHomeLocationValue;
+    };
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, EmployeeCountry> = z
+        .object({
+            sourceValue: z.string(),
+            value: EmployeeSchemasHomeLocationValue$,
+        })
+        .transform((v) => {
+            return {
+                source_value: v.sourceValue,
+                value: v.value,
+            };
+        });
+}
+
+/** @internal */
+export const EmployeeSchemasHomeLocationLocationTypeValue$ = z.nativeEnum(
+    EmployeeSchemasHomeLocationLocationTypeValue
+);
+
+/** @internal */
+export namespace EmployeeLocationType$ {
+    export type Inbound = {
+        source_value: string;
+        value: EmployeeSchemasHomeLocationLocationTypeValue;
+    };
+
+    export const inboundSchema: z.ZodType<EmployeeLocationType, z.ZodTypeDef, Inbound> = z
+        .object({
+            source_value: z.string(),
+            value: EmployeeSchemasHomeLocationLocationTypeValue$,
+        })
+        .transform((v) => {
+            return {
+                sourceValue: v.source_value,
+                value: v.value,
+            };
+        });
+
+    export type Outbound = {
+        source_value: string;
+        value: EmployeeSchemasHomeLocationLocationTypeValue;
+    };
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, EmployeeLocationType> = z
+        .object({
+            sourceValue: z.string(),
+            value: EmployeeSchemasHomeLocationLocationTypeValue$,
+        })
+        .transform((v) => {
+            return {
+                source_value: v.sourceValue,
+                value: v.value,
+            };
+        });
+}
+
+/** @internal */
+export namespace HomeLocation$ {
+    export type Inbound = {
+        city?: string | null | undefined;
+        country?: EmployeeCountry$.Inbound | null | undefined;
+        created_at?: string | null | undefined;
+        employee_id?: string | null | undefined;
+        id?: string | null | undefined;
+        location_type?: EmployeeLocationType$.Inbound | null | undefined;
+        name?: string | null | undefined;
+        phone_number?: string | null | undefined;
+        state?: string | null | undefined;
+        street_1?: string | null | undefined;
+        street_2?: string | null | undefined;
+        updated_at?: string | null | undefined;
+        zip_code?: string | null | undefined;
+    };
+
+    export const inboundSchema: z.ZodType<HomeLocation, z.ZodTypeDef, Inbound> = z
+        .object({
+            city: z.string().nullable().optional(),
+            country: z
+                .lazy(() => EmployeeCountry$.inboundSchema)
+                .nullable()
+                .optional(),
+            created_at: z
+                .string()
+                .datetime({ offset: true })
+                .transform((v) => new Date(v))
+                .nullable()
+                .optional(),
+            employee_id: z.string().nullable().optional(),
+            id: z.string().nullable().optional(),
+            location_type: z
+                .lazy(() => EmployeeLocationType$.inboundSchema)
+                .nullable()
+                .optional(),
+            name: z.string().nullable().optional(),
+            phone_number: z.string().nullable().optional(),
+            state: z.string().nullable().optional(),
+            street_1: z.string().nullable().optional(),
+            street_2: z.string().nullable().optional(),
+            updated_at: z
+                .string()
+                .datetime({ offset: true })
+                .transform((v) => new Date(v))
+                .nullable()
+                .optional(),
+            zip_code: z.string().nullable().optional(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.city === undefined ? null : { city: v.city }),
+                ...(v.country === undefined ? null : { country: v.country }),
+                ...(v.created_at === undefined ? null : { createdAt: v.created_at }),
+                ...(v.employee_id === undefined ? null : { employeeId: v.employee_id }),
+                ...(v.id === undefined ? null : { id: v.id }),
+                ...(v.location_type === undefined ? null : { locationType: v.location_type }),
+                ...(v.name === undefined ? null : { name: v.name }),
+                ...(v.phone_number === undefined ? null : { phoneNumber: v.phone_number }),
+                ...(v.state === undefined ? null : { state: v.state }),
+                ...(v.street_1 === undefined ? null : { street1: v.street_1 }),
+                ...(v.street_2 === undefined ? null : { street2: v.street_2 }),
+                ...(v.updated_at === undefined ? null : { updatedAt: v.updated_at }),
+                ...(v.zip_code === undefined ? null : { zipCode: v.zip_code }),
+            };
+        });
+
+    export type Outbound = {
+        city?: string | null | undefined;
+        country?: EmployeeCountry$.Outbound | null | undefined;
+        created_at?: string | null | undefined;
+        employee_id?: string | null | undefined;
+        id?: string | null | undefined;
+        location_type?: EmployeeLocationType$.Outbound | null | undefined;
+        name?: string | null | undefined;
+        phone_number?: string | null | undefined;
+        state?: string | null | undefined;
+        street_1?: string | null | undefined;
+        street_2?: string | null | undefined;
+        updated_at?: string | null | undefined;
+        zip_code?: string | null | undefined;
+    };
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, HomeLocation> = z
+        .object({
+            city: z.string().nullable().optional(),
+            country: z
+                .lazy(() => EmployeeCountry$.outboundSchema)
+                .nullable()
+                .optional(),
+            createdAt: z
+                .date()
+                .transform((v) => v.toISOString())
+                .nullable()
+                .optional(),
+            employeeId: z.string().nullable().optional(),
+            id: z.string().nullable().optional(),
+            locationType: z
+                .lazy(() => EmployeeLocationType$.outboundSchema)
+                .nullable()
+                .optional(),
+            name: z.string().nullable().optional(),
+            phoneNumber: z.string().nullable().optional(),
+            state: z.string().nullable().optional(),
+            street1: z.string().nullable().optional(),
+            street2: z.string().nullable().optional(),
+            updatedAt: z
+                .date()
+                .transform((v) => v.toISOString())
+                .nullable()
+                .optional(),
+            zipCode: z.string().nullable().optional(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.city === undefined ? null : { city: v.city }),
+                ...(v.country === undefined ? null : { country: v.country }),
+                ...(v.createdAt === undefined ? null : { created_at: v.createdAt }),
+                ...(v.employeeId === undefined ? null : { employee_id: v.employeeId }),
+                ...(v.id === undefined ? null : { id: v.id }),
+                ...(v.locationType === undefined ? null : { location_type: v.locationType }),
+                ...(v.name === undefined ? null : { name: v.name }),
+                ...(v.phoneNumber === undefined ? null : { phone_number: v.phoneNumber }),
+                ...(v.state === undefined ? null : { state: v.state }),
+                ...(v.street1 === undefined ? null : { street_1: v.street1 }),
+                ...(v.street2 === undefined ? null : { street_2: v.street2 }),
+                ...(v.updatedAt === undefined ? null : { updated_at: v.updatedAt }),
+                ...(v.zipCode === undefined ? null : { zip_code: v.zipCode }),
+            };
+        });
+}
+
+/** @internal */
 export const EmployeeSchemasMaritalStatusValue$ = z.nativeEnum(EmployeeSchemasMaritalStatusValue);
 
 /** @internal */
@@ -554,114 +1450,362 @@ export namespace MaritalStatus$ {
 }
 
 /** @internal */
-export namespace Employee$ {
+export const EmployeeSchemasWorkLocationValue$ = z.nativeEnum(EmployeeSchemasWorkLocationValue);
+
+/** @internal */
+export namespace EmployeeSchemasCountry$ {
     export type Inbound = {
-        avatar?: Avatar$.Inbound | undefined;
-        avatar_url?: string | undefined;
-        birthday?: string | undefined;
-        company_name?: string | undefined;
-        created_at?: string | undefined;
-        custom_fields?: Array<EmployeeCustomFields$.Inbound> | undefined;
-        date_of_birth?: string | undefined;
-        department?: string | undefined;
-        display_name?: string | undefined;
-        employment_contract_type?: EmploymentContractType$.Inbound | undefined;
-        employment_status?: EmploymentStatus$.Inbound | undefined;
-        employment_type?: EmploymentType$.Inbound | undefined;
-        employments?: Array<Employment$.Inbound> | undefined;
-        ethnicity?: Ethnicity$.Inbound | undefined;
-        first_name: string;
-        gender?: Gender$.Inbound | undefined;
-        hire_date?: string | undefined;
-        home_location?: HRISLocation$.Inbound | undefined;
-        id: string;
-        job_title?: string | undefined;
-        last_name: string;
-        manager_id?: string | undefined;
-        marital_status?: MaritalStatus$.Inbound | undefined;
-        name?: string | undefined;
-        personal_email?: string | undefined;
-        personal_phone_number?: string | undefined;
-        start_date?: string | undefined;
-        tenure?: number | undefined;
-        termination_date?: string | undefined;
-        updated_at?: string | undefined;
-        work_anniversary?: string | undefined;
-        work_email: string;
-        work_location?: HRISLocation$.Inbound | undefined;
-        work_phone_number?: string | undefined;
+        source_value: string;
+        value: EmployeeSchemasWorkLocationValue;
     };
 
-    export const inboundSchema: z.ZodType<Employee, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<EmployeeSchemasCountry, z.ZodTypeDef, Inbound> = z
         .object({
-            avatar: z.lazy(() => Avatar$.inboundSchema).optional(),
-            avatar_url: z.string().optional(),
-            birthday: z
-                .string()
-                .datetime({ offset: true })
-                .transform((v) => new Date(v))
+            source_value: z.string(),
+            value: EmployeeSchemasWorkLocationValue$,
+        })
+        .transform((v) => {
+            return {
+                sourceValue: v.source_value,
+                value: v.value,
+            };
+        });
+
+    export type Outbound = {
+        source_value: string;
+        value: EmployeeSchemasWorkLocationValue;
+    };
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, EmployeeSchemasCountry> = z
+        .object({
+            sourceValue: z.string(),
+            value: EmployeeSchemasWorkLocationValue$,
+        })
+        .transform((v) => {
+            return {
+                source_value: v.sourceValue,
+                value: v.value,
+            };
+        });
+}
+
+/** @internal */
+export const EmployeeSchemasWorkLocationLocationTypeValue$ = z.nativeEnum(
+    EmployeeSchemasWorkLocationLocationTypeValue
+);
+
+/** @internal */
+export namespace EmployeeSchemasLocationType$ {
+    export type Inbound = {
+        source_value: string;
+        value: EmployeeSchemasWorkLocationLocationTypeValue;
+    };
+
+    export const inboundSchema: z.ZodType<EmployeeSchemasLocationType, z.ZodTypeDef, Inbound> = z
+        .object({
+            source_value: z.string(),
+            value: EmployeeSchemasWorkLocationLocationTypeValue$,
+        })
+        .transform((v) => {
+            return {
+                sourceValue: v.source_value,
+                value: v.value,
+            };
+        });
+
+    export type Outbound = {
+        source_value: string;
+        value: EmployeeSchemasWorkLocationLocationTypeValue;
+    };
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, EmployeeSchemasLocationType> = z
+        .object({
+            sourceValue: z.string(),
+            value: EmployeeSchemasWorkLocationLocationTypeValue$,
+        })
+        .transform((v) => {
+            return {
+                source_value: v.sourceValue,
+                value: v.value,
+            };
+        });
+}
+
+/** @internal */
+export namespace WorkLocation$ {
+    export type Inbound = {
+        city?: string | null | undefined;
+        country?: EmployeeSchemasCountry$.Inbound | null | undefined;
+        created_at?: string | null | undefined;
+        employee_id?: string | null | undefined;
+        id?: string | null | undefined;
+        location_type?: EmployeeSchemasLocationType$.Inbound | null | undefined;
+        name?: string | null | undefined;
+        phone_number?: string | null | undefined;
+        state?: string | null | undefined;
+        street_1?: string | null | undefined;
+        street_2?: string | null | undefined;
+        updated_at?: string | null | undefined;
+        zip_code?: string | null | undefined;
+    };
+
+    export const inboundSchema: z.ZodType<WorkLocation, z.ZodTypeDef, Inbound> = z
+        .object({
+            city: z.string().nullable().optional(),
+            country: z
+                .lazy(() => EmployeeSchemasCountry$.inboundSchema)
+                .nullable()
                 .optional(),
-            company_name: z.string().optional(),
             created_at: z
                 .string()
                 .datetime({ offset: true })
                 .transform((v) => new Date(v))
+                .nullable()
                 .optional(),
-            custom_fields: z.array(EmployeeCustomFields$.inboundSchema).optional(),
+            employee_id: z.string().nullable().optional(),
+            id: z.string().nullable().optional(),
+            location_type: z
+                .lazy(() => EmployeeSchemasLocationType$.inboundSchema)
+                .nullable()
+                .optional(),
+            name: z.string().nullable().optional(),
+            phone_number: z.string().nullable().optional(),
+            state: z.string().nullable().optional(),
+            street_1: z.string().nullable().optional(),
+            street_2: z.string().nullable().optional(),
+            updated_at: z
+                .string()
+                .datetime({ offset: true })
+                .transform((v) => new Date(v))
+                .nullable()
+                .optional(),
+            zip_code: z.string().nullable().optional(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.city === undefined ? null : { city: v.city }),
+                ...(v.country === undefined ? null : { country: v.country }),
+                ...(v.created_at === undefined ? null : { createdAt: v.created_at }),
+                ...(v.employee_id === undefined ? null : { employeeId: v.employee_id }),
+                ...(v.id === undefined ? null : { id: v.id }),
+                ...(v.location_type === undefined ? null : { locationType: v.location_type }),
+                ...(v.name === undefined ? null : { name: v.name }),
+                ...(v.phone_number === undefined ? null : { phoneNumber: v.phone_number }),
+                ...(v.state === undefined ? null : { state: v.state }),
+                ...(v.street_1 === undefined ? null : { street1: v.street_1 }),
+                ...(v.street_2 === undefined ? null : { street2: v.street_2 }),
+                ...(v.updated_at === undefined ? null : { updatedAt: v.updated_at }),
+                ...(v.zip_code === undefined ? null : { zipCode: v.zip_code }),
+            };
+        });
+
+    export type Outbound = {
+        city?: string | null | undefined;
+        country?: EmployeeSchemasCountry$.Outbound | null | undefined;
+        created_at?: string | null | undefined;
+        employee_id?: string | null | undefined;
+        id?: string | null | undefined;
+        location_type?: EmployeeSchemasLocationType$.Outbound | null | undefined;
+        name?: string | null | undefined;
+        phone_number?: string | null | undefined;
+        state?: string | null | undefined;
+        street_1?: string | null | undefined;
+        street_2?: string | null | undefined;
+        updated_at?: string | null | undefined;
+        zip_code?: string | null | undefined;
+    };
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, WorkLocation> = z
+        .object({
+            city: z.string().nullable().optional(),
+            country: z
+                .lazy(() => EmployeeSchemasCountry$.outboundSchema)
+                .nullable()
+                .optional(),
+            createdAt: z
+                .date()
+                .transform((v) => v.toISOString())
+                .nullable()
+                .optional(),
+            employeeId: z.string().nullable().optional(),
+            id: z.string().nullable().optional(),
+            locationType: z
+                .lazy(() => EmployeeSchemasLocationType$.outboundSchema)
+                .nullable()
+                .optional(),
+            name: z.string().nullable().optional(),
+            phoneNumber: z.string().nullable().optional(),
+            state: z.string().nullable().optional(),
+            street1: z.string().nullable().optional(),
+            street2: z.string().nullable().optional(),
+            updatedAt: z
+                .date()
+                .transform((v) => v.toISOString())
+                .nullable()
+                .optional(),
+            zipCode: z.string().nullable().optional(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.city === undefined ? null : { city: v.city }),
+                ...(v.country === undefined ? null : { country: v.country }),
+                ...(v.createdAt === undefined ? null : { created_at: v.createdAt }),
+                ...(v.employeeId === undefined ? null : { employee_id: v.employeeId }),
+                ...(v.id === undefined ? null : { id: v.id }),
+                ...(v.locationType === undefined ? null : { location_type: v.locationType }),
+                ...(v.name === undefined ? null : { name: v.name }),
+                ...(v.phoneNumber === undefined ? null : { phone_number: v.phoneNumber }),
+                ...(v.state === undefined ? null : { state: v.state }),
+                ...(v.street1 === undefined ? null : { street_1: v.street1 }),
+                ...(v.street2 === undefined ? null : { street_2: v.street2 }),
+                ...(v.updatedAt === undefined ? null : { updated_at: v.updatedAt }),
+                ...(v.zipCode === undefined ? null : { zip_code: v.zipCode }),
+            };
+        });
+}
+
+/** @internal */
+export namespace Employee$ {
+    export type Inbound = {
+        avatar?: Avatar$.Inbound | null | undefined;
+        avatar_url?: string | null | undefined;
+        birthday?: string | null | undefined;
+        company_name?: string | null | undefined;
+        created_at?: string | null | undefined;
+        custom_fields?: Array<EmployeeCustomFields$.Inbound> | null | undefined;
+        date_of_birth?: string | null | undefined;
+        department?: string | null | undefined;
+        display_name?: string | null | undefined;
+        employment_contract_type?: EmploymentContractType$.Inbound | null | undefined;
+        employment_status?: EmploymentStatus$.Inbound | null | undefined;
+        employment_type?: EmploymentType$.Inbound | null | undefined;
+        employments?: Array<Employment$.Inbound> | null | undefined;
+        ethnicity?: Ethnicity$.Inbound | null | undefined;
+        first_name: string;
+        gender?: Gender$.Inbound | null | undefined;
+        hire_date?: string | null | undefined;
+        home_location?: HomeLocation$.Inbound | null | undefined;
+        id: string;
+        job_title?: string | null | undefined;
+        last_name: string;
+        manager_id?: string | null | undefined;
+        marital_status?: MaritalStatus$.Inbound | null | undefined;
+        name?: string | null | undefined;
+        personal_email?: string | null | undefined;
+        personal_phone_number?: string | null | undefined;
+        start_date?: string | null | undefined;
+        tenure?: number | null | undefined;
+        termination_date?: string | null | undefined;
+        updated_at?: string | null | undefined;
+        work_anniversary?: string | null | undefined;
+        work_email: string;
+        work_location?: WorkLocation$.Inbound | null | undefined;
+        work_phone_number?: string | null | undefined;
+    };
+
+    export const inboundSchema: z.ZodType<Employee, z.ZodTypeDef, Inbound> = z
+        .object({
+            avatar: z
+                .lazy(() => Avatar$.inboundSchema)
+                .nullable()
+                .optional(),
+            avatar_url: z.string().nullable().optional(),
+            birthday: z
+                .string()
+                .datetime({ offset: true })
+                .transform((v) => new Date(v))
+                .nullable()
+                .optional(),
+            company_name: z.string().nullable().optional(),
+            created_at: z
+                .string()
+                .datetime({ offset: true })
+                .transform((v) => new Date(v))
+                .nullable()
+                .optional(),
+            custom_fields: z.array(EmployeeCustomFields$.inboundSchema).nullable().optional(),
             date_of_birth: z
                 .string()
                 .datetime({ offset: true })
                 .transform((v) => new Date(v))
+                .nullable()
                 .optional(),
-            department: z.string().optional(),
-            display_name: z.string().optional(),
+            department: z.string().nullable().optional(),
+            display_name: z.string().nullable().optional(),
             employment_contract_type: z
                 .lazy(() => EmploymentContractType$.inboundSchema)
+                .nullable()
                 .optional(),
-            employment_status: z.lazy(() => EmploymentStatus$.inboundSchema).optional(),
-            employment_type: z.lazy(() => EmploymentType$.inboundSchema).optional(),
-            employments: z.array(Employment$.inboundSchema).optional(),
-            ethnicity: z.lazy(() => Ethnicity$.inboundSchema).optional(),
+            employment_status: z
+                .lazy(() => EmploymentStatus$.inboundSchema)
+                .nullable()
+                .optional(),
+            employment_type: z
+                .lazy(() => EmploymentType$.inboundSchema)
+                .nullable()
+                .optional(),
+            employments: z.array(Employment$.inboundSchema).nullable().optional(),
+            ethnicity: z
+                .lazy(() => Ethnicity$.inboundSchema)
+                .nullable()
+                .optional(),
             first_name: z.string(),
-            gender: z.lazy(() => Gender$.inboundSchema).optional(),
+            gender: z
+                .lazy(() => Gender$.inboundSchema)
+                .nullable()
+                .optional(),
             hire_date: z
                 .string()
                 .datetime({ offset: true })
                 .transform((v) => new Date(v))
+                .nullable()
                 .optional(),
-            home_location: HRISLocation$.inboundSchema.optional(),
+            home_location: z
+                .lazy(() => HomeLocation$.inboundSchema)
+                .nullable()
+                .optional(),
             id: z.string(),
-            job_title: z.string().optional(),
+            job_title: z.string().nullable().optional(),
             last_name: z.string(),
-            manager_id: z.string().optional(),
-            marital_status: z.lazy(() => MaritalStatus$.inboundSchema).optional(),
-            name: z.string().optional(),
-            personal_email: z.string().optional(),
-            personal_phone_number: z.string().optional(),
+            manager_id: z.string().nullable().optional(),
+            marital_status: z
+                .lazy(() => MaritalStatus$.inboundSchema)
+                .nullable()
+                .optional(),
+            name: z.string().nullable().optional(),
+            personal_email: z.string().nullable().optional(),
+            personal_phone_number: z.string().nullable().optional(),
             start_date: z
                 .string()
                 .datetime({ offset: true })
                 .transform((v) => new Date(v))
+                .nullable()
                 .optional(),
-            tenure: z.number().optional(),
+            tenure: z.number().nullable().optional(),
             termination_date: z
                 .string()
                 .datetime({ offset: true })
                 .transform((v) => new Date(v))
+                .nullable()
                 .optional(),
             updated_at: z
                 .string()
                 .datetime({ offset: true })
                 .transform((v) => new Date(v))
+                .nullable()
                 .optional(),
             work_anniversary: z
                 .string()
                 .datetime({ offset: true })
                 .transform((v) => new Date(v))
+                .nullable()
                 .optional(),
             work_email: z.string(),
-            work_location: HRISLocation$.inboundSchema.optional(),
-            work_phone_number: z.string().optional(),
+            work_location: z
+                .lazy(() => WorkLocation$.inboundSchema)
+                .nullable()
+                .optional(),
+            work_phone_number: z.string().nullable().optional(),
         })
         .transform((v) => {
             return {
@@ -715,102 +1859,137 @@ export namespace Employee$ {
         });
 
     export type Outbound = {
-        avatar?: Avatar$.Outbound | undefined;
-        avatar_url?: string | undefined;
-        birthday?: string | undefined;
-        company_name?: string | undefined;
-        created_at?: string | undefined;
-        custom_fields?: Array<EmployeeCustomFields$.Outbound> | undefined;
-        date_of_birth?: string | undefined;
-        department?: string | undefined;
-        display_name?: string | undefined;
-        employment_contract_type?: EmploymentContractType$.Outbound | undefined;
-        employment_status?: EmploymentStatus$.Outbound | undefined;
-        employment_type?: EmploymentType$.Outbound | undefined;
-        employments?: Array<Employment$.Outbound> | undefined;
-        ethnicity?: Ethnicity$.Outbound | undefined;
+        avatar?: Avatar$.Outbound | null | undefined;
+        avatar_url?: string | null | undefined;
+        birthday?: string | null | undefined;
+        company_name?: string | null | undefined;
+        created_at?: string | null | undefined;
+        custom_fields?: Array<EmployeeCustomFields$.Outbound> | null | undefined;
+        date_of_birth?: string | null | undefined;
+        department?: string | null | undefined;
+        display_name?: string | null | undefined;
+        employment_contract_type?: EmploymentContractType$.Outbound | null | undefined;
+        employment_status?: EmploymentStatus$.Outbound | null | undefined;
+        employment_type?: EmploymentType$.Outbound | null | undefined;
+        employments?: Array<Employment$.Outbound> | null | undefined;
+        ethnicity?: Ethnicity$.Outbound | null | undefined;
         first_name: string;
-        gender?: Gender$.Outbound | undefined;
-        hire_date?: string | undefined;
-        home_location?: HRISLocation$.Outbound | undefined;
+        gender?: Gender$.Outbound | null | undefined;
+        hire_date?: string | null | undefined;
+        home_location?: HomeLocation$.Outbound | null | undefined;
         id: string;
-        job_title?: string | undefined;
+        job_title?: string | null | undefined;
         last_name: string;
-        manager_id?: string | undefined;
-        marital_status?: MaritalStatus$.Outbound | undefined;
-        name?: string | undefined;
-        personal_email?: string | undefined;
-        personal_phone_number?: string | undefined;
-        start_date?: string | undefined;
-        tenure?: number | undefined;
-        termination_date?: string | undefined;
-        updated_at?: string | undefined;
-        work_anniversary?: string | undefined;
+        manager_id?: string | null | undefined;
+        marital_status?: MaritalStatus$.Outbound | null | undefined;
+        name?: string | null | undefined;
+        personal_email?: string | null | undefined;
+        personal_phone_number?: string | null | undefined;
+        start_date?: string | null | undefined;
+        tenure?: number | null | undefined;
+        termination_date?: string | null | undefined;
+        updated_at?: string | null | undefined;
+        work_anniversary?: string | null | undefined;
         work_email: string;
-        work_location?: HRISLocation$.Outbound | undefined;
-        work_phone_number?: string | undefined;
+        work_location?: WorkLocation$.Outbound | null | undefined;
+        work_phone_number?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Employee> = z
         .object({
-            avatar: z.lazy(() => Avatar$.outboundSchema).optional(),
-            avatarUrl: z.string().optional(),
+            avatar: z
+                .lazy(() => Avatar$.outboundSchema)
+                .nullable()
+                .optional(),
+            avatarUrl: z.string().nullable().optional(),
             birthday: z
                 .date()
                 .transform((v) => v.toISOString())
+                .nullable()
                 .optional(),
-            companyName: z.string().optional(),
+            companyName: z.string().nullable().optional(),
             createdAt: z
                 .date()
                 .transform((v) => v.toISOString())
+                .nullable()
                 .optional(),
-            customFields: z.array(EmployeeCustomFields$.outboundSchema).optional(),
+            customFields: z.array(EmployeeCustomFields$.outboundSchema).nullable().optional(),
             dateOfBirth: z
                 .date()
                 .transform((v) => v.toISOString())
+                .nullable()
                 .optional(),
-            department: z.string().optional(),
-            displayName: z.string().optional(),
-            employmentContractType: z.lazy(() => EmploymentContractType$.outboundSchema).optional(),
-            employmentStatus: z.lazy(() => EmploymentStatus$.outboundSchema).optional(),
-            employmentType: z.lazy(() => EmploymentType$.outboundSchema).optional(),
-            employments: z.array(Employment$.outboundSchema).optional(),
-            ethnicity: z.lazy(() => Ethnicity$.outboundSchema).optional(),
+            department: z.string().nullable().optional(),
+            displayName: z.string().nullable().optional(),
+            employmentContractType: z
+                .lazy(() => EmploymentContractType$.outboundSchema)
+                .nullable()
+                .optional(),
+            employmentStatus: z
+                .lazy(() => EmploymentStatus$.outboundSchema)
+                .nullable()
+                .optional(),
+            employmentType: z
+                .lazy(() => EmploymentType$.outboundSchema)
+                .nullable()
+                .optional(),
+            employments: z.array(Employment$.outboundSchema).nullable().optional(),
+            ethnicity: z
+                .lazy(() => Ethnicity$.outboundSchema)
+                .nullable()
+                .optional(),
             firstName: z.string(),
-            gender: z.lazy(() => Gender$.outboundSchema).optional(),
+            gender: z
+                .lazy(() => Gender$.outboundSchema)
+                .nullable()
+                .optional(),
             hireDate: z
                 .date()
                 .transform((v) => v.toISOString())
+                .nullable()
                 .optional(),
-            homeLocation: HRISLocation$.outboundSchema.optional(),
+            homeLocation: z
+                .lazy(() => HomeLocation$.outboundSchema)
+                .nullable()
+                .optional(),
             id: z.string(),
-            jobTitle: z.string().optional(),
+            jobTitle: z.string().nullable().optional(),
             lastName: z.string(),
-            managerId: z.string().optional(),
-            maritalStatus: z.lazy(() => MaritalStatus$.outboundSchema).optional(),
-            name: z.string().optional(),
-            personalEmail: z.string().optional(),
-            personalPhoneNumber: z.string().optional(),
+            managerId: z.string().nullable().optional(),
+            maritalStatus: z
+                .lazy(() => MaritalStatus$.outboundSchema)
+                .nullable()
+                .optional(),
+            name: z.string().nullable().optional(),
+            personalEmail: z.string().nullable().optional(),
+            personalPhoneNumber: z.string().nullable().optional(),
             startDate: z
                 .date()
                 .transform((v) => v.toISOString())
+                .nullable()
                 .optional(),
-            tenure: z.number().optional(),
+            tenure: z.number().nullable().optional(),
             terminationDate: z
                 .date()
                 .transform((v) => v.toISOString())
+                .nullable()
                 .optional(),
             updatedAt: z
                 .date()
                 .transform((v) => v.toISOString())
+                .nullable()
                 .optional(),
             workAnniversary: z
                 .date()
                 .transform((v) => v.toISOString())
+                .nullable()
                 .optional(),
             workEmail: z.string(),
-            workLocation: HRISLocation$.outboundSchema.optional(),
-            workPhoneNumber: z.string().optional(),
+            workLocation: z
+                .lazy(() => WorkLocation$.outboundSchema)
+                .nullable()
+                .optional(),
+            workPhoneNumber: z.string().nullable().optional(),
         })
         .transform((v) => {
             return {

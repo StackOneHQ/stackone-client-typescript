@@ -6,19 +6,19 @@ import { EmailMessages, EmailMessages$ } from "./emailmessages";
 import { z } from "zod";
 
 export type MarketingCreateEmailTemplateRequestDto = {
-    id?: string | undefined;
-    messages?: Array<EmailMessages> | undefined;
-    name?: string | undefined;
-    tags?: Array<string> | undefined;
+    id?: string | null | undefined;
+    messages?: Array<EmailMessages> | null | undefined;
+    name?: string | null | undefined;
+    tags?: Array<string> | null | undefined;
 };
 
 /** @internal */
 export namespace MarketingCreateEmailTemplateRequestDto$ {
     export type Inbound = {
-        id?: string | undefined;
-        messages?: Array<EmailMessages$.Inbound> | undefined;
-        name?: string | undefined;
-        tags?: Array<string> | undefined;
+        id?: string | null | undefined;
+        messages?: Array<EmailMessages$.Inbound> | null | undefined;
+        name?: string | null | undefined;
+        tags?: Array<string> | null | undefined;
     };
 
     export const inboundSchema: z.ZodType<
@@ -27,10 +27,10 @@ export namespace MarketingCreateEmailTemplateRequestDto$ {
         Inbound
     > = z
         .object({
-            id: z.string().optional(),
-            messages: z.array(EmailMessages$.inboundSchema).optional(),
-            name: z.string().optional(),
-            tags: z.array(z.string()).optional(),
+            id: z.string().nullable().optional(),
+            messages: z.array(EmailMessages$.inboundSchema).nullable().optional(),
+            name: z.string().nullable().optional(),
+            tags: z.array(z.string()).nullable().optional(),
         })
         .transform((v) => {
             return {
@@ -42,10 +42,10 @@ export namespace MarketingCreateEmailTemplateRequestDto$ {
         });
 
     export type Outbound = {
-        id?: string | undefined;
-        messages?: Array<EmailMessages$.Outbound> | undefined;
-        name?: string | undefined;
-        tags?: Array<string> | undefined;
+        id?: string | null | undefined;
+        messages?: Array<EmailMessages$.Outbound> | null | undefined;
+        name?: string | null | undefined;
+        tags?: Array<string> | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<
@@ -54,10 +54,10 @@ export namespace MarketingCreateEmailTemplateRequestDto$ {
         MarketingCreateEmailTemplateRequestDto
     > = z
         .object({
-            id: z.string().optional(),
-            messages: z.array(EmailMessages$.outboundSchema).optional(),
-            name: z.string().optional(),
-            tags: z.array(z.string()).optional(),
+            id: z.string().nullable().optional(),
+            messages: z.array(EmailMessages$.outboundSchema).nullable().optional(),
+            name: z.string().nullable().optional(),
+            tags: z.array(z.string()).nullable().optional(),
         })
         .transform((v) => {
             return {

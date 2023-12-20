@@ -1,9 +1,0 @@
-# AttachmentContentType
-
-
-## Fields
-
-| Field                                                                                         | Type                                                                                          | Required                                                                                      | Description                                                                                   | Example                                                                                       |
-| --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
-| `sourceValue`                                                                                 | *string*                                                                                      | :heavy_minus_sign:                                                                            | The source value of the content type.                                                         | Text                                                                                          |
-| `value`                                                                                       | [shared.AttachmentContentTypeValue](../../../sdk/models/shared/attachmentcontenttypevalue.md) | :heavy_minus_sign:                                                                            | The content type of the attachment.                                                           | text                                                                                          |

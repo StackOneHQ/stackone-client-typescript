@@ -8,7 +8,11 @@ import { z } from "zod";
 
 export type UsersPaginated = {
     data: Array<User>;
-    nextPage: string;
+    next?: string | null | undefined;
+    /**
+     * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+     */
+    nextPage?: string | null | undefined;
     raw: Array<RawResponse>;
 };
 
@@ -16,40 +20,46 @@ export type UsersPaginated = {
 export namespace UsersPaginated$ {
     export type Inbound = {
         data: Array<User$.Inbound>;
-        next_page: string;
+        next?: string | null | undefined;
+        next_page?: string | null | undefined;
         raw: Array<RawResponse$.Inbound>;
     };
 
     export const inboundSchema: z.ZodType<UsersPaginated, z.ZodTypeDef, Inbound> = z
         .object({
             data: z.array(User$.inboundSchema),
-            next_page: z.string(),
+            next: z.string().nullable().optional(),
+            next_page: z.string().nullable().optional(),
             raw: z.array(RawResponse$.inboundSchema),
         })
         .transform((v) => {
             return {
                 data: v.data,
-                nextPage: v.next_page,
+                ...(v.next === undefined ? null : { next: v.next }),
+                ...(v.next_page === undefined ? null : { nextPage: v.next_page }),
                 raw: v.raw,
             };
         });
 
     export type Outbound = {
         data: Array<User$.Outbound>;
-        next_page: string;
+        next?: string | null | undefined;
+        next_page?: string | null | undefined;
         raw: Array<RawResponse$.Outbound>;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UsersPaginated> = z
         .object({
             data: z.array(User$.outboundSchema),
-            nextPage: z.string(),
+            next: z.string().nullable().optional(),
+            nextPage: z.string().nullable().optional(),
             raw: z.array(RawResponse$.outboundSchema),
         })
         .transform((v) => {
             return {
                 data: v.data,
-                next_page: v.nextPage,
+                ...(v.next === undefined ? null : { next: v.next }),
+                ...(v.nextPage === undefined ? null : { next_page: v.nextPage }),
                 raw: v.raw,
             };
         });

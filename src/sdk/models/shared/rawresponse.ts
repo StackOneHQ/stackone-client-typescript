@@ -7,9 +7,9 @@ import { z } from "zod";
 export type Response = {};
 
 export type RawResponse = {
-    body?: string | undefined;
+    body?: string | null | undefined;
     method: string;
-    response?: Response | undefined;
+    response?: Response | null | undefined;
     url: string;
 };
 
@@ -27,17 +27,20 @@ export namespace Response$ {
 /** @internal */
 export namespace RawResponse$ {
     export type Inbound = {
-        body?: string | undefined;
+        body?: string | null | undefined;
         method: string;
-        response?: Response$.Inbound | undefined;
+        response?: Response$.Inbound | null | undefined;
         url: string;
     };
 
     export const inboundSchema: z.ZodType<RawResponse, z.ZodTypeDef, Inbound> = z
         .object({
-            body: z.string().optional(),
+            body: z.string().nullable().optional(),
             method: z.string(),
-            response: z.lazy(() => Response$.inboundSchema).optional(),
+            response: z
+                .lazy(() => Response$.inboundSchema)
+                .nullable()
+                .optional(),
             url: z.string(),
         })
         .transform((v) => {
@@ -50,17 +53,20 @@ export namespace RawResponse$ {
         });
 
     export type Outbound = {
-        body?: string | undefined;
+        body?: string | null | undefined;
         method: string;
-        response?: Response$.Outbound | undefined;
+        response?: Response$.Outbound | null | undefined;
         url: string;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, RawResponse> = z
         .object({
-            body: z.string().optional(),
+            body: z.string().nullable().optional(),
             method: z.string(),
-            response: z.lazy(() => Response$.outboundSchema).optional(),
+            response: z
+                .lazy(() => Response$.outboundSchema)
+                .nullable()
+                .optional(),
             url: z.string(),
         })
         .transform((v) => {

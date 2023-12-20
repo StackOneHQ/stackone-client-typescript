@@ -1,9 +1,0 @@
-# JobPostingStatusEnum
-
-
-## Fields
-
-| Field                                                                                       | Type                                                                                        | Required                                                                                    | Description                                                                                 | Example                                                                                     |
-| ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
-| `sourceValue`                                                                               | *string*                                                                                    | :heavy_check_mark:                                                                          | The source value of the job postings status.                                                | Live                                                                                        |
-| `value`                                                                                     | [shared.JobPostingStatusEnumValue](../../../sdk/models/shared/jobpostingstatusenumvalue.md) | :heavy_check_mark:                                                                          | The status of the job postings.                                                             | live                                                                                        |

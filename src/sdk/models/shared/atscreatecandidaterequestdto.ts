@@ -9,11 +9,11 @@ export type AtsCreateCandidateRequestDto = {
     /**
      * List of candidate application IDs
      */
-    applicationIds?: Array<string> | undefined;
+    applicationIds?: Array<string> | null | undefined;
     /**
      * Candidate company
      */
-    company?: string | undefined;
+    company?: string | null | undefined;
     /**
      * List of candidate emails
      */
@@ -33,7 +33,7 @@ export type AtsCreateCandidateRequestDto = {
     /**
      * Candidate phone number
      */
-    phone?: string | undefined;
+    phone?: string | null | undefined;
     /**
      * Candidate title
      */
@@ -43,25 +43,25 @@ export type AtsCreateCandidateRequestDto = {
 /** @internal */
 export namespace AtsCreateCandidateRequestDto$ {
     export type Inbound = {
-        application_ids?: Array<string> | undefined;
-        company?: string | undefined;
+        application_ids?: Array<string> | null | undefined;
+        company?: string | null | undefined;
         emails: Array<CandidateEmail$.Inbound>;
         first_name: string;
         last_name: string;
         name: string;
-        phone?: string | undefined;
+        phone?: string | null | undefined;
         title: string;
     };
 
     export const inboundSchema: z.ZodType<AtsCreateCandidateRequestDto, z.ZodTypeDef, Inbound> = z
         .object({
-            application_ids: z.array(z.string()).optional(),
-            company: z.string().optional(),
+            application_ids: z.array(z.string()).nullable().optional(),
+            company: z.string().nullable().optional(),
             emails: z.array(CandidateEmail$.inboundSchema),
             first_name: z.string(),
             last_name: z.string(),
             name: z.string(),
-            phone: z.string().optional(),
+            phone: z.string().nullable().optional(),
             title: z.string(),
         })
         .transform((v) => {
@@ -78,25 +78,25 @@ export namespace AtsCreateCandidateRequestDto$ {
         });
 
     export type Outbound = {
-        application_ids?: Array<string> | undefined;
-        company?: string | undefined;
+        application_ids?: Array<string> | null | undefined;
+        company?: string | null | undefined;
         emails: Array<CandidateEmail$.Outbound>;
         first_name: string;
         last_name: string;
         name: string;
-        phone?: string | undefined;
+        phone?: string | null | undefined;
         title: string;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, AtsCreateCandidateRequestDto> = z
         .object({
-            applicationIds: z.array(z.string()).optional(),
-            company: z.string().optional(),
+            applicationIds: z.array(z.string()).nullable().optional(),
+            company: z.string().nullable().optional(),
             emails: z.array(CandidateEmail$.outboundSchema),
             firstName: z.string(),
             lastName: z.string(),
             name: z.string(),
-            phone: z.string().optional(),
+            phone: z.string().nullable().optional(),
             title: z.string(),
         })
         .transform((v) => {

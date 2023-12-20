@@ -7,7 +7,7 @@ import { z } from "zod";
 /**
  * The status of the application.
  */
-export enum ApplicationStatusEnumApiModelValue {
+export enum Value {
     Active = "active",
     Assessment = "assessment",
     BackgroundCheck = "background_check",
@@ -21,6 +21,7 @@ export enum ApplicationStatusEnumApiModelValue {
     Rejected = "rejected",
     Review = "review",
     Screen = "screen",
+    New = "new",
     UnmappedValue = "unmapped_value",
 }
 
@@ -32,23 +33,23 @@ export type ApplicationStatusEnumApiModel = {
     /**
      * The status of the application.
      */
-    value: ApplicationStatusEnumApiModelValue;
+    value: Value;
 };
 
 /** @internal */
-export const ApplicationStatusEnumApiModelValue$ = z.nativeEnum(ApplicationStatusEnumApiModelValue);
+export const Value$ = z.nativeEnum(Value);
 
 /** @internal */
 export namespace ApplicationStatusEnumApiModel$ {
     export type Inbound = {
         source_value: string;
-        value: ApplicationStatusEnumApiModelValue;
+        value: Value;
     };
 
     export const inboundSchema: z.ZodType<ApplicationStatusEnumApiModel, z.ZodTypeDef, Inbound> = z
         .object({
             source_value: z.string(),
-            value: ApplicationStatusEnumApiModelValue$,
+            value: Value$,
         })
         .transform((v) => {
             return {
@@ -59,14 +60,14 @@ export namespace ApplicationStatusEnumApiModel$ {
 
     export type Outbound = {
         source_value: string;
-        value: ApplicationStatusEnumApiModelValue;
+        value: Value;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ApplicationStatusEnumApiModel> =
         z
             .object({
                 sourceValue: z.string(),
-                value: ApplicationStatusEnumApiModelValue$,
+                value: Value$,
             })
             .transform((v) => {
                 return {

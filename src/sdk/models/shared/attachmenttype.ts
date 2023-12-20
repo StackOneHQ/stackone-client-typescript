@@ -19,11 +19,11 @@ export type AttachmentType = {
     /**
      * The source value of the attachment type.
      */
-    sourceValue?: string | undefined;
+    sourceValue?: string | null | undefined;
     /**
      * The type of the attachment.
      */
-    value?: AttachmentTypeValue | undefined;
+    value?: AttachmentTypeValue | null | undefined;
 };
 
 /** @internal */
@@ -32,14 +32,14 @@ export const AttachmentTypeValue$ = z.nativeEnum(AttachmentTypeValue);
 /** @internal */
 export namespace AttachmentType$ {
     export type Inbound = {
-        source_value?: string | undefined;
-        value?: AttachmentTypeValue | undefined;
+        source_value?: string | null | undefined;
+        value?: AttachmentTypeValue | null | undefined;
     };
 
     export const inboundSchema: z.ZodType<AttachmentType, z.ZodTypeDef, Inbound> = z
         .object({
-            source_value: z.string().optional(),
-            value: AttachmentTypeValue$.optional(),
+            source_value: z.string().nullable().optional(),
+            value: AttachmentTypeValue$.nullable().optional(),
         })
         .transform((v) => {
             return {
@@ -49,14 +49,14 @@ export namespace AttachmentType$ {
         });
 
     export type Outbound = {
-        source_value?: string | undefined;
-        value?: AttachmentTypeValue | undefined;
+        source_value?: string | null | undefined;
+        value?: AttachmentTypeValue | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, AttachmentType> = z
         .object({
-            sourceValue: z.string().optional(),
-            value: AttachmentTypeValue$.optional(),
+            sourceValue: z.string().nullable().optional(),
+            value: AttachmentTypeValue$.nullable().optional(),
         })
         .transform((v) => {
             return {

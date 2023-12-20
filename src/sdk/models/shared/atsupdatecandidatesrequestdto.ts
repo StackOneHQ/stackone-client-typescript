@@ -9,11 +9,11 @@ export type AtsUpdateCandidatesRequestDto = {
     /**
      * List of candidate application IDs
      */
-    applicationIds?: Array<string> | undefined;
+    applicationIds?: Array<string> | null | undefined;
     /**
      * Candidate company
      */
-    company?: string | undefined;
+    company?: string | null | undefined;
     /**
      * List of candidate emails
      */
@@ -25,7 +25,7 @@ export type AtsUpdateCandidatesRequestDto = {
     /**
      * The ID of the candidate to update.
      */
-    id?: string | undefined;
+    id?: string | null | undefined;
     /**
      * Candidate last name
      */
@@ -37,7 +37,7 @@ export type AtsUpdateCandidatesRequestDto = {
     /**
      * Candidate phone number
      */
-    phone?: string | undefined;
+    phone?: string | null | undefined;
     /**
      * Candidate title
      */
@@ -47,27 +47,27 @@ export type AtsUpdateCandidatesRequestDto = {
 /** @internal */
 export namespace AtsUpdateCandidatesRequestDto$ {
     export type Inbound = {
-        application_ids?: Array<string> | undefined;
-        company?: string | undefined;
+        application_ids?: Array<string> | null | undefined;
+        company?: string | null | undefined;
         emails?: Array<CandidateEmail$.Inbound> | undefined;
         first_name?: string | undefined;
-        id?: string | undefined;
+        id?: string | null | undefined;
         last_name?: string | undefined;
         name?: string | undefined;
-        phone?: string | undefined;
+        phone?: string | null | undefined;
         title?: string | undefined;
     };
 
     export const inboundSchema: z.ZodType<AtsUpdateCandidatesRequestDto, z.ZodTypeDef, Inbound> = z
         .object({
-            application_ids: z.array(z.string()).optional(),
-            company: z.string().optional(),
+            application_ids: z.array(z.string()).nullable().optional(),
+            company: z.string().nullable().optional(),
             emails: z.array(CandidateEmail$.inboundSchema).optional(),
             first_name: z.string().optional(),
-            id: z.string().optional(),
+            id: z.string().nullable().optional(),
             last_name: z.string().optional(),
             name: z.string().optional(),
-            phone: z.string().optional(),
+            phone: z.string().nullable().optional(),
             title: z.string().optional(),
         })
         .transform((v) => {
@@ -85,28 +85,28 @@ export namespace AtsUpdateCandidatesRequestDto$ {
         });
 
     export type Outbound = {
-        application_ids?: Array<string> | undefined;
-        company?: string | undefined;
+        application_ids?: Array<string> | null | undefined;
+        company?: string | null | undefined;
         emails?: Array<CandidateEmail$.Outbound> | undefined;
         first_name?: string | undefined;
-        id?: string | undefined;
+        id?: string | null | undefined;
         last_name?: string | undefined;
         name?: string | undefined;
-        phone?: string | undefined;
+        phone?: string | null | undefined;
         title?: string | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, AtsUpdateCandidatesRequestDto> =
         z
             .object({
-                applicationIds: z.array(z.string()).optional(),
-                company: z.string().optional(),
+                applicationIds: z.array(z.string()).nullable().optional(),
+                company: z.string().nullable().optional(),
                 emails: z.array(CandidateEmail$.outboundSchema).optional(),
                 firstName: z.string().optional(),
-                id: z.string().optional(),
+                id: z.string().nullable().optional(),
                 lastName: z.string().optional(),
                 name: z.string().optional(),
-                phone: z.string().optional(),
+                phone: z.string().nullable().optional(),
                 title: z.string().optional(),
             })
             .transform((v) => {

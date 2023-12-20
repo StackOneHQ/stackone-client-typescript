@@ -8,30 +8,30 @@ export type ApplicationCandidate = {
     /**
      * Email of the candidate
      */
-    email?: string | undefined;
+    email?: string | null | undefined;
     /**
      * First name of the candidate
      */
-    firstName?: string | undefined;
+    firstName?: string | null | undefined;
     /**
      * Last name of the candidate
      */
-    lastName?: string | undefined;
+    lastName?: string | null | undefined;
 };
 
 /** @internal */
 export namespace ApplicationCandidate$ {
     export type Inbound = {
-        email?: string | undefined;
-        first_name?: string | undefined;
-        last_name?: string | undefined;
+        email?: string | null | undefined;
+        first_name?: string | null | undefined;
+        last_name?: string | null | undefined;
     };
 
     export const inboundSchema: z.ZodType<ApplicationCandidate, z.ZodTypeDef, Inbound> = z
         .object({
-            email: z.string().optional(),
-            first_name: z.string().optional(),
-            last_name: z.string().optional(),
+            email: z.string().nullable().optional(),
+            first_name: z.string().nullable().optional(),
+            last_name: z.string().nullable().optional(),
         })
         .transform((v) => {
             return {
@@ -42,16 +42,16 @@ export namespace ApplicationCandidate$ {
         });
 
     export type Outbound = {
-        email?: string | undefined;
-        first_name?: string | undefined;
-        last_name?: string | undefined;
+        email?: string | null | undefined;
+        first_name?: string | null | undefined;
+        last_name?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ApplicationCandidate> = z
         .object({
-            email: z.string().optional(),
-            firstName: z.string().optional(),
-            lastName: z.string().optional(),
+            email: z.string().nullable().optional(),
+            firstName: z.string().nullable().optional(),
+            lastName: z.string().nullable().optional(),
         })
         .transform((v) => {
             return {

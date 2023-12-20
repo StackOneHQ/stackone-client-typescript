@@ -22,42 +22,42 @@ export type ApplicationQuestionnaire = {
     /**
      * Unique identifier of the questionnaire
      */
-    id?: string | undefined;
+    id?: string | null | undefined;
 };
 
 export type Application = {
     applicationStatus: ApplicationStatusEnumApiModel;
-    attachments?: Array<ApplicationAttachment> | undefined;
+    attachments?: Array<ApplicationAttachment> | null | undefined;
     candidate: ApplicationCandidate;
     /**
      * Unique identifier of the candidate
      */
-    candidateId?: string | undefined;
+    candidateId?: string | null | undefined;
     /**
      * Date of creation
      */
-    createdAt?: Date | undefined;
+    createdAt?: Date | null | undefined;
     /**
      * Unique identifier of the application
      */
-    id?: string | undefined;
-    interviewStage?: Array<InterviewStage> | undefined;
+    id?: string | null | undefined;
+    interviewStage?: Array<InterviewStage> | null | undefined;
     /**
      * Unique identifier of the interview stage
      */
-    interviewStageId?: string | undefined;
+    interviewStageId?: string | null | undefined;
     /**
      * Unique identifier of the job
      */
-    jobId?: string | undefined;
+    jobId?: string | null | undefined;
     /**
      * Unique identifier of the location
      */
-    locationId?: string | undefined;
+    locationId?: string | null | undefined;
     /**
      * Unique identifiers of the locations
      */
-    locationIds?: Array<string> | undefined;
+    locationIds?: Array<string> | null | undefined;
     /**
      * Questionnaire associated with the application
      */
@@ -65,30 +65,30 @@ export type Application = {
     /**
      * Date of rejection
      */
-    rejectedAt?: Date | undefined;
+    rejectedAt?: Date | null | undefined;
     /**
      * Unique identifiers of the rejection reasons
      */
-    rejectedReasonIds?: Array<string> | undefined;
-    rejectedReasons?: Array<RejectedReason> | undefined;
-    resultLinks?: Array<ResultLink> | undefined;
+    rejectedReasonIds?: Array<string> | null | undefined;
+    rejectedReasons?: Array<RejectedReason> | null | undefined;
+    resultLinks?: Array<ResultLink> | null | undefined;
     /**
      * Date of last update
      */
-    updatedAt?: Date | undefined;
+    updatedAt?: Date | null | undefined;
 };
 
 /** @internal */
 export namespace ApplicationQuestionnaire$ {
     export type Inbound = {
         answers: Array<Answer$.Inbound>;
-        id?: string | undefined;
+        id?: string | null | undefined;
     };
 
     export const inboundSchema: z.ZodType<ApplicationQuestionnaire, z.ZodTypeDef, Inbound> = z
         .object({
             answers: z.array(Answer$.inboundSchema),
-            id: z.string().optional(),
+            id: z.string().nullable().optional(),
         })
         .transform((v) => {
             return {
@@ -99,13 +99,13 @@ export namespace ApplicationQuestionnaire$ {
 
     export type Outbound = {
         answers: Array<Answer$.Outbound>;
-        id?: string | undefined;
+        id?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ApplicationQuestionnaire> = z
         .object({
             answers: z.array(Answer$.outboundSchema),
-            id: z.string().optional(),
+            id: z.string().nullable().optional(),
         })
         .transform((v) => {
             return {
@@ -119,54 +119,57 @@ export namespace ApplicationQuestionnaire$ {
 export namespace Application$ {
     export type Inbound = {
         application_status: ApplicationStatusEnumApiModel$.Inbound;
-        attachments?: Array<ApplicationAttachment$.Inbound> | undefined;
+        attachments?: Array<ApplicationAttachment$.Inbound> | null | undefined;
         candidate: ApplicationCandidate$.Inbound;
-        candidate_id?: string | undefined;
-        created_at?: string | undefined;
-        id?: string | undefined;
-        interview_stage?: Array<InterviewStage$.Inbound> | undefined;
-        interview_stage_id?: string | undefined;
-        job_id?: string | undefined;
-        location_id?: string | undefined;
-        location_ids?: Array<string> | undefined;
+        candidate_id?: string | null | undefined;
+        created_at?: string | null | undefined;
+        id?: string | null | undefined;
+        interview_stage?: Array<InterviewStage$.Inbound> | null | undefined;
+        interview_stage_id?: string | null | undefined;
+        job_id?: string | null | undefined;
+        location_id?: string | null | undefined;
+        location_ids?: Array<string> | null | undefined;
         questionnaire: ApplicationQuestionnaire$.Inbound;
-        rejected_at?: string | undefined;
-        rejected_reason_ids?: Array<string> | undefined;
-        rejected_reasons?: Array<RejectedReason$.Inbound> | undefined;
-        result_links?: Array<ResultLink$.Inbound> | undefined;
-        updated_at?: string | undefined;
+        rejected_at?: string | null | undefined;
+        rejected_reason_ids?: Array<string> | null | undefined;
+        rejected_reasons?: Array<RejectedReason$.Inbound> | null | undefined;
+        result_links?: Array<ResultLink$.Inbound> | null | undefined;
+        updated_at?: string | null | undefined;
     };
 
     export const inboundSchema: z.ZodType<Application, z.ZodTypeDef, Inbound> = z
         .object({
             application_status: ApplicationStatusEnumApiModel$.inboundSchema,
-            attachments: z.array(ApplicationAttachment$.inboundSchema).optional(),
+            attachments: z.array(ApplicationAttachment$.inboundSchema).nullable().optional(),
             candidate: ApplicationCandidate$.inboundSchema,
-            candidate_id: z.string().optional(),
+            candidate_id: z.string().nullable().optional(),
             created_at: z
                 .string()
                 .datetime({ offset: true })
                 .transform((v) => new Date(v))
+                .nullable()
                 .optional(),
-            id: z.string().optional(),
-            interview_stage: z.array(InterviewStage$.inboundSchema).optional(),
-            interview_stage_id: z.string().optional(),
-            job_id: z.string().optional(),
-            location_id: z.string().optional(),
-            location_ids: z.array(z.string()).optional(),
+            id: z.string().nullable().optional(),
+            interview_stage: z.array(InterviewStage$.inboundSchema).nullable().optional(),
+            interview_stage_id: z.string().nullable().optional(),
+            job_id: z.string().nullable().optional(),
+            location_id: z.string().nullable().optional(),
+            location_ids: z.array(z.string()).nullable().optional(),
             questionnaire: z.lazy(() => ApplicationQuestionnaire$.inboundSchema),
             rejected_at: z
                 .string()
                 .datetime({ offset: true })
                 .transform((v) => new Date(v))
+                .nullable()
                 .optional(),
-            rejected_reason_ids: z.array(z.string()).optional(),
-            rejected_reasons: z.array(RejectedReason$.inboundSchema).optional(),
-            result_links: z.array(ResultLink$.inboundSchema).optional(),
+            rejected_reason_ids: z.array(z.string()).nullable().optional(),
+            rejected_reasons: z.array(RejectedReason$.inboundSchema).nullable().optional(),
+            result_links: z.array(ResultLink$.inboundSchema).nullable().optional(),
             updated_at: z
                 .string()
                 .datetime({ offset: true })
                 .transform((v) => new Date(v))
+                .nullable()
                 .optional(),
         })
         .transform((v) => {
@@ -199,51 +202,54 @@ export namespace Application$ {
 
     export type Outbound = {
         application_status: ApplicationStatusEnumApiModel$.Outbound;
-        attachments?: Array<ApplicationAttachment$.Outbound> | undefined;
+        attachments?: Array<ApplicationAttachment$.Outbound> | null | undefined;
         candidate: ApplicationCandidate$.Outbound;
-        candidate_id?: string | undefined;
-        created_at?: string | undefined;
-        id?: string | undefined;
-        interview_stage?: Array<InterviewStage$.Outbound> | undefined;
-        interview_stage_id?: string | undefined;
-        job_id?: string | undefined;
-        location_id?: string | undefined;
-        location_ids?: Array<string> | undefined;
+        candidate_id?: string | null | undefined;
+        created_at?: string | null | undefined;
+        id?: string | null | undefined;
+        interview_stage?: Array<InterviewStage$.Outbound> | null | undefined;
+        interview_stage_id?: string | null | undefined;
+        job_id?: string | null | undefined;
+        location_id?: string | null | undefined;
+        location_ids?: Array<string> | null | undefined;
         questionnaire: ApplicationQuestionnaire$.Outbound;
-        rejected_at?: string | undefined;
-        rejected_reason_ids?: Array<string> | undefined;
-        rejected_reasons?: Array<RejectedReason$.Outbound> | undefined;
-        result_links?: Array<ResultLink$.Outbound> | undefined;
-        updated_at?: string | undefined;
+        rejected_at?: string | null | undefined;
+        rejected_reason_ids?: Array<string> | null | undefined;
+        rejected_reasons?: Array<RejectedReason$.Outbound> | null | undefined;
+        result_links?: Array<ResultLink$.Outbound> | null | undefined;
+        updated_at?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Application> = z
         .object({
             applicationStatus: ApplicationStatusEnumApiModel$.outboundSchema,
-            attachments: z.array(ApplicationAttachment$.outboundSchema).optional(),
+            attachments: z.array(ApplicationAttachment$.outboundSchema).nullable().optional(),
             candidate: ApplicationCandidate$.outboundSchema,
-            candidateId: z.string().optional(),
+            candidateId: z.string().nullable().optional(),
             createdAt: z
                 .date()
                 .transform((v) => v.toISOString())
+                .nullable()
                 .optional(),
-            id: z.string().optional(),
-            interviewStage: z.array(InterviewStage$.outboundSchema).optional(),
-            interviewStageId: z.string().optional(),
-            jobId: z.string().optional(),
-            locationId: z.string().optional(),
-            locationIds: z.array(z.string()).optional(),
+            id: z.string().nullable().optional(),
+            interviewStage: z.array(InterviewStage$.outboundSchema).nullable().optional(),
+            interviewStageId: z.string().nullable().optional(),
+            jobId: z.string().nullable().optional(),
+            locationId: z.string().nullable().optional(),
+            locationIds: z.array(z.string()).nullable().optional(),
             questionnaire: z.lazy(() => ApplicationQuestionnaire$.outboundSchema),
             rejectedAt: z
                 .date()
                 .transform((v) => v.toISOString())
+                .nullable()
                 .optional(),
-            rejectedReasonIds: z.array(z.string()).optional(),
-            rejectedReasons: z.array(RejectedReason$.outboundSchema).optional(),
-            resultLinks: z.array(ResultLink$.outboundSchema).optional(),
+            rejectedReasonIds: z.array(z.string()).nullable().optional(),
+            rejectedReasons: z.array(RejectedReason$.outboundSchema).nullable().optional(),
+            resultLinks: z.array(ResultLink$.outboundSchema).nullable().optional(),
             updatedAt: z
                 .date()
                 .transform((v) => v.toISOString())
+                .nullable()
                 .optional(),
         })
         .transform((v) => {

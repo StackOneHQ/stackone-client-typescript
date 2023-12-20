@@ -1,9 +1,0 @@
-# PayPeriodEnum
-
-
-## Fields
-
-| Field                                                                         | Type                                                                          | Required                                                                      | Description                                                                   | Example                                                                       |
-| ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
-| `sourceValue`                                                                 | *string*                                                                      | :heavy_check_mark:                                                            | The source value of the pay period.                                           | Hour                                                                          |
-| `value`                                                                       | [shared.PayPeriodEnumValue](../../../sdk/models/shared/payperiodenumvalue.md) | :heavy_check_mark:                                                            | The pay period of the job postings.                                           | hour                                                                          |
