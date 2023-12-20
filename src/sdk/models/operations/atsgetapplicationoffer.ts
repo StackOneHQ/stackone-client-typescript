@@ -5,12 +5,21 @@
 import * as shared from "../../../sdk/models/shared";
 import { z } from "zod";
 
+/**
+ * Query parameters that can be used to pass through parameters to the underlying provider request by surrounding them with "proxy" key
+ */
+export type QueryParamProxy = {};
+
 export type AtsGetApplicationOfferRequest = {
     /**
      * The comma separated list of fields to return in the response (if empty, all fields are returned)
      */
     fields?: string | null | undefined;
     id: string;
+    /**
+     * The unified cursor
+     */
+    next?: string | null | undefined;
     /**
      * The page number of the results to fetch
      *
@@ -24,7 +33,7 @@ export type AtsGetApplicationOfferRequest = {
     /**
      * Query parameters that can be used to pass through parameters to the underlying provider request by surrounding them with "proxy" key
      */
-    proxy?: Record<string, any> | undefined;
+    proxy?: QueryParamProxy | undefined;
     /**
      * Indicates that the raw request result is returned
      */
@@ -64,13 +73,25 @@ export type AtsGetApplicationOfferResponse = {
 };
 
 /** @internal */
+export namespace QueryParamProxy$ {
+    export type Inbound = {};
+
+    export const inboundSchema: z.ZodType<QueryParamProxy, z.ZodTypeDef, Inbound> = z.object({});
+
+    export type Outbound = {};
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, QueryParamProxy> = z.object({});
+}
+
+/** @internal */
 export namespace AtsGetApplicationOfferRequest$ {
     export type Inbound = {
         fields?: string | null | undefined;
         id: string;
+        next?: string | null | undefined;
         page?: string | null | undefined;
         page_size?: string | null | undefined;
-        proxy?: Record<string, any> | undefined;
+        proxy?: QueryParamProxy$.Inbound | undefined;
         raw?: boolean | null | undefined;
         subResourceId: string;
         sync_token?: string | null | undefined;
@@ -82,9 +103,10 @@ export namespace AtsGetApplicationOfferRequest$ {
         .object({
             fields: z.string().nullable().optional(),
             id: z.string(),
+            next: z.string().nullable().optional(),
             page: z.string().nullable().optional(),
             page_size: z.string().nullable().optional(),
-            proxy: z.record(z.any()).optional(),
+            proxy: z.lazy(() => QueryParamProxy$.inboundSchema).optional(),
             raw: z.boolean().nullable().optional(),
             subResourceId: z.string(),
             sync_token: z.string().nullable().optional(),
@@ -95,6 +117,7 @@ export namespace AtsGetApplicationOfferRequest$ {
             return {
                 ...(v.fields === undefined ? null : { fields: v.fields }),
                 id: v.id,
+                ...(v.next === undefined ? null : { next: v.next }),
                 ...(v.page === undefined ? null : { page: v.page }),
                 ...(v.page_size === undefined ? null : { pageSize: v.page_size }),
                 ...(v.proxy === undefined ? null : { proxy: v.proxy }),
@@ -109,9 +132,10 @@ export namespace AtsGetApplicationOfferRequest$ {
     export type Outbound = {
         fields?: string | null | undefined;
         id: string;
+        next?: string | null | undefined;
         page?: string | null | undefined;
         page_size?: string | null | undefined;
-        proxy?: Record<string, any> | undefined;
+        proxy?: QueryParamProxy$.Outbound | undefined;
         raw?: boolean | null | undefined;
         subResourceId: string;
         sync_token?: string | null | undefined;
@@ -124,9 +148,10 @@ export namespace AtsGetApplicationOfferRequest$ {
             .object({
                 fields: z.string().nullable().optional(),
                 id: z.string(),
+                next: z.string().nullable().optional(),
                 page: z.string().nullable().optional(),
                 pageSize: z.string().nullable().optional(),
-                proxy: z.record(z.any()).optional(),
+                proxy: z.lazy(() => QueryParamProxy$.outboundSchema).optional(),
                 raw: z.boolean().nullable().optional(),
                 subResourceId: z.string(),
                 syncToken: z.string().nullable().optional(),
@@ -137,6 +162,7 @@ export namespace AtsGetApplicationOfferRequest$ {
                 return {
                     ...(v.fields === undefined ? null : { fields: v.fields }),
                     id: v.id,
+                    ...(v.next === undefined ? null : { next: v.next }),
                     ...(v.page === undefined ? null : { page: v.page }),
                     ...(v.pageSize === undefined ? null : { page_size: v.pageSize }),
                     ...(v.proxy === undefined ? null : { proxy: v.proxy }),

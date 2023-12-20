@@ -244,12 +244,13 @@ export class Hris extends ClientSDK {
 
         const query$ = [
             enc$.encodeForm("fields", payload$.fields, { explode: true, charEncoding: "percent" }),
+            enc$.encodeForm("next", payload$.next, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("page", payload$.page, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("page_size", payload$.page_size, {
                 explode: true,
                 charEncoding: "percent",
             }),
-            enc$.encodeDeepObject("proxy", payload$.proxy, { charEncoding: "percent" }),
+            enc$.encodeForm("proxy", payload$.proxy, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("raw", payload$.raw, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("sync_token", payload$.sync_token, {
                 explode: true,
@@ -335,12 +336,13 @@ export class Hris extends ClientSDK {
                 explode: true,
                 charEncoding: "percent",
             }),
+            enc$.encodeForm("next", payload$.next, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("page", payload$.page, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("page_size", payload$.page_size, {
                 explode: true,
                 charEncoding: "percent",
             }),
-            enc$.encodeDeepObject("proxy", payload$.proxy, { charEncoding: "percent" }),
+            enc$.encodeForm("proxy", payload$.proxy, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("raw", payload$.raw, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("sync_token", payload$.sync_token, {
                 explode: true,
@@ -428,12 +430,13 @@ export class Hris extends ClientSDK {
 
         const query$ = [
             enc$.encodeForm("fields", payload$.fields, { explode: true, charEncoding: "percent" }),
+            enc$.encodeForm("next", payload$.next, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("page", payload$.page, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("page_size", payload$.page_size, {
                 explode: true,
                 charEncoding: "percent",
             }),
-            enc$.encodeDeepObject("proxy", payload$.proxy, { charEncoding: "percent" }),
+            enc$.encodeForm("proxy", payload$.proxy, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("raw", payload$.raw, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("sync_token", payload$.sync_token, {
                 explode: true,
@@ -514,12 +517,13 @@ export class Hris extends ClientSDK {
 
         const query$ = [
             enc$.encodeForm("fields", payload$.fields, { explode: true, charEncoding: "percent" }),
+            enc$.encodeForm("next", payload$.next, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("page", payload$.page, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("page_size", payload$.page_size, {
                 explode: true,
                 charEncoding: "percent",
             }),
-            enc$.encodeDeepObject("proxy", payload$.proxy, { charEncoding: "percent" }),
+            enc$.encodeForm("proxy", payload$.proxy, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("raw", payload$.raw, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("sync_token", payload$.sync_token, {
                 explode: true,
@@ -600,12 +604,13 @@ export class Hris extends ClientSDK {
 
         const query$ = [
             enc$.encodeForm("fields", payload$.fields, { explode: true, charEncoding: "percent" }),
+            enc$.encodeForm("next", payload$.next, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("page", payload$.page, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("page_size", payload$.page_size, {
                 explode: true,
                 charEncoding: "percent",
             }),
-            enc$.encodeDeepObject("proxy", payload$.proxy, { charEncoding: "percent" }),
+            enc$.encodeForm("proxy", payload$.proxy, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("raw", payload$.raw, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("sync_token", payload$.sync_token, {
                 explode: true,
@@ -686,12 +691,13 @@ export class Hris extends ClientSDK {
 
         const query$ = [
             enc$.encodeForm("fields", payload$.fields, { explode: true, charEncoding: "percent" }),
+            enc$.encodeForm("next", payload$.next, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("page", payload$.page, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("page_size", payload$.page_size, {
                 explode: true,
                 charEncoding: "percent",
             }),
-            enc$.encodeDeepObject("proxy", payload$.proxy, { charEncoding: "percent" }),
+            enc$.encodeForm("proxy", payload$.proxy, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("raw", payload$.raw, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("sync_token", payload$.sync_token, {
                 explode: true,
@@ -768,12 +774,13 @@ export class Hris extends ClientSDK {
 
         const query$ = [
             enc$.encodeForm("fields", payload$.fields, { explode: true, charEncoding: "percent" }),
+            enc$.encodeForm("next", payload$.next, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("page", payload$.page, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("page_size", payload$.page_size, {
                 explode: true,
                 charEncoding: "percent",
             }),
-            enc$.encodeDeepObject("proxy", payload$.proxy, { charEncoding: "percent" }),
+            enc$.encodeForm("proxy", payload$.proxy, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("raw", payload$.raw, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("sync_token", payload$.sync_token, {
                 explode: true,
@@ -857,12 +864,13 @@ export class Hris extends ClientSDK {
 
         const query$ = [
             enc$.encodeForm("fields", payload$.fields, { explode: true, charEncoding: "percent" }),
+            enc$.encodeForm("next", payload$.next, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("page", payload$.page, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("page_size", payload$.page_size, {
                 explode: true,
                 charEncoding: "percent",
             }),
-            enc$.encodeDeepObject("proxy", payload$.proxy, { charEncoding: "percent" }),
+            enc$.encodeForm("proxy", payload$.proxy, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("raw", payload$.raw, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("sync_token", payload$.sync_token, {
                 explode: true,
@@ -944,12 +952,13 @@ export class Hris extends ClientSDK {
                 explode: true,
                 charEncoding: "percent",
             }),
+            enc$.encodeForm("next", payload$.next, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("page", payload$.page, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("page_size", payload$.page_size, {
                 explode: true,
                 charEncoding: "percent",
             }),
-            enc$.encodeDeepObject("proxy", payload$.proxy, { charEncoding: "percent" }),
+            enc$.encodeForm("proxy", payload$.proxy, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("raw", payload$.raw, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("sync_token", payload$.sync_token, {
                 explode: true,
@@ -1026,12 +1035,13 @@ export class Hris extends ClientSDK {
 
         const query$ = [
             enc$.encodeForm("fields", payload$.fields, { explode: true, charEncoding: "percent" }),
+            enc$.encodeForm("next", payload$.next, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("page", payload$.page, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("page_size", payload$.page_size, {
                 explode: true,
                 charEncoding: "percent",
             }),
-            enc$.encodeDeepObject("proxy", payload$.proxy, { charEncoding: "percent" }),
+            enc$.encodeForm("proxy", payload$.proxy, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("raw", payload$.raw, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("sync_token", payload$.sync_token, {
                 explode: true,
@@ -1108,12 +1118,13 @@ export class Hris extends ClientSDK {
 
         const query$ = [
             enc$.encodeForm("fields", payload$.fields, { explode: true, charEncoding: "percent" }),
+            enc$.encodeForm("next", payload$.next, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("page", payload$.page, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("page_size", payload$.page_size, {
                 explode: true,
                 charEncoding: "percent",
             }),
-            enc$.encodeDeepObject("proxy", payload$.proxy, { charEncoding: "percent" }),
+            enc$.encodeForm("proxy", payload$.proxy, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("raw", payload$.raw, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("sync_token", payload$.sync_token, {
                 explode: true,
@@ -1190,12 +1201,13 @@ export class Hris extends ClientSDK {
 
         const query$ = [
             enc$.encodeForm("fields", payload$.fields, { explode: true, charEncoding: "percent" }),
+            enc$.encodeForm("next", payload$.next, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("page", payload$.page, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("page_size", payload$.page_size, {
                 explode: true,
                 charEncoding: "percent",
             }),
-            enc$.encodeDeepObject("proxy", payload$.proxy, { charEncoding: "percent" }),
+            enc$.encodeForm("proxy", payload$.proxy, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("raw", payload$.raw, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("sync_token", payload$.sync_token, {
                 explode: true,

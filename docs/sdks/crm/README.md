@@ -97,9 +97,7 @@ async function run() {
 
   const res = await sdk.crm.getAccount({
     id: "<ID>",
-    proxy: {
-      "key": "string",
-    },
+    proxy: {},
     xAccountId: "string",
   });
 
@@ -149,9 +147,7 @@ async function run() {
 
   const res = await sdk.crm.getContact({
     id: "<ID>",
-    proxy: {
-      "key": "string",
-    },
+    proxy: {},
     xAccountId: "string",
   });
 
@@ -201,9 +197,7 @@ async function run() {
 
   const res = await sdk.crm.getList({
     id: "<ID>",
-    proxy: {
-      "key": "string",
-    },
+    proxy: {},
     xAccountId: "string",
   });
 
@@ -252,9 +246,7 @@ async function run() {
   });
 
   const res = await sdk.crm.listAccounts({
-    proxy: {
-      "key": "string",
-    },
+    proxy: {},
     xAccountId: "string",
   });
 
@@ -303,9 +295,7 @@ async function run() {
   });
 
   const res = await sdk.crm.listContacts({
-    proxy: {
-      "key": "string",
-    },
+    proxy: {},
     xAccountId: "string",
   });
 
@@ -354,9 +344,7 @@ async function run() {
   });
 
   const res = await sdk.crm.listLists({
-    proxy: {
-      "key": "string",
-    },
+    proxy: {},
     xAccountId: "string",
   });
 

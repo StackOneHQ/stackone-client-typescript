@@ -5,11 +5,20 @@
 import * as shared from "../../../sdk/models/shared";
 import { z } from "zod";
 
+/**
+ * Query parameters that can be used to pass through parameters to the underlying provider request by surrounding them with "proxy" key
+ */
+export type AtsListOffersQueryParamProxy = {};
+
 export type AtsListOffersRequest = {
     /**
      * The comma separated list of fields to return in the response (if empty, all fields are returned)
      */
     fields?: string | null | undefined;
+    /**
+     * The unified cursor
+     */
+    next?: string | null | undefined;
     /**
      * The page number of the results to fetch
      *
@@ -23,7 +32,7 @@ export type AtsListOffersRequest = {
     /**
      * Query parameters that can be used to pass through parameters to the underlying provider request by surrounding them with "proxy" key
      */
-    proxy?: Record<string, any> | undefined;
+    proxy?: AtsListOffersQueryParamProxy | undefined;
     /**
      * Indicates that the raw request result is returned
      */
@@ -62,12 +71,26 @@ export type AtsListOffersResponse = {
 };
 
 /** @internal */
+export namespace AtsListOffersQueryParamProxy$ {
+    export type Inbound = {};
+
+    export const inboundSchema: z.ZodType<AtsListOffersQueryParamProxy, z.ZodTypeDef, Inbound> =
+        z.object({});
+
+    export type Outbound = {};
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, AtsListOffersQueryParamProxy> =
+        z.object({});
+}
+
+/** @internal */
 export namespace AtsListOffersRequest$ {
     export type Inbound = {
         fields?: string | null | undefined;
+        next?: string | null | undefined;
         page?: string | null | undefined;
         page_size?: string | null | undefined;
-        proxy?: Record<string, any> | undefined;
+        proxy?: AtsListOffersQueryParamProxy$.Inbound | undefined;
         raw?: boolean | null | undefined;
         sync_token?: string | null | undefined;
         updated_after?: string | null | undefined;
@@ -77,9 +100,10 @@ export namespace AtsListOffersRequest$ {
     export const inboundSchema: z.ZodType<AtsListOffersRequest, z.ZodTypeDef, Inbound> = z
         .object({
             fields: z.string().nullable().optional(),
+            next: z.string().nullable().optional(),
             page: z.string().nullable().optional(),
             page_size: z.string().nullable().optional(),
-            proxy: z.record(z.any()).optional(),
+            proxy: z.lazy(() => AtsListOffersQueryParamProxy$.inboundSchema).optional(),
             raw: z.boolean().nullable().optional(),
             sync_token: z.string().nullable().optional(),
             updated_after: z.string().nullable().optional(),
@@ -88,6 +112,7 @@ export namespace AtsListOffersRequest$ {
         .transform((v) => {
             return {
                 ...(v.fields === undefined ? null : { fields: v.fields }),
+                ...(v.next === undefined ? null : { next: v.next }),
                 ...(v.page === undefined ? null : { page: v.page }),
                 ...(v.page_size === undefined ? null : { pageSize: v.page_size }),
                 ...(v.proxy === undefined ? null : { proxy: v.proxy }),
@@ -100,9 +125,10 @@ export namespace AtsListOffersRequest$ {
 
     export type Outbound = {
         fields?: string | null | undefined;
+        next?: string | null | undefined;
         page?: string | null | undefined;
         page_size?: string | null | undefined;
-        proxy?: Record<string, any> | undefined;
+        proxy?: AtsListOffersQueryParamProxy$.Outbound | undefined;
         raw?: boolean | null | undefined;
         sync_token?: string | null | undefined;
         updated_after?: string | null | undefined;
@@ -112,9 +138,10 @@ export namespace AtsListOffersRequest$ {
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, AtsListOffersRequest> = z
         .object({
             fields: z.string().nullable().optional(),
+            next: z.string().nullable().optional(),
             page: z.string().nullable().optional(),
             pageSize: z.string().nullable().optional(),
-            proxy: z.record(z.any()).optional(),
+            proxy: z.lazy(() => AtsListOffersQueryParamProxy$.outboundSchema).optional(),
             raw: z.boolean().nullable().optional(),
             syncToken: z.string().nullable().optional(),
             updatedAfter: z.string().nullable().optional(),
@@ -123,6 +150,7 @@ export namespace AtsListOffersRequest$ {
         .transform((v) => {
             return {
                 ...(v.fields === undefined ? null : { fields: v.fields }),
+                ...(v.next === undefined ? null : { next: v.next }),
                 ...(v.page === undefined ? null : { page: v.page }),
                 ...(v.pageSize === undefined ? null : { page_size: v.pageSize }),
                 ...(v.proxy === undefined ? null : { proxy: v.proxy }),
