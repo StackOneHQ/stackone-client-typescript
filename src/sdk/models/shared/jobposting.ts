@@ -3,19 +3,60 @@
  */
 
 import { Compensation, Compensation$ } from "./compensation";
-import {
-    EmploymentContractTypeEnum,
-    EmploymentContractTypeEnum$,
-} from "./employmentcontracttypeenum";
-import { EmploymentTypeEnum, EmploymentTypeEnum$ } from "./employmenttypeenum";
-import { JobPostingStatusEnum, JobPostingStatusEnum$ } from "./jobpostingstatusenum";
 import { Location, Location$ } from "./location";
 import { Questionnaire, Questionnaire$ } from "./questionnaire";
 import { z } from "zod";
 
 export type Content = {
-    html?: string | undefined;
-    plain?: string | undefined;
+    html?: string | null | undefined;
+    plain?: string | null | undefined;
+};
+
+/**
+ * The employment contract type.
+ */
+export enum JobPostingValue {
+    FullTime = "full_time",
+    Shifts = "shifts",
+    PartTime = "part_time",
+    UnmappedValue = "unmapped_value",
+}
+
+export type JobPostingEmploymentContractType = {
+    /**
+     * The source value of the employment contract type.
+     */
+    sourceValue: string;
+    /**
+     * The employment contract type.
+     */
+    value: JobPostingValue;
+};
+
+/**
+ * The type of the employment.
+ */
+export enum JobPostingSchemasValue {
+    Permanent = "permanent",
+    Contractor = "contractor",
+    Intern = "intern",
+    Apprentice = "apprentice",
+    Freelance = "freelance",
+    Temporary = "temporary",
+    Seasonal = "seasonal",
+    Volunteer = "volunteer",
+    UnmappedValue = "unmapped_value",
+}
+
+export type JobPostingEmploymentType = {
+    /**
+     * The source value of the employment type.
+     */
+    sourceValue: string;
+    /**
+     * The type of the employment.
+     */
+    value: JobPostingSchemasValue;
 };
 
 export enum Internal {
@@ -23,41 +64,62 @@ export enum Internal {
     False = "false",
 }
 
+/**
+ * The status of the job postings.
+ */
+export enum JobPostingSchemasStatusValue {
+    Live = "live",
+    Draft = "draft",
+    Closed = "closed",
+    UnmappedValue = "unmapped_value",
+}
+
+export type JobPostingStatus = {
+    /**
+     * The source value of the job postings status.
+     */
+    sourceValue: string;
+    /**
+     * The status of the job postings.
+     */
+    value: JobPostingSchemasStatusValue;
+};
+
 export type JobPosting = {
-    compensation?: Array<Compensation> | undefined;
-    content?: Content | undefined;
+    compensation?: Array<Compensation> | null | undefined;
+    content?: Content | null | undefined;
     /**
      * Date of creation
      */
-    createdAt?: Date | undefined;
-    employmentContractType?: EmploymentContractTypeEnum | undefined;
-    employmentType?: EmploymentTypeEnum | undefined;
-    externalApplyUrl?: string | undefined;
-    externalUrl?: string | undefined;
+    createdAt?: Date | null | undefined;
+    employmentContractType?: JobPostingEmploymentContractType | null | undefined;
+    employmentType?: JobPostingEmploymentType | null | undefined;
+    externalApplyUrl?: string | null | undefined;
+    externalUrl?: string | null | undefined;
     id: string;
-    internal?: Internal | undefined;
-    jobId?: string | undefined;
-    locations?: Array<Location> | undefined;
-    questionnaires?: Array<Questionnaire> | undefined;
-    status?: JobPostingStatusEnum | undefined;
-    title?: string | undefined;
+    internal?: Internal | null | undefined;
+    jobId?: string | null | undefined;
+    locations?: Array<Location> | null | undefined;
+    questionnaires?: Array<Questionnaire> | null | undefined;
+    status?: JobPostingStatus | null | undefined;
+    title?: string | null | undefined;
     /**
      * Date of last update
      */
-    updatedAt?: Date | undefined;
+    updatedAt?: Date | null | undefined;
 };
 
 /** @internal */
 export namespace Content$ {
     export type Inbound = {
-        html?: string | undefined;
-        plain?: string | undefined;
+        html?: string | null | undefined;
+        plain?: string | null | undefined;
     };
 
     export const inboundSchema: z.ZodType<Content, z.ZodTypeDef, Inbound> = z
         .object({
-            html: z.string().optional(),
-            plain: z.string().optional(),
+            html: z.string().nullable().optional(),
+            plain: z.string().nullable().optional(),
         })
         .transform((v) => {
             return {
@@ -67,14 +129,14 @@ export namespace Content$ {
         });
 
     export type Outbound = {
-        html?: string | undefined;
-        plain?: string | undefined;
+        html?: string | null | undefined;
+        plain?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Content> = z
         .object({
-            html: z.string().optional(),
-            plain: z.string().optional(),
+            html: z.string().nullable().optional(),
+            plain: z.string().nullable().optional(),
         })
         .transform((v) => {
             return {
@@ -85,52 +147,191 @@ export namespace Content$ {
 }
 
 /** @internal */
+export const JobPostingValue$ = z.nativeEnum(JobPostingValue);
+
+/** @internal */
+export namespace JobPostingEmploymentContractType$ {
+    export type Inbound = {
+        source_value: string;
+        value: JobPostingValue;
+    };
+
+    export const inboundSchema: z.ZodType<JobPostingEmploymentContractType, z.ZodTypeDef, Inbound> =
+        z
+            .object({
+                source_value: z.string(),
+                value: JobPostingValue$,
+            })
+            .transform((v) => {
+                return {
+                    sourceValue: v.source_value,
+                    value: v.value,
+                };
+            });
+
+    export type Outbound = {
+        source_value: string;
+        value: JobPostingValue;
+    };
+
+    export const outboundSchema: z.ZodType<
+        Outbound,
+        z.ZodTypeDef,
+        JobPostingEmploymentContractType
+    > = z
+        .object({
+            sourceValue: z.string(),
+            value: JobPostingValue$,
+        })
+        .transform((v) => {
+            return {
+                source_value: v.sourceValue,
+                value: v.value,
+            };
+        });
+}
+
+/** @internal */
+export const JobPostingSchemasValue$ = z.nativeEnum(JobPostingSchemasValue);
+
+/** @internal */
+export namespace JobPostingEmploymentType$ {
+    export type Inbound = {
+        source_value: string;
+        value: JobPostingSchemasValue;
+    };
+
+    export const inboundSchema: z.ZodType<JobPostingEmploymentType, z.ZodTypeDef, Inbound> = z
+        .object({
+            source_value: z.string(),
+            value: JobPostingSchemasValue$,
+        })
+        .transform((v) => {
+            return {
+                sourceValue: v.source_value,
+                value: v.value,
+            };
+        });
+
+    export type Outbound = {
+        source_value: string;
+        value: JobPostingSchemasValue;
+    };
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, JobPostingEmploymentType> = z
+        .object({
+            sourceValue: z.string(),
+            value: JobPostingSchemasValue$,
+        })
+        .transform((v) => {
+            return {
+                source_value: v.sourceValue,
+                value: v.value,
+            };
+        });
+}
+
+/** @internal */
 export const Internal$ = z.nativeEnum(Internal);
+
+/** @internal */
+export const JobPostingSchemasStatusValue$ = z.nativeEnum(JobPostingSchemasStatusValue);
+
+/** @internal */
+export namespace JobPostingStatus$ {
+    export type Inbound = {
+        source_value: string;
+        value: JobPostingSchemasStatusValue;
+    };
+
+    export const inboundSchema: z.ZodType<JobPostingStatus, z.ZodTypeDef, Inbound> = z
+        .object({
+            source_value: z.string(),
+            value: JobPostingSchemasStatusValue$,
+        })
+        .transform((v) => {
+            return {
+                sourceValue: v.source_value,
+                value: v.value,
+            };
+        });
+
+    export type Outbound = {
+        source_value: string;
+        value: JobPostingSchemasStatusValue;
+    };
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, JobPostingStatus> = z
+        .object({
+            sourceValue: z.string(),
+            value: JobPostingSchemasStatusValue$,
+        })
+        .transform((v) => {
+            return {
+                source_value: v.sourceValue,
+                value: v.value,
+            };
+        });
+}
 
 /** @internal */
 export namespace JobPosting$ {
     export type Inbound = {
-        compensation?: Array<Compensation$.Inbound> | undefined;
-        content?: Content$.Inbound | undefined;
-        created_at?: string | undefined;
-        employment_contract_type?: EmploymentContractTypeEnum$.Inbound | undefined;
-        employment_type?: EmploymentTypeEnum$.Inbound | undefined;
-        external_apply_url?: string | undefined;
-        external_url?: string | undefined;
+        compensation?: Array<Compensation$.Inbound> | null | undefined;
+        content?: Content$.Inbound | null | undefined;
+        created_at?: string | null | undefined;
+        employment_contract_type?: JobPostingEmploymentContractType$.Inbound | null | undefined;
+        employment_type?: JobPostingEmploymentType$.Inbound | null | undefined;
+        external_apply_url?: string | null | undefined;
+        external_url?: string | null | undefined;
         id: string;
-        internal?: Internal | undefined;
-        job_id?: string | undefined;
-        locations?: Array<Location$.Inbound> | undefined;
-        questionnaires?: Array<Questionnaire$.Inbound> | undefined;
-        status?: JobPostingStatusEnum$.Inbound | undefined;
-        title?: string | undefined;
-        updated_at?: string | undefined;
+        internal?: Internal | null | undefined;
+        job_id?: string | null | undefined;
+        locations?: Array<Location$.Inbound> | null | undefined;
+        questionnaires?: Array<Questionnaire$.Inbound> | null | undefined;
+        status?: JobPostingStatus$.Inbound | null | undefined;
+        title?: string | null | undefined;
+        updated_at?: string | null | undefined;
     };
 
     export const inboundSchema: z.ZodType<JobPosting, z.ZodTypeDef, Inbound> = z
         .object({
-            compensation: z.array(Compensation$.inboundSchema).optional(),
-            content: z.lazy(() => Content$.inboundSchema).optional(),
+            compensation: z.array(Compensation$.inboundSchema).nullable().optional(),
+            content: z
+                .lazy(() => Content$.inboundSchema)
+                .nullable()
+                .optional(),
             created_at: z
                 .string()
                 .datetime({ offset: true })
                 .transform((v) => new Date(v))
+                .nullable()
                 .optional(),
-            employment_contract_type: EmploymentContractTypeEnum$.inboundSchema.optional(),
-            employment_type: EmploymentTypeEnum$.inboundSchema.optional(),
-            external_apply_url: z.string().optional(),
-            external_url: z.string().optional(),
+            employment_contract_type: z
+                .lazy(() => JobPostingEmploymentContractType$.inboundSchema)
+                .nullable()
+                .optional(),
+            employment_type: z
+                .lazy(() => JobPostingEmploymentType$.inboundSchema)
+                .nullable()
+                .optional(),
+            external_apply_url: z.string().nullable().optional(),
+            external_url: z.string().nullable().optional(),
             id: z.string(),
-            internal: Internal$.optional(),
-            job_id: z.string().optional(),
-            locations: z.array(Location$.inboundSchema).optional(),
-            questionnaires: z.array(Questionnaire$.inboundSchema).optional(),
-            status: JobPostingStatusEnum$.inboundSchema.optional(),
-            title: z.string().optional(),
+            internal: Internal$.nullable().optional(),
+            job_id: z.string().nullable().optional(),
+            locations: z.array(Location$.inboundSchema).nullable().optional(),
+            questionnaires: z.array(Questionnaire$.inboundSchema).nullable().optional(),
+            status: z
+                .lazy(() => JobPostingStatus$.inboundSchema)
+                .nullable()
+                .optional(),
+            title: z.string().nullable().optional(),
             updated_at: z
                 .string()
                 .datetime({ offset: true })
                 .transform((v) => new Date(v))
+                .nullable()
                 .optional(),
         })
         .transform((v) => {
@@ -158,45 +359,59 @@ export namespace JobPosting$ {
         });
 
     export type Outbound = {
-        compensation?: Array<Compensation$.Outbound> | undefined;
-        content?: Content$.Outbound | undefined;
-        created_at?: string | undefined;
-        employment_contract_type?: EmploymentContractTypeEnum$.Outbound | undefined;
-        employment_type?: EmploymentTypeEnum$.Outbound | undefined;
-        external_apply_url?: string | undefined;
-        external_url?: string | undefined;
+        compensation?: Array<Compensation$.Outbound> | null | undefined;
+        content?: Content$.Outbound | null | undefined;
+        created_at?: string | null | undefined;
+        employment_contract_type?: JobPostingEmploymentContractType$.Outbound | null | undefined;
+        employment_type?: JobPostingEmploymentType$.Outbound | null | undefined;
+        external_apply_url?: string | null | undefined;
+        external_url?: string | null | undefined;
         id: string;
-        internal?: Internal | undefined;
-        job_id?: string | undefined;
-        locations?: Array<Location$.Outbound> | undefined;
-        questionnaires?: Array<Questionnaire$.Outbound> | undefined;
-        status?: JobPostingStatusEnum$.Outbound | undefined;
-        title?: string | undefined;
-        updated_at?: string | undefined;
+        internal?: Internal | null | undefined;
+        job_id?: string | null | undefined;
+        locations?: Array<Location$.Outbound> | null | undefined;
+        questionnaires?: Array<Questionnaire$.Outbound> | null | undefined;
+        status?: JobPostingStatus$.Outbound | null | undefined;
+        title?: string | null | undefined;
+        updated_at?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, JobPosting> = z
         .object({
-            compensation: z.array(Compensation$.outboundSchema).optional(),
-            content: z.lazy(() => Content$.outboundSchema).optional(),
+            compensation: z.array(Compensation$.outboundSchema).nullable().optional(),
+            content: z
+                .lazy(() => Content$.outboundSchema)
+                .nullable()
+                .optional(),
             createdAt: z
                 .date()
                 .transform((v) => v.toISOString())
+                .nullable()
                 .optional(),
-            employmentContractType: EmploymentContractTypeEnum$.outboundSchema.optional(),
-            employmentType: EmploymentTypeEnum$.outboundSchema.optional(),
-            externalApplyUrl: z.string().optional(),
-            externalUrl: z.string().optional(),
+            employmentContractType: z
+                .lazy(() => JobPostingEmploymentContractType$.outboundSchema)
+                .nullable()
+                .optional(),
+            employmentType: z
+                .lazy(() => JobPostingEmploymentType$.outboundSchema)
+                .nullable()
+                .optional(),
+            externalApplyUrl: z.string().nullable().optional(),
+            externalUrl: z.string().nullable().optional(),
             id: z.string(),
-            internal: Internal$.optional(),
-            jobId: z.string().optional(),
-            locations: z.array(Location$.outboundSchema).optional(),
-            questionnaires: z.array(Questionnaire$.outboundSchema).optional(),
-            status: JobPostingStatusEnum$.outboundSchema.optional(),
-            title: z.string().optional(),
+            internal: Internal$.nullable().optional(),
+            jobId: z.string().nullable().optional(),
+            locations: z.array(Location$.outboundSchema).nullable().optional(),
+            questionnaires: z.array(Questionnaire$.outboundSchema).nullable().optional(),
+            status: z
+                .lazy(() => JobPostingStatus$.outboundSchema)
+                .nullable()
+                .optional(),
+            title: z.string().nullable().optional(),
             updatedAt: z
                 .date()
                 .transform((v) => v.toISOString())
+                .nullable()
                 .optional(),
         })
         .transform((v) => {

@@ -8,24 +8,24 @@ export type Template = {
     /**
      * Date of creation
      */
-    createdAt?: Date | undefined;
-    id?: string | undefined;
-    name?: string | undefined;
-    tags?: Array<string> | undefined;
+    createdAt?: Date | null | undefined;
+    id?: string | null | undefined;
+    name?: string | null | undefined;
+    tags?: Array<string> | null | undefined;
     /**
      * Date of last update
      */
-    updatedAt?: Date | undefined;
+    updatedAt?: Date | null | undefined;
 };
 
 /** @internal */
 export namespace Template$ {
     export type Inbound = {
-        created_at?: string | undefined;
-        id?: string | undefined;
-        name?: string | undefined;
-        tags?: Array<string> | undefined;
-        updated_at?: string | undefined;
+        created_at?: string | null | undefined;
+        id?: string | null | undefined;
+        name?: string | null | undefined;
+        tags?: Array<string> | null | undefined;
+        updated_at?: string | null | undefined;
     };
 
     export const inboundSchema: z.ZodType<Template, z.ZodTypeDef, Inbound> = z
@@ -34,14 +34,16 @@ export namespace Template$ {
                 .string()
                 .datetime({ offset: true })
                 .transform((v) => new Date(v))
+                .nullable()
                 .optional(),
-            id: z.string().optional(),
-            name: z.string().optional(),
-            tags: z.array(z.string()).optional(),
+            id: z.string().nullable().optional(),
+            name: z.string().nullable().optional(),
+            tags: z.array(z.string()).nullable().optional(),
             updated_at: z
                 .string()
                 .datetime({ offset: true })
                 .transform((v) => new Date(v))
+                .nullable()
                 .optional(),
         })
         .transform((v) => {
@@ -55,11 +57,11 @@ export namespace Template$ {
         });
 
     export type Outbound = {
-        created_at?: string | undefined;
-        id?: string | undefined;
-        name?: string | undefined;
-        tags?: Array<string> | undefined;
-        updated_at?: string | undefined;
+        created_at?: string | null | undefined;
+        id?: string | null | undefined;
+        name?: string | null | undefined;
+        tags?: Array<string> | null | undefined;
+        updated_at?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Template> = z
@@ -67,13 +69,15 @@ export namespace Template$ {
             createdAt: z
                 .date()
                 .transform((v) => v.toISOString())
+                .nullable()
                 .optional(),
-            id: z.string().optional(),
-            name: z.string().optional(),
-            tags: z.array(z.string()).optional(),
+            id: z.string().nullable().optional(),
+            name: z.string().nullable().optional(),
+            tags: z.array(z.string()).nullable().optional(),
             updatedAt: z
                 .date()
                 .transform((v) => v.toISOString())
+                .nullable()
                 .optional(),
         })
         .transform((v) => {

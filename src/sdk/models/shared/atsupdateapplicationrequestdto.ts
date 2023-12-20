@@ -19,29 +19,29 @@ export type AtsUpdateApplicationRequestDtoQuestionnaire = {
     /**
      * Unique identifier of the questionnaire
      */
-    id?: string | undefined;
+    id?: string | null | undefined;
 };
 
 export type AtsUpdateApplicationRequestDto = {
     applicationStatus?: ApplicationStatusEnumApiModel | undefined;
-    attachments?: Array<ApplicationAttachment> | undefined;
+    attachments?: Array<ApplicationAttachment> | null | undefined;
     candidate?: ApplicationCandidate | undefined;
     /**
      * Unique identifier of the candidate
      */
-    candidateId?: string | undefined;
+    candidateId?: string | null | undefined;
     /**
      * The ID of the application to update.
      */
-    id?: string | undefined;
+    id?: string | null | undefined;
     /**
      * Unique identifier of the job
      */
-    jobId?: string | undefined;
+    jobId?: string | null | undefined;
     /**
      * Unique identifiers of the locations
      */
-    locationIds?: Array<string> | undefined;
+    locationIds?: Array<string> | null | undefined;
     /**
      * Questionnaire associated with the application
      */
@@ -52,7 +52,7 @@ export type AtsUpdateApplicationRequestDto = {
 export namespace AtsUpdateApplicationRequestDtoQuestionnaire$ {
     export type Inbound = {
         answers: Array<Answer$.Inbound>;
-        id?: string | undefined;
+        id?: string | null | undefined;
     };
 
     export const inboundSchema: z.ZodType<
@@ -62,7 +62,7 @@ export namespace AtsUpdateApplicationRequestDtoQuestionnaire$ {
     > = z
         .object({
             answers: z.array(Answer$.inboundSchema),
-            id: z.string().optional(),
+            id: z.string().nullable().optional(),
         })
         .transform((v) => {
             return {
@@ -73,7 +73,7 @@ export namespace AtsUpdateApplicationRequestDtoQuestionnaire$ {
 
     export type Outbound = {
         answers: Array<Answer$.Outbound>;
-        id?: string | undefined;
+        id?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<
@@ -83,7 +83,7 @@ export namespace AtsUpdateApplicationRequestDtoQuestionnaire$ {
     > = z
         .object({
             answers: z.array(Answer$.outboundSchema),
-            id: z.string().optional(),
+            id: z.string().nullable().optional(),
         })
         .transform((v) => {
             return {
@@ -97,24 +97,24 @@ export namespace AtsUpdateApplicationRequestDtoQuestionnaire$ {
 export namespace AtsUpdateApplicationRequestDto$ {
     export type Inbound = {
         application_status?: ApplicationStatusEnumApiModel$.Inbound | undefined;
-        attachments?: Array<ApplicationAttachment$.Inbound> | undefined;
+        attachments?: Array<ApplicationAttachment$.Inbound> | null | undefined;
         candidate?: ApplicationCandidate$.Inbound | undefined;
-        candidate_id?: string | undefined;
-        id?: string | undefined;
-        job_id?: string | undefined;
-        location_ids?: Array<string> | undefined;
+        candidate_id?: string | null | undefined;
+        id?: string | null | undefined;
+        job_id?: string | null | undefined;
+        location_ids?: Array<string> | null | undefined;
         questionnaire?: AtsUpdateApplicationRequestDtoQuestionnaire$.Inbound | undefined;
     };
 
     export const inboundSchema: z.ZodType<AtsUpdateApplicationRequestDto, z.ZodTypeDef, Inbound> = z
         .object({
             application_status: ApplicationStatusEnumApiModel$.inboundSchema.optional(),
-            attachments: z.array(ApplicationAttachment$.inboundSchema).optional(),
+            attachments: z.array(ApplicationAttachment$.inboundSchema).nullable().optional(),
             candidate: ApplicationCandidate$.inboundSchema.optional(),
-            candidate_id: z.string().optional(),
-            id: z.string().optional(),
-            job_id: z.string().optional(),
-            location_ids: z.array(z.string()).optional(),
+            candidate_id: z.string().nullable().optional(),
+            id: z.string().nullable().optional(),
+            job_id: z.string().nullable().optional(),
+            location_ids: z.array(z.string()).nullable().optional(),
             questionnaire: z
                 .lazy(() => AtsUpdateApplicationRequestDtoQuestionnaire$.inboundSchema)
                 .optional(),
@@ -136,12 +136,12 @@ export namespace AtsUpdateApplicationRequestDto$ {
 
     export type Outbound = {
         application_status?: ApplicationStatusEnumApiModel$.Outbound | undefined;
-        attachments?: Array<ApplicationAttachment$.Outbound> | undefined;
+        attachments?: Array<ApplicationAttachment$.Outbound> | null | undefined;
         candidate?: ApplicationCandidate$.Outbound | undefined;
-        candidate_id?: string | undefined;
-        id?: string | undefined;
-        job_id?: string | undefined;
-        location_ids?: Array<string> | undefined;
+        candidate_id?: string | null | undefined;
+        id?: string | null | undefined;
+        job_id?: string | null | undefined;
+        location_ids?: Array<string> | null | undefined;
         questionnaire?: AtsUpdateApplicationRequestDtoQuestionnaire$.Outbound | undefined;
     };
 
@@ -149,12 +149,12 @@ export namespace AtsUpdateApplicationRequestDto$ {
         z
             .object({
                 applicationStatus: ApplicationStatusEnumApiModel$.outboundSchema.optional(),
-                attachments: z.array(ApplicationAttachment$.outboundSchema).optional(),
+                attachments: z.array(ApplicationAttachment$.outboundSchema).nullable().optional(),
                 candidate: ApplicationCandidate$.outboundSchema.optional(),
-                candidateId: z.string().optional(),
-                id: z.string().optional(),
-                jobId: z.string().optional(),
-                locationIds: z.array(z.string()).optional(),
+                candidateId: z.string().nullable().optional(),
+                id: z.string().nullable().optional(),
+                jobId: z.string().nullable().optional(),
+                locationIds: z.array(z.string()).nullable().optional(),
                 questionnaire: z
                     .lazy(() => AtsUpdateApplicationRequestDtoQuestionnaire$.outboundSchema)
                     .optional(),

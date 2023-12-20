@@ -8,48 +8,58 @@ import { z } from "zod";
 
 export type JobsPaginated = {
     data: Array<Job>;
-    nextPage: string;
-    raw?: Array<RawResponse> | undefined;
+    next?: string | null | undefined;
+    /**
+     * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+     */
+    nextPage?: string | null | undefined;
+    raw?: Array<RawResponse> | null | undefined;
 };
 
 /** @internal */
 export namespace JobsPaginated$ {
     export type Inbound = {
         data: Array<Job$.Inbound>;
-        next_page: string;
-        raw?: Array<RawResponse$.Inbound> | undefined;
+        next?: string | null | undefined;
+        next_page?: string | null | undefined;
+        raw?: Array<RawResponse$.Inbound> | null | undefined;
     };
 
     export const inboundSchema: z.ZodType<JobsPaginated, z.ZodTypeDef, Inbound> = z
         .object({
             data: z.array(Job$.inboundSchema),
-            next_page: z.string(),
-            raw: z.array(RawResponse$.inboundSchema).optional(),
+            next: z.string().nullable().optional(),
+            next_page: z.string().nullable().optional(),
+            raw: z.array(RawResponse$.inboundSchema).nullable().optional(),
         })
         .transform((v) => {
             return {
                 data: v.data,
-                nextPage: v.next_page,
+                ...(v.next === undefined ? null : { next: v.next }),
+                ...(v.next_page === undefined ? null : { nextPage: v.next_page }),
                 ...(v.raw === undefined ? null : { raw: v.raw }),
             };
         });
 
     export type Outbound = {
         data: Array<Job$.Outbound>;
-        next_page: string;
-        raw?: Array<RawResponse$.Outbound> | undefined;
+        next?: string | null | undefined;
+        next_page?: string | null | undefined;
+        raw?: Array<RawResponse$.Outbound> | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, JobsPaginated> = z
         .object({
             data: z.array(Job$.outboundSchema),
-            nextPage: z.string(),
-            raw: z.array(RawResponse$.outboundSchema).optional(),
+            next: z.string().nullable().optional(),
+            nextPage: z.string().nullable().optional(),
+            raw: z.array(RawResponse$.outboundSchema).nullable().optional(),
         })
         .transform((v) => {
             return {
                 data: v.data,
-                next_page: v.nextPage,
+                ...(v.next === undefined ? null : { next: v.next }),
+                ...(v.nextPage === undefined ? null : { next_page: v.nextPage }),
                 ...(v.raw === undefined ? null : { raw: v.raw }),
             };
         });

@@ -9,20 +9,22 @@ export type AtsGetJobPostingRequest = {
     /**
      * The comma separated list of fields to return in the response (if empty, all fields are returned)
      */
-    fields?: string | undefined;
+    fields?: string | null | undefined;
     id: string;
     /**
      * The comma separated list of fields that will be included in the response
      */
-    include?: string | undefined;
+    include?: string | null | undefined;
     /**
      * The page number of the results to fetch
+     *
+     * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
      */
-    page?: string | undefined;
+    page?: string | null | undefined;
     /**
      * The number of results per page
      */
-    pageSize?: string | undefined;
+    pageSize?: string | null | undefined;
     /**
      * Query parameters that can be used to pass through parameters to the underlying provider request by surrounding them with "proxy" key
      */
@@ -30,15 +32,15 @@ export type AtsGetJobPostingRequest = {
     /**
      * Indicates that the raw request result is returned
      */
-    raw?: boolean | undefined;
+    raw?: boolean | null | undefined;
     /**
      * The sync token to select the only updated results
      */
-    syncToken?: string | undefined;
+    syncToken?: string | null | undefined;
     /**
      * Use a string with a date to only select results updated after that given date
      */
-    updatedAfter?: string | undefined;
+    updatedAfter?: string | null | undefined;
     /**
      * The account identifier
      */
@@ -67,29 +69,29 @@ export type AtsGetJobPostingResponse = {
 /** @internal */
 export namespace AtsGetJobPostingRequest$ {
     export type Inbound = {
-        fields?: string | undefined;
+        fields?: string | null | undefined;
         id: string;
-        include?: string | undefined;
-        page?: string | undefined;
-        page_size?: string | undefined;
+        include?: string | null | undefined;
+        page?: string | null | undefined;
+        page_size?: string | null | undefined;
         proxy?: Record<string, any> | undefined;
-        raw?: boolean | undefined;
-        sync_token?: string | undefined;
-        updated_after?: string | undefined;
+        raw?: boolean | null | undefined;
+        sync_token?: string | null | undefined;
+        updated_after?: string | null | undefined;
         "x-account-id": string;
     };
 
     export const inboundSchema: z.ZodType<AtsGetJobPostingRequest, z.ZodTypeDef, Inbound> = z
         .object({
-            fields: z.string().optional(),
+            fields: z.string().nullable().optional(),
             id: z.string(),
-            include: z.string().optional(),
-            page: z.string().optional(),
-            page_size: z.string().optional(),
+            include: z.string().nullable().optional(),
+            page: z.string().nullable().optional(),
+            page_size: z.string().nullable().optional(),
             proxy: z.record(z.any()).optional(),
-            raw: z.boolean().optional(),
-            sync_token: z.string().optional(),
-            updated_after: z.string().optional(),
+            raw: z.boolean().nullable().optional(),
+            sync_token: z.string().nullable().optional(),
+            updated_after: z.string().nullable().optional(),
             "x-account-id": z.string(),
         })
         .transform((v) => {
@@ -108,29 +110,29 @@ export namespace AtsGetJobPostingRequest$ {
         });
 
     export type Outbound = {
-        fields?: string | undefined;
+        fields?: string | null | undefined;
         id: string;
-        include?: string | undefined;
-        page?: string | undefined;
-        page_size?: string | undefined;
+        include?: string | null | undefined;
+        page?: string | null | undefined;
+        page_size?: string | null | undefined;
         proxy?: Record<string, any> | undefined;
-        raw?: boolean | undefined;
-        sync_token?: string | undefined;
-        updated_after?: string | undefined;
+        raw?: boolean | null | undefined;
+        sync_token?: string | null | undefined;
+        updated_after?: string | null | undefined;
         "x-account-id": string;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, AtsGetJobPostingRequest> = z
         .object({
-            fields: z.string().optional(),
+            fields: z.string().nullable().optional(),
             id: z.string(),
-            include: z.string().optional(),
-            page: z.string().optional(),
-            pageSize: z.string().optional(),
+            include: z.string().nullable().optional(),
+            page: z.string().nullable().optional(),
+            pageSize: z.string().nullable().optional(),
             proxy: z.record(z.any()).optional(),
-            raw: z.boolean().optional(),
-            syncToken: z.string().optional(),
-            updatedAfter: z.string().optional(),
+            raw: z.boolean().nullable().optional(),
+            syncToken: z.string().nullable().optional(),
+            updatedAfter: z.string().nullable().optional(),
             xAccountId: z.string(),
         })
         .transform((v) => {

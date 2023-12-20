@@ -8,20 +8,20 @@ import { z } from "zod";
 
 export type EmploymentResult = {
     data: Employment;
-    raw?: Array<RawResponse> | undefined;
+    raw?: Array<RawResponse> | null | undefined;
 };
 
 /** @internal */
 export namespace EmploymentResult$ {
     export type Inbound = {
         data: Employment$.Inbound;
-        raw?: Array<RawResponse$.Inbound> | undefined;
+        raw?: Array<RawResponse$.Inbound> | null | undefined;
     };
 
     export const inboundSchema: z.ZodType<EmploymentResult, z.ZodTypeDef, Inbound> = z
         .object({
             data: Employment$.inboundSchema,
-            raw: z.array(RawResponse$.inboundSchema).optional(),
+            raw: z.array(RawResponse$.inboundSchema).nullable().optional(),
         })
         .transform((v) => {
             return {
@@ -32,13 +32,13 @@ export namespace EmploymentResult$ {
 
     export type Outbound = {
         data: Employment$.Outbound;
-        raw?: Array<RawResponse$.Outbound> | undefined;
+        raw?: Array<RawResponse$.Outbound> | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, EmploymentResult> = z
         .object({
             data: Employment$.outboundSchema,
-            raw: z.array(RawResponse$.outboundSchema).optional(),
+            raw: z.array(RawResponse$.outboundSchema).nullable().optional(),
         })
         .transform((v) => {
             return {

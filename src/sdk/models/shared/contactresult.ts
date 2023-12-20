@@ -8,20 +8,20 @@ import { z } from "zod";
 
 export type ContactResult = {
     data: Contact;
-    raw?: Array<RawResponse> | undefined;
+    raw?: Array<RawResponse> | null | undefined;
 };
 
 /** @internal */
 export namespace ContactResult$ {
     export type Inbound = {
         data: Contact$.Inbound;
-        raw?: Array<RawResponse$.Inbound> | undefined;
+        raw?: Array<RawResponse$.Inbound> | null | undefined;
     };
 
     export const inboundSchema: z.ZodType<ContactResult, z.ZodTypeDef, Inbound> = z
         .object({
             data: Contact$.inboundSchema,
-            raw: z.array(RawResponse$.inboundSchema).optional(),
+            raw: z.array(RawResponse$.inboundSchema).nullable().optional(),
         })
         .transform((v) => {
             return {
@@ -32,13 +32,13 @@ export namespace ContactResult$ {
 
     export type Outbound = {
         data: Contact$.Outbound;
-        raw?: Array<RawResponse$.Outbound> | undefined;
+        raw?: Array<RawResponse$.Outbound> | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ContactResult> = z
         .object({
             data: Contact$.outboundSchema,
-            raw: z.array(RawResponse$.outboundSchema).optional(),
+            raw: z.array(RawResponse$.outboundSchema).nullable().optional(),
         })
         .transform((v) => {
             return {

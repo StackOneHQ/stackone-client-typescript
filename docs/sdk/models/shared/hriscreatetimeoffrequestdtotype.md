@@ -1,0 +1,11 @@
+# HrisCreateTimeOffRequestDtoType
+
+The type of the time off request
+
+
+## Fields
+
+| Field                                                                                                                   | Type                                                                                                                    | Required                                                                                                                | Description                                                                                                             |
+| ----------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| `sourceValue`                                                                                                           | *string*                                                                                                                | :heavy_check_mark:                                                                                                      | N/A                                                                                                                     |
+| `value`                                                                                                                 | [shared.HrisCreateTimeOffRequestDtoSchemasValue](../../../sdk/models/shared/hriscreatetimeoffrequestdtoschemasvalue.md) | :heavy_check_mark:                                                                                                      | N/A                                                                                                                     |

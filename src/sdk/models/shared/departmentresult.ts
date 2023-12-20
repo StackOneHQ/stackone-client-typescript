@@ -8,20 +8,20 @@ import { z } from "zod";
 
 export type DepartmentResult = {
     data: Department;
-    raw?: Array<RawResponse> | undefined;
+    raw?: Array<RawResponse> | null | undefined;
 };
 
 /** @internal */
 export namespace DepartmentResult$ {
     export type Inbound = {
         data: Department$.Inbound;
-        raw?: Array<RawResponse$.Inbound> | undefined;
+        raw?: Array<RawResponse$.Inbound> | null | undefined;
     };
 
     export const inboundSchema: z.ZodType<DepartmentResult, z.ZodTypeDef, Inbound> = z
         .object({
             data: Department$.inboundSchema,
-            raw: z.array(RawResponse$.inboundSchema).optional(),
+            raw: z.array(RawResponse$.inboundSchema).nullable().optional(),
         })
         .transform((v) => {
             return {
@@ -32,13 +32,13 @@ export namespace DepartmentResult$ {
 
     export type Outbound = {
         data: Department$.Outbound;
-        raw?: Array<RawResponse$.Outbound> | undefined;
+        raw?: Array<RawResponse$.Outbound> | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, DepartmentResult> = z
         .object({
             data: Department$.outboundSchema,
-            raw: z.array(RawResponse$.outboundSchema).optional(),
+            raw: z.array(RawResponse$.outboundSchema).nullable().optional(),
         })
         .transform((v) => {
             return {

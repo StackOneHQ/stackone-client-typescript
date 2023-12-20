@@ -8,79 +8,81 @@ export type Contact = {
     /**
      * List of associated account IDs
      */
-    accountIds?: Array<string> | undefined;
+    accountIds?: Array<string> | null | undefined;
     /**
      * The contact company name
      */
-    companyName?: string | undefined;
+    companyName?: string | null | undefined;
     /**
      * Timestamp when the contact was created
      */
-    createdAt?: Date | undefined;
+    createdAt?: Date | null | undefined;
     /**
      * List of associated deal IDs
      */
-    dealIds?: Array<string> | undefined;
+    dealIds?: Array<string> | null | undefined;
     /**
      * List of contact email addresses
      */
-    emails?: Array<string> | undefined;
+    emails?: Array<string> | null | undefined;
     /**
      * The contact first name
      */
-    firstName?: string | undefined;
+    firstName?: string | null | undefined;
     /**
      * The contact ID
      */
-    id?: string | undefined;
+    id?: string | null | undefined;
     /**
      * The contact last name
      */
-    lastName?: string | undefined;
+    lastName?: string | null | undefined;
     /**
      * List of contact phone numbers
      */
-    phoneNumbers?: Array<string> | undefined;
+    phoneNumbers?: Array<string> | null | undefined;
     /**
      * Timestamp when the contact was last updated
      */
-    updatedAt?: Date | undefined;
+    updatedAt?: Date | null | undefined;
 };
 
 /** @internal */
 export namespace Contact$ {
     export type Inbound = {
-        account_ids?: Array<string> | undefined;
-        company_name?: string | undefined;
-        created_at?: string | undefined;
-        deal_ids?: Array<string> | undefined;
-        emails?: Array<string> | undefined;
-        first_name?: string | undefined;
-        id?: string | undefined;
-        last_name?: string | undefined;
-        phone_numbers?: Array<string> | undefined;
-        updated_at?: string | undefined;
+        account_ids?: Array<string> | null | undefined;
+        company_name?: string | null | undefined;
+        created_at?: string | null | undefined;
+        deal_ids?: Array<string> | null | undefined;
+        emails?: Array<string> | null | undefined;
+        first_name?: string | null | undefined;
+        id?: string | null | undefined;
+        last_name?: string | null | undefined;
+        phone_numbers?: Array<string> | null | undefined;
+        updated_at?: string | null | undefined;
     };
 
     export const inboundSchema: z.ZodType<Contact, z.ZodTypeDef, Inbound> = z
         .object({
-            account_ids: z.array(z.string()).optional(),
-            company_name: z.string().optional(),
+            account_ids: z.array(z.string()).nullable().optional(),
+            company_name: z.string().nullable().optional(),
             created_at: z
                 .string()
                 .datetime({ offset: true })
                 .transform((v) => new Date(v))
+                .nullable()
                 .optional(),
-            deal_ids: z.array(z.string()).optional(),
-            emails: z.array(z.string()).optional(),
-            first_name: z.string().optional(),
-            id: z.string().optional(),
-            last_name: z.string().optional(),
-            phone_numbers: z.array(z.string()).optional(),
+            deal_ids: z.array(z.string()).nullable().optional(),
+            emails: z.array(z.string()).nullable().optional(),
+            first_name: z.string().nullable().optional(),
+            id: z.string().nullable().optional(),
+            last_name: z.string().nullable().optional(),
+            phone_numbers: z.array(z.string()).nullable().optional(),
             updated_at: z
                 .string()
                 .datetime({ offset: true })
                 .transform((v) => new Date(v))
+                .nullable()
                 .optional(),
         })
         .transform((v) => {
@@ -99,35 +101,37 @@ export namespace Contact$ {
         });
 
     export type Outbound = {
-        account_ids?: Array<string> | undefined;
-        company_name?: string | undefined;
-        created_at?: string | undefined;
-        deal_ids?: Array<string> | undefined;
-        emails?: Array<string> | undefined;
-        first_name?: string | undefined;
-        id?: string | undefined;
-        last_name?: string | undefined;
-        phone_numbers?: Array<string> | undefined;
-        updated_at?: string | undefined;
+        account_ids?: Array<string> | null | undefined;
+        company_name?: string | null | undefined;
+        created_at?: string | null | undefined;
+        deal_ids?: Array<string> | null | undefined;
+        emails?: Array<string> | null | undefined;
+        first_name?: string | null | undefined;
+        id?: string | null | undefined;
+        last_name?: string | null | undefined;
+        phone_numbers?: Array<string> | null | undefined;
+        updated_at?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Contact> = z
         .object({
-            accountIds: z.array(z.string()).optional(),
-            companyName: z.string().optional(),
+            accountIds: z.array(z.string()).nullable().optional(),
+            companyName: z.string().nullable().optional(),
             createdAt: z
                 .date()
                 .transform((v) => v.toISOString())
+                .nullable()
                 .optional(),
-            dealIds: z.array(z.string()).optional(),
-            emails: z.array(z.string()).optional(),
-            firstName: z.string().optional(),
-            id: z.string().optional(),
-            lastName: z.string().optional(),
-            phoneNumbers: z.array(z.string()).optional(),
+            dealIds: z.array(z.string()).nullable().optional(),
+            emails: z.array(z.string()).nullable().optional(),
+            firstName: z.string().nullable().optional(),
+            id: z.string().nullable().optional(),
+            lastName: z.string().nullable().optional(),
+            phoneNumbers: z.array(z.string()).nullable().optional(),
             updatedAt: z
                 .date()
                 .transform((v) => v.toISOString())
+                .nullable()
                 .optional(),
         })
         .transform((v) => {

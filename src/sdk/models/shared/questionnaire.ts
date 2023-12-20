@@ -10,20 +10,20 @@ export type Questionnaire = {
     /**
      * Unique identifier of the questionnaire
      */
-    id?: string | undefined;
+    id?: string | null | undefined;
 };
 
 /** @internal */
 export namespace Questionnaire$ {
     export type Inbound = {
         answers: Array<Answer$.Inbound>;
-        id?: string | undefined;
+        id?: string | null | undefined;
     };
 
     export const inboundSchema: z.ZodType<Questionnaire, z.ZodTypeDef, Inbound> = z
         .object({
             answers: z.array(Answer$.inboundSchema),
-            id: z.string().optional(),
+            id: z.string().nullable().optional(),
         })
         .transform((v) => {
             return {
@@ -34,13 +34,13 @@ export namespace Questionnaire$ {
 
     export type Outbound = {
         answers: Array<Answer$.Outbound>;
-        id?: string | undefined;
+        id?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Questionnaire> = z
         .object({
             answers: z.array(Answer$.outboundSchema),
-            id: z.string().optional(),
+            id: z.string().nullable().optional(),
         })
         .transform((v) => {
             return {

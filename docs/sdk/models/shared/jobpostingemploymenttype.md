@@ -1,0 +1,9 @@
+# JobPostingEmploymentType
+
+
+## Fields
+
+| Field                                                                                 | Type                                                                                  | Required                                                                              | Description                                                                           | Example                                                                               |
+| ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| `sourceValue`                                                                         | *string*                                                                              | :heavy_check_mark:                                                                    | The source value of the employment type.                                              | Permanent                                                                             |
+| `value`                                                                               | [shared.JobPostingSchemasValue](../../../sdk/models/shared/jobpostingschemasvalue.md) | :heavy_check_mark:                                                                    | The type of the employment.                                                           | permanent                                                                             |

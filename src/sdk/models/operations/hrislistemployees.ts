@@ -9,23 +9,25 @@ export type HrisListEmployeesRequest = {
     /**
      * The comma separated list of fields that will be expanded in the response
      */
-    expand?: string | undefined;
+    expand?: string | null | undefined;
     /**
      * The comma separated list of fields to return in the response (if empty, all fields are returned)
      */
-    fields?: string | undefined;
+    fields?: string | null | undefined;
     /**
      * The comma separated list of fields that will be included in the response
      */
-    include?: string | undefined;
+    include?: string | null | undefined;
     /**
      * The page number of the results to fetch
+     *
+     * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
      */
-    page?: string | undefined;
+    page?: string | null | undefined;
     /**
      * The number of results per page
      */
-    pageSize?: string | undefined;
+    pageSize?: string | null | undefined;
     /**
      * Query parameters that can be used to pass through parameters to the underlying provider request by surrounding them with "proxy" key
      */
@@ -33,15 +35,15 @@ export type HrisListEmployeesRequest = {
     /**
      * Indicates that the raw request result is returned
      */
-    raw?: boolean | undefined;
+    raw?: boolean | null | undefined;
     /**
      * The sync token to select the only updated results
      */
-    syncToken?: string | undefined;
+    syncToken?: string | null | undefined;
     /**
      * Use a string with a date to only select results updated after that given date
      */
-    updatedAfter?: string | undefined;
+    updatedAfter?: string | null | undefined;
     /**
      * The account identifier
      */
@@ -70,29 +72,29 @@ export type HrisListEmployeesResponse = {
 /** @internal */
 export namespace HrisListEmployeesRequest$ {
     export type Inbound = {
-        expand?: string | undefined;
-        fields?: string | undefined;
-        include?: string | undefined;
-        page?: string | undefined;
-        page_size?: string | undefined;
+        expand?: string | null | undefined;
+        fields?: string | null | undefined;
+        include?: string | null | undefined;
+        page?: string | null | undefined;
+        page_size?: string | null | undefined;
         proxy?: Record<string, any> | undefined;
-        raw?: boolean | undefined;
-        sync_token?: string | undefined;
-        updated_after?: string | undefined;
+        raw?: boolean | null | undefined;
+        sync_token?: string | null | undefined;
+        updated_after?: string | null | undefined;
         "x-account-id": string;
     };
 
     export const inboundSchema: z.ZodType<HrisListEmployeesRequest, z.ZodTypeDef, Inbound> = z
         .object({
-            expand: z.string().optional(),
-            fields: z.string().optional(),
-            include: z.string().optional(),
-            page: z.string().optional(),
-            page_size: z.string().optional(),
+            expand: z.string().nullable().optional(),
+            fields: z.string().nullable().optional(),
+            include: z.string().nullable().optional(),
+            page: z.string().nullable().optional(),
+            page_size: z.string().nullable().optional(),
             proxy: z.record(z.any()).optional(),
-            raw: z.boolean().optional(),
-            sync_token: z.string().optional(),
-            updated_after: z.string().optional(),
+            raw: z.boolean().nullable().optional(),
+            sync_token: z.string().nullable().optional(),
+            updated_after: z.string().nullable().optional(),
             "x-account-id": z.string(),
         })
         .transform((v) => {
@@ -111,29 +113,29 @@ export namespace HrisListEmployeesRequest$ {
         });
 
     export type Outbound = {
-        expand?: string | undefined;
-        fields?: string | undefined;
-        include?: string | undefined;
-        page?: string | undefined;
-        page_size?: string | undefined;
+        expand?: string | null | undefined;
+        fields?: string | null | undefined;
+        include?: string | null | undefined;
+        page?: string | null | undefined;
+        page_size?: string | null | undefined;
         proxy?: Record<string, any> | undefined;
-        raw?: boolean | undefined;
-        sync_token?: string | undefined;
-        updated_after?: string | undefined;
+        raw?: boolean | null | undefined;
+        sync_token?: string | null | undefined;
+        updated_after?: string | null | undefined;
         "x-account-id": string;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, HrisListEmployeesRequest> = z
         .object({
-            expand: z.string().optional(),
-            fields: z.string().optional(),
-            include: z.string().optional(),
-            page: z.string().optional(),
-            pageSize: z.string().optional(),
+            expand: z.string().nullable().optional(),
+            fields: z.string().nullable().optional(),
+            include: z.string().nullable().optional(),
+            page: z.string().nullable().optional(),
+            pageSize: z.string().nullable().optional(),
             proxy: z.record(z.any()).optional(),
-            raw: z.boolean().optional(),
-            syncToken: z.string().optional(),
-            updatedAfter: z.string().optional(),
+            raw: z.boolean().nullable().optional(),
+            syncToken: z.string().nullable().optional(),
+            updatedAfter: z.string().nullable().optional(),
             xAccountId: z.string(),
         })
         .transform((v) => {

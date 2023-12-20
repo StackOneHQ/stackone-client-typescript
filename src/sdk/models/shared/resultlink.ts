@@ -8,7 +8,7 @@ export type ResultLink = {
     /**
      * The label of the result link.
      */
-    label?: string | undefined;
+    label?: string | null | undefined;
     /**
      * The URL of the result link.
      */
@@ -18,13 +18,13 @@ export type ResultLink = {
 /** @internal */
 export namespace ResultLink$ {
     export type Inbound = {
-        label?: string | undefined;
+        label?: string | null | undefined;
         url: string;
     };
 
     export const inboundSchema: z.ZodType<ResultLink, z.ZodTypeDef, Inbound> = z
         .object({
-            label: z.string().optional(),
+            label: z.string().nullable().optional(),
             url: z.string(),
         })
         .transform((v) => {
@@ -35,13 +35,13 @@ export namespace ResultLink$ {
         });
 
     export type Outbound = {
-        label?: string | undefined;
+        label?: string | null | undefined;
         url: string;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ResultLink> = z
         .object({
-            label: z.string().optional(),
+            label: z.string().nullable().optional(),
             url: z.string(),
         })
         .transform((v) => {

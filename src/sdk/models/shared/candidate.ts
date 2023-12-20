@@ -10,11 +10,11 @@ export type Candidate = {
     /**
      * List of candidate application IDs
      */
-    applicationIds?: Array<string> | undefined;
+    applicationIds?: Array<string> | null | undefined;
     /**
      * Candidate company
      */
-    company?: string | undefined;
+    company?: string | null | undefined;
     /**
      * Candidate created date
      */
@@ -34,7 +34,7 @@ export type Candidate = {
     /**
      * Candidate hired date
      */
-    hiredAt?: Date | undefined;
+    hiredAt?: Date | null | undefined;
     /**
      * Candidate ID
      */
@@ -50,7 +50,7 @@ export type Candidate = {
     /**
      * Candidate phone number
      */
-    phone?: string | undefined;
+    phone?: string | null | undefined;
     /**
      * List of candidate social links
      */
@@ -68,17 +68,17 @@ export type Candidate = {
 /** @internal */
 export namespace Candidate$ {
     export type Inbound = {
-        application_ids?: Array<string> | undefined;
-        company?: string | undefined;
+        application_ids?: Array<string> | null | undefined;
+        company?: string | null | undefined;
         created_at: string;
         email: string;
         emails: Array<CandidateEmail$.Inbound>;
         first_name: string;
-        hired_at?: string | undefined;
+        hired_at?: string | null | undefined;
         id: string;
         last_name: string;
         name: string;
-        phone?: string | undefined;
+        phone?: string | null | undefined;
         social_links: Array<SocialLink$.Inbound>;
         title: string;
         updated_at: string;
@@ -86,8 +86,8 @@ export namespace Candidate$ {
 
     export const inboundSchema: z.ZodType<Candidate, z.ZodTypeDef, Inbound> = z
         .object({
-            application_ids: z.array(z.string()).optional(),
-            company: z.string().optional(),
+            application_ids: z.array(z.string()).nullable().optional(),
+            company: z.string().nullable().optional(),
             created_at: z
                 .string()
                 .datetime({ offset: true })
@@ -99,11 +99,12 @@ export namespace Candidate$ {
                 .string()
                 .datetime({ offset: true })
                 .transform((v) => new Date(v))
+                .nullable()
                 .optional(),
             id: z.string(),
             last_name: z.string(),
             name: z.string(),
-            phone: z.string().optional(),
+            phone: z.string().nullable().optional(),
             social_links: z.array(SocialLink$.inboundSchema),
             title: z.string(),
             updated_at: z
@@ -131,17 +132,17 @@ export namespace Candidate$ {
         });
 
     export type Outbound = {
-        application_ids?: Array<string> | undefined;
-        company?: string | undefined;
+        application_ids?: Array<string> | null | undefined;
+        company?: string | null | undefined;
         created_at: string;
         email: string;
         emails: Array<CandidateEmail$.Outbound>;
         first_name: string;
-        hired_at?: string | undefined;
+        hired_at?: string | null | undefined;
         id: string;
         last_name: string;
         name: string;
-        phone?: string | undefined;
+        phone?: string | null | undefined;
         social_links: Array<SocialLink$.Outbound>;
         title: string;
         updated_at: string;
@@ -149,8 +150,8 @@ export namespace Candidate$ {
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Candidate> = z
         .object({
-            applicationIds: z.array(z.string()).optional(),
-            company: z.string().optional(),
+            applicationIds: z.array(z.string()).nullable().optional(),
+            company: z.string().nullable().optional(),
             createdAt: z.date().transform((v) => v.toISOString()),
             email: z.string(),
             emails: z.array(CandidateEmail$.outboundSchema),
@@ -158,11 +159,12 @@ export namespace Candidate$ {
             hiredAt: z
                 .date()
                 .transform((v) => v.toISOString())
+                .nullable()
                 .optional(),
             id: z.string(),
             lastName: z.string(),
             name: z.string(),
-            phone: z.string().optional(),
+            phone: z.string().nullable().optional(),
             socialLinks: z.array(SocialLink$.outboundSchema),
             title: z.string(),
             updatedAt: z.date().transform((v) => v.toISOString()),

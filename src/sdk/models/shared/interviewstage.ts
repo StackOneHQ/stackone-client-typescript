@@ -8,24 +8,24 @@ export type InterviewStage = {
     /**
      * Interview Stage created date
      */
-    createdAt?: Date | undefined;
+    createdAt?: Date | null | undefined;
     id: string;
     name: string;
-    order?: number | undefined;
+    order?: number | null | undefined;
     /**
      * Interview Stage updated date
      */
-    updatedAt?: Date | undefined;
+    updatedAt?: Date | null | undefined;
 };
 
 /** @internal */
 export namespace InterviewStage$ {
     export type Inbound = {
-        created_at?: string | undefined;
+        created_at?: string | null | undefined;
         id: string;
         name: string;
-        order?: number | undefined;
-        updated_at?: string | undefined;
+        order?: number | null | undefined;
+        updated_at?: string | null | undefined;
     };
 
     export const inboundSchema: z.ZodType<InterviewStage, z.ZodTypeDef, Inbound> = z
@@ -34,14 +34,16 @@ export namespace InterviewStage$ {
                 .string()
                 .datetime({ offset: true })
                 .transform((v) => new Date(v))
+                .nullable()
                 .optional(),
             id: z.string(),
             name: z.string(),
-            order: z.number().optional(),
+            order: z.number().nullable().optional(),
             updated_at: z
                 .string()
                 .datetime({ offset: true })
                 .transform((v) => new Date(v))
+                .nullable()
                 .optional(),
         })
         .transform((v) => {
@@ -55,11 +57,11 @@ export namespace InterviewStage$ {
         });
 
     export type Outbound = {
-        created_at?: string | undefined;
+        created_at?: string | null | undefined;
         id: string;
         name: string;
-        order?: number | undefined;
-        updated_at?: string | undefined;
+        order?: number | null | undefined;
+        updated_at?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, InterviewStage> = z
@@ -67,13 +69,15 @@ export namespace InterviewStage$ {
             createdAt: z
                 .date()
                 .transform((v) => v.toISOString())
+                .nullable()
                 .optional(),
             id: z.string(),
             name: z.string(),
-            order: z.number().optional(),
+            order: z.number().nullable().optional(),
             updatedAt: z
                 .date()
                 .transform((v) => v.toISOString())
+                .nullable()
                 .optional(),
         })
         .transform((v) => {

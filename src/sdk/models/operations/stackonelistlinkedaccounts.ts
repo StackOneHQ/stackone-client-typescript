@@ -9,11 +9,11 @@ export type StackoneListLinkedAccountsRequest = {
     /**
      * The origin owner identifier of the results to fetch
      */
-    originOwnerId?: string | undefined;
+    originOwnerId?: string | null | undefined;
     /**
      * The provider of the results to fetch
      */
-    provider?: string | undefined;
+    provider?: string | null | undefined;
 };
 
 export type StackoneListLinkedAccountsResponse = {
@@ -38,8 +38,8 @@ export type StackoneListLinkedAccountsResponse = {
 /** @internal */
 export namespace StackoneListLinkedAccountsRequest$ {
     export type Inbound = {
-        origin_owner_id?: string | undefined;
-        provider?: string | undefined;
+        origin_owner_id?: string | null | undefined;
+        provider?: string | null | undefined;
     };
 
     export const inboundSchema: z.ZodType<
@@ -48,8 +48,8 @@ export namespace StackoneListLinkedAccountsRequest$ {
         Inbound
     > = z
         .object({
-            origin_owner_id: z.string().optional(),
-            provider: z.string().optional(),
+            origin_owner_id: z.string().nullable().optional(),
+            provider: z.string().nullable().optional(),
         })
         .transform((v) => {
             return {
@@ -59,8 +59,8 @@ export namespace StackoneListLinkedAccountsRequest$ {
         });
 
     export type Outbound = {
-        origin_owner_id?: string | undefined;
-        provider?: string | undefined;
+        origin_owner_id?: string | null | undefined;
+        provider?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<
@@ -69,8 +69,8 @@ export namespace StackoneListLinkedAccountsRequest$ {
         StackoneListLinkedAccountsRequest
     > = z
         .object({
-            originOwnerId: z.string().optional(),
-            provider: z.string().optional(),
+            originOwnerId: z.string().nullable().optional(),
+            provider: z.string().nullable().optional(),
         })
         .transform((v) => {
             return {

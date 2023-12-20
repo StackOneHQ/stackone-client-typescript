@@ -22,19 +22,19 @@ export type ConnectSessionCreate = {
     /**
      * The unique identifier for the account associated with this connect session. When this field is present, the hub will launch in edit mode using the retrieved token.
      */
-    accountId?: string | undefined;
+    accountId?: string | null | undefined;
     /**
      * The categories of the provider to connect to
      */
-    categories?: Array<ConnectSessionCreateCategories> | undefined;
+    categories?: Array<ConnectSessionCreateCategories> | null | undefined;
     /**
      * How long the session should be valid for in seconds
      */
-    expiresIn?: number | undefined;
+    expiresIn?: number | null | undefined;
     /**
      * The metadata for the connection
      */
-    metadata?: Metadata | undefined;
+    metadata?: Metadata | null | undefined;
     /**
      * The origin owner identifier
      */
@@ -46,11 +46,11 @@ export type ConnectSessionCreate = {
     /**
      * The origin username
      */
-    originUsername?: string | undefined;
+    originUsername?: string | null | undefined;
     /**
      * The provider to connect to
      */
-    provider?: string | undefined;
+    provider?: string | null | undefined;
 };
 
 /** @internal */
@@ -70,26 +70,29 @@ export namespace Metadata$ {
 /** @internal */
 export namespace ConnectSessionCreate$ {
     export type Inbound = {
-        account_id?: string | undefined;
-        categories?: Array<ConnectSessionCreateCategories> | undefined;
-        expires_in?: number | undefined;
-        metadata?: Metadata$.Inbound | undefined;
+        account_id?: string | null | undefined;
+        categories?: Array<ConnectSessionCreateCategories> | null | undefined;
+        expires_in?: number | null | undefined;
+        metadata?: Metadata$.Inbound | null | undefined;
         origin_owner_id: string;
         origin_owner_name: string;
-        origin_username?: string | undefined;
-        provider?: string | undefined;
+        origin_username?: string | null | undefined;
+        provider?: string | null | undefined;
     };
 
     export const inboundSchema: z.ZodType<ConnectSessionCreate, z.ZodTypeDef, Inbound> = z
         .object({
-            account_id: z.string().optional(),
-            categories: z.array(ConnectSessionCreateCategories$).optional(),
-            expires_in: z.number().optional(),
-            metadata: z.lazy(() => Metadata$.inboundSchema).optional(),
+            account_id: z.string().nullable().optional(),
+            categories: z.array(ConnectSessionCreateCategories$).nullable().optional(),
+            expires_in: z.number().nullable().optional(),
+            metadata: z
+                .lazy(() => Metadata$.inboundSchema)
+                .nullable()
+                .optional(),
             origin_owner_id: z.string(),
             origin_owner_name: z.string(),
-            origin_username: z.string().optional(),
-            provider: z.string().optional(),
+            origin_username: z.string().nullable().optional(),
+            provider: z.string().nullable().optional(),
         })
         .transform((v) => {
             return {
@@ -105,26 +108,29 @@ export namespace ConnectSessionCreate$ {
         });
 
     export type Outbound = {
-        account_id?: string | undefined;
-        categories?: Array<ConnectSessionCreateCategories> | undefined;
-        expires_in?: number | undefined;
-        metadata?: Metadata$.Outbound | undefined;
+        account_id?: string | null | undefined;
+        categories?: Array<ConnectSessionCreateCategories> | null | undefined;
+        expires_in?: number | null | undefined;
+        metadata?: Metadata$.Outbound | null | undefined;
         origin_owner_id: string;
         origin_owner_name: string;
-        origin_username?: string | undefined;
-        provider?: string | undefined;
+        origin_username?: string | null | undefined;
+        provider?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ConnectSessionCreate> = z
         .object({
-            accountId: z.string().optional(),
-            categories: z.array(ConnectSessionCreateCategories$).optional(),
-            expiresIn: z.number().optional(),
-            metadata: z.lazy(() => Metadata$.outboundSchema).optional(),
+            accountId: z.string().nullable().optional(),
+            categories: z.array(ConnectSessionCreateCategories$).nullable().optional(),
+            expiresIn: z.number().nullable().optional(),
+            metadata: z
+                .lazy(() => Metadata$.outboundSchema)
+                .nullable()
+                .optional(),
             originOwnerId: z.string(),
             originOwnerName: z.string(),
-            originUsername: z.string().optional(),
-            provider: z.string().optional(),
+            originUsername: z.string().nullable().optional(),
+            provider: z.string().nullable().optional(),
         })
         .transform((v) => {
             return {

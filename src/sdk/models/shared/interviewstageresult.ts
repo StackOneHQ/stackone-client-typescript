@@ -8,20 +8,20 @@ import { z } from "zod";
 
 export type InterviewStageResult = {
     data: InterviewStage;
-    raw?: Array<RawResponse> | undefined;
+    raw?: Array<RawResponse> | null | undefined;
 };
 
 /** @internal */
 export namespace InterviewStageResult$ {
     export type Inbound = {
         data: InterviewStage$.Inbound;
-        raw?: Array<RawResponse$.Inbound> | undefined;
+        raw?: Array<RawResponse$.Inbound> | null | undefined;
     };
 
     export const inboundSchema: z.ZodType<InterviewStageResult, z.ZodTypeDef, Inbound> = z
         .object({
             data: InterviewStage$.inboundSchema,
-            raw: z.array(RawResponse$.inboundSchema).optional(),
+            raw: z.array(RawResponse$.inboundSchema).nullable().optional(),
         })
         .transform((v) => {
             return {
@@ -32,13 +32,13 @@ export namespace InterviewStageResult$ {
 
     export type Outbound = {
         data: InterviewStage$.Outbound;
-        raw?: Array<RawResponse$.Outbound> | undefined;
+        raw?: Array<RawResponse$.Outbound> | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, InterviewStageResult> = z
         .object({
             data: InterviewStage$.outboundSchema,
-            raw: z.array(RawResponse$.outboundSchema).optional(),
+            raw: z.array(RawResponse$.outboundSchema).nullable().optional(),
         })
         .transform((v) => {
             return {

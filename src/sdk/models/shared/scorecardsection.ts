@@ -9,30 +9,30 @@ export type ScorecardSection = {
     /**
      * The fields within the section
      */
-    fields?: Array<Field> | undefined;
+    fields?: Array<Field> | null | undefined;
     /**
      * The ID of the section
      */
-    id?: string | undefined;
+    id?: string | null | undefined;
     /**
      * The label of the section
      */
-    label?: string | undefined;
+    label?: string | null | undefined;
 };
 
 /** @internal */
 export namespace ScorecardSection$ {
     export type Inbound = {
-        fields?: Array<Field$.Inbound> | undefined;
-        id?: string | undefined;
-        label?: string | undefined;
+        fields?: Array<Field$.Inbound> | null | undefined;
+        id?: string | null | undefined;
+        label?: string | null | undefined;
     };
 
     export const inboundSchema: z.ZodType<ScorecardSection, z.ZodTypeDef, Inbound> = z
         .object({
-            fields: z.array(Field$.inboundSchema).optional(),
-            id: z.string().optional(),
-            label: z.string().optional(),
+            fields: z.array(Field$.inboundSchema).nullable().optional(),
+            id: z.string().nullable().optional(),
+            label: z.string().nullable().optional(),
         })
         .transform((v) => {
             return {
@@ -43,16 +43,16 @@ export namespace ScorecardSection$ {
         });
 
     export type Outbound = {
-        fields?: Array<Field$.Outbound> | undefined;
-        id?: string | undefined;
-        label?: string | undefined;
+        fields?: Array<Field$.Outbound> | null | undefined;
+        id?: string | null | undefined;
+        label?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ScorecardSection> = z
         .object({
-            fields: z.array(Field$.outboundSchema).optional(),
-            id: z.string().optional(),
-            label: z.string().optional(),
+            fields: z.array(Field$.outboundSchema).nullable().optional(),
+            id: z.string().nullable().optional(),
+            label: z.string().nullable().optional(),
         })
         .transform((v) => {
             return {

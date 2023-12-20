@@ -45,7 +45,7 @@ async function run() {
           },
           messageType: {
             sourceValue: "string",
-            value: MessageTypeEnumValue.AppPush,
+            value: EmailMessagesValue.AppPush,
           },
         },
       ],
@@ -106,7 +106,7 @@ async function run() {
         {
           id: "<ID>",
           messageContent: "string",
-          messageType: MessageType.Unknown,
+          messageType: MessageMessageType.Unknown,
           name: "string",
         },
       ],
@@ -170,7 +170,7 @@ async function run() {
           },
           messageType: {
             sourceValue: "string",
-            value: MessageTypeEnumValue.UnmappedValue,
+            value: PushMessagesValue.UnmappedValue,
           },
         },
       ],
@@ -648,7 +648,7 @@ async function run() {
           },
           messageType: {
             sourceValue: "string",
-            value: MessageTypeEnumValue.WebPush,
+            value: EmailMessagesValue.WebPush,
           },
         },
       ],
@@ -710,7 +710,7 @@ async function run() {
         {
           id: "<ID>",
           messageContent: "string",
-          messageType: MessageType.Email,
+          messageType: MessageMessageType.Email,
           name: "string",
         },
       ],
@@ -775,7 +775,7 @@ async function run() {
           },
           messageType: {
             sourceValue: "string",
-            value: MessageTypeEnumValue.Unknown,
+            value: PushMessagesValue.Unknown,
           },
         },
       ],

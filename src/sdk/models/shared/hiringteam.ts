@@ -5,30 +5,30 @@
 import { z } from "zod";
 
 export type HiringTeam = {
-    email?: string | undefined;
-    firstName?: string | undefined;
-    lastName?: string | undefined;
-    role?: string | undefined;
-    userId?: string | undefined;
+    email?: string | null | undefined;
+    firstName?: string | null | undefined;
+    lastName?: string | null | undefined;
+    role?: string | null | undefined;
+    userId?: string | null | undefined;
 };
 
 /** @internal */
 export namespace HiringTeam$ {
     export type Inbound = {
-        email?: string | undefined;
-        first_name?: string | undefined;
-        last_name?: string | undefined;
-        role?: string | undefined;
-        user_id?: string | undefined;
+        email?: string | null | undefined;
+        first_name?: string | null | undefined;
+        last_name?: string | null | undefined;
+        role?: string | null | undefined;
+        user_id?: string | null | undefined;
     };
 
     export const inboundSchema: z.ZodType<HiringTeam, z.ZodTypeDef, Inbound> = z
         .object({
-            email: z.string().optional(),
-            first_name: z.string().optional(),
-            last_name: z.string().optional(),
-            role: z.string().optional(),
-            user_id: z.string().optional(),
+            email: z.string().nullable().optional(),
+            first_name: z.string().nullable().optional(),
+            last_name: z.string().nullable().optional(),
+            role: z.string().nullable().optional(),
+            user_id: z.string().nullable().optional(),
         })
         .transform((v) => {
             return {
@@ -41,20 +41,20 @@ export namespace HiringTeam$ {
         });
 
     export type Outbound = {
-        email?: string | undefined;
-        first_name?: string | undefined;
-        last_name?: string | undefined;
-        role?: string | undefined;
-        user_id?: string | undefined;
+        email?: string | null | undefined;
+        first_name?: string | null | undefined;
+        last_name?: string | null | undefined;
+        role?: string | null | undefined;
+        user_id?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, HiringTeam> = z
         .object({
-            email: z.string().optional(),
-            firstName: z.string().optional(),
-            lastName: z.string().optional(),
-            role: z.string().optional(),
-            userId: z.string().optional(),
+            email: z.string().nullable().optional(),
+            firstName: z.string().nullable().optional(),
+            lastName: z.string().nullable().optional(),
+            role: z.string().nullable().optional(),
+            userId: z.string().nullable().optional(),
         })
         .transform((v) => {
             return {

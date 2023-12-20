@@ -8,10 +8,10 @@ import { z } from "zod";
 
 export type AtsCreateOfferRequestDto = {
     applicationId: string;
-    currency?: string | undefined;
-    offerHistory?: Array<OfferHistory> | undefined;
+    currency?: string | null | undefined;
+    offerHistory?: Array<OfferHistory> | null | undefined;
     offerStatus: OfferStatusEnum;
-    salary?: number | undefined;
+    salary?: number | null | undefined;
     /**
      * Date of creation
      */
@@ -22,20 +22,20 @@ export type AtsCreateOfferRequestDto = {
 export namespace AtsCreateOfferRequestDto$ {
     export type Inbound = {
         application_id: string;
-        currency?: string | undefined;
-        offer_history?: Array<OfferHistory$.Inbound> | undefined;
+        currency?: string | null | undefined;
+        offer_history?: Array<OfferHistory$.Inbound> | null | undefined;
         offer_status: OfferStatusEnum$.Inbound;
-        salary?: number | undefined;
+        salary?: number | null | undefined;
         start_date: string;
     };
 
     export const inboundSchema: z.ZodType<AtsCreateOfferRequestDto, z.ZodTypeDef, Inbound> = z
         .object({
             application_id: z.string(),
-            currency: z.string().optional(),
-            offer_history: z.array(OfferHistory$.inboundSchema).optional(),
+            currency: z.string().nullable().optional(),
+            offer_history: z.array(OfferHistory$.inboundSchema).nullable().optional(),
             offer_status: OfferStatusEnum$.inboundSchema,
-            salary: z.number().optional(),
+            salary: z.number().nullable().optional(),
             start_date: z
                 .string()
                 .datetime({ offset: true })
@@ -54,20 +54,20 @@ export namespace AtsCreateOfferRequestDto$ {
 
     export type Outbound = {
         application_id: string;
-        currency?: string | undefined;
-        offer_history?: Array<OfferHistory$.Outbound> | undefined;
+        currency?: string | null | undefined;
+        offer_history?: Array<OfferHistory$.Outbound> | null | undefined;
         offer_status: OfferStatusEnum$.Outbound;
-        salary?: number | undefined;
+        salary?: number | null | undefined;
         start_date: string;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, AtsCreateOfferRequestDto> = z
         .object({
             applicationId: z.string(),
-            currency: z.string().optional(),
-            offerHistory: z.array(OfferHistory$.outboundSchema).optional(),
+            currency: z.string().nullable().optional(),
+            offerHistory: z.array(OfferHistory$.outboundSchema).nullable().optional(),
             offerStatus: OfferStatusEnum$.outboundSchema,
-            salary: z.number().optional(),
+            salary: z.number().nullable().optional(),
             startDate: z.date().transform((v) => v.toISOString()),
         })
         .transform((v) => {

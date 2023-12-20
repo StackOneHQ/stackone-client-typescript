@@ -8,20 +8,20 @@ import { z } from "zod";
 
 export type TimeOffResult = {
     data: TimeOff;
-    raw?: Array<RawResponse> | undefined;
+    raw?: Array<RawResponse> | null | undefined;
 };
 
 /** @internal */
 export namespace TimeOffResult$ {
     export type Inbound = {
         data: TimeOff$.Inbound;
-        raw?: Array<RawResponse$.Inbound> | undefined;
+        raw?: Array<RawResponse$.Inbound> | null | undefined;
     };
 
     export const inboundSchema: z.ZodType<TimeOffResult, z.ZodTypeDef, Inbound> = z
         .object({
             data: TimeOff$.inboundSchema,
-            raw: z.array(RawResponse$.inboundSchema).optional(),
+            raw: z.array(RawResponse$.inboundSchema).nullable().optional(),
         })
         .transform((v) => {
             return {
@@ -32,13 +32,13 @@ export namespace TimeOffResult$ {
 
     export type Outbound = {
         data: TimeOff$.Outbound;
-        raw?: Array<RawResponse$.Outbound> | undefined;
+        raw?: Array<RawResponse$.Outbound> | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, TimeOffResult> = z
         .object({
             data: TimeOff$.outboundSchema,
-            raw: z.array(RawResponse$.outboundSchema).optional(),
+            raw: z.array(RawResponse$.outboundSchema).nullable().optional(),
         })
         .transform((v) => {
             return {

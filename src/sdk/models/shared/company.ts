@@ -8,24 +8,24 @@ export type Company = {
     /**
      * The created_at date
      */
-    createdAt?: Date | undefined;
-    displayName?: string | undefined;
-    id?: string | undefined;
-    name?: string | undefined;
+    createdAt?: Date | null | undefined;
+    displayName?: string | null | undefined;
+    id?: string | null | undefined;
+    name?: string | null | undefined;
     /**
      * The updated_at date
      */
-    updatedAt?: Date | undefined;
+    updatedAt?: Date | null | undefined;
 };
 
 /** @internal */
 export namespace Company$ {
     export type Inbound = {
-        created_at?: string | undefined;
-        display_name?: string | undefined;
-        id?: string | undefined;
-        name?: string | undefined;
-        updated_at?: string | undefined;
+        created_at?: string | null | undefined;
+        display_name?: string | null | undefined;
+        id?: string | null | undefined;
+        name?: string | null | undefined;
+        updated_at?: string | null | undefined;
     };
 
     export const inboundSchema: z.ZodType<Company, z.ZodTypeDef, Inbound> = z
@@ -34,14 +34,16 @@ export namespace Company$ {
                 .string()
                 .datetime({ offset: true })
                 .transform((v) => new Date(v))
+                .nullable()
                 .optional(),
-            display_name: z.string().optional(),
-            id: z.string().optional(),
-            name: z.string().optional(),
+            display_name: z.string().nullable().optional(),
+            id: z.string().nullable().optional(),
+            name: z.string().nullable().optional(),
             updated_at: z
                 .string()
                 .datetime({ offset: true })
                 .transform((v) => new Date(v))
+                .nullable()
                 .optional(),
         })
         .transform((v) => {
@@ -55,11 +57,11 @@ export namespace Company$ {
         });
 
     export type Outbound = {
-        created_at?: string | undefined;
-        display_name?: string | undefined;
-        id?: string | undefined;
-        name?: string | undefined;
-        updated_at?: string | undefined;
+        created_at?: string | null | undefined;
+        display_name?: string | null | undefined;
+        id?: string | null | undefined;
+        name?: string | null | undefined;
+        updated_at?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Company> = z
@@ -67,13 +69,15 @@ export namespace Company$ {
             createdAt: z
                 .date()
                 .transform((v) => v.toISOString())
+                .nullable()
                 .optional(),
-            displayName: z.string().optional(),
-            id: z.string().optional(),
-            name: z.string().optional(),
+            displayName: z.string().nullable().optional(),
+            id: z.string().nullable().optional(),
+            name: z.string().nullable().optional(),
             updatedAt: z
                 .date()
                 .transform((v) => v.toISOString())
+                .nullable()
                 .optional(),
         })
         .transform((v) => {

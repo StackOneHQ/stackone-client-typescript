@@ -5,21 +5,21 @@
 import { z } from "zod";
 
 export type Location = {
-    id?: string | undefined;
-    name?: string | undefined;
+    id?: string | null | undefined;
+    name?: string | null | undefined;
 };
 
 /** @internal */
 export namespace Location$ {
     export type Inbound = {
-        id?: string | undefined;
-        name?: string | undefined;
+        id?: string | null | undefined;
+        name?: string | null | undefined;
     };
 
     export const inboundSchema: z.ZodType<Location, z.ZodTypeDef, Inbound> = z
         .object({
-            id: z.string().optional(),
-            name: z.string().optional(),
+            id: z.string().nullable().optional(),
+            name: z.string().nullable().optional(),
         })
         .transform((v) => {
             return {
@@ -29,14 +29,14 @@ export namespace Location$ {
         });
 
     export type Outbound = {
-        id?: string | undefined;
-        name?: string | undefined;
+        id?: string | null | undefined;
+        name?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Location> = z
         .object({
-            id: z.string().optional(),
-            name: z.string().optional(),
+            id: z.string().nullable().optional(),
+            name: z.string().nullable().optional(),
         })
         .transform((v) => {
             return {

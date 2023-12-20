@@ -259,7 +259,7 @@ export enum HRISLocationValue {
 /**
  * The country code
  */
-export type Country = {
+export type HRISLocationCountry = {
     sourceValue: string;
     value: HRISLocationValue;
 };
@@ -276,7 +276,7 @@ export enum HRISLocationSchemasValue {
 /**
  * The location type
  */
-export type LocationType = {
+export type HRISLocationLocationType = {
     /**
      * The source value of the location type.
      */
@@ -291,68 +291,68 @@ export type HRISLocation = {
     /**
      * The city where the location is situated
      */
-    city?: string | undefined;
+    city?: string | null | undefined;
     /**
      * The country code
      */
-    country?: Country | undefined;
+    country?: HRISLocationCountry | null | undefined;
     /**
      * The created_at date
      */
-    createdAt?: Date | undefined;
+    createdAt?: Date | null | undefined;
     /**
      * The employee ID
      */
-    employeeId?: string | undefined;
+    employeeId?: string | null | undefined;
     /**
      * The unique ID of the location
      */
-    id?: string | undefined;
+    id?: string | null | undefined;
     /**
      * The location type
      */
-    locationType?: LocationType | undefined;
+    locationType?: HRISLocationLocationType | null | undefined;
     /**
      * The name of the location
      */
-    name?: string | undefined;
+    name?: string | null | undefined;
     /**
      * The phone number of the location
      */
-    phoneNumber?: string | undefined;
+    phoneNumber?: string | null | undefined;
     /**
      * The state where the location is situated
      */
-    state?: string | undefined;
+    state?: string | null | undefined;
     /**
      * The first line of the address
      */
-    street1?: string | undefined;
+    street1?: string | null | undefined;
     /**
      * The second line of the address
      */
-    street2?: string | undefined;
+    street2?: string | null | undefined;
     /**
      * The updated_at date
      */
-    updatedAt?: Date | undefined;
+    updatedAt?: Date | null | undefined;
     /**
      * The ZIP code/Postal code of the location
      */
-    zipCode?: string | undefined;
+    zipCode?: string | null | undefined;
 };
 
 /** @internal */
 export const HRISLocationValue$ = z.nativeEnum(HRISLocationValue);
 
 /** @internal */
-export namespace Country$ {
+export namespace HRISLocationCountry$ {
     export type Inbound = {
         source_value: string;
         value: HRISLocationValue;
     };
 
-    export const inboundSchema: z.ZodType<Country, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<HRISLocationCountry, z.ZodTypeDef, Inbound> = z
         .object({
             source_value: z.string(),
             value: HRISLocationValue$,
@@ -369,7 +369,7 @@ export namespace Country$ {
         value: HRISLocationValue;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Country> = z
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, HRISLocationCountry> = z
         .object({
             sourceValue: z.string(),
             value: HRISLocationValue$,
@@ -386,13 +386,13 @@ export namespace Country$ {
 export const HRISLocationSchemasValue$ = z.nativeEnum(HRISLocationSchemasValue);
 
 /** @internal */
-export namespace LocationType$ {
+export namespace HRISLocationLocationType$ {
     export type Inbound = {
         source_value: string;
         value: HRISLocationSchemasValue;
     };
 
-    export const inboundSchema: z.ZodType<LocationType, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<HRISLocationLocationType, z.ZodTypeDef, Inbound> = z
         .object({
             source_value: z.string(),
             value: HRISLocationSchemasValue$,
@@ -409,7 +409,7 @@ export namespace LocationType$ {
         value: HRISLocationSchemasValue;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, LocationType> = z
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, HRISLocationLocationType> = z
         .object({
             sourceValue: z.string(),
             value: HRISLocationSchemasValue$,
@@ -425,44 +425,52 @@ export namespace LocationType$ {
 /** @internal */
 export namespace HRISLocation$ {
     export type Inbound = {
-        city?: string | undefined;
-        country?: Country$.Inbound | undefined;
-        created_at?: string | undefined;
-        employee_id?: string | undefined;
-        id?: string | undefined;
-        location_type?: LocationType$.Inbound | undefined;
-        name?: string | undefined;
-        phone_number?: string | undefined;
-        state?: string | undefined;
-        street_1?: string | undefined;
-        street_2?: string | undefined;
-        updated_at?: string | undefined;
-        zip_code?: string | undefined;
+        city?: string | null | undefined;
+        country?: HRISLocationCountry$.Inbound | null | undefined;
+        created_at?: string | null | undefined;
+        employee_id?: string | null | undefined;
+        id?: string | null | undefined;
+        location_type?: HRISLocationLocationType$.Inbound | null | undefined;
+        name?: string | null | undefined;
+        phone_number?: string | null | undefined;
+        state?: string | null | undefined;
+        street_1?: string | null | undefined;
+        street_2?: string | null | undefined;
+        updated_at?: string | null | undefined;
+        zip_code?: string | null | undefined;
     };
 
     export const inboundSchema: z.ZodType<HRISLocation, z.ZodTypeDef, Inbound> = z
         .object({
-            city: z.string().optional(),
-            country: z.lazy(() => Country$.inboundSchema).optional(),
+            city: z.string().nullable().optional(),
+            country: z
+                .lazy(() => HRISLocationCountry$.inboundSchema)
+                .nullable()
+                .optional(),
             created_at: z
                 .string()
                 .datetime({ offset: true })
                 .transform((v) => new Date(v))
+                .nullable()
                 .optional(),
-            employee_id: z.string().optional(),
-            id: z.string().optional(),
-            location_type: z.lazy(() => LocationType$.inboundSchema).optional(),
-            name: z.string().optional(),
-            phone_number: z.string().optional(),
-            state: z.string().optional(),
-            street_1: z.string().optional(),
-            street_2: z.string().optional(),
+            employee_id: z.string().nullable().optional(),
+            id: z.string().nullable().optional(),
+            location_type: z
+                .lazy(() => HRISLocationLocationType$.inboundSchema)
+                .nullable()
+                .optional(),
+            name: z.string().nullable().optional(),
+            phone_number: z.string().nullable().optional(),
+            state: z.string().nullable().optional(),
+            street_1: z.string().nullable().optional(),
+            street_2: z.string().nullable().optional(),
             updated_at: z
                 .string()
                 .datetime({ offset: true })
                 .transform((v) => new Date(v))
+                .nullable()
                 .optional(),
-            zip_code: z.string().optional(),
+            zip_code: z.string().nullable().optional(),
         })
         .transform((v) => {
             return {
@@ -483,42 +491,50 @@ export namespace HRISLocation$ {
         });
 
     export type Outbound = {
-        city?: string | undefined;
-        country?: Country$.Outbound | undefined;
-        created_at?: string | undefined;
-        employee_id?: string | undefined;
-        id?: string | undefined;
-        location_type?: LocationType$.Outbound | undefined;
-        name?: string | undefined;
-        phone_number?: string | undefined;
-        state?: string | undefined;
-        street_1?: string | undefined;
-        street_2?: string | undefined;
-        updated_at?: string | undefined;
-        zip_code?: string | undefined;
+        city?: string | null | undefined;
+        country?: HRISLocationCountry$.Outbound | null | undefined;
+        created_at?: string | null | undefined;
+        employee_id?: string | null | undefined;
+        id?: string | null | undefined;
+        location_type?: HRISLocationLocationType$.Outbound | null | undefined;
+        name?: string | null | undefined;
+        phone_number?: string | null | undefined;
+        state?: string | null | undefined;
+        street_1?: string | null | undefined;
+        street_2?: string | null | undefined;
+        updated_at?: string | null | undefined;
+        zip_code?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, HRISLocation> = z
         .object({
-            city: z.string().optional(),
-            country: z.lazy(() => Country$.outboundSchema).optional(),
+            city: z.string().nullable().optional(),
+            country: z
+                .lazy(() => HRISLocationCountry$.outboundSchema)
+                .nullable()
+                .optional(),
             createdAt: z
                 .date()
                 .transform((v) => v.toISOString())
+                .nullable()
                 .optional(),
-            employeeId: z.string().optional(),
-            id: z.string().optional(),
-            locationType: z.lazy(() => LocationType$.outboundSchema).optional(),
-            name: z.string().optional(),
-            phoneNumber: z.string().optional(),
-            state: z.string().optional(),
-            street1: z.string().optional(),
-            street2: z.string().optional(),
+            employeeId: z.string().nullable().optional(),
+            id: z.string().nullable().optional(),
+            locationType: z
+                .lazy(() => HRISLocationLocationType$.outboundSchema)
+                .nullable()
+                .optional(),
+            name: z.string().nullable().optional(),
+            phoneNumber: z.string().nullable().optional(),
+            state: z.string().nullable().optional(),
+            street1: z.string().nullable().optional(),
+            street2: z.string().nullable().optional(),
             updatedAt: z
                 .date()
                 .transform((v) => v.toISOString())
+                .nullable()
                 .optional(),
-            zipCode: z.string().optional(),
+            zipCode: z.string().nullable().optional(),
         })
         .transform((v) => {
             return {
