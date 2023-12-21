@@ -160,9 +160,8 @@ run();
 * [proxyRequest](docs/sdks/proxy/README.md#proxyrequest) - Proxy Request
 <!-- End Available Resources and Operations [operations] -->
 
-
-
-<!-- No Pagination -->
+<!-- Start Pagination -->
+<!-- End Pagination -->
 
 <!-- Start Error Handling [errors] -->
 ## Error Handling
