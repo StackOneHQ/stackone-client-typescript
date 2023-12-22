@@ -33,7 +33,7 @@ export type HrisGetEmployeesTimeOffRequestRequest = {
     /**
      * Query parameters that can be used to pass through parameters to the underlying provider request by surrounding them with "proxy" key
      */
-    proxy?: HrisGetEmployeesTimeOffRequestQueryParamProxy | undefined;
+    proxy?: HrisGetEmployeesTimeOffRequestQueryParamProxy | null | undefined;
     /**
      * Indicates that the raw request result is returned
      */
@@ -99,7 +99,7 @@ export namespace HrisGetEmployeesTimeOffRequestRequest$ {
         next?: string | null | undefined;
         page?: string | null | undefined;
         page_size?: string | null | undefined;
-        proxy?: HrisGetEmployeesTimeOffRequestQueryParamProxy$.Inbound | undefined;
+        proxy?: HrisGetEmployeesTimeOffRequestQueryParamProxy$.Inbound | null | undefined;
         raw?: boolean | null | undefined;
         subResourceId: string;
         sync_token?: string | null | undefined;
@@ -120,6 +120,7 @@ export namespace HrisGetEmployeesTimeOffRequestRequest$ {
             page_size: z.string().nullable().optional(),
             proxy: z
                 .lazy(() => HrisGetEmployeesTimeOffRequestQueryParamProxy$.inboundSchema)
+                .nullable()
                 .optional(),
             raw: z.boolean().nullable().optional(),
             subResourceId: z.string(),
@@ -149,7 +150,7 @@ export namespace HrisGetEmployeesTimeOffRequestRequest$ {
         next?: string | null | undefined;
         page?: string | null | undefined;
         page_size?: string | null | undefined;
-        proxy?: HrisGetEmployeesTimeOffRequestQueryParamProxy$.Outbound | undefined;
+        proxy?: HrisGetEmployeesTimeOffRequestQueryParamProxy$.Outbound | null | undefined;
         raw?: boolean | null | undefined;
         subResourceId: string;
         sync_token?: string | null | undefined;
@@ -170,6 +171,7 @@ export namespace HrisGetEmployeesTimeOffRequestRequest$ {
             pageSize: z.string().nullable().optional(),
             proxy: z
                 .lazy(() => HrisGetEmployeesTimeOffRequestQueryParamProxy$.outboundSchema)
+                .nullable()
                 .optional(),
             raw: z.boolean().nullable().optional(),
             subResourceId: z.string(),

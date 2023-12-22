@@ -33,7 +33,7 @@ export type AtsListCandidateNotesRequest = {
     /**
      * Query parameters that can be used to pass through parameters to the underlying provider request by surrounding them with "proxy" key
      */
-    proxy?: AtsListCandidateNotesQueryParamProxy | undefined;
+    proxy?: AtsListCandidateNotesQueryParamProxy | null | undefined;
     /**
      * Indicates that the raw request result is returned
      */
@@ -98,7 +98,7 @@ export namespace AtsListCandidateNotesRequest$ {
         next?: string | null | undefined;
         page?: string | null | undefined;
         page_size?: string | null | undefined;
-        proxy?: AtsListCandidateNotesQueryParamProxy$.Inbound | undefined;
+        proxy?: AtsListCandidateNotesQueryParamProxy$.Inbound | null | undefined;
         raw?: boolean | null | undefined;
         sync_token?: string | null | undefined;
         updated_after?: string | null | undefined;
@@ -112,7 +112,10 @@ export namespace AtsListCandidateNotesRequest$ {
             next: z.string().nullable().optional(),
             page: z.string().nullable().optional(),
             page_size: z.string().nullable().optional(),
-            proxy: z.lazy(() => AtsListCandidateNotesQueryParamProxy$.inboundSchema).optional(),
+            proxy: z
+                .lazy(() => AtsListCandidateNotesQueryParamProxy$.inboundSchema)
+                .nullable()
+                .optional(),
             raw: z.boolean().nullable().optional(),
             sync_token: z.string().nullable().optional(),
             updated_after: z.string().nullable().optional(),
@@ -139,7 +142,7 @@ export namespace AtsListCandidateNotesRequest$ {
         next?: string | null | undefined;
         page?: string | null | undefined;
         page_size?: string | null | undefined;
-        proxy?: AtsListCandidateNotesQueryParamProxy$.Outbound | undefined;
+        proxy?: AtsListCandidateNotesQueryParamProxy$.Outbound | null | undefined;
         raw?: boolean | null | undefined;
         sync_token?: string | null | undefined;
         updated_after?: string | null | undefined;
@@ -153,7 +156,10 @@ export namespace AtsListCandidateNotesRequest$ {
             next: z.string().nullable().optional(),
             page: z.string().nullable().optional(),
             pageSize: z.string().nullable().optional(),
-            proxy: z.lazy(() => AtsListCandidateNotesQueryParamProxy$.outboundSchema).optional(),
+            proxy: z
+                .lazy(() => AtsListCandidateNotesQueryParamProxy$.outboundSchema)
+                .nullable()
+                .optional(),
             raw: z.boolean().nullable().optional(),
             syncToken: z.string().nullable().optional(),
             updatedAfter: z.string().nullable().optional(),

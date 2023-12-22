@@ -33,7 +33,7 @@ export type AtsGetUserRequest = {
     /**
      * Query parameters that can be used to pass through parameters to the underlying provider request by surrounding them with "proxy" key
      */
-    proxy?: AtsGetUserQueryParamProxy | undefined;
+    proxy?: AtsGetUserQueryParamProxy | null | undefined;
     /**
      * Indicates that the raw request result is returned
      */
@@ -92,7 +92,7 @@ export namespace AtsGetUserRequest$ {
         next?: string | null | undefined;
         page?: string | null | undefined;
         page_size?: string | null | undefined;
-        proxy?: AtsGetUserQueryParamProxy$.Inbound | undefined;
+        proxy?: AtsGetUserQueryParamProxy$.Inbound | null | undefined;
         raw?: boolean | null | undefined;
         sync_token?: string | null | undefined;
         updated_after?: string | null | undefined;
@@ -106,7 +106,10 @@ export namespace AtsGetUserRequest$ {
             next: z.string().nullable().optional(),
             page: z.string().nullable().optional(),
             page_size: z.string().nullable().optional(),
-            proxy: z.lazy(() => AtsGetUserQueryParamProxy$.inboundSchema).optional(),
+            proxy: z
+                .lazy(() => AtsGetUserQueryParamProxy$.inboundSchema)
+                .nullable()
+                .optional(),
             raw: z.boolean().nullable().optional(),
             sync_token: z.string().nullable().optional(),
             updated_after: z.string().nullable().optional(),
@@ -133,7 +136,7 @@ export namespace AtsGetUserRequest$ {
         next?: string | null | undefined;
         page?: string | null | undefined;
         page_size?: string | null | undefined;
-        proxy?: AtsGetUserQueryParamProxy$.Outbound | undefined;
+        proxy?: AtsGetUserQueryParamProxy$.Outbound | null | undefined;
         raw?: boolean | null | undefined;
         sync_token?: string | null | undefined;
         updated_after?: string | null | undefined;
@@ -147,7 +150,10 @@ export namespace AtsGetUserRequest$ {
             next: z.string().nullable().optional(),
             page: z.string().nullable().optional(),
             pageSize: z.string().nullable().optional(),
-            proxy: z.lazy(() => AtsGetUserQueryParamProxy$.outboundSchema).optional(),
+            proxy: z
+                .lazy(() => AtsGetUserQueryParamProxy$.outboundSchema)
+                .nullable()
+                .optional(),
             raw: z.boolean().nullable().optional(),
             syncToken: z.string().nullable().optional(),
             updatedAfter: z.string().nullable().optional(),

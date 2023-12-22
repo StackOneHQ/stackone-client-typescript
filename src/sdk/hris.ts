@@ -8,6 +8,8 @@ import { HTTPClient } from "../lib/http";
 import { ClientSDK, RequestOptions } from "../lib/sdks";
 import * as errors from "../sdk/models/errors";
 import * as operations from "../sdk/models/operations";
+import { Paginated, Paginator } from "../sdk/types";
+import jp from "jsonpath";
 
 export class Hris extends ClientSDK {
     private readonly options$: SDKOptions;
@@ -935,7 +937,7 @@ export class Hris extends ClientSDK {
     async listEmployees(
         input: operations.HrisListEmployeesRequest,
         options?: RequestOptions
-    ): Promise<operations.HrisListEmployeesResponse> {
+    ): Promise<Paginated<operations.HrisListEmployeesResponse>> {
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
@@ -998,6 +1000,24 @@ export class Hris extends ClientSDK {
             options
         );
 
+        const nextFunc = (
+            responseData: unknown
+        ): Paginator<operations.HrisListEmployeesResponse> => {
+            const nextCursor = jp.value(responseData, "$.next");
+            if (nextCursor == null) {
+                return () => null;
+            }
+
+            return () =>
+                this.listEmployees(
+                    {
+                        ...input,
+                        next: nextCursor,
+                    },
+                    options
+                );
+        };
+
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
             StatusCode: response.status,
@@ -1006,10 +1026,11 @@ export class Hris extends ClientSDK {
 
         if (this.matchResponse(response, 200, "application/json")) {
             const responseBody = await response.json();
-            const result = operations.HrisListEmployeesResponse$.inboundSchema.parse({
+            const parsed = operations.HrisListEmployeesResponse$.inboundSchema.parse({
                 ...responseFields$,
                 EmployeesPaginated: responseBody,
             });
+            const result = { ...parsed, next: nextFunc(responseBody) };
             return result;
         } else {
             const responseBody = await response.text();

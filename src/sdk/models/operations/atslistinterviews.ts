@@ -32,7 +32,7 @@ export type AtsListInterviewsRequest = {
     /**
      * Query parameters that can be used to pass through parameters to the underlying provider request by surrounding them with "proxy" key
      */
-    proxy?: AtsListInterviewsQueryParamProxy | undefined;
+    proxy?: AtsListInterviewsQueryParamProxy | null | undefined;
     /**
      * Indicates that the raw request result is returned
      */
@@ -93,7 +93,7 @@ export namespace AtsListInterviewsRequest$ {
         next?: string | null | undefined;
         page?: string | null | undefined;
         page_size?: string | null | undefined;
-        proxy?: AtsListInterviewsQueryParamProxy$.Inbound | undefined;
+        proxy?: AtsListInterviewsQueryParamProxy$.Inbound | null | undefined;
         raw?: boolean | null | undefined;
         sync_token?: string | null | undefined;
         updated_after?: string | null | undefined;
@@ -106,7 +106,10 @@ export namespace AtsListInterviewsRequest$ {
             next: z.string().nullable().optional(),
             page: z.string().nullable().optional(),
             page_size: z.string().nullable().optional(),
-            proxy: z.lazy(() => AtsListInterviewsQueryParamProxy$.inboundSchema).optional(),
+            proxy: z
+                .lazy(() => AtsListInterviewsQueryParamProxy$.inboundSchema)
+                .nullable()
+                .optional(),
             raw: z.boolean().nullable().optional(),
             sync_token: z.string().nullable().optional(),
             updated_after: z.string().nullable().optional(),
@@ -131,7 +134,7 @@ export namespace AtsListInterviewsRequest$ {
         next?: string | null | undefined;
         page?: string | null | undefined;
         page_size?: string | null | undefined;
-        proxy?: AtsListInterviewsQueryParamProxy$.Outbound | undefined;
+        proxy?: AtsListInterviewsQueryParamProxy$.Outbound | null | undefined;
         raw?: boolean | null | undefined;
         sync_token?: string | null | undefined;
         updated_after?: string | null | undefined;
@@ -144,7 +147,10 @@ export namespace AtsListInterviewsRequest$ {
             next: z.string().nullable().optional(),
             page: z.string().nullable().optional(),
             pageSize: z.string().nullable().optional(),
-            proxy: z.lazy(() => AtsListInterviewsQueryParamProxy$.outboundSchema).optional(),
+            proxy: z
+                .lazy(() => AtsListInterviewsQueryParamProxy$.outboundSchema)
+                .nullable()
+                .optional(),
             raw: z.boolean().nullable().optional(),
             syncToken: z.string().nullable().optional(),
             updatedAfter: z.string().nullable().optional(),

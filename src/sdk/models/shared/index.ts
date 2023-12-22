@@ -35,6 +35,7 @@ export * from "./companiespaginated";
 export * from "./company";
 export * from "./companyresult";
 export * from "./compensation";
+export * from "./connectorsmeta";
 export * from "./connectsession";
 export * from "./connectsessionauthenticate";
 export * from "./connectsessioncreate";

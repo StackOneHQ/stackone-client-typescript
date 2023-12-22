@@ -32,7 +32,7 @@ export type HrisListCompaniesRequest = {
     /**
      * Query parameters that can be used to pass through parameters to the underlying provider request by surrounding them with "proxy" key
      */
-    proxy?: HrisListCompaniesQueryParamProxy | undefined;
+    proxy?: HrisListCompaniesQueryParamProxy | null | undefined;
     /**
      * Indicates that the raw request result is returned
      */
@@ -93,7 +93,7 @@ export namespace HrisListCompaniesRequest$ {
         next?: string | null | undefined;
         page?: string | null | undefined;
         page_size?: string | null | undefined;
-        proxy?: HrisListCompaniesQueryParamProxy$.Inbound | undefined;
+        proxy?: HrisListCompaniesQueryParamProxy$.Inbound | null | undefined;
         raw?: boolean | null | undefined;
         sync_token?: string | null | undefined;
         updated_after?: string | null | undefined;
@@ -106,7 +106,10 @@ export namespace HrisListCompaniesRequest$ {
             next: z.string().nullable().optional(),
             page: z.string().nullable().optional(),
             page_size: z.string().nullable().optional(),
-            proxy: z.lazy(() => HrisListCompaniesQueryParamProxy$.inboundSchema).optional(),
+            proxy: z
+                .lazy(() => HrisListCompaniesQueryParamProxy$.inboundSchema)
+                .nullable()
+                .optional(),
             raw: z.boolean().nullable().optional(),
             sync_token: z.string().nullable().optional(),
             updated_after: z.string().nullable().optional(),
@@ -131,7 +134,7 @@ export namespace HrisListCompaniesRequest$ {
         next?: string | null | undefined;
         page?: string | null | undefined;
         page_size?: string | null | undefined;
-        proxy?: HrisListCompaniesQueryParamProxy$.Outbound | undefined;
+        proxy?: HrisListCompaniesQueryParamProxy$.Outbound | null | undefined;
         raw?: boolean | null | undefined;
         sync_token?: string | null | undefined;
         updated_after?: string | null | undefined;
@@ -144,7 +147,10 @@ export namespace HrisListCompaniesRequest$ {
             next: z.string().nullable().optional(),
             page: z.string().nullable().optional(),
             pageSize: z.string().nullable().optional(),
-            proxy: z.lazy(() => HrisListCompaniesQueryParamProxy$.outboundSchema).optional(),
+            proxy: z
+                .lazy(() => HrisListCompaniesQueryParamProxy$.outboundSchema)
+                .nullable()
+                .optional(),
             raw: z.boolean().nullable().optional(),
             syncToken: z.string().nullable().optional(),
             updatedAfter: z.string().nullable().optional(),

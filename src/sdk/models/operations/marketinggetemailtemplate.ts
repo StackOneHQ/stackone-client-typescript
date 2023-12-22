@@ -33,7 +33,7 @@ export type MarketingGetEmailTemplateRequest = {
     /**
      * Query parameters that can be used to pass through parameters to the underlying provider request by surrounding them with "proxy" key
      */
-    proxy?: MarketingGetEmailTemplateQueryParamProxy | undefined;
+    proxy?: MarketingGetEmailTemplateQueryParamProxy | null | undefined;
     /**
      * Indicates that the raw request result is returned
      */
@@ -98,7 +98,7 @@ export namespace MarketingGetEmailTemplateRequest$ {
         next?: string | null | undefined;
         page?: string | null | undefined;
         page_size?: string | null | undefined;
-        proxy?: MarketingGetEmailTemplateQueryParamProxy$.Inbound | undefined;
+        proxy?: MarketingGetEmailTemplateQueryParamProxy$.Inbound | null | undefined;
         raw?: boolean | null | undefined;
         sync_token?: string | null | undefined;
         updated_after?: string | null | undefined;
@@ -115,6 +115,7 @@ export namespace MarketingGetEmailTemplateRequest$ {
                 page_size: z.string().nullable().optional(),
                 proxy: z
                     .lazy(() => MarketingGetEmailTemplateQueryParamProxy$.inboundSchema)
+                    .nullable()
                     .optional(),
                 raw: z.boolean().nullable().optional(),
                 sync_token: z.string().nullable().optional(),
@@ -142,7 +143,7 @@ export namespace MarketingGetEmailTemplateRequest$ {
         next?: string | null | undefined;
         page?: string | null | undefined;
         page_size?: string | null | undefined;
-        proxy?: MarketingGetEmailTemplateQueryParamProxy$.Outbound | undefined;
+        proxy?: MarketingGetEmailTemplateQueryParamProxy$.Outbound | null | undefined;
         raw?: boolean | null | undefined;
         sync_token?: string | null | undefined;
         updated_after?: string | null | undefined;
@@ -162,6 +163,7 @@ export namespace MarketingGetEmailTemplateRequest$ {
             pageSize: z.string().nullable().optional(),
             proxy: z
                 .lazy(() => MarketingGetEmailTemplateQueryParamProxy$.outboundSchema)
+                .nullable()
                 .optional(),
             raw: z.boolean().nullable().optional(),
             syncToken: z.string().nullable().optional(),

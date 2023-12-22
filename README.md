@@ -46,7 +46,12 @@ async function run() {
         throw new Error("Unexpected status code: " + res?.statusCode || "-");
     }
 
-    // handle response
+    let items: typeof res | null = res;
+    while (items != null) {
+        // handle items
+
+        items = await items.next();
+    }
 }
 
 run();
@@ -69,6 +74,11 @@ run();
 
 * [authenticateConnectSession](docs/sdks/connectsessions/README.md#authenticateconnectsession) - Authenticate Connect Session
 * [createConnectSession](docs/sdks/connectsessions/README.md#createconnectsession) - Create Connect Session
+
+### [connectors](docs/sdks/connectors/README.md)
+
+* [getConnectorMeta](docs/sdks/connectors/README.md#getconnectormeta) - Get Connector Meta information for the given provider key
+* [listConnectorsMeta](docs/sdks/connectors/README.md#listconnectorsmeta) - List Connectors Meta Information for all providers
 
 ### [ats](docs/sdks/ats/README.md)
 
@@ -160,8 +170,45 @@ run();
 * [proxyRequest](docs/sdks/proxy/README.md#proxyrequest) - Proxy Request
 <!-- End Available Resources and Operations [operations] -->
 
-<!-- Start Pagination -->
-<!-- End Pagination -->
+<!-- Start Pagination [pagination] -->
+## Pagination
+
+Some of the endpoints in this SDK support pagination. To use pagination, you make your SDK calls as usual, but the
+returned response object will have a `next` method that can be called to pull down the next group of results. If the
+return value of `next` is `null`, then there are no more pages to be fetched.
+
+Here's an example of one such pagination call:
+```typescript
+import { StackOne } from "@stackone/stackone-client-ts";
+
+async function run() {
+    const sdk = new StackOne({
+        security: {
+            password: "<YOUR_PASSWORD_HERE>",
+        },
+    });
+
+    const res = await sdk.hris.listEmployees({
+        proxy: {},
+        xAccountId: "string",
+    });
+
+    if (res?.statusCode !== 200) {
+        throw new Error("Unexpected status code: " + res?.statusCode || "-");
+    }
+
+    let items: typeof res | null = res;
+    while (items != null) {
+        // handle items
+
+        items = await items.next();
+    }
+}
+
+run();
+
+```
+<!-- End Pagination [pagination] -->
 
 <!-- Start Error Handling [errors] -->
 ## Error Handling

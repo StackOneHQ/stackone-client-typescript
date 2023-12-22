@@ -1,5 +1,6 @@
 src/sdk/accounts.ts
 src/sdk/connectsessions.ts
+src/sdk/connectors.ts
 src/sdk/ats.ts
 src/sdk/crm.ts
 src/sdk/hris.ts
@@ -34,6 +35,8 @@ src/sdk/models/operations/stackonelistlinkedaccounts.ts
 src/sdk/models/operations/stackoneupdateaccount.ts
 src/sdk/models/operations/stackoneauthenticateconnectsession.ts
 src/sdk/models/operations/stackonecreateconnectsession.ts
+src/sdk/models/operations/stackonegetconnectormeta.ts
+src/sdk/models/operations/stackonelistconnectorsmeta.ts
 src/sdk/models/operations/atscreateapplication.ts
 src/sdk/models/operations/atscreatecandidate.ts
 src/sdk/models/operations/atscreatecandidatenote.ts
@@ -115,6 +118,7 @@ src/sdk/models/shared/connectsession.ts
 src/sdk/models/shared/connectsessionauthenticate.ts
 src/sdk/models/shared/connectsessiontoken.ts
 src/sdk/models/shared/connectsessioncreate.ts
+src/sdk/models/shared/connectorsmeta.ts
 src/sdk/models/shared/createresult.ts
 src/sdk/models/shared/atscreateapplicationrequestdto.ts
 src/sdk/models/shared/answer.ts
@@ -247,6 +251,10 @@ docs/sdk/models/operations/stackoneupdateaccountrequest.md
 docs/sdk/models/operations/stackoneupdateaccountresponse.md
 docs/sdk/models/operations/stackoneauthenticateconnectsessionresponse.md
 docs/sdk/models/operations/stackonecreateconnectsessionresponse.md
+docs/sdk/models/operations/stackonegetconnectormetarequest.md
+docs/sdk/models/operations/stackonegetconnectormetaresponse.md
+docs/sdk/models/operations/stackonelistconnectorsmetarequest.md
+docs/sdk/models/operations/stackonelistconnectorsmetaresponse.md
 docs/sdk/models/operations/atscreateapplicationrequest.md
 docs/sdk/models/operations/atscreateapplicationresponse.md
 docs/sdk/models/operations/atscreatecandidaterequest.md
@@ -452,8 +460,8 @@ docs/sdk/models/operations/stackoneproxyrequestresponse.md
 docs/sdk/models/shared/credentials.md
 docs/sdk/models/shared/setupinformation.md
 docs/sdk/models/shared/linkedaccount.md
-docs/sdk/models/shared/category.md
-docs/sdk/models/shared/models.md
+docs/sdk/models/shared/linkedaccountmetacategory.md
+docs/sdk/models/shared/linkedaccountmetamodels.md
 docs/sdk/models/shared/linkedaccountmeta.md
 docs/sdk/models/shared/patchaccountdto.md
 docs/sdk/models/shared/categories.md
@@ -464,6 +472,9 @@ docs/sdk/models/shared/connectsessiontoken.md
 docs/sdk/models/shared/connectsessioncreatecategories.md
 docs/sdk/models/shared/metadata.md
 docs/sdk/models/shared/connectsessioncreate.md
+docs/sdk/models/shared/category.md
+docs/sdk/models/shared/models.md
+docs/sdk/models/shared/connectorsmeta.md
 docs/sdk/models/shared/createresult.md
 docs/sdk/models/shared/atscreateapplicationrequestdtoquestionnaire.md
 docs/sdk/models/shared/atscreateapplicationrequestdto.md
@@ -710,6 +721,7 @@ docs/sdk/models/shared/security.md
 docs/sdks/stackone/README.md
 docs/sdks/accounts/README.md
 docs/sdks/connectsessions/README.md
+docs/sdks/connectors/README.md
 docs/sdks/ats/README.md
 docs/sdks/crm/README.md
 docs/sdks/hris/README.md

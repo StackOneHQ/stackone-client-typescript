@@ -80,6 +80,8 @@ export * from "./stackonecreateconnectsession";
 export * from "./stackonedeleteaccount";
 export * from "./stackonegetaccount";
 export * from "./stackonegetaccountmetainfo";
+export * from "./stackonegetconnectormeta";
+export * from "./stackonelistconnectorsmeta";
 export * from "./stackonelistlinkedaccounts";
 export * from "./stackoneproxyrequest";
 export * from "./stackoneupdateaccount";

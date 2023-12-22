@@ -33,7 +33,7 @@ export type AtsGetDepartmentRequest = {
     /**
      * Query parameters that can be used to pass through parameters to the underlying provider request by surrounding them with "proxy" key
      */
-    proxy?: AtsGetDepartmentQueryParamProxy | undefined;
+    proxy?: AtsGetDepartmentQueryParamProxy | null | undefined;
     /**
      * Indicates that the raw request result is returned
      */
@@ -95,7 +95,7 @@ export namespace AtsGetDepartmentRequest$ {
         next?: string | null | undefined;
         page?: string | null | undefined;
         page_size?: string | null | undefined;
-        proxy?: AtsGetDepartmentQueryParamProxy$.Inbound | undefined;
+        proxy?: AtsGetDepartmentQueryParamProxy$.Inbound | null | undefined;
         raw?: boolean | null | undefined;
         sync_token?: string | null | undefined;
         updated_after?: string | null | undefined;
@@ -109,7 +109,10 @@ export namespace AtsGetDepartmentRequest$ {
             next: z.string().nullable().optional(),
             page: z.string().nullable().optional(),
             page_size: z.string().nullable().optional(),
-            proxy: z.lazy(() => AtsGetDepartmentQueryParamProxy$.inboundSchema).optional(),
+            proxy: z
+                .lazy(() => AtsGetDepartmentQueryParamProxy$.inboundSchema)
+                .nullable()
+                .optional(),
             raw: z.boolean().nullable().optional(),
             sync_token: z.string().nullable().optional(),
             updated_after: z.string().nullable().optional(),
@@ -136,7 +139,7 @@ export namespace AtsGetDepartmentRequest$ {
         next?: string | null | undefined;
         page?: string | null | undefined;
         page_size?: string | null | undefined;
-        proxy?: AtsGetDepartmentQueryParamProxy$.Outbound | undefined;
+        proxy?: AtsGetDepartmentQueryParamProxy$.Outbound | null | undefined;
         raw?: boolean | null | undefined;
         sync_token?: string | null | undefined;
         updated_after?: string | null | undefined;
@@ -150,7 +153,10 @@ export namespace AtsGetDepartmentRequest$ {
             next: z.string().nullable().optional(),
             page: z.string().nullable().optional(),
             pageSize: z.string().nullable().optional(),
-            proxy: z.lazy(() => AtsGetDepartmentQueryParamProxy$.outboundSchema).optional(),
+            proxy: z
+                .lazy(() => AtsGetDepartmentQueryParamProxy$.outboundSchema)
+                .nullable()
+                .optional(),
             raw: z.boolean().nullable().optional(),
             syncToken: z.string().nullable().optional(),
             updatedAfter: z.string().nullable().optional(),
