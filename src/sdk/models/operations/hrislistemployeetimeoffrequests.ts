@@ -33,7 +33,7 @@ export type HrisListEmployeeTimeOffRequestsRequest = {
     /**
      * Query parameters that can be used to pass through parameters to the underlying provider request by surrounding them with "proxy" key
      */
-    proxy?: HrisListEmployeeTimeOffRequestsQueryParamProxy | undefined;
+    proxy?: HrisListEmployeeTimeOffRequestsQueryParamProxy | null | undefined;
     /**
      * Indicates that the raw request result is returned
      */
@@ -98,7 +98,7 @@ export namespace HrisListEmployeeTimeOffRequestsRequest$ {
         next?: string | null | undefined;
         page?: string | null | undefined;
         page_size?: string | null | undefined;
-        proxy?: HrisListEmployeeTimeOffRequestsQueryParamProxy$.Inbound | undefined;
+        proxy?: HrisListEmployeeTimeOffRequestsQueryParamProxy$.Inbound | null | undefined;
         raw?: boolean | null | undefined;
         sync_token?: string | null | undefined;
         updated_after?: string | null | undefined;
@@ -118,6 +118,7 @@ export namespace HrisListEmployeeTimeOffRequestsRequest$ {
             page_size: z.string().nullable().optional(),
             proxy: z
                 .lazy(() => HrisListEmployeeTimeOffRequestsQueryParamProxy$.inboundSchema)
+                .nullable()
                 .optional(),
             raw: z.boolean().nullable().optional(),
             sync_token: z.string().nullable().optional(),
@@ -145,7 +146,7 @@ export namespace HrisListEmployeeTimeOffRequestsRequest$ {
         next?: string | null | undefined;
         page?: string | null | undefined;
         page_size?: string | null | undefined;
-        proxy?: HrisListEmployeeTimeOffRequestsQueryParamProxy$.Outbound | undefined;
+        proxy?: HrisListEmployeeTimeOffRequestsQueryParamProxy$.Outbound | null | undefined;
         raw?: boolean | null | undefined;
         sync_token?: string | null | undefined;
         updated_after?: string | null | undefined;
@@ -165,6 +166,7 @@ export namespace HrisListEmployeeTimeOffRequestsRequest$ {
             pageSize: z.string().nullable().optional(),
             proxy: z
                 .lazy(() => HrisListEmployeeTimeOffRequestsQueryParamProxy$.outboundSchema)
+                .nullable()
                 .optional(),
             raw: z.boolean().nullable().optional(),
             syncToken: z.string().nullable().optional(),

@@ -33,7 +33,7 @@ export type AtsGetApplicationRequest = {
     /**
      * Query parameters that can be used to pass through parameters to the underlying provider request by surrounding them with "proxy" key
      */
-    proxy?: Proxy | undefined;
+    proxy?: Proxy | null | undefined;
     /**
      * Indicates that the raw request result is returned
      */
@@ -90,7 +90,7 @@ export namespace AtsGetApplicationRequest$ {
         next?: string | null | undefined;
         page?: string | null | undefined;
         page_size?: string | null | undefined;
-        proxy?: Proxy$.Inbound | undefined;
+        proxy?: Proxy$.Inbound | null | undefined;
         raw?: boolean | null | undefined;
         sync_token?: string | null | undefined;
         updated_after?: string | null | undefined;
@@ -104,7 +104,10 @@ export namespace AtsGetApplicationRequest$ {
             next: z.string().nullable().optional(),
             page: z.string().nullable().optional(),
             page_size: z.string().nullable().optional(),
-            proxy: z.lazy(() => Proxy$.inboundSchema).optional(),
+            proxy: z
+                .lazy(() => Proxy$.inboundSchema)
+                .nullable()
+                .optional(),
             raw: z.boolean().nullable().optional(),
             sync_token: z.string().nullable().optional(),
             updated_after: z.string().nullable().optional(),
@@ -131,7 +134,7 @@ export namespace AtsGetApplicationRequest$ {
         next?: string | null | undefined;
         page?: string | null | undefined;
         page_size?: string | null | undefined;
-        proxy?: Proxy$.Outbound | undefined;
+        proxy?: Proxy$.Outbound | null | undefined;
         raw?: boolean | null | undefined;
         sync_token?: string | null | undefined;
         updated_after?: string | null | undefined;
@@ -145,7 +148,10 @@ export namespace AtsGetApplicationRequest$ {
             next: z.string().nullable().optional(),
             page: z.string().nullable().optional(),
             pageSize: z.string().nullable().optional(),
-            proxy: z.lazy(() => Proxy$.outboundSchema).optional(),
+            proxy: z
+                .lazy(() => Proxy$.outboundSchema)
+                .nullable()
+                .optional(),
             raw: z.boolean().nullable().optional(),
             syncToken: z.string().nullable().optional(),
             updatedAfter: z.string().nullable().optional(),

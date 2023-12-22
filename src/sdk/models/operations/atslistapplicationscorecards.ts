@@ -33,7 +33,7 @@ export type AtsListApplicationScorecardsRequest = {
     /**
      * Query parameters that can be used to pass through parameters to the underlying provider request by surrounding them with "proxy" key
      */
-    proxy?: AtsListApplicationScorecardsQueryParamProxy | undefined;
+    proxy?: AtsListApplicationScorecardsQueryParamProxy | null | undefined;
     /**
      * Indicates that the raw request result is returned
      */
@@ -98,7 +98,7 @@ export namespace AtsListApplicationScorecardsRequest$ {
         next?: string | null | undefined;
         page?: string | null | undefined;
         page_size?: string | null | undefined;
-        proxy?: AtsListApplicationScorecardsQueryParamProxy$.Inbound | undefined;
+        proxy?: AtsListApplicationScorecardsQueryParamProxy$.Inbound | null | undefined;
         raw?: boolean | null | undefined;
         sync_token?: string | null | undefined;
         updated_after?: string | null | undefined;
@@ -118,6 +118,7 @@ export namespace AtsListApplicationScorecardsRequest$ {
             page_size: z.string().nullable().optional(),
             proxy: z
                 .lazy(() => AtsListApplicationScorecardsQueryParamProxy$.inboundSchema)
+                .nullable()
                 .optional(),
             raw: z.boolean().nullable().optional(),
             sync_token: z.string().nullable().optional(),
@@ -145,7 +146,7 @@ export namespace AtsListApplicationScorecardsRequest$ {
         next?: string | null | undefined;
         page?: string | null | undefined;
         page_size?: string | null | undefined;
-        proxy?: AtsListApplicationScorecardsQueryParamProxy$.Outbound | undefined;
+        proxy?: AtsListApplicationScorecardsQueryParamProxy$.Outbound | null | undefined;
         raw?: boolean | null | undefined;
         sync_token?: string | null | undefined;
         updated_after?: string | null | undefined;
@@ -165,6 +166,7 @@ export namespace AtsListApplicationScorecardsRequest$ {
             pageSize: z.string().nullable().optional(),
             proxy: z
                 .lazy(() => AtsListApplicationScorecardsQueryParamProxy$.outboundSchema)
+                .nullable()
                 .optional(),
             raw: z.boolean().nullable().optional(),
             syncToken: z.string().nullable().optional(),

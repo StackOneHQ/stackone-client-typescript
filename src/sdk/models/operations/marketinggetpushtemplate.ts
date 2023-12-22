@@ -33,7 +33,7 @@ export type MarketingGetPushTemplateRequest = {
     /**
      * Query parameters that can be used to pass through parameters to the underlying provider request by surrounding them with "proxy" key
      */
-    proxy?: MarketingGetPushTemplateQueryParamProxy | undefined;
+    proxy?: MarketingGetPushTemplateQueryParamProxy | null | undefined;
     /**
      * Indicates that the raw request result is returned
      */
@@ -98,7 +98,7 @@ export namespace MarketingGetPushTemplateRequest$ {
         next?: string | null | undefined;
         page?: string | null | undefined;
         page_size?: string | null | undefined;
-        proxy?: MarketingGetPushTemplateQueryParamProxy$.Inbound | undefined;
+        proxy?: MarketingGetPushTemplateQueryParamProxy$.Inbound | null | undefined;
         raw?: boolean | null | undefined;
         sync_token?: string | null | undefined;
         updated_after?: string | null | undefined;
@@ -115,6 +115,7 @@ export namespace MarketingGetPushTemplateRequest$ {
                 page_size: z.string().nullable().optional(),
                 proxy: z
                     .lazy(() => MarketingGetPushTemplateQueryParamProxy$.inboundSchema)
+                    .nullable()
                     .optional(),
                 raw: z.boolean().nullable().optional(),
                 sync_token: z.string().nullable().optional(),
@@ -142,7 +143,7 @@ export namespace MarketingGetPushTemplateRequest$ {
         next?: string | null | undefined;
         page?: string | null | undefined;
         page_size?: string | null | undefined;
-        proxy?: MarketingGetPushTemplateQueryParamProxy$.Outbound | undefined;
+        proxy?: MarketingGetPushTemplateQueryParamProxy$.Outbound | null | undefined;
         raw?: boolean | null | undefined;
         sync_token?: string | null | undefined;
         updated_after?: string | null | undefined;
@@ -160,7 +161,10 @@ export namespace MarketingGetPushTemplateRequest$ {
             next: z.string().nullable().optional(),
             page: z.string().nullable().optional(),
             pageSize: z.string().nullable().optional(),
-            proxy: z.lazy(() => MarketingGetPushTemplateQueryParamProxy$.outboundSchema).optional(),
+            proxy: z
+                .lazy(() => MarketingGetPushTemplateQueryParamProxy$.outboundSchema)
+                .nullable()
+                .optional(),
             raw: z.boolean().nullable().optional(),
             syncToken: z.string().nullable().optional(),
             updatedAfter: z.string().nullable().optional(),

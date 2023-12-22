@@ -759,7 +759,12 @@ async function run() {
     throw new Error("Unexpected status code: " + res?.statusCode || "-");
   }
   
-  // handle response
+  let items: typeof res | null = res;
+  while (items != null) {
+    // handle items
+  
+    items = await items.next();
+  }
 }
 
 run();

@@ -32,7 +32,7 @@ export type MarketingListOmniChannelTemplatesRequest = {
     /**
      * Query parameters that can be used to pass through parameters to the underlying provider request by surrounding them with "proxy" key
      */
-    proxy?: MarketingListOmniChannelTemplatesQueryParamProxy | undefined;
+    proxy?: MarketingListOmniChannelTemplatesQueryParamProxy | null | undefined;
     /**
      * Indicates that the raw request result is returned
      */
@@ -96,7 +96,7 @@ export namespace MarketingListOmniChannelTemplatesRequest$ {
         next?: string | null | undefined;
         page?: string | null | undefined;
         page_size?: string | null | undefined;
-        proxy?: MarketingListOmniChannelTemplatesQueryParamProxy$.Inbound | undefined;
+        proxy?: MarketingListOmniChannelTemplatesQueryParamProxy$.Inbound | null | undefined;
         raw?: boolean | null | undefined;
         sync_token?: string | null | undefined;
         updated_after?: string | null | undefined;
@@ -115,6 +115,7 @@ export namespace MarketingListOmniChannelTemplatesRequest$ {
             page_size: z.string().nullable().optional(),
             proxy: z
                 .lazy(() => MarketingListOmniChannelTemplatesQueryParamProxy$.inboundSchema)
+                .nullable()
                 .optional(),
             raw: z.boolean().nullable().optional(),
             sync_token: z.string().nullable().optional(),
@@ -140,7 +141,7 @@ export namespace MarketingListOmniChannelTemplatesRequest$ {
         next?: string | null | undefined;
         page?: string | null | undefined;
         page_size?: string | null | undefined;
-        proxy?: MarketingListOmniChannelTemplatesQueryParamProxy$.Outbound | undefined;
+        proxy?: MarketingListOmniChannelTemplatesQueryParamProxy$.Outbound | null | undefined;
         raw?: boolean | null | undefined;
         sync_token?: string | null | undefined;
         updated_after?: string | null | undefined;
@@ -159,6 +160,7 @@ export namespace MarketingListOmniChannelTemplatesRequest$ {
             pageSize: z.string().nullable().optional(),
             proxy: z
                 .lazy(() => MarketingListOmniChannelTemplatesQueryParamProxy$.outboundSchema)
+                .nullable()
                 .optional(),
             raw: z.boolean().nullable().optional(),
             syncToken: z.string().nullable().optional(),

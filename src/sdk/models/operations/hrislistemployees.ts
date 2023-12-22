@@ -40,7 +40,7 @@ export type HrisListEmployeesRequest = {
     /**
      * Query parameters that can be used to pass through parameters to the underlying provider request by surrounding them with "proxy" key
      */
-    proxy?: HrisListEmployeesQueryParamProxy | undefined;
+    proxy?: HrisListEmployeesQueryParamProxy | null | undefined;
     /**
      * Indicates that the raw request result is returned
      */
@@ -103,7 +103,7 @@ export namespace HrisListEmployeesRequest$ {
         next?: string | null | undefined;
         page?: string | null | undefined;
         page_size?: string | null | undefined;
-        proxy?: HrisListEmployeesQueryParamProxy$.Inbound | undefined;
+        proxy?: HrisListEmployeesQueryParamProxy$.Inbound | null | undefined;
         raw?: boolean | null | undefined;
         sync_token?: string | null | undefined;
         updated_after?: string | null | undefined;
@@ -118,7 +118,10 @@ export namespace HrisListEmployeesRequest$ {
             next: z.string().nullable().optional(),
             page: z.string().nullable().optional(),
             page_size: z.string().nullable().optional(),
-            proxy: z.lazy(() => HrisListEmployeesQueryParamProxy$.inboundSchema).optional(),
+            proxy: z
+                .lazy(() => HrisListEmployeesQueryParamProxy$.inboundSchema)
+                .nullable()
+                .optional(),
             raw: z.boolean().nullable().optional(),
             sync_token: z.string().nullable().optional(),
             updated_after: z.string().nullable().optional(),
@@ -147,7 +150,7 @@ export namespace HrisListEmployeesRequest$ {
         next?: string | null | undefined;
         page?: string | null | undefined;
         page_size?: string | null | undefined;
-        proxy?: HrisListEmployeesQueryParamProxy$.Outbound | undefined;
+        proxy?: HrisListEmployeesQueryParamProxy$.Outbound | null | undefined;
         raw?: boolean | null | undefined;
         sync_token?: string | null | undefined;
         updated_after?: string | null | undefined;
@@ -162,7 +165,10 @@ export namespace HrisListEmployeesRequest$ {
             next: z.string().nullable().optional(),
             page: z.string().nullable().optional(),
             pageSize: z.string().nullable().optional(),
-            proxy: z.lazy(() => HrisListEmployeesQueryParamProxy$.outboundSchema).optional(),
+            proxy: z
+                .lazy(() => HrisListEmployeesQueryParamProxy$.outboundSchema)
+                .nullable()
+                .optional(),
             raw: z.boolean().nullable().optional(),
             syncToken: z.string().nullable().optional(),
             updatedAfter: z.string().nullable().optional(),

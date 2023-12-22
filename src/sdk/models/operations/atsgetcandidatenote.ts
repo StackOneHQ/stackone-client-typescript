@@ -33,7 +33,7 @@ export type AtsGetCandidateNoteRequest = {
     /**
      * Query parameters that can be used to pass through parameters to the underlying provider request by surrounding them with "proxy" key
      */
-    proxy?: AtsGetCandidateNoteQueryParamProxy | undefined;
+    proxy?: AtsGetCandidateNoteQueryParamProxy | null | undefined;
     /**
      * Indicates that the raw request result is returned
      */
@@ -99,7 +99,7 @@ export namespace AtsGetCandidateNoteRequest$ {
         next?: string | null | undefined;
         page?: string | null | undefined;
         page_size?: string | null | undefined;
-        proxy?: AtsGetCandidateNoteQueryParamProxy$.Inbound | undefined;
+        proxy?: AtsGetCandidateNoteQueryParamProxy$.Inbound | null | undefined;
         raw?: boolean | null | undefined;
         subResourceId: string;
         sync_token?: string | null | undefined;
@@ -114,7 +114,10 @@ export namespace AtsGetCandidateNoteRequest$ {
             next: z.string().nullable().optional(),
             page: z.string().nullable().optional(),
             page_size: z.string().nullable().optional(),
-            proxy: z.lazy(() => AtsGetCandidateNoteQueryParamProxy$.inboundSchema).optional(),
+            proxy: z
+                .lazy(() => AtsGetCandidateNoteQueryParamProxy$.inboundSchema)
+                .nullable()
+                .optional(),
             raw: z.boolean().nullable().optional(),
             subResourceId: z.string(),
             sync_token: z.string().nullable().optional(),
@@ -143,7 +146,7 @@ export namespace AtsGetCandidateNoteRequest$ {
         next?: string | null | undefined;
         page?: string | null | undefined;
         page_size?: string | null | undefined;
-        proxy?: AtsGetCandidateNoteQueryParamProxy$.Outbound | undefined;
+        proxy?: AtsGetCandidateNoteQueryParamProxy$.Outbound | null | undefined;
         raw?: boolean | null | undefined;
         subResourceId: string;
         sync_token?: string | null | undefined;
@@ -158,7 +161,10 @@ export namespace AtsGetCandidateNoteRequest$ {
             next: z.string().nullable().optional(),
             page: z.string().nullable().optional(),
             pageSize: z.string().nullable().optional(),
-            proxy: z.lazy(() => AtsGetCandidateNoteQueryParamProxy$.outboundSchema).optional(),
+            proxy: z
+                .lazy(() => AtsGetCandidateNoteQueryParamProxy$.outboundSchema)
+                .nullable()
+                .optional(),
             raw: z.boolean().nullable().optional(),
             subResourceId: z.string(),
             syncToken: z.string().nullable().optional(),

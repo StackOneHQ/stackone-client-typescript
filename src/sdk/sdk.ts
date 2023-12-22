@@ -7,6 +7,7 @@ import { HTTPClient } from "../lib/http";
 import { ClientSDK } from "../lib/sdks";
 import { Accounts } from "./accounts";
 import { Ats } from "./ats";
+import { Connectors } from "./connectors";
 import { ConnectSessions } from "./connectsessions";
 import { Crm } from "./crm";
 import { Hris } from "./hris";
@@ -34,6 +35,11 @@ export class StackOne extends ClientSDK {
     private _connectSessions?: ConnectSessions;
     get connectSessions() {
         return (this._connectSessions ??= new ConnectSessions(this.options$));
+    }
+
+    private _connectors?: Connectors;
+    get connectors() {
+        return (this._connectors ??= new Connectors(this.options$));
     }
 
     private _ats?: Ats;

@@ -1,6 +1,4 @@
-# Category
-
-The provider service category
+# LinkedAccountMetaCategory
 
 
 ## Values

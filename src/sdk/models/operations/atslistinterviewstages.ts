@@ -32,7 +32,7 @@ export type AtsListInterviewStagesRequest = {
     /**
      * Query parameters that can be used to pass through parameters to the underlying provider request by surrounding them with "proxy" key
      */
-    proxy?: AtsListInterviewStagesQueryParamProxy | undefined;
+    proxy?: AtsListInterviewStagesQueryParamProxy | null | undefined;
     /**
      * Indicates that the raw request result is returned
      */
@@ -96,7 +96,7 @@ export namespace AtsListInterviewStagesRequest$ {
         next?: string | null | undefined;
         page?: string | null | undefined;
         page_size?: string | null | undefined;
-        proxy?: AtsListInterviewStagesQueryParamProxy$.Inbound | undefined;
+        proxy?: AtsListInterviewStagesQueryParamProxy$.Inbound | null | undefined;
         raw?: boolean | null | undefined;
         sync_token?: string | null | undefined;
         updated_after?: string | null | undefined;
@@ -109,7 +109,10 @@ export namespace AtsListInterviewStagesRequest$ {
             next: z.string().nullable().optional(),
             page: z.string().nullable().optional(),
             page_size: z.string().nullable().optional(),
-            proxy: z.lazy(() => AtsListInterviewStagesQueryParamProxy$.inboundSchema).optional(),
+            proxy: z
+                .lazy(() => AtsListInterviewStagesQueryParamProxy$.inboundSchema)
+                .nullable()
+                .optional(),
             raw: z.boolean().nullable().optional(),
             sync_token: z.string().nullable().optional(),
             updated_after: z.string().nullable().optional(),
@@ -134,7 +137,7 @@ export namespace AtsListInterviewStagesRequest$ {
         next?: string | null | undefined;
         page?: string | null | undefined;
         page_size?: string | null | undefined;
-        proxy?: AtsListInterviewStagesQueryParamProxy$.Outbound | undefined;
+        proxy?: AtsListInterviewStagesQueryParamProxy$.Outbound | null | undefined;
         raw?: boolean | null | undefined;
         sync_token?: string | null | undefined;
         updated_after?: string | null | undefined;
@@ -150,6 +153,7 @@ export namespace AtsListInterviewStagesRequest$ {
                 pageSize: z.string().nullable().optional(),
                 proxy: z
                     .lazy(() => AtsListInterviewStagesQueryParamProxy$.outboundSchema)
+                    .nullable()
                     .optional(),
                 raw: z.boolean().nullable().optional(),
                 syncToken: z.string().nullable().optional(),

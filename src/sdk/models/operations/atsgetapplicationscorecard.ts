@@ -33,7 +33,7 @@ export type AtsGetApplicationScorecardRequest = {
     /**
      * Query parameters that can be used to pass through parameters to the underlying provider request by surrounding them with "proxy" key
      */
-    proxy?: AtsGetApplicationScorecardQueryParamProxy | undefined;
+    proxy?: AtsGetApplicationScorecardQueryParamProxy | null | undefined;
     /**
      * Indicates that the raw request result is returned
      */
@@ -99,7 +99,7 @@ export namespace AtsGetApplicationScorecardRequest$ {
         next?: string | null | undefined;
         page?: string | null | undefined;
         page_size?: string | null | undefined;
-        proxy?: AtsGetApplicationScorecardQueryParamProxy$.Inbound | undefined;
+        proxy?: AtsGetApplicationScorecardQueryParamProxy$.Inbound | null | undefined;
         raw?: boolean | null | undefined;
         subResourceId: string;
         sync_token?: string | null | undefined;
@@ -120,6 +120,7 @@ export namespace AtsGetApplicationScorecardRequest$ {
             page_size: z.string().nullable().optional(),
             proxy: z
                 .lazy(() => AtsGetApplicationScorecardQueryParamProxy$.inboundSchema)
+                .nullable()
                 .optional(),
             raw: z.boolean().nullable().optional(),
             subResourceId: z.string(),
@@ -149,7 +150,7 @@ export namespace AtsGetApplicationScorecardRequest$ {
         next?: string | null | undefined;
         page?: string | null | undefined;
         page_size?: string | null | undefined;
-        proxy?: AtsGetApplicationScorecardQueryParamProxy$.Outbound | undefined;
+        proxy?: AtsGetApplicationScorecardQueryParamProxy$.Outbound | null | undefined;
         raw?: boolean | null | undefined;
         subResourceId: string;
         sync_token?: string | null | undefined;
@@ -170,6 +171,7 @@ export namespace AtsGetApplicationScorecardRequest$ {
             pageSize: z.string().nullable().optional(),
             proxy: z
                 .lazy(() => AtsGetApplicationScorecardQueryParamProxy$.outboundSchema)
+                .nullable()
                 .optional(),
             raw: z.boolean().nullable().optional(),
             subResourceId: z.string(),

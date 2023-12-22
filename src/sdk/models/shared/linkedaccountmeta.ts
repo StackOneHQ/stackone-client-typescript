@@ -4,7 +4,7 @@
 
 import { z } from "zod";
 
-export enum Category {
+export enum LinkedAccountMetaCategory {
     Ats = "ats",
     Hris = "hris",
     HrisLegacy = "hris-legacy",
@@ -13,40 +13,42 @@ export enum Category {
     Stackone = "stackone",
 }
 
-export type Models = {};
+export type LinkedAccountMetaModels = {};
 
 export type LinkedAccountMeta = {
-    category: Category;
-    models: Models;
+    category: LinkedAccountMetaCategory;
+    models: LinkedAccountMetaModels;
     provider: string;
 };
 
 /** @internal */
-export const Category$ = z.nativeEnum(Category);
+export const LinkedAccountMetaCategory$ = z.nativeEnum(LinkedAccountMetaCategory);
 
 /** @internal */
-export namespace Models$ {
+export namespace LinkedAccountMetaModels$ {
     export type Inbound = {};
 
-    export const inboundSchema: z.ZodType<Models, z.ZodTypeDef, Inbound> = z.object({});
+    export const inboundSchema: z.ZodType<LinkedAccountMetaModels, z.ZodTypeDef, Inbound> =
+        z.object({});
 
     export type Outbound = {};
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Models> = z.object({});
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, LinkedAccountMetaModels> =
+        z.object({});
 }
 
 /** @internal */
 export namespace LinkedAccountMeta$ {
     export type Inbound = {
-        category: Category;
-        models: Models$.Inbound;
+        category: LinkedAccountMetaCategory;
+        models: LinkedAccountMetaModels$.Inbound;
         provider: string;
     };
 
     export const inboundSchema: z.ZodType<LinkedAccountMeta, z.ZodTypeDef, Inbound> = z
         .object({
-            category: Category$,
-            models: z.lazy(() => Models$.inboundSchema),
+            category: LinkedAccountMetaCategory$,
+            models: z.lazy(() => LinkedAccountMetaModels$.inboundSchema),
             provider: z.string(),
         })
         .transform((v) => {
@@ -58,15 +60,15 @@ export namespace LinkedAccountMeta$ {
         });
 
     export type Outbound = {
-        category: Category;
-        models: Models$.Outbound;
+        category: LinkedAccountMetaCategory;
+        models: LinkedAccountMetaModels$.Outbound;
         provider: string;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, LinkedAccountMeta> = z
         .object({
-            category: Category$,
-            models: z.lazy(() => Models$.outboundSchema),
+            category: LinkedAccountMetaCategory$,
+            models: z.lazy(() => LinkedAccountMetaModels$.outboundSchema),
             provider: z.string(),
         })
         .transform((v) => {
