@@ -5,4 +5,4 @@
 !/**/*.map
 
 /.eslintrc.js
-/src
+/cjs
