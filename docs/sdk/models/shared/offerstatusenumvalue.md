@@ -11,4 +11,7 @@ The status of the offer.
 | `Retracted`     | retracted       |
 | `Accepted`      | accepted        |
 | `Rejected`      | rejected        |
+| `Created`       | created         |
+| `Approved`      | approved        |
+| `NotApproved`   | not_approved    |
 | `UnmappedValue` | unmapped_value  |

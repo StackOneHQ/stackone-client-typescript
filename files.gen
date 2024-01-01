@@ -204,6 +204,7 @@ src/sdk/models/shared/createemployeeresult.ts
 src/sdk/models/shared/hriscreateemployeerequestdto.ts
 src/sdk/models/shared/employment.ts
 src/sdk/models/shared/employeecustomfields.ts
+src/sdk/models/shared/countrycodeenum.ts
 src/sdk/models/shared/createtimeoffresult.ts
 src/sdk/models/shared/hriscreatetimeoffrequestdto.ts
 src/sdk/models/shared/companyresult.ts
@@ -636,6 +637,8 @@ docs/sdk/models/shared/employeecustomfieldsschemasvalue.md
 docs/sdk/models/shared/employeecustomfieldstype.md
 docs/sdk/models/shared/employeecustomfieldsvalue.md
 docs/sdk/models/shared/employeecustomfields.md
+docs/sdk/models/shared/countrycodeenumvalue.md
+docs/sdk/models/shared/countrycodeenum.md
 docs/sdk/models/shared/createtimeoffresult.md
 docs/sdk/models/shared/hriscreatetimeoffrequestdtovalue.md
 docs/sdk/models/shared/hriscreatetimeoffrequestdtostatus.md
