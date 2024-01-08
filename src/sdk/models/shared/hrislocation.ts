@@ -4,6 +4,9 @@
 
 import { z } from "zod";
 
+/**
+ * The ISO3166-1 Alpha2 Code of the Country
+ */
 export enum HRISLocationValue {
     Af = "AF",
     Al = "AL",
@@ -260,7 +263,13 @@ export enum HRISLocationValue {
  * The country code
  */
 export type HRISLocationCountry = {
+    /**
+     * The name of citizenship
+     */
     sourceValue: string;
+    /**
+     * The ISO3166-1 Alpha2 Code of the Country
+     */
     value: HRISLocationValue;
 };
 

@@ -54,6 +54,12 @@ async function run() {
       avatar: {},
       avatarUrl: "https://example.com/avatar.png",
       birthday: new Date("2021-01-01T00:00:00Z"),
+      citizenships: [
+        {
+          sourceValue: "American",
+          value: CountryCodeEnumValue.Us,
+        },
+      ],
       companyName: "Example Corp",
       customFields: [
         {
@@ -130,14 +136,14 @@ async function run() {
       homeLocation: {
         city: "Grantham",
         country: {
-          sourceValue: "string",
-          value: HrisCreateEmployeeRequestDtoSchemasHomeLocationValue.Vg,
+          sourceValue: "American",
+          value: HrisCreateEmployeeRequestDtoSchemasHomeLocationValue.Us,
         },
         name: "Woolsthorpe Manor",
         phoneNumber: "+44 1476 860 364",
         state: {
           sourceValue: "string",
-          value: HrisCreateEmployeeRequestDtoSchemasHomeLocationStateValue.Tr73,
+          value: HrisCreateEmployeeRequestDtoSchemasHomeLocationStateValue.VnDn,
         },
         street1: "Water Lane",
         street2: "Woolsthorpe by Colsterworth",
@@ -148,7 +154,7 @@ async function run() {
       managerId: "67890",
       maritalStatus: {
         sourceValue: "string",
-        value: HrisCreateEmployeeRequestDtoSchemasMaritalStatusValue.Widowed,
+        value: HrisCreateEmployeeRequestDtoSchemasMaritalStatusValue.NotDisclosed,
       },
       name: "Issac Newton",
       personalEmail: "isaac.newton@example.com",
@@ -161,14 +167,14 @@ async function run() {
       workLocation: {
         city: "Grantham",
         country: {
-          sourceValue: "string",
-          value: HrisCreateEmployeeRequestDtoSchemasWorkLocationValue.Gs,
+          sourceValue: "American",
+          value: HrisCreateEmployeeRequestDtoSchemasWorkLocationValue.Us,
         },
         name: "Woolsthorpe Manor",
         phoneNumber: "+44 1476 860 364",
         state: {
           sourceValue: "string",
-          value: HrisCreateEmployeeRequestDtoSchemasWorkLocationStateValue.Ug215,
+          value: HrisCreateEmployeeRequestDtoSchemasWorkLocationStateValue.LtSa,
         },
         street1: "Water Lane",
         street2: "Woolsthorpe by Colsterworth",
@@ -968,6 +974,12 @@ async function run() {
       avatar: {},
       avatarUrl: "https://example.com/avatar.png",
       birthday: new Date("2021-01-01T00:00:00Z"),
+      citizenships: [
+        {
+          sourceValue: "American",
+          value: CountryCodeEnumValue.Us,
+        },
+      ],
       companyName: "Example Corp",
       customFields: [
         {
@@ -1044,14 +1056,14 @@ async function run() {
       homeLocation: {
         city: "Grantham",
         country: {
-          sourceValue: "string",
-          value: HrisCreateEmployeeRequestDtoSchemasHomeLocationValue.Ba,
+          sourceValue: "American",
+          value: HrisCreateEmployeeRequestDtoSchemasHomeLocationValue.Us,
         },
         name: "Woolsthorpe Manor",
         phoneNumber: "+44 1476 860 364",
         state: {
           sourceValue: "string",
-          value: HrisCreateEmployeeRequestDtoSchemasHomeLocationStateValue.PhSun,
+          value: HrisCreateEmployeeRequestDtoSchemasHomeLocationStateValue.CcXx1,
         },
         street1: "Water Lane",
         street2: "Woolsthorpe by Colsterworth",
@@ -1075,14 +1087,14 @@ async function run() {
       workLocation: {
         city: "Grantham",
         country: {
-          sourceValue: "string",
-          value: HrisCreateEmployeeRequestDtoSchemasWorkLocationValue.Np,
+          sourceValue: "American",
+          value: HrisCreateEmployeeRequestDtoSchemasWorkLocationValue.Us,
         },
         name: "Woolsthorpe Manor",
         phoneNumber: "+44 1476 860 364",
         state: {
           sourceValue: "string",
-          value: HrisCreateEmployeeRequestDtoSchemasWorkLocationStateValue.LsG,
+          value: HrisCreateEmployeeRequestDtoSchemasWorkLocationStateValue.Py12,
         },
         street1: "Water Lane",
         street2: "Woolsthorpe by Colsterworth",

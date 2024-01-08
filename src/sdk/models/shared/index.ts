@@ -43,6 +43,7 @@ export * from "./connectsessiontoken";
 export * from "./contact";
 export * from "./contactresult";
 export * from "./contactspaginated";
+export * from "./countrycodeenum";
 export * from "./createcandidatenoteresult";
 export * from "./createemployeeresult";
 export * from "./createofferresult";
