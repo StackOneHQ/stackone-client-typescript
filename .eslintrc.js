@@ -15,7 +15,6 @@ module.exports = {
       node: true,
     },
   },
-  ignorePatterns: ["cjs/**"],
   rules: {
     // Handled by typescript compiler
     "@typescript-eslint/no-unused-vars": "off",
