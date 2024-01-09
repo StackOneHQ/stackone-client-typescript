@@ -120,35 +120,36 @@ export namespace Interview$ {
         .object({
             application_id: z.string(),
             created_at: z
-                .string()
-                .datetime({ offset: true })
-                .transform((v) => new Date(v))
-                .nullable()
+                .nullable(
+                    z
+                        .string()
+                        .datetime({ offset: true })
+                        .transform((v) => new Date(v))
+                )
                 .optional(),
             end_at: z
                 .string()
                 .datetime({ offset: true })
                 .transform((v) => new Date(v)),
             id: z.string(),
-            interview_parts: z.array(InterviewPart$.inboundSchema).nullable().optional(),
-            interview_stage: z.array(InterviewStage$.inboundSchema).nullable().optional(),
+            interview_parts: z.nullable(z.array(InterviewPart$.inboundSchema)).optional(),
+            interview_stage: z.nullable(z.array(InterviewStage$.inboundSchema)).optional(),
             interview_stage_id: z.string(),
-            interview_status: z
-                .lazy(() => InterviewStatus$.inboundSchema)
-                .nullable()
-                .optional(),
+            interview_status: z.nullable(z.lazy(() => InterviewStatus$.inboundSchema)).optional(),
             interviewer_ids: z.array(z.string()),
-            interviewers: z.array(Interviewer$.inboundSchema).nullable().optional(),
-            meeting_url: z.string().nullable().optional(),
+            interviewers: z.nullable(z.array(Interviewer$.inboundSchema)).optional(),
+            meeting_url: z.nullable(z.string()).optional(),
             start_at: z
                 .string()
                 .datetime({ offset: true })
                 .transform((v) => new Date(v)),
             updated_at: z
-                .string()
-                .datetime({ offset: true })
-                .transform((v) => new Date(v))
-                .nullable()
+                .nullable(
+                    z
+                        .string()
+                        .datetime({ offset: true })
+                        .transform((v) => new Date(v))
+                )
                 .optional(),
         })
         .transform((v) => {
@@ -190,29 +191,18 @@ export namespace Interview$ {
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Interview> = z
         .object({
             applicationId: z.string(),
-            createdAt: z
-                .date()
-                .transform((v) => v.toISOString())
-                .nullable()
-                .optional(),
+            createdAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
             endAt: z.date().transform((v) => v.toISOString()),
             id: z.string(),
-            interviewParts: z.array(InterviewPart$.outboundSchema).nullable().optional(),
-            interviewStage: z.array(InterviewStage$.outboundSchema).nullable().optional(),
+            interviewParts: z.nullable(z.array(InterviewPart$.outboundSchema)).optional(),
+            interviewStage: z.nullable(z.array(InterviewStage$.outboundSchema)).optional(),
             interviewStageId: z.string(),
-            interviewStatus: z
-                .lazy(() => InterviewStatus$.outboundSchema)
-                .nullable()
-                .optional(),
+            interviewStatus: z.nullable(z.lazy(() => InterviewStatus$.outboundSchema)).optional(),
             interviewerIds: z.array(z.string()),
-            interviewers: z.array(Interviewer$.outboundSchema).nullable().optional(),
-            meetingUrl: z.string().nullable().optional(),
+            interviewers: z.nullable(z.array(Interviewer$.outboundSchema)).optional(),
+            meetingUrl: z.nullable(z.string()).optional(),
             startAt: z.date().transform((v) => v.toISOString()),
-            updatedAt: z
-                .date()
-                .transform((v) => v.toISOString())
-                .nullable()
-                .optional(),
+            updatedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
         })
         .transform((v) => {
             return {

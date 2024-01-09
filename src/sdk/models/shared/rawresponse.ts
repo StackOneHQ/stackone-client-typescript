@@ -35,12 +35,9 @@ export namespace RawResponse$ {
 
     export const inboundSchema: z.ZodType<RawResponse, z.ZodTypeDef, Inbound> = z
         .object({
-            body: z.string().nullable().optional(),
+            body: z.nullable(z.string()).optional(),
             method: z.string(),
-            response: z
-                .lazy(() => Response$.inboundSchema)
-                .nullable()
-                .optional(),
+            response: z.nullable(z.lazy(() => Response$.inboundSchema)).optional(),
             url: z.string(),
         })
         .transform((v) => {
@@ -61,12 +58,9 @@ export namespace RawResponse$ {
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, RawResponse> = z
         .object({
-            body: z.string().nullable().optional(),
+            body: z.nullable(z.string()).optional(),
             method: z.string(),
-            response: z
-                .lazy(() => Response$.outboundSchema)
-                .nullable()
-                .optional(),
+            response: z.nullable(z.lazy(() => Response$.outboundSchema)).optional(),
             url: z.string(),
         })
         .transform((v) => {

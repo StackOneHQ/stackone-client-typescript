@@ -451,35 +451,35 @@ export namespace HRISLocation$ {
 
     export const inboundSchema: z.ZodType<HRISLocation, z.ZodTypeDef, Inbound> = z
         .object({
-            city: z.string().nullable().optional(),
-            country: z
-                .lazy(() => HRISLocationCountry$.inboundSchema)
-                .nullable()
-                .optional(),
+            city: z.nullable(z.string()).optional(),
+            country: z.nullable(z.lazy(() => HRISLocationCountry$.inboundSchema)).optional(),
             created_at: z
-                .string()
-                .datetime({ offset: true })
-                .transform((v) => new Date(v))
-                .nullable()
+                .nullable(
+                    z
+                        .string()
+                        .datetime({ offset: true })
+                        .transform((v) => new Date(v))
+                )
                 .optional(),
-            employee_id: z.string().nullable().optional(),
-            id: z.string().nullable().optional(),
+            employee_id: z.nullable(z.string()).optional(),
+            id: z.nullable(z.string()).optional(),
             location_type: z
-                .lazy(() => HRISLocationLocationType$.inboundSchema)
-                .nullable()
+                .nullable(z.lazy(() => HRISLocationLocationType$.inboundSchema))
                 .optional(),
-            name: z.string().nullable().optional(),
-            phone_number: z.string().nullable().optional(),
-            state: z.string().nullable().optional(),
-            street_1: z.string().nullable().optional(),
-            street_2: z.string().nullable().optional(),
+            name: z.nullable(z.string()).optional(),
+            phone_number: z.nullable(z.string()).optional(),
+            state: z.nullable(z.string()).optional(),
+            street_1: z.nullable(z.string()).optional(),
+            street_2: z.nullable(z.string()).optional(),
             updated_at: z
-                .string()
-                .datetime({ offset: true })
-                .transform((v) => new Date(v))
-                .nullable()
+                .nullable(
+                    z
+                        .string()
+                        .datetime({ offset: true })
+                        .transform((v) => new Date(v))
+                )
                 .optional(),
-            zip_code: z.string().nullable().optional(),
+            zip_code: z.nullable(z.string()).optional(),
         })
         .transform((v) => {
             return {
@@ -517,33 +517,21 @@ export namespace HRISLocation$ {
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, HRISLocation> = z
         .object({
-            city: z.string().nullable().optional(),
-            country: z
-                .lazy(() => HRISLocationCountry$.outboundSchema)
-                .nullable()
-                .optional(),
-            createdAt: z
-                .date()
-                .transform((v) => v.toISOString())
-                .nullable()
-                .optional(),
-            employeeId: z.string().nullable().optional(),
-            id: z.string().nullable().optional(),
+            city: z.nullable(z.string()).optional(),
+            country: z.nullable(z.lazy(() => HRISLocationCountry$.outboundSchema)).optional(),
+            createdAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+            employeeId: z.nullable(z.string()).optional(),
+            id: z.nullable(z.string()).optional(),
             locationType: z
-                .lazy(() => HRISLocationLocationType$.outboundSchema)
-                .nullable()
+                .nullable(z.lazy(() => HRISLocationLocationType$.outboundSchema))
                 .optional(),
-            name: z.string().nullable().optional(),
-            phoneNumber: z.string().nullable().optional(),
-            state: z.string().nullable().optional(),
-            street1: z.string().nullable().optional(),
-            street2: z.string().nullable().optional(),
-            updatedAt: z
-                .date()
-                .transform((v) => v.toISOString())
-                .nullable()
-                .optional(),
-            zipCode: z.string().nullable().optional(),
+            name: z.nullable(z.string()).optional(),
+            phoneNumber: z.nullable(z.string()).optional(),
+            state: z.nullable(z.string()).optional(),
+            street1: z.nullable(z.string()).optional(),
+            street2: z.nullable(z.string()).optional(),
+            updatedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+            zipCode: z.nullable(z.string()).optional(),
         })
         .transform((v) => {
             return {

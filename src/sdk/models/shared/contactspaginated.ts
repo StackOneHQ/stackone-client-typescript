@@ -28,9 +28,9 @@ export namespace ContactsPaginated$ {
     export const inboundSchema: z.ZodType<ContactsPaginated, z.ZodTypeDef, Inbound> = z
         .object({
             data: z.array(Contact$.inboundSchema),
-            next: z.string().nullable().optional(),
-            next_page: z.string().nullable().optional(),
-            raw: z.array(RawResponse$.inboundSchema).nullable().optional(),
+            next: z.nullable(z.string()).optional(),
+            next_page: z.nullable(z.string()).optional(),
+            raw: z.nullable(z.array(RawResponse$.inboundSchema)).optional(),
         })
         .transform((v) => {
             return {
@@ -51,9 +51,9 @@ export namespace ContactsPaginated$ {
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ContactsPaginated> = z
         .object({
             data: z.array(Contact$.outboundSchema),
-            next: z.string().nullable().optional(),
-            nextPage: z.string().nullable().optional(),
-            raw: z.array(RawResponse$.outboundSchema).nullable().optional(),
+            next: z.nullable(z.string()).optional(),
+            nextPage: z.nullable(z.string()).optional(),
+            raw: z.nullable(z.array(RawResponse$.outboundSchema)).optional(),
         })
         .transform((v) => {
             return {

@@ -118,8 +118,8 @@ export namespace Content$ {
 
     export const inboundSchema: z.ZodType<Content, z.ZodTypeDef, Inbound> = z
         .object({
-            html: z.string().nullable().optional(),
-            plain: z.string().nullable().optional(),
+            html: z.nullable(z.string()).optional(),
+            plain: z.nullable(z.string()).optional(),
         })
         .transform((v) => {
             return {
@@ -135,8 +135,8 @@ export namespace Content$ {
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Content> = z
         .object({
-            html: z.string().nullable().optional(),
-            plain: z.string().nullable().optional(),
+            html: z.nullable(z.string()).optional(),
+            plain: z.nullable(z.string()).optional(),
         })
         .transform((v) => {
             return {
@@ -296,42 +296,38 @@ export namespace JobPosting$ {
 
     export const inboundSchema: z.ZodType<JobPosting, z.ZodTypeDef, Inbound> = z
         .object({
-            compensation: z.array(Compensation$.inboundSchema).nullable().optional(),
-            content: z
-                .lazy(() => Content$.inboundSchema)
-                .nullable()
-                .optional(),
+            compensation: z.nullable(z.array(Compensation$.inboundSchema)).optional(),
+            content: z.nullable(z.lazy(() => Content$.inboundSchema)).optional(),
             created_at: z
-                .string()
-                .datetime({ offset: true })
-                .transform((v) => new Date(v))
-                .nullable()
+                .nullable(
+                    z
+                        .string()
+                        .datetime({ offset: true })
+                        .transform((v) => new Date(v))
+                )
                 .optional(),
             employment_contract_type: z
-                .lazy(() => JobPostingEmploymentContractType$.inboundSchema)
-                .nullable()
+                .nullable(z.lazy(() => JobPostingEmploymentContractType$.inboundSchema))
                 .optional(),
             employment_type: z
-                .lazy(() => JobPostingEmploymentType$.inboundSchema)
-                .nullable()
+                .nullable(z.lazy(() => JobPostingEmploymentType$.inboundSchema))
                 .optional(),
-            external_apply_url: z.string().nullable().optional(),
-            external_url: z.string().nullable().optional(),
+            external_apply_url: z.nullable(z.string()).optional(),
+            external_url: z.nullable(z.string()).optional(),
             id: z.string(),
-            internal: Internal$.nullable().optional(),
-            job_id: z.string().nullable().optional(),
-            locations: z.array(Location$.inboundSchema).nullable().optional(),
-            questionnaires: z.array(Questionnaire$.inboundSchema).nullable().optional(),
-            status: z
-                .lazy(() => JobPostingStatus$.inboundSchema)
-                .nullable()
-                .optional(),
-            title: z.string().nullable().optional(),
+            internal: z.nullable(Internal$).optional(),
+            job_id: z.nullable(z.string()).optional(),
+            locations: z.nullable(z.array(Location$.inboundSchema)).optional(),
+            questionnaires: z.nullable(z.array(Questionnaire$.inboundSchema)).optional(),
+            status: z.nullable(z.lazy(() => JobPostingStatus$.inboundSchema)).optional(),
+            title: z.nullable(z.string()).optional(),
             updated_at: z
-                .string()
-                .datetime({ offset: true })
-                .transform((v) => new Date(v))
-                .nullable()
+                .nullable(
+                    z
+                        .string()
+                        .datetime({ offset: true })
+                        .transform((v) => new Date(v))
+                )
                 .optional(),
         })
         .transform((v) => {
@@ -378,41 +374,25 @@ export namespace JobPosting$ {
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, JobPosting> = z
         .object({
-            compensation: z.array(Compensation$.outboundSchema).nullable().optional(),
-            content: z
-                .lazy(() => Content$.outboundSchema)
-                .nullable()
-                .optional(),
-            createdAt: z
-                .date()
-                .transform((v) => v.toISOString())
-                .nullable()
-                .optional(),
+            compensation: z.nullable(z.array(Compensation$.outboundSchema)).optional(),
+            content: z.nullable(z.lazy(() => Content$.outboundSchema)).optional(),
+            createdAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
             employmentContractType: z
-                .lazy(() => JobPostingEmploymentContractType$.outboundSchema)
-                .nullable()
+                .nullable(z.lazy(() => JobPostingEmploymentContractType$.outboundSchema))
                 .optional(),
             employmentType: z
-                .lazy(() => JobPostingEmploymentType$.outboundSchema)
-                .nullable()
+                .nullable(z.lazy(() => JobPostingEmploymentType$.outboundSchema))
                 .optional(),
-            externalApplyUrl: z.string().nullable().optional(),
-            externalUrl: z.string().nullable().optional(),
+            externalApplyUrl: z.nullable(z.string()).optional(),
+            externalUrl: z.nullable(z.string()).optional(),
             id: z.string(),
-            internal: Internal$.nullable().optional(),
-            jobId: z.string().nullable().optional(),
-            locations: z.array(Location$.outboundSchema).nullable().optional(),
-            questionnaires: z.array(Questionnaire$.outboundSchema).nullable().optional(),
-            status: z
-                .lazy(() => JobPostingStatus$.outboundSchema)
-                .nullable()
-                .optional(),
-            title: z.string().nullable().optional(),
-            updatedAt: z
-                .date()
-                .transform((v) => v.toISOString())
-                .nullable()
-                .optional(),
+            internal: z.nullable(Internal$).optional(),
+            jobId: z.nullable(z.string()).optional(),
+            locations: z.nullable(z.array(Location$.outboundSchema)).optional(),
+            questionnaires: z.nullable(z.array(Questionnaire$.outboundSchema)).optional(),
+            status: z.nullable(z.lazy(() => JobPostingStatus$.outboundSchema)).optional(),
+            title: z.nullable(z.string()).optional(),
+            updatedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
         })
         .transform((v) => {
             return {

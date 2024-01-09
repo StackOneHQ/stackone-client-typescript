@@ -28,8 +28,8 @@ export namespace UsersPaginated$ {
     export const inboundSchema: z.ZodType<UsersPaginated, z.ZodTypeDef, Inbound> = z
         .object({
             data: z.array(User$.inboundSchema),
-            next: z.string().nullable().optional(),
-            next_page: z.string().nullable().optional(),
+            next: z.nullable(z.string()).optional(),
+            next_page: z.nullable(z.string()).optional(),
             raw: z.array(RawResponse$.inboundSchema),
         })
         .transform((v) => {
@@ -51,8 +51,8 @@ export namespace UsersPaginated$ {
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UsersPaginated> = z
         .object({
             data: z.array(User$.outboundSchema),
-            next: z.string().nullable().optional(),
-            nextPage: z.string().nullable().optional(),
+            next: z.nullable(z.string()).optional(),
+            nextPage: z.nullable(z.string()).optional(),
             raw: z.array(RawResponse$.outboundSchema),
         })
         .transform((v) => {

@@ -74,7 +74,7 @@ export namespace ConnectorsMeta$ {
             models: z.lazy(() => Models$.inboundSchema),
             provider: z.string(),
             provider_name: z.string(),
-            resources: z.boolean().nullable().optional(),
+            resources: z.nullable(z.boolean()).optional(),
         })
         .transform((v) => {
             return {
@@ -103,7 +103,7 @@ export namespace ConnectorsMeta$ {
             models: z.lazy(() => Models$.outboundSchema),
             provider: z.string(),
             providerName: z.string(),
-            resources: z.boolean().nullable().optional(),
+            resources: z.nullable(z.boolean()).optional(),
         })
         .transform((v) => {
             return {

@@ -405,19 +405,13 @@ export namespace AccountAddress$ {
 
     export const inboundSchema: z.ZodType<AccountAddress, z.ZodTypeDef, Inbound> = z
         .object({
-            city: z.string().nullable().optional(),
-            country: z
-                .lazy(() => Country$.inboundSchema)
-                .nullable()
-                .optional(),
-            location_type: z
-                .lazy(() => LocationType$.inboundSchema)
-                .nullable()
-                .optional(),
-            state: z.string().nullable().optional(),
-            street_1: z.string().nullable().optional(),
-            street_2: z.string().nullable().optional(),
-            zip_code: z.string().nullable().optional(),
+            city: z.nullable(z.string()).optional(),
+            country: z.nullable(z.lazy(() => Country$.inboundSchema)).optional(),
+            location_type: z.nullable(z.lazy(() => LocationType$.inboundSchema)).optional(),
+            state: z.nullable(z.string()).optional(),
+            street_1: z.nullable(z.string()).optional(),
+            street_2: z.nullable(z.string()).optional(),
+            zip_code: z.nullable(z.string()).optional(),
         })
         .transform((v) => {
             return {
@@ -443,19 +437,13 @@ export namespace AccountAddress$ {
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, AccountAddress> = z
         .object({
-            city: z.string().nullable().optional(),
-            country: z
-                .lazy(() => Country$.outboundSchema)
-                .nullable()
-                .optional(),
-            locationType: z
-                .lazy(() => LocationType$.outboundSchema)
-                .nullable()
-                .optional(),
-            state: z.string().nullable().optional(),
-            street1: z.string().nullable().optional(),
-            street2: z.string().nullable().optional(),
-            zipCode: z.string().nullable().optional(),
+            city: z.nullable(z.string()).optional(),
+            country: z.nullable(z.lazy(() => Country$.outboundSchema)).optional(),
+            locationType: z.nullable(z.lazy(() => LocationType$.outboundSchema)).optional(),
+            state: z.nullable(z.string()).optional(),
+            street1: z.nullable(z.string()).optional(),
+            street2: z.nullable(z.string()).optional(),
+            zipCode: z.nullable(z.string()).optional(),
         })
         .transform((v) => {
             return {

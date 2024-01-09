@@ -60,8 +60,8 @@ export namespace TypeT$ {
 
     export const inboundSchema: z.ZodType<TypeT, z.ZodTypeDef, Inbound> = z
         .object({
-            source_value: z.string().nullable().optional(),
-            value: AnswerValue$.nullable().optional(),
+            source_value: z.nullable(z.string()).optional(),
+            value: z.nullable(AnswerValue$).optional(),
         })
         .transform((v) => {
             return {
@@ -77,8 +77,8 @@ export namespace TypeT$ {
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, TypeT> = z
         .object({
-            sourceValue: z.string().nullable().optional(),
-            value: AnswerValue$.nullable().optional(),
+            sourceValue: z.nullable(z.string()).optional(),
+            value: z.nullable(AnswerValue$).optional(),
         })
         .transform((v) => {
             return {
@@ -98,11 +98,8 @@ export namespace Answer$ {
 
     export const inboundSchema: z.ZodType<Answer, z.ZodTypeDef, Inbound> = z
         .object({
-            id: z.string().nullable().optional(),
-            type: z
-                .lazy(() => TypeT$.inboundSchema)
-                .nullable()
-                .optional(),
+            id: z.nullable(z.string()).optional(),
+            type: z.nullable(z.lazy(() => TypeT$.inboundSchema)).optional(),
             values: z.array(z.string()),
         })
         .transform((v) => {
@@ -121,11 +118,8 @@ export namespace Answer$ {
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Answer> = z
         .object({
-            id: z.string().nullable().optional(),
-            type: z
-                .lazy(() => TypeT$.outboundSchema)
-                .nullable()
-                .optional(),
+            id: z.nullable(z.string()).optional(),
+            type: z.nullable(z.lazy(() => TypeT$.outboundSchema)).optional(),
             values: z.array(z.string()),
         })
         .transform((v) => {

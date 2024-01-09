@@ -109,17 +109,18 @@ export namespace MarketingListOmniChannelTemplatesRequest$ {
         Inbound
     > = z
         .object({
-            fields: z.string().nullable().optional(),
-            next: z.string().nullable().optional(),
-            page: z.string().nullable().optional(),
-            page_size: z.string().nullable().optional(),
+            fields: z.nullable(z.string()).optional(),
+            next: z.nullable(z.string()).optional(),
+            page: z.nullable(z.string()).optional(),
+            page_size: z.nullable(z.string()).optional(),
             proxy: z
-                .lazy(() => MarketingListOmniChannelTemplatesQueryParamProxy$.inboundSchema)
-                .nullable()
+                .nullable(
+                    z.lazy(() => MarketingListOmniChannelTemplatesQueryParamProxy$.inboundSchema)
+                )
                 .optional(),
-            raw: z.boolean().nullable().optional(),
-            sync_token: z.string().nullable().optional(),
-            updated_after: z.string().nullable().optional(),
+            raw: z.nullable(z.boolean()).optional(),
+            sync_token: z.nullable(z.string()).optional(),
+            updated_after: z.nullable(z.string()).optional(),
             "x-account-id": z.string(),
         })
         .transform((v) => {
@@ -154,17 +155,18 @@ export namespace MarketingListOmniChannelTemplatesRequest$ {
         MarketingListOmniChannelTemplatesRequest
     > = z
         .object({
-            fields: z.string().nullable().optional(),
-            next: z.string().nullable().optional(),
-            page: z.string().nullable().optional(),
-            pageSize: z.string().nullable().optional(),
+            fields: z.nullable(z.string()).optional(),
+            next: z.nullable(z.string()).optional(),
+            page: z.nullable(z.string()).optional(),
+            pageSize: z.nullable(z.string()).optional(),
             proxy: z
-                .lazy(() => MarketingListOmniChannelTemplatesQueryParamProxy$.outboundSchema)
-                .nullable()
+                .nullable(
+                    z.lazy(() => MarketingListOmniChannelTemplatesQueryParamProxy$.outboundSchema)
+                )
                 .optional(),
-            raw: z.boolean().nullable().optional(),
-            syncToken: z.string().nullable().optional(),
-            updatedAfter: z.string().nullable().optional(),
+            raw: z.nullable(z.boolean()).optional(),
+            syncToken: z.nullable(z.string()).optional(),
+            updatedAfter: z.nullable(z.string()).optional(),
             xAccountId: z.string(),
         })
         .transform((v) => {

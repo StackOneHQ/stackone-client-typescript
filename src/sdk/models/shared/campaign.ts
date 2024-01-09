@@ -193,45 +193,47 @@ export namespace Campaign$ {
 
     export const inboundSchema: z.ZodType<Campaign, z.ZodTypeDef, Inbound> = z
         .object({
-            archived: z.boolean().nullable().optional(),
-            channels: z.array(ChannelsEnum$.inboundSchema).nullable().optional(),
+            archived: z.nullable(z.boolean()).optional(),
+            channels: z.nullable(z.array(ChannelsEnum$.inboundSchema)).optional(),
             created_at: z
-                .string()
-                .datetime({ offset: true })
-                .transform((v) => new Date(v))
-                .nullable()
+                .nullable(
+                    z
+                        .string()
+                        .datetime({ offset: true })
+                        .transform((v) => new Date(v))
+                )
                 .optional(),
-            description: z.string().nullable().optional(),
-            draft: z.boolean().nullable().optional(),
+            description: z.nullable(z.string()).optional(),
+            draft: z.nullable(z.boolean()).optional(),
             first_sent_at: z
-                .string()
-                .datetime({ offset: true })
-                .transform((v) => new Date(v))
-                .nullable()
+                .nullable(
+                    z
+                        .string()
+                        .datetime({ offset: true })
+                        .transform((v) => new Date(v))
+                )
                 .optional(),
-            id: z.string().nullable().optional(),
+            id: z.nullable(z.string()).optional(),
             last_sent_at: z
-                .string()
-                .datetime({ offset: true })
-                .transform((v) => new Date(v))
-                .nullable()
+                .nullable(
+                    z
+                        .string()
+                        .datetime({ offset: true })
+                        .transform((v) => new Date(v))
+                )
                 .optional(),
-            messages: z.array(Message$.inboundSchema).nullable().optional(),
+            messages: z.nullable(z.array(Message$.inboundSchema)).optional(),
             name: z.string(),
-            schedule_type: z
-                .lazy(() => ScheduleType$.inboundSchema)
-                .nullable()
-                .optional(),
-            status: z
-                .lazy(() => Status$.inboundSchema)
-                .nullable()
-                .optional(),
-            tags: z.array(z.string()).nullable().optional(),
+            schedule_type: z.nullable(z.lazy(() => ScheduleType$.inboundSchema)).optional(),
+            status: z.nullable(z.lazy(() => Status$.inboundSchema)).optional(),
+            tags: z.nullable(z.array(z.string())).optional(),
             updated_at: z
-                .string()
-                .datetime({ offset: true })
-                .transform((v) => new Date(v))
-                .nullable()
+                .nullable(
+                    z
+                        .string()
+                        .datetime({ offset: true })
+                        .transform((v) => new Date(v))
+                )
                 .optional(),
         })
         .transform((v) => {
@@ -272,42 +274,20 @@ export namespace Campaign$ {
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Campaign> = z
         .object({
-            archived: z.boolean().nullable().optional(),
-            channels: z.array(ChannelsEnum$.outboundSchema).nullable().optional(),
-            createdAt: z
-                .date()
-                .transform((v) => v.toISOString())
-                .nullable()
-                .optional(),
-            description: z.string().nullable().optional(),
-            draft: z.boolean().nullable().optional(),
-            firstSentAt: z
-                .date()
-                .transform((v) => v.toISOString())
-                .nullable()
-                .optional(),
-            id: z.string().nullable().optional(),
-            lastSentAt: z
-                .date()
-                .transform((v) => v.toISOString())
-                .nullable()
-                .optional(),
-            messages: z.array(Message$.outboundSchema).nullable().optional(),
+            archived: z.nullable(z.boolean()).optional(),
+            channels: z.nullable(z.array(ChannelsEnum$.outboundSchema)).optional(),
+            createdAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+            description: z.nullable(z.string()).optional(),
+            draft: z.nullable(z.boolean()).optional(),
+            firstSentAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+            id: z.nullable(z.string()).optional(),
+            lastSentAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+            messages: z.nullable(z.array(Message$.outboundSchema)).optional(),
             name: z.string(),
-            scheduleType: z
-                .lazy(() => ScheduleType$.outboundSchema)
-                .nullable()
-                .optional(),
-            status: z
-                .lazy(() => Status$.outboundSchema)
-                .nullable()
-                .optional(),
-            tags: z.array(z.string()).nullable().optional(),
-            updatedAt: z
-                .date()
-                .transform((v) => v.toISOString())
-                .nullable()
-                .optional(),
+            scheduleType: z.nullable(z.lazy(() => ScheduleType$.outboundSchema)).optional(),
+            status: z.nullable(z.lazy(() => Status$.outboundSchema)).optional(),
+            tags: z.nullable(z.array(z.string())).optional(),
+            updatedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
         })
         .transform((v) => {
             return {

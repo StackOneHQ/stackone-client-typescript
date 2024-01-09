@@ -49,27 +49,31 @@ export namespace Account$ {
 
     export const inboundSchema: z.ZodType<Account, z.ZodTypeDef, Inbound> = z
         .object({
-            addresses: z.array(AccountAddress$.inboundSchema).nullable().optional(),
-            annual_revenue: z.string().nullable().optional(),
+            addresses: z.nullable(z.array(AccountAddress$.inboundSchema)).optional(),
+            annual_revenue: z.nullable(z.string()).optional(),
             created_at: z
-                .string()
-                .datetime({ offset: true })
-                .transform((v) => new Date(v))
-                .nullable()
+                .nullable(
+                    z
+                        .string()
+                        .datetime({ offset: true })
+                        .transform((v) => new Date(v))
+                )
                 .optional(),
-            description: z.string().nullable().optional(),
+            description: z.nullable(z.string()).optional(),
             id: z.string(),
-            industries: z.array(z.string()).nullable().optional(),
+            industries: z.nullable(z.array(z.string())).optional(),
             name: z.string(),
             owner_id: z.string(),
-            phone_numbers: z.array(z.string()).nullable().optional(),
+            phone_numbers: z.nullable(z.array(z.string())).optional(),
             updated_at: z
-                .string()
-                .datetime({ offset: true })
-                .transform((v) => new Date(v))
-                .nullable()
+                .nullable(
+                    z
+                        .string()
+                        .datetime({ offset: true })
+                        .transform((v) => new Date(v))
+                )
                 .optional(),
-            website: z.string().nullable().optional(),
+            website: z.nullable(z.string()).optional(),
         })
         .transform((v) => {
             return {
@@ -103,25 +107,17 @@ export namespace Account$ {
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Account> = z
         .object({
-            addresses: z.array(AccountAddress$.outboundSchema).nullable().optional(),
-            annualRevenue: z.string().nullable().optional(),
-            createdAt: z
-                .date()
-                .transform((v) => v.toISOString())
-                .nullable()
-                .optional(),
-            description: z.string().nullable().optional(),
+            addresses: z.nullable(z.array(AccountAddress$.outboundSchema)).optional(),
+            annualRevenue: z.nullable(z.string()).optional(),
+            createdAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+            description: z.nullable(z.string()).optional(),
             id: z.string(),
-            industries: z.array(z.string()).nullable().optional(),
+            industries: z.nullable(z.array(z.string())).optional(),
             name: z.string(),
             ownerId: z.string(),
-            phoneNumbers: z.array(z.string()).nullable().optional(),
-            updatedAt: z
-                .date()
-                .transform((v) => v.toISOString())
-                .nullable()
-                .optional(),
-            website: z.string().nullable().optional(),
+            phoneNumbers: z.nullable(z.array(z.string())).optional(),
+            updatedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+            website: z.nullable(z.string()).optional(),
         })
         .transform((v) => {
             return {

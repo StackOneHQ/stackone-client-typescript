@@ -34,22 +34,26 @@ export namespace OfferHistory$ {
     export const inboundSchema: z.ZodType<OfferHistory, z.ZodTypeDef, Inbound> = z
         .object({
             created_at: z
-                .string()
-                .datetime({ offset: true })
-                .transform((v) => new Date(v))
-                .nullable()
+                .nullable(
+                    z
+                        .string()
+                        .datetime({ offset: true })
+                        .transform((v) => new Date(v))
+                )
                 .optional(),
-            currency: z.string().nullable().optional(),
-            salary: z.number().nullable().optional(),
+            currency: z.nullable(z.string()).optional(),
+            salary: z.nullable(z.number()).optional(),
             start_date: z
                 .string()
                 .datetime({ offset: true })
                 .transform((v) => new Date(v)),
             updated_at: z
-                .string()
-                .datetime({ offset: true })
-                .transform((v) => new Date(v))
-                .nullable()
+                .nullable(
+                    z
+                        .string()
+                        .datetime({ offset: true })
+                        .transform((v) => new Date(v))
+                )
                 .optional(),
         })
         .transform((v) => {
@@ -72,19 +76,11 @@ export namespace OfferHistory$ {
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, OfferHistory> = z
         .object({
-            createdAt: z
-                .date()
-                .transform((v) => v.toISOString())
-                .nullable()
-                .optional(),
-            currency: z.string().nullable().optional(),
-            salary: z.number().nullable().optional(),
+            createdAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+            currency: z.nullable(z.string()).optional(),
+            salary: z.nullable(z.number()).optional(),
             startDate: z.date().transform((v) => v.toISOString()),
-            updatedAt: z
-                .date()
-                .transform((v) => v.toISOString())
-                .nullable()
-                .optional(),
+            updatedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
         })
         .transform((v) => {
             return {

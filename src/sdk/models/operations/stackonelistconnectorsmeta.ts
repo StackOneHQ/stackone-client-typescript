@@ -43,7 +43,7 @@ export namespace StackoneListConnectorsMetaRequest$ {
         Inbound
     > = z
         .object({
-            include: z.string().nullable().optional(),
+            include: z.nullable(z.string()).optional(),
         })
         .transform((v) => {
             return {
@@ -61,7 +61,7 @@ export namespace StackoneListConnectorsMetaRequest$ {
         StackoneListConnectorsMetaRequest
     > = z
         .object({
-            include: z.string().nullable().optional(),
+            include: z.nullable(z.string()).optional(),
         })
         .transform((v) => {
             return {

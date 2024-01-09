@@ -113,19 +113,18 @@ export namespace AtsGetApplicationScorecardRequest$ {
         Inbound
     > = z
         .object({
-            fields: z.string().nullable().optional(),
+            fields: z.nullable(z.string()).optional(),
             id: z.string(),
-            next: z.string().nullable().optional(),
-            page: z.string().nullable().optional(),
-            page_size: z.string().nullable().optional(),
+            next: z.nullable(z.string()).optional(),
+            page: z.nullable(z.string()).optional(),
+            page_size: z.nullable(z.string()).optional(),
             proxy: z
-                .lazy(() => AtsGetApplicationScorecardQueryParamProxy$.inboundSchema)
-                .nullable()
+                .nullable(z.lazy(() => AtsGetApplicationScorecardQueryParamProxy$.inboundSchema))
                 .optional(),
-            raw: z.boolean().nullable().optional(),
+            raw: z.nullable(z.boolean()).optional(),
             subResourceId: z.string(),
-            sync_token: z.string().nullable().optional(),
-            updated_after: z.string().nullable().optional(),
+            sync_token: z.nullable(z.string()).optional(),
+            updated_after: z.nullable(z.string()).optional(),
             "x-account-id": z.string(),
         })
         .transform((v) => {
@@ -164,19 +163,18 @@ export namespace AtsGetApplicationScorecardRequest$ {
         AtsGetApplicationScorecardRequest
     > = z
         .object({
-            fields: z.string().nullable().optional(),
+            fields: z.nullable(z.string()).optional(),
             id: z.string(),
-            next: z.string().nullable().optional(),
-            page: z.string().nullable().optional(),
-            pageSize: z.string().nullable().optional(),
+            next: z.nullable(z.string()).optional(),
+            page: z.nullable(z.string()).optional(),
+            pageSize: z.nullable(z.string()).optional(),
             proxy: z
-                .lazy(() => AtsGetApplicationScorecardQueryParamProxy$.outboundSchema)
-                .nullable()
+                .nullable(z.lazy(() => AtsGetApplicationScorecardQueryParamProxy$.outboundSchema))
                 .optional(),
-            raw: z.boolean().nullable().optional(),
+            raw: z.nullable(z.boolean()).optional(),
             subResourceId: z.string(),
-            syncToken: z.string().nullable().optional(),
-            updatedAfter: z.string().nullable().optional(),
+            syncToken: z.nullable(z.string()).optional(),
+            updatedAfter: z.nullable(z.string()).optional(),
             xAccountId: z.string(),
         })
         .transform((v) => {

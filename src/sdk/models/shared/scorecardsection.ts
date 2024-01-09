@@ -30,9 +30,9 @@ export namespace ScorecardSection$ {
 
     export const inboundSchema: z.ZodType<ScorecardSection, z.ZodTypeDef, Inbound> = z
         .object({
-            fields: z.array(Field$.inboundSchema).nullable().optional(),
-            id: z.string().nullable().optional(),
-            label: z.string().nullable().optional(),
+            fields: z.nullable(z.array(Field$.inboundSchema)).optional(),
+            id: z.nullable(z.string()).optional(),
+            label: z.nullable(z.string()).optional(),
         })
         .transform((v) => {
             return {
@@ -50,9 +50,9 @@ export namespace ScorecardSection$ {
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ScorecardSection> = z
         .object({
-            fields: z.array(Field$.outboundSchema).nullable().optional(),
-            id: z.string().nullable().optional(),
-            label: z.string().nullable().optional(),
+            fields: z.nullable(z.array(Field$.outboundSchema)).optional(),
+            id: z.nullable(z.string()).optional(),
+            label: z.nullable(z.string()).optional(),
         })
         .transform((v) => {
             return {

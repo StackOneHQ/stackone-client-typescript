@@ -80,25 +80,29 @@ export namespace Scorecard$ {
 
     export const inboundSchema: z.ZodType<Scorecard, z.ZodTypeDef, Inbound> = z
         .object({
-            application_id: z.string().nullable().optional(),
-            author_id: z.string().nullable().optional(),
-            candidate_id: z.string().nullable().optional(),
+            application_id: z.nullable(z.string()).optional(),
+            author_id: z.nullable(z.string()).optional(),
+            candidate_id: z.nullable(z.string()).optional(),
             created_at: z
-                .string()
-                .datetime({ offset: true })
-                .transform((v) => new Date(v))
-                .nullable()
+                .nullable(
+                    z
+                        .string()
+                        .datetime({ offset: true })
+                        .transform((v) => new Date(v))
+                )
                 .optional(),
-            id: z.string().nullable().optional(),
-            interview_id: z.string().nullable().optional(),
-            label: z.string().nullable().optional(),
-            overall_recommendation: OverallRecommendation$.nullable().optional(),
-            sections: z.array(ScorecardSection$.inboundSchema).nullable().optional(),
+            id: z.nullable(z.string()).optional(),
+            interview_id: z.nullable(z.string()).optional(),
+            label: z.nullable(z.string()).optional(),
+            overall_recommendation: z.nullable(OverallRecommendation$).optional(),
+            sections: z.nullable(z.array(ScorecardSection$.inboundSchema)).optional(),
             updated_at: z
-                .string()
-                .datetime({ offset: true })
-                .transform((v) => new Date(v))
-                .nullable()
+                .nullable(
+                    z
+                        .string()
+                        .datetime({ offset: true })
+                        .transform((v) => new Date(v))
+                )
                 .optional(),
         })
         .transform((v) => {
@@ -133,24 +137,16 @@ export namespace Scorecard$ {
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Scorecard> = z
         .object({
-            applicationId: z.string().nullable().optional(),
-            authorId: z.string().nullable().optional(),
-            candidateId: z.string().nullable().optional(),
-            createdAt: z
-                .date()
-                .transform((v) => v.toISOString())
-                .nullable()
-                .optional(),
-            id: z.string().nullable().optional(),
-            interviewId: z.string().nullable().optional(),
-            label: z.string().nullable().optional(),
-            overallRecommendation: OverallRecommendation$.nullable().optional(),
-            sections: z.array(ScorecardSection$.outboundSchema).nullable().optional(),
-            updatedAt: z
-                .date()
-                .transform((v) => v.toISOString())
-                .nullable()
-                .optional(),
+            applicationId: z.nullable(z.string()).optional(),
+            authorId: z.nullable(z.string()).optional(),
+            candidateId: z.nullable(z.string()).optional(),
+            createdAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+            id: z.nullable(z.string()).optional(),
+            interviewId: z.nullable(z.string()).optional(),
+            label: z.nullable(z.string()).optional(),
+            overallRecommendation: z.nullable(OverallRecommendation$).optional(),
+            sections: z.nullable(z.array(ScorecardSection$.outboundSchema)).optional(),
+            updatedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
         })
         .transform((v) => {
             return {

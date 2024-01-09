@@ -29,9 +29,9 @@ export namespace ApplicationCandidate$ {
 
     export const inboundSchema: z.ZodType<ApplicationCandidate, z.ZodTypeDef, Inbound> = z
         .object({
-            email: z.string().nullable().optional(),
-            first_name: z.string().nullable().optional(),
-            last_name: z.string().nullable().optional(),
+            email: z.nullable(z.string()).optional(),
+            first_name: z.nullable(z.string()).optional(),
+            last_name: z.nullable(z.string()).optional(),
         })
         .transform((v) => {
             return {
@@ -49,9 +49,9 @@ export namespace ApplicationCandidate$ {
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ApplicationCandidate> = z
         .object({
-            email: z.string().nullable().optional(),
-            firstName: z.string().nullable().optional(),
-            lastName: z.string().nullable().optional(),
+            email: z.nullable(z.string()).optional(),
+            firstName: z.nullable(z.string()).optional(),
+            lastName: z.nullable(z.string()).optional(),
         })
         .transform((v) => {
             return {

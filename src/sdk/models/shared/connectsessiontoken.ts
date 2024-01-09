@@ -46,7 +46,7 @@ export namespace ConnectSessionToken$ {
 
     export const inboundSchema: z.ZodType<ConnectSessionToken, z.ZodTypeDef, Inbound> = z
         .object({
-            categories: z.array(ConnectSessionTokenCategories$).nullable().optional(),
+            categories: z.nullable(z.array(ConnectSessionTokenCategories$)).optional(),
             created_at: z
                 .string()
                 .datetime({ offset: true })
@@ -55,7 +55,7 @@ export namespace ConnectSessionToken$ {
             organization_id: z.string(),
             origin_owner_id: z.string(),
             origin_owner_name: z.string(),
-            origin_username: z.string().nullable().optional(),
+            origin_username: z.nullable(z.string()).optional(),
             project_id: z.string(),
             provider: z.string(),
             token: z.string(),
@@ -90,13 +90,13 @@ export namespace ConnectSessionToken$ {
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ConnectSessionToken> = z
         .object({
-            categories: z.array(ConnectSessionTokenCategories$).nullable().optional(),
+            categories: z.nullable(z.array(ConnectSessionTokenCategories$)).optional(),
             createdAt: z.date().transform((v) => v.toISOString()),
             id: z.string(),
             organizationId: z.string(),
             originOwnerId: z.string(),
             originOwnerName: z.string(),
-            originUsername: z.string().nullable().optional(),
+            originUsername: z.nullable(z.string()).optional(),
             projectId: z.string(),
             provider: z.string(),
             token: z.string(),

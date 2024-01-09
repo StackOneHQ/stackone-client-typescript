@@ -64,25 +64,29 @@ export namespace Contact$ {
 
     export const inboundSchema: z.ZodType<Contact, z.ZodTypeDef, Inbound> = z
         .object({
-            account_ids: z.array(z.string()).nullable().optional(),
-            company_name: z.string().nullable().optional(),
+            account_ids: z.nullable(z.array(z.string())).optional(),
+            company_name: z.nullable(z.string()).optional(),
             created_at: z
-                .string()
-                .datetime({ offset: true })
-                .transform((v) => new Date(v))
-                .nullable()
+                .nullable(
+                    z
+                        .string()
+                        .datetime({ offset: true })
+                        .transform((v) => new Date(v))
+                )
                 .optional(),
-            deal_ids: z.array(z.string()).nullable().optional(),
-            emails: z.array(z.string()).nullable().optional(),
-            first_name: z.string().nullable().optional(),
-            id: z.string().nullable().optional(),
-            last_name: z.string().nullable().optional(),
-            phone_numbers: z.array(z.string()).nullable().optional(),
+            deal_ids: z.nullable(z.array(z.string())).optional(),
+            emails: z.nullable(z.array(z.string())).optional(),
+            first_name: z.nullable(z.string()).optional(),
+            id: z.nullable(z.string()).optional(),
+            last_name: z.nullable(z.string()).optional(),
+            phone_numbers: z.nullable(z.array(z.string())).optional(),
             updated_at: z
-                .string()
-                .datetime({ offset: true })
-                .transform((v) => new Date(v))
-                .nullable()
+                .nullable(
+                    z
+                        .string()
+                        .datetime({ offset: true })
+                        .transform((v) => new Date(v))
+                )
                 .optional(),
         })
         .transform((v) => {
@@ -115,24 +119,16 @@ export namespace Contact$ {
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Contact> = z
         .object({
-            accountIds: z.array(z.string()).nullable().optional(),
-            companyName: z.string().nullable().optional(),
-            createdAt: z
-                .date()
-                .transform((v) => v.toISOString())
-                .nullable()
-                .optional(),
-            dealIds: z.array(z.string()).nullable().optional(),
-            emails: z.array(z.string()).nullable().optional(),
-            firstName: z.string().nullable().optional(),
-            id: z.string().nullable().optional(),
-            lastName: z.string().nullable().optional(),
-            phoneNumbers: z.array(z.string()).nullable().optional(),
-            updatedAt: z
-                .date()
-                .transform((v) => v.toISOString())
-                .nullable()
-                .optional(),
+            accountIds: z.nullable(z.array(z.string())).optional(),
+            companyName: z.nullable(z.string()).optional(),
+            createdAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+            dealIds: z.nullable(z.array(z.string())).optional(),
+            emails: z.nullable(z.array(z.string())).optional(),
+            firstName: z.nullable(z.string()).optional(),
+            id: z.nullable(z.string()).optional(),
+            lastName: z.nullable(z.string()).optional(),
+            phoneNumbers: z.nullable(z.array(z.string())).optional(),
+            updatedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
         })
         .transform((v) => {
             return {

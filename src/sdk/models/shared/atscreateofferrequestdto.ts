@@ -32,10 +32,10 @@ export namespace AtsCreateOfferRequestDto$ {
     export const inboundSchema: z.ZodType<AtsCreateOfferRequestDto, z.ZodTypeDef, Inbound> = z
         .object({
             application_id: z.string(),
-            currency: z.string().nullable().optional(),
-            offer_history: z.array(OfferHistory$.inboundSchema).nullable().optional(),
+            currency: z.nullable(z.string()).optional(),
+            offer_history: z.nullable(z.array(OfferHistory$.inboundSchema)).optional(),
             offer_status: OfferStatusEnum$.inboundSchema,
-            salary: z.number().nullable().optional(),
+            salary: z.nullable(z.number()).optional(),
             start_date: z
                 .string()
                 .datetime({ offset: true })
@@ -64,10 +64,10 @@ export namespace AtsCreateOfferRequestDto$ {
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, AtsCreateOfferRequestDto> = z
         .object({
             applicationId: z.string(),
-            currency: z.string().nullable().optional(),
-            offerHistory: z.array(OfferHistory$.outboundSchema).nullable().optional(),
+            currency: z.nullable(z.string()).optional(),
+            offerHistory: z.nullable(z.array(OfferHistory$.outboundSchema)).optional(),
             offerStatus: OfferStatusEnum$.outboundSchema,
-            salary: z.number().nullable().optional(),
+            salary: z.nullable(z.number()).optional(),
             startDate: z.date().transform((v) => v.toISOString()),
         })
         .transform((v) => {

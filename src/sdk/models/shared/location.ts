@@ -18,8 +18,8 @@ export namespace Location$ {
 
     export const inboundSchema: z.ZodType<Location, z.ZodTypeDef, Inbound> = z
         .object({
-            id: z.string().nullable().optional(),
-            name: z.string().nullable().optional(),
+            id: z.nullable(z.string()).optional(),
+            name: z.nullable(z.string()).optional(),
         })
         .transform((v) => {
             return {
@@ -35,8 +35,8 @@ export namespace Location$ {
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Location> = z
         .object({
-            id: z.string().nullable().optional(),
-            name: z.string().nullable().optional(),
+            id: z.nullable(z.string()).optional(),
+            name: z.nullable(z.string()).optional(),
         })
         .transform((v) => {
             return {
