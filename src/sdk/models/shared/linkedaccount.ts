@@ -65,19 +65,13 @@ export namespace LinkedAccount$ {
                 .string()
                 .datetime({ offset: true })
                 .transform((v) => new Date(v)),
-            credentials: z
-                .lazy(() => Credentials$.inboundSchema)
-                .nullable()
-                .optional(),
+            credentials: z.nullable(z.lazy(() => Credentials$.inboundSchema)).optional(),
             id: z.string(),
             origin_owner_id: z.string(),
             origin_owner_name: z.string(),
-            origin_username: z.string().nullable().optional(),
+            origin_username: z.nullable(z.string()).optional(),
             provider: z.string(),
-            setup_information: z
-                .lazy(() => SetupInformation$.inboundSchema)
-                .nullable()
-                .optional(),
+            setup_information: z.nullable(z.lazy(() => SetupInformation$.inboundSchema)).optional(),
             updated_at: z
                 .string()
                 .datetime({ offset: true })
@@ -117,19 +111,13 @@ export namespace LinkedAccount$ {
         .object({
             active: z.boolean(),
             createdAt: z.date().transform((v) => v.toISOString()),
-            credentials: z
-                .lazy(() => Credentials$.outboundSchema)
-                .nullable()
-                .optional(),
+            credentials: z.nullable(z.lazy(() => Credentials$.outboundSchema)).optional(),
             id: z.string(),
             originOwnerId: z.string(),
             originOwnerName: z.string(),
-            originUsername: z.string().nullable().optional(),
+            originUsername: z.nullable(z.string()).optional(),
             provider: z.string(),
-            setupInformation: z
-                .lazy(() => SetupInformation$.outboundSchema)
-                .nullable()
-                .optional(),
+            setupInformation: z.nullable(z.lazy(() => SetupInformation$.outboundSchema)).optional(),
             updatedAt: z.date().transform((v) => v.toISOString()),
         })
         .transform((v) => {

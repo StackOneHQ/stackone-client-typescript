@@ -24,7 +24,7 @@ export namespace ResultLink$ {
 
     export const inboundSchema: z.ZodType<ResultLink, z.ZodTypeDef, Inbound> = z
         .object({
-            label: z.string().nullable().optional(),
+            label: z.nullable(z.string()).optional(),
             url: z.string(),
         })
         .transform((v) => {
@@ -41,7 +41,7 @@ export namespace ResultLink$ {
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ResultLink> = z
         .object({
-            label: z.string().nullable().optional(),
+            label: z.nullable(z.string()).optional(),
             url: z.string(),
         })
         .transform((v) => {

@@ -99,23 +99,24 @@ export namespace List$ {
     export const inboundSchema: z.ZodType<List, z.ZodTypeDef, Inbound> = z
         .object({
             created_at: z
-                .string()
-                .datetime({ offset: true })
-                .transform((v) => new Date(v))
-                .nullable()
+                .nullable(
+                    z
+                        .string()
+                        .datetime({ offset: true })
+                        .transform((v) => new Date(v))
+                )
                 .optional(),
             id: z.string(),
-            items: z.array(z.string()).nullable().optional(),
+            items: z.nullable(z.array(z.string())).optional(),
             name: z.string(),
-            type: z
-                .lazy(() => ListType$.inboundSchema)
-                .nullable()
-                .optional(),
+            type: z.nullable(z.lazy(() => ListType$.inboundSchema)).optional(),
             updated_at: z
-                .string()
-                .datetime({ offset: true })
-                .transform((v) => new Date(v))
-                .nullable()
+                .nullable(
+                    z
+                        .string()
+                        .datetime({ offset: true })
+                        .transform((v) => new Date(v))
+                )
                 .optional(),
         })
         .transform((v) => {
@@ -140,23 +141,12 @@ export namespace List$ {
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, List> = z
         .object({
-            createdAt: z
-                .date()
-                .transform((v) => v.toISOString())
-                .nullable()
-                .optional(),
+            createdAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
             id: z.string(),
-            items: z.array(z.string()).nullable().optional(),
+            items: z.nullable(z.array(z.string())).optional(),
             name: z.string(),
-            type: z
-                .lazy(() => ListType$.outboundSchema)
-                .nullable()
-                .optional(),
-            updatedAt: z
-                .date()
-                .transform((v) => v.toISOString())
-                .nullable()
-                .optional(),
+            type: z.nullable(z.lazy(() => ListType$.outboundSchema)).optional(),
+            updatedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
         })
         .transform((v) => {
             return {

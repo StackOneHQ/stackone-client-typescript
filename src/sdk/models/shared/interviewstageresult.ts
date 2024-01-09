@@ -21,7 +21,7 @@ export namespace InterviewStageResult$ {
     export const inboundSchema: z.ZodType<InterviewStageResult, z.ZodTypeDef, Inbound> = z
         .object({
             data: InterviewStage$.inboundSchema,
-            raw: z.array(RawResponse$.inboundSchema).nullable().optional(),
+            raw: z.nullable(z.array(RawResponse$.inboundSchema)).optional(),
         })
         .transform((v) => {
             return {
@@ -38,7 +38,7 @@ export namespace InterviewStageResult$ {
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, InterviewStageResult> = z
         .object({
             data: InterviewStage$.outboundSchema,
-            raw: z.array(RawResponse$.outboundSchema).nullable().optional(),
+            raw: z.nullable(z.array(RawResponse$.outboundSchema)).optional(),
         })
         .transform((v) => {
             return {

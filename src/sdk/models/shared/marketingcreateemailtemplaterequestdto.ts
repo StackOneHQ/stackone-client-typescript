@@ -27,10 +27,10 @@ export namespace MarketingCreateEmailTemplateRequestDto$ {
         Inbound
     > = z
         .object({
-            id: z.string().nullable().optional(),
-            messages: z.array(EmailMessages$.inboundSchema).nullable().optional(),
-            name: z.string().nullable().optional(),
-            tags: z.array(z.string()).nullable().optional(),
+            id: z.nullable(z.string()).optional(),
+            messages: z.nullable(z.array(EmailMessages$.inboundSchema)).optional(),
+            name: z.nullable(z.string()).optional(),
+            tags: z.nullable(z.array(z.string())).optional(),
         })
         .transform((v) => {
             return {
@@ -54,10 +54,10 @@ export namespace MarketingCreateEmailTemplateRequestDto$ {
         MarketingCreateEmailTemplateRequestDto
     > = z
         .object({
-            id: z.string().nullable().optional(),
-            messages: z.array(EmailMessages$.outboundSchema).nullable().optional(),
-            name: z.string().nullable().optional(),
-            tags: z.array(z.string()).nullable().optional(),
+            id: z.nullable(z.string()).optional(),
+            messages: z.nullable(z.array(EmailMessages$.outboundSchema)).optional(),
+            name: z.nullable(z.string()).optional(),
+            tags: z.nullable(z.array(z.string())).optional(),
         })
         .transform((v) => {
             return {

@@ -8565,8 +8565,8 @@ export namespace HrisCreateEmployeeRequestDtoAvatar$ {
         Inbound
     > = z
         .object({
-            base64: z.string().nullable().optional(),
-            url: z.string().nullable().optional(),
+            base64: z.nullable(z.string()).optional(),
+            url: z.nullable(z.string()).optional(),
         })
         .transform((v) => {
             return {
@@ -8586,8 +8586,8 @@ export namespace HrisCreateEmployeeRequestDtoAvatar$ {
         HrisCreateEmployeeRequestDtoAvatar
     > = z
         .object({
-            base64: z.string().nullable().optional(),
-            url: z.string().nullable().optional(),
+            base64: z.nullable(z.string()).optional(),
+            url: z.nullable(z.string()).optional(),
         })
         .transform((v) => {
             return {
@@ -8956,20 +8956,16 @@ export namespace HrisCreateEmployeeRequestDtoHomeLocation$ {
         Inbound
     > = z
         .object({
-            city: z.string().nullable().optional(),
+            city: z.nullable(z.string()).optional(),
             country: z
-                .lazy(() => HrisCreateEmployeeRequestDtoCountry$.inboundSchema)
-                .nullable()
+                .nullable(z.lazy(() => HrisCreateEmployeeRequestDtoCountry$.inboundSchema))
                 .optional(),
-            name: z.string().nullable().optional(),
-            phone_number: z.string().nullable().optional(),
-            state: z
-                .lazy(() => State$.inboundSchema)
-                .nullable()
-                .optional(),
-            street_1: z.string().nullable().optional(),
-            street_2: z.string().nullable().optional(),
-            zip_code: z.string().nullable().optional(),
+            name: z.nullable(z.string()).optional(),
+            phone_number: z.nullable(z.string()).optional(),
+            state: z.nullable(z.lazy(() => State$.inboundSchema)).optional(),
+            street_1: z.nullable(z.string()).optional(),
+            street_2: z.nullable(z.string()).optional(),
+            zip_code: z.nullable(z.string()).optional(),
         })
         .transform((v) => {
             return {
@@ -9001,20 +8997,16 @@ export namespace HrisCreateEmployeeRequestDtoHomeLocation$ {
         HrisCreateEmployeeRequestDtoHomeLocation
     > = z
         .object({
-            city: z.string().nullable().optional(),
+            city: z.nullable(z.string()).optional(),
             country: z
-                .lazy(() => HrisCreateEmployeeRequestDtoCountry$.outboundSchema)
-                .nullable()
+                .nullable(z.lazy(() => HrisCreateEmployeeRequestDtoCountry$.outboundSchema))
                 .optional(),
-            name: z.string().nullable().optional(),
-            phoneNumber: z.string().nullable().optional(),
-            state: z
-                .lazy(() => State$.outboundSchema)
-                .nullable()
-                .optional(),
-            street1: z.string().nullable().optional(),
-            street2: z.string().nullable().optional(),
-            zipCode: z.string().nullable().optional(),
+            name: z.nullable(z.string()).optional(),
+            phoneNumber: z.nullable(z.string()).optional(),
+            state: z.nullable(z.lazy(() => State$.outboundSchema)).optional(),
+            street1: z.nullable(z.string()).optional(),
+            street2: z.nullable(z.string()).optional(),
+            zipCode: z.nullable(z.string()).optional(),
         })
         .transform((v) => {
             return {
@@ -9199,20 +9191,18 @@ export namespace HrisCreateEmployeeRequestDtoWorkLocation$ {
         Inbound
     > = z
         .object({
-            city: z.string().nullable().optional(),
+            city: z.nullable(z.string()).optional(),
             country: z
-                .lazy(() => HrisCreateEmployeeRequestDtoSchemasCountry$.inboundSchema)
-                .nullable()
+                .nullable(z.lazy(() => HrisCreateEmployeeRequestDtoSchemasCountry$.inboundSchema))
                 .optional(),
-            name: z.string().nullable().optional(),
-            phone_number: z.string().nullable().optional(),
+            name: z.nullable(z.string()).optional(),
+            phone_number: z.nullable(z.string()).optional(),
             state: z
-                .lazy(() => HrisCreateEmployeeRequestDtoState$.inboundSchema)
-                .nullable()
+                .nullable(z.lazy(() => HrisCreateEmployeeRequestDtoState$.inboundSchema))
                 .optional(),
-            street_1: z.string().nullable().optional(),
-            street_2: z.string().nullable().optional(),
-            zip_code: z.string().nullable().optional(),
+            street_1: z.nullable(z.string()).optional(),
+            street_2: z.nullable(z.string()).optional(),
+            zip_code: z.nullable(z.string()).optional(),
         })
         .transform((v) => {
             return {
@@ -9244,20 +9234,18 @@ export namespace HrisCreateEmployeeRequestDtoWorkLocation$ {
         HrisCreateEmployeeRequestDtoWorkLocation
     > = z
         .object({
-            city: z.string().nullable().optional(),
+            city: z.nullable(z.string()).optional(),
             country: z
-                .lazy(() => HrisCreateEmployeeRequestDtoSchemasCountry$.outboundSchema)
-                .nullable()
+                .nullable(z.lazy(() => HrisCreateEmployeeRequestDtoSchemasCountry$.outboundSchema))
                 .optional(),
-            name: z.string().nullable().optional(),
-            phoneNumber: z.string().nullable().optional(),
+            name: z.nullable(z.string()).optional(),
+            phoneNumber: z.nullable(z.string()).optional(),
             state: z
-                .lazy(() => HrisCreateEmployeeRequestDtoState$.outboundSchema)
-                .nullable()
+                .nullable(z.lazy(() => HrisCreateEmployeeRequestDtoState$.outboundSchema))
                 .optional(),
-            street1: z.string().nullable().optional(),
-            street2: z.string().nullable().optional(),
-            zipCode: z.string().nullable().optional(),
+            street1: z.nullable(z.string()).optional(),
+            street2: z.nullable(z.string()).optional(),
+            zipCode: z.nullable(z.string()).optional(),
         })
         .transform((v) => {
             return {
@@ -9319,94 +9307,99 @@ export namespace HrisCreateEmployeeRequestDto$ {
     export const inboundSchema: z.ZodType<HrisCreateEmployeeRequestDto, z.ZodTypeDef, Inbound> = z
         .object({
             avatar: z
-                .lazy(() => HrisCreateEmployeeRequestDtoAvatar$.inboundSchema)
-                .nullable()
+                .nullable(z.lazy(() => HrisCreateEmployeeRequestDtoAvatar$.inboundSchema))
                 .optional(),
-            avatar_url: z.string().nullable().optional(),
+            avatar_url: z.nullable(z.string()).optional(),
             birthday: z
-                .string()
-                .datetime({ offset: true })
-                .transform((v) => new Date(v))
-                .nullable()
+                .nullable(
+                    z
+                        .string()
+                        .datetime({ offset: true })
+                        .transform((v) => new Date(v))
+                )
                 .optional(),
-            citizenships: z.array(CountryCodeEnum$.inboundSchema).nullable().optional(),
-            company_name: z.string().nullable().optional(),
-            custom_fields: z.array(EmployeeCustomFields$.inboundSchema).nullable().optional(),
+            citizenships: z.nullable(z.array(CountryCodeEnum$.inboundSchema)).optional(),
+            company_name: z.nullable(z.string()).optional(),
+            custom_fields: z.nullable(z.array(EmployeeCustomFields$.inboundSchema)).optional(),
             date_of_birth: z
-                .string()
-                .datetime({ offset: true })
-                .transform((v) => new Date(v))
-                .nullable()
+                .nullable(
+                    z
+                        .string()
+                        .datetime({ offset: true })
+                        .transform((v) => new Date(v))
+                )
                 .optional(),
-            department: z.string().nullable().optional(),
-            display_name: z.string().nullable().optional(),
+            department: z.nullable(z.string()).optional(),
+            display_name: z.nullable(z.string()).optional(),
             employment_contract_type: z
-                .lazy(() => HrisCreateEmployeeRequestDtoEmploymentContractType$.inboundSchema)
-                .nullable()
+                .nullable(
+                    z.lazy(() => HrisCreateEmployeeRequestDtoEmploymentContractType$.inboundSchema)
+                )
                 .optional(),
             employment_status: z
-                .lazy(() => HrisCreateEmployeeRequestDtoEmploymentStatus$.inboundSchema)
-                .nullable()
+                .nullable(z.lazy(() => HrisCreateEmployeeRequestDtoEmploymentStatus$.inboundSchema))
                 .optional(),
             employment_type: z
-                .lazy(() => HrisCreateEmployeeRequestDtoEmploymentType$.inboundSchema)
-                .nullable()
+                .nullable(z.lazy(() => HrisCreateEmployeeRequestDtoEmploymentType$.inboundSchema))
                 .optional(),
-            employments: z.array(Employment$.inboundSchema).nullable().optional(),
+            employments: z.nullable(z.array(Employment$.inboundSchema)).optional(),
             ethnicity: z
-                .lazy(() => HrisCreateEmployeeRequestDtoEthnicity$.inboundSchema)
-                .nullable()
+                .nullable(z.lazy(() => HrisCreateEmployeeRequestDtoEthnicity$.inboundSchema))
                 .optional(),
             first_name: z.string(),
             gender: z
-                .lazy(() => HrisCreateEmployeeRequestDtoGender$.inboundSchema)
-                .nullable()
+                .nullable(z.lazy(() => HrisCreateEmployeeRequestDtoGender$.inboundSchema))
                 .optional(),
             hire_date: z
-                .string()
-                .datetime({ offset: true })
-                .transform((v) => new Date(v))
-                .nullable()
+                .nullable(
+                    z
+                        .string()
+                        .datetime({ offset: true })
+                        .transform((v) => new Date(v))
+                )
                 .optional(),
             home_location: z
-                .lazy(() => HrisCreateEmployeeRequestDtoHomeLocation$.inboundSchema)
-                .nullable()
+                .nullable(z.lazy(() => HrisCreateEmployeeRequestDtoHomeLocation$.inboundSchema))
                 .optional(),
-            job_title: z.string().nullable().optional(),
+            job_title: z.nullable(z.string()).optional(),
             last_name: z.string(),
-            manager_id: z.string().nullable().optional(),
+            manager_id: z.nullable(z.string()).optional(),
             marital_status: z
-                .lazy(() => HrisCreateEmployeeRequestDtoMaritalStatus$.inboundSchema)
-                .nullable()
+                .nullable(z.lazy(() => HrisCreateEmployeeRequestDtoMaritalStatus$.inboundSchema))
                 .optional(),
-            name: z.string().nullable().optional(),
-            personal_email: z.string().nullable().optional(),
-            personal_phone_number: z.string().nullable().optional(),
+            name: z.nullable(z.string()).optional(),
+            personal_email: z.nullable(z.string()).optional(),
+            personal_phone_number: z.nullable(z.string()).optional(),
             start_date: z
-                .string()
-                .datetime({ offset: true })
-                .transform((v) => new Date(v))
-                .nullable()
+                .nullable(
+                    z
+                        .string()
+                        .datetime({ offset: true })
+                        .transform((v) => new Date(v))
+                )
                 .optional(),
-            tenure: z.number().nullable().optional(),
+            tenure: z.nullable(z.number()).optional(),
             termination_date: z
-                .string()
-                .datetime({ offset: true })
-                .transform((v) => new Date(v))
-                .nullable()
+                .nullable(
+                    z
+                        .string()
+                        .datetime({ offset: true })
+                        .transform((v) => new Date(v))
+                )
                 .optional(),
             work_anniversary: z
-                .string()
-                .datetime({ offset: true })
-                .transform((v) => new Date(v))
-                .nullable()
+                .nullable(
+                    z
+                        .string()
+                        .datetime({ offset: true })
+                        .transform((v) => new Date(v))
+                )
                 .optional(),
             work_email: z.string(),
             work_location: z
-                .lazy(() => HrisCreateEmployeeRequestDtoWorkLocation$.inboundSchema)
-                .nullable()
+                .nullable(z.lazy(() => HrisCreateEmployeeRequestDtoWorkLocation$.inboundSchema))
                 .optional(),
-            work_phone_number: z.string().nullable().optional(),
+            work_phone_number: z.nullable(z.string()).optional(),
         })
         .transform((v) => {
             return {
@@ -9501,88 +9494,59 @@ export namespace HrisCreateEmployeeRequestDto$ {
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, HrisCreateEmployeeRequestDto> = z
         .object({
             avatar: z
-                .lazy(() => HrisCreateEmployeeRequestDtoAvatar$.outboundSchema)
-                .nullable()
+                .nullable(z.lazy(() => HrisCreateEmployeeRequestDtoAvatar$.outboundSchema))
                 .optional(),
-            avatarUrl: z.string().nullable().optional(),
-            birthday: z
-                .date()
-                .transform((v) => v.toISOString())
-                .nullable()
-                .optional(),
-            citizenships: z.array(CountryCodeEnum$.outboundSchema).nullable().optional(),
-            companyName: z.string().nullable().optional(),
-            customFields: z.array(EmployeeCustomFields$.outboundSchema).nullable().optional(),
-            dateOfBirth: z
-                .date()
-                .transform((v) => v.toISOString())
-                .nullable()
-                .optional(),
-            department: z.string().nullable().optional(),
-            displayName: z.string().nullable().optional(),
+            avatarUrl: z.nullable(z.string()).optional(),
+            birthday: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+            citizenships: z.nullable(z.array(CountryCodeEnum$.outboundSchema)).optional(),
+            companyName: z.nullable(z.string()).optional(),
+            customFields: z.nullable(z.array(EmployeeCustomFields$.outboundSchema)).optional(),
+            dateOfBirth: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+            department: z.nullable(z.string()).optional(),
+            displayName: z.nullable(z.string()).optional(),
             employmentContractType: z
-                .lazy(() => HrisCreateEmployeeRequestDtoEmploymentContractType$.outboundSchema)
-                .nullable()
+                .nullable(
+                    z.lazy(() => HrisCreateEmployeeRequestDtoEmploymentContractType$.outboundSchema)
+                )
                 .optional(),
             employmentStatus: z
-                .lazy(() => HrisCreateEmployeeRequestDtoEmploymentStatus$.outboundSchema)
-                .nullable()
+                .nullable(
+                    z.lazy(() => HrisCreateEmployeeRequestDtoEmploymentStatus$.outboundSchema)
+                )
                 .optional(),
             employmentType: z
-                .lazy(() => HrisCreateEmployeeRequestDtoEmploymentType$.outboundSchema)
-                .nullable()
+                .nullable(z.lazy(() => HrisCreateEmployeeRequestDtoEmploymentType$.outboundSchema))
                 .optional(),
-            employments: z.array(Employment$.outboundSchema).nullable().optional(),
+            employments: z.nullable(z.array(Employment$.outboundSchema)).optional(),
             ethnicity: z
-                .lazy(() => HrisCreateEmployeeRequestDtoEthnicity$.outboundSchema)
-                .nullable()
+                .nullable(z.lazy(() => HrisCreateEmployeeRequestDtoEthnicity$.outboundSchema))
                 .optional(),
             firstName: z.string(),
             gender: z
-                .lazy(() => HrisCreateEmployeeRequestDtoGender$.outboundSchema)
-                .nullable()
+                .nullable(z.lazy(() => HrisCreateEmployeeRequestDtoGender$.outboundSchema))
                 .optional(),
-            hireDate: z
-                .date()
-                .transform((v) => v.toISOString())
-                .nullable()
-                .optional(),
+            hireDate: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
             homeLocation: z
-                .lazy(() => HrisCreateEmployeeRequestDtoHomeLocation$.outboundSchema)
-                .nullable()
+                .nullable(z.lazy(() => HrisCreateEmployeeRequestDtoHomeLocation$.outboundSchema))
                 .optional(),
-            jobTitle: z.string().nullable().optional(),
+            jobTitle: z.nullable(z.string()).optional(),
             lastName: z.string(),
-            managerId: z.string().nullable().optional(),
+            managerId: z.nullable(z.string()).optional(),
             maritalStatus: z
-                .lazy(() => HrisCreateEmployeeRequestDtoMaritalStatus$.outboundSchema)
-                .nullable()
+                .nullable(z.lazy(() => HrisCreateEmployeeRequestDtoMaritalStatus$.outboundSchema))
                 .optional(),
-            name: z.string().nullable().optional(),
-            personalEmail: z.string().nullable().optional(),
-            personalPhoneNumber: z.string().nullable().optional(),
-            startDate: z
-                .date()
-                .transform((v) => v.toISOString())
-                .nullable()
-                .optional(),
-            tenure: z.number().nullable().optional(),
-            terminationDate: z
-                .date()
-                .transform((v) => v.toISOString())
-                .nullable()
-                .optional(),
-            workAnniversary: z
-                .date()
-                .transform((v) => v.toISOString())
-                .nullable()
-                .optional(),
+            name: z.nullable(z.string()).optional(),
+            personalEmail: z.nullable(z.string()).optional(),
+            personalPhoneNumber: z.nullable(z.string()).optional(),
+            startDate: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+            tenure: z.nullable(z.number()).optional(),
+            terminationDate: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+            workAnniversary: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
             workEmail: z.string(),
             workLocation: z
-                .lazy(() => HrisCreateEmployeeRequestDtoWorkLocation$.outboundSchema)
-                .nullable()
+                .nullable(z.lazy(() => HrisCreateEmployeeRequestDtoWorkLocation$.outboundSchema))
                 .optional(),
-            workPhoneNumber: z.string().nullable().optional(),
+            workPhoneNumber: z.nullable(z.string()).optional(),
         })
         .transform((v) => {
             return {

@@ -53,8 +53,8 @@ export namespace ContentType$ {
 
     export const inboundSchema: z.ZodType<ContentType, z.ZodTypeDef, Inbound> = z
         .object({
-            source_value: z.string().nullable().optional(),
-            value: ApplicationAttachmentValue$.nullable().optional(),
+            source_value: z.nullable(z.string()).optional(),
+            value: z.nullable(ApplicationAttachmentValue$).optional(),
         })
         .transform((v) => {
             return {
@@ -70,8 +70,8 @@ export namespace ContentType$ {
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ContentType> = z
         .object({
-            sourceValue: z.string().nullable().optional(),
-            value: ApplicationAttachmentValue$.nullable().optional(),
+            sourceValue: z.nullable(z.string()).optional(),
+            value: z.nullable(ApplicationAttachmentValue$).optional(),
         })
         .transform((v) => {
             return {
@@ -93,14 +93,11 @@ export namespace ApplicationAttachment$ {
 
     export const inboundSchema: z.ZodType<ApplicationAttachment, z.ZodTypeDef, Inbound> = z
         .object({
-            content: z.string().nullable().optional(),
-            content_type: z
-                .lazy(() => ContentType$.inboundSchema)
-                .nullable()
-                .optional(),
-            file_name: z.string().nullable().optional(),
-            type: z.array(AttachmentType$.inboundSchema).nullable().optional(),
-            url: z.string().nullable().optional(),
+            content: z.nullable(z.string()).optional(),
+            content_type: z.nullable(z.lazy(() => ContentType$.inboundSchema)).optional(),
+            file_name: z.nullable(z.string()).optional(),
+            type: z.nullable(z.array(AttachmentType$.inboundSchema)).optional(),
+            url: z.nullable(z.string()).optional(),
         })
         .transform((v) => {
             return {
@@ -122,14 +119,11 @@ export namespace ApplicationAttachment$ {
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ApplicationAttachment> = z
         .object({
-            content: z.string().nullable().optional(),
-            contentType: z
-                .lazy(() => ContentType$.outboundSchema)
-                .nullable()
-                .optional(),
-            fileName: z.string().nullable().optional(),
-            type: z.array(AttachmentType$.outboundSchema).nullable().optional(),
-            url: z.string().nullable().optional(),
+            content: z.nullable(z.string()).optional(),
+            contentType: z.nullable(z.lazy(() => ContentType$.outboundSchema)).optional(),
+            fileName: z.nullable(z.string()).optional(),
+            type: z.nullable(z.array(AttachmentType$.outboundSchema)).optional(),
+            url: z.nullable(z.string()).optional(),
         })
         .transform((v) => {
             return {

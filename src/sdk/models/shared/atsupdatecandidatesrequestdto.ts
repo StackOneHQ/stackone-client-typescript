@@ -60,14 +60,14 @@ export namespace AtsUpdateCandidatesRequestDto$ {
 
     export const inboundSchema: z.ZodType<AtsUpdateCandidatesRequestDto, z.ZodTypeDef, Inbound> = z
         .object({
-            application_ids: z.array(z.string()).nullable().optional(),
-            company: z.string().nullable().optional(),
+            application_ids: z.nullable(z.array(z.string())).optional(),
+            company: z.nullable(z.string()).optional(),
             emails: z.array(CandidateEmail$.inboundSchema).optional(),
             first_name: z.string().optional(),
-            id: z.string().nullable().optional(),
+            id: z.nullable(z.string()).optional(),
             last_name: z.string().optional(),
             name: z.string().optional(),
-            phone: z.string().nullable().optional(),
+            phone: z.nullable(z.string()).optional(),
             title: z.string().optional(),
         })
         .transform((v) => {
@@ -99,14 +99,14 @@ export namespace AtsUpdateCandidatesRequestDto$ {
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, AtsUpdateCandidatesRequestDto> =
         z
             .object({
-                applicationIds: z.array(z.string()).nullable().optional(),
-                company: z.string().nullable().optional(),
+                applicationIds: z.nullable(z.array(z.string())).optional(),
+                company: z.nullable(z.string()).optional(),
                 emails: z.array(CandidateEmail$.outboundSchema).optional(),
                 firstName: z.string().optional(),
-                id: z.string().nullable().optional(),
+                id: z.nullable(z.string()).optional(),
                 lastName: z.string().optional(),
                 name: z.string().optional(),
-                phone: z.string().nullable().optional(),
+                phone: z.nullable(z.string()).optional(),
                 title: z.string().optional(),
             })
             .transform((v) => {

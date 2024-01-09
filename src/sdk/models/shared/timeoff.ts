@@ -166,40 +166,42 @@ export namespace TimeOff$ {
 
     export const inboundSchema: z.ZodType<TimeOff, z.ZodTypeDef, Inbound> = z
         .object({
-            approver_id: z.string().nullable().optional(),
+            approver_id: z.nullable(z.string()).optional(),
             created_date: z
-                .string()
-                .datetime({ offset: true })
-                .transform((v) => new Date(v))
-                .nullable()
+                .nullable(
+                    z
+                        .string()
+                        .datetime({ offset: true })
+                        .transform((v) => new Date(v))
+                )
                 .optional(),
-            employee_id: z.string().nullable().optional(),
+            employee_id: z.nullable(z.string()).optional(),
             end_date: z
-                .string()
-                .datetime({ offset: true })
-                .transform((v) => new Date(v))
-                .nullable()
+                .nullable(
+                    z
+                        .string()
+                        .datetime({ offset: true })
+                        .transform((v) => new Date(v))
+                )
                 .optional(),
-            id: z.string().nullable().optional(),
+            id: z.nullable(z.string()).optional(),
             start_date: z
-                .string()
-                .datetime({ offset: true })
-                .transform((v) => new Date(v))
-                .nullable()
+                .nullable(
+                    z
+                        .string()
+                        .datetime({ offset: true })
+                        .transform((v) => new Date(v))
+                )
                 .optional(),
-            status: z
-                .lazy(() => TimeOffStatus$.inboundSchema)
-                .nullable()
-                .optional(),
-            type: z
-                .lazy(() => TimeOffType$.inboundSchema)
-                .nullable()
-                .optional(),
+            status: z.nullable(z.lazy(() => TimeOffStatus$.inboundSchema)).optional(),
+            type: z.nullable(z.lazy(() => TimeOffType$.inboundSchema)).optional(),
             updated_date: z
-                .string()
-                .datetime({ offset: true })
-                .transform((v) => new Date(v))
-                .nullable()
+                .nullable(
+                    z
+                        .string()
+                        .datetime({ offset: true })
+                        .transform((v) => new Date(v))
+                )
                 .optional(),
         })
         .transform((v) => {
@@ -230,37 +232,15 @@ export namespace TimeOff$ {
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, TimeOff> = z
         .object({
-            approverId: z.string().nullable().optional(),
-            createdDate: z
-                .date()
-                .transform((v) => v.toISOString())
-                .nullable()
-                .optional(),
-            employeeId: z.string().nullable().optional(),
-            endDate: z
-                .date()
-                .transform((v) => v.toISOString())
-                .nullable()
-                .optional(),
-            id: z.string().nullable().optional(),
-            startDate: z
-                .date()
-                .transform((v) => v.toISOString())
-                .nullable()
-                .optional(),
-            status: z
-                .lazy(() => TimeOffStatus$.outboundSchema)
-                .nullable()
-                .optional(),
-            type: z
-                .lazy(() => TimeOffType$.outboundSchema)
-                .nullable()
-                .optional(),
-            updatedDate: z
-                .date()
-                .transform((v) => v.toISOString())
-                .nullable()
-                .optional(),
+            approverId: z.nullable(z.string()).optional(),
+            createdDate: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+            employeeId: z.nullable(z.string()).optional(),
+            endDate: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+            id: z.nullable(z.string()).optional(),
+            startDate: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+            status: z.nullable(z.lazy(() => TimeOffStatus$.outboundSchema)).optional(),
+            type: z.nullable(z.lazy(() => TimeOffType$.outboundSchema)).optional(),
+            updatedDate: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
         })
         .transform((v) => {
             return {

@@ -21,7 +21,7 @@ export namespace ApplicationResult$ {
     export const inboundSchema: z.ZodType<ApplicationResult, z.ZodTypeDef, Inbound> = z
         .object({
             data: Application$.inboundSchema,
-            raw: z.array(RawResponse$.inboundSchema).nullable().optional(),
+            raw: z.nullable(z.array(RawResponse$.inboundSchema)).optional(),
         })
         .transform((v) => {
             return {
@@ -38,7 +38,7 @@ export namespace ApplicationResult$ {
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ApplicationResult> = z
         .object({
             data: Application$.outboundSchema,
-            raw: z.array(RawResponse$.outboundSchema).nullable().optional(),
+            raw: z.nullable(z.array(RawResponse$.outboundSchema)).optional(),
         })
         .transform((v) => {
             return {

@@ -50,7 +50,7 @@ export class Accounts extends ClientSDK {
         const response = await this.fetch$(
             {
                 security: securitySettings$,
-                method: "delete",
+                method: "DELETE",
                 path: path$,
                 headers: headers$,
                 body: body$,
@@ -106,7 +106,7 @@ export class Accounts extends ClientSDK {
         const response = await this.fetch$(
             {
                 security: securitySettings$,
-                method: "get",
+                method: "GET",
                 path: path$,
                 headers: headers$,
                 body: body$,
@@ -162,7 +162,7 @@ export class Accounts extends ClientSDK {
         const response = await this.fetch$(
             {
                 security: securitySettings$,
-                method: "get",
+                method: "GET",
                 path: path$,
                 headers: headers$,
                 body: body$,
@@ -227,7 +227,7 @@ export class Accounts extends ClientSDK {
         const response = await this.fetch$(
             {
                 security: securitySettings$,
-                method: "get",
+                method: "GET",
                 path: path$,
                 headers: headers$,
                 query: query$,
@@ -286,7 +286,7 @@ export class Accounts extends ClientSDK {
         const response = await this.fetch$(
             {
                 security: securitySettings$,
-                method: "patch",
+                method: "PATCH",
                 path: path$,
                 headers: headers$,
                 body: body$,

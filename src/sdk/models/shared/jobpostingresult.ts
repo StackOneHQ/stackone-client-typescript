@@ -21,7 +21,7 @@ export namespace JobPostingResult$ {
     export const inboundSchema: z.ZodType<JobPostingResult, z.ZodTypeDef, Inbound> = z
         .object({
             data: JobPosting$.inboundSchema,
-            raw: z.array(RawResponse$.inboundSchema).nullable().optional(),
+            raw: z.nullable(z.array(RawResponse$.inboundSchema)).optional(),
         })
         .transform((v) => {
             return {
@@ -38,7 +38,7 @@ export namespace JobPostingResult$ {
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, JobPostingResult> = z
         .object({
             data: JobPosting$.outboundSchema,
-            raw: z.array(RawResponse$.outboundSchema).nullable().optional(),
+            raw: z.nullable(z.array(RawResponse$.outboundSchema)).optional(),
         })
         .transform((v) => {
             return {

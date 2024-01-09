@@ -45,25 +45,29 @@ export namespace Offer$ {
         .object({
             application_id: z.string(),
             created_at: z
-                .string()
-                .datetime({ offset: true })
-                .transform((v) => new Date(v))
-                .nullable()
+                .nullable(
+                    z
+                        .string()
+                        .datetime({ offset: true })
+                        .transform((v) => new Date(v))
+                )
                 .optional(),
-            currency: z.string().nullable().optional(),
+            currency: z.nullable(z.string()).optional(),
             id: z.string(),
-            offer_history: z.array(OfferHistory$.inboundSchema).nullable().optional(),
+            offer_history: z.nullable(z.array(OfferHistory$.inboundSchema)).optional(),
             offer_status: OfferStatusEnum$.inboundSchema,
-            salary: z.number().nullable().optional(),
+            salary: z.nullable(z.number()).optional(),
             start_date: z
                 .string()
                 .datetime({ offset: true })
                 .transform((v) => new Date(v)),
             updated_at: z
-                .string()
-                .datetime({ offset: true })
-                .transform((v) => new Date(v))
-                .nullable()
+                .nullable(
+                    z
+                        .string()
+                        .datetime({ offset: true })
+                        .transform((v) => new Date(v))
+                )
                 .optional(),
         })
         .transform((v) => {
@@ -95,22 +99,14 @@ export namespace Offer$ {
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Offer> = z
         .object({
             applicationId: z.string(),
-            createdAt: z
-                .date()
-                .transform((v) => v.toISOString())
-                .nullable()
-                .optional(),
-            currency: z.string().nullable().optional(),
+            createdAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+            currency: z.nullable(z.string()).optional(),
             id: z.string(),
-            offerHistory: z.array(OfferHistory$.outboundSchema).nullable().optional(),
+            offerHistory: z.nullable(z.array(OfferHistory$.outboundSchema)).optional(),
             offerStatus: OfferStatusEnum$.outboundSchema,
-            salary: z.number().nullable().optional(),
+            salary: z.nullable(z.number()).optional(),
             startDate: z.date().transform((v) => v.toISOString()),
-            updatedAt: z
-                .date()
-                .transform((v) => v.toISOString())
-                .nullable()
-                .optional(),
+            updatedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
         })
         .transform((v) => {
             return {

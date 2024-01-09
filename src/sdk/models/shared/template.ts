@@ -31,19 +31,23 @@ export namespace Template$ {
     export const inboundSchema: z.ZodType<Template, z.ZodTypeDef, Inbound> = z
         .object({
             created_at: z
-                .string()
-                .datetime({ offset: true })
-                .transform((v) => new Date(v))
-                .nullable()
+                .nullable(
+                    z
+                        .string()
+                        .datetime({ offset: true })
+                        .transform((v) => new Date(v))
+                )
                 .optional(),
-            id: z.string().nullable().optional(),
-            name: z.string().nullable().optional(),
-            tags: z.array(z.string()).nullable().optional(),
+            id: z.nullable(z.string()).optional(),
+            name: z.nullable(z.string()).optional(),
+            tags: z.nullable(z.array(z.string())).optional(),
             updated_at: z
-                .string()
-                .datetime({ offset: true })
-                .transform((v) => new Date(v))
-                .nullable()
+                .nullable(
+                    z
+                        .string()
+                        .datetime({ offset: true })
+                        .transform((v) => new Date(v))
+                )
                 .optional(),
         })
         .transform((v) => {
@@ -66,19 +70,11 @@ export namespace Template$ {
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Template> = z
         .object({
-            createdAt: z
-                .date()
-                .transform((v) => v.toISOString())
-                .nullable()
-                .optional(),
-            id: z.string().nullable().optional(),
-            name: z.string().nullable().optional(),
-            tags: z.array(z.string()).nullable().optional(),
-            updatedAt: z
-                .date()
-                .transform((v) => v.toISOString())
-                .nullable()
-                .optional(),
+            createdAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+            id: z.nullable(z.string()).optional(),
+            name: z.nullable(z.string()).optional(),
+            tags: z.nullable(z.array(z.string())).optional(),
+            updatedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
         })
         .transform((v) => {
             return {

@@ -42,7 +42,7 @@ export namespace StackoneGetConnectorMetaRequest$ {
     export const inboundSchema: z.ZodType<StackoneGetConnectorMetaRequest, z.ZodTypeDef, Inbound> =
         z
             .object({
-                include: z.string().nullable().optional(),
+                include: z.nullable(z.string()).optional(),
                 provider: z.string(),
             })
             .transform((v) => {
@@ -63,7 +63,7 @@ export namespace StackoneGetConnectorMetaRequest$ {
         StackoneGetConnectorMetaRequest
     > = z
         .object({
-            include: z.string().nullable().optional(),
+            include: z.nullable(z.string()).optional(),
             provider: z.string(),
         })
         .transform((v) => {

@@ -82,17 +82,14 @@ export namespace ConnectSessionCreate$ {
 
     export const inboundSchema: z.ZodType<ConnectSessionCreate, z.ZodTypeDef, Inbound> = z
         .object({
-            account_id: z.string().nullable().optional(),
-            categories: z.array(ConnectSessionCreateCategories$).nullable().optional(),
-            expires_in: z.number().nullable().optional(),
-            metadata: z
-                .lazy(() => Metadata$.inboundSchema)
-                .nullable()
-                .optional(),
+            account_id: z.nullable(z.string()).optional(),
+            categories: z.nullable(z.array(ConnectSessionCreateCategories$)).optional(),
+            expires_in: z.nullable(z.number()).optional(),
+            metadata: z.nullable(z.lazy(() => Metadata$.inboundSchema)).optional(),
             origin_owner_id: z.string(),
             origin_owner_name: z.string(),
-            origin_username: z.string().nullable().optional(),
-            provider: z.string().nullable().optional(),
+            origin_username: z.nullable(z.string()).optional(),
+            provider: z.nullable(z.string()).optional(),
         })
         .transform((v) => {
             return {
@@ -120,17 +117,14 @@ export namespace ConnectSessionCreate$ {
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ConnectSessionCreate> = z
         .object({
-            accountId: z.string().nullable().optional(),
-            categories: z.array(ConnectSessionCreateCategories$).nullable().optional(),
-            expiresIn: z.number().nullable().optional(),
-            metadata: z
-                .lazy(() => Metadata$.outboundSchema)
-                .nullable()
-                .optional(),
+            accountId: z.nullable(z.string()).optional(),
+            categories: z.nullable(z.array(ConnectSessionCreateCategories$)).optional(),
+            expiresIn: z.nullable(z.number()).optional(),
+            metadata: z.nullable(z.lazy(() => Metadata$.outboundSchema)).optional(),
             originOwnerId: z.string(),
             originOwnerName: z.string(),
-            originUsername: z.string().nullable().optional(),
-            provider: z.string().nullable().optional(),
+            originUsername: z.nullable(z.string()).optional(),
+            provider: z.nullable(z.string()).optional(),
         })
         .transform((v) => {
             return {

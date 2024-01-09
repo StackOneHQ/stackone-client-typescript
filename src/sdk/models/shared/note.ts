@@ -64,8 +64,8 @@ export namespace NoteVisibility$ {
 
     export const inboundSchema: z.ZodType<NoteVisibility, z.ZodTypeDef, Inbound> = z
         .object({
-            source_value: z.string().nullable().optional(),
-            value: NoteValue$.nullable().optional(),
+            source_value: z.nullable(z.string()).optional(),
+            value: z.nullable(NoteValue$).optional(),
         })
         .transform((v) => {
             return {
@@ -81,8 +81,8 @@ export namespace NoteVisibility$ {
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, NoteVisibility> = z
         .object({
-            sourceValue: z.string().nullable().optional(),
-            value: NoteValue$.nullable().optional(),
+            sourceValue: z.nullable(z.string()).optional(),
+            value: z.nullable(NoteValue$).optional(),
         })
         .transform((v) => {
             return {
@@ -106,31 +106,34 @@ export namespace Note$ {
 
     export const inboundSchema: z.ZodType<Note, z.ZodTypeDef, Inbound> = z
         .object({
-            author_id: z.string().nullable().optional(),
+            author_id: z.nullable(z.string()).optional(),
             content: z.array(NoteContentApiModel$.inboundSchema),
             created_at: z
-                .string()
-                .datetime({ offset: true })
-                .transform((v) => new Date(v))
-                .nullable()
+                .nullable(
+                    z
+                        .string()
+                        .datetime({ offset: true })
+                        .transform((v) => new Date(v))
+                )
                 .optional(),
             deleted_at: z
-                .string()
-                .datetime({ offset: true })
-                .transform((v) => new Date(v))
-                .nullable()
+                .nullable(
+                    z
+                        .string()
+                        .datetime({ offset: true })
+                        .transform((v) => new Date(v))
+                )
                 .optional(),
             id: z.string(),
             updated_at: z
-                .string()
-                .datetime({ offset: true })
-                .transform((v) => new Date(v))
-                .nullable()
+                .nullable(
+                    z
+                        .string()
+                        .datetime({ offset: true })
+                        .transform((v) => new Date(v))
+                )
                 .optional(),
-            visibility: z
-                .lazy(() => NoteVisibility$.inboundSchema)
-                .nullable()
-                .optional(),
+            visibility: z.nullable(z.lazy(() => NoteVisibility$.inboundSchema)).optional(),
         })
         .transform((v) => {
             return {
@@ -156,28 +159,13 @@ export namespace Note$ {
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Note> = z
         .object({
-            authorId: z.string().nullable().optional(),
+            authorId: z.nullable(z.string()).optional(),
             content: z.array(NoteContentApiModel$.outboundSchema),
-            createdAt: z
-                .date()
-                .transform((v) => v.toISOString())
-                .nullable()
-                .optional(),
-            deletedAt: z
-                .date()
-                .transform((v) => v.toISOString())
-                .nullable()
-                .optional(),
+            createdAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+            deletedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
             id: z.string(),
-            updatedAt: z
-                .date()
-                .transform((v) => v.toISOString())
-                .nullable()
-                .optional(),
-            visibility: z
-                .lazy(() => NoteVisibility$.outboundSchema)
-                .nullable()
-                .optional(),
+            updatedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+            visibility: z.nullable(z.lazy(() => NoteVisibility$.outboundSchema)).optional(),
         })
         .transform((v) => {
             return {

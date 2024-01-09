@@ -38,8 +38,8 @@ export namespace AttachmentType$ {
 
     export const inboundSchema: z.ZodType<AttachmentType, z.ZodTypeDef, Inbound> = z
         .object({
-            source_value: z.string().nullable().optional(),
-            value: AttachmentTypeValue$.nullable().optional(),
+            source_value: z.nullable(z.string()).optional(),
+            value: z.nullable(AttachmentTypeValue$).optional(),
         })
         .transform((v) => {
             return {
@@ -55,8 +55,8 @@ export namespace AttachmentType$ {
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, AttachmentType> = z
         .object({
-            sourceValue: z.string().nullable().optional(),
-            value: AttachmentTypeValue$.nullable().optional(),
+            sourceValue: z.nullable(z.string()).optional(),
+            value: z.nullable(AttachmentTypeValue$).optional(),
         })
         .transform((v) => {
             return {

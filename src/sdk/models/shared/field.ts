@@ -60,11 +60,11 @@ export namespace Field$ {
 
     export const inboundSchema: z.ZodType<Field, z.ZodTypeDef, Inbound> = z
         .object({
-            id: z.string().nullable().optional(),
-            label: z.string().nullable().optional(),
-            required: z.boolean().nullable().optional(),
-            type: FieldType$.nullable().optional(),
-            values: z.array(z.string()).nullable().optional(),
+            id: z.nullable(z.string()).optional(),
+            label: z.nullable(z.string()).optional(),
+            required: z.nullable(z.boolean()).optional(),
+            type: z.nullable(FieldType$).optional(),
+            values: z.nullable(z.array(z.string())).optional(),
         })
         .transform((v) => {
             return {
@@ -86,11 +86,11 @@ export namespace Field$ {
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Field> = z
         .object({
-            id: z.string().nullable().optional(),
-            label: z.string().nullable().optional(),
-            required: z.boolean().nullable().optional(),
-            type: FieldType$.nullable().optional(),
-            values: z.array(z.string()).nullable().optional(),
+            id: z.nullable(z.string()).optional(),
+            label: z.nullable(z.string()).optional(),
+            required: z.nullable(z.boolean()).optional(),
+            type: z.nullable(FieldType$).optional(),
+            values: z.nullable(z.array(z.string())).optional(),
         })
         .transform((v) => {
             return {

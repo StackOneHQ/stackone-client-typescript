@@ -55,13 +55,13 @@ export namespace AtsCreateCandidateRequestDto$ {
 
     export const inboundSchema: z.ZodType<AtsCreateCandidateRequestDto, z.ZodTypeDef, Inbound> = z
         .object({
-            application_ids: z.array(z.string()).nullable().optional(),
-            company: z.string().nullable().optional(),
+            application_ids: z.nullable(z.array(z.string())).optional(),
+            company: z.nullable(z.string()).optional(),
             emails: z.array(CandidateEmail$.inboundSchema),
             first_name: z.string(),
             last_name: z.string(),
             name: z.string(),
-            phone: z.string().nullable().optional(),
+            phone: z.nullable(z.string()).optional(),
             title: z.string(),
         })
         .transform((v) => {
@@ -90,13 +90,13 @@ export namespace AtsCreateCandidateRequestDto$ {
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, AtsCreateCandidateRequestDto> = z
         .object({
-            applicationIds: z.array(z.string()).nullable().optional(),
-            company: z.string().nullable().optional(),
+            applicationIds: z.nullable(z.array(z.string())).optional(),
+            company: z.nullable(z.string()).optional(),
             emails: z.array(CandidateEmail$.outboundSchema),
             firstName: z.string(),
             lastName: z.string(),
             name: z.string(),
-            phone: z.string().nullable().optional(),
+            phone: z.nullable(z.string()).optional(),
             title: z.string(),
         })
         .transform((v) => {
