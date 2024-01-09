@@ -18,6 +18,11 @@ export enum Category {
 
 export type Models = {};
 
+/**
+ * Resources for this provider, such as image assets
+ */
+export type Resources = {};
+
 export type ConnectorsMeta = {
     /**
      * Whether this provider has been enabled on the integrations page for the current project
@@ -39,7 +44,7 @@ export type ConnectorsMeta = {
     /**
      * Resources for this provider, such as image assets
      */
-    resources?: boolean | null | undefined;
+    resources?: Resources | null | undefined;
 };
 
 /** @internal */
@@ -57,6 +62,17 @@ export namespace Models$ {
 }
 
 /** @internal */
+export namespace Resources$ {
+    export type Inbound = {};
+
+    export const inboundSchema: z.ZodType<Resources, z.ZodTypeDef, Inbound> = z.object({});
+
+    export type Outbound = {};
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Resources> = z.object({});
+}
+
+/** @internal */
 export namespace ConnectorsMeta$ {
     export type Inbound = {
         active: boolean;
@@ -64,7 +80,7 @@ export namespace ConnectorsMeta$ {
         models: Models$.Inbound;
         provider: string;
         provider_name: string;
-        resources?: boolean | null | undefined;
+        resources?: Resources$.Inbound | null | undefined;
     };
 
     export const inboundSchema: z.ZodType<ConnectorsMeta, z.ZodTypeDef, Inbound> = z
@@ -74,7 +90,7 @@ export namespace ConnectorsMeta$ {
             models: z.lazy(() => Models$.inboundSchema),
             provider: z.string(),
             provider_name: z.string(),
-            resources: z.boolean().nullable().optional(),
+            resources: z.nullable(z.lazy(() => Resources$.inboundSchema)).optional(),
         })
         .transform((v) => {
             return {
@@ -93,7 +109,7 @@ export namespace ConnectorsMeta$ {
         models: Models$.Outbound;
         provider: string;
         provider_name: string;
-        resources?: boolean | null | undefined;
+        resources?: Resources$.Outbound | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ConnectorsMeta> = z
@@ -103,7 +119,7 @@ export namespace ConnectorsMeta$ {
             models: z.lazy(() => Models$.outboundSchema),
             provider: z.string(),
             providerName: z.string(),
-            resources: z.boolean().nullable().optional(),
+            resources: z.nullable(z.lazy(() => Resources$.outboundSchema)).optional(),
         })
         .transform((v) => {
             return {

@@ -101,19 +101,16 @@ export namespace AtsGetApplicationOfferRequest$ {
 
     export const inboundSchema: z.ZodType<AtsGetApplicationOfferRequest, z.ZodTypeDef, Inbound> = z
         .object({
-            fields: z.string().nullable().optional(),
+            fields: z.nullable(z.string()).optional(),
             id: z.string(),
-            next: z.string().nullable().optional(),
-            page: z.string().nullable().optional(),
-            page_size: z.string().nullable().optional(),
-            proxy: z
-                .lazy(() => QueryParamProxy$.inboundSchema)
-                .nullable()
-                .optional(),
-            raw: z.boolean().nullable().optional(),
+            next: z.nullable(z.string()).optional(),
+            page: z.nullable(z.string()).optional(),
+            page_size: z.nullable(z.string()).optional(),
+            proxy: z.nullable(z.lazy(() => QueryParamProxy$.inboundSchema)).optional(),
+            raw: z.nullable(z.boolean()).optional(),
             subResourceId: z.string(),
-            sync_token: z.string().nullable().optional(),
-            updated_after: z.string().nullable().optional(),
+            sync_token: z.nullable(z.string()).optional(),
+            updated_after: z.nullable(z.string()).optional(),
             "x-account-id": z.string(),
         })
         .transform((v) => {
@@ -149,19 +146,16 @@ export namespace AtsGetApplicationOfferRequest$ {
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, AtsGetApplicationOfferRequest> =
         z
             .object({
-                fields: z.string().nullable().optional(),
+                fields: z.nullable(z.string()).optional(),
                 id: z.string(),
-                next: z.string().nullable().optional(),
-                page: z.string().nullable().optional(),
-                pageSize: z.string().nullable().optional(),
-                proxy: z
-                    .lazy(() => QueryParamProxy$.outboundSchema)
-                    .nullable()
-                    .optional(),
-                raw: z.boolean().nullable().optional(),
+                next: z.nullable(z.string()).optional(),
+                page: z.nullable(z.string()).optional(),
+                pageSize: z.nullable(z.string()).optional(),
+                proxy: z.nullable(z.lazy(() => QueryParamProxy$.outboundSchema)).optional(),
+                raw: z.nullable(z.boolean()).optional(),
                 subResourceId: z.string(),
-                syncToken: z.string().nullable().optional(),
-                updatedAfter: z.string().nullable().optional(),
+                syncToken: z.nullable(z.string()).optional(),
+                updatedAfter: z.nullable(z.string()).optional(),
                 xAccountId: z.string(),
             })
             .transform((v) => {

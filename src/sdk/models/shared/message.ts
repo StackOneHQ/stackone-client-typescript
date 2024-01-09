@@ -38,7 +38,7 @@ export namespace Message$ {
     export const inboundSchema: z.ZodType<Message, z.ZodTypeDef, Inbound> = z
         .object({
             id: z.string(),
-            message_content: z.any().nullable().optional(),
+            message_content: z.nullable(z.any()).optional(),
             message_type: MessageMessageType$,
             name: z.string(),
         })
@@ -61,7 +61,7 @@ export namespace Message$ {
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Message> = z
         .object({
             id: z.string(),
-            messageContent: z.any().nullable().optional(),
+            messageContent: z.nullable(z.any()).optional(),
             messageType: MessageMessageType$,
             name: z.string(),
         })

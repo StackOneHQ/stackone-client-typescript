@@ -101,18 +101,15 @@ export namespace AtsGetJobRequest$ {
 
     export const inboundSchema: z.ZodType<AtsGetJobRequest, z.ZodTypeDef, Inbound> = z
         .object({
-            fields: z.string().nullable().optional(),
+            fields: z.nullable(z.string()).optional(),
             id: z.string(),
-            next: z.string().nullable().optional(),
-            page: z.string().nullable().optional(),
-            page_size: z.string().nullable().optional(),
-            proxy: z
-                .lazy(() => AtsGetJobQueryParamProxy$.inboundSchema)
-                .nullable()
-                .optional(),
-            raw: z.boolean().nullable().optional(),
-            sync_token: z.string().nullable().optional(),
-            updated_after: z.string().nullable().optional(),
+            next: z.nullable(z.string()).optional(),
+            page: z.nullable(z.string()).optional(),
+            page_size: z.nullable(z.string()).optional(),
+            proxy: z.nullable(z.lazy(() => AtsGetJobQueryParamProxy$.inboundSchema)).optional(),
+            raw: z.nullable(z.boolean()).optional(),
+            sync_token: z.nullable(z.string()).optional(),
+            updated_after: z.nullable(z.string()).optional(),
             "x-account-id": z.string(),
         })
         .transform((v) => {
@@ -145,18 +142,15 @@ export namespace AtsGetJobRequest$ {
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, AtsGetJobRequest> = z
         .object({
-            fields: z.string().nullable().optional(),
+            fields: z.nullable(z.string()).optional(),
             id: z.string(),
-            next: z.string().nullable().optional(),
-            page: z.string().nullable().optional(),
-            pageSize: z.string().nullable().optional(),
-            proxy: z
-                .lazy(() => AtsGetJobQueryParamProxy$.outboundSchema)
-                .nullable()
-                .optional(),
-            raw: z.boolean().nullable().optional(),
-            syncToken: z.string().nullable().optional(),
-            updatedAfter: z.string().nullable().optional(),
+            next: z.nullable(z.string()).optional(),
+            page: z.nullable(z.string()).optional(),
+            pageSize: z.nullable(z.string()).optional(),
+            proxy: z.nullable(z.lazy(() => AtsGetJobQueryParamProxy$.outboundSchema)).optional(),
+            raw: z.nullable(z.boolean()).optional(),
+            syncToken: z.nullable(z.string()).optional(),
+            updatedAfter: z.nullable(z.string()).optional(),
             xAccountId: z.string(),
         })
         .transform((v) => {

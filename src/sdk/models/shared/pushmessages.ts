@@ -114,16 +114,14 @@ export namespace PushMessages$ {
 
     export const inboundSchema: z.ZodType<PushMessages, z.ZodTypeDef, Inbound> = z
         .object({
-            id: z.string().nullable().optional(),
+            id: z.nullable(z.string()).optional(),
             message_content: z
-                .lazy(() => PushMessagesMessageContent$.inboundSchema)
-                .nullable()
+                .nullable(z.lazy(() => PushMessagesMessageContent$.inboundSchema))
                 .optional(),
             message_type: z
-                .lazy(() => PushMessagesMessageType$.inboundSchema)
-                .nullable()
+                .nullable(z.lazy(() => PushMessagesMessageType$.inboundSchema))
                 .optional(),
-            name: z.string().nullable().optional(),
+            name: z.nullable(z.string()).optional(),
         })
         .transform((v) => {
             return {
@@ -143,16 +141,14 @@ export namespace PushMessages$ {
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, PushMessages> = z
         .object({
-            id: z.string().nullable().optional(),
+            id: z.nullable(z.string()).optional(),
             messageContent: z
-                .lazy(() => PushMessagesMessageContent$.outboundSchema)
-                .nullable()
+                .nullable(z.lazy(() => PushMessagesMessageContent$.outboundSchema))
                 .optional(),
             messageType: z
-                .lazy(() => PushMessagesMessageType$.outboundSchema)
-                .nullable()
+                .nullable(z.lazy(() => PushMessagesMessageType$.outboundSchema))
                 .optional(),
-            name: z.string().nullable().optional(),
+            name: z.nullable(z.string()).optional(),
         })
         .transform((v) => {
             return {

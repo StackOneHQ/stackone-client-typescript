@@ -62,7 +62,7 @@ export namespace AtsUpdateApplicationRequestDtoQuestionnaire$ {
     > = z
         .object({
             answers: z.array(Answer$.inboundSchema),
-            id: z.string().nullable().optional(),
+            id: z.nullable(z.string()).optional(),
         })
         .transform((v) => {
             return {
@@ -83,7 +83,7 @@ export namespace AtsUpdateApplicationRequestDtoQuestionnaire$ {
     > = z
         .object({
             answers: z.array(Answer$.outboundSchema),
-            id: z.string().nullable().optional(),
+            id: z.nullable(z.string()).optional(),
         })
         .transform((v) => {
             return {
@@ -109,12 +109,12 @@ export namespace AtsUpdateApplicationRequestDto$ {
     export const inboundSchema: z.ZodType<AtsUpdateApplicationRequestDto, z.ZodTypeDef, Inbound> = z
         .object({
             application_status: ApplicationStatusEnumApiModel$.inboundSchema.optional(),
-            attachments: z.array(ApplicationAttachment$.inboundSchema).nullable().optional(),
+            attachments: z.nullable(z.array(ApplicationAttachment$.inboundSchema)).optional(),
             candidate: ApplicationCandidate$.inboundSchema.optional(),
-            candidate_id: z.string().nullable().optional(),
-            id: z.string().nullable().optional(),
-            job_id: z.string().nullable().optional(),
-            location_ids: z.array(z.string()).nullable().optional(),
+            candidate_id: z.nullable(z.string()).optional(),
+            id: z.nullable(z.string()).optional(),
+            job_id: z.nullable(z.string()).optional(),
+            location_ids: z.nullable(z.array(z.string())).optional(),
             questionnaire: z
                 .lazy(() => AtsUpdateApplicationRequestDtoQuestionnaire$.inboundSchema)
                 .optional(),
@@ -149,12 +149,12 @@ export namespace AtsUpdateApplicationRequestDto$ {
         z
             .object({
                 applicationStatus: ApplicationStatusEnumApiModel$.outboundSchema.optional(),
-                attachments: z.array(ApplicationAttachment$.outboundSchema).nullable().optional(),
+                attachments: z.nullable(z.array(ApplicationAttachment$.outboundSchema)).optional(),
                 candidate: ApplicationCandidate$.outboundSchema.optional(),
-                candidateId: z.string().nullable().optional(),
-                id: z.string().nullable().optional(),
-                jobId: z.string().nullable().optional(),
-                locationIds: z.array(z.string()).nullable().optional(),
+                candidateId: z.nullable(z.string()).optional(),
+                id: z.nullable(z.string()).optional(),
+                jobId: z.nullable(z.string()).optional(),
+                locationIds: z.nullable(z.array(z.string())).optional(),
                 questionnaire: z
                     .lazy(() => AtsUpdateApplicationRequestDtoQuestionnaire$.outboundSchema)
                     .optional(),

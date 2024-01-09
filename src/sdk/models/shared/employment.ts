@@ -348,43 +348,43 @@ export namespace Employment$ {
     export const inboundSchema: z.ZodType<Employment, z.ZodTypeDef, Inbound> = z
         .object({
             created_at: z
-                .string()
-                .datetime({ offset: true })
-                .transform((v) => new Date(v))
-                .nullable()
+                .nullable(
+                    z
+                        .string()
+                        .datetime({ offset: true })
+                        .transform((v) => new Date(v))
+                )
                 .optional(),
             effective_date: z
-                .string()
-                .datetime({ offset: true })
-                .transform((v) => new Date(v))
-                .nullable()
+                .nullable(
+                    z
+                        .string()
+                        .datetime({ offset: true })
+                        .transform((v) => new Date(v))
+                )
                 .optional(),
             employee_id: z.string(),
             employment_contract_type: z
-                .lazy(() => EmploymentEmploymentContractType$.inboundSchema)
-                .nullable()
+                .nullable(z.lazy(() => EmploymentEmploymentContractType$.inboundSchema))
                 .optional(),
             employment_type: z
-                .lazy(() => EmploymentEmploymentType$.inboundSchema)
-                .nullable()
+                .nullable(z.lazy(() => EmploymentEmploymentType$.inboundSchema))
                 .optional(),
-            id: z.string().nullable().optional(),
-            job_title: z.string().nullable().optional(),
-            pay_currency: z.string().nullable().optional(),
+            id: z.nullable(z.string()).optional(),
+            job_title: z.nullable(z.string()).optional(),
+            pay_currency: z.nullable(z.string()).optional(),
             pay_frequency: z
-                .lazy(() => EmploymentPayFrequency$.inboundSchema)
-                .nullable()
+                .nullable(z.lazy(() => EmploymentPayFrequency$.inboundSchema))
                 .optional(),
-            pay_period: z
-                .lazy(() => EmploymentPayPeriod$.inboundSchema)
-                .nullable()
-                .optional(),
-            pay_rate: z.string().nullable().optional(),
+            pay_period: z.nullable(z.lazy(() => EmploymentPayPeriod$.inboundSchema)).optional(),
+            pay_rate: z.nullable(z.string()).optional(),
             updated_at: z
-                .string()
-                .datetime({ offset: true })
-                .transform((v) => new Date(v))
-                .nullable()
+                .nullable(
+                    z
+                        .string()
+                        .datetime({ offset: true })
+                        .transform((v) => new Date(v))
+                )
                 .optional(),
         })
         .transform((v) => {
@@ -423,42 +423,24 @@ export namespace Employment$ {
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Employment> = z
         .object({
-            createdAt: z
-                .date()
-                .transform((v) => v.toISOString())
-                .nullable()
-                .optional(),
-            effectiveDate: z
-                .date()
-                .transform((v) => v.toISOString())
-                .nullable()
-                .optional(),
+            createdAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+            effectiveDate: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
             employeeId: z.string(),
             employmentContractType: z
-                .lazy(() => EmploymentEmploymentContractType$.outboundSchema)
-                .nullable()
+                .nullable(z.lazy(() => EmploymentEmploymentContractType$.outboundSchema))
                 .optional(),
             employmentType: z
-                .lazy(() => EmploymentEmploymentType$.outboundSchema)
-                .nullable()
+                .nullable(z.lazy(() => EmploymentEmploymentType$.outboundSchema))
                 .optional(),
-            id: z.string().nullable().optional(),
-            jobTitle: z.string().nullable().optional(),
-            payCurrency: z.string().nullable().optional(),
+            id: z.nullable(z.string()).optional(),
+            jobTitle: z.nullable(z.string()).optional(),
+            payCurrency: z.nullable(z.string()).optional(),
             payFrequency: z
-                .lazy(() => EmploymentPayFrequency$.outboundSchema)
-                .nullable()
+                .nullable(z.lazy(() => EmploymentPayFrequency$.outboundSchema))
                 .optional(),
-            payPeriod: z
-                .lazy(() => EmploymentPayPeriod$.outboundSchema)
-                .nullable()
-                .optional(),
-            payRate: z.string().nullable().optional(),
-            updatedAt: z
-                .date()
-                .transform((v) => v.toISOString())
-                .nullable()
-                .optional(),
+            payPeriod: z.nullable(z.lazy(() => EmploymentPayPeriod$.outboundSchema)).optional(),
+            payRate: z.nullable(z.string()).optional(),
+            updatedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
         })
         .transform((v) => {
             return {

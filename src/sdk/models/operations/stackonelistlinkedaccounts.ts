@@ -48,8 +48,8 @@ export namespace StackoneListLinkedAccountsRequest$ {
         Inbound
     > = z
         .object({
-            origin_owner_id: z.string().nullable().optional(),
-            provider: z.string().nullable().optional(),
+            origin_owner_id: z.nullable(z.string()).optional(),
+            provider: z.nullable(z.string()).optional(),
         })
         .transform((v) => {
             return {
@@ -69,8 +69,8 @@ export namespace StackoneListLinkedAccountsRequest$ {
         StackoneListLinkedAccountsRequest
     > = z
         .object({
-            originOwnerId: z.string().nullable().optional(),
-            provider: z.string().nullable().optional(),
+            originOwnerId: z.nullable(z.string()).optional(),
+            provider: z.nullable(z.string()).optional(),
         })
         .transform((v) => {
             return {

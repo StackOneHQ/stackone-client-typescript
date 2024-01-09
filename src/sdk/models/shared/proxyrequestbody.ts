@@ -85,17 +85,11 @@ export namespace ProxyRequestBody$ {
 
     export const inboundSchema: z.ZodType<ProxyRequestBody, z.ZodTypeDef, Inbound> = z
         .object({
-            body: z
-                .lazy(() => Body$.inboundSchema)
-                .nullable()
-                .optional(),
-            headers: z
-                .lazy(() => Headers$.inboundSchema)
-                .nullable()
-                .optional(),
-            method: Method$.nullable().optional(),
-            path: z.string().nullable().optional(),
-            url: z.string().nullable().optional(),
+            body: z.nullable(z.lazy(() => Body$.inboundSchema)).optional(),
+            headers: z.nullable(z.lazy(() => Headers$.inboundSchema)).optional(),
+            method: z.nullable(Method$).optional(),
+            path: z.nullable(z.string()).optional(),
+            url: z.nullable(z.string()).optional(),
         })
         .transform((v) => {
             return {
@@ -117,17 +111,11 @@ export namespace ProxyRequestBody$ {
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ProxyRequestBody> = z
         .object({
-            body: z
-                .lazy(() => Body$.outboundSchema)
-                .nullable()
-                .optional(),
-            headers: z
-                .lazy(() => Headers$.outboundSchema)
-                .nullable()
-                .optional(),
-            method: Method$.nullable().optional(),
-            path: z.string().nullable().optional(),
-            url: z.string().nullable().optional(),
+            body: z.nullable(z.lazy(() => Body$.outboundSchema)).optional(),
+            headers: z.nullable(z.lazy(() => Headers$.outboundSchema)).optional(),
+            method: z.nullable(Method$).optional(),
+            path: z.nullable(z.string()).optional(),
+            url: z.nullable(z.string()).optional(),
         })
         .transform((v) => {
             return {

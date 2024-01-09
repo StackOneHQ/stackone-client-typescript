@@ -1,26 +1,26 @@
 lockVersion: 2.0.0
 id: 7fa83af8-9e8e-4410-b7e2-cf1d0eaf688b
 management:
-  docChecksum: e6b6b92ccf699689f09454487bb3022d
+  docChecksum: 7a322b8afcaeb2e3c6b90737a8eb562e
   docVersion: 1.0.0
   speakeasyVersion: internal
-  generationVersion: 2.228.1
-  releaseVersion: 2.0.0
-  configChecksum: 45c3ea30203145d9e251bb3b6f5762ac
+  generationVersion: 2.230.1
+  releaseVersion: 2.1.0
+  configChecksum: 34385e71fb1787097b34ac2cc684f7dd
   repoURL: https://github.com/StackOneHQ/stackone-client-typescript.git
   repoSubDirectory: .
   installationURL: https://github.com/StackOneHQ/stackone-client-typescript
   published: true
 features:
   typescript:
-    core: 3.4.2
+    core: 3.4.3
     deprecations: 2.81.1
     examples: 2.81.3
     globalSecurity: 2.82.2
     globalServerURLs: 2.82.1
     groups: 2.81.2
     nameOverrides: 2.81.1
-    pagination: 2.81.3
+    pagination: 2.82.0
 generatedFiles:
   - src/sdk/accounts.ts
   - src/sdk/connectsessions.ts
@@ -499,6 +499,7 @@ generatedFiles:
   - docs/sdk/models/shared/connectsessioncreate.md
   - docs/sdk/models/shared/category.md
   - docs/sdk/models/shared/models.md
+  - docs/sdk/models/shared/resources.md
   - docs/sdk/models/shared/connectorsmeta.md
   - docs/sdk/models/shared/createresult.md
   - docs/sdk/models/shared/atscreateapplicationrequestdtoquestionnaire.md

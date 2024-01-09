@@ -51,8 +51,8 @@ export namespace Visibility$ {
 
     export const inboundSchema: z.ZodType<Visibility, z.ZodTypeDef, Inbound> = z
         .object({
-            source_value: z.string().nullable().optional(),
-            value: AtsCreateNotesRequestDtoValue$.nullable().optional(),
+            source_value: z.nullable(z.string()).optional(),
+            value: z.nullable(AtsCreateNotesRequestDtoValue$).optional(),
         })
         .transform((v) => {
             return {
@@ -68,8 +68,8 @@ export namespace Visibility$ {
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Visibility> = z
         .object({
-            sourceValue: z.string().nullable().optional(),
-            value: AtsCreateNotesRequestDtoValue$.nullable().optional(),
+            sourceValue: z.nullable(z.string()).optional(),
+            value: z.nullable(AtsCreateNotesRequestDtoValue$).optional(),
         })
         .transform((v) => {
             return {
@@ -89,12 +89,9 @@ export namespace AtsCreateNotesRequestDto$ {
 
     export const inboundSchema: z.ZodType<AtsCreateNotesRequestDto, z.ZodTypeDef, Inbound> = z
         .object({
-            author_id: z.string().nullable().optional(),
+            author_id: z.nullable(z.string()).optional(),
             content: z.array(NoteContentApiModel$.inboundSchema),
-            visibility: z
-                .lazy(() => Visibility$.inboundSchema)
-                .nullable()
-                .optional(),
+            visibility: z.nullable(z.lazy(() => Visibility$.inboundSchema)).optional(),
         })
         .transform((v) => {
             return {
@@ -112,12 +109,9 @@ export namespace AtsCreateNotesRequestDto$ {
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, AtsCreateNotesRequestDto> = z
         .object({
-            authorId: z.string().nullable().optional(),
+            authorId: z.nullable(z.string()).optional(),
             content: z.array(NoteContentApiModel$.outboundSchema),
-            visibility: z
-                .lazy(() => Visibility$.outboundSchema)
-                .nullable()
-                .optional(),
+            visibility: z.nullable(z.lazy(() => Visibility$.outboundSchema)).optional(),
         })
         .transform((v) => {
             return {

@@ -88,7 +88,7 @@ export namespace ApplicationQuestionnaire$ {
     export const inboundSchema: z.ZodType<ApplicationQuestionnaire, z.ZodTypeDef, Inbound> = z
         .object({
             answers: z.array(Answer$.inboundSchema),
-            id: z.string().nullable().optional(),
+            id: z.nullable(z.string()).optional(),
         })
         .transform((v) => {
             return {
@@ -105,7 +105,7 @@ export namespace ApplicationQuestionnaire$ {
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ApplicationQuestionnaire> = z
         .object({
             answers: z.array(Answer$.outboundSchema),
-            id: z.string().nullable().optional(),
+            id: z.nullable(z.string()).optional(),
         })
         .transform((v) => {
             return {
@@ -140,36 +140,42 @@ export namespace Application$ {
     export const inboundSchema: z.ZodType<Application, z.ZodTypeDef, Inbound> = z
         .object({
             application_status: ApplicationStatusEnumApiModel$.inboundSchema,
-            attachments: z.array(ApplicationAttachment$.inboundSchema).nullable().optional(),
+            attachments: z.nullable(z.array(ApplicationAttachment$.inboundSchema)).optional(),
             candidate: ApplicationCandidate$.inboundSchema,
-            candidate_id: z.string().nullable().optional(),
+            candidate_id: z.nullable(z.string()).optional(),
             created_at: z
-                .string()
-                .datetime({ offset: true })
-                .transform((v) => new Date(v))
-                .nullable()
+                .nullable(
+                    z
+                        .string()
+                        .datetime({ offset: true })
+                        .transform((v) => new Date(v))
+                )
                 .optional(),
-            id: z.string().nullable().optional(),
-            interview_stage: z.array(InterviewStage$.inboundSchema).nullable().optional(),
-            interview_stage_id: z.string().nullable().optional(),
-            job_id: z.string().nullable().optional(),
-            location_id: z.string().nullable().optional(),
-            location_ids: z.array(z.string()).nullable().optional(),
+            id: z.nullable(z.string()).optional(),
+            interview_stage: z.nullable(z.array(InterviewStage$.inboundSchema)).optional(),
+            interview_stage_id: z.nullable(z.string()).optional(),
+            job_id: z.nullable(z.string()).optional(),
+            location_id: z.nullable(z.string()).optional(),
+            location_ids: z.nullable(z.array(z.string())).optional(),
             questionnaire: z.lazy(() => ApplicationQuestionnaire$.inboundSchema),
             rejected_at: z
-                .string()
-                .datetime({ offset: true })
-                .transform((v) => new Date(v))
-                .nullable()
+                .nullable(
+                    z
+                        .string()
+                        .datetime({ offset: true })
+                        .transform((v) => new Date(v))
+                )
                 .optional(),
-            rejected_reason_ids: z.array(z.string()).nullable().optional(),
-            rejected_reasons: z.array(RejectedReason$.inboundSchema).nullable().optional(),
-            result_links: z.array(ResultLink$.inboundSchema).nullable().optional(),
+            rejected_reason_ids: z.nullable(z.array(z.string())).optional(),
+            rejected_reasons: z.nullable(z.array(RejectedReason$.inboundSchema)).optional(),
+            result_links: z.nullable(z.array(ResultLink$.inboundSchema)).optional(),
             updated_at: z
-                .string()
-                .datetime({ offset: true })
-                .transform((v) => new Date(v))
-                .nullable()
+                .nullable(
+                    z
+                        .string()
+                        .datetime({ offset: true })
+                        .transform((v) => new Date(v))
+                )
                 .optional(),
         })
         .transform((v) => {
@@ -223,34 +229,22 @@ export namespace Application$ {
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Application> = z
         .object({
             applicationStatus: ApplicationStatusEnumApiModel$.outboundSchema,
-            attachments: z.array(ApplicationAttachment$.outboundSchema).nullable().optional(),
+            attachments: z.nullable(z.array(ApplicationAttachment$.outboundSchema)).optional(),
             candidate: ApplicationCandidate$.outboundSchema,
-            candidateId: z.string().nullable().optional(),
-            createdAt: z
-                .date()
-                .transform((v) => v.toISOString())
-                .nullable()
-                .optional(),
-            id: z.string().nullable().optional(),
-            interviewStage: z.array(InterviewStage$.outboundSchema).nullable().optional(),
-            interviewStageId: z.string().nullable().optional(),
-            jobId: z.string().nullable().optional(),
-            locationId: z.string().nullable().optional(),
-            locationIds: z.array(z.string()).nullable().optional(),
+            candidateId: z.nullable(z.string()).optional(),
+            createdAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+            id: z.nullable(z.string()).optional(),
+            interviewStage: z.nullable(z.array(InterviewStage$.outboundSchema)).optional(),
+            interviewStageId: z.nullable(z.string()).optional(),
+            jobId: z.nullable(z.string()).optional(),
+            locationId: z.nullable(z.string()).optional(),
+            locationIds: z.nullable(z.array(z.string())).optional(),
             questionnaire: z.lazy(() => ApplicationQuestionnaire$.outboundSchema),
-            rejectedAt: z
-                .date()
-                .transform((v) => v.toISOString())
-                .nullable()
-                .optional(),
-            rejectedReasonIds: z.array(z.string()).nullable().optional(),
-            rejectedReasons: z.array(RejectedReason$.outboundSchema).nullable().optional(),
-            resultLinks: z.array(ResultLink$.outboundSchema).nullable().optional(),
-            updatedAt: z
-                .date()
-                .transform((v) => v.toISOString())
-                .nullable()
-                .optional(),
+            rejectedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+            rejectedReasonIds: z.nullable(z.array(z.string())).optional(),
+            rejectedReasons: z.nullable(z.array(RejectedReason$.outboundSchema)).optional(),
+            resultLinks: z.nullable(z.array(ResultLink$.outboundSchema)).optional(),
+            updatedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
         })
         .transform((v) => {
             return {

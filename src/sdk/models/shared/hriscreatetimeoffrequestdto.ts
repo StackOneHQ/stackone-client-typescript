@@ -166,27 +166,29 @@ export namespace HrisCreateTimeOffRequestDto$ {
 
     export const inboundSchema: z.ZodType<HrisCreateTimeOffRequestDto, z.ZodTypeDef, Inbound> = z
         .object({
-            approver_id: z.string().nullable().optional(),
-            employee_id: z.string().nullable().optional(),
+            approver_id: z.nullable(z.string()).optional(),
+            employee_id: z.nullable(z.string()).optional(),
             end_date: z
-                .string()
-                .datetime({ offset: true })
-                .transform((v) => new Date(v))
-                .nullable()
+                .nullable(
+                    z
+                        .string()
+                        .datetime({ offset: true })
+                        .transform((v) => new Date(v))
+                )
                 .optional(),
             start_date: z
-                .string()
-                .datetime({ offset: true })
-                .transform((v) => new Date(v))
-                .nullable()
+                .nullable(
+                    z
+                        .string()
+                        .datetime({ offset: true })
+                        .transform((v) => new Date(v))
+                )
                 .optional(),
             status: z
-                .lazy(() => HrisCreateTimeOffRequestDtoStatus$.inboundSchema)
-                .nullable()
+                .nullable(z.lazy(() => HrisCreateTimeOffRequestDtoStatus$.inboundSchema))
                 .optional(),
             type: z
-                .lazy(() => HrisCreateTimeOffRequestDtoType$.inboundSchema)
-                .nullable()
+                .nullable(z.lazy(() => HrisCreateTimeOffRequestDtoType$.inboundSchema))
                 .optional(),
         })
         .transform((v) => {
@@ -211,25 +213,15 @@ export namespace HrisCreateTimeOffRequestDto$ {
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, HrisCreateTimeOffRequestDto> = z
         .object({
-            approverId: z.string().nullable().optional(),
-            employeeId: z.string().nullable().optional(),
-            endDate: z
-                .date()
-                .transform((v) => v.toISOString())
-                .nullable()
-                .optional(),
-            startDate: z
-                .date()
-                .transform((v) => v.toISOString())
-                .nullable()
-                .optional(),
+            approverId: z.nullable(z.string()).optional(),
+            employeeId: z.nullable(z.string()).optional(),
+            endDate: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+            startDate: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
             status: z
-                .lazy(() => HrisCreateTimeOffRequestDtoStatus$.outboundSchema)
-                .nullable()
+                .nullable(z.lazy(() => HrisCreateTimeOffRequestDtoStatus$.outboundSchema))
                 .optional(),
             type: z
-                .lazy(() => HrisCreateTimeOffRequestDtoType$.outboundSchema)
-                .nullable()
+                .nullable(z.lazy(() => HrisCreateTimeOffRequestDtoType$.outboundSchema))
                 .optional(),
         })
         .transform((v) => {

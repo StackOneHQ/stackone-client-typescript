@@ -989,8 +989,8 @@ export namespace Avatar$ {
 
     export const inboundSchema: z.ZodType<Avatar, z.ZodTypeDef, Inbound> = z
         .object({
-            base64: z.string().nullable().optional(),
-            url: z.string().nullable().optional(),
+            base64: z.nullable(z.string()).optional(),
+            url: z.nullable(z.string()).optional(),
         })
         .transform((v) => {
             return {
@@ -1006,8 +1006,8 @@ export namespace Avatar$ {
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Avatar> = z
         .object({
-            base64: z.string().nullable().optional(),
-            url: z.string().nullable().optional(),
+            base64: z.nullable(z.string()).optional(),
+            url: z.nullable(z.string()).optional(),
         })
         .transform((v) => {
             return {
@@ -1319,35 +1319,33 @@ export namespace HomeLocation$ {
 
     export const inboundSchema: z.ZodType<HomeLocation, z.ZodTypeDef, Inbound> = z
         .object({
-            city: z.string().nullable().optional(),
-            country: z
-                .lazy(() => EmployeeCountry$.inboundSchema)
-                .nullable()
-                .optional(),
+            city: z.nullable(z.string()).optional(),
+            country: z.nullable(z.lazy(() => EmployeeCountry$.inboundSchema)).optional(),
             created_at: z
-                .string()
-                .datetime({ offset: true })
-                .transform((v) => new Date(v))
-                .nullable()
+                .nullable(
+                    z
+                        .string()
+                        .datetime({ offset: true })
+                        .transform((v) => new Date(v))
+                )
                 .optional(),
-            employee_id: z.string().nullable().optional(),
-            id: z.string().nullable().optional(),
-            location_type: z
-                .lazy(() => EmployeeLocationType$.inboundSchema)
-                .nullable()
-                .optional(),
-            name: z.string().nullable().optional(),
-            phone_number: z.string().nullable().optional(),
-            state: z.string().nullable().optional(),
-            street_1: z.string().nullable().optional(),
-            street_2: z.string().nullable().optional(),
+            employee_id: z.nullable(z.string()).optional(),
+            id: z.nullable(z.string()).optional(),
+            location_type: z.nullable(z.lazy(() => EmployeeLocationType$.inboundSchema)).optional(),
+            name: z.nullable(z.string()).optional(),
+            phone_number: z.nullable(z.string()).optional(),
+            state: z.nullable(z.string()).optional(),
+            street_1: z.nullable(z.string()).optional(),
+            street_2: z.nullable(z.string()).optional(),
             updated_at: z
-                .string()
-                .datetime({ offset: true })
-                .transform((v) => new Date(v))
-                .nullable()
+                .nullable(
+                    z
+                        .string()
+                        .datetime({ offset: true })
+                        .transform((v) => new Date(v))
+                )
                 .optional(),
-            zip_code: z.string().nullable().optional(),
+            zip_code: z.nullable(z.string()).optional(),
         })
         .transform((v) => {
             return {
@@ -1385,33 +1383,19 @@ export namespace HomeLocation$ {
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, HomeLocation> = z
         .object({
-            city: z.string().nullable().optional(),
-            country: z
-                .lazy(() => EmployeeCountry$.outboundSchema)
-                .nullable()
-                .optional(),
-            createdAt: z
-                .date()
-                .transform((v) => v.toISOString())
-                .nullable()
-                .optional(),
-            employeeId: z.string().nullable().optional(),
-            id: z.string().nullable().optional(),
-            locationType: z
-                .lazy(() => EmployeeLocationType$.outboundSchema)
-                .nullable()
-                .optional(),
-            name: z.string().nullable().optional(),
-            phoneNumber: z.string().nullable().optional(),
-            state: z.string().nullable().optional(),
-            street1: z.string().nullable().optional(),
-            street2: z.string().nullable().optional(),
-            updatedAt: z
-                .date()
-                .transform((v) => v.toISOString())
-                .nullable()
-                .optional(),
-            zipCode: z.string().nullable().optional(),
+            city: z.nullable(z.string()).optional(),
+            country: z.nullable(z.lazy(() => EmployeeCountry$.outboundSchema)).optional(),
+            createdAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+            employeeId: z.nullable(z.string()).optional(),
+            id: z.nullable(z.string()).optional(),
+            locationType: z.nullable(z.lazy(() => EmployeeLocationType$.outboundSchema)).optional(),
+            name: z.nullable(z.string()).optional(),
+            phoneNumber: z.nullable(z.string()).optional(),
+            state: z.nullable(z.string()).optional(),
+            street1: z.nullable(z.string()).optional(),
+            street2: z.nullable(z.string()).optional(),
+            updatedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+            zipCode: z.nullable(z.string()).optional(),
         })
         .transform((v) => {
             return {
@@ -1574,35 +1558,35 @@ export namespace WorkLocation$ {
 
     export const inboundSchema: z.ZodType<WorkLocation, z.ZodTypeDef, Inbound> = z
         .object({
-            city: z.string().nullable().optional(),
-            country: z
-                .lazy(() => EmployeeSchemasCountry$.inboundSchema)
-                .nullable()
-                .optional(),
+            city: z.nullable(z.string()).optional(),
+            country: z.nullable(z.lazy(() => EmployeeSchemasCountry$.inboundSchema)).optional(),
             created_at: z
-                .string()
-                .datetime({ offset: true })
-                .transform((v) => new Date(v))
-                .nullable()
+                .nullable(
+                    z
+                        .string()
+                        .datetime({ offset: true })
+                        .transform((v) => new Date(v))
+                )
                 .optional(),
-            employee_id: z.string().nullable().optional(),
-            id: z.string().nullable().optional(),
+            employee_id: z.nullable(z.string()).optional(),
+            id: z.nullable(z.string()).optional(),
             location_type: z
-                .lazy(() => EmployeeSchemasLocationType$.inboundSchema)
-                .nullable()
+                .nullable(z.lazy(() => EmployeeSchemasLocationType$.inboundSchema))
                 .optional(),
-            name: z.string().nullable().optional(),
-            phone_number: z.string().nullable().optional(),
-            state: z.string().nullable().optional(),
-            street_1: z.string().nullable().optional(),
-            street_2: z.string().nullable().optional(),
+            name: z.nullable(z.string()).optional(),
+            phone_number: z.nullable(z.string()).optional(),
+            state: z.nullable(z.string()).optional(),
+            street_1: z.nullable(z.string()).optional(),
+            street_2: z.nullable(z.string()).optional(),
             updated_at: z
-                .string()
-                .datetime({ offset: true })
-                .transform((v) => new Date(v))
-                .nullable()
+                .nullable(
+                    z
+                        .string()
+                        .datetime({ offset: true })
+                        .transform((v) => new Date(v))
+                )
                 .optional(),
-            zip_code: z.string().nullable().optional(),
+            zip_code: z.nullable(z.string()).optional(),
         })
         .transform((v) => {
             return {
@@ -1640,33 +1624,21 @@ export namespace WorkLocation$ {
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, WorkLocation> = z
         .object({
-            city: z.string().nullable().optional(),
-            country: z
-                .lazy(() => EmployeeSchemasCountry$.outboundSchema)
-                .nullable()
-                .optional(),
-            createdAt: z
-                .date()
-                .transform((v) => v.toISOString())
-                .nullable()
-                .optional(),
-            employeeId: z.string().nullable().optional(),
-            id: z.string().nullable().optional(),
+            city: z.nullable(z.string()).optional(),
+            country: z.nullable(z.lazy(() => EmployeeSchemasCountry$.outboundSchema)).optional(),
+            createdAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+            employeeId: z.nullable(z.string()).optional(),
+            id: z.nullable(z.string()).optional(),
             locationType: z
-                .lazy(() => EmployeeSchemasLocationType$.outboundSchema)
-                .nullable()
+                .nullable(z.lazy(() => EmployeeSchemasLocationType$.outboundSchema))
                 .optional(),
-            name: z.string().nullable().optional(),
-            phoneNumber: z.string().nullable().optional(),
-            state: z.string().nullable().optional(),
-            street1: z.string().nullable().optional(),
-            street2: z.string().nullable().optional(),
-            updatedAt: z
-                .date()
-                .transform((v) => v.toISOString())
-                .nullable()
-                .optional(),
-            zipCode: z.string().nullable().optional(),
+            name: z.nullable(z.string()).optional(),
+            phoneNumber: z.nullable(z.string()).optional(),
+            state: z.nullable(z.string()).optional(),
+            street1: z.nullable(z.string()).optional(),
+            street2: z.nullable(z.string()).optional(),
+            updatedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+            zipCode: z.nullable(z.string()).optional(),
         })
         .transform((v) => {
             return {
@@ -1729,108 +1701,99 @@ export namespace Employee$ {
 
     export const inboundSchema: z.ZodType<Employee, z.ZodTypeDef, Inbound> = z
         .object({
-            avatar: z
-                .lazy(() => Avatar$.inboundSchema)
-                .nullable()
-                .optional(),
-            avatar_url: z.string().nullable().optional(),
+            avatar: z.nullable(z.lazy(() => Avatar$.inboundSchema)).optional(),
+            avatar_url: z.nullable(z.string()).optional(),
             birthday: z
-                .string()
-                .datetime({ offset: true })
-                .transform((v) => new Date(v))
-                .nullable()
+                .nullable(
+                    z
+                        .string()
+                        .datetime({ offset: true })
+                        .transform((v) => new Date(v))
+                )
                 .optional(),
-            citizenships: z.array(CountryCodeEnum$.inboundSchema).nullable().optional(),
-            company_name: z.string().nullable().optional(),
+            citizenships: z.nullable(z.array(CountryCodeEnum$.inboundSchema)).optional(),
+            company_name: z.nullable(z.string()).optional(),
             created_at: z
-                .string()
-                .datetime({ offset: true })
-                .transform((v) => new Date(v))
-                .nullable()
+                .nullable(
+                    z
+                        .string()
+                        .datetime({ offset: true })
+                        .transform((v) => new Date(v))
+                )
                 .optional(),
-            custom_fields: z.array(EmployeeCustomFields$.inboundSchema).nullable().optional(),
+            custom_fields: z.nullable(z.array(EmployeeCustomFields$.inboundSchema)).optional(),
             date_of_birth: z
-                .string()
-                .datetime({ offset: true })
-                .transform((v) => new Date(v))
-                .nullable()
+                .nullable(
+                    z
+                        .string()
+                        .datetime({ offset: true })
+                        .transform((v) => new Date(v))
+                )
                 .optional(),
-            department: z.string().nullable().optional(),
-            display_name: z.string().nullable().optional(),
+            department: z.nullable(z.string()).optional(),
+            display_name: z.nullable(z.string()).optional(),
             employment_contract_type: z
-                .lazy(() => EmploymentContractType$.inboundSchema)
-                .nullable()
+                .nullable(z.lazy(() => EmploymentContractType$.inboundSchema))
                 .optional(),
-            employment_status: z
-                .lazy(() => EmploymentStatus$.inboundSchema)
-                .nullable()
-                .optional(),
-            employment_type: z
-                .lazy(() => EmploymentType$.inboundSchema)
-                .nullable()
-                .optional(),
-            employments: z.array(Employment$.inboundSchema).nullable().optional(),
-            ethnicity: z
-                .lazy(() => Ethnicity$.inboundSchema)
-                .nullable()
-                .optional(),
+            employment_status: z.nullable(z.lazy(() => EmploymentStatus$.inboundSchema)).optional(),
+            employment_type: z.nullable(z.lazy(() => EmploymentType$.inboundSchema)).optional(),
+            employments: z.nullable(z.array(Employment$.inboundSchema)).optional(),
+            ethnicity: z.nullable(z.lazy(() => Ethnicity$.inboundSchema)).optional(),
             first_name: z.string(),
-            gender: z
-                .lazy(() => Gender$.inboundSchema)
-                .nullable()
-                .optional(),
+            gender: z.nullable(z.lazy(() => Gender$.inboundSchema)).optional(),
             hire_date: z
-                .string()
-                .datetime({ offset: true })
-                .transform((v) => new Date(v))
-                .nullable()
+                .nullable(
+                    z
+                        .string()
+                        .datetime({ offset: true })
+                        .transform((v) => new Date(v))
+                )
                 .optional(),
-            home_location: z
-                .lazy(() => HomeLocation$.inboundSchema)
-                .nullable()
-                .optional(),
+            home_location: z.nullable(z.lazy(() => HomeLocation$.inboundSchema)).optional(),
             id: z.string(),
-            job_title: z.string().nullable().optional(),
+            job_title: z.nullable(z.string()).optional(),
             last_name: z.string(),
-            manager_id: z.string().nullable().optional(),
-            marital_status: z
-                .lazy(() => MaritalStatus$.inboundSchema)
-                .nullable()
-                .optional(),
-            name: z.string().nullable().optional(),
-            personal_email: z.string().nullable().optional(),
-            personal_phone_number: z.string().nullable().optional(),
+            manager_id: z.nullable(z.string()).optional(),
+            marital_status: z.nullable(z.lazy(() => MaritalStatus$.inboundSchema)).optional(),
+            name: z.nullable(z.string()).optional(),
+            personal_email: z.nullable(z.string()).optional(),
+            personal_phone_number: z.nullable(z.string()).optional(),
             start_date: z
-                .string()
-                .datetime({ offset: true })
-                .transform((v) => new Date(v))
-                .nullable()
+                .nullable(
+                    z
+                        .string()
+                        .datetime({ offset: true })
+                        .transform((v) => new Date(v))
+                )
                 .optional(),
-            tenure: z.number().nullable().optional(),
+            tenure: z.nullable(z.number()).optional(),
             termination_date: z
-                .string()
-                .datetime({ offset: true })
-                .transform((v) => new Date(v))
-                .nullable()
+                .nullable(
+                    z
+                        .string()
+                        .datetime({ offset: true })
+                        .transform((v) => new Date(v))
+                )
                 .optional(),
             updated_at: z
-                .string()
-                .datetime({ offset: true })
-                .transform((v) => new Date(v))
-                .nullable()
+                .nullable(
+                    z
+                        .string()
+                        .datetime({ offset: true })
+                        .transform((v) => new Date(v))
+                )
                 .optional(),
             work_anniversary: z
-                .string()
-                .datetime({ offset: true })
-                .transform((v) => new Date(v))
-                .nullable()
+                .nullable(
+                    z
+                        .string()
+                        .datetime({ offset: true })
+                        .transform((v) => new Date(v))
+                )
                 .optional(),
             work_email: z.string(),
-            work_location: z
-                .lazy(() => WorkLocation$.inboundSchema)
-                .nullable()
-                .optional(),
-            work_phone_number: z.string().nullable().optional(),
+            work_location: z.nullable(z.lazy(() => WorkLocation$.inboundSchema)).optional(),
+            work_phone_number: z.nullable(z.string()).optional(),
         })
         .transform((v) => {
             return {
@@ -1924,100 +1887,43 @@ export namespace Employee$ {
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Employee> = z
         .object({
-            avatar: z
-                .lazy(() => Avatar$.outboundSchema)
-                .nullable()
-                .optional(),
-            avatarUrl: z.string().nullable().optional(),
-            birthday: z
-                .date()
-                .transform((v) => v.toISOString())
-                .nullable()
-                .optional(),
-            citizenships: z.array(CountryCodeEnum$.outboundSchema).nullable().optional(),
-            companyName: z.string().nullable().optional(),
-            createdAt: z
-                .date()
-                .transform((v) => v.toISOString())
-                .nullable()
-                .optional(),
-            customFields: z.array(EmployeeCustomFields$.outboundSchema).nullable().optional(),
-            dateOfBirth: z
-                .date()
-                .transform((v) => v.toISOString())
-                .nullable()
-                .optional(),
-            department: z.string().nullable().optional(),
-            displayName: z.string().nullable().optional(),
+            avatar: z.nullable(z.lazy(() => Avatar$.outboundSchema)).optional(),
+            avatarUrl: z.nullable(z.string()).optional(),
+            birthday: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+            citizenships: z.nullable(z.array(CountryCodeEnum$.outboundSchema)).optional(),
+            companyName: z.nullable(z.string()).optional(),
+            createdAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+            customFields: z.nullable(z.array(EmployeeCustomFields$.outboundSchema)).optional(),
+            dateOfBirth: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+            department: z.nullable(z.string()).optional(),
+            displayName: z.nullable(z.string()).optional(),
             employmentContractType: z
-                .lazy(() => EmploymentContractType$.outboundSchema)
-                .nullable()
+                .nullable(z.lazy(() => EmploymentContractType$.outboundSchema))
                 .optional(),
-            employmentStatus: z
-                .lazy(() => EmploymentStatus$.outboundSchema)
-                .nullable()
-                .optional(),
-            employmentType: z
-                .lazy(() => EmploymentType$.outboundSchema)
-                .nullable()
-                .optional(),
-            employments: z.array(Employment$.outboundSchema).nullable().optional(),
-            ethnicity: z
-                .lazy(() => Ethnicity$.outboundSchema)
-                .nullable()
-                .optional(),
+            employmentStatus: z.nullable(z.lazy(() => EmploymentStatus$.outboundSchema)).optional(),
+            employmentType: z.nullable(z.lazy(() => EmploymentType$.outboundSchema)).optional(),
+            employments: z.nullable(z.array(Employment$.outboundSchema)).optional(),
+            ethnicity: z.nullable(z.lazy(() => Ethnicity$.outboundSchema)).optional(),
             firstName: z.string(),
-            gender: z
-                .lazy(() => Gender$.outboundSchema)
-                .nullable()
-                .optional(),
-            hireDate: z
-                .date()
-                .transform((v) => v.toISOString())
-                .nullable()
-                .optional(),
-            homeLocation: z
-                .lazy(() => HomeLocation$.outboundSchema)
-                .nullable()
-                .optional(),
+            gender: z.nullable(z.lazy(() => Gender$.outboundSchema)).optional(),
+            hireDate: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+            homeLocation: z.nullable(z.lazy(() => HomeLocation$.outboundSchema)).optional(),
             id: z.string(),
-            jobTitle: z.string().nullable().optional(),
+            jobTitle: z.nullable(z.string()).optional(),
             lastName: z.string(),
-            managerId: z.string().nullable().optional(),
-            maritalStatus: z
-                .lazy(() => MaritalStatus$.outboundSchema)
-                .nullable()
-                .optional(),
-            name: z.string().nullable().optional(),
-            personalEmail: z.string().nullable().optional(),
-            personalPhoneNumber: z.string().nullable().optional(),
-            startDate: z
-                .date()
-                .transform((v) => v.toISOString())
-                .nullable()
-                .optional(),
-            tenure: z.number().nullable().optional(),
-            terminationDate: z
-                .date()
-                .transform((v) => v.toISOString())
-                .nullable()
-                .optional(),
-            updatedAt: z
-                .date()
-                .transform((v) => v.toISOString())
-                .nullable()
-                .optional(),
-            workAnniversary: z
-                .date()
-                .transform((v) => v.toISOString())
-                .nullable()
-                .optional(),
+            managerId: z.nullable(z.string()).optional(),
+            maritalStatus: z.nullable(z.lazy(() => MaritalStatus$.outboundSchema)).optional(),
+            name: z.nullable(z.string()).optional(),
+            personalEmail: z.nullable(z.string()).optional(),
+            personalPhoneNumber: z.nullable(z.string()).optional(),
+            startDate: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+            tenure: z.nullable(z.number()).optional(),
+            terminationDate: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+            updatedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+            workAnniversary: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
             workEmail: z.string(),
-            workLocation: z
-                .lazy(() => WorkLocation$.outboundSchema)
-                .nullable()
-                .optional(),
-            workPhoneNumber: z.string().nullable().optional(),
+            workLocation: z.nullable(z.lazy(() => WorkLocation$.outboundSchema)).optional(),
+            workPhoneNumber: z.nullable(z.string()).optional(),
         })
         .transform((v) => {
             return {

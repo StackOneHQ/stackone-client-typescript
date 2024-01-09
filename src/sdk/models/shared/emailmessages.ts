@@ -50,8 +50,8 @@ export namespace MessageContent$ {
         .object({
             body: z.string(),
             from: z.string(),
-            preheader: z.string().nullable().optional(),
-            "reply-to": z.string().nullable().optional(),
+            preheader: z.nullable(z.string()).optional(),
+            "reply-to": z.nullable(z.string()).optional(),
             subject: z.string(),
         })
         .transform((v) => {
@@ -76,8 +76,8 @@ export namespace MessageContent$ {
         .object({
             body: z.string(),
             from: z.string(),
-            preheader: z.string().nullable().optional(),
-            replyTo: z.string().nullable().optional(),
+            preheader: z.nullable(z.string()).optional(),
+            replyTo: z.nullable(z.string()).optional(),
             subject: z.string(),
         })
         .transform((v) => {
@@ -142,16 +142,10 @@ export namespace EmailMessages$ {
 
     export const inboundSchema: z.ZodType<EmailMessages, z.ZodTypeDef, Inbound> = z
         .object({
-            id: z.string().nullable().optional(),
-            message_content: z
-                .lazy(() => MessageContent$.inboundSchema)
-                .nullable()
-                .optional(),
-            message_type: z
-                .lazy(() => MessageType$.inboundSchema)
-                .nullable()
-                .optional(),
-            name: z.string().nullable().optional(),
+            id: z.nullable(z.string()).optional(),
+            message_content: z.nullable(z.lazy(() => MessageContent$.inboundSchema)).optional(),
+            message_type: z.nullable(z.lazy(() => MessageType$.inboundSchema)).optional(),
+            name: z.nullable(z.string()).optional(),
         })
         .transform((v) => {
             return {
@@ -171,16 +165,10 @@ export namespace EmailMessages$ {
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, EmailMessages> = z
         .object({
-            id: z.string().nullable().optional(),
-            messageContent: z
-                .lazy(() => MessageContent$.outboundSchema)
-                .nullable()
-                .optional(),
-            messageType: z
-                .lazy(() => MessageType$.outboundSchema)
-                .nullable()
-                .optional(),
-            name: z.string().nullable().optional(),
+            id: z.nullable(z.string()).optional(),
+            messageContent: z.nullable(z.lazy(() => MessageContent$.outboundSchema)).optional(),
+            messageType: z.nullable(z.lazy(() => MessageType$.outboundSchema)).optional(),
+            name: z.nullable(z.string()).optional(),
         })
         .transform((v) => {
             return {

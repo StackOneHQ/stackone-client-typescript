@@ -54,13 +54,13 @@ export namespace Job$ {
         .object({
             code: z.string(),
             company_id: z.string(),
-            confidential: Confidential$.nullable().optional(),
+            confidential: z.nullable(Confidential$).optional(),
             created_at: z
                 .string()
                 .datetime({ offset: true })
                 .transform((v) => new Date(v)),
             department_ids: z.array(z.string()),
-            hiring_team: z.array(HiringTeam$.inboundSchema).nullable().optional(),
+            hiring_team: z.nullable(z.array(HiringTeam$.inboundSchema)).optional(),
             id: z.string(),
             job_status: JobStatusEnum$.inboundSchema,
             location_ids: z.array(z.string()),
@@ -104,10 +104,10 @@ export namespace Job$ {
         .object({
             code: z.string(),
             companyId: z.string(),
-            confidential: Confidential$.nullable().optional(),
+            confidential: z.nullable(Confidential$).optional(),
             createdAt: z.date().transform((v) => v.toISOString()),
             departmentIds: z.array(z.string()),
-            hiringTeam: z.array(HiringTeam$.outboundSchema).nullable().optional(),
+            hiringTeam: z.nullable(z.array(HiringTeam$.outboundSchema)).optional(),
             id: z.string(),
             jobStatus: JobStatusEnum$.outboundSchema,
             locationIds: z.array(z.string()),

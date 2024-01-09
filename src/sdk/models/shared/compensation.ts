@@ -232,23 +232,14 @@ export namespace Compensation$ {
 
     export const inboundSchema: z.ZodType<Compensation, z.ZodTypeDef, Inbound> = z
         .object({
-            currency: z.string().nullable().optional(),
-            max_value: z.string().nullable().optional(),
-            min_value: z.string().nullable().optional(),
-            name: z.string().nullable().optional(),
-            pay_frequency: z
-                .lazy(() => PayFrequency$.inboundSchema)
-                .nullable()
-                .optional(),
-            pay_period: z
-                .lazy(() => PayPeriod$.inboundSchema)
-                .nullable()
-                .optional(),
-            type: z
-                .lazy(() => CompensationType$.inboundSchema)
-                .nullable()
-                .optional(),
-            value: z.string().nullable().optional(),
+            currency: z.nullable(z.string()).optional(),
+            max_value: z.nullable(z.string()).optional(),
+            min_value: z.nullable(z.string()).optional(),
+            name: z.nullable(z.string()).optional(),
+            pay_frequency: z.nullable(z.lazy(() => PayFrequency$.inboundSchema)).optional(),
+            pay_period: z.nullable(z.lazy(() => PayPeriod$.inboundSchema)).optional(),
+            type: z.nullable(z.lazy(() => CompensationType$.inboundSchema)).optional(),
+            value: z.nullable(z.string()).optional(),
         })
         .transform((v) => {
             return {
@@ -276,23 +267,14 @@ export namespace Compensation$ {
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Compensation> = z
         .object({
-            currency: z.string().nullable().optional(),
-            maxValue: z.string().nullable().optional(),
-            minValue: z.string().nullable().optional(),
-            name: z.string().nullable().optional(),
-            payFrequency: z
-                .lazy(() => PayFrequency$.outboundSchema)
-                .nullable()
-                .optional(),
-            payPeriod: z
-                .lazy(() => PayPeriod$.outboundSchema)
-                .nullable()
-                .optional(),
-            type: z
-                .lazy(() => CompensationType$.outboundSchema)
-                .nullable()
-                .optional(),
-            value: z.string().nullable().optional(),
+            currency: z.nullable(z.string()).optional(),
+            maxValue: z.nullable(z.string()).optional(),
+            minValue: z.nullable(z.string()).optional(),
+            name: z.nullable(z.string()).optional(),
+            payFrequency: z.nullable(z.lazy(() => PayFrequency$.outboundSchema)).optional(),
+            payPeriod: z.nullable(z.lazy(() => PayPeriod$.outboundSchema)).optional(),
+            type: z.nullable(z.lazy(() => CompensationType$.outboundSchema)).optional(),
+            value: z.nullable(z.string()).optional(),
         })
         .transform((v) => {
             return {

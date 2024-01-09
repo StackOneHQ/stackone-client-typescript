@@ -21,7 +21,7 @@ export namespace ContactResult$ {
     export const inboundSchema: z.ZodType<ContactResult, z.ZodTypeDef, Inbound> = z
         .object({
             data: Contact$.inboundSchema,
-            raw: z.array(RawResponse$.inboundSchema).nullable().optional(),
+            raw: z.nullable(z.array(RawResponse$.inboundSchema)).optional(),
         })
         .transform((v) => {
             return {
@@ -38,7 +38,7 @@ export namespace ContactResult$ {
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ContactResult> = z
         .object({
             data: Contact$.outboundSchema,
-            raw: z.array(RawResponse$.outboundSchema).nullable().optional(),
+            raw: z.nullable(z.array(RawResponse$.outboundSchema)).optional(),
         })
         .transform((v) => {
             return {

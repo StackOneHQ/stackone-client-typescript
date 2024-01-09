@@ -49,13 +49,13 @@ export namespace CrmCreateContactRequestDto$ {
 
     export const inboundSchema: z.ZodType<CrmCreateContactRequestDto, z.ZodTypeDef, Inbound> = z
         .object({
-            account_ids: z.array(z.string()).nullable().optional(),
-            company_name: z.string().nullable().optional(),
-            deal_ids: z.array(z.string()).nullable().optional(),
-            emails: z.array(z.string()).nullable().optional(),
-            first_name: z.string().nullable().optional(),
-            last_name: z.string().nullable().optional(),
-            phone_numbers: z.array(z.string()).nullable().optional(),
+            account_ids: z.nullable(z.array(z.string())).optional(),
+            company_name: z.nullable(z.string()).optional(),
+            deal_ids: z.nullable(z.array(z.string())).optional(),
+            emails: z.nullable(z.array(z.string())).optional(),
+            first_name: z.nullable(z.string()).optional(),
+            last_name: z.nullable(z.string()).optional(),
+            phone_numbers: z.nullable(z.array(z.string())).optional(),
         })
         .transform((v) => {
             return {
@@ -81,13 +81,13 @@ export namespace CrmCreateContactRequestDto$ {
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CrmCreateContactRequestDto> = z
         .object({
-            accountIds: z.array(z.string()).nullable().optional(),
-            companyName: z.string().nullable().optional(),
-            dealIds: z.array(z.string()).nullable().optional(),
-            emails: z.array(z.string()).nullable().optional(),
-            firstName: z.string().nullable().optional(),
-            lastName: z.string().nullable().optional(),
-            phoneNumbers: z.array(z.string()).nullable().optional(),
+            accountIds: z.nullable(z.array(z.string())).optional(),
+            companyName: z.nullable(z.string()).optional(),
+            dealIds: z.nullable(z.array(z.string())).optional(),
+            emails: z.nullable(z.array(z.string())).optional(),
+            firstName: z.nullable(z.string()).optional(),
+            lastName: z.nullable(z.string()).optional(),
+            phoneNumbers: z.nullable(z.array(z.string())).optional(),
         })
         .transform((v) => {
             return {

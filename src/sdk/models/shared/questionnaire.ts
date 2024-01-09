@@ -23,7 +23,7 @@ export namespace Questionnaire$ {
     export const inboundSchema: z.ZodType<Questionnaire, z.ZodTypeDef, Inbound> = z
         .object({
             answers: z.array(Answer$.inboundSchema),
-            id: z.string().nullable().optional(),
+            id: z.nullable(z.string()).optional(),
         })
         .transform((v) => {
             return {
@@ -40,7 +40,7 @@ export namespace Questionnaire$ {
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Questionnaire> = z
         .object({
             answers: z.array(Answer$.outboundSchema),
-            id: z.string().nullable().optional(),
+            id: z.nullable(z.string()).optional(),
         })
         .transform((v) => {
             return {
