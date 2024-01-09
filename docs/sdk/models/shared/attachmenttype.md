@@ -1,9 +1,0 @@
-# AttachmentType
-
-
-## Fields
-
-| Field                                                                           | Type                                                                            | Required                                                                        | Description                                                                     | Example                                                                         |
-| ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
-| `sourceValue`                                                                   | *string*                                                                        | :heavy_minus_sign:                                                              | The source value of the attachment type.                                        | Resume                                                                          |
-| `value`                                                                         | [shared.AttachmentTypeValue](../../../sdk/models/shared/attachmenttypevalue.md) | :heavy_minus_sign:                                                              | The type of the attachment.                                                     | resume                                                                          |

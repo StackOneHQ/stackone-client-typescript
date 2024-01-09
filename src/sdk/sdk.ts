@@ -6,12 +6,8 @@ import { SDKOptions, serverURLFromOptions } from "../lib/config";
 import { HTTPClient } from "../lib/http";
 import { ClientSDK } from "../lib/sdks";
 import { Accounts } from "./accounts";
-import { Ats } from "./ats";
 import { Connectors } from "./connectors";
 import { ConnectSessions } from "./connectsessions";
-import { Crm } from "./crm";
-import { Hris } from "./hris";
-import { Marketing } from "./marketing";
 import { Proxy } from "./proxy";
 
 export class StackOne extends ClientSDK {
@@ -40,26 +36,6 @@ export class StackOne extends ClientSDK {
     private _connectors?: Connectors;
     get connectors() {
         return (this._connectors ??= new Connectors(this.options$));
-    }
-
-    private _ats?: Ats;
-    get ats() {
-        return (this._ats ??= new Ats(this.options$));
-    }
-
-    private _crm?: Crm;
-    get crm() {
-        return (this._crm ??= new Crm(this.options$));
-    }
-
-    private _hris?: Hris;
-    get hris() {
-        return (this._hris ??= new Hris(this.options$));
-    }
-
-    private _marketing?: Marketing;
-    get marketing() {
-        return (this._marketing ??= new Marketing(this.options$));
     }
 
     private _proxy?: Proxy;

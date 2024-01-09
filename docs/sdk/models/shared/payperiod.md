@@ -1,9 +1,0 @@
-# PayPeriod
-
-
-## Fields
-
-| Field                                                                                     | Type                                                                                      | Required                                                                                  | Description                                                                               | Example                                                                                   |
-| ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
-| `sourceValue`                                                                             | *string*                                                                                  | :heavy_check_mark:                                                                        | The source value of the pay period.                                                       | Hour                                                                                      |
-| `value`                                                                                   | [shared.CompensationSchemasValue](../../../sdk/models/shared/compensationschemasvalue.md) | :heavy_check_mark:                                                                        | The pay period of the job postings.                                                       | hour                                                                                      |

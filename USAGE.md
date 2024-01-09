@@ -1,6 +1,4 @@
 <!-- Start SDK Example Usage [usage] -->
-### List Employees
-
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -11,18 +9,15 @@ async function run() {
         },
     });
 
-    const res = await sdk.hris.listEmployees({
-        proxy: {},
-        xAccountId: "string",
+    const res = await sdk.accounts.deleteAccount({
+        id: "<ID>",
     });
 
     if (res?.statusCode !== 200) {
         throw new Error("Unexpected status code: " + res?.statusCode || "-");
     }
 
-    for await (const page of res) {
-        // handle page
-    }
+    // handle response
 }
 
 run();

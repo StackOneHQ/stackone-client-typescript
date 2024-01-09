@@ -10,7 +10,7 @@ import * as shared from "../sdk/models/shared";
 /**
  * Contains the list of servers available to the SDK
  */
-export const ServerList = ["https://api.stackone.com"] as const;
+export const ServerList = ["https://api.stackone-dev.com"] as const;
 
 export type SDKOptions = {
     /**
@@ -50,7 +50,7 @@ export function serverURLFromOptions(options: SDKOptions): URL {
 export const SDK_METADATA = Object.freeze({
     language: "typescript",
     openapiDocVersion: "1.0.0",
-    sdkVersion: "2.1.0",
+    sdkVersion: "3.0.0",
     genVersion: "2.230.1",
-    userAgent: "speakeasy-sdk/typescript 2.1.0 2.230.1 1.0.0 @stackone/stackone-client-ts",
+    userAgent: "speakeasy-sdk/typescript 3.0.0 2.230.1 1.0.0 @stackone/stackone-client-ts",
 });

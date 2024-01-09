@@ -143,7 +143,7 @@ export class Connectors extends ClientSDK {
             const responseBody = await response.json();
             const result = operations.StackoneListConnectorsMetaResponse$.inboundSchema.parse({
                 ...responseFields$,
-                classes: responseBody,
+                ConnectorsMetas: responseBody,
             });
             return result;
         } else {

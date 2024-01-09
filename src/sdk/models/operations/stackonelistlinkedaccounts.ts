@@ -22,6 +22,10 @@ export type StackoneListLinkedAccountsResponse = {
      */
     contentType: string;
     /**
+     * The list of accounts was retrieved.
+     */
+    linkedAccounts?: Array<shared.LinkedAccount> | undefined;
+    /**
      * HTTP response status code for this operation
      */
     statusCode: number;
@@ -29,10 +33,6 @@ export type StackoneListLinkedAccountsResponse = {
      * Raw HTTP response; suitable for custom response parsing
      */
     rawResponse: Response;
-    /**
-     * The list of accounts was retrieved.
-     */
-    classes?: Array<shared.LinkedAccount> | undefined;
 };
 
 /** @internal */
@@ -84,9 +84,9 @@ export namespace StackoneListLinkedAccountsRequest$ {
 export namespace StackoneListLinkedAccountsResponse$ {
     export type Inbound = {
         ContentType: string;
+        LinkedAccounts?: Array<shared.LinkedAccount$.Inbound> | undefined;
         StatusCode: number;
         RawResponse: Response;
-        classes?: Array<shared.LinkedAccount$.Inbound> | undefined;
     };
 
     export const inboundSchema: z.ZodType<
@@ -96,24 +96,24 @@ export namespace StackoneListLinkedAccountsResponse$ {
     > = z
         .object({
             ContentType: z.string(),
+            LinkedAccounts: z.array(shared.LinkedAccount$.inboundSchema).optional(),
             StatusCode: z.number().int(),
             RawResponse: z.instanceof(Response),
-            classes: z.array(shared.LinkedAccount$.inboundSchema).optional(),
         })
         .transform((v) => {
             return {
                 contentType: v.ContentType,
+                ...(v.LinkedAccounts === undefined ? null : { linkedAccounts: v.LinkedAccounts }),
                 statusCode: v.StatusCode,
                 rawResponse: v.RawResponse,
-                ...(v.classes === undefined ? null : { classes: v.classes }),
             };
         });
 
     export type Outbound = {
         ContentType: string;
+        LinkedAccounts?: Array<shared.LinkedAccount$.Outbound> | undefined;
         StatusCode: number;
         RawResponse: never;
-        classes?: Array<shared.LinkedAccount$.Outbound> | undefined;
     };
 
     export const outboundSchema: z.ZodType<
@@ -123,18 +123,18 @@ export namespace StackoneListLinkedAccountsResponse$ {
     > = z
         .object({
             contentType: z.string(),
+            linkedAccounts: z.array(shared.LinkedAccount$.outboundSchema).optional(),
             statusCode: z.number().int(),
             rawResponse: z.instanceof(Response).transform(() => {
                 throw new Error("Response cannot be serialized");
             }),
-            classes: z.array(shared.LinkedAccount$.outboundSchema).optional(),
         })
         .transform((v) => {
             return {
                 ContentType: v.contentType,
+                ...(v.linkedAccounts === undefined ? null : { LinkedAccounts: v.linkedAccounts }),
                 StatusCode: v.statusCode,
                 RawResponse: v.rawResponse,
-                ...(v.classes === undefined ? null : { classes: v.classes }),
             };
         });
 }

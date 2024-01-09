@@ -1,9 +1,0 @@
-# CountryCodeEnum
-
-
-## Fields
-
-| Field                                                                             | Type                                                                              | Required                                                                          | Description                                                                       | Example                                                                           |
-| --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
-| `sourceValue`                                                                     | *string*                                                                          | :heavy_check_mark:                                                                | The name of citizenship                                                           | American                                                                          |
-| `value`                                                                           | [shared.CountryCodeEnumValue](../../../sdk/models/shared/countrycodeenumvalue.md) | :heavy_check_mark:                                                                | The ISO3166-1 Alpha2 Code of the Country                                          | US                                                                                |

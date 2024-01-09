@@ -14,6 +14,10 @@ export type StackoneListConnectorsMetaRequest = {
 
 export type StackoneListConnectorsMetaResponse = {
     /**
+     * The list of connectors meta information was retrieved.
+     */
+    connectorsMetas?: Array<shared.ConnectorsMeta> | undefined;
+    /**
      * HTTP response content type for this operation
      */
     contentType: string;
@@ -25,10 +29,6 @@ export type StackoneListConnectorsMetaResponse = {
      * Raw HTTP response; suitable for custom response parsing
      */
     rawResponse: Response;
-    /**
-     * The list of connectors meta information was retrieved.
-     */
-    classes?: Array<shared.ConnectorsMeta> | undefined;
 };
 
 /** @internal */
@@ -73,10 +73,10 @@ export namespace StackoneListConnectorsMetaRequest$ {
 /** @internal */
 export namespace StackoneListConnectorsMetaResponse$ {
     export type Inbound = {
+        ConnectorsMetas?: Array<shared.ConnectorsMeta$.Inbound> | undefined;
         ContentType: string;
         StatusCode: number;
         RawResponse: Response;
-        classes?: Array<shared.ConnectorsMeta$.Inbound> | undefined;
     };
 
     export const inboundSchema: z.ZodType<
@@ -85,25 +85,27 @@ export namespace StackoneListConnectorsMetaResponse$ {
         Inbound
     > = z
         .object({
+            ConnectorsMetas: z.array(shared.ConnectorsMeta$.inboundSchema).optional(),
             ContentType: z.string(),
             StatusCode: z.number().int(),
             RawResponse: z.instanceof(Response),
-            classes: z.array(shared.ConnectorsMeta$.inboundSchema).optional(),
         })
         .transform((v) => {
             return {
+                ...(v.ConnectorsMetas === undefined
+                    ? null
+                    : { connectorsMetas: v.ConnectorsMetas }),
                 contentType: v.ContentType,
                 statusCode: v.StatusCode,
                 rawResponse: v.RawResponse,
-                ...(v.classes === undefined ? null : { classes: v.classes }),
             };
         });
 
     export type Outbound = {
+        ConnectorsMetas?: Array<shared.ConnectorsMeta$.Outbound> | undefined;
         ContentType: string;
         StatusCode: number;
         RawResponse: never;
-        classes?: Array<shared.ConnectorsMeta$.Outbound> | undefined;
     };
 
     export const outboundSchema: z.ZodType<
@@ -112,19 +114,21 @@ export namespace StackoneListConnectorsMetaResponse$ {
         StackoneListConnectorsMetaResponse
     > = z
         .object({
+            connectorsMetas: z.array(shared.ConnectorsMeta$.outboundSchema).optional(),
             contentType: z.string(),
             statusCode: z.number().int(),
             rawResponse: z.instanceof(Response).transform(() => {
                 throw new Error("Response cannot be serialized");
             }),
-            classes: z.array(shared.ConnectorsMeta$.outboundSchema).optional(),
         })
         .transform((v) => {
             return {
+                ...(v.connectorsMetas === undefined
+                    ? null
+                    : { ConnectorsMetas: v.connectorsMetas }),
                 ContentType: v.contentType,
                 StatusCode: v.statusCode,
                 RawResponse: v.rawResponse,
-                ...(v.classes === undefined ? null : { classes: v.classes }),
             };
         });
 }

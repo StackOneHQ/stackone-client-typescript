@@ -246,7 +246,7 @@ export class Accounts extends ClientSDK {
             const responseBody = await response.json();
             const result = operations.StackoneListLinkedAccountsResponse$.inboundSchema.parse({
                 ...responseFields$,
-                classes: responseBody,
+                LinkedAccounts: responseBody,
             });
             return result;
         } else {
