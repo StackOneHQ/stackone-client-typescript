@@ -12,7 +12,7 @@ permissions:
         type: boolean
         default: false
   schedule:
-    - cron: 0 0 * * *
+    - cron: 0 9 * * 1
 jobs:
   generate:
     uses: speakeasy-api/sdk-generation-action/.github/workflows/sdk-generation.yaml@v14
@@ -22,9 +22,14 @@ jobs:
         - typescript
       mode: pr
       openapi_docs: |
-        - https://api2.eu1.stackone-dev.com/oas/stackone.json
+        - https://api2.eu1.stackone.com/oas/stackone.json
+        - https://api2.eu1.stackone.com/oas/hris.json
+        - https://api2.eu1.stackone.com/oas/ats.json
+        - https://api2.eu1.stackone.com/oas/crm.json
+        - https://api2.eu1.stackone.com/oas/marketing.json
       publish_typescript: true
       speakeasy_version: latest
     secrets:
       github_access_token: ${{ secrets.GITHUB_TOKEN }}
+      npm_token: ${{ secrets.NPM_TOKEN }}
       speakeasy_api_key: ${{ secrets.SPEAKEASY_API_KEY }}

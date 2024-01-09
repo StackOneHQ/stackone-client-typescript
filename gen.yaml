@@ -3,7 +3,6 @@ generation:
   sdkClassName: StackOne
   usageSnippets:
     optionalPropertyRendering: withExample
-  useClassNamesForArrayFields: true
   fixes:
     nameResolutionDec2023: false
 typescript:
