@@ -13,6 +13,7 @@ export type LinkedAccount = {
     createdAt: Date;
     credentials?: Credentials | null | undefined;
     id: string;
+    label?: string | null | undefined;
     originOwnerId: string;
     originOwnerName: string;
     originUsername?: string | null | undefined;
@@ -50,6 +51,7 @@ export namespace LinkedAccount$ {
         created_at: string;
         credentials?: Credentials$.Inbound | null | undefined;
         id: string;
+        label?: string | null | undefined;
         origin_owner_id: string;
         origin_owner_name: string;
         origin_username?: string | null | undefined;
@@ -67,6 +69,7 @@ export namespace LinkedAccount$ {
                 .transform((v) => new Date(v)),
             credentials: z.nullable(z.lazy(() => Credentials$.inboundSchema)).optional(),
             id: z.string(),
+            label: z.nullable(z.string()).optional(),
             origin_owner_id: z.string(),
             origin_owner_name: z.string(),
             origin_username: z.nullable(z.string()).optional(),
@@ -83,6 +86,7 @@ export namespace LinkedAccount$ {
                 createdAt: v.created_at,
                 ...(v.credentials === undefined ? null : { credentials: v.credentials }),
                 id: v.id,
+                ...(v.label === undefined ? null : { label: v.label }),
                 originOwnerId: v.origin_owner_id,
                 originOwnerName: v.origin_owner_name,
                 ...(v.origin_username === undefined ? null : { originUsername: v.origin_username }),
@@ -99,6 +103,7 @@ export namespace LinkedAccount$ {
         created_at: string;
         credentials?: Credentials$.Outbound | null | undefined;
         id: string;
+        label?: string | null | undefined;
         origin_owner_id: string;
         origin_owner_name: string;
         origin_username?: string | null | undefined;
@@ -113,6 +118,7 @@ export namespace LinkedAccount$ {
             createdAt: z.date().transform((v) => v.toISOString()),
             credentials: z.nullable(z.lazy(() => Credentials$.outboundSchema)).optional(),
             id: z.string(),
+            label: z.nullable(z.string()).optional(),
             originOwnerId: z.string(),
             originOwnerName: z.string(),
             originUsername: z.nullable(z.string()).optional(),
@@ -126,6 +132,7 @@ export namespace LinkedAccount$ {
                 created_at: v.createdAt,
                 ...(v.credentials === undefined ? null : { credentials: v.credentials }),
                 id: v.id,
+                ...(v.label === undefined ? null : { label: v.label }),
                 origin_owner_id: v.originOwnerId,
                 origin_owner_name: v.originOwnerName,
                 ...(v.originUsername === undefined ? null : { origin_username: v.originUsername }),

@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 7fa83af8-9e8e-4410-b7e2-cf1d0eaf688b
 management:
-  docChecksum: 7a322b8afcaeb2e3c6b90737a8eb562e
+  docChecksum: e953bacd8e2eeefeb3704f756f5c8d1e
   docVersion: 1.0.0
   speakeasyVersion: internal
   generationVersion: 2.230.3
-  releaseVersion: 2.1.1
-  configChecksum: 8af12468f159be68f96f84b7a58f824e
+  releaseVersion: 2.1.2
+  configChecksum: 2bf40500ca9106e8c23093892e51a850
   repoURL: https://github.com/StackOneHQ/stackone-client-typescript.git
   repoSubDirectory: .
   installationURL: https://github.com/StackOneHQ/stackone-client-typescript
@@ -145,6 +145,7 @@ generatedFiles:
   - src/sdk/models/shared/connectorsmeta.ts
   - src/sdk/models/shared/createresult.ts
   - src/sdk/models/shared/atscreateapplicationrequestdto.ts
+  - src/sdk/models/shared/questionnaire.ts
   - src/sdk/models/shared/answer.ts
   - src/sdk/models/shared/applicationcandidate.ts
   - src/sdk/models/shared/applicationattachment.ts
@@ -186,7 +187,6 @@ generatedFiles:
   - src/sdk/models/shared/hiringteam.ts
   - src/sdk/models/shared/jobpostingresult.ts
   - src/sdk/models/shared/jobposting.ts
-  - src/sdk/models/shared/questionnaire.ts
   - src/sdk/models/shared/location.ts
   - src/sdk/models/shared/compensation.ts
   - src/sdk/models/shared/atslocationresult.ts
@@ -502,8 +502,8 @@ generatedFiles:
   - docs/sdk/models/shared/resources.md
   - docs/sdk/models/shared/connectorsmeta.md
   - docs/sdk/models/shared/createresult.md
-  - docs/sdk/models/shared/atscreateapplicationrequestdtoquestionnaire.md
   - docs/sdk/models/shared/atscreateapplicationrequestdto.md
+  - docs/sdk/models/shared/questionnaire.md
   - docs/sdk/models/shared/answervalue.md
   - docs/sdk/models/shared/typet.md
   - docs/sdk/models/shared/answer.md
@@ -533,7 +533,6 @@ generatedFiles:
   - docs/sdk/models/shared/offerstatusenum.md
   - docs/sdk/models/shared/offerhistory.md
   - docs/sdk/models/shared/applicationresult.md
-  - docs/sdk/models/shared/applicationquestionnaire.md
   - docs/sdk/models/shared/application.md
   - docs/sdk/models/shared/resultlink.md
   - docs/sdk/models/shared/rejectedreason.md
@@ -571,7 +570,6 @@ generatedFiles:
   - docs/sdk/models/shared/jobpostingschemasstatusvalue.md
   - docs/sdk/models/shared/jobpostingstatus.md
   - docs/sdk/models/shared/jobposting.md
-  - docs/sdk/models/shared/questionnaire.md
   - docs/sdk/models/shared/location.md
   - docs/sdk/models/shared/compensationvalue.md
   - docs/sdk/models/shared/payfrequency.md
@@ -604,7 +602,6 @@ generatedFiles:
   - docs/sdk/models/shared/rejectedreasonspaginated.md
   - docs/sdk/models/shared/userspaginated.md
   - docs/sdk/models/shared/updateresult.md
-  - docs/sdk/models/shared/atsupdateapplicationrequestdtoquestionnaire.md
   - docs/sdk/models/shared/atsupdateapplicationrequestdto.md
   - docs/sdk/models/shared/atsupdatecandidatesrequestdto.md
   - docs/sdk/models/shared/contactresult.md

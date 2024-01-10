@@ -88,25 +88,27 @@ async function run() {
       locationIds: [
         "dd8d41d1-5eb8-4408-9c87-9ba44604eae4",
       ],
-      questionnaire: {
-        answers: [
-          {
-            id: "answer_1",
-            type: {
-              sourceValue: "Short Text",
-              value: AnswerValue.ShortText,
+      questionnaires: [
+        {
+          answers: [
+            {
+              id: "answer_1",
+              type: {
+                sourceValue: "Short Text",
+                value: AnswerValue.ShortText,
+              },
+              values: [
+                "Yes",
+                "No Travel",
+                "It sounds pretty cool.",
+                "Excel",
+                "Power Point",
+              ],
             },
-            values: [
-              "Yes",
-              "No Travel",
-              "It sounds pretty cool.",
-              "Excel",
-              "Power Point",
-            ],
-          },
-        ],
-        id: "questionnaire_1",
-      },
+          ],
+          id: "questionnaire_1",
+        },
+      ],
     },
     xAccountId: "string",
   });
@@ -1774,25 +1776,27 @@ async function run() {
       locationIds: [
         "dd8d41d1-5eb8-4408-9c87-9ba44604eae4",
       ],
-      questionnaire: {
-        answers: [
-          {
-            id: "answer_1",
-            type: {
-              sourceValue: "Short Text",
-              value: AnswerValue.ShortText,
+      questionnaires: [
+        {
+          answers: [
+            {
+              id: "answer_1",
+              type: {
+                sourceValue: "Short Text",
+                value: AnswerValue.ShortText,
+              },
+              values: [
+                "Yes",
+                "No Travel",
+                "It sounds pretty cool.",
+                "Excel",
+                "Power Point",
+              ],
             },
-            values: [
-              "Yes",
-              "No Travel",
-              "It sounds pretty cool.",
-              "Excel",
-              "Power Point",
-            ],
-          },
-        ],
-        id: "questionnaire_1",
-      },
+          ],
+          id: "questionnaire_1",
+        },
+      ],
     },
     id: "<ID>",
     xAccountId: "string",
