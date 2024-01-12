@@ -14,9 +14,11 @@ export enum ConnectSessionTokenCategories {
 }
 
 export type ConnectSessionToken = {
+    accountId?: string | null | undefined;
     categories?: Array<ConnectSessionTokenCategories> | null | undefined;
     createdAt: Date;
     id: string;
+    label?: string | null | undefined;
     organizationId: string;
     originOwnerId: string;
     originOwnerName: string;
@@ -32,9 +34,11 @@ export const ConnectSessionTokenCategories$ = z.nativeEnum(ConnectSessionTokenCa
 /** @internal */
 export namespace ConnectSessionToken$ {
     export type Inbound = {
+        account_id?: string | null | undefined;
         categories?: Array<ConnectSessionTokenCategories> | null | undefined;
         created_at: string;
         id: string;
+        label?: string | null | undefined;
         organization_id: string;
         origin_owner_id: string;
         origin_owner_name: string;
@@ -46,12 +50,14 @@ export namespace ConnectSessionToken$ {
 
     export const inboundSchema: z.ZodType<ConnectSessionToken, z.ZodTypeDef, Inbound> = z
         .object({
+            account_id: z.nullable(z.string()).optional(),
             categories: z.nullable(z.array(ConnectSessionTokenCategories$)).optional(),
             created_at: z
                 .string()
                 .datetime({ offset: true })
                 .transform((v) => new Date(v)),
             id: z.string(),
+            label: z.nullable(z.string()).optional(),
             organization_id: z.string(),
             origin_owner_id: z.string(),
             origin_owner_name: z.string(),
@@ -62,9 +68,11 @@ export namespace ConnectSessionToken$ {
         })
         .transform((v) => {
             return {
+                ...(v.account_id === undefined ? null : { accountId: v.account_id }),
                 ...(v.categories === undefined ? null : { categories: v.categories }),
                 createdAt: v.created_at,
                 id: v.id,
+                ...(v.label === undefined ? null : { label: v.label }),
                 organizationId: v.organization_id,
                 originOwnerId: v.origin_owner_id,
                 originOwnerName: v.origin_owner_name,
@@ -76,9 +84,11 @@ export namespace ConnectSessionToken$ {
         });
 
     export type Outbound = {
+        account_id?: string | null | undefined;
         categories?: Array<ConnectSessionTokenCategories> | null | undefined;
         created_at: string;
         id: string;
+        label?: string | null | undefined;
         organization_id: string;
         origin_owner_id: string;
         origin_owner_name: string;
@@ -90,9 +100,11 @@ export namespace ConnectSessionToken$ {
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ConnectSessionToken> = z
         .object({
+            accountId: z.nullable(z.string()).optional(),
             categories: z.nullable(z.array(ConnectSessionTokenCategories$)).optional(),
             createdAt: z.date().transform((v) => v.toISOString()),
             id: z.string(),
+            label: z.nullable(z.string()).optional(),
             organizationId: z.string(),
             originOwnerId: z.string(),
             originOwnerName: z.string(),
@@ -103,9 +115,11 @@ export namespace ConnectSessionToken$ {
         })
         .transform((v) => {
             return {
+                ...(v.accountId === undefined ? null : { account_id: v.accountId }),
                 ...(v.categories === undefined ? null : { categories: v.categories }),
                 created_at: v.createdAt,
                 id: v.id,
+                ...(v.label === undefined ? null : { label: v.label }),
                 organization_id: v.organizationId,
                 origin_owner_id: v.originOwnerId,
                 origin_owner_name: v.originOwnerName,

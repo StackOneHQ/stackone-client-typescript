@@ -32,6 +32,10 @@ export type ConnectSessionCreate = {
      */
     expiresIn?: number | null | undefined;
     /**
+     * The label to be applied to the account associated with this connect session.
+     */
+    label?: string | null | undefined;
+    /**
      * The metadata for the connection
      */
     metadata?: Metadata | null | undefined;
@@ -73,6 +77,7 @@ export namespace ConnectSessionCreate$ {
         account_id?: string | null | undefined;
         categories?: Array<ConnectSessionCreateCategories> | null | undefined;
         expires_in?: number | null | undefined;
+        label?: string | null | undefined;
         metadata?: Metadata$.Inbound | null | undefined;
         origin_owner_id: string;
         origin_owner_name: string;
@@ -85,6 +90,7 @@ export namespace ConnectSessionCreate$ {
             account_id: z.nullable(z.string()).optional(),
             categories: z.nullable(z.array(ConnectSessionCreateCategories$)).optional(),
             expires_in: z.nullable(z.number()).optional(),
+            label: z.nullable(z.string()).optional(),
             metadata: z.nullable(z.lazy(() => Metadata$.inboundSchema)).optional(),
             origin_owner_id: z.string(),
             origin_owner_name: z.string(),
@@ -96,6 +102,7 @@ export namespace ConnectSessionCreate$ {
                 ...(v.account_id === undefined ? null : { accountId: v.account_id }),
                 ...(v.categories === undefined ? null : { categories: v.categories }),
                 ...(v.expires_in === undefined ? null : { expiresIn: v.expires_in }),
+                ...(v.label === undefined ? null : { label: v.label }),
                 ...(v.metadata === undefined ? null : { metadata: v.metadata }),
                 originOwnerId: v.origin_owner_id,
                 originOwnerName: v.origin_owner_name,
@@ -108,6 +115,7 @@ export namespace ConnectSessionCreate$ {
         account_id?: string | null | undefined;
         categories?: Array<ConnectSessionCreateCategories> | null | undefined;
         expires_in?: number | null | undefined;
+        label?: string | null | undefined;
         metadata?: Metadata$.Outbound | null | undefined;
         origin_owner_id: string;
         origin_owner_name: string;
@@ -120,6 +128,7 @@ export namespace ConnectSessionCreate$ {
             accountId: z.nullable(z.string()).optional(),
             categories: z.nullable(z.array(ConnectSessionCreateCategories$)).optional(),
             expiresIn: z.nullable(z.number()).optional(),
+            label: z.nullable(z.string()).optional(),
             metadata: z.nullable(z.lazy(() => Metadata$.outboundSchema)).optional(),
             originOwnerId: z.string(),
             originOwnerName: z.string(),
@@ -131,6 +140,7 @@ export namespace ConnectSessionCreate$ {
                 ...(v.accountId === undefined ? null : { account_id: v.accountId }),
                 ...(v.categories === undefined ? null : { categories: v.categories }),
                 ...(v.expiresIn === undefined ? null : { expires_in: v.expiresIn }),
+                ...(v.label === undefined ? null : { label: v.label }),
                 ...(v.metadata === undefined ? null : { metadata: v.metadata }),
                 origin_owner_id: v.originOwnerId,
                 origin_owner_name: v.originOwnerName,
