@@ -8,11 +8,13 @@
 * [createTimeOffRequest](#createtimeoffrequest) - Creates a time off request
 * [getCompany](#getcompany) - Get Company
 * [getEmployee](#getemployee) - Get Employee
+* [getEmployeeDocument](#getemployeedocument) - Get Employee Document
 * [getEmployeesTimeOffRequest](#getemployeestimeoffrequest) - Get Employees Time Off Request
 * [getEmployment](#getemployment) - Get Employment
 * [getLocation](#getlocation) - Get Location
 * [getTimeOffRequest](#gettimeoffrequest) - Get time off request
 * [listCompanies](#listcompanies) - List Companies
+* [listEmployeeDocuments](#listemployeedocuments) - List Employee Documents
 * [listEmployeeTimeOffRequests](#listemployeetimeoffrequests) - List Employee Time Off Requests
 * [listEmployees](#listemployees) - List Employees
 * [listEmployments](#listemployments) - List Employments
@@ -440,6 +442,57 @@ run();
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 4xx-5xx         | */*             |
 
+## getEmployeeDocument
+
+Get Employee Document
+
+### Example Usage
+
+```typescript
+import { StackOne } from "@stackone/stackone-client-ts";
+
+async function run() {
+  const sdk = new StackOne({
+    security: {
+      password: "<YOUR_PASSWORD_HERE>",
+    },
+  });
+
+  const res = await sdk.hris.getEmployeeDocument({
+    id: "<ID>",
+    proxy: {},
+    subResourceId: "string",
+    xAccountId: "string",
+  });
+
+  if (res?.statusCode !== 200) {
+    throw new Error("Unexpected status code: " + res?.statusCode || "-");
+  }
+  
+  // handle response
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.HrisGetEmployeeDocumentRequest](../../sdk/models/operations/hrisgetemployeedocumentrequest.md)                                                                     | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+
+
+### Response
+
+**Promise<[operations.HrisGetEmployeeDocumentResponse](../../sdk/models/operations/hrisgetemployeedocumentresponse.md)>**
+### Errors
+
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
+
 ## getEmployeesTimeOffRequest
 
 Get Employees Time Off Request
@@ -684,6 +737,56 @@ run();
 ### Response
 
 **Promise<[operations.HrisListCompaniesResponse](../../sdk/models/operations/hrislistcompaniesresponse.md)>**
+### Errors
+
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
+
+## listEmployeeDocuments
+
+List Employee Documents
+
+### Example Usage
+
+```typescript
+import { StackOne } from "@stackone/stackone-client-ts";
+
+async function run() {
+  const sdk = new StackOne({
+    security: {
+      password: "<YOUR_PASSWORD_HERE>",
+    },
+  });
+
+  const res = await sdk.hris.listEmployeeDocuments({
+    id: "<ID>",
+    proxy: {},
+    xAccountId: "string",
+  });
+
+  if (res?.statusCode !== 200) {
+    throw new Error("Unexpected status code: " + res?.statusCode || "-");
+  }
+  
+  // handle response
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.HrisListEmployeeDocumentsRequest](../../sdk/models/operations/hrislistemployeedocumentsrequest.md)                                                                 | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+
+
+### Response
+
+**Promise<[operations.HrisListEmployeeDocumentsResponse](../../sdk/models/operations/hrislistemployeedocumentsresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

@@ -7,7 +7,7 @@ import { Location, Location$ } from "./location";
 import { Questionnaire, Questionnaire$ } from "./questionnaire";
 import { z } from "zod";
 
-export type Content = {
+export type JobPostingContent = {
     html?: string | null | undefined;
     plain?: string | null | undefined;
 };
@@ -87,7 +87,7 @@ export type JobPostingStatus = {
 
 export type JobPosting = {
     compensation?: Array<Compensation> | null | undefined;
-    content?: Content | null | undefined;
+    content?: JobPostingContent | null | undefined;
     /**
      * Date of creation
      */
@@ -110,13 +110,13 @@ export type JobPosting = {
 };
 
 /** @internal */
-export namespace Content$ {
+export namespace JobPostingContent$ {
     export type Inbound = {
         html?: string | null | undefined;
         plain?: string | null | undefined;
     };
 
-    export const inboundSchema: z.ZodType<Content, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<JobPostingContent, z.ZodTypeDef, Inbound> = z
         .object({
             html: z.nullable(z.string()).optional(),
             plain: z.nullable(z.string()).optional(),
@@ -133,7 +133,7 @@ export namespace Content$ {
         plain?: string | null | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Content> = z
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, JobPostingContent> = z
         .object({
             html: z.nullable(z.string()).optional(),
             plain: z.nullable(z.string()).optional(),
@@ -278,7 +278,7 @@ export namespace JobPostingStatus$ {
 export namespace JobPosting$ {
     export type Inbound = {
         compensation?: Array<Compensation$.Inbound> | null | undefined;
-        content?: Content$.Inbound | null | undefined;
+        content?: JobPostingContent$.Inbound | null | undefined;
         created_at?: string | null | undefined;
         employment_contract_type?: JobPostingEmploymentContractType$.Inbound | null | undefined;
         employment_type?: JobPostingEmploymentType$.Inbound | null | undefined;
@@ -297,7 +297,7 @@ export namespace JobPosting$ {
     export const inboundSchema: z.ZodType<JobPosting, z.ZodTypeDef, Inbound> = z
         .object({
             compensation: z.nullable(z.array(Compensation$.inboundSchema)).optional(),
-            content: z.nullable(z.lazy(() => Content$.inboundSchema)).optional(),
+            content: z.nullable(z.lazy(() => JobPostingContent$.inboundSchema)).optional(),
             created_at: z
                 .nullable(
                     z
@@ -356,7 +356,7 @@ export namespace JobPosting$ {
 
     export type Outbound = {
         compensation?: Array<Compensation$.Outbound> | null | undefined;
-        content?: Content$.Outbound | null | undefined;
+        content?: JobPostingContent$.Outbound | null | undefined;
         created_at?: string | null | undefined;
         employment_contract_type?: JobPostingEmploymentContractType$.Outbound | null | undefined;
         employment_type?: JobPostingEmploymentType$.Outbound | null | undefined;
@@ -375,7 +375,7 @@ export namespace JobPosting$ {
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, JobPosting> = z
         .object({
             compensation: z.nullable(z.array(Compensation$.outboundSchema)).optional(),
-            content: z.nullable(z.lazy(() => Content$.outboundSchema)).optional(),
+            content: z.nullable(z.lazy(() => JobPostingContent$.outboundSchema)).optional(),
             createdAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
             employmentContractType: z
                 .nullable(z.lazy(() => JobPostingEmploymentContractType$.outboundSchema))

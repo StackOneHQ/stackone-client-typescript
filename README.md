@@ -132,11 +132,13 @@ run();
 * [createTimeOffRequest](docs/sdks/hris/README.md#createtimeoffrequest) - Creates a time off request
 * [getCompany](docs/sdks/hris/README.md#getcompany) - Get Company
 * [getEmployee](docs/sdks/hris/README.md#getemployee) - Get Employee
+* [getEmployeeDocument](docs/sdks/hris/README.md#getemployeedocument) - Get Employee Document
 * [getEmployeesTimeOffRequest](docs/sdks/hris/README.md#getemployeestimeoffrequest) - Get Employees Time Off Request
 * [getEmployment](docs/sdks/hris/README.md#getemployment) - Get Employment
 * [getLocation](docs/sdks/hris/README.md#getlocation) - Get Location
 * [getTimeOffRequest](docs/sdks/hris/README.md#gettimeoffrequest) - Get time off request
 * [listCompanies](docs/sdks/hris/README.md#listcompanies) - List Companies
+* [listEmployeeDocuments](docs/sdks/hris/README.md#listemployeedocuments) - List Employee Documents
 * [listEmployeeTimeOffRequests](docs/sdks/hris/README.md#listemployeetimeoffrequests) - List Employee Time Off Requests
 * [listEmployees](docs/sdks/hris/README.md#listemployees) - List Employees
 * [listEmployments](docs/sdks/hris/README.md#listemployments) - List Employments

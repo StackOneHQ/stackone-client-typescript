@@ -404,6 +404,99 @@ export class Hris extends ClientSDK {
     }
 
     /**
+     * Get Employee Document
+     */
+    async getEmployeeDocument(
+        input: operations.HrisGetEmployeeDocumentRequest,
+        options?: RequestOptions
+    ): Promise<operations.HrisGetEmployeeDocumentResponse> {
+        const headers$ = new Headers();
+        headers$.set("user-agent", SDK_METADATA.userAgent);
+        headers$.set("Accept", "application/json");
+
+        const payload$ = operations.HrisGetEmployeeDocumentRequest$.outboundSchema.parse(input);
+        const body$ = null;
+
+        const pathParams$ = {
+            id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
+            subResourceId: enc$.encodeSimple("subResourceId", payload$.subResourceId, {
+                explode: false,
+                charEncoding: "percent",
+            }),
+        };
+
+        const path$ = this.templateURLComponent(
+            "/unified/hris/employees/{id}/documents/{subResourceId}"
+        )(pathParams$);
+
+        const query$ = [
+            enc$.encodeForm("fields", payload$.fields, { explode: true, charEncoding: "percent" }),
+            enc$.encodeForm("next", payload$.next, { explode: true, charEncoding: "percent" }),
+            enc$.encodeForm("page", payload$.page, { explode: true, charEncoding: "percent" }),
+            enc$.encodeForm("page_size", payload$.page_size, {
+                explode: true,
+                charEncoding: "percent",
+            }),
+            enc$.encodeForm("proxy", payload$.proxy, { explode: true, charEncoding: "percent" }),
+            enc$.encodeForm("raw", payload$.raw, { explode: true, charEncoding: "percent" }),
+            enc$.encodeForm("sync_token", payload$.sync_token, {
+                explode: true,
+                charEncoding: "percent",
+            }),
+            enc$.encodeForm("updated_after", payload$.updated_after, {
+                explode: true,
+                charEncoding: "percent",
+            }),
+        ]
+            .filter(Boolean)
+            .join("&");
+
+        headers$.set(
+            "x-account-id",
+            enc$.encodeSimple("x-account-id", payload$["x-account-id"], {
+                explode: false,
+                charEncoding: "none",
+            })
+        );
+
+        const security$ =
+            typeof this.options$.security === "function"
+                ? await this.options$.security()
+                : this.options$.security;
+        const securitySettings$ = this.resolveGlobalSecurity(security$);
+
+        const response = await this.fetch$(
+            {
+                security: securitySettings$,
+                method: "GET",
+                path: path$,
+                headers: headers$,
+                query: query$,
+                body: body$,
+            },
+            options
+        );
+
+        const responseFields$ = {
+            ContentType: response.headers.get("content-type") ?? "application/octet-stream",
+            StatusCode: response.status,
+            RawResponse: response,
+        };
+
+        if (this.matchResponse(response, 200, "application/json")) {
+            const responseBody = await response.json();
+            const result = operations.HrisGetEmployeeDocumentResponse$.inboundSchema.parse({
+                ...responseFields$,
+                DocumentResult: responseBody,
+            });
+            return result;
+        } else {
+            const responseBody = await response.text();
+            throw new errors.SDKError("Unexpected API response", response, responseBody);
+        }
+    }
+
+    /**
      * Get Employees Time Off Request
      */
     async getEmployeesTimeOffRequest(
@@ -833,6 +926,95 @@ export class Hris extends ClientSDK {
             const result = operations.HrisListCompaniesResponse$.inboundSchema.parse({
                 ...responseFields$,
                 CompaniesPaginated: responseBody,
+            });
+            return result;
+        } else {
+            const responseBody = await response.text();
+            throw new errors.SDKError("Unexpected API response", response, responseBody);
+        }
+    }
+
+    /**
+     * List Employee Documents
+     */
+    async listEmployeeDocuments(
+        input: operations.HrisListEmployeeDocumentsRequest,
+        options?: RequestOptions
+    ): Promise<operations.HrisListEmployeeDocumentsResponse> {
+        const headers$ = new Headers();
+        headers$.set("user-agent", SDK_METADATA.userAgent);
+        headers$.set("Accept", "application/json");
+
+        const payload$ = operations.HrisListEmployeeDocumentsRequest$.outboundSchema.parse(input);
+        const body$ = null;
+
+        const pathParams$ = {
+            id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
+        };
+
+        const path$ = this.templateURLComponent("/unified/hris/employees/{id}/documents")(
+            pathParams$
+        );
+
+        const query$ = [
+            enc$.encodeForm("fields", payload$.fields, { explode: true, charEncoding: "percent" }),
+            enc$.encodeForm("next", payload$.next, { explode: true, charEncoding: "percent" }),
+            enc$.encodeForm("page", payload$.page, { explode: true, charEncoding: "percent" }),
+            enc$.encodeForm("page_size", payload$.page_size, {
+                explode: true,
+                charEncoding: "percent",
+            }),
+            enc$.encodeForm("proxy", payload$.proxy, { explode: true, charEncoding: "percent" }),
+            enc$.encodeForm("raw", payload$.raw, { explode: true, charEncoding: "percent" }),
+            enc$.encodeForm("sync_token", payload$.sync_token, {
+                explode: true,
+                charEncoding: "percent",
+            }),
+            enc$.encodeForm("updated_after", payload$.updated_after, {
+                explode: true,
+                charEncoding: "percent",
+            }),
+        ]
+            .filter(Boolean)
+            .join("&");
+
+        headers$.set(
+            "x-account-id",
+            enc$.encodeSimple("x-account-id", payload$["x-account-id"], {
+                explode: false,
+                charEncoding: "none",
+            })
+        );
+
+        const security$ =
+            typeof this.options$.security === "function"
+                ? await this.options$.security()
+                : this.options$.security;
+        const securitySettings$ = this.resolveGlobalSecurity(security$);
+
+        const response = await this.fetch$(
+            {
+                security: securitySettings$,
+                method: "GET",
+                path: path$,
+                headers: headers$,
+                query: query$,
+                body: body$,
+            },
+            options
+        );
+
+        const responseFields$ = {
+            ContentType: response.headers.get("content-type") ?? "application/octet-stream",
+            StatusCode: response.status,
+            RawResponse: response,
+        };
+
+        if (this.matchResponse(response, 200, "application/json")) {
+            const responseBody = await response.json();
+            const result = operations.HrisListEmployeeDocumentsResponse$.inboundSchema.parse({
+                ...responseFields$,
+                DocumentsPaginated: responseBody,
             });
             return result;
         } else {
