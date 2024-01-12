@@ -17,9 +17,9 @@ export type ConnectSessionToken = {
     accountId?: string | null | undefined;
     categories?: Array<ConnectSessionTokenCategories> | null | undefined;
     createdAt: Date;
-    id: string;
+    id: number;
     label?: string | null | undefined;
-    organizationId: string;
+    organizationId: number;
     originOwnerId: string;
     originOwnerName: string;
     originUsername?: string | null | undefined;
@@ -37,9 +37,9 @@ export namespace ConnectSessionToken$ {
         account_id?: string | null | undefined;
         categories?: Array<ConnectSessionTokenCategories> | null | undefined;
         created_at: string;
-        id: string;
+        id: number;
         label?: string | null | undefined;
-        organization_id: string;
+        organization_id: number;
         origin_owner_id: string;
         origin_owner_name: string;
         origin_username?: string | null | undefined;
@@ -56,9 +56,9 @@ export namespace ConnectSessionToken$ {
                 .string()
                 .datetime({ offset: true })
                 .transform((v) => new Date(v)),
-            id: z.string(),
+            id: z.number(),
             label: z.nullable(z.string()).optional(),
-            organization_id: z.string(),
+            organization_id: z.number(),
             origin_owner_id: z.string(),
             origin_owner_name: z.string(),
             origin_username: z.nullable(z.string()).optional(),
@@ -87,9 +87,9 @@ export namespace ConnectSessionToken$ {
         account_id?: string | null | undefined;
         categories?: Array<ConnectSessionTokenCategories> | null | undefined;
         created_at: string;
-        id: string;
+        id: number;
         label?: string | null | undefined;
-        organization_id: string;
+        organization_id: number;
         origin_owner_id: string;
         origin_owner_name: string;
         origin_username?: string | null | undefined;
@@ -103,9 +103,9 @@ export namespace ConnectSessionToken$ {
             accountId: z.nullable(z.string()).optional(),
             categories: z.nullable(z.array(ConnectSessionTokenCategories$)).optional(),
             createdAt: z.date().transform((v) => v.toISOString()),
-            id: z.string(),
+            id: z.number(),
             label: z.nullable(z.string()).optional(),
-            organizationId: z.string(),
+            organizationId: z.number(),
             originOwnerId: z.string(),
             originOwnerName: z.string(),
             originUsername: z.nullable(z.string()).optional(),
