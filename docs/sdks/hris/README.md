@@ -51,7 +51,7 @@ async function run() {
     },
   });
 
-  const res = await sdk.hris.createEmployee({
+  const result = await sdk.hris.createEmployee({
     hrisCreateEmployeeRequestDto: {
       avatar: {},
       avatarUrl: "https://example.com/avatar.png",
@@ -187,11 +187,8 @@ async function run() {
     xAccountId: "string",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -232,7 +229,7 @@ async function run() {
     },
   });
 
-  const res = await sdk.hris.createEmployeeTimeOffRequest({
+  const result = await sdk.hris.createEmployeeTimeOffRequest({
     hrisCreateTimeOffRequestDto: {
       approverId: "1687-4",
       employeeId: "1687-3",
@@ -251,11 +248,8 @@ async function run() {
     xAccountId: "string",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -296,7 +290,7 @@ async function run() {
     },
   });
 
-  const res = await sdk.hris.createTimeOffRequest({
+  const result = await sdk.hris.createTimeOffRequest({
     hrisCreateTimeOffRequestDto: {
       approverId: "1687-4",
       employeeId: "1687-3",
@@ -314,11 +308,8 @@ async function run() {
     xAccountId: "string",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -358,17 +349,16 @@ async function run() {
     },
   });
 
-  const res = await sdk.hris.getCompany({
+  const result = await sdk.hris.getCompany({
     id: "<ID>",
-    proxy: {},
+    proxy: {
+      "key": "string",
+    },
     xAccountId: "string",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -408,17 +398,16 @@ async function run() {
     },
   });
 
-  const res = await sdk.hris.getEmployee({
+  const result = await sdk.hris.getEmployee({
     id: "<ID>",
-    proxy: {},
+    proxy: {
+      "key": "string",
+    },
     xAccountId: "string",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -458,18 +447,17 @@ async function run() {
     },
   });
 
-  const res = await sdk.hris.getEmployeeDocument({
+  const result = await sdk.hris.getEmployeeDocument({
     id: "<ID>",
-    proxy: {},
+    proxy: {
+      "key": "string",
+    },
     subResourceId: "string",
     xAccountId: "string",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -509,18 +497,17 @@ async function run() {
     },
   });
 
-  const res = await sdk.hris.getEmployeesTimeOffRequest({
+  const result = await sdk.hris.getEmployeesTimeOffRequest({
     id: "<ID>",
-    proxy: {},
+    proxy: {
+      "key": "string",
+    },
     subResourceId: "string",
     xAccountId: "string",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -560,17 +547,16 @@ async function run() {
     },
   });
 
-  const res = await sdk.hris.getEmployment({
+  const result = await sdk.hris.getEmployment({
     id: "<ID>",
-    proxy: {},
+    proxy: {
+      "key": "string",
+    },
     xAccountId: "string",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -610,17 +596,16 @@ async function run() {
     },
   });
 
-  const res = await sdk.hris.getLocation({
+  const result = await sdk.hris.getLocation({
     id: "<ID>",
-    proxy: {},
+    proxy: {
+      "key": "string",
+    },
     xAccountId: "string",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -660,17 +645,16 @@ async function run() {
     },
   });
 
-  const res = await sdk.hris.getTimeOffRequest({
+  const result = await sdk.hris.getTimeOffRequest({
     id: "<ID>",
-    proxy: {},
+    proxy: {
+      "key": "string",
+    },
     xAccountId: "string",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -710,16 +694,15 @@ async function run() {
     },
   });
 
-  const res = await sdk.hris.listCompanies({
-    proxy: {},
+  const result = await sdk.hris.listCompanies({
+    proxy: {
+      "key": "string",
+    },
     xAccountId: "string",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -759,17 +742,16 @@ async function run() {
     },
   });
 
-  const res = await sdk.hris.listEmployeeDocuments({
+  const result = await sdk.hris.listEmployeeDocuments({
     id: "<ID>",
-    proxy: {},
+    proxy: {
+      "key": "string",
+    },
     xAccountId: "string",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -809,17 +791,16 @@ async function run() {
     },
   });
 
-  const res = await sdk.hris.listEmployeeTimeOffRequests({
+  const result = await sdk.hris.listEmployeeTimeOffRequests({
     id: "<ID>",
-    proxy: {},
+    proxy: {
+      "key": "string",
+    },
     xAccountId: "string",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -859,16 +840,14 @@ async function run() {
     },
   });
 
-  const res = await sdk.hris.listEmployees({
-    proxy: {},
+  const result = await sdk.hris.listEmployees({
+    proxy: {
+      "key": "string",
+    },
     xAccountId: "string",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  for await (const page of res) {
+  for await (const page of result) {
     // handle page
   }
 }
@@ -910,16 +889,15 @@ async function run() {
     },
   });
 
-  const res = await sdk.hris.listEmployments({
-    proxy: {},
+  const result = await sdk.hris.listEmployments({
+    proxy: {
+      "key": "string",
+    },
     xAccountId: "string",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -959,16 +937,15 @@ async function run() {
     },
   });
 
-  const res = await sdk.hris.listLocations({
-    proxy: {},
+  const result = await sdk.hris.listLocations({
+    proxy: {
+      "key": "string",
+    },
     xAccountId: "string",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -1008,16 +985,15 @@ async function run() {
     },
   });
 
-  const res = await sdk.hris.listTimeOffRequests({
-    proxy: {},
+  const result = await sdk.hris.listTimeOffRequests({
+    proxy: {
+      "key": "string",
+    },
     xAccountId: "string",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -1069,7 +1045,7 @@ async function run() {
     },
   });
 
-  const res = await sdk.hris.updateEmployee({
+  const result = await sdk.hris.updateEmployee({
     hrisCreateEmployeeRequestDto: {
       avatar: {},
       avatarUrl: "https://example.com/avatar.png",
@@ -1206,11 +1182,8 @@ async function run() {
     xAccountId: "string",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -1251,7 +1224,7 @@ async function run() {
     },
   });
 
-  const res = await sdk.hris.updateTimeOffRequest({
+  const result = await sdk.hris.updateTimeOffRequest({
     hrisCreateTimeOffRequestDto: {
       approverId: "1687-4",
       employeeId: "1687-3",
@@ -1270,11 +1243,8 @@ async function run() {
     xAccountId: "string",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();

@@ -13,11 +13,9 @@ export enum LinkedAccountMetaCategory {
     Stackone = "stackone",
 }
 
-export type LinkedAccountMetaModels = {};
-
 export type LinkedAccountMeta = {
     category: LinkedAccountMetaCategory;
-    models: LinkedAccountMetaModels;
+    models: Record<string, any>;
     provider: string;
 };
 
@@ -25,30 +23,17 @@ export type LinkedAccountMeta = {
 export const LinkedAccountMetaCategory$ = z.nativeEnum(LinkedAccountMetaCategory);
 
 /** @internal */
-export namespace LinkedAccountMetaModels$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<LinkedAccountMetaModels, z.ZodTypeDef, Inbound> =
-        z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, LinkedAccountMetaModels> =
-        z.object({});
-}
-
-/** @internal */
 export namespace LinkedAccountMeta$ {
     export type Inbound = {
         category: LinkedAccountMetaCategory;
-        models: LinkedAccountMetaModels$.Inbound;
+        models: Record<string, any>;
         provider: string;
     };
 
     export const inboundSchema: z.ZodType<LinkedAccountMeta, z.ZodTypeDef, Inbound> = z
         .object({
             category: LinkedAccountMetaCategory$,
-            models: z.lazy(() => LinkedAccountMetaModels$.inboundSchema),
+            models: z.record(z.any()),
             provider: z.string(),
         })
         .transform((v) => {
@@ -61,14 +46,14 @@ export namespace LinkedAccountMeta$ {
 
     export type Outbound = {
         category: LinkedAccountMetaCategory;
-        models: LinkedAccountMetaModels$.Outbound;
+        models: Record<string, any>;
         provider: string;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, LinkedAccountMeta> = z
         .object({
             category: LinkedAccountMetaCategory$,
-            models: z.lazy(() => LinkedAccountMetaModels$.outboundSchema),
+            models: z.record(z.any()),
             provider: z.string(),
         })
         .transform((v) => {

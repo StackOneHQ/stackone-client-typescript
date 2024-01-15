@@ -5,11 +5,6 @@
 import * as shared from "../../../sdk/models/shared";
 import { z } from "zod";
 
-/**
- * Query parameters that can be used to pass through parameters to the underlying provider request by surrounding them with "proxy" key
- */
-export type MarketingGetOmniChannelTemplateQueryParamProxy = {};
-
 export type MarketingGetOmniChannelTemplateRequest = {
     /**
      * The comma separated list of fields to return in the response (if empty, all fields are returned)
@@ -33,7 +28,7 @@ export type MarketingGetOmniChannelTemplateRequest = {
     /**
      * Query parameters that can be used to pass through parameters to the underlying provider request by surrounding them with "proxy" key
      */
-    proxy?: MarketingGetOmniChannelTemplateQueryParamProxy | null | undefined;
+    proxy?: Record<string, any> | null | undefined;
     /**
      * Indicates that the raw request result is returned
      */
@@ -72,25 +67,6 @@ export type MarketingGetOmniChannelTemplateResponse = {
 };
 
 /** @internal */
-export namespace MarketingGetOmniChannelTemplateQueryParamProxy$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<
-        MarketingGetOmniChannelTemplateQueryParamProxy,
-        z.ZodTypeDef,
-        Inbound
-    > = z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        MarketingGetOmniChannelTemplateQueryParamProxy
-    > = z.object({});
-}
-
-/** @internal */
 export namespace MarketingGetOmniChannelTemplateRequest$ {
     export type Inbound = {
         fields?: string | null | undefined;
@@ -98,7 +74,7 @@ export namespace MarketingGetOmniChannelTemplateRequest$ {
         next?: string | null | undefined;
         page?: string | null | undefined;
         page_size?: string | null | undefined;
-        proxy?: MarketingGetOmniChannelTemplateQueryParamProxy$.Inbound | null | undefined;
+        proxy?: Record<string, any> | null | undefined;
         raw?: boolean | null | undefined;
         sync_token?: string | null | undefined;
         updated_after?: string | null | undefined;
@@ -111,17 +87,13 @@ export namespace MarketingGetOmniChannelTemplateRequest$ {
         Inbound
     > = z
         .object({
-            fields: z.nullable(z.string()).optional(),
+            fields: z.nullable(z.string().default("")),
             id: z.string(),
             next: z.nullable(z.string()).optional(),
             page: z.nullable(z.string()).optional(),
-            page_size: z.nullable(z.string()).optional(),
-            proxy: z
-                .nullable(
-                    z.lazy(() => MarketingGetOmniChannelTemplateQueryParamProxy$.inboundSchema)
-                )
-                .optional(),
-            raw: z.nullable(z.boolean()).optional(),
+            page_size: z.nullable(z.string().default("25")),
+            proxy: z.nullable(z.record(z.any())).optional(),
+            raw: z.nullable(z.boolean().default(false)),
             sync_token: z.nullable(z.string()).optional(),
             updated_after: z.nullable(z.string()).optional(),
             "x-account-id": z.string(),
@@ -142,13 +114,13 @@ export namespace MarketingGetOmniChannelTemplateRequest$ {
         });
 
     export type Outbound = {
-        fields?: string | null | undefined;
+        fields: string | null;
         id: string;
         next?: string | null | undefined;
         page?: string | null | undefined;
-        page_size?: string | null | undefined;
-        proxy?: MarketingGetOmniChannelTemplateQueryParamProxy$.Outbound | null | undefined;
-        raw?: boolean | null | undefined;
+        page_size: string | null;
+        proxy?: Record<string, any> | null | undefined;
+        raw: boolean | null;
         sync_token?: string | null | undefined;
         updated_after?: string | null | undefined;
         "x-account-id": string;
@@ -160,30 +132,26 @@ export namespace MarketingGetOmniChannelTemplateRequest$ {
         MarketingGetOmniChannelTemplateRequest
     > = z
         .object({
-            fields: z.nullable(z.string()).optional(),
+            fields: z.nullable(z.string().default("")),
             id: z.string(),
             next: z.nullable(z.string()).optional(),
             page: z.nullable(z.string()).optional(),
-            pageSize: z.nullable(z.string()).optional(),
-            proxy: z
-                .nullable(
-                    z.lazy(() => MarketingGetOmniChannelTemplateQueryParamProxy$.outboundSchema)
-                )
-                .optional(),
-            raw: z.nullable(z.boolean()).optional(),
+            pageSize: z.nullable(z.string().default("25")),
+            proxy: z.nullable(z.record(z.any())).optional(),
+            raw: z.nullable(z.boolean().default(false)),
             syncToken: z.nullable(z.string()).optional(),
             updatedAfter: z.nullable(z.string()).optional(),
             xAccountId: z.string(),
         })
         .transform((v) => {
             return {
-                ...(v.fields === undefined ? null : { fields: v.fields }),
+                fields: v.fields,
                 id: v.id,
                 ...(v.next === undefined ? null : { next: v.next }),
                 ...(v.page === undefined ? null : { page: v.page }),
-                ...(v.pageSize === undefined ? null : { page_size: v.pageSize }),
+                page_size: v.pageSize,
                 ...(v.proxy === undefined ? null : { proxy: v.proxy }),
-                ...(v.raw === undefined ? null : { raw: v.raw }),
+                raw: v.raw,
                 ...(v.syncToken === undefined ? null : { sync_token: v.syncToken }),
                 ...(v.updatedAfter === undefined ? null : { updated_after: v.updatedAfter }),
                 "x-account-id": v.xAccountId,

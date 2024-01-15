@@ -22,15 +22,12 @@ async function run() {
     },
   });
 
-  const res = await sdk.connectors.getConnectorMeta({
+  const result = await sdk.connectors.getConnectorMeta({
     provider: "string",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -70,13 +67,10 @@ async function run() {
     },
   });
 
-  const res = await sdk.connectors.listConnectorsMeta({});
+  const result = await sdk.connectors.listConnectorsMeta({});
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();

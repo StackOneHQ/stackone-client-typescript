@@ -11,16 +11,14 @@ async function run() {
         },
     });
 
-    const res = await sdk.hris.listEmployees({
-        proxy: {},
+    const result = await sdk.hris.listEmployees({
+        proxy: {
+            key: "string",
+        },
         xAccountId: "string",
     });
 
-    if (res?.statusCode !== 200) {
-        throw new Error("Unexpected status code: " + res?.statusCode || "-");
-    }
-
-    for await (const page of res) {
+    for await (const page of result) {
         // handle page
     }
 }

@@ -1,19 +1,21 @@
 lockVersion: 2.0.0
 id: 7fa83af8-9e8e-4410-b7e2-cf1d0eaf688b
 management:
-  docChecksum: a41e43fab344a28d59a0874665db2a5e
+  docChecksum: 49c729761dfc1429ed6803221693aa90
   docVersion: 1.0.0
   speakeasyVersion: internal
-  generationVersion: 2.231.0
-  releaseVersion: 2.1.4
-  configChecksum: 3c7631e894d7de9b0bab3a6bfd05fc8e
+  generationVersion: 2.233.2
+  releaseVersion: 2.2.0
+  configChecksum: 9e29900e3738b9cca21ead6235d0b2a7
   repoURL: https://github.com/StackOneHQ/stackone-client-typescript.git
   repoSubDirectory: .
   installationURL: https://github.com/StackOneHQ/stackone-client-typescript
   published: true
 features:
   typescript:
-    core: 3.4.5
+    additionalProperties: 0.1.1
+    constsAndDefaults: 0.1.1
+    core: 3.4.6
     deprecations: 2.81.1
     examples: 2.81.3
     globalSecurity: 2.82.2
@@ -21,6 +23,7 @@ features:
     groups: 2.81.2
     nameOverrides: 2.81.1
     pagination: 2.82.0
+    unions: 2.85.0
 generatedFiles:
   - src/sdk/accounts.ts
   - src/sdk/connectsessions.ts
@@ -33,6 +36,7 @@ generatedFiles:
   - src/sdk/sdk.ts
   - .eslintrc.js
   - .npmignore
+  - RUNTIMES.md
   - package-lock.json
   - package.json
   - src/index.ts
@@ -295,88 +299,60 @@ generatedFiles:
   - docs/sdk/models/operations/atscreatecandidatenoteresponse.md
   - docs/sdk/models/operations/atscreateofferrequest.md
   - docs/sdk/models/operations/atscreateofferresponse.md
-  - docs/sdk/models/operations/proxy.md
   - docs/sdk/models/operations/atsgetapplicationrequest.md
   - docs/sdk/models/operations/atsgetapplicationresponse.md
-  - docs/sdk/models/operations/queryparamproxy.md
   - docs/sdk/models/operations/atsgetapplicationofferrequest.md
   - docs/sdk/models/operations/atsgetapplicationofferresponse.md
-  - docs/sdk/models/operations/atsgetapplicationscorecardqueryparamproxy.md
   - docs/sdk/models/operations/atsgetapplicationscorecardrequest.md
   - docs/sdk/models/operations/atsgetapplicationscorecardresponse.md
-  - docs/sdk/models/operations/atsgetcandidatequeryparamproxy.md
   - docs/sdk/models/operations/atsgetcandidaterequest.md
   - docs/sdk/models/operations/atsgetcandidateresponse.md
-  - docs/sdk/models/operations/atsgetcandidatenotequeryparamproxy.md
   - docs/sdk/models/operations/atsgetcandidatenoterequest.md
   - docs/sdk/models/operations/atsgetcandidatenoteresponse.md
-  - docs/sdk/models/operations/atsgetdepartmentqueryparamproxy.md
   - docs/sdk/models/operations/atsgetdepartmentrequest.md
   - docs/sdk/models/operations/atsgetdepartmentresponse.md
-  - docs/sdk/models/operations/atsgetinterviewqueryparamproxy.md
   - docs/sdk/models/operations/atsgetinterviewrequest.md
   - docs/sdk/models/operations/atsgetinterviewresponse.md
-  - docs/sdk/models/operations/atsgetinterviewstagequeryparamproxy.md
   - docs/sdk/models/operations/atsgetinterviewstagerequest.md
   - docs/sdk/models/operations/atsgetinterviewstageresponse.md
-  - docs/sdk/models/operations/atsgetjobqueryparamproxy.md
   - docs/sdk/models/operations/atsgetjobrequest.md
   - docs/sdk/models/operations/atsgetjobresponse.md
-  - docs/sdk/models/operations/atsgetjobpostingqueryparamproxy.md
   - docs/sdk/models/operations/atsgetjobpostingrequest.md
   - docs/sdk/models/operations/atsgetjobpostingresponse.md
-  - docs/sdk/models/operations/atsgetlocationqueryparamproxy.md
   - docs/sdk/models/operations/atsgetlocationrequest.md
   - docs/sdk/models/operations/atsgetlocationresponse.md
-  - docs/sdk/models/operations/atsgetofferqueryparamproxy.md
   - docs/sdk/models/operations/atsgetofferrequest.md
   - docs/sdk/models/operations/atsgetofferresponse.md
-  - docs/sdk/models/operations/atsgetrejectedreasonqueryparamproxy.md
   - docs/sdk/models/operations/atsgetrejectedreasonrequest.md
   - docs/sdk/models/operations/atsgetrejectedreasonresponse.md
-  - docs/sdk/models/operations/atsgetuserqueryparamproxy.md
   - docs/sdk/models/operations/atsgetuserrequest.md
   - docs/sdk/models/operations/atsgetuserresponse.md
-  - docs/sdk/models/operations/atslistapplicationscorecardsqueryparamproxy.md
   - docs/sdk/models/operations/atslistapplicationscorecardsrequest.md
   - docs/sdk/models/operations/atslistapplicationscorecardsresponse.md
-  - docs/sdk/models/operations/atslistapplicationsqueryparamproxy.md
   - docs/sdk/models/operations/atslistapplicationsrequest.md
   - docs/sdk/models/operations/atslistapplicationsresponse.md
-  - docs/sdk/models/operations/atslistapplicationsoffersqueryparamproxy.md
   - docs/sdk/models/operations/atslistapplicationsoffersrequest.md
   - docs/sdk/models/operations/atslistapplicationsoffersresponse.md
-  - docs/sdk/models/operations/atslistcandidatenotesqueryparamproxy.md
   - docs/sdk/models/operations/atslistcandidatenotesrequest.md
   - docs/sdk/models/operations/atslistcandidatenotesresponse.md
-  - docs/sdk/models/operations/atslistcandidatesqueryparamproxy.md
   - docs/sdk/models/operations/atslistcandidatesrequest.md
   - docs/sdk/models/operations/atslistcandidatesresponse.md
-  - docs/sdk/models/operations/atslistdepartmentsqueryparamproxy.md
   - docs/sdk/models/operations/atslistdepartmentsrequest.md
   - docs/sdk/models/operations/atslistdepartmentsresponse.md
-  - docs/sdk/models/operations/atslistinterviewstagesqueryparamproxy.md
   - docs/sdk/models/operations/atslistinterviewstagesrequest.md
   - docs/sdk/models/operations/atslistinterviewstagesresponse.md
-  - docs/sdk/models/operations/atslistinterviewsqueryparamproxy.md
   - docs/sdk/models/operations/atslistinterviewsrequest.md
   - docs/sdk/models/operations/atslistinterviewsresponse.md
-  - docs/sdk/models/operations/atslistjobpostingsqueryparamproxy.md
   - docs/sdk/models/operations/atslistjobpostingsrequest.md
   - docs/sdk/models/operations/atslistjobpostingsresponse.md
-  - docs/sdk/models/operations/atslistjobsqueryparamproxy.md
   - docs/sdk/models/operations/atslistjobsrequest.md
   - docs/sdk/models/operations/atslistjobsresponse.md
-  - docs/sdk/models/operations/atslistlocationsqueryparamproxy.md
   - docs/sdk/models/operations/atslistlocationsrequest.md
   - docs/sdk/models/operations/atslistlocationsresponse.md
-  - docs/sdk/models/operations/atslistoffersqueryparamproxy.md
   - docs/sdk/models/operations/atslistoffersrequest.md
   - docs/sdk/models/operations/atslistoffersresponse.md
-  - docs/sdk/models/operations/atslistrejectedreasonsqueryparamproxy.md
   - docs/sdk/models/operations/atslistrejectedreasonsrequest.md
   - docs/sdk/models/operations/atslistrejectedreasonsresponse.md
-  - docs/sdk/models/operations/atslistusersqueryparamproxy.md
   - docs/sdk/models/operations/atslistusersrequest.md
   - docs/sdk/models/operations/atslistusersresponse.md
   - docs/sdk/models/operations/atsupdateapplicationrequest.md
@@ -385,22 +361,16 @@ generatedFiles:
   - docs/sdk/models/operations/atsupdatecandidateresponse.md
   - docs/sdk/models/operations/crmcreatecontactrequest.md
   - docs/sdk/models/operations/crmcreatecontactresponse.md
-  - docs/sdk/models/operations/crmgetaccountqueryparamproxy.md
   - docs/sdk/models/operations/crmgetaccountrequest.md
   - docs/sdk/models/operations/crmgetaccountresponse.md
-  - docs/sdk/models/operations/crmgetcontactqueryparamproxy.md
   - docs/sdk/models/operations/crmgetcontactrequest.md
   - docs/sdk/models/operations/crmgetcontactresponse.md
-  - docs/sdk/models/operations/crmgetlistqueryparamproxy.md
   - docs/sdk/models/operations/crmgetlistrequest.md
   - docs/sdk/models/operations/crmgetlistresponse.md
-  - docs/sdk/models/operations/crmlistaccountsqueryparamproxy.md
   - docs/sdk/models/operations/crmlistaccountsrequest.md
   - docs/sdk/models/operations/crmlistaccountsresponse.md
-  - docs/sdk/models/operations/crmlistcontactsqueryparamproxy.md
   - docs/sdk/models/operations/crmlistcontactsrequest.md
   - docs/sdk/models/operations/crmlistcontactsresponse.md
-  - docs/sdk/models/operations/crmlistlistsqueryparamproxy.md
   - docs/sdk/models/operations/crmlistlistsrequest.md
   - docs/sdk/models/operations/crmlistlistsresponse.md
   - docs/sdk/models/operations/crmupdatecontactrequest.md
@@ -411,46 +381,32 @@ generatedFiles:
   - docs/sdk/models/operations/hriscreateemployeetimeoffrequestresponse.md
   - docs/sdk/models/operations/hriscreatetimeoffrequestrequest.md
   - docs/sdk/models/operations/hriscreatetimeoffrequestresponse.md
-  - docs/sdk/models/operations/hrisgetcompanyqueryparamproxy.md
   - docs/sdk/models/operations/hrisgetcompanyrequest.md
   - docs/sdk/models/operations/hrisgetcompanyresponse.md
-  - docs/sdk/models/operations/hrisgetemployeequeryparamproxy.md
   - docs/sdk/models/operations/hrisgetemployeerequest.md
   - docs/sdk/models/operations/hrisgetemployeeresponse.md
-  - docs/sdk/models/operations/hrisgetemployeedocumentqueryparamproxy.md
   - docs/sdk/models/operations/hrisgetemployeedocumentrequest.md
   - docs/sdk/models/operations/hrisgetemployeedocumentresponse.md
-  - docs/sdk/models/operations/hrisgetemployeestimeoffrequestqueryparamproxy.md
   - docs/sdk/models/operations/hrisgetemployeestimeoffrequestrequest.md
   - docs/sdk/models/operations/hrisgetemployeestimeoffrequestresponse.md
-  - docs/sdk/models/operations/hrisgetemploymentqueryparamproxy.md
   - docs/sdk/models/operations/hrisgetemploymentrequest.md
   - docs/sdk/models/operations/hrisgetemploymentresponse.md
-  - docs/sdk/models/operations/hrisgetlocationqueryparamproxy.md
   - docs/sdk/models/operations/hrisgetlocationrequest.md
   - docs/sdk/models/operations/hrisgetlocationresponse.md
-  - docs/sdk/models/operations/hrisgettimeoffrequestqueryparamproxy.md
   - docs/sdk/models/operations/hrisgettimeoffrequestrequest.md
   - docs/sdk/models/operations/hrisgettimeoffrequestresponse.md
-  - docs/sdk/models/operations/hrislistcompaniesqueryparamproxy.md
   - docs/sdk/models/operations/hrislistcompaniesrequest.md
   - docs/sdk/models/operations/hrislistcompaniesresponse.md
-  - docs/sdk/models/operations/hrislistemployeedocumentsqueryparamproxy.md
   - docs/sdk/models/operations/hrislistemployeedocumentsrequest.md
   - docs/sdk/models/operations/hrislistemployeedocumentsresponse.md
-  - docs/sdk/models/operations/hrislistemployeetimeoffrequestsqueryparamproxy.md
   - docs/sdk/models/operations/hrislistemployeetimeoffrequestsrequest.md
   - docs/sdk/models/operations/hrislistemployeetimeoffrequestsresponse.md
-  - docs/sdk/models/operations/hrislistemployeesqueryparamproxy.md
   - docs/sdk/models/operations/hrislistemployeesrequest.md
   - docs/sdk/models/operations/hrislistemployeesresponse.md
-  - docs/sdk/models/operations/hrislistemploymentsqueryparamproxy.md
   - docs/sdk/models/operations/hrislistemploymentsrequest.md
   - docs/sdk/models/operations/hrislistemploymentsresponse.md
-  - docs/sdk/models/operations/hrislistlocationsqueryparamproxy.md
   - docs/sdk/models/operations/hrislistlocationsrequest.md
   - docs/sdk/models/operations/hrislistlocationsresponse.md
-  - docs/sdk/models/operations/hrislisttimeoffrequestsqueryparamproxy.md
   - docs/sdk/models/operations/hrislisttimeoffrequestsrequest.md
   - docs/sdk/models/operations/hrislisttimeoffrequestsresponse.md
   - docs/sdk/models/operations/hrisupdateemployeerequest.md
@@ -463,28 +419,20 @@ generatedFiles:
   - docs/sdk/models/operations/marketingcreateomnichanneltemplateresponse.md
   - docs/sdk/models/operations/marketingcreatepushtemplaterequest.md
   - docs/sdk/models/operations/marketingcreatepushtemplateresponse.md
-  - docs/sdk/models/operations/marketinggetcampaignqueryparamproxy.md
   - docs/sdk/models/operations/marketinggetcampaignrequest.md
   - docs/sdk/models/operations/marketinggetcampaignresponse.md
-  - docs/sdk/models/operations/marketinggetemailtemplatequeryparamproxy.md
   - docs/sdk/models/operations/marketinggetemailtemplaterequest.md
   - docs/sdk/models/operations/marketinggetemailtemplateresponse.md
-  - docs/sdk/models/operations/marketinggetomnichanneltemplatequeryparamproxy.md
   - docs/sdk/models/operations/marketinggetomnichanneltemplaterequest.md
   - docs/sdk/models/operations/marketinggetomnichanneltemplateresponse.md
-  - docs/sdk/models/operations/marketinggetpushtemplatequeryparamproxy.md
   - docs/sdk/models/operations/marketinggetpushtemplaterequest.md
   - docs/sdk/models/operations/marketinggetpushtemplateresponse.md
-  - docs/sdk/models/operations/marketinglistcampaignsqueryparamproxy.md
   - docs/sdk/models/operations/marketinglistcampaignsrequest.md
   - docs/sdk/models/operations/marketinglistcampaignsresponse.md
-  - docs/sdk/models/operations/marketinglistemailtemplatesqueryparamproxy.md
   - docs/sdk/models/operations/marketinglistemailtemplatesrequest.md
   - docs/sdk/models/operations/marketinglistemailtemplatesresponse.md
-  - docs/sdk/models/operations/marketinglistomnichanneltemplatesqueryparamproxy.md
   - docs/sdk/models/operations/marketinglistomnichanneltemplatesrequest.md
   - docs/sdk/models/operations/marketinglistomnichanneltemplatesresponse.md
-  - docs/sdk/models/operations/marketinglistpushtemplatesqueryparamproxy.md
   - docs/sdk/models/operations/marketinglistpushtemplatesrequest.md
   - docs/sdk/models/operations/marketinglistpushtemplatesresponse.md
   - docs/sdk/models/operations/marketingupdateemailtemplaterequest.md
@@ -499,7 +447,6 @@ generatedFiles:
   - docs/sdk/models/shared/setupinformation.md
   - docs/sdk/models/shared/linkedaccount.md
   - docs/sdk/models/shared/linkedaccountmetacategory.md
-  - docs/sdk/models/shared/linkedaccountmetamodels.md
   - docs/sdk/models/shared/linkedaccountmeta.md
   - docs/sdk/models/shared/patchaccountdto.md
   - docs/sdk/models/shared/categories.md
@@ -511,7 +458,7 @@ generatedFiles:
   - docs/sdk/models/shared/metadata.md
   - docs/sdk/models/shared/connectsessioncreate.md
   - docs/sdk/models/shared/category.md
-  - docs/sdk/models/shared/models.md
+  - docs/sdk/models/shared/images.md
   - docs/sdk/models/shared/resources.md
   - docs/sdk/models/shared/connectorsmeta.md
   - docs/sdk/models/shared/createresult.md
@@ -738,6 +685,10 @@ generatedFiles:
   - docs/sdk/models/shared/messagetype.md
   - docs/sdk/models/shared/emailmessages.md
   - docs/sdk/models/shared/marketingcreatetemplaterequestdto.md
+  - docs/sdk/models/shared/pushmessagecontentsschemas.md
+  - docs/sdk/models/shared/schemas.md
+  - docs/sdk/models/shared/smsmessagecontentsschemas.md
+  - docs/sdk/models/shared/messagemessagecontent.md
   - docs/sdk/models/shared/messagemessagetype.md
   - docs/sdk/models/shared/message.md
   - docs/sdk/models/shared/marketingcreatepushtemplaterequestdto.md

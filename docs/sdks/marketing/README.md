@@ -34,7 +34,7 @@ async function run() {
     },
   });
 
-  const res = await sdk.marketing.createEmailTemplate({
+  const result = await sdk.marketing.createEmailTemplate({
     marketingCreateEmailTemplateRequestDto: {
       messages: [
         {
@@ -56,11 +56,8 @@ async function run() {
     xAccountId: "string",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -100,12 +97,11 @@ async function run() {
     },
   });
 
-  const res = await sdk.marketing.createOmniChannelTemplate({
+  const result = await sdk.marketing.createOmniChannelTemplate({
     marketingCreateTemplateRequestDto: {
       messages: [
         {
           id: "<ID>",
-          messageContent: "string",
           messageType: MessageMessageType.Unknown,
           name: "string",
         },
@@ -117,11 +113,8 @@ async function run() {
     xAccountId: "string",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -161,7 +154,7 @@ async function run() {
     },
   });
 
-  const res = await sdk.marketing.createPushTemplate({
+  const result = await sdk.marketing.createPushTemplate({
     marketingCreatePushTemplateRequestDto: {
       messages: [
         {
@@ -181,11 +174,8 @@ async function run() {
     xAccountId: "string",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -225,17 +215,16 @@ async function run() {
     },
   });
 
-  const res = await sdk.marketing.getCampaign({
+  const result = await sdk.marketing.getCampaign({
     id: "<ID>",
-    proxy: {},
+    proxy: {
+      "key": "string",
+    },
     xAccountId: "string",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -275,17 +264,16 @@ async function run() {
     },
   });
 
-  const res = await sdk.marketing.getEmailTemplate({
+  const result = await sdk.marketing.getEmailTemplate({
     id: "<ID>",
-    proxy: {},
+    proxy: {
+      "key": "string",
+    },
     xAccountId: "string",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -325,17 +313,16 @@ async function run() {
     },
   });
 
-  const res = await sdk.marketing.getOmniChannelTemplate({
+  const result = await sdk.marketing.getOmniChannelTemplate({
     id: "<ID>",
-    proxy: {},
+    proxy: {
+      "key": "string",
+    },
     xAccountId: "string",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -375,17 +362,16 @@ async function run() {
     },
   });
 
-  const res = await sdk.marketing.getPushTemplate({
+  const result = await sdk.marketing.getPushTemplate({
     id: "<ID>",
-    proxy: {},
+    proxy: {
+      "key": "string",
+    },
     xAccountId: "string",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -425,16 +411,15 @@ async function run() {
     },
   });
 
-  const res = await sdk.marketing.listCampaigns({
-    proxy: {},
+  const result = await sdk.marketing.listCampaigns({
+    proxy: {
+      "key": "string",
+    },
     xAccountId: "string",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -474,16 +459,15 @@ async function run() {
     },
   });
 
-  const res = await sdk.marketing.listEmailTemplates({
-    proxy: {},
+  const result = await sdk.marketing.listEmailTemplates({
+    proxy: {
+      "key": "string",
+    },
     xAccountId: "string",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -523,16 +507,15 @@ async function run() {
     },
   });
 
-  const res = await sdk.marketing.listOmniChannelTemplates({
-    proxy: {},
+  const result = await sdk.marketing.listOmniChannelTemplates({
+    proxy: {
+      "key": "string",
+    },
     xAccountId: "string",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -572,16 +555,15 @@ async function run() {
     },
   });
 
-  const res = await sdk.marketing.listPushTemplates({
-    proxy: {},
+  const result = await sdk.marketing.listPushTemplates({
+    proxy: {
+      "key": "string",
+    },
     xAccountId: "string",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -621,7 +603,7 @@ async function run() {
     },
   });
 
-  const res = await sdk.marketing.updateEmailTemplate({
+  const result = await sdk.marketing.updateEmailTemplate({
     marketingCreateEmailTemplateRequestDto: {
       messages: [
         {
@@ -644,11 +626,8 @@ async function run() {
     xAccountId: "string",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -688,12 +667,11 @@ async function run() {
     },
   });
 
-  const res = await sdk.marketing.updateOmniChannelTemplate({
+  const result = await sdk.marketing.updateOmniChannelTemplate({
     marketingCreateTemplateRequestDto: {
       messages: [
         {
           id: "<ID>",
-          messageContent: "string",
           messageType: MessageMessageType.Email,
           name: "string",
         },
@@ -706,11 +684,8 @@ async function run() {
     xAccountId: "string",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -750,7 +725,7 @@ async function run() {
     },
   });
 
-  const res = await sdk.marketing.updatePushTemplate({
+  const result = await sdk.marketing.updatePushTemplate({
     marketingCreatePushTemplateRequestDto: {
       messages: [
         {
@@ -771,11 +746,8 @@ async function run() {
     xAccountId: "string",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
