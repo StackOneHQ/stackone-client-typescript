@@ -87,9 +87,9 @@ export namespace ProxyRequestBody$ {
         .object({
             body: z.nullable(z.lazy(() => Body$.inboundSchema)).optional(),
             headers: z.nullable(z.lazy(() => Headers$.inboundSchema)).optional(),
-            method: z.nullable(Method$).optional(),
-            path: z.nullable(z.string()).optional(),
-            url: z.nullable(z.string()).optional(),
+            method: z.nullable(Method$.default(Method.Get)),
+            path: z.nullable(z.string().default("")),
+            url: z.nullable(z.string().default("")),
         })
         .transform((v) => {
             return {
@@ -104,26 +104,26 @@ export namespace ProxyRequestBody$ {
     export type Outbound = {
         body?: Body$.Outbound | null | undefined;
         headers?: Headers$.Outbound | null | undefined;
-        method?: Method | null | undefined;
-        path?: string | null | undefined;
-        url?: string | null | undefined;
+        method: Method | null;
+        path: string | null;
+        url: string | null;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ProxyRequestBody> = z
         .object({
             body: z.nullable(z.lazy(() => Body$.outboundSchema)).optional(),
             headers: z.nullable(z.lazy(() => Headers$.outboundSchema)).optional(),
-            method: z.nullable(Method$).optional(),
-            path: z.nullable(z.string()).optional(),
-            url: z.nullable(z.string()).optional(),
+            method: z.nullable(Method$.default(Method.Get)),
+            path: z.nullable(z.string().default("")),
+            url: z.nullable(z.string().default("")),
         })
         .transform((v) => {
             return {
                 ...(v.body === undefined ? null : { body: v.body }),
                 ...(v.headers === undefined ? null : { headers: v.headers }),
-                ...(v.method === undefined ? null : { method: v.method }),
-                ...(v.path === undefined ? null : { path: v.path }),
-                ...(v.url === undefined ? null : { url: v.url }),
+                method: v.method,
+                path: v.path,
+                url: v.url,
             };
         });
 }

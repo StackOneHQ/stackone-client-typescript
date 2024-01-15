@@ -56,7 +56,7 @@ export namespace AtsUpdateApplicationRequestDto$ {
             attachments: z.nullable(z.array(ApplicationAttachment$.inboundSchema)).optional(),
             candidate: ApplicationCandidate$.inboundSchema.optional(),
             candidate_id: z.nullable(z.string()).optional(),
-            id: z.nullable(z.string()).optional(),
+            id: z.nullable(z.string().default("")),
             job_id: z.nullable(z.string()).optional(),
             location_ids: z.nullable(z.array(z.string())).optional(),
             questionnaires: z.nullable(z.array(Questionnaire$.inboundSchema)).optional(),
@@ -81,7 +81,7 @@ export namespace AtsUpdateApplicationRequestDto$ {
         attachments?: Array<ApplicationAttachment$.Outbound> | null | undefined;
         candidate?: ApplicationCandidate$.Outbound | undefined;
         candidate_id?: string | null | undefined;
-        id?: string | null | undefined;
+        id: string | null;
         job_id?: string | null | undefined;
         location_ids?: Array<string> | null | undefined;
         questionnaires?: Array<Questionnaire$.Outbound> | null | undefined;
@@ -94,7 +94,7 @@ export namespace AtsUpdateApplicationRequestDto$ {
                 attachments: z.nullable(z.array(ApplicationAttachment$.outboundSchema)).optional(),
                 candidate: ApplicationCandidate$.outboundSchema.optional(),
                 candidateId: z.nullable(z.string()).optional(),
-                id: z.nullable(z.string()).optional(),
+                id: z.nullable(z.string().default("")),
                 jobId: z.nullable(z.string()).optional(),
                 locationIds: z.nullable(z.array(z.string())).optional(),
                 questionnaires: z.nullable(z.array(Questionnaire$.outboundSchema)).optional(),
@@ -107,7 +107,7 @@ export namespace AtsUpdateApplicationRequestDto$ {
                     ...(v.attachments === undefined ? null : { attachments: v.attachments }),
                     ...(v.candidate === undefined ? null : { candidate: v.candidate }),
                     ...(v.candidateId === undefined ? null : { candidate_id: v.candidateId }),
-                    ...(v.id === undefined ? null : { id: v.id }),
+                    id: v.id,
                     ...(v.jobId === undefined ? null : { job_id: v.jobId }),
                     ...(v.locationIds === undefined ? null : { location_ids: v.locationIds }),
                     ...(v.questionnaires === undefined

@@ -10,7 +10,7 @@ export type DocumentApiModel = {
     /**
      * The content of the document
      */
-    content: Array<Content>;
+    contents: Array<Content>;
     /**
      * The creation date of the document
      */
@@ -40,7 +40,7 @@ export type DocumentApiModel = {
 /** @internal */
 export namespace DocumentApiModel$ {
     export type Inbound = {
-        content: Array<Content$.Inbound>;
+        contents: Array<Content$.Inbound>;
         created_at?: string | undefined;
         id?: string | undefined;
         name?: string | undefined;
@@ -51,7 +51,7 @@ export namespace DocumentApiModel$ {
 
     export const inboundSchema: z.ZodType<DocumentApiModel, z.ZodTypeDef, Inbound> = z
         .object({
-            content: z.array(Content$.inboundSchema),
+            contents: z.array(Content$.inboundSchema),
             created_at: z
                 .string()
                 .datetime({ offset: true })
@@ -69,7 +69,7 @@ export namespace DocumentApiModel$ {
         })
         .transform((v) => {
             return {
-                content: v.content,
+                contents: v.contents,
                 ...(v.created_at === undefined ? null : { createdAt: v.created_at }),
                 ...(v.id === undefined ? null : { id: v.id }),
                 ...(v.name === undefined ? null : { name: v.name }),
@@ -80,7 +80,7 @@ export namespace DocumentApiModel$ {
         });
 
     export type Outbound = {
-        content: Array<Content$.Outbound>;
+        contents: Array<Content$.Outbound>;
         created_at?: string | undefined;
         id?: string | undefined;
         name?: string | undefined;
@@ -91,7 +91,7 @@ export namespace DocumentApiModel$ {
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, DocumentApiModel> = z
         .object({
-            content: z.array(Content$.outboundSchema),
+            contents: z.array(Content$.outboundSchema),
             createdAt: z
                 .date()
                 .transform((v) => v.toISOString())
@@ -107,7 +107,7 @@ export namespace DocumentApiModel$ {
         })
         .transform((v) => {
             return {
-                content: v.content,
+                contents: v.contents,
                 ...(v.createdAt === undefined ? null : { created_at: v.createdAt }),
                 ...(v.id === undefined ? null : { id: v.id }),
                 ...(v.name === undefined ? null : { name: v.name }),

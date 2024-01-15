@@ -22,15 +22,12 @@ async function run() {
     },
   });
 
-  const res = await sdk.connectSessions.authenticateConnectSession({
+  const result = await sdk.connectSessions.authenticateConnectSession({
     token: "string",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -71,7 +68,7 @@ async function run() {
     },
   });
 
-  const res = await sdk.connectSessions.createConnectSession({
+  const result = await sdk.connectSessions.createConnectSession({
     categories: [
       ConnectSessionCreateCategories.Ats,
       ConnectSessionCreateCategories.Hris,
@@ -85,11 +82,8 @@ async function run() {
     originOwnerName: "string",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();

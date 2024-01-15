@@ -64,7 +64,7 @@ export namespace AtsUpdateCandidatesRequestDto$ {
             company: z.nullable(z.string()).optional(),
             emails: z.array(CandidateEmail$.inboundSchema).optional(),
             first_name: z.string().optional(),
-            id: z.nullable(z.string()).optional(),
+            id: z.nullable(z.string().default("")),
             last_name: z.string().optional(),
             name: z.string().optional(),
             phone: z.nullable(z.string()).optional(),
@@ -89,7 +89,7 @@ export namespace AtsUpdateCandidatesRequestDto$ {
         company?: string | null | undefined;
         emails?: Array<CandidateEmail$.Outbound> | undefined;
         first_name?: string | undefined;
-        id?: string | null | undefined;
+        id: string | null;
         last_name?: string | undefined;
         name?: string | undefined;
         phone?: string | null | undefined;
@@ -103,7 +103,7 @@ export namespace AtsUpdateCandidatesRequestDto$ {
                 company: z.nullable(z.string()).optional(),
                 emails: z.array(CandidateEmail$.outboundSchema).optional(),
                 firstName: z.string().optional(),
-                id: z.nullable(z.string()).optional(),
+                id: z.nullable(z.string().default("")),
                 lastName: z.string().optional(),
                 name: z.string().optional(),
                 phone: z.nullable(z.string()).optional(),
@@ -117,7 +117,7 @@ export namespace AtsUpdateCandidatesRequestDto$ {
                     ...(v.company === undefined ? null : { company: v.company }),
                     ...(v.emails === undefined ? null : { emails: v.emails }),
                     ...(v.firstName === undefined ? null : { first_name: v.firstName }),
-                    ...(v.id === undefined ? null : { id: v.id }),
+                    id: v.id,
                     ...(v.lastName === undefined ? null : { last_name: v.lastName }),
                     ...(v.name === undefined ? null : { name: v.name }),
                     ...(v.phone === undefined ? null : { phone: v.phone }),

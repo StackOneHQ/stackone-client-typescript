@@ -28,7 +28,7 @@ async function run() {
     },
   });
 
-  const res = await sdk.crm.createContact({
+  const result = await sdk.crm.createContact({
     crmCreateContactRequestDto: {
       accountIds: [
         "account-123",
@@ -51,11 +51,8 @@ async function run() {
     xAccountId: "string",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -95,17 +92,16 @@ async function run() {
     },
   });
 
-  const res = await sdk.crm.getAccount({
+  const result = await sdk.crm.getAccount({
     id: "<ID>",
-    proxy: {},
+    proxy: {
+      "key": "string",
+    },
     xAccountId: "string",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -145,17 +141,16 @@ async function run() {
     },
   });
 
-  const res = await sdk.crm.getContact({
+  const result = await sdk.crm.getContact({
     id: "<ID>",
-    proxy: {},
+    proxy: {
+      "key": "string",
+    },
     xAccountId: "string",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -195,17 +190,16 @@ async function run() {
     },
   });
 
-  const res = await sdk.crm.getList({
+  const result = await sdk.crm.getList({
     id: "<ID>",
-    proxy: {},
+    proxy: {
+      "key": "string",
+    },
     xAccountId: "string",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -245,16 +239,15 @@ async function run() {
     },
   });
 
-  const res = await sdk.crm.listAccounts({
-    proxy: {},
+  const result = await sdk.crm.listAccounts({
+    proxy: {
+      "key": "string",
+    },
     xAccountId: "string",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -294,16 +287,15 @@ async function run() {
     },
   });
 
-  const res = await sdk.crm.listContacts({
-    proxy: {},
+  const result = await sdk.crm.listContacts({
+    proxy: {
+      "key": "string",
+    },
     xAccountId: "string",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -343,16 +335,15 @@ async function run() {
     },
   });
 
-  const res = await sdk.crm.listLists({
-    proxy: {},
+  const result = await sdk.crm.listLists({
+    proxy: {
+      "key": "string",
+    },
     xAccountId: "string",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -392,7 +383,7 @@ async function run() {
     },
   });
 
-  const res = await sdk.crm.updateContact({
+  const result = await sdk.crm.updateContact({
     crmCreateContactRequestDto: {
       accountIds: [
         "account-123",
@@ -416,11 +407,8 @@ async function run() {
     xAccountId: "string",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();

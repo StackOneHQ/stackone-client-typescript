@@ -55,7 +55,7 @@ async function run() {
     },
   });
 
-  const res = await sdk.ats.createApplication({
+  const result = await sdk.ats.createApplication({
     atsCreateApplicationRequestDto: {
       applicationStatus: {
         sourceValue: "Hired",
@@ -113,11 +113,8 @@ async function run() {
     xAccountId: "string",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -157,7 +154,7 @@ async function run() {
     },
   });
 
-  const res = await sdk.ats.createCandidate({
+  const result = await sdk.ats.createCandidate({
     atsCreateCandidateRequestDto: {
       applicationIds: [
         "123e4567-e89b-12d3-a456-426614174000",
@@ -179,11 +176,8 @@ async function run() {
     xAccountId: "string",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -224,7 +218,7 @@ async function run() {
     },
   });
 
-  const res = await sdk.ats.createCandidateNote({
+  const result = await sdk.ats.createCandidateNote({
     atsCreateNotesRequestDto: {
       authorId: "1234567890",
       content: [
@@ -241,11 +235,8 @@ async function run() {
     xAccountId: "string",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -286,7 +277,7 @@ async function run() {
     },
   });
 
-  const res = await sdk.ats.createOffer({
+  const result = await sdk.ats.createOffer({
     atsCreateOfferRequestDto: {
       applicationId: "string",
       offerHistory: [
@@ -305,11 +296,8 @@ async function run() {
     xAccountId: "string",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -349,17 +337,16 @@ async function run() {
     },
   });
 
-  const res = await sdk.ats.getApplication({
+  const result = await sdk.ats.getApplication({
     id: "<ID>",
-    proxy: {},
+    proxy: {
+      "key": "string",
+    },
     xAccountId: "string",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -399,18 +386,17 @@ async function run() {
     },
   });
 
-  const res = await sdk.ats.getApplicationOffer({
+  const result = await sdk.ats.getApplicationOffer({
     id: "<ID>",
-    proxy: {},
+    proxy: {
+      "key": "string",
+    },
     subResourceId: "string",
     xAccountId: "string",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -450,18 +436,17 @@ async function run() {
     },
   });
 
-  const res = await sdk.ats.getApplicationScorecard({
+  const result = await sdk.ats.getApplicationScorecard({
     id: "<ID>",
-    proxy: {},
+    proxy: {
+      "key": "string",
+    },
     subResourceId: "string",
     xAccountId: "string",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -501,17 +486,16 @@ async function run() {
     },
   });
 
-  const res = await sdk.ats.getCandidate({
+  const result = await sdk.ats.getCandidate({
     id: "<ID>",
-    proxy: {},
+    proxy: {
+      "key": "string",
+    },
     xAccountId: "string",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -551,18 +535,17 @@ async function run() {
     },
   });
 
-  const res = await sdk.ats.getCandidateNote({
+  const result = await sdk.ats.getCandidateNote({
     id: "<ID>",
-    proxy: {},
+    proxy: {
+      "key": "string",
+    },
     subResourceId: "string",
     xAccountId: "string",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -602,17 +585,16 @@ async function run() {
     },
   });
 
-  const res = await sdk.ats.getDepartment({
+  const result = await sdk.ats.getDepartment({
     id: "<ID>",
-    proxy: {},
+    proxy: {
+      "key": "string",
+    },
     xAccountId: "string",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -652,17 +634,16 @@ async function run() {
     },
   });
 
-  const res = await sdk.ats.getInterview({
+  const result = await sdk.ats.getInterview({
     id: "<ID>",
-    proxy: {},
+    proxy: {
+      "key": "string",
+    },
     xAccountId: "string",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -702,17 +683,16 @@ async function run() {
     },
   });
 
-  const res = await sdk.ats.getInterviewStage({
+  const result = await sdk.ats.getInterviewStage({
     id: "<ID>",
-    proxy: {},
+    proxy: {
+      "key": "string",
+    },
     xAccountId: "string",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -752,17 +732,16 @@ async function run() {
     },
   });
 
-  const res = await sdk.ats.getJob({
+  const result = await sdk.ats.getJob({
     id: "<ID>",
-    proxy: {},
+    proxy: {
+      "key": "string",
+    },
     xAccountId: "string",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -802,17 +781,16 @@ async function run() {
     },
   });
 
-  const res = await sdk.ats.getJobPosting({
+  const result = await sdk.ats.getJobPosting({
     id: "<ID>",
-    proxy: {},
+    proxy: {
+      "key": "string",
+    },
     xAccountId: "string",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -852,17 +830,16 @@ async function run() {
     },
   });
 
-  const res = await sdk.ats.getLocation({
+  const result = await sdk.ats.getLocation({
     id: "<ID>",
-    proxy: {},
+    proxy: {
+      "key": "string",
+    },
     xAccountId: "string",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -902,17 +879,16 @@ async function run() {
     },
   });
 
-  const res = await sdk.ats.getOffer({
+  const result = await sdk.ats.getOffer({
     id: "<ID>",
-    proxy: {},
+    proxy: {
+      "key": "string",
+    },
     xAccountId: "string",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -952,17 +928,16 @@ async function run() {
     },
   });
 
-  const res = await sdk.ats.getRejectedReason({
+  const result = await sdk.ats.getRejectedReason({
     id: "<ID>",
-    proxy: {},
+    proxy: {
+      "key": "string",
+    },
     xAccountId: "string",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -1002,17 +977,16 @@ async function run() {
     },
   });
 
-  const res = await sdk.ats.getUser({
+  const result = await sdk.ats.getUser({
     id: "<ID>",
-    proxy: {},
+    proxy: {
+      "key": "string",
+    },
     xAccountId: "string",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -1052,17 +1026,16 @@ async function run() {
     },
   });
 
-  const res = await sdk.ats.listApplicationScorecards({
+  const result = await sdk.ats.listApplicationScorecards({
     id: "<ID>",
-    proxy: {},
+    proxy: {
+      "key": "string",
+    },
     xAccountId: "string",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -1102,16 +1075,15 @@ async function run() {
     },
   });
 
-  const res = await sdk.ats.listApplications({
-    proxy: {},
+  const result = await sdk.ats.listApplications({
+    proxy: {
+      "key": "string",
+    },
     xAccountId: "string",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -1151,17 +1123,16 @@ async function run() {
     },
   });
 
-  const res = await sdk.ats.listApplicationsOffers({
+  const result = await sdk.ats.listApplicationsOffers({
     id: "<ID>",
-    proxy: {},
+    proxy: {
+      "key": "string",
+    },
     xAccountId: "string",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -1201,17 +1172,16 @@ async function run() {
     },
   });
 
-  const res = await sdk.ats.listCandidateNotes({
+  const result = await sdk.ats.listCandidateNotes({
     id: "<ID>",
-    proxy: {},
+    proxy: {
+      "key": "string",
+    },
     xAccountId: "string",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -1251,16 +1221,15 @@ async function run() {
     },
   });
 
-  const res = await sdk.ats.listCandidates({
-    proxy: {},
+  const result = await sdk.ats.listCandidates({
+    proxy: {
+      "key": "string",
+    },
     xAccountId: "string",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -1300,16 +1269,15 @@ async function run() {
     },
   });
 
-  const res = await sdk.ats.listDepartments({
-    proxy: {},
+  const result = await sdk.ats.listDepartments({
+    proxy: {
+      "key": "string",
+    },
     xAccountId: "string",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -1349,16 +1317,15 @@ async function run() {
     },
   });
 
-  const res = await sdk.ats.listInterviewStages({
-    proxy: {},
+  const result = await sdk.ats.listInterviewStages({
+    proxy: {
+      "key": "string",
+    },
     xAccountId: "string",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -1398,16 +1365,15 @@ async function run() {
     },
   });
 
-  const res = await sdk.ats.listInterviews({
-    proxy: {},
+  const result = await sdk.ats.listInterviews({
+    proxy: {
+      "key": "string",
+    },
     xAccountId: "string",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -1447,16 +1413,15 @@ async function run() {
     },
   });
 
-  const res = await sdk.ats.listJobPostings({
-    proxy: {},
+  const result = await sdk.ats.listJobPostings({
+    proxy: {
+      "key": "string",
+    },
     xAccountId: "string",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -1496,16 +1461,15 @@ async function run() {
     },
   });
 
-  const res = await sdk.ats.listJobs({
-    proxy: {},
+  const result = await sdk.ats.listJobs({
+    proxy: {
+      "key": "string",
+    },
     xAccountId: "string",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -1545,16 +1509,15 @@ async function run() {
     },
   });
 
-  const res = await sdk.ats.listLocations({
-    proxy: {},
+  const result = await sdk.ats.listLocations({
+    proxy: {
+      "key": "string",
+    },
     xAccountId: "string",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -1594,16 +1557,15 @@ async function run() {
     },
   });
 
-  const res = await sdk.ats.listOffers({
-    proxy: {},
+  const result = await sdk.ats.listOffers({
+    proxy: {
+      "key": "string",
+    },
     xAccountId: "string",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -1643,16 +1605,15 @@ async function run() {
     },
   });
 
-  const res = await sdk.ats.listRejectedReasons({
-    proxy: {},
+  const result = await sdk.ats.listRejectedReasons({
+    proxy: {
+      "key": "string",
+    },
     xAccountId: "string",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -1692,16 +1653,15 @@ async function run() {
     },
   });
 
-  const res = await sdk.ats.listUsers({
-    proxy: {},
+  const result = await sdk.ats.listUsers({
+    proxy: {
+      "key": "string",
+    },
     xAccountId: "string",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -1742,7 +1702,7 @@ async function run() {
     },
   });
 
-  const res = await sdk.ats.updateApplication({
+  const result = await sdk.ats.updateApplication({
     atsUpdateApplicationRequestDto: {
       applicationStatus: {
         sourceValue: "Hired",
@@ -1802,11 +1762,8 @@ async function run() {
     xAccountId: "string",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -1846,7 +1803,7 @@ async function run() {
     },
   });
 
-  const res = await sdk.ats.updateCandidate({
+  const result = await sdk.ats.updateCandidate({
     atsUpdateCandidatesRequestDto: {
       applicationIds: [
         "123e4567-e89b-12d3-a456-426614174000",
@@ -1870,11 +1827,8 @@ async function run() {
     xAccountId: "string",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();

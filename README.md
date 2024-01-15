@@ -37,16 +37,14 @@ async function run() {
         },
     });
 
-    const res = await sdk.hris.listEmployees({
-        proxy: {},
+    const result = await sdk.hris.listEmployees({
+        proxy: {
+            key: "string",
+        },
         xAccountId: "string",
     });
 
-    if (res?.statusCode !== 200) {
-        throw new Error("Unexpected status code: " + res?.statusCode || "-");
-    }
-
-    for await (const page of res) {
+    for await (const page of result) {
         // handle page
     }
 }
@@ -172,11 +170,15 @@ run();
 <!-- Start Pagination [pagination] -->
 ## Pagination
 
-Some of the endpoints in this SDK support pagination. To use pagination, you make your SDK calls as usual, but the
-returned response object will have a `next` method that can be called to pull down the next group of results. If the
-return value of `next` is `null`, then there are no more pages to be fetched.
+Some of the endpoints in this SDK support pagination. To use pagination, you
+make your SDK calls as usual, but the returned response object will also be an
+async iterable that can be consumed using the [`for await...of`][for-await-of]
+syntax.
+
+[for-await-of]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for-await...of
 
 Here's an example of one such pagination call:
+
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -187,16 +189,14 @@ async function run() {
         },
     });
 
-    const res = await sdk.hris.listEmployees({
-        proxy: {},
+    const result = await sdk.hris.listEmployees({
+        proxy: {
+            key: "string",
+        },
         xAccountId: "string",
     });
 
-    if (res?.statusCode !== 200) {
-        throw new Error("Unexpected status code: " + res?.statusCode || "-");
-    }
-
-    for await (const page of res) {
+    for await (const page of result) {
         // handle page
     }
 }
@@ -219,7 +219,6 @@ Example
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
-import * as errors from "@stackone/stackone-client-ts/sdk/models/errors";
 
 async function run() {
     const sdk = new StackOne({
@@ -228,19 +227,18 @@ async function run() {
         },
     });
 
-    const res = await sdk.accounts
-        .deleteAccount({
+    let result;
+    try {
+        result = await sdk.accounts.deleteAccount({
             id: "<ID>",
-        })
-        .catch((err) => {
-            throw err;
         });
-
-    if (res?.statusCode !== 200) {
-        throw new Error("Unexpected status code: " + res?.statusCode || "-");
+    } catch (err) {
+        // Handle errors here
+        throw err;
     }
 
-    // handle response
+    // Handle the result
+    console.log(result);
 }
 
 run();
@@ -326,21 +324,24 @@ async function run() {
         },
     });
 
-    const res = await sdk.accounts.deleteAccount({
+    const result = await sdk.accounts.deleteAccount({
         id: "<ID>",
     });
 
-    if (res?.statusCode !== 200) {
-        throw new Error("Unexpected status code: " + res?.statusCode || "-");
-    }
-
-    // handle response
+    // Handle the result
+    console.log(result);
 }
 
 run();
 
 ```
 <!-- End Authentication [security] -->
+
+<!-- Start Requirements [requirements] -->
+## Requirements
+
+For supported JavaScript runtimes, please consult [RUNTIMES.md](RUNTIMES.md).
+<!-- End Requirements [requirements] -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 

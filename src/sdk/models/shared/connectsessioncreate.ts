@@ -40,6 +40,10 @@ export type ConnectSessionCreate = {
      */
     metadata?: Metadata | null | undefined;
     /**
+     * If set, this connect session will allow creation of multiple accounts with the same origin owner id and provider. Has no effect if account_id is set.
+     */
+    multiple?: boolean | null | undefined;
+    /**
      * The origin owner identifier
      */
     originOwnerId: string;
@@ -79,6 +83,7 @@ export namespace ConnectSessionCreate$ {
         expires_in?: number | null | undefined;
         label?: string | null | undefined;
         metadata?: Metadata$.Inbound | null | undefined;
+        multiple?: boolean | null | undefined;
         origin_owner_id: string;
         origin_owner_name: string;
         origin_username?: string | null | undefined;
@@ -89,9 +94,10 @@ export namespace ConnectSessionCreate$ {
         .object({
             account_id: z.nullable(z.string()).optional(),
             categories: z.nullable(z.array(ConnectSessionCreateCategories$)).optional(),
-            expires_in: z.nullable(z.number()).optional(),
+            expires_in: z.nullable(z.number().default(1800)),
             label: z.nullable(z.string()).optional(),
             metadata: z.nullable(z.lazy(() => Metadata$.inboundSchema)).optional(),
+            multiple: z.nullable(z.boolean().default(false)),
             origin_owner_id: z.string(),
             origin_owner_name: z.string(),
             origin_username: z.nullable(z.string()).optional(),
@@ -104,6 +110,7 @@ export namespace ConnectSessionCreate$ {
                 ...(v.expires_in === undefined ? null : { expiresIn: v.expires_in }),
                 ...(v.label === undefined ? null : { label: v.label }),
                 ...(v.metadata === undefined ? null : { metadata: v.metadata }),
+                ...(v.multiple === undefined ? null : { multiple: v.multiple }),
                 originOwnerId: v.origin_owner_id,
                 originOwnerName: v.origin_owner_name,
                 ...(v.origin_username === undefined ? null : { originUsername: v.origin_username }),
@@ -114,9 +121,10 @@ export namespace ConnectSessionCreate$ {
     export type Outbound = {
         account_id?: string | null | undefined;
         categories?: Array<ConnectSessionCreateCategories> | null | undefined;
-        expires_in?: number | null | undefined;
+        expires_in: number | null;
         label?: string | null | undefined;
         metadata?: Metadata$.Outbound | null | undefined;
+        multiple: boolean | null;
         origin_owner_id: string;
         origin_owner_name: string;
         origin_username?: string | null | undefined;
@@ -127,9 +135,10 @@ export namespace ConnectSessionCreate$ {
         .object({
             accountId: z.nullable(z.string()).optional(),
             categories: z.nullable(z.array(ConnectSessionCreateCategories$)).optional(),
-            expiresIn: z.nullable(z.number()).optional(),
+            expiresIn: z.nullable(z.number().default(1800)),
             label: z.nullable(z.string()).optional(),
             metadata: z.nullable(z.lazy(() => Metadata$.outboundSchema)).optional(),
+            multiple: z.nullable(z.boolean().default(false)),
             originOwnerId: z.string(),
             originOwnerName: z.string(),
             originUsername: z.nullable(z.string()).optional(),
@@ -139,9 +148,10 @@ export namespace ConnectSessionCreate$ {
             return {
                 ...(v.accountId === undefined ? null : { account_id: v.accountId }),
                 ...(v.categories === undefined ? null : { categories: v.categories }),
-                ...(v.expiresIn === undefined ? null : { expires_in: v.expiresIn }),
+                expires_in: v.expiresIn,
                 ...(v.label === undefined ? null : { label: v.label }),
                 ...(v.metadata === undefined ? null : { metadata: v.metadata }),
+                multiple: v.multiple,
                 origin_owner_id: v.originOwnerId,
                 origin_owner_name: v.originOwnerName,
                 ...(v.originUsername === undefined ? null : { origin_username: v.originUsername }),

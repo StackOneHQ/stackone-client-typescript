@@ -25,15 +25,12 @@ async function run() {
     },
   });
 
-  const res = await sdk.accounts.deleteAccount({
+  const result = await sdk.accounts.deleteAccount({
     id: "<ID>",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -73,15 +70,12 @@ async function run() {
     },
   });
 
-  const res = await sdk.accounts.getAccount({
+  const result = await sdk.accounts.getAccount({
     id: "<ID>",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -121,15 +115,12 @@ async function run() {
     },
   });
 
-  const res = await sdk.accounts.getAccountMetaInfo({
+  const result = await sdk.accounts.getAccountMetaInfo({
     id: "<ID>",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -169,13 +160,10 @@ async function run() {
     },
   });
 
-  const res = await sdk.accounts.listLinkedAccounts({});
+  const result = await sdk.accounts.listLinkedAccounts({});
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();
@@ -215,16 +203,13 @@ async function run() {
     },
   });
 
-  const res = await sdk.accounts.updateAccount({
+  const result = await sdk.accounts.updateAccount({
     patchAccountDto: {},
     id: "<ID>",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();

@@ -22,7 +22,7 @@ async function run() {
     },
   });
 
-  const res = await sdk.proxy.proxyRequest({
+  const result = await sdk.proxy.proxyRequest({
     proxyRequestBody: {
       body: {},
       headers: {},
@@ -32,11 +32,8 @@ async function run() {
     xAccountId: "string",
   });
 
-  if (res?.statusCode !== 200) {
-    throw new Error("Unexpected status code: " + res?.statusCode || "-");
-  }
-  
-  // handle response
+  // Handle the result
+  console.log(result)
 }
 
 run();

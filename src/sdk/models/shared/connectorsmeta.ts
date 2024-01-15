@@ -16,12 +16,25 @@ export enum Category {
     Stackone = "stackone",
 }
 
-export type Models = {};
+export type Images = {
+    /**
+     * URL of the square logo designed and used by StackOne for this provider
+     */
+    logoUrl?: string | null | undefined;
+    /**
+     * URL of the original provider logo (with logo and/or name aligned horizontally)
+     */
+    originalLogoHorizontalUrl?: string | null | undefined;
+    additionalProperties: Record<string, any>;
+};
 
 /**
  * Resources for this provider, such as image assets
  */
-export type Resources = {};
+export type Resources = {
+    images?: Images | null | undefined;
+    additionalProperties: Record<string, any>;
+};
 
 export type ConnectorsMeta = {
     /**
@@ -32,7 +45,7 @@ export type ConnectorsMeta = {
      * The provider service category
      */
     category: Category;
-    models: Models;
+    models: Record<string, any>;
     /**
      * The provider key
      */
@@ -51,25 +64,95 @@ export type ConnectorsMeta = {
 export const Category$ = z.nativeEnum(Category);
 
 /** @internal */
-export namespace Models$ {
-    export type Inbound = {};
+export namespace Images$ {
+    export type Inbound = {
+        [additionalProperties: string]: unknown;
 
-    export const inboundSchema: z.ZodType<Models, z.ZodTypeDef, Inbound> = z.object({});
+        logo_url?: string | null | undefined;
+        original_logo_horizontal_url?: string | null | undefined;
+    };
 
-    export type Outbound = {};
+    export const inboundSchema: z.ZodType<Images, z.ZodTypeDef, Inbound> = z
+        .object({
+            logo_url: z.nullable(z.string()).optional(),
+            original_logo_horizontal_url: z.nullable(z.string()).optional(),
+        })
+        .catchall(z.any())
+        .transform((v) => {
+            const { logo_url, original_logo_horizontal_url, ...additionalProperties } = v;
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Models> = z.object({});
+            return {
+                ...(v.logo_url === undefined ? null : { logoUrl: v.logo_url }),
+                ...(v.original_logo_horizontal_url === undefined
+                    ? null
+                    : { originalLogoHorizontalUrl: v.original_logo_horizontal_url }),
+                additionalProperties,
+            };
+        });
+
+    export type Outbound = {
+        logo_url?: string | null | undefined;
+        original_logo_horizontal_url?: string | null | undefined;
+        [additionalProperties: string]: unknown;
+    };
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Images> = z
+        .object({
+            additionalProperties: z.record(z.any()),
+
+            logoUrl: z.nullable(z.string()).optional(),
+            originalLogoHorizontalUrl: z.nullable(z.string()).optional(),
+        })
+        .transform((v) => {
+            return {
+                ...v.additionalProperties,
+                ...(v.logoUrl === undefined ? null : { logo_url: v.logoUrl }),
+                ...(v.originalLogoHorizontalUrl === undefined
+                    ? null
+                    : { original_logo_horizontal_url: v.originalLogoHorizontalUrl }),
+            };
+        });
 }
 
 /** @internal */
 export namespace Resources$ {
-    export type Inbound = {};
+    export type Inbound = {
+        [additionalProperties: string]: unknown;
 
-    export const inboundSchema: z.ZodType<Resources, z.ZodTypeDef, Inbound> = z.object({});
+        images?: Images$.Inbound | null | undefined;
+    };
 
-    export type Outbound = {};
+    export const inboundSchema: z.ZodType<Resources, z.ZodTypeDef, Inbound> = z
+        .object({
+            images: z.nullable(z.lazy(() => Images$.inboundSchema)).optional(),
+        })
+        .catchall(z.any())
+        .transform((v) => {
+            const { images, ...additionalProperties } = v;
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Resources> = z.object({});
+            return {
+                ...(v.images === undefined ? null : { images: v.images }),
+                additionalProperties,
+            };
+        });
+
+    export type Outbound = {
+        images?: Images$.Outbound | null | undefined;
+        [additionalProperties: string]: unknown;
+    };
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Resources> = z
+        .object({
+            additionalProperties: z.record(z.any()),
+
+            images: z.nullable(z.lazy(() => Images$.outboundSchema)).optional(),
+        })
+        .transform((v) => {
+            return {
+                ...v.additionalProperties,
+                ...(v.images === undefined ? null : { images: v.images }),
+            };
+        });
 }
 
 /** @internal */
@@ -77,7 +160,7 @@ export namespace ConnectorsMeta$ {
     export type Inbound = {
         active: boolean;
         category: Category;
-        models: Models$.Inbound;
+        models: Record<string, any>;
         provider: string;
         provider_name: string;
         resources?: Resources$.Inbound | null | undefined;
@@ -87,7 +170,7 @@ export namespace ConnectorsMeta$ {
         .object({
             active: z.boolean(),
             category: Category$,
-            models: z.lazy(() => Models$.inboundSchema),
+            models: z.record(z.any()),
             provider: z.string(),
             provider_name: z.string(),
             resources: z.nullable(z.lazy(() => Resources$.inboundSchema)).optional(),
@@ -106,7 +189,7 @@ export namespace ConnectorsMeta$ {
     export type Outbound = {
         active: boolean;
         category: Category;
-        models: Models$.Outbound;
+        models: Record<string, any>;
         provider: string;
         provider_name: string;
         resources?: Resources$.Outbound | null | undefined;
@@ -116,7 +199,7 @@ export namespace ConnectorsMeta$ {
         .object({
             active: z.boolean(),
             category: Category$,
-            models: z.lazy(() => Models$.outboundSchema),
+            models: z.record(z.any()),
             provider: z.string(),
             providerName: z.string(),
             resources: z.nullable(z.lazy(() => Resources$.outboundSchema)).optional(),
