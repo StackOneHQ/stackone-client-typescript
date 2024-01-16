@@ -16,6 +16,9 @@ export enum Category {
     Stackone = "stackone",
 }
 
+/**
+ * Image assets for this provider
+ */
 export type Images = {
     /**
      * URL of the square logo designed and used by StackOne for this provider
@@ -25,22 +28,23 @@ export type Images = {
      * URL of the original provider logo (with logo and/or name aligned horizontally)
      */
     originalLogoHorizontalUrl?: string | null | undefined;
-    additionalProperties: Record<string, any>;
 };
 
 /**
  * Resources for this provider, such as image assets
  */
 export type Resources = {
+    /**
+     * Image assets for this provider
+     */
     images?: Images | null | undefined;
-    additionalProperties: Record<string, any>;
 };
 
 export type ConnectorsMeta = {
     /**
      * Whether this provider has been enabled on the integrations page for the current project
      */
-    active: boolean;
+    active?: boolean | null | undefined;
     /**
      * The provider service category
      */
@@ -66,8 +70,6 @@ export const Category$ = z.nativeEnum(Category);
 /** @internal */
 export namespace Images$ {
     export type Inbound = {
-        [additionalProperties: string]: unknown;
-
         logo_url?: string | null | undefined;
         original_logo_horizontal_url?: string | null | undefined;
     };
@@ -77,35 +79,27 @@ export namespace Images$ {
             logo_url: z.nullable(z.string()).optional(),
             original_logo_horizontal_url: z.nullable(z.string()).optional(),
         })
-        .catchall(z.any())
         .transform((v) => {
-            const { logo_url, original_logo_horizontal_url, ...additionalProperties } = v;
-
             return {
                 ...(v.logo_url === undefined ? null : { logoUrl: v.logo_url }),
                 ...(v.original_logo_horizontal_url === undefined
                     ? null
                     : { originalLogoHorizontalUrl: v.original_logo_horizontal_url }),
-                additionalProperties,
             };
         });
 
     export type Outbound = {
         logo_url?: string | null | undefined;
         original_logo_horizontal_url?: string | null | undefined;
-        [additionalProperties: string]: unknown;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Images> = z
         .object({
-            additionalProperties: z.record(z.any()),
-
             logoUrl: z.nullable(z.string()).optional(),
             originalLogoHorizontalUrl: z.nullable(z.string()).optional(),
         })
         .transform((v) => {
             return {
-                ...v.additionalProperties,
                 ...(v.logoUrl === undefined ? null : { logo_url: v.logoUrl }),
                 ...(v.originalLogoHorizontalUrl === undefined
                     ? null
@@ -117,8 +111,6 @@ export namespace Images$ {
 /** @internal */
 export namespace Resources$ {
     export type Inbound = {
-        [additionalProperties: string]: unknown;
-
         images?: Images$.Inbound | null | undefined;
     };
 
@@ -126,30 +118,22 @@ export namespace Resources$ {
         .object({
             images: z.nullable(z.lazy(() => Images$.inboundSchema)).optional(),
         })
-        .catchall(z.any())
         .transform((v) => {
-            const { images, ...additionalProperties } = v;
-
             return {
                 ...(v.images === undefined ? null : { images: v.images }),
-                additionalProperties,
             };
         });
 
     export type Outbound = {
         images?: Images$.Outbound | null | undefined;
-        [additionalProperties: string]: unknown;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Resources> = z
         .object({
-            additionalProperties: z.record(z.any()),
-
             images: z.nullable(z.lazy(() => Images$.outboundSchema)).optional(),
         })
         .transform((v) => {
             return {
-                ...v.additionalProperties,
                 ...(v.images === undefined ? null : { images: v.images }),
             };
         });
@@ -158,7 +142,7 @@ export namespace Resources$ {
 /** @internal */
 export namespace ConnectorsMeta$ {
     export type Inbound = {
-        active: boolean;
+        active?: boolean | null | undefined;
         category: Category;
         models: Record<string, any>;
         provider: string;
@@ -168,7 +152,7 @@ export namespace ConnectorsMeta$ {
 
     export const inboundSchema: z.ZodType<ConnectorsMeta, z.ZodTypeDef, Inbound> = z
         .object({
-            active: z.boolean(),
+            active: z.nullable(z.boolean()).optional(),
             category: Category$,
             models: z.record(z.any()),
             provider: z.string(),
@@ -177,7 +161,7 @@ export namespace ConnectorsMeta$ {
         })
         .transform((v) => {
             return {
-                active: v.active,
+                ...(v.active === undefined ? null : { active: v.active }),
                 category: v.category,
                 models: v.models,
                 provider: v.provider,
@@ -187,7 +171,7 @@ export namespace ConnectorsMeta$ {
         });
 
     export type Outbound = {
-        active: boolean;
+        active?: boolean | null | undefined;
         category: Category;
         models: Record<string, any>;
         provider: string;
@@ -197,7 +181,7 @@ export namespace ConnectorsMeta$ {
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ConnectorsMeta> = z
         .object({
-            active: z.boolean(),
+            active: z.nullable(z.boolean()).optional(),
             category: Category$,
             models: z.record(z.any()),
             provider: z.string(),
@@ -206,7 +190,7 @@ export namespace ConnectorsMeta$ {
         })
         .transform((v) => {
             return {
-                active: v.active,
+                ...(v.active === undefined ? null : { active: v.active }),
                 category: v.category,
                 models: v.models,
                 provider: v.provider,
