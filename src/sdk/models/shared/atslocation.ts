@@ -5,43 +5,43 @@
 import { z } from "zod";
 
 export type ATSLocation = {
-    id: string;
-    name: string;
+    id?: string | null | undefined;
+    name?: string | null | undefined;
 };
 
 /** @internal */
 export namespace ATSLocation$ {
     export type Inbound = {
-        id: string;
-        name: string;
+        id?: string | null | undefined;
+        name?: string | null | undefined;
     };
 
     export const inboundSchema: z.ZodType<ATSLocation, z.ZodTypeDef, Inbound> = z
         .object({
-            id: z.string(),
-            name: z.string(),
+            id: z.nullable(z.string()).optional(),
+            name: z.nullable(z.string()).optional(),
         })
         .transform((v) => {
             return {
-                id: v.id,
-                name: v.name,
+                ...(v.id === undefined ? null : { id: v.id }),
+                ...(v.name === undefined ? null : { name: v.name }),
             };
         });
 
     export type Outbound = {
-        id: string;
-        name: string;
+        id?: string | null | undefined;
+        name?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ATSLocation> = z
         .object({
-            id: z.string(),
-            name: z.string(),
+            id: z.nullable(z.string()).optional(),
+            name: z.nullable(z.string()).optional(),
         })
         .transform((v) => {
             return {
-                id: v.id,
-                name: v.name,
+                ...(v.id === undefined ? null : { id: v.id }),
+                ...(v.name === undefined ? null : { name: v.name }),
             };
         });
 }

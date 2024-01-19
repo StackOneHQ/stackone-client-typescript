@@ -1,0 +1,9 @@
+# RejectedReasonType
+
+
+## Fields
+
+| Field                                                                           | Type                                                                            | Required                                                                        | Description                                                                     | Example                                                                         |
+| ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
+| `sourceValue`                                                                   | *string*                                                                        | :heavy_minus_sign:                                                              | The source value of the rejected reason type.                                   | RejectedByOrg                                                                   |
+| `value`                                                                         | [shared.RejectedReasonValue](../../../sdk/models/shared/rejectedreasonvalue.md) | :heavy_minus_sign:                                                              | The type of the rejected reason.                                                | rejected_by_organization                                                        |

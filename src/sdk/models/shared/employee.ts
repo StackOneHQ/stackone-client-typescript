@@ -70,11 +70,11 @@ export type EmploymentType = {
     /**
      * The source value of the employment type.
      */
-    sourceValue: string;
+    sourceValue?: string | null | undefined;
     /**
      * The type of the employment.
      */
-    value: EmployeeSchemasEmploymentTypeValue;
+    value?: EmployeeSchemasEmploymentTypeValue | null | undefined;
 };
 
 export enum EmployeeSchemasEthnicityValue {
@@ -859,6 +859,10 @@ export type Employee = {
      */
     companyName?: string | null | undefined;
     /**
+     * The employee cost center
+     */
+    costCenter?: string | null | undefined;
+    /**
      * The created_at date
      */
     createdAt?: Date | null | undefined;
@@ -1103,36 +1107,36 @@ export const EmployeeSchemasEmploymentTypeValue$ = z.nativeEnum(EmployeeSchemasE
 /** @internal */
 export namespace EmploymentType$ {
     export type Inbound = {
-        source_value: string;
-        value: EmployeeSchemasEmploymentTypeValue;
+        source_value?: string | null | undefined;
+        value?: EmployeeSchemasEmploymentTypeValue | null | undefined;
     };
 
     export const inboundSchema: z.ZodType<EmploymentType, z.ZodTypeDef, Inbound> = z
         .object({
-            source_value: z.string(),
-            value: EmployeeSchemasEmploymentTypeValue$,
+            source_value: z.nullable(z.string()).optional(),
+            value: z.nullable(EmployeeSchemasEmploymentTypeValue$).optional(),
         })
         .transform((v) => {
             return {
-                sourceValue: v.source_value,
-                value: v.value,
+                ...(v.source_value === undefined ? null : { sourceValue: v.source_value }),
+                ...(v.value === undefined ? null : { value: v.value }),
             };
         });
 
     export type Outbound = {
-        source_value: string;
-        value: EmployeeSchemasEmploymentTypeValue;
+        source_value?: string | null | undefined;
+        value?: EmployeeSchemasEmploymentTypeValue | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, EmploymentType> = z
         .object({
-            sourceValue: z.string(),
-            value: EmployeeSchemasEmploymentTypeValue$,
+            sourceValue: z.nullable(z.string()).optional(),
+            value: z.nullable(EmployeeSchemasEmploymentTypeValue$).optional(),
         })
         .transform((v) => {
             return {
-                source_value: v.sourceValue,
-                value: v.value,
+                ...(v.sourceValue === undefined ? null : { source_value: v.sourceValue }),
+                ...(v.value === undefined ? null : { value: v.value }),
             };
         });
 }
@@ -1667,6 +1671,7 @@ export namespace Employee$ {
         birthday?: string | null | undefined;
         citizenships?: Array<CountryCodeEnum$.Inbound> | null | undefined;
         company_name?: string | null | undefined;
+        cost_center?: string | null | undefined;
         created_at?: string | null | undefined;
         custom_fields?: Array<EmployeeCustomFields$.Inbound> | null | undefined;
         date_of_birth?: string | null | undefined;
@@ -1713,6 +1718,7 @@ export namespace Employee$ {
                 .optional(),
             citizenships: z.nullable(z.array(CountryCodeEnum$.inboundSchema)).optional(),
             company_name: z.nullable(z.string()).optional(),
+            cost_center: z.nullable(z.string()).optional(),
             created_at: z
                 .nullable(
                     z
@@ -1802,6 +1808,7 @@ export namespace Employee$ {
                 ...(v.birthday === undefined ? null : { birthday: v.birthday }),
                 ...(v.citizenships === undefined ? null : { citizenships: v.citizenships }),
                 ...(v.company_name === undefined ? null : { companyName: v.company_name }),
+                ...(v.cost_center === undefined ? null : { costCenter: v.cost_center }),
                 ...(v.created_at === undefined ? null : { createdAt: v.created_at }),
                 ...(v.custom_fields === undefined ? null : { customFields: v.custom_fields }),
                 ...(v.date_of_birth === undefined ? null : { dateOfBirth: v.date_of_birth }),
@@ -1853,6 +1860,7 @@ export namespace Employee$ {
         birthday?: string | null | undefined;
         citizenships?: Array<CountryCodeEnum$.Outbound> | null | undefined;
         company_name?: string | null | undefined;
+        cost_center?: string | null | undefined;
         created_at?: string | null | undefined;
         custom_fields?: Array<EmployeeCustomFields$.Outbound> | null | undefined;
         date_of_birth?: string | null | undefined;
@@ -1892,6 +1900,7 @@ export namespace Employee$ {
             birthday: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
             citizenships: z.nullable(z.array(CountryCodeEnum$.outboundSchema)).optional(),
             companyName: z.nullable(z.string()).optional(),
+            costCenter: z.nullable(z.string()).optional(),
             createdAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
             customFields: z.nullable(z.array(EmployeeCustomFields$.outboundSchema)).optional(),
             dateOfBirth: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
@@ -1932,6 +1941,7 @@ export namespace Employee$ {
                 ...(v.birthday === undefined ? null : { birthday: v.birthday }),
                 ...(v.citizenships === undefined ? null : { citizenships: v.citizenships }),
                 ...(v.companyName === undefined ? null : { company_name: v.companyName }),
+                ...(v.costCenter === undefined ? null : { cost_center: v.costCenter }),
                 ...(v.createdAt === undefined ? null : { created_at: v.createdAt }),
                 ...(v.customFields === undefined ? null : { custom_fields: v.customFields }),
                 ...(v.dateOfBirth === undefined ? null : { date_of_birth: v.dateOfBirth }),

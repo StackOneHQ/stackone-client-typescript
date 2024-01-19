@@ -8,46 +8,46 @@ export type CandidateEmail = {
     /**
      * Type of the email
      */
-    type: string;
+    type?: string | null | undefined;
     /**
      * Email value
      */
-    value: string;
+    value?: string | null | undefined;
 };
 
 /** @internal */
 export namespace CandidateEmail$ {
     export type Inbound = {
-        type: string;
-        value: string;
+        type?: string | null | undefined;
+        value?: string | null | undefined;
     };
 
     export const inboundSchema: z.ZodType<CandidateEmail, z.ZodTypeDef, Inbound> = z
         .object({
-            type: z.string(),
-            value: z.string(),
+            type: z.nullable(z.string()).optional(),
+            value: z.nullable(z.string()).optional(),
         })
         .transform((v) => {
             return {
-                type: v.type,
-                value: v.value,
+                ...(v.type === undefined ? null : { type: v.type }),
+                ...(v.value === undefined ? null : { value: v.value }),
             };
         });
 
     export type Outbound = {
-        type: string;
-        value: string;
+        type?: string | null | undefined;
+        value?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CandidateEmail> = z
         .object({
-            type: z.string(),
-            value: z.string(),
+            type: z.nullable(z.string()).optional(),
+            value: z.nullable(z.string()).optional(),
         })
         .transform((v) => {
             return {
-                type: v.type,
-                value: v.value,
+                ...(v.type === undefined ? null : { type: v.type }),
+                ...(v.value === undefined ? null : { value: v.value }),
             };
         });
 }

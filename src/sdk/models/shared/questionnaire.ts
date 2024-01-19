@@ -6,7 +6,7 @@ import { Answer, Answer$ } from "./answer";
 import { z } from "zod";
 
 export type Questionnaire = {
-    answers: Array<Answer>;
+    answers?: Array<Answer> | null | undefined;
     /**
      * Unique identifier of the questionnaire
      */
@@ -16,35 +16,35 @@ export type Questionnaire = {
 /** @internal */
 export namespace Questionnaire$ {
     export type Inbound = {
-        answers: Array<Answer$.Inbound>;
+        answers?: Array<Answer$.Inbound> | null | undefined;
         id?: string | null | undefined;
     };
 
     export const inboundSchema: z.ZodType<Questionnaire, z.ZodTypeDef, Inbound> = z
         .object({
-            answers: z.array(Answer$.inboundSchema),
+            answers: z.nullable(z.array(Answer$.inboundSchema)).optional(),
             id: z.nullable(z.string()).optional(),
         })
         .transform((v) => {
             return {
-                answers: v.answers,
+                ...(v.answers === undefined ? null : { answers: v.answers }),
                 ...(v.id === undefined ? null : { id: v.id }),
             };
         });
 
     export type Outbound = {
-        answers: Array<Answer$.Outbound>;
+        answers?: Array<Answer$.Outbound> | null | undefined;
         id?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Questionnaire> = z
         .object({
-            answers: z.array(Answer$.outboundSchema),
+            answers: z.nullable(z.array(Answer$.outboundSchema)).optional(),
             id: z.nullable(z.string()).optional(),
         })
         .transform((v) => {
             return {
-                answers: v.answers,
+                ...(v.answers === undefined ? null : { answers: v.answers }),
                 ...(v.id === undefined ? null : { id: v.id }),
             };
         });

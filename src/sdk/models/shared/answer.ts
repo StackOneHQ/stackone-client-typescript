@@ -45,7 +45,7 @@ export type Answer = {
     /**
      * Values of the answer
      */
-    values: Array<string>;
+    values?: Array<string> | null | undefined;
 };
 
 /** @internal */
@@ -93,40 +93,40 @@ export namespace Answer$ {
     export type Inbound = {
         id?: string | null | undefined;
         type?: TypeT$.Inbound | null | undefined;
-        values: Array<string>;
+        values?: Array<string> | null | undefined;
     };
 
     export const inboundSchema: z.ZodType<Answer, z.ZodTypeDef, Inbound> = z
         .object({
             id: z.nullable(z.string()).optional(),
             type: z.nullable(z.lazy(() => TypeT$.inboundSchema)).optional(),
-            values: z.array(z.string()),
+            values: z.nullable(z.array(z.string())).optional(),
         })
         .transform((v) => {
             return {
                 ...(v.id === undefined ? null : { id: v.id }),
                 ...(v.type === undefined ? null : { type: v.type }),
-                values: v.values,
+                ...(v.values === undefined ? null : { values: v.values }),
             };
         });
 
     export type Outbound = {
         id?: string | null | undefined;
         type?: TypeT$.Outbound | null | undefined;
-        values: Array<string>;
+        values?: Array<string> | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Answer> = z
         .object({
             id: z.nullable(z.string()).optional(),
             type: z.nullable(z.lazy(() => TypeT$.outboundSchema)).optional(),
-            values: z.array(z.string()),
+            values: z.nullable(z.array(z.string())).optional(),
         })
         .transform((v) => {
             return {
                 ...(v.id === undefined ? null : { id: v.id }),
                 ...(v.type === undefined ? null : { type: v.type }),
-                values: v.values,
+                ...(v.values === undefined ? null : { values: v.values }),
             };
         });
 }

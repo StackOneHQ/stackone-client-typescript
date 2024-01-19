@@ -3,24 +3,48 @@
  */
 
 import { OfferHistory, OfferHistory$ } from "./offerhistory";
-import { OfferStatusEnum, OfferStatusEnum$ } from "./offerstatusenum";
 import { z } from "zod";
 
+/**
+ * The status of the offer.
+ */
+export enum OfferValue {
+    Pending = "pending",
+    Retracted = "retracted",
+    Accepted = "accepted",
+    Rejected = "rejected",
+    Created = "created",
+    Approved = "approved",
+    NotApproved = "not_approved",
+    UnmappedValue = "unmapped_value",
+}
+
+export type OfferOfferStatus = {
+    /**
+     * The source value of the offer status.
+     */
+    sourceValue?: string | null | undefined;
+    /**
+     * The status of the offer.
+     */
+    value?: OfferValue | null | undefined;
+};
+
 export type Offer = {
-    applicationId: string;
+    applicationId?: string | null | undefined;
     /**
      * Date of creation
      */
     createdAt?: Date | null | undefined;
     currency?: string | null | undefined;
-    id: string;
+    id?: string | null | undefined;
     offerHistory?: Array<OfferHistory> | null | undefined;
-    offerStatus: OfferStatusEnum;
+    offerStatus?: OfferOfferStatus | null | undefined;
     salary?: number | null | undefined;
     /**
      * Date of creation
      */
-    startDate: Date;
+    startDate?: Date | null | undefined;
     /**
      * Date of last update
      */
@@ -28,22 +52,62 @@ export type Offer = {
 };
 
 /** @internal */
+export const OfferValue$ = z.nativeEnum(OfferValue);
+
+/** @internal */
+export namespace OfferOfferStatus$ {
+    export type Inbound = {
+        source_value?: string | null | undefined;
+        value?: OfferValue | null | undefined;
+    };
+
+    export const inboundSchema: z.ZodType<OfferOfferStatus, z.ZodTypeDef, Inbound> = z
+        .object({
+            source_value: z.nullable(z.string()).optional(),
+            value: z.nullable(OfferValue$).optional(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.source_value === undefined ? null : { sourceValue: v.source_value }),
+                ...(v.value === undefined ? null : { value: v.value }),
+            };
+        });
+
+    export type Outbound = {
+        source_value?: string | null | undefined;
+        value?: OfferValue | null | undefined;
+    };
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, OfferOfferStatus> = z
+        .object({
+            sourceValue: z.nullable(z.string()).optional(),
+            value: z.nullable(OfferValue$).optional(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.sourceValue === undefined ? null : { source_value: v.sourceValue }),
+                ...(v.value === undefined ? null : { value: v.value }),
+            };
+        });
+}
+
+/** @internal */
 export namespace Offer$ {
     export type Inbound = {
-        application_id: string;
+        application_id?: string | null | undefined;
         created_at?: string | null | undefined;
         currency?: string | null | undefined;
-        id: string;
+        id?: string | null | undefined;
         offer_history?: Array<OfferHistory$.Inbound> | null | undefined;
-        offer_status: OfferStatusEnum$.Inbound;
+        offer_status?: OfferOfferStatus$.Inbound | null | undefined;
         salary?: number | null | undefined;
-        start_date: string;
+        start_date?: string | null | undefined;
         updated_at?: string | null | undefined;
     };
 
     export const inboundSchema: z.ZodType<Offer, z.ZodTypeDef, Inbound> = z
         .object({
-            application_id: z.string(),
+            application_id: z.nullable(z.string()).optional(),
             created_at: z
                 .nullable(
                     z
@@ -53,14 +117,18 @@ export namespace Offer$ {
                 )
                 .optional(),
             currency: z.nullable(z.string()).optional(),
-            id: z.string(),
+            id: z.nullable(z.string()).optional(),
             offer_history: z.nullable(z.array(OfferHistory$.inboundSchema)).optional(),
-            offer_status: OfferStatusEnum$.inboundSchema,
+            offer_status: z.nullable(z.lazy(() => OfferOfferStatus$.inboundSchema)).optional(),
             salary: z.nullable(z.number()).optional(),
             start_date: z
-                .string()
-                .datetime({ offset: true })
-                .transform((v) => new Date(v)),
+                .nullable(
+                    z
+                        .string()
+                        .datetime({ offset: true })
+                        .transform((v) => new Date(v))
+                )
+                .optional(),
             updated_at: z
                 .nullable(
                     z
@@ -72,52 +140,52 @@ export namespace Offer$ {
         })
         .transform((v) => {
             return {
-                applicationId: v.application_id,
+                ...(v.application_id === undefined ? null : { applicationId: v.application_id }),
                 ...(v.created_at === undefined ? null : { createdAt: v.created_at }),
                 ...(v.currency === undefined ? null : { currency: v.currency }),
-                id: v.id,
+                ...(v.id === undefined ? null : { id: v.id }),
                 ...(v.offer_history === undefined ? null : { offerHistory: v.offer_history }),
-                offerStatus: v.offer_status,
+                ...(v.offer_status === undefined ? null : { offerStatus: v.offer_status }),
                 ...(v.salary === undefined ? null : { salary: v.salary }),
-                startDate: v.start_date,
+                ...(v.start_date === undefined ? null : { startDate: v.start_date }),
                 ...(v.updated_at === undefined ? null : { updatedAt: v.updated_at }),
             };
         });
 
     export type Outbound = {
-        application_id: string;
+        application_id?: string | null | undefined;
         created_at?: string | null | undefined;
         currency?: string | null | undefined;
-        id: string;
+        id?: string | null | undefined;
         offer_history?: Array<OfferHistory$.Outbound> | null | undefined;
-        offer_status: OfferStatusEnum$.Outbound;
+        offer_status?: OfferOfferStatus$.Outbound | null | undefined;
         salary?: number | null | undefined;
-        start_date: string;
+        start_date?: string | null | undefined;
         updated_at?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Offer> = z
         .object({
-            applicationId: z.string(),
+            applicationId: z.nullable(z.string()).optional(),
             createdAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
             currency: z.nullable(z.string()).optional(),
-            id: z.string(),
+            id: z.nullable(z.string()).optional(),
             offerHistory: z.nullable(z.array(OfferHistory$.outboundSchema)).optional(),
-            offerStatus: OfferStatusEnum$.outboundSchema,
+            offerStatus: z.nullable(z.lazy(() => OfferOfferStatus$.outboundSchema)).optional(),
             salary: z.nullable(z.number()).optional(),
-            startDate: z.date().transform((v) => v.toISOString()),
+            startDate: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
             updatedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
         })
         .transform((v) => {
             return {
-                application_id: v.applicationId,
+                ...(v.applicationId === undefined ? null : { application_id: v.applicationId }),
                 ...(v.createdAt === undefined ? null : { created_at: v.createdAt }),
                 ...(v.currency === undefined ? null : { currency: v.currency }),
-                id: v.id,
+                ...(v.id === undefined ? null : { id: v.id }),
                 ...(v.offerHistory === undefined ? null : { offer_history: v.offerHistory }),
-                offer_status: v.offerStatus,
+                ...(v.offerStatus === undefined ? null : { offer_status: v.offerStatus }),
                 ...(v.salary === undefined ? null : { salary: v.salary }),
-                start_date: v.startDate,
+                ...(v.startDate === undefined ? null : { start_date: v.startDate }),
                 ...(v.updatedAt === undefined ? null : { updated_at: v.updatedAt }),
             };
         });

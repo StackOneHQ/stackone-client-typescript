@@ -18,19 +18,19 @@ export type Candidate = {
     /**
      * Candidate created date
      */
-    createdAt: Date;
+    createdAt?: Date | null | undefined;
     /**
      * Candidate email
      */
-    email: string;
+    email?: string | null | undefined;
     /**
      * List of candidate emails
      */
-    emails: Array<CandidateEmail>;
+    emails?: Array<CandidateEmail> | null | undefined;
     /**
      * Candidate first name
      */
-    firstName: string;
+    firstName?: string | null | undefined;
     /**
      * Candidate hired date
      */
@@ -42,11 +42,11 @@ export type Candidate = {
     /**
      * Candidate last name
      */
-    lastName: string;
+    lastName?: string | null | undefined;
     /**
      * Candidate name
      */
-    name: string;
+    name?: string | null | undefined;
     /**
      * Candidate phone number
      */
@@ -54,15 +54,15 @@ export type Candidate = {
     /**
      * List of candidate social links
      */
-    socialLinks: Array<SocialLink>;
+    socialLinks?: Array<SocialLink> | null | undefined;
     /**
      * Candidate title
      */
-    title: string;
+    title?: string | null | undefined;
     /**
      * Candidate updated date
      */
-    updatedAt: Date;
+    updatedAt?: Date | null | undefined;
 };
 
 /** @internal */
@@ -70,18 +70,18 @@ export namespace Candidate$ {
     export type Inbound = {
         application_ids?: Array<string> | null | undefined;
         company?: string | null | undefined;
-        created_at: string;
-        email: string;
-        emails: Array<CandidateEmail$.Inbound>;
-        first_name: string;
+        created_at?: string | null | undefined;
+        email?: string | null | undefined;
+        emails?: Array<CandidateEmail$.Inbound> | null | undefined;
+        first_name?: string | null | undefined;
         hired_at?: string | null | undefined;
         id: string;
-        last_name: string;
-        name: string;
+        last_name?: string | null | undefined;
+        name?: string | null | undefined;
         phone?: string | null | undefined;
-        social_links: Array<SocialLink$.Inbound>;
-        title: string;
-        updated_at: string;
+        social_links?: Array<SocialLink$.Inbound> | null | undefined;
+        title?: string | null | undefined;
+        updated_at?: string | null | undefined;
     };
 
     export const inboundSchema: z.ZodType<Candidate, z.ZodTypeDef, Inbound> = z
@@ -89,12 +89,16 @@ export namespace Candidate$ {
             application_ids: z.nullable(z.array(z.string())).optional(),
             company: z.nullable(z.string()).optional(),
             created_at: z
-                .string()
-                .datetime({ offset: true })
-                .transform((v) => new Date(v)),
-            email: z.string(),
-            emails: z.array(CandidateEmail$.inboundSchema),
-            first_name: z.string(),
+                .nullable(
+                    z
+                        .string()
+                        .datetime({ offset: true })
+                        .transform((v) => new Date(v))
+                )
+                .optional(),
+            email: z.nullable(z.string()).optional(),
+            emails: z.nullable(z.array(CandidateEmail$.inboundSchema)).optional(),
+            first_name: z.nullable(z.string()).optional(),
             hired_at: z
                 .nullable(
                     z
@@ -104,85 +108,89 @@ export namespace Candidate$ {
                 )
                 .optional(),
             id: z.string(),
-            last_name: z.string(),
-            name: z.string(),
+            last_name: z.nullable(z.string()).optional(),
+            name: z.nullable(z.string()).optional(),
             phone: z.nullable(z.string()).optional(),
-            social_links: z.array(SocialLink$.inboundSchema),
-            title: z.string(),
+            social_links: z.nullable(z.array(SocialLink$.inboundSchema)).optional(),
+            title: z.nullable(z.string()).optional(),
             updated_at: z
-                .string()
-                .datetime({ offset: true })
-                .transform((v) => new Date(v)),
+                .nullable(
+                    z
+                        .string()
+                        .datetime({ offset: true })
+                        .transform((v) => new Date(v))
+                )
+                .optional(),
         })
         .transform((v) => {
             return {
                 ...(v.application_ids === undefined ? null : { applicationIds: v.application_ids }),
                 ...(v.company === undefined ? null : { company: v.company }),
-                createdAt: v.created_at,
-                email: v.email,
-                emails: v.emails,
-                firstName: v.first_name,
+                ...(v.created_at === undefined ? null : { createdAt: v.created_at }),
+                ...(v.email === undefined ? null : { email: v.email }),
+                ...(v.emails === undefined ? null : { emails: v.emails }),
+                ...(v.first_name === undefined ? null : { firstName: v.first_name }),
                 ...(v.hired_at === undefined ? null : { hiredAt: v.hired_at }),
                 id: v.id,
-                lastName: v.last_name,
-                name: v.name,
+                ...(v.last_name === undefined ? null : { lastName: v.last_name }),
+                ...(v.name === undefined ? null : { name: v.name }),
                 ...(v.phone === undefined ? null : { phone: v.phone }),
-                socialLinks: v.social_links,
-                title: v.title,
-                updatedAt: v.updated_at,
+                ...(v.social_links === undefined ? null : { socialLinks: v.social_links }),
+                ...(v.title === undefined ? null : { title: v.title }),
+                ...(v.updated_at === undefined ? null : { updatedAt: v.updated_at }),
             };
         });
 
     export type Outbound = {
         application_ids?: Array<string> | null | undefined;
         company?: string | null | undefined;
-        created_at: string;
-        email: string;
-        emails: Array<CandidateEmail$.Outbound>;
-        first_name: string;
+        created_at?: string | null | undefined;
+        email?: string | null | undefined;
+        emails?: Array<CandidateEmail$.Outbound> | null | undefined;
+        first_name?: string | null | undefined;
         hired_at?: string | null | undefined;
         id: string;
-        last_name: string;
-        name: string;
+        last_name?: string | null | undefined;
+        name?: string | null | undefined;
         phone?: string | null | undefined;
-        social_links: Array<SocialLink$.Outbound>;
-        title: string;
-        updated_at: string;
+        social_links?: Array<SocialLink$.Outbound> | null | undefined;
+        title?: string | null | undefined;
+        updated_at?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Candidate> = z
         .object({
             applicationIds: z.nullable(z.array(z.string())).optional(),
             company: z.nullable(z.string()).optional(),
-            createdAt: z.date().transform((v) => v.toISOString()),
-            email: z.string(),
-            emails: z.array(CandidateEmail$.outboundSchema),
-            firstName: z.string(),
+            createdAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+            email: z.nullable(z.string()).optional(),
+            emails: z.nullable(z.array(CandidateEmail$.outboundSchema)).optional(),
+            firstName: z.nullable(z.string()).optional(),
             hiredAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
             id: z.string(),
-            lastName: z.string(),
-            name: z.string(),
+            lastName: z.nullable(z.string()).optional(),
+            name: z.nullable(z.string()).optional(),
             phone: z.nullable(z.string()).optional(),
-            socialLinks: z.array(SocialLink$.outboundSchema),
-            title: z.string(),
-            updatedAt: z.date().transform((v) => v.toISOString()),
+            socialLinks: z.nullable(z.array(SocialLink$.outboundSchema)).optional(),
+            title: z.nullable(z.string()).optional(),
+            updatedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
         })
         .transform((v) => {
             return {
                 ...(v.applicationIds === undefined ? null : { application_ids: v.applicationIds }),
                 ...(v.company === undefined ? null : { company: v.company }),
-                created_at: v.createdAt,
-                email: v.email,
-                emails: v.emails,
-                first_name: v.firstName,
+                ...(v.createdAt === undefined ? null : { created_at: v.createdAt }),
+                ...(v.email === undefined ? null : { email: v.email }),
+                ...(v.emails === undefined ? null : { emails: v.emails }),
+                ...(v.firstName === undefined ? null : { first_name: v.firstName }),
                 ...(v.hiredAt === undefined ? null : { hired_at: v.hiredAt }),
                 id: v.id,
-                last_name: v.lastName,
-                name: v.name,
+                ...(v.lastName === undefined ? null : { last_name: v.lastName }),
+                ...(v.name === undefined ? null : { name: v.name }),
                 ...(v.phone === undefined ? null : { phone: v.phone }),
-                social_links: v.socialLinks,
-                title: v.title,
-                updated_at: v.updatedAt,
+                ...(v.socialLinks === undefined ? null : { social_links: v.socialLinks }),
+                ...(v.title === undefined ? null : { title: v.title }),
+                ...(v.updatedAt === undefined ? null : { updated_at: v.updatedAt }),
             };
         });
 }

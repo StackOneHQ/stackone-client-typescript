@@ -5,6 +5,11 @@
 import * as shared from "../../../sdk/models/shared";
 import { z } from "zod";
 
+/**
+ * Query parameters that can be used to pass through parameters to the underlying provider request by surrounding them with "proxy" key
+ */
+export type AtsGetApplicationScorecardQueryParamProxy = {};
+
 export type AtsGetApplicationScorecardRequest = {
     /**
      * The comma separated list of fields to return in the response (if empty, all fields are returned)
@@ -28,7 +33,7 @@ export type AtsGetApplicationScorecardRequest = {
     /**
      * Query parameters that can be used to pass through parameters to the underlying provider request by surrounding them with "proxy" key
      */
-    proxy?: Record<string, any> | null | undefined;
+    proxy?: AtsGetApplicationScorecardQueryParamProxy | null | undefined;
     /**
      * Indicates that the raw request result is returned
      */
@@ -68,6 +73,25 @@ export type AtsGetApplicationScorecardResponse = {
 };
 
 /** @internal */
+export namespace AtsGetApplicationScorecardQueryParamProxy$ {
+    export type Inbound = {};
+
+    export const inboundSchema: z.ZodType<
+        AtsGetApplicationScorecardQueryParamProxy,
+        z.ZodTypeDef,
+        Inbound
+    > = z.object({});
+
+    export type Outbound = {};
+
+    export const outboundSchema: z.ZodType<
+        Outbound,
+        z.ZodTypeDef,
+        AtsGetApplicationScorecardQueryParamProxy
+    > = z.object({});
+}
+
+/** @internal */
 export namespace AtsGetApplicationScorecardRequest$ {
     export type Inbound = {
         fields?: string | null | undefined;
@@ -75,7 +99,7 @@ export namespace AtsGetApplicationScorecardRequest$ {
         next?: string | null | undefined;
         page?: string | null | undefined;
         page_size?: string | null | undefined;
-        proxy?: Record<string, any> | null | undefined;
+        proxy?: AtsGetApplicationScorecardQueryParamProxy$.Inbound | null | undefined;
         raw?: boolean | null | undefined;
         subResourceId: string;
         sync_token?: string | null | undefined;
@@ -89,12 +113,14 @@ export namespace AtsGetApplicationScorecardRequest$ {
         Inbound
     > = z
         .object({
-            fields: z.nullable(z.string().default("")),
+            fields: z.nullable(z.string()).optional(),
             id: z.string(),
             next: z.nullable(z.string()).optional(),
             page: z.nullable(z.string()).optional(),
             page_size: z.nullable(z.string().default("25")),
-            proxy: z.nullable(z.record(z.any())).optional(),
+            proxy: z
+                .nullable(z.lazy(() => AtsGetApplicationScorecardQueryParamProxy$.inboundSchema))
+                .optional(),
             raw: z.nullable(z.boolean().default(false)),
             subResourceId: z.string(),
             sync_token: z.nullable(z.string()).optional(),
@@ -118,12 +144,12 @@ export namespace AtsGetApplicationScorecardRequest$ {
         });
 
     export type Outbound = {
-        fields: string | null;
+        fields?: string | null | undefined;
         id: string;
         next?: string | null | undefined;
         page?: string | null | undefined;
         page_size: string | null;
-        proxy?: Record<string, any> | null | undefined;
+        proxy?: AtsGetApplicationScorecardQueryParamProxy$.Outbound | null | undefined;
         raw: boolean | null;
         subResourceId: string;
         sync_token?: string | null | undefined;
@@ -137,12 +163,14 @@ export namespace AtsGetApplicationScorecardRequest$ {
         AtsGetApplicationScorecardRequest
     > = z
         .object({
-            fields: z.nullable(z.string().default("")),
+            fields: z.nullable(z.string()).optional(),
             id: z.string(),
             next: z.nullable(z.string()).optional(),
             page: z.nullable(z.string()).optional(),
             pageSize: z.nullable(z.string().default("25")),
-            proxy: z.nullable(z.record(z.any())).optional(),
+            proxy: z
+                .nullable(z.lazy(() => AtsGetApplicationScorecardQueryParamProxy$.outboundSchema))
+                .optional(),
             raw: z.nullable(z.boolean().default(false)),
             subResourceId: z.string(),
             syncToken: z.nullable(z.string()).optional(),
@@ -151,7 +179,7 @@ export namespace AtsGetApplicationScorecardRequest$ {
         })
         .transform((v) => {
             return {
-                fields: v.fields,
+                ...(v.fields === undefined ? null : { fields: v.fields }),
                 id: v.id,
                 ...(v.next === undefined ? null : { next: v.next }),
                 ...(v.page === undefined ? null : { page: v.page }),

@@ -351,9 +351,7 @@ async function run() {
 
   const result = await sdk.hris.getCompany({
     id: "<ID>",
-    proxy: {
-      "key": "string",
-    },
+    proxy: {},
     xAccountId: "string",
   });
 
@@ -400,9 +398,7 @@ async function run() {
 
   const result = await sdk.hris.getEmployee({
     id: "<ID>",
-    proxy: {
-      "key": "string",
-    },
+    proxy: {},
     xAccountId: "string",
   });
 
@@ -449,9 +445,7 @@ async function run() {
 
   const result = await sdk.hris.getEmployeeDocument({
     id: "<ID>",
-    proxy: {
-      "key": "string",
-    },
+    proxy: {},
     subResourceId: "string",
     xAccountId: "string",
   });
@@ -499,9 +493,7 @@ async function run() {
 
   const result = await sdk.hris.getEmployeesTimeOffRequest({
     id: "<ID>",
-    proxy: {
-      "key": "string",
-    },
+    proxy: {},
     subResourceId: "string",
     xAccountId: "string",
   });
@@ -549,9 +541,7 @@ async function run() {
 
   const result = await sdk.hris.getEmployment({
     id: "<ID>",
-    proxy: {
-      "key": "string",
-    },
+    proxy: {},
     xAccountId: "string",
   });
 
@@ -598,9 +588,7 @@ async function run() {
 
   const result = await sdk.hris.getLocation({
     id: "<ID>",
-    proxy: {
-      "key": "string",
-    },
+    proxy: {},
     xAccountId: "string",
   });
 
@@ -647,9 +635,7 @@ async function run() {
 
   const result = await sdk.hris.getTimeOffRequest({
     id: "<ID>",
-    proxy: {
-      "key": "string",
-    },
+    proxy: {},
     xAccountId: "string",
   });
 
@@ -695,9 +681,7 @@ async function run() {
   });
 
   const result = await sdk.hris.listCompanies({
-    proxy: {
-      "key": "string",
-    },
+    proxy: {},
     xAccountId: "string",
   });
 
@@ -744,9 +728,7 @@ async function run() {
 
   const result = await sdk.hris.listEmployeeDocuments({
     id: "<ID>",
-    proxy: {
-      "key": "string",
-    },
+    proxy: {},
     xAccountId: "string",
   });
 
@@ -793,9 +775,7 @@ async function run() {
 
   const result = await sdk.hris.listEmployeeTimeOffRequests({
     id: "<ID>",
-    proxy: {
-      "key": "string",
-    },
+    proxy: {},
     xAccountId: "string",
   });
 
@@ -841,9 +821,7 @@ async function run() {
   });
 
   const result = await sdk.hris.listEmployees({
-    proxy: {
-      "key": "string",
-    },
+    proxy: {},
     xAccountId: "string",
   });
 
@@ -890,9 +868,7 @@ async function run() {
   });
 
   const result = await sdk.hris.listEmployments({
-    proxy: {
-      "key": "string",
-    },
+    proxy: {},
     xAccountId: "string",
   });
 
@@ -938,9 +914,7 @@ async function run() {
   });
 
   const result = await sdk.hris.listLocations({
-    proxy: {
-      "key": "string",
-    },
+    proxy: {},
     xAccountId: "string",
   });
 
@@ -986,9 +960,7 @@ async function run() {
   });
 
   const result = await sdk.hris.listTimeOffRequests({
-    proxy: {
-      "key": "string",
-    },
+    proxy: {},
     xAccountId: "string",
   });
 

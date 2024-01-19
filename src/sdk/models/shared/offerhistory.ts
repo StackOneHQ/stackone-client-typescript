@@ -14,7 +14,7 @@ export type OfferHistory = {
     /**
      * Start Date of the offer
      */
-    startDate: Date;
+    startDate?: Date | null | undefined;
     /**
      * Date of last update
      */
@@ -27,7 +27,7 @@ export namespace OfferHistory$ {
         created_at?: string | null | undefined;
         currency?: string | null | undefined;
         salary?: number | null | undefined;
-        start_date: string;
+        start_date?: string | null | undefined;
         updated_at?: string | null | undefined;
     };
 
@@ -44,9 +44,13 @@ export namespace OfferHistory$ {
             currency: z.nullable(z.string()).optional(),
             salary: z.nullable(z.number()).optional(),
             start_date: z
-                .string()
-                .datetime({ offset: true })
-                .transform((v) => new Date(v)),
+                .nullable(
+                    z
+                        .string()
+                        .datetime({ offset: true })
+                        .transform((v) => new Date(v))
+                )
+                .optional(),
             updated_at: z
                 .nullable(
                     z
@@ -61,7 +65,7 @@ export namespace OfferHistory$ {
                 ...(v.created_at === undefined ? null : { createdAt: v.created_at }),
                 ...(v.currency === undefined ? null : { currency: v.currency }),
                 ...(v.salary === undefined ? null : { salary: v.salary }),
-                startDate: v.start_date,
+                ...(v.start_date === undefined ? null : { startDate: v.start_date }),
                 ...(v.updated_at === undefined ? null : { updatedAt: v.updated_at }),
             };
         });
@@ -70,7 +74,7 @@ export namespace OfferHistory$ {
         created_at?: string | null | undefined;
         currency?: string | null | undefined;
         salary?: number | null | undefined;
-        start_date: string;
+        start_date?: string | null | undefined;
         updated_at?: string | null | undefined;
     };
 
@@ -79,7 +83,7 @@ export namespace OfferHistory$ {
             createdAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
             currency: z.nullable(z.string()).optional(),
             salary: z.nullable(z.number()).optional(),
-            startDate: z.date().transform((v) => v.toISOString()),
+            startDate: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
             updatedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
         })
         .transform((v) => {
@@ -87,7 +91,7 @@ export namespace OfferHistory$ {
                 ...(v.createdAt === undefined ? null : { created_at: v.createdAt }),
                 ...(v.currency === undefined ? null : { currency: v.currency }),
                 ...(v.salary === undefined ? null : { salary: v.salary }),
-                start_date: v.startDate,
+                ...(v.startDate === undefined ? null : { start_date: v.startDate }),
                 ...(v.updatedAt === undefined ? null : { updated_at: v.updatedAt }),
             };
         });

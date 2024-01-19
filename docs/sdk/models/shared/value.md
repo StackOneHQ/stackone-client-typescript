@@ -1,24 +1,14 @@
 # Value
 
-The status of the application.
+The type of the attachment.
 
 
 ## Values
 
-| Name                  | Value                 |
-| --------------------- | --------------------- |
-| `Active`              | active                |
-| `Assessment`          | assessment            |
-| `BackgroundCheck`     | background_check      |
-| `Converted`           | converted             |
-| `DeclinedByCandidate` | declined_by_candidate |
-| `Hired`               | hired                 |
-| `Interview`           | interview             |
-| `Lead`                | lead                  |
-| `Offer`               | offer                 |
-| `ReferenceCheck`      | reference_check       |
-| `Rejected`            | rejected              |
-| `Review`              | review                |
-| `Screen`              | screen                |
-| `New`                 | new                   |
-| `UnmappedValue`       | unmapped_value        |
+| Name            | Value           |
+| --------------- | --------------- |
+| `Resume`        | resume          |
+| `GenericFile`   | generic_file    |
+| `CoverLetter`   | cover_letter    |
+| `Avatar`        | avatar          |
+| `UnmappedValue` | unmapped_value  |

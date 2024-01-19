@@ -46,7 +46,7 @@ Create Application
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
-import { Value } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { AtsCreateApplicationRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 async function run() {
   const sdk = new StackOne({
@@ -59,7 +59,7 @@ async function run() {
     atsCreateApplicationRequestDto: {
       applicationStatus: {
         sourceValue: "Hired",
-        value: Value.Hired,
+        value: AtsCreateApplicationRequestDtoValue.Hired,
       },
       attachments: [
         {
@@ -72,7 +72,7 @@ async function run() {
           type: [
             {
               sourceValue: "Resume",
-              value: AttachmentTypeValue.Resume,
+              value: Value.Resume,
             },
           ],
           url: "http://example.com/resume.pdf",
@@ -268,7 +268,7 @@ Creates an offer
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
-import { OfferStatusEnumValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { AtsCreateOfferRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 async function run() {
   const sdk = new StackOne({
@@ -279,7 +279,6 @@ async function run() {
 
   const result = await sdk.ats.createOffer({
     atsCreateOfferRequestDto: {
-      applicationId: "string",
       offerHistory: [
         {
           createdAt: new Date("2021-01-01T01:01:01.000Z"),
@@ -289,7 +288,7 @@ async function run() {
       ],
       offerStatus: {
         sourceValue: "Pending",
-        value: OfferStatusEnumValue.Pending,
+        value: AtsCreateOfferRequestDtoValue.Pending,
       },
       startDate: new Date("2021-01-01T01:01:01.000Z"),
     },
@@ -339,9 +338,7 @@ async function run() {
 
   const result = await sdk.ats.getApplication({
     id: "<ID>",
-    proxy: {
-      "key": "string",
-    },
+    proxy: {},
     xAccountId: "string",
   });
 
@@ -388,9 +385,7 @@ async function run() {
 
   const result = await sdk.ats.getApplicationOffer({
     id: "<ID>",
-    proxy: {
-      "key": "string",
-    },
+    proxy: {},
     subResourceId: "string",
     xAccountId: "string",
   });
@@ -438,9 +433,7 @@ async function run() {
 
   const result = await sdk.ats.getApplicationScorecard({
     id: "<ID>",
-    proxy: {
-      "key": "string",
-    },
+    proxy: {},
     subResourceId: "string",
     xAccountId: "string",
   });
@@ -488,9 +481,7 @@ async function run() {
 
   const result = await sdk.ats.getCandidate({
     id: "<ID>",
-    proxy: {
-      "key": "string",
-    },
+    proxy: {},
     xAccountId: "string",
   });
 
@@ -537,9 +528,7 @@ async function run() {
 
   const result = await sdk.ats.getCandidateNote({
     id: "<ID>",
-    proxy: {
-      "key": "string",
-    },
+    proxy: {},
     subResourceId: "string",
     xAccountId: "string",
   });
@@ -587,9 +576,7 @@ async function run() {
 
   const result = await sdk.ats.getDepartment({
     id: "<ID>",
-    proxy: {
-      "key": "string",
-    },
+    proxy: {},
     xAccountId: "string",
   });
 
@@ -636,9 +623,7 @@ async function run() {
 
   const result = await sdk.ats.getInterview({
     id: "<ID>",
-    proxy: {
-      "key": "string",
-    },
+    proxy: {},
     xAccountId: "string",
   });
 
@@ -685,9 +670,7 @@ async function run() {
 
   const result = await sdk.ats.getInterviewStage({
     id: "<ID>",
-    proxy: {
-      "key": "string",
-    },
+    proxy: {},
     xAccountId: "string",
   });
 
@@ -734,9 +717,7 @@ async function run() {
 
   const result = await sdk.ats.getJob({
     id: "<ID>",
-    proxy: {
-      "key": "string",
-    },
+    proxy: {},
     xAccountId: "string",
   });
 
@@ -783,9 +764,7 @@ async function run() {
 
   const result = await sdk.ats.getJobPosting({
     id: "<ID>",
-    proxy: {
-      "key": "string",
-    },
+    proxy: {},
     xAccountId: "string",
   });
 
@@ -832,9 +811,7 @@ async function run() {
 
   const result = await sdk.ats.getLocation({
     id: "<ID>",
-    proxy: {
-      "key": "string",
-    },
+    proxy: {},
     xAccountId: "string",
   });
 
@@ -881,9 +858,7 @@ async function run() {
 
   const result = await sdk.ats.getOffer({
     id: "<ID>",
-    proxy: {
-      "key": "string",
-    },
+    proxy: {},
     xAccountId: "string",
   });
 
@@ -930,9 +905,7 @@ async function run() {
 
   const result = await sdk.ats.getRejectedReason({
     id: "<ID>",
-    proxy: {
-      "key": "string",
-    },
+    proxy: {},
     xAccountId: "string",
   });
 
@@ -979,9 +952,7 @@ async function run() {
 
   const result = await sdk.ats.getUser({
     id: "<ID>",
-    proxy: {
-      "key": "string",
-    },
+    proxy: {},
     xAccountId: "string",
   });
 
@@ -1028,9 +999,7 @@ async function run() {
 
   const result = await sdk.ats.listApplicationScorecards({
     id: "<ID>",
-    proxy: {
-      "key": "string",
-    },
+    proxy: {},
     xAccountId: "string",
   });
 
@@ -1076,9 +1045,7 @@ async function run() {
   });
 
   const result = await sdk.ats.listApplications({
-    proxy: {
-      "key": "string",
-    },
+    proxy: {},
     xAccountId: "string",
   });
 
@@ -1125,9 +1092,7 @@ async function run() {
 
   const result = await sdk.ats.listApplicationsOffers({
     id: "<ID>",
-    proxy: {
-      "key": "string",
-    },
+    proxy: {},
     xAccountId: "string",
   });
 
@@ -1174,9 +1139,7 @@ async function run() {
 
   const result = await sdk.ats.listCandidateNotes({
     id: "<ID>",
-    proxy: {
-      "key": "string",
-    },
+    proxy: {},
     xAccountId: "string",
   });
 
@@ -1222,9 +1185,7 @@ async function run() {
   });
 
   const result = await sdk.ats.listCandidates({
-    proxy: {
-      "key": "string",
-    },
+    proxy: {},
     xAccountId: "string",
   });
 
@@ -1270,9 +1231,7 @@ async function run() {
   });
 
   const result = await sdk.ats.listDepartments({
-    proxy: {
-      "key": "string",
-    },
+    proxy: {},
     xAccountId: "string",
   });
 
@@ -1318,9 +1277,7 @@ async function run() {
   });
 
   const result = await sdk.ats.listInterviewStages({
-    proxy: {
-      "key": "string",
-    },
+    proxy: {},
     xAccountId: "string",
   });
 
@@ -1366,9 +1323,7 @@ async function run() {
   });
 
   const result = await sdk.ats.listInterviews({
-    proxy: {
-      "key": "string",
-    },
+    proxy: {},
     xAccountId: "string",
   });
 
@@ -1414,9 +1369,7 @@ async function run() {
   });
 
   const result = await sdk.ats.listJobPostings({
-    proxy: {
-      "key": "string",
-    },
+    proxy: {},
     xAccountId: "string",
   });
 
@@ -1462,9 +1415,7 @@ async function run() {
   });
 
   const result = await sdk.ats.listJobs({
-    proxy: {
-      "key": "string",
-    },
+    proxy: {},
     xAccountId: "string",
   });
 
@@ -1510,9 +1461,7 @@ async function run() {
   });
 
   const result = await sdk.ats.listLocations({
-    proxy: {
-      "key": "string",
-    },
+    proxy: {},
     xAccountId: "string",
   });
 
@@ -1558,9 +1507,7 @@ async function run() {
   });
 
   const result = await sdk.ats.listOffers({
-    proxy: {
-      "key": "string",
-    },
+    proxy: {},
     xAccountId: "string",
   });
 
@@ -1606,9 +1553,7 @@ async function run() {
   });
 
   const result = await sdk.ats.listRejectedReasons({
-    proxy: {
-      "key": "string",
-    },
+    proxy: {},
     xAccountId: "string",
   });
 
@@ -1654,9 +1599,7 @@ async function run() {
   });
 
   const result = await sdk.ats.listUsers({
-    proxy: {
-      "key": "string",
-    },
+    proxy: {},
     xAccountId: "string",
   });
 
@@ -1693,7 +1636,7 @@ Update Application
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
-import { Value } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { AtsUpdateApplicationRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 async function run() {
   const sdk = new StackOne({
@@ -1706,7 +1649,7 @@ async function run() {
     atsUpdateApplicationRequestDto: {
       applicationStatus: {
         sourceValue: "Hired",
-        value: Value.Hired,
+        value: AtsUpdateApplicationRequestDtoValue.Hired,
       },
       attachments: [
         {
@@ -1719,7 +1662,7 @@ async function run() {
           type: [
             {
               sourceValue: "Resume",
-              value: AttachmentTypeValue.Resume,
+              value: Value.Resume,
             },
           ],
           url: "http://example.com/resume.pdf",

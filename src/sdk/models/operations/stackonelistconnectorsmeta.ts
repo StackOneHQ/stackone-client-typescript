@@ -43,7 +43,7 @@ export namespace StackoneListConnectorsMetaRequest$ {
         Inbound
     > = z
         .object({
-            include: z.nullable(z.string().default("")),
+            include: z.nullable(z.string()).optional(),
         })
         .transform((v) => {
             return {
@@ -52,7 +52,7 @@ export namespace StackoneListConnectorsMetaRequest$ {
         });
 
     export type Outbound = {
-        include: string | null;
+        include?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<
@@ -61,11 +61,11 @@ export namespace StackoneListConnectorsMetaRequest$ {
         StackoneListConnectorsMetaRequest
     > = z
         .object({
-            include: z.nullable(z.string().default("")),
+            include: z.nullable(z.string()).optional(),
         })
         .transform((v) => {
             return {
-                include: v.include,
+                ...(v.include === undefined ? null : { include: v.include }),
             };
         });
 }

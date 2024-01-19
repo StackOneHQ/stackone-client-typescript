@@ -1,9 +1,0 @@
-# OfferStatusEnum
-
-
-## Fields
-
-| Field                                                                             | Type                                                                              | Required                                                                          | Description                                                                       | Example                                                                           |
-| --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
-| `sourceValue`                                                                     | *string*                                                                          | :heavy_check_mark:                                                                | The source value of the offer status.                                             | Pending                                                                           |
-| `value`                                                                           | [shared.OfferStatusEnumValue](../../../sdk/models/shared/offerstatusenumvalue.md) | :heavy_check_mark:                                                                | The status of the offer.                                                          | pending                                                                           |
