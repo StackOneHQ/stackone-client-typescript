@@ -3,21 +3,63 @@
  */
 
 import { ApplicationAttachment, ApplicationAttachment$ } from "./applicationattachment";
-import { ApplicationCandidate, ApplicationCandidate$ } from "./applicationcandidate";
-import {
-    ApplicationStatusEnumApiModel,
-    ApplicationStatusEnumApiModel$,
-} from "./applicationstatusenumapimodel";
 import { InterviewStage, InterviewStage$ } from "./interviewstage";
 import { Questionnaire, Questionnaire$ } from "./questionnaire";
 import { RejectedReason, RejectedReason$ } from "./rejectedreason";
 import { ResultLink, ResultLink$ } from "./resultlink";
 import { z } from "zod";
 
+/**
+ * The status of the application.
+ */
+export enum ApplicationValue {
+    Active = "active",
+    Assessment = "assessment",
+    BackgroundCheck = "background_check",
+    Converted = "converted",
+    DeclinedByCandidate = "declined_by_candidate",
+    Hired = "hired",
+    Interview = "interview",
+    Lead = "lead",
+    Offer = "offer",
+    ReferenceCheck = "reference_check",
+    Rejected = "rejected",
+    Review = "review",
+    Screen = "screen",
+    New = "new",
+    UnmappedValue = "unmapped_value",
+}
+
+export type ApplicationStatus = {
+    /**
+     * The source value of the application status.
+     */
+    sourceValue?: string | null | undefined;
+    /**
+     * The status of the application.
+     */
+    value?: ApplicationValue | null | undefined;
+};
+
+export type ApplicationCandidate = {
+    /**
+     * Email of the candidate
+     */
+    email?: string | null | undefined;
+    /**
+     * First name of the candidate
+     */
+    firstName?: string | null | undefined;
+    /**
+     * Last name of the candidate
+     */
+    lastName?: string | null | undefined;
+};
+
 export type Application = {
-    applicationStatus: ApplicationStatusEnumApiModel;
+    applicationStatus?: ApplicationStatus | null | undefined;
     attachments?: Array<ApplicationAttachment> | null | undefined;
-    candidate: ApplicationCandidate;
+    candidate?: ApplicationCandidate | null | undefined;
     /**
      * Unique identifier of the candidate
      */
@@ -68,11 +110,94 @@ export type Application = {
 };
 
 /** @internal */
+export const ApplicationValue$ = z.nativeEnum(ApplicationValue);
+
+/** @internal */
+export namespace ApplicationStatus$ {
+    export type Inbound = {
+        source_value?: string | null | undefined;
+        value?: ApplicationValue | null | undefined;
+    };
+
+    export const inboundSchema: z.ZodType<ApplicationStatus, z.ZodTypeDef, Inbound> = z
+        .object({
+            source_value: z.nullable(z.string()).optional(),
+            value: z.nullable(ApplicationValue$).optional(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.source_value === undefined ? null : { sourceValue: v.source_value }),
+                ...(v.value === undefined ? null : { value: v.value }),
+            };
+        });
+
+    export type Outbound = {
+        source_value?: string | null | undefined;
+        value?: ApplicationValue | null | undefined;
+    };
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ApplicationStatus> = z
+        .object({
+            sourceValue: z.nullable(z.string()).optional(),
+            value: z.nullable(ApplicationValue$).optional(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.sourceValue === undefined ? null : { source_value: v.sourceValue }),
+                ...(v.value === undefined ? null : { value: v.value }),
+            };
+        });
+}
+
+/** @internal */
+export namespace ApplicationCandidate$ {
+    export type Inbound = {
+        email?: string | null | undefined;
+        first_name?: string | null | undefined;
+        last_name?: string | null | undefined;
+    };
+
+    export const inboundSchema: z.ZodType<ApplicationCandidate, z.ZodTypeDef, Inbound> = z
+        .object({
+            email: z.nullable(z.string()).optional(),
+            first_name: z.nullable(z.string()).optional(),
+            last_name: z.nullable(z.string()).optional(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.email === undefined ? null : { email: v.email }),
+                ...(v.first_name === undefined ? null : { firstName: v.first_name }),
+                ...(v.last_name === undefined ? null : { lastName: v.last_name }),
+            };
+        });
+
+    export type Outbound = {
+        email?: string | null | undefined;
+        first_name?: string | null | undefined;
+        last_name?: string | null | undefined;
+    };
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ApplicationCandidate> = z
+        .object({
+            email: z.nullable(z.string()).optional(),
+            firstName: z.nullable(z.string()).optional(),
+            lastName: z.nullable(z.string()).optional(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.email === undefined ? null : { email: v.email }),
+                ...(v.firstName === undefined ? null : { first_name: v.firstName }),
+                ...(v.lastName === undefined ? null : { last_name: v.lastName }),
+            };
+        });
+}
+
+/** @internal */
 export namespace Application$ {
     export type Inbound = {
-        application_status: ApplicationStatusEnumApiModel$.Inbound;
+        application_status?: ApplicationStatus$.Inbound | null | undefined;
         attachments?: Array<ApplicationAttachment$.Inbound> | null | undefined;
-        candidate: ApplicationCandidate$.Inbound;
+        candidate?: ApplicationCandidate$.Inbound | null | undefined;
         candidate_id?: string | null | undefined;
         created_at?: string | null | undefined;
         id?: string | null | undefined;
@@ -91,9 +216,11 @@ export namespace Application$ {
 
     export const inboundSchema: z.ZodType<Application, z.ZodTypeDef, Inbound> = z
         .object({
-            application_status: ApplicationStatusEnumApiModel$.inboundSchema,
+            application_status: z
+                .nullable(z.lazy(() => ApplicationStatus$.inboundSchema))
+                .optional(),
             attachments: z.nullable(z.array(ApplicationAttachment$.inboundSchema)).optional(),
-            candidate: ApplicationCandidate$.inboundSchema,
+            candidate: z.nullable(z.lazy(() => ApplicationCandidate$.inboundSchema)).optional(),
             candidate_id: z.nullable(z.string()).optional(),
             created_at: z
                 .nullable(
@@ -132,9 +259,11 @@ export namespace Application$ {
         })
         .transform((v) => {
             return {
-                applicationStatus: v.application_status,
+                ...(v.application_status === undefined
+                    ? null
+                    : { applicationStatus: v.application_status }),
                 ...(v.attachments === undefined ? null : { attachments: v.attachments }),
-                candidate: v.candidate,
+                ...(v.candidate === undefined ? null : { candidate: v.candidate }),
                 ...(v.candidate_id === undefined ? null : { candidateId: v.candidate_id }),
                 ...(v.created_at === undefined ? null : { createdAt: v.created_at }),
                 ...(v.id === undefined ? null : { id: v.id }),
@@ -159,9 +288,9 @@ export namespace Application$ {
         });
 
     export type Outbound = {
-        application_status: ApplicationStatusEnumApiModel$.Outbound;
+        application_status?: ApplicationStatus$.Outbound | null | undefined;
         attachments?: Array<ApplicationAttachment$.Outbound> | null | undefined;
-        candidate: ApplicationCandidate$.Outbound;
+        candidate?: ApplicationCandidate$.Outbound | null | undefined;
         candidate_id?: string | null | undefined;
         created_at?: string | null | undefined;
         id?: string | null | undefined;
@@ -180,9 +309,11 @@ export namespace Application$ {
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Application> = z
         .object({
-            applicationStatus: ApplicationStatusEnumApiModel$.outboundSchema,
+            applicationStatus: z
+                .nullable(z.lazy(() => ApplicationStatus$.outboundSchema))
+                .optional(),
             attachments: z.nullable(z.array(ApplicationAttachment$.outboundSchema)).optional(),
-            candidate: ApplicationCandidate$.outboundSchema,
+            candidate: z.nullable(z.lazy(() => ApplicationCandidate$.outboundSchema)).optional(),
             candidateId: z.nullable(z.string()).optional(),
             createdAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
             id: z.nullable(z.string()).optional(),
@@ -200,9 +331,11 @@ export namespace Application$ {
         })
         .transform((v) => {
             return {
-                application_status: v.applicationStatus,
+                ...(v.applicationStatus === undefined
+                    ? null
+                    : { application_status: v.applicationStatus }),
                 ...(v.attachments === undefined ? null : { attachments: v.attachments }),
-                candidate: v.candidate,
+                ...(v.candidate === undefined ? null : { candidate: v.candidate }),
                 ...(v.candidateId === undefined ? null : { candidate_id: v.candidateId }),
                 ...(v.createdAt === undefined ? null : { created_at: v.createdAt }),
                 ...(v.id === undefined ? null : { id: v.id }),

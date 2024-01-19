@@ -32,7 +32,7 @@ export type AtsCreateNotesRequestDto = {
      * Unique identifier of the author
      */
     authorId?: string | null | undefined;
-    content: Array<NoteContentApiModel>;
+    content?: Array<NoteContentApiModel> | null | undefined;
     /**
      * Visibility of the note
      */
@@ -83,40 +83,40 @@ export namespace Visibility$ {
 export namespace AtsCreateNotesRequestDto$ {
     export type Inbound = {
         author_id?: string | null | undefined;
-        content: Array<NoteContentApiModel$.Inbound>;
+        content?: Array<NoteContentApiModel$.Inbound> | null | undefined;
         visibility?: Visibility$.Inbound | null | undefined;
     };
 
     export const inboundSchema: z.ZodType<AtsCreateNotesRequestDto, z.ZodTypeDef, Inbound> = z
         .object({
             author_id: z.nullable(z.string()).optional(),
-            content: z.array(NoteContentApiModel$.inboundSchema),
+            content: z.nullable(z.array(NoteContentApiModel$.inboundSchema)).optional(),
             visibility: z.nullable(z.lazy(() => Visibility$.inboundSchema)).optional(),
         })
         .transform((v) => {
             return {
                 ...(v.author_id === undefined ? null : { authorId: v.author_id }),
-                content: v.content,
+                ...(v.content === undefined ? null : { content: v.content }),
                 ...(v.visibility === undefined ? null : { visibility: v.visibility }),
             };
         });
 
     export type Outbound = {
         author_id?: string | null | undefined;
-        content: Array<NoteContentApiModel$.Outbound>;
+        content?: Array<NoteContentApiModel$.Outbound> | null | undefined;
         visibility?: Visibility$.Outbound | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, AtsCreateNotesRequestDto> = z
         .object({
             authorId: z.nullable(z.string()).optional(),
-            content: z.array(NoteContentApiModel$.outboundSchema),
+            content: z.nullable(z.array(NoteContentApiModel$.outboundSchema)).optional(),
             visibility: z.nullable(z.lazy(() => Visibility$.outboundSchema)).optional(),
         })
         .transform((v) => {
             return {
                 ...(v.authorId === undefined ? null : { author_id: v.authorId }),
-                content: v.content,
+                ...(v.content === undefined ? null : { content: v.content }),
                 ...(v.visibility === undefined ? null : { visibility: v.visibility }),
             };
         });

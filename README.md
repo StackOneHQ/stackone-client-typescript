@@ -38,9 +38,7 @@ async function run() {
     });
 
     const result = await sdk.hris.listEmployees({
-        proxy: {
-            key: "string",
-        },
+        proxy: {},
         xAccountId: "string",
     });
 
@@ -190,9 +188,7 @@ async function run() {
     });
 
     const result = await sdk.hris.listEmployees({
-        proxy: {
-            key: "string",
-        },
+        proxy: {},
         xAccountId: "string",
     });
 

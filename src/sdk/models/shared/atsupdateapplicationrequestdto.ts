@@ -3,18 +3,60 @@
  */
 
 import { ApplicationAttachment, ApplicationAttachment$ } from "./applicationattachment";
-import { ApplicationCandidate, ApplicationCandidate$ } from "./applicationcandidate";
-import {
-    ApplicationStatusEnumApiModel,
-    ApplicationStatusEnumApiModel$,
-} from "./applicationstatusenumapimodel";
 import { Questionnaire, Questionnaire$ } from "./questionnaire";
 import { z } from "zod";
 
+/**
+ * The status of the application.
+ */
+export enum AtsUpdateApplicationRequestDtoValue {
+    Active = "active",
+    Assessment = "assessment",
+    BackgroundCheck = "background_check",
+    Converted = "converted",
+    DeclinedByCandidate = "declined_by_candidate",
+    Hired = "hired",
+    Interview = "interview",
+    Lead = "lead",
+    Offer = "offer",
+    ReferenceCheck = "reference_check",
+    Rejected = "rejected",
+    Review = "review",
+    Screen = "screen",
+    New = "new",
+    UnmappedValue = "unmapped_value",
+}
+
+export type AtsUpdateApplicationRequestDtoApplicationStatus = {
+    /**
+     * The source value of the application status.
+     */
+    sourceValue?: string | null | undefined;
+    /**
+     * The status of the application.
+     */
+    value?: AtsUpdateApplicationRequestDtoValue | null | undefined;
+};
+
+export type AtsUpdateApplicationRequestDtoCandidate = {
+    /**
+     * Email of the candidate
+     */
+    email?: string | null | undefined;
+    /**
+     * First name of the candidate
+     */
+    firstName?: string | null | undefined;
+    /**
+     * Last name of the candidate
+     */
+    lastName?: string | null | undefined;
+};
+
 export type AtsUpdateApplicationRequestDto = {
-    applicationStatus?: ApplicationStatusEnumApiModel | undefined;
+    applicationStatus?: AtsUpdateApplicationRequestDtoApplicationStatus | null | undefined;
     attachments?: Array<ApplicationAttachment> | null | undefined;
-    candidate?: ApplicationCandidate | undefined;
+    candidate?: AtsUpdateApplicationRequestDtoCandidate | null | undefined;
     /**
      * Unique identifier of the candidate
      */
@@ -38,11 +80,115 @@ export type AtsUpdateApplicationRequestDto = {
 };
 
 /** @internal */
+export const AtsUpdateApplicationRequestDtoValue$ = z.nativeEnum(
+    AtsUpdateApplicationRequestDtoValue
+);
+
+/** @internal */
+export namespace AtsUpdateApplicationRequestDtoApplicationStatus$ {
+    export type Inbound = {
+        source_value?: string | null | undefined;
+        value?: AtsUpdateApplicationRequestDtoValue | null | undefined;
+    };
+
+    export const inboundSchema: z.ZodType<
+        AtsUpdateApplicationRequestDtoApplicationStatus,
+        z.ZodTypeDef,
+        Inbound
+    > = z
+        .object({
+            source_value: z.nullable(z.string()).optional(),
+            value: z.nullable(AtsUpdateApplicationRequestDtoValue$).optional(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.source_value === undefined ? null : { sourceValue: v.source_value }),
+                ...(v.value === undefined ? null : { value: v.value }),
+            };
+        });
+
+    export type Outbound = {
+        source_value?: string | null | undefined;
+        value?: AtsUpdateApplicationRequestDtoValue | null | undefined;
+    };
+
+    export const outboundSchema: z.ZodType<
+        Outbound,
+        z.ZodTypeDef,
+        AtsUpdateApplicationRequestDtoApplicationStatus
+    > = z
+        .object({
+            sourceValue: z.nullable(z.string()).optional(),
+            value: z.nullable(AtsUpdateApplicationRequestDtoValue$).optional(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.sourceValue === undefined ? null : { source_value: v.sourceValue }),
+                ...(v.value === undefined ? null : { value: v.value }),
+            };
+        });
+}
+
+/** @internal */
+export namespace AtsUpdateApplicationRequestDtoCandidate$ {
+    export type Inbound = {
+        email?: string | null | undefined;
+        first_name?: string | null | undefined;
+        last_name?: string | null | undefined;
+    };
+
+    export const inboundSchema: z.ZodType<
+        AtsUpdateApplicationRequestDtoCandidate,
+        z.ZodTypeDef,
+        Inbound
+    > = z
+        .object({
+            email: z.nullable(z.string()).optional(),
+            first_name: z.nullable(z.string()).optional(),
+            last_name: z.nullable(z.string()).optional(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.email === undefined ? null : { email: v.email }),
+                ...(v.first_name === undefined ? null : { firstName: v.first_name }),
+                ...(v.last_name === undefined ? null : { lastName: v.last_name }),
+            };
+        });
+
+    export type Outbound = {
+        email?: string | null | undefined;
+        first_name?: string | null | undefined;
+        last_name?: string | null | undefined;
+    };
+
+    export const outboundSchema: z.ZodType<
+        Outbound,
+        z.ZodTypeDef,
+        AtsUpdateApplicationRequestDtoCandidate
+    > = z
+        .object({
+            email: z.nullable(z.string()).optional(),
+            firstName: z.nullable(z.string()).optional(),
+            lastName: z.nullable(z.string()).optional(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.email === undefined ? null : { email: v.email }),
+                ...(v.firstName === undefined ? null : { first_name: v.firstName }),
+                ...(v.lastName === undefined ? null : { last_name: v.lastName }),
+            };
+        });
+}
+
+/** @internal */
 export namespace AtsUpdateApplicationRequestDto$ {
     export type Inbound = {
-        application_status?: ApplicationStatusEnumApiModel$.Inbound | undefined;
+        application_status?:
+            | AtsUpdateApplicationRequestDtoApplicationStatus$.Inbound
+            | null
+            | undefined;
         attachments?: Array<ApplicationAttachment$.Inbound> | null | undefined;
-        candidate?: ApplicationCandidate$.Inbound | undefined;
+        candidate?: AtsUpdateApplicationRequestDtoCandidate$.Inbound | null | undefined;
         candidate_id?: string | null | undefined;
         id?: string | null | undefined;
         job_id?: string | null | undefined;
@@ -52,11 +198,17 @@ export namespace AtsUpdateApplicationRequestDto$ {
 
     export const inboundSchema: z.ZodType<AtsUpdateApplicationRequestDto, z.ZodTypeDef, Inbound> = z
         .object({
-            application_status: ApplicationStatusEnumApiModel$.inboundSchema.optional(),
+            application_status: z
+                .nullable(
+                    z.lazy(() => AtsUpdateApplicationRequestDtoApplicationStatus$.inboundSchema)
+                )
+                .optional(),
             attachments: z.nullable(z.array(ApplicationAttachment$.inboundSchema)).optional(),
-            candidate: ApplicationCandidate$.inboundSchema.optional(),
+            candidate: z
+                .nullable(z.lazy(() => AtsUpdateApplicationRequestDtoCandidate$.inboundSchema))
+                .optional(),
             candidate_id: z.nullable(z.string()).optional(),
-            id: z.nullable(z.string().default("")),
+            id: z.nullable(z.string()).optional(),
             job_id: z.nullable(z.string()).optional(),
             location_ids: z.nullable(z.array(z.string())).optional(),
             questionnaires: z.nullable(z.array(Questionnaire$.inboundSchema)).optional(),
@@ -77,11 +229,14 @@ export namespace AtsUpdateApplicationRequestDto$ {
         });
 
     export type Outbound = {
-        application_status?: ApplicationStatusEnumApiModel$.Outbound | undefined;
+        application_status?:
+            | AtsUpdateApplicationRequestDtoApplicationStatus$.Outbound
+            | null
+            | undefined;
         attachments?: Array<ApplicationAttachment$.Outbound> | null | undefined;
-        candidate?: ApplicationCandidate$.Outbound | undefined;
+        candidate?: AtsUpdateApplicationRequestDtoCandidate$.Outbound | null | undefined;
         candidate_id?: string | null | undefined;
-        id: string | null;
+        id?: string | null | undefined;
         job_id?: string | null | undefined;
         location_ids?: Array<string> | null | undefined;
         questionnaires?: Array<Questionnaire$.Outbound> | null | undefined;
@@ -90,11 +245,19 @@ export namespace AtsUpdateApplicationRequestDto$ {
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, AtsUpdateApplicationRequestDto> =
         z
             .object({
-                applicationStatus: ApplicationStatusEnumApiModel$.outboundSchema.optional(),
+                applicationStatus: z
+                    .nullable(
+                        z.lazy(
+                            () => AtsUpdateApplicationRequestDtoApplicationStatus$.outboundSchema
+                        )
+                    )
+                    .optional(),
                 attachments: z.nullable(z.array(ApplicationAttachment$.outboundSchema)).optional(),
-                candidate: ApplicationCandidate$.outboundSchema.optional(),
+                candidate: z
+                    .nullable(z.lazy(() => AtsUpdateApplicationRequestDtoCandidate$.outboundSchema))
+                    .optional(),
                 candidateId: z.nullable(z.string()).optional(),
-                id: z.nullable(z.string().default("")),
+                id: z.nullable(z.string()).optional(),
                 jobId: z.nullable(z.string()).optional(),
                 locationIds: z.nullable(z.array(z.string())).optional(),
                 questionnaires: z.nullable(z.array(Questionnaire$.outboundSchema)).optional(),
@@ -107,7 +270,7 @@ export namespace AtsUpdateApplicationRequestDto$ {
                     ...(v.attachments === undefined ? null : { attachments: v.attachments }),
                     ...(v.candidate === undefined ? null : { candidate: v.candidate }),
                     ...(v.candidateId === undefined ? null : { candidate_id: v.candidateId }),
-                    id: v.id,
+                    ...(v.id === undefined ? null : { id: v.id }),
                     ...(v.jobId === undefined ? null : { job_id: v.jobId }),
                     ...(v.locationIds === undefined ? null : { location_ids: v.locationIds }),
                     ...(v.questionnaires === undefined

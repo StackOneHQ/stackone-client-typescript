@@ -9,8 +9,8 @@ export type InterviewStage = {
      * Interview Stage created date
      */
     createdAt?: Date | null | undefined;
-    id: string;
-    name: string;
+    id?: string | null | undefined;
+    name?: string | null | undefined;
     order?: number | null | undefined;
     /**
      * Interview Stage updated date
@@ -22,8 +22,8 @@ export type InterviewStage = {
 export namespace InterviewStage$ {
     export type Inbound = {
         created_at?: string | null | undefined;
-        id: string;
-        name: string;
+        id?: string | null | undefined;
+        name?: string | null | undefined;
         order?: number | null | undefined;
         updated_at?: string | null | undefined;
     };
@@ -38,8 +38,8 @@ export namespace InterviewStage$ {
                         .transform((v) => new Date(v))
                 )
                 .optional(),
-            id: z.string(),
-            name: z.string(),
+            id: z.nullable(z.string()).optional(),
+            name: z.nullable(z.string()).optional(),
             order: z.nullable(z.number()).optional(),
             updated_at: z
                 .nullable(
@@ -53,8 +53,8 @@ export namespace InterviewStage$ {
         .transform((v) => {
             return {
                 ...(v.created_at === undefined ? null : { createdAt: v.created_at }),
-                id: v.id,
-                name: v.name,
+                ...(v.id === undefined ? null : { id: v.id }),
+                ...(v.name === undefined ? null : { name: v.name }),
                 ...(v.order === undefined ? null : { order: v.order }),
                 ...(v.updated_at === undefined ? null : { updatedAt: v.updated_at }),
             };
@@ -62,8 +62,8 @@ export namespace InterviewStage$ {
 
     export type Outbound = {
         created_at?: string | null | undefined;
-        id: string;
-        name: string;
+        id?: string | null | undefined;
+        name?: string | null | undefined;
         order?: number | null | undefined;
         updated_at?: string | null | undefined;
     };
@@ -71,16 +71,16 @@ export namespace InterviewStage$ {
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, InterviewStage> = z
         .object({
             createdAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
-            id: z.string(),
-            name: z.string(),
+            id: z.nullable(z.string()).optional(),
+            name: z.nullable(z.string()).optional(),
             order: z.nullable(z.number()).optional(),
             updatedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
         })
         .transform((v) => {
             return {
                 ...(v.createdAt === undefined ? null : { created_at: v.createdAt }),
-                id: v.id,
-                name: v.name,
+                ...(v.id === undefined ? null : { id: v.id }),
+                ...(v.name === undefined ? null : { name: v.name }),
                 ...(v.order === undefined ? null : { order: v.order }),
                 ...(v.updatedAt === undefined ? null : { updated_at: v.updatedAt }),
             };

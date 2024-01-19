@@ -8,46 +8,46 @@ export type SocialLink = {
     /**
      * Type of the social link
      */
-    type: string;
+    type?: string | null | undefined;
     /**
      * URL of the social link
      */
-    url: string;
+    url?: string | null | undefined;
 };
 
 /** @internal */
 export namespace SocialLink$ {
     export type Inbound = {
-        type: string;
-        url: string;
+        type?: string | null | undefined;
+        url?: string | null | undefined;
     };
 
     export const inboundSchema: z.ZodType<SocialLink, z.ZodTypeDef, Inbound> = z
         .object({
-            type: z.string(),
-            url: z.string(),
+            type: z.nullable(z.string()).optional(),
+            url: z.nullable(z.string()).optional(),
         })
         .transform((v) => {
             return {
-                type: v.type,
-                url: v.url,
+                ...(v.type === undefined ? null : { type: v.type }),
+                ...(v.url === undefined ? null : { url: v.url }),
             };
         });
 
     export type Outbound = {
-        type: string;
-        url: string;
+        type?: string | null | undefined;
+        url?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, SocialLink> = z
         .object({
-            type: z.string(),
-            url: z.string(),
+            type: z.nullable(z.string()).optional(),
+            url: z.nullable(z.string()).optional(),
         })
         .transform((v) => {
             return {
-                type: v.type,
-                url: v.url,
+                ...(v.type === undefined ? null : { type: v.type }),
+                ...(v.url === undefined ? null : { url: v.url }),
             };
         });
 }

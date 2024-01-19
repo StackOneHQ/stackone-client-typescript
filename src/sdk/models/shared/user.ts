@@ -6,70 +6,70 @@ import { z } from "zod";
 
 export type User = {
     email: string;
-    firstName: string;
+    firstName?: string | null | undefined;
     id: string;
-    lastName: string;
-    name: string;
-    phone: string;
+    lastName?: string | null | undefined;
+    name?: string | null | undefined;
+    phone?: string | null | undefined;
 };
 
 /** @internal */
 export namespace User$ {
     export type Inbound = {
         email: string;
-        first_name: string;
+        first_name?: string | null | undefined;
         id: string;
-        last_name: string;
-        name: string;
-        phone: string;
+        last_name?: string | null | undefined;
+        name?: string | null | undefined;
+        phone?: string | null | undefined;
     };
 
     export const inboundSchema: z.ZodType<User, z.ZodTypeDef, Inbound> = z
         .object({
             email: z.string(),
-            first_name: z.string(),
+            first_name: z.nullable(z.string()).optional(),
             id: z.string(),
-            last_name: z.string(),
-            name: z.string(),
-            phone: z.string(),
+            last_name: z.nullable(z.string()).optional(),
+            name: z.nullable(z.string()).optional(),
+            phone: z.nullable(z.string()).optional(),
         })
         .transform((v) => {
             return {
                 email: v.email,
-                firstName: v.first_name,
+                ...(v.first_name === undefined ? null : { firstName: v.first_name }),
                 id: v.id,
-                lastName: v.last_name,
-                name: v.name,
-                phone: v.phone,
+                ...(v.last_name === undefined ? null : { lastName: v.last_name }),
+                ...(v.name === undefined ? null : { name: v.name }),
+                ...(v.phone === undefined ? null : { phone: v.phone }),
             };
         });
 
     export type Outbound = {
         email: string;
-        first_name: string;
+        first_name?: string | null | undefined;
         id: string;
-        last_name: string;
-        name: string;
-        phone: string;
+        last_name?: string | null | undefined;
+        name?: string | null | undefined;
+        phone?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, User> = z
         .object({
             email: z.string(),
-            firstName: z.string(),
+            firstName: z.nullable(z.string()).optional(),
             id: z.string(),
-            lastName: z.string(),
-            name: z.string(),
-            phone: z.string(),
+            lastName: z.nullable(z.string()).optional(),
+            name: z.nullable(z.string()).optional(),
+            phone: z.nullable(z.string()).optional(),
         })
         .transform((v) => {
             return {
                 email: v.email,
-                first_name: v.firstName,
+                ...(v.firstName === undefined ? null : { first_name: v.firstName }),
                 id: v.id,
-                last_name: v.lastName,
-                name: v.name,
-                phone: v.phone,
+                ...(v.lastName === undefined ? null : { last_name: v.lastName }),
+                ...(v.name === undefined ? null : { name: v.name }),
+                ...(v.phone === undefined ? null : { phone: v.phone }),
             };
         });
 }

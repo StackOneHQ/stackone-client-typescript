@@ -70,11 +70,11 @@ export type HrisCreateEmployeeRequestDtoEmploymentType = {
     /**
      * The source value of the employment type.
      */
-    sourceValue: string;
+    sourceValue?: string | null | undefined;
     /**
      * The type of the employment.
      */
-    value: HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue;
+    value?: HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue | null | undefined;
 };
 
 export enum HrisCreateEmployeeRequestDtoSchemasEthnicityValue {
@@ -8703,8 +8703,8 @@ export const HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue$ = z.nativeE
 /** @internal */
 export namespace HrisCreateEmployeeRequestDtoEmploymentType$ {
     export type Inbound = {
-        source_value: string;
-        value: HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue;
+        source_value?: string | null | undefined;
+        value?: HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue | null | undefined;
     };
 
     export const inboundSchema: z.ZodType<
@@ -8713,19 +8713,19 @@ export namespace HrisCreateEmployeeRequestDtoEmploymentType$ {
         Inbound
     > = z
         .object({
-            source_value: z.string(),
-            value: HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue$,
+            source_value: z.nullable(z.string()).optional(),
+            value: z.nullable(HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue$).optional(),
         })
         .transform((v) => {
             return {
-                sourceValue: v.source_value,
-                value: v.value,
+                ...(v.source_value === undefined ? null : { sourceValue: v.source_value }),
+                ...(v.value === undefined ? null : { value: v.value }),
             };
         });
 
     export type Outbound = {
-        source_value: string;
-        value: HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue;
+        source_value?: string | null | undefined;
+        value?: HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<
@@ -8734,13 +8734,13 @@ export namespace HrisCreateEmployeeRequestDtoEmploymentType$ {
         HrisCreateEmployeeRequestDtoEmploymentType
     > = z
         .object({
-            sourceValue: z.string(),
-            value: HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue$,
+            sourceValue: z.nullable(z.string()).optional(),
+            value: z.nullable(HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue$).optional(),
         })
         .transform((v) => {
             return {
-                source_value: v.sourceValue,
-                value: v.value,
+                ...(v.sourceValue === undefined ? null : { source_value: v.sourceValue }),
+                ...(v.value === undefined ? null : { value: v.value }),
             };
         });
 }

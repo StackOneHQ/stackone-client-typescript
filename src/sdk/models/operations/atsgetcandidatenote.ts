@@ -5,6 +5,11 @@
 import * as shared from "../../../sdk/models/shared";
 import { z } from "zod";
 
+/**
+ * Query parameters that can be used to pass through parameters to the underlying provider request by surrounding them with "proxy" key
+ */
+export type AtsGetCandidateNoteQueryParamProxy = {};
+
 export type AtsGetCandidateNoteRequest = {
     /**
      * The comma separated list of fields to return in the response (if empty, all fields are returned)
@@ -28,7 +33,7 @@ export type AtsGetCandidateNoteRequest = {
     /**
      * Query parameters that can be used to pass through parameters to the underlying provider request by surrounding them with "proxy" key
      */
-    proxy?: Record<string, any> | null | undefined;
+    proxy?: AtsGetCandidateNoteQueryParamProxy | null | undefined;
     /**
      * Indicates that the raw request result is returned
      */
@@ -68,6 +73,25 @@ export type AtsGetCandidateNoteResponse = {
 };
 
 /** @internal */
+export namespace AtsGetCandidateNoteQueryParamProxy$ {
+    export type Inbound = {};
+
+    export const inboundSchema: z.ZodType<
+        AtsGetCandidateNoteQueryParamProxy,
+        z.ZodTypeDef,
+        Inbound
+    > = z.object({});
+
+    export type Outbound = {};
+
+    export const outboundSchema: z.ZodType<
+        Outbound,
+        z.ZodTypeDef,
+        AtsGetCandidateNoteQueryParamProxy
+    > = z.object({});
+}
+
+/** @internal */
 export namespace AtsGetCandidateNoteRequest$ {
     export type Inbound = {
         fields?: string | null | undefined;
@@ -75,7 +99,7 @@ export namespace AtsGetCandidateNoteRequest$ {
         next?: string | null | undefined;
         page?: string | null | undefined;
         page_size?: string | null | undefined;
-        proxy?: Record<string, any> | null | undefined;
+        proxy?: AtsGetCandidateNoteQueryParamProxy$.Inbound | null | undefined;
         raw?: boolean | null | undefined;
         subResourceId: string;
         sync_token?: string | null | undefined;
@@ -85,12 +109,14 @@ export namespace AtsGetCandidateNoteRequest$ {
 
     export const inboundSchema: z.ZodType<AtsGetCandidateNoteRequest, z.ZodTypeDef, Inbound> = z
         .object({
-            fields: z.nullable(z.string().default("")),
+            fields: z.nullable(z.string()).optional(),
             id: z.string(),
             next: z.nullable(z.string()).optional(),
             page: z.nullable(z.string()).optional(),
             page_size: z.nullable(z.string().default("25")),
-            proxy: z.nullable(z.record(z.any())).optional(),
+            proxy: z
+                .nullable(z.lazy(() => AtsGetCandidateNoteQueryParamProxy$.inboundSchema))
+                .optional(),
             raw: z.nullable(z.boolean().default(false)),
             subResourceId: z.string(),
             sync_token: z.nullable(z.string()).optional(),
@@ -114,12 +140,12 @@ export namespace AtsGetCandidateNoteRequest$ {
         });
 
     export type Outbound = {
-        fields: string | null;
+        fields?: string | null | undefined;
         id: string;
         next?: string | null | undefined;
         page?: string | null | undefined;
         page_size: string | null;
-        proxy?: Record<string, any> | null | undefined;
+        proxy?: AtsGetCandidateNoteQueryParamProxy$.Outbound | null | undefined;
         raw: boolean | null;
         subResourceId: string;
         sync_token?: string | null | undefined;
@@ -129,12 +155,14 @@ export namespace AtsGetCandidateNoteRequest$ {
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, AtsGetCandidateNoteRequest> = z
         .object({
-            fields: z.nullable(z.string().default("")),
+            fields: z.nullable(z.string()).optional(),
             id: z.string(),
             next: z.nullable(z.string()).optional(),
             page: z.nullable(z.string()).optional(),
             pageSize: z.nullable(z.string().default("25")),
-            proxy: z.nullable(z.record(z.any())).optional(),
+            proxy: z
+                .nullable(z.lazy(() => AtsGetCandidateNoteQueryParamProxy$.outboundSchema))
+                .optional(),
             raw: z.nullable(z.boolean().default(false)),
             subResourceId: z.string(),
             syncToken: z.nullable(z.string()).optional(),
@@ -143,7 +171,7 @@ export namespace AtsGetCandidateNoteRequest$ {
         })
         .transform((v) => {
             return {
-                fields: v.fields,
+                ...(v.fields === undefined ? null : { fields: v.fields }),
                 id: v.id,
                 ...(v.next === undefined ? null : { next: v.next }),
                 ...(v.page === undefined ? null : { page: v.page }),

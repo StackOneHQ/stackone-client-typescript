@@ -5,6 +5,11 @@
 import * as shared from "../../../sdk/models/shared";
 import { z } from "zod";
 
+/**
+ * Query parameters that can be used to pass through parameters to the underlying provider request by surrounding them with "proxy" key
+ */
+export type HrisListEmploymentsQueryParamProxy = {};
+
 export type HrisListEmploymentsRequest = {
     /**
      * The comma separated list of fields to return in the response (if empty, all fields are returned)
@@ -27,7 +32,7 @@ export type HrisListEmploymentsRequest = {
     /**
      * Query parameters that can be used to pass through parameters to the underlying provider request by surrounding them with "proxy" key
      */
-    proxy?: Record<string, any> | null | undefined;
+    proxy?: HrisListEmploymentsQueryParamProxy | null | undefined;
     /**
      * Indicates that the raw request result is returned
      */
@@ -66,13 +71,32 @@ export type HrisListEmploymentsResponse = {
 };
 
 /** @internal */
+export namespace HrisListEmploymentsQueryParamProxy$ {
+    export type Inbound = {};
+
+    export const inboundSchema: z.ZodType<
+        HrisListEmploymentsQueryParamProxy,
+        z.ZodTypeDef,
+        Inbound
+    > = z.object({});
+
+    export type Outbound = {};
+
+    export const outboundSchema: z.ZodType<
+        Outbound,
+        z.ZodTypeDef,
+        HrisListEmploymentsQueryParamProxy
+    > = z.object({});
+}
+
+/** @internal */
 export namespace HrisListEmploymentsRequest$ {
     export type Inbound = {
         fields?: string | null | undefined;
         next?: string | null | undefined;
         page?: string | null | undefined;
         page_size?: string | null | undefined;
-        proxy?: Record<string, any> | null | undefined;
+        proxy?: HrisListEmploymentsQueryParamProxy$.Inbound | null | undefined;
         raw?: boolean | null | undefined;
         sync_token?: string | null | undefined;
         updated_after?: string | null | undefined;
@@ -81,11 +105,13 @@ export namespace HrisListEmploymentsRequest$ {
 
     export const inboundSchema: z.ZodType<HrisListEmploymentsRequest, z.ZodTypeDef, Inbound> = z
         .object({
-            fields: z.nullable(z.string().default("")),
+            fields: z.nullable(z.string()).optional(),
             next: z.nullable(z.string()).optional(),
             page: z.nullable(z.string()).optional(),
             page_size: z.nullable(z.string().default("25")),
-            proxy: z.nullable(z.record(z.any())).optional(),
+            proxy: z
+                .nullable(z.lazy(() => HrisListEmploymentsQueryParamProxy$.inboundSchema))
+                .optional(),
             raw: z.nullable(z.boolean().default(false)),
             sync_token: z.nullable(z.string()).optional(),
             updated_after: z.nullable(z.string()).optional(),
@@ -106,11 +132,11 @@ export namespace HrisListEmploymentsRequest$ {
         });
 
     export type Outbound = {
-        fields: string | null;
+        fields?: string | null | undefined;
         next?: string | null | undefined;
         page?: string | null | undefined;
         page_size: string | null;
-        proxy?: Record<string, any> | null | undefined;
+        proxy?: HrisListEmploymentsQueryParamProxy$.Outbound | null | undefined;
         raw: boolean | null;
         sync_token?: string | null | undefined;
         updated_after?: string | null | undefined;
@@ -119,11 +145,13 @@ export namespace HrisListEmploymentsRequest$ {
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, HrisListEmploymentsRequest> = z
         .object({
-            fields: z.nullable(z.string().default("")),
+            fields: z.nullable(z.string()).optional(),
             next: z.nullable(z.string()).optional(),
             page: z.nullable(z.string()).optional(),
             pageSize: z.nullable(z.string().default("25")),
-            proxy: z.nullable(z.record(z.any())).optional(),
+            proxy: z
+                .nullable(z.lazy(() => HrisListEmploymentsQueryParamProxy$.outboundSchema))
+                .optional(),
             raw: z.nullable(z.boolean().default(false)),
             syncToken: z.nullable(z.string()).optional(),
             updatedAfter: z.nullable(z.string()).optional(),
@@ -131,7 +159,7 @@ export namespace HrisListEmploymentsRequest$ {
         })
         .transform((v) => {
             return {
-                fields: v.fields,
+                ...(v.fields === undefined ? null : { fields: v.fields }),
                 ...(v.next === undefined ? null : { next: v.next }),
                 ...(v.page === undefined ? null : { page: v.page }),
                 page_size: v.pageSize,

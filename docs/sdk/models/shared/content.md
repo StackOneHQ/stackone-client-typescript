@@ -3,7 +3,7 @@
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `html`             | *string*           | :heavy_minus_sign: | N/A                |
-| `plain`            | *string*           | :heavy_minus_sign: | N/A                |
+| Field                                                                                 | Type                                                                                  | Required                                                                              | Description                                                                           | Example                                                                               |
+| ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| `fileFormat`                                                                          | [shared.DocumentFileFormatEnum](../../../sdk/models/shared/documentfileformatenum.md) | :heavy_minus_sign:                                                                    | The file format of the document                                                       |                                                                                       |
+| `url`                                                                                 | *string*                                                                              | :heavy_minus_sign:                                                                    | URL where the file content is located                                                 | https://api.stackone.com/unified/hris/employees/1/documents/1/download                |
