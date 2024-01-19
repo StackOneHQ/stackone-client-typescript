@@ -3,7 +3,6 @@
  */
 
 import { ApplicationAttachment, ApplicationAttachment$ } from "./applicationattachment";
-import { InterviewStage, InterviewStage$ } from "./interviewstage";
 import { Questionnaire, Questionnaire$ } from "./questionnaire";
 import { RejectedReason, RejectedReason$ } from "./rejectedreason";
 import { ResultLink, ResultLink$ } from "./resultlink";
@@ -56,6 +55,20 @@ export type ApplicationCandidate = {
     lastName?: string | null | undefined;
 };
 
+export type ApplicationInterviewStage = {
+    /**
+     * Interview Stage created date
+     */
+    createdAt?: Date | null | undefined;
+    id?: string | null | undefined;
+    name?: string | null | undefined;
+    order?: number | null | undefined;
+    /**
+     * Interview Stage updated date
+     */
+    updatedAt?: Date | null | undefined;
+};
+
 export type Application = {
     applicationStatus?: ApplicationStatus | null | undefined;
     attachments?: Array<ApplicationAttachment> | null | undefined;
@@ -72,7 +85,7 @@ export type Application = {
      * Unique identifier of the application
      */
     id?: string | null | undefined;
-    interviewStage?: Array<InterviewStage> | null | undefined;
+    interviewStage?: ApplicationInterviewStage | null | undefined;
     /**
      * Unique identifier of the interview stage
      */
@@ -193,6 +206,75 @@ export namespace ApplicationCandidate$ {
 }
 
 /** @internal */
+export namespace ApplicationInterviewStage$ {
+    export type Inbound = {
+        created_at?: string | null | undefined;
+        id?: string | null | undefined;
+        name?: string | null | undefined;
+        order?: number | null | undefined;
+        updated_at?: string | null | undefined;
+    };
+
+    export const inboundSchema: z.ZodType<ApplicationInterviewStage, z.ZodTypeDef, Inbound> = z
+        .object({
+            created_at: z
+                .nullable(
+                    z
+                        .string()
+                        .datetime({ offset: true })
+                        .transform((v) => new Date(v))
+                )
+                .optional(),
+            id: z.nullable(z.string()).optional(),
+            name: z.nullable(z.string()).optional(),
+            order: z.nullable(z.number()).optional(),
+            updated_at: z
+                .nullable(
+                    z
+                        .string()
+                        .datetime({ offset: true })
+                        .transform((v) => new Date(v))
+                )
+                .optional(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.created_at === undefined ? null : { createdAt: v.created_at }),
+                ...(v.id === undefined ? null : { id: v.id }),
+                ...(v.name === undefined ? null : { name: v.name }),
+                ...(v.order === undefined ? null : { order: v.order }),
+                ...(v.updated_at === undefined ? null : { updatedAt: v.updated_at }),
+            };
+        });
+
+    export type Outbound = {
+        created_at?: string | null | undefined;
+        id?: string | null | undefined;
+        name?: string | null | undefined;
+        order?: number | null | undefined;
+        updated_at?: string | null | undefined;
+    };
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ApplicationInterviewStage> = z
+        .object({
+            createdAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+            id: z.nullable(z.string()).optional(),
+            name: z.nullable(z.string()).optional(),
+            order: z.nullable(z.number()).optional(),
+            updatedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.createdAt === undefined ? null : { created_at: v.createdAt }),
+                ...(v.id === undefined ? null : { id: v.id }),
+                ...(v.name === undefined ? null : { name: v.name }),
+                ...(v.order === undefined ? null : { order: v.order }),
+                ...(v.updatedAt === undefined ? null : { updated_at: v.updatedAt }),
+            };
+        });
+}
+
+/** @internal */
 export namespace Application$ {
     export type Inbound = {
         application_status?: ApplicationStatus$.Inbound | null | undefined;
@@ -201,7 +283,7 @@ export namespace Application$ {
         candidate_id?: string | null | undefined;
         created_at?: string | null | undefined;
         id?: string | null | undefined;
-        interview_stage?: Array<InterviewStage$.Inbound> | null | undefined;
+        interview_stage?: ApplicationInterviewStage$.Inbound | null | undefined;
         interview_stage_id?: string | null | undefined;
         job_id?: string | null | undefined;
         location_id?: string | null | undefined;
@@ -231,7 +313,9 @@ export namespace Application$ {
                 )
                 .optional(),
             id: z.nullable(z.string()).optional(),
-            interview_stage: z.nullable(z.array(InterviewStage$.inboundSchema)).optional(),
+            interview_stage: z
+                .nullable(z.lazy(() => ApplicationInterviewStage$.inboundSchema))
+                .optional(),
             interview_stage_id: z.nullable(z.string()).optional(),
             job_id: z.nullable(z.string()).optional(),
             location_id: z.nullable(z.string()).optional(),
@@ -294,7 +378,7 @@ export namespace Application$ {
         candidate_id?: string | null | undefined;
         created_at?: string | null | undefined;
         id?: string | null | undefined;
-        interview_stage?: Array<InterviewStage$.Outbound> | null | undefined;
+        interview_stage?: ApplicationInterviewStage$.Outbound | null | undefined;
         interview_stage_id?: string | null | undefined;
         job_id?: string | null | undefined;
         location_id?: string | null | undefined;
@@ -317,7 +401,9 @@ export namespace Application$ {
             candidateId: z.nullable(z.string()).optional(),
             createdAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
             id: z.nullable(z.string()).optional(),
-            interviewStage: z.nullable(z.array(InterviewStage$.outboundSchema)).optional(),
+            interviewStage: z
+                .nullable(z.lazy(() => ApplicationInterviewStage$.outboundSchema))
+                .optional(),
             interviewStageId: z.nullable(z.string()).optional(),
             jobId: z.nullable(z.string()).optional(),
             locationId: z.nullable(z.string()).optional(),
