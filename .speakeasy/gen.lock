@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 7fa83af8-9e8e-4410-b7e2-cf1d0eaf688b
 management:
-  docChecksum: 5d378598535d40a0ab1e2e21b9587888
+  docChecksum: 583133c7ab0b591b71ce2e6627fa1e78
   docVersion: 1.0.0
   speakeasyVersion: internal
   generationVersion: 2.237.2
-  releaseVersion: 2.3.1
-  configChecksum: eb957a9270cda4a51846b169f56490f2
+  releaseVersion: 2.3.2
+  configChecksum: c5b57c798d85552363d2f42c0e72258a
   repoURL: https://github.com/StackOneHQ/stackone-client-typescript.git
   repoSubDirectory: .
   installationURL: https://github.com/StackOneHQ/stackone-client-typescript
@@ -171,7 +171,6 @@ generatedFiles:
   - src/sdk/models/shared/application.ts
   - src/sdk/models/shared/resultlink.ts
   - src/sdk/models/shared/rejectedreason.ts
-  - src/sdk/models/shared/interviewstage.ts
   - src/sdk/models/shared/offersresult.ts
   - src/sdk/models/shared/offer.ts
   - src/sdk/models/shared/noteresult.ts
@@ -183,6 +182,7 @@ generatedFiles:
   - src/sdk/models/shared/interviewer.ts
   - src/sdk/models/shared/interviewpart.ts
   - src/sdk/models/shared/interviewstageresult.ts
+  - src/sdk/models/shared/interviewstage.ts
   - src/sdk/models/shared/jobresult.ts
   - src/sdk/models/shared/job.ts
   - src/sdk/models/shared/jobhiringteam.ts
@@ -551,12 +551,12 @@ generatedFiles:
   - docs/sdk/models/shared/applicationvalue.md
   - docs/sdk/models/shared/applicationstatus.md
   - docs/sdk/models/shared/applicationcandidate.md
+  - docs/sdk/models/shared/applicationinterviewstage.md
   - docs/sdk/models/shared/application.md
   - docs/sdk/models/shared/resultlink.md
   - docs/sdk/models/shared/rejectedreasonvalue.md
   - docs/sdk/models/shared/rejectedreasontype.md
   - docs/sdk/models/shared/rejectedreason.md
-  - docs/sdk/models/shared/interviewstage.md
   - docs/sdk/models/shared/offersresult.md
   - docs/sdk/models/shared/offervalue.md
   - docs/sdk/models/shared/offerofferstatus.md
@@ -568,12 +568,14 @@ generatedFiles:
   - docs/sdk/models/shared/departmentresult.md
   - docs/sdk/models/shared/department.md
   - docs/sdk/models/shared/interviewsresult.md
+  - docs/sdk/models/shared/interviewinterviewstage.md
   - docs/sdk/models/shared/interviewvalue.md
   - docs/sdk/models/shared/interviewstatus.md
   - docs/sdk/models/shared/interview.md
   - docs/sdk/models/shared/interviewer.md
   - docs/sdk/models/shared/interviewpart.md
   - docs/sdk/models/shared/interviewstageresult.md
+  - docs/sdk/models/shared/interviewstage.md
   - docs/sdk/models/shared/jobresult.md
   - docs/sdk/models/shared/confidential.md
   - docs/sdk/models/shared/jobvalue.md
