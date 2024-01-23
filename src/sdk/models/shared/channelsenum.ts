@@ -21,11 +21,11 @@ export type ChannelsEnum = {
     /**
      * The source value of the Channels.
      */
-    sourceValue: string;
+    sourceValue?: string | null | undefined;
     /**
      * The Channels of the campaign.
      */
-    value: ChannelsEnumValue;
+    value?: ChannelsEnumValue | null | undefined;
 };
 
 /** @internal */
@@ -34,36 +34,36 @@ export const ChannelsEnumValue$ = z.nativeEnum(ChannelsEnumValue);
 /** @internal */
 export namespace ChannelsEnum$ {
     export type Inbound = {
-        source_value: string;
-        value: ChannelsEnumValue;
+        source_value?: string | null | undefined;
+        value?: ChannelsEnumValue | null | undefined;
     };
 
     export const inboundSchema: z.ZodType<ChannelsEnum, z.ZodTypeDef, Inbound> = z
         .object({
-            source_value: z.string(),
-            value: ChannelsEnumValue$,
+            source_value: z.nullable(z.string()).optional(),
+            value: z.nullable(ChannelsEnumValue$).optional(),
         })
         .transform((v) => {
             return {
-                sourceValue: v.source_value,
-                value: v.value,
+                ...(v.source_value === undefined ? null : { sourceValue: v.source_value }),
+                ...(v.value === undefined ? null : { value: v.value }),
             };
         });
 
     export type Outbound = {
-        source_value: string;
-        value: ChannelsEnumValue;
+        source_value?: string | null | undefined;
+        value?: ChannelsEnumValue | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ChannelsEnum> = z
         .object({
-            sourceValue: z.string(),
-            value: ChannelsEnumValue$,
+            sourceValue: z.nullable(z.string()).optional(),
+            value: z.nullable(ChannelsEnumValue$).optional(),
         })
         .transform((v) => {
             return {
-                source_value: v.sourceValue,
-                value: v.value,
+                ...(v.sourceValue === undefined ? null : { source_value: v.sourceValue }),
+                ...(v.value === undefined ? null : { value: v.value }),
             };
         });
 }

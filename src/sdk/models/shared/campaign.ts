@@ -24,11 +24,11 @@ export type ScheduleType = {
     /**
      * The source value of the schedule type.
      */
-    sourceValue: string;
+    sourceValue?: string | null | undefined;
     /**
      * The schedule type of the campaign.
      */
-    value: CampaignValue;
+    value?: CampaignValue | null | undefined;
 };
 
 /**
@@ -47,11 +47,11 @@ export type Status = {
     /**
      * The source value of the Status.
      */
-    sourceValue: string;
+    sourceValue?: string | null | undefined;
     /**
      * The Status of the campaign.
      */
-    value: CampaignSchemasValue;
+    value?: CampaignSchemasValue | null | undefined;
 };
 
 export type Campaign = {
@@ -76,7 +76,7 @@ export type Campaign = {
      */
     lastSentAt?: Date | null | undefined;
     messages?: Array<Message> | null | undefined;
-    name: string;
+    name?: string | null | undefined;
     /**
      * The schedule type
      */
@@ -98,36 +98,36 @@ export const CampaignValue$ = z.nativeEnum(CampaignValue);
 /** @internal */
 export namespace ScheduleType$ {
     export type Inbound = {
-        source_value: string;
-        value: CampaignValue;
+        source_value?: string | null | undefined;
+        value?: CampaignValue | null | undefined;
     };
 
     export const inboundSchema: z.ZodType<ScheduleType, z.ZodTypeDef, Inbound> = z
         .object({
-            source_value: z.string(),
-            value: CampaignValue$,
+            source_value: z.nullable(z.string()).optional(),
+            value: z.nullable(CampaignValue$).optional(),
         })
         .transform((v) => {
             return {
-                sourceValue: v.source_value,
-                value: v.value,
+                ...(v.source_value === undefined ? null : { sourceValue: v.source_value }),
+                ...(v.value === undefined ? null : { value: v.value }),
             };
         });
 
     export type Outbound = {
-        source_value: string;
-        value: CampaignValue;
+        source_value?: string | null | undefined;
+        value?: CampaignValue | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ScheduleType> = z
         .object({
-            sourceValue: z.string(),
-            value: CampaignValue$,
+            sourceValue: z.nullable(z.string()).optional(),
+            value: z.nullable(CampaignValue$).optional(),
         })
         .transform((v) => {
             return {
-                source_value: v.sourceValue,
-                value: v.value,
+                ...(v.sourceValue === undefined ? null : { source_value: v.sourceValue }),
+                ...(v.value === undefined ? null : { value: v.value }),
             };
         });
 }
@@ -138,36 +138,36 @@ export const CampaignSchemasValue$ = z.nativeEnum(CampaignSchemasValue);
 /** @internal */
 export namespace Status$ {
     export type Inbound = {
-        source_value: string;
-        value: CampaignSchemasValue;
+        source_value?: string | null | undefined;
+        value?: CampaignSchemasValue | null | undefined;
     };
 
     export const inboundSchema: z.ZodType<Status, z.ZodTypeDef, Inbound> = z
         .object({
-            source_value: z.string(),
-            value: CampaignSchemasValue$,
+            source_value: z.nullable(z.string()).optional(),
+            value: z.nullable(CampaignSchemasValue$).optional(),
         })
         .transform((v) => {
             return {
-                sourceValue: v.source_value,
-                value: v.value,
+                ...(v.source_value === undefined ? null : { sourceValue: v.source_value }),
+                ...(v.value === undefined ? null : { value: v.value }),
             };
         });
 
     export type Outbound = {
-        source_value: string;
-        value: CampaignSchemasValue;
+        source_value?: string | null | undefined;
+        value?: CampaignSchemasValue | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Status> = z
         .object({
-            sourceValue: z.string(),
-            value: CampaignSchemasValue$,
+            sourceValue: z.nullable(z.string()).optional(),
+            value: z.nullable(CampaignSchemasValue$).optional(),
         })
         .transform((v) => {
             return {
-                source_value: v.sourceValue,
-                value: v.value,
+                ...(v.sourceValue === undefined ? null : { source_value: v.sourceValue }),
+                ...(v.value === undefined ? null : { value: v.value }),
             };
         });
 }
@@ -184,7 +184,7 @@ export namespace Campaign$ {
         id?: string | null | undefined;
         last_sent_at?: string | null | undefined;
         messages?: Array<Message$.Inbound> | null | undefined;
-        name: string;
+        name?: string | null | undefined;
         schedule_type?: ScheduleType$.Inbound | null | undefined;
         status?: Status$.Inbound | null | undefined;
         tags?: Array<string> | null | undefined;
@@ -223,7 +223,7 @@ export namespace Campaign$ {
                 )
                 .optional(),
             messages: z.nullable(z.array(Message$.inboundSchema)).optional(),
-            name: z.string(),
+            name: z.nullable(z.string()).optional(),
             schedule_type: z.nullable(z.lazy(() => ScheduleType$.inboundSchema)).optional(),
             status: z.nullable(z.lazy(() => Status$.inboundSchema)).optional(),
             tags: z.nullable(z.array(z.string())).optional(),
@@ -247,7 +247,7 @@ export namespace Campaign$ {
                 ...(v.id === undefined ? null : { id: v.id }),
                 ...(v.last_sent_at === undefined ? null : { lastSentAt: v.last_sent_at }),
                 ...(v.messages === undefined ? null : { messages: v.messages }),
-                name: v.name,
+                ...(v.name === undefined ? null : { name: v.name }),
                 ...(v.schedule_type === undefined ? null : { scheduleType: v.schedule_type }),
                 ...(v.status === undefined ? null : { status: v.status }),
                 ...(v.tags === undefined ? null : { tags: v.tags }),
@@ -265,7 +265,7 @@ export namespace Campaign$ {
         id?: string | null | undefined;
         last_sent_at?: string | null | undefined;
         messages?: Array<Message$.Outbound> | null | undefined;
-        name: string;
+        name?: string | null | undefined;
         schedule_type?: ScheduleType$.Outbound | null | undefined;
         status?: Status$.Outbound | null | undefined;
         tags?: Array<string> | null | undefined;
@@ -283,7 +283,7 @@ export namespace Campaign$ {
             id: z.nullable(z.string()).optional(),
             lastSentAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
             messages: z.nullable(z.array(Message$.outboundSchema)).optional(),
-            name: z.string(),
+            name: z.nullable(z.string()).optional(),
             scheduleType: z.nullable(z.lazy(() => ScheduleType$.outboundSchema)).optional(),
             status: z.nullable(z.lazy(() => Status$.outboundSchema)).optional(),
             tags: z.nullable(z.array(z.string())).optional(),
@@ -300,7 +300,7 @@ export namespace Campaign$ {
                 ...(v.id === undefined ? null : { id: v.id }),
                 ...(v.lastSentAt === undefined ? null : { last_sent_at: v.lastSentAt }),
                 ...(v.messages === undefined ? null : { messages: v.messages }),
-                name: v.name,
+                ...(v.name === undefined ? null : { name: v.name }),
                 ...(v.scheduleType === undefined ? null : { schedule_type: v.scheduleType }),
                 ...(v.status === undefined ? null : { status: v.status }),
                 ...(v.tags === undefined ? null : { tags: v.tags }),

@@ -5,7 +5,7 @@
 import { z } from "zod";
 
 export type PushMessagesMessageContent = {
-    body: string;
+    body?: string | null | undefined;
 };
 
 export enum PushMessagesValue {
@@ -21,8 +21,8 @@ export enum PushMessagesValue {
 }
 
 export type PushMessagesMessageType = {
-    sourceValue: string;
-    value: PushMessagesValue;
+    sourceValue?: string | null | undefined;
+    value?: PushMessagesValue | null | undefined;
 };
 
 export type PushMessages = {
@@ -35,30 +35,30 @@ export type PushMessages = {
 /** @internal */
 export namespace PushMessagesMessageContent$ {
     export type Inbound = {
-        body: string;
+        body?: string | null | undefined;
     };
 
     export const inboundSchema: z.ZodType<PushMessagesMessageContent, z.ZodTypeDef, Inbound> = z
         .object({
-            body: z.string(),
+            body: z.nullable(z.string()).optional(),
         })
         .transform((v) => {
             return {
-                body: v.body,
+                ...(v.body === undefined ? null : { body: v.body }),
             };
         });
 
     export type Outbound = {
-        body: string;
+        body?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, PushMessagesMessageContent> = z
         .object({
-            body: z.string(),
+            body: z.nullable(z.string()).optional(),
         })
         .transform((v) => {
             return {
-                body: v.body,
+                ...(v.body === undefined ? null : { body: v.body }),
             };
         });
 }
@@ -69,36 +69,36 @@ export const PushMessagesValue$ = z.nativeEnum(PushMessagesValue);
 /** @internal */
 export namespace PushMessagesMessageType$ {
     export type Inbound = {
-        source_value: string;
-        value: PushMessagesValue;
+        source_value?: string | null | undefined;
+        value?: PushMessagesValue | null | undefined;
     };
 
     export const inboundSchema: z.ZodType<PushMessagesMessageType, z.ZodTypeDef, Inbound> = z
         .object({
-            source_value: z.string(),
-            value: PushMessagesValue$,
+            source_value: z.nullable(z.string()).optional(),
+            value: z.nullable(PushMessagesValue$).optional(),
         })
         .transform((v) => {
             return {
-                sourceValue: v.source_value,
-                value: v.value,
+                ...(v.source_value === undefined ? null : { sourceValue: v.source_value }),
+                ...(v.value === undefined ? null : { value: v.value }),
             };
         });
 
     export type Outbound = {
-        source_value: string;
-        value: PushMessagesValue;
+        source_value?: string | null | undefined;
+        value?: PushMessagesValue | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, PushMessagesMessageType> = z
         .object({
-            sourceValue: z.string(),
-            value: PushMessagesValue$,
+            sourceValue: z.nullable(z.string()).optional(),
+            value: z.nullable(PushMessagesValue$).optional(),
         })
         .transform((v) => {
             return {
-                source_value: v.sourceValue,
-                value: v.value,
+                ...(v.sourceValue === undefined ? null : { source_value: v.sourceValue }),
+                ...(v.value === undefined ? null : { value: v.value }),
             };
         });
 }

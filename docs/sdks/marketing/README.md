@@ -38,15 +38,8 @@ async function run() {
     marketingCreateEmailTemplateRequestDto: {
       messages: [
         {
-          messageContent: {
-            body: "string",
-            from: "string",
-            subject: "string",
-          },
-          messageType: {
-            sourceValue: "string",
-            value: EmailMessagesValue.AppPush,
-          },
+          messageContent: {},
+          messageType: {},
         },
       ],
       tags: [
@@ -100,11 +93,7 @@ async function run() {
   const result = await sdk.marketing.createOmniChannelTemplate({
     marketingCreateTemplateRequestDto: {
       messages: [
-        {
-          id: "<ID>",
-          messageType: MessageMessageType.Unknown,
-          name: "string",
-        },
+        {},
       ],
       tags: [
         "string",
@@ -158,13 +147,8 @@ async function run() {
     marketingCreatePushTemplateRequestDto: {
       messages: [
         {
-          messageContent: {
-            body: "string",
-          },
-          messageType: {
-            sourceValue: "string",
-            value: PushMessagesValue.UnmappedValue,
-          },
+          messageContent: {},
+          messageType: {},
         },
       ],
       tags: [
@@ -591,15 +575,8 @@ async function run() {
     marketingCreateEmailTemplateRequestDto: {
       messages: [
         {
-          messageContent: {
-            body: "string",
-            from: "string",
-            subject: "string",
-          },
-          messageType: {
-            sourceValue: "string",
-            value: EmailMessagesValue.WebPush,
-          },
+          messageContent: {},
+          messageType: {},
         },
       ],
       tags: [
@@ -654,11 +631,7 @@ async function run() {
   const result = await sdk.marketing.updateOmniChannelTemplate({
     marketingCreateTemplateRequestDto: {
       messages: [
-        {
-          id: "<ID>",
-          messageType: MessageMessageType.Email,
-          name: "string",
-        },
+        {},
       ],
       tags: [
         "string",
@@ -713,13 +686,8 @@ async function run() {
     marketingCreatePushTemplateRequestDto: {
       messages: [
         {
-          messageContent: {
-            body: "string",
-          },
-          messageType: {
-            sourceValue: "string",
-            value: PushMessagesValue.Unknown,
-          },
+          messageContent: {},
+          messageType: {},
         },
       ],
       tags: [
