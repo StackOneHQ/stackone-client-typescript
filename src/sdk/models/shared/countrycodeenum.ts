@@ -4,6 +4,10 @@
 
 import { z } from "zod";
 
+export type CountryCodeEnum4 = {};
+
+export type CountryCodeEnumSourceValue = CountryCodeEnum4 | string | number | boolean;
+
 /**
  * The ISO3166-1 Alpha2 Code of the Country
  */
@@ -260,15 +264,46 @@ export enum CountryCodeEnumValue {
 }
 
 export type CountryCodeEnum = {
-    /**
-     * The name of citizenship
-     */
-    sourceValue: string;
+    sourceValue?: CountryCodeEnum4 | string | number | boolean | null | undefined;
     /**
      * The ISO3166-1 Alpha2 Code of the Country
      */
-    value: CountryCodeEnumValue;
+    value?: CountryCodeEnumValue | null | undefined;
 };
+
+/** @internal */
+export namespace CountryCodeEnum4$ {
+    export type Inbound = {};
+
+    export const inboundSchema: z.ZodType<CountryCodeEnum4, z.ZodTypeDef, Inbound> = z.object({});
+
+    export type Outbound = {};
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CountryCodeEnum4> = z.object({});
+}
+
+/** @internal */
+export namespace CountryCodeEnumSourceValue$ {
+    export type Inbound = CountryCodeEnum4$.Inbound | string | number | boolean;
+
+    export type Outbound = CountryCodeEnum4$.Outbound | string | number | boolean;
+
+    export const inboundSchema: z.ZodType<CountryCodeEnumSourceValue, z.ZodTypeDef, Inbound> =
+        z.union([
+            z.lazy(() => CountryCodeEnum4$.inboundSchema),
+            z.string(),
+            z.number(),
+            z.boolean(),
+        ]);
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CountryCodeEnumSourceValue> =
+        z.union([
+            z.lazy(() => CountryCodeEnum4$.outboundSchema),
+            z.string(),
+            z.number(),
+            z.boolean(),
+        ]);
+}
 
 /** @internal */
 export const CountryCodeEnumValue$ = z.nativeEnum(CountryCodeEnumValue);
@@ -276,36 +311,54 @@ export const CountryCodeEnumValue$ = z.nativeEnum(CountryCodeEnumValue);
 /** @internal */
 export namespace CountryCodeEnum$ {
     export type Inbound = {
-        source_value: string;
-        value: CountryCodeEnumValue;
+        source_value?: CountryCodeEnum4$.Inbound | string | number | boolean | null | undefined;
+        value?: CountryCodeEnumValue | null | undefined;
     };
 
     export const inboundSchema: z.ZodType<CountryCodeEnum, z.ZodTypeDef, Inbound> = z
         .object({
-            source_value: z.string(),
-            value: CountryCodeEnumValue$,
+            source_value: z
+                .nullable(
+                    z.union([
+                        z.lazy(() => CountryCodeEnum4$.inboundSchema),
+                        z.string(),
+                        z.number(),
+                        z.boolean(),
+                    ])
+                )
+                .optional(),
+            value: z.nullable(CountryCodeEnumValue$).optional(),
         })
         .transform((v) => {
             return {
-                sourceValue: v.source_value,
-                value: v.value,
+                ...(v.source_value === undefined ? null : { sourceValue: v.source_value }),
+                ...(v.value === undefined ? null : { value: v.value }),
             };
         });
 
     export type Outbound = {
-        source_value: string;
-        value: CountryCodeEnumValue;
+        source_value?: CountryCodeEnum4$.Outbound | string | number | boolean | null | undefined;
+        value?: CountryCodeEnumValue | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CountryCodeEnum> = z
         .object({
-            sourceValue: z.string(),
-            value: CountryCodeEnumValue$,
+            sourceValue: z
+                .nullable(
+                    z.union([
+                        z.lazy(() => CountryCodeEnum4$.outboundSchema),
+                        z.string(),
+                        z.number(),
+                        z.boolean(),
+                    ])
+                )
+                .optional(),
+            value: z.nullable(CountryCodeEnumValue$).optional(),
         })
         .transform((v) => {
             return {
-                source_value: v.sourceValue,
-                value: v.value,
+                ...(v.sourceValue === undefined ? null : { source_value: v.sourceValue }),
+                ...(v.value === undefined ? null : { value: v.value }),
             };
         });
 }

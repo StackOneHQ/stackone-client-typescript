@@ -20,6 +20,13 @@ export type InterviewInterviewStage = {
     updatedAt?: Date | null | undefined;
 };
 
+export type Interview4 = {};
+
+/**
+ * The source value of the interview status.
+ */
+export type InterviewSourceValue = Interview4 | string | number | boolean;
+
 /**
  * The status of the interview.
  */
@@ -36,7 +43,7 @@ export type InterviewStatus = {
     /**
      * The source value of the interview status.
      */
-    sourceValue?: string | null | undefined;
+    sourceValue?: Interview4 | string | number | boolean | null | undefined;
     /**
      * The status of the interview.
      */
@@ -141,18 +148,59 @@ export namespace InterviewInterviewStage$ {
 }
 
 /** @internal */
+export namespace Interview4$ {
+    export type Inbound = {};
+
+    export const inboundSchema: z.ZodType<Interview4, z.ZodTypeDef, Inbound> = z.object({});
+
+    export type Outbound = {};
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Interview4> = z.object({});
+}
+
+/** @internal */
+export namespace InterviewSourceValue$ {
+    export type Inbound = Interview4$.Inbound | string | number | boolean;
+
+    export type Outbound = Interview4$.Outbound | string | number | boolean;
+
+    export const inboundSchema: z.ZodType<InterviewSourceValue, z.ZodTypeDef, Inbound> = z.union([
+        z.lazy(() => Interview4$.inboundSchema),
+        z.string(),
+        z.number(),
+        z.boolean(),
+    ]);
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, InterviewSourceValue> = z.union([
+        z.lazy(() => Interview4$.outboundSchema),
+        z.string(),
+        z.number(),
+        z.boolean(),
+    ]);
+}
+
+/** @internal */
 export const InterviewValue$ = z.nativeEnum(InterviewValue);
 
 /** @internal */
 export namespace InterviewStatus$ {
     export type Inbound = {
-        source_value?: string | null | undefined;
+        source_value?: Interview4$.Inbound | string | number | boolean | null | undefined;
         value?: InterviewValue | null | undefined;
     };
 
     export const inboundSchema: z.ZodType<InterviewStatus, z.ZodTypeDef, Inbound> = z
         .object({
-            source_value: z.nullable(z.string()).optional(),
+            source_value: z
+                .nullable(
+                    z.union([
+                        z.lazy(() => Interview4$.inboundSchema),
+                        z.string(),
+                        z.number(),
+                        z.boolean(),
+                    ])
+                )
+                .optional(),
             value: z.nullable(InterviewValue$).optional(),
         })
         .transform((v) => {
@@ -163,13 +211,22 @@ export namespace InterviewStatus$ {
         });
 
     export type Outbound = {
-        source_value?: string | null | undefined;
+        source_value?: Interview4$.Outbound | string | number | boolean | null | undefined;
         value?: InterviewValue | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, InterviewStatus> = z
         .object({
-            sourceValue: z.nullable(z.string()).optional(),
+            sourceValue: z
+                .nullable(
+                    z.union([
+                        z.lazy(() => Interview4$.outboundSchema),
+                        z.string(),
+                        z.number(),
+                        z.boolean(),
+                    ])
+                )
+                .optional(),
             value: z.nullable(InterviewValue$).optional(),
         })
         .transform((v) => {

@@ -5,6 +5,17 @@
 import { NoteContentApiModel, NoteContentApiModel$ } from "./notecontentapimodel";
 import { z } from "zod";
 
+export type AtsCreateNotesRequestDto4 = {};
+
+/**
+ * The source value of the notes visibility.
+ */
+export type AtsCreateNotesRequestDtoSourceValue =
+    | AtsCreateNotesRequestDto4
+    | string
+    | number
+    | boolean;
+
 /**
  * The visibility of the notes.
  */
@@ -20,7 +31,7 @@ export type Visibility = {
     /**
      * The source value of the notes visibility.
      */
-    sourceValue?: string | null | undefined;
+    sourceValue?: AtsCreateNotesRequestDto4 | string | number | boolean | null | undefined;
     /**
      * The visibility of the notes.
      */
@@ -40,18 +51,75 @@ export type AtsCreateNotesRequestDto = {
 };
 
 /** @internal */
+export namespace AtsCreateNotesRequestDto4$ {
+    export type Inbound = {};
+
+    export const inboundSchema: z.ZodType<AtsCreateNotesRequestDto4, z.ZodTypeDef, Inbound> =
+        z.object({});
+
+    export type Outbound = {};
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, AtsCreateNotesRequestDto4> =
+        z.object({});
+}
+
+/** @internal */
+export namespace AtsCreateNotesRequestDtoSourceValue$ {
+    export type Inbound = AtsCreateNotesRequestDto4$.Inbound | string | number | boolean;
+
+    export type Outbound = AtsCreateNotesRequestDto4$.Outbound | string | number | boolean;
+
+    export const inboundSchema: z.ZodType<
+        AtsCreateNotesRequestDtoSourceValue,
+        z.ZodTypeDef,
+        Inbound
+    > = z.union([
+        z.lazy(() => AtsCreateNotesRequestDto4$.inboundSchema),
+        z.string(),
+        z.number(),
+        z.boolean(),
+    ]);
+
+    export const outboundSchema: z.ZodType<
+        Outbound,
+        z.ZodTypeDef,
+        AtsCreateNotesRequestDtoSourceValue
+    > = z.union([
+        z.lazy(() => AtsCreateNotesRequestDto4$.outboundSchema),
+        z.string(),
+        z.number(),
+        z.boolean(),
+    ]);
+}
+
+/** @internal */
 export const AtsCreateNotesRequestDtoValue$ = z.nativeEnum(AtsCreateNotesRequestDtoValue);
 
 /** @internal */
 export namespace Visibility$ {
     export type Inbound = {
-        source_value?: string | null | undefined;
+        source_value?:
+            | AtsCreateNotesRequestDto4$.Inbound
+            | string
+            | number
+            | boolean
+            | null
+            | undefined;
         value?: AtsCreateNotesRequestDtoValue | null | undefined;
     };
 
     export const inboundSchema: z.ZodType<Visibility, z.ZodTypeDef, Inbound> = z
         .object({
-            source_value: z.nullable(z.string()).optional(),
+            source_value: z
+                .nullable(
+                    z.union([
+                        z.lazy(() => AtsCreateNotesRequestDto4$.inboundSchema),
+                        z.string(),
+                        z.number(),
+                        z.boolean(),
+                    ])
+                )
+                .optional(),
             value: z.nullable(AtsCreateNotesRequestDtoValue$).optional(),
         })
         .transform((v) => {
@@ -62,13 +130,28 @@ export namespace Visibility$ {
         });
 
     export type Outbound = {
-        source_value?: string | null | undefined;
+        source_value?:
+            | AtsCreateNotesRequestDto4$.Outbound
+            | string
+            | number
+            | boolean
+            | null
+            | undefined;
         value?: AtsCreateNotesRequestDtoValue | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Visibility> = z
         .object({
-            sourceValue: z.nullable(z.string()).optional(),
+            sourceValue: z
+                .nullable(
+                    z.union([
+                        z.lazy(() => AtsCreateNotesRequestDto4$.outboundSchema),
+                        z.string(),
+                        z.number(),
+                        z.boolean(),
+                    ])
+                )
+                .optional(),
             value: z.nullable(AtsCreateNotesRequestDtoValue$).optional(),
         })
         .transform((v) => {

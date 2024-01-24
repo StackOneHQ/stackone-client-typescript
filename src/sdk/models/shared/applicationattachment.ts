@@ -5,6 +5,13 @@
 import { AttachmentType, AttachmentType$ } from "./attachmenttype";
 import { z } from "zod";
 
+export type ApplicationAttachment4 = {};
+
+/**
+ * The source value of the content type.
+ */
+export type ApplicationAttachmentSourceValue = ApplicationAttachment4 | string | number | boolean;
+
 /**
  * The content type of the attachment.
  */
@@ -17,7 +24,7 @@ export type ContentType = {
     /**
      * The source value of the content type.
      */
-    sourceValue?: string | null | undefined;
+    sourceValue?: ApplicationAttachment4 | string | number | boolean | null | undefined;
     /**
      * The content type of the attachment.
      */
@@ -42,18 +49,73 @@ export type ApplicationAttachment = {
 };
 
 /** @internal */
+export namespace ApplicationAttachment4$ {
+    export type Inbound = {};
+
+    export const inboundSchema: z.ZodType<ApplicationAttachment4, z.ZodTypeDef, Inbound> = z.object(
+        {}
+    );
+
+    export type Outbound = {};
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ApplicationAttachment4> =
+        z.object({});
+}
+
+/** @internal */
+export namespace ApplicationAttachmentSourceValue$ {
+    export type Inbound = ApplicationAttachment4$.Inbound | string | number | boolean;
+
+    export type Outbound = ApplicationAttachment4$.Outbound | string | number | boolean;
+
+    export const inboundSchema: z.ZodType<ApplicationAttachmentSourceValue, z.ZodTypeDef, Inbound> =
+        z.union([
+            z.lazy(() => ApplicationAttachment4$.inboundSchema),
+            z.string(),
+            z.number(),
+            z.boolean(),
+        ]);
+
+    export const outboundSchema: z.ZodType<
+        Outbound,
+        z.ZodTypeDef,
+        ApplicationAttachmentSourceValue
+    > = z.union([
+        z.lazy(() => ApplicationAttachment4$.outboundSchema),
+        z.string(),
+        z.number(),
+        z.boolean(),
+    ]);
+}
+
+/** @internal */
 export const ApplicationAttachmentValue$ = z.nativeEnum(ApplicationAttachmentValue);
 
 /** @internal */
 export namespace ContentType$ {
     export type Inbound = {
-        source_value?: string | null | undefined;
+        source_value?:
+            | ApplicationAttachment4$.Inbound
+            | string
+            | number
+            | boolean
+            | null
+            | undefined;
         value?: ApplicationAttachmentValue | null | undefined;
     };
 
     export const inboundSchema: z.ZodType<ContentType, z.ZodTypeDef, Inbound> = z
         .object({
-            source_value: z.nullable(z.string()).optional(),
+            source_value: z
+                .nullable(
+                    z.union([
+                        z.lazy(() => ApplicationAttachment4$.inboundSchema),
+                        z.string(),
+                        z.number(),
+                        z.boolean(),
+                    ])
+                )
+                .optional(),
             value: z.nullable(ApplicationAttachmentValue$).optional(),
         })
         .transform((v) => {
@@ -64,13 +126,28 @@ export namespace ContentType$ {
         });
 
     export type Outbound = {
-        source_value?: string | null | undefined;
+        source_value?:
+            | ApplicationAttachment4$.Outbound
+            | string
+            | number
+            | boolean
+            | null
+            | undefined;
         value?: ApplicationAttachmentValue | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ContentType> = z
         .object({
-            sourceValue: z.nullable(z.string()).optional(),
+            sourceValue: z
+                .nullable(
+                    z.union([
+                        z.lazy(() => ApplicationAttachment4$.outboundSchema),
+                        z.string(),
+                        z.number(),
+                        z.boolean(),
+                    ])
+                )
+                .optional(),
             value: z.nullable(ApplicationAttachmentValue$).optional(),
         })
         .transform((v) => {

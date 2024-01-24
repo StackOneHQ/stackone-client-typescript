@@ -4,6 +4,10 @@
 
 import { z } from "zod";
 
+export type DocumentFileFormatEnum4 = {};
+
+export type DocumentFileFormatEnumSourceValue = DocumentFileFormatEnum4 | string | number | boolean;
+
 export enum DocumentFileFormatEnumValue {
     Pdf = "pdf",
     Jpg = "jpg",
@@ -13,9 +17,51 @@ export enum DocumentFileFormatEnumValue {
 }
 
 export type DocumentFileFormatEnum = {
-    sourceValue: string;
-    value: DocumentFileFormatEnumValue;
+    sourceValue?: DocumentFileFormatEnum4 | string | number | boolean | null | undefined;
+    value?: DocumentFileFormatEnumValue | null | undefined;
 };
+
+/** @internal */
+export namespace DocumentFileFormatEnum4$ {
+    export type Inbound = {};
+
+    export const inboundSchema: z.ZodType<DocumentFileFormatEnum4, z.ZodTypeDef, Inbound> =
+        z.object({});
+
+    export type Outbound = {};
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, DocumentFileFormatEnum4> =
+        z.object({});
+}
+
+/** @internal */
+export namespace DocumentFileFormatEnumSourceValue$ {
+    export type Inbound = DocumentFileFormatEnum4$.Inbound | string | number | boolean;
+
+    export type Outbound = DocumentFileFormatEnum4$.Outbound | string | number | boolean;
+
+    export const inboundSchema: z.ZodType<
+        DocumentFileFormatEnumSourceValue,
+        z.ZodTypeDef,
+        Inbound
+    > = z.union([
+        z.lazy(() => DocumentFileFormatEnum4$.inboundSchema),
+        z.string(),
+        z.number(),
+        z.boolean(),
+    ]);
+
+    export const outboundSchema: z.ZodType<
+        Outbound,
+        z.ZodTypeDef,
+        DocumentFileFormatEnumSourceValue
+    > = z.union([
+        z.lazy(() => DocumentFileFormatEnum4$.outboundSchema),
+        z.string(),
+        z.number(),
+        z.boolean(),
+    ]);
+}
 
 /** @internal */
 export const DocumentFileFormatEnumValue$ = z.nativeEnum(DocumentFileFormatEnumValue);
@@ -23,36 +69,66 @@ export const DocumentFileFormatEnumValue$ = z.nativeEnum(DocumentFileFormatEnumV
 /** @internal */
 export namespace DocumentFileFormatEnum$ {
     export type Inbound = {
-        source_value: string;
-        value: DocumentFileFormatEnumValue;
+        source_value?:
+            | DocumentFileFormatEnum4$.Inbound
+            | string
+            | number
+            | boolean
+            | null
+            | undefined;
+        value?: DocumentFileFormatEnumValue | null | undefined;
     };
 
     export const inboundSchema: z.ZodType<DocumentFileFormatEnum, z.ZodTypeDef, Inbound> = z
         .object({
-            source_value: z.string(),
-            value: DocumentFileFormatEnumValue$,
+            source_value: z
+                .nullable(
+                    z.union([
+                        z.lazy(() => DocumentFileFormatEnum4$.inboundSchema),
+                        z.string(),
+                        z.number(),
+                        z.boolean(),
+                    ])
+                )
+                .optional(),
+            value: z.nullable(DocumentFileFormatEnumValue$).optional(),
         })
         .transform((v) => {
             return {
-                sourceValue: v.source_value,
-                value: v.value,
+                ...(v.source_value === undefined ? null : { sourceValue: v.source_value }),
+                ...(v.value === undefined ? null : { value: v.value }),
             };
         });
 
     export type Outbound = {
-        source_value: string;
-        value: DocumentFileFormatEnumValue;
+        source_value?:
+            | DocumentFileFormatEnum4$.Outbound
+            | string
+            | number
+            | boolean
+            | null
+            | undefined;
+        value?: DocumentFileFormatEnumValue | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, DocumentFileFormatEnum> = z
         .object({
-            sourceValue: z.string(),
-            value: DocumentFileFormatEnumValue$,
+            sourceValue: z
+                .nullable(
+                    z.union([
+                        z.lazy(() => DocumentFileFormatEnum4$.outboundSchema),
+                        z.string(),
+                        z.number(),
+                        z.boolean(),
+                    ])
+                )
+                .optional(),
+            value: z.nullable(DocumentFileFormatEnumValue$).optional(),
         })
         .transform((v) => {
             return {
-                source_value: v.sourceValue,
-                value: v.value,
+                ...(v.sourceValue === undefined ? null : { source_value: v.sourceValue }),
+                ...(v.value === undefined ? null : { value: v.value }),
             };
         });
 }

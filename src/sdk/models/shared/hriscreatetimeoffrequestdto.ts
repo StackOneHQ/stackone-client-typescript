@@ -4,6 +4,14 @@
 
 import { z } from "zod";
 
+export type HrisCreateTimeOffRequestDto4 = {};
+
+export type HrisCreateTimeOffRequestDtoSourceValue =
+    | HrisCreateTimeOffRequestDto4
+    | string
+    | number
+    | boolean;
+
 export enum HrisCreateTimeOffRequestDtoValue {
     Approved = "approved",
     UnmappedValue = "unmapped_value",
@@ -13,9 +21,17 @@ export enum HrisCreateTimeOffRequestDtoValue {
  * The status of the time off request
  */
 export type HrisCreateTimeOffRequestDtoStatus = {
-    sourceValue: string;
-    value: HrisCreateTimeOffRequestDtoValue;
+    sourceValue?: HrisCreateTimeOffRequestDto4 | string | number | boolean | null | undefined;
+    value?: HrisCreateTimeOffRequestDtoValue | null | undefined;
 };
+
+export type HrisCreateTimeOffRequestDtoSchemas4 = {};
+
+export type HrisCreateTimeOffRequestDtoSchemasSourceValue =
+    | HrisCreateTimeOffRequestDtoSchemas4
+    | string
+    | number
+    | boolean;
 
 export enum HrisCreateTimeOffRequestDtoSchemasValue {
     Sick = "sick",
@@ -27,8 +43,14 @@ export enum HrisCreateTimeOffRequestDtoSchemasValue {
  * The type of the time off request
  */
 export type HrisCreateTimeOffRequestDtoType = {
-    sourceValue: string;
-    value: HrisCreateTimeOffRequestDtoSchemasValue;
+    sourceValue?:
+        | HrisCreateTimeOffRequestDtoSchemas4
+        | string
+        | number
+        | boolean
+        | null
+        | undefined;
+    value?: HrisCreateTimeOffRequestDtoSchemasValue | null | undefined;
 };
 
 export type HrisCreateTimeOffRequestDto = {
@@ -59,13 +81,61 @@ export type HrisCreateTimeOffRequestDto = {
 };
 
 /** @internal */
+export namespace HrisCreateTimeOffRequestDto4$ {
+    export type Inbound = {};
+
+    export const inboundSchema: z.ZodType<HrisCreateTimeOffRequestDto4, z.ZodTypeDef, Inbound> =
+        z.object({});
+
+    export type Outbound = {};
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, HrisCreateTimeOffRequestDto4> =
+        z.object({});
+}
+
+/** @internal */
+export namespace HrisCreateTimeOffRequestDtoSourceValue$ {
+    export type Inbound = HrisCreateTimeOffRequestDto4$.Inbound | string | number | boolean;
+
+    export type Outbound = HrisCreateTimeOffRequestDto4$.Outbound | string | number | boolean;
+
+    export const inboundSchema: z.ZodType<
+        HrisCreateTimeOffRequestDtoSourceValue,
+        z.ZodTypeDef,
+        Inbound
+    > = z.union([
+        z.lazy(() => HrisCreateTimeOffRequestDto4$.inboundSchema),
+        z.string(),
+        z.number(),
+        z.boolean(),
+    ]);
+
+    export const outboundSchema: z.ZodType<
+        Outbound,
+        z.ZodTypeDef,
+        HrisCreateTimeOffRequestDtoSourceValue
+    > = z.union([
+        z.lazy(() => HrisCreateTimeOffRequestDto4$.outboundSchema),
+        z.string(),
+        z.number(),
+        z.boolean(),
+    ]);
+}
+
+/** @internal */
 export const HrisCreateTimeOffRequestDtoValue$ = z.nativeEnum(HrisCreateTimeOffRequestDtoValue);
 
 /** @internal */
 export namespace HrisCreateTimeOffRequestDtoStatus$ {
     export type Inbound = {
-        source_value: string;
-        value: HrisCreateTimeOffRequestDtoValue;
+        source_value?:
+            | HrisCreateTimeOffRequestDto4$.Inbound
+            | string
+            | number
+            | boolean
+            | null
+            | undefined;
+        value?: HrisCreateTimeOffRequestDtoValue | null | undefined;
     };
 
     export const inboundSchema: z.ZodType<
@@ -74,19 +144,34 @@ export namespace HrisCreateTimeOffRequestDtoStatus$ {
         Inbound
     > = z
         .object({
-            source_value: z.string(),
-            value: HrisCreateTimeOffRequestDtoValue$,
+            source_value: z
+                .nullable(
+                    z.union([
+                        z.lazy(() => HrisCreateTimeOffRequestDto4$.inboundSchema),
+                        z.string(),
+                        z.number(),
+                        z.boolean(),
+                    ])
+                )
+                .optional(),
+            value: z.nullable(HrisCreateTimeOffRequestDtoValue$).optional(),
         })
         .transform((v) => {
             return {
-                sourceValue: v.source_value,
-                value: v.value,
+                ...(v.source_value === undefined ? null : { sourceValue: v.source_value }),
+                ...(v.value === undefined ? null : { value: v.value }),
             };
         });
 
     export type Outbound = {
-        source_value: string;
-        value: HrisCreateTimeOffRequestDtoValue;
+        source_value?:
+            | HrisCreateTimeOffRequestDto4$.Outbound
+            | string
+            | number
+            | boolean
+            | null
+            | undefined;
+        value?: HrisCreateTimeOffRequestDtoValue | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<
@@ -95,15 +180,76 @@ export namespace HrisCreateTimeOffRequestDtoStatus$ {
         HrisCreateTimeOffRequestDtoStatus
     > = z
         .object({
-            sourceValue: z.string(),
-            value: HrisCreateTimeOffRequestDtoValue$,
+            sourceValue: z
+                .nullable(
+                    z.union([
+                        z.lazy(() => HrisCreateTimeOffRequestDto4$.outboundSchema),
+                        z.string(),
+                        z.number(),
+                        z.boolean(),
+                    ])
+                )
+                .optional(),
+            value: z.nullable(HrisCreateTimeOffRequestDtoValue$).optional(),
         })
         .transform((v) => {
             return {
-                source_value: v.sourceValue,
-                value: v.value,
+                ...(v.sourceValue === undefined ? null : { source_value: v.sourceValue }),
+                ...(v.value === undefined ? null : { value: v.value }),
             };
         });
+}
+
+/** @internal */
+export namespace HrisCreateTimeOffRequestDtoSchemas4$ {
+    export type Inbound = {};
+
+    export const inboundSchema: z.ZodType<
+        HrisCreateTimeOffRequestDtoSchemas4,
+        z.ZodTypeDef,
+        Inbound
+    > = z.object({});
+
+    export type Outbound = {};
+
+    export const outboundSchema: z.ZodType<
+        Outbound,
+        z.ZodTypeDef,
+        HrisCreateTimeOffRequestDtoSchemas4
+    > = z.object({});
+}
+
+/** @internal */
+export namespace HrisCreateTimeOffRequestDtoSchemasSourceValue$ {
+    export type Inbound = HrisCreateTimeOffRequestDtoSchemas4$.Inbound | string | number | boolean;
+
+    export type Outbound =
+        | HrisCreateTimeOffRequestDtoSchemas4$.Outbound
+        | string
+        | number
+        | boolean;
+
+    export const inboundSchema: z.ZodType<
+        HrisCreateTimeOffRequestDtoSchemasSourceValue,
+        z.ZodTypeDef,
+        Inbound
+    > = z.union([
+        z.lazy(() => HrisCreateTimeOffRequestDtoSchemas4$.inboundSchema),
+        z.string(),
+        z.number(),
+        z.boolean(),
+    ]);
+
+    export const outboundSchema: z.ZodType<
+        Outbound,
+        z.ZodTypeDef,
+        HrisCreateTimeOffRequestDtoSchemasSourceValue
+    > = z.union([
+        z.lazy(() => HrisCreateTimeOffRequestDtoSchemas4$.outboundSchema),
+        z.string(),
+        z.number(),
+        z.boolean(),
+    ]);
 }
 
 /** @internal */
@@ -114,26 +260,47 @@ export const HrisCreateTimeOffRequestDtoSchemasValue$ = z.nativeEnum(
 /** @internal */
 export namespace HrisCreateTimeOffRequestDtoType$ {
     export type Inbound = {
-        source_value: string;
-        value: HrisCreateTimeOffRequestDtoSchemasValue;
+        source_value?:
+            | HrisCreateTimeOffRequestDtoSchemas4$.Inbound
+            | string
+            | number
+            | boolean
+            | null
+            | undefined;
+        value?: HrisCreateTimeOffRequestDtoSchemasValue | null | undefined;
     };
 
     export const inboundSchema: z.ZodType<HrisCreateTimeOffRequestDtoType, z.ZodTypeDef, Inbound> =
         z
             .object({
-                source_value: z.string(),
-                value: HrisCreateTimeOffRequestDtoSchemasValue$,
+                source_value: z
+                    .nullable(
+                        z.union([
+                            z.lazy(() => HrisCreateTimeOffRequestDtoSchemas4$.inboundSchema),
+                            z.string(),
+                            z.number(),
+                            z.boolean(),
+                        ])
+                    )
+                    .optional(),
+                value: z.nullable(HrisCreateTimeOffRequestDtoSchemasValue$).optional(),
             })
             .transform((v) => {
                 return {
-                    sourceValue: v.source_value,
-                    value: v.value,
+                    ...(v.source_value === undefined ? null : { sourceValue: v.source_value }),
+                    ...(v.value === undefined ? null : { value: v.value }),
                 };
             });
 
     export type Outbound = {
-        source_value: string;
-        value: HrisCreateTimeOffRequestDtoSchemasValue;
+        source_value?:
+            | HrisCreateTimeOffRequestDtoSchemas4$.Outbound
+            | string
+            | number
+            | boolean
+            | null
+            | undefined;
+        value?: HrisCreateTimeOffRequestDtoSchemasValue | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<
@@ -142,13 +309,22 @@ export namespace HrisCreateTimeOffRequestDtoType$ {
         HrisCreateTimeOffRequestDtoType
     > = z
         .object({
-            sourceValue: z.string(),
-            value: HrisCreateTimeOffRequestDtoSchemasValue$,
+            sourceValue: z
+                .nullable(
+                    z.union([
+                        z.lazy(() => HrisCreateTimeOffRequestDtoSchemas4$.outboundSchema),
+                        z.string(),
+                        z.number(),
+                        z.boolean(),
+                    ])
+                )
+                .optional(),
+            value: z.nullable(HrisCreateTimeOffRequestDtoSchemasValue$).optional(),
         })
         .transform((v) => {
             return {
-                source_value: v.sourceValue,
-                value: v.value,
+                ...(v.sourceValue === undefined ? null : { source_value: v.sourceValue }),
+                ...(v.value === undefined ? null : { value: v.value }),
             };
         });
 }

@@ -5,6 +5,13 @@
 import { OfferHistory, OfferHistory$ } from "./offerhistory";
 import { z } from "zod";
 
+export type Offer4 = {};
+
+/**
+ * The source value of the offer status.
+ */
+export type OfferSourceValue = Offer4 | string | number | boolean;
+
 /**
  * The status of the offer.
  */
@@ -23,7 +30,7 @@ export type OfferOfferStatus = {
     /**
      * The source value of the offer status.
      */
-    sourceValue?: string | null | undefined;
+    sourceValue?: Offer4 | string | number | boolean | null | undefined;
     /**
      * The status of the offer.
      */
@@ -52,18 +59,59 @@ export type Offer = {
 };
 
 /** @internal */
+export namespace Offer4$ {
+    export type Inbound = {};
+
+    export const inboundSchema: z.ZodType<Offer4, z.ZodTypeDef, Inbound> = z.object({});
+
+    export type Outbound = {};
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Offer4> = z.object({});
+}
+
+/** @internal */
+export namespace OfferSourceValue$ {
+    export type Inbound = Offer4$.Inbound | string | number | boolean;
+
+    export type Outbound = Offer4$.Outbound | string | number | boolean;
+
+    export const inboundSchema: z.ZodType<OfferSourceValue, z.ZodTypeDef, Inbound> = z.union([
+        z.lazy(() => Offer4$.inboundSchema),
+        z.string(),
+        z.number(),
+        z.boolean(),
+    ]);
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, OfferSourceValue> = z.union([
+        z.lazy(() => Offer4$.outboundSchema),
+        z.string(),
+        z.number(),
+        z.boolean(),
+    ]);
+}
+
+/** @internal */
 export const OfferValue$ = z.nativeEnum(OfferValue);
 
 /** @internal */
 export namespace OfferOfferStatus$ {
     export type Inbound = {
-        source_value?: string | null | undefined;
+        source_value?: Offer4$.Inbound | string | number | boolean | null | undefined;
         value?: OfferValue | null | undefined;
     };
 
     export const inboundSchema: z.ZodType<OfferOfferStatus, z.ZodTypeDef, Inbound> = z
         .object({
-            source_value: z.nullable(z.string()).optional(),
+            source_value: z
+                .nullable(
+                    z.union([
+                        z.lazy(() => Offer4$.inboundSchema),
+                        z.string(),
+                        z.number(),
+                        z.boolean(),
+                    ])
+                )
+                .optional(),
             value: z.nullable(OfferValue$).optional(),
         })
         .transform((v) => {
@@ -74,13 +122,22 @@ export namespace OfferOfferStatus$ {
         });
 
     export type Outbound = {
-        source_value?: string | null | undefined;
+        source_value?: Offer4$.Outbound | string | number | boolean | null | undefined;
         value?: OfferValue | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, OfferOfferStatus> = z
         .object({
-            sourceValue: z.nullable(z.string()).optional(),
+            sourceValue: z
+                .nullable(
+                    z.union([
+                        z.lazy(() => Offer4$.outboundSchema),
+                        z.string(),
+                        z.number(),
+                        z.boolean(),
+                    ])
+                )
+                .optional(),
             value: z.nullable(OfferValue$).optional(),
         })
         .transform((v) => {

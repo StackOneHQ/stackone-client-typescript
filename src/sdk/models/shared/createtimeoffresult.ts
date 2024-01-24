@@ -5,53 +5,57 @@
 import { z } from "zod";
 
 export type CreateTimeOffResult = {
-    message: string;
-    statusCode: number;
-    timestamp: Date;
+    message?: string | null | undefined;
+    statusCode?: number | null | undefined;
+    timestamp?: Date | null | undefined;
 };
 
 /** @internal */
 export namespace CreateTimeOffResult$ {
     export type Inbound = {
-        message: string;
-        statusCode: number;
-        timestamp: string;
+        message?: string | null | undefined;
+        statusCode?: number | null | undefined;
+        timestamp?: string | null | undefined;
     };
 
     export const inboundSchema: z.ZodType<CreateTimeOffResult, z.ZodTypeDef, Inbound> = z
         .object({
-            message: z.string(),
-            statusCode: z.number(),
+            message: z.nullable(z.string()).optional(),
+            statusCode: z.nullable(z.number()).optional(),
             timestamp: z
-                .string()
-                .datetime({ offset: true })
-                .transform((v) => new Date(v)),
+                .nullable(
+                    z
+                        .string()
+                        .datetime({ offset: true })
+                        .transform((v) => new Date(v))
+                )
+                .optional(),
         })
         .transform((v) => {
             return {
-                message: v.message,
-                statusCode: v.statusCode,
-                timestamp: v.timestamp,
+                ...(v.message === undefined ? null : { message: v.message }),
+                ...(v.statusCode === undefined ? null : { statusCode: v.statusCode }),
+                ...(v.timestamp === undefined ? null : { timestamp: v.timestamp }),
             };
         });
 
     export type Outbound = {
-        message: string;
-        statusCode: number;
-        timestamp: string;
+        message?: string | null | undefined;
+        statusCode?: number | null | undefined;
+        timestamp?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreateTimeOffResult> = z
         .object({
-            message: z.string(),
-            statusCode: z.number(),
-            timestamp: z.date().transform((v) => v.toISOString()),
+            message: z.nullable(z.string()).optional(),
+            statusCode: z.nullable(z.number()).optional(),
+            timestamp: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
         })
         .transform((v) => {
             return {
-                message: v.message,
-                statusCode: v.statusCode,
-                timestamp: v.timestamp,
+                ...(v.message === undefined ? null : { message: v.message }),
+                ...(v.statusCode === undefined ? null : { statusCode: v.statusCode }),
+                ...(v.timestamp === undefined ? null : { timestamp: v.timestamp }),
             };
         });
 }

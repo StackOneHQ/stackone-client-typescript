@@ -4,6 +4,13 @@
 
 import { z } from "zod";
 
+export type Four = {};
+
+/**
+ * The source value of the attachment type.
+ */
+export type SourceValue = Four | string | number | boolean;
+
 /**
  * The type of the attachment.
  */
@@ -19,7 +26,7 @@ export type AttachmentType = {
     /**
      * The source value of the attachment type.
      */
-    sourceValue?: string | null | undefined;
+    sourceValue?: Four | string | number | boolean | null | undefined;
     /**
      * The type of the attachment.
      */
@@ -27,18 +34,59 @@ export type AttachmentType = {
 };
 
 /** @internal */
+export namespace Four$ {
+    export type Inbound = {};
+
+    export const inboundSchema: z.ZodType<Four, z.ZodTypeDef, Inbound> = z.object({});
+
+    export type Outbound = {};
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Four> = z.object({});
+}
+
+/** @internal */
+export namespace SourceValue$ {
+    export type Inbound = Four$.Inbound | string | number | boolean;
+
+    export type Outbound = Four$.Outbound | string | number | boolean;
+
+    export const inboundSchema: z.ZodType<SourceValue, z.ZodTypeDef, Inbound> = z.union([
+        z.lazy(() => Four$.inboundSchema),
+        z.string(),
+        z.number(),
+        z.boolean(),
+    ]);
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, SourceValue> = z.union([
+        z.lazy(() => Four$.outboundSchema),
+        z.string(),
+        z.number(),
+        z.boolean(),
+    ]);
+}
+
+/** @internal */
 export const Value$ = z.nativeEnum(Value);
 
 /** @internal */
 export namespace AttachmentType$ {
     export type Inbound = {
-        source_value?: string | null | undefined;
+        source_value?: Four$.Inbound | string | number | boolean | null | undefined;
         value?: Value | null | undefined;
     };
 
     export const inboundSchema: z.ZodType<AttachmentType, z.ZodTypeDef, Inbound> = z
         .object({
-            source_value: z.nullable(z.string()).optional(),
+            source_value: z
+                .nullable(
+                    z.union([
+                        z.lazy(() => Four$.inboundSchema),
+                        z.string(),
+                        z.number(),
+                        z.boolean(),
+                    ])
+                )
+                .optional(),
             value: z.nullable(Value$).optional(),
         })
         .transform((v) => {
@@ -49,13 +97,22 @@ export namespace AttachmentType$ {
         });
 
     export type Outbound = {
-        source_value?: string | null | undefined;
+        source_value?: Four$.Outbound | string | number | boolean | null | undefined;
         value?: Value | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, AttachmentType> = z
         .object({
-            sourceValue: z.nullable(z.string()).optional(),
+            sourceValue: z
+                .nullable(
+                    z.union([
+                        z.lazy(() => Four$.outboundSchema),
+                        z.string(),
+                        z.number(),
+                        z.boolean(),
+                    ])
+                )
+                .optional(),
             value: z.nullable(Value$).optional(),
         })
         .transform((v) => {

@@ -58,20 +58,17 @@ async function run() {
   const result = await sdk.ats.createApplication({
     atsCreateApplicationRequestDto: {
       applicationStatus: {
-        sourceValue: "Hired",
         value: AtsCreateApplicationRequestDtoValue.Hired,
       },
       attachments: [
         {
           content: "Base64 encoded content",
           contentType: {
-            sourceValue: "Text",
             value: ApplicationAttachmentValue.Text,
           },
           fileName: "resume.pdf",
           type: [
             {
-              sourceValue: "Resume",
               value: Value.Resume,
             },
           ],
@@ -94,7 +91,6 @@ async function run() {
             {
               id: "answer_1",
               type: {
-                sourceValue: "Short Text",
                 value: AnswerValue.ShortText,
               },
               values: [
@@ -227,7 +223,6 @@ async function run() {
         },
       ],
       visibility: {
-        sourceValue: "Public",
         value: AtsCreateNotesRequestDtoValue.Public,
       },
     },
@@ -287,7 +282,6 @@ async function run() {
         },
       ],
       offerStatus: {
-        sourceValue: "Pending",
         value: AtsCreateOfferRequestDtoValue.Pending,
       },
       startDate: new Date("2021-01-01T01:01:01.000Z"),
@@ -1648,20 +1642,17 @@ async function run() {
   const result = await sdk.ats.updateApplication({
     atsUpdateApplicationRequestDto: {
       applicationStatus: {
-        sourceValue: "Hired",
         value: AtsUpdateApplicationRequestDtoValue.Hired,
       },
       attachments: [
         {
           content: "Base64 encoded content",
           contentType: {
-            sourceValue: "Text",
             value: ApplicationAttachmentValue.Text,
           },
           fileName: "resume.pdf",
           type: [
             {
-              sourceValue: "Resume",
               value: Value.Resume,
             },
           ],
@@ -1685,7 +1676,6 @@ async function run() {
             {
               id: "answer_1",
               type: {
-                sourceValue: "Short Text",
                 value: AnswerValue.ShortText,
               },
               values: [

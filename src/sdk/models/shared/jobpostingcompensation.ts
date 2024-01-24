@@ -4,6 +4,13 @@
 
 import { z } from "zod";
 
+export type JobPostingCompensation4 = {};
+
+/**
+ * The source value of the pay frequency.
+ */
+export type JobPostingCompensationSourceValue = JobPostingCompensation4 | string | number | boolean;
+
 /**
  * The pay frequency of the job postings.
  */
@@ -28,12 +35,23 @@ export type JobPostingCompensationPayFrequency = {
     /**
      * The source value of the pay frequency.
      */
-    sourceValue?: string | null | undefined;
+    sourceValue?: JobPostingCompensation4 | string | number | boolean | null | undefined;
     /**
      * The pay frequency of the job postings.
      */
     value?: JobPostingCompensationValue | null | undefined;
 };
+
+export type JobPostingCompensationSchemas4 = {};
+
+/**
+ * The source value of the pay period.
+ */
+export type JobPostingCompensationSchemasSourceValue =
+    | JobPostingCompensationSchemas4
+    | string
+    | number
+    | boolean;
 
 /**
  * The pay period of the job postings.
@@ -55,12 +73,23 @@ export type JobPostingCompensationPayPeriod = {
     /**
      * The source value of the pay period.
      */
-    sourceValue?: string | null | undefined;
+    sourceValue?: JobPostingCompensationSchemas4 | string | number | boolean | null | undefined;
     /**
      * The pay period of the job postings.
      */
     value?: JobPostingCompensationSchemasValue | null | undefined;
 };
+
+export type JobPostingCompensationSchemasType4 = {};
+
+/**
+ * The source value of the compensation type.
+ */
+export type JobPostingCompensationSchemasTypeSourceValue =
+    | JobPostingCompensationSchemasType4
+    | string
+    | number
+    | boolean;
 
 /**
  * The type of the compensation.
@@ -79,7 +108,7 @@ export type JobPostingCompensationType = {
     /**
      * The source value of the compensation type.
      */
-    sourceValue?: string | null | undefined;
+    sourceValue?: JobPostingCompensationSchemasType4 | string | number | boolean | null | undefined;
     /**
      * The type of the compensation.
      */
@@ -98,12 +127,60 @@ export type JobPostingCompensation = {
 };
 
 /** @internal */
+export namespace JobPostingCompensation4$ {
+    export type Inbound = {};
+
+    export const inboundSchema: z.ZodType<JobPostingCompensation4, z.ZodTypeDef, Inbound> =
+        z.object({});
+
+    export type Outbound = {};
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, JobPostingCompensation4> =
+        z.object({});
+}
+
+/** @internal */
+export namespace JobPostingCompensationSourceValue$ {
+    export type Inbound = JobPostingCompensation4$.Inbound | string | number | boolean;
+
+    export type Outbound = JobPostingCompensation4$.Outbound | string | number | boolean;
+
+    export const inboundSchema: z.ZodType<
+        JobPostingCompensationSourceValue,
+        z.ZodTypeDef,
+        Inbound
+    > = z.union([
+        z.lazy(() => JobPostingCompensation4$.inboundSchema),
+        z.string(),
+        z.number(),
+        z.boolean(),
+    ]);
+
+    export const outboundSchema: z.ZodType<
+        Outbound,
+        z.ZodTypeDef,
+        JobPostingCompensationSourceValue
+    > = z.union([
+        z.lazy(() => JobPostingCompensation4$.outboundSchema),
+        z.string(),
+        z.number(),
+        z.boolean(),
+    ]);
+}
+
+/** @internal */
 export const JobPostingCompensationValue$ = z.nativeEnum(JobPostingCompensationValue);
 
 /** @internal */
 export namespace JobPostingCompensationPayFrequency$ {
     export type Inbound = {
-        source_value?: string | null | undefined;
+        source_value?:
+            | JobPostingCompensation4$.Inbound
+            | string
+            | number
+            | boolean
+            | null
+            | undefined;
         value?: JobPostingCompensationValue | null | undefined;
     };
 
@@ -113,7 +190,16 @@ export namespace JobPostingCompensationPayFrequency$ {
         Inbound
     > = z
         .object({
-            source_value: z.nullable(z.string()).optional(),
+            source_value: z
+                .nullable(
+                    z.union([
+                        z.lazy(() => JobPostingCompensation4$.inboundSchema),
+                        z.string(),
+                        z.number(),
+                        z.boolean(),
+                    ])
+                )
+                .optional(),
             value: z.nullable(JobPostingCompensationValue$).optional(),
         })
         .transform((v) => {
@@ -124,7 +210,13 @@ export namespace JobPostingCompensationPayFrequency$ {
         });
 
     export type Outbound = {
-        source_value?: string | null | undefined;
+        source_value?:
+            | JobPostingCompensation4$.Outbound
+            | string
+            | number
+            | boolean
+            | null
+            | undefined;
         value?: JobPostingCompensationValue | null | undefined;
     };
 
@@ -134,7 +226,16 @@ export namespace JobPostingCompensationPayFrequency$ {
         JobPostingCompensationPayFrequency
     > = z
         .object({
-            sourceValue: z.nullable(z.string()).optional(),
+            sourceValue: z
+                .nullable(
+                    z.union([
+                        z.lazy(() => JobPostingCompensation4$.outboundSchema),
+                        z.string(),
+                        z.number(),
+                        z.boolean(),
+                    ])
+                )
+                .optional(),
             value: z.nullable(JobPostingCompensationValue$).optional(),
         })
         .transform((v) => {
@@ -146,19 +247,76 @@ export namespace JobPostingCompensationPayFrequency$ {
 }
 
 /** @internal */
+export namespace JobPostingCompensationSchemas4$ {
+    export type Inbound = {};
+
+    export const inboundSchema: z.ZodType<JobPostingCompensationSchemas4, z.ZodTypeDef, Inbound> =
+        z.object({});
+
+    export type Outbound = {};
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, JobPostingCompensationSchemas4> =
+        z.object({});
+}
+
+/** @internal */
+export namespace JobPostingCompensationSchemasSourceValue$ {
+    export type Inbound = JobPostingCompensationSchemas4$.Inbound | string | number | boolean;
+
+    export type Outbound = JobPostingCompensationSchemas4$.Outbound | string | number | boolean;
+
+    export const inboundSchema: z.ZodType<
+        JobPostingCompensationSchemasSourceValue,
+        z.ZodTypeDef,
+        Inbound
+    > = z.union([
+        z.lazy(() => JobPostingCompensationSchemas4$.inboundSchema),
+        z.string(),
+        z.number(),
+        z.boolean(),
+    ]);
+
+    export const outboundSchema: z.ZodType<
+        Outbound,
+        z.ZodTypeDef,
+        JobPostingCompensationSchemasSourceValue
+    > = z.union([
+        z.lazy(() => JobPostingCompensationSchemas4$.outboundSchema),
+        z.string(),
+        z.number(),
+        z.boolean(),
+    ]);
+}
+
+/** @internal */
 export const JobPostingCompensationSchemasValue$ = z.nativeEnum(JobPostingCompensationSchemasValue);
 
 /** @internal */
 export namespace JobPostingCompensationPayPeriod$ {
     export type Inbound = {
-        source_value?: string | null | undefined;
+        source_value?:
+            | JobPostingCompensationSchemas4$.Inbound
+            | string
+            | number
+            | boolean
+            | null
+            | undefined;
         value?: JobPostingCompensationSchemasValue | null | undefined;
     };
 
     export const inboundSchema: z.ZodType<JobPostingCompensationPayPeriod, z.ZodTypeDef, Inbound> =
         z
             .object({
-                source_value: z.nullable(z.string()).optional(),
+                source_value: z
+                    .nullable(
+                        z.union([
+                            z.lazy(() => JobPostingCompensationSchemas4$.inboundSchema),
+                            z.string(),
+                            z.number(),
+                            z.boolean(),
+                        ])
+                    )
+                    .optional(),
                 value: z.nullable(JobPostingCompensationSchemasValue$).optional(),
             })
             .transform((v) => {
@@ -169,7 +327,13 @@ export namespace JobPostingCompensationPayPeriod$ {
             });
 
     export type Outbound = {
-        source_value?: string | null | undefined;
+        source_value?:
+            | JobPostingCompensationSchemas4$.Outbound
+            | string
+            | number
+            | boolean
+            | null
+            | undefined;
         value?: JobPostingCompensationSchemasValue | null | undefined;
     };
 
@@ -179,7 +343,16 @@ export namespace JobPostingCompensationPayPeriod$ {
         JobPostingCompensationPayPeriod
     > = z
         .object({
-            sourceValue: z.nullable(z.string()).optional(),
+            sourceValue: z
+                .nullable(
+                    z.union([
+                        z.lazy(() => JobPostingCompensationSchemas4$.outboundSchema),
+                        z.string(),
+                        z.number(),
+                        z.boolean(),
+                    ])
+                )
+                .optional(),
             value: z.nullable(JobPostingCompensationSchemasValue$).optional(),
         })
         .transform((v) => {
@@ -191,6 +364,54 @@ export namespace JobPostingCompensationPayPeriod$ {
 }
 
 /** @internal */
+export namespace JobPostingCompensationSchemasType4$ {
+    export type Inbound = {};
+
+    export const inboundSchema: z.ZodType<
+        JobPostingCompensationSchemasType4,
+        z.ZodTypeDef,
+        Inbound
+    > = z.object({});
+
+    export type Outbound = {};
+
+    export const outboundSchema: z.ZodType<
+        Outbound,
+        z.ZodTypeDef,
+        JobPostingCompensationSchemasType4
+    > = z.object({});
+}
+
+/** @internal */
+export namespace JobPostingCompensationSchemasTypeSourceValue$ {
+    export type Inbound = JobPostingCompensationSchemasType4$.Inbound | string | number | boolean;
+
+    export type Outbound = JobPostingCompensationSchemasType4$.Outbound | string | number | boolean;
+
+    export const inboundSchema: z.ZodType<
+        JobPostingCompensationSchemasTypeSourceValue,
+        z.ZodTypeDef,
+        Inbound
+    > = z.union([
+        z.lazy(() => JobPostingCompensationSchemasType4$.inboundSchema),
+        z.string(),
+        z.number(),
+        z.boolean(),
+    ]);
+
+    export const outboundSchema: z.ZodType<
+        Outbound,
+        z.ZodTypeDef,
+        JobPostingCompensationSchemasTypeSourceValue
+    > = z.union([
+        z.lazy(() => JobPostingCompensationSchemasType4$.outboundSchema),
+        z.string(),
+        z.number(),
+        z.boolean(),
+    ]);
+}
+
+/** @internal */
 export const JobPostingCompensationSchemasTypeValue$ = z.nativeEnum(
     JobPostingCompensationSchemasTypeValue
 );
@@ -198,13 +419,28 @@ export const JobPostingCompensationSchemasTypeValue$ = z.nativeEnum(
 /** @internal */
 export namespace JobPostingCompensationType$ {
     export type Inbound = {
-        source_value?: string | null | undefined;
+        source_value?:
+            | JobPostingCompensationSchemasType4$.Inbound
+            | string
+            | number
+            | boolean
+            | null
+            | undefined;
         value?: JobPostingCompensationSchemasTypeValue | null | undefined;
     };
 
     export const inboundSchema: z.ZodType<JobPostingCompensationType, z.ZodTypeDef, Inbound> = z
         .object({
-            source_value: z.nullable(z.string()).optional(),
+            source_value: z
+                .nullable(
+                    z.union([
+                        z.lazy(() => JobPostingCompensationSchemasType4$.inboundSchema),
+                        z.string(),
+                        z.number(),
+                        z.boolean(),
+                    ])
+                )
+                .optional(),
             value: z.nullable(JobPostingCompensationSchemasTypeValue$).optional(),
         })
         .transform((v) => {
@@ -215,13 +451,28 @@ export namespace JobPostingCompensationType$ {
         });
 
     export type Outbound = {
-        source_value?: string | null | undefined;
+        source_value?:
+            | JobPostingCompensationSchemasType4$.Outbound
+            | string
+            | number
+            | boolean
+            | null
+            | undefined;
         value?: JobPostingCompensationSchemasTypeValue | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, JobPostingCompensationType> = z
         .object({
-            sourceValue: z.nullable(z.string()).optional(),
+            sourceValue: z
+                .nullable(
+                    z.union([
+                        z.lazy(() => JobPostingCompensationSchemasType4$.outboundSchema),
+                        z.string(),
+                        z.number(),
+                        z.boolean(),
+                    ])
+                )
+                .optional(),
             value: z.nullable(JobPostingCompensationSchemasTypeValue$).optional(),
         })
         .transform((v) => {

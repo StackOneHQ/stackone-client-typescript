@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 7fa83af8-9e8e-4410-b7e2-cf1d0eaf688b
 management:
-  docChecksum: b3581a877afe6d5b72c1428dc0dbcffa
+  docChecksum: 585378a0817b945847c242127e3a3598
   docVersion: 1.0.0
   speakeasyVersion: internal
-  generationVersion: 2.237.3
-  releaseVersion: 2.3.3
-  configChecksum: 293a49f0b1ef4d9bd0ea424fbab2dd78
+  generationVersion: 2.239.0
+  releaseVersion: 2.3.4
+  configChecksum: 41ae3a1f1938c0c02574633a6fc82a65
   repoURL: https://github.com/StackOneHQ/stackone-client-typescript.git
   repoSubDirectory: .
   installationURL: https://github.com/StackOneHQ/stackone-client-typescript
@@ -518,17 +518,25 @@ generatedFiles:
   - docs/sdk/models/shared/resources.md
   - docs/sdk/models/shared/connectorsmeta.md
   - docs/sdk/models/shared/createresult.md
+  - docs/sdk/models/shared/atscreateapplicationrequestdto4.md
+  - docs/sdk/models/shared/atscreateapplicationrequestdtosourcevalue.md
   - docs/sdk/models/shared/atscreateapplicationrequestdtovalue.md
   - docs/sdk/models/shared/atscreateapplicationrequestdtoapplicationstatus.md
   - docs/sdk/models/shared/atscreateapplicationrequestdtocandidate.md
   - docs/sdk/models/shared/atscreateapplicationrequestdto.md
   - docs/sdk/models/shared/questionnaire.md
+  - docs/sdk/models/shared/answer4.md
+  - docs/sdk/models/shared/answersourcevalue.md
   - docs/sdk/models/shared/answervalue.md
   - docs/sdk/models/shared/typet.md
   - docs/sdk/models/shared/answer.md
+  - docs/sdk/models/shared/applicationattachment4.md
+  - docs/sdk/models/shared/applicationattachmentsourcevalue.md
   - docs/sdk/models/shared/applicationattachmentvalue.md
   - docs/sdk/models/shared/contenttype.md
   - docs/sdk/models/shared/applicationattachment.md
+  - docs/sdk/models/shared/four.md
+  - docs/sdk/models/shared/sourcevalue.md
   - docs/sdk/models/shared/value.md
   - docs/sdk/models/shared/attachmenttype.md
   - docs/sdk/models/shared/candidateresult.md
@@ -539,30 +547,42 @@ generatedFiles:
   - docs/sdk/models/shared/candidateemail.md
   - docs/sdk/models/shared/atscreatecandidaterequestdto.md
   - docs/sdk/models/shared/createcandidatenoteresult.md
+  - docs/sdk/models/shared/atscreatenotesrequestdto4.md
+  - docs/sdk/models/shared/atscreatenotesrequestdtosourcevalue.md
   - docs/sdk/models/shared/atscreatenotesrequestdtovalue.md
   - docs/sdk/models/shared/visibility.md
   - docs/sdk/models/shared/atscreatenotesrequestdto.md
   - docs/sdk/models/shared/notecontentapimodel.md
   - docs/sdk/models/shared/createofferresult.md
+  - docs/sdk/models/shared/atscreateofferrequestdto4.md
+  - docs/sdk/models/shared/atscreateofferrequestdtosourcevalue.md
   - docs/sdk/models/shared/atscreateofferrequestdtovalue.md
   - docs/sdk/models/shared/offerstatus.md
   - docs/sdk/models/shared/atscreateofferrequestdto.md
   - docs/sdk/models/shared/offerhistory.md
   - docs/sdk/models/shared/applicationresult.md
+  - docs/sdk/models/shared/application4.md
+  - docs/sdk/models/shared/applicationsourcevalue.md
   - docs/sdk/models/shared/applicationvalue.md
   - docs/sdk/models/shared/applicationstatus.md
   - docs/sdk/models/shared/applicationcandidate.md
   - docs/sdk/models/shared/applicationinterviewstage.md
   - docs/sdk/models/shared/application.md
   - docs/sdk/models/shared/resultlink.md
+  - docs/sdk/models/shared/rejectedreason4.md
+  - docs/sdk/models/shared/rejectedreasonsourcevalue.md
   - docs/sdk/models/shared/rejectedreasonvalue.md
   - docs/sdk/models/shared/rejectedreasontype.md
   - docs/sdk/models/shared/rejectedreason.md
   - docs/sdk/models/shared/offersresult.md
+  - docs/sdk/models/shared/offer4.md
+  - docs/sdk/models/shared/offersourcevalue.md
   - docs/sdk/models/shared/offervalue.md
   - docs/sdk/models/shared/offerofferstatus.md
   - docs/sdk/models/shared/offer.md
   - docs/sdk/models/shared/noteresult.md
+  - docs/sdk/models/shared/note4.md
+  - docs/sdk/models/shared/notesourcevalue.md
   - docs/sdk/models/shared/notevalue.md
   - docs/sdk/models/shared/notevisibility.md
   - docs/sdk/models/shared/note.md
@@ -570,6 +590,8 @@ generatedFiles:
   - docs/sdk/models/shared/department.md
   - docs/sdk/models/shared/interviewsresult.md
   - docs/sdk/models/shared/interviewinterviewstage.md
+  - docs/sdk/models/shared/interview4.md
+  - docs/sdk/models/shared/interviewsourcevalue.md
   - docs/sdk/models/shared/interviewvalue.md
   - docs/sdk/models/shared/interviewstatus.md
   - docs/sdk/models/shared/interview.md
@@ -579,30 +601,46 @@ generatedFiles:
   - docs/sdk/models/shared/interviewstage.md
   - docs/sdk/models/shared/jobresult.md
   - docs/sdk/models/shared/confidential.md
+  - docs/sdk/models/shared/job4.md
+  - docs/sdk/models/shared/jobsourcevalue.md
   - docs/sdk/models/shared/jobvalue.md
   - docs/sdk/models/shared/jobstatus.md
   - docs/sdk/models/shared/job.md
   - docs/sdk/models/shared/jobhiringteam.md
   - docs/sdk/models/shared/jobpostingresult.md
   - docs/sdk/models/shared/jobpostingcontent.md
+  - docs/sdk/models/shared/jobposting4.md
+  - docs/sdk/models/shared/jobpostingsourcevalue.md
   - docs/sdk/models/shared/jobpostingvalue.md
   - docs/sdk/models/shared/jobpostingemploymentcontracttype.md
+  - docs/sdk/models/shared/jobpostingschemas4.md
+  - docs/sdk/models/shared/jobpostingschemassourcevalue.md
   - docs/sdk/models/shared/jobpostingschemasvalue.md
   - docs/sdk/models/shared/jobpostingemploymenttype.md
   - docs/sdk/models/shared/internal.md
+  - docs/sdk/models/shared/jobpostingschemasstatus4.md
+  - docs/sdk/models/shared/jobpostingschemasstatussourcevalue.md
   - docs/sdk/models/shared/jobpostingschemasstatusvalue.md
   - docs/sdk/models/shared/jobpostingstatus.md
   - docs/sdk/models/shared/jobposting.md
   - docs/sdk/models/shared/jobpostingquestionnaire.md
+  - docs/sdk/models/shared/question4.md
+  - docs/sdk/models/shared/questionsourcevalue.md
   - docs/sdk/models/shared/questionvalue.md
   - docs/sdk/models/shared/questiontype.md
   - docs/sdk/models/shared/question.md
   - docs/sdk/models/shared/questionmultiplechoiceanswers.md
   - docs/sdk/models/shared/jobpostinglocation.md
+  - docs/sdk/models/shared/jobpostingcompensation4.md
+  - docs/sdk/models/shared/jobpostingcompensationsourcevalue.md
   - docs/sdk/models/shared/jobpostingcompensationvalue.md
   - docs/sdk/models/shared/jobpostingcompensationpayfrequency.md
+  - docs/sdk/models/shared/jobpostingcompensationschemas4.md
+  - docs/sdk/models/shared/jobpostingcompensationschemassourcevalue.md
   - docs/sdk/models/shared/jobpostingcompensationschemasvalue.md
   - docs/sdk/models/shared/jobpostingcompensationpayperiod.md
+  - docs/sdk/models/shared/jobpostingcompensationschemastype4.md
+  - docs/sdk/models/shared/jobpostingcompensationschemastypesourcevalue.md
   - docs/sdk/models/shared/jobpostingcompensationschemastypevalue.md
   - docs/sdk/models/shared/jobpostingcompensationtype.md
   - docs/sdk/models/shared/jobpostingcompensation.md
@@ -630,6 +668,8 @@ generatedFiles:
   - docs/sdk/models/shared/rejectedreasonspaginated.md
   - docs/sdk/models/shared/userspaginated.md
   - docs/sdk/models/shared/updateresult.md
+  - docs/sdk/models/shared/atsupdateapplicationrequestdto4.md
+  - docs/sdk/models/shared/atsupdateapplicationrequestdtosourcevalue.md
   - docs/sdk/models/shared/atsupdateapplicationrequestdtovalue.md
   - docs/sdk/models/shared/atsupdateapplicationrequestdtoapplicationstatus.md
   - docs/sdk/models/shared/atsupdateapplicationrequestdtocandidate.md
@@ -640,12 +680,18 @@ generatedFiles:
   - docs/sdk/models/shared/crmcreatecontactrequestdto.md
   - docs/sdk/models/shared/accountresult.md
   - docs/sdk/models/shared/account.md
+  - docs/sdk/models/shared/accountaddressschemas4.md
+  - docs/sdk/models/shared/accountaddressschemassourcevalue.md
   - docs/sdk/models/shared/accountaddressschemasvalue.md
   - docs/sdk/models/shared/country.md
+  - docs/sdk/models/shared/accountaddress4.md
+  - docs/sdk/models/shared/accountaddresssourcevalue.md
   - docs/sdk/models/shared/accountaddressvalue.md
   - docs/sdk/models/shared/locationtype.md
   - docs/sdk/models/shared/accountaddress.md
   - docs/sdk/models/shared/listresult.md
+  - docs/sdk/models/shared/list4.md
+  - docs/sdk/models/shared/listsourcevalue.md
   - docs/sdk/models/shared/listvalue.md
   - docs/sdk/models/shared/listtype.md
   - docs/sdk/models/shared/list.md
@@ -654,47 +700,83 @@ generatedFiles:
   - docs/sdk/models/shared/listspaginated.md
   - docs/sdk/models/shared/createemployeeresult.md
   - docs/sdk/models/shared/hriscreateemployeerequestdtoavatar.md
+  - docs/sdk/models/shared/hriscreateemployeerequestdto4.md
+  - docs/sdk/models/shared/hriscreateemployeerequestdtosourcevalue.md
   - docs/sdk/models/shared/hriscreateemployeerequestdtovalue.md
   - docs/sdk/models/shared/hriscreateemployeerequestdtoemploymentcontracttype.md
+  - docs/sdk/models/shared/hriscreateemployeerequestdtoschemas4.md
+  - docs/sdk/models/shared/hriscreateemployeerequestdtoschemassourcevalue.md
   - docs/sdk/models/shared/hriscreateemployeerequestdtoschemasvalue.md
   - docs/sdk/models/shared/hriscreateemployeerequestdtoemploymentstatus.md
+  - docs/sdk/models/shared/hriscreateemployeerequestdtoschemasemploymenttype4.md
+  - docs/sdk/models/shared/hriscreateemployeerequestdtoschemasemploymenttypesourcevalue.md
   - docs/sdk/models/shared/hriscreateemployeerequestdtoschemasemploymenttypevalue.md
   - docs/sdk/models/shared/hriscreateemployeerequestdtoemploymenttype.md
+  - docs/sdk/models/shared/hriscreateemployeerequestdtoschemasethnicity4.md
+  - docs/sdk/models/shared/hriscreateemployeerequestdtoschemasethnicitysourcevalue.md
   - docs/sdk/models/shared/hriscreateemployeerequestdtoschemasethnicityvalue.md
   - docs/sdk/models/shared/hriscreateemployeerequestdtoethnicity.md
+  - docs/sdk/models/shared/hriscreateemployeerequestdtoschemasgender4.md
+  - docs/sdk/models/shared/hriscreateemployeerequestdtoschemasgendersourcevalue.md
   - docs/sdk/models/shared/hriscreateemployeerequestdtoschemasgendervalue.md
   - docs/sdk/models/shared/hriscreateemployeerequestdtogender.md
+  - docs/sdk/models/shared/hriscreateemployeerequestdtoschemashomelocation4.md
+  - docs/sdk/models/shared/hriscreateemployeerequestdtoschemashomelocationsourcevalue.md
   - docs/sdk/models/shared/hriscreateemployeerequestdtoschemashomelocationvalue.md
   - docs/sdk/models/shared/hriscreateemployeerequestdtocountry.md
+  - docs/sdk/models/shared/hriscreateemployeerequestdtoschemashomelocationstate4.md
+  - docs/sdk/models/shared/hriscreateemployeerequestdtoschemashomelocationstatesourcevalue.md
   - docs/sdk/models/shared/hriscreateemployeerequestdtoschemashomelocationstatevalue.md
   - docs/sdk/models/shared/state.md
   - docs/sdk/models/shared/hriscreateemployeerequestdtohomelocation.md
+  - docs/sdk/models/shared/hriscreateemployeerequestdtoschemasmaritalstatus4.md
+  - docs/sdk/models/shared/hriscreateemployeerequestdtoschemasmaritalstatussourcevalue.md
   - docs/sdk/models/shared/hriscreateemployeerequestdtoschemasmaritalstatusvalue.md
   - docs/sdk/models/shared/hriscreateemployeerequestdtomaritalstatus.md
+  - docs/sdk/models/shared/hriscreateemployeerequestdtoschemasworklocation4.md
+  - docs/sdk/models/shared/hriscreateemployeerequestdtoschemasworklocationsourcevalue.md
   - docs/sdk/models/shared/hriscreateemployeerequestdtoschemasworklocationvalue.md
   - docs/sdk/models/shared/hriscreateemployeerequestdtoschemascountry.md
+  - docs/sdk/models/shared/hriscreateemployeerequestdtoschemasworklocationstate4.md
+  - docs/sdk/models/shared/hriscreateemployeerequestdtoschemasworklocationstatesourcevalue.md
   - docs/sdk/models/shared/hriscreateemployeerequestdtoschemasworklocationstatevalue.md
   - docs/sdk/models/shared/hriscreateemployeerequestdtostate.md
   - docs/sdk/models/shared/hriscreateemployeerequestdtoworklocation.md
   - docs/sdk/models/shared/hriscreateemployeerequestdto.md
+  - docs/sdk/models/shared/employment4.md
+  - docs/sdk/models/shared/employmentsourcevalue.md
   - docs/sdk/models/shared/employmentvalue.md
   - docs/sdk/models/shared/employmentemploymentcontracttype.md
+  - docs/sdk/models/shared/employmentschemas4.md
+  - docs/sdk/models/shared/employmentschemassourcevalue.md
   - docs/sdk/models/shared/employmentschemasvalue.md
   - docs/sdk/models/shared/employmentemploymenttype.md
+  - docs/sdk/models/shared/employmentschemaspayfrequency4.md
+  - docs/sdk/models/shared/employmentschemaspayfrequencysourcevalue.md
   - docs/sdk/models/shared/employmentschemaspayfrequencyvalue.md
   - docs/sdk/models/shared/payfrequency.md
+  - docs/sdk/models/shared/employmentschemaspayperiod4.md
+  - docs/sdk/models/shared/employmentschemaspayperiodsourcevalue.md
   - docs/sdk/models/shared/employmentschemaspayperiodvalue.md
   - docs/sdk/models/shared/payperiod.md
   - docs/sdk/models/shared/employment.md
+  - docs/sdk/models/shared/employeecustomfields4.md
+  - docs/sdk/models/shared/employeecustomfieldssourcevalue.md
   - docs/sdk/models/shared/employeecustomfieldsschemasvalue.md
   - docs/sdk/models/shared/employeecustomfieldstype.md
   - docs/sdk/models/shared/employeecustomfieldsvalue.md
   - docs/sdk/models/shared/employeecustomfields.md
+  - docs/sdk/models/shared/countrycodeenum4.md
+  - docs/sdk/models/shared/countrycodeenumsourcevalue.md
   - docs/sdk/models/shared/countrycodeenumvalue.md
   - docs/sdk/models/shared/countrycodeenum.md
   - docs/sdk/models/shared/createtimeoffresult.md
+  - docs/sdk/models/shared/hriscreatetimeoffrequestdto4.md
+  - docs/sdk/models/shared/hriscreatetimeoffrequestdtosourcevalue.md
   - docs/sdk/models/shared/hriscreatetimeoffrequestdtovalue.md
   - docs/sdk/models/shared/hriscreatetimeoffrequestdtostatus.md
+  - docs/sdk/models/shared/hriscreatetimeoffrequestdtoschemas4.md
+  - docs/sdk/models/shared/hriscreatetimeoffrequestdtoschemassourcevalue.md
   - docs/sdk/models/shared/hriscreatetimeoffrequestdtoschemasvalue.md
   - docs/sdk/models/shared/hriscreatetimeoffrequestdtotype.md
   - docs/sdk/models/shared/hriscreatetimeoffrequestdto.md
@@ -702,25 +784,45 @@ generatedFiles:
   - docs/sdk/models/shared/company.md
   - docs/sdk/models/shared/employeeresult.md
   - docs/sdk/models/shared/avatar.md
+  - docs/sdk/models/shared/employee4.md
+  - docs/sdk/models/shared/employeesourcevalue.md
   - docs/sdk/models/shared/employeevalue.md
   - docs/sdk/models/shared/employmentcontracttype.md
+  - docs/sdk/models/shared/employeeschemas4.md
+  - docs/sdk/models/shared/employeeschemassourcevalue.md
   - docs/sdk/models/shared/employeeschemasvalue.md
   - docs/sdk/models/shared/employmentstatus.md
+  - docs/sdk/models/shared/employeeschemasemploymenttype4.md
+  - docs/sdk/models/shared/employeeschemasemploymenttypesourcevalue.md
   - docs/sdk/models/shared/employeeschemasemploymenttypevalue.md
   - docs/sdk/models/shared/employmenttype.md
+  - docs/sdk/models/shared/employeeschemasethnicity4.md
+  - docs/sdk/models/shared/employeeschemasethnicitysourcevalue.md
   - docs/sdk/models/shared/employeeschemasethnicityvalue.md
   - docs/sdk/models/shared/ethnicity.md
+  - docs/sdk/models/shared/employeeschemasgender4.md
+  - docs/sdk/models/shared/employeeschemasgendersourcevalue.md
   - docs/sdk/models/shared/employeeschemasgendervalue.md
   - docs/sdk/models/shared/gender.md
+  - docs/sdk/models/shared/employeeschemashomelocation4.md
+  - docs/sdk/models/shared/employeeschemashomelocationsourcevalue.md
   - docs/sdk/models/shared/employeeschemashomelocationvalue.md
   - docs/sdk/models/shared/employeecountry.md
+  - docs/sdk/models/shared/employeeschemashomelocationlocationtype4.md
+  - docs/sdk/models/shared/employeeschemashomelocationlocationtypesourcevalue.md
   - docs/sdk/models/shared/employeeschemashomelocationlocationtypevalue.md
   - docs/sdk/models/shared/employeelocationtype.md
   - docs/sdk/models/shared/homelocation.md
+  - docs/sdk/models/shared/employeeschemasmaritalstatus4.md
+  - docs/sdk/models/shared/employeeschemasmaritalstatussourcevalue.md
   - docs/sdk/models/shared/employeeschemasmaritalstatusvalue.md
   - docs/sdk/models/shared/maritalstatus.md
+  - docs/sdk/models/shared/employeeschemasworklocation4.md
+  - docs/sdk/models/shared/employeeschemasworklocationsourcevalue.md
   - docs/sdk/models/shared/employeeschemasworklocationvalue.md
   - docs/sdk/models/shared/employeeschemascountry.md
+  - docs/sdk/models/shared/employeeschemasworklocationlocationtype4.md
+  - docs/sdk/models/shared/employeeschemasworklocationlocationtypesourcevalue.md
   - docs/sdk/models/shared/employeeschemasworklocationlocationtypevalue.md
   - docs/sdk/models/shared/employeeschemaslocationtype.md
   - docs/sdk/models/shared/worklocation.md
@@ -728,21 +830,33 @@ generatedFiles:
   - docs/sdk/models/shared/costcenters.md
   - docs/sdk/models/shared/documentresult.md
   - docs/sdk/models/shared/documentapimodel.md
+  - docs/sdk/models/shared/documenttypeenum4.md
+  - docs/sdk/models/shared/documenttypeenumsourcevalue.md
   - docs/sdk/models/shared/documenttypeenumvalue.md
   - docs/sdk/models/shared/documenttypeenum.md
   - docs/sdk/models/shared/content.md
+  - docs/sdk/models/shared/documentfileformatenum4.md
+  - docs/sdk/models/shared/documentfileformatenumsourcevalue.md
   - docs/sdk/models/shared/documentfileformatenumvalue.md
   - docs/sdk/models/shared/documentfileformatenum.md
   - docs/sdk/models/shared/timeoffresult.md
+  - docs/sdk/models/shared/timeoff4.md
+  - docs/sdk/models/shared/timeoffsourcevalue.md
   - docs/sdk/models/shared/timeoffvalue.md
   - docs/sdk/models/shared/timeoffstatus.md
+  - docs/sdk/models/shared/timeoffschemas4.md
+  - docs/sdk/models/shared/timeoffschemassourcevalue.md
   - docs/sdk/models/shared/timeoffschemasvalue.md
   - docs/sdk/models/shared/timeofftype.md
   - docs/sdk/models/shared/timeoff.md
   - docs/sdk/models/shared/employmentresult.md
   - docs/sdk/models/shared/hrislocationresult.md
+  - docs/sdk/models/shared/hrislocation4.md
+  - docs/sdk/models/shared/hrislocationsourcevalue.md
   - docs/sdk/models/shared/hrislocationvalue.md
   - docs/sdk/models/shared/hrislocationcountry.md
+  - docs/sdk/models/shared/hrislocationschemas4.md
+  - docs/sdk/models/shared/hrislocationschemassourcevalue.md
   - docs/sdk/models/shared/hrislocationschemasvalue.md
   - docs/sdk/models/shared/hrislocationlocationtype.md
   - docs/sdk/models/shared/hrislocation.md
@@ -755,6 +869,8 @@ generatedFiles:
   - docs/sdk/models/shared/createtemplateresult.md
   - docs/sdk/models/shared/marketingcreateemailtemplaterequestdto.md
   - docs/sdk/models/shared/messagecontent.md
+  - docs/sdk/models/shared/emailmessages4.md
+  - docs/sdk/models/shared/emailmessagessourcevalue.md
   - docs/sdk/models/shared/emailmessagesvalue.md
   - docs/sdk/models/shared/messagetype.md
   - docs/sdk/models/shared/emailmessages.md
@@ -767,15 +883,23 @@ generatedFiles:
   - docs/sdk/models/shared/message.md
   - docs/sdk/models/shared/marketingcreatepushtemplaterequestdto.md
   - docs/sdk/models/shared/pushmessagesmessagecontent.md
+  - docs/sdk/models/shared/pushmessages4.md
+  - docs/sdk/models/shared/pushmessagessourcevalue.md
   - docs/sdk/models/shared/pushmessagesvalue.md
   - docs/sdk/models/shared/pushmessagesmessagetype.md
   - docs/sdk/models/shared/pushmessages.md
   - docs/sdk/models/shared/campaignresult.md
+  - docs/sdk/models/shared/campaign4.md
+  - docs/sdk/models/shared/campaignsourcevalue.md
   - docs/sdk/models/shared/campaignvalue.md
   - docs/sdk/models/shared/scheduletype.md
+  - docs/sdk/models/shared/campaignschemas4.md
+  - docs/sdk/models/shared/campaignschemassourcevalue.md
   - docs/sdk/models/shared/campaignschemasvalue.md
   - docs/sdk/models/shared/status.md
   - docs/sdk/models/shared/campaign.md
+  - docs/sdk/models/shared/channelsenum4.md
+  - docs/sdk/models/shared/channelsenumsourcevalue.md
   - docs/sdk/models/shared/channelsenumvalue.md
   - docs/sdk/models/shared/channelsenum.md
   - docs/sdk/models/shared/templateresult.md

@@ -5,6 +5,17 @@
 import { OfferHistory, OfferHistory$ } from "./offerhistory";
 import { z } from "zod";
 
+export type AtsCreateOfferRequestDto4 = {};
+
+/**
+ * The source value of the offer status.
+ */
+export type AtsCreateOfferRequestDtoSourceValue =
+    | AtsCreateOfferRequestDto4
+    | string
+    | number
+    | boolean;
+
 /**
  * The status of the offer.
  */
@@ -23,7 +34,7 @@ export type OfferStatus = {
     /**
      * The source value of the offer status.
      */
-    sourceValue?: string | null | undefined;
+    sourceValue?: AtsCreateOfferRequestDto4 | string | number | boolean | null | undefined;
     /**
      * The status of the offer.
      */
@@ -43,18 +54,75 @@ export type AtsCreateOfferRequestDto = {
 };
 
 /** @internal */
+export namespace AtsCreateOfferRequestDto4$ {
+    export type Inbound = {};
+
+    export const inboundSchema: z.ZodType<AtsCreateOfferRequestDto4, z.ZodTypeDef, Inbound> =
+        z.object({});
+
+    export type Outbound = {};
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, AtsCreateOfferRequestDto4> =
+        z.object({});
+}
+
+/** @internal */
+export namespace AtsCreateOfferRequestDtoSourceValue$ {
+    export type Inbound = AtsCreateOfferRequestDto4$.Inbound | string | number | boolean;
+
+    export type Outbound = AtsCreateOfferRequestDto4$.Outbound | string | number | boolean;
+
+    export const inboundSchema: z.ZodType<
+        AtsCreateOfferRequestDtoSourceValue,
+        z.ZodTypeDef,
+        Inbound
+    > = z.union([
+        z.lazy(() => AtsCreateOfferRequestDto4$.inboundSchema),
+        z.string(),
+        z.number(),
+        z.boolean(),
+    ]);
+
+    export const outboundSchema: z.ZodType<
+        Outbound,
+        z.ZodTypeDef,
+        AtsCreateOfferRequestDtoSourceValue
+    > = z.union([
+        z.lazy(() => AtsCreateOfferRequestDto4$.outboundSchema),
+        z.string(),
+        z.number(),
+        z.boolean(),
+    ]);
+}
+
+/** @internal */
 export const AtsCreateOfferRequestDtoValue$ = z.nativeEnum(AtsCreateOfferRequestDtoValue);
 
 /** @internal */
 export namespace OfferStatus$ {
     export type Inbound = {
-        source_value?: string | null | undefined;
+        source_value?:
+            | AtsCreateOfferRequestDto4$.Inbound
+            | string
+            | number
+            | boolean
+            | null
+            | undefined;
         value?: AtsCreateOfferRequestDtoValue | null | undefined;
     };
 
     export const inboundSchema: z.ZodType<OfferStatus, z.ZodTypeDef, Inbound> = z
         .object({
-            source_value: z.nullable(z.string()).optional(),
+            source_value: z
+                .nullable(
+                    z.union([
+                        z.lazy(() => AtsCreateOfferRequestDto4$.inboundSchema),
+                        z.string(),
+                        z.number(),
+                        z.boolean(),
+                    ])
+                )
+                .optional(),
             value: z.nullable(AtsCreateOfferRequestDtoValue$).optional(),
         })
         .transform((v) => {
@@ -65,13 +133,28 @@ export namespace OfferStatus$ {
         });
 
     export type Outbound = {
-        source_value?: string | null | undefined;
+        source_value?:
+            | AtsCreateOfferRequestDto4$.Outbound
+            | string
+            | number
+            | boolean
+            | null
+            | undefined;
         value?: AtsCreateOfferRequestDtoValue | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, OfferStatus> = z
         .object({
-            sourceValue: z.nullable(z.string()).optional(),
+            sourceValue: z
+                .nullable(
+                    z.union([
+                        z.lazy(() => AtsCreateOfferRequestDto4$.outboundSchema),
+                        z.string(),
+                        z.number(),
+                        z.boolean(),
+                    ])
+                )
+                .optional(),
             value: z.nullable(AtsCreateOfferRequestDtoValue$).optional(),
         })
         .transform((v) => {
