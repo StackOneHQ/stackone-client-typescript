@@ -4,6 +4,10 @@
 
 import { z } from "zod";
 
+export type DocumentTypeEnum4 = {};
+
+export type DocumentTypeEnumSourceValue = DocumentTypeEnum4 | string | number | boolean;
+
 export enum DocumentTypeEnumValue {
     Visa = "visa",
     Passport = "passport",
@@ -13,9 +17,45 @@ export enum DocumentTypeEnumValue {
 }
 
 export type DocumentTypeEnum = {
-    sourceValue: string;
-    value: DocumentTypeEnumValue;
+    sourceValue?: DocumentTypeEnum4 | string | number | boolean | null | undefined;
+    value?: DocumentTypeEnumValue | null | undefined;
 };
+
+/** @internal */
+export namespace DocumentTypeEnum4$ {
+    export type Inbound = {};
+
+    export const inboundSchema: z.ZodType<DocumentTypeEnum4, z.ZodTypeDef, Inbound> = z.object({});
+
+    export type Outbound = {};
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, DocumentTypeEnum4> = z.object(
+        {}
+    );
+}
+
+/** @internal */
+export namespace DocumentTypeEnumSourceValue$ {
+    export type Inbound = DocumentTypeEnum4$.Inbound | string | number | boolean;
+
+    export type Outbound = DocumentTypeEnum4$.Outbound | string | number | boolean;
+
+    export const inboundSchema: z.ZodType<DocumentTypeEnumSourceValue, z.ZodTypeDef, Inbound> =
+        z.union([
+            z.lazy(() => DocumentTypeEnum4$.inboundSchema),
+            z.string(),
+            z.number(),
+            z.boolean(),
+        ]);
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, DocumentTypeEnumSourceValue> =
+        z.union([
+            z.lazy(() => DocumentTypeEnum4$.outboundSchema),
+            z.string(),
+            z.number(),
+            z.boolean(),
+        ]);
+}
 
 /** @internal */
 export const DocumentTypeEnumValue$ = z.nativeEnum(DocumentTypeEnumValue);
@@ -23,36 +63,54 @@ export const DocumentTypeEnumValue$ = z.nativeEnum(DocumentTypeEnumValue);
 /** @internal */
 export namespace DocumentTypeEnum$ {
     export type Inbound = {
-        source_value: string;
-        value: DocumentTypeEnumValue;
+        source_value?: DocumentTypeEnum4$.Inbound | string | number | boolean | null | undefined;
+        value?: DocumentTypeEnumValue | null | undefined;
     };
 
     export const inboundSchema: z.ZodType<DocumentTypeEnum, z.ZodTypeDef, Inbound> = z
         .object({
-            source_value: z.string(),
-            value: DocumentTypeEnumValue$,
+            source_value: z
+                .nullable(
+                    z.union([
+                        z.lazy(() => DocumentTypeEnum4$.inboundSchema),
+                        z.string(),
+                        z.number(),
+                        z.boolean(),
+                    ])
+                )
+                .optional(),
+            value: z.nullable(DocumentTypeEnumValue$).optional(),
         })
         .transform((v) => {
             return {
-                sourceValue: v.source_value,
-                value: v.value,
+                ...(v.source_value === undefined ? null : { sourceValue: v.source_value }),
+                ...(v.value === undefined ? null : { value: v.value }),
             };
         });
 
     export type Outbound = {
-        source_value: string;
-        value: DocumentTypeEnumValue;
+        source_value?: DocumentTypeEnum4$.Outbound | string | number | boolean | null | undefined;
+        value?: DocumentTypeEnumValue | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, DocumentTypeEnum> = z
         .object({
-            sourceValue: z.string(),
-            value: DocumentTypeEnumValue$,
+            sourceValue: z
+                .nullable(
+                    z.union([
+                        z.lazy(() => DocumentTypeEnum4$.outboundSchema),
+                        z.string(),
+                        z.number(),
+                        z.boolean(),
+                    ])
+                )
+                .optional(),
+            value: z.nullable(DocumentTypeEnumValue$).optional(),
         })
         .transform((v) => {
             return {
-                source_value: v.sourceValue,
-                value: v.value,
+                ...(v.sourceValue === undefined ? null : { source_value: v.sourceValue }),
+                ...(v.value === undefined ? null : { value: v.value }),
             };
         });
 }

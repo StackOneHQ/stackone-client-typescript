@@ -12,6 +12,13 @@ export type JobPostingContent = {
     plain?: string | null | undefined;
 };
 
+export type JobPosting4 = {};
+
+/**
+ * The source value of the employment contract type.
+ */
+export type JobPostingSourceValue = JobPosting4 | string | number | boolean;
+
 /**
  * The employment contract type.
  */
@@ -26,12 +33,19 @@ export type JobPostingEmploymentContractType = {
     /**
      * The source value of the employment contract type.
      */
-    sourceValue?: string | null | undefined;
+    sourceValue?: JobPosting4 | string | number | boolean | null | undefined;
     /**
      * The employment contract type.
      */
     value?: JobPostingValue | null | undefined;
 };
+
+export type JobPostingSchemas4 = {};
+
+/**
+ * The source value of the employment type.
+ */
+export type JobPostingSchemasSourceValue = JobPostingSchemas4 | string | number | boolean;
 
 /**
  * The type of the employment.
@@ -52,7 +66,7 @@ export type JobPostingEmploymentType = {
     /**
      * The source value of the employment type.
      */
-    sourceValue?: string | null | undefined;
+    sourceValue?: JobPostingSchemas4 | string | number | boolean | null | undefined;
     /**
      * The type of the employment.
      */
@@ -63,6 +77,17 @@ export enum Internal {
     True = "true",
     False = "false",
 }
+
+export type JobPostingSchemasStatus4 = {};
+
+/**
+ * The source value of the job postings status.
+ */
+export type JobPostingSchemasStatusSourceValue =
+    | JobPostingSchemasStatus4
+    | string
+    | number
+    | boolean;
 
 /**
  * The status of the job postings.
@@ -78,7 +103,7 @@ export type JobPostingStatus = {
     /**
      * The source value of the job postings status.
      */
-    sourceValue?: string | null | undefined;
+    sourceValue?: JobPostingSchemasStatus4 | string | number | boolean | null | undefined;
     /**
      * The status of the job postings.
      */
@@ -147,19 +172,57 @@ export namespace JobPostingContent$ {
 }
 
 /** @internal */
+export namespace JobPosting4$ {
+    export type Inbound = {};
+
+    export const inboundSchema: z.ZodType<JobPosting4, z.ZodTypeDef, Inbound> = z.object({});
+
+    export type Outbound = {};
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, JobPosting4> = z.object({});
+}
+
+/** @internal */
+export namespace JobPostingSourceValue$ {
+    export type Inbound = JobPosting4$.Inbound | string | number | boolean;
+
+    export type Outbound = JobPosting4$.Outbound | string | number | boolean;
+
+    export const inboundSchema: z.ZodType<JobPostingSourceValue, z.ZodTypeDef, Inbound> = z.union([
+        z.lazy(() => JobPosting4$.inboundSchema),
+        z.string(),
+        z.number(),
+        z.boolean(),
+    ]);
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, JobPostingSourceValue> = z.union(
+        [z.lazy(() => JobPosting4$.outboundSchema), z.string(), z.number(), z.boolean()]
+    );
+}
+
+/** @internal */
 export const JobPostingValue$ = z.nativeEnum(JobPostingValue);
 
 /** @internal */
 export namespace JobPostingEmploymentContractType$ {
     export type Inbound = {
-        source_value?: string | null | undefined;
+        source_value?: JobPosting4$.Inbound | string | number | boolean | null | undefined;
         value?: JobPostingValue | null | undefined;
     };
 
     export const inboundSchema: z.ZodType<JobPostingEmploymentContractType, z.ZodTypeDef, Inbound> =
         z
             .object({
-                source_value: z.nullable(z.string()).optional(),
+                source_value: z
+                    .nullable(
+                        z.union([
+                            z.lazy(() => JobPosting4$.inboundSchema),
+                            z.string(),
+                            z.number(),
+                            z.boolean(),
+                        ])
+                    )
+                    .optional(),
                 value: z.nullable(JobPostingValue$).optional(),
             })
             .transform((v) => {
@@ -170,7 +233,7 @@ export namespace JobPostingEmploymentContractType$ {
             });
 
     export type Outbound = {
-        source_value?: string | null | undefined;
+        source_value?: JobPosting4$.Outbound | string | number | boolean | null | undefined;
         value?: JobPostingValue | null | undefined;
     };
 
@@ -180,7 +243,16 @@ export namespace JobPostingEmploymentContractType$ {
         JobPostingEmploymentContractType
     > = z
         .object({
-            sourceValue: z.nullable(z.string()).optional(),
+            sourceValue: z
+                .nullable(
+                    z.union([
+                        z.lazy(() => JobPosting4$.outboundSchema),
+                        z.string(),
+                        z.number(),
+                        z.boolean(),
+                    ])
+                )
+                .optional(),
             value: z.nullable(JobPostingValue$).optional(),
         })
         .transform((v) => {
@@ -192,18 +264,63 @@ export namespace JobPostingEmploymentContractType$ {
 }
 
 /** @internal */
+export namespace JobPostingSchemas4$ {
+    export type Inbound = {};
+
+    export const inboundSchema: z.ZodType<JobPostingSchemas4, z.ZodTypeDef, Inbound> = z.object({});
+
+    export type Outbound = {};
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, JobPostingSchemas4> = z.object(
+        {}
+    );
+}
+
+/** @internal */
+export namespace JobPostingSchemasSourceValue$ {
+    export type Inbound = JobPostingSchemas4$.Inbound | string | number | boolean;
+
+    export type Outbound = JobPostingSchemas4$.Outbound | string | number | boolean;
+
+    export const inboundSchema: z.ZodType<JobPostingSchemasSourceValue, z.ZodTypeDef, Inbound> =
+        z.union([
+            z.lazy(() => JobPostingSchemas4$.inboundSchema),
+            z.string(),
+            z.number(),
+            z.boolean(),
+        ]);
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, JobPostingSchemasSourceValue> =
+        z.union([
+            z.lazy(() => JobPostingSchemas4$.outboundSchema),
+            z.string(),
+            z.number(),
+            z.boolean(),
+        ]);
+}
+
+/** @internal */
 export const JobPostingSchemasValue$ = z.nativeEnum(JobPostingSchemasValue);
 
 /** @internal */
 export namespace JobPostingEmploymentType$ {
     export type Inbound = {
-        source_value?: string | null | undefined;
+        source_value?: JobPostingSchemas4$.Inbound | string | number | boolean | null | undefined;
         value?: JobPostingSchemasValue | null | undefined;
     };
 
     export const inboundSchema: z.ZodType<JobPostingEmploymentType, z.ZodTypeDef, Inbound> = z
         .object({
-            source_value: z.nullable(z.string()).optional(),
+            source_value: z
+                .nullable(
+                    z.union([
+                        z.lazy(() => JobPostingSchemas4$.inboundSchema),
+                        z.string(),
+                        z.number(),
+                        z.boolean(),
+                    ])
+                )
+                .optional(),
             value: z.nullable(JobPostingSchemasValue$).optional(),
         })
         .transform((v) => {
@@ -214,13 +331,22 @@ export namespace JobPostingEmploymentType$ {
         });
 
     export type Outbound = {
-        source_value?: string | null | undefined;
+        source_value?: JobPostingSchemas4$.Outbound | string | number | boolean | null | undefined;
         value?: JobPostingSchemasValue | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, JobPostingEmploymentType> = z
         .object({
-            sourceValue: z.nullable(z.string()).optional(),
+            sourceValue: z
+                .nullable(
+                    z.union([
+                        z.lazy(() => JobPostingSchemas4$.outboundSchema),
+                        z.string(),
+                        z.number(),
+                        z.boolean(),
+                    ])
+                )
+                .optional(),
             value: z.nullable(JobPostingSchemasValue$).optional(),
         })
         .transform((v) => {
@@ -235,18 +361,75 @@ export namespace JobPostingEmploymentType$ {
 export const Internal$ = z.nativeEnum(Internal);
 
 /** @internal */
+export namespace JobPostingSchemasStatus4$ {
+    export type Inbound = {};
+
+    export const inboundSchema: z.ZodType<JobPostingSchemasStatus4, z.ZodTypeDef, Inbound> =
+        z.object({});
+
+    export type Outbound = {};
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, JobPostingSchemasStatus4> =
+        z.object({});
+}
+
+/** @internal */
+export namespace JobPostingSchemasStatusSourceValue$ {
+    export type Inbound = JobPostingSchemasStatus4$.Inbound | string | number | boolean;
+
+    export type Outbound = JobPostingSchemasStatus4$.Outbound | string | number | boolean;
+
+    export const inboundSchema: z.ZodType<
+        JobPostingSchemasStatusSourceValue,
+        z.ZodTypeDef,
+        Inbound
+    > = z.union([
+        z.lazy(() => JobPostingSchemasStatus4$.inboundSchema),
+        z.string(),
+        z.number(),
+        z.boolean(),
+    ]);
+
+    export const outboundSchema: z.ZodType<
+        Outbound,
+        z.ZodTypeDef,
+        JobPostingSchemasStatusSourceValue
+    > = z.union([
+        z.lazy(() => JobPostingSchemasStatus4$.outboundSchema),
+        z.string(),
+        z.number(),
+        z.boolean(),
+    ]);
+}
+
+/** @internal */
 export const JobPostingSchemasStatusValue$ = z.nativeEnum(JobPostingSchemasStatusValue);
 
 /** @internal */
 export namespace JobPostingStatus$ {
     export type Inbound = {
-        source_value?: string | null | undefined;
+        source_value?:
+            | JobPostingSchemasStatus4$.Inbound
+            | string
+            | number
+            | boolean
+            | null
+            | undefined;
         value?: JobPostingSchemasStatusValue | null | undefined;
     };
 
     export const inboundSchema: z.ZodType<JobPostingStatus, z.ZodTypeDef, Inbound> = z
         .object({
-            source_value: z.nullable(z.string()).optional(),
+            source_value: z
+                .nullable(
+                    z.union([
+                        z.lazy(() => JobPostingSchemasStatus4$.inboundSchema),
+                        z.string(),
+                        z.number(),
+                        z.boolean(),
+                    ])
+                )
+                .optional(),
             value: z.nullable(JobPostingSchemasStatusValue$).optional(),
         })
         .transform((v) => {
@@ -257,13 +440,28 @@ export namespace JobPostingStatus$ {
         });
 
     export type Outbound = {
-        source_value?: string | null | undefined;
+        source_value?:
+            | JobPostingSchemasStatus4$.Outbound
+            | string
+            | number
+            | boolean
+            | null
+            | undefined;
         value?: JobPostingSchemasStatusValue | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, JobPostingStatus> = z
         .object({
-            sourceValue: z.nullable(z.string()).optional(),
+            sourceValue: z
+                .nullable(
+                    z.union([
+                        z.lazy(() => JobPostingSchemasStatus4$.outboundSchema),
+                        z.string(),
+                        z.number(),
+                        z.boolean(),
+                    ])
+                )
+                .optional(),
             value: z.nullable(JobPostingSchemasStatusValue$).optional(),
         })
         .transform((v) => {

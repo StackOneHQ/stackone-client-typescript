@@ -24,7 +24,7 @@ export type ConnectSession = {
     originOwnerName: string;
     originUsername?: string | null | undefined;
     projectId: string;
-    provider: string;
+    provider?: string | null | undefined;
 };
 
 /** @internal */
@@ -43,7 +43,7 @@ export namespace ConnectSession$ {
         origin_owner_name: string;
         origin_username?: string | null | undefined;
         project_id: string;
-        provider: string;
+        provider?: string | null | undefined;
     };
 
     export const inboundSchema: z.ZodType<ConnectSession, z.ZodTypeDef, Inbound> = z
@@ -61,7 +61,7 @@ export namespace ConnectSession$ {
             origin_owner_name: z.string(),
             origin_username: z.nullable(z.string()).optional(),
             project_id: z.string(),
-            provider: z.string(),
+            provider: z.nullable(z.string()).optional(),
         })
         .transform((v) => {
             return {
@@ -75,7 +75,7 @@ export namespace ConnectSession$ {
                 originOwnerName: v.origin_owner_name,
                 ...(v.origin_username === undefined ? null : { originUsername: v.origin_username }),
                 projectId: v.project_id,
-                provider: v.provider,
+                ...(v.provider === undefined ? null : { provider: v.provider }),
             };
         });
 
@@ -90,7 +90,7 @@ export namespace ConnectSession$ {
         origin_owner_name: string;
         origin_username?: string | null | undefined;
         project_id: string;
-        provider: string;
+        provider?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ConnectSession> = z
@@ -105,7 +105,7 @@ export namespace ConnectSession$ {
             originOwnerName: z.string(),
             originUsername: z.nullable(z.string()).optional(),
             projectId: z.string(),
-            provider: z.string(),
+            provider: z.nullable(z.string()).optional(),
         })
         .transform((v) => {
             return {
@@ -119,7 +119,7 @@ export namespace ConnectSession$ {
                 origin_owner_name: v.originOwnerName,
                 ...(v.originUsername === undefined ? null : { origin_username: v.originUsername }),
                 project_id: v.projectId,
-                provider: v.provider,
+                ...(v.provider === undefined ? null : { provider: v.provider }),
             };
         });
 }

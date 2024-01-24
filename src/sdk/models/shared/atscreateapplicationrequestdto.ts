@@ -6,6 +6,17 @@ import { ApplicationAttachment, ApplicationAttachment$ } from "./applicationatta
 import { Questionnaire, Questionnaire$ } from "./questionnaire";
 import { z } from "zod";
 
+export type AtsCreateApplicationRequestDto4 = {};
+
+/**
+ * The source value of the application status.
+ */
+export type AtsCreateApplicationRequestDtoSourceValue =
+    | AtsCreateApplicationRequestDto4
+    | string
+    | number
+    | boolean;
+
 /**
  * The status of the application.
  */
@@ -31,7 +42,7 @@ export type AtsCreateApplicationRequestDtoApplicationStatus = {
     /**
      * The source value of the application status.
      */
-    sourceValue?: string | null | undefined;
+    sourceValue?: AtsCreateApplicationRequestDto4 | string | number | boolean | null | undefined;
     /**
      * The status of the application.
      */
@@ -76,6 +87,51 @@ export type AtsCreateApplicationRequestDto = {
 };
 
 /** @internal */
+export namespace AtsCreateApplicationRequestDto4$ {
+    export type Inbound = {};
+
+    export const inboundSchema: z.ZodType<AtsCreateApplicationRequestDto4, z.ZodTypeDef, Inbound> =
+        z.object({});
+
+    export type Outbound = {};
+
+    export const outboundSchema: z.ZodType<
+        Outbound,
+        z.ZodTypeDef,
+        AtsCreateApplicationRequestDto4
+    > = z.object({});
+}
+
+/** @internal */
+export namespace AtsCreateApplicationRequestDtoSourceValue$ {
+    export type Inbound = AtsCreateApplicationRequestDto4$.Inbound | string | number | boolean;
+
+    export type Outbound = AtsCreateApplicationRequestDto4$.Outbound | string | number | boolean;
+
+    export const inboundSchema: z.ZodType<
+        AtsCreateApplicationRequestDtoSourceValue,
+        z.ZodTypeDef,
+        Inbound
+    > = z.union([
+        z.lazy(() => AtsCreateApplicationRequestDto4$.inboundSchema),
+        z.string(),
+        z.number(),
+        z.boolean(),
+    ]);
+
+    export const outboundSchema: z.ZodType<
+        Outbound,
+        z.ZodTypeDef,
+        AtsCreateApplicationRequestDtoSourceValue
+    > = z.union([
+        z.lazy(() => AtsCreateApplicationRequestDto4$.outboundSchema),
+        z.string(),
+        z.number(),
+        z.boolean(),
+    ]);
+}
+
+/** @internal */
 export const AtsCreateApplicationRequestDtoValue$ = z.nativeEnum(
     AtsCreateApplicationRequestDtoValue
 );
@@ -83,7 +139,13 @@ export const AtsCreateApplicationRequestDtoValue$ = z.nativeEnum(
 /** @internal */
 export namespace AtsCreateApplicationRequestDtoApplicationStatus$ {
     export type Inbound = {
-        source_value?: string | null | undefined;
+        source_value?:
+            | AtsCreateApplicationRequestDto4$.Inbound
+            | string
+            | number
+            | boolean
+            | null
+            | undefined;
         value?: AtsCreateApplicationRequestDtoValue | null | undefined;
     };
 
@@ -93,7 +155,16 @@ export namespace AtsCreateApplicationRequestDtoApplicationStatus$ {
         Inbound
     > = z
         .object({
-            source_value: z.nullable(z.string()).optional(),
+            source_value: z
+                .nullable(
+                    z.union([
+                        z.lazy(() => AtsCreateApplicationRequestDto4$.inboundSchema),
+                        z.string(),
+                        z.number(),
+                        z.boolean(),
+                    ])
+                )
+                .optional(),
             value: z.nullable(AtsCreateApplicationRequestDtoValue$).optional(),
         })
         .transform((v) => {
@@ -104,7 +175,13 @@ export namespace AtsCreateApplicationRequestDtoApplicationStatus$ {
         });
 
     export type Outbound = {
-        source_value?: string | null | undefined;
+        source_value?:
+            | AtsCreateApplicationRequestDto4$.Outbound
+            | string
+            | number
+            | boolean
+            | null
+            | undefined;
         value?: AtsCreateApplicationRequestDtoValue | null | undefined;
     };
 
@@ -114,7 +191,16 @@ export namespace AtsCreateApplicationRequestDtoApplicationStatus$ {
         AtsCreateApplicationRequestDtoApplicationStatus
     > = z
         .object({
-            sourceValue: z.nullable(z.string()).optional(),
+            sourceValue: z
+                .nullable(
+                    z.union([
+                        z.lazy(() => AtsCreateApplicationRequestDto4$.outboundSchema),
+                        z.string(),
+                        z.number(),
+                        z.boolean(),
+                    ])
+                )
+                .optional(),
             value: z.nullable(AtsCreateApplicationRequestDtoValue$).optional(),
         })
         .transform((v) => {

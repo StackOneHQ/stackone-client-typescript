@@ -5,6 +5,13 @@
 import { NoteContentApiModel, NoteContentApiModel$ } from "./notecontentapimodel";
 import { z } from "zod";
 
+export type Note4 = {};
+
+/**
+ * The source value of the notes visibility.
+ */
+export type NoteSourceValue = Note4 | string | number | boolean;
+
 /**
  * The visibility of the notes.
  */
@@ -20,7 +27,7 @@ export type NoteVisibility = {
     /**
      * The source value of the notes visibility.
      */
-    sourceValue?: string | null | undefined;
+    sourceValue?: Note4 | string | number | boolean | null | undefined;
     /**
      * The visibility of the notes.
      */
@@ -53,18 +60,59 @@ export type Note = {
 };
 
 /** @internal */
+export namespace Note4$ {
+    export type Inbound = {};
+
+    export const inboundSchema: z.ZodType<Note4, z.ZodTypeDef, Inbound> = z.object({});
+
+    export type Outbound = {};
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Note4> = z.object({});
+}
+
+/** @internal */
+export namespace NoteSourceValue$ {
+    export type Inbound = Note4$.Inbound | string | number | boolean;
+
+    export type Outbound = Note4$.Outbound | string | number | boolean;
+
+    export const inboundSchema: z.ZodType<NoteSourceValue, z.ZodTypeDef, Inbound> = z.union([
+        z.lazy(() => Note4$.inboundSchema),
+        z.string(),
+        z.number(),
+        z.boolean(),
+    ]);
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, NoteSourceValue> = z.union([
+        z.lazy(() => Note4$.outboundSchema),
+        z.string(),
+        z.number(),
+        z.boolean(),
+    ]);
+}
+
+/** @internal */
 export const NoteValue$ = z.nativeEnum(NoteValue);
 
 /** @internal */
 export namespace NoteVisibility$ {
     export type Inbound = {
-        source_value?: string | null | undefined;
+        source_value?: Note4$.Inbound | string | number | boolean | null | undefined;
         value?: NoteValue | null | undefined;
     };
 
     export const inboundSchema: z.ZodType<NoteVisibility, z.ZodTypeDef, Inbound> = z
         .object({
-            source_value: z.nullable(z.string()).optional(),
+            source_value: z
+                .nullable(
+                    z.union([
+                        z.lazy(() => Note4$.inboundSchema),
+                        z.string(),
+                        z.number(),
+                        z.boolean(),
+                    ])
+                )
+                .optional(),
             value: z.nullable(NoteValue$).optional(),
         })
         .transform((v) => {
@@ -75,13 +123,22 @@ export namespace NoteVisibility$ {
         });
 
     export type Outbound = {
-        source_value?: string | null | undefined;
+        source_value?: Note4$.Outbound | string | number | boolean | null | undefined;
         value?: NoteValue | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, NoteVisibility> = z
         .object({
-            sourceValue: z.nullable(z.string()).optional(),
+            sourceValue: z
+                .nullable(
+                    z.union([
+                        z.lazy(() => Note4$.outboundSchema),
+                        z.string(),
+                        z.number(),
+                        z.boolean(),
+                    ])
+                )
+                .optional(),
             value: z.nullable(NoteValue$).optional(),
         })
         .transform((v) => {

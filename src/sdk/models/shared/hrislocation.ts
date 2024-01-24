@@ -4,6 +4,10 @@
 
 import { z } from "zod";
 
+export type HRISLocation4 = {};
+
+export type HRISLocationSourceValue = HRISLocation4 | string | number | boolean;
+
 /**
  * The ISO3166-1 Alpha2 Code of the Country
  */
@@ -263,15 +267,19 @@ export enum HRISLocationValue {
  * The country code
  */
 export type HRISLocationCountry = {
-    /**
-     * The name of citizenship
-     */
-    sourceValue: string;
+    sourceValue?: HRISLocation4 | string | number | boolean | null | undefined;
     /**
      * The ISO3166-1 Alpha2 Code of the Country
      */
-    value: HRISLocationValue;
+    value?: HRISLocationValue | null | undefined;
 };
+
+export type HRISLocationSchemas4 = {};
+
+/**
+ * The source value of the location type.
+ */
+export type HRISLocationSchemasSourceValue = HRISLocationSchemas4 | string | number | boolean;
 
 /**
  * The type of the location.
@@ -289,11 +297,11 @@ export type HRISLocationLocationType = {
     /**
      * The source value of the location type.
      */
-    sourceValue: string;
+    sourceValue?: HRISLocationSchemas4 | string | number | boolean | null | undefined;
     /**
      * The type of the location.
      */
-    value: HRISLocationSchemasValue;
+    value?: HRISLocationSchemasValue | null | undefined;
 };
 
 export type HRISLocation = {
@@ -352,43 +360,124 @@ export type HRISLocation = {
 };
 
 /** @internal */
+export namespace HRISLocation4$ {
+    export type Inbound = {};
+
+    export const inboundSchema: z.ZodType<HRISLocation4, z.ZodTypeDef, Inbound> = z.object({});
+
+    export type Outbound = {};
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, HRISLocation4> = z.object({});
+}
+
+/** @internal */
+export namespace HRISLocationSourceValue$ {
+    export type Inbound = HRISLocation4$.Inbound | string | number | boolean;
+
+    export type Outbound = HRISLocation4$.Outbound | string | number | boolean;
+
+    export const inboundSchema: z.ZodType<HRISLocationSourceValue, z.ZodTypeDef, Inbound> = z.union(
+        [z.lazy(() => HRISLocation4$.inboundSchema), z.string(), z.number(), z.boolean()]
+    );
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, HRISLocationSourceValue> =
+        z.union([z.lazy(() => HRISLocation4$.outboundSchema), z.string(), z.number(), z.boolean()]);
+}
+
+/** @internal */
 export const HRISLocationValue$ = z.nativeEnum(HRISLocationValue);
 
 /** @internal */
 export namespace HRISLocationCountry$ {
     export type Inbound = {
-        source_value: string;
-        value: HRISLocationValue;
+        source_value?: HRISLocation4$.Inbound | string | number | boolean | null | undefined;
+        value?: HRISLocationValue | null | undefined;
     };
 
     export const inboundSchema: z.ZodType<HRISLocationCountry, z.ZodTypeDef, Inbound> = z
         .object({
-            source_value: z.string(),
-            value: HRISLocationValue$,
+            source_value: z
+                .nullable(
+                    z.union([
+                        z.lazy(() => HRISLocation4$.inboundSchema),
+                        z.string(),
+                        z.number(),
+                        z.boolean(),
+                    ])
+                )
+                .optional(),
+            value: z.nullable(HRISLocationValue$).optional(),
         })
         .transform((v) => {
             return {
-                sourceValue: v.source_value,
-                value: v.value,
+                ...(v.source_value === undefined ? null : { sourceValue: v.source_value }),
+                ...(v.value === undefined ? null : { value: v.value }),
             };
         });
 
     export type Outbound = {
-        source_value: string;
-        value: HRISLocationValue;
+        source_value?: HRISLocation4$.Outbound | string | number | boolean | null | undefined;
+        value?: HRISLocationValue | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, HRISLocationCountry> = z
         .object({
-            sourceValue: z.string(),
-            value: HRISLocationValue$,
+            sourceValue: z
+                .nullable(
+                    z.union([
+                        z.lazy(() => HRISLocation4$.outboundSchema),
+                        z.string(),
+                        z.number(),
+                        z.boolean(),
+                    ])
+                )
+                .optional(),
+            value: z.nullable(HRISLocationValue$).optional(),
         })
         .transform((v) => {
             return {
-                source_value: v.sourceValue,
-                value: v.value,
+                ...(v.sourceValue === undefined ? null : { source_value: v.sourceValue }),
+                ...(v.value === undefined ? null : { value: v.value }),
             };
         });
+}
+
+/** @internal */
+export namespace HRISLocationSchemas4$ {
+    export type Inbound = {};
+
+    export const inboundSchema: z.ZodType<HRISLocationSchemas4, z.ZodTypeDef, Inbound> = z.object(
+        {}
+    );
+
+    export type Outbound = {};
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, HRISLocationSchemas4> = z.object(
+        {}
+    );
+}
+
+/** @internal */
+export namespace HRISLocationSchemasSourceValue$ {
+    export type Inbound = HRISLocationSchemas4$.Inbound | string | number | boolean;
+
+    export type Outbound = HRISLocationSchemas4$.Outbound | string | number | boolean;
+
+    export const inboundSchema: z.ZodType<HRISLocationSchemasSourceValue, z.ZodTypeDef, Inbound> =
+        z.union([
+            z.lazy(() => HRISLocationSchemas4$.inboundSchema),
+            z.string(),
+            z.number(),
+            z.boolean(),
+        ]);
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, HRISLocationSchemasSourceValue> =
+        z.union([
+            z.lazy(() => HRISLocationSchemas4$.outboundSchema),
+            z.string(),
+            z.number(),
+            z.boolean(),
+        ]);
 }
 
 /** @internal */
@@ -397,36 +486,60 @@ export const HRISLocationSchemasValue$ = z.nativeEnum(HRISLocationSchemasValue);
 /** @internal */
 export namespace HRISLocationLocationType$ {
     export type Inbound = {
-        source_value: string;
-        value: HRISLocationSchemasValue;
+        source_value?: HRISLocationSchemas4$.Inbound | string | number | boolean | null | undefined;
+        value?: HRISLocationSchemasValue | null | undefined;
     };
 
     export const inboundSchema: z.ZodType<HRISLocationLocationType, z.ZodTypeDef, Inbound> = z
         .object({
-            source_value: z.string(),
-            value: HRISLocationSchemasValue$,
+            source_value: z
+                .nullable(
+                    z.union([
+                        z.lazy(() => HRISLocationSchemas4$.inboundSchema),
+                        z.string(),
+                        z.number(),
+                        z.boolean(),
+                    ])
+                )
+                .optional(),
+            value: z.nullable(HRISLocationSchemasValue$).optional(),
         })
         .transform((v) => {
             return {
-                sourceValue: v.source_value,
-                value: v.value,
+                ...(v.source_value === undefined ? null : { sourceValue: v.source_value }),
+                ...(v.value === undefined ? null : { value: v.value }),
             };
         });
 
     export type Outbound = {
-        source_value: string;
-        value: HRISLocationSchemasValue;
+        source_value?:
+            | HRISLocationSchemas4$.Outbound
+            | string
+            | number
+            | boolean
+            | null
+            | undefined;
+        value?: HRISLocationSchemasValue | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, HRISLocationLocationType> = z
         .object({
-            sourceValue: z.string(),
-            value: HRISLocationSchemasValue$,
+            sourceValue: z
+                .nullable(
+                    z.union([
+                        z.lazy(() => HRISLocationSchemas4$.outboundSchema),
+                        z.string(),
+                        z.number(),
+                        z.boolean(),
+                    ])
+                )
+                .optional(),
+            value: z.nullable(HRISLocationSchemasValue$).optional(),
         })
         .transform((v) => {
             return {
-                source_value: v.sourceValue,
-                value: v.value,
+                ...(v.sourceValue === undefined ? null : { source_value: v.sourceValue }),
+                ...(v.value === undefined ? null : { value: v.value }),
             };
         });
 }

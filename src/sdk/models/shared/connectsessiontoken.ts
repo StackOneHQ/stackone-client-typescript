@@ -24,7 +24,7 @@ export type ConnectSessionToken = {
     originOwnerName: string;
     originUsername?: string | null | undefined;
     projectId: string;
-    provider: string;
+    provider?: string | null | undefined;
     token: string;
 };
 
@@ -44,7 +44,7 @@ export namespace ConnectSessionToken$ {
         origin_owner_name: string;
         origin_username?: string | null | undefined;
         project_id: string;
-        provider: string;
+        provider?: string | null | undefined;
         token: string;
     };
 
@@ -63,7 +63,7 @@ export namespace ConnectSessionToken$ {
             origin_owner_name: z.string(),
             origin_username: z.nullable(z.string()).optional(),
             project_id: z.string(),
-            provider: z.string(),
+            provider: z.nullable(z.string()).optional(),
             token: z.string(),
         })
         .transform((v) => {
@@ -78,7 +78,7 @@ export namespace ConnectSessionToken$ {
                 originOwnerName: v.origin_owner_name,
                 ...(v.origin_username === undefined ? null : { originUsername: v.origin_username }),
                 projectId: v.project_id,
-                provider: v.provider,
+                ...(v.provider === undefined ? null : { provider: v.provider }),
                 token: v.token,
             };
         });
@@ -94,7 +94,7 @@ export namespace ConnectSessionToken$ {
         origin_owner_name: string;
         origin_username?: string | null | undefined;
         project_id: string;
-        provider: string;
+        provider?: string | null | undefined;
         token: string;
     };
 
@@ -110,7 +110,7 @@ export namespace ConnectSessionToken$ {
             originOwnerName: z.string(),
             originUsername: z.nullable(z.string()).optional(),
             projectId: z.string(),
-            provider: z.string(),
+            provider: z.nullable(z.string()).optional(),
             token: z.string(),
         })
         .transform((v) => {
@@ -125,7 +125,7 @@ export namespace ConnectSessionToken$ {
                 origin_owner_name: v.originOwnerName,
                 ...(v.originUsername === undefined ? null : { origin_username: v.originUsername }),
                 project_id: v.projectId,
-                provider: v.provider,
+                ...(v.provider === undefined ? null : { provider: v.provider }),
                 token: v.token,
             };
         });

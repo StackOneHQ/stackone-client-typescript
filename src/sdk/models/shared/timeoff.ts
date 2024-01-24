@@ -4,6 +4,10 @@
 
 import { z } from "zod";
 
+export type TimeOff4 = {};
+
+export type TimeOffSourceValue = TimeOff4 | string | number | boolean;
+
 export enum TimeOffValue {
     Approved = "approved",
     UnmappedValue = "unmapped_value",
@@ -13,9 +17,13 @@ export enum TimeOffValue {
  * The status of the time off request
  */
 export type TimeOffStatus = {
-    sourceValue: string;
-    value: TimeOffValue;
+    sourceValue?: TimeOff4 | string | number | boolean | null | undefined;
+    value?: TimeOffValue | null | undefined;
 };
+
+export type TimeOffSchemas4 = {};
+
+export type TimeOffSchemasSourceValue = TimeOffSchemas4 | string | number | boolean;
 
 export enum TimeOffSchemasValue {
     Sick = "sick",
@@ -27,8 +35,8 @@ export enum TimeOffSchemasValue {
  * The type of the time off request
  */
 export type TimeOffType = {
-    sourceValue: string;
-    value: TimeOffSchemasValue;
+    sourceValue?: TimeOffSchemas4 | string | number | boolean | null | undefined;
+    value?: TimeOffSchemasValue | null | undefined;
 };
 
 export type TimeOff = {
@@ -71,43 +79,127 @@ export type TimeOff = {
 };
 
 /** @internal */
+export namespace TimeOff4$ {
+    export type Inbound = {};
+
+    export const inboundSchema: z.ZodType<TimeOff4, z.ZodTypeDef, Inbound> = z.object({});
+
+    export type Outbound = {};
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, TimeOff4> = z.object({});
+}
+
+/** @internal */
+export namespace TimeOffSourceValue$ {
+    export type Inbound = TimeOff4$.Inbound | string | number | boolean;
+
+    export type Outbound = TimeOff4$.Outbound | string | number | boolean;
+
+    export const inboundSchema: z.ZodType<TimeOffSourceValue, z.ZodTypeDef, Inbound> = z.union([
+        z.lazy(() => TimeOff4$.inboundSchema),
+        z.string(),
+        z.number(),
+        z.boolean(),
+    ]);
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, TimeOffSourceValue> = z.union([
+        z.lazy(() => TimeOff4$.outboundSchema),
+        z.string(),
+        z.number(),
+        z.boolean(),
+    ]);
+}
+
+/** @internal */
 export const TimeOffValue$ = z.nativeEnum(TimeOffValue);
 
 /** @internal */
 export namespace TimeOffStatus$ {
     export type Inbound = {
-        source_value: string;
-        value: TimeOffValue;
+        source_value?: TimeOff4$.Inbound | string | number | boolean | null | undefined;
+        value?: TimeOffValue | null | undefined;
     };
 
     export const inboundSchema: z.ZodType<TimeOffStatus, z.ZodTypeDef, Inbound> = z
         .object({
-            source_value: z.string(),
-            value: TimeOffValue$,
+            source_value: z
+                .nullable(
+                    z.union([
+                        z.lazy(() => TimeOff4$.inboundSchema),
+                        z.string(),
+                        z.number(),
+                        z.boolean(),
+                    ])
+                )
+                .optional(),
+            value: z.nullable(TimeOffValue$).optional(),
         })
         .transform((v) => {
             return {
-                sourceValue: v.source_value,
-                value: v.value,
+                ...(v.source_value === undefined ? null : { sourceValue: v.source_value }),
+                ...(v.value === undefined ? null : { value: v.value }),
             };
         });
 
     export type Outbound = {
-        source_value: string;
-        value: TimeOffValue;
+        source_value?: TimeOff4$.Outbound | string | number | boolean | null | undefined;
+        value?: TimeOffValue | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, TimeOffStatus> = z
         .object({
-            sourceValue: z.string(),
-            value: TimeOffValue$,
+            sourceValue: z
+                .nullable(
+                    z.union([
+                        z.lazy(() => TimeOff4$.outboundSchema),
+                        z.string(),
+                        z.number(),
+                        z.boolean(),
+                    ])
+                )
+                .optional(),
+            value: z.nullable(TimeOffValue$).optional(),
         })
         .transform((v) => {
             return {
-                source_value: v.sourceValue,
-                value: v.value,
+                ...(v.sourceValue === undefined ? null : { source_value: v.sourceValue }),
+                ...(v.value === undefined ? null : { value: v.value }),
             };
         });
+}
+
+/** @internal */
+export namespace TimeOffSchemas4$ {
+    export type Inbound = {};
+
+    export const inboundSchema: z.ZodType<TimeOffSchemas4, z.ZodTypeDef, Inbound> = z.object({});
+
+    export type Outbound = {};
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, TimeOffSchemas4> = z.object({});
+}
+
+/** @internal */
+export namespace TimeOffSchemasSourceValue$ {
+    export type Inbound = TimeOffSchemas4$.Inbound | string | number | boolean;
+
+    export type Outbound = TimeOffSchemas4$.Outbound | string | number | boolean;
+
+    export const inboundSchema: z.ZodType<TimeOffSchemasSourceValue, z.ZodTypeDef, Inbound> =
+        z.union([
+            z.lazy(() => TimeOffSchemas4$.inboundSchema),
+            z.string(),
+            z.number(),
+            z.boolean(),
+        ]);
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, TimeOffSchemasSourceValue> =
+        z.union([
+            z.lazy(() => TimeOffSchemas4$.outboundSchema),
+            z.string(),
+            z.number(),
+            z.boolean(),
+        ]);
 }
 
 /** @internal */
@@ -116,36 +208,54 @@ export const TimeOffSchemasValue$ = z.nativeEnum(TimeOffSchemasValue);
 /** @internal */
 export namespace TimeOffType$ {
     export type Inbound = {
-        source_value: string;
-        value: TimeOffSchemasValue;
+        source_value?: TimeOffSchemas4$.Inbound | string | number | boolean | null | undefined;
+        value?: TimeOffSchemasValue | null | undefined;
     };
 
     export const inboundSchema: z.ZodType<TimeOffType, z.ZodTypeDef, Inbound> = z
         .object({
-            source_value: z.string(),
-            value: TimeOffSchemasValue$,
+            source_value: z
+                .nullable(
+                    z.union([
+                        z.lazy(() => TimeOffSchemas4$.inboundSchema),
+                        z.string(),
+                        z.number(),
+                        z.boolean(),
+                    ])
+                )
+                .optional(),
+            value: z.nullable(TimeOffSchemasValue$).optional(),
         })
         .transform((v) => {
             return {
-                sourceValue: v.source_value,
-                value: v.value,
+                ...(v.source_value === undefined ? null : { sourceValue: v.source_value }),
+                ...(v.value === undefined ? null : { value: v.value }),
             };
         });
 
     export type Outbound = {
-        source_value: string;
-        value: TimeOffSchemasValue;
+        source_value?: TimeOffSchemas4$.Outbound | string | number | boolean | null | undefined;
+        value?: TimeOffSchemasValue | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, TimeOffType> = z
         .object({
-            sourceValue: z.string(),
-            value: TimeOffSchemasValue$,
+            sourceValue: z
+                .nullable(
+                    z.union([
+                        z.lazy(() => TimeOffSchemas4$.outboundSchema),
+                        z.string(),
+                        z.number(),
+                        z.boolean(),
+                    ])
+                )
+                .optional(),
+            value: z.nullable(TimeOffSchemasValue$).optional(),
         })
         .transform((v) => {
             return {
-                source_value: v.sourceValue,
-                value: v.value,
+                ...(v.sourceValue === undefined ? null : { source_value: v.sourceValue }),
+                ...(v.value === undefined ? null : { value: v.value }),
             };
         });
 }

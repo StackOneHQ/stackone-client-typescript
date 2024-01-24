@@ -4,6 +4,10 @@
 
 import { z } from "zod";
 
+export type EmployeeCustomFields4 = {};
+
+export type EmployeeCustomFieldsSourceValue = EmployeeCustomFields4 | string | number | boolean;
+
 export enum EmployeeCustomFieldsSchemasValue {
     Date = "date",
     Float = "float",
@@ -17,8 +21,8 @@ export enum EmployeeCustomFieldsSchemasValue {
  * The type of the custom field.
  */
 export type EmployeeCustomFieldsType = {
-    sourceValue: string;
-    value: EmployeeCustomFieldsSchemasValue;
+    sourceValue?: EmployeeCustomFields4 | string | number | boolean | null | undefined;
+    value?: EmployeeCustomFieldsSchemasValue | null | undefined;
 };
 
 /**
@@ -58,41 +62,111 @@ export type EmployeeCustomFields = {
 };
 
 /** @internal */
+export namespace EmployeeCustomFields4$ {
+    export type Inbound = {};
+
+    export const inboundSchema: z.ZodType<EmployeeCustomFields4, z.ZodTypeDef, Inbound> = z.object(
+        {}
+    );
+
+    export type Outbound = {};
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, EmployeeCustomFields4> =
+        z.object({});
+}
+
+/** @internal */
+export namespace EmployeeCustomFieldsSourceValue$ {
+    export type Inbound = EmployeeCustomFields4$.Inbound | string | number | boolean;
+
+    export type Outbound = EmployeeCustomFields4$.Outbound | string | number | boolean;
+
+    export const inboundSchema: z.ZodType<EmployeeCustomFieldsSourceValue, z.ZodTypeDef, Inbound> =
+        z.union([
+            z.lazy(() => EmployeeCustomFields4$.inboundSchema),
+            z.string(),
+            z.number(),
+            z.boolean(),
+        ]);
+
+    export const outboundSchema: z.ZodType<
+        Outbound,
+        z.ZodTypeDef,
+        EmployeeCustomFieldsSourceValue
+    > = z.union([
+        z.lazy(() => EmployeeCustomFields4$.outboundSchema),
+        z.string(),
+        z.number(),
+        z.boolean(),
+    ]);
+}
+
+/** @internal */
 export const EmployeeCustomFieldsSchemasValue$ = z.nativeEnum(EmployeeCustomFieldsSchemasValue);
 
 /** @internal */
 export namespace EmployeeCustomFieldsType$ {
     export type Inbound = {
-        source_value: string;
-        value: EmployeeCustomFieldsSchemasValue;
+        source_value?:
+            | EmployeeCustomFields4$.Inbound
+            | string
+            | number
+            | boolean
+            | null
+            | undefined;
+        value?: EmployeeCustomFieldsSchemasValue | null | undefined;
     };
 
     export const inboundSchema: z.ZodType<EmployeeCustomFieldsType, z.ZodTypeDef, Inbound> = z
         .object({
-            source_value: z.string(),
-            value: EmployeeCustomFieldsSchemasValue$,
+            source_value: z
+                .nullable(
+                    z.union([
+                        z.lazy(() => EmployeeCustomFields4$.inboundSchema),
+                        z.string(),
+                        z.number(),
+                        z.boolean(),
+                    ])
+                )
+                .optional(),
+            value: z.nullable(EmployeeCustomFieldsSchemasValue$).optional(),
         })
         .transform((v) => {
             return {
-                sourceValue: v.source_value,
-                value: v.value,
+                ...(v.source_value === undefined ? null : { sourceValue: v.source_value }),
+                ...(v.value === undefined ? null : { value: v.value }),
             };
         });
 
     export type Outbound = {
-        source_value: string;
-        value: EmployeeCustomFieldsSchemasValue;
+        source_value?:
+            | EmployeeCustomFields4$.Outbound
+            | string
+            | number
+            | boolean
+            | null
+            | undefined;
+        value?: EmployeeCustomFieldsSchemasValue | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, EmployeeCustomFieldsType> = z
         .object({
-            sourceValue: z.string(),
-            value: EmployeeCustomFieldsSchemasValue$,
+            sourceValue: z
+                .nullable(
+                    z.union([
+                        z.lazy(() => EmployeeCustomFields4$.outboundSchema),
+                        z.string(),
+                        z.number(),
+                        z.boolean(),
+                    ])
+                )
+                .optional(),
+            value: z.nullable(EmployeeCustomFieldsSchemasValue$).optional(),
         })
         .transform((v) => {
             return {
-                source_value: v.sourceValue,
-                value: v.value,
+                ...(v.sourceValue === undefined ? null : { source_value: v.sourceValue }),
+                ...(v.value === undefined ? null : { value: v.value }),
             };
         });
 }

@@ -4,6 +4,13 @@
 
 import { z } from "zod";
 
+export type Answer4 = {};
+
+/**
+ * The source value of the answer type.
+ */
+export type AnswerSourceValue = Answer4 | string | number | boolean;
+
 /**
  * The type of the answer.
  */
@@ -26,7 +33,7 @@ export type TypeT = {
     /**
      * The source value of the answer type.
      */
-    sourceValue?: string | null | undefined;
+    sourceValue?: Answer4 | string | number | boolean | null | undefined;
     /**
      * The type of the answer.
      */
@@ -49,18 +56,59 @@ export type Answer = {
 };
 
 /** @internal */
+export namespace Answer4$ {
+    export type Inbound = {};
+
+    export const inboundSchema: z.ZodType<Answer4, z.ZodTypeDef, Inbound> = z.object({});
+
+    export type Outbound = {};
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Answer4> = z.object({});
+}
+
+/** @internal */
+export namespace AnswerSourceValue$ {
+    export type Inbound = Answer4$.Inbound | string | number | boolean;
+
+    export type Outbound = Answer4$.Outbound | string | number | boolean;
+
+    export const inboundSchema: z.ZodType<AnswerSourceValue, z.ZodTypeDef, Inbound> = z.union([
+        z.lazy(() => Answer4$.inboundSchema),
+        z.string(),
+        z.number(),
+        z.boolean(),
+    ]);
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, AnswerSourceValue> = z.union([
+        z.lazy(() => Answer4$.outboundSchema),
+        z.string(),
+        z.number(),
+        z.boolean(),
+    ]);
+}
+
+/** @internal */
 export const AnswerValue$ = z.nativeEnum(AnswerValue);
 
 /** @internal */
 export namespace TypeT$ {
     export type Inbound = {
-        source_value?: string | null | undefined;
+        source_value?: Answer4$.Inbound | string | number | boolean | null | undefined;
         value?: AnswerValue | null | undefined;
     };
 
     export const inboundSchema: z.ZodType<TypeT, z.ZodTypeDef, Inbound> = z
         .object({
-            source_value: z.nullable(z.string()).optional(),
+            source_value: z
+                .nullable(
+                    z.union([
+                        z.lazy(() => Answer4$.inboundSchema),
+                        z.string(),
+                        z.number(),
+                        z.boolean(),
+                    ])
+                )
+                .optional(),
             value: z.nullable(AnswerValue$).optional(),
         })
         .transform((v) => {
@@ -71,13 +119,22 @@ export namespace TypeT$ {
         });
 
     export type Outbound = {
-        source_value?: string | null | undefined;
+        source_value?: Answer4$.Outbound | string | number | boolean | null | undefined;
         value?: AnswerValue | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, TypeT> = z
         .object({
-            sourceValue: z.nullable(z.string()).optional(),
+            sourceValue: z
+                .nullable(
+                    z.union([
+                        z.lazy(() => Answer4$.outboundSchema),
+                        z.string(),
+                        z.number(),
+                        z.boolean(),
+                    ])
+                )
+                .optional(),
             value: z.nullable(AnswerValue$).optional(),
         })
         .transform((v) => {

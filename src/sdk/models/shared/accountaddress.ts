@@ -4,6 +4,13 @@
 
 import { z } from "zod";
 
+export type AccountAddressSchemas4 = {};
+
+/**
+ * The source value of the ISO 3166-1 alpha-2 code of the country.
+ */
+export type AccountAddressSchemasSourceValue = AccountAddressSchemas4 | string | number | boolean;
+
 /**
  * The ISO 3166-1 alpha-2 code of the country.
  */
@@ -265,12 +272,19 @@ export type Country = {
     /**
      * The source value of the ISO 3166-1 alpha-2 code of the country.
      */
-    sourceValue: string;
+    sourceValue?: AccountAddressSchemas4 | string | number | boolean | null | undefined;
     /**
      * The ISO 3166-1 alpha-2 code of the country.
      */
-    value: AccountAddressSchemasValue;
+    value?: AccountAddressSchemasValue | null | undefined;
 };
+
+export type AccountAddress4 = {};
+
+/**
+ * The source value of the location type.
+ */
+export type AccountAddressSourceValue = AccountAddress4 | string | number | boolean;
 
 /**
  * The type of the location.
@@ -288,11 +302,11 @@ export type LocationType = {
     /**
      * The source value of the location type.
      */
-    sourceValue: string;
+    sourceValue?: AccountAddress4 | string | number | boolean | null | undefined;
     /**
      * The type of the location.
      */
-    value: AccountAddressValue;
+    value?: AccountAddressValue | null | undefined;
 };
 
 export type AccountAddress = {
@@ -312,43 +326,147 @@ export type AccountAddress = {
 };
 
 /** @internal */
+export namespace AccountAddressSchemas4$ {
+    export type Inbound = {};
+
+    export const inboundSchema: z.ZodType<AccountAddressSchemas4, z.ZodTypeDef, Inbound> = z.object(
+        {}
+    );
+
+    export type Outbound = {};
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, AccountAddressSchemas4> =
+        z.object({});
+}
+
+/** @internal */
+export namespace AccountAddressSchemasSourceValue$ {
+    export type Inbound = AccountAddressSchemas4$.Inbound | string | number | boolean;
+
+    export type Outbound = AccountAddressSchemas4$.Outbound | string | number | boolean;
+
+    export const inboundSchema: z.ZodType<AccountAddressSchemasSourceValue, z.ZodTypeDef, Inbound> =
+        z.union([
+            z.lazy(() => AccountAddressSchemas4$.inboundSchema),
+            z.string(),
+            z.number(),
+            z.boolean(),
+        ]);
+
+    export const outboundSchema: z.ZodType<
+        Outbound,
+        z.ZodTypeDef,
+        AccountAddressSchemasSourceValue
+    > = z.union([
+        z.lazy(() => AccountAddressSchemas4$.outboundSchema),
+        z.string(),
+        z.number(),
+        z.boolean(),
+    ]);
+}
+
+/** @internal */
 export const AccountAddressSchemasValue$ = z.nativeEnum(AccountAddressSchemasValue);
 
 /** @internal */
 export namespace Country$ {
     export type Inbound = {
-        source_value: string;
-        value: AccountAddressSchemasValue;
+        source_value?:
+            | AccountAddressSchemas4$.Inbound
+            | string
+            | number
+            | boolean
+            | null
+            | undefined;
+        value?: AccountAddressSchemasValue | null | undefined;
     };
 
     export const inboundSchema: z.ZodType<Country, z.ZodTypeDef, Inbound> = z
         .object({
-            source_value: z.string(),
-            value: AccountAddressSchemasValue$,
+            source_value: z
+                .nullable(
+                    z.union([
+                        z.lazy(() => AccountAddressSchemas4$.inboundSchema),
+                        z.string(),
+                        z.number(),
+                        z.boolean(),
+                    ])
+                )
+                .optional(),
+            value: z.nullable(AccountAddressSchemasValue$).optional(),
         })
         .transform((v) => {
             return {
-                sourceValue: v.source_value,
-                value: v.value,
+                ...(v.source_value === undefined ? null : { sourceValue: v.source_value }),
+                ...(v.value === undefined ? null : { value: v.value }),
             };
         });
 
     export type Outbound = {
-        source_value: string;
-        value: AccountAddressSchemasValue;
+        source_value?:
+            | AccountAddressSchemas4$.Outbound
+            | string
+            | number
+            | boolean
+            | null
+            | undefined;
+        value?: AccountAddressSchemasValue | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Country> = z
         .object({
-            sourceValue: z.string(),
-            value: AccountAddressSchemasValue$,
+            sourceValue: z
+                .nullable(
+                    z.union([
+                        z.lazy(() => AccountAddressSchemas4$.outboundSchema),
+                        z.string(),
+                        z.number(),
+                        z.boolean(),
+                    ])
+                )
+                .optional(),
+            value: z.nullable(AccountAddressSchemasValue$).optional(),
         })
         .transform((v) => {
             return {
-                source_value: v.sourceValue,
-                value: v.value,
+                ...(v.sourceValue === undefined ? null : { source_value: v.sourceValue }),
+                ...(v.value === undefined ? null : { value: v.value }),
             };
         });
+}
+
+/** @internal */
+export namespace AccountAddress4$ {
+    export type Inbound = {};
+
+    export const inboundSchema: z.ZodType<AccountAddress4, z.ZodTypeDef, Inbound> = z.object({});
+
+    export type Outbound = {};
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, AccountAddress4> = z.object({});
+}
+
+/** @internal */
+export namespace AccountAddressSourceValue$ {
+    export type Inbound = AccountAddress4$.Inbound | string | number | boolean;
+
+    export type Outbound = AccountAddress4$.Outbound | string | number | boolean;
+
+    export const inboundSchema: z.ZodType<AccountAddressSourceValue, z.ZodTypeDef, Inbound> =
+        z.union([
+            z.lazy(() => AccountAddress4$.inboundSchema),
+            z.string(),
+            z.number(),
+            z.boolean(),
+        ]);
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, AccountAddressSourceValue> =
+        z.union([
+            z.lazy(() => AccountAddress4$.outboundSchema),
+            z.string(),
+            z.number(),
+            z.boolean(),
+        ]);
 }
 
 /** @internal */
@@ -357,36 +475,54 @@ export const AccountAddressValue$ = z.nativeEnum(AccountAddressValue);
 /** @internal */
 export namespace LocationType$ {
     export type Inbound = {
-        source_value: string;
-        value: AccountAddressValue;
+        source_value?: AccountAddress4$.Inbound | string | number | boolean | null | undefined;
+        value?: AccountAddressValue | null | undefined;
     };
 
     export const inboundSchema: z.ZodType<LocationType, z.ZodTypeDef, Inbound> = z
         .object({
-            source_value: z.string(),
-            value: AccountAddressValue$,
+            source_value: z
+                .nullable(
+                    z.union([
+                        z.lazy(() => AccountAddress4$.inboundSchema),
+                        z.string(),
+                        z.number(),
+                        z.boolean(),
+                    ])
+                )
+                .optional(),
+            value: z.nullable(AccountAddressValue$).optional(),
         })
         .transform((v) => {
             return {
-                sourceValue: v.source_value,
-                value: v.value,
+                ...(v.source_value === undefined ? null : { sourceValue: v.source_value }),
+                ...(v.value === undefined ? null : { value: v.value }),
             };
         });
 
     export type Outbound = {
-        source_value: string;
-        value: AccountAddressValue;
+        source_value?: AccountAddress4$.Outbound | string | number | boolean | null | undefined;
+        value?: AccountAddressValue | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, LocationType> = z
         .object({
-            sourceValue: z.string(),
-            value: AccountAddressValue$,
+            sourceValue: z
+                .nullable(
+                    z.union([
+                        z.lazy(() => AccountAddress4$.outboundSchema),
+                        z.string(),
+                        z.number(),
+                        z.boolean(),
+                    ])
+                )
+                .optional(),
+            value: z.nullable(AccountAddressValue$).optional(),
         })
         .transform((v) => {
             return {
-                source_value: v.sourceValue,
-                value: v.value,
+                ...(v.sourceValue === undefined ? null : { source_value: v.sourceValue }),
+                ...(v.value === undefined ? null : { value: v.value }),
             };
         });
 }

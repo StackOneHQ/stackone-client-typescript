@@ -8,6 +8,13 @@ import { RejectedReason, RejectedReason$ } from "./rejectedreason";
 import { ResultLink, ResultLink$ } from "./resultlink";
 import { z } from "zod";
 
+export type Application4 = {};
+
+/**
+ * The source value of the application status.
+ */
+export type ApplicationSourceValue = Application4 | string | number | boolean;
+
 /**
  * The status of the application.
  */
@@ -33,7 +40,7 @@ export type ApplicationStatus = {
     /**
      * The source value of the application status.
      */
-    sourceValue?: string | null | undefined;
+    sourceValue?: Application4 | string | number | boolean | null | undefined;
     /**
      * The status of the application.
      */
@@ -123,18 +130,55 @@ export type Application = {
 };
 
 /** @internal */
+export namespace Application4$ {
+    export type Inbound = {};
+
+    export const inboundSchema: z.ZodType<Application4, z.ZodTypeDef, Inbound> = z.object({});
+
+    export type Outbound = {};
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Application4> = z.object({});
+}
+
+/** @internal */
+export namespace ApplicationSourceValue$ {
+    export type Inbound = Application4$.Inbound | string | number | boolean;
+
+    export type Outbound = Application4$.Outbound | string | number | boolean;
+
+    export const inboundSchema: z.ZodType<ApplicationSourceValue, z.ZodTypeDef, Inbound> = z.union([
+        z.lazy(() => Application4$.inboundSchema),
+        z.string(),
+        z.number(),
+        z.boolean(),
+    ]);
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ApplicationSourceValue> =
+        z.union([z.lazy(() => Application4$.outboundSchema), z.string(), z.number(), z.boolean()]);
+}
+
+/** @internal */
 export const ApplicationValue$ = z.nativeEnum(ApplicationValue);
 
 /** @internal */
 export namespace ApplicationStatus$ {
     export type Inbound = {
-        source_value?: string | null | undefined;
+        source_value?: Application4$.Inbound | string | number | boolean | null | undefined;
         value?: ApplicationValue | null | undefined;
     };
 
     export const inboundSchema: z.ZodType<ApplicationStatus, z.ZodTypeDef, Inbound> = z
         .object({
-            source_value: z.nullable(z.string()).optional(),
+            source_value: z
+                .nullable(
+                    z.union([
+                        z.lazy(() => Application4$.inboundSchema),
+                        z.string(),
+                        z.number(),
+                        z.boolean(),
+                    ])
+                )
+                .optional(),
             value: z.nullable(ApplicationValue$).optional(),
         })
         .transform((v) => {
@@ -145,13 +189,22 @@ export namespace ApplicationStatus$ {
         });
 
     export type Outbound = {
-        source_value?: string | null | undefined;
+        source_value?: Application4$.Outbound | string | number | boolean | null | undefined;
         value?: ApplicationValue | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ApplicationStatus> = z
         .object({
-            sourceValue: z.nullable(z.string()).optional(),
+            sourceValue: z
+                .nullable(
+                    z.union([
+                        z.lazy(() => Application4$.outboundSchema),
+                        z.string(),
+                        z.number(),
+                        z.boolean(),
+                    ])
+                )
+                .optional(),
             value: z.nullable(ApplicationValue$).optional(),
         })
         .transform((v) => {

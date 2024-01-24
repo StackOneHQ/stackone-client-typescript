@@ -16,6 +16,10 @@ export type Avatar = {
     url?: string | null | undefined;
 };
 
+export type Employee4 = {};
+
+export type EmployeeSourceValue = Employee4 | string | number | boolean;
+
 export enum EmployeeValue {
     FullTime = "full_time",
     Shifts = "shifts",
@@ -27,9 +31,13 @@ export enum EmployeeValue {
  * The employment work schedule type (e.g., full-time, part-time)
  */
 export type EmploymentContractType = {
-    sourceValue: string;
-    value: EmployeeValue;
+    sourceValue?: Employee4 | string | number | boolean | null | undefined;
+    value?: EmployeeValue | null | undefined;
 };
+
+export type EmployeeSchemas4 = {};
+
+export type EmployeeSchemasSourceValue = EmployeeSchemas4 | string | number | boolean;
 
 export enum EmployeeSchemasValue {
     Active = "active",
@@ -45,9 +53,20 @@ export enum EmployeeSchemasValue {
  * The employee employment status
  */
 export type EmploymentStatus = {
-    sourceValue: string;
-    value: EmployeeSchemasValue;
+    sourceValue?: EmployeeSchemas4 | string | number | boolean | null | undefined;
+    value?: EmployeeSchemasValue | null | undefined;
 };
+
+export type EmployeeSchemasEmploymentType4 = {};
+
+/**
+ * The source value of the employment type.
+ */
+export type EmployeeSchemasEmploymentTypeSourceValue =
+    | EmployeeSchemasEmploymentType4
+    | string
+    | number
+    | boolean;
 
 /**
  * The type of the employment.
@@ -71,12 +90,20 @@ export type EmploymentType = {
     /**
      * The source value of the employment type.
      */
-    sourceValue?: string | null | undefined;
+    sourceValue?: EmployeeSchemasEmploymentType4 | string | number | boolean | null | undefined;
     /**
      * The type of the employment.
      */
     value?: EmployeeSchemasEmploymentTypeValue | null | undefined;
 };
+
+export type EmployeeSchemasEthnicity4 = {};
+
+export type EmployeeSchemasEthnicitySourceValue =
+    | EmployeeSchemasEthnicity4
+    | string
+    | number
+    | boolean;
 
 export enum EmployeeSchemasEthnicityValue {
     White = "white",
@@ -95,9 +122,13 @@ export enum EmployeeSchemasEthnicityValue {
  * The employee ethnicity
  */
 export type Ethnicity = {
-    sourceValue: string;
-    value: EmployeeSchemasEthnicityValue;
+    sourceValue?: EmployeeSchemasEthnicity4 | string | number | boolean | null | undefined;
+    value?: EmployeeSchemasEthnicityValue | null | undefined;
 };
+
+export type EmployeeSchemasGender4 = {};
+
+export type EmployeeSchemasGenderSourceValue = EmployeeSchemasGender4 | string | number | boolean;
 
 export enum EmployeeSchemasGenderValue {
     Male = "male",
@@ -113,9 +144,17 @@ export enum EmployeeSchemasGenderValue {
  * The employee gender
  */
 export type Gender = {
-    sourceValue: string;
-    value: EmployeeSchemasGenderValue;
+    sourceValue?: EmployeeSchemasGender4 | string | number | boolean | null | undefined;
+    value?: EmployeeSchemasGenderValue | null | undefined;
 };
+
+export type EmployeeSchemasHomeLocation4 = {};
+
+export type EmployeeSchemasHomeLocationSourceValue =
+    | EmployeeSchemasHomeLocation4
+    | string
+    | number
+    | boolean;
 
 /**
  * The ISO3166-1 Alpha2 Code of the Country
@@ -376,15 +415,23 @@ export enum EmployeeSchemasHomeLocationValue {
  * The country code
  */
 export type EmployeeCountry = {
-    /**
-     * The name of citizenship
-     */
-    sourceValue: string;
+    sourceValue?: EmployeeSchemasHomeLocation4 | string | number | boolean | null | undefined;
     /**
      * The ISO3166-1 Alpha2 Code of the Country
      */
-    value: EmployeeSchemasHomeLocationValue;
+    value?: EmployeeSchemasHomeLocationValue | null | undefined;
 };
+
+export type EmployeeSchemasHomeLocationLocationType4 = {};
+
+/**
+ * The source value of the location type.
+ */
+export type EmployeeSchemasHomeLocationLocationTypeSourceValue =
+    | EmployeeSchemasHomeLocationLocationType4
+    | string
+    | number
+    | boolean;
 
 /**
  * The type of the location.
@@ -402,11 +449,17 @@ export type EmployeeLocationType = {
     /**
      * The source value of the location type.
      */
-    sourceValue: string;
+    sourceValue?:
+        | EmployeeSchemasHomeLocationLocationType4
+        | string
+        | number
+        | boolean
+        | null
+        | undefined;
     /**
      * The type of the location.
      */
-    value: EmployeeSchemasHomeLocationLocationTypeValue;
+    value?: EmployeeSchemasHomeLocationLocationTypeValue | null | undefined;
 };
 
 /**
@@ -467,6 +520,14 @@ export type HomeLocation = {
     zipCode?: string | null | undefined;
 };
 
+export type EmployeeSchemasMaritalStatus4 = {};
+
+export type EmployeeSchemasMaritalStatusSourceValue =
+    | EmployeeSchemasMaritalStatus4
+    | string
+    | number
+    | boolean;
+
 export enum EmployeeSchemasMaritalStatusValue {
     Single = "single",
     Married = "married",
@@ -484,9 +545,17 @@ export enum EmployeeSchemasMaritalStatusValue {
  * The employee marital status
  */
 export type MaritalStatus = {
-    sourceValue: string;
-    value: EmployeeSchemasMaritalStatusValue;
+    sourceValue?: EmployeeSchemasMaritalStatus4 | string | number | boolean | null | undefined;
+    value?: EmployeeSchemasMaritalStatusValue | null | undefined;
 };
+
+export type EmployeeSchemasWorkLocation4 = {};
+
+export type EmployeeSchemasWorkLocationSourceValue =
+    | EmployeeSchemasWorkLocation4
+    | string
+    | number
+    | boolean;
 
 /**
  * The ISO3166-1 Alpha2 Code of the Country
@@ -747,15 +816,23 @@ export enum EmployeeSchemasWorkLocationValue {
  * The country code
  */
 export type EmployeeSchemasCountry = {
-    /**
-     * The name of citizenship
-     */
-    sourceValue: string;
+    sourceValue?: EmployeeSchemasWorkLocation4 | string | number | boolean | null | undefined;
     /**
      * The ISO3166-1 Alpha2 Code of the Country
      */
-    value: EmployeeSchemasWorkLocationValue;
+    value?: EmployeeSchemasWorkLocationValue | null | undefined;
 };
+
+export type EmployeeSchemasWorkLocationLocationType4 = {};
+
+/**
+ * The source value of the location type.
+ */
+export type EmployeeSchemasWorkLocationLocationTypeSourceValue =
+    | EmployeeSchemasWorkLocationLocationType4
+    | string
+    | number
+    | boolean;
 
 /**
  * The type of the location.
@@ -773,11 +850,17 @@ export type EmployeeSchemasLocationType = {
     /**
      * The source value of the location type.
      */
-    sourceValue: string;
+    sourceValue?:
+        | EmployeeSchemasWorkLocationLocationType4
+        | string
+        | number
+        | boolean
+        | null
+        | undefined;
     /**
      * The type of the location.
      */
-    value: EmployeeSchemasWorkLocationLocationTypeValue;
+    value?: EmployeeSchemasWorkLocationLocationTypeValue | null | undefined;
 };
 
 /**
@@ -1023,43 +1106,127 @@ export namespace Avatar$ {
 }
 
 /** @internal */
+export namespace Employee4$ {
+    export type Inbound = {};
+
+    export const inboundSchema: z.ZodType<Employee4, z.ZodTypeDef, Inbound> = z.object({});
+
+    export type Outbound = {};
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Employee4> = z.object({});
+}
+
+/** @internal */
+export namespace EmployeeSourceValue$ {
+    export type Inbound = Employee4$.Inbound | string | number | boolean;
+
+    export type Outbound = Employee4$.Outbound | string | number | boolean;
+
+    export const inboundSchema: z.ZodType<EmployeeSourceValue, z.ZodTypeDef, Inbound> = z.union([
+        z.lazy(() => Employee4$.inboundSchema),
+        z.string(),
+        z.number(),
+        z.boolean(),
+    ]);
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, EmployeeSourceValue> = z.union([
+        z.lazy(() => Employee4$.outboundSchema),
+        z.string(),
+        z.number(),
+        z.boolean(),
+    ]);
+}
+
+/** @internal */
 export const EmployeeValue$ = z.nativeEnum(EmployeeValue);
 
 /** @internal */
 export namespace EmploymentContractType$ {
     export type Inbound = {
-        source_value: string;
-        value: EmployeeValue;
+        source_value?: Employee4$.Inbound | string | number | boolean | null | undefined;
+        value?: EmployeeValue | null | undefined;
     };
 
     export const inboundSchema: z.ZodType<EmploymentContractType, z.ZodTypeDef, Inbound> = z
         .object({
-            source_value: z.string(),
-            value: EmployeeValue$,
+            source_value: z
+                .nullable(
+                    z.union([
+                        z.lazy(() => Employee4$.inboundSchema),
+                        z.string(),
+                        z.number(),
+                        z.boolean(),
+                    ])
+                )
+                .optional(),
+            value: z.nullable(EmployeeValue$).optional(),
         })
         .transform((v) => {
             return {
-                sourceValue: v.source_value,
-                value: v.value,
+                ...(v.source_value === undefined ? null : { sourceValue: v.source_value }),
+                ...(v.value === undefined ? null : { value: v.value }),
             };
         });
 
     export type Outbound = {
-        source_value: string;
-        value: EmployeeValue;
+        source_value?: Employee4$.Outbound | string | number | boolean | null | undefined;
+        value?: EmployeeValue | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, EmploymentContractType> = z
         .object({
-            sourceValue: z.string(),
-            value: EmployeeValue$,
+            sourceValue: z
+                .nullable(
+                    z.union([
+                        z.lazy(() => Employee4$.outboundSchema),
+                        z.string(),
+                        z.number(),
+                        z.boolean(),
+                    ])
+                )
+                .optional(),
+            value: z.nullable(EmployeeValue$).optional(),
         })
         .transform((v) => {
             return {
-                source_value: v.sourceValue,
-                value: v.value,
+                ...(v.sourceValue === undefined ? null : { source_value: v.sourceValue }),
+                ...(v.value === undefined ? null : { value: v.value }),
             };
         });
+}
+
+/** @internal */
+export namespace EmployeeSchemas4$ {
+    export type Inbound = {};
+
+    export const inboundSchema: z.ZodType<EmployeeSchemas4, z.ZodTypeDef, Inbound> = z.object({});
+
+    export type Outbound = {};
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, EmployeeSchemas4> = z.object({});
+}
+
+/** @internal */
+export namespace EmployeeSchemasSourceValue$ {
+    export type Inbound = EmployeeSchemas4$.Inbound | string | number | boolean;
+
+    export type Outbound = EmployeeSchemas4$.Outbound | string | number | boolean;
+
+    export const inboundSchema: z.ZodType<EmployeeSchemasSourceValue, z.ZodTypeDef, Inbound> =
+        z.union([
+            z.lazy(() => EmployeeSchemas4$.inboundSchema),
+            z.string(),
+            z.number(),
+            z.boolean(),
+        ]);
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, EmployeeSchemasSourceValue> =
+        z.union([
+            z.lazy(() => EmployeeSchemas4$.outboundSchema),
+            z.string(),
+            z.number(),
+            z.boolean(),
+        ]);
 }
 
 /** @internal */
@@ -1068,38 +1235,98 @@ export const EmployeeSchemasValue$ = z.nativeEnum(EmployeeSchemasValue);
 /** @internal */
 export namespace EmploymentStatus$ {
     export type Inbound = {
-        source_value: string;
-        value: EmployeeSchemasValue;
+        source_value?: EmployeeSchemas4$.Inbound | string | number | boolean | null | undefined;
+        value?: EmployeeSchemasValue | null | undefined;
     };
 
     export const inboundSchema: z.ZodType<EmploymentStatus, z.ZodTypeDef, Inbound> = z
         .object({
-            source_value: z.string(),
-            value: EmployeeSchemasValue$,
+            source_value: z
+                .nullable(
+                    z.union([
+                        z.lazy(() => EmployeeSchemas4$.inboundSchema),
+                        z.string(),
+                        z.number(),
+                        z.boolean(),
+                    ])
+                )
+                .optional(),
+            value: z.nullable(EmployeeSchemasValue$).optional(),
         })
         .transform((v) => {
             return {
-                sourceValue: v.source_value,
-                value: v.value,
+                ...(v.source_value === undefined ? null : { sourceValue: v.source_value }),
+                ...(v.value === undefined ? null : { value: v.value }),
             };
         });
 
     export type Outbound = {
-        source_value: string;
-        value: EmployeeSchemasValue;
+        source_value?: EmployeeSchemas4$.Outbound | string | number | boolean | null | undefined;
+        value?: EmployeeSchemasValue | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, EmploymentStatus> = z
         .object({
-            sourceValue: z.string(),
-            value: EmployeeSchemasValue$,
+            sourceValue: z
+                .nullable(
+                    z.union([
+                        z.lazy(() => EmployeeSchemas4$.outboundSchema),
+                        z.string(),
+                        z.number(),
+                        z.boolean(),
+                    ])
+                )
+                .optional(),
+            value: z.nullable(EmployeeSchemasValue$).optional(),
         })
         .transform((v) => {
             return {
-                source_value: v.sourceValue,
-                value: v.value,
+                ...(v.sourceValue === undefined ? null : { source_value: v.sourceValue }),
+                ...(v.value === undefined ? null : { value: v.value }),
             };
         });
+}
+
+/** @internal */
+export namespace EmployeeSchemasEmploymentType4$ {
+    export type Inbound = {};
+
+    export const inboundSchema: z.ZodType<EmployeeSchemasEmploymentType4, z.ZodTypeDef, Inbound> =
+        z.object({});
+
+    export type Outbound = {};
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, EmployeeSchemasEmploymentType4> =
+        z.object({});
+}
+
+/** @internal */
+export namespace EmployeeSchemasEmploymentTypeSourceValue$ {
+    export type Inbound = EmployeeSchemasEmploymentType4$.Inbound | string | number | boolean;
+
+    export type Outbound = EmployeeSchemasEmploymentType4$.Outbound | string | number | boolean;
+
+    export const inboundSchema: z.ZodType<
+        EmployeeSchemasEmploymentTypeSourceValue,
+        z.ZodTypeDef,
+        Inbound
+    > = z.union([
+        z.lazy(() => EmployeeSchemasEmploymentType4$.inboundSchema),
+        z.string(),
+        z.number(),
+        z.boolean(),
+    ]);
+
+    export const outboundSchema: z.ZodType<
+        Outbound,
+        z.ZodTypeDef,
+        EmployeeSchemasEmploymentTypeSourceValue
+    > = z.union([
+        z.lazy(() => EmployeeSchemasEmploymentType4$.outboundSchema),
+        z.string(),
+        z.number(),
+        z.boolean(),
+    ]);
 }
 
 /** @internal */
@@ -1108,13 +1335,28 @@ export const EmployeeSchemasEmploymentTypeValue$ = z.nativeEnum(EmployeeSchemasE
 /** @internal */
 export namespace EmploymentType$ {
     export type Inbound = {
-        source_value?: string | null | undefined;
+        source_value?:
+            | EmployeeSchemasEmploymentType4$.Inbound
+            | string
+            | number
+            | boolean
+            | null
+            | undefined;
         value?: EmployeeSchemasEmploymentTypeValue | null | undefined;
     };
 
     export const inboundSchema: z.ZodType<EmploymentType, z.ZodTypeDef, Inbound> = z
         .object({
-            source_value: z.nullable(z.string()).optional(),
+            source_value: z
+                .nullable(
+                    z.union([
+                        z.lazy(() => EmployeeSchemasEmploymentType4$.inboundSchema),
+                        z.string(),
+                        z.number(),
+                        z.boolean(),
+                    ])
+                )
+                .optional(),
             value: z.nullable(EmployeeSchemasEmploymentTypeValue$).optional(),
         })
         .transform((v) => {
@@ -1125,13 +1367,28 @@ export namespace EmploymentType$ {
         });
 
     export type Outbound = {
-        source_value?: string | null | undefined;
+        source_value?:
+            | EmployeeSchemasEmploymentType4$.Outbound
+            | string
+            | number
+            | boolean
+            | null
+            | undefined;
         value?: EmployeeSchemasEmploymentTypeValue | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, EmploymentType> = z
         .object({
-            sourceValue: z.nullable(z.string()).optional(),
+            sourceValue: z
+                .nullable(
+                    z.union([
+                        z.lazy(() => EmployeeSchemasEmploymentType4$.outboundSchema),
+                        z.string(),
+                        z.number(),
+                        z.boolean(),
+                    ])
+                )
+                .optional(),
             value: z.nullable(EmployeeSchemasEmploymentTypeValue$).optional(),
         })
         .transform((v) => {
@@ -1143,43 +1400,155 @@ export namespace EmploymentType$ {
 }
 
 /** @internal */
+export namespace EmployeeSchemasEthnicity4$ {
+    export type Inbound = {};
+
+    export const inboundSchema: z.ZodType<EmployeeSchemasEthnicity4, z.ZodTypeDef, Inbound> =
+        z.object({});
+
+    export type Outbound = {};
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, EmployeeSchemasEthnicity4> =
+        z.object({});
+}
+
+/** @internal */
+export namespace EmployeeSchemasEthnicitySourceValue$ {
+    export type Inbound = EmployeeSchemasEthnicity4$.Inbound | string | number | boolean;
+
+    export type Outbound = EmployeeSchemasEthnicity4$.Outbound | string | number | boolean;
+
+    export const inboundSchema: z.ZodType<
+        EmployeeSchemasEthnicitySourceValue,
+        z.ZodTypeDef,
+        Inbound
+    > = z.union([
+        z.lazy(() => EmployeeSchemasEthnicity4$.inboundSchema),
+        z.string(),
+        z.number(),
+        z.boolean(),
+    ]);
+
+    export const outboundSchema: z.ZodType<
+        Outbound,
+        z.ZodTypeDef,
+        EmployeeSchemasEthnicitySourceValue
+    > = z.union([
+        z.lazy(() => EmployeeSchemasEthnicity4$.outboundSchema),
+        z.string(),
+        z.number(),
+        z.boolean(),
+    ]);
+}
+
+/** @internal */
 export const EmployeeSchemasEthnicityValue$ = z.nativeEnum(EmployeeSchemasEthnicityValue);
 
 /** @internal */
 export namespace Ethnicity$ {
     export type Inbound = {
-        source_value: string;
-        value: EmployeeSchemasEthnicityValue;
+        source_value?:
+            | EmployeeSchemasEthnicity4$.Inbound
+            | string
+            | number
+            | boolean
+            | null
+            | undefined;
+        value?: EmployeeSchemasEthnicityValue | null | undefined;
     };
 
     export const inboundSchema: z.ZodType<Ethnicity, z.ZodTypeDef, Inbound> = z
         .object({
-            source_value: z.string(),
-            value: EmployeeSchemasEthnicityValue$,
+            source_value: z
+                .nullable(
+                    z.union([
+                        z.lazy(() => EmployeeSchemasEthnicity4$.inboundSchema),
+                        z.string(),
+                        z.number(),
+                        z.boolean(),
+                    ])
+                )
+                .optional(),
+            value: z.nullable(EmployeeSchemasEthnicityValue$).optional(),
         })
         .transform((v) => {
             return {
-                sourceValue: v.source_value,
-                value: v.value,
+                ...(v.source_value === undefined ? null : { sourceValue: v.source_value }),
+                ...(v.value === undefined ? null : { value: v.value }),
             };
         });
 
     export type Outbound = {
-        source_value: string;
-        value: EmployeeSchemasEthnicityValue;
+        source_value?:
+            | EmployeeSchemasEthnicity4$.Outbound
+            | string
+            | number
+            | boolean
+            | null
+            | undefined;
+        value?: EmployeeSchemasEthnicityValue | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Ethnicity> = z
         .object({
-            sourceValue: z.string(),
-            value: EmployeeSchemasEthnicityValue$,
+            sourceValue: z
+                .nullable(
+                    z.union([
+                        z.lazy(() => EmployeeSchemasEthnicity4$.outboundSchema),
+                        z.string(),
+                        z.number(),
+                        z.boolean(),
+                    ])
+                )
+                .optional(),
+            value: z.nullable(EmployeeSchemasEthnicityValue$).optional(),
         })
         .transform((v) => {
             return {
-                source_value: v.sourceValue,
-                value: v.value,
+                ...(v.sourceValue === undefined ? null : { source_value: v.sourceValue }),
+                ...(v.value === undefined ? null : { value: v.value }),
             };
         });
+}
+
+/** @internal */
+export namespace EmployeeSchemasGender4$ {
+    export type Inbound = {};
+
+    export const inboundSchema: z.ZodType<EmployeeSchemasGender4, z.ZodTypeDef, Inbound> = z.object(
+        {}
+    );
+
+    export type Outbound = {};
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, EmployeeSchemasGender4> =
+        z.object({});
+}
+
+/** @internal */
+export namespace EmployeeSchemasGenderSourceValue$ {
+    export type Inbound = EmployeeSchemasGender4$.Inbound | string | number | boolean;
+
+    export type Outbound = EmployeeSchemasGender4$.Outbound | string | number | boolean;
+
+    export const inboundSchema: z.ZodType<EmployeeSchemasGenderSourceValue, z.ZodTypeDef, Inbound> =
+        z.union([
+            z.lazy(() => EmployeeSchemasGender4$.inboundSchema),
+            z.string(),
+            z.number(),
+            z.boolean(),
+        ]);
+
+    export const outboundSchema: z.ZodType<
+        Outbound,
+        z.ZodTypeDef,
+        EmployeeSchemasGenderSourceValue
+    > = z.union([
+        z.lazy(() => EmployeeSchemasGender4$.outboundSchema),
+        z.string(),
+        z.number(),
+        z.boolean(),
+    ]);
 }
 
 /** @internal */
@@ -1188,38 +1557,110 @@ export const EmployeeSchemasGenderValue$ = z.nativeEnum(EmployeeSchemasGenderVal
 /** @internal */
 export namespace Gender$ {
     export type Inbound = {
-        source_value: string;
-        value: EmployeeSchemasGenderValue;
+        source_value?:
+            | EmployeeSchemasGender4$.Inbound
+            | string
+            | number
+            | boolean
+            | null
+            | undefined;
+        value?: EmployeeSchemasGenderValue | null | undefined;
     };
 
     export const inboundSchema: z.ZodType<Gender, z.ZodTypeDef, Inbound> = z
         .object({
-            source_value: z.string(),
-            value: EmployeeSchemasGenderValue$,
+            source_value: z
+                .nullable(
+                    z.union([
+                        z.lazy(() => EmployeeSchemasGender4$.inboundSchema),
+                        z.string(),
+                        z.number(),
+                        z.boolean(),
+                    ])
+                )
+                .optional(),
+            value: z.nullable(EmployeeSchemasGenderValue$).optional(),
         })
         .transform((v) => {
             return {
-                sourceValue: v.source_value,
-                value: v.value,
+                ...(v.source_value === undefined ? null : { sourceValue: v.source_value }),
+                ...(v.value === undefined ? null : { value: v.value }),
             };
         });
 
     export type Outbound = {
-        source_value: string;
-        value: EmployeeSchemasGenderValue;
+        source_value?:
+            | EmployeeSchemasGender4$.Outbound
+            | string
+            | number
+            | boolean
+            | null
+            | undefined;
+        value?: EmployeeSchemasGenderValue | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Gender> = z
         .object({
-            sourceValue: z.string(),
-            value: EmployeeSchemasGenderValue$,
+            sourceValue: z
+                .nullable(
+                    z.union([
+                        z.lazy(() => EmployeeSchemasGender4$.outboundSchema),
+                        z.string(),
+                        z.number(),
+                        z.boolean(),
+                    ])
+                )
+                .optional(),
+            value: z.nullable(EmployeeSchemasGenderValue$).optional(),
         })
         .transform((v) => {
             return {
-                source_value: v.sourceValue,
-                value: v.value,
+                ...(v.sourceValue === undefined ? null : { source_value: v.sourceValue }),
+                ...(v.value === undefined ? null : { value: v.value }),
             };
         });
+}
+
+/** @internal */
+export namespace EmployeeSchemasHomeLocation4$ {
+    export type Inbound = {};
+
+    export const inboundSchema: z.ZodType<EmployeeSchemasHomeLocation4, z.ZodTypeDef, Inbound> =
+        z.object({});
+
+    export type Outbound = {};
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, EmployeeSchemasHomeLocation4> =
+        z.object({});
+}
+
+/** @internal */
+export namespace EmployeeSchemasHomeLocationSourceValue$ {
+    export type Inbound = EmployeeSchemasHomeLocation4$.Inbound | string | number | boolean;
+
+    export type Outbound = EmployeeSchemasHomeLocation4$.Outbound | string | number | boolean;
+
+    export const inboundSchema: z.ZodType<
+        EmployeeSchemasHomeLocationSourceValue,
+        z.ZodTypeDef,
+        Inbound
+    > = z.union([
+        z.lazy(() => EmployeeSchemasHomeLocation4$.inboundSchema),
+        z.string(),
+        z.number(),
+        z.boolean(),
+    ]);
+
+    export const outboundSchema: z.ZodType<
+        Outbound,
+        z.ZodTypeDef,
+        EmployeeSchemasHomeLocationSourceValue
+    > = z.union([
+        z.lazy(() => EmployeeSchemasHomeLocation4$.outboundSchema),
+        z.string(),
+        z.number(),
+        z.boolean(),
+    ]);
 }
 
 /** @internal */
@@ -1228,38 +1669,124 @@ export const EmployeeSchemasHomeLocationValue$ = z.nativeEnum(EmployeeSchemasHom
 /** @internal */
 export namespace EmployeeCountry$ {
     export type Inbound = {
-        source_value: string;
-        value: EmployeeSchemasHomeLocationValue;
+        source_value?:
+            | EmployeeSchemasHomeLocation4$.Inbound
+            | string
+            | number
+            | boolean
+            | null
+            | undefined;
+        value?: EmployeeSchemasHomeLocationValue | null | undefined;
     };
 
     export const inboundSchema: z.ZodType<EmployeeCountry, z.ZodTypeDef, Inbound> = z
         .object({
-            source_value: z.string(),
-            value: EmployeeSchemasHomeLocationValue$,
+            source_value: z
+                .nullable(
+                    z.union([
+                        z.lazy(() => EmployeeSchemasHomeLocation4$.inboundSchema),
+                        z.string(),
+                        z.number(),
+                        z.boolean(),
+                    ])
+                )
+                .optional(),
+            value: z.nullable(EmployeeSchemasHomeLocationValue$).optional(),
         })
         .transform((v) => {
             return {
-                sourceValue: v.source_value,
-                value: v.value,
+                ...(v.source_value === undefined ? null : { sourceValue: v.source_value }),
+                ...(v.value === undefined ? null : { value: v.value }),
             };
         });
 
     export type Outbound = {
-        source_value: string;
-        value: EmployeeSchemasHomeLocationValue;
+        source_value?:
+            | EmployeeSchemasHomeLocation4$.Outbound
+            | string
+            | number
+            | boolean
+            | null
+            | undefined;
+        value?: EmployeeSchemasHomeLocationValue | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, EmployeeCountry> = z
         .object({
-            sourceValue: z.string(),
-            value: EmployeeSchemasHomeLocationValue$,
+            sourceValue: z
+                .nullable(
+                    z.union([
+                        z.lazy(() => EmployeeSchemasHomeLocation4$.outboundSchema),
+                        z.string(),
+                        z.number(),
+                        z.boolean(),
+                    ])
+                )
+                .optional(),
+            value: z.nullable(EmployeeSchemasHomeLocationValue$).optional(),
         })
         .transform((v) => {
             return {
-                source_value: v.sourceValue,
-                value: v.value,
+                ...(v.sourceValue === undefined ? null : { source_value: v.sourceValue }),
+                ...(v.value === undefined ? null : { value: v.value }),
             };
         });
+}
+
+/** @internal */
+export namespace EmployeeSchemasHomeLocationLocationType4$ {
+    export type Inbound = {};
+
+    export const inboundSchema: z.ZodType<
+        EmployeeSchemasHomeLocationLocationType4,
+        z.ZodTypeDef,
+        Inbound
+    > = z.object({});
+
+    export type Outbound = {};
+
+    export const outboundSchema: z.ZodType<
+        Outbound,
+        z.ZodTypeDef,
+        EmployeeSchemasHomeLocationLocationType4
+    > = z.object({});
+}
+
+/** @internal */
+export namespace EmployeeSchemasHomeLocationLocationTypeSourceValue$ {
+    export type Inbound =
+        | EmployeeSchemasHomeLocationLocationType4$.Inbound
+        | string
+        | number
+        | boolean;
+
+    export type Outbound =
+        | EmployeeSchemasHomeLocationLocationType4$.Outbound
+        | string
+        | number
+        | boolean;
+
+    export const inboundSchema: z.ZodType<
+        EmployeeSchemasHomeLocationLocationTypeSourceValue,
+        z.ZodTypeDef,
+        Inbound
+    > = z.union([
+        z.lazy(() => EmployeeSchemasHomeLocationLocationType4$.inboundSchema),
+        z.string(),
+        z.number(),
+        z.boolean(),
+    ]);
+
+    export const outboundSchema: z.ZodType<
+        Outbound,
+        z.ZodTypeDef,
+        EmployeeSchemasHomeLocationLocationTypeSourceValue
+    > = z.union([
+        z.lazy(() => EmployeeSchemasHomeLocationLocationType4$.outboundSchema),
+        z.string(),
+        z.number(),
+        z.boolean(),
+    ]);
 }
 
 /** @internal */
@@ -1270,36 +1797,66 @@ export const EmployeeSchemasHomeLocationLocationTypeValue$ = z.nativeEnum(
 /** @internal */
 export namespace EmployeeLocationType$ {
     export type Inbound = {
-        source_value: string;
-        value: EmployeeSchemasHomeLocationLocationTypeValue;
+        source_value?:
+            | EmployeeSchemasHomeLocationLocationType4$.Inbound
+            | string
+            | number
+            | boolean
+            | null
+            | undefined;
+        value?: EmployeeSchemasHomeLocationLocationTypeValue | null | undefined;
     };
 
     export const inboundSchema: z.ZodType<EmployeeLocationType, z.ZodTypeDef, Inbound> = z
         .object({
-            source_value: z.string(),
-            value: EmployeeSchemasHomeLocationLocationTypeValue$,
+            source_value: z
+                .nullable(
+                    z.union([
+                        z.lazy(() => EmployeeSchemasHomeLocationLocationType4$.inboundSchema),
+                        z.string(),
+                        z.number(),
+                        z.boolean(),
+                    ])
+                )
+                .optional(),
+            value: z.nullable(EmployeeSchemasHomeLocationLocationTypeValue$).optional(),
         })
         .transform((v) => {
             return {
-                sourceValue: v.source_value,
-                value: v.value,
+                ...(v.source_value === undefined ? null : { sourceValue: v.source_value }),
+                ...(v.value === undefined ? null : { value: v.value }),
             };
         });
 
     export type Outbound = {
-        source_value: string;
-        value: EmployeeSchemasHomeLocationLocationTypeValue;
+        source_value?:
+            | EmployeeSchemasHomeLocationLocationType4$.Outbound
+            | string
+            | number
+            | boolean
+            | null
+            | undefined;
+        value?: EmployeeSchemasHomeLocationLocationTypeValue | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, EmployeeLocationType> = z
         .object({
-            sourceValue: z.string(),
-            value: EmployeeSchemasHomeLocationLocationTypeValue$,
+            sourceValue: z
+                .nullable(
+                    z.union([
+                        z.lazy(() => EmployeeSchemasHomeLocationLocationType4$.outboundSchema),
+                        z.string(),
+                        z.number(),
+                        z.boolean(),
+                    ])
+                )
+                .optional(),
+            value: z.nullable(EmployeeSchemasHomeLocationLocationTypeValue$).optional(),
         })
         .transform((v) => {
             return {
-                source_value: v.sourceValue,
-                value: v.value,
+                ...(v.sourceValue === undefined ? null : { source_value: v.sourceValue }),
+                ...(v.value === undefined ? null : { value: v.value }),
             };
         });
 }
@@ -1422,43 +1979,157 @@ export namespace HomeLocation$ {
 }
 
 /** @internal */
+export namespace EmployeeSchemasMaritalStatus4$ {
+    export type Inbound = {};
+
+    export const inboundSchema: z.ZodType<EmployeeSchemasMaritalStatus4, z.ZodTypeDef, Inbound> =
+        z.object({});
+
+    export type Outbound = {};
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, EmployeeSchemasMaritalStatus4> =
+        z.object({});
+}
+
+/** @internal */
+export namespace EmployeeSchemasMaritalStatusSourceValue$ {
+    export type Inbound = EmployeeSchemasMaritalStatus4$.Inbound | string | number | boolean;
+
+    export type Outbound = EmployeeSchemasMaritalStatus4$.Outbound | string | number | boolean;
+
+    export const inboundSchema: z.ZodType<
+        EmployeeSchemasMaritalStatusSourceValue,
+        z.ZodTypeDef,
+        Inbound
+    > = z.union([
+        z.lazy(() => EmployeeSchemasMaritalStatus4$.inboundSchema),
+        z.string(),
+        z.number(),
+        z.boolean(),
+    ]);
+
+    export const outboundSchema: z.ZodType<
+        Outbound,
+        z.ZodTypeDef,
+        EmployeeSchemasMaritalStatusSourceValue
+    > = z.union([
+        z.lazy(() => EmployeeSchemasMaritalStatus4$.outboundSchema),
+        z.string(),
+        z.number(),
+        z.boolean(),
+    ]);
+}
+
+/** @internal */
 export const EmployeeSchemasMaritalStatusValue$ = z.nativeEnum(EmployeeSchemasMaritalStatusValue);
 
 /** @internal */
 export namespace MaritalStatus$ {
     export type Inbound = {
-        source_value: string;
-        value: EmployeeSchemasMaritalStatusValue;
+        source_value?:
+            | EmployeeSchemasMaritalStatus4$.Inbound
+            | string
+            | number
+            | boolean
+            | null
+            | undefined;
+        value?: EmployeeSchemasMaritalStatusValue | null | undefined;
     };
 
     export const inboundSchema: z.ZodType<MaritalStatus, z.ZodTypeDef, Inbound> = z
         .object({
-            source_value: z.string(),
-            value: EmployeeSchemasMaritalStatusValue$,
+            source_value: z
+                .nullable(
+                    z.union([
+                        z.lazy(() => EmployeeSchemasMaritalStatus4$.inboundSchema),
+                        z.string(),
+                        z.number(),
+                        z.boolean(),
+                    ])
+                )
+                .optional(),
+            value: z.nullable(EmployeeSchemasMaritalStatusValue$).optional(),
         })
         .transform((v) => {
             return {
-                sourceValue: v.source_value,
-                value: v.value,
+                ...(v.source_value === undefined ? null : { sourceValue: v.source_value }),
+                ...(v.value === undefined ? null : { value: v.value }),
             };
         });
 
     export type Outbound = {
-        source_value: string;
-        value: EmployeeSchemasMaritalStatusValue;
+        source_value?:
+            | EmployeeSchemasMaritalStatus4$.Outbound
+            | string
+            | number
+            | boolean
+            | null
+            | undefined;
+        value?: EmployeeSchemasMaritalStatusValue | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, MaritalStatus> = z
         .object({
-            sourceValue: z.string(),
-            value: EmployeeSchemasMaritalStatusValue$,
+            sourceValue: z
+                .nullable(
+                    z.union([
+                        z.lazy(() => EmployeeSchemasMaritalStatus4$.outboundSchema),
+                        z.string(),
+                        z.number(),
+                        z.boolean(),
+                    ])
+                )
+                .optional(),
+            value: z.nullable(EmployeeSchemasMaritalStatusValue$).optional(),
         })
         .transform((v) => {
             return {
-                source_value: v.sourceValue,
-                value: v.value,
+                ...(v.sourceValue === undefined ? null : { source_value: v.sourceValue }),
+                ...(v.value === undefined ? null : { value: v.value }),
             };
         });
+}
+
+/** @internal */
+export namespace EmployeeSchemasWorkLocation4$ {
+    export type Inbound = {};
+
+    export const inboundSchema: z.ZodType<EmployeeSchemasWorkLocation4, z.ZodTypeDef, Inbound> =
+        z.object({});
+
+    export type Outbound = {};
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, EmployeeSchemasWorkLocation4> =
+        z.object({});
+}
+
+/** @internal */
+export namespace EmployeeSchemasWorkLocationSourceValue$ {
+    export type Inbound = EmployeeSchemasWorkLocation4$.Inbound | string | number | boolean;
+
+    export type Outbound = EmployeeSchemasWorkLocation4$.Outbound | string | number | boolean;
+
+    export const inboundSchema: z.ZodType<
+        EmployeeSchemasWorkLocationSourceValue,
+        z.ZodTypeDef,
+        Inbound
+    > = z.union([
+        z.lazy(() => EmployeeSchemasWorkLocation4$.inboundSchema),
+        z.string(),
+        z.number(),
+        z.boolean(),
+    ]);
+
+    export const outboundSchema: z.ZodType<
+        Outbound,
+        z.ZodTypeDef,
+        EmployeeSchemasWorkLocationSourceValue
+    > = z.union([
+        z.lazy(() => EmployeeSchemasWorkLocation4$.outboundSchema),
+        z.string(),
+        z.number(),
+        z.boolean(),
+    ]);
 }
 
 /** @internal */
@@ -1467,38 +2138,124 @@ export const EmployeeSchemasWorkLocationValue$ = z.nativeEnum(EmployeeSchemasWor
 /** @internal */
 export namespace EmployeeSchemasCountry$ {
     export type Inbound = {
-        source_value: string;
-        value: EmployeeSchemasWorkLocationValue;
+        source_value?:
+            | EmployeeSchemasWorkLocation4$.Inbound
+            | string
+            | number
+            | boolean
+            | null
+            | undefined;
+        value?: EmployeeSchemasWorkLocationValue | null | undefined;
     };
 
     export const inboundSchema: z.ZodType<EmployeeSchemasCountry, z.ZodTypeDef, Inbound> = z
         .object({
-            source_value: z.string(),
-            value: EmployeeSchemasWorkLocationValue$,
+            source_value: z
+                .nullable(
+                    z.union([
+                        z.lazy(() => EmployeeSchemasWorkLocation4$.inboundSchema),
+                        z.string(),
+                        z.number(),
+                        z.boolean(),
+                    ])
+                )
+                .optional(),
+            value: z.nullable(EmployeeSchemasWorkLocationValue$).optional(),
         })
         .transform((v) => {
             return {
-                sourceValue: v.source_value,
-                value: v.value,
+                ...(v.source_value === undefined ? null : { sourceValue: v.source_value }),
+                ...(v.value === undefined ? null : { value: v.value }),
             };
         });
 
     export type Outbound = {
-        source_value: string;
-        value: EmployeeSchemasWorkLocationValue;
+        source_value?:
+            | EmployeeSchemasWorkLocation4$.Outbound
+            | string
+            | number
+            | boolean
+            | null
+            | undefined;
+        value?: EmployeeSchemasWorkLocationValue | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, EmployeeSchemasCountry> = z
         .object({
-            sourceValue: z.string(),
-            value: EmployeeSchemasWorkLocationValue$,
+            sourceValue: z
+                .nullable(
+                    z.union([
+                        z.lazy(() => EmployeeSchemasWorkLocation4$.outboundSchema),
+                        z.string(),
+                        z.number(),
+                        z.boolean(),
+                    ])
+                )
+                .optional(),
+            value: z.nullable(EmployeeSchemasWorkLocationValue$).optional(),
         })
         .transform((v) => {
             return {
-                source_value: v.sourceValue,
-                value: v.value,
+                ...(v.sourceValue === undefined ? null : { source_value: v.sourceValue }),
+                ...(v.value === undefined ? null : { value: v.value }),
             };
         });
+}
+
+/** @internal */
+export namespace EmployeeSchemasWorkLocationLocationType4$ {
+    export type Inbound = {};
+
+    export const inboundSchema: z.ZodType<
+        EmployeeSchemasWorkLocationLocationType4,
+        z.ZodTypeDef,
+        Inbound
+    > = z.object({});
+
+    export type Outbound = {};
+
+    export const outboundSchema: z.ZodType<
+        Outbound,
+        z.ZodTypeDef,
+        EmployeeSchemasWorkLocationLocationType4
+    > = z.object({});
+}
+
+/** @internal */
+export namespace EmployeeSchemasWorkLocationLocationTypeSourceValue$ {
+    export type Inbound =
+        | EmployeeSchemasWorkLocationLocationType4$.Inbound
+        | string
+        | number
+        | boolean;
+
+    export type Outbound =
+        | EmployeeSchemasWorkLocationLocationType4$.Outbound
+        | string
+        | number
+        | boolean;
+
+    export const inboundSchema: z.ZodType<
+        EmployeeSchemasWorkLocationLocationTypeSourceValue,
+        z.ZodTypeDef,
+        Inbound
+    > = z.union([
+        z.lazy(() => EmployeeSchemasWorkLocationLocationType4$.inboundSchema),
+        z.string(),
+        z.number(),
+        z.boolean(),
+    ]);
+
+    export const outboundSchema: z.ZodType<
+        Outbound,
+        z.ZodTypeDef,
+        EmployeeSchemasWorkLocationLocationTypeSourceValue
+    > = z.union([
+        z.lazy(() => EmployeeSchemasWorkLocationLocationType4$.outboundSchema),
+        z.string(),
+        z.number(),
+        z.boolean(),
+    ]);
 }
 
 /** @internal */
@@ -1509,36 +2266,66 @@ export const EmployeeSchemasWorkLocationLocationTypeValue$ = z.nativeEnum(
 /** @internal */
 export namespace EmployeeSchemasLocationType$ {
     export type Inbound = {
-        source_value: string;
-        value: EmployeeSchemasWorkLocationLocationTypeValue;
+        source_value?:
+            | EmployeeSchemasWorkLocationLocationType4$.Inbound
+            | string
+            | number
+            | boolean
+            | null
+            | undefined;
+        value?: EmployeeSchemasWorkLocationLocationTypeValue | null | undefined;
     };
 
     export const inboundSchema: z.ZodType<EmployeeSchemasLocationType, z.ZodTypeDef, Inbound> = z
         .object({
-            source_value: z.string(),
-            value: EmployeeSchemasWorkLocationLocationTypeValue$,
+            source_value: z
+                .nullable(
+                    z.union([
+                        z.lazy(() => EmployeeSchemasWorkLocationLocationType4$.inboundSchema),
+                        z.string(),
+                        z.number(),
+                        z.boolean(),
+                    ])
+                )
+                .optional(),
+            value: z.nullable(EmployeeSchemasWorkLocationLocationTypeValue$).optional(),
         })
         .transform((v) => {
             return {
-                sourceValue: v.source_value,
-                value: v.value,
+                ...(v.source_value === undefined ? null : { sourceValue: v.source_value }),
+                ...(v.value === undefined ? null : { value: v.value }),
             };
         });
 
     export type Outbound = {
-        source_value: string;
-        value: EmployeeSchemasWorkLocationLocationTypeValue;
+        source_value?:
+            | EmployeeSchemasWorkLocationLocationType4$.Outbound
+            | string
+            | number
+            | boolean
+            | null
+            | undefined;
+        value?: EmployeeSchemasWorkLocationLocationTypeValue | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, EmployeeSchemasLocationType> = z
         .object({
-            sourceValue: z.string(),
-            value: EmployeeSchemasWorkLocationLocationTypeValue$,
+            sourceValue: z
+                .nullable(
+                    z.union([
+                        z.lazy(() => EmployeeSchemasWorkLocationLocationType4$.outboundSchema),
+                        z.string(),
+                        z.number(),
+                        z.boolean(),
+                    ])
+                )
+                .optional(),
+            value: z.nullable(EmployeeSchemasWorkLocationLocationTypeValue$).optional(),
         })
         .transform((v) => {
             return {
-                source_value: v.sourceValue,
-                value: v.value,
+                ...(v.sourceValue === undefined ? null : { source_value: v.sourceValue }),
+                ...(v.value === undefined ? null : { value: v.value }),
             };
         });
 }

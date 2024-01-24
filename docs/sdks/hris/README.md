@@ -58,7 +58,6 @@ async function run() {
       birthday: new Date("2021-01-01T00:00:00Z"),
       citizenships: [
         {
-          sourceValue: "American",
           value: CountryCodeEnumValue.Us,
         },
       ],
@@ -74,10 +73,7 @@ async function run() {
             "Completed",
             "Overdue",
           ],
-          type: {
-            sourceValue: "string",
-            value: EmployeeCustomFieldsSchemasValue.Integer,
-          },
+          type: {},
           value: {},
           valueId: "value_456",
         },
@@ -85,16 +81,9 @@ async function run() {
       dateOfBirth: new Date("1990-01-01T00:00.000Z"),
       department: "Physics",
       displayName: "Sir Issac Newton",
-      employmentContractType: {
-        sourceValue: "string",
-        value: HrisCreateEmployeeRequestDtoValue.PartTime,
-      },
-      employmentStatus: {
-        sourceValue: "string",
-        value: HrisCreateEmployeeRequestDtoSchemasValue.Pending,
-      },
+      employmentContractType: {},
+      employmentStatus: {},
       employmentType: {
-        sourceValue: "Permanent",
         value: HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue.Permanent,
       },
       employments: [
@@ -102,51 +91,35 @@ async function run() {
           createdAt: new Date("2021-01-01T01:01:01.000Z"),
           effectiveDate: new Date("2021-01-01T01:01:01.000Z"),
           employeeId: "1687-3",
-          employmentContractType: {
-            sourceValue: "string",
-            value: EmploymentValue.UnmappedValue,
-          },
+          employmentContractType: {},
           employmentType: {
-            sourceValue: "Permanent",
             value: EmploymentSchemasValue.Permanent,
           },
           id: "123456",
           jobTitle: "Software Engineer",
           payCurrency: "USD",
           payFrequency: {
-            sourceValue: "Hourly",
             value: EmploymentSchemasPayFrequencyValue.Hourly,
           },
           payPeriod: {
-            sourceValue: "Hour",
             value: EmploymentSchemasPayPeriodValue.Hour,
           },
           payRate: "40.00",
           updatedAt: new Date("2021-01-01T01:01:01.000Z"),
         },
       ],
-      ethnicity: {
-        sourceValue: "string",
-        value: HrisCreateEmployeeRequestDtoSchemasEthnicityValue.Other,
-      },
+      ethnicity: {},
       firstName: "Issac",
-      gender: {
-        sourceValue: "string",
-        value: HrisCreateEmployeeRequestDtoSchemasGenderValue.Female,
-      },
+      gender: {},
       hireDate: new Date("2021-01-01T00:00.000Z"),
       homeLocation: {
         city: "Grantham",
         country: {
-          sourceValue: "American",
           value: HrisCreateEmployeeRequestDtoSchemasHomeLocationValue.Us,
         },
         name: "Woolsthorpe Manor",
         phoneNumber: "+44 1476 860 364",
-        state: {
-          sourceValue: "string",
-          value: HrisCreateEmployeeRequestDtoSchemasHomeLocationStateValue.VnDn,
-        },
+        state: {},
         street1: "Water Lane",
         street2: "Woolsthorpe by Colsterworth",
         zipCode: "NG33 5NR",
@@ -154,10 +127,7 @@ async function run() {
       jobTitle: "Physicist",
       lastName: "Newton",
       managerId: "67890",
-      maritalStatus: {
-        sourceValue: "string",
-        value: HrisCreateEmployeeRequestDtoSchemasMaritalStatusValue.NotDisclosed,
-      },
+      maritalStatus: {},
       name: "Issac Newton",
       personalEmail: "isaac.newton@example.com",
       personalPhoneNumber: "+1234567890",
@@ -169,15 +139,11 @@ async function run() {
       workLocation: {
         city: "Grantham",
         country: {
-          sourceValue: "American",
           value: HrisCreateEmployeeRequestDtoSchemasWorkLocationValue.Us,
         },
         name: "Woolsthorpe Manor",
         phoneNumber: "+44 1476 860 364",
-        state: {
-          sourceValue: "string",
-          value: HrisCreateEmployeeRequestDtoSchemasWorkLocationStateValue.LtSa,
-        },
+        state: {},
         street1: "Water Lane",
         street2: "Woolsthorpe by Colsterworth",
         zipCode: "NG33 5NR",
@@ -235,14 +201,8 @@ async function run() {
       employeeId: "1687-3",
       endDate: new Date("2021-01-01T01:01:01.000Z"),
       startDate: new Date("2021-01-01T01:01:01.000Z"),
-      status: {
-        sourceValue: "string",
-        value: HrisCreateTimeOffRequestDtoValue.UnmappedValue,
-      },
-      type: {
-        sourceValue: "string",
-        value: HrisCreateTimeOffRequestDtoSchemasValue.Vacation,
-      },
+      status: {},
+      type: {},
     },
     id: "<ID>",
     xAccountId: "string",
@@ -296,14 +256,8 @@ async function run() {
       employeeId: "1687-3",
       endDate: new Date("2021-01-01T01:01:01.000Z"),
       startDate: new Date("2021-01-01T01:01:01.000Z"),
-      status: {
-        sourceValue: "string",
-        value: HrisCreateTimeOffRequestDtoValue.UnmappedValue,
-      },
-      type: {
-        sourceValue: "string",
-        value: HrisCreateTimeOffRequestDtoSchemasValue.Vacation,
-      },
+      status: {},
+      type: {},
     },
     xAccountId: "string",
   });
@@ -1024,7 +978,6 @@ async function run() {
       birthday: new Date("2021-01-01T00:00:00Z"),
       citizenships: [
         {
-          sourceValue: "American",
           value: CountryCodeEnumValue.Us,
         },
       ],
@@ -1040,10 +993,7 @@ async function run() {
             "Completed",
             "Overdue",
           ],
-          type: {
-            sourceValue: "string",
-            value: EmployeeCustomFieldsSchemasValue.Float,
-          },
+          type: {},
           value: {},
           valueId: "value_456",
         },
@@ -1051,16 +1001,9 @@ async function run() {
       dateOfBirth: new Date("1990-01-01T00:00.000Z"),
       department: "Physics",
       displayName: "Sir Issac Newton",
-      employmentContractType: {
-        sourceValue: "string",
-        value: HrisCreateEmployeeRequestDtoValue.PartTime,
-      },
-      employmentStatus: {
-        sourceValue: "string",
-        value: HrisCreateEmployeeRequestDtoSchemasValue.Leave,
-      },
+      employmentContractType: {},
+      employmentStatus: {},
       employmentType: {
-        sourceValue: "Permanent",
         value: HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue.Permanent,
       },
       employments: [
@@ -1068,51 +1011,35 @@ async function run() {
           createdAt: new Date("2021-01-01T01:01:01.000Z"),
           effectiveDate: new Date("2021-01-01T01:01:01.000Z"),
           employeeId: "1687-3",
-          employmentContractType: {
-            sourceValue: "string",
-            value: EmploymentValue.UnmappedValue,
-          },
+          employmentContractType: {},
           employmentType: {
-            sourceValue: "Permanent",
             value: EmploymentSchemasValue.Permanent,
           },
           id: "123456",
           jobTitle: "Software Engineer",
           payCurrency: "USD",
           payFrequency: {
-            sourceValue: "Hourly",
             value: EmploymentSchemasPayFrequencyValue.Hourly,
           },
           payPeriod: {
-            sourceValue: "Hour",
             value: EmploymentSchemasPayPeriodValue.Hour,
           },
           payRate: "40.00",
           updatedAt: new Date("2021-01-01T01:01:01.000Z"),
         },
       ],
-      ethnicity: {
-        sourceValue: "string",
-        value: HrisCreateEmployeeRequestDtoSchemasEthnicityValue.BlackOrAfricanAmerican,
-      },
+      ethnicity: {},
       firstName: "Issac",
-      gender: {
-        sourceValue: "string",
-        value: HrisCreateEmployeeRequestDtoSchemasGenderValue.Male,
-      },
+      gender: {},
       hireDate: new Date("2021-01-01T00:00.000Z"),
       homeLocation: {
         city: "Grantham",
         country: {
-          sourceValue: "American",
           value: HrisCreateEmployeeRequestDtoSchemasHomeLocationValue.Us,
         },
         name: "Woolsthorpe Manor",
         phoneNumber: "+44 1476 860 364",
-        state: {
-          sourceValue: "string",
-          value: HrisCreateEmployeeRequestDtoSchemasHomeLocationStateValue.CcXx1,
-        },
+        state: {},
         street1: "Water Lane",
         street2: "Woolsthorpe by Colsterworth",
         zipCode: "NG33 5NR",
@@ -1120,10 +1047,7 @@ async function run() {
       jobTitle: "Physicist",
       lastName: "Newton",
       managerId: "67890",
-      maritalStatus: {
-        sourceValue: "string",
-        value: HrisCreateEmployeeRequestDtoSchemasMaritalStatusValue.Separated,
-      },
+      maritalStatus: {},
       name: "Issac Newton",
       personalEmail: "isaac.newton@example.com",
       personalPhoneNumber: "+1234567890",
@@ -1135,15 +1059,11 @@ async function run() {
       workLocation: {
         city: "Grantham",
         country: {
-          sourceValue: "American",
           value: HrisCreateEmployeeRequestDtoSchemasWorkLocationValue.Us,
         },
         name: "Woolsthorpe Manor",
         phoneNumber: "+44 1476 860 364",
-        state: {
-          sourceValue: "string",
-          value: HrisCreateEmployeeRequestDtoSchemasWorkLocationStateValue.Py12,
-        },
+        state: {},
         street1: "Water Lane",
         street2: "Woolsthorpe by Colsterworth",
         zipCode: "NG33 5NR",
@@ -1202,14 +1122,8 @@ async function run() {
       employeeId: "1687-3",
       endDate: new Date("2021-01-01T01:01:01.000Z"),
       startDate: new Date("2021-01-01T01:01:01.000Z"),
-      status: {
-        sourceValue: "string",
-        value: HrisCreateTimeOffRequestDtoValue.Approved,
-      },
-      type: {
-        sourceValue: "string",
-        value: HrisCreateTimeOffRequestDtoSchemasValue.Vacation,
-      },
+      status: {},
+      type: {},
     },
     id: "<ID>",
     xAccountId: "string",
