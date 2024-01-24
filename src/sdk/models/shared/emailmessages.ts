@@ -5,11 +5,11 @@
 import { z } from "zod";
 
 export type MessageContent = {
-    body: string;
-    from: string;
+    body?: string | null | undefined;
+    from?: string | null | undefined;
     preheader?: string | null | undefined;
     replyTo?: string | null | undefined;
-    subject: string;
+    subject?: string | null | undefined;
 };
 
 export enum EmailMessagesValue {
@@ -25,8 +25,8 @@ export enum EmailMessagesValue {
 }
 
 export type MessageType = {
-    sourceValue: string;
-    value: EmailMessagesValue;
+    sourceValue?: string | null | undefined;
+    value?: EmailMessagesValue | null | undefined;
 };
 
 export type EmailMessages = {
@@ -39,54 +39,54 @@ export type EmailMessages = {
 /** @internal */
 export namespace MessageContent$ {
     export type Inbound = {
-        body: string;
-        from: string;
+        body?: string | null | undefined;
+        from?: string | null | undefined;
         preheader?: string | null | undefined;
         "reply-to"?: string | null | undefined;
-        subject: string;
+        subject?: string | null | undefined;
     };
 
     export const inboundSchema: z.ZodType<MessageContent, z.ZodTypeDef, Inbound> = z
         .object({
-            body: z.string(),
-            from: z.string(),
+            body: z.nullable(z.string()).optional(),
+            from: z.nullable(z.string()).optional(),
             preheader: z.nullable(z.string()).optional(),
             "reply-to": z.nullable(z.string()).optional(),
-            subject: z.string(),
+            subject: z.nullable(z.string()).optional(),
         })
         .transform((v) => {
             return {
-                body: v.body,
-                from: v.from,
+                ...(v.body === undefined ? null : { body: v.body }),
+                ...(v.from === undefined ? null : { from: v.from }),
                 ...(v.preheader === undefined ? null : { preheader: v.preheader }),
                 ...(v["reply-to"] === undefined ? null : { replyTo: v["reply-to"] }),
-                subject: v.subject,
+                ...(v.subject === undefined ? null : { subject: v.subject }),
             };
         });
 
     export type Outbound = {
-        body: string;
-        from: string;
+        body?: string | null | undefined;
+        from?: string | null | undefined;
         preheader?: string | null | undefined;
         "reply-to"?: string | null | undefined;
-        subject: string;
+        subject?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, MessageContent> = z
         .object({
-            body: z.string(),
-            from: z.string(),
+            body: z.nullable(z.string()).optional(),
+            from: z.nullable(z.string()).optional(),
             preheader: z.nullable(z.string()).optional(),
             replyTo: z.nullable(z.string()).optional(),
-            subject: z.string(),
+            subject: z.nullable(z.string()).optional(),
         })
         .transform((v) => {
             return {
-                body: v.body,
-                from: v.from,
+                ...(v.body === undefined ? null : { body: v.body }),
+                ...(v.from === undefined ? null : { from: v.from }),
                 ...(v.preheader === undefined ? null : { preheader: v.preheader }),
                 ...(v.replyTo === undefined ? null : { "reply-to": v.replyTo }),
-                subject: v.subject,
+                ...(v.subject === undefined ? null : { subject: v.subject }),
             };
         });
 }
@@ -97,36 +97,36 @@ export const EmailMessagesValue$ = z.nativeEnum(EmailMessagesValue);
 /** @internal */
 export namespace MessageType$ {
     export type Inbound = {
-        source_value: string;
-        value: EmailMessagesValue;
+        source_value?: string | null | undefined;
+        value?: EmailMessagesValue | null | undefined;
     };
 
     export const inboundSchema: z.ZodType<MessageType, z.ZodTypeDef, Inbound> = z
         .object({
-            source_value: z.string(),
-            value: EmailMessagesValue$,
+            source_value: z.nullable(z.string()).optional(),
+            value: z.nullable(EmailMessagesValue$).optional(),
         })
         .transform((v) => {
             return {
-                sourceValue: v.source_value,
-                value: v.value,
+                ...(v.source_value === undefined ? null : { sourceValue: v.source_value }),
+                ...(v.value === undefined ? null : { value: v.value }),
             };
         });
 
     export type Outbound = {
-        source_value: string;
-        value: EmailMessagesValue;
+        source_value?: string | null | undefined;
+        value?: EmailMessagesValue | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, MessageType> = z
         .object({
-            sourceValue: z.string(),
-            value: EmailMessagesValue$,
+            sourceValue: z.nullable(z.string()).optional(),
+            value: z.nullable(EmailMessagesValue$).optional(),
         })
         .transform((v) => {
             return {
-                source_value: v.sourceValue,
-                value: v.value,
+                ...(v.sourceValue === undefined ? null : { source_value: v.sourceValue }),
+                ...(v.value === undefined ? null : { value: v.value }),
             };
         });
 }

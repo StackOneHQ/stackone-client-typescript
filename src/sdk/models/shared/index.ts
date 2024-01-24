@@ -41,6 +41,7 @@ export * from "./contact";
 export * from "./contactresult";
 export * from "./contactspaginated";
 export * from "./content";
+export * from "./costcenters";
 export * from "./countrycodeenum";
 export * from "./createcandidatenoteresult";
 export * from "./createemployeeresult";

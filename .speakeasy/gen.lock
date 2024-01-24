@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 7fa83af8-9e8e-4410-b7e2-cf1d0eaf688b
 management:
-  docChecksum: 583133c7ab0b591b71ce2e6627fa1e78
+  docChecksum: b3581a877afe6d5b72c1428dc0dbcffa
   docVersion: 1.0.0
   speakeasyVersion: internal
-  generationVersion: 2.237.2
-  releaseVersion: 2.3.2
-  configChecksum: c5b57c798d85552363d2f42c0e72258a
+  generationVersion: 2.237.3
+  releaseVersion: 2.3.3
+  configChecksum: 293a49f0b1ef4d9bd0ea424fbab2dd78
   repoURL: https://github.com/StackOneHQ/stackone-client-typescript.git
   repoSubDirectory: .
   installationURL: https://github.com/StackOneHQ/stackone-client-typescript
@@ -239,6 +239,7 @@ generatedFiles:
   - src/sdk/models/shared/company.ts
   - src/sdk/models/shared/employeeresult.ts
   - src/sdk/models/shared/employee.ts
+  - src/sdk/models/shared/costcenters.ts
   - src/sdk/models/shared/documentresult.ts
   - src/sdk/models/shared/documentapimodel.ts
   - src/sdk/models/shared/documenttypeenum.ts
@@ -724,6 +725,7 @@ generatedFiles:
   - docs/sdk/models/shared/employeeschemaslocationtype.md
   - docs/sdk/models/shared/worklocation.md
   - docs/sdk/models/shared/employee.md
+  - docs/sdk/models/shared/costcenters.md
   - docs/sdk/models/shared/documentresult.md
   - docs/sdk/models/shared/documentapimodel.md
   - docs/sdk/models/shared/documenttypeenumvalue.md
