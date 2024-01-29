@@ -44,7 +44,6 @@ export type JobStatus = {
 
 export type Job = {
     code?: string | null | undefined;
-    companyId?: string | null | undefined;
     confidential?: Confidential | null | undefined;
     /**
      * Date of creation
@@ -55,6 +54,7 @@ export type Job = {
     id?: string | null | undefined;
     jobStatus?: JobStatus | null | undefined;
     locationIds?: Array<string> | null | undefined;
+    status?: string | null | undefined;
     title?: string | null | undefined;
     /**
      * Date of last update
@@ -159,7 +159,6 @@ export namespace JobStatus$ {
 export namespace Job$ {
     export type Inbound = {
         code?: string | null | undefined;
-        company_id?: string | null | undefined;
         confidential?: Confidential | null | undefined;
         created_at?: string | null | undefined;
         department_ids?: Array<string> | null | undefined;
@@ -167,6 +166,7 @@ export namespace Job$ {
         id?: string | null | undefined;
         job_status?: JobStatus$.Inbound | null | undefined;
         location_ids?: Array<string> | null | undefined;
+        status?: string | null | undefined;
         title?: string | null | undefined;
         updated_at?: string | null | undefined;
     };
@@ -174,7 +174,6 @@ export namespace Job$ {
     export const inboundSchema: z.ZodType<Job, z.ZodTypeDef, Inbound> = z
         .object({
             code: z.nullable(z.string()).optional(),
-            company_id: z.nullable(z.string()).optional(),
             confidential: z.nullable(Confidential$).optional(),
             created_at: z
                 .nullable(
@@ -189,6 +188,7 @@ export namespace Job$ {
             id: z.nullable(z.string()).optional(),
             job_status: z.nullable(z.lazy(() => JobStatus$.inboundSchema)).optional(),
             location_ids: z.nullable(z.array(z.string())).optional(),
+            status: z.nullable(z.string()).optional(),
             title: z.nullable(z.string()).optional(),
             updated_at: z
                 .nullable(
@@ -202,7 +202,6 @@ export namespace Job$ {
         .transform((v) => {
             return {
                 ...(v.code === undefined ? null : { code: v.code }),
-                ...(v.company_id === undefined ? null : { companyId: v.company_id }),
                 ...(v.confidential === undefined ? null : { confidential: v.confidential }),
                 ...(v.created_at === undefined ? null : { createdAt: v.created_at }),
                 ...(v.department_ids === undefined ? null : { departmentIds: v.department_ids }),
@@ -210,6 +209,7 @@ export namespace Job$ {
                 ...(v.id === undefined ? null : { id: v.id }),
                 ...(v.job_status === undefined ? null : { jobStatus: v.job_status }),
                 ...(v.location_ids === undefined ? null : { locationIds: v.location_ids }),
+                ...(v.status === undefined ? null : { status: v.status }),
                 ...(v.title === undefined ? null : { title: v.title }),
                 ...(v.updated_at === undefined ? null : { updatedAt: v.updated_at }),
             };
@@ -217,7 +217,6 @@ export namespace Job$ {
 
     export type Outbound = {
         code?: string | null | undefined;
-        company_id?: string | null | undefined;
         confidential?: Confidential | null | undefined;
         created_at?: string | null | undefined;
         department_ids?: Array<string> | null | undefined;
@@ -225,6 +224,7 @@ export namespace Job$ {
         id?: string | null | undefined;
         job_status?: JobStatus$.Outbound | null | undefined;
         location_ids?: Array<string> | null | undefined;
+        status?: string | null | undefined;
         title?: string | null | undefined;
         updated_at?: string | null | undefined;
     };
@@ -232,7 +232,6 @@ export namespace Job$ {
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Job> = z
         .object({
             code: z.nullable(z.string()).optional(),
-            companyId: z.nullable(z.string()).optional(),
             confidential: z.nullable(Confidential$).optional(),
             createdAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
             departmentIds: z.nullable(z.array(z.string())).optional(),
@@ -240,13 +239,13 @@ export namespace Job$ {
             id: z.nullable(z.string()).optional(),
             jobStatus: z.nullable(z.lazy(() => JobStatus$.outboundSchema)).optional(),
             locationIds: z.nullable(z.array(z.string())).optional(),
+            status: z.nullable(z.string()).optional(),
             title: z.nullable(z.string()).optional(),
             updatedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
         })
         .transform((v) => {
             return {
                 ...(v.code === undefined ? null : { code: v.code }),
-                ...(v.companyId === undefined ? null : { company_id: v.companyId }),
                 ...(v.confidential === undefined ? null : { confidential: v.confidential }),
                 ...(v.createdAt === undefined ? null : { created_at: v.createdAt }),
                 ...(v.departmentIds === undefined ? null : { department_ids: v.departmentIds }),
@@ -254,6 +253,7 @@ export namespace Job$ {
                 ...(v.id === undefined ? null : { id: v.id }),
                 ...(v.jobStatus === undefined ? null : { job_status: v.jobStatus }),
                 ...(v.locationIds === undefined ? null : { location_ids: v.locationIds }),
+                ...(v.status === undefined ? null : { status: v.status }),
                 ...(v.title === undefined ? null : { title: v.title }),
                 ...(v.updatedAt === undefined ? null : { updated_at: v.updatedAt }),
             };

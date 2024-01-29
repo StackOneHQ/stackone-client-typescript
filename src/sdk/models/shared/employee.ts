@@ -72,14 +72,21 @@ export type EmployeeSchemasEmploymentTypeSourceValue =
  * The type of the employment.
  */
 export enum EmployeeSchemasEmploymentTypeValue {
-    Permanent = "permanent",
+    FullTime = "full_time",
+    PartTime = "part_time",
     Contractor = "contractor",
     Intern = "intern",
+    Permanent = "permanent",
     Apprentice = "apprentice",
     Freelance = "freelance",
+    Terminated = "terminated",
     Temporary = "temporary",
     Seasonal = "seasonal",
     Volunteer = "volunteer",
+    Probation = "probation",
+    Internal = "internal",
+    External = "external",
+    EmployerOfRecord = "employer_of_record",
     UnmappedValue = "unmapped_value",
 }
 
@@ -1006,6 +1013,10 @@ export type Employee = {
      * The employee ID
      */
     id: string;
+    /**
+     * The employee job description
+     */
+    jobDescription?: string | null | undefined;
     /**
      * The employee job title
      */
@@ -2475,6 +2486,7 @@ export namespace Employee$ {
         hire_date?: string | null | undefined;
         home_location?: HomeLocation$.Inbound | null | undefined;
         id: string;
+        job_description?: string | null | undefined;
         job_title?: string | null | undefined;
         last_name: string;
         manager_id?: string | null | undefined;
@@ -2545,6 +2557,7 @@ export namespace Employee$ {
                 .optional(),
             home_location: z.nullable(z.lazy(() => HomeLocation$.inboundSchema)).optional(),
             id: z.string(),
+            job_description: z.nullable(z.string()).optional(),
             job_title: z.nullable(z.string()).optional(),
             last_name: z.string(),
             manager_id: z.nullable(z.string()).optional(),
@@ -2616,6 +2629,7 @@ export namespace Employee$ {
                 ...(v.hire_date === undefined ? null : { hireDate: v.hire_date }),
                 ...(v.home_location === undefined ? null : { homeLocation: v.home_location }),
                 id: v.id,
+                ...(v.job_description === undefined ? null : { jobDescription: v.job_description }),
                 ...(v.job_title === undefined ? null : { jobTitle: v.job_title }),
                 lastName: v.last_name,
                 ...(v.manager_id === undefined ? null : { managerId: v.manager_id }),
@@ -2664,6 +2678,7 @@ export namespace Employee$ {
         hire_date?: string | null | undefined;
         home_location?: HomeLocation$.Outbound | null | undefined;
         id: string;
+        job_description?: string | null | undefined;
         job_title?: string | null | undefined;
         last_name: string;
         manager_id?: string | null | undefined;
@@ -2706,6 +2721,7 @@ export namespace Employee$ {
             hireDate: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
             homeLocation: z.nullable(z.lazy(() => HomeLocation$.outboundSchema)).optional(),
             id: z.string(),
+            jobDescription: z.nullable(z.string()).optional(),
             jobTitle: z.nullable(z.string()).optional(),
             lastName: z.string(),
             managerId: z.nullable(z.string()).optional(),
@@ -2749,6 +2765,7 @@ export namespace Employee$ {
                 ...(v.hireDate === undefined ? null : { hire_date: v.hireDate }),
                 ...(v.homeLocation === undefined ? null : { home_location: v.homeLocation }),
                 id: v.id,
+                ...(v.jobDescription === undefined ? null : { job_description: v.jobDescription }),
                 ...(v.jobTitle === undefined ? null : { job_title: v.jobTitle }),
                 last_name: v.lastName,
                 ...(v.managerId === undefined ? null : { manager_id: v.managerId }),
