@@ -1,4 +1,4 @@
-# ChannelsEnum4
+# FileFormatEnum4
 
 
 ## Fields

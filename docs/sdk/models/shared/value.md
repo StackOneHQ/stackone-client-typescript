@@ -1,14 +1,16 @@
 # Value
 
-The type of the attachment.
+The Channels of the campaign.
 
 
 ## Values
 
 | Name            | Value           |
 | --------------- | --------------- |
-| `Resume`        | resume          |
-| `GenericFile`   | generic_file    |
-| `CoverLetter`   | cover_letter    |
-| `Avatar`        | avatar          |
+| `Email`         | email           |
+| `Sms`           | sms             |
+| `WebPush`       | web_push        |
+| `IosPush`       | ios_push        |
+| `AndroidPush`   | android_push    |
+| `Unknown`       | unknown         |
 | `UnmappedValue` | unmapped_value  |

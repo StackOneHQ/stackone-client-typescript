@@ -66,6 +66,11 @@ export type AtsUpdateApplicationRequestDtoCandidate = {
 
 export type AtsUpdateApplicationRequestDto = {
     applicationStatus?: AtsUpdateApplicationRequestDtoApplicationStatus | null | undefined;
+    /**
+     * Use `documents` expand instead
+     *
+     * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+     */
     attachments?: Array<ApplicationAttachment> | null | undefined;
     candidate?: AtsUpdateApplicationRequestDtoCandidate | null | undefined;
     /**

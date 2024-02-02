@@ -36,6 +36,8 @@ export type AtsUpdateCandidatesRequestDto = {
     name?: string | null | undefined;
     /**
      * Candidate phone number
+     *
+     * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     phone?: string | null | undefined;
     /**

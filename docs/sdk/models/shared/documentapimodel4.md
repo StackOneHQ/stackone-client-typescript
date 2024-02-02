@@ -1,4 +1,4 @@
-# DocumentTypeEnum4
+# DocumentApiModel4
 
 
 ## Fields

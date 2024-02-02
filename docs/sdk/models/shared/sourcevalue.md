@@ -1,4 +1,4 @@
 # SourceValue
 
-The source value of the attachment type.
+The source value of the Channels.
 

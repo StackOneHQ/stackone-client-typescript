@@ -8,6 +8,7 @@
 * [createCandidateNote](#createcandidatenote) - Create Candidate Note
 * [createOffer](#createoffer) - Creates an offer
 * [getApplication](#getapplication) - Get Application
+* [getApplicationDocument](#getapplicationdocument) - Get Application Document
 * [getApplicationOffer](#getapplicationoffer) - Get Application Offer
 * [getApplicationScorecard](#getapplicationscorecard) - Get Application Scorecard
 * [getCandidate](#getcandidate) - Get Candidate
@@ -21,6 +22,7 @@
 * [getOffer](#getoffer) - Get Offer
 * [getRejectedReason](#getrejectedreason) - Get Rejected Reason
 * [getUser](#getuser) - Get User
+* [listApplicationDocuments](#listapplicationdocuments) - List Application Documents
 * [listApplicationScorecards](#listapplicationscorecards) - List Application Scorecards
 * [listApplications](#listapplications) - List Applications
 * [listApplicationsOffers](#listapplicationsoffers) - List Application Offers
@@ -67,11 +69,6 @@ async function run() {
             value: ApplicationAttachmentValue.Text,
           },
           fileName: "resume.pdf",
-          type: [
-            {
-              value: Value.Resume,
-            },
-          ],
           url: "http://example.com/resume.pdf",
         },
       ],
@@ -355,6 +352,54 @@ run();
 ### Response
 
 **Promise<[operations.AtsGetApplicationResponse](../../sdk/models/operations/atsgetapplicationresponse.md)>**
+### Errors
+
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
+
+## getApplicationDocument
+
+Get Application Document
+
+### Example Usage
+
+```typescript
+import { StackOne } from "@stackone/stackone-client-ts";
+
+async function run() {
+  const sdk = new StackOne({
+    security: {
+      password: "<YOUR_PASSWORD_HERE>",
+    },
+  });
+
+  const result = await sdk.ats.getApplicationDocument({
+    id: "<ID>",
+    proxy: {},
+    subResourceId: "string",
+    xAccountId: "string",
+  });
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.AtsGetApplicationDocumentRequest](../../sdk/models/operations/atsgetapplicationdocumentrequest.md)                                                                 | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+
+
+### Response
+
+**Promise<[operations.AtsGetApplicationDocumentResponse](../../sdk/models/operations/atsgetapplicationdocumentresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -969,6 +1014,53 @@ run();
 ### Response
 
 **Promise<[operations.AtsGetUserResponse](../../sdk/models/operations/atsgetuserresponse.md)>**
+### Errors
+
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
+
+## listApplicationDocuments
+
+List Application Documents
+
+### Example Usage
+
+```typescript
+import { StackOne } from "@stackone/stackone-client-ts";
+
+async function run() {
+  const sdk = new StackOne({
+    security: {
+      password: "<YOUR_PASSWORD_HERE>",
+    },
+  });
+
+  const result = await sdk.ats.listApplicationDocuments({
+    id: "<ID>",
+    proxy: {},
+    xAccountId: "string",
+  });
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.AtsListApplicationDocumentsRequest](../../sdk/models/operations/atslistapplicationdocumentsrequest.md)                                                             | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+
+
+### Response
+
+**Promise<[operations.AtsListApplicationDocumentsResponse](../../sdk/models/operations/atslistapplicationdocumentsresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -1651,11 +1743,6 @@ async function run() {
             value: ApplicationAttachmentValue.Text,
           },
           fileName: "resume.pdf",
-          type: [
-            {
-              value: Value.Resume,
-            },
-          ],
           url: "http://example.com/resume.pdf",
         },
       ],

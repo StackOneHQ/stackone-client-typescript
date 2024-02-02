@@ -80,6 +80,7 @@ run();
 * [createCandidateNote](docs/sdks/ats/README.md#createcandidatenote) - Create Candidate Note
 * [createOffer](docs/sdks/ats/README.md#createoffer) - Creates an offer
 * [getApplication](docs/sdks/ats/README.md#getapplication) - Get Application
+* [getApplicationDocument](docs/sdks/ats/README.md#getapplicationdocument) - Get Application Document
 * [getApplicationOffer](docs/sdks/ats/README.md#getapplicationoffer) - Get Application Offer
 * [getApplicationScorecard](docs/sdks/ats/README.md#getapplicationscorecard) - Get Application Scorecard
 * [getCandidate](docs/sdks/ats/README.md#getcandidate) - Get Candidate
@@ -93,6 +94,7 @@ run();
 * [getOffer](docs/sdks/ats/README.md#getoffer) - Get Offer
 * [getRejectedReason](docs/sdks/ats/README.md#getrejectedreason) - Get Rejected Reason
 * [getUser](docs/sdks/ats/README.md#getuser) - Get User
+* [listApplicationDocuments](docs/sdks/ats/README.md#listapplicationdocuments) - List Application Documents
 * [listApplicationScorecards](docs/sdks/ats/README.md#listapplicationscorecards) - List Application Scorecards
 * [listApplications](docs/sdks/ats/README.md#listapplications) - List Applications
 * [listApplicationsOffers](docs/sdks/ats/README.md#listapplicationsoffers) - List Application Offers

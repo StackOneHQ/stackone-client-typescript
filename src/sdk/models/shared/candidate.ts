@@ -3,6 +3,7 @@
  */
 
 import { CandidateEmail, CandidateEmail$ } from "./candidateemail";
+import { PhoneNumber, PhoneNumber$ } from "./phonenumber";
 import { SocialLink, SocialLink$ } from "./sociallink";
 import { z } from "zod";
 
@@ -49,8 +50,14 @@ export type Candidate = {
     name?: string | null | undefined;
     /**
      * Candidate phone number
+     *
+     * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     phone?: string | null | undefined;
+    /**
+     * List of candidate phone numbers including the type of the number when available
+     */
+    phoneNumbers?: Array<PhoneNumber> | null | undefined;
     /**
      * List of candidate social links
      */
@@ -79,6 +86,7 @@ export namespace Candidate$ {
         last_name?: string | null | undefined;
         name?: string | null | undefined;
         phone?: string | null | undefined;
+        phone_numbers?: Array<PhoneNumber$.Inbound> | null | undefined;
         social_links?: Array<SocialLink$.Inbound> | null | undefined;
         title?: string | null | undefined;
         updated_at?: string | null | undefined;
@@ -111,6 +119,7 @@ export namespace Candidate$ {
             last_name: z.nullable(z.string()).optional(),
             name: z.nullable(z.string()).optional(),
             phone: z.nullable(z.string()).optional(),
+            phone_numbers: z.nullable(z.array(PhoneNumber$.inboundSchema)).optional(),
             social_links: z.nullable(z.array(SocialLink$.inboundSchema)).optional(),
             title: z.nullable(z.string()).optional(),
             updated_at: z
@@ -135,6 +144,7 @@ export namespace Candidate$ {
                 ...(v.last_name === undefined ? null : { lastName: v.last_name }),
                 ...(v.name === undefined ? null : { name: v.name }),
                 ...(v.phone === undefined ? null : { phone: v.phone }),
+                ...(v.phone_numbers === undefined ? null : { phoneNumbers: v.phone_numbers }),
                 ...(v.social_links === undefined ? null : { socialLinks: v.social_links }),
                 ...(v.title === undefined ? null : { title: v.title }),
                 ...(v.updated_at === undefined ? null : { updatedAt: v.updated_at }),
@@ -153,6 +163,7 @@ export namespace Candidate$ {
         last_name?: string | null | undefined;
         name?: string | null | undefined;
         phone?: string | null | undefined;
+        phone_numbers?: Array<PhoneNumber$.Outbound> | null | undefined;
         social_links?: Array<SocialLink$.Outbound> | null | undefined;
         title?: string | null | undefined;
         updated_at?: string | null | undefined;
@@ -171,6 +182,7 @@ export namespace Candidate$ {
             lastName: z.nullable(z.string()).optional(),
             name: z.nullable(z.string()).optional(),
             phone: z.nullable(z.string()).optional(),
+            phoneNumbers: z.nullable(z.array(PhoneNumber$.outboundSchema)).optional(),
             socialLinks: z.nullable(z.array(SocialLink$.outboundSchema)).optional(),
             title: z.nullable(z.string()).optional(),
             updatedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
@@ -188,6 +200,7 @@ export namespace Candidate$ {
                 ...(v.lastName === undefined ? null : { last_name: v.lastName }),
                 ...(v.name === undefined ? null : { name: v.name }),
                 ...(v.phone === undefined ? null : { phone: v.phone }),
+                ...(v.phoneNumbers === undefined ? null : { phone_numbers: v.phoneNumbers }),
                 ...(v.socialLinks === undefined ? null : { social_links: v.socialLinks }),
                 ...(v.title === undefined ? null : { title: v.title }),
                 ...(v.updatedAt === undefined ? null : { updated_at: v.updatedAt }),

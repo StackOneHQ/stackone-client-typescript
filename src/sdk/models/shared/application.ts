@@ -3,6 +3,7 @@
  */
 
 import { ApplicationAttachment, ApplicationAttachment$ } from "./applicationattachment";
+import { DocumentApiModel, DocumentApiModel$ } from "./documentapimodel";
 import { Questionnaire, Questionnaire$ } from "./questionnaire";
 import { RejectedReason, RejectedReason$ } from "./rejectedreason";
 import { ResultLink, ResultLink$ } from "./resultlink";
@@ -78,6 +79,11 @@ export type ApplicationInterviewStage = {
 
 export type Application = {
     applicationStatus?: ApplicationStatus | null | undefined;
+    /**
+     * Use `documents` expand instead
+     *
+     * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+     */
     attachments?: Array<ApplicationAttachment> | null | undefined;
     candidate?: ApplicationCandidate | null | undefined;
     /**
@@ -88,6 +94,10 @@ export type Application = {
      * Date of creation
      */
     createdAt?: Date | null | undefined;
+    /**
+     * The documents attached to this application (eg. resume, cover letter etc.)
+     */
+    documents?: Array<DocumentApiModel> | null | undefined;
     /**
      * Unique identifier of the application
      */
@@ -335,6 +345,7 @@ export namespace Application$ {
         candidate?: ApplicationCandidate$.Inbound | null | undefined;
         candidate_id?: string | null | undefined;
         created_at?: string | null | undefined;
+        documents?: Array<DocumentApiModel$.Inbound> | null | undefined;
         id?: string | null | undefined;
         interview_stage?: ApplicationInterviewStage$.Inbound | null | undefined;
         interview_stage_id?: string | null | undefined;
@@ -365,6 +376,7 @@ export namespace Application$ {
                         .transform((v) => new Date(v))
                 )
                 .optional(),
+            documents: z.nullable(z.array(DocumentApiModel$.inboundSchema)).optional(),
             id: z.nullable(z.string()).optional(),
             interview_stage: z
                 .nullable(z.lazy(() => ApplicationInterviewStage$.inboundSchema))
@@ -403,6 +415,7 @@ export namespace Application$ {
                 ...(v.candidate === undefined ? null : { candidate: v.candidate }),
                 ...(v.candidate_id === undefined ? null : { candidateId: v.candidate_id }),
                 ...(v.created_at === undefined ? null : { createdAt: v.created_at }),
+                ...(v.documents === undefined ? null : { documents: v.documents }),
                 ...(v.id === undefined ? null : { id: v.id }),
                 ...(v.interview_stage === undefined ? null : { interviewStage: v.interview_stage }),
                 ...(v.interview_stage_id === undefined
@@ -430,6 +443,7 @@ export namespace Application$ {
         candidate?: ApplicationCandidate$.Outbound | null | undefined;
         candidate_id?: string | null | undefined;
         created_at?: string | null | undefined;
+        documents?: Array<DocumentApiModel$.Outbound> | null | undefined;
         id?: string | null | undefined;
         interview_stage?: ApplicationInterviewStage$.Outbound | null | undefined;
         interview_stage_id?: string | null | undefined;
@@ -453,6 +467,7 @@ export namespace Application$ {
             candidate: z.nullable(z.lazy(() => ApplicationCandidate$.outboundSchema)).optional(),
             candidateId: z.nullable(z.string()).optional(),
             createdAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+            documents: z.nullable(z.array(DocumentApiModel$.outboundSchema)).optional(),
             id: z.nullable(z.string()).optional(),
             interviewStage: z
                 .nullable(z.lazy(() => ApplicationInterviewStage$.outboundSchema))
@@ -477,6 +492,7 @@ export namespace Application$ {
                 ...(v.candidate === undefined ? null : { candidate: v.candidate }),
                 ...(v.candidateId === undefined ? null : { candidate_id: v.candidateId }),
                 ...(v.createdAt === undefined ? null : { created_at: v.createdAt }),
+                ...(v.documents === undefined ? null : { documents: v.documents }),
                 ...(v.id === undefined ? null : { id: v.id }),
                 ...(v.interviewStage === undefined ? null : { interview_stage: v.interviewStage }),
                 ...(v.interviewStageId === undefined
