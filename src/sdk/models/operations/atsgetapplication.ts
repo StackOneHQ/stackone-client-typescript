@@ -12,6 +12,10 @@ export type Proxy = {};
 
 export type AtsGetApplicationRequest = {
     /**
+     * The comma separated list of fields that will be expanded in the response
+     */
+    expand?: string | null | undefined;
+    /**
      * The comma separated list of fields to return in the response (if empty, all fields are returned)
      */
     fields?: string | null | undefined;
@@ -85,6 +89,7 @@ export namespace Proxy$ {
 /** @internal */
 export namespace AtsGetApplicationRequest$ {
     export type Inbound = {
+        expand?: string | null | undefined;
         fields?: string | null | undefined;
         id: string;
         next?: string | null | undefined;
@@ -99,6 +104,7 @@ export namespace AtsGetApplicationRequest$ {
 
     export const inboundSchema: z.ZodType<AtsGetApplicationRequest, z.ZodTypeDef, Inbound> = z
         .object({
+            expand: z.nullable(z.string()).optional(),
             fields: z.nullable(z.string()).optional(),
             id: z.string(),
             next: z.nullable(z.string()).optional(),
@@ -112,6 +118,7 @@ export namespace AtsGetApplicationRequest$ {
         })
         .transform((v) => {
             return {
+                ...(v.expand === undefined ? null : { expand: v.expand }),
                 ...(v.fields === undefined ? null : { fields: v.fields }),
                 id: v.id,
                 ...(v.next === undefined ? null : { next: v.next }),
@@ -126,6 +133,7 @@ export namespace AtsGetApplicationRequest$ {
         });
 
     export type Outbound = {
+        expand?: string | null | undefined;
         fields?: string | null | undefined;
         id: string;
         next?: string | null | undefined;
@@ -140,6 +148,7 @@ export namespace AtsGetApplicationRequest$ {
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, AtsGetApplicationRequest> = z
         .object({
+            expand: z.nullable(z.string()).optional(),
             fields: z.nullable(z.string()).optional(),
             id: z.string(),
             next: z.nullable(z.string()).optional(),
@@ -153,6 +162,7 @@ export namespace AtsGetApplicationRequest$ {
         })
         .transform((v) => {
             return {
+                ...(v.expand === undefined ? null : { expand: v.expand }),
                 ...(v.fields === undefined ? null : { fields: v.fields }),
                 id: v.id,
                 ...(v.next === undefined ? null : { next: v.next }),

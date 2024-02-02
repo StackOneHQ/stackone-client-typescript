@@ -4,17 +4,17 @@
 
 import { z } from "zod";
 
-export type ChannelsEnum4 = {};
+export type Four = {};
 
 /**
  * The source value of the Channels.
  */
-export type ChannelsEnumSourceValue = ChannelsEnum4 | string | number | boolean;
+export type SourceValue = Four | string | number | boolean;
 
 /**
  * The Channels of the campaign.
  */
-export enum ChannelsEnumValue {
+export enum Value {
     Email = "email",
     Sms = "sms",
     WebPush = "web_push",
@@ -28,46 +28,53 @@ export type ChannelsEnum = {
     /**
      * The source value of the Channels.
      */
-    sourceValue?: ChannelsEnum4 | string | number | boolean | null | undefined;
+    sourceValue?: Four | string | number | boolean | null | undefined;
     /**
      * The Channels of the campaign.
      */
-    value?: ChannelsEnumValue | null | undefined;
+    value?: Value | null | undefined;
 };
 
 /** @internal */
-export namespace ChannelsEnum4$ {
+export namespace Four$ {
     export type Inbound = {};
 
-    export const inboundSchema: z.ZodType<ChannelsEnum4, z.ZodTypeDef, Inbound> = z.object({});
+    export const inboundSchema: z.ZodType<Four, z.ZodTypeDef, Inbound> = z.object({});
 
     export type Outbound = {};
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ChannelsEnum4> = z.object({});
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Four> = z.object({});
 }
 
 /** @internal */
-export namespace ChannelsEnumSourceValue$ {
-    export type Inbound = ChannelsEnum4$.Inbound | string | number | boolean;
+export namespace SourceValue$ {
+    export type Inbound = Four$.Inbound | string | number | boolean;
 
-    export type Outbound = ChannelsEnum4$.Outbound | string | number | boolean;
+    export type Outbound = Four$.Outbound | string | number | boolean;
 
-    export const inboundSchema: z.ZodType<ChannelsEnumSourceValue, z.ZodTypeDef, Inbound> = z.union(
-        [z.lazy(() => ChannelsEnum4$.inboundSchema), z.string(), z.number(), z.boolean()]
-    );
+    export const inboundSchema: z.ZodType<SourceValue, z.ZodTypeDef, Inbound> = z.union([
+        z.lazy(() => Four$.inboundSchema),
+        z.string(),
+        z.number(),
+        z.boolean(),
+    ]);
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ChannelsEnumSourceValue> =
-        z.union([z.lazy(() => ChannelsEnum4$.outboundSchema), z.string(), z.number(), z.boolean()]);
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, SourceValue> = z.union([
+        z.lazy(() => Four$.outboundSchema),
+        z.string(),
+        z.number(),
+        z.boolean(),
+    ]);
 }
 
 /** @internal */
-export const ChannelsEnumValue$ = z.nativeEnum(ChannelsEnumValue);
+export const Value$ = z.nativeEnum(Value);
 
 /** @internal */
 export namespace ChannelsEnum$ {
     export type Inbound = {
-        source_value?: ChannelsEnum4$.Inbound | string | number | boolean | null | undefined;
-        value?: ChannelsEnumValue | null | undefined;
+        source_value?: Four$.Inbound | string | number | boolean | null | undefined;
+        value?: Value | null | undefined;
     };
 
     export const inboundSchema: z.ZodType<ChannelsEnum, z.ZodTypeDef, Inbound> = z
@@ -75,14 +82,14 @@ export namespace ChannelsEnum$ {
             source_value: z
                 .nullable(
                     z.union([
-                        z.lazy(() => ChannelsEnum4$.inboundSchema),
+                        z.lazy(() => Four$.inboundSchema),
                         z.string(),
                         z.number(),
                         z.boolean(),
                     ])
                 )
                 .optional(),
-            value: z.nullable(ChannelsEnumValue$).optional(),
+            value: z.nullable(Value$).optional(),
         })
         .transform((v) => {
             return {
@@ -92,8 +99,8 @@ export namespace ChannelsEnum$ {
         });
 
     export type Outbound = {
-        source_value?: ChannelsEnum4$.Outbound | string | number | boolean | null | undefined;
-        value?: ChannelsEnumValue | null | undefined;
+        source_value?: Four$.Outbound | string | number | boolean | null | undefined;
+        value?: Value | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ChannelsEnum> = z
@@ -101,14 +108,14 @@ export namespace ChannelsEnum$ {
             sourceValue: z
                 .nullable(
                     z.union([
-                        z.lazy(() => ChannelsEnum4$.outboundSchema),
+                        z.lazy(() => Four$.outboundSchema),
                         z.string(),
                         z.number(),
                         z.boolean(),
                     ])
                 )
                 .optional(),
-            value: z.nullable(ChannelsEnumValue$).optional(),
+            value: z.nullable(Value$).optional(),
         })
         .transform((v) => {
             return {

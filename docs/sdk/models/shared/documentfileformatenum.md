@@ -1,9 +1,0 @@
-# DocumentFileFormatEnum
-
-
-## Fields
-
-| Field                                                                                           | Type                                                                                            | Required                                                                                        | Description                                                                                     |
-| ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
-| `sourceValue`                                                                                   | *shared.DocumentFileFormatEnumSourceValue*                                                      | :heavy_minus_sign:                                                                              | N/A                                                                                             |
-| `value`                                                                                         | [shared.DocumentFileFormatEnumValue](../../../sdk/models/shared/documentfileformatenumvalue.md) | :heavy_minus_sign:                                                                              | N/A                                                                                             |

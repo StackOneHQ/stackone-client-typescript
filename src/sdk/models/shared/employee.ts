@@ -6,6 +6,7 @@ import { CostCenters, CostCenters$ } from "./costcenters";
 import { CountryCodeEnum, CountryCodeEnum$ } from "./countrycodeenum";
 import { EmployeeCustomFields, EmployeeCustomFields$ } from "./employeecustomfields";
 import { Employment, Employment$ } from "./employment";
+import { WorkEligibility, WorkEligibility$ } from "./workeligibility";
 import { z } from "zod";
 
 /**
@@ -527,6 +528,13 @@ export type HomeLocation = {
     zipCode?: string | null | undefined;
 };
 
+/**
+ * The employee job description
+ */
+export type JobDescription = {
+    text?: string | null | undefined;
+};
+
 export type EmployeeSchemasMaritalStatus4 = {};
 
 export type EmployeeSchemasMaritalStatusSourceValue =
@@ -1016,7 +1024,7 @@ export type Employee = {
     /**
      * The employee job description
      */
-    jobDescription?: string | null | undefined;
+    jobDescription?: JobDescription | null | undefined;
     /**
      * The employee job title
      */
@@ -1065,6 +1073,10 @@ export type Employee = {
      * The employee work anniversary
      */
     workAnniversary?: Date | null | undefined;
+    /**
+     * The employee work eligibility
+     */
+    workEligibility?: Array<WorkEligibility> | null | undefined;
     /**
      * The employee work email
      */
@@ -1990,6 +2002,37 @@ export namespace HomeLocation$ {
 }
 
 /** @internal */
+export namespace JobDescription$ {
+    export type Inbound = {
+        text?: string | null | undefined;
+    };
+
+    export const inboundSchema: z.ZodType<JobDescription, z.ZodTypeDef, Inbound> = z
+        .object({
+            text: z.nullable(z.string()).optional(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.text === undefined ? null : { text: v.text }),
+            };
+        });
+
+    export type Outbound = {
+        text?: string | null | undefined;
+    };
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, JobDescription> = z
+        .object({
+            text: z.nullable(z.string()).optional(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.text === undefined ? null : { text: v.text }),
+            };
+        });
+}
+
+/** @internal */
 export namespace EmployeeSchemasMaritalStatus4$ {
     export type Inbound = {};
 
@@ -2486,7 +2529,7 @@ export namespace Employee$ {
         hire_date?: string | null | undefined;
         home_location?: HomeLocation$.Inbound | null | undefined;
         id: string;
-        job_description?: string | null | undefined;
+        job_description?: JobDescription$.Inbound | null | undefined;
         job_title?: string | null | undefined;
         last_name: string;
         manager_id?: string | null | undefined;
@@ -2499,6 +2542,7 @@ export namespace Employee$ {
         termination_date?: string | null | undefined;
         updated_at?: string | null | undefined;
         work_anniversary?: string | null | undefined;
+        work_eligibility?: Array<WorkEligibility$.Inbound> | null | undefined;
         work_email: string;
         work_location?: WorkLocation$.Inbound | null | undefined;
         work_phone_number?: string | null | undefined;
@@ -2557,7 +2601,7 @@ export namespace Employee$ {
                 .optional(),
             home_location: z.nullable(z.lazy(() => HomeLocation$.inboundSchema)).optional(),
             id: z.string(),
-            job_description: z.nullable(z.string()).optional(),
+            job_description: z.nullable(z.lazy(() => JobDescription$.inboundSchema)).optional(),
             job_title: z.nullable(z.string()).optional(),
             last_name: z.string(),
             manager_id: z.nullable(z.string()).optional(),
@@ -2598,6 +2642,7 @@ export namespace Employee$ {
                         .transform((v) => new Date(v))
                 )
                 .optional(),
+            work_eligibility: z.nullable(z.array(WorkEligibility$.inboundSchema)).optional(),
             work_email: z.string(),
             work_location: z.nullable(z.lazy(() => WorkLocation$.inboundSchema)).optional(),
             work_phone_number: z.nullable(z.string()).optional(),
@@ -2648,6 +2693,9 @@ export namespace Employee$ {
                 ...(v.work_anniversary === undefined
                     ? null
                     : { workAnniversary: v.work_anniversary }),
+                ...(v.work_eligibility === undefined
+                    ? null
+                    : { workEligibility: v.work_eligibility }),
                 workEmail: v.work_email,
                 ...(v.work_location === undefined ? null : { workLocation: v.work_location }),
                 ...(v.work_phone_number === undefined
@@ -2678,7 +2726,7 @@ export namespace Employee$ {
         hire_date?: string | null | undefined;
         home_location?: HomeLocation$.Outbound | null | undefined;
         id: string;
-        job_description?: string | null | undefined;
+        job_description?: JobDescription$.Outbound | null | undefined;
         job_title?: string | null | undefined;
         last_name: string;
         manager_id?: string | null | undefined;
@@ -2691,6 +2739,7 @@ export namespace Employee$ {
         termination_date?: string | null | undefined;
         updated_at?: string | null | undefined;
         work_anniversary?: string | null | undefined;
+        work_eligibility?: Array<WorkEligibility$.Outbound> | null | undefined;
         work_email: string;
         work_location?: WorkLocation$.Outbound | null | undefined;
         work_phone_number?: string | null | undefined;
@@ -2721,7 +2770,7 @@ export namespace Employee$ {
             hireDate: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
             homeLocation: z.nullable(z.lazy(() => HomeLocation$.outboundSchema)).optional(),
             id: z.string(),
-            jobDescription: z.nullable(z.string()).optional(),
+            jobDescription: z.nullable(z.lazy(() => JobDescription$.outboundSchema)).optional(),
             jobTitle: z.nullable(z.string()).optional(),
             lastName: z.string(),
             managerId: z.nullable(z.string()).optional(),
@@ -2734,6 +2783,7 @@ export namespace Employee$ {
             terminationDate: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
             updatedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
             workAnniversary: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+            workEligibility: z.nullable(z.array(WorkEligibility$.outboundSchema)).optional(),
             workEmail: z.string(),
             workLocation: z.nullable(z.lazy(() => WorkLocation$.outboundSchema)).optional(),
             workPhoneNumber: z.nullable(z.string()).optional(),
@@ -2784,6 +2834,9 @@ export namespace Employee$ {
                 ...(v.workAnniversary === undefined
                     ? null
                     : { work_anniversary: v.workAnniversary }),
+                ...(v.workEligibility === undefined
+                    ? null
+                    : { work_eligibility: v.workEligibility }),
                 work_email: v.workEmail,
                 ...(v.workLocation === undefined ? null : { work_location: v.workLocation }),
                 ...(v.workPhoneNumber === undefined

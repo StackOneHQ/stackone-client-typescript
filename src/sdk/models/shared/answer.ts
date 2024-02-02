@@ -29,7 +29,7 @@ export enum AnswerValue {
 /**
  * Type of the answer
  */
-export type TypeT = {
+export type Type = {
     /**
      * The source value of the answer type.
      */
@@ -48,7 +48,7 @@ export type Answer = {
     /**
      * Type of the answer
      */
-    type?: TypeT | null | undefined;
+    type?: Type | null | undefined;
     /**
      * Values of the answer
      */
@@ -91,13 +91,13 @@ export namespace AnswerSourceValue$ {
 export const AnswerValue$ = z.nativeEnum(AnswerValue);
 
 /** @internal */
-export namespace TypeT$ {
+export namespace Type$ {
     export type Inbound = {
         source_value?: Answer4$.Inbound | string | number | boolean | null | undefined;
         value?: AnswerValue | null | undefined;
     };
 
-    export const inboundSchema: z.ZodType<TypeT, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<Type, z.ZodTypeDef, Inbound> = z
         .object({
             source_value: z
                 .nullable(
@@ -123,7 +123,7 @@ export namespace TypeT$ {
         value?: AnswerValue | null | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, TypeT> = z
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Type> = z
         .object({
             sourceValue: z
                 .nullable(
@@ -149,14 +149,14 @@ export namespace TypeT$ {
 export namespace Answer$ {
     export type Inbound = {
         id?: string | null | undefined;
-        type?: TypeT$.Inbound | null | undefined;
+        type?: Type$.Inbound | null | undefined;
         values?: Array<string> | null | undefined;
     };
 
     export const inboundSchema: z.ZodType<Answer, z.ZodTypeDef, Inbound> = z
         .object({
             id: z.nullable(z.string()).optional(),
-            type: z.nullable(z.lazy(() => TypeT$.inboundSchema)).optional(),
+            type: z.nullable(z.lazy(() => Type$.inboundSchema)).optional(),
             values: z.nullable(z.array(z.string())).optional(),
         })
         .transform((v) => {
@@ -169,14 +169,14 @@ export namespace Answer$ {
 
     export type Outbound = {
         id?: string | null | undefined;
-        type?: TypeT$.Outbound | null | undefined;
+        type?: Type$.Outbound | null | undefined;
         values?: Array<string> | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Answer> = z
         .object({
             id: z.nullable(z.string()).optional(),
-            type: z.nullable(z.lazy(() => TypeT$.outboundSchema)).optional(),
+            type: z.nullable(z.lazy(() => Type$.outboundSchema)).optional(),
             values: z.nullable(z.array(z.string())).optional(),
         })
         .transform((v) => {

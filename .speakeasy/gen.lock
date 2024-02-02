@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 7fa83af8-9e8e-4410-b7e2-cf1d0eaf688b
 management:
-  docChecksum: 250ed4b43daf5267b12b6c26d85fa5f9
+  docChecksum: 801230f0cdf29a80b39998b8d526b66d
   docVersion: 1.0.0
   speakeasyVersion: internal
-  generationVersion: 2.239.4
-  releaseVersion: 2.3.5
-  configChecksum: 5584327aaed1d65ffeb2070ef45336b7
+  generationVersion: 2.248.1
+  releaseVersion: 3.0.0
+  configChecksum: 584dc724ef7a310c647ef53034a342ce
   repoURL: https://github.com/StackOneHQ/stackone-client-typescript.git
   repoSubDirectory: .
   installationURL: https://github.com/StackOneHQ/stackone-client-typescript
@@ -14,7 +14,7 @@ management:
 features:
   typescript:
     constsAndDefaults: 0.1.1
-    core: 3.4.7
+    core: 3.4.8
     deprecations: 2.81.1
     examples: 2.81.3
     globalSecurity: 2.82.2
@@ -22,7 +22,7 @@ features:
     groups: 2.81.2
     nameOverrides: 2.81.1
     pagination: 2.82.0
-    unions: 2.85.0
+    unions: 2.85.1
 generatedFiles:
   - src/sdk/accounts.ts
   - src/sdk/connectsessions.ts
@@ -70,6 +70,7 @@ generatedFiles:
   - src/sdk/models/operations/atscreatecandidatenote.ts
   - src/sdk/models/operations/atscreateoffer.ts
   - src/sdk/models/operations/atsgetapplication.ts
+  - src/sdk/models/operations/atsgetapplicationdocument.ts
   - src/sdk/models/operations/atsgetapplicationoffer.ts
   - src/sdk/models/operations/atsgetapplicationscorecard.ts
   - src/sdk/models/operations/atsgetcandidate.ts
@@ -83,6 +84,7 @@ generatedFiles:
   - src/sdk/models/operations/atsgetoffer.ts
   - src/sdk/models/operations/atsgetrejectedreason.ts
   - src/sdk/models/operations/atsgetuser.ts
+  - src/sdk/models/operations/atslistapplicationdocuments.ts
   - src/sdk/models/operations/atslistapplicationscorecards.ts
   - src/sdk/models/operations/atslistapplications.ts
   - src/sdk/models/operations/atslistapplicationsoffers.ts
@@ -154,11 +156,11 @@ generatedFiles:
   - src/sdk/models/shared/questionnaire.ts
   - src/sdk/models/shared/answer.ts
   - src/sdk/models/shared/applicationattachment.ts
-  - src/sdk/models/shared/attachmenttype.ts
   - src/sdk/models/shared/candidateresult.ts
   - src/sdk/models/shared/rawresponse.ts
   - src/sdk/models/shared/candidate.ts
   - src/sdk/models/shared/sociallink.ts
+  - src/sdk/models/shared/phonenumber.ts
   - src/sdk/models/shared/candidateemail.ts
   - src/sdk/models/shared/atscreatecandidaterequestdto.ts
   - src/sdk/models/shared/createcandidatenoteresult.ts
@@ -171,6 +173,10 @@ generatedFiles:
   - src/sdk/models/shared/application.ts
   - src/sdk/models/shared/resultlink.ts
   - src/sdk/models/shared/rejectedreason.ts
+  - src/sdk/models/shared/documentapimodel.ts
+  - src/sdk/models/shared/content.ts
+  - src/sdk/models/shared/fileformatenum.ts
+  - src/sdk/models/shared/documentresult.ts
   - src/sdk/models/shared/offersresult.ts
   - src/sdk/models/shared/offer.ts
   - src/sdk/models/shared/noteresult.ts
@@ -198,6 +204,7 @@ generatedFiles:
   - src/sdk/models/shared/rejectedreasonresult.ts
   - src/sdk/models/shared/userresult.ts
   - src/sdk/models/shared/user.ts
+  - src/sdk/models/shared/documentspaginated.ts
   - src/sdk/models/shared/scorecardspaginated.ts
   - src/sdk/models/shared/scorecard.ts
   - src/sdk/models/shared/scorecardsection.ts
@@ -239,19 +246,14 @@ generatedFiles:
   - src/sdk/models/shared/company.ts
   - src/sdk/models/shared/employeeresult.ts
   - src/sdk/models/shared/employee.ts
+  - src/sdk/models/shared/workeligibility.ts
   - src/sdk/models/shared/costcenters.ts
-  - src/sdk/models/shared/documentresult.ts
-  - src/sdk/models/shared/documentapimodel.ts
-  - src/sdk/models/shared/documenttypeenum.ts
-  - src/sdk/models/shared/content.ts
-  - src/sdk/models/shared/documentfileformatenum.ts
   - src/sdk/models/shared/timeoffresult.ts
   - src/sdk/models/shared/timeoff.ts
   - src/sdk/models/shared/employmentresult.ts
   - src/sdk/models/shared/hrislocationresult.ts
   - src/sdk/models/shared/hrislocation.ts
   - src/sdk/models/shared/companiespaginated.ts
-  - src/sdk/models/shared/documentspaginated.ts
   - src/sdk/models/shared/timeoffpaginated.ts
   - src/sdk/models/shared/employeespaginated.ts
   - src/sdk/models/shared/employmentspaginated.ts
@@ -303,6 +305,9 @@ generatedFiles:
   - docs/sdk/models/operations/atsgetapplicationrequest.md
   - docs/sdk/models/operations/atsgetapplicationresponse.md
   - docs/sdk/models/operations/queryparamproxy.md
+  - docs/sdk/models/operations/atsgetapplicationdocumentrequest.md
+  - docs/sdk/models/operations/atsgetapplicationdocumentresponse.md
+  - docs/sdk/models/operations/atsgetapplicationofferqueryparamproxy.md
   - docs/sdk/models/operations/atsgetapplicationofferrequest.md
   - docs/sdk/models/operations/atsgetapplicationofferresponse.md
   - docs/sdk/models/operations/atsgetapplicationscorecardqueryparamproxy.md
@@ -341,6 +346,9 @@ generatedFiles:
   - docs/sdk/models/operations/atsgetuserqueryparamproxy.md
   - docs/sdk/models/operations/atsgetuserrequest.md
   - docs/sdk/models/operations/atsgetuserresponse.md
+  - docs/sdk/models/operations/atslistapplicationdocumentsqueryparamproxy.md
+  - docs/sdk/models/operations/atslistapplicationdocumentsrequest.md
+  - docs/sdk/models/operations/atslistapplicationdocumentsresponse.md
   - docs/sdk/models/operations/atslistapplicationscorecardsqueryparamproxy.md
   - docs/sdk/models/operations/atslistapplicationscorecardsrequest.md
   - docs/sdk/models/operations/atslistapplicationscorecardsresponse.md
@@ -528,22 +536,20 @@ generatedFiles:
   - docs/sdk/models/shared/answer4.md
   - docs/sdk/models/shared/answersourcevalue.md
   - docs/sdk/models/shared/answervalue.md
-  - docs/sdk/models/shared/typet.md
+  - docs/sdk/models/shared/type.md
   - docs/sdk/models/shared/answer.md
   - docs/sdk/models/shared/applicationattachment4.md
   - docs/sdk/models/shared/applicationattachmentsourcevalue.md
   - docs/sdk/models/shared/applicationattachmentvalue.md
   - docs/sdk/models/shared/contenttype.md
   - docs/sdk/models/shared/applicationattachment.md
-  - docs/sdk/models/shared/four.md
-  - docs/sdk/models/shared/sourcevalue.md
-  - docs/sdk/models/shared/value.md
-  - docs/sdk/models/shared/attachmenttype.md
   - docs/sdk/models/shared/candidateresult.md
   - docs/sdk/models/shared/response.md
   - docs/sdk/models/shared/rawresponse.md
   - docs/sdk/models/shared/candidate.md
   - docs/sdk/models/shared/sociallink.md
+  - docs/sdk/models/shared/phonenumbertype.md
+  - docs/sdk/models/shared/phonenumber.md
   - docs/sdk/models/shared/candidateemail.md
   - docs/sdk/models/shared/atscreatecandidaterequestdto.md
   - docs/sdk/models/shared/createcandidatenoteresult.md
@@ -574,6 +580,17 @@ generatedFiles:
   - docs/sdk/models/shared/rejectedreasonvalue.md
   - docs/sdk/models/shared/rejectedreasontype.md
   - docs/sdk/models/shared/rejectedreason.md
+  - docs/sdk/models/shared/documentapimodel4.md
+  - docs/sdk/models/shared/documentapimodelsourcevalue.md
+  - docs/sdk/models/shared/documentapimodelvalue.md
+  - docs/sdk/models/shared/documentapimodeltype.md
+  - docs/sdk/models/shared/documentapimodel.md
+  - docs/sdk/models/shared/content.md
+  - docs/sdk/models/shared/fileformatenum4.md
+  - docs/sdk/models/shared/fileformatenumsourcevalue.md
+  - docs/sdk/models/shared/fileformatenumvalue.md
+  - docs/sdk/models/shared/fileformatenum.md
+  - docs/sdk/models/shared/documentresult.md
   - docs/sdk/models/shared/offersresult.md
   - docs/sdk/models/shared/offer4.md
   - docs/sdk/models/shared/offersourcevalue.md
@@ -649,6 +666,7 @@ generatedFiles:
   - docs/sdk/models/shared/rejectedreasonresult.md
   - docs/sdk/models/shared/userresult.md
   - docs/sdk/models/shared/user.md
+  - docs/sdk/models/shared/documentspaginated.md
   - docs/sdk/models/shared/scorecardspaginated.md
   - docs/sdk/models/shared/overallrecommendation.md
   - docs/sdk/models/shared/scorecard.md
@@ -813,6 +831,7 @@ generatedFiles:
   - docs/sdk/models/shared/employeeschemashomelocationlocationtypevalue.md
   - docs/sdk/models/shared/employeelocationtype.md
   - docs/sdk/models/shared/homelocation.md
+  - docs/sdk/models/shared/jobdescription.md
   - docs/sdk/models/shared/employeeschemasmaritalstatus4.md
   - docs/sdk/models/shared/employeeschemasmaritalstatussourcevalue.md
   - docs/sdk/models/shared/employeeschemasmaritalstatusvalue.md
@@ -827,18 +846,13 @@ generatedFiles:
   - docs/sdk/models/shared/employeeschemaslocationtype.md
   - docs/sdk/models/shared/worklocation.md
   - docs/sdk/models/shared/employee.md
+  - docs/sdk/models/shared/document.md
+  - docs/sdk/models/shared/workeligibility4.md
+  - docs/sdk/models/shared/sourcetype.md
+  - docs/sdk/models/shared/workeligibilityvalue.md
+  - docs/sdk/models/shared/workeligibilitytype.md
+  - docs/sdk/models/shared/workeligibility.md
   - docs/sdk/models/shared/costcenters.md
-  - docs/sdk/models/shared/documentresult.md
-  - docs/sdk/models/shared/documentapimodel.md
-  - docs/sdk/models/shared/documenttypeenum4.md
-  - docs/sdk/models/shared/documenttypeenumsourcevalue.md
-  - docs/sdk/models/shared/documenttypeenumvalue.md
-  - docs/sdk/models/shared/documenttypeenum.md
-  - docs/sdk/models/shared/content.md
-  - docs/sdk/models/shared/documentfileformatenum4.md
-  - docs/sdk/models/shared/documentfileformatenumsourcevalue.md
-  - docs/sdk/models/shared/documentfileformatenumvalue.md
-  - docs/sdk/models/shared/documentfileformatenum.md
   - docs/sdk/models/shared/timeoffresult.md
   - docs/sdk/models/shared/timeoff4.md
   - docs/sdk/models/shared/timeoffsourcevalue.md
@@ -861,7 +875,6 @@ generatedFiles:
   - docs/sdk/models/shared/hrislocationlocationtype.md
   - docs/sdk/models/shared/hrislocation.md
   - docs/sdk/models/shared/companiespaginated.md
-  - docs/sdk/models/shared/documentspaginated.md
   - docs/sdk/models/shared/timeoffpaginated.md
   - docs/sdk/models/shared/employeespaginated.md
   - docs/sdk/models/shared/employmentspaginated.md
@@ -898,9 +911,9 @@ generatedFiles:
   - docs/sdk/models/shared/campaignschemasvalue.md
   - docs/sdk/models/shared/status.md
   - docs/sdk/models/shared/campaign.md
-  - docs/sdk/models/shared/channelsenum4.md
-  - docs/sdk/models/shared/channelsenumsourcevalue.md
-  - docs/sdk/models/shared/channelsenumvalue.md
+  - docs/sdk/models/shared/four.md
+  - docs/sdk/models/shared/sourcevalue.md
+  - docs/sdk/models/shared/value.md
   - docs/sdk/models/shared/channelsenum.md
   - docs/sdk/models/shared/templateresult.md
   - docs/sdk/models/shared/template.md

@@ -43,6 +43,10 @@ export type RejectedReason = {
      */
     label?: string | null | undefined;
     rejectedReasonType?: RejectedReasonType | null | undefined;
+    /**
+     * The string type of the rejected reason.
+     */
+    type?: string | null | undefined;
 };
 
 /** @internal */
@@ -143,6 +147,7 @@ export namespace RejectedReason$ {
         id?: string | null | undefined;
         label?: string | null | undefined;
         rejected_reason_type?: RejectedReasonType$.Inbound | null | undefined;
+        type?: string | null | undefined;
     };
 
     export const inboundSchema: z.ZodType<RejectedReason, z.ZodTypeDef, Inbound> = z
@@ -152,6 +157,7 @@ export namespace RejectedReason$ {
             rejected_reason_type: z
                 .nullable(z.lazy(() => RejectedReasonType$.inboundSchema))
                 .optional(),
+            type: z.nullable(z.string()).optional(),
         })
         .transform((v) => {
             return {
@@ -160,6 +166,7 @@ export namespace RejectedReason$ {
                 ...(v.rejected_reason_type === undefined
                     ? null
                     : { rejectedReasonType: v.rejected_reason_type }),
+                ...(v.type === undefined ? null : { type: v.type }),
             };
         });
 
@@ -167,6 +174,7 @@ export namespace RejectedReason$ {
         id?: string | null | undefined;
         label?: string | null | undefined;
         rejected_reason_type?: RejectedReasonType$.Outbound | null | undefined;
+        type?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, RejectedReason> = z
@@ -176,6 +184,7 @@ export namespace RejectedReason$ {
             rejectedReasonType: z
                 .nullable(z.lazy(() => RejectedReasonType$.outboundSchema))
                 .optional(),
+            type: z.nullable(z.string()).optional(),
         })
         .transform((v) => {
             return {
@@ -184,6 +193,7 @@ export namespace RejectedReason$ {
                 ...(v.rejectedReasonType === undefined
                     ? null
                     : { rejected_reason_type: v.rejectedReasonType }),
+                ...(v.type === undefined ? null : { type: v.type }),
             };
         });
 }

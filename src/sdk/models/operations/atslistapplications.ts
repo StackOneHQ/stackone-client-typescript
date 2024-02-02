@@ -12,6 +12,10 @@ export type AtsListApplicationsQueryParamProxy = {};
 
 export type AtsListApplicationsRequest = {
     /**
+     * The comma separated list of fields that will be expanded in the response
+     */
+    expand?: string | null | undefined;
+    /**
      * The comma separated list of fields to return in the response (if empty, all fields are returned)
      */
     fields?: string | null | undefined;
@@ -92,6 +96,7 @@ export namespace AtsListApplicationsQueryParamProxy$ {
 /** @internal */
 export namespace AtsListApplicationsRequest$ {
     export type Inbound = {
+        expand?: string | null | undefined;
         fields?: string | null | undefined;
         next?: string | null | undefined;
         page?: string | null | undefined;
@@ -105,6 +110,7 @@ export namespace AtsListApplicationsRequest$ {
 
     export const inboundSchema: z.ZodType<AtsListApplicationsRequest, z.ZodTypeDef, Inbound> = z
         .object({
+            expand: z.nullable(z.string()).optional(),
             fields: z.nullable(z.string()).optional(),
             next: z.nullable(z.string()).optional(),
             page: z.nullable(z.string()).optional(),
@@ -119,6 +125,7 @@ export namespace AtsListApplicationsRequest$ {
         })
         .transform((v) => {
             return {
+                ...(v.expand === undefined ? null : { expand: v.expand }),
                 ...(v.fields === undefined ? null : { fields: v.fields }),
                 ...(v.next === undefined ? null : { next: v.next }),
                 ...(v.page === undefined ? null : { page: v.page }),
@@ -132,6 +139,7 @@ export namespace AtsListApplicationsRequest$ {
         });
 
     export type Outbound = {
+        expand?: string | null | undefined;
         fields?: string | null | undefined;
         next?: string | null | undefined;
         page?: string | null | undefined;
@@ -145,6 +153,7 @@ export namespace AtsListApplicationsRequest$ {
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, AtsListApplicationsRequest> = z
         .object({
+            expand: z.nullable(z.string()).optional(),
             fields: z.nullable(z.string()).optional(),
             next: z.nullable(z.string()).optional(),
             page: z.nullable(z.string()).optional(),
@@ -159,6 +168,7 @@ export namespace AtsListApplicationsRequest$ {
         })
         .transform((v) => {
             return {
+                ...(v.expand === undefined ? null : { expand: v.expand }),
                 ...(v.fields === undefined ? null : { fields: v.fields }),
                 ...(v.next === undefined ? null : { next: v.next }),
                 ...(v.page === undefined ? null : { page: v.page }),

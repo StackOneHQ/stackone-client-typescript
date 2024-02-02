@@ -3,73 +3,198 @@
  */
 
 import { Content, Content$ } from "./content";
-import { DocumentTypeEnum, DocumentTypeEnum$ } from "./documenttypeenum";
 import { z } from "zod";
+
+export type DocumentApiModel4 = {};
+
+export type DocumentApiModelSourceValue = DocumentApiModel4 | string | number | boolean;
+
+export enum DocumentApiModelValue {
+    Resume = "resume",
+    Avatar = "avatar",
+    CoverLetter = "cover_letter",
+    ProfilePicture = "profile_picture",
+    Passport = "passport",
+    TakeHomeTest = "take_home_test",
+    OfferLetter = "offer_letter",
+    SignedOfferLetter = "signed_offer_letter",
+    OfferPacket = "offer_packet",
+    Other = "other",
+    UnmappedValue = "unmapped_value",
+}
+
+/**
+ * The content type of the document
+ */
+export type DocumentApiModelType = {
+    sourceValue?: DocumentApiModel4 | string | number | boolean | null | undefined;
+    value?: DocumentApiModelValue | null | undefined;
+};
 
 export type DocumentApiModel = {
     /**
-     * The content of the document
+     * The content of the file
      */
-    contents: Array<Content>;
+    contents?: Array<Content> | null | undefined;
     /**
-     * The creation date of the document
+     * The creation date of the file
      */
-    createdAt?: Date | undefined;
+    createdAt?: Date | null | undefined;
     /**
-     * The unique ID of the document
+     * The unique ID of the file
      */
-    id?: string | undefined;
+    id?: string | null | undefined;
     /**
-     * The name of the document
+     * The name of the file
      */
-    name?: string | undefined;
+    name?: string | null | undefined;
     /**
-     * The path where the document is stored
+     * The path where the file is stored
      */
-    path?: string | undefined;
+    path?: string | null | undefined;
     /**
      * The content type of the document
      */
-    type?: DocumentTypeEnum | undefined;
+    type?: DocumentApiModelType | null | undefined;
     /**
-     * The update date of the document
+     * The update date of the file
      */
-    updatedAt?: Date | undefined;
+    updatedAt?: Date | null | undefined;
 };
+
+/** @internal */
+export namespace DocumentApiModel4$ {
+    export type Inbound = {};
+
+    export const inboundSchema: z.ZodType<DocumentApiModel4, z.ZodTypeDef, Inbound> = z.object({});
+
+    export type Outbound = {};
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, DocumentApiModel4> = z.object(
+        {}
+    );
+}
+
+/** @internal */
+export namespace DocumentApiModelSourceValue$ {
+    export type Inbound = DocumentApiModel4$.Inbound | string | number | boolean;
+
+    export type Outbound = DocumentApiModel4$.Outbound | string | number | boolean;
+
+    export const inboundSchema: z.ZodType<DocumentApiModelSourceValue, z.ZodTypeDef, Inbound> =
+        z.union([
+            z.lazy(() => DocumentApiModel4$.inboundSchema),
+            z.string(),
+            z.number(),
+            z.boolean(),
+        ]);
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, DocumentApiModelSourceValue> =
+        z.union([
+            z.lazy(() => DocumentApiModel4$.outboundSchema),
+            z.string(),
+            z.number(),
+            z.boolean(),
+        ]);
+}
+
+/** @internal */
+export const DocumentApiModelValue$ = z.nativeEnum(DocumentApiModelValue);
+
+/** @internal */
+export namespace DocumentApiModelType$ {
+    export type Inbound = {
+        source_value?: DocumentApiModel4$.Inbound | string | number | boolean | null | undefined;
+        value?: DocumentApiModelValue | null | undefined;
+    };
+
+    export const inboundSchema: z.ZodType<DocumentApiModelType, z.ZodTypeDef, Inbound> = z
+        .object({
+            source_value: z
+                .nullable(
+                    z.union([
+                        z.lazy(() => DocumentApiModel4$.inboundSchema),
+                        z.string(),
+                        z.number(),
+                        z.boolean(),
+                    ])
+                )
+                .optional(),
+            value: z.nullable(DocumentApiModelValue$).optional(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.source_value === undefined ? null : { sourceValue: v.source_value }),
+                ...(v.value === undefined ? null : { value: v.value }),
+            };
+        });
+
+    export type Outbound = {
+        source_value?: DocumentApiModel4$.Outbound | string | number | boolean | null | undefined;
+        value?: DocumentApiModelValue | null | undefined;
+    };
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, DocumentApiModelType> = z
+        .object({
+            sourceValue: z
+                .nullable(
+                    z.union([
+                        z.lazy(() => DocumentApiModel4$.outboundSchema),
+                        z.string(),
+                        z.number(),
+                        z.boolean(),
+                    ])
+                )
+                .optional(),
+            value: z.nullable(DocumentApiModelValue$).optional(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.sourceValue === undefined ? null : { source_value: v.sourceValue }),
+                ...(v.value === undefined ? null : { value: v.value }),
+            };
+        });
+}
 
 /** @internal */
 export namespace DocumentApiModel$ {
     export type Inbound = {
-        contents: Array<Content$.Inbound>;
-        created_at?: string | undefined;
-        id?: string | undefined;
-        name?: string | undefined;
-        path?: string | undefined;
-        type?: DocumentTypeEnum$.Inbound | undefined;
-        updated_at?: string | undefined;
+        contents?: Array<Content$.Inbound> | null | undefined;
+        created_at?: string | null | undefined;
+        id?: string | null | undefined;
+        name?: string | null | undefined;
+        path?: string | null | undefined;
+        type?: DocumentApiModelType$.Inbound | null | undefined;
+        updated_at?: string | null | undefined;
     };
 
     export const inboundSchema: z.ZodType<DocumentApiModel, z.ZodTypeDef, Inbound> = z
         .object({
-            contents: z.array(Content$.inboundSchema),
+            contents: z.nullable(z.array(Content$.inboundSchema)).optional(),
             created_at: z
-                .string()
-                .datetime({ offset: true })
-                .transform((v) => new Date(v))
+                .nullable(
+                    z
+                        .string()
+                        .datetime({ offset: true })
+                        .transform((v) => new Date(v))
+                )
                 .optional(),
-            id: z.string().optional(),
-            name: z.string().optional(),
-            path: z.string().optional(),
-            type: DocumentTypeEnum$.inboundSchema.optional(),
+            id: z.nullable(z.string()).optional(),
+            name: z.nullable(z.string()).optional(),
+            path: z.nullable(z.string()).optional(),
+            type: z.nullable(z.lazy(() => DocumentApiModelType$.inboundSchema)).optional(),
             updated_at: z
-                .string()
-                .datetime({ offset: true })
-                .transform((v) => new Date(v))
+                .nullable(
+                    z
+                        .string()
+                        .datetime({ offset: true })
+                        .transform((v) => new Date(v))
+                )
                 .optional(),
         })
         .transform((v) => {
             return {
-                contents: v.contents,
+                ...(v.contents === undefined ? null : { contents: v.contents }),
                 ...(v.created_at === undefined ? null : { createdAt: v.created_at }),
                 ...(v.id === undefined ? null : { id: v.id }),
                 ...(v.name === undefined ? null : { name: v.name }),
@@ -80,34 +205,28 @@ export namespace DocumentApiModel$ {
         });
 
     export type Outbound = {
-        contents: Array<Content$.Outbound>;
-        created_at?: string | undefined;
-        id?: string | undefined;
-        name?: string | undefined;
-        path?: string | undefined;
-        type?: DocumentTypeEnum$.Outbound | undefined;
-        updated_at?: string | undefined;
+        contents?: Array<Content$.Outbound> | null | undefined;
+        created_at?: string | null | undefined;
+        id?: string | null | undefined;
+        name?: string | null | undefined;
+        path?: string | null | undefined;
+        type?: DocumentApiModelType$.Outbound | null | undefined;
+        updated_at?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, DocumentApiModel> = z
         .object({
-            contents: z.array(Content$.outboundSchema),
-            createdAt: z
-                .date()
-                .transform((v) => v.toISOString())
-                .optional(),
-            id: z.string().optional(),
-            name: z.string().optional(),
-            path: z.string().optional(),
-            type: DocumentTypeEnum$.outboundSchema.optional(),
-            updatedAt: z
-                .date()
-                .transform((v) => v.toISOString())
-                .optional(),
+            contents: z.nullable(z.array(Content$.outboundSchema)).optional(),
+            createdAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+            id: z.nullable(z.string()).optional(),
+            name: z.nullable(z.string()).optional(),
+            path: z.nullable(z.string()).optional(),
+            type: z.nullable(z.lazy(() => DocumentApiModelType$.outboundSchema)).optional(),
+            updatedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
         })
         .transform((v) => {
             return {
-                contents: v.contents,
+                ...(v.contents === undefined ? null : { contents: v.contents }),
                 ...(v.createdAt === undefined ? null : { created_at: v.createdAt }),
                 ...(v.id === undefined ? null : { id: v.id }),
                 ...(v.name === undefined ? null : { name: v.name }),
