@@ -7,7 +7,7 @@ generation:
     nameResolutionDec2023: false
     parameterOrderingFeb2024: false
 typescript:
-  version: 3.0.0
+  version: 3.0.1
   author: StackOne
   clientServerStatusCodesAsErrors: true
   flattenGlobalSecurity: false

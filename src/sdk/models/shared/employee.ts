@@ -1004,7 +1004,7 @@ export type Employee = {
     /**
      * The employee first name
      */
-    firstName: string;
+    firstName?: string | null | undefined;
     /**
      * The employee gender
      */
@@ -1020,7 +1020,7 @@ export type Employee = {
     /**
      * The employee ID
      */
-    id: string;
+    id?: string | null | undefined;
     /**
      * The employee job description
      */
@@ -1032,7 +1032,7 @@ export type Employee = {
     /**
      * The employee last name
      */
-    lastName: string;
+    lastName?: string | null | undefined;
     /**
      * The employee manager ID
      */
@@ -1080,7 +1080,7 @@ export type Employee = {
     /**
      * The employee work email
      */
-    workEmail: string;
+    workEmail?: string | null | undefined;
     /**
      * The employee work location
      */
@@ -2524,14 +2524,14 @@ export namespace Employee$ {
         employment_type?: EmploymentType$.Inbound | null | undefined;
         employments?: Array<Employment$.Inbound> | null | undefined;
         ethnicity?: Ethnicity$.Inbound | null | undefined;
-        first_name: string;
+        first_name?: string | null | undefined;
         gender?: Gender$.Inbound | null | undefined;
         hire_date?: string | null | undefined;
         home_location?: HomeLocation$.Inbound | null | undefined;
-        id: string;
+        id?: string | null | undefined;
         job_description?: JobDescription$.Inbound | null | undefined;
         job_title?: string | null | undefined;
-        last_name: string;
+        last_name?: string | null | undefined;
         manager_id?: string | null | undefined;
         marital_status?: MaritalStatus$.Inbound | null | undefined;
         name?: string | null | undefined;
@@ -2543,7 +2543,7 @@ export namespace Employee$ {
         updated_at?: string | null | undefined;
         work_anniversary?: string | null | undefined;
         work_eligibility?: Array<WorkEligibility$.Inbound> | null | undefined;
-        work_email: string;
+        work_email?: string | null | undefined;
         work_location?: WorkLocation$.Inbound | null | undefined;
         work_phone_number?: string | null | undefined;
     };
@@ -2589,7 +2589,7 @@ export namespace Employee$ {
             employment_type: z.nullable(z.lazy(() => EmploymentType$.inboundSchema)).optional(),
             employments: z.nullable(z.array(Employment$.inboundSchema)).optional(),
             ethnicity: z.nullable(z.lazy(() => Ethnicity$.inboundSchema)).optional(),
-            first_name: z.string(),
+            first_name: z.nullable(z.string()).optional(),
             gender: z.nullable(z.lazy(() => Gender$.inboundSchema)).optional(),
             hire_date: z
                 .nullable(
@@ -2600,10 +2600,10 @@ export namespace Employee$ {
                 )
                 .optional(),
             home_location: z.nullable(z.lazy(() => HomeLocation$.inboundSchema)).optional(),
-            id: z.string(),
+            id: z.nullable(z.string()).optional(),
             job_description: z.nullable(z.lazy(() => JobDescription$.inboundSchema)).optional(),
             job_title: z.nullable(z.string()).optional(),
-            last_name: z.string(),
+            last_name: z.nullable(z.string()).optional(),
             manager_id: z.nullable(z.string()).optional(),
             marital_status: z.nullable(z.lazy(() => MaritalStatus$.inboundSchema)).optional(),
             name: z.nullable(z.string()).optional(),
@@ -2643,7 +2643,7 @@ export namespace Employee$ {
                 )
                 .optional(),
             work_eligibility: z.nullable(z.array(WorkEligibility$.inboundSchema)).optional(),
-            work_email: z.string(),
+            work_email: z.nullable(z.string()).optional(),
             work_location: z.nullable(z.lazy(() => WorkLocation$.inboundSchema)).optional(),
             work_phone_number: z.nullable(z.string()).optional(),
         })
@@ -2669,14 +2669,14 @@ export namespace Employee$ {
                 ...(v.employment_type === undefined ? null : { employmentType: v.employment_type }),
                 ...(v.employments === undefined ? null : { employments: v.employments }),
                 ...(v.ethnicity === undefined ? null : { ethnicity: v.ethnicity }),
-                firstName: v.first_name,
+                ...(v.first_name === undefined ? null : { firstName: v.first_name }),
                 ...(v.gender === undefined ? null : { gender: v.gender }),
                 ...(v.hire_date === undefined ? null : { hireDate: v.hire_date }),
                 ...(v.home_location === undefined ? null : { homeLocation: v.home_location }),
-                id: v.id,
+                ...(v.id === undefined ? null : { id: v.id }),
                 ...(v.job_description === undefined ? null : { jobDescription: v.job_description }),
                 ...(v.job_title === undefined ? null : { jobTitle: v.job_title }),
-                lastName: v.last_name,
+                ...(v.last_name === undefined ? null : { lastName: v.last_name }),
                 ...(v.manager_id === undefined ? null : { managerId: v.manager_id }),
                 ...(v.marital_status === undefined ? null : { maritalStatus: v.marital_status }),
                 ...(v.name === undefined ? null : { name: v.name }),
@@ -2696,7 +2696,7 @@ export namespace Employee$ {
                 ...(v.work_eligibility === undefined
                     ? null
                     : { workEligibility: v.work_eligibility }),
-                workEmail: v.work_email,
+                ...(v.work_email === undefined ? null : { workEmail: v.work_email }),
                 ...(v.work_location === undefined ? null : { workLocation: v.work_location }),
                 ...(v.work_phone_number === undefined
                     ? null
@@ -2721,14 +2721,14 @@ export namespace Employee$ {
         employment_type?: EmploymentType$.Outbound | null | undefined;
         employments?: Array<Employment$.Outbound> | null | undefined;
         ethnicity?: Ethnicity$.Outbound | null | undefined;
-        first_name: string;
+        first_name?: string | null | undefined;
         gender?: Gender$.Outbound | null | undefined;
         hire_date?: string | null | undefined;
         home_location?: HomeLocation$.Outbound | null | undefined;
-        id: string;
+        id?: string | null | undefined;
         job_description?: JobDescription$.Outbound | null | undefined;
         job_title?: string | null | undefined;
-        last_name: string;
+        last_name?: string | null | undefined;
         manager_id?: string | null | undefined;
         marital_status?: MaritalStatus$.Outbound | null | undefined;
         name?: string | null | undefined;
@@ -2740,7 +2740,7 @@ export namespace Employee$ {
         updated_at?: string | null | undefined;
         work_anniversary?: string | null | undefined;
         work_eligibility?: Array<WorkEligibility$.Outbound> | null | undefined;
-        work_email: string;
+        work_email?: string | null | undefined;
         work_location?: WorkLocation$.Outbound | null | undefined;
         work_phone_number?: string | null | undefined;
     };
@@ -2765,14 +2765,14 @@ export namespace Employee$ {
             employmentType: z.nullable(z.lazy(() => EmploymentType$.outboundSchema)).optional(),
             employments: z.nullable(z.array(Employment$.outboundSchema)).optional(),
             ethnicity: z.nullable(z.lazy(() => Ethnicity$.outboundSchema)).optional(),
-            firstName: z.string(),
+            firstName: z.nullable(z.string()).optional(),
             gender: z.nullable(z.lazy(() => Gender$.outboundSchema)).optional(),
             hireDate: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
             homeLocation: z.nullable(z.lazy(() => HomeLocation$.outboundSchema)).optional(),
-            id: z.string(),
+            id: z.nullable(z.string()).optional(),
             jobDescription: z.nullable(z.lazy(() => JobDescription$.outboundSchema)).optional(),
             jobTitle: z.nullable(z.string()).optional(),
-            lastName: z.string(),
+            lastName: z.nullable(z.string()).optional(),
             managerId: z.nullable(z.string()).optional(),
             maritalStatus: z.nullable(z.lazy(() => MaritalStatus$.outboundSchema)).optional(),
             name: z.nullable(z.string()).optional(),
@@ -2784,7 +2784,7 @@ export namespace Employee$ {
             updatedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
             workAnniversary: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
             workEligibility: z.nullable(z.array(WorkEligibility$.outboundSchema)).optional(),
-            workEmail: z.string(),
+            workEmail: z.nullable(z.string()).optional(),
             workLocation: z.nullable(z.lazy(() => WorkLocation$.outboundSchema)).optional(),
             workPhoneNumber: z.nullable(z.string()).optional(),
         })
@@ -2810,14 +2810,14 @@ export namespace Employee$ {
                 ...(v.employmentType === undefined ? null : { employment_type: v.employmentType }),
                 ...(v.employments === undefined ? null : { employments: v.employments }),
                 ...(v.ethnicity === undefined ? null : { ethnicity: v.ethnicity }),
-                first_name: v.firstName,
+                ...(v.firstName === undefined ? null : { first_name: v.firstName }),
                 ...(v.gender === undefined ? null : { gender: v.gender }),
                 ...(v.hireDate === undefined ? null : { hire_date: v.hireDate }),
                 ...(v.homeLocation === undefined ? null : { home_location: v.homeLocation }),
-                id: v.id,
+                ...(v.id === undefined ? null : { id: v.id }),
                 ...(v.jobDescription === undefined ? null : { job_description: v.jobDescription }),
                 ...(v.jobTitle === undefined ? null : { job_title: v.jobTitle }),
-                last_name: v.lastName,
+                ...(v.lastName === undefined ? null : { last_name: v.lastName }),
                 ...(v.managerId === undefined ? null : { manager_id: v.managerId }),
                 ...(v.maritalStatus === undefined ? null : { marital_status: v.maritalStatus }),
                 ...(v.name === undefined ? null : { name: v.name }),
@@ -2837,7 +2837,7 @@ export namespace Employee$ {
                 ...(v.workEligibility === undefined
                     ? null
                     : { work_eligibility: v.workEligibility }),
-                work_email: v.workEmail,
+                ...(v.workEmail === undefined ? null : { work_email: v.workEmail }),
                 ...(v.workLocation === undefined ? null : { work_location: v.workLocation }),
                 ...(v.workPhoneNumber === undefined
                     ? null

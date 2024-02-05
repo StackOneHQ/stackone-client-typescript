@@ -8619,7 +8619,7 @@ export type HrisCreateEmployeeRequestDto = {
     /**
      * The employee first name
      */
-    firstName: string;
+    firstName?: string | null | undefined;
     /**
      * The employee gender
      */
@@ -8639,7 +8639,7 @@ export type HrisCreateEmployeeRequestDto = {
     /**
      * The employee last name
      */
-    lastName: string;
+    lastName?: string | null | undefined;
     /**
      * The employee manager ID
      */
@@ -8679,7 +8679,7 @@ export type HrisCreateEmployeeRequestDto = {
     /**
      * The employee work email
      */
-    workEmail: string;
+    workEmail?: string | null | undefined;
     /**
      * The employee work location
      */
@@ -10300,12 +10300,12 @@ export namespace HrisCreateEmployeeRequestDto$ {
         employment_type?: HrisCreateEmployeeRequestDtoEmploymentType$.Inbound | null | undefined;
         employments?: Array<Employment$.Inbound> | null | undefined;
         ethnicity?: HrisCreateEmployeeRequestDtoEthnicity$.Inbound | null | undefined;
-        first_name: string;
+        first_name?: string | null | undefined;
         gender?: HrisCreateEmployeeRequestDtoGender$.Inbound | null | undefined;
         hire_date?: string | null | undefined;
         home_location?: HrisCreateEmployeeRequestDtoHomeLocation$.Inbound | null | undefined;
         job_title?: string | null | undefined;
-        last_name: string;
+        last_name?: string | null | undefined;
         manager_id?: string | null | undefined;
         marital_status?: HrisCreateEmployeeRequestDtoMaritalStatus$.Inbound | null | undefined;
         name?: string | null | undefined;
@@ -10315,7 +10315,7 @@ export namespace HrisCreateEmployeeRequestDto$ {
         tenure?: number | null | undefined;
         termination_date?: string | null | undefined;
         work_anniversary?: string | null | undefined;
-        work_email: string;
+        work_email?: string | null | undefined;
         work_location?: HrisCreateEmployeeRequestDtoWorkLocation$.Inbound | null | undefined;
         work_phone_number?: string | null | undefined;
     };
@@ -10362,7 +10362,7 @@ export namespace HrisCreateEmployeeRequestDto$ {
             ethnicity: z
                 .nullable(z.lazy(() => HrisCreateEmployeeRequestDtoEthnicity$.inboundSchema))
                 .optional(),
-            first_name: z.string(),
+            first_name: z.nullable(z.string()).optional(),
             gender: z
                 .nullable(z.lazy(() => HrisCreateEmployeeRequestDtoGender$.inboundSchema))
                 .optional(),
@@ -10378,7 +10378,7 @@ export namespace HrisCreateEmployeeRequestDto$ {
                 .nullable(z.lazy(() => HrisCreateEmployeeRequestDtoHomeLocation$.inboundSchema))
                 .optional(),
             job_title: z.nullable(z.string()).optional(),
-            last_name: z.string(),
+            last_name: z.nullable(z.string()).optional(),
             manager_id: z.nullable(z.string()).optional(),
             marital_status: z
                 .nullable(z.lazy(() => HrisCreateEmployeeRequestDtoMaritalStatus$.inboundSchema))
@@ -10411,7 +10411,7 @@ export namespace HrisCreateEmployeeRequestDto$ {
                         .transform((v) => new Date(v))
                 )
                 .optional(),
-            work_email: z.string(),
+            work_email: z.nullable(z.string()).optional(),
             work_location: z
                 .nullable(z.lazy(() => HrisCreateEmployeeRequestDtoWorkLocation$.inboundSchema))
                 .optional(),
@@ -10437,12 +10437,12 @@ export namespace HrisCreateEmployeeRequestDto$ {
                 ...(v.employment_type === undefined ? null : { employmentType: v.employment_type }),
                 ...(v.employments === undefined ? null : { employments: v.employments }),
                 ...(v.ethnicity === undefined ? null : { ethnicity: v.ethnicity }),
-                firstName: v.first_name,
+                ...(v.first_name === undefined ? null : { firstName: v.first_name }),
                 ...(v.gender === undefined ? null : { gender: v.gender }),
                 ...(v.hire_date === undefined ? null : { hireDate: v.hire_date }),
                 ...(v.home_location === undefined ? null : { homeLocation: v.home_location }),
                 ...(v.job_title === undefined ? null : { jobTitle: v.job_title }),
-                lastName: v.last_name,
+                ...(v.last_name === undefined ? null : { lastName: v.last_name }),
                 ...(v.manager_id === undefined ? null : { managerId: v.manager_id }),
                 ...(v.marital_status === undefined ? null : { maritalStatus: v.marital_status }),
                 ...(v.name === undefined ? null : { name: v.name }),
@@ -10458,7 +10458,7 @@ export namespace HrisCreateEmployeeRequestDto$ {
                 ...(v.work_anniversary === undefined
                     ? null
                     : { workAnniversary: v.work_anniversary }),
-                workEmail: v.work_email,
+                ...(v.work_email === undefined ? null : { workEmail: v.work_email }),
                 ...(v.work_location === undefined ? null : { workLocation: v.work_location }),
                 ...(v.work_phone_number === undefined
                     ? null
@@ -10487,12 +10487,12 @@ export namespace HrisCreateEmployeeRequestDto$ {
         employment_type?: HrisCreateEmployeeRequestDtoEmploymentType$.Outbound | null | undefined;
         employments?: Array<Employment$.Outbound> | null | undefined;
         ethnicity?: HrisCreateEmployeeRequestDtoEthnicity$.Outbound | null | undefined;
-        first_name: string;
+        first_name?: string | null | undefined;
         gender?: HrisCreateEmployeeRequestDtoGender$.Outbound | null | undefined;
         hire_date?: string | null | undefined;
         home_location?: HrisCreateEmployeeRequestDtoHomeLocation$.Outbound | null | undefined;
         job_title?: string | null | undefined;
-        last_name: string;
+        last_name?: string | null | undefined;
         manager_id?: string | null | undefined;
         marital_status?: HrisCreateEmployeeRequestDtoMaritalStatus$.Outbound | null | undefined;
         name?: string | null | undefined;
@@ -10502,7 +10502,7 @@ export namespace HrisCreateEmployeeRequestDto$ {
         tenure?: number | null | undefined;
         termination_date?: string | null | undefined;
         work_anniversary?: string | null | undefined;
-        work_email: string;
+        work_email?: string | null | undefined;
         work_location?: HrisCreateEmployeeRequestDtoWorkLocation$.Outbound | null | undefined;
         work_phone_number?: string | null | undefined;
     };
@@ -10537,7 +10537,7 @@ export namespace HrisCreateEmployeeRequestDto$ {
             ethnicity: z
                 .nullable(z.lazy(() => HrisCreateEmployeeRequestDtoEthnicity$.outboundSchema))
                 .optional(),
-            firstName: z.string(),
+            firstName: z.nullable(z.string()).optional(),
             gender: z
                 .nullable(z.lazy(() => HrisCreateEmployeeRequestDtoGender$.outboundSchema))
                 .optional(),
@@ -10546,7 +10546,7 @@ export namespace HrisCreateEmployeeRequestDto$ {
                 .nullable(z.lazy(() => HrisCreateEmployeeRequestDtoHomeLocation$.outboundSchema))
                 .optional(),
             jobTitle: z.nullable(z.string()).optional(),
-            lastName: z.string(),
+            lastName: z.nullable(z.string()).optional(),
             managerId: z.nullable(z.string()).optional(),
             maritalStatus: z
                 .nullable(z.lazy(() => HrisCreateEmployeeRequestDtoMaritalStatus$.outboundSchema))
@@ -10558,7 +10558,7 @@ export namespace HrisCreateEmployeeRequestDto$ {
             tenure: z.nullable(z.number()).optional(),
             terminationDate: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
             workAnniversary: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
-            workEmail: z.string(),
+            workEmail: z.nullable(z.string()).optional(),
             workLocation: z
                 .nullable(z.lazy(() => HrisCreateEmployeeRequestDtoWorkLocation$.outboundSchema))
                 .optional(),
@@ -10584,12 +10584,12 @@ export namespace HrisCreateEmployeeRequestDto$ {
                 ...(v.employmentType === undefined ? null : { employment_type: v.employmentType }),
                 ...(v.employments === undefined ? null : { employments: v.employments }),
                 ...(v.ethnicity === undefined ? null : { ethnicity: v.ethnicity }),
-                first_name: v.firstName,
+                ...(v.firstName === undefined ? null : { first_name: v.firstName }),
                 ...(v.gender === undefined ? null : { gender: v.gender }),
                 ...(v.hireDate === undefined ? null : { hire_date: v.hireDate }),
                 ...(v.homeLocation === undefined ? null : { home_location: v.homeLocation }),
                 ...(v.jobTitle === undefined ? null : { job_title: v.jobTitle }),
-                last_name: v.lastName,
+                ...(v.lastName === undefined ? null : { last_name: v.lastName }),
                 ...(v.managerId === undefined ? null : { manager_id: v.managerId }),
                 ...(v.maritalStatus === undefined ? null : { marital_status: v.maritalStatus }),
                 ...(v.name === undefined ? null : { name: v.name }),
@@ -10605,7 +10605,7 @@ export namespace HrisCreateEmployeeRequestDto$ {
                 ...(v.workAnniversary === undefined
                     ? null
                     : { work_anniversary: v.workAnniversary }),
-                work_email: v.workEmail,
+                ...(v.workEmail === undefined ? null : { work_email: v.workEmail }),
                 ...(v.workLocation === undefined ? null : { work_location: v.workLocation }),
                 ...(v.workPhoneNumber === undefined
                     ? null
