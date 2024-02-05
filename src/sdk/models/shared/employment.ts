@@ -164,7 +164,7 @@ export type Employment = {
     /**
      * The employee ID associated with this employment
      */
-    employeeId: string;
+    employeeId?: string | null | undefined;
     /**
      * The employment work schedule type (e.g., full-time, part-time)
      */
@@ -618,7 +618,7 @@ export namespace Employment$ {
     export type Inbound = {
         created_at?: string | null | undefined;
         effective_date?: string | null | undefined;
-        employee_id: string;
+        employee_id?: string | null | undefined;
         employment_contract_type?: EmploymentEmploymentContractType$.Inbound | null | undefined;
         employment_type?: EmploymentEmploymentType$.Inbound | null | undefined;
         id?: string | null | undefined;
@@ -648,7 +648,7 @@ export namespace Employment$ {
                         .transform((v) => new Date(v))
                 )
                 .optional(),
-            employee_id: z.string(),
+            employee_id: z.nullable(z.string()).optional(),
             employment_contract_type: z
                 .nullable(z.lazy(() => EmploymentEmploymentContractType$.inboundSchema))
                 .optional(),
@@ -674,7 +674,7 @@ export namespace Employment$ {
             return {
                 ...(v.created_at === undefined ? null : { createdAt: v.created_at }),
                 ...(v.effective_date === undefined ? null : { effectiveDate: v.effective_date }),
-                employeeId: v.employee_id,
+                ...(v.employee_id === undefined ? null : { employeeId: v.employee_id }),
                 ...(v.employment_contract_type === undefined
                     ? null
                     : { employmentContractType: v.employment_contract_type }),
@@ -692,7 +692,7 @@ export namespace Employment$ {
     export type Outbound = {
         created_at?: string | null | undefined;
         effective_date?: string | null | undefined;
-        employee_id: string;
+        employee_id?: string | null | undefined;
         employment_contract_type?: EmploymentEmploymentContractType$.Outbound | null | undefined;
         employment_type?: EmploymentEmploymentType$.Outbound | null | undefined;
         id?: string | null | undefined;
@@ -708,7 +708,7 @@ export namespace Employment$ {
         .object({
             createdAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
             effectiveDate: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
-            employeeId: z.string(),
+            employeeId: z.nullable(z.string()).optional(),
             employmentContractType: z
                 .nullable(z.lazy(() => EmploymentEmploymentContractType$.outboundSchema))
                 .optional(),
@@ -727,7 +727,7 @@ export namespace Employment$ {
             return {
                 ...(v.createdAt === undefined ? null : { created_at: v.createdAt }),
                 ...(v.effectiveDate === undefined ? null : { effective_date: v.effectiveDate }),
-                employee_id: v.employeeId,
+                ...(v.employeeId === undefined ? null : { employee_id: v.employeeId }),
                 ...(v.employmentContractType === undefined
                     ? null
                     : { employment_contract_type: v.employmentContractType }),

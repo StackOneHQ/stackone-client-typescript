@@ -5,7 +5,7 @@
 import { z } from "zod";
 
 export type CreateEmployeeResult = {
-    message: string;
+    message?: string | null | undefined;
     statusCode: number;
     timestamp: Date;
 };
@@ -13,14 +13,14 @@ export type CreateEmployeeResult = {
 /** @internal */
 export namespace CreateEmployeeResult$ {
     export type Inbound = {
-        message: string;
+        message?: string | null | undefined;
         statusCode: number;
         timestamp: string;
     };
 
     export const inboundSchema: z.ZodType<CreateEmployeeResult, z.ZodTypeDef, Inbound> = z
         .object({
-            message: z.string(),
+            message: z.nullable(z.string()).optional(),
             statusCode: z.number(),
             timestamp: z
                 .string()
@@ -29,27 +29,27 @@ export namespace CreateEmployeeResult$ {
         })
         .transform((v) => {
             return {
-                message: v.message,
+                ...(v.message === undefined ? null : { message: v.message }),
                 statusCode: v.statusCode,
                 timestamp: v.timestamp,
             };
         });
 
     export type Outbound = {
-        message: string;
+        message?: string | null | undefined;
         statusCode: number;
         timestamp: string;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreateEmployeeResult> = z
         .object({
-            message: z.string(),
+            message: z.nullable(z.string()).optional(),
             statusCode: z.number(),
             timestamp: z.date().transform((v) => v.toISOString()),
         })
         .transform((v) => {
             return {
-                message: v.message,
+                ...(v.message === undefined ? null : { message: v.message }),
                 statusCode: v.statusCode,
                 timestamp: v.timestamp,
             };

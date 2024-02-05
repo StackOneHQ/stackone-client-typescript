@@ -34,31 +34,31 @@ export type EmployeeCustomFields = {
     /**
      * The description of the custom field.
      */
-    description?: string | undefined;
+    description?: string | null | undefined;
     /**
      * The unique identifier for the custom field, which defaults to the name property if the ID is not accessible.
      */
-    id?: string | undefined;
+    id?: string | null | undefined;
     /**
      * The name of the custom field.
      */
-    name?: string | undefined;
+    name?: string | null | undefined;
     /**
      * An array of possible options for the custom field.
      */
-    options?: Array<string> | undefined;
+    options?: Array<string> | null | undefined;
     /**
      * The type of the custom field.
      */
-    type?: EmployeeCustomFieldsType | undefined;
+    type?: EmployeeCustomFieldsType | null | undefined;
     /**
      * The value associated with the custom field.
      */
-    value?: EmployeeCustomFieldsValue | undefined;
+    value?: EmployeeCustomFieldsValue | null | undefined;
     /**
      * The unique identifier for the value of the custom field.
      */
-    valueId?: string | undefined;
+    valueId?: string | null | undefined;
 };
 
 /** @internal */
@@ -187,24 +187,24 @@ export namespace EmployeeCustomFieldsValue$ {
 /** @internal */
 export namespace EmployeeCustomFields$ {
     export type Inbound = {
-        description?: string | undefined;
-        id?: string | undefined;
-        name?: string | undefined;
-        options?: Array<string> | undefined;
-        type?: EmployeeCustomFieldsType$.Inbound | undefined;
-        value?: EmployeeCustomFieldsValue$.Inbound | undefined;
-        value_id?: string | undefined;
+        description?: string | null | undefined;
+        id?: string | null | undefined;
+        name?: string | null | undefined;
+        options?: Array<string> | null | undefined;
+        type?: EmployeeCustomFieldsType$.Inbound | null | undefined;
+        value?: EmployeeCustomFieldsValue$.Inbound | null | undefined;
+        value_id?: string | null | undefined;
     };
 
     export const inboundSchema: z.ZodType<EmployeeCustomFields, z.ZodTypeDef, Inbound> = z
         .object({
-            description: z.string().optional(),
-            id: z.string().optional(),
-            name: z.string().optional(),
-            options: z.array(z.string()).optional(),
-            type: z.lazy(() => EmployeeCustomFieldsType$.inboundSchema).optional(),
-            value: z.lazy(() => EmployeeCustomFieldsValue$.inboundSchema).optional(),
-            value_id: z.string().optional(),
+            description: z.nullable(z.string()).optional(),
+            id: z.nullable(z.string()).optional(),
+            name: z.nullable(z.string()).optional(),
+            options: z.nullable(z.array(z.string())).optional(),
+            type: z.nullable(z.lazy(() => EmployeeCustomFieldsType$.inboundSchema)).optional(),
+            value: z.nullable(z.lazy(() => EmployeeCustomFieldsValue$.inboundSchema)).optional(),
+            value_id: z.nullable(z.string()).optional(),
         })
         .transform((v) => {
             return {
@@ -219,24 +219,24 @@ export namespace EmployeeCustomFields$ {
         });
 
     export type Outbound = {
-        description?: string | undefined;
-        id?: string | undefined;
-        name?: string | undefined;
-        options?: Array<string> | undefined;
-        type?: EmployeeCustomFieldsType$.Outbound | undefined;
-        value?: EmployeeCustomFieldsValue$.Outbound | undefined;
-        value_id?: string | undefined;
+        description?: string | null | undefined;
+        id?: string | null | undefined;
+        name?: string | null | undefined;
+        options?: Array<string> | null | undefined;
+        type?: EmployeeCustomFieldsType$.Outbound | null | undefined;
+        value?: EmployeeCustomFieldsValue$.Outbound | null | undefined;
+        value_id?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, EmployeeCustomFields> = z
         .object({
-            description: z.string().optional(),
-            id: z.string().optional(),
-            name: z.string().optional(),
-            options: z.array(z.string()).optional(),
-            type: z.lazy(() => EmployeeCustomFieldsType$.outboundSchema).optional(),
-            value: z.lazy(() => EmployeeCustomFieldsValue$.outboundSchema).optional(),
-            valueId: z.string().optional(),
+            description: z.nullable(z.string()).optional(),
+            id: z.nullable(z.string()).optional(),
+            name: z.nullable(z.string()).optional(),
+            options: z.nullable(z.array(z.string())).optional(),
+            type: z.nullable(z.lazy(() => EmployeeCustomFieldsType$.outboundSchema)).optional(),
+            value: z.nullable(z.lazy(() => EmployeeCustomFieldsValue$.outboundSchema)).optional(),
+            valueId: z.nullable(z.string()).optional(),
         })
         .transform((v) => {
             return {
