@@ -39,10 +39,6 @@ export type HrisGetLocationRequest = {
      */
     raw?: boolean | null | undefined;
     /**
-     * The sync token to select the only updated results
-     */
-    syncToken?: string | null | undefined;
-    /**
      * Use a string with a date to only select results updated after that given date
      */
     updatedAfter?: string | null | undefined;
@@ -94,7 +90,6 @@ export namespace HrisGetLocationRequest$ {
         page_size?: string | null | undefined;
         proxy?: HrisGetLocationQueryParamProxy$.Inbound | null | undefined;
         raw?: boolean | null | undefined;
-        sync_token?: string | null | undefined;
         updated_after?: string | null | undefined;
         "x-account-id": string;
     };
@@ -110,7 +105,6 @@ export namespace HrisGetLocationRequest$ {
                 .nullable(z.lazy(() => HrisGetLocationQueryParamProxy$.inboundSchema))
                 .optional(),
             raw: z.nullable(z.boolean().default(false)),
-            sync_token: z.nullable(z.string()).optional(),
             updated_after: z.nullable(z.string()).optional(),
             "x-account-id": z.string(),
         })
@@ -123,7 +117,6 @@ export namespace HrisGetLocationRequest$ {
                 ...(v.page_size === undefined ? null : { pageSize: v.page_size }),
                 ...(v.proxy === undefined ? null : { proxy: v.proxy }),
                 ...(v.raw === undefined ? null : { raw: v.raw }),
-                ...(v.sync_token === undefined ? null : { syncToken: v.sync_token }),
                 ...(v.updated_after === undefined ? null : { updatedAfter: v.updated_after }),
                 xAccountId: v["x-account-id"],
             };
@@ -137,7 +130,6 @@ export namespace HrisGetLocationRequest$ {
         page_size: string | null;
         proxy?: HrisGetLocationQueryParamProxy$.Outbound | null | undefined;
         raw: boolean | null;
-        sync_token?: string | null | undefined;
         updated_after?: string | null | undefined;
         "x-account-id": string;
     };
@@ -153,7 +145,6 @@ export namespace HrisGetLocationRequest$ {
                 .nullable(z.lazy(() => HrisGetLocationQueryParamProxy$.outboundSchema))
                 .optional(),
             raw: z.nullable(z.boolean().default(false)),
-            syncToken: z.nullable(z.string()).optional(),
             updatedAfter: z.nullable(z.string()).optional(),
             xAccountId: z.string(),
         })
@@ -166,7 +157,6 @@ export namespace HrisGetLocationRequest$ {
                 page_size: v.pageSize,
                 ...(v.proxy === undefined ? null : { proxy: v.proxy }),
                 raw: v.raw,
-                ...(v.syncToken === undefined ? null : { sync_token: v.syncToken }),
                 ...(v.updatedAfter === undefined ? null : { updated_after: v.updatedAfter }),
                 "x-account-id": v.xAccountId,
             };
