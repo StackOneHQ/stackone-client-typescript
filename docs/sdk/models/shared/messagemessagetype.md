@@ -1,16 +1,11 @@
 # MessageMessageType
 
+Stackone enum identifying the type of message associated with the content.
 
-## Values
 
-| Name            | Value           |
-| --------------- | --------------- |
-| `Email`         | email           |
-| `Sms`           | sms             |
-| `WebPush`       | web_push        |
-| `IosPush`       | ios_push        |
-| `AndroidPush`   | android_push    |
-| `AppPush`       | app_push        |
-| `OmniChannel`   | omni_channel    |
-| `Unknown`       | unknown         |
-| `UnmappedValue` | unmapped_value  |
+## Fields
+
+| Field                                                                         | Type                                                                          | Required                                                                      | Description                                                                   | Example                                                                       |
+| ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| `sourceValue`                                                                 | *shared.MessageSourceValue*                                                   | :heavy_minus_sign:                                                            | The original value from the provider used to derive the unified message type. | Email                                                                         |
+| `value`                                                                       | *string*                                                                      | :heavy_minus_sign:                                                            | The unified message type.                                                     | email                                                                         |

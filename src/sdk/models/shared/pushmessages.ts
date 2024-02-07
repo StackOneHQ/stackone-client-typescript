@@ -10,23 +10,20 @@ export type PushMessagesMessageContent = {
 
 export type PushMessages4 = {};
 
+/**
+ * The original value from the provider used to derive the unified message type.
+ */
 export type PushMessagesSourceValue = PushMessages4 | string | number | boolean;
 
-export enum PushMessagesValue {
-    Email = "email",
-    Sms = "sms",
-    WebPush = "web_push",
-    IosPush = "ios_push",
-    AndroidPush = "android_push",
-    AppPush = "app_push",
-    OmniChannel = "omni_channel",
-    Unknown = "unknown",
-    UnmappedValue = "unmapped_value",
-}
-
 export type PushMessagesMessageType = {
+    /**
+     * The original value from the provider used to derive the unified message type.
+     */
     sourceValue?: PushMessages4 | string | number | boolean | null | undefined;
-    value?: PushMessagesValue | null | undefined;
+    /**
+     * The unified message type.
+     */
+    value?: string | null | undefined;
 };
 
 export type PushMessages = {
@@ -93,13 +90,10 @@ export namespace PushMessagesSourceValue$ {
 }
 
 /** @internal */
-export const PushMessagesValue$ = z.nativeEnum(PushMessagesValue);
-
-/** @internal */
 export namespace PushMessagesMessageType$ {
     export type Inbound = {
         source_value?: PushMessages4$.Inbound | string | number | boolean | null | undefined;
-        value?: PushMessagesValue | null | undefined;
+        value?: string | null | undefined;
     };
 
     export const inboundSchema: z.ZodType<PushMessagesMessageType, z.ZodTypeDef, Inbound> = z
@@ -114,7 +108,7 @@ export namespace PushMessagesMessageType$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(PushMessagesValue$).optional(),
+            value: z.nullable(z.string()).optional(),
         })
         .transform((v) => {
             return {
@@ -125,7 +119,7 @@ export namespace PushMessagesMessageType$ {
 
     export type Outbound = {
         source_value?: PushMessages4$.Outbound | string | number | boolean | null | undefined;
-        value?: PushMessagesValue | null | undefined;
+        value?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, PushMessagesMessageType> = z
@@ -140,7 +134,7 @@ export namespace PushMessagesMessageType$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(PushMessagesValue$).optional(),
+            value: z.nullable(z.string()).optional(),
         })
         .transform((v) => {
             return {

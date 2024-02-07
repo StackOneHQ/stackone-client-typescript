@@ -14,23 +14,20 @@ export type MessageContent = {
 
 export type EmailMessages4 = {};
 
+/**
+ * The original value from the provider used to derive the unified message type.
+ */
 export type EmailMessagesSourceValue = EmailMessages4 | string | number | boolean;
 
-export enum EmailMessagesValue {
-    Email = "email",
-    Sms = "sms",
-    WebPush = "web_push",
-    IosPush = "ios_push",
-    AndroidPush = "android_push",
-    AppPush = "app_push",
-    OmniChannel = "omni_channel",
-    Unknown = "unknown",
-    UnmappedValue = "unmapped_value",
-}
-
 export type MessageType = {
+    /**
+     * The original value from the provider used to derive the unified message type.
+     */
     sourceValue?: EmailMessages4 | string | number | boolean | null | undefined;
-    value?: EmailMessagesValue | null | undefined;
+    /**
+     * The unified message type.
+     */
+    value?: string | null | undefined;
 };
 
 export type EmailMessages = {
@@ -125,13 +122,10 @@ export namespace EmailMessagesSourceValue$ {
 }
 
 /** @internal */
-export const EmailMessagesValue$ = z.nativeEnum(EmailMessagesValue);
-
-/** @internal */
 export namespace MessageType$ {
     export type Inbound = {
         source_value?: EmailMessages4$.Inbound | string | number | boolean | null | undefined;
-        value?: EmailMessagesValue | null | undefined;
+        value?: string | null | undefined;
     };
 
     export const inboundSchema: z.ZodType<MessageType, z.ZodTypeDef, Inbound> = z
@@ -146,7 +140,7 @@ export namespace MessageType$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(EmailMessagesValue$).optional(),
+            value: z.nullable(z.string()).optional(),
         })
         .transform((v) => {
             return {
@@ -157,7 +151,7 @@ export namespace MessageType$ {
 
     export type Outbound = {
         source_value?: EmailMessages4$.Outbound | string | number | boolean | null | undefined;
-        value?: EmailMessagesValue | null | undefined;
+        value?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, MessageType> = z
@@ -172,7 +166,7 @@ export namespace MessageType$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(EmailMessagesValue$).optional(),
+            value: z.nullable(z.string()).optional(),
         })
         .transform((v) => {
             return {

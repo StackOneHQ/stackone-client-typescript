@@ -39,7 +39,9 @@ async function run() {
       messages: [
         {
           messageContent: {},
-          messageType: {},
+          messageType: {
+            value: "email",
+          },
         },
       ],
       tags: [
@@ -93,7 +95,11 @@ async function run() {
   const result = await sdk.marketing.createOmniChannelTemplate({
     marketingCreateTemplateRequestDto: {
       messages: [
-        {},
+        {
+          messageType: {
+            value: "email",
+          },
+        },
       ],
       tags: [
         "string",
@@ -148,7 +154,9 @@ async function run() {
       messages: [
         {
           messageContent: {},
-          messageType: {},
+          messageType: {
+            value: "email",
+          },
         },
       ],
       tags: [
@@ -576,7 +584,9 @@ async function run() {
       messages: [
         {
           messageContent: {},
-          messageType: {},
+          messageType: {
+            value: "email",
+          },
         },
       ],
       tags: [
@@ -631,7 +641,11 @@ async function run() {
   const result = await sdk.marketing.updateOmniChannelTemplate({
     marketingCreateTemplateRequestDto: {
       messages: [
-        {},
+        {
+          messageType: {
+            value: "email",
+          },
+        },
       ],
       tags: [
         "string",
@@ -687,7 +701,9 @@ async function run() {
       messages: [
         {
           messageContent: {},
-          messageType: {},
+          messageType: {
+            value: "email",
+          },
         },
       ],
       tags: [

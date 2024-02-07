@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: 7fa83af8-9e8e-4410-b7e2-cf1d0eaf688b
 management:
-  docChecksum: 1c314d22dcd9092760d81495c3d5bea3
+  docChecksum: 77d96aeea657d1b764f43837173fee09
   docVersion: 1.0.0
   speakeasyVersion: internal
-  generationVersion: 2.248.6
-  releaseVersion: 3.0.1
-  configChecksum: c837dcc344b727c32bd81c46e3331da4
+  generationVersion: 2.250.12
+  releaseVersion: 4.0.0
+  configChecksum: b5b950ad0d4b600e92d766289346e3bb
   repoURL: https://github.com/StackOneHQ/stackone-client-typescript.git
   repoSubDirectory: .
   installationURL: https://github.com/StackOneHQ/stackone-client-typescript
   published: true
 features:
   typescript:
-    constsAndDefaults: 0.1.1
+    constsAndDefaults: 0.1.2
     core: 3.4.8
     deprecations: 2.81.1
     examples: 2.81.3
@@ -884,7 +884,6 @@ generatedFiles:
   - docs/sdk/models/shared/messagecontent.md
   - docs/sdk/models/shared/emailmessages4.md
   - docs/sdk/models/shared/emailmessagessourcevalue.md
-  - docs/sdk/models/shared/emailmessagesvalue.md
   - docs/sdk/models/shared/messagetype.md
   - docs/sdk/models/shared/emailmessages.md
   - docs/sdk/models/shared/marketingcreatetemplaterequestdto.md
@@ -892,13 +891,14 @@ generatedFiles:
   - docs/sdk/models/shared/schemas.md
   - docs/sdk/models/shared/smsmessagecontentsschemas.md
   - docs/sdk/models/shared/messagemessagecontent.md
+  - docs/sdk/models/shared/message4.md
+  - docs/sdk/models/shared/messagesourcevalue.md
   - docs/sdk/models/shared/messagemessagetype.md
   - docs/sdk/models/shared/message.md
   - docs/sdk/models/shared/marketingcreatepushtemplaterequestdto.md
   - docs/sdk/models/shared/pushmessagesmessagecontent.md
   - docs/sdk/models/shared/pushmessages4.md
   - docs/sdk/models/shared/pushmessagessourcevalue.md
-  - docs/sdk/models/shared/pushmessagesvalue.md
   - docs/sdk/models/shared/pushmessagesmessagetype.md
   - docs/sdk/models/shared/pushmessages.md
   - docs/sdk/models/shared/campaignresult.md
