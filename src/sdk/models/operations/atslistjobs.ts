@@ -39,6 +39,8 @@ export type AtsListJobsRequest = {
     raw?: boolean | null | undefined;
     /**
      * The sync token to select the only updated results
+     *
+     * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     syncToken?: string | null | undefined;
     /**

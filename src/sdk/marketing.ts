@@ -246,10 +246,6 @@ export class Marketing extends ClientSDK {
             }),
             enc$.encodeForm("proxy", payload$.proxy, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("raw", payload$.raw, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("sync_token", payload$.sync_token, {
-                explode: true,
-                charEncoding: "percent",
-            }),
             enc$.encodeForm("updated_after", payload$.updated_after, {
                 explode: true,
                 charEncoding: "percent",
@@ -335,10 +331,6 @@ export class Marketing extends ClientSDK {
             }),
             enc$.encodeForm("proxy", payload$.proxy, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("raw", payload$.raw, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("sync_token", payload$.sync_token, {
-                explode: true,
-                charEncoding: "percent",
-            }),
             enc$.encodeForm("updated_after", payload$.updated_after, {
                 explode: true,
                 charEncoding: "percent",
@@ -425,10 +417,6 @@ export class Marketing extends ClientSDK {
             }),
             enc$.encodeForm("proxy", payload$.proxy, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("raw", payload$.raw, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("sync_token", payload$.sync_token, {
-                explode: true,
-                charEncoding: "percent",
-            }),
             enc$.encodeForm("updated_after", payload$.updated_after, {
                 explode: true,
                 charEncoding: "percent",
@@ -514,10 +502,6 @@ export class Marketing extends ClientSDK {
             }),
             enc$.encodeForm("proxy", payload$.proxy, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("raw", payload$.raw, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("sync_token", payload$.sync_token, {
-                explode: true,
-                charEncoding: "percent",
-            }),
             enc$.encodeForm("updated_after", payload$.updated_after, {
                 explode: true,
                 charEncoding: "percent",
@@ -597,10 +581,6 @@ export class Marketing extends ClientSDK {
             }),
             enc$.encodeForm("proxy", payload$.proxy, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("raw", payload$.raw, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("sync_token", payload$.sync_token, {
-                explode: true,
-                charEncoding: "percent",
-            }),
             enc$.encodeForm("updated_after", payload$.updated_after, {
                 explode: true,
                 charEncoding: "percent",
@@ -680,10 +660,6 @@ export class Marketing extends ClientSDK {
             }),
             enc$.encodeForm("proxy", payload$.proxy, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("raw", payload$.raw, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("sync_token", payload$.sync_token, {
-                explode: true,
-                charEncoding: "percent",
-            }),
             enc$.encodeForm("updated_after", payload$.updated_after, {
                 explode: true,
                 charEncoding: "percent",
@@ -764,10 +740,6 @@ export class Marketing extends ClientSDK {
             }),
             enc$.encodeForm("proxy", payload$.proxy, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("raw", payload$.raw, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("sync_token", payload$.sync_token, {
-                explode: true,
-                charEncoding: "percent",
-            }),
             enc$.encodeForm("updated_after", payload$.updated_after, {
                 explode: true,
                 charEncoding: "percent",
@@ -848,10 +820,6 @@ export class Marketing extends ClientSDK {
             }),
             enc$.encodeForm("proxy", payload$.proxy, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("raw", payload$.raw, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("sync_token", payload$.sync_token, {
-                explode: true,
-                charEncoding: "percent",
-            }),
             enc$.encodeForm("updated_after", payload$.updated_after, {
                 explode: true,
                 charEncoding: "percent",
