@@ -87,7 +87,9 @@ export enum EmployeeSchemasEmploymentTypeValue {
     Probation = "probation",
     Internal = "internal",
     External = "external",
+    Expatriate = "expatriate",
     EmployerOfRecord = "employer_of_record",
+    Casual = "casual",
     UnmappedValue = "unmapped_value",
 }
 
