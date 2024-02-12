@@ -21,4 +21,9 @@
 | `Pptx`          | pptx            |
 | `Txt`           | txt             |
 | `Jpeg`          | jpeg            |
+| `Html`          | html            |
+| `Gif`           | gif             |
+| `Msg`           | msg             |
+| `Tif`           | tif             |
+| `Docm`          | docm            |
 | `UnmappedValue` | unmapped_value  |
