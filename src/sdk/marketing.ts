@@ -21,6 +21,7 @@ export class Marketing extends ClientSDK {
         this.options$ = options;
         void this.options$;
     }
+
     /**
      * Create email template
      */
@@ -233,7 +234,6 @@ export class Marketing extends ClientSDK {
         const pathParams$ = {
             id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
-
         const path$ = this.templateURLComponent("/unified/marketing/campaigns/{id}")(pathParams$);
 
         const query$ = [
@@ -316,7 +316,6 @@ export class Marketing extends ClientSDK {
         const pathParams$ = {
             id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
-
         const path$ = this.templateURLComponent("/unified/marketing/templates/email/{id}")(
             pathParams$
         );
@@ -402,7 +401,6 @@ export class Marketing extends ClientSDK {
         const pathParams$ = {
             id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
-
         const path$ = this.templateURLComponent("/unified/marketing/templates/omni_channel/{id}")(
             pathParams$
         );
@@ -487,7 +485,6 @@ export class Marketing extends ClientSDK {
         const pathParams$ = {
             id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
-
         const path$ = this.templateURLComponent("/unified/marketing/templates/push/{id}")(
             pathParams$
         );
@@ -895,7 +892,6 @@ export class Marketing extends ClientSDK {
         const pathParams$ = {
             id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
-
         const path$ = this.templateURLComponent("/unified/marketing/templates/email/{id}")(
             pathParams$
         );
@@ -966,7 +962,6 @@ export class Marketing extends ClientSDK {
         const pathParams$ = {
             id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
-
         const path$ = this.templateURLComponent("/unified/marketing/templates/omni_channel/{id}")(
             pathParams$
         );
@@ -1037,7 +1032,6 @@ export class Marketing extends ClientSDK {
         const pathParams$ = {
             id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
-
         const path$ = this.templateURLComponent("/unified/marketing/templates/push/{id}")(
             pathParams$
         );

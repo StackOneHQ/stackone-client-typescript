@@ -26,7 +26,7 @@ async function run() {
   });
 
   const result = await sdk.accounts.deleteAccount({
-    id: "<ID>",
+    id: "<id>",
   });
 
   // Handle the result
@@ -71,7 +71,7 @@ async function run() {
   });
 
   const result = await sdk.accounts.getAccount({
-    id: "<ID>",
+    id: "<id>",
   });
 
   // Handle the result
@@ -116,7 +116,7 @@ async function run() {
   });
 
   const result = await sdk.accounts.getAccountMetaInfo({
-    id: "<ID>",
+    id: "<id>",
   });
 
   // Handle the result
@@ -205,7 +205,7 @@ async function run() {
 
   const result = await sdk.accounts.updateAccount({
     patchAccountDto: {},
-    id: "<ID>",
+    id: "<id>",
   });
 
   // Handle the result

@@ -21,6 +21,7 @@ export class Accounts extends ClientSDK {
         this.options$ = options;
         void this.options$;
     }
+
     /**
      * Delete Account
      */
@@ -38,7 +39,6 @@ export class Accounts extends ClientSDK {
         const pathParams$ = {
             id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
-
         const path$ = this.templateURLComponent("/accounts/{id}")(pathParams$);
 
         const security$ =
@@ -94,7 +94,6 @@ export class Accounts extends ClientSDK {
         const pathParams$ = {
             id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
-
         const path$ = this.templateURLComponent("/accounts/{id}")(pathParams$);
 
         const security$ =
@@ -150,7 +149,6 @@ export class Accounts extends ClientSDK {
         const pathParams$ = {
             id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
-
         const path$ = this.templateURLComponent("/accounts/{id}/meta")(pathParams$);
 
         const security$ =
@@ -274,7 +272,6 @@ export class Accounts extends ClientSDK {
         const pathParams$ = {
             id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
-
         const path$ = this.templateURLComponent("/accounts/{id}")(pathParams$);
 
         const security$ =

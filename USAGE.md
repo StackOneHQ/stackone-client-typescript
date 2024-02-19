@@ -13,7 +13,7 @@ async function run() {
 
     const result = await sdk.hris.listEmployees({
         proxy: {},
-        xAccountId: "string",
+        xAccountId: "<value>",
     });
 
     for await (const page of result) {

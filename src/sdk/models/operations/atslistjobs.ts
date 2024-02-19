@@ -12,6 +12,10 @@ export type AtsListJobsQueryParamProxy = {};
 
 export type AtsListJobsRequest = {
     /**
+     * The comma separated list of fields that will be expanded in the response
+     */
+    expand?: string | null | undefined;
+    /**
      * The comma separated list of fields to return in the response (if empty, all fields are returned)
      */
     fields?: string | null | undefined;
@@ -88,6 +92,7 @@ export namespace AtsListJobsQueryParamProxy$ {
 /** @internal */
 export namespace AtsListJobsRequest$ {
     export type Inbound = {
+        expand?: string | null | undefined;
         fields?: string | null | undefined;
         next?: string | null | undefined;
         page?: string | null | undefined;
@@ -101,6 +106,7 @@ export namespace AtsListJobsRequest$ {
 
     export const inboundSchema: z.ZodType<AtsListJobsRequest, z.ZodTypeDef, Inbound> = z
         .object({
+            expand: z.nullable(z.string()).optional(),
             fields: z.nullable(z.string()).optional(),
             next: z.nullable(z.string()).optional(),
             page: z.nullable(z.string()).optional(),
@@ -113,12 +119,13 @@ export namespace AtsListJobsRequest$ {
         })
         .transform((v) => {
             return {
+                ...(v.expand === undefined ? null : { expand: v.expand }),
                 ...(v.fields === undefined ? null : { fields: v.fields }),
                 ...(v.next === undefined ? null : { next: v.next }),
                 ...(v.page === undefined ? null : { page: v.page }),
-                ...(v.page_size === undefined ? null : { pageSize: v.page_size }),
+                pageSize: v.page_size,
                 ...(v.proxy === undefined ? null : { proxy: v.proxy }),
-                ...(v.raw === undefined ? null : { raw: v.raw }),
+                raw: v.raw,
                 ...(v.sync_token === undefined ? null : { syncToken: v.sync_token }),
                 ...(v.updated_after === undefined ? null : { updatedAfter: v.updated_after }),
                 xAccountId: v["x-account-id"],
@@ -126,6 +133,7 @@ export namespace AtsListJobsRequest$ {
         });
 
     export type Outbound = {
+        expand?: string | null | undefined;
         fields?: string | null | undefined;
         next?: string | null | undefined;
         page?: string | null | undefined;
@@ -139,6 +147,7 @@ export namespace AtsListJobsRequest$ {
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, AtsListJobsRequest> = z
         .object({
+            expand: z.nullable(z.string()).optional(),
             fields: z.nullable(z.string()).optional(),
             next: z.nullable(z.string()).optional(),
             page: z.nullable(z.string()).optional(),
@@ -151,6 +160,7 @@ export namespace AtsListJobsRequest$ {
         })
         .transform((v) => {
             return {
+                ...(v.expand === undefined ? null : { expand: v.expand }),
                 ...(v.fields === undefined ? null : { fields: v.fields }),
                 ...(v.next === undefined ? null : { next: v.next }),
                 ...(v.page === undefined ? null : { page: v.page }),

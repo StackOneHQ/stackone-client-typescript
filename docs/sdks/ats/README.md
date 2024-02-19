@@ -48,7 +48,7 @@ Create Application
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
-import { AtsCreateApplicationRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { AnswerValue, ApplicationAttachmentValue, AtsCreateApplicationRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 async function run() {
   const sdk = new StackOne({
@@ -60,12 +60,14 @@ async function run() {
   const result = await sdk.ats.createApplication({
     atsCreateApplicationRequestDto: {
       applicationStatus: {
+      sourceValue: "Hired",
         value: AtsCreateApplicationRequestDtoValue.Hired,
       },
       attachments: [
         {
           content: "Base64 encoded content",
           contentType: {
+          sourceValue: "Text",
             value: ApplicationAttachmentValue.Text,
           },
           fileName: "resume.pdf",
@@ -88,6 +90,7 @@ async function run() {
             {
               id: "answer_1",
               type: {
+              sourceValue: "Short Text",
                 value: AnswerValue.ShortText,
               },
               values: [
@@ -103,7 +106,7 @@ async function run() {
         },
       ],
     },
-    xAccountId: "string",
+    xAccountId: "<value>",
   });
 
   // Handle the result
@@ -166,7 +169,7 @@ async function run() {
       phone: "+16178294093",
       title: "Software Engineer",
     },
-    xAccountId: "string",
+    xAccountId: "<value>",
   });
 
   // Handle the result
@@ -220,11 +223,12 @@ async function run() {
         },
       ],
       visibility: {
+      sourceValue: "Public",
         value: AtsCreateNotesRequestDtoValue.Public,
       },
     },
-    id: "<ID>",
-    xAccountId: "string",
+    id: "<id>",
+    xAccountId: "<value>",
   });
 
   // Handle the result
@@ -279,11 +283,12 @@ async function run() {
         },
       ],
       offerStatus: {
+      sourceValue: "Pending",
         value: AtsCreateOfferRequestDtoValue.Pending,
       },
       startDate: new Date("2021-01-01T01:01:01.000Z"),
     },
-    xAccountId: "string",
+    xAccountId: "<value>",
   });
 
   // Handle the result
@@ -328,9 +333,9 @@ async function run() {
   });
 
   const result = await sdk.ats.getApplication({
-    id: "<ID>",
+    id: "<id>",
     proxy: {},
-    xAccountId: "string",
+    xAccountId: "<value>",
   });
 
   // Handle the result
@@ -375,10 +380,10 @@ async function run() {
   });
 
   const result = await sdk.ats.getApplicationDocument({
-    id: "<ID>",
+    id: "<id>",
     proxy: {},
-    subResourceId: "string",
-    xAccountId: "string",
+    subResourceId: "<value>",
+    xAccountId: "<value>",
   });
 
   // Handle the result
@@ -423,10 +428,10 @@ async function run() {
   });
 
   const result = await sdk.ats.getApplicationOffer({
-    id: "<ID>",
+    id: "<id>",
     proxy: {},
-    subResourceId: "string",
-    xAccountId: "string",
+    subResourceId: "<value>",
+    xAccountId: "<value>",
   });
 
   // Handle the result
@@ -471,10 +476,10 @@ async function run() {
   });
 
   const result = await sdk.ats.getApplicationScorecard({
-    id: "<ID>",
+    id: "<id>",
     proxy: {},
-    subResourceId: "string",
-    xAccountId: "string",
+    subResourceId: "<value>",
+    xAccountId: "<value>",
   });
 
   // Handle the result
@@ -519,9 +524,9 @@ async function run() {
   });
 
   const result = await sdk.ats.getCandidate({
-    id: "<ID>",
+    id: "<id>",
     proxy: {},
-    xAccountId: "string",
+    xAccountId: "<value>",
   });
 
   // Handle the result
@@ -566,10 +571,10 @@ async function run() {
   });
 
   const result = await sdk.ats.getCandidateNote({
-    id: "<ID>",
+    id: "<id>",
     proxy: {},
-    subResourceId: "string",
-    xAccountId: "string",
+    subResourceId: "<value>",
+    xAccountId: "<value>",
   });
 
   // Handle the result
@@ -614,9 +619,9 @@ async function run() {
   });
 
   const result = await sdk.ats.getDepartment({
-    id: "<ID>",
+    id: "<id>",
     proxy: {},
-    xAccountId: "string",
+    xAccountId: "<value>",
   });
 
   // Handle the result
@@ -661,9 +666,9 @@ async function run() {
   });
 
   const result = await sdk.ats.getInterview({
-    id: "<ID>",
+    id: "<id>",
     proxy: {},
-    xAccountId: "string",
+    xAccountId: "<value>",
   });
 
   // Handle the result
@@ -708,9 +713,9 @@ async function run() {
   });
 
   const result = await sdk.ats.getInterviewStage({
-    id: "<ID>",
+    id: "<id>",
     proxy: {},
-    xAccountId: "string",
+    xAccountId: "<value>",
   });
 
   // Handle the result
@@ -755,9 +760,9 @@ async function run() {
   });
 
   const result = await sdk.ats.getJob({
-    id: "<ID>",
+    id: "<id>",
     proxy: {},
-    xAccountId: "string",
+    xAccountId: "<value>",
   });
 
   // Handle the result
@@ -802,9 +807,9 @@ async function run() {
   });
 
   const result = await sdk.ats.getJobPosting({
-    id: "<ID>",
+    id: "<id>",
     proxy: {},
-    xAccountId: "string",
+    xAccountId: "<value>",
   });
 
   // Handle the result
@@ -849,9 +854,9 @@ async function run() {
   });
 
   const result = await sdk.ats.getLocation({
-    id: "<ID>",
+    id: "<id>",
     proxy: {},
-    xAccountId: "string",
+    xAccountId: "<value>",
   });
 
   // Handle the result
@@ -896,9 +901,9 @@ async function run() {
   });
 
   const result = await sdk.ats.getOffer({
-    id: "<ID>",
+    id: "<id>",
     proxy: {},
-    xAccountId: "string",
+    xAccountId: "<value>",
   });
 
   // Handle the result
@@ -943,9 +948,9 @@ async function run() {
   });
 
   const result = await sdk.ats.getRejectedReason({
-    id: "<ID>",
+    id: "<id>",
     proxy: {},
-    xAccountId: "string",
+    xAccountId: "<value>",
   });
 
   // Handle the result
@@ -990,9 +995,9 @@ async function run() {
   });
 
   const result = await sdk.ats.getUser({
-    id: "<ID>",
+    id: "<id>",
     proxy: {},
-    xAccountId: "string",
+    xAccountId: "<value>",
   });
 
   // Handle the result
@@ -1037,9 +1042,9 @@ async function run() {
   });
 
   const result = await sdk.ats.listApplicationDocuments({
-    id: "<ID>",
+    id: "<id>",
     proxy: {},
-    xAccountId: "string",
+    xAccountId: "<value>",
   });
 
   // Handle the result
@@ -1084,9 +1089,9 @@ async function run() {
   });
 
   const result = await sdk.ats.listApplicationScorecards({
-    id: "<ID>",
+    id: "<id>",
     proxy: {},
-    xAccountId: "string",
+    xAccountId: "<value>",
   });
 
   // Handle the result
@@ -1132,7 +1137,7 @@ async function run() {
 
   const result = await sdk.ats.listApplications({
     proxy: {},
-    xAccountId: "string",
+    xAccountId: "<value>",
   });
 
   // Handle the result
@@ -1177,9 +1182,9 @@ async function run() {
   });
 
   const result = await sdk.ats.listApplicationsOffers({
-    id: "<ID>",
+    id: "<id>",
     proxy: {},
-    xAccountId: "string",
+    xAccountId: "<value>",
   });
 
   // Handle the result
@@ -1224,9 +1229,9 @@ async function run() {
   });
 
   const result = await sdk.ats.listCandidateNotes({
-    id: "<ID>",
+    id: "<id>",
     proxy: {},
-    xAccountId: "string",
+    xAccountId: "<value>",
   });
 
   // Handle the result
@@ -1272,7 +1277,7 @@ async function run() {
 
   const result = await sdk.ats.listCandidates({
     proxy: {},
-    xAccountId: "string",
+    xAccountId: "<value>",
   });
 
   // Handle the result
@@ -1318,7 +1323,7 @@ async function run() {
 
   const result = await sdk.ats.listDepartments({
     proxy: {},
-    xAccountId: "string",
+    xAccountId: "<value>",
   });
 
   // Handle the result
@@ -1364,7 +1369,7 @@ async function run() {
 
   const result = await sdk.ats.listInterviewStages({
     proxy: {},
-    xAccountId: "string",
+    xAccountId: "<value>",
   });
 
   // Handle the result
@@ -1410,7 +1415,7 @@ async function run() {
 
   const result = await sdk.ats.listInterviews({
     proxy: {},
-    xAccountId: "string",
+    xAccountId: "<value>",
   });
 
   // Handle the result
@@ -1456,7 +1461,7 @@ async function run() {
 
   const result = await sdk.ats.listJobPostings({
     proxy: {},
-    xAccountId: "string",
+    xAccountId: "<value>",
   });
 
   // Handle the result
@@ -1502,7 +1507,7 @@ async function run() {
 
   const result = await sdk.ats.listJobs({
     proxy: {},
-    xAccountId: "string",
+    xAccountId: "<value>",
   });
 
   // Handle the result
@@ -1548,7 +1553,7 @@ async function run() {
 
   const result = await sdk.ats.listLocations({
     proxy: {},
-    xAccountId: "string",
+    xAccountId: "<value>",
   });
 
   // Handle the result
@@ -1594,7 +1599,7 @@ async function run() {
 
   const result = await sdk.ats.listOffers({
     proxy: {},
-    xAccountId: "string",
+    xAccountId: "<value>",
   });
 
   // Handle the result
@@ -1640,7 +1645,7 @@ async function run() {
 
   const result = await sdk.ats.listRejectedReasons({
     proxy: {},
-    xAccountId: "string",
+    xAccountId: "<value>",
   });
 
   // Handle the result
@@ -1686,7 +1691,7 @@ async function run() {
 
   const result = await sdk.ats.listUsers({
     proxy: {},
-    xAccountId: "string",
+    xAccountId: "<value>",
   });
 
   // Handle the result
@@ -1722,7 +1727,7 @@ Update Application
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
-import { AtsUpdateApplicationRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { AnswerValue, ApplicationAttachmentValue, AtsUpdateApplicationRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 async function run() {
   const sdk = new StackOne({
@@ -1734,12 +1739,14 @@ async function run() {
   const result = await sdk.ats.updateApplication({
     atsUpdateApplicationRequestDto: {
       applicationStatus: {
+      sourceValue: "Hired",
         value: AtsUpdateApplicationRequestDtoValue.Hired,
       },
       attachments: [
         {
           content: "Base64 encoded content",
           contentType: {
+          sourceValue: "Text",
             value: ApplicationAttachmentValue.Text,
           },
           fileName: "resume.pdf",
@@ -1763,6 +1770,7 @@ async function run() {
             {
               id: "answer_1",
               type: {
+              sourceValue: "Short Text",
                 value: AnswerValue.ShortText,
               },
               values: [
@@ -1778,8 +1786,8 @@ async function run() {
         },
       ],
     },
-    id: "<ID>",
-    xAccountId: "string",
+    id: "<id>",
+    xAccountId: "<value>",
   });
 
   // Handle the result
@@ -1843,8 +1851,8 @@ async function run() {
       phone: "+16178294093",
       title: "Software Engineer",
     },
-    id: "<ID>",
-    xAccountId: "string",
+    id: "<id>",
+    xAccountId: "<value>",
   });
 
   // Handle the result

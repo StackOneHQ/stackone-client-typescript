@@ -23,7 +23,7 @@ async function run() {
   });
 
   const result = await sdk.connectors.getConnectorMeta({
-    provider: "string",
+    provider: "<value>",
   });
 
   // Handle the result

@@ -21,6 +21,7 @@ export class Connectors extends ClientSDK {
         this.options$ = options;
         void this.options$;
     }
+
     /**
      * Get Connector Meta information for the given provider key
      */
@@ -41,7 +42,6 @@ export class Connectors extends ClientSDK {
                 charEncoding: "percent",
             }),
         };
-
         const path$ = this.templateURLComponent("/connectors/meta/{provider}")(pathParams$);
 
         const query$ = [

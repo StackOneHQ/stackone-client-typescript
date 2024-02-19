@@ -48,7 +48,7 @@ async function run() {
         "123-456-7890",
       ],
     },
-    xAccountId: "string",
+    xAccountId: "<value>",
   });
 
   // Handle the result
@@ -93,9 +93,9 @@ async function run() {
   });
 
   const result = await sdk.crm.getAccount({
-    id: "<ID>",
+    id: "<id>",
     proxy: {},
-    xAccountId: "string",
+    xAccountId: "<value>",
   });
 
   // Handle the result
@@ -140,9 +140,9 @@ async function run() {
   });
 
   const result = await sdk.crm.getContact({
-    id: "<ID>",
+    id: "<id>",
     proxy: {},
-    xAccountId: "string",
+    xAccountId: "<value>",
   });
 
   // Handle the result
@@ -187,9 +187,9 @@ async function run() {
   });
 
   const result = await sdk.crm.getList({
-    id: "<ID>",
+    id: "<id>",
     proxy: {},
-    xAccountId: "string",
+    xAccountId: "<value>",
   });
 
   // Handle the result
@@ -235,7 +235,7 @@ async function run() {
 
   const result = await sdk.crm.listAccounts({
     proxy: {},
-    xAccountId: "string",
+    xAccountId: "<value>",
   });
 
   // Handle the result
@@ -281,7 +281,7 @@ async function run() {
 
   const result = await sdk.crm.listContacts({
     proxy: {},
-    xAccountId: "string",
+    xAccountId: "<value>",
   });
 
   // Handle the result
@@ -327,7 +327,7 @@ async function run() {
 
   const result = await sdk.crm.listLists({
     proxy: {},
-    xAccountId: "string",
+    xAccountId: "<value>",
   });
 
   // Handle the result
@@ -391,8 +391,8 @@ async function run() {
         "123-456-7890",
       ],
     },
-    id: "<ID>",
-    xAccountId: "string",
+    id: "<id>",
+    xAccountId: "<value>",
   });
 
   // Handle the result

@@ -23,6 +23,7 @@ export class Hris extends ClientSDK {
         this.options$ = options;
         void this.options$;
     }
+
     /**
      * Creates an employee
      */
@@ -109,7 +110,6 @@ export class Hris extends ClientSDK {
         const pathParams$ = {
             id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
-
         const path$ = this.templateURLComponent("/unified/hris/employees/{id}/time_off")(
             pathParams$
         );
@@ -225,6 +225,88 @@ export class Hris extends ClientSDK {
     }
 
     /**
+     * Get Benefit
+     */
+    async getBenefit(
+        input: operations.HrisGetBenefitRequest,
+        options?: RequestOptions
+    ): Promise<operations.HrisGetBenefitResponse> {
+        const headers$ = new Headers();
+        headers$.set("user-agent", SDK_METADATA.userAgent);
+        headers$.set("Accept", "application/json");
+
+        const payload$ = operations.HrisGetBenefitRequest$.outboundSchema.parse(input);
+        const body$ = null;
+
+        const pathParams$ = {
+            id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
+        };
+        const path$ = this.templateURLComponent("/unified/hris/benefits/{id}")(pathParams$);
+
+        const query$ = [
+            enc$.encodeForm("fields", payload$.fields, { explode: true, charEncoding: "percent" }),
+            enc$.encodeForm("next", payload$.next, { explode: true, charEncoding: "percent" }),
+            enc$.encodeForm("page", payload$.page, { explode: true, charEncoding: "percent" }),
+            enc$.encodeForm("page_size", payload$.page_size, {
+                explode: true,
+                charEncoding: "percent",
+            }),
+            enc$.encodeForm("proxy", payload$.proxy, { explode: true, charEncoding: "percent" }),
+            enc$.encodeForm("raw", payload$.raw, { explode: true, charEncoding: "percent" }),
+            enc$.encodeForm("updated_after", payload$.updated_after, {
+                explode: true,
+                charEncoding: "percent",
+            }),
+        ]
+            .filter(Boolean)
+            .join("&");
+
+        headers$.set(
+            "x-account-id",
+            enc$.encodeSimple("x-account-id", payload$["x-account-id"], {
+                explode: false,
+                charEncoding: "none",
+            })
+        );
+
+        const security$ =
+            typeof this.options$.security === "function"
+                ? await this.options$.security()
+                : this.options$.security;
+        const securitySettings$ = this.resolveGlobalSecurity(security$);
+
+        const response = await this.fetch$(
+            {
+                security: securitySettings$,
+                method: "GET",
+                path: path$,
+                headers: headers$,
+                query: query$,
+                body: body$,
+            },
+            options
+        );
+
+        const responseFields$ = {
+            ContentType: response.headers.get("content-type") ?? "application/octet-stream",
+            StatusCode: response.status,
+            RawResponse: response,
+        };
+
+        if (this.matchResponse(response, 200, "application/json")) {
+            const responseBody = await response.json();
+            const result = operations.HrisGetBenefitResponse$.inboundSchema.parse({
+                ...responseFields$,
+                HRISBenefitResult: responseBody,
+            });
+            return result;
+        } else {
+            const responseBody = await response.text();
+            throw new errors.SDKError("Unexpected API response", response, responseBody);
+        }
+    }
+
+    /**
      * Get Company
      */
     async getCompany(
@@ -241,7 +323,6 @@ export class Hris extends ClientSDK {
         const pathParams$ = {
             id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
-
         const path$ = this.templateURLComponent("/unified/hris/companies/{id}")(pathParams$);
 
         const query$ = [
@@ -324,7 +405,6 @@ export class Hris extends ClientSDK {
         const pathParams$ = {
             id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
-
         const path$ = this.templateURLComponent("/unified/hris/employees/{id}")(pathParams$);
 
         const query$ = [
@@ -416,7 +496,6 @@ export class Hris extends ClientSDK {
                 charEncoding: "percent",
             }),
         };
-
         const path$ = this.templateURLComponent(
             "/unified/hris/employees/{id}/documents/{subResourceId}"
         )(pathParams$);
@@ -506,7 +585,6 @@ export class Hris extends ClientSDK {
                 charEncoding: "percent",
             }),
         };
-
         const path$ = this.templateURLComponent(
             "/unified/hris/employees/{id}/time_off/{subResourceId}"
         )(pathParams$);
@@ -591,7 +669,6 @@ export class Hris extends ClientSDK {
         const pathParams$ = {
             id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
-
         const path$ = this.templateURLComponent("/unified/hris/employments/{id}")(pathParams$);
 
         const query$ = [
@@ -674,7 +751,6 @@ export class Hris extends ClientSDK {
         const pathParams$ = {
             id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
-
         const path$ = this.templateURLComponent("/unified/hris/locations/{id}")(pathParams$);
 
         const query$ = [
@@ -757,7 +833,6 @@ export class Hris extends ClientSDK {
         const pathParams$ = {
             id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
-
         const path$ = this.templateURLComponent("/unified/hris/time_off/{id}")(pathParams$);
 
         const query$ = [
@@ -815,6 +890,85 @@ export class Hris extends ClientSDK {
             const result = operations.HrisGetTimeOffRequestResponse$.inboundSchema.parse({
                 ...responseFields$,
                 TimeOffResult: responseBody,
+            });
+            return result;
+        } else {
+            const responseBody = await response.text();
+            throw new errors.SDKError("Unexpected API response", response, responseBody);
+        }
+    }
+
+    /**
+     * List benefits
+     */
+    async listBenefits(
+        input: operations.HrisListBenefitsRequest,
+        options?: RequestOptions
+    ): Promise<operations.HrisListBenefitsResponse> {
+        const headers$ = new Headers();
+        headers$.set("user-agent", SDK_METADATA.userAgent);
+        headers$.set("Accept", "application/json");
+
+        const payload$ = operations.HrisListBenefitsRequest$.outboundSchema.parse(input);
+        const body$ = null;
+
+        const path$ = this.templateURLComponent("/unified/hris/benefits")();
+
+        const query$ = [
+            enc$.encodeForm("fields", payload$.fields, { explode: true, charEncoding: "percent" }),
+            enc$.encodeForm("next", payload$.next, { explode: true, charEncoding: "percent" }),
+            enc$.encodeForm("page", payload$.page, { explode: true, charEncoding: "percent" }),
+            enc$.encodeForm("page_size", payload$.page_size, {
+                explode: true,
+                charEncoding: "percent",
+            }),
+            enc$.encodeForm("proxy", payload$.proxy, { explode: true, charEncoding: "percent" }),
+            enc$.encodeForm("raw", payload$.raw, { explode: true, charEncoding: "percent" }),
+            enc$.encodeForm("updated_after", payload$.updated_after, {
+                explode: true,
+                charEncoding: "percent",
+            }),
+        ]
+            .filter(Boolean)
+            .join("&");
+
+        headers$.set(
+            "x-account-id",
+            enc$.encodeSimple("x-account-id", payload$["x-account-id"], {
+                explode: false,
+                charEncoding: "none",
+            })
+        );
+
+        const security$ =
+            typeof this.options$.security === "function"
+                ? await this.options$.security()
+                : this.options$.security;
+        const securitySettings$ = this.resolveGlobalSecurity(security$);
+
+        const response = await this.fetch$(
+            {
+                security: securitySettings$,
+                method: "GET",
+                path: path$,
+                headers: headers$,
+                query: query$,
+                body: body$,
+            },
+            options
+        );
+
+        const responseFields$ = {
+            ContentType: response.headers.get("content-type") ?? "application/octet-stream",
+            StatusCode: response.status,
+            RawResponse: response,
+        };
+
+        if (this.matchResponse(response, 200, "application/json")) {
+            const responseBody = await response.json();
+            const result = operations.HrisListBenefitsResponse$.inboundSchema.parse({
+                ...responseFields$,
+                HRISBenefitsPaginated: responseBody,
             });
             return result;
         } else {
@@ -919,7 +1073,6 @@ export class Hris extends ClientSDK {
         const pathParams$ = {
             id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
-
         const path$ = this.templateURLComponent("/unified/hris/employees/{id}/documents")(
             pathParams$
         );
@@ -1005,7 +1158,6 @@ export class Hris extends ClientSDK {
         const pathParams$ = {
             id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
-
         const path$ = this.templateURLComponent("/unified/hris/employees/{id}/time_off")(
             pathParams$
         );
@@ -1436,7 +1588,6 @@ export class Hris extends ClientSDK {
         const pathParams$ = {
             id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
-
         const path$ = this.templateURLComponent("/unified/hris/employees/{id}")(pathParams$);
 
         headers$.set(
@@ -1504,7 +1655,6 @@ export class Hris extends ClientSDK {
         const pathParams$ = {
             id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
-
         const path$ = this.templateURLComponent("/unified/hris/time_off/{id}")(pathParams$);
 
         headers$.set(

@@ -1,24 +1,24 @@
 lockVersion: 2.0.0
 id: 7fa83af8-9e8e-4410-b7e2-cf1d0eaf688b
 management:
-  docChecksum: d210dc594ffb1b93220c5e9690cab6bf
+  docChecksum: 11353968fc3af622483e10e60dae8a86
   docVersion: 1.0.0
   speakeasyVersion: internal
-  generationVersion: 2.252.2
-  releaseVersion: 4.0.1
-  configChecksum: 98bb711de497c2138b528ca16165f979
+  generationVersion: 2.262.2
+  releaseVersion: 4.0.2
+  configChecksum: 6ab17db7fc3ac7a4a28e925735f96837
   repoURL: https://github.com/StackOneHQ/stackone-client-typescript.git
   repoSubDirectory: .
   installationURL: https://github.com/StackOneHQ/stackone-client-typescript
   published: true
 features:
   typescript:
-    constsAndDefaults: 0.1.2
-    core: 3.4.9
+    constsAndDefaults: 0.1.3
+    core: 3.4.10
     deprecations: 2.81.1
     examples: 2.81.3
     globalSecurity: 2.82.2
-    globalServerURLs: 2.82.2
+    globalServerURLs: 2.82.3
     groups: 2.81.2
     nameOverrides: 2.81.1
     pagination: 2.82.0
@@ -112,6 +112,7 @@ generatedFiles:
   - src/sdk/models/operations/hriscreateemployee.ts
   - src/sdk/models/operations/hriscreateemployeetimeoffrequest.ts
   - src/sdk/models/operations/hriscreatetimeoffrequest.ts
+  - src/sdk/models/operations/hrisgetbenefit.ts
   - src/sdk/models/operations/hrisgetcompany.ts
   - src/sdk/models/operations/hrisgetemployee.ts
   - src/sdk/models/operations/hrisgetemployeedocument.ts
@@ -119,6 +120,7 @@ generatedFiles:
   - src/sdk/models/operations/hrisgetemployment.ts
   - src/sdk/models/operations/hrisgetlocation.ts
   - src/sdk/models/operations/hrisgettimeoffrequest.ts
+  - src/sdk/models/operations/hrislistbenefits.ts
   - src/sdk/models/operations/hrislistcompanies.ts
   - src/sdk/models/operations/hrislistemployeedocuments.ts
   - src/sdk/models/operations/hrislistemployeetimeoffrequests.ts
@@ -242,6 +244,8 @@ generatedFiles:
   - src/sdk/models/shared/countrycodeenum.ts
   - src/sdk/models/shared/createtimeoffresult.ts
   - src/sdk/models/shared/hriscreatetimeoffrequestdto.ts
+  - src/sdk/models/shared/hrisbenefitresult.ts
+  - src/sdk/models/shared/hrisbenefit.ts
   - src/sdk/models/shared/companyresult.ts
   - src/sdk/models/shared/company.ts
   - src/sdk/models/shared/employeeresult.ts
@@ -253,6 +257,7 @@ generatedFiles:
   - src/sdk/models/shared/employmentresult.ts
   - src/sdk/models/shared/hrislocationresult.ts
   - src/sdk/models/shared/hrislocation.ts
+  - src/sdk/models/shared/hrisbenefitspaginated.ts
   - src/sdk/models/shared/companiespaginated.ts
   - src/sdk/models/shared/timeoffpaginated.ts
   - src/sdk/models/shared/employeespaginated.ts
@@ -423,6 +428,9 @@ generatedFiles:
   - docs/sdk/models/operations/hriscreateemployeetimeoffrequestresponse.md
   - docs/sdk/models/operations/hriscreatetimeoffrequestrequest.md
   - docs/sdk/models/operations/hriscreatetimeoffrequestresponse.md
+  - docs/sdk/models/operations/hrisgetbenefitqueryparamproxy.md
+  - docs/sdk/models/operations/hrisgetbenefitrequest.md
+  - docs/sdk/models/operations/hrisgetbenefitresponse.md
   - docs/sdk/models/operations/hrisgetcompanyqueryparamproxy.md
   - docs/sdk/models/operations/hrisgetcompanyrequest.md
   - docs/sdk/models/operations/hrisgetcompanyresponse.md
@@ -444,6 +452,9 @@ generatedFiles:
   - docs/sdk/models/operations/hrisgettimeoffrequestqueryparamproxy.md
   - docs/sdk/models/operations/hrisgettimeoffrequestrequest.md
   - docs/sdk/models/operations/hrisgettimeoffrequestresponse.md
+  - docs/sdk/models/operations/hrislistbenefitsqueryparamproxy.md
+  - docs/sdk/models/operations/hrislistbenefitsrequest.md
+  - docs/sdk/models/operations/hrislistbenefitsresponse.md
   - docs/sdk/models/operations/hrislistcompaniesqueryparamproxy.md
   - docs/sdk/models/operations/hrislistcompaniesrequest.md
   - docs/sdk/models/operations/hrislistcompaniesresponse.md
@@ -798,6 +809,12 @@ generatedFiles:
   - docs/sdk/models/shared/hriscreatetimeoffrequestdtoschemasvalue.md
   - docs/sdk/models/shared/hriscreatetimeoffrequestdtotype.md
   - docs/sdk/models/shared/hriscreatetimeoffrequestdto.md
+  - docs/sdk/models/shared/hrisbenefitresult.md
+  - docs/sdk/models/shared/hrisbenefit4.md
+  - docs/sdk/models/shared/hrisbenefitsourcevalue.md
+  - docs/sdk/models/shared/hrisbenefitvalue.md
+  - docs/sdk/models/shared/benefittype.md
+  - docs/sdk/models/shared/hrisbenefit.md
   - docs/sdk/models/shared/companyresult.md
   - docs/sdk/models/shared/company.md
   - docs/sdk/models/shared/employeeresult.md
@@ -874,6 +891,7 @@ generatedFiles:
   - docs/sdk/models/shared/hrislocationschemasvalue.md
   - docs/sdk/models/shared/hrislocationlocationtype.md
   - docs/sdk/models/shared/hrislocation.md
+  - docs/sdk/models/shared/hrisbenefitspaginated.md
   - docs/sdk/models/shared/companiespaginated.md
   - docs/sdk/models/shared/timeoffpaginated.md
   - docs/sdk/models/shared/employeespaginated.md

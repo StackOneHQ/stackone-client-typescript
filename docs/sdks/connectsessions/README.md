@@ -23,7 +23,7 @@ async function run() {
   });
 
   const result = await sdk.connectSessions.authenticateConnectSession({
-    token: "string",
+    token: "<value>",
   });
 
   // Handle the result
@@ -59,7 +59,7 @@ Create Connect Session
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
-import {  } from "@stackone/stackone-client-ts/models";
+import { ConnectSessionCreateCategories } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 async function run() {
   const sdk = new StackOne({
@@ -78,8 +78,8 @@ async function run() {
       ConnectSessionCreateCategories.Stackone,
     ],
     metadata: {},
-    originOwnerId: "string",
-    originOwnerName: "string",
+    originOwnerId: "<value>",
+    originOwnerName: "<value>",
   });
 
   // Handle the result

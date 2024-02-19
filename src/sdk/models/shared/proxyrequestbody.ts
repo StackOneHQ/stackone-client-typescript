@@ -95,7 +95,7 @@ export namespace ProxyRequestBody$ {
             return {
                 ...(v.body === undefined ? null : { body: v.body }),
                 ...(v.headers === undefined ? null : { headers: v.headers }),
-                ...(v.method === undefined ? null : { method: v.method }),
+                method: v.method,
                 ...(v.path === undefined ? null : { path: v.path }),
                 ...(v.url === undefined ? null : { url: v.url }),
             };
