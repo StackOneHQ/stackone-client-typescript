@@ -107,10 +107,10 @@ export namespace ConnectSessionCreate$ {
             return {
                 ...(v.account_id === undefined ? null : { accountId: v.account_id }),
                 ...(v.categories === undefined ? null : { categories: v.categories }),
-                ...(v.expires_in === undefined ? null : { expiresIn: v.expires_in }),
+                expiresIn: v.expires_in,
                 ...(v.label === undefined ? null : { label: v.label }),
                 ...(v.metadata === undefined ? null : { metadata: v.metadata }),
-                ...(v.multiple === undefined ? null : { multiple: v.multiple }),
+                multiple: v.multiple,
                 originOwnerId: v.origin_owner_id,
                 originOwnerName: v.origin_owner_name,
                 ...(v.origin_username === undefined ? null : { originUsername: v.origin_username }),

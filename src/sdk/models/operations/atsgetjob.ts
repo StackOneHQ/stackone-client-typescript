@@ -12,6 +12,10 @@ export type AtsGetJobQueryParamProxy = {};
 
 export type AtsGetJobRequest = {
     /**
+     * The comma separated list of fields that will be expanded in the response
+     */
+    expand?: string | null | undefined;
+    /**
      * The comma separated list of fields to return in the response (if empty, all fields are returned)
      */
     fields?: string | null | undefined;
@@ -89,6 +93,7 @@ export namespace AtsGetJobQueryParamProxy$ {
 /** @internal */
 export namespace AtsGetJobRequest$ {
     export type Inbound = {
+        expand?: string | null | undefined;
         fields?: string | null | undefined;
         id: string;
         next?: string | null | undefined;
@@ -103,6 +108,7 @@ export namespace AtsGetJobRequest$ {
 
     export const inboundSchema: z.ZodType<AtsGetJobRequest, z.ZodTypeDef, Inbound> = z
         .object({
+            expand: z.nullable(z.string()).optional(),
             fields: z.nullable(z.string()).optional(),
             id: z.string(),
             next: z.nullable(z.string()).optional(),
@@ -116,13 +122,14 @@ export namespace AtsGetJobRequest$ {
         })
         .transform((v) => {
             return {
+                ...(v.expand === undefined ? null : { expand: v.expand }),
                 ...(v.fields === undefined ? null : { fields: v.fields }),
                 id: v.id,
                 ...(v.next === undefined ? null : { next: v.next }),
                 ...(v.page === undefined ? null : { page: v.page }),
-                ...(v.page_size === undefined ? null : { pageSize: v.page_size }),
+                pageSize: v.page_size,
                 ...(v.proxy === undefined ? null : { proxy: v.proxy }),
-                ...(v.raw === undefined ? null : { raw: v.raw }),
+                raw: v.raw,
                 ...(v.sync_token === undefined ? null : { syncToken: v.sync_token }),
                 ...(v.updated_after === undefined ? null : { updatedAfter: v.updated_after }),
                 xAccountId: v["x-account-id"],
@@ -130,6 +137,7 @@ export namespace AtsGetJobRequest$ {
         });
 
     export type Outbound = {
+        expand?: string | null | undefined;
         fields?: string | null | undefined;
         id: string;
         next?: string | null | undefined;
@@ -144,6 +152,7 @@ export namespace AtsGetJobRequest$ {
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, AtsGetJobRequest> = z
         .object({
+            expand: z.nullable(z.string()).optional(),
             fields: z.nullable(z.string()).optional(),
             id: z.string(),
             next: z.nullable(z.string()).optional(),
@@ -157,6 +166,7 @@ export namespace AtsGetJobRequest$ {
         })
         .transform((v) => {
             return {
+                ...(v.expand === undefined ? null : { expand: v.expand }),
                 ...(v.fields === undefined ? null : { fields: v.fields }),
                 id: v.id,
                 ...(v.next === undefined ? null : { next: v.next }),

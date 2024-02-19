@@ -21,6 +21,7 @@ export class Crm extends ClientSDK {
         this.options$ = options;
         void this.options$;
     }
+
     /**
      * Creates a new Contact
      */
@@ -102,7 +103,6 @@ export class Crm extends ClientSDK {
         const pathParams$ = {
             id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
-
         const path$ = this.templateURLComponent("/unified/crm/accounts/{id}")(pathParams$);
 
         const query$ = [
@@ -185,7 +185,6 @@ export class Crm extends ClientSDK {
         const pathParams$ = {
             id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
-
         const path$ = this.templateURLComponent("/unified/crm/contacts/{id}")(pathParams$);
 
         const query$ = [
@@ -268,7 +267,6 @@ export class Crm extends ClientSDK {
         const pathParams$ = {
             id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
-
         const path$ = this.templateURLComponent("/unified/crm/lists/{id}")(pathParams$);
 
         const query$ = [
@@ -592,7 +590,6 @@ export class Crm extends ClientSDK {
         const pathParams$ = {
             id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
-
         const path$ = this.templateURLComponent("/unified/crm/contacts/{id}")(pathParams$);
 
         headers$.set(

@@ -39,7 +39,7 @@ async function run() {
 
     const result = await sdk.hris.listEmployees({
         proxy: {},
-        xAccountId: "string",
+        xAccountId: "<value>",
     });
 
     for await (const page of result) {
@@ -128,6 +128,7 @@ run();
 * [createEmployee](docs/sdks/hris/README.md#createemployee) - Creates an employee
 * [createEmployeeTimeOffRequest](docs/sdks/hris/README.md#createemployeetimeoffrequest) - Create Employee Time Off Request
 * [createTimeOffRequest](docs/sdks/hris/README.md#createtimeoffrequest) - Creates a time off request
+* [getBenefit](docs/sdks/hris/README.md#getbenefit) - Get Benefit
 * [getCompany](docs/sdks/hris/README.md#getcompany) - Get Company
 * [getEmployee](docs/sdks/hris/README.md#getemployee) - Get Employee
 * [getEmployeeDocument](docs/sdks/hris/README.md#getemployeedocument) - Get Employee Document
@@ -135,6 +136,7 @@ run();
 * [getEmployment](docs/sdks/hris/README.md#getemployment) - Get Employment
 * [getLocation](docs/sdks/hris/README.md#getlocation) - Get Location
 * [getTimeOffRequest](docs/sdks/hris/README.md#gettimeoffrequest) - Get time off request
+* [listBenefits](docs/sdks/hris/README.md#listbenefits) - List benefits
 * [listCompanies](docs/sdks/hris/README.md#listcompanies) - List Companies
 * [listEmployeeDocuments](docs/sdks/hris/README.md#listemployeedocuments) - List Employee Documents
 * [listEmployeeTimeOffRequests](docs/sdks/hris/README.md#listemployeetimeoffrequests) - List Employee Time Off Requests
@@ -191,7 +193,7 @@ async function run() {
 
     const result = await sdk.hris.listEmployees({
         proxy: {},
-        xAccountId: "string",
+        xAccountId: "<value>",
     });
 
     for await (const page of result) {
@@ -228,7 +230,7 @@ async function run() {
     let result;
     try {
         result = await sdk.accounts.deleteAccount({
-            id: "<ID>",
+            id: "<id>",
         });
     } catch (err) {
         // Handle errors here
@@ -323,7 +325,7 @@ async function run() {
     });
 
     const result = await sdk.accounts.deleteAccount({
-        id: "<ID>",
+        id: "<id>",
     });
 
     // Handle the result

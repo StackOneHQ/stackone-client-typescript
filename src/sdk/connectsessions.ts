@@ -22,6 +22,7 @@ export class ConnectSessions extends ClientSDK {
         this.options$ = options;
         void this.options$;
     }
+
     /**
      * Authenticate Connect Session
      */

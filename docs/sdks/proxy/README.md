@@ -13,7 +13,6 @@ Proxy Request
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
-import { Method } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 async function run() {
   const sdk = new StackOne({
@@ -29,7 +28,7 @@ async function run() {
       path: "/employees/directory",
       url: "https://api.sample-integration.com/v1",
     },
-    xAccountId: "string",
+    xAccountId: "<value>",
   });
 
   // Handle the result

@@ -121,9 +121,9 @@ export namespace HrisListEmployeeDocumentsRequest$ {
                     id: v.id,
                     ...(v.next === undefined ? null : { next: v.next }),
                     ...(v.page === undefined ? null : { page: v.page }),
-                    ...(v.page_size === undefined ? null : { pageSize: v.page_size }),
+                    pageSize: v.page_size,
                     ...(v.proxy === undefined ? null : { proxy: v.proxy }),
-                    ...(v.raw === undefined ? null : { raw: v.raw }),
+                    raw: v.raw,
                     ...(v.updated_after === undefined ? null : { updatedAfter: v.updated_after }),
                     xAccountId: v["x-account-id"],
                 };

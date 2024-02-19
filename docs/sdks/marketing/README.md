@@ -40,15 +40,16 @@ async function run() {
         {
           messageContent: {},
           messageType: {
+          sourceValue: "Email",
             value: "email",
           },
         },
       ],
       tags: [
-        "string",
+        "<value>",
       ],
     },
-    xAccountId: "string",
+    xAccountId: "<value>",
   });
 
   // Handle the result
@@ -96,16 +97,18 @@ async function run() {
     marketingCreateTemplateRequestDto: {
       messages: [
         {
+        messageContent:     {},
           messageType: {
+          sourceValue: "Email",
             value: "email",
           },
         },
       ],
       tags: [
-        "string",
+        "<value>",
       ],
     },
-    xAccountId: "string",
+    xAccountId: "<value>",
   });
 
   // Handle the result
@@ -155,15 +158,16 @@ async function run() {
         {
           messageContent: {},
           messageType: {
+          sourceValue: "Email",
             value: "email",
           },
         },
       ],
       tags: [
-        "string",
+        "<value>",
       ],
     },
-    xAccountId: "string",
+    xAccountId: "<value>",
   });
 
   // Handle the result
@@ -208,9 +212,9 @@ async function run() {
   });
 
   const result = await sdk.marketing.getCampaign({
-    id: "<ID>",
+    id: "<id>",
     proxy: {},
-    xAccountId: "string",
+    xAccountId: "<value>",
   });
 
   // Handle the result
@@ -255,9 +259,9 @@ async function run() {
   });
 
   const result = await sdk.marketing.getEmailTemplate({
-    id: "<ID>",
+    id: "<id>",
     proxy: {},
-    xAccountId: "string",
+    xAccountId: "<value>",
   });
 
   // Handle the result
@@ -302,9 +306,9 @@ async function run() {
   });
 
   const result = await sdk.marketing.getOmniChannelTemplate({
-    id: "<ID>",
+    id: "<id>",
     proxy: {},
-    xAccountId: "string",
+    xAccountId: "<value>",
   });
 
   // Handle the result
@@ -349,9 +353,9 @@ async function run() {
   });
 
   const result = await sdk.marketing.getPushTemplate({
-    id: "<ID>",
+    id: "<id>",
     proxy: {},
-    xAccountId: "string",
+    xAccountId: "<value>",
   });
 
   // Handle the result
@@ -397,7 +401,7 @@ async function run() {
 
   const result = await sdk.marketing.listCampaigns({
     proxy: {},
-    xAccountId: "string",
+    xAccountId: "<value>",
   });
 
   // Handle the result
@@ -443,7 +447,7 @@ async function run() {
 
   const result = await sdk.marketing.listEmailTemplates({
     proxy: {},
-    xAccountId: "string",
+    xAccountId: "<value>",
   });
 
   // Handle the result
@@ -489,7 +493,7 @@ async function run() {
 
   const result = await sdk.marketing.listOmniChannelTemplates({
     proxy: {},
-    xAccountId: "string",
+    xAccountId: "<value>",
   });
 
   // Handle the result
@@ -535,7 +539,7 @@ async function run() {
 
   const result = await sdk.marketing.listPushTemplates({
     proxy: {},
-    xAccountId: "string",
+    xAccountId: "<value>",
   });
 
   // Handle the result
@@ -585,16 +589,17 @@ async function run() {
         {
           messageContent: {},
           messageType: {
+          sourceValue: "Email",
             value: "email",
           },
         },
       ],
       tags: [
-        "string",
+        "<value>",
       ],
     },
-    id: "<ID>",
-    xAccountId: "string",
+    id: "<id>",
+    xAccountId: "<value>",
   });
 
   // Handle the result
@@ -642,17 +647,19 @@ async function run() {
     marketingCreateTemplateRequestDto: {
       messages: [
         {
+        messageContent:     {},
           messageType: {
+          sourceValue: "Email",
             value: "email",
           },
         },
       ],
       tags: [
-        "string",
+        "<value>",
       ],
     },
-    id: "<ID>",
-    xAccountId: "string",
+    id: "<id>",
+    xAccountId: "<value>",
   });
 
   // Handle the result
@@ -702,16 +709,17 @@ async function run() {
         {
           messageContent: {},
           messageType: {
+          sourceValue: "Email",
             value: "email",
           },
         },
       ],
       tags: [
-        "string",
+        "<value>",
       ],
     },
-    id: "<ID>",
-    xAccountId: "string",
+    id: "<id>",
+    xAccountId: "<value>",
   });
 
   // Handle the result

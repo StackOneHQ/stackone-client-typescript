@@ -21,6 +21,7 @@ export class Proxy extends ClientSDK {
         this.options$ = options;
         void this.options$;
     }
+
     /**
      * Proxy Request
      */

@@ -6,6 +6,7 @@
 * [createEmployee](#createemployee) - Creates an employee
 * [createEmployeeTimeOffRequest](#createemployeetimeoffrequest) - Create Employee Time Off Request
 * [createTimeOffRequest](#createtimeoffrequest) - Creates a time off request
+* [getBenefit](#getbenefit) - Get Benefit
 * [getCompany](#getcompany) - Get Company
 * [getEmployee](#getemployee) - Get Employee
 * [getEmployeeDocument](#getemployeedocument) - Get Employee Document
@@ -13,6 +14,7 @@
 * [getEmployment](#getemployment) - Get Employment
 * [getLocation](#getlocation) - Get Location
 * [getTimeOffRequest](#gettimeoffrequest) - Get time off request
+* [listBenefits](#listbenefits) - List benefits
 * [listCompanies](#listcompanies) - List Companies
 * [listEmployeeDocuments](#listemployeedocuments) - List Employee Documents
 * [listEmployeeTimeOffRequests](#listemployeetimeoffrequests) - List Employee Time Off Requests
@@ -32,16 +34,13 @@ Creates an employee
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 import {
+  CountryCodeEnumValue,
+  EmploymentSchemasPayFrequencyValue,
+  EmploymentSchemasPayPeriodValue,
+  EmploymentSchemasValue,
   HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue,
-  HrisCreateEmployeeRequestDtoSchemasEthnicityValue,
-  HrisCreateEmployeeRequestDtoSchemasGenderValue,
-  HrisCreateEmployeeRequestDtoSchemasHomeLocationStateValue,
   HrisCreateEmployeeRequestDtoSchemasHomeLocationValue,
-  HrisCreateEmployeeRequestDtoSchemasMaritalStatusValue,
-  HrisCreateEmployeeRequestDtoSchemasValue,
-  HrisCreateEmployeeRequestDtoSchemasWorkLocationStateValue,
   HrisCreateEmployeeRequestDtoSchemasWorkLocationValue,
-  HrisCreateEmployeeRequestDtoValue,
 } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 async function run() {
@@ -58,6 +57,7 @@ async function run() {
       birthday: new Date("2021-01-01T00:00:00Z"),
       citizenships: [
         {
+        sourceValue: 6730.33,
           value: CountryCodeEnumValue.Us,
         },
       ],
@@ -73,7 +73,9 @@ async function run() {
             "Completed",
             "Overdue",
           ],
-          type: {},
+          type: {
+          sourceValue: "<value>",
+          },
           value: {},
           valueId: "value_456",
         },
@@ -81,9 +83,14 @@ async function run() {
       dateOfBirth: new Date("1990-01-01T00:00.000Z"),
       department: "Physics",
       displayName: "Sir Issac Newton",
-      employmentContractType: {},
-      employmentStatus: {},
+      employmentContractType: {
+      sourceValue:     {},
+      },
+      employmentStatus: {
+      sourceValue:     {},
+      },
       employmentType: {
+      sourceValue: "Permanent",
         value: HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue.Permanent,
       },
       employments: [
@@ -91,35 +98,47 @@ async function run() {
           createdAt: new Date("2021-01-01T01:01:01.000Z"),
           effectiveDate: new Date("2021-01-01T01:01:01.000Z"),
           employeeId: "1687-3",
-          employmentContractType: {},
+          employmentContractType: {
+          sourceValue: "<value>",
+          },
           employmentType: {
+          sourceValue: "Permanent",
             value: EmploymentSchemasValue.Permanent,
           },
           id: "123456",
           jobTitle: "Software Engineer",
           payCurrency: "USD",
           payFrequency: {
+          sourceValue: "Hourly",
             value: EmploymentSchemasPayFrequencyValue.Hourly,
           },
           payPeriod: {
+          sourceValue: "Hour",
             value: EmploymentSchemasPayPeriodValue.Hour,
           },
           payRate: "40.00",
           updatedAt: new Date("2021-01-01T01:01:01.000Z"),
         },
       ],
-      ethnicity: {},
+      ethnicity: {
+      sourceValue:     {},
+      },
       firstName: "Issac",
-      gender: {},
+      gender: {
+      sourceValue:     {},
+      },
       hireDate: new Date("2021-01-01T00:00.000Z"),
       homeLocation: {
         city: "Grantham",
         country: {
+        sourceValue: 8263.19,
           value: HrisCreateEmployeeRequestDtoSchemasHomeLocationValue.Us,
         },
         name: "Woolsthorpe Manor",
         phoneNumber: "+44 1476 860 364",
-        state: {},
+        state: {
+        sourceValue:     {},
+        },
         street1: "Water Lane",
         street2: "Woolsthorpe by Colsterworth",
         zipCode: "NG33 5NR",
@@ -127,7 +146,9 @@ async function run() {
       jobTitle: "Physicist",
       lastName: "Newton",
       managerId: "67890",
-      maritalStatus: {},
+      maritalStatus: {
+      sourceValue: "<value>",
+      },
       name: "Issac Newton",
       personalEmail: "isaac.newton@example.com",
       personalPhoneNumber: "+1234567890",
@@ -139,18 +160,21 @@ async function run() {
       workLocation: {
         city: "Grantham",
         country: {
+        sourceValue: "<value>",
           value: HrisCreateEmployeeRequestDtoSchemasWorkLocationValue.Us,
         },
         name: "Woolsthorpe Manor",
         phoneNumber: "+44 1476 860 364",
-        state: {},
+        state: {
+        sourceValue: "<value>",
+        },
         street1: "Water Lane",
         street2: "Woolsthorpe by Colsterworth",
         zipCode: "NG33 5NR",
       },
       workPhoneNumber: "+1234567890",
     },
-    xAccountId: "string",
+    xAccountId: "<value>",
   });
 
   // Handle the result
@@ -186,7 +210,6 @@ Create Employee Time Off Request
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
-import { HrisCreateTimeOffRequestDtoSchemasValue, HrisCreateTimeOffRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 async function run() {
   const sdk = new StackOne({
@@ -201,11 +224,15 @@ async function run() {
       employeeId: "1687-3",
       endDate: new Date("2021-01-01T01:01:01.000Z"),
       startDate: new Date("2021-01-01T01:01:01.000Z"),
-      status: {},
-      type: {},
+      status: {
+      sourceValue:     {},
+      },
+      type: {
+      sourceValue: false,
+      },
     },
-    id: "<ID>",
-    xAccountId: "string",
+    id: "<id>",
+    xAccountId: "<value>",
   });
 
   // Handle the result
@@ -241,7 +268,6 @@ Creates a time off request
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
-import { HrisCreateTimeOffRequestDtoSchemasValue, HrisCreateTimeOffRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 async function run() {
   const sdk = new StackOne({
@@ -256,10 +282,14 @@ async function run() {
       employeeId: "1687-3",
       endDate: new Date("2021-01-01T01:01:01.000Z"),
       startDate: new Date("2021-01-01T01:01:01.000Z"),
-      status: {},
-      type: {},
+      status: {
+      sourceValue:     {},
+      },
+      type: {
+      sourceValue:     {},
+      },
     },
-    xAccountId: "string",
+    xAccountId: "<value>",
   });
 
   // Handle the result
@@ -287,6 +317,53 @@ run();
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 4xx-5xx         | */*             |
 
+## getBenefit
+
+Get Benefit
+
+### Example Usage
+
+```typescript
+import { StackOne } from "@stackone/stackone-client-ts";
+
+async function run() {
+  const sdk = new StackOne({
+    security: {
+      password: "<YOUR_PASSWORD_HERE>",
+    },
+  });
+
+  const result = await sdk.hris.getBenefit({
+    id: "<id>",
+    proxy: {},
+    xAccountId: "<value>",
+  });
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.HrisGetBenefitRequest](../../sdk/models/operations/hrisgetbenefitrequest.md)                                                                                       | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+
+
+### Response
+
+**Promise<[operations.HrisGetBenefitResponse](../../sdk/models/operations/hrisgetbenefitresponse.md)>**
+### Errors
+
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
+
 ## getCompany
 
 Get Company
@@ -304,9 +381,9 @@ async function run() {
   });
 
   const result = await sdk.hris.getCompany({
-    id: "<ID>",
+    id: "<id>",
     proxy: {},
-    xAccountId: "string",
+    xAccountId: "<value>",
   });
 
   // Handle the result
@@ -351,9 +428,9 @@ async function run() {
   });
 
   const result = await sdk.hris.getEmployee({
-    id: "<ID>",
+    id: "<id>",
     proxy: {},
-    xAccountId: "string",
+    xAccountId: "<value>",
   });
 
   // Handle the result
@@ -398,10 +475,10 @@ async function run() {
   });
 
   const result = await sdk.hris.getEmployeeDocument({
-    id: "<ID>",
+    id: "<id>",
     proxy: {},
-    subResourceId: "string",
-    xAccountId: "string",
+    subResourceId: "<value>",
+    xAccountId: "<value>",
   });
 
   // Handle the result
@@ -446,10 +523,10 @@ async function run() {
   });
 
   const result = await sdk.hris.getEmployeesTimeOffRequest({
-    id: "<ID>",
+    id: "<id>",
     proxy: {},
-    subResourceId: "string",
-    xAccountId: "string",
+    subResourceId: "<value>",
+    xAccountId: "<value>",
   });
 
   // Handle the result
@@ -494,9 +571,9 @@ async function run() {
   });
 
   const result = await sdk.hris.getEmployment({
-    id: "<ID>",
+    id: "<id>",
     proxy: {},
-    xAccountId: "string",
+    xAccountId: "<value>",
   });
 
   // Handle the result
@@ -541,9 +618,9 @@ async function run() {
   });
 
   const result = await sdk.hris.getLocation({
-    id: "<ID>",
+    id: "<id>",
     proxy: {},
-    xAccountId: "string",
+    xAccountId: "<value>",
   });
 
   // Handle the result
@@ -588,9 +665,9 @@ async function run() {
   });
 
   const result = await sdk.hris.getTimeOffRequest({
-    id: "<ID>",
+    id: "<id>",
     proxy: {},
-    xAccountId: "string",
+    xAccountId: "<value>",
   });
 
   // Handle the result
@@ -618,6 +695,52 @@ run();
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 4xx-5xx         | */*             |
 
+## listBenefits
+
+List benefits
+
+### Example Usage
+
+```typescript
+import { StackOne } from "@stackone/stackone-client-ts";
+
+async function run() {
+  const sdk = new StackOne({
+    security: {
+      password: "<YOUR_PASSWORD_HERE>",
+    },
+  });
+
+  const result = await sdk.hris.listBenefits({
+    proxy: {},
+    xAccountId: "<value>",
+  });
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.HrisListBenefitsRequest](../../sdk/models/operations/hrislistbenefitsrequest.md)                                                                                   | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+
+
+### Response
+
+**Promise<[operations.HrisListBenefitsResponse](../../sdk/models/operations/hrislistbenefitsresponse.md)>**
+### Errors
+
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
+
 ## listCompanies
 
 List Companies
@@ -636,7 +759,7 @@ async function run() {
 
   const result = await sdk.hris.listCompanies({
     proxy: {},
-    xAccountId: "string",
+    xAccountId: "<value>",
   });
 
   // Handle the result
@@ -681,9 +804,9 @@ async function run() {
   });
 
   const result = await sdk.hris.listEmployeeDocuments({
-    id: "<ID>",
+    id: "<id>",
     proxy: {},
-    xAccountId: "string",
+    xAccountId: "<value>",
   });
 
   // Handle the result
@@ -728,9 +851,9 @@ async function run() {
   });
 
   const result = await sdk.hris.listEmployeeTimeOffRequests({
-    id: "<ID>",
+    id: "<id>",
     proxy: {},
-    xAccountId: "string",
+    xAccountId: "<value>",
   });
 
   // Handle the result
@@ -776,7 +899,7 @@ async function run() {
 
   const result = await sdk.hris.listEmployees({
     proxy: {},
-    xAccountId: "string",
+    xAccountId: "<value>",
   });
 
   for await (const page of result) {
@@ -823,7 +946,7 @@ async function run() {
 
   const result = await sdk.hris.listEmployments({
     proxy: {},
-    xAccountId: "string",
+    xAccountId: "<value>",
   });
 
   // Handle the result
@@ -869,7 +992,7 @@ async function run() {
 
   const result = await sdk.hris.listLocations({
     proxy: {},
-    xAccountId: "string",
+    xAccountId: "<value>",
   });
 
   // Handle the result
@@ -915,7 +1038,7 @@ async function run() {
 
   const result = await sdk.hris.listTimeOffRequests({
     proxy: {},
-    xAccountId: "string",
+    xAccountId: "<value>",
   });
 
   // Handle the result
@@ -952,16 +1075,13 @@ Updates an employee
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 import {
+  CountryCodeEnumValue,
+  EmploymentSchemasPayFrequencyValue,
+  EmploymentSchemasPayPeriodValue,
+  EmploymentSchemasValue,
   HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue,
-  HrisCreateEmployeeRequestDtoSchemasEthnicityValue,
-  HrisCreateEmployeeRequestDtoSchemasGenderValue,
-  HrisCreateEmployeeRequestDtoSchemasHomeLocationStateValue,
   HrisCreateEmployeeRequestDtoSchemasHomeLocationValue,
-  HrisCreateEmployeeRequestDtoSchemasMaritalStatusValue,
-  HrisCreateEmployeeRequestDtoSchemasValue,
-  HrisCreateEmployeeRequestDtoSchemasWorkLocationStateValue,
   HrisCreateEmployeeRequestDtoSchemasWorkLocationValue,
-  HrisCreateEmployeeRequestDtoValue,
 } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 async function run() {
@@ -978,6 +1098,7 @@ async function run() {
       birthday: new Date("2021-01-01T00:00:00Z"),
       citizenships: [
         {
+        sourceValue: 6724.37,
           value: CountryCodeEnumValue.Us,
         },
       ],
@@ -993,7 +1114,9 @@ async function run() {
             "Completed",
             "Overdue",
           ],
-          type: {},
+          type: {
+          sourceValue: 8907.78,
+          },
           value: {},
           valueId: "value_456",
         },
@@ -1001,9 +1124,14 @@ async function run() {
       dateOfBirth: new Date("1990-01-01T00:00.000Z"),
       department: "Physics",
       displayName: "Sir Issac Newton",
-      employmentContractType: {},
-      employmentStatus: {},
+      employmentContractType: {
+      sourceValue: "<value>",
+      },
+      employmentStatus: {
+      sourceValue: "<value>",
+      },
       employmentType: {
+      sourceValue: "Permanent",
         value: HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue.Permanent,
       },
       employments: [
@@ -1011,35 +1139,47 @@ async function run() {
           createdAt: new Date("2021-01-01T01:01:01.000Z"),
           effectiveDate: new Date("2021-01-01T01:01:01.000Z"),
           employeeId: "1687-3",
-          employmentContractType: {},
+          employmentContractType: {
+          sourceValue: "<value>",
+          },
           employmentType: {
+          sourceValue: "Permanent",
             value: EmploymentSchemasValue.Permanent,
           },
           id: "123456",
           jobTitle: "Software Engineer",
           payCurrency: "USD",
           payFrequency: {
+          sourceValue: "Hourly",
             value: EmploymentSchemasPayFrequencyValue.Hourly,
           },
           payPeriod: {
+          sourceValue: "Hour",
             value: EmploymentSchemasPayPeriodValue.Hour,
           },
           payRate: "40.00",
           updatedAt: new Date("2021-01-01T01:01:01.000Z"),
         },
       ],
-      ethnicity: {},
+      ethnicity: {
+      sourceValue: false,
+      },
       firstName: "Issac",
-      gender: {},
+      gender: {
+      sourceValue: false,
+      },
       hireDate: new Date("2021-01-01T00:00.000Z"),
       homeLocation: {
         city: "Grantham",
         country: {
+        sourceValue: false,
           value: HrisCreateEmployeeRequestDtoSchemasHomeLocationValue.Us,
         },
         name: "Woolsthorpe Manor",
         phoneNumber: "+44 1476 860 364",
-        state: {},
+        state: {
+        sourceValue: 3555.92,
+        },
         street1: "Water Lane",
         street2: "Woolsthorpe by Colsterworth",
         zipCode: "NG33 5NR",
@@ -1047,7 +1187,9 @@ async function run() {
       jobTitle: "Physicist",
       lastName: "Newton",
       managerId: "67890",
-      maritalStatus: {},
+      maritalStatus: {
+      sourceValue: false,
+      },
       name: "Issac Newton",
       personalEmail: "isaac.newton@example.com",
       personalPhoneNumber: "+1234567890",
@@ -1059,19 +1201,22 @@ async function run() {
       workLocation: {
         city: "Grantham",
         country: {
+        sourceValue: 223.75,
           value: HrisCreateEmployeeRequestDtoSchemasWorkLocationValue.Us,
         },
         name: "Woolsthorpe Manor",
         phoneNumber: "+44 1476 860 364",
-        state: {},
+        state: {
+        sourceValue: false,
+        },
         street1: "Water Lane",
         street2: "Woolsthorpe by Colsterworth",
         zipCode: "NG33 5NR",
       },
       workPhoneNumber: "+1234567890",
     },
-    id: "<ID>",
-    xAccountId: "string",
+    id: "<id>",
+    xAccountId: "<value>",
   });
 
   // Handle the result
@@ -1107,7 +1252,6 @@ Update time off request
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
-import { HrisCreateTimeOffRequestDtoSchemasValue, HrisCreateTimeOffRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 async function run() {
   const sdk = new StackOne({
@@ -1122,11 +1266,15 @@ async function run() {
       employeeId: "1687-3",
       endDate: new Date("2021-01-01T01:01:01.000Z"),
       startDate: new Date("2021-01-01T01:01:01.000Z"),
-      status: {},
-      type: {},
+      status: {
+      sourceValue: "<value>",
+      },
+      type: {
+      sourceValue:     {},
+      },
     },
-    id: "<ID>",
-    xAccountId: "string",
+    id: "<id>",
+    xAccountId: "<value>",
   });
 
   // Handle the result

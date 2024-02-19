@@ -21,6 +21,7 @@ export class Ats extends ClientSDK {
         this.options$ = options;
         void this.options$;
     }
+
     /**
      * Create Application
      */
@@ -168,7 +169,6 @@ export class Ats extends ClientSDK {
         const pathParams$ = {
             id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
-
         const path$ = this.templateURLComponent("/unified/ats/candidates/{id}/notes")(pathParams$);
 
         headers$.set(
@@ -294,7 +294,6 @@ export class Ats extends ClientSDK {
         const pathParams$ = {
             id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
-
         const path$ = this.templateURLComponent("/unified/ats/applications/{id}")(pathParams$);
 
         const query$ = [
@@ -386,7 +385,6 @@ export class Ats extends ClientSDK {
                 charEncoding: "percent",
             }),
         };
-
         const path$ = this.templateURLComponent(
             "/unified/ats/applications/{id}/documents/{subResourceId}"
         )(pathParams$);
@@ -479,7 +477,6 @@ export class Ats extends ClientSDK {
                 charEncoding: "percent",
             }),
         };
-
         const path$ = this.templateURLComponent(
             "/unified/ats/applications/{id}/offers/{subResourceId}"
         )(pathParams$);
@@ -572,7 +569,6 @@ export class Ats extends ClientSDK {
                 charEncoding: "percent",
             }),
         };
-
         const path$ = this.templateURLComponent(
             "/unified/ats/applications/{id}/scorecards/{subResourceId}"
         )(pathParams$);
@@ -661,7 +657,6 @@ export class Ats extends ClientSDK {
         const pathParams$ = {
             id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
-
         const path$ = this.templateURLComponent("/unified/ats/candidates/{id}")(pathParams$);
 
         const query$ = [
@@ -752,7 +747,6 @@ export class Ats extends ClientSDK {
                 charEncoding: "percent",
             }),
         };
-
         const path$ = this.templateURLComponent(
             "/unified/ats/candidates/{id}/notes/{subResourceId}"
         )(pathParams$);
@@ -841,7 +835,6 @@ export class Ats extends ClientSDK {
         const pathParams$ = {
             id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
-
         const path$ = this.templateURLComponent("/unified/ats/departments/{id}")(pathParams$);
 
         const query$ = [
@@ -928,7 +921,6 @@ export class Ats extends ClientSDK {
         const pathParams$ = {
             id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
-
         const path$ = this.templateURLComponent("/unified/ats/interviews/{id}")(pathParams$);
 
         const query$ = [
@@ -1015,7 +1007,6 @@ export class Ats extends ClientSDK {
         const pathParams$ = {
             id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
-
         const path$ = this.templateURLComponent("/unified/ats/interview_stages/{id}")(pathParams$);
 
         const query$ = [
@@ -1102,10 +1093,10 @@ export class Ats extends ClientSDK {
         const pathParams$ = {
             id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
-
         const path$ = this.templateURLComponent("/unified/ats/jobs/{id}")(pathParams$);
 
         const query$ = [
+            enc$.encodeForm("expand", payload$.expand, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("fields", payload$.fields, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("next", payload$.next, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("page", payload$.page, { explode: true, charEncoding: "percent" }),
@@ -1189,7 +1180,6 @@ export class Ats extends ClientSDK {
         const pathParams$ = {
             id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
-
         const path$ = this.templateURLComponent("/unified/ats/job_postings/{id}")(pathParams$);
 
         const query$ = [
@@ -1280,7 +1270,6 @@ export class Ats extends ClientSDK {
         const pathParams$ = {
             id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
-
         const path$ = this.templateURLComponent("/unified/ats/locations/{id}")(pathParams$);
 
         const query$ = [
@@ -1367,7 +1356,6 @@ export class Ats extends ClientSDK {
         const pathParams$ = {
             id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
-
         const path$ = this.templateURLComponent("/unified/ats/offers/{id}")(pathParams$);
 
         const query$ = [
@@ -1454,7 +1442,6 @@ export class Ats extends ClientSDK {
         const pathParams$ = {
             id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
-
         const path$ = this.templateURLComponent("/unified/ats/rejected_reasons/{id}")(pathParams$);
 
         const query$ = [
@@ -1541,7 +1528,6 @@ export class Ats extends ClientSDK {
         const pathParams$ = {
             id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
-
         const path$ = this.templateURLComponent("/unified/ats/users/{id}")(pathParams$);
 
         const query$ = [
@@ -1628,7 +1614,6 @@ export class Ats extends ClientSDK {
         const pathParams$ = {
             id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
-
         const path$ = this.templateURLComponent("/unified/ats/applications/{id}/documents")(
             pathParams$
         );
@@ -1718,7 +1703,6 @@ export class Ats extends ClientSDK {
         const pathParams$ = {
             id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
-
         const path$ = this.templateURLComponent("/unified/ats/applications/{id}/scorecards")(
             pathParams$
         );
@@ -1891,7 +1875,6 @@ export class Ats extends ClientSDK {
         const pathParams$ = {
             id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
-
         const path$ = this.templateURLComponent("/unified/ats/applications/{id}/offers")(
             pathParams$
         );
@@ -1980,7 +1963,6 @@ export class Ats extends ClientSDK {
         const pathParams$ = {
             id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
-
         const path$ = this.templateURLComponent("/unified/ats/candidates/{id}/notes")(pathParams$);
 
         const query$ = [
@@ -2486,6 +2468,7 @@ export class Ats extends ClientSDK {
         const path$ = this.templateURLComponent("/unified/ats/jobs")();
 
         const query$ = [
+            enc$.encodeForm("expand", payload$.expand, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("fields", payload$.fields, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("next", payload$.next, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("page", payload$.page, { explode: true, charEncoding: "percent" }),
@@ -2905,7 +2888,6 @@ export class Ats extends ClientSDK {
         const pathParams$ = {
             id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
-
         const path$ = this.templateURLComponent("/unified/ats/applications/{id}")(pathParams$);
 
         headers$.set(
@@ -2973,7 +2955,6 @@ export class Ats extends ClientSDK {
         const pathParams$ = {
             id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
-
         const path$ = this.templateURLComponent("/unified/ats/candidates/{id}")(pathParams$);
 
         headers$.set(
