@@ -26,6 +26,7 @@ jobs:
         - https://api2.eu1.stackone.com/oas/hris.json
         - https://api2.eu1.stackone.com/oas/ats.json
         - https://api2.eu1.stackone.com/oas/crm.json
+        - https://api2.eu1.stackone.com/oas/iam.json
         - https://api2.eu1.stackone.com/oas/marketing.json
       publish_typescript: true
       speakeasy_version: latest
