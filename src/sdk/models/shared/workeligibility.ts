@@ -5,7 +5,7 @@
 import { Content, Content$ } from "./content";
 import { z } from "zod";
 
-export type Document = {
+export type WorkEligibilityDocument = {
     /**
      * The content of the file
      */
@@ -34,9 +34,279 @@ export type Document = {
 
 export type WorkEligibility4 = {};
 
-export type SourceType = WorkEligibility4 | string | number | boolean;
+export type WorkEligibilitySourceValue = WorkEligibility4 | string | number | boolean;
 
+/**
+ * The ISO3166-1 Alpha2 Code of the Country
+ */
 export enum WorkEligibilityValue {
+    Af = "AF",
+    Al = "AL",
+    Dz = "DZ",
+    As = "AS",
+    Ad = "AD",
+    Ao = "AO",
+    Ai = "AI",
+    Aq = "AQ",
+    Ag = "AG",
+    Ar = "AR",
+    Am = "AM",
+    Aw = "AW",
+    Au = "AU",
+    At = "AT",
+    Az = "AZ",
+    Bs = "BS",
+    Bh = "BH",
+    Bd = "BD",
+    Bb = "BB",
+    By = "BY",
+    Be = "BE",
+    Bz = "BZ",
+    Bj = "BJ",
+    Bm = "BM",
+    Bt = "BT",
+    Bo = "BO",
+    Bq = "BQ",
+    Ba = "BA",
+    Bw = "BW",
+    Bv = "BV",
+    Br = "BR",
+    Io = "IO",
+    Bn = "BN",
+    Bg = "BG",
+    Bf = "BF",
+    Bi = "BI",
+    Kh = "KH",
+    Cm = "CM",
+    Ca = "CA",
+    Cv = "CV",
+    Ky = "KY",
+    Cf = "CF",
+    Td = "TD",
+    Cl = "CL",
+    Cn = "CN",
+    Cx = "CX",
+    Cc = "CC",
+    Co = "CO",
+    Km = "KM",
+    Cg = "CG",
+    Cd = "CD",
+    Ck = "CK",
+    Cr = "CR",
+    Hr = "HR",
+    Cu = "CU",
+    Cw = "CW",
+    Cy = "CY",
+    Cz = "CZ",
+    Ci = "CI",
+    Dk = "DK",
+    Dj = "DJ",
+    Dm = "DM",
+    Do = "DO",
+    Ec = "EC",
+    Eg = "EG",
+    Sv = "SV",
+    Gq = "GQ",
+    Er = "ER",
+    Ee = "EE",
+    Et = "ET",
+    Fk = "FK",
+    Fo = "FO",
+    Fj = "FJ",
+    Fi = "FI",
+    Fr = "FR",
+    Gf = "GF",
+    Pf = "PF",
+    Tf = "TF",
+    Ga = "GA",
+    Gm = "GM",
+    Ge = "GE",
+    De = "DE",
+    Gh = "GH",
+    Gi = "GI",
+    Gr = "GR",
+    Gl = "GL",
+    Gd = "GD",
+    Gp = "GP",
+    Gu = "GU",
+    Gt = "GT",
+    Gg = "GG",
+    Gn = "GN",
+    Gw = "GW",
+    Gy = "GY",
+    Ht = "HT",
+    Hm = "HM",
+    Va = "VA",
+    Hn = "HN",
+    Hk = "HK",
+    Hu = "HU",
+    Is = "IS",
+    In = "IN",
+    Id = "ID",
+    Ir = "IR",
+    Iq = "IQ",
+    Ie = "IE",
+    Im = "IM",
+    Il = "IL",
+    It = "IT",
+    Jm = "JM",
+    Jp = "JP",
+    Je = "JE",
+    Jo = "JO",
+    Kz = "KZ",
+    Ke = "KE",
+    Ki = "KI",
+    Kp = "KP",
+    Kr = "KR",
+    Kw = "KW",
+    Kg = "KG",
+    La = "LA",
+    Lv = "LV",
+    Lb = "LB",
+    Ls = "LS",
+    Lr = "LR",
+    Ly = "LY",
+    Li = "LI",
+    Lt = "LT",
+    Lu = "LU",
+    Mo = "MO",
+    Mk = "MK",
+    Mg = "MG",
+    Mw = "MW",
+    My = "MY",
+    Mv = "MV",
+    Ml = "ML",
+    Mt = "MT",
+    Mh = "MH",
+    Mq = "MQ",
+    Mr = "MR",
+    Mu = "MU",
+    Yt = "YT",
+    Mx = "MX",
+    Fm = "FM",
+    Md = "MD",
+    Mc = "MC",
+    Mn = "MN",
+    Me = "ME",
+    Ms = "MS",
+    Ma = "MA",
+    Mz = "MZ",
+    Mm = "MM",
+    Na = "NA",
+    Nr = "NR",
+    Np = "NP",
+    Nl = "NL",
+    Nc = "NC",
+    Nz = "NZ",
+    Ni = "NI",
+    Ne = "NE",
+    Ng = "NG",
+    Nu = "NU",
+    Nf = "NF",
+    Mp = "MP",
+    No = "NO",
+    Om = "OM",
+    Pk = "PK",
+    Pw = "PW",
+    Ps = "PS",
+    Pa = "PA",
+    Pg = "PG",
+    Py = "PY",
+    Pe = "PE",
+    Ph = "PH",
+    Pn = "PN",
+    Pl = "PL",
+    Pt = "PT",
+    Pr = "PR",
+    Qa = "QA",
+    Ro = "RO",
+    Ru = "RU",
+    Rw = "RW",
+    Re = "RE",
+    Bl = "BL",
+    Sh = "SH",
+    Kn = "KN",
+    Lc = "LC",
+    Mf = "MF",
+    Pm = "PM",
+    Vc = "VC",
+    Ws = "WS",
+    Sm = "SM",
+    St = "ST",
+    Sa = "SA",
+    Sn = "SN",
+    Rs = "RS",
+    Sc = "SC",
+    Sl = "SL",
+    Sg = "SG",
+    Sx = "SX",
+    Sk = "SK",
+    Si = "SI",
+    Sb = "SB",
+    So = "SO",
+    Za = "ZA",
+    Gs = "GS",
+    Ss = "SS",
+    Es = "ES",
+    Lk = "LK",
+    Sd = "SD",
+    Sr = "SR",
+    Sj = "SJ",
+    Sz = "SZ",
+    Se = "SE",
+    Ch = "CH",
+    Sy = "SY",
+    Tw = "TW",
+    Tj = "TJ",
+    Tz = "TZ",
+    Th = "TH",
+    Tl = "TL",
+    Tg = "TG",
+    Tk = "TK",
+    To = "TO",
+    Tt = "TT",
+    Tn = "TN",
+    Tr = "TR",
+    Tm = "TM",
+    Tc = "TC",
+    Tv = "TV",
+    Ug = "UG",
+    Ua = "UA",
+    Ae = "AE",
+    Gb = "GB",
+    Us = "US",
+    Um = "UM",
+    Uy = "UY",
+    Uz = "UZ",
+    Vu = "VU",
+    Ve = "VE",
+    Vn = "VN",
+    Vg = "VG",
+    Vi = "VI",
+    Wf = "WF",
+    Eh = "EH",
+    Ye = "YE",
+    Zm = "ZM",
+    Zw = "ZW",
+    UnmappedValue = "unmapped_value",
+}
+
+/**
+ * The country code of the issued by authority
+ */
+export type WorkEligibilityIssuedBy = {
+    sourceValue?: WorkEligibility4 | string | number | boolean | null | undefined;
+    /**
+     * The ISO3166-1 Alpha2 Code of the Country
+     */
+    value?: WorkEligibilityValue | null | undefined;
+};
+
+export type WorkEligibilitySchemas4 = {};
+
+export type WorkEligibilitySourceType = WorkEligibilitySchemas4 | string | number | boolean;
+
+export enum WorkEligibilitySchemasValue {
     Visa = "visa",
     Passport = "passport",
     DriverLicense = "driver_license",
@@ -45,13 +315,20 @@ export enum WorkEligibilityValue {
 }
 
 export type WorkEligibilityType = {
-    sourceType?: WorkEligibility4 | string | number | boolean | null | undefined;
-    value?: WorkEligibilityValue | null | undefined;
+    sourceType?: WorkEligibilitySchemas4 | string | number | boolean | null | undefined;
+    value?: WorkEligibilitySchemasValue | null | undefined;
 };
 
 export type WorkEligibility = {
-    document?: Document | null | undefined;
-    issuedBy?: string | null | undefined;
+    document?: WorkEligibilityDocument | null | undefined;
+    /**
+     * ID of Visa
+     */
+    id?: string | null | undefined;
+    /**
+     * The country code of the issued by authority
+     */
+    issuedBy?: WorkEligibilityIssuedBy | null | undefined;
     number?: string | null | undefined;
     subType?: string | null | undefined;
     type?: WorkEligibilityType | null | undefined;
@@ -60,7 +337,7 @@ export type WorkEligibility = {
 };
 
 /** @internal */
-export namespace Document$ {
+export namespace WorkEligibilityDocument$ {
     export type Inbound = {
         contents?: Array<Content$.Inbound> | null | undefined;
         created_at?: string | null | undefined;
@@ -70,7 +347,7 @@ export namespace Document$ {
         updated_at?: string | null | undefined;
     };
 
-    export const inboundSchema: z.ZodType<Document, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<WorkEligibilityDocument, z.ZodTypeDef, Inbound> = z
         .object({
             contents: z.nullable(z.array(Content$.inboundSchema)).optional(),
             created_at: z
@@ -113,7 +390,7 @@ export namespace Document$ {
         updated_at?: string | null | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Document> = z
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, WorkEligibilityDocument> = z
         .object({
             contents: z.nullable(z.array(Content$.outboundSchema)).optional(),
             createdAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
@@ -146,39 +423,41 @@ export namespace WorkEligibility4$ {
 }
 
 /** @internal */
-export namespace SourceType$ {
+export namespace WorkEligibilitySourceValue$ {
     export type Inbound = WorkEligibility4$.Inbound | string | number | boolean;
 
     export type Outbound = WorkEligibility4$.Outbound | string | number | boolean;
 
-    export const inboundSchema: z.ZodType<SourceType, z.ZodTypeDef, Inbound> = z.union([
-        z.lazy(() => WorkEligibility4$.inboundSchema),
-        z.string(),
-        z.number(),
-        z.boolean(),
-    ]);
+    export const inboundSchema: z.ZodType<WorkEligibilitySourceValue, z.ZodTypeDef, Inbound> =
+        z.union([
+            z.lazy(() => WorkEligibility4$.inboundSchema),
+            z.string(),
+            z.number(),
+            z.boolean(),
+        ]);
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, SourceType> = z.union([
-        z.lazy(() => WorkEligibility4$.outboundSchema),
-        z.string(),
-        z.number(),
-        z.boolean(),
-    ]);
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, WorkEligibilitySourceValue> =
+        z.union([
+            z.lazy(() => WorkEligibility4$.outboundSchema),
+            z.string(),
+            z.number(),
+            z.boolean(),
+        ]);
 }
 
 /** @internal */
 export const WorkEligibilityValue$ = z.nativeEnum(WorkEligibilityValue);
 
 /** @internal */
-export namespace WorkEligibilityType$ {
+export namespace WorkEligibilityIssuedBy$ {
     export type Inbound = {
-        source_type?: WorkEligibility4$.Inbound | string | number | boolean | null | undefined;
+        source_value?: WorkEligibility4$.Inbound | string | number | boolean | null | undefined;
         value?: WorkEligibilityValue | null | undefined;
     };
 
-    export const inboundSchema: z.ZodType<WorkEligibilityType, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<WorkEligibilityIssuedBy, z.ZodTypeDef, Inbound> = z
         .object({
-            source_type: z
+            source_value: z
                 .nullable(
                     z.union([
                         z.lazy(() => WorkEligibility4$.inboundSchema),
@@ -192,19 +471,19 @@ export namespace WorkEligibilityType$ {
         })
         .transform((v) => {
             return {
-                ...(v.source_type === undefined ? null : { sourceType: v.source_type }),
+                ...(v.source_value === undefined ? null : { sourceValue: v.source_value }),
                 ...(v.value === undefined ? null : { value: v.value }),
             };
         });
 
     export type Outbound = {
-        source_type?: WorkEligibility4$.Outbound | string | number | boolean | null | undefined;
+        source_value?: WorkEligibility4$.Outbound | string | number | boolean | null | undefined;
         value?: WorkEligibilityValue | null | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, WorkEligibilityType> = z
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, WorkEligibilityIssuedBy> = z
         .object({
-            sourceType: z
+            sourceValue: z
                 .nullable(
                     z.union([
                         z.lazy(() => WorkEligibility4$.outboundSchema),
@@ -218,6 +497,112 @@ export namespace WorkEligibilityType$ {
         })
         .transform((v) => {
             return {
+                ...(v.sourceValue === undefined ? null : { source_value: v.sourceValue }),
+                ...(v.value === undefined ? null : { value: v.value }),
+            };
+        });
+}
+
+/** @internal */
+export namespace WorkEligibilitySchemas4$ {
+    export type Inbound = {};
+
+    export const inboundSchema: z.ZodType<WorkEligibilitySchemas4, z.ZodTypeDef, Inbound> =
+        z.object({});
+
+    export type Outbound = {};
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, WorkEligibilitySchemas4> =
+        z.object({});
+}
+
+/** @internal */
+export namespace WorkEligibilitySourceType$ {
+    export type Inbound = WorkEligibilitySchemas4$.Inbound | string | number | boolean;
+
+    export type Outbound = WorkEligibilitySchemas4$.Outbound | string | number | boolean;
+
+    export const inboundSchema: z.ZodType<WorkEligibilitySourceType, z.ZodTypeDef, Inbound> =
+        z.union([
+            z.lazy(() => WorkEligibilitySchemas4$.inboundSchema),
+            z.string(),
+            z.number(),
+            z.boolean(),
+        ]);
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, WorkEligibilitySourceType> =
+        z.union([
+            z.lazy(() => WorkEligibilitySchemas4$.outboundSchema),
+            z.string(),
+            z.number(),
+            z.boolean(),
+        ]);
+}
+
+/** @internal */
+export const WorkEligibilitySchemasValue$ = z.nativeEnum(WorkEligibilitySchemasValue);
+
+/** @internal */
+export namespace WorkEligibilityType$ {
+    export type Inbound = {
+        source_type?:
+            | WorkEligibilitySchemas4$.Inbound
+            | string
+            | number
+            | boolean
+            | null
+            | undefined;
+        value?: WorkEligibilitySchemasValue | null | undefined;
+    };
+
+    export const inboundSchema: z.ZodType<WorkEligibilityType, z.ZodTypeDef, Inbound> = z
+        .object({
+            source_type: z
+                .nullable(
+                    z.union([
+                        z.lazy(() => WorkEligibilitySchemas4$.inboundSchema),
+                        z.string(),
+                        z.number(),
+                        z.boolean(),
+                    ])
+                )
+                .optional(),
+            value: z.nullable(WorkEligibilitySchemasValue$).optional(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.source_type === undefined ? null : { sourceType: v.source_type }),
+                ...(v.value === undefined ? null : { value: v.value }),
+            };
+        });
+
+    export type Outbound = {
+        source_type?:
+            | WorkEligibilitySchemas4$.Outbound
+            | string
+            | number
+            | boolean
+            | null
+            | undefined;
+        value?: WorkEligibilitySchemasValue | null | undefined;
+    };
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, WorkEligibilityType> = z
+        .object({
+            sourceType: z
+                .nullable(
+                    z.union([
+                        z.lazy(() => WorkEligibilitySchemas4$.outboundSchema),
+                        z.string(),
+                        z.number(),
+                        z.boolean(),
+                    ])
+                )
+                .optional(),
+            value: z.nullable(WorkEligibilitySchemasValue$).optional(),
+        })
+        .transform((v) => {
+            return {
                 ...(v.sourceType === undefined ? null : { source_type: v.sourceType }),
                 ...(v.value === undefined ? null : { value: v.value }),
             };
@@ -227,8 +612,9 @@ export namespace WorkEligibilityType$ {
 /** @internal */
 export namespace WorkEligibility$ {
     export type Inbound = {
-        document?: Document$.Inbound | null | undefined;
-        issued_by?: string | null | undefined;
+        document?: WorkEligibilityDocument$.Inbound | null | undefined;
+        id?: string | null | undefined;
+        issued_by?: WorkEligibilityIssuedBy$.Inbound | null | undefined;
         number?: string | null | undefined;
         sub_type?: string | null | undefined;
         type?: WorkEligibilityType$.Inbound | null | undefined;
@@ -238,8 +624,9 @@ export namespace WorkEligibility$ {
 
     export const inboundSchema: z.ZodType<WorkEligibility, z.ZodTypeDef, Inbound> = z
         .object({
-            document: z.nullable(z.lazy(() => Document$.inboundSchema)).optional(),
-            issued_by: z.nullable(z.string()).optional(),
+            document: z.nullable(z.lazy(() => WorkEligibilityDocument$.inboundSchema)).optional(),
+            id: z.nullable(z.string()).optional(),
+            issued_by: z.nullable(z.lazy(() => WorkEligibilityIssuedBy$.inboundSchema)).optional(),
             number: z.nullable(z.string()).optional(),
             sub_type: z.nullable(z.string()).optional(),
             type: z.nullable(z.lazy(() => WorkEligibilityType$.inboundSchema)).optional(),
@@ -263,6 +650,7 @@ export namespace WorkEligibility$ {
         .transform((v) => {
             return {
                 ...(v.document === undefined ? null : { document: v.document }),
+                ...(v.id === undefined ? null : { id: v.id }),
                 ...(v.issued_by === undefined ? null : { issuedBy: v.issued_by }),
                 ...(v.number === undefined ? null : { number: v.number }),
                 ...(v.sub_type === undefined ? null : { subType: v.sub_type }),
@@ -273,8 +661,9 @@ export namespace WorkEligibility$ {
         });
 
     export type Outbound = {
-        document?: Document$.Outbound | null | undefined;
-        issued_by?: string | null | undefined;
+        document?: WorkEligibilityDocument$.Outbound | null | undefined;
+        id?: string | null | undefined;
+        issued_by?: WorkEligibilityIssuedBy$.Outbound | null | undefined;
         number?: string | null | undefined;
         sub_type?: string | null | undefined;
         type?: WorkEligibilityType$.Outbound | null | undefined;
@@ -284,8 +673,9 @@ export namespace WorkEligibility$ {
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, WorkEligibility> = z
         .object({
-            document: z.nullable(z.lazy(() => Document$.outboundSchema)).optional(),
-            issuedBy: z.nullable(z.string()).optional(),
+            document: z.nullable(z.lazy(() => WorkEligibilityDocument$.outboundSchema)).optional(),
+            id: z.nullable(z.string()).optional(),
+            issuedBy: z.nullable(z.lazy(() => WorkEligibilityIssuedBy$.outboundSchema)).optional(),
             number: z.nullable(z.string()).optional(),
             subType: z.nullable(z.string()).optional(),
             type: z.nullable(z.lazy(() => WorkEligibilityType$.outboundSchema)).optional(),
@@ -295,6 +685,7 @@ export namespace WorkEligibility$ {
         .transform((v) => {
             return {
                 ...(v.document === undefined ? null : { document: v.document }),
+                ...(v.id === undefined ? null : { id: v.id }),
                 ...(v.issuedBy === undefined ? null : { issued_by: v.issuedBy }),
                 ...(v.number === undefined ? null : { number: v.number }),
                 ...(v.subType === undefined ? null : { sub_type: v.subType }),

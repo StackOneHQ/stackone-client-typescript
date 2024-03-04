@@ -43,6 +43,8 @@ export type JobStatus = {
     value?: JobValue | null | undefined;
 };
 
+export type JobSchemasStatus = {};
+
 export type Job = {
     code?: string | null | undefined;
     confidential?: Confidential | null | undefined;
@@ -59,7 +61,7 @@ export type Job = {
     interviewStages?: Array<InterviewStage> | null | undefined;
     jobStatus?: JobStatus | null | undefined;
     locationIds?: Array<string> | null | undefined;
-    status?: string | null | undefined;
+    status?: JobSchemasStatus | null | undefined;
     title?: string | null | undefined;
     /**
      * Date of last update
@@ -161,6 +163,17 @@ export namespace JobStatus$ {
 }
 
 /** @internal */
+export namespace JobSchemasStatus$ {
+    export type Inbound = {};
+
+    export const inboundSchema: z.ZodType<JobSchemasStatus, z.ZodTypeDef, Inbound> = z.object({});
+
+    export type Outbound = {};
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, JobSchemasStatus> = z.object({});
+}
+
+/** @internal */
 export namespace Job$ {
     export type Inbound = {
         code?: string | null | undefined;
@@ -172,7 +185,7 @@ export namespace Job$ {
         interview_stages?: Array<InterviewStage$.Inbound> | null | undefined;
         job_status?: JobStatus$.Inbound | null | undefined;
         location_ids?: Array<string> | null | undefined;
-        status?: string | null | undefined;
+        status?: JobSchemasStatus$.Inbound | null | undefined;
         title?: string | null | undefined;
         updated_at?: string | null | undefined;
     };
@@ -195,7 +208,7 @@ export namespace Job$ {
             interview_stages: z.nullable(z.array(InterviewStage$.inboundSchema)).optional(),
             job_status: z.nullable(z.lazy(() => JobStatus$.inboundSchema)).optional(),
             location_ids: z.nullable(z.array(z.string())).optional(),
-            status: z.nullable(z.string()).optional(),
+            status: z.nullable(z.lazy(() => JobSchemasStatus$.inboundSchema)).optional(),
             title: z.nullable(z.string()).optional(),
             updated_at: z
                 .nullable(
@@ -235,7 +248,7 @@ export namespace Job$ {
         interview_stages?: Array<InterviewStage$.Outbound> | null | undefined;
         job_status?: JobStatus$.Outbound | null | undefined;
         location_ids?: Array<string> | null | undefined;
-        status?: string | null | undefined;
+        status?: JobSchemasStatus$.Outbound | null | undefined;
         title?: string | null | undefined;
         updated_at?: string | null | undefined;
     };
@@ -251,7 +264,7 @@ export namespace Job$ {
             interviewStages: z.nullable(z.array(InterviewStage$.outboundSchema)).optional(),
             jobStatus: z.nullable(z.lazy(() => JobStatus$.outboundSchema)).optional(),
             locationIds: z.nullable(z.array(z.string())).optional(),
-            status: z.nullable(z.string()).optional(),
+            status: z.nullable(z.lazy(() => JobSchemasStatus$.outboundSchema)).optional(),
             title: z.nullable(z.string()).optional(),
             updatedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
         })

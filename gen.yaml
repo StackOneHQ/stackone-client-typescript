@@ -7,8 +7,14 @@ generation:
     nameResolutionDec2023: false
     parameterOrderingFeb2024: false
     requestResponseComponentNamesFeb2024: false
+  auth:
+    oAuth2ClientCredentialsEnabled: false
 typescript:
-  version: 4.0.2
+  version: 4.1.0
+  additionalDependencies:
+    dependencies: {}
+    devDependencies: {}
+    peerDependencies: {}
   author: StackOne
   clientServerStatusCodesAsErrors: true
   flattenGlobalSecurity: false
@@ -24,4 +30,5 @@ typescript:
   maxMethodParams: 0
   outputModelSuffix: output
   packageName: '@stackone/stackone-client-ts'
+  responseFormat: envelope
   templateVersion: v2

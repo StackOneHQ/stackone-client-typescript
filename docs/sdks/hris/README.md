@@ -4,13 +4,16 @@
 ### Available Operations
 
 * [createEmployee](#createemployee) - Creates an employee
+* [createEmployeeDocument](#createemployeedocument) - Create Employee Document
 * [createEmployeeTimeOffRequest](#createemployeetimeoffrequest) - Create Employee Time Off Request
+* [createEmployeeWorkEligibilityRequest](#createemployeeworkeligibilityrequest) - Create Employee Work Eligibility Request
 * [createTimeOffRequest](#createtimeoffrequest) - Creates a time off request
 * [getBenefit](#getbenefit) - Get Benefit
 * [getCompany](#getcompany) - Get Company
 * [getEmployee](#getemployee) - Get Employee
 * [getEmployeeDocument](#getemployeedocument) - Get Employee Document
 * [getEmployeesTimeOffRequest](#getemployeestimeoffrequest) - Get Employees Time Off Request
+* [getEmployeesWorkEligibility](#getemployeesworkeligibility) - Get Employees Work Eligibility
 * [getEmployment](#getemployment) - Get Employment
 * [getLocation](#getlocation) - Get Location
 * [getTimeOffRequest](#gettimeoffrequest) - Get time off request
@@ -18,11 +21,13 @@
 * [listCompanies](#listcompanies) - List Companies
 * [listEmployeeDocuments](#listemployeedocuments) - List Employee Documents
 * [listEmployeeTimeOffRequests](#listemployeetimeoffrequests) - List Employee Time Off Requests
+* [listEmployeeWorkEligibility](#listemployeeworkeligibility) - List Employee Work Eligibility
 * [listEmployees](#listemployees) - List Employees
 * [listEmployments](#listemployments) - List Employments
 * [listLocations](#listlocations) - List locations
 * [listTimeOffRequests](#listtimeoffrequests) - List time off requests
 * [updateEmployee](#updateemployee) - Updates an employee
+* [updateEmployeeWorkEligibilityRequest](#updateemployeeworkeligibilityrequest) - Update Employee Work Eligibility Request
 * [updateTimeOffRequest](#updatetimeoffrequest) - Update time off request
 
 ## createEmployee
@@ -54,10 +59,23 @@ async function run() {
     hrisCreateEmployeeRequestDto: {
       avatar: {},
       avatarUrl: "https://example.com/avatar.png",
+      benefits: [
+        {
+          benefitType: {
+          sourceValue: 6730.33,
+          },
+          createdAt: new Date("2021-01-01T00:00:00Z"),
+          description: "Health insurance for employees",
+          id: "123456",
+          name: "Health Insurance",
+          provider: "Aetna",
+          updatedAt: new Date("2021-01-01T00:00:00Z"),
+        },
+      ],
       birthday: new Date("2021-01-01T00:00:00Z"),
       citizenships: [
         {
-        sourceValue: 6730.33,
+        sourceValue: "<value>",
           value: CountryCodeEnumValue.Us,
         },
       ],
@@ -74,7 +92,7 @@ async function run() {
             "Overdue",
           ],
           type: {
-          sourceValue: "<value>",
+          sourceValue:     {},
           },
           value: {},
           valueId: "value_456",
@@ -87,7 +105,7 @@ async function run() {
       sourceValue:     {},
       },
       employmentStatus: {
-      sourceValue:     {},
+      sourceValue: "<value>",
       },
       employmentType: {
       sourceValue: "Permanent",
@@ -99,7 +117,7 @@ async function run() {
           effectiveDate: new Date("2021-01-01T01:01:01.000Z"),
           employeeId: "1687-3",
           employmentContractType: {
-          sourceValue: "<value>",
+          sourceValue:     {},
           },
           employmentType: {
           sourceValue: "Permanent",
@@ -125,19 +143,19 @@ async function run() {
       },
       firstName: "Issac",
       gender: {
-      sourceValue:     {},
+      sourceValue: 8263.19,
       },
       hireDate: new Date("2021-01-01T00:00.000Z"),
       homeLocation: {
         city: "Grantham",
         country: {
-        sourceValue: 8263.19,
+        sourceValue:     {},
           value: HrisCreateEmployeeRequestDtoSchemasHomeLocationValue.Us,
         },
         name: "Woolsthorpe Manor",
         phoneNumber: "+44 1476 860 364",
         state: {
-        sourceValue:     {},
+        sourceValue: "<value>",
         },
         street1: "Water Lane",
         street2: "Woolsthorpe by Colsterworth",
@@ -166,7 +184,7 @@ async function run() {
         name: "Woolsthorpe Manor",
         phoneNumber: "+44 1476 860 364",
         state: {
-        sourceValue: "<value>",
+        sourceValue: false,
         },
         street1: "Water Lane",
         street2: "Woolsthorpe by Colsterworth",
@@ -196,6 +214,65 @@ run();
 ### Response
 
 **Promise<[operations.HrisCreateEmployeeResponse](../../sdk/models/operations/hriscreateemployeeresponse.md)>**
+### Errors
+
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
+
+## createEmployeeDocument
+
+Create Employee Document
+
+### Example Usage
+
+```typescript
+import { StackOne } from "@stackone/stackone-client-ts";
+
+async function run() {
+  const sdk = new StackOne({
+    security: {
+      password: "<YOUR_PASSWORD_HERE>",
+    },
+  });
+
+  const result = await sdk.hris.createEmployeeDocument({
+    hrisCreateDocumentRequestDto: {
+      content: {
+        fileFormat: {
+        sourceValue:     {},
+        },
+        url: "https://example.com/file.pdf",
+      },
+      name: "My Document",
+      path: "/path/to/file",
+      type: {
+      sourceValue: false,
+      },
+    },
+    id: "<id>",
+    xAccountId: "<value>",
+  });
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.HrisCreateEmployeeDocumentRequest](../../sdk/models/operations/hriscreateemployeedocumentrequest.md)                                                               | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+
+
+### Response
+
+**Promise<[operations.HrisCreateEmployeeDocumentResponse](../../sdk/models/operations/hriscreateemployeedocumentresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -254,6 +331,81 @@ run();
 ### Response
 
 **Promise<[operations.HrisCreateEmployeeTimeOffRequestResponse](../../sdk/models/operations/hriscreateemployeetimeoffrequestresponse.md)>**
+### Errors
+
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
+
+## createEmployeeWorkEligibilityRequest
+
+Create Employee Work Eligibility Request
+
+### Example Usage
+
+```typescript
+import { StackOne } from "@stackone/stackone-client-ts";
+import { HrisCreateWorkEligibilityRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+async function run() {
+  const sdk = new StackOne({
+    security: {
+      password: "<YOUR_PASSWORD_HERE>",
+    },
+  });
+
+  const result = await sdk.hris.createEmployeeWorkEligibilityRequest({
+    hrisCreateWorkEligibilityRequestDto: {
+      document: {
+        contents: [
+          {
+            fileFormat: {
+            sourceValue:     {},
+            },
+            url: "https://example.com/file.pdf",
+          },
+        ],
+        createdAt: new Date("2021-01-01T01:01:01.000Z"),
+        id: "doc-123456",
+        name: "My Document",
+        path: "/path/to/file",
+        updatedAt: new Date("2021-01-02T01:01:01.000Z"),
+      },
+      issuedBy: {
+      sourceValue: "<value>",
+        value: HrisCreateWorkEligibilityRequestDtoValue.Us,
+      },
+      number: "1234567890",
+      subType: "H1B",
+      type: {
+      sourceType:     {},
+      },
+      validFrom: new Date("2021-01-01T00:00.000Z"),
+      validTo: new Date("2021-01-01T00:00.000Z"),
+    },
+    id: "<id>",
+    xAccountId: "<value>",
+  });
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.HrisCreateEmployeeWorkEligibilityRequestRequest](../../sdk/models/operations/hriscreateemployeeworkeligibilityrequestrequest.md)                                   | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+
+
+### Response
+
+**Promise<[operations.HrisCreateEmployeeWorkEligibilityRequestResponse](../../sdk/models/operations/hriscreateemployeeworkeligibilityrequestresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -548,6 +700,54 @@ run();
 ### Response
 
 **Promise<[operations.HrisGetEmployeesTimeOffRequestResponse](../../sdk/models/operations/hrisgetemployeestimeoffrequestresponse.md)>**
+### Errors
+
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
+
+## getEmployeesWorkEligibility
+
+Get Employees Work Eligibility
+
+### Example Usage
+
+```typescript
+import { StackOne } from "@stackone/stackone-client-ts";
+
+async function run() {
+  const sdk = new StackOne({
+    security: {
+      password: "<YOUR_PASSWORD_HERE>",
+    },
+  });
+
+  const result = await sdk.hris.getEmployeesWorkEligibility({
+    id: "<id>",
+    proxy: {},
+    subResourceId: "<value>",
+    xAccountId: "<value>",
+  });
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.HrisGetEmployeesWorkEligibilityRequest](../../sdk/models/operations/hrisgetemployeesworkeligibilityrequest.md)                                                     | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+
+
+### Response
+
+**Promise<[operations.HrisGetEmployeesWorkEligibilityResponse](../../sdk/models/operations/hrisgetemployeesworkeligibilityresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -881,6 +1081,53 @@ run();
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 4xx-5xx         | */*             |
 
+## listEmployeeWorkEligibility
+
+List Employee Work Eligibility
+
+### Example Usage
+
+```typescript
+import { StackOne } from "@stackone/stackone-client-ts";
+
+async function run() {
+  const sdk = new StackOne({
+    security: {
+      password: "<YOUR_PASSWORD_HERE>",
+    },
+  });
+
+  const result = await sdk.hris.listEmployeeWorkEligibility({
+    id: "<id>",
+    proxy: {},
+    xAccountId: "<value>",
+  });
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.HrisListEmployeeWorkEligibilityRequest](../../sdk/models/operations/hrislistemployeeworkeligibilityrequest.md)                                                     | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+
+
+### Response
+
+**Promise<[operations.HrisListEmployeeWorkEligibilityResponse](../../sdk/models/operations/hrislistemployeeworkeligibilityresponse.md)>**
+### Errors
+
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
+
 ## listEmployees
 
 List Employees
@@ -1095,10 +1342,23 @@ async function run() {
     hrisCreateEmployeeRequestDto: {
       avatar: {},
       avatarUrl: "https://example.com/avatar.png",
+      benefits: [
+        {
+          benefitType: {
+          sourceValue: 6724.37,
+          },
+          createdAt: new Date("2021-01-01T00:00:00Z"),
+          description: "Health insurance for employees",
+          id: "123456",
+          name: "Health Insurance",
+          provider: "Aetna",
+          updatedAt: new Date("2021-01-01T00:00:00Z"),
+        },
+      ],
       birthday: new Date("2021-01-01T00:00:00Z"),
       citizenships: [
         {
-        sourceValue: 6724.37,
+        sourceValue: 8907.78,
           value: CountryCodeEnumValue.Us,
         },
       ],
@@ -1115,7 +1375,7 @@ async function run() {
             "Overdue",
           ],
           type: {
-          sourceValue: 8907.78,
+          sourceValue: "<value>",
           },
           value: {},
           valueId: "value_456",
@@ -1140,7 +1400,7 @@ async function run() {
           effectiveDate: new Date("2021-01-01T01:01:01.000Z"),
           employeeId: "1687-3",
           employmentContractType: {
-          sourceValue: "<value>",
+          sourceValue: false,
           },
           employmentType: {
           sourceValue: "Permanent",
@@ -1172,13 +1432,13 @@ async function run() {
       homeLocation: {
         city: "Grantham",
         country: {
-        sourceValue: false,
+        sourceValue: 3555.92,
           value: HrisCreateEmployeeRequestDtoSchemasHomeLocationValue.Us,
         },
         name: "Woolsthorpe Manor",
         phoneNumber: "+44 1476 860 364",
         state: {
-        sourceValue: 3555.92,
+        sourceValue: false,
         },
         street1: "Water Lane",
         street2: "Woolsthorpe by Colsterworth",
@@ -1188,7 +1448,7 @@ async function run() {
       lastName: "Newton",
       managerId: "67890",
       maritalStatus: {
-      sourceValue: false,
+      sourceValue: 223.75,
       },
       name: "Issac Newton",
       personalEmail: "isaac.newton@example.com",
@@ -1201,13 +1461,13 @@ async function run() {
       workLocation: {
         city: "Grantham",
         country: {
-        sourceValue: 223.75,
+        sourceValue: false,
           value: HrisCreateEmployeeRequestDtoSchemasWorkLocationValue.Us,
         },
         name: "Woolsthorpe Manor",
         phoneNumber: "+44 1476 860 364",
         state: {
-        sourceValue: false,
+        sourceValue: "<value>",
         },
         street1: "Water Lane",
         street2: "Woolsthorpe by Colsterworth",
@@ -1238,6 +1498,82 @@ run();
 ### Response
 
 **Promise<[operations.HrisUpdateEmployeeResponse](../../sdk/models/operations/hrisupdateemployeeresponse.md)>**
+### Errors
+
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
+
+## updateEmployeeWorkEligibilityRequest
+
+Update Employee Work Eligibility Request
+
+### Example Usage
+
+```typescript
+import { StackOne } from "@stackone/stackone-client-ts";
+import { HrisCreateWorkEligibilityRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+async function run() {
+  const sdk = new StackOne({
+    security: {
+      password: "<YOUR_PASSWORD_HERE>",
+    },
+  });
+
+  const result = await sdk.hris.updateEmployeeWorkEligibilityRequest({
+    hrisCreateWorkEligibilityRequestDto: {
+      document: {
+        contents: [
+          {
+            fileFormat: {
+            sourceValue: 918.43,
+            },
+            url: "https://example.com/file.pdf",
+          },
+        ],
+        createdAt: new Date("2021-01-01T01:01:01.000Z"),
+        id: "doc-123456",
+        name: "My Document",
+        path: "/path/to/file",
+        updatedAt: new Date("2021-01-02T01:01:01.000Z"),
+      },
+      issuedBy: {
+      sourceValue:     {},
+        value: HrisCreateWorkEligibilityRequestDtoValue.Us,
+      },
+      number: "1234567890",
+      subType: "H1B",
+      type: {
+      sourceType: "<value>",
+      },
+      validFrom: new Date("2021-01-01T00:00.000Z"),
+      validTo: new Date("2021-01-01T00:00.000Z"),
+    },
+    id: "<id>",
+    subResourceId: "<value>",
+    xAccountId: "<value>",
+  });
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.HrisUpdateEmployeeWorkEligibilityRequestRequest](../../sdk/models/operations/hrisupdateemployeeworkeligibilityrequestrequest.md)                                   | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+
+
+### Response
+
+**Promise<[operations.HrisUpdateEmployeeWorkEligibilityRequestResponse](../../sdk/models/operations/hrisupdateemployeeworkeligibilityrequestresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

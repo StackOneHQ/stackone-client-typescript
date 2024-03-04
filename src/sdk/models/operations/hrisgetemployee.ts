@@ -6,7 +6,7 @@ import * as shared from "../../../sdk/models/shared";
 import { z } from "zod";
 
 /**
- * Query parameters that can be used to pass through parameters to the underlying provider request by surrounding them with "proxy" key
+ * Query parameters that can be used to pass through parameters to the underlying provider request by surrounding them with 'proxy' key
  */
 export type HrisGetEmployeeQueryParamProxy = {};
 
@@ -39,7 +39,7 @@ export type HrisGetEmployeeRequest = {
      */
     pageSize?: string | null | undefined;
     /**
-     * Query parameters that can be used to pass through parameters to the underlying provider request by surrounding them with "proxy" key
+     * Query parameters that can be used to pass through parameters to the underlying provider request by surrounding them with 'proxy' key
      */
     proxy?: HrisGetEmployeeQueryParamProxy | null | undefined;
     /**

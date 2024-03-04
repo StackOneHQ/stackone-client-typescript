@@ -4,32 +4,19 @@
 
 import { z } from "zod";
 
-export type Response = {};
-
 export type RawResponse = {
     body?: string | null | undefined;
     method: string;
-    response?: Response | null | undefined;
+    response?: Record<string, any> | null | undefined;
     url: string;
 };
-
-/** @internal */
-export namespace Response$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<Response, z.ZodTypeDef, Inbound> = z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Response> = z.object({});
-}
 
 /** @internal */
 export namespace RawResponse$ {
     export type Inbound = {
         body?: string | null | undefined;
         method: string;
-        response?: Response$.Inbound | null | undefined;
+        response?: Record<string, any> | null | undefined;
         url: string;
     };
 
@@ -37,7 +24,7 @@ export namespace RawResponse$ {
         .object({
             body: z.nullable(z.string()).optional(),
             method: z.string(),
-            response: z.nullable(z.lazy(() => Response$.inboundSchema)).optional(),
+            response: z.nullable(z.record(z.any())).optional(),
             url: z.string(),
         })
         .transform((v) => {
@@ -52,7 +39,7 @@ export namespace RawResponse$ {
     export type Outbound = {
         body?: string | null | undefined;
         method: string;
-        response?: Response$.Outbound | null | undefined;
+        response?: Record<string, any> | null | undefined;
         url: string;
     };
 
@@ -60,7 +47,7 @@ export namespace RawResponse$ {
         .object({
             body: z.nullable(z.string()).optional(),
             method: z.string(),
-            response: z.nullable(z.lazy(() => Response$.outboundSchema)).optional(),
+            response: z.nullable(z.record(z.any())).optional(),
             url: z.string(),
         })
         .transform((v) => {

@@ -10,4 +10,5 @@ The status of the job postings.
 | `Live`          | live            |
 | `Draft`         | draft           |
 | `Closed`        | closed          |
+| `Archived`      | archived        |
 | `UnmappedValue` | unmapped_value  |

@@ -41,7 +41,7 @@ async function run() {
           messageContent: {},
           messageType: {
           sourceValue: "Email",
-            value: "email",
+            value: {},
           },
         },
       ],
@@ -100,7 +100,7 @@ async function run() {
         messageContent:     {},
           messageType: {
           sourceValue: "Email",
-            value: "email",
+            value: {},
           },
         },
       ],
@@ -159,7 +159,7 @@ async function run() {
           messageContent: {},
           messageType: {
           sourceValue: "Email",
-            value: "email",
+            value: {},
           },
         },
       ],
@@ -590,7 +590,7 @@ async function run() {
           messageContent: {},
           messageType: {
           sourceValue: "Email",
-            value: "email",
+            value: {},
           },
         },
       ],
@@ -650,7 +650,7 @@ async function run() {
         messageContent:     {},
           messageType: {
           sourceValue: "Email",
-            value: "email",
+            value: {},
           },
         },
       ],
@@ -710,7 +710,7 @@ async function run() {
           messageContent: {},
           messageType: {
           sourceValue: "Email",
-            value: "email",
+            value: {},
           },
         },
       ],

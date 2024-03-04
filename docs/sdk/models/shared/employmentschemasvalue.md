@@ -7,8 +7,6 @@ The type of the employment.
 
 | Name               | Value              |
 | ------------------ | ------------------ |
-| `FullTime`         | full_time          |
-| `PartTime`         | part_time          |
 | `Contractor`       | contractor         |
 | `Intern`           | intern             |
 | `Permanent`        | permanent          |

@@ -5,6 +5,7 @@
 import { CountryCodeEnum, CountryCodeEnum$ } from "./countrycodeenum";
 import { EmployeeCustomFields, EmployeeCustomFields$ } from "./employeecustomfields";
 import { Employment, Employment$ } from "./employment";
+import { HRISBenefit, HRISBenefit$ } from "./hrisbenefit";
 import { z } from "zod";
 
 /**
@@ -85,8 +86,6 @@ export type HrisCreateEmployeeRequestDtoSchemasEmploymentTypeSourceValue =
  * The type of the employment.
  */
 export enum HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue {
-    FullTime = "full_time",
-    PartTime = "part_time",
     Contractor = "contractor",
     Intern = "intern",
     Permanent = "permanent",
@@ -8571,6 +8570,10 @@ export type HrisCreateEmployeeRequestDto = {
      */
     avatarUrl?: string | null | undefined;
     /**
+     * Current benefits of the employee
+     */
+    benefits?: Array<HRISBenefit> | null | undefined;
+    /**
      * The employee birthday
      */
     birthday?: Date | null | undefined;
@@ -10284,6 +10287,7 @@ export namespace HrisCreateEmployeeRequestDto$ {
     export type Inbound = {
         avatar?: HrisCreateEmployeeRequestDtoAvatar$.Inbound | null | undefined;
         avatar_url?: string | null | undefined;
+        benefits?: Array<HRISBenefit$.Inbound> | null | undefined;
         birthday?: string | null | undefined;
         citizenships?: Array<CountryCodeEnum$.Inbound> | null | undefined;
         company_name?: string | null | undefined;
@@ -10328,6 +10332,7 @@ export namespace HrisCreateEmployeeRequestDto$ {
                 .nullable(z.lazy(() => HrisCreateEmployeeRequestDtoAvatar$.inboundSchema))
                 .optional(),
             avatar_url: z.nullable(z.string()).optional(),
+            benefits: z.nullable(z.array(HRISBenefit$.inboundSchema)).optional(),
             birthday: z
                 .nullable(
                     z
@@ -10423,6 +10428,7 @@ export namespace HrisCreateEmployeeRequestDto$ {
             return {
                 ...(v.avatar === undefined ? null : { avatar: v.avatar }),
                 ...(v.avatar_url === undefined ? null : { avatarUrl: v.avatar_url }),
+                ...(v.benefits === undefined ? null : { benefits: v.benefits }),
                 ...(v.birthday === undefined ? null : { birthday: v.birthday }),
                 ...(v.citizenships === undefined ? null : { citizenships: v.citizenships }),
                 ...(v.company_name === undefined ? null : { companyName: v.company_name }),
@@ -10471,6 +10477,7 @@ export namespace HrisCreateEmployeeRequestDto$ {
     export type Outbound = {
         avatar?: HrisCreateEmployeeRequestDtoAvatar$.Outbound | null | undefined;
         avatar_url?: string | null | undefined;
+        benefits?: Array<HRISBenefit$.Outbound> | null | undefined;
         birthday?: string | null | undefined;
         citizenships?: Array<CountryCodeEnum$.Outbound> | null | undefined;
         company_name?: string | null | undefined;
@@ -10515,6 +10522,7 @@ export namespace HrisCreateEmployeeRequestDto$ {
                 .nullable(z.lazy(() => HrisCreateEmployeeRequestDtoAvatar$.outboundSchema))
                 .optional(),
             avatarUrl: z.nullable(z.string()).optional(),
+            benefits: z.nullable(z.array(HRISBenefit$.outboundSchema)).optional(),
             birthday: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
             citizenships: z.nullable(z.array(CountryCodeEnum$.outboundSchema)).optional(),
             companyName: z.nullable(z.string()).optional(),
@@ -10570,6 +10578,7 @@ export namespace HrisCreateEmployeeRequestDto$ {
             return {
                 ...(v.avatar === undefined ? null : { avatar: v.avatar }),
                 ...(v.avatarUrl === undefined ? null : { avatar_url: v.avatarUrl }),
+                ...(v.benefits === undefined ? null : { benefits: v.benefits }),
                 ...(v.birthday === undefined ? null : { birthday: v.birthday }),
                 ...(v.citizenships === undefined ? null : { citizenships: v.citizenships }),
                 ...(v.companyName === undefined ? null : { company_name: v.companyName }),

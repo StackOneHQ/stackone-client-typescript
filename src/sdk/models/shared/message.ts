@@ -34,6 +34,11 @@ export type Message4 = {};
 export type MessageSourceValue = Message4 | string | number | boolean;
 
 /**
+ * The unified message type.
+ */
+export type MessageValue = {};
+
+/**
  * Stackone enum identifying the type of message associated with the content.
  */
 export type MessageMessageType = {
@@ -44,7 +49,7 @@ export type MessageMessageType = {
     /**
      * The unified message type.
      */
-    value?: string | null | undefined;
+    value?: MessageValue | null | undefined;
 };
 
 export type Message = {
@@ -245,10 +250,21 @@ export namespace MessageSourceValue$ {
 }
 
 /** @internal */
+export namespace MessageValue$ {
+    export type Inbound = {};
+
+    export const inboundSchema: z.ZodType<MessageValue, z.ZodTypeDef, Inbound> = z.object({});
+
+    export type Outbound = {};
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, MessageValue> = z.object({});
+}
+
+/** @internal */
 export namespace MessageMessageType$ {
     export type Inbound = {
         source_value?: Message4$.Inbound | string | number | boolean | null | undefined;
-        value?: string | null | undefined;
+        value?: MessageValue$.Inbound | null | undefined;
     };
 
     export const inboundSchema: z.ZodType<MessageMessageType, z.ZodTypeDef, Inbound> = z
@@ -263,7 +279,7 @@ export namespace MessageMessageType$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(z.string()).optional(),
+            value: z.nullable(z.lazy(() => MessageValue$.inboundSchema)).optional(),
         })
         .transform((v) => {
             return {
@@ -274,7 +290,7 @@ export namespace MessageMessageType$ {
 
     export type Outbound = {
         source_value?: Message4$.Outbound | string | number | boolean | null | undefined;
-        value?: string | null | undefined;
+        value?: MessageValue$.Outbound | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, MessageMessageType> = z
@@ -289,7 +305,7 @@ export namespace MessageMessageType$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(z.string()).optional(),
+            value: z.nullable(z.lazy(() => MessageValue$.outboundSchema)).optional(),
         })
         .transform((v) => {
             return {

@@ -9,8 +9,17 @@ export type Company = {
      * The created_at date
      */
     createdAt?: Date | null | undefined;
+    /**
+     * The display name of the company
+     */
     displayName?: string | null | undefined;
+    /**
+     * The identifier of the company
+     */
     id?: string | null | undefined;
+    /**
+     * The name of the company
+     */
     name?: string | null | undefined;
     /**
      * The updated_at date
