@@ -51,8 +51,6 @@ export type JobPostingSchemasSourceValue = JobPostingSchemas4 | string | number 
  * The type of the employment.
  */
 export enum JobPostingSchemasValue {
-    FullTime = "full_time",
-    PartTime = "part_time",
     Contractor = "contractor",
     Intern = "intern",
     Permanent = "permanent",
@@ -105,6 +103,7 @@ export enum JobPostingSchemasStatusValue {
     Live = "live",
     Draft = "draft",
     Closed = "closed",
+    Archived = "archived",
     UnmappedValue = "unmapped_value",
 }
 

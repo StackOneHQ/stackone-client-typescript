@@ -12,7 +12,11 @@ export type HRISBenefitSourceValue = HRISBenefit4 | string | number | boolean;
  * The type of the benefit
  */
 export enum HRISBenefitValue {
+    RetirementSavings = "retirement_savings",
+    HealthSavings = "health_savings",
     Other = "other",
+    HealthInsurance = "health_insurance",
+    Insurance = "insurance",
 }
 
 /**
@@ -34,7 +38,7 @@ export type HRISBenefit = {
     /**
      * The date and time the benefit was created
      */
-    createdAt?: string | null | undefined;
+    createdAt?: Date | null | undefined;
     /**
      * The description of the benefit
      */
@@ -54,7 +58,7 @@ export type HRISBenefit = {
     /**
      * The date and time the benefit was last updated
      */
-    updatedAt?: string | null | undefined;
+    updatedAt?: Date | null | undefined;
 };
 
 /** @internal */
@@ -158,12 +162,26 @@ export namespace HRISBenefit$ {
     export const inboundSchema: z.ZodType<HRISBenefit, z.ZodTypeDef, Inbound> = z
         .object({
             benefit_type: z.nullable(z.lazy(() => BenefitType$.inboundSchema)).optional(),
-            created_at: z.nullable(z.string()).optional(),
+            created_at: z
+                .nullable(
+                    z
+                        .string()
+                        .datetime({ offset: true })
+                        .transform((v) => new Date(v))
+                )
+                .optional(),
             description: z.nullable(z.string()).optional(),
             id: z.nullable(z.string()).optional(),
             name: z.nullable(z.string()).optional(),
             provider: z.nullable(z.string()).optional(),
-            updated_at: z.nullable(z.string()).optional(),
+            updated_at: z
+                .nullable(
+                    z
+                        .string()
+                        .datetime({ offset: true })
+                        .transform((v) => new Date(v))
+                )
+                .optional(),
         })
         .transform((v) => {
             return {
@@ -190,12 +208,12 @@ export namespace HRISBenefit$ {
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, HRISBenefit> = z
         .object({
             benefitType: z.nullable(z.lazy(() => BenefitType$.outboundSchema)).optional(),
-            createdAt: z.nullable(z.string()).optional(),
+            createdAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
             description: z.nullable(z.string()).optional(),
             id: z.nullable(z.string()).optional(),
             name: z.nullable(z.string()).optional(),
             provider: z.nullable(z.string()).optional(),
-            updatedAt: z.nullable(z.string()).optional(),
+            updatedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
         })
         .transform((v) => {
             return {

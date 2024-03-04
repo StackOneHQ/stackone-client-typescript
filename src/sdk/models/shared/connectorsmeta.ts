@@ -12,6 +12,7 @@ export enum Category {
     Hris = "hris",
     HrisLegacy = "hris-legacy",
     Crm = "crm",
+    Iam = "iam",
     Marketing = "marketing",
     Stackone = "stackone",
 }

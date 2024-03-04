@@ -1,6 +1,6 @@
 # AtsListApplicationsQueryParamProxy
 
-Query parameters that can be used to pass through parameters to the underlying provider request by surrounding them with "proxy" key
+Query parameters that can be used to pass through parameters to the underlying provider request by surrounding them with 'proxy' key
 
 
 ## Fields

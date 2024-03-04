@@ -6,7 +6,7 @@ import { CostCenters, CostCenters$ } from "./costcenters";
 import { CountryCodeEnum, CountryCodeEnum$ } from "./countrycodeenum";
 import { EmployeeCustomFields, EmployeeCustomFields$ } from "./employeecustomfields";
 import { Employment, Employment$ } from "./employment";
-import { WorkEligibility, WorkEligibility$ } from "./workeligibility";
+import { HRISBenefit, HRISBenefit$ } from "./hrisbenefit";
 import { z } from "zod";
 
 /**
@@ -15,6 +15,32 @@ import { z } from "zod";
 export type Avatar = {
     base64?: string | null | undefined;
     url?: string | null | undefined;
+};
+
+/**
+ * The employee company
+ */
+export type EmployeeCompany = {
+    /**
+     * The created_at date
+     */
+    createdAt?: Date | null | undefined;
+    /**
+     * The display name of the company
+     */
+    displayName?: string | null | undefined;
+    /**
+     * The identifier of the company
+     */
+    id?: string | null | undefined;
+    /**
+     * The name of the company
+     */
+    name?: string | null | undefined;
+    /**
+     * The updated_at date
+     */
+    updatedAt?: Date | null | undefined;
 };
 
 export type Employee4 = {};
@@ -73,8 +99,6 @@ export type EmployeeSchemasEmploymentTypeSourceValue =
  * The type of the employment.
  */
 export enum EmployeeSchemasEmploymentTypeValue {
-    FullTime = "full_time",
-    PartTime = "part_time",
     Contractor = "contractor",
     Intern = "intern",
     Permanent = "permanent",
@@ -948,6 +972,10 @@ export type Employee = {
      */
     avatarUrl?: string | null | undefined;
     /**
+     * Current benefits of the employee
+     */
+    benefits?: Array<HRISBenefit> | null | undefined;
+    /**
      * The employee birthday
      */
     birthday?: Date | null | undefined;
@@ -955,6 +983,10 @@ export type Employee = {
      * The citizenships of the Employee
      */
     citizenships?: Array<CountryCodeEnum> | null | undefined;
+    /**
+     * The employee company
+     */
+    company?: EmployeeCompany | null | undefined;
     /**
      * The employee company name
      */
@@ -1076,10 +1108,6 @@ export type Employee = {
      */
     workAnniversary?: Date | null | undefined;
     /**
-     * The employee work eligibility
-     */
-    workEligibility?: Array<WorkEligibility> | null | undefined;
-    /**
      * The employee work email
      */
     workEmail?: string | null | undefined;
@@ -1126,6 +1154,75 @@ export namespace Avatar$ {
             return {
                 ...(v.base64 === undefined ? null : { base64: v.base64 }),
                 ...(v.url === undefined ? null : { url: v.url }),
+            };
+        });
+}
+
+/** @internal */
+export namespace EmployeeCompany$ {
+    export type Inbound = {
+        created_at?: string | null | undefined;
+        display_name?: string | null | undefined;
+        id?: string | null | undefined;
+        name?: string | null | undefined;
+        updated_at?: string | null | undefined;
+    };
+
+    export const inboundSchema: z.ZodType<EmployeeCompany, z.ZodTypeDef, Inbound> = z
+        .object({
+            created_at: z
+                .nullable(
+                    z
+                        .string()
+                        .datetime({ offset: true })
+                        .transform((v) => new Date(v))
+                )
+                .optional(),
+            display_name: z.nullable(z.string()).optional(),
+            id: z.nullable(z.string()).optional(),
+            name: z.nullable(z.string()).optional(),
+            updated_at: z
+                .nullable(
+                    z
+                        .string()
+                        .datetime({ offset: true })
+                        .transform((v) => new Date(v))
+                )
+                .optional(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.created_at === undefined ? null : { createdAt: v.created_at }),
+                ...(v.display_name === undefined ? null : { displayName: v.display_name }),
+                ...(v.id === undefined ? null : { id: v.id }),
+                ...(v.name === undefined ? null : { name: v.name }),
+                ...(v.updated_at === undefined ? null : { updatedAt: v.updated_at }),
+            };
+        });
+
+    export type Outbound = {
+        created_at?: string | null | undefined;
+        display_name?: string | null | undefined;
+        id?: string | null | undefined;
+        name?: string | null | undefined;
+        updated_at?: string | null | undefined;
+    };
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, EmployeeCompany> = z
+        .object({
+            createdAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+            displayName: z.nullable(z.string()).optional(),
+            id: z.nullable(z.string()).optional(),
+            name: z.nullable(z.string()).optional(),
+            updatedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.createdAt === undefined ? null : { created_at: v.createdAt }),
+                ...(v.displayName === undefined ? null : { display_name: v.displayName }),
+                ...(v.id === undefined ? null : { id: v.id }),
+                ...(v.name === undefined ? null : { name: v.name }),
+                ...(v.updatedAt === undefined ? null : { updated_at: v.updatedAt }),
             };
         });
 }
@@ -2512,8 +2609,10 @@ export namespace Employee$ {
     export type Inbound = {
         avatar?: Avatar$.Inbound | null | undefined;
         avatar_url?: string | null | undefined;
+        benefits?: Array<HRISBenefit$.Inbound> | null | undefined;
         birthday?: string | null | undefined;
         citizenships?: Array<CountryCodeEnum$.Inbound> | null | undefined;
+        company?: EmployeeCompany$.Inbound | null | undefined;
         company_name?: string | null | undefined;
         cost_centers?: Array<CostCenters$.Inbound> | null | undefined;
         created_at?: string | null | undefined;
@@ -2544,7 +2643,6 @@ export namespace Employee$ {
         termination_date?: string | null | undefined;
         updated_at?: string | null | undefined;
         work_anniversary?: string | null | undefined;
-        work_eligibility?: Array<WorkEligibility$.Inbound> | null | undefined;
         work_email?: string | null | undefined;
         work_location?: WorkLocation$.Inbound | null | undefined;
         work_phone_number?: string | null | undefined;
@@ -2554,6 +2652,7 @@ export namespace Employee$ {
         .object({
             avatar: z.nullable(z.lazy(() => Avatar$.inboundSchema)).optional(),
             avatar_url: z.nullable(z.string()).optional(),
+            benefits: z.nullable(z.array(HRISBenefit$.inboundSchema)).optional(),
             birthday: z
                 .nullable(
                     z
@@ -2563,6 +2662,7 @@ export namespace Employee$ {
                 )
                 .optional(),
             citizenships: z.nullable(z.array(CountryCodeEnum$.inboundSchema)).optional(),
+            company: z.nullable(z.lazy(() => EmployeeCompany$.inboundSchema)).optional(),
             company_name: z.nullable(z.string()).optional(),
             cost_centers: z.nullable(z.array(CostCenters$.inboundSchema)).optional(),
             created_at: z
@@ -2644,7 +2744,6 @@ export namespace Employee$ {
                         .transform((v) => new Date(v))
                 )
                 .optional(),
-            work_eligibility: z.nullable(z.array(WorkEligibility$.inboundSchema)).optional(),
             work_email: z.nullable(z.string()).optional(),
             work_location: z.nullable(z.lazy(() => WorkLocation$.inboundSchema)).optional(),
             work_phone_number: z.nullable(z.string()).optional(),
@@ -2653,8 +2752,10 @@ export namespace Employee$ {
             return {
                 ...(v.avatar === undefined ? null : { avatar: v.avatar }),
                 ...(v.avatar_url === undefined ? null : { avatarUrl: v.avatar_url }),
+                ...(v.benefits === undefined ? null : { benefits: v.benefits }),
                 ...(v.birthday === undefined ? null : { birthday: v.birthday }),
                 ...(v.citizenships === undefined ? null : { citizenships: v.citizenships }),
+                ...(v.company === undefined ? null : { company: v.company }),
                 ...(v.company_name === undefined ? null : { companyName: v.company_name }),
                 ...(v.cost_centers === undefined ? null : { costCenters: v.cost_centers }),
                 ...(v.created_at === undefined ? null : { createdAt: v.created_at }),
@@ -2695,9 +2796,6 @@ export namespace Employee$ {
                 ...(v.work_anniversary === undefined
                     ? null
                     : { workAnniversary: v.work_anniversary }),
-                ...(v.work_eligibility === undefined
-                    ? null
-                    : { workEligibility: v.work_eligibility }),
                 ...(v.work_email === undefined ? null : { workEmail: v.work_email }),
                 ...(v.work_location === undefined ? null : { workLocation: v.work_location }),
                 ...(v.work_phone_number === undefined
@@ -2709,8 +2807,10 @@ export namespace Employee$ {
     export type Outbound = {
         avatar?: Avatar$.Outbound | null | undefined;
         avatar_url?: string | null | undefined;
+        benefits?: Array<HRISBenefit$.Outbound> | null | undefined;
         birthday?: string | null | undefined;
         citizenships?: Array<CountryCodeEnum$.Outbound> | null | undefined;
+        company?: EmployeeCompany$.Outbound | null | undefined;
         company_name?: string | null | undefined;
         cost_centers?: Array<CostCenters$.Outbound> | null | undefined;
         created_at?: string | null | undefined;
@@ -2741,7 +2841,6 @@ export namespace Employee$ {
         termination_date?: string | null | undefined;
         updated_at?: string | null | undefined;
         work_anniversary?: string | null | undefined;
-        work_eligibility?: Array<WorkEligibility$.Outbound> | null | undefined;
         work_email?: string | null | undefined;
         work_location?: WorkLocation$.Outbound | null | undefined;
         work_phone_number?: string | null | undefined;
@@ -2751,8 +2850,10 @@ export namespace Employee$ {
         .object({
             avatar: z.nullable(z.lazy(() => Avatar$.outboundSchema)).optional(),
             avatarUrl: z.nullable(z.string()).optional(),
+            benefits: z.nullable(z.array(HRISBenefit$.outboundSchema)).optional(),
             birthday: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
             citizenships: z.nullable(z.array(CountryCodeEnum$.outboundSchema)).optional(),
+            company: z.nullable(z.lazy(() => EmployeeCompany$.outboundSchema)).optional(),
             companyName: z.nullable(z.string()).optional(),
             costCenters: z.nullable(z.array(CostCenters$.outboundSchema)).optional(),
             createdAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
@@ -2785,7 +2886,6 @@ export namespace Employee$ {
             terminationDate: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
             updatedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
             workAnniversary: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
-            workEligibility: z.nullable(z.array(WorkEligibility$.outboundSchema)).optional(),
             workEmail: z.nullable(z.string()).optional(),
             workLocation: z.nullable(z.lazy(() => WorkLocation$.outboundSchema)).optional(),
             workPhoneNumber: z.nullable(z.string()).optional(),
@@ -2794,8 +2894,10 @@ export namespace Employee$ {
             return {
                 ...(v.avatar === undefined ? null : { avatar: v.avatar }),
                 ...(v.avatarUrl === undefined ? null : { avatar_url: v.avatarUrl }),
+                ...(v.benefits === undefined ? null : { benefits: v.benefits }),
                 ...(v.birthday === undefined ? null : { birthday: v.birthday }),
                 ...(v.citizenships === undefined ? null : { citizenships: v.citizenships }),
+                ...(v.company === undefined ? null : { company: v.company }),
                 ...(v.companyName === undefined ? null : { company_name: v.companyName }),
                 ...(v.costCenters === undefined ? null : { cost_centers: v.costCenters }),
                 ...(v.createdAt === undefined ? null : { created_at: v.createdAt }),
@@ -2836,9 +2938,6 @@ export namespace Employee$ {
                 ...(v.workAnniversary === undefined
                     ? null
                     : { work_anniversary: v.workAnniversary }),
-                ...(v.workEligibility === undefined
-                    ? null
-                    : { work_eligibility: v.workEligibility }),
                 ...(v.workEmail === undefined ? null : { work_email: v.workEmail }),
                 ...(v.workLocation === undefined ? null : { work_location: v.workLocation }),
                 ...(v.workPhoneNumber === undefined

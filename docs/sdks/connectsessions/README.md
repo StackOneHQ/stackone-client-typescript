@@ -74,6 +74,7 @@ async function run() {
       ConnectSessionCreateCategories.Hris,
       ConnectSessionCreateCategories.HrisLegacy,
       ConnectSessionCreateCategories.Crm,
+      ConnectSessionCreateCategories.Iam,
       ConnectSessionCreateCategories.Marketing,
       ConnectSessionCreateCategories.Stackone,
     ],

@@ -1,0 +1,10 @@
+# HrisCreateEmployeeDocumentRequest
+
+
+## Fields
+
+| Field                                                                                             | Type                                                                                              | Required                                                                                          | Description                                                                                       |
+| ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| `hrisCreateDocumentRequestDto`                                                                    | [shared.HrisCreateDocumentRequestDto](../../../sdk/models/shared/hriscreatedocumentrequestdto.md) | :heavy_check_mark:                                                                                | N/A                                                                                               |
+| `id`                                                                                              | *string*                                                                                          | :heavy_check_mark:                                                                                | N/A                                                                                               |
+| `xAccountId`                                                                                      | *string*                                                                                          | :heavy_check_mark:                                                                                | The account identifier                                                                            |

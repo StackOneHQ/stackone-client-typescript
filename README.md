@@ -124,13 +124,16 @@ run();
 ### [hris](docs/sdks/hris/README.md)
 
 * [createEmployee](docs/sdks/hris/README.md#createemployee) - Creates an employee
+* [createEmployeeDocument](docs/sdks/hris/README.md#createemployeedocument) - Create Employee Document
 * [createEmployeeTimeOffRequest](docs/sdks/hris/README.md#createemployeetimeoffrequest) - Create Employee Time Off Request
+* [createEmployeeWorkEligibilityRequest](docs/sdks/hris/README.md#createemployeeworkeligibilityrequest) - Create Employee Work Eligibility Request
 * [createTimeOffRequest](docs/sdks/hris/README.md#createtimeoffrequest) - Creates a time off request
 * [getBenefit](docs/sdks/hris/README.md#getbenefit) - Get Benefit
 * [getCompany](docs/sdks/hris/README.md#getcompany) - Get Company
 * [getEmployee](docs/sdks/hris/README.md#getemployee) - Get Employee
 * [getEmployeeDocument](docs/sdks/hris/README.md#getemployeedocument) - Get Employee Document
 * [getEmployeesTimeOffRequest](docs/sdks/hris/README.md#getemployeestimeoffrequest) - Get Employees Time Off Request
+* [getEmployeesWorkEligibility](docs/sdks/hris/README.md#getemployeesworkeligibility) - Get Employees Work Eligibility
 * [getEmployment](docs/sdks/hris/README.md#getemployment) - Get Employment
 * [getLocation](docs/sdks/hris/README.md#getlocation) - Get Location
 * [getTimeOffRequest](docs/sdks/hris/README.md#gettimeoffrequest) - Get time off request
@@ -138,12 +141,25 @@ run();
 * [listCompanies](docs/sdks/hris/README.md#listcompanies) - List Companies
 * [listEmployeeDocuments](docs/sdks/hris/README.md#listemployeedocuments) - List Employee Documents
 * [listEmployeeTimeOffRequests](docs/sdks/hris/README.md#listemployeetimeoffrequests) - List Employee Time Off Requests
+* [listEmployeeWorkEligibility](docs/sdks/hris/README.md#listemployeeworkeligibility) - List Employee Work Eligibility
 * [listEmployees](docs/sdks/hris/README.md#listemployees) - List Employees
 * [listEmployments](docs/sdks/hris/README.md#listemployments) - List Employments
 * [listLocations](docs/sdks/hris/README.md#listlocations) - List locations
 * [listTimeOffRequests](docs/sdks/hris/README.md#listtimeoffrequests) - List time off requests
 * [updateEmployee](docs/sdks/hris/README.md#updateemployee) - Updates an employee
+* [updateEmployeeWorkEligibilityRequest](docs/sdks/hris/README.md#updateemployeeworkeligibilityrequest) - Update Employee Work Eligibility Request
 * [updateTimeOffRequest](docs/sdks/hris/README.md#updatetimeoffrequest) - Update time off request
+
+### [iam](docs/sdks/iam/README.md)
+
+* [getGroup](docs/sdks/iam/README.md#getgroup) - Get Group
+* [getPolicy](docs/sdks/iam/README.md#getpolicy) - Get Policy
+* [getRole](docs/sdks/iam/README.md#getrole) - Get Role
+* [getUser](docs/sdks/iam/README.md#getuser) - Get User
+* [listGroups](docs/sdks/iam/README.md#listgroups) - List Groups
+* [listPolicies](docs/sdks/iam/README.md#listpolicies) - List Policies
+* [listRoles](docs/sdks/iam/README.md#listroles) - List Roles
+* [listUsers](docs/sdks/iam/README.md#listusers) - List Users
 
 ### [marketing](docs/sdks/marketing/README.md)
 
@@ -213,10 +229,12 @@ All SDK methods return a response object or throw an error. If Error objects are
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 4xx-5xx         | */*             |
 
-Example
+Validation errors can also occur when either method arguments or data returned from the server do not match the expected format. The `SDKValidationError` that is thrown as a result will capture the raw value that failed validation in an attribute called `rawValue`. Additionally, a `pretty()` method is available on this error that can be used to log a nicely formatted string since validation errors can list many issues and the plain error string may be difficult read when debugging. 
+
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
+import * as errors from "@stackone/stackone-client-ts/sdk/models/errors";
 
 async function run() {
     const sdk = new StackOne({
@@ -231,8 +249,18 @@ async function run() {
             id: "<id>",
         });
     } catch (err) {
-        // Handle errors here
-        throw err;
+        switch (true) {
+            case err instanceof errors.SDKValidationError: {
+                // Validation errors can be pretty-printed
+                console.error(err.pretty());
+                // Raw value may also be inspected
+                console.error(err.rawValue);
+                return;
+            }
+            default: {
+                throw err;
+            }
+        }
     }
 
     // Handle the result

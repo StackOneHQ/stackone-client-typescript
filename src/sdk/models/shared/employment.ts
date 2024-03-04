@@ -34,8 +34,6 @@ export type EmploymentSchemasSourceValue = EmploymentSchemas4 | string | number 
  * The type of the employment.
  */
 export enum EmploymentSchemasValue {
-    FullTime = "full_time",
-    PartTime = "part_time",
     Contractor = "contractor",
     Intern = "intern",
     Permanent = "permanent",
