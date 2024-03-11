@@ -11,6 +11,14 @@ export type StackoneListLinkedAccountsRequest = {
      */
     originOwnerId?: string | null | undefined;
     /**
+     * The page number of the results to fetch
+     */
+    page?: number | null | undefined;
+    /**
+     * The number of results per page
+     */
+    pageSize?: number | null | undefined;
+    /**
      * The provider of the results to fetch
      */
     provider?: string | null | undefined;
@@ -39,6 +47,8 @@ export type StackoneListLinkedAccountsResponse = {
 export namespace StackoneListLinkedAccountsRequest$ {
     export type Inbound = {
         origin_owner_id?: string | null | undefined;
+        page?: number | null | undefined;
+        page_size?: number | null | undefined;
         provider?: string | null | undefined;
     };
 
@@ -49,17 +59,23 @@ export namespace StackoneListLinkedAccountsRequest$ {
     > = z
         .object({
             origin_owner_id: z.nullable(z.string()).optional(),
+            page: z.nullable(z.number()).optional(),
+            page_size: z.nullable(z.number().default(25)),
             provider: z.nullable(z.string()).optional(),
         })
         .transform((v) => {
             return {
                 ...(v.origin_owner_id === undefined ? null : { originOwnerId: v.origin_owner_id }),
+                ...(v.page === undefined ? null : { page: v.page }),
+                pageSize: v.page_size,
                 ...(v.provider === undefined ? null : { provider: v.provider }),
             };
         });
 
     export type Outbound = {
         origin_owner_id?: string | null | undefined;
+        page?: number | null | undefined;
+        page_size: number | null;
         provider?: string | null | undefined;
     };
 
@@ -70,11 +86,15 @@ export namespace StackoneListLinkedAccountsRequest$ {
     > = z
         .object({
             originOwnerId: z.nullable(z.string()).optional(),
+            page: z.nullable(z.number()).optional(),
+            pageSize: z.nullable(z.number().default(25)),
             provider: z.nullable(z.string()).optional(),
         })
         .transform((v) => {
             return {
                 ...(v.originOwnerId === undefined ? null : { origin_owner_id: v.originOwnerId }),
+                ...(v.page === undefined ? null : { page: v.page }),
+                page_size: v.pageSize,
                 ...(v.provider === undefined ? null : { provider: v.provider }),
             };
         });

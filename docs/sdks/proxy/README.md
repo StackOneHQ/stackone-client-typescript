@@ -23,8 +23,12 @@ async function run() {
 
   const result = await sdk.proxy.proxyRequest({
     proxyRequestBody: {
-      body: {},
-      headers: {},
+      body: {
+        "key": "<value>",
+      },
+      headers: {
+        "Content-Type": "application/json",
+      },
       path: "/employees/directory",
       url: "https://api.sample-integration.com/v1",
     },
