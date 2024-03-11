@@ -5,16 +5,6 @@
 import { z } from "zod";
 
 /**
- * The body of the request
- */
-export type Body = {};
-
-/**
- * The headers to send in the request
- */
-export type Headers = {};
-
-/**
  * The method of the request
  */
 export enum Method {
@@ -29,11 +19,11 @@ export type ProxyRequestBody = {
     /**
      * The body of the request
      */
-    body?: Body | null | undefined;
+    body?: Record<string, any> | null | undefined;
     /**
      * The headers to send in the request
      */
-    headers?: Headers | null | undefined;
+    headers?: Record<string, any> | null | undefined;
     /**
      * The method of the request
      */
@@ -49,35 +39,13 @@ export type ProxyRequestBody = {
 };
 
 /** @internal */
-export namespace Body$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<Body, z.ZodTypeDef, Inbound> = z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Body> = z.object({});
-}
-
-/** @internal */
-export namespace Headers$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<Headers, z.ZodTypeDef, Inbound> = z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Headers> = z.object({});
-}
-
-/** @internal */
 export const Method$ = z.nativeEnum(Method);
 
 /** @internal */
 export namespace ProxyRequestBody$ {
     export type Inbound = {
-        body?: Body$.Inbound | null | undefined;
-        headers?: Headers$.Inbound | null | undefined;
+        body?: Record<string, any> | null | undefined;
+        headers?: Record<string, any> | null | undefined;
         method?: Method | null | undefined;
         path?: string | null | undefined;
         url?: string | null | undefined;
@@ -85,8 +53,8 @@ export namespace ProxyRequestBody$ {
 
     export const inboundSchema: z.ZodType<ProxyRequestBody, z.ZodTypeDef, Inbound> = z
         .object({
-            body: z.nullable(z.lazy(() => Body$.inboundSchema)).optional(),
-            headers: z.nullable(z.lazy(() => Headers$.inboundSchema)).optional(),
+            body: z.nullable(z.record(z.any())).optional(),
+            headers: z.nullable(z.record(z.any())).optional(),
             method: z.nullable(Method$.default(Method.Get)),
             path: z.nullable(z.string()).optional(),
             url: z.nullable(z.string()).optional(),
@@ -102,8 +70,8 @@ export namespace ProxyRequestBody$ {
         });
 
     export type Outbound = {
-        body?: Body$.Outbound | null | undefined;
-        headers?: Headers$.Outbound | null | undefined;
+        body?: Record<string, any> | null | undefined;
+        headers?: Record<string, any> | null | undefined;
         method: Method | null;
         path?: string | null | undefined;
         url?: string | null | undefined;
@@ -111,8 +79,8 @@ export namespace ProxyRequestBody$ {
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ProxyRequestBody> = z
         .object({
-            body: z.nullable(z.lazy(() => Body$.outboundSchema)).optional(),
-            headers: z.nullable(z.lazy(() => Headers$.outboundSchema)).optional(),
+            body: z.nullable(z.record(z.any())).optional(),
+            headers: z.nullable(z.record(z.any())).optional(),
             method: z.nullable(Method$.default(Method.Get)),
             path: z.nullable(z.string()).optional(),
             url: z.nullable(z.string()).optional(),

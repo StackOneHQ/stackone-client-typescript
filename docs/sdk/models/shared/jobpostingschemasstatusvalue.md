@@ -9,6 +9,9 @@ The status of the job postings.
 | --------------- | --------------- |
 | `Live`          | live            |
 | `Draft`         | draft           |
+| `Pending`       | pending         |
+| `Internal`      | internal        |
+| `Rejected`      | rejected        |
 | `Closed`        | closed          |
 | `Archived`      | archived        |
 | `UnmappedValue` | unmapped_value  |

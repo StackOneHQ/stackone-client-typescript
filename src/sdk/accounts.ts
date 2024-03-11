@@ -303,6 +303,11 @@ export class Accounts extends ClientSDK {
                 explode: true,
                 charEncoding: "percent",
             }),
+            enc$.encodeForm("page", payload$.page, { explode: true, charEncoding: "percent" }),
+            enc$.encodeForm("page_size", payload$.page_size, {
+                explode: true,
+                charEncoding: "percent",
+            }),
             enc$.encodeForm("provider", payload$.provider, {
                 explode: true,
                 charEncoding: "percent",

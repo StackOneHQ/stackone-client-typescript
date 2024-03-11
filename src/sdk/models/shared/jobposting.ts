@@ -102,6 +102,9 @@ export type JobPostingSchemasStatusSourceValue =
 export enum JobPostingSchemasStatusValue {
     Live = "live",
     Draft = "draft",
+    Pending = "pending",
+    Internal = "internal",
+    Rejected = "rejected",
     Closed = "closed",
     Archived = "archived",
     UnmappedValue = "unmapped_value",

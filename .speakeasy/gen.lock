@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 7fa83af8-9e8e-4410-b7e2-cf1d0eaf688b
 management:
-  docChecksum: 26297b2562e29edb0300a506d56ce710
+  docChecksum: d4fa34bee357eb887ddd40616da892b3
   docVersion: 1.0.0
-  speakeasyVersion: internal
-  generationVersion: 2.277.0
-  releaseVersion: 4.1.0
-  configChecksum: 4175324d1cc0d34bf41be7ed4ee91195
+  speakeasyVersion: 1.205.0
+  generationVersion: 2.279.1
+  releaseVersion: 4.2.0
+  configChecksum: dafd673b8fa9b67830e8f95259939b16
   repoURL: https://github.com/StackOneHQ/stackone-client-typescript.git
   repoSubDirectory: .
   installationURL: https://github.com/StackOneHQ/stackone-client-typescript
@@ -22,7 +22,7 @@ features:
     groups: 2.81.2
     nameOverrides: 2.81.1
     pagination: 2.82.0
-    responseFormat: 0.1.0
+    responseFormat: 0.2.0
     unions: 2.85.3
 generatedFiles:
   - src/sdk/accounts.ts
@@ -1076,8 +1076,6 @@ generatedFiles:
   - docs/sdk/models/shared/template.md
   - docs/sdk/models/shared/campaignspaginated.md
   - docs/sdk/models/shared/templatespaginated.md
-  - docs/sdk/models/shared/body.md
-  - docs/sdk/models/shared/headers.md
   - docs/sdk/models/shared/method.md
   - docs/sdk/models/shared/proxyrequestbody.md
   - docs/sdk/models/shared/security.md
