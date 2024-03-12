@@ -3,7 +3,7 @@
  */
 
 import { ScorecardSection, ScorecardSection$ } from "./scorecardsection";
-import { z } from "zod";
+import * as z from "zod";
 
 /**
  * The overall recommendation

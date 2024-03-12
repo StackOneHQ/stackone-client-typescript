@@ -4,7 +4,7 @@
 
 import { IamUser, IamUser$ } from "./iamuser";
 import { RawResponse, RawResponse$ } from "./rawresponse";
-import { z } from "zod";
+import * as z from "zod";
 
 export type IamUsersPaginated = {
     data: Array<IamUser>;

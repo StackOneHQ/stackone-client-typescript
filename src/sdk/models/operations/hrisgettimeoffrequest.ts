@@ -3,7 +3,7 @@
  */
 
 import * as shared from "../../../sdk/models/shared";
-import { z } from "zod";
+import * as z from "zod";
 
 /**
  * Query parameters that can be used to pass through parameters to the underlying provider request by surrounding them with 'proxy' key

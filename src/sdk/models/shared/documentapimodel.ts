@@ -3,7 +3,7 @@
  */
 
 import { Content, Content$ } from "./content";
-import { z } from "zod";
+import * as z from "zod";
 
 export type DocumentApiModel4 = {};
 
@@ -80,7 +80,6 @@ export namespace DocumentApiModelSourceValue$ {
     export type Inbound = DocumentApiModel4$.Inbound | string | number | boolean;
 
     export type Outbound = DocumentApiModel4$.Outbound | string | number | boolean;
-
     export const inboundSchema: z.ZodType<DocumentApiModelSourceValue, z.ZodTypeDef, Inbound> =
         z.union([
             z.lazy(() => DocumentApiModel4$.inboundSchema),
@@ -88,7 +87,6 @@ export namespace DocumentApiModelSourceValue$ {
             z.number(),
             z.boolean(),
         ]);
-
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, DocumentApiModelSourceValue> =
         z.union([
             z.lazy(() => DocumentApiModel4$.outboundSchema),

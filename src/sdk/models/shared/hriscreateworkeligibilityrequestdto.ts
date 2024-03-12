@@ -3,7 +3,7 @@
  */
 
 import { Content, Content$ } from "./content";
-import { z } from "zod";
+import * as z from "zod";
 
 export type Document = {
     /**
@@ -451,7 +451,6 @@ export namespace HrisCreateWorkEligibilityRequestDtoSourceValue$ {
         | string
         | number
         | boolean;
-
     export const inboundSchema: z.ZodType<
         HrisCreateWorkEligibilityRequestDtoSourceValue,
         z.ZodTypeDef,
@@ -462,7 +461,6 @@ export namespace HrisCreateWorkEligibilityRequestDtoSourceValue$ {
         z.number(),
         z.boolean(),
     ]);
-
     export const outboundSchema: z.ZodType<
         Outbound,
         z.ZodTypeDef,
@@ -579,14 +577,12 @@ export namespace SourceType$ {
         | string
         | number
         | boolean;
-
     export const inboundSchema: z.ZodType<SourceType, z.ZodTypeDef, Inbound> = z.union([
         z.lazy(() => HrisCreateWorkEligibilityRequestDtoSchemas4$.inboundSchema),
         z.string(),
         z.number(),
         z.boolean(),
     ]);
-
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, SourceType> = z.union([
         z.lazy(() => HrisCreateWorkEligibilityRequestDtoSchemas4$.outboundSchema),
         z.string(),

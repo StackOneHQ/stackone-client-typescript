@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 7fa83af8-9e8e-4410-b7e2-cf1d0eaf688b
 management:
-  docChecksum: d4fa34bee357eb887ddd40616da892b3
+  docChecksum: cce56f1f63139d8180554f42ed60c5ac
   docVersion: 1.0.0
-  speakeasyVersion: 1.205.0
-  generationVersion: 2.279.1
-  releaseVersion: 4.2.0
-  configChecksum: dafd673b8fa9b67830e8f95259939b16
+  speakeasyVersion: 1.206.3
+  generationVersion: 2.280.6
+  releaseVersion: 4.2.1
+  configChecksum: b0b36b787be3c5cedd32affbca1d3e8f
   repoURL: https://github.com/StackOneHQ/stackone-client-typescript.git
   repoSubDirectory: .
   installationURL: https://github.com/StackOneHQ/stackone-client-typescript
@@ -18,11 +18,11 @@ features:
     deprecations: 2.81.1
     examples: 2.81.3
     globalSecurity: 2.82.4
-    globalServerURLs: 2.82.3
+    globalServerURLs: 2.82.4
     groups: 2.81.2
     nameOverrides: 2.81.1
-    pagination: 2.82.0
-    responseFormat: 0.2.0
+    pagination: 2.82.1
+    responseFormat: 0.2.1
     unions: 2.85.3
 generatedFiles:
   - src/sdk/accounts.ts
@@ -43,7 +43,6 @@ generatedFiles:
   - src/lib/base64.ts
   - src/lib/config.ts
   - src/lib/encodings.ts
-  - src/lib/event-streams.ts
   - src/lib/http.ts
   - src/lib/retries.ts
   - src/lib/schemas.ts
@@ -54,7 +53,6 @@ generatedFiles:
   - src/sdk/models/errors/sdkerror.ts
   - src/sdk/models/errors/sdkvalidationerror.ts
   - src/sdk/types/blobs.ts
-  - src/sdk/types/decimal.ts
   - src/sdk/types/index.ts
   - src/sdk/types/operations.ts
   - src/sdk/types/rfcdate.ts
@@ -193,7 +191,6 @@ generatedFiles:
   - src/sdk/models/shared/rejectedreason.ts
   - src/sdk/models/shared/documentapimodel.ts
   - src/sdk/models/shared/content.ts
-  - src/sdk/models/shared/fileformatenum.ts
   - src/sdk/models/shared/documentresult.ts
   - src/sdk/models/shared/offersresult.ts
   - src/sdk/models/shared/offer.ts
@@ -668,11 +665,11 @@ generatedFiles:
   - docs/sdk/models/shared/documentapimodelvalue.md
   - docs/sdk/models/shared/documentapimodeltype.md
   - docs/sdk/models/shared/documentapimodel.md
+  - docs/sdk/models/shared/content4.md
+  - docs/sdk/models/shared/contentsourcevalue.md
+  - docs/sdk/models/shared/contentvalue.md
+  - docs/sdk/models/shared/fileformat.md
   - docs/sdk/models/shared/content.md
-  - docs/sdk/models/shared/fileformatenum4.md
-  - docs/sdk/models/shared/fileformatenumsourcevalue.md
-  - docs/sdk/models/shared/fileformatenumvalue.md
-  - docs/sdk/models/shared/fileformatenum.md
   - docs/sdk/models/shared/documentresult.md
   - docs/sdk/models/shared/offersresult.md
   - docs/sdk/models/shared/offer4.md
@@ -705,7 +702,6 @@ generatedFiles:
   - docs/sdk/models/shared/jobsourcevalue.md
   - docs/sdk/models/shared/jobvalue.md
   - docs/sdk/models/shared/jobstatus.md
-  - docs/sdk/models/shared/jobschemasstatus.md
   - docs/sdk/models/shared/job.md
   - docs/sdk/models/shared/jobhiringteam.md
   - docs/sdk/models/shared/jobpostingresult.md

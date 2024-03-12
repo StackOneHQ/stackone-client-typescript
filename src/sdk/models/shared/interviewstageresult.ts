@@ -4,7 +4,7 @@
 
 import { InterviewStage, InterviewStage$ } from "./interviewstage";
 import { RawResponse, RawResponse$ } from "./rawresponse";
-import { z } from "zod";
+import * as z from "zod";
 
 export type InterviewStageResult = {
     data: InterviewStage;

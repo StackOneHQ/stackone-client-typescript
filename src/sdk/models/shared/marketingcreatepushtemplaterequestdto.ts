@@ -3,7 +3,7 @@
  */
 
 import { PushMessages, PushMessages$ } from "./pushmessages";
-import { z } from "zod";
+import * as z from "zod";
 
 export type MarketingCreatePushTemplateRequestDto = {
     id?: string | null | undefined;

@@ -4,7 +4,7 @@
 
 import { ATSLocation, ATSLocation$ } from "./atslocation";
 import { RawResponse, RawResponse$ } from "./rawresponse";
-import { z } from "zod";
+import * as z from "zod";
 
 export type ATSLocationResult = {
     data: ATSLocation;

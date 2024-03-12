@@ -4,7 +4,7 @@
 
 import { RawResponse, RawResponse$ } from "./rawresponse";
 import { Scorecard, Scorecard$ } from "./scorecard";
-import { z } from "zod";
+import * as z from "zod";
 
 export type ScorecardsPaginated = {
     data: Array<Scorecard>;

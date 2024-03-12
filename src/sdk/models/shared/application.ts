@@ -7,7 +7,7 @@ import { DocumentApiModel, DocumentApiModel$ } from "./documentapimodel";
 import { Questionnaire, Questionnaire$ } from "./questionnaire";
 import { RejectedReason, RejectedReason$ } from "./rejectedreason";
 import { ResultLink, ResultLink$ } from "./resultlink";
-import { z } from "zod";
+import * as z from "zod";
 
 export type Application4 = {};
 
@@ -155,14 +155,12 @@ export namespace ApplicationSourceValue$ {
     export type Inbound = Application4$.Inbound | string | number | boolean;
 
     export type Outbound = Application4$.Outbound | string | number | boolean;
-
     export const inboundSchema: z.ZodType<ApplicationSourceValue, z.ZodTypeDef, Inbound> = z.union([
         z.lazy(() => Application4$.inboundSchema),
         z.string(),
         z.number(),
         z.boolean(),
     ]);
-
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ApplicationSourceValue> =
         z.union([z.lazy(() => Application4$.outboundSchema), z.string(), z.number(), z.boolean()]);
 }

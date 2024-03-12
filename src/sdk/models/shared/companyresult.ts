@@ -4,7 +4,7 @@
 
 import { Company, Company$ } from "./company";
 import { RawResponse, RawResponse$ } from "./rawresponse";
-import { z } from "zod";
+import * as z from "zod";
 
 export type CompanyResult = {
     data: Company;

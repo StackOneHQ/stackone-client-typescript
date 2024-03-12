@@ -3,7 +3,7 @@
  */
 
 import { Content, Content$ } from "./content";
-import { z } from "zod";
+import * as z from "zod";
 
 export type HrisCreateDocumentRequestDto4 = {};
 
@@ -72,7 +72,6 @@ export namespace HrisCreateDocumentRequestDtoSourceValue$ {
     export type Inbound = HrisCreateDocumentRequestDto4$.Inbound | string | number | boolean;
 
     export type Outbound = HrisCreateDocumentRequestDto4$.Outbound | string | number | boolean;
-
     export const inboundSchema: z.ZodType<
         HrisCreateDocumentRequestDtoSourceValue,
         z.ZodTypeDef,
@@ -83,7 +82,6 @@ export namespace HrisCreateDocumentRequestDtoSourceValue$ {
         z.number(),
         z.boolean(),
     ]);
-
     export const outboundSchema: z.ZodType<
         Outbound,
         z.ZodTypeDef,

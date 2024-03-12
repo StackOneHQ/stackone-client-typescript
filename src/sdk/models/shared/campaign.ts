@@ -4,7 +4,7 @@
 
 import { ChannelsEnum, ChannelsEnum$ } from "./channelsenum";
 import { Message, Message$ } from "./message";
-import { z } from "zod";
+import * as z from "zod";
 
 export type Campaign4 = {};
 
@@ -122,14 +122,12 @@ export namespace CampaignSourceValue$ {
     export type Inbound = Campaign4$.Inbound | string | number | boolean;
 
     export type Outbound = Campaign4$.Outbound | string | number | boolean;
-
     export const inboundSchema: z.ZodType<CampaignSourceValue, z.ZodTypeDef, Inbound> = z.union([
         z.lazy(() => Campaign4$.inboundSchema),
         z.string(),
         z.number(),
         z.boolean(),
     ]);
-
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CampaignSourceValue> = z.union([
         z.lazy(() => Campaign4$.outboundSchema),
         z.string(),
@@ -212,7 +210,6 @@ export namespace CampaignSchemasSourceValue$ {
     export type Inbound = CampaignSchemas4$.Inbound | string | number | boolean;
 
     export type Outbound = CampaignSchemas4$.Outbound | string | number | boolean;
-
     export const inboundSchema: z.ZodType<CampaignSchemasSourceValue, z.ZodTypeDef, Inbound> =
         z.union([
             z.lazy(() => CampaignSchemas4$.inboundSchema),
@@ -220,7 +217,6 @@ export namespace CampaignSchemasSourceValue$ {
             z.number(),
             z.boolean(),
         ]);
-
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CampaignSchemasSourceValue> =
         z.union([
             z.lazy(() => CampaignSchemas4$.outboundSchema),

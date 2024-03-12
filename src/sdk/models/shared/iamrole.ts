@@ -3,7 +3,7 @@
  */
 
 import { IamPolicy, IamPolicy$ } from "./iampolicy";
-import { z } from "zod";
+import * as z from "zod";
 
 export type IamRole4 = {};
 
@@ -54,14 +54,12 @@ export namespace IamRoleSourceValue$ {
     export type Inbound = IamRole4$.Inbound | string | number | boolean;
 
     export type Outbound = IamRole4$.Outbound | string | number | boolean;
-
     export const inboundSchema: z.ZodType<IamRoleSourceValue, z.ZodTypeDef, Inbound> = z.union([
         z.lazy(() => IamRole4$.inboundSchema),
         z.string(),
         z.number(),
         z.boolean(),
     ]);
-
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, IamRoleSourceValue> = z.union([
         z.lazy(() => IamRole4$.outboundSchema),
         z.string(),

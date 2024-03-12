@@ -3,7 +3,7 @@
  */
 
 import { CandidateEmail, CandidateEmail$ } from "./candidateemail";
-import { z } from "zod";
+import * as z from "zod";
 
 export type AtsUpdateCandidatesRequestDto = {
     /**

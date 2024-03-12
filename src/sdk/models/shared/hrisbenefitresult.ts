@@ -4,7 +4,7 @@
 
 import { HRISBenefit, HRISBenefit$ } from "./hrisbenefit";
 import { RawResponse, RawResponse$ } from "./rawresponse";
-import { z } from "zod";
+import * as z from "zod";
 
 export type HRISBenefitResult = {
     data: HRISBenefit;

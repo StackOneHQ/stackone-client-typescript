@@ -3,7 +3,7 @@
  */
 
 import { OfferHistory, OfferHistory$ } from "./offerhistory";
-import { z } from "zod";
+import * as z from "zod";
 
 export type Offer4 = {};
 
@@ -74,14 +74,12 @@ export namespace OfferSourceValue$ {
     export type Inbound = Offer4$.Inbound | string | number | boolean;
 
     export type Outbound = Offer4$.Outbound | string | number | boolean;
-
     export const inboundSchema: z.ZodType<OfferSourceValue, z.ZodTypeDef, Inbound> = z.union([
         z.lazy(() => Offer4$.inboundSchema),
         z.string(),
         z.number(),
         z.boolean(),
     ]);
-
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, OfferSourceValue> = z.union([
         z.lazy(() => Offer4$.outboundSchema),
         z.string(),

@@ -3,7 +3,7 @@
  */
 
 import { NoteContentApiModel, NoteContentApiModel$ } from "./notecontentapimodel";
-import { z } from "zod";
+import * as z from "zod";
 
 export type AtsCreateNotesRequestDto4 = {};
 
@@ -68,7 +68,6 @@ export namespace AtsCreateNotesRequestDtoSourceValue$ {
     export type Inbound = AtsCreateNotesRequestDto4$.Inbound | string | number | boolean;
 
     export type Outbound = AtsCreateNotesRequestDto4$.Outbound | string | number | boolean;
-
     export const inboundSchema: z.ZodType<
         AtsCreateNotesRequestDtoSourceValue,
         z.ZodTypeDef,
@@ -79,7 +78,6 @@ export namespace AtsCreateNotesRequestDtoSourceValue$ {
         z.number(),
         z.boolean(),
     ]);
-
     export const outboundSchema: z.ZodType<
         Outbound,
         z.ZodTypeDef,

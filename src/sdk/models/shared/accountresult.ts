@@ -4,7 +4,7 @@
 
 import { Account, Account$ } from "./account";
 import { RawResponse, RawResponse$ } from "./rawresponse";
-import { z } from "zod";
+import * as z from "zod";
 
 export type AccountResult = {
     data: Account;

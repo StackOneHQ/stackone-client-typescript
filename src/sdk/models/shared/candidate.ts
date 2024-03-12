@@ -5,7 +5,7 @@
 import { CandidateEmail, CandidateEmail$ } from "./candidateemail";
 import { PhoneNumber, PhoneNumber$ } from "./phonenumber";
 import { SocialLink, SocialLink$ } from "./sociallink";
-import { z } from "zod";
+import * as z from "zod";
 
 export type Candidate = {
     /**

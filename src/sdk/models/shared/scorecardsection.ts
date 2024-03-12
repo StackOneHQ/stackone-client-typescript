@@ -3,7 +3,7 @@
  */
 
 import { Field, Field$ } from "./field";
-import { z } from "zod";
+import * as z from "zod";
 
 export type ScorecardSection = {
     /**

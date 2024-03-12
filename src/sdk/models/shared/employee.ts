@@ -7,7 +7,7 @@ import { CountryCodeEnum, CountryCodeEnum$ } from "./countrycodeenum";
 import { EmployeeCustomFields, EmployeeCustomFields$ } from "./employeecustomfields";
 import { Employment, Employment$ } from "./employment";
 import { HRISBenefit, HRISBenefit$ } from "./hrisbenefit";
-import { z } from "zod";
+import * as z from "zod";
 
 /**
  * The employee avatar
@@ -1243,14 +1243,12 @@ export namespace EmployeeSourceValue$ {
     export type Inbound = Employee4$.Inbound | string | number | boolean;
 
     export type Outbound = Employee4$.Outbound | string | number | boolean;
-
     export const inboundSchema: z.ZodType<EmployeeSourceValue, z.ZodTypeDef, Inbound> = z.union([
         z.lazy(() => Employee4$.inboundSchema),
         z.string(),
         z.number(),
         z.boolean(),
     ]);
-
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, EmployeeSourceValue> = z.union([
         z.lazy(() => Employee4$.outboundSchema),
         z.string(),
@@ -1333,7 +1331,6 @@ export namespace EmployeeSchemasSourceValue$ {
     export type Inbound = EmployeeSchemas4$.Inbound | string | number | boolean;
 
     export type Outbound = EmployeeSchemas4$.Outbound | string | number | boolean;
-
     export const inboundSchema: z.ZodType<EmployeeSchemasSourceValue, z.ZodTypeDef, Inbound> =
         z.union([
             z.lazy(() => EmployeeSchemas4$.inboundSchema),
@@ -1341,7 +1338,6 @@ export namespace EmployeeSchemasSourceValue$ {
             z.number(),
             z.boolean(),
         ]);
-
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, EmployeeSchemasSourceValue> =
         z.union([
             z.lazy(() => EmployeeSchemas4$.outboundSchema),
@@ -1427,7 +1423,6 @@ export namespace EmployeeSchemasEmploymentTypeSourceValue$ {
     export type Inbound = EmployeeSchemasEmploymentType4$.Inbound | string | number | boolean;
 
     export type Outbound = EmployeeSchemasEmploymentType4$.Outbound | string | number | boolean;
-
     export const inboundSchema: z.ZodType<
         EmployeeSchemasEmploymentTypeSourceValue,
         z.ZodTypeDef,
@@ -1438,7 +1433,6 @@ export namespace EmployeeSchemasEmploymentTypeSourceValue$ {
         z.number(),
         z.boolean(),
     ]);
-
     export const outboundSchema: z.ZodType<
         Outbound,
         z.ZodTypeDef,
@@ -1539,7 +1533,6 @@ export namespace EmployeeSchemasEthnicitySourceValue$ {
     export type Inbound = EmployeeSchemasEthnicity4$.Inbound | string | number | boolean;
 
     export type Outbound = EmployeeSchemasEthnicity4$.Outbound | string | number | boolean;
-
     export const inboundSchema: z.ZodType<
         EmployeeSchemasEthnicitySourceValue,
         z.ZodTypeDef,
@@ -1550,7 +1543,6 @@ export namespace EmployeeSchemasEthnicitySourceValue$ {
         z.number(),
         z.boolean(),
     ]);
-
     export const outboundSchema: z.ZodType<
         Outbound,
         z.ZodTypeDef,
@@ -1652,7 +1644,6 @@ export namespace EmployeeSchemasGenderSourceValue$ {
     export type Inbound = EmployeeSchemasGender4$.Inbound | string | number | boolean;
 
     export type Outbound = EmployeeSchemasGender4$.Outbound | string | number | boolean;
-
     export const inboundSchema: z.ZodType<EmployeeSchemasGenderSourceValue, z.ZodTypeDef, Inbound> =
         z.union([
             z.lazy(() => EmployeeSchemasGender4$.inboundSchema),
@@ -1660,7 +1651,6 @@ export namespace EmployeeSchemasGenderSourceValue$ {
             z.number(),
             z.boolean(),
         ]);
-
     export const outboundSchema: z.ZodType<
         Outbound,
         z.ZodTypeDef,
@@ -1761,7 +1751,6 @@ export namespace EmployeeSchemasHomeLocationSourceValue$ {
     export type Inbound = EmployeeSchemasHomeLocation4$.Inbound | string | number | boolean;
 
     export type Outbound = EmployeeSchemasHomeLocation4$.Outbound | string | number | boolean;
-
     export const inboundSchema: z.ZodType<
         EmployeeSchemasHomeLocationSourceValue,
         z.ZodTypeDef,
@@ -1772,7 +1761,6 @@ export namespace EmployeeSchemasHomeLocationSourceValue$ {
         z.number(),
         z.boolean(),
     ]);
-
     export const outboundSchema: z.ZodType<
         Outbound,
         z.ZodTypeDef,
@@ -1887,7 +1875,6 @@ export namespace EmployeeSchemasHomeLocationLocationTypeSourceValue$ {
         | string
         | number
         | boolean;
-
     export const inboundSchema: z.ZodType<
         EmployeeSchemasHomeLocationLocationTypeSourceValue,
         z.ZodTypeDef,
@@ -1898,7 +1885,6 @@ export namespace EmployeeSchemasHomeLocationLocationTypeSourceValue$ {
         z.number(),
         z.boolean(),
     ]);
-
     export const outboundSchema: z.ZodType<
         Outbound,
         z.ZodTypeDef,
@@ -2149,7 +2135,6 @@ export namespace EmployeeSchemasMaritalStatusSourceValue$ {
     export type Inbound = EmployeeSchemasMaritalStatus4$.Inbound | string | number | boolean;
 
     export type Outbound = EmployeeSchemasMaritalStatus4$.Outbound | string | number | boolean;
-
     export const inboundSchema: z.ZodType<
         EmployeeSchemasMaritalStatusSourceValue,
         z.ZodTypeDef,
@@ -2160,7 +2145,6 @@ export namespace EmployeeSchemasMaritalStatusSourceValue$ {
         z.number(),
         z.boolean(),
     ]);
-
     export const outboundSchema: z.ZodType<
         Outbound,
         z.ZodTypeDef,
@@ -2261,7 +2245,6 @@ export namespace EmployeeSchemasWorkLocationSourceValue$ {
     export type Inbound = EmployeeSchemasWorkLocation4$.Inbound | string | number | boolean;
 
     export type Outbound = EmployeeSchemasWorkLocation4$.Outbound | string | number | boolean;
-
     export const inboundSchema: z.ZodType<
         EmployeeSchemasWorkLocationSourceValue,
         z.ZodTypeDef,
@@ -2272,7 +2255,6 @@ export namespace EmployeeSchemasWorkLocationSourceValue$ {
         z.number(),
         z.boolean(),
     ]);
-
     export const outboundSchema: z.ZodType<
         Outbound,
         z.ZodTypeDef,
@@ -2387,7 +2369,6 @@ export namespace EmployeeSchemasWorkLocationLocationTypeSourceValue$ {
         | string
         | number
         | boolean;
-
     export const inboundSchema: z.ZodType<
         EmployeeSchemasWorkLocationLocationTypeSourceValue,
         z.ZodTypeDef,
@@ -2398,7 +2379,6 @@ export namespace EmployeeSchemasWorkLocationLocationTypeSourceValue$ {
         z.number(),
         z.boolean(),
     ]);
-
     export const outboundSchema: z.ZodType<
         Outbound,
         z.ZodTypeDef,

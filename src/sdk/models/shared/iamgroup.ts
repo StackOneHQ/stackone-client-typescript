@@ -3,7 +3,7 @@
  */
 
 import { IamRole, IamRole$ } from "./iamrole";
-import { z } from "zod";
+import * as z from "zod";
 
 export type IamGroup4 = {};
 
@@ -52,14 +52,12 @@ export namespace IamGroupSourceValue$ {
     export type Inbound = IamGroup4$.Inbound | string | number | boolean;
 
     export type Outbound = IamGroup4$.Outbound | string | number | boolean;
-
     export const inboundSchema: z.ZodType<IamGroupSourceValue, z.ZodTypeDef, Inbound> = z.union([
         z.lazy(() => IamGroup4$.inboundSchema),
         z.string(),
         z.number(),
         z.boolean(),
     ]);
-
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, IamGroupSourceValue> = z.union([
         z.lazy(() => IamGroup4$.outboundSchema),
         z.string(),

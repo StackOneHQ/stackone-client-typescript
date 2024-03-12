@@ -3,7 +3,7 @@
  */
 
 import { Content, Content$ } from "./content";
-import { z } from "zod";
+import * as z from "zod";
 
 export type WorkEligibilityDocument = {
     /**
@@ -427,7 +427,6 @@ export namespace WorkEligibilitySourceValue$ {
     export type Inbound = WorkEligibility4$.Inbound | string | number | boolean;
 
     export type Outbound = WorkEligibility4$.Outbound | string | number | boolean;
-
     export const inboundSchema: z.ZodType<WorkEligibilitySourceValue, z.ZodTypeDef, Inbound> =
         z.union([
             z.lazy(() => WorkEligibility4$.inboundSchema),
@@ -435,7 +434,6 @@ export namespace WorkEligibilitySourceValue$ {
             z.number(),
             z.boolean(),
         ]);
-
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, WorkEligibilitySourceValue> =
         z.union([
             z.lazy(() => WorkEligibility4$.outboundSchema),
@@ -521,7 +519,6 @@ export namespace WorkEligibilitySourceType$ {
     export type Inbound = WorkEligibilitySchemas4$.Inbound | string | number | boolean;
 
     export type Outbound = WorkEligibilitySchemas4$.Outbound | string | number | boolean;
-
     export const inboundSchema: z.ZodType<WorkEligibilitySourceType, z.ZodTypeDef, Inbound> =
         z.union([
             z.lazy(() => WorkEligibilitySchemas4$.inboundSchema),
@@ -529,7 +526,6 @@ export namespace WorkEligibilitySourceType$ {
             z.number(),
             z.boolean(),
         ]);
-
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, WorkEligibilitySourceType> =
         z.union([
             z.lazy(() => WorkEligibilitySchemas4$.outboundSchema),
