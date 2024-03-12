@@ -4,7 +4,7 @@
 
 import { InterviewStage, InterviewStage$ } from "./interviewstage";
 import { JobHiringTeam, JobHiringTeam$ } from "./jobhiringteam";
-import { z } from "zod";
+import * as z from "zod";
 
 export enum Confidential {
     True = "true",
@@ -43,8 +43,6 @@ export type JobStatus = {
     value?: JobValue | null | undefined;
 };
 
-export type JobSchemasStatus = {};
-
 export type Job = {
     code?: string | null | undefined;
     confidential?: Confidential | null | undefined;
@@ -61,7 +59,10 @@ export type Job = {
     interviewStages?: Array<InterviewStage> | null | undefined;
     jobStatus?: JobStatus | null | undefined;
     locationIds?: Array<string> | null | undefined;
-    status?: JobSchemasStatus | null | undefined;
+    /**
+     * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+     */
+    status?: string | null | undefined;
     title?: string | null | undefined;
     /**
      * Date of last update
@@ -88,14 +89,12 @@ export namespace JobSourceValue$ {
     export type Inbound = Job4$.Inbound | string | number | boolean;
 
     export type Outbound = Job4$.Outbound | string | number | boolean;
-
     export const inboundSchema: z.ZodType<JobSourceValue, z.ZodTypeDef, Inbound> = z.union([
         z.lazy(() => Job4$.inboundSchema),
         z.string(),
         z.number(),
         z.boolean(),
     ]);
-
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, JobSourceValue> = z.union([
         z.lazy(() => Job4$.outboundSchema),
         z.string(),
@@ -163,17 +162,6 @@ export namespace JobStatus$ {
 }
 
 /** @internal */
-export namespace JobSchemasStatus$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<JobSchemasStatus, z.ZodTypeDef, Inbound> = z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, JobSchemasStatus> = z.object({});
-}
-
-/** @internal */
 export namespace Job$ {
     export type Inbound = {
         code?: string | null | undefined;
@@ -185,7 +173,7 @@ export namespace Job$ {
         interview_stages?: Array<InterviewStage$.Inbound> | null | undefined;
         job_status?: JobStatus$.Inbound | null | undefined;
         location_ids?: Array<string> | null | undefined;
-        status?: JobSchemasStatus$.Inbound | null | undefined;
+        status?: string | null | undefined;
         title?: string | null | undefined;
         updated_at?: string | null | undefined;
     };
@@ -208,7 +196,7 @@ export namespace Job$ {
             interview_stages: z.nullable(z.array(InterviewStage$.inboundSchema)).optional(),
             job_status: z.nullable(z.lazy(() => JobStatus$.inboundSchema)).optional(),
             location_ids: z.nullable(z.array(z.string())).optional(),
-            status: z.nullable(z.lazy(() => JobSchemasStatus$.inboundSchema)).optional(),
+            status: z.nullable(z.string()).optional(),
             title: z.nullable(z.string()).optional(),
             updated_at: z
                 .nullable(
@@ -248,7 +236,7 @@ export namespace Job$ {
         interview_stages?: Array<InterviewStage$.Outbound> | null | undefined;
         job_status?: JobStatus$.Outbound | null | undefined;
         location_ids?: Array<string> | null | undefined;
-        status?: JobSchemasStatus$.Outbound | null | undefined;
+        status?: string | null | undefined;
         title?: string | null | undefined;
         updated_at?: string | null | undefined;
     };
@@ -264,7 +252,7 @@ export namespace Job$ {
             interviewStages: z.nullable(z.array(InterviewStage$.outboundSchema)).optional(),
             jobStatus: z.nullable(z.lazy(() => JobStatus$.outboundSchema)).optional(),
             locationIds: z.nullable(z.array(z.string())).optional(),
-            status: z.nullable(z.lazy(() => JobSchemasStatus$.outboundSchema)).optional(),
+            status: z.nullable(z.string()).optional(),
             title: z.nullable(z.string()).optional(),
             updatedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
         })

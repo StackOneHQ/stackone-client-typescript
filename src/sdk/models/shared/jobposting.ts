@@ -5,7 +5,7 @@
 import { JobPostingCompensation, JobPostingCompensation$ } from "./jobpostingcompensation";
 import { JobPostingLocation, JobPostingLocation$ } from "./jobpostinglocation";
 import { JobPostingQuestionnaire, JobPostingQuestionnaire$ } from "./jobpostingquestionnaire";
-import { z } from "zod";
+import * as z from "zod";
 
 export type JobPostingContent = {
     html?: string | null | undefined;
@@ -198,14 +198,12 @@ export namespace JobPostingSourceValue$ {
     export type Inbound = JobPosting4$.Inbound | string | number | boolean;
 
     export type Outbound = JobPosting4$.Outbound | string | number | boolean;
-
     export const inboundSchema: z.ZodType<JobPostingSourceValue, z.ZodTypeDef, Inbound> = z.union([
         z.lazy(() => JobPosting4$.inboundSchema),
         z.string(),
         z.number(),
         z.boolean(),
     ]);
-
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, JobPostingSourceValue> = z.union(
         [z.lazy(() => JobPosting4$.outboundSchema), z.string(), z.number(), z.boolean()]
     );
@@ -292,7 +290,6 @@ export namespace JobPostingSchemasSourceValue$ {
     export type Inbound = JobPostingSchemas4$.Inbound | string | number | boolean;
 
     export type Outbound = JobPostingSchemas4$.Outbound | string | number | boolean;
-
     export const inboundSchema: z.ZodType<JobPostingSchemasSourceValue, z.ZodTypeDef, Inbound> =
         z.union([
             z.lazy(() => JobPostingSchemas4$.inboundSchema),
@@ -300,7 +297,6 @@ export namespace JobPostingSchemasSourceValue$ {
             z.number(),
             z.boolean(),
         ]);
-
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, JobPostingSchemasSourceValue> =
         z.union([
             z.lazy(() => JobPostingSchemas4$.outboundSchema),
@@ -389,7 +385,6 @@ export namespace JobPostingSchemasStatusSourceValue$ {
     export type Inbound = JobPostingSchemasStatus4$.Inbound | string | number | boolean;
 
     export type Outbound = JobPostingSchemasStatus4$.Outbound | string | number | boolean;
-
     export const inboundSchema: z.ZodType<
         JobPostingSchemasStatusSourceValue,
         z.ZodTypeDef,
@@ -400,7 +395,6 @@ export namespace JobPostingSchemasStatusSourceValue$ {
         z.number(),
         z.boolean(),
     ]);
-
     export const outboundSchema: z.ZodType<
         Outbound,
         z.ZodTypeDef,

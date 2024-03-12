@@ -6,7 +6,7 @@ import { Content, Content$ } from "./content";
 import { IamGroup, IamGroup$ } from "./iamgroup";
 import { IamMfaTypeEnum, IamMfaTypeEnum$ } from "./iammfatypeenum";
 import { IamRole, IamRole$ } from "./iamrole";
-import { z } from "zod";
+import * as z from "zod";
 
 /**
  * The user's avatar data. This generally contains a URL within this property's 'contents' array.
@@ -203,14 +203,12 @@ export namespace IamUserSourceValue$ {
     export type Inbound = IamUser4$.Inbound | string | number | boolean;
 
     export type Outbound = IamUser4$.Outbound | string | number | boolean;
-
     export const inboundSchema: z.ZodType<IamUserSourceValue, z.ZodTypeDef, Inbound> = z.union([
         z.lazy(() => IamUser4$.inboundSchema),
         z.string(),
         z.number(),
         z.boolean(),
     ]);
-
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, IamUserSourceValue> = z.union([
         z.lazy(() => IamUser4$.outboundSchema),
         z.string(),

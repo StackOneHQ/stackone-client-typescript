@@ -6,7 +6,7 @@ import {
     QuestionMultipleChoiceAnswers,
     QuestionMultipleChoiceAnswers$,
 } from "./questionmultiplechoiceanswers";
-import { z } from "zod";
+import * as z from "zod";
 
 export type Question4 = {};
 
@@ -66,14 +66,12 @@ export namespace QuestionSourceValue$ {
     export type Inbound = Question4$.Inbound | string | number | boolean;
 
     export type Outbound = Question4$.Outbound | string | number | boolean;
-
     export const inboundSchema: z.ZodType<QuestionSourceValue, z.ZodTypeDef, Inbound> = z.union([
         z.lazy(() => Question4$.inboundSchema),
         z.string(),
         z.number(),
         z.boolean(),
     ]);
-
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, QuestionSourceValue> = z.union([
         z.lazy(() => Question4$.outboundSchema),
         z.string(),

@@ -3,7 +3,7 @@
  */
 
 import { AccountAddress, AccountAddress$ } from "./accountaddress";
-import { z } from "zod";
+import * as z from "zod";
 
 export type Account = {
     addresses?: Array<AccountAddress> | null | undefined;

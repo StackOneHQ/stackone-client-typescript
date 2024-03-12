@@ -4,7 +4,7 @@
 
 import { Note, Note$ } from "./note";
 import { RawResponse, RawResponse$ } from "./rawresponse";
-import { z } from "zod";
+import * as z from "zod";
 
 export type NotesPaginated = {
     data: Array<Note>;

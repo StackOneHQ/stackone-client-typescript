@@ -3,7 +3,7 @@
  */
 
 import { IamResource, IamResource$ } from "./iamresource";
-import { z } from "zod";
+import * as z from "zod";
 
 export type IamPermission4 = {};
 
@@ -60,10 +60,8 @@ export namespace IamPermissionSourceValue$ {
     export type Inbound = IamPermission4$.Inbound | string | number | boolean;
 
     export type Outbound = IamPermission4$.Outbound | string | number | boolean;
-
     export const inboundSchema: z.ZodType<IamPermissionSourceValue, z.ZodTypeDef, Inbound> =
         z.union([z.lazy(() => IamPermission4$.inboundSchema), z.string(), z.number(), z.boolean()]);
-
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, IamPermissionSourceValue> =
         z.union([
             z.lazy(() => IamPermission4$.outboundSchema),

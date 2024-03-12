@@ -4,7 +4,7 @@
 
 import { List, List$ } from "./list";
 import { RawResponse, RawResponse$ } from "./rawresponse";
-import { z } from "zod";
+import * as z from "zod";
 
 export type ListsPaginated = {
     data: Array<List>;

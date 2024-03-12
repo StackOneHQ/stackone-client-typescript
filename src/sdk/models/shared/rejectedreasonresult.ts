@@ -4,7 +4,7 @@
 
 import { RawResponse, RawResponse$ } from "./rawresponse";
 import { RejectedReason, RejectedReason$ } from "./rejectedreason";
-import { z } from "zod";
+import * as z from "zod";
 
 export type RejectedReasonResult = {
     data: RejectedReason;

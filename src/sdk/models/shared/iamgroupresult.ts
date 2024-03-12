@@ -4,7 +4,7 @@
 
 import { IamGroup, IamGroup$ } from "./iamgroup";
 import { RawResponse, RawResponse$ } from "./rawresponse";
-import { z } from "zod";
+import * as z from "zod";
 
 export type IamGroupResult = {
     data: IamGroup;

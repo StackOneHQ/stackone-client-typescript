@@ -3,7 +3,7 @@
  */
 
 import { Question, Question$ } from "./question";
-import { z } from "zod";
+import * as z from "zod";
 
 export type JobPostingQuestionnaire = {
     id?: string | null | undefined;

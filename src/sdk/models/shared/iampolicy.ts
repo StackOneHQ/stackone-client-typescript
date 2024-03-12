@@ -3,7 +3,7 @@
  */
 
 import { IamPermission, IamPermission$ } from "./iampermission";
-import { z } from "zod";
+import * as z from "zod";
 
 export type IamPolicy = {
     createdAt?: Date | null | undefined;

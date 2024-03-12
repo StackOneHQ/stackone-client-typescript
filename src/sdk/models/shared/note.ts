@@ -3,7 +3,7 @@
  */
 
 import { NoteContentApiModel, NoteContentApiModel$ } from "./notecontentapimodel";
-import { z } from "zod";
+import * as z from "zod";
 
 export type Note4 = {};
 
@@ -75,14 +75,12 @@ export namespace NoteSourceValue$ {
     export type Inbound = Note4$.Inbound | string | number | boolean;
 
     export type Outbound = Note4$.Outbound | string | number | boolean;
-
     export const inboundSchema: z.ZodType<NoteSourceValue, z.ZodTypeDef, Inbound> = z.union([
         z.lazy(() => Note4$.inboundSchema),
         z.string(),
         z.number(),
         z.boolean(),
     ]);
-
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, NoteSourceValue> = z.union([
         z.lazy(() => Note4$.outboundSchema),
         z.string(),

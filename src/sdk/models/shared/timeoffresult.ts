@@ -4,7 +4,7 @@
 
 import { RawResponse, RawResponse$ } from "./rawresponse";
 import { TimeOff, TimeOff$ } from "./timeoff";
-import { z } from "zod";
+import * as z from "zod";
 
 export type TimeOffResult = {
     data: TimeOff;

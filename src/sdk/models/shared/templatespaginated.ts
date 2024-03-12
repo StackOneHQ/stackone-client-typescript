@@ -4,7 +4,7 @@
 
 import { RawResponse, RawResponse$ } from "./rawresponse";
 import { Template, Template$ } from "./template";
-import { z } from "zod";
+import * as z from "zod";
 
 export type TemplatesPaginated = {
     data: Array<Template>;

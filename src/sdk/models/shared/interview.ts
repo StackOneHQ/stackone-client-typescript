@@ -4,7 +4,7 @@
 
 import { Interviewer, Interviewer$ } from "./interviewer";
 import { InterviewPart, InterviewPart$ } from "./interviewpart";
-import { z } from "zod";
+import * as z from "zod";
 
 export type InterviewInterviewStage = {
     /**
@@ -163,14 +163,12 @@ export namespace InterviewSourceValue$ {
     export type Inbound = Interview4$.Inbound | string | number | boolean;
 
     export type Outbound = Interview4$.Outbound | string | number | boolean;
-
     export const inboundSchema: z.ZodType<InterviewSourceValue, z.ZodTypeDef, Inbound> = z.union([
         z.lazy(() => Interview4$.inboundSchema),
         z.string(),
         z.number(),
         z.boolean(),
     ]);
-
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, InterviewSourceValue> = z.union([
         z.lazy(() => Interview4$.outboundSchema),
         z.string(),

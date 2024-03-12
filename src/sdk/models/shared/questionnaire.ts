@@ -3,7 +3,7 @@
  */
 
 import { Answer, Answer$ } from "./answer";
-import { z } from "zod";
+import * as z from "zod";
 
 export type Questionnaire = {
     answers?: Array<Answer> | null | undefined;

@@ -6,7 +6,7 @@ import { CountryCodeEnum, CountryCodeEnum$ } from "./countrycodeenum";
 import { EmployeeCustomFields, EmployeeCustomFields$ } from "./employeecustomfields";
 import { Employment, Employment$ } from "./employment";
 import { HRISBenefit, HRISBenefit$ } from "./hrisbenefit";
-import { z } from "zod";
+import * as z from "zod";
 
 /**
  * The employee avatar
@@ -8758,7 +8758,6 @@ export namespace HrisCreateEmployeeRequestDtoSourceValue$ {
     export type Inbound = HrisCreateEmployeeRequestDto4$.Inbound | string | number | boolean;
 
     export type Outbound = HrisCreateEmployeeRequestDto4$.Outbound | string | number | boolean;
-
     export const inboundSchema: z.ZodType<
         HrisCreateEmployeeRequestDtoSourceValue,
         z.ZodTypeDef,
@@ -8769,7 +8768,6 @@ export namespace HrisCreateEmployeeRequestDtoSourceValue$ {
         z.number(),
         z.boolean(),
     ]);
-
     export const outboundSchema: z.ZodType<
         Outbound,
         z.ZodTypeDef,
@@ -8888,7 +8886,6 @@ export namespace HrisCreateEmployeeRequestDtoSchemasSourceValue$ {
         | string
         | number
         | boolean;
-
     export const inboundSchema: z.ZodType<
         HrisCreateEmployeeRequestDtoSchemasSourceValue,
         z.ZodTypeDef,
@@ -8899,7 +8896,6 @@ export namespace HrisCreateEmployeeRequestDtoSchemasSourceValue$ {
         z.number(),
         z.boolean(),
     ]);
-
     export const outboundSchema: z.ZodType<
         Outbound,
         z.ZodTypeDef,
@@ -9024,7 +9020,6 @@ export namespace HrisCreateEmployeeRequestDtoSchemasEmploymentTypeSourceValue$ {
         | string
         | number
         | boolean;
-
     export const inboundSchema: z.ZodType<
         HrisCreateEmployeeRequestDtoSchemasEmploymentTypeSourceValue,
         z.ZodTypeDef,
@@ -9035,7 +9030,6 @@ export namespace HrisCreateEmployeeRequestDtoSchemasEmploymentTypeSourceValue$ {
         z.number(),
         z.boolean(),
     ]);
-
     export const outboundSchema: z.ZodType<
         Outbound,
         z.ZodTypeDef,
@@ -9164,7 +9158,6 @@ export namespace HrisCreateEmployeeRequestDtoSchemasEthnicitySourceValue$ {
         | string
         | number
         | boolean;
-
     export const inboundSchema: z.ZodType<
         HrisCreateEmployeeRequestDtoSchemasEthnicitySourceValue,
         z.ZodTypeDef,
@@ -9175,7 +9168,6 @@ export namespace HrisCreateEmployeeRequestDtoSchemasEthnicitySourceValue$ {
         z.number(),
         z.boolean(),
     ]);
-
     export const outboundSchema: z.ZodType<
         Outbound,
         z.ZodTypeDef,
@@ -9300,7 +9292,6 @@ export namespace HrisCreateEmployeeRequestDtoSchemasGenderSourceValue$ {
         | string
         | number
         | boolean;
-
     export const inboundSchema: z.ZodType<
         HrisCreateEmployeeRequestDtoSchemasGenderSourceValue,
         z.ZodTypeDef,
@@ -9311,7 +9302,6 @@ export namespace HrisCreateEmployeeRequestDtoSchemasGenderSourceValue$ {
         z.number(),
         z.boolean(),
     ]);
-
     export const outboundSchema: z.ZodType<
         Outbound,
         z.ZodTypeDef,
@@ -9436,7 +9426,6 @@ export namespace HrisCreateEmployeeRequestDtoSchemasHomeLocationSourceValue$ {
         | string
         | number
         | boolean;
-
     export const inboundSchema: z.ZodType<
         HrisCreateEmployeeRequestDtoSchemasHomeLocationSourceValue,
         z.ZodTypeDef,
@@ -9447,7 +9436,6 @@ export namespace HrisCreateEmployeeRequestDtoSchemasHomeLocationSourceValue$ {
         z.number(),
         z.boolean(),
     ]);
-
     export const outboundSchema: z.ZodType<
         Outbound,
         z.ZodTypeDef,
@@ -9576,7 +9564,6 @@ export namespace HrisCreateEmployeeRequestDtoSchemasHomeLocationStateSourceValue
         | string
         | number
         | boolean;
-
     export const inboundSchema: z.ZodType<
         HrisCreateEmployeeRequestDtoSchemasHomeLocationStateSourceValue,
         z.ZodTypeDef,
@@ -9587,7 +9574,6 @@ export namespace HrisCreateEmployeeRequestDtoSchemasHomeLocationStateSourceValue
         z.number(),
         z.boolean(),
     ]);
-
     export const outboundSchema: z.ZodType<
         Outbound,
         z.ZodTypeDef,
@@ -9799,7 +9785,6 @@ export namespace HrisCreateEmployeeRequestDtoSchemasMaritalStatusSourceValue$ {
         | string
         | number
         | boolean;
-
     export const inboundSchema: z.ZodType<
         HrisCreateEmployeeRequestDtoSchemasMaritalStatusSourceValue,
         z.ZodTypeDef,
@@ -9810,7 +9795,6 @@ export namespace HrisCreateEmployeeRequestDtoSchemasMaritalStatusSourceValue$ {
         z.number(),
         z.boolean(),
     ]);
-
     export const outboundSchema: z.ZodType<
         Outbound,
         z.ZodTypeDef,
@@ -9939,7 +9923,6 @@ export namespace HrisCreateEmployeeRequestDtoSchemasWorkLocationSourceValue$ {
         | string
         | number
         | boolean;
-
     export const inboundSchema: z.ZodType<
         HrisCreateEmployeeRequestDtoSchemasWorkLocationSourceValue,
         z.ZodTypeDef,
@@ -9950,7 +9933,6 @@ export namespace HrisCreateEmployeeRequestDtoSchemasWorkLocationSourceValue$ {
         z.number(),
         z.boolean(),
     ]);
-
     export const outboundSchema: z.ZodType<
         Outbound,
         z.ZodTypeDef,
@@ -10079,7 +10061,6 @@ export namespace HrisCreateEmployeeRequestDtoSchemasWorkLocationStateSourceValue
         | string
         | number
         | boolean;
-
     export const inboundSchema: z.ZodType<
         HrisCreateEmployeeRequestDtoSchemasWorkLocationStateSourceValue,
         z.ZodTypeDef,
@@ -10090,7 +10071,6 @@ export namespace HrisCreateEmployeeRequestDtoSchemasWorkLocationStateSourceValue
         z.number(),
         z.boolean(),
     ]);
-
     export const outboundSchema: z.ZodType<
         Outbound,
         z.ZodTypeDef,

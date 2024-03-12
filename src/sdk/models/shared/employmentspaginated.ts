@@ -4,7 +4,7 @@
 
 import { Employment, Employment$ } from "./employment";
 import { RawResponse, RawResponse$ } from "./rawresponse";
-import { z } from "zod";
+import * as z from "zod";
 
 export type EmploymentsPaginated = {
     data: Array<Employment>;

@@ -3,7 +3,7 @@
  */
 
 import { EmailMessages, EmailMessages$ } from "./emailmessages";
-import { z } from "zod";
+import * as z from "zod";
 
 export type MarketingCreateEmailTemplateRequestDto = {
     id?: string | null | undefined;

@@ -3,7 +3,7 @@
  */
 
 import { OfferHistory, OfferHistory$ } from "./offerhistory";
-import { z } from "zod";
+import * as z from "zod";
 
 export type AtsCreateOfferRequestDto4 = {};
 
@@ -71,7 +71,6 @@ export namespace AtsCreateOfferRequestDtoSourceValue$ {
     export type Inbound = AtsCreateOfferRequestDto4$.Inbound | string | number | boolean;
 
     export type Outbound = AtsCreateOfferRequestDto4$.Outbound | string | number | boolean;
-
     export const inboundSchema: z.ZodType<
         AtsCreateOfferRequestDtoSourceValue,
         z.ZodTypeDef,
@@ -82,7 +81,6 @@ export namespace AtsCreateOfferRequestDtoSourceValue$ {
         z.number(),
         z.boolean(),
     ]);
-
     export const outboundSchema: z.ZodType<
         Outbound,
         z.ZodTypeDef,

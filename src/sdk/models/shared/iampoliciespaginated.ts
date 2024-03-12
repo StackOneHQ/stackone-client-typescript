@@ -4,7 +4,7 @@
 
 import { IamPolicy, IamPolicy$ } from "./iampolicy";
 import { RawResponse, RawResponse$ } from "./rawresponse";
-import { z } from "zod";
+import * as z from "zod";
 
 export type IamPoliciesPaginated = {
     data: Array<IamPolicy>;

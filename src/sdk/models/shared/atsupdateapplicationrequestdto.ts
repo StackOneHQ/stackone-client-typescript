@@ -4,7 +4,7 @@
 
 import { ApplicationAttachment, ApplicationAttachment$ } from "./applicationattachment";
 import { Questionnaire, Questionnaire$ } from "./questionnaire";
-import { z } from "zod";
+import * as z from "zod";
 
 export type AtsUpdateApplicationRequestDto4 = {};
 
@@ -116,7 +116,6 @@ export namespace AtsUpdateApplicationRequestDtoSourceValue$ {
     export type Inbound = AtsUpdateApplicationRequestDto4$.Inbound | string | number | boolean;
 
     export type Outbound = AtsUpdateApplicationRequestDto4$.Outbound | string | number | boolean;
-
     export const inboundSchema: z.ZodType<
         AtsUpdateApplicationRequestDtoSourceValue,
         z.ZodTypeDef,
@@ -127,7 +126,6 @@ export namespace AtsUpdateApplicationRequestDtoSourceValue$ {
         z.number(),
         z.boolean(),
     ]);
-
     export const outboundSchema: z.ZodType<
         Outbound,
         z.ZodTypeDef,

@@ -4,7 +4,7 @@
 
 import { Application, Application$ } from "./application";
 import { RawResponse, RawResponse$ } from "./rawresponse";
-import { z } from "zod";
+import * as z from "zod";
 
 export type ApplicationsPaginated = {
     data: Array<Application>;
