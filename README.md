@@ -77,6 +77,7 @@ run();
 * [createCandidate](docs/sdks/ats/README.md#createcandidate) - Create Candidate (early access)
 * [createCandidateNote](docs/sdks/ats/README.md#createcandidatenote) - Create Candidate Note
 * [createOffer](docs/sdks/ats/README.md#createoffer) - Creates an offer
+* [downloadApplicationDocument](docs/sdks/ats/README.md#downloadapplicationdocument) - Download Application Document
 * [getApplication](docs/sdks/ats/README.md#getapplication) - Get Application
 * [getApplicationDocument](docs/sdks/ats/README.md#getapplicationdocument) - Get Application Document
 * [getApplicationOffer](docs/sdks/ats/README.md#getapplicationoffer) - Get Application Offer

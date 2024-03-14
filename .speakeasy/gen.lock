@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 7fa83af8-9e8e-4410-b7e2-cf1d0eaf688b
 management:
-  docChecksum: 626d596215277cf83159ae85f0439b0f
+  docChecksum: 9ef2dd84aa64d37c4b5d96dc51773d28
   docVersion: 1.0.0
   speakeasyVersion: 1.209.2
   generationVersion: 2.281.2
-  releaseVersion: 4.3.0
-  configChecksum: 4d79d25c31321308cd2b8bb94d7d4829
+  releaseVersion: 4.3.1
+  configChecksum: 6ab70b8a7c394a6c235c41f78141d5f7
   repoURL: https://github.com/StackOneHQ/stackone-client-typescript.git
   repoSubDirectory: .
   installationURL: https://github.com/StackOneHQ/stackone-client-typescript
@@ -71,6 +71,7 @@ generatedFiles:
   - src/sdk/models/operations/atscreatecandidate.ts
   - src/sdk/models/operations/atscreatecandidatenote.ts
   - src/sdk/models/operations/atscreateoffer.ts
+  - src/sdk/models/operations/atsdownloadapplicationdocument.ts
   - src/sdk/models/operations/atsgetapplication.ts
   - src/sdk/models/operations/atsgetapplicationdocument.ts
   - src/sdk/models/operations/atsgetapplicationoffer.ts
@@ -342,6 +343,8 @@ generatedFiles:
   - docs/sdk/models/operations/atscreatecandidatenoteresponse.md
   - docs/sdk/models/operations/atscreateofferrequest.md
   - docs/sdk/models/operations/atscreateofferresponse.md
+  - docs/sdk/models/operations/atsdownloadapplicationdocumentrequest.md
+  - docs/sdk/models/operations/atsdownloadapplicationdocumentresponse.md
   - docs/sdk/models/operations/proxy.md
   - docs/sdk/models/operations/atsgetapplicationrequest.md
   - docs/sdk/models/operations/atsgetapplicationresponse.md

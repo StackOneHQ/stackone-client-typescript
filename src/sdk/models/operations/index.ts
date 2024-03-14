@@ -6,6 +6,7 @@ export * from "./atscreateapplication";
 export * from "./atscreatecandidate";
 export * from "./atscreatecandidatenote";
 export * from "./atscreateoffer";
+export * from "./atsdownloadapplicationdocument";
 export * from "./atsgetapplication";
 export * from "./atsgetapplicationdocument";
 export * from "./atsgetapplicationoffer";

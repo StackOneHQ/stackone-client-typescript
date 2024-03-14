@@ -7,6 +7,7 @@
 * [createCandidate](#createcandidate) - Create Candidate (early access)
 * [createCandidateNote](#createcandidatenote) - Create Candidate Note
 * [createOffer](#createoffer) - Creates an offer
+* [downloadApplicationDocument](#downloadapplicationdocument) - Download Application Document
 * [getApplication](#getapplication) - Get Application
 * [getApplicationDocument](#getapplicationdocument) - Get Application Document
 * [getApplicationOffer](#getapplicationoffer) - Get Application Offer
@@ -310,6 +311,53 @@ run();
 ### Response
 
 **Promise<[operations.AtsCreateOfferResponse](../../sdk/models/operations/atscreateofferresponse.md)>**
+### Errors
+
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
+
+## downloadApplicationDocument
+
+Download Application Document
+
+### Example Usage
+
+```typescript
+import { StackOne } from "@stackone/stackone-client-ts";
+
+async function run() {
+  const sdk = new StackOne({
+    security: {
+      password: "<YOUR_PASSWORD_HERE>",
+    },
+  });
+
+  const result = await sdk.ats.downloadApplicationDocument({
+    id: "<id>",
+    subResourceId: "<value>",
+    xAccountId: "<value>",
+  });
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.AtsDownloadApplicationDocumentRequest](../../sdk/models/operations/atsdownloadapplicationdocumentrequest.md)                                                       | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+
+
+### Response
+
+**Promise<[operations.AtsDownloadApplicationDocumentResponse](../../sdk/models/operations/atsdownloadapplicationdocumentresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
