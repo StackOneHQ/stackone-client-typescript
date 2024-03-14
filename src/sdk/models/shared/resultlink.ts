@@ -12,42 +12,42 @@ export type ResultLink = {
     /**
      * The URL of the result link.
      */
-    url: string;
+    url?: string | null | undefined;
 };
 
 /** @internal */
 export namespace ResultLink$ {
     export type Inbound = {
         label?: string | null | undefined;
-        url: string;
+        url?: string | null | undefined;
     };
 
     export const inboundSchema: z.ZodType<ResultLink, z.ZodTypeDef, Inbound> = z
         .object({
             label: z.nullable(z.string()).optional(),
-            url: z.string(),
+            url: z.nullable(z.string()).optional(),
         })
         .transform((v) => {
             return {
                 ...(v.label === undefined ? null : { label: v.label }),
-                url: v.url,
+                ...(v.url === undefined ? null : { url: v.url }),
             };
         });
 
     export type Outbound = {
         label?: string | null | undefined;
-        url: string;
+        url?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ResultLink> = z
         .object({
             label: z.nullable(z.string()).optional(),
-            url: z.string(),
+            url: z.nullable(z.string()).optional(),
         })
         .transform((v) => {
             return {
                 ...(v.label === undefined ? null : { label: v.label }),
-                url: v.url,
+                ...(v.url === undefined ? null : { url: v.url }),
             };
         });
 }

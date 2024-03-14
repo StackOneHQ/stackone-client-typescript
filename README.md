@@ -128,6 +128,7 @@ run();
 * [createEmployeeTimeOffRequest](docs/sdks/hris/README.md#createemployeetimeoffrequest) - Create Employee Time Off Request
 * [createEmployeeWorkEligibilityRequest](docs/sdks/hris/README.md#createemployeeworkeligibilityrequest) - Create Employee Work Eligibility Request
 * [createTimeOffRequest](docs/sdks/hris/README.md#createtimeoffrequest) - Creates a time off request
+* [downloadEmployeeDocument](docs/sdks/hris/README.md#downloademployeedocument) - Download Employee Document
 * [getBenefit](docs/sdks/hris/README.md#getbenefit) - Get Benefit
 * [getCompany](docs/sdks/hris/README.md#getcompany) - Get Company
 * [getEmployee](docs/sdks/hris/README.md#getemployee) - Get Employee

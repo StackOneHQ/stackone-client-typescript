@@ -167,8 +167,8 @@ function applyBearer(
     state.headers[spec.fieldName] = value;
 }
 export function resolveGlobalSecurity(security: Partial<shared.Security> | null | undefined) {
-    return resolveSecurity(
-        [{ value: security?.password, fieldName: "password", type: "http:basic" }],
-        [{ value: security?.username, fieldName: "username", type: "http:basic" }]
-    );
+    return resolveSecurity([
+        { value: security?.password, fieldName: "password", type: "http:basic" },
+        { value: security?.username, fieldName: "username", type: "http:basic" },
+    ]);
 }

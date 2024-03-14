@@ -48,7 +48,7 @@ export type Note = {
      * Date of Deletion
      */
     deletedAt?: Date | null | undefined;
-    id: string;
+    id?: string | null | undefined;
     /**
      * Date of last update
      */
@@ -154,7 +154,7 @@ export namespace Note$ {
         content?: Array<NoteContentApiModel$.Inbound> | null | undefined;
         created_at?: string | null | undefined;
         deleted_at?: string | null | undefined;
-        id: string;
+        id?: string | null | undefined;
         updated_at?: string | null | undefined;
         visibility?: NoteVisibility$.Inbound | null | undefined;
     };
@@ -179,7 +179,7 @@ export namespace Note$ {
                         .transform((v) => new Date(v))
                 )
                 .optional(),
-            id: z.string(),
+            id: z.nullable(z.string()).optional(),
             updated_at: z
                 .nullable(
                     z
@@ -196,7 +196,7 @@ export namespace Note$ {
                 ...(v.content === undefined ? null : { content: v.content }),
                 ...(v.created_at === undefined ? null : { createdAt: v.created_at }),
                 ...(v.deleted_at === undefined ? null : { deletedAt: v.deleted_at }),
-                id: v.id,
+                ...(v.id === undefined ? null : { id: v.id }),
                 ...(v.updated_at === undefined ? null : { updatedAt: v.updated_at }),
                 ...(v.visibility === undefined ? null : { visibility: v.visibility }),
             };
@@ -207,7 +207,7 @@ export namespace Note$ {
         content?: Array<NoteContentApiModel$.Outbound> | null | undefined;
         created_at?: string | null | undefined;
         deleted_at?: string | null | undefined;
-        id: string;
+        id?: string | null | undefined;
         updated_at?: string | null | undefined;
         visibility?: NoteVisibility$.Outbound | null | undefined;
     };
@@ -218,7 +218,7 @@ export namespace Note$ {
             content: z.nullable(z.array(NoteContentApiModel$.outboundSchema)).optional(),
             createdAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
             deletedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
-            id: z.string(),
+            id: z.nullable(z.string()).optional(),
             updatedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
             visibility: z.nullable(z.lazy(() => NoteVisibility$.outboundSchema)).optional(),
         })
@@ -228,7 +228,7 @@ export namespace Note$ {
                 ...(v.content === undefined ? null : { content: v.content }),
                 ...(v.createdAt === undefined ? null : { created_at: v.createdAt }),
                 ...(v.deletedAt === undefined ? null : { deleted_at: v.deletedAt }),
-                id: v.id,
+                ...(v.id === undefined ? null : { id: v.id }),
                 ...(v.updatedAt === undefined ? null : { updated_at: v.updatedAt }),
                 ...(v.visibility === undefined ? null : { visibility: v.visibility }),
             };

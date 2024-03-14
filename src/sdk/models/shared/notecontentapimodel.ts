@@ -8,36 +8,36 @@ export type NoteContentApiModel = {
     /**
      * Body of the note
      */
-    body: string;
+    body?: string | null | undefined;
 };
 
 /** @internal */
 export namespace NoteContentApiModel$ {
     export type Inbound = {
-        body: string;
+        body?: string | null | undefined;
     };
 
     export const inboundSchema: z.ZodType<NoteContentApiModel, z.ZodTypeDef, Inbound> = z
         .object({
-            body: z.string(),
+            body: z.nullable(z.string()).optional(),
         })
         .transform((v) => {
             return {
-                body: v.body,
+                ...(v.body === undefined ? null : { body: v.body }),
             };
         });
 
     export type Outbound = {
-        body: string;
+        body?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, NoteContentApiModel> = z
         .object({
-            body: z.string(),
+            body: z.nullable(z.string()).optional(),
         })
         .transform((v) => {
             return {
-                body: v.body,
+                ...(v.body === undefined ? null : { body: v.body }),
             };
         });
 }

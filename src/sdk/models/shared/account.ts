@@ -18,8 +18,8 @@ export type Account = {
      * Values of the industries
      */
     industries?: Array<string> | null | undefined;
-    name: string;
-    ownerId: string;
+    name?: string | null | undefined;
+    ownerId?: string | null | undefined;
     /**
      * List of account phone numbers
      */
@@ -40,8 +40,8 @@ export namespace Account$ {
         description?: string | null | undefined;
         id: string;
         industries?: Array<string> | null | undefined;
-        name: string;
-        owner_id: string;
+        name?: string | null | undefined;
+        owner_id?: string | null | undefined;
         phone_numbers?: Array<string> | null | undefined;
         updated_at?: string | null | undefined;
         website?: string | null | undefined;
@@ -62,8 +62,8 @@ export namespace Account$ {
             description: z.nullable(z.string()).optional(),
             id: z.string(),
             industries: z.nullable(z.array(z.string())).optional(),
-            name: z.string(),
-            owner_id: z.string(),
+            name: z.nullable(z.string()).optional(),
+            owner_id: z.nullable(z.string()).optional(),
             phone_numbers: z.nullable(z.array(z.string())).optional(),
             updated_at: z
                 .nullable(
@@ -83,8 +83,8 @@ export namespace Account$ {
                 ...(v.description === undefined ? null : { description: v.description }),
                 id: v.id,
                 ...(v.industries === undefined ? null : { industries: v.industries }),
-                name: v.name,
-                ownerId: v.owner_id,
+                ...(v.name === undefined ? null : { name: v.name }),
+                ...(v.owner_id === undefined ? null : { ownerId: v.owner_id }),
                 ...(v.phone_numbers === undefined ? null : { phoneNumbers: v.phone_numbers }),
                 ...(v.updated_at === undefined ? null : { updatedAt: v.updated_at }),
                 ...(v.website === undefined ? null : { website: v.website }),
@@ -98,8 +98,8 @@ export namespace Account$ {
         description?: string | null | undefined;
         id: string;
         industries?: Array<string> | null | undefined;
-        name: string;
-        owner_id: string;
+        name?: string | null | undefined;
+        owner_id?: string | null | undefined;
         phone_numbers?: Array<string> | null | undefined;
         updated_at?: string | null | undefined;
         website?: string | null | undefined;
@@ -113,8 +113,8 @@ export namespace Account$ {
             description: z.nullable(z.string()).optional(),
             id: z.string(),
             industries: z.nullable(z.array(z.string())).optional(),
-            name: z.string(),
-            ownerId: z.string(),
+            name: z.nullable(z.string()).optional(),
+            ownerId: z.nullable(z.string()).optional(),
             phoneNumbers: z.nullable(z.array(z.string())).optional(),
             updatedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
             website: z.nullable(z.string()).optional(),
@@ -127,8 +127,8 @@ export namespace Account$ {
                 ...(v.description === undefined ? null : { description: v.description }),
                 id: v.id,
                 ...(v.industries === undefined ? null : { industries: v.industries }),
-                name: v.name,
-                owner_id: v.ownerId,
+                ...(v.name === undefined ? null : { name: v.name }),
+                ...(v.ownerId === undefined ? null : { owner_id: v.ownerId }),
                 ...(v.phoneNumbers === undefined ? null : { phone_numbers: v.phoneNumbers }),
                 ...(v.updatedAt === undefined ? null : { updated_at: v.updatedAt }),
                 ...(v.website === undefined ? null : { website: v.website }),

@@ -51,6 +51,7 @@ export * from "./hriscreateemployeedocument";
 export * from "./hriscreateemployeetimeoffrequest";
 export * from "./hriscreateemployeeworkeligibilityrequest";
 export * from "./hriscreatetimeoffrequest";
+export * from "./hrisdownloademployeedocument";
 export * from "./hrisgetbenefit";
 export * from "./hrisgetcompany";
 export * from "./hrisgetemployee";
