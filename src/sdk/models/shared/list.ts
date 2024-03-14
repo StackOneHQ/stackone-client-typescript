@@ -39,9 +39,9 @@ export type List = {
      * Timestamp when the list was created
      */
     createdAt?: Date | null | undefined;
-    id: string;
+    id?: string | null | undefined;
     items?: Array<string> | null | undefined;
-    name: string;
+    name?: string | null | undefined;
     /**
      * The list type
      */
@@ -144,9 +144,9 @@ export namespace ListType$ {
 export namespace List$ {
     export type Inbound = {
         created_at?: string | null | undefined;
-        id: string;
+        id?: string | null | undefined;
         items?: Array<string> | null | undefined;
-        name: string;
+        name?: string | null | undefined;
         type?: ListType$.Inbound | null | undefined;
         updated_at?: string | null | undefined;
     };
@@ -161,9 +161,9 @@ export namespace List$ {
                         .transform((v) => new Date(v))
                 )
                 .optional(),
-            id: z.string(),
+            id: z.nullable(z.string()).optional(),
             items: z.nullable(z.array(z.string())).optional(),
-            name: z.string(),
+            name: z.nullable(z.string()).optional(),
             type: z.nullable(z.lazy(() => ListType$.inboundSchema)).optional(),
             updated_at: z
                 .nullable(
@@ -177,9 +177,9 @@ export namespace List$ {
         .transform((v) => {
             return {
                 ...(v.created_at === undefined ? null : { createdAt: v.created_at }),
-                id: v.id,
+                ...(v.id === undefined ? null : { id: v.id }),
                 ...(v.items === undefined ? null : { items: v.items }),
-                name: v.name,
+                ...(v.name === undefined ? null : { name: v.name }),
                 ...(v.type === undefined ? null : { type: v.type }),
                 ...(v.updated_at === undefined ? null : { updatedAt: v.updated_at }),
             };
@@ -187,9 +187,9 @@ export namespace List$ {
 
     export type Outbound = {
         created_at?: string | null | undefined;
-        id: string;
+        id?: string | null | undefined;
         items?: Array<string> | null | undefined;
-        name: string;
+        name?: string | null | undefined;
         type?: ListType$.Outbound | null | undefined;
         updated_at?: string | null | undefined;
     };
@@ -197,18 +197,18 @@ export namespace List$ {
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, List> = z
         .object({
             createdAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
-            id: z.string(),
+            id: z.nullable(z.string()).optional(),
             items: z.nullable(z.array(z.string())).optional(),
-            name: z.string(),
+            name: z.nullable(z.string()).optional(),
             type: z.nullable(z.lazy(() => ListType$.outboundSchema)).optional(),
             updatedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
         })
         .transform((v) => {
             return {
                 ...(v.createdAt === undefined ? null : { created_at: v.createdAt }),
-                id: v.id,
+                ...(v.id === undefined ? null : { id: v.id }),
                 ...(v.items === undefined ? null : { items: v.items }),
-                name: v.name,
+                ...(v.name === undefined ? null : { name: v.name }),
                 ...(v.type === undefined ? null : { type: v.type }),
                 ...(v.updatedAt === undefined ? null : { updated_at: v.updatedAt }),
             };

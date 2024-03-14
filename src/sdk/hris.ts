@@ -504,6 +504,105 @@ export class Hris extends ClientSDK {
     }
 
     /**
+     * Download Employee Document
+     */
+    async downloadEmployeeDocument(
+        input: operations.HrisDownloadEmployeeDocumentRequest,
+        options?: RequestOptions
+    ): Promise<operations.HrisDownloadEmployeeDocumentResponse> {
+        const headers$ = new Headers();
+        headers$.set("user-agent", SDK_METADATA.userAgent);
+        headers$.set("Accept", "application/octet-stream");
+
+        const payload$ = schemas$.parse(
+            input,
+            (value$) =>
+                operations.HrisDownloadEmployeeDocumentRequest$.outboundSchema.parse(value$),
+            "Input validation failed"
+        );
+        const body$ = null;
+
+        const pathParams$ = {
+            id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
+            subResourceId: enc$.encodeSimple("subResourceId", payload$.subResourceId, {
+                explode: false,
+                charEncoding: "percent",
+            }),
+        };
+        const path$ = this.templateURLComponent(
+            "/unified/hris/employees/{id}/documents/{subResourceId}/download"
+        )(pathParams$);
+
+        const query$ = [
+            enc$.encodeForm("format", payload$.format, { explode: true, charEncoding: "percent" }),
+        ]
+            .filter(Boolean)
+            .join("&");
+
+        headers$.set(
+            "x-account-id",
+            enc$.encodeSimple("x-account-id", payload$["x-account-id"], {
+                explode: false,
+                charEncoding: "none",
+            })
+        );
+
+        const security$ =
+            typeof this.options$.security === "function"
+                ? await this.options$.security()
+                : this.options$.security;
+
+        const context = {
+            operationID: "hris_download_employee_document",
+            oAuth2Scopes: [],
+            securitySource: this.options$.security,
+        };
+        const securitySettings$ = this.resolveGlobalSecurity(security$);
+
+        const doOptions = {
+            context,
+            errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+        };
+        const request = this.createRequest$(
+            {
+                security: securitySettings$,
+                method: "GET",
+                path: path$,
+                headers: headers$,
+                query: query$,
+                body: body$,
+            },
+            options
+        );
+
+        const response = await this.do$(request, doOptions);
+
+        const responseFields$ = {
+            ContentType: response.headers.get("content-type") ?? "application/octet-stream",
+            StatusCode: response.status,
+            RawResponse: response,
+        };
+
+        if (this.matchResponse(response, 200, "application/octet-stream")) {
+            const responseBody = response.body ?? undefined;
+            const result = schemas$.parse(
+                responseBody,
+                (val$) => {
+                    return operations.HrisDownloadEmployeeDocumentResponse$.inboundSchema.parse({
+                        ...responseFields$,
+                        stream: val$,
+                    });
+                },
+                "Response validation failed"
+            );
+            return result;
+        } else {
+            const responseBody = await response.text();
+            throw new errors.SDKError("Unexpected API response", response, responseBody);
+        }
+    }
+
+    /**
      * Get Benefit
      */
     async getBenefit(

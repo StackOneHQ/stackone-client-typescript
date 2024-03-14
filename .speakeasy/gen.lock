@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 7fa83af8-9e8e-4410-b7e2-cf1d0eaf688b
 management:
-  docChecksum: cce56f1f63139d8180554f42ed60c5ac
+  docChecksum: 626d596215277cf83159ae85f0439b0f
   docVersion: 1.0.0
-  speakeasyVersion: 1.209.0
-  generationVersion: 2.281.0
-  releaseVersion: 4.2.2
-  configChecksum: 3052e8adfa8a740727189b686e27885d
+  speakeasyVersion: 1.209.2
+  generationVersion: 2.281.2
+  releaseVersion: 4.3.0
+  configChecksum: 4d79d25c31321308cd2b8bb94d7d4829
   repoURL: https://github.com/StackOneHQ/stackone-client-typescript.git
   repoSubDirectory: .
   installationURL: https://github.com/StackOneHQ/stackone-client-typescript
@@ -16,13 +16,14 @@ features:
     constsAndDefaults: 0.1.5
     core: 3.6.1
     deprecations: 2.81.1
+    downloadStreams: 0.1.1
     examples: 2.81.3
-    globalSecurity: 2.82.5
+    globalSecurity: 2.82.6
     globalServerURLs: 2.82.4
     groups: 2.81.2
     nameOverrides: 2.81.1
     pagination: 2.82.1
-    responseFormat: 0.2.1
+    responseFormat: 0.2.2
     unions: 2.85.3
 generatedFiles:
   - src/sdk/accounts.ts
@@ -115,6 +116,7 @@ generatedFiles:
   - src/sdk/models/operations/hriscreateemployeetimeoffrequest.ts
   - src/sdk/models/operations/hriscreateemployeeworkeligibilityrequest.ts
   - src/sdk/models/operations/hriscreatetimeoffrequest.ts
+  - src/sdk/models/operations/hrisdownloademployeedocument.ts
   - src/sdk/models/operations/hrisgetbenefit.ts
   - src/sdk/models/operations/hrisgetcompany.ts
   - src/sdk/models/operations/hrisgetemployee.ts
@@ -466,6 +468,8 @@ generatedFiles:
   - docs/sdk/models/operations/hriscreateemployeeworkeligibilityrequestresponse.md
   - docs/sdk/models/operations/hriscreatetimeoffrequestrequest.md
   - docs/sdk/models/operations/hriscreatetimeoffrequestresponse.md
+  - docs/sdk/models/operations/hrisdownloademployeedocumentrequest.md
+  - docs/sdk/models/operations/hrisdownloademployeedocumentresponse.md
   - docs/sdk/models/operations/hrisgetbenefitqueryparamproxy.md
   - docs/sdk/models/operations/hrisgetbenefitrequest.md
   - docs/sdk/models/operations/hrisgetbenefitresponse.md

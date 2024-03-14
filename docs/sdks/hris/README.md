@@ -8,6 +8,7 @@
 * [createEmployeeTimeOffRequest](#createemployeetimeoffrequest) - Create Employee Time Off Request
 * [createEmployeeWorkEligibilityRequest](#createemployeeworkeligibilityrequest) - Create Employee Work Eligibility Request
 * [createTimeOffRequest](#createtimeoffrequest) - Creates a time off request
+* [downloadEmployeeDocument](#downloademployeedocument) - Download Employee Document
 * [getBenefit](#getbenefit) - Get Benefit
 * [getCompany](#getcompany) - Get Company
 * [getEmployee](#getemployee) - Get Employee
@@ -463,6 +464,53 @@ run();
 ### Response
 
 **Promise<[operations.HrisCreateTimeOffRequestResponse](../../sdk/models/operations/hriscreatetimeoffrequestresponse.md)>**
+### Errors
+
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
+
+## downloadEmployeeDocument
+
+Download Employee Document
+
+### Example Usage
+
+```typescript
+import { StackOne } from "@stackone/stackone-client-ts";
+
+async function run() {
+  const sdk = new StackOne({
+    security: {
+      password: "<YOUR_PASSWORD_HERE>",
+    },
+  });
+
+  const result = await sdk.hris.downloadEmployeeDocument({
+    id: "<id>",
+    subResourceId: "<value>",
+    xAccountId: "<value>",
+  });
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.HrisDownloadEmployeeDocumentRequest](../../sdk/models/operations/hrisdownloademployeedocumentrequest.md)                                                           | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+
+
+### Response
+
+**Promise<[operations.HrisDownloadEmployeeDocumentResponse](../../sdk/models/operations/hrisdownloademployeedocumentresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

@@ -8,42 +8,42 @@ import * as z from "zod";
 
 export type UserResult = {
     data: User;
-    raw: Array<RawResponse>;
+    raw?: Array<RawResponse> | null | undefined;
 };
 
 /** @internal */
 export namespace UserResult$ {
     export type Inbound = {
         data: User$.Inbound;
-        raw: Array<RawResponse$.Inbound>;
+        raw?: Array<RawResponse$.Inbound> | null | undefined;
     };
 
     export const inboundSchema: z.ZodType<UserResult, z.ZodTypeDef, Inbound> = z
         .object({
             data: User$.inboundSchema,
-            raw: z.array(RawResponse$.inboundSchema),
+            raw: z.nullable(z.array(RawResponse$.inboundSchema)).optional(),
         })
         .transform((v) => {
             return {
                 data: v.data,
-                raw: v.raw,
+                ...(v.raw === undefined ? null : { raw: v.raw }),
             };
         });
 
     export type Outbound = {
         data: User$.Outbound;
-        raw: Array<RawResponse$.Outbound>;
+        raw?: Array<RawResponse$.Outbound> | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UserResult> = z
         .object({
             data: User$.outboundSchema,
-            raw: z.array(RawResponse$.outboundSchema),
+            raw: z.nullable(z.array(RawResponse$.outboundSchema)).optional(),
         })
         .transform((v) => {
             return {
                 data: v.data,
-                raw: v.raw,
+                ...(v.raw === undefined ? null : { raw: v.raw }),
             };
         });
 }
