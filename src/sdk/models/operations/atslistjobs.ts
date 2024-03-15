@@ -5,11 +5,6 @@
 import * as shared from "../../../sdk/models/shared";
 import * as z from "zod";
 
-/**
- * Query parameters that can be used to pass through parameters to the underlying provider request by surrounding them with 'proxy' key
- */
-export type AtsListJobsQueryParamProxy = {};
-
 export type AtsListJobsRequest = {
     /**
      * The comma separated list of fields that will be expanded in the response
@@ -36,7 +31,7 @@ export type AtsListJobsRequest = {
     /**
      * Query parameters that can be used to pass through parameters to the underlying provider request by surrounding them with 'proxy' key
      */
-    proxy?: AtsListJobsQueryParamProxy | null | undefined;
+    proxy?: Record<string, any> | null | undefined;
     /**
      * Indicates that the raw request result is returned
      */
@@ -77,19 +72,6 @@ export type AtsListJobsResponse = {
 };
 
 /** @internal */
-export namespace AtsListJobsQueryParamProxy$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<AtsListJobsQueryParamProxy, z.ZodTypeDef, Inbound> =
-        z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, AtsListJobsQueryParamProxy> =
-        z.object({});
-}
-
-/** @internal */
 export namespace AtsListJobsRequest$ {
     export type Inbound = {
         expand?: string | null | undefined;
@@ -97,7 +79,7 @@ export namespace AtsListJobsRequest$ {
         next?: string | null | undefined;
         page?: string | null | undefined;
         page_size?: string | null | undefined;
-        proxy?: AtsListJobsQueryParamProxy$.Inbound | null | undefined;
+        proxy?: Record<string, any> | null | undefined;
         raw?: boolean | null | undefined;
         sync_token?: string | null | undefined;
         updated_after?: string | null | undefined;
@@ -111,7 +93,7 @@ export namespace AtsListJobsRequest$ {
             next: z.nullable(z.string()).optional(),
             page: z.nullable(z.string()).optional(),
             page_size: z.nullable(z.string().default("25")),
-            proxy: z.nullable(z.lazy(() => AtsListJobsQueryParamProxy$.inboundSchema)).optional(),
+            proxy: z.nullable(z.record(z.any())).optional(),
             raw: z.nullable(z.boolean().default(false)),
             sync_token: z.nullable(z.string()).optional(),
             updated_after: z.nullable(z.string()).optional(),
@@ -138,7 +120,7 @@ export namespace AtsListJobsRequest$ {
         next?: string | null | undefined;
         page?: string | null | undefined;
         page_size: string | null;
-        proxy?: AtsListJobsQueryParamProxy$.Outbound | null | undefined;
+        proxy?: Record<string, any> | null | undefined;
         raw: boolean | null;
         sync_token?: string | null | undefined;
         updated_after?: string | null | undefined;
@@ -152,7 +134,7 @@ export namespace AtsListJobsRequest$ {
             next: z.nullable(z.string()).optional(),
             page: z.nullable(z.string()).optional(),
             pageSize: z.nullable(z.string().default("25")),
-            proxy: z.nullable(z.lazy(() => AtsListJobsQueryParamProxy$.outboundSchema)).optional(),
+            proxy: z.nullable(z.record(z.any())).optional(),
             raw: z.nullable(z.boolean().default(false)),
             syncToken: z.nullable(z.string()).optional(),
             updatedAfter: z.nullable(z.string()).optional(),

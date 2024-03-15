@@ -299,6 +299,10 @@ export class Accounts extends ClientSDK {
         const path$ = this.templateURLComponent("/accounts")();
 
         const query$ = [
+            enc$.encodeForm("account_ids", payload$.account_ids, {
+                explode: true,
+                charEncoding: "percent",
+            }),
             enc$.encodeForm("origin_owner_id", payload$.origin_owner_id, {
                 explode: true,
                 charEncoding: "percent",
@@ -309,6 +313,10 @@ export class Accounts extends ClientSDK {
                 charEncoding: "percent",
             }),
             enc$.encodeForm("provider", payload$.provider, {
+                explode: true,
+                charEncoding: "percent",
+            }),
+            enc$.encodeForm("providers", payload$.providers, {
                 explode: true,
                 charEncoding: "percent",
             }),

@@ -535,7 +535,9 @@ async function run() {
 
   const result = await sdk.hris.getBenefit({
     id: "<id>",
-    proxy: {},
+    proxy: {
+      "key": "<value>",
+    },
     xAccountId: "<value>",
   });
 
@@ -582,7 +584,9 @@ async function run() {
 
   const result = await sdk.hris.getCompany({
     id: "<id>",
-    proxy: {},
+    proxy: {
+      "key": "<value>",
+    },
     xAccountId: "<value>",
   });
 
@@ -629,7 +633,9 @@ async function run() {
 
   const result = await sdk.hris.getEmployee({
     id: "<id>",
-    proxy: {},
+    proxy: {
+      "key": "<value>",
+    },
     xAccountId: "<value>",
   });
 
@@ -676,7 +682,9 @@ async function run() {
 
   const result = await sdk.hris.getEmployeeDocument({
     id: "<id>",
-    proxy: {},
+    proxy: {
+      "key": "<value>",
+    },
     subResourceId: "<value>",
     xAccountId: "<value>",
   });
@@ -724,7 +732,9 @@ async function run() {
 
   const result = await sdk.hris.getEmployeesTimeOffRequest({
     id: "<id>",
-    proxy: {},
+    proxy: {
+      "key": "<value>",
+    },
     subResourceId: "<value>",
     xAccountId: "<value>",
   });
@@ -772,7 +782,9 @@ async function run() {
 
   const result = await sdk.hris.getEmployeesWorkEligibility({
     id: "<id>",
-    proxy: {},
+    proxy: {
+      "key": "<value>",
+    },
     subResourceId: "<value>",
     xAccountId: "<value>",
   });
@@ -820,7 +832,9 @@ async function run() {
 
   const result = await sdk.hris.getEmployment({
     id: "<id>",
-    proxy: {},
+    proxy: {
+      "key": "<value>",
+    },
     xAccountId: "<value>",
   });
 
@@ -867,7 +881,9 @@ async function run() {
 
   const result = await sdk.hris.getLocation({
     id: "<id>",
-    proxy: {},
+    proxy: {
+      "key": "<value>",
+    },
     xAccountId: "<value>",
   });
 
@@ -914,7 +930,9 @@ async function run() {
 
   const result = await sdk.hris.getTimeOffRequest({
     id: "<id>",
-    proxy: {},
+    proxy: {
+      "key": "<value>",
+    },
     xAccountId: "<value>",
   });
 
@@ -960,7 +978,9 @@ async function run() {
   });
 
   const result = await sdk.hris.listBenefits({
-    proxy: {},
+    proxy: {
+      "key": "<value>",
+    },
     xAccountId: "<value>",
   });
 
@@ -1006,7 +1026,9 @@ async function run() {
   });
 
   const result = await sdk.hris.listCompanies({
-    proxy: {},
+    proxy: {
+      "key": "<value>",
+    },
     xAccountId: "<value>",
   });
 
@@ -1053,7 +1075,9 @@ async function run() {
 
   const result = await sdk.hris.listEmployeeDocuments({
     id: "<id>",
-    proxy: {},
+    proxy: {
+      "key": "<value>",
+    },
     xAccountId: "<value>",
   });
 
@@ -1100,7 +1124,9 @@ async function run() {
 
   const result = await sdk.hris.listEmployeeTimeOffRequests({
     id: "<id>",
-    proxy: {},
+    proxy: {
+      "key": "<value>",
+    },
     xAccountId: "<value>",
   });
 
@@ -1147,7 +1173,9 @@ async function run() {
 
   const result = await sdk.hris.listEmployeeWorkEligibility({
     id: "<id>",
-    proxy: {},
+    proxy: {
+      "key": "<value>",
+    },
     xAccountId: "<value>",
   });
 
@@ -1193,7 +1221,9 @@ async function run() {
   });
 
   const result = await sdk.hris.listEmployees({
-    proxy: {},
+    proxy: {
+      "key": "<value>",
+    },
     xAccountId: "<value>",
   });
 
@@ -1240,7 +1270,9 @@ async function run() {
   });
 
   const result = await sdk.hris.listEmployments({
-    proxy: {},
+    proxy: {
+      "key": "<value>",
+    },
     xAccountId: "<value>",
   });
 
@@ -1286,7 +1318,9 @@ async function run() {
   });
 
   const result = await sdk.hris.listLocations({
-    proxy: {},
+    proxy: {
+      "key": "<value>",
+    },
     xAccountId: "<value>",
   });
 
@@ -1332,7 +1366,9 @@ async function run() {
   });
 
   const result = await sdk.hris.listTimeOffRequests({
-    proxy: {},
+    proxy: {
+      "key": "<value>",
+    },
     xAccountId: "<value>",
   });
 

@@ -5,11 +5,6 @@
 import * as shared from "../../../sdk/models/shared";
 import * as z from "zod";
 
-/**
- * Query parameters that can be used to pass through parameters to the underlying provider request by surrounding them with 'proxy' key
- */
-export type AtsListCandidateNotesQueryParamProxy = {};
-
 export type AtsListCandidateNotesRequest = {
     /**
      * The comma separated list of fields to return in the response (if empty, all fields are returned)
@@ -33,7 +28,7 @@ export type AtsListCandidateNotesRequest = {
     /**
      * Query parameters that can be used to pass through parameters to the underlying provider request by surrounding them with 'proxy' key
      */
-    proxy?: AtsListCandidateNotesQueryParamProxy | null | undefined;
+    proxy?: Record<string, any> | null | undefined;
     /**
      * Indicates that the raw request result is returned
      */
@@ -74,25 +69,6 @@ export type AtsListCandidateNotesResponse = {
 };
 
 /** @internal */
-export namespace AtsListCandidateNotesQueryParamProxy$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<
-        AtsListCandidateNotesQueryParamProxy,
-        z.ZodTypeDef,
-        Inbound
-    > = z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        AtsListCandidateNotesQueryParamProxy
-    > = z.object({});
-}
-
-/** @internal */
 export namespace AtsListCandidateNotesRequest$ {
     export type Inbound = {
         fields?: string | null | undefined;
@@ -100,7 +76,7 @@ export namespace AtsListCandidateNotesRequest$ {
         next?: string | null | undefined;
         page?: string | null | undefined;
         page_size?: string | null | undefined;
-        proxy?: AtsListCandidateNotesQueryParamProxy$.Inbound | null | undefined;
+        proxy?: Record<string, any> | null | undefined;
         raw?: boolean | null | undefined;
         sync_token?: string | null | undefined;
         updated_after?: string | null | undefined;
@@ -114,9 +90,7 @@ export namespace AtsListCandidateNotesRequest$ {
             next: z.nullable(z.string()).optional(),
             page: z.nullable(z.string()).optional(),
             page_size: z.nullable(z.string().default("25")),
-            proxy: z
-                .nullable(z.lazy(() => AtsListCandidateNotesQueryParamProxy$.inboundSchema))
-                .optional(),
+            proxy: z.nullable(z.record(z.any())).optional(),
             raw: z.nullable(z.boolean().default(false)),
             sync_token: z.nullable(z.string()).optional(),
             updated_after: z.nullable(z.string()).optional(),
@@ -143,7 +117,7 @@ export namespace AtsListCandidateNotesRequest$ {
         next?: string | null | undefined;
         page?: string | null | undefined;
         page_size: string | null;
-        proxy?: AtsListCandidateNotesQueryParamProxy$.Outbound | null | undefined;
+        proxy?: Record<string, any> | null | undefined;
         raw: boolean | null;
         sync_token?: string | null | undefined;
         updated_after?: string | null | undefined;
@@ -157,9 +131,7 @@ export namespace AtsListCandidateNotesRequest$ {
             next: z.nullable(z.string()).optional(),
             page: z.nullable(z.string()).optional(),
             pageSize: z.nullable(z.string().default("25")),
-            proxy: z
-                .nullable(z.lazy(() => AtsListCandidateNotesQueryParamProxy$.outboundSchema))
-                .optional(),
+            proxy: z.nullable(z.record(z.any())).optional(),
             raw: z.nullable(z.boolean().default(false)),
             syncToken: z.nullable(z.string()).optional(),
             updatedAfter: z.nullable(z.string()).optional(),
