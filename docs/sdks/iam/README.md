@@ -30,7 +30,9 @@ async function run() {
 
   const result = await sdk.iam.getGroup({
     id: "<id>",
-    proxy: {},
+    proxy: {
+      "key": "<value>",
+    },
     xAccountId: "<value>",
   });
 
@@ -77,7 +79,9 @@ async function run() {
 
   const result = await sdk.iam.getPolicy({
     id: "<id>",
-    proxy: {},
+    proxy: {
+      "key": "<value>",
+    },
     xAccountId: "<value>",
   });
 
@@ -124,7 +128,9 @@ async function run() {
 
   const result = await sdk.iam.getRole({
     id: "<id>",
-    proxy: {},
+    proxy: {
+      "key": "<value>",
+    },
     xAccountId: "<value>",
   });
 
@@ -171,7 +177,9 @@ async function run() {
 
   const result = await sdk.iam.getUser({
     id: "<id>",
-    proxy: {},
+    proxy: {
+      "key": "<value>",
+    },
     xAccountId: "<value>",
   });
 
@@ -217,7 +225,9 @@ async function run() {
   });
 
   const result = await sdk.iam.listGroups({
-    proxy: {},
+    proxy: {
+      "key": "<value>",
+    },
     xAccountId: "<value>",
   });
 
@@ -263,7 +273,9 @@ async function run() {
   });
 
   const result = await sdk.iam.listPolicies({
-    proxy: {},
+    proxy: {
+      "key": "<value>",
+    },
     xAccountId: "<value>",
   });
 
@@ -309,7 +321,9 @@ async function run() {
   });
 
   const result = await sdk.iam.listRoles({
-    proxy: {},
+    proxy: {
+      "key": "<value>",
+    },
     xAccountId: "<value>",
   });
 
@@ -355,7 +369,9 @@ async function run() {
   });
 
   const result = await sdk.iam.listUsers({
-    proxy: {},
+    proxy: {
+      "key": "<value>",
+    },
     xAccountId: "<value>",
   });
 

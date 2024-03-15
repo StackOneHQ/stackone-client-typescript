@@ -160,7 +160,14 @@ async function run() {
     },
   });
 
-  const result = await sdk.accounts.listLinkedAccounts({});
+  const result = await sdk.accounts.listLinkedAccounts({
+    accountIds: [
+      "<value>",
+    ],
+    providers: [
+      "<value>",
+    ],
+  });
 
   // Handle the result
   console.log(result)

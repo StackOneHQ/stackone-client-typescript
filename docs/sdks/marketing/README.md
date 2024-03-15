@@ -213,7 +213,9 @@ async function run() {
 
   const result = await sdk.marketing.getCampaign({
     id: "<id>",
-    proxy: {},
+    proxy: {
+      "key": "<value>",
+    },
     xAccountId: "<value>",
   });
 
@@ -260,7 +262,9 @@ async function run() {
 
   const result = await sdk.marketing.getEmailTemplate({
     id: "<id>",
-    proxy: {},
+    proxy: {
+      "key": "<value>",
+    },
     xAccountId: "<value>",
   });
 
@@ -307,7 +311,9 @@ async function run() {
 
   const result = await sdk.marketing.getOmniChannelTemplate({
     id: "<id>",
-    proxy: {},
+    proxy: {
+      "key": "<value>",
+    },
     xAccountId: "<value>",
   });
 
@@ -354,7 +360,9 @@ async function run() {
 
   const result = await sdk.marketing.getPushTemplate({
     id: "<id>",
-    proxy: {},
+    proxy: {
+      "key": "<value>",
+    },
     xAccountId: "<value>",
   });
 
@@ -400,7 +408,9 @@ async function run() {
   });
 
   const result = await sdk.marketing.listCampaigns({
-    proxy: {},
+    proxy: {
+      "key": "<value>",
+    },
     xAccountId: "<value>",
   });
 
@@ -446,7 +456,9 @@ async function run() {
   });
 
   const result = await sdk.marketing.listEmailTemplates({
-    proxy: {},
+    proxy: {
+      "key": "<value>",
+    },
     xAccountId: "<value>",
   });
 
@@ -492,7 +504,9 @@ async function run() {
   });
 
   const result = await sdk.marketing.listOmniChannelTemplates({
-    proxy: {},
+    proxy: {
+      "key": "<value>",
+    },
     xAccountId: "<value>",
   });
 
@@ -538,7 +552,9 @@ async function run() {
   });
 
   const result = await sdk.marketing.listPushTemplates({
-    proxy: {},
+    proxy: {
+      "key": "<value>",
+    },
     xAccountId: "<value>",
   });
 

@@ -7,6 +7,10 @@ import * as z from "zod";
 
 export type StackoneListLinkedAccountsRequest = {
     /**
+     * The providers list of the results to fetch
+     */
+    accountIds?: Array<string> | undefined;
+    /**
      * The origin owner identifier of the results to fetch
      */
     originOwnerId?: string | null | undefined;
@@ -22,6 +26,10 @@ export type StackoneListLinkedAccountsRequest = {
      * The provider of the results to fetch
      */
     provider?: string | null | undefined;
+    /**
+     * The providers list of the results to fetch
+     */
+    providers?: Array<string> | undefined;
 };
 
 export type StackoneListLinkedAccountsResponse = {
@@ -46,10 +54,12 @@ export type StackoneListLinkedAccountsResponse = {
 /** @internal */
 export namespace StackoneListLinkedAccountsRequest$ {
     export type Inbound = {
+        account_ids?: Array<string> | undefined;
         origin_owner_id?: string | null | undefined;
         page?: number | null | undefined;
         page_size?: number | null | undefined;
         provider?: string | null | undefined;
+        providers?: Array<string> | undefined;
     };
 
     export const inboundSchema: z.ZodType<
@@ -58,25 +68,31 @@ export namespace StackoneListLinkedAccountsRequest$ {
         Inbound
     > = z
         .object({
+            account_ids: z.array(z.string()).optional(),
             origin_owner_id: z.nullable(z.string()).optional(),
             page: z.nullable(z.number()).optional(),
             page_size: z.nullable(z.number().default(25)),
             provider: z.nullable(z.string()).optional(),
+            providers: z.array(z.string()).optional(),
         })
         .transform((v) => {
             return {
+                ...(v.account_ids === undefined ? null : { accountIds: v.account_ids }),
                 ...(v.origin_owner_id === undefined ? null : { originOwnerId: v.origin_owner_id }),
                 ...(v.page === undefined ? null : { page: v.page }),
                 pageSize: v.page_size,
                 ...(v.provider === undefined ? null : { provider: v.provider }),
+                ...(v.providers === undefined ? null : { providers: v.providers }),
             };
         });
 
     export type Outbound = {
+        account_ids?: Array<string> | undefined;
         origin_owner_id?: string | null | undefined;
         page?: number | null | undefined;
         page_size: number | null;
         provider?: string | null | undefined;
+        providers?: Array<string> | undefined;
     };
 
     export const outboundSchema: z.ZodType<
@@ -85,17 +101,21 @@ export namespace StackoneListLinkedAccountsRequest$ {
         StackoneListLinkedAccountsRequest
     > = z
         .object({
+            accountIds: z.array(z.string()).optional(),
             originOwnerId: z.nullable(z.string()).optional(),
             page: z.nullable(z.number()).optional(),
             pageSize: z.nullable(z.number().default(25)),
             provider: z.nullable(z.string()).optional(),
+            providers: z.array(z.string()).optional(),
         })
         .transform((v) => {
             return {
+                ...(v.accountIds === undefined ? null : { account_ids: v.accountIds }),
                 ...(v.originOwnerId === undefined ? null : { origin_owner_id: v.originOwnerId }),
                 ...(v.page === undefined ? null : { page: v.page }),
                 page_size: v.pageSize,
                 ...(v.provider === undefined ? null : { provider: v.provider }),
+                ...(v.providers === undefined ? null : { providers: v.providers }),
             };
         });
 }
