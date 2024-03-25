@@ -38,7 +38,7 @@
 * [listOffers](#listoffers) - List Offers
 * [listRejectedReasons](#listrejectedreasons) - List Rejected Reasons
 * [listUsers](#listusers) - List Users
-* [updateApplication](#updateapplication) - Update Application
+* [updateApplication](#updateapplication) - Update an Application
 * [updateCandidate](#updatecandidate) - Update Candidate (early access)
 
 ## createApplication
@@ -49,7 +49,7 @@ Create Application
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
-import { AnswerValue, ApplicationAttachmentValue, AtsCreateApplicationRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { AnswerValue, AtsCreateApplicationRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 async function run() {
   const sdk = new StackOne({
@@ -64,17 +64,6 @@ async function run() {
       sourceValue: "Hired",
         value: AtsCreateApplicationRequestDtoValue.Hired,
       },
-      attachments: [
-        {
-          content: "Base64 encoded content",
-          contentType: {
-          sourceValue: "Text",
-            value: ApplicationAttachmentValue.Text,
-          },
-          fileName: "resume.pdf",
-          url: "http://example.com/resume.pdf",
-        },
-      ],
       candidate: {
         email: "john.doe@example.com",
         firstName: "John",
@@ -82,9 +71,7 @@ async function run() {
       },
       candidateId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
       jobId: "4071538b-3cac-4fbf-ac76-f78ed250ffdd",
-      locationIds: [
-        "dd8d41d1-5eb8-4408-9c87-9ba44604eae4",
-      ],
+      locationId: "dd8d41d1-5eb8-4408-9c87-9ba44604eae4",
       questionnaires: [
         {
           answers: [
@@ -1829,13 +1816,12 @@ run();
 
 ## updateApplication
 
-Update Application
+Update an Application
 
 ### Example Usage
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
-import { AnswerValue, ApplicationAttachmentValue, AtsUpdateApplicationRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 async function run() {
   const sdk = new StackOne({
@@ -1846,53 +1832,7 @@ async function run() {
 
   const result = await sdk.ats.updateApplication({
     atsUpdateApplicationRequestDto: {
-      applicationStatus: {
-      sourceValue: "Hired",
-        value: AtsUpdateApplicationRequestDtoValue.Hired,
-      },
-      attachments: [
-        {
-          content: "Base64 encoded content",
-          contentType: {
-          sourceValue: "Text",
-            value: ApplicationAttachmentValue.Text,
-          },
-          fileName: "resume.pdf",
-          url: "http://example.com/resume.pdf",
-        },
-      ],
-      candidate: {
-        email: "john.doe@example.com",
-        firstName: "John",
-        lastName: "Doe",
-      },
-      candidateId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
-      id: "eebbaa75-7adf-4f7e-be4c-def6a12840f2",
-      jobId: "4071538b-3cac-4fbf-ac76-f78ed250ffdd",
-      locationIds: [
-        "dd8d41d1-5eb8-4408-9c87-9ba44604eae4",
-      ],
-      questionnaires: [
-        {
-          answers: [
-            {
-              id: "answer_1",
-              type: {
-              sourceValue: "Short Text",
-                value: AnswerValue.ShortText,
-              },
-              values: [
-                "Yes",
-                "No Travel",
-                "It sounds pretty cool.",
-                "Excel",
-                "Power Point",
-              ],
-            },
-          ],
-          id: "questionnaire_1",
-        },
-      ],
+      rejectedReasonId: "f223d7f6-908b-48f0-9237-b201c307f609",
     },
     id: "<id>",
     xAccountId: "<value>",

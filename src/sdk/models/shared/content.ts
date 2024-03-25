@@ -1234,6 +1234,10 @@ export type Content = {
      */
     fileFormat?: FileFormat | null | undefined;
     /**
+     * Unified URL where the file content is located
+     */
+    unifiedUrl?: string | null | undefined;
+    /**
      * URL where the file content is located
      */
     url?: string | null | undefined;
@@ -1331,34 +1335,40 @@ export namespace FileFormat$ {
 export namespace Content$ {
     export type Inbound = {
         file_format?: FileFormat$.Inbound | null | undefined;
+        unified_url?: string | null | undefined;
         url?: string | null | undefined;
     };
 
     export const inboundSchema: z.ZodType<Content, z.ZodTypeDef, Inbound> = z
         .object({
             file_format: z.nullable(z.lazy(() => FileFormat$.inboundSchema)).optional(),
+            unified_url: z.nullable(z.string()).optional(),
             url: z.nullable(z.string()).optional(),
         })
         .transform((v) => {
             return {
                 ...(v.file_format === undefined ? null : { fileFormat: v.file_format }),
+                ...(v.unified_url === undefined ? null : { unifiedUrl: v.unified_url }),
                 ...(v.url === undefined ? null : { url: v.url }),
             };
         });
 
     export type Outbound = {
         file_format?: FileFormat$.Outbound | null | undefined;
+        unified_url?: string | null | undefined;
         url?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Content> = z
         .object({
             fileFormat: z.nullable(z.lazy(() => FileFormat$.outboundSchema)).optional(),
+            unifiedUrl: z.nullable(z.string()).optional(),
             url: z.nullable(z.string()).optional(),
         })
         .transform((v) => {
             return {
                 ...(v.fileFormat === undefined ? null : { file_format: v.fileFormat }),
+                ...(v.unifiedUrl === undefined ? null : { unified_url: v.unifiedUrl }),
                 ...(v.url === undefined ? null : { url: v.url }),
             };
         });

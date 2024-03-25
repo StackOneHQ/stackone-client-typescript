@@ -17,6 +17,8 @@ export enum IamPermissionValue {
     ReadWrite = "read_write",
     Approve = "approve",
     Delete = "delete",
+    Use = "use",
+    Export = "export",
     UnmappedValue = "unmapped_value",
 }
 

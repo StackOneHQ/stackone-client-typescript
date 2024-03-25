@@ -74,6 +74,7 @@ export * from "./hrislisttimeoffrequests";
 export * from "./hrisupdateemployee";
 export * from "./hrisupdateemployeeworkeligibilityrequest";
 export * from "./hrisupdatetimeoffrequest";
+export * from "./hrisuploademployeedocument";
 export * from "./iamgetgroup";
 export * from "./iamgetpolicy";
 export * from "./iamgetrole";

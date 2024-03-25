@@ -12,4 +12,5 @@ The type of the resource, e.g. user, group, permission, etc.
 | `Folder`        | folder          |
 | `Product`       | product         |
 | `Property`      | property        |
+| `User`          | user            |
 | `UnmappedValue` | unmapped_value  |

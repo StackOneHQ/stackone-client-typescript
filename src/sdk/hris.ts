@@ -8,9 +8,9 @@ import * as enc$ from "../lib/encodings";
 import { HTTPClient } from "../lib/http";
 import * as schemas$ from "../lib/schemas";
 import { ClientSDK, RequestOptions } from "../lib/sdks";
-import * as errors from "../sdk/models/errors";
-import * as operations from "../sdk/models/operations";
-import { createPageIterator, PageIterator, Paginator } from "../sdk/types";
+import * as errors from "./models/errors";
+import * as operations from "./models/operations";
+import { createPageIterator, PageIterator, Paginator } from "./types";
 import jp from "jsonpath";
 
 export class Hris extends ClientSDK {
@@ -2784,6 +2784,97 @@ export class Hris extends ClientSDK {
                     return operations.HrisUpdateTimeOffRequestResponse$.inboundSchema.parse({
                         ...responseFields$,
                         CreateTimeOffResult: val$,
+                    });
+                },
+                "Response validation failed"
+            );
+            return result;
+        } else {
+            const responseBody = await response.text();
+            throw new errors.SDKError("Unexpected API response", response, responseBody);
+        }
+    }
+
+    /**
+     * Upload Employee Document
+     */
+    async uploadEmployeeDocument(
+        input: operations.HrisUploadEmployeeDocumentRequest,
+        options?: RequestOptions
+    ): Promise<operations.HrisUploadEmployeeDocumentResponse> {
+        const headers$ = new Headers();
+        headers$.set("user-agent", SDK_METADATA.userAgent);
+        headers$.set("Content-Type", "application/json");
+        headers$.set("Accept", "application/json");
+
+        const payload$ = schemas$.parse(
+            input,
+            (value$) => operations.HrisUploadEmployeeDocumentRequest$.outboundSchema.parse(value$),
+            "Input validation failed"
+        );
+        const body$ = enc$.encodeJSON("body", payload$.UnifiedUploadRequestDto, { explode: true });
+
+        const pathParams$ = {
+            id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
+        };
+        const path$ = this.templateURLComponent("/unified/hris/employees/{id}/documents/upload")(
+            pathParams$
+        );
+
+        const query$ = "";
+
+        headers$.set(
+            "x-account-id",
+            enc$.encodeSimple("x-account-id", payload$["x-account-id"], {
+                explode: false,
+                charEncoding: "none",
+            })
+        );
+
+        const security$ =
+            typeof this.options$.security === "function"
+                ? await this.options$.security()
+                : this.options$.security;
+
+        const context = {
+            operationID: "hris_upload_employee_document",
+            oAuth2Scopes: [],
+            securitySource: this.options$.security,
+        };
+        const securitySettings$ = this.resolveGlobalSecurity(security$);
+
+        const doOptions = {
+            context,
+            errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+        };
+        const request = this.createRequest$(
+            {
+                security: securitySettings$,
+                method: "POST",
+                path: path$,
+                headers: headers$,
+                query: query$,
+                body: body$,
+            },
+            options
+        );
+
+        const response = await this.do$(request, doOptions);
+
+        const responseFields$ = {
+            ContentType: response.headers.get("content-type") ?? "application/octet-stream",
+            StatusCode: response.status,
+            RawResponse: response,
+        };
+
+        if (this.matchResponse(response, 200, "application/json")) {
+            const responseBody = response.body ?? undefined;
+            const result = schemas$.parse(
+                responseBody,
+                (val$) => {
+                    return operations.HrisUploadEmployeeDocumentResponse$.inboundSchema.parse({
+                        ...responseFields$,
+                        stream: val$,
                     });
                 },
                 "Response validation failed"

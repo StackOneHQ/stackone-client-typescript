@@ -149,6 +149,7 @@ export * from "./templatespaginated";
 export * from "./timeoff";
 export * from "./timeoffpaginated";
 export * from "./timeoffresult";
+export * from "./unifieduploadrequestdto";
 export * from "./updateresult";
 export * from "./user";
 export * from "./userresult";
