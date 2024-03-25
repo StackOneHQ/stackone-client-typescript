@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 7fa83af8-9e8e-4410-b7e2-cf1d0eaf688b
 management:
-  docChecksum: c04b7c2a9cbb5262bc7d46313a9a278f
+  docChecksum: f377978026ccecd7b364bc78e28ae6f3
   docVersion: 1.0.0
-  speakeasyVersion: 1.209.3
-  generationVersion: 2.281.2
-  releaseVersion: 4.3.2
-  configChecksum: 39aa040ff0a8553e82123ad7aec552db
+  speakeasyVersion: 1.221.0
+  generationVersion: 2.287.0
+  releaseVersion: 4.3.3
+  configChecksum: 248f5e908cd2169c92ee1ed9d1cd1884
   repoURL: https://github.com/StackOneHQ/stackone-client-typescript.git
   repoSubDirectory: .
   installationURL: https://github.com/StackOneHQ/stackone-client-typescript
@@ -14,11 +14,11 @@ management:
 features:
   typescript:
     constsAndDefaults: 0.1.5
-    core: 3.6.1
+    core: 3.6.3
     deprecations: 2.81.1
     downloadStreams: 0.1.1
     examples: 2.81.3
-    globalSecurity: 2.82.6
+    globalSecurity: 2.82.8
     globalServerURLs: 2.82.4
     groups: 2.81.2
     nameOverrides: 2.81.1
@@ -139,6 +139,7 @@ generatedFiles:
   - src/sdk/models/operations/hrisupdateemployee.ts
   - src/sdk/models/operations/hrisupdateemployeeworkeligibilityrequest.ts
   - src/sdk/models/operations/hrisupdatetimeoffrequest.ts
+  - src/sdk/models/operations/hrisuploademployeedocument.ts
   - src/sdk/models/operations/iamgetgroup.ts
   - src/sdk/models/operations/iamgetpolicy.ts
   - src/sdk/models/operations/iamgetrole.ts
@@ -174,7 +175,6 @@ generatedFiles:
   - src/sdk/models/shared/atscreateapplicationrequestdto.ts
   - src/sdk/models/shared/questionnaire.ts
   - src/sdk/models/shared/answer.ts
-  - src/sdk/models/shared/applicationattachment.ts
   - src/sdk/models/shared/candidateresult.ts
   - src/sdk/models/shared/rawresponse.ts
   - src/sdk/models/shared/candidate.ts
@@ -194,6 +194,7 @@ generatedFiles:
   - src/sdk/models/shared/rejectedreason.ts
   - src/sdk/models/shared/documentapimodel.ts
   - src/sdk/models/shared/content.ts
+  - src/sdk/models/shared/applicationattachment.ts
   - src/sdk/models/shared/documentresult.ts
   - src/sdk/models/shared/offersresult.ts
   - src/sdk/models/shared/offer.ts
@@ -285,6 +286,7 @@ generatedFiles:
   - src/sdk/models/shared/employeespaginated.ts
   - src/sdk/models/shared/employmentspaginated.ts
   - src/sdk/models/shared/hrislocationspaginated.ts
+  - src/sdk/models/shared/unifieduploadrequestdto.ts
   - src/sdk/models/shared/iamgroupresult.ts
   - src/sdk/models/shared/iamgroup.ts
   - src/sdk/models/shared/iamrole.ts
@@ -479,6 +481,8 @@ generatedFiles:
   - docs/sdk/models/operations/hrisupdateemployeeworkeligibilityrequestresponse.md
   - docs/sdk/models/operations/hrisupdatetimeoffrequestrequest.md
   - docs/sdk/models/operations/hrisupdatetimeoffrequestresponse.md
+  - docs/sdk/models/operations/hrisuploademployeedocumentrequest.md
+  - docs/sdk/models/operations/hrisuploademployeedocumentresponse.md
   - docs/sdk/models/operations/iamgetgrouprequest.md
   - docs/sdk/models/operations/iamgetgroupresponse.md
   - docs/sdk/models/operations/iamgetpolicyrequest.md
@@ -556,11 +560,6 @@ generatedFiles:
   - docs/sdk/models/shared/answervalue.md
   - docs/sdk/models/shared/type.md
   - docs/sdk/models/shared/answer.md
-  - docs/sdk/models/shared/applicationattachment4.md
-  - docs/sdk/models/shared/applicationattachmentsourcevalue.md
-  - docs/sdk/models/shared/applicationattachmentvalue.md
-  - docs/sdk/models/shared/contenttype.md
-  - docs/sdk/models/shared/applicationattachment.md
   - docs/sdk/models/shared/candidateresult.md
   - docs/sdk/models/shared/rawresponse.md
   - docs/sdk/models/shared/candidate.md
@@ -607,6 +606,11 @@ generatedFiles:
   - docs/sdk/models/shared/contentvalue.md
   - docs/sdk/models/shared/fileformat.md
   - docs/sdk/models/shared/content.md
+  - docs/sdk/models/shared/applicationattachment4.md
+  - docs/sdk/models/shared/applicationattachmentsourcevalue.md
+  - docs/sdk/models/shared/applicationattachmentvalue.md
+  - docs/sdk/models/shared/contenttype.md
+  - docs/sdk/models/shared/applicationattachment.md
   - docs/sdk/models/shared/documentresult.md
   - docs/sdk/models/shared/offersresult.md
   - docs/sdk/models/shared/offer4.md
@@ -703,11 +707,6 @@ generatedFiles:
   - docs/sdk/models/shared/rejectedreasonspaginated.md
   - docs/sdk/models/shared/userspaginated.md
   - docs/sdk/models/shared/updateresult.md
-  - docs/sdk/models/shared/atsupdateapplicationrequestdto4.md
-  - docs/sdk/models/shared/atsupdateapplicationrequestdtosourcevalue.md
-  - docs/sdk/models/shared/atsupdateapplicationrequestdtovalue.md
-  - docs/sdk/models/shared/atsupdateapplicationrequestdtoapplicationstatus.md
-  - docs/sdk/models/shared/atsupdateapplicationrequestdtocandidate.md
   - docs/sdk/models/shared/atsupdateapplicationrequestdto.md
   - docs/sdk/models/shared/atsupdatecandidatesrequestdto.md
   - docs/sdk/models/shared/contactresult.md
@@ -768,6 +767,10 @@ generatedFiles:
   - docs/sdk/models/shared/hriscreateemployeerequestdtoschemasmaritalstatussourcevalue.md
   - docs/sdk/models/shared/hriscreateemployeerequestdtoschemasmaritalstatusvalue.md
   - docs/sdk/models/shared/hriscreateemployeerequestdtomaritalstatus.md
+  - docs/sdk/models/shared/hriscreateemployeerequestdtoschemaspreferredlanguage4.md
+  - docs/sdk/models/shared/hriscreateemployeerequestdtoschemaspreferredlanguagesourcevalue.md
+  - docs/sdk/models/shared/hriscreateemployeerequestdtoschemaspreferredlanguagevalue.md
+  - docs/sdk/models/shared/hriscreateemployeerequestdtopreferredlanguage.md
   - docs/sdk/models/shared/hriscreateemployeerequestdtoschemasworklocation4.md
   - docs/sdk/models/shared/hriscreateemployeerequestdtoschemasworklocationsourcevalue.md
   - docs/sdk/models/shared/hriscreateemployeerequestdtoschemasworklocationvalue.md
@@ -877,6 +880,10 @@ generatedFiles:
   - docs/sdk/models/shared/employeeschemasmaritalstatussourcevalue.md
   - docs/sdk/models/shared/employeeschemasmaritalstatusvalue.md
   - docs/sdk/models/shared/maritalstatus.md
+  - docs/sdk/models/shared/employeeschemaspreferredlanguage4.md
+  - docs/sdk/models/shared/employeeschemaspreferredlanguagesourcevalue.md
+  - docs/sdk/models/shared/employeeschemaspreferredlanguagevalue.md
+  - docs/sdk/models/shared/preferredlanguage.md
   - docs/sdk/models/shared/employeeschemasworklocation4.md
   - docs/sdk/models/shared/employeeschemasworklocationsourcevalue.md
   - docs/sdk/models/shared/employeeschemasworklocationvalue.md
@@ -927,6 +934,15 @@ generatedFiles:
   - docs/sdk/models/shared/employeespaginated.md
   - docs/sdk/models/shared/employmentspaginated.md
   - docs/sdk/models/shared/hrislocationspaginated.md
+  - docs/sdk/models/shared/unifieduploadrequestdto4.md
+  - docs/sdk/models/shared/unifieduploadrequestdtosourcevalue.md
+  - docs/sdk/models/shared/unifieduploadrequestdtovalue.md
+  - docs/sdk/models/shared/unifieduploadrequestdtoconfidential.md
+  - docs/sdk/models/shared/unifieduploadrequestdtoschemas4.md
+  - docs/sdk/models/shared/unifieduploadrequestdtoschemassourcevalue.md
+  - docs/sdk/models/shared/unifieduploadrequestdtoschemasvalue.md
+  - docs/sdk/models/shared/unifieduploadrequestdtofileformat.md
+  - docs/sdk/models/shared/unifieduploadrequestdto.md
   - docs/sdk/models/shared/iamgroupresult.md
   - docs/sdk/models/shared/iamgroup4.md
   - docs/sdk/models/shared/iamgroupsourcevalue.md

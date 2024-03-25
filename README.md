@@ -110,7 +110,7 @@ run();
 * [listOffers](docs/sdks/ats/README.md#listoffers) - List Offers
 * [listRejectedReasons](docs/sdks/ats/README.md#listrejectedreasons) - List Rejected Reasons
 * [listUsers](docs/sdks/ats/README.md#listusers) - List Users
-* [updateApplication](docs/sdks/ats/README.md#updateapplication) - Update Application
+* [updateApplication](docs/sdks/ats/README.md#updateapplication) - Update an Application
 * [updateCandidate](docs/sdks/ats/README.md#updatecandidate) - Update Candidate (early access)
 
 ### [crm](docs/sdks/crm/README.md)
@@ -153,6 +153,7 @@ run();
 * [updateEmployee](docs/sdks/hris/README.md#updateemployee) - Updates an employee
 * [updateEmployeeWorkEligibilityRequest](docs/sdks/hris/README.md#updateemployeeworkeligibilityrequest) - Update Employee Work Eligibility Request
 * [updateTimeOffRequest](docs/sdks/hris/README.md#updatetimeoffrequest) - Update time off request
+* [uploadEmployeeDocument](docs/sdks/hris/README.md#uploademployeedocument) - Upload Employee Document
 
 ### [iam](docs/sdks/iam/README.md)
 

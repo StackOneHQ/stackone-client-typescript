@@ -17,6 +17,7 @@ export enum IamResourceValue {
     Folder = "folder",
     Product = "product",
     Property = "property",
+    User = "user",
     UnmappedValue = "unmapped_value",
 }
 

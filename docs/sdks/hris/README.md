@@ -30,6 +30,7 @@
 * [updateEmployee](#updateemployee) - Updates an employee
 * [updateEmployeeWorkEligibilityRequest](#updateemployeeworkeligibilityrequest) - Update Employee Work Eligibility Request
 * [updateTimeOffRequest](#updatetimeoffrequest) - Update time off request
+* [uploadEmployeeDocument](#uploademployeedocument) - Upload Employee Document
 
 ## createEmployee
 
@@ -46,6 +47,7 @@ import {
   EmploymentSchemasValue,
   HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue,
   HrisCreateEmployeeRequestDtoSchemasHomeLocationValue,
+  HrisCreateEmployeeRequestDtoSchemasPreferredLanguageValue,
   HrisCreateEmployeeRequestDtoSchemasWorkLocationValue,
 } from "@stackone/stackone-client-ts/sdk/models/shared";
 
@@ -171,6 +173,10 @@ async function run() {
       name: "Issac Newton",
       personalEmail: "isaac.newton@example.com",
       personalPhoneNumber: "+1234567890",
+      preferredLanguage: {
+      sourceValue: "<value>",
+        value: HrisCreateEmployeeRequestDtoSchemasPreferredLanguageValue.Eng,
+      },
       startDate: new Date("2021-01-01T00:00.000Z"),
       tenure: 2,
       terminationDate: new Date("2021-01-01T00:00:00Z"),
@@ -179,7 +185,7 @@ async function run() {
       workLocation: {
         city: "Grantham",
         country: {
-        sourceValue: "<value>",
+        sourceValue: false,
           value: HrisCreateEmployeeRequestDtoSchemasWorkLocationValue.Us,
         },
         name: "Woolsthorpe Manor",
@@ -229,6 +235,7 @@ Create Employee Document
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
+import { ContentValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 async function run() {
   const sdk = new StackOne({
@@ -241,14 +248,16 @@ async function run() {
     hrisCreateDocumentRequestDto: {
       content: {
         fileFormat: {
-        sourceValue:     {},
+        sourceValue: "abc",
+          value: ContentValue.Pdf,
         },
+        unifiedUrl: "/unified/hris/employees/16022323/documents/79715678/download",
         url: "https://example.com/file.pdf",
       },
       name: "My Document",
       path: "/path/to/file",
       type: {
-      sourceValue: false,
+      sourceValue:     {},
       },
     },
     id: "<id>",
@@ -346,7 +355,7 @@ Create Employee Work Eligibility Request
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
-import { HrisCreateWorkEligibilityRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { ContentValue, HrisCreateWorkEligibilityRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 async function run() {
   const sdk = new StackOne({
@@ -361,8 +370,10 @@ async function run() {
         contents: [
           {
             fileFormat: {
-            sourceValue:     {},
+            sourceValue: "abc",
+              value: ContentValue.Pdf,
             },
+            unifiedUrl: "/unified/hris/employees/16022323/documents/79715678/download",
             url: "https://example.com/file.pdf",
           },
         ],
@@ -373,13 +384,13 @@ async function run() {
         updatedAt: new Date("2021-01-02T01:01:01.000Z"),
       },
       issuedBy: {
-      sourceValue: "<value>",
+      sourceValue:     {},
         value: HrisCreateWorkEligibilityRequestDtoValue.Us,
       },
       number: "1234567890",
       subType: "H1B",
       type: {
-      sourceType:     {},
+      sourceType: "<value>",
       },
       validFrom: new Date("2021-01-01T00:00.000Z"),
       validTo: new Date("2021-01-01T00:00.000Z"),
@@ -1412,6 +1423,7 @@ import {
   EmploymentSchemasValue,
   HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue,
   HrisCreateEmployeeRequestDtoSchemasHomeLocationValue,
+  HrisCreateEmployeeRequestDtoSchemasPreferredLanguageValue,
   HrisCreateEmployeeRequestDtoSchemasWorkLocationValue,
 } from "@stackone/stackone-client-ts/sdk/models/shared";
 
@@ -1537,6 +1549,10 @@ async function run() {
       name: "Issac Newton",
       personalEmail: "isaac.newton@example.com",
       personalPhoneNumber: "+1234567890",
+      preferredLanguage: {
+      sourceValue: false,
+        value: HrisCreateEmployeeRequestDtoSchemasPreferredLanguageValue.Eng,
+      },
       startDate: new Date("2021-01-01T00:00.000Z"),
       tenure: 2,
       terminationDate: new Date("2021-01-01T00:00:00Z"),
@@ -1545,13 +1561,13 @@ async function run() {
       workLocation: {
         city: "Grantham",
         country: {
-        sourceValue: false,
+        sourceValue: "<value>",
           value: HrisCreateEmployeeRequestDtoSchemasWorkLocationValue.Us,
         },
         name: "Woolsthorpe Manor",
         phoneNumber: "+44 1476 860 364",
         state: {
-        sourceValue: "<value>",
+        sourceValue: 5167.47,
         },
         street1: "Water Lane",
         street2: "Woolsthorpe by Colsterworth",
@@ -1596,7 +1612,7 @@ Update Employee Work Eligibility Request
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
-import { HrisCreateWorkEligibilityRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { ContentValue, HrisCreateWorkEligibilityRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 async function run() {
   const sdk = new StackOne({
@@ -1611,8 +1627,10 @@ async function run() {
         contents: [
           {
             fileFormat: {
-            sourceValue: 918.43,
+            sourceValue: "abc",
+              value: ContentValue.Pdf,
             },
+            unifiedUrl: "/unified/hris/employees/16022323/documents/79715678/download",
             url: "https://example.com/file.pdf",
           },
         ],
@@ -1623,13 +1641,13 @@ async function run() {
         updatedAt: new Date("2021-01-02T01:01:01.000Z"),
       },
       issuedBy: {
-      sourceValue:     {},
+      sourceValue: 918.43,
         value: HrisCreateWorkEligibilityRequestDtoValue.Us,
       },
       number: "1234567890",
       subType: "H1B",
       type: {
-      sourceType: "<value>",
+      sourceType:     {},
       },
       validFrom: new Date("2021-01-01T00:00.000Z"),
       validTo: new Date("2021-01-01T00:00.000Z"),
@@ -1716,6 +1734,70 @@ run();
 ### Response
 
 **Promise<[operations.HrisUpdateTimeOffRequestResponse](../../sdk/models/operations/hrisupdatetimeoffrequestresponse.md)>**
+### Errors
+
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
+
+## uploadEmployeeDocument
+
+Upload Employee Document
+
+### Example Usage
+
+```typescript
+import { StackOne } from "@stackone/stackone-client-ts";
+import { UnifiedUploadRequestDtoSchemasValue, UnifiedUploadRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+async function run() {
+  const sdk = new StackOne({
+    security: {
+      password: "<YOUR_PASSWORD_HERE>",
+    },
+  });
+
+  const result = await sdk.hris.uploadEmployeeDocument({
+    unifiedUploadRequestDto: {
+      confidential: {
+      sourceValue: "public",
+        value: UnifiedUploadRequestDtoValue.True,
+      },
+      content: "VGhpcyBpc24ndCByZWFsbHkgYSBzYW1wbGUgZmlsZSwgYnV0IG5vIG9uZSB3aWxsIGV2ZXIga25vdyE",
+      fileFormat: {
+      sourceValue: "abc",
+        value: UnifiedUploadRequestDtoSchemasValue.Pdf,
+      },
+      name: "weather-forecast",
+      path: "reports or /path/to/file",
+      proxy: {
+        "key": "<value>",
+      },
+      updatedAfter: "2020-01-01T00:00:00.000Z",
+    },
+    id: "<id>",
+    xAccountId: "<value>",
+  });
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.HrisUploadEmployeeDocumentRequest](../../sdk/models/operations/hrisuploademployeedocumentrequest.md)                                                               | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+
+
+### Response
+
+**Promise<[operations.HrisUploadEmployeeDocumentResponse](../../sdk/models/operations/hrisuploademployeedocumentresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

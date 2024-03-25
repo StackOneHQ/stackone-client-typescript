@@ -590,6 +590,129 @@ export type MaritalStatus = {
     value?: EmployeeSchemasMaritalStatusValue | null | undefined;
 };
 
+export type EmployeeSchemasPreferredLanguage4 = {};
+
+export type EmployeeSchemasPreferredLanguageSourceValue =
+    | EmployeeSchemasPreferredLanguage4
+    | string
+    | number
+    | boolean;
+
+/**
+ * The ISO639-2 Code of the language
+ */
+export enum EmployeeSchemasPreferredLanguageValue {
+    Aar = "aar",
+    Afr = "afr",
+    Amh = "amh",
+    Ara = "ara",
+    Aym = "aym",
+    Aze = "aze",
+    Bel = "bel",
+    Bul = "bul",
+    Bis = "bis",
+    Ben = "ben",
+    Bos = "bos",
+    Byn = "byn",
+    Cat = "cat",
+    Cha = "cha",
+    Ces = "ces",
+    Deu = "deu",
+    Div = "div",
+    Dzo = "dzo",
+    Ell = "ell",
+    Eng = "eng",
+    Spa = "spa",
+    Est = "est",
+    Fas = "fas",
+    Fan = "fan",
+    Ful = "ful",
+    Fin = "fin",
+    Fij = "fij",
+    Fao = "fao",
+    Fra = "fra",
+    Gle = "gle",
+    Grn = "grn",
+    Glv = "glv",
+    Heb = "heb",
+    Hin = "hin",
+    Hrv = "hrv",
+    Hat = "hat",
+    Hun = "hun",
+    Hye = "hye",
+    Ind = "ind",
+    Isl = "isl",
+    Ita = "ita",
+    Jpn = "jpn",
+    Kat = "kat",
+    Kon = "kon",
+    Kaz = "kaz",
+    Kal = "kal",
+    Khm = "khm",
+    Kor = "kor",
+    Kur = "kur",
+    Kir = "kir",
+    Lat = "lat",
+    Ltz = "ltz",
+    Lin = "lin",
+    Lao = "lao",
+    Lit = "lit",
+    Lub = "lub",
+    Lav = "lav",
+    Mlg = "mlg",
+    Mah = "mah",
+    Mri = "mri",
+    Mkd = "mkd",
+    Msa = "msa",
+    Mlt = "mlt",
+    Mya = "mya",
+    Nob = "nob",
+    Nep = "nep",
+    Nld = "nld",
+    Nno = "nno",
+    Nor = "nor",
+    Nbl = "nbl",
+    Nya = "nya",
+    Pan = "pan",
+    Pol = "pol",
+    Pus = "pus",
+    Por = "por",
+    Rar = "rar",
+    Roh = "roh",
+    Rup = "rup",
+    Ron = "ron",
+    Rus = "rus",
+    Kin = "kin",
+    Sag = "sag",
+    Sin = "sin",
+    Slk = "slk",
+    Smo = "smo",
+    Sna = "sna",
+    Som = "som",
+    Sqi = "sqi",
+    Srp = "srp",
+    Ssw = "ssw",
+    Swe = "swe",
+    Swa = "swa",
+    Tam = "tam",
+    Tgk = "tgk",
+    Tha = "tha",
+    Tir = "tir",
+    Tig = "tig",
+    UnmappedValue = "unmapped_value",
+}
+
+/**
+ * The employee preferred language
+ */
+export type PreferredLanguage = {
+    sourceValue?: EmployeeSchemasPreferredLanguage4 | string | number | boolean | null | undefined;
+    /**
+     * The ISO639-2 Code of the language
+     */
+    value?: EmployeeSchemasPreferredLanguageValue | null | undefined;
+};
+
 export type EmployeeSchemasWorkLocation4 = {};
 
 export type EmployeeSchemasWorkLocationSourceValue =
@@ -1087,6 +1210,10 @@ export type Employee = {
      * The employee personal phone number
      */
     personalPhoneNumber?: string | null | undefined;
+    /**
+     * The employee preferred language
+     */
+    preferredLanguage?: PreferredLanguage | null | undefined;
     /**
      * The employee start date
      */
@@ -2228,6 +2355,124 @@ export namespace MaritalStatus$ {
 }
 
 /** @internal */
+export namespace EmployeeSchemasPreferredLanguage4$ {
+    export type Inbound = {};
+
+    export const inboundSchema: z.ZodType<
+        EmployeeSchemasPreferredLanguage4,
+        z.ZodTypeDef,
+        Inbound
+    > = z.object({});
+
+    export type Outbound = {};
+
+    export const outboundSchema: z.ZodType<
+        Outbound,
+        z.ZodTypeDef,
+        EmployeeSchemasPreferredLanguage4
+    > = z.object({});
+}
+
+/** @internal */
+export namespace EmployeeSchemasPreferredLanguageSourceValue$ {
+    export type Inbound = EmployeeSchemasPreferredLanguage4$.Inbound | string | number | boolean;
+
+    export type Outbound = EmployeeSchemasPreferredLanguage4$.Outbound | string | number | boolean;
+    export const inboundSchema: z.ZodType<
+        EmployeeSchemasPreferredLanguageSourceValue,
+        z.ZodTypeDef,
+        Inbound
+    > = z.union([
+        z.lazy(() => EmployeeSchemasPreferredLanguage4$.inboundSchema),
+        z.string(),
+        z.number(),
+        z.boolean(),
+    ]);
+    export const outboundSchema: z.ZodType<
+        Outbound,
+        z.ZodTypeDef,
+        EmployeeSchemasPreferredLanguageSourceValue
+    > = z.union([
+        z.lazy(() => EmployeeSchemasPreferredLanguage4$.outboundSchema),
+        z.string(),
+        z.number(),
+        z.boolean(),
+    ]);
+}
+
+/** @internal */
+export const EmployeeSchemasPreferredLanguageValue$ = z.nativeEnum(
+    EmployeeSchemasPreferredLanguageValue
+);
+
+/** @internal */
+export namespace PreferredLanguage$ {
+    export type Inbound = {
+        source_value?:
+            | EmployeeSchemasPreferredLanguage4$.Inbound
+            | string
+            | number
+            | boolean
+            | null
+            | undefined;
+        value?: EmployeeSchemasPreferredLanguageValue | null | undefined;
+    };
+
+    export const inboundSchema: z.ZodType<PreferredLanguage, z.ZodTypeDef, Inbound> = z
+        .object({
+            source_value: z
+                .nullable(
+                    z.union([
+                        z.lazy(() => EmployeeSchemasPreferredLanguage4$.inboundSchema),
+                        z.string(),
+                        z.number(),
+                        z.boolean(),
+                    ])
+                )
+                .optional(),
+            value: z.nullable(EmployeeSchemasPreferredLanguageValue$).optional(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.source_value === undefined ? null : { sourceValue: v.source_value }),
+                ...(v.value === undefined ? null : { value: v.value }),
+            };
+        });
+
+    export type Outbound = {
+        source_value?:
+            | EmployeeSchemasPreferredLanguage4$.Outbound
+            | string
+            | number
+            | boolean
+            | null
+            | undefined;
+        value?: EmployeeSchemasPreferredLanguageValue | null | undefined;
+    };
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, PreferredLanguage> = z
+        .object({
+            sourceValue: z
+                .nullable(
+                    z.union([
+                        z.lazy(() => EmployeeSchemasPreferredLanguage4$.outboundSchema),
+                        z.string(),
+                        z.number(),
+                        z.boolean(),
+                    ])
+                )
+                .optional(),
+            value: z.nullable(EmployeeSchemasPreferredLanguageValue$).optional(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.sourceValue === undefined ? null : { source_value: v.sourceValue }),
+                ...(v.value === undefined ? null : { value: v.value }),
+            };
+        });
+}
+
+/** @internal */
 export namespace EmployeeSchemasWorkLocation4$ {
     export type Inbound = {};
 
@@ -2618,6 +2863,7 @@ export namespace Employee$ {
         name?: string | null | undefined;
         personal_email?: string | null | undefined;
         personal_phone_number?: string | null | undefined;
+        preferred_language?: PreferredLanguage$.Inbound | null | undefined;
         start_date?: string | null | undefined;
         tenure?: number | null | undefined;
         termination_date?: string | null | undefined;
@@ -2691,6 +2937,9 @@ export namespace Employee$ {
             name: z.nullable(z.string()).optional(),
             personal_email: z.nullable(z.string()).optional(),
             personal_phone_number: z.nullable(z.string()).optional(),
+            preferred_language: z
+                .nullable(z.lazy(() => PreferredLanguage$.inboundSchema))
+                .optional(),
             start_date: z
                 .nullable(
                     z
@@ -2767,6 +3016,9 @@ export namespace Employee$ {
                 ...(v.personal_phone_number === undefined
                     ? null
                     : { personalPhoneNumber: v.personal_phone_number }),
+                ...(v.preferred_language === undefined
+                    ? null
+                    : { preferredLanguage: v.preferred_language }),
                 ...(v.start_date === undefined ? null : { startDate: v.start_date }),
                 ...(v.tenure === undefined ? null : { tenure: v.tenure }),
                 ...(v.termination_date === undefined
@@ -2816,6 +3068,7 @@ export namespace Employee$ {
         name?: string | null | undefined;
         personal_email?: string | null | undefined;
         personal_phone_number?: string | null | undefined;
+        preferred_language?: PreferredLanguage$.Outbound | null | undefined;
         start_date?: string | null | undefined;
         tenure?: number | null | undefined;
         termination_date?: string | null | undefined;
@@ -2861,6 +3114,9 @@ export namespace Employee$ {
             name: z.nullable(z.string()).optional(),
             personalEmail: z.nullable(z.string()).optional(),
             personalPhoneNumber: z.nullable(z.string()).optional(),
+            preferredLanguage: z
+                .nullable(z.lazy(() => PreferredLanguage$.outboundSchema))
+                .optional(),
             startDate: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
             tenure: z.nullable(z.number()).optional(),
             terminationDate: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
@@ -2909,6 +3165,9 @@ export namespace Employee$ {
                 ...(v.personalPhoneNumber === undefined
                     ? null
                     : { personal_phone_number: v.personalPhoneNumber }),
+                ...(v.preferredLanguage === undefined
+                    ? null
+                    : { preferred_language: v.preferredLanguage }),
                 ...(v.startDate === undefined ? null : { start_date: v.startDate }),
                 ...(v.tenure === undefined ? null : { tenure: v.tenure }),
                 ...(v.terminationDate === undefined
