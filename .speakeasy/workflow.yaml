@@ -12,6 +12,8 @@ targets:
     StackOneTypeScriptClient:
         target: typescript
         source: my-source
+        codeSamples:
+            output: codeSamples.yaml
         publish:
             npm:
                 token: $NPM_TOKEN
