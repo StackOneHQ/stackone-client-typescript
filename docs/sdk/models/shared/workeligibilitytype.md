@@ -1,9 +1,0 @@
-# WorkEligibilityType
-
-
-## Fields
-
-| Field                                                                                           | Type                                                                                            | Required                                                                                        | Description                                                                                     |
-| ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
-| `sourceType`                                                                                    | *shared.WorkEligibilitySourceType*                                                              | :heavy_minus_sign:                                                                              | N/A                                                                                             |
-| `value`                                                                                         | [shared.WorkEligibilitySchemasValue](../../../sdk/models/shared/workeligibilityschemasvalue.md) | :heavy_minus_sign:                                                                              | N/A                                                                                             |
