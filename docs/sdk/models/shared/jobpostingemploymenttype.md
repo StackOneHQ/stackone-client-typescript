@@ -1,9 +1,0 @@
-# JobPostingEmploymentType
-
-
-## Fields
-
-| Field                                                                                 | Type                                                                                  | Required                                                                              | Description                                                                           | Example                                                                               |
-| ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
-| `sourceValue`                                                                         | *shared.JobPostingSchemasSourceValue*                                                 | :heavy_minus_sign:                                                                    | The source value of the employment type.                                              | Permanent                                                                             |
-| `value`                                                                               | [shared.JobPostingSchemasValue](../../../sdk/models/shared/jobpostingschemasvalue.md) | :heavy_minus_sign:                                                                    | The type of the employment.                                                           | permanent                                                                             |
