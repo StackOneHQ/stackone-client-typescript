@@ -1,0 +1,95 @@
+# Connectors
+(*connectors*)
+
+### Available Operations
+
+* [getConnectorMeta](#getconnectormeta) - Get Connector Meta information for the given provider key
+* [listConnectorsMeta](#listconnectorsmeta) - List Connectors Meta Information for all providers
+
+## getConnectorMeta
+
+Get Connector Meta information for the given provider key
+
+### Example Usage
+
+```typescript
+import { StackOne } from "@stackone/stackone-client-ts";
+
+async function run() {
+  const sdk = new StackOne({
+    security: {
+      password: "<YOUR_PASSWORD_HERE>",
+    },
+  });
+
+  const result = await sdk.connectors.getConnectorMeta({
+    provider: "<value>",
+  });
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.StackoneGetConnectorMetaRequest](../../sdk/models/operations/stackonegetconnectormetarequest.md)                                                                   | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+
+
+### Response
+
+**Promise<[operations.StackoneGetConnectorMetaResponse](../../sdk/models/operations/stackonegetconnectormetaresponse.md)>**
+### Errors
+
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
+
+## listConnectorsMeta
+
+List Connectors Meta Information for all providers
+
+### Example Usage
+
+```typescript
+import { StackOne } from "@stackone/stackone-client-ts";
+
+async function run() {
+  const sdk = new StackOne({
+    security: {
+      password: "<YOUR_PASSWORD_HERE>",
+    },
+  });
+
+  const result = await sdk.connectors.listConnectorsMeta({});
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.StackoneListConnectorsMetaRequest](../../sdk/models/operations/stackonelistconnectorsmetarequest.md)                                                               | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+
+
+### Response
+
+**Promise<[operations.StackoneListConnectorsMetaResponse](../../sdk/models/operations/stackonelistconnectorsmetaresponse.md)>**
+### Errors
+
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |

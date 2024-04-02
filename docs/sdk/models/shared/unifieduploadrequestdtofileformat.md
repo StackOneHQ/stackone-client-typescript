@@ -1,0 +1,11 @@
+# UnifiedUploadRequestDtoFileFormat
+
+The file format of the file
+
+
+## Fields
+
+| Field                                                                                                           | Type                                                                                                            | Required                                                                                                        | Description                                                                                                     | Example                                                                                                         |
+| --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
+| `sourceValue`                                                                                                   | *shared.UnifiedUploadRequestDtoSchemasSourceValue*                                                              | :heavy_minus_sign:                                                                                              | N/A                                                                                                             | abc                                                                                                             |
+| `value`                                                                                                         | [shared.UnifiedUploadRequestDtoSchemasValue](../../../sdk/models/shared/unifieduploadrequestdtoschemasvalue.md) | :heavy_minus_sign:                                                                                              | N/A                                                                                                             | pdf                                                                                                             |

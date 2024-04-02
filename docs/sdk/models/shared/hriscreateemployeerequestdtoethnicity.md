@@ -1,0 +1,11 @@
+# HrisCreateEmployeeRequestDtoEthnicity
+
+The employee ethnicity
+
+
+## Fields
+
+| Field                                                                                                                                       | Type                                                                                                                                        | Required                                                                                                                                    | Description                                                                                                                                 |
+| ------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| `sourceValue`                                                                                                                               | *shared.HrisCreateEmployeeRequestDtoSchemasEthnicitySourceValue*                                                                            | :heavy_minus_sign:                                                                                                                          | N/A                                                                                                                                         |
+| `value`                                                                                                                                     | [shared.HrisCreateEmployeeRequestDtoSchemasEthnicityValue](../../../sdk/models/shared/hriscreateemployeerequestdtoschemasethnicityvalue.md) | :heavy_minus_sign:                                                                                                                          | N/A                                                                                                                                         |
