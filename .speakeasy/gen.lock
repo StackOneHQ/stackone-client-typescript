@@ -5,8 +5,8 @@ management:
   docVersion: 1.0.0
   speakeasyVersion: 1.232.0
   generationVersion: 2.295.1
-  releaseVersion: 4.4.1
-  configChecksum: 2bc9e49d54e72aa0dc5e406a5e2bb3db
+  releaseVersion: 4.4.2
+  configChecksum: c02de2d615284605994adc4d22bf6a87
   repoURL: https://github.com/StackOneHQ/stackone-client-typescript.git
   repoSubDirectory: .
   installationURL: https://github.com/StackOneHQ/stackone-client-typescript
