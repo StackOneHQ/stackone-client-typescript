@@ -30,7 +30,7 @@ export type HrisUploadEmployeeDocumentResponse = {
     /**
      * The document related to the employee with the given identifier was uploaded.
      */
-    stream?: ReadableStream<Uint8Array> | undefined;
+    writeResultApiModel?: shared.WriteResultApiModel | undefined;
 };
 
 /** @internal */
@@ -90,7 +90,7 @@ export namespace HrisUploadEmployeeDocumentResponse$ {
         ContentType: string;
         StatusCode: number;
         RawResponse: Response;
-        stream?: ReadableStream<Uint8Array> | undefined;
+        WriteResultApiModel?: shared.WriteResultApiModel$.Inbound | undefined;
     };
 
     export const inboundSchema: z.ZodType<
@@ -102,14 +102,16 @@ export namespace HrisUploadEmployeeDocumentResponse$ {
             ContentType: z.string(),
             StatusCode: z.number().int(),
             RawResponse: z.instanceof(Response),
-            stream: z.instanceof(ReadableStream<Uint8Array>).optional(),
+            WriteResultApiModel: shared.WriteResultApiModel$.inboundSchema.optional(),
         })
         .transform((v) => {
             return {
                 contentType: v.ContentType,
                 statusCode: v.StatusCode,
                 rawResponse: v.RawResponse,
-                ...(v.stream === undefined ? null : { stream: v.stream }),
+                ...(v.WriteResultApiModel === undefined
+                    ? null
+                    : { writeResultApiModel: v.WriteResultApiModel }),
             };
         });
 
@@ -117,7 +119,7 @@ export namespace HrisUploadEmployeeDocumentResponse$ {
         ContentType: string;
         StatusCode: number;
         RawResponse: never;
-        stream?: ReadableStream<Uint8Array> | undefined;
+        WriteResultApiModel?: shared.WriteResultApiModel$.Outbound | undefined;
     };
 
     export const outboundSchema: z.ZodType<
@@ -131,14 +133,16 @@ export namespace HrisUploadEmployeeDocumentResponse$ {
             rawResponse: z.instanceof(Response).transform(() => {
                 throw new Error("Response cannot be serialized");
             }),
-            stream: z.instanceof(ReadableStream<Uint8Array>).optional(),
+            writeResultApiModel: shared.WriteResultApiModel$.outboundSchema.optional(),
         })
         .transform((v) => {
             return {
                 ContentType: v.contentType,
                 StatusCode: v.statusCode,
                 RawResponse: v.rawResponse,
-                ...(v.stream === undefined ? null : { stream: v.stream }),
+                ...(v.writeResultApiModel === undefined
+                    ? null
+                    : { WriteResultApiModel: v.writeResultApiModel }),
             };
         });
 }

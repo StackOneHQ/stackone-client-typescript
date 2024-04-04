@@ -34,7 +34,7 @@ export type HrisGetEmployeeDocumentResponse = {
     /**
      * The document related to the employee with the given identifiers was retrieved.
      */
-    documentResult?: shared.DocumentResult | undefined;
+    hrisDocumentResult?: shared.HrisDocumentResult | undefined;
     /**
      * HTTP response status code for this operation
      */
@@ -111,7 +111,7 @@ export namespace HrisGetEmployeeDocumentRequest$ {
 export namespace HrisGetEmployeeDocumentResponse$ {
     export type Inbound = {
         ContentType: string;
-        DocumentResult?: shared.DocumentResult$.Inbound | undefined;
+        HrisDocumentResult?: shared.HrisDocumentResult$.Inbound | undefined;
         StatusCode: number;
         RawResponse: Response;
     };
@@ -120,16 +120,16 @@ export namespace HrisGetEmployeeDocumentResponse$ {
         z
             .object({
                 ContentType: z.string(),
-                DocumentResult: shared.DocumentResult$.inboundSchema.optional(),
+                HrisDocumentResult: shared.HrisDocumentResult$.inboundSchema.optional(),
                 StatusCode: z.number().int(),
                 RawResponse: z.instanceof(Response),
             })
             .transform((v) => {
                 return {
                     contentType: v.ContentType,
-                    ...(v.DocumentResult === undefined
+                    ...(v.HrisDocumentResult === undefined
                         ? null
-                        : { documentResult: v.DocumentResult }),
+                        : { hrisDocumentResult: v.HrisDocumentResult }),
                     statusCode: v.StatusCode,
                     rawResponse: v.RawResponse,
                 };
@@ -137,7 +137,7 @@ export namespace HrisGetEmployeeDocumentResponse$ {
 
     export type Outbound = {
         ContentType: string;
-        DocumentResult?: shared.DocumentResult$.Outbound | undefined;
+        HrisDocumentResult?: shared.HrisDocumentResult$.Outbound | undefined;
         StatusCode: number;
         RawResponse: never;
     };
@@ -149,7 +149,7 @@ export namespace HrisGetEmployeeDocumentResponse$ {
     > = z
         .object({
             contentType: z.string(),
-            documentResult: shared.DocumentResult$.outboundSchema.optional(),
+            hrisDocumentResult: shared.HrisDocumentResult$.outboundSchema.optional(),
             statusCode: z.number().int(),
             rawResponse: z.instanceof(Response).transform(() => {
                 throw new Error("Response cannot be serialized");
@@ -158,7 +158,9 @@ export namespace HrisGetEmployeeDocumentResponse$ {
         .transform((v) => {
             return {
                 ContentType: v.contentType,
-                ...(v.documentResult === undefined ? null : { DocumentResult: v.documentResult }),
+                ...(v.hrisDocumentResult === undefined
+                    ? null
+                    : { HrisDocumentResult: v.hrisDocumentResult }),
                 StatusCode: v.statusCode,
                 RawResponse: v.rawResponse,
             };

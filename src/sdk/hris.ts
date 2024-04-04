@@ -129,99 +129,6 @@ export class Hris extends ClientSDK {
     }
 
     /**
-     * Create Employee Document
-     */
-    async createEmployeeDocument(
-        input: operations.HrisCreateEmployeeDocumentRequest,
-        options?: RequestOptions
-    ): Promise<operations.HrisCreateEmployeeDocumentResponse> {
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Content-Type", "application/json");
-        headers$.set("Accept", "application/json");
-
-        const payload$ = schemas$.parse(
-            input,
-            (value$) => operations.HrisCreateEmployeeDocumentRequest$.outboundSchema.parse(value$),
-            "Input validation failed"
-        );
-        const body$ = enc$.encodeJSON("body", payload$.HrisCreateDocumentRequestDto, {
-            explode: true,
-        });
-
-        const pathParams$ = {
-            id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
-        };
-        const path$ = this.templateURLComponent("/unified/hris/employees/{id}/documents")(
-            pathParams$
-        );
-
-        const query$ = "";
-
-        headers$.set(
-            "x-account-id",
-            enc$.encodeSimple("x-account-id", payload$["x-account-id"], {
-                explode: false,
-                charEncoding: "none",
-            })
-        );
-
-        const security$ =
-            typeof this.options$.security === "function"
-                ? await this.options$.security()
-                : this.options$.security;
-
-        const context = {
-            operationID: "hris_create_employee_document",
-            oAuth2Scopes: [],
-            securitySource: this.options$.security,
-        };
-        const securitySettings$ = this.resolveGlobalSecurity(security$);
-
-        const doOptions = {
-            context,
-            errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
-        };
-        const request = this.createRequest$(
-            {
-                security: securitySettings$,
-                method: "POST",
-                path: path$,
-                headers: headers$,
-                query: query$,
-                body: body$,
-            },
-            options
-        );
-
-        const response = await this.do$(request, doOptions);
-
-        const responseFields$ = {
-            ContentType: response.headers.get("content-type") ?? "application/octet-stream",
-            StatusCode: response.status,
-            RawResponse: response,
-        };
-
-        if (this.matchResponse(response, 201, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return operations.HrisCreateEmployeeDocumentResponse$.inboundSchema.parse({
-                        ...responseFields$,
-                        CreateDocumentResult: val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            return result;
-        } else {
-            const responseBody = await response.text();
-            throw new errors.SDKError("Unexpected API response", response, responseBody);
-        }
-    }
-
-    /**
      * Create Employee Time Off Request
      */
     async createEmployeeTimeOffRequest(
@@ -977,7 +884,7 @@ export class Hris extends ClientSDK {
                 (val$) => {
                     return operations.HrisGetEmployeeDocumentResponse$.inboundSchema.parse({
                         ...responseFields$,
-                        DocumentResult: val$,
+                        HrisDocumentResult: val$,
                     });
                 },
                 "Response validation failed"
@@ -1769,7 +1676,7 @@ export class Hris extends ClientSDK {
                 (val$) => {
                     return operations.HrisListEmployeeDocumentsResponse$.inboundSchema.parse({
                         ...responseFields$,
-                        DocumentsPaginated: val$,
+                        HrisDocumentsPaginated: val$,
                     });
                 },
                 "Response validation failed"
@@ -2778,13 +2685,13 @@ export class Hris extends ClientSDK {
         };
 
         if (this.matchResponse(response, 200, "application/json")) {
-            const responseBody = response.body ?? undefined;
+            const responseBody = await response.json();
             const result = schemas$.parse(
                 responseBody,
                 (val$) => {
                     return operations.HrisUploadEmployeeDocumentResponse$.inboundSchema.parse({
                         ...responseFields$,
-                        stream: val$,
+                        WriteResultApiModel: val$,
                     });
                 },
                 "Response validation failed"

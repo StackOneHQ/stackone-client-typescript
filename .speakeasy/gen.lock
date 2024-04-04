@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 7fa83af8-9e8e-4410-b7e2-cf1d0eaf688b
 management:
-  docChecksum: 5032fb6e5c911361e56ebf23285f3632
+  docChecksum: e72a5c5ae8c9d8bc38b91969bd17e821
   docVersion: 1.0.0
-  speakeasyVersion: 1.232.3
-  generationVersion: 2.295.3
-  releaseVersion: 4.4.2
-  configChecksum: c02de2d615284605994adc4d22bf6a87
+  speakeasyVersion: 1.237.0
+  generationVersion: 2.298.2
+  releaseVersion: 4.4.3
+  configChecksum: b9d4f6c0f3fb946ffe0577321eee791b
   repoURL: https://github.com/StackOneHQ/stackone-client-typescript.git
   repoSubDirectory: .
   installationURL: https://github.com/StackOneHQ/stackone-client-typescript
@@ -21,7 +21,7 @@ features:
     globalSecurity: 2.82.9
     globalServerURLs: 2.82.4
     groups: 2.81.2
-    nameOverrides: 2.81.1
+    nameOverrides: 2.81.2
     pagination: 2.82.2
     responseFormat: 0.2.3
     unions: 2.85.3
@@ -113,7 +113,6 @@ generatedFiles:
   - src/sdk/models/operations/crmlistlists.ts
   - src/sdk/models/operations/crmupdatecontact.ts
   - src/sdk/models/operations/hriscreateemployee.ts
-  - src/sdk/models/operations/hriscreateemployeedocument.ts
   - src/sdk/models/operations/hriscreateemployeetimeoffrequest.ts
   - src/sdk/models/operations/hriscreateemployeeworkeligibilityrequest.ts
   - src/sdk/models/operations/hriscreatetimeoffrequest.ts
@@ -192,10 +191,11 @@ generatedFiles:
   - src/sdk/models/shared/application.ts
   - src/sdk/models/shared/resultlink.ts
   - src/sdk/models/shared/rejectedreason.ts
-  - src/sdk/models/shared/documentapimodel.ts
+  - src/sdk/models/shared/atsdocumentapimodel.ts
   - src/sdk/models/shared/content.ts
   - src/sdk/models/shared/applicationattachment.ts
-  - src/sdk/models/shared/documentresult.ts
+  - src/sdk/models/shared/hrisdocumentresult.ts
+  - src/sdk/models/shared/hrisdocumentapimodel.ts
   - src/sdk/models/shared/offersresult.ts
   - src/sdk/models/shared/offer.ts
   - src/sdk/models/shared/noteresult.ts
@@ -223,7 +223,7 @@ generatedFiles:
   - src/sdk/models/shared/rejectedreasonresult.ts
   - src/sdk/models/shared/userresult.ts
   - src/sdk/models/shared/user.ts
-  - src/sdk/models/shared/documentspaginated.ts
+  - src/sdk/models/shared/hrisdocumentspaginated.ts
   - src/sdk/models/shared/scorecardspaginated.ts
   - src/sdk/models/shared/scorecard.ts
   - src/sdk/models/shared/scorecardsection.ts
@@ -260,8 +260,6 @@ generatedFiles:
   - src/sdk/models/shared/employeecustomfields.ts
   - src/sdk/models/shared/countrycodeenum.ts
   - src/sdk/models/shared/hrisbenefit.ts
-  - src/sdk/models/shared/createdocumentresult.ts
-  - src/sdk/models/shared/hriscreatedocumentrequestdto.ts
   - src/sdk/models/shared/createtimeoffresult.ts
   - src/sdk/models/shared/hriscreatetimeoffrequestdto.ts
   - src/sdk/models/shared/createworkeligibilityresult.ts
@@ -286,6 +284,8 @@ generatedFiles:
   - src/sdk/models/shared/employeespaginated.ts
   - src/sdk/models/shared/employmentspaginated.ts
   - src/sdk/models/shared/hrislocationspaginated.ts
+  - src/sdk/models/shared/writeresultapimodel.ts
+  - src/sdk/models/shared/providererrorapimodel.ts
   - src/sdk/models/shared/unifieduploadrequestdto.ts
   - src/sdk/models/shared/iamgroupresult.ts
   - src/sdk/models/shared/iamgroup.ts
@@ -429,8 +429,6 @@ generatedFiles:
   - docs/sdk/models/operations/crmupdatecontactresponse.md
   - docs/sdk/models/operations/hriscreateemployeerequest.md
   - docs/sdk/models/operations/hriscreateemployeeresponse.md
-  - docs/sdk/models/operations/hriscreateemployeedocumentrequest.md
-  - docs/sdk/models/operations/hriscreateemployeedocumentresponse.md
   - docs/sdk/models/operations/hriscreateemployeetimeoffrequestrequest.md
   - docs/sdk/models/operations/hriscreateemployeetimeoffrequestresponse.md
   - docs/sdk/models/operations/hriscreateemployeeworkeligibilityrequestrequest.md
@@ -596,11 +594,11 @@ generatedFiles:
   - docs/sdk/models/shared/rejectedreasonvalue.md
   - docs/sdk/models/shared/rejectedreasontype.md
   - docs/sdk/models/shared/rejectedreason.md
-  - docs/sdk/models/shared/documentapimodel4.md
-  - docs/sdk/models/shared/documentapimodelsourcevalue.md
-  - docs/sdk/models/shared/documentapimodelvalue.md
-  - docs/sdk/models/shared/documentapimodeltype.md
-  - docs/sdk/models/shared/documentapimodel.md
+  - docs/sdk/models/shared/atsdocumentapimodel4.md
+  - docs/sdk/models/shared/atsdocumentapimodelsourcevalue.md
+  - docs/sdk/models/shared/atsdocumentapimodelvalue.md
+  - docs/sdk/models/shared/atsdocumentapimodeltype.md
+  - docs/sdk/models/shared/atsdocumentapimodel.md
   - docs/sdk/models/shared/content4.md
   - docs/sdk/models/shared/contentsourcevalue.md
   - docs/sdk/models/shared/contentvalue.md
@@ -611,7 +609,12 @@ generatedFiles:
   - docs/sdk/models/shared/applicationattachmentvalue.md
   - docs/sdk/models/shared/contenttype.md
   - docs/sdk/models/shared/applicationattachment.md
-  - docs/sdk/models/shared/documentresult.md
+  - docs/sdk/models/shared/hrisdocumentresult.md
+  - docs/sdk/models/shared/hrisdocumentapimodel4.md
+  - docs/sdk/models/shared/hrisdocumentapimodelsourcevalue.md
+  - docs/sdk/models/shared/hrisdocumentapimodelvalue.md
+  - docs/sdk/models/shared/hrisdocumentapimodeltype.md
+  - docs/sdk/models/shared/hrisdocumentapimodel.md
   - docs/sdk/models/shared/offersresult.md
   - docs/sdk/models/shared/offer4.md
   - docs/sdk/models/shared/offersourcevalue.md
@@ -687,7 +690,7 @@ generatedFiles:
   - docs/sdk/models/shared/rejectedreasonresult.md
   - docs/sdk/models/shared/userresult.md
   - docs/sdk/models/shared/user.md
-  - docs/sdk/models/shared/documentspaginated.md
+  - docs/sdk/models/shared/hrisdocumentspaginated.md
   - docs/sdk/models/shared/scorecardspaginated.md
   - docs/sdk/models/shared/overallrecommendation.md
   - docs/sdk/models/shared/scorecard.md
@@ -813,12 +816,6 @@ generatedFiles:
   - docs/sdk/models/shared/hrisbenefitvalue.md
   - docs/sdk/models/shared/benefittype.md
   - docs/sdk/models/shared/hrisbenefit.md
-  - docs/sdk/models/shared/createdocumentresult.md
-  - docs/sdk/models/shared/hriscreatedocumentrequestdto4.md
-  - docs/sdk/models/shared/hriscreatedocumentrequestdtosourcevalue.md
-  - docs/sdk/models/shared/hriscreatedocumentrequestdtovalue.md
-  - docs/sdk/models/shared/hriscreatedocumentrequestdtotype.md
-  - docs/sdk/models/shared/hriscreatedocumentrequestdto.md
   - docs/sdk/models/shared/createtimeoffresult.md
   - docs/sdk/models/shared/hriscreatetimeoffrequestdto4.md
   - docs/sdk/models/shared/hriscreatetimeoffrequestdtosourcevalue.md
@@ -934,6 +931,10 @@ generatedFiles:
   - docs/sdk/models/shared/employeespaginated.md
   - docs/sdk/models/shared/employmentspaginated.md
   - docs/sdk/models/shared/hrislocationspaginated.md
+  - docs/sdk/models/shared/writeresultapimodel.md
+  - docs/sdk/models/shared/headers.md
+  - docs/sdk/models/shared/raw.md
+  - docs/sdk/models/shared/providererrorapimodel.md
   - docs/sdk/models/shared/unifieduploadrequestdto4.md
   - docs/sdk/models/shared/unifieduploadrequestdtosourcevalue.md
   - docs/sdk/models/shared/unifieduploadrequestdtovalue.md

@@ -127,7 +127,6 @@ run();
 ### [hris](docs/sdks/hris/README.md)
 
 * [createEmployee](docs/sdks/hris/README.md#createemployee) - Creates an employee
-* [createEmployeeDocument](docs/sdks/hris/README.md#createemployeedocument) - Create Employee Document
 * [createEmployeeTimeOffRequest](docs/sdks/hris/README.md#createemployeetimeoffrequest) - Create Employee Time Off Request
 * [createEmployeeWorkEligibilityRequest](docs/sdks/hris/README.md#createemployeeworkeligibilityrequest) - Create Employee Work Eligibility Request
 * [createTimeOffRequest](docs/sdks/hris/README.md#createtimeoffrequest) - Creates a time off request

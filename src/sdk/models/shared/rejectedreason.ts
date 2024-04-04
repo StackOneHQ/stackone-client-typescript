@@ -49,6 +49,8 @@ export type RejectedReason = {
     remoteId?: string | null | undefined;
     /**
      * The string type of the rejected reason.
+     *
+     * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     type?: string | null | undefined;
 };
