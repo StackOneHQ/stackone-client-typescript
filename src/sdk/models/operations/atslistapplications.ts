@@ -15,6 +15,10 @@ export type AtsListApplicationsRequest = {
      */
     fields?: string | null | undefined;
     /**
+     * Filter for job ID to retrieve a list of applications related to this job
+     */
+    jobId?: string | null | undefined;
+    /**
      * The unified cursor
      */
     next?: string | null | undefined;
@@ -76,6 +80,7 @@ export namespace AtsListApplicationsRequest$ {
     export type Inbound = {
         expand?: string | null | undefined;
         fields?: string | null | undefined;
+        job_id?: string | null | undefined;
         next?: string | null | undefined;
         page?: string | null | undefined;
         page_size?: string | null | undefined;
@@ -90,6 +95,7 @@ export namespace AtsListApplicationsRequest$ {
         .object({
             expand: z.nullable(z.string()).optional(),
             fields: z.nullable(z.string()).optional(),
+            job_id: z.nullable(z.string()).optional(),
             next: z.nullable(z.string()).optional(),
             page: z.nullable(z.string()).optional(),
             page_size: z.nullable(z.string().default("25")),
@@ -103,6 +109,7 @@ export namespace AtsListApplicationsRequest$ {
             return {
                 ...(v.expand === undefined ? null : { expand: v.expand }),
                 ...(v.fields === undefined ? null : { fields: v.fields }),
+                ...(v.job_id === undefined ? null : { jobId: v.job_id }),
                 ...(v.next === undefined ? null : { next: v.next }),
                 ...(v.page === undefined ? null : { page: v.page }),
                 pageSize: v.page_size,
@@ -117,6 +124,7 @@ export namespace AtsListApplicationsRequest$ {
     export type Outbound = {
         expand?: string | null | undefined;
         fields?: string | null | undefined;
+        job_id?: string | null | undefined;
         next?: string | null | undefined;
         page?: string | null | undefined;
         page_size: string | null;
@@ -131,6 +139,7 @@ export namespace AtsListApplicationsRequest$ {
         .object({
             expand: z.nullable(z.string()).optional(),
             fields: z.nullable(z.string()).optional(),
+            jobId: z.nullable(z.string()).optional(),
             next: z.nullable(z.string()).optional(),
             page: z.nullable(z.string()).optional(),
             pageSize: z.nullable(z.string().default("25")),
@@ -144,6 +153,7 @@ export namespace AtsListApplicationsRequest$ {
             return {
                 ...(v.expand === undefined ? null : { expand: v.expand }),
                 ...(v.fields === undefined ? null : { fields: v.fields }),
+                ...(v.jobId === undefined ? null : { job_id: v.jobId }),
                 ...(v.next === undefined ? null : { next: v.next }),
                 ...(v.page === undefined ? null : { page: v.page }),
                 page_size: v.pageSize,

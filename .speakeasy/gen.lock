@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 7fa83af8-9e8e-4410-b7e2-cf1d0eaf688b
 management:
-  docChecksum: e72a5c5ae8c9d8bc38b91969bd17e821
+  docChecksum: de763a21ff1e7256895b52214b5c1bb9
   docVersion: 1.0.0
   speakeasyVersion: 1.237.0
   generationVersion: 2.298.2
-  releaseVersion: 4.4.3
-  configChecksum: b9d4f6c0f3fb946ffe0577321eee791b
+  releaseVersion: 4.4.4
+  configChecksum: d942062c2a05d15f8ed9525441b224d8
   repoURL: https://github.com/StackOneHQ/stackone-client-typescript.git
   repoSubDirectory: .
   installationURL: https://github.com/StackOneHQ/stackone-client-typescript
@@ -529,6 +529,7 @@ generatedFiles:
   - docs/sdk/models/operations/stackoneproxyrequestresponse.md
   - docs/sdk/models/shared/credentials.md
   - docs/sdk/models/shared/setupinformation.md
+  - docs/sdk/models/shared/linkedaccountstatus.md
   - docs/sdk/models/shared/linkedaccount.md
   - docs/sdk/models/shared/linkedaccountmetacategory.md
   - docs/sdk/models/shared/linkedaccountmeta.md
