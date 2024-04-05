@@ -2172,6 +2172,7 @@ export class Ats extends ClientSDK {
         const query$ = [
             enc$.encodeForm("expand", payload$.expand, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("fields", payload$.fields, { explode: true, charEncoding: "percent" }),
+            enc$.encodeForm("job_id", payload$.job_id, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("next", payload$.next, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("page", payload$.page, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("page_size", payload$.page_size, {

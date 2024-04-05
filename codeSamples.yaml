@@ -3,11 +3,11 @@ info:
   title: CodeSamples overlay for typescript target
   version: 0.0.0
 actions:
-  - target: $["paths"]["/unified/ats/applications/{id}"]["get"]
+  - target: $["paths"]["/unified/hris/companies"]["get"]
     update:
       x-codeSamples:
         - lang: typescript
-          label: ats_get_application
+          label: hris_list_companies
           source: |-
             import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -18,7 +18,100 @@ actions:
                 },
               });
 
-              const result = await sdk.getApplication({
+              const result = await sdk.listCompanies({
+                proxy: {
+                  "key": "<value>",
+                },
+                xAccountId: "<value>",
+              });
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/unified/hris/employees/{id}/time_off"]["post"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: hris_create_employee_time_off_request
+          source: |-
+            import { StackOne } from "@stackone/stackone-client-ts";
+
+            async function run() {
+              const sdk = new StackOne({
+                security: {
+                  username: "<YOUR_USERNAME_HERE>",
+                },
+              });
+
+              const result = await sdk.createEmployeeTimeOffRequest({
+                id: "<id>",
+                xAccountId: "<value>",
+                hrisCreateTimeOffRequestDto: {
+                  employeeId: "1687-3",
+                  approverId: "1687-4",
+                  status: {
+                  sourceValue:     {},
+                  },
+                  type: {
+                  sourceValue: false,
+                  },
+                  startDate: new Date("2021-01-01T01:01:01.000Z"),
+                  endDate: new Date("2021-01-01T01:01:01.000Z"),
+                },
+              });
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/unified/ats/applications/{id}/scorecards/{subResourceId}"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: ats_get_application_scorecard
+          source: |-
+            import { StackOne } from "@stackone/stackone-client-ts";
+
+            async function run() {
+              const sdk = new StackOne({
+                security: {
+                  username: "<YOUR_USERNAME_HERE>",
+                },
+              });
+
+              const result = await sdk.getApplicationScorecard({
+                id: "<id>",
+                subResourceId: "<value>",
+                proxy: {
+                  "key": "<value>",
+                },
+                xAccountId: "<value>",
+              });
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/unified/ats/job_postings/{id}"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: ats_get_job_posting
+          source: |-
+            import { StackOne } from "@stackone/stackone-client-ts";
+
+            async function run() {
+              const sdk = new StackOne({
+                security: {
+                  username: "<YOUR_USERNAME_HERE>",
+                },
+              });
+
+              const result = await sdk.getJobPosting({
                 id: "<id>",
                 proxy: {
                   "key": "<value>",
@@ -31,14 +124,13 @@ actions:
             }
 
             run();
-  - target: $["paths"]["/unified/ats/candidates/{id}/notes"]["post"]
+  - target: $["paths"]["/unified/ats/offers/{id}"]["get"]
     update:
       x-codeSamples:
         - lang: typescript
-          label: ats_create_candidate_note
+          label: ats_get_offer
           source: |-
             import { StackOne } from "@stackone/stackone-client-ts";
-            import { AtsCreateNotesRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
             async function run() {
               const sdk = new StackOne({
@@ -47,20 +139,417 @@ actions:
                 },
               });
 
-              const result = await sdk.createCandidateNote({
+              const result = await sdk.getOffer({
                 id: "<id>",
+                proxy: {
+                  "key": "<value>",
+                },
                 xAccountId: "<value>",
-                atsCreateNotesRequestDto: {
-                  content: [
+              });
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/unified/iam/groups/{id}"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: iam_get_group
+          source: |-
+            import { StackOne } from "@stackone/stackone-client-ts";
+
+            async function run() {
+              const sdk = new StackOne({
+                security: {
+                  username: "<YOUR_USERNAME_HERE>",
+                },
+              });
+
+              const result = await sdk.getGroup({
+                id: "<id>",
+                proxy: {
+                  "key": "<value>",
+                },
+                xAccountId: "<value>",
+              });
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/unified/marketing/campaigns"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: marketing_list_campaigns
+          source: |-
+            import { StackOne } from "@stackone/stackone-client-ts";
+
+            async function run() {
+              const sdk = new StackOne({
+                security: {
+                  username: "<YOUR_USERNAME_HERE>",
+                },
+              });
+
+              const result = await sdk.listCampaigns({
+                proxy: {
+                  "key": "<value>",
+                },
+                xAccountId: "<value>",
+              });
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/accounts/{id}"]["patch"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: stackone_update_account
+          source: |-
+            import { StackOne } from "@stackone/stackone-client-ts";
+
+            async function run() {
+              const sdk = new StackOne({
+                security: {
+                  username: "<YOUR_USERNAME_HERE>",
+                },
+              });
+
+              const result = await sdk.updateAccount({
+                id: "<id>",
+                patchAccountDto: {},
+              });
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/unified/hris/locations/{id}"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: hris_get_location
+          source: |-
+            import { StackOne } from "@stackone/stackone-client-ts";
+
+            async function run() {
+              const sdk = new StackOne({
+                security: {
+                  username: "<YOUR_USERNAME_HERE>",
+                },
+              });
+
+              const result = await sdk.getLocation({
+                id: "<id>",
+                proxy: {
+                  "key": "<value>",
+                },
+                xAccountId: "<value>",
+              });
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/unified/ats/applications/{id}/offers"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: ats_list_applications_offers
+          source: |-
+            import { StackOne } from "@stackone/stackone-client-ts";
+
+            async function run() {
+              const sdk = new StackOne({
+                security: {
+                  username: "<YOUR_USERNAME_HERE>",
+                },
+              });
+
+              const result = await sdk.listApplicationsOffers({
+                id: "<id>",
+                proxy: {
+                  "key": "<value>",
+                },
+                xAccountId: "<value>",
+              });
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/unified/ats/applications/{id}/documents/{subResourceId}/download"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: ats_download_application_document
+          source: |-
+            import { StackOne } from "@stackone/stackone-client-ts";
+
+            async function run() {
+              const sdk = new StackOne({
+                security: {
+                  username: "<YOUR_USERNAME_HERE>",
+                },
+              });
+
+              const result = await sdk.downloadApplicationDocument({
+                id: "<id>",
+                subResourceId: "<value>",
+                xAccountId: "<value>",
+              });
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/unified/iam/roles/{id}"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: iam_get_role
+          source: |-
+            import { StackOne } from "@stackone/stackone-client-ts";
+
+            async function run() {
+              const sdk = new StackOne({
+                security: {
+                  username: "<YOUR_USERNAME_HERE>",
+                },
+              });
+
+              const result = await sdk.getRole({
+                id: "<id>",
+                proxy: {
+                  "key": "<value>",
+                },
+                xAccountId: "<value>",
+              });
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/unified/marketing/templates/email/{id}"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: marketing_get_email_template
+          source: |-
+            import { StackOne } from "@stackone/stackone-client-ts";
+
+            async function run() {
+              const sdk = new StackOne({
+                security: {
+                  username: "<YOUR_USERNAME_HERE>",
+                },
+              });
+
+              const result = await sdk.getEmailTemplate({
+                id: "<id>",
+                proxy: {
+                  "key": "<value>",
+                },
+                xAccountId: "<value>",
+              });
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/unified/marketing/templates/push/{id}"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: marketing_get_push_template
+          source: |-
+            import { StackOne } from "@stackone/stackone-client-ts";
+
+            async function run() {
+              const sdk = new StackOne({
+                security: {
+                  username: "<YOUR_USERNAME_HERE>",
+                },
+              });
+
+              const result = await sdk.getPushTemplate({
+                id: "<id>",
+                proxy: {
+                  "key": "<value>",
+                },
+                xAccountId: "<value>",
+              });
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/connect_sessions"]["post"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: stackone_create_connect_session
+          source: |-
+            import { StackOne } from "@stackone/stackone-client-ts";
+            import { Categories } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+            async function run() {
+              const sdk = new StackOne({
+                security: {
+                  username: "<YOUR_USERNAME_HERE>",
+                },
+              });
+
+              const result = await sdk.createConnectSession({
+                categories: [
+                  Categories.Ats,
+                  Categories.Hris,
+                  Categories.HrisLegacy,
+                  Categories.Crm,
+                  Categories.Iam,
+                  Categories.Marketing,
+                  Categories.Stackone,
+                ],
+                originOwnerId: "<value>",
+                originOwnerName: "<value>",
+                metadata: {},
+              });
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/unified/hris/benefits"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: hris_list_benefits
+          source: |-
+            import { StackOne } from "@stackone/stackone-client-ts";
+
+            async function run() {
+              const sdk = new StackOne({
+                security: {
+                  username: "<YOUR_USERNAME_HERE>",
+                },
+              });
+
+              const result = await sdk.listBenefits({
+                proxy: {
+                  "key": "<value>",
+                },
+                xAccountId: "<value>",
+              });
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/unified/ats/candidates"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: ats_list_candidates
+          source: |-
+            import { StackOne } from "@stackone/stackone-client-ts";
+
+            async function run() {
+              const sdk = new StackOne({
+                security: {
+                  username: "<YOUR_USERNAME_HERE>",
+                },
+              });
+
+              const result = await sdk.listCandidates({
+                proxy: {
+                  "key": "<value>",
+                },
+                xAccountId: "<value>",
+              });
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/unified/iam/users/{id}"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: iam_get_user
+          source: |-
+            import { StackOne } from "@stackone/stackone-client-ts";
+
+            async function run() {
+              const sdk = new StackOne({
+                security: {
+                  username: "<YOUR_USERNAME_HERE>",
+                },
+              });
+
+              const result = await sdk.getUser({
+                id: "<id>",
+                proxy: {
+                  "key": "<value>",
+                },
+                xAccountId: "<value>",
+              });
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/unified/marketing/templates/email"]["post"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: marketing_create_email_template
+          source: |-
+            import { StackOne } from "@stackone/stackone-client-ts";
+
+            async function run() {
+              const sdk = new StackOne({
+                security: {
+                  username: "<YOUR_USERNAME_HERE>",
+                },
+              });
+
+              const result = await sdk.createEmailTemplate({
+                xAccountId: "<value>",
+                marketingCreateEmailTemplateRequestDto: {
+                  id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+                  remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+                  tags: [
+                    "<value>",
+                  ],
+                  messages: [
                     {
-                      body: "This candidate seems like a good fit for the role",
+                      id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+                      remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+                      messageType: {
+                        value: {},
+                      sourceValue: "Email",
+                      },
+                      messageContent: {},
                     },
                   ],
-                  authorId: "1234567890",
-                  visibility: {
-                    value: AtsCreateNotesRequestDtoValue.Public,
-                  sourceValue: "Public",
-                  },
                 },
               });
 
@@ -69,11 +558,11 @@ actions:
             }
 
             run();
-  - target: $["paths"]["/unified/ats/departments/{id}"]["get"]
+  - target: $["paths"]["/unified/hris/employees/{id}/documents"]["get"]
     update:
       x-codeSamples:
         - lang: typescript
-          label: ats_get_department
+          label: hris_list_employee_documents
           source: |-
             import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -84,7 +573,7 @@ actions:
                 },
               });
 
-              const result = await sdk.getDepartment({
+              const result = await sdk.listEmployeeDocuments({
                 id: "<id>",
                 proxy: {
                   "key": "<value>",
@@ -97,11 +586,11 @@ actions:
             }
 
             run();
-  - target: $["paths"]["/unified/crm/accounts"]["get"]
+  - target: $["paths"]["/unified/ats/applications/{id}/scorecards"]["get"]
     update:
       x-codeSamples:
         - lang: typescript
-          label: crm_list_accounts
+          label: ats_list_application_scorecards
           source: |-
             import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -112,7 +601,167 @@ actions:
                 },
               });
 
-              const result = await sdk.listAccounts({
+              const result = await sdk.listApplicationScorecards({
+                id: "<id>",
+                proxy: {
+                  "key": "<value>",
+                },
+                xAccountId: "<value>",
+              });
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/unified/ats/jobs"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: ats_list_jobs
+          source: |-
+            import { StackOne } from "@stackone/stackone-client-ts";
+
+            async function run() {
+              const sdk = new StackOne({
+                security: {
+                  username: "<YOUR_USERNAME_HERE>",
+                },
+              });
+
+              const result = await sdk.listJobs({
+                proxy: {
+                  "key": "<value>",
+                },
+                xAccountId: "<value>",
+              });
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/unified/iam/users"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: iam_list_users
+          source: |-
+            import { StackOne } from "@stackone/stackone-client-ts";
+
+            async function run() {
+              const sdk = new StackOne({
+                security: {
+                  username: "<YOUR_USERNAME_HERE>",
+                },
+              });
+
+              const result = await sdk.listUsers({
+                proxy: {
+                  "key": "<value>",
+                },
+                xAccountId: "<value>",
+              });
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/accounts/{id}"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: stackone_get_account
+          source: |-
+            import { StackOne } from "@stackone/stackone-client-ts";
+
+            async function run() {
+              const sdk = new StackOne({
+                security: {
+                  username: "<YOUR_USERNAME_HERE>",
+                },
+              });
+
+              const result = await sdk.getAccount({
+                id: "<id>",
+                expandInfo: "<value>",
+              });
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/accounts/{id}"]["delete"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: stackone_delete_account
+          source: |-
+            import { StackOne } from "@stackone/stackone-client-ts";
+
+            async function run() {
+              const sdk = new StackOne({
+                security: {
+                  username: "<YOUR_USERNAME_HERE>",
+                },
+              });
+
+              const result = await sdk.deleteAccount({
+                id: "<id>",
+              });
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/unified/hris/employees/{id}/documents/{subResourceId}"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: hris_get_employee_document
+          source: |-
+            import { StackOne } from "@stackone/stackone-client-ts";
+
+            async function run() {
+              const sdk = new StackOne({
+                security: {
+                  username: "<YOUR_USERNAME_HERE>",
+                },
+              });
+
+              const result = await sdk.getEmployeeDocument({
+                id: "<id>",
+                subResourceId: "<value>",
+                proxy: {
+                  "key": "<value>",
+                },
+                xAccountId: "<value>",
+              });
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/unified/hris/locations"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: hris_list_locations
+          source: |-
+            import { StackOne } from "@stackone/stackone-client-ts";
+
+            async function run() {
+              const sdk = new StackOne({
+                security: {
+                  username: "<YOUR_USERNAME_HERE>",
+                },
+              });
+
+              const result = await sdk.listLocations({
                 proxy: {
                   "key": "<value>",
                 },
@@ -151,6 +800,194 @@ actions:
             }
 
             run();
+  - target: $["paths"]["/unified/iam/policies/{id}"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: iam_get_policy
+          source: |-
+            import { StackOne } from "@stackone/stackone-client-ts";
+
+            async function run() {
+              const sdk = new StackOne({
+                security: {
+                  username: "<YOUR_USERNAME_HERE>",
+                },
+              });
+
+              const result = await sdk.getPolicy({
+                id: "<id>",
+                proxy: {
+                  "key": "<value>",
+                },
+                xAccountId: "<value>",
+              });
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/connectors/meta"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: stackone_list_connectors_meta
+          source: |-
+            import { StackOne } from "@stackone/stackone-client-ts";
+
+            async function run() {
+              const sdk = new StackOne({
+                security: {
+                  username: "<YOUR_USERNAME_HERE>",
+                },
+              });
+
+              const result = await sdk.listConnectorsMeta({});
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/unified/hris/employees/{id}/documents/upload"]["post"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: hris_upload_employee_document
+          source: |-
+            import { StackOne } from "@stackone/stackone-client-ts";
+            import { UnifiedUploadRequestDtoSchemasValue, UnifiedUploadRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+            async function run() {
+              const sdk = new StackOne({
+                security: {
+                  username: "<YOUR_USERNAME_HERE>",
+                },
+              });
+
+              const result = await sdk.uploadEmployeeDocument({
+                id: "<id>",
+                xAccountId: "<value>",
+                unifiedUploadRequestDto: {
+                  name: "weather-forecast",
+                  fileFormat: {
+                    value: UnifiedUploadRequestDtoValue.Pdf,
+                  sourceValue: "abc",
+                  },
+                  content: "VGhpcyBpc24ndCByZWFsbHkgYSBzYW1wbGUgZmlsZSwgYnV0IG5vIG9uZSB3aWxsIGV2ZXIga25vdyE",
+                  path: "reports or /path/to/file",
+                  confidential: {
+                    value: UnifiedUploadRequestDtoSchemasValue.True,
+                  sourceValue: "public",
+                  },
+                },
+              });
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/unified/hris/time_off/{id}"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: hris_get_time_off_request
+          source: |-
+            import { StackOne } from "@stackone/stackone-client-ts";
+
+            async function run() {
+              const sdk = new StackOne({
+                security: {
+                  username: "<YOUR_USERNAME_HERE>",
+                },
+              });
+
+              const result = await sdk.getTimeOffRequest({
+                id: "<id>",
+                proxy: {
+                  "key": "<value>",
+                },
+                xAccountId: "<value>",
+              });
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/unified/ats/applications/{id}/documents/{subResourceId}"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: ats_get_application_document
+          source: |-
+            import { StackOne } from "@stackone/stackone-client-ts";
+
+            async function run() {
+              const sdk = new StackOne({
+                security: {
+                  username: "<YOUR_USERNAME_HERE>",
+                },
+              });
+
+              const result = await sdk.getApplicationDocument({
+                id: "<id>",
+                subResourceId: "<value>",
+                proxy: {
+                  "key": "<value>",
+                },
+                xAccountId: "<value>",
+              });
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/unified/ats/candidates"]["post"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: ats_create_candidate
+          source: |-
+            import { StackOne } from "@stackone/stackone-client-ts";
+
+            async function run() {
+              const sdk = new StackOne({
+                security: {
+                  username: "<YOUR_USERNAME_HERE>",
+                },
+              });
+
+              const result = await sdk.createCandidate({
+                xAccountId: "<value>",
+                atsCreateCandidateRequestDto: {
+                  name: "Romain Sestier",
+                  firstName: "Romain",
+                  lastName: "Sestier",
+                  emails: [
+                    {
+                      type: "personal",
+                      value: "sestier.romain123@gmail.com",
+                    },
+                  ],
+                  phone: "+16178294093",
+                  company: "Company Inc.",
+                  title: "Software Engineer",
+                  applicationIds: [
+                    "123e4567-e89b-12d3-a456-426614174000",
+                    "523e1234-e89b-fdd2-a456-762545121101",
+                  ],
+                },
+              });
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
   - target: $["paths"]["/unified/ats/interviews/{id}"]["get"]
     update:
       x-codeSamples:
@@ -179,11 +1016,11 @@ actions:
             }
 
             run();
-  - target: $["paths"]["/unified/marketing/templates/push"]["get"]
+  - target: $["paths"]["/unified/crm/contacts"]["post"]
     update:
       x-codeSamples:
         - lang: typescript
-          label: marketing_list_push_templates
+          label: crm_create_contact
           source: |-
             import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -194,7 +1031,530 @@ actions:
                 },
               });
 
-              const result = await sdk.listPushTemplates({
+              const result = await sdk.createContact({
+                xAccountId: "<value>",
+                crmCreateContactRequestDto: {
+                  firstName: "Steve",
+                  lastName: "Wozniak",
+                  companyName: "Apple Inc.",
+                  emails: [
+                    "steve@apple.com",
+                  ],
+                  phoneNumbers: [
+                    "123-456-7890",
+                  ],
+                  dealIds: [
+                    "deal-001",
+                    "deal-002",
+                  ],
+                  accountIds: [
+                    "account-123",
+                    "account-456",
+                  ],
+                },
+              });
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/unified/hris/employees/{id}/time_off"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: hris_list_employee_time_off_requests
+          source: |-
+            import { StackOne } from "@stackone/stackone-client-ts";
+
+            async function run() {
+              const sdk = new StackOne({
+                security: {
+                  username: "<YOUR_USERNAME_HERE>",
+                },
+              });
+
+              const result = await sdk.listEmployeeTimeOffRequests({
+                id: "<id>",
+                proxy: {
+                  "key": "<value>",
+                },
+                xAccountId: "<value>",
+              });
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/unified/ats/rejected_reasons"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: ats_list_rejected_reasons
+          source: |-
+            import { StackOne } from "@stackone/stackone-client-ts";
+
+            async function run() {
+              const sdk = new StackOne({
+                security: {
+                  username: "<YOUR_USERNAME_HERE>",
+                },
+              });
+
+              const result = await sdk.listRejectedReasons({
+                proxy: {
+                  "key": "<value>",
+                },
+                xAccountId: "<value>",
+              });
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/unified/ats/job_postings"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: ats_list_job_postings
+          source: |-
+            import { StackOne } from "@stackone/stackone-client-ts";
+
+            async function run() {
+              const sdk = new StackOne({
+                security: {
+                  username: "<YOUR_USERNAME_HERE>",
+                },
+              });
+
+              const result = await sdk.listJobPostings({
+                proxy: {
+                  "key": "<value>",
+                },
+                xAccountId: "<value>",
+              });
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/unified/crm/lists/{id}"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: crm_get_list
+          source: |-
+            import { StackOne } from "@stackone/stackone-client-ts";
+
+            async function run() {
+              const sdk = new StackOne({
+                security: {
+                  username: "<YOUR_USERNAME_HERE>",
+                },
+              });
+
+              const result = await sdk.getList({
+                id: "<id>",
+                proxy: {
+                  "key": "<value>",
+                },
+                xAccountId: "<value>",
+              });
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/unified/marketing/templates/omni_channel"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: marketing_list_omni_channel_templates
+          source: |-
+            import { StackOne } from "@stackone/stackone-client-ts";
+
+            async function run() {
+              const sdk = new StackOne({
+                security: {
+                  username: "<YOUR_USERNAME_HERE>",
+                },
+              });
+
+              const result = await sdk.listOmniChannelTemplates({
+                proxy: {
+                  "key": "<value>",
+                },
+                xAccountId: "<value>",
+              });
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/unified/marketing/templates/omni_channel/{id}"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: marketing_get_omni_channel_template
+          source: |-
+            import { StackOne } from "@stackone/stackone-client-ts";
+
+            async function run() {
+              const sdk = new StackOne({
+                security: {
+                  username: "<YOUR_USERNAME_HERE>",
+                },
+              });
+
+              const result = await sdk.getOmniChannelTemplate({
+                id: "<id>",
+                proxy: {
+                  "key": "<value>",
+                },
+                xAccountId: "<value>",
+              });
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/unified/marketing/campaigns/{id}"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: marketing_get_campaign
+          source: |-
+            import { StackOne } from "@stackone/stackone-client-ts";
+
+            async function run() {
+              const sdk = new StackOne({
+                security: {
+                  username: "<YOUR_USERNAME_HERE>",
+                },
+              });
+
+              const result = await sdk.getCampaign({
+                id: "<id>",
+                proxy: {
+                  "key": "<value>",
+                },
+                xAccountId: "<value>",
+              });
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/connect_sessions/authenticate"]["post"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: stackone_authenticate_connect_session
+          source: |-
+            import { StackOne } from "@stackone/stackone-client-ts";
+
+            async function run() {
+              const sdk = new StackOne({
+                security: {
+                  username: "<YOUR_USERNAME_HERE>",
+                },
+              });
+
+              const result = await sdk.authenticateConnectSession({
+                token: "<value>",
+              });
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/unified/hris/employees"]["post"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: hris_create_employee
+          source: |-
+            import { StackOne } from "@stackone/stackone-client-ts";
+            import {
+              EmploymentSchemasEmploymentTypeValue,
+              EmploymentSchemasValue,
+              EmploymentValue,
+              HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue,
+              HrisCreateEmployeeRequestDtoSchemasHomeLocationValue,
+              HrisCreateEmployeeRequestDtoSchemasValue,
+              HrisCreateEmployeeRequestDtoSchemasWorkLocationValue,
+              Value,
+            } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+            async function run() {
+              const sdk = new StackOne({
+                security: {
+                  username: "<YOUR_USERNAME_HERE>",
+                },
+              });
+
+              const result = await sdk.createEmployee({
+                xAccountId: "<value>",
+                hrisCreateEmployeeRequestDto: {
+                  firstName: "Issac",
+                  lastName: "Newton",
+                  name: "Issac Newton",
+                  displayName: "Sir Issac Newton",
+                  avatarUrl: "https://example.com/avatar.png",
+                  personalEmail: "isaac.newton@example.com",
+                  personalPhoneNumber: "+1234567890",
+                  workEmail: "newton@example.com",
+                  workPhoneNumber: "+1234567890",
+                  jobTitle: "Physicist",
+                  department: "Physics",
+                  managerId: "67890",
+                  gender: {
+                  sourceValue: 6730.33,
+                  },
+                  preferredLanguage: {
+                    value: HrisCreateEmployeeRequestDtoSchemasValue.Eng,
+                  sourceValue: "<value>",
+                  },
+                  ethnicity: {
+                  sourceValue:     {},
+                  },
+                  dateOfBirth: new Date("1990-01-01T00:00.000Z"),
+                  birthday: new Date("2021-01-01T00:00:00Z"),
+                  maritalStatus: {
+                  sourceValue:     {},
+                  },
+                  avatar: {},
+                  hireDate: new Date("2021-01-01T00:00.000Z"),
+                  startDate: new Date("2021-01-01T00:00.000Z"),
+                  tenure: 2,
+                  workAnniversary: new Date("2021-01-01T00:00:00Z"),
+                  employmentType: {
+                    value: HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue.Permanent,
+                  sourceValue: "Permanent",
+                  },
+                  employmentContractType: {
+                  sourceValue: "<value>",
+                  },
+                  employmentStatus: {
+                  sourceValue:     {},
+                  },
+                  terminationDate: new Date("2021-01-01T00:00:00Z"),
+                  companyName: "Example Corp",
+                  citizenships: [
+                    {
+                      value: Value.Us,
+                    sourceValue:     {},
+                    },
+                  ],
+                  employments: [
+                    {
+                      id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+                      remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+                      employeeId: "1687-3",
+                      jobTitle: "Software Engineer",
+                      payRate: "40.00",
+                      payPeriod: {
+                        value: EmploymentValue.Hour,
+                      sourceValue: "Hour",
+                      },
+                      payFrequency: {
+                        value: EmploymentSchemasValue.Hourly,
+                      sourceValue: "Hourly",
+                      },
+                      payCurrency: "USD",
+                      effectiveDate: new Date("2021-01-01T01:01:01.000Z"),
+                      employmentType: {
+                        value: EmploymentSchemasEmploymentTypeValue.Permanent,
+                      sourceValue: "Permanent",
+                      },
+                      employmentContractType: {
+                      sourceValue: 8263.19,
+                      },
+                      createdAt: new Date("2021-01-01T01:01:01.000Z"),
+                      updatedAt: new Date("2021-01-01T01:01:01.000Z"),
+                    },
+                  ],
+                  customFields: [
+                    {
+                      id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+                      remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+                      name: "Training Completion Status",
+                      description: "The completion status of the employee's training.",
+                      type: {
+                      sourceValue:     {},
+                      },
+                      value: {},
+                      valueId: "value_456",
+                      options: [
+                        "Not Started",
+                        "In Progress",
+                        "Completed",
+                        "Overdue",
+                      ],
+                    },
+                  ],
+                  benefits: [
+                    {
+                      id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+                      remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+                      name: "Health Insurance",
+                      benefitType: {
+                      sourceValue: "<value>",
+                      },
+                      provider: "Aetna",
+                      description: "Health insurance for employees",
+                      createdAt: new Date("2021-01-01T00:00:00Z"),
+                      updatedAt: new Date("2021-01-01T00:00:00Z"),
+                    },
+                  ],
+                  homeLocation: {
+                    name: "Woolsthorpe Manor",
+                    phoneNumber: "+44 1476 860 364",
+                    street1: "Water Lane",
+                    street2: "Woolsthorpe by Colsterworth",
+                    city: "Grantham",
+                    zipCode: "NG33 5NR",
+                    country: {
+                      value: HrisCreateEmployeeRequestDtoSchemasHomeLocationValue.Us,
+                    sourceValue: "<value>",
+                    },
+                    state: {
+                    sourceValue: "<value>",
+                    },
+                  },
+                  workLocation: {
+                    name: "Woolsthorpe Manor",
+                    phoneNumber: "+44 1476 860 364",
+                    street1: "Water Lane",
+                    street2: "Woolsthorpe by Colsterworth",
+                    city: "Grantham",
+                    zipCode: "NG33 5NR",
+                    country: {
+                      value: HrisCreateEmployeeRequestDtoSchemasWorkLocationValue.Us,
+                    sourceValue: false,
+                    },
+                    state: {
+                    sourceValue: false,
+                    },
+                  },
+                },
+              });
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/unified/hris/employees/{id}/work_eligibility/{subResourceId}"]["patch"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: hris_update_employee_work_eligibility_request
+          source: |-
+            import { StackOne } from "@stackone/stackone-client-ts";
+            import { ContentValue, HrisCreateWorkEligibilityRequestDtoSchemasValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+            async function run() {
+              const sdk = new StackOne({
+                security: {
+                  username: "<YOUR_USERNAME_HERE>",
+                },
+              });
+
+              const result = await sdk.updateEmployeeWorkEligibilityRequest({
+                id: "<id>",
+                subResourceId: "<value>",
+                xAccountId: "<value>",
+                hrisCreateWorkEligibilityRequestDto: {
+                  type: {
+                  sourceType: 918.43,
+                  },
+                  subType: "H1B",
+                  document: {
+                    id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+                    remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+                    name: "My Document",
+                    path: "/path/to/file",
+                    contents: [
+                      {
+                        url: "https://example.com/file.pdf",
+                        unifiedUrl: "/unified/hris/employees/16022323/documents/79715678/download",
+                        fileFormat: {
+                          value: ContentValue.Pdf,
+                        sourceValue: "abc",
+                        },
+                      },
+                    ],
+                    createdAt: new Date("2021-01-01T01:01:01.000Z"),
+                    updatedAt: new Date("2021-01-02T01:01:01.000Z"),
+                  },
+                  validFrom: new Date("2021-01-01T00:00.000Z"),
+                  validTo: new Date("2021-01-01T00:00.000Z"),
+                  issuedBy: {
+                    value: HrisCreateWorkEligibilityRequestDtoSchemasValue.Us,
+                  sourceValue:     {},
+                  },
+                  number: "1234567890",
+                },
+              });
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/unified/hris/time_off"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: hris_list_time_off_requests
+          source: |-
+            import { StackOne } from "@stackone/stackone-client-ts";
+
+            async function run() {
+              const sdk = new StackOne({
+                security: {
+                  username: "<YOUR_USERNAME_HERE>",
+                },
+              });
+
+              const result = await sdk.listTimeOffRequests({
+                proxy: {
+                  "key": "<value>",
+                },
+                xAccountId: "<value>",
+              });
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/unified/hris/employees/{id}/work_eligibility"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: hris_list_employee_work_eligibility
+          source: |-
+            import { StackOne } from "@stackone/stackone-client-ts";
+
+            async function run() {
+              const sdk = new StackOne({
+                security: {
+                  username: "<YOUR_USERNAME_HERE>",
+                },
+              });
+
+              const result = await sdk.listEmployeeWorkEligibility({
+                id: "<id>",
                 proxy: {
                   "key": "<value>",
                 },
@@ -235,11 +1595,11 @@ actions:
             }
 
             run();
-  - target: $["paths"]["/unified/ats/applications"]["get"]
+  - target: $["paths"]["/unified/ats/departments/{id}"]["get"]
     update:
       x-codeSamples:
         - lang: typescript
-          label: ats_list_applications
+          label: ats_get_department
           source: |-
             import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -250,11 +1610,187 @@ actions:
                 },
               });
 
-              const result = await sdk.listApplications({
+              const result = await sdk.getDepartment({
+                id: "<id>",
                 proxy: {
                   "key": "<value>",
                 },
                 xAccountId: "<value>",
+              });
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/unified/ats/locations"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: ats_list_locations
+          source: |-
+            import { StackOne } from "@stackone/stackone-client-ts";
+
+            async function run() {
+              const sdk = new StackOne({
+                security: {
+                  username: "<YOUR_USERNAME_HERE>",
+                },
+              });
+
+              const result = await sdk.listLocations({
+                proxy: {
+                  "key": "<value>",
+                },
+                xAccountId: "<value>",
+              });
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/unified/ats/rejected_reasons/{id}"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: ats_get_rejected_reason
+          source: |-
+            import { StackOne } from "@stackone/stackone-client-ts";
+
+            async function run() {
+              const sdk = new StackOne({
+                security: {
+                  username: "<YOUR_USERNAME_HERE>",
+                },
+              });
+
+              const result = await sdk.getRejectedReason({
+                id: "<id>",
+                proxy: {
+                  "key": "<value>",
+                },
+                xAccountId: "<value>",
+              });
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/unified/ats/candidates/{id}/notes/{subResourceId}"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: ats_get_candidate_note
+          source: |-
+            import { StackOne } from "@stackone/stackone-client-ts";
+
+            async function run() {
+              const sdk = new StackOne({
+                security: {
+                  username: "<YOUR_USERNAME_HERE>",
+                },
+              });
+
+              const result = await sdk.getCandidateNote({
+                id: "<id>",
+                subResourceId: "<value>",
+                proxy: {
+                  "key": "<value>",
+                },
+                xAccountId: "<value>",
+              });
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/unified/proxy"]["post"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: stackone_proxy_request
+          source: |-
+            import { StackOne } from "@stackone/stackone-client-ts";
+
+            async function run() {
+              const sdk = new StackOne({
+                security: {
+                  username: "<YOUR_USERNAME_HERE>",
+                },
+              });
+
+              const result = await sdk.proxyRequest({
+                xAccountId: "<value>",
+                proxyRequestBody: {
+                  url: "https://api.sample-integration.com/v1",
+                  path: "/employees/directory",
+                  headers: {
+                    "Content-Type": "application/json",
+                  },
+                  body: {
+                    "key": "<value>",
+                  },
+                },
+              });
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/unified/hris/employees/{id}/work_eligibility"]["post"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: hris_create_employee_work_eligibility_request
+          source: |-
+            import { StackOne } from "@stackone/stackone-client-ts";
+            import { ContentValue, HrisCreateWorkEligibilityRequestDtoSchemasValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+            async function run() {
+              const sdk = new StackOne({
+                security: {
+                  username: "<YOUR_USERNAME_HERE>",
+                },
+              });
+
+              const result = await sdk.createEmployeeWorkEligibilityRequest({
+                id: "<id>",
+                xAccountId: "<value>",
+                hrisCreateWorkEligibilityRequestDto: {
+                  type: {
+                  sourceType:     {},
+                  },
+                  subType: "H1B",
+                  document: {
+                    id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+                    remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+                    name: "My Document",
+                    path: "/path/to/file",
+                    contents: [
+                      {
+                        url: "https://example.com/file.pdf",
+                        unifiedUrl: "/unified/hris/employees/16022323/documents/79715678/download",
+                        fileFormat: {
+                          value: ContentValue.Pdf,
+                        sourceValue: "abc",
+                        },
+                      },
+                    ],
+                    createdAt: new Date("2021-01-01T01:01:01.000Z"),
+                    updatedAt: new Date("2021-01-02T01:01:01.000Z"),
+                  },
+                  validFrom: new Date("2021-01-01T00:00.000Z"),
+                  validTo: new Date("2021-01-01T00:00.000Z"),
+                  issuedBy: {
+                    value: HrisCreateWorkEligibilityRequestDtoSchemasValue.Us,
+                  sourceValue: "<value>",
+                  },
+                  number: "1234567890",
+                },
               });
 
               // Handle the result
@@ -353,11 +1889,11 @@ actions:
             }
 
             run();
-  - target: $["paths"]["/unified/ats/applications/{id}/documents/{subResourceId}"]["get"]
+  - target: $["paths"]["/unified/ats/applications/{id}/offers/{subResourceId}"]["get"]
     update:
       x-codeSamples:
         - lang: typescript
-          label: ats_get_application_document
+          label: ats_get_application_offer
           source: |-
             import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -368,367 +1904,13 @@ actions:
                 },
               });
 
-              const result = await sdk.getApplicationDocument({
+              const result = await sdk.getApplicationOffer({
                 id: "<id>",
                 subResourceId: "<value>",
                 proxy: {
                   "key": "<value>",
                 },
                 xAccountId: "<value>",
-              });
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/unified/ats/candidates/{id}/notes/{subResourceId}"]["get"]
-    update:
-      x-codeSamples:
-        - lang: typescript
-          label: ats_get_candidate_note
-          source: |-
-            import { StackOne } from "@stackone/stackone-client-ts";
-
-            async function run() {
-              const sdk = new StackOne({
-                security: {
-                  username: "<YOUR_USERNAME_HERE>",
-                },
-              });
-
-              const result = await sdk.getCandidateNote({
-                id: "<id>",
-                subResourceId: "<value>",
-                proxy: {
-                  "key": "<value>",
-                },
-                xAccountId: "<value>",
-              });
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/unified/ats/interviews"]["get"]
-    update:
-      x-codeSamples:
-        - lang: typescript
-          label: ats_list_interviews
-          source: |-
-            import { StackOne } from "@stackone/stackone-client-ts";
-
-            async function run() {
-              const sdk = new StackOne({
-                security: {
-                  username: "<YOUR_USERNAME_HERE>",
-                },
-              });
-
-              const result = await sdk.listInterviews({
-                proxy: {
-                  "key": "<value>",
-                },
-                xAccountId: "<value>",
-              });
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/accounts/{id}"]["get"]
-    update:
-      x-codeSamples:
-        - lang: typescript
-          label: stackone_get_account
-          source: |-
-            import { StackOne } from "@stackone/stackone-client-ts";
-
-            async function run() {
-              const sdk = new StackOne({
-                security: {
-                  username: "<YOUR_USERNAME_HERE>",
-                },
-              });
-
-              const result = await sdk.getAccount({
-                id: "<id>",
-                expandInfo: "<value>",
-              });
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/unified/hris/employees/{id}/documents/{subResourceId}"]["get"]
-    update:
-      x-codeSamples:
-        - lang: typescript
-          label: hris_get_employee_document
-          source: |-
-            import { StackOne } from "@stackone/stackone-client-ts";
-
-            async function run() {
-              const sdk = new StackOne({
-                security: {
-                  username: "<YOUR_USERNAME_HERE>",
-                },
-              });
-
-              const result = await sdk.getEmployeeDocument({
-                id: "<id>",
-                subResourceId: "<value>",
-                proxy: {
-                  "key": "<value>",
-                },
-                xAccountId: "<value>",
-              });
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/unified/hris/employments/{id}"]["get"]
-    update:
-      x-codeSamples:
-        - lang: typescript
-          label: hris_get_employment
-          source: |-
-            import { StackOne } from "@stackone/stackone-client-ts";
-
-            async function run() {
-              const sdk = new StackOne({
-                security: {
-                  username: "<YOUR_USERNAME_HERE>",
-                },
-              });
-
-              const result = await sdk.getEmployment({
-                id: "<id>",
-                proxy: {
-                  "key": "<value>",
-                },
-                xAccountId: "<value>",
-              });
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/unified/hris/benefits"]["get"]
-    update:
-      x-codeSamples:
-        - lang: typescript
-          label: hris_list_benefits
-          source: |-
-            import { StackOne } from "@stackone/stackone-client-ts";
-
-            async function run() {
-              const sdk = new StackOne({
-                security: {
-                  username: "<YOUR_USERNAME_HERE>",
-                },
-              });
-
-              const result = await sdk.listBenefits({
-                proxy: {
-                  "key": "<value>",
-                },
-                xAccountId: "<value>",
-              });
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/unified/ats/applications/{id}/documents/{subResourceId}/download"]["get"]
-    update:
-      x-codeSamples:
-        - lang: typescript
-          label: ats_download_application_document
-          source: |-
-            import { StackOne } from "@stackone/stackone-client-ts";
-
-            async function run() {
-              const sdk = new StackOne({
-                security: {
-                  username: "<YOUR_USERNAME_HERE>",
-                },
-              });
-
-              const result = await sdk.downloadApplicationDocument({
-                id: "<id>",
-                subResourceId: "<value>",
-                xAccountId: "<value>",
-              });
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/unified/crm/accounts/{id}"]["get"]
-    update:
-      x-codeSamples:
-        - lang: typescript
-          label: crm_get_account
-          source: |-
-            import { StackOne } from "@stackone/stackone-client-ts";
-
-            async function run() {
-              const sdk = new StackOne({
-                security: {
-                  username: "<YOUR_USERNAME_HERE>",
-                },
-              });
-
-              const result = await sdk.getAccount({
-                id: "<id>",
-                proxy: {
-                  "key": "<value>",
-                },
-                xAccountId: "<value>",
-              });
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/unified/marketing/templates/push"]["post"]
-    update:
-      x-codeSamples:
-        - lang: typescript
-          label: marketing_create_push_template
-          source: |-
-            import { StackOne } from "@stackone/stackone-client-ts";
-
-            async function run() {
-              const sdk = new StackOne({
-                security: {
-                  username: "<YOUR_USERNAME_HERE>",
-                },
-              });
-
-              const result = await sdk.createPushTemplate({
-                xAccountId: "<value>",
-                marketingCreatePushTemplateRequestDto: {
-                  id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-                  remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-                  tags: [
-                    "<value>",
-                  ],
-                  messages: [
-                    {
-                      id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-                      remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-                      messageType: {
-                        value: {},
-                      sourceValue: "Email",
-                      },
-                      messageContent: {},
-                    },
-                  ],
-                },
-              });
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/accounts"]["get"]
-    update:
-      x-codeSamples:
-        - lang: typescript
-          label: stackone_list_linked_accounts
-          source: |-
-            import { StackOne } from "@stackone/stackone-client-ts";
-
-            async function run() {
-              const sdk = new StackOne({
-                security: {
-                  username: "<YOUR_USERNAME_HERE>",
-                },
-              });
-
-              const result = await sdk.listLinkedAccounts({
-                providers: [
-                  "<value>",
-                ],
-                accountIds: [
-                  "<value>",
-                ],
-              });
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/unified/hris/employees/{id}/work_eligibility"]["get"]
-    update:
-      x-codeSamples:
-        - lang: typescript
-          label: hris_list_employee_work_eligibility
-          source: |-
-            import { StackOne } from "@stackone/stackone-client-ts";
-
-            async function run() {
-              const sdk = new StackOne({
-                security: {
-                  username: "<YOUR_USERNAME_HERE>",
-                },
-              });
-
-              const result = await sdk.listEmployeeWorkEligibility({
-                id: "<id>",
-                proxy: {
-                  "key": "<value>",
-                },
-                xAccountId: "<value>",
-              });
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/unified/hris/time_off"]["post"]
-    update:
-      x-codeSamples:
-        - lang: typescript
-          label: hris_create_time_off_request
-          source: |-
-            import { StackOne } from "@stackone/stackone-client-ts";
-
-            async function run() {
-              const sdk = new StackOne({
-                security: {
-                  username: "<YOUR_USERNAME_HERE>",
-                },
-              });
-
-              const result = await sdk.createTimeOffRequest({
-                xAccountId: "<value>",
-                hrisCreateTimeOffRequestDto: {
-                  employeeId: "1687-3",
-                  approverId: "1687-4",
-                  status: {
-                  sourceValue:     {},
-                  },
-                  type: {
-                  sourceValue:     {},
-                  },
-                  startDate: new Date("2021-01-01T01:01:01.000Z"),
-                  endDate: new Date("2021-01-01T01:01:01.000Z"),
-                },
               });
 
               // Handle the result
@@ -764,11 +1946,11 @@ actions:
             }
 
             run();
-  - target: $["paths"]["/unified/ats/offers"]["get"]
+  - target: $["paths"]["/unified/ats/candidates/{id}"]["patch"]
     update:
       x-codeSamples:
         - lang: typescript
-          label: ats_list_offers
+          label: ats_update_candidate
           source: |-
             import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -779,7 +1961,51 @@ actions:
                 },
               });
 
-              const result = await sdk.listOffers({
+              const result = await sdk.updateCandidate({
+                id: "<id>",
+                xAccountId: "<value>",
+                atsUpdateCandidatesRequestDto: {
+                  name: "Romain Sestier",
+                  firstName: "Romain",
+                  lastName: "Sestier",
+                  emails: [
+                    {
+                      type: "personal",
+                      value: "sestier.romain123@gmail.com",
+                    },
+                  ],
+                  phone: "+16178294093",
+                  company: "Company Inc.",
+                  title: "Software Engineer",
+                  applicationIds: [
+                    "123e4567-e89b-12d3-a456-426614174000",
+                    "523e1234-e89b-fdd2-a456-762545121101",
+                  ],
+                  id: "eebbaa75-7adf-4f7e-be4c-def6a12840f2",
+                },
+              });
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/unified/ats/interviews"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: ats_list_interviews
+          source: |-
+            import { StackOne } from "@stackone/stackone-client-ts";
+
+            async function run() {
+              const sdk = new StackOne({
+                security: {
+                  username: "<YOUR_USERNAME_HERE>",
+                },
+              });
+
+              const result = await sdk.listInterviews({
                 proxy: {
                   "key": "<value>",
                 },
@@ -791,11 +2017,11 @@ actions:
             }
 
             run();
-  - target: $["paths"]["/unified/proxy"]["post"]
+  - target: $["paths"]["/unified/crm/accounts"]["get"]
     update:
       x-codeSamples:
         - lang: typescript
-          label: stackone_proxy_request
+          label: crm_list_accounts
           source: |-
             import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -806,17 +2032,154 @@ actions:
                 },
               });
 
-              const result = await sdk.proxyRequest({
+              const result = await sdk.listAccounts({
+                proxy: {
+                  "key": "<value>",
+                },
                 xAccountId: "<value>",
-                proxyRequestBody: {
-                  url: "https://api.sample-integration.com/v1",
-                  path: "/employees/directory",
-                  headers: {
-                    "Content-Type": "application/json",
+              });
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/unified/iam/roles"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: iam_list_roles
+          source: |-
+            import { StackOne } from "@stackone/stackone-client-ts";
+
+            async function run() {
+              const sdk = new StackOne({
+                security: {
+                  username: "<YOUR_USERNAME_HERE>",
+                },
+              });
+
+              const result = await sdk.listRoles({
+                proxy: {
+                  "key": "<value>",
+                },
+                xAccountId: "<value>",
+              });
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/unified/marketing/templates/push"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: marketing_list_push_templates
+          source: |-
+            import { StackOne } from "@stackone/stackone-client-ts";
+
+            async function run() {
+              const sdk = new StackOne({
+                security: {
+                  username: "<YOUR_USERNAME_HERE>",
+                },
+              });
+
+              const result = await sdk.listPushTemplates({
+                proxy: {
+                  "key": "<value>",
+                },
+                xAccountId: "<value>",
+              });
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/accounts/{id}/meta"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: stackone_get_account_meta_info
+          source: |-
+            import { StackOne } from "@stackone/stackone-client-ts";
+
+            async function run() {
+              const sdk = new StackOne({
+                security: {
+                  username: "<YOUR_USERNAME_HERE>",
+                },
+              });
+
+              const result = await sdk.getAccountMetaInfo({
+                id: "<id>",
+              });
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/unified/hris/employees/{id}/time_off/{subResourceId}"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: hris_get_employees_time_off_request
+          source: |-
+            import { StackOne } from "@stackone/stackone-client-ts";
+
+            async function run() {
+              const sdk = new StackOne({
+                security: {
+                  username: "<YOUR_USERNAME_HERE>",
+                },
+              });
+
+              const result = await sdk.getEmployeesTimeOffRequest({
+                id: "<id>",
+                subResourceId: "<value>",
+                proxy: {
+                  "key": "<value>",
+                },
+                xAccountId: "<value>",
+              });
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/unified/hris/time_off/{id}"]["patch"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: hris_update_time_off_request
+          source: |-
+            import { StackOne } from "@stackone/stackone-client-ts";
+
+            async function run() {
+              const sdk = new StackOne({
+                security: {
+                  username: "<YOUR_USERNAME_HERE>",
+                },
+              });
+
+              const result = await sdk.updateTimeOffRequest({
+                id: "<id>",
+                xAccountId: "<value>",
+                hrisCreateTimeOffRequestDto: {
+                  employeeId: "1687-3",
+                  approverId: "1687-4",
+                  status: {
+                  sourceValue: "<value>",
                   },
-                  body: {
-                    "key": "<value>",
+                  type: {
+                  sourceValue:     {},
                   },
+                  startDate: new Date("2021-01-01T01:01:01.000Z"),
+                  endDate: new Date("2021-01-01T01:01:01.000Z"),
                 },
               });
 
@@ -825,11 +2188,11 @@ actions:
             }
 
             run();
-  - target: $["paths"]["/unified/hris/time_off/{id}"]["get"]
+  - target: $["paths"]["/unified/hris/benefits/{id}"]["get"]
     update:
       x-codeSamples:
         - lang: typescript
-          label: hris_get_time_off_request
+          label: hris_get_benefit
           source: |-
             import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -840,7 +2203,7 @@ actions:
                 },
               });
 
-              const result = await sdk.getTimeOffRequest({
+              const result = await sdk.getBenefit({
                 id: "<id>",
                 proxy: {
                   "key": "<value>",
@@ -853,11 +2216,11 @@ actions:
             }
 
             run();
-  - target: $["paths"]["/unified/ats/locations"]["get"]
+  - target: $["paths"]["/unified/ats/users/{id}"]["get"]
     update:
       x-codeSamples:
         - lang: typescript
-          label: ats_list_locations
+          label: ats_get_user
           source: |-
             import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -868,34 +2231,7 @@ actions:
                 },
               });
 
-              const result = await sdk.listLocations({
-                proxy: {
-                  "key": "<value>",
-                },
-                xAccountId: "<value>",
-              });
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/unified/crm/contacts/{id}"]["get"]
-    update:
-      x-codeSamples:
-        - lang: typescript
-          label: crm_get_contact
-          source: |-
-            import { StackOne } from "@stackone/stackone-client-ts";
-
-            async function run() {
-              const sdk = new StackOne({
-                security: {
-                  username: "<YOUR_USERNAME_HERE>",
-                },
-              });
-
-              const result = await sdk.getContact({
+              const result = await sdk.getUser({
                 id: "<id>",
                 proxy: {
                   "key": "<value>",
@@ -951,11 +2287,11 @@ actions:
             }
 
             run();
-  - target: $["paths"]["/unified/marketing/campaigns/{id}"]["get"]
+  - target: $["paths"]["/connectors/meta/{provider}"]["get"]
     update:
       x-codeSamples:
         - lang: typescript
-          label: marketing_get_campaign
+          label: stackone_get_connector_meta
           source: |-
             import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -966,7 +2302,31 @@ actions:
                 },
               });
 
-              const result = await sdk.getCampaign({
+              const result = await sdk.getConnectorMeta({
+                provider: "<value>",
+              });
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/unified/hris/employments/{id}"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: hris_get_employment
+          source: |-
+            import { StackOne } from "@stackone/stackone-client-ts";
+
+            async function run() {
+              const sdk = new StackOne({
+                security: {
+                  username: "<YOUR_USERNAME_HERE>",
+                },
+              });
+
+              const result = await sdk.getEmployment({
                 id: "<id>",
                 proxy: {
                   "key": "<value>",
@@ -979,11 +2339,11 @@ actions:
             }
 
             run();
-  - target: $["paths"]["/connect_sessions/authenticate"]["post"]
+  - target: $["paths"]["/unified/hris/time_off"]["post"]
     update:
       x-codeSamples:
         - lang: typescript
-          label: stackone_authenticate_connect_session
+          label: hris_create_time_off_request
           source: |-
             import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -994,8 +2354,365 @@ actions:
                 },
               });
 
-              const result = await sdk.authenticateConnectSession({
-                token: "<value>",
+              const result = await sdk.createTimeOffRequest({
+                xAccountId: "<value>",
+                hrisCreateTimeOffRequestDto: {
+                  employeeId: "1687-3",
+                  approverId: "1687-4",
+                  status: {
+                  sourceValue:     {},
+                  },
+                  type: {
+                  sourceValue:     {},
+                  },
+                  startDate: new Date("2021-01-01T01:01:01.000Z"),
+                  endDate: new Date("2021-01-01T01:01:01.000Z"),
+                },
+              });
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/unified/ats/candidates/{id}/notes"]["post"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: ats_create_candidate_note
+          source: |-
+            import { StackOne } from "@stackone/stackone-client-ts";
+            import { AtsCreateNotesRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+            async function run() {
+              const sdk = new StackOne({
+                security: {
+                  username: "<YOUR_USERNAME_HERE>",
+                },
+              });
+
+              const result = await sdk.createCandidateNote({
+                id: "<id>",
+                xAccountId: "<value>",
+                atsCreateNotesRequestDto: {
+                  content: [
+                    {
+                      body: "This candidate seems like a good fit for the role",
+                    },
+                  ],
+                  authorId: "1234567890",
+                  visibility: {
+                    value: AtsCreateNotesRequestDtoValue.Public,
+                  sourceValue: "Public",
+                  },
+                },
+              });
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/unified/ats/users"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: ats_list_users
+          source: |-
+            import { StackOne } from "@stackone/stackone-client-ts";
+
+            async function run() {
+              const sdk = new StackOne({
+                security: {
+                  username: "<YOUR_USERNAME_HERE>",
+                },
+              });
+
+              const result = await sdk.listUsers({
+                proxy: {
+                  "key": "<value>",
+                },
+                xAccountId: "<value>",
+              });
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/unified/iam/policies"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: iam_list_policies
+          source: |-
+            import { StackOne } from "@stackone/stackone-client-ts";
+
+            async function run() {
+              const sdk = new StackOne({
+                security: {
+                  username: "<YOUR_USERNAME_HERE>",
+                },
+              });
+
+              const result = await sdk.listPolicies({
+                proxy: {
+                  "key": "<value>",
+                },
+                xAccountId: "<value>",
+              });
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/unified/marketing/templates/email/{id}"]["patch"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: marketing_update_email_template
+          source: |-
+            import { StackOne } from "@stackone/stackone-client-ts";
+
+            async function run() {
+              const sdk = new StackOne({
+                security: {
+                  username: "<YOUR_USERNAME_HERE>",
+                },
+              });
+
+              const result = await sdk.updateEmailTemplate({
+                id: "<id>",
+                xAccountId: "<value>",
+                marketingCreateEmailTemplateRequestDto: {
+                  id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+                  remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+                  tags: [
+                    "<value>",
+                  ],
+                  messages: [
+                    {
+                      id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+                      remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+                      messageType: {
+                        value: {},
+                      sourceValue: "Email",
+                      },
+                      messageContent: {},
+                    },
+                  ],
+                },
+              });
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/accounts"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: stackone_list_linked_accounts
+          source: |-
+            import { StackOne } from "@stackone/stackone-client-ts";
+
+            async function run() {
+              const sdk = new StackOne({
+                security: {
+                  username: "<YOUR_USERNAME_HERE>",
+                },
+              });
+
+              const result = await sdk.listLinkedAccounts({
+                providers: [
+                  "<value>",
+                ],
+                accountIds: [
+                  "<value>",
+                ],
+              });
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/unified/ats/jobs/{id}"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: ats_get_job
+          source: |-
+            import { StackOne } from "@stackone/stackone-client-ts";
+
+            async function run() {
+              const sdk = new StackOne({
+                security: {
+                  username: "<YOUR_USERNAME_HERE>",
+                },
+              });
+
+              const result = await sdk.getJob({
+                id: "<id>",
+                proxy: {
+                  "key": "<value>",
+                },
+                xAccountId: "<value>",
+              });
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/unified/crm/contacts/{id}"]["patch"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: crm_update_contact
+          source: |-
+            import { StackOne } from "@stackone/stackone-client-ts";
+
+            async function run() {
+              const sdk = new StackOne({
+                security: {
+                  username: "<YOUR_USERNAME_HERE>",
+                },
+              });
+
+              const result = await sdk.updateContact({
+                id: "<id>",
+                xAccountId: "<value>",
+                crmCreateContactRequestDto: {
+                  firstName: "Steve",
+                  lastName: "Wozniak",
+                  companyName: "Apple Inc.",
+                  emails: [
+                    "steve@apple.com",
+                  ],
+                  phoneNumbers: [
+                    "123-456-7890",
+                  ],
+                  dealIds: [
+                    "deal-001",
+                    "deal-002",
+                  ],
+                  accountIds: [
+                    "account-123",
+                    "account-456",
+                  ],
+                },
+              });
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/unified/marketing/templates/omni_channel"]["post"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: marketing_create_omni_channel_template
+          source: |-
+            import { StackOne } from "@stackone/stackone-client-ts";
+
+            async function run() {
+              const sdk = new StackOne({
+                security: {
+                  username: "<YOUR_USERNAME_HERE>",
+                },
+              });
+
+              const result = await sdk.createOmniChannelTemplate({
+                xAccountId: "<value>",
+                marketingCreateTemplateRequestDto: {
+                  id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+                  remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+                  tags: [
+                    "<value>",
+                  ],
+                  messages: [
+                    {
+                      id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+                      remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+                      messageType: {
+                        value: {},
+                      sourceValue: "Email",
+                      },
+                    messageContent:     {},
+                    },
+                  ],
+                },
+              });
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/unified/ats/offers"]["post"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: ats_create_offer
+          source: |-
+            import { StackOne } from "@stackone/stackone-client-ts";
+            import { AtsCreateOfferRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+            async function run() {
+              const sdk = new StackOne({
+                security: {
+                  username: "<YOUR_USERNAME_HERE>",
+                },
+              });
+
+              const result = await sdk.createOffer({
+                xAccountId: "<value>",
+                atsCreateOfferRequestDto: {
+                  startDate: new Date("2021-01-01T01:01:01.000Z"),
+                  offerStatus: {
+                    value: AtsCreateOfferRequestDtoValue.Pending,
+                  sourceValue: "Pending",
+                  },
+                  offerHistory: [
+                    {
+                      startDate: new Date("2021-01-01T01:01:01.000Z"),
+                      createdAt: new Date("2021-01-01T01:01:01.000Z"),
+                      updatedAt: new Date("2021-01-01T01:01:01.000Z"),
+                    },
+                  ],
+                },
+              });
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/unified/hris/companies/{id}"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: hris_get_company
+          source: |-
+            import { StackOne } from "@stackone/stackone-client-ts";
+
+            async function run() {
+              const sdk = new StackOne({
+                security: {
+                  username: "<YOUR_USERNAME_HERE>",
+                },
+              });
+
+              const result = await sdk.getCompany({
+                id: "<id>",
+                proxy: {
+                  "key": "<value>",
+                },
+                xAccountId: "<value>",
               });
 
               // Handle the result
@@ -1181,259 +2898,6 @@ actions:
             }
 
             run();
-  - target: $["paths"]["/unified/ats/candidates"]["post"]
-    update:
-      x-codeSamples:
-        - lang: typescript
-          label: ats_create_candidate
-          source: |-
-            import { StackOne } from "@stackone/stackone-client-ts";
-
-            async function run() {
-              const sdk = new StackOne({
-                security: {
-                  username: "<YOUR_USERNAME_HERE>",
-                },
-              });
-
-              const result = await sdk.createCandidate({
-                xAccountId: "<value>",
-                atsCreateCandidateRequestDto: {
-                  name: "Romain Sestier",
-                  firstName: "Romain",
-                  lastName: "Sestier",
-                  emails: [
-                    {
-                      type: "personal",
-                      value: "sestier.romain123@gmail.com",
-                    },
-                  ],
-                  phone: "+16178294093",
-                  company: "Company Inc.",
-                  title: "Software Engineer",
-                  applicationIds: [
-                    "123e4567-e89b-12d3-a456-426614174000",
-                    "523e1234-e89b-fdd2-a456-762545121101",
-                  ],
-                },
-              });
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/unified/ats/users"]["get"]
-    update:
-      x-codeSamples:
-        - lang: typescript
-          label: ats_list_users
-          source: |-
-            import { StackOne } from "@stackone/stackone-client-ts";
-
-            async function run() {
-              const sdk = new StackOne({
-                security: {
-                  username: "<YOUR_USERNAME_HERE>",
-                },
-              });
-
-              const result = await sdk.listUsers({
-                proxy: {
-                  "key": "<value>",
-                },
-                xAccountId: "<value>",
-              });
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/unified/ats/job_postings"]["get"]
-    update:
-      x-codeSamples:
-        - lang: typescript
-          label: ats_list_job_postings
-          source: |-
-            import { StackOne } from "@stackone/stackone-client-ts";
-
-            async function run() {
-              const sdk = new StackOne({
-                security: {
-                  username: "<YOUR_USERNAME_HERE>",
-                },
-              });
-
-              const result = await sdk.listJobPostings({
-                proxy: {
-                  "key": "<value>",
-                },
-                xAccountId: "<value>",
-              });
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/unified/ats/applications/{id}/documents"]["get"]
-    update:
-      x-codeSamples:
-        - lang: typescript
-          label: ats_list_application_documents
-          source: |-
-            import { StackOne } from "@stackone/stackone-client-ts";
-
-            async function run() {
-              const sdk = new StackOne({
-                security: {
-                  username: "<YOUR_USERNAME_HERE>",
-                },
-              });
-
-              const result = await sdk.listApplicationDocuments({
-                id: "<id>",
-                proxy: {
-                  "key": "<value>",
-                },
-                xAccountId: "<value>",
-              });
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/unified/crm/lists"]["get"]
-    update:
-      x-codeSamples:
-        - lang: typescript
-          label: crm_list_lists
-          source: |-
-            import { StackOne } from "@stackone/stackone-client-ts";
-
-            async function run() {
-              const sdk = new StackOne({
-                security: {
-                  username: "<YOUR_USERNAME_HERE>",
-                },
-              });
-
-              const result = await sdk.listLists({
-                proxy: {
-                  "key": "<value>",
-                },
-                xAccountId: "<value>",
-              });
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/unified/crm/lists/{id}"]["get"]
-    update:
-      x-codeSamples:
-        - lang: typescript
-          label: crm_get_list
-          source: |-
-            import { StackOne } from "@stackone/stackone-client-ts";
-
-            async function run() {
-              const sdk = new StackOne({
-                security: {
-                  username: "<YOUR_USERNAME_HERE>",
-                },
-              });
-
-              const result = await sdk.getList({
-                id: "<id>",
-                proxy: {
-                  "key": "<value>",
-                },
-                xAccountId: "<value>",
-              });
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/unified/hris/employees"]["get"]
-    update:
-      x-codeSamples:
-        - lang: typescript
-          label: hris_list_employees
-          source: |-
-            import { StackOne } from "@stackone/stackone-client-ts";
-
-            async function run() {
-              const sdk = new StackOne({
-                security: {
-                  username: "<YOUR_USERNAME_HERE>",
-                },
-              });
-
-              const result = await sdk.listEmployees({
-                proxy: {
-                  "key": "<value>",
-                },
-                xAccountId: "<value>",
-              });
-
-              for await (const page of result) {
-                // handle page
-              }
-            }
-
-            run();
-  - target: $["paths"]["/connectors/meta"]["get"]
-    update:
-      x-codeSamples:
-        - lang: typescript
-          label: stackone_list_connectors_meta
-          source: |-
-            import { StackOne } from "@stackone/stackone-client-ts";
-
-            async function run() {
-              const sdk = new StackOne({
-                security: {
-                  username: "<YOUR_USERNAME_HERE>",
-                },
-              });
-
-              const result = await sdk.listConnectorsMeta({});
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/connectors/meta/{provider}"]["get"]
-    update:
-      x-codeSamples:
-        - lang: typescript
-          label: stackone_get_connector_meta
-          source: |-
-            import { StackOne } from "@stackone/stackone-client-ts";
-
-            async function run() {
-              const sdk = new StackOne({
-                security: {
-                  username: "<YOUR_USERNAME_HERE>",
-                },
-              });
-
-              const result = await sdk.getConnectorMeta({
-                provider: "<value>",
-              });
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
   - target: $["paths"]["/unified/hris/employees/{id}/documents/{subResourceId}/download"]["get"]
     update:
       x-codeSamples:
@@ -1460,11 +2924,11 @@ actions:
             }
 
             run();
-  - target: $["paths"]["/unified/hris/time_off"]["get"]
+  - target: $["paths"]["/unified/hris/employments"]["get"]
     update:
       x-codeSamples:
         - lang: typescript
-          label: hris_list_time_off_requests
+          label: hris_list_employments
           source: |-
             import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -1475,35 +2939,11 @@ actions:
                 },
               });
 
-              const result = await sdk.listTimeOffRequests({
+              const result = await sdk.listEmployments({
                 proxy: {
                   "key": "<value>",
                 },
                 xAccountId: "<value>",
-              });
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/accounts/{id}"]["delete"]
-    update:
-      x-codeSamples:
-        - lang: typescript
-          label: stackone_delete_account
-          source: |-
-            import { StackOne } from "@stackone/stackone-client-ts";
-
-            async function run() {
-              const sdk = new StackOne({
-                security: {
-                  username: "<YOUR_USERNAME_HERE>",
-                },
-              });
-
-              const result = await sdk.deleteAccount({
-                id: "<id>",
               });
 
               // Handle the result
@@ -1565,11 +3005,11 @@ actions:
             }
 
             run();
-  - target: $["paths"]["/unified/ats/jobs"]["get"]
+  - target: $["paths"]["/unified/ats/locations/{id}"]["get"]
     update:
       x-codeSamples:
         - lang: typescript
-          label: ats_list_jobs
+          label: ats_get_location
           source: |-
             import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -1580,277 +3020,7 @@ actions:
                 },
               });
 
-              const result = await sdk.listJobs({
-                proxy: {
-                  "key": "<value>",
-                },
-                xAccountId: "<value>",
-              });
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/unified/marketing/templates/omni_channel"]["get"]
-    update:
-      x-codeSamples:
-        - lang: typescript
-          label: marketing_list_omni_channel_templates
-          source: |-
-            import { StackOne } from "@stackone/stackone-client-ts";
-
-            async function run() {
-              const sdk = new StackOne({
-                security: {
-                  username: "<YOUR_USERNAME_HERE>",
-                },
-              });
-
-              const result = await sdk.listOmniChannelTemplates({
-                proxy: {
-                  "key": "<value>",
-                },
-                xAccountId: "<value>",
-              });
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/unified/marketing/templates/omni_channel/{id}"]["get"]
-    update:
-      x-codeSamples:
-        - lang: typescript
-          label: marketing_get_omni_channel_template
-          source: |-
-            import { StackOne } from "@stackone/stackone-client-ts";
-
-            async function run() {
-              const sdk = new StackOne({
-                security: {
-                  username: "<YOUR_USERNAME_HERE>",
-                },
-              });
-
-              const result = await sdk.getOmniChannelTemplate({
-                id: "<id>",
-                proxy: {
-                  "key": "<value>",
-                },
-                xAccountId: "<value>",
-              });
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/unified/iam/users"]["get"]
-    update:
-      x-codeSamples:
-        - lang: typescript
-          label: iam_list_users
-          source: |-
-            import { StackOne } from "@stackone/stackone-client-ts";
-
-            async function run() {
-              const sdk = new StackOne({
-                security: {
-                  username: "<YOUR_USERNAME_HERE>",
-                },
-              });
-
-              const result = await sdk.listUsers({
-                proxy: {
-                  "key": "<value>",
-                },
-                xAccountId: "<value>",
-              });
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/unified/marketing/templates/email/{id}"]["patch"]
-    update:
-      x-codeSamples:
-        - lang: typescript
-          label: marketing_update_email_template
-          source: |-
-            import { StackOne } from "@stackone/stackone-client-ts";
-
-            async function run() {
-              const sdk = new StackOne({
-                security: {
-                  username: "<YOUR_USERNAME_HERE>",
-                },
-              });
-
-              const result = await sdk.updateEmailTemplate({
-                id: "<id>",
-                xAccountId: "<value>",
-                marketingCreateEmailTemplateRequestDto: {
-                  id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-                  remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-                  tags: [
-                    "<value>",
-                  ],
-                  messages: [
-                    {
-                      id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-                      remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-                      messageType: {
-                        value: {},
-                      sourceValue: "Email",
-                      },
-                      messageContent: {},
-                    },
-                  ],
-                },
-              });
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/connect_sessions"]["post"]
-    update:
-      x-codeSamples:
-        - lang: typescript
-          label: stackone_create_connect_session
-          source: |-
-            import { StackOne } from "@stackone/stackone-client-ts";
-            import { Categories } from "@stackone/stackone-client-ts/sdk/models/shared";
-
-            async function run() {
-              const sdk = new StackOne({
-                security: {
-                  username: "<YOUR_USERNAME_HERE>",
-                },
-              });
-
-              const result = await sdk.createConnectSession({
-                categories: [
-                  Categories.Ats,
-                  Categories.Hris,
-                  Categories.HrisLegacy,
-                  Categories.Crm,
-                  Categories.Iam,
-                  Categories.Marketing,
-                  Categories.Stackone,
-                ],
-                originOwnerId: "<value>",
-                originOwnerName: "<value>",
-                metadata: {},
-              });
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/unified/hris/employees/{id}/documents"]["get"]
-    update:
-      x-codeSamples:
-        - lang: typescript
-          label: hris_list_employee_documents
-          source: |-
-            import { StackOne } from "@stackone/stackone-client-ts";
-
-            async function run() {
-              const sdk = new StackOne({
-                security: {
-                  username: "<YOUR_USERNAME_HERE>",
-                },
-              });
-
-              const result = await sdk.listEmployeeDocuments({
-                id: "<id>",
-                proxy: {
-                  "key": "<value>",
-                },
-                xAccountId: "<value>",
-              });
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/unified/ats/candidates"]["get"]
-    update:
-      x-codeSamples:
-        - lang: typescript
-          label: ats_list_candidates
-          source: |-
-            import { StackOne } from "@stackone/stackone-client-ts";
-
-            async function run() {
-              const sdk = new StackOne({
-                security: {
-                  username: "<YOUR_USERNAME_HERE>",
-                },
-              });
-
-              const result = await sdk.listCandidates({
-                proxy: {
-                  "key": "<value>",
-                },
-                xAccountId: "<value>",
-              });
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/unified/ats/rejected_reasons"]["get"]
-    update:
-      x-codeSamples:
-        - lang: typescript
-          label: ats_list_rejected_reasons
-          source: |-
-            import { StackOne } from "@stackone/stackone-client-ts";
-
-            async function run() {
-              const sdk = new StackOne({
-                security: {
-                  username: "<YOUR_USERNAME_HERE>",
-                },
-              });
-
-              const result = await sdk.listRejectedReasons({
-                proxy: {
-                  "key": "<value>",
-                },
-                xAccountId: "<value>",
-              });
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/unified/ats/users/{id}"]["get"]
-    update:
-      x-codeSamples:
-        - lang: typescript
-          label: ats_get_user
-          source: |-
-            import { StackOne } from "@stackone/stackone-client-ts";
-
-            async function run() {
-              const sdk = new StackOne({
-                security: {
-                  username: "<YOUR_USERNAME_HERE>",
-                },
-              });
-
-              const result = await sdk.getUser({
+              const result = await sdk.getLocation({
                 id: "<id>",
                 proxy: {
                   "key": "<value>",
@@ -1890,11 +3060,11 @@ actions:
             }
 
             run();
-  - target: $["paths"]["/unified/marketing/templates/email/{id}"]["get"]
+  - target: $["paths"]["/unified/crm/lists"]["get"]
     update:
       x-codeSamples:
         - lang: typescript
-          label: marketing_get_email_template
+          label: crm_list_lists
           source: |-
             import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -1905,8 +3075,7 @@ actions:
                 },
               });
 
-              const result = await sdk.getEmailTemplate({
-                id: "<id>",
+              const result = await sdk.listLists({
                 proxy: {
                   "key": "<value>",
                 },
@@ -1918,11 +3087,11 @@ actions:
             }
 
             run();
-  - target: $["paths"]["/unified/marketing/templates/push/{id}"]["get"]
+  - target: $["paths"]["/unified/marketing/templates/email"]["get"]
     update:
       x-codeSamples:
         - lang: typescript
-          label: marketing_get_push_template
+          label: marketing_list_email_templates
           source: |-
             import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -1933,8 +3102,7 @@ actions:
                 },
               });
 
-              const result = await sdk.getPushTemplate({
-                id: "<id>",
+              const result = await sdk.listEmailTemplates({
                 proxy: {
                   "key": "<value>",
                 },
@@ -1943,6 +3111,76 @@ actions:
 
               // Handle the result
               console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/unified/marketing/templates/push"]["post"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: marketing_create_push_template
+          source: |-
+            import { StackOne } from "@stackone/stackone-client-ts";
+
+            async function run() {
+              const sdk = new StackOne({
+                security: {
+                  username: "<YOUR_USERNAME_HERE>",
+                },
+              });
+
+              const result = await sdk.createPushTemplate({
+                xAccountId: "<value>",
+                marketingCreatePushTemplateRequestDto: {
+                  id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+                  remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+                  tags: [
+                    "<value>",
+                  ],
+                  messages: [
+                    {
+                      id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+                      remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+                      messageType: {
+                        value: {},
+                      sourceValue: "Email",
+                      },
+                      messageContent: {},
+                    },
+                  ],
+                },
+              });
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/unified/hris/employees"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: hris_list_employees
+          source: |-
+            import { StackOne } from "@stackone/stackone-client-ts";
+
+            async function run() {
+              const sdk = new StackOne({
+                security: {
+                  username: "<YOUR_USERNAME_HERE>",
+                },
+              });
+
+              const result = await sdk.listEmployees({
+                proxy: {
+                  "key": "<value>",
+                },
+                xAccountId: "<value>",
+              });
+
+              for await (const page of result) {
+                // handle page
+              }
             }
 
             run();
@@ -1974,11 +3212,11 @@ actions:
             }
 
             run();
-  - target: $["paths"]["/unified/hris/employees/{id}/time_off"]["get"]
+  - target: $["paths"]["/unified/ats/applications/{id}"]["get"]
     update:
       x-codeSamples:
         - lang: typescript
-          label: hris_list_employee_time_off_requests
+          label: ats_get_application
           source: |-
             import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -1989,361 +3227,7 @@ actions:
                 },
               });
 
-              const result = await sdk.listEmployeeTimeOffRequests({
-                id: "<id>",
-                proxy: {
-                  "key": "<value>",
-                },
-                xAccountId: "<value>",
-              });
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/unified/hris/employees/{id}/time_off/{subResourceId}"]["get"]
-    update:
-      x-codeSamples:
-        - lang: typescript
-          label: hris_get_employees_time_off_request
-          source: |-
-            import { StackOne } from "@stackone/stackone-client-ts";
-
-            async function run() {
-              const sdk = new StackOne({
-                security: {
-                  username: "<YOUR_USERNAME_HERE>",
-                },
-              });
-
-              const result = await sdk.getEmployeesTimeOffRequest({
-                id: "<id>",
-                subResourceId: "<value>",
-                proxy: {
-                  "key": "<value>",
-                },
-                xAccountId: "<value>",
-              });
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/unified/hris/time_off/{id}"]["patch"]
-    update:
-      x-codeSamples:
-        - lang: typescript
-          label: hris_update_time_off_request
-          source: |-
-            import { StackOne } from "@stackone/stackone-client-ts";
-
-            async function run() {
-              const sdk = new StackOne({
-                security: {
-                  username: "<YOUR_USERNAME_HERE>",
-                },
-              });
-
-              const result = await sdk.updateTimeOffRequest({
-                id: "<id>",
-                xAccountId: "<value>",
-                hrisCreateTimeOffRequestDto: {
-                  employeeId: "1687-3",
-                  approverId: "1687-4",
-                  status: {
-                  sourceValue: "<value>",
-                  },
-                  type: {
-                  sourceValue:     {},
-                  },
-                  startDate: new Date("2021-01-01T01:01:01.000Z"),
-                  endDate: new Date("2021-01-01T01:01:01.000Z"),
-                },
-              });
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/unified/ats/jobs/{id}"]["get"]
-    update:
-      x-codeSamples:
-        - lang: typescript
-          label: ats_get_job
-          source: |-
-            import { StackOne } from "@stackone/stackone-client-ts";
-
-            async function run() {
-              const sdk = new StackOne({
-                security: {
-                  username: "<YOUR_USERNAME_HERE>",
-                },
-              });
-
-              const result = await sdk.getJob({
-                id: "<id>",
-                proxy: {
-                  "key": "<value>",
-                },
-                xAccountId: "<value>",
-              });
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/unified/marketing/campaigns"]["get"]
-    update:
-      x-codeSamples:
-        - lang: typescript
-          label: marketing_list_campaigns
-          source: |-
-            import { StackOne } from "@stackone/stackone-client-ts";
-
-            async function run() {
-              const sdk = new StackOne({
-                security: {
-                  username: "<YOUR_USERNAME_HERE>",
-                },
-              });
-
-              const result = await sdk.listCampaigns({
-                proxy: {
-                  "key": "<value>",
-                },
-                xAccountId: "<value>",
-              });
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/unified/hris/companies/{id}"]["get"]
-    update:
-      x-codeSamples:
-        - lang: typescript
-          label: hris_get_company
-          source: |-
-            import { StackOne } from "@stackone/stackone-client-ts";
-
-            async function run() {
-              const sdk = new StackOne({
-                security: {
-                  username: "<YOUR_USERNAME_HERE>",
-                },
-              });
-
-              const result = await sdk.getCompany({
-                id: "<id>",
-                proxy: {
-                  "key": "<value>",
-                },
-                xAccountId: "<value>",
-              });
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/unified/hris/employees"]["post"]
-    update:
-      x-codeSamples:
-        - lang: typescript
-          label: hris_create_employee
-          source: |-
-            import { StackOne } from "@stackone/stackone-client-ts";
-            import {
-              EmploymentSchemasEmploymentTypeValue,
-              EmploymentSchemasValue,
-              EmploymentValue,
-              HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue,
-              HrisCreateEmployeeRequestDtoSchemasHomeLocationValue,
-              HrisCreateEmployeeRequestDtoSchemasValue,
-              HrisCreateEmployeeRequestDtoSchemasWorkLocationValue,
-              Value,
-            } from "@stackone/stackone-client-ts/sdk/models/shared";
-
-            async function run() {
-              const sdk = new StackOne({
-                security: {
-                  username: "<YOUR_USERNAME_HERE>",
-                },
-              });
-
-              const result = await sdk.createEmployee({
-                xAccountId: "<value>",
-                hrisCreateEmployeeRequestDto: {
-                  firstName: "Issac",
-                  lastName: "Newton",
-                  name: "Issac Newton",
-                  displayName: "Sir Issac Newton",
-                  avatarUrl: "https://example.com/avatar.png",
-                  personalEmail: "isaac.newton@example.com",
-                  personalPhoneNumber: "+1234567890",
-                  workEmail: "newton@example.com",
-                  workPhoneNumber: "+1234567890",
-                  jobTitle: "Physicist",
-                  department: "Physics",
-                  managerId: "67890",
-                  gender: {
-                  sourceValue: 6730.33,
-                  },
-                  preferredLanguage: {
-                    value: HrisCreateEmployeeRequestDtoSchemasValue.Eng,
-                  sourceValue: "<value>",
-                  },
-                  ethnicity: {
-                  sourceValue:     {},
-                  },
-                  dateOfBirth: new Date("1990-01-01T00:00.000Z"),
-                  birthday: new Date("2021-01-01T00:00:00Z"),
-                  maritalStatus: {
-                  sourceValue:     {},
-                  },
-                  avatar: {},
-                  hireDate: new Date("2021-01-01T00:00.000Z"),
-                  startDate: new Date("2021-01-01T00:00.000Z"),
-                  tenure: 2,
-                  workAnniversary: new Date("2021-01-01T00:00:00Z"),
-                  employmentType: {
-                    value: HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue.Permanent,
-                  sourceValue: "Permanent",
-                  },
-                  employmentContractType: {
-                  sourceValue: "<value>",
-                  },
-                  employmentStatus: {
-                  sourceValue:     {},
-                  },
-                  terminationDate: new Date("2021-01-01T00:00:00Z"),
-                  companyName: "Example Corp",
-                  citizenships: [
-                    {
-                      value: Value.Us,
-                    sourceValue:     {},
-                    },
-                  ],
-                  employments: [
-                    {
-                      id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-                      remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-                      employeeId: "1687-3",
-                      jobTitle: "Software Engineer",
-                      payRate: "40.00",
-                      payPeriod: {
-                        value: EmploymentValue.Hour,
-                      sourceValue: "Hour",
-                      },
-                      payFrequency: {
-                        value: EmploymentSchemasValue.Hourly,
-                      sourceValue: "Hourly",
-                      },
-                      payCurrency: "USD",
-                      effectiveDate: new Date("2021-01-01T01:01:01.000Z"),
-                      employmentType: {
-                        value: EmploymentSchemasEmploymentTypeValue.Permanent,
-                      sourceValue: "Permanent",
-                      },
-                      employmentContractType: {
-                      sourceValue: 8263.19,
-                      },
-                      createdAt: new Date("2021-01-01T01:01:01.000Z"),
-                      updatedAt: new Date("2021-01-01T01:01:01.000Z"),
-                    },
-                  ],
-                  customFields: [
-                    {
-                      id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-                      remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-                      name: "Training Completion Status",
-                      description: "The completion status of the employee's training.",
-                      type: {
-                      sourceValue:     {},
-                      },
-                      value: {},
-                      valueId: "value_456",
-                      options: [
-                        "Not Started",
-                        "In Progress",
-                        "Completed",
-                        "Overdue",
-                      ],
-                    },
-                  ],
-                  benefits: [
-                    {
-                      id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-                      remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-                      name: "Health Insurance",
-                      benefitType: {
-                      sourceValue: "<value>",
-                      },
-                      provider: "Aetna",
-                      description: "Health insurance for employees",
-                      createdAt: new Date("2021-01-01T00:00:00Z"),
-                      updatedAt: new Date("2021-01-01T00:00:00Z"),
-                    },
-                  ],
-                  homeLocation: {
-                    name: "Woolsthorpe Manor",
-                    phoneNumber: "+44 1476 860 364",
-                    street1: "Water Lane",
-                    street2: "Woolsthorpe by Colsterworth",
-                    city: "Grantham",
-                    zipCode: "NG33 5NR",
-                    country: {
-                      value: HrisCreateEmployeeRequestDtoSchemasHomeLocationValue.Us,
-                    sourceValue: "<value>",
-                    },
-                    state: {
-                    sourceValue: "<value>",
-                    },
-                  },
-                  workLocation: {
-                    name: "Woolsthorpe Manor",
-                    phoneNumber: "+44 1476 860 364",
-                    street1: "Water Lane",
-                    street2: "Woolsthorpe by Colsterworth",
-                    city: "Grantham",
-                    zipCode: "NG33 5NR",
-                    country: {
-                      value: HrisCreateEmployeeRequestDtoSchemasWorkLocationValue.Us,
-                    sourceValue: false,
-                    },
-                    state: {
-                    sourceValue: false,
-                    },
-                  },
-                },
-              });
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/unified/hris/locations/{id}"]["get"]
-    update:
-      x-codeSamples:
-        - lang: typescript
-          label: hris_get_location
-          source: |-
-            import { StackOne } from "@stackone/stackone-client-ts";
-
-            async function run() {
-              const sdk = new StackOne({
-                security: {
-                  username: "<YOUR_USERNAME_HERE>",
-                },
-              });
-
-              const result = await sdk.getLocation({
+              const result = await sdk.getApplication({
                 id: "<id>",
                 proxy: {
                   "key": "<value>",
@@ -2384,518 +3268,6 @@ actions:
             }
 
             run();
-  - target: $["paths"]["/unified/iam/roles/{id}"]["get"]
-    update:
-      x-codeSamples:
-        - lang: typescript
-          label: iam_get_role
-          source: |-
-            import { StackOne } from "@stackone/stackone-client-ts";
-
-            async function run() {
-              const sdk = new StackOne({
-                security: {
-                  username: "<YOUR_USERNAME_HERE>",
-                },
-              });
-
-              const result = await sdk.getRole({
-                id: "<id>",
-                proxy: {
-                  "key": "<value>",
-                },
-                xAccountId: "<value>",
-              });
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/unified/ats/applications/{id}/scorecards"]["get"]
-    update:
-      x-codeSamples:
-        - lang: typescript
-          label: ats_list_application_scorecards
-          source: |-
-            import { StackOne } from "@stackone/stackone-client-ts";
-
-            async function run() {
-              const sdk = new StackOne({
-                security: {
-                  username: "<YOUR_USERNAME_HERE>",
-                },
-              });
-
-              const result = await sdk.listApplicationScorecards({
-                id: "<id>",
-                proxy: {
-                  "key": "<value>",
-                },
-                xAccountId: "<value>",
-              });
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/unified/iam/policies/{id}"]["get"]
-    update:
-      x-codeSamples:
-        - lang: typescript
-          label: iam_get_policy
-          source: |-
-            import { StackOne } from "@stackone/stackone-client-ts";
-
-            async function run() {
-              const sdk = new StackOne({
-                security: {
-                  username: "<YOUR_USERNAME_HERE>",
-                },
-              });
-
-              const result = await sdk.getPolicy({
-                id: "<id>",
-                proxy: {
-                  "key": "<value>",
-                },
-                xAccountId: "<value>",
-              });
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/unified/marketing/templates/email"]["post"]
-    update:
-      x-codeSamples:
-        - lang: typescript
-          label: marketing_create_email_template
-          source: |-
-            import { StackOne } from "@stackone/stackone-client-ts";
-
-            async function run() {
-              const sdk = new StackOne({
-                security: {
-                  username: "<YOUR_USERNAME_HERE>",
-                },
-              });
-
-              const result = await sdk.createEmailTemplate({
-                xAccountId: "<value>",
-                marketingCreateEmailTemplateRequestDto: {
-                  id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-                  remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-                  tags: [
-                    "<value>",
-                  ],
-                  messages: [
-                    {
-                      id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-                      remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-                      messageType: {
-                        value: {},
-                      sourceValue: "Email",
-                      },
-                      messageContent: {},
-                    },
-                  ],
-                },
-              });
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/accounts/{id}/meta"]["get"]
-    update:
-      x-codeSamples:
-        - lang: typescript
-          label: stackone_get_account_meta_info
-          source: |-
-            import { StackOne } from "@stackone/stackone-client-ts";
-
-            async function run() {
-              const sdk = new StackOne({
-                security: {
-                  username: "<YOUR_USERNAME_HERE>",
-                },
-              });
-
-              const result = await sdk.getAccountMetaInfo({
-                id: "<id>",
-              });
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/unified/hris/employees/{id}/documents/upload"]["post"]
-    update:
-      x-codeSamples:
-        - lang: typescript
-          label: hris_upload_employee_document
-          source: |-
-            import { StackOne } from "@stackone/stackone-client-ts";
-            import { UnifiedUploadRequestDtoSchemasValue, UnifiedUploadRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
-
-            async function run() {
-              const sdk = new StackOne({
-                security: {
-                  username: "<YOUR_USERNAME_HERE>",
-                },
-              });
-
-              const result = await sdk.uploadEmployeeDocument({
-                id: "<id>",
-                xAccountId: "<value>",
-                unifiedUploadRequestDto: {
-                  name: "weather-forecast",
-                  fileFormat: {
-                    value: UnifiedUploadRequestDtoValue.Pdf,
-                  sourceValue: "abc",
-                  },
-                  content: "VGhpcyBpc24ndCByZWFsbHkgYSBzYW1wbGUgZmlsZSwgYnV0IG5vIG9uZSB3aWxsIGV2ZXIga25vdyE",
-                  path: "reports or /path/to/file",
-                  confidential: {
-                    value: UnifiedUploadRequestDtoSchemasValue.True,
-                  sourceValue: "public",
-                  },
-                },
-              });
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/unified/hris/employees/{id}/work_eligibility/{subResourceId}"]["patch"]
-    update:
-      x-codeSamples:
-        - lang: typescript
-          label: hris_update_employee_work_eligibility_request
-          source: |-
-            import { StackOne } from "@stackone/stackone-client-ts";
-            import { ContentValue, HrisCreateWorkEligibilityRequestDtoSchemasValue } from "@stackone/stackone-client-ts/sdk/models/shared";
-
-            async function run() {
-              const sdk = new StackOne({
-                security: {
-                  username: "<YOUR_USERNAME_HERE>",
-                },
-              });
-
-              const result = await sdk.updateEmployeeWorkEligibilityRequest({
-                id: "<id>",
-                subResourceId: "<value>",
-                xAccountId: "<value>",
-                hrisCreateWorkEligibilityRequestDto: {
-                  type: {
-                  sourceType: 918.43,
-                  },
-                  subType: "H1B",
-                  document: {
-                    id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-                    remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-                    name: "My Document",
-                    path: "/path/to/file",
-                    contents: [
-                      {
-                        url: "https://example.com/file.pdf",
-                        unifiedUrl: "/unified/hris/employees/16022323/documents/79715678/download",
-                        fileFormat: {
-                          value: ContentValue.Pdf,
-                        sourceValue: "abc",
-                        },
-                      },
-                    ],
-                    createdAt: new Date("2021-01-01T01:01:01.000Z"),
-                    updatedAt: new Date("2021-01-02T01:01:01.000Z"),
-                  },
-                  validFrom: new Date("2021-01-01T00:00.000Z"),
-                  validTo: new Date("2021-01-01T00:00.000Z"),
-                  issuedBy: {
-                    value: HrisCreateWorkEligibilityRequestDtoSchemasValue.Us,
-                  sourceValue:     {},
-                  },
-                  number: "1234567890",
-                },
-              });
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/unified/hris/benefits/{id}"]["get"]
-    update:
-      x-codeSamples:
-        - lang: typescript
-          label: hris_get_benefit
-          source: |-
-            import { StackOne } from "@stackone/stackone-client-ts";
-
-            async function run() {
-              const sdk = new StackOne({
-                security: {
-                  username: "<YOUR_USERNAME_HERE>",
-                },
-              });
-
-              const result = await sdk.getBenefit({
-                id: "<id>",
-                proxy: {
-                  "key": "<value>",
-                },
-                xAccountId: "<value>",
-              });
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/unified/ats/applications/{id}/offers/{subResourceId}"]["get"]
-    update:
-      x-codeSamples:
-        - lang: typescript
-          label: ats_get_application_offer
-          source: |-
-            import { StackOne } from "@stackone/stackone-client-ts";
-
-            async function run() {
-              const sdk = new StackOne({
-                security: {
-                  username: "<YOUR_USERNAME_HERE>",
-                },
-              });
-
-              const result = await sdk.getApplicationOffer({
-                id: "<id>",
-                subResourceId: "<value>",
-                proxy: {
-                  "key": "<value>",
-                },
-                xAccountId: "<value>",
-              });
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/unified/ats/job_postings/{id}"]["get"]
-    update:
-      x-codeSamples:
-        - lang: typescript
-          label: ats_get_job_posting
-          source: |-
-            import { StackOne } from "@stackone/stackone-client-ts";
-
-            async function run() {
-              const sdk = new StackOne({
-                security: {
-                  username: "<YOUR_USERNAME_HERE>",
-                },
-              });
-
-              const result = await sdk.getJobPosting({
-                id: "<id>",
-                proxy: {
-                  "key": "<value>",
-                },
-                xAccountId: "<value>",
-              });
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/unified/ats/offers"]["post"]
-    update:
-      x-codeSamples:
-        - lang: typescript
-          label: ats_create_offer
-          source: |-
-            import { StackOne } from "@stackone/stackone-client-ts";
-            import { AtsCreateOfferRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
-
-            async function run() {
-              const sdk = new StackOne({
-                security: {
-                  username: "<YOUR_USERNAME_HERE>",
-                },
-              });
-
-              const result = await sdk.createOffer({
-                xAccountId: "<value>",
-                atsCreateOfferRequestDto: {
-                  startDate: new Date("2021-01-01T01:01:01.000Z"),
-                  offerStatus: {
-                    value: AtsCreateOfferRequestDtoValue.Pending,
-                  sourceValue: "Pending",
-                  },
-                  offerHistory: [
-                    {
-                      startDate: new Date("2021-01-01T01:01:01.000Z"),
-                      createdAt: new Date("2021-01-01T01:01:01.000Z"),
-                      updatedAt: new Date("2021-01-01T01:01:01.000Z"),
-                    },
-                  ],
-                },
-              });
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/unified/crm/contacts"]["post"]
-    update:
-      x-codeSamples:
-        - lang: typescript
-          label: crm_create_contact
-          source: |-
-            import { StackOne } from "@stackone/stackone-client-ts";
-
-            async function run() {
-              const sdk = new StackOne({
-                security: {
-                  username: "<YOUR_USERNAME_HERE>",
-                },
-              });
-
-              const result = await sdk.createContact({
-                xAccountId: "<value>",
-                crmCreateContactRequestDto: {
-                  firstName: "Steve",
-                  lastName: "Wozniak",
-                  companyName: "Apple Inc.",
-                  emails: [
-                    "steve@apple.com",
-                  ],
-                  phoneNumbers: [
-                    "123-456-7890",
-                  ],
-                  dealIds: [
-                    "deal-001",
-                    "deal-002",
-                  ],
-                  accountIds: [
-                    "account-123",
-                    "account-456",
-                  ],
-                },
-              });
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/unified/hris/companies"]["get"]
-    update:
-      x-codeSamples:
-        - lang: typescript
-          label: hris_list_companies
-          source: |-
-            import { StackOne } from "@stackone/stackone-client-ts";
-
-            async function run() {
-              const sdk = new StackOne({
-                security: {
-                  username: "<YOUR_USERNAME_HERE>",
-                },
-              });
-
-              const result = await sdk.listCompanies({
-                proxy: {
-                  "key": "<value>",
-                },
-                xAccountId: "<value>",
-              });
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/unified/hris/employments"]["get"]
-    update:
-      x-codeSamples:
-        - lang: typescript
-          label: hris_list_employments
-          source: |-
-            import { StackOne } from "@stackone/stackone-client-ts";
-
-            async function run() {
-              const sdk = new StackOne({
-                security: {
-                  username: "<YOUR_USERNAME_HERE>",
-                },
-              });
-
-              const result = await sdk.listEmployments({
-                proxy: {
-                  "key": "<value>",
-                },
-                xAccountId: "<value>",
-              });
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/unified/ats/candidates/{id}"]["patch"]
-    update:
-      x-codeSamples:
-        - lang: typescript
-          label: ats_update_candidate
-          source: |-
-            import { StackOne } from "@stackone/stackone-client-ts";
-
-            async function run() {
-              const sdk = new StackOne({
-                security: {
-                  username: "<YOUR_USERNAME_HERE>",
-                },
-              });
-
-              const result = await sdk.updateCandidate({
-                id: "<id>",
-                xAccountId: "<value>",
-                atsUpdateCandidatesRequestDto: {
-                  name: "Romain Sestier",
-                  firstName: "Romain",
-                  lastName: "Sestier",
-                  emails: [
-                    {
-                      type: "personal",
-                      value: "sestier.romain123@gmail.com",
-                    },
-                  ],
-                  phone: "+16178294093",
-                  company: "Company Inc.",
-                  title: "Software Engineer",
-                  applicationIds: [
-                    "123e4567-e89b-12d3-a456-426614174000",
-                    "523e1234-e89b-fdd2-a456-762545121101",
-                  ],
-                  id: "eebbaa75-7adf-4f7e-be4c-def6a12840f2",
-                },
-              });
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
   - target: $["paths"]["/unified/ats/interview_stages/{id}"]["get"]
     update:
       x-codeSamples:
@@ -2924,11 +3296,11 @@ actions:
             }
 
             run();
-  - target: $["paths"]["/unified/ats/rejected_reasons/{id}"]["get"]
+  - target: $["paths"]["/unified/ats/offers"]["get"]
     update:
       x-codeSamples:
         - lang: typescript
-          label: ats_get_rejected_reason
+          label: ats_list_offers
           source: |-
             import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -2939,7 +3311,34 @@ actions:
                 },
               });
 
-              const result = await sdk.getRejectedReason({
+              const result = await sdk.listOffers({
+                proxy: {
+                  "key": "<value>",
+                },
+                xAccountId: "<value>",
+              });
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/unified/crm/accounts/{id}"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: crm_get_account
+          source: |-
+            import { StackOne } from "@stackone/stackone-client-ts";
+
+            async function run() {
+              const sdk = new StackOne({
+                security: {
+                  username: "<YOUR_USERNAME_HERE>",
+                },
+              });
+
+              const result = await sdk.getAccount({
                 id: "<id>",
                 proxy: {
                   "key": "<value>",
@@ -2952,11 +3351,11 @@ actions:
             }
 
             run();
-  - target: $["paths"]["/unified/iam/users/{id}"]["get"]
+  - target: $["paths"]["/unified/ats/applications"]["get"]
     update:
       x-codeSamples:
         - lang: typescript
-          label: iam_get_user
+          label: ats_list_applications
           source: |-
             import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -2967,7 +3366,34 @@ actions:
                 },
               });
 
-              const result = await sdk.getUser({
+              const result = await sdk.listApplications({
+                proxy: {
+                  "key": "<value>",
+                },
+                xAccountId: "<value>",
+              });
+
+              // Handle the result
+              console.log(result)
+            }
+
+            run();
+  - target: $["paths"]["/unified/ats/applications/{id}/documents"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: ats_list_application_documents
+          source: |-
+            import { StackOne } from "@stackone/stackone-client-ts";
+
+            async function run() {
+              const sdk = new StackOne({
+                security: {
+                  username: "<YOUR_USERNAME_HERE>",
+                },
+              });
+
+              const result = await sdk.listApplicationDocuments({
                 id: "<id>",
                 proxy: {
                   "key": "<value>",
@@ -2980,11 +3406,11 @@ actions:
             }
 
             run();
-  - target: $["paths"]["/unified/iam/groups/{id}"]["get"]
+  - target: $["paths"]["/unified/crm/contacts/{id}"]["get"]
     update:
       x-codeSamples:
         - lang: typescript
-          label: iam_get_group
+          label: crm_get_contact
           source: |-
             import { StackOne } from "@stackone/stackone-client-ts";
 
@@ -2995,301 +3421,12 @@ actions:
                 },
               });
 
-              const result = await sdk.getGroup({
+              const result = await sdk.getContact({
                 id: "<id>",
                 proxy: {
                   "key": "<value>",
                 },
                 xAccountId: "<value>",
-              });
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/unified/iam/policies"]["get"]
-    update:
-      x-codeSamples:
-        - lang: typescript
-          label: iam_list_policies
-          source: |-
-            import { StackOne } from "@stackone/stackone-client-ts";
-
-            async function run() {
-              const sdk = new StackOne({
-                security: {
-                  username: "<YOUR_USERNAME_HERE>",
-                },
-              });
-
-              const result = await sdk.listPolicies({
-                proxy: {
-                  "key": "<value>",
-                },
-                xAccountId: "<value>",
-              });
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/unified/marketing/templates/email"]["get"]
-    update:
-      x-codeSamples:
-        - lang: typescript
-          label: marketing_list_email_templates
-          source: |-
-            import { StackOne } from "@stackone/stackone-client-ts";
-
-            async function run() {
-              const sdk = new StackOne({
-                security: {
-                  username: "<YOUR_USERNAME_HERE>",
-                },
-              });
-
-              const result = await sdk.listEmailTemplates({
-                proxy: {
-                  "key": "<value>",
-                },
-                xAccountId: "<value>",
-              });
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/unified/hris/employees/{id}/time_off"]["post"]
-    update:
-      x-codeSamples:
-        - lang: typescript
-          label: hris_create_employee_time_off_request
-          source: |-
-            import { StackOne } from "@stackone/stackone-client-ts";
-
-            async function run() {
-              const sdk = new StackOne({
-                security: {
-                  username: "<YOUR_USERNAME_HERE>",
-                },
-              });
-
-              const result = await sdk.createEmployeeTimeOffRequest({
-                id: "<id>",
-                xAccountId: "<value>",
-                hrisCreateTimeOffRequestDto: {
-                  employeeId: "1687-3",
-                  approverId: "1687-4",
-                  status: {
-                  sourceValue:     {},
-                  },
-                  type: {
-                  sourceValue: false,
-                  },
-                  startDate: new Date("2021-01-01T01:01:01.000Z"),
-                  endDate: new Date("2021-01-01T01:01:01.000Z"),
-                },
-              });
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/unified/hris/employees/{id}/work_eligibility"]["post"]
-    update:
-      x-codeSamples:
-        - lang: typescript
-          label: hris_create_employee_work_eligibility_request
-          source: |-
-            import { StackOne } from "@stackone/stackone-client-ts";
-            import { ContentValue, HrisCreateWorkEligibilityRequestDtoSchemasValue } from "@stackone/stackone-client-ts/sdk/models/shared";
-
-            async function run() {
-              const sdk = new StackOne({
-                security: {
-                  username: "<YOUR_USERNAME_HERE>",
-                },
-              });
-
-              const result = await sdk.createEmployeeWorkEligibilityRequest({
-                id: "<id>",
-                xAccountId: "<value>",
-                hrisCreateWorkEligibilityRequestDto: {
-                  type: {
-                  sourceType:     {},
-                  },
-                  subType: "H1B",
-                  document: {
-                    id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-                    remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-                    name: "My Document",
-                    path: "/path/to/file",
-                    contents: [
-                      {
-                        url: "https://example.com/file.pdf",
-                        unifiedUrl: "/unified/hris/employees/16022323/documents/79715678/download",
-                        fileFormat: {
-                          value: ContentValue.Pdf,
-                        sourceValue: "abc",
-                        },
-                      },
-                    ],
-                    createdAt: new Date("2021-01-01T01:01:01.000Z"),
-                    updatedAt: new Date("2021-01-02T01:01:01.000Z"),
-                  },
-                  validFrom: new Date("2021-01-01T00:00.000Z"),
-                  validTo: new Date("2021-01-01T00:00.000Z"),
-                  issuedBy: {
-                    value: HrisCreateWorkEligibilityRequestDtoSchemasValue.Us,
-                  sourceValue: "<value>",
-                  },
-                  number: "1234567890",
-                },
-              });
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/unified/ats/offers/{id}"]["get"]
-    update:
-      x-codeSamples:
-        - lang: typescript
-          label: ats_get_offer
-          source: |-
-            import { StackOne } from "@stackone/stackone-client-ts";
-
-            async function run() {
-              const sdk = new StackOne({
-                security: {
-                  username: "<YOUR_USERNAME_HERE>",
-                },
-              });
-
-              const result = await sdk.getOffer({
-                id: "<id>",
-                proxy: {
-                  "key": "<value>",
-                },
-                xAccountId: "<value>",
-              });
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/unified/crm/contacts/{id}"]["patch"]
-    update:
-      x-codeSamples:
-        - lang: typescript
-          label: crm_update_contact
-          source: |-
-            import { StackOne } from "@stackone/stackone-client-ts";
-
-            async function run() {
-              const sdk = new StackOne({
-                security: {
-                  username: "<YOUR_USERNAME_HERE>",
-                },
-              });
-
-              const result = await sdk.updateContact({
-                id: "<id>",
-                xAccountId: "<value>",
-                crmCreateContactRequestDto: {
-                  firstName: "Steve",
-                  lastName: "Wozniak",
-                  companyName: "Apple Inc.",
-                  emails: [
-                    "steve@apple.com",
-                  ],
-                  phoneNumbers: [
-                    "123-456-7890",
-                  ],
-                  dealIds: [
-                    "deal-001",
-                    "deal-002",
-                  ],
-                  accountIds: [
-                    "account-123",
-                    "account-456",
-                  ],
-                },
-              });
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/unified/iam/roles"]["get"]
-    update:
-      x-codeSamples:
-        - lang: typescript
-          label: iam_list_roles
-          source: |-
-            import { StackOne } from "@stackone/stackone-client-ts";
-
-            async function run() {
-              const sdk = new StackOne({
-                security: {
-                  username: "<YOUR_USERNAME_HERE>",
-                },
-              });
-
-              const result = await sdk.listRoles({
-                proxy: {
-                  "key": "<value>",
-                },
-                xAccountId: "<value>",
-              });
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/unified/marketing/templates/omni_channel"]["post"]
-    update:
-      x-codeSamples:
-        - lang: typescript
-          label: marketing_create_omni_channel_template
-          source: |-
-            import { StackOne } from "@stackone/stackone-client-ts";
-
-            async function run() {
-              const sdk = new StackOne({
-                security: {
-                  username: "<YOUR_USERNAME_HERE>",
-                },
-              });
-
-              const result = await sdk.createOmniChannelTemplate({
-                xAccountId: "<value>",
-                marketingCreateTemplateRequestDto: {
-                  id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-                  remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-                  tags: [
-                    "<value>",
-                  ],
-                  messages: [
-                    {
-                      id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-                      remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-                      messageType: {
-                        value: {},
-                      sourceValue: "Email",
-                      },
-                    messageContent:     {},
-                    },
-                  ],
-                },
               });
 
               // Handle the result
@@ -3333,143 +3470,6 @@ actions:
                     },
                   ],
                 },
-              });
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/accounts/{id}"]["patch"]
-    update:
-      x-codeSamples:
-        - lang: typescript
-          label: stackone_update_account
-          source: |-
-            import { StackOne } from "@stackone/stackone-client-ts";
-
-            async function run() {
-              const sdk = new StackOne({
-                security: {
-                  username: "<YOUR_USERNAME_HERE>",
-                },
-              });
-
-              const result = await sdk.updateAccount({
-                id: "<id>",
-                patchAccountDto: {},
-              });
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/unified/hris/locations"]["get"]
-    update:
-      x-codeSamples:
-        - lang: typescript
-          label: hris_list_locations
-          source: |-
-            import { StackOne } from "@stackone/stackone-client-ts";
-
-            async function run() {
-              const sdk = new StackOne({
-                security: {
-                  username: "<YOUR_USERNAME_HERE>",
-                },
-              });
-
-              const result = await sdk.listLocations({
-                proxy: {
-                  "key": "<value>",
-                },
-                xAccountId: "<value>",
-              });
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/unified/ats/applications/{id}/offers"]["get"]
-    update:
-      x-codeSamples:
-        - lang: typescript
-          label: ats_list_applications_offers
-          source: |-
-            import { StackOne } from "@stackone/stackone-client-ts";
-
-            async function run() {
-              const sdk = new StackOne({
-                security: {
-                  username: "<YOUR_USERNAME_HERE>",
-                },
-              });
-
-              const result = await sdk.listApplicationsOffers({
-                id: "<id>",
-                proxy: {
-                  "key": "<value>",
-                },
-                xAccountId: "<value>",
-              });
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/unified/ats/applications/{id}/scorecards/{subResourceId}"]["get"]
-    update:
-      x-codeSamples:
-        - lang: typescript
-          label: ats_get_application_scorecard
-          source: |-
-            import { StackOne } from "@stackone/stackone-client-ts";
-
-            async function run() {
-              const sdk = new StackOne({
-                security: {
-                  username: "<YOUR_USERNAME_HERE>",
-                },
-              });
-
-              const result = await sdk.getApplicationScorecard({
-                id: "<id>",
-                subResourceId: "<value>",
-                proxy: {
-                  "key": "<value>",
-                },
-                xAccountId: "<value>",
-              });
-
-              // Handle the result
-              console.log(result)
-            }
-
-            run();
-  - target: $["paths"]["/unified/ats/locations/{id}"]["get"]
-    update:
-      x-codeSamples:
-        - lang: typescript
-          label: ats_get_location
-          source: |-
-            import { StackOne } from "@stackone/stackone-client-ts";
-
-            async function run() {
-              const sdk = new StackOne({
-                security: {
-                  username: "<YOUR_USERNAME_HERE>",
-                },
-              });
-
-              const result = await sdk.getLocation({
-                id: "<id>",
-                proxy: {
-                  "key": "<value>",
-                },
-                xAccountId: "<value>",
               });
 
               // Handle the result

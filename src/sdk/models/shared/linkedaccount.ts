@@ -8,6 +8,12 @@ export type Credentials = {};
 
 export type SetupInformation = {};
 
+export enum LinkedAccountStatus {
+    Active = "Active",
+    Inactive = "Inactive",
+    Error = "Error",
+}
+
 export type LinkedAccount = {
     active: boolean;
     createdAt: Date;
@@ -19,6 +25,8 @@ export type LinkedAccount = {
     originUsername?: string | null | undefined;
     provider: string;
     setupInformation?: SetupInformation | null | undefined;
+    status: LinkedAccountStatus;
+    statusReasons?: Array<string> | null | undefined;
     updatedAt: Date;
 };
 
@@ -45,6 +53,9 @@ export namespace SetupInformation$ {
 }
 
 /** @internal */
+export const LinkedAccountStatus$ = z.nativeEnum(LinkedAccountStatus);
+
+/** @internal */
 export namespace LinkedAccount$ {
     export type Inbound = {
         active: boolean;
@@ -57,6 +68,8 @@ export namespace LinkedAccount$ {
         origin_username?: string | null | undefined;
         provider: string;
         setup_information?: SetupInformation$.Inbound | null | undefined;
+        status: LinkedAccountStatus;
+        status_reasons?: Array<string> | null | undefined;
         updated_at: string;
     };
 
@@ -75,6 +88,8 @@ export namespace LinkedAccount$ {
             origin_username: z.nullable(z.string()).optional(),
             provider: z.string(),
             setup_information: z.nullable(z.lazy(() => SetupInformation$.inboundSchema)).optional(),
+            status: LinkedAccountStatus$,
+            status_reasons: z.nullable(z.array(z.string())).optional(),
             updated_at: z
                 .string()
                 .datetime({ offset: true })
@@ -94,6 +109,8 @@ export namespace LinkedAccount$ {
                 ...(v.setup_information === undefined
                     ? null
                     : { setupInformation: v.setup_information }),
+                status: v.status,
+                ...(v.status_reasons === undefined ? null : { statusReasons: v.status_reasons }),
                 updatedAt: v.updated_at,
             };
         });
@@ -109,6 +126,8 @@ export namespace LinkedAccount$ {
         origin_username?: string | null | undefined;
         provider: string;
         setup_information?: SetupInformation$.Outbound | null | undefined;
+        status: LinkedAccountStatus;
+        status_reasons?: Array<string> | null | undefined;
         updated_at: string;
     };
 
@@ -124,6 +143,8 @@ export namespace LinkedAccount$ {
             originUsername: z.nullable(z.string()).optional(),
             provider: z.string(),
             setupInformation: z.nullable(z.lazy(() => SetupInformation$.outboundSchema)).optional(),
+            status: LinkedAccountStatus$,
+            statusReasons: z.nullable(z.array(z.string())).optional(),
             updatedAt: z.date().transform((v) => v.toISOString()),
         })
         .transform((v) => {
@@ -140,6 +161,8 @@ export namespace LinkedAccount$ {
                 ...(v.setupInformation === undefined
                     ? null
                     : { setup_information: v.setupInformation }),
+                status: v.status,
+                ...(v.statusReasons === undefined ? null : { status_reasons: v.statusReasons }),
                 updated_at: v.updatedAt,
             };
         });
