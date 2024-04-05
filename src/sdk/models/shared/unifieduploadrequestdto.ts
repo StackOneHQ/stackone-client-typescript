@@ -1263,10 +1263,6 @@ export type UnifiedUploadRequestDto = {
      */
     content?: string | null | undefined;
     /**
-     * The comma separated list of fields to return in the response (if empty, all fields are returned)
-     */
-    fields?: string | null | undefined;
-    /**
      * The file format of the file
      */
     fileFormat?: UnifiedUploadRequestDtoFileFormat | null | undefined;
@@ -1275,35 +1271,9 @@ export type UnifiedUploadRequestDto = {
      */
     name?: string | null | undefined;
     /**
-     * The unified cursor
-     */
-    next?: string | null | undefined;
-    /**
-     * The page number of the results to fetch
-     *
-     * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
-     */
-    page?: string | null | undefined;
-    /**
-     * The number of results per page
-     */
-    pageSize?: string | null | undefined;
-    /**
      * The location, category or path for the file to be uploaded to
      */
     path?: string | null | undefined;
-    /**
-     * Query parameters that can be used to pass through parameters to the underlying provider request by surrounding them with 'proxy' key
-     */
-    proxy?: Record<string, any> | null | undefined;
-    /**
-     * Indicates that the raw request result is returned
-     */
-    raw?: boolean | null | undefined;
-    /**
-     * Use a string with a date to only select results updated after that given date
-     */
-    updatedAfter?: string | null | undefined;
 };
 
 /** @internal */
@@ -1552,16 +1522,9 @@ export namespace UnifiedUploadRequestDto$ {
     export type Inbound = {
         confidential?: UnifiedUploadRequestDtoConfidential$.Inbound | null | undefined;
         content?: string | null | undefined;
-        fields?: string | null | undefined;
         file_format?: UnifiedUploadRequestDtoFileFormat$.Inbound | null | undefined;
         name?: string | null | undefined;
-        next?: string | null | undefined;
-        page?: string | null | undefined;
-        page_size?: string | null | undefined;
         path?: string | null | undefined;
-        proxy?: Record<string, any> | null | undefined;
-        raw?: boolean | null | undefined;
-        updated_after?: string | null | undefined;
     };
 
     export const inboundSchema: z.ZodType<UnifiedUploadRequestDto, z.ZodTypeDef, Inbound> = z
@@ -1570,49 +1533,28 @@ export namespace UnifiedUploadRequestDto$ {
                 .nullable(z.lazy(() => UnifiedUploadRequestDtoConfidential$.inboundSchema))
                 .optional(),
             content: z.nullable(z.string()).optional(),
-            fields: z.nullable(z.string()).optional(),
             file_format: z
                 .nullable(z.lazy(() => UnifiedUploadRequestDtoFileFormat$.inboundSchema))
                 .optional(),
             name: z.nullable(z.string()).optional(),
-            next: z.nullable(z.string()).optional(),
-            page: z.nullable(z.string()).optional(),
-            page_size: z.nullable(z.string().default("25")),
             path: z.nullable(z.string()).optional(),
-            proxy: z.nullable(z.record(z.any())).optional(),
-            raw: z.nullable(z.boolean().default(false)),
-            updated_after: z.nullable(z.string()).optional(),
         })
         .transform((v) => {
             return {
                 ...(v.confidential === undefined ? null : { confidential: v.confidential }),
                 ...(v.content === undefined ? null : { content: v.content }),
-                ...(v.fields === undefined ? null : { fields: v.fields }),
                 ...(v.file_format === undefined ? null : { fileFormat: v.file_format }),
                 ...(v.name === undefined ? null : { name: v.name }),
-                ...(v.next === undefined ? null : { next: v.next }),
-                ...(v.page === undefined ? null : { page: v.page }),
-                pageSize: v.page_size,
                 ...(v.path === undefined ? null : { path: v.path }),
-                ...(v.proxy === undefined ? null : { proxy: v.proxy }),
-                raw: v.raw,
-                ...(v.updated_after === undefined ? null : { updatedAfter: v.updated_after }),
             };
         });
 
     export type Outbound = {
         confidential?: UnifiedUploadRequestDtoConfidential$.Outbound | null | undefined;
         content?: string | null | undefined;
-        fields?: string | null | undefined;
         file_format?: UnifiedUploadRequestDtoFileFormat$.Outbound | null | undefined;
         name?: string | null | undefined;
-        next?: string | null | undefined;
-        page?: string | null | undefined;
-        page_size: string | null;
         path?: string | null | undefined;
-        proxy?: Record<string, any> | null | undefined;
-        raw: boolean | null;
-        updated_after?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UnifiedUploadRequestDto> = z
@@ -1621,33 +1563,19 @@ export namespace UnifiedUploadRequestDto$ {
                 .nullable(z.lazy(() => UnifiedUploadRequestDtoConfidential$.outboundSchema))
                 .optional(),
             content: z.nullable(z.string()).optional(),
-            fields: z.nullable(z.string()).optional(),
             fileFormat: z
                 .nullable(z.lazy(() => UnifiedUploadRequestDtoFileFormat$.outboundSchema))
                 .optional(),
             name: z.nullable(z.string()).optional(),
-            next: z.nullable(z.string()).optional(),
-            page: z.nullable(z.string()).optional(),
-            pageSize: z.nullable(z.string().default("25")),
             path: z.nullable(z.string()).optional(),
-            proxy: z.nullable(z.record(z.any())).optional(),
-            raw: z.nullable(z.boolean().default(false)),
-            updatedAfter: z.nullable(z.string()).optional(),
         })
         .transform((v) => {
             return {
                 ...(v.confidential === undefined ? null : { confidential: v.confidential }),
                 ...(v.content === undefined ? null : { content: v.content }),
-                ...(v.fields === undefined ? null : { fields: v.fields }),
                 ...(v.fileFormat === undefined ? null : { file_format: v.fileFormat }),
                 ...(v.name === undefined ? null : { name: v.name }),
-                ...(v.next === undefined ? null : { next: v.next }),
-                ...(v.page === undefined ? null : { page: v.page }),
-                page_size: v.pageSize,
                 ...(v.path === undefined ? null : { path: v.path }),
-                ...(v.proxy === undefined ? null : { proxy: v.proxy }),
-                raw: v.raw,
-                ...(v.updatedAfter === undefined ? null : { updated_after: v.updatedAfter }),
             };
         });
 }

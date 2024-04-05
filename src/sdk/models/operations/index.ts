@@ -48,7 +48,6 @@ export * from "./crmlistcontacts";
 export * from "./crmlistlists";
 export * from "./crmupdatecontact";
 export * from "./hriscreateemployee";
-export * from "./hriscreateemployeedocument";
 export * from "./hriscreateemployeetimeoffrequest";
 export * from "./hriscreateemployeeworkeligibilityrequest";
 export * from "./hriscreatetimeoffrequest";

@@ -51,7 +51,7 @@ export type HrisListEmployeeDocumentsResponse = {
     /**
      * The documents related to the employee with the given identifier were retrieved.
      */
-    documentsPaginated?: shared.DocumentsPaginated | undefined;
+    hrisDocumentsPaginated?: shared.HrisDocumentsPaginated | undefined;
     /**
      * HTTP response status code for this operation
      */
@@ -150,7 +150,7 @@ export namespace HrisListEmployeeDocumentsRequest$ {
 export namespace HrisListEmployeeDocumentsResponse$ {
     export type Inbound = {
         ContentType: string;
-        DocumentsPaginated?: shared.DocumentsPaginated$.Inbound | undefined;
+        HrisDocumentsPaginated?: shared.HrisDocumentsPaginated$.Inbound | undefined;
         StatusCode: number;
         RawResponse: Response;
     };
@@ -162,16 +162,16 @@ export namespace HrisListEmployeeDocumentsResponse$ {
     > = z
         .object({
             ContentType: z.string(),
-            DocumentsPaginated: shared.DocumentsPaginated$.inboundSchema.optional(),
+            HrisDocumentsPaginated: shared.HrisDocumentsPaginated$.inboundSchema.optional(),
             StatusCode: z.number().int(),
             RawResponse: z.instanceof(Response),
         })
         .transform((v) => {
             return {
                 contentType: v.ContentType,
-                ...(v.DocumentsPaginated === undefined
+                ...(v.HrisDocumentsPaginated === undefined
                     ? null
-                    : { documentsPaginated: v.DocumentsPaginated }),
+                    : { hrisDocumentsPaginated: v.HrisDocumentsPaginated }),
                 statusCode: v.StatusCode,
                 rawResponse: v.RawResponse,
             };
@@ -179,7 +179,7 @@ export namespace HrisListEmployeeDocumentsResponse$ {
 
     export type Outbound = {
         ContentType: string;
-        DocumentsPaginated?: shared.DocumentsPaginated$.Outbound | undefined;
+        HrisDocumentsPaginated?: shared.HrisDocumentsPaginated$.Outbound | undefined;
         StatusCode: number;
         RawResponse: never;
     };
@@ -191,7 +191,7 @@ export namespace HrisListEmployeeDocumentsResponse$ {
     > = z
         .object({
             contentType: z.string(),
-            documentsPaginated: shared.DocumentsPaginated$.outboundSchema.optional(),
+            hrisDocumentsPaginated: shared.HrisDocumentsPaginated$.outboundSchema.optional(),
             statusCode: z.number().int(),
             rawResponse: z.instanceof(Response).transform(() => {
                 throw new Error("Response cannot be serialized");
@@ -200,9 +200,9 @@ export namespace HrisListEmployeeDocumentsResponse$ {
         .transform((v) => {
             return {
                 ContentType: v.contentType,
-                ...(v.documentsPaginated === undefined
+                ...(v.hrisDocumentsPaginated === undefined
                     ? null
-                    : { DocumentsPaginated: v.documentsPaginated }),
+                    : { HrisDocumentsPaginated: v.hrisDocumentsPaginated }),
                 StatusCode: v.statusCode,
                 RawResponse: v.rawResponse,
             };

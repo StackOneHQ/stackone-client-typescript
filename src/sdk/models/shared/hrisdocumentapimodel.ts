@@ -5,11 +5,11 @@
 import { Content, Content$ } from "./content";
 import * as z from "zod";
 
-export type DocumentApiModel4 = {};
+export type HrisDocumentApiModel4 = {};
 
-export type DocumentApiModelSourceValue = DocumentApiModel4 | string | number | boolean;
+export type HrisDocumentApiModelSourceValue = HrisDocumentApiModel4 | string | number | boolean;
 
-export enum DocumentApiModelValue {
+export enum HrisDocumentApiModelValue {
     Resume = "resume",
     Avatar = "avatar",
     CoverLetter = "cover_letter",
@@ -26,12 +26,12 @@ export enum DocumentApiModelValue {
 /**
  * The content type of the document
  */
-export type DocumentApiModelType = {
-    sourceValue?: DocumentApiModel4 | string | number | boolean | null | undefined;
-    value?: DocumentApiModelValue | null | undefined;
+export type HrisDocumentApiModelType = {
+    sourceValue?: HrisDocumentApiModel4 | string | number | boolean | null | undefined;
+    value?: HrisDocumentApiModelValue | null | undefined;
 };
 
-export type DocumentApiModel = {
+export type HrisDocumentApiModel = {
     /**
      * The content of the file
      */
@@ -59,7 +59,7 @@ export type DocumentApiModel = {
     /**
      * The content type of the document
      */
-    type?: DocumentApiModelType | null | undefined;
+    type?: HrisDocumentApiModelType | null | undefined;
     /**
      * The update date of the file
      */
@@ -67,62 +67,72 @@ export type DocumentApiModel = {
 };
 
 /** @internal */
-export namespace DocumentApiModel4$ {
+export namespace HrisDocumentApiModel4$ {
     export type Inbound = {};
 
-    export const inboundSchema: z.ZodType<DocumentApiModel4, z.ZodTypeDef, Inbound> = z.object({});
+    export const inboundSchema: z.ZodType<HrisDocumentApiModel4, z.ZodTypeDef, Inbound> = z.object(
+        {}
+    );
 
     export type Outbound = {};
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, DocumentApiModel4> = z.object(
-        {}
-    );
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, HrisDocumentApiModel4> =
+        z.object({});
 }
 
 /** @internal */
-export namespace DocumentApiModelSourceValue$ {
-    export type Inbound = DocumentApiModel4$.Inbound | string | number | boolean;
+export namespace HrisDocumentApiModelSourceValue$ {
+    export type Inbound = HrisDocumentApiModel4$.Inbound | string | number | boolean;
 
-    export type Outbound = DocumentApiModel4$.Outbound | string | number | boolean;
-    export const inboundSchema: z.ZodType<DocumentApiModelSourceValue, z.ZodTypeDef, Inbound> =
+    export type Outbound = HrisDocumentApiModel4$.Outbound | string | number | boolean;
+    export const inboundSchema: z.ZodType<HrisDocumentApiModelSourceValue, z.ZodTypeDef, Inbound> =
         z.union([
-            z.lazy(() => DocumentApiModel4$.inboundSchema),
+            z.lazy(() => HrisDocumentApiModel4$.inboundSchema),
             z.string(),
             z.number(),
             z.boolean(),
         ]);
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, DocumentApiModelSourceValue> =
-        z.union([
-            z.lazy(() => DocumentApiModel4$.outboundSchema),
-            z.string(),
-            z.number(),
-            z.boolean(),
-        ]);
+    export const outboundSchema: z.ZodType<
+        Outbound,
+        z.ZodTypeDef,
+        HrisDocumentApiModelSourceValue
+    > = z.union([
+        z.lazy(() => HrisDocumentApiModel4$.outboundSchema),
+        z.string(),
+        z.number(),
+        z.boolean(),
+    ]);
 }
 
 /** @internal */
-export const DocumentApiModelValue$ = z.nativeEnum(DocumentApiModelValue);
+export const HrisDocumentApiModelValue$ = z.nativeEnum(HrisDocumentApiModelValue);
 
 /** @internal */
-export namespace DocumentApiModelType$ {
+export namespace HrisDocumentApiModelType$ {
     export type Inbound = {
-        source_value?: DocumentApiModel4$.Inbound | string | number | boolean | null | undefined;
-        value?: DocumentApiModelValue | null | undefined;
+        source_value?:
+            | HrisDocumentApiModel4$.Inbound
+            | string
+            | number
+            | boolean
+            | null
+            | undefined;
+        value?: HrisDocumentApiModelValue | null | undefined;
     };
 
-    export const inboundSchema: z.ZodType<DocumentApiModelType, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<HrisDocumentApiModelType, z.ZodTypeDef, Inbound> = z
         .object({
             source_value: z
                 .nullable(
                     z.union([
-                        z.lazy(() => DocumentApiModel4$.inboundSchema),
+                        z.lazy(() => HrisDocumentApiModel4$.inboundSchema),
                         z.string(),
                         z.number(),
                         z.boolean(),
                     ])
                 )
                 .optional(),
-            value: z.nullable(DocumentApiModelValue$).optional(),
+            value: z.nullable(HrisDocumentApiModelValue$).optional(),
         })
         .transform((v) => {
             return {
@@ -132,23 +142,29 @@ export namespace DocumentApiModelType$ {
         });
 
     export type Outbound = {
-        source_value?: DocumentApiModel4$.Outbound | string | number | boolean | null | undefined;
-        value?: DocumentApiModelValue | null | undefined;
+        source_value?:
+            | HrisDocumentApiModel4$.Outbound
+            | string
+            | number
+            | boolean
+            | null
+            | undefined;
+        value?: HrisDocumentApiModelValue | null | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, DocumentApiModelType> = z
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, HrisDocumentApiModelType> = z
         .object({
             sourceValue: z
                 .nullable(
                     z.union([
-                        z.lazy(() => DocumentApiModel4$.outboundSchema),
+                        z.lazy(() => HrisDocumentApiModel4$.outboundSchema),
                         z.string(),
                         z.number(),
                         z.boolean(),
                     ])
                 )
                 .optional(),
-            value: z.nullable(DocumentApiModelValue$).optional(),
+            value: z.nullable(HrisDocumentApiModelValue$).optional(),
         })
         .transform((v) => {
             return {
@@ -159,7 +175,7 @@ export namespace DocumentApiModelType$ {
 }
 
 /** @internal */
-export namespace DocumentApiModel$ {
+export namespace HrisDocumentApiModel$ {
     export type Inbound = {
         contents?: Array<Content$.Inbound> | null | undefined;
         created_at?: string | null | undefined;
@@ -167,11 +183,11 @@ export namespace DocumentApiModel$ {
         name?: string | null | undefined;
         path?: string | null | undefined;
         remote_id?: string | null | undefined;
-        type?: DocumentApiModelType$.Inbound | null | undefined;
+        type?: HrisDocumentApiModelType$.Inbound | null | undefined;
         updated_at?: string | null | undefined;
     };
 
-    export const inboundSchema: z.ZodType<DocumentApiModel, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<HrisDocumentApiModel, z.ZodTypeDef, Inbound> = z
         .object({
             contents: z.nullable(z.array(Content$.inboundSchema)).optional(),
             created_at: z
@@ -186,7 +202,7 @@ export namespace DocumentApiModel$ {
             name: z.nullable(z.string()).optional(),
             path: z.nullable(z.string()).optional(),
             remote_id: z.nullable(z.string()).optional(),
-            type: z.nullable(z.lazy(() => DocumentApiModelType$.inboundSchema)).optional(),
+            type: z.nullable(z.lazy(() => HrisDocumentApiModelType$.inboundSchema)).optional(),
             updated_at: z
                 .nullable(
                     z
@@ -216,11 +232,11 @@ export namespace DocumentApiModel$ {
         name?: string | null | undefined;
         path?: string | null | undefined;
         remote_id?: string | null | undefined;
-        type?: DocumentApiModelType$.Outbound | null | undefined;
+        type?: HrisDocumentApiModelType$.Outbound | null | undefined;
         updated_at?: string | null | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, DocumentApiModel> = z
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, HrisDocumentApiModel> = z
         .object({
             contents: z.nullable(z.array(Content$.outboundSchema)).optional(),
             createdAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
@@ -228,7 +244,7 @@ export namespace DocumentApiModel$ {
             name: z.nullable(z.string()).optional(),
             path: z.nullable(z.string()).optional(),
             remoteId: z.nullable(z.string()).optional(),
-            type: z.nullable(z.lazy(() => DocumentApiModelType$.outboundSchema)).optional(),
+            type: z.nullable(z.lazy(() => HrisDocumentApiModelType$.outboundSchema)).optional(),
             updatedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
         })
         .transform((v) => {

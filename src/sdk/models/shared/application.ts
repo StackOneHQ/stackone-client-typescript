@@ -3,7 +3,7 @@
  */
 
 import { ApplicationAttachment, ApplicationAttachment$ } from "./applicationattachment";
-import { DocumentApiModel, DocumentApiModel$ } from "./documentapimodel";
+import { AtsDocumentApiModel, AtsDocumentApiModel$ } from "./atsdocumentapimodel";
 import { Questionnaire, Questionnaire$ } from "./questionnaire";
 import { RejectedReason, RejectedReason$ } from "./rejectedreason";
 import { ResultLink, ResultLink$ } from "./resultlink";
@@ -104,7 +104,7 @@ export type Application = {
     /**
      * The documents attached to this application (eg. resume, cover letter etc.)
      */
-    documents?: Array<DocumentApiModel> | null | undefined;
+    documents?: Array<AtsDocumentApiModel> | null | undefined;
     /**
      * Unique identifier
      */
@@ -360,7 +360,7 @@ export namespace Application$ {
         candidate?: ApplicationCandidate$.Inbound | null | undefined;
         candidate_id?: string | null | undefined;
         created_at?: string | null | undefined;
-        documents?: Array<DocumentApiModel$.Inbound> | null | undefined;
+        documents?: Array<AtsDocumentApiModel$.Inbound> | null | undefined;
         id?: string | null | undefined;
         interview_stage?: ApplicationInterviewStage$.Inbound | null | undefined;
         interview_stage_id?: string | null | undefined;
@@ -392,7 +392,7 @@ export namespace Application$ {
                         .transform((v) => new Date(v))
                 )
                 .optional(),
-            documents: z.nullable(z.array(DocumentApiModel$.inboundSchema)).optional(),
+            documents: z.nullable(z.array(AtsDocumentApiModel$.inboundSchema)).optional(),
             id: z.nullable(z.string()).optional(),
             interview_stage: z
                 .nullable(z.lazy(() => ApplicationInterviewStage$.inboundSchema))
@@ -461,7 +461,7 @@ export namespace Application$ {
         candidate?: ApplicationCandidate$.Outbound | null | undefined;
         candidate_id?: string | null | undefined;
         created_at?: string | null | undefined;
-        documents?: Array<DocumentApiModel$.Outbound> | null | undefined;
+        documents?: Array<AtsDocumentApiModel$.Outbound> | null | undefined;
         id?: string | null | undefined;
         interview_stage?: ApplicationInterviewStage$.Outbound | null | undefined;
         interview_stage_id?: string | null | undefined;
@@ -486,7 +486,7 @@ export namespace Application$ {
             candidate: z.nullable(z.lazy(() => ApplicationCandidate$.outboundSchema)).optional(),
             candidateId: z.nullable(z.string()).optional(),
             createdAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
-            documents: z.nullable(z.array(DocumentApiModel$.outboundSchema)).optional(),
+            documents: z.nullable(z.array(AtsDocumentApiModel$.outboundSchema)).optional(),
             id: z.nullable(z.string()).optional(),
             interviewStage: z
                 .nullable(z.lazy(() => ApplicationInterviewStage$.outboundSchema))

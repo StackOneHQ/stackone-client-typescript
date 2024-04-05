@@ -4,7 +4,6 @@
 ### Available Operations
 
 * [createEmployee](#createemployee) - Creates an employee
-* [createEmployeeDocument](#createemployeedocument) - Create Employee Document
 * [createEmployeeTimeOffRequest](#createemployeetimeoffrequest) - Create Employee Time Off Request
 * [createEmployeeWorkEligibilityRequest](#createemployeeworkeligibilityrequest) - Create Employee Work Eligibility Request
 * [createTimeOffRequest](#createtimeoffrequest) - Creates a time off request
@@ -224,68 +223,6 @@ run();
 ### Response
 
 **Promise<[operations.HrisCreateEmployeeResponse](../../sdk/models/operations/hriscreateemployeeresponse.md)>**
-### Errors
-
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 4xx-5xx         | */*             |
-
-## createEmployeeDocument
-
-Create Employee Document
-
-### Example Usage
-
-```typescript
-import { StackOne } from "@stackone/stackone-client-ts";
-import { ContentValue } from "@stackone/stackone-client-ts/sdk/models/shared";
-
-async function run() {
-  const sdk = new StackOne({
-    security: {
-      password: "<YOUR_PASSWORD_HERE>",
-    },
-  });
-
-  const result = await sdk.hris.createEmployeeDocument({
-    hrisCreateDocumentRequestDto: {
-      content: {
-        fileFormat: {
-        sourceValue: "abc",
-          value: ContentValue.Pdf,
-        },
-        unifiedUrl: "/unified/hris/employees/16022323/documents/79715678/download",
-        url: "https://example.com/file.pdf",
-      },
-      name: "My Document",
-      path: "/path/to/file",
-      type: {
-      sourceValue:     {},
-      },
-    },
-    id: "<id>",
-    xAccountId: "<value>",
-  });
-
-  // Handle the result
-  console.log(result)
-}
-
-run();
-```
-
-### Parameters
-
-| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.HrisCreateEmployeeDocumentRequest](../../sdk/models/operations/hriscreateemployeedocumentrequest.md)                                                               | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
-| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
-| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
-
-
-### Response
-
-**Promise<[operations.HrisCreateEmployeeDocumentResponse](../../sdk/models/operations/hriscreateemployeedocumentresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -1778,10 +1715,6 @@ async function run() {
       },
       name: "weather-forecast",
       path: "reports or /path/to/file",
-      proxy: {
-        "key": "<value>",
-      },
-      updatedAfter: "2020-01-01T00:00:00.000Z",
     },
     id: "<id>",
     xAccountId: "<value>",
