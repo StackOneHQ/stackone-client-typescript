@@ -141,6 +141,7 @@ export * from "./resultlink";
 export * from "./scorecard";
 export * from "./scorecardsection";
 export * from "./scorecardspaginated";
+export * from "./scorecardsresult";
 export * from "./security";
 export * from "./sociallink";
 export * from "./template";

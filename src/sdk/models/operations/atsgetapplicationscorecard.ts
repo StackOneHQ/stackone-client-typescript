@@ -34,7 +34,7 @@ export type AtsGetApplicationScorecardResponse = {
     /**
      * The scorecard related to the application with the given identifiers was retrieved.
      */
-    offersResult?: shared.OffersResult | undefined;
+    scorecardsResult?: shared.ScorecardsResult | undefined;
     /**
      * HTTP response status code for this operation
      */
@@ -118,7 +118,7 @@ export namespace AtsGetApplicationScorecardRequest$ {
 export namespace AtsGetApplicationScorecardResponse$ {
     export type Inbound = {
         ContentType: string;
-        OffersResult?: shared.OffersResult$.Inbound | undefined;
+        ScorecardsResult?: shared.ScorecardsResult$.Inbound | undefined;
         StatusCode: number;
         RawResponse: Response;
     };
@@ -130,14 +130,16 @@ export namespace AtsGetApplicationScorecardResponse$ {
     > = z
         .object({
             ContentType: z.string(),
-            OffersResult: shared.OffersResult$.inboundSchema.optional(),
+            ScorecardsResult: shared.ScorecardsResult$.inboundSchema.optional(),
             StatusCode: z.number().int(),
             RawResponse: z.instanceof(Response),
         })
         .transform((v) => {
             return {
                 contentType: v.ContentType,
-                ...(v.OffersResult === undefined ? null : { offersResult: v.OffersResult }),
+                ...(v.ScorecardsResult === undefined
+                    ? null
+                    : { scorecardsResult: v.ScorecardsResult }),
                 statusCode: v.StatusCode,
                 rawResponse: v.RawResponse,
             };
@@ -145,7 +147,7 @@ export namespace AtsGetApplicationScorecardResponse$ {
 
     export type Outbound = {
         ContentType: string;
-        OffersResult?: shared.OffersResult$.Outbound | undefined;
+        ScorecardsResult?: shared.ScorecardsResult$.Outbound | undefined;
         StatusCode: number;
         RawResponse: never;
     };
@@ -157,7 +159,7 @@ export namespace AtsGetApplicationScorecardResponse$ {
     > = z
         .object({
             contentType: z.string(),
-            offersResult: shared.OffersResult$.outboundSchema.optional(),
+            scorecardsResult: shared.ScorecardsResult$.outboundSchema.optional(),
             statusCode: z.number().int(),
             rawResponse: z.instanceof(Response).transform(() => {
                 throw new Error("Response cannot be serialized");
@@ -166,7 +168,9 @@ export namespace AtsGetApplicationScorecardResponse$ {
         .transform((v) => {
             return {
                 ContentType: v.contentType,
-                ...(v.offersResult === undefined ? null : { OffersResult: v.offersResult }),
+                ...(v.scorecardsResult === undefined
+                    ? null
+                    : { ScorecardsResult: v.scorecardsResult }),
                 StatusCode: v.statusCode,
                 RawResponse: v.rawResponse,
             };

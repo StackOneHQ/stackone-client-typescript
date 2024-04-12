@@ -11,7 +11,7 @@ export type IamListGroupsRequest = {
      */
     expand?: string | null | undefined;
     /**
-     * The comma separated list of fields to return in the response (if empty, all fields are returned)
+     * The comma separated list of fields that will be returned in the response (if empty, all fields are returned)
      */
     fields?: string | null | undefined;
     /**

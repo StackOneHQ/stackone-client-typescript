@@ -1,5 +1,7 @@
 # JobStatus
 
+Status of the job
+
 
 ## Fields
 

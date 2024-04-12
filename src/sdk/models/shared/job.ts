@@ -32,6 +32,9 @@ export enum JobValue {
     UnmappedValue = "unmapped_value",
 }
 
+/**
+ * Status of the job
+ */
 export type JobStatus = {
     /**
      * The source value of the job status.
@@ -44,13 +47,25 @@ export type JobStatus = {
 };
 
 export type Job = {
+    /**
+     * Code of the job
+     */
     code?: string | null | undefined;
-    confidential?: Confidential | null | undefined;
+    /**
+     * Confidential status of the job
+     */
+    confidential?: Array<Confidential> | null | undefined;
     /**
      * Date of creation
      */
     createdAt?: Date | null | undefined;
+    /**
+     * Department ids of the job
+     */
     departmentIds?: Array<string> | null | undefined;
+    /**
+     * Hiring team for the job.
+     */
     hiringTeam?: Array<JobHiringTeam> | null | undefined;
     /**
      * Unique identifier
@@ -60,16 +75,27 @@ export type Job = {
      * Interview stages for the job.
      */
     interviewStages?: Array<InterviewStage> | null | undefined;
+    /**
+     * Status of the job
+     */
     jobStatus?: JobStatus | null | undefined;
+    /**
+     * Location ids of the job
+     */
     locationIds?: Array<string> | null | undefined;
     /**
      * Provider's unique identifier
      */
     remoteId?: string | null | undefined;
     /**
+     * Status of the job
+     *
      * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     status?: string | null | undefined;
+    /**
+     * Title of the job
+     */
     title?: string | null | undefined;
     /**
      * Date of last update
@@ -172,7 +198,7 @@ export namespace JobStatus$ {
 export namespace Job$ {
     export type Inbound = {
         code?: string | null | undefined;
-        confidential?: Confidential | null | undefined;
+        confidential?: Array<Confidential> | null | undefined;
         created_at?: string | null | undefined;
         department_ids?: Array<string> | null | undefined;
         hiring_team?: Array<JobHiringTeam$.Inbound> | null | undefined;
@@ -189,7 +215,7 @@ export namespace Job$ {
     export const inboundSchema: z.ZodType<Job, z.ZodTypeDef, Inbound> = z
         .object({
             code: z.nullable(z.string()).optional(),
-            confidential: z.nullable(Confidential$).optional(),
+            confidential: z.nullable(z.array(Confidential$)).optional(),
             created_at: z
                 .nullable(
                     z
@@ -238,7 +264,7 @@ export namespace Job$ {
 
     export type Outbound = {
         code?: string | null | undefined;
-        confidential?: Confidential | null | undefined;
+        confidential?: Array<Confidential> | null | undefined;
         created_at?: string | null | undefined;
         department_ids?: Array<string> | null | undefined;
         hiring_team?: Array<JobHiringTeam$.Outbound> | null | undefined;
@@ -255,7 +281,7 @@ export namespace Job$ {
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Job> = z
         .object({
             code: z.nullable(z.string()).optional(),
-            confidential: z.nullable(Confidential$).optional(),
+            confidential: z.nullable(z.array(Confidential$)).optional(),
             createdAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
             departmentIds: z.nullable(z.array(z.string())).optional(),
             hiringTeam: z.nullable(z.array(JobHiringTeam$.outboundSchema)).optional(),
