@@ -10,13 +10,14 @@ generation:
   auth:
     oAuth2ClientCredentialsEnabled: false
 typescript:
-  version: 4.4.4
+  version: 4.4.5
   additionalDependencies:
     dependencies: {}
     devDependencies: {}
     peerDependencies: {}
   author: StackOne
   clientServerStatusCodesAsErrors: true
+  enumFormat: enum
   flattenGlobalSecurity: false
   imports:
     option: openapi

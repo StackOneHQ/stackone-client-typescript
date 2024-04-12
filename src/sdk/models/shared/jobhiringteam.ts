@@ -5,10 +5,25 @@
 import * as z from "zod";
 
 export type JobHiringTeam = {
+    /**
+     * Email of the hiring team member.
+     */
     email?: string | null | undefined;
+    /**
+     * First name of the hiring team member.
+     */
     firstName?: string | null | undefined;
+    /**
+     * Last name of the hiring team member.
+     */
     lastName?: string | null | undefined;
+    /**
+     * Role of the hiring team member.
+     */
     role?: string | null | undefined;
+    /**
+     * User ID of the hiring team member.
+     */
     userId?: string | null | undefined;
 };
 

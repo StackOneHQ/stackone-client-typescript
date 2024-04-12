@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 7fa83af8-9e8e-4410-b7e2-cf1d0eaf688b
 management:
-  docChecksum: de763a21ff1e7256895b52214b5c1bb9
+  docChecksum: a1663b12de365dca0748ed3e23e612eb
   docVersion: 1.0.0
-  speakeasyVersion: 1.237.0
-  generationVersion: 2.298.2
-  releaseVersion: 4.4.4
-  configChecksum: d942062c2a05d15f8ed9525441b224d8
+  speakeasyVersion: 1.250.0
+  generationVersion: 2.304.1
+  releaseVersion: 4.4.5
+  configChecksum: e5e2eb3f612f7beba792bad28acd993c
   repoURL: https://github.com/StackOneHQ/stackone-client-typescript.git
   repoSubDirectory: .
   installationURL: https://github.com/StackOneHQ/stackone-client-typescript
@@ -14,7 +14,7 @@ management:
 features:
   typescript:
     constsAndDefaults: 0.1.5
-    core: 3.7.0
+    core: 3.7.1
     deprecations: 2.81.1
     downloadStreams: 0.1.1
     examples: 2.81.3
@@ -198,6 +198,10 @@ generatedFiles:
   - src/sdk/models/shared/hrisdocumentapimodel.ts
   - src/sdk/models/shared/offersresult.ts
   - src/sdk/models/shared/offer.ts
+  - src/sdk/models/shared/scorecardsresult.ts
+  - src/sdk/models/shared/scorecard.ts
+  - src/sdk/models/shared/scorecardsection.ts
+  - src/sdk/models/shared/field.ts
   - src/sdk/models/shared/noteresult.ts
   - src/sdk/models/shared/note.ts
   - src/sdk/models/shared/departmentresult.ts
@@ -225,9 +229,6 @@ generatedFiles:
   - src/sdk/models/shared/user.ts
   - src/sdk/models/shared/hrisdocumentspaginated.ts
   - src/sdk/models/shared/scorecardspaginated.ts
-  - src/sdk/models/shared/scorecard.ts
-  - src/sdk/models/shared/scorecardsection.ts
-  - src/sdk/models/shared/field.ts
   - src/sdk/models/shared/applicationspaginated.ts
   - src/sdk/models/shared/offerspaginated.ts
   - src/sdk/models/shared/notespaginated.ts
@@ -622,6 +623,12 @@ generatedFiles:
   - docs/sdk/models/shared/offervalue.md
   - docs/sdk/models/shared/offerofferstatus.md
   - docs/sdk/models/shared/offer.md
+  - docs/sdk/models/shared/scorecardsresult.md
+  - docs/sdk/models/shared/overallrecommendation.md
+  - docs/sdk/models/shared/scorecard.md
+  - docs/sdk/models/shared/scorecardsection.md
+  - docs/sdk/models/shared/fieldtype.md
+  - docs/sdk/models/shared/field.md
   - docs/sdk/models/shared/noteresult.md
   - docs/sdk/models/shared/note4.md
   - docs/sdk/models/shared/notesourcevalue.md
@@ -693,11 +700,6 @@ generatedFiles:
   - docs/sdk/models/shared/user.md
   - docs/sdk/models/shared/hrisdocumentspaginated.md
   - docs/sdk/models/shared/scorecardspaginated.md
-  - docs/sdk/models/shared/overallrecommendation.md
-  - docs/sdk/models/shared/scorecard.md
-  - docs/sdk/models/shared/scorecardsection.md
-  - docs/sdk/models/shared/fieldtype.md
-  - docs/sdk/models/shared/field.md
   - docs/sdk/models/shared/applicationspaginated.md
   - docs/sdk/models/shared/offerspaginated.md
   - docs/sdk/models/shared/notespaginated.md

@@ -871,7 +871,7 @@ export class Ats extends ClientSDK {
                 (val$) => {
                     return operations.AtsGetApplicationScorecardResponse$.inboundSchema.parse({
                         ...responseFields$,
-                        OffersResult: val$,
+                        ScorecardsResult: val$,
                     });
                 },
                 "Response validation failed"
