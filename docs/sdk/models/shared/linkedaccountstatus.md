@@ -5,6 +5,6 @@
 
 | Name       | Value      |
 | ---------- | ---------- |
-| `Active`   | Active     |
-| `Inactive` | Inactive   |
-| `Error`    | Error      |
+| `Active`   | active     |
+| `Inactive` | inactive   |
+| `Error`    | error      |

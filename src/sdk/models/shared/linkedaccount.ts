@@ -9,9 +9,9 @@ export type Credentials = {};
 export type SetupInformation = {};
 
 export enum LinkedAccountStatus {
-    Active = "Active",
-    Inactive = "Inactive",
-    Error = "Error",
+    Active = "active",
+    Inactive = "inactive",
+    Error = "error",
 }
 
 export type LinkedAccount = {
