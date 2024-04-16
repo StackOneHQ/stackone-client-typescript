@@ -27,14 +27,14 @@ Create email template
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-async function run() {
-  const sdk = new StackOne({
-    security: {
-      password: "<YOUR_PASSWORD_HERE>",
-    },
-  });
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
 
-  const result = await sdk.marketing.createEmailTemplate({
+async function run() {
+  const result = await stackOne.marketing.createEmailTemplate({
     marketingCreateEmailTemplateRequestDto: {
       id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
       messages: [
@@ -90,14 +90,14 @@ Create omni-channel template
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-async function run() {
-  const sdk = new StackOne({
-    security: {
-      password: "<YOUR_PASSWORD_HERE>",
-    },
-  });
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
 
-  const result = await sdk.marketing.createOmniChannelTemplate({
+async function run() {
+  const result = await stackOne.marketing.createOmniChannelTemplate({
     marketingCreateTemplateRequestDto: {
       id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
       messages: [
@@ -153,14 +153,14 @@ Create push template
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-async function run() {
-  const sdk = new StackOne({
-    security: {
-      password: "<YOUR_PASSWORD_HERE>",
-    },
-  });
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
 
-  const result = await sdk.marketing.createPushTemplate({
+async function run() {
+  const result = await stackOne.marketing.createPushTemplate({
     marketingCreatePushTemplateRequestDto: {
       id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
       messages: [
@@ -216,14 +216,14 @@ Get campaign
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-async function run() {
-  const sdk = new StackOne({
-    security: {
-      password: "<YOUR_PASSWORD_HERE>",
-    },
-  });
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
 
-  const result = await sdk.marketing.getCampaign({
+async function run() {
+  const result = await stackOne.marketing.getCampaign({
     id: "<id>",
     proxy: {
       "key": "<value>",
@@ -265,14 +265,14 @@ Get email template
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-async function run() {
-  const sdk = new StackOne({
-    security: {
-      password: "<YOUR_PASSWORD_HERE>",
-    },
-  });
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
 
-  const result = await sdk.marketing.getEmailTemplate({
+async function run() {
+  const result = await stackOne.marketing.getEmailTemplate({
     id: "<id>",
     proxy: {
       "key": "<value>",
@@ -314,14 +314,14 @@ Get omni-channel template
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-async function run() {
-  const sdk = new StackOne({
-    security: {
-      password: "<YOUR_PASSWORD_HERE>",
-    },
-  });
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
 
-  const result = await sdk.marketing.getOmniChannelTemplate({
+async function run() {
+  const result = await stackOne.marketing.getOmniChannelTemplate({
     id: "<id>",
     proxy: {
       "key": "<value>",
@@ -363,14 +363,14 @@ Get push template
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-async function run() {
-  const sdk = new StackOne({
-    security: {
-      password: "<YOUR_PASSWORD_HERE>",
-    },
-  });
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
 
-  const result = await sdk.marketing.getPushTemplate({
+async function run() {
+  const result = await stackOne.marketing.getPushTemplate({
     id: "<id>",
     proxy: {
       "key": "<value>",
@@ -412,14 +412,14 @@ List campaigns
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-async function run() {
-  const sdk = new StackOne({
-    security: {
-      password: "<YOUR_PASSWORD_HERE>",
-    },
-  });
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
 
-  const result = await sdk.marketing.listCampaigns({
+async function run() {
+  const result = await stackOne.marketing.listCampaigns({
     proxy: {
       "key": "<value>",
     },
@@ -460,14 +460,14 @@ List email templates
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-async function run() {
-  const sdk = new StackOne({
-    security: {
-      password: "<YOUR_PASSWORD_HERE>",
-    },
-  });
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
 
-  const result = await sdk.marketing.listEmailTemplates({
+async function run() {
+  const result = await stackOne.marketing.listEmailTemplates({
     proxy: {
       "key": "<value>",
     },
@@ -508,14 +508,14 @@ List omni-channel templates
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-async function run() {
-  const sdk = new StackOne({
-    security: {
-      password: "<YOUR_PASSWORD_HERE>",
-    },
-  });
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
 
-  const result = await sdk.marketing.listOmniChannelTemplates({
+async function run() {
+  const result = await stackOne.marketing.listOmniChannelTemplates({
     proxy: {
       "key": "<value>",
     },
@@ -556,14 +556,14 @@ List push templates
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-async function run() {
-  const sdk = new StackOne({
-    security: {
-      password: "<YOUR_PASSWORD_HERE>",
-    },
-  });
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
 
-  const result = await sdk.marketing.listPushTemplates({
+async function run() {
+  const result = await stackOne.marketing.listPushTemplates({
     proxy: {
       "key": "<value>",
     },
@@ -604,14 +604,14 @@ Update email template
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-async function run() {
-  const sdk = new StackOne({
-    security: {
-      password: "<YOUR_PASSWORD_HERE>",
-    },
-  });
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
 
-  const result = await sdk.marketing.updateEmailTemplate({
+async function run() {
+  const result = await stackOne.marketing.updateEmailTemplate({
     marketingCreateEmailTemplateRequestDto: {
       id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
       messages: [
@@ -668,14 +668,14 @@ Update omni-channel template
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-async function run() {
-  const sdk = new StackOne({
-    security: {
-      password: "<YOUR_PASSWORD_HERE>",
-    },
-  });
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
 
-  const result = await sdk.marketing.updateOmniChannelTemplate({
+async function run() {
+  const result = await stackOne.marketing.updateOmniChannelTemplate({
     marketingCreateTemplateRequestDto: {
       id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
       messages: [
@@ -732,14 +732,14 @@ Update push template
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-async function run() {
-  const sdk = new StackOne({
-    security: {
-      password: "<YOUR_PASSWORD_HERE>",
-    },
-  });
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
 
-  const result = await sdk.marketing.updatePushTemplate({
+async function run() {
+  const result = await stackOne.marketing.updatePushTemplate({
     marketingCreatePushTemplateRequestDto: {
       id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
       messages: [

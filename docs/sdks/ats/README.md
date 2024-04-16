@@ -51,14 +51,14 @@ Create Application
 import { StackOne } from "@stackone/stackone-client-ts";
 import { AnswerValue, AtsCreateApplicationRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-async function run() {
-  const sdk = new StackOne({
-    security: {
-      password: "<YOUR_PASSWORD_HERE>",
-    },
-  });
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
 
-  const result = await sdk.ats.createApplication({
+async function run() {
+  const result = await stackOne.ats.createApplication({
     atsCreateApplicationRequestDto: {
       applicationStatus: {
       sourceValue: "Hired",
@@ -133,20 +133,22 @@ Create Candidate (early access)
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-async function run() {
-  const sdk = new StackOne({
-    security: {
-      password: "<YOUR_PASSWORD_HERE>",
-    },
-  });
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
 
-  const result = await sdk.ats.createCandidate({
+async function run() {
+  const result = await stackOne.ats.createCandidate({
     atsCreateCandidateRequestDto: {
       applicationIds: [
         "123e4567-e89b-12d3-a456-426614174000",
         "523e1234-e89b-fdd2-a456-762545121101",
       ],
       company: "Company Inc.",
+      createdAt: new Date("2021-01-01T01:01:01.000Z"),
+      email: "sestier.romain123@gmail.com",
       emails: [
         {
           type: "personal",
@@ -154,10 +156,25 @@ async function run() {
         },
       ],
       firstName: "Romain",
+      hiredAt: new Date("2021-01-01T01:01:01.000Z"),
+      id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
       lastName: "Sestier",
       name: "Romain Sestier",
       phone: "+16178294093",
+      phoneNumbers: [
+        {
+          phone: "+447700112233",
+        },
+      ],
+      remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+      socialLinks: [
+        {
+          type: "linkedin",
+          url: "https://www.linkedin.com/in/romainsestier/",
+        },
+      ],
       title: "Software Engineer",
+      updatedAt: new Date("2021-01-01T01:01:01.000Z"),
     },
     xAccountId: "<value>",
   });
@@ -197,14 +214,14 @@ Create Candidate Note
 import { StackOne } from "@stackone/stackone-client-ts";
 import { AtsCreateNotesRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-async function run() {
-  const sdk = new StackOne({
-    security: {
-      password: "<YOUR_PASSWORD_HERE>",
-    },
-  });
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
 
-  const result = await sdk.ats.createCandidateNote({
+async function run() {
+  const result = await stackOne.ats.createCandidateNote({
     atsCreateNotesRequestDto: {
       authorId: "1234567890",
       content: [
@@ -256,14 +273,14 @@ Creates an offer
 import { StackOne } from "@stackone/stackone-client-ts";
 import { AtsCreateOfferRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-async function run() {
-  const sdk = new StackOne({
-    security: {
-      password: "<YOUR_PASSWORD_HERE>",
-    },
-  });
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
 
-  const result = await sdk.ats.createOffer({
+async function run() {
+  const result = await stackOne.ats.createOffer({
     atsCreateOfferRequestDto: {
       offerHistory: [
         {
@@ -315,14 +332,14 @@ Download Application Document
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-async function run() {
-  const sdk = new StackOne({
-    security: {
-      password: "<YOUR_PASSWORD_HERE>",
-    },
-  });
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
 
-  const result = await sdk.ats.downloadApplicationDocument({
+async function run() {
+  const result = await stackOne.ats.downloadApplicationDocument({
     id: "<id>",
     subResourceId: "<value>",
     xAccountId: "<value>",
@@ -362,14 +379,14 @@ Get Application
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-async function run() {
-  const sdk = new StackOne({
-    security: {
-      password: "<YOUR_PASSWORD_HERE>",
-    },
-  });
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
 
-  const result = await sdk.ats.getApplication({
+async function run() {
+  const result = await stackOne.ats.getApplication({
     id: "<id>",
     proxy: {
       "key": "<value>",
@@ -411,14 +428,14 @@ Get Application Document
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-async function run() {
-  const sdk = new StackOne({
-    security: {
-      password: "<YOUR_PASSWORD_HERE>",
-    },
-  });
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
 
-  const result = await sdk.ats.getApplicationDocument({
+async function run() {
+  const result = await stackOne.ats.getApplicationDocument({
     id: "<id>",
     proxy: {
       "key": "<value>",
@@ -461,14 +478,14 @@ Get Application Offer
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-async function run() {
-  const sdk = new StackOne({
-    security: {
-      password: "<YOUR_PASSWORD_HERE>",
-    },
-  });
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
 
-  const result = await sdk.ats.getApplicationOffer({
+async function run() {
+  const result = await stackOne.ats.getApplicationOffer({
     id: "<id>",
     proxy: {
       "key": "<value>",
@@ -511,14 +528,14 @@ Get Application Scorecard
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-async function run() {
-  const sdk = new StackOne({
-    security: {
-      password: "<YOUR_PASSWORD_HERE>",
-    },
-  });
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
 
-  const result = await sdk.ats.getApplicationScorecard({
+async function run() {
+  const result = await stackOne.ats.getApplicationScorecard({
     id: "<id>",
     proxy: {
       "key": "<value>",
@@ -561,14 +578,14 @@ Get Candidate
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-async function run() {
-  const sdk = new StackOne({
-    security: {
-      password: "<YOUR_PASSWORD_HERE>",
-    },
-  });
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
 
-  const result = await sdk.ats.getCandidate({
+async function run() {
+  const result = await stackOne.ats.getCandidate({
     id: "<id>",
     proxy: {
       "key": "<value>",
@@ -610,14 +627,14 @@ Get Candidate Note
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-async function run() {
-  const sdk = new StackOne({
-    security: {
-      password: "<YOUR_PASSWORD_HERE>",
-    },
-  });
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
 
-  const result = await sdk.ats.getCandidateNote({
+async function run() {
+  const result = await stackOne.ats.getCandidateNote({
     id: "<id>",
     proxy: {
       "key": "<value>",
@@ -660,14 +677,14 @@ Get Department
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-async function run() {
-  const sdk = new StackOne({
-    security: {
-      password: "<YOUR_PASSWORD_HERE>",
-    },
-  });
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
 
-  const result = await sdk.ats.getDepartment({
+async function run() {
+  const result = await stackOne.ats.getDepartment({
     id: "<id>",
     proxy: {
       "key": "<value>",
@@ -709,14 +726,14 @@ Get Interview
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-async function run() {
-  const sdk = new StackOne({
-    security: {
-      password: "<YOUR_PASSWORD_HERE>",
-    },
-  });
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
 
-  const result = await sdk.ats.getInterview({
+async function run() {
+  const result = await stackOne.ats.getInterview({
     id: "<id>",
     proxy: {
       "key": "<value>",
@@ -758,14 +775,14 @@ Get Interview Stage
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-async function run() {
-  const sdk = new StackOne({
-    security: {
-      password: "<YOUR_PASSWORD_HERE>",
-    },
-  });
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
 
-  const result = await sdk.ats.getInterviewStage({
+async function run() {
+  const result = await stackOne.ats.getInterviewStage({
     id: "<id>",
     proxy: {
       "key": "<value>",
@@ -807,14 +824,14 @@ Get Job
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-async function run() {
-  const sdk = new StackOne({
-    security: {
-      password: "<YOUR_PASSWORD_HERE>",
-    },
-  });
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
 
-  const result = await sdk.ats.getJob({
+async function run() {
+  const result = await stackOne.ats.getJob({
     id: "<id>",
     proxy: {
       "key": "<value>",
@@ -856,14 +873,14 @@ Get Job Posting
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-async function run() {
-  const sdk = new StackOne({
-    security: {
-      password: "<YOUR_PASSWORD_HERE>",
-    },
-  });
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
 
-  const result = await sdk.ats.getJobPosting({
+async function run() {
+  const result = await stackOne.ats.getJobPosting({
     id: "<id>",
     proxy: {
       "key": "<value>",
@@ -905,14 +922,14 @@ Get Location
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-async function run() {
-  const sdk = new StackOne({
-    security: {
-      password: "<YOUR_PASSWORD_HERE>",
-    },
-  });
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
 
-  const result = await sdk.ats.getLocation({
+async function run() {
+  const result = await stackOne.ats.getLocation({
     id: "<id>",
     proxy: {
       "key": "<value>",
@@ -954,14 +971,14 @@ Get Offer
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-async function run() {
-  const sdk = new StackOne({
-    security: {
-      password: "<YOUR_PASSWORD_HERE>",
-    },
-  });
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
 
-  const result = await sdk.ats.getOffer({
+async function run() {
+  const result = await stackOne.ats.getOffer({
     id: "<id>",
     proxy: {
       "key": "<value>",
@@ -1003,14 +1020,14 @@ Get Rejected Reason
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-async function run() {
-  const sdk = new StackOne({
-    security: {
-      password: "<YOUR_PASSWORD_HERE>",
-    },
-  });
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
 
-  const result = await sdk.ats.getRejectedReason({
+async function run() {
+  const result = await stackOne.ats.getRejectedReason({
     id: "<id>",
     proxy: {
       "key": "<value>",
@@ -1052,14 +1069,14 @@ Get User
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-async function run() {
-  const sdk = new StackOne({
-    security: {
-      password: "<YOUR_PASSWORD_HERE>",
-    },
-  });
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
 
-  const result = await sdk.ats.getUser({
+async function run() {
+  const result = await stackOne.ats.getUser({
     id: "<id>",
     proxy: {
       "key": "<value>",
@@ -1101,14 +1118,14 @@ List Application Documents
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-async function run() {
-  const sdk = new StackOne({
-    security: {
-      password: "<YOUR_PASSWORD_HERE>",
-    },
-  });
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
 
-  const result = await sdk.ats.listApplicationDocuments({
+async function run() {
+  const result = await stackOne.ats.listApplicationDocuments({
     id: "<id>",
     proxy: {
       "key": "<value>",
@@ -1150,14 +1167,14 @@ List Application Scorecards
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-async function run() {
-  const sdk = new StackOne({
-    security: {
-      password: "<YOUR_PASSWORD_HERE>",
-    },
-  });
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
 
-  const result = await sdk.ats.listApplicationScorecards({
+async function run() {
+  const result = await stackOne.ats.listApplicationScorecards({
     id: "<id>",
     proxy: {
       "key": "<value>",
@@ -1199,14 +1216,14 @@ List Applications
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-async function run() {
-  const sdk = new StackOne({
-    security: {
-      password: "<YOUR_PASSWORD_HERE>",
-    },
-  });
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
 
-  const result = await sdk.ats.listApplications({
+async function run() {
+  const result = await stackOne.ats.listApplications({
     proxy: {
       "key": "<value>",
     },
@@ -1247,14 +1264,14 @@ List Application Offers
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-async function run() {
-  const sdk = new StackOne({
-    security: {
-      password: "<YOUR_PASSWORD_HERE>",
-    },
-  });
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
 
-  const result = await sdk.ats.listApplicationsOffers({
+async function run() {
+  const result = await stackOne.ats.listApplicationsOffers({
     id: "<id>",
     proxy: {
       "key": "<value>",
@@ -1296,14 +1313,14 @@ List Candidate Notes
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-async function run() {
-  const sdk = new StackOne({
-    security: {
-      password: "<YOUR_PASSWORD_HERE>",
-    },
-  });
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
 
-  const result = await sdk.ats.listCandidateNotes({
+async function run() {
+  const result = await stackOne.ats.listCandidateNotes({
     id: "<id>",
     proxy: {
       "key": "<value>",
@@ -1345,14 +1362,14 @@ List Candidates
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-async function run() {
-  const sdk = new StackOne({
-    security: {
-      password: "<YOUR_PASSWORD_HERE>",
-    },
-  });
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
 
-  const result = await sdk.ats.listCandidates({
+async function run() {
+  const result = await stackOne.ats.listCandidates({
     proxy: {
       "key": "<value>",
     },
@@ -1393,14 +1410,14 @@ List Departments
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-async function run() {
-  const sdk = new StackOne({
-    security: {
-      password: "<YOUR_PASSWORD_HERE>",
-    },
-  });
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
 
-  const result = await sdk.ats.listDepartments({
+async function run() {
+  const result = await stackOne.ats.listDepartments({
     proxy: {
       "key": "<value>",
     },
@@ -1441,14 +1458,14 @@ List Interview Stages
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-async function run() {
-  const sdk = new StackOne({
-    security: {
-      password: "<YOUR_PASSWORD_HERE>",
-    },
-  });
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
 
-  const result = await sdk.ats.listInterviewStages({
+async function run() {
+  const result = await stackOne.ats.listInterviewStages({
     proxy: {
       "key": "<value>",
     },
@@ -1489,14 +1506,14 @@ List Interviews
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-async function run() {
-  const sdk = new StackOne({
-    security: {
-      password: "<YOUR_PASSWORD_HERE>",
-    },
-  });
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
 
-  const result = await sdk.ats.listInterviews({
+async function run() {
+  const result = await stackOne.ats.listInterviews({
     proxy: {
       "key": "<value>",
     },
@@ -1537,14 +1554,14 @@ List Job Postings
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-async function run() {
-  const sdk = new StackOne({
-    security: {
-      password: "<YOUR_PASSWORD_HERE>",
-    },
-  });
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
 
-  const result = await sdk.ats.listJobPostings({
+async function run() {
+  const result = await stackOne.ats.listJobPostings({
     proxy: {
       "key": "<value>",
     },
@@ -1585,14 +1602,14 @@ List Jobs
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-async function run() {
-  const sdk = new StackOne({
-    security: {
-      password: "<YOUR_PASSWORD_HERE>",
-    },
-  });
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
 
-  const result = await sdk.ats.listJobs({
+async function run() {
+  const result = await stackOne.ats.listJobs({
     proxy: {
       "key": "<value>",
     },
@@ -1633,14 +1650,14 @@ List locations
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-async function run() {
-  const sdk = new StackOne({
-    security: {
-      password: "<YOUR_PASSWORD_HERE>",
-    },
-  });
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
 
-  const result = await sdk.ats.listLocations({
+async function run() {
+  const result = await stackOne.ats.listLocations({
     proxy: {
       "key": "<value>",
     },
@@ -1681,14 +1698,14 @@ List Offers
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-async function run() {
-  const sdk = new StackOne({
-    security: {
-      password: "<YOUR_PASSWORD_HERE>",
-    },
-  });
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
 
-  const result = await sdk.ats.listOffers({
+async function run() {
+  const result = await stackOne.ats.listOffers({
     proxy: {
       "key": "<value>",
     },
@@ -1729,14 +1746,14 @@ List Rejected Reasons
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-async function run() {
-  const sdk = new StackOne({
-    security: {
-      password: "<YOUR_PASSWORD_HERE>",
-    },
-  });
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
 
-  const result = await sdk.ats.listRejectedReasons({
+async function run() {
+  const result = await stackOne.ats.listRejectedReasons({
     proxy: {
       "key": "<value>",
     },
@@ -1777,14 +1794,14 @@ List Users
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-async function run() {
-  const sdk = new StackOne({
-    security: {
-      password: "<YOUR_PASSWORD_HERE>",
-    },
-  });
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
 
-  const result = await sdk.ats.listUsers({
+async function run() {
+  const result = await stackOne.ats.listUsers({
     proxy: {
       "key": "<value>",
     },
@@ -1825,14 +1842,14 @@ Update an Application
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-async function run() {
-  const sdk = new StackOne({
-    security: {
-      password: "<YOUR_PASSWORD_HERE>",
-    },
-  });
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
 
-  const result = await sdk.ats.updateApplication({
+async function run() {
+  const result = await stackOne.ats.updateApplication({
     atsUpdateApplicationRequestDto: {
       interviewStageId: "18bcbb1b-3cbc-4198-a999-460861d19480",
       rejectedReasonId: "f223d7f6-908b-48f0-9237-b201c307f609",
@@ -1875,20 +1892,22 @@ Update Candidate (early access)
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-async function run() {
-  const sdk = new StackOne({
-    security: {
-      password: "<YOUR_PASSWORD_HERE>",
-    },
-  });
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
 
-  const result = await sdk.ats.updateCandidate({
+async function run() {
+  const result = await stackOne.ats.updateCandidate({
     atsUpdateCandidatesRequestDto: {
       applicationIds: [
         "123e4567-e89b-12d3-a456-426614174000",
         "523e1234-e89b-fdd2-a456-762545121101",
       ],
       company: "Company Inc.",
+      createdAt: new Date("2021-01-01T01:01:01.000Z"),
+      email: "sestier.romain123@gmail.com",
       emails: [
         {
           type: "personal",
@@ -1896,11 +1915,25 @@ async function run() {
         },
       ],
       firstName: "Romain",
+      hiredAt: new Date("2021-01-01T01:01:01.000Z"),
       id: "eebbaa75-7adf-4f7e-be4c-def6a12840f2",
       lastName: "Sestier",
       name: "Romain Sestier",
       phone: "+16178294093",
+      phoneNumbers: [
+        {
+          phone: "+447700112233",
+        },
+      ],
+      remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+      socialLinks: [
+        {
+          type: "linkedin",
+          url: "https://www.linkedin.com/in/romainsestier/",
+        },
+      ],
       title: "Software Engineer",
+      updatedAt: new Date("2021-01-01T01:01:01.000Z"),
     },
     id: "<id>",
     xAccountId: "<value>",

@@ -4,14 +4,14 @@
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-async function run() {
-    const sdk = new StackOne({
-        security: {
-            password: "<YOUR_PASSWORD_HERE>",
-        },
-    });
+const stackOne = new StackOne({
+    security: {
+        password: "<YOUR_PASSWORD_HERE>",
+    },
+});
 
-    const result = await sdk.hris.listEmployees({
+async function run() {
+    const result = await stackOne.hris.listEmployees({
         proxy: {
             key: "<value>",
         },

@@ -21,14 +21,14 @@ Get Group
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-async function run() {
-  const sdk = new StackOne({
-    security: {
-      password: "<YOUR_PASSWORD_HERE>",
-    },
-  });
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
 
-  const result = await sdk.iam.getGroup({
+async function run() {
+  const result = await stackOne.iam.getGroup({
     id: "<id>",
     proxy: {
       "key": "<value>",
@@ -70,14 +70,14 @@ Get Policy
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-async function run() {
-  const sdk = new StackOne({
-    security: {
-      password: "<YOUR_PASSWORD_HERE>",
-    },
-  });
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
 
-  const result = await sdk.iam.getPolicy({
+async function run() {
+  const result = await stackOne.iam.getPolicy({
     id: "<id>",
     proxy: {
       "key": "<value>",
@@ -119,14 +119,14 @@ Get Role
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-async function run() {
-  const sdk = new StackOne({
-    security: {
-      password: "<YOUR_PASSWORD_HERE>",
-    },
-  });
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
 
-  const result = await sdk.iam.getRole({
+async function run() {
+  const result = await stackOne.iam.getRole({
     id: "<id>",
     proxy: {
       "key": "<value>",
@@ -168,14 +168,14 @@ Get User
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-async function run() {
-  const sdk = new StackOne({
-    security: {
-      password: "<YOUR_PASSWORD_HERE>",
-    },
-  });
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
 
-  const result = await sdk.iam.getUser({
+async function run() {
+  const result = await stackOne.iam.getUser({
     id: "<id>",
     proxy: {
       "key": "<value>",
@@ -217,14 +217,14 @@ List Groups
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-async function run() {
-  const sdk = new StackOne({
-    security: {
-      password: "<YOUR_PASSWORD_HERE>",
-    },
-  });
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
 
-  const result = await sdk.iam.listGroups({
+async function run() {
+  const result = await stackOne.iam.listGroups({
     proxy: {
       "key": "<value>",
     },
@@ -265,14 +265,14 @@ List Policies
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-async function run() {
-  const sdk = new StackOne({
-    security: {
-      password: "<YOUR_PASSWORD_HERE>",
-    },
-  });
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
 
-  const result = await sdk.iam.listPolicies({
+async function run() {
+  const result = await stackOne.iam.listPolicies({
     proxy: {
       "key": "<value>",
     },
@@ -313,14 +313,14 @@ List Roles
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-async function run() {
-  const sdk = new StackOne({
-    security: {
-      password: "<YOUR_PASSWORD_HERE>",
-    },
-  });
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
 
-  const result = await sdk.iam.listRoles({
+async function run() {
+  const result = await stackOne.iam.listRoles({
     proxy: {
       "key": "<value>",
     },
@@ -361,14 +361,14 @@ List Users
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-async function run() {
-  const sdk = new StackOne({
-    security: {
-      password: "<YOUR_PASSWORD_HERE>",
-    },
-  });
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
 
-  const result = await sdk.iam.listUsers({
+async function run() {
+  const result = await stackOne.iam.listUsers({
     proxy: {
       "key": "<value>",
     },
