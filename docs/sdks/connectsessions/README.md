@@ -15,14 +15,14 @@ Authenticate Connect Session
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-async function run() {
-  const sdk = new StackOne({
-    security: {
-      password: "<YOUR_PASSWORD_HERE>",
-    },
-  });
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
 
-  const result = await sdk.connectSessions.authenticateConnectSession({
+async function run() {
+  const result = await stackOne.connectSessions.authenticateConnectSession({
     token: "<value>",
   });
 
@@ -61,14 +61,14 @@ Create Connect Session
 import { StackOne } from "@stackone/stackone-client-ts";
 import { ConnectSessionCreateCategories } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-async function run() {
-  const sdk = new StackOne({
-    security: {
-      password: "<YOUR_PASSWORD_HERE>",
-    },
-  });
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
 
-  const result = await sdk.connectSessions.createConnectSession({
+async function run() {
+  const result = await stackOne.connectSessions.createConnectSession({
     categories: [
       ConnectSessionCreateCategories.Ats,
       ConnectSessionCreateCategories.Hris,

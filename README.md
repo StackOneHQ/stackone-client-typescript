@@ -28,14 +28,14 @@ yarn add @stackone/stackone-client-ts
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-async function run() {
-    const sdk = new StackOne({
-        security: {
-            password: "<YOUR_PASSWORD_HERE>",
-        },
-    });
+const stackOne = new StackOne({
+    security: {
+        password: "<YOUR_PASSWORD_HERE>",
+    },
+});
 
-    const result = await sdk.hris.listEmployees({
+async function run() {
+    const result = await stackOne.hris.listEmployees({
         proxy: {
             key: "<value>",
         },
@@ -202,14 +202,14 @@ Here's an example of one such pagination call:
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-async function run() {
-    const sdk = new StackOne({
-        security: {
-            password: "<YOUR_PASSWORD_HERE>",
-        },
-    });
+const stackOne = new StackOne({
+    security: {
+        password: "<YOUR_PASSWORD_HERE>",
+    },
+});
 
-    const result = await sdk.hris.listEmployees({
+async function run() {
+    const result = await stackOne.hris.listEmployees({
         proxy: {
             key: "<value>",
         },
@@ -242,16 +242,16 @@ Validation errors can also occur when either method arguments or data returned f
 import { StackOne } from "@stackone/stackone-client-ts";
 import * as errors from "@stackone/stackone-client-ts/sdk/models/errors";
 
-async function run() {
-    const sdk = new StackOne({
-        security: {
-            password: "<YOUR_PASSWORD_HERE>",
-        },
-    });
+const stackOne = new StackOne({
+    security: {
+        password: "<YOUR_PASSWORD_HERE>",
+    },
+});
 
+async function run() {
     let result;
     try {
-        result = await sdk.accounts.deleteAccount({
+        result = await stackOne.accounts.deleteAccount({
             id: "<id>",
         });
     } catch (err) {
@@ -349,14 +349,14 @@ You can set the security parameters through the `security` optional parameter wh
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-async function run() {
-    const sdk = new StackOne({
-        security: {
-            password: "<YOUR_PASSWORD_HERE>",
-        },
-    });
+const stackOne = new StackOne({
+    security: {
+        password: "<YOUR_PASSWORD_HERE>",
+    },
+});
 
-    const result = await sdk.accounts.deleteAccount({
+async function run() {
+    const result = await stackOne.accounts.deleteAccount({
         id: "<id>",
     });
 

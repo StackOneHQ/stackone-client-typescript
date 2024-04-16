@@ -21,14 +21,14 @@ Creates a new Contact
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-async function run() {
-  const sdk = new StackOne({
-    security: {
-      password: "<YOUR_PASSWORD_HERE>",
-    },
-  });
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
 
-  const result = await sdk.crm.createContact({
+async function run() {
+  const result = await stackOne.crm.createContact({
     crmCreateContactRequestDto: {
       accountIds: [
         "account-123",
@@ -85,14 +85,14 @@ Get Account
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-async function run() {
-  const sdk = new StackOne({
-    security: {
-      password: "<YOUR_PASSWORD_HERE>",
-    },
-  });
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
 
-  const result = await sdk.crm.getAccount({
+async function run() {
+  const result = await stackOne.crm.getAccount({
     id: "<id>",
     proxy: {
       "key": "<value>",
@@ -134,14 +134,14 @@ Get Contact
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-async function run() {
-  const sdk = new StackOne({
-    security: {
-      password: "<YOUR_PASSWORD_HERE>",
-    },
-  });
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
 
-  const result = await sdk.crm.getContact({
+async function run() {
+  const result = await stackOne.crm.getContact({
     id: "<id>",
     proxy: {
       "key": "<value>",
@@ -183,14 +183,14 @@ Get List
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-async function run() {
-  const sdk = new StackOne({
-    security: {
-      password: "<YOUR_PASSWORD_HERE>",
-    },
-  });
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
 
-  const result = await sdk.crm.getList({
+async function run() {
+  const result = await stackOne.crm.getList({
     id: "<id>",
     proxy: {
       "key": "<value>",
@@ -232,14 +232,14 @@ List Accounts
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-async function run() {
-  const sdk = new StackOne({
-    security: {
-      password: "<YOUR_PASSWORD_HERE>",
-    },
-  });
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
 
-  const result = await sdk.crm.listAccounts({
+async function run() {
+  const result = await stackOne.crm.listAccounts({
     proxy: {
       "key": "<value>",
     },
@@ -280,14 +280,14 @@ List Contacts
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-async function run() {
-  const sdk = new StackOne({
-    security: {
-      password: "<YOUR_PASSWORD_HERE>",
-    },
-  });
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
 
-  const result = await sdk.crm.listContacts({
+async function run() {
+  const result = await stackOne.crm.listContacts({
     proxy: {
       "key": "<value>",
     },
@@ -328,14 +328,14 @@ Get all Lists
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-async function run() {
-  const sdk = new StackOne({
-    security: {
-      password: "<YOUR_PASSWORD_HERE>",
-    },
-  });
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
 
-  const result = await sdk.crm.listLists({
+async function run() {
+  const result = await stackOne.crm.listLists({
     proxy: {
       "key": "<value>",
     },
@@ -376,14 +376,14 @@ Update Contact (early access)
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-async function run() {
-  const sdk = new StackOne({
-    security: {
-      password: "<YOUR_PASSWORD_HERE>",
-    },
-  });
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
 
-  const result = await sdk.crm.updateContact({
+async function run() {
+  const result = await stackOne.crm.updateContact({
     crmCreateContactRequestDto: {
       accountIds: [
         "account-123",

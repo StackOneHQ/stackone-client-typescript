@@ -1151,6 +1151,10 @@ export type Employee = {
      */
     displayName?: string | null | undefined;
     /**
+     * The assigned employee number
+     */
+    employeeNumber?: string | null | undefined;
+    /**
      * The employment work schedule type (e.g., full-time, part-time)
      */
     employmentContractType?: EmploymentContractType | null | undefined;
@@ -2879,6 +2883,7 @@ export namespace Employee$ {
         date_of_birth?: string | null | undefined;
         department?: string | null | undefined;
         display_name?: string | null | undefined;
+        employee_number?: string | null | undefined;
         employment_contract_type?: EmploymentContractType$.Inbound | null | undefined;
         employment_status?: EmploymentStatus$.Inbound | null | undefined;
         employment_type?: EmploymentType$.Inbound | null | undefined;
@@ -2945,6 +2950,7 @@ export namespace Employee$ {
                 .optional(),
             department: z.nullable(z.string()).optional(),
             display_name: z.nullable(z.string()).optional(),
+            employee_number: z.nullable(z.string()).optional(),
             employment_contract_type: z
                 .nullable(z.lazy(() => EmploymentContractType$.inboundSchema))
                 .optional(),
@@ -3028,6 +3034,7 @@ export namespace Employee$ {
                 ...(v.date_of_birth === undefined ? null : { dateOfBirth: v.date_of_birth }),
                 ...(v.department === undefined ? null : { department: v.department }),
                 ...(v.display_name === undefined ? null : { displayName: v.display_name }),
+                ...(v.employee_number === undefined ? null : { employeeNumber: v.employee_number }),
                 ...(v.employment_contract_type === undefined
                     ? null
                     : { employmentContractType: v.employment_contract_type }),
@@ -3087,6 +3094,7 @@ export namespace Employee$ {
         date_of_birth?: string | null | undefined;
         department?: string | null | undefined;
         display_name?: string | null | undefined;
+        employee_number?: string | null | undefined;
         employment_contract_type?: EmploymentContractType$.Outbound | null | undefined;
         employment_status?: EmploymentStatus$.Outbound | null | undefined;
         employment_type?: EmploymentType$.Outbound | null | undefined;
@@ -3132,6 +3140,7 @@ export namespace Employee$ {
             dateOfBirth: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
             department: z.nullable(z.string()).optional(),
             displayName: z.nullable(z.string()).optional(),
+            employeeNumber: z.nullable(z.string()).optional(),
             employmentContractType: z
                 .nullable(z.lazy(() => EmploymentContractType$.outboundSchema))
                 .optional(),
@@ -3180,6 +3189,7 @@ export namespace Employee$ {
                 ...(v.dateOfBirth === undefined ? null : { date_of_birth: v.dateOfBirth }),
                 ...(v.department === undefined ? null : { department: v.department }),
                 ...(v.displayName === undefined ? null : { display_name: v.displayName }),
+                ...(v.employeeNumber === undefined ? null : { employee_number: v.employeeNumber }),
                 ...(v.employmentContractType === undefined
                     ? null
                     : { employment_contract_type: v.employmentContractType }),

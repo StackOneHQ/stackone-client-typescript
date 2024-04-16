@@ -15,14 +15,14 @@ Get Connector Meta information for the given provider key
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-async function run() {
-  const sdk = new StackOne({
-    security: {
-      password: "<YOUR_PASSWORD_HERE>",
-    },
-  });
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
 
-  const result = await sdk.connectors.getConnectorMeta({
+async function run() {
+  const result = await stackOne.connectors.getConnectorMeta({
     provider: "<value>",
   });
 
@@ -60,14 +60,14 @@ List Connectors Meta Information for all providers
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-async function run() {
-  const sdk = new StackOne({
-    security: {
-      password: "<YOUR_PASSWORD_HERE>",
-    },
-  });
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
 
-  const result = await sdk.connectors.listConnectorsMeta({});
+async function run() {
+  const result = await stackOne.connectors.listConnectorsMeta({});
 
   // Handle the result
   console.log(result)

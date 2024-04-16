@@ -18,14 +18,14 @@ Delete Account
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-async function run() {
-  const sdk = new StackOne({
-    security: {
-      password: "<YOUR_PASSWORD_HERE>",
-    },
-  });
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
 
-  const result = await sdk.accounts.deleteAccount({
+async function run() {
+  const result = await stackOne.accounts.deleteAccount({
     id: "<id>",
   });
 
@@ -63,14 +63,14 @@ Get Account
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-async function run() {
-  const sdk = new StackOne({
-    security: {
-      password: "<YOUR_PASSWORD_HERE>",
-    },
-  });
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
 
-  const result = await sdk.accounts.getAccount({
+async function run() {
+  const result = await stackOne.accounts.getAccount({
     expandInfo: "<value>",
     id: "<id>",
   });
@@ -109,14 +109,14 @@ Get meta information of the account
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-async function run() {
-  const sdk = new StackOne({
-    security: {
-      password: "<YOUR_PASSWORD_HERE>",
-    },
-  });
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
 
-  const result = await sdk.accounts.getAccountMetaInfo({
+async function run() {
+  const result = await stackOne.accounts.getAccountMetaInfo({
     id: "<id>",
   });
 
@@ -154,14 +154,14 @@ List Accounts
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-async function run() {
-  const sdk = new StackOne({
-    security: {
-      password: "<YOUR_PASSWORD_HERE>",
-    },
-  });
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
 
-  const result = await sdk.accounts.listLinkedAccounts({
+async function run() {
+  const result = await stackOne.accounts.listLinkedAccounts({
     accountIds: [
       "<value>",
     ],
@@ -204,14 +204,14 @@ Update Account
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-async function run() {
-  const sdk = new StackOne({
-    security: {
-      password: "<YOUR_PASSWORD_HERE>",
-    },
-  });
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
 
-  const result = await sdk.accounts.updateAccount({
+async function run() {
+  const result = await stackOne.accounts.updateAccount({
     patchAccountDto: {},
     id: "<id>",
   });

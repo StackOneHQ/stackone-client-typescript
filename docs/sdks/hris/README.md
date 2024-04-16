@@ -50,14 +50,14 @@ import {
   HrisCreateEmployeeRequestDtoSchemasWorkLocationValue,
 } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-async function run() {
-  const sdk = new StackOne({
-    security: {
-      password: "<YOUR_PASSWORD_HERE>",
-    },
-  });
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
 
-  const result = await sdk.hris.createEmployee({
+async function run() {
+  const result = await stackOne.hris.createEmployee({
     hrisCreateEmployeeRequestDto: {
       avatar: {},
       avatarUrl: "https://example.com/avatar.png",
@@ -238,14 +238,14 @@ Create Employee Time Off Request
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-async function run() {
-  const sdk = new StackOne({
-    security: {
-      password: "<YOUR_PASSWORD_HERE>",
-    },
-  });
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
 
-  const result = await sdk.hris.createEmployeeTimeOffRequest({
+async function run() {
+  const result = await stackOne.hris.createEmployeeTimeOffRequest({
     hrisCreateTimeOffRequestDto: {
       approverId: "1687-4",
       employeeId: "1687-3",
@@ -297,14 +297,14 @@ Create Employee Work Eligibility Request
 import { StackOne } from "@stackone/stackone-client-ts";
 import { ContentValue, HrisCreateWorkEligibilityRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-async function run() {
-  const sdk = new StackOne({
-    security: {
-      password: "<YOUR_PASSWORD_HERE>",
-    },
-  });
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
 
-  const result = await sdk.hris.createEmployeeWorkEligibilityRequest({
+async function run() {
+  const result = await stackOne.hris.createEmployeeWorkEligibilityRequest({
     hrisCreateWorkEligibilityRequestDto: {
       document: {
         contents: [
@@ -374,14 +374,14 @@ Creates a time off request
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-async function run() {
-  const sdk = new StackOne({
-    security: {
-      password: "<YOUR_PASSWORD_HERE>",
-    },
-  });
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
 
-  const result = await sdk.hris.createTimeOffRequest({
+async function run() {
+  const result = await stackOne.hris.createTimeOffRequest({
     hrisCreateTimeOffRequestDto: {
       approverId: "1687-4",
       employeeId: "1687-3",
@@ -431,14 +431,14 @@ Download Employee Document
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-async function run() {
-  const sdk = new StackOne({
-    security: {
-      password: "<YOUR_PASSWORD_HERE>",
-    },
-  });
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
 
-  const result = await sdk.hris.downloadEmployeeDocument({
+async function run() {
+  const result = await stackOne.hris.downloadEmployeeDocument({
     id: "<id>",
     subResourceId: "<value>",
     xAccountId: "<value>",
@@ -478,14 +478,14 @@ Get Benefit
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-async function run() {
-  const sdk = new StackOne({
-    security: {
-      password: "<YOUR_PASSWORD_HERE>",
-    },
-  });
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
 
-  const result = await sdk.hris.getBenefit({
+async function run() {
+  const result = await stackOne.hris.getBenefit({
     id: "<id>",
     proxy: {
       "key": "<value>",
@@ -527,14 +527,14 @@ Get Company
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-async function run() {
-  const sdk = new StackOne({
-    security: {
-      password: "<YOUR_PASSWORD_HERE>",
-    },
-  });
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
 
-  const result = await sdk.hris.getCompany({
+async function run() {
+  const result = await stackOne.hris.getCompany({
     id: "<id>",
     proxy: {
       "key": "<value>",
@@ -576,14 +576,14 @@ Get Employee
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-async function run() {
-  const sdk = new StackOne({
-    security: {
-      password: "<YOUR_PASSWORD_HERE>",
-    },
-  });
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
 
-  const result = await sdk.hris.getEmployee({
+async function run() {
+  const result = await stackOne.hris.getEmployee({
     id: "<id>",
     proxy: {
       "key": "<value>",
@@ -625,14 +625,14 @@ Get Employee Document
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-async function run() {
-  const sdk = new StackOne({
-    security: {
-      password: "<YOUR_PASSWORD_HERE>",
-    },
-  });
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
 
-  const result = await sdk.hris.getEmployeeDocument({
+async function run() {
+  const result = await stackOne.hris.getEmployeeDocument({
     id: "<id>",
     proxy: {
       "key": "<value>",
@@ -675,14 +675,14 @@ Get Employees Time Off Request
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-async function run() {
-  const sdk = new StackOne({
-    security: {
-      password: "<YOUR_PASSWORD_HERE>",
-    },
-  });
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
 
-  const result = await sdk.hris.getEmployeesTimeOffRequest({
+async function run() {
+  const result = await stackOne.hris.getEmployeesTimeOffRequest({
     id: "<id>",
     proxy: {
       "key": "<value>",
@@ -725,14 +725,14 @@ Get Employees Work Eligibility
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-async function run() {
-  const sdk = new StackOne({
-    security: {
-      password: "<YOUR_PASSWORD_HERE>",
-    },
-  });
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
 
-  const result = await sdk.hris.getEmployeesWorkEligibility({
+async function run() {
+  const result = await stackOne.hris.getEmployeesWorkEligibility({
     id: "<id>",
     proxy: {
       "key": "<value>",
@@ -775,14 +775,14 @@ Get Employment
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-async function run() {
-  const sdk = new StackOne({
-    security: {
-      password: "<YOUR_PASSWORD_HERE>",
-    },
-  });
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
 
-  const result = await sdk.hris.getEmployment({
+async function run() {
+  const result = await stackOne.hris.getEmployment({
     id: "<id>",
     proxy: {
       "key": "<value>",
@@ -824,14 +824,14 @@ Get Location
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-async function run() {
-  const sdk = new StackOne({
-    security: {
-      password: "<YOUR_PASSWORD_HERE>",
-    },
-  });
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
 
-  const result = await sdk.hris.getLocation({
+async function run() {
+  const result = await stackOne.hris.getLocation({
     id: "<id>",
     proxy: {
       "key": "<value>",
@@ -873,14 +873,14 @@ Get time off request
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-async function run() {
-  const sdk = new StackOne({
-    security: {
-      password: "<YOUR_PASSWORD_HERE>",
-    },
-  });
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
 
-  const result = await sdk.hris.getTimeOffRequest({
+async function run() {
+  const result = await stackOne.hris.getTimeOffRequest({
     id: "<id>",
     proxy: {
       "key": "<value>",
@@ -922,14 +922,14 @@ List benefits
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-async function run() {
-  const sdk = new StackOne({
-    security: {
-      password: "<YOUR_PASSWORD_HERE>",
-    },
-  });
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
 
-  const result = await sdk.hris.listBenefits({
+async function run() {
+  const result = await stackOne.hris.listBenefits({
     proxy: {
       "key": "<value>",
     },
@@ -970,14 +970,14 @@ List Companies
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-async function run() {
-  const sdk = new StackOne({
-    security: {
-      password: "<YOUR_PASSWORD_HERE>",
-    },
-  });
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
 
-  const result = await sdk.hris.listCompanies({
+async function run() {
+  const result = await stackOne.hris.listCompanies({
     proxy: {
       "key": "<value>",
     },
@@ -1018,14 +1018,14 @@ List Employee Documents
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-async function run() {
-  const sdk = new StackOne({
-    security: {
-      password: "<YOUR_PASSWORD_HERE>",
-    },
-  });
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
 
-  const result = await sdk.hris.listEmployeeDocuments({
+async function run() {
+  const result = await stackOne.hris.listEmployeeDocuments({
     id: "<id>",
     proxy: {
       "key": "<value>",
@@ -1067,14 +1067,14 @@ List Employee Time Off Requests
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-async function run() {
-  const sdk = new StackOne({
-    security: {
-      password: "<YOUR_PASSWORD_HERE>",
-    },
-  });
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
 
-  const result = await sdk.hris.listEmployeeTimeOffRequests({
+async function run() {
+  const result = await stackOne.hris.listEmployeeTimeOffRequests({
     id: "<id>",
     proxy: {
       "key": "<value>",
@@ -1116,14 +1116,14 @@ List Employee Work Eligibility
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-async function run() {
-  const sdk = new StackOne({
-    security: {
-      password: "<YOUR_PASSWORD_HERE>",
-    },
-  });
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
 
-  const result = await sdk.hris.listEmployeeWorkEligibility({
+async function run() {
+  const result = await stackOne.hris.listEmployeeWorkEligibility({
     id: "<id>",
     proxy: {
       "key": "<value>",
@@ -1165,14 +1165,14 @@ List Employees
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-async function run() {
-  const sdk = new StackOne({
-    security: {
-      password: "<YOUR_PASSWORD_HERE>",
-    },
-  });
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
 
-  const result = await sdk.hris.listEmployees({
+async function run() {
+  const result = await stackOne.hris.listEmployees({
     proxy: {
       "key": "<value>",
     },
@@ -1214,14 +1214,14 @@ List Employments
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-async function run() {
-  const sdk = new StackOne({
-    security: {
-      password: "<YOUR_PASSWORD_HERE>",
-    },
-  });
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
 
-  const result = await sdk.hris.listEmployments({
+async function run() {
+  const result = await stackOne.hris.listEmployments({
     proxy: {
       "key": "<value>",
     },
@@ -1262,14 +1262,14 @@ List locations
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-async function run() {
-  const sdk = new StackOne({
-    security: {
-      password: "<YOUR_PASSWORD_HERE>",
-    },
-  });
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
 
-  const result = await sdk.hris.listLocations({
+async function run() {
+  const result = await stackOne.hris.listLocations({
     proxy: {
       "key": "<value>",
     },
@@ -1310,14 +1310,14 @@ List time off requests
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-async function run() {
-  const sdk = new StackOne({
-    security: {
-      password: "<YOUR_PASSWORD_HERE>",
-    },
-  });
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
 
-  const result = await sdk.hris.listTimeOffRequests({
+async function run() {
+  const result = await stackOne.hris.listTimeOffRequests({
     proxy: {
       "key": "<value>",
     },
@@ -1368,14 +1368,14 @@ import {
   HrisCreateEmployeeRequestDtoSchemasWorkLocationValue,
 } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-async function run() {
-  const sdk = new StackOne({
-    security: {
-      password: "<YOUR_PASSWORD_HERE>",
-    },
-  });
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
 
-  const result = await sdk.hris.updateEmployee({
+async function run() {
+  const result = await stackOne.hris.updateEmployee({
     hrisCreateEmployeeRequestDto: {
       avatar: {},
       avatarUrl: "https://example.com/avatar.png",
@@ -1558,14 +1558,14 @@ Update Employee Work Eligibility Request
 import { StackOne } from "@stackone/stackone-client-ts";
 import { ContentValue, HrisCreateWorkEligibilityRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-async function run() {
-  const sdk = new StackOne({
-    security: {
-      password: "<YOUR_PASSWORD_HERE>",
-    },
-  });
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
 
-  const result = await sdk.hris.updateEmployeeWorkEligibilityRequest({
+async function run() {
+  const result = await stackOne.hris.updateEmployeeWorkEligibilityRequest({
     hrisCreateWorkEligibilityRequestDto: {
       document: {
         contents: [
@@ -1636,14 +1636,14 @@ Update time off request
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
-async function run() {
-  const sdk = new StackOne({
-    security: {
-      password: "<YOUR_PASSWORD_HERE>",
-    },
-  });
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
 
-  const result = await sdk.hris.updateTimeOffRequest({
+async function run() {
+  const result = await stackOne.hris.updateTimeOffRequest({
     hrisCreateTimeOffRequestDto: {
       approverId: "1687-4",
       employeeId: "1687-3",
@@ -1695,14 +1695,14 @@ Upload Employee Document
 import { StackOne } from "@stackone/stackone-client-ts";
 import { UnifiedUploadRequestDtoSchemasValue, UnifiedUploadRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-async function run() {
-  const sdk = new StackOne({
-    security: {
-      password: "<YOUR_PASSWORD_HERE>",
-    },
-  });
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
 
-  const result = await sdk.hris.uploadEmployeeDocument({
+async function run() {
+  const result = await stackOne.hris.uploadEmployeeDocument({
     unifiedUploadRequestDto: {
       confidential: {
       sourceValue: "public",
