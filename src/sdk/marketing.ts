@@ -115,7 +115,7 @@ export class Marketing extends ClientSDK {
                 (val$) => {
                     return operations.MarketingCreateEmailTemplateResponse$.inboundSchema.parse({
                         ...responseFields$,
-                        CreateTemplateResult: val$,
+                        CreateResult: val$,
                     });
                 },
                 "Response validation failed"
@@ -205,7 +205,7 @@ export class Marketing extends ClientSDK {
                     return operations.MarketingCreateOmniChannelTemplateResponse$.inboundSchema.parse(
                         {
                             ...responseFields$,
-                            CreateTemplateResult: val$,
+                            CreateResult: val$,
                         }
                     );
                 },
@@ -294,7 +294,7 @@ export class Marketing extends ClientSDK {
                 (val$) => {
                     return operations.MarketingCreatePushTemplateResponse$.inboundSchema.parse({
                         ...responseFields$,
-                        CreateTemplateResult: val$,
+                        CreateResult: val$,
                     });
                 },
                 "Response validation failed"
@@ -1178,7 +1178,7 @@ export class Marketing extends ClientSDK {
                 (val$) => {
                     return operations.MarketingUpdateEmailTemplateResponse$.inboundSchema.parse({
                         ...responseFields$,
-                        CreateTemplateResult: val$,
+                        CreateResult: val$,
                     });
                 },
                 "Response validation failed"
@@ -1273,7 +1273,7 @@ export class Marketing extends ClientSDK {
                     return operations.MarketingUpdateOmniChannelTemplateResponse$.inboundSchema.parse(
                         {
                             ...responseFields$,
-                            CreateTemplateResult: val$,
+                            CreateResult: val$,
                         }
                     );
                 },
@@ -1367,7 +1367,7 @@ export class Marketing extends ClientSDK {
                 (val$) => {
                     return operations.MarketingUpdatePushTemplateResponse$.inboundSchema.parse({
                         ...responseFields$,
-                        CreateTemplateResult: val$,
+                        CreateResult: val$,
                     });
                 },
                 "Response validation failed"

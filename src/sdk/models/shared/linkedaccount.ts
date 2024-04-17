@@ -15,7 +15,6 @@ export enum LinkedAccountStatus {
 }
 
 export type LinkedAccount = {
-    active: boolean;
     createdAt: Date;
     credentials?: Credentials | null | undefined;
     id: string;
@@ -58,7 +57,6 @@ export const LinkedAccountStatus$ = z.nativeEnum(LinkedAccountStatus);
 /** @internal */
 export namespace LinkedAccount$ {
     export type Inbound = {
-        active: boolean;
         created_at: string;
         credentials?: Credentials$.Inbound | null | undefined;
         id: string;
@@ -75,7 +73,6 @@ export namespace LinkedAccount$ {
 
     export const inboundSchema: z.ZodType<LinkedAccount, z.ZodTypeDef, Inbound> = z
         .object({
-            active: z.boolean(),
             created_at: z
                 .string()
                 .datetime({ offset: true })
@@ -97,7 +94,6 @@ export namespace LinkedAccount$ {
         })
         .transform((v) => {
             return {
-                active: v.active,
                 createdAt: v.created_at,
                 ...(v.credentials === undefined ? null : { credentials: v.credentials }),
                 id: v.id,
@@ -116,7 +112,6 @@ export namespace LinkedAccount$ {
         });
 
     export type Outbound = {
-        active: boolean;
         created_at: string;
         credentials?: Credentials$.Outbound | null | undefined;
         id: string;
@@ -133,7 +128,6 @@ export namespace LinkedAccount$ {
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, LinkedAccount> = z
         .object({
-            active: z.boolean(),
             createdAt: z.date().transform((v) => v.toISOString()),
             credentials: z.nullable(z.lazy(() => Credentials$.outboundSchema)).optional(),
             id: z.string(),
@@ -149,7 +143,6 @@ export namespace LinkedAccount$ {
         })
         .transform((v) => {
             return {
-                active: v.active,
                 created_at: v.createdAt,
                 ...(v.credentials === undefined ? null : { credentials: v.credentials }),
                 id: v.id,

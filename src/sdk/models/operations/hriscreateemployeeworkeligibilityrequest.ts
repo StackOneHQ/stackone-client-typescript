@@ -22,7 +22,7 @@ export type HrisCreateEmployeeWorkEligibilityRequestResponse = {
     /**
      * Record created successfully.
      */
-    createWorkEligibilityResult?: shared.CreateWorkEligibilityResult | undefined;
+    createResult?: shared.CreateResult | undefined;
     /**
      * HTTP response status code for this operation
      */
@@ -90,7 +90,7 @@ export namespace HrisCreateEmployeeWorkEligibilityRequestRequest$ {
 export namespace HrisCreateEmployeeWorkEligibilityRequestResponse$ {
     export type Inbound = {
         ContentType: string;
-        CreateWorkEligibilityResult?: shared.CreateWorkEligibilityResult$.Inbound | undefined;
+        CreateResult?: shared.CreateResult$.Inbound | undefined;
         StatusCode: number;
         RawResponse: Response;
     };
@@ -102,17 +102,14 @@ export namespace HrisCreateEmployeeWorkEligibilityRequestResponse$ {
     > = z
         .object({
             ContentType: z.string(),
-            CreateWorkEligibilityResult:
-                shared.CreateWorkEligibilityResult$.inboundSchema.optional(),
+            CreateResult: shared.CreateResult$.inboundSchema.optional(),
             StatusCode: z.number().int(),
             RawResponse: z.instanceof(Response),
         })
         .transform((v) => {
             return {
                 contentType: v.ContentType,
-                ...(v.CreateWorkEligibilityResult === undefined
-                    ? null
-                    : { createWorkEligibilityResult: v.CreateWorkEligibilityResult }),
+                ...(v.CreateResult === undefined ? null : { createResult: v.CreateResult }),
                 statusCode: v.StatusCode,
                 rawResponse: v.RawResponse,
             };
@@ -120,7 +117,7 @@ export namespace HrisCreateEmployeeWorkEligibilityRequestResponse$ {
 
     export type Outbound = {
         ContentType: string;
-        CreateWorkEligibilityResult?: shared.CreateWorkEligibilityResult$.Outbound | undefined;
+        CreateResult?: shared.CreateResult$.Outbound | undefined;
         StatusCode: number;
         RawResponse: never;
     };
@@ -132,8 +129,7 @@ export namespace HrisCreateEmployeeWorkEligibilityRequestResponse$ {
     > = z
         .object({
             contentType: z.string(),
-            createWorkEligibilityResult:
-                shared.CreateWorkEligibilityResult$.outboundSchema.optional(),
+            createResult: shared.CreateResult$.outboundSchema.optional(),
             statusCode: z.number().int(),
             rawResponse: z.instanceof(Response).transform(() => {
                 throw new Error("Response cannot be serialized");
@@ -142,9 +138,7 @@ export namespace HrisCreateEmployeeWorkEligibilityRequestResponse$ {
         .transform((v) => {
             return {
                 ContentType: v.contentType,
-                ...(v.createWorkEligibilityResult === undefined
-                    ? null
-                    : { CreateWorkEligibilityResult: v.createWorkEligibilityResult }),
+                ...(v.createResult === undefined ? null : { CreateResult: v.createResult }),
                 StatusCode: v.statusCode,
                 RawResponse: v.rawResponse,
             };

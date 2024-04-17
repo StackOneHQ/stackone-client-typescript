@@ -21,7 +21,7 @@ export type HrisCreateEmployeeResponse = {
     /**
      * The employee was created successfully.
      */
-    createEmployeeResult?: shared.CreateEmployeeResult | undefined;
+    createResult?: shared.CreateResult | undefined;
     /**
      * HTTP response status code for this operation
      */
@@ -73,7 +73,7 @@ export namespace HrisCreateEmployeeRequest$ {
 export namespace HrisCreateEmployeeResponse$ {
     export type Inbound = {
         ContentType: string;
-        CreateEmployeeResult?: shared.CreateEmployeeResult$.Inbound | undefined;
+        CreateResult?: shared.CreateResult$.Inbound | undefined;
         StatusCode: number;
         RawResponse: Response;
     };
@@ -81,16 +81,14 @@ export namespace HrisCreateEmployeeResponse$ {
     export const inboundSchema: z.ZodType<HrisCreateEmployeeResponse, z.ZodTypeDef, Inbound> = z
         .object({
             ContentType: z.string(),
-            CreateEmployeeResult: shared.CreateEmployeeResult$.inboundSchema.optional(),
+            CreateResult: shared.CreateResult$.inboundSchema.optional(),
             StatusCode: z.number().int(),
             RawResponse: z.instanceof(Response),
         })
         .transform((v) => {
             return {
                 contentType: v.ContentType,
-                ...(v.CreateEmployeeResult === undefined
-                    ? null
-                    : { createEmployeeResult: v.CreateEmployeeResult }),
+                ...(v.CreateResult === undefined ? null : { createResult: v.CreateResult }),
                 statusCode: v.StatusCode,
                 rawResponse: v.RawResponse,
             };
@@ -98,7 +96,7 @@ export namespace HrisCreateEmployeeResponse$ {
 
     export type Outbound = {
         ContentType: string;
-        CreateEmployeeResult?: shared.CreateEmployeeResult$.Outbound | undefined;
+        CreateResult?: shared.CreateResult$.Outbound | undefined;
         StatusCode: number;
         RawResponse: never;
     };
@@ -106,7 +104,7 @@ export namespace HrisCreateEmployeeResponse$ {
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, HrisCreateEmployeeResponse> = z
         .object({
             contentType: z.string(),
-            createEmployeeResult: shared.CreateEmployeeResult$.outboundSchema.optional(),
+            createResult: shared.CreateResult$.outboundSchema.optional(),
             statusCode: z.number().int(),
             rawResponse: z.instanceof(Response).transform(() => {
                 throw new Error("Response cannot be serialized");
@@ -115,9 +113,7 @@ export namespace HrisCreateEmployeeResponse$ {
         .transform((v) => {
             return {
                 ContentType: v.contentType,
-                ...(v.createEmployeeResult === undefined
-                    ? null
-                    : { CreateEmployeeResult: v.createEmployeeResult }),
+                ...(v.createResult === undefined ? null : { CreateResult: v.createResult }),
                 StatusCode: v.statusCode,
                 RawResponse: v.rawResponse,
             };
