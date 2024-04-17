@@ -291,7 +291,7 @@ export class Ats extends ClientSDK {
                 (val$) => {
                     return operations.AtsCreateCandidateNoteResponse$.inboundSchema.parse({
                         ...responseFields$,
-                        CreateCandidateNoteResult: val$,
+                        CreateResult: val$,
                     });
                 },
                 "Response validation failed"
@@ -377,7 +377,7 @@ export class Ats extends ClientSDK {
                 (val$) => {
                     return operations.AtsCreateOfferResponse$.inboundSchema.parse({
                         ...responseFields$,
-                        CreateOfferResult: val$,
+                        CreateResult: val$,
                     });
                 },
                 "Response validation failed"

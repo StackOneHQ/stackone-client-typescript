@@ -22,7 +22,7 @@ export type AtsCreateCandidateNoteResponse = {
     /**
      * Record created successfully.
      */
-    createCandidateNoteResult?: shared.CreateCandidateNoteResult | undefined;
+    createResult?: shared.CreateResult | undefined;
     /**
      * HTTP response status code for this operation
      */
@@ -81,7 +81,7 @@ export namespace AtsCreateCandidateNoteRequest$ {
 export namespace AtsCreateCandidateNoteResponse$ {
     export type Inbound = {
         ContentType: string;
-        CreateCandidateNoteResult?: shared.CreateCandidateNoteResult$.Inbound | undefined;
+        CreateResult?: shared.CreateResult$.Inbound | undefined;
         StatusCode: number;
         RawResponse: Response;
     };
@@ -89,16 +89,14 @@ export namespace AtsCreateCandidateNoteResponse$ {
     export const inboundSchema: z.ZodType<AtsCreateCandidateNoteResponse, z.ZodTypeDef, Inbound> = z
         .object({
             ContentType: z.string(),
-            CreateCandidateNoteResult: shared.CreateCandidateNoteResult$.inboundSchema.optional(),
+            CreateResult: shared.CreateResult$.inboundSchema.optional(),
             StatusCode: z.number().int(),
             RawResponse: z.instanceof(Response),
         })
         .transform((v) => {
             return {
                 contentType: v.ContentType,
-                ...(v.CreateCandidateNoteResult === undefined
-                    ? null
-                    : { createCandidateNoteResult: v.CreateCandidateNoteResult }),
+                ...(v.CreateResult === undefined ? null : { createResult: v.CreateResult }),
                 statusCode: v.StatusCode,
                 rawResponse: v.RawResponse,
             };
@@ -106,7 +104,7 @@ export namespace AtsCreateCandidateNoteResponse$ {
 
     export type Outbound = {
         ContentType: string;
-        CreateCandidateNoteResult?: shared.CreateCandidateNoteResult$.Outbound | undefined;
+        CreateResult?: shared.CreateResult$.Outbound | undefined;
         StatusCode: number;
         RawResponse: never;
     };
@@ -115,8 +113,7 @@ export namespace AtsCreateCandidateNoteResponse$ {
         z
             .object({
                 contentType: z.string(),
-                createCandidateNoteResult:
-                    shared.CreateCandidateNoteResult$.outboundSchema.optional(),
+                createResult: shared.CreateResult$.outboundSchema.optional(),
                 statusCode: z.number().int(),
                 rawResponse: z.instanceof(Response).transform(() => {
                     throw new Error("Response cannot be serialized");
@@ -125,9 +122,7 @@ export namespace AtsCreateCandidateNoteResponse$ {
             .transform((v) => {
                 return {
                     ContentType: v.contentType,
-                    ...(v.createCandidateNoteResult === undefined
-                        ? null
-                        : { CreateCandidateNoteResult: v.createCandidateNoteResult }),
+                    ...(v.createResult === undefined ? null : { CreateResult: v.createResult }),
                     StatusCode: v.statusCode,
                     RawResponse: v.rawResponse,
                 };

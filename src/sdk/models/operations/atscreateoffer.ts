@@ -21,7 +21,7 @@ export type AtsCreateOfferResponse = {
     /**
      * The offer was created successfully.
      */
-    createOfferResult?: shared.CreateOfferResult | undefined;
+    createResult?: shared.CreateResult | undefined;
     /**
      * HTTP response status code for this operation
      */
@@ -73,7 +73,7 @@ export namespace AtsCreateOfferRequest$ {
 export namespace AtsCreateOfferResponse$ {
     export type Inbound = {
         ContentType: string;
-        CreateOfferResult?: shared.CreateOfferResult$.Inbound | undefined;
+        CreateResult?: shared.CreateResult$.Inbound | undefined;
         StatusCode: number;
         RawResponse: Response;
     };
@@ -81,16 +81,14 @@ export namespace AtsCreateOfferResponse$ {
     export const inboundSchema: z.ZodType<AtsCreateOfferResponse, z.ZodTypeDef, Inbound> = z
         .object({
             ContentType: z.string(),
-            CreateOfferResult: shared.CreateOfferResult$.inboundSchema.optional(),
+            CreateResult: shared.CreateResult$.inboundSchema.optional(),
             StatusCode: z.number().int(),
             RawResponse: z.instanceof(Response),
         })
         .transform((v) => {
             return {
                 contentType: v.ContentType,
-                ...(v.CreateOfferResult === undefined
-                    ? null
-                    : { createOfferResult: v.CreateOfferResult }),
+                ...(v.CreateResult === undefined ? null : { createResult: v.CreateResult }),
                 statusCode: v.StatusCode,
                 rawResponse: v.RawResponse,
             };
@@ -98,7 +96,7 @@ export namespace AtsCreateOfferResponse$ {
 
     export type Outbound = {
         ContentType: string;
-        CreateOfferResult?: shared.CreateOfferResult$.Outbound | undefined;
+        CreateResult?: shared.CreateResult$.Outbound | undefined;
         StatusCode: number;
         RawResponse: never;
     };
@@ -106,7 +104,7 @@ export namespace AtsCreateOfferResponse$ {
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, AtsCreateOfferResponse> = z
         .object({
             contentType: z.string(),
-            createOfferResult: shared.CreateOfferResult$.outboundSchema.optional(),
+            createResult: shared.CreateResult$.outboundSchema.optional(),
             statusCode: z.number().int(),
             rawResponse: z.instanceof(Response).transform(() => {
                 throw new Error("Response cannot be serialized");
@@ -115,9 +113,7 @@ export namespace AtsCreateOfferResponse$ {
         .transform((v) => {
             return {
                 ContentType: v.contentType,
-                ...(v.createOfferResult === undefined
-                    ? null
-                    : { CreateOfferResult: v.createOfferResult }),
+                ...(v.createResult === undefined ? null : { CreateResult: v.createResult }),
                 StatusCode: v.statusCode,
                 RawResponse: v.rawResponse,
             };

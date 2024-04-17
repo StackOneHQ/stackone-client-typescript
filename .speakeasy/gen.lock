@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 7fa83af8-9e8e-4410-b7e2-cf1d0eaf688b
 management:
-  docChecksum: a95b22df7519bf3c2d92ed485a9c9582
+  docChecksum: e2ed653db9434b1ac1858fd97b4e95f3
   docVersion: 1.0.0
-  speakeasyVersion: 1.253.3
+  speakeasyVersion: 1.255.1
   generationVersion: 2.306.3
-  releaseVersion: 4.4.8
-  configChecksum: 1226d686c5aca0593c2504f3727195a4
+  releaseVersion: 4.4.9
+  configChecksum: adb308ff902143da3a502196b744f11a
   repoURL: https://github.com/StackOneHQ/stackone-client-typescript.git
   repoSubDirectory: .
   installationURL: https://github.com/StackOneHQ/stackone-client-typescript
@@ -171,6 +171,7 @@ generatedFiles:
   - src/sdk/models/shared/connectsessioncreate.ts
   - src/sdk/models/shared/connectorsmeta.ts
   - src/sdk/models/shared/createresult.ts
+  - src/sdk/models/shared/createresultdataapimodel.ts
   - src/sdk/models/shared/atscreateapplicationrequestdto.ts
   - src/sdk/models/shared/questionnaire.ts
   - src/sdk/models/shared/answer.ts
@@ -181,10 +182,8 @@ generatedFiles:
   - src/sdk/models/shared/phonenumber.ts
   - src/sdk/models/shared/candidateemail.ts
   - src/sdk/models/shared/atscreatecandidaterequestdto.ts
-  - src/sdk/models/shared/createcandidatenoteresult.ts
   - src/sdk/models/shared/atscreatenotesrequestdto.ts
   - src/sdk/models/shared/notecontentapimodel.ts
-  - src/sdk/models/shared/createofferresult.ts
   - src/sdk/models/shared/atscreateofferrequestdto.ts
   - src/sdk/models/shared/offerhistory.ts
   - src/sdk/models/shared/applicationresult.ts
@@ -255,15 +254,12 @@ generatedFiles:
   - src/sdk/models/shared/accountspaginated.ts
   - src/sdk/models/shared/contactspaginated.ts
   - src/sdk/models/shared/listspaginated.ts
-  - src/sdk/models/shared/createemployeeresult.ts
   - src/sdk/models/shared/hriscreateemployeerequestdto.ts
   - src/sdk/models/shared/employment.ts
   - src/sdk/models/shared/employeecustomfields.ts
   - src/sdk/models/shared/countrycodeenum.ts
   - src/sdk/models/shared/hrisbenefit.ts
-  - src/sdk/models/shared/createtimeoffresult.ts
   - src/sdk/models/shared/hriscreatetimeoffrequestdto.ts
-  - src/sdk/models/shared/createworkeligibilityresult.ts
   - src/sdk/models/shared/hriscreateworkeligibilityrequestdto.ts
   - src/sdk/models/shared/hrisbenefitresult.ts
   - src/sdk/models/shared/companyresult.ts
@@ -303,7 +299,6 @@ generatedFiles:
   - src/sdk/models/shared/iampoliciespaginated.ts
   - src/sdk/models/shared/iamrolespaginated.ts
   - src/sdk/models/shared/iamuserspaginated.ts
-  - src/sdk/models/shared/createtemplateresult.ts
   - src/sdk/models/shared/marketingcreateemailtemplaterequestdto.ts
   - src/sdk/models/shared/emailmessages.ts
   - src/sdk/models/shared/marketingcreatetemplaterequestdto.ts
@@ -548,6 +543,7 @@ generatedFiles:
   - docs/sdk/models/shared/resources.md
   - docs/sdk/models/shared/connectorsmeta.md
   - docs/sdk/models/shared/createresult.md
+  - docs/sdk/models/shared/createresultdataapimodel.md
   - docs/sdk/models/shared/atscreateapplicationrequestdto4.md
   - docs/sdk/models/shared/atscreateapplicationrequestdtosourcevalue.md
   - docs/sdk/models/shared/atscreateapplicationrequestdtovalue.md
@@ -568,14 +564,12 @@ generatedFiles:
   - docs/sdk/models/shared/phonenumber.md
   - docs/sdk/models/shared/candidateemail.md
   - docs/sdk/models/shared/atscreatecandidaterequestdto.md
-  - docs/sdk/models/shared/createcandidatenoteresult.md
   - docs/sdk/models/shared/atscreatenotesrequestdto4.md
   - docs/sdk/models/shared/atscreatenotesrequestdtosourcevalue.md
   - docs/sdk/models/shared/atscreatenotesrequestdtovalue.md
   - docs/sdk/models/shared/visibility.md
   - docs/sdk/models/shared/atscreatenotesrequestdto.md
   - docs/sdk/models/shared/notecontentapimodel.md
-  - docs/sdk/models/shared/createofferresult.md
   - docs/sdk/models/shared/atscreateofferrequestdto4.md
   - docs/sdk/models/shared/atscreateofferrequestdtosourcevalue.md
   - docs/sdk/models/shared/atscreateofferrequestdtovalue.md
@@ -738,7 +732,6 @@ generatedFiles:
   - docs/sdk/models/shared/accountspaginated.md
   - docs/sdk/models/shared/contactspaginated.md
   - docs/sdk/models/shared/listspaginated.md
-  - docs/sdk/models/shared/createemployeeresult.md
   - docs/sdk/models/shared/hriscreateemployeerequestdtoavatar.md
   - docs/sdk/models/shared/hriscreateemployeerequestdto4.md
   - docs/sdk/models/shared/hriscreateemployeerequestdtosourcevalue.md
@@ -819,7 +812,6 @@ generatedFiles:
   - docs/sdk/models/shared/hrisbenefitvalue.md
   - docs/sdk/models/shared/benefittype.md
   - docs/sdk/models/shared/hrisbenefit.md
-  - docs/sdk/models/shared/createtimeoffresult.md
   - docs/sdk/models/shared/hriscreatetimeoffrequestdto4.md
   - docs/sdk/models/shared/hriscreatetimeoffrequestdtosourcevalue.md
   - docs/sdk/models/shared/hriscreatetimeoffrequestdtovalue.md
@@ -829,7 +821,6 @@ generatedFiles:
   - docs/sdk/models/shared/hriscreatetimeoffrequestdtoschemasvalue.md
   - docs/sdk/models/shared/hriscreatetimeoffrequestdtotype.md
   - docs/sdk/models/shared/hriscreatetimeoffrequestdto.md
-  - docs/sdk/models/shared/createworkeligibilityresult.md
   - docs/sdk/models/shared/document.md
   - docs/sdk/models/shared/hriscreateworkeligibilityrequestdto4.md
   - docs/sdk/models/shared/hriscreateworkeligibilityrequestdtosourcevalue.md
@@ -986,7 +977,6 @@ generatedFiles:
   - docs/sdk/models/shared/iampoliciespaginated.md
   - docs/sdk/models/shared/iamrolespaginated.md
   - docs/sdk/models/shared/iamuserspaginated.md
-  - docs/sdk/models/shared/createtemplateresult.md
   - docs/sdk/models/shared/marketingcreateemailtemplaterequestdto.md
   - docs/sdk/models/shared/messagecontent.md
   - docs/sdk/models/shared/emailmessages4.md

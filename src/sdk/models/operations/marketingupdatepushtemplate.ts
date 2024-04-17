@@ -22,7 +22,7 @@ export type MarketingUpdatePushTemplateResponse = {
     /**
      * Record updated successfully
      */
-    createTemplateResult?: shared.CreateTemplateResult | undefined;
+    createResult?: shared.CreateResult | undefined;
     /**
      * HTTP response status code for this operation
      */
@@ -90,7 +90,7 @@ export namespace MarketingUpdatePushTemplateRequest$ {
 export namespace MarketingUpdatePushTemplateResponse$ {
     export type Inbound = {
         ContentType: string;
-        CreateTemplateResult?: shared.CreateTemplateResult$.Inbound | undefined;
+        CreateResult?: shared.CreateResult$.Inbound | undefined;
         StatusCode: number;
         RawResponse: Response;
     };
@@ -102,16 +102,14 @@ export namespace MarketingUpdatePushTemplateResponse$ {
     > = z
         .object({
             ContentType: z.string(),
-            CreateTemplateResult: shared.CreateTemplateResult$.inboundSchema.optional(),
+            CreateResult: shared.CreateResult$.inboundSchema.optional(),
             StatusCode: z.number().int(),
             RawResponse: z.instanceof(Response),
         })
         .transform((v) => {
             return {
                 contentType: v.ContentType,
-                ...(v.CreateTemplateResult === undefined
-                    ? null
-                    : { createTemplateResult: v.CreateTemplateResult }),
+                ...(v.CreateResult === undefined ? null : { createResult: v.CreateResult }),
                 statusCode: v.StatusCode,
                 rawResponse: v.RawResponse,
             };
@@ -119,7 +117,7 @@ export namespace MarketingUpdatePushTemplateResponse$ {
 
     export type Outbound = {
         ContentType: string;
-        CreateTemplateResult?: shared.CreateTemplateResult$.Outbound | undefined;
+        CreateResult?: shared.CreateResult$.Outbound | undefined;
         StatusCode: number;
         RawResponse: never;
     };
@@ -131,7 +129,7 @@ export namespace MarketingUpdatePushTemplateResponse$ {
     > = z
         .object({
             contentType: z.string(),
-            createTemplateResult: shared.CreateTemplateResult$.outboundSchema.optional(),
+            createResult: shared.CreateResult$.outboundSchema.optional(),
             statusCode: z.number().int(),
             rawResponse: z.instanceof(Response).transform(() => {
                 throw new Error("Response cannot be serialized");
@@ -140,9 +138,7 @@ export namespace MarketingUpdatePushTemplateResponse$ {
         .transform((v) => {
             return {
                 ContentType: v.contentType,
-                ...(v.createTemplateResult === undefined
-                    ? null
-                    : { CreateTemplateResult: v.createTemplateResult }),
+                ...(v.createResult === undefined ? null : { CreateResult: v.createResult }),
                 StatusCode: v.statusCode,
                 RawResponse: v.rawResponse,
             };

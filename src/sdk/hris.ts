@@ -116,7 +116,7 @@ export class Hris extends ClientSDK {
                 (val$) => {
                     return operations.HrisCreateEmployeeResponse$.inboundSchema.parse({
                         ...responseFields$,
-                        CreateEmployeeResult: val$,
+                        CreateResult: val$,
                     });
                 },
                 "Response validation failed"
@@ -211,7 +211,7 @@ export class Hris extends ClientSDK {
                     return operations.HrisCreateEmployeeTimeOffRequestResponse$.inboundSchema.parse(
                         {
                             ...responseFields$,
-                            CreateTimeOffResult: val$,
+                            CreateResult: val$,
                         }
                     );
                 },
@@ -309,7 +309,7 @@ export class Hris extends ClientSDK {
                     return operations.HrisCreateEmployeeWorkEligibilityRequestResponse$.inboundSchema.parse(
                         {
                             ...responseFields$,
-                            CreateWorkEligibilityResult: val$,
+                            CreateResult: val$,
                         }
                     );
                 },
@@ -398,7 +398,7 @@ export class Hris extends ClientSDK {
                 (val$) => {
                     return operations.HrisCreateTimeOffRequestResponse$.inboundSchema.parse({
                         ...responseFields$,
-                        CreateTimeOffResult: val$,
+                        CreateResult: val$,
                     });
                 },
                 "Response validation failed"
@@ -2411,7 +2411,7 @@ export class Hris extends ClientSDK {
                 (val$) => {
                     return operations.HrisUpdateEmployeeResponse$.inboundSchema.parse({
                         ...responseFields$,
-                        CreateEmployeeResult: val$,
+                        CreateResult: val$,
                     });
                 },
                 "Response validation failed"
@@ -2600,7 +2600,7 @@ export class Hris extends ClientSDK {
                 (val$) => {
                     return operations.HrisUpdateTimeOffRequestResponse$.inboundSchema.parse({
                         ...responseFields$,
-                        CreateTimeOffResult: val$,
+                        CreateResult: val$,
                     });
                 },
                 "Response validation failed"

@@ -21,7 +21,7 @@ export type HrisCreateTimeOffRequestResponse = {
     /**
      * The time off request was created successfully.
      */
-    createTimeOffResult?: shared.CreateTimeOffResult | undefined;
+    createResult?: shared.CreateResult | undefined;
     /**
      * HTTP response status code for this operation
      */
@@ -78,7 +78,7 @@ export namespace HrisCreateTimeOffRequestRequest$ {
 export namespace HrisCreateTimeOffRequestResponse$ {
     export type Inbound = {
         ContentType: string;
-        CreateTimeOffResult?: shared.CreateTimeOffResult$.Inbound | undefined;
+        CreateResult?: shared.CreateResult$.Inbound | undefined;
         StatusCode: number;
         RawResponse: Response;
     };
@@ -87,16 +87,14 @@ export namespace HrisCreateTimeOffRequestResponse$ {
         z
             .object({
                 ContentType: z.string(),
-                CreateTimeOffResult: shared.CreateTimeOffResult$.inboundSchema.optional(),
+                CreateResult: shared.CreateResult$.inboundSchema.optional(),
                 StatusCode: z.number().int(),
                 RawResponse: z.instanceof(Response),
             })
             .transform((v) => {
                 return {
                     contentType: v.ContentType,
-                    ...(v.CreateTimeOffResult === undefined
-                        ? null
-                        : { createTimeOffResult: v.CreateTimeOffResult }),
+                    ...(v.CreateResult === undefined ? null : { createResult: v.CreateResult }),
                     statusCode: v.StatusCode,
                     rawResponse: v.RawResponse,
                 };
@@ -104,7 +102,7 @@ export namespace HrisCreateTimeOffRequestResponse$ {
 
     export type Outbound = {
         ContentType: string;
-        CreateTimeOffResult?: shared.CreateTimeOffResult$.Outbound | undefined;
+        CreateResult?: shared.CreateResult$.Outbound | undefined;
         StatusCode: number;
         RawResponse: never;
     };
@@ -116,7 +114,7 @@ export namespace HrisCreateTimeOffRequestResponse$ {
     > = z
         .object({
             contentType: z.string(),
-            createTimeOffResult: shared.CreateTimeOffResult$.outboundSchema.optional(),
+            createResult: shared.CreateResult$.outboundSchema.optional(),
             statusCode: z.number().int(),
             rawResponse: z.instanceof(Response).transform(() => {
                 throw new Error("Response cannot be serialized");
@@ -125,9 +123,7 @@ export namespace HrisCreateTimeOffRequestResponse$ {
         .transform((v) => {
             return {
                 ContentType: v.contentType,
-                ...(v.createTimeOffResult === undefined
-                    ? null
-                    : { CreateTimeOffResult: v.createTimeOffResult }),
+                ...(v.createResult === undefined ? null : { CreateResult: v.createResult }),
                 StatusCode: v.statusCode,
                 RawResponse: v.rawResponse,
             };
