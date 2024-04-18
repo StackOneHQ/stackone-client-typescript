@@ -15,7 +15,17 @@ export type AtsListApplicationsRequest = {
      */
     fields?: string | null | undefined;
     /**
+     * Filter to select applications by job_id
+     */
+    filterJobId?: string | null | undefined;
+    /**
+     * Use a string with a date to only select results updated after that given date
+     */
+    filterUpdatedAfter?: string | null | undefined;
+    /**
      * Filter for job ID to retrieve a list of applications related to this job
+     *
+     * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     jobId?: string | null | undefined;
     /**
@@ -48,6 +58,8 @@ export type AtsListApplicationsRequest = {
     syncToken?: string | null | undefined;
     /**
      * Use a string with a date to only select results updated after that given date
+     *
+     * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     updatedAfter?: string | null | undefined;
     /**
@@ -80,6 +92,8 @@ export namespace AtsListApplicationsRequest$ {
     export type Inbound = {
         expand?: string | null | undefined;
         fields?: string | null | undefined;
+        "filter[job_id]"?: string | null | undefined;
+        "filter[updated_after]"?: string | null | undefined;
         job_id?: string | null | undefined;
         next?: string | null | undefined;
         page?: string | null | undefined;
@@ -95,6 +109,8 @@ export namespace AtsListApplicationsRequest$ {
         .object({
             expand: z.nullable(z.string()).optional(),
             fields: z.nullable(z.string()).optional(),
+            "filter[job_id]": z.nullable(z.string()).optional(),
+            "filter[updated_after]": z.nullable(z.string()).optional(),
             job_id: z.nullable(z.string()).optional(),
             next: z.nullable(z.string()).optional(),
             page: z.nullable(z.string()).optional(),
@@ -109,6 +125,12 @@ export namespace AtsListApplicationsRequest$ {
             return {
                 ...(v.expand === undefined ? null : { expand: v.expand }),
                 ...(v.fields === undefined ? null : { fields: v.fields }),
+                ...(v["filter[job_id]"] === undefined
+                    ? null
+                    : { filterJobId: v["filter[job_id]"] }),
+                ...(v["filter[updated_after]"] === undefined
+                    ? null
+                    : { filterUpdatedAfter: v["filter[updated_after]"] }),
                 ...(v.job_id === undefined ? null : { jobId: v.job_id }),
                 ...(v.next === undefined ? null : { next: v.next }),
                 ...(v.page === undefined ? null : { page: v.page }),
@@ -124,6 +146,8 @@ export namespace AtsListApplicationsRequest$ {
     export type Outbound = {
         expand?: string | null | undefined;
         fields?: string | null | undefined;
+        "filter[job_id]"?: string | null | undefined;
+        "filter[updated_after]"?: string | null | undefined;
         job_id?: string | null | undefined;
         next?: string | null | undefined;
         page?: string | null | undefined;
@@ -139,6 +163,8 @@ export namespace AtsListApplicationsRequest$ {
         .object({
             expand: z.nullable(z.string()).optional(),
             fields: z.nullable(z.string()).optional(),
+            filterJobId: z.nullable(z.string()).optional(),
+            filterUpdatedAfter: z.nullable(z.string()).optional(),
             jobId: z.nullable(z.string()).optional(),
             next: z.nullable(z.string()).optional(),
             page: z.nullable(z.string()).optional(),
@@ -153,6 +179,10 @@ export namespace AtsListApplicationsRequest$ {
             return {
                 ...(v.expand === undefined ? null : { expand: v.expand }),
                 ...(v.fields === undefined ? null : { fields: v.fields }),
+                ...(v.filterJobId === undefined ? null : { "filter[job_id]": v.filterJobId }),
+                ...(v.filterUpdatedAfter === undefined
+                    ? null
+                    : { "filter[updated_after]": v.filterUpdatedAfter }),
                 ...(v.jobId === undefined ? null : { job_id: v.jobId }),
                 ...(v.next === undefined ? null : { next: v.next }),
                 ...(v.page === undefined ? null : { page: v.page }),

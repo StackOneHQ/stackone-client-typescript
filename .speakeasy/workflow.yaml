@@ -1,4 +1,5 @@
 workflowVersion: 1.0.0
+speakeasyVersion: latest
 sources:
     my-source:
         inputs:
@@ -12,8 +13,8 @@ targets:
     StackOneTypeScriptClient:
         target: typescript
         source: my-source
-        codeSamples:
-            output: codeSamples.yaml
         publish:
             npm:
                 token: $NPM_TOKEN
+        codeSamples:
+            output: codeSamples.yaml

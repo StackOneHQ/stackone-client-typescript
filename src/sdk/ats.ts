@@ -514,7 +514,7 @@ export class Ats extends ClientSDK {
         const query$ = [
             enc$.encodeForm("expand", payload$.expand, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("fields", payload$.fields, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("proxy", payload$.proxy, { explode: true, charEncoding: "percent" }),
+            enc$.encodeDeepObject("proxy", payload$.proxy, { charEncoding: "percent" }),
             enc$.encodeForm("raw", payload$.raw, { explode: true, charEncoding: "percent" }),
         ]
             .filter(Boolean)
@@ -614,7 +614,7 @@ export class Ats extends ClientSDK {
 
         const query$ = [
             enc$.encodeForm("fields", payload$.fields, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("proxy", payload$.proxy, { explode: true, charEncoding: "percent" }),
+            enc$.encodeDeepObject("proxy", payload$.proxy, { charEncoding: "percent" }),
             enc$.encodeForm("raw", payload$.raw, { explode: true, charEncoding: "percent" }),
         ]
             .filter(Boolean)
@@ -714,7 +714,7 @@ export class Ats extends ClientSDK {
 
         const query$ = [
             enc$.encodeForm("fields", payload$.fields, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("proxy", payload$.proxy, { explode: true, charEncoding: "percent" }),
+            enc$.encodeDeepObject("proxy", payload$.proxy, { charEncoding: "percent" }),
             enc$.encodeForm("raw", payload$.raw, { explode: true, charEncoding: "percent" }),
         ]
             .filter(Boolean)
@@ -814,7 +814,7 @@ export class Ats extends ClientSDK {
 
         const query$ = [
             enc$.encodeForm("fields", payload$.fields, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("proxy", payload$.proxy, { explode: true, charEncoding: "percent" }),
+            enc$.encodeDeepObject("proxy", payload$.proxy, { charEncoding: "percent" }),
             enc$.encodeForm("raw", payload$.raw, { explode: true, charEncoding: "percent" }),
         ]
             .filter(Boolean)
@@ -908,7 +908,7 @@ export class Ats extends ClientSDK {
 
         const query$ = [
             enc$.encodeForm("fields", payload$.fields, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("proxy", payload$.proxy, { explode: true, charEncoding: "percent" }),
+            enc$.encodeDeepObject("proxy", payload$.proxy, { charEncoding: "percent" }),
             enc$.encodeForm("raw", payload$.raw, { explode: true, charEncoding: "percent" }),
         ]
             .filter(Boolean)
@@ -1008,7 +1008,7 @@ export class Ats extends ClientSDK {
 
         const query$ = [
             enc$.encodeForm("fields", payload$.fields, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("proxy", payload$.proxy, { explode: true, charEncoding: "percent" }),
+            enc$.encodeDeepObject("proxy", payload$.proxy, { charEncoding: "percent" }),
             enc$.encodeForm("raw", payload$.raw, { explode: true, charEncoding: "percent" }),
         ]
             .filter(Boolean)
@@ -1102,7 +1102,7 @@ export class Ats extends ClientSDK {
 
         const query$ = [
             enc$.encodeForm("fields", payload$.fields, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("proxy", payload$.proxy, { explode: true, charEncoding: "percent" }),
+            enc$.encodeDeepObject("proxy", payload$.proxy, { charEncoding: "percent" }),
             enc$.encodeForm("raw", payload$.raw, { explode: true, charEncoding: "percent" }),
         ]
             .filter(Boolean)
@@ -1196,7 +1196,7 @@ export class Ats extends ClientSDK {
 
         const query$ = [
             enc$.encodeForm("fields", payload$.fields, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("proxy", payload$.proxy, { explode: true, charEncoding: "percent" }),
+            enc$.encodeDeepObject("proxy", payload$.proxy, { charEncoding: "percent" }),
             enc$.encodeForm("raw", payload$.raw, { explode: true, charEncoding: "percent" }),
         ]
             .filter(Boolean)
@@ -1290,7 +1290,7 @@ export class Ats extends ClientSDK {
 
         const query$ = [
             enc$.encodeForm("fields", payload$.fields, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("proxy", payload$.proxy, { explode: true, charEncoding: "percent" }),
+            enc$.encodeDeepObject("proxy", payload$.proxy, { charEncoding: "percent" }),
             enc$.encodeForm("raw", payload$.raw, { explode: true, charEncoding: "percent" }),
         ]
             .filter(Boolean)
@@ -1385,7 +1385,7 @@ export class Ats extends ClientSDK {
         const query$ = [
             enc$.encodeForm("expand", payload$.expand, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("fields", payload$.fields, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("proxy", payload$.proxy, { explode: true, charEncoding: "percent" }),
+            enc$.encodeDeepObject("proxy", payload$.proxy, { charEncoding: "percent" }),
             enc$.encodeForm("raw", payload$.raw, { explode: true, charEncoding: "percent" }),
         ]
             .filter(Boolean)
@@ -1483,7 +1483,7 @@ export class Ats extends ClientSDK {
                 explode: true,
                 charEncoding: "percent",
             }),
-            enc$.encodeForm("proxy", payload$.proxy, { explode: true, charEncoding: "percent" }),
+            enc$.encodeDeepObject("proxy", payload$.proxy, { charEncoding: "percent" }),
             enc$.encodeForm("raw", payload$.raw, { explode: true, charEncoding: "percent" }),
         ]
             .filter(Boolean)
@@ -1577,7 +1577,7 @@ export class Ats extends ClientSDK {
 
         const query$ = [
             enc$.encodeForm("fields", payload$.fields, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("proxy", payload$.proxy, { explode: true, charEncoding: "percent" }),
+            enc$.encodeDeepObject("proxy", payload$.proxy, { charEncoding: "percent" }),
             enc$.encodeForm("raw", payload$.raw, { explode: true, charEncoding: "percent" }),
         ]
             .filter(Boolean)
@@ -1671,7 +1671,7 @@ export class Ats extends ClientSDK {
 
         const query$ = [
             enc$.encodeForm("fields", payload$.fields, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("proxy", payload$.proxy, { explode: true, charEncoding: "percent" }),
+            enc$.encodeDeepObject("proxy", payload$.proxy, { charEncoding: "percent" }),
             enc$.encodeForm("raw", payload$.raw, { explode: true, charEncoding: "percent" }),
         ]
             .filter(Boolean)
@@ -1765,7 +1765,7 @@ export class Ats extends ClientSDK {
 
         const query$ = [
             enc$.encodeForm("fields", payload$.fields, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("proxy", payload$.proxy, { explode: true, charEncoding: "percent" }),
+            enc$.encodeDeepObject("proxy", payload$.proxy, { charEncoding: "percent" }),
             enc$.encodeForm("raw", payload$.raw, { explode: true, charEncoding: "percent" }),
         ]
             .filter(Boolean)
@@ -1859,7 +1859,7 @@ export class Ats extends ClientSDK {
 
         const query$ = [
             enc$.encodeForm("fields", payload$.fields, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("proxy", payload$.proxy, { explode: true, charEncoding: "percent" }),
+            enc$.encodeDeepObject("proxy", payload$.proxy, { charEncoding: "percent" }),
             enc$.encodeForm("raw", payload$.raw, { explode: true, charEncoding: "percent" }),
         ]
             .filter(Boolean)
@@ -1955,13 +1955,17 @@ export class Ats extends ClientSDK {
 
         const query$ = [
             enc$.encodeForm("fields", payload$.fields, { explode: true, charEncoding: "percent" }),
+            enc$.encodeForm("filter[updated_after]", payload$["filter[updated_after]"], {
+                explode: true,
+                charEncoding: "percent",
+            }),
             enc$.encodeForm("next", payload$.next, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("page", payload$.page, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("page_size", payload$.page_size, {
                 explode: true,
                 charEncoding: "percent",
             }),
-            enc$.encodeForm("proxy", payload$.proxy, { explode: true, charEncoding: "percent" }),
+            enc$.encodeDeepObject("proxy", payload$.proxy, { charEncoding: "percent" }),
             enc$.encodeForm("raw", payload$.raw, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("sync_token", payload$.sync_token, {
                 explode: true,
@@ -2066,13 +2070,17 @@ export class Ats extends ClientSDK {
 
         const query$ = [
             enc$.encodeForm("fields", payload$.fields, { explode: true, charEncoding: "percent" }),
+            enc$.encodeForm("filter[updated_after]", payload$["filter[updated_after]"], {
+                explode: true,
+                charEncoding: "percent",
+            }),
             enc$.encodeForm("next", payload$.next, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("page", payload$.page, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("page_size", payload$.page_size, {
                 explode: true,
                 charEncoding: "percent",
             }),
-            enc$.encodeForm("proxy", payload$.proxy, { explode: true, charEncoding: "percent" }),
+            enc$.encodeDeepObject("proxy", payload$.proxy, { charEncoding: "percent" }),
             enc$.encodeForm("raw", payload$.raw, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("sync_token", payload$.sync_token, {
                 explode: true,
@@ -2172,6 +2180,14 @@ export class Ats extends ClientSDK {
         const query$ = [
             enc$.encodeForm("expand", payload$.expand, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("fields", payload$.fields, { explode: true, charEncoding: "percent" }),
+            enc$.encodeForm("filter[job_id]", payload$["filter[job_id]"], {
+                explode: true,
+                charEncoding: "percent",
+            }),
+            enc$.encodeForm("filter[updated_after]", payload$["filter[updated_after]"], {
+                explode: true,
+                charEncoding: "percent",
+            }),
             enc$.encodeForm("job_id", payload$.job_id, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("next", payload$.next, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("page", payload$.page, { explode: true, charEncoding: "percent" }),
@@ -2179,7 +2195,7 @@ export class Ats extends ClientSDK {
                 explode: true,
                 charEncoding: "percent",
             }),
-            enc$.encodeForm("proxy", payload$.proxy, { explode: true, charEncoding: "percent" }),
+            enc$.encodeDeepObject("proxy", payload$.proxy, { charEncoding: "percent" }),
             enc$.encodeForm("raw", payload$.raw, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("sync_token", payload$.sync_token, {
                 explode: true,
@@ -2283,13 +2299,17 @@ export class Ats extends ClientSDK {
 
         const query$ = [
             enc$.encodeForm("fields", payload$.fields, { explode: true, charEncoding: "percent" }),
+            enc$.encodeForm("filter[updated_after]", payload$["filter[updated_after]"], {
+                explode: true,
+                charEncoding: "percent",
+            }),
             enc$.encodeForm("next", payload$.next, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("page", payload$.page, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("page_size", payload$.page_size, {
                 explode: true,
                 charEncoding: "percent",
             }),
-            enc$.encodeForm("proxy", payload$.proxy, { explode: true, charEncoding: "percent" }),
+            enc$.encodeDeepObject("proxy", payload$.proxy, { charEncoding: "percent" }),
             enc$.encodeForm("raw", payload$.raw, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("sync_token", payload$.sync_token, {
                 explode: true,
@@ -2391,13 +2411,17 @@ export class Ats extends ClientSDK {
 
         const query$ = [
             enc$.encodeForm("fields", payload$.fields, { explode: true, charEncoding: "percent" }),
+            enc$.encodeForm("filter[updated_after]", payload$["filter[updated_after]"], {
+                explode: true,
+                charEncoding: "percent",
+            }),
             enc$.encodeForm("next", payload$.next, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("page", payload$.page, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("page_size", payload$.page_size, {
                 explode: true,
                 charEncoding: "percent",
             }),
-            enc$.encodeForm("proxy", payload$.proxy, { explode: true, charEncoding: "percent" }),
+            enc$.encodeDeepObject("proxy", payload$.proxy, { charEncoding: "percent" }),
             enc$.encodeForm("raw", payload$.raw, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("sync_token", payload$.sync_token, {
                 explode: true,
@@ -2496,13 +2520,17 @@ export class Ats extends ClientSDK {
 
         const query$ = [
             enc$.encodeForm("fields", payload$.fields, { explode: true, charEncoding: "percent" }),
+            enc$.encodeForm("filter[updated_after]", payload$["filter[updated_after]"], {
+                explode: true,
+                charEncoding: "percent",
+            }),
             enc$.encodeForm("next", payload$.next, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("page", payload$.page, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("page_size", payload$.page_size, {
                 explode: true,
                 charEncoding: "percent",
             }),
-            enc$.encodeForm("proxy", payload$.proxy, { explode: true, charEncoding: "percent" }),
+            enc$.encodeDeepObject("proxy", payload$.proxy, { charEncoding: "percent" }),
             enc$.encodeForm("raw", payload$.raw, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("sync_token", payload$.sync_token, {
                 explode: true,
@@ -2601,13 +2629,17 @@ export class Ats extends ClientSDK {
 
         const query$ = [
             enc$.encodeForm("fields", payload$.fields, { explode: true, charEncoding: "percent" }),
+            enc$.encodeForm("filter[updated_after]", payload$["filter[updated_after]"], {
+                explode: true,
+                charEncoding: "percent",
+            }),
             enc$.encodeForm("next", payload$.next, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("page", payload$.page, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("page_size", payload$.page_size, {
                 explode: true,
                 charEncoding: "percent",
             }),
-            enc$.encodeForm("proxy", payload$.proxy, { explode: true, charEncoding: "percent" }),
+            enc$.encodeDeepObject("proxy", payload$.proxy, { charEncoding: "percent" }),
             enc$.encodeForm("raw", payload$.raw, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("sync_token", payload$.sync_token, {
                 explode: true,
@@ -2706,13 +2738,17 @@ export class Ats extends ClientSDK {
 
         const query$ = [
             enc$.encodeForm("fields", payload$.fields, { explode: true, charEncoding: "percent" }),
+            enc$.encodeForm("filter[updated_after]", payload$["filter[updated_after]"], {
+                explode: true,
+                charEncoding: "percent",
+            }),
             enc$.encodeForm("next", payload$.next, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("page", payload$.page, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("page_size", payload$.page_size, {
                 explode: true,
                 charEncoding: "percent",
             }),
-            enc$.encodeForm("proxy", payload$.proxy, { explode: true, charEncoding: "percent" }),
+            enc$.encodeDeepObject("proxy", payload$.proxy, { charEncoding: "percent" }),
             enc$.encodeForm("raw", payload$.raw, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("sync_token", payload$.sync_token, {
                 explode: true,
@@ -2811,13 +2847,17 @@ export class Ats extends ClientSDK {
 
         const query$ = [
             enc$.encodeForm("fields", payload$.fields, { explode: true, charEncoding: "percent" }),
+            enc$.encodeForm("filter[updated_after]", payload$["filter[updated_after]"], {
+                explode: true,
+                charEncoding: "percent",
+            }),
             enc$.encodeForm("next", payload$.next, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("page", payload$.page, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("page_size", payload$.page_size, {
                 explode: true,
                 charEncoding: "percent",
             }),
-            enc$.encodeForm("proxy", payload$.proxy, { explode: true, charEncoding: "percent" }),
+            enc$.encodeDeepObject("proxy", payload$.proxy, { charEncoding: "percent" }),
             enc$.encodeForm("raw", payload$.raw, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("sync_token", payload$.sync_token, {
                 explode: true,
@@ -2916,6 +2956,10 @@ export class Ats extends ClientSDK {
 
         const query$ = [
             enc$.encodeForm("fields", payload$.fields, { explode: true, charEncoding: "percent" }),
+            enc$.encodeForm("filter[updated_after]", payload$["filter[updated_after]"], {
+                explode: true,
+                charEncoding: "percent",
+            }),
             enc$.encodeForm("include", payload$.include, {
                 explode: true,
                 charEncoding: "percent",
@@ -2926,7 +2970,7 @@ export class Ats extends ClientSDK {
                 explode: true,
                 charEncoding: "percent",
             }),
-            enc$.encodeForm("proxy", payload$.proxy, { explode: true, charEncoding: "percent" }),
+            enc$.encodeDeepObject("proxy", payload$.proxy, { charEncoding: "percent" }),
             enc$.encodeForm("raw", payload$.raw, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("sync_token", payload$.sync_token, {
                 explode: true,
@@ -3026,13 +3070,17 @@ export class Ats extends ClientSDK {
         const query$ = [
             enc$.encodeForm("expand", payload$.expand, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("fields", payload$.fields, { explode: true, charEncoding: "percent" }),
+            enc$.encodeForm("filter[updated_after]", payload$["filter[updated_after]"], {
+                explode: true,
+                charEncoding: "percent",
+            }),
             enc$.encodeForm("next", payload$.next, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("page", payload$.page, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("page_size", payload$.page_size, {
                 explode: true,
                 charEncoding: "percent",
             }),
-            enc$.encodeForm("proxy", payload$.proxy, { explode: true, charEncoding: "percent" }),
+            enc$.encodeDeepObject("proxy", payload$.proxy, { charEncoding: "percent" }),
             enc$.encodeForm("raw", payload$.raw, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("sync_token", payload$.sync_token, {
                 explode: true,
@@ -3131,13 +3179,17 @@ export class Ats extends ClientSDK {
 
         const query$ = [
             enc$.encodeForm("fields", payload$.fields, { explode: true, charEncoding: "percent" }),
+            enc$.encodeForm("filter[updated_after]", payload$["filter[updated_after]"], {
+                explode: true,
+                charEncoding: "percent",
+            }),
             enc$.encodeForm("next", payload$.next, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("page", payload$.page, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("page_size", payload$.page_size, {
                 explode: true,
                 charEncoding: "percent",
             }),
-            enc$.encodeForm("proxy", payload$.proxy, { explode: true, charEncoding: "percent" }),
+            enc$.encodeDeepObject("proxy", payload$.proxy, { charEncoding: "percent" }),
             enc$.encodeForm("raw", payload$.raw, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("sync_token", payload$.sync_token, {
                 explode: true,
@@ -3236,13 +3288,17 @@ export class Ats extends ClientSDK {
 
         const query$ = [
             enc$.encodeForm("fields", payload$.fields, { explode: true, charEncoding: "percent" }),
+            enc$.encodeForm("filter[updated_after]", payload$["filter[updated_after]"], {
+                explode: true,
+                charEncoding: "percent",
+            }),
             enc$.encodeForm("next", payload$.next, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("page", payload$.page, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("page_size", payload$.page_size, {
                 explode: true,
                 charEncoding: "percent",
             }),
-            enc$.encodeForm("proxy", payload$.proxy, { explode: true, charEncoding: "percent" }),
+            enc$.encodeDeepObject("proxy", payload$.proxy, { charEncoding: "percent" }),
             enc$.encodeForm("raw", payload$.raw, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("sync_token", payload$.sync_token, {
                 explode: true,
@@ -3341,13 +3397,17 @@ export class Ats extends ClientSDK {
 
         const query$ = [
             enc$.encodeForm("fields", payload$.fields, { explode: true, charEncoding: "percent" }),
+            enc$.encodeForm("filter[updated_after]", payload$["filter[updated_after]"], {
+                explode: true,
+                charEncoding: "percent",
+            }),
             enc$.encodeForm("next", payload$.next, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("page", payload$.page, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("page_size", payload$.page_size, {
                 explode: true,
                 charEncoding: "percent",
             }),
-            enc$.encodeForm("proxy", payload$.proxy, { explode: true, charEncoding: "percent" }),
+            enc$.encodeDeepObject("proxy", payload$.proxy, { charEncoding: "percent" }),
             enc$.encodeForm("raw", payload$.raw, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("sync_token", payload$.sync_token, {
                 explode: true,
@@ -3446,13 +3506,17 @@ export class Ats extends ClientSDK {
 
         const query$ = [
             enc$.encodeForm("fields", payload$.fields, { explode: true, charEncoding: "percent" }),
+            enc$.encodeForm("filter[updated_after]", payload$["filter[updated_after]"], {
+                explode: true,
+                charEncoding: "percent",
+            }),
             enc$.encodeForm("next", payload$.next, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("page", payload$.page, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("page_size", payload$.page_size, {
                 explode: true,
                 charEncoding: "percent",
             }),
-            enc$.encodeForm("proxy", payload$.proxy, { explode: true, charEncoding: "percent" }),
+            enc$.encodeDeepObject("proxy", payload$.proxy, { charEncoding: "percent" }),
             enc$.encodeForm("raw", payload$.raw, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("sync_token", payload$.sync_token, {
                 explode: true,

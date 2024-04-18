@@ -15,6 +15,7 @@ typescript:
     dependencies: {}
     devDependencies: {}
     peerDependencies: {}
+  additionalPackageJSON: {}
   author: StackOne
   clientServerStatusCodesAsErrors: true
   enumFormat: enum
