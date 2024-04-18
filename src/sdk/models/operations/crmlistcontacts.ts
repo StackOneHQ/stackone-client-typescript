@@ -11,6 +11,10 @@ export type CrmListContactsRequest = {
      */
     fields?: string | null | undefined;
     /**
+     * Use a string with a date to only select results updated after that given date
+     */
+    filterUpdatedAfter?: string | null | undefined;
+    /**
      * The unified cursor
      */
     next?: string | null | undefined;
@@ -34,6 +38,8 @@ export type CrmListContactsRequest = {
     raw?: boolean | null | undefined;
     /**
      * Use a string with a date to only select results updated after that given date
+     *
+     * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     updatedAfter?: string | null | undefined;
     /**
@@ -65,6 +71,7 @@ export type CrmListContactsResponse = {
 export namespace CrmListContactsRequest$ {
     export type Inbound = {
         fields?: string | null | undefined;
+        "filter[updated_after]"?: string | null | undefined;
         next?: string | null | undefined;
         page?: string | null | undefined;
         page_size?: string | null | undefined;
@@ -77,6 +84,7 @@ export namespace CrmListContactsRequest$ {
     export const inboundSchema: z.ZodType<CrmListContactsRequest, z.ZodTypeDef, Inbound> = z
         .object({
             fields: z.nullable(z.string()).optional(),
+            "filter[updated_after]": z.nullable(z.string()).optional(),
             next: z.nullable(z.string()).optional(),
             page: z.nullable(z.string()).optional(),
             page_size: z.nullable(z.string().default("25")),
@@ -88,6 +96,9 @@ export namespace CrmListContactsRequest$ {
         .transform((v) => {
             return {
                 ...(v.fields === undefined ? null : { fields: v.fields }),
+                ...(v["filter[updated_after]"] === undefined
+                    ? null
+                    : { filterUpdatedAfter: v["filter[updated_after]"] }),
                 ...(v.next === undefined ? null : { next: v.next }),
                 ...(v.page === undefined ? null : { page: v.page }),
                 pageSize: v.page_size,
@@ -100,6 +111,7 @@ export namespace CrmListContactsRequest$ {
 
     export type Outbound = {
         fields?: string | null | undefined;
+        "filter[updated_after]"?: string | null | undefined;
         next?: string | null | undefined;
         page?: string | null | undefined;
         page_size: string | null;
@@ -112,6 +124,7 @@ export namespace CrmListContactsRequest$ {
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CrmListContactsRequest> = z
         .object({
             fields: z.nullable(z.string()).optional(),
+            filterUpdatedAfter: z.nullable(z.string()).optional(),
             next: z.nullable(z.string()).optional(),
             page: z.nullable(z.string()).optional(),
             pageSize: z.nullable(z.string().default("25")),
@@ -123,6 +136,9 @@ export namespace CrmListContactsRequest$ {
         .transform((v) => {
             return {
                 ...(v.fields === undefined ? null : { fields: v.fields }),
+                ...(v.filterUpdatedAfter === undefined
+                    ? null
+                    : { "filter[updated_after]": v.filterUpdatedAfter }),
                 ...(v.next === undefined ? null : { next: v.next }),
                 ...(v.page === undefined ? null : { page: v.page }),
                 page_size: v.pageSize,

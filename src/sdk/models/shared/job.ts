@@ -6,6 +6,9 @@ import { InterviewStage, InterviewStage$ } from "./interviewstage";
 import { JobHiringTeam, JobHiringTeam$ } from "./jobhiringteam";
 import * as z from "zod";
 
+/**
+ * Confidential status of the job
+ */
 export enum Confidential {
     True = "true",
     False = "false",
@@ -54,7 +57,7 @@ export type Job = {
     /**
      * Confidential status of the job
      */
-    confidential?: Array<Confidential> | null | undefined;
+    confidential?: Confidential | null | undefined;
     /**
      * Date of creation
      */
@@ -198,7 +201,7 @@ export namespace JobStatus$ {
 export namespace Job$ {
     export type Inbound = {
         code?: string | null | undefined;
-        confidential?: Array<Confidential> | null | undefined;
+        confidential?: Confidential | null | undefined;
         created_at?: string | null | undefined;
         department_ids?: Array<string> | null | undefined;
         hiring_team?: Array<JobHiringTeam$.Inbound> | null | undefined;
@@ -215,7 +218,7 @@ export namespace Job$ {
     export const inboundSchema: z.ZodType<Job, z.ZodTypeDef, Inbound> = z
         .object({
             code: z.nullable(z.string()).optional(),
-            confidential: z.nullable(z.array(Confidential$)).optional(),
+            confidential: z.nullable(Confidential$).optional(),
             created_at: z
                 .nullable(
                     z
@@ -264,7 +267,7 @@ export namespace Job$ {
 
     export type Outbound = {
         code?: string | null | undefined;
-        confidential?: Array<Confidential> | null | undefined;
+        confidential?: Confidential | null | undefined;
         created_at?: string | null | undefined;
         department_ids?: Array<string> | null | undefined;
         hiring_team?: Array<JobHiringTeam$.Outbound> | null | undefined;
@@ -281,7 +284,7 @@ export namespace Job$ {
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Job> = z
         .object({
             code: z.nullable(z.string()).optional(),
-            confidential: z.nullable(z.array(Confidential$)).optional(),
+            confidential: z.nullable(Confidential$).optional(),
             createdAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
             departmentIds: z.nullable(z.array(z.string())).optional(),
             hiringTeam: z.nullable(z.array(JobHiringTeam$.outboundSchema)).optional(),

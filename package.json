@@ -1,7 +1,7 @@
 {
   "name": "@stackone/stackone-client-ts",
-  "version": "4.4.9",
-  "author": "StackOne",
+  "version": "4.5.0",
+  "author": "StackOne",  
   "main": "./index.js",
   "sideEffects": false,
   "repository": {
@@ -14,7 +14,6 @@
     "build": "tsc",
     "prepare": "npm run build"
   },
-  "keywords": [],
   "peerDependencies": {
     "zod": ">= 3"
   },
