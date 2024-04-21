@@ -52,7 +52,8 @@ export namespace SetupInformation$ {
 }
 
 /** @internal */
-export const LinkedAccountStatus$ = z.nativeEnum(LinkedAccountStatus);
+export const LinkedAccountStatus$: z.ZodNativeEnum<typeof LinkedAccountStatus> =
+    z.nativeEnum(LinkedAccountStatus);
 
 /** @internal */
 export namespace LinkedAccount$ {

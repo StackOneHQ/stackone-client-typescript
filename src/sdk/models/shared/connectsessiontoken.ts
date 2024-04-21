@@ -30,7 +30,8 @@ export type ConnectSessionToken = {
 };
 
 /** @internal */
-export const ConnectSessionTokenCategories$ = z.nativeEnum(ConnectSessionTokenCategories);
+export const ConnectSessionTokenCategories$: z.ZodNativeEnum<typeof ConnectSessionTokenCategories> =
+    z.nativeEnum(ConnectSessionTokenCategories);
 
 /** @internal */
 export namespace ConnectSessionToken$ {

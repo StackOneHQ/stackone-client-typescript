@@ -88,7 +88,8 @@ export namespace RejectedReasonSourceValue$ {
 }
 
 /** @internal */
-export const RejectedReasonValue$ = z.nativeEnum(RejectedReasonValue);
+export const RejectedReasonValue$: z.ZodNativeEnum<typeof RejectedReasonValue> =
+    z.nativeEnum(RejectedReasonValue);
 
 /** @internal */
 export namespace RejectedReasonType$ {

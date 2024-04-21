@@ -1317,7 +1317,8 @@ export namespace UnifiedUploadRequestDtoSourceValue$ {
 }
 
 /** @internal */
-export const UnifiedUploadRequestDtoValue$ = z.nativeEnum(UnifiedUploadRequestDtoValue);
+export const UnifiedUploadRequestDtoValue$: z.ZodNativeEnum<typeof UnifiedUploadRequestDtoValue> =
+    z.nativeEnum(UnifiedUploadRequestDtoValue);
 
 /** @internal */
 export namespace UnifiedUploadRequestDtoConfidential$ {
@@ -1438,9 +1439,9 @@ export namespace UnifiedUploadRequestDtoSchemasSourceValue$ {
 }
 
 /** @internal */
-export const UnifiedUploadRequestDtoSchemasValue$ = z.nativeEnum(
-    UnifiedUploadRequestDtoSchemasValue
-);
+export const UnifiedUploadRequestDtoSchemasValue$: z.ZodNativeEnum<
+    typeof UnifiedUploadRequestDtoSchemasValue
+> = z.nativeEnum(UnifiedUploadRequestDtoSchemasValue);
 
 /** @internal */
 export namespace UnifiedUploadRequestDtoFileFormat$ {

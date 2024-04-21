@@ -34,6 +34,11 @@ export enum ApplicationValue {
     Review = "review",
     Screen = "screen",
     New = "new",
+    Onboarding = "onboarding",
+    Created = "created",
+    Accepted = "accepted",
+    ShortList = "short_list",
+    Approved = "approved",
     UnmappedValue = "unmapped_value",
 }
 
@@ -177,7 +182,8 @@ export namespace ApplicationSourceValue$ {
 }
 
 /** @internal */
-export const ApplicationValue$ = z.nativeEnum(ApplicationValue);
+export const ApplicationValue$: z.ZodNativeEnum<typeof ApplicationValue> =
+    z.nativeEnum(ApplicationValue);
 
 /** @internal */
 export namespace ApplicationStatus$ {

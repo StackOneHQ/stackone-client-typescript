@@ -170,7 +170,8 @@ export namespace JobPostingCompensationSourceValue$ {
 }
 
 /** @internal */
-export const JobPostingCompensationValue$ = z.nativeEnum(JobPostingCompensationValue);
+export const JobPostingCompensationValue$: z.ZodNativeEnum<typeof JobPostingCompensationValue> =
+    z.nativeEnum(JobPostingCompensationValue);
 
 /** @internal */
 export namespace JobPostingCompensationPayFrequency$ {
@@ -288,7 +289,9 @@ export namespace JobPostingCompensationSchemasSourceValue$ {
 }
 
 /** @internal */
-export const JobPostingCompensationSchemasValue$ = z.nativeEnum(JobPostingCompensationSchemasValue);
+export const JobPostingCompensationSchemasValue$: z.ZodNativeEnum<
+    typeof JobPostingCompensationSchemasValue
+> = z.nativeEnum(JobPostingCompensationSchemasValue);
 
 /** @internal */
 export namespace JobPostingCompensationPayPeriod$ {
@@ -409,9 +412,9 @@ export namespace JobPostingCompensationSchemasTypeSourceValue$ {
 }
 
 /** @internal */
-export const JobPostingCompensationSchemasTypeValue$ = z.nativeEnum(
-    JobPostingCompensationSchemasTypeValue
-);
+export const JobPostingCompensationSchemasTypeValue$: z.ZodNativeEnum<
+    typeof JobPostingCompensationSchemasTypeValue
+> = z.nativeEnum(JobPostingCompensationSchemasTypeValue);
 
 /** @internal */
 export namespace JobPostingCompensationType$ {

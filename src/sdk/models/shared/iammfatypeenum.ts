@@ -61,7 +61,8 @@ export namespace IamMfaTypeEnumSourceValue$ {
 }
 
 /** @internal */
-export const IamMfaTypeEnumValue$ = z.nativeEnum(IamMfaTypeEnumValue);
+export const IamMfaTypeEnumValue$: z.ZodNativeEnum<typeof IamMfaTypeEnumValue> =
+    z.nativeEnum(IamMfaTypeEnumValue);
 
 /** @internal */
 export namespace IamMfaTypeEnum$ {

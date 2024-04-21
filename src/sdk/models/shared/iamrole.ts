@@ -76,7 +76,7 @@ export namespace IamRoleSourceValue$ {
 }
 
 /** @internal */
-export const IamRoleValue$ = z.nativeEnum(IamRoleValue);
+export const IamRoleValue$: z.ZodNativeEnum<typeof IamRoleValue> = z.nativeEnum(IamRoleValue);
 
 /** @internal */
 export namespace IamRoleType$ {

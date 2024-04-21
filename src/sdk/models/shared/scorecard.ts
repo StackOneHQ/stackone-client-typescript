@@ -65,7 +65,8 @@ export type Scorecard = {
 };
 
 /** @internal */
-export const OverallRecommendation$ = z.nativeEnum(OverallRecommendation);
+export const OverallRecommendation$: z.ZodNativeEnum<typeof OverallRecommendation> =
+    z.nativeEnum(OverallRecommendation);
 
 /** @internal */
 export namespace Scorecard$ {

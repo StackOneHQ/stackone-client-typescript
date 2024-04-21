@@ -124,7 +124,7 @@ export namespace TimeOffSourceValue$ {
 }
 
 /** @internal */
-export const TimeOffValue$ = z.nativeEnum(TimeOffValue);
+export const TimeOffValue$: z.ZodNativeEnum<typeof TimeOffValue> = z.nativeEnum(TimeOffValue);
 
 /** @internal */
 export namespace TimeOffStatus$ {
@@ -214,7 +214,8 @@ export namespace TimeOffSchemasSourceValue$ {
 }
 
 /** @internal */
-export const TimeOffSchemasValue$ = z.nativeEnum(TimeOffSchemasValue);
+export const TimeOffSchemasValue$: z.ZodNativeEnum<typeof TimeOffSchemasValue> =
+    z.nativeEnum(TimeOffSchemasValue);
 
 /** @internal */
 export namespace TimeOffType$ {

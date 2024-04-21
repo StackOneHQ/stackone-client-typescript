@@ -85,7 +85,8 @@ export namespace ApplicationAttachmentSourceValue$ {
 }
 
 /** @internal */
-export const ApplicationAttachmentValue$ = z.nativeEnum(ApplicationAttachmentValue);
+export const ApplicationAttachmentValue$: z.ZodNativeEnum<typeof ApplicationAttachmentValue> =
+    z.nativeEnum(ApplicationAttachmentValue);
 
 /** @internal */
 export namespace ContentType$ {

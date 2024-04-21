@@ -28,13 +28,13 @@ export type AtsGetApplicationDocumentRequest = {
 
 export type AtsGetApplicationDocumentResponse = {
     /**
+     * The document related to the application with the given identifiers was retrieved.
+     */
+    atsDocumentResult?: shared.AtsDocumentResult | undefined;
+    /**
      * HTTP response content type for this operation
      */
     contentType: string;
-    /**
-     * The document related to the application with the given identifiers was retrieved.
-     */
-    hrisDocumentResult?: shared.HrisDocumentResult | undefined;
     /**
      * HTTP response status code for this operation
      */
@@ -114,8 +114,8 @@ export namespace AtsGetApplicationDocumentRequest$ {
 /** @internal */
 export namespace AtsGetApplicationDocumentResponse$ {
     export type Inbound = {
+        AtsDocumentResult?: shared.AtsDocumentResult$.Inbound | undefined;
         ContentType: string;
-        HrisDocumentResult?: shared.HrisDocumentResult$.Inbound | undefined;
         StatusCode: number;
         RawResponse: Response;
     };
@@ -126,25 +126,25 @@ export namespace AtsGetApplicationDocumentResponse$ {
         Inbound
     > = z
         .object({
+            AtsDocumentResult: shared.AtsDocumentResult$.inboundSchema.optional(),
             ContentType: z.string(),
-            HrisDocumentResult: shared.HrisDocumentResult$.inboundSchema.optional(),
             StatusCode: z.number().int(),
             RawResponse: z.instanceof(Response),
         })
         .transform((v) => {
             return {
-                contentType: v.ContentType,
-                ...(v.HrisDocumentResult === undefined
+                ...(v.AtsDocumentResult === undefined
                     ? null
-                    : { hrisDocumentResult: v.HrisDocumentResult }),
+                    : { atsDocumentResult: v.AtsDocumentResult }),
+                contentType: v.ContentType,
                 statusCode: v.StatusCode,
                 rawResponse: v.RawResponse,
             };
         });
 
     export type Outbound = {
+        AtsDocumentResult?: shared.AtsDocumentResult$.Outbound | undefined;
         ContentType: string;
-        HrisDocumentResult?: shared.HrisDocumentResult$.Outbound | undefined;
         StatusCode: number;
         RawResponse: never;
     };
@@ -155,8 +155,8 @@ export namespace AtsGetApplicationDocumentResponse$ {
         AtsGetApplicationDocumentResponse
     > = z
         .object({
+            atsDocumentResult: shared.AtsDocumentResult$.outboundSchema.optional(),
             contentType: z.string(),
-            hrisDocumentResult: shared.HrisDocumentResult$.outboundSchema.optional(),
             statusCode: z.number().int(),
             rawResponse: z.instanceof(Response).transform(() => {
                 throw new Error("Response cannot be serialized");
@@ -164,10 +164,10 @@ export namespace AtsGetApplicationDocumentResponse$ {
         })
         .transform((v) => {
             return {
-                ContentType: v.contentType,
-                ...(v.hrisDocumentResult === undefined
+                ...(v.atsDocumentResult === undefined
                     ? null
-                    : { HrisDocumentResult: v.hrisDocumentResult }),
+                    : { AtsDocumentResult: v.atsDocumentResult }),
+                ContentType: v.contentType,
                 StatusCode: v.statusCode,
                 RawResponse: v.rawResponse,
             };

@@ -1274,7 +1274,7 @@ export namespace ContentSourceValue$ {
 }
 
 /** @internal */
-export const ContentValue$ = z.nativeEnum(ContentValue);
+export const ContentValue$: z.ZodNativeEnum<typeof ContentValue> = z.nativeEnum(ContentValue);
 
 /** @internal */
 export namespace FileFormat$ {

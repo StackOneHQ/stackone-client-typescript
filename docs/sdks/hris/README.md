@@ -15,6 +15,7 @@
 * [getEmployeesTimeOffRequest](#getemployeestimeoffrequest) - Get Employees Time Off Request
 * [getEmployeesWorkEligibility](#getemployeesworkeligibility) - Get Employees Work Eligibility
 * [getEmployment](#getemployment) - Get Employment
+* [getGroup](#getgroup) - Get Group
 * [getLocation](#getlocation) - Get Location
 * [getTimeOffRequest](#gettimeoffrequest) - Get time off request
 * [listBenefits](#listbenefits) - List benefits
@@ -24,6 +25,7 @@
 * [listEmployeeWorkEligibility](#listemployeeworkeligibility) - List Employee Work Eligibility
 * [listEmployees](#listemployees) - List Employees
 * [listEmployments](#listemployments) - List Employments
+* [listGroups](#listgroups) - List Groups
 * [listLocations](#listlocations) - List locations
 * [listTimeOffRequests](#listtimeoffrequests) - List time off requests
 * [updateEmployee](#updateemployee) - Updates an employee
@@ -313,7 +315,7 @@ async function run() {
             sourceValue: "abc",
               value: ContentValue.Pdf,
             },
-            unifiedUrl: "/unified/hris/employees/16022323/documents/79715678/download",
+            unifiedUrl: "https://api.stackone.com/unified/hris/employees/12345/documents/67890/download",
             url: "https://example.com/file.pdf",
           },
         ],
@@ -815,6 +817,55 @@ run();
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 4xx-5xx         | */*             |
 
+## getGroup
+
+Get Group
+
+### Example Usage
+
+```typescript
+import { StackOne } from "@stackone/stackone-client-ts";
+
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
+
+async function run() {
+  const result = await stackOne.hris.getGroup({
+    id: "<id>",
+    proxy: {
+      "key": "<value>",
+    },
+    xAccountId: "<value>",
+  });
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.HrisGetGroupRequest](../../sdk/models/operations/hrisgetgrouprequest.md)                                                                                           | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+
+
+### Response
+
+**Promise<[operations.HrisGetGroupResponse](../../sdk/models/operations/hrisgetgroupresponse.md)>**
+### Errors
+
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
+
 ## getLocation
 
 Get Location
@@ -1253,6 +1304,54 @@ run();
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 4xx-5xx         | */*             |
 
+## listGroups
+
+List Groups
+
+### Example Usage
+
+```typescript
+import { StackOne } from "@stackone/stackone-client-ts";
+
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
+
+async function run() {
+  const result = await stackOne.hris.listGroups({
+    proxy: {
+      "key": "<value>",
+    },
+    xAccountId: "<value>",
+  });
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.HrisListGroupsRequest](../../sdk/models/operations/hrislistgroupsrequest.md)                                                                                       | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+
+
+### Response
+
+**Promise<[operations.HrisListGroupsResponse](../../sdk/models/operations/hrislistgroupsresponse.md)>**
+### Errors
+
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
+
 ## listLocations
 
 List locations
@@ -1574,7 +1673,7 @@ async function run() {
             sourceValue: "abc",
               value: ContentValue.Pdf,
             },
-            unifiedUrl: "/unified/hris/employees/16022323/documents/79715678/download",
+            unifiedUrl: "https://api.stackone.com/unified/hris/employees/12345/documents/67890/download",
             url: "https://example.com/file.pdf",
           },
         ],

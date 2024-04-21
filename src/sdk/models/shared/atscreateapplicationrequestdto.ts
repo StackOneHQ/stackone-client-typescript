@@ -34,6 +34,11 @@ export enum AtsCreateApplicationRequestDtoValue {
     Review = "review",
     Screen = "screen",
     New = "new",
+    Onboarding = "onboarding",
+    Created = "created",
+    Accepted = "accepted",
+    ShortList = "short_list",
+    Approved = "approved",
     UnmappedValue = "unmapped_value",
 }
 
@@ -128,9 +133,9 @@ export namespace AtsCreateApplicationRequestDtoSourceValue$ {
 }
 
 /** @internal */
-export const AtsCreateApplicationRequestDtoValue$ = z.nativeEnum(
-    AtsCreateApplicationRequestDtoValue
-);
+export const AtsCreateApplicationRequestDtoValue$: z.ZodNativeEnum<
+    typeof AtsCreateApplicationRequestDtoValue
+> = z.nativeEnum(AtsCreateApplicationRequestDtoValue);
 
 /** @internal */
 export namespace AtsCreateApplicationRequestDtoApplicationStatus$ {

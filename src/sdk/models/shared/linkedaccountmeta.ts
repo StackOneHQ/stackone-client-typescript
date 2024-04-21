@@ -21,7 +21,8 @@ export type LinkedAccountMeta = {
 };
 
 /** @internal */
-export const LinkedAccountMetaCategory$ = z.nativeEnum(LinkedAccountMetaCategory);
+export const LinkedAccountMetaCategory$: z.ZodNativeEnum<typeof LinkedAccountMetaCategory> =
+    z.nativeEnum(LinkedAccountMetaCategory);
 
 /** @internal */
 export namespace LinkedAccountMeta$ {

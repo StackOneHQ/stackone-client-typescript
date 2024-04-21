@@ -50,7 +50,7 @@ export type Field = {
 };
 
 /** @internal */
-export const FieldType$ = z.nativeEnum(FieldType);
+export const FieldType$: z.ZodNativeEnum<typeof FieldType> = z.nativeEnum(FieldType);
 
 /** @internal */
 export namespace Field$ {

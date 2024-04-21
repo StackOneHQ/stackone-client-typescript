@@ -217,7 +217,8 @@ export namespace JobPostingSourceValue$ {
 }
 
 /** @internal */
-export const JobPostingValue$ = z.nativeEnum(JobPostingValue);
+export const JobPostingValue$: z.ZodNativeEnum<typeof JobPostingValue> =
+    z.nativeEnum(JobPostingValue);
 
 /** @internal */
 export namespace JobPostingEmploymentContractType$ {
@@ -314,7 +315,8 @@ export namespace JobPostingSchemasSourceValue$ {
 }
 
 /** @internal */
-export const JobPostingSchemasValue$ = z.nativeEnum(JobPostingSchemasValue);
+export const JobPostingSchemasValue$: z.ZodNativeEnum<typeof JobPostingSchemasValue> =
+    z.nativeEnum(JobPostingSchemasValue);
 
 /** @internal */
 export namespace JobPostingEmploymentType$ {
@@ -372,7 +374,7 @@ export namespace JobPostingEmploymentType$ {
 }
 
 /** @internal */
-export const Internal$ = z.nativeEnum(Internal);
+export const Internal$: z.ZodNativeEnum<typeof Internal> = z.nativeEnum(Internal);
 
 /** @internal */
 export namespace JobPostingSchemasStatus4$ {
@@ -415,7 +417,8 @@ export namespace JobPostingSchemasStatusSourceValue$ {
 }
 
 /** @internal */
-export const JobPostingSchemasStatusValue$ = z.nativeEnum(JobPostingSchemasStatusValue);
+export const JobPostingSchemasStatusValue$: z.ZodNativeEnum<typeof JobPostingSchemasStatusValue> =
+    z.nativeEnum(JobPostingSchemasStatusValue);
 
 /** @internal */
 export namespace JobPostingStatus$ {

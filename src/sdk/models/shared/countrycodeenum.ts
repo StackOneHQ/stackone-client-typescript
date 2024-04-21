@@ -304,7 +304,8 @@ export namespace CountryCodeEnumSourceValue$ {
 }
 
 /** @internal */
-export const CountryCodeEnumValue$ = z.nativeEnum(CountryCodeEnumValue);
+export const CountryCodeEnumValue$: z.ZodNativeEnum<typeof CountryCodeEnumValue> =
+    z.nativeEnum(CountryCodeEnumValue);
 
 /** @internal */
 export namespace CountryCodeEnum$ {

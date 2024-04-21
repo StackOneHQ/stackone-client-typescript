@@ -1411,7 +1411,7 @@ export namespace EmployeeSourceValue$ {
 }
 
 /** @internal */
-export const EmployeeValue$ = z.nativeEnum(EmployeeValue);
+export const EmployeeValue$: z.ZodNativeEnum<typeof EmployeeValue> = z.nativeEnum(EmployeeValue);
 
 /** @internal */
 export namespace EmploymentContractType$ {
@@ -1501,7 +1501,8 @@ export namespace EmployeeSchemasSourceValue$ {
 }
 
 /** @internal */
-export const EmployeeSchemasValue$ = z.nativeEnum(EmployeeSchemasValue);
+export const EmployeeSchemasValue$: z.ZodNativeEnum<typeof EmployeeSchemasValue> =
+    z.nativeEnum(EmployeeSchemasValue);
 
 /** @internal */
 export namespace EmploymentStatus$ {
@@ -1599,7 +1600,9 @@ export namespace EmployeeSchemasEmploymentTypeSourceValue$ {
 }
 
 /** @internal */
-export const EmployeeSchemasEmploymentTypeValue$ = z.nativeEnum(EmployeeSchemasEmploymentTypeValue);
+export const EmployeeSchemasEmploymentTypeValue$: z.ZodNativeEnum<
+    typeof EmployeeSchemasEmploymentTypeValue
+> = z.nativeEnum(EmployeeSchemasEmploymentTypeValue);
 
 /** @internal */
 export namespace EmploymentType$ {
@@ -1709,7 +1712,8 @@ export namespace EmployeeSchemasEthnicitySourceValue$ {
 }
 
 /** @internal */
-export const EmployeeSchemasEthnicityValue$ = z.nativeEnum(EmployeeSchemasEthnicityValue);
+export const EmployeeSchemasEthnicityValue$: z.ZodNativeEnum<typeof EmployeeSchemasEthnicityValue> =
+    z.nativeEnum(EmployeeSchemasEthnicityValue);
 
 /** @internal */
 export namespace Ethnicity$ {
@@ -1817,7 +1821,8 @@ export namespace EmployeeSchemasGenderSourceValue$ {
 }
 
 /** @internal */
-export const EmployeeSchemasGenderValue$ = z.nativeEnum(EmployeeSchemasGenderValue);
+export const EmployeeSchemasGenderValue$: z.ZodNativeEnum<typeof EmployeeSchemasGenderValue> =
+    z.nativeEnum(EmployeeSchemasGenderValue);
 
 /** @internal */
 export namespace Gender$ {
@@ -1927,7 +1932,9 @@ export namespace EmployeeSchemasHomeLocationSourceValue$ {
 }
 
 /** @internal */
-export const EmployeeSchemasHomeLocationValue$ = z.nativeEnum(EmployeeSchemasHomeLocationValue);
+export const EmployeeSchemasHomeLocationValue$: z.ZodNativeEnum<
+    typeof EmployeeSchemasHomeLocationValue
+> = z.nativeEnum(EmployeeSchemasHomeLocationValue);
 
 /** @internal */
 export namespace EmployeeCountry$ {
@@ -2051,9 +2058,9 @@ export namespace EmployeeSchemasHomeLocationLocationTypeSourceValue$ {
 }
 
 /** @internal */
-export const EmployeeSchemasHomeLocationLocationTypeValue$ = z.nativeEnum(
-    EmployeeSchemasHomeLocationLocationTypeValue
-);
+export const EmployeeSchemasHomeLocationLocationTypeValue$: z.ZodNativeEnum<
+    typeof EmployeeSchemasHomeLocationLocationTypeValue
+> = z.nativeEnum(EmployeeSchemasHomeLocationLocationTypeValue);
 
 /** @internal */
 export namespace EmployeeLocationType$ {
@@ -2317,7 +2324,9 @@ export namespace EmployeeSchemasMaritalStatusSourceValue$ {
 }
 
 /** @internal */
-export const EmployeeSchemasMaritalStatusValue$ = z.nativeEnum(EmployeeSchemasMaritalStatusValue);
+export const EmployeeSchemasMaritalStatusValue$: z.ZodNativeEnum<
+    typeof EmployeeSchemasMaritalStatusValue
+> = z.nativeEnum(EmployeeSchemasMaritalStatusValue);
 
 /** @internal */
 export namespace MaritalStatus$ {
@@ -2433,9 +2442,9 @@ export namespace EmployeeSchemasPreferredLanguageSourceValue$ {
 }
 
 /** @internal */
-export const EmployeeSchemasPreferredLanguageValue$ = z.nativeEnum(
-    EmployeeSchemasPreferredLanguageValue
-);
+export const EmployeeSchemasPreferredLanguageValue$: z.ZodNativeEnum<
+    typeof EmployeeSchemasPreferredLanguageValue
+> = z.nativeEnum(EmployeeSchemasPreferredLanguageValue);
 
 /** @internal */
 export namespace PreferredLanguage$ {
@@ -2545,7 +2554,9 @@ export namespace EmployeeSchemasWorkLocationSourceValue$ {
 }
 
 /** @internal */
-export const EmployeeSchemasWorkLocationValue$ = z.nativeEnum(EmployeeSchemasWorkLocationValue);
+export const EmployeeSchemasWorkLocationValue$: z.ZodNativeEnum<
+    typeof EmployeeSchemasWorkLocationValue
+> = z.nativeEnum(EmployeeSchemasWorkLocationValue);
 
 /** @internal */
 export namespace EmployeeSchemasCountry$ {
@@ -2669,9 +2680,9 @@ export namespace EmployeeSchemasWorkLocationLocationTypeSourceValue$ {
 }
 
 /** @internal */
-export const EmployeeSchemasWorkLocationLocationTypeValue$ = z.nativeEnum(
-    EmployeeSchemasWorkLocationLocationTypeValue
-);
+export const EmployeeSchemasWorkLocationLocationTypeValue$: z.ZodNativeEnum<
+    typeof EmployeeSchemasWorkLocationLocationTypeValue
+> = z.nativeEnum(EmployeeSchemasWorkLocationLocationTypeValue);
 
 /** @internal */
 export namespace EmployeeSchemasLocationType$ {

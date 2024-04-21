@@ -458,7 +458,8 @@ export namespace WorkEligibilitySourceValue$ {
 }
 
 /** @internal */
-export const WorkEligibilityValue$ = z.nativeEnum(WorkEligibilityValue);
+export const WorkEligibilityValue$: z.ZodNativeEnum<typeof WorkEligibilityValue> =
+    z.nativeEnum(WorkEligibilityValue);
 
 /** @internal */
 export namespace WorkEligibilityIssuedBy$ {
@@ -550,7 +551,8 @@ export namespace WorkEligibilitySourceType$ {
 }
 
 /** @internal */
-export const WorkEligibilitySchemasValue$ = z.nativeEnum(WorkEligibilitySchemasValue);
+export const WorkEligibilitySchemasValue$: z.ZodNativeEnum<typeof WorkEligibilitySchemasValue> =
+    z.nativeEnum(WorkEligibilitySchemasValue);
 
 /** @internal */
 export namespace WorkEligibilityType$ {

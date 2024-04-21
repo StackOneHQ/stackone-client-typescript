@@ -81,7 +81,8 @@ export namespace IamPermissionSourceValue$ {
 }
 
 /** @internal */
-export const IamPermissionValue$ = z.nativeEnum(IamPermissionValue);
+export const IamPermissionValue$: z.ZodNativeEnum<typeof IamPermissionValue> =
+    z.nativeEnum(IamPermissionValue);
 
 /** @internal */
 export namespace IamPermissionType$ {

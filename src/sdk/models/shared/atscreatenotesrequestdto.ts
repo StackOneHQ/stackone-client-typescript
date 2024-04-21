@@ -91,7 +91,8 @@ export namespace AtsCreateNotesRequestDtoSourceValue$ {
 }
 
 /** @internal */
-export const AtsCreateNotesRequestDtoValue$ = z.nativeEnum(AtsCreateNotesRequestDtoValue);
+export const AtsCreateNotesRequestDtoValue$: z.ZodNativeEnum<typeof AtsCreateNotesRequestDtoValue> =
+    z.nativeEnum(AtsCreateNotesRequestDtoValue);
 
 /** @internal */
 export namespace Visibility$ {

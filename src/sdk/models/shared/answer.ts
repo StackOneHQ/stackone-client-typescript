@@ -90,7 +90,7 @@ export namespace AnswerSourceValue$ {
 }
 
 /** @internal */
-export const AnswerValue$ = z.nativeEnum(AnswerValue);
+export const AnswerValue$: z.ZodNativeEnum<typeof AnswerValue> = z.nativeEnum(AnswerValue);
 
 /** @internal */
 export namespace Type$ {

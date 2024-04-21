@@ -364,7 +364,8 @@ export namespace AccountAddressSchemasSourceValue$ {
 }
 
 /** @internal */
-export const AccountAddressSchemasValue$ = z.nativeEnum(AccountAddressSchemasValue);
+export const AccountAddressSchemasValue$: z.ZodNativeEnum<typeof AccountAddressSchemasValue> =
+    z.nativeEnum(AccountAddressSchemasValue);
 
 /** @internal */
 export namespace Country$ {
@@ -466,7 +467,8 @@ export namespace AccountAddressSourceValue$ {
 }
 
 /** @internal */
-export const AccountAddressValue$ = z.nativeEnum(AccountAddressValue);
+export const AccountAddressValue$: z.ZodNativeEnum<typeof AccountAddressValue> =
+    z.nativeEnum(AccountAddressValue);
 
 /** @internal */
 export namespace LocationType$ {

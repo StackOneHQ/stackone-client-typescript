@@ -66,7 +66,7 @@ export namespace SourceValue$ {
 }
 
 /** @internal */
-export const Value$ = z.nativeEnum(Value);
+export const Value$: z.ZodNativeEnum<typeof Value> = z.nativeEnum(Value);
 
 /** @internal */
 export namespace ChannelsEnum$ {

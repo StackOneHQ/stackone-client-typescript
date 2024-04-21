@@ -144,7 +144,7 @@ export namespace CampaignSourceValue$ {
 }
 
 /** @internal */
-export const CampaignValue$ = z.nativeEnum(CampaignValue);
+export const CampaignValue$: z.ZodNativeEnum<typeof CampaignValue> = z.nativeEnum(CampaignValue);
 
 /** @internal */
 export namespace ScheduleType$ {
@@ -234,7 +234,8 @@ export namespace CampaignSchemasSourceValue$ {
 }
 
 /** @internal */
-export const CampaignSchemasValue$ = z.nativeEnum(CampaignSchemasValue);
+export const CampaignSchemasValue$: z.ZodNativeEnum<typeof CampaignSchemasValue> =
+    z.nativeEnum(CampaignSchemasValue);
 
 /** @internal */
 export namespace Status$ {

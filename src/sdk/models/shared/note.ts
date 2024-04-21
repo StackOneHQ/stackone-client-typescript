@@ -97,7 +97,7 @@ export namespace NoteSourceValue$ {
 }
 
 /** @internal */
-export const NoteValue$ = z.nativeEnum(NoteValue);
+export const NoteValue$: z.ZodNativeEnum<typeof NoteValue> = z.nativeEnum(NoteValue);
 
 /** @internal */
 export namespace NoteVisibility$ {

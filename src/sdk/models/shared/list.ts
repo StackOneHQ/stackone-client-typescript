@@ -90,7 +90,7 @@ export namespace ListSourceValue$ {
 }
 
 /** @internal */
-export const ListValue$ = z.nativeEnum(ListValue);
+export const ListValue$: z.ZodNativeEnum<typeof ListValue> = z.nativeEnum(ListValue);
 
 /** @internal */
 export namespace ListType$ {

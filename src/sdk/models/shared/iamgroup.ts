@@ -74,7 +74,7 @@ export namespace IamGroupSourceValue$ {
 }
 
 /** @internal */
-export const IamGroupValue$ = z.nativeEnum(IamGroupValue);
+export const IamGroupValue$: z.ZodNativeEnum<typeof IamGroupValue> = z.nativeEnum(IamGroupValue);
 
 /** @internal */
 export namespace IamGroupType$ {

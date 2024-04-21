@@ -79,7 +79,8 @@ export namespace IamResourceSourceValue$ {
 }
 
 /** @internal */
-export const IamResourceValue$ = z.nativeEnum(IamResourceValue);
+export const IamResourceValue$: z.ZodNativeEnum<typeof IamResourceValue> =
+    z.nativeEnum(IamResourceValue);
 
 /** @internal */
 export namespace IamResourceType$ {

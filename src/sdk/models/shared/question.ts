@@ -88,7 +88,7 @@ export namespace QuestionSourceValue$ {
 }
 
 /** @internal */
-export const QuestionValue$ = z.nativeEnum(QuestionValue);
+export const QuestionValue$: z.ZodNativeEnum<typeof QuestionValue> = z.nativeEnum(QuestionValue);
 
 /** @internal */
 export namespace QuestionType$ {
