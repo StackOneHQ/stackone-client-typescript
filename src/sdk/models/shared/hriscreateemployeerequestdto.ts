@@ -8914,7 +8914,9 @@ export namespace HrisCreateEmployeeRequestDtoSourceValue$ {
 }
 
 /** @internal */
-export const HrisCreateEmployeeRequestDtoValue$ = z.nativeEnum(HrisCreateEmployeeRequestDtoValue);
+export const HrisCreateEmployeeRequestDtoValue$: z.ZodNativeEnum<
+    typeof HrisCreateEmployeeRequestDtoValue
+> = z.nativeEnum(HrisCreateEmployeeRequestDtoValue);
 
 /** @internal */
 export namespace HrisCreateEmployeeRequestDtoEmploymentContractType$ {
@@ -9042,9 +9044,9 @@ export namespace HrisCreateEmployeeRequestDtoSchemasSourceValue$ {
 }
 
 /** @internal */
-export const HrisCreateEmployeeRequestDtoSchemasValue$ = z.nativeEnum(
-    HrisCreateEmployeeRequestDtoSchemasValue
-);
+export const HrisCreateEmployeeRequestDtoSchemasValue$: z.ZodNativeEnum<
+    typeof HrisCreateEmployeeRequestDtoSchemasValue
+> = z.nativeEnum(HrisCreateEmployeeRequestDtoSchemasValue);
 
 /** @internal */
 export namespace HrisCreateEmployeeRequestDtoEmploymentStatus$ {
@@ -9176,9 +9178,9 @@ export namespace HrisCreateEmployeeRequestDtoSchemasEmploymentTypeSourceValue$ {
 }
 
 /** @internal */
-export const HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue$ = z.nativeEnum(
-    HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue
-);
+export const HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue$: z.ZodNativeEnum<
+    typeof HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue
+> = z.nativeEnum(HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue);
 
 /** @internal */
 export namespace HrisCreateEmployeeRequestDtoEmploymentType$ {
@@ -9314,9 +9316,9 @@ export namespace HrisCreateEmployeeRequestDtoSchemasEthnicitySourceValue$ {
 }
 
 /** @internal */
-export const HrisCreateEmployeeRequestDtoSchemasEthnicityValue$ = z.nativeEnum(
-    HrisCreateEmployeeRequestDtoSchemasEthnicityValue
-);
+export const HrisCreateEmployeeRequestDtoSchemasEthnicityValue$: z.ZodNativeEnum<
+    typeof HrisCreateEmployeeRequestDtoSchemasEthnicityValue
+> = z.nativeEnum(HrisCreateEmployeeRequestDtoSchemasEthnicityValue);
 
 /** @internal */
 export namespace HrisCreateEmployeeRequestDtoEthnicity$ {
@@ -9448,9 +9450,9 @@ export namespace HrisCreateEmployeeRequestDtoSchemasGenderSourceValue$ {
 }
 
 /** @internal */
-export const HrisCreateEmployeeRequestDtoSchemasGenderValue$ = z.nativeEnum(
-    HrisCreateEmployeeRequestDtoSchemasGenderValue
-);
+export const HrisCreateEmployeeRequestDtoSchemasGenderValue$: z.ZodNativeEnum<
+    typeof HrisCreateEmployeeRequestDtoSchemasGenderValue
+> = z.nativeEnum(HrisCreateEmployeeRequestDtoSchemasGenderValue);
 
 /** @internal */
 export namespace HrisCreateEmployeeRequestDtoGender$ {
@@ -9582,9 +9584,9 @@ export namespace HrisCreateEmployeeRequestDtoSchemasHomeLocationSourceValue$ {
 }
 
 /** @internal */
-export const HrisCreateEmployeeRequestDtoSchemasHomeLocationValue$ = z.nativeEnum(
-    HrisCreateEmployeeRequestDtoSchemasHomeLocationValue
-);
+export const HrisCreateEmployeeRequestDtoSchemasHomeLocationValue$: z.ZodNativeEnum<
+    typeof HrisCreateEmployeeRequestDtoSchemasHomeLocationValue
+> = z.nativeEnum(HrisCreateEmployeeRequestDtoSchemasHomeLocationValue);
 
 /** @internal */
 export namespace HrisCreateEmployeeRequestDtoCountry$ {
@@ -9720,9 +9722,9 @@ export namespace HrisCreateEmployeeRequestDtoSchemasHomeLocationStateSourceValue
 }
 
 /** @internal */
-export const HrisCreateEmployeeRequestDtoSchemasHomeLocationStateValue$ = z.nativeEnum(
-    HrisCreateEmployeeRequestDtoSchemasHomeLocationStateValue
-);
+export const HrisCreateEmployeeRequestDtoSchemasHomeLocationStateValue$: z.ZodNativeEnum<
+    typeof HrisCreateEmployeeRequestDtoSchemasHomeLocationStateValue
+> = z.nativeEnum(HrisCreateEmployeeRequestDtoSchemasHomeLocationStateValue);
 
 /** @internal */
 export namespace State$ {
@@ -9941,9 +9943,9 @@ export namespace HrisCreateEmployeeRequestDtoSchemasMaritalStatusSourceValue$ {
 }
 
 /** @internal */
-export const HrisCreateEmployeeRequestDtoSchemasMaritalStatusValue$ = z.nativeEnum(
-    HrisCreateEmployeeRequestDtoSchemasMaritalStatusValue
-);
+export const HrisCreateEmployeeRequestDtoSchemasMaritalStatusValue$: z.ZodNativeEnum<
+    typeof HrisCreateEmployeeRequestDtoSchemasMaritalStatusValue
+> = z.nativeEnum(HrisCreateEmployeeRequestDtoSchemasMaritalStatusValue);
 
 /** @internal */
 export namespace HrisCreateEmployeeRequestDtoMaritalStatus$ {
@@ -10079,9 +10081,9 @@ export namespace HrisCreateEmployeeRequestDtoSchemasPreferredLanguageSourceValue
 }
 
 /** @internal */
-export const HrisCreateEmployeeRequestDtoSchemasPreferredLanguageValue$ = z.nativeEnum(
-    HrisCreateEmployeeRequestDtoSchemasPreferredLanguageValue
-);
+export const HrisCreateEmployeeRequestDtoSchemasPreferredLanguageValue$: z.ZodNativeEnum<
+    typeof HrisCreateEmployeeRequestDtoSchemasPreferredLanguageValue
+> = z.nativeEnum(HrisCreateEmployeeRequestDtoSchemasPreferredLanguageValue);
 
 /** @internal */
 export namespace HrisCreateEmployeeRequestDtoPreferredLanguage$ {
@@ -10223,9 +10225,9 @@ export namespace HrisCreateEmployeeRequestDtoSchemasWorkLocationSourceValue$ {
 }
 
 /** @internal */
-export const HrisCreateEmployeeRequestDtoSchemasWorkLocationValue$ = z.nativeEnum(
-    HrisCreateEmployeeRequestDtoSchemasWorkLocationValue
-);
+export const HrisCreateEmployeeRequestDtoSchemasWorkLocationValue$: z.ZodNativeEnum<
+    typeof HrisCreateEmployeeRequestDtoSchemasWorkLocationValue
+> = z.nativeEnum(HrisCreateEmployeeRequestDtoSchemasWorkLocationValue);
 
 /** @internal */
 export namespace HrisCreateEmployeeRequestDtoSchemasCountry$ {
@@ -10361,9 +10363,9 @@ export namespace HrisCreateEmployeeRequestDtoSchemasWorkLocationStateSourceValue
 }
 
 /** @internal */
-export const HrisCreateEmployeeRequestDtoSchemasWorkLocationStateValue$ = z.nativeEnum(
-    HrisCreateEmployeeRequestDtoSchemasWorkLocationStateValue
-);
+export const HrisCreateEmployeeRequestDtoSchemasWorkLocationStateValue$: z.ZodNativeEnum<
+    typeof HrisCreateEmployeeRequestDtoSchemasWorkLocationStateValue
+> = z.nativeEnum(HrisCreateEmployeeRequestDtoSchemasWorkLocationStateValue);
 
 /** @internal */
 export namespace HrisCreateEmployeeRequestDtoState$ {

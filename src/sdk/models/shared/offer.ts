@@ -96,7 +96,7 @@ export namespace OfferSourceValue$ {
 }
 
 /** @internal */
-export const OfferValue$ = z.nativeEnum(OfferValue);
+export const OfferValue$: z.ZodNativeEnum<typeof OfferValue> = z.nativeEnum(OfferValue);
 
 /** @internal */
 export namespace OfferOfferStatus$ {

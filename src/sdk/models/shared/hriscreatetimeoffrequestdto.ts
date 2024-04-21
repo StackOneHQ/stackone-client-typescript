@@ -132,7 +132,9 @@ export namespace HrisCreateTimeOffRequestDtoSourceValue$ {
 }
 
 /** @internal */
-export const HrisCreateTimeOffRequestDtoValue$ = z.nativeEnum(HrisCreateTimeOffRequestDtoValue);
+export const HrisCreateTimeOffRequestDtoValue$: z.ZodNativeEnum<
+    typeof HrisCreateTimeOffRequestDtoValue
+> = z.nativeEnum(HrisCreateTimeOffRequestDtoValue);
 
 /** @internal */
 export namespace HrisCreateTimeOffRequestDtoStatus$ {
@@ -260,9 +262,9 @@ export namespace HrisCreateTimeOffRequestDtoSchemasSourceValue$ {
 }
 
 /** @internal */
-export const HrisCreateTimeOffRequestDtoSchemasValue$ = z.nativeEnum(
-    HrisCreateTimeOffRequestDtoSchemasValue
-);
+export const HrisCreateTimeOffRequestDtoSchemasValue$: z.ZodNativeEnum<
+    typeof HrisCreateTimeOffRequestDtoSchemasValue
+> = z.nativeEnum(HrisCreateTimeOffRequestDtoSchemasValue);
 
 /** @internal */
 export namespace HrisCreateTimeOffRequestDtoType$ {

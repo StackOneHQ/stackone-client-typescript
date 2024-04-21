@@ -1193,6 +1193,100 @@ export class Hris extends ClientSDK {
     }
 
     /**
+     * Get Group
+     */
+    async getGroup(
+        input: operations.HrisGetGroupRequest,
+        options?: RequestOptions
+    ): Promise<operations.HrisGetGroupResponse> {
+        const headers$ = new Headers();
+        headers$.set("user-agent", SDK_METADATA.userAgent);
+        headers$.set("Accept", "application/json");
+
+        const payload$ = schemas$.parse(
+            input,
+            (value$) => operations.HrisGetGroupRequest$.outboundSchema.parse(value$),
+            "Input validation failed"
+        );
+        const body$ = null;
+
+        const pathParams$ = {
+            id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
+        };
+        const path$ = this.templateURLComponent("/unified/hris/groups/{id}")(pathParams$);
+
+        const query$ = [
+            enc$.encodeForm("fields", payload$.fields, { explode: true, charEncoding: "percent" }),
+            enc$.encodeDeepObject("proxy", payload$.proxy, { charEncoding: "percent" }),
+            enc$.encodeForm("raw", payload$.raw, { explode: true, charEncoding: "percent" }),
+        ]
+            .filter(Boolean)
+            .join("&");
+
+        headers$.set(
+            "x-account-id",
+            enc$.encodeSimple("x-account-id", payload$["x-account-id"], {
+                explode: false,
+                charEncoding: "none",
+            })
+        );
+
+        const security$ =
+            typeof this.options$.security === "function"
+                ? await this.options$.security()
+                : this.options$.security;
+
+        const context = {
+            operationID: "hris_get_group",
+            oAuth2Scopes: [],
+            securitySource: this.options$.security,
+        };
+        const securitySettings$ = this.resolveGlobalSecurity(security$);
+
+        const doOptions = {
+            context,
+            errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+        };
+        const request = this.createRequest$(
+            {
+                security: securitySettings$,
+                method: "GET",
+                path: path$,
+                headers: headers$,
+                query: query$,
+                body: body$,
+            },
+            options
+        );
+
+        const response = await this.do$(request, doOptions);
+
+        const responseFields$ = {
+            ContentType: response.headers.get("content-type") ?? "application/octet-stream",
+            StatusCode: response.status,
+            RawResponse: response,
+        };
+
+        if (this.matchResponse(response, 200, "application/json")) {
+            const responseBody = await response.json();
+            const result = schemas$.parse(
+                responseBody,
+                (val$) => {
+                    return operations.HrisGetGroupResponse$.inboundSchema.parse({
+                        ...responseFields$,
+                        HRISGroupsResult: val$,
+                    });
+                },
+                "Response validation failed"
+            );
+            return result;
+        } else {
+            const responseBody = await response.text();
+            throw new errors.SDKError("Unexpected API response", response, responseBody);
+        }
+    }
+
+    /**
      * Get Location
      */
     async getLocation(
@@ -2151,6 +2245,111 @@ export class Hris extends ClientSDK {
                     return operations.HrisListEmploymentsResponse$.inboundSchema.parse({
                         ...responseFields$,
                         EmploymentsPaginated: val$,
+                    });
+                },
+                "Response validation failed"
+            );
+            return result;
+        } else {
+            const responseBody = await response.text();
+            throw new errors.SDKError("Unexpected API response", response, responseBody);
+        }
+    }
+
+    /**
+     * List Groups
+     */
+    async listGroups(
+        input: operations.HrisListGroupsRequest,
+        options?: RequestOptions
+    ): Promise<operations.HrisListGroupsResponse> {
+        const headers$ = new Headers();
+        headers$.set("user-agent", SDK_METADATA.userAgent);
+        headers$.set("Accept", "application/json");
+
+        const payload$ = schemas$.parse(
+            input,
+            (value$) => operations.HrisListGroupsRequest$.outboundSchema.parse(value$),
+            "Input validation failed"
+        );
+        const body$ = null;
+
+        const path$ = this.templateURLComponent("/unified/hris/groups")();
+
+        const query$ = [
+            enc$.encodeForm("fields", payload$.fields, { explode: true, charEncoding: "percent" }),
+            enc$.encodeForm("filter[updated_after]", payload$["filter[updated_after]"], {
+                explode: true,
+                charEncoding: "percent",
+            }),
+            enc$.encodeForm("next", payload$.next, { explode: true, charEncoding: "percent" }),
+            enc$.encodeForm("page", payload$.page, { explode: true, charEncoding: "percent" }),
+            enc$.encodeForm("page_size", payload$.page_size, {
+                explode: true,
+                charEncoding: "percent",
+            }),
+            enc$.encodeDeepObject("proxy", payload$.proxy, { charEncoding: "percent" }),
+            enc$.encodeForm("raw", payload$.raw, { explode: true, charEncoding: "percent" }),
+            enc$.encodeForm("updated_after", payload$.updated_after, {
+                explode: true,
+                charEncoding: "percent",
+            }),
+        ]
+            .filter(Boolean)
+            .join("&");
+
+        headers$.set(
+            "x-account-id",
+            enc$.encodeSimple("x-account-id", payload$["x-account-id"], {
+                explode: false,
+                charEncoding: "none",
+            })
+        );
+
+        const security$ =
+            typeof this.options$.security === "function"
+                ? await this.options$.security()
+                : this.options$.security;
+
+        const context = {
+            operationID: "hris_list_groups",
+            oAuth2Scopes: [],
+            securitySource: this.options$.security,
+        };
+        const securitySettings$ = this.resolveGlobalSecurity(security$);
+
+        const doOptions = {
+            context,
+            errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+        };
+        const request = this.createRequest$(
+            {
+                security: securitySettings$,
+                method: "GET",
+                path: path$,
+                headers: headers$,
+                query: query$,
+                body: body$,
+            },
+            options
+        );
+
+        const response = await this.do$(request, doOptions);
+
+        const responseFields$ = {
+            ContentType: response.headers.get("content-type") ?? "application/octet-stream",
+            StatusCode: response.status,
+            RawResponse: response,
+        };
+
+        if (this.matchResponse(response, 200, "application/json")) {
+            const responseBody = await response.json();
+            const result = schemas$.parse(
+                responseBody,
+                (val$) => {
+                    return operations.HrisListGroupsResponse$.inboundSchema.parse({
+                        ...responseFields$,
+                        HRISGroupsPaginated: val$,
                     });
                 },
                 "Response validation failed"

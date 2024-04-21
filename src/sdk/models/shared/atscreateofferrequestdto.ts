@@ -94,7 +94,8 @@ export namespace AtsCreateOfferRequestDtoSourceValue$ {
 }
 
 /** @internal */
-export const AtsCreateOfferRequestDtoValue$ = z.nativeEnum(AtsCreateOfferRequestDtoValue);
+export const AtsCreateOfferRequestDtoValue$: z.ZodNativeEnum<typeof AtsCreateOfferRequestDtoValue> =
+    z.nativeEnum(AtsCreateOfferRequestDtoValue);
 
 /** @internal */
 export namespace OfferStatus$ {

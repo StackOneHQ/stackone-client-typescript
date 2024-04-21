@@ -29,7 +29,7 @@ export type ConnectSession = {
 };
 
 /** @internal */
-export const Categories$ = z.nativeEnum(Categories);
+export const Categories$: z.ZodNativeEnum<typeof Categories> = z.nativeEnum(Categories);
 
 /** @internal */
 export namespace ConnectSession$ {

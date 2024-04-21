@@ -28,7 +28,8 @@ export type PhoneNumber = {
 };
 
 /** @internal */
-export const PhoneNumberType$ = z.nativeEnum(PhoneNumberType);
+export const PhoneNumberType$: z.ZodNativeEnum<typeof PhoneNumberType> =
+    z.nativeEnum(PhoneNumberType);
 
 /** @internal */
 export namespace PhoneNumber$ {

@@ -103,7 +103,8 @@ export namespace AtsDocumentApiModelSourceValue$ {
 }
 
 /** @internal */
-export const AtsDocumentApiModelValue$ = z.nativeEnum(AtsDocumentApiModelValue);
+export const AtsDocumentApiModelValue$: z.ZodNativeEnum<typeof AtsDocumentApiModelValue> =
+    z.nativeEnum(AtsDocumentApiModelValue);
 
 /** @internal */
 export namespace AtsDocumentApiModelType$ {

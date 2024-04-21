@@ -63,7 +63,9 @@ export type ConnectSessionCreate = {
 };
 
 /** @internal */
-export const ConnectSessionCreateCategories$ = z.nativeEnum(ConnectSessionCreateCategories);
+export const ConnectSessionCreateCategories$: z.ZodNativeEnum<
+    typeof ConnectSessionCreateCategories
+> = z.nativeEnum(ConnectSessionCreateCategories);
 
 /** @internal */
 export namespace Metadata$ {

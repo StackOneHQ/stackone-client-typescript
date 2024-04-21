@@ -235,7 +235,7 @@ export namespace IamUserSourceValue$ {
 }
 
 /** @internal */
-export const IamUserValue$ = z.nativeEnum(IamUserValue);
+export const IamUserValue$: z.ZodNativeEnum<typeof IamUserValue> = z.nativeEnum(IamUserValue);
 
 /** @internal */
 export namespace IamUserStatus$ {

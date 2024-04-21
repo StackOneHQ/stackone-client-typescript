@@ -198,7 +198,7 @@ export namespace InterviewSourceValue$ {
 }
 
 /** @internal */
-export const InterviewValue$ = z.nativeEnum(InterviewValue);
+export const InterviewValue$: z.ZodNativeEnum<typeof InterviewValue> = z.nativeEnum(InterviewValue);
 
 /** @internal */
 export namespace InterviewStatus$ {

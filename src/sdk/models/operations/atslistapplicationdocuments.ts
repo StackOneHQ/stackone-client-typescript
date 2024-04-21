@@ -57,13 +57,13 @@ export type AtsListApplicationDocumentsRequest = {
 
 export type AtsListApplicationDocumentsResponse = {
     /**
+     * The documents related to the application with the given identifier were retrieved.
+     */
+    atsDocumentsPaginated?: shared.AtsDocumentsPaginated | undefined;
+    /**
      * HTTP response content type for this operation
      */
     contentType: string;
-    /**
-     * The documents related to the application with the given identifier were retrieved.
-     */
-    hrisDocumentsPaginated?: shared.HrisDocumentsPaginated | undefined;
     /**
      * HTTP response status code for this operation
      */
@@ -180,8 +180,8 @@ export namespace AtsListApplicationDocumentsRequest$ {
 /** @internal */
 export namespace AtsListApplicationDocumentsResponse$ {
     export type Inbound = {
+        AtsDocumentsPaginated?: shared.AtsDocumentsPaginated$.Inbound | undefined;
         ContentType: string;
-        HrisDocumentsPaginated?: shared.HrisDocumentsPaginated$.Inbound | undefined;
         StatusCode: number;
         RawResponse: Response;
     };
@@ -192,25 +192,25 @@ export namespace AtsListApplicationDocumentsResponse$ {
         Inbound
     > = z
         .object({
+            AtsDocumentsPaginated: shared.AtsDocumentsPaginated$.inboundSchema.optional(),
             ContentType: z.string(),
-            HrisDocumentsPaginated: shared.HrisDocumentsPaginated$.inboundSchema.optional(),
             StatusCode: z.number().int(),
             RawResponse: z.instanceof(Response),
         })
         .transform((v) => {
             return {
-                contentType: v.ContentType,
-                ...(v.HrisDocumentsPaginated === undefined
+                ...(v.AtsDocumentsPaginated === undefined
                     ? null
-                    : { hrisDocumentsPaginated: v.HrisDocumentsPaginated }),
+                    : { atsDocumentsPaginated: v.AtsDocumentsPaginated }),
+                contentType: v.ContentType,
                 statusCode: v.StatusCode,
                 rawResponse: v.RawResponse,
             };
         });
 
     export type Outbound = {
+        AtsDocumentsPaginated?: shared.AtsDocumentsPaginated$.Outbound | undefined;
         ContentType: string;
-        HrisDocumentsPaginated?: shared.HrisDocumentsPaginated$.Outbound | undefined;
         StatusCode: number;
         RawResponse: never;
     };
@@ -221,8 +221,8 @@ export namespace AtsListApplicationDocumentsResponse$ {
         AtsListApplicationDocumentsResponse
     > = z
         .object({
+            atsDocumentsPaginated: shared.AtsDocumentsPaginated$.outboundSchema.optional(),
             contentType: z.string(),
-            hrisDocumentsPaginated: shared.HrisDocumentsPaginated$.outboundSchema.optional(),
             statusCode: z.number().int(),
             rawResponse: z.instanceof(Response).transform(() => {
                 throw new Error("Response cannot be serialized");
@@ -230,10 +230,10 @@ export namespace AtsListApplicationDocumentsResponse$ {
         })
         .transform((v) => {
             return {
-                ContentType: v.contentType,
-                ...(v.hrisDocumentsPaginated === undefined
+                ...(v.atsDocumentsPaginated === undefined
                     ? null
-                    : { HrisDocumentsPaginated: v.hrisDocumentsPaginated }),
+                    : { AtsDocumentsPaginated: v.atsDocumentsPaginated }),
+                ContentType: v.contentType,
                 StatusCode: v.statusCode,
                 RawResponse: v.rawResponse,
             };

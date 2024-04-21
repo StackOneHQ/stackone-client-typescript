@@ -105,7 +105,8 @@ export namespace HrisDocumentApiModelSourceValue$ {
 }
 
 /** @internal */
-export const HrisDocumentApiModelValue$ = z.nativeEnum(HrisDocumentApiModelValue);
+export const HrisDocumentApiModelValue$: z.ZodNativeEnum<typeof HrisDocumentApiModelValue> =
+    z.nativeEnum(HrisDocumentApiModelValue);
 
 /** @internal */
 export namespace HrisDocumentApiModelType$ {

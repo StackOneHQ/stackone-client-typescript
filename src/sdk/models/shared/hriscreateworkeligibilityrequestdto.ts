@@ -484,9 +484,9 @@ export namespace HrisCreateWorkEligibilityRequestDtoSourceValue$ {
 }
 
 /** @internal */
-export const HrisCreateWorkEligibilityRequestDtoValue$ = z.nativeEnum(
-    HrisCreateWorkEligibilityRequestDtoValue
-);
+export const HrisCreateWorkEligibilityRequestDtoValue$: z.ZodNativeEnum<
+    typeof HrisCreateWorkEligibilityRequestDtoValue
+> = z.nativeEnum(HrisCreateWorkEligibilityRequestDtoValue);
 
 /** @internal */
 export namespace IssuedBy$ {
@@ -602,9 +602,9 @@ export namespace SourceType$ {
 }
 
 /** @internal */
-export const HrisCreateWorkEligibilityRequestDtoSchemasValue$ = z.nativeEnum(
-    HrisCreateWorkEligibilityRequestDtoSchemasValue
-);
+export const HrisCreateWorkEligibilityRequestDtoSchemasValue$: z.ZodNativeEnum<
+    typeof HrisCreateWorkEligibilityRequestDtoSchemasValue
+> = z.nativeEnum(HrisCreateWorkEligibilityRequestDtoSchemasValue);
 
 /** @internal */
 export namespace HrisCreateWorkEligibilityRequestDtoType$ {

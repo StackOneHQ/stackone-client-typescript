@@ -107,7 +107,7 @@ export type Job = {
 };
 
 /** @internal */
-export const Confidential$ = z.nativeEnum(Confidential);
+export const Confidential$: z.ZodNativeEnum<typeof Confidential> = z.nativeEnum(Confidential);
 
 /** @internal */
 export namespace Job4$ {
@@ -140,7 +140,7 @@ export namespace JobSourceValue$ {
 }
 
 /** @internal */
-export const JobValue$ = z.nativeEnum(JobValue);
+export const JobValue$: z.ZodNativeEnum<typeof JobValue> = z.nativeEnum(JobValue);
 
 /** @internal */
 export namespace JobStatus$ {

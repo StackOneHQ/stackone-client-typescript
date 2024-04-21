@@ -387,7 +387,8 @@ export namespace HRISLocationSourceValue$ {
 }
 
 /** @internal */
-export const HRISLocationValue$ = z.nativeEnum(HRISLocationValue);
+export const HRISLocationValue$: z.ZodNativeEnum<typeof HRISLocationValue> =
+    z.nativeEnum(HRISLocationValue);
 
 /** @internal */
 export namespace HRISLocationCountry$ {
@@ -481,7 +482,8 @@ export namespace HRISLocationSchemasSourceValue$ {
 }
 
 /** @internal */
-export const HRISLocationSchemasValue$ = z.nativeEnum(HRISLocationSchemasValue);
+export const HRISLocationSchemasValue$: z.ZodNativeEnum<typeof HRISLocationSchemasValue> =
+    z.nativeEnum(HRISLocationSchemasValue);
 
 /** @internal */
 export namespace HRISLocationLocationType$ {

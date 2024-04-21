@@ -104,7 +104,9 @@ export namespace EmployeeCustomFieldsSourceValue$ {
 }
 
 /** @internal */
-export const EmployeeCustomFieldsSchemasValue$ = z.nativeEnum(EmployeeCustomFieldsSchemasValue);
+export const EmployeeCustomFieldsSchemasValue$: z.ZodNativeEnum<
+    typeof EmployeeCustomFieldsSchemasValue
+> = z.nativeEnum(EmployeeCustomFieldsSchemasValue);
 
 /** @internal */
 export namespace EmployeeCustomFieldsType$ {

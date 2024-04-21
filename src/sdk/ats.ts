@@ -671,7 +671,7 @@ export class Ats extends ClientSDK {
                 (val$) => {
                     return operations.AtsGetApplicationDocumentResponse$.inboundSchema.parse({
                         ...responseFields$,
-                        HrisDocumentResult: val$,
+                        AtsDocumentResult: val$,
                     });
                 },
                 "Response validation failed"
@@ -2030,7 +2030,7 @@ export class Ats extends ClientSDK {
                 (val$) => {
                     return operations.AtsListApplicationDocumentsResponse$.inboundSchema.parse({
                         ...responseFields$,
-                        HrisDocumentsPaginated: val$,
+                        AtsDocumentsPaginated: val$,
                     });
                 },
                 "Response validation failed"

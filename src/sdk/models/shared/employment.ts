@@ -238,7 +238,8 @@ export namespace EmploymentSourceValue$ {
 }
 
 /** @internal */
-export const EmploymentValue$ = z.nativeEnum(EmploymentValue);
+export const EmploymentValue$: z.ZodNativeEnum<typeof EmploymentValue> =
+    z.nativeEnum(EmploymentValue);
 
 /** @internal */
 export namespace EmploymentEmploymentContractType$ {
@@ -335,7 +336,8 @@ export namespace EmploymentSchemasSourceValue$ {
 }
 
 /** @internal */
-export const EmploymentSchemasValue$ = z.nativeEnum(EmploymentSchemasValue);
+export const EmploymentSchemasValue$: z.ZodNativeEnum<typeof EmploymentSchemasValue> =
+    z.nativeEnum(EmploymentSchemasValue);
 
 /** @internal */
 export namespace EmploymentEmploymentType$ {
@@ -433,7 +435,9 @@ export namespace EmploymentSchemasPayFrequencySourceValue$ {
 }
 
 /** @internal */
-export const EmploymentSchemasPayFrequencyValue$ = z.nativeEnum(EmploymentSchemasPayFrequencyValue);
+export const EmploymentSchemasPayFrequencyValue$: z.ZodNativeEnum<
+    typeof EmploymentSchemasPayFrequencyValue
+> = z.nativeEnum(EmploymentSchemasPayFrequencyValue);
 
 /** @internal */
 export namespace PayFrequency$ {
@@ -543,7 +547,9 @@ export namespace EmploymentSchemasPayPeriodSourceValue$ {
 }
 
 /** @internal */
-export const EmploymentSchemasPayPeriodValue$ = z.nativeEnum(EmploymentSchemasPayPeriodValue);
+export const EmploymentSchemasPayPeriodValue$: z.ZodNativeEnum<
+    typeof EmploymentSchemasPayPeriodValue
+> = z.nativeEnum(EmploymentSchemasPayPeriodValue);
 
 /** @internal */
 export namespace PayPeriod$ {

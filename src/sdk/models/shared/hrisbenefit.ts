@@ -92,7 +92,8 @@ export namespace HRISBenefitSourceValue$ {
 }
 
 /** @internal */
-export const HRISBenefitValue$ = z.nativeEnum(HRISBenefitValue);
+export const HRISBenefitValue$: z.ZodNativeEnum<typeof HRISBenefitValue> =
+    z.nativeEnum(HRISBenefitValue);
 
 /** @internal */
 export namespace BenefitType$ {

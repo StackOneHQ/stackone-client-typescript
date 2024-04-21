@@ -39,7 +39,7 @@ export type ProxyRequestBody = {
 };
 
 /** @internal */
-export const Method$ = z.nativeEnum(Method);
+export const Method$: z.ZodNativeEnum<typeof Method> = z.nativeEnum(Method);
 
 /** @internal */
 export namespace ProxyRequestBody$ {
