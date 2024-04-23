@@ -506,6 +506,7 @@ export enum ContentValue {
     FeLaunch = "fe_launch",
     Dna = "dna",
     Mlp = "mlp",
+    Mle = "mle",
     Dpg = "dpg",
     Dfac = "dfac",
     Kpxx = "kpxx",

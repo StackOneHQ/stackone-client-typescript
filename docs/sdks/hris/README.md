@@ -100,7 +100,7 @@ async function run() {
           type: {
           sourceValue:     {},
           },
-          value: {},
+        value: "Completed",
           valueId: "value_456",
         },
       ],
@@ -1515,7 +1515,7 @@ async function run() {
           type: {
           sourceValue: "<value>",
           },
-          value: {},
+        value: "Completed",
           valueId: "value_456",
         },
       ],

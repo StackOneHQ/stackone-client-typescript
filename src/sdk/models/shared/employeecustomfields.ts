@@ -6,7 +6,15 @@ import * as z from "zod";
 
 export type EmployeeCustomFields4 = {};
 
-export type EmployeeCustomFieldsSourceValue = EmployeeCustomFields4 | string | number | boolean;
+export type Options = EmployeeCustomFields4 | string | number | boolean;
+
+export type EmployeeCustomFieldsSchemasType4 = {};
+
+export type EmployeeCustomFieldsSourceValue =
+    | EmployeeCustomFieldsSchemasType4
+    | string
+    | number
+    | boolean;
 
 export enum EmployeeCustomFieldsSchemasValue {
     Date = "date",
@@ -21,14 +29,16 @@ export enum EmployeeCustomFieldsSchemasValue {
  * The type of the custom field.
  */
 export type EmployeeCustomFieldsType = {
-    sourceValue?: EmployeeCustomFields4 | string | number | boolean | null | undefined;
+    sourceValue?: EmployeeCustomFieldsSchemasType4 | string | number | boolean | null | undefined;
     value?: EmployeeCustomFieldsSchemasValue | null | undefined;
 };
+
+export type EmployeeCustomFieldsSchemas4 = {};
 
 /**
  * The value associated with the custom field.
  */
-export type EmployeeCustomFieldsValue = {};
+export type EmployeeCustomFieldsValue = EmployeeCustomFieldsSchemas4 | string | number | boolean;
 
 export type EmployeeCustomFields = {
     /**
@@ -46,7 +56,7 @@ export type EmployeeCustomFields = {
     /**
      * An array of possible options for the custom field.
      */
-    options?: Array<string> | null | undefined;
+    options?: Array<EmployeeCustomFields4 | string | number | boolean> | null | undefined;
     /**
      * Provider's unique identifier
      */
@@ -58,7 +68,7 @@ export type EmployeeCustomFields = {
     /**
      * The value associated with the custom field.
      */
-    value?: EmployeeCustomFieldsValue | null | undefined;
+    value?: EmployeeCustomFieldsSchemas4 | string | number | boolean | null | undefined;
     /**
      * The unique identifier for the value of the custom field.
      */
@@ -80,13 +90,48 @@ export namespace EmployeeCustomFields4$ {
 }
 
 /** @internal */
-export namespace EmployeeCustomFieldsSourceValue$ {
+export namespace Options$ {
     export type Inbound = EmployeeCustomFields4$.Inbound | string | number | boolean;
 
     export type Outbound = EmployeeCustomFields4$.Outbound | string | number | boolean;
+    export const inboundSchema: z.ZodType<Options, z.ZodTypeDef, Inbound> = z.union([
+        z.lazy(() => EmployeeCustomFields4$.inboundSchema),
+        z.string(),
+        z.number(),
+        z.boolean(),
+    ]);
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Options> = z.union([
+        z.lazy(() => EmployeeCustomFields4$.outboundSchema),
+        z.string(),
+        z.number(),
+        z.boolean(),
+    ]);
+}
+
+/** @internal */
+export namespace EmployeeCustomFieldsSchemasType4$ {
+    export type Inbound = {};
+
+    export const inboundSchema: z.ZodType<EmployeeCustomFieldsSchemasType4, z.ZodTypeDef, Inbound> =
+        z.object({});
+
+    export type Outbound = {};
+
+    export const outboundSchema: z.ZodType<
+        Outbound,
+        z.ZodTypeDef,
+        EmployeeCustomFieldsSchemasType4
+    > = z.object({});
+}
+
+/** @internal */
+export namespace EmployeeCustomFieldsSourceValue$ {
+    export type Inbound = EmployeeCustomFieldsSchemasType4$.Inbound | string | number | boolean;
+
+    export type Outbound = EmployeeCustomFieldsSchemasType4$.Outbound | string | number | boolean;
     export const inboundSchema: z.ZodType<EmployeeCustomFieldsSourceValue, z.ZodTypeDef, Inbound> =
         z.union([
-            z.lazy(() => EmployeeCustomFields4$.inboundSchema),
+            z.lazy(() => EmployeeCustomFieldsSchemasType4$.inboundSchema),
             z.string(),
             z.number(),
             z.boolean(),
@@ -96,7 +141,7 @@ export namespace EmployeeCustomFieldsSourceValue$ {
         z.ZodTypeDef,
         EmployeeCustomFieldsSourceValue
     > = z.union([
-        z.lazy(() => EmployeeCustomFields4$.outboundSchema),
+        z.lazy(() => EmployeeCustomFieldsSchemasType4$.outboundSchema),
         z.string(),
         z.number(),
         z.boolean(),
@@ -112,7 +157,7 @@ export const EmployeeCustomFieldsSchemasValue$: z.ZodNativeEnum<
 export namespace EmployeeCustomFieldsType$ {
     export type Inbound = {
         source_value?:
-            | EmployeeCustomFields4$.Inbound
+            | EmployeeCustomFieldsSchemasType4$.Inbound
             | string
             | number
             | boolean
@@ -126,7 +171,7 @@ export namespace EmployeeCustomFieldsType$ {
             source_value: z
                 .nullable(
                     z.union([
-                        z.lazy(() => EmployeeCustomFields4$.inboundSchema),
+                        z.lazy(() => EmployeeCustomFieldsSchemasType4$.inboundSchema),
                         z.string(),
                         z.number(),
                         z.boolean(),
@@ -144,7 +189,7 @@ export namespace EmployeeCustomFieldsType$ {
 
     export type Outbound = {
         source_value?:
-            | EmployeeCustomFields4$.Outbound
+            | EmployeeCustomFieldsSchemasType4$.Outbound
             | string
             | number
             | boolean
@@ -158,7 +203,7 @@ export namespace EmployeeCustomFieldsType$ {
             sourceValue: z
                 .nullable(
                     z.union([
-                        z.lazy(() => EmployeeCustomFields4$.outboundSchema),
+                        z.lazy(() => EmployeeCustomFieldsSchemasType4$.outboundSchema),
                         z.string(),
                         z.number(),
                         z.boolean(),
@@ -176,16 +221,37 @@ export namespace EmployeeCustomFieldsType$ {
 }
 
 /** @internal */
-export namespace EmployeeCustomFieldsValue$ {
+export namespace EmployeeCustomFieldsSchemas4$ {
     export type Inbound = {};
 
-    export const inboundSchema: z.ZodType<EmployeeCustomFieldsValue, z.ZodTypeDef, Inbound> =
+    export const inboundSchema: z.ZodType<EmployeeCustomFieldsSchemas4, z.ZodTypeDef, Inbound> =
         z.object({});
 
     export type Outbound = {};
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, EmployeeCustomFieldsValue> =
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, EmployeeCustomFieldsSchemas4> =
         z.object({});
+}
+
+/** @internal */
+export namespace EmployeeCustomFieldsValue$ {
+    export type Inbound = EmployeeCustomFieldsSchemas4$.Inbound | string | number | boolean;
+
+    export type Outbound = EmployeeCustomFieldsSchemas4$.Outbound | string | number | boolean;
+    export const inboundSchema: z.ZodType<EmployeeCustomFieldsValue, z.ZodTypeDef, Inbound> =
+        z.union([
+            z.lazy(() => EmployeeCustomFieldsSchemas4$.inboundSchema),
+            z.string(),
+            z.number(),
+            z.boolean(),
+        ]);
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, EmployeeCustomFieldsValue> =
+        z.union([
+            z.lazy(() => EmployeeCustomFieldsSchemas4$.outboundSchema),
+            z.string(),
+            z.number(),
+            z.boolean(),
+        ]);
 }
 
 /** @internal */
@@ -194,10 +260,19 @@ export namespace EmployeeCustomFields$ {
         description?: string | null | undefined;
         id?: string | null | undefined;
         name?: string | null | undefined;
-        options?: Array<string> | null | undefined;
+        options?:
+            | Array<EmployeeCustomFields4$.Inbound | string | number | boolean>
+            | null
+            | undefined;
         remote_id?: string | null | undefined;
         type?: EmployeeCustomFieldsType$.Inbound | null | undefined;
-        value?: EmployeeCustomFieldsValue$.Inbound | null | undefined;
+        value?:
+            | EmployeeCustomFieldsSchemas4$.Inbound
+            | string
+            | number
+            | boolean
+            | null
+            | undefined;
         value_id?: string | null | undefined;
     };
 
@@ -206,10 +281,30 @@ export namespace EmployeeCustomFields$ {
             description: z.nullable(z.string()).optional(),
             id: z.nullable(z.string()).optional(),
             name: z.nullable(z.string()).optional(),
-            options: z.nullable(z.array(z.string())).optional(),
+            options: z
+                .nullable(
+                    z.array(
+                        z.union([
+                            z.lazy(() => EmployeeCustomFields4$.inboundSchema),
+                            z.string(),
+                            z.number(),
+                            z.boolean(),
+                        ])
+                    )
+                )
+                .optional(),
             remote_id: z.nullable(z.string()).optional(),
             type: z.nullable(z.lazy(() => EmployeeCustomFieldsType$.inboundSchema)).optional(),
-            value: z.nullable(z.lazy(() => EmployeeCustomFieldsValue$.inboundSchema)).optional(),
+            value: z
+                .nullable(
+                    z.union([
+                        z.lazy(() => EmployeeCustomFieldsSchemas4$.inboundSchema),
+                        z.string(),
+                        z.number(),
+                        z.boolean(),
+                    ])
+                )
+                .optional(),
             value_id: z.nullable(z.string()).optional(),
         })
         .transform((v) => {
@@ -229,10 +324,19 @@ export namespace EmployeeCustomFields$ {
         description?: string | null | undefined;
         id?: string | null | undefined;
         name?: string | null | undefined;
-        options?: Array<string> | null | undefined;
+        options?:
+            | Array<EmployeeCustomFields4$.Outbound | string | number | boolean>
+            | null
+            | undefined;
         remote_id?: string | null | undefined;
         type?: EmployeeCustomFieldsType$.Outbound | null | undefined;
-        value?: EmployeeCustomFieldsValue$.Outbound | null | undefined;
+        value?:
+            | EmployeeCustomFieldsSchemas4$.Outbound
+            | string
+            | number
+            | boolean
+            | null
+            | undefined;
         value_id?: string | null | undefined;
     };
 
@@ -241,10 +345,30 @@ export namespace EmployeeCustomFields$ {
             description: z.nullable(z.string()).optional(),
             id: z.nullable(z.string()).optional(),
             name: z.nullable(z.string()).optional(),
-            options: z.nullable(z.array(z.string())).optional(),
+            options: z
+                .nullable(
+                    z.array(
+                        z.union([
+                            z.lazy(() => EmployeeCustomFields4$.outboundSchema),
+                            z.string(),
+                            z.number(),
+                            z.boolean(),
+                        ])
+                    )
+                )
+                .optional(),
             remoteId: z.nullable(z.string()).optional(),
             type: z.nullable(z.lazy(() => EmployeeCustomFieldsType$.outboundSchema)).optional(),
-            value: z.nullable(z.lazy(() => EmployeeCustomFieldsValue$.outboundSchema)).optional(),
+            value: z
+                .nullable(
+                    z.union([
+                        z.lazy(() => EmployeeCustomFieldsSchemas4$.outboundSchema),
+                        z.string(),
+                        z.number(),
+                        z.boolean(),
+                    ])
+                )
+                .optional(),
             valueId: z.nullable(z.string()).optional(),
         })
         .transform((v) => {

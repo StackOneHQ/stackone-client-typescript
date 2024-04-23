@@ -127,7 +127,7 @@ export class Ats extends ClientSDK {
     }
 
     /**
-     * Create Candidate (early access)
+     * Create Candidate
      */
     async createCandidate(
         input: operations.AtsCreateCandidateRequest,
@@ -202,7 +202,7 @@ export class Ats extends ClientSDK {
                 (val$) => {
                     return operations.AtsCreateCandidateResponse$.inboundSchema.parse({
                         ...responseFields$,
-                        CandidateResult: val$,
+                        CreateResult: val$,
                     });
                 },
                 "Response validation failed"
@@ -3685,7 +3685,7 @@ export class Ats extends ClientSDK {
     }
 
     /**
-     * Update Candidate (early access)
+     * Update Candidate
      */
     async updateCandidate(
         input: operations.AtsUpdateCandidateRequest,
@@ -3701,7 +3701,7 @@ export class Ats extends ClientSDK {
             (value$) => operations.AtsUpdateCandidateRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
-        const body$ = enc$.encodeJSON("body", payload$.AtsUpdateCandidatesRequestDto, {
+        const body$ = enc$.encodeJSON("body", payload$.AtsUpdateCandidateRequestDto, {
             explode: true,
         });
 
@@ -3763,7 +3763,7 @@ export class Ats extends ClientSDK {
                 (val$) => {
                     return operations.AtsUpdateCandidateResponse$.inboundSchema.parse({
                         ...responseFields$,
-                        CandidateResult: val$,
+                        CreateResult: val$,
                     });
                 },
                 "Response validation failed"
