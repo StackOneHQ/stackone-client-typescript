@@ -71,7 +71,6 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.accounts.getAccount({
-    expandInfo: "<value>",
     id: "<id>",
   });
 

@@ -6,7 +6,6 @@ import * as shared from "../shared";
 import * as z from "zod";
 
 export type StackoneGetAccountRequest = {
-    expandInfo: string;
     id: string;
 };
 
@@ -32,35 +31,29 @@ export type StackoneGetAccountResponse = {
 /** @internal */
 export namespace StackoneGetAccountRequest$ {
     export type Inbound = {
-        expand_info: string;
         id: string;
     };
 
     export const inboundSchema: z.ZodType<StackoneGetAccountRequest, z.ZodTypeDef, Inbound> = z
         .object({
-            expand_info: z.string(),
             id: z.string(),
         })
         .transform((v) => {
             return {
-                expandInfo: v.expand_info,
                 id: v.id,
             };
         });
 
     export type Outbound = {
-        expand_info: string;
         id: string;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, StackoneGetAccountRequest> = z
         .object({
-            expandInfo: z.string(),
             id: z.string(),
         })
         .transform((v) => {
             return {
-                expand_info: v.expandInfo,
                 id: v.id,
             };
         });

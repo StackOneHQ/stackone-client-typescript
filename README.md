@@ -76,7 +76,7 @@ run();
 ### [ats](docs/sdks/ats/README.md)
 
 * [createApplication](docs/sdks/ats/README.md#createapplication) - Create Application
-* [createCandidate](docs/sdks/ats/README.md#createcandidate) - Create Candidate (early access)
+* [createCandidate](docs/sdks/ats/README.md#createcandidate) - Create Candidate
 * [createCandidateNote](docs/sdks/ats/README.md#createcandidatenote) - Create Candidate Note
 * [createOffer](docs/sdks/ats/README.md#createoffer) - Creates an offer
 * [downloadApplicationDocument](docs/sdks/ats/README.md#downloadapplicationdocument) - Download Application Document
@@ -111,7 +111,7 @@ run();
 * [listRejectedReasons](docs/sdks/ats/README.md#listrejectedreasons) - List Rejected Reasons
 * [listUsers](docs/sdks/ats/README.md#listusers) - List Users
 * [updateApplication](docs/sdks/ats/README.md#updateapplication) - Update an Application
-* [updateCandidate](docs/sdks/ats/README.md#updatecandidate) - Update Candidate (early access)
+* [updateCandidate](docs/sdks/ats/README.md#updatecandidate) - Update Candidate
 
 ### [crm](docs/sdks/crm/README.md)
 

@@ -80,6 +80,7 @@ export class Accounts extends ClientSDK {
             errorCodes: ["400", "403", "404", "429", "4XX", "500", "501", "5XX"],
         };
         const request = this.createRequest$(
+            context,
             {
                 security: securitySettings$,
                 method: "DELETE",
@@ -141,14 +142,7 @@ export class Accounts extends ClientSDK {
         };
         const path$ = this.templateURLComponent("/accounts/{id}")(pathParams$);
 
-        const query$ = [
-            enc$.encodeForm("expand_info", payload$.expand_info, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-        ]
-            .filter(Boolean)
-            .join("&");
+        const query$ = "";
 
         const security$ =
             typeof this.options$.security === "function"
@@ -167,6 +161,7 @@ export class Accounts extends ClientSDK {
             errorCodes: ["400", "403", "429", "4XX", "500", "501", "5XX"],
         };
         const request = this.createRequest$(
+            context,
             {
                 security: securitySettings$,
                 method: "GET",
@@ -247,6 +242,7 @@ export class Accounts extends ClientSDK {
             errorCodes: ["400", "403", "404", "429", "4XX", "500", "501", "5XX"],
         };
         const request = this.createRequest$(
+            context,
             {
                 security: securitySettings$,
                 method: "GET",
@@ -348,6 +344,7 @@ export class Accounts extends ClientSDK {
             errorCodes: ["400", "403", "429", "4XX", "500", "501", "5XX"],
         };
         const request = this.createRequest$(
+            context,
             {
                 security: securitySettings$,
                 method: "GET",
@@ -429,6 +426,7 @@ export class Accounts extends ClientSDK {
             errorCodes: ["400", "403", "429", "4XX", "500", "501", "5XX"],
         };
         const request = this.createRequest$(
+            context,
             {
                 security: securitySettings$,
                 method: "PATCH",

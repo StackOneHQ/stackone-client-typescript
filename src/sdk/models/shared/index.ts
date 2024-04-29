@@ -22,7 +22,7 @@ export * from "./atslocation";
 export * from "./atslocationresult";
 export * from "./atslocationspaginated";
 export * from "./atsupdateapplicationrequestdto";
-export * from "./atsupdatecandidatesrequestdto";
+export * from "./atsupdatecandidaterequestdto";
 export * from "./campaign";
 export * from "./campaignresult";
 export * from "./campaignspaginated";

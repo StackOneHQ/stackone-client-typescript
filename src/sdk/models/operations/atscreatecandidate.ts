@@ -15,13 +15,13 @@ export type AtsCreateCandidateRequest = {
 
 export type AtsCreateCandidateResponse = {
     /**
-     * The candidate was successfully created.
-     */
-    candidateResult?: shared.CandidateResult | undefined;
-    /**
      * HTTP response content type for this operation
      */
     contentType: string;
+    /**
+     * The candidate was successfully created.
+     */
+    createResult?: shared.CreateResult | undefined;
     /**
      * HTTP response status code for this operation
      */
@@ -72,41 +72,39 @@ export namespace AtsCreateCandidateRequest$ {
 /** @internal */
 export namespace AtsCreateCandidateResponse$ {
     export type Inbound = {
-        CandidateResult?: shared.CandidateResult$.Inbound | undefined;
         ContentType: string;
+        CreateResult?: shared.CreateResult$.Inbound | undefined;
         StatusCode: number;
         RawResponse: Response;
     };
 
     export const inboundSchema: z.ZodType<AtsCreateCandidateResponse, z.ZodTypeDef, Inbound> = z
         .object({
-            CandidateResult: shared.CandidateResult$.inboundSchema.optional(),
             ContentType: z.string(),
+            CreateResult: shared.CreateResult$.inboundSchema.optional(),
             StatusCode: z.number().int(),
             RawResponse: z.instanceof(Response),
         })
         .transform((v) => {
             return {
-                ...(v.CandidateResult === undefined
-                    ? null
-                    : { candidateResult: v.CandidateResult }),
                 contentType: v.ContentType,
+                ...(v.CreateResult === undefined ? null : { createResult: v.CreateResult }),
                 statusCode: v.StatusCode,
                 rawResponse: v.RawResponse,
             };
         });
 
     export type Outbound = {
-        CandidateResult?: shared.CandidateResult$.Outbound | undefined;
         ContentType: string;
+        CreateResult?: shared.CreateResult$.Outbound | undefined;
         StatusCode: number;
         RawResponse: never;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, AtsCreateCandidateResponse> = z
         .object({
-            candidateResult: shared.CandidateResult$.outboundSchema.optional(),
             contentType: z.string(),
+            createResult: shared.CreateResult$.outboundSchema.optional(),
             statusCode: z.number().int(),
             rawResponse: z.instanceof(Response).transform(() => {
                 throw new Error("Response cannot be serialized");
@@ -114,10 +112,8 @@ export namespace AtsCreateCandidateResponse$ {
         })
         .transform((v) => {
             return {
-                ...(v.candidateResult === undefined
-                    ? null
-                    : { CandidateResult: v.candidateResult }),
                 ContentType: v.contentType,
+                ...(v.createResult === undefined ? null : { CreateResult: v.createResult }),
                 StatusCode: v.statusCode,
                 RawResponse: v.rawResponse,
             };
