@@ -32,6 +32,7 @@ export enum JobValue {
     Archived = "archived",
     Closed = "closed",
     Open = "open",
+    Deleted = "deleted",
     UnmappedValue = "unmapped_value",
 }
 

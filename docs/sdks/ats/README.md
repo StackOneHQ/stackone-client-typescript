@@ -65,9 +65,29 @@ async function run() {
         value: AtsCreateApplicationRequestDtoValue.Hired,
       },
       candidate: {
+        company: "Company Inc.",
         email: "john.doe@example.com",
+        emails: [
+          {
+            type: "personal",
+            value: "sestier.romain123@gmail.com",
+          },
+        ],
         firstName: "John",
         lastName: "Doe",
+        name: "Romain Sestier",
+        phoneNumbers: [
+          {
+            phone: "+447700112233",
+          },
+        ],
+        socialLinks: [
+          {
+            type: "linkedin",
+            url: "https://www.linkedin.com/in/romainsestier/",
+          },
+        ],
+        title: "Software Engineer",
       },
       candidateId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
       jobId: "4071538b-3cac-4fbf-ac76-f78ed250ffdd",
