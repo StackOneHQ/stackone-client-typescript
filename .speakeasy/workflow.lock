@@ -1,9 +1,17 @@
-speakeasyVersion: 1.267.0
+speakeasyVersion: 1.276.0
 sources:
-    my-source: {}
+    my-source:
+        sourceNamespace: my-source
+        sourceRevisionDigest: sha256:dc7b1fdeedba4a54d1010b390390a529a9f529421191e0476118575eb8b52c52
+        sourceBlobDigest: sha256:40978ca02edfe4111f73f1278616d2a79a7c60e5334ad282cb5a0e8b86a7bebb
+        tags:
+            - latest
 targets:
     StackOneTypeScriptClient:
         source: my-source
+        sourceNamespace: my-source
+        sourceRevisionDigest: sha256:dc7b1fdeedba4a54d1010b390390a529a9f529421191e0476118575eb8b52c52
+        sourceBlobDigest: sha256:40978ca02edfe4111f73f1278616d2a79a7c60e5334ad282cb5a0e8b86a7bebb
         outLocation: /github/workspace/repo
 workflow:
     workflowVersion: 1.0.0
@@ -17,6 +25,8 @@ workflow:
                 - location: https://api2.eu1.stackone.com/oas/crm.json
                 - location: https://api2.eu1.stackone.com/oas/iam.json
                 - location: https://api2.eu1.stackone.com/oas/marketing.json
+            registry:
+                location: registry.speakeasyapi.dev/stackone/stackone/my-source
     targets:
         StackOneTypeScriptClient:
             target: typescript

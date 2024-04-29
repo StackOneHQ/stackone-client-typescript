@@ -79,6 +79,7 @@ export class ConnectSessions extends ClientSDK {
             errorCodes: ["400", "403", "429", "4XX", "500", "501", "5XX"],
         };
         const request = this.createRequest$(
+            context,
             {
                 security: securitySettings$,
                 method: "POST",
@@ -159,6 +160,7 @@ export class ConnectSessions extends ClientSDK {
             errorCodes: ["400", "403", "429", "4XX", "500", "501", "5XX"],
         };
         const request = this.createRequest$(
+            context,
             {
                 security: securitySettings$,
                 method: "POST",

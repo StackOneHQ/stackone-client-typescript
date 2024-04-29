@@ -90,6 +90,7 @@ export class Hris extends ClientSDK {
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
         const request = this.createRequest$(
+            context,
             {
                 security: securitySettings$,
                 method: "POST",
@@ -184,6 +185,7 @@ export class Hris extends ClientSDK {
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
         const request = this.createRequest$(
+            context,
             {
                 security: securitySettings$,
                 method: "POST",
@@ -282,6 +284,7 @@ export class Hris extends ClientSDK {
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
         const request = this.createRequest$(
+            context,
             {
                 security: securitySettings$,
                 method: "POST",
@@ -372,6 +375,7 @@ export class Hris extends ClientSDK {
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
         const request = this.createRequest$(
+            context,
             {
                 security: securitySettings$,
                 method: "POST",
@@ -471,6 +475,7 @@ export class Hris extends ClientSDK {
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
         const request = this.createRequest$(
+            context,
             {
                 security: securitySettings$,
                 method: "GET",
@@ -565,6 +570,7 @@ export class Hris extends ClientSDK {
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
         const request = this.createRequest$(
+            context,
             {
                 security: securitySettings$,
                 method: "GET",
@@ -659,6 +665,7 @@ export class Hris extends ClientSDK {
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
         const request = this.createRequest$(
+            context,
             {
                 security: securitySettings$,
                 method: "GET",
@@ -758,6 +765,7 @@ export class Hris extends ClientSDK {
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
         const request = this.createRequest$(
+            context,
             {
                 security: securitySettings$,
                 method: "GET",
@@ -858,6 +866,7 @@ export class Hris extends ClientSDK {
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
         const request = this.createRequest$(
+            context,
             {
                 security: securitySettings$,
                 method: "GET",
@@ -959,6 +968,7 @@ export class Hris extends ClientSDK {
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
         const request = this.createRequest$(
+            context,
             {
                 security: securitySettings$,
                 method: "GET",
@@ -1060,6 +1070,7 @@ export class Hris extends ClientSDK {
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
         const request = this.createRequest$(
+            context,
             {
                 security: securitySettings$,
                 method: "GET",
@@ -1154,6 +1165,7 @@ export class Hris extends ClientSDK {
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
         const request = this.createRequest$(
+            context,
             {
                 security: securitySettings$,
                 method: "GET",
@@ -1248,6 +1260,7 @@ export class Hris extends ClientSDK {
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
         const request = this.createRequest$(
+            context,
             {
                 security: securitySettings$,
                 method: "GET",
@@ -1342,6 +1355,7 @@ export class Hris extends ClientSDK {
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
         const request = this.createRequest$(
+            context,
             {
                 security: securitySettings$,
                 method: "GET",
@@ -1436,6 +1450,7 @@ export class Hris extends ClientSDK {
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
         const request = this.createRequest$(
+            context,
             {
                 security: securitySettings$,
                 method: "GET",
@@ -1541,6 +1556,7 @@ export class Hris extends ClientSDK {
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
         const request = this.createRequest$(
+            context,
             {
                 security: securitySettings$,
                 method: "GET",
@@ -1646,6 +1662,7 @@ export class Hris extends ClientSDK {
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
         const request = this.createRequest$(
+            context,
             {
                 security: securitySettings$,
                 method: "GET",
@@ -1756,6 +1773,7 @@ export class Hris extends ClientSDK {
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
         const request = this.createRequest$(
+            context,
             {
                 security: securitySettings$,
                 method: "GET",
@@ -1867,6 +1885,7 @@ export class Hris extends ClientSDK {
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
         const request = this.createRequest$(
+            context,
             {
                 security: securitySettings$,
                 method: "GET",
@@ -1978,6 +1997,7 @@ export class Hris extends ClientSDK {
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
         const request = this.createRequest$(
+            context,
             {
                 security: securitySettings$,
                 method: "GET",
@@ -2092,6 +2112,7 @@ export class Hris extends ClientSDK {
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
         const request = this.createRequest$(
+            context,
             {
                 security: securitySettings$,
                 method: "GET",
@@ -2218,6 +2239,7 @@ export class Hris extends ClientSDK {
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
         const request = this.createRequest$(
+            context,
             {
                 security: securitySettings$,
                 method: "GET",
@@ -2323,6 +2345,7 @@ export class Hris extends ClientSDK {
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
         const request = this.createRequest$(
+            context,
             {
                 security: securitySettings$,
                 method: "GET",
@@ -2428,6 +2451,7 @@ export class Hris extends ClientSDK {
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
         const request = this.createRequest$(
+            context,
             {
                 security: securitySettings$,
                 method: "GET",
@@ -2533,6 +2557,7 @@ export class Hris extends ClientSDK {
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
         const request = this.createRequest$(
+            context,
             {
                 security: securitySettings$,
                 method: "GET",
@@ -2624,6 +2649,7 @@ export class Hris extends ClientSDK {
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
         const request = this.createRequest$(
+            context,
             {
                 security: securitySettings$,
                 method: "PATCH",
@@ -2724,6 +2750,7 @@ export class Hris extends ClientSDK {
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
         const request = this.createRequest$(
+            context,
             {
                 security: securitySettings$,
                 method: "PATCH",
@@ -2813,6 +2840,7 @@ export class Hris extends ClientSDK {
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
         const request = this.createRequest$(
+            context,
             {
                 security: securitySettings$,
                 method: "PATCH",
@@ -2904,6 +2932,7 @@ export class Hris extends ClientSDK {
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
         const request = this.createRequest$(
+            context,
             {
                 security: securitySettings$,
                 method: "POST",

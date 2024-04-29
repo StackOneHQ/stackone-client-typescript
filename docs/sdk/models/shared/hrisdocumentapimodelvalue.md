@@ -3,16 +3,25 @@
 
 ## Values
 
-| Name                | Value               |
-| ------------------- | ------------------- |
-| `Resume`            | resume              |
-| `Avatar`            | avatar              |
-| `CoverLetter`       | cover_letter        |
-| `ProfilePicture`    | profile_picture     |
-| `Passport`          | passport            |
-| `TakeHomeTest`      | take_home_test      |
-| `OfferLetter`       | offer_letter        |
-| `SignedOfferLetter` | signed_offer_letter |
-| `OfferPacket`       | offer_packet        |
-| `Other`             | other               |
-| `UnmappedValue`     | unmapped_value      |
+| Name              | Value             |
+| ----------------- | ----------------- |
+| `Application`     | application       |
+| `Academic`        | academic          |
+| `Contract`        | contract          |
+| `Certificates`    | certificates      |
+| `Visa`            | visa              |
+| `Passport`        | passport          |
+| `DriverLicense`   | driver_license    |
+| `Payslip`         | payslip           |
+| `Payroll`         | payroll           |
+| `Appraisal`       | appraisal         |
+| `Resume`          | resume            |
+| `Policy`          | policy            |
+| `OfferLetter`     | offer_letter      |
+| `PolicyAgreement` | policy_agreement  |
+| `HomeAddress`     | home_address      |
+| `NationalId`      | national_id       |
+| `Other`           | other             |
+| `Benefit`         | benefit           |
+| `IdVerification`  | id_verification   |
+| `UnmappedValue`   | unmapped_value    |

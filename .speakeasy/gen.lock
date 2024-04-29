@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 7fa83af8-9e8e-4410-b7e2-cf1d0eaf688b
 management:
-  docChecksum: cfa63357c840d9eea91138117da2f693
+  docChecksum: c7da2ea2806abd08098534941a1ed553
   docVersion: 1.0.0
-  speakeasyVersion: 1.267.0
-  generationVersion: 2.312.0
-  releaseVersion: 4.6.0
-  configChecksum: 5696ebe00a6f105705e0912542c45e36
+  speakeasyVersion: 1.276.0
+  generationVersion: 2.314.0
+  releaseVersion: 4.7.0
+  configChecksum: 67caf065debcf55a86da6d1159b6e1fd
   repoURL: https://github.com/StackOneHQ/stackone-client-typescript.git
   repoSubDirectory: .
   installationURL: https://github.com/StackOneHQ/stackone-client-typescript
@@ -14,7 +14,7 @@ management:
 features:
   typescript:
     constsAndDefaults: 0.1.5
-    core: 3.8.0
+    core: 3.9.0
     deprecations: 2.81.1
     downloadStreams: 0.1.1
     examples: 2.81.3
@@ -178,18 +178,16 @@ generatedFiles:
   - src/sdk/models/shared/atscreateapplicationrequestdto.ts
   - src/sdk/models/shared/questionnaire.ts
   - src/sdk/models/shared/answer.ts
-  - src/sdk/models/shared/candidateresult.ts
-  - src/sdk/models/shared/rawresponse.ts
-  - src/sdk/models/shared/candidate.ts
+  - src/sdk/models/shared/atscreatecandidaterequestdto.ts
   - src/sdk/models/shared/sociallink.ts
   - src/sdk/models/shared/phonenumber.ts
   - src/sdk/models/shared/candidateemail.ts
-  - src/sdk/models/shared/atscreatecandidaterequestdto.ts
   - src/sdk/models/shared/atscreatenotesrequestdto.ts
   - src/sdk/models/shared/notecontentapimodel.ts
   - src/sdk/models/shared/atscreateofferrequestdto.ts
   - src/sdk/models/shared/offerhistory.ts
   - src/sdk/models/shared/applicationresult.ts
+  - src/sdk/models/shared/rawresponse.ts
   - src/sdk/models/shared/application.ts
   - src/sdk/models/shared/resultlink.ts
   - src/sdk/models/shared/rejectedreason.ts
@@ -203,6 +201,8 @@ generatedFiles:
   - src/sdk/models/shared/scorecard.ts
   - src/sdk/models/shared/scorecardsection.ts
   - src/sdk/models/shared/field.ts
+  - src/sdk/models/shared/candidateresult.ts
+  - src/sdk/models/shared/candidate.ts
   - src/sdk/models/shared/noteresult.ts
   - src/sdk/models/shared/note.ts
   - src/sdk/models/shared/departmentresult.ts
@@ -244,7 +244,7 @@ generatedFiles:
   - src/sdk/models/shared/userspaginated.ts
   - src/sdk/models/shared/updateresult.ts
   - src/sdk/models/shared/atsupdateapplicationrequestdto.ts
-  - src/sdk/models/shared/atsupdatecandidatesrequestdto.ts
+  - src/sdk/models/shared/atsupdatecandidaterequestdto.ts
   - src/sdk/models/shared/contactresult.ts
   - src/sdk/models/shared/contact.ts
   - src/sdk/models/shared/crmcreatecontactrequestdto.ts
@@ -568,14 +568,11 @@ generatedFiles:
   - docs/sdk/models/shared/answervalue.md
   - docs/sdk/models/shared/type.md
   - docs/sdk/models/shared/answer.md
-  - docs/sdk/models/shared/candidateresult.md
-  - docs/sdk/models/shared/rawresponse.md
-  - docs/sdk/models/shared/candidate.md
+  - docs/sdk/models/shared/atscreatecandidaterequestdto.md
   - docs/sdk/models/shared/sociallink.md
   - docs/sdk/models/shared/phonenumbertype.md
   - docs/sdk/models/shared/phonenumber.md
   - docs/sdk/models/shared/candidateemail.md
-  - docs/sdk/models/shared/atscreatecandidaterequestdto.md
   - docs/sdk/models/shared/atscreatenotesrequestdto4.md
   - docs/sdk/models/shared/atscreatenotesrequestdtosourcevalue.md
   - docs/sdk/models/shared/atscreatenotesrequestdtovalue.md
@@ -589,6 +586,7 @@ generatedFiles:
   - docs/sdk/models/shared/atscreateofferrequestdto.md
   - docs/sdk/models/shared/offerhistory.md
   - docs/sdk/models/shared/applicationresult.md
+  - docs/sdk/models/shared/rawresponse.md
   - docs/sdk/models/shared/application4.md
   - docs/sdk/models/shared/applicationsourcevalue.md
   - docs/sdk/models/shared/applicationvalue.md
@@ -630,6 +628,8 @@ generatedFiles:
   - docs/sdk/models/shared/scorecardsection.md
   - docs/sdk/models/shared/fieldtype.md
   - docs/sdk/models/shared/field.md
+  - docs/sdk/models/shared/candidateresult.md
+  - docs/sdk/models/shared/candidate.md
   - docs/sdk/models/shared/noteresult.md
   - docs/sdk/models/shared/note4.md
   - docs/sdk/models/shared/notesourcevalue.md
@@ -715,7 +715,7 @@ generatedFiles:
   - docs/sdk/models/shared/userspaginated.md
   - docs/sdk/models/shared/updateresult.md
   - docs/sdk/models/shared/atsupdateapplicationrequestdto.md
-  - docs/sdk/models/shared/atsupdatecandidatesrequestdto.md
+  - docs/sdk/models/shared/atsupdatecandidaterequestdto.md
   - docs/sdk/models/shared/contactresult.md
   - docs/sdk/models/shared/contact.md
   - docs/sdk/models/shared/crmcreatecontactrequestdto.md
@@ -805,9 +805,12 @@ generatedFiles:
   - docs/sdk/models/shared/payperiod.md
   - docs/sdk/models/shared/employment.md
   - docs/sdk/models/shared/employeecustomfields4.md
+  - docs/sdk/models/shared/options.md
+  - docs/sdk/models/shared/employeecustomfieldsschemastype4.md
   - docs/sdk/models/shared/employeecustomfieldssourcevalue.md
   - docs/sdk/models/shared/employeecustomfieldsschemasvalue.md
   - docs/sdk/models/shared/employeecustomfieldstype.md
+  - docs/sdk/models/shared/employeecustomfieldsschemas4.md
   - docs/sdk/models/shared/employeecustomfieldsvalue.md
   - docs/sdk/models/shared/employeecustomfields.md
   - docs/sdk/models/shared/countrycodeenum4.md

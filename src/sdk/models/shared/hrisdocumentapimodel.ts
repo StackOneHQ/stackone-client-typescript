@@ -10,16 +10,25 @@ export type HrisDocumentApiModel4 = {};
 export type HrisDocumentApiModelSourceValue = HrisDocumentApiModel4 | string | number | boolean;
 
 export enum HrisDocumentApiModelValue {
-    Resume = "resume",
-    Avatar = "avatar",
-    CoverLetter = "cover_letter",
-    ProfilePicture = "profile_picture",
+    Application = "application",
+    Academic = "academic",
+    Contract = "contract",
+    Certificates = "certificates",
+    Visa = "visa",
     Passport = "passport",
-    TakeHomeTest = "take_home_test",
+    DriverLicense = "driver_license",
+    Payslip = "payslip",
+    Payroll = "payroll",
+    Appraisal = "appraisal",
+    Resume = "resume",
+    Policy = "policy",
     OfferLetter = "offer_letter",
-    SignedOfferLetter = "signed_offer_letter",
-    OfferPacket = "offer_packet",
+    PolicyAgreement = "policy_agreement",
+    HomeAddress = "home_address",
+    NationalId = "national_id",
     Other = "other",
+    Benefit = "benefit",
+    IdVerification = "id_verification",
     UnmappedValue = "unmapped_value",
 }
 

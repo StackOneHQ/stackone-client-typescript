@@ -4,7 +4,7 @@
 ### Available Operations
 
 * [createApplication](#createapplication) - Create Application
-* [createCandidate](#createcandidate) - Create Candidate (early access)
+* [createCandidate](#createcandidate) - Create Candidate
 * [createCandidateNote](#createcandidatenote) - Create Candidate Note
 * [createOffer](#createoffer) - Creates an offer
 * [downloadApplicationDocument](#downloadapplicationdocument) - Download Application Document
@@ -39,7 +39,7 @@
 * [listRejectedReasons](#listrejectedreasons) - List Rejected Reasons
 * [listUsers](#listusers) - List Users
 * [updateApplication](#updateapplication) - Update an Application
-* [updateCandidate](#updatecandidate) - Update Candidate (early access)
+* [updateCandidate](#updatecandidate) - Update Candidate
 
 ## createApplication
 
@@ -126,7 +126,7 @@ run();
 
 ## createCandidate
 
-Create Candidate (early access)
+Create Candidate
 
 ### Example Usage
 
@@ -142,12 +142,7 @@ const stackOne = new StackOne({
 async function run() {
   const result = await stackOne.ats.createCandidate({
     atsCreateCandidateRequestDto: {
-      applicationIds: [
-        "123e4567-e89b-12d3-a456-426614174000",
-        "523e1234-e89b-fdd2-a456-762545121101",
-      ],
       company: "Company Inc.",
-      createdAt: new Date("2021-01-01T01:01:01.000Z"),
       email: "sestier.romain123@gmail.com",
       emails: [
         {
@@ -157,7 +152,6 @@ async function run() {
       ],
       firstName: "Romain",
       hiredAt: new Date("2021-01-01T01:01:01.000Z"),
-      id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
       lastName: "Sestier",
       name: "Romain Sestier",
       phone: "+16178294093",
@@ -174,7 +168,6 @@ async function run() {
         },
       ],
       title: "Software Engineer",
-      updatedAt: new Date("2021-01-01T01:01:01.000Z"),
     },
     xAccountId: "<value>",
   });
@@ -1885,7 +1878,7 @@ run();
 
 ## updateCandidate
 
-Update Candidate (early access)
+Update Candidate
 
 ### Example Usage
 
@@ -1900,13 +1893,12 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.updateCandidate({
-    atsUpdateCandidatesRequestDto: {
+    atsUpdateCandidateRequestDto: {
       applicationIds: [
         "123e4567-e89b-12d3-a456-426614174000",
         "523e1234-e89b-fdd2-a456-762545121101",
       ],
       company: "Company Inc.",
-      createdAt: new Date("2021-01-01T01:01:01.000Z"),
       email: "sestier.romain123@gmail.com",
       emails: [
         {
@@ -1916,7 +1908,7 @@ async function run() {
       ],
       firstName: "Romain",
       hiredAt: new Date("2021-01-01T01:01:01.000Z"),
-      id: "eebbaa75-7adf-4f7e-be4c-def6a12840f2",
+      id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
       lastName: "Sestier",
       name: "Romain Sestier",
       phone: "+16178294093",
@@ -1933,7 +1925,6 @@ async function run() {
         },
       ],
       title: "Software Engineer",
-      updatedAt: new Date("2021-01-01T01:01:01.000Z"),
     },
     id: "<id>",
     xAccountId: "<value>",
