@@ -4,9 +4,12 @@
 
 import { ApplicationAttachment, ApplicationAttachment$ } from "./applicationattachment";
 import { AtsDocumentApiModel, AtsDocumentApiModel$ } from "./atsdocumentapimodel";
+import { CandidateEmail, CandidateEmail$ } from "./candidateemail";
+import { PhoneNumber, PhoneNumber$ } from "./phonenumber";
 import { Questionnaire, Questionnaire$ } from "./questionnaire";
 import { RejectedReason, RejectedReason$ } from "./rejectedreason";
 import { ResultLink, ResultLink$ } from "./resultlink";
+import { SocialLink, SocialLink$ } from "./sociallink";
 import * as z from "zod";
 
 export type Application4 = {};
@@ -55,9 +58,17 @@ export type ApplicationStatus = {
 
 export type ApplicationCandidate = {
     /**
+     * Candidate company
+     */
+    company?: string | null | undefined;
+    /**
      * Email of the candidate
      */
     email?: string | null | undefined;
+    /**
+     * List of candidate emails
+     */
+    emails?: Array<CandidateEmail> | null | undefined;
     /**
      * First name of the candidate
      */
@@ -66,6 +77,22 @@ export type ApplicationCandidate = {
      * Last name of the candidate
      */
     lastName?: string | null | undefined;
+    /**
+     * Candidate name
+     */
+    name?: string | null | undefined;
+    /**
+     * List of candidate phone numbers including the type of the number when available
+     */
+    phoneNumbers?: Array<PhoneNumber> | null | undefined;
+    /**
+     * List of candidate social links
+     */
+    socialLinks?: Array<SocialLink> | null | undefined;
+    /**
+     * Candidate title
+     */
+    title?: string | null | undefined;
 };
 
 export type ApplicationInterviewStage = {
@@ -243,42 +270,78 @@ export namespace ApplicationStatus$ {
 /** @internal */
 export namespace ApplicationCandidate$ {
     export type Inbound = {
+        company?: string | null | undefined;
         email?: string | null | undefined;
+        emails?: Array<CandidateEmail$.Inbound> | null | undefined;
         first_name?: string | null | undefined;
         last_name?: string | null | undefined;
+        name?: string | null | undefined;
+        phone_numbers?: Array<PhoneNumber$.Inbound> | null | undefined;
+        social_links?: Array<SocialLink$.Inbound> | null | undefined;
+        title?: string | null | undefined;
     };
 
     export const inboundSchema: z.ZodType<ApplicationCandidate, z.ZodTypeDef, Inbound> = z
         .object({
+            company: z.nullable(z.string()).optional(),
             email: z.nullable(z.string()).optional(),
+            emails: z.nullable(z.array(CandidateEmail$.inboundSchema)).optional(),
             first_name: z.nullable(z.string()).optional(),
             last_name: z.nullable(z.string()).optional(),
+            name: z.nullable(z.string()).optional(),
+            phone_numbers: z.nullable(z.array(PhoneNumber$.inboundSchema)).optional(),
+            social_links: z.nullable(z.array(SocialLink$.inboundSchema)).optional(),
+            title: z.nullable(z.string()).optional(),
         })
         .transform((v) => {
             return {
+                ...(v.company === undefined ? null : { company: v.company }),
                 ...(v.email === undefined ? null : { email: v.email }),
+                ...(v.emails === undefined ? null : { emails: v.emails }),
                 ...(v.first_name === undefined ? null : { firstName: v.first_name }),
                 ...(v.last_name === undefined ? null : { lastName: v.last_name }),
+                ...(v.name === undefined ? null : { name: v.name }),
+                ...(v.phone_numbers === undefined ? null : { phoneNumbers: v.phone_numbers }),
+                ...(v.social_links === undefined ? null : { socialLinks: v.social_links }),
+                ...(v.title === undefined ? null : { title: v.title }),
             };
         });
 
     export type Outbound = {
+        company?: string | null | undefined;
         email?: string | null | undefined;
+        emails?: Array<CandidateEmail$.Outbound> | null | undefined;
         first_name?: string | null | undefined;
         last_name?: string | null | undefined;
+        name?: string | null | undefined;
+        phone_numbers?: Array<PhoneNumber$.Outbound> | null | undefined;
+        social_links?: Array<SocialLink$.Outbound> | null | undefined;
+        title?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ApplicationCandidate> = z
         .object({
+            company: z.nullable(z.string()).optional(),
             email: z.nullable(z.string()).optional(),
+            emails: z.nullable(z.array(CandidateEmail$.outboundSchema)).optional(),
             firstName: z.nullable(z.string()).optional(),
             lastName: z.nullable(z.string()).optional(),
+            name: z.nullable(z.string()).optional(),
+            phoneNumbers: z.nullable(z.array(PhoneNumber$.outboundSchema)).optional(),
+            socialLinks: z.nullable(z.array(SocialLink$.outboundSchema)).optional(),
+            title: z.nullable(z.string()).optional(),
         })
         .transform((v) => {
             return {
+                ...(v.company === undefined ? null : { company: v.company }),
                 ...(v.email === undefined ? null : { email: v.email }),
+                ...(v.emails === undefined ? null : { emails: v.emails }),
                 ...(v.firstName === undefined ? null : { first_name: v.firstName }),
                 ...(v.lastName === undefined ? null : { last_name: v.lastName }),
+                ...(v.name === undefined ? null : { name: v.name }),
+                ...(v.phoneNumbers === undefined ? null : { phone_numbers: v.phoneNumbers }),
+                ...(v.socialLinks === undefined ? null : { social_links: v.socialLinks }),
+                ...(v.title === undefined ? null : { title: v.title }),
             };
         });
 }
