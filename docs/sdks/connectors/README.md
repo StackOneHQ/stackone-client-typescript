@@ -23,6 +23,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.connectors.getConnectorMeta({
+    include: "field_path,unmapped_fields,resources,inactive",
     provider: "<value>",
   });
 
@@ -67,7 +68,9 @@ const stackOne = new StackOne({
 });
 
 async function run() {
-  const result = await stackOne.connectors.listConnectorsMeta({});
+  const result = await stackOne.connectors.listConnectorsMeta({
+    include: "field_path,unmapped_fields,resources,inactive",
+  });
 
   // Handle the result
   console.log(result)

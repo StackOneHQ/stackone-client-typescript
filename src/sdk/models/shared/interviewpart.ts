@@ -4,6 +4,41 @@
 
 import * as z from "zod";
 
+export type InterviewPart4 = {};
+
+/**
+ * The source value of the interview type.
+ */
+export type InterviewPartSourceValue = InterviewPart4 | string | number | boolean;
+
+/**
+ * The type of the interview.
+ */
+export enum InterviewPartValue {
+    Screening = "screening",
+    Lunch = "lunch",
+    OnSite = "on_site",
+    Presentation = "presentation",
+    Sell = "sell",
+    Culture = "culture",
+    Informal = "informal",
+    Test = "test",
+    Phone = "phone",
+    Video = "video",
+    UnmappedValue = "unmapped_value",
+}
+
+export type InterviewPartType = {
+    /**
+     * The source value of the interview type.
+     */
+    sourceValue?: InterviewPart4 | string | number | boolean | null | undefined;
+    /**
+     * The type of the interview.
+     */
+    value?: InterviewPartValue | null | undefined;
+};
+
 export type InterviewPart = {
     /**
      * Interview part created date
@@ -17,8 +52,17 @@ export type InterviewPart = {
      * Unique identifier
      */
     id?: string | null | undefined;
+    /**
+     * The user (interviewer) IDs taking part in this specific interview.
+     */
     interviewerIds?: Array<string> | null | undefined;
+    /**
+     * The video meeting provider used for the interview.
+     */
     meetingProvider?: string | null | undefined;
+    /**
+     * The meeting URL for the interview - this may be populated using the underlying location if the location string extracted is a valid url.
+     */
     meetingUrl?: string | null | undefined;
     /**
      * Provider's unique identifier
@@ -29,10 +73,101 @@ export type InterviewPart = {
      */
     startAt?: Date | null | undefined;
     /**
+     * The title of interview, usually corresponding to the title of an associated calendar event
+     */
+    title?: string | null | undefined;
+    type?: InterviewPartType | null | undefined;
+    /**
      * Interview part updated date
      */
     updatedAt?: Date | null | undefined;
 };
+
+/** @internal */
+export namespace InterviewPart4$ {
+    export type Inbound = {};
+
+    export const inboundSchema: z.ZodType<InterviewPart4, z.ZodTypeDef, Inbound> = z.object({});
+
+    export type Outbound = {};
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, InterviewPart4> = z.object({});
+}
+
+/** @internal */
+export namespace InterviewPartSourceValue$ {
+    export type Inbound = InterviewPart4$.Inbound | string | number | boolean;
+
+    export type Outbound = InterviewPart4$.Outbound | string | number | boolean;
+    export const inboundSchema: z.ZodType<InterviewPartSourceValue, z.ZodTypeDef, Inbound> =
+        z.union([z.lazy(() => InterviewPart4$.inboundSchema), z.string(), z.number(), z.boolean()]);
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, InterviewPartSourceValue> =
+        z.union([
+            z.lazy(() => InterviewPart4$.outboundSchema),
+            z.string(),
+            z.number(),
+            z.boolean(),
+        ]);
+}
+
+/** @internal */
+export const InterviewPartValue$: z.ZodNativeEnum<typeof InterviewPartValue> =
+    z.nativeEnum(InterviewPartValue);
+
+/** @internal */
+export namespace InterviewPartType$ {
+    export type Inbound = {
+        source_value?: InterviewPart4$.Inbound | string | number | boolean | null | undefined;
+        value?: InterviewPartValue | null | undefined;
+    };
+
+    export const inboundSchema: z.ZodType<InterviewPartType, z.ZodTypeDef, Inbound> = z
+        .object({
+            source_value: z
+                .nullable(
+                    z.union([
+                        z.lazy(() => InterviewPart4$.inboundSchema),
+                        z.string(),
+                        z.number(),
+                        z.boolean(),
+                    ])
+                )
+                .optional(),
+            value: z.nullable(InterviewPartValue$).optional(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.source_value === undefined ? null : { sourceValue: v.source_value }),
+                ...(v.value === undefined ? null : { value: v.value }),
+            };
+        });
+
+    export type Outbound = {
+        source_value?: InterviewPart4$.Outbound | string | number | boolean | null | undefined;
+        value?: InterviewPartValue | null | undefined;
+    };
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, InterviewPartType> = z
+        .object({
+            sourceValue: z
+                .nullable(
+                    z.union([
+                        z.lazy(() => InterviewPart4$.outboundSchema),
+                        z.string(),
+                        z.number(),
+                        z.boolean(),
+                    ])
+                )
+                .optional(),
+            value: z.nullable(InterviewPartValue$).optional(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.sourceValue === undefined ? null : { source_value: v.sourceValue }),
+                ...(v.value === undefined ? null : { value: v.value }),
+            };
+        });
+}
 
 /** @internal */
 export namespace InterviewPart$ {
@@ -45,6 +180,8 @@ export namespace InterviewPart$ {
         meeting_url?: string | null | undefined;
         remote_id?: string | null | undefined;
         start_at?: string | null | undefined;
+        title?: string | null | undefined;
+        type?: InterviewPartType$.Inbound | null | undefined;
         updated_at?: string | null | undefined;
     };
 
@@ -79,6 +216,8 @@ export namespace InterviewPart$ {
                         .transform((v) => new Date(v))
                 )
                 .optional(),
+            title: z.nullable(z.string()).optional(),
+            type: z.nullable(z.lazy(() => InterviewPartType$.inboundSchema)).optional(),
             updated_at: z
                 .nullable(
                     z
@@ -100,6 +239,8 @@ export namespace InterviewPart$ {
                 ...(v.meeting_url === undefined ? null : { meetingUrl: v.meeting_url }),
                 ...(v.remote_id === undefined ? null : { remoteId: v.remote_id }),
                 ...(v.start_at === undefined ? null : { startAt: v.start_at }),
+                ...(v.title === undefined ? null : { title: v.title }),
+                ...(v.type === undefined ? null : { type: v.type }),
                 ...(v.updated_at === undefined ? null : { updatedAt: v.updated_at }),
             };
         });
@@ -113,6 +254,8 @@ export namespace InterviewPart$ {
         meeting_url?: string | null | undefined;
         remote_id?: string | null | undefined;
         start_at?: string | null | undefined;
+        title?: string | null | undefined;
+        type?: InterviewPartType$.Outbound | null | undefined;
         updated_at?: string | null | undefined;
     };
 
@@ -126,6 +269,8 @@ export namespace InterviewPart$ {
             meetingUrl: z.nullable(z.string()).optional(),
             remoteId: z.nullable(z.string()).optional(),
             startAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+            title: z.nullable(z.string()).optional(),
+            type: z.nullable(z.lazy(() => InterviewPartType$.outboundSchema)).optional(),
             updatedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
         })
         .transform((v) => {
@@ -140,6 +285,8 @@ export namespace InterviewPart$ {
                 ...(v.meetingUrl === undefined ? null : { meeting_url: v.meetingUrl }),
                 ...(v.remoteId === undefined ? null : { remote_id: v.remoteId }),
                 ...(v.startAt === undefined ? null : { start_at: v.startAt }),
+                ...(v.title === undefined ? null : { title: v.title }),
+                ...(v.type === undefined ? null : { type: v.type }),
                 ...(v.updatedAt === undefined ? null : { updated_at: v.updatedAt }),
             };
         });

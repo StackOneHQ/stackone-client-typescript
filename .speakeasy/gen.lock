@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 7fa83af8-9e8e-4410-b7e2-cf1d0eaf688b
 management:
-  docChecksum: 4f588f2c09c00421fc2a8ddaf9eb65a6
+  docChecksum: c94426397f0e3eb42db0ddbc13dc55ae
   docVersion: 1.0.0
-  speakeasyVersion: 1.277.0
-  generationVersion: 2.317.0
-  releaseVersion: 4.7.1
-  configChecksum: fc6d9eaa6a8cc5d635b7f29953708f3c
+  speakeasyVersion: 1.279.0
+  generationVersion: 2.322.5
+  releaseVersion: 4.7.2
+  configChecksum: 04dad5a13aedce56436bfa35122c1297
   repoURL: https://github.com/StackOneHQ/stackone-client-typescript.git
   repoSubDirectory: .
   installationURL: https://github.com/StackOneHQ/stackone-client-typescript
@@ -14,7 +14,7 @@ management:
 features:
   typescript:
     constsAndDefaults: 0.1.5
-    core: 3.9.2
+    core: 3.9.3
     deprecations: 2.81.1
     downloadStreams: 0.1.1
     examples: 2.81.3
@@ -24,7 +24,7 @@ features:
     nameOverrides: 2.81.2
     pagination: 2.82.2
     responseFormat: 0.2.3
-    unions: 2.85.3
+    unions: 2.85.4
 generatedFiles:
   - src/sdk/accounts.ts
   - src/sdk/connectsessions.ts
@@ -179,8 +179,6 @@ generatedFiles:
   - src/sdk/models/shared/questionnaire.ts
   - src/sdk/models/shared/answer.ts
   - src/sdk/models/shared/sociallink.ts
-  - src/sdk/models/shared/phonenumber.ts
-  - src/sdk/models/shared/candidateemail.ts
   - src/sdk/models/shared/atscreatecandidaterequestdto.ts
   - src/sdk/models/shared/atscreatenotesrequestdto.ts
   - src/sdk/models/shared/notecontentapimodel.ts
@@ -193,6 +191,8 @@ generatedFiles:
   - src/sdk/models/shared/rejectedreason.ts
   - src/sdk/models/shared/atsdocumentapimodel.ts
   - src/sdk/models/shared/content.ts
+  - src/sdk/models/shared/phonenumber.ts
+  - src/sdk/models/shared/candidateemail.ts
   - src/sdk/models/shared/applicationattachment.ts
   - src/sdk/models/shared/atsdocumentresult.ts
   - src/sdk/models/shared/offersresult.ts
@@ -569,9 +569,6 @@ generatedFiles:
   - docs/sdk/models/shared/type.md
   - docs/sdk/models/shared/answer.md
   - docs/sdk/models/shared/sociallink.md
-  - docs/sdk/models/shared/phonenumbertype.md
-  - docs/sdk/models/shared/phonenumber.md
-  - docs/sdk/models/shared/candidateemail.md
   - docs/sdk/models/shared/atscreatecandidaterequestdto.md
   - docs/sdk/models/shared/atscreatenotesrequestdto4.md
   - docs/sdk/models/shared/atscreatenotesrequestdtosourcevalue.md
@@ -610,6 +607,9 @@ generatedFiles:
   - docs/sdk/models/shared/contentvalue.md
   - docs/sdk/models/shared/fileformat.md
   - docs/sdk/models/shared/content.md
+  - docs/sdk/models/shared/phonenumbertype.md
+  - docs/sdk/models/shared/phonenumber.md
+  - docs/sdk/models/shared/candidateemail.md
   - docs/sdk/models/shared/applicationattachment4.md
   - docs/sdk/models/shared/applicationattachmentsourcevalue.md
   - docs/sdk/models/shared/applicationattachmentvalue.md
@@ -646,6 +646,10 @@ generatedFiles:
   - docs/sdk/models/shared/interviewstatus.md
   - docs/sdk/models/shared/interview.md
   - docs/sdk/models/shared/interviewer.md
+  - docs/sdk/models/shared/interviewpart4.md
+  - docs/sdk/models/shared/interviewpartsourcevalue.md
+  - docs/sdk/models/shared/interviewpartvalue.md
+  - docs/sdk/models/shared/interviewparttype.md
   - docs/sdk/models/shared/interviewpart.md
   - docs/sdk/models/shared/interviewstageresult.md
   - docs/sdk/models/shared/interviewstage.md

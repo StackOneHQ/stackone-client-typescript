@@ -12,9 +12,11 @@ const stackOne = new StackOne({
 
 async function run() {
     const result = await stackOne.hris.listEmployees({
-        proxy: {
-            key: "<value>",
-        },
+        expand: "company,employments,work_location,home_location,custom_fields,groups",
+        fields: "id,first_name,last_name,name,display_name,gender,ethnicity,date_of_birth,birthday,marital_status,avatar_url,avatar,personal_email,personal_phone_number,work_email,work_phone_number,job_title,job_description,department,cost_centers,benefits,manager_id,hire_date,start_date,tenure,work_anniversary,employment_type,employment_contract_type,employment_status,termination_date,company_name,preferred_language,citizenships,home_location,work_location,employments,custom_fields,documents,created_at,updated_at,employee_number",
+        filterUpdatedAfter: "2020-01-01T00:00:00.000Z",
+        include: "avatar_url,avatar,custom_fields,job_description,benefits",
+        updatedAfter: "2020-01-01T00:00:00.000Z",
         xAccountId: "<value>",
     });
 

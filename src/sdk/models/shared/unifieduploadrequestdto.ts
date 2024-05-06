@@ -1256,6 +1256,10 @@ export type UnifiedUploadRequestDtoFileFormat = {
 
 export type UnifiedUploadRequestDto = {
     /**
+     * The category name or Id of the category to be associated with
+     */
+    category?: string | null | undefined;
+    /**
      * The confidentiality level of the file to be uploaded
      */
     confidential?: UnifiedUploadRequestDtoConfidential | null | undefined;
@@ -1272,7 +1276,7 @@ export type UnifiedUploadRequestDto = {
      */
     name?: string | null | undefined;
     /**
-     * The location, category or path for the file to be uploaded to
+     * The path for the file to be uploaded to
      */
     path?: string | null | undefined;
 };
@@ -1522,6 +1526,7 @@ export namespace UnifiedUploadRequestDtoFileFormat$ {
 /** @internal */
 export namespace UnifiedUploadRequestDto$ {
     export type Inbound = {
+        category?: string | null | undefined;
         confidential?: UnifiedUploadRequestDtoConfidential$.Inbound | null | undefined;
         content?: string | null | undefined;
         file_format?: UnifiedUploadRequestDtoFileFormat$.Inbound | null | undefined;
@@ -1531,6 +1536,7 @@ export namespace UnifiedUploadRequestDto$ {
 
     export const inboundSchema: z.ZodType<UnifiedUploadRequestDto, z.ZodTypeDef, Inbound> = z
         .object({
+            category: z.nullable(z.string()).optional(),
             confidential: z
                 .nullable(z.lazy(() => UnifiedUploadRequestDtoConfidential$.inboundSchema))
                 .optional(),
@@ -1543,6 +1549,7 @@ export namespace UnifiedUploadRequestDto$ {
         })
         .transform((v) => {
             return {
+                ...(v.category === undefined ? null : { category: v.category }),
                 ...(v.confidential === undefined ? null : { confidential: v.confidential }),
                 ...(v.content === undefined ? null : { content: v.content }),
                 ...(v.file_format === undefined ? null : { fileFormat: v.file_format }),
@@ -1552,6 +1559,7 @@ export namespace UnifiedUploadRequestDto$ {
         });
 
     export type Outbound = {
+        category?: string | null | undefined;
         confidential?: UnifiedUploadRequestDtoConfidential$.Outbound | null | undefined;
         content?: string | null | undefined;
         file_format?: UnifiedUploadRequestDtoFileFormat$.Outbound | null | undefined;
@@ -1561,6 +1569,7 @@ export namespace UnifiedUploadRequestDto$ {
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UnifiedUploadRequestDto> = z
         .object({
+            category: z.nullable(z.string()).optional(),
             confidential: z
                 .nullable(z.lazy(() => UnifiedUploadRequestDtoConfidential$.outboundSchema))
                 .optional(),
@@ -1573,6 +1582,7 @@ export namespace UnifiedUploadRequestDto$ {
         })
         .transform((v) => {
             return {
+                ...(v.category === undefined ? null : { category: v.category }),
                 ...(v.confidential === undefined ? null : { confidential: v.confidential }),
                 ...(v.content === undefined ? null : { content: v.content }),
                 ...(v.fileFormat === undefined ? null : { file_format: v.fileFormat }),

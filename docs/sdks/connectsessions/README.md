@@ -78,7 +78,6 @@ async function run() {
       ConnectSessionCreateCategories.Marketing,
       ConnectSessionCreateCategories.Stackone,
     ],
-    metadata: {},
     originOwnerId: "<value>",
     originOwnerName: "<value>",
   });

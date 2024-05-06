@@ -40,18 +40,13 @@ async function run() {
       messages: [
         {
           id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-          messageContent: {},
           messageType: {
           sourceValue: "Email",
-            value: {},
           },
           remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         },
       ],
       remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-      tags: [
-        "<value>",
-      ],
     },
     xAccountId: "<value>",
   });
@@ -103,18 +98,13 @@ async function run() {
       messages: [
         {
           id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-        messageContent:     {},
           messageType: {
           sourceValue: "Email",
-            value: {},
           },
           remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         },
       ],
       remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-      tags: [
-        "<value>",
-      ],
     },
     xAccountId: "<value>",
   });
@@ -166,18 +156,13 @@ async function run() {
       messages: [
         {
           id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-          messageContent: {},
           messageType: {
           sourceValue: "Email",
-            value: {},
           },
           remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         },
       ],
       remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-      tags: [
-        "<value>",
-      ],
     },
     xAccountId: "<value>",
   });
@@ -224,10 +209,8 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.marketing.getCampaign({
+    fields: "id,name,created_at,updated_at,description,schedule_type,status,channels,first_sent_at,last_sent_at,tags,messages",
     id: "<id>",
-    proxy: {
-      "key": "<value>",
-    },
     xAccountId: "<value>",
   });
 
@@ -273,10 +256,8 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.marketing.getEmailTemplate({
+    fields: "id,name,messages,created_at,updated_at,tags",
     id: "<id>",
-    proxy: {
-      "key": "<value>",
-    },
     xAccountId: "<value>",
   });
 
@@ -322,10 +303,8 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.marketing.getOmniChannelTemplate({
+    fields: "id,name,messages,created_at,updated_at,tags",
     id: "<id>",
-    proxy: {
-      "key": "<value>",
-    },
     xAccountId: "<value>",
   });
 
@@ -371,10 +350,8 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.marketing.getPushTemplate({
+    fields: "id,name,messages,created_at,updated_at,tags",
     id: "<id>",
-    proxy: {
-      "key": "<value>",
-    },
     xAccountId: "<value>",
   });
 
@@ -420,9 +397,9 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.marketing.listCampaigns({
-    proxy: {
-      "key": "<value>",
-    },
+    fields: "id,name,created_at,updated_at,description,schedule_type,status,channels,first_sent_at,last_sent_at,tags,messages",
+    filterUpdatedAfter: "2020-01-01T00:00:00.000Z",
+    updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
 
@@ -468,9 +445,9 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.marketing.listEmailTemplates({
-    proxy: {
-      "key": "<value>",
-    },
+    fields: "id,name,messages,created_at,updated_at,tags",
+    filterUpdatedAfter: "2020-01-01T00:00:00.000Z",
+    updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
 
@@ -516,9 +493,9 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.marketing.listOmniChannelTemplates({
-    proxy: {
-      "key": "<value>",
-    },
+    fields: "id,name,messages,created_at,updated_at,tags",
+    filterUpdatedAfter: "2020-01-01T00:00:00.000Z",
+    updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
 
@@ -564,9 +541,9 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.marketing.listPushTemplates({
-    proxy: {
-      "key": "<value>",
-    },
+    fields: "id,name,messages,created_at,updated_at,tags",
+    filterUpdatedAfter: "2020-01-01T00:00:00.000Z",
+    updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
 
@@ -617,18 +594,13 @@ async function run() {
       messages: [
         {
           id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-          messageContent: {},
           messageType: {
           sourceValue: "Email",
-            value: {},
           },
           remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         },
       ],
       remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-      tags: [
-        "<value>",
-      ],
     },
     id: "<id>",
     xAccountId: "<value>",
@@ -681,18 +653,13 @@ async function run() {
       messages: [
         {
           id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-        messageContent:     {},
           messageType: {
           sourceValue: "Email",
-            value: {},
           },
           remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         },
       ],
       remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-      tags: [
-        "<value>",
-      ],
     },
     id: "<id>",
     xAccountId: "<value>",
@@ -745,18 +712,13 @@ async function run() {
       messages: [
         {
           id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-          messageContent: {},
           messageType: {
           sourceValue: "Email",
-            value: {},
           },
           remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         },
       ],
       remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-      tags: [
-        "<value>",
-      ],
     },
     id: "<id>",
     xAccountId: "<value>",
