@@ -17,6 +17,10 @@ export type AtsUpdateCandidateRequestDto = {
      */
     company?: string | null | undefined;
     /**
+     * Candidate country
+     */
+    country?: string | null | undefined;
+    /**
      * Candidate email
      */
     email?: string | null | undefined;
@@ -73,6 +77,7 @@ export namespace AtsUpdateCandidateRequestDto$ {
     export type Inbound = {
         application_ids?: Array<string> | null | undefined;
         company?: string | null | undefined;
+        country?: string | null | undefined;
         email?: string | null | undefined;
         emails?: Array<CandidateEmail$.Inbound> | null | undefined;
         first_name?: string | null | undefined;
@@ -91,6 +96,7 @@ export namespace AtsUpdateCandidateRequestDto$ {
         .object({
             application_ids: z.nullable(z.array(z.string())).optional(),
             company: z.nullable(z.string()).optional(),
+            country: z.nullable(z.string()).optional(),
             email: z.nullable(z.string()).optional(),
             emails: z.nullable(z.array(CandidateEmail$.inboundSchema)).optional(),
             first_name: z.nullable(z.string()).optional(),
@@ -115,6 +121,7 @@ export namespace AtsUpdateCandidateRequestDto$ {
             return {
                 ...(v.application_ids === undefined ? null : { applicationIds: v.application_ids }),
                 ...(v.company === undefined ? null : { company: v.company }),
+                ...(v.country === undefined ? null : { country: v.country }),
                 ...(v.email === undefined ? null : { email: v.email }),
                 ...(v.emails === undefined ? null : { emails: v.emails }),
                 ...(v.first_name === undefined ? null : { firstName: v.first_name }),
@@ -133,6 +140,7 @@ export namespace AtsUpdateCandidateRequestDto$ {
     export type Outbound = {
         application_ids?: Array<string> | null | undefined;
         company?: string | null | undefined;
+        country?: string | null | undefined;
         email?: string | null | undefined;
         emails?: Array<CandidateEmail$.Outbound> | null | undefined;
         first_name?: string | null | undefined;
@@ -151,6 +159,7 @@ export namespace AtsUpdateCandidateRequestDto$ {
         .object({
             applicationIds: z.nullable(z.array(z.string())).optional(),
             company: z.nullable(z.string()).optional(),
+            country: z.nullable(z.string()).optional(),
             email: z.nullable(z.string()).optional(),
             emails: z.nullable(z.array(CandidateEmail$.outboundSchema)).optional(),
             firstName: z.nullable(z.string()).optional(),
@@ -168,6 +177,7 @@ export namespace AtsUpdateCandidateRequestDto$ {
             return {
                 ...(v.applicationIds === undefined ? null : { application_ids: v.applicationIds }),
                 ...(v.company === undefined ? null : { company: v.company }),
+                ...(v.country === undefined ? null : { country: v.country }),
                 ...(v.email === undefined ? null : { email: v.email }),
                 ...(v.emails === undefined ? null : { emails: v.emails }),
                 ...(v.firstName === undefined ? null : { first_name: v.firstName }),

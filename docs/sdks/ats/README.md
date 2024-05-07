@@ -66,21 +66,13 @@ async function run() {
       },
       candidate: {
         company: "Company Inc.",
-        email: "john.doe@example.com",
-        emails: [
-          {
-            type: "personal",
-            value: "sestier.romain123@gmail.com",
-          },
-        ],
-        firstName: "John",
-        lastName: "Doe",
+        country: "United States",
+        email: "sestier.romain123@gmail.com",
+        firstName: "Romain",
+        hiredAt: new Date("2021-01-01T01:01:01.000Z"),
+        lastName: "Sestier",
         name: "Romain Sestier",
-        phoneNumbers: [
-          {
-            phone: "+447700112233",
-          },
-        ],
+        phoneNumber: "+1234567890",
         socialLinks: [
           {
             type: "linkedin",
@@ -163,24 +155,13 @@ async function run() {
   const result = await stackOne.ats.createCandidate({
     atsCreateCandidateRequestDto: {
       company: "Company Inc.",
+      country: "United States",
       email: "sestier.romain123@gmail.com",
-      emails: [
-        {
-          type: "personal",
-          value: "sestier.romain123@gmail.com",
-        },
-      ],
       firstName: "Romain",
       hiredAt: new Date("2021-01-01T01:01:01.000Z"),
       lastName: "Sestier",
       name: "Romain Sestier",
-      phone: "+16178294093",
-      phoneNumbers: [
-        {
-          phone: "+447700112233",
-        },
-      ],
-      remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+      phoneNumber: "+1234567890",
       socialLinks: [
         {
           type: "linkedin",
@@ -353,6 +334,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.downloadApplicationDocument({
+    format: "base64",
     id: "<id>",
     subResourceId: "<value>",
     xAccountId: "<value>",
@@ -400,10 +382,9 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.getApplication({
+    expand: "documents",
+    fields: "id,candidate_id,job_id,interview_stage,interview_stage_id,rejected_reason,rejected_reason_id,rejected_reason_ids,rejected_reasons,rejected_at,location_id,location_ids,status,application_status,questionnaires,attachments,result_links,created_at,updated_at,documents,candidate",
     id: "<id>",
-    proxy: {
-      "key": "<value>",
-    },
     xAccountId: "<value>",
   });
 
@@ -449,10 +430,8 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.getApplicationDocument({
+    fields: "id,name,path,type,contents,created_at,updated_at",
     id: "<id>",
-    proxy: {
-      "key": "<value>",
-    },
     subResourceId: "<value>",
     xAccountId: "<value>",
   });
@@ -499,10 +478,8 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.getApplicationOffer({
+    fields: "id,application_id,start_date,status,offer_status,salary,currency,created_at,updated_at,offer_history",
     id: "<id>",
-    proxy: {
-      "key": "<value>",
-    },
     subResourceId: "<value>",
     xAccountId: "<value>",
   });
@@ -549,10 +526,8 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.getApplicationScorecard({
+    fields: "id,sections,label,candidate_id,application_id,interview_id,author_id,overall_recommendation,created_at,updated_at",
     id: "<id>",
-    proxy: {
-      "key": "<value>",
-    },
     subResourceId: "<value>",
     xAccountId: "<value>",
   });
@@ -599,10 +574,8 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.getCandidate({
+    fields: "id,name,first_name,last_name,email,emails,social_links,phone,phone_numbers,company,title,application_ids,hired_at,created_at,updated_at",
     id: "<id>",
-    proxy: {
-      "key": "<value>",
-    },
     xAccountId: "<value>",
   });
 
@@ -648,10 +621,8 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.getCandidateNote({
+    fields: "id,content,author_id,visibility,created_at,updated_at,deleted_at",
     id: "<id>",
-    proxy: {
-      "key": "<value>",
-    },
     subResourceId: "<value>",
     xAccountId: "<value>",
   });
@@ -698,10 +669,8 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.getDepartment({
+    fields: "id,name",
     id: "<id>",
-    proxy: {
-      "key": "<value>",
-    },
     xAccountId: "<value>",
   });
 
@@ -747,10 +716,8 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.getInterview({
+    fields: "id,application_id,interview_stage_id,interview_stage,status,interview_status,interviewer_ids,interview_parts,interviewers,start_at,end_at,meeting_url,created_at,updated_at",
     id: "<id>",
-    proxy: {
-      "key": "<value>",
-    },
     xAccountId: "<value>",
   });
 
@@ -796,10 +763,8 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.getInterviewStage({
+    fields: "id,name,order,created_at,updated_at",
     id: "<id>",
-    proxy: {
-      "key": "<value>",
-    },
     xAccountId: "<value>",
   });
 
@@ -845,10 +810,9 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.getJob({
+    expand: "job_postings,interview_stages",
+    fields: "id,code,title,status,job_status,department_ids,location_ids,hiring_team,interview_stages,confidential,created_at,updated_at",
     id: "<id>",
-    proxy: {
-      "key": "<value>",
-    },
     xAccountId: "<value>",
   });
 
@@ -894,10 +858,9 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.getJobPosting({
+    fields: "id,title,locations,internal,status,job_id,content,compensation,employment_type,employment_contract_type,external_url,external_apply_url,questionnaires,updated_at,created_at",
     id: "<id>",
-    proxy: {
-      "key": "<value>",
-    },
+    include: "questionnaires",
     xAccountId: "<value>",
   });
 
@@ -943,10 +906,8 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.getLocation({
+    fields: "id,name",
     id: "<id>",
-    proxy: {
-      "key": "<value>",
-    },
     xAccountId: "<value>",
   });
 
@@ -992,10 +953,8 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.getOffer({
+    fields: "id,application_id,start_date,status,offer_status,salary,currency,created_at,updated_at,offer_history",
     id: "<id>",
-    proxy: {
-      "key": "<value>",
-    },
     xAccountId: "<value>",
   });
 
@@ -1041,10 +1000,8 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.getRejectedReason({
+    fields: "id,label,type,rejected_reason_type",
     id: "<id>",
-    proxy: {
-      "key": "<value>",
-    },
     xAccountId: "<value>",
   });
 
@@ -1090,10 +1047,8 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.getUser({
+    fields: "id,first_name,last_name,name,email",
     id: "<id>",
-    proxy: {
-      "key": "<value>",
-    },
     xAccountId: "<value>",
   });
 
@@ -1139,10 +1094,10 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.listApplicationDocuments({
+    fields: "id,name,path,type,contents,created_at,updated_at",
+    filterUpdatedAfter: "2020-01-01T00:00:00.000Z",
     id: "<id>",
-    proxy: {
-      "key": "<value>",
-    },
+    updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
 
@@ -1188,10 +1143,10 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.listApplicationScorecards({
+    fields: "id,sections,label,candidate_id,application_id,interview_id,author_id,overall_recommendation,created_at,updated_at",
+    filterUpdatedAfter: "2020-01-01T00:00:00.000Z",
     id: "<id>",
-    proxy: {
-      "key": "<value>",
-    },
+    updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
 
@@ -1237,9 +1192,11 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.listApplications({
-    proxy: {
-      "key": "<value>",
-    },
+    expand: "documents",
+    fields: "id,candidate_id,job_id,interview_stage,interview_stage_id,rejected_reason,rejected_reason_id,rejected_reason_ids,rejected_reasons,rejected_at,location_id,location_ids,status,application_status,questionnaires,attachments,result_links,created_at,updated_at,documents,candidate",
+    filterUpdatedAfter: "2020-01-01T00:00:00.000Z",
+    jobId: "cxQiyiuasdFKfdsYfer",
+    updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
 
@@ -1285,10 +1242,10 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.listApplicationsOffers({
+    fields: "id,application_id,start_date,status,offer_status,salary,currency,created_at,updated_at,offer_history",
+    filterUpdatedAfter: "2020-01-01T00:00:00.000Z",
     id: "<id>",
-    proxy: {
-      "key": "<value>",
-    },
+    updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
 
@@ -1334,10 +1291,10 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.listCandidateNotes({
+    fields: "id,content,author_id,visibility,created_at,updated_at,deleted_at",
+    filterUpdatedAfter: "2020-01-01T00:00:00.000Z",
     id: "<id>",
-    proxy: {
-      "key": "<value>",
-    },
+    updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
 
@@ -1383,9 +1340,9 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.listCandidates({
-    proxy: {
-      "key": "<value>",
-    },
+    fields: "id,name,first_name,last_name,email,emails,social_links,phone,phone_numbers,company,title,application_ids,hired_at,created_at,updated_at",
+    filterUpdatedAfter: "2020-01-01T00:00:00.000Z",
+    updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
 
@@ -1431,9 +1388,9 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.listDepartments({
-    proxy: {
-      "key": "<value>",
-    },
+    fields: "id,name",
+    filterUpdatedAfter: "2020-01-01T00:00:00.000Z",
+    updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
 
@@ -1479,9 +1436,9 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.listInterviewStages({
-    proxy: {
-      "key": "<value>",
-    },
+    fields: "id,name,order,created_at,updated_at",
+    filterUpdatedAfter: "2020-01-01T00:00:00.000Z",
+    updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
 
@@ -1527,9 +1484,9 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.listInterviews({
-    proxy: {
-      "key": "<value>",
-    },
+    fields: "id,application_id,interview_stage_id,interview_stage,status,interview_status,interviewer_ids,interview_parts,interviewers,start_at,end_at,meeting_url,created_at,updated_at",
+    filterUpdatedAfter: "2020-01-01T00:00:00.000Z",
+    updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
 
@@ -1575,9 +1532,10 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.listJobPostings({
-    proxy: {
-      "key": "<value>",
-    },
+    fields: "id,title,locations,internal,status,job_id,content,compensation,employment_type,employment_contract_type,external_url,external_apply_url,questionnaires,updated_at,created_at",
+    filterUpdatedAfter: "2020-01-01T00:00:00.000Z",
+    include: "questionnaires",
+    updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
 
@@ -1623,9 +1581,10 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.listJobs({
-    proxy: {
-      "key": "<value>",
-    },
+    expand: "job_postings,interview_stages",
+    fields: "id,code,title,status,job_status,department_ids,location_ids,hiring_team,interview_stages,confidential,created_at,updated_at",
+    filterUpdatedAfter: "2020-01-01T00:00:00.000Z",
+    updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
 
@@ -1671,9 +1630,9 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.listLocations({
-    proxy: {
-      "key": "<value>",
-    },
+    fields: "id,name",
+    filterUpdatedAfter: "2020-01-01T00:00:00.000Z",
+    updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
 
@@ -1719,9 +1678,9 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.listOffers({
-    proxy: {
-      "key": "<value>",
-    },
+    fields: "id,application_id,start_date,status,offer_status,salary,currency,created_at,updated_at,offer_history",
+    filterUpdatedAfter: "2020-01-01T00:00:00.000Z",
+    updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
 
@@ -1767,9 +1726,9 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.listRejectedReasons({
-    proxy: {
-      "key": "<value>",
-    },
+    fields: "id,label,type,rejected_reason_type",
+    filterUpdatedAfter: "2020-01-01T00:00:00.000Z",
+    updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
 
@@ -1815,9 +1774,9 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.listUsers({
-    proxy: {
-      "key": "<value>",
-    },
+    fields: "id,first_name,last_name,name,email",
+    filterUpdatedAfter: "2020-01-01T00:00:00.000Z",
+    updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
 
@@ -1919,6 +1878,7 @@ async function run() {
         "523e1234-e89b-fdd2-a456-762545121101",
       ],
       company: "Company Inc.",
+      country: "United States",
       email: "sestier.romain123@gmail.com",
       emails: [
         {

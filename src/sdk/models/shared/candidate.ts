@@ -17,6 +17,10 @@ export type Candidate = {
      */
     company?: string | null | undefined;
     /**
+     * Candidate country
+     */
+    country?: string | null | undefined;
+    /**
      * Candidate created date
      */
     createdAt?: Date | null | undefined;
@@ -81,6 +85,7 @@ export namespace Candidate$ {
     export type Inbound = {
         application_ids?: Array<string> | null | undefined;
         company?: string | null | undefined;
+        country?: string | null | undefined;
         created_at?: string | null | undefined;
         email?: string | null | undefined;
         emails?: Array<CandidateEmail$.Inbound> | null | undefined;
@@ -101,6 +106,7 @@ export namespace Candidate$ {
         .object({
             application_ids: z.nullable(z.array(z.string())).optional(),
             company: z.nullable(z.string()).optional(),
+            country: z.nullable(z.string()).optional(),
             created_at: z
                 .nullable(
                     z
@@ -141,6 +147,7 @@ export namespace Candidate$ {
             return {
                 ...(v.application_ids === undefined ? null : { applicationIds: v.application_ids }),
                 ...(v.company === undefined ? null : { company: v.company }),
+                ...(v.country === undefined ? null : { country: v.country }),
                 ...(v.created_at === undefined ? null : { createdAt: v.created_at }),
                 ...(v.email === undefined ? null : { email: v.email }),
                 ...(v.emails === undefined ? null : { emails: v.emails }),
@@ -161,6 +168,7 @@ export namespace Candidate$ {
     export type Outbound = {
         application_ids?: Array<string> | null | undefined;
         company?: string | null | undefined;
+        country?: string | null | undefined;
         created_at?: string | null | undefined;
         email?: string | null | undefined;
         emails?: Array<CandidateEmail$.Outbound> | null | undefined;
@@ -181,6 +189,7 @@ export namespace Candidate$ {
         .object({
             applicationIds: z.nullable(z.array(z.string())).optional(),
             company: z.nullable(z.string()).optional(),
+            country: z.nullable(z.string()).optional(),
             createdAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
             email: z.nullable(z.string()).optional(),
             emails: z.nullable(z.array(CandidateEmail$.outboundSchema)).optional(),
@@ -200,6 +209,7 @@ export namespace Candidate$ {
             return {
                 ...(v.applicationIds === undefined ? null : { application_ids: v.applicationIds }),
                 ...(v.company === undefined ? null : { company: v.company }),
+                ...(v.country === undefined ? null : { country: v.country }),
                 ...(v.createdAt === undefined ? null : { created_at: v.createdAt }),
                 ...(v.email === undefined ? null : { email: v.email }),
                 ...(v.emails === undefined ? null : { emails: v.emails }),

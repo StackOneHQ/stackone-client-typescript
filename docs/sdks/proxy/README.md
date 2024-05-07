@@ -23,9 +23,6 @@ const stackOne = new StackOne({
 async function run() {
   const result = await stackOne.proxy.proxyRequest({
     proxyRequestBody: {
-      body: {
-        "key": "<value>",
-      },
       headers: {
         "Content-Type": "application/json",
       },

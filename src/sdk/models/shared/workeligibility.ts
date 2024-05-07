@@ -7,6 +7,10 @@ import * as z from "zod";
 
 export type WorkEligibilityDocument = {
     /**
+     * The category of the file
+     */
+    category?: string | null | undefined;
+    /**
      * The content of the file
      */
     contents?: Array<Content> | null | undefined;
@@ -347,6 +351,7 @@ export type WorkEligibility = {
 /** @internal */
 export namespace WorkEligibilityDocument$ {
     export type Inbound = {
+        category?: string | null | undefined;
         contents?: Array<Content$.Inbound> | null | undefined;
         created_at?: string | null | undefined;
         id?: string | null | undefined;
@@ -358,6 +363,7 @@ export namespace WorkEligibilityDocument$ {
 
     export const inboundSchema: z.ZodType<WorkEligibilityDocument, z.ZodTypeDef, Inbound> = z
         .object({
+            category: z.nullable(z.string()).optional(),
             contents: z.nullable(z.array(Content$.inboundSchema)).optional(),
             created_at: z
                 .nullable(
@@ -382,6 +388,7 @@ export namespace WorkEligibilityDocument$ {
         })
         .transform((v) => {
             return {
+                ...(v.category === undefined ? null : { category: v.category }),
                 ...(v.contents === undefined ? null : { contents: v.contents }),
                 ...(v.created_at === undefined ? null : { createdAt: v.created_at }),
                 ...(v.id === undefined ? null : { id: v.id }),
@@ -393,6 +400,7 @@ export namespace WorkEligibilityDocument$ {
         });
 
     export type Outbound = {
+        category?: string | null | undefined;
         contents?: Array<Content$.Outbound> | null | undefined;
         created_at?: string | null | undefined;
         id?: string | null | undefined;
@@ -404,6 +412,7 @@ export namespace WorkEligibilityDocument$ {
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, WorkEligibilityDocument> = z
         .object({
+            category: z.nullable(z.string()).optional(),
             contents: z.nullable(z.array(Content$.outboundSchema)).optional(),
             createdAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
             id: z.nullable(z.string()).optional(),
@@ -414,6 +423,7 @@ export namespace WorkEligibilityDocument$ {
         })
         .transform((v) => {
             return {
+                ...(v.category === undefined ? null : { category: v.category }),
                 ...(v.contents === undefined ? null : { contents: v.contents }),
                 ...(v.createdAt === undefined ? null : { created_at: v.createdAt }),
                 ...(v.id === undefined ? null : { id: v.id }),

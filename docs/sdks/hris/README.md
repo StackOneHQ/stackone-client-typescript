@@ -65,9 +65,6 @@ async function run() {
       avatarUrl: "https://example.com/avatar.png",
       benefits: [
         {
-          benefitType: {
-          sourceValue: 6730.33,
-          },
           createdAt: new Date("2021-01-01T00:00:00Z"),
           description: "Health insurance for employees",
           id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
@@ -80,7 +77,6 @@ async function run() {
       birthday: new Date("2021-01-01T00:00:00Z"),
       citizenships: [
         {
-        sourceValue: "<value>",
           value: CountryCodeEnumValue.Us,
         },
       ],
@@ -97,9 +93,7 @@ async function run() {
             "Overdue",
           ],
           remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-          type: {
-          sourceValue:     {},
-          },
+          type: {},
         value: "Completed",
           valueId: "value_456",
         },
@@ -107,12 +101,8 @@ async function run() {
       dateOfBirth: new Date("1990-01-01T00:00.000Z"),
       department: "Physics",
       displayName: "Sir Issac Newton",
-      employmentContractType: {
-      sourceValue:     {},
-      },
-      employmentStatus: {
-      sourceValue: "<value>",
-      },
+      employmentContractType: {},
+      employmentStatus: {},
       employmentType: {
       sourceValue: "Permanent",
         value: HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue.Permanent,
@@ -122,9 +112,7 @@ async function run() {
           createdAt: new Date("2021-01-01T01:01:01.000Z"),
           effectiveDate: new Date("2021-01-01T01:01:01.000Z"),
           employeeId: "1687-3",
-          employmentContractType: {
-          sourceValue:     {},
-          },
+          employmentContractType: {},
           employmentType: {
           sourceValue: "Permanent",
             value: EmploymentSchemasValue.Permanent,
@@ -145,25 +133,18 @@ async function run() {
           updatedAt: new Date("2021-01-01T01:01:01.000Z"),
         },
       ],
-      ethnicity: {
-      sourceValue:     {},
-      },
+      ethnicity: {},
       firstName: "Issac",
-      gender: {
-      sourceValue: 8263.19,
-      },
+      gender: {},
       hireDate: new Date("2021-01-01T00:00.000Z"),
       homeLocation: {
         city: "Grantham",
         country: {
-        sourceValue:     {},
           value: HrisCreateEmployeeRequestDtoSchemasHomeLocationValue.Us,
         },
         name: "Woolsthorpe Manor",
         phoneNumber: "+44 1476 860 364",
-        state: {
-        sourceValue: "<value>",
-        },
+        state: {},
         street1: "Water Lane",
         street2: "Woolsthorpe by Colsterworth",
         zipCode: "NG33 5NR",
@@ -171,14 +152,11 @@ async function run() {
       jobTitle: "Physicist",
       lastName: "Newton",
       managerId: "67890",
-      maritalStatus: {
-      sourceValue: "<value>",
-      },
+      maritalStatus: {},
       name: "Issac Newton",
       personalEmail: "isaac.newton@example.com",
       personalPhoneNumber: "+1234567890",
       preferredLanguage: {
-      sourceValue: "<value>",
         value: HrisCreateEmployeeRequestDtoSchemasPreferredLanguageValue.Eng,
       },
       startDate: new Date("2021-01-01T00:00.000Z"),
@@ -189,14 +167,11 @@ async function run() {
       workLocation: {
         city: "Grantham",
         country: {
-        sourceValue: false,
           value: HrisCreateEmployeeRequestDtoSchemasWorkLocationValue.Us,
         },
         name: "Woolsthorpe Manor",
         phoneNumber: "+44 1476 860 364",
-        state: {
-        sourceValue: false,
-        },
+        state: {},
         street1: "Water Lane",
         street2: "Woolsthorpe by Colsterworth",
         zipCode: "NG33 5NR",
@@ -253,12 +228,6 @@ async function run() {
       employeeId: "1687-3",
       endDate: new Date("2021-01-01T01:01:01.000Z"),
       startDate: new Date("2021-01-01T01:01:01.000Z"),
-      status: {
-      sourceValue:     {},
-      },
-      type: {
-      sourceValue: false,
-      },
     },
     id: "<id>",
     xAccountId: "<value>",
@@ -309,6 +278,7 @@ async function run() {
   const result = await stackOne.hris.createEmployeeWorkEligibilityRequest({
     hrisCreateWorkEligibilityRequestDto: {
       document: {
+        category: "templates, forms, backups, etc.",
         contents: [
           {
             fileFormat: {
@@ -327,14 +297,11 @@ async function run() {
         updatedAt: new Date("2021-01-02T01:01:01.000Z"),
       },
       issuedBy: {
-      sourceValue:     {},
         value: HrisCreateWorkEligibilityRequestDtoValue.Us,
       },
       number: "1234567890",
       subType: "H1B",
-      type: {
-      sourceType: "<value>",
-      },
+      type: {},
       validFrom: new Date("2021-01-01T00:00.000Z"),
       validTo: new Date("2021-01-01T00:00.000Z"),
     },
@@ -389,12 +356,6 @@ async function run() {
       employeeId: "1687-3",
       endDate: new Date("2021-01-01T01:01:01.000Z"),
       startDate: new Date("2021-01-01T01:01:01.000Z"),
-      status: {
-      sourceValue:     {},
-      },
-      type: {
-      sourceValue:     {},
-      },
     },
     xAccountId: "<value>",
   });
@@ -441,6 +402,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.hris.downloadEmployeeDocument({
+    format: "base64",
     id: "<id>",
     subResourceId: "<value>",
     xAccountId: "<value>",
@@ -488,10 +450,8 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.hris.getBenefit({
+    fields: "id,name,benefit_type,provider,description,created_at,updated_at",
     id: "<id>",
-    proxy: {
-      "key": "<value>",
-    },
     xAccountId: "<value>",
   });
 
@@ -537,10 +497,8 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.hris.getCompany({
+    fields: "id,name,full_name,display_name,created_at,updated_at",
     id: "<id>",
-    proxy: {
-      "key": "<value>",
-    },
     xAccountId: "<value>",
   });
 
@@ -586,10 +544,10 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.hris.getEmployee({
+    expand: "company,employments,work_location,home_location,custom_fields,groups",
+    fields: "id,first_name,last_name,name,display_name,gender,ethnicity,date_of_birth,birthday,marital_status,avatar_url,avatar,personal_email,personal_phone_number,work_email,work_phone_number,job_title,job_description,department,cost_centers,benefits,manager_id,hire_date,start_date,tenure,work_anniversary,employment_type,employment_contract_type,employment_status,termination_date,company_name,preferred_language,citizenships,home_location,work_location,employments,custom_fields,documents,created_at,updated_at,employee_number",
     id: "<id>",
-    proxy: {
-      "key": "<value>",
-    },
+    include: "avatar_url,avatar,custom_fields,job_description,benefits",
     xAccountId: "<value>",
   });
 
@@ -635,10 +593,8 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.hris.getEmployeeDocument({
+    fields: "id,name,path,type,contents,created_at,updated_at",
     id: "<id>",
-    proxy: {
-      "key": "<value>",
-    },
     subResourceId: "<value>",
     xAccountId: "<value>",
   });
@@ -685,10 +641,8 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.hris.getEmployeesTimeOffRequest({
+    fields: "id,employee_id,approver_id,status,type,start_date,end_date,created_at,updated_at",
     id: "<id>",
-    proxy: {
-      "key": "<value>",
-    },
     subResourceId: "<value>",
     xAccountId: "<value>",
   });
@@ -735,10 +689,8 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.hris.getEmployeesWorkEligibility({
+    fields: "id,type,sub_type,document,valid_from,valid_to,issued_by,number",
     id: "<id>",
-    proxy: {
-      "key": "<value>",
-    },
     subResourceId: "<value>",
     xAccountId: "<value>",
   });
@@ -785,10 +737,8 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.hris.getEmployment({
+    fields: "id,employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,employment_type,employment_contract_type,created_at,updated_at",
     id: "<id>",
-    proxy: {
-      "key": "<value>",
-    },
     xAccountId: "<value>",
   });
 
@@ -834,10 +784,8 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.hris.getGroup({
+    fields: "id,name,type,parent_ids",
     id: "<id>",
-    proxy: {
-      "key": "<value>",
-    },
     xAccountId: "<value>",
   });
 
@@ -883,10 +831,8 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.hris.getLocation({
+    fields: "id,employee_id,name,phone_number,street_1,street_2,city,state,zip_code,country,location_type,created_at,updated_at",
     id: "<id>",
-    proxy: {
-      "key": "<value>",
-    },
     xAccountId: "<value>",
   });
 
@@ -932,10 +878,8 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.hris.getTimeOffRequest({
+    fields: "id,employee_id,approver_id,status,type,start_date,end_date,created_at,updated_at",
     id: "<id>",
-    proxy: {
-      "key": "<value>",
-    },
     xAccountId: "<value>",
   });
 
@@ -981,9 +925,9 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.hris.listBenefits({
-    proxy: {
-      "key": "<value>",
-    },
+    fields: "id,name,benefit_type,provider,description,created_at,updated_at",
+    filterUpdatedAfter: "2020-01-01T00:00:00.000Z",
+    updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
 
@@ -1029,9 +973,9 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.hris.listCompanies({
-    proxy: {
-      "key": "<value>",
-    },
+    fields: "id,name,full_name,display_name,created_at,updated_at",
+    filterUpdatedAfter: "2020-01-01T00:00:00.000Z",
+    updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
 
@@ -1077,10 +1021,10 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.hris.listEmployeeDocuments({
+    fields: "id,name,path,type,contents,created_at,updated_at",
+    filterUpdatedAfter: "2020-01-01T00:00:00.000Z",
     id: "<id>",
-    proxy: {
-      "key": "<value>",
-    },
+    updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
 
@@ -1126,10 +1070,10 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.hris.listEmployeeTimeOffRequests({
+    fields: "id,employee_id,approver_id,status,type,start_date,end_date,created_at,updated_at",
+    filterUpdatedAfter: "2020-01-01T00:00:00.000Z",
     id: "<id>",
-    proxy: {
-      "key": "<value>",
-    },
+    updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
 
@@ -1175,10 +1119,10 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.hris.listEmployeeWorkEligibility({
+    fields: "id,type,sub_type,document,valid_from,valid_to,issued_by,number",
+    filterUpdatedAfter: "2020-01-01T00:00:00.000Z",
     id: "<id>",
-    proxy: {
-      "key": "<value>",
-    },
+    updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
 
@@ -1224,9 +1168,11 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.hris.listEmployees({
-    proxy: {
-      "key": "<value>",
-    },
+    expand: "company,employments,work_location,home_location,custom_fields,groups",
+    fields: "id,first_name,last_name,name,display_name,gender,ethnicity,date_of_birth,birthday,marital_status,avatar_url,avatar,personal_email,personal_phone_number,work_email,work_phone_number,job_title,job_description,department,cost_centers,benefits,manager_id,hire_date,start_date,tenure,work_anniversary,employment_type,employment_contract_type,employment_status,termination_date,company_name,preferred_language,citizenships,home_location,work_location,employments,custom_fields,documents,created_at,updated_at,employee_number",
+    filterUpdatedAfter: "2020-01-01T00:00:00.000Z",
+    include: "avatar_url,avatar,custom_fields,job_description,benefits",
+    updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
 
@@ -1273,9 +1219,9 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.hris.listEmployments({
-    proxy: {
-      "key": "<value>",
-    },
+    fields: "id,employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,employment_type,employment_contract_type,created_at,updated_at",
+    filterUpdatedAfter: "2020-01-01T00:00:00.000Z",
+    updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
 
@@ -1321,9 +1267,9 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.hris.listGroups({
-    proxy: {
-      "key": "<value>",
-    },
+    fields: "id,name,type,parent_ids",
+    filterUpdatedAfter: "2020-01-01T00:00:00.000Z",
+    updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
 
@@ -1369,9 +1315,9 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.hris.listLocations({
-    proxy: {
-      "key": "<value>",
-    },
+    fields: "id,employee_id,name,phone_number,street_1,street_2,city,state,zip_code,country,location_type,created_at,updated_at",
+    filterUpdatedAfter: "2020-01-01T00:00:00.000Z",
+    updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
 
@@ -1417,9 +1363,9 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.hris.listTimeOffRequests({
-    proxy: {
-      "key": "<value>",
-    },
+    fields: "id,employee_id,approver_id,status,type,start_date,end_date,created_at,updated_at",
+    filterUpdatedAfter: "2020-01-01T00:00:00.000Z",
+    updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
 
@@ -1480,9 +1426,6 @@ async function run() {
       avatarUrl: "https://example.com/avatar.png",
       benefits: [
         {
-          benefitType: {
-          sourceValue: 6724.37,
-          },
           createdAt: new Date("2021-01-01T00:00:00Z"),
           description: "Health insurance for employees",
           id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
@@ -1495,7 +1438,6 @@ async function run() {
       birthday: new Date("2021-01-01T00:00:00Z"),
       citizenships: [
         {
-        sourceValue: 8907.78,
           value: CountryCodeEnumValue.Us,
         },
       ],
@@ -1512,9 +1454,7 @@ async function run() {
             "Overdue",
           ],
           remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-          type: {
-          sourceValue: "<value>",
-          },
+          type: {},
         value: "Completed",
           valueId: "value_456",
         },
@@ -1522,12 +1462,8 @@ async function run() {
       dateOfBirth: new Date("1990-01-01T00:00.000Z"),
       department: "Physics",
       displayName: "Sir Issac Newton",
-      employmentContractType: {
-      sourceValue: "<value>",
-      },
-      employmentStatus: {
-      sourceValue: "<value>",
-      },
+      employmentContractType: {},
+      employmentStatus: {},
       employmentType: {
       sourceValue: "Permanent",
         value: HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue.Permanent,
@@ -1537,9 +1473,7 @@ async function run() {
           createdAt: new Date("2021-01-01T01:01:01.000Z"),
           effectiveDate: new Date("2021-01-01T01:01:01.000Z"),
           employeeId: "1687-3",
-          employmentContractType: {
-          sourceValue: false,
-          },
+          employmentContractType: {},
           employmentType: {
           sourceValue: "Permanent",
             value: EmploymentSchemasValue.Permanent,
@@ -1560,25 +1494,18 @@ async function run() {
           updatedAt: new Date("2021-01-01T01:01:01.000Z"),
         },
       ],
-      ethnicity: {
-      sourceValue: false,
-      },
+      ethnicity: {},
       firstName: "Issac",
-      gender: {
-      sourceValue: false,
-      },
+      gender: {},
       hireDate: new Date("2021-01-01T00:00.000Z"),
       homeLocation: {
         city: "Grantham",
         country: {
-        sourceValue: 3555.92,
           value: HrisCreateEmployeeRequestDtoSchemasHomeLocationValue.Us,
         },
         name: "Woolsthorpe Manor",
         phoneNumber: "+44 1476 860 364",
-        state: {
-        sourceValue: false,
-        },
+        state: {},
         street1: "Water Lane",
         street2: "Woolsthorpe by Colsterworth",
         zipCode: "NG33 5NR",
@@ -1586,14 +1513,11 @@ async function run() {
       jobTitle: "Physicist",
       lastName: "Newton",
       managerId: "67890",
-      maritalStatus: {
-      sourceValue: 223.75,
-      },
+      maritalStatus: {},
       name: "Issac Newton",
       personalEmail: "isaac.newton@example.com",
       personalPhoneNumber: "+1234567890",
       preferredLanguage: {
-      sourceValue: false,
         value: HrisCreateEmployeeRequestDtoSchemasPreferredLanguageValue.Eng,
       },
       startDate: new Date("2021-01-01T00:00.000Z"),
@@ -1604,14 +1528,11 @@ async function run() {
       workLocation: {
         city: "Grantham",
         country: {
-        sourceValue: "<value>",
           value: HrisCreateEmployeeRequestDtoSchemasWorkLocationValue.Us,
         },
         name: "Woolsthorpe Manor",
         phoneNumber: "+44 1476 860 364",
-        state: {
-        sourceValue: 5167.47,
-        },
+        state: {},
         street1: "Water Lane",
         street2: "Woolsthorpe by Colsterworth",
         zipCode: "NG33 5NR",
@@ -1667,6 +1588,7 @@ async function run() {
   const result = await stackOne.hris.updateEmployeeWorkEligibilityRequest({
     hrisCreateWorkEligibilityRequestDto: {
       document: {
+        category: "templates, forms, backups, etc.",
         contents: [
           {
             fileFormat: {
@@ -1685,14 +1607,11 @@ async function run() {
         updatedAt: new Date("2021-01-02T01:01:01.000Z"),
       },
       issuedBy: {
-      sourceValue: 918.43,
         value: HrisCreateWorkEligibilityRequestDtoValue.Us,
       },
       number: "1234567890",
       subType: "H1B",
-      type: {
-      sourceType:     {},
-      },
+      type: {},
       validFrom: new Date("2021-01-01T00:00.000Z"),
       validTo: new Date("2021-01-01T00:00.000Z"),
     },
@@ -1748,12 +1667,6 @@ async function run() {
       employeeId: "1687-3",
       endDate: new Date("2021-01-01T01:01:01.000Z"),
       startDate: new Date("2021-01-01T01:01:01.000Z"),
-      status: {
-      sourceValue: "<value>",
-      },
-      type: {
-      sourceValue:     {},
-      },
     },
     id: "<id>",
     xAccountId: "<value>",
@@ -1803,6 +1716,7 @@ const stackOne = new StackOne({
 async function run() {
   const result = await stackOne.hris.uploadEmployeeDocument({
     unifiedUploadRequestDto: {
+      category: "reports, resumes",
       confidential: {
       sourceValue: "public",
         value: UnifiedUploadRequestDtoValue.True,
@@ -1813,7 +1727,7 @@ async function run() {
         value: UnifiedUploadRequestDtoSchemasValue.Pdf,
       },
       name: "weather-forecast",
-      path: "reports or /path/to/file",
+      path: "/path/to/file",
     },
     id: "<id>",
     xAccountId: "<value>",

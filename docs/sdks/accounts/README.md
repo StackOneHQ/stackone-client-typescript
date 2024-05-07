@@ -160,14 +160,7 @@ const stackOne = new StackOne({
 });
 
 async function run() {
-  const result = await stackOne.accounts.listLinkedAccounts({
-    accountIds: [
-      "<value>",
-    ],
-    providers: [
-      "<value>",
-    ],
-  });
+  const result = await stackOne.accounts.listLinkedAccounts({});
 
   // Handle the result
   console.log(result)
