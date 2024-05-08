@@ -42,15 +42,16 @@ export class Connectors extends ClientSDK {
      * Get Connector Meta information for the given provider key
      */
     async getConnectorMeta(
-        input: operations.StackoneGetConnectorMetaRequest,
+        request: operations.StackoneGetConnectorMetaRequest,
         options?: RequestOptions
     ): Promise<operations.StackoneGetConnectorMetaResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.StackoneGetConnectorMetaRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -89,7 +90,7 @@ export class Connectors extends ClientSDK {
             context,
             errorCodes: ["400", "403", "404", "429", "4XX", "500", "501", "5XX"],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -102,7 +103,7 @@ export class Connectors extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -138,15 +139,16 @@ export class Connectors extends ClientSDK {
      * List Connectors Meta Information for all providers
      */
     async listConnectorsMeta(
-        input: operations.StackoneListConnectorsMetaRequest,
+        request: operations.StackoneListConnectorsMetaRequest,
         options?: RequestOptions
     ): Promise<operations.StackoneListConnectorsMetaResponse> {
+        const input$ = typeof request === "undefined" ? {} : request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.StackoneListConnectorsMetaRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -179,7 +181,7 @@ export class Connectors extends ClientSDK {
             context,
             errorCodes: ["400", "403", "429", "4XX", "500", "501", "5XX"],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -192,7 +194,7 @@ export class Connectors extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",

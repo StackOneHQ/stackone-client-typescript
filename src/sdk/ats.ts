@@ -42,16 +42,17 @@ export class Ats extends ClientSDK {
      * Create Application
      */
     async createApplication(
-        input: operations.AtsCreateApplicationRequest,
+        request: operations.AtsCreateApplicationRequest,
         options?: RequestOptions
     ): Promise<operations.AtsCreateApplicationResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Content-Type", "application/json");
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.AtsCreateApplicationRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -87,7 +88,7 @@ export class Ats extends ClientSDK {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -100,7 +101,7 @@ export class Ats extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -136,16 +137,17 @@ export class Ats extends ClientSDK {
      * Create Candidate
      */
     async createCandidate(
-        input: operations.AtsCreateCandidateRequest,
+        request: operations.AtsCreateCandidateRequest,
         options?: RequestOptions
     ): Promise<operations.AtsCreateCandidateResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Content-Type", "application/json");
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.AtsCreateCandidateRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -181,7 +183,7 @@ export class Ats extends ClientSDK {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -194,7 +196,7 @@ export class Ats extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -230,16 +232,17 @@ export class Ats extends ClientSDK {
      * Create Candidate Note
      */
     async createCandidateNote(
-        input: operations.AtsCreateCandidateNoteRequest,
+        request: operations.AtsCreateCandidateNoteRequest,
         options?: RequestOptions
     ): Promise<operations.AtsCreateCandidateNoteResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Content-Type", "application/json");
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.AtsCreateCandidateNoteRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -276,7 +279,7 @@ export class Ats extends ClientSDK {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -289,7 +292,7 @@ export class Ats extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -325,16 +328,17 @@ export class Ats extends ClientSDK {
      * Creates an offer
      */
     async createOffer(
-        input: operations.AtsCreateOfferRequest,
+        request: operations.AtsCreateOfferRequest,
         options?: RequestOptions
     ): Promise<operations.AtsCreateOfferResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Content-Type", "application/json");
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.AtsCreateOfferRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -368,7 +372,7 @@ export class Ats extends ClientSDK {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -381,7 +385,7 @@ export class Ats extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -417,15 +421,16 @@ export class Ats extends ClientSDK {
      * Download Application Document
      */
     async downloadApplicationDocument(
-        input: operations.AtsDownloadApplicationDocumentRequest,
+        request: operations.AtsDownloadApplicationDocumentRequest,
         options?: RequestOptions
     ): Promise<operations.AtsDownloadApplicationDocumentResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/octet-stream");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) =>
                 operations.AtsDownloadApplicationDocumentRequest$.outboundSchema.parse(value$),
             "Input validation failed"
@@ -473,7 +478,7 @@ export class Ats extends ClientSDK {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -486,7 +491,7 @@ export class Ats extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -522,15 +527,16 @@ export class Ats extends ClientSDK {
      * Get Application
      */
     async getApplication(
-        input: operations.AtsGetApplicationRequest,
+        request: operations.AtsGetApplicationRequest,
         options?: RequestOptions
     ): Promise<operations.AtsGetApplicationResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.AtsGetApplicationRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -574,7 +580,7 @@ export class Ats extends ClientSDK {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -587,7 +593,7 @@ export class Ats extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -623,15 +629,16 @@ export class Ats extends ClientSDK {
      * Get Application Document
      */
     async getApplicationDocument(
-        input: operations.AtsGetApplicationDocumentRequest,
+        request: operations.AtsGetApplicationDocumentRequest,
         options?: RequestOptions
     ): Promise<operations.AtsGetApplicationDocumentResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.AtsGetApplicationDocumentRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -680,7 +687,7 @@ export class Ats extends ClientSDK {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -693,7 +700,7 @@ export class Ats extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -729,15 +736,16 @@ export class Ats extends ClientSDK {
      * Get Application Offer
      */
     async getApplicationOffer(
-        input: operations.AtsGetApplicationOfferRequest,
+        request: operations.AtsGetApplicationOfferRequest,
         options?: RequestOptions
     ): Promise<operations.AtsGetApplicationOfferResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.AtsGetApplicationOfferRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -786,7 +794,7 @@ export class Ats extends ClientSDK {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -799,7 +807,7 @@ export class Ats extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -835,15 +843,16 @@ export class Ats extends ClientSDK {
      * Get Application Scorecard
      */
     async getApplicationScorecard(
-        input: operations.AtsGetApplicationScorecardRequest,
+        request: operations.AtsGetApplicationScorecardRequest,
         options?: RequestOptions
     ): Promise<operations.AtsGetApplicationScorecardResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.AtsGetApplicationScorecardRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -892,7 +901,7 @@ export class Ats extends ClientSDK {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -905,7 +914,7 @@ export class Ats extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -941,15 +950,16 @@ export class Ats extends ClientSDK {
      * Get Candidate
      */
     async getCandidate(
-        input: operations.AtsGetCandidateRequest,
+        request: operations.AtsGetCandidateRequest,
         options?: RequestOptions
     ): Promise<operations.AtsGetCandidateResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.AtsGetCandidateRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -992,7 +1002,7 @@ export class Ats extends ClientSDK {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -1005,7 +1015,7 @@ export class Ats extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -1041,15 +1051,16 @@ export class Ats extends ClientSDK {
      * Get Candidate Note
      */
     async getCandidateNote(
-        input: operations.AtsGetCandidateNoteRequest,
+        request: operations.AtsGetCandidateNoteRequest,
         options?: RequestOptions
     ): Promise<operations.AtsGetCandidateNoteResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.AtsGetCandidateNoteRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -1098,7 +1109,7 @@ export class Ats extends ClientSDK {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -1111,7 +1122,7 @@ export class Ats extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -1147,15 +1158,16 @@ export class Ats extends ClientSDK {
      * Get Department
      */
     async getDepartment(
-        input: operations.AtsGetDepartmentRequest,
+        request: operations.AtsGetDepartmentRequest,
         options?: RequestOptions
     ): Promise<operations.AtsGetDepartmentResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.AtsGetDepartmentRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -1198,7 +1210,7 @@ export class Ats extends ClientSDK {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -1211,7 +1223,7 @@ export class Ats extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -1247,15 +1259,16 @@ export class Ats extends ClientSDK {
      * Get Interview
      */
     async getInterview(
-        input: operations.AtsGetInterviewRequest,
+        request: operations.AtsGetInterviewRequest,
         options?: RequestOptions
     ): Promise<operations.AtsGetInterviewResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.AtsGetInterviewRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -1298,7 +1311,7 @@ export class Ats extends ClientSDK {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -1311,7 +1324,7 @@ export class Ats extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -1347,15 +1360,16 @@ export class Ats extends ClientSDK {
      * Get Interview Stage
      */
     async getInterviewStage(
-        input: operations.AtsGetInterviewStageRequest,
+        request: operations.AtsGetInterviewStageRequest,
         options?: RequestOptions
     ): Promise<operations.AtsGetInterviewStageResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.AtsGetInterviewStageRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -1398,7 +1412,7 @@ export class Ats extends ClientSDK {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -1411,7 +1425,7 @@ export class Ats extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -1447,15 +1461,16 @@ export class Ats extends ClientSDK {
      * Get Job
      */
     async getJob(
-        input: operations.AtsGetJobRequest,
+        request: operations.AtsGetJobRequest,
         options?: RequestOptions
     ): Promise<operations.AtsGetJobResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.AtsGetJobRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -1499,7 +1514,7 @@ export class Ats extends ClientSDK {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -1512,7 +1527,7 @@ export class Ats extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -1548,15 +1563,16 @@ export class Ats extends ClientSDK {
      * Get Job Posting
      */
     async getJobPosting(
-        input: operations.AtsGetJobPostingRequest,
+        request: operations.AtsGetJobPostingRequest,
         options?: RequestOptions
     ): Promise<operations.AtsGetJobPostingResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.AtsGetJobPostingRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -1603,7 +1619,7 @@ export class Ats extends ClientSDK {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -1616,7 +1632,7 @@ export class Ats extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -1652,15 +1668,16 @@ export class Ats extends ClientSDK {
      * Get Location
      */
     async getLocation(
-        input: operations.AtsGetLocationRequest,
+        request: operations.AtsGetLocationRequest,
         options?: RequestOptions
     ): Promise<operations.AtsGetLocationResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.AtsGetLocationRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -1703,7 +1720,7 @@ export class Ats extends ClientSDK {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -1716,7 +1733,7 @@ export class Ats extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -1752,15 +1769,16 @@ export class Ats extends ClientSDK {
      * Get Offer
      */
     async getOffer(
-        input: operations.AtsGetOfferRequest,
+        request: operations.AtsGetOfferRequest,
         options?: RequestOptions
     ): Promise<operations.AtsGetOfferResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.AtsGetOfferRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -1803,7 +1821,7 @@ export class Ats extends ClientSDK {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -1816,7 +1834,7 @@ export class Ats extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -1852,15 +1870,16 @@ export class Ats extends ClientSDK {
      * Get Rejected Reason
      */
     async getRejectedReason(
-        input: operations.AtsGetRejectedReasonRequest,
+        request: operations.AtsGetRejectedReasonRequest,
         options?: RequestOptions
     ): Promise<operations.AtsGetRejectedReasonResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.AtsGetRejectedReasonRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -1903,7 +1922,7 @@ export class Ats extends ClientSDK {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -1916,7 +1935,7 @@ export class Ats extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -1952,15 +1971,16 @@ export class Ats extends ClientSDK {
      * Get User
      */
     async getUser(
-        input: operations.AtsGetUserRequest,
+        request: operations.AtsGetUserRequest,
         options?: RequestOptions
     ): Promise<operations.AtsGetUserResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.AtsGetUserRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -2003,7 +2023,7 @@ export class Ats extends ClientSDK {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -2016,7 +2036,7 @@ export class Ats extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -2052,15 +2072,16 @@ export class Ats extends ClientSDK {
      * List Application Documents
      */
     async listApplicationDocuments(
-        input: operations.AtsListApplicationDocumentsRequest,
+        request: operations.AtsListApplicationDocumentsRequest,
         options?: RequestOptions
     ): Promise<operations.AtsListApplicationDocumentsResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.AtsListApplicationDocumentsRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -2123,7 +2144,7 @@ export class Ats extends ClientSDK {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -2136,7 +2157,7 @@ export class Ats extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -2172,15 +2193,16 @@ export class Ats extends ClientSDK {
      * List Application Scorecards
      */
     async listApplicationScorecards(
-        input: operations.AtsListApplicationScorecardsRequest,
+        request: operations.AtsListApplicationScorecardsRequest,
         options?: RequestOptions
     ): Promise<operations.AtsListApplicationScorecardsResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) =>
                 operations.AtsListApplicationScorecardsRequest$.outboundSchema.parse(value$),
             "Input validation failed"
@@ -2244,7 +2266,7 @@ export class Ats extends ClientSDK {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -2257,7 +2279,7 @@ export class Ats extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -2293,15 +2315,16 @@ export class Ats extends ClientSDK {
      * List Applications
      */
     async listApplications(
-        input: operations.AtsListApplicationsRequest,
+        request: operations.AtsListApplicationsRequest,
         options?: RequestOptions
     ): Promise<operations.AtsListApplicationsResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.AtsListApplicationsRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -2365,7 +2388,7 @@ export class Ats extends ClientSDK {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -2378,7 +2401,7 @@ export class Ats extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -2414,15 +2437,16 @@ export class Ats extends ClientSDK {
      * List Application Offers
      */
     async listApplicationsOffers(
-        input: operations.AtsListApplicationsOffersRequest,
+        request: operations.AtsListApplicationsOffersRequest,
         options?: RequestOptions
     ): Promise<operations.AtsListApplicationsOffersResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.AtsListApplicationsOffersRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -2485,7 +2509,7 @@ export class Ats extends ClientSDK {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -2498,7 +2522,7 @@ export class Ats extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -2534,15 +2558,16 @@ export class Ats extends ClientSDK {
      * List Candidate Notes
      */
     async listCandidateNotes(
-        input: operations.AtsListCandidateNotesRequest,
+        request: operations.AtsListCandidateNotesRequest,
         options?: RequestOptions
     ): Promise<operations.AtsListCandidateNotesResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.AtsListCandidateNotesRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -2603,7 +2628,7 @@ export class Ats extends ClientSDK {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -2616,7 +2641,7 @@ export class Ats extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -2652,15 +2677,16 @@ export class Ats extends ClientSDK {
      * List Candidates
      */
     async listCandidates(
-        input: operations.AtsListCandidatesRequest,
+        request: operations.AtsListCandidatesRequest,
         options?: RequestOptions
     ): Promise<operations.AtsListCandidatesResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.AtsListCandidatesRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -2718,7 +2744,7 @@ export class Ats extends ClientSDK {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -2731,7 +2757,7 @@ export class Ats extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -2767,15 +2793,16 @@ export class Ats extends ClientSDK {
      * List Departments
      */
     async listDepartments(
-        input: operations.AtsListDepartmentsRequest,
+        request: operations.AtsListDepartmentsRequest,
         options?: RequestOptions
     ): Promise<operations.AtsListDepartmentsResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.AtsListDepartmentsRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -2833,7 +2860,7 @@ export class Ats extends ClientSDK {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -2846,7 +2873,7 @@ export class Ats extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -2882,15 +2909,16 @@ export class Ats extends ClientSDK {
      * List Interview Stages
      */
     async listInterviewStages(
-        input: operations.AtsListInterviewStagesRequest,
+        request: operations.AtsListInterviewStagesRequest,
         options?: RequestOptions
     ): Promise<operations.AtsListInterviewStagesResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.AtsListInterviewStagesRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -2948,7 +2976,7 @@ export class Ats extends ClientSDK {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -2961,7 +2989,7 @@ export class Ats extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -2997,15 +3025,16 @@ export class Ats extends ClientSDK {
      * List Interviews
      */
     async listInterviews(
-        input: operations.AtsListInterviewsRequest,
+        request: operations.AtsListInterviewsRequest,
         options?: RequestOptions
     ): Promise<operations.AtsListInterviewsResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.AtsListInterviewsRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -3063,7 +3092,7 @@ export class Ats extends ClientSDK {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -3076,7 +3105,7 @@ export class Ats extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -3112,15 +3141,16 @@ export class Ats extends ClientSDK {
      * List Job Postings
      */
     async listJobPostings(
-        input: operations.AtsListJobPostingsRequest,
+        request: operations.AtsListJobPostingsRequest,
         options?: RequestOptions
     ): Promise<operations.AtsListJobPostingsResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.AtsListJobPostingsRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -3182,7 +3212,7 @@ export class Ats extends ClientSDK {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -3195,7 +3225,7 @@ export class Ats extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -3231,15 +3261,16 @@ export class Ats extends ClientSDK {
      * List Jobs
      */
     async listJobs(
-        input: operations.AtsListJobsRequest,
+        request: operations.AtsListJobsRequest,
         options?: RequestOptions
     ): Promise<operations.AtsListJobsResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.AtsListJobsRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -3298,7 +3329,7 @@ export class Ats extends ClientSDK {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -3311,7 +3342,7 @@ export class Ats extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -3347,15 +3378,16 @@ export class Ats extends ClientSDK {
      * List locations
      */
     async listLocations(
-        input: operations.AtsListLocationsRequest,
+        request: operations.AtsListLocationsRequest,
         options?: RequestOptions
     ): Promise<operations.AtsListLocationsResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.AtsListLocationsRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -3413,7 +3445,7 @@ export class Ats extends ClientSDK {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -3426,7 +3458,7 @@ export class Ats extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -3462,15 +3494,16 @@ export class Ats extends ClientSDK {
      * List Offers
      */
     async listOffers(
-        input: operations.AtsListOffersRequest,
+        request: operations.AtsListOffersRequest,
         options?: RequestOptions
     ): Promise<operations.AtsListOffersResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.AtsListOffersRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -3528,7 +3561,7 @@ export class Ats extends ClientSDK {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -3541,7 +3574,7 @@ export class Ats extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -3577,15 +3610,16 @@ export class Ats extends ClientSDK {
      * List Rejected Reasons
      */
     async listRejectedReasons(
-        input: operations.AtsListRejectedReasonsRequest,
+        request: operations.AtsListRejectedReasonsRequest,
         options?: RequestOptions
     ): Promise<operations.AtsListRejectedReasonsResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.AtsListRejectedReasonsRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -3643,7 +3677,7 @@ export class Ats extends ClientSDK {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -3656,7 +3690,7 @@ export class Ats extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -3692,15 +3726,16 @@ export class Ats extends ClientSDK {
      * List Users
      */
     async listUsers(
-        input: operations.AtsListUsersRequest,
+        request: operations.AtsListUsersRequest,
         options?: RequestOptions
     ): Promise<operations.AtsListUsersResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.AtsListUsersRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -3758,7 +3793,7 @@ export class Ats extends ClientSDK {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -3771,7 +3806,7 @@ export class Ats extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -3807,16 +3842,17 @@ export class Ats extends ClientSDK {
      * Update an Application
      */
     async updateApplication(
-        input: operations.AtsUpdateApplicationRequest,
+        request: operations.AtsUpdateApplicationRequest,
         options?: RequestOptions
     ): Promise<operations.AtsUpdateApplicationResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Content-Type", "application/json");
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.AtsUpdateApplicationRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -3855,7 +3891,7 @@ export class Ats extends ClientSDK {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -3868,7 +3904,7 @@ export class Ats extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -3904,16 +3940,17 @@ export class Ats extends ClientSDK {
      * Update Candidate
      */
     async updateCandidate(
-        input: operations.AtsUpdateCandidateRequest,
+        request: operations.AtsUpdateCandidateRequest,
         options?: RequestOptions
     ): Promise<operations.AtsUpdateCandidateResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Content-Type", "application/json");
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.AtsUpdateCandidateRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -3952,7 +3989,7 @@ export class Ats extends ClientSDK {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -3965,7 +4002,7 @@ export class Ats extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",

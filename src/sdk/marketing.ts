@@ -42,16 +42,17 @@ export class Marketing extends ClientSDK {
      * Create email template
      */
     async createEmailTemplate(
-        input: operations.MarketingCreateEmailTemplateRequest,
+        request: operations.MarketingCreateEmailTemplateRequest,
         options?: RequestOptions
     ): Promise<operations.MarketingCreateEmailTemplateResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Content-Type", "application/json");
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) =>
                 operations.MarketingCreateEmailTemplateRequest$.outboundSchema.parse(value$),
             "Input validation failed"
@@ -88,7 +89,7 @@ export class Marketing extends ClientSDK {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -101,7 +102,7 @@ export class Marketing extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -137,16 +138,17 @@ export class Marketing extends ClientSDK {
      * Create omni-channel template
      */
     async createOmniChannelTemplate(
-        input: operations.MarketingCreateOmniChannelTemplateRequest,
+        request: operations.MarketingCreateOmniChannelTemplateRequest,
         options?: RequestOptions
     ): Promise<operations.MarketingCreateOmniChannelTemplateResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Content-Type", "application/json");
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) =>
                 operations.MarketingCreateOmniChannelTemplateRequest$.outboundSchema.parse(value$),
             "Input validation failed"
@@ -183,7 +185,7 @@ export class Marketing extends ClientSDK {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -196,7 +198,7 @@ export class Marketing extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -234,16 +236,17 @@ export class Marketing extends ClientSDK {
      * Create push template
      */
     async createPushTemplate(
-        input: operations.MarketingCreatePushTemplateRequest,
+        request: operations.MarketingCreatePushTemplateRequest,
         options?: RequestOptions
     ): Promise<operations.MarketingCreatePushTemplateResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Content-Type", "application/json");
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.MarketingCreatePushTemplateRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -279,7 +282,7 @@ export class Marketing extends ClientSDK {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -292,7 +295,7 @@ export class Marketing extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -328,15 +331,16 @@ export class Marketing extends ClientSDK {
      * Get campaign
      */
     async getCampaign(
-        input: operations.MarketingGetCampaignRequest,
+        request: operations.MarketingGetCampaignRequest,
         options?: RequestOptions
     ): Promise<operations.MarketingGetCampaignResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.MarketingGetCampaignRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -379,7 +383,7 @@ export class Marketing extends ClientSDK {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -392,7 +396,7 @@ export class Marketing extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -428,15 +432,16 @@ export class Marketing extends ClientSDK {
      * Get email template
      */
     async getEmailTemplate(
-        input: operations.MarketingGetEmailTemplateRequest,
+        request: operations.MarketingGetEmailTemplateRequest,
         options?: RequestOptions
     ): Promise<operations.MarketingGetEmailTemplateResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.MarketingGetEmailTemplateRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -481,7 +486,7 @@ export class Marketing extends ClientSDK {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -494,7 +499,7 @@ export class Marketing extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -530,15 +535,16 @@ export class Marketing extends ClientSDK {
      * Get omni-channel template
      */
     async getOmniChannelTemplate(
-        input: operations.MarketingGetOmniChannelTemplateRequest,
+        request: operations.MarketingGetOmniChannelTemplateRequest,
         options?: RequestOptions
     ): Promise<operations.MarketingGetOmniChannelTemplateResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) =>
                 operations.MarketingGetOmniChannelTemplateRequest$.outboundSchema.parse(value$),
             "Input validation failed"
@@ -584,7 +590,7 @@ export class Marketing extends ClientSDK {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -597,7 +603,7 @@ export class Marketing extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -633,15 +639,16 @@ export class Marketing extends ClientSDK {
      * Get push template
      */
     async getPushTemplate(
-        input: operations.MarketingGetPushTemplateRequest,
+        request: operations.MarketingGetPushTemplateRequest,
         options?: RequestOptions
     ): Promise<operations.MarketingGetPushTemplateResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.MarketingGetPushTemplateRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -686,7 +693,7 @@ export class Marketing extends ClientSDK {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -699,7 +706,7 @@ export class Marketing extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -735,15 +742,16 @@ export class Marketing extends ClientSDK {
      * List campaigns
      */
     async listCampaigns(
-        input: operations.MarketingListCampaignsRequest,
+        request: operations.MarketingListCampaignsRequest,
         options?: RequestOptions
     ): Promise<operations.MarketingListCampaignsResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.MarketingListCampaignsRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -797,7 +805,7 @@ export class Marketing extends ClientSDK {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -810,7 +818,7 @@ export class Marketing extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -846,15 +854,16 @@ export class Marketing extends ClientSDK {
      * List email templates
      */
     async listEmailTemplates(
-        input: operations.MarketingListEmailTemplatesRequest,
+        request: operations.MarketingListEmailTemplatesRequest,
         options?: RequestOptions
     ): Promise<operations.MarketingListEmailTemplatesResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.MarketingListEmailTemplatesRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -908,7 +917,7 @@ export class Marketing extends ClientSDK {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -921,7 +930,7 @@ export class Marketing extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -957,15 +966,16 @@ export class Marketing extends ClientSDK {
      * List omni-channel templates
      */
     async listOmniChannelTemplates(
-        input: operations.MarketingListOmniChannelTemplatesRequest,
+        request: operations.MarketingListOmniChannelTemplatesRequest,
         options?: RequestOptions
     ): Promise<operations.MarketingListOmniChannelTemplatesResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) =>
                 operations.MarketingListOmniChannelTemplatesRequest$.outboundSchema.parse(value$),
             "Input validation failed"
@@ -1020,7 +1030,7 @@ export class Marketing extends ClientSDK {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -1033,7 +1043,7 @@ export class Marketing extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -1071,15 +1081,16 @@ export class Marketing extends ClientSDK {
      * List push templates
      */
     async listPushTemplates(
-        input: operations.MarketingListPushTemplatesRequest,
+        request: operations.MarketingListPushTemplatesRequest,
         options?: RequestOptions
     ): Promise<operations.MarketingListPushTemplatesResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.MarketingListPushTemplatesRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -1133,7 +1144,7 @@ export class Marketing extends ClientSDK {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -1146,7 +1157,7 @@ export class Marketing extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -1182,16 +1193,17 @@ export class Marketing extends ClientSDK {
      * Update email template
      */
     async updateEmailTemplate(
-        input: operations.MarketingUpdateEmailTemplateRequest,
+        request: operations.MarketingUpdateEmailTemplateRequest,
         options?: RequestOptions
     ): Promise<operations.MarketingUpdateEmailTemplateResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Content-Type", "application/json");
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) =>
                 operations.MarketingUpdateEmailTemplateRequest$.outboundSchema.parse(value$),
             "Input validation failed"
@@ -1233,7 +1245,7 @@ export class Marketing extends ClientSDK {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -1246,7 +1258,7 @@ export class Marketing extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -1282,16 +1294,17 @@ export class Marketing extends ClientSDK {
      * Update omni-channel template
      */
     async updateOmniChannelTemplate(
-        input: operations.MarketingUpdateOmniChannelTemplateRequest,
+        request: operations.MarketingUpdateOmniChannelTemplateRequest,
         options?: RequestOptions
     ): Promise<operations.MarketingUpdateOmniChannelTemplateResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Content-Type", "application/json");
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) =>
                 operations.MarketingUpdateOmniChannelTemplateRequest$.outboundSchema.parse(value$),
             "Input validation failed"
@@ -1333,7 +1346,7 @@ export class Marketing extends ClientSDK {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -1346,7 +1359,7 @@ export class Marketing extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -1384,16 +1397,17 @@ export class Marketing extends ClientSDK {
      * Update push template
      */
     async updatePushTemplate(
-        input: operations.MarketingUpdatePushTemplateRequest,
+        request: operations.MarketingUpdatePushTemplateRequest,
         options?: RequestOptions
     ): Promise<operations.MarketingUpdatePushTemplateResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Content-Type", "application/json");
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.MarketingUpdatePushTemplateRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -1434,7 +1448,7 @@ export class Marketing extends ClientSDK {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -1447,7 +1461,7 @@ export class Marketing extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",

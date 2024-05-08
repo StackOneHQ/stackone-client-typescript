@@ -15,6 +15,10 @@ export type CrmListContactsRequest = {
      */
     filterUpdatedAfter?: string | null | undefined;
     /**
+     * The comma separated list of fields that will be included in the response
+     */
+    include?: string | null | undefined;
+    /**
      * The unified cursor
      */
     next?: string | null | undefined;
@@ -72,6 +76,7 @@ export namespace CrmListContactsRequest$ {
     export type Inbound = {
         fields?: string | null | undefined;
         "filter[updated_after]"?: string | null | undefined;
+        include?: string | null | undefined;
         next?: string | null | undefined;
         page?: string | null | undefined;
         page_size?: string | null | undefined;
@@ -85,6 +90,7 @@ export namespace CrmListContactsRequest$ {
         .object({
             fields: z.nullable(z.string()).optional(),
             "filter[updated_after]": z.nullable(z.string()).optional(),
+            include: z.nullable(z.string()).optional(),
             next: z.nullable(z.string()).optional(),
             page: z.nullable(z.string()).optional(),
             page_size: z.nullable(z.string().default("25")),
@@ -99,6 +105,7 @@ export namespace CrmListContactsRequest$ {
                 ...(v["filter[updated_after]"] === undefined
                     ? null
                     : { filterUpdatedAfter: v["filter[updated_after]"] }),
+                ...(v.include === undefined ? null : { include: v.include }),
                 ...(v.next === undefined ? null : { next: v.next }),
                 ...(v.page === undefined ? null : { page: v.page }),
                 pageSize: v.page_size,
@@ -112,6 +119,7 @@ export namespace CrmListContactsRequest$ {
     export type Outbound = {
         fields?: string | null | undefined;
         "filter[updated_after]"?: string | null | undefined;
+        include?: string | null | undefined;
         next?: string | null | undefined;
         page?: string | null | undefined;
         page_size: string | null;
@@ -125,6 +133,7 @@ export namespace CrmListContactsRequest$ {
         .object({
             fields: z.nullable(z.string()).optional(),
             filterUpdatedAfter: z.nullable(z.string()).optional(),
+            include: z.nullable(z.string()).optional(),
             next: z.nullable(z.string()).optional(),
             page: z.nullable(z.string()).optional(),
             pageSize: z.nullable(z.string().default("25")),
@@ -139,6 +148,7 @@ export namespace CrmListContactsRequest$ {
                 ...(v.filterUpdatedAfter === undefined
                     ? null
                     : { "filter[updated_after]": v.filterUpdatedAfter }),
+                ...(v.include === undefined ? null : { include: v.include }),
                 ...(v.next === undefined ? null : { next: v.next }),
                 ...(v.page === undefined ? null : { page: v.page }),
                 page_size: v.pageSize,

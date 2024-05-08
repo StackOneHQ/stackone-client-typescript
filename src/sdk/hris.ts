@@ -44,16 +44,17 @@ export class Hris extends ClientSDK {
      * Creates an employee
      */
     async createEmployee(
-        input: operations.HrisCreateEmployeeRequest,
+        request: operations.HrisCreateEmployeeRequest,
         options?: RequestOptions
     ): Promise<operations.HrisCreateEmployeeResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Content-Type", "application/json");
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.HrisCreateEmployeeRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -89,7 +90,7 @@ export class Hris extends ClientSDK {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -102,7 +103,7 @@ export class Hris extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -138,16 +139,17 @@ export class Hris extends ClientSDK {
      * Create Employee Time Off Request
      */
     async createEmployeeTimeOffRequest(
-        input: operations.HrisCreateEmployeeTimeOffRequestRequest,
+        request: operations.HrisCreateEmployeeTimeOffRequestRequest,
         options?: RequestOptions
     ): Promise<operations.HrisCreateEmployeeTimeOffRequestResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Content-Type", "application/json");
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) =>
                 operations.HrisCreateEmployeeTimeOffRequestRequest$.outboundSchema.parse(value$),
             "Input validation failed"
@@ -189,7 +191,7 @@ export class Hris extends ClientSDK {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -202,7 +204,7 @@ export class Hris extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -240,16 +242,17 @@ export class Hris extends ClientSDK {
      * Create Employee Work Eligibility Request
      */
     async createEmployeeWorkEligibilityRequest(
-        input: operations.HrisCreateEmployeeWorkEligibilityRequestRequest,
+        request: operations.HrisCreateEmployeeWorkEligibilityRequestRequest,
         options?: RequestOptions
     ): Promise<operations.HrisCreateEmployeeWorkEligibilityRequestResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Content-Type", "application/json");
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) =>
                 operations.HrisCreateEmployeeWorkEligibilityRequestRequest$.outboundSchema.parse(
                     value$
@@ -293,7 +296,7 @@ export class Hris extends ClientSDK {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -306,7 +309,7 @@ export class Hris extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -344,16 +347,17 @@ export class Hris extends ClientSDK {
      * Creates a time off request
      */
     async createTimeOffRequest(
-        input: operations.HrisCreateTimeOffRequestRequest,
+        request: operations.HrisCreateTimeOffRequestRequest,
         options?: RequestOptions
     ): Promise<operations.HrisCreateTimeOffRequestResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Content-Type", "application/json");
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.HrisCreateTimeOffRequestRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -389,7 +393,7 @@ export class Hris extends ClientSDK {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -402,7 +406,7 @@ export class Hris extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -438,15 +442,16 @@ export class Hris extends ClientSDK {
      * Download Employee Document
      */
     async downloadEmployeeDocument(
-        input: operations.HrisDownloadEmployeeDocumentRequest,
+        request: operations.HrisDownloadEmployeeDocumentRequest,
         options?: RequestOptions
     ): Promise<operations.HrisDownloadEmployeeDocumentResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/octet-stream");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) =>
                 operations.HrisDownloadEmployeeDocumentRequest$.outboundSchema.parse(value$),
             "Input validation failed"
@@ -494,7 +499,7 @@ export class Hris extends ClientSDK {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -507,7 +512,7 @@ export class Hris extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -543,15 +548,16 @@ export class Hris extends ClientSDK {
      * Get Benefit
      */
     async getBenefit(
-        input: operations.HrisGetBenefitRequest,
+        request: operations.HrisGetBenefitRequest,
         options?: RequestOptions
     ): Promise<operations.HrisGetBenefitResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.HrisGetBenefitRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -594,7 +600,7 @@ export class Hris extends ClientSDK {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -607,7 +613,7 @@ export class Hris extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -643,15 +649,16 @@ export class Hris extends ClientSDK {
      * Get Company
      */
     async getCompany(
-        input: operations.HrisGetCompanyRequest,
+        request: operations.HrisGetCompanyRequest,
         options?: RequestOptions
     ): Promise<operations.HrisGetCompanyResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.HrisGetCompanyRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -694,7 +701,7 @@ export class Hris extends ClientSDK {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -707,7 +714,7 @@ export class Hris extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -743,15 +750,16 @@ export class Hris extends ClientSDK {
      * Get Employee
      */
     async getEmployee(
-        input: operations.HrisGetEmployeeRequest,
+        request: operations.HrisGetEmployeeRequest,
         options?: RequestOptions
     ): Promise<operations.HrisGetEmployeeResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.HrisGetEmployeeRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -799,7 +807,7 @@ export class Hris extends ClientSDK {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -812,7 +820,7 @@ export class Hris extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -848,15 +856,16 @@ export class Hris extends ClientSDK {
      * Get Employee Document
      */
     async getEmployeeDocument(
-        input: operations.HrisGetEmployeeDocumentRequest,
+        request: operations.HrisGetEmployeeDocumentRequest,
         options?: RequestOptions
     ): Promise<operations.HrisGetEmployeeDocumentResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.HrisGetEmployeeDocumentRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -905,7 +914,7 @@ export class Hris extends ClientSDK {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -918,7 +927,7 @@ export class Hris extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -954,15 +963,16 @@ export class Hris extends ClientSDK {
      * Get Employees Time Off Request
      */
     async getEmployeesTimeOffRequest(
-        input: operations.HrisGetEmployeesTimeOffRequestRequest,
+        request: operations.HrisGetEmployeesTimeOffRequestRequest,
         options?: RequestOptions
     ): Promise<operations.HrisGetEmployeesTimeOffRequestResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) =>
                 operations.HrisGetEmployeesTimeOffRequestRequest$.outboundSchema.parse(value$),
             "Input validation failed"
@@ -1012,7 +1022,7 @@ export class Hris extends ClientSDK {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -1025,7 +1035,7 @@ export class Hris extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -1061,15 +1071,16 @@ export class Hris extends ClientSDK {
      * Get Employees Work Eligibility
      */
     async getEmployeesWorkEligibility(
-        input: operations.HrisGetEmployeesWorkEligibilityRequest,
+        request: operations.HrisGetEmployeesWorkEligibilityRequest,
         options?: RequestOptions
     ): Promise<operations.HrisGetEmployeesWorkEligibilityResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) =>
                 operations.HrisGetEmployeesWorkEligibilityRequest$.outboundSchema.parse(value$),
             "Input validation failed"
@@ -1119,7 +1130,7 @@ export class Hris extends ClientSDK {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -1132,7 +1143,7 @@ export class Hris extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -1168,15 +1179,16 @@ export class Hris extends ClientSDK {
      * Get Employment
      */
     async getEmployment(
-        input: operations.HrisGetEmploymentRequest,
+        request: operations.HrisGetEmploymentRequest,
         options?: RequestOptions
     ): Promise<operations.HrisGetEmploymentResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.HrisGetEmploymentRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -1219,7 +1231,7 @@ export class Hris extends ClientSDK {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -1232,7 +1244,7 @@ export class Hris extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -1268,15 +1280,16 @@ export class Hris extends ClientSDK {
      * Get Group
      */
     async getGroup(
-        input: operations.HrisGetGroupRequest,
+        request: operations.HrisGetGroupRequest,
         options?: RequestOptions
     ): Promise<operations.HrisGetGroupResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.HrisGetGroupRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -1319,7 +1332,7 @@ export class Hris extends ClientSDK {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -1332,7 +1345,7 @@ export class Hris extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -1368,15 +1381,16 @@ export class Hris extends ClientSDK {
      * Get Location
      */
     async getLocation(
-        input: operations.HrisGetLocationRequest,
+        request: operations.HrisGetLocationRequest,
         options?: RequestOptions
     ): Promise<operations.HrisGetLocationResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.HrisGetLocationRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -1419,7 +1433,7 @@ export class Hris extends ClientSDK {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -1432,7 +1446,7 @@ export class Hris extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -1468,15 +1482,16 @@ export class Hris extends ClientSDK {
      * Get time off request
      */
     async getTimeOffRequest(
-        input: operations.HrisGetTimeOffRequestRequest,
+        request: operations.HrisGetTimeOffRequestRequest,
         options?: RequestOptions
     ): Promise<operations.HrisGetTimeOffRequestResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.HrisGetTimeOffRequestRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -1519,7 +1534,7 @@ export class Hris extends ClientSDK {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -1532,7 +1547,7 @@ export class Hris extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -1568,15 +1583,16 @@ export class Hris extends ClientSDK {
      * List benefits
      */
     async listBenefits(
-        input: operations.HrisListBenefitsRequest,
+        request: operations.HrisListBenefitsRequest,
         options?: RequestOptions
     ): Promise<operations.HrisListBenefitsResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.HrisListBenefitsRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -1630,7 +1646,7 @@ export class Hris extends ClientSDK {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -1643,7 +1659,7 @@ export class Hris extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -1679,15 +1695,16 @@ export class Hris extends ClientSDK {
      * List Companies
      */
     async listCompanies(
-        input: operations.HrisListCompaniesRequest,
+        request: operations.HrisListCompaniesRequest,
         options?: RequestOptions
     ): Promise<operations.HrisListCompaniesResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.HrisListCompaniesRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -1741,7 +1758,7 @@ export class Hris extends ClientSDK {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -1754,7 +1771,7 @@ export class Hris extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -1790,15 +1807,16 @@ export class Hris extends ClientSDK {
      * List Employee Documents
      */
     async listEmployeeDocuments(
-        input: operations.HrisListEmployeeDocumentsRequest,
+        request: operations.HrisListEmployeeDocumentsRequest,
         options?: RequestOptions
     ): Promise<operations.HrisListEmployeeDocumentsResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.HrisListEmployeeDocumentsRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -1857,7 +1875,7 @@ export class Hris extends ClientSDK {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -1870,7 +1888,7 @@ export class Hris extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -1906,15 +1924,16 @@ export class Hris extends ClientSDK {
      * List Employee Time Off Requests
      */
     async listEmployeeTimeOffRequests(
-        input: operations.HrisListEmployeeTimeOffRequestsRequest,
+        request: operations.HrisListEmployeeTimeOffRequestsRequest,
         options?: RequestOptions
     ): Promise<operations.HrisListEmployeeTimeOffRequestsResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) =>
                 operations.HrisListEmployeeTimeOffRequestsRequest$.outboundSchema.parse(value$),
             "Input validation failed"
@@ -1974,7 +1993,7 @@ export class Hris extends ClientSDK {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -1987,7 +2006,7 @@ export class Hris extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -2023,15 +2042,16 @@ export class Hris extends ClientSDK {
      * List Employee Work Eligibility
      */
     async listEmployeeWorkEligibility(
-        input: operations.HrisListEmployeeWorkEligibilityRequest,
+        request: operations.HrisListEmployeeWorkEligibilityRequest,
         options?: RequestOptions
     ): Promise<operations.HrisListEmployeeWorkEligibilityResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) =>
                 operations.HrisListEmployeeWorkEligibilityRequest$.outboundSchema.parse(value$),
             "Input validation failed"
@@ -2091,7 +2111,7 @@ export class Hris extends ClientSDK {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -2104,7 +2124,7 @@ export class Hris extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -2140,15 +2160,16 @@ export class Hris extends ClientSDK {
      * List Employees
      */
     async listEmployees(
-        input: operations.HrisListEmployeesRequest,
+        request: operations.HrisListEmployeesRequest,
         options?: RequestOptions
     ): Promise<PageIterator<operations.HrisListEmployeesResponse>> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.HrisListEmployeesRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -2211,7 +2232,7 @@ export class Hris extends ClientSDK {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -2224,7 +2245,7 @@ export class Hris extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const nextFunc = (
             responseData: unknown
@@ -2237,7 +2258,7 @@ export class Hris extends ClientSDK {
             return () =>
                 this.listEmployees(
                     {
-                        ...input,
+                        ...input$,
                         next: nextCursor,
                     },
                     options
@@ -2281,15 +2302,16 @@ export class Hris extends ClientSDK {
      * List Employments
      */
     async listEmployments(
-        input: operations.HrisListEmploymentsRequest,
+        request: operations.HrisListEmploymentsRequest,
         options?: RequestOptions
     ): Promise<operations.HrisListEmploymentsResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.HrisListEmploymentsRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -2343,7 +2365,7 @@ export class Hris extends ClientSDK {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -2356,7 +2378,7 @@ export class Hris extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -2392,15 +2414,16 @@ export class Hris extends ClientSDK {
      * List Groups
      */
     async listGroups(
-        input: operations.HrisListGroupsRequest,
+        request: operations.HrisListGroupsRequest,
         options?: RequestOptions
     ): Promise<operations.HrisListGroupsResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.HrisListGroupsRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -2454,7 +2477,7 @@ export class Hris extends ClientSDK {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -2467,7 +2490,7 @@ export class Hris extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -2503,15 +2526,16 @@ export class Hris extends ClientSDK {
      * List locations
      */
     async listLocations(
-        input: operations.HrisListLocationsRequest,
+        request: operations.HrisListLocationsRequest,
         options?: RequestOptions
     ): Promise<operations.HrisListLocationsResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.HrisListLocationsRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -2565,7 +2589,7 @@ export class Hris extends ClientSDK {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -2578,7 +2602,7 @@ export class Hris extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -2614,15 +2638,16 @@ export class Hris extends ClientSDK {
      * List time off requests
      */
     async listTimeOffRequests(
-        input: operations.HrisListTimeOffRequestsRequest,
+        request: operations.HrisListTimeOffRequestsRequest,
         options?: RequestOptions
     ): Promise<operations.HrisListTimeOffRequestsResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.HrisListTimeOffRequestsRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -2676,7 +2701,7 @@ export class Hris extends ClientSDK {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -2689,7 +2714,7 @@ export class Hris extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -2725,16 +2750,17 @@ export class Hris extends ClientSDK {
      * Updates an employee
      */
     async updateEmployee(
-        input: operations.HrisUpdateEmployeeRequest,
+        request: operations.HrisUpdateEmployeeRequest,
         options?: RequestOptions
     ): Promise<operations.HrisUpdateEmployeeResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Content-Type", "application/json");
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.HrisUpdateEmployeeRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -2773,7 +2799,7 @@ export class Hris extends ClientSDK {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -2786,7 +2812,7 @@ export class Hris extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -2822,16 +2848,17 @@ export class Hris extends ClientSDK {
      * Update Employee Work Eligibility Request
      */
     async updateEmployeeWorkEligibilityRequest(
-        input: operations.HrisUpdateEmployeeWorkEligibilityRequestRequest,
+        request: operations.HrisUpdateEmployeeWorkEligibilityRequestRequest,
         options?: RequestOptions
     ): Promise<operations.HrisUpdateEmployeeWorkEligibilityRequestResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Content-Type", "application/json");
         headers$.set("Accept", "*/*");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) =>
                 operations.HrisUpdateEmployeeWorkEligibilityRequestRequest$.outboundSchema.parse(
                     value$
@@ -2879,7 +2906,7 @@ export class Hris extends ClientSDK {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -2892,7 +2919,7 @@ export class Hris extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -2926,16 +2953,17 @@ export class Hris extends ClientSDK {
      * Update time off request
      */
     async updateTimeOffRequest(
-        input: operations.HrisUpdateTimeOffRequestRequest,
+        request: operations.HrisUpdateTimeOffRequestRequest,
         options?: RequestOptions
     ): Promise<operations.HrisUpdateTimeOffRequestResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Content-Type", "application/json");
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.HrisUpdateTimeOffRequestRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -2974,7 +3002,7 @@ export class Hris extends ClientSDK {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -2987,7 +3015,7 @@ export class Hris extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -3023,16 +3051,17 @@ export class Hris extends ClientSDK {
      * Upload Employee Document
      */
     async uploadEmployeeDocument(
-        input: operations.HrisUploadEmployeeDocumentRequest,
+        request: operations.HrisUploadEmployeeDocumentRequest,
         options?: RequestOptions
     ): Promise<operations.HrisUploadEmployeeDocumentResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Content-Type", "application/json");
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.HrisUploadEmployeeDocumentRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -3071,7 +3100,7 @@ export class Hris extends ClientSDK {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -3084,7 +3113,7 @@ export class Hris extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",

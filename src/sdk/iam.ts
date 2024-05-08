@@ -42,15 +42,16 @@ export class Iam extends ClientSDK {
      * Get Group
      */
     async getGroup(
-        input: operations.IamGetGroupRequest,
+        request: operations.IamGetGroupRequest,
         options?: RequestOptions
     ): Promise<operations.IamGetGroupResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.IamGetGroupRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -94,7 +95,7 @@ export class Iam extends ClientSDK {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -107,7 +108,7 @@ export class Iam extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -143,15 +144,16 @@ export class Iam extends ClientSDK {
      * Get Policy
      */
     async getPolicy(
-        input: operations.IamGetPolicyRequest,
+        request: operations.IamGetPolicyRequest,
         options?: RequestOptions
     ): Promise<operations.IamGetPolicyResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.IamGetPolicyRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -195,7 +197,7 @@ export class Iam extends ClientSDK {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -208,7 +210,7 @@ export class Iam extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -244,15 +246,16 @@ export class Iam extends ClientSDK {
      * Get Role
      */
     async getRole(
-        input: operations.IamGetRoleRequest,
+        request: operations.IamGetRoleRequest,
         options?: RequestOptions
     ): Promise<operations.IamGetRoleResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.IamGetRoleRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -296,7 +299,7 @@ export class Iam extends ClientSDK {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -309,7 +312,7 @@ export class Iam extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -345,15 +348,16 @@ export class Iam extends ClientSDK {
      * Get User
      */
     async getUser(
-        input: operations.IamGetUserRequest,
+        request: operations.IamGetUserRequest,
         options?: RequestOptions
     ): Promise<operations.IamGetUserResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.IamGetUserRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -397,7 +401,7 @@ export class Iam extends ClientSDK {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -410,7 +414,7 @@ export class Iam extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -446,15 +450,16 @@ export class Iam extends ClientSDK {
      * List Groups
      */
     async listGroups(
-        input: operations.IamListGroupsRequest,
+        request: operations.IamListGroupsRequest,
         options?: RequestOptions
     ): Promise<operations.IamListGroupsResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.IamListGroupsRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -509,7 +514,7 @@ export class Iam extends ClientSDK {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -522,7 +527,7 @@ export class Iam extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -558,15 +563,16 @@ export class Iam extends ClientSDK {
      * List Policies
      */
     async listPolicies(
-        input: operations.IamListPoliciesRequest,
+        request: operations.IamListPoliciesRequest,
         options?: RequestOptions
     ): Promise<operations.IamListPoliciesResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.IamListPoliciesRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -621,7 +627,7 @@ export class Iam extends ClientSDK {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -634,7 +640,7 @@ export class Iam extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -670,15 +676,16 @@ export class Iam extends ClientSDK {
      * List Roles
      */
     async listRoles(
-        input: operations.IamListRolesRequest,
+        request: operations.IamListRolesRequest,
         options?: RequestOptions
     ): Promise<operations.IamListRolesResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.IamListRolesRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -733,7 +740,7 @@ export class Iam extends ClientSDK {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -746,7 +753,7 @@ export class Iam extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -782,15 +789,16 @@ export class Iam extends ClientSDK {
      * List Users
      */
     async listUsers(
-        input: operations.IamListUsersRequest,
+        request: operations.IamListUsersRequest,
         options?: RequestOptions
     ): Promise<operations.IamListUsersResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.IamListUsersRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -845,7 +853,7 @@ export class Iam extends ClientSDK {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -858,7 +866,7 @@ export class Iam extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",

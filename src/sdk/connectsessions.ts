@@ -43,16 +43,17 @@ export class ConnectSessions extends ClientSDK {
      * Authenticate Connect Session
      */
     async authenticateConnectSession(
-        input: shared.ConnectSessionAuthenticate,
+        request: shared.ConnectSessionAuthenticate,
         options?: RequestOptions
     ): Promise<operations.StackoneAuthenticateConnectSessionResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Content-Type", "application/json");
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => shared.ConnectSessionAuthenticate$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -78,7 +79,7 @@ export class ConnectSessions extends ClientSDK {
             context,
             errorCodes: ["400", "403", "429", "4XX", "500", "501", "5XX"],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -91,7 +92,7 @@ export class ConnectSessions extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -129,16 +130,17 @@ export class ConnectSessions extends ClientSDK {
      * Create Connect Session
      */
     async createConnectSession(
-        input: shared.ConnectSessionCreate,
+        request: shared.ConnectSessionCreate,
         options?: RequestOptions
     ): Promise<operations.StackoneCreateConnectSessionResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Content-Type", "application/json");
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => shared.ConnectSessionCreate$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -164,7 +166,7 @@ export class ConnectSessions extends ClientSDK {
             context,
             errorCodes: ["400", "403", "429", "4XX", "500", "501", "5XX"],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -177,7 +179,7 @@ export class ConnectSessions extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",

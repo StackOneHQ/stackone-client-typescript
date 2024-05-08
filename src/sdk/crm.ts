@@ -42,16 +42,17 @@ export class Crm extends ClientSDK {
      * Creates a new Contact
      */
     async createContact(
-        input: operations.CrmCreateContactRequest,
+        request: operations.CrmCreateContactRequest,
         options?: RequestOptions
     ): Promise<operations.CrmCreateContactResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Content-Type", "application/json");
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.CrmCreateContactRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -87,7 +88,7 @@ export class Crm extends ClientSDK {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -100,7 +101,7 @@ export class Crm extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -136,15 +137,16 @@ export class Crm extends ClientSDK {
      * Get Account
      */
     async getAccount(
-        input: operations.CrmGetAccountRequest,
+        request: operations.CrmGetAccountRequest,
         options?: RequestOptions
     ): Promise<operations.CrmGetAccountResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.CrmGetAccountRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -187,7 +189,7 @@ export class Crm extends ClientSDK {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -200,7 +202,7 @@ export class Crm extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -236,15 +238,16 @@ export class Crm extends ClientSDK {
      * Get Contact
      */
     async getContact(
-        input: operations.CrmGetContactRequest,
+        request: operations.CrmGetContactRequest,
         options?: RequestOptions
     ): Promise<operations.CrmGetContactResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.CrmGetContactRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -257,6 +260,10 @@ export class Crm extends ClientSDK {
 
         const query$ = [
             enc$.encodeForm("fields", payload$.fields, { explode: true, charEncoding: "percent" }),
+            enc$.encodeForm("include", payload$.include, {
+                explode: true,
+                charEncoding: "percent",
+            }),
             enc$.encodeDeepObject("proxy", payload$.proxy, { charEncoding: "percent" }),
             enc$.encodeForm("raw", payload$.raw, { explode: true, charEncoding: "percent" }),
         ]
@@ -287,7 +294,7 @@ export class Crm extends ClientSDK {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -300,7 +307,7 @@ export class Crm extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -336,15 +343,16 @@ export class Crm extends ClientSDK {
      * Get List
      */
     async getList(
-        input: operations.CrmGetListRequest,
+        request: operations.CrmGetListRequest,
         options?: RequestOptions
     ): Promise<operations.CrmGetListResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.CrmGetListRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -387,7 +395,7 @@ export class Crm extends ClientSDK {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -400,7 +408,7 @@ export class Crm extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -436,15 +444,16 @@ export class Crm extends ClientSDK {
      * List Accounts
      */
     async listAccounts(
-        input: operations.CrmListAccountsRequest,
+        request: operations.CrmListAccountsRequest,
         options?: RequestOptions
     ): Promise<operations.CrmListAccountsResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.CrmListAccountsRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -498,7 +507,7 @@ export class Crm extends ClientSDK {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -511,7 +520,7 @@ export class Crm extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -547,15 +556,16 @@ export class Crm extends ClientSDK {
      * List Contacts
      */
     async listContacts(
-        input: operations.CrmListContactsRequest,
+        request: operations.CrmListContactsRequest,
         options?: RequestOptions
     ): Promise<operations.CrmListContactsResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.CrmListContactsRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -566,6 +576,10 @@ export class Crm extends ClientSDK {
         const query$ = [
             enc$.encodeForm("fields", payload$.fields, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("filter[updated_after]", payload$["filter[updated_after]"], {
+                explode: true,
+                charEncoding: "percent",
+            }),
+            enc$.encodeForm("include", payload$.include, {
                 explode: true,
                 charEncoding: "percent",
             }),
@@ -609,7 +623,7 @@ export class Crm extends ClientSDK {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -622,7 +636,7 @@ export class Crm extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -658,15 +672,16 @@ export class Crm extends ClientSDK {
      * Get all Lists
      */
     async listLists(
-        input: operations.CrmListListsRequest,
+        request: operations.CrmListListsRequest,
         options?: RequestOptions
     ): Promise<operations.CrmListListsResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.CrmListListsRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -720,7 +735,7 @@ export class Crm extends ClientSDK {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -733,7 +748,7 @@ export class Crm extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -769,16 +784,17 @@ export class Crm extends ClientSDK {
      * Update Contact (early access)
      */
     async updateContact(
-        input: operations.CrmUpdateContactRequest,
+        request: operations.CrmUpdateContactRequest,
         options?: RequestOptions
     ): Promise<operations.CrmUpdateContactResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Content-Type", "application/json");
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.CrmUpdateContactRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -817,7 +833,7 @@ export class Crm extends ClientSDK {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -830,7 +846,7 @@ export class Crm extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",

@@ -42,15 +42,16 @@ export class Accounts extends ClientSDK {
      * Delete Account
      */
     async deleteAccount(
-        input: operations.StackoneDeleteAccountRequest,
+        request: operations.StackoneDeleteAccountRequest,
         options?: RequestOptions
     ): Promise<operations.StackoneDeleteAccountResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.StackoneDeleteAccountRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -79,7 +80,7 @@ export class Accounts extends ClientSDK {
             context,
             errorCodes: ["400", "403", "404", "429", "4XX", "500", "501", "5XX"],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -92,7 +93,7 @@ export class Accounts extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -128,15 +129,16 @@ export class Accounts extends ClientSDK {
      * Get Account
      */
     async getAccount(
-        input: operations.StackoneGetAccountRequest,
+        request: operations.StackoneGetAccountRequest,
         options?: RequestOptions
     ): Promise<operations.StackoneGetAccountResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.StackoneGetAccountRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -165,7 +167,7 @@ export class Accounts extends ClientSDK {
             context,
             errorCodes: ["400", "403", "429", "4XX", "500", "501", "5XX"],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -178,7 +180,7 @@ export class Accounts extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -214,15 +216,16 @@ export class Accounts extends ClientSDK {
      * Get meta information of the account
      */
     async getAccountMetaInfo(
-        input: operations.StackoneGetAccountMetaInfoRequest,
+        request: operations.StackoneGetAccountMetaInfoRequest,
         options?: RequestOptions
     ): Promise<operations.StackoneGetAccountMetaInfoResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.StackoneGetAccountMetaInfoRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -251,7 +254,7 @@ export class Accounts extends ClientSDK {
             context,
             errorCodes: ["400", "403", "404", "429", "4XX", "500", "501", "5XX"],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -264,7 +267,7 @@ export class Accounts extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -300,15 +303,16 @@ export class Accounts extends ClientSDK {
      * List Accounts
      */
     async listLinkedAccounts(
-        input: operations.StackoneListLinkedAccountsRequest,
+        request: operations.StackoneListLinkedAccountsRequest,
         options?: RequestOptions
     ): Promise<operations.StackoneListLinkedAccountsResponse> {
+        const input$ = typeof request === "undefined" ? {} : request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.StackoneListLinkedAccountsRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -358,7 +362,7 @@ export class Accounts extends ClientSDK {
             context,
             errorCodes: ["400", "403", "429", "4XX", "500", "501", "5XX"],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -371,7 +375,7 @@ export class Accounts extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -407,16 +411,17 @@ export class Accounts extends ClientSDK {
      * Update Account
      */
     async updateAccount(
-        input: operations.StackoneUpdateAccountRequest,
+        request: operations.StackoneUpdateAccountRequest,
         options?: RequestOptions
     ): Promise<operations.StackoneUpdateAccountResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Content-Type", "application/json");
         headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.StackoneUpdateAccountRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -445,7 +450,7 @@ export class Accounts extends ClientSDK {
             context,
             errorCodes: ["400", "403", "429", "4XX", "500", "501", "5XX"],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -458,7 +463,7 @@ export class Accounts extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",

@@ -1097,7 +1097,6 @@ async function run() {
     fields: "id,name,path,type,contents,created_at,updated_at",
     filterUpdatedAfter: "2020-01-01T00:00:00.000Z",
     id: "<id>",
-    updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
 
@@ -1146,7 +1145,6 @@ async function run() {
     fields: "id,sections,label,candidate_id,application_id,interview_id,author_id,overall_recommendation,created_at,updated_at",
     filterUpdatedAfter: "2020-01-01T00:00:00.000Z",
     id: "<id>",
-    updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
 
@@ -1195,8 +1193,6 @@ async function run() {
     expand: "documents",
     fields: "id,candidate_id,job_id,interview_stage,interview_stage_id,rejected_reason,rejected_reason_id,rejected_reason_ids,rejected_reasons,rejected_at,location_id,location_ids,status,application_status,questionnaires,attachments,result_links,created_at,updated_at,documents,candidate",
     filterUpdatedAfter: "2020-01-01T00:00:00.000Z",
-    jobId: "cxQiyiuasdFKfdsYfer",
-    updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
 
@@ -1245,7 +1241,6 @@ async function run() {
     fields: "id,application_id,start_date,status,offer_status,salary,currency,created_at,updated_at,offer_history",
     filterUpdatedAfter: "2020-01-01T00:00:00.000Z",
     id: "<id>",
-    updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
 
@@ -1294,7 +1289,6 @@ async function run() {
     fields: "id,content,author_id,visibility,created_at,updated_at,deleted_at",
     filterUpdatedAfter: "2020-01-01T00:00:00.000Z",
     id: "<id>",
-    updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
 
@@ -1342,7 +1336,6 @@ async function run() {
   const result = await stackOne.ats.listCandidates({
     fields: "id,name,first_name,last_name,email,emails,social_links,phone,phone_numbers,company,title,application_ids,hired_at,created_at,updated_at",
     filterUpdatedAfter: "2020-01-01T00:00:00.000Z",
-    updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
 
@@ -1390,7 +1383,6 @@ async function run() {
   const result = await stackOne.ats.listDepartments({
     fields: "id,name",
     filterUpdatedAfter: "2020-01-01T00:00:00.000Z",
-    updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
 
@@ -1438,7 +1430,6 @@ async function run() {
   const result = await stackOne.ats.listInterviewStages({
     fields: "id,name,order,created_at,updated_at",
     filterUpdatedAfter: "2020-01-01T00:00:00.000Z",
-    updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
 
@@ -1486,7 +1477,6 @@ async function run() {
   const result = await stackOne.ats.listInterviews({
     fields: "id,application_id,interview_stage_id,interview_stage,status,interview_status,interviewer_ids,interview_parts,interviewers,start_at,end_at,meeting_url,created_at,updated_at",
     filterUpdatedAfter: "2020-01-01T00:00:00.000Z",
-    updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
 
@@ -1535,7 +1525,6 @@ async function run() {
     fields: "id,title,locations,internal,status,job_id,content,compensation,employment_type,employment_contract_type,external_url,external_apply_url,questionnaires,updated_at,created_at",
     filterUpdatedAfter: "2020-01-01T00:00:00.000Z",
     include: "questionnaires",
-    updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
 
@@ -1584,7 +1573,6 @@ async function run() {
     expand: "job_postings,interview_stages",
     fields: "id,code,title,status,job_status,department_ids,location_ids,hiring_team,interview_stages,confidential,created_at,updated_at",
     filterUpdatedAfter: "2020-01-01T00:00:00.000Z",
-    updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
 
@@ -1632,7 +1620,6 @@ async function run() {
   const result = await stackOne.ats.listLocations({
     fields: "id,name",
     filterUpdatedAfter: "2020-01-01T00:00:00.000Z",
-    updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
 
@@ -1680,7 +1667,6 @@ async function run() {
   const result = await stackOne.ats.listOffers({
     fields: "id,application_id,start_date,status,offer_status,salary,currency,created_at,updated_at,offer_history",
     filterUpdatedAfter: "2020-01-01T00:00:00.000Z",
-    updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
 
@@ -1728,7 +1714,6 @@ async function run() {
   const result = await stackOne.ats.listRejectedReasons({
     fields: "id,label,type,rejected_reason_type",
     filterUpdatedAfter: "2020-01-01T00:00:00.000Z",
-    updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
 
@@ -1776,7 +1761,6 @@ async function run() {
   const result = await stackOne.ats.listUsers({
     fields: "id,first_name,last_name,name,email",
     filterUpdatedAfter: "2020-01-01T00:00:00.000Z",
-    updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
 
@@ -1891,7 +1875,6 @@ async function run() {
       id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
       lastName: "Sestier",
       name: "Romain Sestier",
-      phone: "+16178294093",
       phoneNumbers: [
         {
           phone: "+447700112233",

@@ -140,8 +140,9 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.crm.getContact({
-    fields: "id,first_name,last_name,company_name,emails,phone_numbers,deal_ids,account_ids,created_at,updated_at",
+    fields: "id,first_name,last_name,company_name,emails,phone_numbers,deal_ids,account_ids,custom_fields,created_at,updated_at",
     id: "<id>",
+    include: "custom_fields",
     xAccountId: "<value>",
   });
 
@@ -236,7 +237,6 @@ async function run() {
   const result = await stackOne.crm.listAccounts({
     fields: "id,owner_id,name,description,industries,annual_revenue,website,addresses,phone_numbers,created_at,updated_at",
     filterUpdatedAfter: "2020-01-01T00:00:00.000Z",
-    updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
 
@@ -282,9 +282,9 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.crm.listContacts({
-    fields: "id,first_name,last_name,company_name,emails,phone_numbers,deal_ids,account_ids,created_at,updated_at",
+    fields: "id,first_name,last_name,company_name,emails,phone_numbers,deal_ids,account_ids,custom_fields,created_at,updated_at",
     filterUpdatedAfter: "2020-01-01T00:00:00.000Z",
-    updatedAfter: "2020-01-01T00:00:00.000Z",
+    include: "custom_fields",
     xAccountId: "<value>",
   });
 
@@ -332,7 +332,6 @@ async function run() {
   const result = await stackOne.crm.listLists({
     fields: "id,name,created_at,updated_at,items,type",
     filterUpdatedAfter: "2020-01-01T00:00:00.000Z",
-    updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
 

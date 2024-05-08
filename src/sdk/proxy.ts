@@ -42,16 +42,17 @@ export class Proxy extends ClientSDK {
      * Proxy Request
      */
     async proxyRequest(
-        input: operations.StackoneProxyRequestRequest,
+        request: operations.StackoneProxyRequestRequest,
         options?: RequestOptions
     ): Promise<operations.StackoneProxyRequestResponse> {
+        const input$ = request;
         const headers$ = new Headers();
         headers$.set("user-agent", SDK_METADATA.userAgent);
         headers$.set("Content-Type", "application/json");
         headers$.set("Accept", "*/*");
 
         const payload$ = schemas$.parse(
-            input,
+            input$,
             (value$) => operations.StackoneProxyRequestRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
@@ -85,7 +86,7 @@ export class Proxy extends ClientSDK {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
         };
-        const request = this.createRequest$(
+        const request$ = this.createRequest$(
             context,
             {
                 security: securitySettings$,
@@ -98,7 +99,7 @@ export class Proxy extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request, doOptions);
+        const response = await this.do$(request$, doOptions);
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
