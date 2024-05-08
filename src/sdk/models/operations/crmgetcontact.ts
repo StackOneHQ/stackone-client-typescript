@@ -12,6 +12,10 @@ export type CrmGetContactRequest = {
     fields?: string | null | undefined;
     id: string;
     /**
+     * The comma separated list of fields that will be included in the response
+     */
+    include?: string | null | undefined;
+    /**
      * Query parameters that can be used to pass through parameters to the underlying provider request by surrounding them with 'proxy' key
      */
     proxy?: Record<string, any> | null | undefined;
@@ -49,6 +53,7 @@ export namespace CrmGetContactRequest$ {
     export type Inbound = {
         fields?: string | null | undefined;
         id: string;
+        include?: string | null | undefined;
         proxy?: Record<string, any> | null | undefined;
         raw?: boolean | null | undefined;
         "x-account-id": string;
@@ -58,6 +63,7 @@ export namespace CrmGetContactRequest$ {
         .object({
             fields: z.nullable(z.string()).optional(),
             id: z.string(),
+            include: z.nullable(z.string()).optional(),
             proxy: z.nullable(z.record(z.any())).optional(),
             raw: z.nullable(z.boolean().default(false)),
             "x-account-id": z.string(),
@@ -66,6 +72,7 @@ export namespace CrmGetContactRequest$ {
             return {
                 ...(v.fields === undefined ? null : { fields: v.fields }),
                 id: v.id,
+                ...(v.include === undefined ? null : { include: v.include }),
                 ...(v.proxy === undefined ? null : { proxy: v.proxy }),
                 raw: v.raw,
                 xAccountId: v["x-account-id"],
@@ -75,6 +82,7 @@ export namespace CrmGetContactRequest$ {
     export type Outbound = {
         fields?: string | null | undefined;
         id: string;
+        include?: string | null | undefined;
         proxy?: Record<string, any> | null | undefined;
         raw: boolean | null;
         "x-account-id": string;
@@ -84,6 +92,7 @@ export namespace CrmGetContactRequest$ {
         .object({
             fields: z.nullable(z.string()).optional(),
             id: z.string(),
+            include: z.nullable(z.string()).optional(),
             proxy: z.nullable(z.record(z.any())).optional(),
             raw: z.nullable(z.boolean().default(false)),
             xAccountId: z.string(),
@@ -92,6 +101,7 @@ export namespace CrmGetContactRequest$ {
             return {
                 ...(v.fields === undefined ? null : { fields: v.fields }),
                 id: v.id,
+                ...(v.include === undefined ? null : { include: v.include }),
                 ...(v.proxy === undefined ? null : { proxy: v.proxy }),
                 raw: v.raw,
                 "x-account-id": v.xAccountId,

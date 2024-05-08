@@ -927,7 +927,6 @@ async function run() {
   const result = await stackOne.hris.listBenefits({
     fields: "id,name,benefit_type,provider,description,created_at,updated_at",
     filterUpdatedAfter: "2020-01-01T00:00:00.000Z",
-    updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
 
@@ -975,7 +974,6 @@ async function run() {
   const result = await stackOne.hris.listCompanies({
     fields: "id,name,full_name,display_name,created_at,updated_at",
     filterUpdatedAfter: "2020-01-01T00:00:00.000Z",
-    updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
 
@@ -1024,7 +1022,6 @@ async function run() {
     fields: "id,name,path,type,contents,created_at,updated_at",
     filterUpdatedAfter: "2020-01-01T00:00:00.000Z",
     id: "<id>",
-    updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
 
@@ -1073,7 +1070,6 @@ async function run() {
     fields: "id,employee_id,approver_id,status,type,start_date,end_date,created_at,updated_at",
     filterUpdatedAfter: "2020-01-01T00:00:00.000Z",
     id: "<id>",
-    updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
 
@@ -1122,7 +1118,6 @@ async function run() {
     fields: "id,type,sub_type,document,valid_from,valid_to,issued_by,number",
     filterUpdatedAfter: "2020-01-01T00:00:00.000Z",
     id: "<id>",
-    updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
 
@@ -1172,7 +1167,6 @@ async function run() {
     fields: "id,first_name,last_name,name,display_name,gender,ethnicity,date_of_birth,birthday,marital_status,avatar_url,avatar,personal_email,personal_phone_number,work_email,work_phone_number,job_title,job_description,department,cost_centers,benefits,manager_id,hire_date,start_date,tenure,work_anniversary,employment_type,employment_contract_type,employment_status,termination_date,company_name,preferred_language,citizenships,home_location,work_location,employments,custom_fields,documents,created_at,updated_at,employee_number",
     filterUpdatedAfter: "2020-01-01T00:00:00.000Z",
     include: "avatar_url,avatar,custom_fields,job_description,benefits",
-    updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
 
@@ -1221,7 +1215,6 @@ async function run() {
   const result = await stackOne.hris.listEmployments({
     fields: "id,employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,employment_type,employment_contract_type,created_at,updated_at",
     filterUpdatedAfter: "2020-01-01T00:00:00.000Z",
-    updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
 
@@ -1269,7 +1262,6 @@ async function run() {
   const result = await stackOne.hris.listGroups({
     fields: "id,name,type,parent_ids",
     filterUpdatedAfter: "2020-01-01T00:00:00.000Z",
-    updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
 
@@ -1317,7 +1309,6 @@ async function run() {
   const result = await stackOne.hris.listLocations({
     fields: "id,employee_id,name,phone_number,street_1,street_2,city,state,zip_code,country,location_type,created_at,updated_at",
     filterUpdatedAfter: "2020-01-01T00:00:00.000Z",
-    updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
 
@@ -1365,7 +1356,6 @@ async function run() {
   const result = await stackOne.hris.listTimeOffRequests({
     fields: "id,employee_id,approver_id,status,type,start_date,end_date,created_at,updated_at",
     filterUpdatedAfter: "2020-01-01T00:00:00.000Z",
-    updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
 

@@ -41,6 +41,7 @@ export * from "./connectsessioncreate";
 export * from "./connectsessiontoken";
 export * from "./contact";
 export * from "./contactresult";
+export * from "./contactscustomfields";
 export * from "./contactspaginated";
 export * from "./content";
 export * from "./costcenters";

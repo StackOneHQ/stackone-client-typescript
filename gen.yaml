@@ -10,7 +10,7 @@ generation:
   auth:
     oAuth2ClientCredentialsEnabled: false
 typescript:
-  version: 4.7.2
+  version: 4.8.0
   additionalDependencies:
     dependencies: {}
     devDependencies: {}
@@ -30,6 +30,7 @@ typescript:
       webhooks: sdk/models/webhooks
   inputModelSuffix: input
   maxMethodParams: 0
+  methodArguments: require-security-and-request
   outputModelSuffix: output
   packageName: '@stackone/stackone-client-ts'
   responseFormat: envelope

@@ -1,29 +1,33 @@
 lockVersion: 2.0.0
 id: 7fa83af8-9e8e-4410-b7e2-cf1d0eaf688b
 management:
-  docChecksum: c94426397f0e3eb42db0ddbc13dc55ae
+  docChecksum: 04d951d6a66abf2860a975ad69148ddc
   docVersion: 1.0.0
-  speakeasyVersion: 1.279.0
-  generationVersion: 2.322.5
-  releaseVersion: 4.7.2
-  configChecksum: 04dad5a13aedce56436bfa35122c1297
+  speakeasyVersion: 1.284.0
+  generationVersion: 2.326.3
+  releaseVersion: 4.8.0
+  configChecksum: 27b08d85c9671784b26e0fd35393a914
   repoURL: https://github.com/StackOneHQ/stackone-client-typescript.git
   repoSubDirectory: .
   installationURL: https://github.com/StackOneHQ/stackone-client-typescript
   published: true
 features:
   typescript:
+    additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.5
     core: 3.9.3
     deprecations: 2.81.1
     downloadStreams: 0.1.1
-    examples: 2.81.3
+    examples: 2.81.4
     globalSecurity: 2.82.9
+    globalSecurityCallbacks: 0.1.0
     globalServerURLs: 2.82.4
     groups: 2.81.2
     nameOverrides: 2.81.2
+    nullables: 0.1.0
     pagination: 2.82.2
     responseFormat: 0.2.3
+    sdkHooks: 0.1.0
     unions: 2.85.4
 generatedFiles:
   - src/sdk/accounts.ts
@@ -247,6 +251,7 @@ generatedFiles:
   - src/sdk/models/shared/atsupdatecandidaterequestdto.ts
   - src/sdk/models/shared/contactresult.ts
   - src/sdk/models/shared/contact.ts
+  - src/sdk/models/shared/contactscustomfields.ts
   - src/sdk/models/shared/crmcreatecontactrequestdto.ts
   - src/sdk/models/shared/accountresult.ts
   - src/sdk/models/shared/account.ts
@@ -722,6 +727,15 @@ generatedFiles:
   - docs/sdk/models/shared/atsupdatecandidaterequestdto.md
   - docs/sdk/models/shared/contactresult.md
   - docs/sdk/models/shared/contact.md
+  - docs/sdk/models/shared/contactscustomfields4.md
+  - docs/sdk/models/shared/options.md
+  - docs/sdk/models/shared/contactscustomfieldsschemastype4.md
+  - docs/sdk/models/shared/contactscustomfieldssourcevalue.md
+  - docs/sdk/models/shared/contactscustomfieldsschemasvalue.md
+  - docs/sdk/models/shared/contactscustomfieldstype.md
+  - docs/sdk/models/shared/contactscustomfieldsschemas4.md
+  - docs/sdk/models/shared/contactscustomfieldsvalue.md
+  - docs/sdk/models/shared/contactscustomfields.md
   - docs/sdk/models/shared/crmcreatecontactrequestdto.md
   - docs/sdk/models/shared/accountresult.md
   - docs/sdk/models/shared/account.md
@@ -809,7 +823,7 @@ generatedFiles:
   - docs/sdk/models/shared/payperiod.md
   - docs/sdk/models/shared/employment.md
   - docs/sdk/models/shared/employeecustomfields4.md
-  - docs/sdk/models/shared/options.md
+  - docs/sdk/models/shared/employeecustomfieldsoptions.md
   - docs/sdk/models/shared/employeecustomfieldsschemastype4.md
   - docs/sdk/models/shared/employeecustomfieldssourcevalue.md
   - docs/sdk/models/shared/employeecustomfieldsschemasvalue.md

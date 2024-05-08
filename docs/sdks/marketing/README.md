@@ -399,7 +399,6 @@ async function run() {
   const result = await stackOne.marketing.listCampaigns({
     fields: "id,name,created_at,updated_at,description,schedule_type,status,channels,first_sent_at,last_sent_at,tags,messages",
     filterUpdatedAfter: "2020-01-01T00:00:00.000Z",
-    updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
 
@@ -447,7 +446,6 @@ async function run() {
   const result = await stackOne.marketing.listEmailTemplates({
     fields: "id,name,messages,created_at,updated_at,tags",
     filterUpdatedAfter: "2020-01-01T00:00:00.000Z",
-    updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
 
@@ -495,7 +493,6 @@ async function run() {
   const result = await stackOne.marketing.listOmniChannelTemplates({
     fields: "id,name,messages,created_at,updated_at,tags",
     filterUpdatedAfter: "2020-01-01T00:00:00.000Z",
-    updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
 
@@ -543,7 +540,6 @@ async function run() {
   const result = await stackOne.marketing.listPushTemplates({
     fields: "id,name,messages,created_at,updated_at,tags",
     filterUpdatedAfter: "2020-01-01T00:00:00.000Z",
-    updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
 
