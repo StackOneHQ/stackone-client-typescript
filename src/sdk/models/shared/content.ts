@@ -8,6 +8,9 @@ export type Content4 = {};
 
 export type ContentSourceValue = Content4 | string | number | boolean;
 
+/**
+ * The file format of the file, expressed as a file extension
+ */
 export enum ContentValue {
     UnmappedValue = "unmapped_value",
     Ez = "ez",
@@ -1226,6 +1229,9 @@ export enum ContentValue {
  */
 export type FileFormat = {
     sourceValue?: Content4 | string | number | boolean | null | undefined;
+    /**
+     * The file format of the file, expressed as a file extension
+     */
     value?: ContentValue | null | undefined;
 };
 
@@ -1235,7 +1241,7 @@ export type Content = {
      */
     fileFormat?: FileFormat | null | undefined;
     /**
-     * Unified URL where the file content is located
+     * Unified download URL for retrieving file content.
      */
     unifiedUrl?: string | null | undefined;
     /**

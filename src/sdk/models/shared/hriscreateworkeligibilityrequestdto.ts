@@ -5,11 +5,36 @@
 import { Content, Content$ } from "./content";
 import * as z from "zod";
 
+export type HrisCreateWorkEligibilityRequestDtoSchemasDocument4 = {};
+
+export type HrisCreateWorkEligibilityRequestDtoSchemasSourceValue =
+    | HrisCreateWorkEligibilityRequestDtoSchemasDocument4
+    | string
+    | number
+    | boolean;
+
+/**
+ * The category of the file
+ */
+export type HrisCreateWorkEligibilityRequestDtoCategory = {
+    sourceValue?:
+        | HrisCreateWorkEligibilityRequestDtoSchemasDocument4
+        | string
+        | number
+        | boolean
+        | null
+        | undefined;
+    /**
+     * The category of the file
+     */
+    value?: string | null | undefined;
+};
+
 export type Document = {
     /**
      * The category of the file
      */
-    category?: string | null | undefined;
+    category?: HrisCreateWorkEligibilityRequestDtoCategory | null | undefined;
     /**
      * The content of the file
      */
@@ -357,9 +382,143 @@ export type HrisCreateWorkEligibilityRequestDto = {
 };
 
 /** @internal */
+export namespace HrisCreateWorkEligibilityRequestDtoSchemasDocument4$ {
+    export type Inbound = {};
+
+    export const inboundSchema: z.ZodType<
+        HrisCreateWorkEligibilityRequestDtoSchemasDocument4,
+        z.ZodTypeDef,
+        Inbound
+    > = z.object({});
+
+    export type Outbound = {};
+
+    export const outboundSchema: z.ZodType<
+        Outbound,
+        z.ZodTypeDef,
+        HrisCreateWorkEligibilityRequestDtoSchemasDocument4
+    > = z.object({});
+}
+
+/** @internal */
+export namespace HrisCreateWorkEligibilityRequestDtoSchemasSourceValue$ {
+    export type Inbound =
+        | HrisCreateWorkEligibilityRequestDtoSchemasDocument4$.Inbound
+        | string
+        | number
+        | boolean;
+
+    export type Outbound =
+        | HrisCreateWorkEligibilityRequestDtoSchemasDocument4$.Outbound
+        | string
+        | number
+        | boolean;
+    export const inboundSchema: z.ZodType<
+        HrisCreateWorkEligibilityRequestDtoSchemasSourceValue,
+        z.ZodTypeDef,
+        Inbound
+    > = z.union([
+        z.lazy(() => HrisCreateWorkEligibilityRequestDtoSchemasDocument4$.inboundSchema),
+        z.string(),
+        z.number(),
+        z.boolean(),
+    ]);
+    export const outboundSchema: z.ZodType<
+        Outbound,
+        z.ZodTypeDef,
+        HrisCreateWorkEligibilityRequestDtoSchemasSourceValue
+    > = z.union([
+        z.lazy(() => HrisCreateWorkEligibilityRequestDtoSchemasDocument4$.outboundSchema),
+        z.string(),
+        z.number(),
+        z.boolean(),
+    ]);
+}
+
+/** @internal */
+export namespace HrisCreateWorkEligibilityRequestDtoCategory$ {
+    export type Inbound = {
+        source_value?:
+            | HrisCreateWorkEligibilityRequestDtoSchemasDocument4$.Inbound
+            | string
+            | number
+            | boolean
+            | null
+            | undefined;
+        value?: string | null | undefined;
+    };
+
+    export const inboundSchema: z.ZodType<
+        HrisCreateWorkEligibilityRequestDtoCategory,
+        z.ZodTypeDef,
+        Inbound
+    > = z
+        .object({
+            source_value: z
+                .nullable(
+                    z.union([
+                        z.lazy(
+                            () => HrisCreateWorkEligibilityRequestDtoSchemasDocument4$.inboundSchema
+                        ),
+                        z.string(),
+                        z.number(),
+                        z.boolean(),
+                    ])
+                )
+                .optional(),
+            value: z.nullable(z.string()).optional(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.source_value === undefined ? null : { sourceValue: v.source_value }),
+                ...(v.value === undefined ? null : { value: v.value }),
+            };
+        });
+
+    export type Outbound = {
+        source_value?:
+            | HrisCreateWorkEligibilityRequestDtoSchemasDocument4$.Outbound
+            | string
+            | number
+            | boolean
+            | null
+            | undefined;
+        value?: string | null | undefined;
+    };
+
+    export const outboundSchema: z.ZodType<
+        Outbound,
+        z.ZodTypeDef,
+        HrisCreateWorkEligibilityRequestDtoCategory
+    > = z
+        .object({
+            sourceValue: z
+                .nullable(
+                    z.union([
+                        z.lazy(
+                            () =>
+                                HrisCreateWorkEligibilityRequestDtoSchemasDocument4$.outboundSchema
+                        ),
+                        z.string(),
+                        z.number(),
+                        z.boolean(),
+                    ])
+                )
+                .optional(),
+            value: z.nullable(z.string()).optional(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.sourceValue === undefined ? null : { source_value: v.sourceValue }),
+                ...(v.value === undefined ? null : { value: v.value }),
+            };
+        });
+}
+
+/** @internal */
 export namespace Document$ {
     export type Inbound = {
-        category?: string | null | undefined;
+        category?: HrisCreateWorkEligibilityRequestDtoCategory$.Inbound | null | undefined;
         contents?: Array<Content$.Inbound> | null | undefined;
         created_at?: string | null | undefined;
         id?: string | null | undefined;
@@ -371,7 +530,9 @@ export namespace Document$ {
 
     export const inboundSchema: z.ZodType<Document, z.ZodTypeDef, Inbound> = z
         .object({
-            category: z.nullable(z.string()).optional(),
+            category: z
+                .nullable(z.lazy(() => HrisCreateWorkEligibilityRequestDtoCategory$.inboundSchema))
+                .optional(),
             contents: z.nullable(z.array(Content$.inboundSchema)).optional(),
             created_at: z
                 .nullable(
@@ -408,7 +569,7 @@ export namespace Document$ {
         });
 
     export type Outbound = {
-        category?: string | null | undefined;
+        category?: HrisCreateWorkEligibilityRequestDtoCategory$.Outbound | null | undefined;
         contents?: Array<Content$.Outbound> | null | undefined;
         created_at?: string | null | undefined;
         id?: string | null | undefined;
@@ -420,7 +581,9 @@ export namespace Document$ {
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Document> = z
         .object({
-            category: z.nullable(z.string()).optional(),
+            category: z
+                .nullable(z.lazy(() => HrisCreateWorkEligibilityRequestDtoCategory$.outboundSchema))
+                .optional(),
             contents: z.nullable(z.array(Content$.outboundSchema)).optional(),
             createdAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
             id: z.nullable(z.string()).optional(),

@@ -6,7 +6,7 @@ import * as shared from "../shared";
 import * as z from "zod";
 
 export type HrisUploadEmployeeDocumentRequest = {
-    unifiedUploadRequestDto: shared.UnifiedUploadRequestDto;
+    hrisDocumentsUploadRequestDto: shared.HrisDocumentsUploadRequestDto;
     id: string;
     /**
      * The account identifier
@@ -36,7 +36,7 @@ export type HrisUploadEmployeeDocumentResponse = {
 /** @internal */
 export namespace HrisUploadEmployeeDocumentRequest$ {
     export type Inbound = {
-        UnifiedUploadRequestDto: shared.UnifiedUploadRequestDto$.Inbound;
+        HrisDocumentsUploadRequestDto: shared.HrisDocumentsUploadRequestDto$.Inbound;
         id: string;
         "x-account-id": string;
     };
@@ -47,20 +47,20 @@ export namespace HrisUploadEmployeeDocumentRequest$ {
         Inbound
     > = z
         .object({
-            UnifiedUploadRequestDto: shared.UnifiedUploadRequestDto$.inboundSchema,
+            HrisDocumentsUploadRequestDto: shared.HrisDocumentsUploadRequestDto$.inboundSchema,
             id: z.string(),
             "x-account-id": z.string(),
         })
         .transform((v) => {
             return {
-                unifiedUploadRequestDto: v.UnifiedUploadRequestDto,
+                hrisDocumentsUploadRequestDto: v.HrisDocumentsUploadRequestDto,
                 id: v.id,
                 xAccountId: v["x-account-id"],
             };
         });
 
     export type Outbound = {
-        UnifiedUploadRequestDto: shared.UnifiedUploadRequestDto$.Outbound;
+        HrisDocumentsUploadRequestDto: shared.HrisDocumentsUploadRequestDto$.Outbound;
         id: string;
         "x-account-id": string;
     };
@@ -71,13 +71,13 @@ export namespace HrisUploadEmployeeDocumentRequest$ {
         HrisUploadEmployeeDocumentRequest
     > = z
         .object({
-            unifiedUploadRequestDto: shared.UnifiedUploadRequestDto$.outboundSchema,
+            hrisDocumentsUploadRequestDto: shared.HrisDocumentsUploadRequestDto$.outboundSchema,
             id: z.string(),
             xAccountId: z.string(),
         })
         .transform((v) => {
             return {
-                UnifiedUploadRequestDto: v.unifiedUploadRequestDto,
+                HrisDocumentsUploadRequestDto: v.hrisDocumentsUploadRequestDto,
                 id: v.id,
                 "x-account-id": v.xAccountId,
             };

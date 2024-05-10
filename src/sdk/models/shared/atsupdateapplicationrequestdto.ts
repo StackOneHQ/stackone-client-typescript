@@ -4,7 +4,56 @@
 
 import * as z from "zod";
 
+export type AtsUpdateApplicationRequestDto4 = {};
+
+/**
+ * The source value of the application status.
+ */
+export type AtsUpdateApplicationRequestDtoSourceValue =
+    | AtsUpdateApplicationRequestDto4
+    | string
+    | number
+    | boolean;
+
+/**
+ * The status of the application.
+ */
+export enum AtsUpdateApplicationRequestDtoValue {
+    Active = "active",
+    Assessment = "assessment",
+    BackgroundCheck = "background_check",
+    Converted = "converted",
+    DeclinedByCandidate = "declined_by_candidate",
+    Hired = "hired",
+    Interview = "interview",
+    Lead = "lead",
+    Offer = "offer",
+    ReferenceCheck = "reference_check",
+    Rejected = "rejected",
+    Review = "review",
+    Screen = "screen",
+    New = "new",
+    Onboarding = "onboarding",
+    Created = "created",
+    Accepted = "accepted",
+    ShortList = "short_list",
+    Approved = "approved",
+    UnmappedValue = "unmapped_value",
+}
+
+export type AtsUpdateApplicationRequestDtoApplicationStatus = {
+    /**
+     * The source value of the application status.
+     */
+    sourceValue?: AtsUpdateApplicationRequestDto4 | string | number | boolean | null | undefined;
+    /**
+     * The status of the application.
+     */
+    value?: AtsUpdateApplicationRequestDtoValue | null | undefined;
+};
+
 export type AtsUpdateApplicationRequestDto = {
+    applicationStatus?: AtsUpdateApplicationRequestDtoApplicationStatus | null | undefined;
     /**
      * Unique identifier of the interview stage
      */
@@ -13,50 +62,209 @@ export type AtsUpdateApplicationRequestDto = {
      * Unique identifier of the rejection reason
      */
     rejectedReasonId?: string | null | undefined;
+    /**
+     * Source of the application
+     */
+    source?: string | null | undefined;
 };
+
+/** @internal */
+export namespace AtsUpdateApplicationRequestDto4$ {
+    export type Inbound = {};
+
+    export const inboundSchema: z.ZodType<AtsUpdateApplicationRequestDto4, z.ZodTypeDef, Inbound> =
+        z.object({});
+
+    export type Outbound = {};
+
+    export const outboundSchema: z.ZodType<
+        Outbound,
+        z.ZodTypeDef,
+        AtsUpdateApplicationRequestDto4
+    > = z.object({});
+}
+
+/** @internal */
+export namespace AtsUpdateApplicationRequestDtoSourceValue$ {
+    export type Inbound = AtsUpdateApplicationRequestDto4$.Inbound | string | number | boolean;
+
+    export type Outbound = AtsUpdateApplicationRequestDto4$.Outbound | string | number | boolean;
+    export const inboundSchema: z.ZodType<
+        AtsUpdateApplicationRequestDtoSourceValue,
+        z.ZodTypeDef,
+        Inbound
+    > = z.union([
+        z.lazy(() => AtsUpdateApplicationRequestDto4$.inboundSchema),
+        z.string(),
+        z.number(),
+        z.boolean(),
+    ]);
+    export const outboundSchema: z.ZodType<
+        Outbound,
+        z.ZodTypeDef,
+        AtsUpdateApplicationRequestDtoSourceValue
+    > = z.union([
+        z.lazy(() => AtsUpdateApplicationRequestDto4$.outboundSchema),
+        z.string(),
+        z.number(),
+        z.boolean(),
+    ]);
+}
+
+/** @internal */
+export const AtsUpdateApplicationRequestDtoValue$: z.ZodNativeEnum<
+    typeof AtsUpdateApplicationRequestDtoValue
+> = z.nativeEnum(AtsUpdateApplicationRequestDtoValue);
+
+/** @internal */
+export namespace AtsUpdateApplicationRequestDtoApplicationStatus$ {
+    export type Inbound = {
+        source_value?:
+            | AtsUpdateApplicationRequestDto4$.Inbound
+            | string
+            | number
+            | boolean
+            | null
+            | undefined;
+        value?: AtsUpdateApplicationRequestDtoValue | null | undefined;
+    };
+
+    export const inboundSchema: z.ZodType<
+        AtsUpdateApplicationRequestDtoApplicationStatus,
+        z.ZodTypeDef,
+        Inbound
+    > = z
+        .object({
+            source_value: z
+                .nullable(
+                    z.union([
+                        z.lazy(() => AtsUpdateApplicationRequestDto4$.inboundSchema),
+                        z.string(),
+                        z.number(),
+                        z.boolean(),
+                    ])
+                )
+                .optional(),
+            value: z.nullable(AtsUpdateApplicationRequestDtoValue$).optional(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.source_value === undefined ? null : { sourceValue: v.source_value }),
+                ...(v.value === undefined ? null : { value: v.value }),
+            };
+        });
+
+    export type Outbound = {
+        source_value?:
+            | AtsUpdateApplicationRequestDto4$.Outbound
+            | string
+            | number
+            | boolean
+            | null
+            | undefined;
+        value?: AtsUpdateApplicationRequestDtoValue | null | undefined;
+    };
+
+    export const outboundSchema: z.ZodType<
+        Outbound,
+        z.ZodTypeDef,
+        AtsUpdateApplicationRequestDtoApplicationStatus
+    > = z
+        .object({
+            sourceValue: z
+                .nullable(
+                    z.union([
+                        z.lazy(() => AtsUpdateApplicationRequestDto4$.outboundSchema),
+                        z.string(),
+                        z.number(),
+                        z.boolean(),
+                    ])
+                )
+                .optional(),
+            value: z.nullable(AtsUpdateApplicationRequestDtoValue$).optional(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.sourceValue === undefined ? null : { source_value: v.sourceValue }),
+                ...(v.value === undefined ? null : { value: v.value }),
+            };
+        });
+}
 
 /** @internal */
 export namespace AtsUpdateApplicationRequestDto$ {
     export type Inbound = {
+        application_status?:
+            | AtsUpdateApplicationRequestDtoApplicationStatus$.Inbound
+            | null
+            | undefined;
         interview_stage_id?: string | null | undefined;
         rejected_reason_id?: string | null | undefined;
+        source?: string | null | undefined;
     };
 
     export const inboundSchema: z.ZodType<AtsUpdateApplicationRequestDto, z.ZodTypeDef, Inbound> = z
         .object({
+            application_status: z
+                .nullable(
+                    z.lazy(() => AtsUpdateApplicationRequestDtoApplicationStatus$.inboundSchema)
+                )
+                .optional(),
             interview_stage_id: z.nullable(z.string()).optional(),
             rejected_reason_id: z.nullable(z.string()).optional(),
+            source: z.nullable(z.string()).optional(),
         })
         .transform((v) => {
             return {
+                ...(v.application_status === undefined
+                    ? null
+                    : { applicationStatus: v.application_status }),
                 ...(v.interview_stage_id === undefined
                     ? null
                     : { interviewStageId: v.interview_stage_id }),
                 ...(v.rejected_reason_id === undefined
                     ? null
                     : { rejectedReasonId: v.rejected_reason_id }),
+                ...(v.source === undefined ? null : { source: v.source }),
             };
         });
 
     export type Outbound = {
+        application_status?:
+            | AtsUpdateApplicationRequestDtoApplicationStatus$.Outbound
+            | null
+            | undefined;
         interview_stage_id?: string | null | undefined;
         rejected_reason_id?: string | null | undefined;
+        source?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, AtsUpdateApplicationRequestDto> =
         z
             .object({
+                applicationStatus: z
+                    .nullable(
+                        z.lazy(
+                            () => AtsUpdateApplicationRequestDtoApplicationStatus$.outboundSchema
+                        )
+                    )
+                    .optional(),
                 interviewStageId: z.nullable(z.string()).optional(),
                 rejectedReasonId: z.nullable(z.string()).optional(),
+                source: z.nullable(z.string()).optional(),
             })
             .transform((v) => {
                 return {
+                    ...(v.applicationStatus === undefined
+                        ? null
+                        : { application_status: v.applicationStatus }),
                     ...(v.interviewStageId === undefined
                         ? null
                         : { interview_stage_id: v.interviewStageId }),
                     ...(v.rejectedReasonId === undefined
                         ? null
                         : { rejected_reason_id: v.rejectedReasonId }),
+                    ...(v.source === undefined ? null : { source: v.source }),
                 };
             });
 }
