@@ -113,6 +113,7 @@ run();
 * [listUsers](docs/sdks/ats/README.md#listusers) - List Users
 * [updateApplication](docs/sdks/ats/README.md#updateapplication) - Update an Application
 * [updateCandidate](docs/sdks/ats/README.md#updatecandidate) - Update Candidate
+* [uploadApplicationDocument](docs/sdks/ats/README.md#uploadapplicationdocument) - Upload Application Document
 
 ### [crm](docs/sdks/crm/README.md)
 

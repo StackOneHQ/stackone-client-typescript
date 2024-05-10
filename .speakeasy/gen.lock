@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 7fa83af8-9e8e-4410-b7e2-cf1d0eaf688b
 management:
-  docChecksum: 04d951d6a66abf2860a975ad69148ddc
+  docChecksum: d5e2062b12570ad69c8e831a79dd076b
   docVersion: 1.0.0
-  speakeasyVersion: 1.284.0
+  speakeasyVersion: 1.285.6
   generationVersion: 2.326.3
-  releaseVersion: 4.8.0
-  configChecksum: 27b08d85c9671784b26e0fd35393a914
+  releaseVersion: 4.8.1
+  configChecksum: 66ef377483b8562e93ff12872a18fc22
   repoURL: https://github.com/StackOneHQ/stackone-client-typescript.git
   repoSubDirectory: .
   installationURL: https://github.com/StackOneHQ/stackone-client-typescript
@@ -109,6 +109,7 @@ generatedFiles:
   - src/sdk/models/operations/atslistusers.ts
   - src/sdk/models/operations/atsupdateapplication.ts
   - src/sdk/models/operations/atsupdatecandidate.ts
+  - src/sdk/models/operations/atsuploadapplicationdocument.ts
   - src/sdk/models/operations/crmcreatecontact.ts
   - src/sdk/models/operations/crmgetaccount.ts
   - src/sdk/models/operations/crmgetcontact.ts
@@ -249,6 +250,9 @@ generatedFiles:
   - src/sdk/models/shared/updateresult.ts
   - src/sdk/models/shared/atsupdateapplicationrequestdto.ts
   - src/sdk/models/shared/atsupdatecandidaterequestdto.ts
+  - src/sdk/models/shared/writeresultapimodel.ts
+  - src/sdk/models/shared/providererrorapimodel.ts
+  - src/sdk/models/shared/unifieduploadrequestdto.ts
   - src/sdk/models/shared/contactresult.ts
   - src/sdk/models/shared/contact.ts
   - src/sdk/models/shared/contactscustomfields.ts
@@ -294,9 +298,7 @@ generatedFiles:
   - src/sdk/models/shared/employmentspaginated.ts
   - src/sdk/models/shared/hrisgroupspaginated.ts
   - src/sdk/models/shared/hrislocationspaginated.ts
-  - src/sdk/models/shared/writeresultapimodel.ts
-  - src/sdk/models/shared/providererrorapimodel.ts
-  - src/sdk/models/shared/unifieduploadrequestdto.ts
+  - src/sdk/models/shared/hrisdocumentsuploadrequestdto.ts
   - src/sdk/models/shared/iamgroupresult.ts
   - src/sdk/models/shared/iamgroup.ts
   - src/sdk/models/shared/iamrole.ts
@@ -420,6 +422,8 @@ generatedFiles:
   - docs/sdk/models/operations/atsupdateapplicationresponse.md
   - docs/sdk/models/operations/atsupdatecandidaterequest.md
   - docs/sdk/models/operations/atsupdatecandidateresponse.md
+  - docs/sdk/models/operations/atsuploadapplicationdocumentrequest.md
+  - docs/sdk/models/operations/atsuploadapplicationdocumentresponse.md
   - docs/sdk/models/operations/crmcreatecontactrequest.md
   - docs/sdk/models/operations/crmcreatecontactresponse.md
   - docs/sdk/models/operations/crmgetaccountrequest.md
@@ -555,7 +559,7 @@ generatedFiles:
   - docs/sdk/models/shared/connectsessioncreatecategories.md
   - docs/sdk/models/shared/metadata.md
   - docs/sdk/models/shared/connectsessioncreate.md
-  - docs/sdk/models/shared/category.md
+  - docs/sdk/models/shared/connectorsmetacategory.md
   - docs/sdk/models/shared/images.md
   - docs/sdk/models/shared/resources.md
   - docs/sdk/models/shared/connectorsmeta.md
@@ -604,6 +608,9 @@ generatedFiles:
   - docs/sdk/models/shared/rejectedreason.md
   - docs/sdk/models/shared/atsdocumentapimodel4.md
   - docs/sdk/models/shared/atsdocumentapimodelsourcevalue.md
+  - docs/sdk/models/shared/category.md
+  - docs/sdk/models/shared/atsdocumentapimodelschemas4.md
+  - docs/sdk/models/shared/atsdocumentapimodelschemassourcevalue.md
   - docs/sdk/models/shared/atsdocumentapimodelvalue.md
   - docs/sdk/models/shared/atsdocumentapimodeltype.md
   - docs/sdk/models/shared/atsdocumentapimodel.md
@@ -659,7 +666,7 @@ generatedFiles:
   - docs/sdk/models/shared/interviewstageresult.md
   - docs/sdk/models/shared/interviewstage.md
   - docs/sdk/models/shared/jobresult.md
-  - docs/sdk/models/shared/confidential.md
+  - docs/sdk/models/shared/jobconfidential.md
   - docs/sdk/models/shared/job4.md
   - docs/sdk/models/shared/jobsourcevalue.md
   - docs/sdk/models/shared/jobvalue.md
@@ -723,8 +730,26 @@ generatedFiles:
   - docs/sdk/models/shared/rejectedreasonspaginated.md
   - docs/sdk/models/shared/userspaginated.md
   - docs/sdk/models/shared/updateresult.md
+  - docs/sdk/models/shared/atsupdateapplicationrequestdto4.md
+  - docs/sdk/models/shared/atsupdateapplicationrequestdtosourcevalue.md
+  - docs/sdk/models/shared/atsupdateapplicationrequestdtovalue.md
+  - docs/sdk/models/shared/atsupdateapplicationrequestdtoapplicationstatus.md
   - docs/sdk/models/shared/atsupdateapplicationrequestdto.md
   - docs/sdk/models/shared/atsupdatecandidaterequestdto.md
+  - docs/sdk/models/shared/writeresultapimodel.md
+  - docs/sdk/models/shared/headers.md
+  - docs/sdk/models/shared/raw.md
+  - docs/sdk/models/shared/providererrorapimodel.md
+  - docs/sdk/models/shared/unifieduploadrequestdtocategory.md
+  - docs/sdk/models/shared/unifieduploadrequestdto4.md
+  - docs/sdk/models/shared/unifieduploadrequestdtosourcevalue.md
+  - docs/sdk/models/shared/unifieduploadrequestdtovalue.md
+  - docs/sdk/models/shared/unifieduploadrequestdtoconfidential.md
+  - docs/sdk/models/shared/unifieduploadrequestdtoschemas4.md
+  - docs/sdk/models/shared/unifieduploadrequestdtoschemassourcevalue.md
+  - docs/sdk/models/shared/unifieduploadrequestdtoschemasvalue.md
+  - docs/sdk/models/shared/unifieduploadrequestdtofileformat.md
+  - docs/sdk/models/shared/unifieduploadrequestdto.md
   - docs/sdk/models/shared/contactresult.md
   - docs/sdk/models/shared/contact.md
   - docs/sdk/models/shared/contactscustomfields4.md
@@ -849,6 +874,9 @@ generatedFiles:
   - docs/sdk/models/shared/hriscreatetimeoffrequestdtoschemasvalue.md
   - docs/sdk/models/shared/hriscreatetimeoffrequestdtotype.md
   - docs/sdk/models/shared/hriscreatetimeoffrequestdto.md
+  - docs/sdk/models/shared/hriscreateworkeligibilityrequestdtoschemasdocument4.md
+  - docs/sdk/models/shared/hriscreateworkeligibilityrequestdtoschemassourcevalue.md
+  - docs/sdk/models/shared/hriscreateworkeligibilityrequestdtocategory.md
   - docs/sdk/models/shared/document.md
   - docs/sdk/models/shared/hriscreateworkeligibilityrequestdto4.md
   - docs/sdk/models/shared/hriscreateworkeligibilityrequestdtosourcevalue.md
@@ -918,6 +946,10 @@ generatedFiles:
   - docs/sdk/models/shared/hrisdocumentapimodel4.md
   - docs/sdk/models/shared/hrisdocumentapimodelsourcevalue.md
   - docs/sdk/models/shared/hrisdocumentapimodelvalue.md
+  - docs/sdk/models/shared/hrisdocumentapimodelcategory.md
+  - docs/sdk/models/shared/hrisdocumentapimodelschemas4.md
+  - docs/sdk/models/shared/hrisdocumentapimodelschemassourcevalue.md
+  - docs/sdk/models/shared/hrisdocumentapimodelschemasvalue.md
   - docs/sdk/models/shared/hrisdocumentapimodeltype.md
   - docs/sdk/models/shared/hrisdocumentapimodel.md
   - docs/sdk/models/shared/timeoffresult.md
@@ -931,6 +963,9 @@ generatedFiles:
   - docs/sdk/models/shared/timeofftype.md
   - docs/sdk/models/shared/timeoff.md
   - docs/sdk/models/shared/workeligibilityresult.md
+  - docs/sdk/models/shared/workeligibilityschemasdocument4.md
+  - docs/sdk/models/shared/workeligibilityschemassourcevalue.md
+  - docs/sdk/models/shared/workeligibilitycategory.md
   - docs/sdk/models/shared/workeligibilitydocument.md
   - docs/sdk/models/shared/workeligibility4.md
   - docs/sdk/models/shared/workeligibilitysourcevalue.md
@@ -967,19 +1002,17 @@ generatedFiles:
   - docs/sdk/models/shared/employmentspaginated.md
   - docs/sdk/models/shared/hrisgroupspaginated.md
   - docs/sdk/models/shared/hrislocationspaginated.md
-  - docs/sdk/models/shared/writeresultapimodel.md
-  - docs/sdk/models/shared/headers.md
-  - docs/sdk/models/shared/raw.md
-  - docs/sdk/models/shared/providererrorapimodel.md
-  - docs/sdk/models/shared/unifieduploadrequestdto4.md
-  - docs/sdk/models/shared/unifieduploadrequestdtosourcevalue.md
-  - docs/sdk/models/shared/unifieduploadrequestdtovalue.md
-  - docs/sdk/models/shared/unifieduploadrequestdtoconfidential.md
-  - docs/sdk/models/shared/unifieduploadrequestdtoschemas4.md
-  - docs/sdk/models/shared/unifieduploadrequestdtoschemassourcevalue.md
-  - docs/sdk/models/shared/unifieduploadrequestdtoschemasvalue.md
-  - docs/sdk/models/shared/unifieduploadrequestdtofileformat.md
-  - docs/sdk/models/shared/unifieduploadrequestdto.md
+  - docs/sdk/models/shared/hrisdocumentsuploadrequestdtovalue.md
+  - docs/sdk/models/shared/hrisdocumentsuploadrequestdtocategory.md
+  - docs/sdk/models/shared/hrisdocumentsuploadrequestdto4.md
+  - docs/sdk/models/shared/hrisdocumentsuploadrequestdtosourcevalue.md
+  - docs/sdk/models/shared/hrisdocumentsuploadrequestdtoschemasvalue.md
+  - docs/sdk/models/shared/confidential.md
+  - docs/sdk/models/shared/hrisdocumentsuploadrequestdtoschemas4.md
+  - docs/sdk/models/shared/hrisdocumentsuploadrequestdtoschemassourcevalue.md
+  - docs/sdk/models/shared/hrisdocumentsuploadrequestdtoschemasfileformatvalue.md
+  - docs/sdk/models/shared/hrisdocumentsuploadrequestdtofileformat.md
+  - docs/sdk/models/shared/hrisdocumentsuploadrequestdto.md
   - docs/sdk/models/shared/iamgroupresult.md
   - docs/sdk/models/shared/iamgroup4.md
   - docs/sdk/models/shared/iamgroupsourcevalue.md
@@ -1005,6 +1038,9 @@ generatedFiles:
   - docs/sdk/models/shared/iampolicyresult.md
   - docs/sdk/models/shared/iamroleresult.md
   - docs/sdk/models/shared/iamuserresult.md
+  - docs/sdk/models/shared/iamuserschemas4.md
+  - docs/sdk/models/shared/iamuserschemassourcevalue.md
+  - docs/sdk/models/shared/iamusercategory.md
   - docs/sdk/models/shared/iamuseravatar.md
   - docs/sdk/models/shared/iamuser4.md
   - docs/sdk/models/shared/iamusersourcevalue.md

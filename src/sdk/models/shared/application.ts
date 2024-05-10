@@ -177,6 +177,10 @@ export type Application = {
     remoteId?: string | null | undefined;
     resultLinks?: Array<ResultLink> | null | undefined;
     /**
+     * Source of the application
+     */
+    source?: string | null | undefined;
+    /**
      * Date of last update
      */
     updatedAt?: Date | null | undefined;
@@ -442,6 +446,7 @@ export namespace Application$ {
         rejected_reasons?: Array<RejectedReason$.Inbound> | null | undefined;
         remote_id?: string | null | undefined;
         result_links?: Array<ResultLink$.Inbound> | null | undefined;
+        source?: string | null | undefined;
         updated_at?: string | null | undefined;
     };
 
@@ -483,6 +488,7 @@ export namespace Application$ {
             rejected_reasons: z.nullable(z.array(RejectedReason$.inboundSchema)).optional(),
             remote_id: z.nullable(z.string()).optional(),
             result_links: z.nullable(z.array(ResultLink$.inboundSchema)).optional(),
+            source: z.nullable(z.string()).optional(),
             updated_at: z
                 .nullable(
                     z
@@ -520,6 +526,7 @@ export namespace Application$ {
                     : { rejectedReasons: v.rejected_reasons }),
                 ...(v.remote_id === undefined ? null : { remoteId: v.remote_id }),
                 ...(v.result_links === undefined ? null : { resultLinks: v.result_links }),
+                ...(v.source === undefined ? null : { source: v.source }),
                 ...(v.updated_at === undefined ? null : { updatedAt: v.updated_at }),
             };
         });
@@ -543,6 +550,7 @@ export namespace Application$ {
         rejected_reasons?: Array<RejectedReason$.Outbound> | null | undefined;
         remote_id?: string | null | undefined;
         result_links?: Array<ResultLink$.Outbound> | null | undefined;
+        source?: string | null | undefined;
         updated_at?: string | null | undefined;
     };
 
@@ -570,6 +578,7 @@ export namespace Application$ {
             rejectedReasons: z.nullable(z.array(RejectedReason$.outboundSchema)).optional(),
             remoteId: z.nullable(z.string()).optional(),
             resultLinks: z.nullable(z.array(ResultLink$.outboundSchema)).optional(),
+            source: z.nullable(z.string()).optional(),
             updatedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
         })
         .transform((v) => {
@@ -600,6 +609,7 @@ export namespace Application$ {
                     : { rejected_reasons: v.rejectedReasons }),
                 ...(v.remoteId === undefined ? null : { remote_id: v.remoteId }),
                 ...(v.resultLinks === undefined ? null : { result_links: v.resultLinks }),
+                ...(v.source === undefined ? null : { source: v.source }),
                 ...(v.updatedAt === undefined ? null : { updated_at: v.updatedAt }),
             };
         });

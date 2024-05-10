@@ -122,6 +122,10 @@ export type AtsCreateApplicationRequestDto = {
      * Questionnaires associated with the application
      */
     questionnaires?: Array<Questionnaire> | null | undefined;
+    /**
+     * Source of the application
+     */
+    source?: string | null | undefined;
 };
 
 /** @internal */
@@ -359,6 +363,7 @@ export namespace AtsCreateApplicationRequestDto$ {
         job_id?: string | null | undefined;
         location_id?: string | null | undefined;
         questionnaires?: Array<Questionnaire$.Inbound> | null | undefined;
+        source?: string | null | undefined;
     };
 
     export const inboundSchema: z.ZodType<AtsCreateApplicationRequestDto, z.ZodTypeDef, Inbound> = z
@@ -375,6 +380,7 @@ export namespace AtsCreateApplicationRequestDto$ {
             job_id: z.nullable(z.string()).optional(),
             location_id: z.nullable(z.string()).optional(),
             questionnaires: z.nullable(z.array(Questionnaire$.inboundSchema)).optional(),
+            source: z.nullable(z.string()).optional(),
         })
         .transform((v) => {
             return {
@@ -386,6 +392,7 @@ export namespace AtsCreateApplicationRequestDto$ {
                 ...(v.job_id === undefined ? null : { jobId: v.job_id }),
                 ...(v.location_id === undefined ? null : { locationId: v.location_id }),
                 ...(v.questionnaires === undefined ? null : { questionnaires: v.questionnaires }),
+                ...(v.source === undefined ? null : { source: v.source }),
             };
         });
 
@@ -399,6 +406,7 @@ export namespace AtsCreateApplicationRequestDto$ {
         job_id?: string | null | undefined;
         location_id?: string | null | undefined;
         questionnaires?: Array<Questionnaire$.Outbound> | null | undefined;
+        source?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, AtsCreateApplicationRequestDto> =
@@ -418,6 +426,7 @@ export namespace AtsCreateApplicationRequestDto$ {
                 jobId: z.nullable(z.string()).optional(),
                 locationId: z.nullable(z.string()).optional(),
                 questionnaires: z.nullable(z.array(Questionnaire$.outboundSchema)).optional(),
+                source: z.nullable(z.string()).optional(),
             })
             .transform((v) => {
                 return {
@@ -431,6 +440,7 @@ export namespace AtsCreateApplicationRequestDto$ {
                     ...(v.questionnaires === undefined
                         ? null
                         : { questionnaires: v.questionnaires }),
+                    ...(v.source === undefined ? null : { source: v.source }),
                 };
             });
 }

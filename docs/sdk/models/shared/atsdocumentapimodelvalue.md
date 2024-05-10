@@ -1,5 +1,7 @@
 # AtsDocumentApiModelValue
 
+The category of the file
+
 
 ## Values
 

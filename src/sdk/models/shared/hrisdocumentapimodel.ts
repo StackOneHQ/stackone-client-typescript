@@ -9,6 +9,9 @@ export type HrisDocumentApiModel4 = {};
 
 export type HrisDocumentApiModelSourceValue = HrisDocumentApiModel4 | string | number | boolean;
 
+/**
+ * The category of the file
+ */
 export enum HrisDocumentApiModelValue {
     Application = "application",
     Academic = "academic",
@@ -26,6 +29,57 @@ export enum HrisDocumentApiModelValue {
     PolicyAgreement = "policy_agreement",
     HomeAddress = "home_address",
     NationalId = "national_id",
+    Confidential = "confidential",
+    Signed = "signed",
+    Shared = "shared",
+    Other = "other",
+    Benefit = "benefit",
+    IdVerification = "id_verification",
+    UnmappedValue = "unmapped_value",
+}
+
+/**
+ * The category of the the document
+ */
+export type HrisDocumentApiModelCategory = {
+    sourceValue?: HrisDocumentApiModel4 | string | number | boolean | null | undefined;
+    /**
+     * The category of the file
+     */
+    value?: HrisDocumentApiModelValue | null | undefined;
+};
+
+export type HrisDocumentApiModelSchemas4 = {};
+
+export type HrisDocumentApiModelSchemasSourceValue =
+    | HrisDocumentApiModelSchemas4
+    | string
+    | number
+    | boolean;
+
+/**
+ * The category of the file
+ */
+export enum HrisDocumentApiModelSchemasValue {
+    Application = "application",
+    Academic = "academic",
+    Contract = "contract",
+    Certificates = "certificates",
+    Visa = "visa",
+    Passport = "passport",
+    DriverLicense = "driver_license",
+    Payslip = "payslip",
+    Payroll = "payroll",
+    Appraisal = "appraisal",
+    Resume = "resume",
+    Policy = "policy",
+    OfferLetter = "offer_letter",
+    PolicyAgreement = "policy_agreement",
+    HomeAddress = "home_address",
+    NationalId = "national_id",
+    Confidential = "confidential",
+    Signed = "signed",
+    Shared = "shared",
     Other = "other",
     Benefit = "benefit",
     IdVerification = "id_verification",
@@ -34,17 +88,22 @@ export enum HrisDocumentApiModelValue {
 
 /**
  * The content type of the document
+ *
+ * @deprecated class: This will be removed in a future release, please migrate away from it as soon as possible.
  */
 export type HrisDocumentApiModelType = {
-    sourceValue?: HrisDocumentApiModel4 | string | number | boolean | null | undefined;
-    value?: HrisDocumentApiModelValue | null | undefined;
+    sourceValue?: HrisDocumentApiModelSchemas4 | string | number | boolean | null | undefined;
+    /**
+     * The category of the file
+     */
+    value?: HrisDocumentApiModelSchemasValue | null | undefined;
 };
 
 export type HrisDocumentApiModel = {
     /**
-     * The category of the file
+     * The category of the the document
      */
-    category?: string | null | undefined;
+    category?: HrisDocumentApiModelCategory | null | undefined;
     /**
      * The content of the file
      */
@@ -71,6 +130,8 @@ export type HrisDocumentApiModel = {
     remoteId?: string | null | undefined;
     /**
      * The content type of the document
+     *
+     * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     type?: HrisDocumentApiModelType | null | undefined;
     /**
@@ -122,7 +183,7 @@ export const HrisDocumentApiModelValue$: z.ZodNativeEnum<typeof HrisDocumentApiM
     z.nativeEnum(HrisDocumentApiModelValue);
 
 /** @internal */
-export namespace HrisDocumentApiModelType$ {
+export namespace HrisDocumentApiModelCategory$ {
     export type Inbound = {
         source_value?:
             | HrisDocumentApiModel4$.Inbound
@@ -134,7 +195,7 @@ export namespace HrisDocumentApiModelType$ {
         value?: HrisDocumentApiModelValue | null | undefined;
     };
 
-    export const inboundSchema: z.ZodType<HrisDocumentApiModelType, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<HrisDocumentApiModelCategory, z.ZodTypeDef, Inbound> = z
         .object({
             source_value: z
                 .nullable(
@@ -166,7 +227,7 @@ export namespace HrisDocumentApiModelType$ {
         value?: HrisDocumentApiModelValue | null | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, HrisDocumentApiModelType> = z
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, HrisDocumentApiModelCategory> = z
         .object({
             sourceValue: z
                 .nullable(
@@ -189,9 +250,121 @@ export namespace HrisDocumentApiModelType$ {
 }
 
 /** @internal */
+export namespace HrisDocumentApiModelSchemas4$ {
+    export type Inbound = {};
+
+    export const inboundSchema: z.ZodType<HrisDocumentApiModelSchemas4, z.ZodTypeDef, Inbound> =
+        z.object({});
+
+    export type Outbound = {};
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, HrisDocumentApiModelSchemas4> =
+        z.object({});
+}
+
+/** @internal */
+export namespace HrisDocumentApiModelSchemasSourceValue$ {
+    export type Inbound = HrisDocumentApiModelSchemas4$.Inbound | string | number | boolean;
+
+    export type Outbound = HrisDocumentApiModelSchemas4$.Outbound | string | number | boolean;
+    export const inboundSchema: z.ZodType<
+        HrisDocumentApiModelSchemasSourceValue,
+        z.ZodTypeDef,
+        Inbound
+    > = z.union([
+        z.lazy(() => HrisDocumentApiModelSchemas4$.inboundSchema),
+        z.string(),
+        z.number(),
+        z.boolean(),
+    ]);
+    export const outboundSchema: z.ZodType<
+        Outbound,
+        z.ZodTypeDef,
+        HrisDocumentApiModelSchemasSourceValue
+    > = z.union([
+        z.lazy(() => HrisDocumentApiModelSchemas4$.outboundSchema),
+        z.string(),
+        z.number(),
+        z.boolean(),
+    ]);
+}
+
+/** @internal */
+export const HrisDocumentApiModelSchemasValue$: z.ZodNativeEnum<
+    typeof HrisDocumentApiModelSchemasValue
+> = z.nativeEnum(HrisDocumentApiModelSchemasValue);
+
+/** @internal */
+export namespace HrisDocumentApiModelType$ {
+    export type Inbound = {
+        source_value?:
+            | HrisDocumentApiModelSchemas4$.Inbound
+            | string
+            | number
+            | boolean
+            | null
+            | undefined;
+        value?: HrisDocumentApiModelSchemasValue | null | undefined;
+    };
+
+    export const inboundSchema: z.ZodType<HrisDocumentApiModelType, z.ZodTypeDef, Inbound> = z
+        .object({
+            source_value: z
+                .nullable(
+                    z.union([
+                        z.lazy(() => HrisDocumentApiModelSchemas4$.inboundSchema),
+                        z.string(),
+                        z.number(),
+                        z.boolean(),
+                    ])
+                )
+                .optional(),
+            value: z.nullable(HrisDocumentApiModelSchemasValue$).optional(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.source_value === undefined ? null : { sourceValue: v.source_value }),
+                ...(v.value === undefined ? null : { value: v.value }),
+            };
+        });
+
+    export type Outbound = {
+        source_value?:
+            | HrisDocumentApiModelSchemas4$.Outbound
+            | string
+            | number
+            | boolean
+            | null
+            | undefined;
+        value?: HrisDocumentApiModelSchemasValue | null | undefined;
+    };
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, HrisDocumentApiModelType> = z
+        .object({
+            sourceValue: z
+                .nullable(
+                    z.union([
+                        z.lazy(() => HrisDocumentApiModelSchemas4$.outboundSchema),
+                        z.string(),
+                        z.number(),
+                        z.boolean(),
+                    ])
+                )
+                .optional(),
+            value: z.nullable(HrisDocumentApiModelSchemasValue$).optional(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.sourceValue === undefined ? null : { source_value: v.sourceValue }),
+                ...(v.value === undefined ? null : { value: v.value }),
+            };
+        });
+}
+
+/** @internal */
 export namespace HrisDocumentApiModel$ {
     export type Inbound = {
-        category?: string | null | undefined;
+        category?: HrisDocumentApiModelCategory$.Inbound | null | undefined;
         contents?: Array<Content$.Inbound> | null | undefined;
         created_at?: string | null | undefined;
         id?: string | null | undefined;
@@ -204,7 +377,9 @@ export namespace HrisDocumentApiModel$ {
 
     export const inboundSchema: z.ZodType<HrisDocumentApiModel, z.ZodTypeDef, Inbound> = z
         .object({
-            category: z.nullable(z.string()).optional(),
+            category: z
+                .nullable(z.lazy(() => HrisDocumentApiModelCategory$.inboundSchema))
+                .optional(),
             contents: z.nullable(z.array(Content$.inboundSchema)).optional(),
             created_at: z
                 .nullable(
@@ -243,7 +418,7 @@ export namespace HrisDocumentApiModel$ {
         });
 
     export type Outbound = {
-        category?: string | null | undefined;
+        category?: HrisDocumentApiModelCategory$.Outbound | null | undefined;
         contents?: Array<Content$.Outbound> | null | undefined;
         created_at?: string | null | undefined;
         id?: string | null | undefined;
@@ -256,7 +431,9 @@ export namespace HrisDocumentApiModel$ {
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, HrisDocumentApiModel> = z
         .object({
-            category: z.nullable(z.string()).optional(),
+            category: z
+                .nullable(z.lazy(() => HrisDocumentApiModelCategory$.outboundSchema))
+                .optional(),
             contents: z.nullable(z.array(Content$.outboundSchema)).optional(),
             createdAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
             id: z.nullable(z.string()).optional(),

@@ -40,6 +40,7 @@
 * [listUsers](#listusers) - List Users
 * [updateApplication](#updateapplication) - Update an Application
 * [updateCandidate](#updatecandidate) - Update Candidate
+* [uploadApplicationDocument](#uploadapplicationdocument) - Upload Application Document
 
 ## createApplication
 
@@ -107,6 +108,7 @@ async function run() {
           remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         },
       ],
+      source: "LinkedIn",
     },
     xAccountId: "<value>",
   });
@@ -430,7 +432,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.getApplicationDocument({
-    fields: "id,name,path,type,contents,created_at,updated_at",
+    fields: "id,name,path,type,category,contents,created_at,updated_at",
     id: "<id>",
     subResourceId: "<value>",
     xAccountId: "<value>",
@@ -1094,7 +1096,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.listApplicationDocuments({
-    fields: "id,name,path,type,contents,created_at,updated_at",
+    fields: "id,name,path,type,category,contents,created_at,updated_at",
     filterUpdatedAfter: "2020-01-01T00:00:00.000Z",
     id: "<id>",
     xAccountId: "<value>",
@@ -1797,6 +1799,7 @@ Update an Application
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
+import { AtsUpdateApplicationRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 const stackOne = new StackOne({
   security: {
@@ -1807,8 +1810,13 @@ const stackOne = new StackOne({
 async function run() {
   const result = await stackOne.ats.updateApplication({
     atsUpdateApplicationRequestDto: {
+      applicationStatus: {
+      sourceValue: "Hired",
+        value: AtsUpdateApplicationRequestDtoValue.Hired,
+      },
       interviewStageId: "18bcbb1b-3cbc-4198-a999-460861d19480",
       rejectedReasonId: "f223d7f6-908b-48f0-9237-b201c307f609",
+      source: "LinkedIn",
     },
     id: "<id>",
     xAccountId: "<value>",
@@ -1912,6 +1920,70 @@ run();
 ### Response
 
 **Promise<[operations.AtsUpdateCandidateResponse](../../sdk/models/operations/atsupdatecandidateresponse.md)>**
+### Errors
+
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
+
+## uploadApplicationDocument
+
+Upload Application Document
+
+### Example Usage
+
+```typescript
+import { StackOne } from "@stackone/stackone-client-ts";
+import { UnifiedUploadRequestDtoSchemasValue, UnifiedUploadRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
+
+async function run() {
+  const result = await stackOne.ats.uploadApplicationDocument({
+    unifiedUploadRequestDto: {
+      category: {
+        sourceValue: "550e8400-e29b-41d4-a716-446655440000, CUSTOM_CATEGORY_NAME",
+        value: "reports, resumes",
+      },
+      confidential: {
+      sourceValue: "public",
+        value: UnifiedUploadRequestDtoValue.True,
+      },
+      content: "VGhpcyBpc24ndCByZWFsbHkgYSBzYW1wbGUgZmlsZSwgYnV0IG5vIG9uZSB3aWxsIGV2ZXIga25vdyE",
+      fileFormat: {
+      sourceValue: "abc",
+        value: UnifiedUploadRequestDtoSchemasValue.Pdf,
+      },
+      name: "weather-forecast",
+      path: "/path/to/file",
+    },
+    id: "<id>",
+    xAccountId: "<value>",
+  });
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.AtsUploadApplicationDocumentRequest](../../sdk/models/operations/atsuploadapplicationdocumentrequest.md)                                                           | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+
+
+### Response
+
+**Promise<[operations.AtsUploadApplicationDocumentResponse](../../sdk/models/operations/atsuploadapplicationdocumentresponse.md)>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

@@ -8,6 +8,21 @@ import { IamMfaTypeEnum, IamMfaTypeEnum$ } from "./iammfatypeenum";
 import { IamRole, IamRole$ } from "./iamrole";
 import * as z from "zod";
 
+export type IamUserSchemas4 = {};
+
+export type IamUserSchemasSourceValue = IamUserSchemas4 | string | number | boolean;
+
+/**
+ * The category of the file
+ */
+export type IamUserCategory = {
+    sourceValue?: IamUserSchemas4 | string | number | boolean | null | undefined;
+    /**
+     * The category of the file
+     */
+    value?: string | null | undefined;
+};
+
 /**
  * The user's avatar data. This generally contains a URL within this property's 'contents' array.
  */
@@ -15,7 +30,7 @@ export type IamUserAvatar = {
     /**
      * The category of the file
      */
-    category?: string | null | undefined;
+    category?: IamUserCategory | null | undefined;
     /**
      * The content of the file
      */
@@ -128,9 +143,96 @@ export type IamUser = {
 };
 
 /** @internal */
+export namespace IamUserSchemas4$ {
+    export type Inbound = {};
+
+    export const inboundSchema: z.ZodType<IamUserSchemas4, z.ZodTypeDef, Inbound> = z.object({});
+
+    export type Outbound = {};
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, IamUserSchemas4> = z.object({});
+}
+
+/** @internal */
+export namespace IamUserSchemasSourceValue$ {
+    export type Inbound = IamUserSchemas4$.Inbound | string | number | boolean;
+
+    export type Outbound = IamUserSchemas4$.Outbound | string | number | boolean;
+    export const inboundSchema: z.ZodType<IamUserSchemasSourceValue, z.ZodTypeDef, Inbound> =
+        z.union([
+            z.lazy(() => IamUserSchemas4$.inboundSchema),
+            z.string(),
+            z.number(),
+            z.boolean(),
+        ]);
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, IamUserSchemasSourceValue> =
+        z.union([
+            z.lazy(() => IamUserSchemas4$.outboundSchema),
+            z.string(),
+            z.number(),
+            z.boolean(),
+        ]);
+}
+
+/** @internal */
+export namespace IamUserCategory$ {
+    export type Inbound = {
+        source_value?: IamUserSchemas4$.Inbound | string | number | boolean | null | undefined;
+        value?: string | null | undefined;
+    };
+
+    export const inboundSchema: z.ZodType<IamUserCategory, z.ZodTypeDef, Inbound> = z
+        .object({
+            source_value: z
+                .nullable(
+                    z.union([
+                        z.lazy(() => IamUserSchemas4$.inboundSchema),
+                        z.string(),
+                        z.number(),
+                        z.boolean(),
+                    ])
+                )
+                .optional(),
+            value: z.nullable(z.string()).optional(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.source_value === undefined ? null : { sourceValue: v.source_value }),
+                ...(v.value === undefined ? null : { value: v.value }),
+            };
+        });
+
+    export type Outbound = {
+        source_value?: IamUserSchemas4$.Outbound | string | number | boolean | null | undefined;
+        value?: string | null | undefined;
+    };
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, IamUserCategory> = z
+        .object({
+            sourceValue: z
+                .nullable(
+                    z.union([
+                        z.lazy(() => IamUserSchemas4$.outboundSchema),
+                        z.string(),
+                        z.number(),
+                        z.boolean(),
+                    ])
+                )
+                .optional(),
+            value: z.nullable(z.string()).optional(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.sourceValue === undefined ? null : { source_value: v.sourceValue }),
+                ...(v.value === undefined ? null : { value: v.value }),
+            };
+        });
+}
+
+/** @internal */
 export namespace IamUserAvatar$ {
     export type Inbound = {
-        category?: string | null | undefined;
+        category?: IamUserCategory$.Inbound | null | undefined;
         contents?: Array<Content$.Inbound> | null | undefined;
         created_at?: string | null | undefined;
         id?: string | null | undefined;
@@ -142,7 +244,7 @@ export namespace IamUserAvatar$ {
 
     export const inboundSchema: z.ZodType<IamUserAvatar, z.ZodTypeDef, Inbound> = z
         .object({
-            category: z.nullable(z.string()).optional(),
+            category: z.nullable(z.lazy(() => IamUserCategory$.inboundSchema)).optional(),
             contents: z.nullable(z.array(Content$.inboundSchema)).optional(),
             created_at: z
                 .nullable(
@@ -179,7 +281,7 @@ export namespace IamUserAvatar$ {
         });
 
     export type Outbound = {
-        category?: string | null | undefined;
+        category?: IamUserCategory$.Outbound | null | undefined;
         contents?: Array<Content$.Outbound> | null | undefined;
         created_at?: string | null | undefined;
         id?: string | null | undefined;
@@ -191,7 +293,7 @@ export namespace IamUserAvatar$ {
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, IamUserAvatar> = z
         .object({
-            category: z.nullable(z.string()).optional(),
+            category: z.nullable(z.lazy(() => IamUserCategory$.outboundSchema)).optional(),
             contents: z.nullable(z.array(Content$.outboundSchema)).optional(),
             createdAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
             id: z.nullable(z.string()).optional(),

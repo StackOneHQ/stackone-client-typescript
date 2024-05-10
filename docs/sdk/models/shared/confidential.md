@@ -1,11 +1,11 @@
 # Confidential
 
-Confidential status of the job
+The confidentiality level of the file to be uploaded
 
 
-## Values
+## Fields
 
-| Name    | Value   |
-| ------- | ------- |
-| `True`  | true    |
-| `False` | false   |
+| Field                                                                                                                       | Type                                                                                                                        | Required                                                                                                                    | Description                                                                                                                 | Example                                                                                                                     |
+| --------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| `sourceValue`                                                                                                               | *shared.HrisDocumentsUploadRequestDtoSourceValue*                                                                           | :heavy_minus_sign:                                                                                                          | N/A                                                                                                                         | public                                                                                                                      |
+| `value`                                                                                                                     | [shared.HrisDocumentsUploadRequestDtoSchemasValue](../../../sdk/models/shared/hrisdocumentsuploadrequestdtoschemasvalue.md) | :heavy_minus_sign:                                                                                                          | Whether the file is confidential or not                                                                                     | true                                                                                                                        |

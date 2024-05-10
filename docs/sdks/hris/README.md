@@ -278,7 +278,7 @@ async function run() {
   const result = await stackOne.hris.createEmployeeWorkEligibilityRequest({
     hrisCreateWorkEligibilityRequestDto: {
       document: {
-        category: "templates, forms, backups, etc.",
+        category: {},
         contents: [
           {
             fileFormat: {
@@ -593,7 +593,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.hris.getEmployeeDocument({
-    fields: "id,name,path,type,contents,created_at,updated_at",
+    fields: "id,name,path,type,category,contents,created_at,updated_at",
     id: "<id>",
     subResourceId: "<value>",
     xAccountId: "<value>",
@@ -1019,7 +1019,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.hris.listEmployeeDocuments({
-    fields: "id,name,path,type,contents,created_at,updated_at",
+    fields: "id,name,path,type,category,contents,created_at,updated_at",
     filterUpdatedAfter: "2020-01-01T00:00:00.000Z",
     id: "<id>",
     xAccountId: "<value>",
@@ -1578,7 +1578,7 @@ async function run() {
   const result = await stackOne.hris.updateEmployeeWorkEligibilityRequest({
     hrisCreateWorkEligibilityRequestDto: {
       document: {
-        category: "templates, forms, backups, etc.",
+        category: {},
         contents: [
           {
             fileFormat: {
@@ -1695,7 +1695,11 @@ Upload Employee Document
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
-import { UnifiedUploadRequestDtoSchemasValue, UnifiedUploadRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+import {
+  HrisDocumentsUploadRequestDtoSchemasFileFormatValue,
+  HrisDocumentsUploadRequestDtoSchemasValue,
+  HrisDocumentsUploadRequestDtoValue,
+} from "@stackone/stackone-client-ts/sdk/models/shared";
 
 const stackOne = new StackOne({
   security: {
@@ -1705,16 +1709,19 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.hris.uploadEmployeeDocument({
-    unifiedUploadRequestDto: {
-      category: "reports, resumes",
+    hrisDocumentsUploadRequestDto: {
+      category: {
+        sourceValue: "550e8400-e29b-41d4-a716-446655440000",
+        value: HrisDocumentsUploadRequestDtoValue.UnmappedValue,
+      },
       confidential: {
       sourceValue: "public",
-        value: UnifiedUploadRequestDtoValue.True,
+        value: HrisDocumentsUploadRequestDtoSchemasValue.True,
       },
       content: "VGhpcyBpc24ndCByZWFsbHkgYSBzYW1wbGUgZmlsZSwgYnV0IG5vIG9uZSB3aWxsIGV2ZXIga25vdyE",
       fileFormat: {
       sourceValue: "abc",
-        value: UnifiedUploadRequestDtoSchemasValue.Pdf,
+        value: HrisDocumentsUploadRequestDtoSchemasFileFormatValue.Pdf,
       },
       name: "weather-forecast",
       path: "/path/to/file",

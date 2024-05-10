@@ -7,7 +7,7 @@ import * as z from "zod";
 /**
  * The provider service category
  */
-export enum Category {
+export enum ConnectorsMetaCategory {
     Ats = "ats",
     Hris = "hris",
     HrisLegacy = "hris-legacy",
@@ -49,7 +49,7 @@ export type ConnectorsMeta = {
     /**
      * The provider service category
      */
-    category: Category;
+    category: ConnectorsMetaCategory;
     models: Record<string, any>;
     /**
      * The provider key
@@ -66,7 +66,8 @@ export type ConnectorsMeta = {
 };
 
 /** @internal */
-export const Category$: z.ZodNativeEnum<typeof Category> = z.nativeEnum(Category);
+export const ConnectorsMetaCategory$: z.ZodNativeEnum<typeof ConnectorsMetaCategory> =
+    z.nativeEnum(ConnectorsMetaCategory);
 
 /** @internal */
 export namespace Images$ {
@@ -144,7 +145,7 @@ export namespace Resources$ {
 export namespace ConnectorsMeta$ {
     export type Inbound = {
         active?: boolean | null | undefined;
-        category: Category;
+        category: ConnectorsMetaCategory;
         models: Record<string, any>;
         provider: string;
         provider_name: string;
@@ -154,7 +155,7 @@ export namespace ConnectorsMeta$ {
     export const inboundSchema: z.ZodType<ConnectorsMeta, z.ZodTypeDef, Inbound> = z
         .object({
             active: z.nullable(z.boolean()).optional(),
-            category: Category$,
+            category: ConnectorsMetaCategory$,
             models: z.record(z.any()),
             provider: z.string(),
             provider_name: z.string(),
@@ -173,7 +174,7 @@ export namespace ConnectorsMeta$ {
 
     export type Outbound = {
         active?: boolean | null | undefined;
-        category: Category;
+        category: ConnectorsMetaCategory;
         models: Record<string, any>;
         provider: string;
         provider_name: string;
@@ -183,7 +184,7 @@ export namespace ConnectorsMeta$ {
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ConnectorsMeta> = z
         .object({
             active: z.nullable(z.boolean()).optional(),
-            category: Category$,
+            category: ConnectorsMetaCategory$,
             models: z.record(z.any()),
             provider: z.string(),
             providerName: z.string(),

@@ -1,16 +1,11 @@
 # Category
 
-The provider service category
+The category of the the document
 
 
-## Values
+## Fields
 
-| Name         | Value        |
-| ------------ | ------------ |
-| `Ats`        | ats          |
-| `Hris`       | hris         |
-| `HrisLegacy` | hris-legacy  |
-| `Crm`        | crm          |
-| `Iam`        | iam          |
-| `Marketing`  | marketing    |
-| `Stackone`   | stackone     |
+| Field                                   | Type                                    | Required                                | Description                             |
+| --------------------------------------- | --------------------------------------- | --------------------------------------- | --------------------------------------- |
+| `sourceValue`                           | *shared.AtsDocumentApiModelSourceValue* | :heavy_minus_sign:                      | N/A                                     |
+| `value`                                 | *string*                                | :heavy_minus_sign:                      | The category of the file                |

@@ -3065,7 +3065,9 @@ export class Hris extends ClientSDK {
             (value$) => operations.HrisUploadEmployeeDocumentRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
-        const body$ = enc$.encodeJSON("body", payload$.UnifiedUploadRequestDto, { explode: true });
+        const body$ = enc$.encodeJSON("body", payload$.HrisDocumentsUploadRequestDto, {
+            explode: true,
+        });
 
         const pathParams$ = {
             id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),

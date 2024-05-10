@@ -4,6 +4,20 @@
 
 import * as z from "zod";
 
+/**
+ * The category object for associating uploaded files. If both an ID and a name are provided, the ID takes precedence.
+ */
+export type UnifiedUploadRequestDtoCategory = {
+    /**
+     * The provider specific category for associating uploaded files, if provided, the value will be ignored.
+     */
+    sourceValue?: string | null | undefined;
+    /**
+     * The category name for associating uploaded files.
+     */
+    value?: string | null | undefined;
+};
+
 export type UnifiedUploadRequestDto4 = {};
 
 export type UnifiedUploadRequestDtoSourceValue =
@@ -12,6 +26,9 @@ export type UnifiedUploadRequestDtoSourceValue =
     | number
     | boolean;
 
+/**
+ * Whether the file is confidential or not
+ */
 export enum UnifiedUploadRequestDtoValue {
     True = "true",
     False = "false",
@@ -22,6 +39,9 @@ export enum UnifiedUploadRequestDtoValue {
  */
 export type UnifiedUploadRequestDtoConfidential = {
     sourceValue?: UnifiedUploadRequestDto4 | string | number | boolean | null | undefined;
+    /**
+     * Whether the file is confidential or not
+     */
     value?: UnifiedUploadRequestDtoValue | null | undefined;
 };
 
@@ -33,6 +53,9 @@ export type UnifiedUploadRequestDtoSchemasSourceValue =
     | number
     | boolean;
 
+/**
+ * The file format of the file, expressed as a file extension
+ */
 export enum UnifiedUploadRequestDtoSchemasValue {
     UnmappedValue = "unmapped_value",
     Ez = "ez",
@@ -1251,14 +1274,17 @@ export enum UnifiedUploadRequestDtoSchemasValue {
  */
 export type UnifiedUploadRequestDtoFileFormat = {
     sourceValue?: UnifiedUploadRequestDtoSchemas4 | string | number | boolean | null | undefined;
+    /**
+     * The file format of the file, expressed as a file extension
+     */
     value?: UnifiedUploadRequestDtoSchemasValue | null | undefined;
 };
 
 export type UnifiedUploadRequestDto = {
     /**
-     * The category name or Id of the category to be associated with
+     * The category object for associating uploaded files. If both an ID and a name are provided, the ID takes precedence.
      */
-    category?: string | null | undefined;
+    category?: UnifiedUploadRequestDtoCategory | null | undefined;
     /**
      * The confidentiality level of the file to be uploaded
      */
@@ -1280,6 +1306,48 @@ export type UnifiedUploadRequestDto = {
      */
     path?: string | null | undefined;
 };
+
+/** @internal */
+export namespace UnifiedUploadRequestDtoCategory$ {
+    export type Inbound = {
+        source_value?: string | null | undefined;
+        value?: string | null | undefined;
+    };
+
+    export const inboundSchema: z.ZodType<UnifiedUploadRequestDtoCategory, z.ZodTypeDef, Inbound> =
+        z
+            .object({
+                source_value: z.nullable(z.string()).optional(),
+                value: z.nullable(z.string()).optional(),
+            })
+            .transform((v) => {
+                return {
+                    ...(v.source_value === undefined ? null : { sourceValue: v.source_value }),
+                    ...(v.value === undefined ? null : { value: v.value }),
+                };
+            });
+
+    export type Outbound = {
+        source_value?: string | null | undefined;
+        value?: string | null | undefined;
+    };
+
+    export const outboundSchema: z.ZodType<
+        Outbound,
+        z.ZodTypeDef,
+        UnifiedUploadRequestDtoCategory
+    > = z
+        .object({
+            sourceValue: z.nullable(z.string()).optional(),
+            value: z.nullable(z.string()).optional(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.sourceValue === undefined ? null : { source_value: v.sourceValue }),
+                ...(v.value === undefined ? null : { value: v.value }),
+            };
+        });
+}
 
 /** @internal */
 export namespace UnifiedUploadRequestDto4$ {
@@ -1526,7 +1594,7 @@ export namespace UnifiedUploadRequestDtoFileFormat$ {
 /** @internal */
 export namespace UnifiedUploadRequestDto$ {
     export type Inbound = {
-        category?: string | null | undefined;
+        category?: UnifiedUploadRequestDtoCategory$.Inbound | null | undefined;
         confidential?: UnifiedUploadRequestDtoConfidential$.Inbound | null | undefined;
         content?: string | null | undefined;
         file_format?: UnifiedUploadRequestDtoFileFormat$.Inbound | null | undefined;
@@ -1536,7 +1604,9 @@ export namespace UnifiedUploadRequestDto$ {
 
     export const inboundSchema: z.ZodType<UnifiedUploadRequestDto, z.ZodTypeDef, Inbound> = z
         .object({
-            category: z.nullable(z.string()).optional(),
+            category: z
+                .nullable(z.lazy(() => UnifiedUploadRequestDtoCategory$.inboundSchema))
+                .optional(),
             confidential: z
                 .nullable(z.lazy(() => UnifiedUploadRequestDtoConfidential$.inboundSchema))
                 .optional(),
@@ -1559,7 +1629,7 @@ export namespace UnifiedUploadRequestDto$ {
         });
 
     export type Outbound = {
-        category?: string | null | undefined;
+        category?: UnifiedUploadRequestDtoCategory$.Outbound | null | undefined;
         confidential?: UnifiedUploadRequestDtoConfidential$.Outbound | null | undefined;
         content?: string | null | undefined;
         file_format?: UnifiedUploadRequestDtoFileFormat$.Outbound | null | undefined;
@@ -1569,7 +1639,9 @@ export namespace UnifiedUploadRequestDto$ {
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UnifiedUploadRequestDto> = z
         .object({
-            category: z.nullable(z.string()).optional(),
+            category: z
+                .nullable(z.lazy(() => UnifiedUploadRequestDtoCategory$.outboundSchema))
+                .optional(),
             confidential: z
                 .nullable(z.lazy(() => UnifiedUploadRequestDtoConfidential$.outboundSchema))
                 .optional(),

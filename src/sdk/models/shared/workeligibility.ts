@@ -5,11 +5,30 @@
 import { Content, Content$ } from "./content";
 import * as z from "zod";
 
+export type WorkEligibilitySchemasDocument4 = {};
+
+export type WorkEligibilitySchemasSourceValue =
+    | WorkEligibilitySchemasDocument4
+    | string
+    | number
+    | boolean;
+
+/**
+ * The category of the file
+ */
+export type WorkEligibilityCategory = {
+    sourceValue?: WorkEligibilitySchemasDocument4 | string | number | boolean | null | undefined;
+    /**
+     * The category of the file
+     */
+    value?: string | null | undefined;
+};
+
 export type WorkEligibilityDocument = {
     /**
      * The category of the file
      */
-    category?: string | null | undefined;
+    category?: WorkEligibilityCategory | null | undefined;
     /**
      * The content of the file
      */
@@ -349,9 +368,119 @@ export type WorkEligibility = {
 };
 
 /** @internal */
+export namespace WorkEligibilitySchemasDocument4$ {
+    export type Inbound = {};
+
+    export const inboundSchema: z.ZodType<WorkEligibilitySchemasDocument4, z.ZodTypeDef, Inbound> =
+        z.object({});
+
+    export type Outbound = {};
+
+    export const outboundSchema: z.ZodType<
+        Outbound,
+        z.ZodTypeDef,
+        WorkEligibilitySchemasDocument4
+    > = z.object({});
+}
+
+/** @internal */
+export namespace WorkEligibilitySchemasSourceValue$ {
+    export type Inbound = WorkEligibilitySchemasDocument4$.Inbound | string | number | boolean;
+
+    export type Outbound = WorkEligibilitySchemasDocument4$.Outbound | string | number | boolean;
+    export const inboundSchema: z.ZodType<
+        WorkEligibilitySchemasSourceValue,
+        z.ZodTypeDef,
+        Inbound
+    > = z.union([
+        z.lazy(() => WorkEligibilitySchemasDocument4$.inboundSchema),
+        z.string(),
+        z.number(),
+        z.boolean(),
+    ]);
+    export const outboundSchema: z.ZodType<
+        Outbound,
+        z.ZodTypeDef,
+        WorkEligibilitySchemasSourceValue
+    > = z.union([
+        z.lazy(() => WorkEligibilitySchemasDocument4$.outboundSchema),
+        z.string(),
+        z.number(),
+        z.boolean(),
+    ]);
+}
+
+/** @internal */
+export namespace WorkEligibilityCategory$ {
+    export type Inbound = {
+        source_value?:
+            | WorkEligibilitySchemasDocument4$.Inbound
+            | string
+            | number
+            | boolean
+            | null
+            | undefined;
+        value?: string | null | undefined;
+    };
+
+    export const inboundSchema: z.ZodType<WorkEligibilityCategory, z.ZodTypeDef, Inbound> = z
+        .object({
+            source_value: z
+                .nullable(
+                    z.union([
+                        z.lazy(() => WorkEligibilitySchemasDocument4$.inboundSchema),
+                        z.string(),
+                        z.number(),
+                        z.boolean(),
+                    ])
+                )
+                .optional(),
+            value: z.nullable(z.string()).optional(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.source_value === undefined ? null : { sourceValue: v.source_value }),
+                ...(v.value === undefined ? null : { value: v.value }),
+            };
+        });
+
+    export type Outbound = {
+        source_value?:
+            | WorkEligibilitySchemasDocument4$.Outbound
+            | string
+            | number
+            | boolean
+            | null
+            | undefined;
+        value?: string | null | undefined;
+    };
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, WorkEligibilityCategory> = z
+        .object({
+            sourceValue: z
+                .nullable(
+                    z.union([
+                        z.lazy(() => WorkEligibilitySchemasDocument4$.outboundSchema),
+                        z.string(),
+                        z.number(),
+                        z.boolean(),
+                    ])
+                )
+                .optional(),
+            value: z.nullable(z.string()).optional(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.sourceValue === undefined ? null : { source_value: v.sourceValue }),
+                ...(v.value === undefined ? null : { value: v.value }),
+            };
+        });
+}
+
+/** @internal */
 export namespace WorkEligibilityDocument$ {
     export type Inbound = {
-        category?: string | null | undefined;
+        category?: WorkEligibilityCategory$.Inbound | null | undefined;
         contents?: Array<Content$.Inbound> | null | undefined;
         created_at?: string | null | undefined;
         id?: string | null | undefined;
@@ -363,7 +492,7 @@ export namespace WorkEligibilityDocument$ {
 
     export const inboundSchema: z.ZodType<WorkEligibilityDocument, z.ZodTypeDef, Inbound> = z
         .object({
-            category: z.nullable(z.string()).optional(),
+            category: z.nullable(z.lazy(() => WorkEligibilityCategory$.inboundSchema)).optional(),
             contents: z.nullable(z.array(Content$.inboundSchema)).optional(),
             created_at: z
                 .nullable(
@@ -400,7 +529,7 @@ export namespace WorkEligibilityDocument$ {
         });
 
     export type Outbound = {
-        category?: string | null | undefined;
+        category?: WorkEligibilityCategory$.Outbound | null | undefined;
         contents?: Array<Content$.Outbound> | null | undefined;
         created_at?: string | null | undefined;
         id?: string | null | undefined;
@@ -412,7 +541,7 @@ export namespace WorkEligibilityDocument$ {
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, WorkEligibilityDocument> = z
         .object({
-            category: z.nullable(z.string()).optional(),
+            category: z.nullable(z.lazy(() => WorkEligibilityCategory$.outboundSchema)).optional(),
             contents: z.nullable(z.array(Content$.outboundSchema)).optional(),
             createdAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
             id: z.nullable(z.string()).optional(),

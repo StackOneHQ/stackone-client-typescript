@@ -9,6 +9,28 @@ export type AtsDocumentApiModel4 = {};
 
 export type AtsDocumentApiModelSourceValue = AtsDocumentApiModel4 | string | number | boolean;
 
+/**
+ * The category of the the document
+ */
+export type Category = {
+    sourceValue?: AtsDocumentApiModel4 | string | number | boolean | null | undefined;
+    /**
+     * The category of the file
+     */
+    value?: string | null | undefined;
+};
+
+export type AtsDocumentApiModelSchemas4 = {};
+
+export type AtsDocumentApiModelSchemasSourceValue =
+    | AtsDocumentApiModelSchemas4
+    | string
+    | number
+    | boolean;
+
+/**
+ * The category of the file
+ */
 export enum AtsDocumentApiModelValue {
     Resume = "resume",
     Avatar = "avatar",
@@ -27,17 +49,22 @@ export enum AtsDocumentApiModelValue {
 
 /**
  * The content type of the document
+ *
+ * @deprecated class: This will be removed in a future release, please migrate away from it as soon as possible.
  */
 export type AtsDocumentApiModelType = {
-    sourceValue?: AtsDocumentApiModel4 | string | number | boolean | null | undefined;
+    sourceValue?: AtsDocumentApiModelSchemas4 | string | number | boolean | null | undefined;
+    /**
+     * The category of the file
+     */
     value?: AtsDocumentApiModelValue | null | undefined;
 };
 
 export type AtsDocumentApiModel = {
     /**
-     * The category of the file
+     * The category of the the document
      */
-    category?: string | null | undefined;
+    category?: Category | null | undefined;
     /**
      * The content of the file
      */
@@ -64,6 +91,8 @@ export type AtsDocumentApiModel = {
     remoteId?: string | null | undefined;
     /**
      * The content type of the document
+     *
+     * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     type?: AtsDocumentApiModelType | null | undefined;
     /**
@@ -109,13 +138,120 @@ export namespace AtsDocumentApiModelSourceValue$ {
 }
 
 /** @internal */
+export namespace Category$ {
+    export type Inbound = {
+        source_value?: AtsDocumentApiModel4$.Inbound | string | number | boolean | null | undefined;
+        value?: string | null | undefined;
+    };
+
+    export const inboundSchema: z.ZodType<Category, z.ZodTypeDef, Inbound> = z
+        .object({
+            source_value: z
+                .nullable(
+                    z.union([
+                        z.lazy(() => AtsDocumentApiModel4$.inboundSchema),
+                        z.string(),
+                        z.number(),
+                        z.boolean(),
+                    ])
+                )
+                .optional(),
+            value: z.nullable(z.string()).optional(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.source_value === undefined ? null : { sourceValue: v.source_value }),
+                ...(v.value === undefined ? null : { value: v.value }),
+            };
+        });
+
+    export type Outbound = {
+        source_value?:
+            | AtsDocumentApiModel4$.Outbound
+            | string
+            | number
+            | boolean
+            | null
+            | undefined;
+        value?: string | null | undefined;
+    };
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Category> = z
+        .object({
+            sourceValue: z
+                .nullable(
+                    z.union([
+                        z.lazy(() => AtsDocumentApiModel4$.outboundSchema),
+                        z.string(),
+                        z.number(),
+                        z.boolean(),
+                    ])
+                )
+                .optional(),
+            value: z.nullable(z.string()).optional(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.sourceValue === undefined ? null : { source_value: v.sourceValue }),
+                ...(v.value === undefined ? null : { value: v.value }),
+            };
+        });
+}
+
+/** @internal */
+export namespace AtsDocumentApiModelSchemas4$ {
+    export type Inbound = {};
+
+    export const inboundSchema: z.ZodType<AtsDocumentApiModelSchemas4, z.ZodTypeDef, Inbound> =
+        z.object({});
+
+    export type Outbound = {};
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, AtsDocumentApiModelSchemas4> =
+        z.object({});
+}
+
+/** @internal */
+export namespace AtsDocumentApiModelSchemasSourceValue$ {
+    export type Inbound = AtsDocumentApiModelSchemas4$.Inbound | string | number | boolean;
+
+    export type Outbound = AtsDocumentApiModelSchemas4$.Outbound | string | number | boolean;
+    export const inboundSchema: z.ZodType<
+        AtsDocumentApiModelSchemasSourceValue,
+        z.ZodTypeDef,
+        Inbound
+    > = z.union([
+        z.lazy(() => AtsDocumentApiModelSchemas4$.inboundSchema),
+        z.string(),
+        z.number(),
+        z.boolean(),
+    ]);
+    export const outboundSchema: z.ZodType<
+        Outbound,
+        z.ZodTypeDef,
+        AtsDocumentApiModelSchemasSourceValue
+    > = z.union([
+        z.lazy(() => AtsDocumentApiModelSchemas4$.outboundSchema),
+        z.string(),
+        z.number(),
+        z.boolean(),
+    ]);
+}
+
+/** @internal */
 export const AtsDocumentApiModelValue$: z.ZodNativeEnum<typeof AtsDocumentApiModelValue> =
     z.nativeEnum(AtsDocumentApiModelValue);
 
 /** @internal */
 export namespace AtsDocumentApiModelType$ {
     export type Inbound = {
-        source_value?: AtsDocumentApiModel4$.Inbound | string | number | boolean | null | undefined;
+        source_value?:
+            | AtsDocumentApiModelSchemas4$.Inbound
+            | string
+            | number
+            | boolean
+            | null
+            | undefined;
         value?: AtsDocumentApiModelValue | null | undefined;
     };
 
@@ -124,7 +260,7 @@ export namespace AtsDocumentApiModelType$ {
             source_value: z
                 .nullable(
                     z.union([
-                        z.lazy(() => AtsDocumentApiModel4$.inboundSchema),
+                        z.lazy(() => AtsDocumentApiModelSchemas4$.inboundSchema),
                         z.string(),
                         z.number(),
                         z.boolean(),
@@ -142,7 +278,7 @@ export namespace AtsDocumentApiModelType$ {
 
     export type Outbound = {
         source_value?:
-            | AtsDocumentApiModel4$.Outbound
+            | AtsDocumentApiModelSchemas4$.Outbound
             | string
             | number
             | boolean
@@ -156,7 +292,7 @@ export namespace AtsDocumentApiModelType$ {
             sourceValue: z
                 .nullable(
                     z.union([
-                        z.lazy(() => AtsDocumentApiModel4$.outboundSchema),
+                        z.lazy(() => AtsDocumentApiModelSchemas4$.outboundSchema),
                         z.string(),
                         z.number(),
                         z.boolean(),
@@ -176,7 +312,7 @@ export namespace AtsDocumentApiModelType$ {
 /** @internal */
 export namespace AtsDocumentApiModel$ {
     export type Inbound = {
-        category?: string | null | undefined;
+        category?: Category$.Inbound | null | undefined;
         contents?: Array<Content$.Inbound> | null | undefined;
         created_at?: string | null | undefined;
         id?: string | null | undefined;
@@ -189,7 +325,7 @@ export namespace AtsDocumentApiModel$ {
 
     export const inboundSchema: z.ZodType<AtsDocumentApiModel, z.ZodTypeDef, Inbound> = z
         .object({
-            category: z.nullable(z.string()).optional(),
+            category: z.nullable(z.lazy(() => Category$.inboundSchema)).optional(),
             contents: z.nullable(z.array(Content$.inboundSchema)).optional(),
             created_at: z
                 .nullable(
@@ -228,7 +364,7 @@ export namespace AtsDocumentApiModel$ {
         });
 
     export type Outbound = {
-        category?: string | null | undefined;
+        category?: Category$.Outbound | null | undefined;
         contents?: Array<Content$.Outbound> | null | undefined;
         created_at?: string | null | undefined;
         id?: string | null | undefined;
@@ -241,7 +377,7 @@ export namespace AtsDocumentApiModel$ {
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, AtsDocumentApiModel> = z
         .object({
-            category: z.nullable(z.string()).optional(),
+            category: z.nullable(z.lazy(() => Category$.outboundSchema)).optional(),
             contents: z.nullable(z.array(Content$.outboundSchema)).optional(),
             createdAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
             id: z.nullable(z.string()).optional(),

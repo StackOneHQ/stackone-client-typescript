@@ -1,5 +1,7 @@
 # UnifiedUploadRequestDtoValue
 
+Whether the file is confidential or not
+
 
 ## Values
 

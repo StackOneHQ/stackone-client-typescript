@@ -70,6 +70,7 @@ export * from "./hriscreateworkeligibilityrequestdto";
 export * from "./hrisdocumentapimodel";
 export * from "./hrisdocumentresult";
 export * from "./hrisdocumentspaginated";
+export * from "./hrisdocumentsuploadrequestdto";
 export * from "./hrisgroup";
 export * from "./hrisgroupspaginated";
 export * from "./hrisgroupsresult";

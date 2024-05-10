@@ -39,6 +39,7 @@ export * from "./atslistrejectedreasons";
 export * from "./atslistusers";
 export * from "./atsupdateapplication";
 export * from "./atsupdatecandidate";
+export * from "./atsuploadapplicationdocument";
 export * from "./crmcreatecontact";
 export * from "./crmgetaccount";
 export * from "./crmgetcontact";
