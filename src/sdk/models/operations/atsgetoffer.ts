@@ -46,15 +46,7 @@ export type AtsGetOfferResponse = {
 
 /** @internal */
 export namespace AtsGetOfferRequest$ {
-    export type Inbound = {
-        fields?: string | null | undefined;
-        id: string;
-        proxy?: Record<string, any> | null | undefined;
-        raw?: boolean | null | undefined;
-        "x-account-id": string;
-    };
-
-    export const inboundSchema: z.ZodType<AtsGetOfferRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<AtsGetOfferRequest, z.ZodTypeDef, unknown> = z
         .object({
             fields: z.nullable(z.string()).optional(),
             id: z.string(),
@@ -101,14 +93,7 @@ export namespace AtsGetOfferRequest$ {
 
 /** @internal */
 export namespace AtsGetOfferResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        OffersResult?: shared.OffersResult$.Inbound | undefined;
-        StatusCode: number;
-        RawResponse: Response;
-    };
-
-    export const inboundSchema: z.ZodType<AtsGetOfferResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<AtsGetOfferResponse, z.ZodTypeDef, unknown> = z
         .object({
             ContentType: z.string(),
             OffersResult: shared.OffersResult$.inboundSchema.optional(),

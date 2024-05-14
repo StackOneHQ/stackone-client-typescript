@@ -34,12 +34,7 @@ export type HrisCreateTimeOffRequestResponse = {
 
 /** @internal */
 export namespace HrisCreateTimeOffRequestRequest$ {
-    export type Inbound = {
-        HrisCreateTimeOffRequestDto: shared.HrisCreateTimeOffRequestDto$.Inbound;
-        "x-account-id": string;
-    };
-
-    export const inboundSchema: z.ZodType<HrisCreateTimeOffRequestRequest, z.ZodTypeDef, Inbound> =
+    export const inboundSchema: z.ZodType<HrisCreateTimeOffRequestRequest, z.ZodTypeDef, unknown> =
         z
             .object({
                 HrisCreateTimeOffRequestDto: shared.HrisCreateTimeOffRequestDto$.inboundSchema,
@@ -76,14 +71,7 @@ export namespace HrisCreateTimeOffRequestRequest$ {
 
 /** @internal */
 export namespace HrisCreateTimeOffRequestResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        CreateResult?: shared.CreateResult$.Inbound | undefined;
-        StatusCode: number;
-        RawResponse: Response;
-    };
-
-    export const inboundSchema: z.ZodType<HrisCreateTimeOffRequestResponse, z.ZodTypeDef, Inbound> =
+    export const inboundSchema: z.ZodType<HrisCreateTimeOffRequestResponse, z.ZodTypeDef, unknown> =
         z
             .object({
                 ContentType: z.string(),

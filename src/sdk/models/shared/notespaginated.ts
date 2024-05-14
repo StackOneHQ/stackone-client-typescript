@@ -18,14 +18,7 @@ export type NotesPaginated = {
 
 /** @internal */
 export namespace NotesPaginated$ {
-    export type Inbound = {
-        data: Array<Note$.Inbound>;
-        next?: string | null | undefined;
-        next_page?: string | null | undefined;
-        raw?: Array<RawResponse$.Inbound> | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<NotesPaginated, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<NotesPaginated, z.ZodTypeDef, unknown> = z
         .object({
             data: z.array(Note$.inboundSchema),
             next: z.nullable(z.string()).optional(),

@@ -130,9 +130,7 @@ export type AtsCreateApplicationRequestDto = {
 
 /** @internal */
 export namespace AtsCreateApplicationRequestDto4$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<AtsCreateApplicationRequestDto4, z.ZodTypeDef, Inbound> =
+    export const inboundSchema: z.ZodType<AtsCreateApplicationRequestDto4, z.ZodTypeDef, unknown> =
         z.object({});
 
     export type Outbound = {};
@@ -146,19 +144,18 @@ export namespace AtsCreateApplicationRequestDto4$ {
 
 /** @internal */
 export namespace AtsCreateApplicationRequestDtoSourceValue$ {
-    export type Inbound = AtsCreateApplicationRequestDto4$.Inbound | string | number | boolean;
-
-    export type Outbound = AtsCreateApplicationRequestDto4$.Outbound | string | number | boolean;
     export const inboundSchema: z.ZodType<
         AtsCreateApplicationRequestDtoSourceValue,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z.union([
         z.lazy(() => AtsCreateApplicationRequestDto4$.inboundSchema),
         z.string(),
         z.number(),
         z.boolean(),
     ]);
+
+    export type Outbound = AtsCreateApplicationRequestDto4$.Outbound | string | number | boolean;
     export const outboundSchema: z.ZodType<
         Outbound,
         z.ZodTypeDef,
@@ -178,21 +175,10 @@ export const AtsCreateApplicationRequestDtoValue$: z.ZodNativeEnum<
 
 /** @internal */
 export namespace AtsCreateApplicationRequestDtoApplicationStatus$ {
-    export type Inbound = {
-        source_value?:
-            | AtsCreateApplicationRequestDto4$.Inbound
-            | string
-            | number
-            | boolean
-            | null
-            | undefined;
-        value?: AtsCreateApplicationRequestDtoValue | null | undefined;
-    };
-
     export const inboundSchema: z.ZodType<
         AtsCreateApplicationRequestDtoApplicationStatus,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z
         .object({
             source_value: z
@@ -253,23 +239,10 @@ export namespace AtsCreateApplicationRequestDtoApplicationStatus$ {
 
 /** @internal */
 export namespace AtsCreateApplicationRequestDtoCandidate$ {
-    export type Inbound = {
-        company?: string | null | undefined;
-        country?: string | null | undefined;
-        email?: string | null | undefined;
-        first_name?: string | null | undefined;
-        hired_at?: string | null | undefined;
-        last_name?: string | null | undefined;
-        name?: string | null | undefined;
-        phone_number?: string | null | undefined;
-        social_links?: Array<SocialLink$.Inbound> | null | undefined;
-        title?: string | null | undefined;
-    };
-
     export const inboundSchema: z.ZodType<
         AtsCreateApplicationRequestDtoCandidate,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z
         .object({
             company: z.nullable(z.string()).optional(),
@@ -353,20 +326,7 @@ export namespace AtsCreateApplicationRequestDtoCandidate$ {
 
 /** @internal */
 export namespace AtsCreateApplicationRequestDto$ {
-    export type Inbound = {
-        application_status?:
-            | AtsCreateApplicationRequestDtoApplicationStatus$.Inbound
-            | null
-            | undefined;
-        candidate?: AtsCreateApplicationRequestDtoCandidate$.Inbound | null | undefined;
-        candidate_id?: string | null | undefined;
-        job_id?: string | null | undefined;
-        location_id?: string | null | undefined;
-        questionnaires?: Array<Questionnaire$.Inbound> | null | undefined;
-        source?: string | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<AtsCreateApplicationRequestDto, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<AtsCreateApplicationRequestDto, z.ZodTypeDef, unknown> = z
         .object({
             application_status: z
                 .nullable(

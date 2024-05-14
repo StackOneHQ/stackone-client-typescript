@@ -35,16 +35,10 @@ export type MarketingUpdateEmailTemplateResponse = {
 
 /** @internal */
 export namespace MarketingUpdateEmailTemplateRequest$ {
-    export type Inbound = {
-        MarketingCreateEmailTemplateRequestDto: shared.MarketingCreateEmailTemplateRequestDto$.Inbound;
-        id: string;
-        "x-account-id": string;
-    };
-
     export const inboundSchema: z.ZodType<
         MarketingUpdateEmailTemplateRequest,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z
         .object({
             MarketingCreateEmailTemplateRequestDto:
@@ -88,17 +82,10 @@ export namespace MarketingUpdateEmailTemplateRequest$ {
 
 /** @internal */
 export namespace MarketingUpdateEmailTemplateResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        CreateResult?: shared.CreateResult$.Inbound | undefined;
-        StatusCode: number;
-        RawResponse: Response;
-    };
-
     export const inboundSchema: z.ZodType<
         MarketingUpdateEmailTemplateResponse,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z
         .object({
             ContentType: z.string(),

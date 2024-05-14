@@ -26,13 +26,7 @@ export const LinkedAccountMetaCategory$: z.ZodNativeEnum<typeof LinkedAccountMet
 
 /** @internal */
 export namespace LinkedAccountMeta$ {
-    export type Inbound = {
-        category: LinkedAccountMetaCategory;
-        models: Record<string, any>;
-        provider: string;
-    };
-
-    export const inboundSchema: z.ZodType<LinkedAccountMeta, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<LinkedAccountMeta, z.ZodTypeDef, unknown> = z
         .object({
             category: LinkedAccountMetaCategory$,
             models: z.record(z.any()),

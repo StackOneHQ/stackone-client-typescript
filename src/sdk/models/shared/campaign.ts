@@ -115,9 +115,7 @@ export type Campaign = {
 
 /** @internal */
 export namespace Campaign4$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<Campaign4, z.ZodTypeDef, Inbound> = z.object({});
+    export const inboundSchema: z.ZodType<Campaign4, z.ZodTypeDef, unknown> = z.object({});
 
     export type Outbound = {};
 
@@ -126,15 +124,14 @@ export namespace Campaign4$ {
 
 /** @internal */
 export namespace CampaignSourceValue$ {
-    export type Inbound = Campaign4$.Inbound | string | number | boolean;
-
-    export type Outbound = Campaign4$.Outbound | string | number | boolean;
-    export const inboundSchema: z.ZodType<CampaignSourceValue, z.ZodTypeDef, Inbound> = z.union([
+    export const inboundSchema: z.ZodType<CampaignSourceValue, z.ZodTypeDef, unknown> = z.union([
         z.lazy(() => Campaign4$.inboundSchema),
         z.string(),
         z.number(),
         z.boolean(),
     ]);
+
+    export type Outbound = Campaign4$.Outbound | string | number | boolean;
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CampaignSourceValue> = z.union([
         z.lazy(() => Campaign4$.outboundSchema),
         z.string(),
@@ -148,12 +145,7 @@ export const CampaignValue$: z.ZodNativeEnum<typeof CampaignValue> = z.nativeEnu
 
 /** @internal */
 export namespace ScheduleType$ {
-    export type Inbound = {
-        source_value?: Campaign4$.Inbound | string | number | boolean | null | undefined;
-        value?: CampaignValue | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<ScheduleType, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<ScheduleType, z.ZodTypeDef, unknown> = z
         .object({
             source_value: z
                 .nullable(
@@ -203,9 +195,7 @@ export namespace ScheduleType$ {
 
 /** @internal */
 export namespace CampaignSchemas4$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<CampaignSchemas4, z.ZodTypeDef, Inbound> = z.object({});
+    export const inboundSchema: z.ZodType<CampaignSchemas4, z.ZodTypeDef, unknown> = z.object({});
 
     export type Outbound = {};
 
@@ -214,16 +204,15 @@ export namespace CampaignSchemas4$ {
 
 /** @internal */
 export namespace CampaignSchemasSourceValue$ {
-    export type Inbound = CampaignSchemas4$.Inbound | string | number | boolean;
-
-    export type Outbound = CampaignSchemas4$.Outbound | string | number | boolean;
-    export const inboundSchema: z.ZodType<CampaignSchemasSourceValue, z.ZodTypeDef, Inbound> =
+    export const inboundSchema: z.ZodType<CampaignSchemasSourceValue, z.ZodTypeDef, unknown> =
         z.union([
             z.lazy(() => CampaignSchemas4$.inboundSchema),
             z.string(),
             z.number(),
             z.boolean(),
         ]);
+
+    export type Outbound = CampaignSchemas4$.Outbound | string | number | boolean;
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CampaignSchemasSourceValue> =
         z.union([
             z.lazy(() => CampaignSchemas4$.outboundSchema),
@@ -239,12 +228,7 @@ export const CampaignSchemasValue$: z.ZodNativeEnum<typeof CampaignSchemasValue>
 
 /** @internal */
 export namespace Status$ {
-    export type Inbound = {
-        source_value?: CampaignSchemas4$.Inbound | string | number | boolean | null | undefined;
-        value?: CampaignSchemasValue | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<Status, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<Status, z.ZodTypeDef, unknown> = z
         .object({
             source_value: z
                 .nullable(
@@ -294,25 +278,7 @@ export namespace Status$ {
 
 /** @internal */
 export namespace Campaign$ {
-    export type Inbound = {
-        archived?: boolean | null | undefined;
-        channels?: Array<ChannelsEnum$.Inbound> | null | undefined;
-        created_at?: string | null | undefined;
-        description?: string | null | undefined;
-        draft?: boolean | null | undefined;
-        first_sent_at?: string | null | undefined;
-        id?: string | null | undefined;
-        last_sent_at?: string | null | undefined;
-        messages?: Array<Message$.Inbound> | null | undefined;
-        name?: string | null | undefined;
-        remote_id?: string | null | undefined;
-        schedule_type?: ScheduleType$.Inbound | null | undefined;
-        status?: Status$.Inbound | null | undefined;
-        tags?: Array<string> | null | undefined;
-        updated_at?: string | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<Campaign, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<Campaign, z.ZodTypeDef, unknown> = z
         .object({
             archived: z.nullable(z.boolean()).optional(),
             channels: z.nullable(z.array(ChannelsEnum$.inboundSchema)).optional(),

@@ -46,15 +46,7 @@ export type AtsGetDepartmentResponse = {
 
 /** @internal */
 export namespace AtsGetDepartmentRequest$ {
-    export type Inbound = {
-        fields?: string | null | undefined;
-        id: string;
-        proxy?: Record<string, any> | null | undefined;
-        raw?: boolean | null | undefined;
-        "x-account-id": string;
-    };
-
-    export const inboundSchema: z.ZodType<AtsGetDepartmentRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<AtsGetDepartmentRequest, z.ZodTypeDef, unknown> = z
         .object({
             fields: z.nullable(z.string()).optional(),
             id: z.string(),
@@ -101,14 +93,7 @@ export namespace AtsGetDepartmentRequest$ {
 
 /** @internal */
 export namespace AtsGetDepartmentResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        DepartmentResult?: shared.DepartmentResult$.Inbound | undefined;
-        StatusCode: number;
-        RawResponse: Response;
-    };
-
-    export const inboundSchema: z.ZodType<AtsGetDepartmentResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<AtsGetDepartmentResponse, z.ZodTypeDef, unknown> = z
         .object({
             ContentType: z.string(),
             DepartmentResult: shared.DepartmentResult$.inboundSchema.optional(),

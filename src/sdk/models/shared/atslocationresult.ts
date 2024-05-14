@@ -13,12 +13,7 @@ export type ATSLocationResult = {
 
 /** @internal */
 export namespace ATSLocationResult$ {
-    export type Inbound = {
-        data: ATSLocation$.Inbound;
-        raw?: Array<RawResponse$.Inbound> | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<ATSLocationResult, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<ATSLocationResult, z.ZodTypeDef, unknown> = z
         .object({
             data: ATSLocation$.inboundSchema,
             raw: z.nullable(z.array(RawResponse$.inboundSchema)).optional(),

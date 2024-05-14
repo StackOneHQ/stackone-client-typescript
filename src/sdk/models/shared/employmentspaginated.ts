@@ -18,14 +18,7 @@ export type EmploymentsPaginated = {
 
 /** @internal */
 export namespace EmploymentsPaginated$ {
-    export type Inbound = {
-        data: Array<Employment$.Inbound>;
-        next?: string | null | undefined;
-        next_page?: string | null | undefined;
-        raw?: Array<RawResponse$.Inbound> | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<EmploymentsPaginated, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<EmploymentsPaginated, z.ZodTypeDef, unknown> = z
         .object({
             data: z.array(Employment$.inboundSchema),
             next: z.nullable(z.string()).optional(),

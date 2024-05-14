@@ -31,9 +31,7 @@ export type LinkedAccount = {
 
 /** @internal */
 export namespace Credentials$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<Credentials, z.ZodTypeDef, Inbound> = z.object({});
+    export const inboundSchema: z.ZodType<Credentials, z.ZodTypeDef, unknown> = z.object({});
 
     export type Outbound = {};
 
@@ -42,9 +40,7 @@ export namespace Credentials$ {
 
 /** @internal */
 export namespace SetupInformation$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<SetupInformation, z.ZodTypeDef, Inbound> = z.object({});
+    export const inboundSchema: z.ZodType<SetupInformation, z.ZodTypeDef, unknown> = z.object({});
 
     export type Outbound = {};
 
@@ -57,22 +53,7 @@ export const LinkedAccountStatus$: z.ZodNativeEnum<typeof LinkedAccountStatus> =
 
 /** @internal */
 export namespace LinkedAccount$ {
-    export type Inbound = {
-        created_at: string;
-        credentials?: Credentials$.Inbound | null | undefined;
-        id: string;
-        label?: string | null | undefined;
-        origin_owner_id: string;
-        origin_owner_name: string;
-        origin_username?: string | null | undefined;
-        provider: string;
-        setup_information?: SetupInformation$.Inbound | null | undefined;
-        status: LinkedAccountStatus;
-        status_reasons?: Array<string> | null | undefined;
-        updated_at: string;
-    };
-
-    export const inboundSchema: z.ZodType<LinkedAccount, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<LinkedAccount, z.ZodTypeDef, unknown> = z
         .object({
             created_at: z
                 .string()

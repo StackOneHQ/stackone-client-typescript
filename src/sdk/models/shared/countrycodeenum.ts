@@ -273,9 +273,7 @@ export type CountryCodeEnum = {
 
 /** @internal */
 export namespace CountryCodeEnum4$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<CountryCodeEnum4, z.ZodTypeDef, Inbound> = z.object({});
+    export const inboundSchema: z.ZodType<CountryCodeEnum4, z.ZodTypeDef, unknown> = z.object({});
 
     export type Outbound = {};
 
@@ -284,16 +282,15 @@ export namespace CountryCodeEnum4$ {
 
 /** @internal */
 export namespace CountryCodeEnumSourceValue$ {
-    export type Inbound = CountryCodeEnum4$.Inbound | string | number | boolean;
-
-    export type Outbound = CountryCodeEnum4$.Outbound | string | number | boolean;
-    export const inboundSchema: z.ZodType<CountryCodeEnumSourceValue, z.ZodTypeDef, Inbound> =
+    export const inboundSchema: z.ZodType<CountryCodeEnumSourceValue, z.ZodTypeDef, unknown> =
         z.union([
             z.lazy(() => CountryCodeEnum4$.inboundSchema),
             z.string(),
             z.number(),
             z.boolean(),
         ]);
+
+    export type Outbound = CountryCodeEnum4$.Outbound | string | number | boolean;
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CountryCodeEnumSourceValue> =
         z.union([
             z.lazy(() => CountryCodeEnum4$.outboundSchema),
@@ -309,12 +306,7 @@ export const CountryCodeEnumValue$: z.ZodNativeEnum<typeof CountryCodeEnumValue>
 
 /** @internal */
 export namespace CountryCodeEnum$ {
-    export type Inbound = {
-        source_value?: CountryCodeEnum4$.Inbound | string | number | boolean | null | undefined;
-        value?: CountryCodeEnumValue | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<CountryCodeEnum, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<CountryCodeEnum, z.ZodTypeDef, unknown> = z
         .object({
             source_value: z
                 .nullable(

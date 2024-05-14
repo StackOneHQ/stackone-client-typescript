@@ -89,23 +89,7 @@ export type AtsListApplicationsResponse = {
 
 /** @internal */
 export namespace AtsListApplicationsRequest$ {
-    export type Inbound = {
-        expand?: string | null | undefined;
-        fields?: string | null | undefined;
-        "filter[job_id]"?: string | null | undefined;
-        "filter[updated_after]"?: string | null | undefined;
-        job_id?: string | null | undefined;
-        next?: string | null | undefined;
-        page?: string | null | undefined;
-        page_size?: string | null | undefined;
-        proxy?: Record<string, any> | null | undefined;
-        raw?: boolean | null | undefined;
-        sync_token?: string | null | undefined;
-        updated_after?: string | null | undefined;
-        "x-account-id": string;
-    };
-
-    export const inboundSchema: z.ZodType<AtsListApplicationsRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<AtsListApplicationsRequest, z.ZodTypeDef, unknown> = z
         .object({
             expand: z.nullable(z.string()).optional(),
             fields: z.nullable(z.string()).optional(),
@@ -198,14 +182,7 @@ export namespace AtsListApplicationsRequest$ {
 
 /** @internal */
 export namespace AtsListApplicationsResponse$ {
-    export type Inbound = {
-        ApplicationsPaginated?: shared.ApplicationsPaginated$.Inbound | undefined;
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: Response;
-    };
-
-    export const inboundSchema: z.ZodType<AtsListApplicationsResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<AtsListApplicationsResponse, z.ZodTypeDef, unknown> = z
         .object({
             ApplicationsPaginated: shared.ApplicationsPaginated$.inboundSchema.optional(),
             ContentType: z.string(),

@@ -21,18 +21,10 @@ export type MarketingCreateTemplateRequestDto = {
 
 /** @internal */
 export namespace MarketingCreateTemplateRequestDto$ {
-    export type Inbound = {
-        id?: string | null | undefined;
-        messages?: Array<Message$.Inbound> | null | undefined;
-        name?: string | null | undefined;
-        remote_id?: string | null | undefined;
-        tags?: Array<string> | null | undefined;
-    };
-
     export const inboundSchema: z.ZodType<
         MarketingCreateTemplateRequestDto,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z
         .object({
             id: z.nullable(z.string()).optional(),

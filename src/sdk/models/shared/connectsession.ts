@@ -33,21 +33,7 @@ export const Categories$: z.ZodNativeEnum<typeof Categories> = z.nativeEnum(Cate
 
 /** @internal */
 export namespace ConnectSession$ {
-    export type Inbound = {
-        account_id?: string | null | undefined;
-        categories?: Array<Categories> | null | undefined;
-        created_at: string;
-        id: number;
-        label?: string | null | undefined;
-        organization_id: number;
-        origin_owner_id: string;
-        origin_owner_name: string;
-        origin_username?: string | null | undefined;
-        project_id: string;
-        provider?: string | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<ConnectSession, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<ConnectSession, z.ZodTypeDef, unknown> = z
         .object({
             account_id: z.nullable(z.string()).optional(),
             categories: z.nullable(z.array(Categories$)).optional(),

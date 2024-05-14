@@ -70,20 +70,7 @@ export type HrisListEmployeeDocumentsResponse = {
 
 /** @internal */
 export namespace HrisListEmployeeDocumentsRequest$ {
-    export type Inbound = {
-        fields?: string | null | undefined;
-        "filter[updated_after]"?: string | null | undefined;
-        id: string;
-        next?: string | null | undefined;
-        page?: string | null | undefined;
-        page_size?: string | null | undefined;
-        proxy?: Record<string, any> | null | undefined;
-        raw?: boolean | null | undefined;
-        updated_after?: string | null | undefined;
-        "x-account-id": string;
-    };
-
-    export const inboundSchema: z.ZodType<HrisListEmployeeDocumentsRequest, z.ZodTypeDef, Inbound> =
+    export const inboundSchema: z.ZodType<HrisListEmployeeDocumentsRequest, z.ZodTypeDef, unknown> =
         z
             .object({
                 fields: z.nullable(z.string()).optional(),
@@ -164,17 +151,10 @@ export namespace HrisListEmployeeDocumentsRequest$ {
 
 /** @internal */
 export namespace HrisListEmployeeDocumentsResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        HrisDocumentsPaginated?: shared.HrisDocumentsPaginated$.Inbound | undefined;
-        StatusCode: number;
-        RawResponse: Response;
-    };
-
     export const inboundSchema: z.ZodType<
         HrisListEmployeeDocumentsResponse,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z
         .object({
             ContentType: z.string(),

@@ -18,14 +18,7 @@ export type ListsPaginated = {
 
 /** @internal */
 export namespace ListsPaginated$ {
-    export type Inbound = {
-        data: Array<List$.Inbound>;
-        next?: string | null | undefined;
-        next_page?: string | null | undefined;
-        raw?: Array<RawResponse$.Inbound> | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<ListsPaginated, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<ListsPaginated, z.ZodTypeDef, unknown> = z
         .object({
             data: z.array(List$.inboundSchema),
             next: z.nullable(z.string()).optional(),

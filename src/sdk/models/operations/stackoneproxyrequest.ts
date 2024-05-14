@@ -33,12 +33,7 @@ export type StackoneProxyRequestResponse = {
 
 /** @internal */
 export namespace StackoneProxyRequestRequest$ {
-    export type Inbound = {
-        ProxyRequestBody: shared.ProxyRequestBody$.Inbound;
-        "x-account-id": string;
-    };
-
-    export const inboundSchema: z.ZodType<StackoneProxyRequestRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<StackoneProxyRequestRequest, z.ZodTypeDef, unknown> = z
         .object({
             ProxyRequestBody: shared.ProxyRequestBody$.inboundSchema,
             "x-account-id": z.string(),
@@ -70,13 +65,7 @@ export namespace StackoneProxyRequestRequest$ {
 
 /** @internal */
 export namespace StackoneProxyRequestResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: Response;
-    };
-
-    export const inboundSchema: z.ZodType<StackoneProxyRequestResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<StackoneProxyRequestResponse, z.ZodTypeDef, unknown> = z
         .object({
             ContentType: z.string(),
             StatusCode: z.number().int(),

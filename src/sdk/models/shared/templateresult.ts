@@ -13,12 +13,7 @@ export type TemplateResult = {
 
 /** @internal */
 export namespace TemplateResult$ {
-    export type Inbound = {
-        data: Template$.Inbound;
-        raw?: Array<RawResponse$.Inbound> | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<TemplateResult, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<TemplateResult, z.ZodTypeDef, unknown> = z
         .object({
             data: Template$.inboundSchema,
             raw: z.nullable(z.array(RawResponse$.inboundSchema)).optional(),

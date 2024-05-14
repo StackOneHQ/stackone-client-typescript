@@ -52,9 +52,7 @@ export type AtsCreateNotesRequestDto = {
 
 /** @internal */
 export namespace AtsCreateNotesRequestDto4$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<AtsCreateNotesRequestDto4, z.ZodTypeDef, Inbound> =
+    export const inboundSchema: z.ZodType<AtsCreateNotesRequestDto4, z.ZodTypeDef, unknown> =
         z.object({});
 
     export type Outbound = {};
@@ -65,19 +63,18 @@ export namespace AtsCreateNotesRequestDto4$ {
 
 /** @internal */
 export namespace AtsCreateNotesRequestDtoSourceValue$ {
-    export type Inbound = AtsCreateNotesRequestDto4$.Inbound | string | number | boolean;
-
-    export type Outbound = AtsCreateNotesRequestDto4$.Outbound | string | number | boolean;
     export const inboundSchema: z.ZodType<
         AtsCreateNotesRequestDtoSourceValue,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z.union([
         z.lazy(() => AtsCreateNotesRequestDto4$.inboundSchema),
         z.string(),
         z.number(),
         z.boolean(),
     ]);
+
+    export type Outbound = AtsCreateNotesRequestDto4$.Outbound | string | number | boolean;
     export const outboundSchema: z.ZodType<
         Outbound,
         z.ZodTypeDef,
@@ -96,18 +93,7 @@ export const AtsCreateNotesRequestDtoValue$: z.ZodNativeEnum<typeof AtsCreateNot
 
 /** @internal */
 export namespace Visibility$ {
-    export type Inbound = {
-        source_value?:
-            | AtsCreateNotesRequestDto4$.Inbound
-            | string
-            | number
-            | boolean
-            | null
-            | undefined;
-        value?: AtsCreateNotesRequestDtoValue | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<Visibility, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<Visibility, z.ZodTypeDef, unknown> = z
         .object({
             source_value: z
                 .nullable(
@@ -163,13 +149,7 @@ export namespace Visibility$ {
 
 /** @internal */
 export namespace AtsCreateNotesRequestDto$ {
-    export type Inbound = {
-        author_id?: string | null | undefined;
-        content?: Array<NoteContentApiModel$.Inbound> | null | undefined;
-        visibility?: Visibility$.Inbound | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<AtsCreateNotesRequestDto, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<AtsCreateNotesRequestDto, z.ZodTypeDef, unknown> = z
         .object({
             author_id: z.nullable(z.string()).optional(),
             content: z.nullable(z.array(NoteContentApiModel$.inboundSchema)).optional(),

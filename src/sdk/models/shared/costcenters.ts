@@ -11,12 +11,7 @@ export type CostCenters = {
 
 /** @internal */
 export namespace CostCenters$ {
-    export type Inbound = {
-        distribution_percentage?: number | null | undefined;
-        name?: string | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<CostCenters, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<CostCenters, z.ZodTypeDef, unknown> = z
         .object({
             distribution_percentage: z.nullable(z.number()).optional(),
             name: z.nullable(z.string()).optional(),

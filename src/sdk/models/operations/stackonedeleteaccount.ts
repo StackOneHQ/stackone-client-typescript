@@ -30,11 +30,7 @@ export type StackoneDeleteAccountResponse = {
 
 /** @internal */
 export namespace StackoneDeleteAccountRequest$ {
-    export type Inbound = {
-        id: string;
-    };
-
-    export const inboundSchema: z.ZodType<StackoneDeleteAccountRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<StackoneDeleteAccountRequest, z.ZodTypeDef, unknown> = z
         .object({
             id: z.string(),
         })
@@ -61,14 +57,7 @@ export namespace StackoneDeleteAccountRequest$ {
 
 /** @internal */
 export namespace StackoneDeleteAccountResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        LinkedAccount?: shared.LinkedAccount$.Inbound | undefined;
-        StatusCode: number;
-        RawResponse: Response;
-    };
-
-    export const inboundSchema: z.ZodType<StackoneDeleteAccountResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<StackoneDeleteAccountResponse, z.ZodTypeDef, unknown> = z
         .object({
             ContentType: z.string(),
             LinkedAccount: shared.LinkedAccount$.inboundSchema.optional(),

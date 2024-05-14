@@ -14,14 +14,7 @@ export type CreateResult = {
 
 /** @internal */
 export namespace CreateResult$ {
-    export type Inbound = {
-        data: CreateResultDataApiModel$.Inbound;
-        message: string;
-        statusCode: number;
-        timestamp: string;
-    };
-
-    export const inboundSchema: z.ZodType<CreateResult, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<CreateResult, z.ZodTypeDef, unknown> = z
         .object({
             data: CreateResultDataApiModel$.inboundSchema,
             message: z.string(),

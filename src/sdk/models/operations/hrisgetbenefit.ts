@@ -46,15 +46,7 @@ export type HrisGetBenefitResponse = {
 
 /** @internal */
 export namespace HrisGetBenefitRequest$ {
-    export type Inbound = {
-        fields?: string | null | undefined;
-        id: string;
-        proxy?: Record<string, any> | null | undefined;
-        raw?: boolean | null | undefined;
-        "x-account-id": string;
-    };
-
-    export const inboundSchema: z.ZodType<HrisGetBenefitRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<HrisGetBenefitRequest, z.ZodTypeDef, unknown> = z
         .object({
             fields: z.nullable(z.string()).optional(),
             id: z.string(),
@@ -101,14 +93,7 @@ export namespace HrisGetBenefitRequest$ {
 
 /** @internal */
 export namespace HrisGetBenefitResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        HRISBenefitResult?: shared.HRISBenefitResult$.Inbound | undefined;
-        StatusCode: number;
-        RawResponse: Response;
-    };
-
-    export const inboundSchema: z.ZodType<HrisGetBenefitResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<HrisGetBenefitResponse, z.ZodTypeDef, unknown> = z
         .object({
             ContentType: z.string(),
             HRISBenefitResult: shared.HRISBenefitResult$.inboundSchema.optional(),

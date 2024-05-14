@@ -13,11 +13,7 @@ export type NoteContentApiModel = {
 
 /** @internal */
 export namespace NoteContentApiModel$ {
-    export type Inbound = {
-        body?: string | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<NoteContentApiModel, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<NoteContentApiModel, z.ZodTypeDef, unknown> = z
         .object({
             body: z.nullable(z.string()).optional(),
         })

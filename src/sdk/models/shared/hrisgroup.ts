@@ -49,9 +49,7 @@ export type HRISGroup = {
 
 /** @internal */
 export namespace HRISGroup4$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<HRISGroup4, z.ZodTypeDef, Inbound> = z.object({});
+    export const inboundSchema: z.ZodType<HRISGroup4, z.ZodTypeDef, unknown> = z.object({});
 
     export type Outbound = {};
 
@@ -60,15 +58,14 @@ export namespace HRISGroup4$ {
 
 /** @internal */
 export namespace HRISGroupSourceValue$ {
-    export type Inbound = HRISGroup4$.Inbound | string | number | boolean;
-
-    export type Outbound = HRISGroup4$.Outbound | string | number | boolean;
-    export const inboundSchema: z.ZodType<HRISGroupSourceValue, z.ZodTypeDef, Inbound> = z.union([
+    export const inboundSchema: z.ZodType<HRISGroupSourceValue, z.ZodTypeDef, unknown> = z.union([
         z.lazy(() => HRISGroup4$.inboundSchema),
         z.string(),
         z.number(),
         z.boolean(),
     ]);
+
+    export type Outbound = HRISGroup4$.Outbound | string | number | boolean;
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, HRISGroupSourceValue> = z.union([
         z.lazy(() => HRISGroup4$.outboundSchema),
         z.string(),
@@ -82,12 +79,7 @@ export const HRISGroupValue$: z.ZodNativeEnum<typeof HRISGroupValue> = z.nativeE
 
 /** @internal */
 export namespace HRISGroupType$ {
-    export type Inbound = {
-        source_value?: HRISGroup4$.Inbound | string | number | boolean | null | undefined;
-        value?: HRISGroupValue | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<HRISGroupType, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<HRISGroupType, z.ZodTypeDef, unknown> = z
         .object({
             source_value: z
                 .nullable(
@@ -137,15 +129,7 @@ export namespace HRISGroupType$ {
 
 /** @internal */
 export namespace HRISGroup$ {
-    export type Inbound = {
-        id?: string | null | undefined;
-        name?: string | null | undefined;
-        parent_ids?: Array<string> | null | undefined;
-        remote_id?: string | null | undefined;
-        type?: HRISGroupType$.Inbound | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<HRISGroup, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<HRISGroup, z.ZodTypeDef, unknown> = z
         .object({
             id: z.nullable(z.string()).optional(),
             name: z.nullable(z.string()).optional(),

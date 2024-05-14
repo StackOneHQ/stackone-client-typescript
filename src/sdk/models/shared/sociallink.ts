@@ -17,12 +17,7 @@ export type SocialLink = {
 
 /** @internal */
 export namespace SocialLink$ {
-    export type Inbound = {
-        type?: string | null | undefined;
-        url?: string | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<SocialLink, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<SocialLink, z.ZodTypeDef, unknown> = z
         .object({
             type: z.nullable(z.string()).optional(),
             url: z.nullable(z.string()).optional(),

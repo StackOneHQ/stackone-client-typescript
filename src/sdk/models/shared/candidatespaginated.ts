@@ -18,14 +18,7 @@ export type CandidatesPaginated = {
 
 /** @internal */
 export namespace CandidatesPaginated$ {
-    export type Inbound = {
-        data: Array<Candidate$.Inbound>;
-        next?: string | null | undefined;
-        next_page?: string | null | undefined;
-        raw?: Array<RawResponse$.Inbound> | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<CandidatesPaginated, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<CandidatesPaginated, z.ZodTypeDef, unknown> = z
         .object({
             data: z.array(Candidate$.inboundSchema),
             next: z.nullable(z.string()).optional(),

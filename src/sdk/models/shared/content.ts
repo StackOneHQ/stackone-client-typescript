@@ -1252,9 +1252,7 @@ export type Content = {
 
 /** @internal */
 export namespace Content4$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<Content4, z.ZodTypeDef, Inbound> = z.object({});
+    export const inboundSchema: z.ZodType<Content4, z.ZodTypeDef, unknown> = z.object({});
 
     export type Outbound = {};
 
@@ -1263,15 +1261,14 @@ export namespace Content4$ {
 
 /** @internal */
 export namespace ContentSourceValue$ {
-    export type Inbound = Content4$.Inbound | string | number | boolean;
-
-    export type Outbound = Content4$.Outbound | string | number | boolean;
-    export const inboundSchema: z.ZodType<ContentSourceValue, z.ZodTypeDef, Inbound> = z.union([
+    export const inboundSchema: z.ZodType<ContentSourceValue, z.ZodTypeDef, unknown> = z.union([
         z.lazy(() => Content4$.inboundSchema),
         z.string(),
         z.number(),
         z.boolean(),
     ]);
+
+    export type Outbound = Content4$.Outbound | string | number | boolean;
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ContentSourceValue> = z.union([
         z.lazy(() => Content4$.outboundSchema),
         z.string(),
@@ -1285,12 +1282,7 @@ export const ContentValue$: z.ZodNativeEnum<typeof ContentValue> = z.nativeEnum(
 
 /** @internal */
 export namespace FileFormat$ {
-    export type Inbound = {
-        source_value?: Content4$.Inbound | string | number | boolean | null | undefined;
-        value?: ContentValue | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<FileFormat, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<FileFormat, z.ZodTypeDef, unknown> = z
         .object({
             source_value: z
                 .nullable(
@@ -1340,13 +1332,7 @@ export namespace FileFormat$ {
 
 /** @internal */
 export namespace Content$ {
-    export type Inbound = {
-        file_format?: FileFormat$.Inbound | null | undefined;
-        unified_url?: string | null | undefined;
-        url?: string | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<Content, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<Content, z.ZodTypeDef, unknown> = z
         .object({
             file_format: z.nullable(z.lazy(() => FileFormat$.inboundSchema)).optional(),
             unified_url: z.nullable(z.string()).optional(),

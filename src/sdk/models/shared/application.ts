@@ -188,9 +188,7 @@ export type Application = {
 
 /** @internal */
 export namespace Application4$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<Application4, z.ZodTypeDef, Inbound> = z.object({});
+    export const inboundSchema: z.ZodType<Application4, z.ZodTypeDef, unknown> = z.object({});
 
     export type Outbound = {};
 
@@ -199,15 +197,14 @@ export namespace Application4$ {
 
 /** @internal */
 export namespace ApplicationSourceValue$ {
-    export type Inbound = Application4$.Inbound | string | number | boolean;
-
-    export type Outbound = Application4$.Outbound | string | number | boolean;
-    export const inboundSchema: z.ZodType<ApplicationSourceValue, z.ZodTypeDef, Inbound> = z.union([
+    export const inboundSchema: z.ZodType<ApplicationSourceValue, z.ZodTypeDef, unknown> = z.union([
         z.lazy(() => Application4$.inboundSchema),
         z.string(),
         z.number(),
         z.boolean(),
     ]);
+
+    export type Outbound = Application4$.Outbound | string | number | boolean;
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ApplicationSourceValue> =
         z.union([z.lazy(() => Application4$.outboundSchema), z.string(), z.number(), z.boolean()]);
 }
@@ -218,12 +215,7 @@ export const ApplicationValue$: z.ZodNativeEnum<typeof ApplicationValue> =
 
 /** @internal */
 export namespace ApplicationStatus$ {
-    export type Inbound = {
-        source_value?: Application4$.Inbound | string | number | boolean | null | undefined;
-        value?: ApplicationValue | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<ApplicationStatus, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<ApplicationStatus, z.ZodTypeDef, unknown> = z
         .object({
             source_value: z
                 .nullable(
@@ -273,19 +265,7 @@ export namespace ApplicationStatus$ {
 
 /** @internal */
 export namespace ApplicationCandidate$ {
-    export type Inbound = {
-        company?: string | null | undefined;
-        email?: string | null | undefined;
-        emails?: Array<CandidateEmail$.Inbound> | null | undefined;
-        first_name?: string | null | undefined;
-        last_name?: string | null | undefined;
-        name?: string | null | undefined;
-        phone_numbers?: Array<PhoneNumber$.Inbound> | null | undefined;
-        social_links?: Array<SocialLink$.Inbound> | null | undefined;
-        title?: string | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<ApplicationCandidate, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<ApplicationCandidate, z.ZodTypeDef, unknown> = z
         .object({
             company: z.nullable(z.string()).optional(),
             email: z.nullable(z.string()).optional(),
@@ -352,16 +332,7 @@ export namespace ApplicationCandidate$ {
 
 /** @internal */
 export namespace ApplicationInterviewStage$ {
-    export type Inbound = {
-        created_at?: string | null | undefined;
-        id?: string | null | undefined;
-        name?: string | null | undefined;
-        order?: number | null | undefined;
-        remote_id?: string | null | undefined;
-        updated_at?: string | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<ApplicationInterviewStage, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<ApplicationInterviewStage, z.ZodTypeDef, unknown> = z
         .object({
             created_at: z
                 .nullable(
@@ -427,30 +398,7 @@ export namespace ApplicationInterviewStage$ {
 
 /** @internal */
 export namespace Application$ {
-    export type Inbound = {
-        application_status?: ApplicationStatus$.Inbound | null | undefined;
-        attachments?: Array<ApplicationAttachment$.Inbound> | null | undefined;
-        candidate?: ApplicationCandidate$.Inbound | null | undefined;
-        candidate_id?: string | null | undefined;
-        created_at?: string | null | undefined;
-        documents?: Array<AtsDocumentApiModel$.Inbound> | null | undefined;
-        id?: string | null | undefined;
-        interview_stage?: ApplicationInterviewStage$.Inbound | null | undefined;
-        interview_stage_id?: string | null | undefined;
-        job_id?: string | null | undefined;
-        location_id?: string | null | undefined;
-        location_ids?: Array<string> | null | undefined;
-        questionnaires?: Array<Questionnaire$.Inbound> | null | undefined;
-        rejected_at?: string | null | undefined;
-        rejected_reason_ids?: Array<string> | null | undefined;
-        rejected_reasons?: Array<RejectedReason$.Inbound> | null | undefined;
-        remote_id?: string | null | undefined;
-        result_links?: Array<ResultLink$.Inbound> | null | undefined;
-        source?: string | null | undefined;
-        updated_at?: string | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<Application, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<Application, z.ZodTypeDef, unknown> = z
         .object({
             application_status: z
                 .nullable(z.lazy(() => ApplicationStatus$.inboundSchema))

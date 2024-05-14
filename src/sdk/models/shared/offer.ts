@@ -67,9 +67,7 @@ export type Offer = {
 
 /** @internal */
 export namespace Offer4$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<Offer4, z.ZodTypeDef, Inbound> = z.object({});
+    export const inboundSchema: z.ZodType<Offer4, z.ZodTypeDef, unknown> = z.object({});
 
     export type Outbound = {};
 
@@ -78,15 +76,14 @@ export namespace Offer4$ {
 
 /** @internal */
 export namespace OfferSourceValue$ {
-    export type Inbound = Offer4$.Inbound | string | number | boolean;
-
-    export type Outbound = Offer4$.Outbound | string | number | boolean;
-    export const inboundSchema: z.ZodType<OfferSourceValue, z.ZodTypeDef, Inbound> = z.union([
+    export const inboundSchema: z.ZodType<OfferSourceValue, z.ZodTypeDef, unknown> = z.union([
         z.lazy(() => Offer4$.inboundSchema),
         z.string(),
         z.number(),
         z.boolean(),
     ]);
+
+    export type Outbound = Offer4$.Outbound | string | number | boolean;
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, OfferSourceValue> = z.union([
         z.lazy(() => Offer4$.outboundSchema),
         z.string(),
@@ -100,12 +97,7 @@ export const OfferValue$: z.ZodNativeEnum<typeof OfferValue> = z.nativeEnum(Offe
 
 /** @internal */
 export namespace OfferOfferStatus$ {
-    export type Inbound = {
-        source_value?: Offer4$.Inbound | string | number | boolean | null | undefined;
-        value?: OfferValue | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<OfferOfferStatus, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<OfferOfferStatus, z.ZodTypeDef, unknown> = z
         .object({
             source_value: z
                 .nullable(
@@ -155,20 +147,7 @@ export namespace OfferOfferStatus$ {
 
 /** @internal */
 export namespace Offer$ {
-    export type Inbound = {
-        application_id?: string | null | undefined;
-        created_at?: string | null | undefined;
-        currency?: string | null | undefined;
-        id?: string | null | undefined;
-        offer_history?: Array<OfferHistory$.Inbound> | null | undefined;
-        offer_status?: OfferOfferStatus$.Inbound | null | undefined;
-        remote_id?: string | null | undefined;
-        salary?: number | null | undefined;
-        start_date?: string | null | undefined;
-        updated_at?: string | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<Offer, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<Offer, z.ZodTypeDef, unknown> = z
         .object({
             application_id: z.nullable(z.string()).optional(),
             created_at: z

@@ -50,16 +50,7 @@ export type IamGetUserResponse = {
 
 /** @internal */
 export namespace IamGetUserRequest$ {
-    export type Inbound = {
-        expand?: string | null | undefined;
-        fields?: string | null | undefined;
-        id: string;
-        proxy?: Record<string, any> | null | undefined;
-        raw?: boolean | null | undefined;
-        "x-account-id": string;
-    };
-
-    export const inboundSchema: z.ZodType<IamGetUserRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<IamGetUserRequest, z.ZodTypeDef, unknown> = z
         .object({
             expand: z.nullable(z.string()).optional(),
             fields: z.nullable(z.string()).optional(),
@@ -111,14 +102,7 @@ export namespace IamGetUserRequest$ {
 
 /** @internal */
 export namespace IamGetUserResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        IamUserResult?: shared.IamUserResult$.Inbound | undefined;
-        StatusCode: number;
-        RawResponse: Response;
-    };
-
-    export const inboundSchema: z.ZodType<IamGetUserResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<IamGetUserResponse, z.ZodTypeDef, unknown> = z
         .object({
             ContentType: z.string(),
             IamUserResult: shared.IamUserResult$.inboundSchema.optional(),

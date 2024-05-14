@@ -47,19 +47,10 @@ export type HrisGetEmployeesTimeOffRequestResponse = {
 
 /** @internal */
 export namespace HrisGetEmployeesTimeOffRequestRequest$ {
-    export type Inbound = {
-        fields?: string | null | undefined;
-        id: string;
-        proxy?: Record<string, any> | null | undefined;
-        raw?: boolean | null | undefined;
-        subResourceId: string;
-        "x-account-id": string;
-    };
-
     export const inboundSchema: z.ZodType<
         HrisGetEmployeesTimeOffRequestRequest,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z
         .object({
             fields: z.nullable(z.string()).optional(),
@@ -116,17 +107,10 @@ export namespace HrisGetEmployeesTimeOffRequestRequest$ {
 
 /** @internal */
 export namespace HrisGetEmployeesTimeOffRequestResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: Response;
-        TimeOffResult?: shared.TimeOffResult$.Inbound | undefined;
-    };
-
     export const inboundSchema: z.ZodType<
         HrisGetEmployeesTimeOffRequestResponse,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z
         .object({
             ContentType: z.string(),

@@ -70,9 +70,7 @@ export type AtsUpdateApplicationRequestDto = {
 
 /** @internal */
 export namespace AtsUpdateApplicationRequestDto4$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<AtsUpdateApplicationRequestDto4, z.ZodTypeDef, Inbound> =
+    export const inboundSchema: z.ZodType<AtsUpdateApplicationRequestDto4, z.ZodTypeDef, unknown> =
         z.object({});
 
     export type Outbound = {};
@@ -86,19 +84,18 @@ export namespace AtsUpdateApplicationRequestDto4$ {
 
 /** @internal */
 export namespace AtsUpdateApplicationRequestDtoSourceValue$ {
-    export type Inbound = AtsUpdateApplicationRequestDto4$.Inbound | string | number | boolean;
-
-    export type Outbound = AtsUpdateApplicationRequestDto4$.Outbound | string | number | boolean;
     export const inboundSchema: z.ZodType<
         AtsUpdateApplicationRequestDtoSourceValue,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z.union([
         z.lazy(() => AtsUpdateApplicationRequestDto4$.inboundSchema),
         z.string(),
         z.number(),
         z.boolean(),
     ]);
+
+    export type Outbound = AtsUpdateApplicationRequestDto4$.Outbound | string | number | boolean;
     export const outboundSchema: z.ZodType<
         Outbound,
         z.ZodTypeDef,
@@ -118,21 +115,10 @@ export const AtsUpdateApplicationRequestDtoValue$: z.ZodNativeEnum<
 
 /** @internal */
 export namespace AtsUpdateApplicationRequestDtoApplicationStatus$ {
-    export type Inbound = {
-        source_value?:
-            | AtsUpdateApplicationRequestDto4$.Inbound
-            | string
-            | number
-            | boolean
-            | null
-            | undefined;
-        value?: AtsUpdateApplicationRequestDtoValue | null | undefined;
-    };
-
     export const inboundSchema: z.ZodType<
         AtsUpdateApplicationRequestDtoApplicationStatus,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z
         .object({
             source_value: z
@@ -193,17 +179,7 @@ export namespace AtsUpdateApplicationRequestDtoApplicationStatus$ {
 
 /** @internal */
 export namespace AtsUpdateApplicationRequestDto$ {
-    export type Inbound = {
-        application_status?:
-            | AtsUpdateApplicationRequestDtoApplicationStatus$.Inbound
-            | null
-            | undefined;
-        interview_stage_id?: string | null | undefined;
-        rejected_reason_id?: string | null | undefined;
-        source?: string | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<AtsUpdateApplicationRequestDto, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<AtsUpdateApplicationRequestDto, z.ZodTypeDef, unknown> = z
         .object({
             application_status: z
                 .nullable(

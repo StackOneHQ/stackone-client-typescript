@@ -11,12 +11,7 @@ export type Security = {
 
 /** @internal */
 export namespace Security$ {
-    export type Inbound = {
-        Password?: string | undefined;
-        Username?: string | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<Security, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<Security, z.ZodTypeDef, unknown> = z
         .object({
             Password: z.string().optional(),
             Username: z.string().optional(),

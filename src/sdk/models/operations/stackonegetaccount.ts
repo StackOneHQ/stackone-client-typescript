@@ -30,11 +30,7 @@ export type StackoneGetAccountResponse = {
 
 /** @internal */
 export namespace StackoneGetAccountRequest$ {
-    export type Inbound = {
-        id: string;
-    };
-
-    export const inboundSchema: z.ZodType<StackoneGetAccountRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<StackoneGetAccountRequest, z.ZodTypeDef, unknown> = z
         .object({
             id: z.string(),
         })
@@ -61,14 +57,7 @@ export namespace StackoneGetAccountRequest$ {
 
 /** @internal */
 export namespace StackoneGetAccountResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        LinkedAccount?: shared.LinkedAccount$.Inbound | undefined;
-        StatusCode: number;
-        RawResponse: Response;
-    };
-
-    export const inboundSchema: z.ZodType<StackoneGetAccountResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<StackoneGetAccountResponse, z.ZodTypeDef, unknown> = z
         .object({
             ContentType: z.string(),
             LinkedAccount: shared.LinkedAccount$.inboundSchema.optional(),

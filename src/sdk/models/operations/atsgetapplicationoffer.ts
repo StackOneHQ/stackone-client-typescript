@@ -47,16 +47,7 @@ export type AtsGetApplicationOfferResponse = {
 
 /** @internal */
 export namespace AtsGetApplicationOfferRequest$ {
-    export type Inbound = {
-        fields?: string | null | undefined;
-        id: string;
-        proxy?: Record<string, any> | null | undefined;
-        raw?: boolean | null | undefined;
-        subResourceId: string;
-        "x-account-id": string;
-    };
-
-    export const inboundSchema: z.ZodType<AtsGetApplicationOfferRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<AtsGetApplicationOfferRequest, z.ZodTypeDef, unknown> = z
         .object({
             fields: z.nullable(z.string()).optional(),
             id: z.string(),
@@ -109,14 +100,7 @@ export namespace AtsGetApplicationOfferRequest$ {
 
 /** @internal */
 export namespace AtsGetApplicationOfferResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        OffersResult?: shared.OffersResult$.Inbound | undefined;
-        StatusCode: number;
-        RawResponse: Response;
-    };
-
-    export const inboundSchema: z.ZodType<AtsGetApplicationOfferResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<AtsGetApplicationOfferResponse, z.ZodTypeDef, unknown> = z
         .object({
             ContentType: z.string(),
             OffersResult: shared.OffersResult$.inboundSchema.optional(),

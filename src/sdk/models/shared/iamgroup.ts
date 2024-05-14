@@ -45,9 +45,7 @@ export type IamGroup = {
 
 /** @internal */
 export namespace IamGroup4$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<IamGroup4, z.ZodTypeDef, Inbound> = z.object({});
+    export const inboundSchema: z.ZodType<IamGroup4, z.ZodTypeDef, unknown> = z.object({});
 
     export type Outbound = {};
 
@@ -56,15 +54,14 @@ export namespace IamGroup4$ {
 
 /** @internal */
 export namespace IamGroupSourceValue$ {
-    export type Inbound = IamGroup4$.Inbound | string | number | boolean;
-
-    export type Outbound = IamGroup4$.Outbound | string | number | boolean;
-    export const inboundSchema: z.ZodType<IamGroupSourceValue, z.ZodTypeDef, Inbound> = z.union([
+    export const inboundSchema: z.ZodType<IamGroupSourceValue, z.ZodTypeDef, unknown> = z.union([
         z.lazy(() => IamGroup4$.inboundSchema),
         z.string(),
         z.number(),
         z.boolean(),
     ]);
+
+    export type Outbound = IamGroup4$.Outbound | string | number | boolean;
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, IamGroupSourceValue> = z.union([
         z.lazy(() => IamGroup4$.outboundSchema),
         z.string(),
@@ -78,12 +75,7 @@ export const IamGroupValue$: z.ZodNativeEnum<typeof IamGroupValue> = z.nativeEnu
 
 /** @internal */
 export namespace IamGroupType$ {
-    export type Inbound = {
-        source_value?: IamGroup4$.Inbound | string | number | boolean | null | undefined;
-        value?: IamGroupValue | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<IamGroupType, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<IamGroupType, z.ZodTypeDef, unknown> = z
         .object({
             source_value: z
                 .nullable(
@@ -133,19 +125,7 @@ export namespace IamGroupType$ {
 
 /** @internal */
 export namespace IamGroup$ {
-    export type Inbound = {
-        created_at?: string | null | undefined;
-        description?: string | null | undefined;
-        id?: string | null | undefined;
-        name?: string | null | undefined;
-        parent_id?: string | null | undefined;
-        remote_id?: string | null | undefined;
-        roles?: Array<IamRole$.Inbound> | null | undefined;
-        type?: IamGroupType$.Inbound | null | undefined;
-        updated_at?: string | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<IamGroup, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<IamGroup, z.ZodTypeDef, unknown> = z
         .object({
             created_at: z
                 .nullable(

@@ -13,12 +13,7 @@ export type IamPolicyResult = {
 
 /** @internal */
 export namespace IamPolicyResult$ {
-    export type Inbound = {
-        data: IamPolicy$.Inbound;
-        raw?: Array<RawResponse$.Inbound> | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<IamPolicyResult, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<IamPolicyResult, z.ZodTypeDef, unknown> = z
         .object({
             data: IamPolicy$.inboundSchema,
             raw: z.nullable(z.array(RawResponse$.inboundSchema)).optional(),

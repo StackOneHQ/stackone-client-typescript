@@ -54,16 +54,7 @@ export const FieldType$: z.ZodNativeEnum<typeof FieldType> = z.nativeEnum(FieldT
 
 /** @internal */
 export namespace Field$ {
-    export type Inbound = {
-        id?: string | null | undefined;
-        label?: string | null | undefined;
-        remote_id?: string | null | undefined;
-        required?: boolean | null | undefined;
-        type?: FieldType | null | undefined;
-        values?: Array<string> | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<Field, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<Field, z.ZodTypeDef, unknown> = z
         .object({
             id: z.nullable(z.string()).optional(),
             label: z.nullable(z.string()).optional(),

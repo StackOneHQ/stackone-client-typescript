@@ -8830,15 +8830,10 @@ export type HrisCreateEmployeeRequestDto = {
 
 /** @internal */
 export namespace HrisCreateEmployeeRequestDtoAvatar$ {
-    export type Inbound = {
-        base64?: string | null | undefined;
-        url?: string | null | undefined;
-    };
-
     export const inboundSchema: z.ZodType<
         HrisCreateEmployeeRequestDtoAvatar,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z
         .object({
             base64: z.nullable(z.string()).optional(),
@@ -8875,9 +8870,7 @@ export namespace HrisCreateEmployeeRequestDtoAvatar$ {
 
 /** @internal */
 export namespace HrisCreateEmployeeRequestDto4$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<HrisCreateEmployeeRequestDto4, z.ZodTypeDef, Inbound> =
+    export const inboundSchema: z.ZodType<HrisCreateEmployeeRequestDto4, z.ZodTypeDef, unknown> =
         z.object({});
 
     export type Outbound = {};
@@ -8888,19 +8881,18 @@ export namespace HrisCreateEmployeeRequestDto4$ {
 
 /** @internal */
 export namespace HrisCreateEmployeeRequestDtoSourceValue$ {
-    export type Inbound = HrisCreateEmployeeRequestDto4$.Inbound | string | number | boolean;
-
-    export type Outbound = HrisCreateEmployeeRequestDto4$.Outbound | string | number | boolean;
     export const inboundSchema: z.ZodType<
         HrisCreateEmployeeRequestDtoSourceValue,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z.union([
         z.lazy(() => HrisCreateEmployeeRequestDto4$.inboundSchema),
         z.string(),
         z.number(),
         z.boolean(),
     ]);
+
+    export type Outbound = HrisCreateEmployeeRequestDto4$.Outbound | string | number | boolean;
     export const outboundSchema: z.ZodType<
         Outbound,
         z.ZodTypeDef,
@@ -8920,21 +8912,10 @@ export const HrisCreateEmployeeRequestDtoValue$: z.ZodNativeEnum<
 
 /** @internal */
 export namespace HrisCreateEmployeeRequestDtoEmploymentContractType$ {
-    export type Inbound = {
-        source_value?:
-            | HrisCreateEmployeeRequestDto4$.Inbound
-            | string
-            | number
-            | boolean
-            | null
-            | undefined;
-        value?: HrisCreateEmployeeRequestDtoValue | null | undefined;
-    };
-
     export const inboundSchema: z.ZodType<
         HrisCreateEmployeeRequestDtoEmploymentContractType,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z
         .object({
             source_value: z
@@ -8995,12 +8976,10 @@ export namespace HrisCreateEmployeeRequestDtoEmploymentContractType$ {
 
 /** @internal */
 export namespace HrisCreateEmployeeRequestDtoSchemas4$ {
-    export type Inbound = {};
-
     export const inboundSchema: z.ZodType<
         HrisCreateEmployeeRequestDtoSchemas4,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z.object({});
 
     export type Outbound = {};
@@ -9014,23 +8993,22 @@ export namespace HrisCreateEmployeeRequestDtoSchemas4$ {
 
 /** @internal */
 export namespace HrisCreateEmployeeRequestDtoSchemasSourceValue$ {
-    export type Inbound = HrisCreateEmployeeRequestDtoSchemas4$.Inbound | string | number | boolean;
-
-    export type Outbound =
-        | HrisCreateEmployeeRequestDtoSchemas4$.Outbound
-        | string
-        | number
-        | boolean;
     export const inboundSchema: z.ZodType<
         HrisCreateEmployeeRequestDtoSchemasSourceValue,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z.union([
         z.lazy(() => HrisCreateEmployeeRequestDtoSchemas4$.inboundSchema),
         z.string(),
         z.number(),
         z.boolean(),
     ]);
+
+    export type Outbound =
+        | HrisCreateEmployeeRequestDtoSchemas4$.Outbound
+        | string
+        | number
+        | boolean;
     export const outboundSchema: z.ZodType<
         Outbound,
         z.ZodTypeDef,
@@ -9050,21 +9028,10 @@ export const HrisCreateEmployeeRequestDtoSchemasValue$: z.ZodNativeEnum<
 
 /** @internal */
 export namespace HrisCreateEmployeeRequestDtoEmploymentStatus$ {
-    export type Inbound = {
-        source_value?:
-            | HrisCreateEmployeeRequestDtoSchemas4$.Inbound
-            | string
-            | number
-            | boolean
-            | null
-            | undefined;
-        value?: HrisCreateEmployeeRequestDtoSchemasValue | null | undefined;
-    };
-
     export const inboundSchema: z.ZodType<
         HrisCreateEmployeeRequestDtoEmploymentStatus,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z
         .object({
             source_value: z
@@ -9125,12 +9092,10 @@ export namespace HrisCreateEmployeeRequestDtoEmploymentStatus$ {
 
 /** @internal */
 export namespace HrisCreateEmployeeRequestDtoSchemasEmploymentType4$ {
-    export type Inbound = {};
-
     export const inboundSchema: z.ZodType<
         HrisCreateEmployeeRequestDtoSchemasEmploymentType4,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z.object({});
 
     export type Outbound = {};
@@ -9144,27 +9109,22 @@ export namespace HrisCreateEmployeeRequestDtoSchemasEmploymentType4$ {
 
 /** @internal */
 export namespace HrisCreateEmployeeRequestDtoSchemasEmploymentTypeSourceValue$ {
-    export type Inbound =
-        | HrisCreateEmployeeRequestDtoSchemasEmploymentType4$.Inbound
-        | string
-        | number
-        | boolean;
-
-    export type Outbound =
-        | HrisCreateEmployeeRequestDtoSchemasEmploymentType4$.Outbound
-        | string
-        | number
-        | boolean;
     export const inboundSchema: z.ZodType<
         HrisCreateEmployeeRequestDtoSchemasEmploymentTypeSourceValue,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z.union([
         z.lazy(() => HrisCreateEmployeeRequestDtoSchemasEmploymentType4$.inboundSchema),
         z.string(),
         z.number(),
         z.boolean(),
     ]);
+
+    export type Outbound =
+        | HrisCreateEmployeeRequestDtoSchemasEmploymentType4$.Outbound
+        | string
+        | number
+        | boolean;
     export const outboundSchema: z.ZodType<
         Outbound,
         z.ZodTypeDef,
@@ -9184,21 +9144,10 @@ export const HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue$: z.ZodNativ
 
 /** @internal */
 export namespace HrisCreateEmployeeRequestDtoEmploymentType$ {
-    export type Inbound = {
-        source_value?:
-            | HrisCreateEmployeeRequestDtoSchemasEmploymentType4$.Inbound
-            | string
-            | number
-            | boolean
-            | null
-            | undefined;
-        value?: HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue | null | undefined;
-    };
-
     export const inboundSchema: z.ZodType<
         HrisCreateEmployeeRequestDtoEmploymentType,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z
         .object({
             source_value: z
@@ -9263,12 +9212,10 @@ export namespace HrisCreateEmployeeRequestDtoEmploymentType$ {
 
 /** @internal */
 export namespace HrisCreateEmployeeRequestDtoSchemasEthnicity4$ {
-    export type Inbound = {};
-
     export const inboundSchema: z.ZodType<
         HrisCreateEmployeeRequestDtoSchemasEthnicity4,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z.object({});
 
     export type Outbound = {};
@@ -9282,27 +9229,22 @@ export namespace HrisCreateEmployeeRequestDtoSchemasEthnicity4$ {
 
 /** @internal */
 export namespace HrisCreateEmployeeRequestDtoSchemasEthnicitySourceValue$ {
-    export type Inbound =
-        | HrisCreateEmployeeRequestDtoSchemasEthnicity4$.Inbound
-        | string
-        | number
-        | boolean;
-
-    export type Outbound =
-        | HrisCreateEmployeeRequestDtoSchemasEthnicity4$.Outbound
-        | string
-        | number
-        | boolean;
     export const inboundSchema: z.ZodType<
         HrisCreateEmployeeRequestDtoSchemasEthnicitySourceValue,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z.union([
         z.lazy(() => HrisCreateEmployeeRequestDtoSchemasEthnicity4$.inboundSchema),
         z.string(),
         z.number(),
         z.boolean(),
     ]);
+
+    export type Outbound =
+        | HrisCreateEmployeeRequestDtoSchemasEthnicity4$.Outbound
+        | string
+        | number
+        | boolean;
     export const outboundSchema: z.ZodType<
         Outbound,
         z.ZodTypeDef,
@@ -9322,21 +9264,10 @@ export const HrisCreateEmployeeRequestDtoSchemasEthnicityValue$: z.ZodNativeEnum
 
 /** @internal */
 export namespace HrisCreateEmployeeRequestDtoEthnicity$ {
-    export type Inbound = {
-        source_value?:
-            | HrisCreateEmployeeRequestDtoSchemasEthnicity4$.Inbound
-            | string
-            | number
-            | boolean
-            | null
-            | undefined;
-        value?: HrisCreateEmployeeRequestDtoSchemasEthnicityValue | null | undefined;
-    };
-
     export const inboundSchema: z.ZodType<
         HrisCreateEmployeeRequestDtoEthnicity,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z
         .object({
             source_value: z
@@ -9397,12 +9328,10 @@ export namespace HrisCreateEmployeeRequestDtoEthnicity$ {
 
 /** @internal */
 export namespace HrisCreateEmployeeRequestDtoSchemasGender4$ {
-    export type Inbound = {};
-
     export const inboundSchema: z.ZodType<
         HrisCreateEmployeeRequestDtoSchemasGender4,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z.object({});
 
     export type Outbound = {};
@@ -9416,27 +9345,22 @@ export namespace HrisCreateEmployeeRequestDtoSchemasGender4$ {
 
 /** @internal */
 export namespace HrisCreateEmployeeRequestDtoSchemasGenderSourceValue$ {
-    export type Inbound =
-        | HrisCreateEmployeeRequestDtoSchemasGender4$.Inbound
-        | string
-        | number
-        | boolean;
-
-    export type Outbound =
-        | HrisCreateEmployeeRequestDtoSchemasGender4$.Outbound
-        | string
-        | number
-        | boolean;
     export const inboundSchema: z.ZodType<
         HrisCreateEmployeeRequestDtoSchemasGenderSourceValue,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z.union([
         z.lazy(() => HrisCreateEmployeeRequestDtoSchemasGender4$.inboundSchema),
         z.string(),
         z.number(),
         z.boolean(),
     ]);
+
+    export type Outbound =
+        | HrisCreateEmployeeRequestDtoSchemasGender4$.Outbound
+        | string
+        | number
+        | boolean;
     export const outboundSchema: z.ZodType<
         Outbound,
         z.ZodTypeDef,
@@ -9456,21 +9380,10 @@ export const HrisCreateEmployeeRequestDtoSchemasGenderValue$: z.ZodNativeEnum<
 
 /** @internal */
 export namespace HrisCreateEmployeeRequestDtoGender$ {
-    export type Inbound = {
-        source_value?:
-            | HrisCreateEmployeeRequestDtoSchemasGender4$.Inbound
-            | string
-            | number
-            | boolean
-            | null
-            | undefined;
-        value?: HrisCreateEmployeeRequestDtoSchemasGenderValue | null | undefined;
-    };
-
     export const inboundSchema: z.ZodType<
         HrisCreateEmployeeRequestDtoGender,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z
         .object({
             source_value: z
@@ -9531,12 +9444,10 @@ export namespace HrisCreateEmployeeRequestDtoGender$ {
 
 /** @internal */
 export namespace HrisCreateEmployeeRequestDtoSchemasHomeLocation4$ {
-    export type Inbound = {};
-
     export const inboundSchema: z.ZodType<
         HrisCreateEmployeeRequestDtoSchemasHomeLocation4,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z.object({});
 
     export type Outbound = {};
@@ -9550,27 +9461,22 @@ export namespace HrisCreateEmployeeRequestDtoSchemasHomeLocation4$ {
 
 /** @internal */
 export namespace HrisCreateEmployeeRequestDtoSchemasHomeLocationSourceValue$ {
-    export type Inbound =
-        | HrisCreateEmployeeRequestDtoSchemasHomeLocation4$.Inbound
-        | string
-        | number
-        | boolean;
-
-    export type Outbound =
-        | HrisCreateEmployeeRequestDtoSchemasHomeLocation4$.Outbound
-        | string
-        | number
-        | boolean;
     export const inboundSchema: z.ZodType<
         HrisCreateEmployeeRequestDtoSchemasHomeLocationSourceValue,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z.union([
         z.lazy(() => HrisCreateEmployeeRequestDtoSchemasHomeLocation4$.inboundSchema),
         z.string(),
         z.number(),
         z.boolean(),
     ]);
+
+    export type Outbound =
+        | HrisCreateEmployeeRequestDtoSchemasHomeLocation4$.Outbound
+        | string
+        | number
+        | boolean;
     export const outboundSchema: z.ZodType<
         Outbound,
         z.ZodTypeDef,
@@ -9590,21 +9496,10 @@ export const HrisCreateEmployeeRequestDtoSchemasHomeLocationValue$: z.ZodNativeE
 
 /** @internal */
 export namespace HrisCreateEmployeeRequestDtoCountry$ {
-    export type Inbound = {
-        source_value?:
-            | HrisCreateEmployeeRequestDtoSchemasHomeLocation4$.Inbound
-            | string
-            | number
-            | boolean
-            | null
-            | undefined;
-        value?: HrisCreateEmployeeRequestDtoSchemasHomeLocationValue | null | undefined;
-    };
-
     export const inboundSchema: z.ZodType<
         HrisCreateEmployeeRequestDtoCountry,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z
         .object({
             source_value: z
@@ -9669,12 +9564,10 @@ export namespace HrisCreateEmployeeRequestDtoCountry$ {
 
 /** @internal */
 export namespace HrisCreateEmployeeRequestDtoSchemasHomeLocationState4$ {
-    export type Inbound = {};
-
     export const inboundSchema: z.ZodType<
         HrisCreateEmployeeRequestDtoSchemasHomeLocationState4,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z.object({});
 
     export type Outbound = {};
@@ -9688,27 +9581,22 @@ export namespace HrisCreateEmployeeRequestDtoSchemasHomeLocationState4$ {
 
 /** @internal */
 export namespace HrisCreateEmployeeRequestDtoSchemasHomeLocationStateSourceValue$ {
-    export type Inbound =
-        | HrisCreateEmployeeRequestDtoSchemasHomeLocationState4$.Inbound
-        | string
-        | number
-        | boolean;
-
-    export type Outbound =
-        | HrisCreateEmployeeRequestDtoSchemasHomeLocationState4$.Outbound
-        | string
-        | number
-        | boolean;
     export const inboundSchema: z.ZodType<
         HrisCreateEmployeeRequestDtoSchemasHomeLocationStateSourceValue,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z.union([
         z.lazy(() => HrisCreateEmployeeRequestDtoSchemasHomeLocationState4$.inboundSchema),
         z.string(),
         z.number(),
         z.boolean(),
     ]);
+
+    export type Outbound =
+        | HrisCreateEmployeeRequestDtoSchemasHomeLocationState4$.Outbound
+        | string
+        | number
+        | boolean;
     export const outboundSchema: z.ZodType<
         Outbound,
         z.ZodTypeDef,
@@ -9728,18 +9616,7 @@ export const HrisCreateEmployeeRequestDtoSchemasHomeLocationStateValue$: z.ZodNa
 
 /** @internal */
 export namespace State$ {
-    export type Inbound = {
-        source_value?:
-            | HrisCreateEmployeeRequestDtoSchemasHomeLocationState4$.Inbound
-            | string
-            | number
-            | boolean
-            | null
-            | undefined;
-        value?: HrisCreateEmployeeRequestDtoSchemasHomeLocationStateValue | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<State, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<State, z.ZodTypeDef, unknown> = z
         .object({
             source_value: z
                 .nullable(
@@ -9805,21 +9682,10 @@ export namespace State$ {
 
 /** @internal */
 export namespace HrisCreateEmployeeRequestDtoHomeLocation$ {
-    export type Inbound = {
-        city?: string | null | undefined;
-        country?: HrisCreateEmployeeRequestDtoCountry$.Inbound | null | undefined;
-        name?: string | null | undefined;
-        phone_number?: string | null | undefined;
-        state?: State$.Inbound | null | undefined;
-        street_1?: string | null | undefined;
-        street_2?: string | null | undefined;
-        zip_code?: string | null | undefined;
-    };
-
     export const inboundSchema: z.ZodType<
         HrisCreateEmployeeRequestDtoHomeLocation,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z
         .object({
             city: z.nullable(z.string()).optional(),
@@ -9890,12 +9756,10 @@ export namespace HrisCreateEmployeeRequestDtoHomeLocation$ {
 
 /** @internal */
 export namespace HrisCreateEmployeeRequestDtoSchemasMaritalStatus4$ {
-    export type Inbound = {};
-
     export const inboundSchema: z.ZodType<
         HrisCreateEmployeeRequestDtoSchemasMaritalStatus4,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z.object({});
 
     export type Outbound = {};
@@ -9909,27 +9773,22 @@ export namespace HrisCreateEmployeeRequestDtoSchemasMaritalStatus4$ {
 
 /** @internal */
 export namespace HrisCreateEmployeeRequestDtoSchemasMaritalStatusSourceValue$ {
-    export type Inbound =
-        | HrisCreateEmployeeRequestDtoSchemasMaritalStatus4$.Inbound
-        | string
-        | number
-        | boolean;
-
-    export type Outbound =
-        | HrisCreateEmployeeRequestDtoSchemasMaritalStatus4$.Outbound
-        | string
-        | number
-        | boolean;
     export const inboundSchema: z.ZodType<
         HrisCreateEmployeeRequestDtoSchemasMaritalStatusSourceValue,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z.union([
         z.lazy(() => HrisCreateEmployeeRequestDtoSchemasMaritalStatus4$.inboundSchema),
         z.string(),
         z.number(),
         z.boolean(),
     ]);
+
+    export type Outbound =
+        | HrisCreateEmployeeRequestDtoSchemasMaritalStatus4$.Outbound
+        | string
+        | number
+        | boolean;
     export const outboundSchema: z.ZodType<
         Outbound,
         z.ZodTypeDef,
@@ -9949,21 +9808,10 @@ export const HrisCreateEmployeeRequestDtoSchemasMaritalStatusValue$: z.ZodNative
 
 /** @internal */
 export namespace HrisCreateEmployeeRequestDtoMaritalStatus$ {
-    export type Inbound = {
-        source_value?:
-            | HrisCreateEmployeeRequestDtoSchemasMaritalStatus4$.Inbound
-            | string
-            | number
-            | boolean
-            | null
-            | undefined;
-        value?: HrisCreateEmployeeRequestDtoSchemasMaritalStatusValue | null | undefined;
-    };
-
     export const inboundSchema: z.ZodType<
         HrisCreateEmployeeRequestDtoMaritalStatus,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z
         .object({
             source_value: z
@@ -10028,12 +9876,10 @@ export namespace HrisCreateEmployeeRequestDtoMaritalStatus$ {
 
 /** @internal */
 export namespace HrisCreateEmployeeRequestDtoSchemasPreferredLanguage4$ {
-    export type Inbound = {};
-
     export const inboundSchema: z.ZodType<
         HrisCreateEmployeeRequestDtoSchemasPreferredLanguage4,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z.object({});
 
     export type Outbound = {};
@@ -10047,27 +9893,22 @@ export namespace HrisCreateEmployeeRequestDtoSchemasPreferredLanguage4$ {
 
 /** @internal */
 export namespace HrisCreateEmployeeRequestDtoSchemasPreferredLanguageSourceValue$ {
-    export type Inbound =
-        | HrisCreateEmployeeRequestDtoSchemasPreferredLanguage4$.Inbound
-        | string
-        | number
-        | boolean;
-
-    export type Outbound =
-        | HrisCreateEmployeeRequestDtoSchemasPreferredLanguage4$.Outbound
-        | string
-        | number
-        | boolean;
     export const inboundSchema: z.ZodType<
         HrisCreateEmployeeRequestDtoSchemasPreferredLanguageSourceValue,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z.union([
         z.lazy(() => HrisCreateEmployeeRequestDtoSchemasPreferredLanguage4$.inboundSchema),
         z.string(),
         z.number(),
         z.boolean(),
     ]);
+
+    export type Outbound =
+        | HrisCreateEmployeeRequestDtoSchemasPreferredLanguage4$.Outbound
+        | string
+        | number
+        | boolean;
     export const outboundSchema: z.ZodType<
         Outbound,
         z.ZodTypeDef,
@@ -10087,21 +9928,10 @@ export const HrisCreateEmployeeRequestDtoSchemasPreferredLanguageValue$: z.ZodNa
 
 /** @internal */
 export namespace HrisCreateEmployeeRequestDtoPreferredLanguage$ {
-    export type Inbound = {
-        source_value?:
-            | HrisCreateEmployeeRequestDtoSchemasPreferredLanguage4$.Inbound
-            | string
-            | number
-            | boolean
-            | null
-            | undefined;
-        value?: HrisCreateEmployeeRequestDtoSchemasPreferredLanguageValue | null | undefined;
-    };
-
     export const inboundSchema: z.ZodType<
         HrisCreateEmployeeRequestDtoPreferredLanguage,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z
         .object({
             source_value: z
@@ -10172,12 +10002,10 @@ export namespace HrisCreateEmployeeRequestDtoPreferredLanguage$ {
 
 /** @internal */
 export namespace HrisCreateEmployeeRequestDtoSchemasWorkLocation4$ {
-    export type Inbound = {};
-
     export const inboundSchema: z.ZodType<
         HrisCreateEmployeeRequestDtoSchemasWorkLocation4,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z.object({});
 
     export type Outbound = {};
@@ -10191,27 +10019,22 @@ export namespace HrisCreateEmployeeRequestDtoSchemasWorkLocation4$ {
 
 /** @internal */
 export namespace HrisCreateEmployeeRequestDtoSchemasWorkLocationSourceValue$ {
-    export type Inbound =
-        | HrisCreateEmployeeRequestDtoSchemasWorkLocation4$.Inbound
-        | string
-        | number
-        | boolean;
-
-    export type Outbound =
-        | HrisCreateEmployeeRequestDtoSchemasWorkLocation4$.Outbound
-        | string
-        | number
-        | boolean;
     export const inboundSchema: z.ZodType<
         HrisCreateEmployeeRequestDtoSchemasWorkLocationSourceValue,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z.union([
         z.lazy(() => HrisCreateEmployeeRequestDtoSchemasWorkLocation4$.inboundSchema),
         z.string(),
         z.number(),
         z.boolean(),
     ]);
+
+    export type Outbound =
+        | HrisCreateEmployeeRequestDtoSchemasWorkLocation4$.Outbound
+        | string
+        | number
+        | boolean;
     export const outboundSchema: z.ZodType<
         Outbound,
         z.ZodTypeDef,
@@ -10231,21 +10054,10 @@ export const HrisCreateEmployeeRequestDtoSchemasWorkLocationValue$: z.ZodNativeE
 
 /** @internal */
 export namespace HrisCreateEmployeeRequestDtoSchemasCountry$ {
-    export type Inbound = {
-        source_value?:
-            | HrisCreateEmployeeRequestDtoSchemasWorkLocation4$.Inbound
-            | string
-            | number
-            | boolean
-            | null
-            | undefined;
-        value?: HrisCreateEmployeeRequestDtoSchemasWorkLocationValue | null | undefined;
-    };
-
     export const inboundSchema: z.ZodType<
         HrisCreateEmployeeRequestDtoSchemasCountry,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z
         .object({
             source_value: z
@@ -10310,12 +10122,10 @@ export namespace HrisCreateEmployeeRequestDtoSchemasCountry$ {
 
 /** @internal */
 export namespace HrisCreateEmployeeRequestDtoSchemasWorkLocationState4$ {
-    export type Inbound = {};
-
     export const inboundSchema: z.ZodType<
         HrisCreateEmployeeRequestDtoSchemasWorkLocationState4,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z.object({});
 
     export type Outbound = {};
@@ -10329,27 +10139,22 @@ export namespace HrisCreateEmployeeRequestDtoSchemasWorkLocationState4$ {
 
 /** @internal */
 export namespace HrisCreateEmployeeRequestDtoSchemasWorkLocationStateSourceValue$ {
-    export type Inbound =
-        | HrisCreateEmployeeRequestDtoSchemasWorkLocationState4$.Inbound
-        | string
-        | number
-        | boolean;
-
-    export type Outbound =
-        | HrisCreateEmployeeRequestDtoSchemasWorkLocationState4$.Outbound
-        | string
-        | number
-        | boolean;
     export const inboundSchema: z.ZodType<
         HrisCreateEmployeeRequestDtoSchemasWorkLocationStateSourceValue,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z.union([
         z.lazy(() => HrisCreateEmployeeRequestDtoSchemasWorkLocationState4$.inboundSchema),
         z.string(),
         z.number(),
         z.boolean(),
     ]);
+
+    export type Outbound =
+        | HrisCreateEmployeeRequestDtoSchemasWorkLocationState4$.Outbound
+        | string
+        | number
+        | boolean;
     export const outboundSchema: z.ZodType<
         Outbound,
         z.ZodTypeDef,
@@ -10369,21 +10174,10 @@ export const HrisCreateEmployeeRequestDtoSchemasWorkLocationStateValue$: z.ZodNa
 
 /** @internal */
 export namespace HrisCreateEmployeeRequestDtoState$ {
-    export type Inbound = {
-        source_value?:
-            | HrisCreateEmployeeRequestDtoSchemasWorkLocationState4$.Inbound
-            | string
-            | number
-            | boolean
-            | null
-            | undefined;
-        value?: HrisCreateEmployeeRequestDtoSchemasWorkLocationStateValue | null | undefined;
-    };
-
     export const inboundSchema: z.ZodType<
         HrisCreateEmployeeRequestDtoState,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z
         .object({
             source_value: z
@@ -10454,21 +10248,10 @@ export namespace HrisCreateEmployeeRequestDtoState$ {
 
 /** @internal */
 export namespace HrisCreateEmployeeRequestDtoWorkLocation$ {
-    export type Inbound = {
-        city?: string | null | undefined;
-        country?: HrisCreateEmployeeRequestDtoSchemasCountry$.Inbound | null | undefined;
-        name?: string | null | undefined;
-        phone_number?: string | null | undefined;
-        state?: HrisCreateEmployeeRequestDtoState$.Inbound | null | undefined;
-        street_1?: string | null | undefined;
-        street_2?: string | null | undefined;
-        zip_code?: string | null | undefined;
-    };
-
     export const inboundSchema: z.ZodType<
         HrisCreateEmployeeRequestDtoWorkLocation,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z
         .object({
             city: z.nullable(z.string()).optional(),
@@ -10543,53 +10326,7 @@ export namespace HrisCreateEmployeeRequestDtoWorkLocation$ {
 
 /** @internal */
 export namespace HrisCreateEmployeeRequestDto$ {
-    export type Inbound = {
-        avatar?: HrisCreateEmployeeRequestDtoAvatar$.Inbound | null | undefined;
-        avatar_url?: string | null | undefined;
-        benefits?: Array<HRISBenefit$.Inbound> | null | undefined;
-        birthday?: string | null | undefined;
-        citizenships?: Array<CountryCodeEnum$.Inbound> | null | undefined;
-        company_name?: string | null | undefined;
-        custom_fields?: Array<EmployeeCustomFields$.Inbound> | null | undefined;
-        date_of_birth?: string | null | undefined;
-        department?: string | null | undefined;
-        display_name?: string | null | undefined;
-        employment_contract_type?:
-            | HrisCreateEmployeeRequestDtoEmploymentContractType$.Inbound
-            | null
-            | undefined;
-        employment_status?:
-            | HrisCreateEmployeeRequestDtoEmploymentStatus$.Inbound
-            | null
-            | undefined;
-        employment_type?: HrisCreateEmployeeRequestDtoEmploymentType$.Inbound | null | undefined;
-        employments?: Array<Employment$.Inbound> | null | undefined;
-        ethnicity?: HrisCreateEmployeeRequestDtoEthnicity$.Inbound | null | undefined;
-        first_name?: string | null | undefined;
-        gender?: HrisCreateEmployeeRequestDtoGender$.Inbound | null | undefined;
-        hire_date?: string | null | undefined;
-        home_location?: HrisCreateEmployeeRequestDtoHomeLocation$.Inbound | null | undefined;
-        job_title?: string | null | undefined;
-        last_name?: string | null | undefined;
-        manager_id?: string | null | undefined;
-        marital_status?: HrisCreateEmployeeRequestDtoMaritalStatus$.Inbound | null | undefined;
-        name?: string | null | undefined;
-        personal_email?: string | null | undefined;
-        personal_phone_number?: string | null | undefined;
-        preferred_language?:
-            | HrisCreateEmployeeRequestDtoPreferredLanguage$.Inbound
-            | null
-            | undefined;
-        start_date?: string | null | undefined;
-        tenure?: number | null | undefined;
-        termination_date?: string | null | undefined;
-        work_anniversary?: string | null | undefined;
-        work_email?: string | null | undefined;
-        work_location?: HrisCreateEmployeeRequestDtoWorkLocation$.Inbound | null | undefined;
-        work_phone_number?: string | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<HrisCreateEmployeeRequestDto, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<HrisCreateEmployeeRequestDto, z.ZodTypeDef, unknown> = z
         .object({
             avatar: z
                 .nullable(z.lazy(() => HrisCreateEmployeeRequestDtoAvatar$.inboundSchema))

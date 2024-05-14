@@ -13,12 +13,7 @@ export type HRISLocationResult = {
 
 /** @internal */
 export namespace HRISLocationResult$ {
-    export type Inbound = {
-        data: HRISLocation$.Inbound;
-        raw?: Array<RawResponse$.Inbound> | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<HRISLocationResult, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<HRISLocationResult, z.ZodTypeDef, unknown> = z
         .object({
             data: HRISLocation$.inboundSchema,
             raw: z.nullable(z.array(RawResponse$.inboundSchema)).optional(),

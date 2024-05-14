@@ -18,14 +18,7 @@ export type AtsDocumentsPaginated = {
 
 /** @internal */
 export namespace AtsDocumentsPaginated$ {
-    export type Inbound = {
-        data: Array<AtsDocumentApiModel$.Inbound>;
-        next?: string | null | undefined;
-        next_page?: string | null | undefined;
-        raw?: Array<RawResponse$.Inbound> | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<AtsDocumentsPaginated, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<AtsDocumentsPaginated, z.ZodTypeDef, unknown> = z
         .object({
             data: z.array(AtsDocumentApiModel$.inboundSchema),
             next: z.nullable(z.string()).optional(),

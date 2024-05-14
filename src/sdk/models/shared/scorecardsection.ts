@@ -26,14 +26,7 @@ export type ScorecardSection = {
 
 /** @internal */
 export namespace ScorecardSection$ {
-    export type Inbound = {
-        fields?: Array<Field$.Inbound> | null | undefined;
-        id?: string | null | undefined;
-        label?: string | null | undefined;
-        remote_id?: string | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<ScorecardSection, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<ScorecardSection, z.ZodTypeDef, unknown> = z
         .object({
             fields: z.nullable(z.array(Field$.inboundSchema)).optional(),
             id: z.nullable(z.string()).optional(),

@@ -46,15 +46,7 @@ export type CrmGetListResponse = {
 
 /** @internal */
 export namespace CrmGetListRequest$ {
-    export type Inbound = {
-        fields?: string | null | undefined;
-        id: string;
-        proxy?: Record<string, any> | null | undefined;
-        raw?: boolean | null | undefined;
-        "x-account-id": string;
-    };
-
-    export const inboundSchema: z.ZodType<CrmGetListRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<CrmGetListRequest, z.ZodTypeDef, unknown> = z
         .object({
             fields: z.nullable(z.string()).optional(),
             id: z.string(),
@@ -101,14 +93,7 @@ export namespace CrmGetListRequest$ {
 
 /** @internal */
 export namespace CrmGetListResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        ListResult?: shared.ListResult$.Inbound | undefined;
-        StatusCode: number;
-        RawResponse: Response;
-    };
-
-    export const inboundSchema: z.ZodType<CrmGetListResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<CrmGetListResponse, z.ZodTypeDef, unknown> = z
         .object({
             ContentType: z.string(),
             ListResult: shared.ListResult$.inboundSchema.optional(),

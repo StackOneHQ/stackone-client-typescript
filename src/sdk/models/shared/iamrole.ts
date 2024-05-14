@@ -47,9 +47,7 @@ export type IamRole = {
 
 /** @internal */
 export namespace IamRole4$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<IamRole4, z.ZodTypeDef, Inbound> = z.object({});
+    export const inboundSchema: z.ZodType<IamRole4, z.ZodTypeDef, unknown> = z.object({});
 
     export type Outbound = {};
 
@@ -58,15 +56,14 @@ export namespace IamRole4$ {
 
 /** @internal */
 export namespace IamRoleSourceValue$ {
-    export type Inbound = IamRole4$.Inbound | string | number | boolean;
-
-    export type Outbound = IamRole4$.Outbound | string | number | boolean;
-    export const inboundSchema: z.ZodType<IamRoleSourceValue, z.ZodTypeDef, Inbound> = z.union([
+    export const inboundSchema: z.ZodType<IamRoleSourceValue, z.ZodTypeDef, unknown> = z.union([
         z.lazy(() => IamRole4$.inboundSchema),
         z.string(),
         z.number(),
         z.boolean(),
     ]);
+
+    export type Outbound = IamRole4$.Outbound | string | number | boolean;
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, IamRoleSourceValue> = z.union([
         z.lazy(() => IamRole4$.outboundSchema),
         z.string(),
@@ -80,12 +77,7 @@ export const IamRoleValue$: z.ZodNativeEnum<typeof IamRoleValue> = z.nativeEnum(
 
 /** @internal */
 export namespace IamRoleType$ {
-    export type Inbound = {
-        source_value?: IamRole4$.Inbound | string | number | boolean | null | undefined;
-        value?: IamRoleValue | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<IamRoleType, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<IamRoleType, z.ZodTypeDef, unknown> = z
         .object({
             source_value: z
                 .nullable(
@@ -135,18 +127,7 @@ export namespace IamRoleType$ {
 
 /** @internal */
 export namespace IamRole$ {
-    export type Inbound = {
-        created_at?: string | null | undefined;
-        description?: string | null | undefined;
-        id?: string | null | undefined;
-        name?: string | null | undefined;
-        policies?: Array<IamPolicy$.Inbound> | null | undefined;
-        remote_id?: string | null | undefined;
-        type?: IamRoleType$.Inbound | null | undefined;
-        updated_at?: string | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<IamRole, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<IamRole, z.ZodTypeDef, unknown> = z
         .object({
             created_at: z
                 .nullable(

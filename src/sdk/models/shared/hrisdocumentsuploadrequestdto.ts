@@ -1349,15 +1349,10 @@ export const HrisDocumentsUploadRequestDtoValue$: z.ZodNativeEnum<
 
 /** @internal */
 export namespace HrisDocumentsUploadRequestDtoCategory$ {
-    export type Inbound = {
-        source_value?: string | null | undefined;
-        value?: HrisDocumentsUploadRequestDtoValue | null | undefined;
-    };
-
     export const inboundSchema: z.ZodType<
         HrisDocumentsUploadRequestDtoCategory,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z
         .object({
             source_value: z.nullable(z.string()).optional(),
@@ -1394,9 +1389,7 @@ export namespace HrisDocumentsUploadRequestDtoCategory$ {
 
 /** @internal */
 export namespace HrisDocumentsUploadRequestDto4$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<HrisDocumentsUploadRequestDto4, z.ZodTypeDef, Inbound> =
+    export const inboundSchema: z.ZodType<HrisDocumentsUploadRequestDto4, z.ZodTypeDef, unknown> =
         z.object({});
 
     export type Outbound = {};
@@ -1407,19 +1400,18 @@ export namespace HrisDocumentsUploadRequestDto4$ {
 
 /** @internal */
 export namespace HrisDocumentsUploadRequestDtoSourceValue$ {
-    export type Inbound = HrisDocumentsUploadRequestDto4$.Inbound | string | number | boolean;
-
-    export type Outbound = HrisDocumentsUploadRequestDto4$.Outbound | string | number | boolean;
     export const inboundSchema: z.ZodType<
         HrisDocumentsUploadRequestDtoSourceValue,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z.union([
         z.lazy(() => HrisDocumentsUploadRequestDto4$.inboundSchema),
         z.string(),
         z.number(),
         z.boolean(),
     ]);
+
+    export type Outbound = HrisDocumentsUploadRequestDto4$.Outbound | string | number | boolean;
     export const outboundSchema: z.ZodType<
         Outbound,
         z.ZodTypeDef,
@@ -1439,18 +1431,7 @@ export const HrisDocumentsUploadRequestDtoSchemasValue$: z.ZodNativeEnum<
 
 /** @internal */
 export namespace Confidential$ {
-    export type Inbound = {
-        source_value?:
-            | HrisDocumentsUploadRequestDto4$.Inbound
-            | string
-            | number
-            | boolean
-            | null
-            | undefined;
-        value?: HrisDocumentsUploadRequestDtoSchemasValue | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<Confidential, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<Confidential, z.ZodTypeDef, unknown> = z
         .object({
             source_value: z
                 .nullable(
@@ -1506,12 +1487,10 @@ export namespace Confidential$ {
 
 /** @internal */
 export namespace HrisDocumentsUploadRequestDtoSchemas4$ {
-    export type Inbound = {};
-
     export const inboundSchema: z.ZodType<
         HrisDocumentsUploadRequestDtoSchemas4,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z.object({});
 
     export type Outbound = {};
@@ -1525,27 +1504,22 @@ export namespace HrisDocumentsUploadRequestDtoSchemas4$ {
 
 /** @internal */
 export namespace HrisDocumentsUploadRequestDtoSchemasSourceValue$ {
-    export type Inbound =
-        | HrisDocumentsUploadRequestDtoSchemas4$.Inbound
-        | string
-        | number
-        | boolean;
-
-    export type Outbound =
-        | HrisDocumentsUploadRequestDtoSchemas4$.Outbound
-        | string
-        | number
-        | boolean;
     export const inboundSchema: z.ZodType<
         HrisDocumentsUploadRequestDtoSchemasSourceValue,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z.union([
         z.lazy(() => HrisDocumentsUploadRequestDtoSchemas4$.inboundSchema),
         z.string(),
         z.number(),
         z.boolean(),
     ]);
+
+    export type Outbound =
+        | HrisDocumentsUploadRequestDtoSchemas4$.Outbound
+        | string
+        | number
+        | boolean;
     export const outboundSchema: z.ZodType<
         Outbound,
         z.ZodTypeDef,
@@ -1565,21 +1539,10 @@ export const HrisDocumentsUploadRequestDtoSchemasFileFormatValue$: z.ZodNativeEn
 
 /** @internal */
 export namespace HrisDocumentsUploadRequestDtoFileFormat$ {
-    export type Inbound = {
-        source_value?:
-            | HrisDocumentsUploadRequestDtoSchemas4$.Inbound
-            | string
-            | number
-            | boolean
-            | null
-            | undefined;
-        value?: HrisDocumentsUploadRequestDtoSchemasFileFormatValue | null | undefined;
-    };
-
     export const inboundSchema: z.ZodType<
         HrisDocumentsUploadRequestDtoFileFormat,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z
         .object({
             source_value: z
@@ -1640,16 +1603,7 @@ export namespace HrisDocumentsUploadRequestDtoFileFormat$ {
 
 /** @internal */
 export namespace HrisDocumentsUploadRequestDto$ {
-    export type Inbound = {
-        category?: HrisDocumentsUploadRequestDtoCategory$.Inbound | null | undefined;
-        confidential?: Confidential$.Inbound | null | undefined;
-        content?: string | null | undefined;
-        file_format?: HrisDocumentsUploadRequestDtoFileFormat$.Inbound | null | undefined;
-        name?: string | null | undefined;
-        path?: string | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<HrisDocumentsUploadRequestDto, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<HrisDocumentsUploadRequestDto, z.ZodTypeDef, unknown> = z
         .object({
             category: z
                 .nullable(z.lazy(() => HrisDocumentsUploadRequestDtoCategory$.inboundSchema))

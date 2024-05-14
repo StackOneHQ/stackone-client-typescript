@@ -76,24 +76,10 @@ export type AtsListApplicationDocumentsResponse = {
 
 /** @internal */
 export namespace AtsListApplicationDocumentsRequest$ {
-    export type Inbound = {
-        fields?: string | null | undefined;
-        "filter[updated_after]"?: string | null | undefined;
-        id: string;
-        next?: string | null | undefined;
-        page?: string | null | undefined;
-        page_size?: string | null | undefined;
-        proxy?: Record<string, any> | null | undefined;
-        raw?: boolean | null | undefined;
-        sync_token?: string | null | undefined;
-        updated_after?: string | null | undefined;
-        "x-account-id": string;
-    };
-
     export const inboundSchema: z.ZodType<
         AtsListApplicationDocumentsRequest,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z
         .object({
             fields: z.nullable(z.string()).optional(),
@@ -179,17 +165,10 @@ export namespace AtsListApplicationDocumentsRequest$ {
 
 /** @internal */
 export namespace AtsListApplicationDocumentsResponse$ {
-    export type Inbound = {
-        AtsDocumentsPaginated?: shared.AtsDocumentsPaginated$.Inbound | undefined;
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: Response;
-    };
-
     export const inboundSchema: z.ZodType<
         AtsListApplicationDocumentsResponse,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z
         .object({
             AtsDocumentsPaginated: shared.AtsDocumentsPaginated$.inboundSchema.optional(),

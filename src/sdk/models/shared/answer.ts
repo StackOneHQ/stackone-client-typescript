@@ -61,9 +61,7 @@ export type Answer = {
 
 /** @internal */
 export namespace Answer4$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<Answer4, z.ZodTypeDef, Inbound> = z.object({});
+    export const inboundSchema: z.ZodType<Answer4, z.ZodTypeDef, unknown> = z.object({});
 
     export type Outbound = {};
 
@@ -72,15 +70,14 @@ export namespace Answer4$ {
 
 /** @internal */
 export namespace AnswerSourceValue$ {
-    export type Inbound = Answer4$.Inbound | string | number | boolean;
-
-    export type Outbound = Answer4$.Outbound | string | number | boolean;
-    export const inboundSchema: z.ZodType<AnswerSourceValue, z.ZodTypeDef, Inbound> = z.union([
+    export const inboundSchema: z.ZodType<AnswerSourceValue, z.ZodTypeDef, unknown> = z.union([
         z.lazy(() => Answer4$.inboundSchema),
         z.string(),
         z.number(),
         z.boolean(),
     ]);
+
+    export type Outbound = Answer4$.Outbound | string | number | boolean;
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, AnswerSourceValue> = z.union([
         z.lazy(() => Answer4$.outboundSchema),
         z.string(),
@@ -94,12 +91,7 @@ export const AnswerValue$: z.ZodNativeEnum<typeof AnswerValue> = z.nativeEnum(An
 
 /** @internal */
 export namespace Type$ {
-    export type Inbound = {
-        source_value?: Answer4$.Inbound | string | number | boolean | null | undefined;
-        value?: AnswerValue | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<Type, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<Type, z.ZodTypeDef, unknown> = z
         .object({
             source_value: z
                 .nullable(
@@ -149,14 +141,7 @@ export namespace Type$ {
 
 /** @internal */
 export namespace Answer$ {
-    export type Inbound = {
-        id?: string | null | undefined;
-        remote_id?: string | null | undefined;
-        type?: Type$.Inbound | null | undefined;
-        values?: Array<string> | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<Answer, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<Answer, z.ZodTypeDef, unknown> = z
         .object({
             id: z.nullable(z.string()).optional(),
             remote_id: z.nullable(z.string()).optional(),

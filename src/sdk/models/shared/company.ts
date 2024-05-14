@@ -33,16 +33,7 @@ export type Company = {
 
 /** @internal */
 export namespace Company$ {
-    export type Inbound = {
-        created_at?: string | null | undefined;
-        display_name?: string | null | undefined;
-        id?: string | null | undefined;
-        name?: string | null | undefined;
-        remote_id?: string | null | undefined;
-        updated_at?: string | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<Company, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<Company, z.ZodTypeDef, unknown> = z
         .object({
             created_at: z
                 .nullable(

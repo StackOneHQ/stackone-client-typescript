@@ -17,12 +17,7 @@ export type ResultLink = {
 
 /** @internal */
 export namespace ResultLink$ {
-    export type Inbound = {
-        label?: string | null | undefined;
-        url?: string | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<ResultLink, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<ResultLink, z.ZodTypeDef, unknown> = z
         .object({
             label: z.nullable(z.string()).optional(),
             url: z.nullable(z.string()).optional(),

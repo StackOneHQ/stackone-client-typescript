@@ -58,22 +58,7 @@ export type Contact = {
 
 /** @internal */
 export namespace Contact$ {
-    export type Inbound = {
-        account_ids?: Array<string> | null | undefined;
-        company_name?: string | null | undefined;
-        created_at?: string | null | undefined;
-        custom_fields?: Array<ContactsCustomFields$.Inbound> | null | undefined;
-        deal_ids?: Array<string> | null | undefined;
-        emails?: Array<string> | null | undefined;
-        first_name?: string | null | undefined;
-        id?: string | null | undefined;
-        last_name?: string | null | undefined;
-        phone_numbers?: Array<string> | null | undefined;
-        remote_id?: string | null | undefined;
-        updated_at?: string | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<Contact, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<Contact, z.ZodTypeDef, unknown> = z
         .object({
             account_ids: z.nullable(z.array(z.string())).optional(),
             company_name: z.nullable(z.string()).optional(),

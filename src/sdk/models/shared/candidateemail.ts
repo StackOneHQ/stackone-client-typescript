@@ -17,12 +17,7 @@ export type CandidateEmail = {
 
 /** @internal */
 export namespace CandidateEmail$ {
-    export type Inbound = {
-        type?: string | null | undefined;
-        value?: string | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<CandidateEmail, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<CandidateEmail, z.ZodTypeDef, unknown> = z
         .object({
             type: z.nullable(z.string()).optional(),
             value: z.nullable(z.string()).optional(),

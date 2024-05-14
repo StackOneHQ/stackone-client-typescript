@@ -13,12 +13,7 @@ export type AtsDocumentResult = {
 
 /** @internal */
 export namespace AtsDocumentResult$ {
-    export type Inbound = {
-        data: AtsDocumentApiModel$.Inbound;
-        raw?: Array<RawResponse$.Inbound> | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<AtsDocumentResult, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<AtsDocumentResult, z.ZodTypeDef, unknown> = z
         .object({
             data: AtsDocumentApiModel$.inboundSchema,
             raw: z.nullable(z.array(RawResponse$.inboundSchema)).optional(),

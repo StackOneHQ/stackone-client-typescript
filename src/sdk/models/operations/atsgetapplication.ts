@@ -50,16 +50,7 @@ export type AtsGetApplicationResponse = {
 
 /** @internal */
 export namespace AtsGetApplicationRequest$ {
-    export type Inbound = {
-        expand?: string | null | undefined;
-        fields?: string | null | undefined;
-        id: string;
-        proxy?: Record<string, any> | null | undefined;
-        raw?: boolean | null | undefined;
-        "x-account-id": string;
-    };
-
-    export const inboundSchema: z.ZodType<AtsGetApplicationRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<AtsGetApplicationRequest, z.ZodTypeDef, unknown> = z
         .object({
             expand: z.nullable(z.string()).optional(),
             fields: z.nullable(z.string()).optional(),
@@ -111,14 +102,7 @@ export namespace AtsGetApplicationRequest$ {
 
 /** @internal */
 export namespace AtsGetApplicationResponse$ {
-    export type Inbound = {
-        ApplicationResult?: shared.ApplicationResult$.Inbound | undefined;
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: Response;
-    };
-
-    export const inboundSchema: z.ZodType<AtsGetApplicationResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<AtsGetApplicationResponse, z.ZodTypeDef, unknown> = z
         .object({
             ApplicationResult: shared.ApplicationResult$.inboundSchema.optional(),
             ContentType: z.string(),

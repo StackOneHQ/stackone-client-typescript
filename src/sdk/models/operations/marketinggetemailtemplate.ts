@@ -46,15 +46,7 @@ export type MarketingGetEmailTemplateResponse = {
 
 /** @internal */
 export namespace MarketingGetEmailTemplateRequest$ {
-    export type Inbound = {
-        fields?: string | null | undefined;
-        id: string;
-        proxy?: Record<string, any> | null | undefined;
-        raw?: boolean | null | undefined;
-        "x-account-id": string;
-    };
-
-    export const inboundSchema: z.ZodType<MarketingGetEmailTemplateRequest, z.ZodTypeDef, Inbound> =
+    export const inboundSchema: z.ZodType<MarketingGetEmailTemplateRequest, z.ZodTypeDef, unknown> =
         z
             .object({
                 fields: z.nullable(z.string()).optional(),
@@ -106,17 +98,10 @@ export namespace MarketingGetEmailTemplateRequest$ {
 
 /** @internal */
 export namespace MarketingGetEmailTemplateResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: Response;
-        TemplateResult?: shared.TemplateResult$.Inbound | undefined;
-    };
-
     export const inboundSchema: z.ZodType<
         MarketingGetEmailTemplateResponse,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z
         .object({
             ContentType: z.string(),

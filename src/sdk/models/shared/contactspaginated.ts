@@ -18,14 +18,7 @@ export type ContactsPaginated = {
 
 /** @internal */
 export namespace ContactsPaginated$ {
-    export type Inbound = {
-        data: Array<Contact$.Inbound>;
-        next?: string | null | undefined;
-        next_page?: string | null | undefined;
-        raw?: Array<RawResponse$.Inbound> | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<ContactsPaginated, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<ContactsPaginated, z.ZodTypeDef, unknown> = z
         .object({
             data: z.array(Contact$.inboundSchema),
             next: z.nullable(z.string()).optional(),

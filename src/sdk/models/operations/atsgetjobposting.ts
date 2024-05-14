@@ -50,16 +50,7 @@ export type AtsGetJobPostingResponse = {
 
 /** @internal */
 export namespace AtsGetJobPostingRequest$ {
-    export type Inbound = {
-        fields?: string | null | undefined;
-        id: string;
-        include?: string | null | undefined;
-        proxy?: Record<string, any> | null | undefined;
-        raw?: boolean | null | undefined;
-        "x-account-id": string;
-    };
-
-    export const inboundSchema: z.ZodType<AtsGetJobPostingRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<AtsGetJobPostingRequest, z.ZodTypeDef, unknown> = z
         .object({
             fields: z.nullable(z.string()).optional(),
             id: z.string(),
@@ -111,14 +102,7 @@ export namespace AtsGetJobPostingRequest$ {
 
 /** @internal */
 export namespace AtsGetJobPostingResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        JobPostingResult?: shared.JobPostingResult$.Inbound | undefined;
-        StatusCode: number;
-        RawResponse: Response;
-    };
-
-    export const inboundSchema: z.ZodType<AtsGetJobPostingResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<AtsGetJobPostingResponse, z.ZodTypeDef, unknown> = z
         .object({
             ContentType: z.string(),
             JobPostingResult: shared.JobPostingResult$.inboundSchema.optional(),

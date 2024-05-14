@@ -35,13 +35,7 @@ export type AtsUpdateCandidateResponse = {
 
 /** @internal */
 export namespace AtsUpdateCandidateRequest$ {
-    export type Inbound = {
-        AtsUpdateCandidateRequestDto: shared.AtsUpdateCandidateRequestDto$.Inbound;
-        id: string;
-        "x-account-id": string;
-    };
-
-    export const inboundSchema: z.ZodType<AtsUpdateCandidateRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<AtsUpdateCandidateRequest, z.ZodTypeDef, unknown> = z
         .object({
             AtsUpdateCandidateRequestDto: shared.AtsUpdateCandidateRequestDto$.inboundSchema,
             id: z.string(),
@@ -78,14 +72,7 @@ export namespace AtsUpdateCandidateRequest$ {
 
 /** @internal */
 export namespace AtsUpdateCandidateResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        CreateResult?: shared.CreateResult$.Inbound | undefined;
-        StatusCode: number;
-        RawResponse: Response;
-    };
-
-    export const inboundSchema: z.ZodType<AtsUpdateCandidateResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<AtsUpdateCandidateResponse, z.ZodTypeDef, unknown> = z
         .object({
             ContentType: z.string(),
             CreateResult: shared.CreateResult$.inboundSchema.optional(),

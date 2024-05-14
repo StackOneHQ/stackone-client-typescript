@@ -47,19 +47,10 @@ export type HrisGetEmployeesWorkEligibilityResponse = {
 
 /** @internal */
 export namespace HrisGetEmployeesWorkEligibilityRequest$ {
-    export type Inbound = {
-        fields?: string | null | undefined;
-        id: string;
-        proxy?: Record<string, any> | null | undefined;
-        raw?: boolean | null | undefined;
-        subResourceId: string;
-        "x-account-id": string;
-    };
-
     export const inboundSchema: z.ZodType<
         HrisGetEmployeesWorkEligibilityRequest,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z
         .object({
             fields: z.nullable(z.string()).optional(),
@@ -116,17 +107,10 @@ export namespace HrisGetEmployeesWorkEligibilityRequest$ {
 
 /** @internal */
 export namespace HrisGetEmployeesWorkEligibilityResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: Response;
-        WorkEligibilityResult?: shared.WorkEligibilityResult$.Inbound | undefined;
-    };
-
     export const inboundSchema: z.ZodType<
         HrisGetEmployeesWorkEligibilityResponse,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z
         .object({
             ContentType: z.string(),

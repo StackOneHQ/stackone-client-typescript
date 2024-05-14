@@ -35,13 +35,7 @@ export type AtsCreateCandidateNoteResponse = {
 
 /** @internal */
 export namespace AtsCreateCandidateNoteRequest$ {
-    export type Inbound = {
-        AtsCreateNotesRequestDto: shared.AtsCreateNotesRequestDto$.Inbound;
-        id: string;
-        "x-account-id": string;
-    };
-
-    export const inboundSchema: z.ZodType<AtsCreateCandidateNoteRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<AtsCreateCandidateNoteRequest, z.ZodTypeDef, unknown> = z
         .object({
             AtsCreateNotesRequestDto: shared.AtsCreateNotesRequestDto$.inboundSchema,
             id: z.string(),
@@ -79,14 +73,7 @@ export namespace AtsCreateCandidateNoteRequest$ {
 
 /** @internal */
 export namespace AtsCreateCandidateNoteResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        CreateResult?: shared.CreateResult$.Inbound | undefined;
-        StatusCode: number;
-        RawResponse: Response;
-    };
-
-    export const inboundSchema: z.ZodType<AtsCreateCandidateNoteResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<AtsCreateCandidateNoteResponse, z.ZodTypeDef, unknown> = z
         .object({
             ContentType: z.string(),
             CreateResult: shared.CreateResult$.inboundSchema.optional(),

@@ -365,9 +365,7 @@ export type HRISLocation = {
 
 /** @internal */
 export namespace HRISLocation4$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<HRISLocation4, z.ZodTypeDef, Inbound> = z.object({});
+    export const inboundSchema: z.ZodType<HRISLocation4, z.ZodTypeDef, unknown> = z.object({});
 
     export type Outbound = {};
 
@@ -376,12 +374,11 @@ export namespace HRISLocation4$ {
 
 /** @internal */
 export namespace HRISLocationSourceValue$ {
-    export type Inbound = HRISLocation4$.Inbound | string | number | boolean;
-
-    export type Outbound = HRISLocation4$.Outbound | string | number | boolean;
-    export const inboundSchema: z.ZodType<HRISLocationSourceValue, z.ZodTypeDef, Inbound> = z.union(
+    export const inboundSchema: z.ZodType<HRISLocationSourceValue, z.ZodTypeDef, unknown> = z.union(
         [z.lazy(() => HRISLocation4$.inboundSchema), z.string(), z.number(), z.boolean()]
     );
+
+    export type Outbound = HRISLocation4$.Outbound | string | number | boolean;
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, HRISLocationSourceValue> =
         z.union([z.lazy(() => HRISLocation4$.outboundSchema), z.string(), z.number(), z.boolean()]);
 }
@@ -392,12 +389,7 @@ export const HRISLocationValue$: z.ZodNativeEnum<typeof HRISLocationValue> =
 
 /** @internal */
 export namespace HRISLocationCountry$ {
-    export type Inbound = {
-        source_value?: HRISLocation4$.Inbound | string | number | boolean | null | undefined;
-        value?: HRISLocationValue | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<HRISLocationCountry, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<HRISLocationCountry, z.ZodTypeDef, unknown> = z
         .object({
             source_value: z
                 .nullable(
@@ -447,9 +439,7 @@ export namespace HRISLocationCountry$ {
 
 /** @internal */
 export namespace HRISLocationSchemas4$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<HRISLocationSchemas4, z.ZodTypeDef, Inbound> = z.object(
+    export const inboundSchema: z.ZodType<HRISLocationSchemas4, z.ZodTypeDef, unknown> = z.object(
         {}
     );
 
@@ -462,16 +452,15 @@ export namespace HRISLocationSchemas4$ {
 
 /** @internal */
 export namespace HRISLocationSchemasSourceValue$ {
-    export type Inbound = HRISLocationSchemas4$.Inbound | string | number | boolean;
-
-    export type Outbound = HRISLocationSchemas4$.Outbound | string | number | boolean;
-    export const inboundSchema: z.ZodType<HRISLocationSchemasSourceValue, z.ZodTypeDef, Inbound> =
+    export const inboundSchema: z.ZodType<HRISLocationSchemasSourceValue, z.ZodTypeDef, unknown> =
         z.union([
             z.lazy(() => HRISLocationSchemas4$.inboundSchema),
             z.string(),
             z.number(),
             z.boolean(),
         ]);
+
+    export type Outbound = HRISLocationSchemas4$.Outbound | string | number | boolean;
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, HRISLocationSchemasSourceValue> =
         z.union([
             z.lazy(() => HRISLocationSchemas4$.outboundSchema),
@@ -487,12 +476,7 @@ export const HRISLocationSchemasValue$: z.ZodNativeEnum<typeof HRISLocationSchem
 
 /** @internal */
 export namespace HRISLocationLocationType$ {
-    export type Inbound = {
-        source_value?: HRISLocationSchemas4$.Inbound | string | number | boolean | null | undefined;
-        value?: HRISLocationSchemasValue | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<HRISLocationLocationType, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<HRISLocationLocationType, z.ZodTypeDef, unknown> = z
         .object({
             source_value: z
                 .nullable(
@@ -548,24 +532,7 @@ export namespace HRISLocationLocationType$ {
 
 /** @internal */
 export namespace HRISLocation$ {
-    export type Inbound = {
-        city?: string | null | undefined;
-        country?: HRISLocationCountry$.Inbound | null | undefined;
-        created_at?: string | null | undefined;
-        employee_id?: string | null | undefined;
-        id?: string | null | undefined;
-        location_type?: HRISLocationLocationType$.Inbound | null | undefined;
-        name?: string | null | undefined;
-        phone_number?: string | null | undefined;
-        remote_id?: string | null | undefined;
-        state?: string | null | undefined;
-        street_1?: string | null | undefined;
-        street_2?: string | null | undefined;
-        updated_at?: string | null | undefined;
-        zip_code?: string | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<HRISLocation, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<HRISLocation, z.ZodTypeDef, unknown> = z
         .object({
             city: z.nullable(z.string()).optional(),
             country: z.nullable(z.lazy(() => HRISLocationCountry$.inboundSchema)).optional(),

@@ -50,16 +50,7 @@ export type IamGetRoleResponse = {
 
 /** @internal */
 export namespace IamGetRoleRequest$ {
-    export type Inbound = {
-        expand?: string | null | undefined;
-        fields?: string | null | undefined;
-        id: string;
-        proxy?: Record<string, any> | null | undefined;
-        raw?: boolean | null | undefined;
-        "x-account-id": string;
-    };
-
-    export const inboundSchema: z.ZodType<IamGetRoleRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<IamGetRoleRequest, z.ZodTypeDef, unknown> = z
         .object({
             expand: z.nullable(z.string()).optional(),
             fields: z.nullable(z.string()).optional(),
@@ -111,14 +102,7 @@ export namespace IamGetRoleRequest$ {
 
 /** @internal */
 export namespace IamGetRoleResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        IamRoleResult?: shared.IamRoleResult$.Inbound | undefined;
-        StatusCode: number;
-        RawResponse: Response;
-    };
-
-    export const inboundSchema: z.ZodType<IamGetRoleResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<IamGetRoleResponse, z.ZodTypeDef, unknown> = z
         .object({
             ContentType: z.string(),
             IamRoleResult: shared.IamRoleResult$.inboundSchema.optional(),

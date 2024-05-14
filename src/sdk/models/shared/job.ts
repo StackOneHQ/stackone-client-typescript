@@ -113,9 +113,7 @@ export const JobConfidential$: z.ZodNativeEnum<typeof JobConfidential> =
 
 /** @internal */
 export namespace Job4$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<Job4, z.ZodTypeDef, Inbound> = z.object({});
+    export const inboundSchema: z.ZodType<Job4, z.ZodTypeDef, unknown> = z.object({});
 
     export type Outbound = {};
 
@@ -124,15 +122,14 @@ export namespace Job4$ {
 
 /** @internal */
 export namespace JobSourceValue$ {
-    export type Inbound = Job4$.Inbound | string | number | boolean;
-
-    export type Outbound = Job4$.Outbound | string | number | boolean;
-    export const inboundSchema: z.ZodType<JobSourceValue, z.ZodTypeDef, Inbound> = z.union([
+    export const inboundSchema: z.ZodType<JobSourceValue, z.ZodTypeDef, unknown> = z.union([
         z.lazy(() => Job4$.inboundSchema),
         z.string(),
         z.number(),
         z.boolean(),
     ]);
+
+    export type Outbound = Job4$.Outbound | string | number | boolean;
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, JobSourceValue> = z.union([
         z.lazy(() => Job4$.outboundSchema),
         z.string(),
@@ -146,12 +143,7 @@ export const JobValue$: z.ZodNativeEnum<typeof JobValue> = z.nativeEnum(JobValue
 
 /** @internal */
 export namespace JobStatus$ {
-    export type Inbound = {
-        source_value?: Job4$.Inbound | string | number | boolean | null | undefined;
-        value?: JobValue | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<JobStatus, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<JobStatus, z.ZodTypeDef, unknown> = z
         .object({
             source_value: z
                 .nullable(
@@ -201,23 +193,7 @@ export namespace JobStatus$ {
 
 /** @internal */
 export namespace Job$ {
-    export type Inbound = {
-        code?: string | null | undefined;
-        confidential?: JobConfidential | null | undefined;
-        created_at?: string | null | undefined;
-        department_ids?: Array<string> | null | undefined;
-        hiring_team?: Array<JobHiringTeam$.Inbound> | null | undefined;
-        id?: string | null | undefined;
-        interview_stages?: Array<InterviewStage$.Inbound> | null | undefined;
-        job_status?: JobStatus$.Inbound | null | undefined;
-        location_ids?: Array<string> | null | undefined;
-        remote_id?: string | null | undefined;
-        status?: string | null | undefined;
-        title?: string | null | undefined;
-        updated_at?: string | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<Job, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<Job, z.ZodTypeDef, unknown> = z
         .object({
             code: z.nullable(z.string()).optional(),
             confidential: z.nullable(JobConfidential$).optional(),

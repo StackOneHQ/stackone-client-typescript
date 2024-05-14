@@ -46,15 +46,7 @@ export type HrisGetTimeOffRequestResponse = {
 
 /** @internal */
 export namespace HrisGetTimeOffRequestRequest$ {
-    export type Inbound = {
-        fields?: string | null | undefined;
-        id: string;
-        proxy?: Record<string, any> | null | undefined;
-        raw?: boolean | null | undefined;
-        "x-account-id": string;
-    };
-
-    export const inboundSchema: z.ZodType<HrisGetTimeOffRequestRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<HrisGetTimeOffRequestRequest, z.ZodTypeDef, unknown> = z
         .object({
             fields: z.nullable(z.string()).optional(),
             id: z.string(),
@@ -101,14 +93,7 @@ export namespace HrisGetTimeOffRequestRequest$ {
 
 /** @internal */
 export namespace HrisGetTimeOffRequestResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: Response;
-        TimeOffResult?: shared.TimeOffResult$.Inbound | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<HrisGetTimeOffRequestResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<HrisGetTimeOffRequestResponse, z.ZodTypeDef, unknown> = z
         .object({
             ContentType: z.string(),
             StatusCode: z.number().int(),

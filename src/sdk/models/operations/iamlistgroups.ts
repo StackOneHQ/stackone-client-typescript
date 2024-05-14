@@ -73,20 +73,7 @@ export type IamListGroupsResponse = {
 
 /** @internal */
 export namespace IamListGroupsRequest$ {
-    export type Inbound = {
-        expand?: string | null | undefined;
-        fields?: string | null | undefined;
-        "filter[updated_after]"?: string | null | undefined;
-        next?: string | null | undefined;
-        page?: string | null | undefined;
-        page_size?: string | null | undefined;
-        proxy?: Record<string, any> | null | undefined;
-        raw?: boolean | null | undefined;
-        updated_after?: string | null | undefined;
-        "x-account-id": string;
-    };
-
-    export const inboundSchema: z.ZodType<IamListGroupsRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<IamListGroupsRequest, z.ZodTypeDef, unknown> = z
         .object({
             expand: z.nullable(z.string()).optional(),
             fields: z.nullable(z.string()).optional(),
@@ -162,14 +149,7 @@ export namespace IamListGroupsRequest$ {
 
 /** @internal */
 export namespace IamListGroupsResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        IamGroupsPaginated?: shared.IamGroupsPaginated$.Inbound | undefined;
-        StatusCode: number;
-        RawResponse: Response;
-    };
-
-    export const inboundSchema: z.ZodType<IamListGroupsResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<IamListGroupsResponse, z.ZodTypeDef, unknown> = z
         .object({
             ContentType: z.string(),
             IamGroupsPaginated: shared.IamGroupsPaginated$.inboundSchema.optional(),

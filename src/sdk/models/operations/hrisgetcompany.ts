@@ -46,15 +46,7 @@ export type HrisGetCompanyResponse = {
 
 /** @internal */
 export namespace HrisGetCompanyRequest$ {
-    export type Inbound = {
-        fields?: string | null | undefined;
-        id: string;
-        proxy?: Record<string, any> | null | undefined;
-        raw?: boolean | null | undefined;
-        "x-account-id": string;
-    };
-
-    export const inboundSchema: z.ZodType<HrisGetCompanyRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<HrisGetCompanyRequest, z.ZodTypeDef, unknown> = z
         .object({
             fields: z.nullable(z.string()).optional(),
             id: z.string(),
@@ -101,14 +93,7 @@ export namespace HrisGetCompanyRequest$ {
 
 /** @internal */
 export namespace HrisGetCompanyResponse$ {
-    export type Inbound = {
-        CompanyResult?: shared.CompanyResult$.Inbound | undefined;
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: Response;
-    };
-
-    export const inboundSchema: z.ZodType<HrisGetCompanyResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<HrisGetCompanyResponse, z.ZodTypeDef, unknown> = z
         .object({
             CompanyResult: shared.CompanyResult$.inboundSchema.optional(),
             ContentType: z.string(),

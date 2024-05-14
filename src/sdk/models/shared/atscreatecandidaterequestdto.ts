@@ -50,20 +50,7 @@ export type AtsCreateCandidateRequestDto = {
 
 /** @internal */
 export namespace AtsCreateCandidateRequestDto$ {
-    export type Inbound = {
-        company?: string | null | undefined;
-        country?: string | null | undefined;
-        email?: string | null | undefined;
-        first_name?: string | null | undefined;
-        hired_at?: string | null | undefined;
-        last_name?: string | null | undefined;
-        name?: string | null | undefined;
-        phone_number?: string | null | undefined;
-        social_links?: Array<SocialLink$.Inbound> | null | undefined;
-        title?: string | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<AtsCreateCandidateRequestDto, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<AtsCreateCandidateRequestDto, z.ZodTypeDef, unknown> = z
         .object({
             company: z.nullable(z.string()).optional(),
             country: z.nullable(z.string()).optional(),

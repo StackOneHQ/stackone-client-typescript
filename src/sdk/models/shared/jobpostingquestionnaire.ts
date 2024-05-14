@@ -21,15 +21,7 @@ export type JobPostingQuestionnaire = {
 
 /** @internal */
 export namespace JobPostingQuestionnaire$ {
-    export type Inbound = {
-        id?: string | null | undefined;
-        internal?: boolean | null | undefined;
-        name?: string | null | undefined;
-        questions?: Array<Question$.Inbound> | null | undefined;
-        remote_id?: string | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<JobPostingQuestionnaire, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<JobPostingQuestionnaire, z.ZodTypeDef, unknown> = z
         .object({
             id: z.nullable(z.string()).optional(),
             internal: z.nullable(z.boolean()).optional(),

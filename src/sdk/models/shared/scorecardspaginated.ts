@@ -18,14 +18,7 @@ export type ScorecardsPaginated = {
 
 /** @internal */
 export namespace ScorecardsPaginated$ {
-    export type Inbound = {
-        data: Array<Scorecard$.Inbound>;
-        next?: string | null | undefined;
-        next_page?: string | null | undefined;
-        raw?: Array<RawResponse$.Inbound> | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<ScorecardsPaginated, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<ScorecardsPaginated, z.ZodTypeDef, unknown> = z
         .object({
             data: z.array(Scorecard$.inboundSchema),
             next: z.nullable(z.string()).optional(),

@@ -35,16 +35,10 @@ export type MarketingUpdateOmniChannelTemplateResponse = {
 
 /** @internal */
 export namespace MarketingUpdateOmniChannelTemplateRequest$ {
-    export type Inbound = {
-        MarketingCreateTemplateRequestDto: shared.MarketingCreateTemplateRequestDto$.Inbound;
-        id: string;
-        "x-account-id": string;
-    };
-
     export const inboundSchema: z.ZodType<
         MarketingUpdateOmniChannelTemplateRequest,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z
         .object({
             MarketingCreateTemplateRequestDto:
@@ -88,17 +82,10 @@ export namespace MarketingUpdateOmniChannelTemplateRequest$ {
 
 /** @internal */
 export namespace MarketingUpdateOmniChannelTemplateResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        CreateResult?: shared.CreateResult$.Inbound | undefined;
-        StatusCode: number;
-        RawResponse: Response;
-    };
-
     export const inboundSchema: z.ZodType<
         MarketingUpdateOmniChannelTemplateResponse,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z
         .object({
             ContentType: z.string(),

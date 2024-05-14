@@ -40,22 +40,7 @@ export type Account = {
 
 /** @internal */
 export namespace Account$ {
-    export type Inbound = {
-        addresses?: Array<AccountAddress$.Inbound> | null | undefined;
-        annual_revenue?: string | null | undefined;
-        created_at?: string | null | undefined;
-        description?: string | null | undefined;
-        id?: string | null | undefined;
-        industries?: Array<string> | null | undefined;
-        name?: string | null | undefined;
-        owner_id?: string | null | undefined;
-        phone_numbers?: Array<string> | null | undefined;
-        remote_id?: string | null | undefined;
-        updated_at?: string | null | undefined;
-        website?: string | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<Account, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<Account, z.ZodTypeDef, unknown> = z
         .object({
             addresses: z.nullable(z.array(AccountAddress$.inboundSchema)).optional(),
             annual_revenue: z.nullable(z.string()).optional(),

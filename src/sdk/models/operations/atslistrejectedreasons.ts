@@ -75,20 +75,7 @@ export type AtsListRejectedReasonsResponse = {
 
 /** @internal */
 export namespace AtsListRejectedReasonsRequest$ {
-    export type Inbound = {
-        fields?: string | null | undefined;
-        "filter[updated_after]"?: string | null | undefined;
-        next?: string | null | undefined;
-        page?: string | null | undefined;
-        page_size?: string | null | undefined;
-        proxy?: Record<string, any> | null | undefined;
-        raw?: boolean | null | undefined;
-        sync_token?: string | null | undefined;
-        updated_after?: string | null | undefined;
-        "x-account-id": string;
-    };
-
-    export const inboundSchema: z.ZodType<AtsListRejectedReasonsRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<AtsListRejectedReasonsRequest, z.ZodTypeDef, unknown> = z
         .object({
             fields: z.nullable(z.string()).optional(),
             "filter[updated_after]": z.nullable(z.string()).optional(),
@@ -165,14 +152,7 @@ export namespace AtsListRejectedReasonsRequest$ {
 
 /** @internal */
 export namespace AtsListRejectedReasonsResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        RejectedReasonsPaginated?: shared.RejectedReasonsPaginated$.Inbound | undefined;
-        StatusCode: number;
-        RawResponse: Response;
-    };
-
-    export const inboundSchema: z.ZodType<AtsListRejectedReasonsResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<AtsListRejectedReasonsResponse, z.ZodTypeDef, unknown> = z
         .object({
             ContentType: z.string(),
             RejectedReasonsPaginated: shared.RejectedReasonsPaginated$.inboundSchema.optional(),

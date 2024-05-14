@@ -18,14 +18,7 @@ export type InterviewStagesPaginated = {
 
 /** @internal */
 export namespace InterviewStagesPaginated$ {
-    export type Inbound = {
-        data: Array<InterviewStage$.Inbound>;
-        next?: string | null | undefined;
-        next_page?: string | null | undefined;
-        raw?: Array<RawResponse$.Inbound> | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<InterviewStagesPaginated, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<InterviewStagesPaginated, z.ZodTypeDef, unknown> = z
         .object({
             data: z.array(InterviewStage$.inboundSchema),
             next: z.nullable(z.string()).optional(),
