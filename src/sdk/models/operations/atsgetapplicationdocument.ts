@@ -47,16 +47,7 @@ export type AtsGetApplicationDocumentResponse = {
 
 /** @internal */
 export namespace AtsGetApplicationDocumentRequest$ {
-    export type Inbound = {
-        fields?: string | null | undefined;
-        id: string;
-        proxy?: Record<string, any> | null | undefined;
-        raw?: boolean | null | undefined;
-        subResourceId: string;
-        "x-account-id": string;
-    };
-
-    export const inboundSchema: z.ZodType<AtsGetApplicationDocumentRequest, z.ZodTypeDef, Inbound> =
+    export const inboundSchema: z.ZodType<AtsGetApplicationDocumentRequest, z.ZodTypeDef, unknown> =
         z
             .object({
                 fields: z.nullable(z.string()).optional(),
@@ -113,17 +104,10 @@ export namespace AtsGetApplicationDocumentRequest$ {
 
 /** @internal */
 export namespace AtsGetApplicationDocumentResponse$ {
-    export type Inbound = {
-        AtsDocumentResult?: shared.AtsDocumentResult$.Inbound | undefined;
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: Response;
-    };
-
     export const inboundSchema: z.ZodType<
         AtsGetApplicationDocumentResponse,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z
         .object({
             AtsDocumentResult: shared.AtsDocumentResult$.inboundSchema.optional(),

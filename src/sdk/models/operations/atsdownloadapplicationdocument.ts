@@ -38,17 +38,10 @@ export type AtsDownloadApplicationDocumentResponse = {
 
 /** @internal */
 export namespace AtsDownloadApplicationDocumentRequest$ {
-    export type Inbound = {
-        format?: string | null | undefined;
-        id: string;
-        subResourceId: string;
-        "x-account-id": string;
-    };
-
     export const inboundSchema: z.ZodType<
         AtsDownloadApplicationDocumentRequest,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z
         .object({
             format: z.nullable(z.string()).optional(),
@@ -95,17 +88,10 @@ export namespace AtsDownloadApplicationDocumentRequest$ {
 
 /** @internal */
 export namespace AtsDownloadApplicationDocumentResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: Response;
-        stream?: ReadableStream<Uint8Array> | undefined;
-    };
-
     export const inboundSchema: z.ZodType<
         AtsDownloadApplicationDocumentResponse,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z
         .object({
             ContentType: z.string(),

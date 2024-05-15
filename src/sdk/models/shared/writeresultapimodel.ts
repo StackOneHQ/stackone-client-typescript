@@ -14,14 +14,7 @@ export type WriteResultApiModel = {
 
 /** @internal */
 export namespace WriteResultApiModel$ {
-    export type Inbound = {
-        message?: string | null | undefined;
-        provider_errors?: Array<ProviderErrorApiModel$.Inbound> | null | undefined;
-        statusCode?: number | null | undefined;
-        timestamp?: string | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<WriteResultApiModel, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<WriteResultApiModel, z.ZodTypeDef, unknown> = z
         .object({
             message: z.nullable(z.string()).optional(),
             provider_errors: z.nullable(z.array(ProviderErrorApiModel$.inboundSchema)).optional(),

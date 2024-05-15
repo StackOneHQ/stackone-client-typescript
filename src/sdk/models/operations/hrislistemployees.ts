@@ -81,22 +81,7 @@ export type HrisListEmployeesResponse = {
 
 /** @internal */
 export namespace HrisListEmployeesRequest$ {
-    export type Inbound = {
-        expand?: string | null | undefined;
-        fields?: string | null | undefined;
-        "filter[employee_number]"?: string | null | undefined;
-        "filter[updated_after]"?: string | null | undefined;
-        include?: string | null | undefined;
-        next?: string | null | undefined;
-        page?: string | null | undefined;
-        page_size?: string | null | undefined;
-        proxy?: Record<string, any> | null | undefined;
-        raw?: boolean | null | undefined;
-        updated_after?: string | null | undefined;
-        "x-account-id": string;
-    };
-
-    export const inboundSchema: z.ZodType<HrisListEmployeesRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<HrisListEmployeesRequest, z.ZodTypeDef, unknown> = z
         .object({
             expand: z.nullable(z.string()).optional(),
             fields: z.nullable(z.string()).optional(),
@@ -186,14 +171,7 @@ export namespace HrisListEmployeesRequest$ {
 
 /** @internal */
 export namespace HrisListEmployeesResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        EmployeesPaginated?: shared.EmployeesPaginated$.Inbound | undefined;
-        StatusCode: number;
-        RawResponse: Response;
-    };
-
-    export const inboundSchema: z.ZodType<HrisListEmployeesResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<HrisListEmployeesResponse, z.ZodTypeDef, unknown> = z
         .object({
             ContentType: z.string(),
             EmployeesPaginated: shared.EmployeesPaginated$.inboundSchema.optional(),

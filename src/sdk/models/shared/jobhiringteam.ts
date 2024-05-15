@@ -29,15 +29,7 @@ export type JobHiringTeam = {
 
 /** @internal */
 export namespace JobHiringTeam$ {
-    export type Inbound = {
-        email?: string | null | undefined;
-        first_name?: string | null | undefined;
-        last_name?: string | null | undefined;
-        role?: string | null | undefined;
-        user_id?: string | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<JobHiringTeam, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<JobHiringTeam, z.ZodTypeDef, unknown> = z
         .object({
             email: z.nullable(z.string()).optional(),
             first_name: z.nullable(z.string()).optional(),

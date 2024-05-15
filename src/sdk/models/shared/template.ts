@@ -27,16 +27,7 @@ export type Template = {
 
 /** @internal */
 export namespace Template$ {
-    export type Inbound = {
-        created_at?: string | null | undefined;
-        id?: string | null | undefined;
-        name?: string | null | undefined;
-        remote_id?: string | null | undefined;
-        tags?: Array<string> | null | undefined;
-        updated_at?: string | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<Template, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<Template, z.ZodTypeDef, unknown> = z
         .object({
             created_at: z
                 .nullable(

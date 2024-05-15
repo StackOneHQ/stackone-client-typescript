@@ -33,12 +33,7 @@ export const PhoneNumberType$: z.ZodNativeEnum<typeof PhoneNumberType> =
 
 /** @internal */
 export namespace PhoneNumber$ {
-    export type Inbound = {
-        phone?: string | null | undefined;
-        type?: PhoneNumberType | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<PhoneNumber, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<PhoneNumber, z.ZodTypeDef, unknown> = z
         .object({
             phone: z.nullable(z.string()).optional(),
             type: z.nullable(PhoneNumberType$).optional(),

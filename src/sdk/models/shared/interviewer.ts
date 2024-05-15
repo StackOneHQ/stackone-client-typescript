@@ -21,16 +21,7 @@ export type Interviewer = {
 
 /** @internal */
 export namespace Interviewer$ {
-    export type Inbound = {
-        email?: string | null | undefined;
-        first_name?: string | null | undefined;
-        id?: string | null | undefined;
-        last_name?: string | null | undefined;
-        name?: string | null | undefined;
-        remote_id?: string | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<Interviewer, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<Interviewer, z.ZodTypeDef, unknown> = z
         .object({
             email: z.nullable(z.string()).optional(),
             first_name: z.nullable(z.string()).optional(),

@@ -48,9 +48,7 @@ export type ApplicationAttachment = {
 
 /** @internal */
 export namespace ApplicationAttachment4$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<ApplicationAttachment4, z.ZodTypeDef, Inbound> = z.object(
+    export const inboundSchema: z.ZodType<ApplicationAttachment4, z.ZodTypeDef, unknown> = z.object(
         {}
     );
 
@@ -62,16 +60,15 @@ export namespace ApplicationAttachment4$ {
 
 /** @internal */
 export namespace ApplicationAttachmentSourceValue$ {
-    export type Inbound = ApplicationAttachment4$.Inbound | string | number | boolean;
-
-    export type Outbound = ApplicationAttachment4$.Outbound | string | number | boolean;
-    export const inboundSchema: z.ZodType<ApplicationAttachmentSourceValue, z.ZodTypeDef, Inbound> =
+    export const inboundSchema: z.ZodType<ApplicationAttachmentSourceValue, z.ZodTypeDef, unknown> =
         z.union([
             z.lazy(() => ApplicationAttachment4$.inboundSchema),
             z.string(),
             z.number(),
             z.boolean(),
         ]);
+
+    export type Outbound = ApplicationAttachment4$.Outbound | string | number | boolean;
     export const outboundSchema: z.ZodType<
         Outbound,
         z.ZodTypeDef,
@@ -90,18 +87,7 @@ export const ApplicationAttachmentValue$: z.ZodNativeEnum<typeof ApplicationAtta
 
 /** @internal */
 export namespace ContentType$ {
-    export type Inbound = {
-        source_value?:
-            | ApplicationAttachment4$.Inbound
-            | string
-            | number
-            | boolean
-            | null
-            | undefined;
-        value?: ApplicationAttachmentValue | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<ContentType, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<ContentType, z.ZodTypeDef, unknown> = z
         .object({
             source_value: z
                 .nullable(
@@ -157,14 +143,7 @@ export namespace ContentType$ {
 
 /** @internal */
 export namespace ApplicationAttachment$ {
-    export type Inbound = {
-        content?: string | null | undefined;
-        content_type?: ContentType$.Inbound | null | undefined;
-        file_name?: string | null | undefined;
-        url?: string | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<ApplicationAttachment, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<ApplicationAttachment, z.ZodTypeDef, unknown> = z
         .object({
             content: z.nullable(z.string()).optional(),
             content_type: z.nullable(z.lazy(() => ContentType$.inboundSchema)).optional(),

@@ -69,9 +69,7 @@ export const ConnectSessionCreateCategories$: z.ZodNativeEnum<
 
 /** @internal */
 export namespace Metadata$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<Metadata, z.ZodTypeDef, Inbound> = z.object({});
+    export const inboundSchema: z.ZodType<Metadata, z.ZodTypeDef, unknown> = z.object({});
 
     export type Outbound = {};
 
@@ -80,20 +78,7 @@ export namespace Metadata$ {
 
 /** @internal */
 export namespace ConnectSessionCreate$ {
-    export type Inbound = {
-        account_id?: string | null | undefined;
-        categories?: Array<ConnectSessionCreateCategories> | null | undefined;
-        expires_in?: number | null | undefined;
-        label?: string | null | undefined;
-        metadata?: Metadata$.Inbound | null | undefined;
-        multiple?: boolean | null | undefined;
-        origin_owner_id: string;
-        origin_owner_name: string;
-        origin_username?: string | null | undefined;
-        provider?: string | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<ConnectSessionCreate, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<ConnectSessionCreate, z.ZodTypeDef, unknown> = z
         .object({
             account_id: z.nullable(z.string()).optional(),
             categories: z.nullable(z.array(ConnectSessionCreateCategories$)).optional(),

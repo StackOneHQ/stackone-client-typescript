@@ -383,12 +383,10 @@ export type HrisCreateWorkEligibilityRequestDto = {
 
 /** @internal */
 export namespace HrisCreateWorkEligibilityRequestDtoSchemasDocument4$ {
-    export type Inbound = {};
-
     export const inboundSchema: z.ZodType<
         HrisCreateWorkEligibilityRequestDtoSchemasDocument4,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z.object({});
 
     export type Outbound = {};
@@ -402,27 +400,22 @@ export namespace HrisCreateWorkEligibilityRequestDtoSchemasDocument4$ {
 
 /** @internal */
 export namespace HrisCreateWorkEligibilityRequestDtoSchemasSourceValue$ {
-    export type Inbound =
-        | HrisCreateWorkEligibilityRequestDtoSchemasDocument4$.Inbound
-        | string
-        | number
-        | boolean;
-
-    export type Outbound =
-        | HrisCreateWorkEligibilityRequestDtoSchemasDocument4$.Outbound
-        | string
-        | number
-        | boolean;
     export const inboundSchema: z.ZodType<
         HrisCreateWorkEligibilityRequestDtoSchemasSourceValue,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z.union([
         z.lazy(() => HrisCreateWorkEligibilityRequestDtoSchemasDocument4$.inboundSchema),
         z.string(),
         z.number(),
         z.boolean(),
     ]);
+
+    export type Outbound =
+        | HrisCreateWorkEligibilityRequestDtoSchemasDocument4$.Outbound
+        | string
+        | number
+        | boolean;
     export const outboundSchema: z.ZodType<
         Outbound,
         z.ZodTypeDef,
@@ -437,21 +430,10 @@ export namespace HrisCreateWorkEligibilityRequestDtoSchemasSourceValue$ {
 
 /** @internal */
 export namespace HrisCreateWorkEligibilityRequestDtoCategory$ {
-    export type Inbound = {
-        source_value?:
-            | HrisCreateWorkEligibilityRequestDtoSchemasDocument4$.Inbound
-            | string
-            | number
-            | boolean
-            | null
-            | undefined;
-        value?: string | null | undefined;
-    };
-
     export const inboundSchema: z.ZodType<
         HrisCreateWorkEligibilityRequestDtoCategory,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z
         .object({
             source_value: z
@@ -517,18 +499,7 @@ export namespace HrisCreateWorkEligibilityRequestDtoCategory$ {
 
 /** @internal */
 export namespace Document$ {
-    export type Inbound = {
-        category?: HrisCreateWorkEligibilityRequestDtoCategory$.Inbound | null | undefined;
-        contents?: Array<Content$.Inbound> | null | undefined;
-        created_at?: string | null | undefined;
-        id?: string | null | undefined;
-        name?: string | null | undefined;
-        path?: string | null | undefined;
-        remote_id?: string | null | undefined;
-        updated_at?: string | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<Document, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<Document, z.ZodTypeDef, unknown> = z
         .object({
             category: z
                 .nullable(z.lazy(() => HrisCreateWorkEligibilityRequestDtoCategory$.inboundSchema))
@@ -608,12 +579,10 @@ export namespace Document$ {
 
 /** @internal */
 export namespace HrisCreateWorkEligibilityRequestDto4$ {
-    export type Inbound = {};
-
     export const inboundSchema: z.ZodType<
         HrisCreateWorkEligibilityRequestDto4,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z.object({});
 
     export type Outbound = {};
@@ -627,23 +596,22 @@ export namespace HrisCreateWorkEligibilityRequestDto4$ {
 
 /** @internal */
 export namespace HrisCreateWorkEligibilityRequestDtoSourceValue$ {
-    export type Inbound = HrisCreateWorkEligibilityRequestDto4$.Inbound | string | number | boolean;
-
-    export type Outbound =
-        | HrisCreateWorkEligibilityRequestDto4$.Outbound
-        | string
-        | number
-        | boolean;
     export const inboundSchema: z.ZodType<
         HrisCreateWorkEligibilityRequestDtoSourceValue,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z.union([
         z.lazy(() => HrisCreateWorkEligibilityRequestDto4$.inboundSchema),
         z.string(),
         z.number(),
         z.boolean(),
     ]);
+
+    export type Outbound =
+        | HrisCreateWorkEligibilityRequestDto4$.Outbound
+        | string
+        | number
+        | boolean;
     export const outboundSchema: z.ZodType<
         Outbound,
         z.ZodTypeDef,
@@ -663,18 +631,7 @@ export const HrisCreateWorkEligibilityRequestDtoValue$: z.ZodNativeEnum<
 
 /** @internal */
 export namespace IssuedBy$ {
-    export type Inbound = {
-        source_value?:
-            | HrisCreateWorkEligibilityRequestDto4$.Inbound
-            | string
-            | number
-            | boolean
-            | null
-            | undefined;
-        value?: HrisCreateWorkEligibilityRequestDtoValue | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<IssuedBy, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<IssuedBy, z.ZodTypeDef, unknown> = z
         .object({
             source_value: z
                 .nullable(
@@ -730,12 +687,10 @@ export namespace IssuedBy$ {
 
 /** @internal */
 export namespace HrisCreateWorkEligibilityRequestDtoSchemas4$ {
-    export type Inbound = {};
-
     export const inboundSchema: z.ZodType<
         HrisCreateWorkEligibilityRequestDtoSchemas4,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z.object({});
 
     export type Outbound = {};
@@ -749,23 +704,18 @@ export namespace HrisCreateWorkEligibilityRequestDtoSchemas4$ {
 
 /** @internal */
 export namespace SourceType$ {
-    export type Inbound =
-        | HrisCreateWorkEligibilityRequestDtoSchemas4$.Inbound
-        | string
-        | number
-        | boolean;
+    export const inboundSchema: z.ZodType<SourceType, z.ZodTypeDef, unknown> = z.union([
+        z.lazy(() => HrisCreateWorkEligibilityRequestDtoSchemas4$.inboundSchema),
+        z.string(),
+        z.number(),
+        z.boolean(),
+    ]);
 
     export type Outbound =
         | HrisCreateWorkEligibilityRequestDtoSchemas4$.Outbound
         | string
         | number
         | boolean;
-    export const inboundSchema: z.ZodType<SourceType, z.ZodTypeDef, Inbound> = z.union([
-        z.lazy(() => HrisCreateWorkEligibilityRequestDtoSchemas4$.inboundSchema),
-        z.string(),
-        z.number(),
-        z.boolean(),
-    ]);
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, SourceType> = z.union([
         z.lazy(() => HrisCreateWorkEligibilityRequestDtoSchemas4$.outboundSchema),
         z.string(),
@@ -781,21 +731,10 @@ export const HrisCreateWorkEligibilityRequestDtoSchemasValue$: z.ZodNativeEnum<
 
 /** @internal */
 export namespace HrisCreateWorkEligibilityRequestDtoType$ {
-    export type Inbound = {
-        source_type?:
-            | HrisCreateWorkEligibilityRequestDtoSchemas4$.Inbound
-            | string
-            | number
-            | boolean
-            | null
-            | undefined;
-        value?: HrisCreateWorkEligibilityRequestDtoSchemasValue | null | undefined;
-    };
-
     export const inboundSchema: z.ZodType<
         HrisCreateWorkEligibilityRequestDtoType,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z
         .object({
             source_type: z
@@ -856,20 +795,10 @@ export namespace HrisCreateWorkEligibilityRequestDtoType$ {
 
 /** @internal */
 export namespace HrisCreateWorkEligibilityRequestDto$ {
-    export type Inbound = {
-        document?: Document$.Inbound | null | undefined;
-        issued_by?: IssuedBy$.Inbound | null | undefined;
-        number?: string | null | undefined;
-        sub_type?: string | null | undefined;
-        type?: HrisCreateWorkEligibilityRequestDtoType$.Inbound | null | undefined;
-        valid_from?: string | null | undefined;
-        valid_to?: string | null | undefined;
-    };
-
     export const inboundSchema: z.ZodType<
         HrisCreateWorkEligibilityRequestDto,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z
         .object({
             document: z.nullable(z.lazy(() => Document$.inboundSchema)).optional(),

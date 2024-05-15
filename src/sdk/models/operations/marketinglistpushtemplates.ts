@@ -69,22 +69,10 @@ export type MarketingListPushTemplatesResponse = {
 
 /** @internal */
 export namespace MarketingListPushTemplatesRequest$ {
-    export type Inbound = {
-        fields?: string | null | undefined;
-        "filter[updated_after]"?: string | null | undefined;
-        next?: string | null | undefined;
-        page?: string | null | undefined;
-        page_size?: string | null | undefined;
-        proxy?: Record<string, any> | null | undefined;
-        raw?: boolean | null | undefined;
-        updated_after?: string | null | undefined;
-        "x-account-id": string;
-    };
-
     export const inboundSchema: z.ZodType<
         MarketingListPushTemplatesRequest,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z
         .object({
             fields: z.nullable(z.string()).optional(),
@@ -160,17 +148,10 @@ export namespace MarketingListPushTemplatesRequest$ {
 
 /** @internal */
 export namespace MarketingListPushTemplatesResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: Response;
-        TemplatesPaginated?: shared.TemplatesPaginated$.Inbound | undefined;
-    };
-
     export const inboundSchema: z.ZodType<
         MarketingListPushTemplatesResponse,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z
         .object({
             ContentType: z.string(),

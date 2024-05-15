@@ -18,14 +18,7 @@ export type RejectedReasonsPaginated = {
 
 /** @internal */
 export namespace RejectedReasonsPaginated$ {
-    export type Inbound = {
-        data: Array<RejectedReason$.Inbound>;
-        next?: string | null | undefined;
-        next_page?: string | null | undefined;
-        raw?: Array<RawResponse$.Inbound> | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<RejectedReasonsPaginated, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<RejectedReasonsPaginated, z.ZodTypeDef, unknown> = z
         .object({
             data: z.array(RejectedReason$.inboundSchema),
             next: z.nullable(z.string()).optional(),

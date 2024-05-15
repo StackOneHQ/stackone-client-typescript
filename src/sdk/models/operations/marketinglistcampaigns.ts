@@ -69,19 +69,7 @@ export type MarketingListCampaignsResponse = {
 
 /** @internal */
 export namespace MarketingListCampaignsRequest$ {
-    export type Inbound = {
-        fields?: string | null | undefined;
-        "filter[updated_after]"?: string | null | undefined;
-        next?: string | null | undefined;
-        page?: string | null | undefined;
-        page_size?: string | null | undefined;
-        proxy?: Record<string, any> | null | undefined;
-        raw?: boolean | null | undefined;
-        updated_after?: string | null | undefined;
-        "x-account-id": string;
-    };
-
-    export const inboundSchema: z.ZodType<MarketingListCampaignsRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<MarketingListCampaignsRequest, z.ZodTypeDef, unknown> = z
         .object({
             fields: z.nullable(z.string()).optional(),
             "filter[updated_after]": z.nullable(z.string()).optional(),
@@ -153,14 +141,7 @@ export namespace MarketingListCampaignsRequest$ {
 
 /** @internal */
 export namespace MarketingListCampaignsResponse$ {
-    export type Inbound = {
-        CampaignsPaginated?: shared.CampaignsPaginated$.Inbound | undefined;
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: Response;
-    };
-
-    export const inboundSchema: z.ZodType<MarketingListCampaignsResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<MarketingListCampaignsResponse, z.ZodTypeDef, unknown> = z
         .object({
             CampaignsPaginated: shared.CampaignsPaginated$.inboundSchema.optional(),
             ContentType: z.string(),

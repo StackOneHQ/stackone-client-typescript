@@ -68,9 +68,7 @@ export type Note = {
 
 /** @internal */
 export namespace Note4$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<Note4, z.ZodTypeDef, Inbound> = z.object({});
+    export const inboundSchema: z.ZodType<Note4, z.ZodTypeDef, unknown> = z.object({});
 
     export type Outbound = {};
 
@@ -79,15 +77,14 @@ export namespace Note4$ {
 
 /** @internal */
 export namespace NoteSourceValue$ {
-    export type Inbound = Note4$.Inbound | string | number | boolean;
-
-    export type Outbound = Note4$.Outbound | string | number | boolean;
-    export const inboundSchema: z.ZodType<NoteSourceValue, z.ZodTypeDef, Inbound> = z.union([
+    export const inboundSchema: z.ZodType<NoteSourceValue, z.ZodTypeDef, unknown> = z.union([
         z.lazy(() => Note4$.inboundSchema),
         z.string(),
         z.number(),
         z.boolean(),
     ]);
+
+    export type Outbound = Note4$.Outbound | string | number | boolean;
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, NoteSourceValue> = z.union([
         z.lazy(() => Note4$.outboundSchema),
         z.string(),
@@ -101,12 +98,7 @@ export const NoteValue$: z.ZodNativeEnum<typeof NoteValue> = z.nativeEnum(NoteVa
 
 /** @internal */
 export namespace NoteVisibility$ {
-    export type Inbound = {
-        source_value?: Note4$.Inbound | string | number | boolean | null | undefined;
-        value?: NoteValue | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<NoteVisibility, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<NoteVisibility, z.ZodTypeDef, unknown> = z
         .object({
             source_value: z
                 .nullable(
@@ -156,18 +148,7 @@ export namespace NoteVisibility$ {
 
 /** @internal */
 export namespace Note$ {
-    export type Inbound = {
-        author_id?: string | null | undefined;
-        content?: Array<NoteContentApiModel$.Inbound> | null | undefined;
-        created_at?: string | null | undefined;
-        deleted_at?: string | null | undefined;
-        id?: string | null | undefined;
-        remote_id?: string | null | undefined;
-        updated_at?: string | null | undefined;
-        visibility?: NoteVisibility$.Inbound | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<Note, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<Note, z.ZodTypeDef, unknown> = z
         .object({
             author_id: z.nullable(z.string()).optional(),
             content: z.nullable(z.array(NoteContentApiModel$.inboundSchema)).optional(),

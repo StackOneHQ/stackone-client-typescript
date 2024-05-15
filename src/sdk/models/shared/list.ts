@@ -61,9 +61,7 @@ export type List = {
 
 /** @internal */
 export namespace List4$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<List4, z.ZodTypeDef, Inbound> = z.object({});
+    export const inboundSchema: z.ZodType<List4, z.ZodTypeDef, unknown> = z.object({});
 
     export type Outbound = {};
 
@@ -72,15 +70,14 @@ export namespace List4$ {
 
 /** @internal */
 export namespace ListSourceValue$ {
-    export type Inbound = List4$.Inbound | string | number | boolean;
-
-    export type Outbound = List4$.Outbound | string | number | boolean;
-    export const inboundSchema: z.ZodType<ListSourceValue, z.ZodTypeDef, Inbound> = z.union([
+    export const inboundSchema: z.ZodType<ListSourceValue, z.ZodTypeDef, unknown> = z.union([
         z.lazy(() => List4$.inboundSchema),
         z.string(),
         z.number(),
         z.boolean(),
     ]);
+
+    export type Outbound = List4$.Outbound | string | number | boolean;
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ListSourceValue> = z.union([
         z.lazy(() => List4$.outboundSchema),
         z.string(),
@@ -94,12 +91,7 @@ export const ListValue$: z.ZodNativeEnum<typeof ListValue> = z.nativeEnum(ListVa
 
 /** @internal */
 export namespace ListType$ {
-    export type Inbound = {
-        source_value?: List4$.Inbound | string | number | boolean | null | undefined;
-        value?: ListValue | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<ListType, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<ListType, z.ZodTypeDef, unknown> = z
         .object({
             source_value: z
                 .nullable(
@@ -149,17 +141,7 @@ export namespace ListType$ {
 
 /** @internal */
 export namespace List$ {
-    export type Inbound = {
-        created_at?: string | null | undefined;
-        id?: string | null | undefined;
-        items?: Array<string> | null | undefined;
-        name?: string | null | undefined;
-        remote_id?: string | null | undefined;
-        type?: ListType$.Inbound | null | undefined;
-        updated_at?: string | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<List, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<List, z.ZodTypeDef, unknown> = z
         .object({
             created_at: z
                 .nullable(

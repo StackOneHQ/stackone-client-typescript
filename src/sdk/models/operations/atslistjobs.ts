@@ -79,21 +79,7 @@ export type AtsListJobsResponse = {
 
 /** @internal */
 export namespace AtsListJobsRequest$ {
-    export type Inbound = {
-        expand?: string | null | undefined;
-        fields?: string | null | undefined;
-        "filter[updated_after]"?: string | null | undefined;
-        next?: string | null | undefined;
-        page?: string | null | undefined;
-        page_size?: string | null | undefined;
-        proxy?: Record<string, any> | null | undefined;
-        raw?: boolean | null | undefined;
-        sync_token?: string | null | undefined;
-        updated_after?: string | null | undefined;
-        "x-account-id": string;
-    };
-
-    export const inboundSchema: z.ZodType<AtsListJobsRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<AtsListJobsRequest, z.ZodTypeDef, unknown> = z
         .object({
             expand: z.nullable(z.string()).optional(),
             fields: z.nullable(z.string()).optional(),
@@ -174,14 +160,7 @@ export namespace AtsListJobsRequest$ {
 
 /** @internal */
 export namespace AtsListJobsResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        JobsPaginated?: shared.JobsPaginated$.Inbound | undefined;
-        StatusCode: number;
-        RawResponse: Response;
-    };
-
-    export const inboundSchema: z.ZodType<AtsListJobsResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<AtsListJobsResponse, z.ZodTypeDef, unknown> = z
         .object({
             ContentType: z.string(),
             JobsPaginated: shared.JobsPaginated$.inboundSchema.optional(),

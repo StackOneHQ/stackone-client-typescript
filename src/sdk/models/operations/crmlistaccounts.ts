@@ -69,19 +69,7 @@ export type CrmListAccountsResponse = {
 
 /** @internal */
 export namespace CrmListAccountsRequest$ {
-    export type Inbound = {
-        fields?: string | null | undefined;
-        "filter[updated_after]"?: string | null | undefined;
-        next?: string | null | undefined;
-        page?: string | null | undefined;
-        page_size?: string | null | undefined;
-        proxy?: Record<string, any> | null | undefined;
-        raw?: boolean | null | undefined;
-        updated_after?: string | null | undefined;
-        "x-account-id": string;
-    };
-
-    export const inboundSchema: z.ZodType<CrmListAccountsRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<CrmListAccountsRequest, z.ZodTypeDef, unknown> = z
         .object({
             fields: z.nullable(z.string()).optional(),
             "filter[updated_after]": z.nullable(z.string()).optional(),
@@ -152,14 +140,7 @@ export namespace CrmListAccountsRequest$ {
 
 /** @internal */
 export namespace CrmListAccountsResponse$ {
-    export type Inbound = {
-        AccountsPaginated?: shared.AccountsPaginated$.Inbound | undefined;
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: Response;
-    };
-
-    export const inboundSchema: z.ZodType<CrmListAccountsResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<CrmListAccountsResponse, z.ZodTypeDef, unknown> = z
         .object({
             AccountsPaginated: shared.AccountsPaginated$.inboundSchema.optional(),
             ContentType: z.string(),

@@ -30,14 +30,10 @@ export type StackoneGetAccountMetaInfoResponse = {
 
 /** @internal */
 export namespace StackoneGetAccountMetaInfoRequest$ {
-    export type Inbound = {
-        id: string;
-    };
-
     export const inboundSchema: z.ZodType<
         StackoneGetAccountMetaInfoRequest,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z
         .object({
             id: z.string(),
@@ -69,17 +65,10 @@ export namespace StackoneGetAccountMetaInfoRequest$ {
 
 /** @internal */
 export namespace StackoneGetAccountMetaInfoResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        LinkedAccountMeta?: shared.LinkedAccountMeta$.Inbound | undefined;
-        StatusCode: number;
-        RawResponse: Response;
-    };
-
     export const inboundSchema: z.ZodType<
         StackoneGetAccountMetaInfoResponse,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z
         .object({
             ContentType: z.string(),

@@ -46,15 +46,7 @@ export type AtsGetCandidateResponse = {
 
 /** @internal */
 export namespace AtsGetCandidateRequest$ {
-    export type Inbound = {
-        fields?: string | null | undefined;
-        id: string;
-        proxy?: Record<string, any> | null | undefined;
-        raw?: boolean | null | undefined;
-        "x-account-id": string;
-    };
-
-    export const inboundSchema: z.ZodType<AtsGetCandidateRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<AtsGetCandidateRequest, z.ZodTypeDef, unknown> = z
         .object({
             fields: z.nullable(z.string()).optional(),
             id: z.string(),
@@ -101,14 +93,7 @@ export namespace AtsGetCandidateRequest$ {
 
 /** @internal */
 export namespace AtsGetCandidateResponse$ {
-    export type Inbound = {
-        CandidateResult?: shared.CandidateResult$.Inbound | undefined;
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: Response;
-    };
-
-    export const inboundSchema: z.ZodType<AtsGetCandidateResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<AtsGetCandidateResponse, z.ZodTypeDef, unknown> = z
         .object({
             CandidateResult: shared.CandidateResult$.inboundSchema.optional(),
             ContentType: z.string(),

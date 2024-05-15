@@ -35,16 +35,10 @@ export type AtsUploadApplicationDocumentResponse = {
 
 /** @internal */
 export namespace AtsUploadApplicationDocumentRequest$ {
-    export type Inbound = {
-        UnifiedUploadRequestDto: shared.UnifiedUploadRequestDto$.Inbound;
-        id: string;
-        "x-account-id": string;
-    };
-
     export const inboundSchema: z.ZodType<
         AtsUploadApplicationDocumentRequest,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z
         .object({
             UnifiedUploadRequestDto: shared.UnifiedUploadRequestDto$.inboundSchema,
@@ -86,17 +80,10 @@ export namespace AtsUploadApplicationDocumentRequest$ {
 
 /** @internal */
 export namespace AtsUploadApplicationDocumentResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: Response;
-        WriteResultApiModel?: shared.WriteResultApiModel$.Inbound | undefined;
-    };
-
     export const inboundSchema: z.ZodType<
         AtsUploadApplicationDocumentResponse,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z
         .object({
             ContentType: z.string(),

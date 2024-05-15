@@ -27,16 +27,7 @@ export type InterviewStage = {
 
 /** @internal */
 export namespace InterviewStage$ {
-    export type Inbound = {
-        created_at?: string | null | undefined;
-        id?: string | null | undefined;
-        name?: string | null | undefined;
-        order?: number | null | undefined;
-        remote_id?: string | null | undefined;
-        updated_at?: string | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<InterviewStage, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<InterviewStage, z.ZodTypeDef, unknown> = z
         .object({
             created_at: z
                 .nullable(

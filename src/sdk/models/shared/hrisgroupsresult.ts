@@ -13,12 +13,7 @@ export type HRISGroupsResult = {
 
 /** @internal */
 export namespace HRISGroupsResult$ {
-    export type Inbound = {
-        data: HRISGroup$.Inbound;
-        raw?: Array<RawResponse$.Inbound> | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<HRISGroupsResult, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<HRISGroupsResult, z.ZodTypeDef, unknown> = z
         .object({
             data: HRISGroup$.inboundSchema,
             raw: z.nullable(z.array(RawResponse$.inboundSchema)).optional(),

@@ -71,12 +71,7 @@ export const ConnectorsMetaCategory$: z.ZodNativeEnum<typeof ConnectorsMetaCateg
 
 /** @internal */
 export namespace Images$ {
-    export type Inbound = {
-        logo_url?: string | null | undefined;
-        original_logo_horizontal_url?: string | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<Images, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<Images, z.ZodTypeDef, unknown> = z
         .object({
             logo_url: z.nullable(z.string()).optional(),
             original_logo_horizontal_url: z.nullable(z.string()).optional(),
@@ -112,11 +107,7 @@ export namespace Images$ {
 
 /** @internal */
 export namespace Resources$ {
-    export type Inbound = {
-        images?: Images$.Inbound | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<Resources, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<Resources, z.ZodTypeDef, unknown> = z
         .object({
             images: z.nullable(z.lazy(() => Images$.inboundSchema)).optional(),
         })
@@ -143,16 +134,7 @@ export namespace Resources$ {
 
 /** @internal */
 export namespace ConnectorsMeta$ {
-    export type Inbound = {
-        active?: boolean | null | undefined;
-        category: ConnectorsMetaCategory;
-        models: Record<string, any>;
-        provider: string;
-        provider_name: string;
-        resources?: Resources$.Inbound | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<ConnectorsMeta, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<ConnectorsMeta, z.ZodTypeDef, unknown> = z
         .object({
             active: z.nullable(z.boolean()).optional(),
             category: ConnectorsMetaCategory$,

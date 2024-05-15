@@ -47,19 +47,10 @@ export type AtsGetApplicationScorecardResponse = {
 
 /** @internal */
 export namespace AtsGetApplicationScorecardRequest$ {
-    export type Inbound = {
-        fields?: string | null | undefined;
-        id: string;
-        proxy?: Record<string, any> | null | undefined;
-        raw?: boolean | null | undefined;
-        subResourceId: string;
-        "x-account-id": string;
-    };
-
     export const inboundSchema: z.ZodType<
         AtsGetApplicationScorecardRequest,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z
         .object({
             fields: z.nullable(z.string()).optional(),
@@ -116,17 +107,10 @@ export namespace AtsGetApplicationScorecardRequest$ {
 
 /** @internal */
 export namespace AtsGetApplicationScorecardResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        ScorecardsResult?: shared.ScorecardsResult$.Inbound | undefined;
-        StatusCode: number;
-        RawResponse: Response;
-    };
-
     export const inboundSchema: z.ZodType<
         AtsGetApplicationScorecardResponse,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z
         .object({
             ContentType: z.string(),

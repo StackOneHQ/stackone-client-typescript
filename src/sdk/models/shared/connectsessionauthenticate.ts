@@ -13,11 +13,7 @@ export type ConnectSessionAuthenticate = {
 
 /** @internal */
 export namespace ConnectSessionAuthenticate$ {
-    export type Inbound = {
-        token: string;
-    };
-
-    export const inboundSchema: z.ZodType<ConnectSessionAuthenticate, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<ConnectSessionAuthenticate, z.ZodTypeDef, unknown> = z
         .object({
             token: z.string(),
         })

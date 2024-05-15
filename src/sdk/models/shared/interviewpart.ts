@@ -85,9 +85,7 @@ export type InterviewPart = {
 
 /** @internal */
 export namespace InterviewPart4$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<InterviewPart4, z.ZodTypeDef, Inbound> = z.object({});
+    export const inboundSchema: z.ZodType<InterviewPart4, z.ZodTypeDef, unknown> = z.object({});
 
     export type Outbound = {};
 
@@ -96,11 +94,10 @@ export namespace InterviewPart4$ {
 
 /** @internal */
 export namespace InterviewPartSourceValue$ {
-    export type Inbound = InterviewPart4$.Inbound | string | number | boolean;
+    export const inboundSchema: z.ZodType<InterviewPartSourceValue, z.ZodTypeDef, unknown> =
+        z.union([z.lazy(() => InterviewPart4$.inboundSchema), z.string(), z.number(), z.boolean()]);
 
     export type Outbound = InterviewPart4$.Outbound | string | number | boolean;
-    export const inboundSchema: z.ZodType<InterviewPartSourceValue, z.ZodTypeDef, Inbound> =
-        z.union([z.lazy(() => InterviewPart4$.inboundSchema), z.string(), z.number(), z.boolean()]);
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, InterviewPartSourceValue> =
         z.union([
             z.lazy(() => InterviewPart4$.outboundSchema),
@@ -116,12 +113,7 @@ export const InterviewPartValue$: z.ZodNativeEnum<typeof InterviewPartValue> =
 
 /** @internal */
 export namespace InterviewPartType$ {
-    export type Inbound = {
-        source_value?: InterviewPart4$.Inbound | string | number | boolean | null | undefined;
-        value?: InterviewPartValue | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<InterviewPartType, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<InterviewPartType, z.ZodTypeDef, unknown> = z
         .object({
             source_value: z
                 .nullable(
@@ -171,21 +163,7 @@ export namespace InterviewPartType$ {
 
 /** @internal */
 export namespace InterviewPart$ {
-    export type Inbound = {
-        created_at?: string | null | undefined;
-        end_at?: string | null | undefined;
-        id?: string | null | undefined;
-        interviewer_ids?: Array<string> | null | undefined;
-        meeting_provider?: string | null | undefined;
-        meeting_url?: string | null | undefined;
-        remote_id?: string | null | undefined;
-        start_at?: string | null | undefined;
-        title?: string | null | undefined;
-        type?: InterviewPartType$.Inbound | null | undefined;
-        updated_at?: string | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<InterviewPart, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<InterviewPart, z.ZodTypeDef, unknown> = z
         .object({
             created_at: z
                 .nullable(

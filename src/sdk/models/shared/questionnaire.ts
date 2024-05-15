@@ -19,13 +19,7 @@ export type Questionnaire = {
 
 /** @internal */
 export namespace Questionnaire$ {
-    export type Inbound = {
-        answers?: Array<Answer$.Inbound> | null | undefined;
-        id?: string | null | undefined;
-        remote_id?: string | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<Questionnaire, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<Questionnaire, z.ZodTypeDef, unknown> = z
         .object({
             answers: z.nullable(z.array(Answer$.inboundSchema)).optional(),
             id: z.nullable(z.string()).optional(),

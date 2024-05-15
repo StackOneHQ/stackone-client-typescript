@@ -34,12 +34,7 @@ export type HrisCreateEmployeeResponse = {
 
 /** @internal */
 export namespace HrisCreateEmployeeRequest$ {
-    export type Inbound = {
-        HrisCreateEmployeeRequestDto: shared.HrisCreateEmployeeRequestDto$.Inbound;
-        "x-account-id": string;
-    };
-
-    export const inboundSchema: z.ZodType<HrisCreateEmployeeRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<HrisCreateEmployeeRequest, z.ZodTypeDef, unknown> = z
         .object({
             HrisCreateEmployeeRequestDto: shared.HrisCreateEmployeeRequestDto$.inboundSchema,
             "x-account-id": z.string(),
@@ -71,14 +66,7 @@ export namespace HrisCreateEmployeeRequest$ {
 
 /** @internal */
 export namespace HrisCreateEmployeeResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        CreateResult?: shared.CreateResult$.Inbound | undefined;
-        StatusCode: number;
-        RawResponse: Response;
-    };
-
-    export const inboundSchema: z.ZodType<HrisCreateEmployeeResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<HrisCreateEmployeeResponse, z.ZodTypeDef, unknown> = z
         .object({
             ContentType: z.string(),
             CreateResult: shared.CreateResult$.inboundSchema.optional(),

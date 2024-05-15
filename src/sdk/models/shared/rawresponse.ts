@@ -13,14 +13,7 @@ export type RawResponse = {
 
 /** @internal */
 export namespace RawResponse$ {
-    export type Inbound = {
-        body?: string | null | undefined;
-        method: string;
-        response?: Record<string, any> | null | undefined;
-        url: string;
-    };
-
-    export const inboundSchema: z.ZodType<RawResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<RawResponse, z.ZodTypeDef, unknown> = z
         .object({
             body: z.nullable(z.string()).optional(),
             method: z.string(),

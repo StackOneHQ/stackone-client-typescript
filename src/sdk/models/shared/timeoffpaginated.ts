@@ -18,14 +18,7 @@ export type TimeOffPaginated = {
 
 /** @internal */
 export namespace TimeOffPaginated$ {
-    export type Inbound = {
-        data: Array<TimeOff$.Inbound>;
-        next?: string | null | undefined;
-        next_page?: string | null | undefined;
-        raw?: Array<RawResponse$.Inbound> | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<TimeOffPaginated, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<TimeOffPaginated, z.ZodTypeDef, unknown> = z
         .object({
             data: z.array(TimeOff$.inboundSchema),
             next: z.nullable(z.string()).optional(),

@@ -29,17 +29,7 @@ export type IamPolicy = {
 
 /** @internal */
 export namespace IamPolicy$ {
-    export type Inbound = {
-        created_at?: string | null | undefined;
-        description?: string | null | undefined;
-        id?: string | null | undefined;
-        name?: string | null | undefined;
-        permissions?: Array<IamPermission$.Inbound> | null | undefined;
-        remote_id?: string | null | undefined;
-        updated_at?: string | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<IamPolicy, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<IamPolicy, z.ZodTypeDef, unknown> = z
         .object({
             created_at: z
                 .nullable(

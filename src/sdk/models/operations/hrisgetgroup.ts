@@ -46,15 +46,7 @@ export type HrisGetGroupResponse = {
 
 /** @internal */
 export namespace HrisGetGroupRequest$ {
-    export type Inbound = {
-        fields?: string | null | undefined;
-        id: string;
-        proxy?: Record<string, any> | null | undefined;
-        raw?: boolean | null | undefined;
-        "x-account-id": string;
-    };
-
-    export const inboundSchema: z.ZodType<HrisGetGroupRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<HrisGetGroupRequest, z.ZodTypeDef, unknown> = z
         .object({
             fields: z.nullable(z.string()).optional(),
             id: z.string(),
@@ -101,14 +93,7 @@ export namespace HrisGetGroupRequest$ {
 
 /** @internal */
 export namespace HrisGetGroupResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        HRISGroupsResult?: shared.HRISGroupsResult$.Inbound | undefined;
-        StatusCode: number;
-        RawResponse: Response;
-    };
-
-    export const inboundSchema: z.ZodType<HrisGetGroupResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<HrisGetGroupResponse, z.ZodTypeDef, unknown> = z
         .object({
             ContentType: z.string(),
             HRISGroupsResult: shared.HRISGroupsResult$.inboundSchema.optional(),

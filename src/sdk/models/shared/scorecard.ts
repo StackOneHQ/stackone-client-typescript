@@ -70,21 +70,7 @@ export const OverallRecommendation$: z.ZodNativeEnum<typeof OverallRecommendatio
 
 /** @internal */
 export namespace Scorecard$ {
-    export type Inbound = {
-        application_id?: string | null | undefined;
-        author_id?: string | null | undefined;
-        candidate_id?: string | null | undefined;
-        created_at?: string | null | undefined;
-        id?: string | null | undefined;
-        interview_id?: string | null | undefined;
-        label?: string | null | undefined;
-        overall_recommendation?: OverallRecommendation | null | undefined;
-        remote_id?: string | null | undefined;
-        sections?: Array<ScorecardSection$.Inbound> | null | undefined;
-        updated_at?: string | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<Scorecard, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<Scorecard, z.ZodTypeDef, unknown> = z
         .object({
             application_id: z.nullable(z.string()).optional(),
             author_id: z.nullable(z.string()).optional(),

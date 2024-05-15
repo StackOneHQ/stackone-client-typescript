@@ -55,9 +55,7 @@ export type IamPermission = {
 
 /** @internal */
 export namespace IamPermission4$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<IamPermission4, z.ZodTypeDef, Inbound> = z.object({});
+    export const inboundSchema: z.ZodType<IamPermission4, z.ZodTypeDef, unknown> = z.object({});
 
     export type Outbound = {};
 
@@ -66,11 +64,10 @@ export namespace IamPermission4$ {
 
 /** @internal */
 export namespace IamPermissionSourceValue$ {
-    export type Inbound = IamPermission4$.Inbound | string | number | boolean;
+    export const inboundSchema: z.ZodType<IamPermissionSourceValue, z.ZodTypeDef, unknown> =
+        z.union([z.lazy(() => IamPermission4$.inboundSchema), z.string(), z.number(), z.boolean()]);
 
     export type Outbound = IamPermission4$.Outbound | string | number | boolean;
-    export const inboundSchema: z.ZodType<IamPermissionSourceValue, z.ZodTypeDef, Inbound> =
-        z.union([z.lazy(() => IamPermission4$.inboundSchema), z.string(), z.number(), z.boolean()]);
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, IamPermissionSourceValue> =
         z.union([
             z.lazy(() => IamPermission4$.outboundSchema),
@@ -86,12 +83,7 @@ export const IamPermissionValue$: z.ZodNativeEnum<typeof IamPermissionValue> =
 
 /** @internal */
 export namespace IamPermissionType$ {
-    export type Inbound = {
-        source_value?: IamPermission4$.Inbound | string | number | boolean | null | undefined;
-        value?: IamPermissionValue | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<IamPermissionType, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<IamPermissionType, z.ZodTypeDef, unknown> = z
         .object({
             source_value: z
                 .nullable(
@@ -141,18 +133,7 @@ export namespace IamPermissionType$ {
 
 /** @internal */
 export namespace IamPermission$ {
-    export type Inbound = {
-        created_at?: string | null | undefined;
-        description?: string | null | undefined;
-        id?: string | null | undefined;
-        name?: string | null | undefined;
-        remote_id?: string | null | undefined;
-        resources?: Array<IamResource$.Inbound> | null | undefined;
-        type?: IamPermissionType$.Inbound | null | undefined;
-        updated_at?: string | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<IamPermission, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<IamPermission, z.ZodTypeDef, unknown> = z
         .object({
             created_at: z
                 .nullable(

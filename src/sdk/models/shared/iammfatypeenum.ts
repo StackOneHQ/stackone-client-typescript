@@ -30,9 +30,7 @@ export type IamMfaTypeEnum = {
 
 /** @internal */
 export namespace IamMfaTypeEnum4$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<IamMfaTypeEnum4, z.ZodTypeDef, Inbound> = z.object({});
+    export const inboundSchema: z.ZodType<IamMfaTypeEnum4, z.ZodTypeDef, unknown> = z.object({});
 
     export type Outbound = {};
 
@@ -41,16 +39,15 @@ export namespace IamMfaTypeEnum4$ {
 
 /** @internal */
 export namespace IamMfaTypeEnumSourceValue$ {
-    export type Inbound = IamMfaTypeEnum4$.Inbound | string | number | boolean;
-
-    export type Outbound = IamMfaTypeEnum4$.Outbound | string | number | boolean;
-    export const inboundSchema: z.ZodType<IamMfaTypeEnumSourceValue, z.ZodTypeDef, Inbound> =
+    export const inboundSchema: z.ZodType<IamMfaTypeEnumSourceValue, z.ZodTypeDef, unknown> =
         z.union([
             z.lazy(() => IamMfaTypeEnum4$.inboundSchema),
             z.string(),
             z.number(),
             z.boolean(),
         ]);
+
+    export type Outbound = IamMfaTypeEnum4$.Outbound | string | number | boolean;
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, IamMfaTypeEnumSourceValue> =
         z.union([
             z.lazy(() => IamMfaTypeEnum4$.outboundSchema),
@@ -66,12 +63,7 @@ export const IamMfaTypeEnumValue$: z.ZodNativeEnum<typeof IamMfaTypeEnumValue> =
 
 /** @internal */
 export namespace IamMfaTypeEnum$ {
-    export type Inbound = {
-        source_value?: IamMfaTypeEnum4$.Inbound | string | number | boolean | null | undefined;
-        value?: IamMfaTypeEnumValue | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<IamMfaTypeEnum, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<IamMfaTypeEnum, z.ZodTypeDef, unknown> = z
         .object({
             source_value: z
                 .nullable(

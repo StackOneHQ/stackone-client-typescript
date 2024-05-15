@@ -76,24 +76,10 @@ export type AtsListApplicationScorecardsResponse = {
 
 /** @internal */
 export namespace AtsListApplicationScorecardsRequest$ {
-    export type Inbound = {
-        fields?: string | null | undefined;
-        "filter[updated_after]"?: string | null | undefined;
-        id: string;
-        next?: string | null | undefined;
-        page?: string | null | undefined;
-        page_size?: string | null | undefined;
-        proxy?: Record<string, any> | null | undefined;
-        raw?: boolean | null | undefined;
-        sync_token?: string | null | undefined;
-        updated_after?: string | null | undefined;
-        "x-account-id": string;
-    };
-
     export const inboundSchema: z.ZodType<
         AtsListApplicationScorecardsRequest,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z
         .object({
             fields: z.nullable(z.string()).optional(),
@@ -179,17 +165,10 @@ export namespace AtsListApplicationScorecardsRequest$ {
 
 /** @internal */
 export namespace AtsListApplicationScorecardsResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        ScorecardsPaginated?: shared.ScorecardsPaginated$.Inbound | undefined;
-        StatusCode: number;
-        RawResponse: Response;
-    };
-
     export const inboundSchema: z.ZodType<
         AtsListApplicationScorecardsResponse,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z
         .object({
             ContentType: z.string(),

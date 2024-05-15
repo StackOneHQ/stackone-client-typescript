@@ -76,11 +76,7 @@ export type Message = {
 
 /** @internal */
 export namespace PushMessageContentsSchemas$ {
-    export type Inbound = {
-        body?: string | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<PushMessageContentsSchemas, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<PushMessageContentsSchemas, z.ZodTypeDef, unknown> = z
         .object({
             body: z.nullable(z.string()).optional(),
         })
@@ -107,15 +103,7 @@ export namespace PushMessageContentsSchemas$ {
 
 /** @internal */
 export namespace Schemas$ {
-    export type Inbound = {
-        body?: string | null | undefined;
-        from?: string | null | undefined;
-        preheader?: string | null | undefined;
-        "reply-to"?: string | null | undefined;
-        subject?: string | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<Schemas, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<Schemas, z.ZodTypeDef, unknown> = z
         .object({
             body: z.nullable(z.string()).optional(),
             from: z.nullable(z.string()).optional(),
@@ -162,12 +150,7 @@ export namespace Schemas$ {
 
 /** @internal */
 export namespace SmsMessageContentsSchemas$ {
-    export type Inbound = {
-        body?: string | null | undefined;
-        from?: string | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<SmsMessageContentsSchemas, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<SmsMessageContentsSchemas, z.ZodTypeDef, unknown> = z
         .object({
             body: z.nullable(z.string()).optional(),
             from: z.nullable(z.string()).optional(),
@@ -199,20 +182,16 @@ export namespace SmsMessageContentsSchemas$ {
 
 /** @internal */
 export namespace MessageMessageContent$ {
-    export type Inbound =
-        | PushMessageContentsSchemas$.Inbound
-        | SmsMessageContentsSchemas$.Inbound
-        | Schemas$.Inbound;
+    export const inboundSchema: z.ZodType<MessageMessageContent, z.ZodTypeDef, unknown> = z.union([
+        z.lazy(() => PushMessageContentsSchemas$.inboundSchema),
+        z.lazy(() => SmsMessageContentsSchemas$.inboundSchema),
+        z.lazy(() => Schemas$.inboundSchema),
+    ]);
 
     export type Outbound =
         | PushMessageContentsSchemas$.Outbound
         | SmsMessageContentsSchemas$.Outbound
         | Schemas$.Outbound;
-    export const inboundSchema: z.ZodType<MessageMessageContent, z.ZodTypeDef, Inbound> = z.union([
-        z.lazy(() => PushMessageContentsSchemas$.inboundSchema),
-        z.lazy(() => SmsMessageContentsSchemas$.inboundSchema),
-        z.lazy(() => Schemas$.inboundSchema),
-    ]);
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, MessageMessageContent> = z.union(
         [
             z.lazy(() => PushMessageContentsSchemas$.outboundSchema),
@@ -224,9 +203,7 @@ export namespace MessageMessageContent$ {
 
 /** @internal */
 export namespace Message4$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<Message4, z.ZodTypeDef, Inbound> = z.object({});
+    export const inboundSchema: z.ZodType<Message4, z.ZodTypeDef, unknown> = z.object({});
 
     export type Outbound = {};
 
@@ -235,15 +212,14 @@ export namespace Message4$ {
 
 /** @internal */
 export namespace MessageSourceValue$ {
-    export type Inbound = Message4$.Inbound | string | number | boolean;
-
-    export type Outbound = Message4$.Outbound | string | number | boolean;
-    export const inboundSchema: z.ZodType<MessageSourceValue, z.ZodTypeDef, Inbound> = z.union([
+    export const inboundSchema: z.ZodType<MessageSourceValue, z.ZodTypeDef, unknown> = z.union([
         z.lazy(() => Message4$.inboundSchema),
         z.string(),
         z.number(),
         z.boolean(),
     ]);
+
+    export type Outbound = Message4$.Outbound | string | number | boolean;
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, MessageSourceValue> = z.union([
         z.lazy(() => Message4$.outboundSchema),
         z.string(),
@@ -254,9 +230,7 @@ export namespace MessageSourceValue$ {
 
 /** @internal */
 export namespace MessageValue$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<MessageValue, z.ZodTypeDef, Inbound> = z.object({});
+    export const inboundSchema: z.ZodType<MessageValue, z.ZodTypeDef, unknown> = z.object({});
 
     export type Outbound = {};
 
@@ -265,12 +239,7 @@ export namespace MessageValue$ {
 
 /** @internal */
 export namespace MessageMessageType$ {
-    export type Inbound = {
-        source_value?: Message4$.Inbound | string | number | boolean | null | undefined;
-        value?: MessageValue$.Inbound | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<MessageMessageType, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<MessageMessageType, z.ZodTypeDef, unknown> = z
         .object({
             source_value: z
                 .nullable(
@@ -320,20 +289,7 @@ export namespace MessageMessageType$ {
 
 /** @internal */
 export namespace Message$ {
-    export type Inbound = {
-        id?: string | null | undefined;
-        message_content?:
-            | PushMessageContentsSchemas$.Inbound
-            | SmsMessageContentsSchemas$.Inbound
-            | Schemas$.Inbound
-            | null
-            | undefined;
-        message_type?: MessageMessageType$.Inbound | null | undefined;
-        name?: string | null | undefined;
-        remote_id?: string | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<Message, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<Message, z.ZodTypeDef, unknown> = z
         .object({
             id: z.nullable(z.string()).optional(),
             message_content: z

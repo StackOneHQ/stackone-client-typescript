@@ -50,16 +50,7 @@ export type IamGetGroupResponse = {
 
 /** @internal */
 export namespace IamGetGroupRequest$ {
-    export type Inbound = {
-        expand?: string | null | undefined;
-        fields?: string | null | undefined;
-        id: string;
-        proxy?: Record<string, any> | null | undefined;
-        raw?: boolean | null | undefined;
-        "x-account-id": string;
-    };
-
-    export const inboundSchema: z.ZodType<IamGetGroupRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<IamGetGroupRequest, z.ZodTypeDef, unknown> = z
         .object({
             expand: z.nullable(z.string()).optional(),
             fields: z.nullable(z.string()).optional(),
@@ -111,14 +102,7 @@ export namespace IamGetGroupRequest$ {
 
 /** @internal */
 export namespace IamGetGroupResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        IamGroupResult?: shared.IamGroupResult$.Inbound | undefined;
-        StatusCode: number;
-        RawResponse: Response;
-    };
-
-    export const inboundSchema: z.ZodType<IamGetGroupResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<IamGetGroupResponse, z.ZodTypeDef, unknown> = z
         .object({
             ContentType: z.string(),
             IamGroupResult: shared.IamGroupResult$.inboundSchema.optional(),

@@ -22,17 +22,7 @@ export type User = {
 
 /** @internal */
 export namespace User$ {
-    export type Inbound = {
-        email?: string | null | undefined;
-        first_name?: string | null | undefined;
-        id?: string | null | undefined;
-        last_name?: string | null | undefined;
-        name?: string | null | undefined;
-        phone?: string | null | undefined;
-        remote_id?: string | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<User, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<User, z.ZodTypeDef, unknown> = z
         .object({
             email: z.nullable(z.string()).optional(),
             first_name: z.nullable(z.string()).optional(),

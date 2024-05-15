@@ -1309,12 +1309,7 @@ export type UnifiedUploadRequestDto = {
 
 /** @internal */
 export namespace UnifiedUploadRequestDtoCategory$ {
-    export type Inbound = {
-        source_value?: string | null | undefined;
-        value?: string | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<UnifiedUploadRequestDtoCategory, z.ZodTypeDef, Inbound> =
+    export const inboundSchema: z.ZodType<UnifiedUploadRequestDtoCategory, z.ZodTypeDef, unknown> =
         z
             .object({
                 source_value: z.nullable(z.string()).optional(),
@@ -1351,9 +1346,7 @@ export namespace UnifiedUploadRequestDtoCategory$ {
 
 /** @internal */
 export namespace UnifiedUploadRequestDto4$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<UnifiedUploadRequestDto4, z.ZodTypeDef, Inbound> =
+    export const inboundSchema: z.ZodType<UnifiedUploadRequestDto4, z.ZodTypeDef, unknown> =
         z.object({});
 
     export type Outbound = {};
@@ -1364,19 +1357,18 @@ export namespace UnifiedUploadRequestDto4$ {
 
 /** @internal */
 export namespace UnifiedUploadRequestDtoSourceValue$ {
-    export type Inbound = UnifiedUploadRequestDto4$.Inbound | string | number | boolean;
-
-    export type Outbound = UnifiedUploadRequestDto4$.Outbound | string | number | boolean;
     export const inboundSchema: z.ZodType<
         UnifiedUploadRequestDtoSourceValue,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z.union([
         z.lazy(() => UnifiedUploadRequestDto4$.inboundSchema),
         z.string(),
         z.number(),
         z.boolean(),
     ]);
+
+    export type Outbound = UnifiedUploadRequestDto4$.Outbound | string | number | boolean;
     export const outboundSchema: z.ZodType<
         Outbound,
         z.ZodTypeDef,
@@ -1395,21 +1387,10 @@ export const UnifiedUploadRequestDtoValue$: z.ZodNativeEnum<typeof UnifiedUpload
 
 /** @internal */
 export namespace UnifiedUploadRequestDtoConfidential$ {
-    export type Inbound = {
-        source_value?:
-            | UnifiedUploadRequestDto4$.Inbound
-            | string
-            | number
-            | boolean
-            | null
-            | undefined;
-        value?: UnifiedUploadRequestDtoValue | null | undefined;
-    };
-
     export const inboundSchema: z.ZodType<
         UnifiedUploadRequestDtoConfidential,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z
         .object({
             source_value: z
@@ -1470,9 +1451,7 @@ export namespace UnifiedUploadRequestDtoConfidential$ {
 
 /** @internal */
 export namespace UnifiedUploadRequestDtoSchemas4$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<UnifiedUploadRequestDtoSchemas4, z.ZodTypeDef, Inbound> =
+    export const inboundSchema: z.ZodType<UnifiedUploadRequestDtoSchemas4, z.ZodTypeDef, unknown> =
         z.object({});
 
     export type Outbound = {};
@@ -1486,19 +1465,18 @@ export namespace UnifiedUploadRequestDtoSchemas4$ {
 
 /** @internal */
 export namespace UnifiedUploadRequestDtoSchemasSourceValue$ {
-    export type Inbound = UnifiedUploadRequestDtoSchemas4$.Inbound | string | number | boolean;
-
-    export type Outbound = UnifiedUploadRequestDtoSchemas4$.Outbound | string | number | boolean;
     export const inboundSchema: z.ZodType<
         UnifiedUploadRequestDtoSchemasSourceValue,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z.union([
         z.lazy(() => UnifiedUploadRequestDtoSchemas4$.inboundSchema),
         z.string(),
         z.number(),
         z.boolean(),
     ]);
+
+    export type Outbound = UnifiedUploadRequestDtoSchemas4$.Outbound | string | number | boolean;
     export const outboundSchema: z.ZodType<
         Outbound,
         z.ZodTypeDef,
@@ -1518,21 +1496,10 @@ export const UnifiedUploadRequestDtoSchemasValue$: z.ZodNativeEnum<
 
 /** @internal */
 export namespace UnifiedUploadRequestDtoFileFormat$ {
-    export type Inbound = {
-        source_value?:
-            | UnifiedUploadRequestDtoSchemas4$.Inbound
-            | string
-            | number
-            | boolean
-            | null
-            | undefined;
-        value?: UnifiedUploadRequestDtoSchemasValue | null | undefined;
-    };
-
     export const inboundSchema: z.ZodType<
         UnifiedUploadRequestDtoFileFormat,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z
         .object({
             source_value: z
@@ -1593,16 +1560,7 @@ export namespace UnifiedUploadRequestDtoFileFormat$ {
 
 /** @internal */
 export namespace UnifiedUploadRequestDto$ {
-    export type Inbound = {
-        category?: UnifiedUploadRequestDtoCategory$.Inbound | null | undefined;
-        confidential?: UnifiedUploadRequestDtoConfidential$.Inbound | null | undefined;
-        content?: string | null | undefined;
-        file_format?: UnifiedUploadRequestDtoFileFormat$.Inbound | null | undefined;
-        name?: string | null | undefined;
-        path?: string | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<UnifiedUploadRequestDto, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<UnifiedUploadRequestDto, z.ZodTypeDef, unknown> = z
         .object({
             category: z
                 .nullable(z.lazy(() => UnifiedUploadRequestDtoCategory$.inboundSchema))

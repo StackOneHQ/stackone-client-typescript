@@ -212,9 +212,7 @@ export type Employment = {
 
 /** @internal */
 export namespace Employment4$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<Employment4, z.ZodTypeDef, Inbound> = z.object({});
+    export const inboundSchema: z.ZodType<Employment4, z.ZodTypeDef, unknown> = z.object({});
 
     export type Outbound = {};
 
@@ -223,15 +221,14 @@ export namespace Employment4$ {
 
 /** @internal */
 export namespace EmploymentSourceValue$ {
-    export type Inbound = Employment4$.Inbound | string | number | boolean;
-
-    export type Outbound = Employment4$.Outbound | string | number | boolean;
-    export const inboundSchema: z.ZodType<EmploymentSourceValue, z.ZodTypeDef, Inbound> = z.union([
+    export const inboundSchema: z.ZodType<EmploymentSourceValue, z.ZodTypeDef, unknown> = z.union([
         z.lazy(() => Employment4$.inboundSchema),
         z.string(),
         z.number(),
         z.boolean(),
     ]);
+
+    export type Outbound = Employment4$.Outbound | string | number | boolean;
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, EmploymentSourceValue> = z.union(
         [z.lazy(() => Employment4$.outboundSchema), z.string(), z.number(), z.boolean()]
     );
@@ -243,12 +240,7 @@ export const EmploymentValue$: z.ZodNativeEnum<typeof EmploymentValue> =
 
 /** @internal */
 export namespace EmploymentEmploymentContractType$ {
-    export type Inbound = {
-        source_value?: Employment4$.Inbound | string | number | boolean | null | undefined;
-        value?: EmploymentValue | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<EmploymentEmploymentContractType, z.ZodTypeDef, Inbound> =
+    export const inboundSchema: z.ZodType<EmploymentEmploymentContractType, z.ZodTypeDef, unknown> =
         z
             .object({
                 source_value: z
@@ -303,9 +295,7 @@ export namespace EmploymentEmploymentContractType$ {
 
 /** @internal */
 export namespace EmploymentSchemas4$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<EmploymentSchemas4, z.ZodTypeDef, Inbound> = z.object({});
+    export const inboundSchema: z.ZodType<EmploymentSchemas4, z.ZodTypeDef, unknown> = z.object({});
 
     export type Outbound = {};
 
@@ -316,16 +306,15 @@ export namespace EmploymentSchemas4$ {
 
 /** @internal */
 export namespace EmploymentSchemasSourceValue$ {
-    export type Inbound = EmploymentSchemas4$.Inbound | string | number | boolean;
-
-    export type Outbound = EmploymentSchemas4$.Outbound | string | number | boolean;
-    export const inboundSchema: z.ZodType<EmploymentSchemasSourceValue, z.ZodTypeDef, Inbound> =
+    export const inboundSchema: z.ZodType<EmploymentSchemasSourceValue, z.ZodTypeDef, unknown> =
         z.union([
             z.lazy(() => EmploymentSchemas4$.inboundSchema),
             z.string(),
             z.number(),
             z.boolean(),
         ]);
+
+    export type Outbound = EmploymentSchemas4$.Outbound | string | number | boolean;
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, EmploymentSchemasSourceValue> =
         z.union([
             z.lazy(() => EmploymentSchemas4$.outboundSchema),
@@ -341,12 +330,7 @@ export const EmploymentSchemasValue$: z.ZodNativeEnum<typeof EmploymentSchemasVa
 
 /** @internal */
 export namespace EmploymentEmploymentType$ {
-    export type Inbound = {
-        source_value?: EmploymentSchemas4$.Inbound | string | number | boolean | null | undefined;
-        value?: EmploymentSchemasValue | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<EmploymentEmploymentType, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<EmploymentEmploymentType, z.ZodTypeDef, unknown> = z
         .object({
             source_value: z
                 .nullable(
@@ -396,9 +380,7 @@ export namespace EmploymentEmploymentType$ {
 
 /** @internal */
 export namespace EmploymentSchemasPayFrequency4$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<EmploymentSchemasPayFrequency4, z.ZodTypeDef, Inbound> =
+    export const inboundSchema: z.ZodType<EmploymentSchemasPayFrequency4, z.ZodTypeDef, unknown> =
         z.object({});
 
     export type Outbound = {};
@@ -409,19 +391,18 @@ export namespace EmploymentSchemasPayFrequency4$ {
 
 /** @internal */
 export namespace EmploymentSchemasPayFrequencySourceValue$ {
-    export type Inbound = EmploymentSchemasPayFrequency4$.Inbound | string | number | boolean;
-
-    export type Outbound = EmploymentSchemasPayFrequency4$.Outbound | string | number | boolean;
     export const inboundSchema: z.ZodType<
         EmploymentSchemasPayFrequencySourceValue,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z.union([
         z.lazy(() => EmploymentSchemasPayFrequency4$.inboundSchema),
         z.string(),
         z.number(),
         z.boolean(),
     ]);
+
+    export type Outbound = EmploymentSchemasPayFrequency4$.Outbound | string | number | boolean;
     export const outboundSchema: z.ZodType<
         Outbound,
         z.ZodTypeDef,
@@ -441,18 +422,7 @@ export const EmploymentSchemasPayFrequencyValue$: z.ZodNativeEnum<
 
 /** @internal */
 export namespace PayFrequency$ {
-    export type Inbound = {
-        source_value?:
-            | EmploymentSchemasPayFrequency4$.Inbound
-            | string
-            | number
-            | boolean
-            | null
-            | undefined;
-        value?: EmploymentSchemasPayFrequencyValue | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<PayFrequency, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<PayFrequency, z.ZodTypeDef, unknown> = z
         .object({
             source_value: z
                 .nullable(
@@ -508,9 +478,7 @@ export namespace PayFrequency$ {
 
 /** @internal */
 export namespace EmploymentSchemasPayPeriod4$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<EmploymentSchemasPayPeriod4, z.ZodTypeDef, Inbound> =
+    export const inboundSchema: z.ZodType<EmploymentSchemasPayPeriod4, z.ZodTypeDef, unknown> =
         z.object({});
 
     export type Outbound = {};
@@ -521,19 +489,18 @@ export namespace EmploymentSchemasPayPeriod4$ {
 
 /** @internal */
 export namespace EmploymentSchemasPayPeriodSourceValue$ {
-    export type Inbound = EmploymentSchemasPayPeriod4$.Inbound | string | number | boolean;
-
-    export type Outbound = EmploymentSchemasPayPeriod4$.Outbound | string | number | boolean;
     export const inboundSchema: z.ZodType<
         EmploymentSchemasPayPeriodSourceValue,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z.union([
         z.lazy(() => EmploymentSchemasPayPeriod4$.inboundSchema),
         z.string(),
         z.number(),
         z.boolean(),
     ]);
+
+    export type Outbound = EmploymentSchemasPayPeriod4$.Outbound | string | number | boolean;
     export const outboundSchema: z.ZodType<
         Outbound,
         z.ZodTypeDef,
@@ -553,18 +520,7 @@ export const EmploymentSchemasPayPeriodValue$: z.ZodNativeEnum<
 
 /** @internal */
 export namespace PayPeriod$ {
-    export type Inbound = {
-        source_value?:
-            | EmploymentSchemasPayPeriod4$.Inbound
-            | string
-            | number
-            | boolean
-            | null
-            | undefined;
-        value?: EmploymentSchemasPayPeriodValue | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<PayPeriod, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<PayPeriod, z.ZodTypeDef, unknown> = z
         .object({
             source_value: z
                 .nullable(
@@ -620,23 +576,7 @@ export namespace PayPeriod$ {
 
 /** @internal */
 export namespace Employment$ {
-    export type Inbound = {
-        created_at?: string | null | undefined;
-        effective_date?: string | null | undefined;
-        employee_id?: string | null | undefined;
-        employment_contract_type?: EmploymentEmploymentContractType$.Inbound | null | undefined;
-        employment_type?: EmploymentEmploymentType$.Inbound | null | undefined;
-        id?: string | null | undefined;
-        job_title?: string | null | undefined;
-        pay_currency?: string | null | undefined;
-        pay_frequency?: PayFrequency$.Inbound | null | undefined;
-        pay_period?: PayPeriod$.Inbound | null | undefined;
-        pay_rate?: string | null | undefined;
-        remote_id?: string | null | undefined;
-        updated_at?: string | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<Employment, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<Employment, z.ZodTypeDef, unknown> = z
         .object({
             created_at: z
                 .nullable(

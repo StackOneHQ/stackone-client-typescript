@@ -43,15 +43,7 @@ export const Method$: z.ZodNativeEnum<typeof Method> = z.nativeEnum(Method);
 
 /** @internal */
 export namespace ProxyRequestBody$ {
-    export type Inbound = {
-        body?: Record<string, any> | null | undefined;
-        headers?: Record<string, any> | null | undefined;
-        method?: Method | null | undefined;
-        path?: string | null | undefined;
-        url?: string | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<ProxyRequestBody, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<ProxyRequestBody, z.ZodTypeDef, unknown> = z
         .object({
             body: z.nullable(z.record(z.any())).optional(),
             headers: z.nullable(z.record(z.any())).optional(),

@@ -37,9 +37,7 @@ export type ChannelsEnum = {
 
 /** @internal */
 export namespace Four$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<Four, z.ZodTypeDef, Inbound> = z.object({});
+    export const inboundSchema: z.ZodType<Four, z.ZodTypeDef, unknown> = z.object({});
 
     export type Outbound = {};
 
@@ -48,15 +46,14 @@ export namespace Four$ {
 
 /** @internal */
 export namespace SourceValue$ {
-    export type Inbound = Four$.Inbound | string | number | boolean;
-
-    export type Outbound = Four$.Outbound | string | number | boolean;
-    export const inboundSchema: z.ZodType<SourceValue, z.ZodTypeDef, Inbound> = z.union([
+    export const inboundSchema: z.ZodType<SourceValue, z.ZodTypeDef, unknown> = z.union([
         z.lazy(() => Four$.inboundSchema),
         z.string(),
         z.number(),
         z.boolean(),
     ]);
+
+    export type Outbound = Four$.Outbound | string | number | boolean;
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, SourceValue> = z.union([
         z.lazy(() => Four$.outboundSchema),
         z.string(),
@@ -70,12 +67,7 @@ export const Value$: z.ZodNativeEnum<typeof Value> = z.nativeEnum(Value);
 
 /** @internal */
 export namespace ChannelsEnum$ {
-    export type Inbound = {
-        source_value?: Four$.Inbound | string | number | boolean | null | undefined;
-        value?: Value | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<ChannelsEnum, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<ChannelsEnum, z.ZodTypeDef, unknown> = z
         .object({
             source_value: z
                 .nullable(

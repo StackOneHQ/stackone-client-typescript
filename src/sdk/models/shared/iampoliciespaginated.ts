@@ -18,14 +18,7 @@ export type IamPoliciesPaginated = {
 
 /** @internal */
 export namespace IamPoliciesPaginated$ {
-    export type Inbound = {
-        data: Array<IamPolicy$.Inbound>;
-        next?: string | null | undefined;
-        next_page?: string | null | undefined;
-        raw?: Array<RawResponse$.Inbound> | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<IamPoliciesPaginated, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<IamPoliciesPaginated, z.ZodTypeDef, unknown> = z
         .object({
             data: z.array(IamPolicy$.inboundSchema),
             next: z.nullable(z.string()).optional(),

@@ -18,14 +18,7 @@ export type HrisDocumentsPaginated = {
 
 /** @internal */
 export namespace HrisDocumentsPaginated$ {
-    export type Inbound = {
-        data: Array<HrisDocumentApiModel$.Inbound>;
-        next?: string | null | undefined;
-        next_page?: string | null | undefined;
-        raw?: Array<RawResponse$.Inbound> | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<HrisDocumentsPaginated, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<HrisDocumentsPaginated, z.ZodTypeDef, unknown> = z
         .object({
             data: z.array(HrisDocumentApiModel$.inboundSchema),
             next: z.nullable(z.string()).optional(),

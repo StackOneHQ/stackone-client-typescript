@@ -12,13 +12,7 @@ export type UpdateResult = {
 
 /** @internal */
 export namespace UpdateResult$ {
-    export type Inbound = {
-        message: string;
-        statusCode: number;
-        timestamp: string;
-    };
-
-    export const inboundSchema: z.ZodType<UpdateResult, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<UpdateResult, z.ZodTypeDef, unknown> = z
         .object({
             message: z.string(),
             statusCode: z.number(),

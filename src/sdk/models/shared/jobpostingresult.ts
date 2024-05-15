@@ -13,12 +13,7 @@ export type JobPostingResult = {
 
 /** @internal */
 export namespace JobPostingResult$ {
-    export type Inbound = {
-        data: JobPosting$.Inbound;
-        raw?: Array<RawResponse$.Inbound> | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<JobPostingResult, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<JobPostingResult, z.ZodTypeDef, unknown> = z
         .object({
             data: JobPosting$.inboundSchema,
             raw: z.nullable(z.array(RawResponse$.inboundSchema)).optional(),

@@ -75,20 +75,7 @@ export type AtsListUsersResponse = {
 
 /** @internal */
 export namespace AtsListUsersRequest$ {
-    export type Inbound = {
-        fields?: string | null | undefined;
-        "filter[updated_after]"?: string | null | undefined;
-        next?: string | null | undefined;
-        page?: string | null | undefined;
-        page_size?: string | null | undefined;
-        proxy?: Record<string, any> | null | undefined;
-        raw?: boolean | null | undefined;
-        sync_token?: string | null | undefined;
-        updated_after?: string | null | undefined;
-        "x-account-id": string;
-    };
-
-    export const inboundSchema: z.ZodType<AtsListUsersRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<AtsListUsersRequest, z.ZodTypeDef, unknown> = z
         .object({
             fields: z.nullable(z.string()).optional(),
             "filter[updated_after]": z.nullable(z.string()).optional(),
@@ -164,14 +151,7 @@ export namespace AtsListUsersRequest$ {
 
 /** @internal */
 export namespace AtsListUsersResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: Response;
-        UsersPaginated?: shared.UsersPaginated$.Inbound | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<AtsListUsersResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<AtsListUsersResponse, z.ZodTypeDef, unknown> = z
         .object({
             ContentType: z.string(),
             StatusCode: z.number().int(),

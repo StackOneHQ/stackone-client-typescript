@@ -8,9 +8,7 @@ export type PatchAccountDto = {};
 
 /** @internal */
 export namespace PatchAccountDto$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<PatchAccountDto, z.ZodTypeDef, Inbound> = z.object({});
+    export const inboundSchema: z.ZodType<PatchAccountDto, z.ZodTypeDef, unknown> = z.object({});
 
     export type Outbound = {};
 

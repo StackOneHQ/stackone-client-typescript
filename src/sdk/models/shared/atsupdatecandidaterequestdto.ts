@@ -74,25 +74,7 @@ export type AtsUpdateCandidateRequestDto = {
 
 /** @internal */
 export namespace AtsUpdateCandidateRequestDto$ {
-    export type Inbound = {
-        application_ids?: Array<string> | null | undefined;
-        company?: string | null | undefined;
-        country?: string | null | undefined;
-        email?: string | null | undefined;
-        emails?: Array<CandidateEmail$.Inbound> | null | undefined;
-        first_name?: string | null | undefined;
-        hired_at?: string | null | undefined;
-        id?: string | null | undefined;
-        last_name?: string | null | undefined;
-        name?: string | null | undefined;
-        phone?: string | null | undefined;
-        phone_numbers?: Array<PhoneNumber$.Inbound> | null | undefined;
-        remote_id?: string | null | undefined;
-        social_links?: Array<SocialLink$.Inbound> | null | undefined;
-        title?: string | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<AtsUpdateCandidateRequestDto, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<AtsUpdateCandidateRequestDto, z.ZodTypeDef, unknown> = z
         .object({
             application_ids: z.nullable(z.array(z.string())).optional(),
             company: z.nullable(z.string()).optional(),

@@ -18,13 +18,7 @@ export type ATSLocation = {
 
 /** @internal */
 export namespace ATSLocation$ {
-    export type Inbound = {
-        id?: string | null | undefined;
-        name?: string | null | undefined;
-        remote_id?: string | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<ATSLocation, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<ATSLocation, z.ZodTypeDef, unknown> = z
         .object({
             id: z.nullable(z.string()).optional(),
             name: z.nullable(z.string()).optional(),

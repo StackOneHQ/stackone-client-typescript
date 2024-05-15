@@ -31,12 +31,7 @@ export type StackoneUpdateAccountResponse = {
 
 /** @internal */
 export namespace StackoneUpdateAccountRequest$ {
-    export type Inbound = {
-        PatchAccountDto: shared.PatchAccountDto$.Inbound;
-        id: string;
-    };
-
-    export const inboundSchema: z.ZodType<StackoneUpdateAccountRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<StackoneUpdateAccountRequest, z.ZodTypeDef, unknown> = z
         .object({
             PatchAccountDto: shared.PatchAccountDto$.inboundSchema,
             id: z.string(),
@@ -68,14 +63,7 @@ export namespace StackoneUpdateAccountRequest$ {
 
 /** @internal */
 export namespace StackoneUpdateAccountResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        LinkedAccount?: shared.LinkedAccount$.Inbound | undefined;
-        StatusCode: number;
-        RawResponse: Response;
-    };
-
-    export const inboundSchema: z.ZodType<StackoneUpdateAccountResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<StackoneUpdateAccountResponse, z.ZodTypeDef, unknown> = z
         .object({
             ContentType: z.string(),
             LinkedAccount: shared.LinkedAccount$.inboundSchema.optional(),

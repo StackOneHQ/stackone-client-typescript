@@ -57,9 +57,7 @@ export type RejectedReason = {
 
 /** @internal */
 export namespace RejectedReason4$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<RejectedReason4, z.ZodTypeDef, Inbound> = z.object({});
+    export const inboundSchema: z.ZodType<RejectedReason4, z.ZodTypeDef, unknown> = z.object({});
 
     export type Outbound = {};
 
@@ -68,16 +66,15 @@ export namespace RejectedReason4$ {
 
 /** @internal */
 export namespace RejectedReasonSourceValue$ {
-    export type Inbound = RejectedReason4$.Inbound | string | number | boolean;
-
-    export type Outbound = RejectedReason4$.Outbound | string | number | boolean;
-    export const inboundSchema: z.ZodType<RejectedReasonSourceValue, z.ZodTypeDef, Inbound> =
+    export const inboundSchema: z.ZodType<RejectedReasonSourceValue, z.ZodTypeDef, unknown> =
         z.union([
             z.lazy(() => RejectedReason4$.inboundSchema),
             z.string(),
             z.number(),
             z.boolean(),
         ]);
+
+    export type Outbound = RejectedReason4$.Outbound | string | number | boolean;
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, RejectedReasonSourceValue> =
         z.union([
             z.lazy(() => RejectedReason4$.outboundSchema),
@@ -93,12 +90,7 @@ export const RejectedReasonValue$: z.ZodNativeEnum<typeof RejectedReasonValue> =
 
 /** @internal */
 export namespace RejectedReasonType$ {
-    export type Inbound = {
-        source_value?: RejectedReason4$.Inbound | string | number | boolean | null | undefined;
-        value?: RejectedReasonValue | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<RejectedReasonType, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<RejectedReasonType, z.ZodTypeDef, unknown> = z
         .object({
             source_value: z
                 .nullable(
@@ -148,15 +140,7 @@ export namespace RejectedReasonType$ {
 
 /** @internal */
 export namespace RejectedReason$ {
-    export type Inbound = {
-        id?: string | null | undefined;
-        label?: string | null | undefined;
-        rejected_reason_type?: RejectedReasonType$.Inbound | null | undefined;
-        remote_id?: string | null | undefined;
-        type?: string | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<RejectedReason, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<RejectedReason, z.ZodTypeDef, unknown> = z
         .object({
             id: z.nullable(z.string()).optional(),
             label: z.nullable(z.string()).optional(),

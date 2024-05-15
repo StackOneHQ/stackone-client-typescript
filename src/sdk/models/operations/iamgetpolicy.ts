@@ -50,16 +50,7 @@ export type IamGetPolicyResponse = {
 
 /** @internal */
 export namespace IamGetPolicyRequest$ {
-    export type Inbound = {
-        expand?: string | null | undefined;
-        fields?: string | null | undefined;
-        id: string;
-        proxy?: Record<string, any> | null | undefined;
-        raw?: boolean | null | undefined;
-        "x-account-id": string;
-    };
-
-    export const inboundSchema: z.ZodType<IamGetPolicyRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<IamGetPolicyRequest, z.ZodTypeDef, unknown> = z
         .object({
             expand: z.nullable(z.string()).optional(),
             fields: z.nullable(z.string()).optional(),
@@ -111,14 +102,7 @@ export namespace IamGetPolicyRequest$ {
 
 /** @internal */
 export namespace IamGetPolicyResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        IamPolicyResult?: shared.IamPolicyResult$.Inbound | undefined;
-        StatusCode: number;
-        RawResponse: Response;
-    };
-
-    export const inboundSchema: z.ZodType<IamGetPolicyResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<IamGetPolicyResponse, z.ZodTypeDef, unknown> = z
         .object({
             ContentType: z.string(),
             IamPolicyResult: shared.IamPolicyResult$.inboundSchema.optional(),

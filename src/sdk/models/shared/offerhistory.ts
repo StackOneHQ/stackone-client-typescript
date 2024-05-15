@@ -23,15 +23,7 @@ export type OfferHistory = {
 
 /** @internal */
 export namespace OfferHistory$ {
-    export type Inbound = {
-        created_at?: string | null | undefined;
-        currency?: string | null | undefined;
-        salary?: number | null | undefined;
-        start_date?: string | null | undefined;
-        updated_at?: string | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<OfferHistory, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<OfferHistory, z.ZodTypeDef, unknown> = z
         .object({
             created_at: z
                 .nullable(

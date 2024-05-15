@@ -17,9 +17,7 @@ export type ProviderErrorApiModel = {
 
 /** @internal */
 export namespace Headers$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<Headers, z.ZodTypeDef, Inbound> = z.object({});
+    export const inboundSchema: z.ZodType<Headers, z.ZodTypeDef, unknown> = z.object({});
 
     export type Outbound = {};
 
@@ -28,9 +26,7 @@ export namespace Headers$ {
 
 /** @internal */
 export namespace Raw$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<Raw, z.ZodTypeDef, Inbound> = z.object({});
+    export const inboundSchema: z.ZodType<Raw, z.ZodTypeDef, unknown> = z.object({});
 
     export type Outbound = {};
 
@@ -39,14 +35,7 @@ export namespace Raw$ {
 
 /** @internal */
 export namespace ProviderErrorApiModel$ {
-    export type Inbound = {
-        headers?: Headers$.Inbound | null | undefined;
-        raw?: Raw$.Inbound | null | undefined;
-        status?: number | null | undefined;
-        url?: string | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<ProviderErrorApiModel, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<ProviderErrorApiModel, z.ZodTypeDef, unknown> = z
         .object({
             headers: z.nullable(z.lazy(() => Headers$.inboundSchema)).optional(),
             raw: z.nullable(z.lazy(() => Raw$.inboundSchema)).optional(),

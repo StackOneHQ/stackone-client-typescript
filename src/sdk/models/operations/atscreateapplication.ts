@@ -34,12 +34,7 @@ export type AtsCreateApplicationResponse = {
 
 /** @internal */
 export namespace AtsCreateApplicationRequest$ {
-    export type Inbound = {
-        AtsCreateApplicationRequestDto: shared.AtsCreateApplicationRequestDto$.Inbound;
-        "x-account-id": string;
-    };
-
-    export const inboundSchema: z.ZodType<AtsCreateApplicationRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<AtsCreateApplicationRequest, z.ZodTypeDef, unknown> = z
         .object({
             AtsCreateApplicationRequestDto: shared.AtsCreateApplicationRequestDto$.inboundSchema,
             "x-account-id": z.string(),
@@ -71,14 +66,7 @@ export namespace AtsCreateApplicationRequest$ {
 
 /** @internal */
 export namespace AtsCreateApplicationResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        CreateResult?: shared.CreateResult$.Inbound | undefined;
-        StatusCode: number;
-        RawResponse: Response;
-    };
-
-    export const inboundSchema: z.ZodType<AtsCreateApplicationResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<AtsCreateApplicationResponse, z.ZodTypeDef, unknown> = z
         .object({
             ContentType: z.string(),
             CreateResult: shared.CreateResult$.inboundSchema.optional(),

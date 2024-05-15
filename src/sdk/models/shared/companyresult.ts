@@ -13,12 +13,7 @@ export type CompanyResult = {
 
 /** @internal */
 export namespace CompanyResult$ {
-    export type Inbound = {
-        data: Company$.Inbound;
-        raw?: Array<RawResponse$.Inbound> | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<CompanyResult, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<CompanyResult, z.ZodTypeDef, unknown> = z
         .object({
             data: Company$.inboundSchema,
             raw: z.nullable(z.array(RawResponse$.inboundSchema)).optional(),

@@ -95,9 +95,7 @@ export type TimeOff = {
 
 /** @internal */
 export namespace TimeOff4$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<TimeOff4, z.ZodTypeDef, Inbound> = z.object({});
+    export const inboundSchema: z.ZodType<TimeOff4, z.ZodTypeDef, unknown> = z.object({});
 
     export type Outbound = {};
 
@@ -106,15 +104,14 @@ export namespace TimeOff4$ {
 
 /** @internal */
 export namespace TimeOffSourceValue$ {
-    export type Inbound = TimeOff4$.Inbound | string | number | boolean;
-
-    export type Outbound = TimeOff4$.Outbound | string | number | boolean;
-    export const inboundSchema: z.ZodType<TimeOffSourceValue, z.ZodTypeDef, Inbound> = z.union([
+    export const inboundSchema: z.ZodType<TimeOffSourceValue, z.ZodTypeDef, unknown> = z.union([
         z.lazy(() => TimeOff4$.inboundSchema),
         z.string(),
         z.number(),
         z.boolean(),
     ]);
+
+    export type Outbound = TimeOff4$.Outbound | string | number | boolean;
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, TimeOffSourceValue> = z.union([
         z.lazy(() => TimeOff4$.outboundSchema),
         z.string(),
@@ -128,12 +125,7 @@ export const TimeOffValue$: z.ZodNativeEnum<typeof TimeOffValue> = z.nativeEnum(
 
 /** @internal */
 export namespace TimeOffStatus$ {
-    export type Inbound = {
-        source_value?: TimeOff4$.Inbound | string | number | boolean | null | undefined;
-        value?: TimeOffValue | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<TimeOffStatus, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<TimeOffStatus, z.ZodTypeDef, unknown> = z
         .object({
             source_value: z
                 .nullable(
@@ -183,9 +175,7 @@ export namespace TimeOffStatus$ {
 
 /** @internal */
 export namespace TimeOffSchemas4$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<TimeOffSchemas4, z.ZodTypeDef, Inbound> = z.object({});
+    export const inboundSchema: z.ZodType<TimeOffSchemas4, z.ZodTypeDef, unknown> = z.object({});
 
     export type Outbound = {};
 
@@ -194,16 +184,15 @@ export namespace TimeOffSchemas4$ {
 
 /** @internal */
 export namespace TimeOffSchemasSourceValue$ {
-    export type Inbound = TimeOffSchemas4$.Inbound | string | number | boolean;
-
-    export type Outbound = TimeOffSchemas4$.Outbound | string | number | boolean;
-    export const inboundSchema: z.ZodType<TimeOffSchemasSourceValue, z.ZodTypeDef, Inbound> =
+    export const inboundSchema: z.ZodType<TimeOffSchemasSourceValue, z.ZodTypeDef, unknown> =
         z.union([
             z.lazy(() => TimeOffSchemas4$.inboundSchema),
             z.string(),
             z.number(),
             z.boolean(),
         ]);
+
+    export type Outbound = TimeOffSchemas4$.Outbound | string | number | boolean;
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, TimeOffSchemasSourceValue> =
         z.union([
             z.lazy(() => TimeOffSchemas4$.outboundSchema),
@@ -219,12 +208,7 @@ export const TimeOffSchemasValue$: z.ZodNativeEnum<typeof TimeOffSchemasValue> =
 
 /** @internal */
 export namespace TimeOffType$ {
-    export type Inbound = {
-        source_value?: TimeOffSchemas4$.Inbound | string | number | boolean | null | undefined;
-        value?: TimeOffSchemasValue | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<TimeOffType, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<TimeOffType, z.ZodTypeDef, unknown> = z
         .object({
             source_value: z
                 .nullable(
@@ -274,20 +258,7 @@ export namespace TimeOffType$ {
 
 /** @internal */
 export namespace TimeOff$ {
-    export type Inbound = {
-        approver_id?: string | null | undefined;
-        created_date?: string | null | undefined;
-        employee_id?: string | null | undefined;
-        end_date?: string | null | undefined;
-        id?: string | null | undefined;
-        remote_id?: string | null | undefined;
-        start_date?: string | null | undefined;
-        status?: TimeOffStatus$.Inbound | null | undefined;
-        type?: TimeOffType$.Inbound | null | undefined;
-        updated_date?: string | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<TimeOff, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<TimeOff, z.ZodTypeDef, unknown> = z
         .object({
             approver_id: z.nullable(z.string()).optional(),
             created_date: z

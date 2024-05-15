@@ -54,9 +54,7 @@ export type IamResource = {
 
 /** @internal */
 export namespace IamResource4$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<IamResource4, z.ZodTypeDef, Inbound> = z.object({});
+    export const inboundSchema: z.ZodType<IamResource4, z.ZodTypeDef, unknown> = z.object({});
 
     export type Outbound = {};
 
@@ -65,15 +63,14 @@ export namespace IamResource4$ {
 
 /** @internal */
 export namespace IamResourceSourceValue$ {
-    export type Inbound = IamResource4$.Inbound | string | number | boolean;
-
-    export type Outbound = IamResource4$.Outbound | string | number | boolean;
-    export const inboundSchema: z.ZodType<IamResourceSourceValue, z.ZodTypeDef, Inbound> = z.union([
+    export const inboundSchema: z.ZodType<IamResourceSourceValue, z.ZodTypeDef, unknown> = z.union([
         z.lazy(() => IamResource4$.inboundSchema),
         z.string(),
         z.number(),
         z.boolean(),
     ]);
+
+    export type Outbound = IamResource4$.Outbound | string | number | boolean;
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, IamResourceSourceValue> =
         z.union([z.lazy(() => IamResource4$.outboundSchema), z.string(), z.number(), z.boolean()]);
 }
@@ -84,12 +81,7 @@ export const IamResourceValue$: z.ZodNativeEnum<typeof IamResourceValue> =
 
 /** @internal */
 export namespace IamResourceType$ {
-    export type Inbound = {
-        source_value?: IamResource4$.Inbound | string | number | boolean | null | undefined;
-        value?: IamResourceValue | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<IamResourceType, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<IamResourceType, z.ZodTypeDef, unknown> = z
         .object({
             source_value: z
                 .nullable(
@@ -139,18 +131,7 @@ export namespace IamResourceType$ {
 
 /** @internal */
 export namespace IamResource$ {
-    export type Inbound = {
-        created_at?: string | null | undefined;
-        description?: string | null | undefined;
-        id?: string | null | undefined;
-        location?: string | null | undefined;
-        name?: string | null | undefined;
-        remote_id?: string | null | undefined;
-        type?: IamResourceType$.Inbound | null | undefined;
-        updated_at?: string | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<IamResource, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<IamResource, z.ZodTypeDef, unknown> = z
         .object({
             created_at: z
                 .nullable(

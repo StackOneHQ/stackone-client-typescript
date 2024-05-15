@@ -59,9 +59,7 @@ export type Question = {
 
 /** @internal */
 export namespace Question4$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<Question4, z.ZodTypeDef, Inbound> = z.object({});
+    export const inboundSchema: z.ZodType<Question4, z.ZodTypeDef, unknown> = z.object({});
 
     export type Outbound = {};
 
@@ -70,15 +68,14 @@ export namespace Question4$ {
 
 /** @internal */
 export namespace QuestionSourceValue$ {
-    export type Inbound = Question4$.Inbound | string | number | boolean;
-
-    export type Outbound = Question4$.Outbound | string | number | boolean;
-    export const inboundSchema: z.ZodType<QuestionSourceValue, z.ZodTypeDef, Inbound> = z.union([
+    export const inboundSchema: z.ZodType<QuestionSourceValue, z.ZodTypeDef, unknown> = z.union([
         z.lazy(() => Question4$.inboundSchema),
         z.string(),
         z.number(),
         z.boolean(),
     ]);
+
+    export type Outbound = Question4$.Outbound | string | number | boolean;
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, QuestionSourceValue> = z.union([
         z.lazy(() => Question4$.outboundSchema),
         z.string(),
@@ -92,12 +89,7 @@ export const QuestionValue$: z.ZodNativeEnum<typeof QuestionValue> = z.nativeEnu
 
 /** @internal */
 export namespace QuestionType$ {
-    export type Inbound = {
-        source_value?: Question4$.Inbound | string | number | boolean | null | undefined;
-        value?: QuestionValue | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<QuestionType, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<QuestionType, z.ZodTypeDef, unknown> = z
         .object({
             source_value: z
                 .nullable(
@@ -147,17 +139,7 @@ export namespace QuestionType$ {
 
 /** @internal */
 export namespace Question$ {
-    export type Inbound = {
-        id?: string | null | undefined;
-        multiple_choice_answers?: Array<QuestionMultipleChoiceAnswers$.Inbound> | null | undefined;
-        name?: string | null | undefined;
-        remote_id?: string | null | undefined;
-        required?: boolean | null | undefined;
-        text?: string | null | undefined;
-        type?: QuestionType$.Inbound | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<Question, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<Question, z.ZodTypeDef, unknown> = z
         .object({
             id: z.nullable(z.string()).optional(),
             multiple_choice_answers: z

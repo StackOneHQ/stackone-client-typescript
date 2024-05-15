@@ -69,19 +69,7 @@ export type HrisListLocationsResponse = {
 
 /** @internal */
 export namespace HrisListLocationsRequest$ {
-    export type Inbound = {
-        fields?: string | null | undefined;
-        "filter[updated_after]"?: string | null | undefined;
-        next?: string | null | undefined;
-        page?: string | null | undefined;
-        page_size?: string | null | undefined;
-        proxy?: Record<string, any> | null | undefined;
-        raw?: boolean | null | undefined;
-        updated_after?: string | null | undefined;
-        "x-account-id": string;
-    };
-
-    export const inboundSchema: z.ZodType<HrisListLocationsRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<HrisListLocationsRequest, z.ZodTypeDef, unknown> = z
         .object({
             fields: z.nullable(z.string()).optional(),
             "filter[updated_after]": z.nullable(z.string()).optional(),
@@ -152,14 +140,7 @@ export namespace HrisListLocationsRequest$ {
 
 /** @internal */
 export namespace HrisListLocationsResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        HRISLocationsPaginated?: shared.HRISLocationsPaginated$.Inbound | undefined;
-        StatusCode: number;
-        RawResponse: Response;
-    };
-
-    export const inboundSchema: z.ZodType<HrisListLocationsResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<HrisListLocationsResponse, z.ZodTypeDef, unknown> = z
         .object({
             ContentType: z.string(),
             HRISLocationsPaginated: shared.HRISLocationsPaginated$.inboundSchema.optional(),

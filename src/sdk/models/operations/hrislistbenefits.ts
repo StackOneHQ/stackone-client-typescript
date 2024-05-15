@@ -69,19 +69,7 @@ export type HrisListBenefitsResponse = {
 
 /** @internal */
 export namespace HrisListBenefitsRequest$ {
-    export type Inbound = {
-        fields?: string | null | undefined;
-        "filter[updated_after]"?: string | null | undefined;
-        next?: string | null | undefined;
-        page?: string | null | undefined;
-        page_size?: string | null | undefined;
-        proxy?: Record<string, any> | null | undefined;
-        raw?: boolean | null | undefined;
-        updated_after?: string | null | undefined;
-        "x-account-id": string;
-    };
-
-    export const inboundSchema: z.ZodType<HrisListBenefitsRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<HrisListBenefitsRequest, z.ZodTypeDef, unknown> = z
         .object({
             fields: z.nullable(z.string()).optional(),
             "filter[updated_after]": z.nullable(z.string()).optional(),
@@ -152,14 +140,7 @@ export namespace HrisListBenefitsRequest$ {
 
 /** @internal */
 export namespace HrisListBenefitsResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        HRISBenefitsPaginated?: shared.HRISBenefitsPaginated$.Inbound | undefined;
-        StatusCode: number;
-        RawResponse: Response;
-    };
-
-    export const inboundSchema: z.ZodType<HrisListBenefitsResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<HrisListBenefitsResponse, z.ZodTypeDef, unknown> = z
         .object({
             ContentType: z.string(),
             HRISBenefitsPaginated: shared.HRISBenefitsPaginated$.inboundSchema.optional(),

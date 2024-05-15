@@ -33,14 +33,10 @@ export type StackoneListConnectorsMetaResponse = {
 
 /** @internal */
 export namespace StackoneListConnectorsMetaRequest$ {
-    export type Inbound = {
-        include?: string | null | undefined;
-    };
-
     export const inboundSchema: z.ZodType<
         StackoneListConnectorsMetaRequest,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z
         .object({
             include: z.nullable(z.string()).optional(),
@@ -72,17 +68,10 @@ export namespace StackoneListConnectorsMetaRequest$ {
 
 /** @internal */
 export namespace StackoneListConnectorsMetaResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: Response;
-        classes?: Array<shared.ConnectorsMeta$.Inbound> | undefined;
-    };
-
     export const inboundSchema: z.ZodType<
         StackoneListConnectorsMetaResponse,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z
         .object({
             ContentType: z.string(),

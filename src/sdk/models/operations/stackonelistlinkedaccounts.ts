@@ -53,19 +53,10 @@ export type StackoneListLinkedAccountsResponse = {
 
 /** @internal */
 export namespace StackoneListLinkedAccountsRequest$ {
-    export type Inbound = {
-        account_ids?: Array<string> | undefined;
-        origin_owner_id?: string | null | undefined;
-        page?: number | null | undefined;
-        page_size?: number | null | undefined;
-        provider?: string | null | undefined;
-        providers?: Array<string> | undefined;
-    };
-
     export const inboundSchema: z.ZodType<
         StackoneListLinkedAccountsRequest,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z
         .object({
             account_ids: z.array(z.string()).optional(),
@@ -122,17 +113,10 @@ export namespace StackoneListLinkedAccountsRequest$ {
 
 /** @internal */
 export namespace StackoneListLinkedAccountsResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: Response;
-        classes?: Array<shared.LinkedAccount$.Inbound> | undefined;
-    };
-
     export const inboundSchema: z.ZodType<
         StackoneListLinkedAccountsResponse,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z
         .object({
             ContentType: z.string(),

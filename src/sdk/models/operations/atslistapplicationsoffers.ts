@@ -76,21 +76,7 @@ export type AtsListApplicationsOffersResponse = {
 
 /** @internal */
 export namespace AtsListApplicationsOffersRequest$ {
-    export type Inbound = {
-        fields?: string | null | undefined;
-        "filter[updated_after]"?: string | null | undefined;
-        id: string;
-        next?: string | null | undefined;
-        page?: string | null | undefined;
-        page_size?: string | null | undefined;
-        proxy?: Record<string, any> | null | undefined;
-        raw?: boolean | null | undefined;
-        sync_token?: string | null | undefined;
-        updated_after?: string | null | undefined;
-        "x-account-id": string;
-    };
-
-    export const inboundSchema: z.ZodType<AtsListApplicationsOffersRequest, z.ZodTypeDef, Inbound> =
+    export const inboundSchema: z.ZodType<AtsListApplicationsOffersRequest, z.ZodTypeDef, unknown> =
         z
             .object({
                 fields: z.nullable(z.string()).optional(),
@@ -176,17 +162,10 @@ export namespace AtsListApplicationsOffersRequest$ {
 
 /** @internal */
 export namespace AtsListApplicationsOffersResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        OffersPaginated?: shared.OffersPaginated$.Inbound | undefined;
-        StatusCode: number;
-        RawResponse: Response;
-    };
-
     export const inboundSchema: z.ZodType<
         AtsListApplicationsOffersResponse,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z
         .object({
             ContentType: z.string(),

@@ -46,15 +46,7 @@ export type MarketingGetCampaignResponse = {
 
 /** @internal */
 export namespace MarketingGetCampaignRequest$ {
-    export type Inbound = {
-        fields?: string | null | undefined;
-        id: string;
-        proxy?: Record<string, any> | null | undefined;
-        raw?: boolean | null | undefined;
-        "x-account-id": string;
-    };
-
-    export const inboundSchema: z.ZodType<MarketingGetCampaignRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<MarketingGetCampaignRequest, z.ZodTypeDef, unknown> = z
         .object({
             fields: z.nullable(z.string()).optional(),
             id: z.string(),
@@ -101,14 +93,7 @@ export namespace MarketingGetCampaignRequest$ {
 
 /** @internal */
 export namespace MarketingGetCampaignResponse$ {
-    export type Inbound = {
-        CampaignResult?: shared.CampaignResult$.Inbound | undefined;
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: Response;
-    };
-
-    export const inboundSchema: z.ZodType<MarketingGetCampaignResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<MarketingGetCampaignResponse, z.ZodTypeDef, unknown> = z
         .object({
             CampaignResult: shared.CampaignResult$.inboundSchema.optional(),
             ContentType: z.string(),

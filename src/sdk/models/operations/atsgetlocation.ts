@@ -46,15 +46,7 @@ export type AtsGetLocationResponse = {
 
 /** @internal */
 export namespace AtsGetLocationRequest$ {
-    export type Inbound = {
-        fields?: string | null | undefined;
-        id: string;
-        proxy?: Record<string, any> | null | undefined;
-        raw?: boolean | null | undefined;
-        "x-account-id": string;
-    };
-
-    export const inboundSchema: z.ZodType<AtsGetLocationRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<AtsGetLocationRequest, z.ZodTypeDef, unknown> = z
         .object({
             fields: z.nullable(z.string()).optional(),
             id: z.string(),
@@ -101,14 +93,7 @@ export namespace AtsGetLocationRequest$ {
 
 /** @internal */
 export namespace AtsGetLocationResponse$ {
-    export type Inbound = {
-        ATSLocationResult?: shared.ATSLocationResult$.Inbound | undefined;
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: Response;
-    };
-
-    export const inboundSchema: z.ZodType<AtsGetLocationResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<AtsGetLocationResponse, z.ZodTypeDef, unknown> = z
         .object({
             ATSLocationResult: shared.ATSLocationResult$.inboundSchema.optional(),
             ContentType: z.string(),

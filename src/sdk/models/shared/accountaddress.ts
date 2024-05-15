@@ -327,9 +327,7 @@ export type AccountAddress = {
 
 /** @internal */
 export namespace AccountAddressSchemas4$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<AccountAddressSchemas4, z.ZodTypeDef, Inbound> = z.object(
+    export const inboundSchema: z.ZodType<AccountAddressSchemas4, z.ZodTypeDef, unknown> = z.object(
         {}
     );
 
@@ -341,16 +339,15 @@ export namespace AccountAddressSchemas4$ {
 
 /** @internal */
 export namespace AccountAddressSchemasSourceValue$ {
-    export type Inbound = AccountAddressSchemas4$.Inbound | string | number | boolean;
-
-    export type Outbound = AccountAddressSchemas4$.Outbound | string | number | boolean;
-    export const inboundSchema: z.ZodType<AccountAddressSchemasSourceValue, z.ZodTypeDef, Inbound> =
+    export const inboundSchema: z.ZodType<AccountAddressSchemasSourceValue, z.ZodTypeDef, unknown> =
         z.union([
             z.lazy(() => AccountAddressSchemas4$.inboundSchema),
             z.string(),
             z.number(),
             z.boolean(),
         ]);
+
+    export type Outbound = AccountAddressSchemas4$.Outbound | string | number | boolean;
     export const outboundSchema: z.ZodType<
         Outbound,
         z.ZodTypeDef,
@@ -369,18 +366,7 @@ export const AccountAddressSchemasValue$: z.ZodNativeEnum<typeof AccountAddressS
 
 /** @internal */
 export namespace Country$ {
-    export type Inbound = {
-        source_value?:
-            | AccountAddressSchemas4$.Inbound
-            | string
-            | number
-            | boolean
-            | null
-            | undefined;
-        value?: AccountAddressSchemasValue | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<Country, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<Country, z.ZodTypeDef, unknown> = z
         .object({
             source_value: z
                 .nullable(
@@ -436,9 +422,7 @@ export namespace Country$ {
 
 /** @internal */
 export namespace AccountAddress4$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<AccountAddress4, z.ZodTypeDef, Inbound> = z.object({});
+    export const inboundSchema: z.ZodType<AccountAddress4, z.ZodTypeDef, unknown> = z.object({});
 
     export type Outbound = {};
 
@@ -447,16 +431,15 @@ export namespace AccountAddress4$ {
 
 /** @internal */
 export namespace AccountAddressSourceValue$ {
-    export type Inbound = AccountAddress4$.Inbound | string | number | boolean;
-
-    export type Outbound = AccountAddress4$.Outbound | string | number | boolean;
-    export const inboundSchema: z.ZodType<AccountAddressSourceValue, z.ZodTypeDef, Inbound> =
+    export const inboundSchema: z.ZodType<AccountAddressSourceValue, z.ZodTypeDef, unknown> =
         z.union([
             z.lazy(() => AccountAddress4$.inboundSchema),
             z.string(),
             z.number(),
             z.boolean(),
         ]);
+
+    export type Outbound = AccountAddress4$.Outbound | string | number | boolean;
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, AccountAddressSourceValue> =
         z.union([
             z.lazy(() => AccountAddress4$.outboundSchema),
@@ -472,12 +455,7 @@ export const AccountAddressValue$: z.ZodNativeEnum<typeof AccountAddressValue> =
 
 /** @internal */
 export namespace LocationType$ {
-    export type Inbound = {
-        source_value?: AccountAddress4$.Inbound | string | number | boolean | null | undefined;
-        value?: AccountAddressValue | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<LocationType, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<LocationType, z.ZodTypeDef, unknown> = z
         .object({
             source_value: z
                 .nullable(
@@ -527,17 +505,7 @@ export namespace LocationType$ {
 
 /** @internal */
 export namespace AccountAddress$ {
-    export type Inbound = {
-        city?: string | null | undefined;
-        country?: Country$.Inbound | null | undefined;
-        location_type?: LocationType$.Inbound | null | undefined;
-        state?: string | null | undefined;
-        street_1?: string | null | undefined;
-        street_2?: string | null | undefined;
-        zip_code?: string | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<AccountAddress, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<AccountAddress, z.ZodTypeDef, unknown> = z
         .object({
             city: z.nullable(z.string()).optional(),
             country: z.nullable(z.lazy(() => Country$.inboundSchema)).optional(),

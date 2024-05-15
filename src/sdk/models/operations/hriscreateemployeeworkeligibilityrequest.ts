@@ -35,16 +35,10 @@ export type HrisCreateEmployeeWorkEligibilityRequestResponse = {
 
 /** @internal */
 export namespace HrisCreateEmployeeWorkEligibilityRequestRequest$ {
-    export type Inbound = {
-        HrisCreateWorkEligibilityRequestDto: shared.HrisCreateWorkEligibilityRequestDto$.Inbound;
-        id: string;
-        "x-account-id": string;
-    };
-
     export const inboundSchema: z.ZodType<
         HrisCreateEmployeeWorkEligibilityRequestRequest,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z
         .object({
             HrisCreateWorkEligibilityRequestDto:
@@ -88,17 +82,10 @@ export namespace HrisCreateEmployeeWorkEligibilityRequestRequest$ {
 
 /** @internal */
 export namespace HrisCreateEmployeeWorkEligibilityRequestResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        CreateResult?: shared.CreateResult$.Inbound | undefined;
-        StatusCode: number;
-        RawResponse: Response;
-    };
-
     export const inboundSchema: z.ZodType<
         HrisCreateEmployeeWorkEligibilityRequestResponse,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z
         .object({
             ContentType: z.string(),

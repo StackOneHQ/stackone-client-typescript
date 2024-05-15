@@ -69,19 +69,7 @@ export type HrisListCompaniesResponse = {
 
 /** @internal */
 export namespace HrisListCompaniesRequest$ {
-    export type Inbound = {
-        fields?: string | null | undefined;
-        "filter[updated_after]"?: string | null | undefined;
-        next?: string | null | undefined;
-        page?: string | null | undefined;
-        page_size?: string | null | undefined;
-        proxy?: Record<string, any> | null | undefined;
-        raw?: boolean | null | undefined;
-        updated_after?: string | null | undefined;
-        "x-account-id": string;
-    };
-
-    export const inboundSchema: z.ZodType<HrisListCompaniesRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<HrisListCompaniesRequest, z.ZodTypeDef, unknown> = z
         .object({
             fields: z.nullable(z.string()).optional(),
             "filter[updated_after]": z.nullable(z.string()).optional(),
@@ -152,14 +140,7 @@ export namespace HrisListCompaniesRequest$ {
 
 /** @internal */
 export namespace HrisListCompaniesResponse$ {
-    export type Inbound = {
-        CompaniesPaginated?: shared.CompaniesPaginated$.Inbound | undefined;
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: Response;
-    };
-
-    export const inboundSchema: z.ZodType<HrisListCompaniesResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<HrisListCompaniesResponse, z.ZodTypeDef, unknown> = z
         .object({
             CompaniesPaginated: shared.CompaniesPaginated$.inboundSchema.optional(),
             ContentType: z.string(),

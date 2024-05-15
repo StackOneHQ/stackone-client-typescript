@@ -67,9 +67,7 @@ export type HRISBenefit = {
 
 /** @internal */
 export namespace HRISBenefit4$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<HRISBenefit4, z.ZodTypeDef, Inbound> = z.object({});
+    export const inboundSchema: z.ZodType<HRISBenefit4, z.ZodTypeDef, unknown> = z.object({});
 
     export type Outbound = {};
 
@@ -78,15 +76,14 @@ export namespace HRISBenefit4$ {
 
 /** @internal */
 export namespace HRISBenefitSourceValue$ {
-    export type Inbound = HRISBenefit4$.Inbound | string | number | boolean;
-
-    export type Outbound = HRISBenefit4$.Outbound | string | number | boolean;
-    export const inboundSchema: z.ZodType<HRISBenefitSourceValue, z.ZodTypeDef, Inbound> = z.union([
+    export const inboundSchema: z.ZodType<HRISBenefitSourceValue, z.ZodTypeDef, unknown> = z.union([
         z.lazy(() => HRISBenefit4$.inboundSchema),
         z.string(),
         z.number(),
         z.boolean(),
     ]);
+
+    export type Outbound = HRISBenefit4$.Outbound | string | number | boolean;
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, HRISBenefitSourceValue> =
         z.union([z.lazy(() => HRISBenefit4$.outboundSchema), z.string(), z.number(), z.boolean()]);
 }
@@ -97,12 +94,7 @@ export const HRISBenefitValue$: z.ZodNativeEnum<typeof HRISBenefitValue> =
 
 /** @internal */
 export namespace BenefitType$ {
-    export type Inbound = {
-        source_value?: HRISBenefit4$.Inbound | string | number | boolean | null | undefined;
-        value?: HRISBenefitValue | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<BenefitType, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<BenefitType, z.ZodTypeDef, unknown> = z
         .object({
             source_value: z
                 .nullable(
@@ -152,18 +144,7 @@ export namespace BenefitType$ {
 
 /** @internal */
 export namespace HRISBenefit$ {
-    export type Inbound = {
-        benefit_type?: BenefitType$.Inbound | null | undefined;
-        created_at?: string | null | undefined;
-        description?: string | null | undefined;
-        id?: string | null | undefined;
-        name?: string | null | undefined;
-        provider?: string | null | undefined;
-        remote_id?: string | null | undefined;
-        updated_at?: string | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<HRISBenefit, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<HRISBenefit, z.ZodTypeDef, unknown> = z
         .object({
             benefit_type: z.nullable(z.lazy(() => BenefitType$.inboundSchema)).optional(),
             created_at: z

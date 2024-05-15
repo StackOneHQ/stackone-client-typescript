@@ -93,9 +93,7 @@ export type HrisCreateTimeOffRequestDto = {
 
 /** @internal */
 export namespace HrisCreateTimeOffRequestDto4$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<HrisCreateTimeOffRequestDto4, z.ZodTypeDef, Inbound> =
+    export const inboundSchema: z.ZodType<HrisCreateTimeOffRequestDto4, z.ZodTypeDef, unknown> =
         z.object({});
 
     export type Outbound = {};
@@ -106,19 +104,18 @@ export namespace HrisCreateTimeOffRequestDto4$ {
 
 /** @internal */
 export namespace HrisCreateTimeOffRequestDtoSourceValue$ {
-    export type Inbound = HrisCreateTimeOffRequestDto4$.Inbound | string | number | boolean;
-
-    export type Outbound = HrisCreateTimeOffRequestDto4$.Outbound | string | number | boolean;
     export const inboundSchema: z.ZodType<
         HrisCreateTimeOffRequestDtoSourceValue,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z.union([
         z.lazy(() => HrisCreateTimeOffRequestDto4$.inboundSchema),
         z.string(),
         z.number(),
         z.boolean(),
     ]);
+
+    export type Outbound = HrisCreateTimeOffRequestDto4$.Outbound | string | number | boolean;
     export const outboundSchema: z.ZodType<
         Outbound,
         z.ZodTypeDef,
@@ -138,21 +135,10 @@ export const HrisCreateTimeOffRequestDtoValue$: z.ZodNativeEnum<
 
 /** @internal */
 export namespace HrisCreateTimeOffRequestDtoStatus$ {
-    export type Inbound = {
-        source_value?:
-            | HrisCreateTimeOffRequestDto4$.Inbound
-            | string
-            | number
-            | boolean
-            | null
-            | undefined;
-        value?: HrisCreateTimeOffRequestDtoValue | null | undefined;
-    };
-
     export const inboundSchema: z.ZodType<
         HrisCreateTimeOffRequestDtoStatus,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z
         .object({
             source_value: z
@@ -213,12 +199,10 @@ export namespace HrisCreateTimeOffRequestDtoStatus$ {
 
 /** @internal */
 export namespace HrisCreateTimeOffRequestDtoSchemas4$ {
-    export type Inbound = {};
-
     export const inboundSchema: z.ZodType<
         HrisCreateTimeOffRequestDtoSchemas4,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z.object({});
 
     export type Outbound = {};
@@ -232,23 +216,22 @@ export namespace HrisCreateTimeOffRequestDtoSchemas4$ {
 
 /** @internal */
 export namespace HrisCreateTimeOffRequestDtoSchemasSourceValue$ {
-    export type Inbound = HrisCreateTimeOffRequestDtoSchemas4$.Inbound | string | number | boolean;
-
-    export type Outbound =
-        | HrisCreateTimeOffRequestDtoSchemas4$.Outbound
-        | string
-        | number
-        | boolean;
     export const inboundSchema: z.ZodType<
         HrisCreateTimeOffRequestDtoSchemasSourceValue,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z.union([
         z.lazy(() => HrisCreateTimeOffRequestDtoSchemas4$.inboundSchema),
         z.string(),
         z.number(),
         z.boolean(),
     ]);
+
+    export type Outbound =
+        | HrisCreateTimeOffRequestDtoSchemas4$.Outbound
+        | string
+        | number
+        | boolean;
     export const outboundSchema: z.ZodType<
         Outbound,
         z.ZodTypeDef,
@@ -268,18 +251,7 @@ export const HrisCreateTimeOffRequestDtoSchemasValue$: z.ZodNativeEnum<
 
 /** @internal */
 export namespace HrisCreateTimeOffRequestDtoType$ {
-    export type Inbound = {
-        source_value?:
-            | HrisCreateTimeOffRequestDtoSchemas4$.Inbound
-            | string
-            | number
-            | boolean
-            | null
-            | undefined;
-        value?: HrisCreateTimeOffRequestDtoSchemasValue | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<HrisCreateTimeOffRequestDtoType, z.ZodTypeDef, Inbound> =
+    export const inboundSchema: z.ZodType<HrisCreateTimeOffRequestDtoType, z.ZodTypeDef, unknown> =
         z
             .object({
                 source_value: z
@@ -340,16 +312,7 @@ export namespace HrisCreateTimeOffRequestDtoType$ {
 
 /** @internal */
 export namespace HrisCreateTimeOffRequestDto$ {
-    export type Inbound = {
-        approver_id?: string | null | undefined;
-        employee_id?: string | null | undefined;
-        end_date?: string | null | undefined;
-        start_date?: string | null | undefined;
-        status?: HrisCreateTimeOffRequestDtoStatus$.Inbound | null | undefined;
-        type?: HrisCreateTimeOffRequestDtoType$.Inbound | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<HrisCreateTimeOffRequestDto, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<HrisCreateTimeOffRequestDto, z.ZodTypeDef, unknown> = z
         .object({
             approver_id: z.nullable(z.string()).optional(),
             employee_id: z.nullable(z.string()).optional(),

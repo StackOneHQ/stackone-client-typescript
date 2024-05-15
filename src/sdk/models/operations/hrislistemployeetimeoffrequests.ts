@@ -70,23 +70,10 @@ export type HrisListEmployeeTimeOffRequestsResponse = {
 
 /** @internal */
 export namespace HrisListEmployeeTimeOffRequestsRequest$ {
-    export type Inbound = {
-        fields?: string | null | undefined;
-        "filter[updated_after]"?: string | null | undefined;
-        id: string;
-        next?: string | null | undefined;
-        page?: string | null | undefined;
-        page_size?: string | null | undefined;
-        proxy?: Record<string, any> | null | undefined;
-        raw?: boolean | null | undefined;
-        updated_after?: string | null | undefined;
-        "x-account-id": string;
-    };
-
     export const inboundSchema: z.ZodType<
         HrisListEmployeeTimeOffRequestsRequest,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z
         .object({
             fields: z.nullable(z.string()).optional(),
@@ -167,17 +154,10 @@ export namespace HrisListEmployeeTimeOffRequestsRequest$ {
 
 /** @internal */
 export namespace HrisListEmployeeTimeOffRequestsResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: Response;
-        TimeOffPaginated?: shared.TimeOffPaginated$.Inbound | undefined;
-    };
-
     export const inboundSchema: z.ZodType<
         HrisListEmployeeTimeOffRequestsResponse,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z
         .object({
             ContentType: z.string(),

@@ -13,12 +13,7 @@ export type ScorecardsResult = {
 
 /** @internal */
 export namespace ScorecardsResult$ {
-    export type Inbound = {
-        data: Scorecard$.Inbound;
-        raw?: Array<RawResponse$.Inbound> | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<ScorecardsResult, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<ScorecardsResult, z.ZodTypeDef, unknown> = z
         .object({
             data: Scorecard$.inboundSchema,
             raw: z.nullable(z.array(RawResponse$.inboundSchema)).optional(),

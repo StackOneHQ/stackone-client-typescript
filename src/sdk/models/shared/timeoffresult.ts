@@ -13,12 +13,7 @@ export type TimeOffResult = {
 
 /** @internal */
 export namespace TimeOffResult$ {
-    export type Inbound = {
-        data: TimeOff$.Inbound;
-        raw?: Array<RawResponse$.Inbound> | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<TimeOffResult, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<TimeOffResult, z.ZodTypeDef, unknown> = z
         .object({
             data: TimeOff$.inboundSchema,
             raw: z.nullable(z.array(RawResponse$.inboundSchema)).optional(),

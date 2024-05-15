@@ -18,13 +18,7 @@ export type JobPostingLocation = {
 
 /** @internal */
 export namespace JobPostingLocation$ {
-    export type Inbound = {
-        id?: string | null | undefined;
-        name?: string | null | undefined;
-        remote_id?: string | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<JobPostingLocation, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<JobPostingLocation, z.ZodTypeDef, unknown> = z
         .object({
             id: z.nullable(z.string()).optional(),
             name: z.nullable(z.string()).optional(),

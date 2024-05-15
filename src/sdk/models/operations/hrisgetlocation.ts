@@ -46,15 +46,7 @@ export type HrisGetLocationResponse = {
 
 /** @internal */
 export namespace HrisGetLocationRequest$ {
-    export type Inbound = {
-        fields?: string | null | undefined;
-        id: string;
-        proxy?: Record<string, any> | null | undefined;
-        raw?: boolean | null | undefined;
-        "x-account-id": string;
-    };
-
-    export const inboundSchema: z.ZodType<HrisGetLocationRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<HrisGetLocationRequest, z.ZodTypeDef, unknown> = z
         .object({
             fields: z.nullable(z.string()).optional(),
             id: z.string(),
@@ -101,14 +93,7 @@ export namespace HrisGetLocationRequest$ {
 
 /** @internal */
 export namespace HrisGetLocationResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        HRISLocationResult?: shared.HRISLocationResult$.Inbound | undefined;
-        StatusCode: number;
-        RawResponse: Response;
-    };
-
-    export const inboundSchema: z.ZodType<HrisGetLocationResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<HrisGetLocationResponse, z.ZodTypeDef, unknown> = z
         .object({
             ContentType: z.string(),
             HRISLocationResult: shared.HRISLocationResult$.inboundSchema.optional(),

@@ -34,15 +34,10 @@ export type MarketingCreatePushTemplateResponse = {
 
 /** @internal */
 export namespace MarketingCreatePushTemplateRequest$ {
-    export type Inbound = {
-        MarketingCreatePushTemplateRequestDto: shared.MarketingCreatePushTemplateRequestDto$.Inbound;
-        "x-account-id": string;
-    };
-
     export const inboundSchema: z.ZodType<
         MarketingCreatePushTemplateRequest,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z
         .object({
             MarketingCreatePushTemplateRequestDto:
@@ -81,17 +76,10 @@ export namespace MarketingCreatePushTemplateRequest$ {
 
 /** @internal */
 export namespace MarketingCreatePushTemplateResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        CreateResult?: shared.CreateResult$.Inbound | undefined;
-        StatusCode: number;
-        RawResponse: Response;
-    };
-
     export const inboundSchema: z.ZodType<
         MarketingCreatePushTemplateResponse,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z
         .object({
             ContentType: z.string(),

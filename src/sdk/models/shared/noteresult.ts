@@ -13,12 +13,7 @@ export type NoteResult = {
 
 /** @internal */
 export namespace NoteResult$ {
-    export type Inbound = {
-        data: Note$.Inbound;
-        raw?: Array<RawResponse$.Inbound> | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<NoteResult, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<NoteResult, z.ZodTypeDef, unknown> = z
         .object({
             data: Note$.inboundSchema,
             raw: z.nullable(z.array(RawResponse$.inboundSchema)).optional(),

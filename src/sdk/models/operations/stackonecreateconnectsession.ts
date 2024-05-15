@@ -26,17 +26,10 @@ export type StackoneCreateConnectSessionResponse = {
 
 /** @internal */
 export namespace StackoneCreateConnectSessionResponse$ {
-    export type Inbound = {
-        ConnectSessionToken?: shared.ConnectSessionToken$.Inbound | undefined;
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: Response;
-    };
-
     export const inboundSchema: z.ZodType<
         StackoneCreateConnectSessionResponse,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z
         .object({
             ConnectSessionToken: shared.ConnectSessionToken$.inboundSchema.optional(),

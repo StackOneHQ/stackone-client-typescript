@@ -73,20 +73,7 @@ export type IamListUsersResponse = {
 
 /** @internal */
 export namespace IamListUsersRequest$ {
-    export type Inbound = {
-        expand?: string | null | undefined;
-        fields?: string | null | undefined;
-        "filter[updated_after]"?: string | null | undefined;
-        next?: string | null | undefined;
-        page?: string | null | undefined;
-        page_size?: string | null | undefined;
-        proxy?: Record<string, any> | null | undefined;
-        raw?: boolean | null | undefined;
-        updated_after?: string | null | undefined;
-        "x-account-id": string;
-    };
-
-    export const inboundSchema: z.ZodType<IamListUsersRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<IamListUsersRequest, z.ZodTypeDef, unknown> = z
         .object({
             expand: z.nullable(z.string()).optional(),
             fields: z.nullable(z.string()).optional(),
@@ -162,14 +149,7 @@ export namespace IamListUsersRequest$ {
 
 /** @internal */
 export namespace IamListUsersResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        IamUsersPaginated?: shared.IamUsersPaginated$.Inbound | undefined;
-        StatusCode: number;
-        RawResponse: Response;
-    };
-
-    export const inboundSchema: z.ZodType<IamListUsersResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<IamListUsersResponse, z.ZodTypeDef, unknown> = z
         .object({
             ContentType: z.string(),
             IamUsersPaginated: shared.IamUsersPaginated$.inboundSchema.optional(),

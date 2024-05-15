@@ -34,12 +34,7 @@ export type CrmCreateContactResponse = {
 
 /** @internal */
 export namespace CrmCreateContactRequest$ {
-    export type Inbound = {
-        CrmCreateContactRequestDto: shared.CrmCreateContactRequestDto$.Inbound;
-        "x-account-id": string;
-    };
-
-    export const inboundSchema: z.ZodType<CrmCreateContactRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<CrmCreateContactRequest, z.ZodTypeDef, unknown> = z
         .object({
             CrmCreateContactRequestDto: shared.CrmCreateContactRequestDto$.inboundSchema,
             "x-account-id": z.string(),
@@ -71,14 +66,7 @@ export namespace CrmCreateContactRequest$ {
 
 /** @internal */
 export namespace CrmCreateContactResponse$ {
-    export type Inbound = {
-        ContactResult?: shared.ContactResult$.Inbound | undefined;
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: Response;
-    };
-
-    export const inboundSchema: z.ZodType<CrmCreateContactResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<CrmCreateContactResponse, z.ZodTypeDef, unknown> = z
         .object({
             ContactResult: shared.ContactResult$.inboundSchema.optional(),
             ContentType: z.string(),

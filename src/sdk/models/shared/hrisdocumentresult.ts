@@ -13,12 +13,7 @@ export type HrisDocumentResult = {
 
 /** @internal */
 export namespace HrisDocumentResult$ {
-    export type Inbound = {
-        data: HrisDocumentApiModel$.Inbound;
-        raw?: Array<RawResponse$.Inbound> | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<HrisDocumentResult, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<HrisDocumentResult, z.ZodTypeDef, unknown> = z
         .object({
             data: HrisDocumentApiModel$.inboundSchema,
             raw: z.nullable(z.array(RawResponse$.inboundSchema)).optional(),

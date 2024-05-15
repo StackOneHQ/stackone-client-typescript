@@ -46,15 +46,7 @@ export type AtsGetRejectedReasonResponse = {
 
 /** @internal */
 export namespace AtsGetRejectedReasonRequest$ {
-    export type Inbound = {
-        fields?: string | null | undefined;
-        id: string;
-        proxy?: Record<string, any> | null | undefined;
-        raw?: boolean | null | undefined;
-        "x-account-id": string;
-    };
-
-    export const inboundSchema: z.ZodType<AtsGetRejectedReasonRequest, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<AtsGetRejectedReasonRequest, z.ZodTypeDef, unknown> = z
         .object({
             fields: z.nullable(z.string()).optional(),
             id: z.string(),
@@ -101,14 +93,7 @@ export namespace AtsGetRejectedReasonRequest$ {
 
 /** @internal */
 export namespace AtsGetRejectedReasonResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        RejectedReasonResult?: shared.RejectedReasonResult$.Inbound | undefined;
-        StatusCode: number;
-        RawResponse: Response;
-    };
-
-    export const inboundSchema: z.ZodType<AtsGetRejectedReasonResponse, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<AtsGetRejectedReasonResponse, z.ZodTypeDef, unknown> = z
         .object({
             ContentType: z.string(),
             RejectedReasonResult: shared.RejectedReasonResult$.inboundSchema.optional(),

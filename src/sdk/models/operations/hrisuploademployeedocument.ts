@@ -35,16 +35,10 @@ export type HrisUploadEmployeeDocumentResponse = {
 
 /** @internal */
 export namespace HrisUploadEmployeeDocumentRequest$ {
-    export type Inbound = {
-        HrisDocumentsUploadRequestDto: shared.HrisDocumentsUploadRequestDto$.Inbound;
-        id: string;
-        "x-account-id": string;
-    };
-
     export const inboundSchema: z.ZodType<
         HrisUploadEmployeeDocumentRequest,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z
         .object({
             HrisDocumentsUploadRequestDto: shared.HrisDocumentsUploadRequestDto$.inboundSchema,
@@ -86,17 +80,10 @@ export namespace HrisUploadEmployeeDocumentRequest$ {
 
 /** @internal */
 export namespace HrisUploadEmployeeDocumentResponse$ {
-    export type Inbound = {
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: Response;
-        WriteResultApiModel?: shared.WriteResultApiModel$.Inbound | undefined;
-    };
-
     export const inboundSchema: z.ZodType<
         HrisUploadEmployeeDocumentResponse,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z
         .object({
             ContentType: z.string(),

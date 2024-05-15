@@ -77,9 +77,7 @@ export type EmployeeCustomFields = {
 
 /** @internal */
 export namespace EmployeeCustomFields4$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<EmployeeCustomFields4, z.ZodTypeDef, Inbound> = z.object(
+    export const inboundSchema: z.ZodType<EmployeeCustomFields4, z.ZodTypeDef, unknown> = z.object(
         {}
     );
 
@@ -91,16 +89,15 @@ export namespace EmployeeCustomFields4$ {
 
 /** @internal */
 export namespace EmployeeCustomFieldsOptions$ {
-    export type Inbound = EmployeeCustomFields4$.Inbound | string | number | boolean;
-
-    export type Outbound = EmployeeCustomFields4$.Outbound | string | number | boolean;
-    export const inboundSchema: z.ZodType<EmployeeCustomFieldsOptions, z.ZodTypeDef, Inbound> =
+    export const inboundSchema: z.ZodType<EmployeeCustomFieldsOptions, z.ZodTypeDef, unknown> =
         z.union([
             z.lazy(() => EmployeeCustomFields4$.inboundSchema),
             z.string(),
             z.number(),
             z.boolean(),
         ]);
+
+    export type Outbound = EmployeeCustomFields4$.Outbound | string | number | boolean;
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, EmployeeCustomFieldsOptions> =
         z.union([
             z.lazy(() => EmployeeCustomFields4$.outboundSchema),
@@ -112,9 +109,7 @@ export namespace EmployeeCustomFieldsOptions$ {
 
 /** @internal */
 export namespace EmployeeCustomFieldsSchemasType4$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<EmployeeCustomFieldsSchemasType4, z.ZodTypeDef, Inbound> =
+    export const inboundSchema: z.ZodType<EmployeeCustomFieldsSchemasType4, z.ZodTypeDef, unknown> =
         z.object({});
 
     export type Outbound = {};
@@ -128,16 +123,15 @@ export namespace EmployeeCustomFieldsSchemasType4$ {
 
 /** @internal */
 export namespace EmployeeCustomFieldsSourceValue$ {
-    export type Inbound = EmployeeCustomFieldsSchemasType4$.Inbound | string | number | boolean;
-
-    export type Outbound = EmployeeCustomFieldsSchemasType4$.Outbound | string | number | boolean;
-    export const inboundSchema: z.ZodType<EmployeeCustomFieldsSourceValue, z.ZodTypeDef, Inbound> =
+    export const inboundSchema: z.ZodType<EmployeeCustomFieldsSourceValue, z.ZodTypeDef, unknown> =
         z.union([
             z.lazy(() => EmployeeCustomFieldsSchemasType4$.inboundSchema),
             z.string(),
             z.number(),
             z.boolean(),
         ]);
+
+    export type Outbound = EmployeeCustomFieldsSchemasType4$.Outbound | string | number | boolean;
     export const outboundSchema: z.ZodType<
         Outbound,
         z.ZodTypeDef,
@@ -157,18 +151,7 @@ export const EmployeeCustomFieldsSchemasValue$: z.ZodNativeEnum<
 
 /** @internal */
 export namespace EmployeeCustomFieldsType$ {
-    export type Inbound = {
-        source_value?:
-            | EmployeeCustomFieldsSchemasType4$.Inbound
-            | string
-            | number
-            | boolean
-            | null
-            | undefined;
-        value?: EmployeeCustomFieldsSchemasValue | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<EmployeeCustomFieldsType, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<EmployeeCustomFieldsType, z.ZodTypeDef, unknown> = z
         .object({
             source_value: z
                 .nullable(
@@ -224,9 +207,7 @@ export namespace EmployeeCustomFieldsType$ {
 
 /** @internal */
 export namespace EmployeeCustomFieldsSchemas4$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<EmployeeCustomFieldsSchemas4, z.ZodTypeDef, Inbound> =
+    export const inboundSchema: z.ZodType<EmployeeCustomFieldsSchemas4, z.ZodTypeDef, unknown> =
         z.object({});
 
     export type Outbound = {};
@@ -237,16 +218,15 @@ export namespace EmployeeCustomFieldsSchemas4$ {
 
 /** @internal */
 export namespace EmployeeCustomFieldsValue$ {
-    export type Inbound = EmployeeCustomFieldsSchemas4$.Inbound | string | number | boolean;
-
-    export type Outbound = EmployeeCustomFieldsSchemas4$.Outbound | string | number | boolean;
-    export const inboundSchema: z.ZodType<EmployeeCustomFieldsValue, z.ZodTypeDef, Inbound> =
+    export const inboundSchema: z.ZodType<EmployeeCustomFieldsValue, z.ZodTypeDef, unknown> =
         z.union([
             z.lazy(() => EmployeeCustomFieldsSchemas4$.inboundSchema),
             z.string(),
             z.number(),
             z.boolean(),
         ]);
+
+    export type Outbound = EmployeeCustomFieldsSchemas4$.Outbound | string | number | boolean;
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, EmployeeCustomFieldsValue> =
         z.union([
             z.lazy(() => EmployeeCustomFieldsSchemas4$.outboundSchema),
@@ -258,27 +238,7 @@ export namespace EmployeeCustomFieldsValue$ {
 
 /** @internal */
 export namespace EmployeeCustomFields$ {
-    export type Inbound = {
-        description?: string | null | undefined;
-        id?: string | null | undefined;
-        name?: string | null | undefined;
-        options?:
-            | Array<EmployeeCustomFields4$.Inbound | string | number | boolean>
-            | null
-            | undefined;
-        remote_id?: string | null | undefined;
-        type?: EmployeeCustomFieldsType$.Inbound | null | undefined;
-        value?:
-            | EmployeeCustomFieldsSchemas4$.Inbound
-            | string
-            | number
-            | boolean
-            | null
-            | undefined;
-        value_id?: string | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<EmployeeCustomFields, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<EmployeeCustomFields, z.ZodTypeDef, unknown> = z
         .object({
             description: z.nullable(z.string()).optional(),
             id: z.nullable(z.string()).optional(),

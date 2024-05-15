@@ -55,9 +55,7 @@ export type AtsCreateOfferRequestDto = {
 
 /** @internal */
 export namespace AtsCreateOfferRequestDto4$ {
-    export type Inbound = {};
-
-    export const inboundSchema: z.ZodType<AtsCreateOfferRequestDto4, z.ZodTypeDef, Inbound> =
+    export const inboundSchema: z.ZodType<AtsCreateOfferRequestDto4, z.ZodTypeDef, unknown> =
         z.object({});
 
     export type Outbound = {};
@@ -68,19 +66,18 @@ export namespace AtsCreateOfferRequestDto4$ {
 
 /** @internal */
 export namespace AtsCreateOfferRequestDtoSourceValue$ {
-    export type Inbound = AtsCreateOfferRequestDto4$.Inbound | string | number | boolean;
-
-    export type Outbound = AtsCreateOfferRequestDto4$.Outbound | string | number | boolean;
     export const inboundSchema: z.ZodType<
         AtsCreateOfferRequestDtoSourceValue,
         z.ZodTypeDef,
-        Inbound
+        unknown
     > = z.union([
         z.lazy(() => AtsCreateOfferRequestDto4$.inboundSchema),
         z.string(),
         z.number(),
         z.boolean(),
     ]);
+
+    export type Outbound = AtsCreateOfferRequestDto4$.Outbound | string | number | boolean;
     export const outboundSchema: z.ZodType<
         Outbound,
         z.ZodTypeDef,
@@ -99,18 +96,7 @@ export const AtsCreateOfferRequestDtoValue$: z.ZodNativeEnum<typeof AtsCreateOff
 
 /** @internal */
 export namespace OfferStatus$ {
-    export type Inbound = {
-        source_value?:
-            | AtsCreateOfferRequestDto4$.Inbound
-            | string
-            | number
-            | boolean
-            | null
-            | undefined;
-        value?: AtsCreateOfferRequestDtoValue | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<OfferStatus, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<OfferStatus, z.ZodTypeDef, unknown> = z
         .object({
             source_value: z
                 .nullable(
@@ -166,16 +152,7 @@ export namespace OfferStatus$ {
 
 /** @internal */
 export namespace AtsCreateOfferRequestDto$ {
-    export type Inbound = {
-        application_id?: string | null | undefined;
-        currency?: string | null | undefined;
-        offer_history?: Array<OfferHistory$.Inbound> | null | undefined;
-        offer_status?: OfferStatus$.Inbound | null | undefined;
-        salary?: number | null | undefined;
-        start_date?: string | null | undefined;
-    };
-
-    export const inboundSchema: z.ZodType<AtsCreateOfferRequestDto, z.ZodTypeDef, Inbound> = z
+    export const inboundSchema: z.ZodType<AtsCreateOfferRequestDto, z.ZodTypeDef, unknown> = z
         .object({
             application_id: z.nullable(z.string()).optional(),
             currency: z.nullable(z.string()).optional(),
