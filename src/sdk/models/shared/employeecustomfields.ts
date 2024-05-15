@@ -145,9 +145,10 @@ export namespace EmployeeCustomFieldsSourceValue$ {
 }
 
 /** @internal */
-export const EmployeeCustomFieldsSchemasValue$: z.ZodNativeEnum<
-    typeof EmployeeCustomFieldsSchemasValue
-> = z.nativeEnum(EmployeeCustomFieldsSchemasValue);
+export namespace EmployeeCustomFieldsSchemasValue$ {
+    export const inboundSchema = z.nativeEnum(EmployeeCustomFieldsSchemasValue);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace EmployeeCustomFieldsType$ {
@@ -163,7 +164,7 @@ export namespace EmployeeCustomFieldsType$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(EmployeeCustomFieldsSchemasValue$).optional(),
+            value: z.nullable(EmployeeCustomFieldsSchemasValue$.inboundSchema).optional(),
         })
         .transform((v) => {
             return {
@@ -180,7 +181,7 @@ export namespace EmployeeCustomFieldsType$ {
             | boolean
             | null
             | undefined;
-        value?: EmployeeCustomFieldsSchemasValue | null | undefined;
+        value?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, EmployeeCustomFieldsType> = z
@@ -195,7 +196,7 @@ export namespace EmployeeCustomFieldsType$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(EmployeeCustomFieldsSchemasValue$).optional(),
+            value: z.nullable(EmployeeCustomFieldsSchemasValue$.outboundSchema).optional(),
         })
         .transform((v) => {
             return {

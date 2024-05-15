@@ -569,8 +569,10 @@ export namespace WorkEligibilitySourceValue$ {
 }
 
 /** @internal */
-export const WorkEligibilityValue$: z.ZodNativeEnum<typeof WorkEligibilityValue> =
-    z.nativeEnum(WorkEligibilityValue);
+export namespace WorkEligibilityValue$ {
+    export const inboundSchema = z.nativeEnum(WorkEligibilityValue);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace WorkEligibilityIssuedBy$ {
@@ -586,7 +588,7 @@ export namespace WorkEligibilityIssuedBy$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(WorkEligibilityValue$).optional(),
+            value: z.nullable(WorkEligibilityValue$.inboundSchema).optional(),
         })
         .transform((v) => {
             return {
@@ -597,7 +599,7 @@ export namespace WorkEligibilityIssuedBy$ {
 
     export type Outbound = {
         source_value?: WorkEligibility4$.Outbound | string | number | boolean | null | undefined;
-        value?: WorkEligibilityValue | null | undefined;
+        value?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, WorkEligibilityIssuedBy> = z
@@ -612,7 +614,7 @@ export namespace WorkEligibilityIssuedBy$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(WorkEligibilityValue$).optional(),
+            value: z.nullable(WorkEligibilityValue$.outboundSchema).optional(),
         })
         .transform((v) => {
             return {
@@ -654,8 +656,10 @@ export namespace WorkEligibilitySourceType$ {
 }
 
 /** @internal */
-export const WorkEligibilitySchemasValue$: z.ZodNativeEnum<typeof WorkEligibilitySchemasValue> =
-    z.nativeEnum(WorkEligibilitySchemasValue);
+export namespace WorkEligibilitySchemasValue$ {
+    export const inboundSchema = z.nativeEnum(WorkEligibilitySchemasValue);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace WorkEligibilityType$ {
@@ -671,7 +675,7 @@ export namespace WorkEligibilityType$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(WorkEligibilitySchemasValue$).optional(),
+            value: z.nullable(WorkEligibilitySchemasValue$.inboundSchema).optional(),
         })
         .transform((v) => {
             return {
@@ -688,7 +692,7 @@ export namespace WorkEligibilityType$ {
             | boolean
             | null
             | undefined;
-        value?: WorkEligibilitySchemasValue | null | undefined;
+        value?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, WorkEligibilityType> = z
@@ -703,7 +707,7 @@ export namespace WorkEligibilityType$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(WorkEligibilitySchemasValue$).optional(),
+            value: z.nullable(WorkEligibilitySchemasValue$.outboundSchema).optional(),
         })
         .transform((v) => {
             return {

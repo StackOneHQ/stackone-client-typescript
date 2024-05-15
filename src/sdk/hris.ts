@@ -1200,6 +1200,7 @@ export class Hris extends ClientSDK {
         const path$ = this.templateURLComponent("/unified/hris/employments/{id}")(pathParams$);
 
         const query$ = [
+            enc$.encodeForm("expand", payload$.expand, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("fields", payload$.fields, { explode: true, charEncoding: "percent" }),
             enc$.encodeDeepObject("proxy", payload$.proxy, { charEncoding: "percent" }),
             enc$.encodeForm("raw", payload$.raw, { explode: true, charEncoding: "percent" }),
@@ -2320,6 +2321,7 @@ export class Hris extends ClientSDK {
         const path$ = this.templateURLComponent("/unified/hris/employments")();
 
         const query$ = [
+            enc$.encodeForm("expand", payload$.expand, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("fields", payload$.fields, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("filter[updated_after]", payload$["filter[updated_after]"], {
                 explode: true,

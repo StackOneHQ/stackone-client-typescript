@@ -65,8 +65,10 @@ export type Scorecard = {
 };
 
 /** @internal */
-export const OverallRecommendation$: z.ZodNativeEnum<typeof OverallRecommendation> =
-    z.nativeEnum(OverallRecommendation);
+export namespace OverallRecommendation$ {
+    export const inboundSchema = z.nativeEnum(OverallRecommendation);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace Scorecard$ {
@@ -86,7 +88,7 @@ export namespace Scorecard$ {
             id: z.nullable(z.string()).optional(),
             interview_id: z.nullable(z.string()).optional(),
             label: z.nullable(z.string()).optional(),
-            overall_recommendation: z.nullable(OverallRecommendation$).optional(),
+            overall_recommendation: z.nullable(OverallRecommendation$.inboundSchema).optional(),
             remote_id: z.nullable(z.string()).optional(),
             sections: z.nullable(z.array(ScorecardSection$.inboundSchema)).optional(),
             updated_at: z
@@ -124,7 +126,7 @@ export namespace Scorecard$ {
         id?: string | null | undefined;
         interview_id?: string | null | undefined;
         label?: string | null | undefined;
-        overall_recommendation?: OverallRecommendation | null | undefined;
+        overall_recommendation?: string | null | undefined;
         remote_id?: string | null | undefined;
         sections?: Array<ScorecardSection$.Outbound> | null | undefined;
         updated_at?: string | null | undefined;
@@ -139,7 +141,7 @@ export namespace Scorecard$ {
             id: z.nullable(z.string()).optional(),
             interviewId: z.nullable(z.string()).optional(),
             label: z.nullable(z.string()).optional(),
-            overallRecommendation: z.nullable(OverallRecommendation$).optional(),
+            overallRecommendation: z.nullable(OverallRecommendation$.outboundSchema).optional(),
             remoteId: z.nullable(z.string()).optional(),
             sections: z.nullable(z.array(ScorecardSection$.outboundSchema)).optional(),
             updatedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),

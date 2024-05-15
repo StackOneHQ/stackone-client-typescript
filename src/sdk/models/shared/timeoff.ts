@@ -121,7 +121,10 @@ export namespace TimeOffSourceValue$ {
 }
 
 /** @internal */
-export const TimeOffValue$: z.ZodNativeEnum<typeof TimeOffValue> = z.nativeEnum(TimeOffValue);
+export namespace TimeOffValue$ {
+    export const inboundSchema = z.nativeEnum(TimeOffValue);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace TimeOffStatus$ {
@@ -137,7 +140,7 @@ export namespace TimeOffStatus$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(TimeOffValue$).optional(),
+            value: z.nullable(TimeOffValue$.inboundSchema).optional(),
         })
         .transform((v) => {
             return {
@@ -148,7 +151,7 @@ export namespace TimeOffStatus$ {
 
     export type Outbound = {
         source_value?: TimeOff4$.Outbound | string | number | boolean | null | undefined;
-        value?: TimeOffValue | null | undefined;
+        value?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, TimeOffStatus> = z
@@ -163,7 +166,7 @@ export namespace TimeOffStatus$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(TimeOffValue$).optional(),
+            value: z.nullable(TimeOffValue$.outboundSchema).optional(),
         })
         .transform((v) => {
             return {
@@ -203,8 +206,10 @@ export namespace TimeOffSchemasSourceValue$ {
 }
 
 /** @internal */
-export const TimeOffSchemasValue$: z.ZodNativeEnum<typeof TimeOffSchemasValue> =
-    z.nativeEnum(TimeOffSchemasValue);
+export namespace TimeOffSchemasValue$ {
+    export const inboundSchema = z.nativeEnum(TimeOffSchemasValue);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace TimeOffType$ {
@@ -220,7 +225,7 @@ export namespace TimeOffType$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(TimeOffSchemasValue$).optional(),
+            value: z.nullable(TimeOffSchemasValue$.inboundSchema).optional(),
         })
         .transform((v) => {
             return {
@@ -231,7 +236,7 @@ export namespace TimeOffType$ {
 
     export type Outbound = {
         source_value?: TimeOffSchemas4$.Outbound | string | number | boolean | null | undefined;
-        value?: TimeOffSchemasValue | null | undefined;
+        value?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, TimeOffType> = z
@@ -246,7 +251,7 @@ export namespace TimeOffType$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(TimeOffSchemasValue$).optional(),
+            value: z.nullable(TimeOffSchemasValue$.outboundSchema).optional(),
         })
         .transform((v) => {
             return {

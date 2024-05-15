@@ -235,8 +235,10 @@ export namespace EmploymentSourceValue$ {
 }
 
 /** @internal */
-export const EmploymentValue$: z.ZodNativeEnum<typeof EmploymentValue> =
-    z.nativeEnum(EmploymentValue);
+export namespace EmploymentValue$ {
+    export const inboundSchema = z.nativeEnum(EmploymentValue);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace EmploymentEmploymentContractType$ {
@@ -253,7 +255,7 @@ export namespace EmploymentEmploymentContractType$ {
                         ])
                     )
                     .optional(),
-                value: z.nullable(EmploymentValue$).optional(),
+                value: z.nullable(EmploymentValue$.inboundSchema).optional(),
             })
             .transform((v) => {
                 return {
@@ -264,7 +266,7 @@ export namespace EmploymentEmploymentContractType$ {
 
     export type Outbound = {
         source_value?: Employment4$.Outbound | string | number | boolean | null | undefined;
-        value?: EmploymentValue | null | undefined;
+        value?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<
@@ -283,7 +285,7 @@ export namespace EmploymentEmploymentContractType$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(EmploymentValue$).optional(),
+            value: z.nullable(EmploymentValue$.outboundSchema).optional(),
         })
         .transform((v) => {
             return {
@@ -325,8 +327,10 @@ export namespace EmploymentSchemasSourceValue$ {
 }
 
 /** @internal */
-export const EmploymentSchemasValue$: z.ZodNativeEnum<typeof EmploymentSchemasValue> =
-    z.nativeEnum(EmploymentSchemasValue);
+export namespace EmploymentSchemasValue$ {
+    export const inboundSchema = z.nativeEnum(EmploymentSchemasValue);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace EmploymentEmploymentType$ {
@@ -342,7 +346,7 @@ export namespace EmploymentEmploymentType$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(EmploymentSchemasValue$).optional(),
+            value: z.nullable(EmploymentSchemasValue$.inboundSchema).optional(),
         })
         .transform((v) => {
             return {
@@ -353,7 +357,7 @@ export namespace EmploymentEmploymentType$ {
 
     export type Outbound = {
         source_value?: EmploymentSchemas4$.Outbound | string | number | boolean | null | undefined;
-        value?: EmploymentSchemasValue | null | undefined;
+        value?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, EmploymentEmploymentType> = z
@@ -368,7 +372,7 @@ export namespace EmploymentEmploymentType$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(EmploymentSchemasValue$).optional(),
+            value: z.nullable(EmploymentSchemasValue$.outboundSchema).optional(),
         })
         .transform((v) => {
             return {
@@ -416,9 +420,10 @@ export namespace EmploymentSchemasPayFrequencySourceValue$ {
 }
 
 /** @internal */
-export const EmploymentSchemasPayFrequencyValue$: z.ZodNativeEnum<
-    typeof EmploymentSchemasPayFrequencyValue
-> = z.nativeEnum(EmploymentSchemasPayFrequencyValue);
+export namespace EmploymentSchemasPayFrequencyValue$ {
+    export const inboundSchema = z.nativeEnum(EmploymentSchemasPayFrequencyValue);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace PayFrequency$ {
@@ -434,7 +439,7 @@ export namespace PayFrequency$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(EmploymentSchemasPayFrequencyValue$).optional(),
+            value: z.nullable(EmploymentSchemasPayFrequencyValue$.inboundSchema).optional(),
         })
         .transform((v) => {
             return {
@@ -451,7 +456,7 @@ export namespace PayFrequency$ {
             | boolean
             | null
             | undefined;
-        value?: EmploymentSchemasPayFrequencyValue | null | undefined;
+        value?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, PayFrequency> = z
@@ -466,7 +471,7 @@ export namespace PayFrequency$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(EmploymentSchemasPayFrequencyValue$).optional(),
+            value: z.nullable(EmploymentSchemasPayFrequencyValue$.outboundSchema).optional(),
         })
         .transform((v) => {
             return {
@@ -514,9 +519,10 @@ export namespace EmploymentSchemasPayPeriodSourceValue$ {
 }
 
 /** @internal */
-export const EmploymentSchemasPayPeriodValue$: z.ZodNativeEnum<
-    typeof EmploymentSchemasPayPeriodValue
-> = z.nativeEnum(EmploymentSchemasPayPeriodValue);
+export namespace EmploymentSchemasPayPeriodValue$ {
+    export const inboundSchema = z.nativeEnum(EmploymentSchemasPayPeriodValue);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace PayPeriod$ {
@@ -532,7 +538,7 @@ export namespace PayPeriod$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(EmploymentSchemasPayPeriodValue$).optional(),
+            value: z.nullable(EmploymentSchemasPayPeriodValue$.inboundSchema).optional(),
         })
         .transform((v) => {
             return {
@@ -549,7 +555,7 @@ export namespace PayPeriod$ {
             | boolean
             | null
             | undefined;
-        value?: EmploymentSchemasPayPeriodValue | null | undefined;
+        value?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, PayPeriod> = z
@@ -564,7 +570,7 @@ export namespace PayPeriod$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(EmploymentSchemasPayPeriodValue$).optional(),
+            value: z.nullable(EmploymentSchemasPayPeriodValue$.outboundSchema).optional(),
         })
         .transform((v) => {
             return {

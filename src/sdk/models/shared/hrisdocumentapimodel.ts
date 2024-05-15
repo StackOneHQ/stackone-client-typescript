@@ -176,8 +176,10 @@ export namespace HrisDocumentApiModelSourceValue$ {
 }
 
 /** @internal */
-export const HrisDocumentApiModelValue$: z.ZodNativeEnum<typeof HrisDocumentApiModelValue> =
-    z.nativeEnum(HrisDocumentApiModelValue);
+export namespace HrisDocumentApiModelValue$ {
+    export const inboundSchema = z.nativeEnum(HrisDocumentApiModelValue);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace HrisDocumentApiModelCategory$ {
@@ -193,7 +195,7 @@ export namespace HrisDocumentApiModelCategory$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(HrisDocumentApiModelValue$).optional(),
+            value: z.nullable(HrisDocumentApiModelValue$.inboundSchema).optional(),
         })
         .transform((v) => {
             return {
@@ -210,7 +212,7 @@ export namespace HrisDocumentApiModelCategory$ {
             | boolean
             | null
             | undefined;
-        value?: HrisDocumentApiModelValue | null | undefined;
+        value?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, HrisDocumentApiModelCategory> = z
@@ -225,7 +227,7 @@ export namespace HrisDocumentApiModelCategory$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(HrisDocumentApiModelValue$).optional(),
+            value: z.nullable(HrisDocumentApiModelValue$.outboundSchema).optional(),
         })
         .transform((v) => {
             return {
@@ -273,9 +275,10 @@ export namespace HrisDocumentApiModelSchemasSourceValue$ {
 }
 
 /** @internal */
-export const HrisDocumentApiModelSchemasValue$: z.ZodNativeEnum<
-    typeof HrisDocumentApiModelSchemasValue
-> = z.nativeEnum(HrisDocumentApiModelSchemasValue);
+export namespace HrisDocumentApiModelSchemasValue$ {
+    export const inboundSchema = z.nativeEnum(HrisDocumentApiModelSchemasValue);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace HrisDocumentApiModelType$ {
@@ -291,7 +294,7 @@ export namespace HrisDocumentApiModelType$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(HrisDocumentApiModelSchemasValue$).optional(),
+            value: z.nullable(HrisDocumentApiModelSchemasValue$.inboundSchema).optional(),
         })
         .transform((v) => {
             return {
@@ -308,7 +311,7 @@ export namespace HrisDocumentApiModelType$ {
             | boolean
             | null
             | undefined;
-        value?: HrisDocumentApiModelSchemasValue | null | undefined;
+        value?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, HrisDocumentApiModelType> = z
@@ -323,7 +326,7 @@ export namespace HrisDocumentApiModelType$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(HrisDocumentApiModelSchemasValue$).optional(),
+            value: z.nullable(HrisDocumentApiModelSchemasValue$.outboundSchema).optional(),
         })
         .transform((v) => {
             return {

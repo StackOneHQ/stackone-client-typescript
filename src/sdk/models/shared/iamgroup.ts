@@ -71,7 +71,10 @@ export namespace IamGroupSourceValue$ {
 }
 
 /** @internal */
-export const IamGroupValue$: z.ZodNativeEnum<typeof IamGroupValue> = z.nativeEnum(IamGroupValue);
+export namespace IamGroupValue$ {
+    export const inboundSchema = z.nativeEnum(IamGroupValue);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace IamGroupType$ {
@@ -87,7 +90,7 @@ export namespace IamGroupType$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(IamGroupValue$).optional(),
+            value: z.nullable(IamGroupValue$.inboundSchema).optional(),
         })
         .transform((v) => {
             return {
@@ -98,7 +101,7 @@ export namespace IamGroupType$ {
 
     export type Outbound = {
         source_value?: IamGroup4$.Outbound | string | number | boolean | null | undefined;
-        value?: IamGroupValue | null | undefined;
+        value?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, IamGroupType> = z
@@ -113,7 +116,7 @@ export namespace IamGroupType$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(IamGroupValue$).optional(),
+            value: z.nullable(IamGroupValue$.outboundSchema).optional(),
         })
         .transform((v) => {
             return {

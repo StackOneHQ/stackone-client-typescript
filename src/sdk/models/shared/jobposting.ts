@@ -209,8 +209,10 @@ export namespace JobPostingSourceValue$ {
 }
 
 /** @internal */
-export const JobPostingValue$: z.ZodNativeEnum<typeof JobPostingValue> =
-    z.nativeEnum(JobPostingValue);
+export namespace JobPostingValue$ {
+    export const inboundSchema = z.nativeEnum(JobPostingValue);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace JobPostingEmploymentContractType$ {
@@ -227,7 +229,7 @@ export namespace JobPostingEmploymentContractType$ {
                         ])
                     )
                     .optional(),
-                value: z.nullable(JobPostingValue$).optional(),
+                value: z.nullable(JobPostingValue$.inboundSchema).optional(),
             })
             .transform((v) => {
                 return {
@@ -238,7 +240,7 @@ export namespace JobPostingEmploymentContractType$ {
 
     export type Outbound = {
         source_value?: JobPosting4$.Outbound | string | number | boolean | null | undefined;
-        value?: JobPostingValue | null | undefined;
+        value?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<
@@ -257,7 +259,7 @@ export namespace JobPostingEmploymentContractType$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(JobPostingValue$).optional(),
+            value: z.nullable(JobPostingValue$.outboundSchema).optional(),
         })
         .transform((v) => {
             return {
@@ -299,8 +301,10 @@ export namespace JobPostingSchemasSourceValue$ {
 }
 
 /** @internal */
-export const JobPostingSchemasValue$: z.ZodNativeEnum<typeof JobPostingSchemasValue> =
-    z.nativeEnum(JobPostingSchemasValue);
+export namespace JobPostingSchemasValue$ {
+    export const inboundSchema = z.nativeEnum(JobPostingSchemasValue);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace JobPostingEmploymentType$ {
@@ -316,7 +320,7 @@ export namespace JobPostingEmploymentType$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(JobPostingSchemasValue$).optional(),
+            value: z.nullable(JobPostingSchemasValue$.inboundSchema).optional(),
         })
         .transform((v) => {
             return {
@@ -327,7 +331,7 @@ export namespace JobPostingEmploymentType$ {
 
     export type Outbound = {
         source_value?: JobPostingSchemas4$.Outbound | string | number | boolean | null | undefined;
-        value?: JobPostingSchemasValue | null | undefined;
+        value?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, JobPostingEmploymentType> = z
@@ -342,7 +346,7 @@ export namespace JobPostingEmploymentType$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(JobPostingSchemasValue$).optional(),
+            value: z.nullable(JobPostingSchemasValue$.outboundSchema).optional(),
         })
         .transform((v) => {
             return {
@@ -353,7 +357,10 @@ export namespace JobPostingEmploymentType$ {
 }
 
 /** @internal */
-export const Internal$: z.ZodNativeEnum<typeof Internal> = z.nativeEnum(Internal);
+export namespace Internal$ {
+    export const inboundSchema = z.nativeEnum(Internal);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace JobPostingSchemasStatus4$ {
@@ -393,8 +400,10 @@ export namespace JobPostingSchemasStatusSourceValue$ {
 }
 
 /** @internal */
-export const JobPostingSchemasStatusValue$: z.ZodNativeEnum<typeof JobPostingSchemasStatusValue> =
-    z.nativeEnum(JobPostingSchemasStatusValue);
+export namespace JobPostingSchemasStatusValue$ {
+    export const inboundSchema = z.nativeEnum(JobPostingSchemasStatusValue);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace JobPostingStatus$ {
@@ -410,7 +419,7 @@ export namespace JobPostingStatus$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(JobPostingSchemasStatusValue$).optional(),
+            value: z.nullable(JobPostingSchemasStatusValue$.inboundSchema).optional(),
         })
         .transform((v) => {
             return {
@@ -427,7 +436,7 @@ export namespace JobPostingStatus$ {
             | boolean
             | null
             | undefined;
-        value?: JobPostingSchemasStatusValue | null | undefined;
+        value?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, JobPostingStatus> = z
@@ -442,7 +451,7 @@ export namespace JobPostingStatus$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(JobPostingSchemasStatusValue$).optional(),
+            value: z.nullable(JobPostingSchemasStatusValue$.outboundSchema).optional(),
         })
         .transform((v) => {
             return {
@@ -475,7 +484,7 @@ export namespace JobPosting$ {
             external_apply_url: z.nullable(z.string()).optional(),
             external_url: z.nullable(z.string()).optional(),
             id: z.nullable(z.string()).optional(),
-            internal: z.nullable(Internal$).optional(),
+            internal: z.nullable(Internal$.inboundSchema).optional(),
             job_id: z.nullable(z.string()).optional(),
             locations: z.nullable(z.array(JobPostingLocation$.inboundSchema)).optional(),
             questionnaires: z.nullable(z.array(JobPostingQuestionnaire$.inboundSchema)).optional(),
@@ -525,7 +534,7 @@ export namespace JobPosting$ {
         external_apply_url?: string | null | undefined;
         external_url?: string | null | undefined;
         id?: string | null | undefined;
-        internal?: Internal | null | undefined;
+        internal?: string | null | undefined;
         job_id?: string | null | undefined;
         locations?: Array<JobPostingLocation$.Outbound> | null | undefined;
         questionnaires?: Array<JobPostingQuestionnaire$.Outbound> | null | undefined;
@@ -549,7 +558,7 @@ export namespace JobPosting$ {
             externalApplyUrl: z.nullable(z.string()).optional(),
             externalUrl: z.nullable(z.string()).optional(),
             id: z.nullable(z.string()).optional(),
-            internal: z.nullable(Internal$).optional(),
+            internal: z.nullable(Internal$.outboundSchema).optional(),
             jobId: z.nullable(z.string()).optional(),
             locations: z.nullable(z.array(JobPostingLocation$.outboundSchema)).optional(),
             questionnaires: z.nullable(z.array(JobPostingQuestionnaire$.outboundSchema)).optional(),

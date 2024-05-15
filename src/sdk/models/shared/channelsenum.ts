@@ -63,7 +63,10 @@ export namespace SourceValue$ {
 }
 
 /** @internal */
-export const Value$: z.ZodNativeEnum<typeof Value> = z.nativeEnum(Value);
+export namespace Value$ {
+    export const inboundSchema = z.nativeEnum(Value);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace ChannelsEnum$ {
@@ -79,7 +82,7 @@ export namespace ChannelsEnum$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(Value$).optional(),
+            value: z.nullable(Value$.inboundSchema).optional(),
         })
         .transform((v) => {
             return {
@@ -90,7 +93,7 @@ export namespace ChannelsEnum$ {
 
     export type Outbound = {
         source_value?: Four$.Outbound | string | number | boolean | null | undefined;
-        value?: Value | null | undefined;
+        value?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ChannelsEnum> = z
@@ -105,7 +108,7 @@ export namespace ChannelsEnum$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(Value$).optional(),
+            value: z.nullable(Value$.outboundSchema).optional(),
         })
         .transform((v) => {
             return {

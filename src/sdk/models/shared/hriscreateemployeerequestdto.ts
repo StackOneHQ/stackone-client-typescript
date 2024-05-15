@@ -8906,9 +8906,10 @@ export namespace HrisCreateEmployeeRequestDtoSourceValue$ {
 }
 
 /** @internal */
-export const HrisCreateEmployeeRequestDtoValue$: z.ZodNativeEnum<
-    typeof HrisCreateEmployeeRequestDtoValue
-> = z.nativeEnum(HrisCreateEmployeeRequestDtoValue);
+export namespace HrisCreateEmployeeRequestDtoValue$ {
+    export const inboundSchema = z.nativeEnum(HrisCreateEmployeeRequestDtoValue);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace HrisCreateEmployeeRequestDtoEmploymentContractType$ {
@@ -8928,7 +8929,7 @@ export namespace HrisCreateEmployeeRequestDtoEmploymentContractType$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(HrisCreateEmployeeRequestDtoValue$).optional(),
+            value: z.nullable(HrisCreateEmployeeRequestDtoValue$.inboundSchema).optional(),
         })
         .transform((v) => {
             return {
@@ -8945,7 +8946,7 @@ export namespace HrisCreateEmployeeRequestDtoEmploymentContractType$ {
             | boolean
             | null
             | undefined;
-        value?: HrisCreateEmployeeRequestDtoValue | null | undefined;
+        value?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<
@@ -8964,7 +8965,7 @@ export namespace HrisCreateEmployeeRequestDtoEmploymentContractType$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(HrisCreateEmployeeRequestDtoValue$).optional(),
+            value: z.nullable(HrisCreateEmployeeRequestDtoValue$.outboundSchema).optional(),
         })
         .transform((v) => {
             return {
@@ -9022,9 +9023,10 @@ export namespace HrisCreateEmployeeRequestDtoSchemasSourceValue$ {
 }
 
 /** @internal */
-export const HrisCreateEmployeeRequestDtoSchemasValue$: z.ZodNativeEnum<
-    typeof HrisCreateEmployeeRequestDtoSchemasValue
-> = z.nativeEnum(HrisCreateEmployeeRequestDtoSchemasValue);
+export namespace HrisCreateEmployeeRequestDtoSchemasValue$ {
+    export const inboundSchema = z.nativeEnum(HrisCreateEmployeeRequestDtoSchemasValue);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace HrisCreateEmployeeRequestDtoEmploymentStatus$ {
@@ -9044,7 +9046,7 @@ export namespace HrisCreateEmployeeRequestDtoEmploymentStatus$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(HrisCreateEmployeeRequestDtoSchemasValue$).optional(),
+            value: z.nullable(HrisCreateEmployeeRequestDtoSchemasValue$.inboundSchema).optional(),
         })
         .transform((v) => {
             return {
@@ -9061,7 +9063,7 @@ export namespace HrisCreateEmployeeRequestDtoEmploymentStatus$ {
             | boolean
             | null
             | undefined;
-        value?: HrisCreateEmployeeRequestDtoSchemasValue | null | undefined;
+        value?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<
@@ -9080,7 +9082,7 @@ export namespace HrisCreateEmployeeRequestDtoEmploymentStatus$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(HrisCreateEmployeeRequestDtoSchemasValue$).optional(),
+            value: z.nullable(HrisCreateEmployeeRequestDtoSchemasValue$.outboundSchema).optional(),
         })
         .transform((v) => {
             return {
@@ -9138,9 +9140,12 @@ export namespace HrisCreateEmployeeRequestDtoSchemasEmploymentTypeSourceValue$ {
 }
 
 /** @internal */
-export const HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue$: z.ZodNativeEnum<
-    typeof HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue
-> = z.nativeEnum(HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue);
+export namespace HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue$ {
+    export const inboundSchema = z.nativeEnum(
+        HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue
+    );
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace HrisCreateEmployeeRequestDtoEmploymentType$ {
@@ -9162,7 +9167,9 @@ export namespace HrisCreateEmployeeRequestDtoEmploymentType$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue$).optional(),
+            value: z
+                .nullable(HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue$.inboundSchema)
+                .optional(),
         })
         .transform((v) => {
             return {
@@ -9179,7 +9186,7 @@ export namespace HrisCreateEmployeeRequestDtoEmploymentType$ {
             | boolean
             | null
             | undefined;
-        value?: HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue | null | undefined;
+        value?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<
@@ -9200,7 +9207,9 @@ export namespace HrisCreateEmployeeRequestDtoEmploymentType$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue$).optional(),
+            value: z
+                .nullable(HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue$.outboundSchema)
+                .optional(),
         })
         .transform((v) => {
             return {
@@ -9258,9 +9267,10 @@ export namespace HrisCreateEmployeeRequestDtoSchemasEthnicitySourceValue$ {
 }
 
 /** @internal */
-export const HrisCreateEmployeeRequestDtoSchemasEthnicityValue$: z.ZodNativeEnum<
-    typeof HrisCreateEmployeeRequestDtoSchemasEthnicityValue
-> = z.nativeEnum(HrisCreateEmployeeRequestDtoSchemasEthnicityValue);
+export namespace HrisCreateEmployeeRequestDtoSchemasEthnicityValue$ {
+    export const inboundSchema = z.nativeEnum(HrisCreateEmployeeRequestDtoSchemasEthnicityValue);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace HrisCreateEmployeeRequestDtoEthnicity$ {
@@ -9280,7 +9290,9 @@ export namespace HrisCreateEmployeeRequestDtoEthnicity$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(HrisCreateEmployeeRequestDtoSchemasEthnicityValue$).optional(),
+            value: z
+                .nullable(HrisCreateEmployeeRequestDtoSchemasEthnicityValue$.inboundSchema)
+                .optional(),
         })
         .transform((v) => {
             return {
@@ -9297,7 +9309,7 @@ export namespace HrisCreateEmployeeRequestDtoEthnicity$ {
             | boolean
             | null
             | undefined;
-        value?: HrisCreateEmployeeRequestDtoSchemasEthnicityValue | null | undefined;
+        value?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<
@@ -9316,7 +9328,9 @@ export namespace HrisCreateEmployeeRequestDtoEthnicity$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(HrisCreateEmployeeRequestDtoSchemasEthnicityValue$).optional(),
+            value: z
+                .nullable(HrisCreateEmployeeRequestDtoSchemasEthnicityValue$.outboundSchema)
+                .optional(),
         })
         .transform((v) => {
             return {
@@ -9374,9 +9388,10 @@ export namespace HrisCreateEmployeeRequestDtoSchemasGenderSourceValue$ {
 }
 
 /** @internal */
-export const HrisCreateEmployeeRequestDtoSchemasGenderValue$: z.ZodNativeEnum<
-    typeof HrisCreateEmployeeRequestDtoSchemasGenderValue
-> = z.nativeEnum(HrisCreateEmployeeRequestDtoSchemasGenderValue);
+export namespace HrisCreateEmployeeRequestDtoSchemasGenderValue$ {
+    export const inboundSchema = z.nativeEnum(HrisCreateEmployeeRequestDtoSchemasGenderValue);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace HrisCreateEmployeeRequestDtoGender$ {
@@ -9396,7 +9411,9 @@ export namespace HrisCreateEmployeeRequestDtoGender$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(HrisCreateEmployeeRequestDtoSchemasGenderValue$).optional(),
+            value: z
+                .nullable(HrisCreateEmployeeRequestDtoSchemasGenderValue$.inboundSchema)
+                .optional(),
         })
         .transform((v) => {
             return {
@@ -9413,7 +9430,7 @@ export namespace HrisCreateEmployeeRequestDtoGender$ {
             | boolean
             | null
             | undefined;
-        value?: HrisCreateEmployeeRequestDtoSchemasGenderValue | null | undefined;
+        value?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<
@@ -9432,7 +9449,9 @@ export namespace HrisCreateEmployeeRequestDtoGender$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(HrisCreateEmployeeRequestDtoSchemasGenderValue$).optional(),
+            value: z
+                .nullable(HrisCreateEmployeeRequestDtoSchemasGenderValue$.outboundSchema)
+                .optional(),
         })
         .transform((v) => {
             return {
@@ -9490,9 +9509,10 @@ export namespace HrisCreateEmployeeRequestDtoSchemasHomeLocationSourceValue$ {
 }
 
 /** @internal */
-export const HrisCreateEmployeeRequestDtoSchemasHomeLocationValue$: z.ZodNativeEnum<
-    typeof HrisCreateEmployeeRequestDtoSchemasHomeLocationValue
-> = z.nativeEnum(HrisCreateEmployeeRequestDtoSchemasHomeLocationValue);
+export namespace HrisCreateEmployeeRequestDtoSchemasHomeLocationValue$ {
+    export const inboundSchema = z.nativeEnum(HrisCreateEmployeeRequestDtoSchemasHomeLocationValue);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace HrisCreateEmployeeRequestDtoCountry$ {
@@ -9514,7 +9534,9 @@ export namespace HrisCreateEmployeeRequestDtoCountry$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(HrisCreateEmployeeRequestDtoSchemasHomeLocationValue$).optional(),
+            value: z
+                .nullable(HrisCreateEmployeeRequestDtoSchemasHomeLocationValue$.inboundSchema)
+                .optional(),
         })
         .transform((v) => {
             return {
@@ -9531,7 +9553,7 @@ export namespace HrisCreateEmployeeRequestDtoCountry$ {
             | boolean
             | null
             | undefined;
-        value?: HrisCreateEmployeeRequestDtoSchemasHomeLocationValue | null | undefined;
+        value?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<
@@ -9552,7 +9574,9 @@ export namespace HrisCreateEmployeeRequestDtoCountry$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(HrisCreateEmployeeRequestDtoSchemasHomeLocationValue$).optional(),
+            value: z
+                .nullable(HrisCreateEmployeeRequestDtoSchemasHomeLocationValue$.outboundSchema)
+                .optional(),
         })
         .transform((v) => {
             return {
@@ -9610,9 +9634,12 @@ export namespace HrisCreateEmployeeRequestDtoSchemasHomeLocationStateSourceValue
 }
 
 /** @internal */
-export const HrisCreateEmployeeRequestDtoSchemasHomeLocationStateValue$: z.ZodNativeEnum<
-    typeof HrisCreateEmployeeRequestDtoSchemasHomeLocationStateValue
-> = z.nativeEnum(HrisCreateEmployeeRequestDtoSchemasHomeLocationStateValue);
+export namespace HrisCreateEmployeeRequestDtoSchemasHomeLocationStateValue$ {
+    export const inboundSchema = z.nativeEnum(
+        HrisCreateEmployeeRequestDtoSchemasHomeLocationStateValue
+    );
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace State$ {
@@ -9632,7 +9659,7 @@ export namespace State$ {
                 )
                 .optional(),
             value: z
-                .nullable(HrisCreateEmployeeRequestDtoSchemasHomeLocationStateValue$)
+                .nullable(HrisCreateEmployeeRequestDtoSchemasHomeLocationStateValue$.inboundSchema)
                 .optional(),
         })
         .transform((v) => {
@@ -9650,7 +9677,7 @@ export namespace State$ {
             | boolean
             | null
             | undefined;
-        value?: HrisCreateEmployeeRequestDtoSchemasHomeLocationStateValue | null | undefined;
+        value?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, State> = z
@@ -9669,7 +9696,7 @@ export namespace State$ {
                 )
                 .optional(),
             value: z
-                .nullable(HrisCreateEmployeeRequestDtoSchemasHomeLocationStateValue$)
+                .nullable(HrisCreateEmployeeRequestDtoSchemasHomeLocationStateValue$.outboundSchema)
                 .optional(),
         })
         .transform((v) => {
@@ -9802,9 +9829,12 @@ export namespace HrisCreateEmployeeRequestDtoSchemasMaritalStatusSourceValue$ {
 }
 
 /** @internal */
-export const HrisCreateEmployeeRequestDtoSchemasMaritalStatusValue$: z.ZodNativeEnum<
-    typeof HrisCreateEmployeeRequestDtoSchemasMaritalStatusValue
-> = z.nativeEnum(HrisCreateEmployeeRequestDtoSchemasMaritalStatusValue);
+export namespace HrisCreateEmployeeRequestDtoSchemasMaritalStatusValue$ {
+    export const inboundSchema = z.nativeEnum(
+        HrisCreateEmployeeRequestDtoSchemasMaritalStatusValue
+    );
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace HrisCreateEmployeeRequestDtoMaritalStatus$ {
@@ -9826,7 +9856,9 @@ export namespace HrisCreateEmployeeRequestDtoMaritalStatus$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(HrisCreateEmployeeRequestDtoSchemasMaritalStatusValue$).optional(),
+            value: z
+                .nullable(HrisCreateEmployeeRequestDtoSchemasMaritalStatusValue$.inboundSchema)
+                .optional(),
         })
         .transform((v) => {
             return {
@@ -9843,7 +9875,7 @@ export namespace HrisCreateEmployeeRequestDtoMaritalStatus$ {
             | boolean
             | null
             | undefined;
-        value?: HrisCreateEmployeeRequestDtoSchemasMaritalStatusValue | null | undefined;
+        value?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<
@@ -9864,7 +9896,9 @@ export namespace HrisCreateEmployeeRequestDtoMaritalStatus$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(HrisCreateEmployeeRequestDtoSchemasMaritalStatusValue$).optional(),
+            value: z
+                .nullable(HrisCreateEmployeeRequestDtoSchemasMaritalStatusValue$.outboundSchema)
+                .optional(),
         })
         .transform((v) => {
             return {
@@ -9922,9 +9956,12 @@ export namespace HrisCreateEmployeeRequestDtoSchemasPreferredLanguageSourceValue
 }
 
 /** @internal */
-export const HrisCreateEmployeeRequestDtoSchemasPreferredLanguageValue$: z.ZodNativeEnum<
-    typeof HrisCreateEmployeeRequestDtoSchemasPreferredLanguageValue
-> = z.nativeEnum(HrisCreateEmployeeRequestDtoSchemasPreferredLanguageValue);
+export namespace HrisCreateEmployeeRequestDtoSchemasPreferredLanguageValue$ {
+    export const inboundSchema = z.nativeEnum(
+        HrisCreateEmployeeRequestDtoSchemasPreferredLanguageValue
+    );
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace HrisCreateEmployeeRequestDtoPreferredLanguage$ {
@@ -9948,7 +9985,7 @@ export namespace HrisCreateEmployeeRequestDtoPreferredLanguage$ {
                 )
                 .optional(),
             value: z
-                .nullable(HrisCreateEmployeeRequestDtoSchemasPreferredLanguageValue$)
+                .nullable(HrisCreateEmployeeRequestDtoSchemasPreferredLanguageValue$.inboundSchema)
                 .optional(),
         })
         .transform((v) => {
@@ -9966,7 +10003,7 @@ export namespace HrisCreateEmployeeRequestDtoPreferredLanguage$ {
             | boolean
             | null
             | undefined;
-        value?: HrisCreateEmployeeRequestDtoSchemasPreferredLanguageValue | null | undefined;
+        value?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<
@@ -9989,7 +10026,7 @@ export namespace HrisCreateEmployeeRequestDtoPreferredLanguage$ {
                 )
                 .optional(),
             value: z
-                .nullable(HrisCreateEmployeeRequestDtoSchemasPreferredLanguageValue$)
+                .nullable(HrisCreateEmployeeRequestDtoSchemasPreferredLanguageValue$.outboundSchema)
                 .optional(),
         })
         .transform((v) => {
@@ -10048,9 +10085,10 @@ export namespace HrisCreateEmployeeRequestDtoSchemasWorkLocationSourceValue$ {
 }
 
 /** @internal */
-export const HrisCreateEmployeeRequestDtoSchemasWorkLocationValue$: z.ZodNativeEnum<
-    typeof HrisCreateEmployeeRequestDtoSchemasWorkLocationValue
-> = z.nativeEnum(HrisCreateEmployeeRequestDtoSchemasWorkLocationValue);
+export namespace HrisCreateEmployeeRequestDtoSchemasWorkLocationValue$ {
+    export const inboundSchema = z.nativeEnum(HrisCreateEmployeeRequestDtoSchemasWorkLocationValue);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace HrisCreateEmployeeRequestDtoSchemasCountry$ {
@@ -10072,7 +10110,9 @@ export namespace HrisCreateEmployeeRequestDtoSchemasCountry$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(HrisCreateEmployeeRequestDtoSchemasWorkLocationValue$).optional(),
+            value: z
+                .nullable(HrisCreateEmployeeRequestDtoSchemasWorkLocationValue$.inboundSchema)
+                .optional(),
         })
         .transform((v) => {
             return {
@@ -10089,7 +10129,7 @@ export namespace HrisCreateEmployeeRequestDtoSchemasCountry$ {
             | boolean
             | null
             | undefined;
-        value?: HrisCreateEmployeeRequestDtoSchemasWorkLocationValue | null | undefined;
+        value?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<
@@ -10110,7 +10150,9 @@ export namespace HrisCreateEmployeeRequestDtoSchemasCountry$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(HrisCreateEmployeeRequestDtoSchemasWorkLocationValue$).optional(),
+            value: z
+                .nullable(HrisCreateEmployeeRequestDtoSchemasWorkLocationValue$.outboundSchema)
+                .optional(),
         })
         .transform((v) => {
             return {
@@ -10168,9 +10210,12 @@ export namespace HrisCreateEmployeeRequestDtoSchemasWorkLocationStateSourceValue
 }
 
 /** @internal */
-export const HrisCreateEmployeeRequestDtoSchemasWorkLocationStateValue$: z.ZodNativeEnum<
-    typeof HrisCreateEmployeeRequestDtoSchemasWorkLocationStateValue
-> = z.nativeEnum(HrisCreateEmployeeRequestDtoSchemasWorkLocationStateValue);
+export namespace HrisCreateEmployeeRequestDtoSchemasWorkLocationStateValue$ {
+    export const inboundSchema = z.nativeEnum(
+        HrisCreateEmployeeRequestDtoSchemasWorkLocationStateValue
+    );
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace HrisCreateEmployeeRequestDtoState$ {
@@ -10194,7 +10239,7 @@ export namespace HrisCreateEmployeeRequestDtoState$ {
                 )
                 .optional(),
             value: z
-                .nullable(HrisCreateEmployeeRequestDtoSchemasWorkLocationStateValue$)
+                .nullable(HrisCreateEmployeeRequestDtoSchemasWorkLocationStateValue$.inboundSchema)
                 .optional(),
         })
         .transform((v) => {
@@ -10212,7 +10257,7 @@ export namespace HrisCreateEmployeeRequestDtoState$ {
             | boolean
             | null
             | undefined;
-        value?: HrisCreateEmployeeRequestDtoSchemasWorkLocationStateValue | null | undefined;
+        value?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<
@@ -10235,7 +10280,7 @@ export namespace HrisCreateEmployeeRequestDtoState$ {
                 )
                 .optional(),
             value: z
-                .nullable(HrisCreateEmployeeRequestDtoSchemasWorkLocationStateValue$)
+                .nullable(HrisCreateEmployeeRequestDtoSchemasWorkLocationStateValue$.outboundSchema)
                 .optional(),
         })
         .transform((v) => {

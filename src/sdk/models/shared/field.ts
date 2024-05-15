@@ -50,7 +50,10 @@ export type Field = {
 };
 
 /** @internal */
-export const FieldType$: z.ZodNativeEnum<typeof FieldType> = z.nativeEnum(FieldType);
+export namespace FieldType$ {
+    export const inboundSchema = z.nativeEnum(FieldType);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace Field$ {
@@ -60,7 +63,7 @@ export namespace Field$ {
             label: z.nullable(z.string()).optional(),
             remote_id: z.nullable(z.string()).optional(),
             required: z.nullable(z.boolean()).optional(),
-            type: z.nullable(FieldType$).optional(),
+            type: z.nullable(FieldType$.inboundSchema).optional(),
             values: z.nullable(z.array(z.string())).optional(),
         })
         .transform((v) => {
@@ -79,7 +82,7 @@ export namespace Field$ {
         label?: string | null | undefined;
         remote_id?: string | null | undefined;
         required?: boolean | null | undefined;
-        type?: FieldType | null | undefined;
+        type?: string | null | undefined;
         values?: Array<string> | null | undefined;
     };
 
@@ -89,7 +92,7 @@ export namespace Field$ {
             label: z.nullable(z.string()).optional(),
             remoteId: z.nullable(z.string()).optional(),
             required: z.nullable(z.boolean()).optional(),
-            type: z.nullable(FieldType$).optional(),
+            type: z.nullable(FieldType$.outboundSchema).optional(),
             values: z.nullable(z.array(z.string())).optional(),
         })
         .transform((v) => {

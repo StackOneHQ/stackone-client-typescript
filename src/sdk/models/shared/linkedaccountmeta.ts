@@ -11,6 +11,7 @@ export enum LinkedAccountMetaCategory {
     Crm = "crm",
     Iam = "iam",
     Marketing = "marketing",
+    Lms = "lms",
     Stackone = "stackone",
 }
 
@@ -21,14 +22,16 @@ export type LinkedAccountMeta = {
 };
 
 /** @internal */
-export const LinkedAccountMetaCategory$: z.ZodNativeEnum<typeof LinkedAccountMetaCategory> =
-    z.nativeEnum(LinkedAccountMetaCategory);
+export namespace LinkedAccountMetaCategory$ {
+    export const inboundSchema = z.nativeEnum(LinkedAccountMetaCategory);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace LinkedAccountMeta$ {
     export const inboundSchema: z.ZodType<LinkedAccountMeta, z.ZodTypeDef, unknown> = z
         .object({
-            category: LinkedAccountMetaCategory$,
+            category: LinkedAccountMetaCategory$.inboundSchema,
             models: z.record(z.any()),
             provider: z.string(),
         })
@@ -41,14 +44,14 @@ export namespace LinkedAccountMeta$ {
         });
 
     export type Outbound = {
-        category: LinkedAccountMetaCategory;
+        category: string;
         models: Record<string, any>;
         provider: string;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, LinkedAccountMeta> = z
         .object({
-            category: LinkedAccountMetaCategory$,
+            category: LinkedAccountMetaCategory$.outboundSchema,
             models: z.record(z.any()),
             provider: z.string(),
         })

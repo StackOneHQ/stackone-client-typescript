@@ -228,8 +228,10 @@ export namespace AtsDocumentApiModelSchemasSourceValue$ {
 }
 
 /** @internal */
-export const AtsDocumentApiModelValue$: z.ZodNativeEnum<typeof AtsDocumentApiModelValue> =
-    z.nativeEnum(AtsDocumentApiModelValue);
+export namespace AtsDocumentApiModelValue$ {
+    export const inboundSchema = z.nativeEnum(AtsDocumentApiModelValue);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace AtsDocumentApiModelType$ {
@@ -245,7 +247,7 @@ export namespace AtsDocumentApiModelType$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(AtsDocumentApiModelValue$).optional(),
+            value: z.nullable(AtsDocumentApiModelValue$.inboundSchema).optional(),
         })
         .transform((v) => {
             return {
@@ -262,7 +264,7 @@ export namespace AtsDocumentApiModelType$ {
             | boolean
             | null
             | undefined;
-        value?: AtsDocumentApiModelValue | null | undefined;
+        value?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, AtsDocumentApiModelType> = z
@@ -277,7 +279,7 @@ export namespace AtsDocumentApiModelType$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(AtsDocumentApiModelValue$).optional(),
+            value: z.nullable(AtsDocumentApiModelValue$.outboundSchema).optional(),
         })
         .transform((v) => {
             return {

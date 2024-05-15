@@ -93,7 +93,10 @@ export namespace OfferSourceValue$ {
 }
 
 /** @internal */
-export const OfferValue$: z.ZodNativeEnum<typeof OfferValue> = z.nativeEnum(OfferValue);
+export namespace OfferValue$ {
+    export const inboundSchema = z.nativeEnum(OfferValue);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace OfferOfferStatus$ {
@@ -109,7 +112,7 @@ export namespace OfferOfferStatus$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(OfferValue$).optional(),
+            value: z.nullable(OfferValue$.inboundSchema).optional(),
         })
         .transform((v) => {
             return {
@@ -120,7 +123,7 @@ export namespace OfferOfferStatus$ {
 
     export type Outbound = {
         source_value?: Offer4$.Outbound | string | number | boolean | null | undefined;
-        value?: OfferValue | null | undefined;
+        value?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, OfferOfferStatus> = z
@@ -135,7 +138,7 @@ export namespace OfferOfferStatus$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(OfferValue$).optional(),
+            value: z.nullable(OfferValue$.outboundSchema).optional(),
         })
         .transform((v) => {
             return {

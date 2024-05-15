@@ -85,7 +85,10 @@ export namespace QuestionSourceValue$ {
 }
 
 /** @internal */
-export const QuestionValue$: z.ZodNativeEnum<typeof QuestionValue> = z.nativeEnum(QuestionValue);
+export namespace QuestionValue$ {
+    export const inboundSchema = z.nativeEnum(QuestionValue);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace QuestionType$ {
@@ -101,7 +104,7 @@ export namespace QuestionType$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(QuestionValue$).optional(),
+            value: z.nullable(QuestionValue$.inboundSchema).optional(),
         })
         .transform((v) => {
             return {
@@ -112,7 +115,7 @@ export namespace QuestionType$ {
 
     export type Outbound = {
         source_value?: Question4$.Outbound | string | number | boolean | null | undefined;
-        value?: QuestionValue | null | undefined;
+        value?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, QuestionType> = z
@@ -127,7 +130,7 @@ export namespace QuestionType$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(QuestionValue$).optional(),
+            value: z.nullable(QuestionValue$.outboundSchema).optional(),
         })
         .transform((v) => {
             return {

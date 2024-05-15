@@ -11,6 +11,7 @@ export enum Categories {
     Crm = "crm",
     Iam = "iam",
     Marketing = "marketing",
+    Lms = "lms",
     Stackone = "stackone",
 }
 
@@ -29,14 +30,17 @@ export type ConnectSession = {
 };
 
 /** @internal */
-export const Categories$: z.ZodNativeEnum<typeof Categories> = z.nativeEnum(Categories);
+export namespace Categories$ {
+    export const inboundSchema = z.nativeEnum(Categories);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace ConnectSession$ {
     export const inboundSchema: z.ZodType<ConnectSession, z.ZodTypeDef, unknown> = z
         .object({
             account_id: z.nullable(z.string()).optional(),
-            categories: z.nullable(z.array(Categories$)).optional(),
+            categories: z.nullable(z.array(Categories$.inboundSchema)).optional(),
             created_at: z
                 .string()
                 .datetime({ offset: true })
@@ -68,7 +72,7 @@ export namespace ConnectSession$ {
 
     export type Outbound = {
         account_id?: string | null | undefined;
-        categories?: Array<Categories> | null | undefined;
+        categories?: Array<string> | null | undefined;
         created_at: string;
         id: number;
         label?: string | null | undefined;
@@ -83,7 +87,7 @@ export namespace ConnectSession$ {
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ConnectSession> = z
         .object({
             accountId: z.nullable(z.string()).optional(),
-            categories: z.nullable(z.array(Categories$)).optional(),
+            categories: z.nullable(z.array(Categories$.outboundSchema)).optional(),
             createdAt: z.date().transform((v) => v.toISOString()),
             id: z.number(),
             label: z.nullable(z.string()).optional(),

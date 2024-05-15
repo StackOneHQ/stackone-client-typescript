@@ -143,9 +143,10 @@ export namespace ContactsCustomFieldsSourceValue$ {
 }
 
 /** @internal */
-export const ContactsCustomFieldsSchemasValue$: z.ZodNativeEnum<
-    typeof ContactsCustomFieldsSchemasValue
-> = z.nativeEnum(ContactsCustomFieldsSchemasValue);
+export namespace ContactsCustomFieldsSchemasValue$ {
+    export const inboundSchema = z.nativeEnum(ContactsCustomFieldsSchemasValue);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace ContactsCustomFieldsType$ {
@@ -161,7 +162,7 @@ export namespace ContactsCustomFieldsType$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(ContactsCustomFieldsSchemasValue$).optional(),
+            value: z.nullable(ContactsCustomFieldsSchemasValue$.inboundSchema).optional(),
         })
         .transform((v) => {
             return {
@@ -178,7 +179,7 @@ export namespace ContactsCustomFieldsType$ {
             | boolean
             | null
             | undefined;
-        value?: ContactsCustomFieldsSchemasValue | null | undefined;
+        value?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ContactsCustomFieldsType> = z
@@ -193,7 +194,7 @@ export namespace ContactsCustomFieldsType$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(ContactsCustomFieldsSchemasValue$).optional(),
+            value: z.nullable(ContactsCustomFieldsSchemasValue$.outboundSchema).optional(),
         })
         .transform((v) => {
             return {

@@ -34,6 +34,10 @@ export type HRISGroup = {
      */
     name?: string | null | undefined;
     /**
+     * The list of group owner ids of the given group
+     */
+    ownerIds?: Array<string> | null | undefined;
+    /**
      * The list of parent group ids of the given group
      */
     parentIds?: Array<string> | null | undefined;
@@ -75,7 +79,10 @@ export namespace HRISGroupSourceValue$ {
 }
 
 /** @internal */
-export const HRISGroupValue$: z.ZodNativeEnum<typeof HRISGroupValue> = z.nativeEnum(HRISGroupValue);
+export namespace HRISGroupValue$ {
+    export const inboundSchema = z.nativeEnum(HRISGroupValue);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace HRISGroupType$ {
@@ -91,7 +98,7 @@ export namespace HRISGroupType$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(HRISGroupValue$).optional(),
+            value: z.nullable(HRISGroupValue$.inboundSchema).optional(),
         })
         .transform((v) => {
             return {
@@ -102,7 +109,7 @@ export namespace HRISGroupType$ {
 
     export type Outbound = {
         source_value?: HRISGroup4$.Outbound | string | number | boolean | null | undefined;
-        value?: HRISGroupValue | null | undefined;
+        value?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, HRISGroupType> = z
@@ -117,7 +124,7 @@ export namespace HRISGroupType$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(HRISGroupValue$).optional(),
+            value: z.nullable(HRISGroupValue$.outboundSchema).optional(),
         })
         .transform((v) => {
             return {
@@ -133,6 +140,7 @@ export namespace HRISGroup$ {
         .object({
             id: z.nullable(z.string()).optional(),
             name: z.nullable(z.string()).optional(),
+            owner_ids: z.nullable(z.array(z.string())).optional(),
             parent_ids: z.nullable(z.array(z.string())).optional(),
             remote_id: z.nullable(z.string()).optional(),
             type: z.nullable(z.lazy(() => HRISGroupType$.inboundSchema)).optional(),
@@ -141,6 +149,7 @@ export namespace HRISGroup$ {
             return {
                 ...(v.id === undefined ? null : { id: v.id }),
                 ...(v.name === undefined ? null : { name: v.name }),
+                ...(v.owner_ids === undefined ? null : { ownerIds: v.owner_ids }),
                 ...(v.parent_ids === undefined ? null : { parentIds: v.parent_ids }),
                 ...(v.remote_id === undefined ? null : { remoteId: v.remote_id }),
                 ...(v.type === undefined ? null : { type: v.type }),
@@ -150,6 +159,7 @@ export namespace HRISGroup$ {
     export type Outbound = {
         id?: string | null | undefined;
         name?: string | null | undefined;
+        owner_ids?: Array<string> | null | undefined;
         parent_ids?: Array<string> | null | undefined;
         remote_id?: string | null | undefined;
         type?: HRISGroupType$.Outbound | null | undefined;
@@ -159,6 +169,7 @@ export namespace HRISGroup$ {
         .object({
             id: z.nullable(z.string()).optional(),
             name: z.nullable(z.string()).optional(),
+            ownerIds: z.nullable(z.array(z.string())).optional(),
             parentIds: z.nullable(z.array(z.string())).optional(),
             remoteId: z.nullable(z.string()).optional(),
             type: z.nullable(z.lazy(() => HRISGroupType$.outboundSchema)).optional(),
@@ -167,6 +178,7 @@ export namespace HRISGroup$ {
             return {
                 ...(v.id === undefined ? null : { id: v.id }),
                 ...(v.name === undefined ? null : { name: v.name }),
+                ...(v.ownerIds === undefined ? null : { owner_ids: v.ownerIds }),
                 ...(v.parentIds === undefined ? null : { parent_ids: v.parentIds }),
                 ...(v.remoteId === undefined ? null : { remote_id: v.remoteId }),
                 ...(v.type === undefined ? null : { type: v.type }),

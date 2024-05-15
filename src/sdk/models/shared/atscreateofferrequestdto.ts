@@ -91,8 +91,10 @@ export namespace AtsCreateOfferRequestDtoSourceValue$ {
 }
 
 /** @internal */
-export const AtsCreateOfferRequestDtoValue$: z.ZodNativeEnum<typeof AtsCreateOfferRequestDtoValue> =
-    z.nativeEnum(AtsCreateOfferRequestDtoValue);
+export namespace AtsCreateOfferRequestDtoValue$ {
+    export const inboundSchema = z.nativeEnum(AtsCreateOfferRequestDtoValue);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace OfferStatus$ {
@@ -108,7 +110,7 @@ export namespace OfferStatus$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(AtsCreateOfferRequestDtoValue$).optional(),
+            value: z.nullable(AtsCreateOfferRequestDtoValue$.inboundSchema).optional(),
         })
         .transform((v) => {
             return {
@@ -125,7 +127,7 @@ export namespace OfferStatus$ {
             | boolean
             | null
             | undefined;
-        value?: AtsCreateOfferRequestDtoValue | null | undefined;
+        value?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, OfferStatus> = z
@@ -140,7 +142,7 @@ export namespace OfferStatus$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(AtsCreateOfferRequestDtoValue$).optional(),
+            value: z.nullable(AtsCreateOfferRequestDtoValue$.outboundSchema).optional(),
         })
         .transform((v) => {
             return {

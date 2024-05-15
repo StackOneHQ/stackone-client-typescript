@@ -167,8 +167,10 @@ export namespace JobPostingCompensationSourceValue$ {
 }
 
 /** @internal */
-export const JobPostingCompensationValue$: z.ZodNativeEnum<typeof JobPostingCompensationValue> =
-    z.nativeEnum(JobPostingCompensationValue);
+export namespace JobPostingCompensationValue$ {
+    export const inboundSchema = z.nativeEnum(JobPostingCompensationValue);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace JobPostingCompensationPayFrequency$ {
@@ -188,7 +190,7 @@ export namespace JobPostingCompensationPayFrequency$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(JobPostingCompensationValue$).optional(),
+            value: z.nullable(JobPostingCompensationValue$.inboundSchema).optional(),
         })
         .transform((v) => {
             return {
@@ -205,7 +207,7 @@ export namespace JobPostingCompensationPayFrequency$ {
             | boolean
             | null
             | undefined;
-        value?: JobPostingCompensationValue | null | undefined;
+        value?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<
@@ -224,7 +226,7 @@ export namespace JobPostingCompensationPayFrequency$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(JobPostingCompensationValue$).optional(),
+            value: z.nullable(JobPostingCompensationValue$.outboundSchema).optional(),
         })
         .transform((v) => {
             return {
@@ -272,9 +274,10 @@ export namespace JobPostingCompensationSchemasSourceValue$ {
 }
 
 /** @internal */
-export const JobPostingCompensationSchemasValue$: z.ZodNativeEnum<
-    typeof JobPostingCompensationSchemasValue
-> = z.nativeEnum(JobPostingCompensationSchemasValue);
+export namespace JobPostingCompensationSchemasValue$ {
+    export const inboundSchema = z.nativeEnum(JobPostingCompensationSchemasValue);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace JobPostingCompensationPayPeriod$ {
@@ -291,7 +294,7 @@ export namespace JobPostingCompensationPayPeriod$ {
                         ])
                     )
                     .optional(),
-                value: z.nullable(JobPostingCompensationSchemasValue$).optional(),
+                value: z.nullable(JobPostingCompensationSchemasValue$.inboundSchema).optional(),
             })
             .transform((v) => {
                 return {
@@ -308,7 +311,7 @@ export namespace JobPostingCompensationPayPeriod$ {
             | boolean
             | null
             | undefined;
-        value?: JobPostingCompensationSchemasValue | null | undefined;
+        value?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<
@@ -327,7 +330,7 @@ export namespace JobPostingCompensationPayPeriod$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(JobPostingCompensationSchemasValue$).optional(),
+            value: z.nullable(JobPostingCompensationSchemasValue$.outboundSchema).optional(),
         })
         .transform((v) => {
             return {
@@ -381,9 +384,10 @@ export namespace JobPostingCompensationSchemasTypeSourceValue$ {
 }
 
 /** @internal */
-export const JobPostingCompensationSchemasTypeValue$: z.ZodNativeEnum<
-    typeof JobPostingCompensationSchemasTypeValue
-> = z.nativeEnum(JobPostingCompensationSchemasTypeValue);
+export namespace JobPostingCompensationSchemasTypeValue$ {
+    export const inboundSchema = z.nativeEnum(JobPostingCompensationSchemasTypeValue);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace JobPostingCompensationType$ {
@@ -399,7 +403,7 @@ export namespace JobPostingCompensationType$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(JobPostingCompensationSchemasTypeValue$).optional(),
+            value: z.nullable(JobPostingCompensationSchemasTypeValue$.inboundSchema).optional(),
         })
         .transform((v) => {
             return {
@@ -416,7 +420,7 @@ export namespace JobPostingCompensationType$ {
             | boolean
             | null
             | undefined;
-        value?: JobPostingCompensationSchemasTypeValue | null | undefined;
+        value?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, JobPostingCompensationType> = z
@@ -431,7 +435,7 @@ export namespace JobPostingCompensationType$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(JobPostingCompensationSchemasTypeValue$).optional(),
+            value: z.nullable(JobPostingCompensationSchemasTypeValue$.outboundSchema).optional(),
         })
         .transform((v) => {
             return {

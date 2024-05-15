@@ -737,6 +737,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.hris.getEmployment({
+    expand: "groups",
     fields: "id,employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,employment_type,employment_contract_type,created_at,updated_at",
     id: "<id>",
     xAccountId: "<value>",
@@ -784,7 +785,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.hris.getGroup({
-    fields: "id,name,type,parent_ids",
+    fields: "id,name,type,parent_ids,owner_ids",
     id: "<id>",
     xAccountId: "<value>",
   });
@@ -1213,6 +1214,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.hris.listEmployments({
+    expand: "groups",
     fields: "id,employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,employment_type,employment_contract_type,created_at,updated_at",
     filterUpdatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
@@ -1260,7 +1262,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.hris.listGroups({
-    fields: "id,name,type,parent_ids",
+    fields: "id,name,type,parent_ids,owner_ids",
     filterUpdatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });

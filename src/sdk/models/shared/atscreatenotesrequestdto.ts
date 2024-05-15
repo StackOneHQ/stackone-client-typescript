@@ -88,8 +88,10 @@ export namespace AtsCreateNotesRequestDtoSourceValue$ {
 }
 
 /** @internal */
-export const AtsCreateNotesRequestDtoValue$: z.ZodNativeEnum<typeof AtsCreateNotesRequestDtoValue> =
-    z.nativeEnum(AtsCreateNotesRequestDtoValue);
+export namespace AtsCreateNotesRequestDtoValue$ {
+    export const inboundSchema = z.nativeEnum(AtsCreateNotesRequestDtoValue);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace Visibility$ {
@@ -105,7 +107,7 @@ export namespace Visibility$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(AtsCreateNotesRequestDtoValue$).optional(),
+            value: z.nullable(AtsCreateNotesRequestDtoValue$.inboundSchema).optional(),
         })
         .transform((v) => {
             return {
@@ -122,7 +124,7 @@ export namespace Visibility$ {
             | boolean
             | null
             | undefined;
-        value?: AtsCreateNotesRequestDtoValue | null | undefined;
+        value?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Visibility> = z
@@ -137,7 +139,7 @@ export namespace Visibility$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(AtsCreateNotesRequestDtoValue$).optional(),
+            value: z.nullable(AtsCreateNotesRequestDtoValue$.outboundSchema).optional(),
         })
         .transform((v) => {
             return {

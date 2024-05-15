@@ -7,6 +7,10 @@ import * as z from "zod";
 
 export type HrisListEmploymentsRequest = {
     /**
+     * The comma separated list of fields that will be expanded in the response
+     */
+    expand?: string | null | undefined;
+    /**
      * The comma separated list of fields that will be returned in the response (if empty, all fields are returned)
      */
     fields?: string | null | undefined;
@@ -71,6 +75,7 @@ export type HrisListEmploymentsResponse = {
 export namespace HrisListEmploymentsRequest$ {
     export const inboundSchema: z.ZodType<HrisListEmploymentsRequest, z.ZodTypeDef, unknown> = z
         .object({
+            expand: z.nullable(z.string()).optional(),
             fields: z.nullable(z.string()).optional(),
             "filter[updated_after]": z.nullable(z.string()).optional(),
             next: z.nullable(z.string()).optional(),
@@ -83,6 +88,7 @@ export namespace HrisListEmploymentsRequest$ {
         })
         .transform((v) => {
             return {
+                ...(v.expand === undefined ? null : { expand: v.expand }),
                 ...(v.fields === undefined ? null : { fields: v.fields }),
                 ...(v["filter[updated_after]"] === undefined
                     ? null
@@ -98,6 +104,7 @@ export namespace HrisListEmploymentsRequest$ {
         });
 
     export type Outbound = {
+        expand?: string | null | undefined;
         fields?: string | null | undefined;
         "filter[updated_after]"?: string | null | undefined;
         next?: string | null | undefined;
@@ -111,6 +118,7 @@ export namespace HrisListEmploymentsRequest$ {
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, HrisListEmploymentsRequest> = z
         .object({
+            expand: z.nullable(z.string()).optional(),
             fields: z.nullable(z.string()).optional(),
             filterUpdatedAfter: z.nullable(z.string()).optional(),
             next: z.nullable(z.string()).optional(),
@@ -123,6 +131,7 @@ export namespace HrisListEmploymentsRequest$ {
         })
         .transform((v) => {
             return {
+                ...(v.expand === undefined ? null : { expand: v.expand }),
                 ...(v.fields === undefined ? null : { fields: v.fields }),
                 ...(v.filterUpdatedAfter === undefined
                     ? null

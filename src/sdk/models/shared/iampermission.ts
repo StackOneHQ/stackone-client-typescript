@@ -78,8 +78,10 @@ export namespace IamPermissionSourceValue$ {
 }
 
 /** @internal */
-export const IamPermissionValue$: z.ZodNativeEnum<typeof IamPermissionValue> =
-    z.nativeEnum(IamPermissionValue);
+export namespace IamPermissionValue$ {
+    export const inboundSchema = z.nativeEnum(IamPermissionValue);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace IamPermissionType$ {
@@ -95,7 +97,7 @@ export namespace IamPermissionType$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(IamPermissionValue$).optional(),
+            value: z.nullable(IamPermissionValue$.inboundSchema).optional(),
         })
         .transform((v) => {
             return {
@@ -106,7 +108,7 @@ export namespace IamPermissionType$ {
 
     export type Outbound = {
         source_value?: IamPermission4$.Outbound | string | number | boolean | null | undefined;
-        value?: IamPermissionValue | null | undefined;
+        value?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, IamPermissionType> = z
@@ -121,7 +123,7 @@ export namespace IamPermissionType$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(IamPermissionValue$).optional(),
+            value: z.nullable(IamPermissionValue$.outboundSchema).optional(),
         })
         .transform((v) => {
             return {

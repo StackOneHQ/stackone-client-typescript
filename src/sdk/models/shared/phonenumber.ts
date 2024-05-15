@@ -28,15 +28,17 @@ export type PhoneNumber = {
 };
 
 /** @internal */
-export const PhoneNumberType$: z.ZodNativeEnum<typeof PhoneNumberType> =
-    z.nativeEnum(PhoneNumberType);
+export namespace PhoneNumberType$ {
+    export const inboundSchema = z.nativeEnum(PhoneNumberType);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace PhoneNumber$ {
     export const inboundSchema: z.ZodType<PhoneNumber, z.ZodTypeDef, unknown> = z
         .object({
             phone: z.nullable(z.string()).optional(),
-            type: z.nullable(PhoneNumberType$).optional(),
+            type: z.nullable(PhoneNumberType$.inboundSchema).optional(),
         })
         .transform((v) => {
             return {
@@ -47,13 +49,13 @@ export namespace PhoneNumber$ {
 
     export type Outbound = {
         phone?: string | null | undefined;
-        type?: PhoneNumberType | null | undefined;
+        type?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, PhoneNumber> = z
         .object({
             phone: z.nullable(z.string()).optional(),
-            type: z.nullable(PhoneNumberType$).optional(),
+            type: z.nullable(PhoneNumberType$.outboundSchema).optional(),
         })
         .transform((v) => {
             return {

@@ -109,9 +109,10 @@ export namespace AtsUpdateApplicationRequestDtoSourceValue$ {
 }
 
 /** @internal */
-export const AtsUpdateApplicationRequestDtoValue$: z.ZodNativeEnum<
-    typeof AtsUpdateApplicationRequestDtoValue
-> = z.nativeEnum(AtsUpdateApplicationRequestDtoValue);
+export namespace AtsUpdateApplicationRequestDtoValue$ {
+    export const inboundSchema = z.nativeEnum(AtsUpdateApplicationRequestDtoValue);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace AtsUpdateApplicationRequestDtoApplicationStatus$ {
@@ -131,7 +132,7 @@ export namespace AtsUpdateApplicationRequestDtoApplicationStatus$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(AtsUpdateApplicationRequestDtoValue$).optional(),
+            value: z.nullable(AtsUpdateApplicationRequestDtoValue$.inboundSchema).optional(),
         })
         .transform((v) => {
             return {
@@ -148,7 +149,7 @@ export namespace AtsUpdateApplicationRequestDtoApplicationStatus$ {
             | boolean
             | null
             | undefined;
-        value?: AtsUpdateApplicationRequestDtoValue | null | undefined;
+        value?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<
@@ -167,7 +168,7 @@ export namespace AtsUpdateApplicationRequestDtoApplicationStatus$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(AtsUpdateApplicationRequestDtoValue$).optional(),
+            value: z.nullable(AtsUpdateApplicationRequestDtoValue$.outboundSchema).optional(),
         })
         .transform((v) => {
             return {
