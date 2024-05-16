@@ -141,7 +141,10 @@ export namespace CampaignSourceValue$ {
 }
 
 /** @internal */
-export const CampaignValue$: z.ZodNativeEnum<typeof CampaignValue> = z.nativeEnum(CampaignValue);
+export namespace CampaignValue$ {
+    export const inboundSchema = z.nativeEnum(CampaignValue);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace ScheduleType$ {
@@ -157,7 +160,7 @@ export namespace ScheduleType$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(CampaignValue$).optional(),
+            value: z.nullable(CampaignValue$.inboundSchema).optional(),
         })
         .transform((v) => {
             return {
@@ -168,7 +171,7 @@ export namespace ScheduleType$ {
 
     export type Outbound = {
         source_value?: Campaign4$.Outbound | string | number | boolean | null | undefined;
-        value?: CampaignValue | null | undefined;
+        value?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ScheduleType> = z
@@ -183,7 +186,7 @@ export namespace ScheduleType$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(CampaignValue$).optional(),
+            value: z.nullable(CampaignValue$.outboundSchema).optional(),
         })
         .transform((v) => {
             return {
@@ -223,8 +226,10 @@ export namespace CampaignSchemasSourceValue$ {
 }
 
 /** @internal */
-export const CampaignSchemasValue$: z.ZodNativeEnum<typeof CampaignSchemasValue> =
-    z.nativeEnum(CampaignSchemasValue);
+export namespace CampaignSchemasValue$ {
+    export const inboundSchema = z.nativeEnum(CampaignSchemasValue);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace Status$ {
@@ -240,7 +245,7 @@ export namespace Status$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(CampaignSchemasValue$).optional(),
+            value: z.nullable(CampaignSchemasValue$.inboundSchema).optional(),
         })
         .transform((v) => {
             return {
@@ -251,7 +256,7 @@ export namespace Status$ {
 
     export type Outbound = {
         source_value?: CampaignSchemas4$.Outbound | string | number | boolean | null | undefined;
-        value?: CampaignSchemasValue | null | undefined;
+        value?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Status> = z
@@ -266,7 +271,7 @@ export namespace Status$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(CampaignSchemasValue$).optional(),
+            value: z.nullable(CampaignSchemasValue$.outboundSchema).optional(),
         })
         .transform((v) => {
             return {

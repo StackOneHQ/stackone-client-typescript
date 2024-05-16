@@ -11,6 +11,7 @@ export enum ConnectSessionTokenCategories {
     Crm = "crm",
     Iam = "iam",
     Marketing = "marketing",
+    Lms = "lms",
     Stackone = "stackone",
 }
 
@@ -30,15 +31,19 @@ export type ConnectSessionToken = {
 };
 
 /** @internal */
-export const ConnectSessionTokenCategories$: z.ZodNativeEnum<typeof ConnectSessionTokenCategories> =
-    z.nativeEnum(ConnectSessionTokenCategories);
+export namespace ConnectSessionTokenCategories$ {
+    export const inboundSchema = z.nativeEnum(ConnectSessionTokenCategories);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace ConnectSessionToken$ {
     export const inboundSchema: z.ZodType<ConnectSessionToken, z.ZodTypeDef, unknown> = z
         .object({
             account_id: z.nullable(z.string()).optional(),
-            categories: z.nullable(z.array(ConnectSessionTokenCategories$)).optional(),
+            categories: z
+                .nullable(z.array(ConnectSessionTokenCategories$.inboundSchema))
+                .optional(),
             created_at: z
                 .string()
                 .datetime({ offset: true })
@@ -72,7 +77,7 @@ export namespace ConnectSessionToken$ {
 
     export type Outbound = {
         account_id?: string | null | undefined;
-        categories?: Array<ConnectSessionTokenCategories> | null | undefined;
+        categories?: Array<string> | null | undefined;
         created_at: string;
         id: number;
         label?: string | null | undefined;
@@ -88,7 +93,9 @@ export namespace ConnectSessionToken$ {
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ConnectSessionToken> = z
         .object({
             accountId: z.nullable(z.string()).optional(),
-            categories: z.nullable(z.array(ConnectSessionTokenCategories$)).optional(),
+            categories: z
+                .nullable(z.array(ConnectSessionTokenCategories$.outboundSchema))
+                .optional(),
             createdAt: z.date().transform((v) => v.toISOString()),
             id: z.number(),
             label: z.nullable(z.string()).optional(),

@@ -82,8 +82,10 @@ export namespace ApplicationAttachmentSourceValue$ {
 }
 
 /** @internal */
-export const ApplicationAttachmentValue$: z.ZodNativeEnum<typeof ApplicationAttachmentValue> =
-    z.nativeEnum(ApplicationAttachmentValue);
+export namespace ApplicationAttachmentValue$ {
+    export const inboundSchema = z.nativeEnum(ApplicationAttachmentValue);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace ContentType$ {
@@ -99,7 +101,7 @@ export namespace ContentType$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(ApplicationAttachmentValue$).optional(),
+            value: z.nullable(ApplicationAttachmentValue$.inboundSchema).optional(),
         })
         .transform((v) => {
             return {
@@ -116,7 +118,7 @@ export namespace ContentType$ {
             | boolean
             | null
             | undefined;
-        value?: ApplicationAttachmentValue | null | undefined;
+        value?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ContentType> = z
@@ -131,7 +133,7 @@ export namespace ContentType$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(ApplicationAttachmentValue$).optional(),
+            value: z.nullable(ApplicationAttachmentValue$.outboundSchema).optional(),
         })
         .transform((v) => {
             return {

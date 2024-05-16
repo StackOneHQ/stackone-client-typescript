@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 7fa83af8-9e8e-4410-b7e2-cf1d0eaf688b
 management:
-  docChecksum: d5e2062b12570ad69c8e831a79dd076b
+  docChecksum: d4d3e479a6d880d568b854ff28ac5ea2
   docVersion: 1.0.0
-  speakeasyVersion: 1.286.3
-  generationVersion: 2.329.0
-  releaseVersion: 4.8.2
-  configChecksum: ffc108d79dbc2d7f6ff550c6a0a29f31
+  speakeasyVersion: 1.291.0
+  generationVersion: 2.332.4
+  releaseVersion: 4.8.3
+  configChecksum: 373706241b614eacf25a26b952a0113d
   repoURL: https://github.com/StackOneHQ/stackone-client-typescript.git
   repoSubDirectory: .
   installationURL: https://github.com/StackOneHQ/stackone-client-typescript
@@ -59,6 +59,7 @@ generatedFiles:
   - src/sdk/models/errors/sdkerror.ts
   - src/sdk/models/errors/sdkvalidationerror.ts
   - src/sdk/types/blobs.ts
+  - src/sdk/types/enums.ts
   - src/sdk/types/index.ts
   - src/sdk/types/operations.ts
   - src/sdk/types/rfcdate.ts

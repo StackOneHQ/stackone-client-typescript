@@ -58,8 +58,10 @@ export namespace IamMfaTypeEnumSourceValue$ {
 }
 
 /** @internal */
-export const IamMfaTypeEnumValue$: z.ZodNativeEnum<typeof IamMfaTypeEnumValue> =
-    z.nativeEnum(IamMfaTypeEnumValue);
+export namespace IamMfaTypeEnumValue$ {
+    export const inboundSchema = z.nativeEnum(IamMfaTypeEnumValue);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace IamMfaTypeEnum$ {
@@ -75,7 +77,7 @@ export namespace IamMfaTypeEnum$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(IamMfaTypeEnumValue$).optional(),
+            value: z.nullable(IamMfaTypeEnumValue$.inboundSchema).optional(),
         })
         .transform((v) => {
             return {
@@ -86,7 +88,7 @@ export namespace IamMfaTypeEnum$ {
 
     export type Outbound = {
         source_value?: IamMfaTypeEnum4$.Outbound | string | number | boolean | null | undefined;
-        value?: IamMfaTypeEnumValue | null | undefined;
+        value?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, IamMfaTypeEnum> = z
@@ -101,7 +103,7 @@ export namespace IamMfaTypeEnum$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(IamMfaTypeEnumValue$).optional(),
+            value: z.nullable(IamMfaTypeEnumValue$.outboundSchema).optional(),
         })
         .transform((v) => {
             return {

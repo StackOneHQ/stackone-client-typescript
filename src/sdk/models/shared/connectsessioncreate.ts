@@ -11,6 +11,7 @@ export enum ConnectSessionCreateCategories {
     Crm = "crm",
     Iam = "iam",
     Marketing = "marketing",
+    Lms = "lms",
     Stackone = "stackone",
 }
 
@@ -63,9 +64,10 @@ export type ConnectSessionCreate = {
 };
 
 /** @internal */
-export const ConnectSessionCreateCategories$: z.ZodNativeEnum<
-    typeof ConnectSessionCreateCategories
-> = z.nativeEnum(ConnectSessionCreateCategories);
+export namespace ConnectSessionCreateCategories$ {
+    export const inboundSchema = z.nativeEnum(ConnectSessionCreateCategories);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace Metadata$ {
@@ -81,7 +83,9 @@ export namespace ConnectSessionCreate$ {
     export const inboundSchema: z.ZodType<ConnectSessionCreate, z.ZodTypeDef, unknown> = z
         .object({
             account_id: z.nullable(z.string()).optional(),
-            categories: z.nullable(z.array(ConnectSessionCreateCategories$)).optional(),
+            categories: z
+                .nullable(z.array(ConnectSessionCreateCategories$.inboundSchema))
+                .optional(),
             expires_in: z.nullable(z.number().default(1800)),
             label: z.nullable(z.string()).optional(),
             metadata: z.nullable(z.lazy(() => Metadata$.inboundSchema)).optional(),
@@ -108,7 +112,7 @@ export namespace ConnectSessionCreate$ {
 
     export type Outbound = {
         account_id?: string | null | undefined;
-        categories?: Array<ConnectSessionCreateCategories> | null | undefined;
+        categories?: Array<string> | null | undefined;
         expires_in: number | null;
         label?: string | null | undefined;
         metadata?: Metadata$.Outbound | null | undefined;
@@ -122,7 +126,9 @@ export namespace ConnectSessionCreate$ {
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ConnectSessionCreate> = z
         .object({
             accountId: z.nullable(z.string()).optional(),
-            categories: z.nullable(z.array(ConnectSessionCreateCategories$)).optional(),
+            categories: z
+                .nullable(z.array(ConnectSessionCreateCategories$.outboundSchema))
+                .optional(),
             expiresIn: z.nullable(z.number().default(1800)),
             label: z.nullable(z.string()).optional(),
             metadata: z.nullable(z.lazy(() => Metadata$.outboundSchema)).optional(),

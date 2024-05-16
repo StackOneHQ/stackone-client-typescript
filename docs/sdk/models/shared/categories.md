@@ -11,4 +11,5 @@
 | `Crm`        | crm          |
 | `Iam`        | iam          |
 | `Marketing`  | marketing    |
+| `Lms`        | lms          |
 | `Stackone`   | stackone     |

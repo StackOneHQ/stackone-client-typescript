@@ -1343,9 +1343,10 @@ export type HrisDocumentsUploadRequestDto = {
 };
 
 /** @internal */
-export const HrisDocumentsUploadRequestDtoValue$: z.ZodNativeEnum<
-    typeof HrisDocumentsUploadRequestDtoValue
-> = z.nativeEnum(HrisDocumentsUploadRequestDtoValue);
+export namespace HrisDocumentsUploadRequestDtoValue$ {
+    export const inboundSchema = z.nativeEnum(HrisDocumentsUploadRequestDtoValue);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace HrisDocumentsUploadRequestDtoCategory$ {
@@ -1356,7 +1357,7 @@ export namespace HrisDocumentsUploadRequestDtoCategory$ {
     > = z
         .object({
             source_value: z.nullable(z.string()).optional(),
-            value: z.nullable(HrisDocumentsUploadRequestDtoValue$).optional(),
+            value: z.nullable(HrisDocumentsUploadRequestDtoValue$.inboundSchema).optional(),
         })
         .transform((v) => {
             return {
@@ -1367,7 +1368,7 @@ export namespace HrisDocumentsUploadRequestDtoCategory$ {
 
     export type Outbound = {
         source_value?: string | null | undefined;
-        value?: HrisDocumentsUploadRequestDtoValue | null | undefined;
+        value?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<
@@ -1377,7 +1378,7 @@ export namespace HrisDocumentsUploadRequestDtoCategory$ {
     > = z
         .object({
             sourceValue: z.nullable(z.string()).optional(),
-            value: z.nullable(HrisDocumentsUploadRequestDtoValue$).optional(),
+            value: z.nullable(HrisDocumentsUploadRequestDtoValue$.outboundSchema).optional(),
         })
         .transform((v) => {
             return {
@@ -1425,9 +1426,10 @@ export namespace HrisDocumentsUploadRequestDtoSourceValue$ {
 }
 
 /** @internal */
-export const HrisDocumentsUploadRequestDtoSchemasValue$: z.ZodNativeEnum<
-    typeof HrisDocumentsUploadRequestDtoSchemasValue
-> = z.nativeEnum(HrisDocumentsUploadRequestDtoSchemasValue);
+export namespace HrisDocumentsUploadRequestDtoSchemasValue$ {
+    export const inboundSchema = z.nativeEnum(HrisDocumentsUploadRequestDtoSchemasValue);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace Confidential$ {
@@ -1443,7 +1445,7 @@ export namespace Confidential$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(HrisDocumentsUploadRequestDtoSchemasValue$).optional(),
+            value: z.nullable(HrisDocumentsUploadRequestDtoSchemasValue$.inboundSchema).optional(),
         })
         .transform((v) => {
             return {
@@ -1460,7 +1462,7 @@ export namespace Confidential$ {
             | boolean
             | null
             | undefined;
-        value?: HrisDocumentsUploadRequestDtoSchemasValue | null | undefined;
+        value?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Confidential> = z
@@ -1475,7 +1477,7 @@ export namespace Confidential$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(HrisDocumentsUploadRequestDtoSchemasValue$).optional(),
+            value: z.nullable(HrisDocumentsUploadRequestDtoSchemasValue$.outboundSchema).optional(),
         })
         .transform((v) => {
             return {
@@ -1533,9 +1535,10 @@ export namespace HrisDocumentsUploadRequestDtoSchemasSourceValue$ {
 }
 
 /** @internal */
-export const HrisDocumentsUploadRequestDtoSchemasFileFormatValue$: z.ZodNativeEnum<
-    typeof HrisDocumentsUploadRequestDtoSchemasFileFormatValue
-> = z.nativeEnum(HrisDocumentsUploadRequestDtoSchemasFileFormatValue);
+export namespace HrisDocumentsUploadRequestDtoSchemasFileFormatValue$ {
+    export const inboundSchema = z.nativeEnum(HrisDocumentsUploadRequestDtoSchemasFileFormatValue);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace HrisDocumentsUploadRequestDtoFileFormat$ {
@@ -1555,7 +1558,9 @@ export namespace HrisDocumentsUploadRequestDtoFileFormat$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(HrisDocumentsUploadRequestDtoSchemasFileFormatValue$).optional(),
+            value: z
+                .nullable(HrisDocumentsUploadRequestDtoSchemasFileFormatValue$.inboundSchema)
+                .optional(),
         })
         .transform((v) => {
             return {
@@ -1572,7 +1577,7 @@ export namespace HrisDocumentsUploadRequestDtoFileFormat$ {
             | boolean
             | null
             | undefined;
-        value?: HrisDocumentsUploadRequestDtoSchemasFileFormatValue | null | undefined;
+        value?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<
@@ -1591,7 +1596,9 @@ export namespace HrisDocumentsUploadRequestDtoFileFormat$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(HrisDocumentsUploadRequestDtoSchemasFileFormatValue$).optional(),
+            value: z
+                .nullable(HrisDocumentsUploadRequestDtoSchemasFileFormatValue$.outboundSchema)
+                .optional(),
         })
         .transform((v) => {
             return {

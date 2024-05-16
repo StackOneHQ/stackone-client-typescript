@@ -87,7 +87,10 @@ export namespace ListSourceValue$ {
 }
 
 /** @internal */
-export const ListValue$: z.ZodNativeEnum<typeof ListValue> = z.nativeEnum(ListValue);
+export namespace ListValue$ {
+    export const inboundSchema = z.nativeEnum(ListValue);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace ListType$ {
@@ -103,7 +106,7 @@ export namespace ListType$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(ListValue$).optional(),
+            value: z.nullable(ListValue$.inboundSchema).optional(),
         })
         .transform((v) => {
             return {
@@ -114,7 +117,7 @@ export namespace ListType$ {
 
     export type Outbound = {
         source_value?: List4$.Outbound | string | number | boolean | null | undefined;
-        value?: ListValue | null | undefined;
+        value?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ListType> = z
@@ -129,7 +132,7 @@ export namespace ListType$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(ListValue$).optional(),
+            value: z.nullable(ListValue$.outboundSchema).optional(),
         })
         .transform((v) => {
             return {

@@ -210,8 +210,10 @@ export namespace ApplicationSourceValue$ {
 }
 
 /** @internal */
-export const ApplicationValue$: z.ZodNativeEnum<typeof ApplicationValue> =
-    z.nativeEnum(ApplicationValue);
+export namespace ApplicationValue$ {
+    export const inboundSchema = z.nativeEnum(ApplicationValue);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace ApplicationStatus$ {
@@ -227,7 +229,7 @@ export namespace ApplicationStatus$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(ApplicationValue$).optional(),
+            value: z.nullable(ApplicationValue$.inboundSchema).optional(),
         })
         .transform((v) => {
             return {
@@ -238,7 +240,7 @@ export namespace ApplicationStatus$ {
 
     export type Outbound = {
         source_value?: Application4$.Outbound | string | number | boolean | null | undefined;
-        value?: ApplicationValue | null | undefined;
+        value?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ApplicationStatus> = z
@@ -253,7 +255,7 @@ export namespace ApplicationStatus$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(ApplicationValue$).optional(),
+            value: z.nullable(ApplicationValue$.outboundSchema).optional(),
         })
         .transform((v) => {
             return {

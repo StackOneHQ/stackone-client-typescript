@@ -325,7 +325,10 @@ export namespace IamUserSourceValue$ {
 }
 
 /** @internal */
-export const IamUserValue$: z.ZodNativeEnum<typeof IamUserValue> = z.nativeEnum(IamUserValue);
+export namespace IamUserValue$ {
+    export const inboundSchema = z.nativeEnum(IamUserValue);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace IamUserStatus$ {
@@ -341,7 +344,7 @@ export namespace IamUserStatus$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(IamUserValue$).optional(),
+            value: z.nullable(IamUserValue$.inboundSchema).optional(),
         })
         .transform((v) => {
             return {
@@ -352,7 +355,7 @@ export namespace IamUserStatus$ {
 
     export type Outbound = {
         source_value?: IamUser4$.Outbound | string | number | boolean | null | undefined;
-        value?: IamUserValue | null | undefined;
+        value?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, IamUserStatus> = z
@@ -367,7 +370,7 @@ export namespace IamUserStatus$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(IamUserValue$).optional(),
+            value: z.nullable(IamUserValue$.outboundSchema).optional(),
         })
         .transform((v) => {
             return {

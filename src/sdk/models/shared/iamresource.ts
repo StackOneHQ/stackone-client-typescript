@@ -76,8 +76,10 @@ export namespace IamResourceSourceValue$ {
 }
 
 /** @internal */
-export const IamResourceValue$: z.ZodNativeEnum<typeof IamResourceValue> =
-    z.nativeEnum(IamResourceValue);
+export namespace IamResourceValue$ {
+    export const inboundSchema = z.nativeEnum(IamResourceValue);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace IamResourceType$ {
@@ -93,7 +95,7 @@ export namespace IamResourceType$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(IamResourceValue$).optional(),
+            value: z.nullable(IamResourceValue$.inboundSchema).optional(),
         })
         .transform((v) => {
             return {
@@ -104,7 +106,7 @@ export namespace IamResourceType$ {
 
     export type Outbound = {
         source_value?: IamResource4$.Outbound | string | number | boolean | null | undefined;
-        value?: IamResourceValue | null | undefined;
+        value?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, IamResourceType> = z
@@ -119,7 +121,7 @@ export namespace IamResourceType$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(IamResourceValue$).optional(),
+            value: z.nullable(IamResourceValue$.outboundSchema).optional(),
         })
         .transform((v) => {
             return {

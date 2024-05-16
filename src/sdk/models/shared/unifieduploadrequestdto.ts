@@ -1382,8 +1382,10 @@ export namespace UnifiedUploadRequestDtoSourceValue$ {
 }
 
 /** @internal */
-export const UnifiedUploadRequestDtoValue$: z.ZodNativeEnum<typeof UnifiedUploadRequestDtoValue> =
-    z.nativeEnum(UnifiedUploadRequestDtoValue);
+export namespace UnifiedUploadRequestDtoValue$ {
+    export const inboundSchema = z.nativeEnum(UnifiedUploadRequestDtoValue);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace UnifiedUploadRequestDtoConfidential$ {
@@ -1403,7 +1405,7 @@ export namespace UnifiedUploadRequestDtoConfidential$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(UnifiedUploadRequestDtoValue$).optional(),
+            value: z.nullable(UnifiedUploadRequestDtoValue$.inboundSchema).optional(),
         })
         .transform((v) => {
             return {
@@ -1420,7 +1422,7 @@ export namespace UnifiedUploadRequestDtoConfidential$ {
             | boolean
             | null
             | undefined;
-        value?: UnifiedUploadRequestDtoValue | null | undefined;
+        value?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<
@@ -1439,7 +1441,7 @@ export namespace UnifiedUploadRequestDtoConfidential$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(UnifiedUploadRequestDtoValue$).optional(),
+            value: z.nullable(UnifiedUploadRequestDtoValue$.outboundSchema).optional(),
         })
         .transform((v) => {
             return {
@@ -1490,9 +1492,10 @@ export namespace UnifiedUploadRequestDtoSchemasSourceValue$ {
 }
 
 /** @internal */
-export const UnifiedUploadRequestDtoSchemasValue$: z.ZodNativeEnum<
-    typeof UnifiedUploadRequestDtoSchemasValue
-> = z.nativeEnum(UnifiedUploadRequestDtoSchemasValue);
+export namespace UnifiedUploadRequestDtoSchemasValue$ {
+    export const inboundSchema = z.nativeEnum(UnifiedUploadRequestDtoSchemasValue);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace UnifiedUploadRequestDtoFileFormat$ {
@@ -1512,7 +1515,7 @@ export namespace UnifiedUploadRequestDtoFileFormat$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(UnifiedUploadRequestDtoSchemasValue$).optional(),
+            value: z.nullable(UnifiedUploadRequestDtoSchemasValue$.inboundSchema).optional(),
         })
         .transform((v) => {
             return {
@@ -1529,7 +1532,7 @@ export namespace UnifiedUploadRequestDtoFileFormat$ {
             | boolean
             | null
             | undefined;
-        value?: UnifiedUploadRequestDtoSchemasValue | null | undefined;
+        value?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<
@@ -1548,7 +1551,7 @@ export namespace UnifiedUploadRequestDtoFileFormat$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(UnifiedUploadRequestDtoSchemasValue$).optional(),
+            value: z.nullable(UnifiedUploadRequestDtoSchemasValue$.outboundSchema).optional(),
         })
         .transform((v) => {
             return {

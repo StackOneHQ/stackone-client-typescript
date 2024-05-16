@@ -94,7 +94,10 @@ export namespace NoteSourceValue$ {
 }
 
 /** @internal */
-export const NoteValue$: z.ZodNativeEnum<typeof NoteValue> = z.nativeEnum(NoteValue);
+export namespace NoteValue$ {
+    export const inboundSchema = z.nativeEnum(NoteValue);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace NoteVisibility$ {
@@ -110,7 +113,7 @@ export namespace NoteVisibility$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(NoteValue$).optional(),
+            value: z.nullable(NoteValue$.inboundSchema).optional(),
         })
         .transform((v) => {
             return {
@@ -121,7 +124,7 @@ export namespace NoteVisibility$ {
 
     export type Outbound = {
         source_value?: Note4$.Outbound | string | number | boolean | null | undefined;
-        value?: NoteValue | null | undefined;
+        value?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, NoteVisibility> = z
@@ -136,7 +139,7 @@ export namespace NoteVisibility$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(NoteValue$).optional(),
+            value: z.nullable(NoteValue$.outboundSchema).optional(),
         })
         .transform((v) => {
             return {

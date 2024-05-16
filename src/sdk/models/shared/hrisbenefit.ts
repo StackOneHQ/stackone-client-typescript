@@ -89,8 +89,10 @@ export namespace HRISBenefitSourceValue$ {
 }
 
 /** @internal */
-export const HRISBenefitValue$: z.ZodNativeEnum<typeof HRISBenefitValue> =
-    z.nativeEnum(HRISBenefitValue);
+export namespace HRISBenefitValue$ {
+    export const inboundSchema = z.nativeEnum(HRISBenefitValue);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace BenefitType$ {
@@ -106,7 +108,7 @@ export namespace BenefitType$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(HRISBenefitValue$).optional(),
+            value: z.nullable(HRISBenefitValue$.inboundSchema).optional(),
         })
         .transform((v) => {
             return {
@@ -117,7 +119,7 @@ export namespace BenefitType$ {
 
     export type Outbound = {
         source_value?: HRISBenefit4$.Outbound | string | number | boolean | null | undefined;
-        value?: HRISBenefitValue | null | undefined;
+        value?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, BenefitType> = z
@@ -132,7 +134,7 @@ export namespace BenefitType$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(HRISBenefitValue$).optional(),
+            value: z.nullable(HRISBenefitValue$.outboundSchema).optional(),
         })
         .transform((v) => {
             return {

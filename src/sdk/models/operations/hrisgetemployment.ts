@@ -7,6 +7,10 @@ import * as z from "zod";
 
 export type HrisGetEmploymentRequest = {
     /**
+     * The comma separated list of fields that will be expanded in the response
+     */
+    expand?: string | null | undefined;
+    /**
      * The comma separated list of fields that will be returned in the response (if empty, all fields are returned)
      */
     fields?: string | null | undefined;
@@ -48,6 +52,7 @@ export type HrisGetEmploymentResponse = {
 export namespace HrisGetEmploymentRequest$ {
     export const inboundSchema: z.ZodType<HrisGetEmploymentRequest, z.ZodTypeDef, unknown> = z
         .object({
+            expand: z.nullable(z.string()).optional(),
             fields: z.nullable(z.string()).optional(),
             id: z.string(),
             proxy: z.nullable(z.record(z.any())).optional(),
@@ -56,6 +61,7 @@ export namespace HrisGetEmploymentRequest$ {
         })
         .transform((v) => {
             return {
+                ...(v.expand === undefined ? null : { expand: v.expand }),
                 ...(v.fields === undefined ? null : { fields: v.fields }),
                 id: v.id,
                 ...(v.proxy === undefined ? null : { proxy: v.proxy }),
@@ -65,6 +71,7 @@ export namespace HrisGetEmploymentRequest$ {
         });
 
     export type Outbound = {
+        expand?: string | null | undefined;
         fields?: string | null | undefined;
         id: string;
         proxy?: Record<string, any> | null | undefined;
@@ -74,6 +81,7 @@ export namespace HrisGetEmploymentRequest$ {
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, HrisGetEmploymentRequest> = z
         .object({
+            expand: z.nullable(z.string()).optional(),
             fields: z.nullable(z.string()).optional(),
             id: z.string(),
             proxy: z.nullable(z.record(z.any())).optional(),
@@ -82,6 +90,7 @@ export namespace HrisGetEmploymentRequest$ {
         })
         .transform((v) => {
             return {
+                ...(v.expand === undefined ? null : { expand: v.expand }),
                 ...(v.fields === undefined ? null : { fields: v.fields }),
                 id: v.id,
                 ...(v.proxy === undefined ? null : { proxy: v.proxy }),

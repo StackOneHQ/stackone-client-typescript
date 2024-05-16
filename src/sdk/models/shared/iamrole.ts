@@ -73,7 +73,10 @@ export namespace IamRoleSourceValue$ {
 }
 
 /** @internal */
-export const IamRoleValue$: z.ZodNativeEnum<typeof IamRoleValue> = z.nativeEnum(IamRoleValue);
+export namespace IamRoleValue$ {
+    export const inboundSchema = z.nativeEnum(IamRoleValue);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace IamRoleType$ {
@@ -89,7 +92,7 @@ export namespace IamRoleType$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(IamRoleValue$).optional(),
+            value: z.nullable(IamRoleValue$.inboundSchema).optional(),
         })
         .transform((v) => {
             return {
@@ -100,7 +103,7 @@ export namespace IamRoleType$ {
 
     export type Outbound = {
         source_value?: IamRole4$.Outbound | string | number | boolean | null | undefined;
-        value?: IamRoleValue | null | undefined;
+        value?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, IamRoleType> = z
@@ -115,7 +118,7 @@ export namespace IamRoleType$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(IamRoleValue$).optional(),
+            value: z.nullable(IamRoleValue$.outboundSchema).optional(),
         })
         .transform((v) => {
             return {

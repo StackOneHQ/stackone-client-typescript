@@ -39,7 +39,10 @@ export type ProxyRequestBody = {
 };
 
 /** @internal */
-export const Method$: z.ZodNativeEnum<typeof Method> = z.nativeEnum(Method);
+export namespace Method$ {
+    export const inboundSchema = z.nativeEnum(Method);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace ProxyRequestBody$ {
@@ -47,7 +50,7 @@ export namespace ProxyRequestBody$ {
         .object({
             body: z.nullable(z.record(z.any())).optional(),
             headers: z.nullable(z.record(z.any())).optional(),
-            method: z.nullable(Method$.default(Method.Get)),
+            method: z.nullable(Method$.inboundSchema.default(Method.Get)),
             path: z.nullable(z.string()).optional(),
             url: z.nullable(z.string()).optional(),
         })
@@ -64,7 +67,7 @@ export namespace ProxyRequestBody$ {
     export type Outbound = {
         body?: Record<string, any> | null | undefined;
         headers?: Record<string, any> | null | undefined;
-        method: Method | null;
+        method: string | null;
         path?: string | null | undefined;
         url?: string | null | undefined;
     };
@@ -73,7 +76,7 @@ export namespace ProxyRequestBody$ {
         .object({
             body: z.nullable(z.record(z.any())).optional(),
             headers: z.nullable(z.record(z.any())).optional(),
-            method: z.nullable(Method$.default(Method.Get)),
+            method: z.nullable(Method$.outboundSchema.default(Method.Get)),
             path: z.nullable(z.string()).optional(),
             url: z.nullable(z.string()).optional(),
         })

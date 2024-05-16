@@ -361,8 +361,10 @@ export namespace AccountAddressSchemasSourceValue$ {
 }
 
 /** @internal */
-export const AccountAddressSchemasValue$: z.ZodNativeEnum<typeof AccountAddressSchemasValue> =
-    z.nativeEnum(AccountAddressSchemasValue);
+export namespace AccountAddressSchemasValue$ {
+    export const inboundSchema = z.nativeEnum(AccountAddressSchemasValue);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace Country$ {
@@ -378,7 +380,7 @@ export namespace Country$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(AccountAddressSchemasValue$).optional(),
+            value: z.nullable(AccountAddressSchemasValue$.inboundSchema).optional(),
         })
         .transform((v) => {
             return {
@@ -395,7 +397,7 @@ export namespace Country$ {
             | boolean
             | null
             | undefined;
-        value?: AccountAddressSchemasValue | null | undefined;
+        value?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Country> = z
@@ -410,7 +412,7 @@ export namespace Country$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(AccountAddressSchemasValue$).optional(),
+            value: z.nullable(AccountAddressSchemasValue$.outboundSchema).optional(),
         })
         .transform((v) => {
             return {
@@ -450,8 +452,10 @@ export namespace AccountAddressSourceValue$ {
 }
 
 /** @internal */
-export const AccountAddressValue$: z.ZodNativeEnum<typeof AccountAddressValue> =
-    z.nativeEnum(AccountAddressValue);
+export namespace AccountAddressValue$ {
+    export const inboundSchema = z.nativeEnum(AccountAddressValue);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace LocationType$ {
@@ -467,7 +471,7 @@ export namespace LocationType$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(AccountAddressValue$).optional(),
+            value: z.nullable(AccountAddressValue$.inboundSchema).optional(),
         })
         .transform((v) => {
             return {
@@ -478,7 +482,7 @@ export namespace LocationType$ {
 
     export type Outbound = {
         source_value?: AccountAddress4$.Outbound | string | number | boolean | null | undefined;
-        value?: AccountAddressValue | null | undefined;
+        value?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, LocationType> = z
@@ -493,7 +497,7 @@ export namespace LocationType$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(AccountAddressValue$).optional(),
+            value: z.nullable(AccountAddressValue$.outboundSchema).optional(),
         })
         .transform((v) => {
             return {

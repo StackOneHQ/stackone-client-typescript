@@ -186,7 +186,10 @@ export namespace InterviewSourceValue$ {
 }
 
 /** @internal */
-export const InterviewValue$: z.ZodNativeEnum<typeof InterviewValue> = z.nativeEnum(InterviewValue);
+export namespace InterviewValue$ {
+    export const inboundSchema = z.nativeEnum(InterviewValue);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace InterviewStatus$ {
@@ -202,7 +205,7 @@ export namespace InterviewStatus$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(InterviewValue$).optional(),
+            value: z.nullable(InterviewValue$.inboundSchema).optional(),
         })
         .transform((v) => {
             return {
@@ -213,7 +216,7 @@ export namespace InterviewStatus$ {
 
     export type Outbound = {
         source_value?: Interview4$.Outbound | string | number | boolean | null | undefined;
-        value?: InterviewValue | null | undefined;
+        value?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, InterviewStatus> = z
@@ -228,7 +231,7 @@ export namespace InterviewStatus$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(InterviewValue$).optional(),
+            value: z.nullable(InterviewValue$.outboundSchema).optional(),
         })
         .transform((v) => {
             return {

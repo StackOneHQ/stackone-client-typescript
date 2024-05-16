@@ -384,8 +384,10 @@ export namespace HRISLocationSourceValue$ {
 }
 
 /** @internal */
-export const HRISLocationValue$: z.ZodNativeEnum<typeof HRISLocationValue> =
-    z.nativeEnum(HRISLocationValue);
+export namespace HRISLocationValue$ {
+    export const inboundSchema = z.nativeEnum(HRISLocationValue);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace HRISLocationCountry$ {
@@ -401,7 +403,7 @@ export namespace HRISLocationCountry$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(HRISLocationValue$).optional(),
+            value: z.nullable(HRISLocationValue$.inboundSchema).optional(),
         })
         .transform((v) => {
             return {
@@ -412,7 +414,7 @@ export namespace HRISLocationCountry$ {
 
     export type Outbound = {
         source_value?: HRISLocation4$.Outbound | string | number | boolean | null | undefined;
-        value?: HRISLocationValue | null | undefined;
+        value?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, HRISLocationCountry> = z
@@ -427,7 +429,7 @@ export namespace HRISLocationCountry$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(HRISLocationValue$).optional(),
+            value: z.nullable(HRISLocationValue$.outboundSchema).optional(),
         })
         .transform((v) => {
             return {
@@ -471,8 +473,10 @@ export namespace HRISLocationSchemasSourceValue$ {
 }
 
 /** @internal */
-export const HRISLocationSchemasValue$: z.ZodNativeEnum<typeof HRISLocationSchemasValue> =
-    z.nativeEnum(HRISLocationSchemasValue);
+export namespace HRISLocationSchemasValue$ {
+    export const inboundSchema = z.nativeEnum(HRISLocationSchemasValue);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace HRISLocationLocationType$ {
@@ -488,7 +492,7 @@ export namespace HRISLocationLocationType$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(HRISLocationSchemasValue$).optional(),
+            value: z.nullable(HRISLocationSchemasValue$.inboundSchema).optional(),
         })
         .transform((v) => {
             return {
@@ -505,7 +509,7 @@ export namespace HRISLocationLocationType$ {
             | boolean
             | null
             | undefined;
-        value?: HRISLocationSchemasValue | null | undefined;
+        value?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, HRISLocationLocationType> = z
@@ -520,7 +524,7 @@ export namespace HRISLocationLocationType$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(HRISLocationSchemasValue$).optional(),
+            value: z.nullable(HRISLocationSchemasValue$.outboundSchema).optional(),
         })
         .transform((v) => {
             return {

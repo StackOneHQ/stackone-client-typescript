@@ -301,8 +301,10 @@ export namespace CountryCodeEnumSourceValue$ {
 }
 
 /** @internal */
-export const CountryCodeEnumValue$: z.ZodNativeEnum<typeof CountryCodeEnumValue> =
-    z.nativeEnum(CountryCodeEnumValue);
+export namespace CountryCodeEnumValue$ {
+    export const inboundSchema = z.nativeEnum(CountryCodeEnumValue);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace CountryCodeEnum$ {
@@ -318,7 +320,7 @@ export namespace CountryCodeEnum$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(CountryCodeEnumValue$).optional(),
+            value: z.nullable(CountryCodeEnumValue$.inboundSchema).optional(),
         })
         .transform((v) => {
             return {
@@ -329,7 +331,7 @@ export namespace CountryCodeEnum$ {
 
     export type Outbound = {
         source_value?: CountryCodeEnum4$.Outbound | string | number | boolean | null | undefined;
-        value?: CountryCodeEnumValue | null | undefined;
+        value?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CountryCodeEnum> = z
@@ -344,7 +346,7 @@ export namespace CountryCodeEnum$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(CountryCodeEnumValue$).optional(),
+            value: z.nullable(CountryCodeEnumValue$.outboundSchema).optional(),
         })
         .transform((v) => {
             return {

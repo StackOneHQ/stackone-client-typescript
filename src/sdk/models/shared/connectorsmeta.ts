@@ -14,6 +14,7 @@ export enum ConnectorsMetaCategory {
     Crm = "crm",
     Iam = "iam",
     Marketing = "marketing",
+    Lms = "lms",
     Stackone = "stackone",
 }
 
@@ -66,8 +67,10 @@ export type ConnectorsMeta = {
 };
 
 /** @internal */
-export const ConnectorsMetaCategory$: z.ZodNativeEnum<typeof ConnectorsMetaCategory> =
-    z.nativeEnum(ConnectorsMetaCategory);
+export namespace ConnectorsMetaCategory$ {
+    export const inboundSchema = z.nativeEnum(ConnectorsMetaCategory);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace Images$ {
@@ -137,7 +140,7 @@ export namespace ConnectorsMeta$ {
     export const inboundSchema: z.ZodType<ConnectorsMeta, z.ZodTypeDef, unknown> = z
         .object({
             active: z.nullable(z.boolean()).optional(),
-            category: ConnectorsMetaCategory$,
+            category: ConnectorsMetaCategory$.inboundSchema,
             models: z.record(z.any()),
             provider: z.string(),
             provider_name: z.string(),
@@ -156,7 +159,7 @@ export namespace ConnectorsMeta$ {
 
     export type Outbound = {
         active?: boolean | null | undefined;
-        category: ConnectorsMetaCategory;
+        category: string;
         models: Record<string, any>;
         provider: string;
         provider_name: string;
@@ -166,7 +169,7 @@ export namespace ConnectorsMeta$ {
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ConnectorsMeta> = z
         .object({
             active: z.nullable(z.boolean()).optional(),
-            category: ConnectorsMetaCategory$,
+            category: ConnectorsMetaCategory$.outboundSchema,
             models: z.record(z.any()),
             provider: z.string(),
             providerName: z.string(),

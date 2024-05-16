@@ -85,8 +85,10 @@ export namespace RejectedReasonSourceValue$ {
 }
 
 /** @internal */
-export const RejectedReasonValue$: z.ZodNativeEnum<typeof RejectedReasonValue> =
-    z.nativeEnum(RejectedReasonValue);
+export namespace RejectedReasonValue$ {
+    export const inboundSchema = z.nativeEnum(RejectedReasonValue);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace RejectedReasonType$ {
@@ -102,7 +104,7 @@ export namespace RejectedReasonType$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(RejectedReasonValue$).optional(),
+            value: z.nullable(RejectedReasonValue$.inboundSchema).optional(),
         })
         .transform((v) => {
             return {
@@ -113,7 +115,7 @@ export namespace RejectedReasonType$ {
 
     export type Outbound = {
         source_value?: RejectedReason4$.Outbound | string | number | boolean | null | undefined;
-        value?: RejectedReasonValue | null | undefined;
+        value?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, RejectedReasonType> = z
@@ -128,7 +130,7 @@ export namespace RejectedReasonType$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(RejectedReasonValue$).optional(),
+            value: z.nullable(RejectedReasonValue$.outboundSchema).optional(),
         })
         .transform((v) => {
             return {

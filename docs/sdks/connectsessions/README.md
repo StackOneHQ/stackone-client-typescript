@@ -76,6 +76,7 @@ async function run() {
       ConnectSessionCreateCategories.Crm,
       ConnectSessionCreateCategories.Iam,
       ConnectSessionCreateCategories.Marketing,
+      ConnectSessionCreateCategories.Lms,
       ConnectSessionCreateCategories.Stackone,
     ],
     originOwnerId: "<value>",

@@ -625,9 +625,10 @@ export namespace HrisCreateWorkEligibilityRequestDtoSourceValue$ {
 }
 
 /** @internal */
-export const HrisCreateWorkEligibilityRequestDtoValue$: z.ZodNativeEnum<
-    typeof HrisCreateWorkEligibilityRequestDtoValue
-> = z.nativeEnum(HrisCreateWorkEligibilityRequestDtoValue);
+export namespace HrisCreateWorkEligibilityRequestDtoValue$ {
+    export const inboundSchema = z.nativeEnum(HrisCreateWorkEligibilityRequestDtoValue);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace IssuedBy$ {
@@ -643,7 +644,7 @@ export namespace IssuedBy$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(HrisCreateWorkEligibilityRequestDtoValue$).optional(),
+            value: z.nullable(HrisCreateWorkEligibilityRequestDtoValue$.inboundSchema).optional(),
         })
         .transform((v) => {
             return {
@@ -660,7 +661,7 @@ export namespace IssuedBy$ {
             | boolean
             | null
             | undefined;
-        value?: HrisCreateWorkEligibilityRequestDtoValue | null | undefined;
+        value?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, IssuedBy> = z
@@ -675,7 +676,7 @@ export namespace IssuedBy$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(HrisCreateWorkEligibilityRequestDtoValue$).optional(),
+            value: z.nullable(HrisCreateWorkEligibilityRequestDtoValue$.outboundSchema).optional(),
         })
         .transform((v) => {
             return {
@@ -725,9 +726,10 @@ export namespace SourceType$ {
 }
 
 /** @internal */
-export const HrisCreateWorkEligibilityRequestDtoSchemasValue$: z.ZodNativeEnum<
-    typeof HrisCreateWorkEligibilityRequestDtoSchemasValue
-> = z.nativeEnum(HrisCreateWorkEligibilityRequestDtoSchemasValue);
+export namespace HrisCreateWorkEligibilityRequestDtoSchemasValue$ {
+    export const inboundSchema = z.nativeEnum(HrisCreateWorkEligibilityRequestDtoSchemasValue);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace HrisCreateWorkEligibilityRequestDtoType$ {
@@ -747,7 +749,9 @@ export namespace HrisCreateWorkEligibilityRequestDtoType$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(HrisCreateWorkEligibilityRequestDtoSchemasValue$).optional(),
+            value: z
+                .nullable(HrisCreateWorkEligibilityRequestDtoSchemasValue$.inboundSchema)
+                .optional(),
         })
         .transform((v) => {
             return {
@@ -764,7 +768,7 @@ export namespace HrisCreateWorkEligibilityRequestDtoType$ {
             | boolean
             | null
             | undefined;
-        value?: HrisCreateWorkEligibilityRequestDtoSchemasValue | null | undefined;
+        value?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<
@@ -783,7 +787,9 @@ export namespace HrisCreateWorkEligibilityRequestDtoType$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(HrisCreateWorkEligibilityRequestDtoSchemasValue$).optional(),
+            value: z
+                .nullable(HrisCreateWorkEligibilityRequestDtoSchemasValue$.outboundSchema)
+                .optional(),
         })
         .transform((v) => {
             return {

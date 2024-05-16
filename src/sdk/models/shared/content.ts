@@ -1278,7 +1278,10 @@ export namespace ContentSourceValue$ {
 }
 
 /** @internal */
-export const ContentValue$: z.ZodNativeEnum<typeof ContentValue> = z.nativeEnum(ContentValue);
+export namespace ContentValue$ {
+    export const inboundSchema = z.nativeEnum(ContentValue);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace FileFormat$ {
@@ -1294,7 +1297,7 @@ export namespace FileFormat$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(ContentValue$).optional(),
+            value: z.nullable(ContentValue$.inboundSchema).optional(),
         })
         .transform((v) => {
             return {
@@ -1305,7 +1308,7 @@ export namespace FileFormat$ {
 
     export type Outbound = {
         source_value?: Content4$.Outbound | string | number | boolean | null | undefined;
-        value?: ContentValue | null | undefined;
+        value?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, FileFormat> = z
@@ -1320,7 +1323,7 @@ export namespace FileFormat$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(ContentValue$).optional(),
+            value: z.nullable(ContentValue$.outboundSchema).optional(),
         })
         .transform((v) => {
             return {

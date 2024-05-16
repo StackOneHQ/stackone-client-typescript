@@ -48,8 +48,10 @@ export namespace SetupInformation$ {
 }
 
 /** @internal */
-export const LinkedAccountStatus$: z.ZodNativeEnum<typeof LinkedAccountStatus> =
-    z.nativeEnum(LinkedAccountStatus);
+export namespace LinkedAccountStatus$ {
+    export const inboundSchema = z.nativeEnum(LinkedAccountStatus);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace LinkedAccount$ {
@@ -67,7 +69,7 @@ export namespace LinkedAccount$ {
             origin_username: z.nullable(z.string()).optional(),
             provider: z.string(),
             setup_information: z.nullable(z.lazy(() => SetupInformation$.inboundSchema)).optional(),
-            status: LinkedAccountStatus$,
+            status: LinkedAccountStatus$.inboundSchema,
             status_reasons: z.nullable(z.array(z.string())).optional(),
             updated_at: z
                 .string()
@@ -103,7 +105,7 @@ export namespace LinkedAccount$ {
         origin_username?: string | null | undefined;
         provider: string;
         setup_information?: SetupInformation$.Outbound | null | undefined;
-        status: LinkedAccountStatus;
+        status: string;
         status_reasons?: Array<string> | null | undefined;
         updated_at: string;
     };
@@ -119,7 +121,7 @@ export namespace LinkedAccount$ {
             originUsername: z.nullable(z.string()).optional(),
             provider: z.string(),
             setupInformation: z.nullable(z.lazy(() => SetupInformation$.outboundSchema)).optional(),
-            status: LinkedAccountStatus$,
+            status: LinkedAccountStatus$.outboundSchema,
             statusReasons: z.nullable(z.array(z.string())).optional(),
             updatedAt: z.date().transform((v) => v.toISOString()),
         })

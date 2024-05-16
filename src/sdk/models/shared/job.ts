@@ -108,8 +108,10 @@ export type Job = {
 };
 
 /** @internal */
-export const JobConfidential$: z.ZodNativeEnum<typeof JobConfidential> =
-    z.nativeEnum(JobConfidential);
+export namespace JobConfidential$ {
+    export const inboundSchema = z.nativeEnum(JobConfidential);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace Job4$ {
@@ -139,7 +141,10 @@ export namespace JobSourceValue$ {
 }
 
 /** @internal */
-export const JobValue$: z.ZodNativeEnum<typeof JobValue> = z.nativeEnum(JobValue);
+export namespace JobValue$ {
+    export const inboundSchema = z.nativeEnum(JobValue);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace JobStatus$ {
@@ -155,7 +160,7 @@ export namespace JobStatus$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(JobValue$).optional(),
+            value: z.nullable(JobValue$.inboundSchema).optional(),
         })
         .transform((v) => {
             return {
@@ -166,7 +171,7 @@ export namespace JobStatus$ {
 
     export type Outbound = {
         source_value?: Job4$.Outbound | string | number | boolean | null | undefined;
-        value?: JobValue | null | undefined;
+        value?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, JobStatus> = z
@@ -181,7 +186,7 @@ export namespace JobStatus$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(JobValue$).optional(),
+            value: z.nullable(JobValue$.outboundSchema).optional(),
         })
         .transform((v) => {
             return {
@@ -196,7 +201,7 @@ export namespace Job$ {
     export const inboundSchema: z.ZodType<Job, z.ZodTypeDef, unknown> = z
         .object({
             code: z.nullable(z.string()).optional(),
-            confidential: z.nullable(JobConfidential$).optional(),
+            confidential: z.nullable(JobConfidential$.inboundSchema).optional(),
             created_at: z
                 .nullable(
                     z
@@ -245,7 +250,7 @@ export namespace Job$ {
 
     export type Outbound = {
         code?: string | null | undefined;
-        confidential?: JobConfidential | null | undefined;
+        confidential?: string | null | undefined;
         created_at?: string | null | undefined;
         department_ids?: Array<string> | null | undefined;
         hiring_team?: Array<JobHiringTeam$.Outbound> | null | undefined;
@@ -262,7 +267,7 @@ export namespace Job$ {
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Job> = z
         .object({
             code: z.nullable(z.string()).optional(),
-            confidential: z.nullable(JobConfidential$).optional(),
+            confidential: z.nullable(JobConfidential$.outboundSchema).optional(),
             createdAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
             departmentIds: z.nullable(z.array(z.string())).optional(),
             hiringTeam: z.nullable(z.array(JobHiringTeam$.outboundSchema)).optional(),

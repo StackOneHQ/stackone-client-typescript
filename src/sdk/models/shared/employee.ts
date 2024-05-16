@@ -1394,7 +1394,10 @@ export namespace EmployeeSourceValue$ {
 }
 
 /** @internal */
-export const EmployeeValue$: z.ZodNativeEnum<typeof EmployeeValue> = z.nativeEnum(EmployeeValue);
+export namespace EmployeeValue$ {
+    export const inboundSchema = z.nativeEnum(EmployeeValue);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace EmploymentContractType$ {
@@ -1410,7 +1413,7 @@ export namespace EmploymentContractType$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(EmployeeValue$).optional(),
+            value: z.nullable(EmployeeValue$.inboundSchema).optional(),
         })
         .transform((v) => {
             return {
@@ -1421,7 +1424,7 @@ export namespace EmploymentContractType$ {
 
     export type Outbound = {
         source_value?: Employee4$.Outbound | string | number | boolean | null | undefined;
-        value?: EmployeeValue | null | undefined;
+        value?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, EmploymentContractType> = z
@@ -1436,7 +1439,7 @@ export namespace EmploymentContractType$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(EmployeeValue$).optional(),
+            value: z.nullable(EmployeeValue$.outboundSchema).optional(),
         })
         .transform((v) => {
             return {
@@ -1476,8 +1479,10 @@ export namespace EmployeeSchemasSourceValue$ {
 }
 
 /** @internal */
-export const EmployeeSchemasValue$: z.ZodNativeEnum<typeof EmployeeSchemasValue> =
-    z.nativeEnum(EmployeeSchemasValue);
+export namespace EmployeeSchemasValue$ {
+    export const inboundSchema = z.nativeEnum(EmployeeSchemasValue);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace EmploymentStatus$ {
@@ -1493,7 +1498,7 @@ export namespace EmploymentStatus$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(EmployeeSchemasValue$).optional(),
+            value: z.nullable(EmployeeSchemasValue$.inboundSchema).optional(),
         })
         .transform((v) => {
             return {
@@ -1504,7 +1509,7 @@ export namespace EmploymentStatus$ {
 
     export type Outbound = {
         source_value?: EmployeeSchemas4$.Outbound | string | number | boolean | null | undefined;
-        value?: EmployeeSchemasValue | null | undefined;
+        value?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, EmploymentStatus> = z
@@ -1519,7 +1524,7 @@ export namespace EmploymentStatus$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(EmployeeSchemasValue$).optional(),
+            value: z.nullable(EmployeeSchemasValue$.outboundSchema).optional(),
         })
         .transform((v) => {
             return {
@@ -1567,9 +1572,10 @@ export namespace EmployeeSchemasEmploymentTypeSourceValue$ {
 }
 
 /** @internal */
-export const EmployeeSchemasEmploymentTypeValue$: z.ZodNativeEnum<
-    typeof EmployeeSchemasEmploymentTypeValue
-> = z.nativeEnum(EmployeeSchemasEmploymentTypeValue);
+export namespace EmployeeSchemasEmploymentTypeValue$ {
+    export const inboundSchema = z.nativeEnum(EmployeeSchemasEmploymentTypeValue);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace EmploymentType$ {
@@ -1585,7 +1591,7 @@ export namespace EmploymentType$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(EmployeeSchemasEmploymentTypeValue$).optional(),
+            value: z.nullable(EmployeeSchemasEmploymentTypeValue$.inboundSchema).optional(),
         })
         .transform((v) => {
             return {
@@ -1602,7 +1608,7 @@ export namespace EmploymentType$ {
             | boolean
             | null
             | undefined;
-        value?: EmployeeSchemasEmploymentTypeValue | null | undefined;
+        value?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, EmploymentType> = z
@@ -1617,7 +1623,7 @@ export namespace EmploymentType$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(EmployeeSchemasEmploymentTypeValue$).optional(),
+            value: z.nullable(EmployeeSchemasEmploymentTypeValue$.outboundSchema).optional(),
         })
         .transform((v) => {
             return {
@@ -1665,8 +1671,10 @@ export namespace EmployeeSchemasEthnicitySourceValue$ {
 }
 
 /** @internal */
-export const EmployeeSchemasEthnicityValue$: z.ZodNativeEnum<typeof EmployeeSchemasEthnicityValue> =
-    z.nativeEnum(EmployeeSchemasEthnicityValue);
+export namespace EmployeeSchemasEthnicityValue$ {
+    export const inboundSchema = z.nativeEnum(EmployeeSchemasEthnicityValue);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace Ethnicity$ {
@@ -1682,7 +1690,7 @@ export namespace Ethnicity$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(EmployeeSchemasEthnicityValue$).optional(),
+            value: z.nullable(EmployeeSchemasEthnicityValue$.inboundSchema).optional(),
         })
         .transform((v) => {
             return {
@@ -1699,7 +1707,7 @@ export namespace Ethnicity$ {
             | boolean
             | null
             | undefined;
-        value?: EmployeeSchemasEthnicityValue | null | undefined;
+        value?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Ethnicity> = z
@@ -1714,7 +1722,7 @@ export namespace Ethnicity$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(EmployeeSchemasEthnicityValue$).optional(),
+            value: z.nullable(EmployeeSchemasEthnicityValue$.outboundSchema).optional(),
         })
         .transform((v) => {
             return {
@@ -1760,8 +1768,10 @@ export namespace EmployeeSchemasGenderSourceValue$ {
 }
 
 /** @internal */
-export const EmployeeSchemasGenderValue$: z.ZodNativeEnum<typeof EmployeeSchemasGenderValue> =
-    z.nativeEnum(EmployeeSchemasGenderValue);
+export namespace EmployeeSchemasGenderValue$ {
+    export const inboundSchema = z.nativeEnum(EmployeeSchemasGenderValue);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace Gender$ {
@@ -1777,7 +1787,7 @@ export namespace Gender$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(EmployeeSchemasGenderValue$).optional(),
+            value: z.nullable(EmployeeSchemasGenderValue$.inboundSchema).optional(),
         })
         .transform((v) => {
             return {
@@ -1794,7 +1804,7 @@ export namespace Gender$ {
             | boolean
             | null
             | undefined;
-        value?: EmployeeSchemasGenderValue | null | undefined;
+        value?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Gender> = z
@@ -1809,7 +1819,7 @@ export namespace Gender$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(EmployeeSchemasGenderValue$).optional(),
+            value: z.nullable(EmployeeSchemasGenderValue$.outboundSchema).optional(),
         })
         .transform((v) => {
             return {
@@ -1857,9 +1867,10 @@ export namespace EmployeeSchemasHomeLocationSourceValue$ {
 }
 
 /** @internal */
-export const EmployeeSchemasHomeLocationValue$: z.ZodNativeEnum<
-    typeof EmployeeSchemasHomeLocationValue
-> = z.nativeEnum(EmployeeSchemasHomeLocationValue);
+export namespace EmployeeSchemasHomeLocationValue$ {
+    export const inboundSchema = z.nativeEnum(EmployeeSchemasHomeLocationValue);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace EmployeeCountry$ {
@@ -1875,7 +1886,7 @@ export namespace EmployeeCountry$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(EmployeeSchemasHomeLocationValue$).optional(),
+            value: z.nullable(EmployeeSchemasHomeLocationValue$.inboundSchema).optional(),
         })
         .transform((v) => {
             return {
@@ -1892,7 +1903,7 @@ export namespace EmployeeCountry$ {
             | boolean
             | null
             | undefined;
-        value?: EmployeeSchemasHomeLocationValue | null | undefined;
+        value?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, EmployeeCountry> = z
@@ -1907,7 +1918,7 @@ export namespace EmployeeCountry$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(EmployeeSchemasHomeLocationValue$).optional(),
+            value: z.nullable(EmployeeSchemasHomeLocationValue$.outboundSchema).optional(),
         })
         .transform((v) => {
             return {
@@ -1965,9 +1976,10 @@ export namespace EmployeeSchemasHomeLocationLocationTypeSourceValue$ {
 }
 
 /** @internal */
-export const EmployeeSchemasHomeLocationLocationTypeValue$: z.ZodNativeEnum<
-    typeof EmployeeSchemasHomeLocationLocationTypeValue
-> = z.nativeEnum(EmployeeSchemasHomeLocationLocationTypeValue);
+export namespace EmployeeSchemasHomeLocationLocationTypeValue$ {
+    export const inboundSchema = z.nativeEnum(EmployeeSchemasHomeLocationLocationTypeValue);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace EmployeeLocationType$ {
@@ -1983,7 +1995,9 @@ export namespace EmployeeLocationType$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(EmployeeSchemasHomeLocationLocationTypeValue$).optional(),
+            value: z
+                .nullable(EmployeeSchemasHomeLocationLocationTypeValue$.inboundSchema)
+                .optional(),
         })
         .transform((v) => {
             return {
@@ -2000,7 +2014,7 @@ export namespace EmployeeLocationType$ {
             | boolean
             | null
             | undefined;
-        value?: EmployeeSchemasHomeLocationLocationTypeValue | null | undefined;
+        value?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, EmployeeLocationType> = z
@@ -2015,7 +2029,9 @@ export namespace EmployeeLocationType$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(EmployeeSchemasHomeLocationLocationTypeValue$).optional(),
+            value: z
+                .nullable(EmployeeSchemasHomeLocationLocationTypeValue$.outboundSchema)
+                .optional(),
         })
         .transform((v) => {
             return {
@@ -2196,9 +2212,10 @@ export namespace EmployeeSchemasMaritalStatusSourceValue$ {
 }
 
 /** @internal */
-export const EmployeeSchemasMaritalStatusValue$: z.ZodNativeEnum<
-    typeof EmployeeSchemasMaritalStatusValue
-> = z.nativeEnum(EmployeeSchemasMaritalStatusValue);
+export namespace EmployeeSchemasMaritalStatusValue$ {
+    export const inboundSchema = z.nativeEnum(EmployeeSchemasMaritalStatusValue);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace MaritalStatus$ {
@@ -2214,7 +2231,7 @@ export namespace MaritalStatus$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(EmployeeSchemasMaritalStatusValue$).optional(),
+            value: z.nullable(EmployeeSchemasMaritalStatusValue$.inboundSchema).optional(),
         })
         .transform((v) => {
             return {
@@ -2231,7 +2248,7 @@ export namespace MaritalStatus$ {
             | boolean
             | null
             | undefined;
-        value?: EmployeeSchemasMaritalStatusValue | null | undefined;
+        value?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, MaritalStatus> = z
@@ -2246,7 +2263,7 @@ export namespace MaritalStatus$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(EmployeeSchemasMaritalStatusValue$).optional(),
+            value: z.nullable(EmployeeSchemasMaritalStatusValue$.outboundSchema).optional(),
         })
         .transform((v) => {
             return {
@@ -2300,9 +2317,10 @@ export namespace EmployeeSchemasPreferredLanguageSourceValue$ {
 }
 
 /** @internal */
-export const EmployeeSchemasPreferredLanguageValue$: z.ZodNativeEnum<
-    typeof EmployeeSchemasPreferredLanguageValue
-> = z.nativeEnum(EmployeeSchemasPreferredLanguageValue);
+export namespace EmployeeSchemasPreferredLanguageValue$ {
+    export const inboundSchema = z.nativeEnum(EmployeeSchemasPreferredLanguageValue);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace PreferredLanguage$ {
@@ -2318,7 +2336,7 @@ export namespace PreferredLanguage$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(EmployeeSchemasPreferredLanguageValue$).optional(),
+            value: z.nullable(EmployeeSchemasPreferredLanguageValue$.inboundSchema).optional(),
         })
         .transform((v) => {
             return {
@@ -2335,7 +2353,7 @@ export namespace PreferredLanguage$ {
             | boolean
             | null
             | undefined;
-        value?: EmployeeSchemasPreferredLanguageValue | null | undefined;
+        value?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, PreferredLanguage> = z
@@ -2350,7 +2368,7 @@ export namespace PreferredLanguage$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(EmployeeSchemasPreferredLanguageValue$).optional(),
+            value: z.nullable(EmployeeSchemasPreferredLanguageValue$.outboundSchema).optional(),
         })
         .transform((v) => {
             return {
@@ -2398,9 +2416,10 @@ export namespace EmployeeSchemasWorkLocationSourceValue$ {
 }
 
 /** @internal */
-export const EmployeeSchemasWorkLocationValue$: z.ZodNativeEnum<
-    typeof EmployeeSchemasWorkLocationValue
-> = z.nativeEnum(EmployeeSchemasWorkLocationValue);
+export namespace EmployeeSchemasWorkLocationValue$ {
+    export const inboundSchema = z.nativeEnum(EmployeeSchemasWorkLocationValue);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace EmployeeSchemasCountry$ {
@@ -2416,7 +2435,7 @@ export namespace EmployeeSchemasCountry$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(EmployeeSchemasWorkLocationValue$).optional(),
+            value: z.nullable(EmployeeSchemasWorkLocationValue$.inboundSchema).optional(),
         })
         .transform((v) => {
             return {
@@ -2433,7 +2452,7 @@ export namespace EmployeeSchemasCountry$ {
             | boolean
             | null
             | undefined;
-        value?: EmployeeSchemasWorkLocationValue | null | undefined;
+        value?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, EmployeeSchemasCountry> = z
@@ -2448,7 +2467,7 @@ export namespace EmployeeSchemasCountry$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(EmployeeSchemasWorkLocationValue$).optional(),
+            value: z.nullable(EmployeeSchemasWorkLocationValue$.outboundSchema).optional(),
         })
         .transform((v) => {
             return {
@@ -2506,9 +2525,10 @@ export namespace EmployeeSchemasWorkLocationLocationTypeSourceValue$ {
 }
 
 /** @internal */
-export const EmployeeSchemasWorkLocationLocationTypeValue$: z.ZodNativeEnum<
-    typeof EmployeeSchemasWorkLocationLocationTypeValue
-> = z.nativeEnum(EmployeeSchemasWorkLocationLocationTypeValue);
+export namespace EmployeeSchemasWorkLocationLocationTypeValue$ {
+    export const inboundSchema = z.nativeEnum(EmployeeSchemasWorkLocationLocationTypeValue);
+    export const outboundSchema = inboundSchema;
+}
 
 /** @internal */
 export namespace EmployeeSchemasLocationType$ {
@@ -2524,7 +2544,9 @@ export namespace EmployeeSchemasLocationType$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(EmployeeSchemasWorkLocationLocationTypeValue$).optional(),
+            value: z
+                .nullable(EmployeeSchemasWorkLocationLocationTypeValue$.inboundSchema)
+                .optional(),
         })
         .transform((v) => {
             return {
@@ -2541,7 +2563,7 @@ export namespace EmployeeSchemasLocationType$ {
             | boolean
             | null
             | undefined;
-        value?: EmployeeSchemasWorkLocationLocationTypeValue | null | undefined;
+        value?: string | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, EmployeeSchemasLocationType> = z
@@ -2556,7 +2578,9 @@ export namespace EmployeeSchemasLocationType$ {
                     ])
                 )
                 .optional(),
-            value: z.nullable(EmployeeSchemasWorkLocationLocationTypeValue$).optional(),
+            value: z
+                .nullable(EmployeeSchemasWorkLocationLocationTypeValue$.outboundSchema)
+                .optional(),
         })
         .transform((v) => {
             return {
