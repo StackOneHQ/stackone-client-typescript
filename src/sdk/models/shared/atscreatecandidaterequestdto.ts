@@ -35,6 +35,10 @@ export type AtsCreateCandidateRequestDto = {
      */
     name?: string | null | undefined;
     /**
+     * Value to pass through to the provider
+     */
+    passthrough?: Record<string, any> | null | undefined;
+    /**
      * The candidate personal phone number
      */
     phoneNumber?: string | null | undefined;
@@ -66,6 +70,7 @@ export namespace AtsCreateCandidateRequestDto$ {
                 .optional(),
             last_name: z.nullable(z.string()).optional(),
             name: z.nullable(z.string()).optional(),
+            passthrough: z.nullable(z.record(z.any())).optional(),
             phone_number: z.nullable(z.string()).optional(),
             social_links: z.nullable(z.array(SocialLink$.inboundSchema)).optional(),
             title: z.nullable(z.string()).optional(),
@@ -79,6 +84,7 @@ export namespace AtsCreateCandidateRequestDto$ {
                 ...(v.hired_at === undefined ? null : { hiredAt: v.hired_at }),
                 ...(v.last_name === undefined ? null : { lastName: v.last_name }),
                 ...(v.name === undefined ? null : { name: v.name }),
+                ...(v.passthrough === undefined ? null : { passthrough: v.passthrough }),
                 ...(v.phone_number === undefined ? null : { phoneNumber: v.phone_number }),
                 ...(v.social_links === undefined ? null : { socialLinks: v.social_links }),
                 ...(v.title === undefined ? null : { title: v.title }),
@@ -93,6 +99,7 @@ export namespace AtsCreateCandidateRequestDto$ {
         hired_at?: string | null | undefined;
         last_name?: string | null | undefined;
         name?: string | null | undefined;
+        passthrough?: Record<string, any> | null | undefined;
         phone_number?: string | null | undefined;
         social_links?: Array<SocialLink$.Outbound> | null | undefined;
         title?: string | null | undefined;
@@ -107,6 +114,7 @@ export namespace AtsCreateCandidateRequestDto$ {
             hiredAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
             lastName: z.nullable(z.string()).optional(),
             name: z.nullable(z.string()).optional(),
+            passthrough: z.nullable(z.record(z.any())).optional(),
             phoneNumber: z.nullable(z.string()).optional(),
             socialLinks: z.nullable(z.array(SocialLink$.outboundSchema)).optional(),
             title: z.nullable(z.string()).optional(),
@@ -120,6 +128,7 @@ export namespace AtsCreateCandidateRequestDto$ {
                 ...(v.hiredAt === undefined ? null : { hired_at: v.hiredAt }),
                 ...(v.lastName === undefined ? null : { last_name: v.lastName }),
                 ...(v.name === undefined ? null : { name: v.name }),
+                ...(v.passthrough === undefined ? null : { passthrough: v.passthrough }),
                 ...(v.phoneNumber === undefined ? null : { phone_number: v.phoneNumber }),
                 ...(v.socialLinks === undefined ? null : { social_links: v.socialLinks }),
                 ...(v.title === undefined ? null : { title: v.title }),

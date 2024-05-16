@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 7fa83af8-9e8e-4410-b7e2-cf1d0eaf688b
 management:
-  docChecksum: d4d3e479a6d880d568b854ff28ac5ea2
+  docChecksum: ad312208f8ef0fc9e05c27a4c1b8497d
   docVersion: 1.0.0
   speakeasyVersion: 1.291.0
   generationVersion: 2.332.4
-  releaseVersion: 4.8.3
-  configChecksum: 373706241b614eacf25a26b952a0113d
+  releaseVersion: 4.8.4
+  configChecksum: b0e8f9c407cd2c1464fa34ad58206133
   repoURL: https://github.com/StackOneHQ/stackone-client-typescript.git
   repoSubDirectory: .
   installationURL: https://github.com/StackOneHQ/stackone-client-typescript
@@ -389,34 +389,49 @@ generatedFiles:
   - docs/sdk/models/operations/atsgetrejectedreasonresponse.md
   - docs/sdk/models/operations/atsgetuserrequest.md
   - docs/sdk/models/operations/atsgetuserresponse.md
+  - docs/sdk/models/operations/filter.md
   - docs/sdk/models/operations/atslistapplicationdocumentsrequest.md
   - docs/sdk/models/operations/atslistapplicationdocumentsresponse.md
+  - docs/sdk/models/operations/queryparamfilter.md
   - docs/sdk/models/operations/atslistapplicationscorecardsrequest.md
   - docs/sdk/models/operations/atslistapplicationscorecardsresponse.md
+  - docs/sdk/models/operations/atslistapplicationsqueryparamfilter.md
   - docs/sdk/models/operations/atslistapplicationsrequest.md
   - docs/sdk/models/operations/atslistapplicationsresponse.md
+  - docs/sdk/models/operations/atslistapplicationsoffersqueryparamfilter.md
   - docs/sdk/models/operations/atslistapplicationsoffersrequest.md
   - docs/sdk/models/operations/atslistapplicationsoffersresponse.md
+  - docs/sdk/models/operations/atslistcandidatenotesqueryparamfilter.md
   - docs/sdk/models/operations/atslistcandidatenotesrequest.md
   - docs/sdk/models/operations/atslistcandidatenotesresponse.md
+  - docs/sdk/models/operations/atslistcandidatesqueryparamfilter.md
   - docs/sdk/models/operations/atslistcandidatesrequest.md
   - docs/sdk/models/operations/atslistcandidatesresponse.md
+  - docs/sdk/models/operations/atslistdepartmentsqueryparamfilter.md
   - docs/sdk/models/operations/atslistdepartmentsrequest.md
   - docs/sdk/models/operations/atslistdepartmentsresponse.md
+  - docs/sdk/models/operations/atslistinterviewstagesqueryparamfilter.md
   - docs/sdk/models/operations/atslistinterviewstagesrequest.md
   - docs/sdk/models/operations/atslistinterviewstagesresponse.md
+  - docs/sdk/models/operations/atslistinterviewsqueryparamfilter.md
   - docs/sdk/models/operations/atslistinterviewsrequest.md
   - docs/sdk/models/operations/atslistinterviewsresponse.md
+  - docs/sdk/models/operations/atslistjobpostingsqueryparamfilter.md
   - docs/sdk/models/operations/atslistjobpostingsrequest.md
   - docs/sdk/models/operations/atslistjobpostingsresponse.md
+  - docs/sdk/models/operations/atslistjobsqueryparamfilter.md
   - docs/sdk/models/operations/atslistjobsrequest.md
   - docs/sdk/models/operations/atslistjobsresponse.md
+  - docs/sdk/models/operations/atslistlocationsqueryparamfilter.md
   - docs/sdk/models/operations/atslistlocationsrequest.md
   - docs/sdk/models/operations/atslistlocationsresponse.md
+  - docs/sdk/models/operations/atslistoffersqueryparamfilter.md
   - docs/sdk/models/operations/atslistoffersrequest.md
   - docs/sdk/models/operations/atslistoffersresponse.md
+  - docs/sdk/models/operations/atslistrejectedreasonsqueryparamfilter.md
   - docs/sdk/models/operations/atslistrejectedreasonsrequest.md
   - docs/sdk/models/operations/atslistrejectedreasonsresponse.md
+  - docs/sdk/models/operations/atslistusersqueryparamfilter.md
   - docs/sdk/models/operations/atslistusersrequest.md
   - docs/sdk/models/operations/atslistusersresponse.md
   - docs/sdk/models/operations/atsupdateapplicationrequest.md
@@ -433,10 +448,13 @@ generatedFiles:
   - docs/sdk/models/operations/crmgetcontactresponse.md
   - docs/sdk/models/operations/crmgetlistrequest.md
   - docs/sdk/models/operations/crmgetlistresponse.md
+  - docs/sdk/models/operations/crmlistaccountsqueryparamfilter.md
   - docs/sdk/models/operations/crmlistaccountsrequest.md
   - docs/sdk/models/operations/crmlistaccountsresponse.md
+  - docs/sdk/models/operations/crmlistcontactsqueryparamfilter.md
   - docs/sdk/models/operations/crmlistcontactsrequest.md
   - docs/sdk/models/operations/crmlistcontactsresponse.md
+  - docs/sdk/models/operations/crmlistlistsqueryparamfilter.md
   - docs/sdk/models/operations/crmlistlistsrequest.md
   - docs/sdk/models/operations/crmlistlistsresponse.md
   - docs/sdk/models/operations/crmupdatecontactrequest.md
@@ -471,24 +489,34 @@ generatedFiles:
   - docs/sdk/models/operations/hrisgetlocationresponse.md
   - docs/sdk/models/operations/hrisgettimeoffrequestrequest.md
   - docs/sdk/models/operations/hrisgettimeoffrequestresponse.md
+  - docs/sdk/models/operations/hrislistbenefitsqueryparamfilter.md
   - docs/sdk/models/operations/hrislistbenefitsrequest.md
   - docs/sdk/models/operations/hrislistbenefitsresponse.md
+  - docs/sdk/models/operations/hrislistcompaniesqueryparamfilter.md
   - docs/sdk/models/operations/hrislistcompaniesrequest.md
   - docs/sdk/models/operations/hrislistcompaniesresponse.md
+  - docs/sdk/models/operations/hrislistemployeedocumentsqueryparamfilter.md
   - docs/sdk/models/operations/hrislistemployeedocumentsrequest.md
   - docs/sdk/models/operations/hrislistemployeedocumentsresponse.md
+  - docs/sdk/models/operations/hrislistemployeetimeoffrequestsqueryparamfilter.md
   - docs/sdk/models/operations/hrislistemployeetimeoffrequestsrequest.md
   - docs/sdk/models/operations/hrislistemployeetimeoffrequestsresponse.md
+  - docs/sdk/models/operations/hrislistemployeeworkeligibilityqueryparamfilter.md
   - docs/sdk/models/operations/hrislistemployeeworkeligibilityrequest.md
   - docs/sdk/models/operations/hrislistemployeeworkeligibilityresponse.md
+  - docs/sdk/models/operations/hrislistemployeesqueryparamfilter.md
   - docs/sdk/models/operations/hrislistemployeesrequest.md
   - docs/sdk/models/operations/hrislistemployeesresponse.md
+  - docs/sdk/models/operations/hrislistemploymentsqueryparamfilter.md
   - docs/sdk/models/operations/hrislistemploymentsrequest.md
   - docs/sdk/models/operations/hrislistemploymentsresponse.md
+  - docs/sdk/models/operations/hrislistgroupsqueryparamfilter.md
   - docs/sdk/models/operations/hrislistgroupsrequest.md
   - docs/sdk/models/operations/hrislistgroupsresponse.md
+  - docs/sdk/models/operations/hrislistlocationsqueryparamfilter.md
   - docs/sdk/models/operations/hrislistlocationsrequest.md
   - docs/sdk/models/operations/hrislistlocationsresponse.md
+  - docs/sdk/models/operations/hrislisttimeoffrequestsqueryparamfilter.md
   - docs/sdk/models/operations/hrislisttimeoffrequestsrequest.md
   - docs/sdk/models/operations/hrislisttimeoffrequestsresponse.md
   - docs/sdk/models/operations/hrisupdateemployeerequest.md
@@ -507,12 +535,16 @@ generatedFiles:
   - docs/sdk/models/operations/iamgetroleresponse.md
   - docs/sdk/models/operations/iamgetuserrequest.md
   - docs/sdk/models/operations/iamgetuserresponse.md
+  - docs/sdk/models/operations/iamlistgroupsqueryparamfilter.md
   - docs/sdk/models/operations/iamlistgroupsrequest.md
   - docs/sdk/models/operations/iamlistgroupsresponse.md
+  - docs/sdk/models/operations/iamlistpoliciesqueryparamfilter.md
   - docs/sdk/models/operations/iamlistpoliciesrequest.md
   - docs/sdk/models/operations/iamlistpoliciesresponse.md
+  - docs/sdk/models/operations/iamlistrolesqueryparamfilter.md
   - docs/sdk/models/operations/iamlistrolesrequest.md
   - docs/sdk/models/operations/iamlistrolesresponse.md
+  - docs/sdk/models/operations/iamlistusersqueryparamfilter.md
   - docs/sdk/models/operations/iamlistusersrequest.md
   - docs/sdk/models/operations/iamlistusersresponse.md
   - docs/sdk/models/operations/marketingcreateemailtemplaterequest.md
@@ -529,12 +561,16 @@ generatedFiles:
   - docs/sdk/models/operations/marketinggetomnichanneltemplateresponse.md
   - docs/sdk/models/operations/marketinggetpushtemplaterequest.md
   - docs/sdk/models/operations/marketinggetpushtemplateresponse.md
+  - docs/sdk/models/operations/marketinglistcampaignsqueryparamfilter.md
   - docs/sdk/models/operations/marketinglistcampaignsrequest.md
   - docs/sdk/models/operations/marketinglistcampaignsresponse.md
+  - docs/sdk/models/operations/marketinglistemailtemplatesqueryparamfilter.md
   - docs/sdk/models/operations/marketinglistemailtemplatesrequest.md
   - docs/sdk/models/operations/marketinglistemailtemplatesresponse.md
+  - docs/sdk/models/operations/marketinglistomnichanneltemplatesqueryparamfilter.md
   - docs/sdk/models/operations/marketinglistomnichanneltemplatesrequest.md
   - docs/sdk/models/operations/marketinglistomnichanneltemplatesresponse.md
+  - docs/sdk/models/operations/marketinglistpushtemplatesqueryparamfilter.md
   - docs/sdk/models/operations/marketinglistpushtemplatesrequest.md
   - docs/sdk/models/operations/marketinglistpushtemplatesresponse.md
   - docs/sdk/models/operations/marketingupdateemailtemplaterequest.md

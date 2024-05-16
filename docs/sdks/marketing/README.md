@@ -36,7 +36,6 @@ const stackOne = new StackOne({
 async function run() {
   const result = await stackOne.marketing.createEmailTemplate({
     marketingCreateEmailTemplateRequestDto: {
-      id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
       messages: [
         {
           id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
@@ -46,7 +45,41 @@ async function run() {
           remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         },
       ],
-      remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+      passthrough: {
+        "0": "{",
+        "1": "\"",
+        "2": "o",
+        "3": "t",
+        "4": "h",
+        "5": "e",
+        "6": "r",
+        "7": "_",
+        "8": "k",
+        "9": "n",
+        "10": "o",
+        "11": "w",
+        "12": "n",
+        "13": "_",
+        "14": "n",
+        "15": "a",
+        "16": "m",
+        "17": "e",
+        "18": "s",
+        "19": "\"",
+        "20": ":",
+        "21": " ",
+        "22": "\"",
+        "23": "J",
+        "24": "o",
+        "25": "h",
+        "26": "n",
+        "27": " ",
+        "28": "D",
+        "29": "o",
+        "30": "e",
+        "31": "\"",
+        "32": "}",
+      },
     },
     xAccountId: "<value>",
   });
@@ -94,7 +127,6 @@ const stackOne = new StackOne({
 async function run() {
   const result = await stackOne.marketing.createOmniChannelTemplate({
     marketingCreateTemplateRequestDto: {
-      id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
       messages: [
         {
           id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
@@ -104,7 +136,41 @@ async function run() {
           remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         },
       ],
-      remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+      passthrough: {
+        "0": "{",
+        "1": "\"",
+        "2": "o",
+        "3": "t",
+        "4": "h",
+        "5": "e",
+        "6": "r",
+        "7": "_",
+        "8": "k",
+        "9": "n",
+        "10": "o",
+        "11": "w",
+        "12": "n",
+        "13": "_",
+        "14": "n",
+        "15": "a",
+        "16": "m",
+        "17": "e",
+        "18": "s",
+        "19": "\"",
+        "20": ":",
+        "21": " ",
+        "22": "\"",
+        "23": "J",
+        "24": "o",
+        "25": "h",
+        "26": "n",
+        "27": " ",
+        "28": "D",
+        "29": "o",
+        "30": "e",
+        "31": "\"",
+        "32": "}",
+      },
     },
     xAccountId: "<value>",
   });
@@ -152,7 +218,6 @@ const stackOne = new StackOne({
 async function run() {
   const result = await stackOne.marketing.createPushTemplate({
     marketingCreatePushTemplateRequestDto: {
-      id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
       messages: [
         {
           id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
@@ -162,7 +227,41 @@ async function run() {
           remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         },
       ],
-      remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+      passthrough: {
+        "0": "{",
+        "1": "\"",
+        "2": "o",
+        "3": "t",
+        "4": "h",
+        "5": "e",
+        "6": "r",
+        "7": "_",
+        "8": "k",
+        "9": "n",
+        "10": "o",
+        "11": "w",
+        "12": "n",
+        "13": "_",
+        "14": "n",
+        "15": "a",
+        "16": "m",
+        "17": "e",
+        "18": "s",
+        "19": "\"",
+        "20": ":",
+        "21": " ",
+        "22": "\"",
+        "23": "J",
+        "24": "o",
+        "25": "h",
+        "26": "n",
+        "27": " ",
+        "28": "D",
+        "29": "o",
+        "30": "e",
+        "31": "\"",
+        "32": "}",
+      },
     },
     xAccountId: "<value>",
   });
@@ -398,7 +497,9 @@ const stackOne = new StackOne({
 async function run() {
   const result = await stackOne.marketing.listCampaigns({
     fields: "id,name,created_at,updated_at,description,schedule_type,status,channels,first_sent_at,last_sent_at,tags,messages",
-    filterUpdatedAfter: "2020-01-01T00:00:00.000Z",
+    filter: {
+      updatedAfter: "2020-01-01T00:00:00.000Z",
+    },
     xAccountId: "<value>",
   });
 
@@ -445,7 +546,9 @@ const stackOne = new StackOne({
 async function run() {
   const result = await stackOne.marketing.listEmailTemplates({
     fields: "id,name,messages,created_at,updated_at,tags",
-    filterUpdatedAfter: "2020-01-01T00:00:00.000Z",
+    filter: {
+      updatedAfter: "2020-01-01T00:00:00.000Z",
+    },
     xAccountId: "<value>",
   });
 
@@ -492,7 +595,9 @@ const stackOne = new StackOne({
 async function run() {
   const result = await stackOne.marketing.listOmniChannelTemplates({
     fields: "id,name,messages,created_at,updated_at,tags",
-    filterUpdatedAfter: "2020-01-01T00:00:00.000Z",
+    filter: {
+      updatedAfter: "2020-01-01T00:00:00.000Z",
+    },
     xAccountId: "<value>",
   });
 
@@ -539,7 +644,9 @@ const stackOne = new StackOne({
 async function run() {
   const result = await stackOne.marketing.listPushTemplates({
     fields: "id,name,messages,created_at,updated_at,tags",
-    filterUpdatedAfter: "2020-01-01T00:00:00.000Z",
+    filter: {
+      updatedAfter: "2020-01-01T00:00:00.000Z",
+    },
     xAccountId: "<value>",
   });
 
@@ -586,7 +693,6 @@ const stackOne = new StackOne({
 async function run() {
   const result = await stackOne.marketing.updateEmailTemplate({
     marketingCreateEmailTemplateRequestDto: {
-      id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
       messages: [
         {
           id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
@@ -596,7 +702,41 @@ async function run() {
           remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         },
       ],
-      remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+      passthrough: {
+        "0": "{",
+        "1": "\"",
+        "2": "o",
+        "3": "t",
+        "4": "h",
+        "5": "e",
+        "6": "r",
+        "7": "_",
+        "8": "k",
+        "9": "n",
+        "10": "o",
+        "11": "w",
+        "12": "n",
+        "13": "_",
+        "14": "n",
+        "15": "a",
+        "16": "m",
+        "17": "e",
+        "18": "s",
+        "19": "\"",
+        "20": ":",
+        "21": " ",
+        "22": "\"",
+        "23": "J",
+        "24": "o",
+        "25": "h",
+        "26": "n",
+        "27": " ",
+        "28": "D",
+        "29": "o",
+        "30": "e",
+        "31": "\"",
+        "32": "}",
+      },
     },
     id: "<id>",
     xAccountId: "<value>",
@@ -645,7 +785,6 @@ const stackOne = new StackOne({
 async function run() {
   const result = await stackOne.marketing.updateOmniChannelTemplate({
     marketingCreateTemplateRequestDto: {
-      id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
       messages: [
         {
           id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
@@ -655,7 +794,41 @@ async function run() {
           remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         },
       ],
-      remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+      passthrough: {
+        "0": "{",
+        "1": "\"",
+        "2": "o",
+        "3": "t",
+        "4": "h",
+        "5": "e",
+        "6": "r",
+        "7": "_",
+        "8": "k",
+        "9": "n",
+        "10": "o",
+        "11": "w",
+        "12": "n",
+        "13": "_",
+        "14": "n",
+        "15": "a",
+        "16": "m",
+        "17": "e",
+        "18": "s",
+        "19": "\"",
+        "20": ":",
+        "21": " ",
+        "22": "\"",
+        "23": "J",
+        "24": "o",
+        "25": "h",
+        "26": "n",
+        "27": " ",
+        "28": "D",
+        "29": "o",
+        "30": "e",
+        "31": "\"",
+        "32": "}",
+      },
     },
     id: "<id>",
     xAccountId: "<value>",
@@ -704,7 +877,6 @@ const stackOne = new StackOne({
 async function run() {
   const result = await stackOne.marketing.updatePushTemplate({
     marketingCreatePushTemplateRequestDto: {
-      id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
       messages: [
         {
           id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
@@ -714,7 +886,41 @@ async function run() {
           remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         },
       ],
-      remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+      passthrough: {
+        "0": "{",
+        "1": "\"",
+        "2": "o",
+        "3": "t",
+        "4": "h",
+        "5": "e",
+        "6": "r",
+        "7": "_",
+        "8": "k",
+        "9": "n",
+        "10": "o",
+        "11": "w",
+        "12": "n",
+        "13": "_",
+        "14": "n",
+        "15": "a",
+        "16": "m",
+        "17": "e",
+        "18": "s",
+        "19": "\"",
+        "20": ":",
+        "21": " ",
+        "22": "\"",
+        "23": "J",
+        "24": "o",
+        "25": "h",
+        "26": "n",
+        "27": " ",
+        "28": "D",
+        "29": "o",
+        "30": "e",
+        "31": "\"",
+        "32": "}",
+      },
     },
     id: "<id>",
     xAccountId: "<value>",

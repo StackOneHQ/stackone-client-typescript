@@ -761,10 +761,7 @@ export class Marketing extends ClientSDK {
 
         const query$ = [
             enc$.encodeForm("fields", payload$.fields, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("filter[updated_after]", payload$["filter[updated_after]"], {
-                explode: true,
-                charEncoding: "percent",
-            }),
+            enc$.encodeDeepObject("filter", payload$.filter, { charEncoding: "percent" }),
             enc$.encodeForm("next", payload$.next, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("page", payload$.page, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("page_size", payload$.page_size, {
@@ -873,10 +870,7 @@ export class Marketing extends ClientSDK {
 
         const query$ = [
             enc$.encodeForm("fields", payload$.fields, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("filter[updated_after]", payload$["filter[updated_after]"], {
-                explode: true,
-                charEncoding: "percent",
-            }),
+            enc$.encodeDeepObject("filter", payload$.filter, { charEncoding: "percent" }),
             enc$.encodeForm("next", payload$.next, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("page", payload$.page, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("page_size", payload$.page_size, {
@@ -986,10 +980,7 @@ export class Marketing extends ClientSDK {
 
         const query$ = [
             enc$.encodeForm("fields", payload$.fields, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("filter[updated_after]", payload$["filter[updated_after]"], {
-                explode: true,
-                charEncoding: "percent",
-            }),
+            enc$.encodeDeepObject("filter", payload$.filter, { charEncoding: "percent" }),
             enc$.encodeForm("next", payload$.next, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("page", payload$.page, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("page_size", payload$.page_size, {
@@ -1100,10 +1091,7 @@ export class Marketing extends ClientSDK {
 
         const query$ = [
             enc$.encodeForm("fields", payload$.fields, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("filter[updated_after]", payload$["filter[updated_after]"], {
-                explode: true,
-                charEncoding: "percent",
-            }),
+            enc$.encodeDeepObject("filter", payload$.filter, { charEncoding: "percent" }),
             enc$.encodeForm("next", payload$.next, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("page", payload$.page, { explode: true, charEncoding: "percent" }),
             enc$.encodeForm("page_size", payload$.page_size, {

@@ -375,6 +375,10 @@ export type HrisCreateWorkEligibilityRequestDto = {
      */
     issuedBy?: IssuedBy | null | undefined;
     number?: string | null | undefined;
+    /**
+     * Value to pass through to the provider
+     */
+    passthrough?: Record<string, any> | null | undefined;
     subType?: string | null | undefined;
     type?: HrisCreateWorkEligibilityRequestDtoType | null | undefined;
     validFrom?: Date | null | undefined;
@@ -810,6 +814,7 @@ export namespace HrisCreateWorkEligibilityRequestDto$ {
             document: z.nullable(z.lazy(() => Document$.inboundSchema)).optional(),
             issued_by: z.nullable(z.lazy(() => IssuedBy$.inboundSchema)).optional(),
             number: z.nullable(z.string()).optional(),
+            passthrough: z.nullable(z.record(z.any())).optional(),
             sub_type: z.nullable(z.string()).optional(),
             type: z
                 .nullable(z.lazy(() => HrisCreateWorkEligibilityRequestDtoType$.inboundSchema))
@@ -836,6 +841,7 @@ export namespace HrisCreateWorkEligibilityRequestDto$ {
                 ...(v.document === undefined ? null : { document: v.document }),
                 ...(v.issued_by === undefined ? null : { issuedBy: v.issued_by }),
                 ...(v.number === undefined ? null : { number: v.number }),
+                ...(v.passthrough === undefined ? null : { passthrough: v.passthrough }),
                 ...(v.sub_type === undefined ? null : { subType: v.sub_type }),
                 ...(v.type === undefined ? null : { type: v.type }),
                 ...(v.valid_from === undefined ? null : { validFrom: v.valid_from }),
@@ -847,6 +853,7 @@ export namespace HrisCreateWorkEligibilityRequestDto$ {
         document?: Document$.Outbound | null | undefined;
         issued_by?: IssuedBy$.Outbound | null | undefined;
         number?: string | null | undefined;
+        passthrough?: Record<string, any> | null | undefined;
         sub_type?: string | null | undefined;
         type?: HrisCreateWorkEligibilityRequestDtoType$.Outbound | null | undefined;
         valid_from?: string | null | undefined;
@@ -862,6 +869,7 @@ export namespace HrisCreateWorkEligibilityRequestDto$ {
             document: z.nullable(z.lazy(() => Document$.outboundSchema)).optional(),
             issuedBy: z.nullable(z.lazy(() => IssuedBy$.outboundSchema)).optional(),
             number: z.nullable(z.string()).optional(),
+            passthrough: z.nullable(z.record(z.any())).optional(),
             subType: z.nullable(z.string()).optional(),
             type: z
                 .nullable(z.lazy(() => HrisCreateWorkEligibilityRequestDtoType$.outboundSchema))
@@ -874,6 +882,7 @@ export namespace HrisCreateWorkEligibilityRequestDto$ {
                 ...(v.document === undefined ? null : { document: v.document }),
                 ...(v.issuedBy === undefined ? null : { issued_by: v.issuedBy }),
                 ...(v.number === undefined ? null : { number: v.number }),
+                ...(v.passthrough === undefined ? null : { passthrough: v.passthrough }),
                 ...(v.subType === undefined ? null : { sub_type: v.subType }),
                 ...(v.type === undefined ? null : { type: v.type }),
                 ...(v.validFrom === undefined ? null : { valid_from: v.validFrom }),

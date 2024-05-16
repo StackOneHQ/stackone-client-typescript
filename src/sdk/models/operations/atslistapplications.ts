@@ -5,6 +5,20 @@
 import * as shared from "../shared";
 import * as z from "zod";
 
+/**
+ * ATS Application Filter
+ */
+export type AtsListApplicationsQueryParamFilter = {
+    /**
+     * Filter to select applications by job_id
+     */
+    jobId?: string | null | undefined;
+    /**
+     * Use a string with a date to only select results updated after that given date
+     */
+    updatedAfter?: string | null | undefined;
+};
+
 export type AtsListApplicationsRequest = {
     /**
      * The comma separated list of fields that will be expanded in the response
@@ -15,13 +29,9 @@ export type AtsListApplicationsRequest = {
      */
     fields?: string | null | undefined;
     /**
-     * Filter to select applications by job_id
+     * ATS Application Filter
      */
-    filterJobId?: string | null | undefined;
-    /**
-     * Use a string with a date to only select results updated after that given date
-     */
-    filterUpdatedAfter?: string | null | undefined;
+    filter?: AtsListApplicationsQueryParamFilter | null | undefined;
     /**
      * Filter for job ID to retrieve a list of applications related to this job
      *
@@ -88,13 +98,54 @@ export type AtsListApplicationsResponse = {
 };
 
 /** @internal */
+export namespace AtsListApplicationsQueryParamFilter$ {
+    export const inboundSchema: z.ZodType<
+        AtsListApplicationsQueryParamFilter,
+        z.ZodTypeDef,
+        unknown
+    > = z
+        .object({
+            job_id: z.nullable(z.string()).optional(),
+            updated_after: z.nullable(z.string()).optional(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.job_id === undefined ? null : { jobId: v.job_id }),
+                ...(v.updated_after === undefined ? null : { updatedAfter: v.updated_after }),
+            };
+        });
+
+    export type Outbound = {
+        job_id?: string | null | undefined;
+        updated_after?: string | null | undefined;
+    };
+
+    export const outboundSchema: z.ZodType<
+        Outbound,
+        z.ZodTypeDef,
+        AtsListApplicationsQueryParamFilter
+    > = z
+        .object({
+            jobId: z.nullable(z.string()).optional(),
+            updatedAfter: z.nullable(z.string()).optional(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.jobId === undefined ? null : { job_id: v.jobId }),
+                ...(v.updatedAfter === undefined ? null : { updated_after: v.updatedAfter }),
+            };
+        });
+}
+
+/** @internal */
 export namespace AtsListApplicationsRequest$ {
     export const inboundSchema: z.ZodType<AtsListApplicationsRequest, z.ZodTypeDef, unknown> = z
         .object({
             expand: z.nullable(z.string()).optional(),
             fields: z.nullable(z.string()).optional(),
-            "filter[job_id]": z.nullable(z.string()).optional(),
-            "filter[updated_after]": z.nullable(z.string()).optional(),
+            filter: z
+                .nullable(z.lazy(() => AtsListApplicationsQueryParamFilter$.inboundSchema))
+                .optional(),
             job_id: z.nullable(z.string()).optional(),
             next: z.nullable(z.string()).optional(),
             page: z.nullable(z.string()).optional(),
@@ -109,12 +160,7 @@ export namespace AtsListApplicationsRequest$ {
             return {
                 ...(v.expand === undefined ? null : { expand: v.expand }),
                 ...(v.fields === undefined ? null : { fields: v.fields }),
-                ...(v["filter[job_id]"] === undefined
-                    ? null
-                    : { filterJobId: v["filter[job_id]"] }),
-                ...(v["filter[updated_after]"] === undefined
-                    ? null
-                    : { filterUpdatedAfter: v["filter[updated_after]"] }),
+                ...(v.filter === undefined ? null : { filter: v.filter }),
                 ...(v.job_id === undefined ? null : { jobId: v.job_id }),
                 ...(v.next === undefined ? null : { next: v.next }),
                 ...(v.page === undefined ? null : { page: v.page }),
@@ -130,8 +176,7 @@ export namespace AtsListApplicationsRequest$ {
     export type Outbound = {
         expand?: string | null | undefined;
         fields?: string | null | undefined;
-        "filter[job_id]"?: string | null | undefined;
-        "filter[updated_after]"?: string | null | undefined;
+        filter?: AtsListApplicationsQueryParamFilter$.Outbound | null | undefined;
         job_id?: string | null | undefined;
         next?: string | null | undefined;
         page?: string | null | undefined;
@@ -147,8 +192,9 @@ export namespace AtsListApplicationsRequest$ {
         .object({
             expand: z.nullable(z.string()).optional(),
             fields: z.nullable(z.string()).optional(),
-            filterJobId: z.nullable(z.string()).optional(),
-            filterUpdatedAfter: z.nullable(z.string()).optional(),
+            filter: z
+                .nullable(z.lazy(() => AtsListApplicationsQueryParamFilter$.outboundSchema))
+                .optional(),
             jobId: z.nullable(z.string()).optional(),
             next: z.nullable(z.string()).optional(),
             page: z.nullable(z.string()).optional(),
@@ -163,10 +209,7 @@ export namespace AtsListApplicationsRequest$ {
             return {
                 ...(v.expand === undefined ? null : { expand: v.expand }),
                 ...(v.fields === undefined ? null : { fields: v.fields }),
-                ...(v.filterJobId === undefined ? null : { "filter[job_id]": v.filterJobId }),
-                ...(v.filterUpdatedAfter === undefined
-                    ? null
-                    : { "filter[updated_after]": v.filterUpdatedAfter }),
+                ...(v.filter === undefined ? null : { filter: v.filter }),
                 ...(v.jobId === undefined ? null : { job_id: v.jobId }),
                 ...(v.next === undefined ? null : { next: v.next }),
                 ...(v.page === undefined ? null : { page: v.page }),

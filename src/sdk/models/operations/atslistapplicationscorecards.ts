@@ -5,15 +5,25 @@
 import * as shared from "../shared";
 import * as z from "zod";
 
+/**
+ * Filter parameters that allow greater customisation of the list response
+ */
+export type QueryParamFilter = {
+    /**
+     * Use a string with a date to only select results updated after that given date
+     */
+    updatedAfter?: string | null | undefined;
+};
+
 export type AtsListApplicationScorecardsRequest = {
     /**
      * The comma separated list of fields that will be returned in the response (if empty, all fields are returned)
      */
     fields?: string | null | undefined;
     /**
-     * Use a string with a date to only select results updated after that given date
+     * Filter parameters that allow greater customisation of the list response
      */
-    filterUpdatedAfter?: string | null | undefined;
+    filter?: QueryParamFilter | null | undefined;
     id: string;
     /**
      * The unified cursor
@@ -75,6 +85,33 @@ export type AtsListApplicationScorecardsResponse = {
 };
 
 /** @internal */
+export namespace QueryParamFilter$ {
+    export const inboundSchema: z.ZodType<QueryParamFilter, z.ZodTypeDef, unknown> = z
+        .object({
+            updated_after: z.nullable(z.string()).optional(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.updated_after === undefined ? null : { updatedAfter: v.updated_after }),
+            };
+        });
+
+    export type Outbound = {
+        updated_after?: string | null | undefined;
+    };
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, QueryParamFilter> = z
+        .object({
+            updatedAfter: z.nullable(z.string()).optional(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.updatedAfter === undefined ? null : { updated_after: v.updatedAfter }),
+            };
+        });
+}
+
+/** @internal */
 export namespace AtsListApplicationScorecardsRequest$ {
     export const inboundSchema: z.ZodType<
         AtsListApplicationScorecardsRequest,
@@ -83,7 +120,7 @@ export namespace AtsListApplicationScorecardsRequest$ {
     > = z
         .object({
             fields: z.nullable(z.string()).optional(),
-            "filter[updated_after]": z.nullable(z.string()).optional(),
+            filter: z.nullable(z.lazy(() => QueryParamFilter$.inboundSchema)).optional(),
             id: z.string(),
             next: z.nullable(z.string()).optional(),
             page: z.nullable(z.string()).optional(),
@@ -97,9 +134,7 @@ export namespace AtsListApplicationScorecardsRequest$ {
         .transform((v) => {
             return {
                 ...(v.fields === undefined ? null : { fields: v.fields }),
-                ...(v["filter[updated_after]"] === undefined
-                    ? null
-                    : { filterUpdatedAfter: v["filter[updated_after]"] }),
+                ...(v.filter === undefined ? null : { filter: v.filter }),
                 id: v.id,
                 ...(v.next === undefined ? null : { next: v.next }),
                 ...(v.page === undefined ? null : { page: v.page }),
@@ -114,7 +149,7 @@ export namespace AtsListApplicationScorecardsRequest$ {
 
     export type Outbound = {
         fields?: string | null | undefined;
-        "filter[updated_after]"?: string | null | undefined;
+        filter?: QueryParamFilter$.Outbound | null | undefined;
         id: string;
         next?: string | null | undefined;
         page?: string | null | undefined;
@@ -133,7 +168,7 @@ export namespace AtsListApplicationScorecardsRequest$ {
     > = z
         .object({
             fields: z.nullable(z.string()).optional(),
-            filterUpdatedAfter: z.nullable(z.string()).optional(),
+            filter: z.nullable(z.lazy(() => QueryParamFilter$.outboundSchema)).optional(),
             id: z.string(),
             next: z.nullable(z.string()).optional(),
             page: z.nullable(z.string()).optional(),
@@ -147,9 +182,7 @@ export namespace AtsListApplicationScorecardsRequest$ {
         .transform((v) => {
             return {
                 ...(v.fields === undefined ? null : { fields: v.fields }),
-                ...(v.filterUpdatedAfter === undefined
-                    ? null
-                    : { "filter[updated_after]": v.filterUpdatedAfter }),
+                ...(v.filter === undefined ? null : { filter: v.filter }),
                 id: v.id,
                 ...(v.next === undefined ? null : { next: v.next }),
                 ...(v.page === undefined ? null : { page: v.page }),

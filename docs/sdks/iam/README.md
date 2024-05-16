@@ -223,7 +223,9 @@ async function run() {
   const result = await stackOne.iam.listGroups({
     expand: "roles",
     fields: "id,parent_id,name,description,roles,type,created_at,updated_at",
-    filterUpdatedAfter: "2020-01-01T00:00:00.000Z",
+    filter: {
+      updatedAfter: "2020-01-01T00:00:00.000Z",
+    },
     xAccountId: "<value>",
   });
 
@@ -271,7 +273,9 @@ async function run() {
   const result = await stackOne.iam.listPolicies({
     expand: "permissions",
     fields: "id,name,permissions,description,created_at,updated_at",
-    filterUpdatedAfter: "2020-01-01T00:00:00.000Z",
+    filter: {
+      updatedAfter: "2020-01-01T00:00:00.000Z",
+    },
     xAccountId: "<value>",
   });
 
@@ -319,7 +323,9 @@ async function run() {
   const result = await stackOne.iam.listRoles({
     expand: "policies",
     fields: "id,name,type,policies,description,created_at,updated_at",
-    filterUpdatedAfter: "2020-01-01T00:00:00.000Z",
+    filter: {
+      updatedAfter: "2020-01-01T00:00:00.000Z",
+    },
     xAccountId: "<value>",
   });
 
@@ -367,7 +373,9 @@ async function run() {
   const result = await stackOne.iam.listUsers({
     expand: "roles,groups",
     fields: "id,first_name,last_name,name,primary_email_address,username,roles,groups,status,avatar,is_bot_user,last_active_at,last_login_at,created_at,updated_at,multi_factor_enabled",
-    filterUpdatedAfter: "2020-01-01T00:00:00.000Z",
+    filter: {
+      updatedAfter: "2020-01-01T00:00:00.000Z",
+    },
     xAccountId: "<value>",
   });
 

@@ -6,16 +6,12 @@ import { Message, Message$ } from "./message";
 import * as z from "zod";
 
 export type MarketingCreateTemplateRequestDto = {
-    /**
-     * Unique identifier
-     */
-    id?: string | null | undefined;
     messages?: Array<Message> | null | undefined;
     name?: string | null | undefined;
     /**
-     * Provider's unique identifier
+     * Value to pass through to the provider
      */
-    remoteId?: string | null | undefined;
+    passthrough?: Record<string, any> | null | undefined;
     tags?: Array<string> | null | undefined;
 };
 
@@ -27,27 +23,24 @@ export namespace MarketingCreateTemplateRequestDto$ {
         unknown
     > = z
         .object({
-            id: z.nullable(z.string()).optional(),
             messages: z.nullable(z.array(Message$.inboundSchema)).optional(),
             name: z.nullable(z.string()).optional(),
-            remote_id: z.nullable(z.string()).optional(),
+            passthrough: z.nullable(z.record(z.any())).optional(),
             tags: z.nullable(z.array(z.string())).optional(),
         })
         .transform((v) => {
             return {
-                ...(v.id === undefined ? null : { id: v.id }),
                 ...(v.messages === undefined ? null : { messages: v.messages }),
                 ...(v.name === undefined ? null : { name: v.name }),
-                ...(v.remote_id === undefined ? null : { remoteId: v.remote_id }),
+                ...(v.passthrough === undefined ? null : { passthrough: v.passthrough }),
                 ...(v.tags === undefined ? null : { tags: v.tags }),
             };
         });
 
     export type Outbound = {
-        id?: string | null | undefined;
         messages?: Array<Message$.Outbound> | null | undefined;
         name?: string | null | undefined;
-        remote_id?: string | null | undefined;
+        passthrough?: Record<string, any> | null | undefined;
         tags?: Array<string> | null | undefined;
     };
 
@@ -57,18 +50,16 @@ export namespace MarketingCreateTemplateRequestDto$ {
         MarketingCreateTemplateRequestDto
     > = z
         .object({
-            id: z.nullable(z.string()).optional(),
             messages: z.nullable(z.array(Message$.outboundSchema)).optional(),
             name: z.nullable(z.string()).optional(),
-            remoteId: z.nullable(z.string()).optional(),
+            passthrough: z.nullable(z.record(z.any())).optional(),
             tags: z.nullable(z.array(z.string())).optional(),
         })
         .transform((v) => {
             return {
-                ...(v.id === undefined ? null : { id: v.id }),
                 ...(v.messages === undefined ? null : { messages: v.messages }),
                 ...(v.name === undefined ? null : { name: v.name }),
-                ...(v.remoteId === undefined ? null : { remote_id: v.remoteId }),
+                ...(v.passthrough === undefined ? null : { passthrough: v.passthrough }),
                 ...(v.tags === undefined ? null : { tags: v.tags }),
             };
         });

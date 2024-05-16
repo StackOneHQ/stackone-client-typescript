@@ -5,15 +5,25 @@
 import * as shared from "../shared";
 import * as z from "zod";
 
+/**
+ * Filter parameters that allow greater customisation of the list response
+ */
+export type AtsListOffersQueryParamFilter = {
+    /**
+     * Use a string with a date to only select results updated after that given date
+     */
+    updatedAfter?: string | null | undefined;
+};
+
 export type AtsListOffersRequest = {
     /**
      * The comma separated list of fields that will be returned in the response (if empty, all fields are returned)
      */
     fields?: string | null | undefined;
     /**
-     * Use a string with a date to only select results updated after that given date
+     * Filter parameters that allow greater customisation of the list response
      */
-    filterUpdatedAfter?: string | null | undefined;
+    filter?: AtsListOffersQueryParamFilter | null | undefined;
     /**
      * The unified cursor
      */
@@ -74,11 +84,41 @@ export type AtsListOffersResponse = {
 };
 
 /** @internal */
+export namespace AtsListOffersQueryParamFilter$ {
+    export const inboundSchema: z.ZodType<AtsListOffersQueryParamFilter, z.ZodTypeDef, unknown> = z
+        .object({
+            updated_after: z.nullable(z.string()).optional(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.updated_after === undefined ? null : { updatedAfter: v.updated_after }),
+            };
+        });
+
+    export type Outbound = {
+        updated_after?: string | null | undefined;
+    };
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, AtsListOffersQueryParamFilter> =
+        z
+            .object({
+                updatedAfter: z.nullable(z.string()).optional(),
+            })
+            .transform((v) => {
+                return {
+                    ...(v.updatedAfter === undefined ? null : { updated_after: v.updatedAfter }),
+                };
+            });
+}
+
+/** @internal */
 export namespace AtsListOffersRequest$ {
     export const inboundSchema: z.ZodType<AtsListOffersRequest, z.ZodTypeDef, unknown> = z
         .object({
             fields: z.nullable(z.string()).optional(),
-            "filter[updated_after]": z.nullable(z.string()).optional(),
+            filter: z
+                .nullable(z.lazy(() => AtsListOffersQueryParamFilter$.inboundSchema))
+                .optional(),
             next: z.nullable(z.string()).optional(),
             page: z.nullable(z.string()).optional(),
             page_size: z.nullable(z.string().default("25")),
@@ -91,9 +131,7 @@ export namespace AtsListOffersRequest$ {
         .transform((v) => {
             return {
                 ...(v.fields === undefined ? null : { fields: v.fields }),
-                ...(v["filter[updated_after]"] === undefined
-                    ? null
-                    : { filterUpdatedAfter: v["filter[updated_after]"] }),
+                ...(v.filter === undefined ? null : { filter: v.filter }),
                 ...(v.next === undefined ? null : { next: v.next }),
                 ...(v.page === undefined ? null : { page: v.page }),
                 pageSize: v.page_size,
@@ -107,7 +145,7 @@ export namespace AtsListOffersRequest$ {
 
     export type Outbound = {
         fields?: string | null | undefined;
-        "filter[updated_after]"?: string | null | undefined;
+        filter?: AtsListOffersQueryParamFilter$.Outbound | null | undefined;
         next?: string | null | undefined;
         page?: string | null | undefined;
         page_size: string | null;
@@ -121,7 +159,9 @@ export namespace AtsListOffersRequest$ {
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, AtsListOffersRequest> = z
         .object({
             fields: z.nullable(z.string()).optional(),
-            filterUpdatedAfter: z.nullable(z.string()).optional(),
+            filter: z
+                .nullable(z.lazy(() => AtsListOffersQueryParamFilter$.outboundSchema))
+                .optional(),
             next: z.nullable(z.string()).optional(),
             page: z.nullable(z.string()).optional(),
             pageSize: z.nullable(z.string().default("25")),
@@ -134,9 +174,7 @@ export namespace AtsListOffersRequest$ {
         .transform((v) => {
             return {
                 ...(v.fields === undefined ? null : { fields: v.fields }),
-                ...(v.filterUpdatedAfter === undefined
-                    ? null
-                    : { "filter[updated_after]": v.filterUpdatedAfter }),
+                ...(v.filter === undefined ? null : { filter: v.filter }),
                 ...(v.next === undefined ? null : { next: v.next }),
                 ...(v.page === undefined ? null : { page: v.page }),
                 page_size: v.pageSize,
