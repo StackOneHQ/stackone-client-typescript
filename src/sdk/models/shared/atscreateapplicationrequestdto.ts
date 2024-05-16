@@ -87,6 +87,10 @@ export type AtsCreateApplicationRequestDtoCandidate = {
      */
     name?: string | null | undefined;
     /**
+     * Value to pass through to the provider
+     */
+    passthrough?: Record<string, any> | null | undefined;
+    /**
      * The candidate personal phone number
      */
     phoneNumber?: string | null | undefined;
@@ -118,6 +122,10 @@ export type AtsCreateApplicationRequestDto = {
      * Unique identifier of the location
      */
     locationId?: string | null | undefined;
+    /**
+     * Value to pass through to the provider
+     */
+    passthrough?: Record<string, any> | null | undefined;
     /**
      * Questionnaires associated with the application
      */
@@ -260,6 +268,7 @@ export namespace AtsCreateApplicationRequestDtoCandidate$ {
                 .optional(),
             last_name: z.nullable(z.string()).optional(),
             name: z.nullable(z.string()).optional(),
+            passthrough: z.nullable(z.record(z.any())).optional(),
             phone_number: z.nullable(z.string()).optional(),
             social_links: z.nullable(z.array(SocialLink$.inboundSchema)).optional(),
             title: z.nullable(z.string()).optional(),
@@ -273,6 +282,7 @@ export namespace AtsCreateApplicationRequestDtoCandidate$ {
                 ...(v.hired_at === undefined ? null : { hiredAt: v.hired_at }),
                 ...(v.last_name === undefined ? null : { lastName: v.last_name }),
                 ...(v.name === undefined ? null : { name: v.name }),
+                ...(v.passthrough === undefined ? null : { passthrough: v.passthrough }),
                 ...(v.phone_number === undefined ? null : { phoneNumber: v.phone_number }),
                 ...(v.social_links === undefined ? null : { socialLinks: v.social_links }),
                 ...(v.title === undefined ? null : { title: v.title }),
@@ -287,6 +297,7 @@ export namespace AtsCreateApplicationRequestDtoCandidate$ {
         hired_at?: string | null | undefined;
         last_name?: string | null | undefined;
         name?: string | null | undefined;
+        passthrough?: Record<string, any> | null | undefined;
         phone_number?: string | null | undefined;
         social_links?: Array<SocialLink$.Outbound> | null | undefined;
         title?: string | null | undefined;
@@ -305,6 +316,7 @@ export namespace AtsCreateApplicationRequestDtoCandidate$ {
             hiredAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
             lastName: z.nullable(z.string()).optional(),
             name: z.nullable(z.string()).optional(),
+            passthrough: z.nullable(z.record(z.any())).optional(),
             phoneNumber: z.nullable(z.string()).optional(),
             socialLinks: z.nullable(z.array(SocialLink$.outboundSchema)).optional(),
             title: z.nullable(z.string()).optional(),
@@ -318,6 +330,7 @@ export namespace AtsCreateApplicationRequestDtoCandidate$ {
                 ...(v.hiredAt === undefined ? null : { hired_at: v.hiredAt }),
                 ...(v.lastName === undefined ? null : { last_name: v.lastName }),
                 ...(v.name === undefined ? null : { name: v.name }),
+                ...(v.passthrough === undefined ? null : { passthrough: v.passthrough }),
                 ...(v.phoneNumber === undefined ? null : { phone_number: v.phoneNumber }),
                 ...(v.socialLinks === undefined ? null : { social_links: v.socialLinks }),
                 ...(v.title === undefined ? null : { title: v.title }),
@@ -340,6 +353,7 @@ export namespace AtsCreateApplicationRequestDto$ {
             candidate_id: z.nullable(z.string()).optional(),
             job_id: z.nullable(z.string()).optional(),
             location_id: z.nullable(z.string()).optional(),
+            passthrough: z.nullable(z.record(z.any())).optional(),
             questionnaires: z.nullable(z.array(Questionnaire$.inboundSchema)).optional(),
             source: z.nullable(z.string()).optional(),
         })
@@ -352,6 +366,7 @@ export namespace AtsCreateApplicationRequestDto$ {
                 ...(v.candidate_id === undefined ? null : { candidateId: v.candidate_id }),
                 ...(v.job_id === undefined ? null : { jobId: v.job_id }),
                 ...(v.location_id === undefined ? null : { locationId: v.location_id }),
+                ...(v.passthrough === undefined ? null : { passthrough: v.passthrough }),
                 ...(v.questionnaires === undefined ? null : { questionnaires: v.questionnaires }),
                 ...(v.source === undefined ? null : { source: v.source }),
             };
@@ -366,6 +381,7 @@ export namespace AtsCreateApplicationRequestDto$ {
         candidate_id?: string | null | undefined;
         job_id?: string | null | undefined;
         location_id?: string | null | undefined;
+        passthrough?: Record<string, any> | null | undefined;
         questionnaires?: Array<Questionnaire$.Outbound> | null | undefined;
         source?: string | null | undefined;
     };
@@ -386,6 +402,7 @@ export namespace AtsCreateApplicationRequestDto$ {
                 candidateId: z.nullable(z.string()).optional(),
                 jobId: z.nullable(z.string()).optional(),
                 locationId: z.nullable(z.string()).optional(),
+                passthrough: z.nullable(z.record(z.any())).optional(),
                 questionnaires: z.nullable(z.array(Questionnaire$.outboundSchema)).optional(),
                 source: z.nullable(z.string()).optional(),
             })
@@ -398,6 +415,7 @@ export namespace AtsCreateApplicationRequestDto$ {
                     ...(v.candidateId === undefined ? null : { candidate_id: v.candidateId }),
                     ...(v.jobId === undefined ? null : { job_id: v.jobId }),
                     ...(v.locationId === undefined ? null : { location_id: v.locationId }),
+                    ...(v.passthrough === undefined ? null : { passthrough: v.passthrough }),
                     ...(v.questionnaires === undefined
                         ? null
                         : { questionnaires: v.questionnaires }),

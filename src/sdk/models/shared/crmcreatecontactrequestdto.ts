@@ -30,6 +30,10 @@ export type CrmCreateContactRequestDto = {
      */
     lastName?: string | null | undefined;
     /**
+     * Value to pass through to the provider
+     */
+    passthrough?: Record<string, any> | null | undefined;
+    /**
      * List of contact phone numbers
      */
     phoneNumbers?: Array<string> | null | undefined;
@@ -45,6 +49,7 @@ export namespace CrmCreateContactRequestDto$ {
             emails: z.nullable(z.array(z.string())).optional(),
             first_name: z.nullable(z.string()).optional(),
             last_name: z.nullable(z.string()).optional(),
+            passthrough: z.nullable(z.record(z.any())).optional(),
             phone_numbers: z.nullable(z.array(z.string())).optional(),
         })
         .transform((v) => {
@@ -55,6 +60,7 @@ export namespace CrmCreateContactRequestDto$ {
                 ...(v.emails === undefined ? null : { emails: v.emails }),
                 ...(v.first_name === undefined ? null : { firstName: v.first_name }),
                 ...(v.last_name === undefined ? null : { lastName: v.last_name }),
+                ...(v.passthrough === undefined ? null : { passthrough: v.passthrough }),
                 ...(v.phone_numbers === undefined ? null : { phoneNumbers: v.phone_numbers }),
             };
         });
@@ -66,6 +72,7 @@ export namespace CrmCreateContactRequestDto$ {
         emails?: Array<string> | null | undefined;
         first_name?: string | null | undefined;
         last_name?: string | null | undefined;
+        passthrough?: Record<string, any> | null | undefined;
         phone_numbers?: Array<string> | null | undefined;
     };
 
@@ -77,6 +84,7 @@ export namespace CrmCreateContactRequestDto$ {
             emails: z.nullable(z.array(z.string())).optional(),
             firstName: z.nullable(z.string()).optional(),
             lastName: z.nullable(z.string()).optional(),
+            passthrough: z.nullable(z.record(z.any())).optional(),
             phoneNumbers: z.nullable(z.array(z.string())).optional(),
         })
         .transform((v) => {
@@ -87,6 +95,7 @@ export namespace CrmCreateContactRequestDto$ {
                 ...(v.emails === undefined ? null : { emails: v.emails }),
                 ...(v.firstName === undefined ? null : { first_name: v.firstName }),
                 ...(v.lastName === undefined ? null : { last_name: v.lastName }),
+                ...(v.passthrough === undefined ? null : { passthrough: v.passthrough }),
                 ...(v.phoneNumbers === undefined ? null : { phone_numbers: v.phoneNumbers }),
             };
         });

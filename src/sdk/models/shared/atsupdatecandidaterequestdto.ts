@@ -37,10 +37,6 @@ export type AtsUpdateCandidateRequestDto = {
      */
     hiredAt?: Date | null | undefined;
     /**
-     * Unique identifier
-     */
-    id?: string | null | undefined;
-    /**
      * Candidate last name
      */
     lastName?: string | null | undefined;
@@ -48,6 +44,10 @@ export type AtsUpdateCandidateRequestDto = {
      * Candidate name
      */
     name?: string | null | undefined;
+    /**
+     * Value to pass through to the provider
+     */
+    passthrough?: Record<string, any> | null | undefined;
     /**
      * Candidate phone number
      *
@@ -58,10 +58,6 @@ export type AtsUpdateCandidateRequestDto = {
      * List of candidate phone numbers including the type of the number when available
      */
     phoneNumbers?: Array<PhoneNumber> | null | undefined;
-    /**
-     * Provider's unique identifier
-     */
-    remoteId?: string | null | undefined;
     /**
      * List of candidate social links
      */
@@ -90,12 +86,11 @@ export namespace AtsUpdateCandidateRequestDto$ {
                         .transform((v) => new Date(v))
                 )
                 .optional(),
-            id: z.nullable(z.string()).optional(),
             last_name: z.nullable(z.string()).optional(),
             name: z.nullable(z.string()).optional(),
+            passthrough: z.nullable(z.record(z.any())).optional(),
             phone: z.nullable(z.string()).optional(),
             phone_numbers: z.nullable(z.array(PhoneNumber$.inboundSchema)).optional(),
-            remote_id: z.nullable(z.string()).optional(),
             social_links: z.nullable(z.array(SocialLink$.inboundSchema)).optional(),
             title: z.nullable(z.string()).optional(),
         })
@@ -108,12 +103,11 @@ export namespace AtsUpdateCandidateRequestDto$ {
                 ...(v.emails === undefined ? null : { emails: v.emails }),
                 ...(v.first_name === undefined ? null : { firstName: v.first_name }),
                 ...(v.hired_at === undefined ? null : { hiredAt: v.hired_at }),
-                ...(v.id === undefined ? null : { id: v.id }),
                 ...(v.last_name === undefined ? null : { lastName: v.last_name }),
                 ...(v.name === undefined ? null : { name: v.name }),
+                ...(v.passthrough === undefined ? null : { passthrough: v.passthrough }),
                 ...(v.phone === undefined ? null : { phone: v.phone }),
                 ...(v.phone_numbers === undefined ? null : { phoneNumbers: v.phone_numbers }),
-                ...(v.remote_id === undefined ? null : { remoteId: v.remote_id }),
                 ...(v.social_links === undefined ? null : { socialLinks: v.social_links }),
                 ...(v.title === undefined ? null : { title: v.title }),
             };
@@ -127,12 +121,11 @@ export namespace AtsUpdateCandidateRequestDto$ {
         emails?: Array<CandidateEmail$.Outbound> | null | undefined;
         first_name?: string | null | undefined;
         hired_at?: string | null | undefined;
-        id?: string | null | undefined;
         last_name?: string | null | undefined;
         name?: string | null | undefined;
+        passthrough?: Record<string, any> | null | undefined;
         phone?: string | null | undefined;
         phone_numbers?: Array<PhoneNumber$.Outbound> | null | undefined;
-        remote_id?: string | null | undefined;
         social_links?: Array<SocialLink$.Outbound> | null | undefined;
         title?: string | null | undefined;
     };
@@ -146,12 +139,11 @@ export namespace AtsUpdateCandidateRequestDto$ {
             emails: z.nullable(z.array(CandidateEmail$.outboundSchema)).optional(),
             firstName: z.nullable(z.string()).optional(),
             hiredAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
-            id: z.nullable(z.string()).optional(),
             lastName: z.nullable(z.string()).optional(),
             name: z.nullable(z.string()).optional(),
+            passthrough: z.nullable(z.record(z.any())).optional(),
             phone: z.nullable(z.string()).optional(),
             phoneNumbers: z.nullable(z.array(PhoneNumber$.outboundSchema)).optional(),
-            remoteId: z.nullable(z.string()).optional(),
             socialLinks: z.nullable(z.array(SocialLink$.outboundSchema)).optional(),
             title: z.nullable(z.string()).optional(),
         })
@@ -164,12 +156,11 @@ export namespace AtsUpdateCandidateRequestDto$ {
                 ...(v.emails === undefined ? null : { emails: v.emails }),
                 ...(v.firstName === undefined ? null : { first_name: v.firstName }),
                 ...(v.hiredAt === undefined ? null : { hired_at: v.hiredAt }),
-                ...(v.id === undefined ? null : { id: v.id }),
                 ...(v.lastName === undefined ? null : { last_name: v.lastName }),
                 ...(v.name === undefined ? null : { name: v.name }),
+                ...(v.passthrough === undefined ? null : { passthrough: v.passthrough }),
                 ...(v.phone === undefined ? null : { phone: v.phone }),
                 ...(v.phoneNumbers === undefined ? null : { phone_numbers: v.phoneNumbers }),
-                ...(v.remoteId === undefined ? null : { remote_id: v.remoteId }),
                 ...(v.socialLinks === undefined ? null : { social_links: v.socialLinks }),
                 ...(v.title === undefined ? null : { title: v.title }),
             };

@@ -73,6 +73,41 @@ async function run() {
         hiredAt: new Date("2021-01-01T01:01:01.000Z"),
         lastName: "Sestier",
         name: "Romain Sestier",
+        passthrough: {
+          "0": "{",
+          "1": "\"",
+          "2": "o",
+          "3": "t",
+          "4": "h",
+          "5": "e",
+          "6": "r",
+          "7": "_",
+          "8": "k",
+          "9": "n",
+          "10": "o",
+          "11": "w",
+          "12": "n",
+          "13": "_",
+          "14": "n",
+          "15": "a",
+          "16": "m",
+          "17": "e",
+          "18": "s",
+          "19": "\"",
+          "20": ":",
+          "21": " ",
+          "22": "\"",
+          "23": "J",
+          "24": "o",
+          "25": "h",
+          "26": "n",
+          "27": " ",
+          "28": "D",
+          "29": "o",
+          "30": "e",
+          "31": "\"",
+          "32": "}",
+        },
         phoneNumber: "+1234567890",
         socialLinks: [
           {
@@ -85,6 +120,41 @@ async function run() {
       candidateId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
       jobId: "4071538b-3cac-4fbf-ac76-f78ed250ffdd",
       locationId: "dd8d41d1-5eb8-4408-9c87-9ba44604eae4",
+      passthrough: {
+        "0": "{",
+        "1": "\"",
+        "2": "o",
+        "3": "t",
+        "4": "h",
+        "5": "e",
+        "6": "r",
+        "7": "_",
+        "8": "k",
+        "9": "n",
+        "10": "o",
+        "11": "w",
+        "12": "n",
+        "13": "_",
+        "14": "n",
+        "15": "a",
+        "16": "m",
+        "17": "e",
+        "18": "s",
+        "19": "\"",
+        "20": ":",
+        "21": " ",
+        "22": "\"",
+        "23": "J",
+        "24": "o",
+        "25": "h",
+        "26": "n",
+        "27": " ",
+        "28": "D",
+        "29": "o",
+        "30": "e",
+        "31": "\"",
+        "32": "}",
+      },
       questionnaires: [
         {
           answers: [
@@ -163,6 +233,41 @@ async function run() {
       hiredAt: new Date("2021-01-01T01:01:01.000Z"),
       lastName: "Sestier",
       name: "Romain Sestier",
+      passthrough: {
+        "0": "{",
+        "1": "\"",
+        "2": "o",
+        "3": "t",
+        "4": "h",
+        "5": "e",
+        "6": "r",
+        "7": "_",
+        "8": "k",
+        "9": "n",
+        "10": "o",
+        "11": "w",
+        "12": "n",
+        "13": "_",
+        "14": "n",
+        "15": "a",
+        "16": "m",
+        "17": "e",
+        "18": "s",
+        "19": "\"",
+        "20": ":",
+        "21": " ",
+        "22": "\"",
+        "23": "J",
+        "24": "o",
+        "25": "h",
+        "26": "n",
+        "27": " ",
+        "28": "D",
+        "29": "o",
+        "30": "e",
+        "31": "\"",
+        "32": "}",
+      },
       phoneNumber: "+1234567890",
       socialLinks: [
         {
@@ -225,6 +330,41 @@ async function run() {
           body: "This candidate seems like a good fit for the role",
         },
       ],
+      passthrough: {
+        "0": "{",
+        "1": "\"",
+        "2": "o",
+        "3": "t",
+        "4": "h",
+        "5": "e",
+        "6": "r",
+        "7": "_",
+        "8": "k",
+        "9": "n",
+        "10": "o",
+        "11": "w",
+        "12": "n",
+        "13": "_",
+        "14": "n",
+        "15": "a",
+        "16": "m",
+        "17": "e",
+        "18": "s",
+        "19": "\"",
+        "20": ":",
+        "21": " ",
+        "22": "\"",
+        "23": "J",
+        "24": "o",
+        "25": "h",
+        "26": "n",
+        "27": " ",
+        "28": "D",
+        "29": "o",
+        "30": "e",
+        "31": "\"",
+        "32": "}",
+      },
       visibility: {
       sourceValue: "Public",
         value: AtsCreateNotesRequestDtoValue.Public,
@@ -288,6 +428,41 @@ async function run() {
       offerStatus: {
       sourceValue: "Pending",
         value: AtsCreateOfferRequestDtoValue.Pending,
+      },
+      passthrough: {
+        "0": "{",
+        "1": "\"",
+        "2": "o",
+        "3": "t",
+        "4": "h",
+        "5": "e",
+        "6": "r",
+        "7": "_",
+        "8": "k",
+        "9": "n",
+        "10": "o",
+        "11": "w",
+        "12": "n",
+        "13": "_",
+        "14": "n",
+        "15": "a",
+        "16": "m",
+        "17": "e",
+        "18": "s",
+        "19": "\"",
+        "20": ":",
+        "21": " ",
+        "22": "\"",
+        "23": "J",
+        "24": "o",
+        "25": "h",
+        "26": "n",
+        "27": " ",
+        "28": "D",
+        "29": "o",
+        "30": "e",
+        "31": "\"",
+        "32": "}",
       },
       startDate: new Date("2021-01-01T01:01:01.000Z"),
     },
@@ -1097,7 +1272,9 @@ const stackOne = new StackOne({
 async function run() {
   const result = await stackOne.ats.listApplicationDocuments({
     fields: "id,name,path,type,category,contents,created_at,updated_at",
-    filterUpdatedAfter: "2020-01-01T00:00:00.000Z",
+    filter: {
+      updatedAfter: "2020-01-01T00:00:00.000Z",
+    },
     id: "<id>",
     xAccountId: "<value>",
   });
@@ -1145,7 +1322,9 @@ const stackOne = new StackOne({
 async function run() {
   const result = await stackOne.ats.listApplicationScorecards({
     fields: "id,sections,label,candidate_id,application_id,interview_id,author_id,overall_recommendation,created_at,updated_at",
-    filterUpdatedAfter: "2020-01-01T00:00:00.000Z",
+    filter: {
+      updatedAfter: "2020-01-01T00:00:00.000Z",
+    },
     id: "<id>",
     xAccountId: "<value>",
   });
@@ -1194,7 +1373,9 @@ async function run() {
   const result = await stackOne.ats.listApplications({
     expand: "documents",
     fields: "id,candidate_id,job_id,interview_stage,interview_stage_id,rejected_reason,rejected_reason_id,rejected_reason_ids,rejected_reasons,rejected_at,location_id,location_ids,status,application_status,questionnaires,attachments,result_links,created_at,updated_at,documents,candidate",
-    filterUpdatedAfter: "2020-01-01T00:00:00.000Z",
+    filter: {
+      updatedAfter: "2020-01-01T00:00:00.000Z",
+    },
     xAccountId: "<value>",
   });
 
@@ -1241,7 +1422,9 @@ const stackOne = new StackOne({
 async function run() {
   const result = await stackOne.ats.listApplicationsOffers({
     fields: "id,application_id,start_date,status,offer_status,salary,currency,created_at,updated_at,offer_history",
-    filterUpdatedAfter: "2020-01-01T00:00:00.000Z",
+    filter: {
+      updatedAfter: "2020-01-01T00:00:00.000Z",
+    },
     id: "<id>",
     xAccountId: "<value>",
   });
@@ -1289,7 +1472,9 @@ const stackOne = new StackOne({
 async function run() {
   const result = await stackOne.ats.listCandidateNotes({
     fields: "id,content,author_id,visibility,created_at,updated_at,deleted_at",
-    filterUpdatedAfter: "2020-01-01T00:00:00.000Z",
+    filter: {
+      updatedAfter: "2020-01-01T00:00:00.000Z",
+    },
     id: "<id>",
     xAccountId: "<value>",
   });
@@ -1337,7 +1522,9 @@ const stackOne = new StackOne({
 async function run() {
   const result = await stackOne.ats.listCandidates({
     fields: "id,name,first_name,last_name,email,emails,social_links,phone,phone_numbers,company,title,application_ids,hired_at,created_at,updated_at",
-    filterUpdatedAfter: "2020-01-01T00:00:00.000Z",
+    filter: {
+      updatedAfter: "2020-01-01T00:00:00.000Z",
+    },
     xAccountId: "<value>",
   });
 
@@ -1384,7 +1571,9 @@ const stackOne = new StackOne({
 async function run() {
   const result = await stackOne.ats.listDepartments({
     fields: "id,name",
-    filterUpdatedAfter: "2020-01-01T00:00:00.000Z",
+    filter: {
+      updatedAfter: "2020-01-01T00:00:00.000Z",
+    },
     xAccountId: "<value>",
   });
 
@@ -1431,7 +1620,9 @@ const stackOne = new StackOne({
 async function run() {
   const result = await stackOne.ats.listInterviewStages({
     fields: "id,name,order,created_at,updated_at",
-    filterUpdatedAfter: "2020-01-01T00:00:00.000Z",
+    filter: {
+      updatedAfter: "2020-01-01T00:00:00.000Z",
+    },
     xAccountId: "<value>",
   });
 
@@ -1478,7 +1669,9 @@ const stackOne = new StackOne({
 async function run() {
   const result = await stackOne.ats.listInterviews({
     fields: "id,application_id,interview_stage_id,interview_stage,status,interview_status,interviewer_ids,interview_parts,interviewers,start_at,end_at,meeting_url,created_at,updated_at",
-    filterUpdatedAfter: "2020-01-01T00:00:00.000Z",
+    filter: {
+      updatedAfter: "2020-01-01T00:00:00.000Z",
+    },
     xAccountId: "<value>",
   });
 
@@ -1525,7 +1718,9 @@ const stackOne = new StackOne({
 async function run() {
   const result = await stackOne.ats.listJobPostings({
     fields: "id,title,locations,internal,status,job_id,content,compensation,employment_type,employment_contract_type,external_url,external_apply_url,questionnaires,updated_at,created_at",
-    filterUpdatedAfter: "2020-01-01T00:00:00.000Z",
+    filter: {
+      updatedAfter: "2020-01-01T00:00:00.000Z",
+    },
     include: "questionnaires",
     xAccountId: "<value>",
   });
@@ -1574,7 +1769,9 @@ async function run() {
   const result = await stackOne.ats.listJobs({
     expand: "job_postings,interview_stages",
     fields: "id,code,title,status,job_status,department_ids,location_ids,hiring_team,interview_stages,confidential,created_at,updated_at",
-    filterUpdatedAfter: "2020-01-01T00:00:00.000Z",
+    filter: {
+      updatedAfter: "2020-01-01T00:00:00.000Z",
+    },
     xAccountId: "<value>",
   });
 
@@ -1621,7 +1818,9 @@ const stackOne = new StackOne({
 async function run() {
   const result = await stackOne.ats.listLocations({
     fields: "id,name",
-    filterUpdatedAfter: "2020-01-01T00:00:00.000Z",
+    filter: {
+      updatedAfter: "2020-01-01T00:00:00.000Z",
+    },
     xAccountId: "<value>",
   });
 
@@ -1668,7 +1867,9 @@ const stackOne = new StackOne({
 async function run() {
   const result = await stackOne.ats.listOffers({
     fields: "id,application_id,start_date,status,offer_status,salary,currency,created_at,updated_at,offer_history",
-    filterUpdatedAfter: "2020-01-01T00:00:00.000Z",
+    filter: {
+      updatedAfter: "2020-01-01T00:00:00.000Z",
+    },
     xAccountId: "<value>",
   });
 
@@ -1715,7 +1916,9 @@ const stackOne = new StackOne({
 async function run() {
   const result = await stackOne.ats.listRejectedReasons({
     fields: "id,label,type,rejected_reason_type",
-    filterUpdatedAfter: "2020-01-01T00:00:00.000Z",
+    filter: {
+      updatedAfter: "2020-01-01T00:00:00.000Z",
+    },
     xAccountId: "<value>",
   });
 
@@ -1762,7 +1965,9 @@ const stackOne = new StackOne({
 async function run() {
   const result = await stackOne.ats.listUsers({
     fields: "id,first_name,last_name,name,email",
-    filterUpdatedAfter: "2020-01-01T00:00:00.000Z",
+    filter: {
+      updatedAfter: "2020-01-01T00:00:00.000Z",
+    },
     xAccountId: "<value>",
   });
 
@@ -1815,7 +2020,41 @@ async function run() {
         value: AtsUpdateApplicationRequestDtoValue.Hired,
       },
       interviewStageId: "18bcbb1b-3cbc-4198-a999-460861d19480",
-      rejectedReasonId: "f223d7f6-908b-48f0-9237-b201c307f609",
+      passthrough: {
+        "0": "{",
+        "1": "\"",
+        "2": "o",
+        "3": "t",
+        "4": "h",
+        "5": "e",
+        "6": "r",
+        "7": "_",
+        "8": "k",
+        "9": "n",
+        "10": "o",
+        "11": "w",
+        "12": "n",
+        "13": "_",
+        "14": "n",
+        "15": "a",
+        "16": "m",
+        "17": "e",
+        "18": "s",
+        "19": "\"",
+        "20": ":",
+        "21": " ",
+        "22": "\"",
+        "23": "J",
+        "24": "o",
+        "25": "h",
+        "26": "n",
+        "27": " ",
+        "28": "D",
+        "29": "o",
+        "30": "e",
+        "31": "\"",
+        "32": "}",
+      },
       source: "LinkedIn",
     },
     id: "<id>",
@@ -1880,15 +2119,48 @@ async function run() {
       ],
       firstName: "Romain",
       hiredAt: new Date("2021-01-01T01:01:01.000Z"),
-      id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
       lastName: "Sestier",
       name: "Romain Sestier",
+      passthrough: {
+        "0": "{",
+        "1": "\"",
+        "2": "o",
+        "3": "t",
+        "4": "h",
+        "5": "e",
+        "6": "r",
+        "7": "_",
+        "8": "k",
+        "9": "n",
+        "10": "o",
+        "11": "w",
+        "12": "n",
+        "13": "_",
+        "14": "n",
+        "15": "a",
+        "16": "m",
+        "17": "e",
+        "18": "s",
+        "19": "\"",
+        "20": ":",
+        "21": " ",
+        "22": "\"",
+        "23": "J",
+        "24": "o",
+        "25": "h",
+        "26": "n",
+        "27": " ",
+        "28": "D",
+        "29": "o",
+        "30": "e",
+        "31": "\"",
+        "32": "}",
+      },
       phoneNumbers: [
         {
           phone: "+447700112233",
         },
       ],
-      remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
       socialLinks: [
         {
           type: "linkedin",

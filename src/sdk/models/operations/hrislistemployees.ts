@@ -5,6 +5,20 @@
 import * as shared from "../shared";
 import * as z from "zod";
 
+/**
+ * HRIS Employees filters
+ */
+export type HrisListEmployeesQueryParamFilter = {
+    /**
+     * Filter to select employees by employee_number
+     */
+    employeeNumber?: string | null | undefined;
+    /**
+     * Use a string with a date to only select results updated after that given date
+     */
+    updatedAfter?: string | null | undefined;
+};
+
 export type HrisListEmployeesRequest = {
     /**
      * The comma separated list of fields that will be expanded in the response
@@ -15,13 +29,9 @@ export type HrisListEmployeesRequest = {
      */
     fields?: string | null | undefined;
     /**
-     * Filter to select employees by employee_number
+     * HRIS Employees filters
      */
-    filterEmployeeNumber?: string | null | undefined;
-    /**
-     * Use a string with a date to only select results updated after that given date
-     */
-    filterUpdatedAfter?: string | null | undefined;
+    filter?: HrisListEmployeesQueryParamFilter | null | undefined;
     /**
      * The comma separated list of fields that will be included in the response
      */
@@ -80,13 +90,54 @@ export type HrisListEmployeesResponse = {
 };
 
 /** @internal */
+export namespace HrisListEmployeesQueryParamFilter$ {
+    export const inboundSchema: z.ZodType<
+        HrisListEmployeesQueryParamFilter,
+        z.ZodTypeDef,
+        unknown
+    > = z
+        .object({
+            employee_number: z.nullable(z.string()).optional(),
+            updated_after: z.nullable(z.string()).optional(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.employee_number === undefined ? null : { employeeNumber: v.employee_number }),
+                ...(v.updated_after === undefined ? null : { updatedAfter: v.updated_after }),
+            };
+        });
+
+    export type Outbound = {
+        employee_number?: string | null | undefined;
+        updated_after?: string | null | undefined;
+    };
+
+    export const outboundSchema: z.ZodType<
+        Outbound,
+        z.ZodTypeDef,
+        HrisListEmployeesQueryParamFilter
+    > = z
+        .object({
+            employeeNumber: z.nullable(z.string()).optional(),
+            updatedAfter: z.nullable(z.string()).optional(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.employeeNumber === undefined ? null : { employee_number: v.employeeNumber }),
+                ...(v.updatedAfter === undefined ? null : { updated_after: v.updatedAfter }),
+            };
+        });
+}
+
+/** @internal */
 export namespace HrisListEmployeesRequest$ {
     export const inboundSchema: z.ZodType<HrisListEmployeesRequest, z.ZodTypeDef, unknown> = z
         .object({
             expand: z.nullable(z.string()).optional(),
             fields: z.nullable(z.string()).optional(),
-            "filter[employee_number]": z.nullable(z.string()).optional(),
-            "filter[updated_after]": z.nullable(z.string()).optional(),
+            filter: z
+                .nullable(z.lazy(() => HrisListEmployeesQueryParamFilter$.inboundSchema))
+                .optional(),
             include: z.nullable(z.string()).optional(),
             next: z.nullable(z.string()).optional(),
             page: z.nullable(z.string()).optional(),
@@ -100,12 +151,7 @@ export namespace HrisListEmployeesRequest$ {
             return {
                 ...(v.expand === undefined ? null : { expand: v.expand }),
                 ...(v.fields === undefined ? null : { fields: v.fields }),
-                ...(v["filter[employee_number]"] === undefined
-                    ? null
-                    : { filterEmployeeNumber: v["filter[employee_number]"] }),
-                ...(v["filter[updated_after]"] === undefined
-                    ? null
-                    : { filterUpdatedAfter: v["filter[updated_after]"] }),
+                ...(v.filter === undefined ? null : { filter: v.filter }),
                 ...(v.include === undefined ? null : { include: v.include }),
                 ...(v.next === undefined ? null : { next: v.next }),
                 ...(v.page === undefined ? null : { page: v.page }),
@@ -120,8 +166,7 @@ export namespace HrisListEmployeesRequest$ {
     export type Outbound = {
         expand?: string | null | undefined;
         fields?: string | null | undefined;
-        "filter[employee_number]"?: string | null | undefined;
-        "filter[updated_after]"?: string | null | undefined;
+        filter?: HrisListEmployeesQueryParamFilter$.Outbound | null | undefined;
         include?: string | null | undefined;
         next?: string | null | undefined;
         page?: string | null | undefined;
@@ -136,8 +181,9 @@ export namespace HrisListEmployeesRequest$ {
         .object({
             expand: z.nullable(z.string()).optional(),
             fields: z.nullable(z.string()).optional(),
-            filterEmployeeNumber: z.nullable(z.string()).optional(),
-            filterUpdatedAfter: z.nullable(z.string()).optional(),
+            filter: z
+                .nullable(z.lazy(() => HrisListEmployeesQueryParamFilter$.outboundSchema))
+                .optional(),
             include: z.nullable(z.string()).optional(),
             next: z.nullable(z.string()).optional(),
             page: z.nullable(z.string()).optional(),
@@ -151,12 +197,7 @@ export namespace HrisListEmployeesRequest$ {
             return {
                 ...(v.expand === undefined ? null : { expand: v.expand }),
                 ...(v.fields === undefined ? null : { fields: v.fields }),
-                ...(v.filterEmployeeNumber === undefined
-                    ? null
-                    : { "filter[employee_number]": v.filterEmployeeNumber }),
-                ...(v.filterUpdatedAfter === undefined
-                    ? null
-                    : { "filter[updated_after]": v.filterUpdatedAfter }),
+                ...(v.filter === undefined ? null : { filter: v.filter }),
                 ...(v.include === undefined ? null : { include: v.include }),
                 ...(v.next === undefined ? null : { next: v.next }),
                 ...(v.page === undefined ? null : { page: v.page }),

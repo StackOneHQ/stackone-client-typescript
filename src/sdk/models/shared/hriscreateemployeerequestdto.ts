@@ -4337,6 +4337,10 @@ export type HrisCreateEmployeeRequestDtoHomeLocation = {
      */
     name?: string | null | undefined;
     /**
+     * Value to pass through to the provider
+     */
+    passthrough?: Record<string, any> | null | undefined;
+    /**
      * The phone number of the location
      */
     phoneNumber?: string | null | undefined;
@@ -8668,6 +8672,10 @@ export type HrisCreateEmployeeRequestDtoWorkLocation = {
      */
     name?: string | null | undefined;
     /**
+     * Value to pass through to the provider
+     */
+    passthrough?: Record<string, any> | null | undefined;
+    /**
      * The phone number of the location
      */
     phoneNumber?: string | null | undefined;
@@ -8786,6 +8794,10 @@ export type HrisCreateEmployeeRequestDto = {
      * The employee name
      */
     name?: string | null | undefined;
+    /**
+     * Value to pass through to the provider
+     */
+    passthrough?: Record<string, any> | null | undefined;
     /**
      * The employee personal email
      */
@@ -9720,6 +9732,7 @@ export namespace HrisCreateEmployeeRequestDtoHomeLocation$ {
                 .nullable(z.lazy(() => HrisCreateEmployeeRequestDtoCountry$.inboundSchema))
                 .optional(),
             name: z.nullable(z.string()).optional(),
+            passthrough: z.nullable(z.record(z.any())).optional(),
             phone_number: z.nullable(z.string()).optional(),
             state: z.nullable(z.lazy(() => State$.inboundSchema)).optional(),
             street_1: z.nullable(z.string()).optional(),
@@ -9731,6 +9744,7 @@ export namespace HrisCreateEmployeeRequestDtoHomeLocation$ {
                 ...(v.city === undefined ? null : { city: v.city }),
                 ...(v.country === undefined ? null : { country: v.country }),
                 ...(v.name === undefined ? null : { name: v.name }),
+                ...(v.passthrough === undefined ? null : { passthrough: v.passthrough }),
                 ...(v.phone_number === undefined ? null : { phoneNumber: v.phone_number }),
                 ...(v.state === undefined ? null : { state: v.state }),
                 ...(v.street_1 === undefined ? null : { street1: v.street_1 }),
@@ -9743,6 +9757,7 @@ export namespace HrisCreateEmployeeRequestDtoHomeLocation$ {
         city?: string | null | undefined;
         country?: HrisCreateEmployeeRequestDtoCountry$.Outbound | null | undefined;
         name?: string | null | undefined;
+        passthrough?: Record<string, any> | null | undefined;
         phone_number?: string | null | undefined;
         state?: State$.Outbound | null | undefined;
         street_1?: string | null | undefined;
@@ -9761,6 +9776,7 @@ export namespace HrisCreateEmployeeRequestDtoHomeLocation$ {
                 .nullable(z.lazy(() => HrisCreateEmployeeRequestDtoCountry$.outboundSchema))
                 .optional(),
             name: z.nullable(z.string()).optional(),
+            passthrough: z.nullable(z.record(z.any())).optional(),
             phoneNumber: z.nullable(z.string()).optional(),
             state: z.nullable(z.lazy(() => State$.outboundSchema)).optional(),
             street1: z.nullable(z.string()).optional(),
@@ -9772,6 +9788,7 @@ export namespace HrisCreateEmployeeRequestDtoHomeLocation$ {
                 ...(v.city === undefined ? null : { city: v.city }),
                 ...(v.country === undefined ? null : { country: v.country }),
                 ...(v.name === undefined ? null : { name: v.name }),
+                ...(v.passthrough === undefined ? null : { passthrough: v.passthrough }),
                 ...(v.phoneNumber === undefined ? null : { phone_number: v.phoneNumber }),
                 ...(v.state === undefined ? null : { state: v.state }),
                 ...(v.street1 === undefined ? null : { street_1: v.street1 }),
@@ -10304,6 +10321,7 @@ export namespace HrisCreateEmployeeRequestDtoWorkLocation$ {
                 .nullable(z.lazy(() => HrisCreateEmployeeRequestDtoSchemasCountry$.inboundSchema))
                 .optional(),
             name: z.nullable(z.string()).optional(),
+            passthrough: z.nullable(z.record(z.any())).optional(),
             phone_number: z.nullable(z.string()).optional(),
             state: z
                 .nullable(z.lazy(() => HrisCreateEmployeeRequestDtoState$.inboundSchema))
@@ -10317,6 +10335,7 @@ export namespace HrisCreateEmployeeRequestDtoWorkLocation$ {
                 ...(v.city === undefined ? null : { city: v.city }),
                 ...(v.country === undefined ? null : { country: v.country }),
                 ...(v.name === undefined ? null : { name: v.name }),
+                ...(v.passthrough === undefined ? null : { passthrough: v.passthrough }),
                 ...(v.phone_number === undefined ? null : { phoneNumber: v.phone_number }),
                 ...(v.state === undefined ? null : { state: v.state }),
                 ...(v.street_1 === undefined ? null : { street1: v.street_1 }),
@@ -10329,6 +10348,7 @@ export namespace HrisCreateEmployeeRequestDtoWorkLocation$ {
         city?: string | null | undefined;
         country?: HrisCreateEmployeeRequestDtoSchemasCountry$.Outbound | null | undefined;
         name?: string | null | undefined;
+        passthrough?: Record<string, any> | null | undefined;
         phone_number?: string | null | undefined;
         state?: HrisCreateEmployeeRequestDtoState$.Outbound | null | undefined;
         street_1?: string | null | undefined;
@@ -10347,6 +10367,7 @@ export namespace HrisCreateEmployeeRequestDtoWorkLocation$ {
                 .nullable(z.lazy(() => HrisCreateEmployeeRequestDtoSchemasCountry$.outboundSchema))
                 .optional(),
             name: z.nullable(z.string()).optional(),
+            passthrough: z.nullable(z.record(z.any())).optional(),
             phoneNumber: z.nullable(z.string()).optional(),
             state: z
                 .nullable(z.lazy(() => HrisCreateEmployeeRequestDtoState$.outboundSchema))
@@ -10360,6 +10381,7 @@ export namespace HrisCreateEmployeeRequestDtoWorkLocation$ {
                 ...(v.city === undefined ? null : { city: v.city }),
                 ...(v.country === undefined ? null : { country: v.country }),
                 ...(v.name === undefined ? null : { name: v.name }),
+                ...(v.passthrough === undefined ? null : { passthrough: v.passthrough }),
                 ...(v.phoneNumber === undefined ? null : { phone_number: v.phoneNumber }),
                 ...(v.state === undefined ? null : { state: v.state }),
                 ...(v.street1 === undefined ? null : { street_1: v.street1 }),
@@ -10436,6 +10458,7 @@ export namespace HrisCreateEmployeeRequestDto$ {
                 .nullable(z.lazy(() => HrisCreateEmployeeRequestDtoMaritalStatus$.inboundSchema))
                 .optional(),
             name: z.nullable(z.string()).optional(),
+            passthrough: z.nullable(z.record(z.any())).optional(),
             personal_email: z.nullable(z.string()).optional(),
             personal_phone_number: z.nullable(z.string()).optional(),
             preferred_language: z
@@ -10504,6 +10527,7 @@ export namespace HrisCreateEmployeeRequestDto$ {
                 ...(v.manager_id === undefined ? null : { managerId: v.manager_id }),
                 ...(v.marital_status === undefined ? null : { maritalStatus: v.marital_status }),
                 ...(v.name === undefined ? null : { name: v.name }),
+                ...(v.passthrough === undefined ? null : { passthrough: v.passthrough }),
                 ...(v.personal_email === undefined ? null : { personalEmail: v.personal_email }),
                 ...(v.personal_phone_number === undefined
                     ? null
@@ -10558,6 +10582,7 @@ export namespace HrisCreateEmployeeRequestDto$ {
         manager_id?: string | null | undefined;
         marital_status?: HrisCreateEmployeeRequestDtoMaritalStatus$.Outbound | null | undefined;
         name?: string | null | undefined;
+        passthrough?: Record<string, any> | null | undefined;
         personal_email?: string | null | undefined;
         personal_phone_number?: string | null | undefined;
         preferred_language?:
@@ -10619,6 +10644,7 @@ export namespace HrisCreateEmployeeRequestDto$ {
                 .nullable(z.lazy(() => HrisCreateEmployeeRequestDtoMaritalStatus$.outboundSchema))
                 .optional(),
             name: z.nullable(z.string()).optional(),
+            passthrough: z.nullable(z.record(z.any())).optional(),
             personalEmail: z.nullable(z.string()).optional(),
             personalPhoneNumber: z.nullable(z.string()).optional(),
             preferredLanguage: z
@@ -10666,6 +10692,7 @@ export namespace HrisCreateEmployeeRequestDto$ {
                 ...(v.managerId === undefined ? null : { manager_id: v.managerId }),
                 ...(v.maritalStatus === undefined ? null : { marital_status: v.maritalStatus }),
                 ...(v.name === undefined ? null : { name: v.name }),
+                ...(v.passthrough === undefined ? null : { passthrough: v.passthrough }),
                 ...(v.personalEmail === undefined ? null : { personal_email: v.personalEmail }),
                 ...(v.personalPhoneNumber === undefined
                     ? null

@@ -59,7 +59,13 @@ export type AtsUpdateApplicationRequestDto = {
      */
     interviewStageId?: string | null | undefined;
     /**
-     * Unique identifier of the rejection reason
+     * Value to pass through to the provider
+     */
+    passthrough?: Record<string, any> | null | undefined;
+    /**
+     * Unique identifier of the rejection reason, used only for write operations
+     *
+     * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     rejectedReasonId?: string | null | undefined;
     /**
@@ -188,6 +194,7 @@ export namespace AtsUpdateApplicationRequestDto$ {
                 )
                 .optional(),
             interview_stage_id: z.nullable(z.string()).optional(),
+            passthrough: z.nullable(z.record(z.any())).optional(),
             rejected_reason_id: z.nullable(z.string()).optional(),
             source: z.nullable(z.string()).optional(),
         })
@@ -199,6 +206,7 @@ export namespace AtsUpdateApplicationRequestDto$ {
                 ...(v.interview_stage_id === undefined
                     ? null
                     : { interviewStageId: v.interview_stage_id }),
+                ...(v.passthrough === undefined ? null : { passthrough: v.passthrough }),
                 ...(v.rejected_reason_id === undefined
                     ? null
                     : { rejectedReasonId: v.rejected_reason_id }),
@@ -212,6 +220,7 @@ export namespace AtsUpdateApplicationRequestDto$ {
             | null
             | undefined;
         interview_stage_id?: string | null | undefined;
+        passthrough?: Record<string, any> | null | undefined;
         rejected_reason_id?: string | null | undefined;
         source?: string | null | undefined;
     };
@@ -227,6 +236,7 @@ export namespace AtsUpdateApplicationRequestDto$ {
                     )
                     .optional(),
                 interviewStageId: z.nullable(z.string()).optional(),
+                passthrough: z.nullable(z.record(z.any())).optional(),
                 rejectedReasonId: z.nullable(z.string()).optional(),
                 source: z.nullable(z.string()).optional(),
             })
@@ -238,6 +248,7 @@ export namespace AtsUpdateApplicationRequestDto$ {
                     ...(v.interviewStageId === undefined
                         ? null
                         : { interview_stage_id: v.interviewStageId }),
+                    ...(v.passthrough === undefined ? null : { passthrough: v.passthrough }),
                     ...(v.rejectedReasonId === undefined
                         ? null
                         : { rejected_reason_id: v.rejectedReasonId }),

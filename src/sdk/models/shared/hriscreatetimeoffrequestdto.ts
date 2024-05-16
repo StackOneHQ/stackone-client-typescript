@@ -78,6 +78,10 @@ export type HrisCreateTimeOffRequestDto = {
      */
     endDate?: Date | null | undefined;
     /**
+     * Value to pass through to the provider
+     */
+    passthrough?: Record<string, any> | null | undefined;
+    /**
      * The start date of the time off request
      */
     startDate?: Date | null | undefined;
@@ -328,6 +332,7 @@ export namespace HrisCreateTimeOffRequestDto$ {
                         .transform((v) => new Date(v))
                 )
                 .optional(),
+            passthrough: z.nullable(z.record(z.any())).optional(),
             start_date: z
                 .nullable(
                     z
@@ -348,6 +353,7 @@ export namespace HrisCreateTimeOffRequestDto$ {
                 ...(v.approver_id === undefined ? null : { approverId: v.approver_id }),
                 ...(v.employee_id === undefined ? null : { employeeId: v.employee_id }),
                 ...(v.end_date === undefined ? null : { endDate: v.end_date }),
+                ...(v.passthrough === undefined ? null : { passthrough: v.passthrough }),
                 ...(v.start_date === undefined ? null : { startDate: v.start_date }),
                 ...(v.status === undefined ? null : { status: v.status }),
                 ...(v.type === undefined ? null : { type: v.type }),
@@ -358,6 +364,7 @@ export namespace HrisCreateTimeOffRequestDto$ {
         approver_id?: string | null | undefined;
         employee_id?: string | null | undefined;
         end_date?: string | null | undefined;
+        passthrough?: Record<string, any> | null | undefined;
         start_date?: string | null | undefined;
         status?: HrisCreateTimeOffRequestDtoStatus$.Outbound | null | undefined;
         type?: HrisCreateTimeOffRequestDtoType$.Outbound | null | undefined;
@@ -368,6 +375,7 @@ export namespace HrisCreateTimeOffRequestDto$ {
             approverId: z.nullable(z.string()).optional(),
             employeeId: z.nullable(z.string()).optional(),
             endDate: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+            passthrough: z.nullable(z.record(z.any())).optional(),
             startDate: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
             status: z
                 .nullable(z.lazy(() => HrisCreateTimeOffRequestDtoStatus$.outboundSchema))
@@ -381,6 +389,7 @@ export namespace HrisCreateTimeOffRequestDto$ {
                 ...(v.approverId === undefined ? null : { approver_id: v.approverId }),
                 ...(v.employeeId === undefined ? null : { employee_id: v.employeeId }),
                 ...(v.endDate === undefined ? null : { end_date: v.endDate }),
+                ...(v.passthrough === undefined ? null : { passthrough: v.passthrough }),
                 ...(v.startDate === undefined ? null : { start_date: v.startDate }),
                 ...(v.status === undefined ? null : { status: v.status }),
                 ...(v.type === undefined ? null : { type: v.type }),

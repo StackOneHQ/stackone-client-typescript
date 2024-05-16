@@ -46,6 +46,10 @@ export type AtsCreateOfferRequestDto = {
     currency?: string | null | undefined;
     offerHistory?: Array<OfferHistory> | null | undefined;
     offerStatus?: OfferStatus | null | undefined;
+    /**
+     * Value to pass through to the provider
+     */
+    passthrough?: Record<string, any> | null | undefined;
     salary?: number | null | undefined;
     /**
      * Date of creation
@@ -160,6 +164,7 @@ export namespace AtsCreateOfferRequestDto$ {
             currency: z.nullable(z.string()).optional(),
             offer_history: z.nullable(z.array(OfferHistory$.inboundSchema)).optional(),
             offer_status: z.nullable(z.lazy(() => OfferStatus$.inboundSchema)).optional(),
+            passthrough: z.nullable(z.record(z.any())).optional(),
             salary: z.nullable(z.number()).optional(),
             start_date: z
                 .nullable(
@@ -176,6 +181,7 @@ export namespace AtsCreateOfferRequestDto$ {
                 ...(v.currency === undefined ? null : { currency: v.currency }),
                 ...(v.offer_history === undefined ? null : { offerHistory: v.offer_history }),
                 ...(v.offer_status === undefined ? null : { offerStatus: v.offer_status }),
+                ...(v.passthrough === undefined ? null : { passthrough: v.passthrough }),
                 ...(v.salary === undefined ? null : { salary: v.salary }),
                 ...(v.start_date === undefined ? null : { startDate: v.start_date }),
             };
@@ -186,6 +192,7 @@ export namespace AtsCreateOfferRequestDto$ {
         currency?: string | null | undefined;
         offer_history?: Array<OfferHistory$.Outbound> | null | undefined;
         offer_status?: OfferStatus$.Outbound | null | undefined;
+        passthrough?: Record<string, any> | null | undefined;
         salary?: number | null | undefined;
         start_date?: string | null | undefined;
     };
@@ -196,6 +203,7 @@ export namespace AtsCreateOfferRequestDto$ {
             currency: z.nullable(z.string()).optional(),
             offerHistory: z.nullable(z.array(OfferHistory$.outboundSchema)).optional(),
             offerStatus: z.nullable(z.lazy(() => OfferStatus$.outboundSchema)).optional(),
+            passthrough: z.nullable(z.record(z.any())).optional(),
             salary: z.nullable(z.number()).optional(),
             startDate: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
         })
@@ -205,6 +213,7 @@ export namespace AtsCreateOfferRequestDto$ {
                 ...(v.currency === undefined ? null : { currency: v.currency }),
                 ...(v.offerHistory === undefined ? null : { offer_history: v.offerHistory }),
                 ...(v.offerStatus === undefined ? null : { offer_status: v.offerStatus }),
+                ...(v.passthrough === undefined ? null : { passthrough: v.passthrough }),
                 ...(v.salary === undefined ? null : { salary: v.salary }),
                 ...(v.startDate === undefined ? null : { start_date: v.startDate }),
             };

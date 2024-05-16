@@ -45,6 +45,10 @@ export type AtsCreateNotesRequestDto = {
     authorId?: string | null | undefined;
     content?: Array<NoteContentApiModel> | null | undefined;
     /**
+     * Value to pass through to the provider
+     */
+    passthrough?: Record<string, any> | null | undefined;
+    /**
      * Visibility of the note
      */
     visibility?: Visibility | null | undefined;
@@ -155,12 +159,14 @@ export namespace AtsCreateNotesRequestDto$ {
         .object({
             author_id: z.nullable(z.string()).optional(),
             content: z.nullable(z.array(NoteContentApiModel$.inboundSchema)).optional(),
+            passthrough: z.nullable(z.record(z.any())).optional(),
             visibility: z.nullable(z.lazy(() => Visibility$.inboundSchema)).optional(),
         })
         .transform((v) => {
             return {
                 ...(v.author_id === undefined ? null : { authorId: v.author_id }),
                 ...(v.content === undefined ? null : { content: v.content }),
+                ...(v.passthrough === undefined ? null : { passthrough: v.passthrough }),
                 ...(v.visibility === undefined ? null : { visibility: v.visibility }),
             };
         });
@@ -168,6 +174,7 @@ export namespace AtsCreateNotesRequestDto$ {
     export type Outbound = {
         author_id?: string | null | undefined;
         content?: Array<NoteContentApiModel$.Outbound> | null | undefined;
+        passthrough?: Record<string, any> | null | undefined;
         visibility?: Visibility$.Outbound | null | undefined;
     };
 
@@ -175,12 +182,14 @@ export namespace AtsCreateNotesRequestDto$ {
         .object({
             authorId: z.nullable(z.string()).optional(),
             content: z.nullable(z.array(NoteContentApiModel$.outboundSchema)).optional(),
+            passthrough: z.nullable(z.record(z.any())).optional(),
             visibility: z.nullable(z.lazy(() => Visibility$.outboundSchema)).optional(),
         })
         .transform((v) => {
             return {
                 ...(v.authorId === undefined ? null : { author_id: v.authorId }),
                 ...(v.content === undefined ? null : { content: v.content }),
+                ...(v.passthrough === undefined ? null : { passthrough: v.passthrough }),
                 ...(v.visibility === undefined ? null : { visibility: v.visibility }),
             };
         });
