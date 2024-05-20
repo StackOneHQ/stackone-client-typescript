@@ -7,7 +7,7 @@ import * as z from "zod";
 export type RawResponse = {
     body?: string | null | undefined;
     method: string;
-    response?: Record<string, any> | null | undefined;
+    response?: { [k: string]: any } | null | undefined;
     url: string;
 };
 
@@ -32,7 +32,7 @@ export namespace RawResponse$ {
     export type Outbound = {
         body?: string | null | undefined;
         method: string;
-        response?: Record<string, any> | null | undefined;
+        response?: { [k: string]: any } | null | undefined;
         url: string;
     };
 

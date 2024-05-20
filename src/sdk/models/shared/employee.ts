@@ -186,6 +186,56 @@ export type Gender = {
     value?: EmployeeSchemasGenderValue | null | undefined;
 };
 
+export type EmployeeSchemasGroups4 = {};
+
+export type EmployeeSchemasGroupsSourceValue = EmployeeSchemasGroups4 | string | number | boolean;
+
+export enum EmployeeSchemasGroupsValue {
+    Workspace = "workspace",
+    Team = "team",
+    Department = "department",
+    Group = "group",
+    UnmappedValue = "unmapped_value",
+}
+
+/**
+ * The type of the group
+ */
+export type EmployeeType = {
+    sourceValue?: EmployeeSchemasGroups4 | string | number | boolean | null | undefined;
+    value?: EmployeeSchemasGroupsValue | null | undefined;
+};
+
+/**
+ * The employee groups
+ */
+export type Groups = {
+    /**
+     * Unique identifier
+     */
+    id?: string | null | undefined;
+    /**
+     * The name of the group
+     */
+    name?: string | null | undefined;
+    /**
+     * The list of group owner ids of the given group
+     */
+    ownerIds?: Array<string> | null | undefined;
+    /**
+     * The list of parent group ids of the given group
+     */
+    parentIds?: Array<string> | null | undefined;
+    /**
+     * Provider's unique identifier
+     */
+    remoteId?: string | null | undefined;
+    /**
+     * The type of the group
+     */
+    type?: EmployeeType | null | undefined;
+};
+
 export type EmployeeSchemasHomeLocation4 = {};
 
 export type EmployeeSchemasHomeLocationSourceValue =
@@ -1183,6 +1233,10 @@ export type Employee = {
      */
     gender?: Gender | null | undefined;
     /**
+     * The employee groups
+     */
+    groups?: Groups | null | undefined;
+    /**
      * The employee hire date
      */
     hireDate?: Date | null | undefined;
@@ -1825,6 +1879,155 @@ export namespace Gender$ {
             return {
                 ...(v.sourceValue === undefined ? null : { source_value: v.sourceValue }),
                 ...(v.value === undefined ? null : { value: v.value }),
+            };
+        });
+}
+
+/** @internal */
+export namespace EmployeeSchemasGroups4$ {
+    export const inboundSchema: z.ZodType<EmployeeSchemasGroups4, z.ZodTypeDef, unknown> = z.object(
+        {}
+    );
+
+    export type Outbound = {};
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, EmployeeSchemasGroups4> =
+        z.object({});
+}
+
+/** @internal */
+export namespace EmployeeSchemasGroupsSourceValue$ {
+    export const inboundSchema: z.ZodType<EmployeeSchemasGroupsSourceValue, z.ZodTypeDef, unknown> =
+        z.union([
+            z.lazy(() => EmployeeSchemasGroups4$.inboundSchema),
+            z.string(),
+            z.number(),
+            z.boolean(),
+        ]);
+
+    export type Outbound = EmployeeSchemasGroups4$.Outbound | string | number | boolean;
+    export const outboundSchema: z.ZodType<
+        Outbound,
+        z.ZodTypeDef,
+        EmployeeSchemasGroupsSourceValue
+    > = z.union([
+        z.lazy(() => EmployeeSchemasGroups4$.outboundSchema),
+        z.string(),
+        z.number(),
+        z.boolean(),
+    ]);
+}
+
+/** @internal */
+export namespace EmployeeSchemasGroupsValue$ {
+    export const inboundSchema = z.nativeEnum(EmployeeSchemasGroupsValue);
+    export const outboundSchema = inboundSchema;
+}
+
+/** @internal */
+export namespace EmployeeType$ {
+    export const inboundSchema: z.ZodType<EmployeeType, z.ZodTypeDef, unknown> = z
+        .object({
+            source_value: z
+                .nullable(
+                    z.union([
+                        z.lazy(() => EmployeeSchemasGroups4$.inboundSchema),
+                        z.string(),
+                        z.number(),
+                        z.boolean(),
+                    ])
+                )
+                .optional(),
+            value: z.nullable(EmployeeSchemasGroupsValue$.inboundSchema).optional(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.source_value === undefined ? null : { sourceValue: v.source_value }),
+                ...(v.value === undefined ? null : { value: v.value }),
+            };
+        });
+
+    export type Outbound = {
+        source_value?:
+            | EmployeeSchemasGroups4$.Outbound
+            | string
+            | number
+            | boolean
+            | null
+            | undefined;
+        value?: string | null | undefined;
+    };
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, EmployeeType> = z
+        .object({
+            sourceValue: z
+                .nullable(
+                    z.union([
+                        z.lazy(() => EmployeeSchemasGroups4$.outboundSchema),
+                        z.string(),
+                        z.number(),
+                        z.boolean(),
+                    ])
+                )
+                .optional(),
+            value: z.nullable(EmployeeSchemasGroupsValue$.outboundSchema).optional(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.sourceValue === undefined ? null : { source_value: v.sourceValue }),
+                ...(v.value === undefined ? null : { value: v.value }),
+            };
+        });
+}
+
+/** @internal */
+export namespace Groups$ {
+    export const inboundSchema: z.ZodType<Groups, z.ZodTypeDef, unknown> = z
+        .object({
+            id: z.nullable(z.string()).optional(),
+            name: z.nullable(z.string()).optional(),
+            owner_ids: z.nullable(z.array(z.string())).optional(),
+            parent_ids: z.nullable(z.array(z.string())).optional(),
+            remote_id: z.nullable(z.string()).optional(),
+            type: z.nullable(z.lazy(() => EmployeeType$.inboundSchema)).optional(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.id === undefined ? null : { id: v.id }),
+                ...(v.name === undefined ? null : { name: v.name }),
+                ...(v.owner_ids === undefined ? null : { ownerIds: v.owner_ids }),
+                ...(v.parent_ids === undefined ? null : { parentIds: v.parent_ids }),
+                ...(v.remote_id === undefined ? null : { remoteId: v.remote_id }),
+                ...(v.type === undefined ? null : { type: v.type }),
+            };
+        });
+
+    export type Outbound = {
+        id?: string | null | undefined;
+        name?: string | null | undefined;
+        owner_ids?: Array<string> | null | undefined;
+        parent_ids?: Array<string> | null | undefined;
+        remote_id?: string | null | undefined;
+        type?: EmployeeType$.Outbound | null | undefined;
+    };
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Groups> = z
+        .object({
+            id: z.nullable(z.string()).optional(),
+            name: z.nullable(z.string()).optional(),
+            ownerIds: z.nullable(z.array(z.string())).optional(),
+            parentIds: z.nullable(z.array(z.string())).optional(),
+            remoteId: z.nullable(z.string()).optional(),
+            type: z.nullable(z.lazy(() => EmployeeType$.outboundSchema)).optional(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.id === undefined ? null : { id: v.id }),
+                ...(v.name === undefined ? null : { name: v.name }),
+                ...(v.ownerIds === undefined ? null : { owner_ids: v.ownerIds }),
+                ...(v.parentIds === undefined ? null : { parent_ids: v.parentIds }),
+                ...(v.remoteId === undefined ? null : { remote_id: v.remoteId }),
+                ...(v.type === undefined ? null : { type: v.type }),
             };
         });
 }
@@ -2748,6 +2951,7 @@ export namespace Employee$ {
             ethnicity: z.nullable(z.lazy(() => Ethnicity$.inboundSchema)).optional(),
             first_name: z.nullable(z.string()).optional(),
             gender: z.nullable(z.lazy(() => Gender$.inboundSchema)).optional(),
+            groups: z.nullable(z.lazy(() => Groups$.inboundSchema)).optional(),
             hire_date: z
                 .nullable(
                     z
@@ -2834,6 +3038,7 @@ export namespace Employee$ {
                 ...(v.ethnicity === undefined ? null : { ethnicity: v.ethnicity }),
                 ...(v.first_name === undefined ? null : { firstName: v.first_name }),
                 ...(v.gender === undefined ? null : { gender: v.gender }),
+                ...(v.groups === undefined ? null : { groups: v.groups }),
                 ...(v.hire_date === undefined ? null : { hireDate: v.hire_date }),
                 ...(v.home_location === undefined ? null : { homeLocation: v.home_location }),
                 ...(v.id === undefined ? null : { id: v.id }),
@@ -2890,6 +3095,7 @@ export namespace Employee$ {
         ethnicity?: Ethnicity$.Outbound | null | undefined;
         first_name?: string | null | undefined;
         gender?: Gender$.Outbound | null | undefined;
+        groups?: Groups$.Outbound | null | undefined;
         hire_date?: string | null | undefined;
         home_location?: HomeLocation$.Outbound | null | undefined;
         id?: string | null | undefined;
@@ -2938,6 +3144,7 @@ export namespace Employee$ {
             ethnicity: z.nullable(z.lazy(() => Ethnicity$.outboundSchema)).optional(),
             firstName: z.nullable(z.string()).optional(),
             gender: z.nullable(z.lazy(() => Gender$.outboundSchema)).optional(),
+            groups: z.nullable(z.lazy(() => Groups$.outboundSchema)).optional(),
             hireDate: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
             homeLocation: z.nullable(z.lazy(() => HomeLocation$.outboundSchema)).optional(),
             id: z.nullable(z.string()).optional(),
@@ -2989,6 +3196,7 @@ export namespace Employee$ {
                 ...(v.ethnicity === undefined ? null : { ethnicity: v.ethnicity }),
                 ...(v.firstName === undefined ? null : { first_name: v.firstName }),
                 ...(v.gender === undefined ? null : { gender: v.gender }),
+                ...(v.groups === undefined ? null : { groups: v.groups }),
                 ...(v.hireDate === undefined ? null : { hire_date: v.hireDate }),
                 ...(v.homeLocation === undefined ? null : { home_location: v.homeLocation }),
                 ...(v.id === undefined ? null : { id: v.id }),

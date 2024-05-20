@@ -68,6 +68,10 @@ export type TimeOff = {
      */
     endDate?: Date | null | undefined;
     /**
+     * True if the end of the time off request ends half way through the day
+     */
+    endHalfDay?: boolean | null | undefined;
+    /**
      * Unique identifier
      */
     id?: string | null | undefined;
@@ -79,6 +83,10 @@ export type TimeOff = {
      * The start date of the time off request
      */
     startDate?: Date | null | undefined;
+    /**
+     * True if the start of the time off request begins half way through the day
+     */
+    startHalfDay?: boolean | null | undefined;
     /**
      * The status of the time off request
      */
@@ -283,6 +291,7 @@ export namespace TimeOff$ {
                         .transform((v) => new Date(v))
                 )
                 .optional(),
+            end_half_day: z.nullable(z.boolean()).optional(),
             id: z.nullable(z.string()).optional(),
             remote_id: z.nullable(z.string()).optional(),
             start_date: z
@@ -293,6 +302,7 @@ export namespace TimeOff$ {
                         .transform((v) => new Date(v))
                 )
                 .optional(),
+            start_half_day: z.nullable(z.boolean()).optional(),
             status: z.nullable(z.lazy(() => TimeOffStatus$.inboundSchema)).optional(),
             type: z.nullable(z.lazy(() => TimeOffType$.inboundSchema)).optional(),
             updated_date: z
@@ -310,9 +320,11 @@ export namespace TimeOff$ {
                 ...(v.created_date === undefined ? null : { createdDate: v.created_date }),
                 ...(v.employee_id === undefined ? null : { employeeId: v.employee_id }),
                 ...(v.end_date === undefined ? null : { endDate: v.end_date }),
+                ...(v.end_half_day === undefined ? null : { endHalfDay: v.end_half_day }),
                 ...(v.id === undefined ? null : { id: v.id }),
                 ...(v.remote_id === undefined ? null : { remoteId: v.remote_id }),
                 ...(v.start_date === undefined ? null : { startDate: v.start_date }),
+                ...(v.start_half_day === undefined ? null : { startHalfDay: v.start_half_day }),
                 ...(v.status === undefined ? null : { status: v.status }),
                 ...(v.type === undefined ? null : { type: v.type }),
                 ...(v.updated_date === undefined ? null : { updatedDate: v.updated_date }),
@@ -324,9 +336,11 @@ export namespace TimeOff$ {
         created_date?: string | null | undefined;
         employee_id?: string | null | undefined;
         end_date?: string | null | undefined;
+        end_half_day?: boolean | null | undefined;
         id?: string | null | undefined;
         remote_id?: string | null | undefined;
         start_date?: string | null | undefined;
+        start_half_day?: boolean | null | undefined;
         status?: TimeOffStatus$.Outbound | null | undefined;
         type?: TimeOffType$.Outbound | null | undefined;
         updated_date?: string | null | undefined;
@@ -338,9 +352,11 @@ export namespace TimeOff$ {
             createdDate: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
             employeeId: z.nullable(z.string()).optional(),
             endDate: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+            endHalfDay: z.nullable(z.boolean()).optional(),
             id: z.nullable(z.string()).optional(),
             remoteId: z.nullable(z.string()).optional(),
             startDate: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+            startHalfDay: z.nullable(z.boolean()).optional(),
             status: z.nullable(z.lazy(() => TimeOffStatus$.outboundSchema)).optional(),
             type: z.nullable(z.lazy(() => TimeOffType$.outboundSchema)).optional(),
             updatedDate: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
@@ -351,9 +367,11 @@ export namespace TimeOff$ {
                 ...(v.createdDate === undefined ? null : { created_date: v.createdDate }),
                 ...(v.employeeId === undefined ? null : { employee_id: v.employeeId }),
                 ...(v.endDate === undefined ? null : { end_date: v.endDate }),
+                ...(v.endHalfDay === undefined ? null : { end_half_day: v.endHalfDay }),
                 ...(v.id === undefined ? null : { id: v.id }),
                 ...(v.remoteId === undefined ? null : { remote_id: v.remoteId }),
                 ...(v.startDate === undefined ? null : { start_date: v.startDate }),
+                ...(v.startHalfDay === undefined ? null : { start_half_day: v.startHalfDay }),
                 ...(v.status === undefined ? null : { status: v.status }),
                 ...(v.type === undefined ? null : { type: v.type }),
                 ...(v.updatedDate === undefined ? null : { updated_date: v.updatedDate }),

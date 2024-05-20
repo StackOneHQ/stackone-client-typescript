@@ -51,7 +51,7 @@ export type ConnectorsMeta = {
      * The provider service category
      */
     category: ConnectorsMetaCategory;
-    models: Record<string, any>;
+    models: { [k: string]: any };
     /**
      * The provider key
      */
@@ -160,7 +160,7 @@ export namespace ConnectorsMeta$ {
     export type Outbound = {
         active?: boolean | null | undefined;
         category: string;
-        models: Record<string, any>;
+        models: { [k: string]: any };
         provider: string;
         provider_name: string;
         resources?: Resources$.Outbound | null | undefined;

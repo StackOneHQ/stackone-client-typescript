@@ -378,7 +378,7 @@ export type HrisCreateWorkEligibilityRequestDto = {
     /**
      * Value to pass through to the provider
      */
-    passthrough?: Record<string, any> | null | undefined;
+    passthrough?: { [k: string]: any } | null | undefined;
     subType?: string | null | undefined;
     type?: HrisCreateWorkEligibilityRequestDtoType | null | undefined;
     validFrom?: Date | null | undefined;
@@ -853,7 +853,7 @@ export namespace HrisCreateWorkEligibilityRequestDto$ {
         document?: Document$.Outbound | null | undefined;
         issued_by?: IssuedBy$.Outbound | null | undefined;
         number?: string | null | undefined;
-        passthrough?: Record<string, any> | null | undefined;
+        passthrough?: { [k: string]: any } | null | undefined;
         sub_type?: string | null | undefined;
         type?: HrisCreateWorkEligibilityRequestDtoType$.Outbound | null | undefined;
         valid_from?: string | null | undefined;

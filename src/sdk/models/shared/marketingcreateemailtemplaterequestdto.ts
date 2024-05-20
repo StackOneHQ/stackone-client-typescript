@@ -11,7 +11,7 @@ export type MarketingCreateEmailTemplateRequestDto = {
     /**
      * Value to pass through to the provider
      */
-    passthrough?: Record<string, any> | null | undefined;
+    passthrough?: { [k: string]: any } | null | undefined;
     tags?: Array<string> | null | undefined;
 };
 
@@ -40,7 +40,7 @@ export namespace MarketingCreateEmailTemplateRequestDto$ {
     export type Outbound = {
         messages?: Array<EmailMessages$.Outbound> | null | undefined;
         name?: string | null | undefined;
-        passthrough?: Record<string, any> | null | undefined;
+        passthrough?: { [k: string]: any } | null | undefined;
         tags?: Array<string> | null | undefined;
     };
 

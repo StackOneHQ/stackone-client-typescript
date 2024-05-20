@@ -42,7 +42,7 @@ export type AtsListCandidateNotesRequest = {
     /**
      * Query parameters that can be used to pass through parameters to the underlying provider request by surrounding them with 'proxy' key
      */
-    proxy?: Record<string, any> | null | undefined;
+    proxy?: { [k: string]: any } | null | undefined;
     /**
      * Indicates that the raw request result is returned
      */
@@ -160,7 +160,7 @@ export namespace AtsListCandidateNotesRequest$ {
         next?: string | null | undefined;
         page?: string | null | undefined;
         page_size: string | null;
-        proxy?: Record<string, any> | null | undefined;
+        proxy?: { [k: string]: any } | null | undefined;
         raw: boolean | null;
         sync_token?: string | null | undefined;
         updated_after?: string | null | undefined;

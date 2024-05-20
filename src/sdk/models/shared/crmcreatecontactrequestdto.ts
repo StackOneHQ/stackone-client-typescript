@@ -32,7 +32,7 @@ export type CrmCreateContactRequestDto = {
     /**
      * Value to pass through to the provider
      */
-    passthrough?: Record<string, any> | null | undefined;
+    passthrough?: { [k: string]: any } | null | undefined;
     /**
      * List of contact phone numbers
      */
@@ -72,7 +72,7 @@ export namespace CrmCreateContactRequestDto$ {
         emails?: Array<string> | null | undefined;
         first_name?: string | null | undefined;
         last_name?: string | null | undefined;
-        passthrough?: Record<string, any> | null | undefined;
+        passthrough?: { [k: string]: any } | null | undefined;
         phone_numbers?: Array<string> | null | undefined;
     };
 

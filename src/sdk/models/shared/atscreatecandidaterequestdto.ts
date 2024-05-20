@@ -37,7 +37,7 @@ export type AtsCreateCandidateRequestDto = {
     /**
      * Value to pass through to the provider
      */
-    passthrough?: Record<string, any> | null | undefined;
+    passthrough?: { [k: string]: any } | null | undefined;
     /**
      * The candidate personal phone number
      */
@@ -99,7 +99,7 @@ export namespace AtsCreateCandidateRequestDto$ {
         hired_at?: string | null | undefined;
         last_name?: string | null | undefined;
         name?: string | null | undefined;
-        passthrough?: Record<string, any> | null | undefined;
+        passthrough?: { [k: string]: any } | null | undefined;
         phone_number?: string | null | undefined;
         social_links?: Array<SocialLink$.Outbound> | null | undefined;
         title?: string | null | undefined;
