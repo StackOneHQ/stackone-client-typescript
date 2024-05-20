@@ -14,7 +14,7 @@ export type AtsGetApplicationDocumentRequest = {
     /**
      * Query parameters that can be used to pass through parameters to the underlying provider request by surrounding them with 'proxy' key
      */
-    proxy?: Record<string, any> | null | undefined;
+    proxy?: { [k: string]: any } | null | undefined;
     /**
      * Indicates that the raw request result is returned
      */
@@ -71,7 +71,7 @@ export namespace AtsGetApplicationDocumentRequest$ {
     export type Outbound = {
         fields?: string | null | undefined;
         id: string;
-        proxy?: Record<string, any> | null | undefined;
+        proxy?: { [k: string]: any } | null | undefined;
         raw: boolean | null;
         subResourceId: string;
         "x-account-id": string;

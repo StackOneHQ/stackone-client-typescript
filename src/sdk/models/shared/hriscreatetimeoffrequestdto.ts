@@ -78,13 +78,21 @@ export type HrisCreateTimeOffRequestDto = {
      */
     endDate?: Date | null | undefined;
     /**
+     * True if the end of the time off request ends half way through the day
+     */
+    endHalfDay?: boolean | null | undefined;
+    /**
      * Value to pass through to the provider
      */
-    passthrough?: Record<string, any> | null | undefined;
+    passthrough?: { [k: string]: any } | null | undefined;
     /**
      * The start date of the time off request
      */
     startDate?: Date | null | undefined;
+    /**
+     * True if the start of the time off request begins half way through the day
+     */
+    startHalfDay?: boolean | null | undefined;
     /**
      * The status of the time off request
      */
@@ -332,6 +340,7 @@ export namespace HrisCreateTimeOffRequestDto$ {
                         .transform((v) => new Date(v))
                 )
                 .optional(),
+            end_half_day: z.nullable(z.boolean()).optional(),
             passthrough: z.nullable(z.record(z.any())).optional(),
             start_date: z
                 .nullable(
@@ -341,6 +350,7 @@ export namespace HrisCreateTimeOffRequestDto$ {
                         .transform((v) => new Date(v))
                 )
                 .optional(),
+            start_half_day: z.nullable(z.boolean()).optional(),
             status: z
                 .nullable(z.lazy(() => HrisCreateTimeOffRequestDtoStatus$.inboundSchema))
                 .optional(),
@@ -353,8 +363,10 @@ export namespace HrisCreateTimeOffRequestDto$ {
                 ...(v.approver_id === undefined ? null : { approverId: v.approver_id }),
                 ...(v.employee_id === undefined ? null : { employeeId: v.employee_id }),
                 ...(v.end_date === undefined ? null : { endDate: v.end_date }),
+                ...(v.end_half_day === undefined ? null : { endHalfDay: v.end_half_day }),
                 ...(v.passthrough === undefined ? null : { passthrough: v.passthrough }),
                 ...(v.start_date === undefined ? null : { startDate: v.start_date }),
+                ...(v.start_half_day === undefined ? null : { startHalfDay: v.start_half_day }),
                 ...(v.status === undefined ? null : { status: v.status }),
                 ...(v.type === undefined ? null : { type: v.type }),
             };
@@ -364,8 +376,10 @@ export namespace HrisCreateTimeOffRequestDto$ {
         approver_id?: string | null | undefined;
         employee_id?: string | null | undefined;
         end_date?: string | null | undefined;
-        passthrough?: Record<string, any> | null | undefined;
+        end_half_day?: boolean | null | undefined;
+        passthrough?: { [k: string]: any } | null | undefined;
         start_date?: string | null | undefined;
+        start_half_day?: boolean | null | undefined;
         status?: HrisCreateTimeOffRequestDtoStatus$.Outbound | null | undefined;
         type?: HrisCreateTimeOffRequestDtoType$.Outbound | null | undefined;
     };
@@ -375,8 +389,10 @@ export namespace HrisCreateTimeOffRequestDto$ {
             approverId: z.nullable(z.string()).optional(),
             employeeId: z.nullable(z.string()).optional(),
             endDate: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+            endHalfDay: z.nullable(z.boolean()).optional(),
             passthrough: z.nullable(z.record(z.any())).optional(),
             startDate: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+            startHalfDay: z.nullable(z.boolean()).optional(),
             status: z
                 .nullable(z.lazy(() => HrisCreateTimeOffRequestDtoStatus$.outboundSchema))
                 .optional(),
@@ -389,8 +405,10 @@ export namespace HrisCreateTimeOffRequestDto$ {
                 ...(v.approverId === undefined ? null : { approver_id: v.approverId }),
                 ...(v.employeeId === undefined ? null : { employee_id: v.employeeId }),
                 ...(v.endDate === undefined ? null : { end_date: v.endDate }),
+                ...(v.endHalfDay === undefined ? null : { end_half_day: v.endHalfDay }),
                 ...(v.passthrough === undefined ? null : { passthrough: v.passthrough }),
                 ...(v.startDate === undefined ? null : { start_date: v.startDate }),
+                ...(v.startHalfDay === undefined ? null : { start_half_day: v.startHalfDay }),
                 ...(v.status === undefined ? null : { status: v.status }),
                 ...(v.type === undefined ? null : { type: v.type }),
             };

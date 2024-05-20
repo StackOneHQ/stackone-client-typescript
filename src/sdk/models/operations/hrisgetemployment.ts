@@ -18,7 +18,7 @@ export type HrisGetEmploymentRequest = {
     /**
      * Query parameters that can be used to pass through parameters to the underlying provider request by surrounding them with 'proxy' key
      */
-    proxy?: Record<string, any> | null | undefined;
+    proxy?: { [k: string]: any } | null | undefined;
     /**
      * Indicates that the raw request result is returned
      */
@@ -74,7 +74,7 @@ export namespace HrisGetEmploymentRequest$ {
         expand?: string | null | undefined;
         fields?: string | null | undefined;
         id: string;
-        proxy?: Record<string, any> | null | undefined;
+        proxy?: { [k: string]: any } | null | undefined;
         raw: boolean | null;
         "x-account-id": string;
     };

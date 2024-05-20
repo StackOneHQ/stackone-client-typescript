@@ -17,7 +17,7 @@ export enum LinkedAccountMetaCategory {
 
 export type LinkedAccountMeta = {
     category: LinkedAccountMetaCategory;
-    models: Record<string, any>;
+    models: { [k: string]: any };
     provider: string;
 };
 
@@ -45,7 +45,7 @@ export namespace LinkedAccountMeta$ {
 
     export type Outbound = {
         category: string;
-        models: Record<string, any>;
+        models: { [k: string]: any };
         provider: string;
     };
 

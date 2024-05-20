@@ -47,7 +47,7 @@ export type AtsCreateNotesRequestDto = {
     /**
      * Value to pass through to the provider
      */
-    passthrough?: Record<string, any> | null | undefined;
+    passthrough?: { [k: string]: any } | null | undefined;
     /**
      * Visibility of the note
      */
@@ -174,7 +174,7 @@ export namespace AtsCreateNotesRequestDto$ {
     export type Outbound = {
         author_id?: string | null | undefined;
         content?: Array<NoteContentApiModel$.Outbound> | null | undefined;
-        passthrough?: Record<string, any> | null | undefined;
+        passthrough?: { [k: string]: any } | null | undefined;
         visibility?: Visibility$.Outbound | null | undefined;
     };
 

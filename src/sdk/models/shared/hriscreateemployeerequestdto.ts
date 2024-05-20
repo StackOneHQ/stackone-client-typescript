@@ -4339,7 +4339,7 @@ export type HrisCreateEmployeeRequestDtoHomeLocation = {
     /**
      * Value to pass through to the provider
      */
-    passthrough?: Record<string, any> | null | undefined;
+    passthrough?: { [k: string]: any } | null | undefined;
     /**
      * The phone number of the location
      */
@@ -8674,7 +8674,7 @@ export type HrisCreateEmployeeRequestDtoWorkLocation = {
     /**
      * Value to pass through to the provider
      */
-    passthrough?: Record<string, any> | null | undefined;
+    passthrough?: { [k: string]: any } | null | undefined;
     /**
      * The phone number of the location
      */
@@ -8797,7 +8797,7 @@ export type HrisCreateEmployeeRequestDto = {
     /**
      * Value to pass through to the provider
      */
-    passthrough?: Record<string, any> | null | undefined;
+    passthrough?: { [k: string]: any } | null | undefined;
     /**
      * The employee personal email
      */
@@ -9757,7 +9757,7 @@ export namespace HrisCreateEmployeeRequestDtoHomeLocation$ {
         city?: string | null | undefined;
         country?: HrisCreateEmployeeRequestDtoCountry$.Outbound | null | undefined;
         name?: string | null | undefined;
-        passthrough?: Record<string, any> | null | undefined;
+        passthrough?: { [k: string]: any } | null | undefined;
         phone_number?: string | null | undefined;
         state?: State$.Outbound | null | undefined;
         street_1?: string | null | undefined;
@@ -10348,7 +10348,7 @@ export namespace HrisCreateEmployeeRequestDtoWorkLocation$ {
         city?: string | null | undefined;
         country?: HrisCreateEmployeeRequestDtoSchemasCountry$.Outbound | null | undefined;
         name?: string | null | undefined;
-        passthrough?: Record<string, any> | null | undefined;
+        passthrough?: { [k: string]: any } | null | undefined;
         phone_number?: string | null | undefined;
         state?: HrisCreateEmployeeRequestDtoState$.Outbound | null | undefined;
         street_1?: string | null | undefined;
@@ -10582,7 +10582,7 @@ export namespace HrisCreateEmployeeRequestDto$ {
         manager_id?: string | null | undefined;
         marital_status?: HrisCreateEmployeeRequestDtoMaritalStatus$.Outbound | null | undefined;
         name?: string | null | undefined;
-        passthrough?: Record<string, any> | null | undefined;
+        passthrough?: { [k: string]: any } | null | undefined;
         personal_email?: string | null | undefined;
         personal_phone_number?: string | null | undefined;
         preferred_language?:

@@ -49,7 +49,7 @@ export type AtsCreateOfferRequestDto = {
     /**
      * Value to pass through to the provider
      */
-    passthrough?: Record<string, any> | null | undefined;
+    passthrough?: { [k: string]: any } | null | undefined;
     salary?: number | null | undefined;
     /**
      * Date of creation
@@ -192,7 +192,7 @@ export namespace AtsCreateOfferRequestDto$ {
         currency?: string | null | undefined;
         offer_history?: Array<OfferHistory$.Outbound> | null | undefined;
         offer_status?: OfferStatus$.Outbound | null | undefined;
-        passthrough?: Record<string, any> | null | undefined;
+        passthrough?: { [k: string]: any } | null | undefined;
         salary?: number | null | undefined;
         start_date?: string | null | undefined;
     };

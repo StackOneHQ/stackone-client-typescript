@@ -89,7 +89,7 @@ export type AtsCreateApplicationRequestDtoCandidate = {
     /**
      * Value to pass through to the provider
      */
-    passthrough?: Record<string, any> | null | undefined;
+    passthrough?: { [k: string]: any } | null | undefined;
     /**
      * The candidate personal phone number
      */
@@ -125,7 +125,7 @@ export type AtsCreateApplicationRequestDto = {
     /**
      * Value to pass through to the provider
      */
-    passthrough?: Record<string, any> | null | undefined;
+    passthrough?: { [k: string]: any } | null | undefined;
     /**
      * Questionnaires associated with the application
      */
@@ -297,7 +297,7 @@ export namespace AtsCreateApplicationRequestDtoCandidate$ {
         hired_at?: string | null | undefined;
         last_name?: string | null | undefined;
         name?: string | null | undefined;
-        passthrough?: Record<string, any> | null | undefined;
+        passthrough?: { [k: string]: any } | null | undefined;
         phone_number?: string | null | undefined;
         social_links?: Array<SocialLink$.Outbound> | null | undefined;
         title?: string | null | undefined;
@@ -381,7 +381,7 @@ export namespace AtsCreateApplicationRequestDto$ {
         candidate_id?: string | null | undefined;
         job_id?: string | null | undefined;
         location_id?: string | null | undefined;
-        passthrough?: Record<string, any> | null | undefined;
+        passthrough?: { [k: string]: any } | null | undefined;
         questionnaires?: Array<Questionnaire$.Outbound> | null | undefined;
         source?: string | null | undefined;
     };

@@ -61,7 +61,7 @@ export type AtsUpdateApplicationRequestDto = {
     /**
      * Value to pass through to the provider
      */
-    passthrough?: Record<string, any> | null | undefined;
+    passthrough?: { [k: string]: any } | null | undefined;
     /**
      * Unique identifier of the rejection reason, used only for write operations
      *
@@ -220,7 +220,7 @@ export namespace AtsUpdateApplicationRequestDto$ {
             | null
             | undefined;
         interview_stage_id?: string | null | undefined;
-        passthrough?: Record<string, any> | null | undefined;
+        passthrough?: { [k: string]: any } | null | undefined;
         rejected_reason_id?: string | null | undefined;
         source?: string | null | undefined;
     };

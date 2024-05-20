@@ -19,11 +19,11 @@ export type ProxyRequestBody = {
     /**
      * The body of the request
      */
-    body?: Record<string, any> | null | undefined;
+    body?: { [k: string]: any } | null | undefined;
     /**
      * The headers to send in the request
      */
-    headers?: Record<string, any> | null | undefined;
+    headers?: { [k: string]: any } | null | undefined;
     /**
      * The method of the request
      */
@@ -65,8 +65,8 @@ export namespace ProxyRequestBody$ {
         });
 
     export type Outbound = {
-        body?: Record<string, any> | null | undefined;
-        headers?: Record<string, any> | null | undefined;
+        body?: { [k: string]: any } | null | undefined;
+        headers?: { [k: string]: any } | null | undefined;
         method: string | null;
         path?: string | null | undefined;
         url?: string | null | undefined;

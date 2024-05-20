@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 7fa83af8-9e8e-4410-b7e2-cf1d0eaf688b
 management:
-  docChecksum: ad312208f8ef0fc9e05c27a4c1b8497d
+  docChecksum: 18322ba8b8edddd97e3a402adfee9ab3
   docVersion: 1.0.0
-  speakeasyVersion: 1.291.0
-  generationVersion: 2.332.4
-  releaseVersion: 4.8.4
-  configChecksum: b0e8f9c407cd2c1464fa34ad58206133
+  speakeasyVersion: 1.293.1
+  generationVersion: 2.333.3
+  releaseVersion: 4.8.5
+  configChecksum: 1c448a88b7cceb346ad8a1bc8f42ca50
   repoURL: https://github.com/StackOneHQ/stackone-client-typescript.git
   repoSubDirectory: .
   installationURL: https://github.com/StackOneHQ/stackone-client-typescript
@@ -28,7 +28,7 @@ features:
     pagination: 2.82.2
     responseFormat: 0.2.3
     sdkHooks: 0.1.0
-    unions: 2.85.4
+    unions: 2.85.5
 generatedFiles:
   - src/sdk/accounts.ts
   - src/sdk/connectsessions.ts
@@ -950,6 +950,11 @@ generatedFiles:
   - docs/sdk/models/shared/employeeschemasgendersourcevalue.md
   - docs/sdk/models/shared/employeeschemasgendervalue.md
   - docs/sdk/models/shared/gender.md
+  - docs/sdk/models/shared/employeeschemasgroups4.md
+  - docs/sdk/models/shared/employeeschemasgroupssourcevalue.md
+  - docs/sdk/models/shared/employeeschemasgroupsvalue.md
+  - docs/sdk/models/shared/employeetype.md
+  - docs/sdk/models/shared/groups.md
   - docs/sdk/models/shared/employeeschemashomelocation4.md
   - docs/sdk/models/shared/employeeschemashomelocationsourcevalue.md
   - docs/sdk/models/shared/employeeschemashomelocationvalue.md

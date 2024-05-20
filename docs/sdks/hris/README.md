@@ -332,6 +332,7 @@ async function run() {
       approverId: "1687-4",
       employeeId: "1687-3",
       endDate: new Date("2021-01-01T01:01:01.000Z"),
+      endHalfDay: true,
       passthrough: {
         "0": "{",
         "1": "\"",
@@ -368,6 +369,7 @@ async function run() {
         "32": "}",
       },
       startDate: new Date("2021-01-01T01:01:01.000Z"),
+      startHalfDay: true,
     },
     id: "<id>",
     xAccountId: "<value>",
@@ -530,6 +532,7 @@ async function run() {
       approverId: "1687-4",
       employeeId: "1687-3",
       endDate: new Date("2021-01-01T01:01:01.000Z"),
+      endHalfDay: true,
       passthrough: {
         "0": "{",
         "1": "\"",
@@ -566,6 +569,7 @@ async function run() {
         "32": "}",
       },
       startDate: new Date("2021-01-01T01:01:01.000Z"),
+      startHalfDay: true,
     },
     xAccountId: "<value>",
   });
@@ -851,7 +855,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.hris.getEmployeesTimeOffRequest({
-    fields: "id,employee_id,approver_id,status,type,start_date,end_date,created_at,updated_at",
+    fields: "id,employee_id,approver_id,status,type,start_date,end_date,start_half_day,end_half_day,created_at,updated_at",
     id: "<id>",
     subResourceId: "<value>",
     xAccountId: "<value>",
@@ -1089,7 +1093,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.hris.getTimeOffRequest({
-    fields: "id,employee_id,approver_id,status,type,start_date,end_date,created_at,updated_at",
+    fields: "id,employee_id,approver_id,status,type,start_date,end_date,start_half_day,end_half_day,created_at,updated_at",
     id: "<id>",
     xAccountId: "<value>",
   });
@@ -1284,7 +1288,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.hris.listEmployeeTimeOffRequests({
-    fields: "id,employee_id,approver_id,status,type,start_date,end_date,created_at,updated_at",
+    fields: "id,employee_id,approver_id,status,type,start_date,end_date,start_half_day,end_half_day,created_at,updated_at",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
@@ -1584,7 +1588,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.hris.listTimeOffRequests({
-    fields: "id,employee_id,approver_id,status,type,start_date,end_date,created_at,updated_at",
+    fields: "id,employee_id,approver_id,status,type,start_date,end_date,start_half_day,end_half_day,created_at,updated_at",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
@@ -2028,6 +2032,7 @@ async function run() {
       approverId: "1687-4",
       employeeId: "1687-3",
       endDate: new Date("2021-01-01T01:01:01.000Z"),
+      endHalfDay: true,
       passthrough: {
         "0": "{",
         "1": "\"",
@@ -2064,6 +2069,7 @@ async function run() {
         "32": "}",
       },
       startDate: new Date("2021-01-01T01:01:01.000Z"),
+      startHalfDay: true,
     },
     id: "<id>",
     xAccountId: "<value>",

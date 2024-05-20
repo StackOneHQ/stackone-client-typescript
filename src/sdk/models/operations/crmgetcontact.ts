@@ -18,7 +18,7 @@ export type CrmGetContactRequest = {
     /**
      * Query parameters that can be used to pass through parameters to the underlying provider request by surrounding them with 'proxy' key
      */
-    proxy?: Record<string, any> | null | undefined;
+    proxy?: { [k: string]: any } | null | undefined;
     /**
      * Indicates that the raw request result is returned
      */
@@ -74,7 +74,7 @@ export namespace CrmGetContactRequest$ {
         fields?: string | null | undefined;
         id: string;
         include?: string | null | undefined;
-        proxy?: Record<string, any> | null | undefined;
+        proxy?: { [k: string]: any } | null | undefined;
         raw: boolean | null;
         "x-account-id": string;
     };
