@@ -178,7 +178,11 @@ async function run() {
           remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         },
       ],
-      source: "LinkedIn",
+      source: {
+        id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        name: "LinkedIn",
+        remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+      },
     },
     xAccountId: "<value>",
   });
@@ -560,7 +564,7 @@ const stackOne = new StackOne({
 async function run() {
   const result = await stackOne.ats.getApplication({
     expand: "documents",
-    fields: "id,candidate_id,job_id,interview_stage,interview_stage_id,rejected_reason,rejected_reason_id,rejected_reason_ids,rejected_reasons,rejected_at,location_id,location_ids,status,application_status,questionnaires,attachments,result_links,created_at,updated_at,documents,candidate",
+    fields: "id,candidate_id,job_id,interview_stage,interview_stage_id,rejected_reason,rejected_reason_id,rejected_reason_ids,rejected_reasons,rejected_at,location_id,location_ids,status,application_status,questionnaires,attachments,result_links,source,created_at,updated_at,documents,candidate",
     id: "<id>",
     xAccountId: "<value>",
   });
@@ -1372,7 +1376,7 @@ const stackOne = new StackOne({
 async function run() {
   const result = await stackOne.ats.listApplications({
     expand: "documents",
-    fields: "id,candidate_id,job_id,interview_stage,interview_stage_id,rejected_reason,rejected_reason_id,rejected_reason_ids,rejected_reasons,rejected_at,location_id,location_ids,status,application_status,questionnaires,attachments,result_links,created_at,updated_at,documents,candidate",
+    fields: "id,candidate_id,job_id,interview_stage,interview_stage_id,rejected_reason,rejected_reason_id,rejected_reason_ids,rejected_reasons,rejected_at,location_id,location_ids,status,application_status,questionnaires,attachments,result_links,source,created_at,updated_at,documents,candidate",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
@@ -2055,7 +2059,11 @@ async function run() {
         "31": "\"",
         "32": "}",
       },
-      source: "LinkedIn",
+      source: {
+        id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        name: "LinkedIn",
+        remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+      },
     },
     id: "<id>",
     xAccountId: "<value>",

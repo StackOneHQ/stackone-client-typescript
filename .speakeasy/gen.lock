@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 7fa83af8-9e8e-4410-b7e2-cf1d0eaf688b
 management:
-  docChecksum: 18322ba8b8edddd97e3a402adfee9ab3
+  docChecksum: cd9280a37e180e1894250f66ebfad996
   docVersion: 1.0.0
-  speakeasyVersion: 1.293.1
+  speakeasyVersion: 1.294.0
   generationVersion: 2.333.3
-  releaseVersion: 4.8.5
-  configChecksum: 1c448a88b7cceb346ad8a1bc8f42ca50
+  releaseVersion: 4.8.6
+  configChecksum: facc25b09d221c24d1d39e6810fe03a3
   repoURL: https://github.com/StackOneHQ/stackone-client-typescript.git
   repoSubDirectory: .
   installationURL: https://github.com/StackOneHQ/stackone-client-typescript
@@ -607,6 +607,7 @@ generatedFiles:
   - docs/sdk/models/shared/atscreateapplicationrequestdtovalue.md
   - docs/sdk/models/shared/atscreateapplicationrequestdtoapplicationstatus.md
   - docs/sdk/models/shared/atscreateapplicationrequestdtocandidate.md
+  - docs/sdk/models/shared/atscreateapplicationrequestdtosource.md
   - docs/sdk/models/shared/atscreateapplicationrequestdto.md
   - docs/sdk/models/shared/questionnaire.md
   - docs/sdk/models/shared/answer4.md
@@ -636,6 +637,7 @@ generatedFiles:
   - docs/sdk/models/shared/applicationstatus.md
   - docs/sdk/models/shared/applicationcandidate.md
   - docs/sdk/models/shared/applicationinterviewstage.md
+  - docs/sdk/models/shared/source.md
   - docs/sdk/models/shared/application.md
   - docs/sdk/models/shared/resultlink.md
   - docs/sdk/models/shared/rejectedreason4.md
@@ -771,6 +773,7 @@ generatedFiles:
   - docs/sdk/models/shared/atsupdateapplicationrequestdtosourcevalue.md
   - docs/sdk/models/shared/atsupdateapplicationrequestdtovalue.md
   - docs/sdk/models/shared/atsupdateapplicationrequestdtoapplicationstatus.md
+  - docs/sdk/models/shared/atsupdateapplicationrequestdtosource.md
   - docs/sdk/models/shared/atsupdateapplicationrequestdto.md
   - docs/sdk/models/shared/atsupdatecandidaterequestdto.md
   - docs/sdk/models/shared/writeresultapimodel.md
