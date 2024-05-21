@@ -104,6 +104,21 @@ export type AtsCreateApplicationRequestDtoCandidate = {
     title?: string | null | undefined;
 };
 
+export type AtsCreateApplicationRequestDtoSource = {
+    /**
+     * Unique identifier
+     */
+    id?: string | null | undefined;
+    /**
+     * The source of the application
+     */
+    name?: string | null | undefined;
+    /**
+     * Provider's unique identifier
+     */
+    remoteId?: string | null | undefined;
+};
+
 export type AtsCreateApplicationRequestDto = {
     applicationStatus?: AtsCreateApplicationRequestDtoApplicationStatus | null | undefined;
     /**
@@ -130,10 +145,7 @@ export type AtsCreateApplicationRequestDto = {
      * Questionnaires associated with the application
      */
     questionnaires?: Array<Questionnaire> | null | undefined;
-    /**
-     * Source of the application
-     */
-    source?: string | null | undefined;
+    source?: AtsCreateApplicationRequestDtoSource | null | undefined;
 };
 
 /** @internal */
@@ -339,6 +351,51 @@ export namespace AtsCreateApplicationRequestDtoCandidate$ {
 }
 
 /** @internal */
+export namespace AtsCreateApplicationRequestDtoSource$ {
+    export const inboundSchema: z.ZodType<
+        AtsCreateApplicationRequestDtoSource,
+        z.ZodTypeDef,
+        unknown
+    > = z
+        .object({
+            id: z.nullable(z.string()).optional(),
+            name: z.nullable(z.string()).optional(),
+            remote_id: z.nullable(z.string()).optional(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.id === undefined ? null : { id: v.id }),
+                ...(v.name === undefined ? null : { name: v.name }),
+                ...(v.remote_id === undefined ? null : { remoteId: v.remote_id }),
+            };
+        });
+
+    export type Outbound = {
+        id?: string | null | undefined;
+        name?: string | null | undefined;
+        remote_id?: string | null | undefined;
+    };
+
+    export const outboundSchema: z.ZodType<
+        Outbound,
+        z.ZodTypeDef,
+        AtsCreateApplicationRequestDtoSource
+    > = z
+        .object({
+            id: z.nullable(z.string()).optional(),
+            name: z.nullable(z.string()).optional(),
+            remoteId: z.nullable(z.string()).optional(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.id === undefined ? null : { id: v.id }),
+                ...(v.name === undefined ? null : { name: v.name }),
+                ...(v.remoteId === undefined ? null : { remote_id: v.remoteId }),
+            };
+        });
+}
+
+/** @internal */
 export namespace AtsCreateApplicationRequestDto$ {
     export const inboundSchema: z.ZodType<AtsCreateApplicationRequestDto, z.ZodTypeDef, unknown> = z
         .object({
@@ -355,7 +412,9 @@ export namespace AtsCreateApplicationRequestDto$ {
             location_id: z.nullable(z.string()).optional(),
             passthrough: z.nullable(z.record(z.any())).optional(),
             questionnaires: z.nullable(z.array(Questionnaire$.inboundSchema)).optional(),
-            source: z.nullable(z.string()).optional(),
+            source: z
+                .nullable(z.lazy(() => AtsCreateApplicationRequestDtoSource$.inboundSchema))
+                .optional(),
         })
         .transform((v) => {
             return {
@@ -383,7 +442,7 @@ export namespace AtsCreateApplicationRequestDto$ {
         location_id?: string | null | undefined;
         passthrough?: { [k: string]: any } | null | undefined;
         questionnaires?: Array<Questionnaire$.Outbound> | null | undefined;
-        source?: string | null | undefined;
+        source?: AtsCreateApplicationRequestDtoSource$.Outbound | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, AtsCreateApplicationRequestDto> =
@@ -404,7 +463,9 @@ export namespace AtsCreateApplicationRequestDto$ {
                 locationId: z.nullable(z.string()).optional(),
                 passthrough: z.nullable(z.record(z.any())).optional(),
                 questionnaires: z.nullable(z.array(Questionnaire$.outboundSchema)).optional(),
-                source: z.nullable(z.string()).optional(),
+                source: z
+                    .nullable(z.lazy(() => AtsCreateApplicationRequestDtoSource$.outboundSchema))
+                    .optional(),
             })
             .transform((v) => {
                 return {

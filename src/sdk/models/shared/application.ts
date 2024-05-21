@@ -116,6 +116,21 @@ export type ApplicationInterviewStage = {
     updatedAt?: Date | null | undefined;
 };
 
+export type Source = {
+    /**
+     * Unique identifier
+     */
+    id?: string | null | undefined;
+    /**
+     * The source of the application
+     */
+    name?: string | null | undefined;
+    /**
+     * Provider's unique identifier
+     */
+    remoteId?: string | null | undefined;
+};
+
 export type Application = {
     applicationStatus?: ApplicationStatus | null | undefined;
     /**
@@ -176,10 +191,7 @@ export type Application = {
      */
     remoteId?: string | null | undefined;
     resultLinks?: Array<ResultLink> | null | undefined;
-    /**
-     * Source of the application
-     */
-    source?: string | null | undefined;
+    source?: Source | null | undefined;
     /**
      * Date of last update
      */
@@ -399,6 +411,43 @@ export namespace ApplicationInterviewStage$ {
 }
 
 /** @internal */
+export namespace Source$ {
+    export const inboundSchema: z.ZodType<Source, z.ZodTypeDef, unknown> = z
+        .object({
+            id: z.nullable(z.string()).optional(),
+            name: z.nullable(z.string()).optional(),
+            remote_id: z.nullable(z.string()).optional(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.id === undefined ? null : { id: v.id }),
+                ...(v.name === undefined ? null : { name: v.name }),
+                ...(v.remote_id === undefined ? null : { remoteId: v.remote_id }),
+            };
+        });
+
+    export type Outbound = {
+        id?: string | null | undefined;
+        name?: string | null | undefined;
+        remote_id?: string | null | undefined;
+    };
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Source> = z
+        .object({
+            id: z.nullable(z.string()).optional(),
+            name: z.nullable(z.string()).optional(),
+            remoteId: z.nullable(z.string()).optional(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.id === undefined ? null : { id: v.id }),
+                ...(v.name === undefined ? null : { name: v.name }),
+                ...(v.remoteId === undefined ? null : { remote_id: v.remoteId }),
+            };
+        });
+}
+
+/** @internal */
 export namespace Application$ {
     export const inboundSchema: z.ZodType<Application, z.ZodTypeDef, unknown> = z
         .object({
@@ -438,7 +487,7 @@ export namespace Application$ {
             rejected_reasons: z.nullable(z.array(RejectedReason$.inboundSchema)).optional(),
             remote_id: z.nullable(z.string()).optional(),
             result_links: z.nullable(z.array(ResultLink$.inboundSchema)).optional(),
-            source: z.nullable(z.string()).optional(),
+            source: z.nullable(z.lazy(() => Source$.inboundSchema)).optional(),
             updated_at: z
                 .nullable(
                     z
@@ -500,7 +549,7 @@ export namespace Application$ {
         rejected_reasons?: Array<RejectedReason$.Outbound> | null | undefined;
         remote_id?: string | null | undefined;
         result_links?: Array<ResultLink$.Outbound> | null | undefined;
-        source?: string | null | undefined;
+        source?: Source$.Outbound | null | undefined;
         updated_at?: string | null | undefined;
     };
 
@@ -528,7 +577,7 @@ export namespace Application$ {
             rejectedReasons: z.nullable(z.array(RejectedReason$.outboundSchema)).optional(),
             remoteId: z.nullable(z.string()).optional(),
             resultLinks: z.nullable(z.array(ResultLink$.outboundSchema)).optional(),
-            source: z.nullable(z.string()).optional(),
+            source: z.nullable(z.lazy(() => Source$.outboundSchema)).optional(),
             updatedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
         })
         .transform((v) => {
