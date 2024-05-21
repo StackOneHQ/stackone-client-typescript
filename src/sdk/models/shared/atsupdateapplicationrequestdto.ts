@@ -52,6 +52,21 @@ export type AtsUpdateApplicationRequestDtoApplicationStatus = {
     value?: AtsUpdateApplicationRequestDtoValue | null | undefined;
 };
 
+export type AtsUpdateApplicationRequestDtoSource = {
+    /**
+     * Unique identifier
+     */
+    id?: string | null | undefined;
+    /**
+     * The source of the application
+     */
+    name?: string | null | undefined;
+    /**
+     * Provider's unique identifier
+     */
+    remoteId?: string | null | undefined;
+};
+
 export type AtsUpdateApplicationRequestDto = {
     applicationStatus?: AtsUpdateApplicationRequestDtoApplicationStatus | null | undefined;
     /**
@@ -68,10 +83,7 @@ export type AtsUpdateApplicationRequestDto = {
      * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     rejectedReasonId?: string | null | undefined;
-    /**
-     * Source of the application
-     */
-    source?: string | null | undefined;
+    source?: AtsUpdateApplicationRequestDtoSource | null | undefined;
 };
 
 /** @internal */
@@ -185,6 +197,51 @@ export namespace AtsUpdateApplicationRequestDtoApplicationStatus$ {
 }
 
 /** @internal */
+export namespace AtsUpdateApplicationRequestDtoSource$ {
+    export const inboundSchema: z.ZodType<
+        AtsUpdateApplicationRequestDtoSource,
+        z.ZodTypeDef,
+        unknown
+    > = z
+        .object({
+            id: z.nullable(z.string()).optional(),
+            name: z.nullable(z.string()).optional(),
+            remote_id: z.nullable(z.string()).optional(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.id === undefined ? null : { id: v.id }),
+                ...(v.name === undefined ? null : { name: v.name }),
+                ...(v.remote_id === undefined ? null : { remoteId: v.remote_id }),
+            };
+        });
+
+    export type Outbound = {
+        id?: string | null | undefined;
+        name?: string | null | undefined;
+        remote_id?: string | null | undefined;
+    };
+
+    export const outboundSchema: z.ZodType<
+        Outbound,
+        z.ZodTypeDef,
+        AtsUpdateApplicationRequestDtoSource
+    > = z
+        .object({
+            id: z.nullable(z.string()).optional(),
+            name: z.nullable(z.string()).optional(),
+            remoteId: z.nullable(z.string()).optional(),
+        })
+        .transform((v) => {
+            return {
+                ...(v.id === undefined ? null : { id: v.id }),
+                ...(v.name === undefined ? null : { name: v.name }),
+                ...(v.remoteId === undefined ? null : { remote_id: v.remoteId }),
+            };
+        });
+}
+
+/** @internal */
 export namespace AtsUpdateApplicationRequestDto$ {
     export const inboundSchema: z.ZodType<AtsUpdateApplicationRequestDto, z.ZodTypeDef, unknown> = z
         .object({
@@ -196,7 +253,9 @@ export namespace AtsUpdateApplicationRequestDto$ {
             interview_stage_id: z.nullable(z.string()).optional(),
             passthrough: z.nullable(z.record(z.any())).optional(),
             rejected_reason_id: z.nullable(z.string()).optional(),
-            source: z.nullable(z.string()).optional(),
+            source: z
+                .nullable(z.lazy(() => AtsUpdateApplicationRequestDtoSource$.inboundSchema))
+                .optional(),
         })
         .transform((v) => {
             return {
@@ -222,7 +281,7 @@ export namespace AtsUpdateApplicationRequestDto$ {
         interview_stage_id?: string | null | undefined;
         passthrough?: { [k: string]: any } | null | undefined;
         rejected_reason_id?: string | null | undefined;
-        source?: string | null | undefined;
+        source?: AtsUpdateApplicationRequestDtoSource$.Outbound | null | undefined;
     };
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, AtsUpdateApplicationRequestDto> =
@@ -238,7 +297,9 @@ export namespace AtsUpdateApplicationRequestDto$ {
                 interviewStageId: z.nullable(z.string()).optional(),
                 passthrough: z.nullable(z.record(z.any())).optional(),
                 rejectedReasonId: z.nullable(z.string()).optional(),
-                source: z.nullable(z.string()).optional(),
+                source: z
+                    .nullable(z.lazy(() => AtsUpdateApplicationRequestDtoSource$.outboundSchema))
+                    .optional(),
             })
             .transform((v) => {
                 return {

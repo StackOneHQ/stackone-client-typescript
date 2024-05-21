@@ -60,6 +60,10 @@ export type TimeOff = {
      */
     createdDate?: Date | null | undefined;
     /**
+     * The duration of the time off request (in days)
+     */
+    duration?: number | null | undefined;
+    /**
      * The employee ID
      */
     employeeId?: string | null | undefined;
@@ -282,6 +286,7 @@ export namespace TimeOff$ {
                         .transform((v) => new Date(v))
                 )
                 .optional(),
+            duration: z.nullable(z.number()).optional(),
             employee_id: z.nullable(z.string()).optional(),
             end_date: z
                 .nullable(
@@ -318,6 +323,7 @@ export namespace TimeOff$ {
             return {
                 ...(v.approver_id === undefined ? null : { approverId: v.approver_id }),
                 ...(v.created_date === undefined ? null : { createdDate: v.created_date }),
+                ...(v.duration === undefined ? null : { duration: v.duration }),
                 ...(v.employee_id === undefined ? null : { employeeId: v.employee_id }),
                 ...(v.end_date === undefined ? null : { endDate: v.end_date }),
                 ...(v.end_half_day === undefined ? null : { endHalfDay: v.end_half_day }),
@@ -334,6 +340,7 @@ export namespace TimeOff$ {
     export type Outbound = {
         approver_id?: string | null | undefined;
         created_date?: string | null | undefined;
+        duration?: number | null | undefined;
         employee_id?: string | null | undefined;
         end_date?: string | null | undefined;
         end_half_day?: boolean | null | undefined;
@@ -350,6 +357,7 @@ export namespace TimeOff$ {
         .object({
             approverId: z.nullable(z.string()).optional(),
             createdDate: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+            duration: z.nullable(z.number()).optional(),
             employeeId: z.nullable(z.string()).optional(),
             endDate: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
             endHalfDay: z.nullable(z.boolean()).optional(),
@@ -365,6 +373,7 @@ export namespace TimeOff$ {
             return {
                 ...(v.approverId === undefined ? null : { approver_id: v.approverId }),
                 ...(v.createdDate === undefined ? null : { created_date: v.createdDate }),
+                ...(v.duration === undefined ? null : { duration: v.duration }),
                 ...(v.employeeId === undefined ? null : { employee_id: v.employeeId }),
                 ...(v.endDate === undefined ? null : { end_date: v.endDate }),
                 ...(v.endHalfDay === undefined ? null : { end_half_day: v.endHalfDay }),
