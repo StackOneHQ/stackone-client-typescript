@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 7fa83af8-9e8e-4410-b7e2-cf1d0eaf688b
 management:
-  docChecksum: 052de52601ff16e2e27459d7e783de3c
+  docChecksum: 548b29f0b49ae9f0908a4c1c2942afd9
   docVersion: 1.0.0
-  speakeasyVersion: 1.294.0
-  generationVersion: 2.333.3
-  releaseVersion: 4.9.0
-  configChecksum: 23230e653c68dfac3e2e96ccc3b0f4f5
+  speakeasyVersion: 1.296.1
+  generationVersion: 2.338.1
+  releaseVersion: 4.9.1
+  configChecksum: 4cb41d70f91ad8d3b029fecd97502bfa
   repoURL: https://github.com/StackOneHQ/stackone-client-typescript.git
   repoSubDirectory: .
   installationURL: https://github.com/StackOneHQ/stackone-client-typescript
@@ -15,7 +15,7 @@ features:
   typescript:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.5
-    core: 3.9.4
+    core: 3.9.9
     deprecations: 2.81.1
     downloadStreams: 0.1.1
     examples: 2.81.4
@@ -51,6 +51,7 @@ generatedFiles:
   - src/lib/config.ts
   - src/lib/encodings.ts
   - src/lib/http.ts
+  - src/lib/is-plain-object.ts
   - src/lib/retries.ts
   - src/lib/schemas.ts
   - src/lib/sdks.ts
@@ -652,12 +653,16 @@ generatedFiles:
   - docs/sdk/models/shared/atsdocumentapimodelschemas4.md
   - docs/sdk/models/shared/atsdocumentapimodelschemassourcevalue.md
   - docs/sdk/models/shared/atsdocumentapimodelvalue.md
+  - docs/sdk/models/shared/fileformat.md
+  - docs/sdk/models/shared/atsdocumentapimodelschemastype4.md
+  - docs/sdk/models/shared/atsdocumentapimodelschemastypesourcevalue.md
+  - docs/sdk/models/shared/atsdocumentapimodelschemasvalue.md
   - docs/sdk/models/shared/atsdocumentapimodeltype.md
   - docs/sdk/models/shared/atsdocumentapimodel.md
   - docs/sdk/models/shared/content4.md
   - docs/sdk/models/shared/contentsourcevalue.md
   - docs/sdk/models/shared/contentvalue.md
-  - docs/sdk/models/shared/fileformat.md
+  - docs/sdk/models/shared/contentfileformat.md
   - docs/sdk/models/shared/content.md
   - docs/sdk/models/shared/phonenumbertype.md
   - docs/sdk/models/shared/phonenumber.md
@@ -916,8 +921,12 @@ generatedFiles:
   - docs/sdk/models/shared/hriscreatetimeoffrequestdtotype.md
   - docs/sdk/models/shared/hriscreatetimeoffrequestdto.md
   - docs/sdk/models/shared/hriscreateworkeligibilityrequestdtoschemasdocument4.md
-  - docs/sdk/models/shared/hriscreateworkeligibilityrequestdtoschemassourcevalue.md
+  - docs/sdk/models/shared/hriscreateworkeligibilityrequestdtoschemasdocumentsourcevalue.md
   - docs/sdk/models/shared/hriscreateworkeligibilityrequestdtocategory.md
+  - docs/sdk/models/shared/hriscreateworkeligibilityrequestdtoschemasdocumentfileformat4.md
+  - docs/sdk/models/shared/hriscreateworkeligibilityrequestdtoschemassourcevalue.md
+  - docs/sdk/models/shared/hriscreateworkeligibilityrequestdtoschemasdocumentvalue.md
+  - docs/sdk/models/shared/hriscreateworkeligibilityrequestdtofileformat.md
   - docs/sdk/models/shared/document.md
   - docs/sdk/models/shared/hriscreateworkeligibilityrequestdto4.md
   - docs/sdk/models/shared/hriscreateworkeligibilityrequestdtosourcevalue.md
@@ -996,6 +1005,10 @@ generatedFiles:
   - docs/sdk/models/shared/hrisdocumentapimodelschemas4.md
   - docs/sdk/models/shared/hrisdocumentapimodelschemassourcevalue.md
   - docs/sdk/models/shared/hrisdocumentapimodelschemasvalue.md
+  - docs/sdk/models/shared/hrisdocumentapimodelfileformat.md
+  - docs/sdk/models/shared/hrisdocumentapimodelschemastype4.md
+  - docs/sdk/models/shared/hrisdocumentapimodelschemastypesourcevalue.md
+  - docs/sdk/models/shared/hrisdocumentapimodelschemastypevalue.md
   - docs/sdk/models/shared/hrisdocumentapimodeltype.md
   - docs/sdk/models/shared/hrisdocumentapimodel.md
   - docs/sdk/models/shared/timeoffresult.md
@@ -1010,8 +1023,12 @@ generatedFiles:
   - docs/sdk/models/shared/timeoff.md
   - docs/sdk/models/shared/workeligibilityresult.md
   - docs/sdk/models/shared/workeligibilityschemasdocument4.md
-  - docs/sdk/models/shared/workeligibilityschemassourcevalue.md
+  - docs/sdk/models/shared/workeligibilityschemasdocumentsourcevalue.md
   - docs/sdk/models/shared/workeligibilitycategory.md
+  - docs/sdk/models/shared/workeligibilityschemasdocumentfileformat4.md
+  - docs/sdk/models/shared/workeligibilityschemassourcevalue.md
+  - docs/sdk/models/shared/workeligibilityschemasdocumentvalue.md
+  - docs/sdk/models/shared/workeligibilityfileformat.md
   - docs/sdk/models/shared/workeligibilitydocument.md
   - docs/sdk/models/shared/workeligibility4.md
   - docs/sdk/models/shared/workeligibilitysourcevalue.md
@@ -1084,9 +1101,13 @@ generatedFiles:
   - docs/sdk/models/shared/iampolicyresult.md
   - docs/sdk/models/shared/iamroleresult.md
   - docs/sdk/models/shared/iamuserresult.md
+  - docs/sdk/models/shared/iamuserschemasavatar4.md
+  - docs/sdk/models/shared/iamuserschemasavatarsourcevalue.md
+  - docs/sdk/models/shared/iamusercategory.md
   - docs/sdk/models/shared/iamuserschemas4.md
   - docs/sdk/models/shared/iamuserschemassourcevalue.md
-  - docs/sdk/models/shared/iamusercategory.md
+  - docs/sdk/models/shared/iamuserschemasvalue.md
+  - docs/sdk/models/shared/iamuserfileformat.md
   - docs/sdk/models/shared/iamuseravatar.md
   - docs/sdk/models/shared/iamuser4.md
   - docs/sdk/models/shared/iamusersourcevalue.md

@@ -102,7 +102,7 @@ run();
 
 ### Response
 
-**Promise<[operations.MarketingCreateEmailTemplateResponse](../../sdk/models/operations/marketingcreateemailtemplateresponse.md)>**
+**Promise\<[operations.MarketingCreateEmailTemplateResponse](../../sdk/models/operations/marketingcreateemailtemplateresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -193,7 +193,7 @@ run();
 
 ### Response
 
-**Promise<[operations.MarketingCreateOmniChannelTemplateResponse](../../sdk/models/operations/marketingcreateomnichanneltemplateresponse.md)>**
+**Promise\<[operations.MarketingCreateOmniChannelTemplateResponse](../../sdk/models/operations/marketingcreateomnichanneltemplateresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -284,7 +284,7 @@ run();
 
 ### Response
 
-**Promise<[operations.MarketingCreatePushTemplateResponse](../../sdk/models/operations/marketingcreatepushtemplateresponse.md)>**
+**Promise\<[operations.MarketingCreatePushTemplateResponse](../../sdk/models/operations/marketingcreatepushtemplateresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -331,7 +331,7 @@ run();
 
 ### Response
 
-**Promise<[operations.MarketingGetCampaignResponse](../../sdk/models/operations/marketinggetcampaignresponse.md)>**
+**Promise\<[operations.MarketingGetCampaignResponse](../../sdk/models/operations/marketinggetcampaignresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -378,7 +378,7 @@ run();
 
 ### Response
 
-**Promise<[operations.MarketingGetEmailTemplateResponse](../../sdk/models/operations/marketinggetemailtemplateresponse.md)>**
+**Promise\<[operations.MarketingGetEmailTemplateResponse](../../sdk/models/operations/marketinggetemailtemplateresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -425,7 +425,7 @@ run();
 
 ### Response
 
-**Promise<[operations.MarketingGetOmniChannelTemplateResponse](../../sdk/models/operations/marketinggetomnichanneltemplateresponse.md)>**
+**Promise\<[operations.MarketingGetOmniChannelTemplateResponse](../../sdk/models/operations/marketinggetomnichanneltemplateresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -472,7 +472,7 @@ run();
 
 ### Response
 
-**Promise<[operations.MarketingGetPushTemplateResponse](../../sdk/models/operations/marketinggetpushtemplateresponse.md)>**
+**Promise\<[operations.MarketingGetPushTemplateResponse](../../sdk/models/operations/marketinggetpushtemplateresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -521,7 +521,7 @@ run();
 
 ### Response
 
-**Promise<[operations.MarketingListCampaignsResponse](../../sdk/models/operations/marketinglistcampaignsresponse.md)>**
+**Promise\<[operations.MarketingListCampaignsResponse](../../sdk/models/operations/marketinglistcampaignsresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -570,7 +570,7 @@ run();
 
 ### Response
 
-**Promise<[operations.MarketingListEmailTemplatesResponse](../../sdk/models/operations/marketinglistemailtemplatesresponse.md)>**
+**Promise\<[operations.MarketingListEmailTemplatesResponse](../../sdk/models/operations/marketinglistemailtemplatesresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -619,7 +619,7 @@ run();
 
 ### Response
 
-**Promise<[operations.MarketingListOmniChannelTemplatesResponse](../../sdk/models/operations/marketinglistomnichanneltemplatesresponse.md)>**
+**Promise\<[operations.MarketingListOmniChannelTemplatesResponse](../../sdk/models/operations/marketinglistomnichanneltemplatesresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -668,7 +668,7 @@ run();
 
 ### Response
 
-**Promise<[operations.MarketingListPushTemplatesResponse](../../sdk/models/operations/marketinglistpushtemplatesresponse.md)>**
+**Promise\<[operations.MarketingListPushTemplatesResponse](../../sdk/models/operations/marketinglistpushtemplatesresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -760,7 +760,7 @@ run();
 
 ### Response
 
-**Promise<[operations.MarketingUpdateEmailTemplateResponse](../../sdk/models/operations/marketingupdateemailtemplateresponse.md)>**
+**Promise\<[operations.MarketingUpdateEmailTemplateResponse](../../sdk/models/operations/marketingupdateemailtemplateresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -852,7 +852,7 @@ run();
 
 ### Response
 
-**Promise<[operations.MarketingUpdateOmniChannelTemplateResponse](../../sdk/models/operations/marketingupdateomnichanneltemplateresponse.md)>**
+**Promise\<[operations.MarketingUpdateOmniChannelTemplateResponse](../../sdk/models/operations/marketingupdateomnichanneltemplateresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -944,7 +944,7 @@ run();
 
 ### Response
 
-**Promise<[operations.MarketingUpdatePushTemplateResponse](../../sdk/models/operations/marketingupdatepushtemplateresponse.md)>**
+**Promise\<[operations.MarketingUpdatePushTemplateResponse](../../sdk/models/operations/marketingupdatepushtemplateresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

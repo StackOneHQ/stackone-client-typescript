@@ -19,6 +19,7 @@ The category of the file
 | `Appraisal`       | appraisal         |
 | `Resume`          | resume            |
 | `Policy`          | policy            |
+| `CoverLetter`     | cover_letter      |
 | `OfferLetter`     | offer_letter      |
 | `PolicyAgreement` | policy_agreement  |
 | `HomeAddress`     | home_address      |

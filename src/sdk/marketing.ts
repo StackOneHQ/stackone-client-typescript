@@ -8,7 +8,6 @@ import * as enc$ from "../lib/encodings";
 import { HTTPClient } from "../lib/http";
 import * as schemas$ from "../lib/schemas";
 import { ClientSDK, RequestOptions } from "../lib/sdks";
-import * as errors from "./models/errors";
 import * as operations from "./models/operations";
 
 export class Marketing extends ClientSDK {
@@ -111,27 +110,12 @@ export class Marketing extends ClientSDK {
             Headers: {},
         };
 
-        if (this.matchResponse(response, 201, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return operations.MarketingCreateEmailTemplateResponse$.inboundSchema.parse({
-                        ...responseFields$,
-                        CreateResult: val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            return result;
-        } else {
-            const responseBody = await response.text();
-            throw new errors.SDKError(
-                "Unexpected API response status or content-type",
-                response,
-                responseBody
-            );
-        }
+        const [result$] = await this.matcher<operations.MarketingCreateEmailTemplateResponse>()
+            .json(201, operations.MarketingCreateEmailTemplateResponse$, { key: "CreateResult" })
+            .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
+            .match(response, { extraFields: responseFields$ });
+
+        return result$;
     }
 
     /**
@@ -207,29 +191,15 @@ export class Marketing extends ClientSDK {
             Headers: {},
         };
 
-        if (this.matchResponse(response, 201, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return operations.MarketingCreateOmniChannelTemplateResponse$.inboundSchema.parse(
-                        {
-                            ...responseFields$,
-                            CreateResult: val$,
-                        }
-                    );
-                },
-                "Response validation failed"
-            );
-            return result;
-        } else {
-            const responseBody = await response.text();
-            throw new errors.SDKError(
-                "Unexpected API response status or content-type",
-                response,
-                responseBody
-            );
-        }
+        const [result$] =
+            await this.matcher<operations.MarketingCreateOmniChannelTemplateResponse>()
+                .json(201, operations.MarketingCreateOmniChannelTemplateResponse$, {
+                    key: "CreateResult",
+                })
+                .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
+                .match(response, { extraFields: responseFields$ });
+
+        return result$;
     }
 
     /**
@@ -304,27 +274,12 @@ export class Marketing extends ClientSDK {
             Headers: {},
         };
 
-        if (this.matchResponse(response, 201, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return operations.MarketingCreatePushTemplateResponse$.inboundSchema.parse({
-                        ...responseFields$,
-                        CreateResult: val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            return result;
-        } else {
-            const responseBody = await response.text();
-            throw new errors.SDKError(
-                "Unexpected API response status or content-type",
-                response,
-                responseBody
-            );
-        }
+        const [result$] = await this.matcher<operations.MarketingCreatePushTemplateResponse>()
+            .json(201, operations.MarketingCreatePushTemplateResponse$, { key: "CreateResult" })
+            .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
+            .match(response, { extraFields: responseFields$ });
+
+        return result$;
     }
 
     /**
@@ -405,27 +360,12 @@ export class Marketing extends ClientSDK {
             Headers: {},
         };
 
-        if (this.matchResponse(response, 200, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return operations.MarketingGetCampaignResponse$.inboundSchema.parse({
-                        ...responseFields$,
-                        CampaignResult: val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            return result;
-        } else {
-            const responseBody = await response.text();
-            throw new errors.SDKError(
-                "Unexpected API response status or content-type",
-                response,
-                responseBody
-            );
-        }
+        const [result$] = await this.matcher<operations.MarketingGetCampaignResponse>()
+            .json(200, operations.MarketingGetCampaignResponse$, { key: "CampaignResult" })
+            .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
+            .match(response, { extraFields: responseFields$ });
+
+        return result$;
     }
 
     /**
@@ -508,27 +448,12 @@ export class Marketing extends ClientSDK {
             Headers: {},
         };
 
-        if (this.matchResponse(response, 200, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return operations.MarketingGetEmailTemplateResponse$.inboundSchema.parse({
-                        ...responseFields$,
-                        TemplateResult: val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            return result;
-        } else {
-            const responseBody = await response.text();
-            throw new errors.SDKError(
-                "Unexpected API response status or content-type",
-                response,
-                responseBody
-            );
-        }
+        const [result$] = await this.matcher<operations.MarketingGetEmailTemplateResponse>()
+            .json(200, operations.MarketingGetEmailTemplateResponse$, { key: "TemplateResult" })
+            .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
+            .match(response, { extraFields: responseFields$ });
+
+        return result$;
     }
 
     /**
@@ -612,27 +537,14 @@ export class Marketing extends ClientSDK {
             Headers: {},
         };
 
-        if (this.matchResponse(response, 200, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return operations.MarketingGetOmniChannelTemplateResponse$.inboundSchema.parse({
-                        ...responseFields$,
-                        TemplateResult: val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            return result;
-        } else {
-            const responseBody = await response.text();
-            throw new errors.SDKError(
-                "Unexpected API response status or content-type",
-                response,
-                responseBody
-            );
-        }
+        const [result$] = await this.matcher<operations.MarketingGetOmniChannelTemplateResponse>()
+            .json(200, operations.MarketingGetOmniChannelTemplateResponse$, {
+                key: "TemplateResult",
+            })
+            .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
+            .match(response, { extraFields: responseFields$ });
+
+        return result$;
     }
 
     /**
@@ -715,27 +627,12 @@ export class Marketing extends ClientSDK {
             Headers: {},
         };
 
-        if (this.matchResponse(response, 200, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return operations.MarketingGetPushTemplateResponse$.inboundSchema.parse({
-                        ...responseFields$,
-                        TemplateResult: val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            return result;
-        } else {
-            const responseBody = await response.text();
-            throw new errors.SDKError(
-                "Unexpected API response status or content-type",
-                response,
-                responseBody
-            );
-        }
+        const [result$] = await this.matcher<operations.MarketingGetPushTemplateResponse>()
+            .json(200, operations.MarketingGetPushTemplateResponse$, { key: "TemplateResult" })
+            .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
+            .match(response, { extraFields: responseFields$ });
+
+        return result$;
     }
 
     /**
@@ -824,27 +721,12 @@ export class Marketing extends ClientSDK {
             Headers: {},
         };
 
-        if (this.matchResponse(response, 200, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return operations.MarketingListCampaignsResponse$.inboundSchema.parse({
-                        ...responseFields$,
-                        CampaignsPaginated: val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            return result;
-        } else {
-            const responseBody = await response.text();
-            throw new errors.SDKError(
-                "Unexpected API response status or content-type",
-                response,
-                responseBody
-            );
-        }
+        const [result$] = await this.matcher<operations.MarketingListCampaignsResponse>()
+            .json(200, operations.MarketingListCampaignsResponse$, { key: "CampaignsPaginated" })
+            .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
+            .match(response, { extraFields: responseFields$ });
+
+        return result$;
     }
 
     /**
@@ -933,27 +815,14 @@ export class Marketing extends ClientSDK {
             Headers: {},
         };
 
-        if (this.matchResponse(response, 200, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return operations.MarketingListEmailTemplatesResponse$.inboundSchema.parse({
-                        ...responseFields$,
-                        TemplatesPaginated: val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            return result;
-        } else {
-            const responseBody = await response.text();
-            throw new errors.SDKError(
-                "Unexpected API response status or content-type",
-                response,
-                responseBody
-            );
-        }
+        const [result$] = await this.matcher<operations.MarketingListEmailTemplatesResponse>()
+            .json(200, operations.MarketingListEmailTemplatesResponse$, {
+                key: "TemplatesPaginated",
+            })
+            .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
+            .match(response, { extraFields: responseFields$ });
+
+        return result$;
     }
 
     /**
@@ -1043,29 +912,14 @@ export class Marketing extends ClientSDK {
             Headers: {},
         };
 
-        if (this.matchResponse(response, 200, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return operations.MarketingListOmniChannelTemplatesResponse$.inboundSchema.parse(
-                        {
-                            ...responseFields$,
-                            TemplatesPaginated: val$,
-                        }
-                    );
-                },
-                "Response validation failed"
-            );
-            return result;
-        } else {
-            const responseBody = await response.text();
-            throw new errors.SDKError(
-                "Unexpected API response status or content-type",
-                response,
-                responseBody
-            );
-        }
+        const [result$] = await this.matcher<operations.MarketingListOmniChannelTemplatesResponse>()
+            .json(200, operations.MarketingListOmniChannelTemplatesResponse$, {
+                key: "TemplatesPaginated",
+            })
+            .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
+            .match(response, { extraFields: responseFields$ });
+
+        return result$;
     }
 
     /**
@@ -1154,27 +1008,14 @@ export class Marketing extends ClientSDK {
             Headers: {},
         };
 
-        if (this.matchResponse(response, 200, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return operations.MarketingListPushTemplatesResponse$.inboundSchema.parse({
-                        ...responseFields$,
-                        TemplatesPaginated: val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            return result;
-        } else {
-            const responseBody = await response.text();
-            throw new errors.SDKError(
-                "Unexpected API response status or content-type",
-                response,
-                responseBody
-            );
-        }
+        const [result$] = await this.matcher<operations.MarketingListPushTemplatesResponse>()
+            .json(200, operations.MarketingListPushTemplatesResponse$, {
+                key: "TemplatesPaginated",
+            })
+            .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
+            .match(response, { extraFields: responseFields$ });
+
+        return result$;
     }
 
     /**
@@ -1255,27 +1096,12 @@ export class Marketing extends ClientSDK {
             Headers: {},
         };
 
-        if (this.matchResponse(response, 200, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return operations.MarketingUpdateEmailTemplateResponse$.inboundSchema.parse({
-                        ...responseFields$,
-                        CreateResult: val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            return result;
-        } else {
-            const responseBody = await response.text();
-            throw new errors.SDKError(
-                "Unexpected API response status or content-type",
-                response,
-                responseBody
-            );
-        }
+        const [result$] = await this.matcher<operations.MarketingUpdateEmailTemplateResponse>()
+            .json(200, operations.MarketingUpdateEmailTemplateResponse$, { key: "CreateResult" })
+            .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
+            .match(response, { extraFields: responseFields$ });
+
+        return result$;
     }
 
     /**
@@ -1356,29 +1182,15 @@ export class Marketing extends ClientSDK {
             Headers: {},
         };
 
-        if (this.matchResponse(response, 200, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return operations.MarketingUpdateOmniChannelTemplateResponse$.inboundSchema.parse(
-                        {
-                            ...responseFields$,
-                            CreateResult: val$,
-                        }
-                    );
-                },
-                "Response validation failed"
-            );
-            return result;
-        } else {
-            const responseBody = await response.text();
-            throw new errors.SDKError(
-                "Unexpected API response status or content-type",
-                response,
-                responseBody
-            );
-        }
+        const [result$] =
+            await this.matcher<operations.MarketingUpdateOmniChannelTemplateResponse>()
+                .json(200, operations.MarketingUpdateOmniChannelTemplateResponse$, {
+                    key: "CreateResult",
+                })
+                .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
+                .match(response, { extraFields: responseFields$ });
+
+        return result$;
     }
 
     /**
@@ -1458,26 +1270,11 @@ export class Marketing extends ClientSDK {
             Headers: {},
         };
 
-        if (this.matchResponse(response, 200, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return operations.MarketingUpdatePushTemplateResponse$.inboundSchema.parse({
-                        ...responseFields$,
-                        CreateResult: val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            return result;
-        } else {
-            const responseBody = await response.text();
-            throw new errors.SDKError(
-                "Unexpected API response status or content-type",
-                response,
-                responseBody
-            );
-        }
+        const [result$] = await this.matcher<operations.MarketingUpdatePushTemplateResponse>()
+            .json(200, operations.MarketingUpdatePushTemplateResponse$, { key: "CreateResult" })
+            .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
+            .match(response, { extraFields: responseFields$ });
+
+        return result$;
     }
 }

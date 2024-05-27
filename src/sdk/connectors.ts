@@ -8,7 +8,6 @@ import * as enc$ from "../lib/encodings";
 import { HTTPClient } from "../lib/http";
 import * as schemas$ from "../lib/schemas";
 import { ClientSDK, RequestOptions } from "../lib/sdks";
-import * as errors from "./models/errors";
 import * as operations from "./models/operations";
 
 export class Connectors extends ClientSDK {
@@ -112,27 +111,12 @@ export class Connectors extends ClientSDK {
             Headers: {},
         };
 
-        if (this.matchResponse(response, 200, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return operations.StackoneGetConnectorMetaResponse$.inboundSchema.parse({
-                        ...responseFields$,
-                        ConnectorsMeta: val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            return result;
-        } else {
-            const responseBody = await response.text();
-            throw new errors.SDKError(
-                "Unexpected API response status or content-type",
-                response,
-                responseBody
-            );
-        }
+        const [result$] = await this.matcher<operations.StackoneGetConnectorMetaResponse>()
+            .json(200, operations.StackoneGetConnectorMetaResponse$, { key: "ConnectorsMeta" })
+            .fail([400, 403, 404, 429, "4XX", 500, 501, "5XX"])
+            .match(response, { extraFields: responseFields$ });
+
+        return result$;
     }
 
     /**
@@ -203,26 +187,11 @@ export class Connectors extends ClientSDK {
             Headers: {},
         };
 
-        if (this.matchResponse(response, 200, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return operations.StackoneListConnectorsMetaResponse$.inboundSchema.parse({
-                        ...responseFields$,
-                        classes: val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            return result;
-        } else {
-            const responseBody = await response.text();
-            throw new errors.SDKError(
-                "Unexpected API response status or content-type",
-                response,
-                responseBody
-            );
-        }
+        const [result$] = await this.matcher<operations.StackoneListConnectorsMetaResponse>()
+            .json(200, operations.StackoneListConnectorsMetaResponse$, { key: "classes" })
+            .fail([400, 403, 429, "4XX", 500, 501, "5XX"])
+            .match(response, { extraFields: responseFields$ });
+
+        return result$;
     }
 }

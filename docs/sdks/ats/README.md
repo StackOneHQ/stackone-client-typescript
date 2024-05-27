@@ -205,7 +205,7 @@ run();
 
 ### Response
 
-**Promise<[operations.AtsCreateApplicationResponse](../../sdk/models/operations/atscreateapplicationresponse.md)>**
+**Promise\<[operations.AtsCreateApplicationResponse](../../sdk/models/operations/atscreateapplicationresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -302,7 +302,7 @@ run();
 
 ### Response
 
-**Promise<[operations.AtsCreateCandidateResponse](../../sdk/models/operations/atscreatecandidateresponse.md)>**
+**Promise\<[operations.AtsCreateCandidateResponse](../../sdk/models/operations/atscreatecandidateresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -396,7 +396,7 @@ run();
 
 ### Response
 
-**Promise<[operations.AtsCreateCandidateNoteResponse](../../sdk/models/operations/atscreatecandidatenoteresponse.md)>**
+**Promise\<[operations.AtsCreateCandidateNoteResponse](../../sdk/models/operations/atscreatecandidatenoteresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -491,7 +491,7 @@ run();
 
 ### Response
 
-**Promise<[operations.AtsCreateOfferResponse](../../sdk/models/operations/atscreateofferresponse.md)>**
+**Promise\<[operations.AtsCreateOfferResponse](../../sdk/models/operations/atscreateofferresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -539,7 +539,7 @@ run();
 
 ### Response
 
-**Promise<[operations.AtsDownloadApplicationDocumentResponse](../../sdk/models/operations/atsdownloadapplicationdocumentresponse.md)>**
+**Promise\<[operations.AtsDownloadApplicationDocumentResponse](../../sdk/models/operations/atsdownloadapplicationdocumentresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -587,7 +587,7 @@ run();
 
 ### Response
 
-**Promise<[operations.AtsGetApplicationResponse](../../sdk/models/operations/atsgetapplicationresponse.md)>**
+**Promise\<[operations.AtsGetApplicationResponse](../../sdk/models/operations/atsgetapplicationresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -611,7 +611,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.getApplicationDocument({
-    fields: "id,name,path,type,category,contents,created_at,updated_at",
+    fields: "id,name,path,type,category,contents,created_at,updated_at,remote_url,file_format",
     id: "<id>",
     subResourceId: "<value>",
     xAccountId: "<value>",
@@ -635,7 +635,7 @@ run();
 
 ### Response
 
-**Promise<[operations.AtsGetApplicationDocumentResponse](../../sdk/models/operations/atsgetapplicationdocumentresponse.md)>**
+**Promise\<[operations.AtsGetApplicationDocumentResponse](../../sdk/models/operations/atsgetapplicationdocumentresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -683,7 +683,7 @@ run();
 
 ### Response
 
-**Promise<[operations.AtsGetApplicationOfferResponse](../../sdk/models/operations/atsgetapplicationofferresponse.md)>**
+**Promise\<[operations.AtsGetApplicationOfferResponse](../../sdk/models/operations/atsgetapplicationofferresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -731,7 +731,7 @@ run();
 
 ### Response
 
-**Promise<[operations.AtsGetApplicationScorecardResponse](../../sdk/models/operations/atsgetapplicationscorecardresponse.md)>**
+**Promise\<[operations.AtsGetApplicationScorecardResponse](../../sdk/models/operations/atsgetapplicationscorecardresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -778,7 +778,7 @@ run();
 
 ### Response
 
-**Promise<[operations.AtsGetCandidateResponse](../../sdk/models/operations/atsgetcandidateresponse.md)>**
+**Promise\<[operations.AtsGetCandidateResponse](../../sdk/models/operations/atsgetcandidateresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -826,7 +826,7 @@ run();
 
 ### Response
 
-**Promise<[operations.AtsGetCandidateNoteResponse](../../sdk/models/operations/atsgetcandidatenoteresponse.md)>**
+**Promise\<[operations.AtsGetCandidateNoteResponse](../../sdk/models/operations/atsgetcandidatenoteresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -873,7 +873,7 @@ run();
 
 ### Response
 
-**Promise<[operations.AtsGetDepartmentResponse](../../sdk/models/operations/atsgetdepartmentresponse.md)>**
+**Promise\<[operations.AtsGetDepartmentResponse](../../sdk/models/operations/atsgetdepartmentresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -920,7 +920,7 @@ run();
 
 ### Response
 
-**Promise<[operations.AtsGetInterviewResponse](../../sdk/models/operations/atsgetinterviewresponse.md)>**
+**Promise\<[operations.AtsGetInterviewResponse](../../sdk/models/operations/atsgetinterviewresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -967,7 +967,7 @@ run();
 
 ### Response
 
-**Promise<[operations.AtsGetInterviewStageResponse](../../sdk/models/operations/atsgetinterviewstageresponse.md)>**
+**Promise\<[operations.AtsGetInterviewStageResponse](../../sdk/models/operations/atsgetinterviewstageresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -1015,7 +1015,7 @@ run();
 
 ### Response
 
-**Promise<[operations.AtsGetJobResponse](../../sdk/models/operations/atsgetjobresponse.md)>**
+**Promise\<[operations.AtsGetJobResponse](../../sdk/models/operations/atsgetjobresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -1063,7 +1063,7 @@ run();
 
 ### Response
 
-**Promise<[operations.AtsGetJobPostingResponse](../../sdk/models/operations/atsgetjobpostingresponse.md)>**
+**Promise\<[operations.AtsGetJobPostingResponse](../../sdk/models/operations/atsgetjobpostingresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -1110,7 +1110,7 @@ run();
 
 ### Response
 
-**Promise<[operations.AtsGetLocationResponse](../../sdk/models/operations/atsgetlocationresponse.md)>**
+**Promise\<[operations.AtsGetLocationResponse](../../sdk/models/operations/atsgetlocationresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -1157,7 +1157,7 @@ run();
 
 ### Response
 
-**Promise<[operations.AtsGetOfferResponse](../../sdk/models/operations/atsgetofferresponse.md)>**
+**Promise\<[operations.AtsGetOfferResponse](../../sdk/models/operations/atsgetofferresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -1204,7 +1204,7 @@ run();
 
 ### Response
 
-**Promise<[operations.AtsGetRejectedReasonResponse](../../sdk/models/operations/atsgetrejectedreasonresponse.md)>**
+**Promise\<[operations.AtsGetRejectedReasonResponse](../../sdk/models/operations/atsgetrejectedreasonresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -1251,7 +1251,7 @@ run();
 
 ### Response
 
-**Promise<[operations.AtsGetUserResponse](../../sdk/models/operations/atsgetuserresponse.md)>**
+**Promise\<[operations.AtsGetUserResponse](../../sdk/models/operations/atsgetuserresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -1275,7 +1275,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.listApplicationDocuments({
-    fields: "id,name,path,type,category,contents,created_at,updated_at",
+    fields: "id,name,path,type,category,contents,created_at,updated_at,remote_url,file_format",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
@@ -1301,7 +1301,7 @@ run();
 
 ### Response
 
-**Promise<[operations.AtsListApplicationDocumentsResponse](../../sdk/models/operations/atslistapplicationdocumentsresponse.md)>**
+**Promise\<[operations.AtsListApplicationDocumentsResponse](../../sdk/models/operations/atslistapplicationdocumentsresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -1351,7 +1351,7 @@ run();
 
 ### Response
 
-**Promise<[operations.AtsListApplicationScorecardsResponse](../../sdk/models/operations/atslistapplicationscorecardsresponse.md)>**
+**Promise\<[operations.AtsListApplicationScorecardsResponse](../../sdk/models/operations/atslistapplicationscorecardsresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -1401,7 +1401,7 @@ run();
 
 ### Response
 
-**Promise<[operations.AtsListApplicationsResponse](../../sdk/models/operations/atslistapplicationsresponse.md)>**
+**Promise\<[operations.AtsListApplicationsResponse](../../sdk/models/operations/atslistapplicationsresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -1451,7 +1451,7 @@ run();
 
 ### Response
 
-**Promise<[operations.AtsListApplicationsOffersResponse](../../sdk/models/operations/atslistapplicationsoffersresponse.md)>**
+**Promise\<[operations.AtsListApplicationsOffersResponse](../../sdk/models/operations/atslistapplicationsoffersresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -1501,7 +1501,7 @@ run();
 
 ### Response
 
-**Promise<[operations.AtsListCandidateNotesResponse](../../sdk/models/operations/atslistcandidatenotesresponse.md)>**
+**Promise\<[operations.AtsListCandidateNotesResponse](../../sdk/models/operations/atslistcandidatenotesresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -1550,7 +1550,7 @@ run();
 
 ### Response
 
-**Promise<[operations.AtsListCandidatesResponse](../../sdk/models/operations/atslistcandidatesresponse.md)>**
+**Promise\<[operations.AtsListCandidatesResponse](../../sdk/models/operations/atslistcandidatesresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -1599,7 +1599,7 @@ run();
 
 ### Response
 
-**Promise<[operations.AtsListDepartmentsResponse](../../sdk/models/operations/atslistdepartmentsresponse.md)>**
+**Promise\<[operations.AtsListDepartmentsResponse](../../sdk/models/operations/atslistdepartmentsresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -1648,7 +1648,7 @@ run();
 
 ### Response
 
-**Promise<[operations.AtsListInterviewStagesResponse](../../sdk/models/operations/atslistinterviewstagesresponse.md)>**
+**Promise\<[operations.AtsListInterviewStagesResponse](../../sdk/models/operations/atslistinterviewstagesresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -1697,7 +1697,7 @@ run();
 
 ### Response
 
-**Promise<[operations.AtsListInterviewsResponse](../../sdk/models/operations/atslistinterviewsresponse.md)>**
+**Promise\<[operations.AtsListInterviewsResponse](../../sdk/models/operations/atslistinterviewsresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -1747,7 +1747,7 @@ run();
 
 ### Response
 
-**Promise<[operations.AtsListJobPostingsResponse](../../sdk/models/operations/atslistjobpostingsresponse.md)>**
+**Promise\<[operations.AtsListJobPostingsResponse](../../sdk/models/operations/atslistjobpostingsresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -1797,7 +1797,7 @@ run();
 
 ### Response
 
-**Promise<[operations.AtsListJobsResponse](../../sdk/models/operations/atslistjobsresponse.md)>**
+**Promise\<[operations.AtsListJobsResponse](../../sdk/models/operations/atslistjobsresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -1846,7 +1846,7 @@ run();
 
 ### Response
 
-**Promise<[operations.AtsListLocationsResponse](../../sdk/models/operations/atslistlocationsresponse.md)>**
+**Promise\<[operations.AtsListLocationsResponse](../../sdk/models/operations/atslistlocationsresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -1895,7 +1895,7 @@ run();
 
 ### Response
 
-**Promise<[operations.AtsListOffersResponse](../../sdk/models/operations/atslistoffersresponse.md)>**
+**Promise\<[operations.AtsListOffersResponse](../../sdk/models/operations/atslistoffersresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -1944,7 +1944,7 @@ run();
 
 ### Response
 
-**Promise<[operations.AtsListRejectedReasonsResponse](../../sdk/models/operations/atslistrejectedreasonsresponse.md)>**
+**Promise\<[operations.AtsListRejectedReasonsResponse](../../sdk/models/operations/atslistrejectedreasonsresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -1993,7 +1993,7 @@ run();
 
 ### Response
 
-**Promise<[operations.AtsListUsersResponse](../../sdk/models/operations/atslistusersresponse.md)>**
+**Promise\<[operations.AtsListUsersResponse](../../sdk/models/operations/atslistusersresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -2087,7 +2087,7 @@ run();
 
 ### Response
 
-**Promise<[operations.AtsUpdateApplicationResponse](../../sdk/models/operations/atsupdateapplicationresponse.md)>**
+**Promise\<[operations.AtsUpdateApplicationResponse](../../sdk/models/operations/atsupdateapplicationresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -2199,7 +2199,7 @@ run();
 
 ### Response
 
-**Promise<[operations.AtsUpdateCandidateResponse](../../sdk/models/operations/atsupdatecandidateresponse.md)>**
+**Promise\<[operations.AtsUpdateCandidateResponse](../../sdk/models/operations/atsupdatecandidateresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -2263,7 +2263,7 @@ run();
 
 ### Response
 
-**Promise<[operations.AtsUploadApplicationDocumentResponse](../../sdk/models/operations/atsuploadapplicationdocumentresponse.md)>**
+**Promise\<[operations.AtsUploadApplicationDocumentResponse](../../sdk/models/operations/atsuploadapplicationdocumentresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
