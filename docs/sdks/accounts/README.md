@@ -47,7 +47,7 @@ run();
 
 ### Response
 
-**Promise<[operations.StackoneDeleteAccountResponse](../../sdk/models/operations/stackonedeleteaccountresponse.md)>**
+**Promise\<[operations.StackoneDeleteAccountResponse](../../sdk/models/operations/stackonedeleteaccountresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -92,7 +92,7 @@ run();
 
 ### Response
 
-**Promise<[operations.StackoneGetAccountResponse](../../sdk/models/operations/stackonegetaccountresponse.md)>**
+**Promise\<[operations.StackoneGetAccountResponse](../../sdk/models/operations/stackonegetaccountresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -137,7 +137,7 @@ run();
 
 ### Response
 
-**Promise<[operations.StackoneGetAccountMetaInfoResponse](../../sdk/models/operations/stackonegetaccountmetainforesponse.md)>**
+**Promise\<[operations.StackoneGetAccountMetaInfoResponse](../../sdk/models/operations/stackonegetaccountmetainforesponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -180,7 +180,7 @@ run();
 
 ### Response
 
-**Promise<[operations.StackoneListLinkedAccountsResponse](../../sdk/models/operations/stackonelistlinkedaccountsresponse.md)>**
+**Promise\<[operations.StackoneListLinkedAccountsResponse](../../sdk/models/operations/stackonelistlinkedaccountsresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -226,7 +226,7 @@ run();
 
 ### Response
 
-**Promise<[operations.StackoneUpdateAccountResponse](../../sdk/models/operations/stackoneupdateaccountresponse.md)>**
+**Promise\<[operations.StackoneUpdateAccountResponse](../../sdk/models/operations/stackoneupdateaccountresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

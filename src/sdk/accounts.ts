@@ -8,7 +8,6 @@ import * as enc$ from "../lib/encodings";
 import { HTTPClient } from "../lib/http";
 import * as schemas$ from "../lib/schemas";
 import { ClientSDK, RequestOptions } from "../lib/sdks";
-import * as errors from "./models/errors";
 import * as operations from "./models/operations";
 
 export class Accounts extends ClientSDK {
@@ -102,27 +101,12 @@ export class Accounts extends ClientSDK {
             Headers: {},
         };
 
-        if (this.matchResponse(response, 200, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return operations.StackoneDeleteAccountResponse$.inboundSchema.parse({
-                        ...responseFields$,
-                        LinkedAccount: val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            return result;
-        } else {
-            const responseBody = await response.text();
-            throw new errors.SDKError(
-                "Unexpected API response status or content-type",
-                response,
-                responseBody
-            );
-        }
+        const [result$] = await this.matcher<operations.StackoneDeleteAccountResponse>()
+            .json(200, operations.StackoneDeleteAccountResponse$, { key: "LinkedAccount" })
+            .fail([400, 403, 404, 429, "4XX", 500, 501, "5XX"])
+            .match(response, { extraFields: responseFields$ });
+
+        return result$;
     }
 
     /**
@@ -189,27 +173,12 @@ export class Accounts extends ClientSDK {
             Headers: {},
         };
 
-        if (this.matchResponse(response, 200, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return operations.StackoneGetAccountResponse$.inboundSchema.parse({
-                        ...responseFields$,
-                        LinkedAccount: val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            return result;
-        } else {
-            const responseBody = await response.text();
-            throw new errors.SDKError(
-                "Unexpected API response status or content-type",
-                response,
-                responseBody
-            );
-        }
+        const [result$] = await this.matcher<operations.StackoneGetAccountResponse>()
+            .json(200, operations.StackoneGetAccountResponse$, { key: "LinkedAccount" })
+            .fail([400, 403, 429, "4XX", 500, 501, "5XX"])
+            .match(response, { extraFields: responseFields$ });
+
+        return result$;
     }
 
     /**
@@ -276,27 +245,12 @@ export class Accounts extends ClientSDK {
             Headers: {},
         };
 
-        if (this.matchResponse(response, 200, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return operations.StackoneGetAccountMetaInfoResponse$.inboundSchema.parse({
-                        ...responseFields$,
-                        LinkedAccountMeta: val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            return result;
-        } else {
-            const responseBody = await response.text();
-            throw new errors.SDKError(
-                "Unexpected API response status or content-type",
-                response,
-                responseBody
-            );
-        }
+        const [result$] = await this.matcher<operations.StackoneGetAccountMetaInfoResponse>()
+            .json(200, operations.StackoneGetAccountMetaInfoResponse$, { key: "LinkedAccountMeta" })
+            .fail([400, 403, 404, 429, "4XX", 500, 501, "5XX"])
+            .match(response, { extraFields: responseFields$ });
+
+        return result$;
     }
 
     /**
@@ -384,27 +338,12 @@ export class Accounts extends ClientSDK {
             Headers: {},
         };
 
-        if (this.matchResponse(response, 200, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return operations.StackoneListLinkedAccountsResponse$.inboundSchema.parse({
-                        ...responseFields$,
-                        classes: val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            return result;
-        } else {
-            const responseBody = await response.text();
-            throw new errors.SDKError(
-                "Unexpected API response status or content-type",
-                response,
-                responseBody
-            );
-        }
+        const [result$] = await this.matcher<operations.StackoneListLinkedAccountsResponse>()
+            .json(200, operations.StackoneListLinkedAccountsResponse$, { key: "classes" })
+            .fail([400, 403, 429, "4XX", 500, 501, "5XX"])
+            .match(response, { extraFields: responseFields$ });
+
+        return result$;
     }
 
     /**
@@ -472,26 +411,11 @@ export class Accounts extends ClientSDK {
             Headers: {},
         };
 
-        if (this.matchResponse(response, 200, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return operations.StackoneUpdateAccountResponse$.inboundSchema.parse({
-                        ...responseFields$,
-                        LinkedAccount: val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            return result;
-        } else {
-            const responseBody = await response.text();
-            throw new errors.SDKError(
-                "Unexpected API response status or content-type",
-                response,
-                responseBody
-            );
-        }
+        const [result$] = await this.matcher<operations.StackoneUpdateAccountResponse>()
+            .json(200, operations.StackoneUpdateAccountResponse$, { key: "LinkedAccount" })
+            .fail([400, 403, 429, "4XX", 500, 501, "5XX"])
+            .match(response, { extraFields: responseFields$ });
+
+        return result$;
     }
 }

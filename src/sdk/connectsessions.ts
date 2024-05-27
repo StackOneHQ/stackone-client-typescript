@@ -8,7 +8,6 @@ import * as enc$ from "../lib/encodings";
 import { HTTPClient } from "../lib/http";
 import * as schemas$ from "../lib/schemas";
 import { ClientSDK, RequestOptions } from "../lib/sdks";
-import * as errors from "./models/errors";
 import * as operations from "./models/operations";
 import * as shared from "./models/shared";
 
@@ -101,29 +100,15 @@ export class ConnectSessions extends ClientSDK {
             Headers: {},
         };
 
-        if (this.matchResponse(response, 201, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return operations.StackoneAuthenticateConnectSessionResponse$.inboundSchema.parse(
-                        {
-                            ...responseFields$,
-                            ConnectSession: val$,
-                        }
-                    );
-                },
-                "Response validation failed"
-            );
-            return result;
-        } else {
-            const responseBody = await response.text();
-            throw new errors.SDKError(
-                "Unexpected API response status or content-type",
-                response,
-                responseBody
-            );
-        }
+        const [result$] =
+            await this.matcher<operations.StackoneAuthenticateConnectSessionResponse>()
+                .json(201, operations.StackoneAuthenticateConnectSessionResponse$, {
+                    key: "ConnectSession",
+                })
+                .fail([400, 403, 429, "4XX", 500, 501, "5XX"])
+                .match(response, { extraFields: responseFields$ });
+
+        return result$;
     }
 
     /**
@@ -188,26 +173,13 @@ export class ConnectSessions extends ClientSDK {
             Headers: {},
         };
 
-        if (this.matchResponse(response, 201, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return operations.StackoneCreateConnectSessionResponse$.inboundSchema.parse({
-                        ...responseFields$,
-                        ConnectSessionToken: val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            return result;
-        } else {
-            const responseBody = await response.text();
-            throw new errors.SDKError(
-                "Unexpected API response status or content-type",
-                response,
-                responseBody
-            );
-        }
+        const [result$] = await this.matcher<operations.StackoneCreateConnectSessionResponse>()
+            .json(201, operations.StackoneCreateConnectSessionResponse$, {
+                key: "ConnectSessionToken",
+            })
+            .fail([400, 403, 429, "4XX", 500, 501, "5XX"])
+            .match(response, { extraFields: responseFields$ });
+
+        return result$;
     }
 }

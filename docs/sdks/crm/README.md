@@ -104,7 +104,7 @@ run();
 
 ### Response
 
-**Promise<[operations.CrmCreateContactResponse](../../sdk/models/operations/crmcreatecontactresponse.md)>**
+**Promise\<[operations.CrmCreateContactResponse](../../sdk/models/operations/crmcreatecontactresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -151,7 +151,7 @@ run();
 
 ### Response
 
-**Promise<[operations.CrmGetAccountResponse](../../sdk/models/operations/crmgetaccountresponse.md)>**
+**Promise\<[operations.CrmGetAccountResponse](../../sdk/models/operations/crmgetaccountresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -199,7 +199,7 @@ run();
 
 ### Response
 
-**Promise<[operations.CrmGetContactResponse](../../sdk/models/operations/crmgetcontactresponse.md)>**
+**Promise\<[operations.CrmGetContactResponse](../../sdk/models/operations/crmgetcontactresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -246,7 +246,7 @@ run();
 
 ### Response
 
-**Promise<[operations.CrmGetListResponse](../../sdk/models/operations/crmgetlistresponse.md)>**
+**Promise\<[operations.CrmGetListResponse](../../sdk/models/operations/crmgetlistresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -295,7 +295,7 @@ run();
 
 ### Response
 
-**Promise<[operations.CrmListAccountsResponse](../../sdk/models/operations/crmlistaccountsresponse.md)>**
+**Promise\<[operations.CrmListAccountsResponse](../../sdk/models/operations/crmlistaccountsresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -345,7 +345,7 @@ run();
 
 ### Response
 
-**Promise<[operations.CrmListContactsResponse](../../sdk/models/operations/crmlistcontactsresponse.md)>**
+**Promise\<[operations.CrmListContactsResponse](../../sdk/models/operations/crmlistcontactsresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -394,7 +394,7 @@ run();
 
 ### Response
 
-**Promise<[operations.CrmListListsResponse](../../sdk/models/operations/crmlistlistsresponse.md)>**
+**Promise\<[operations.CrmListListsResponse](../../sdk/models/operations/crmlistlistsresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -494,7 +494,7 @@ run();
 
 ### Response
 
-**Promise<[operations.CrmUpdateContactResponse](../../sdk/models/operations/crmupdatecontactresponse.md)>**
+**Promise\<[operations.CrmUpdateContactResponse](../../sdk/models/operations/crmupdatecontactresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

@@ -304,7 +304,7 @@ run();
 
 ### Response
 
-**Promise<[operations.HrisCreateEmployeeResponse](../../sdk/models/operations/hriscreateemployeeresponse.md)>**
+**Promise\<[operations.HrisCreateEmployeeResponse](../../sdk/models/operations/hriscreateemployeeresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -393,7 +393,7 @@ run();
 
 ### Response
 
-**Promise<[operations.HrisCreateEmployeeTimeOffRequestResponse](../../sdk/models/operations/hriscreateemployeetimeoffrequestresponse.md)>**
+**Promise\<[operations.HrisCreateEmployeeTimeOffRequestResponse](../../sdk/models/operations/hriscreateemployeetimeoffrequestresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -408,7 +408,10 @@ Create Employee Work Eligibility Request
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
-import { ContentValue, HrisCreateWorkEligibilityRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+import {
+  HrisCreateWorkEligibilityRequestDtoSchemasDocumentValue,
+  HrisCreateWorkEligibilityRequestDtoValue,
+} from "@stackone/stackone-client-ts/sdk/models/shared";
 
 const stackOne = new StackOne({
   security: {
@@ -421,21 +424,16 @@ async function run() {
     hrisCreateWorkEligibilityRequestDto: {
       document: {
         category: {},
-        contents: [
-          {
-            fileFormat: {
-            sourceValue: "abc",
-              value: ContentValue.Pdf,
-            },
-            unifiedUrl: "https://api.stackone.com/unified/hris/employees/12345/documents/67890/download",
-            url: "https://example.com/file.pdf",
-          },
-        ],
         createdAt: new Date("2021-01-01T01:01:01.000Z"),
+        fileFormat: {
+        sourceValue: "abc",
+          value: HrisCreateWorkEligibilityRequestDtoSchemasDocumentValue.Pdf,
+        },
         id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         name: "My Document",
         path: "/path/to/file",
         remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        remoteUrl: "https://example.com/file.pdf",
         updatedAt: new Date("2021-01-02T01:01:01.000Z"),
       },
       issuedBy: {
@@ -504,7 +502,7 @@ run();
 
 ### Response
 
-**Promise<[operations.HrisCreateEmployeeWorkEligibilityRequestResponse](../../sdk/models/operations/hriscreateemployeeworkeligibilityrequestresponse.md)>**
+**Promise\<[operations.HrisCreateEmployeeWorkEligibilityRequestResponse](../../sdk/models/operations/hriscreateemployeeworkeligibilityrequestresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -592,7 +590,7 @@ run();
 
 ### Response
 
-**Promise<[operations.HrisCreateTimeOffRequestResponse](../../sdk/models/operations/hriscreatetimeoffrequestresponse.md)>**
+**Promise\<[operations.HrisCreateTimeOffRequestResponse](../../sdk/models/operations/hriscreatetimeoffrequestresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -640,7 +638,7 @@ run();
 
 ### Response
 
-**Promise<[operations.HrisDownloadEmployeeDocumentResponse](../../sdk/models/operations/hrisdownloademployeedocumentresponse.md)>**
+**Promise\<[operations.HrisDownloadEmployeeDocumentResponse](../../sdk/models/operations/hrisdownloademployeedocumentresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -687,7 +685,7 @@ run();
 
 ### Response
 
-**Promise<[operations.HrisGetBenefitResponse](../../sdk/models/operations/hrisgetbenefitresponse.md)>**
+**Promise\<[operations.HrisGetBenefitResponse](../../sdk/models/operations/hrisgetbenefitresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -734,7 +732,7 @@ run();
 
 ### Response
 
-**Promise<[operations.HrisGetCompanyResponse](../../sdk/models/operations/hrisgetcompanyresponse.md)>**
+**Promise\<[operations.HrisGetCompanyResponse](../../sdk/models/operations/hrisgetcompanyresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -783,7 +781,7 @@ run();
 
 ### Response
 
-**Promise<[operations.HrisGetEmployeeResponse](../../sdk/models/operations/hrisgetemployeeresponse.md)>**
+**Promise\<[operations.HrisGetEmployeeResponse](../../sdk/models/operations/hrisgetemployeeresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -807,7 +805,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.hris.getEmployeeDocument({
-    fields: "id,name,path,type,category,contents,created_at,updated_at",
+    fields: "id,name,path,type,category,contents,created_at,updated_at,remote_url,file_format",
     id: "<id>",
     subResourceId: "<value>",
     xAccountId: "<value>",
@@ -831,7 +829,7 @@ run();
 
 ### Response
 
-**Promise<[operations.HrisGetEmployeeDocumentResponse](../../sdk/models/operations/hrisgetemployeedocumentresponse.md)>**
+**Promise\<[operations.HrisGetEmployeeDocumentResponse](../../sdk/models/operations/hrisgetemployeedocumentresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -879,7 +877,7 @@ run();
 
 ### Response
 
-**Promise<[operations.HrisGetEmployeesTimeOffRequestResponse](../../sdk/models/operations/hrisgetemployeestimeoffrequestresponse.md)>**
+**Promise\<[operations.HrisGetEmployeesTimeOffRequestResponse](../../sdk/models/operations/hrisgetemployeestimeoffrequestresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -927,7 +925,7 @@ run();
 
 ### Response
 
-**Promise<[operations.HrisGetEmployeesWorkEligibilityResponse](../../sdk/models/operations/hrisgetemployeesworkeligibilityresponse.md)>**
+**Promise\<[operations.HrisGetEmployeesWorkEligibilityResponse](../../sdk/models/operations/hrisgetemployeesworkeligibilityresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -975,7 +973,7 @@ run();
 
 ### Response
 
-**Promise<[operations.HrisGetEmploymentResponse](../../sdk/models/operations/hrisgetemploymentresponse.md)>**
+**Promise\<[operations.HrisGetEmploymentResponse](../../sdk/models/operations/hrisgetemploymentresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -1022,7 +1020,7 @@ run();
 
 ### Response
 
-**Promise<[operations.HrisGetGroupResponse](../../sdk/models/operations/hrisgetgroupresponse.md)>**
+**Promise\<[operations.HrisGetGroupResponse](../../sdk/models/operations/hrisgetgroupresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -1069,7 +1067,7 @@ run();
 
 ### Response
 
-**Promise<[operations.HrisGetLocationResponse](../../sdk/models/operations/hrisgetlocationresponse.md)>**
+**Promise\<[operations.HrisGetLocationResponse](../../sdk/models/operations/hrisgetlocationresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -1116,7 +1114,7 @@ run();
 
 ### Response
 
-**Promise<[operations.HrisGetTimeOffRequestResponse](../../sdk/models/operations/hrisgettimeoffrequestresponse.md)>**
+**Promise\<[operations.HrisGetTimeOffRequestResponse](../../sdk/models/operations/hrisgettimeoffrequestresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -1165,7 +1163,7 @@ run();
 
 ### Response
 
-**Promise<[operations.HrisListBenefitsResponse](../../sdk/models/operations/hrislistbenefitsresponse.md)>**
+**Promise\<[operations.HrisListBenefitsResponse](../../sdk/models/operations/hrislistbenefitsresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -1214,7 +1212,7 @@ run();
 
 ### Response
 
-**Promise<[operations.HrisListCompaniesResponse](../../sdk/models/operations/hrislistcompaniesresponse.md)>**
+**Promise\<[operations.HrisListCompaniesResponse](../../sdk/models/operations/hrislistcompaniesresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -1238,7 +1236,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.hris.listEmployeeDocuments({
-    fields: "id,name,path,type,category,contents,created_at,updated_at",
+    fields: "id,name,path,type,category,contents,created_at,updated_at,remote_url,file_format",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
@@ -1264,7 +1262,7 @@ run();
 
 ### Response
 
-**Promise<[operations.HrisListEmployeeDocumentsResponse](../../sdk/models/operations/hrislistemployeedocumentsresponse.md)>**
+**Promise\<[operations.HrisListEmployeeDocumentsResponse](../../sdk/models/operations/hrislistemployeedocumentsresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -1314,7 +1312,7 @@ run();
 
 ### Response
 
-**Promise<[operations.HrisListEmployeeTimeOffRequestsResponse](../../sdk/models/operations/hrislistemployeetimeoffrequestsresponse.md)>**
+**Promise\<[operations.HrisListEmployeeTimeOffRequestsResponse](../../sdk/models/operations/hrislistemployeetimeoffrequestsresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -1364,7 +1362,7 @@ run();
 
 ### Response
 
-**Promise<[operations.HrisListEmployeeWorkEligibilityResponse](../../sdk/models/operations/hrislistemployeeworkeligibilityresponse.md)>**
+**Promise\<[operations.HrisListEmployeeWorkEligibilityResponse](../../sdk/models/operations/hrislistemployeeworkeligibilityresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -1416,7 +1414,7 @@ run();
 
 ### Response
 
-**Promise<[operations.HrisListEmployeesResponse](../../sdk/models/operations/hrislistemployeesresponse.md)>**
+**Promise\<[operations.HrisListEmployeesResponse](../../sdk/models/operations/hrislistemployeesresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -1466,7 +1464,7 @@ run();
 
 ### Response
 
-**Promise<[operations.HrisListEmploymentsResponse](../../sdk/models/operations/hrislistemploymentsresponse.md)>**
+**Promise\<[operations.HrisListEmploymentsResponse](../../sdk/models/operations/hrislistemploymentsresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -1515,7 +1513,7 @@ run();
 
 ### Response
 
-**Promise<[operations.HrisListGroupsResponse](../../sdk/models/operations/hrislistgroupsresponse.md)>**
+**Promise\<[operations.HrisListGroupsResponse](../../sdk/models/operations/hrislistgroupsresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -1564,7 +1562,7 @@ run();
 
 ### Response
 
-**Promise<[operations.HrisListLocationsResponse](../../sdk/models/operations/hrislistlocationsresponse.md)>**
+**Promise\<[operations.HrisListLocationsResponse](../../sdk/models/operations/hrislistlocationsresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -1613,7 +1611,7 @@ run();
 
 ### Response
 
-**Promise<[operations.HrisListTimeOffRequestsResponse](../../sdk/models/operations/hrislisttimeoffrequestsresponse.md)>**
+**Promise\<[operations.HrisListTimeOffRequestsResponse](../../sdk/models/operations/hrislisttimeoffrequestsresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -1892,7 +1890,7 @@ run();
 
 ### Response
 
-**Promise<[operations.HrisUpdateEmployeeResponse](../../sdk/models/operations/hrisupdateemployeeresponse.md)>**
+**Promise\<[operations.HrisUpdateEmployeeResponse](../../sdk/models/operations/hrisupdateemployeeresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -1907,7 +1905,10 @@ Update Employee Work Eligibility Request
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
-import { ContentValue, HrisCreateWorkEligibilityRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+import {
+  HrisCreateWorkEligibilityRequestDtoSchemasDocumentValue,
+  HrisCreateWorkEligibilityRequestDtoValue,
+} from "@stackone/stackone-client-ts/sdk/models/shared";
 
 const stackOne = new StackOne({
   security: {
@@ -1920,21 +1921,16 @@ async function run() {
     hrisCreateWorkEligibilityRequestDto: {
       document: {
         category: {},
-        contents: [
-          {
-            fileFormat: {
-            sourceValue: "abc",
-              value: ContentValue.Pdf,
-            },
-            unifiedUrl: "https://api.stackone.com/unified/hris/employees/12345/documents/67890/download",
-            url: "https://example.com/file.pdf",
-          },
-        ],
         createdAt: new Date("2021-01-01T01:01:01.000Z"),
+        fileFormat: {
+        sourceValue: "abc",
+          value: HrisCreateWorkEligibilityRequestDtoSchemasDocumentValue.Pdf,
+        },
         id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         name: "My Document",
         path: "/path/to/file",
         remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        remoteUrl: "https://example.com/file.pdf",
         updatedAt: new Date("2021-01-02T01:01:01.000Z"),
       },
       issuedBy: {
@@ -2004,7 +2000,7 @@ run();
 
 ### Response
 
-**Promise<[operations.HrisUpdateEmployeeWorkEligibilityRequestResponse](../../sdk/models/operations/hrisupdateemployeeworkeligibilityrequestresponse.md)>**
+**Promise\<[operations.HrisUpdateEmployeeWorkEligibilityRequestResponse](../../sdk/models/operations/hrisupdateemployeeworkeligibilityrequestresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -2093,7 +2089,7 @@ run();
 
 ### Response
 
-**Promise<[operations.HrisUpdateTimeOffRequestResponse](../../sdk/models/operations/hrisupdatetimeoffrequestresponse.md)>**
+**Promise\<[operations.HrisUpdateTimeOffRequestResponse](../../sdk/models/operations/hrisupdatetimeoffrequestresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -2161,7 +2157,7 @@ run();
 
 ### Response
 
-**Promise<[operations.HrisUploadEmployeeDocumentResponse](../../sdk/models/operations/hrisuploademployeedocumentresponse.md)>**
+**Promise\<[operations.HrisUploadEmployeeDocumentResponse](../../sdk/models/operations/hrisuploademployeedocumentresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

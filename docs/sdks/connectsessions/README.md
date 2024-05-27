@@ -44,7 +44,7 @@ run();
 
 ### Response
 
-**Promise<[operations.StackoneAuthenticateConnectSessionResponse](../../sdk/models/operations/stackoneauthenticateconnectsessionresponse.md)>**
+**Promise\<[operations.StackoneAuthenticateConnectSessionResponse](../../sdk/models/operations/stackoneauthenticateconnectsessionresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -101,7 +101,7 @@ run();
 
 ### Response
 
-**Promise<[operations.StackoneCreateConnectSessionResponse](../../sdk/models/operations/stackonecreateconnectsessionresponse.md)>**
+**Promise\<[operations.StackoneCreateConnectSessionResponse](../../sdk/models/operations/stackonecreateconnectsessionresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

@@ -45,7 +45,7 @@ run();
 
 ### Response
 
-**Promise<[operations.StackoneGetConnectorMetaResponse](../../sdk/models/operations/stackonegetconnectormetaresponse.md)>**
+**Promise\<[operations.StackoneGetConnectorMetaResponse](../../sdk/models/operations/stackonegetconnectormetaresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -90,7 +90,7 @@ run();
 
 ### Response
 
-**Promise<[operations.StackoneListConnectorsMetaResponse](../../sdk/models/operations/stackonelistconnectorsmetaresponse.md)>**
+**Promise\<[operations.StackoneListConnectorsMetaResponse](../../sdk/models/operations/stackonelistconnectorsmetaresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

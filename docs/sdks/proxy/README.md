@@ -50,7 +50,7 @@ run();
 
 ### Response
 
-**Promise<[operations.StackoneProxyRequestResponse](../../sdk/models/operations/stackoneproxyrequestresponse.md)>**
+**Promise\<[operations.StackoneProxyRequestResponse](../../sdk/models/operations/stackoneproxyrequestresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

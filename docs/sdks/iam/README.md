@@ -53,7 +53,7 @@ run();
 
 ### Response
 
-**Promise<[operations.IamGetGroupResponse](../../sdk/models/operations/iamgetgroupresponse.md)>**
+**Promise\<[operations.IamGetGroupResponse](../../sdk/models/operations/iamgetgroupresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -101,7 +101,7 @@ run();
 
 ### Response
 
-**Promise<[operations.IamGetPolicyResponse](../../sdk/models/operations/iamgetpolicyresponse.md)>**
+**Promise\<[operations.IamGetPolicyResponse](../../sdk/models/operations/iamgetpolicyresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -149,7 +149,7 @@ run();
 
 ### Response
 
-**Promise<[operations.IamGetRoleResponse](../../sdk/models/operations/iamgetroleresponse.md)>**
+**Promise\<[operations.IamGetRoleResponse](../../sdk/models/operations/iamgetroleresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -197,7 +197,7 @@ run();
 
 ### Response
 
-**Promise<[operations.IamGetUserResponse](../../sdk/models/operations/iamgetuserresponse.md)>**
+**Promise\<[operations.IamGetUserResponse](../../sdk/models/operations/iamgetuserresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -247,7 +247,7 @@ run();
 
 ### Response
 
-**Promise<[operations.IamListGroupsResponse](../../sdk/models/operations/iamlistgroupsresponse.md)>**
+**Promise\<[operations.IamListGroupsResponse](../../sdk/models/operations/iamlistgroupsresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -297,7 +297,7 @@ run();
 
 ### Response
 
-**Promise<[operations.IamListPoliciesResponse](../../sdk/models/operations/iamlistpoliciesresponse.md)>**
+**Promise\<[operations.IamListPoliciesResponse](../../sdk/models/operations/iamlistpoliciesresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -347,7 +347,7 @@ run();
 
 ### Response
 
-**Promise<[operations.IamListRolesResponse](../../sdk/models/operations/iamlistrolesresponse.md)>**
+**Promise\<[operations.IamListRolesResponse](../../sdk/models/operations/iamlistrolesresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -397,7 +397,7 @@ run();
 
 ### Response
 
-**Promise<[operations.IamListUsersResponse](../../sdk/models/operations/iamlistusersresponse.md)>**
+**Promise\<[operations.IamListUsersResponse](../../sdk/models/operations/iamlistusersresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

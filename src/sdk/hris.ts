@@ -8,7 +8,6 @@ import * as enc$ from "../lib/encodings";
 import { HTTPClient } from "../lib/http";
 import * as schemas$ from "../lib/schemas";
 import { ClientSDK, RequestOptions } from "../lib/sdks";
-import * as errors from "./models/errors";
 import * as operations from "./models/operations";
 import { createPageIterator, PageIterator, Paginator } from "./types";
 import jp from "jsonpath";
@@ -112,27 +111,12 @@ export class Hris extends ClientSDK {
             Headers: {},
         };
 
-        if (this.matchResponse(response, 201, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return operations.HrisCreateEmployeeResponse$.inboundSchema.parse({
-                        ...responseFields$,
-                        CreateResult: val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            return result;
-        } else {
-            const responseBody = await response.text();
-            throw new errors.SDKError(
-                "Unexpected API response status or content-type",
-                response,
-                responseBody
-            );
-        }
+        const [result$] = await this.matcher<operations.HrisCreateEmployeeResponse>()
+            .json(201, operations.HrisCreateEmployeeResponse$, { key: "CreateResult" })
+            .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
+            .match(response, { extraFields: responseFields$ });
+
+        return result$;
     }
 
     /**
@@ -213,29 +197,14 @@ export class Hris extends ClientSDK {
             Headers: {},
         };
 
-        if (this.matchResponse(response, 201, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return operations.HrisCreateEmployeeTimeOffRequestResponse$.inboundSchema.parse(
-                        {
-                            ...responseFields$,
-                            CreateResult: val$,
-                        }
-                    );
-                },
-                "Response validation failed"
-            );
-            return result;
-        } else {
-            const responseBody = await response.text();
-            throw new errors.SDKError(
-                "Unexpected API response status or content-type",
-                response,
-                responseBody
-            );
-        }
+        const [result$] = await this.matcher<operations.HrisCreateEmployeeTimeOffRequestResponse>()
+            .json(201, operations.HrisCreateEmployeeTimeOffRequestResponse$, {
+                key: "CreateResult",
+            })
+            .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
+            .match(response, { extraFields: responseFields$ });
+
+        return result$;
     }
 
     /**
@@ -318,29 +287,15 @@ export class Hris extends ClientSDK {
             Headers: {},
         };
 
-        if (this.matchResponse(response, 201, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return operations.HrisCreateEmployeeWorkEligibilityRequestResponse$.inboundSchema.parse(
-                        {
-                            ...responseFields$,
-                            CreateResult: val$,
-                        }
-                    );
-                },
-                "Response validation failed"
-            );
-            return result;
-        } else {
-            const responseBody = await response.text();
-            throw new errors.SDKError(
-                "Unexpected API response status or content-type",
-                response,
-                responseBody
-            );
-        }
+        const [result$] =
+            await this.matcher<operations.HrisCreateEmployeeWorkEligibilityRequestResponse>()
+                .json(201, operations.HrisCreateEmployeeWorkEligibilityRequestResponse$, {
+                    key: "CreateResult",
+                })
+                .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
+                .match(response, { extraFields: responseFields$ });
+
+        return result$;
     }
 
     /**
@@ -415,27 +370,12 @@ export class Hris extends ClientSDK {
             Headers: {},
         };
 
-        if (this.matchResponse(response, 201, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return operations.HrisCreateTimeOffRequestResponse$.inboundSchema.parse({
-                        ...responseFields$,
-                        CreateResult: val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            return result;
-        } else {
-            const responseBody = await response.text();
-            throw new errors.SDKError(
-                "Unexpected API response status or content-type",
-                response,
-                responseBody
-            );
-        }
+        const [result$] = await this.matcher<operations.HrisCreateTimeOffRequestResponse>()
+            .json(201, operations.HrisCreateTimeOffRequestResponse$, { key: "CreateResult" })
+            .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
+            .match(response, { extraFields: responseFields$ });
+
+        return result$;
     }
 
     /**
@@ -521,27 +461,12 @@ export class Hris extends ClientSDK {
             Headers: {},
         };
 
-        if (this.matchResponse(response, 200, "application/octet-stream")) {
-            const responseBody = response.body ?? undefined;
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return operations.HrisDownloadEmployeeDocumentResponse$.inboundSchema.parse({
-                        ...responseFields$,
-                        stream: val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            return result;
-        } else {
-            const responseBody = await response.text();
-            throw new errors.SDKError(
-                "Unexpected API response status or content-type",
-                response,
-                responseBody
-            );
-        }
+        const [result$] = await this.matcher<operations.HrisDownloadEmployeeDocumentResponse>()
+            .stream(200, operations.HrisDownloadEmployeeDocumentResponse$, { key: "stream" })
+            .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
+            .match(response, { extraFields: responseFields$ });
+
+        return result$;
     }
 
     /**
@@ -622,27 +547,12 @@ export class Hris extends ClientSDK {
             Headers: {},
         };
 
-        if (this.matchResponse(response, 200, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return operations.HrisGetBenefitResponse$.inboundSchema.parse({
-                        ...responseFields$,
-                        HRISBenefitResult: val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            return result;
-        } else {
-            const responseBody = await response.text();
-            throw new errors.SDKError(
-                "Unexpected API response status or content-type",
-                response,
-                responseBody
-            );
-        }
+        const [result$] = await this.matcher<operations.HrisGetBenefitResponse>()
+            .json(200, operations.HrisGetBenefitResponse$, { key: "HRISBenefitResult" })
+            .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
+            .match(response, { extraFields: responseFields$ });
+
+        return result$;
     }
 
     /**
@@ -723,27 +633,12 @@ export class Hris extends ClientSDK {
             Headers: {},
         };
 
-        if (this.matchResponse(response, 200, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return operations.HrisGetCompanyResponse$.inboundSchema.parse({
-                        ...responseFields$,
-                        CompanyResult: val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            return result;
-        } else {
-            const responseBody = await response.text();
-            throw new errors.SDKError(
-                "Unexpected API response status or content-type",
-                response,
-                responseBody
-            );
-        }
+        const [result$] = await this.matcher<operations.HrisGetCompanyResponse>()
+            .json(200, operations.HrisGetCompanyResponse$, { key: "CompanyResult" })
+            .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
+            .match(response, { extraFields: responseFields$ });
+
+        return result$;
     }
 
     /**
@@ -829,27 +724,12 @@ export class Hris extends ClientSDK {
             Headers: {},
         };
 
-        if (this.matchResponse(response, 200, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return operations.HrisGetEmployeeResponse$.inboundSchema.parse({
-                        ...responseFields$,
-                        EmployeeResult: val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            return result;
-        } else {
-            const responseBody = await response.text();
-            throw new errors.SDKError(
-                "Unexpected API response status or content-type",
-                response,
-                responseBody
-            );
-        }
+        const [result$] = await this.matcher<operations.HrisGetEmployeeResponse>()
+            .json(200, operations.HrisGetEmployeeResponse$, { key: "EmployeeResult" })
+            .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
+            .match(response, { extraFields: responseFields$ });
+
+        return result$;
     }
 
     /**
@@ -936,27 +816,12 @@ export class Hris extends ClientSDK {
             Headers: {},
         };
 
-        if (this.matchResponse(response, 200, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return operations.HrisGetEmployeeDocumentResponse$.inboundSchema.parse({
-                        ...responseFields$,
-                        HrisDocumentResult: val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            return result;
-        } else {
-            const responseBody = await response.text();
-            throw new errors.SDKError(
-                "Unexpected API response status or content-type",
-                response,
-                responseBody
-            );
-        }
+        const [result$] = await this.matcher<operations.HrisGetEmployeeDocumentResponse>()
+            .json(200, operations.HrisGetEmployeeDocumentResponse$, { key: "HrisDocumentResult" })
+            .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
+            .match(response, { extraFields: responseFields$ });
+
+        return result$;
     }
 
     /**
@@ -1044,27 +909,12 @@ export class Hris extends ClientSDK {
             Headers: {},
         };
 
-        if (this.matchResponse(response, 200, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return operations.HrisGetEmployeesTimeOffRequestResponse$.inboundSchema.parse({
-                        ...responseFields$,
-                        TimeOffResult: val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            return result;
-        } else {
-            const responseBody = await response.text();
-            throw new errors.SDKError(
-                "Unexpected API response status or content-type",
-                response,
-                responseBody
-            );
-        }
+        const [result$] = await this.matcher<operations.HrisGetEmployeesTimeOffRequestResponse>()
+            .json(200, operations.HrisGetEmployeesTimeOffRequestResponse$, { key: "TimeOffResult" })
+            .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
+            .match(response, { extraFields: responseFields$ });
+
+        return result$;
     }
 
     /**
@@ -1152,27 +1002,14 @@ export class Hris extends ClientSDK {
             Headers: {},
         };
 
-        if (this.matchResponse(response, 200, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return operations.HrisGetEmployeesWorkEligibilityResponse$.inboundSchema.parse({
-                        ...responseFields$,
-                        WorkEligibilityResult: val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            return result;
-        } else {
-            const responseBody = await response.text();
-            throw new errors.SDKError(
-                "Unexpected API response status or content-type",
-                response,
-                responseBody
-            );
-        }
+        const [result$] = await this.matcher<operations.HrisGetEmployeesWorkEligibilityResponse>()
+            .json(200, operations.HrisGetEmployeesWorkEligibilityResponse$, {
+                key: "WorkEligibilityResult",
+            })
+            .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
+            .match(response, { extraFields: responseFields$ });
+
+        return result$;
     }
 
     /**
@@ -1254,27 +1091,12 @@ export class Hris extends ClientSDK {
             Headers: {},
         };
 
-        if (this.matchResponse(response, 200, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return operations.HrisGetEmploymentResponse$.inboundSchema.parse({
-                        ...responseFields$,
-                        EmploymentResult: val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            return result;
-        } else {
-            const responseBody = await response.text();
-            throw new errors.SDKError(
-                "Unexpected API response status or content-type",
-                response,
-                responseBody
-            );
-        }
+        const [result$] = await this.matcher<operations.HrisGetEmploymentResponse>()
+            .json(200, operations.HrisGetEmploymentResponse$, { key: "EmploymentResult" })
+            .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
+            .match(response, { extraFields: responseFields$ });
+
+        return result$;
     }
 
     /**
@@ -1355,27 +1177,12 @@ export class Hris extends ClientSDK {
             Headers: {},
         };
 
-        if (this.matchResponse(response, 200, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return operations.HrisGetGroupResponse$.inboundSchema.parse({
-                        ...responseFields$,
-                        HRISGroupsResult: val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            return result;
-        } else {
-            const responseBody = await response.text();
-            throw new errors.SDKError(
-                "Unexpected API response status or content-type",
-                response,
-                responseBody
-            );
-        }
+        const [result$] = await this.matcher<operations.HrisGetGroupResponse>()
+            .json(200, operations.HrisGetGroupResponse$, { key: "HRISGroupsResult" })
+            .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
+            .match(response, { extraFields: responseFields$ });
+
+        return result$;
     }
 
     /**
@@ -1456,27 +1263,12 @@ export class Hris extends ClientSDK {
             Headers: {},
         };
 
-        if (this.matchResponse(response, 200, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return operations.HrisGetLocationResponse$.inboundSchema.parse({
-                        ...responseFields$,
-                        HRISLocationResult: val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            return result;
-        } else {
-            const responseBody = await response.text();
-            throw new errors.SDKError(
-                "Unexpected API response status or content-type",
-                response,
-                responseBody
-            );
-        }
+        const [result$] = await this.matcher<operations.HrisGetLocationResponse>()
+            .json(200, operations.HrisGetLocationResponse$, { key: "HRISLocationResult" })
+            .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
+            .match(response, { extraFields: responseFields$ });
+
+        return result$;
     }
 
     /**
@@ -1557,27 +1349,12 @@ export class Hris extends ClientSDK {
             Headers: {},
         };
 
-        if (this.matchResponse(response, 200, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return operations.HrisGetTimeOffRequestResponse$.inboundSchema.parse({
-                        ...responseFields$,
-                        TimeOffResult: val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            return result;
-        } else {
-            const responseBody = await response.text();
-            throw new errors.SDKError(
-                "Unexpected API response status or content-type",
-                response,
-                responseBody
-            );
-        }
+        const [result$] = await this.matcher<operations.HrisGetTimeOffRequestResponse>()
+            .json(200, operations.HrisGetTimeOffRequestResponse$, { key: "TimeOffResult" })
+            .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
+            .match(response, { extraFields: responseFields$ });
+
+        return result$;
     }
 
     /**
@@ -1666,27 +1443,12 @@ export class Hris extends ClientSDK {
             Headers: {},
         };
 
-        if (this.matchResponse(response, 200, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return operations.HrisListBenefitsResponse$.inboundSchema.parse({
-                        ...responseFields$,
-                        HRISBenefitsPaginated: val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            return result;
-        } else {
-            const responseBody = await response.text();
-            throw new errors.SDKError(
-                "Unexpected API response status or content-type",
-                response,
-                responseBody
-            );
-        }
+        const [result$] = await this.matcher<operations.HrisListBenefitsResponse>()
+            .json(200, operations.HrisListBenefitsResponse$, { key: "HRISBenefitsPaginated" })
+            .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
+            .match(response, { extraFields: responseFields$ });
+
+        return result$;
     }
 
     /**
@@ -1775,27 +1537,12 @@ export class Hris extends ClientSDK {
             Headers: {},
         };
 
-        if (this.matchResponse(response, 200, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return operations.HrisListCompaniesResponse$.inboundSchema.parse({
-                        ...responseFields$,
-                        CompaniesPaginated: val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            return result;
-        } else {
-            const responseBody = await response.text();
-            throw new errors.SDKError(
-                "Unexpected API response status or content-type",
-                response,
-                responseBody
-            );
-        }
+        const [result$] = await this.matcher<operations.HrisListCompaniesResponse>()
+            .json(200, operations.HrisListCompaniesResponse$, { key: "CompaniesPaginated" })
+            .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
+            .match(response, { extraFields: responseFields$ });
+
+        return result$;
     }
 
     /**
@@ -1889,27 +1636,14 @@ export class Hris extends ClientSDK {
             Headers: {},
         };
 
-        if (this.matchResponse(response, 200, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return operations.HrisListEmployeeDocumentsResponse$.inboundSchema.parse({
-                        ...responseFields$,
-                        HrisDocumentsPaginated: val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            return result;
-        } else {
-            const responseBody = await response.text();
-            throw new errors.SDKError(
-                "Unexpected API response status or content-type",
-                response,
-                responseBody
-            );
-        }
+        const [result$] = await this.matcher<operations.HrisListEmployeeDocumentsResponse>()
+            .json(200, operations.HrisListEmployeeDocumentsResponse$, {
+                key: "HrisDocumentsPaginated",
+            })
+            .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
+            .match(response, { extraFields: responseFields$ });
+
+        return result$;
     }
 
     /**
@@ -2004,27 +1738,14 @@ export class Hris extends ClientSDK {
             Headers: {},
         };
 
-        if (this.matchResponse(response, 200, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return operations.HrisListEmployeeTimeOffRequestsResponse$.inboundSchema.parse({
-                        ...responseFields$,
-                        TimeOffPaginated: val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            return result;
-        } else {
-            const responseBody = await response.text();
-            throw new errors.SDKError(
-                "Unexpected API response status or content-type",
-                response,
-                responseBody
-            );
-        }
+        const [result$] = await this.matcher<operations.HrisListEmployeeTimeOffRequestsResponse>()
+            .json(200, operations.HrisListEmployeeTimeOffRequestsResponse$, {
+                key: "TimeOffPaginated",
+            })
+            .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
+            .match(response, { extraFields: responseFields$ });
+
+        return result$;
     }
 
     /**
@@ -2119,27 +1840,14 @@ export class Hris extends ClientSDK {
             Headers: {},
         };
 
-        if (this.matchResponse(response, 200, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return operations.HrisListEmployeeWorkEligibilityResponse$.inboundSchema.parse({
-                        ...responseFields$,
-                        WorkEligibilityPaginated: val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            return result;
-        } else {
-            const responseBody = await response.text();
-            throw new errors.SDKError(
-                "Unexpected API response status or content-type",
-                response,
-                responseBody
-            );
-        }
+        const [result$] = await this.matcher<operations.HrisListEmployeeWorkEligibilityResponse>()
+            .json(200, operations.HrisListEmployeeWorkEligibilityResponse$, {
+                key: "WorkEligibilityPaginated",
+            })
+            .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
+            .match(response, { extraFields: responseFields$ });
+
+        return result$;
     }
 
     /**
@@ -2226,6 +1934,18 @@ export class Hris extends ClientSDK {
 
         const response = await this.do$(request$, doOptions);
 
+        const responseFields$ = {
+            ContentType: response.headers.get("content-type") ?? "application/octet-stream",
+            StatusCode: response.status,
+            RawResponse: response,
+            Headers: {},
+        };
+
+        const [result$, raw$] = await this.matcher<operations.HrisListEmployeesResponse>()
+            .json(200, operations.HrisListEmployeesResponse$, { key: "EmployeesPaginated" })
+            .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
+            .match(response, { extraFields: responseFields$ });
+
         const nextFunc = (
             responseData: unknown
         ): Paginator<operations.HrisListEmployeesResponse> => {
@@ -2244,37 +1964,8 @@ export class Hris extends ClientSDK {
                 );
         };
 
-        const responseFields$ = {
-            ContentType: response.headers.get("content-type") ?? "application/octet-stream",
-            StatusCode: response.status,
-            RawResponse: response,
-            Headers: {},
-        };
-
-        if (this.matchResponse(response, 200, "application/json")) {
-            const responseBody = await response.json();
-            const parsed = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return operations.HrisListEmployeesResponse$.inboundSchema.parse({
-                        ...responseFields$,
-                        EmployeesPaginated: val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            const next$ = nextFunc(responseBody);
-            const page$ = { ...parsed, next: next$ };
-            const result = { ...page$, ...createPageIterator(page$) };
-            return result;
-        } else {
-            const responseBody = await response.text();
-            throw new errors.SDKError(
-                "Unexpected API response status or content-type",
-                response,
-                responseBody
-            );
-        }
+        const page$ = { ...result$, next: nextFunc(raw$) };
+        return { ...page$, ...createPageIterator(page$) };
     }
 
     /**
@@ -2364,27 +2055,12 @@ export class Hris extends ClientSDK {
             Headers: {},
         };
 
-        if (this.matchResponse(response, 200, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return operations.HrisListEmploymentsResponse$.inboundSchema.parse({
-                        ...responseFields$,
-                        EmploymentsPaginated: val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            return result;
-        } else {
-            const responseBody = await response.text();
-            throw new errors.SDKError(
-                "Unexpected API response status or content-type",
-                response,
-                responseBody
-            );
-        }
+        const [result$] = await this.matcher<operations.HrisListEmploymentsResponse>()
+            .json(200, operations.HrisListEmploymentsResponse$, { key: "EmploymentsPaginated" })
+            .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
+            .match(response, { extraFields: responseFields$ });
+
+        return result$;
     }
 
     /**
@@ -2473,27 +2149,12 @@ export class Hris extends ClientSDK {
             Headers: {},
         };
 
-        if (this.matchResponse(response, 200, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return operations.HrisListGroupsResponse$.inboundSchema.parse({
-                        ...responseFields$,
-                        HRISGroupsPaginated: val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            return result;
-        } else {
-            const responseBody = await response.text();
-            throw new errors.SDKError(
-                "Unexpected API response status or content-type",
-                response,
-                responseBody
-            );
-        }
+        const [result$] = await this.matcher<operations.HrisListGroupsResponse>()
+            .json(200, operations.HrisListGroupsResponse$, { key: "HRISGroupsPaginated" })
+            .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
+            .match(response, { extraFields: responseFields$ });
+
+        return result$;
     }
 
     /**
@@ -2582,27 +2243,12 @@ export class Hris extends ClientSDK {
             Headers: {},
         };
 
-        if (this.matchResponse(response, 200, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return operations.HrisListLocationsResponse$.inboundSchema.parse({
-                        ...responseFields$,
-                        HRISLocationsPaginated: val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            return result;
-        } else {
-            const responseBody = await response.text();
-            throw new errors.SDKError(
-                "Unexpected API response status or content-type",
-                response,
-                responseBody
-            );
-        }
+        const [result$] = await this.matcher<operations.HrisListLocationsResponse>()
+            .json(200, operations.HrisListLocationsResponse$, { key: "HRISLocationsPaginated" })
+            .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
+            .match(response, { extraFields: responseFields$ });
+
+        return result$;
     }
 
     /**
@@ -2691,27 +2337,12 @@ export class Hris extends ClientSDK {
             Headers: {},
         };
 
-        if (this.matchResponse(response, 200, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return operations.HrisListTimeOffRequestsResponse$.inboundSchema.parse({
-                        ...responseFields$,
-                        TimeOffPaginated: val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            return result;
-        } else {
-            const responseBody = await response.text();
-            throw new errors.SDKError(
-                "Unexpected API response status or content-type",
-                response,
-                responseBody
-            );
-        }
+        const [result$] = await this.matcher<operations.HrisListTimeOffRequestsResponse>()
+            .json(200, operations.HrisListTimeOffRequestsResponse$, { key: "TimeOffPaginated" })
+            .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
+            .match(response, { extraFields: responseFields$ });
+
+        return result$;
     }
 
     /**
@@ -2789,27 +2420,12 @@ export class Hris extends ClientSDK {
             Headers: {},
         };
 
-        if (this.matchResponse(response, 200, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return operations.HrisUpdateEmployeeResponse$.inboundSchema.parse({
-                        ...responseFields$,
-                        CreateResult: val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            return result;
-        } else {
-            const responseBody = await response.text();
-            throw new errors.SDKError(
-                "Unexpected API response status or content-type",
-                response,
-                responseBody
-            );
-        }
+        const [result$] = await this.matcher<operations.HrisUpdateEmployeeResponse>()
+            .json(200, operations.HrisUpdateEmployeeResponse$, { key: "CreateResult" })
+            .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
+            .match(response, { extraFields: responseFields$ });
+
+        return result$;
     }
 
     /**
@@ -2896,25 +2512,13 @@ export class Hris extends ClientSDK {
             Headers: {},
         };
 
-        if (this.matchStatusCode(response, 200)) {
-            // fallthrough
-        } else {
-            const responseBody = await response.text();
-            throw new errors.SDKError(
-                "Unexpected API response status or content-type",
-                response,
-                responseBody
-            );
-        }
+        const [result$] =
+            await this.matcher<operations.HrisUpdateEmployeeWorkEligibilityRequestResponse>()
+                .void(200, operations.HrisUpdateEmployeeWorkEligibilityRequestResponse$)
+                .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
+                .match(response, { extraFields: responseFields$ });
 
-        return schemas$.parse(
-            undefined,
-            () =>
-                operations.HrisUpdateEmployeeWorkEligibilityRequestResponse$.inboundSchema.parse(
-                    responseFields$
-                ),
-            "Response validation failed"
-        );
+        return result$;
     }
 
     /**
@@ -2992,27 +2596,12 @@ export class Hris extends ClientSDK {
             Headers: {},
         };
 
-        if (this.matchResponse(response, 200, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return operations.HrisUpdateTimeOffRequestResponse$.inboundSchema.parse({
-                        ...responseFields$,
-                        CreateResult: val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            return result;
-        } else {
-            const responseBody = await response.text();
-            throw new errors.SDKError(
-                "Unexpected API response status or content-type",
-                response,
-                responseBody
-            );
-        }
+        const [result$] = await this.matcher<operations.HrisUpdateTimeOffRequestResponse>()
+            .json(200, operations.HrisUpdateTimeOffRequestResponse$, { key: "CreateResult" })
+            .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
+            .match(response, { extraFields: responseFields$ });
+
+        return result$;
     }
 
     /**
@@ -3092,26 +2681,13 @@ export class Hris extends ClientSDK {
             Headers: {},
         };
 
-        if (this.matchResponse(response, 200, "application/json")) {
-            const responseBody = await response.json();
-            const result = schemas$.parse(
-                responseBody,
-                (val$) => {
-                    return operations.HrisUploadEmployeeDocumentResponse$.inboundSchema.parse({
-                        ...responseFields$,
-                        WriteResultApiModel: val$,
-                    });
-                },
-                "Response validation failed"
-            );
-            return result;
-        } else {
-            const responseBody = await response.text();
-            throw new errors.SDKError(
-                "Unexpected API response status or content-type",
-                response,
-                responseBody
-            );
-        }
+        const [result$] = await this.matcher<operations.HrisUploadEmployeeDocumentResponse>()
+            .json(200, operations.HrisUploadEmployeeDocumentResponse$, {
+                key: "WriteResultApiModel",
+            })
+            .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
+            .match(response, { extraFields: responseFields$ });
+
+        return result$;
     }
 }
