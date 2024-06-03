@@ -41,6 +41,7 @@ export enum TimeOffSchemasValue {
     Training = "training",
     AnnualLeave = "annual_leave",
     LeaveOfAbsence = "leave_of_absence",
+    Break = "break",
     ChildCareLeave = "child_care_leave",
 }
 export type TimeOffSchemasValueOpen = OpenEnum<typeof TimeOffSchemasValue>;
@@ -63,9 +64,9 @@ export type TimeOff = {
      */
     createdDate?: Date | null | undefined;
     /**
-     * The duration of the time off request (in days)
+     * The duration of the time off request
      */
-    duration?: number | null | undefined;
+    duration?: string | null | undefined;
     /**
      * The employee ID
      */
@@ -302,7 +303,7 @@ export namespace TimeOff$ {
                         .transform((v) => new Date(v))
                 )
                 .optional(),
-            duration: z.nullable(z.number()).optional(),
+            duration: z.nullable(z.string()).optional(),
             employee_id: z.nullable(z.string()).optional(),
             end_date: z
                 .nullable(
@@ -356,7 +357,7 @@ export namespace TimeOff$ {
     export type Outbound = {
         approver_id?: string | null | undefined;
         created_date?: string | null | undefined;
-        duration?: number | null | undefined;
+        duration?: string | null | undefined;
         employee_id?: string | null | undefined;
         end_date?: string | null | undefined;
         end_half_day?: boolean | null | undefined;
@@ -373,7 +374,7 @@ export namespace TimeOff$ {
         .object({
             approverId: z.nullable(z.string()).optional(),
             createdDate: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
-            duration: z.nullable(z.number()).optional(),
+            duration: z.nullable(z.string()).optional(),
             employeeId: z.nullable(z.string()).optional(),
             endDate: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
             endHalfDay: z.nullable(z.boolean()).optional(),
