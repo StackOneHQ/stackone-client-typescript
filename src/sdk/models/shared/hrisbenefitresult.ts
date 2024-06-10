@@ -13,32 +13,18 @@ export type HRISBenefitResult = {
 
 /** @internal */
 export namespace HRISBenefitResult$ {
-    export const inboundSchema: z.ZodType<HRISBenefitResult, z.ZodTypeDef, unknown> = z
-        .object({
-            data: HRISBenefit$.inboundSchema,
-            raw: z.nullable(z.array(RawResponse$.inboundSchema)).optional(),
-        })
-        .transform((v) => {
-            return {
-                data: v.data,
-                ...(v.raw === undefined ? null : { raw: v.raw }),
-            };
-        });
+    export const inboundSchema: z.ZodType<HRISBenefitResult, z.ZodTypeDef, unknown> = z.object({
+        data: HRISBenefit$.inboundSchema,
+        raw: z.nullable(z.array(RawResponse$.inboundSchema)).optional(),
+    });
 
     export type Outbound = {
         data: HRISBenefit$.Outbound;
         raw?: Array<RawResponse$.Outbound> | null | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, HRISBenefitResult> = z
-        .object({
-            data: HRISBenefit$.outboundSchema,
-            raw: z.nullable(z.array(RawResponse$.outboundSchema)).optional(),
-        })
-        .transform((v) => {
-            return {
-                data: v.data,
-                ...(v.raw === undefined ? null : { raw: v.raw }),
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, HRISBenefitResult> = z.object({
+        data: HRISBenefit$.outboundSchema,
+        raw: z.nullable(z.array(RawResponse$.outboundSchema)).optional(),
+    });
 }

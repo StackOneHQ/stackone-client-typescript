@@ -17,32 +17,18 @@ export type SocialLink = {
 
 /** @internal */
 export namespace SocialLink$ {
-    export const inboundSchema: z.ZodType<SocialLink, z.ZodTypeDef, unknown> = z
-        .object({
-            type: z.nullable(z.string()).optional(),
-            url: z.nullable(z.string()).optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.type === undefined ? null : { type: v.type }),
-                ...(v.url === undefined ? null : { url: v.url }),
-            };
-        });
+    export const inboundSchema: z.ZodType<SocialLink, z.ZodTypeDef, unknown> = z.object({
+        type: z.nullable(z.string()).optional(),
+        url: z.nullable(z.string()).optional(),
+    });
 
     export type Outbound = {
         type?: string | null | undefined;
         url?: string | null | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, SocialLink> = z
-        .object({
-            type: z.nullable(z.string()).optional(),
-            url: z.nullable(z.string()).optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.type === undefined ? null : { type: v.type }),
-                ...(v.url === undefined ? null : { url: v.url }),
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, SocialLink> = z.object({
+        type: z.nullable(z.string()).optional(),
+        url: z.nullable(z.string()).optional(),
+    });
 }

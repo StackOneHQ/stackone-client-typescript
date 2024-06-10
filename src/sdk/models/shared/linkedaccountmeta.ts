@@ -39,19 +39,11 @@ export namespace LinkedAccountMetaCategory$ {
 
 /** @internal */
 export namespace LinkedAccountMeta$ {
-    export const inboundSchema: z.ZodType<LinkedAccountMeta, z.ZodTypeDef, unknown> = z
-        .object({
-            category: LinkedAccountMetaCategory$.inboundSchema,
-            models: z.record(z.any()),
-            provider: z.string(),
-        })
-        .transform((v) => {
-            return {
-                category: v.category,
-                models: v.models,
-                provider: v.provider,
-            };
-        });
+    export const inboundSchema: z.ZodType<LinkedAccountMeta, z.ZodTypeDef, unknown> = z.object({
+        category: LinkedAccountMetaCategory$.inboundSchema,
+        models: z.record(z.any()),
+        provider: z.string(),
+    });
 
     export type Outbound = {
         category: string;
@@ -59,17 +51,9 @@ export namespace LinkedAccountMeta$ {
         provider: string;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, LinkedAccountMeta> = z
-        .object({
-            category: LinkedAccountMetaCategory$.outboundSchema,
-            models: z.record(z.any()),
-            provider: z.string(),
-        })
-        .transform((v) => {
-            return {
-                category: v.category,
-                models: v.models,
-                provider: v.provider,
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, LinkedAccountMeta> = z.object({
+        category: LinkedAccountMetaCategory$.outboundSchema,
+        models: z.record(z.any()),
+        provider: z.string(),
+    });
 }

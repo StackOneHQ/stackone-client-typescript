@@ -13,32 +13,18 @@ export type JobResult = {
 
 /** @internal */
 export namespace JobResult$ {
-    export const inboundSchema: z.ZodType<JobResult, z.ZodTypeDef, unknown> = z
-        .object({
-            data: Job$.inboundSchema,
-            raw: z.nullable(z.array(RawResponse$.inboundSchema)).optional(),
-        })
-        .transform((v) => {
-            return {
-                data: v.data,
-                ...(v.raw === undefined ? null : { raw: v.raw }),
-            };
-        });
+    export const inboundSchema: z.ZodType<JobResult, z.ZodTypeDef, unknown> = z.object({
+        data: Job$.inboundSchema,
+        raw: z.nullable(z.array(RawResponse$.inboundSchema)).optional(),
+    });
 
     export type Outbound = {
         data: Job$.Outbound;
         raw?: Array<RawResponse$.Outbound> | null | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, JobResult> = z
-        .object({
-            data: Job$.outboundSchema,
-            raw: z.nullable(z.array(RawResponse$.outboundSchema)).optional(),
-        })
-        .transform((v) => {
-            return {
-                data: v.data,
-                ...(v.raw === undefined ? null : { raw: v.raw }),
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, JobResult> = z.object({
+        data: Job$.outboundSchema,
+        raw: z.nullable(z.array(RawResponse$.outboundSchema)).optional(),
+    });
 }

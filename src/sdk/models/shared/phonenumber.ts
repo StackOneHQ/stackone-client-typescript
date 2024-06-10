@@ -47,32 +47,18 @@ export namespace PhoneNumberType$ {
 
 /** @internal */
 export namespace PhoneNumber$ {
-    export const inboundSchema: z.ZodType<PhoneNumber, z.ZodTypeDef, unknown> = z
-        .object({
-            phone: z.nullable(z.string()).optional(),
-            type: z.nullable(PhoneNumberType$.inboundSchema).optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.phone === undefined ? null : { phone: v.phone }),
-                ...(v.type === undefined ? null : { type: v.type }),
-            };
-        });
+    export const inboundSchema: z.ZodType<PhoneNumber, z.ZodTypeDef, unknown> = z.object({
+        phone: z.nullable(z.string()).optional(),
+        type: z.nullable(PhoneNumberType$.inboundSchema).optional(),
+    });
 
     export type Outbound = {
         phone?: string | null | undefined;
         type?: string | null | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, PhoneNumber> = z
-        .object({
-            phone: z.nullable(z.string()).optional(),
-            type: z.nullable(PhoneNumberType$.outboundSchema).optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.phone === undefined ? null : { phone: v.phone }),
-                ...(v.type === undefined ? null : { type: v.type }),
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, PhoneNumber> = z.object({
+        phone: z.nullable(z.string()).optional(),
+        type: z.nullable(PhoneNumberType$.outboundSchema).optional(),
+    });
 }

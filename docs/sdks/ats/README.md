@@ -19,6 +19,7 @@
 * [getInterviewStage](#getinterviewstage) - Get Interview Stage
 * [getJob](#getjob) - Get Job
 * [getJobPosting](#getjobposting) - Get Job Posting
+* [getList](#getlist) - Get List
 * [getLocation](#getlocation) - Get Location
 * [getOffer](#getoffer) - Get Offer
 * [getRejectedReason](#getrejectedreason) - Get Rejected Reason
@@ -34,6 +35,7 @@
 * [listInterviews](#listinterviews) - List Interviews
 * [listJobPostings](#listjobpostings) - List Job Postings
 * [listJobs](#listjobs) - List Jobs
+* [listLists](#listlists) - Get all Lists
 * [listLocations](#listlocations) - List locations
 * [listOffers](#listoffers) - List Offers
 * [listRejectedReasons](#listrejectedreasons) - List Rejected Reasons
@@ -564,7 +566,7 @@ const stackOne = new StackOne({
 async function run() {
   const result = await stackOne.ats.getApplication({
     expand: "documents",
-    fields: "id,candidate_id,job_id,interview_stage,interview_stage_id,rejected_reason,rejected_reason_id,rejected_reason_ids,rejected_reasons,rejected_at,location_id,location_ids,status,application_status,questionnaires,attachments,result_links,source,created_at,updated_at,documents,candidate",
+    fields: "id,remote_id,candidate_id,remote_candidate_id,job_id,remote_job_id,interview_stage,interview_stage_id,remote_interview_stage_id,rejected_reason,rejected_reason_id,remote_rejected_reason_id,rejected_reason_ids,remote_rejected_reason_ids,rejected_reasons,rejected_at,location_id,remote_location_id,location_ids,remote_location_ids,status,application_status,questionnaires,attachments,result_links,source,created_at,updated_at,documents,candidate",
     id: "<id>",
     xAccountId: "<value>",
   });
@@ -611,7 +613,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.getApplicationDocument({
-    fields: "id,name,path,type,category,contents,created_at,updated_at,remote_url,file_format",
+    fields: "id,remote_id,name,path,type,category,contents,created_at,updated_at,remote_url,file_format",
     id: "<id>",
     subResourceId: "<value>",
     xAccountId: "<value>",
@@ -659,7 +661,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.getApplicationOffer({
-    fields: "id,application_id,start_date,status,offer_status,salary,currency,created_at,updated_at,offer_history",
+    fields: "id,remote_id,application_id,remote_application_id,start_date,status,offer_status,salary,currency,created_at,updated_at,offer_history",
     id: "<id>",
     subResourceId: "<value>",
     xAccountId: "<value>",
@@ -707,7 +709,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.getApplicationScorecard({
-    fields: "id,sections,label,candidate_id,application_id,interview_id,author_id,overall_recommendation,created_at,updated_at",
+    fields: "id,remote_id,sections,label,candidate_id,remote_candidate_id,application_id,remote_application_id,interview_id,remote_interview_id,author_id,remote_author_id,overall_recommendation,created_at,updated_at",
     id: "<id>",
     subResourceId: "<value>",
     xAccountId: "<value>",
@@ -755,7 +757,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.getCandidate({
-    fields: "id,name,first_name,last_name,email,emails,social_links,phone,phone_numbers,company,title,application_ids,hired_at,created_at,updated_at",
+    fields: "id,remote_id,name,first_name,last_name,email,emails,social_links,phone,phone_numbers,company,title,application_ids,remote_application_ids,hired_at,created_at,updated_at",
     id: "<id>",
     xAccountId: "<value>",
   });
@@ -802,7 +804,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.getCandidateNote({
-    fields: "id,content,author_id,visibility,created_at,updated_at,deleted_at",
+    fields: "id,remote_id,content,author_id,remote_author_id,visibility,created_at,updated_at,deleted_at",
     id: "<id>",
     subResourceId: "<value>",
     xAccountId: "<value>",
@@ -850,7 +852,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.getDepartment({
-    fields: "id,name",
+    fields: "id,remote_id,name",
     id: "<id>",
     xAccountId: "<value>",
   });
@@ -897,7 +899,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.getInterview({
-    fields: "id,application_id,interview_stage_id,interview_stage,status,interview_status,interviewer_ids,interview_parts,interviewers,start_at,end_at,meeting_url,created_at,updated_at",
+    fields: "id,remote_id,application_id,remote_application_id,interview_stage_id,remote_interview_stage_id,interview_stage,status,interview_status,interviewer_ids,remote_interviewer_ids,interview_parts,interviewers,start_at,end_at,meeting_url,created_at,updated_at",
     id: "<id>",
     xAccountId: "<value>",
   });
@@ -944,7 +946,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.getInterviewStage({
-    fields: "id,name,order,created_at,updated_at",
+    fields: "id,remote_id,name,order,created_at,updated_at",
     id: "<id>",
     xAccountId: "<value>",
   });
@@ -992,7 +994,7 @@ const stackOne = new StackOne({
 async function run() {
   const result = await stackOne.ats.getJob({
     expand: "job_postings,interview_stages",
-    fields: "id,code,title,status,job_status,department_ids,location_ids,hiring_team,interview_stages,confidential,created_at,updated_at",
+    fields: "id,remote_id,code,title,status,job_status,department_ids,remote_department_ids,location_ids,remote_location_ids,hiring_team,interview_stages,confidential,created_at,updated_at",
     id: "<id>",
     xAccountId: "<value>",
   });
@@ -1039,7 +1041,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.getJobPosting({
-    fields: "id,title,locations,internal,status,job_id,content,compensation,employment_type,employment_contract_type,external_url,external_apply_url,questionnaires,updated_at,created_at",
+    fields: "id,remote_id,title,locations,internal,status,job_id,remote_job_id,content,compensation,employment_type,employment_contract_type,external_url,external_apply_url,questionnaires,updated_at,created_at",
     id: "<id>",
     include: "questionnaires",
     xAccountId: "<value>",
@@ -1070,6 +1072,53 @@ run();
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 4xx-5xx         | */*             |
 
+## getList
+
+Get List
+
+### Example Usage
+
+```typescript
+import { StackOne } from "@stackone/stackone-client-ts";
+
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
+
+async function run() {
+  const result = await stackOne.ats.getList({
+    fields: "id,remote_id,name,created_at,updated_at,items,type",
+    id: "<id>",
+    xAccountId: "<value>",
+  });
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.AtsGetListRequest](../../sdk/models/operations/atsgetlistrequest.md)                                                                                               | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+
+
+### Response
+
+**Promise\<[operations.AtsGetListResponse](../../sdk/models/operations/atsgetlistresponse.md)\>**
+### Errors
+
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
+
 ## getLocation
 
 Get Location
@@ -1087,7 +1136,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.getLocation({
-    fields: "id,name",
+    fields: "id,remote_id,name",
     id: "<id>",
     xAccountId: "<value>",
   });
@@ -1134,7 +1183,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.getOffer({
-    fields: "id,application_id,start_date,status,offer_status,salary,currency,created_at,updated_at,offer_history",
+    fields: "id,remote_id,application_id,remote_application_id,start_date,status,offer_status,salary,currency,created_at,updated_at,offer_history",
     id: "<id>",
     xAccountId: "<value>",
   });
@@ -1181,7 +1230,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.getRejectedReason({
-    fields: "id,label,type,rejected_reason_type",
+    fields: "id,remote_id,label,type,rejected_reason_type",
     id: "<id>",
     xAccountId: "<value>",
   });
@@ -1228,7 +1277,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.getUser({
-    fields: "id,first_name,last_name,name,email",
+    fields: "id,remote_id,first_name,last_name,name,email",
     id: "<id>",
     xAccountId: "<value>",
   });
@@ -1275,7 +1324,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.listApplicationDocuments({
-    fields: "id,name,path,type,category,contents,created_at,updated_at,remote_url,file_format",
+    fields: "id,remote_id,name,path,type,category,contents,created_at,updated_at,remote_url,file_format",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
@@ -1325,7 +1374,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.listApplicationScorecards({
-    fields: "id,sections,label,candidate_id,application_id,interview_id,author_id,overall_recommendation,created_at,updated_at",
+    fields: "id,remote_id,sections,label,candidate_id,remote_candidate_id,application_id,remote_application_id,interview_id,remote_interview_id,author_id,remote_author_id,overall_recommendation,created_at,updated_at",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
@@ -1376,7 +1425,7 @@ const stackOne = new StackOne({
 async function run() {
   const result = await stackOne.ats.listApplications({
     expand: "documents",
-    fields: "id,candidate_id,job_id,interview_stage,interview_stage_id,rejected_reason,rejected_reason_id,rejected_reason_ids,rejected_reasons,rejected_at,location_id,location_ids,status,application_status,questionnaires,attachments,result_links,source,created_at,updated_at,documents,candidate",
+    fields: "id,remote_id,candidate_id,remote_candidate_id,job_id,remote_job_id,interview_stage,interview_stage_id,remote_interview_stage_id,rejected_reason,rejected_reason_id,remote_rejected_reason_id,rejected_reason_ids,remote_rejected_reason_ids,rejected_reasons,rejected_at,location_id,remote_location_id,location_ids,remote_location_ids,status,application_status,questionnaires,attachments,result_links,source,created_at,updated_at,documents,candidate",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
@@ -1425,7 +1474,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.listApplicationsOffers({
-    fields: "id,application_id,start_date,status,offer_status,salary,currency,created_at,updated_at,offer_history",
+    fields: "id,remote_id,application_id,remote_application_id,start_date,status,offer_status,salary,currency,created_at,updated_at,offer_history",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
@@ -1475,7 +1524,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.listCandidateNotes({
-    fields: "id,content,author_id,visibility,created_at,updated_at,deleted_at",
+    fields: "id,remote_id,content,author_id,remote_author_id,visibility,created_at,updated_at,deleted_at",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
@@ -1525,7 +1574,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.listCandidates({
-    fields: "id,name,first_name,last_name,email,emails,social_links,phone,phone_numbers,company,title,application_ids,hired_at,created_at,updated_at",
+    fields: "id,remote_id,name,first_name,last_name,email,emails,social_links,phone,phone_numbers,company,title,application_ids,remote_application_ids,hired_at,created_at,updated_at",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
@@ -1574,7 +1623,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.listDepartments({
-    fields: "id,name",
+    fields: "id,remote_id,name",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
@@ -1623,7 +1672,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.listInterviewStages({
-    fields: "id,name,order,created_at,updated_at",
+    fields: "id,remote_id,name,order,created_at,updated_at",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
@@ -1672,7 +1721,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.listInterviews({
-    fields: "id,application_id,interview_stage_id,interview_stage,status,interview_status,interviewer_ids,interview_parts,interviewers,start_at,end_at,meeting_url,created_at,updated_at",
+    fields: "id,remote_id,application_id,remote_application_id,interview_stage_id,remote_interview_stage_id,interview_stage,status,interview_status,interviewer_ids,remote_interviewer_ids,interview_parts,interviewers,start_at,end_at,meeting_url,created_at,updated_at",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
@@ -1721,7 +1770,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.listJobPostings({
-    fields: "id,title,locations,internal,status,job_id,content,compensation,employment_type,employment_contract_type,external_url,external_apply_url,questionnaires,updated_at,created_at",
+    fields: "id,remote_id,title,locations,internal,status,job_id,remote_job_id,content,compensation,employment_type,employment_contract_type,external_url,external_apply_url,questionnaires,updated_at,created_at",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
@@ -1772,7 +1821,7 @@ const stackOne = new StackOne({
 async function run() {
   const result = await stackOne.ats.listJobs({
     expand: "job_postings,interview_stages",
-    fields: "id,code,title,status,job_status,department_ids,location_ids,hiring_team,interview_stages,confidential,created_at,updated_at",
+    fields: "id,remote_id,code,title,status,job_status,department_ids,remote_department_ids,location_ids,remote_location_ids,hiring_team,interview_stages,confidential,created_at,updated_at",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
@@ -1804,6 +1853,55 @@ run();
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 4xx-5xx         | */*             |
 
+## listLists
+
+Get all Lists
+
+### Example Usage
+
+```typescript
+import { StackOne } from "@stackone/stackone-client-ts";
+
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
+
+async function run() {
+  const result = await stackOne.ats.listLists({
+    fields: "id,remote_id,name,created_at,updated_at,items,type",
+    filter: {
+      updatedAfter: "2020-01-01T00:00:00.000Z",
+    },
+    xAccountId: "<value>",
+  });
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.AtsListListsRequest](../../sdk/models/operations/atslistlistsrequest.md)                                                                                           | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+
+
+### Response
+
+**Promise\<[operations.AtsListListsResponse](../../sdk/models/operations/atslistlistsresponse.md)\>**
+### Errors
+
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
+
 ## listLocations
 
 List locations
@@ -1821,7 +1919,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.listLocations({
-    fields: "id,name",
+    fields: "id,remote_id,name",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
@@ -1870,7 +1968,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.listOffers({
-    fields: "id,application_id,start_date,status,offer_status,salary,currency,created_at,updated_at,offer_history",
+    fields: "id,remote_id,application_id,remote_application_id,start_date,status,offer_status,salary,currency,created_at,updated_at,offer_history",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
@@ -1919,7 +2017,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.listRejectedReasons({
-    fields: "id,label,type,rejected_reason_type",
+    fields: "id,remote_id,label,type,rejected_reason_type",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
@@ -1968,7 +2066,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.listUsers({
-    fields: "id,first_name,last_name,name,email",
+    fields: "id,remote_id,first_name,last_name,name,email",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },

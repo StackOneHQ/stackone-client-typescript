@@ -13,32 +13,18 @@ export type DepartmentResult = {
 
 /** @internal */
 export namespace DepartmentResult$ {
-    export const inboundSchema: z.ZodType<DepartmentResult, z.ZodTypeDef, unknown> = z
-        .object({
-            data: Department$.inboundSchema,
-            raw: z.nullable(z.array(RawResponse$.inboundSchema)).optional(),
-        })
-        .transform((v) => {
-            return {
-                data: v.data,
-                ...(v.raw === undefined ? null : { raw: v.raw }),
-            };
-        });
+    export const inboundSchema: z.ZodType<DepartmentResult, z.ZodTypeDef, unknown> = z.object({
+        data: Department$.inboundSchema,
+        raw: z.nullable(z.array(RawResponse$.inboundSchema)).optional(),
+    });
 
     export type Outbound = {
         data: Department$.Outbound;
         raw?: Array<RawResponse$.Outbound> | null | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, DepartmentResult> = z
-        .object({
-            data: Department$.outboundSchema,
-            raw: z.nullable(z.array(RawResponse$.outboundSchema)).optional(),
-        })
-        .transform((v) => {
-            return {
-                data: v.data,
-                ...(v.raw === undefined ? null : { raw: v.raw }),
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, DepartmentResult> = z.object({
+        data: Department$.outboundSchema,
+        raw: z.nullable(z.array(RawResponse$.outboundSchema)).optional(),
+    });
 }

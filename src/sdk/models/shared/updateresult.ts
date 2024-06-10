@@ -12,22 +12,14 @@ export type UpdateResult = {
 
 /** @internal */
 export namespace UpdateResult$ {
-    export const inboundSchema: z.ZodType<UpdateResult, z.ZodTypeDef, unknown> = z
-        .object({
-            message: z.string(),
-            statusCode: z.number(),
-            timestamp: z
-                .string()
-                .datetime({ offset: true })
-                .transform((v) => new Date(v)),
-        })
-        .transform((v) => {
-            return {
-                message: v.message,
-                statusCode: v.statusCode,
-                timestamp: v.timestamp,
-            };
-        });
+    export const inboundSchema: z.ZodType<UpdateResult, z.ZodTypeDef, unknown> = z.object({
+        message: z.string(),
+        statusCode: z.number(),
+        timestamp: z
+            .string()
+            .datetime({ offset: true })
+            .transform((v) => new Date(v)),
+    });
 
     export type Outbound = {
         message: string;
@@ -35,17 +27,9 @@ export namespace UpdateResult$ {
         timestamp: string;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UpdateResult> = z
-        .object({
-            message: z.string(),
-            statusCode: z.number(),
-            timestamp: z.date().transform((v) => v.toISOString()),
-        })
-        .transform((v) => {
-            return {
-                message: v.message,
-                statusCode: v.statusCode,
-                timestamp: v.timestamp,
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UpdateResult> = z.object({
+        message: z.string(),
+        statusCode: z.number(),
+        timestamp: z.date().transform((v) => v.toISOString()),
+    });
 }

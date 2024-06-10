@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 7fa83af8-9e8e-4410-b7e2-cf1d0eaf688b
 management:
-  docChecksum: 9f9a8bbe0575df4537be114fd6aedf9e
+  docChecksum: ec55ba6f24845f1777e5bc0cafdc2d52
   docVersion: 1.0.0
-  speakeasyVersion: 1.299.4
-  generationVersion: 2.338.7
-  releaseVersion: 4.9.2
-  configChecksum: e73f3c6bfe722e692e685349392c5852
+  speakeasyVersion: 1.300.1
+  generationVersion: 2.339.1
+  releaseVersion: 4.9.3
+  configChecksum: ccdb912bfe799d6fb59a204ac6535bc9
   repoURL: https://github.com/StackOneHQ/stackone-client-typescript.git
   repoSubDirectory: .
   installationURL: https://github.com/StackOneHQ/stackone-client-typescript
@@ -15,7 +15,7 @@ features:
   typescript:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.5
-    core: 3.9.10
+    core: 3.9.12
     deprecations: 2.81.1
     downloadStreams: 0.1.1
     examples: 2.81.4
@@ -52,6 +52,7 @@ generatedFiles:
   - src/lib/encodings.ts
   - src/lib/http.ts
   - src/lib/is-plain-object.ts
+  - src/lib/primitives.ts
   - src/lib/retries.ts
   - src/lib/schemas.ts
   - src/lib/sdks.ts
@@ -91,6 +92,7 @@ generatedFiles:
   - src/sdk/models/operations/atsgetinterviewstage.ts
   - src/sdk/models/operations/atsgetjob.ts
   - src/sdk/models/operations/atsgetjobposting.ts
+  - src/sdk/models/operations/atsgetlist.ts
   - src/sdk/models/operations/atsgetlocation.ts
   - src/sdk/models/operations/atsgetoffer.ts
   - src/sdk/models/operations/atsgetrejectedreason.ts
@@ -106,6 +108,7 @@ generatedFiles:
   - src/sdk/models/operations/atslistinterviews.ts
   - src/sdk/models/operations/atslistjobpostings.ts
   - src/sdk/models/operations/atslistjobs.ts
+  - src/sdk/models/operations/atslistlists.ts
   - src/sdk/models/operations/atslistlocations.ts
   - src/sdk/models/operations/atslistoffers.ts
   - src/sdk/models/operations/atslistrejectedreasons.ts
@@ -231,6 +234,8 @@ generatedFiles:
   - src/sdk/models/shared/questionmultiplechoiceanswers.ts
   - src/sdk/models/shared/jobpostinglocation.ts
   - src/sdk/models/shared/jobpostingcompensation.ts
+  - src/sdk/models/shared/listresult.ts
+  - src/sdk/models/shared/list.ts
   - src/sdk/models/shared/atslocationresult.ts
   - src/sdk/models/shared/atslocation.ts
   - src/sdk/models/shared/rejectedreasonresult.ts
@@ -247,6 +252,7 @@ generatedFiles:
   - src/sdk/models/shared/interviewspaginated.ts
   - src/sdk/models/shared/jobpostingspaginated.ts
   - src/sdk/models/shared/jobspaginated.ts
+  - src/sdk/models/shared/listspaginated.ts
   - src/sdk/models/shared/atslocationspaginated.ts
   - src/sdk/models/shared/rejectedreasonspaginated.ts
   - src/sdk/models/shared/userspaginated.ts
@@ -263,11 +269,8 @@ generatedFiles:
   - src/sdk/models/shared/accountresult.ts
   - src/sdk/models/shared/account.ts
   - src/sdk/models/shared/accountaddress.ts
-  - src/sdk/models/shared/listresult.ts
-  - src/sdk/models/shared/list.ts
   - src/sdk/models/shared/accountspaginated.ts
   - src/sdk/models/shared/contactspaginated.ts
-  - src/sdk/models/shared/listspaginated.ts
   - src/sdk/models/shared/hriscreateemployeerequestdto.ts
   - src/sdk/models/shared/employment.ts
   - src/sdk/models/shared/employeecustomfields.ts
@@ -383,6 +386,8 @@ generatedFiles:
   - docs/sdk/models/operations/atsgetjobresponse.md
   - docs/sdk/models/operations/atsgetjobpostingrequest.md
   - docs/sdk/models/operations/atsgetjobpostingresponse.md
+  - docs/sdk/models/operations/atsgetlistrequest.md
+  - docs/sdk/models/operations/atsgetlistresponse.md
   - docs/sdk/models/operations/atsgetlocationrequest.md
   - docs/sdk/models/operations/atsgetlocationresponse.md
   - docs/sdk/models/operations/atsgetofferrequest.md
@@ -424,6 +429,9 @@ generatedFiles:
   - docs/sdk/models/operations/atslistjobsqueryparamfilter.md
   - docs/sdk/models/operations/atslistjobsrequest.md
   - docs/sdk/models/operations/atslistjobsresponse.md
+  - docs/sdk/models/operations/atslistlistsqueryparamfilter.md
+  - docs/sdk/models/operations/atslistlistsrequest.md
+  - docs/sdk/models/operations/atslistlistsresponse.md
   - docs/sdk/models/operations/atslistlocationsqueryparamfilter.md
   - docs/sdk/models/operations/atslistlocationsrequest.md
   - docs/sdk/models/operations/atslistlocationsresponse.md
@@ -755,6 +763,12 @@ generatedFiles:
   - docs/sdk/models/shared/jobpostingcompensationschemastypevalue.md
   - docs/sdk/models/shared/jobpostingcompensationtype.md
   - docs/sdk/models/shared/jobpostingcompensation.md
+  - docs/sdk/models/shared/listresult.md
+  - docs/sdk/models/shared/list4.md
+  - docs/sdk/models/shared/listsourcevalue.md
+  - docs/sdk/models/shared/listvalue.md
+  - docs/sdk/models/shared/listtype.md
+  - docs/sdk/models/shared/list.md
   - docs/sdk/models/shared/atslocationresult.md
   - docs/sdk/models/shared/atslocation.md
   - docs/sdk/models/shared/rejectedreasonresult.md
@@ -771,6 +785,7 @@ generatedFiles:
   - docs/sdk/models/shared/interviewspaginated.md
   - docs/sdk/models/shared/jobpostingspaginated.md
   - docs/sdk/models/shared/jobspaginated.md
+  - docs/sdk/models/shared/listspaginated.md
   - docs/sdk/models/shared/atslocationspaginated.md
   - docs/sdk/models/shared/rejectedreasonspaginated.md
   - docs/sdk/models/shared/userspaginated.md
@@ -819,15 +834,8 @@ generatedFiles:
   - docs/sdk/models/shared/accountaddressvalue.md
   - docs/sdk/models/shared/locationtype.md
   - docs/sdk/models/shared/accountaddress.md
-  - docs/sdk/models/shared/listresult.md
-  - docs/sdk/models/shared/list4.md
-  - docs/sdk/models/shared/listsourcevalue.md
-  - docs/sdk/models/shared/listvalue.md
-  - docs/sdk/models/shared/listtype.md
-  - docs/sdk/models/shared/list.md
   - docs/sdk/models/shared/accountspaginated.md
   - docs/sdk/models/shared/contactspaginated.md
-  - docs/sdk/models/shared/listspaginated.md
   - docs/sdk/models/shared/hriscreateemployeerequestdtoavatar.md
   - docs/sdk/models/shared/hriscreateemployeerequestdto4.md
   - docs/sdk/models/shared/hriscreateemployeerequestdtosourcevalue.md

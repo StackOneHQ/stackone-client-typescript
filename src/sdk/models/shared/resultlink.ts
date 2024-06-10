@@ -17,32 +17,18 @@ export type ResultLink = {
 
 /** @internal */
 export namespace ResultLink$ {
-    export const inboundSchema: z.ZodType<ResultLink, z.ZodTypeDef, unknown> = z
-        .object({
-            label: z.nullable(z.string()).optional(),
-            url: z.nullable(z.string()).optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.label === undefined ? null : { label: v.label }),
-                ...(v.url === undefined ? null : { url: v.url }),
-            };
-        });
+    export const inboundSchema: z.ZodType<ResultLink, z.ZodTypeDef, unknown> = z.object({
+        label: z.nullable(z.string()).optional(),
+        url: z.nullable(z.string()).optional(),
+    });
 
     export type Outbound = {
         label?: string | null | undefined;
         url?: string | null | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ResultLink> = z
-        .object({
-            label: z.nullable(z.string()).optional(),
-            url: z.nullable(z.string()).optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.label === undefined ? null : { label: v.label }),
-                ...(v.url === undefined ? null : { url: v.url }),
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ResultLink> = z.object({
+        label: z.nullable(z.string()).optional(),
+        url: z.nullable(z.string()).optional(),
+    });
 }

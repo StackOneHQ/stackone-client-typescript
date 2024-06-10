@@ -37,7 +37,7 @@ const stackOne = new StackOne({
 async function run() {
     const result = await stackOne.hris.listEmployees({
         expand: "company,employments,work_location,home_location,custom_fields,groups",
-        fields: "id,first_name,last_name,name,display_name,gender,ethnicity,date_of_birth,birthday,marital_status,avatar_url,avatar,personal_email,personal_phone_number,work_email,work_phone_number,job_title,job_description,department,cost_centers,benefits,manager_id,hire_date,start_date,tenure,work_anniversary,employment_type,employment_contract_type,employment_status,termination_date,company_name,preferred_language,citizenships,home_location,work_location,employments,custom_fields,documents,created_at,updated_at,employee_number",
+        fields: "id,remote_id,first_name,last_name,name,display_name,gender,ethnicity,date_of_birth,birthday,marital_status,avatar_url,avatar,personal_email,personal_phone_number,work_email,work_phone_number,job_title,job_description,department,cost_centers,benefits,manager_id,remote_manager_id,hire_date,start_date,tenure,work_anniversary,employment_type,employment_contract_type,employment_status,termination_date,company_name,preferred_language,citizenships,home_location,work_location,employments,custom_fields,documents,created_at,updated_at,employee_number",
         filter: {
             updatedAfter: "2020-01-01T00:00:00.000Z",
         },
@@ -94,6 +94,7 @@ run();
 * [getInterviewStage](docs/sdks/ats/README.md#getinterviewstage) - Get Interview Stage
 * [getJob](docs/sdks/ats/README.md#getjob) - Get Job
 * [getJobPosting](docs/sdks/ats/README.md#getjobposting) - Get Job Posting
+* [getList](docs/sdks/ats/README.md#getlist) - Get List
 * [getLocation](docs/sdks/ats/README.md#getlocation) - Get Location
 * [getOffer](docs/sdks/ats/README.md#getoffer) - Get Offer
 * [getRejectedReason](docs/sdks/ats/README.md#getrejectedreason) - Get Rejected Reason
@@ -109,6 +110,7 @@ run();
 * [listInterviews](docs/sdks/ats/README.md#listinterviews) - List Interviews
 * [listJobPostings](docs/sdks/ats/README.md#listjobpostings) - List Job Postings
 * [listJobs](docs/sdks/ats/README.md#listjobs) - List Jobs
+* [listLists](docs/sdks/ats/README.md#listlists) - Get all Lists
 * [listLocations](docs/sdks/ats/README.md#listlocations) - List locations
 * [listOffers](docs/sdks/ats/README.md#listoffers) - List Offers
 * [listRejectedReasons](docs/sdks/ats/README.md#listrejectedreasons) - List Rejected Reasons
@@ -217,7 +219,7 @@ const stackOne = new StackOne({
 async function run() {
     const result = await stackOne.hris.listEmployees({
         expand: "company,employments,work_location,home_location,custom_fields,groups",
-        fields: "id,first_name,last_name,name,display_name,gender,ethnicity,date_of_birth,birthday,marital_status,avatar_url,avatar,personal_email,personal_phone_number,work_email,work_phone_number,job_title,job_description,department,cost_centers,benefits,manager_id,hire_date,start_date,tenure,work_anniversary,employment_type,employment_contract_type,employment_status,termination_date,company_name,preferred_language,citizenships,home_location,work_location,employments,custom_fields,documents,created_at,updated_at,employee_number",
+        fields: "id,remote_id,first_name,last_name,name,display_name,gender,ethnicity,date_of_birth,birthday,marital_status,avatar_url,avatar,personal_email,personal_phone_number,work_email,work_phone_number,job_title,job_description,department,cost_centers,benefits,manager_id,remote_manager_id,hire_date,start_date,tenure,work_anniversary,employment_type,employment_contract_type,employment_status,termination_date,company_name,preferred_language,citizenships,home_location,work_location,employments,custom_fields,documents,created_at,updated_at,employee_number",
         filter: {
             updatedAfter: "2020-01-01T00:00:00.000Z",
         },
