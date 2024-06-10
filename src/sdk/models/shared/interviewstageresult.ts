@@ -13,32 +13,20 @@ export type InterviewStageResult = {
 
 /** @internal */
 export namespace InterviewStageResult$ {
-    export const inboundSchema: z.ZodType<InterviewStageResult, z.ZodTypeDef, unknown> = z
-        .object({
-            data: InterviewStage$.inboundSchema,
-            raw: z.nullable(z.array(RawResponse$.inboundSchema)).optional(),
-        })
-        .transform((v) => {
-            return {
-                data: v.data,
-                ...(v.raw === undefined ? null : { raw: v.raw }),
-            };
-        });
+    export const inboundSchema: z.ZodType<InterviewStageResult, z.ZodTypeDef, unknown> = z.object({
+        data: InterviewStage$.inboundSchema,
+        raw: z.nullable(z.array(RawResponse$.inboundSchema)).optional(),
+    });
 
     export type Outbound = {
         data: InterviewStage$.Outbound;
         raw?: Array<RawResponse$.Outbound> | null | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, InterviewStageResult> = z
-        .object({
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, InterviewStageResult> = z.object(
+        {
             data: InterviewStage$.outboundSchema,
             raw: z.nullable(z.array(RawResponse$.outboundSchema)).optional(),
-        })
-        .transform((v) => {
-            return {
-                data: v.data,
-                ...(v.raw === undefined ? null : { raw: v.raw }),
-            };
-        });
+        }
+    );
 }

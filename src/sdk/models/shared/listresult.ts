@@ -13,32 +13,18 @@ export type ListResult = {
 
 /** @internal */
 export namespace ListResult$ {
-    export const inboundSchema: z.ZodType<ListResult, z.ZodTypeDef, unknown> = z
-        .object({
-            data: List$.inboundSchema,
-            raw: z.nullable(z.array(RawResponse$.inboundSchema)).optional(),
-        })
-        .transform((v) => {
-            return {
-                data: v.data,
-                ...(v.raw === undefined ? null : { raw: v.raw }),
-            };
-        });
+    export const inboundSchema: z.ZodType<ListResult, z.ZodTypeDef, unknown> = z.object({
+        data: List$.inboundSchema,
+        raw: z.nullable(z.array(RawResponse$.inboundSchema)).optional(),
+    });
 
     export type Outbound = {
         data: List$.Outbound;
         raw?: Array<RawResponse$.Outbound> | null | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ListResult> = z
-        .object({
-            data: List$.outboundSchema,
-            raw: z.nullable(z.array(RawResponse$.outboundSchema)).optional(),
-        })
-        .transform((v) => {
-            return {
-                data: v.data,
-                ...(v.raw === undefined ? null : { raw: v.raw }),
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ListResult> = z.object({
+        data: List$.outboundSchema,
+        raw: z.nullable(z.array(RawResponse$.outboundSchema)).optional(),
+    });
 }

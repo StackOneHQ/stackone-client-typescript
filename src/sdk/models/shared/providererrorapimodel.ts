@@ -35,21 +35,12 @@ export namespace Raw$ {
 
 /** @internal */
 export namespace ProviderErrorApiModel$ {
-    export const inboundSchema: z.ZodType<ProviderErrorApiModel, z.ZodTypeDef, unknown> = z
-        .object({
-            headers: z.nullable(z.lazy(() => Headers$.inboundSchema)).optional(),
-            raw: z.nullable(z.lazy(() => Raw$.inboundSchema)).optional(),
-            status: z.nullable(z.number()).optional(),
-            url: z.nullable(z.string()).optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.headers === undefined ? null : { headers: v.headers }),
-                ...(v.raw === undefined ? null : { raw: v.raw }),
-                ...(v.status === undefined ? null : { status: v.status }),
-                ...(v.url === undefined ? null : { url: v.url }),
-            };
-        });
+    export const inboundSchema: z.ZodType<ProviderErrorApiModel, z.ZodTypeDef, unknown> = z.object({
+        headers: z.nullable(z.lazy(() => Headers$.inboundSchema)).optional(),
+        raw: z.nullable(z.lazy(() => Raw$.inboundSchema)).optional(),
+        status: z.nullable(z.number()).optional(),
+        url: z.nullable(z.string()).optional(),
+    });
 
     export type Outbound = {
         headers?: Headers$.Outbound | null | undefined;
@@ -58,19 +49,11 @@ export namespace ProviderErrorApiModel$ {
         url?: string | null | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ProviderErrorApiModel> = z
-        .object({
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ProviderErrorApiModel> =
+        z.object({
             headers: z.nullable(z.lazy(() => Headers$.outboundSchema)).optional(),
             raw: z.nullable(z.lazy(() => Raw$.outboundSchema)).optional(),
             status: z.nullable(z.number()).optional(),
             url: z.nullable(z.string()).optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.headers === undefined ? null : { headers: v.headers }),
-                ...(v.raw === undefined ? null : { raw: v.raw }),
-                ...(v.status === undefined ? null : { status: v.status }),
-                ...(v.url === undefined ? null : { url: v.url }),
-            };
         });
 }

@@ -21,21 +21,12 @@ export namespace MarketingCreatePushTemplateRequestDto$ {
         MarketingCreatePushTemplateRequestDto,
         z.ZodTypeDef,
         unknown
-    > = z
-        .object({
-            messages: z.nullable(z.array(PushMessages$.inboundSchema)).optional(),
-            name: z.nullable(z.string()).optional(),
-            passthrough: z.nullable(z.record(z.any())).optional(),
-            tags: z.nullable(z.array(z.string())).optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.messages === undefined ? null : { messages: v.messages }),
-                ...(v.name === undefined ? null : { name: v.name }),
-                ...(v.passthrough === undefined ? null : { passthrough: v.passthrough }),
-                ...(v.tags === undefined ? null : { tags: v.tags }),
-            };
-        });
+    > = z.object({
+        messages: z.nullable(z.array(PushMessages$.inboundSchema)).optional(),
+        name: z.nullable(z.string()).optional(),
+        passthrough: z.nullable(z.record(z.any())).optional(),
+        tags: z.nullable(z.array(z.string())).optional(),
+    });
 
     export type Outbound = {
         messages?: Array<PushMessages$.Outbound> | null | undefined;
@@ -48,19 +39,10 @@ export namespace MarketingCreatePushTemplateRequestDto$ {
         Outbound,
         z.ZodTypeDef,
         MarketingCreatePushTemplateRequestDto
-    > = z
-        .object({
-            messages: z.nullable(z.array(PushMessages$.outboundSchema)).optional(),
-            name: z.nullable(z.string()).optional(),
-            passthrough: z.nullable(z.record(z.any())).optional(),
-            tags: z.nullable(z.array(z.string())).optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.messages === undefined ? null : { messages: v.messages }),
-                ...(v.name === undefined ? null : { name: v.name }),
-                ...(v.passthrough === undefined ? null : { passthrough: v.passthrough }),
-                ...(v.tags === undefined ? null : { tags: v.tags }),
-            };
-        });
+    > = z.object({
+        messages: z.nullable(z.array(PushMessages$.outboundSchema)).optional(),
+        name: z.nullable(z.string()).optional(),
+        passthrough: z.nullable(z.record(z.any())).optional(),
+        tags: z.nullable(z.array(z.string())).optional(),
+    });
 }

@@ -14,24 +14,15 @@ export type CreateResult = {
 
 /** @internal */
 export namespace CreateResult$ {
-    export const inboundSchema: z.ZodType<CreateResult, z.ZodTypeDef, unknown> = z
-        .object({
-            data: CreateResultDataApiModel$.inboundSchema,
-            message: z.string(),
-            statusCode: z.number(),
-            timestamp: z
-                .string()
-                .datetime({ offset: true })
-                .transform((v) => new Date(v)),
-        })
-        .transform((v) => {
-            return {
-                data: v.data,
-                message: v.message,
-                statusCode: v.statusCode,
-                timestamp: v.timestamp,
-            };
-        });
+    export const inboundSchema: z.ZodType<CreateResult, z.ZodTypeDef, unknown> = z.object({
+        data: CreateResultDataApiModel$.inboundSchema,
+        message: z.string(),
+        statusCode: z.number(),
+        timestamp: z
+            .string()
+            .datetime({ offset: true })
+            .transform((v) => new Date(v)),
+    });
 
     export type Outbound = {
         data: CreateResultDataApiModel$.Outbound;
@@ -40,19 +31,10 @@ export namespace CreateResult$ {
         timestamp: string;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreateResult> = z
-        .object({
-            data: CreateResultDataApiModel$.outboundSchema,
-            message: z.string(),
-            statusCode: z.number(),
-            timestamp: z.date().transform((v) => v.toISOString()),
-        })
-        .transform((v) => {
-            return {
-                data: v.data,
-                message: v.message,
-                statusCode: v.statusCode,
-                timestamp: v.timestamp,
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreateResult> = z.object({
+        data: CreateResultDataApiModel$.outboundSchema,
+        message: z.string(),
+        statusCode: z.number(),
+        timestamp: z.date().transform((v) => v.toISOString()),
+    });
 }

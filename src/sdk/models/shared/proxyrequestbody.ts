@@ -58,23 +58,13 @@ export namespace Method$ {
 
 /** @internal */
 export namespace ProxyRequestBody$ {
-    export const inboundSchema: z.ZodType<ProxyRequestBody, z.ZodTypeDef, unknown> = z
-        .object({
-            body: z.nullable(z.record(z.any())).optional(),
-            headers: z.nullable(z.record(z.any())).optional(),
-            method: z.nullable(Method$.inboundSchema.default(Method.Get)),
-            path: z.nullable(z.string()).optional(),
-            url: z.nullable(z.string()).optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.body === undefined ? null : { body: v.body }),
-                ...(v.headers === undefined ? null : { headers: v.headers }),
-                method: v.method,
-                ...(v.path === undefined ? null : { path: v.path }),
-                ...(v.url === undefined ? null : { url: v.url }),
-            };
-        });
+    export const inboundSchema: z.ZodType<ProxyRequestBody, z.ZodTypeDef, unknown> = z.object({
+        body: z.nullable(z.record(z.any())).optional(),
+        headers: z.nullable(z.record(z.any())).optional(),
+        method: z.nullable(Method$.inboundSchema.default(Method.Get)),
+        path: z.nullable(z.string()).optional(),
+        url: z.nullable(z.string()).optional(),
+    });
 
     export type Outbound = {
         body?: { [k: string]: any } | null | undefined;
@@ -84,21 +74,11 @@ export namespace ProxyRequestBody$ {
         url?: string | null | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ProxyRequestBody> = z
-        .object({
-            body: z.nullable(z.record(z.any())).optional(),
-            headers: z.nullable(z.record(z.any())).optional(),
-            method: z.nullable(Method$.outboundSchema.default(Method.Get)),
-            path: z.nullable(z.string()).optional(),
-            url: z.nullable(z.string()).optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.body === undefined ? null : { body: v.body }),
-                ...(v.headers === undefined ? null : { headers: v.headers }),
-                method: v.method,
-                ...(v.path === undefined ? null : { path: v.path }),
-                ...(v.url === undefined ? null : { url: v.url }),
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ProxyRequestBody> = z.object({
+        body: z.nullable(z.record(z.any())).optional(),
+        headers: z.nullable(z.record(z.any())).optional(),
+        method: z.nullable(Method$.outboundSchema.default(Method.Get)),
+        path: z.nullable(z.string()).optional(),
+        url: z.nullable(z.string()).optional(),
+    });
 }

@@ -30,7 +30,7 @@ const stackOne = new StackOne({
 async function run() {
   const result = await stackOne.iam.getGroup({
     expand: "roles",
-    fields: "id,parent_id,name,description,roles,type,created_at,updated_at",
+    fields: "id,remote_id,parent_id,remote_parent_id,name,description,roles,type,created_at,updated_at",
     id: "<id>",
     xAccountId: "<value>",
   });
@@ -78,7 +78,7 @@ const stackOne = new StackOne({
 async function run() {
   const result = await stackOne.iam.getPolicy({
     expand: "permissions",
-    fields: "id,name,permissions,description,created_at,updated_at",
+    fields: "id,remote_id,name,permissions,description,created_at,updated_at",
     id: "<id>",
     xAccountId: "<value>",
   });
@@ -126,7 +126,7 @@ const stackOne = new StackOne({
 async function run() {
   const result = await stackOne.iam.getRole({
     expand: "policies",
-    fields: "id,name,type,policies,description,created_at,updated_at",
+    fields: "id,remote_id,name,type,policies,description,created_at,updated_at",
     id: "<id>",
     xAccountId: "<value>",
   });
@@ -174,7 +174,7 @@ const stackOne = new StackOne({
 async function run() {
   const result = await stackOne.iam.getUser({
     expand: "roles,groups",
-    fields: "id,first_name,last_name,name,primary_email_address,username,roles,groups,status,avatar,is_bot_user,last_active_at,last_login_at,created_at,updated_at,multi_factor_enabled",
+    fields: "id,remote_id,first_name,last_name,name,primary_email_address,username,roles,groups,status,avatar,is_bot_user,last_active_at,last_login_at,created_at,updated_at,multi_factor_enabled",
     id: "<id>",
     xAccountId: "<value>",
   });
@@ -222,7 +222,7 @@ const stackOne = new StackOne({
 async function run() {
   const result = await stackOne.iam.listGroups({
     expand: "roles",
-    fields: "id,parent_id,name,description,roles,type,created_at,updated_at",
+    fields: "id,remote_id,parent_id,remote_parent_id,name,description,roles,type,created_at,updated_at",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
@@ -272,7 +272,7 @@ const stackOne = new StackOne({
 async function run() {
   const result = await stackOne.iam.listPolicies({
     expand: "permissions",
-    fields: "id,name,permissions,description,created_at,updated_at",
+    fields: "id,remote_id,name,permissions,description,created_at,updated_at",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
@@ -322,7 +322,7 @@ const stackOne = new StackOne({
 async function run() {
   const result = await stackOne.iam.listRoles({
     expand: "policies",
-    fields: "id,name,type,policies,description,created_at,updated_at",
+    fields: "id,remote_id,name,type,policies,description,created_at,updated_at",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
@@ -372,7 +372,7 @@ const stackOne = new StackOne({
 async function run() {
   const result = await stackOne.iam.listUsers({
     expand: "roles,groups",
-    fields: "id,first_name,last_name,name,primary_email_address,username,roles,groups,status,avatar,is_bot_user,last_active_at,last_login_at,created_at,updated_at,multi_factor_enabled",
+    fields: "id,remote_id,first_name,last_name,name,primary_email_address,username,roles,groups,status,avatar,is_bot_user,last_active_at,last_login_at,created_at,updated_at,multi_factor_enabled",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },

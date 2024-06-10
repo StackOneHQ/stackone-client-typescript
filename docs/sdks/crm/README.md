@@ -128,7 +128,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.crm.getAccount({
-    fields: "id,owner_id,name,description,industries,annual_revenue,website,addresses,phone_numbers,created_at,updated_at",
+    fields: "id,remote_id,owner_id,remote_owner_id,name,description,industries,annual_revenue,website,addresses,phone_numbers,created_at,updated_at",
     id: "<id>",
     xAccountId: "<value>",
   });
@@ -175,7 +175,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.crm.getContact({
-    fields: "id,first_name,last_name,company_name,emails,phone_numbers,deal_ids,account_ids,custom_fields,created_at,updated_at",
+    fields: "id,remote_id,first_name,last_name,company_name,emails,phone_numbers,deal_ids,remote_deal_ids,account_ids,remote_account_ids,custom_fields,created_at,updated_at",
     id: "<id>",
     include: "custom_fields",
     xAccountId: "<value>",
@@ -223,7 +223,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.crm.getList({
-    fields: "id,name,created_at,updated_at,items,type",
+    fields: "id,remote_id,name,created_at,updated_at,items,type",
     id: "<id>",
     xAccountId: "<value>",
   });
@@ -270,7 +270,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.crm.listAccounts({
-    fields: "id,owner_id,name,description,industries,annual_revenue,website,addresses,phone_numbers,created_at,updated_at",
+    fields: "id,remote_id,owner_id,remote_owner_id,name,description,industries,annual_revenue,website,addresses,phone_numbers,created_at,updated_at",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
@@ -319,7 +319,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.crm.listContacts({
-    fields: "id,first_name,last_name,company_name,emails,phone_numbers,deal_ids,account_ids,custom_fields,created_at,updated_at",
+    fields: "id,remote_id,first_name,last_name,company_name,emails,phone_numbers,deal_ids,remote_deal_ids,account_ids,remote_account_ids,custom_fields,created_at,updated_at",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
@@ -369,7 +369,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.crm.listLists({
-    fields: "id,name,created_at,updated_at,items,type",
+    fields: "id,remote_id,name,created_at,updated_at,items,type",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },

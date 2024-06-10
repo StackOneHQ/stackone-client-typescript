@@ -308,7 +308,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.marketing.getCampaign({
-    fields: "id,name,created_at,updated_at,description,schedule_type,status,channels,first_sent_at,last_sent_at,tags,messages",
+    fields: "id,remote_id,name,created_at,updated_at,description,schedule_type,status,channels,first_sent_at,last_sent_at,tags,messages",
     id: "<id>",
     xAccountId: "<value>",
   });
@@ -355,7 +355,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.marketing.getEmailTemplate({
-    fields: "id,name,messages,created_at,updated_at,tags",
+    fields: "id,remote_id,name,messages,created_at,updated_at,tags",
     id: "<id>",
     xAccountId: "<value>",
   });
@@ -402,7 +402,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.marketing.getOmniChannelTemplate({
-    fields: "id,name,messages,created_at,updated_at,tags",
+    fields: "id,remote_id,name,messages,created_at,updated_at,tags",
     id: "<id>",
     xAccountId: "<value>",
   });
@@ -449,7 +449,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.marketing.getPushTemplate({
-    fields: "id,name,messages,created_at,updated_at,tags",
+    fields: "id,remote_id,name,messages,created_at,updated_at,tags",
     id: "<id>",
     xAccountId: "<value>",
   });
@@ -496,7 +496,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.marketing.listCampaigns({
-    fields: "id,name,created_at,updated_at,description,schedule_type,status,channels,first_sent_at,last_sent_at,tags,messages",
+    fields: "id,remote_id,name,created_at,updated_at,description,schedule_type,status,channels,first_sent_at,last_sent_at,tags,messages",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
@@ -545,7 +545,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.marketing.listEmailTemplates({
-    fields: "id,name,messages,created_at,updated_at,tags",
+    fields: "id,remote_id,name,messages,created_at,updated_at,tags",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
@@ -594,7 +594,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.marketing.listOmniChannelTemplates({
-    fields: "id,name,messages,created_at,updated_at,tags",
+    fields: "id,remote_id,name,messages,created_at,updated_at,tags",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
@@ -643,7 +643,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.marketing.listPushTemplates({
-    fields: "id,name,messages,created_at,updated_at,tags",
+    fields: "id,remote_id,name,messages,created_at,updated_at,tags",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },

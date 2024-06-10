@@ -13,27 +13,17 @@ export type ConnectSessionAuthenticate = {
 
 /** @internal */
 export namespace ConnectSessionAuthenticate$ {
-    export const inboundSchema: z.ZodType<ConnectSessionAuthenticate, z.ZodTypeDef, unknown> = z
-        .object({
+    export const inboundSchema: z.ZodType<ConnectSessionAuthenticate, z.ZodTypeDef, unknown> =
+        z.object({
             token: z.string(),
-        })
-        .transform((v) => {
-            return {
-                token: v.token,
-            };
         });
 
     export type Outbound = {
         token: string;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ConnectSessionAuthenticate> = z
-        .object({
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ConnectSessionAuthenticate> =
+        z.object({
             token: z.string(),
-        })
-        .transform((v) => {
-            return {
-                token: v.token,
-            };
         });
 }

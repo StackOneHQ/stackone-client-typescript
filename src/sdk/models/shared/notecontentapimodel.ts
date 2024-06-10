@@ -13,27 +13,15 @@ export type NoteContentApiModel = {
 
 /** @internal */
 export namespace NoteContentApiModel$ {
-    export const inboundSchema: z.ZodType<NoteContentApiModel, z.ZodTypeDef, unknown> = z
-        .object({
-            body: z.nullable(z.string()).optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.body === undefined ? null : { body: v.body }),
-            };
-        });
+    export const inboundSchema: z.ZodType<NoteContentApiModel, z.ZodTypeDef, unknown> = z.object({
+        body: z.nullable(z.string()).optional(),
+    });
 
     export type Outbound = {
         body?: string | null | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, NoteContentApiModel> = z
-        .object({
-            body: z.nullable(z.string()).optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.body === undefined ? null : { body: v.body }),
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, NoteContentApiModel> = z.object({
+        body: z.nullable(z.string()).optional(),
+    });
 }

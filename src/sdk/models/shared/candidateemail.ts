@@ -17,32 +17,18 @@ export type CandidateEmail = {
 
 /** @internal */
 export namespace CandidateEmail$ {
-    export const inboundSchema: z.ZodType<CandidateEmail, z.ZodTypeDef, unknown> = z
-        .object({
-            type: z.nullable(z.string()).optional(),
-            value: z.nullable(z.string()).optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.type === undefined ? null : { type: v.type }),
-                ...(v.value === undefined ? null : { value: v.value }),
-            };
-        });
+    export const inboundSchema: z.ZodType<CandidateEmail, z.ZodTypeDef, unknown> = z.object({
+        type: z.nullable(z.string()).optional(),
+        value: z.nullable(z.string()).optional(),
+    });
 
     export type Outbound = {
         type?: string | null | undefined;
         value?: string | null | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CandidateEmail> = z
-        .object({
-            type: z.nullable(z.string()).optional(),
-            value: z.nullable(z.string()).optional(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.type === undefined ? null : { type: v.type }),
-                ...(v.value === undefined ? null : { value: v.value }),
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CandidateEmail> = z.object({
+        type: z.nullable(z.string()).optional(),
+        value: z.nullable(z.string()).optional(),
+    });
 }

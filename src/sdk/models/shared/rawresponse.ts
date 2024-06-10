@@ -13,21 +13,12 @@ export type RawResponse = {
 
 /** @internal */
 export namespace RawResponse$ {
-    export const inboundSchema: z.ZodType<RawResponse, z.ZodTypeDef, unknown> = z
-        .object({
-            body: z.nullable(z.string()).optional(),
-            method: z.string(),
-            response: z.nullable(z.record(z.any())).optional(),
-            url: z.string(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.body === undefined ? null : { body: v.body }),
-                method: v.method,
-                ...(v.response === undefined ? null : { response: v.response }),
-                url: v.url,
-            };
-        });
+    export const inboundSchema: z.ZodType<RawResponse, z.ZodTypeDef, unknown> = z.object({
+        body: z.nullable(z.string()).optional(),
+        method: z.string(),
+        response: z.nullable(z.record(z.any())).optional(),
+        url: z.string(),
+    });
 
     export type Outbound = {
         body?: string | null | undefined;
@@ -36,19 +27,10 @@ export namespace RawResponse$ {
         url: string;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, RawResponse> = z
-        .object({
-            body: z.nullable(z.string()).optional(),
-            method: z.string(),
-            response: z.nullable(z.record(z.any())).optional(),
-            url: z.string(),
-        })
-        .transform((v) => {
-            return {
-                ...(v.body === undefined ? null : { body: v.body }),
-                method: v.method,
-                ...(v.response === undefined ? null : { response: v.response }),
-                url: v.url,
-            };
-        });
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, RawResponse> = z.object({
+        body: z.nullable(z.string()).optional(),
+        method: z.string(),
+        response: z.nullable(z.record(z.any())).optional(),
+        url: z.string(),
+    });
 }
