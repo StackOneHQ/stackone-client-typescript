@@ -1,9 +1,9 @@
-speakeasyVersion: 1.300.1
+speakeasyVersion: 1.303.4
 sources:
     my-source:
         sourceNamespace: my-source
-        sourceRevisionDigest: sha256:14a924ebc8d12326f6bfb6baa0ae1e379da7615b14cc74c6551d17c016109dc6
-        sourceBlobDigest: sha256:0610bf34f1ded9e69bdda4cccfa044c4df84d230773e0dd1d6c79b586b9e9923
+        sourceRevisionDigest: sha256:1ee4631f994ac11ffda63ef1a7c1dfbe4fcebdee135a9ec67581c993a35a5184
+        sourceBlobDigest: sha256:2f5cdc843b9351019d42ed35670ced5c23705cf95af1b8d085fdc1af996f57ec
         tags:
             - latest
             - main
@@ -11,8 +11,8 @@ targets:
     StackOneTypeScriptClient:
         source: my-source
         sourceNamespace: my-source
-        sourceRevisionDigest: sha256:14a924ebc8d12326f6bfb6baa0ae1e379da7615b14cc74c6551d17c016109dc6
-        sourceBlobDigest: sha256:0610bf34f1ded9e69bdda4cccfa044c4df84d230773e0dd1d6c79b586b9e9923
+        sourceRevisionDigest: sha256:1ee4631f994ac11ffda63ef1a7c1dfbe4fcebdee135a9ec67581c993a35a5184
+        sourceBlobDigest: sha256:2f5cdc843b9351019d42ed35670ced5c23705cf95af1b8d085fdc1af996f57ec
         outLocation: /github/workspace/repo
 workflow:
     workflowVersion: 1.0.0
@@ -26,6 +26,7 @@ workflow:
                 - location: https://api2.eu1.stackone.com/oas/crm.json
                 - location: https://api2.eu1.stackone.com/oas/iam.json
                 - location: https://api2.eu1.stackone.com/oas/marketing.json
+                - location: https://api2.eu1.stackone.com/oas/lms.json
             registry:
                 location: registry.speakeasyapi.dev/stackone/stackone/my-source
     targets:

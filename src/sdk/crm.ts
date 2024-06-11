@@ -4,7 +4,13 @@
 
 import { SDKHooks } from "../hooks";
 import { SDK_METADATA, SDKOptions, serverURLFromOptions } from "../lib/config";
-import * as enc$ from "../lib/encodings";
+import {
+    encodeDeepObjectQuery as encodeDeepObjectQuery$,
+    encodeFormQuery as encodeFormQuery$,
+    encodeJSON as encodeJSON$,
+    encodeSimple as encodeSimple$,
+    queryJoin as queryJoin$,
+} from "../lib/encodings";
 import { HTTPClient } from "../lib/http";
 import * as schemas$ from "../lib/schemas";
 import { ClientSDK, RequestOptions } from "../lib/sdks";
@@ -55,9 +61,7 @@ export class Crm extends ClientSDK {
             (value$) => operations.CrmCreateContactRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
-        const body$ = enc$.encodeJSON("body", payload$.CrmCreateContactRequestDto, {
-            explode: true,
-        });
+        const body$ = encodeJSON$("body", payload$.CrmCreateContactRequestDto, { explode: true });
 
         const path$ = this.templateURLComponent("/unified/crm/contacts")();
 
@@ -65,7 +69,7 @@ export class Crm extends ClientSDK {
 
         headers$.set(
             "x-account-id",
-            enc$.encodeSimple("x-account-id", payload$["x-account-id"], {
+            encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
             })
@@ -137,21 +141,23 @@ export class Crm extends ClientSDK {
         const body$ = null;
 
         const pathParams$ = {
-            id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
+            id: encodeSimple$("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
         const path$ = this.templateURLComponent("/unified/crm/accounts/{id}")(pathParams$);
 
-        const query$ = [
-            enc$.encodeForm("fields", payload$.fields, { explode: true, charEncoding: "percent" }),
-            enc$.encodeDeepObject("proxy", payload$.proxy, { charEncoding: "percent" }),
-            enc$.encodeForm("raw", payload$.raw, { explode: true, charEncoding: "percent" }),
-        ]
-            .filter(Boolean)
-            .join("&");
+        const query$ = queryJoin$(
+            encodeFormQuery$({
+                fields: payload$.fields,
+                raw: payload$.raw,
+            }),
+            encodeDeepObjectQuery$({
+                proxy: payload$.proxy,
+            })
+        );
 
         headers$.set(
             "x-account-id",
-            enc$.encodeSimple("x-account-id", payload$["x-account-id"], {
+            encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
             })
@@ -223,25 +229,24 @@ export class Crm extends ClientSDK {
         const body$ = null;
 
         const pathParams$ = {
-            id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
+            id: encodeSimple$("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
         const path$ = this.templateURLComponent("/unified/crm/contacts/{id}")(pathParams$);
 
-        const query$ = [
-            enc$.encodeForm("fields", payload$.fields, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("include", payload$.include, {
-                explode: true,
-                charEncoding: "percent",
+        const query$ = queryJoin$(
+            encodeFormQuery$({
+                fields: payload$.fields,
+                include: payload$.include,
+                raw: payload$.raw,
             }),
-            enc$.encodeDeepObject("proxy", payload$.proxy, { charEncoding: "percent" }),
-            enc$.encodeForm("raw", payload$.raw, { explode: true, charEncoding: "percent" }),
-        ]
-            .filter(Boolean)
-            .join("&");
+            encodeDeepObjectQuery$({
+                proxy: payload$.proxy,
+            })
+        );
 
         headers$.set(
             "x-account-id",
-            enc$.encodeSimple("x-account-id", payload$["x-account-id"], {
+            encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
             })
@@ -313,21 +318,23 @@ export class Crm extends ClientSDK {
         const body$ = null;
 
         const pathParams$ = {
-            id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
+            id: encodeSimple$("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
         const path$ = this.templateURLComponent("/unified/crm/lists/{id}")(pathParams$);
 
-        const query$ = [
-            enc$.encodeForm("fields", payload$.fields, { explode: true, charEncoding: "percent" }),
-            enc$.encodeDeepObject("proxy", payload$.proxy, { charEncoding: "percent" }),
-            enc$.encodeForm("raw", payload$.raw, { explode: true, charEncoding: "percent" }),
-        ]
-            .filter(Boolean)
-            .join("&");
+        const query$ = queryJoin$(
+            encodeFormQuery$({
+                fields: payload$.fields,
+                raw: payload$.raw,
+            }),
+            encodeDeepObjectQuery$({
+                proxy: payload$.proxy,
+            })
+        );
 
         headers$.set(
             "x-account-id",
-            enc$.encodeSimple("x-account-id", payload$["x-account-id"], {
+            encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
             })
@@ -400,28 +407,24 @@ export class Crm extends ClientSDK {
 
         const path$ = this.templateURLComponent("/unified/crm/accounts")();
 
-        const query$ = [
-            enc$.encodeForm("fields", payload$.fields, { explode: true, charEncoding: "percent" }),
-            enc$.encodeDeepObject("filter", payload$.filter, { charEncoding: "percent" }),
-            enc$.encodeForm("next", payload$.next, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("page", payload$.page, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("page_size", payload$.page_size, {
-                explode: true,
-                charEncoding: "percent",
+        const query$ = queryJoin$(
+            encodeDeepObjectQuery$({
+                filter: payload$.filter,
+                proxy: payload$.proxy,
             }),
-            enc$.encodeDeepObject("proxy", payload$.proxy, { charEncoding: "percent" }),
-            enc$.encodeForm("raw", payload$.raw, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("updated_after", payload$.updated_after, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-        ]
-            .filter(Boolean)
-            .join("&");
+            encodeFormQuery$({
+                next: payload$.next,
+                page: payload$.page,
+                page_size: payload$.page_size,
+                raw: payload$.raw,
+                updated_after: payload$.updated_after,
+                fields: payload$.fields,
+            })
+        );
 
         headers$.set(
             "x-account-id",
-            enc$.encodeSimple("x-account-id", payload$["x-account-id"], {
+            encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
             })
@@ -494,32 +497,25 @@ export class Crm extends ClientSDK {
 
         const path$ = this.templateURLComponent("/unified/crm/contacts")();
 
-        const query$ = [
-            enc$.encodeForm("fields", payload$.fields, { explode: true, charEncoding: "percent" }),
-            enc$.encodeDeepObject("filter", payload$.filter, { charEncoding: "percent" }),
-            enc$.encodeForm("include", payload$.include, {
-                explode: true,
-                charEncoding: "percent",
+        const query$ = queryJoin$(
+            encodeFormQuery$({
+                fields: payload$.fields,
+                include: payload$.include,
+                raw: payload$.raw,
+                updated_after: payload$.updated_after,
+                next: payload$.next,
+                page: payload$.page,
+                page_size: payload$.page_size,
             }),
-            enc$.encodeForm("next", payload$.next, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("page", payload$.page, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("page_size", payload$.page_size, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-            enc$.encodeDeepObject("proxy", payload$.proxy, { charEncoding: "percent" }),
-            enc$.encodeForm("raw", payload$.raw, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("updated_after", payload$.updated_after, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-        ]
-            .filter(Boolean)
-            .join("&");
+            encodeDeepObjectQuery$({
+                proxy: payload$.proxy,
+                filter: payload$.filter,
+            })
+        );
 
         headers$.set(
             "x-account-id",
-            enc$.encodeSimple("x-account-id", payload$["x-account-id"], {
+            encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
             })
@@ -592,28 +588,24 @@ export class Crm extends ClientSDK {
 
         const path$ = this.templateURLComponent("/unified/crm/lists")();
 
-        const query$ = [
-            enc$.encodeForm("fields", payload$.fields, { explode: true, charEncoding: "percent" }),
-            enc$.encodeDeepObject("filter", payload$.filter, { charEncoding: "percent" }),
-            enc$.encodeForm("next", payload$.next, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("page", payload$.page, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("page_size", payload$.page_size, {
-                explode: true,
-                charEncoding: "percent",
+        const query$ = queryJoin$(
+            encodeFormQuery$({
+                updated_after: payload$.updated_after,
+                fields: payload$.fields,
+                next: payload$.next,
+                page: payload$.page,
+                page_size: payload$.page_size,
+                raw: payload$.raw,
             }),
-            enc$.encodeDeepObject("proxy", payload$.proxy, { charEncoding: "percent" }),
-            enc$.encodeForm("raw", payload$.raw, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("updated_after", payload$.updated_after, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-        ]
-            .filter(Boolean)
-            .join("&");
+            encodeDeepObjectQuery$({
+                filter: payload$.filter,
+                proxy: payload$.proxy,
+            })
+        );
 
         headers$.set(
             "x-account-id",
-            enc$.encodeSimple("x-account-id", payload$["x-account-id"], {
+            encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
             })
@@ -683,12 +675,10 @@ export class Crm extends ClientSDK {
             (value$) => operations.CrmUpdateContactRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
-        const body$ = enc$.encodeJSON("body", payload$.CrmCreateContactRequestDto, {
-            explode: true,
-        });
+        const body$ = encodeJSON$("body", payload$.CrmCreateContactRequestDto, { explode: true });
 
         const pathParams$ = {
-            id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
+            id: encodeSimple$("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
         const path$ = this.templateURLComponent("/unified/crm/contacts/{id}")(pathParams$);
 
@@ -696,7 +686,7 @@ export class Crm extends ClientSDK {
 
         headers$.set(
             "x-account-id",
-            enc$.encodeSimple("x-account-id", payload$["x-account-id"], {
+            encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
             })

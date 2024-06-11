@@ -4,6 +4,7 @@
 
 import { remap as remap$ } from "../../../lib/primitives";
 import { catchUnrecognizedEnum, OpenEnum, Unrecognized } from "../../types";
+import { ListItem, ListItem$ } from "./listitem";
 import * as z from "zod";
 
 export type List4 = {};
@@ -49,7 +50,7 @@ export type List = {
      * Unique identifier
      */
     id?: string | null | undefined;
-    items?: Array<string> | null | undefined;
+    items?: Array<ListItem> | null | undefined;
     name?: string | null | undefined;
     /**
      * Provider's unique identifier
@@ -166,7 +167,7 @@ export namespace List$ {
                 )
                 .optional(),
             id: z.nullable(z.string()).optional(),
-            items: z.nullable(z.array(z.string())).optional(),
+            items: z.nullable(z.array(ListItem$.inboundSchema)).optional(),
             name: z.nullable(z.string()).optional(),
             remote_id: z.nullable(z.string()).optional(),
             type: z.nullable(z.lazy(() => ListType$.inboundSchema)).optional(),
@@ -190,7 +191,7 @@ export namespace List$ {
     export type Outbound = {
         created_at?: string | null | undefined;
         id?: string | null | undefined;
-        items?: Array<string> | null | undefined;
+        items?: Array<ListItem$.Outbound> | null | undefined;
         name?: string | null | undefined;
         remote_id?: string | null | undefined;
         type?: ListType$.Outbound | null | undefined;
@@ -201,7 +202,7 @@ export namespace List$ {
         .object({
             createdAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
             id: z.nullable(z.string()).optional(),
-            items: z.nullable(z.array(z.string())).optional(),
+            items: z.nullable(z.array(ListItem$.outboundSchema)).optional(),
             name: z.nullable(z.string()).optional(),
             remoteId: z.nullable(z.string()).optional(),
             type: z.nullable(z.lazy(() => ListType$.outboundSchema)).optional(),

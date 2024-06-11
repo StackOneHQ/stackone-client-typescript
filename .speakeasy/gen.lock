@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 7fa83af8-9e8e-4410-b7e2-cf1d0eaf688b
 management:
-  docChecksum: ec55ba6f24845f1777e5bc0cafdc2d52
+  docChecksum: 900342b8177c19a895af892f1054837b
   docVersion: 1.0.0
-  speakeasyVersion: 1.300.1
-  generationVersion: 2.339.1
-  releaseVersion: 4.9.3
-  configChecksum: ccdb912bfe799d6fb59a204ac6535bc9
+  speakeasyVersion: 1.303.4
+  generationVersion: 2.340.2
+  releaseVersion: 4.9.4
+  configChecksum: 728523a8f8273d167494ac54a693b16d
   repoURL: https://github.com/StackOneHQ/stackone-client-typescript.git
   repoSubDirectory: .
   installationURL: https://github.com/StackOneHQ/stackone-client-typescript
@@ -15,7 +15,7 @@ features:
   typescript:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.5
-    core: 3.9.12
+    core: 3.9.13
     deprecations: 2.81.1
     downloadStreams: 0.1.1
     examples: 2.81.4
@@ -38,6 +38,7 @@ generatedFiles:
   - src/sdk/crm.ts
   - src/sdk/hris.ts
   - src/sdk/iam.ts
+  - src/sdk/lms.ts
   - src/sdk/marketing.ts
   - src/sdk/proxy.ts
   - src/sdk/sdk.ts
@@ -161,6 +162,10 @@ generatedFiles:
   - src/sdk/models/operations/iamlistpolicies.ts
   - src/sdk/models/operations/iamlistroles.ts
   - src/sdk/models/operations/iamlistusers.ts
+  - src/sdk/models/operations/lmscreatecompletion.ts
+  - src/sdk/models/operations/lmscreatecontent.ts
+  - src/sdk/models/operations/lmsgetcompletion.ts
+  - src/sdk/models/operations/lmsgetcontent.ts
   - src/sdk/models/operations/marketingcreateemailtemplate.ts
   - src/sdk/models/operations/marketingcreateomnichanneltemplate.ts
   - src/sdk/models/operations/marketingcreatepushtemplate.ts
@@ -202,6 +207,8 @@ generatedFiles:
   - src/sdk/models/shared/rejectedreason.ts
   - src/sdk/models/shared/atsdocumentapimodel.ts
   - src/sdk/models/shared/content.ts
+  - src/sdk/models/shared/contentlanguageenum.ts
+  - src/sdk/models/shared/categories.ts
   - src/sdk/models/shared/phonenumber.ts
   - src/sdk/models/shared/candidateemail.ts
   - src/sdk/models/shared/applicationattachment.ts
@@ -236,6 +243,7 @@ generatedFiles:
   - src/sdk/models/shared/jobpostingcompensation.ts
   - src/sdk/models/shared/listresult.ts
   - src/sdk/models/shared/list.ts
+  - src/sdk/models/shared/listitem.ts
   - src/sdk/models/shared/atslocationresult.ts
   - src/sdk/models/shared/atslocation.ts
   - src/sdk/models/shared/rejectedreasonresult.ts
@@ -320,6 +328,12 @@ generatedFiles:
   - src/sdk/models/shared/iampoliciespaginated.ts
   - src/sdk/models/shared/iamrolespaginated.ts
   - src/sdk/models/shared/iamuserspaginated.ts
+  - src/sdk/models/shared/lmscreatecompletionrequestdto.ts
+  - src/sdk/models/shared/lmscreatecontentrequestdto.ts
+  - src/sdk/models/shared/createcategoriesapimodel.ts
+  - src/sdk/models/shared/completionresult.ts
+  - src/sdk/models/shared/completion.ts
+  - src/sdk/models/shared/contentresult.ts
   - src/sdk/models/shared/marketingcreateemailtemplaterequestdto.ts
   - src/sdk/models/shared/emailmessages.ts
   - src/sdk/models/shared/marketingcreatetemplaterequestdto.ts
@@ -557,6 +571,14 @@ generatedFiles:
   - docs/sdk/models/operations/iamlistusersqueryparamfilter.md
   - docs/sdk/models/operations/iamlistusersrequest.md
   - docs/sdk/models/operations/iamlistusersresponse.md
+  - docs/sdk/models/operations/lmscreatecompletionrequest.md
+  - docs/sdk/models/operations/lmscreatecompletionresponse.md
+  - docs/sdk/models/operations/lmscreatecontentrequest.md
+  - docs/sdk/models/operations/lmscreatecontentresponse.md
+  - docs/sdk/models/operations/lmsgetcompletionrequest.md
+  - docs/sdk/models/operations/lmsgetcompletionresponse.md
+  - docs/sdk/models/operations/lmsgetcontentrequest.md
+  - docs/sdk/models/operations/lmsgetcontentresponse.md
   - docs/sdk/models/operations/marketingcreateemailtemplaterequest.md
   - docs/sdk/models/operations/marketingcreateemailtemplateresponse.md
   - docs/sdk/models/operations/marketingcreateomnichanneltemplaterequest.md
@@ -598,7 +620,7 @@ generatedFiles:
   - docs/sdk/models/shared/linkedaccountmetacategory.md
   - docs/sdk/models/shared/linkedaccountmeta.md
   - docs/sdk/models/shared/patchaccountdto.md
-  - docs/sdk/models/shared/categories.md
+  - docs/sdk/models/shared/connectsessioncategories.md
   - docs/sdk/models/shared/connectsession.md
   - docs/sdk/models/shared/connectsessionauthenticate.md
   - docs/sdk/models/shared/connectsessiontokencategories.md
@@ -670,8 +692,13 @@ generatedFiles:
   - docs/sdk/models/shared/content4.md
   - docs/sdk/models/shared/contentsourcevalue.md
   - docs/sdk/models/shared/contentvalue.md
-  - docs/sdk/models/shared/contentfileformat.md
+  - docs/sdk/models/shared/contentcontenttype.md
   - docs/sdk/models/shared/content.md
+  - docs/sdk/models/shared/contentlanguageenum4.md
+  - docs/sdk/models/shared/contentlanguageenumsourcevalue.md
+  - docs/sdk/models/shared/contentlanguageenumvalue.md
+  - docs/sdk/models/shared/contentlanguageenum.md
+  - docs/sdk/models/shared/categories.md
   - docs/sdk/models/shared/phonenumbertype.md
   - docs/sdk/models/shared/phonenumber.md
   - docs/sdk/models/shared/candidateemail.md
@@ -769,6 +796,7 @@ generatedFiles:
   - docs/sdk/models/shared/listvalue.md
   - docs/sdk/models/shared/listtype.md
   - docs/sdk/models/shared/list.md
+  - docs/sdk/models/shared/listitem.md
   - docs/sdk/models/shared/atslocationresult.md
   - docs/sdk/models/shared/atslocation.md
   - docs/sdk/models/shared/rejectedreasonresult.md
@@ -1130,6 +1158,25 @@ generatedFiles:
   - docs/sdk/models/shared/iampoliciespaginated.md
   - docs/sdk/models/shared/iamrolespaginated.md
   - docs/sdk/models/shared/iamuserspaginated.md
+  - docs/sdk/models/shared/lmscreatecompletionrequestdto4.md
+  - docs/sdk/models/shared/lmscreatecompletionrequestdtosourcevalue.md
+  - docs/sdk/models/shared/lmscreatecompletionrequestdtovalue.md
+  - docs/sdk/models/shared/lmscreatecompletionrequestdtoresult.md
+  - docs/sdk/models/shared/lmscreatecompletionrequestdtouser.md
+  - docs/sdk/models/shared/lmscreatecompletionrequestdto.md
+  - docs/sdk/models/shared/lmscreatecontentrequestdto4.md
+  - docs/sdk/models/shared/lmscreatecontentrequestdtosourcevalue.md
+  - docs/sdk/models/shared/lmscreatecontentrequestdtovalue.md
+  - docs/sdk/models/shared/lmscreatecontentrequestdtocontenttype.md
+  - docs/sdk/models/shared/lmscreatecontentrequestdto.md
+  - docs/sdk/models/shared/createcategoriesapimodel.md
+  - docs/sdk/models/shared/completionresult.md
+  - docs/sdk/models/shared/completion4.md
+  - docs/sdk/models/shared/completionsourcevalue.md
+  - docs/sdk/models/shared/completionvalue.md
+  - docs/sdk/models/shared/result.md
+  - docs/sdk/models/shared/completion.md
+  - docs/sdk/models/shared/contentresult.md
   - docs/sdk/models/shared/marketingcreateemailtemplaterequestdto.md
   - docs/sdk/models/shared/messagecontent.md
   - docs/sdk/models/shared/emailmessages4.md
@@ -1183,6 +1230,7 @@ generatedFiles:
   - docs/sdks/crm/README.md
   - docs/sdks/hris/README.md
   - docs/sdks/iam/README.md
+  - docs/sdks/lms/README.md
   - docs/sdks/marketing/README.md
   - docs/sdks/proxy/README.md
   - USAGE.md

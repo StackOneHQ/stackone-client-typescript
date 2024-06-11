@@ -4,7 +4,13 @@
 
 import { SDKHooks } from "../hooks";
 import { SDK_METADATA, SDKOptions, serverURLFromOptions } from "../lib/config";
-import * as enc$ from "../lib/encodings";
+import {
+    encodeDeepObjectQuery as encodeDeepObjectQuery$,
+    encodeFormQuery as encodeFormQuery$,
+    encodeJSON as encodeJSON$,
+    encodeSimple as encodeSimple$,
+    queryJoin as queryJoin$,
+} from "../lib/encodings";
 import { HTTPClient } from "../lib/http";
 import * as schemas$ from "../lib/schemas";
 import { ClientSDK, RequestOptions } from "../lib/sdks";
@@ -56,7 +62,7 @@ export class Marketing extends ClientSDK {
                 operations.MarketingCreateEmailTemplateRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
-        const body$ = enc$.encodeJSON("body", payload$.MarketingCreateEmailTemplateRequestDto, {
+        const body$ = encodeJSON$("body", payload$.MarketingCreateEmailTemplateRequestDto, {
             explode: true,
         });
 
@@ -66,7 +72,7 @@ export class Marketing extends ClientSDK {
 
         headers$.set(
             "x-account-id",
-            enc$.encodeSimple("x-account-id", payload$["x-account-id"], {
+            encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
             })
@@ -137,7 +143,7 @@ export class Marketing extends ClientSDK {
                 operations.MarketingCreateOmniChannelTemplateRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
-        const body$ = enc$.encodeJSON("body", payload$.MarketingCreateTemplateRequestDto, {
+        const body$ = encodeJSON$("body", payload$.MarketingCreateTemplateRequestDto, {
             explode: true,
         });
 
@@ -147,7 +153,7 @@ export class Marketing extends ClientSDK {
 
         headers$.set(
             "x-account-id",
-            enc$.encodeSimple("x-account-id", payload$["x-account-id"], {
+            encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
             })
@@ -220,7 +226,7 @@ export class Marketing extends ClientSDK {
             (value$) => operations.MarketingCreatePushTemplateRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
-        const body$ = enc$.encodeJSON("body", payload$.MarketingCreatePushTemplateRequestDto, {
+        const body$ = encodeJSON$("body", payload$.MarketingCreatePushTemplateRequestDto, {
             explode: true,
         });
 
@@ -230,7 +236,7 @@ export class Marketing extends ClientSDK {
 
         headers$.set(
             "x-account-id",
-            enc$.encodeSimple("x-account-id", payload$["x-account-id"], {
+            encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
             })
@@ -302,21 +308,23 @@ export class Marketing extends ClientSDK {
         const body$ = null;
 
         const pathParams$ = {
-            id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
+            id: encodeSimple$("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
         const path$ = this.templateURLComponent("/unified/marketing/campaigns/{id}")(pathParams$);
 
-        const query$ = [
-            enc$.encodeForm("fields", payload$.fields, { explode: true, charEncoding: "percent" }),
-            enc$.encodeDeepObject("proxy", payload$.proxy, { charEncoding: "percent" }),
-            enc$.encodeForm("raw", payload$.raw, { explode: true, charEncoding: "percent" }),
-        ]
-            .filter(Boolean)
-            .join("&");
+        const query$ = queryJoin$(
+            encodeDeepObjectQuery$({
+                proxy: payload$.proxy,
+            }),
+            encodeFormQuery$({
+                raw: payload$.raw,
+                fields: payload$.fields,
+            })
+        );
 
         headers$.set(
             "x-account-id",
-            enc$.encodeSimple("x-account-id", payload$["x-account-id"], {
+            encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
             })
@@ -388,23 +396,25 @@ export class Marketing extends ClientSDK {
         const body$ = null;
 
         const pathParams$ = {
-            id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
+            id: encodeSimple$("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
         const path$ = this.templateURLComponent("/unified/marketing/templates/email/{id}")(
             pathParams$
         );
 
-        const query$ = [
-            enc$.encodeForm("fields", payload$.fields, { explode: true, charEncoding: "percent" }),
-            enc$.encodeDeepObject("proxy", payload$.proxy, { charEncoding: "percent" }),
-            enc$.encodeForm("raw", payload$.raw, { explode: true, charEncoding: "percent" }),
-        ]
-            .filter(Boolean)
-            .join("&");
+        const query$ = queryJoin$(
+            encodeFormQuery$({
+                raw: payload$.raw,
+                fields: payload$.fields,
+            }),
+            encodeDeepObjectQuery$({
+                proxy: payload$.proxy,
+            })
+        );
 
         headers$.set(
             "x-account-id",
-            enc$.encodeSimple("x-account-id", payload$["x-account-id"], {
+            encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
             })
@@ -477,23 +487,25 @@ export class Marketing extends ClientSDK {
         const body$ = null;
 
         const pathParams$ = {
-            id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
+            id: encodeSimple$("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
         const path$ = this.templateURLComponent("/unified/marketing/templates/omni_channel/{id}")(
             pathParams$
         );
 
-        const query$ = [
-            enc$.encodeForm("fields", payload$.fields, { explode: true, charEncoding: "percent" }),
-            enc$.encodeDeepObject("proxy", payload$.proxy, { charEncoding: "percent" }),
-            enc$.encodeForm("raw", payload$.raw, { explode: true, charEncoding: "percent" }),
-        ]
-            .filter(Boolean)
-            .join("&");
+        const query$ = queryJoin$(
+            encodeFormQuery$({
+                fields: payload$.fields,
+                raw: payload$.raw,
+            }),
+            encodeDeepObjectQuery$({
+                proxy: payload$.proxy,
+            })
+        );
 
         headers$.set(
             "x-account-id",
-            enc$.encodeSimple("x-account-id", payload$["x-account-id"], {
+            encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
             })
@@ -567,23 +579,25 @@ export class Marketing extends ClientSDK {
         const body$ = null;
 
         const pathParams$ = {
-            id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
+            id: encodeSimple$("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
         const path$ = this.templateURLComponent("/unified/marketing/templates/push/{id}")(
             pathParams$
         );
 
-        const query$ = [
-            enc$.encodeForm("fields", payload$.fields, { explode: true, charEncoding: "percent" }),
-            enc$.encodeDeepObject("proxy", payload$.proxy, { charEncoding: "percent" }),
-            enc$.encodeForm("raw", payload$.raw, { explode: true, charEncoding: "percent" }),
-        ]
-            .filter(Boolean)
-            .join("&");
+        const query$ = queryJoin$(
+            encodeFormQuery$({
+                fields: payload$.fields,
+                raw: payload$.raw,
+            }),
+            encodeDeepObjectQuery$({
+                proxy: payload$.proxy,
+            })
+        );
 
         headers$.set(
             "x-account-id",
-            enc$.encodeSimple("x-account-id", payload$["x-account-id"], {
+            encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
             })
@@ -656,28 +670,24 @@ export class Marketing extends ClientSDK {
 
         const path$ = this.templateURLComponent("/unified/marketing/campaigns")();
 
-        const query$ = [
-            enc$.encodeForm("fields", payload$.fields, { explode: true, charEncoding: "percent" }),
-            enc$.encodeDeepObject("filter", payload$.filter, { charEncoding: "percent" }),
-            enc$.encodeForm("next", payload$.next, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("page", payload$.page, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("page_size", payload$.page_size, {
-                explode: true,
-                charEncoding: "percent",
+        const query$ = queryJoin$(
+            encodeFormQuery$({
+                next: payload$.next,
+                page: payload$.page,
+                page_size: payload$.page_size,
+                raw: payload$.raw,
+                updated_after: payload$.updated_after,
+                fields: payload$.fields,
             }),
-            enc$.encodeDeepObject("proxy", payload$.proxy, { charEncoding: "percent" }),
-            enc$.encodeForm("raw", payload$.raw, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("updated_after", payload$.updated_after, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-        ]
-            .filter(Boolean)
-            .join("&");
+            encodeDeepObjectQuery$({
+                proxy: payload$.proxy,
+                filter: payload$.filter,
+            })
+        );
 
         headers$.set(
             "x-account-id",
-            enc$.encodeSimple("x-account-id", payload$["x-account-id"], {
+            encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
             })
@@ -750,28 +760,24 @@ export class Marketing extends ClientSDK {
 
         const path$ = this.templateURLComponent("/unified/marketing/templates/email")();
 
-        const query$ = [
-            enc$.encodeForm("fields", payload$.fields, { explode: true, charEncoding: "percent" }),
-            enc$.encodeDeepObject("filter", payload$.filter, { charEncoding: "percent" }),
-            enc$.encodeForm("next", payload$.next, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("page", payload$.page, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("page_size", payload$.page_size, {
-                explode: true,
-                charEncoding: "percent",
+        const query$ = queryJoin$(
+            encodeFormQuery$({
+                fields: payload$.fields,
+                next: payload$.next,
+                page: payload$.page,
+                page_size: payload$.page_size,
+                raw: payload$.raw,
+                updated_after: payload$.updated_after,
             }),
-            enc$.encodeDeepObject("proxy", payload$.proxy, { charEncoding: "percent" }),
-            enc$.encodeForm("raw", payload$.raw, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("updated_after", payload$.updated_after, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-        ]
-            .filter(Boolean)
-            .join("&");
+            encodeDeepObjectQuery$({
+                filter: payload$.filter,
+                proxy: payload$.proxy,
+            })
+        );
 
         headers$.set(
             "x-account-id",
-            enc$.encodeSimple("x-account-id", payload$["x-account-id"], {
+            encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
             })
@@ -847,28 +853,24 @@ export class Marketing extends ClientSDK {
 
         const path$ = this.templateURLComponent("/unified/marketing/templates/omni_channel")();
 
-        const query$ = [
-            enc$.encodeForm("fields", payload$.fields, { explode: true, charEncoding: "percent" }),
-            enc$.encodeDeepObject("filter", payload$.filter, { charEncoding: "percent" }),
-            enc$.encodeForm("next", payload$.next, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("page", payload$.page, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("page_size", payload$.page_size, {
-                explode: true,
-                charEncoding: "percent",
+        const query$ = queryJoin$(
+            encodeFormQuery$({
+                page_size: payload$.page_size,
+                raw: payload$.raw,
+                updated_after: payload$.updated_after,
+                fields: payload$.fields,
+                next: payload$.next,
+                page: payload$.page,
             }),
-            enc$.encodeDeepObject("proxy", payload$.proxy, { charEncoding: "percent" }),
-            enc$.encodeForm("raw", payload$.raw, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("updated_after", payload$.updated_after, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-        ]
-            .filter(Boolean)
-            .join("&");
+            encodeDeepObjectQuery$({
+                proxy: payload$.proxy,
+                filter: payload$.filter,
+            })
+        );
 
         headers$.set(
             "x-account-id",
-            enc$.encodeSimple("x-account-id", payload$["x-account-id"], {
+            encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
             })
@@ -943,28 +945,24 @@ export class Marketing extends ClientSDK {
 
         const path$ = this.templateURLComponent("/unified/marketing/templates/push")();
 
-        const query$ = [
-            enc$.encodeForm("fields", payload$.fields, { explode: true, charEncoding: "percent" }),
-            enc$.encodeDeepObject("filter", payload$.filter, { charEncoding: "percent" }),
-            enc$.encodeForm("next", payload$.next, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("page", payload$.page, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("page_size", payload$.page_size, {
-                explode: true,
-                charEncoding: "percent",
+        const query$ = queryJoin$(
+            encodeFormQuery$({
+                raw: payload$.raw,
+                updated_after: payload$.updated_after,
+                fields: payload$.fields,
+                next: payload$.next,
+                page: payload$.page,
+                page_size: payload$.page_size,
             }),
-            enc$.encodeDeepObject("proxy", payload$.proxy, { charEncoding: "percent" }),
-            enc$.encodeForm("raw", payload$.raw, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("updated_after", payload$.updated_after, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-        ]
-            .filter(Boolean)
-            .join("&");
+            encodeDeepObjectQuery$({
+                filter: payload$.filter,
+                proxy: payload$.proxy,
+            })
+        );
 
         headers$.set(
             "x-account-id",
-            enc$.encodeSimple("x-account-id", payload$["x-account-id"], {
+            encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
             })
@@ -1037,12 +1035,12 @@ export class Marketing extends ClientSDK {
                 operations.MarketingUpdateEmailTemplateRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
-        const body$ = enc$.encodeJSON("body", payload$.MarketingCreateEmailTemplateRequestDto, {
+        const body$ = encodeJSON$("body", payload$.MarketingCreateEmailTemplateRequestDto, {
             explode: true,
         });
 
         const pathParams$ = {
-            id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
+            id: encodeSimple$("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
         const path$ = this.templateURLComponent("/unified/marketing/templates/email/{id}")(
             pathParams$
@@ -1052,7 +1050,7 @@ export class Marketing extends ClientSDK {
 
         headers$.set(
             "x-account-id",
-            enc$.encodeSimple("x-account-id", payload$["x-account-id"], {
+            encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
             })
@@ -1123,12 +1121,12 @@ export class Marketing extends ClientSDK {
                 operations.MarketingUpdateOmniChannelTemplateRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
-        const body$ = enc$.encodeJSON("body", payload$.MarketingCreateTemplateRequestDto, {
+        const body$ = encodeJSON$("body", payload$.MarketingCreateTemplateRequestDto, {
             explode: true,
         });
 
         const pathParams$ = {
-            id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
+            id: encodeSimple$("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
         const path$ = this.templateURLComponent("/unified/marketing/templates/omni_channel/{id}")(
             pathParams$
@@ -1138,7 +1136,7 @@ export class Marketing extends ClientSDK {
 
         headers$.set(
             "x-account-id",
-            enc$.encodeSimple("x-account-id", payload$["x-account-id"], {
+            encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
             })
@@ -1211,12 +1209,12 @@ export class Marketing extends ClientSDK {
             (value$) => operations.MarketingUpdatePushTemplateRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
-        const body$ = enc$.encodeJSON("body", payload$.MarketingCreatePushTemplateRequestDto, {
+        const body$ = encodeJSON$("body", payload$.MarketingCreatePushTemplateRequestDto, {
             explode: true,
         });
 
         const pathParams$ = {
-            id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
+            id: encodeSimple$("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
         const path$ = this.templateURLComponent("/unified/marketing/templates/push/{id}")(
             pathParams$
@@ -1226,7 +1224,7 @@ export class Marketing extends ClientSDK {
 
         headers$.set(
             "x-account-id",
-            enc$.encodeSimple("x-account-id", payload$["x-account-id"], {
+            encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
             })

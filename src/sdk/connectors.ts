@@ -4,7 +4,10 @@
 
 import { SDKHooks } from "../hooks";
 import { SDK_METADATA, SDKOptions, serverURLFromOptions } from "../lib/config";
-import * as enc$ from "../lib/encodings";
+import {
+    encodeFormQuery as encodeFormQuery$,
+    encodeSimple as encodeSimple$,
+} from "../lib/encodings";
 import { HTTPClient } from "../lib/http";
 import * as schemas$ from "../lib/schemas";
 import { ClientSDK, RequestOptions } from "../lib/sdks";
@@ -57,21 +60,16 @@ export class Connectors extends ClientSDK {
         const body$ = null;
 
         const pathParams$ = {
-            provider: enc$.encodeSimple("provider", payload$.provider, {
+            provider: encodeSimple$("provider", payload$.provider, {
                 explode: false,
                 charEncoding: "percent",
             }),
         };
         const path$ = this.templateURLComponent("/connectors/meta/{provider}")(pathParams$);
 
-        const query$ = [
-            enc$.encodeForm("include", payload$.include, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-        ]
-            .filter(Boolean)
-            .join("&");
+        const query$ = encodeFormQuery$({
+            include: payload$.include,
+        });
 
         const security$ =
             typeof this.options$.security === "function"
@@ -140,14 +138,9 @@ export class Connectors extends ClientSDK {
 
         const path$ = this.templateURLComponent("/connectors/meta")();
 
-        const query$ = [
-            enc$.encodeForm("include", payload$.include, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-        ]
-            .filter(Boolean)
-            .join("&");
+        const query$ = encodeFormQuery$({
+            include: payload$.include,
+        });
 
         const security$ =
             typeof this.options$.security === "function"

@@ -4,7 +4,13 @@
 
 import { SDKHooks } from "../hooks";
 import { SDK_METADATA, SDKOptions, serverURLFromOptions } from "../lib/config";
-import * as enc$ from "../lib/encodings";
+import {
+    encodeDeepObjectQuery as encodeDeepObjectQuery$,
+    encodeFormQuery as encodeFormQuery$,
+    encodeJSON as encodeJSON$,
+    encodeSimple as encodeSimple$,
+    queryJoin as queryJoin$,
+} from "../lib/encodings";
 import { HTTPClient } from "../lib/http";
 import * as schemas$ from "../lib/schemas";
 import { ClientSDK, RequestOptions } from "../lib/sdks";
@@ -55,7 +61,7 @@ export class Ats extends ClientSDK {
             (value$) => operations.AtsCreateApplicationRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
-        const body$ = enc$.encodeJSON("body", payload$.AtsCreateApplicationRequestDto, {
+        const body$ = encodeJSON$("body", payload$.AtsCreateApplicationRequestDto, {
             explode: true,
         });
 
@@ -65,7 +71,7 @@ export class Ats extends ClientSDK {
 
         headers$.set(
             "x-account-id",
-            enc$.encodeSimple("x-account-id", payload$["x-account-id"], {
+            encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
             })
@@ -135,9 +141,7 @@ export class Ats extends ClientSDK {
             (value$) => operations.AtsCreateCandidateRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
-        const body$ = enc$.encodeJSON("body", payload$.AtsCreateCandidateRequestDto, {
-            explode: true,
-        });
+        const body$ = encodeJSON$("body", payload$.AtsCreateCandidateRequestDto, { explode: true });
 
         const path$ = this.templateURLComponent("/unified/ats/candidates")();
 
@@ -145,7 +149,7 @@ export class Ats extends ClientSDK {
 
         headers$.set(
             "x-account-id",
-            enc$.encodeSimple("x-account-id", payload$["x-account-id"], {
+            encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
             })
@@ -215,10 +219,10 @@ export class Ats extends ClientSDK {
             (value$) => operations.AtsCreateCandidateNoteRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
-        const body$ = enc$.encodeJSON("body", payload$.AtsCreateNotesRequestDto, { explode: true });
+        const body$ = encodeJSON$("body", payload$.AtsCreateNotesRequestDto, { explode: true });
 
         const pathParams$ = {
-            id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
+            id: encodeSimple$("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
         const path$ = this.templateURLComponent("/unified/ats/candidates/{id}/notes")(pathParams$);
 
@@ -226,7 +230,7 @@ export class Ats extends ClientSDK {
 
         headers$.set(
             "x-account-id",
-            enc$.encodeSimple("x-account-id", payload$["x-account-id"], {
+            encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
             })
@@ -296,7 +300,7 @@ export class Ats extends ClientSDK {
             (value$) => operations.AtsCreateOfferRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
-        const body$ = enc$.encodeJSON("body", payload$.AtsCreateOfferRequestDto, { explode: true });
+        const body$ = encodeJSON$("body", payload$.AtsCreateOfferRequestDto, { explode: true });
 
         const path$ = this.templateURLComponent("/unified/ats/offers")();
 
@@ -304,7 +308,7 @@ export class Ats extends ClientSDK {
 
         headers$.set(
             "x-account-id",
-            enc$.encodeSimple("x-account-id", payload$["x-account-id"], {
+            encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
             })
@@ -377,8 +381,8 @@ export class Ats extends ClientSDK {
         const body$ = null;
 
         const pathParams$ = {
-            id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
-            subResourceId: enc$.encodeSimple("subResourceId", payload$.subResourceId, {
+            id: encodeSimple$("id", payload$.id, { explode: false, charEncoding: "percent" }),
+            subResourceId: encodeSimple$("subResourceId", payload$.subResourceId, {
                 explode: false,
                 charEncoding: "percent",
             }),
@@ -387,15 +391,13 @@ export class Ats extends ClientSDK {
             "/unified/ats/applications/{id}/documents/{subResourceId}/download"
         )(pathParams$);
 
-        const query$ = [
-            enc$.encodeForm("format", payload$.format, { explode: true, charEncoding: "percent" }),
-        ]
-            .filter(Boolean)
-            .join("&");
+        const query$ = encodeFormQuery$({
+            format: payload$.format,
+        });
 
         headers$.set(
             "x-account-id",
-            enc$.encodeSimple("x-account-id", payload$["x-account-id"], {
+            encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
             })
@@ -467,22 +469,24 @@ export class Ats extends ClientSDK {
         const body$ = null;
 
         const pathParams$ = {
-            id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
+            id: encodeSimple$("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
         const path$ = this.templateURLComponent("/unified/ats/applications/{id}")(pathParams$);
 
-        const query$ = [
-            enc$.encodeForm("expand", payload$.expand, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("fields", payload$.fields, { explode: true, charEncoding: "percent" }),
-            enc$.encodeDeepObject("proxy", payload$.proxy, { charEncoding: "percent" }),
-            enc$.encodeForm("raw", payload$.raw, { explode: true, charEncoding: "percent" }),
-        ]
-            .filter(Boolean)
-            .join("&");
+        const query$ = queryJoin$(
+            encodeFormQuery$({
+                raw: payload$.raw,
+                expand: payload$.expand,
+                fields: payload$.fields,
+            }),
+            encodeDeepObjectQuery$({
+                proxy: payload$.proxy,
+            })
+        );
 
         headers$.set(
             "x-account-id",
-            enc$.encodeSimple("x-account-id", payload$["x-account-id"], {
+            encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
             })
@@ -554,8 +558,8 @@ export class Ats extends ClientSDK {
         const body$ = null;
 
         const pathParams$ = {
-            id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
-            subResourceId: enc$.encodeSimple("subResourceId", payload$.subResourceId, {
+            id: encodeSimple$("id", payload$.id, { explode: false, charEncoding: "percent" }),
+            subResourceId: encodeSimple$("subResourceId", payload$.subResourceId, {
                 explode: false,
                 charEncoding: "percent",
             }),
@@ -564,17 +568,19 @@ export class Ats extends ClientSDK {
             "/unified/ats/applications/{id}/documents/{subResourceId}"
         )(pathParams$);
 
-        const query$ = [
-            enc$.encodeForm("fields", payload$.fields, { explode: true, charEncoding: "percent" }),
-            enc$.encodeDeepObject("proxy", payload$.proxy, { charEncoding: "percent" }),
-            enc$.encodeForm("raw", payload$.raw, { explode: true, charEncoding: "percent" }),
-        ]
-            .filter(Boolean)
-            .join("&");
+        const query$ = queryJoin$(
+            encodeFormQuery$({
+                fields: payload$.fields,
+                raw: payload$.raw,
+            }),
+            encodeDeepObjectQuery$({
+                proxy: payload$.proxy,
+            })
+        );
 
         headers$.set(
             "x-account-id",
-            enc$.encodeSimple("x-account-id", payload$["x-account-id"], {
+            encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
             })
@@ -646,8 +652,8 @@ export class Ats extends ClientSDK {
         const body$ = null;
 
         const pathParams$ = {
-            id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
-            subResourceId: enc$.encodeSimple("subResourceId", payload$.subResourceId, {
+            id: encodeSimple$("id", payload$.id, { explode: false, charEncoding: "percent" }),
+            subResourceId: encodeSimple$("subResourceId", payload$.subResourceId, {
                 explode: false,
                 charEncoding: "percent",
             }),
@@ -656,17 +662,19 @@ export class Ats extends ClientSDK {
             "/unified/ats/applications/{id}/offers/{subResourceId}"
         )(pathParams$);
 
-        const query$ = [
-            enc$.encodeForm("fields", payload$.fields, { explode: true, charEncoding: "percent" }),
-            enc$.encodeDeepObject("proxy", payload$.proxy, { charEncoding: "percent" }),
-            enc$.encodeForm("raw", payload$.raw, { explode: true, charEncoding: "percent" }),
-        ]
-            .filter(Boolean)
-            .join("&");
+        const query$ = queryJoin$(
+            encodeFormQuery$({
+                fields: payload$.fields,
+                raw: payload$.raw,
+            }),
+            encodeDeepObjectQuery$({
+                proxy: payload$.proxy,
+            })
+        );
 
         headers$.set(
             "x-account-id",
-            enc$.encodeSimple("x-account-id", payload$["x-account-id"], {
+            encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
             })
@@ -738,8 +746,8 @@ export class Ats extends ClientSDK {
         const body$ = null;
 
         const pathParams$ = {
-            id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
-            subResourceId: enc$.encodeSimple("subResourceId", payload$.subResourceId, {
+            id: encodeSimple$("id", payload$.id, { explode: false, charEncoding: "percent" }),
+            subResourceId: encodeSimple$("subResourceId", payload$.subResourceId, {
                 explode: false,
                 charEncoding: "percent",
             }),
@@ -748,17 +756,19 @@ export class Ats extends ClientSDK {
             "/unified/ats/applications/{id}/scorecards/{subResourceId}"
         )(pathParams$);
 
-        const query$ = [
-            enc$.encodeForm("fields", payload$.fields, { explode: true, charEncoding: "percent" }),
-            enc$.encodeDeepObject("proxy", payload$.proxy, { charEncoding: "percent" }),
-            enc$.encodeForm("raw", payload$.raw, { explode: true, charEncoding: "percent" }),
-        ]
-            .filter(Boolean)
-            .join("&");
+        const query$ = queryJoin$(
+            encodeFormQuery$({
+                fields: payload$.fields,
+                raw: payload$.raw,
+            }),
+            encodeDeepObjectQuery$({
+                proxy: payload$.proxy,
+            })
+        );
 
         headers$.set(
             "x-account-id",
-            enc$.encodeSimple("x-account-id", payload$["x-account-id"], {
+            encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
             })
@@ -830,21 +840,23 @@ export class Ats extends ClientSDK {
         const body$ = null;
 
         const pathParams$ = {
-            id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
+            id: encodeSimple$("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
         const path$ = this.templateURLComponent("/unified/ats/candidates/{id}")(pathParams$);
 
-        const query$ = [
-            enc$.encodeForm("fields", payload$.fields, { explode: true, charEncoding: "percent" }),
-            enc$.encodeDeepObject("proxy", payload$.proxy, { charEncoding: "percent" }),
-            enc$.encodeForm("raw", payload$.raw, { explode: true, charEncoding: "percent" }),
-        ]
-            .filter(Boolean)
-            .join("&");
+        const query$ = queryJoin$(
+            encodeDeepObjectQuery$({
+                proxy: payload$.proxy,
+            }),
+            encodeFormQuery$({
+                raw: payload$.raw,
+                fields: payload$.fields,
+            })
+        );
 
         headers$.set(
             "x-account-id",
-            enc$.encodeSimple("x-account-id", payload$["x-account-id"], {
+            encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
             })
@@ -916,8 +928,8 @@ export class Ats extends ClientSDK {
         const body$ = null;
 
         const pathParams$ = {
-            id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
-            subResourceId: enc$.encodeSimple("subResourceId", payload$.subResourceId, {
+            id: encodeSimple$("id", payload$.id, { explode: false, charEncoding: "percent" }),
+            subResourceId: encodeSimple$("subResourceId", payload$.subResourceId, {
                 explode: false,
                 charEncoding: "percent",
             }),
@@ -926,17 +938,19 @@ export class Ats extends ClientSDK {
             "/unified/ats/candidates/{id}/notes/{subResourceId}"
         )(pathParams$);
 
-        const query$ = [
-            enc$.encodeForm("fields", payload$.fields, { explode: true, charEncoding: "percent" }),
-            enc$.encodeDeepObject("proxy", payload$.proxy, { charEncoding: "percent" }),
-            enc$.encodeForm("raw", payload$.raw, { explode: true, charEncoding: "percent" }),
-        ]
-            .filter(Boolean)
-            .join("&");
+        const query$ = queryJoin$(
+            encodeFormQuery$({
+                fields: payload$.fields,
+                raw: payload$.raw,
+            }),
+            encodeDeepObjectQuery$({
+                proxy: payload$.proxy,
+            })
+        );
 
         headers$.set(
             "x-account-id",
-            enc$.encodeSimple("x-account-id", payload$["x-account-id"], {
+            encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
             })
@@ -1008,21 +1022,23 @@ export class Ats extends ClientSDK {
         const body$ = null;
 
         const pathParams$ = {
-            id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
+            id: encodeSimple$("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
         const path$ = this.templateURLComponent("/unified/ats/departments/{id}")(pathParams$);
 
-        const query$ = [
-            enc$.encodeForm("fields", payload$.fields, { explode: true, charEncoding: "percent" }),
-            enc$.encodeDeepObject("proxy", payload$.proxy, { charEncoding: "percent" }),
-            enc$.encodeForm("raw", payload$.raw, { explode: true, charEncoding: "percent" }),
-        ]
-            .filter(Boolean)
-            .join("&");
+        const query$ = queryJoin$(
+            encodeFormQuery$({
+                raw: payload$.raw,
+                fields: payload$.fields,
+            }),
+            encodeDeepObjectQuery$({
+                proxy: payload$.proxy,
+            })
+        );
 
         headers$.set(
             "x-account-id",
-            enc$.encodeSimple("x-account-id", payload$["x-account-id"], {
+            encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
             })
@@ -1094,21 +1110,23 @@ export class Ats extends ClientSDK {
         const body$ = null;
 
         const pathParams$ = {
-            id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
+            id: encodeSimple$("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
         const path$ = this.templateURLComponent("/unified/ats/interviews/{id}")(pathParams$);
 
-        const query$ = [
-            enc$.encodeForm("fields", payload$.fields, { explode: true, charEncoding: "percent" }),
-            enc$.encodeDeepObject("proxy", payload$.proxy, { charEncoding: "percent" }),
-            enc$.encodeForm("raw", payload$.raw, { explode: true, charEncoding: "percent" }),
-        ]
-            .filter(Boolean)
-            .join("&");
+        const query$ = queryJoin$(
+            encodeFormQuery$({
+                fields: payload$.fields,
+                raw: payload$.raw,
+            }),
+            encodeDeepObjectQuery$({
+                proxy: payload$.proxy,
+            })
+        );
 
         headers$.set(
             "x-account-id",
-            enc$.encodeSimple("x-account-id", payload$["x-account-id"], {
+            encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
             })
@@ -1180,21 +1198,23 @@ export class Ats extends ClientSDK {
         const body$ = null;
 
         const pathParams$ = {
-            id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
+            id: encodeSimple$("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
         const path$ = this.templateURLComponent("/unified/ats/interview_stages/{id}")(pathParams$);
 
-        const query$ = [
-            enc$.encodeForm("fields", payload$.fields, { explode: true, charEncoding: "percent" }),
-            enc$.encodeDeepObject("proxy", payload$.proxy, { charEncoding: "percent" }),
-            enc$.encodeForm("raw", payload$.raw, { explode: true, charEncoding: "percent" }),
-        ]
-            .filter(Boolean)
-            .join("&");
+        const query$ = queryJoin$(
+            encodeFormQuery$({
+                fields: payload$.fields,
+                raw: payload$.raw,
+            }),
+            encodeDeepObjectQuery$({
+                proxy: payload$.proxy,
+            })
+        );
 
         headers$.set(
             "x-account-id",
-            enc$.encodeSimple("x-account-id", payload$["x-account-id"], {
+            encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
             })
@@ -1266,22 +1286,24 @@ export class Ats extends ClientSDK {
         const body$ = null;
 
         const pathParams$ = {
-            id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
+            id: encodeSimple$("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
         const path$ = this.templateURLComponent("/unified/ats/jobs/{id}")(pathParams$);
 
-        const query$ = [
-            enc$.encodeForm("expand", payload$.expand, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("fields", payload$.fields, { explode: true, charEncoding: "percent" }),
-            enc$.encodeDeepObject("proxy", payload$.proxy, { charEncoding: "percent" }),
-            enc$.encodeForm("raw", payload$.raw, { explode: true, charEncoding: "percent" }),
-        ]
-            .filter(Boolean)
-            .join("&");
+        const query$ = queryJoin$(
+            encodeFormQuery$({
+                expand: payload$.expand,
+                fields: payload$.fields,
+                raw: payload$.raw,
+            }),
+            encodeDeepObjectQuery$({
+                proxy: payload$.proxy,
+            })
+        );
 
         headers$.set(
             "x-account-id",
-            enc$.encodeSimple("x-account-id", payload$["x-account-id"], {
+            encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
             })
@@ -1353,25 +1375,24 @@ export class Ats extends ClientSDK {
         const body$ = null;
 
         const pathParams$ = {
-            id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
+            id: encodeSimple$("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
         const path$ = this.templateURLComponent("/unified/ats/job_postings/{id}")(pathParams$);
 
-        const query$ = [
-            enc$.encodeForm("fields", payload$.fields, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("include", payload$.include, {
-                explode: true,
-                charEncoding: "percent",
+        const query$ = queryJoin$(
+            encodeFormQuery$({
+                raw: payload$.raw,
+                fields: payload$.fields,
+                include: payload$.include,
             }),
-            enc$.encodeDeepObject("proxy", payload$.proxy, { charEncoding: "percent" }),
-            enc$.encodeForm("raw", payload$.raw, { explode: true, charEncoding: "percent" }),
-        ]
-            .filter(Boolean)
-            .join("&");
+            encodeDeepObjectQuery$({
+                proxy: payload$.proxy,
+            })
+        );
 
         headers$.set(
             "x-account-id",
-            enc$.encodeSimple("x-account-id", payload$["x-account-id"], {
+            encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
             })
@@ -1443,21 +1464,23 @@ export class Ats extends ClientSDK {
         const body$ = null;
 
         const pathParams$ = {
-            id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
+            id: encodeSimple$("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
         const path$ = this.templateURLComponent("/unified/ats/lists/{id}")(pathParams$);
 
-        const query$ = [
-            enc$.encodeForm("fields", payload$.fields, { explode: true, charEncoding: "percent" }),
-            enc$.encodeDeepObject("proxy", payload$.proxy, { charEncoding: "percent" }),
-            enc$.encodeForm("raw", payload$.raw, { explode: true, charEncoding: "percent" }),
-        ]
-            .filter(Boolean)
-            .join("&");
+        const query$ = queryJoin$(
+            encodeFormQuery$({
+                fields: payload$.fields,
+                raw: payload$.raw,
+            }),
+            encodeDeepObjectQuery$({
+                proxy: payload$.proxy,
+            })
+        );
 
         headers$.set(
             "x-account-id",
-            enc$.encodeSimple("x-account-id", payload$["x-account-id"], {
+            encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
             })
@@ -1529,21 +1552,23 @@ export class Ats extends ClientSDK {
         const body$ = null;
 
         const pathParams$ = {
-            id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
+            id: encodeSimple$("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
         const path$ = this.templateURLComponent("/unified/ats/locations/{id}")(pathParams$);
 
-        const query$ = [
-            enc$.encodeForm("fields", payload$.fields, { explode: true, charEncoding: "percent" }),
-            enc$.encodeDeepObject("proxy", payload$.proxy, { charEncoding: "percent" }),
-            enc$.encodeForm("raw", payload$.raw, { explode: true, charEncoding: "percent" }),
-        ]
-            .filter(Boolean)
-            .join("&");
+        const query$ = queryJoin$(
+            encodeFormQuery$({
+                fields: payload$.fields,
+                raw: payload$.raw,
+            }),
+            encodeDeepObjectQuery$({
+                proxy: payload$.proxy,
+            })
+        );
 
         headers$.set(
             "x-account-id",
-            enc$.encodeSimple("x-account-id", payload$["x-account-id"], {
+            encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
             })
@@ -1615,21 +1640,23 @@ export class Ats extends ClientSDK {
         const body$ = null;
 
         const pathParams$ = {
-            id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
+            id: encodeSimple$("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
         const path$ = this.templateURLComponent("/unified/ats/offers/{id}")(pathParams$);
 
-        const query$ = [
-            enc$.encodeForm("fields", payload$.fields, { explode: true, charEncoding: "percent" }),
-            enc$.encodeDeepObject("proxy", payload$.proxy, { charEncoding: "percent" }),
-            enc$.encodeForm("raw", payload$.raw, { explode: true, charEncoding: "percent" }),
-        ]
-            .filter(Boolean)
-            .join("&");
+        const query$ = queryJoin$(
+            encodeFormQuery$({
+                fields: payload$.fields,
+                raw: payload$.raw,
+            }),
+            encodeDeepObjectQuery$({
+                proxy: payload$.proxy,
+            })
+        );
 
         headers$.set(
             "x-account-id",
-            enc$.encodeSimple("x-account-id", payload$["x-account-id"], {
+            encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
             })
@@ -1701,21 +1728,23 @@ export class Ats extends ClientSDK {
         const body$ = null;
 
         const pathParams$ = {
-            id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
+            id: encodeSimple$("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
         const path$ = this.templateURLComponent("/unified/ats/rejected_reasons/{id}")(pathParams$);
 
-        const query$ = [
-            enc$.encodeForm("fields", payload$.fields, { explode: true, charEncoding: "percent" }),
-            enc$.encodeDeepObject("proxy", payload$.proxy, { charEncoding: "percent" }),
-            enc$.encodeForm("raw", payload$.raw, { explode: true, charEncoding: "percent" }),
-        ]
-            .filter(Boolean)
-            .join("&");
+        const query$ = queryJoin$(
+            encodeFormQuery$({
+                fields: payload$.fields,
+                raw: payload$.raw,
+            }),
+            encodeDeepObjectQuery$({
+                proxy: payload$.proxy,
+            })
+        );
 
         headers$.set(
             "x-account-id",
-            enc$.encodeSimple("x-account-id", payload$["x-account-id"], {
+            encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
             })
@@ -1787,21 +1816,23 @@ export class Ats extends ClientSDK {
         const body$ = null;
 
         const pathParams$ = {
-            id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
+            id: encodeSimple$("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
         const path$ = this.templateURLComponent("/unified/ats/users/{id}")(pathParams$);
 
-        const query$ = [
-            enc$.encodeForm("fields", payload$.fields, { explode: true, charEncoding: "percent" }),
-            enc$.encodeDeepObject("proxy", payload$.proxy, { charEncoding: "percent" }),
-            enc$.encodeForm("raw", payload$.raw, { explode: true, charEncoding: "percent" }),
-        ]
-            .filter(Boolean)
-            .join("&");
+        const query$ = queryJoin$(
+            encodeFormQuery$({
+                raw: payload$.raw,
+                fields: payload$.fields,
+            }),
+            encodeDeepObjectQuery$({
+                proxy: payload$.proxy,
+            })
+        );
 
         headers$.set(
             "x-account-id",
-            enc$.encodeSimple("x-account-id", payload$["x-account-id"], {
+            encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
             })
@@ -1873,38 +1904,31 @@ export class Ats extends ClientSDK {
         const body$ = null;
 
         const pathParams$ = {
-            id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
+            id: encodeSimple$("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
         const path$ = this.templateURLComponent("/unified/ats/applications/{id}/documents")(
             pathParams$
         );
 
-        const query$ = [
-            enc$.encodeForm("fields", payload$.fields, { explode: true, charEncoding: "percent" }),
-            enc$.encodeDeepObject("filter", payload$.filter, { charEncoding: "percent" }),
-            enc$.encodeForm("next", payload$.next, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("page", payload$.page, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("page_size", payload$.page_size, {
-                explode: true,
-                charEncoding: "percent",
+        const query$ = queryJoin$(
+            encodeFormQuery$({
+                fields: payload$.fields,
+                page: payload$.page,
+                page_size: payload$.page_size,
+                next: payload$.next,
+                raw: payload$.raw,
+                sync_token: payload$.sync_token,
+                updated_after: payload$.updated_after,
             }),
-            enc$.encodeDeepObject("proxy", payload$.proxy, { charEncoding: "percent" }),
-            enc$.encodeForm("raw", payload$.raw, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("sync_token", payload$.sync_token, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-            enc$.encodeForm("updated_after", payload$.updated_after, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-        ]
-            .filter(Boolean)
-            .join("&");
+            encodeDeepObjectQuery$({
+                filter: payload$.filter,
+                proxy: payload$.proxy,
+            })
+        );
 
         headers$.set(
             "x-account-id",
-            enc$.encodeSimple("x-account-id", payload$["x-account-id"], {
+            encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
             })
@@ -1979,38 +2003,31 @@ export class Ats extends ClientSDK {
         const body$ = null;
 
         const pathParams$ = {
-            id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
+            id: encodeSimple$("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
         const path$ = this.templateURLComponent("/unified/ats/applications/{id}/scorecards")(
             pathParams$
         );
 
-        const query$ = [
-            enc$.encodeForm("fields", payload$.fields, { explode: true, charEncoding: "percent" }),
-            enc$.encodeDeepObject("filter", payload$.filter, { charEncoding: "percent" }),
-            enc$.encodeForm("next", payload$.next, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("page", payload$.page, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("page_size", payload$.page_size, {
-                explode: true,
-                charEncoding: "percent",
+        const query$ = queryJoin$(
+            encodeFormQuery$({
+                updated_after: payload$.updated_after,
+                fields: payload$.fields,
+                next: payload$.next,
+                page_size: payload$.page_size,
+                raw: payload$.raw,
+                sync_token: payload$.sync_token,
+                page: payload$.page,
             }),
-            enc$.encodeDeepObject("proxy", payload$.proxy, { charEncoding: "percent" }),
-            enc$.encodeForm("raw", payload$.raw, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("sync_token", payload$.sync_token, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-            enc$.encodeForm("updated_after", payload$.updated_after, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-        ]
-            .filter(Boolean)
-            .join("&");
+            encodeDeepObjectQuery$({
+                proxy: payload$.proxy,
+                filter: payload$.filter,
+            })
+        );
 
         headers$.set(
             "x-account-id",
-            enc$.encodeSimple("x-account-id", payload$["x-account-id"], {
+            encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
             })
@@ -2085,34 +2102,27 @@ export class Ats extends ClientSDK {
 
         const path$ = this.templateURLComponent("/unified/ats/applications")();
 
-        const query$ = [
-            enc$.encodeForm("expand", payload$.expand, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("fields", payload$.fields, { explode: true, charEncoding: "percent" }),
-            enc$.encodeDeepObject("filter", payload$.filter, { charEncoding: "percent" }),
-            enc$.encodeForm("job_id", payload$.job_id, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("next", payload$.next, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("page", payload$.page, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("page_size", payload$.page_size, {
-                explode: true,
-                charEncoding: "percent",
+        const query$ = queryJoin$(
+            encodeFormQuery$({
+                raw: payload$.raw,
+                sync_token: payload$.sync_token,
+                fields: payload$.fields,
+                page: payload$.page,
+                page_size: payload$.page_size,
+                expand: payload$.expand,
+                job_id: payload$.job_id,
+                next: payload$.next,
+                updated_after: payload$.updated_after,
             }),
-            enc$.encodeDeepObject("proxy", payload$.proxy, { charEncoding: "percent" }),
-            enc$.encodeForm("raw", payload$.raw, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("sync_token", payload$.sync_token, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-            enc$.encodeForm("updated_after", payload$.updated_after, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-        ]
-            .filter(Boolean)
-            .join("&");
+            encodeDeepObjectQuery$({
+                filter: payload$.filter,
+                proxy: payload$.proxy,
+            })
+        );
 
         headers$.set(
             "x-account-id",
-            enc$.encodeSimple("x-account-id", payload$["x-account-id"], {
+            encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
             })
@@ -2184,38 +2194,31 @@ export class Ats extends ClientSDK {
         const body$ = null;
 
         const pathParams$ = {
-            id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
+            id: encodeSimple$("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
         const path$ = this.templateURLComponent("/unified/ats/applications/{id}/offers")(
             pathParams$
         );
 
-        const query$ = [
-            enc$.encodeForm("fields", payload$.fields, { explode: true, charEncoding: "percent" }),
-            enc$.encodeDeepObject("filter", payload$.filter, { charEncoding: "percent" }),
-            enc$.encodeForm("next", payload$.next, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("page", payload$.page, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("page_size", payload$.page_size, {
-                explode: true,
-                charEncoding: "percent",
+        const query$ = queryJoin$(
+            encodeFormQuery$({
+                page: payload$.page,
+                page_size: payload$.page_size,
+                raw: payload$.raw,
+                fields: payload$.fields,
+                next: payload$.next,
+                sync_token: payload$.sync_token,
+                updated_after: payload$.updated_after,
             }),
-            enc$.encodeDeepObject("proxy", payload$.proxy, { charEncoding: "percent" }),
-            enc$.encodeForm("raw", payload$.raw, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("sync_token", payload$.sync_token, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-            enc$.encodeForm("updated_after", payload$.updated_after, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-        ]
-            .filter(Boolean)
-            .join("&");
+            encodeDeepObjectQuery$({
+                proxy: payload$.proxy,
+                filter: payload$.filter,
+            })
+        );
 
         headers$.set(
             "x-account-id",
-            enc$.encodeSimple("x-account-id", payload$["x-account-id"], {
+            encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
             })
@@ -2287,36 +2290,29 @@ export class Ats extends ClientSDK {
         const body$ = null;
 
         const pathParams$ = {
-            id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
+            id: encodeSimple$("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
         const path$ = this.templateURLComponent("/unified/ats/candidates/{id}/notes")(pathParams$);
 
-        const query$ = [
-            enc$.encodeForm("fields", payload$.fields, { explode: true, charEncoding: "percent" }),
-            enc$.encodeDeepObject("filter", payload$.filter, { charEncoding: "percent" }),
-            enc$.encodeForm("next", payload$.next, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("page", payload$.page, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("page_size", payload$.page_size, {
-                explode: true,
-                charEncoding: "percent",
+        const query$ = queryJoin$(
+            encodeFormQuery$({
+                raw: payload$.raw,
+                sync_token: payload$.sync_token,
+                updated_after: payload$.updated_after,
+                fields: payload$.fields,
+                next: payload$.next,
+                page: payload$.page,
+                page_size: payload$.page_size,
             }),
-            enc$.encodeDeepObject("proxy", payload$.proxy, { charEncoding: "percent" }),
-            enc$.encodeForm("raw", payload$.raw, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("sync_token", payload$.sync_token, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-            enc$.encodeForm("updated_after", payload$.updated_after, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-        ]
-            .filter(Boolean)
-            .join("&");
+            encodeDeepObjectQuery$({
+                filter: payload$.filter,
+                proxy: payload$.proxy,
+            })
+        );
 
         headers$.set(
             "x-account-id",
-            enc$.encodeSimple("x-account-id", payload$["x-account-id"], {
+            encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
             })
@@ -2389,32 +2385,25 @@ export class Ats extends ClientSDK {
 
         const path$ = this.templateURLComponent("/unified/ats/candidates")();
 
-        const query$ = [
-            enc$.encodeForm("fields", payload$.fields, { explode: true, charEncoding: "percent" }),
-            enc$.encodeDeepObject("filter", payload$.filter, { charEncoding: "percent" }),
-            enc$.encodeForm("next", payload$.next, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("page", payload$.page, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("page_size", payload$.page_size, {
-                explode: true,
-                charEncoding: "percent",
+        const query$ = queryJoin$(
+            encodeFormQuery$({
+                page: payload$.page,
+                page_size: payload$.page_size,
+                updated_after: payload$.updated_after,
+                fields: payload$.fields,
+                next: payload$.next,
+                raw: payload$.raw,
+                sync_token: payload$.sync_token,
             }),
-            enc$.encodeDeepObject("proxy", payload$.proxy, { charEncoding: "percent" }),
-            enc$.encodeForm("raw", payload$.raw, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("sync_token", payload$.sync_token, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-            enc$.encodeForm("updated_after", payload$.updated_after, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-        ]
-            .filter(Boolean)
-            .join("&");
+            encodeDeepObjectQuery$({
+                proxy: payload$.proxy,
+                filter: payload$.filter,
+            })
+        );
 
         headers$.set(
             "x-account-id",
-            enc$.encodeSimple("x-account-id", payload$["x-account-id"], {
+            encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
             })
@@ -2487,32 +2476,25 @@ export class Ats extends ClientSDK {
 
         const path$ = this.templateURLComponent("/unified/ats/departments")();
 
-        const query$ = [
-            enc$.encodeForm("fields", payload$.fields, { explode: true, charEncoding: "percent" }),
-            enc$.encodeDeepObject("filter", payload$.filter, { charEncoding: "percent" }),
-            enc$.encodeForm("next", payload$.next, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("page", payload$.page, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("page_size", payload$.page_size, {
-                explode: true,
-                charEncoding: "percent",
+        const query$ = queryJoin$(
+            encodeFormQuery$({
+                next: payload$.next,
+                page_size: payload$.page_size,
+                updated_after: payload$.updated_after,
+                fields: payload$.fields,
+                sync_token: payload$.sync_token,
+                page: payload$.page,
+                raw: payload$.raw,
             }),
-            enc$.encodeDeepObject("proxy", payload$.proxy, { charEncoding: "percent" }),
-            enc$.encodeForm("raw", payload$.raw, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("sync_token", payload$.sync_token, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-            enc$.encodeForm("updated_after", payload$.updated_after, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-        ]
-            .filter(Boolean)
-            .join("&");
+            encodeDeepObjectQuery$({
+                proxy: payload$.proxy,
+                filter: payload$.filter,
+            })
+        );
 
         headers$.set(
             "x-account-id",
-            enc$.encodeSimple("x-account-id", payload$["x-account-id"], {
+            encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
             })
@@ -2585,32 +2567,25 @@ export class Ats extends ClientSDK {
 
         const path$ = this.templateURLComponent("/unified/ats/interview_stages")();
 
-        const query$ = [
-            enc$.encodeForm("fields", payload$.fields, { explode: true, charEncoding: "percent" }),
-            enc$.encodeDeepObject("filter", payload$.filter, { charEncoding: "percent" }),
-            enc$.encodeForm("next", payload$.next, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("page", payload$.page, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("page_size", payload$.page_size, {
-                explode: true,
-                charEncoding: "percent",
+        const query$ = queryJoin$(
+            encodeFormQuery$({
+                fields: payload$.fields,
+                next: payload$.next,
+                raw: payload$.raw,
+                sync_token: payload$.sync_token,
+                updated_after: payload$.updated_after,
+                page: payload$.page,
+                page_size: payload$.page_size,
             }),
-            enc$.encodeDeepObject("proxy", payload$.proxy, { charEncoding: "percent" }),
-            enc$.encodeForm("raw", payload$.raw, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("sync_token", payload$.sync_token, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-            enc$.encodeForm("updated_after", payload$.updated_after, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-        ]
-            .filter(Boolean)
-            .join("&");
+            encodeDeepObjectQuery$({
+                filter: payload$.filter,
+                proxy: payload$.proxy,
+            })
+        );
 
         headers$.set(
             "x-account-id",
-            enc$.encodeSimple("x-account-id", payload$["x-account-id"], {
+            encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
             })
@@ -2685,32 +2660,25 @@ export class Ats extends ClientSDK {
 
         const path$ = this.templateURLComponent("/unified/ats/interviews")();
 
-        const query$ = [
-            enc$.encodeForm("fields", payload$.fields, { explode: true, charEncoding: "percent" }),
-            enc$.encodeDeepObject("filter", payload$.filter, { charEncoding: "percent" }),
-            enc$.encodeForm("next", payload$.next, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("page", payload$.page, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("page_size", payload$.page_size, {
-                explode: true,
-                charEncoding: "percent",
+        const query$ = queryJoin$(
+            encodeFormQuery$({
+                fields: payload$.fields,
+                page_size: payload$.page_size,
+                raw: payload$.raw,
+                sync_token: payload$.sync_token,
+                updated_after: payload$.updated_after,
+                next: payload$.next,
+                page: payload$.page,
             }),
-            enc$.encodeDeepObject("proxy", payload$.proxy, { charEncoding: "percent" }),
-            enc$.encodeForm("raw", payload$.raw, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("sync_token", payload$.sync_token, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-            enc$.encodeForm("updated_after", payload$.updated_after, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-        ]
-            .filter(Boolean)
-            .join("&");
+            encodeDeepObjectQuery$({
+                filter: payload$.filter,
+                proxy: payload$.proxy,
+            })
+        );
 
         headers$.set(
             "x-account-id",
-            enc$.encodeSimple("x-account-id", payload$["x-account-id"], {
+            encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
             })
@@ -2783,36 +2751,26 @@ export class Ats extends ClientSDK {
 
         const path$ = this.templateURLComponent("/unified/ats/job_postings")();
 
-        const query$ = [
-            enc$.encodeForm("fields", payload$.fields, { explode: true, charEncoding: "percent" }),
-            enc$.encodeDeepObject("filter", payload$.filter, { charEncoding: "percent" }),
-            enc$.encodeForm("include", payload$.include, {
-                explode: true,
-                charEncoding: "percent",
+        const query$ = queryJoin$(
+            encodeFormQuery$({
+                page_size: payload$.page_size,
+                raw: payload$.raw,
+                updated_after: payload$.updated_after,
+                next: payload$.next,
+                page: payload$.page,
+                fields: payload$.fields,
+                include: payload$.include,
+                sync_token: payload$.sync_token,
             }),
-            enc$.encodeForm("next", payload$.next, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("page", payload$.page, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("page_size", payload$.page_size, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-            enc$.encodeDeepObject("proxy", payload$.proxy, { charEncoding: "percent" }),
-            enc$.encodeForm("raw", payload$.raw, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("sync_token", payload$.sync_token, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-            enc$.encodeForm("updated_after", payload$.updated_after, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-        ]
-            .filter(Boolean)
-            .join("&");
+            encodeDeepObjectQuery$({
+                proxy: payload$.proxy,
+                filter: payload$.filter,
+            })
+        );
 
         headers$.set(
             "x-account-id",
-            enc$.encodeSimple("x-account-id", payload$["x-account-id"], {
+            encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
             })
@@ -2885,33 +2843,26 @@ export class Ats extends ClientSDK {
 
         const path$ = this.templateURLComponent("/unified/ats/jobs")();
 
-        const query$ = [
-            enc$.encodeForm("expand", payload$.expand, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("fields", payload$.fields, { explode: true, charEncoding: "percent" }),
-            enc$.encodeDeepObject("filter", payload$.filter, { charEncoding: "percent" }),
-            enc$.encodeForm("next", payload$.next, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("page", payload$.page, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("page_size", payload$.page_size, {
-                explode: true,
-                charEncoding: "percent",
+        const query$ = queryJoin$(
+            encodeFormQuery$({
+                fields: payload$.fields,
+                sync_token: payload$.sync_token,
+                expand: payload$.expand,
+                next: payload$.next,
+                page: payload$.page,
+                page_size: payload$.page_size,
+                raw: payload$.raw,
+                updated_after: payload$.updated_after,
             }),
-            enc$.encodeDeepObject("proxy", payload$.proxy, { charEncoding: "percent" }),
-            enc$.encodeForm("raw", payload$.raw, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("sync_token", payload$.sync_token, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-            enc$.encodeForm("updated_after", payload$.updated_after, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-        ]
-            .filter(Boolean)
-            .join("&");
+            encodeDeepObjectQuery$({
+                filter: payload$.filter,
+                proxy: payload$.proxy,
+            })
+        );
 
         headers$.set(
             "x-account-id",
-            enc$.encodeSimple("x-account-id", payload$["x-account-id"], {
+            encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
             })
@@ -2984,28 +2935,24 @@ export class Ats extends ClientSDK {
 
         const path$ = this.templateURLComponent("/unified/ats/lists")();
 
-        const query$ = [
-            enc$.encodeForm("fields", payload$.fields, { explode: true, charEncoding: "percent" }),
-            enc$.encodeDeepObject("filter", payload$.filter, { charEncoding: "percent" }),
-            enc$.encodeForm("next", payload$.next, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("page", payload$.page, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("page_size", payload$.page_size, {
-                explode: true,
-                charEncoding: "percent",
+        const query$ = queryJoin$(
+            encodeFormQuery$({
+                page_size: payload$.page_size,
+                raw: payload$.raw,
+                updated_after: payload$.updated_after,
+                fields: payload$.fields,
+                next: payload$.next,
+                page: payload$.page,
             }),
-            enc$.encodeDeepObject("proxy", payload$.proxy, { charEncoding: "percent" }),
-            enc$.encodeForm("raw", payload$.raw, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("updated_after", payload$.updated_after, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-        ]
-            .filter(Boolean)
-            .join("&");
+            encodeDeepObjectQuery$({
+                proxy: payload$.proxy,
+                filter: payload$.filter,
+            })
+        );
 
         headers$.set(
             "x-account-id",
-            enc$.encodeSimple("x-account-id", payload$["x-account-id"], {
+            encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
             })
@@ -3078,32 +3025,25 @@ export class Ats extends ClientSDK {
 
         const path$ = this.templateURLComponent("/unified/ats/locations")();
 
-        const query$ = [
-            enc$.encodeForm("fields", payload$.fields, { explode: true, charEncoding: "percent" }),
-            enc$.encodeDeepObject("filter", payload$.filter, { charEncoding: "percent" }),
-            enc$.encodeForm("next", payload$.next, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("page", payload$.page, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("page_size", payload$.page_size, {
-                explode: true,
-                charEncoding: "percent",
+        const query$ = queryJoin$(
+            encodeFormQuery$({
+                next: payload$.next,
+                page: payload$.page,
+                fields: payload$.fields,
+                raw: payload$.raw,
+                sync_token: payload$.sync_token,
+                updated_after: payload$.updated_after,
+                page_size: payload$.page_size,
             }),
-            enc$.encodeDeepObject("proxy", payload$.proxy, { charEncoding: "percent" }),
-            enc$.encodeForm("raw", payload$.raw, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("sync_token", payload$.sync_token, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-            enc$.encodeForm("updated_after", payload$.updated_after, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-        ]
-            .filter(Boolean)
-            .join("&");
+            encodeDeepObjectQuery$({
+                filter: payload$.filter,
+                proxy: payload$.proxy,
+            })
+        );
 
         headers$.set(
             "x-account-id",
-            enc$.encodeSimple("x-account-id", payload$["x-account-id"], {
+            encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
             })
@@ -3176,32 +3116,25 @@ export class Ats extends ClientSDK {
 
         const path$ = this.templateURLComponent("/unified/ats/offers")();
 
-        const query$ = [
-            enc$.encodeForm("fields", payload$.fields, { explode: true, charEncoding: "percent" }),
-            enc$.encodeDeepObject("filter", payload$.filter, { charEncoding: "percent" }),
-            enc$.encodeForm("next", payload$.next, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("page", payload$.page, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("page_size", payload$.page_size, {
-                explode: true,
-                charEncoding: "percent",
+        const query$ = queryJoin$(
+            encodeFormQuery$({
+                next: payload$.next,
+                page: payload$.page,
+                raw: payload$.raw,
+                sync_token: payload$.sync_token,
+                page_size: payload$.page_size,
+                updated_after: payload$.updated_after,
+                fields: payload$.fields,
             }),
-            enc$.encodeDeepObject("proxy", payload$.proxy, { charEncoding: "percent" }),
-            enc$.encodeForm("raw", payload$.raw, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("sync_token", payload$.sync_token, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-            enc$.encodeForm("updated_after", payload$.updated_after, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-        ]
-            .filter(Boolean)
-            .join("&");
+            encodeDeepObjectQuery$({
+                proxy: payload$.proxy,
+                filter: payload$.filter,
+            })
+        );
 
         headers$.set(
             "x-account-id",
-            enc$.encodeSimple("x-account-id", payload$["x-account-id"], {
+            encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
             })
@@ -3274,32 +3207,25 @@ export class Ats extends ClientSDK {
 
         const path$ = this.templateURLComponent("/unified/ats/rejected_reasons")();
 
-        const query$ = [
-            enc$.encodeForm("fields", payload$.fields, { explode: true, charEncoding: "percent" }),
-            enc$.encodeDeepObject("filter", payload$.filter, { charEncoding: "percent" }),
-            enc$.encodeForm("next", payload$.next, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("page", payload$.page, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("page_size", payload$.page_size, {
-                explode: true,
-                charEncoding: "percent",
+        const query$ = queryJoin$(
+            encodeFormQuery$({
+                fields: payload$.fields,
+                page_size: payload$.page_size,
+                next: payload$.next,
+                page: payload$.page,
+                raw: payload$.raw,
+                sync_token: payload$.sync_token,
+                updated_after: payload$.updated_after,
             }),
-            enc$.encodeDeepObject("proxy", payload$.proxy, { charEncoding: "percent" }),
-            enc$.encodeForm("raw", payload$.raw, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("sync_token", payload$.sync_token, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-            enc$.encodeForm("updated_after", payload$.updated_after, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-        ]
-            .filter(Boolean)
-            .join("&");
+            encodeDeepObjectQuery$({
+                filter: payload$.filter,
+                proxy: payload$.proxy,
+            })
+        );
 
         headers$.set(
             "x-account-id",
-            enc$.encodeSimple("x-account-id", payload$["x-account-id"], {
+            encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
             })
@@ -3374,32 +3300,25 @@ export class Ats extends ClientSDK {
 
         const path$ = this.templateURLComponent("/unified/ats/users")();
 
-        const query$ = [
-            enc$.encodeForm("fields", payload$.fields, { explode: true, charEncoding: "percent" }),
-            enc$.encodeDeepObject("filter", payload$.filter, { charEncoding: "percent" }),
-            enc$.encodeForm("next", payload$.next, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("page", payload$.page, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("page_size", payload$.page_size, {
-                explode: true,
-                charEncoding: "percent",
+        const query$ = queryJoin$(
+            encodeDeepObjectQuery$({
+                proxy: payload$.proxy,
+                filter: payload$.filter,
             }),
-            enc$.encodeDeepObject("proxy", payload$.proxy, { charEncoding: "percent" }),
-            enc$.encodeForm("raw", payload$.raw, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("sync_token", payload$.sync_token, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-            enc$.encodeForm("updated_after", payload$.updated_after, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-        ]
-            .filter(Boolean)
-            .join("&");
+            encodeFormQuery$({
+                raw: payload$.raw,
+                updated_after: payload$.updated_after,
+                page: payload$.page,
+                page_size: payload$.page_size,
+                sync_token: payload$.sync_token,
+                fields: payload$.fields,
+                next: payload$.next,
+            })
+        );
 
         headers$.set(
             "x-account-id",
-            enc$.encodeSimple("x-account-id", payload$["x-account-id"], {
+            encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
             })
@@ -3469,12 +3388,12 @@ export class Ats extends ClientSDK {
             (value$) => operations.AtsUpdateApplicationRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
-        const body$ = enc$.encodeJSON("body", payload$.AtsUpdateApplicationRequestDto, {
+        const body$ = encodeJSON$("body", payload$.AtsUpdateApplicationRequestDto, {
             explode: true,
         });
 
         const pathParams$ = {
-            id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
+            id: encodeSimple$("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
         const path$ = this.templateURLComponent("/unified/ats/applications/{id}")(pathParams$);
 
@@ -3482,7 +3401,7 @@ export class Ats extends ClientSDK {
 
         headers$.set(
             "x-account-id",
-            enc$.encodeSimple("x-account-id", payload$["x-account-id"], {
+            encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
             })
@@ -3552,12 +3471,10 @@ export class Ats extends ClientSDK {
             (value$) => operations.AtsUpdateCandidateRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
-        const body$ = enc$.encodeJSON("body", payload$.AtsUpdateCandidateRequestDto, {
-            explode: true,
-        });
+        const body$ = encodeJSON$("body", payload$.AtsUpdateCandidateRequestDto, { explode: true });
 
         const pathParams$ = {
-            id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
+            id: encodeSimple$("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
         const path$ = this.templateURLComponent("/unified/ats/candidates/{id}")(pathParams$);
 
@@ -3565,7 +3482,7 @@ export class Ats extends ClientSDK {
 
         headers$.set(
             "x-account-id",
-            enc$.encodeSimple("x-account-id", payload$["x-account-id"], {
+            encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
             })
@@ -3636,10 +3553,10 @@ export class Ats extends ClientSDK {
                 operations.AtsUploadApplicationDocumentRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
-        const body$ = enc$.encodeJSON("body", payload$.UnifiedUploadRequestDto, { explode: true });
+        const body$ = encodeJSON$("body", payload$.UnifiedUploadRequestDto, { explode: true });
 
         const pathParams$ = {
-            id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
+            id: encodeSimple$("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
         const path$ = this.templateURLComponent("/unified/ats/applications/{id}/documents/upload")(
             pathParams$
@@ -3649,7 +3566,7 @@ export class Ats extends ClientSDK {
 
         headers$.set(
             "x-account-id",
-            enc$.encodeSimple("x-account-id", payload$["x-account-id"], {
+            encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
             })

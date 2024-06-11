@@ -8822,6 +8822,10 @@ export type HrisCreateEmployeeRequestDto = {
      */
     homeLocation?: HrisCreateEmployeeRequestDtoHomeLocation | null | undefined;
     /**
+     * The employee job id
+     */
+    jobId?: string | null | undefined;
+    /**
      * The employee job title
      */
     jobTitle?: string | null | undefined;
@@ -10553,6 +10557,7 @@ export namespace HrisCreateEmployeeRequestDto$ {
             home_location: z
                 .nullable(z.lazy(() => HrisCreateEmployeeRequestDtoHomeLocation$.inboundSchema))
                 .optional(),
+            job_id: z.nullable(z.string()).optional(),
             job_title: z.nullable(z.string()).optional(),
             last_name: z.nullable(z.string()).optional(),
             manager_id: z.nullable(z.string()).optional(),
@@ -10612,6 +10617,7 @@ export namespace HrisCreateEmployeeRequestDto$ {
                 first_name: "firstName",
                 hire_date: "hireDate",
                 home_location: "homeLocation",
+                job_id: "jobId",
                 job_title: "jobTitle",
                 last_name: "lastName",
                 manager_id: "managerId",
@@ -10654,6 +10660,7 @@ export namespace HrisCreateEmployeeRequestDto$ {
         gender?: HrisCreateEmployeeRequestDtoGender$.Outbound | null | undefined;
         hire_date?: string | null | undefined;
         home_location?: HrisCreateEmployeeRequestDtoHomeLocation$.Outbound | null | undefined;
+        job_id?: string | null | undefined;
         job_title?: string | null | undefined;
         last_name?: string | null | undefined;
         manager_id?: string | null | undefined;
@@ -10714,6 +10721,7 @@ export namespace HrisCreateEmployeeRequestDto$ {
             homeLocation: z
                 .nullable(z.lazy(() => HrisCreateEmployeeRequestDtoHomeLocation$.outboundSchema))
                 .optional(),
+            jobId: z.nullable(z.string()).optional(),
             jobTitle: z.nullable(z.string()).optional(),
             lastName: z.nullable(z.string()).optional(),
             managerId: z.nullable(z.string()).optional(),
@@ -10752,6 +10760,7 @@ export namespace HrisCreateEmployeeRequestDto$ {
                 firstName: "first_name",
                 hireDate: "hire_date",
                 homeLocation: "home_location",
+                jobId: "job_id",
                 jobTitle: "job_title",
                 lastName: "last_name",
                 managerId: "manager_id",

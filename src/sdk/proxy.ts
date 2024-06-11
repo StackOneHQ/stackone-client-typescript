@@ -4,7 +4,7 @@
 
 import { SDKHooks } from "../hooks";
 import { SDK_METADATA, SDKOptions, serverURLFromOptions } from "../lib/config";
-import * as enc$ from "../lib/encodings";
+import { encodeJSON as encodeJSON$, encodeSimple as encodeSimple$ } from "../lib/encodings";
 import { HTTPClient } from "../lib/http";
 import * as schemas$ from "../lib/schemas";
 import { ClientSDK, RequestOptions } from "../lib/sdks";
@@ -55,7 +55,7 @@ export class Proxy extends ClientSDK {
             (value$) => operations.StackoneProxyRequestRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
-        const body$ = enc$.encodeJSON("body", payload$.ProxyRequestBody, { explode: true });
+        const body$ = encodeJSON$("body", payload$.ProxyRequestBody, { explode: true });
 
         const path$ = this.templateURLComponent("/unified/proxy")();
 
@@ -63,7 +63,7 @@ export class Proxy extends ClientSDK {
 
         headers$.set(
             "x-account-id",
-            enc$.encodeSimple("x-account-id", payload$["x-account-id"], {
+            encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
             })
