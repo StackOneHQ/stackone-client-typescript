@@ -13,6 +13,7 @@ import { ConnectSessions } from "./connectsessions";
 import { Crm } from "./crm";
 import { Hris } from "./hris";
 import { Iam } from "./iam";
+import { Lms } from "./lms";
 import { Marketing } from "./marketing";
 import { Proxy } from "./proxy";
 
@@ -76,6 +77,11 @@ export class StackOne extends ClientSDK {
     private _iam?: Iam;
     get iam(): Iam {
         return (this._iam ??= new Iam(this.options$));
+    }
+
+    private _lms?: Lms;
+    get lms(): Lms {
+        return (this._lms ??= new Lms(this.options$));
     }
 
     private _marketing?: Marketing;

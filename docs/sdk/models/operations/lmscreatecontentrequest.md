@@ -1,0 +1,9 @@
+# LmsCreateContentRequest
+
+
+## Fields
+
+| Field                                                                                         | Type                                                                                          | Required                                                                                      | Description                                                                                   |
+| --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| `lmsCreateContentRequestDto`                                                                  | [shared.LmsCreateContentRequestDto](../../../sdk/models/shared/lmscreatecontentrequestdto.md) | :heavy_check_mark:                                                                            | N/A                                                                                           |
+| `xAccountId`                                                                                  | *string*                                                                                      | :heavy_check_mark:                                                                            | The account identifier                                                                        |

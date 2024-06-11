@@ -5,7 +5,7 @@
 import { remap as remap$ } from "../../../lib/primitives";
 import * as z from "zod";
 
-export enum Categories {
+export enum ConnectSessionCategories {
     Ats = "ats",
     Hris = "hris",
     HrisLegacy = "hris-legacy",
@@ -18,7 +18,7 @@ export enum Categories {
 
 export type ConnectSession = {
     accountId?: string | null | undefined;
-    categories?: Array<Categories> | null | undefined;
+    categories?: Array<ConnectSessionCategories> | null | undefined;
     createdAt: Date;
     id: number;
     label?: string | null | undefined;
@@ -31,8 +31,8 @@ export type ConnectSession = {
 };
 
 /** @internal */
-export namespace Categories$ {
-    export const inboundSchema = z.nativeEnum(Categories);
+export namespace ConnectSessionCategories$ {
+    export const inboundSchema = z.nativeEnum(ConnectSessionCategories);
     export const outboundSchema = inboundSchema;
 }
 
@@ -41,7 +41,7 @@ export namespace ConnectSession$ {
     export const inboundSchema: z.ZodType<ConnectSession, z.ZodTypeDef, unknown> = z
         .object({
             account_id: z.nullable(z.string()).optional(),
-            categories: z.nullable(z.array(Categories$.inboundSchema)).optional(),
+            categories: z.nullable(z.array(ConnectSessionCategories$.inboundSchema)).optional(),
             created_at: z
                 .string()
                 .datetime({ offset: true })
@@ -84,7 +84,7 @@ export namespace ConnectSession$ {
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ConnectSession> = z
         .object({
             accountId: z.nullable(z.string()).optional(),
-            categories: z.nullable(z.array(Categories$.outboundSchema)).optional(),
+            categories: z.nullable(z.array(ConnectSessionCategories$.outboundSchema)).optional(),
             createdAt: z.date().transform((v) => v.toISOString()),
             id: z.number(),
             label: z.nullable(z.string()).optional(),

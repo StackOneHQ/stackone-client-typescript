@@ -173,6 +173,13 @@ run();
 * [listRoles](docs/sdks/iam/README.md#listroles) - List Roles
 * [listUsers](docs/sdks/iam/README.md#listusers) - List Users
 
+### [lms](docs/sdks/lms/README.md)
+
+* [createCompletion](docs/sdks/lms/README.md#createcompletion) - Create Completion
+* [createContent](docs/sdks/lms/README.md#createcontent) - Create Content
+* [getCompletion](docs/sdks/lms/README.md#getcompletion) - Get Completion
+* [getContent](docs/sdks/lms/README.md#getcontent) - Get Content
+
 ### [marketing](docs/sdks/marketing/README.md)
 
 * [createEmailTemplate](docs/sdks/marketing/README.md#createemailtemplate) - Create email template

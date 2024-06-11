@@ -1,0 +1,9 @@
+# ContentLanguageEnum
+
+
+## Fields
+
+| Field                                                                                     | Type                                                                                      | Required                                                                                  | Description                                                                               | Example                                                                                   |
+| ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| `sourceValue`                                                                             | *shared.ContentLanguageEnumSourceValue*                                                   | :heavy_minus_sign:                                                                        | N/A                                                                                       |                                                                                           |
+| `value`                                                                                   | [shared.ContentLanguageEnumValue](../../../sdk/models/shared/contentlanguageenumvalue.md) | :heavy_minus_sign:                                                                        | The ISO639-1 Code of the language                                                         | en                                                                                        |

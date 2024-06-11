@@ -4,7 +4,13 @@
 
 import { SDKHooks } from "../hooks";
 import { SDK_METADATA, SDKOptions, serverURLFromOptions } from "../lib/config";
-import * as enc$ from "../lib/encodings";
+import {
+    encodeDeepObjectQuery as encodeDeepObjectQuery$,
+    encodeFormQuery as encodeFormQuery$,
+    encodeJSON as encodeJSON$,
+    encodeSimple as encodeSimple$,
+    queryJoin as queryJoin$,
+} from "../lib/encodings";
 import { HTTPClient } from "../lib/http";
 import * as schemas$ from "../lib/schemas";
 import { ClientSDK, RequestOptions } from "../lib/sdks";
@@ -57,9 +63,7 @@ export class Hris extends ClientSDK {
             (value$) => operations.HrisCreateEmployeeRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
-        const body$ = enc$.encodeJSON("body", payload$.HrisCreateEmployeeRequestDto, {
-            explode: true,
-        });
+        const body$ = encodeJSON$("body", payload$.HrisCreateEmployeeRequestDto, { explode: true });
 
         const path$ = this.templateURLComponent("/unified/hris/employees")();
 
@@ -67,7 +71,7 @@ export class Hris extends ClientSDK {
 
         headers$.set(
             "x-account-id",
-            enc$.encodeSimple("x-account-id", payload$["x-account-id"], {
+            encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
             })
@@ -138,12 +142,10 @@ export class Hris extends ClientSDK {
                 operations.HrisCreateEmployeeTimeOffRequestRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
-        const body$ = enc$.encodeJSON("body", payload$.HrisCreateTimeOffRequestDto, {
-            explode: true,
-        });
+        const body$ = encodeJSON$("body", payload$.HrisCreateTimeOffRequestDto, { explode: true });
 
         const pathParams$ = {
-            id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
+            id: encodeSimple$("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
         const path$ = this.templateURLComponent("/unified/hris/employees/{id}/time_off")(
             pathParams$
@@ -153,7 +155,7 @@ export class Hris extends ClientSDK {
 
         headers$.set(
             "x-account-id",
-            enc$.encodeSimple("x-account-id", payload$["x-account-id"], {
+            encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
             })
@@ -228,12 +230,12 @@ export class Hris extends ClientSDK {
                 ),
             "Input validation failed"
         );
-        const body$ = enc$.encodeJSON("body", payload$.HrisCreateWorkEligibilityRequestDto, {
+        const body$ = encodeJSON$("body", payload$.HrisCreateWorkEligibilityRequestDto, {
             explode: true,
         });
 
         const pathParams$ = {
-            id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
+            id: encodeSimple$("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
         const path$ = this.templateURLComponent("/unified/hris/employees/{id}/work_eligibility")(
             pathParams$
@@ -243,7 +245,7 @@ export class Hris extends ClientSDK {
 
         headers$.set(
             "x-account-id",
-            enc$.encodeSimple("x-account-id", payload$["x-account-id"], {
+            encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
             })
@@ -316,9 +318,7 @@ export class Hris extends ClientSDK {
             (value$) => operations.HrisCreateTimeOffRequestRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
-        const body$ = enc$.encodeJSON("body", payload$.HrisCreateTimeOffRequestDto, {
-            explode: true,
-        });
+        const body$ = encodeJSON$("body", payload$.HrisCreateTimeOffRequestDto, { explode: true });
 
         const path$ = this.templateURLComponent("/unified/hris/time_off")();
 
@@ -326,7 +326,7 @@ export class Hris extends ClientSDK {
 
         headers$.set(
             "x-account-id",
-            enc$.encodeSimple("x-account-id", payload$["x-account-id"], {
+            encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
             })
@@ -399,8 +399,8 @@ export class Hris extends ClientSDK {
         const body$ = null;
 
         const pathParams$ = {
-            id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
-            subResourceId: enc$.encodeSimple("subResourceId", payload$.subResourceId, {
+            id: encodeSimple$("id", payload$.id, { explode: false, charEncoding: "percent" }),
+            subResourceId: encodeSimple$("subResourceId", payload$.subResourceId, {
                 explode: false,
                 charEncoding: "percent",
             }),
@@ -409,15 +409,13 @@ export class Hris extends ClientSDK {
             "/unified/hris/employees/{id}/documents/{subResourceId}/download"
         )(pathParams$);
 
-        const query$ = [
-            enc$.encodeForm("format", payload$.format, { explode: true, charEncoding: "percent" }),
-        ]
-            .filter(Boolean)
-            .join("&");
+        const query$ = encodeFormQuery$({
+            format: payload$.format,
+        });
 
         headers$.set(
             "x-account-id",
-            enc$.encodeSimple("x-account-id", payload$["x-account-id"], {
+            encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
             })
@@ -489,21 +487,23 @@ export class Hris extends ClientSDK {
         const body$ = null;
 
         const pathParams$ = {
-            id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
+            id: encodeSimple$("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
         const path$ = this.templateURLComponent("/unified/hris/benefits/{id}")(pathParams$);
 
-        const query$ = [
-            enc$.encodeForm("fields", payload$.fields, { explode: true, charEncoding: "percent" }),
-            enc$.encodeDeepObject("proxy", payload$.proxy, { charEncoding: "percent" }),
-            enc$.encodeForm("raw", payload$.raw, { explode: true, charEncoding: "percent" }),
-        ]
-            .filter(Boolean)
-            .join("&");
+        const query$ = queryJoin$(
+            encodeFormQuery$({
+                fields: payload$.fields,
+                raw: payload$.raw,
+            }),
+            encodeDeepObjectQuery$({
+                proxy: payload$.proxy,
+            })
+        );
 
         headers$.set(
             "x-account-id",
-            enc$.encodeSimple("x-account-id", payload$["x-account-id"], {
+            encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
             })
@@ -575,21 +575,23 @@ export class Hris extends ClientSDK {
         const body$ = null;
 
         const pathParams$ = {
-            id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
+            id: encodeSimple$("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
         const path$ = this.templateURLComponent("/unified/hris/companies/{id}")(pathParams$);
 
-        const query$ = [
-            enc$.encodeForm("fields", payload$.fields, { explode: true, charEncoding: "percent" }),
-            enc$.encodeDeepObject("proxy", payload$.proxy, { charEncoding: "percent" }),
-            enc$.encodeForm("raw", payload$.raw, { explode: true, charEncoding: "percent" }),
-        ]
-            .filter(Boolean)
-            .join("&");
+        const query$ = queryJoin$(
+            encodeFormQuery$({
+                fields: payload$.fields,
+                raw: payload$.raw,
+            }),
+            encodeDeepObjectQuery$({
+                proxy: payload$.proxy,
+            })
+        );
 
         headers$.set(
             "x-account-id",
-            enc$.encodeSimple("x-account-id", payload$["x-account-id"], {
+            encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
             })
@@ -661,26 +663,25 @@ export class Hris extends ClientSDK {
         const body$ = null;
 
         const pathParams$ = {
-            id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
+            id: encodeSimple$("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
         const path$ = this.templateURLComponent("/unified/hris/employees/{id}")(pathParams$);
 
-        const query$ = [
-            enc$.encodeForm("expand", payload$.expand, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("fields", payload$.fields, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("include", payload$.include, {
-                explode: true,
-                charEncoding: "percent",
+        const query$ = queryJoin$(
+            encodeFormQuery$({
+                include: payload$.include,
+                raw: payload$.raw,
+                expand: payload$.expand,
+                fields: payload$.fields,
             }),
-            enc$.encodeDeepObject("proxy", payload$.proxy, { charEncoding: "percent" }),
-            enc$.encodeForm("raw", payload$.raw, { explode: true, charEncoding: "percent" }),
-        ]
-            .filter(Boolean)
-            .join("&");
+            encodeDeepObjectQuery$({
+                proxy: payload$.proxy,
+            })
+        );
 
         headers$.set(
             "x-account-id",
-            enc$.encodeSimple("x-account-id", payload$["x-account-id"], {
+            encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
             })
@@ -752,8 +753,8 @@ export class Hris extends ClientSDK {
         const body$ = null;
 
         const pathParams$ = {
-            id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
-            subResourceId: enc$.encodeSimple("subResourceId", payload$.subResourceId, {
+            id: encodeSimple$("id", payload$.id, { explode: false, charEncoding: "percent" }),
+            subResourceId: encodeSimple$("subResourceId", payload$.subResourceId, {
                 explode: false,
                 charEncoding: "percent",
             }),
@@ -762,17 +763,19 @@ export class Hris extends ClientSDK {
             "/unified/hris/employees/{id}/documents/{subResourceId}"
         )(pathParams$);
 
-        const query$ = [
-            enc$.encodeForm("fields", payload$.fields, { explode: true, charEncoding: "percent" }),
-            enc$.encodeDeepObject("proxy", payload$.proxy, { charEncoding: "percent" }),
-            enc$.encodeForm("raw", payload$.raw, { explode: true, charEncoding: "percent" }),
-        ]
-            .filter(Boolean)
-            .join("&");
+        const query$ = queryJoin$(
+            encodeFormQuery$({
+                raw: payload$.raw,
+                fields: payload$.fields,
+            }),
+            encodeDeepObjectQuery$({
+                proxy: payload$.proxy,
+            })
+        );
 
         headers$.set(
             "x-account-id",
-            enc$.encodeSimple("x-account-id", payload$["x-account-id"], {
+            encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
             })
@@ -845,8 +848,8 @@ export class Hris extends ClientSDK {
         const body$ = null;
 
         const pathParams$ = {
-            id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
-            subResourceId: enc$.encodeSimple("subResourceId", payload$.subResourceId, {
+            id: encodeSimple$("id", payload$.id, { explode: false, charEncoding: "percent" }),
+            subResourceId: encodeSimple$("subResourceId", payload$.subResourceId, {
                 explode: false,
                 charEncoding: "percent",
             }),
@@ -855,17 +858,19 @@ export class Hris extends ClientSDK {
             "/unified/hris/employees/{id}/time_off/{subResourceId}"
         )(pathParams$);
 
-        const query$ = [
-            enc$.encodeForm("fields", payload$.fields, { explode: true, charEncoding: "percent" }),
-            enc$.encodeDeepObject("proxy", payload$.proxy, { charEncoding: "percent" }),
-            enc$.encodeForm("raw", payload$.raw, { explode: true, charEncoding: "percent" }),
-        ]
-            .filter(Boolean)
-            .join("&");
+        const query$ = queryJoin$(
+            encodeFormQuery$({
+                fields: payload$.fields,
+                raw: payload$.raw,
+            }),
+            encodeDeepObjectQuery$({
+                proxy: payload$.proxy,
+            })
+        );
 
         headers$.set(
             "x-account-id",
-            enc$.encodeSimple("x-account-id", payload$["x-account-id"], {
+            encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
             })
@@ -938,8 +943,8 @@ export class Hris extends ClientSDK {
         const body$ = null;
 
         const pathParams$ = {
-            id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
-            subResourceId: enc$.encodeSimple("subResourceId", payload$.subResourceId, {
+            id: encodeSimple$("id", payload$.id, { explode: false, charEncoding: "percent" }),
+            subResourceId: encodeSimple$("subResourceId", payload$.subResourceId, {
                 explode: false,
                 charEncoding: "percent",
             }),
@@ -948,17 +953,19 @@ export class Hris extends ClientSDK {
             "/unified/hris/employees/{id}/work_eligibility/{subResourceId}"
         )(pathParams$);
 
-        const query$ = [
-            enc$.encodeForm("fields", payload$.fields, { explode: true, charEncoding: "percent" }),
-            enc$.encodeDeepObject("proxy", payload$.proxy, { charEncoding: "percent" }),
-            enc$.encodeForm("raw", payload$.raw, { explode: true, charEncoding: "percent" }),
-        ]
-            .filter(Boolean)
-            .join("&");
+        const query$ = queryJoin$(
+            encodeFormQuery$({
+                raw: payload$.raw,
+                fields: payload$.fields,
+            }),
+            encodeDeepObjectQuery$({
+                proxy: payload$.proxy,
+            })
+        );
 
         headers$.set(
             "x-account-id",
-            enc$.encodeSimple("x-account-id", payload$["x-account-id"], {
+            encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
             })
@@ -1032,22 +1039,24 @@ export class Hris extends ClientSDK {
         const body$ = null;
 
         const pathParams$ = {
-            id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
+            id: encodeSimple$("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
         const path$ = this.templateURLComponent("/unified/hris/employments/{id}")(pathParams$);
 
-        const query$ = [
-            enc$.encodeForm("expand", payload$.expand, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("fields", payload$.fields, { explode: true, charEncoding: "percent" }),
-            enc$.encodeDeepObject("proxy", payload$.proxy, { charEncoding: "percent" }),
-            enc$.encodeForm("raw", payload$.raw, { explode: true, charEncoding: "percent" }),
-        ]
-            .filter(Boolean)
-            .join("&");
+        const query$ = queryJoin$(
+            encodeFormQuery$({
+                fields: payload$.fields,
+                raw: payload$.raw,
+                expand: payload$.expand,
+            }),
+            encodeDeepObjectQuery$({
+                proxy: payload$.proxy,
+            })
+        );
 
         headers$.set(
             "x-account-id",
-            enc$.encodeSimple("x-account-id", payload$["x-account-id"], {
+            encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
             })
@@ -1119,21 +1128,23 @@ export class Hris extends ClientSDK {
         const body$ = null;
 
         const pathParams$ = {
-            id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
+            id: encodeSimple$("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
         const path$ = this.templateURLComponent("/unified/hris/groups/{id}")(pathParams$);
 
-        const query$ = [
-            enc$.encodeForm("fields", payload$.fields, { explode: true, charEncoding: "percent" }),
-            enc$.encodeDeepObject("proxy", payload$.proxy, { charEncoding: "percent" }),
-            enc$.encodeForm("raw", payload$.raw, { explode: true, charEncoding: "percent" }),
-        ]
-            .filter(Boolean)
-            .join("&");
+        const query$ = queryJoin$(
+            encodeFormQuery$({
+                fields: payload$.fields,
+                raw: payload$.raw,
+            }),
+            encodeDeepObjectQuery$({
+                proxy: payload$.proxy,
+            })
+        );
 
         headers$.set(
             "x-account-id",
-            enc$.encodeSimple("x-account-id", payload$["x-account-id"], {
+            encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
             })
@@ -1205,21 +1216,23 @@ export class Hris extends ClientSDK {
         const body$ = null;
 
         const pathParams$ = {
-            id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
+            id: encodeSimple$("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
         const path$ = this.templateURLComponent("/unified/hris/locations/{id}")(pathParams$);
 
-        const query$ = [
-            enc$.encodeForm("fields", payload$.fields, { explode: true, charEncoding: "percent" }),
-            enc$.encodeDeepObject("proxy", payload$.proxy, { charEncoding: "percent" }),
-            enc$.encodeForm("raw", payload$.raw, { explode: true, charEncoding: "percent" }),
-        ]
-            .filter(Boolean)
-            .join("&");
+        const query$ = queryJoin$(
+            encodeFormQuery$({
+                fields: payload$.fields,
+                raw: payload$.raw,
+            }),
+            encodeDeepObjectQuery$({
+                proxy: payload$.proxy,
+            })
+        );
 
         headers$.set(
             "x-account-id",
-            enc$.encodeSimple("x-account-id", payload$["x-account-id"], {
+            encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
             })
@@ -1291,21 +1304,23 @@ export class Hris extends ClientSDK {
         const body$ = null;
 
         const pathParams$ = {
-            id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
+            id: encodeSimple$("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
         const path$ = this.templateURLComponent("/unified/hris/time_off/{id}")(pathParams$);
 
-        const query$ = [
-            enc$.encodeForm("fields", payload$.fields, { explode: true, charEncoding: "percent" }),
-            enc$.encodeDeepObject("proxy", payload$.proxy, { charEncoding: "percent" }),
-            enc$.encodeForm("raw", payload$.raw, { explode: true, charEncoding: "percent" }),
-        ]
-            .filter(Boolean)
-            .join("&");
+        const query$ = queryJoin$(
+            encodeFormQuery$({
+                fields: payload$.fields,
+                raw: payload$.raw,
+            }),
+            encodeDeepObjectQuery$({
+                proxy: payload$.proxy,
+            })
+        );
 
         headers$.set(
             "x-account-id",
-            enc$.encodeSimple("x-account-id", payload$["x-account-id"], {
+            encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
             })
@@ -1378,28 +1393,24 @@ export class Hris extends ClientSDK {
 
         const path$ = this.templateURLComponent("/unified/hris/benefits")();
 
-        const query$ = [
-            enc$.encodeForm("fields", payload$.fields, { explode: true, charEncoding: "percent" }),
-            enc$.encodeDeepObject("filter", payload$.filter, { charEncoding: "percent" }),
-            enc$.encodeForm("next", payload$.next, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("page", payload$.page, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("page_size", payload$.page_size, {
-                explode: true,
-                charEncoding: "percent",
+        const query$ = queryJoin$(
+            encodeFormQuery$({
+                page: payload$.page,
+                page_size: payload$.page_size,
+                raw: payload$.raw,
+                updated_after: payload$.updated_after,
+                fields: payload$.fields,
+                next: payload$.next,
             }),
-            enc$.encodeDeepObject("proxy", payload$.proxy, { charEncoding: "percent" }),
-            enc$.encodeForm("raw", payload$.raw, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("updated_after", payload$.updated_after, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-        ]
-            .filter(Boolean)
-            .join("&");
+            encodeDeepObjectQuery$({
+                proxy: payload$.proxy,
+                filter: payload$.filter,
+            })
+        );
 
         headers$.set(
             "x-account-id",
-            enc$.encodeSimple("x-account-id", payload$["x-account-id"], {
+            encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
             })
@@ -1472,28 +1483,24 @@ export class Hris extends ClientSDK {
 
         const path$ = this.templateURLComponent("/unified/hris/companies")();
 
-        const query$ = [
-            enc$.encodeForm("fields", payload$.fields, { explode: true, charEncoding: "percent" }),
-            enc$.encodeDeepObject("filter", payload$.filter, { charEncoding: "percent" }),
-            enc$.encodeForm("next", payload$.next, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("page", payload$.page, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("page_size", payload$.page_size, {
-                explode: true,
-                charEncoding: "percent",
+        const query$ = queryJoin$(
+            encodeFormQuery$({
+                page: payload$.page,
+                page_size: payload$.page_size,
+                raw: payload$.raw,
+                updated_after: payload$.updated_after,
+                fields: payload$.fields,
+                next: payload$.next,
             }),
-            enc$.encodeDeepObject("proxy", payload$.proxy, { charEncoding: "percent" }),
-            enc$.encodeForm("raw", payload$.raw, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("updated_after", payload$.updated_after, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-        ]
-            .filter(Boolean)
-            .join("&");
+            encodeDeepObjectQuery$({
+                proxy: payload$.proxy,
+                filter: payload$.filter,
+            })
+        );
 
         headers$.set(
             "x-account-id",
-            enc$.encodeSimple("x-account-id", payload$["x-account-id"], {
+            encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
             })
@@ -1565,34 +1572,30 @@ export class Hris extends ClientSDK {
         const body$ = null;
 
         const pathParams$ = {
-            id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
+            id: encodeSimple$("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
         const path$ = this.templateURLComponent("/unified/hris/employees/{id}/documents")(
             pathParams$
         );
 
-        const query$ = [
-            enc$.encodeForm("fields", payload$.fields, { explode: true, charEncoding: "percent" }),
-            enc$.encodeDeepObject("filter", payload$.filter, { charEncoding: "percent" }),
-            enc$.encodeForm("next", payload$.next, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("page", payload$.page, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("page_size", payload$.page_size, {
-                explode: true,
-                charEncoding: "percent",
+        const query$ = queryJoin$(
+            encodeFormQuery$({
+                page_size: payload$.page_size,
+                raw: payload$.raw,
+                updated_after: payload$.updated_after,
+                fields: payload$.fields,
+                next: payload$.next,
+                page: payload$.page,
             }),
-            enc$.encodeDeepObject("proxy", payload$.proxy, { charEncoding: "percent" }),
-            enc$.encodeForm("raw", payload$.raw, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("updated_after", payload$.updated_after, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-        ]
-            .filter(Boolean)
-            .join("&");
+            encodeDeepObjectQuery$({
+                proxy: payload$.proxy,
+                filter: payload$.filter,
+            })
+        );
 
         headers$.set(
             "x-account-id",
-            enc$.encodeSimple("x-account-id", payload$["x-account-id"], {
+            encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
             })
@@ -1667,34 +1670,30 @@ export class Hris extends ClientSDK {
         const body$ = null;
 
         const pathParams$ = {
-            id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
+            id: encodeSimple$("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
         const path$ = this.templateURLComponent("/unified/hris/employees/{id}/time_off")(
             pathParams$
         );
 
-        const query$ = [
-            enc$.encodeForm("fields", payload$.fields, { explode: true, charEncoding: "percent" }),
-            enc$.encodeDeepObject("filter", payload$.filter, { charEncoding: "percent" }),
-            enc$.encodeForm("next", payload$.next, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("page", payload$.page, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("page_size", payload$.page_size, {
-                explode: true,
-                charEncoding: "percent",
+        const query$ = queryJoin$(
+            encodeFormQuery$({
+                next: payload$.next,
+                page: payload$.page,
+                page_size: payload$.page_size,
+                raw: payload$.raw,
+                updated_after: payload$.updated_after,
+                fields: payload$.fields,
             }),
-            enc$.encodeDeepObject("proxy", payload$.proxy, { charEncoding: "percent" }),
-            enc$.encodeForm("raw", payload$.raw, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("updated_after", payload$.updated_after, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-        ]
-            .filter(Boolean)
-            .join("&");
+            encodeDeepObjectQuery$({
+                proxy: payload$.proxy,
+                filter: payload$.filter,
+            })
+        );
 
         headers$.set(
             "x-account-id",
-            enc$.encodeSimple("x-account-id", payload$["x-account-id"], {
+            encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
             })
@@ -1769,34 +1768,30 @@ export class Hris extends ClientSDK {
         const body$ = null;
 
         const pathParams$ = {
-            id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
+            id: encodeSimple$("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
         const path$ = this.templateURLComponent("/unified/hris/employees/{id}/work_eligibility")(
             pathParams$
         );
 
-        const query$ = [
-            enc$.encodeForm("fields", payload$.fields, { explode: true, charEncoding: "percent" }),
-            enc$.encodeDeepObject("filter", payload$.filter, { charEncoding: "percent" }),
-            enc$.encodeForm("next", payload$.next, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("page", payload$.page, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("page_size", payload$.page_size, {
-                explode: true,
-                charEncoding: "percent",
+        const query$ = queryJoin$(
+            encodeFormQuery$({
+                page: payload$.page,
+                page_size: payload$.page_size,
+                raw: payload$.raw,
+                updated_after: payload$.updated_after,
+                fields: payload$.fields,
+                next: payload$.next,
             }),
-            enc$.encodeDeepObject("proxy", payload$.proxy, { charEncoding: "percent" }),
-            enc$.encodeForm("raw", payload$.raw, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("updated_after", payload$.updated_after, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-        ]
-            .filter(Boolean)
-            .join("&");
+            encodeDeepObjectQuery$({
+                proxy: payload$.proxy,
+                filter: payload$.filter,
+            })
+        );
 
         headers$.set(
             "x-account-id",
-            enc$.encodeSimple("x-account-id", payload$["x-account-id"], {
+            encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
             })
@@ -1871,33 +1866,26 @@ export class Hris extends ClientSDK {
 
         const path$ = this.templateURLComponent("/unified/hris/employees")();
 
-        const query$ = [
-            enc$.encodeForm("expand", payload$.expand, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("fields", payload$.fields, { explode: true, charEncoding: "percent" }),
-            enc$.encodeDeepObject("filter", payload$.filter, { charEncoding: "percent" }),
-            enc$.encodeForm("include", payload$.include, {
-                explode: true,
-                charEncoding: "percent",
+        const query$ = queryJoin$(
+            encodeFormQuery$({
+                include: payload$.include,
+                next: payload$.next,
+                page: payload$.page,
+                page_size: payload$.page_size,
+                raw: payload$.raw,
+                expand: payload$.expand,
+                fields: payload$.fields,
+                updated_after: payload$.updated_after,
             }),
-            enc$.encodeForm("next", payload$.next, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("page", payload$.page, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("page_size", payload$.page_size, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-            enc$.encodeDeepObject("proxy", payload$.proxy, { charEncoding: "percent" }),
-            enc$.encodeForm("raw", payload$.raw, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("updated_after", payload$.updated_after, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-        ]
-            .filter(Boolean)
-            .join("&");
+            encodeDeepObjectQuery$({
+                proxy: payload$.proxy,
+                filter: payload$.filter,
+            })
+        );
 
         headers$.set(
             "x-account-id",
-            enc$.encodeSimple("x-account-id", payload$["x-account-id"], {
+            encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
             })
@@ -1989,29 +1977,25 @@ export class Hris extends ClientSDK {
 
         const path$ = this.templateURLComponent("/unified/hris/employments")();
 
-        const query$ = [
-            enc$.encodeForm("expand", payload$.expand, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("fields", payload$.fields, { explode: true, charEncoding: "percent" }),
-            enc$.encodeDeepObject("filter", payload$.filter, { charEncoding: "percent" }),
-            enc$.encodeForm("next", payload$.next, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("page", payload$.page, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("page_size", payload$.page_size, {
-                explode: true,
-                charEncoding: "percent",
+        const query$ = queryJoin$(
+            encodeFormQuery$({
+                page: payload$.page,
+                fields: payload$.fields,
+                next: payload$.next,
+                page_size: payload$.page_size,
+                raw: payload$.raw,
+                updated_after: payload$.updated_after,
+                expand: payload$.expand,
             }),
-            enc$.encodeDeepObject("proxy", payload$.proxy, { charEncoding: "percent" }),
-            enc$.encodeForm("raw", payload$.raw, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("updated_after", payload$.updated_after, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-        ]
-            .filter(Boolean)
-            .join("&");
+            encodeDeepObjectQuery$({
+                filter: payload$.filter,
+                proxy: payload$.proxy,
+            })
+        );
 
         headers$.set(
             "x-account-id",
-            enc$.encodeSimple("x-account-id", payload$["x-account-id"], {
+            encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
             })
@@ -2084,28 +2068,24 @@ export class Hris extends ClientSDK {
 
         const path$ = this.templateURLComponent("/unified/hris/groups")();
 
-        const query$ = [
-            enc$.encodeForm("fields", payload$.fields, { explode: true, charEncoding: "percent" }),
-            enc$.encodeDeepObject("filter", payload$.filter, { charEncoding: "percent" }),
-            enc$.encodeForm("next", payload$.next, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("page", payload$.page, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("page_size", payload$.page_size, {
-                explode: true,
-                charEncoding: "percent",
+        const query$ = queryJoin$(
+            encodeDeepObjectQuery$({
+                proxy: payload$.proxy,
+                filter: payload$.filter,
             }),
-            enc$.encodeDeepObject("proxy", payload$.proxy, { charEncoding: "percent" }),
-            enc$.encodeForm("raw", payload$.raw, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("updated_after", payload$.updated_after, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-        ]
-            .filter(Boolean)
-            .join("&");
+            encodeFormQuery$({
+                raw: payload$.raw,
+                updated_after: payload$.updated_after,
+                fields: payload$.fields,
+                next: payload$.next,
+                page: payload$.page,
+                page_size: payload$.page_size,
+            })
+        );
 
         headers$.set(
             "x-account-id",
-            enc$.encodeSimple("x-account-id", payload$["x-account-id"], {
+            encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
             })
@@ -2178,28 +2158,24 @@ export class Hris extends ClientSDK {
 
         const path$ = this.templateURLComponent("/unified/hris/locations")();
 
-        const query$ = [
-            enc$.encodeForm("fields", payload$.fields, { explode: true, charEncoding: "percent" }),
-            enc$.encodeDeepObject("filter", payload$.filter, { charEncoding: "percent" }),
-            enc$.encodeForm("next", payload$.next, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("page", payload$.page, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("page_size", payload$.page_size, {
-                explode: true,
-                charEncoding: "percent",
+        const query$ = queryJoin$(
+            encodeFormQuery$({
+                next: payload$.next,
+                page: payload$.page,
+                page_size: payload$.page_size,
+                raw: payload$.raw,
+                updated_after: payload$.updated_after,
+                fields: payload$.fields,
             }),
-            enc$.encodeDeepObject("proxy", payload$.proxy, { charEncoding: "percent" }),
-            enc$.encodeForm("raw", payload$.raw, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("updated_after", payload$.updated_after, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-        ]
-            .filter(Boolean)
-            .join("&");
+            encodeDeepObjectQuery$({
+                proxy: payload$.proxy,
+                filter: payload$.filter,
+            })
+        );
 
         headers$.set(
             "x-account-id",
-            enc$.encodeSimple("x-account-id", payload$["x-account-id"], {
+            encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
             })
@@ -2272,28 +2248,24 @@ export class Hris extends ClientSDK {
 
         const path$ = this.templateURLComponent("/unified/hris/time_off")();
 
-        const query$ = [
-            enc$.encodeForm("fields", payload$.fields, { explode: true, charEncoding: "percent" }),
-            enc$.encodeDeepObject("filter", payload$.filter, { charEncoding: "percent" }),
-            enc$.encodeForm("next", payload$.next, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("page", payload$.page, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("page_size", payload$.page_size, {
-                explode: true,
-                charEncoding: "percent",
+        const query$ = queryJoin$(
+            encodeFormQuery$({
+                updated_after: payload$.updated_after,
+                fields: payload$.fields,
+                next: payload$.next,
+                page: payload$.page,
+                page_size: payload$.page_size,
+                raw: payload$.raw,
             }),
-            enc$.encodeDeepObject("proxy", payload$.proxy, { charEncoding: "percent" }),
-            enc$.encodeForm("raw", payload$.raw, { explode: true, charEncoding: "percent" }),
-            enc$.encodeForm("updated_after", payload$.updated_after, {
-                explode: true,
-                charEncoding: "percent",
-            }),
-        ]
-            .filter(Boolean)
-            .join("&");
+            encodeDeepObjectQuery$({
+                filter: payload$.filter,
+                proxy: payload$.proxy,
+            })
+        );
 
         headers$.set(
             "x-account-id",
-            enc$.encodeSimple("x-account-id", payload$["x-account-id"], {
+            encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
             })
@@ -2363,12 +2335,10 @@ export class Hris extends ClientSDK {
             (value$) => operations.HrisUpdateEmployeeRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
-        const body$ = enc$.encodeJSON("body", payload$.HrisCreateEmployeeRequestDto, {
-            explode: true,
-        });
+        const body$ = encodeJSON$("body", payload$.HrisCreateEmployeeRequestDto, { explode: true });
 
         const pathParams$ = {
-            id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
+            id: encodeSimple$("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
         const path$ = this.templateURLComponent("/unified/hris/employees/{id}")(pathParams$);
 
@@ -2376,7 +2346,7 @@ export class Hris extends ClientSDK {
 
         headers$.set(
             "x-account-id",
-            enc$.encodeSimple("x-account-id", payload$["x-account-id"], {
+            encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
             })
@@ -2449,13 +2419,13 @@ export class Hris extends ClientSDK {
                 ),
             "Input validation failed"
         );
-        const body$ = enc$.encodeJSON("body", payload$.HrisCreateWorkEligibilityRequestDto, {
+        const body$ = encodeJSON$("body", payload$.HrisCreateWorkEligibilityRequestDto, {
             explode: true,
         });
 
         const pathParams$ = {
-            id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
-            subResourceId: enc$.encodeSimple("subResourceId", payload$.subResourceId, {
+            id: encodeSimple$("id", payload$.id, { explode: false, charEncoding: "percent" }),
+            subResourceId: encodeSimple$("subResourceId", payload$.subResourceId, {
                 explode: false,
                 charEncoding: "percent",
             }),
@@ -2468,7 +2438,7 @@ export class Hris extends ClientSDK {
 
         headers$.set(
             "x-account-id",
-            enc$.encodeSimple("x-account-id", payload$["x-account-id"], {
+            encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
             })
@@ -2539,12 +2509,10 @@ export class Hris extends ClientSDK {
             (value$) => operations.HrisUpdateTimeOffRequestRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
-        const body$ = enc$.encodeJSON("body", payload$.HrisCreateTimeOffRequestDto, {
-            explode: true,
-        });
+        const body$ = encodeJSON$("body", payload$.HrisCreateTimeOffRequestDto, { explode: true });
 
         const pathParams$ = {
-            id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
+            id: encodeSimple$("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
         const path$ = this.templateURLComponent("/unified/hris/time_off/{id}")(pathParams$);
 
@@ -2552,7 +2520,7 @@ export class Hris extends ClientSDK {
 
         headers$.set(
             "x-account-id",
-            enc$.encodeSimple("x-account-id", payload$["x-account-id"], {
+            encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
             })
@@ -2622,12 +2590,12 @@ export class Hris extends ClientSDK {
             (value$) => operations.HrisUploadEmployeeDocumentRequest$.outboundSchema.parse(value$),
             "Input validation failed"
         );
-        const body$ = enc$.encodeJSON("body", payload$.HrisDocumentsUploadRequestDto, {
+        const body$ = encodeJSON$("body", payload$.HrisDocumentsUploadRequestDto, {
             explode: true,
         });
 
         const pathParams$ = {
-            id: enc$.encodeSimple("id", payload$.id, { explode: false, charEncoding: "percent" }),
+            id: encodeSimple$("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
         const path$ = this.templateURLComponent("/unified/hris/employees/{id}/documents/upload")(
             pathParams$
@@ -2637,7 +2605,7 @@ export class Hris extends ClientSDK {
 
         headers$.set(
             "x-account-id",
-            enc$.encodeSimple("x-account-id", payload$["x-account-id"], {
+            encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
             })
