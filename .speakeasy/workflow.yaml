@@ -9,6 +9,7 @@ sources:
             - location: https://api2.eu1.stackone.com/oas/crm.json
             - location: https://api2.eu1.stackone.com/oas/iam.json
             - location: https://api2.eu1.stackone.com/oas/marketing.json
+            - location: https://api2.eu1.stackone.com/oas/lms.json
         registry:
             location: registry.speakeasyapi.dev/stackone/stackone/my-source
 targets:
