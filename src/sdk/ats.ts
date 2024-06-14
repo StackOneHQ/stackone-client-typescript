@@ -474,13 +474,13 @@ export class Ats extends ClientSDK {
         const path$ = this.templateURLComponent("/unified/ats/applications/{id}")(pathParams$);
 
         const query$ = queryJoin$(
-            encodeFormQuery$({
-                raw: payload$.raw,
-                expand: payload$.expand,
-                fields: payload$.fields,
-            }),
             encodeDeepObjectQuery$({
                 proxy: payload$.proxy,
+            }),
+            encodeFormQuery$({
+                expand: payload$.expand,
+                fields: payload$.fields,
+                raw: payload$.raw,
             })
         );
 
@@ -569,12 +569,12 @@ export class Ats extends ClientSDK {
         )(pathParams$);
 
         const query$ = queryJoin$(
+            encodeDeepObjectQuery$({
+                proxy: payload$.proxy,
+            }),
             encodeFormQuery$({
                 fields: payload$.fields,
                 raw: payload$.raw,
-            }),
-            encodeDeepObjectQuery$({
-                proxy: payload$.proxy,
             })
         );
 
@@ -663,12 +663,12 @@ export class Ats extends ClientSDK {
         )(pathParams$);
 
         const query$ = queryJoin$(
+            encodeDeepObjectQuery$({
+                proxy: payload$.proxy,
+            }),
             encodeFormQuery$({
                 fields: payload$.fields,
                 raw: payload$.raw,
-            }),
-            encodeDeepObjectQuery$({
-                proxy: payload$.proxy,
             })
         );
 
@@ -757,12 +757,12 @@ export class Ats extends ClientSDK {
         )(pathParams$);
 
         const query$ = queryJoin$(
+            encodeDeepObjectQuery$({
+                proxy: payload$.proxy,
+            }),
             encodeFormQuery$({
                 fields: payload$.fields,
                 raw: payload$.raw,
-            }),
-            encodeDeepObjectQuery$({
-                proxy: payload$.proxy,
             })
         );
 
@@ -849,8 +849,8 @@ export class Ats extends ClientSDK {
                 proxy: payload$.proxy,
             }),
             encodeFormQuery$({
-                raw: payload$.raw,
                 fields: payload$.fields,
+                raw: payload$.raw,
             })
         );
 
@@ -939,12 +939,12 @@ export class Ats extends ClientSDK {
         )(pathParams$);
 
         const query$ = queryJoin$(
+            encodeDeepObjectQuery$({
+                proxy: payload$.proxy,
+            }),
             encodeFormQuery$({
                 fields: payload$.fields,
                 raw: payload$.raw,
-            }),
-            encodeDeepObjectQuery$({
-                proxy: payload$.proxy,
             })
         );
 
@@ -1027,12 +1027,12 @@ export class Ats extends ClientSDK {
         const path$ = this.templateURLComponent("/unified/ats/departments/{id}")(pathParams$);
 
         const query$ = queryJoin$(
-            encodeFormQuery$({
-                raw: payload$.raw,
-                fields: payload$.fields,
-            }),
             encodeDeepObjectQuery$({
                 proxy: payload$.proxy,
+            }),
+            encodeFormQuery$({
+                fields: payload$.fields,
+                raw: payload$.raw,
             })
         );
 
@@ -1115,12 +1115,12 @@ export class Ats extends ClientSDK {
         const path$ = this.templateURLComponent("/unified/ats/interviews/{id}")(pathParams$);
 
         const query$ = queryJoin$(
+            encodeDeepObjectQuery$({
+                proxy: payload$.proxy,
+            }),
             encodeFormQuery$({
                 fields: payload$.fields,
                 raw: payload$.raw,
-            }),
-            encodeDeepObjectQuery$({
-                proxy: payload$.proxy,
             })
         );
 
@@ -1203,12 +1203,12 @@ export class Ats extends ClientSDK {
         const path$ = this.templateURLComponent("/unified/ats/interview_stages/{id}")(pathParams$);
 
         const query$ = queryJoin$(
+            encodeDeepObjectQuery$({
+                proxy: payload$.proxy,
+            }),
             encodeFormQuery$({
                 fields: payload$.fields,
                 raw: payload$.raw,
-            }),
-            encodeDeepObjectQuery$({
-                proxy: payload$.proxy,
             })
         );
 
@@ -1291,13 +1291,13 @@ export class Ats extends ClientSDK {
         const path$ = this.templateURLComponent("/unified/ats/jobs/{id}")(pathParams$);
 
         const query$ = queryJoin$(
+            encodeDeepObjectQuery$({
+                proxy: payload$.proxy,
+            }),
             encodeFormQuery$({
                 expand: payload$.expand,
                 fields: payload$.fields,
                 raw: payload$.raw,
-            }),
-            encodeDeepObjectQuery$({
-                proxy: payload$.proxy,
             })
         );
 
@@ -1380,13 +1380,13 @@ export class Ats extends ClientSDK {
         const path$ = this.templateURLComponent("/unified/ats/job_postings/{id}")(pathParams$);
 
         const query$ = queryJoin$(
-            encodeFormQuery$({
-                raw: payload$.raw,
-                fields: payload$.fields,
-                include: payload$.include,
-            }),
             encodeDeepObjectQuery$({
                 proxy: payload$.proxy,
+            }),
+            encodeFormQuery$({
+                fields: payload$.fields,
+                include: payload$.include,
+                raw: payload$.raw,
             })
         );
 
@@ -1469,12 +1469,12 @@ export class Ats extends ClientSDK {
         const path$ = this.templateURLComponent("/unified/ats/lists/{id}")(pathParams$);
 
         const query$ = queryJoin$(
+            encodeDeepObjectQuery$({
+                proxy: payload$.proxy,
+            }),
             encodeFormQuery$({
                 fields: payload$.fields,
                 raw: payload$.raw,
-            }),
-            encodeDeepObjectQuery$({
-                proxy: payload$.proxy,
             })
         );
 
@@ -1557,12 +1557,12 @@ export class Ats extends ClientSDK {
         const path$ = this.templateURLComponent("/unified/ats/locations/{id}")(pathParams$);
 
         const query$ = queryJoin$(
+            encodeDeepObjectQuery$({
+                proxy: payload$.proxy,
+            }),
             encodeFormQuery$({
                 fields: payload$.fields,
                 raw: payload$.raw,
-            }),
-            encodeDeepObjectQuery$({
-                proxy: payload$.proxy,
             })
         );
 
@@ -1645,12 +1645,12 @@ export class Ats extends ClientSDK {
         const path$ = this.templateURLComponent("/unified/ats/offers/{id}")(pathParams$);
 
         const query$ = queryJoin$(
+            encodeDeepObjectQuery$({
+                proxy: payload$.proxy,
+            }),
             encodeFormQuery$({
                 fields: payload$.fields,
                 raw: payload$.raw,
-            }),
-            encodeDeepObjectQuery$({
-                proxy: payload$.proxy,
             })
         );
 
@@ -1733,12 +1733,12 @@ export class Ats extends ClientSDK {
         const path$ = this.templateURLComponent("/unified/ats/rejected_reasons/{id}")(pathParams$);
 
         const query$ = queryJoin$(
+            encodeDeepObjectQuery$({
+                proxy: payload$.proxy,
+            }),
             encodeFormQuery$({
                 fields: payload$.fields,
                 raw: payload$.raw,
-            }),
-            encodeDeepObjectQuery$({
-                proxy: payload$.proxy,
             })
         );
 
@@ -1821,12 +1821,12 @@ export class Ats extends ClientSDK {
         const path$ = this.templateURLComponent("/unified/ats/users/{id}")(pathParams$);
 
         const query$ = queryJoin$(
-            encodeFormQuery$({
-                raw: payload$.raw,
-                fields: payload$.fields,
-            }),
             encodeDeepObjectQuery$({
                 proxy: payload$.proxy,
+            }),
+            encodeFormQuery$({
+                fields: payload$.fields,
+                raw: payload$.raw,
             })
         );
 
@@ -1911,18 +1911,18 @@ export class Ats extends ClientSDK {
         );
 
         const query$ = queryJoin$(
-            encodeFormQuery$({
-                fields: payload$.fields,
-                page: payload$.page,
-                page_size: payload$.page_size,
-                next: payload$.next,
-                raw: payload$.raw,
-                sync_token: payload$.sync_token,
-                updated_after: payload$.updated_after,
-            }),
             encodeDeepObjectQuery$({
                 filter: payload$.filter,
                 proxy: payload$.proxy,
+            }),
+            encodeFormQuery$({
+                fields: payload$.fields,
+                next: payload$.next,
+                page: payload$.page,
+                page_size: payload$.page_size,
+                raw: payload$.raw,
+                sync_token: payload$.sync_token,
+                updated_after: payload$.updated_after,
             })
         );
 
@@ -2010,18 +2010,18 @@ export class Ats extends ClientSDK {
         );
 
         const query$ = queryJoin$(
+            encodeDeepObjectQuery$({
+                filter: payload$.filter,
+                proxy: payload$.proxy,
+            }),
             encodeFormQuery$({
-                updated_after: payload$.updated_after,
                 fields: payload$.fields,
                 next: payload$.next,
+                page: payload$.page,
                 page_size: payload$.page_size,
                 raw: payload$.raw,
                 sync_token: payload$.sync_token,
-                page: payload$.page,
-            }),
-            encodeDeepObjectQuery$({
-                proxy: payload$.proxy,
-                filter: payload$.filter,
+                updated_after: payload$.updated_after,
             })
         );
 
@@ -2103,20 +2103,20 @@ export class Ats extends ClientSDK {
         const path$ = this.templateURLComponent("/unified/ats/applications")();
 
         const query$ = queryJoin$(
-            encodeFormQuery$({
-                raw: payload$.raw,
-                sync_token: payload$.sync_token,
-                fields: payload$.fields,
-                page: payload$.page,
-                page_size: payload$.page_size,
-                expand: payload$.expand,
-                job_id: payload$.job_id,
-                next: payload$.next,
-                updated_after: payload$.updated_after,
-            }),
             encodeDeepObjectQuery$({
                 filter: payload$.filter,
                 proxy: payload$.proxy,
+            }),
+            encodeFormQuery$({
+                expand: payload$.expand,
+                fields: payload$.fields,
+                job_id: payload$.job_id,
+                next: payload$.next,
+                page: payload$.page,
+                page_size: payload$.page_size,
+                raw: payload$.raw,
+                sync_token: payload$.sync_token,
+                updated_after: payload$.updated_after,
             })
         );
 
@@ -2201,18 +2201,18 @@ export class Ats extends ClientSDK {
         );
 
         const query$ = queryJoin$(
+            encodeDeepObjectQuery$({
+                filter: payload$.filter,
+                proxy: payload$.proxy,
+            }),
             encodeFormQuery$({
+                fields: payload$.fields,
+                next: payload$.next,
                 page: payload$.page,
                 page_size: payload$.page_size,
                 raw: payload$.raw,
-                fields: payload$.fields,
-                next: payload$.next,
                 sync_token: payload$.sync_token,
                 updated_after: payload$.updated_after,
-            }),
-            encodeDeepObjectQuery$({
-                proxy: payload$.proxy,
-                filter: payload$.filter,
             })
         );
 
@@ -2295,18 +2295,18 @@ export class Ats extends ClientSDK {
         const path$ = this.templateURLComponent("/unified/ats/candidates/{id}/notes")(pathParams$);
 
         const query$ = queryJoin$(
+            encodeDeepObjectQuery$({
+                filter: payload$.filter,
+                proxy: payload$.proxy,
+            }),
             encodeFormQuery$({
-                raw: payload$.raw,
-                sync_token: payload$.sync_token,
-                updated_after: payload$.updated_after,
                 fields: payload$.fields,
                 next: payload$.next,
                 page: payload$.page,
                 page_size: payload$.page_size,
-            }),
-            encodeDeepObjectQuery$({
-                filter: payload$.filter,
-                proxy: payload$.proxy,
+                raw: payload$.raw,
+                sync_token: payload$.sync_token,
+                updated_after: payload$.updated_after,
             })
         );
 
@@ -2386,18 +2386,18 @@ export class Ats extends ClientSDK {
         const path$ = this.templateURLComponent("/unified/ats/candidates")();
 
         const query$ = queryJoin$(
+            encodeDeepObjectQuery$({
+                filter: payload$.filter,
+                proxy: payload$.proxy,
+            }),
             encodeFormQuery$({
-                page: payload$.page,
-                page_size: payload$.page_size,
-                updated_after: payload$.updated_after,
                 fields: payload$.fields,
                 next: payload$.next,
+                page: payload$.page,
+                page_size: payload$.page_size,
                 raw: payload$.raw,
                 sync_token: payload$.sync_token,
-            }),
-            encodeDeepObjectQuery$({
-                proxy: payload$.proxy,
-                filter: payload$.filter,
+                updated_after: payload$.updated_after,
             })
         );
 
@@ -2477,18 +2477,18 @@ export class Ats extends ClientSDK {
         const path$ = this.templateURLComponent("/unified/ats/departments")();
 
         const query$ = queryJoin$(
-            encodeFormQuery$({
-                next: payload$.next,
-                page_size: payload$.page_size,
-                updated_after: payload$.updated_after,
-                fields: payload$.fields,
-                sync_token: payload$.sync_token,
-                page: payload$.page,
-                raw: payload$.raw,
-            }),
             encodeDeepObjectQuery$({
-                proxy: payload$.proxy,
                 filter: payload$.filter,
+                proxy: payload$.proxy,
+            }),
+            encodeFormQuery$({
+                fields: payload$.fields,
+                next: payload$.next,
+                page: payload$.page,
+                page_size: payload$.page_size,
+                raw: payload$.raw,
+                sync_token: payload$.sync_token,
+                updated_after: payload$.updated_after,
             })
         );
 
@@ -2568,18 +2568,18 @@ export class Ats extends ClientSDK {
         const path$ = this.templateURLComponent("/unified/ats/interview_stages")();
 
         const query$ = queryJoin$(
-            encodeFormQuery$({
-                fields: payload$.fields,
-                next: payload$.next,
-                raw: payload$.raw,
-                sync_token: payload$.sync_token,
-                updated_after: payload$.updated_after,
-                page: payload$.page,
-                page_size: payload$.page_size,
-            }),
             encodeDeepObjectQuery$({
                 filter: payload$.filter,
                 proxy: payload$.proxy,
+            }),
+            encodeFormQuery$({
+                fields: payload$.fields,
+                next: payload$.next,
+                page: payload$.page,
+                page_size: payload$.page_size,
+                raw: payload$.raw,
+                sync_token: payload$.sync_token,
+                updated_after: payload$.updated_after,
             })
         );
 
@@ -2661,18 +2661,18 @@ export class Ats extends ClientSDK {
         const path$ = this.templateURLComponent("/unified/ats/interviews")();
 
         const query$ = queryJoin$(
+            encodeDeepObjectQuery$({
+                filter: payload$.filter,
+                proxy: payload$.proxy,
+            }),
             encodeFormQuery$({
                 fields: payload$.fields,
+                next: payload$.next,
+                page: payload$.page,
                 page_size: payload$.page_size,
                 raw: payload$.raw,
                 sync_token: payload$.sync_token,
                 updated_after: payload$.updated_after,
-                next: payload$.next,
-                page: payload$.page,
-            }),
-            encodeDeepObjectQuery$({
-                filter: payload$.filter,
-                proxy: payload$.proxy,
             })
         );
 
@@ -2752,19 +2752,19 @@ export class Ats extends ClientSDK {
         const path$ = this.templateURLComponent("/unified/ats/job_postings")();
 
         const query$ = queryJoin$(
+            encodeDeepObjectQuery$({
+                filter: payload$.filter,
+                proxy: payload$.proxy,
+            }),
             encodeFormQuery$({
-                page_size: payload$.page_size,
-                raw: payload$.raw,
-                updated_after: payload$.updated_after,
-                next: payload$.next,
-                page: payload$.page,
                 fields: payload$.fields,
                 include: payload$.include,
+                next: payload$.next,
+                page: payload$.page,
+                page_size: payload$.page_size,
+                raw: payload$.raw,
                 sync_token: payload$.sync_token,
-            }),
-            encodeDeepObjectQuery$({
-                proxy: payload$.proxy,
-                filter: payload$.filter,
+                updated_after: payload$.updated_after,
             })
         );
 
@@ -2844,19 +2844,19 @@ export class Ats extends ClientSDK {
         const path$ = this.templateURLComponent("/unified/ats/jobs")();
 
         const query$ = queryJoin$(
+            encodeDeepObjectQuery$({
+                filter: payload$.filter,
+                proxy: payload$.proxy,
+            }),
             encodeFormQuery$({
-                fields: payload$.fields,
-                sync_token: payload$.sync_token,
                 expand: payload$.expand,
+                fields: payload$.fields,
                 next: payload$.next,
                 page: payload$.page,
                 page_size: payload$.page_size,
                 raw: payload$.raw,
+                sync_token: payload$.sync_token,
                 updated_after: payload$.updated_after,
-            }),
-            encodeDeepObjectQuery$({
-                filter: payload$.filter,
-                proxy: payload$.proxy,
             })
         );
 
@@ -2936,17 +2936,17 @@ export class Ats extends ClientSDK {
         const path$ = this.templateURLComponent("/unified/ats/lists")();
 
         const query$ = queryJoin$(
+            encodeDeepObjectQuery$({
+                filter: payload$.filter,
+                proxy: payload$.proxy,
+            }),
             encodeFormQuery$({
-                page_size: payload$.page_size,
-                raw: payload$.raw,
-                updated_after: payload$.updated_after,
                 fields: payload$.fields,
                 next: payload$.next,
                 page: payload$.page,
-            }),
-            encodeDeepObjectQuery$({
-                proxy: payload$.proxy,
-                filter: payload$.filter,
+                page_size: payload$.page_size,
+                raw: payload$.raw,
+                updated_after: payload$.updated_after,
             })
         );
 
@@ -3026,18 +3026,18 @@ export class Ats extends ClientSDK {
         const path$ = this.templateURLComponent("/unified/ats/locations")();
 
         const query$ = queryJoin$(
-            encodeFormQuery$({
-                next: payload$.next,
-                page: payload$.page,
-                fields: payload$.fields,
-                raw: payload$.raw,
-                sync_token: payload$.sync_token,
-                updated_after: payload$.updated_after,
-                page_size: payload$.page_size,
-            }),
             encodeDeepObjectQuery$({
                 filter: payload$.filter,
                 proxy: payload$.proxy,
+            }),
+            encodeFormQuery$({
+                fields: payload$.fields,
+                next: payload$.next,
+                page: payload$.page,
+                page_size: payload$.page_size,
+                raw: payload$.raw,
+                sync_token: payload$.sync_token,
+                updated_after: payload$.updated_after,
             })
         );
 
@@ -3117,18 +3117,18 @@ export class Ats extends ClientSDK {
         const path$ = this.templateURLComponent("/unified/ats/offers")();
 
         const query$ = queryJoin$(
+            encodeDeepObjectQuery$({
+                filter: payload$.filter,
+                proxy: payload$.proxy,
+            }),
             encodeFormQuery$({
+                fields: payload$.fields,
                 next: payload$.next,
                 page: payload$.page,
+                page_size: payload$.page_size,
                 raw: payload$.raw,
                 sync_token: payload$.sync_token,
-                page_size: payload$.page_size,
                 updated_after: payload$.updated_after,
-                fields: payload$.fields,
-            }),
-            encodeDeepObjectQuery$({
-                proxy: payload$.proxy,
-                filter: payload$.filter,
             })
         );
 
@@ -3208,18 +3208,18 @@ export class Ats extends ClientSDK {
         const path$ = this.templateURLComponent("/unified/ats/rejected_reasons")();
 
         const query$ = queryJoin$(
-            encodeFormQuery$({
-                fields: payload$.fields,
-                page_size: payload$.page_size,
-                next: payload$.next,
-                page: payload$.page,
-                raw: payload$.raw,
-                sync_token: payload$.sync_token,
-                updated_after: payload$.updated_after,
-            }),
             encodeDeepObjectQuery$({
                 filter: payload$.filter,
                 proxy: payload$.proxy,
+            }),
+            encodeFormQuery$({
+                fields: payload$.fields,
+                next: payload$.next,
+                page: payload$.page,
+                page_size: payload$.page_size,
+                raw: payload$.raw,
+                sync_token: payload$.sync_token,
+                updated_after: payload$.updated_after,
             })
         );
 
@@ -3302,17 +3302,17 @@ export class Ats extends ClientSDK {
 
         const query$ = queryJoin$(
             encodeDeepObjectQuery$({
-                proxy: payload$.proxy,
                 filter: payload$.filter,
+                proxy: payload$.proxy,
             }),
             encodeFormQuery$({
-                raw: payload$.raw,
-                updated_after: payload$.updated_after,
-                page: payload$.page,
-                page_size: payload$.page_size,
-                sync_token: payload$.sync_token,
                 fields: payload$.fields,
                 next: payload$.next,
+                page: payload$.page,
+                page_size: payload$.page_size,
+                raw: payload$.raw,
+                sync_token: payload$.sync_token,
+                updated_after: payload$.updated_after,
             })
         );
 

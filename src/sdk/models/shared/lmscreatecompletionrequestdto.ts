@@ -66,7 +66,7 @@ export type LmsCreateCompletionRequestDtoUser = {
 
 export type LmsCreateCompletionRequestDto = {
     /**
-     * The date the completion was created
+     * The date the content was completed
      */
     completedAt?: string | null | undefined;
     /**

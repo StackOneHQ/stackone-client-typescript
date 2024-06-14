@@ -12,6 +12,7 @@
 * [getCompany](#getcompany) - Get Company
 * [getEmployee](#getemployee) - Get Employee
 * [getEmployeeDocument](#getemployeedocument) - Get Employee Document
+* [getEmployeeDocumentCategory](#getemployeedocumentcategory) - Get Employee Document Category
 * [getEmployeesTimeOffRequest](#getemployeestimeoffrequest) - Get Employees Time Off Request
 * [getEmployeesWorkEligibility](#getemployeesworkeligibility) - Get Employees Work Eligibility
 * [getEmployment](#getemployment) - Get Employment
@@ -20,6 +21,7 @@
 * [getTimeOffRequest](#gettimeoffrequest) - Get time off request
 * [listBenefits](#listbenefits) - List benefits
 * [listCompanies](#listcompanies) - List Companies
+* [listEmployeeCategories](#listemployeecategories) - List Employee Document Categories
 * [listEmployeeDocuments](#listemployeedocuments) - List Employee Documents
 * [listEmployeeTimeOffRequests](#listemployeetimeoffrequests) - List Employee Time Off Requests
 * [listEmployeeWorkEligibility](#listemployeeworkeligibility) - List Employee Work Eligibility
@@ -839,6 +841,53 @@ run();
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 4xx-5xx         | */*             |
 
+## getEmployeeDocumentCategory
+
+Get Employee Document Category
+
+### Example Usage
+
+```typescript
+import { StackOne } from "@stackone/stackone-client-ts";
+
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
+
+async function run() {
+  const result = await stackOne.hris.getEmployeeDocumentCategory({
+    fields: "id,remote_id,name",
+    id: "<id>",
+    xAccountId: "<value>",
+  });
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.HrisGetEmployeeDocumentCategoryRequest](../../sdk/models/operations/hrisgetemployeedocumentcategoryrequest.md)                                                     | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+
+
+### Response
+
+**Promise\<[operations.HrisGetEmployeeDocumentCategoryResponse](../../sdk/models/operations/hrisgetemployeedocumentcategoryresponse.md)\>**
+### Errors
+
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
+
 ## getEmployeesTimeOffRequest
 
 Get Employees Time Off Request
@@ -1216,6 +1265,55 @@ run();
 ### Response
 
 **Promise\<[operations.HrisListCompaniesResponse](../../sdk/models/operations/hrislistcompaniesresponse.md)\>**
+### Errors
+
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
+
+## listEmployeeCategories
+
+List Employee Document Categories
+
+### Example Usage
+
+```typescript
+import { StackOne } from "@stackone/stackone-client-ts";
+
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
+
+async function run() {
+  const result = await stackOne.hris.listEmployeeCategories({
+    fields: "id,remote_id,name",
+    filter: {
+      updatedAfter: "2020-01-01T00:00:00.000Z",
+    },
+    xAccountId: "<value>",
+  });
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.HrisListEmployeeCategoriesRequest](../../sdk/models/operations/hrislistemployeecategoriesrequest.md)                                                               | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+
+
+### Response
+
+**Promise\<[operations.HrisListEmployeeCategoriesResponse](../../sdk/models/operations/hrislistemployeecategoriesresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

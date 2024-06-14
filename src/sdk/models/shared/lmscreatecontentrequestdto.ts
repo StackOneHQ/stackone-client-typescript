@@ -24,7 +24,7 @@ export enum LmsCreateContentRequestDtoValue {
 export type LmsCreateContentRequestDtoValueOpen = OpenEnum<typeof LmsCreateContentRequestDtoValue>;
 
 /**
- * The content type
+ * The type of content
  */
 export type LmsCreateContentRequestDtoContentType = {
     sourceValue?: LmsCreateContentRequestDto4 | string | number | boolean | null | undefined;
@@ -33,7 +33,7 @@ export type LmsCreateContentRequestDtoContentType = {
 
 export type LmsCreateContentRequestDto = {
     /**
-     * The active status of the content
+     * Whether the content is active and available for users.
      */
     active?: boolean | null | undefined;
     /**
@@ -41,19 +41,19 @@ export type LmsCreateContentRequestDto = {
      */
     categories?: Array<CreateCategoriesApiModel> | null | undefined;
     /**
-     * The content type
+     * The type of content
      */
     contentType?: LmsCreateContentRequestDtoContentType | null | undefined;
     /**
-     * The content URL
+     * The external URL of the content
      */
     contentUrl?: string | null | undefined;
     /**
-     * The parent ID associated with this content
+     * The parent IDs associated with this content
      */
-    courseId?: string | null | undefined;
+    courseIds?: Array<string> | null | undefined;
     /**
-     * The cover URL
+     * The URL of the thumbnail image associated with the content.
      */
     coverUrl?: string | null | undefined;
     /**
@@ -73,13 +73,9 @@ export type LmsCreateContentRequestDto = {
      */
     languages?: Array<ContentLanguageEnum> | null | undefined;
     /**
-     * The order of the content within a collection
+     * The order of the individual content within a content grouping. This is not applicable for pushing individual content.
      */
     order?: number | null | undefined;
-    /**
-     * Value to pass through to the provider
-     */
-    passthrough?: { [k: string]: any } | null | undefined;
     /**
      * The title of the content
      */
@@ -212,21 +208,20 @@ export namespace LmsCreateContentRequestDto$ {
                 .nullable(z.lazy(() => LmsCreateContentRequestDtoContentType$.inboundSchema))
                 .optional(),
             content_url: z.nullable(z.string()).optional(),
-            course_id: z.nullable(z.string()).optional(),
+            course_ids: z.nullable(z.array(z.string())).optional(),
             cover_url: z.nullable(z.string()).optional(),
             description: z.nullable(z.string()).optional(),
             duration: z.nullable(z.string()).optional(),
             external_id: z.nullable(z.string()).optional(),
             languages: z.nullable(z.array(ContentLanguageEnum$.inboundSchema)).optional(),
             order: z.nullable(z.number()).optional(),
-            passthrough: z.nullable(z.record(z.any())).optional(),
             title: z.nullable(z.string()).optional(),
         })
         .transform((v) => {
             return remap$(v, {
                 content_type: "contentType",
                 content_url: "contentUrl",
-                course_id: "courseId",
+                course_ids: "courseIds",
                 cover_url: "coverUrl",
                 external_id: "externalId",
             });
@@ -237,14 +232,13 @@ export namespace LmsCreateContentRequestDto$ {
         categories?: Array<CreateCategoriesApiModel$.Outbound> | null | undefined;
         content_type?: LmsCreateContentRequestDtoContentType$.Outbound | null | undefined;
         content_url?: string | null | undefined;
-        course_id?: string | null | undefined;
+        course_ids?: Array<string> | null | undefined;
         cover_url?: string | null | undefined;
         description?: string | null | undefined;
         duration?: string | null | undefined;
         external_id?: string | null | undefined;
         languages?: Array<ContentLanguageEnum$.Outbound> | null | undefined;
         order?: number | null | undefined;
-        passthrough?: { [k: string]: any } | null | undefined;
         title?: string | null | undefined;
     };
 
@@ -256,21 +250,20 @@ export namespace LmsCreateContentRequestDto$ {
                 .nullable(z.lazy(() => LmsCreateContentRequestDtoContentType$.outboundSchema))
                 .optional(),
             contentUrl: z.nullable(z.string()).optional(),
-            courseId: z.nullable(z.string()).optional(),
+            courseIds: z.nullable(z.array(z.string())).optional(),
             coverUrl: z.nullable(z.string()).optional(),
             description: z.nullable(z.string()).optional(),
             duration: z.nullable(z.string()).optional(),
             externalId: z.nullable(z.string()).optional(),
             languages: z.nullable(z.array(ContentLanguageEnum$.outboundSchema)).optional(),
             order: z.nullable(z.number()).optional(),
-            passthrough: z.nullable(z.record(z.any())).optional(),
             title: z.nullable(z.string()).optional(),
         })
         .transform((v) => {
             return remap$(v, {
                 contentType: "content_type",
                 contentUrl: "content_url",
-                courseId: "course_id",
+                courseIds: "course_ids",
                 coverUrl: "cover_url",
                 externalId: "external_id",
             });

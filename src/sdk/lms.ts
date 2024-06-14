@@ -308,9 +308,9 @@ export class Lms extends ClientSDK {
         const path$ = this.templateURLComponent("/unified/lms/content/{id}")(pathParams$);
 
         const query$ = encodeFormQuery$({
-            raw: payload$.raw,
             fields: payload$.fields,
             proxy: payload$.proxy,
+            raw: payload$.raw,
         });
 
         headers$.set(
