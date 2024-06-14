@@ -317,8 +317,8 @@ export class Marketing extends ClientSDK {
                 proxy: payload$.proxy,
             }),
             encodeFormQuery$({
-                raw: payload$.raw,
                 fields: payload$.fields,
+                raw: payload$.raw,
             })
         );
 
@@ -403,12 +403,12 @@ export class Marketing extends ClientSDK {
         );
 
         const query$ = queryJoin$(
-            encodeFormQuery$({
-                raw: payload$.raw,
-                fields: payload$.fields,
-            }),
             encodeDeepObjectQuery$({
                 proxy: payload$.proxy,
+            }),
+            encodeFormQuery$({
+                fields: payload$.fields,
+                raw: payload$.raw,
             })
         );
 
@@ -494,12 +494,12 @@ export class Marketing extends ClientSDK {
         );
 
         const query$ = queryJoin$(
+            encodeDeepObjectQuery$({
+                proxy: payload$.proxy,
+            }),
             encodeFormQuery$({
                 fields: payload$.fields,
                 raw: payload$.raw,
-            }),
-            encodeDeepObjectQuery$({
-                proxy: payload$.proxy,
             })
         );
 
@@ -586,12 +586,12 @@ export class Marketing extends ClientSDK {
         );
 
         const query$ = queryJoin$(
+            encodeDeepObjectQuery$({
+                proxy: payload$.proxy,
+            }),
             encodeFormQuery$({
                 fields: payload$.fields,
                 raw: payload$.raw,
-            }),
-            encodeDeepObjectQuery$({
-                proxy: payload$.proxy,
             })
         );
 
@@ -671,17 +671,17 @@ export class Marketing extends ClientSDK {
         const path$ = this.templateURLComponent("/unified/marketing/campaigns")();
 
         const query$ = queryJoin$(
+            encodeDeepObjectQuery$({
+                filter: payload$.filter,
+                proxy: payload$.proxy,
+            }),
             encodeFormQuery$({
+                fields: payload$.fields,
                 next: payload$.next,
                 page: payload$.page,
                 page_size: payload$.page_size,
                 raw: payload$.raw,
                 updated_after: payload$.updated_after,
-                fields: payload$.fields,
-            }),
-            encodeDeepObjectQuery$({
-                proxy: payload$.proxy,
-                filter: payload$.filter,
             })
         );
 
@@ -761,6 +761,10 @@ export class Marketing extends ClientSDK {
         const path$ = this.templateURLComponent("/unified/marketing/templates/email")();
 
         const query$ = queryJoin$(
+            encodeDeepObjectQuery$({
+                filter: payload$.filter,
+                proxy: payload$.proxy,
+            }),
             encodeFormQuery$({
                 fields: payload$.fields,
                 next: payload$.next,
@@ -768,10 +772,6 @@ export class Marketing extends ClientSDK {
                 page_size: payload$.page_size,
                 raw: payload$.raw,
                 updated_after: payload$.updated_after,
-            }),
-            encodeDeepObjectQuery$({
-                filter: payload$.filter,
-                proxy: payload$.proxy,
             })
         );
 
@@ -854,17 +854,17 @@ export class Marketing extends ClientSDK {
         const path$ = this.templateURLComponent("/unified/marketing/templates/omni_channel")();
 
         const query$ = queryJoin$(
+            encodeDeepObjectQuery$({
+                filter: payload$.filter,
+                proxy: payload$.proxy,
+            }),
             encodeFormQuery$({
-                page_size: payload$.page_size,
-                raw: payload$.raw,
-                updated_after: payload$.updated_after,
                 fields: payload$.fields,
                 next: payload$.next,
                 page: payload$.page,
-            }),
-            encodeDeepObjectQuery$({
-                proxy: payload$.proxy,
-                filter: payload$.filter,
+                page_size: payload$.page_size,
+                raw: payload$.raw,
+                updated_after: payload$.updated_after,
             })
         );
 
@@ -946,17 +946,17 @@ export class Marketing extends ClientSDK {
         const path$ = this.templateURLComponent("/unified/marketing/templates/push")();
 
         const query$ = queryJoin$(
+            encodeDeepObjectQuery$({
+                filter: payload$.filter,
+                proxy: payload$.proxy,
+            }),
             encodeFormQuery$({
-                raw: payload$.raw,
-                updated_after: payload$.updated_after,
                 fields: payload$.fields,
                 next: payload$.next,
                 page: payload$.page,
                 page_size: payload$.page_size,
-            }),
-            encodeDeepObjectQuery$({
-                filter: payload$.filter,
-                proxy: payload$.proxy,
+                raw: payload$.raw,
+                updated_after: payload$.updated_after,
             })
         );
 

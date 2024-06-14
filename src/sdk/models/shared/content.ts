@@ -20,7 +20,7 @@ export enum ContentValue {
 export type ContentValueOpen = OpenEnum<typeof ContentValue>;
 
 /**
- * The content type
+ * The type of content
  */
 export type ContentContentType = {
     sourceValue?: Content4 | string | number | boolean | null | undefined;
@@ -29,7 +29,7 @@ export type ContentContentType = {
 
 export type Content = {
     /**
-     * The active status of the content
+     * Whether the content is active and available for users.
      */
     active?: boolean | null | undefined;
     /**
@@ -37,19 +37,19 @@ export type Content = {
      */
     categories?: Array<Categories> | null | undefined;
     /**
-     * The content type
+     * The type of content
      */
     contentType?: ContentContentType | null | undefined;
     /**
-     * The content URL
+     * The external URL of the content
      */
     contentUrl?: string | null | undefined;
     /**
-     * The parent ID associated with this content
+     * The parent ID/IDs associated with this content
      */
-    courseId?: string | null | undefined;
+    courseIds?: Array<string> | null | undefined;
     /**
-     * The cover URL
+     * The URL of the thumbnail image associated with the content.
      */
     coverUrl?: string | null | undefined;
     /**
@@ -73,17 +73,13 @@ export type Content = {
      */
     languages?: Array<ContentLanguageEnum> | null | undefined;
     /**
-     * The order of the content within a collection
+     * The order of the individual content within a content grouping. This is not applicable for pushing individual content.
      */
     order?: number | null | undefined;
     /**
-     * Value to pass through to the provider
-     */
-    passthrough?: { [k: string]: any } | null | undefined;
-    /**
      * Provider's unique identifier of the parent course ID associated with this content
      */
-    remoteCourseId?: string | null | undefined;
+    remoteCourseIds?: Array<string> | null | undefined;
     /**
      * Provider's unique identifier of the external ID associated with this content
      */
@@ -194,7 +190,7 @@ export namespace Content$ {
             categories: z.nullable(z.array(Categories$.inboundSchema)).optional(),
             content_type: z.nullable(z.lazy(() => ContentContentType$.inboundSchema)).optional(),
             content_url: z.nullable(z.string()).optional(),
-            course_id: z.nullable(z.string()).optional(),
+            course_ids: z.nullable(z.array(z.string())).optional(),
             cover_url: z.nullable(z.string()).optional(),
             description: z.nullable(z.string()).optional(),
             duration: z.nullable(z.string()).optional(),
@@ -202,8 +198,7 @@ export namespace Content$ {
             id: z.nullable(z.string()).optional(),
             languages: z.nullable(z.array(ContentLanguageEnum$.inboundSchema)).optional(),
             order: z.nullable(z.number()).optional(),
-            passthrough: z.nullable(z.record(z.any())).optional(),
-            remote_course_id: z.nullable(z.string()).optional(),
+            remote_course_ids: z.nullable(z.array(z.string())).optional(),
             remote_external_id: z.nullable(z.string()).optional(),
             remote_id: z.nullable(z.string()).optional(),
             title: z.nullable(z.string()).optional(),
@@ -212,10 +207,10 @@ export namespace Content$ {
             return remap$(v, {
                 content_type: "contentType",
                 content_url: "contentUrl",
-                course_id: "courseId",
+                course_ids: "courseIds",
                 cover_url: "coverUrl",
                 external_id: "externalId",
-                remote_course_id: "remoteCourseId",
+                remote_course_ids: "remoteCourseIds",
                 remote_external_id: "remoteExternalId",
                 remote_id: "remoteId",
             });
@@ -226,7 +221,7 @@ export namespace Content$ {
         categories?: Array<Categories$.Outbound> | null | undefined;
         content_type?: ContentContentType$.Outbound | null | undefined;
         content_url?: string | null | undefined;
-        course_id?: string | null | undefined;
+        course_ids?: Array<string> | null | undefined;
         cover_url?: string | null | undefined;
         description?: string | null | undefined;
         duration?: string | null | undefined;
@@ -234,8 +229,7 @@ export namespace Content$ {
         id?: string | null | undefined;
         languages?: Array<ContentLanguageEnum$.Outbound> | null | undefined;
         order?: number | null | undefined;
-        passthrough?: { [k: string]: any } | null | undefined;
-        remote_course_id?: string | null | undefined;
+        remote_course_ids?: Array<string> | null | undefined;
         remote_external_id?: string | null | undefined;
         remote_id?: string | null | undefined;
         title?: string | null | undefined;
@@ -247,7 +241,7 @@ export namespace Content$ {
             categories: z.nullable(z.array(Categories$.outboundSchema)).optional(),
             contentType: z.nullable(z.lazy(() => ContentContentType$.outboundSchema)).optional(),
             contentUrl: z.nullable(z.string()).optional(),
-            courseId: z.nullable(z.string()).optional(),
+            courseIds: z.nullable(z.array(z.string())).optional(),
             coverUrl: z.nullable(z.string()).optional(),
             description: z.nullable(z.string()).optional(),
             duration: z.nullable(z.string()).optional(),
@@ -255,8 +249,7 @@ export namespace Content$ {
             id: z.nullable(z.string()).optional(),
             languages: z.nullable(z.array(ContentLanguageEnum$.outboundSchema)).optional(),
             order: z.nullable(z.number()).optional(),
-            passthrough: z.nullable(z.record(z.any())).optional(),
-            remoteCourseId: z.nullable(z.string()).optional(),
+            remoteCourseIds: z.nullable(z.array(z.string())).optional(),
             remoteExternalId: z.nullable(z.string()).optional(),
             remoteId: z.nullable(z.string()).optional(),
             title: z.nullable(z.string()).optional(),
@@ -265,10 +258,10 @@ export namespace Content$ {
             return remap$(v, {
                 contentType: "content_type",
                 contentUrl: "content_url",
-                courseId: "course_id",
+                courseIds: "course_ids",
                 coverUrl: "cover_url",
                 externalId: "external_id",
-                remoteCourseId: "remote_course_id",
+                remoteCourseIds: "remote_course_ids",
                 remoteExternalId: "remote_external_id",
                 remoteId: "remote_id",
             });

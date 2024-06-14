@@ -26,7 +26,7 @@ export type Result = {
 
 export type Completion = {
     /**
-     * The date the completion was created
+     * The date the content was completed
      */
     completedAt?: string | null | undefined;
     /**

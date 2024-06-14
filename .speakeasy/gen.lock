@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 7fa83af8-9e8e-4410-b7e2-cf1d0eaf688b
 management:
-  docChecksum: 900342b8177c19a895af892f1054837b
+  docChecksum: 0812747492b726a90b3f6ce50b5bd316
   docVersion: 1.0.0
-  speakeasyVersion: 1.303.4
-  generationVersion: 2.340.2
-  releaseVersion: 4.9.4
-  configChecksum: 728523a8f8273d167494ac54a693b16d
+  speakeasyVersion: 1.308.1
+  generationVersion: 2.342.6
+  releaseVersion: 4.9.5
+  configChecksum: cfdfbb7f70a72aa6cc287752cf42410e
   repoURL: https://github.com/StackOneHQ/stackone-client-typescript.git
   repoSubDirectory: .
   installationURL: https://github.com/StackOneHQ/stackone-client-typescript
@@ -15,7 +15,7 @@ features:
   typescript:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.5
-    core: 3.9.13
+    core: 3.9.14
     deprecations: 2.81.1
     downloadStreams: 0.1.1
     examples: 2.81.4
@@ -134,6 +134,7 @@ generatedFiles:
   - src/sdk/models/operations/hrisgetcompany.ts
   - src/sdk/models/operations/hrisgetemployee.ts
   - src/sdk/models/operations/hrisgetemployeedocument.ts
+  - src/sdk/models/operations/hrisgetemployeedocumentcategory.ts
   - src/sdk/models/operations/hrisgetemployeestimeoffrequest.ts
   - src/sdk/models/operations/hrisgetemployeesworkeligibility.ts
   - src/sdk/models/operations/hrisgetemployment.ts
@@ -142,6 +143,7 @@ generatedFiles:
   - src/sdk/models/operations/hrisgettimeoffrequest.ts
   - src/sdk/models/operations/hrislistbenefits.ts
   - src/sdk/models/operations/hrislistcompanies.ts
+  - src/sdk/models/operations/hrislistemployeecategories.ts
   - src/sdk/models/operations/hrislistemployeedocuments.ts
   - src/sdk/models/operations/hrislistemployeetimeoffrequests.ts
   - src/sdk/models/operations/hrislistemployeeworkeligibility.ts
@@ -294,6 +296,8 @@ generatedFiles:
   - src/sdk/models/shared/costcenters.ts
   - src/sdk/models/shared/hrisdocumentresult.ts
   - src/sdk/models/shared/hrisdocumentapimodel.ts
+  - src/sdk/models/shared/referenceresult.ts
+  - src/sdk/models/shared/reference.ts
   - src/sdk/models/shared/timeoffresult.ts
   - src/sdk/models/shared/timeoff.ts
   - src/sdk/models/shared/workeligibilityresult.ts
@@ -305,6 +309,7 @@ generatedFiles:
   - src/sdk/models/shared/hrislocation.ts
   - src/sdk/models/shared/hrisbenefitspaginated.ts
   - src/sdk/models/shared/companiespaginated.ts
+  - src/sdk/models/shared/referencepaginated.ts
   - src/sdk/models/shared/hrisdocumentspaginated.ts
   - src/sdk/models/shared/timeoffpaginated.ts
   - src/sdk/models/shared/workeligibilitypaginated.ts
@@ -501,6 +506,8 @@ generatedFiles:
   - docs/sdk/models/operations/hrisgetemployeeresponse.md
   - docs/sdk/models/operations/hrisgetemployeedocumentrequest.md
   - docs/sdk/models/operations/hrisgetemployeedocumentresponse.md
+  - docs/sdk/models/operations/hrisgetemployeedocumentcategoryrequest.md
+  - docs/sdk/models/operations/hrisgetemployeedocumentcategoryresponse.md
   - docs/sdk/models/operations/hrisgetemployeestimeoffrequestrequest.md
   - docs/sdk/models/operations/hrisgetemployeestimeoffrequestresponse.md
   - docs/sdk/models/operations/hrisgetemployeesworkeligibilityrequest.md
@@ -519,6 +526,9 @@ generatedFiles:
   - docs/sdk/models/operations/hrislistcompaniesqueryparamfilter.md
   - docs/sdk/models/operations/hrislistcompaniesrequest.md
   - docs/sdk/models/operations/hrislistcompaniesresponse.md
+  - docs/sdk/models/operations/hrislistemployeecategoriesqueryparamfilter.md
+  - docs/sdk/models/operations/hrislistemployeecategoriesrequest.md
+  - docs/sdk/models/operations/hrislistemployeecategoriesresponse.md
   - docs/sdk/models/operations/hrislistemployeedocumentsqueryparamfilter.md
   - docs/sdk/models/operations/hrislistemployeedocumentsrequest.md
   - docs/sdk/models/operations/hrislistemployeedocumentsresponse.md
@@ -1047,6 +1057,8 @@ generatedFiles:
   - docs/sdk/models/shared/hrisdocumentapimodelschemastypevalue.md
   - docs/sdk/models/shared/hrisdocumentapimodeltype.md
   - docs/sdk/models/shared/hrisdocumentapimodel.md
+  - docs/sdk/models/shared/referenceresult.md
+  - docs/sdk/models/shared/reference.md
   - docs/sdk/models/shared/timeoffresult.md
   - docs/sdk/models/shared/timeoff4.md
   - docs/sdk/models/shared/timeoffsourcevalue.md
@@ -1094,6 +1106,7 @@ generatedFiles:
   - docs/sdk/models/shared/hrislocation.md
   - docs/sdk/models/shared/hrisbenefitspaginated.md
   - docs/sdk/models/shared/companiespaginated.md
+  - docs/sdk/models/shared/referencepaginated.md
   - docs/sdk/models/shared/hrisdocumentspaginated.md
   - docs/sdk/models/shared/timeoffpaginated.md
   - docs/sdk/models/shared/workeligibilitypaginated.md

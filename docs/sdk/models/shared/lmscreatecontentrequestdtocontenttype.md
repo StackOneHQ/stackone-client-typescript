@@ -1,6 +1,6 @@
 # LmsCreateContentRequestDtoContentType
 
-The content type
+The type of content
 
 
 ## Fields
