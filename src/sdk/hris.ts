@@ -492,12 +492,12 @@ export class Hris extends ClientSDK {
         const path$ = this.templateURLComponent("/unified/hris/benefits/{id}")(pathParams$);
 
         const query$ = queryJoin$(
+            encodeDeepObjectQuery$({
+                proxy: payload$.proxy,
+            }),
             encodeFormQuery$({
                 fields: payload$.fields,
                 raw: payload$.raw,
-            }),
-            encodeDeepObjectQuery$({
-                proxy: payload$.proxy,
             })
         );
 
@@ -580,12 +580,12 @@ export class Hris extends ClientSDK {
         const path$ = this.templateURLComponent("/unified/hris/companies/{id}")(pathParams$);
 
         const query$ = queryJoin$(
+            encodeDeepObjectQuery$({
+                proxy: payload$.proxy,
+            }),
             encodeFormQuery$({
                 fields: payload$.fields,
                 raw: payload$.raw,
-            }),
-            encodeDeepObjectQuery$({
-                proxy: payload$.proxy,
             })
         );
 
@@ -668,14 +668,14 @@ export class Hris extends ClientSDK {
         const path$ = this.templateURLComponent("/unified/hris/employees/{id}")(pathParams$);
 
         const query$ = queryJoin$(
-            encodeFormQuery$({
-                include: payload$.include,
-                raw: payload$.raw,
-                expand: payload$.expand,
-                fields: payload$.fields,
-            }),
             encodeDeepObjectQuery$({
                 proxy: payload$.proxy,
+            }),
+            encodeFormQuery$({
+                expand: payload$.expand,
+                fields: payload$.fields,
+                include: payload$.include,
+                raw: payload$.raw,
             })
         );
 
@@ -764,12 +764,12 @@ export class Hris extends ClientSDK {
         )(pathParams$);
 
         const query$ = queryJoin$(
-            encodeFormQuery$({
-                raw: payload$.raw,
-                fields: payload$.fields,
-            }),
             encodeDeepObjectQuery$({
                 proxy: payload$.proxy,
+            }),
+            encodeFormQuery$({
+                fields: payload$.fields,
+                raw: payload$.raw,
             })
         );
 
@@ -859,12 +859,12 @@ export class Hris extends ClientSDK {
         )(pathParams$);
 
         const query$ = queryJoin$(
+            encodeDeepObjectQuery$({
+                proxy: payload$.proxy,
+            }),
             encodeFormQuery$({
                 fields: payload$.fields,
                 raw: payload$.raw,
-            }),
-            encodeDeepObjectQuery$({
-                proxy: payload$.proxy,
             })
         );
 
@@ -954,12 +954,12 @@ export class Hris extends ClientSDK {
         )(pathParams$);
 
         const query$ = queryJoin$(
-            encodeFormQuery$({
-                raw: payload$.raw,
-                fields: payload$.fields,
-            }),
             encodeDeepObjectQuery$({
                 proxy: payload$.proxy,
+            }),
+            encodeFormQuery$({
+                fields: payload$.fields,
+                raw: payload$.raw,
             })
         );
 
@@ -1044,13 +1044,13 @@ export class Hris extends ClientSDK {
         const path$ = this.templateURLComponent("/unified/hris/employments/{id}")(pathParams$);
 
         const query$ = queryJoin$(
-            encodeFormQuery$({
-                fields: payload$.fields,
-                raw: payload$.raw,
-                expand: payload$.expand,
-            }),
             encodeDeepObjectQuery$({
                 proxy: payload$.proxy,
+            }),
+            encodeFormQuery$({
+                expand: payload$.expand,
+                fields: payload$.fields,
+                raw: payload$.raw,
             })
         );
 
@@ -1133,12 +1133,12 @@ export class Hris extends ClientSDK {
         const path$ = this.templateURLComponent("/unified/hris/groups/{id}")(pathParams$);
 
         const query$ = queryJoin$(
+            encodeDeepObjectQuery$({
+                proxy: payload$.proxy,
+            }),
             encodeFormQuery$({
                 fields: payload$.fields,
                 raw: payload$.raw,
-            }),
-            encodeDeepObjectQuery$({
-                proxy: payload$.proxy,
             })
         );
 
@@ -1221,12 +1221,12 @@ export class Hris extends ClientSDK {
         const path$ = this.templateURLComponent("/unified/hris/locations/{id}")(pathParams$);
 
         const query$ = queryJoin$(
+            encodeDeepObjectQuery$({
+                proxy: payload$.proxy,
+            }),
             encodeFormQuery$({
                 fields: payload$.fields,
                 raw: payload$.raw,
-            }),
-            encodeDeepObjectQuery$({
-                proxy: payload$.proxy,
             })
         );
 
@@ -1309,12 +1309,12 @@ export class Hris extends ClientSDK {
         const path$ = this.templateURLComponent("/unified/hris/time_off/{id}")(pathParams$);
 
         const query$ = queryJoin$(
+            encodeDeepObjectQuery$({
+                proxy: payload$.proxy,
+            }),
             encodeFormQuery$({
                 fields: payload$.fields,
                 raw: payload$.raw,
-            }),
-            encodeDeepObjectQuery$({
-                proxy: payload$.proxy,
             })
         );
 
@@ -1394,17 +1394,17 @@ export class Hris extends ClientSDK {
         const path$ = this.templateURLComponent("/unified/hris/benefits")();
 
         const query$ = queryJoin$(
+            encodeDeepObjectQuery$({
+                filter: payload$.filter,
+                proxy: payload$.proxy,
+            }),
             encodeFormQuery$({
+                fields: payload$.fields,
+                next: payload$.next,
                 page: payload$.page,
                 page_size: payload$.page_size,
                 raw: payload$.raw,
                 updated_after: payload$.updated_after,
-                fields: payload$.fields,
-                next: payload$.next,
-            }),
-            encodeDeepObjectQuery$({
-                proxy: payload$.proxy,
-                filter: payload$.filter,
             })
         );
 
@@ -1484,17 +1484,17 @@ export class Hris extends ClientSDK {
         const path$ = this.templateURLComponent("/unified/hris/companies")();
 
         const query$ = queryJoin$(
+            encodeDeepObjectQuery$({
+                filter: payload$.filter,
+                proxy: payload$.proxy,
+            }),
             encodeFormQuery$({
+                fields: payload$.fields,
+                next: payload$.next,
                 page: payload$.page,
                 page_size: payload$.page_size,
                 raw: payload$.raw,
                 updated_after: payload$.updated_after,
-                fields: payload$.fields,
-                next: payload$.next,
-            }),
-            encodeDeepObjectQuery$({
-                proxy: payload$.proxy,
-                filter: payload$.filter,
             })
         );
 
@@ -1579,17 +1579,17 @@ export class Hris extends ClientSDK {
         );
 
         const query$ = queryJoin$(
+            encodeDeepObjectQuery$({
+                filter: payload$.filter,
+                proxy: payload$.proxy,
+            }),
             encodeFormQuery$({
-                page_size: payload$.page_size,
-                raw: payload$.raw,
-                updated_after: payload$.updated_after,
                 fields: payload$.fields,
                 next: payload$.next,
                 page: payload$.page,
-            }),
-            encodeDeepObjectQuery$({
-                proxy: payload$.proxy,
-                filter: payload$.filter,
+                page_size: payload$.page_size,
+                raw: payload$.raw,
+                updated_after: payload$.updated_after,
             })
         );
 
@@ -1677,17 +1677,17 @@ export class Hris extends ClientSDK {
         );
 
         const query$ = queryJoin$(
+            encodeDeepObjectQuery$({
+                filter: payload$.filter,
+                proxy: payload$.proxy,
+            }),
             encodeFormQuery$({
+                fields: payload$.fields,
                 next: payload$.next,
                 page: payload$.page,
                 page_size: payload$.page_size,
                 raw: payload$.raw,
                 updated_after: payload$.updated_after,
-                fields: payload$.fields,
-            }),
-            encodeDeepObjectQuery$({
-                proxy: payload$.proxy,
-                filter: payload$.filter,
             })
         );
 
@@ -1775,17 +1775,17 @@ export class Hris extends ClientSDK {
         );
 
         const query$ = queryJoin$(
+            encodeDeepObjectQuery$({
+                filter: payload$.filter,
+                proxy: payload$.proxy,
+            }),
             encodeFormQuery$({
+                fields: payload$.fields,
+                next: payload$.next,
                 page: payload$.page,
                 page_size: payload$.page_size,
                 raw: payload$.raw,
                 updated_after: payload$.updated_after,
-                fields: payload$.fields,
-                next: payload$.next,
-            }),
-            encodeDeepObjectQuery$({
-                proxy: payload$.proxy,
-                filter: payload$.filter,
             })
         );
 
@@ -1867,19 +1867,19 @@ export class Hris extends ClientSDK {
         const path$ = this.templateURLComponent("/unified/hris/employees")();
 
         const query$ = queryJoin$(
+            encodeDeepObjectQuery$({
+                filter: payload$.filter,
+                proxy: payload$.proxy,
+            }),
             encodeFormQuery$({
+                expand: payload$.expand,
+                fields: payload$.fields,
                 include: payload$.include,
                 next: payload$.next,
                 page: payload$.page,
                 page_size: payload$.page_size,
                 raw: payload$.raw,
-                expand: payload$.expand,
-                fields: payload$.fields,
                 updated_after: payload$.updated_after,
-            }),
-            encodeDeepObjectQuery$({
-                proxy: payload$.proxy,
-                filter: payload$.filter,
             })
         );
 
@@ -1978,18 +1978,18 @@ export class Hris extends ClientSDK {
         const path$ = this.templateURLComponent("/unified/hris/employments")();
 
         const query$ = queryJoin$(
-            encodeFormQuery$({
-                page: payload$.page,
-                fields: payload$.fields,
-                next: payload$.next,
-                page_size: payload$.page_size,
-                raw: payload$.raw,
-                updated_after: payload$.updated_after,
-                expand: payload$.expand,
-            }),
             encodeDeepObjectQuery$({
                 filter: payload$.filter,
                 proxy: payload$.proxy,
+            }),
+            encodeFormQuery$({
+                expand: payload$.expand,
+                fields: payload$.fields,
+                next: payload$.next,
+                page: payload$.page,
+                page_size: payload$.page_size,
+                raw: payload$.raw,
+                updated_after: payload$.updated_after,
             })
         );
 
@@ -2070,16 +2070,16 @@ export class Hris extends ClientSDK {
 
         const query$ = queryJoin$(
             encodeDeepObjectQuery$({
-                proxy: payload$.proxy,
                 filter: payload$.filter,
+                proxy: payload$.proxy,
             }),
             encodeFormQuery$({
-                raw: payload$.raw,
-                updated_after: payload$.updated_after,
                 fields: payload$.fields,
                 next: payload$.next,
                 page: payload$.page,
                 page_size: payload$.page_size,
+                raw: payload$.raw,
+                updated_after: payload$.updated_after,
             })
         );
 
@@ -2159,17 +2159,17 @@ export class Hris extends ClientSDK {
         const path$ = this.templateURLComponent("/unified/hris/locations")();
 
         const query$ = queryJoin$(
+            encodeDeepObjectQuery$({
+                filter: payload$.filter,
+                proxy: payload$.proxy,
+            }),
             encodeFormQuery$({
+                fields: payload$.fields,
                 next: payload$.next,
                 page: payload$.page,
                 page_size: payload$.page_size,
                 raw: payload$.raw,
                 updated_after: payload$.updated_after,
-                fields: payload$.fields,
-            }),
-            encodeDeepObjectQuery$({
-                proxy: payload$.proxy,
-                filter: payload$.filter,
             })
         );
 
@@ -2249,17 +2249,17 @@ export class Hris extends ClientSDK {
         const path$ = this.templateURLComponent("/unified/hris/time_off")();
 
         const query$ = queryJoin$(
+            encodeDeepObjectQuery$({
+                filter: payload$.filter,
+                proxy: payload$.proxy,
+            }),
             encodeFormQuery$({
-                updated_after: payload$.updated_after,
                 fields: payload$.fields,
                 next: payload$.next,
                 page: payload$.page,
                 page_size: payload$.page_size,
                 raw: payload$.raw,
-            }),
-            encodeDeepObjectQuery$({
-                filter: payload$.filter,
-                proxy: payload$.proxy,
+                updated_after: payload$.updated_after,
             })
         );
 

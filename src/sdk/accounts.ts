@@ -279,12 +279,12 @@ export class Accounts extends ClientSDK {
         const path$ = this.templateURLComponent("/accounts")();
 
         const query$ = encodeFormQuery$({
-            page_size: payload$.page_size,
-            provider: payload$.provider,
-            providers: payload$.providers,
             account_ids: payload$.account_ids,
             origin_owner_id: payload$.origin_owner_id,
             page: payload$.page,
+            page_size: payload$.page_size,
+            provider: payload$.provider,
+            providers: payload$.providers,
         });
 
         const security$ =

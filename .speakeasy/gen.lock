@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 7fa83af8-9e8e-4410-b7e2-cf1d0eaf688b
 management:
-  docChecksum: 900342b8177c19a895af892f1054837b
+  docChecksum: bd4dd3a9b78cf1a3744543a0e5c00ac1
   docVersion: 1.0.0
-  speakeasyVersion: 1.303.4
-  generationVersion: 2.340.2
-  releaseVersion: 4.9.4
-  configChecksum: 728523a8f8273d167494ac54a693b16d
+  speakeasyVersion: 1.308.1
+  generationVersion: 2.342.6
+  releaseVersion: 4.9.5
+  configChecksum: cfdfbb7f70a72aa6cc287752cf42410e
   repoURL: https://github.com/StackOneHQ/stackone-client-typescript.git
   repoSubDirectory: .
   installationURL: https://github.com/StackOneHQ/stackone-client-typescript
@@ -15,7 +15,7 @@ features:
   typescript:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.5
-    core: 3.9.13
+    core: 3.9.14
     deprecations: 2.81.1
     downloadStreams: 0.1.1
     examples: 2.81.4

@@ -146,12 +146,12 @@ export class Crm extends ClientSDK {
         const path$ = this.templateURLComponent("/unified/crm/accounts/{id}")(pathParams$);
 
         const query$ = queryJoin$(
+            encodeDeepObjectQuery$({
+                proxy: payload$.proxy,
+            }),
             encodeFormQuery$({
                 fields: payload$.fields,
                 raw: payload$.raw,
-            }),
-            encodeDeepObjectQuery$({
-                proxy: payload$.proxy,
             })
         );
 
@@ -234,13 +234,13 @@ export class Crm extends ClientSDK {
         const path$ = this.templateURLComponent("/unified/crm/contacts/{id}")(pathParams$);
 
         const query$ = queryJoin$(
+            encodeDeepObjectQuery$({
+                proxy: payload$.proxy,
+            }),
             encodeFormQuery$({
                 fields: payload$.fields,
                 include: payload$.include,
                 raw: payload$.raw,
-            }),
-            encodeDeepObjectQuery$({
-                proxy: payload$.proxy,
             })
         );
 
@@ -323,12 +323,12 @@ export class Crm extends ClientSDK {
         const path$ = this.templateURLComponent("/unified/crm/lists/{id}")(pathParams$);
 
         const query$ = queryJoin$(
+            encodeDeepObjectQuery$({
+                proxy: payload$.proxy,
+            }),
             encodeFormQuery$({
                 fields: payload$.fields,
                 raw: payload$.raw,
-            }),
-            encodeDeepObjectQuery$({
-                proxy: payload$.proxy,
             })
         );
 
@@ -413,12 +413,12 @@ export class Crm extends ClientSDK {
                 proxy: payload$.proxy,
             }),
             encodeFormQuery$({
+                fields: payload$.fields,
                 next: payload$.next,
                 page: payload$.page,
                 page_size: payload$.page_size,
                 raw: payload$.raw,
                 updated_after: payload$.updated_after,
-                fields: payload$.fields,
             })
         );
 
@@ -498,18 +498,18 @@ export class Crm extends ClientSDK {
         const path$ = this.templateURLComponent("/unified/crm/contacts")();
 
         const query$ = queryJoin$(
+            encodeDeepObjectQuery$({
+                filter: payload$.filter,
+                proxy: payload$.proxy,
+            }),
             encodeFormQuery$({
                 fields: payload$.fields,
                 include: payload$.include,
-                raw: payload$.raw,
-                updated_after: payload$.updated_after,
                 next: payload$.next,
                 page: payload$.page,
                 page_size: payload$.page_size,
-            }),
-            encodeDeepObjectQuery$({
-                proxy: payload$.proxy,
-                filter: payload$.filter,
+                raw: payload$.raw,
+                updated_after: payload$.updated_after,
             })
         );
 
@@ -589,17 +589,17 @@ export class Crm extends ClientSDK {
         const path$ = this.templateURLComponent("/unified/crm/lists")();
 
         const query$ = queryJoin$(
+            encodeDeepObjectQuery$({
+                filter: payload$.filter,
+                proxy: payload$.proxy,
+            }),
             encodeFormQuery$({
-                updated_after: payload$.updated_after,
                 fields: payload$.fields,
                 next: payload$.next,
                 page: payload$.page,
                 page_size: payload$.page_size,
                 raw: payload$.raw,
-            }),
-            encodeDeepObjectQuery$({
-                filter: payload$.filter,
-                proxy: payload$.proxy,
+                updated_after: payload$.updated_after,
             })
         );
 

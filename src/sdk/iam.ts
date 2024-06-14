@@ -67,13 +67,13 @@ export class Iam extends ClientSDK {
         const path$ = this.templateURLComponent("/unified/iam/groups/{id}")(pathParams$);
 
         const query$ = queryJoin$(
-            encodeFormQuery$({
-                raw: payload$.raw,
-                expand: payload$.expand,
-                fields: payload$.fields,
-            }),
             encodeDeepObjectQuery$({
                 proxy: payload$.proxy,
+            }),
+            encodeFormQuery$({
+                expand: payload$.expand,
+                fields: payload$.fields,
+                raw: payload$.raw,
             })
         );
 
@@ -160,9 +160,9 @@ export class Iam extends ClientSDK {
                 proxy: payload$.proxy,
             }),
             encodeFormQuery$({
-                raw: payload$.raw,
                 expand: payload$.expand,
                 fields: payload$.fields,
+                raw: payload$.raw,
             })
         );
 
@@ -245,13 +245,13 @@ export class Iam extends ClientSDK {
         const path$ = this.templateURLComponent("/unified/iam/roles/{id}")(pathParams$);
 
         const query$ = queryJoin$(
-            encodeFormQuery$({
-                fields: payload$.fields,
-                raw: payload$.raw,
-                expand: payload$.expand,
-            }),
             encodeDeepObjectQuery$({
                 proxy: payload$.proxy,
+            }),
+            encodeFormQuery$({
+                expand: payload$.expand,
+                fields: payload$.fields,
+                raw: payload$.raw,
             })
         );
 
@@ -334,13 +334,13 @@ export class Iam extends ClientSDK {
         const path$ = this.templateURLComponent("/unified/iam/users/{id}")(pathParams$);
 
         const query$ = queryJoin$(
-            encodeFormQuery$({
-                raw: payload$.raw,
-                expand: payload$.expand,
-                fields: payload$.fields,
-            }),
             encodeDeepObjectQuery$({
                 proxy: payload$.proxy,
+            }),
+            encodeFormQuery$({
+                expand: payload$.expand,
+                fields: payload$.fields,
+                raw: payload$.raw,
             })
         );
 
@@ -420,18 +420,18 @@ export class Iam extends ClientSDK {
         const path$ = this.templateURLComponent("/unified/iam/groups")();
 
         const query$ = queryJoin$(
-            encodeFormQuery$({
-                expand: payload$.expand,
-                fields: payload$.fields,
-                raw: payload$.raw,
-                updated_after: payload$.updated_after,
-                next: payload$.next,
-                page: payload$.page,
-                page_size: payload$.page_size,
-            }),
             encodeDeepObjectQuery$({
                 filter: payload$.filter,
                 proxy: payload$.proxy,
+            }),
+            encodeFormQuery$({
+                expand: payload$.expand,
+                fields: payload$.fields,
+                next: payload$.next,
+                page: payload$.page,
+                page_size: payload$.page_size,
+                raw: payload$.raw,
+                updated_after: payload$.updated_after,
             })
         );
 
@@ -511,18 +511,18 @@ export class Iam extends ClientSDK {
         const path$ = this.templateURLComponent("/unified/iam/policies")();
 
         const query$ = queryJoin$(
-            encodeFormQuery$({
-                updated_after: payload$.updated_after,
-                page: payload$.page,
-                page_size: payload$.page_size,
-                expand: payload$.expand,
-                fields: payload$.fields,
-                next: payload$.next,
-                raw: payload$.raw,
-            }),
             encodeDeepObjectQuery$({
                 filter: payload$.filter,
                 proxy: payload$.proxy,
+            }),
+            encodeFormQuery$({
+                expand: payload$.expand,
+                fields: payload$.fields,
+                next: payload$.next,
+                page: payload$.page,
+                page_size: payload$.page_size,
+                raw: payload$.raw,
+                updated_after: payload$.updated_after,
             })
         );
 
@@ -602,18 +602,18 @@ export class Iam extends ClientSDK {
         const path$ = this.templateURLComponent("/unified/iam/roles")();
 
         const query$ = queryJoin$(
+            encodeDeepObjectQuery$({
+                filter: payload$.filter,
+                proxy: payload$.proxy,
+            }),
             encodeFormQuery$({
                 expand: payload$.expand,
-                next: payload$.next,
                 fields: payload$.fields,
+                next: payload$.next,
                 page: payload$.page,
                 page_size: payload$.page_size,
                 raw: payload$.raw,
                 updated_after: payload$.updated_after,
-            }),
-            encodeDeepObjectQuery$({
-                filter: payload$.filter,
-                proxy: payload$.proxy,
             })
         );
 
@@ -693,18 +693,18 @@ export class Iam extends ClientSDK {
         const path$ = this.templateURLComponent("/unified/iam/users")();
 
         const query$ = queryJoin$(
+            encodeDeepObjectQuery$({
+                filter: payload$.filter,
+                proxy: payload$.proxy,
+            }),
             encodeFormQuery$({
+                expand: payload$.expand,
+                fields: payload$.fields,
                 next: payload$.next,
+                page: payload$.page,
                 page_size: payload$.page_size,
                 raw: payload$.raw,
                 updated_after: payload$.updated_after,
-                fields: payload$.fields,
-                expand: payload$.expand,
-                page: payload$.page,
-            }),
-            encodeDeepObjectQuery$({
-                proxy: payload$.proxy,
-                filter: payload$.filter,
             })
         );
 
