@@ -5,5 +5,5 @@
 
 | Name   | Value  |
 | ------ | ------ |
-| `Pass` | pass   |
-| `Fail` | fail   |
+| `Pass` | Pass   |
+| `Fail` | Fail   |

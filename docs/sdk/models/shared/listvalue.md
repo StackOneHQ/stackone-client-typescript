@@ -7,6 +7,7 @@ The type of the list.
 
 | Name            | Value           |
 | --------------- | --------------- |
+| `Candidates`    | candidates      |
 | `Contacts`      | contacts        |
 | `Companies`     | companies       |
 | `UnmappedValue` | unmapped_value  |
