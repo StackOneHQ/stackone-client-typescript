@@ -7,6 +7,7 @@
 * [createContent](#createcontent) - Create Content
 * [getCompletion](#getcompletion) - Get Completion
 * [getContent](#getcontent) - Get Content
+* [updateContent](#updatecontent) - Update Content
 
 ## createCompletion
 
@@ -259,6 +260,76 @@ run();
 ### Response
 
 **Promise\<[operations.LmsGetContentResponse](../../sdk/models/operations/lmsgetcontentresponse.md)\>**
+### Errors
+
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
+
+## updateContent
+
+Update Content
+
+### Example Usage
+
+```typescript
+import { StackOne } from "@stackone/stackone-client-ts";
+import { ContentLanguageEnumValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
+
+async function run() {
+  const result = await stackOne.lms.updateContent({
+    lmsCreateContentRequestDto: {
+      active: true,
+      categories: [
+        {
+          name: "Technology",
+        },
+      ],
+      contentUrl: "https://www.youtube.com/watch?v=16873",
+      courseIds: [
+        "16873-SOFTWARE-ENG-COURSE",
+      ],
+      coverUrl: "https://www.googledrive.com/?v=16873",
+      description: "This video acts as learning content for software engineers.",
+      duration: "P3Y6M4DT12H30M5S",
+      externalId: "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1",
+      languages: [
+        {
+          value: ContentLanguageEnumValue.EnGB,
+        },
+      ],
+      order: 1,
+      title: "Software Engineer Lv 1",
+    },
+    id: "<id>",
+    xAccountId: "<value>",
+  });
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.LmsUpdateContentRequest](../../sdk/models/operations/lmsupdatecontentrequest.md)                                                                                   | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+
+
+### Response
+
+**Promise\<[operations.LmsUpdateContentResponse](../../sdk/models/operations/lmsupdatecontentresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

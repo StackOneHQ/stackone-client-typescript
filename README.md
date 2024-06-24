@@ -13,10 +13,25 @@
 npm add @stackone/stackone-client-ts
 ```
 
+### PNPM
+
+```bash
+pnpm add @stackone/stackone-client-ts
+```
+
+### Bun
+
+```bash
+bun add @stackone/stackone-client-ts
+```
+
 ### Yarn
 
 ```bash
-yarn add @stackone/stackone-client-ts
+yarn add @stackone/stackone-client-ts zod
+
+# Note that Yarn does not install peer dependencies automatically. You will need
+# to install zod as shown above.
 ```
 <!-- End SDK Installation [installation] -->
 
@@ -181,6 +196,7 @@ run();
 * [createContent](docs/sdks/lms/README.md#createcontent) - Create Content
 * [getCompletion](docs/sdks/lms/README.md#getcompletion) - Get Completion
 * [getContent](docs/sdks/lms/README.md#getcontent) - Get Content
+* [updateContent](docs/sdks/lms/README.md#updatecontent) - Update Content
 
 ### [marketing](docs/sdks/marketing/README.md)
 
@@ -260,7 +276,7 @@ Validation errors can also occur when either method arguments or data returned f
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
-import * as errors from "@stackone/stackone-client-ts/sdk/models/errors";
+import { SDKValidationError } from "@stackone/stackone-client-ts/sdk/models/errors";
 
 const stackOne = new StackOne({
     security: {
@@ -276,7 +292,7 @@ async function run() {
         });
     } catch (err) {
         switch (true) {
-            case err instanceof errors.SDKValidationError: {
+            case err instanceof SDKValidationError: {
                 // Validation errors can be pretty-printed
                 console.error(err.pretty());
                 // Raw value may also be inspected
