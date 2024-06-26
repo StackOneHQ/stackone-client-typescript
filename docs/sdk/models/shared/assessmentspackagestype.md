@@ -1,0 +1,9 @@
+# AssessmentsPackagesType
+
+
+## Fields
+
+| Field                                                                                     | Type                                                                                      | Required                                                                                  | Description                                                                               | Example                                                                                   |
+| ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| `sourceValue`                                                                             | *shared.AssessmentsPackagesSourceValue*                                                   | :heavy_minus_sign:                                                                        | The source value of the assessment type.                                                  | Reference Check                                                                           |
+| `value`                                                                                   | [shared.AssessmentsPackagesValue](../../../sdk/models/shared/assessmentspackagesvalue.md) | :heavy_minus_sign:                                                                        | The type of the assessment.                                                               | reference_check                                                                           |

@@ -7,9 +7,13 @@ import * as shared from "../shared/index.js";
 import * as z from "zod";
 
 /**
- * Filter parameters that allow greater customisation of the list response
+ * ATS Candidate Filter
  */
 export type AtsListCandidatesQueryParamFilter = {
+    /**
+     * Filter to select candidates by email
+     */
+    email?: string | null | undefined;
     /**
      * Use a string with a date to only select results updated after that given date
      */
@@ -22,7 +26,7 @@ export type AtsListCandidatesRequest = {
      */
     fields?: string | null | undefined;
     /**
-     * Filter parameters that allow greater customisation of the list response
+     * ATS Candidate Filter
      */
     filter?: AtsListCandidatesQueryParamFilter | null | undefined;
     /**
@@ -92,6 +96,7 @@ export namespace AtsListCandidatesQueryParamFilter$ {
         unknown
     > = z
         .object({
+            email: z.nullable(z.string()).optional(),
             updated_after: z.nullable(z.string()).optional(),
         })
         .transform((v) => {
@@ -101,6 +106,7 @@ export namespace AtsListCandidatesQueryParamFilter$ {
         });
 
     export type Outbound = {
+        email?: string | null | undefined;
         updated_after?: string | null | undefined;
     };
 
@@ -110,6 +116,7 @@ export namespace AtsListCandidatesQueryParamFilter$ {
         AtsListCandidatesQueryParamFilter
     > = z
         .object({
+            email: z.nullable(z.string()).optional(),
             updatedAfter: z.nullable(z.string()).optional(),
         })
         .transform((v) => {

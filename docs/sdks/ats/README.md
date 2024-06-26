@@ -12,6 +12,7 @@
 * [getApplicationDocument](#getapplicationdocument) - Get Application Document
 * [getApplicationOffer](#getapplicationoffer) - Get Application Offer
 * [getApplicationScorecard](#getapplicationscorecard) - Get Application Scorecard
+* [getAssessmentsPackage](#getassessmentspackage) - Get Assessments Package
 * [getCandidate](#getcandidate) - Get Candidate
 * [getCandidateNote](#getcandidatenote) - Get Candidate Note
 * [getDepartment](#getdepartment) - Get Department
@@ -28,6 +29,7 @@
 * [listApplicationScorecards](#listapplicationscorecards) - List Application Scorecards
 * [listApplications](#listapplications) - List Applications
 * [listApplicationsOffers](#listapplicationsoffers) - List Application Offers
+* [listAssessmentsPackages](#listassessmentspackages) - List Assessments Packages
 * [listCandidateNotes](#listcandidatenotes) - List Candidate Notes
 * [listCandidates](#listcandidates) - List Candidates
 * [listDepartments](#listdepartments) - List Departments
@@ -734,6 +736,52 @@ run();
 ### Response
 
 **Promise\<[operations.AtsGetApplicationScorecardResponse](../../sdk/models/operations/atsgetapplicationscorecardresponse.md)\>**
+### Errors
+
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
+
+## getAssessmentsPackage
+
+Get Assessments Package
+
+### Example Usage
+
+```typescript
+import { StackOne } from "@stackone/stackone-client-ts";
+
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
+
+async function run() {
+  const result = await stackOne.ats.getAssessmentsPackage({
+    id: "<id>",
+    xAccountId: "<value>",
+  });
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.AtsGetAssessmentsPackageRequest](../../sdk/models/operations/atsgetassessmentspackagerequest.md)                                                                   | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+
+
+### Response
+
+**Promise\<[operations.AtsGetAssessmentsPackageResponse](../../sdk/models/operations/atsgetassessmentspackageresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -1501,6 +1549,54 @@ run();
 ### Response
 
 **Promise\<[operations.AtsListApplicationsOffersResponse](../../sdk/models/operations/atslistapplicationsoffersresponse.md)\>**
+### Errors
+
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
+
+## listAssessmentsPackages
+
+List Assessments Packages
+
+### Example Usage
+
+```typescript
+import { StackOne } from "@stackone/stackone-client-ts";
+
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
+
+async function run() {
+  const result = await stackOne.ats.listAssessmentsPackages({
+    filter: {
+      updatedAfter: "2020-01-01T00:00:00.000Z",
+    },
+    xAccountId: "<value>",
+  });
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.AtsListAssessmentsPackagesRequest](../../sdk/models/operations/atslistassessmentspackagesrequest.md)                                                               | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+
+
+### Response
+
+**Promise\<[operations.AtsListAssessmentsPackagesResponse](../../sdk/models/operations/atslistassessmentspackagesresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

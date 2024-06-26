@@ -52,6 +52,7 @@ export enum EmploymentSchemasValue {
     Expatriate = "expatriate",
     EmployerOfRecord = "employer_of_record",
     Casual = "casual",
+    Programme = "Programme",
     UnmappedValue = "unmapped_value",
 }
 /**
@@ -102,6 +103,7 @@ export enum EmploymentSchemasPayFrequencyValue {
     ProRata = "pro_rata",
     UnmappedValue = "unmapped_value",
     HalfYearly = "half_yearly",
+    Daily = "daily",
 }
 /**
  * The pay frequency of the job postings.

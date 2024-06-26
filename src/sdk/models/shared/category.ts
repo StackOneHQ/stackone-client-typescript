@@ -5,13 +5,13 @@
 import { remap as remap$ } from "../../../lib/primitives.js";
 import * as z from "zod";
 
-export type Categories = {
+export type Category = {
     /**
-     * The ID of the category
+     * The ID associated with this category
      */
     id?: string | null | undefined;
     /**
-     * The name of the category
+     * The name associated with this category
      */
     name?: string | null | undefined;
     /**
@@ -21,8 +21,8 @@ export type Categories = {
 };
 
 /** @internal */
-export namespace Categories$ {
-    export const inboundSchema: z.ZodType<Categories, z.ZodTypeDef, unknown> = z
+export namespace Category$ {
+    export const inboundSchema: z.ZodType<Category, z.ZodTypeDef, unknown> = z
         .object({
             id: z.nullable(z.string()).optional(),
             name: z.nullable(z.string()).optional(),
@@ -40,7 +40,7 @@ export namespace Categories$ {
         remote_id?: string | null | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Categories> = z
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Category> = z
         .object({
             id: z.nullable(z.string()).optional(),
             name: z.nullable(z.string()).optional(),

@@ -14,7 +14,7 @@ export type AtsDocumentApiModelSourceValue = AtsDocumentApiModel4 | string | num
 /**
  * The category of the the document
  */
-export type Category = {
+export type AtsDocumentApiModelCategory = {
     sourceValue?: AtsDocumentApiModel4 | string | number | boolean | null | undefined;
     /**
      * The category of the file
@@ -1311,7 +1311,7 @@ export type AtsDocumentApiModel = {
     /**
      * The category of the the document
      */
-    category?: Category | null | undefined;
+    category?: AtsDocumentApiModelCategory | null | undefined;
     /**
      * The content of the file. Deprecated, use `url` and `file_format` one level up instead
      *
@@ -1392,8 +1392,8 @@ export namespace AtsDocumentApiModelSourceValue$ {
 }
 
 /** @internal */
-export namespace Category$ {
-    export const inboundSchema: z.ZodType<Category, z.ZodTypeDef, unknown> = z
+export namespace AtsDocumentApiModelCategory$ {
+    export const inboundSchema: z.ZodType<AtsDocumentApiModelCategory, z.ZodTypeDef, unknown> = z
         .object({
             source_value: z
                 .nullable(
@@ -1424,7 +1424,7 @@ export namespace Category$ {
         value?: string | null | undefined;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Category> = z
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, AtsDocumentApiModelCategory> = z
         .object({
             sourceValue: z
                 .nullable(
@@ -1673,7 +1673,9 @@ export namespace AtsDocumentApiModelType$ {
 export namespace AtsDocumentApiModel$ {
     export const inboundSchema: z.ZodType<AtsDocumentApiModel, z.ZodTypeDef, unknown> = z
         .object({
-            category: z.nullable(z.lazy(() => Category$.inboundSchema)).optional(),
+            category: z
+                .nullable(z.lazy(() => AtsDocumentApiModelCategory$.inboundSchema))
+                .optional(),
             contents: z.nullable(z.array(Content$.inboundSchema)).optional(),
             created_at: z
                 .nullable(
@@ -1710,7 +1712,7 @@ export namespace AtsDocumentApiModel$ {
         });
 
     export type Outbound = {
-        category?: Category$.Outbound | null | undefined;
+        category?: AtsDocumentApiModelCategory$.Outbound | null | undefined;
         contents?: Array<Content$.Outbound> | null | undefined;
         created_at?: string | null | undefined;
         file_format?: FileFormat$.Outbound | null | undefined;
@@ -1725,7 +1727,9 @@ export namespace AtsDocumentApiModel$ {
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, AtsDocumentApiModel> = z
         .object({
-            category: z.nullable(z.lazy(() => Category$.outboundSchema)).optional(),
+            category: z
+                .nullable(z.lazy(() => AtsDocumentApiModelCategory$.outboundSchema))
+                .optional(),
             contents: z.nullable(z.array(Content$.outboundSchema)).optional(),
             createdAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
             fileFormat: z.nullable(z.lazy(() => FileFormat$.outboundSchema)).optional(),

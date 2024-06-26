@@ -4,9 +4,19 @@
 
 import { remap as remap$ } from "../../../lib/primitives.js";
 import { catchUnrecognizedEnum, OpenEnum, Unrecognized } from "../../types/enums.js";
-import { Categories, Categories$ } from "./categories.js";
+import { Category, Category$ } from "./category.js";
 import { ContentLanguageEnum, ContentLanguageEnum$ } from "./contentlanguageenum.js";
 import * as z from "zod";
+
+export enum Content2 {
+    True = "true",
+    False = "false",
+}
+
+/**
+ * Whether the content is active and available for users.
+ */
+export type Active = boolean | Content2;
 
 export type Content4 = {};
 
@@ -31,11 +41,11 @@ export type Content = {
     /**
      * Whether the content is active and available for users.
      */
-    active?: boolean | null | undefined;
+    active?: boolean | Content2 | null | undefined;
     /**
      * The categories associated with this content
      */
-    categories?: Array<Categories> | null | undefined;
+    categories?: Array<Category> | null | undefined;
     /**
      * The type of content
      */
@@ -93,6 +103,26 @@ export type Content = {
      */
     title?: string | null | undefined;
 };
+
+/** @internal */
+export namespace Content2$ {
+    export const inboundSchema: z.ZodNativeEnum<typeof Content2> = z.nativeEnum(Content2);
+    export const outboundSchema: z.ZodNativeEnum<typeof Content2> = inboundSchema;
+}
+
+/** @internal */
+export namespace Active$ {
+    export const inboundSchema: z.ZodType<Active, z.ZodTypeDef, unknown> = z.union([
+        z.boolean(),
+        Content2$.inboundSchema,
+    ]);
+
+    export type Outbound = boolean | string;
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Active> = z.union([
+        z.boolean(),
+        Content2$.outboundSchema,
+    ]);
+}
 
 /** @internal */
 export namespace Content4$ {
@@ -184,8 +214,8 @@ export namespace ContentContentType$ {
 export namespace Content$ {
     export const inboundSchema: z.ZodType<Content, z.ZodTypeDef, unknown> = z
         .object({
-            active: z.nullable(z.boolean()).optional(),
-            categories: z.nullable(z.array(Categories$.inboundSchema)).optional(),
+            active: z.nullable(z.union([z.boolean(), Content2$.inboundSchema])).optional(),
+            categories: z.nullable(z.array(Category$.inboundSchema)).optional(),
             content_type: z.nullable(z.lazy(() => ContentContentType$.inboundSchema)).optional(),
             content_url: z.nullable(z.string()).optional(),
             course_ids: z.nullable(z.array(z.string())).optional(),
@@ -215,8 +245,8 @@ export namespace Content$ {
         });
 
     export type Outbound = {
-        active?: boolean | null | undefined;
-        categories?: Array<Categories$.Outbound> | null | undefined;
+        active?: boolean | string | null | undefined;
+        categories?: Array<Category$.Outbound> | null | undefined;
         content_type?: ContentContentType$.Outbound | null | undefined;
         content_url?: string | null | undefined;
         course_ids?: Array<string> | null | undefined;
@@ -235,8 +265,8 @@ export namespace Content$ {
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Content> = z
         .object({
-            active: z.nullable(z.boolean()).optional(),
-            categories: z.nullable(z.array(Categories$.outboundSchema)).optional(),
+            active: z.nullable(z.union([z.boolean(), Content2$.outboundSchema])).optional(),
+            categories: z.nullable(z.array(Category$.outboundSchema)).optional(),
             contentType: z.nullable(z.lazy(() => ContentContentType$.outboundSchema)).optional(),
             contentUrl: z.nullable(z.string()).optional(),
             courseIds: z.nullable(z.array(z.string())).optional(),

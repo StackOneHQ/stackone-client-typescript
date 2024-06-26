@@ -6,6 +6,26 @@ import { remap as remap$ } from "../../../lib/primitives.js";
 import { catchUnrecognizedEnum, OpenEnum, Unrecognized } from "../../types/enums.js";
 import * as z from "zod";
 
+export enum HrisCreateTimeOffRequestDto2 {
+    True = "true",
+    False = "false",
+}
+
+/**
+ * True if the end of the time off request ends half way through the day
+ */
+export type EndHalfDay = boolean | HrisCreateTimeOffRequestDto2;
+
+export enum HrisCreateTimeOffRequestDtoSchemas2 {
+    True = "true",
+    False = "false",
+}
+
+/**
+ * True if the start of the time off request begins half way through the day
+ */
+export type StartHalfDay = boolean | HrisCreateTimeOffRequestDtoSchemas2;
+
 export type HrisCreateTimeOffRequestDto4 = {};
 
 export type HrisCreateTimeOffRequestDtoSourceValue =
@@ -89,7 +109,7 @@ export type HrisCreateTimeOffRequestDto = {
     /**
      * True if the end of the time off request ends half way through the day
      */
-    endHalfDay?: boolean | null | undefined;
+    endHalfDay?: boolean | HrisCreateTimeOffRequestDto2 | null | undefined;
     /**
      * Value to pass through to the provider
      */
@@ -101,7 +121,7 @@ export type HrisCreateTimeOffRequestDto = {
     /**
      * True if the start of the time off request begins half way through the day
      */
-    startHalfDay?: boolean | null | undefined;
+    startHalfDay?: boolean | HrisCreateTimeOffRequestDtoSchemas2 | null | undefined;
     /**
      * The status of the time off request
      */
@@ -111,6 +131,51 @@ export type HrisCreateTimeOffRequestDto = {
      */
     type?: HrisCreateTimeOffRequestDtoType | null | undefined;
 };
+
+/** @internal */
+export namespace HrisCreateTimeOffRequestDto2$ {
+    export const inboundSchema: z.ZodNativeEnum<typeof HrisCreateTimeOffRequestDto2> = z.nativeEnum(
+        HrisCreateTimeOffRequestDto2
+    );
+    export const outboundSchema: z.ZodNativeEnum<typeof HrisCreateTimeOffRequestDto2> =
+        inboundSchema;
+}
+
+/** @internal */
+export namespace EndHalfDay$ {
+    export const inboundSchema: z.ZodType<EndHalfDay, z.ZodTypeDef, unknown> = z.union([
+        z.boolean(),
+        HrisCreateTimeOffRequestDto2$.inboundSchema,
+    ]);
+
+    export type Outbound = boolean | string;
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, EndHalfDay> = z.union([
+        z.boolean(),
+        HrisCreateTimeOffRequestDto2$.outboundSchema,
+    ]);
+}
+
+/** @internal */
+export namespace HrisCreateTimeOffRequestDtoSchemas2$ {
+    export const inboundSchema: z.ZodNativeEnum<typeof HrisCreateTimeOffRequestDtoSchemas2> =
+        z.nativeEnum(HrisCreateTimeOffRequestDtoSchemas2);
+    export const outboundSchema: z.ZodNativeEnum<typeof HrisCreateTimeOffRequestDtoSchemas2> =
+        inboundSchema;
+}
+
+/** @internal */
+export namespace StartHalfDay$ {
+    export const inboundSchema: z.ZodType<StartHalfDay, z.ZodTypeDef, unknown> = z.union([
+        z.boolean(),
+        HrisCreateTimeOffRequestDtoSchemas2$.inboundSchema,
+    ]);
+
+    export type Outbound = boolean | string;
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, StartHalfDay> = z.union([
+        z.boolean(),
+        HrisCreateTimeOffRequestDtoSchemas2$.outboundSchema,
+    ]);
+}
 
 /** @internal */
 export namespace HrisCreateTimeOffRequestDto4$ {
@@ -375,7 +440,9 @@ export namespace HrisCreateTimeOffRequestDto$ {
                         .transform((v) => new Date(v))
                 )
                 .optional(),
-            end_half_day: z.nullable(z.boolean()).optional(),
+            end_half_day: z
+                .nullable(z.union([z.boolean(), HrisCreateTimeOffRequestDto2$.inboundSchema]))
+                .optional(),
             passthrough: z.nullable(z.record(z.any())).optional(),
             start_date: z
                 .nullable(
@@ -385,7 +452,11 @@ export namespace HrisCreateTimeOffRequestDto$ {
                         .transform((v) => new Date(v))
                 )
                 .optional(),
-            start_half_day: z.nullable(z.boolean()).optional(),
+            start_half_day: z
+                .nullable(
+                    z.union([z.boolean(), HrisCreateTimeOffRequestDtoSchemas2$.inboundSchema])
+                )
+                .optional(),
             status: z
                 .nullable(z.lazy(() => HrisCreateTimeOffRequestDtoStatus$.inboundSchema))
                 .optional(),
@@ -408,10 +479,10 @@ export namespace HrisCreateTimeOffRequestDto$ {
         approver_id?: string | null | undefined;
         employee_id?: string | null | undefined;
         end_date?: string | null | undefined;
-        end_half_day?: boolean | null | undefined;
+        end_half_day?: boolean | string | null | undefined;
         passthrough?: { [k: string]: any } | null | undefined;
         start_date?: string | null | undefined;
-        start_half_day?: boolean | null | undefined;
+        start_half_day?: boolean | string | null | undefined;
         status?: HrisCreateTimeOffRequestDtoStatus$.Outbound | null | undefined;
         type?: HrisCreateTimeOffRequestDtoType$.Outbound | null | undefined;
     };
@@ -421,10 +492,16 @@ export namespace HrisCreateTimeOffRequestDto$ {
             approverId: z.nullable(z.string()).optional(),
             employeeId: z.nullable(z.string()).optional(),
             endDate: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
-            endHalfDay: z.nullable(z.boolean()).optional(),
+            endHalfDay: z
+                .nullable(z.union([z.boolean(), HrisCreateTimeOffRequestDto2$.outboundSchema]))
+                .optional(),
             passthrough: z.nullable(z.record(z.any())).optional(),
             startDate: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
-            startHalfDay: z.nullable(z.boolean()).optional(),
+            startHalfDay: z
+                .nullable(
+                    z.union([z.boolean(), HrisCreateTimeOffRequestDtoSchemas2$.outboundSchema])
+                )
+                .optional(),
             status: z
                 .nullable(z.lazy(() => HrisCreateTimeOffRequestDtoStatus$.outboundSchema))
                 .optional(),
