@@ -6,12 +6,19 @@ import { remap as remap$ } from "../../../lib/primitives.js";
 import { Question, Question$ } from "./question.js";
 import * as z from "zod";
 
+export enum JobPostingQuestionnaire2 {
+    True = "true",
+    False = "false",
+}
+
+export type JobPostingQuestionnaireInternal = boolean | JobPostingQuestionnaire2;
+
 export type JobPostingQuestionnaire = {
     /**
      * Unique identifier
      */
     id?: string | null | undefined;
-    internal?: boolean | null | undefined;
+    internal?: boolean | JobPostingQuestionnaire2 | null | undefined;
     name?: string | null | undefined;
     questions?: Array<Question> | null | undefined;
     /**
@@ -21,11 +28,33 @@ export type JobPostingQuestionnaire = {
 };
 
 /** @internal */
+export namespace JobPostingQuestionnaire2$ {
+    export const inboundSchema: z.ZodNativeEnum<typeof JobPostingQuestionnaire2> =
+        z.nativeEnum(JobPostingQuestionnaire2);
+    export const outboundSchema: z.ZodNativeEnum<typeof JobPostingQuestionnaire2> = inboundSchema;
+}
+
+/** @internal */
+export namespace JobPostingQuestionnaireInternal$ {
+    export const inboundSchema: z.ZodType<JobPostingQuestionnaireInternal, z.ZodTypeDef, unknown> =
+        z.union([z.boolean(), JobPostingQuestionnaire2$.inboundSchema]);
+
+    export type Outbound = boolean | string;
+    export const outboundSchema: z.ZodType<
+        Outbound,
+        z.ZodTypeDef,
+        JobPostingQuestionnaireInternal
+    > = z.union([z.boolean(), JobPostingQuestionnaire2$.outboundSchema]);
+}
+
+/** @internal */
 export namespace JobPostingQuestionnaire$ {
     export const inboundSchema: z.ZodType<JobPostingQuestionnaire, z.ZodTypeDef, unknown> = z
         .object({
             id: z.nullable(z.string()).optional(),
-            internal: z.nullable(z.boolean()).optional(),
+            internal: z
+                .nullable(z.union([z.boolean(), JobPostingQuestionnaire2$.inboundSchema]))
+                .optional(),
             name: z.nullable(z.string()).optional(),
             questions: z.nullable(z.array(Question$.inboundSchema)).optional(),
             remote_id: z.nullable(z.string()).optional(),
@@ -38,7 +67,7 @@ export namespace JobPostingQuestionnaire$ {
 
     export type Outbound = {
         id?: string | null | undefined;
-        internal?: boolean | null | undefined;
+        internal?: boolean | string | null | undefined;
         name?: string | null | undefined;
         questions?: Array<Question$.Outbound> | null | undefined;
         remote_id?: string | null | undefined;
@@ -47,7 +76,9 @@ export namespace JobPostingQuestionnaire$ {
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, JobPostingQuestionnaire> = z
         .object({
             id: z.nullable(z.string()).optional(),
-            internal: z.nullable(z.boolean()).optional(),
+            internal: z
+                .nullable(z.union([z.boolean(), JobPostingQuestionnaire2$.outboundSchema]))
+                .optional(),
             name: z.nullable(z.string()).optional(),
             questions: z.nullable(z.array(Question$.outboundSchema)).optional(),
             remoteId: z.nullable(z.string()).optional(),

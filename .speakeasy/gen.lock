@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 7fa83af8-9e8e-4410-b7e2-cf1d0eaf688b
 management:
-  docChecksum: 2955f187c34d27a58f6030126355d4b7
+  docChecksum: 0138080879a47d4462d445d22e55253d
   docVersion: 1.0.0
-  speakeasyVersion: 1.314.2
-  generationVersion: 2.349.6
-  releaseVersion: 4.10.0
-  configChecksum: 761b35addd0c030100de7f8214877ca7
+  speakeasyVersion: 1.318.0
+  generationVersion: 2.352.0
+  releaseVersion: 4.10.1
+  configChecksum: 0030f11afcd8f95208b003a5247b9d74
   repoURL: https://github.com/StackOneHQ/stackone-client-typescript.git
   repoSubDirectory: .
   installationURL: https://github.com/StackOneHQ/stackone-client-typescript
@@ -86,6 +86,7 @@ generatedFiles:
   - src/sdk/models/operations/atsgetapplicationdocument.ts
   - src/sdk/models/operations/atsgetapplicationoffer.ts
   - src/sdk/models/operations/atsgetapplicationscorecard.ts
+  - src/sdk/models/operations/atsgetassessmentspackage.ts
   - src/sdk/models/operations/atsgetcandidate.ts
   - src/sdk/models/operations/atsgetcandidatenote.ts
   - src/sdk/models/operations/atsgetdepartment.ts
@@ -102,6 +103,7 @@ generatedFiles:
   - src/sdk/models/operations/atslistapplicationscorecards.ts
   - src/sdk/models/operations/atslistapplications.ts
   - src/sdk/models/operations/atslistapplicationsoffers.ts
+  - src/sdk/models/operations/atslistassessmentspackages.ts
   - src/sdk/models/operations/atslistcandidatenotes.ts
   - src/sdk/models/operations/atslistcandidates.ts
   - src/sdk/models/operations/atslistdepartments.ts
@@ -166,8 +168,10 @@ generatedFiles:
   - src/sdk/models/operations/iamlistusers.ts
   - src/sdk/models/operations/lmscreatecompletion.ts
   - src/sdk/models/operations/lmscreatecontent.ts
+  - src/sdk/models/operations/lmsgetcategory.ts
   - src/sdk/models/operations/lmsgetcompletion.ts
   - src/sdk/models/operations/lmsgetcontent.ts
+  - src/sdk/models/operations/lmslistcategories.ts
   - src/sdk/models/operations/lmsupdatecontent.ts
   - src/sdk/models/operations/marketingcreateemailtemplate.ts
   - src/sdk/models/operations/marketingcreateomnichanneltemplate.ts
@@ -211,7 +215,7 @@ generatedFiles:
   - src/sdk/models/shared/atsdocumentapimodel.ts
   - src/sdk/models/shared/content.ts
   - src/sdk/models/shared/contentlanguageenum.ts
-  - src/sdk/models/shared/categories.ts
+  - src/sdk/models/shared/category.ts
   - src/sdk/models/shared/phonenumber.ts
   - src/sdk/models/shared/candidateemail.ts
   - src/sdk/models/shared/applicationattachment.ts
@@ -222,6 +226,8 @@ generatedFiles:
   - src/sdk/models/shared/scorecard.ts
   - src/sdk/models/shared/scorecardsection.ts
   - src/sdk/models/shared/field.ts
+  - src/sdk/models/shared/assessmentspackagesresult.ts
+  - src/sdk/models/shared/assessmentspackages.ts
   - src/sdk/models/shared/candidateresult.ts
   - src/sdk/models/shared/candidate.ts
   - src/sdk/models/shared/noteresult.ts
@@ -256,6 +262,7 @@ generatedFiles:
   - src/sdk/models/shared/scorecardspaginated.ts
   - src/sdk/models/shared/applicationspaginated.ts
   - src/sdk/models/shared/offerspaginated.ts
+  - src/sdk/models/shared/assessmentspackagespaginated.ts
   - src/sdk/models/shared/notespaginated.ts
   - src/sdk/models/shared/candidatespaginated.ts
   - src/sdk/models/shared/departmentspaginated.ts
@@ -337,9 +344,11 @@ generatedFiles:
   - src/sdk/models/shared/lmscreatecompletionrequestdto.ts
   - src/sdk/models/shared/lmscreatecontentrequestdto.ts
   - src/sdk/models/shared/createcategoriesapimodel.ts
+  - src/sdk/models/shared/categoryresult.ts
   - src/sdk/models/shared/completionresult.ts
   - src/sdk/models/shared/completion.ts
   - src/sdk/models/shared/contentresult.ts
+  - src/sdk/models/shared/categoriespaginated.ts
   - src/sdk/models/shared/marketingcreateemailtemplaterequestdto.ts
   - src/sdk/models/shared/emailmessages.ts
   - src/sdk/models/shared/marketingcreatetemplaterequestdto.ts
@@ -392,6 +401,8 @@ generatedFiles:
   - docs/sdk/models/operations/atsgetapplicationofferresponse.md
   - docs/sdk/models/operations/atsgetapplicationscorecardrequest.md
   - docs/sdk/models/operations/atsgetapplicationscorecardresponse.md
+  - docs/sdk/models/operations/atsgetassessmentspackagerequest.md
+  - docs/sdk/models/operations/atsgetassessmentspackageresponse.md
   - docs/sdk/models/operations/atsgetcandidaterequest.md
   - docs/sdk/models/operations/atsgetcandidateresponse.md
   - docs/sdk/models/operations/atsgetcandidatenoterequest.md
@@ -428,6 +439,9 @@ generatedFiles:
   - docs/sdk/models/operations/atslistapplicationsoffersqueryparamfilter.md
   - docs/sdk/models/operations/atslistapplicationsoffersrequest.md
   - docs/sdk/models/operations/atslistapplicationsoffersresponse.md
+  - docs/sdk/models/operations/atslistassessmentspackagesqueryparamfilter.md
+  - docs/sdk/models/operations/atslistassessmentspackagesrequest.md
+  - docs/sdk/models/operations/atslistassessmentspackagesresponse.md
   - docs/sdk/models/operations/atslistcandidatenotesqueryparamfilter.md
   - docs/sdk/models/operations/atslistcandidatenotesrequest.md
   - docs/sdk/models/operations/atslistcandidatenotesresponse.md
@@ -586,10 +600,15 @@ generatedFiles:
   - docs/sdk/models/operations/lmscreatecompletionresponse.md
   - docs/sdk/models/operations/lmscreatecontentrequest.md
   - docs/sdk/models/operations/lmscreatecontentresponse.md
+  - docs/sdk/models/operations/lmsgetcategoryrequest.md
+  - docs/sdk/models/operations/lmsgetcategoryresponse.md
   - docs/sdk/models/operations/lmsgetcompletionrequest.md
   - docs/sdk/models/operations/lmsgetcompletionresponse.md
   - docs/sdk/models/operations/lmsgetcontentrequest.md
   - docs/sdk/models/operations/lmsgetcontentresponse.md
+  - docs/sdk/models/operations/lmslistcategoriesqueryparamfilter.md
+  - docs/sdk/models/operations/lmslistcategoriesrequest.md
+  - docs/sdk/models/operations/lmslistcategoriesresponse.md
   - docs/sdk/models/operations/lmsupdatecontentrequest.md
   - docs/sdk/models/operations/lmsupdatecontentresponse.md
   - docs/sdk/models/operations/marketingcreateemailtemplaterequest.md
@@ -633,7 +652,7 @@ generatedFiles:
   - docs/sdk/models/shared/linkedaccountmetacategory.md
   - docs/sdk/models/shared/linkedaccountmeta.md
   - docs/sdk/models/shared/patchaccountdto.md
-  - docs/sdk/models/shared/connectsessioncategories.md
+  - docs/sdk/models/shared/categories.md
   - docs/sdk/models/shared/connectsession.md
   - docs/sdk/models/shared/connectsessionauthenticate.md
   - docs/sdk/models/shared/connectsessiontokencategories.md
@@ -692,7 +711,7 @@ generatedFiles:
   - docs/sdk/models/shared/rejectedreason.md
   - docs/sdk/models/shared/atsdocumentapimodel4.md
   - docs/sdk/models/shared/atsdocumentapimodelsourcevalue.md
-  - docs/sdk/models/shared/category.md
+  - docs/sdk/models/shared/atsdocumentapimodelcategory.md
   - docs/sdk/models/shared/atsdocumentapimodelschemas4.md
   - docs/sdk/models/shared/atsdocumentapimodelschemassourcevalue.md
   - docs/sdk/models/shared/atsdocumentapimodelvalue.md
@@ -702,6 +721,8 @@ generatedFiles:
   - docs/sdk/models/shared/atsdocumentapimodelschemasvalue.md
   - docs/sdk/models/shared/atsdocumentapimodeltype.md
   - docs/sdk/models/shared/atsdocumentapimodel.md
+  - docs/sdk/models/shared/content2.md
+  - docs/sdk/models/shared/active.md
   - docs/sdk/models/shared/content4.md
   - docs/sdk/models/shared/contentsourcevalue.md
   - docs/sdk/models/shared/contentvalue.md
@@ -711,7 +732,7 @@ generatedFiles:
   - docs/sdk/models/shared/contentlanguageenumsourcevalue.md
   - docs/sdk/models/shared/contentlanguageenumvalue.md
   - docs/sdk/models/shared/contentlanguageenum.md
-  - docs/sdk/models/shared/categories.md
+  - docs/sdk/models/shared/category.md
   - docs/sdk/models/shared/phonenumbertype.md
   - docs/sdk/models/shared/phonenumber.md
   - docs/sdk/models/shared/candidateemail.md
@@ -731,8 +752,16 @@ generatedFiles:
   - docs/sdk/models/shared/overallrecommendation.md
   - docs/sdk/models/shared/scorecard.md
   - docs/sdk/models/shared/scorecardsection.md
+  - docs/sdk/models/shared/field2.md
+  - docs/sdk/models/shared/requiredt.md
   - docs/sdk/models/shared/fieldtype.md
   - docs/sdk/models/shared/field.md
+  - docs/sdk/models/shared/assessmentspackagesresult.md
+  - docs/sdk/models/shared/assessmentspackages4.md
+  - docs/sdk/models/shared/assessmentspackagessourcevalue.md
+  - docs/sdk/models/shared/assessmentspackagesvalue.md
+  - docs/sdk/models/shared/assessmentspackagestype.md
+  - docs/sdk/models/shared/assessmentspackages.md
   - docs/sdk/models/shared/candidateresult.md
   - docs/sdk/models/shared/candidate.md
   - docs/sdk/models/shared/noteresult.md
@@ -782,7 +811,11 @@ generatedFiles:
   - docs/sdk/models/shared/jobpostingschemasstatusvalue.md
   - docs/sdk/models/shared/jobpostingstatus.md
   - docs/sdk/models/shared/jobposting.md
+  - docs/sdk/models/shared/jobpostingquestionnaire2.md
+  - docs/sdk/models/shared/jobpostingquestionnaireinternal.md
   - docs/sdk/models/shared/jobpostingquestionnaire.md
+  - docs/sdk/models/shared/question2.md
+  - docs/sdk/models/shared/questionrequired.md
   - docs/sdk/models/shared/question4.md
   - docs/sdk/models/shared/questionsourcevalue.md
   - docs/sdk/models/shared/questionvalue.md
@@ -819,6 +852,7 @@ generatedFiles:
   - docs/sdk/models/shared/scorecardspaginated.md
   - docs/sdk/models/shared/applicationspaginated.md
   - docs/sdk/models/shared/offerspaginated.md
+  - docs/sdk/models/shared/assessmentspackagespaginated.md
   - docs/sdk/models/shared/notespaginated.md
   - docs/sdk/models/shared/candidatespaginated.md
   - docs/sdk/models/shared/departmentspaginated.md
@@ -960,6 +994,10 @@ generatedFiles:
   - docs/sdk/models/shared/hrisbenefitvalue.md
   - docs/sdk/models/shared/benefittype.md
   - docs/sdk/models/shared/hrisbenefit.md
+  - docs/sdk/models/shared/hriscreatetimeoffrequestdto2.md
+  - docs/sdk/models/shared/endhalfday.md
+  - docs/sdk/models/shared/hriscreatetimeoffrequestdtoschemas2.md
+  - docs/sdk/models/shared/starthalfday.md
   - docs/sdk/models/shared/hriscreatetimeoffrequestdto4.md
   - docs/sdk/models/shared/hriscreatetimeoffrequestdtosourcevalue.md
   - docs/sdk/models/shared/hriscreatetimeoffrequestdtovalue.md
@@ -1063,6 +1101,10 @@ generatedFiles:
   - docs/sdk/models/shared/referenceresult.md
   - docs/sdk/models/shared/reference.md
   - docs/sdk/models/shared/timeoffresult.md
+  - docs/sdk/models/shared/timeoff2.md
+  - docs/sdk/models/shared/timeoffendhalfday.md
+  - docs/sdk/models/shared/timeoffschemas2.md
+  - docs/sdk/models/shared/timeoffstarthalfday.md
   - docs/sdk/models/shared/timeoff4.md
   - docs/sdk/models/shared/timeoffsourcevalue.md
   - docs/sdk/models/shared/timeoffvalue.md
@@ -1161,6 +1203,8 @@ generatedFiles:
   - docs/sdk/models/shared/iamuserschemasvalue.md
   - docs/sdk/models/shared/iamuserfileformat.md
   - docs/sdk/models/shared/iamuseravatar.md
+  - docs/sdk/models/shared/iamuser2.md
+  - docs/sdk/models/shared/isbotuser.md
   - docs/sdk/models/shared/iamuser4.md
   - docs/sdk/models/shared/iamusersourcevalue.md
   - docs/sdk/models/shared/iamuservalue.md
@@ -1180,12 +1224,15 @@ generatedFiles:
   - docs/sdk/models/shared/lmscreatecompletionrequestdtoresult.md
   - docs/sdk/models/shared/lmscreatecompletionrequestdtouser.md
   - docs/sdk/models/shared/lmscreatecompletionrequestdto.md
+  - docs/sdk/models/shared/lmscreatecontentrequestdto2.md
+  - docs/sdk/models/shared/lmscreatecontentrequestdtoactive.md
   - docs/sdk/models/shared/lmscreatecontentrequestdto4.md
   - docs/sdk/models/shared/lmscreatecontentrequestdtosourcevalue.md
   - docs/sdk/models/shared/lmscreatecontentrequestdtovalue.md
   - docs/sdk/models/shared/lmscreatecontentrequestdtocontenttype.md
   - docs/sdk/models/shared/lmscreatecontentrequestdto.md
   - docs/sdk/models/shared/createcategoriesapimodel.md
+  - docs/sdk/models/shared/categoryresult.md
   - docs/sdk/models/shared/completionresult.md
   - docs/sdk/models/shared/completion4.md
   - docs/sdk/models/shared/completionsourcevalue.md
@@ -1193,6 +1240,7 @@ generatedFiles:
   - docs/sdk/models/shared/result.md
   - docs/sdk/models/shared/completion.md
   - docs/sdk/models/shared/contentresult.md
+  - docs/sdk/models/shared/categoriespaginated.md
   - docs/sdk/models/shared/marketingcreateemailtemplaterequestdto.md
   - docs/sdk/models/shared/messagecontent.md
   - docs/sdk/models/shared/emailmessages4.md
@@ -1218,6 +1266,10 @@ generatedFiles:
   - docs/sdk/models/shared/pushmessagesmessagetype.md
   - docs/sdk/models/shared/pushmessages.md
   - docs/sdk/models/shared/campaignresult.md
+  - docs/sdk/models/shared/two.md
+  - docs/sdk/models/shared/archived.md
+  - docs/sdk/models/shared/campaign2.md
+  - docs/sdk/models/shared/draft.md
   - docs/sdk/models/shared/campaign4.md
   - docs/sdk/models/shared/campaignsourcevalue.md
   - docs/sdk/models/shared/campaignvalue.md

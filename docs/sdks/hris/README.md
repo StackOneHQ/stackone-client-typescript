@@ -337,7 +337,7 @@ async function run() {
       approverId: "1687-4",
       employeeId: "1687-3",
       endDate: new Date("2021-01-01T01:01:01.000Z"),
-      endHalfDay: true,
+    endHalfDay: true,
       passthrough: {
         "0": "{",
         "1": "\"",
@@ -374,7 +374,7 @@ async function run() {
         "32": "}",
       },
       startDate: new Date("2021-01-01T01:01:01.000Z"),
-      startHalfDay: true,
+    startHalfDay: true,
     },
     id: "<id>",
     xAccountId: "<value>",
@@ -535,7 +535,7 @@ async function run() {
       approverId: "1687-4",
       employeeId: "1687-3",
       endDate: new Date("2021-01-01T01:01:01.000Z"),
-      endHalfDay: true,
+    endHalfDay: true,
       passthrough: {
         "0": "{",
         "1": "\"",
@@ -572,7 +572,7 @@ async function run() {
         "32": "}",
       },
       startDate: new Date("2021-01-01T01:01:01.000Z"),
-      startHalfDay: true,
+    startHalfDay: true,
     },
     xAccountId: "<value>",
   });
@@ -2132,7 +2132,7 @@ async function run() {
       approverId: "1687-4",
       employeeId: "1687-3",
       endDate: new Date("2021-01-01T01:01:01.000Z"),
-      endHalfDay: true,
+    endHalfDay: true,
       passthrough: {
         "0": "{",
         "1": "\"",
@@ -2169,7 +2169,7 @@ async function run() {
         "32": "}",
       },
       startDate: new Date("2021-01-01T01:01:01.000Z"),
-      startHalfDay: true,
+    startHalfDay: true,
     },
     id: "<id>",
     xAccountId: "<value>",

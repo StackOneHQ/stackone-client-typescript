@@ -122,6 +122,7 @@ export enum EmployeeSchemasEmploymentTypeValue {
     Expatriate = "expatriate",
     EmployerOfRecord = "employer_of_record",
     Casual = "casual",
+    Programme = "Programme",
     UnmappedValue = "unmapped_value",
 }
 /**

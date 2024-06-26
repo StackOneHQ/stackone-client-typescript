@@ -5,7 +5,7 @@
 import { remap as remap$ } from "../../../lib/primitives.js";
 import * as z from "zod";
 
-export enum ConnectSessionCategories {
+export enum Categories {
     Ats = "ats",
     Hris = "hris",
     HrisLegacy = "hris-legacy",
@@ -18,7 +18,7 @@ export enum ConnectSessionCategories {
 
 export type ConnectSession = {
     accountId?: string | null | undefined;
-    categories?: Array<ConnectSessionCategories> | null | undefined;
+    categories?: Array<Categories> | null | undefined;
     createdAt: Date;
     id: number;
     label?: string | null | undefined;
@@ -31,10 +31,9 @@ export type ConnectSession = {
 };
 
 /** @internal */
-export namespace ConnectSessionCategories$ {
-    export const inboundSchema: z.ZodNativeEnum<typeof ConnectSessionCategories> =
-        z.nativeEnum(ConnectSessionCategories);
-    export const outboundSchema: z.ZodNativeEnum<typeof ConnectSessionCategories> = inboundSchema;
+export namespace Categories$ {
+    export const inboundSchema: z.ZodNativeEnum<typeof Categories> = z.nativeEnum(Categories);
+    export const outboundSchema: z.ZodNativeEnum<typeof Categories> = inboundSchema;
 }
 
 /** @internal */
@@ -42,7 +41,7 @@ export namespace ConnectSession$ {
     export const inboundSchema: z.ZodType<ConnectSession, z.ZodTypeDef, unknown> = z
         .object({
             account_id: z.nullable(z.string()).optional(),
-            categories: z.nullable(z.array(ConnectSessionCategories$.inboundSchema)).optional(),
+            categories: z.nullable(z.array(Categories$.inboundSchema)).optional(),
             created_at: z
                 .string()
                 .datetime({ offset: true })
@@ -85,7 +84,7 @@ export namespace ConnectSession$ {
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ConnectSession> = z
         .object({
             accountId: z.nullable(z.string()).optional(),
-            categories: z.nullable(z.array(ConnectSessionCategories$.outboundSchema)).optional(),
+            categories: z.nullable(z.array(Categories$.outboundSchema)).optional(),
             createdAt: z.date().transform((v) => v.toISOString()),
             id: z.number(),
             label: z.nullable(z.string()).optional(),

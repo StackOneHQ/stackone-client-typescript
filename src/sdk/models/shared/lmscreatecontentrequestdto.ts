@@ -8,6 +8,16 @@ import { ContentLanguageEnum, ContentLanguageEnum$ } from "./contentlanguageenum
 import { CreateCategoriesApiModel, CreateCategoriesApiModel$ } from "./createcategoriesapimodel.js";
 import * as z from "zod";
 
+export enum LmsCreateContentRequestDto2 {
+    True = "true",
+    False = "false",
+}
+
+/**
+ * Whether the content is active and available for users.
+ */
+export type LmsCreateContentRequestDtoActive = boolean | LmsCreateContentRequestDto2;
+
 export type LmsCreateContentRequestDto4 = {};
 
 export type LmsCreateContentRequestDtoSourceValue =
@@ -35,7 +45,7 @@ export type LmsCreateContentRequestDto = {
     /**
      * Whether the content is active and available for users.
      */
-    active?: boolean | null | undefined;
+    active?: boolean | LmsCreateContentRequestDto2 | null | undefined;
     /**
      * The categories associated with this content
      */
@@ -81,6 +91,28 @@ export type LmsCreateContentRequestDto = {
      */
     title?: string | null | undefined;
 };
+
+/** @internal */
+export namespace LmsCreateContentRequestDto2$ {
+    export const inboundSchema: z.ZodNativeEnum<typeof LmsCreateContentRequestDto2> = z.nativeEnum(
+        LmsCreateContentRequestDto2
+    );
+    export const outboundSchema: z.ZodNativeEnum<typeof LmsCreateContentRequestDto2> =
+        inboundSchema;
+}
+
+/** @internal */
+export namespace LmsCreateContentRequestDtoActive$ {
+    export const inboundSchema: z.ZodType<LmsCreateContentRequestDtoActive, z.ZodTypeDef, unknown> =
+        z.union([z.boolean(), LmsCreateContentRequestDto2$.inboundSchema]);
+
+    export type Outbound = boolean | string;
+    export const outboundSchema: z.ZodType<
+        Outbound,
+        z.ZodTypeDef,
+        LmsCreateContentRequestDtoActive
+    > = z.union([z.boolean(), LmsCreateContentRequestDto2$.outboundSchema]);
+}
 
 /** @internal */
 export namespace LmsCreateContentRequestDto4$ {
@@ -206,7 +238,9 @@ export namespace LmsCreateContentRequestDtoContentType$ {
 export namespace LmsCreateContentRequestDto$ {
     export const inboundSchema: z.ZodType<LmsCreateContentRequestDto, z.ZodTypeDef, unknown> = z
         .object({
-            active: z.nullable(z.boolean()).optional(),
+            active: z
+                .nullable(z.union([z.boolean(), LmsCreateContentRequestDto2$.inboundSchema]))
+                .optional(),
             categories: z.nullable(z.array(CreateCategoriesApiModel$.inboundSchema)).optional(),
             content_type: z
                 .nullable(z.lazy(() => LmsCreateContentRequestDtoContentType$.inboundSchema))
@@ -232,7 +266,7 @@ export namespace LmsCreateContentRequestDto$ {
         });
 
     export type Outbound = {
-        active?: boolean | null | undefined;
+        active?: boolean | string | null | undefined;
         categories?: Array<CreateCategoriesApiModel$.Outbound> | null | undefined;
         content_type?: LmsCreateContentRequestDtoContentType$.Outbound | null | undefined;
         content_url?: string | null | undefined;
@@ -248,7 +282,9 @@ export namespace LmsCreateContentRequestDto$ {
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, LmsCreateContentRequestDto> = z
         .object({
-            active: z.nullable(z.boolean()).optional(),
+            active: z
+                .nullable(z.union([z.boolean(), LmsCreateContentRequestDto2$.outboundSchema]))
+                .optional(),
             categories: z.nullable(z.array(CreateCategoriesApiModel$.outboundSchema)).optional(),
             contentType: z
                 .nullable(z.lazy(() => LmsCreateContentRequestDtoContentType$.outboundSchema))

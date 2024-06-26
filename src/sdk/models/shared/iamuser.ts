@@ -1308,6 +1308,16 @@ export type IamUserAvatar = {
     updatedAt?: Date | null | undefined;
 };
 
+export enum IamUser2 {
+    True = "true",
+    False = "false",
+}
+
+/**
+ * Indicates if the user is a bot or service user
+ */
+export type IsBotUser = boolean | IamUser2;
+
 export type IamUser4 = {};
 
 export type IamUserSourceValue = IamUser4 | string | number | boolean;
@@ -1355,7 +1365,7 @@ export type IamUser = {
     /**
      * Indicates if the user is a bot or service user
      */
-    isBotUser?: boolean | null | undefined;
+    isBotUser?: boolean | IamUser2 | null | undefined;
     /**
      * The date this user was last active
      */
@@ -1652,6 +1662,26 @@ export namespace IamUserAvatar$ {
 }
 
 /** @internal */
+export namespace IamUser2$ {
+    export const inboundSchema: z.ZodNativeEnum<typeof IamUser2> = z.nativeEnum(IamUser2);
+    export const outboundSchema: z.ZodNativeEnum<typeof IamUser2> = inboundSchema;
+}
+
+/** @internal */
+export namespace IsBotUser$ {
+    export const inboundSchema: z.ZodType<IsBotUser, z.ZodTypeDef, unknown> = z.union([
+        z.boolean(),
+        IamUser2$.inboundSchema,
+    ]);
+
+    export type Outbound = boolean | string;
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, IsBotUser> = z.union([
+        z.boolean(),
+        IamUser2$.outboundSchema,
+    ]);
+}
+
+/** @internal */
 export namespace IamUser4$ {
     export const inboundSchema: z.ZodType<IamUser4, z.ZodTypeDef, unknown> = z.object({});
 
@@ -1753,7 +1783,7 @@ export namespace IamUser$ {
             first_name: z.nullable(z.string()).optional(),
             groups: z.nullable(z.array(IamGroup$.inboundSchema)).optional(),
             id: z.nullable(z.string()).optional(),
-            is_bot_user: z.nullable(z.boolean()).optional(),
+            is_bot_user: z.nullable(z.union([z.boolean(), IamUser2$.inboundSchema])).optional(),
             last_active_at: z
                 .nullable(
                     z
@@ -1808,7 +1838,7 @@ export namespace IamUser$ {
         first_name?: string | null | undefined;
         groups?: Array<IamGroup$.Outbound> | null | undefined;
         id?: string | null | undefined;
-        is_bot_user?: boolean | null | undefined;
+        is_bot_user?: boolean | string | null | undefined;
         last_active_at?: string | null | undefined;
         last_login_at?: string | null | undefined;
         last_name?: string | null | undefined;
@@ -1829,7 +1859,7 @@ export namespace IamUser$ {
             firstName: z.nullable(z.string()).optional(),
             groups: z.nullable(z.array(IamGroup$.outboundSchema)).optional(),
             id: z.nullable(z.string()).optional(),
-            isBotUser: z.nullable(z.boolean()).optional(),
+            isBotUser: z.nullable(z.union([z.boolean(), IamUser2$.outboundSchema])).optional(),
             lastActiveAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
             lastLoginAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
             lastName: z.nullable(z.string()).optional(),

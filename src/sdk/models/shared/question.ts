@@ -10,6 +10,13 @@ import {
 } from "./questionmultiplechoiceanswers.js";
 import * as z from "zod";
 
+export enum Question2 {
+    True = "true",
+    False = "false",
+}
+
+export type QuestionRequired = boolean | Question2;
+
 export type Question4 = {};
 
 /**
@@ -58,10 +65,30 @@ export type Question = {
      * Provider's unique identifier
      */
     remoteId?: string | null | undefined;
-    required?: boolean | null | undefined;
+    required?: boolean | Question2 | null | undefined;
     text?: string | null | undefined;
     type?: QuestionType | null | undefined;
 };
+
+/** @internal */
+export namespace Question2$ {
+    export const inboundSchema: z.ZodNativeEnum<typeof Question2> = z.nativeEnum(Question2);
+    export const outboundSchema: z.ZodNativeEnum<typeof Question2> = inboundSchema;
+}
+
+/** @internal */
+export namespace QuestionRequired$ {
+    export const inboundSchema: z.ZodType<QuestionRequired, z.ZodTypeDef, unknown> = z.union([
+        z.boolean(),
+        Question2$.inboundSchema,
+    ]);
+
+    export type Outbound = boolean | string;
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, QuestionRequired> = z.union([
+        z.boolean(),
+        Question2$.outboundSchema,
+    ]);
+}
 
 /** @internal */
 export namespace Question4$ {
@@ -159,7 +186,7 @@ export namespace Question$ {
                 .optional(),
             name: z.nullable(z.string()).optional(),
             remote_id: z.nullable(z.string()).optional(),
-            required: z.nullable(z.boolean()).optional(),
+            required: z.nullable(z.union([z.boolean(), Question2$.inboundSchema])).optional(),
             text: z.nullable(z.string()).optional(),
             type: z.nullable(z.lazy(() => QuestionType$.inboundSchema)).optional(),
         })
@@ -175,7 +202,7 @@ export namespace Question$ {
         multiple_choice_answers?: Array<QuestionMultipleChoiceAnswers$.Outbound> | null | undefined;
         name?: string | null | undefined;
         remote_id?: string | null | undefined;
-        required?: boolean | null | undefined;
+        required?: boolean | string | null | undefined;
         text?: string | null | undefined;
         type?: QuestionType$.Outbound | null | undefined;
     };
@@ -188,7 +215,7 @@ export namespace Question$ {
                 .optional(),
             name: z.nullable(z.string()).optional(),
             remoteId: z.nullable(z.string()).optional(),
-            required: z.nullable(z.boolean()).optional(),
+            required: z.nullable(z.union([z.boolean(), Question2$.outboundSchema])).optional(),
             text: z.nullable(z.string()).optional(),
             type: z.nullable(z.lazy(() => QuestionType$.outboundSchema)).optional(),
         })

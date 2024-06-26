@@ -22,4 +22,5 @@ The type of the employment.
 | `Expatriate`       | expatriate         |
 | `EmployerOfRecord` | employer_of_record |
 | `Casual`           | casual             |
+| `Programme`        | Programme          |
 | `UnmappedValue`    | unmapped_value     |

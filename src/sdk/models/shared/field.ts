@@ -6,6 +6,16 @@ import { remap as remap$ } from "../../../lib/primitives.js";
 import { catchUnrecognizedEnum, OpenEnum, Unrecognized } from "../../types/enums.js";
 import * as z from "zod";
 
+export enum Field2 {
+    True = "true",
+    False = "false",
+}
+
+/**
+ * Indicates if the field is required
+ */
+export type RequiredT = boolean | Field2;
+
 /**
  * The type of the field
  */
@@ -44,7 +54,7 @@ export type Field = {
     /**
      * Indicates if the field is required
      */
-    required?: boolean | null | undefined;
+    required?: boolean | Field2 | null | undefined;
     /**
      * The type of the field
      */
@@ -54,6 +64,26 @@ export type Field = {
      */
     values?: Array<string> | null | undefined;
 };
+
+/** @internal */
+export namespace Field2$ {
+    export const inboundSchema: z.ZodNativeEnum<typeof Field2> = z.nativeEnum(Field2);
+    export const outboundSchema: z.ZodNativeEnum<typeof Field2> = inboundSchema;
+}
+
+/** @internal */
+export namespace RequiredT$ {
+    export const inboundSchema: z.ZodType<RequiredT, z.ZodTypeDef, unknown> = z.union([
+        z.boolean(),
+        Field2$.inboundSchema,
+    ]);
+
+    export type Outbound = boolean | string;
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, RequiredT> = z.union([
+        z.boolean(),
+        Field2$.outboundSchema,
+    ]);
+}
 
 /** @internal */
 export namespace FieldType$ {
@@ -75,7 +105,7 @@ export namespace Field$ {
             id: z.nullable(z.string()).optional(),
             label: z.nullable(z.string()).optional(),
             remote_id: z.nullable(z.string()).optional(),
-            required: z.nullable(z.boolean()).optional(),
+            required: z.nullable(z.union([z.boolean(), Field2$.inboundSchema])).optional(),
             type: z.nullable(FieldType$.inboundSchema).optional(),
             values: z.nullable(z.array(z.string())).optional(),
         })
@@ -89,7 +119,7 @@ export namespace Field$ {
         id?: string | null | undefined;
         label?: string | null | undefined;
         remote_id?: string | null | undefined;
-        required?: boolean | null | undefined;
+        required?: boolean | string | null | undefined;
         type?: string | null | undefined;
         values?: Array<string> | null | undefined;
     };
@@ -99,7 +129,7 @@ export namespace Field$ {
             id: z.nullable(z.string()).optional(),
             label: z.nullable(z.string()).optional(),
             remoteId: z.nullable(z.string()).optional(),
-            required: z.nullable(z.boolean()).optional(),
+            required: z.nullable(z.union([z.boolean(), Field2$.outboundSchema])).optional(),
             type: z.nullable(FieldType$.outboundSchema).optional(),
             values: z.nullable(z.array(z.string())).optional(),
         })

@@ -6,7 +6,7 @@ import * as z from "zod";
 
 export type CreateCategoriesApiModel = {
     /**
-     * The name of the category
+     * The name associated with this category
      */
     name?: string | null | undefined;
 };

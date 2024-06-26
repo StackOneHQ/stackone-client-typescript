@@ -21,3 +21,4 @@ The pay frequency of the job postings.
 | `ProRata`         | pro_rata          |
 | `UnmappedValue`   | unmapped_value    |
 | `HalfYearly`      | half_yearly       |
+| `Daily`           | daily             |

@@ -6,6 +6,26 @@ import { remap as remap$ } from "../../../lib/primitives.js";
 import { catchUnrecognizedEnum, OpenEnum, Unrecognized } from "../../types/enums.js";
 import * as z from "zod";
 
+export enum TimeOff2 {
+    True = "true",
+    False = "false",
+}
+
+/**
+ * True if the end of the time off request ends half way through the day
+ */
+export type TimeOffEndHalfDay = boolean | TimeOff2;
+
+export enum TimeOffSchemas2 {
+    True = "true",
+    False = "false",
+}
+
+/**
+ * True if the start of the time off request begins half way through the day
+ */
+export type TimeOffStartHalfDay = boolean | TimeOffSchemas2;
+
 export type TimeOff4 = {};
 
 export type TimeOffSourceValue = TimeOff4 | string | number | boolean;
@@ -79,7 +99,7 @@ export type TimeOff = {
     /**
      * True if the end of the time off request ends half way through the day
      */
-    endHalfDay?: boolean | null | undefined;
+    endHalfDay?: boolean | TimeOff2 | null | undefined;
     /**
      * Unique identifier
      */
@@ -103,7 +123,7 @@ export type TimeOff = {
     /**
      * True if the start of the time off request begins half way through the day
      */
-    startHalfDay?: boolean | null | undefined;
+    startHalfDay?: boolean | TimeOffSchemas2 | null | undefined;
     /**
      * The status of the time off request
      */
@@ -117,6 +137,47 @@ export type TimeOff = {
      */
     updatedDate?: Date | null | undefined;
 };
+
+/** @internal */
+export namespace TimeOff2$ {
+    export const inboundSchema: z.ZodNativeEnum<typeof TimeOff2> = z.nativeEnum(TimeOff2);
+    export const outboundSchema: z.ZodNativeEnum<typeof TimeOff2> = inboundSchema;
+}
+
+/** @internal */
+export namespace TimeOffEndHalfDay$ {
+    export const inboundSchema: z.ZodType<TimeOffEndHalfDay, z.ZodTypeDef, unknown> = z.union([
+        z.boolean(),
+        TimeOff2$.inboundSchema,
+    ]);
+
+    export type Outbound = boolean | string;
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, TimeOffEndHalfDay> = z.union([
+        z.boolean(),
+        TimeOff2$.outboundSchema,
+    ]);
+}
+
+/** @internal */
+export namespace TimeOffSchemas2$ {
+    export const inboundSchema: z.ZodNativeEnum<typeof TimeOffSchemas2> =
+        z.nativeEnum(TimeOffSchemas2);
+    export const outboundSchema: z.ZodNativeEnum<typeof TimeOffSchemas2> = inboundSchema;
+}
+
+/** @internal */
+export namespace TimeOffStartHalfDay$ {
+    export const inboundSchema: z.ZodType<TimeOffStartHalfDay, z.ZodTypeDef, unknown> = z.union([
+        z.boolean(),
+        TimeOffSchemas2$.inboundSchema,
+    ]);
+
+    export type Outbound = boolean | string;
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, TimeOffStartHalfDay> = z.union([
+        z.boolean(),
+        TimeOffSchemas2$.outboundSchema,
+    ]);
+}
 
 /** @internal */
 export namespace TimeOff4$ {
@@ -320,7 +381,7 @@ export namespace TimeOff$ {
                         .transform((v) => new Date(v))
                 )
                 .optional(),
-            end_half_day: z.nullable(z.boolean()).optional(),
+            end_half_day: z.nullable(z.union([z.boolean(), TimeOff2$.inboundSchema])).optional(),
             id: z.nullable(z.string()).optional(),
             remote_approver_id: z.nullable(z.string()).optional(),
             remote_employee_id: z.nullable(z.string()).optional(),
@@ -333,7 +394,9 @@ export namespace TimeOff$ {
                         .transform((v) => new Date(v))
                 )
                 .optional(),
-            start_half_day: z.nullable(z.boolean()).optional(),
+            start_half_day: z
+                .nullable(z.union([z.boolean(), TimeOffSchemas2$.inboundSchema]))
+                .optional(),
             status: z.nullable(z.lazy(() => TimeOffStatus$.inboundSchema)).optional(),
             type: z.nullable(z.lazy(() => TimeOffType$.inboundSchema)).optional(),
             updated_date: z
@@ -367,13 +430,13 @@ export namespace TimeOff$ {
         duration?: string | null | undefined;
         employee_id?: string | null | undefined;
         end_date?: string | null | undefined;
-        end_half_day?: boolean | null | undefined;
+        end_half_day?: boolean | string | null | undefined;
         id?: string | null | undefined;
         remote_approver_id?: string | null | undefined;
         remote_employee_id?: string | null | undefined;
         remote_id?: string | null | undefined;
         start_date?: string | null | undefined;
-        start_half_day?: boolean | null | undefined;
+        start_half_day?: boolean | string | null | undefined;
         status?: TimeOffStatus$.Outbound | null | undefined;
         type?: TimeOffType$.Outbound | null | undefined;
         updated_date?: string | null | undefined;
@@ -386,13 +449,15 @@ export namespace TimeOff$ {
             duration: z.nullable(z.string()).optional(),
             employeeId: z.nullable(z.string()).optional(),
             endDate: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
-            endHalfDay: z.nullable(z.boolean()).optional(),
+            endHalfDay: z.nullable(z.union([z.boolean(), TimeOff2$.outboundSchema])).optional(),
             id: z.nullable(z.string()).optional(),
             remoteApproverId: z.nullable(z.string()).optional(),
             remoteEmployeeId: z.nullable(z.string()).optional(),
             remoteId: z.nullable(z.string()).optional(),
             startDate: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
-            startHalfDay: z.nullable(z.boolean()).optional(),
+            startHalfDay: z
+                .nullable(z.union([z.boolean(), TimeOffSchemas2$.outboundSchema]))
+                .optional(),
             status: z.nullable(z.lazy(() => TimeOffStatus$.outboundSchema)).optional(),
             type: z.nullable(z.lazy(() => TimeOffType$.outboundSchema)).optional(),
             updatedDate: z.nullable(z.date().transform((v) => v.toISOString())).optional(),

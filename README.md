@@ -102,6 +102,7 @@ run();
 * [getApplicationDocument](docs/sdks/ats/README.md#getapplicationdocument) - Get Application Document
 * [getApplicationOffer](docs/sdks/ats/README.md#getapplicationoffer) - Get Application Offer
 * [getApplicationScorecard](docs/sdks/ats/README.md#getapplicationscorecard) - Get Application Scorecard
+* [getAssessmentsPackage](docs/sdks/ats/README.md#getassessmentspackage) - Get Assessments Package
 * [getCandidate](docs/sdks/ats/README.md#getcandidate) - Get Candidate
 * [getCandidateNote](docs/sdks/ats/README.md#getcandidatenote) - Get Candidate Note
 * [getDepartment](docs/sdks/ats/README.md#getdepartment) - Get Department
@@ -118,6 +119,7 @@ run();
 * [listApplicationScorecards](docs/sdks/ats/README.md#listapplicationscorecards) - List Application Scorecards
 * [listApplications](docs/sdks/ats/README.md#listapplications) - List Applications
 * [listApplicationsOffers](docs/sdks/ats/README.md#listapplicationsoffers) - List Application Offers
+* [listAssessmentsPackages](docs/sdks/ats/README.md#listassessmentspackages) - List Assessments Packages
 * [listCandidateNotes](docs/sdks/ats/README.md#listcandidatenotes) - List Candidate Notes
 * [listCandidates](docs/sdks/ats/README.md#listcandidates) - List Candidates
 * [listDepartments](docs/sdks/ats/README.md#listdepartments) - List Departments
@@ -194,8 +196,10 @@ run();
 
 * [createCompletion](docs/sdks/lms/README.md#createcompletion) - Create Completion
 * [createContent](docs/sdks/lms/README.md#createcontent) - Create Content
+* [getCategory](docs/sdks/lms/README.md#getcategory) - Get Category
 * [getCompletion](docs/sdks/lms/README.md#getcompletion) - Get Completion
 * [getContent](docs/sdks/lms/README.md#getcontent) - Get Content
+* [listCategories](docs/sdks/lms/README.md#listcategories) - List Categories
 * [updateContent](docs/sdks/lms/README.md#updatecontent) - Update Content
 
 ### [marketing](docs/sdks/marketing/README.md)

@@ -8,6 +8,20 @@ import { ChannelsEnum, ChannelsEnum$ } from "./channelsenum.js";
 import { Message, Message$ } from "./message.js";
 import * as z from "zod";
 
+export enum Two {
+    True = "true",
+    False = "false",
+}
+
+export type Archived = boolean | Two;
+
+export enum Campaign2 {
+    True = "true",
+    False = "false",
+}
+
+export type Draft = boolean | Campaign2;
+
 export type Campaign4 = {};
 
 /**
@@ -79,7 +93,7 @@ export type Status = {
 };
 
 export type Campaign = {
-    archived?: boolean | null | undefined;
+    archived?: boolean | Two | null | undefined;
     /**
      * channels of the Campaign
      */
@@ -89,7 +103,7 @@ export type Campaign = {
      */
     createdAt?: Date | null | undefined;
     description?: string | null | undefined;
-    draft?: boolean | null | undefined;
+    draft?: boolean | Campaign2 | null | undefined;
     /**
      * The first_sent_at date
      */
@@ -122,6 +136,46 @@ export type Campaign = {
      */
     updatedAt?: Date | null | undefined;
 };
+
+/** @internal */
+export namespace Two$ {
+    export const inboundSchema: z.ZodNativeEnum<typeof Two> = z.nativeEnum(Two);
+    export const outboundSchema: z.ZodNativeEnum<typeof Two> = inboundSchema;
+}
+
+/** @internal */
+export namespace Archived$ {
+    export const inboundSchema: z.ZodType<Archived, z.ZodTypeDef, unknown> = z.union([
+        z.boolean(),
+        Two$.inboundSchema,
+    ]);
+
+    export type Outbound = boolean | string;
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Archived> = z.union([
+        z.boolean(),
+        Two$.outboundSchema,
+    ]);
+}
+
+/** @internal */
+export namespace Campaign2$ {
+    export const inboundSchema: z.ZodNativeEnum<typeof Campaign2> = z.nativeEnum(Campaign2);
+    export const outboundSchema: z.ZodNativeEnum<typeof Campaign2> = inboundSchema;
+}
+
+/** @internal */
+export namespace Draft$ {
+    export const inboundSchema: z.ZodType<Draft, z.ZodTypeDef, unknown> = z.union([
+        z.boolean(),
+        Campaign2$.inboundSchema,
+    ]);
+
+    export type Outbound = boolean | string;
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Draft> = z.union([
+        z.boolean(),
+        Campaign2$.outboundSchema,
+    ]);
+}
 
 /** @internal */
 export namespace Campaign4$ {
@@ -305,7 +359,7 @@ export namespace Status$ {
 export namespace Campaign$ {
     export const inboundSchema: z.ZodType<Campaign, z.ZodTypeDef, unknown> = z
         .object({
-            archived: z.nullable(z.boolean()).optional(),
+            archived: z.nullable(z.union([z.boolean(), Two$.inboundSchema])).optional(),
             channels: z.nullable(z.array(ChannelsEnum$.inboundSchema)).optional(),
             created_at: z
                 .nullable(
@@ -316,7 +370,7 @@ export namespace Campaign$ {
                 )
                 .optional(),
             description: z.nullable(z.string()).optional(),
-            draft: z.nullable(z.boolean()).optional(),
+            draft: z.nullable(z.union([z.boolean(), Campaign2$.inboundSchema])).optional(),
             first_sent_at: z
                 .nullable(
                     z
@@ -361,11 +415,11 @@ export namespace Campaign$ {
         });
 
     export type Outbound = {
-        archived?: boolean | null | undefined;
+        archived?: boolean | string | null | undefined;
         channels?: Array<ChannelsEnum$.Outbound> | null | undefined;
         created_at?: string | null | undefined;
         description?: string | null | undefined;
-        draft?: boolean | null | undefined;
+        draft?: boolean | string | null | undefined;
         first_sent_at?: string | null | undefined;
         id?: string | null | undefined;
         last_sent_at?: string | null | undefined;
@@ -380,11 +434,11 @@ export namespace Campaign$ {
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Campaign> = z
         .object({
-            archived: z.nullable(z.boolean()).optional(),
+            archived: z.nullable(z.union([z.boolean(), Two$.outboundSchema])).optional(),
             channels: z.nullable(z.array(ChannelsEnum$.outboundSchema)).optional(),
             createdAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
             description: z.nullable(z.string()).optional(),
-            draft: z.nullable(z.boolean()).optional(),
+            draft: z.nullable(z.union([z.boolean(), Campaign2$.outboundSchema])).optional(),
             firstSentAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
             id: z.nullable(z.string()).optional(),
             lastSentAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
