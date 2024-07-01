@@ -685,6 +685,53 @@ export type MaritalStatus = {
     value?: EmployeeSchemasMaritalStatusValueOpen | null | undefined;
 };
 
+export type EmployeeSchemasNationalIdentityNumber4 = {};
+
+export type EmployeeSchemasNationalIdentityNumberSourceValue =
+    | EmployeeSchemasNationalIdentityNumber4
+    | string
+    | number
+    | boolean;
+
+/**
+ * The type of the national identity number
+ */
+export enum EmployeeSchemasNationalIdentityNumberValue {
+    Ssn = "ssn",
+    Nin = "nin",
+    Sin = "sin",
+    Other = "other",
+    Unknown = "unknown",
+}
+/**
+ * The type of the national identity number
+ */
+export type EmployeeSchemasNationalIdentityNumberValueOpen = OpenEnum<
+    typeof EmployeeSchemasNationalIdentityNumberValue
+>;
+
+export type EmployeeSchemasType = {
+    sourceValue?:
+        | EmployeeSchemasNationalIdentityNumber4
+        | string
+        | number
+        | boolean
+        | null
+        | undefined;
+    /**
+     * The type of the national identity number
+     */
+    value?: EmployeeSchemasNationalIdentityNumberValueOpen | null | undefined;
+};
+
+/**
+ * The national identity number
+ */
+export type NationalIdentityNumber = {
+    type?: EmployeeSchemasType | null | undefined;
+    value?: string | null | undefined;
+};
+
 export type EmployeeSchemasPreferredLanguage4 = {};
 
 export type EmployeeSchemasPreferredLanguageSourceValue =
@@ -1331,6 +1378,10 @@ export type Employee = {
      * The employee name
      */
     name?: string | null | undefined;
+    /**
+     * The national identity number
+     */
+    nationalIdentityNumber?: NationalIdentityNumber | null | undefined;
     /**
      * The employee personal email
      */
@@ -2599,6 +2650,151 @@ export namespace MaritalStatus$ {
 }
 
 /** @internal */
+export namespace EmployeeSchemasNationalIdentityNumber4$ {
+    export const inboundSchema: z.ZodType<
+        EmployeeSchemasNationalIdentityNumber4,
+        z.ZodTypeDef,
+        unknown
+    > = z.object({});
+
+    export type Outbound = {};
+
+    export const outboundSchema: z.ZodType<
+        Outbound,
+        z.ZodTypeDef,
+        EmployeeSchemasNationalIdentityNumber4
+    > = z.object({});
+}
+
+/** @internal */
+export namespace EmployeeSchemasNationalIdentityNumberSourceValue$ {
+    export const inboundSchema: z.ZodType<
+        EmployeeSchemasNationalIdentityNumberSourceValue,
+        z.ZodTypeDef,
+        unknown
+    > = z.union([
+        z.lazy(() => EmployeeSchemasNationalIdentityNumber4$.inboundSchema),
+        z.string(),
+        z.number(),
+        z.boolean(),
+    ]);
+
+    export type Outbound =
+        | EmployeeSchemasNationalIdentityNumber4$.Outbound
+        | string
+        | number
+        | boolean;
+    export const outboundSchema: z.ZodType<
+        Outbound,
+        z.ZodTypeDef,
+        EmployeeSchemasNationalIdentityNumberSourceValue
+    > = z.union([
+        z.lazy(() => EmployeeSchemasNationalIdentityNumber4$.outboundSchema),
+        z.string(),
+        z.number(),
+        z.boolean(),
+    ]);
+}
+
+/** @internal */
+export namespace EmployeeSchemasNationalIdentityNumberValue$ {
+    export const inboundSchema: z.ZodType<
+        EmployeeSchemasNationalIdentityNumberValueOpen,
+        z.ZodTypeDef,
+        unknown
+    > = z.union([
+        z.nativeEnum(EmployeeSchemasNationalIdentityNumberValue),
+        z.string().transform(catchUnrecognizedEnum),
+    ]);
+
+    export const outboundSchema: z.ZodType<
+        EmployeeSchemasNationalIdentityNumberValueOpen,
+        z.ZodTypeDef,
+        EmployeeSchemasNationalIdentityNumberValueOpen
+    > = z.union([
+        z.nativeEnum(EmployeeSchemasNationalIdentityNumberValue),
+        z.string().and(z.custom<Unrecognized<string>>()),
+    ]);
+}
+
+/** @internal */
+export namespace EmployeeSchemasType$ {
+    export const inboundSchema: z.ZodType<EmployeeSchemasType, z.ZodTypeDef, unknown> = z
+        .object({
+            source_value: z
+                .nullable(
+                    z.union([
+                        z.lazy(() => EmployeeSchemasNationalIdentityNumber4$.inboundSchema),
+                        z.string(),
+                        z.number(),
+                        z.boolean(),
+                    ])
+                )
+                .optional(),
+            value: z.nullable(EmployeeSchemasNationalIdentityNumberValue$.inboundSchema).optional(),
+        })
+        .transform((v) => {
+            return remap$(v, {
+                source_value: "sourceValue",
+            });
+        });
+
+    export type Outbound = {
+        source_value?:
+            | EmployeeSchemasNationalIdentityNumber4$.Outbound
+            | string
+            | number
+            | boolean
+            | null
+            | undefined;
+        value?: string | null | undefined;
+    };
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, EmployeeSchemasType> = z
+        .object({
+            sourceValue: z
+                .nullable(
+                    z.union([
+                        z.lazy(() => EmployeeSchemasNationalIdentityNumber4$.outboundSchema),
+                        z.string(),
+                        z.number(),
+                        z.boolean(),
+                    ])
+                )
+                .optional(),
+            value: z
+                .nullable(EmployeeSchemasNationalIdentityNumberValue$.outboundSchema)
+                .optional(),
+        })
+        .transform((v) => {
+            return remap$(v, {
+                sourceValue: "source_value",
+            });
+        });
+}
+
+/** @internal */
+export namespace NationalIdentityNumber$ {
+    export const inboundSchema: z.ZodType<NationalIdentityNumber, z.ZodTypeDef, unknown> = z.object(
+        {
+            type: z.nullable(z.lazy(() => EmployeeSchemasType$.inboundSchema)).optional(),
+            value: z.nullable(z.string()).optional(),
+        }
+    );
+
+    export type Outbound = {
+        type?: EmployeeSchemasType$.Outbound | null | undefined;
+        value?: string | null | undefined;
+    };
+
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, NationalIdentityNumber> =
+        z.object({
+            type: z.nullable(z.lazy(() => EmployeeSchemasType$.outboundSchema)).optional(),
+            value: z.nullable(z.string()).optional(),
+        });
+}
+
+/** @internal */
 export namespace EmployeeSchemasPreferredLanguage4$ {
     export const inboundSchema: z.ZodType<
         EmployeeSchemasPreferredLanguage4,
@@ -3124,6 +3320,9 @@ export namespace Employee$ {
             manager_id: z.nullable(z.string()).optional(),
             marital_status: z.nullable(z.lazy(() => MaritalStatus$.inboundSchema)).optional(),
             name: z.nullable(z.string()).optional(),
+            national_identity_number: z
+                .nullable(z.lazy(() => NationalIdentityNumber$.inboundSchema))
+                .optional(),
             personal_email: z.nullable(z.string()).optional(),
             personal_phone_number: z.nullable(z.string()).optional(),
             preferred_language: z
@@ -3189,6 +3388,7 @@ export namespace Employee$ {
                 last_name: "lastName",
                 manager_id: "managerId",
                 marital_status: "maritalStatus",
+                national_identity_number: "nationalIdentityNumber",
                 personal_email: "personalEmail",
                 personal_phone_number: "personalPhoneNumber",
                 preferred_language: "preferredLanguage",
@@ -3236,6 +3436,7 @@ export namespace Employee$ {
         manager_id?: string | null | undefined;
         marital_status?: MaritalStatus$.Outbound | null | undefined;
         name?: string | null | undefined;
+        national_identity_number?: NationalIdentityNumber$.Outbound | null | undefined;
         personal_email?: string | null | undefined;
         personal_phone_number?: string | null | undefined;
         preferred_language?: PreferredLanguage$.Outbound | null | undefined;
@@ -3286,6 +3487,9 @@ export namespace Employee$ {
             managerId: z.nullable(z.string()).optional(),
             maritalStatus: z.nullable(z.lazy(() => MaritalStatus$.outboundSchema)).optional(),
             name: z.nullable(z.string()).optional(),
+            nationalIdentityNumber: z
+                .nullable(z.lazy(() => NationalIdentityNumber$.outboundSchema))
+                .optional(),
             personalEmail: z.nullable(z.string()).optional(),
             personalPhoneNumber: z.nullable(z.string()).optional(),
             preferredLanguage: z
@@ -3323,6 +3527,7 @@ export namespace Employee$ {
                 lastName: "last_name",
                 managerId: "manager_id",
                 maritalStatus: "marital_status",
+                nationalIdentityNumber: "national_identity_number",
                 personalEmail: "personal_email",
                 personalPhoneNumber: "personal_phone_number",
                 preferredLanguage: "preferred_language",

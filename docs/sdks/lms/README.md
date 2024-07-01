@@ -193,7 +193,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.lms.getCategory({
-    fields: "id,remote_id,name",
+    fields: "id,remote_id,name,active",
     id: "<id>",
     xAccountId: "<value>",
   });
@@ -332,7 +332,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.lms.listCategories({
-    fields: "id,remote_id,name",
+    fields: "id,remote_id,name,active",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },

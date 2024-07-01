@@ -86,9 +86,7 @@ export type AtsUpdateApplicationRequestDto = {
      */
     passthrough?: { [k: string]: any } | null | undefined;
     /**
-     * Unique identifier of the rejection reason, used only for write operations
-     *
-     * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
+     * Unique identifier of the rejection reason
      */
     rejectedReasonId?: string | null | undefined;
     source?: AtsUpdateApplicationRequestDtoSource | null | undefined;

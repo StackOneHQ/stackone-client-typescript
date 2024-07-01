@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 7fa83af8-9e8e-4410-b7e2-cf1d0eaf688b
 management:
-  docChecksum: 0138080879a47d4462d445d22e55253d
+  docChecksum: 06fc66b28090b46fa116eafd15fa42d7
   docVersion: 1.0.0
-  speakeasyVersion: 1.318.0
-  generationVersion: 2.352.0
-  releaseVersion: 4.10.1
-  configChecksum: 0030f11afcd8f95208b003a5247b9d74
+  speakeasyVersion: 1.322.3
+  generationVersion: 2.354.2
+  releaseVersion: 4.10.2
+  configChecksum: 318547a1213c2a5ae185c7da8fd24fb5
   repoURL: https://github.com/StackOneHQ/stackone-client-typescript.git
   repoSubDirectory: .
   installationURL: https://github.com/StackOneHQ/stackone-client-typescript
@@ -1069,6 +1069,11 @@ generatedFiles:
   - docs/sdk/models/shared/employeeschemasmaritalstatussourcevalue.md
   - docs/sdk/models/shared/employeeschemasmaritalstatusvalue.md
   - docs/sdk/models/shared/maritalstatus.md
+  - docs/sdk/models/shared/employeeschemasnationalidentitynumber4.md
+  - docs/sdk/models/shared/employeeschemasnationalidentitynumbersourcevalue.md
+  - docs/sdk/models/shared/employeeschemasnationalidentitynumbervalue.md
+  - docs/sdk/models/shared/employeeschemastype.md
+  - docs/sdk/models/shared/nationalidentitynumber.md
   - docs/sdk/models/shared/employeeschemaspreferredlanguage4.md
   - docs/sdk/models/shared/employeeschemaspreferredlanguagesourcevalue.md
   - docs/sdk/models/shared/employeeschemaspreferredlanguagevalue.md
@@ -1099,6 +1104,8 @@ generatedFiles:
   - docs/sdk/models/shared/hrisdocumentapimodeltype.md
   - docs/sdk/models/shared/hrisdocumentapimodel.md
   - docs/sdk/models/shared/referenceresult.md
+  - docs/sdk/models/shared/reference2.md
+  - docs/sdk/models/shared/referenceactive.md
   - docs/sdk/models/shared/reference.md
   - docs/sdk/models/shared/timeoffresult.md
   - docs/sdk/models/shared/timeoff2.md
