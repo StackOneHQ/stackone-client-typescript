@@ -5,7 +5,21 @@
 import { remap as remap$ } from "../../../lib/primitives.js";
 import * as z from "zod";
 
+export enum Reference2 {
+    True = "true",
+    False = "false",
+}
+
+/**
+ * The reference status
+ */
+export type ReferenceActive = boolean | Reference2;
+
 export type Reference = {
+    /**
+     * The reference status
+     */
+    active?: boolean | Reference2 | null | undefined;
     /**
      * The reference id
      */
@@ -21,9 +35,30 @@ export type Reference = {
 };
 
 /** @internal */
+export namespace Reference2$ {
+    export const inboundSchema: z.ZodNativeEnum<typeof Reference2> = z.nativeEnum(Reference2);
+    export const outboundSchema: z.ZodNativeEnum<typeof Reference2> = inboundSchema;
+}
+
+/** @internal */
+export namespace ReferenceActive$ {
+    export const inboundSchema: z.ZodType<ReferenceActive, z.ZodTypeDef, unknown> = z.union([
+        z.boolean(),
+        Reference2$.inboundSchema,
+    ]);
+
+    export type Outbound = boolean | string;
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ReferenceActive> = z.union([
+        z.boolean(),
+        Reference2$.outboundSchema,
+    ]);
+}
+
+/** @internal */
 export namespace Reference$ {
     export const inboundSchema: z.ZodType<Reference, z.ZodTypeDef, unknown> = z
         .object({
+            active: z.nullable(z.union([z.boolean(), Reference2$.inboundSchema])).optional(),
             id: z.nullable(z.string()).optional(),
             name: z.nullable(z.string()).optional(),
             remote_id: z.nullable(z.string()).optional(),
@@ -35,6 +70,7 @@ export namespace Reference$ {
         });
 
     export type Outbound = {
+        active?: boolean | string | null | undefined;
         id?: string | null | undefined;
         name?: string | null | undefined;
         remote_id?: string | null | undefined;
@@ -42,6 +78,7 @@ export namespace Reference$ {
 
     export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Reference> = z
         .object({
+            active: z.nullable(z.union([z.boolean(), Reference2$.outboundSchema])).optional(),
             id: z.nullable(z.string()).optional(),
             name: z.nullable(z.string()).optional(),
             remoteId: z.nullable(z.string()).optional(),
