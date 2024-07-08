@@ -53,6 +53,7 @@ export * from "./contactscustomfields.js";
 export * from "./contactspaginated.js";
 export * from "./content.js";
 export * from "./contentlanguageenum.js";
+export * from "./contentpaginated.js";
 export * from "./contentresult.js";
 export * from "./costcenters.js";
 export * from "./countrycodeenum.js";

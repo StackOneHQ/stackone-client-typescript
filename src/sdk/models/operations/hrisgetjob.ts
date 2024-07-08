@@ -6,7 +6,7 @@ import { remap as remap$ } from "../../../lib/primitives.js";
 import * as shared from "../shared/index.js";
 import * as z from "zod";
 
-export type LmsGetContentRequest = {
+export type HrisGetJobRequest = {
     /**
      * The comma separated list of fields that will be returned in the response (if empty, all fields are returned)
      */
@@ -26,15 +26,15 @@ export type LmsGetContentRequest = {
     xAccountId: string;
 };
 
-export type LmsGetContentResponse = {
-    /**
-     * The content with the given identifier was retrieved.
-     */
-    contentResult?: shared.ContentResult | undefined;
+export type HrisGetJobResponse = {
     /**
      * HTTP response content type for this operation
      */
     contentType: string;
+    /**
+     * The job with the given identifier was retrieved.
+     */
+    jobResult?: shared.JobResult | undefined;
     /**
      * HTTP response status code for this operation
      */
@@ -46,8 +46,8 @@ export type LmsGetContentResponse = {
 };
 
 /** @internal */
-export namespace LmsGetContentRequest$ {
-    export const inboundSchema: z.ZodType<LmsGetContentRequest, z.ZodTypeDef, unknown> = z
+export namespace HrisGetJobRequest$ {
+    export const inboundSchema: z.ZodType<HrisGetJobRequest, z.ZodTypeDef, unknown> = z
         .object({
             fields: z.nullable(z.string()).optional(),
             id: z.string(),
@@ -69,7 +69,7 @@ export namespace LmsGetContentRequest$ {
         "x-account-id": string;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, LmsGetContentRequest> = z
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, HrisGetJobRequest> = z
         .object({
             fields: z.nullable(z.string()).optional(),
             id: z.string(),
@@ -85,34 +85,34 @@ export namespace LmsGetContentRequest$ {
 }
 
 /** @internal */
-export namespace LmsGetContentResponse$ {
-    export const inboundSchema: z.ZodType<LmsGetContentResponse, z.ZodTypeDef, unknown> = z
+export namespace HrisGetJobResponse$ {
+    export const inboundSchema: z.ZodType<HrisGetJobResponse, z.ZodTypeDef, unknown> = z
         .object({
-            ContentResult: shared.ContentResult$.inboundSchema.optional(),
             ContentType: z.string(),
+            JobResult: shared.JobResult$.inboundSchema.optional(),
             StatusCode: z.number().int(),
             RawResponse: z.instanceof(Response),
         })
         .transform((v) => {
             return remap$(v, {
-                ContentResult: "contentResult",
                 ContentType: "contentType",
+                JobResult: "jobResult",
                 StatusCode: "statusCode",
                 RawResponse: "rawResponse",
             });
         });
 
     export type Outbound = {
-        ContentResult?: shared.ContentResult$.Outbound | undefined;
         ContentType: string;
+        JobResult?: shared.JobResult$.Outbound | undefined;
         StatusCode: number;
         RawResponse: never;
     };
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, LmsGetContentResponse> = z
+    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, HrisGetJobResponse> = z
         .object({
-            contentResult: shared.ContentResult$.outboundSchema.optional(),
             contentType: z.string(),
+            jobResult: shared.JobResult$.outboundSchema.optional(),
             statusCode: z.number().int(),
             rawResponse: z.instanceof(Response).transform(() => {
                 throw new Error("Response cannot be serialized");
@@ -120,8 +120,8 @@ export namespace LmsGetContentResponse$ {
         })
         .transform((v) => {
             return remap$(v, {
-                contentResult: "ContentResult",
                 contentType: "ContentType",
+                jobResult: "JobResult",
                 statusCode: "StatusCode",
                 rawResponse: "RawResponse",
             });

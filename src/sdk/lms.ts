@@ -3,7 +3,7 @@
  */
 
 import { SDKHooks } from "../hooks/hooks.js";
-import { SDK_METADATA, SDKOptions, serverURLFromOptions } from "../lib/config.js";
+import { SDKOptions, serverURLFromOptions } from "../lib/config.js";
 import {
     encodeDeepObjectQuery as encodeDeepObjectQuery$,
     encodeFormQuery as encodeFormQuery$,
@@ -51,10 +51,6 @@ export class Lms extends ClientSDK {
         options?: RequestOptions
     ): Promise<operations.LmsCreateCompletionResponse> {
         const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Content-Type", "application/json");
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
@@ -69,13 +65,14 @@ export class Lms extends ClientSDK {
 
         const query$ = "";
 
-        headers$.set(
-            "x-account-id",
-            encodeSimple$("x-account-id", payload$["x-account-id"], {
+        const headers$ = new Headers({
+            "Content-Type": "application/json",
+            Accept: "application/json",
+            "x-account-id": encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
-            })
-        );
+            }),
+        });
 
         const security$ =
             typeof this.options$.security === "function"
@@ -89,10 +86,6 @@ export class Lms extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = {
-            context,
-            errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
-        };
         const request$ = this.createRequest$(
             context,
             {
@@ -106,7 +99,10 @@ export class Lms extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+        });
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -131,10 +127,6 @@ export class Lms extends ClientSDK {
         options?: RequestOptions
     ): Promise<operations.LmsCreateContentResponse> {
         const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Content-Type", "application/json");
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
@@ -147,13 +139,14 @@ export class Lms extends ClientSDK {
 
         const query$ = "";
 
-        headers$.set(
-            "x-account-id",
-            encodeSimple$("x-account-id", payload$["x-account-id"], {
+        const headers$ = new Headers({
+            "Content-Type": "application/json",
+            Accept: "application/json",
+            "x-account-id": encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
-            })
-        );
+            }),
+        });
 
         const security$ =
             typeof this.options$.security === "function"
@@ -167,10 +160,6 @@ export class Lms extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = {
-            context,
-            errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
-        };
         const request$ = this.createRequest$(
             context,
             {
@@ -184,7 +173,10 @@ export class Lms extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+        });
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -209,9 +201,6 @@ export class Lms extends ClientSDK {
         options?: RequestOptions
     ): Promise<operations.LmsGetCategoryResponse> {
         const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
@@ -231,13 +220,13 @@ export class Lms extends ClientSDK {
             raw: payload$.raw,
         });
 
-        headers$.set(
-            "x-account-id",
-            encodeSimple$("x-account-id", payload$["x-account-id"], {
+        const headers$ = new Headers({
+            Accept: "application/json",
+            "x-account-id": encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
-            })
-        );
+            }),
+        });
 
         const security$ =
             typeof this.options$.security === "function"
@@ -251,10 +240,6 @@ export class Lms extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = {
-            context,
-            errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
-        };
         const request$ = this.createRequest$(
             context,
             {
@@ -268,7 +253,10 @@ export class Lms extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+        });
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -293,9 +281,6 @@ export class Lms extends ClientSDK {
         options?: RequestOptions
     ): Promise<operations.LmsGetCompletionResponse> {
         const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
@@ -315,13 +300,13 @@ export class Lms extends ClientSDK {
             raw: payload$.raw,
         });
 
-        headers$.set(
-            "x-account-id",
-            encodeSimple$("x-account-id", payload$["x-account-id"], {
+        const headers$ = new Headers({
+            Accept: "application/json",
+            "x-account-id": encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
-            })
-        );
+            }),
+        });
 
         const security$ =
             typeof this.options$.security === "function"
@@ -335,10 +320,6 @@ export class Lms extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = {
-            context,
-            errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
-        };
         const request$ = this.createRequest$(
             context,
             {
@@ -352,7 +333,10 @@ export class Lms extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+        });
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -377,9 +361,6 @@ export class Lms extends ClientSDK {
         options?: RequestOptions
     ): Promise<operations.LmsGetContentResponse> {
         const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
@@ -399,13 +380,13 @@ export class Lms extends ClientSDK {
             raw: payload$.raw,
         });
 
-        headers$.set(
-            "x-account-id",
-            encodeSimple$("x-account-id", payload$["x-account-id"], {
+        const headers$ = new Headers({
+            Accept: "application/json",
+            "x-account-id": encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
-            })
-        );
+            }),
+        });
 
         const security$ =
             typeof this.options$.security === "function"
@@ -419,10 +400,6 @@ export class Lms extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = {
-            context,
-            errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
-        };
         const request$ = this.createRequest$(
             context,
             {
@@ -436,7 +413,10 @@ export class Lms extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+        });
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -461,9 +441,6 @@ export class Lms extends ClientSDK {
         options?: RequestOptions
     ): Promise<operations.LmsListCategoriesResponse> {
         const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
@@ -489,13 +466,13 @@ export class Lms extends ClientSDK {
             })
         );
 
-        headers$.set(
-            "x-account-id",
-            encodeSimple$("x-account-id", payload$["x-account-id"], {
+        const headers$ = new Headers({
+            Accept: "application/json",
+            "x-account-id": encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
-            })
-        );
+            }),
+        });
 
         const security$ =
             typeof this.options$.security === "function"
@@ -509,10 +486,6 @@ export class Lms extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = {
-            context,
-            errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
-        };
         const request$ = this.createRequest$(
             context,
             {
@@ -526,7 +499,10 @@ export class Lms extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+        });
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -544,6 +520,92 @@ export class Lms extends ClientSDK {
     }
 
     /**
+     * List Content
+     */
+    async listContent(
+        request: operations.LmsListContentRequest,
+        options?: RequestOptions
+    ): Promise<operations.LmsListContentResponse> {
+        const input$ = request;
+
+        const payload$ = schemas$.parse(
+            input$,
+            (value$) => operations.LmsListContentRequest$.outboundSchema.parse(value$),
+            "Input validation failed"
+        );
+        const body$ = null;
+
+        const path$ = this.templateURLComponent("/unified/lms/content")();
+
+        const query$ = queryJoin$(
+            encodeDeepObjectQuery$({
+                filter: payload$.filter,
+                proxy: payload$.proxy,
+            }),
+            encodeFormQuery$({
+                fields: payload$.fields,
+                next: payload$.next,
+                page: payload$.page,
+                page_size: payload$.page_size,
+                raw: payload$.raw,
+                updated_after: payload$.updated_after,
+            })
+        );
+
+        const headers$ = new Headers({
+            Accept: "application/json",
+            "x-account-id": encodeSimple$("x-account-id", payload$["x-account-id"], {
+                explode: false,
+                charEncoding: "none",
+            }),
+        });
+
+        const security$ =
+            typeof this.options$.security === "function"
+                ? await this.options$.security()
+                : this.options$.security;
+
+        const context = {
+            operationID: "lms_list_content",
+            oAuth2Scopes: [],
+            securitySource: this.options$.security,
+        };
+        const securitySettings$ = this.resolveGlobalSecurity(security$);
+
+        const request$ = this.createRequest$(
+            context,
+            {
+                security: securitySettings$,
+                method: "GET",
+                path: path$,
+                headers: headers$,
+                query: query$,
+                body: body$,
+            },
+            options
+        );
+
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+        });
+
+        const responseFields$ = {
+            ContentType: response.headers.get("content-type") ?? "application/octet-stream",
+            StatusCode: response.status,
+            RawResponse: response,
+            Headers: {},
+        };
+
+        const [result$] = await this.matcher<operations.LmsListContentResponse>()
+            .json(200, operations.LmsListContentResponse$, { key: "ContentPaginated" })
+            .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
+            .match(response, { extraFields: responseFields$ });
+
+        return result$;
+    }
+
+    /**
      * Update Content
      */
     async updateContent(
@@ -551,10 +613,6 @@ export class Lms extends ClientSDK {
         options?: RequestOptions
     ): Promise<operations.LmsUpdateContentResponse> {
         const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Content-Type", "application/json");
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
@@ -570,13 +628,14 @@ export class Lms extends ClientSDK {
 
         const query$ = "";
 
-        headers$.set(
-            "x-account-id",
-            encodeSimple$("x-account-id", payload$["x-account-id"], {
+        const headers$ = new Headers({
+            "Content-Type": "application/json",
+            Accept: "application/json",
+            "x-account-id": encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
-            })
-        );
+            }),
+        });
 
         const security$ =
             typeof this.options$.security === "function"
@@ -590,10 +649,6 @@ export class Lms extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = {
-            context,
-            errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
-        };
         const request$ = this.createRequest$(
             context,
             {
@@ -607,7 +662,10 @@ export class Lms extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+        });
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",

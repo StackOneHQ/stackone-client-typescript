@@ -3,7 +3,7 @@
  */
 
 import { SDKHooks } from "../hooks/hooks.js";
-import { SDK_METADATA, SDKOptions, serverURLFromOptions } from "../lib/config.js";
+import { SDKOptions, serverURLFromOptions } from "../lib/config.js";
 import { encodeJSON as encodeJSON$ } from "../lib/encodings.js";
 import { HTTPClient } from "../lib/http.js";
 import * as schemas$ from "../lib/schemas.js";
@@ -46,10 +46,6 @@ export class ConnectSessions extends ClientSDK {
         options?: RequestOptions
     ): Promise<operations.StackoneAuthenticateConnectSessionResponse> {
         const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Content-Type", "application/json");
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
@@ -61,6 +57,11 @@ export class ConnectSessions extends ClientSDK {
         const path$ = this.templateURLComponent("/connect_sessions/authenticate")();
 
         const query$ = "";
+
+        const headers$ = new Headers({
+            "Content-Type": "application/json",
+            Accept: "application/json",
+        });
 
         const security$ =
             typeof this.options$.security === "function"
@@ -74,10 +75,6 @@ export class ConnectSessions extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = {
-            context,
-            errorCodes: ["400", "403", "429", "4XX", "500", "501", "5XX"],
-        };
         const request$ = this.createRequest$(
             context,
             {
@@ -91,7 +88,10 @@ export class ConnectSessions extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["400", "403", "429", "4XX", "500", "501", "5XX"],
+        });
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -119,10 +119,6 @@ export class ConnectSessions extends ClientSDK {
         options?: RequestOptions
     ): Promise<operations.StackoneCreateConnectSessionResponse> {
         const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Content-Type", "application/json");
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
@@ -134,6 +130,11 @@ export class ConnectSessions extends ClientSDK {
         const path$ = this.templateURLComponent("/connect_sessions")();
 
         const query$ = "";
+
+        const headers$ = new Headers({
+            "Content-Type": "application/json",
+            Accept: "application/json",
+        });
 
         const security$ =
             typeof this.options$.security === "function"
@@ -147,10 +148,6 @@ export class ConnectSessions extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = {
-            context,
-            errorCodes: ["400", "403", "429", "4XX", "500", "501", "5XX"],
-        };
         const request$ = this.createRequest$(
             context,
             {
@@ -164,7 +161,10 @@ export class ConnectSessions extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["400", "403", "429", "4XX", "500", "501", "5XX"],
+        });
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",

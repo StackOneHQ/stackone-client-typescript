@@ -16,6 +16,7 @@ export enum IamGroupValue {
     Team = "team",
     Department = "department",
     Group = "group",
+    Organization = "organization",
     UnmappedValue = "unmapped_value",
 }
 export type IamGroupValueOpen = OpenEnum<typeof IamGroupValue>;
