@@ -3,7 +3,7 @@
  */
 
 import { SDKHooks } from "../hooks/hooks.js";
-import { SDK_METADATA, SDKOptions, serverURLFromOptions } from "../lib/config.js";
+import { SDKOptions, serverURLFromOptions } from "../lib/config.js";
 import {
     encodeFormQuery as encodeFormQuery$,
     encodeSimple as encodeSimple$,
@@ -48,9 +48,6 @@ export class Connectors extends ClientSDK {
         options?: RequestOptions
     ): Promise<operations.StackoneGetConnectorMetaResponse> {
         const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
@@ -71,6 +68,10 @@ export class Connectors extends ClientSDK {
             include: payload$.include,
         });
 
+        const headers$ = new Headers({
+            Accept: "application/json",
+        });
+
         const security$ =
             typeof this.options$.security === "function"
                 ? await this.options$.security()
@@ -83,10 +84,6 @@ export class Connectors extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = {
-            context,
-            errorCodes: ["400", "403", "404", "429", "4XX", "500", "501", "5XX"],
-        };
         const request$ = this.createRequest$(
             context,
             {
@@ -100,7 +97,10 @@ export class Connectors extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["400", "403", "404", "429", "4XX", "500", "501", "5XX"],
+        });
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -125,9 +125,6 @@ export class Connectors extends ClientSDK {
         options?: RequestOptions
     ): Promise<operations.StackoneListConnectorsMetaResponse> {
         const input$ = typeof request === "undefined" ? {} : request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
@@ -142,6 +139,10 @@ export class Connectors extends ClientSDK {
             include: payload$.include,
         });
 
+        const headers$ = new Headers({
+            Accept: "application/json",
+        });
+
         const security$ =
             typeof this.options$.security === "function"
                 ? await this.options$.security()
@@ -154,10 +155,6 @@ export class Connectors extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = {
-            context,
-            errorCodes: ["400", "403", "429", "4XX", "500", "501", "5XX"],
-        };
         const request$ = this.createRequest$(
             context,
             {
@@ -171,7 +168,10 @@ export class Connectors extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["400", "403", "429", "4XX", "500", "501", "5XX"],
+        });
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",

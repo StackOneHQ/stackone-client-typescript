@@ -9,6 +9,7 @@
 * [getCompletion](#getcompletion) - Get Completion
 * [getContent](#getcontent) - Get Content
 * [listCategories](#listcategories) - List Categories
+* [listContent](#listcontent) - List Content
 * [updateContent](#updatecontent) - Update Content
 
 ## createCompletion
@@ -286,6 +287,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.lms.getContent({
+    fields: "id,remote_id,external_id,remote_external_id,course_ids,remote_course_ids,title,description,languages,content_url,content_type,cover_url,active,duration,categories,order",
     id: "<id>",
     xAccountId: "<value>",
   });
@@ -358,6 +360,55 @@ run();
 ### Response
 
 **Promise\<[operations.LmsListCategoriesResponse](../../sdk/models/operations/lmslistcategoriesresponse.md)\>**
+### Errors
+
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
+
+## listContent
+
+List Content
+
+### Example Usage
+
+```typescript
+import { StackOne } from "@stackone/stackone-client-ts";
+
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
+
+async function run() {
+  const result = await stackOne.lms.listContent({
+    fields: "id,remote_id,external_id,remote_external_id,course_ids,remote_course_ids,title,description,languages,content_url,content_type,cover_url,active,duration,categories,order",
+    filter: {
+      updatedAfter: "2020-01-01T00:00:00.000Z",
+    },
+    xAccountId: "<value>",
+  });
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.LmsListContentRequest](../../sdk/models/operations/lmslistcontentrequest.md)                                                                                       | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+
+
+### Response
+
+**Promise\<[operations.LmsListContentResponse](../../sdk/models/operations/lmslistcontentresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

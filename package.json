@@ -1,7 +1,7 @@
 {
   "name": "@stackone/stackone-client-ts",
-  "version": "4.10.2",
-  "author": "StackOne",  
+  "version": "4.11.0",
+  "author": "StackOne",
   "main": "./index.js",
   "sideEffects": false,
   "repository": {

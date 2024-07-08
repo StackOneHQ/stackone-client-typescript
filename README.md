@@ -163,6 +163,7 @@ run();
 * [getEmployeesWorkEligibility](docs/sdks/hris/README.md#getemployeesworkeligibility) - Get Employees Work Eligibility
 * [getEmployment](docs/sdks/hris/README.md#getemployment) - Get Employment
 * [getGroup](docs/sdks/hris/README.md#getgroup) - Get Group
+* [getJob](docs/sdks/hris/README.md#getjob) - Get Job
 * [getLocation](docs/sdks/hris/README.md#getlocation) - Get Location
 * [getTimeOffRequest](docs/sdks/hris/README.md#gettimeoffrequest) - Get time off request
 * [listBenefits](docs/sdks/hris/README.md#listbenefits) - List benefits
@@ -174,6 +175,7 @@ run();
 * [listEmployees](docs/sdks/hris/README.md#listemployees) - List Employees
 * [listEmployments](docs/sdks/hris/README.md#listemployments) - List Employments
 * [listGroups](docs/sdks/hris/README.md#listgroups) - List Groups
+* [listJobs](docs/sdks/hris/README.md#listjobs) - List Jobs
 * [listLocations](docs/sdks/hris/README.md#listlocations) - List locations
 * [listTimeOffRequests](docs/sdks/hris/README.md#listtimeoffrequests) - List time off requests
 * [updateEmployee](docs/sdks/hris/README.md#updateemployee) - Updates an employee
@@ -200,6 +202,7 @@ run();
 * [getCompletion](docs/sdks/lms/README.md#getcompletion) - Get Completion
 * [getContent](docs/sdks/lms/README.md#getcontent) - Get Content
 * [listCategories](docs/sdks/lms/README.md#listcategories) - List Categories
+* [listContent](docs/sdks/lms/README.md#listcontent) - List Content
 * [updateContent](docs/sdks/lms/README.md#updatecontent) - Update Content
 
 ### [marketing](docs/sdks/marketing/README.md)

@@ -3,7 +3,7 @@
  */
 
 import { SDKHooks } from "../hooks/hooks.js";
-import { SDK_METADATA, SDKOptions, serverURLFromOptions } from "../lib/config.js";
+import { SDKOptions, serverURLFromOptions } from "../lib/config.js";
 import {
     encodeDeepObjectQuery as encodeDeepObjectQuery$,
     encodeFormQuery as encodeFormQuery$,
@@ -51,10 +51,6 @@ export class Crm extends ClientSDK {
         options?: RequestOptions
     ): Promise<operations.CrmCreateContactResponse> {
         const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Content-Type", "application/json");
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
@@ -67,13 +63,14 @@ export class Crm extends ClientSDK {
 
         const query$ = "";
 
-        headers$.set(
-            "x-account-id",
-            encodeSimple$("x-account-id", payload$["x-account-id"], {
+        const headers$ = new Headers({
+            "Content-Type": "application/json",
+            Accept: "application/json",
+            "x-account-id": encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
-            })
-        );
+            }),
+        });
 
         const security$ =
             typeof this.options$.security === "function"
@@ -87,10 +84,6 @@ export class Crm extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = {
-            context,
-            errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
-        };
         const request$ = this.createRequest$(
             context,
             {
@@ -104,7 +97,10 @@ export class Crm extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+        });
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -129,9 +125,6 @@ export class Crm extends ClientSDK {
         options?: RequestOptions
     ): Promise<operations.CrmGetAccountResponse> {
         const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
@@ -155,13 +148,13 @@ export class Crm extends ClientSDK {
             })
         );
 
-        headers$.set(
-            "x-account-id",
-            encodeSimple$("x-account-id", payload$["x-account-id"], {
+        const headers$ = new Headers({
+            Accept: "application/json",
+            "x-account-id": encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
-            })
-        );
+            }),
+        });
 
         const security$ =
             typeof this.options$.security === "function"
@@ -175,10 +168,6 @@ export class Crm extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = {
-            context,
-            errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
-        };
         const request$ = this.createRequest$(
             context,
             {
@@ -192,7 +181,10 @@ export class Crm extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+        });
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -217,9 +209,6 @@ export class Crm extends ClientSDK {
         options?: RequestOptions
     ): Promise<operations.CrmGetContactResponse> {
         const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
@@ -244,13 +233,13 @@ export class Crm extends ClientSDK {
             })
         );
 
-        headers$.set(
-            "x-account-id",
-            encodeSimple$("x-account-id", payload$["x-account-id"], {
+        const headers$ = new Headers({
+            Accept: "application/json",
+            "x-account-id": encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
-            })
-        );
+            }),
+        });
 
         const security$ =
             typeof this.options$.security === "function"
@@ -264,10 +253,6 @@ export class Crm extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = {
-            context,
-            errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
-        };
         const request$ = this.createRequest$(
             context,
             {
@@ -281,7 +266,10 @@ export class Crm extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+        });
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -306,9 +294,6 @@ export class Crm extends ClientSDK {
         options?: RequestOptions
     ): Promise<operations.CrmGetListResponse> {
         const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
@@ -332,13 +317,13 @@ export class Crm extends ClientSDK {
             })
         );
 
-        headers$.set(
-            "x-account-id",
-            encodeSimple$("x-account-id", payload$["x-account-id"], {
+        const headers$ = new Headers({
+            Accept: "application/json",
+            "x-account-id": encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
-            })
-        );
+            }),
+        });
 
         const security$ =
             typeof this.options$.security === "function"
@@ -352,10 +337,6 @@ export class Crm extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = {
-            context,
-            errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
-        };
         const request$ = this.createRequest$(
             context,
             {
@@ -369,7 +350,10 @@ export class Crm extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+        });
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -394,9 +378,6 @@ export class Crm extends ClientSDK {
         options?: RequestOptions
     ): Promise<operations.CrmListAccountsResponse> {
         const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
@@ -422,13 +403,13 @@ export class Crm extends ClientSDK {
             })
         );
 
-        headers$.set(
-            "x-account-id",
-            encodeSimple$("x-account-id", payload$["x-account-id"], {
+        const headers$ = new Headers({
+            Accept: "application/json",
+            "x-account-id": encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
-            })
-        );
+            }),
+        });
 
         const security$ =
             typeof this.options$.security === "function"
@@ -442,10 +423,6 @@ export class Crm extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = {
-            context,
-            errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
-        };
         const request$ = this.createRequest$(
             context,
             {
@@ -459,7 +436,10 @@ export class Crm extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+        });
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -484,9 +464,6 @@ export class Crm extends ClientSDK {
         options?: RequestOptions
     ): Promise<operations.CrmListContactsResponse> {
         const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
@@ -513,13 +490,13 @@ export class Crm extends ClientSDK {
             })
         );
 
-        headers$.set(
-            "x-account-id",
-            encodeSimple$("x-account-id", payload$["x-account-id"], {
+        const headers$ = new Headers({
+            Accept: "application/json",
+            "x-account-id": encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
-            })
-        );
+            }),
+        });
 
         const security$ =
             typeof this.options$.security === "function"
@@ -533,10 +510,6 @@ export class Crm extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = {
-            context,
-            errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
-        };
         const request$ = this.createRequest$(
             context,
             {
@@ -550,7 +523,10 @@ export class Crm extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+        });
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -575,9 +551,6 @@ export class Crm extends ClientSDK {
         options?: RequestOptions
     ): Promise<operations.CrmListListsResponse> {
         const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
@@ -603,13 +576,13 @@ export class Crm extends ClientSDK {
             })
         );
 
-        headers$.set(
-            "x-account-id",
-            encodeSimple$("x-account-id", payload$["x-account-id"], {
+        const headers$ = new Headers({
+            Accept: "application/json",
+            "x-account-id": encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
-            })
-        );
+            }),
+        });
 
         const security$ =
             typeof this.options$.security === "function"
@@ -623,10 +596,6 @@ export class Crm extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = {
-            context,
-            errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
-        };
         const request$ = this.createRequest$(
             context,
             {
@@ -640,7 +609,10 @@ export class Crm extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+        });
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -665,10 +637,6 @@ export class Crm extends ClientSDK {
         options?: RequestOptions
     ): Promise<operations.CrmUpdateContactResponse> {
         const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Content-Type", "application/json");
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
@@ -684,13 +652,14 @@ export class Crm extends ClientSDK {
 
         const query$ = "";
 
-        headers$.set(
-            "x-account-id",
-            encodeSimple$("x-account-id", payload$["x-account-id"], {
+        const headers$ = new Headers({
+            "Content-Type": "application/json",
+            Accept: "application/json",
+            "x-account-id": encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
-            })
-        );
+            }),
+        });
 
         const security$ =
             typeof this.options$.security === "function"
@@ -704,10 +673,6 @@ export class Crm extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = {
-            context,
-            errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
-        };
         const request$ = this.createRequest$(
             context,
             {
@@ -721,7 +686,10 @@ export class Crm extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+        });
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",

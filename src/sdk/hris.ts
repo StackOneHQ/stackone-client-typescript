@@ -3,7 +3,7 @@
  */
 
 import { SDKHooks } from "../hooks/hooks.js";
-import { SDK_METADATA, SDKOptions, serverURLFromOptions } from "../lib/config.js";
+import { SDKOptions, serverURLFromOptions } from "../lib/config.js";
 import {
     encodeDeepObjectQuery as encodeDeepObjectQuery$,
     encodeFormQuery as encodeFormQuery$,
@@ -53,10 +53,6 @@ export class Hris extends ClientSDK {
         options?: RequestOptions
     ): Promise<operations.HrisCreateEmployeeResponse> {
         const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Content-Type", "application/json");
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
@@ -69,13 +65,14 @@ export class Hris extends ClientSDK {
 
         const query$ = "";
 
-        headers$.set(
-            "x-account-id",
-            encodeSimple$("x-account-id", payload$["x-account-id"], {
+        const headers$ = new Headers({
+            "Content-Type": "application/json",
+            Accept: "application/json",
+            "x-account-id": encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
-            })
-        );
+            }),
+        });
 
         const security$ =
             typeof this.options$.security === "function"
@@ -89,10 +86,6 @@ export class Hris extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = {
-            context,
-            errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
-        };
         const request$ = this.createRequest$(
             context,
             {
@@ -106,7 +99,10 @@ export class Hris extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+        });
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -131,10 +127,6 @@ export class Hris extends ClientSDK {
         options?: RequestOptions
     ): Promise<operations.HrisCreateEmployeeTimeOffRequestResponse> {
         const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Content-Type", "application/json");
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
@@ -153,13 +145,14 @@ export class Hris extends ClientSDK {
 
         const query$ = "";
 
-        headers$.set(
-            "x-account-id",
-            encodeSimple$("x-account-id", payload$["x-account-id"], {
+        const headers$ = new Headers({
+            "Content-Type": "application/json",
+            Accept: "application/json",
+            "x-account-id": encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
-            })
-        );
+            }),
+        });
 
         const security$ =
             typeof this.options$.security === "function"
@@ -173,10 +166,6 @@ export class Hris extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = {
-            context,
-            errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
-        };
         const request$ = this.createRequest$(
             context,
             {
@@ -190,7 +179,10 @@ export class Hris extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+        });
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -217,10 +209,6 @@ export class Hris extends ClientSDK {
         options?: RequestOptions
     ): Promise<operations.HrisCreateEmployeeWorkEligibilityRequestResponse> {
         const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Content-Type", "application/json");
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
@@ -243,13 +231,14 @@ export class Hris extends ClientSDK {
 
         const query$ = "";
 
-        headers$.set(
-            "x-account-id",
-            encodeSimple$("x-account-id", payload$["x-account-id"], {
+        const headers$ = new Headers({
+            "Content-Type": "application/json",
+            Accept: "application/json",
+            "x-account-id": encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
-            })
-        );
+            }),
+        });
 
         const security$ =
             typeof this.options$.security === "function"
@@ -263,10 +252,6 @@ export class Hris extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = {
-            context,
-            errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
-        };
         const request$ = this.createRequest$(
             context,
             {
@@ -280,7 +265,10 @@ export class Hris extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+        });
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -308,10 +296,6 @@ export class Hris extends ClientSDK {
         options?: RequestOptions
     ): Promise<operations.HrisCreateTimeOffRequestResponse> {
         const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Content-Type", "application/json");
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
@@ -324,13 +308,14 @@ export class Hris extends ClientSDK {
 
         const query$ = "";
 
-        headers$.set(
-            "x-account-id",
-            encodeSimple$("x-account-id", payload$["x-account-id"], {
+        const headers$ = new Headers({
+            "Content-Type": "application/json",
+            Accept: "application/json",
+            "x-account-id": encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
-            })
-        );
+            }),
+        });
 
         const security$ =
             typeof this.options$.security === "function"
@@ -344,10 +329,6 @@ export class Hris extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = {
-            context,
-            errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
-        };
         const request$ = this.createRequest$(
             context,
             {
@@ -361,7 +342,10 @@ export class Hris extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+        });
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -386,9 +370,6 @@ export class Hris extends ClientSDK {
         options?: RequestOptions
     ): Promise<operations.HrisDownloadEmployeeDocumentResponse> {
         const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Accept", "application/octet-stream");
 
         const payload$ = schemas$.parse(
             input$,
@@ -413,13 +394,13 @@ export class Hris extends ClientSDK {
             format: payload$.format,
         });
 
-        headers$.set(
-            "x-account-id",
-            encodeSimple$("x-account-id", payload$["x-account-id"], {
+        const headers$ = new Headers({
+            Accept: "application/octet-stream",
+            "x-account-id": encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
-            })
-        );
+            }),
+        });
 
         const security$ =
             typeof this.options$.security === "function"
@@ -433,10 +414,6 @@ export class Hris extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = {
-            context,
-            errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
-        };
         const request$ = this.createRequest$(
             context,
             {
@@ -450,7 +427,10 @@ export class Hris extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+        });
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -477,9 +457,6 @@ export class Hris extends ClientSDK {
         options?: RequestOptions
     ): Promise<operations.HrisGetBenefitResponse> {
         const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
@@ -503,13 +480,13 @@ export class Hris extends ClientSDK {
             })
         );
 
-        headers$.set(
-            "x-account-id",
-            encodeSimple$("x-account-id", payload$["x-account-id"], {
+        const headers$ = new Headers({
+            Accept: "application/json",
+            "x-account-id": encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
-            })
-        );
+            }),
+        });
 
         const security$ =
             typeof this.options$.security === "function"
@@ -523,10 +500,6 @@ export class Hris extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = {
-            context,
-            errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
-        };
         const request$ = this.createRequest$(
             context,
             {
@@ -540,7 +513,10 @@ export class Hris extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+        });
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -565,9 +541,6 @@ export class Hris extends ClientSDK {
         options?: RequestOptions
     ): Promise<operations.HrisGetCompanyResponse> {
         const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
@@ -591,13 +564,13 @@ export class Hris extends ClientSDK {
             })
         );
 
-        headers$.set(
-            "x-account-id",
-            encodeSimple$("x-account-id", payload$["x-account-id"], {
+        const headers$ = new Headers({
+            Accept: "application/json",
+            "x-account-id": encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
-            })
-        );
+            }),
+        });
 
         const security$ =
             typeof this.options$.security === "function"
@@ -611,10 +584,6 @@ export class Hris extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = {
-            context,
-            errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
-        };
         const request$ = this.createRequest$(
             context,
             {
@@ -628,7 +597,10 @@ export class Hris extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+        });
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -653,9 +625,6 @@ export class Hris extends ClientSDK {
         options?: RequestOptions
     ): Promise<operations.HrisGetEmployeeResponse> {
         const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
@@ -681,13 +650,13 @@ export class Hris extends ClientSDK {
             })
         );
 
-        headers$.set(
-            "x-account-id",
-            encodeSimple$("x-account-id", payload$["x-account-id"], {
+        const headers$ = new Headers({
+            Accept: "application/json",
+            "x-account-id": encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
-            })
-        );
+            }),
+        });
 
         const security$ =
             typeof this.options$.security === "function"
@@ -701,10 +670,6 @@ export class Hris extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = {
-            context,
-            errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
-        };
         const request$ = this.createRequest$(
             context,
             {
@@ -718,7 +683,10 @@ export class Hris extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+        });
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -743,9 +711,6 @@ export class Hris extends ClientSDK {
         options?: RequestOptions
     ): Promise<operations.HrisGetEmployeeDocumentResponse> {
         const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
@@ -775,13 +740,13 @@ export class Hris extends ClientSDK {
             })
         );
 
-        headers$.set(
-            "x-account-id",
-            encodeSimple$("x-account-id", payload$["x-account-id"], {
+        const headers$ = new Headers({
+            Accept: "application/json",
+            "x-account-id": encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
-            })
-        );
+            }),
+        });
 
         const security$ =
             typeof this.options$.security === "function"
@@ -795,10 +760,6 @@ export class Hris extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = {
-            context,
-            errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
-        };
         const request$ = this.createRequest$(
             context,
             {
@@ -812,7 +773,10 @@ export class Hris extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+        });
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -837,9 +801,6 @@ export class Hris extends ClientSDK {
         options?: RequestOptions
     ): Promise<operations.HrisGetEmployeeDocumentCategoryResponse> {
         const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
@@ -866,13 +827,13 @@ export class Hris extends ClientSDK {
             })
         );
 
-        headers$.set(
-            "x-account-id",
-            encodeSimple$("x-account-id", payload$["x-account-id"], {
+        const headers$ = new Headers({
+            Accept: "application/json",
+            "x-account-id": encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
-            })
-        );
+            }),
+        });
 
         const security$ =
             typeof this.options$.security === "function"
@@ -886,10 +847,6 @@ export class Hris extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = {
-            context,
-            errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
-        };
         const request$ = this.createRequest$(
             context,
             {
@@ -903,7 +860,10 @@ export class Hris extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+        });
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -930,9 +890,6 @@ export class Hris extends ClientSDK {
         options?: RequestOptions
     ): Promise<operations.HrisGetEmployeesTimeOffRequestResponse> {
         const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
@@ -963,13 +920,13 @@ export class Hris extends ClientSDK {
             })
         );
 
-        headers$.set(
-            "x-account-id",
-            encodeSimple$("x-account-id", payload$["x-account-id"], {
+        const headers$ = new Headers({
+            Accept: "application/json",
+            "x-account-id": encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
-            })
-        );
+            }),
+        });
 
         const security$ =
             typeof this.options$.security === "function"
@@ -983,10 +940,6 @@ export class Hris extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = {
-            context,
-            errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
-        };
         const request$ = this.createRequest$(
             context,
             {
@@ -1000,7 +953,10 @@ export class Hris extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+        });
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -1025,9 +981,6 @@ export class Hris extends ClientSDK {
         options?: RequestOptions
     ): Promise<operations.HrisGetEmployeesWorkEligibilityResponse> {
         const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
@@ -1058,13 +1011,13 @@ export class Hris extends ClientSDK {
             })
         );
 
-        headers$.set(
-            "x-account-id",
-            encodeSimple$("x-account-id", payload$["x-account-id"], {
+        const headers$ = new Headers({
+            Accept: "application/json",
+            "x-account-id": encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
-            })
-        );
+            }),
+        });
 
         const security$ =
             typeof this.options$.security === "function"
@@ -1078,10 +1031,6 @@ export class Hris extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = {
-            context,
-            errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
-        };
         const request$ = this.createRequest$(
             context,
             {
@@ -1095,7 +1044,10 @@ export class Hris extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+        });
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -1122,9 +1074,6 @@ export class Hris extends ClientSDK {
         options?: RequestOptions
     ): Promise<operations.HrisGetEmploymentResponse> {
         const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
@@ -1149,13 +1098,13 @@ export class Hris extends ClientSDK {
             })
         );
 
-        headers$.set(
-            "x-account-id",
-            encodeSimple$("x-account-id", payload$["x-account-id"], {
+        const headers$ = new Headers({
+            Accept: "application/json",
+            "x-account-id": encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
-            })
-        );
+            }),
+        });
 
         const security$ =
             typeof this.options$.security === "function"
@@ -1169,10 +1118,6 @@ export class Hris extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = {
-            context,
-            errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
-        };
         const request$ = this.createRequest$(
             context,
             {
@@ -1186,7 +1131,10 @@ export class Hris extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+        });
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -1211,9 +1159,6 @@ export class Hris extends ClientSDK {
         options?: RequestOptions
     ): Promise<operations.HrisGetGroupResponse> {
         const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
@@ -1237,13 +1182,13 @@ export class Hris extends ClientSDK {
             })
         );
 
-        headers$.set(
-            "x-account-id",
-            encodeSimple$("x-account-id", payload$["x-account-id"], {
+        const headers$ = new Headers({
+            Accept: "application/json",
+            "x-account-id": encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
-            })
-        );
+            }),
+        });
 
         const security$ =
             typeof this.options$.security === "function"
@@ -1257,10 +1202,6 @@ export class Hris extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = {
-            context,
-            errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
-        };
         const request$ = this.createRequest$(
             context,
             {
@@ -1274,7 +1215,10 @@ export class Hris extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+        });
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -1292,6 +1236,90 @@ export class Hris extends ClientSDK {
     }
 
     /**
+     * Get Job
+     */
+    async getJob(
+        request: operations.HrisGetJobRequest,
+        options?: RequestOptions
+    ): Promise<operations.HrisGetJobResponse> {
+        const input$ = request;
+
+        const payload$ = schemas$.parse(
+            input$,
+            (value$) => operations.HrisGetJobRequest$.outboundSchema.parse(value$),
+            "Input validation failed"
+        );
+        const body$ = null;
+
+        const pathParams$ = {
+            id: encodeSimple$("id", payload$.id, { explode: false, charEncoding: "percent" }),
+        };
+        const path$ = this.templateURLComponent("/unified/hris/jobs/{id}")(pathParams$);
+
+        const query$ = queryJoin$(
+            encodeDeepObjectQuery$({
+                proxy: payload$.proxy,
+            }),
+            encodeFormQuery$({
+                fields: payload$.fields,
+                raw: payload$.raw,
+            })
+        );
+
+        const headers$ = new Headers({
+            Accept: "application/json",
+            "x-account-id": encodeSimple$("x-account-id", payload$["x-account-id"], {
+                explode: false,
+                charEncoding: "none",
+            }),
+        });
+
+        const security$ =
+            typeof this.options$.security === "function"
+                ? await this.options$.security()
+                : this.options$.security;
+
+        const context = {
+            operationID: "hris_get_job",
+            oAuth2Scopes: [],
+            securitySource: this.options$.security,
+        };
+        const securitySettings$ = this.resolveGlobalSecurity(security$);
+
+        const request$ = this.createRequest$(
+            context,
+            {
+                security: securitySettings$,
+                method: "GET",
+                path: path$,
+                headers: headers$,
+                query: query$,
+                body: body$,
+            },
+            options
+        );
+
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+        });
+
+        const responseFields$ = {
+            ContentType: response.headers.get("content-type") ?? "application/octet-stream",
+            StatusCode: response.status,
+            RawResponse: response,
+            Headers: {},
+        };
+
+        const [result$] = await this.matcher<operations.HrisGetJobResponse>()
+            .json(200, operations.HrisGetJobResponse$, { key: "JobResult" })
+            .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
+            .match(response, { extraFields: responseFields$ });
+
+        return result$;
+    }
+
+    /**
      * Get Location
      */
     async getLocation(
@@ -1299,9 +1327,6 @@ export class Hris extends ClientSDK {
         options?: RequestOptions
     ): Promise<operations.HrisGetLocationResponse> {
         const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
@@ -1325,13 +1350,13 @@ export class Hris extends ClientSDK {
             })
         );
 
-        headers$.set(
-            "x-account-id",
-            encodeSimple$("x-account-id", payload$["x-account-id"], {
+        const headers$ = new Headers({
+            Accept: "application/json",
+            "x-account-id": encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
-            })
-        );
+            }),
+        });
 
         const security$ =
             typeof this.options$.security === "function"
@@ -1345,10 +1370,6 @@ export class Hris extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = {
-            context,
-            errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
-        };
         const request$ = this.createRequest$(
             context,
             {
@@ -1362,7 +1383,10 @@ export class Hris extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+        });
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -1387,9 +1411,6 @@ export class Hris extends ClientSDK {
         options?: RequestOptions
     ): Promise<operations.HrisGetTimeOffRequestResponse> {
         const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
@@ -1413,13 +1434,13 @@ export class Hris extends ClientSDK {
             })
         );
 
-        headers$.set(
-            "x-account-id",
-            encodeSimple$("x-account-id", payload$["x-account-id"], {
+        const headers$ = new Headers({
+            Accept: "application/json",
+            "x-account-id": encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
-            })
-        );
+            }),
+        });
 
         const security$ =
             typeof this.options$.security === "function"
@@ -1433,10 +1454,6 @@ export class Hris extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = {
-            context,
-            errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
-        };
         const request$ = this.createRequest$(
             context,
             {
@@ -1450,7 +1467,10 @@ export class Hris extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+        });
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -1475,9 +1495,6 @@ export class Hris extends ClientSDK {
         options?: RequestOptions
     ): Promise<operations.HrisListBenefitsResponse> {
         const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
@@ -1503,13 +1520,13 @@ export class Hris extends ClientSDK {
             })
         );
 
-        headers$.set(
-            "x-account-id",
-            encodeSimple$("x-account-id", payload$["x-account-id"], {
+        const headers$ = new Headers({
+            Accept: "application/json",
+            "x-account-id": encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
-            })
-        );
+            }),
+        });
 
         const security$ =
             typeof this.options$.security === "function"
@@ -1523,10 +1540,6 @@ export class Hris extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = {
-            context,
-            errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
-        };
         const request$ = this.createRequest$(
             context,
             {
@@ -1540,7 +1553,10 @@ export class Hris extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+        });
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -1565,9 +1581,6 @@ export class Hris extends ClientSDK {
         options?: RequestOptions
     ): Promise<operations.HrisListCompaniesResponse> {
         const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
@@ -1593,13 +1606,13 @@ export class Hris extends ClientSDK {
             })
         );
 
-        headers$.set(
-            "x-account-id",
-            encodeSimple$("x-account-id", payload$["x-account-id"], {
+        const headers$ = new Headers({
+            Accept: "application/json",
+            "x-account-id": encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
-            })
-        );
+            }),
+        });
 
         const security$ =
             typeof this.options$.security === "function"
@@ -1613,10 +1626,6 @@ export class Hris extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = {
-            context,
-            errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
-        };
         const request$ = this.createRequest$(
             context,
             {
@@ -1630,7 +1639,10 @@ export class Hris extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+        });
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -1655,9 +1667,6 @@ export class Hris extends ClientSDK {
         options?: RequestOptions
     ): Promise<operations.HrisListEmployeeCategoriesResponse> {
         const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
@@ -1683,13 +1692,13 @@ export class Hris extends ClientSDK {
             })
         );
 
-        headers$.set(
-            "x-account-id",
-            encodeSimple$("x-account-id", payload$["x-account-id"], {
+        const headers$ = new Headers({
+            Accept: "application/json",
+            "x-account-id": encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
-            })
-        );
+            }),
+        });
 
         const security$ =
             typeof this.options$.security === "function"
@@ -1703,10 +1712,6 @@ export class Hris extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = {
-            context,
-            errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
-        };
         const request$ = this.createRequest$(
             context,
             {
@@ -1720,7 +1725,10 @@ export class Hris extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+        });
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -1747,9 +1755,6 @@ export class Hris extends ClientSDK {
         options?: RequestOptions
     ): Promise<operations.HrisListEmployeeDocumentsResponse> {
         const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
@@ -1780,13 +1785,13 @@ export class Hris extends ClientSDK {
             })
         );
 
-        headers$.set(
-            "x-account-id",
-            encodeSimple$("x-account-id", payload$["x-account-id"], {
+        const headers$ = new Headers({
+            Accept: "application/json",
+            "x-account-id": encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
-            })
-        );
+            }),
+        });
 
         const security$ =
             typeof this.options$.security === "function"
@@ -1800,10 +1805,6 @@ export class Hris extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = {
-            context,
-            errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
-        };
         const request$ = this.createRequest$(
             context,
             {
@@ -1817,7 +1818,10 @@ export class Hris extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+        });
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -1844,9 +1848,6 @@ export class Hris extends ClientSDK {
         options?: RequestOptions
     ): Promise<operations.HrisListEmployeeTimeOffRequestsResponse> {
         const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
@@ -1878,13 +1879,13 @@ export class Hris extends ClientSDK {
             })
         );
 
-        headers$.set(
-            "x-account-id",
-            encodeSimple$("x-account-id", payload$["x-account-id"], {
+        const headers$ = new Headers({
+            Accept: "application/json",
+            "x-account-id": encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
-            })
-        );
+            }),
+        });
 
         const security$ =
             typeof this.options$.security === "function"
@@ -1898,10 +1899,6 @@ export class Hris extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = {
-            context,
-            errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
-        };
         const request$ = this.createRequest$(
             context,
             {
@@ -1915,7 +1912,10 @@ export class Hris extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+        });
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -1942,9 +1942,6 @@ export class Hris extends ClientSDK {
         options?: RequestOptions
     ): Promise<operations.HrisListEmployeeWorkEligibilityResponse> {
         const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
@@ -1976,13 +1973,13 @@ export class Hris extends ClientSDK {
             })
         );
 
-        headers$.set(
-            "x-account-id",
-            encodeSimple$("x-account-id", payload$["x-account-id"], {
+        const headers$ = new Headers({
+            Accept: "application/json",
+            "x-account-id": encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
-            })
-        );
+            }),
+        });
 
         const security$ =
             typeof this.options$.security === "function"
@@ -1996,10 +1993,6 @@ export class Hris extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = {
-            context,
-            errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
-        };
         const request$ = this.createRequest$(
             context,
             {
@@ -2013,7 +2006,10 @@ export class Hris extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+        });
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -2040,9 +2036,6 @@ export class Hris extends ClientSDK {
         options?: RequestOptions
     ): Promise<PageIterator<operations.HrisListEmployeesResponse>> {
         const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
@@ -2070,13 +2063,13 @@ export class Hris extends ClientSDK {
             })
         );
 
-        headers$.set(
-            "x-account-id",
-            encodeSimple$("x-account-id", payload$["x-account-id"], {
+        const headers$ = new Headers({
+            Accept: "application/json",
+            "x-account-id": encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
-            })
-        );
+            }),
+        });
 
         const security$ =
             typeof this.options$.security === "function"
@@ -2090,10 +2083,6 @@ export class Hris extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = {
-            context,
-            errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
-        };
         const request$ = this.createRequest$(
             context,
             {
@@ -2107,7 +2096,10 @@ export class Hris extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+        });
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -2151,9 +2143,6 @@ export class Hris extends ClientSDK {
         options?: RequestOptions
     ): Promise<operations.HrisListEmploymentsResponse> {
         const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
@@ -2180,13 +2169,13 @@ export class Hris extends ClientSDK {
             })
         );
 
-        headers$.set(
-            "x-account-id",
-            encodeSimple$("x-account-id", payload$["x-account-id"], {
+        const headers$ = new Headers({
+            Accept: "application/json",
+            "x-account-id": encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
-            })
-        );
+            }),
+        });
 
         const security$ =
             typeof this.options$.security === "function"
@@ -2200,10 +2189,6 @@ export class Hris extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = {
-            context,
-            errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
-        };
         const request$ = this.createRequest$(
             context,
             {
@@ -2217,7 +2202,10 @@ export class Hris extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+        });
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -2242,9 +2230,6 @@ export class Hris extends ClientSDK {
         options?: RequestOptions
     ): Promise<operations.HrisListGroupsResponse> {
         const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
@@ -2270,13 +2255,13 @@ export class Hris extends ClientSDK {
             })
         );
 
-        headers$.set(
-            "x-account-id",
-            encodeSimple$("x-account-id", payload$["x-account-id"], {
+        const headers$ = new Headers({
+            Accept: "application/json",
+            "x-account-id": encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
-            })
-        );
+            }),
+        });
 
         const security$ =
             typeof this.options$.security === "function"
@@ -2290,10 +2275,6 @@ export class Hris extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = {
-            context,
-            errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
-        };
         const request$ = this.createRequest$(
             context,
             {
@@ -2307,7 +2288,10 @@ export class Hris extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+        });
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -2325,6 +2309,92 @@ export class Hris extends ClientSDK {
     }
 
     /**
+     * List Jobs
+     */
+    async listJobs(
+        request: operations.HrisListJobsRequest,
+        options?: RequestOptions
+    ): Promise<operations.HrisListJobsResponse> {
+        const input$ = request;
+
+        const payload$ = schemas$.parse(
+            input$,
+            (value$) => operations.HrisListJobsRequest$.outboundSchema.parse(value$),
+            "Input validation failed"
+        );
+        const body$ = null;
+
+        const path$ = this.templateURLComponent("/unified/hris/jobs")();
+
+        const query$ = queryJoin$(
+            encodeDeepObjectQuery$({
+                filter: payload$.filter,
+                proxy: payload$.proxy,
+            }),
+            encodeFormQuery$({
+                fields: payload$.fields,
+                next: payload$.next,
+                page: payload$.page,
+                page_size: payload$.page_size,
+                raw: payload$.raw,
+                updated_after: payload$.updated_after,
+            })
+        );
+
+        const headers$ = new Headers({
+            Accept: "application/json",
+            "x-account-id": encodeSimple$("x-account-id", payload$["x-account-id"], {
+                explode: false,
+                charEncoding: "none",
+            }),
+        });
+
+        const security$ =
+            typeof this.options$.security === "function"
+                ? await this.options$.security()
+                : this.options$.security;
+
+        const context = {
+            operationID: "hris_list_jobs",
+            oAuth2Scopes: [],
+            securitySource: this.options$.security,
+        };
+        const securitySettings$ = this.resolveGlobalSecurity(security$);
+
+        const request$ = this.createRequest$(
+            context,
+            {
+                security: securitySettings$,
+                method: "GET",
+                path: path$,
+                headers: headers$,
+                query: query$,
+                body: body$,
+            },
+            options
+        );
+
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+        });
+
+        const responseFields$ = {
+            ContentType: response.headers.get("content-type") ?? "application/octet-stream",
+            StatusCode: response.status,
+            RawResponse: response,
+            Headers: {},
+        };
+
+        const [result$] = await this.matcher<operations.HrisListJobsResponse>()
+            .json(200, operations.HrisListJobsResponse$, { key: "JobsPaginated" })
+            .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
+            .match(response, { extraFields: responseFields$ });
+
+        return result$;
+    }
+
+    /**
      * List locations
      */
     async listLocations(
@@ -2332,9 +2402,6 @@ export class Hris extends ClientSDK {
         options?: RequestOptions
     ): Promise<operations.HrisListLocationsResponse> {
         const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
@@ -2360,13 +2427,13 @@ export class Hris extends ClientSDK {
             })
         );
 
-        headers$.set(
-            "x-account-id",
-            encodeSimple$("x-account-id", payload$["x-account-id"], {
+        const headers$ = new Headers({
+            Accept: "application/json",
+            "x-account-id": encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
-            })
-        );
+            }),
+        });
 
         const security$ =
             typeof this.options$.security === "function"
@@ -2380,10 +2447,6 @@ export class Hris extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = {
-            context,
-            errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
-        };
         const request$ = this.createRequest$(
             context,
             {
@@ -2397,7 +2460,10 @@ export class Hris extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+        });
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -2422,9 +2488,6 @@ export class Hris extends ClientSDK {
         options?: RequestOptions
     ): Promise<operations.HrisListTimeOffRequestsResponse> {
         const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
@@ -2450,13 +2513,13 @@ export class Hris extends ClientSDK {
             })
         );
 
-        headers$.set(
-            "x-account-id",
-            encodeSimple$("x-account-id", payload$["x-account-id"], {
+        const headers$ = new Headers({
+            Accept: "application/json",
+            "x-account-id": encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
-            })
-        );
+            }),
+        });
 
         const security$ =
             typeof this.options$.security === "function"
@@ -2470,10 +2533,6 @@ export class Hris extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = {
-            context,
-            errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
-        };
         const request$ = this.createRequest$(
             context,
             {
@@ -2487,7 +2546,10 @@ export class Hris extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+        });
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -2512,10 +2574,6 @@ export class Hris extends ClientSDK {
         options?: RequestOptions
     ): Promise<operations.HrisUpdateEmployeeResponse> {
         const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Content-Type", "application/json");
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
@@ -2531,13 +2589,14 @@ export class Hris extends ClientSDK {
 
         const query$ = "";
 
-        headers$.set(
-            "x-account-id",
-            encodeSimple$("x-account-id", payload$["x-account-id"], {
+        const headers$ = new Headers({
+            "Content-Type": "application/json",
+            Accept: "application/json",
+            "x-account-id": encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
-            })
-        );
+            }),
+        });
 
         const security$ =
             typeof this.options$.security === "function"
@@ -2551,10 +2610,6 @@ export class Hris extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = {
-            context,
-            errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
-        };
         const request$ = this.createRequest$(
             context,
             {
@@ -2568,7 +2623,10 @@ export class Hris extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+        });
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -2593,10 +2651,6 @@ export class Hris extends ClientSDK {
         options?: RequestOptions
     ): Promise<operations.HrisUpdateEmployeeWorkEligibilityRequestResponse> {
         const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Content-Type", "application/json");
-        headers$.set("Accept", "*/*");
 
         const payload$ = schemas$.parse(
             input$,
@@ -2623,13 +2677,14 @@ export class Hris extends ClientSDK {
 
         const query$ = "";
 
-        headers$.set(
-            "x-account-id",
-            encodeSimple$("x-account-id", payload$["x-account-id"], {
+        const headers$ = new Headers({
+            "Content-Type": "application/json",
+            Accept: "*/*",
+            "x-account-id": encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
-            })
-        );
+            }),
+        });
 
         const security$ =
             typeof this.options$.security === "function"
@@ -2643,10 +2698,6 @@ export class Hris extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = {
-            context,
-            errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
-        };
         const request$ = this.createRequest$(
             context,
             {
@@ -2660,7 +2711,10 @@ export class Hris extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+        });
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -2686,10 +2740,6 @@ export class Hris extends ClientSDK {
         options?: RequestOptions
     ): Promise<operations.HrisUpdateTimeOffRequestResponse> {
         const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Content-Type", "application/json");
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
@@ -2705,13 +2755,14 @@ export class Hris extends ClientSDK {
 
         const query$ = "";
 
-        headers$.set(
-            "x-account-id",
-            encodeSimple$("x-account-id", payload$["x-account-id"], {
+        const headers$ = new Headers({
+            "Content-Type": "application/json",
+            Accept: "application/json",
+            "x-account-id": encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
-            })
-        );
+            }),
+        });
 
         const security$ =
             typeof this.options$.security === "function"
@@ -2725,10 +2776,6 @@ export class Hris extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = {
-            context,
-            errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
-        };
         const request$ = this.createRequest$(
             context,
             {
@@ -2742,7 +2789,10 @@ export class Hris extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+        });
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",
@@ -2767,10 +2817,6 @@ export class Hris extends ClientSDK {
         options?: RequestOptions
     ): Promise<operations.HrisUploadEmployeeDocumentResponse> {
         const input$ = request;
-        const headers$ = new Headers();
-        headers$.set("user-agent", SDK_METADATA.userAgent);
-        headers$.set("Content-Type", "application/json");
-        headers$.set("Accept", "application/json");
 
         const payload$ = schemas$.parse(
             input$,
@@ -2790,13 +2836,14 @@ export class Hris extends ClientSDK {
 
         const query$ = "";
 
-        headers$.set(
-            "x-account-id",
-            encodeSimple$("x-account-id", payload$["x-account-id"], {
+        const headers$ = new Headers({
+            "Content-Type": "application/json",
+            Accept: "application/json",
+            "x-account-id": encodeSimple$("x-account-id", payload$["x-account-id"], {
                 explode: false,
                 charEncoding: "none",
-            })
-        );
+            }),
+        });
 
         const security$ =
             typeof this.options$.security === "function"
@@ -2810,10 +2857,6 @@ export class Hris extends ClientSDK {
         };
         const securitySettings$ = this.resolveGlobalSecurity(security$);
 
-        const doOptions = {
-            context,
-            errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
-        };
         const request$ = this.createRequest$(
             context,
             {
@@ -2827,7 +2870,10 @@ export class Hris extends ClientSDK {
             options
         );
 
-        const response = await this.do$(request$, doOptions);
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+        });
 
         const responseFields$ = {
             ContentType: response.headers.get("content-type") ?? "application/octet-stream",

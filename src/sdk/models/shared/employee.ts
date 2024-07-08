@@ -208,6 +208,7 @@ export enum EmployeeSchemasGroupsValue {
     Team = "team",
     Department = "department",
     Group = "group",
+    Organization = "organization",
     UnmappedValue = "unmapped_value",
 }
 export type EmployeeSchemasGroupsValueOpen = OpenEnum<typeof EmployeeSchemasGroupsValue>;

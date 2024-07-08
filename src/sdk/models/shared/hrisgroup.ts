@@ -15,6 +15,7 @@ export enum HRISGroupValue {
     Team = "team",
     Department = "department",
     Group = "group",
+    Organization = "organization",
     UnmappedValue = "unmapped_value",
 }
 export type HRISGroupValueOpen = OpenEnum<typeof HRISGroupValue>;

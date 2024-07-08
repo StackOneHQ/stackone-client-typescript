@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 7fa83af8-9e8e-4410-b7e2-cf1d0eaf688b
 management:
-  docChecksum: 06fc66b28090b46fa116eafd15fa42d7
+  docChecksum: 8d756bf1b53b6427e722f7b1b96601e7
   docVersion: 1.0.0
-  speakeasyVersion: 1.322.3
-  generationVersion: 2.354.2
-  releaseVersion: 4.10.2
-  configChecksum: 318547a1213c2a5ae185c7da8fd24fb5
+  speakeasyVersion: 1.327.0
+  generationVersion: 2.359.6
+  releaseVersion: 4.11.0
+  configChecksum: 3fb4382fb656eaf61bae5b3790a53e40
   repoURL: https://github.com/StackOneHQ/stackone-client-typescript.git
   repoSubDirectory: .
   installationURL: https://github.com/StackOneHQ/stackone-client-typescript
@@ -15,7 +15,7 @@ features:
   typescript:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.5
-    core: 3.10.2
+    core: 3.11.3
     deprecations: 2.81.1
     downloadStreams: 0.1.1
     examples: 2.81.4
@@ -25,7 +25,7 @@ features:
     groups: 2.81.2
     nameOverrides: 2.81.2
     nullables: 0.1.0
-    openEnums: 0.1.0
+    openEnums: 0.1.1
     pagination: 2.82.2
     responseFormat: 0.2.3
     sdkHooks: 0.1.0
@@ -141,6 +141,7 @@ generatedFiles:
   - src/sdk/models/operations/hrisgetemployeesworkeligibility.ts
   - src/sdk/models/operations/hrisgetemployment.ts
   - src/sdk/models/operations/hrisgetgroup.ts
+  - src/sdk/models/operations/hrisgetjob.ts
   - src/sdk/models/operations/hrisgetlocation.ts
   - src/sdk/models/operations/hrisgettimeoffrequest.ts
   - src/sdk/models/operations/hrislistbenefits.ts
@@ -152,6 +153,7 @@ generatedFiles:
   - src/sdk/models/operations/hrislistemployees.ts
   - src/sdk/models/operations/hrislistemployments.ts
   - src/sdk/models/operations/hrislistgroups.ts
+  - src/sdk/models/operations/hrislistjobs.ts
   - src/sdk/models/operations/hrislistlocations.ts
   - src/sdk/models/operations/hrislisttimeoffrequests.ts
   - src/sdk/models/operations/hrisupdateemployee.ts
@@ -172,6 +174,7 @@ generatedFiles:
   - src/sdk/models/operations/lmsgetcompletion.ts
   - src/sdk/models/operations/lmsgetcontent.ts
   - src/sdk/models/operations/lmslistcategories.ts
+  - src/sdk/models/operations/lmslistcontent.ts
   - src/sdk/models/operations/lmsupdatecontent.ts
   - src/sdk/models/operations/marketingcreateemailtemplate.ts
   - src/sdk/models/operations/marketingcreateomnichanneltemplate.ts
@@ -349,6 +352,7 @@ generatedFiles:
   - src/sdk/models/shared/completion.ts
   - src/sdk/models/shared/contentresult.ts
   - src/sdk/models/shared/categoriespaginated.ts
+  - src/sdk/models/shared/contentpaginated.ts
   - src/sdk/models/shared/marketingcreateemailtemplaterequestdto.ts
   - src/sdk/models/shared/emailmessages.ts
   - src/sdk/models/shared/marketingcreatetemplaterequestdto.ts
@@ -531,6 +535,8 @@ generatedFiles:
   - docs/sdk/models/operations/hrisgetemploymentresponse.md
   - docs/sdk/models/operations/hrisgetgrouprequest.md
   - docs/sdk/models/operations/hrisgetgroupresponse.md
+  - docs/sdk/models/operations/hrisgetjobrequest.md
+  - docs/sdk/models/operations/hrisgetjobresponse.md
   - docs/sdk/models/operations/hrisgetlocationrequest.md
   - docs/sdk/models/operations/hrisgetlocationresponse.md
   - docs/sdk/models/operations/hrisgettimeoffrequestrequest.md
@@ -562,6 +568,9 @@ generatedFiles:
   - docs/sdk/models/operations/hrislistgroupsqueryparamfilter.md
   - docs/sdk/models/operations/hrislistgroupsrequest.md
   - docs/sdk/models/operations/hrislistgroupsresponse.md
+  - docs/sdk/models/operations/hrislistjobsqueryparamfilter.md
+  - docs/sdk/models/operations/hrislistjobsrequest.md
+  - docs/sdk/models/operations/hrislistjobsresponse.md
   - docs/sdk/models/operations/hrislistlocationsqueryparamfilter.md
   - docs/sdk/models/operations/hrislistlocationsrequest.md
   - docs/sdk/models/operations/hrislistlocationsresponse.md
@@ -609,6 +618,9 @@ generatedFiles:
   - docs/sdk/models/operations/lmslistcategoriesqueryparamfilter.md
   - docs/sdk/models/operations/lmslistcategoriesrequest.md
   - docs/sdk/models/operations/lmslistcategoriesresponse.md
+  - docs/sdk/models/operations/lmslistcontentqueryparamfilter.md
+  - docs/sdk/models/operations/lmslistcontentrequest.md
+  - docs/sdk/models/operations/lmslistcontentresponse.md
   - docs/sdk/models/operations/lmsupdatecontentrequest.md
   - docs/sdk/models/operations/lmsupdatecontentresponse.md
   - docs/sdk/models/operations/marketingcreateemailtemplaterequest.md
@@ -1248,6 +1260,7 @@ generatedFiles:
   - docs/sdk/models/shared/completion.md
   - docs/sdk/models/shared/contentresult.md
   - docs/sdk/models/shared/categoriespaginated.md
+  - docs/sdk/models/shared/contentpaginated.md
   - docs/sdk/models/shared/marketingcreateemailtemplaterequestdto.md
   - docs/sdk/models/shared/messagecontent.md
   - docs/sdk/models/shared/emailmessages4.md
