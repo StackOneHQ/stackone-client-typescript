@@ -50,8 +50,8 @@ export type IamGetRoleResponse = {
 };
 
 /** @internal */
-export namespace IamGetRoleRequest$ {
-    export const inboundSchema: z.ZodType<IamGetRoleRequest, z.ZodTypeDef, unknown> = z
+export const IamGetRoleRequest$inboundSchema: z.ZodType<IamGetRoleRequest, z.ZodTypeDef, unknown> =
+    z
         .object({
             expand: z.nullable(z.string()).optional(),
             fields: z.nullable(z.string()).optional(),
@@ -66,71 +66,110 @@ export namespace IamGetRoleRequest$ {
             });
         });
 
-    export type Outbound = {
-        expand?: string | null | undefined;
-        fields?: string | null | undefined;
-        id: string;
-        proxy?: { [k: string]: any } | null | undefined;
-        raw: boolean | null;
-        "x-account-id": string;
-    };
+/** @internal */
+export type IamGetRoleRequest$Outbound = {
+    expand?: string | null | undefined;
+    fields?: string | null | undefined;
+    id: string;
+    proxy?: { [k: string]: any } | null | undefined;
+    raw: boolean | null;
+    "x-account-id": string;
+};
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, IamGetRoleRequest> = z
-        .object({
-            expand: z.nullable(z.string()).optional(),
-            fields: z.nullable(z.string()).optional(),
-            id: z.string(),
-            proxy: z.nullable(z.record(z.any())).optional(),
-            raw: z.nullable(z.boolean().default(false)),
-            xAccountId: z.string(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                xAccountId: "x-account-id",
-            });
+/** @internal */
+export const IamGetRoleRequest$outboundSchema: z.ZodType<
+    IamGetRoleRequest$Outbound,
+    z.ZodTypeDef,
+    IamGetRoleRequest
+> = z
+    .object({
+        expand: z.nullable(z.string()).optional(),
+        fields: z.nullable(z.string()).optional(),
+        id: z.string(),
+        proxy: z.nullable(z.record(z.any())).optional(),
+        raw: z.nullable(z.boolean().default(false)),
+        xAccountId: z.string(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            xAccountId: "x-account-id",
         });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace IamGetRoleRequest$ {
+    /** @deprecated use `IamGetRoleRequest$inboundSchema` instead. */
+    export const inboundSchema = IamGetRoleRequest$inboundSchema;
+    /** @deprecated use `IamGetRoleRequest$outboundSchema` instead. */
+    export const outboundSchema = IamGetRoleRequest$outboundSchema;
+    /** @deprecated use `IamGetRoleRequest$Outbound` instead. */
+    export type Outbound = IamGetRoleRequest$Outbound;
 }
 
 /** @internal */
+export const IamGetRoleResponse$inboundSchema: z.ZodType<
+    IamGetRoleResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        ContentType: z.string(),
+        IamRoleResult: shared.IamRoleResult$inboundSchema.optional(),
+        StatusCode: z.number().int(),
+        RawResponse: z.instanceof(Response),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            ContentType: "contentType",
+            IamRoleResult: "iamRoleResult",
+            StatusCode: "statusCode",
+            RawResponse: "rawResponse",
+        });
+    });
+
+/** @internal */
+export type IamGetRoleResponse$Outbound = {
+    ContentType: string;
+    IamRoleResult?: shared.IamRoleResult$Outbound | undefined;
+    StatusCode: number;
+    RawResponse: never;
+};
+
+/** @internal */
+export const IamGetRoleResponse$outboundSchema: z.ZodType<
+    IamGetRoleResponse$Outbound,
+    z.ZodTypeDef,
+    IamGetRoleResponse
+> = z
+    .object({
+        contentType: z.string(),
+        iamRoleResult: shared.IamRoleResult$outboundSchema.optional(),
+        statusCode: z.number().int(),
+        rawResponse: z.instanceof(Response).transform(() => {
+            throw new Error("Response cannot be serialized");
+        }),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            contentType: "ContentType",
+            iamRoleResult: "IamRoleResult",
+            statusCode: "StatusCode",
+            rawResponse: "RawResponse",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace IamGetRoleResponse$ {
-    export const inboundSchema: z.ZodType<IamGetRoleResponse, z.ZodTypeDef, unknown> = z
-        .object({
-            ContentType: z.string(),
-            IamRoleResult: shared.IamRoleResult$.inboundSchema.optional(),
-            StatusCode: z.number().int(),
-            RawResponse: z.instanceof(Response),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                ContentType: "contentType",
-                IamRoleResult: "iamRoleResult",
-                StatusCode: "statusCode",
-                RawResponse: "rawResponse",
-            });
-        });
-
-    export type Outbound = {
-        ContentType: string;
-        IamRoleResult?: shared.IamRoleResult$.Outbound | undefined;
-        StatusCode: number;
-        RawResponse: never;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, IamGetRoleResponse> = z
-        .object({
-            contentType: z.string(),
-            iamRoleResult: shared.IamRoleResult$.outboundSchema.optional(),
-            statusCode: z.number().int(),
-            rawResponse: z.instanceof(Response).transform(() => {
-                throw new Error("Response cannot be serialized");
-            }),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                contentType: "ContentType",
-                iamRoleResult: "IamRoleResult",
-                statusCode: "StatusCode",
-                rawResponse: "RawResponse",
-            });
-        });
+    /** @deprecated use `IamGetRoleResponse$inboundSchema` instead. */
+    export const inboundSchema = IamGetRoleResponse$inboundSchema;
+    /** @deprecated use `IamGetRoleResponse$outboundSchema` instead. */
+    export const outboundSchema = IamGetRoleResponse$outboundSchema;
+    /** @deprecated use `IamGetRoleResponse$Outbound` instead. */
+    export type Outbound = IamGetRoleResponse$Outbound;
 }

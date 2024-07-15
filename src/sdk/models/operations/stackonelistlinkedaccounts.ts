@@ -53,105 +53,131 @@ export type StackoneListLinkedAccountsResponse = {
 };
 
 /** @internal */
+export const StackoneListLinkedAccountsRequest$inboundSchema: z.ZodType<
+    StackoneListLinkedAccountsRequest,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        account_ids: z.array(z.string()).optional(),
+        origin_owner_id: z.nullable(z.string()).optional(),
+        page: z.nullable(z.number()).optional(),
+        page_size: z.nullable(z.number().default(25)),
+        provider: z.nullable(z.string()).optional(),
+        providers: z.array(z.string()).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            account_ids: "accountIds",
+            origin_owner_id: "originOwnerId",
+            page_size: "pageSize",
+        });
+    });
+
+/** @internal */
+export type StackoneListLinkedAccountsRequest$Outbound = {
+    account_ids?: Array<string> | undefined;
+    origin_owner_id?: string | null | undefined;
+    page?: number | null | undefined;
+    page_size: number | null;
+    provider?: string | null | undefined;
+    providers?: Array<string> | undefined;
+};
+
+/** @internal */
+export const StackoneListLinkedAccountsRequest$outboundSchema: z.ZodType<
+    StackoneListLinkedAccountsRequest$Outbound,
+    z.ZodTypeDef,
+    StackoneListLinkedAccountsRequest
+> = z
+    .object({
+        accountIds: z.array(z.string()).optional(),
+        originOwnerId: z.nullable(z.string()).optional(),
+        page: z.nullable(z.number()).optional(),
+        pageSize: z.nullable(z.number().default(25)),
+        provider: z.nullable(z.string()).optional(),
+        providers: z.array(z.string()).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            accountIds: "account_ids",
+            originOwnerId: "origin_owner_id",
+            pageSize: "page_size",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace StackoneListLinkedAccountsRequest$ {
-    export const inboundSchema: z.ZodType<
-        StackoneListLinkedAccountsRequest,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            account_ids: z.array(z.string()).optional(),
-            origin_owner_id: z.nullable(z.string()).optional(),
-            page: z.nullable(z.number()).optional(),
-            page_size: z.nullable(z.number().default(25)),
-            provider: z.nullable(z.string()).optional(),
-            providers: z.array(z.string()).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                account_ids: "accountIds",
-                origin_owner_id: "originOwnerId",
-                page_size: "pageSize",
-            });
-        });
-
-    export type Outbound = {
-        account_ids?: Array<string> | undefined;
-        origin_owner_id?: string | null | undefined;
-        page?: number | null | undefined;
-        page_size: number | null;
-        provider?: string | null | undefined;
-        providers?: Array<string> | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        StackoneListLinkedAccountsRequest
-    > = z
-        .object({
-            accountIds: z.array(z.string()).optional(),
-            originOwnerId: z.nullable(z.string()).optional(),
-            page: z.nullable(z.number()).optional(),
-            pageSize: z.nullable(z.number().default(25)),
-            provider: z.nullable(z.string()).optional(),
-            providers: z.array(z.string()).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                accountIds: "account_ids",
-                originOwnerId: "origin_owner_id",
-                pageSize: "page_size",
-            });
-        });
+    /** @deprecated use `StackoneListLinkedAccountsRequest$inboundSchema` instead. */
+    export const inboundSchema = StackoneListLinkedAccountsRequest$inboundSchema;
+    /** @deprecated use `StackoneListLinkedAccountsRequest$outboundSchema` instead. */
+    export const outboundSchema = StackoneListLinkedAccountsRequest$outboundSchema;
+    /** @deprecated use `StackoneListLinkedAccountsRequest$Outbound` instead. */
+    export type Outbound = StackoneListLinkedAccountsRequest$Outbound;
 }
 
 /** @internal */
+export const StackoneListLinkedAccountsResponse$inboundSchema: z.ZodType<
+    StackoneListLinkedAccountsResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        ContentType: z.string(),
+        StatusCode: z.number().int(),
+        RawResponse: z.instanceof(Response),
+        classes: z.array(shared.LinkedAccount$inboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            ContentType: "contentType",
+            StatusCode: "statusCode",
+            RawResponse: "rawResponse",
+        });
+    });
+
+/** @internal */
+export type StackoneListLinkedAccountsResponse$Outbound = {
+    ContentType: string;
+    StatusCode: number;
+    RawResponse: never;
+    classes?: Array<shared.LinkedAccount$Outbound> | undefined;
+};
+
+/** @internal */
+export const StackoneListLinkedAccountsResponse$outboundSchema: z.ZodType<
+    StackoneListLinkedAccountsResponse$Outbound,
+    z.ZodTypeDef,
+    StackoneListLinkedAccountsResponse
+> = z
+    .object({
+        contentType: z.string(),
+        statusCode: z.number().int(),
+        rawResponse: z.instanceof(Response).transform(() => {
+            throw new Error("Response cannot be serialized");
+        }),
+        classes: z.array(shared.LinkedAccount$outboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            contentType: "ContentType",
+            statusCode: "StatusCode",
+            rawResponse: "RawResponse",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace StackoneListLinkedAccountsResponse$ {
-    export const inboundSchema: z.ZodType<
-        StackoneListLinkedAccountsResponse,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            ContentType: z.string(),
-            StatusCode: z.number().int(),
-            RawResponse: z.instanceof(Response),
-            classes: z.array(shared.LinkedAccount$.inboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                ContentType: "contentType",
-                StatusCode: "statusCode",
-                RawResponse: "rawResponse",
-            });
-        });
-
-    export type Outbound = {
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: never;
-        classes?: Array<shared.LinkedAccount$.Outbound> | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        StackoneListLinkedAccountsResponse
-    > = z
-        .object({
-            contentType: z.string(),
-            statusCode: z.number().int(),
-            rawResponse: z.instanceof(Response).transform(() => {
-                throw new Error("Response cannot be serialized");
-            }),
-            classes: z.array(shared.LinkedAccount$.outboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                contentType: "ContentType",
-                statusCode: "StatusCode",
-                rawResponse: "RawResponse",
-            });
-        });
+    /** @deprecated use `StackoneListLinkedAccountsResponse$inboundSchema` instead. */
+    export const inboundSchema = StackoneListLinkedAccountsResponse$inboundSchema;
+    /** @deprecated use `StackoneListLinkedAccountsResponse$outboundSchema` instead. */
+    export const outboundSchema = StackoneListLinkedAccountsResponse$outboundSchema;
+    /** @deprecated use `StackoneListLinkedAccountsResponse$Outbound` instead. */
+    export type Outbound = StackoneListLinkedAccountsResponse$Outbound;
 }

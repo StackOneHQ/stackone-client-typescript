@@ -3,7 +3,12 @@
  */
 
 import { remap as remap$ } from "../../../lib/primitives.js";
-import { IamPermission, IamPermission$ } from "./iampermission.js";
+import {
+    IamPermission,
+    IamPermission$inboundSchema,
+    IamPermission$Outbound,
+    IamPermission$outboundSchema,
+} from "./iampermission.js";
 import * as z from "zod";
 
 export type IamPolicy = {
@@ -29,64 +34,77 @@ export type IamPolicy = {
 };
 
 /** @internal */
+export const IamPolicy$inboundSchema: z.ZodType<IamPolicy, z.ZodTypeDef, unknown> = z
+    .object({
+        created_at: z
+            .nullable(
+                z
+                    .string()
+                    .datetime({ offset: true })
+                    .transform((v) => new Date(v))
+            )
+            .optional(),
+        description: z.nullable(z.string()).optional(),
+        id: z.nullable(z.string()).optional(),
+        name: z.nullable(z.string()).optional(),
+        permissions: z.nullable(z.array(IamPermission$inboundSchema)).optional(),
+        remote_id: z.nullable(z.string()).optional(),
+        updated_at: z
+            .nullable(
+                z
+                    .string()
+                    .datetime({ offset: true })
+                    .transform((v) => new Date(v))
+            )
+            .optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            created_at: "createdAt",
+            remote_id: "remoteId",
+            updated_at: "updatedAt",
+        });
+    });
+
+/** @internal */
+export type IamPolicy$Outbound = {
+    created_at?: string | null | undefined;
+    description?: string | null | undefined;
+    id?: string | null | undefined;
+    name?: string | null | undefined;
+    permissions?: Array<IamPermission$Outbound> | null | undefined;
+    remote_id?: string | null | undefined;
+    updated_at?: string | null | undefined;
+};
+
+/** @internal */
+export const IamPolicy$outboundSchema: z.ZodType<IamPolicy$Outbound, z.ZodTypeDef, IamPolicy> = z
+    .object({
+        createdAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+        description: z.nullable(z.string()).optional(),
+        id: z.nullable(z.string()).optional(),
+        name: z.nullable(z.string()).optional(),
+        permissions: z.nullable(z.array(IamPermission$outboundSchema)).optional(),
+        remoteId: z.nullable(z.string()).optional(),
+        updatedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            createdAt: "created_at",
+            remoteId: "remote_id",
+            updatedAt: "updated_at",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace IamPolicy$ {
-    export const inboundSchema: z.ZodType<IamPolicy, z.ZodTypeDef, unknown> = z
-        .object({
-            created_at: z
-                .nullable(
-                    z
-                        .string()
-                        .datetime({ offset: true })
-                        .transform((v) => new Date(v))
-                )
-                .optional(),
-            description: z.nullable(z.string()).optional(),
-            id: z.nullable(z.string()).optional(),
-            name: z.nullable(z.string()).optional(),
-            permissions: z.nullable(z.array(IamPermission$.inboundSchema)).optional(),
-            remote_id: z.nullable(z.string()).optional(),
-            updated_at: z
-                .nullable(
-                    z
-                        .string()
-                        .datetime({ offset: true })
-                        .transform((v) => new Date(v))
-                )
-                .optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                created_at: "createdAt",
-                remote_id: "remoteId",
-                updated_at: "updatedAt",
-            });
-        });
-
-    export type Outbound = {
-        created_at?: string | null | undefined;
-        description?: string | null | undefined;
-        id?: string | null | undefined;
-        name?: string | null | undefined;
-        permissions?: Array<IamPermission$.Outbound> | null | undefined;
-        remote_id?: string | null | undefined;
-        updated_at?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, IamPolicy> = z
-        .object({
-            createdAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
-            description: z.nullable(z.string()).optional(),
-            id: z.nullable(z.string()).optional(),
-            name: z.nullable(z.string()).optional(),
-            permissions: z.nullable(z.array(IamPermission$.outboundSchema)).optional(),
-            remoteId: z.nullable(z.string()).optional(),
-            updatedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                createdAt: "created_at",
-                remoteId: "remote_id",
-                updatedAt: "updated_at",
-            });
-        });
+    /** @deprecated use `IamPolicy$inboundSchema` instead. */
+    export const inboundSchema = IamPolicy$inboundSchema;
+    /** @deprecated use `IamPolicy$outboundSchema` instead. */
+    export const outboundSchema = IamPolicy$outboundSchema;
+    /** @deprecated use `IamPolicy$Outbound` instead. */
+    export type Outbound = IamPolicy$Outbound;
 }

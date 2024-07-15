@@ -35,80 +35,122 @@ export type AtsUpdateApplicationResponse = {
 };
 
 /** @internal */
+export const AtsUpdateApplicationRequest$inboundSchema: z.ZodType<
+    AtsUpdateApplicationRequest,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        AtsUpdateApplicationRequestDto: shared.AtsUpdateApplicationRequestDto$inboundSchema,
+        id: z.string(),
+        "x-account-id": z.string(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            AtsUpdateApplicationRequestDto: "atsUpdateApplicationRequestDto",
+            "x-account-id": "xAccountId",
+        });
+    });
+
+/** @internal */
+export type AtsUpdateApplicationRequest$Outbound = {
+    AtsUpdateApplicationRequestDto: shared.AtsUpdateApplicationRequestDto$Outbound;
+    id: string;
+    "x-account-id": string;
+};
+
+/** @internal */
+export const AtsUpdateApplicationRequest$outboundSchema: z.ZodType<
+    AtsUpdateApplicationRequest$Outbound,
+    z.ZodTypeDef,
+    AtsUpdateApplicationRequest
+> = z
+    .object({
+        atsUpdateApplicationRequestDto: shared.AtsUpdateApplicationRequestDto$outboundSchema,
+        id: z.string(),
+        xAccountId: z.string(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            atsUpdateApplicationRequestDto: "AtsUpdateApplicationRequestDto",
+            xAccountId: "x-account-id",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace AtsUpdateApplicationRequest$ {
-    export const inboundSchema: z.ZodType<AtsUpdateApplicationRequest, z.ZodTypeDef, unknown> = z
-        .object({
-            AtsUpdateApplicationRequestDto: shared.AtsUpdateApplicationRequestDto$.inboundSchema,
-            id: z.string(),
-            "x-account-id": z.string(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                AtsUpdateApplicationRequestDto: "atsUpdateApplicationRequestDto",
-                "x-account-id": "xAccountId",
-            });
-        });
-
-    export type Outbound = {
-        AtsUpdateApplicationRequestDto: shared.AtsUpdateApplicationRequestDto$.Outbound;
-        id: string;
-        "x-account-id": string;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, AtsUpdateApplicationRequest> = z
-        .object({
-            atsUpdateApplicationRequestDto: shared.AtsUpdateApplicationRequestDto$.outboundSchema,
-            id: z.string(),
-            xAccountId: z.string(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                atsUpdateApplicationRequestDto: "AtsUpdateApplicationRequestDto",
-                xAccountId: "x-account-id",
-            });
-        });
+    /** @deprecated use `AtsUpdateApplicationRequest$inboundSchema` instead. */
+    export const inboundSchema = AtsUpdateApplicationRequest$inboundSchema;
+    /** @deprecated use `AtsUpdateApplicationRequest$outboundSchema` instead. */
+    export const outboundSchema = AtsUpdateApplicationRequest$outboundSchema;
+    /** @deprecated use `AtsUpdateApplicationRequest$Outbound` instead. */
+    export type Outbound = AtsUpdateApplicationRequest$Outbound;
 }
 
 /** @internal */
+export const AtsUpdateApplicationResponse$inboundSchema: z.ZodType<
+    AtsUpdateApplicationResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        ContentType: z.string(),
+        StatusCode: z.number().int(),
+        RawResponse: z.instanceof(Response),
+        UpdateResult: shared.UpdateResult$inboundSchema.optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            ContentType: "contentType",
+            StatusCode: "statusCode",
+            RawResponse: "rawResponse",
+            UpdateResult: "updateResult",
+        });
+    });
+
+/** @internal */
+export type AtsUpdateApplicationResponse$Outbound = {
+    ContentType: string;
+    StatusCode: number;
+    RawResponse: never;
+    UpdateResult?: shared.UpdateResult$Outbound | undefined;
+};
+
+/** @internal */
+export const AtsUpdateApplicationResponse$outboundSchema: z.ZodType<
+    AtsUpdateApplicationResponse$Outbound,
+    z.ZodTypeDef,
+    AtsUpdateApplicationResponse
+> = z
+    .object({
+        contentType: z.string(),
+        statusCode: z.number().int(),
+        rawResponse: z.instanceof(Response).transform(() => {
+            throw new Error("Response cannot be serialized");
+        }),
+        updateResult: shared.UpdateResult$outboundSchema.optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            contentType: "ContentType",
+            statusCode: "StatusCode",
+            rawResponse: "RawResponse",
+            updateResult: "UpdateResult",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace AtsUpdateApplicationResponse$ {
-    export const inboundSchema: z.ZodType<AtsUpdateApplicationResponse, z.ZodTypeDef, unknown> = z
-        .object({
-            ContentType: z.string(),
-            StatusCode: z.number().int(),
-            RawResponse: z.instanceof(Response),
-            UpdateResult: shared.UpdateResult$.inboundSchema.optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                ContentType: "contentType",
-                StatusCode: "statusCode",
-                RawResponse: "rawResponse",
-                UpdateResult: "updateResult",
-            });
-        });
-
-    export type Outbound = {
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: never;
-        UpdateResult?: shared.UpdateResult$.Outbound | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, AtsUpdateApplicationResponse> = z
-        .object({
-            contentType: z.string(),
-            statusCode: z.number().int(),
-            rawResponse: z.instanceof(Response).transform(() => {
-                throw new Error("Response cannot be serialized");
-            }),
-            updateResult: shared.UpdateResult$.outboundSchema.optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                contentType: "ContentType",
-                statusCode: "StatusCode",
-                rawResponse: "RawResponse",
-                updateResult: "UpdateResult",
-            });
-        });
+    /** @deprecated use `AtsUpdateApplicationResponse$inboundSchema` instead. */
+    export const inboundSchema = AtsUpdateApplicationResponse$inboundSchema;
+    /** @deprecated use `AtsUpdateApplicationResponse$outboundSchema` instead. */
+    export const outboundSchema = AtsUpdateApplicationResponse$outboundSchema;
+    /** @deprecated use `AtsUpdateApplicationResponse$Outbound` instead. */
+    export type Outbound = AtsUpdateApplicationResponse$Outbound;
 }

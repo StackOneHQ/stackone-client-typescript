@@ -4,8 +4,18 @@
 
 import { remap as remap$ } from "../../../lib/primitives.js";
 import { catchUnrecognizedEnum, OpenEnum, Unrecognized } from "../../types/enums.js";
-import { Questionnaire, Questionnaire$ } from "./questionnaire.js";
-import { SocialLink, SocialLink$ } from "./sociallink.js";
+import {
+    Questionnaire,
+    Questionnaire$inboundSchema,
+    Questionnaire$Outbound,
+    Questionnaire$outboundSchema,
+} from "./questionnaire.js";
+import {
+    SocialLink,
+    SocialLink$inboundSchema,
+    SocialLink$Outbound,
+    SocialLink$outboundSchema,
+} from "./sociallink.js";
 import * as z from "zod";
 
 export type AtsCreateApplicationRequestDto4 = {};
@@ -157,321 +167,418 @@ export type AtsCreateApplicationRequestDto = {
 };
 
 /** @internal */
+export const AtsCreateApplicationRequestDto4$inboundSchema: z.ZodType<
+    AtsCreateApplicationRequestDto4,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type AtsCreateApplicationRequestDto4$Outbound = {};
+
+/** @internal */
+export const AtsCreateApplicationRequestDto4$outboundSchema: z.ZodType<
+    AtsCreateApplicationRequestDto4$Outbound,
+    z.ZodTypeDef,
+    AtsCreateApplicationRequestDto4
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace AtsCreateApplicationRequestDto4$ {
-    export const inboundSchema: z.ZodType<AtsCreateApplicationRequestDto4, z.ZodTypeDef, unknown> =
-        z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        AtsCreateApplicationRequestDto4
-    > = z.object({});
+    /** @deprecated use `AtsCreateApplicationRequestDto4$inboundSchema` instead. */
+    export const inboundSchema = AtsCreateApplicationRequestDto4$inboundSchema;
+    /** @deprecated use `AtsCreateApplicationRequestDto4$outboundSchema` instead. */
+    export const outboundSchema = AtsCreateApplicationRequestDto4$outboundSchema;
+    /** @deprecated use `AtsCreateApplicationRequestDto4$Outbound` instead. */
+    export type Outbound = AtsCreateApplicationRequestDto4$Outbound;
 }
 
 /** @internal */
+export const AtsCreateApplicationRequestDtoSourceValue$inboundSchema: z.ZodType<
+    AtsCreateApplicationRequestDtoSourceValue,
+    z.ZodTypeDef,
+    unknown
+> = z.union([
+    z.lazy(() => AtsCreateApplicationRequestDto4$inboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+]);
+
+/** @internal */
+export type AtsCreateApplicationRequestDtoSourceValue$Outbound =
+    | AtsCreateApplicationRequestDto4$Outbound
+    | string
+    | number
+    | boolean;
+
+/** @internal */
+export const AtsCreateApplicationRequestDtoSourceValue$outboundSchema: z.ZodType<
+    AtsCreateApplicationRequestDtoSourceValue$Outbound,
+    z.ZodTypeDef,
+    AtsCreateApplicationRequestDtoSourceValue
+> = z.union([
+    z.lazy(() => AtsCreateApplicationRequestDto4$outboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace AtsCreateApplicationRequestDtoSourceValue$ {
-    export const inboundSchema: z.ZodType<
-        AtsCreateApplicationRequestDtoSourceValue,
-        z.ZodTypeDef,
-        unknown
-    > = z.union([
-        z.lazy(() => AtsCreateApplicationRequestDto4$.inboundSchema),
-        z.string(),
-        z.number(),
-        z.boolean(),
-    ]);
-
-    export type Outbound = AtsCreateApplicationRequestDto4$.Outbound | string | number | boolean;
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        AtsCreateApplicationRequestDtoSourceValue
-    > = z.union([
-        z.lazy(() => AtsCreateApplicationRequestDto4$.outboundSchema),
-        z.string(),
-        z.number(),
-        z.boolean(),
-    ]);
+    /** @deprecated use `AtsCreateApplicationRequestDtoSourceValue$inboundSchema` instead. */
+    export const inboundSchema = AtsCreateApplicationRequestDtoSourceValue$inboundSchema;
+    /** @deprecated use `AtsCreateApplicationRequestDtoSourceValue$outboundSchema` instead. */
+    export const outboundSchema = AtsCreateApplicationRequestDtoSourceValue$outboundSchema;
+    /** @deprecated use `AtsCreateApplicationRequestDtoSourceValue$Outbound` instead. */
+    export type Outbound = AtsCreateApplicationRequestDtoSourceValue$Outbound;
 }
 
 /** @internal */
+export const AtsCreateApplicationRequestDtoValue$inboundSchema: z.ZodType<
+    AtsCreateApplicationRequestDtoValueOpen,
+    z.ZodTypeDef,
+    unknown
+> = z.union([
+    z.nativeEnum(AtsCreateApplicationRequestDtoValue),
+    z.string().transform(catchUnrecognizedEnum),
+]);
+
+/** @internal */
+export const AtsCreateApplicationRequestDtoValue$outboundSchema: z.ZodType<
+    AtsCreateApplicationRequestDtoValueOpen,
+    z.ZodTypeDef,
+    AtsCreateApplicationRequestDtoValueOpen
+> = z.union([
+    z.nativeEnum(AtsCreateApplicationRequestDtoValue),
+    z.string().and(z.custom<Unrecognized<string>>()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace AtsCreateApplicationRequestDtoValue$ {
-    export const inboundSchema: z.ZodType<
-        AtsCreateApplicationRequestDtoValueOpen,
-        z.ZodTypeDef,
-        unknown
-    > = z.union([
-        z.nativeEnum(AtsCreateApplicationRequestDtoValue),
-        z.string().transform(catchUnrecognizedEnum),
-    ]);
-
-    export const outboundSchema: z.ZodType<
-        AtsCreateApplicationRequestDtoValueOpen,
-        z.ZodTypeDef,
-        AtsCreateApplicationRequestDtoValueOpen
-    > = z.union([
-        z.nativeEnum(AtsCreateApplicationRequestDtoValue),
-        z.string().and(z.custom<Unrecognized<string>>()),
-    ]);
+    /** @deprecated use `AtsCreateApplicationRequestDtoValue$inboundSchema` instead. */
+    export const inboundSchema = AtsCreateApplicationRequestDtoValue$inboundSchema;
+    /** @deprecated use `AtsCreateApplicationRequestDtoValue$outboundSchema` instead. */
+    export const outboundSchema = AtsCreateApplicationRequestDtoValue$outboundSchema;
 }
 
 /** @internal */
+export const AtsCreateApplicationRequestDtoApplicationStatus$inboundSchema: z.ZodType<
+    AtsCreateApplicationRequestDtoApplicationStatus,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        source_value: z
+            .nullable(
+                z.union([
+                    z.lazy(() => AtsCreateApplicationRequestDto4$inboundSchema),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                ])
+            )
+            .optional(),
+        value: z.nullable(AtsCreateApplicationRequestDtoValue$inboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            source_value: "sourceValue",
+        });
+    });
+
+/** @internal */
+export type AtsCreateApplicationRequestDtoApplicationStatus$Outbound = {
+    source_value?:
+        | AtsCreateApplicationRequestDto4$Outbound
+        | string
+        | number
+        | boolean
+        | null
+        | undefined;
+    value?: string | null | undefined;
+};
+
+/** @internal */
+export const AtsCreateApplicationRequestDtoApplicationStatus$outboundSchema: z.ZodType<
+    AtsCreateApplicationRequestDtoApplicationStatus$Outbound,
+    z.ZodTypeDef,
+    AtsCreateApplicationRequestDtoApplicationStatus
+> = z
+    .object({
+        sourceValue: z
+            .nullable(
+                z.union([
+                    z.lazy(() => AtsCreateApplicationRequestDto4$outboundSchema),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                ])
+            )
+            .optional(),
+        value: z.nullable(AtsCreateApplicationRequestDtoValue$outboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            sourceValue: "source_value",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace AtsCreateApplicationRequestDtoApplicationStatus$ {
-    export const inboundSchema: z.ZodType<
-        AtsCreateApplicationRequestDtoApplicationStatus,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            source_value: z
-                .nullable(
-                    z.union([
-                        z.lazy(() => AtsCreateApplicationRequestDto4$.inboundSchema),
-                        z.string(),
-                        z.number(),
-                        z.boolean(),
-                    ])
-                )
-                .optional(),
-            value: z.nullable(AtsCreateApplicationRequestDtoValue$.inboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                source_value: "sourceValue",
-            });
-        });
-
-    export type Outbound = {
-        source_value?:
-            | AtsCreateApplicationRequestDto4$.Outbound
-            | string
-            | number
-            | boolean
-            | null
-            | undefined;
-        value?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        AtsCreateApplicationRequestDtoApplicationStatus
-    > = z
-        .object({
-            sourceValue: z
-                .nullable(
-                    z.union([
-                        z.lazy(() => AtsCreateApplicationRequestDto4$.outboundSchema),
-                        z.string(),
-                        z.number(),
-                        z.boolean(),
-                    ])
-                )
-                .optional(),
-            value: z.nullable(AtsCreateApplicationRequestDtoValue$.outboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                sourceValue: "source_value",
-            });
-        });
+    /** @deprecated use `AtsCreateApplicationRequestDtoApplicationStatus$inboundSchema` instead. */
+    export const inboundSchema = AtsCreateApplicationRequestDtoApplicationStatus$inboundSchema;
+    /** @deprecated use `AtsCreateApplicationRequestDtoApplicationStatus$outboundSchema` instead. */
+    export const outboundSchema = AtsCreateApplicationRequestDtoApplicationStatus$outboundSchema;
+    /** @deprecated use `AtsCreateApplicationRequestDtoApplicationStatus$Outbound` instead. */
+    export type Outbound = AtsCreateApplicationRequestDtoApplicationStatus$Outbound;
 }
 
 /** @internal */
+export const AtsCreateApplicationRequestDtoCandidate$inboundSchema: z.ZodType<
+    AtsCreateApplicationRequestDtoCandidate,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        company: z.nullable(z.string()).optional(),
+        country: z.nullable(z.string()).optional(),
+        email: z.nullable(z.string()).optional(),
+        first_name: z.nullable(z.string()).optional(),
+        hired_at: z
+            .nullable(
+                z
+                    .string()
+                    .datetime({ offset: true })
+                    .transform((v) => new Date(v))
+            )
+            .optional(),
+        last_name: z.nullable(z.string()).optional(),
+        name: z.nullable(z.string()).optional(),
+        passthrough: z.nullable(z.record(z.any())).optional(),
+        phone_number: z.nullable(z.string()).optional(),
+        social_links: z.nullable(z.array(SocialLink$inboundSchema)).optional(),
+        title: z.nullable(z.string()).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            first_name: "firstName",
+            hired_at: "hiredAt",
+            last_name: "lastName",
+            phone_number: "phoneNumber",
+            social_links: "socialLinks",
+        });
+    });
+
+/** @internal */
+export type AtsCreateApplicationRequestDtoCandidate$Outbound = {
+    company?: string | null | undefined;
+    country?: string | null | undefined;
+    email?: string | null | undefined;
+    first_name?: string | null | undefined;
+    hired_at?: string | null | undefined;
+    last_name?: string | null | undefined;
+    name?: string | null | undefined;
+    passthrough?: { [k: string]: any } | null | undefined;
+    phone_number?: string | null | undefined;
+    social_links?: Array<SocialLink$Outbound> | null | undefined;
+    title?: string | null | undefined;
+};
+
+/** @internal */
+export const AtsCreateApplicationRequestDtoCandidate$outboundSchema: z.ZodType<
+    AtsCreateApplicationRequestDtoCandidate$Outbound,
+    z.ZodTypeDef,
+    AtsCreateApplicationRequestDtoCandidate
+> = z
+    .object({
+        company: z.nullable(z.string()).optional(),
+        country: z.nullable(z.string()).optional(),
+        email: z.nullable(z.string()).optional(),
+        firstName: z.nullable(z.string()).optional(),
+        hiredAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+        lastName: z.nullable(z.string()).optional(),
+        name: z.nullable(z.string()).optional(),
+        passthrough: z.nullable(z.record(z.any())).optional(),
+        phoneNumber: z.nullable(z.string()).optional(),
+        socialLinks: z.nullable(z.array(SocialLink$outboundSchema)).optional(),
+        title: z.nullable(z.string()).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            firstName: "first_name",
+            hiredAt: "hired_at",
+            lastName: "last_name",
+            phoneNumber: "phone_number",
+            socialLinks: "social_links",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace AtsCreateApplicationRequestDtoCandidate$ {
-    export const inboundSchema: z.ZodType<
-        AtsCreateApplicationRequestDtoCandidate,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            company: z.nullable(z.string()).optional(),
-            country: z.nullable(z.string()).optional(),
-            email: z.nullable(z.string()).optional(),
-            first_name: z.nullable(z.string()).optional(),
-            hired_at: z
-                .nullable(
-                    z
-                        .string()
-                        .datetime({ offset: true })
-                        .transform((v) => new Date(v))
-                )
-                .optional(),
-            last_name: z.nullable(z.string()).optional(),
-            name: z.nullable(z.string()).optional(),
-            passthrough: z.nullable(z.record(z.any())).optional(),
-            phone_number: z.nullable(z.string()).optional(),
-            social_links: z.nullable(z.array(SocialLink$.inboundSchema)).optional(),
-            title: z.nullable(z.string()).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                first_name: "firstName",
-                hired_at: "hiredAt",
-                last_name: "lastName",
-                phone_number: "phoneNumber",
-                social_links: "socialLinks",
-            });
-        });
-
-    export type Outbound = {
-        company?: string | null | undefined;
-        country?: string | null | undefined;
-        email?: string | null | undefined;
-        first_name?: string | null | undefined;
-        hired_at?: string | null | undefined;
-        last_name?: string | null | undefined;
-        name?: string | null | undefined;
-        passthrough?: { [k: string]: any } | null | undefined;
-        phone_number?: string | null | undefined;
-        social_links?: Array<SocialLink$.Outbound> | null | undefined;
-        title?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        AtsCreateApplicationRequestDtoCandidate
-    > = z
-        .object({
-            company: z.nullable(z.string()).optional(),
-            country: z.nullable(z.string()).optional(),
-            email: z.nullable(z.string()).optional(),
-            firstName: z.nullable(z.string()).optional(),
-            hiredAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
-            lastName: z.nullable(z.string()).optional(),
-            name: z.nullable(z.string()).optional(),
-            passthrough: z.nullable(z.record(z.any())).optional(),
-            phoneNumber: z.nullable(z.string()).optional(),
-            socialLinks: z.nullable(z.array(SocialLink$.outboundSchema)).optional(),
-            title: z.nullable(z.string()).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                firstName: "first_name",
-                hiredAt: "hired_at",
-                lastName: "last_name",
-                phoneNumber: "phone_number",
-                socialLinks: "social_links",
-            });
-        });
+    /** @deprecated use `AtsCreateApplicationRequestDtoCandidate$inboundSchema` instead. */
+    export const inboundSchema = AtsCreateApplicationRequestDtoCandidate$inboundSchema;
+    /** @deprecated use `AtsCreateApplicationRequestDtoCandidate$outboundSchema` instead. */
+    export const outboundSchema = AtsCreateApplicationRequestDtoCandidate$outboundSchema;
+    /** @deprecated use `AtsCreateApplicationRequestDtoCandidate$Outbound` instead. */
+    export type Outbound = AtsCreateApplicationRequestDtoCandidate$Outbound;
 }
 
 /** @internal */
+export const AtsCreateApplicationRequestDtoSource$inboundSchema: z.ZodType<
+    AtsCreateApplicationRequestDtoSource,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        id: z.nullable(z.string()).optional(),
+        name: z.nullable(z.string()).optional(),
+        remote_id: z.nullable(z.string()).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            remote_id: "remoteId",
+        });
+    });
+
+/** @internal */
+export type AtsCreateApplicationRequestDtoSource$Outbound = {
+    id?: string | null | undefined;
+    name?: string | null | undefined;
+    remote_id?: string | null | undefined;
+};
+
+/** @internal */
+export const AtsCreateApplicationRequestDtoSource$outboundSchema: z.ZodType<
+    AtsCreateApplicationRequestDtoSource$Outbound,
+    z.ZodTypeDef,
+    AtsCreateApplicationRequestDtoSource
+> = z
+    .object({
+        id: z.nullable(z.string()).optional(),
+        name: z.nullable(z.string()).optional(),
+        remoteId: z.nullable(z.string()).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            remoteId: "remote_id",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace AtsCreateApplicationRequestDtoSource$ {
-    export const inboundSchema: z.ZodType<
-        AtsCreateApplicationRequestDtoSource,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            id: z.nullable(z.string()).optional(),
-            name: z.nullable(z.string()).optional(),
-            remote_id: z.nullable(z.string()).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                remote_id: "remoteId",
-            });
-        });
-
-    export type Outbound = {
-        id?: string | null | undefined;
-        name?: string | null | undefined;
-        remote_id?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        AtsCreateApplicationRequestDtoSource
-    > = z
-        .object({
-            id: z.nullable(z.string()).optional(),
-            name: z.nullable(z.string()).optional(),
-            remoteId: z.nullable(z.string()).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                remoteId: "remote_id",
-            });
-        });
+    /** @deprecated use `AtsCreateApplicationRequestDtoSource$inboundSchema` instead. */
+    export const inboundSchema = AtsCreateApplicationRequestDtoSource$inboundSchema;
+    /** @deprecated use `AtsCreateApplicationRequestDtoSource$outboundSchema` instead. */
+    export const outboundSchema = AtsCreateApplicationRequestDtoSource$outboundSchema;
+    /** @deprecated use `AtsCreateApplicationRequestDtoSource$Outbound` instead. */
+    export type Outbound = AtsCreateApplicationRequestDtoSource$Outbound;
 }
 
 /** @internal */
-export namespace AtsCreateApplicationRequestDto$ {
-    export const inboundSchema: z.ZodType<AtsCreateApplicationRequestDto, z.ZodTypeDef, unknown> = z
-        .object({
-            application_status: z
-                .nullable(
-                    z.lazy(() => AtsCreateApplicationRequestDtoApplicationStatus$.inboundSchema)
-                )
-                .optional(),
-            candidate: z
-                .nullable(z.lazy(() => AtsCreateApplicationRequestDtoCandidate$.inboundSchema))
-                .optional(),
-            candidate_id: z.nullable(z.string()).optional(),
-            job_id: z.nullable(z.string()).optional(),
-            location_id: z.nullable(z.string()).optional(),
-            passthrough: z.nullable(z.record(z.any())).optional(),
-            questionnaires: z.nullable(z.array(Questionnaire$.inboundSchema)).optional(),
-            source: z
-                .nullable(z.lazy(() => AtsCreateApplicationRequestDtoSource$.inboundSchema))
-                .optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                application_status: "applicationStatus",
-                candidate_id: "candidateId",
-                job_id: "jobId",
-                location_id: "locationId",
-            });
+export const AtsCreateApplicationRequestDto$inboundSchema: z.ZodType<
+    AtsCreateApplicationRequestDto,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        application_status: z
+            .nullable(z.lazy(() => AtsCreateApplicationRequestDtoApplicationStatus$inboundSchema))
+            .optional(),
+        candidate: z
+            .nullable(z.lazy(() => AtsCreateApplicationRequestDtoCandidate$inboundSchema))
+            .optional(),
+        candidate_id: z.nullable(z.string()).optional(),
+        job_id: z.nullable(z.string()).optional(),
+        location_id: z.nullable(z.string()).optional(),
+        passthrough: z.nullable(z.record(z.any())).optional(),
+        questionnaires: z.nullable(z.array(Questionnaire$inboundSchema)).optional(),
+        source: z
+            .nullable(z.lazy(() => AtsCreateApplicationRequestDtoSource$inboundSchema))
+            .optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            application_status: "applicationStatus",
+            candidate_id: "candidateId",
+            job_id: "jobId",
+            location_id: "locationId",
         });
+    });
 
-    export type Outbound = {
-        application_status?:
-            | AtsCreateApplicationRequestDtoApplicationStatus$.Outbound
-            | null
-            | undefined;
-        candidate?: AtsCreateApplicationRequestDtoCandidate$.Outbound | null | undefined;
-        candidate_id?: string | null | undefined;
-        job_id?: string | null | undefined;
-        location_id?: string | null | undefined;
-        passthrough?: { [k: string]: any } | null | undefined;
-        questionnaires?: Array<Questionnaire$.Outbound> | null | undefined;
-        source?: AtsCreateApplicationRequestDtoSource$.Outbound | null | undefined;
-    };
+/** @internal */
+export type AtsCreateApplicationRequestDto$Outbound = {
+    application_status?:
+        | AtsCreateApplicationRequestDtoApplicationStatus$Outbound
+        | null
+        | undefined;
+    candidate?: AtsCreateApplicationRequestDtoCandidate$Outbound | null | undefined;
+    candidate_id?: string | null | undefined;
+    job_id?: string | null | undefined;
+    location_id?: string | null | undefined;
+    passthrough?: { [k: string]: any } | null | undefined;
+    questionnaires?: Array<Questionnaire$Outbound> | null | undefined;
+    source?: AtsCreateApplicationRequestDtoSource$Outbound | null | undefined;
+};
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, AtsCreateApplicationRequestDto> =
-        z
-            .object({
-                applicationStatus: z
-                    .nullable(
-                        z.lazy(
-                            () => AtsCreateApplicationRequestDtoApplicationStatus$.outboundSchema
-                        )
-                    )
-                    .optional(),
-                candidate: z
-                    .nullable(z.lazy(() => AtsCreateApplicationRequestDtoCandidate$.outboundSchema))
-                    .optional(),
-                candidateId: z.nullable(z.string()).optional(),
-                jobId: z.nullable(z.string()).optional(),
-                locationId: z.nullable(z.string()).optional(),
-                passthrough: z.nullable(z.record(z.any())).optional(),
-                questionnaires: z.nullable(z.array(Questionnaire$.outboundSchema)).optional(),
-                source: z
-                    .nullable(z.lazy(() => AtsCreateApplicationRequestDtoSource$.outboundSchema))
-                    .optional(),
-            })
-            .transform((v) => {
-                return remap$(v, {
-                    applicationStatus: "application_status",
-                    candidateId: "candidate_id",
-                    jobId: "job_id",
-                    locationId: "location_id",
-                });
-            });
+/** @internal */
+export const AtsCreateApplicationRequestDto$outboundSchema: z.ZodType<
+    AtsCreateApplicationRequestDto$Outbound,
+    z.ZodTypeDef,
+    AtsCreateApplicationRequestDto
+> = z
+    .object({
+        applicationStatus: z
+            .nullable(z.lazy(() => AtsCreateApplicationRequestDtoApplicationStatus$outboundSchema))
+            .optional(),
+        candidate: z
+            .nullable(z.lazy(() => AtsCreateApplicationRequestDtoCandidate$outboundSchema))
+            .optional(),
+        candidateId: z.nullable(z.string()).optional(),
+        jobId: z.nullable(z.string()).optional(),
+        locationId: z.nullable(z.string()).optional(),
+        passthrough: z.nullable(z.record(z.any())).optional(),
+        questionnaires: z.nullable(z.array(Questionnaire$outboundSchema)).optional(),
+        source: z
+            .nullable(z.lazy(() => AtsCreateApplicationRequestDtoSource$outboundSchema))
+            .optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            applicationStatus: "application_status",
+            candidateId: "candidate_id",
+            jobId: "job_id",
+            locationId: "location_id",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace AtsCreateApplicationRequestDto$ {
+    /** @deprecated use `AtsCreateApplicationRequestDto$inboundSchema` instead. */
+    export const inboundSchema = AtsCreateApplicationRequestDto$inboundSchema;
+    /** @deprecated use `AtsCreateApplicationRequestDto$outboundSchema` instead. */
+    export const outboundSchema = AtsCreateApplicationRequestDto$outboundSchema;
+    /** @deprecated use `AtsCreateApplicationRequestDto$Outbound` instead. */
+    export type Outbound = AtsCreateApplicationRequestDto$Outbound;
 }

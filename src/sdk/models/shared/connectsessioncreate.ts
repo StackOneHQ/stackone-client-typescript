@@ -65,84 +65,128 @@ export type ConnectSessionCreate = {
 };
 
 /** @internal */
+export const ConnectSessionCreateCategories$inboundSchema: z.ZodNativeEnum<
+    typeof ConnectSessionCreateCategories
+> = z.nativeEnum(ConnectSessionCreateCategories);
+
+/** @internal */
+export const ConnectSessionCreateCategories$outboundSchema: z.ZodNativeEnum<
+    typeof ConnectSessionCreateCategories
+> = ConnectSessionCreateCategories$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace ConnectSessionCreateCategories$ {
-    export const inboundSchema: z.ZodNativeEnum<typeof ConnectSessionCreateCategories> =
-        z.nativeEnum(ConnectSessionCreateCategories);
-    export const outboundSchema: z.ZodNativeEnum<typeof ConnectSessionCreateCategories> =
-        inboundSchema;
+    /** @deprecated use `ConnectSessionCreateCategories$inboundSchema` instead. */
+    export const inboundSchema = ConnectSessionCreateCategories$inboundSchema;
+    /** @deprecated use `ConnectSessionCreateCategories$outboundSchema` instead. */
+    export const outboundSchema = ConnectSessionCreateCategories$outboundSchema;
 }
 
 /** @internal */
+export const Metadata$inboundSchema: z.ZodType<Metadata, z.ZodTypeDef, unknown> = z.object({});
+
+/** @internal */
+export type Metadata$Outbound = {};
+
+/** @internal */
+export const Metadata$outboundSchema: z.ZodType<Metadata$Outbound, z.ZodTypeDef, Metadata> =
+    z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace Metadata$ {
-    export const inboundSchema: z.ZodType<Metadata, z.ZodTypeDef, unknown> = z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Metadata> = z.object({});
+    /** @deprecated use `Metadata$inboundSchema` instead. */
+    export const inboundSchema = Metadata$inboundSchema;
+    /** @deprecated use `Metadata$outboundSchema` instead. */
+    export const outboundSchema = Metadata$outboundSchema;
+    /** @deprecated use `Metadata$Outbound` instead. */
+    export type Outbound = Metadata$Outbound;
 }
 
 /** @internal */
+export const ConnectSessionCreate$inboundSchema: z.ZodType<
+    ConnectSessionCreate,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        account_id: z.nullable(z.string()).optional(),
+        categories: z.nullable(z.array(ConnectSessionCreateCategories$inboundSchema)).optional(),
+        expires_in: z.nullable(z.number().default(1800)),
+        label: z.nullable(z.string()).optional(),
+        metadata: z.nullable(z.lazy(() => Metadata$inboundSchema)).optional(),
+        multiple: z.nullable(z.boolean().default(false)),
+        origin_owner_id: z.string(),
+        origin_owner_name: z.string(),
+        origin_username: z.nullable(z.string()).optional(),
+        provider: z.nullable(z.string()).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            account_id: "accountId",
+            expires_in: "expiresIn",
+            origin_owner_id: "originOwnerId",
+            origin_owner_name: "originOwnerName",
+            origin_username: "originUsername",
+        });
+    });
+
+/** @internal */
+export type ConnectSessionCreate$Outbound = {
+    account_id?: string | null | undefined;
+    categories?: Array<string> | null | undefined;
+    expires_in: number | null;
+    label?: string | null | undefined;
+    metadata?: Metadata$Outbound | null | undefined;
+    multiple: boolean | null;
+    origin_owner_id: string;
+    origin_owner_name: string;
+    origin_username?: string | null | undefined;
+    provider?: string | null | undefined;
+};
+
+/** @internal */
+export const ConnectSessionCreate$outboundSchema: z.ZodType<
+    ConnectSessionCreate$Outbound,
+    z.ZodTypeDef,
+    ConnectSessionCreate
+> = z
+    .object({
+        accountId: z.nullable(z.string()).optional(),
+        categories: z.nullable(z.array(ConnectSessionCreateCategories$outboundSchema)).optional(),
+        expiresIn: z.nullable(z.number().default(1800)),
+        label: z.nullable(z.string()).optional(),
+        metadata: z.nullable(z.lazy(() => Metadata$outboundSchema)).optional(),
+        multiple: z.nullable(z.boolean().default(false)),
+        originOwnerId: z.string(),
+        originOwnerName: z.string(),
+        originUsername: z.nullable(z.string()).optional(),
+        provider: z.nullable(z.string()).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            accountId: "account_id",
+            expiresIn: "expires_in",
+            originOwnerId: "origin_owner_id",
+            originOwnerName: "origin_owner_name",
+            originUsername: "origin_username",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace ConnectSessionCreate$ {
-    export const inboundSchema: z.ZodType<ConnectSessionCreate, z.ZodTypeDef, unknown> = z
-        .object({
-            account_id: z.nullable(z.string()).optional(),
-            categories: z
-                .nullable(z.array(ConnectSessionCreateCategories$.inboundSchema))
-                .optional(),
-            expires_in: z.nullable(z.number().default(1800)),
-            label: z.nullable(z.string()).optional(),
-            metadata: z.nullable(z.lazy(() => Metadata$.inboundSchema)).optional(),
-            multiple: z.nullable(z.boolean().default(false)),
-            origin_owner_id: z.string(),
-            origin_owner_name: z.string(),
-            origin_username: z.nullable(z.string()).optional(),
-            provider: z.nullable(z.string()).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                account_id: "accountId",
-                expires_in: "expiresIn",
-                origin_owner_id: "originOwnerId",
-                origin_owner_name: "originOwnerName",
-                origin_username: "originUsername",
-            });
-        });
-
-    export type Outbound = {
-        account_id?: string | null | undefined;
-        categories?: Array<string> | null | undefined;
-        expires_in: number | null;
-        label?: string | null | undefined;
-        metadata?: Metadata$.Outbound | null | undefined;
-        multiple: boolean | null;
-        origin_owner_id: string;
-        origin_owner_name: string;
-        origin_username?: string | null | undefined;
-        provider?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ConnectSessionCreate> = z
-        .object({
-            accountId: z.nullable(z.string()).optional(),
-            categories: z
-                .nullable(z.array(ConnectSessionCreateCategories$.outboundSchema))
-                .optional(),
-            expiresIn: z.nullable(z.number().default(1800)),
-            label: z.nullable(z.string()).optional(),
-            metadata: z.nullable(z.lazy(() => Metadata$.outboundSchema)).optional(),
-            multiple: z.nullable(z.boolean().default(false)),
-            originOwnerId: z.string(),
-            originOwnerName: z.string(),
-            originUsername: z.nullable(z.string()).optional(),
-            provider: z.nullable(z.string()).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                accountId: "account_id",
-                expiresIn: "expires_in",
-                originOwnerId: "origin_owner_id",
-                originOwnerName: "origin_owner_name",
-                originUsername: "origin_username",
-            });
-        });
+    /** @deprecated use `ConnectSessionCreate$inboundSchema` instead. */
+    export const inboundSchema = ConnectSessionCreate$inboundSchema;
+    /** @deprecated use `ConnectSessionCreate$outboundSchema` instead. */
+    export const outboundSchema = ConnectSessionCreate$outboundSchema;
+    /** @deprecated use `ConnectSessionCreate$Outbound` instead. */
+    export type Outbound = ConnectSessionCreate$Outbound;
 }

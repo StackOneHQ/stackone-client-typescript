@@ -46,84 +46,126 @@ export type HrisGetCompanyResponse = {
 };
 
 /** @internal */
+export const HrisGetCompanyRequest$inboundSchema: z.ZodType<
+    HrisGetCompanyRequest,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        fields: z.nullable(z.string()).optional(),
+        id: z.string(),
+        proxy: z.nullable(z.record(z.any())).optional(),
+        raw: z.nullable(z.boolean().default(false)),
+        "x-account-id": z.string(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            "x-account-id": "xAccountId",
+        });
+    });
+
+/** @internal */
+export type HrisGetCompanyRequest$Outbound = {
+    fields?: string | null | undefined;
+    id: string;
+    proxy?: { [k: string]: any } | null | undefined;
+    raw: boolean | null;
+    "x-account-id": string;
+};
+
+/** @internal */
+export const HrisGetCompanyRequest$outboundSchema: z.ZodType<
+    HrisGetCompanyRequest$Outbound,
+    z.ZodTypeDef,
+    HrisGetCompanyRequest
+> = z
+    .object({
+        fields: z.nullable(z.string()).optional(),
+        id: z.string(),
+        proxy: z.nullable(z.record(z.any())).optional(),
+        raw: z.nullable(z.boolean().default(false)),
+        xAccountId: z.string(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            xAccountId: "x-account-id",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace HrisGetCompanyRequest$ {
-    export const inboundSchema: z.ZodType<HrisGetCompanyRequest, z.ZodTypeDef, unknown> = z
-        .object({
-            fields: z.nullable(z.string()).optional(),
-            id: z.string(),
-            proxy: z.nullable(z.record(z.any())).optional(),
-            raw: z.nullable(z.boolean().default(false)),
-            "x-account-id": z.string(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                "x-account-id": "xAccountId",
-            });
-        });
-
-    export type Outbound = {
-        fields?: string | null | undefined;
-        id: string;
-        proxy?: { [k: string]: any } | null | undefined;
-        raw: boolean | null;
-        "x-account-id": string;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, HrisGetCompanyRequest> = z
-        .object({
-            fields: z.nullable(z.string()).optional(),
-            id: z.string(),
-            proxy: z.nullable(z.record(z.any())).optional(),
-            raw: z.nullable(z.boolean().default(false)),
-            xAccountId: z.string(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                xAccountId: "x-account-id",
-            });
-        });
+    /** @deprecated use `HrisGetCompanyRequest$inboundSchema` instead. */
+    export const inboundSchema = HrisGetCompanyRequest$inboundSchema;
+    /** @deprecated use `HrisGetCompanyRequest$outboundSchema` instead. */
+    export const outboundSchema = HrisGetCompanyRequest$outboundSchema;
+    /** @deprecated use `HrisGetCompanyRequest$Outbound` instead. */
+    export type Outbound = HrisGetCompanyRequest$Outbound;
 }
 
 /** @internal */
+export const HrisGetCompanyResponse$inboundSchema: z.ZodType<
+    HrisGetCompanyResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        CompanyResult: shared.CompanyResult$inboundSchema.optional(),
+        ContentType: z.string(),
+        StatusCode: z.number().int(),
+        RawResponse: z.instanceof(Response),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            CompanyResult: "companyResult",
+            ContentType: "contentType",
+            StatusCode: "statusCode",
+            RawResponse: "rawResponse",
+        });
+    });
+
+/** @internal */
+export type HrisGetCompanyResponse$Outbound = {
+    CompanyResult?: shared.CompanyResult$Outbound | undefined;
+    ContentType: string;
+    StatusCode: number;
+    RawResponse: never;
+};
+
+/** @internal */
+export const HrisGetCompanyResponse$outboundSchema: z.ZodType<
+    HrisGetCompanyResponse$Outbound,
+    z.ZodTypeDef,
+    HrisGetCompanyResponse
+> = z
+    .object({
+        companyResult: shared.CompanyResult$outboundSchema.optional(),
+        contentType: z.string(),
+        statusCode: z.number().int(),
+        rawResponse: z.instanceof(Response).transform(() => {
+            throw new Error("Response cannot be serialized");
+        }),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            companyResult: "CompanyResult",
+            contentType: "ContentType",
+            statusCode: "StatusCode",
+            rawResponse: "RawResponse",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace HrisGetCompanyResponse$ {
-    export const inboundSchema: z.ZodType<HrisGetCompanyResponse, z.ZodTypeDef, unknown> = z
-        .object({
-            CompanyResult: shared.CompanyResult$.inboundSchema.optional(),
-            ContentType: z.string(),
-            StatusCode: z.number().int(),
-            RawResponse: z.instanceof(Response),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                CompanyResult: "companyResult",
-                ContentType: "contentType",
-                StatusCode: "statusCode",
-                RawResponse: "rawResponse",
-            });
-        });
-
-    export type Outbound = {
-        CompanyResult?: shared.CompanyResult$.Outbound | undefined;
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: never;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, HrisGetCompanyResponse> = z
-        .object({
-            companyResult: shared.CompanyResult$.outboundSchema.optional(),
-            contentType: z.string(),
-            statusCode: z.number().int(),
-            rawResponse: z.instanceof(Response).transform(() => {
-                throw new Error("Response cannot be serialized");
-            }),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                companyResult: "CompanyResult",
-                contentType: "ContentType",
-                statusCode: "StatusCode",
-                rawResponse: "RawResponse",
-            });
-        });
+    /** @deprecated use `HrisGetCompanyResponse$inboundSchema` instead. */
+    export const inboundSchema = HrisGetCompanyResponse$inboundSchema;
+    /** @deprecated use `HrisGetCompanyResponse$outboundSchema` instead. */
+    export const outboundSchema = HrisGetCompanyResponse$outboundSchema;
+    /** @deprecated use `HrisGetCompanyResponse$Outbound` instead. */
+    export type Outbound = HrisGetCompanyResponse$Outbound;
 }

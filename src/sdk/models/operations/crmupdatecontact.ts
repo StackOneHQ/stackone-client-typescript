@@ -35,80 +35,122 @@ export type CrmUpdateContactResponse = {
 };
 
 /** @internal */
+export const CrmUpdateContactRequest$inboundSchema: z.ZodType<
+    CrmUpdateContactRequest,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        CrmCreateContactRequestDto: shared.CrmCreateContactRequestDto$inboundSchema,
+        id: z.string(),
+        "x-account-id": z.string(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            CrmCreateContactRequestDto: "crmCreateContactRequestDto",
+            "x-account-id": "xAccountId",
+        });
+    });
+
+/** @internal */
+export type CrmUpdateContactRequest$Outbound = {
+    CrmCreateContactRequestDto: shared.CrmCreateContactRequestDto$Outbound;
+    id: string;
+    "x-account-id": string;
+};
+
+/** @internal */
+export const CrmUpdateContactRequest$outboundSchema: z.ZodType<
+    CrmUpdateContactRequest$Outbound,
+    z.ZodTypeDef,
+    CrmUpdateContactRequest
+> = z
+    .object({
+        crmCreateContactRequestDto: shared.CrmCreateContactRequestDto$outboundSchema,
+        id: z.string(),
+        xAccountId: z.string(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            crmCreateContactRequestDto: "CrmCreateContactRequestDto",
+            xAccountId: "x-account-id",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace CrmUpdateContactRequest$ {
-    export const inboundSchema: z.ZodType<CrmUpdateContactRequest, z.ZodTypeDef, unknown> = z
-        .object({
-            CrmCreateContactRequestDto: shared.CrmCreateContactRequestDto$.inboundSchema,
-            id: z.string(),
-            "x-account-id": z.string(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                CrmCreateContactRequestDto: "crmCreateContactRequestDto",
-                "x-account-id": "xAccountId",
-            });
-        });
-
-    export type Outbound = {
-        CrmCreateContactRequestDto: shared.CrmCreateContactRequestDto$.Outbound;
-        id: string;
-        "x-account-id": string;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CrmUpdateContactRequest> = z
-        .object({
-            crmCreateContactRequestDto: shared.CrmCreateContactRequestDto$.outboundSchema,
-            id: z.string(),
-            xAccountId: z.string(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                crmCreateContactRequestDto: "CrmCreateContactRequestDto",
-                xAccountId: "x-account-id",
-            });
-        });
+    /** @deprecated use `CrmUpdateContactRequest$inboundSchema` instead. */
+    export const inboundSchema = CrmUpdateContactRequest$inboundSchema;
+    /** @deprecated use `CrmUpdateContactRequest$outboundSchema` instead. */
+    export const outboundSchema = CrmUpdateContactRequest$outboundSchema;
+    /** @deprecated use `CrmUpdateContactRequest$Outbound` instead. */
+    export type Outbound = CrmUpdateContactRequest$Outbound;
 }
 
 /** @internal */
+export const CrmUpdateContactResponse$inboundSchema: z.ZodType<
+    CrmUpdateContactResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        ContactResult: shared.ContactResult$inboundSchema.optional(),
+        ContentType: z.string(),
+        StatusCode: z.number().int(),
+        RawResponse: z.instanceof(Response),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            ContactResult: "contactResult",
+            ContentType: "contentType",
+            StatusCode: "statusCode",
+            RawResponse: "rawResponse",
+        });
+    });
+
+/** @internal */
+export type CrmUpdateContactResponse$Outbound = {
+    ContactResult?: shared.ContactResult$Outbound | undefined;
+    ContentType: string;
+    StatusCode: number;
+    RawResponse: never;
+};
+
+/** @internal */
+export const CrmUpdateContactResponse$outboundSchema: z.ZodType<
+    CrmUpdateContactResponse$Outbound,
+    z.ZodTypeDef,
+    CrmUpdateContactResponse
+> = z
+    .object({
+        contactResult: shared.ContactResult$outboundSchema.optional(),
+        contentType: z.string(),
+        statusCode: z.number().int(),
+        rawResponse: z.instanceof(Response).transform(() => {
+            throw new Error("Response cannot be serialized");
+        }),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            contactResult: "ContactResult",
+            contentType: "ContentType",
+            statusCode: "StatusCode",
+            rawResponse: "RawResponse",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace CrmUpdateContactResponse$ {
-    export const inboundSchema: z.ZodType<CrmUpdateContactResponse, z.ZodTypeDef, unknown> = z
-        .object({
-            ContactResult: shared.ContactResult$.inboundSchema.optional(),
-            ContentType: z.string(),
-            StatusCode: z.number().int(),
-            RawResponse: z.instanceof(Response),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                ContactResult: "contactResult",
-                ContentType: "contentType",
-                StatusCode: "statusCode",
-                RawResponse: "rawResponse",
-            });
-        });
-
-    export type Outbound = {
-        ContactResult?: shared.ContactResult$.Outbound | undefined;
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: never;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CrmUpdateContactResponse> = z
-        .object({
-            contactResult: shared.ContactResult$.outboundSchema.optional(),
-            contentType: z.string(),
-            statusCode: z.number().int(),
-            rawResponse: z.instanceof(Response).transform(() => {
-                throw new Error("Response cannot be serialized");
-            }),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                contactResult: "ContactResult",
-                contentType: "ContentType",
-                statusCode: "StatusCode",
-                rawResponse: "RawResponse",
-            });
-        });
+    /** @deprecated use `CrmUpdateContactResponse$inboundSchema` instead. */
+    export const inboundSchema = CrmUpdateContactResponse$inboundSchema;
+    /** @deprecated use `CrmUpdateContactResponse$outboundSchema` instead. */
+    export const outboundSchema = CrmUpdateContactResponse$outboundSchema;
+    /** @deprecated use `CrmUpdateContactResponse$Outbound` instead. */
+    export type Outbound = CrmUpdateContactResponse$Outbound;
 }

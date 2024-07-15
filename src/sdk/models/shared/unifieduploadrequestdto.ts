@@ -1320,330 +1320,481 @@ export type UnifiedUploadRequestDto = {
 };
 
 /** @internal */
+export const UnifiedUploadRequestDtoCategory$inboundSchema: z.ZodType<
+    UnifiedUploadRequestDtoCategory,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        source_value: z.nullable(z.string()).optional(),
+        value: z.nullable(z.string()).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            source_value: "sourceValue",
+        });
+    });
+
+/** @internal */
+export type UnifiedUploadRequestDtoCategory$Outbound = {
+    source_value?: string | null | undefined;
+    value?: string | null | undefined;
+};
+
+/** @internal */
+export const UnifiedUploadRequestDtoCategory$outboundSchema: z.ZodType<
+    UnifiedUploadRequestDtoCategory$Outbound,
+    z.ZodTypeDef,
+    UnifiedUploadRequestDtoCategory
+> = z
+    .object({
+        sourceValue: z.nullable(z.string()).optional(),
+        value: z.nullable(z.string()).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            sourceValue: "source_value",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UnifiedUploadRequestDtoCategory$ {
-    export const inboundSchema: z.ZodType<UnifiedUploadRequestDtoCategory, z.ZodTypeDef, unknown> =
-        z
-            .object({
-                source_value: z.nullable(z.string()).optional(),
-                value: z.nullable(z.string()).optional(),
-            })
-            .transform((v) => {
-                return remap$(v, {
-                    source_value: "sourceValue",
-                });
-            });
-
-    export type Outbound = {
-        source_value?: string | null | undefined;
-        value?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        UnifiedUploadRequestDtoCategory
-    > = z
-        .object({
-            sourceValue: z.nullable(z.string()).optional(),
-            value: z.nullable(z.string()).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                sourceValue: "source_value",
-            });
-        });
+    /** @deprecated use `UnifiedUploadRequestDtoCategory$inboundSchema` instead. */
+    export const inboundSchema = UnifiedUploadRequestDtoCategory$inboundSchema;
+    /** @deprecated use `UnifiedUploadRequestDtoCategory$outboundSchema` instead. */
+    export const outboundSchema = UnifiedUploadRequestDtoCategory$outboundSchema;
+    /** @deprecated use `UnifiedUploadRequestDtoCategory$Outbound` instead. */
+    export type Outbound = UnifiedUploadRequestDtoCategory$Outbound;
 }
 
 /** @internal */
+export const UnifiedUploadRequestDto4$inboundSchema: z.ZodType<
+    UnifiedUploadRequestDto4,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type UnifiedUploadRequestDto4$Outbound = {};
+
+/** @internal */
+export const UnifiedUploadRequestDto4$outboundSchema: z.ZodType<
+    UnifiedUploadRequestDto4$Outbound,
+    z.ZodTypeDef,
+    UnifiedUploadRequestDto4
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UnifiedUploadRequestDto4$ {
-    export const inboundSchema: z.ZodType<UnifiedUploadRequestDto4, z.ZodTypeDef, unknown> =
-        z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UnifiedUploadRequestDto4> =
-        z.object({});
+    /** @deprecated use `UnifiedUploadRequestDto4$inboundSchema` instead. */
+    export const inboundSchema = UnifiedUploadRequestDto4$inboundSchema;
+    /** @deprecated use `UnifiedUploadRequestDto4$outboundSchema` instead. */
+    export const outboundSchema = UnifiedUploadRequestDto4$outboundSchema;
+    /** @deprecated use `UnifiedUploadRequestDto4$Outbound` instead. */
+    export type Outbound = UnifiedUploadRequestDto4$Outbound;
 }
 
 /** @internal */
+export const UnifiedUploadRequestDtoSourceValue$inboundSchema: z.ZodType<
+    UnifiedUploadRequestDtoSourceValue,
+    z.ZodTypeDef,
+    unknown
+> = z.union([
+    z.lazy(() => UnifiedUploadRequestDto4$inboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+]);
+
+/** @internal */
+export type UnifiedUploadRequestDtoSourceValue$Outbound =
+    | UnifiedUploadRequestDto4$Outbound
+    | string
+    | number
+    | boolean;
+
+/** @internal */
+export const UnifiedUploadRequestDtoSourceValue$outboundSchema: z.ZodType<
+    UnifiedUploadRequestDtoSourceValue$Outbound,
+    z.ZodTypeDef,
+    UnifiedUploadRequestDtoSourceValue
+> = z.union([
+    z.lazy(() => UnifiedUploadRequestDto4$outboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UnifiedUploadRequestDtoSourceValue$ {
-    export const inboundSchema: z.ZodType<
-        UnifiedUploadRequestDtoSourceValue,
-        z.ZodTypeDef,
-        unknown
-    > = z.union([
-        z.lazy(() => UnifiedUploadRequestDto4$.inboundSchema),
-        z.string(),
-        z.number(),
-        z.boolean(),
-    ]);
-
-    export type Outbound = UnifiedUploadRequestDto4$.Outbound | string | number | boolean;
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        UnifiedUploadRequestDtoSourceValue
-    > = z.union([
-        z.lazy(() => UnifiedUploadRequestDto4$.outboundSchema),
-        z.string(),
-        z.number(),
-        z.boolean(),
-    ]);
+    /** @deprecated use `UnifiedUploadRequestDtoSourceValue$inboundSchema` instead. */
+    export const inboundSchema = UnifiedUploadRequestDtoSourceValue$inboundSchema;
+    /** @deprecated use `UnifiedUploadRequestDtoSourceValue$outboundSchema` instead. */
+    export const outboundSchema = UnifiedUploadRequestDtoSourceValue$outboundSchema;
+    /** @deprecated use `UnifiedUploadRequestDtoSourceValue$Outbound` instead. */
+    export type Outbound = UnifiedUploadRequestDtoSourceValue$Outbound;
 }
 
 /** @internal */
+export const UnifiedUploadRequestDtoValue$inboundSchema: z.ZodType<
+    UnifiedUploadRequestDtoValueOpen,
+    z.ZodTypeDef,
+    unknown
+> = z.union([
+    z.nativeEnum(UnifiedUploadRequestDtoValue),
+    z.string().transform(catchUnrecognizedEnum),
+]);
+
+/** @internal */
+export const UnifiedUploadRequestDtoValue$outboundSchema: z.ZodType<
+    UnifiedUploadRequestDtoValueOpen,
+    z.ZodTypeDef,
+    UnifiedUploadRequestDtoValueOpen
+> = z.union([
+    z.nativeEnum(UnifiedUploadRequestDtoValue),
+    z.string().and(z.custom<Unrecognized<string>>()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UnifiedUploadRequestDtoValue$ {
-    export const inboundSchema: z.ZodType<UnifiedUploadRequestDtoValueOpen, z.ZodTypeDef, unknown> =
-        z.union([
-            z.nativeEnum(UnifiedUploadRequestDtoValue),
-            z.string().transform(catchUnrecognizedEnum),
-        ]);
-
-    export const outboundSchema: z.ZodType<
-        UnifiedUploadRequestDtoValueOpen,
-        z.ZodTypeDef,
-        UnifiedUploadRequestDtoValueOpen
-    > = z.union([
-        z.nativeEnum(UnifiedUploadRequestDtoValue),
-        z.string().and(z.custom<Unrecognized<string>>()),
-    ]);
+    /** @deprecated use `UnifiedUploadRequestDtoValue$inboundSchema` instead. */
+    export const inboundSchema = UnifiedUploadRequestDtoValue$inboundSchema;
+    /** @deprecated use `UnifiedUploadRequestDtoValue$outboundSchema` instead. */
+    export const outboundSchema = UnifiedUploadRequestDtoValue$outboundSchema;
 }
 
 /** @internal */
+export const UnifiedUploadRequestDtoConfidential$inboundSchema: z.ZodType<
+    UnifiedUploadRequestDtoConfidential,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        source_value: z
+            .nullable(
+                z.union([
+                    z.lazy(() => UnifiedUploadRequestDto4$inboundSchema),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                ])
+            )
+            .optional(),
+        value: z.nullable(UnifiedUploadRequestDtoValue$inboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            source_value: "sourceValue",
+        });
+    });
+
+/** @internal */
+export type UnifiedUploadRequestDtoConfidential$Outbound = {
+    source_value?: UnifiedUploadRequestDto4$Outbound | string | number | boolean | null | undefined;
+    value?: string | null | undefined;
+};
+
+/** @internal */
+export const UnifiedUploadRequestDtoConfidential$outboundSchema: z.ZodType<
+    UnifiedUploadRequestDtoConfidential$Outbound,
+    z.ZodTypeDef,
+    UnifiedUploadRequestDtoConfidential
+> = z
+    .object({
+        sourceValue: z
+            .nullable(
+                z.union([
+                    z.lazy(() => UnifiedUploadRequestDto4$outboundSchema),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                ])
+            )
+            .optional(),
+        value: z.nullable(UnifiedUploadRequestDtoValue$outboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            sourceValue: "source_value",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UnifiedUploadRequestDtoConfidential$ {
-    export const inboundSchema: z.ZodType<
-        UnifiedUploadRequestDtoConfidential,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            source_value: z
-                .nullable(
-                    z.union([
-                        z.lazy(() => UnifiedUploadRequestDto4$.inboundSchema),
-                        z.string(),
-                        z.number(),
-                        z.boolean(),
-                    ])
-                )
-                .optional(),
-            value: z.nullable(UnifiedUploadRequestDtoValue$.inboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                source_value: "sourceValue",
-            });
-        });
-
-    export type Outbound = {
-        source_value?:
-            | UnifiedUploadRequestDto4$.Outbound
-            | string
-            | number
-            | boolean
-            | null
-            | undefined;
-        value?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        UnifiedUploadRequestDtoConfidential
-    > = z
-        .object({
-            sourceValue: z
-                .nullable(
-                    z.union([
-                        z.lazy(() => UnifiedUploadRequestDto4$.outboundSchema),
-                        z.string(),
-                        z.number(),
-                        z.boolean(),
-                    ])
-                )
-                .optional(),
-            value: z.nullable(UnifiedUploadRequestDtoValue$.outboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                sourceValue: "source_value",
-            });
-        });
+    /** @deprecated use `UnifiedUploadRequestDtoConfidential$inboundSchema` instead. */
+    export const inboundSchema = UnifiedUploadRequestDtoConfidential$inboundSchema;
+    /** @deprecated use `UnifiedUploadRequestDtoConfidential$outboundSchema` instead. */
+    export const outboundSchema = UnifiedUploadRequestDtoConfidential$outboundSchema;
+    /** @deprecated use `UnifiedUploadRequestDtoConfidential$Outbound` instead. */
+    export type Outbound = UnifiedUploadRequestDtoConfidential$Outbound;
 }
 
 /** @internal */
+export const UnifiedUploadRequestDtoSchemas4$inboundSchema: z.ZodType<
+    UnifiedUploadRequestDtoSchemas4,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type UnifiedUploadRequestDtoSchemas4$Outbound = {};
+
+/** @internal */
+export const UnifiedUploadRequestDtoSchemas4$outboundSchema: z.ZodType<
+    UnifiedUploadRequestDtoSchemas4$Outbound,
+    z.ZodTypeDef,
+    UnifiedUploadRequestDtoSchemas4
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UnifiedUploadRequestDtoSchemas4$ {
-    export const inboundSchema: z.ZodType<UnifiedUploadRequestDtoSchemas4, z.ZodTypeDef, unknown> =
-        z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        UnifiedUploadRequestDtoSchemas4
-    > = z.object({});
+    /** @deprecated use `UnifiedUploadRequestDtoSchemas4$inboundSchema` instead. */
+    export const inboundSchema = UnifiedUploadRequestDtoSchemas4$inboundSchema;
+    /** @deprecated use `UnifiedUploadRequestDtoSchemas4$outboundSchema` instead. */
+    export const outboundSchema = UnifiedUploadRequestDtoSchemas4$outboundSchema;
+    /** @deprecated use `UnifiedUploadRequestDtoSchemas4$Outbound` instead. */
+    export type Outbound = UnifiedUploadRequestDtoSchemas4$Outbound;
 }
 
 /** @internal */
+export const UnifiedUploadRequestDtoSchemasSourceValue$inboundSchema: z.ZodType<
+    UnifiedUploadRequestDtoSchemasSourceValue,
+    z.ZodTypeDef,
+    unknown
+> = z.union([
+    z.lazy(() => UnifiedUploadRequestDtoSchemas4$inboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+]);
+
+/** @internal */
+export type UnifiedUploadRequestDtoSchemasSourceValue$Outbound =
+    | UnifiedUploadRequestDtoSchemas4$Outbound
+    | string
+    | number
+    | boolean;
+
+/** @internal */
+export const UnifiedUploadRequestDtoSchemasSourceValue$outboundSchema: z.ZodType<
+    UnifiedUploadRequestDtoSchemasSourceValue$Outbound,
+    z.ZodTypeDef,
+    UnifiedUploadRequestDtoSchemasSourceValue
+> = z.union([
+    z.lazy(() => UnifiedUploadRequestDtoSchemas4$outboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UnifiedUploadRequestDtoSchemasSourceValue$ {
-    export const inboundSchema: z.ZodType<
-        UnifiedUploadRequestDtoSchemasSourceValue,
-        z.ZodTypeDef,
-        unknown
-    > = z.union([
-        z.lazy(() => UnifiedUploadRequestDtoSchemas4$.inboundSchema),
-        z.string(),
-        z.number(),
-        z.boolean(),
-    ]);
-
-    export type Outbound = UnifiedUploadRequestDtoSchemas4$.Outbound | string | number | boolean;
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        UnifiedUploadRequestDtoSchemasSourceValue
-    > = z.union([
-        z.lazy(() => UnifiedUploadRequestDtoSchemas4$.outboundSchema),
-        z.string(),
-        z.number(),
-        z.boolean(),
-    ]);
+    /** @deprecated use `UnifiedUploadRequestDtoSchemasSourceValue$inboundSchema` instead. */
+    export const inboundSchema = UnifiedUploadRequestDtoSchemasSourceValue$inboundSchema;
+    /** @deprecated use `UnifiedUploadRequestDtoSchemasSourceValue$outboundSchema` instead. */
+    export const outboundSchema = UnifiedUploadRequestDtoSchemasSourceValue$outboundSchema;
+    /** @deprecated use `UnifiedUploadRequestDtoSchemasSourceValue$Outbound` instead. */
+    export type Outbound = UnifiedUploadRequestDtoSchemasSourceValue$Outbound;
 }
 
 /** @internal */
+export const UnifiedUploadRequestDtoSchemasValue$inboundSchema: z.ZodType<
+    UnifiedUploadRequestDtoSchemasValueOpen,
+    z.ZodTypeDef,
+    unknown
+> = z.union([
+    z.nativeEnum(UnifiedUploadRequestDtoSchemasValue),
+    z.string().transform(catchUnrecognizedEnum),
+]);
+
+/** @internal */
+export const UnifiedUploadRequestDtoSchemasValue$outboundSchema: z.ZodType<
+    UnifiedUploadRequestDtoSchemasValueOpen,
+    z.ZodTypeDef,
+    UnifiedUploadRequestDtoSchemasValueOpen
+> = z.union([
+    z.nativeEnum(UnifiedUploadRequestDtoSchemasValue),
+    z.string().and(z.custom<Unrecognized<string>>()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UnifiedUploadRequestDtoSchemasValue$ {
-    export const inboundSchema: z.ZodType<
-        UnifiedUploadRequestDtoSchemasValueOpen,
-        z.ZodTypeDef,
-        unknown
-    > = z.union([
-        z.nativeEnum(UnifiedUploadRequestDtoSchemasValue),
-        z.string().transform(catchUnrecognizedEnum),
-    ]);
-
-    export const outboundSchema: z.ZodType<
-        UnifiedUploadRequestDtoSchemasValueOpen,
-        z.ZodTypeDef,
-        UnifiedUploadRequestDtoSchemasValueOpen
-    > = z.union([
-        z.nativeEnum(UnifiedUploadRequestDtoSchemasValue),
-        z.string().and(z.custom<Unrecognized<string>>()),
-    ]);
+    /** @deprecated use `UnifiedUploadRequestDtoSchemasValue$inboundSchema` instead. */
+    export const inboundSchema = UnifiedUploadRequestDtoSchemasValue$inboundSchema;
+    /** @deprecated use `UnifiedUploadRequestDtoSchemasValue$outboundSchema` instead. */
+    export const outboundSchema = UnifiedUploadRequestDtoSchemasValue$outboundSchema;
 }
 
 /** @internal */
+export const UnifiedUploadRequestDtoFileFormat$inboundSchema: z.ZodType<
+    UnifiedUploadRequestDtoFileFormat,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        source_value: z
+            .nullable(
+                z.union([
+                    z.lazy(() => UnifiedUploadRequestDtoSchemas4$inboundSchema),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                ])
+            )
+            .optional(),
+        value: z.nullable(UnifiedUploadRequestDtoSchemasValue$inboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            source_value: "sourceValue",
+        });
+    });
+
+/** @internal */
+export type UnifiedUploadRequestDtoFileFormat$Outbound = {
+    source_value?:
+        | UnifiedUploadRequestDtoSchemas4$Outbound
+        | string
+        | number
+        | boolean
+        | null
+        | undefined;
+    value?: string | null | undefined;
+};
+
+/** @internal */
+export const UnifiedUploadRequestDtoFileFormat$outboundSchema: z.ZodType<
+    UnifiedUploadRequestDtoFileFormat$Outbound,
+    z.ZodTypeDef,
+    UnifiedUploadRequestDtoFileFormat
+> = z
+    .object({
+        sourceValue: z
+            .nullable(
+                z.union([
+                    z.lazy(() => UnifiedUploadRequestDtoSchemas4$outboundSchema),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                ])
+            )
+            .optional(),
+        value: z.nullable(UnifiedUploadRequestDtoSchemasValue$outboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            sourceValue: "source_value",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UnifiedUploadRequestDtoFileFormat$ {
-    export const inboundSchema: z.ZodType<
-        UnifiedUploadRequestDtoFileFormat,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            source_value: z
-                .nullable(
-                    z.union([
-                        z.lazy(() => UnifiedUploadRequestDtoSchemas4$.inboundSchema),
-                        z.string(),
-                        z.number(),
-                        z.boolean(),
-                    ])
-                )
-                .optional(),
-            value: z.nullable(UnifiedUploadRequestDtoSchemasValue$.inboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                source_value: "sourceValue",
-            });
-        });
-
-    export type Outbound = {
-        source_value?:
-            | UnifiedUploadRequestDtoSchemas4$.Outbound
-            | string
-            | number
-            | boolean
-            | null
-            | undefined;
-        value?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        UnifiedUploadRequestDtoFileFormat
-    > = z
-        .object({
-            sourceValue: z
-                .nullable(
-                    z.union([
-                        z.lazy(() => UnifiedUploadRequestDtoSchemas4$.outboundSchema),
-                        z.string(),
-                        z.number(),
-                        z.boolean(),
-                    ])
-                )
-                .optional(),
-            value: z.nullable(UnifiedUploadRequestDtoSchemasValue$.outboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                sourceValue: "source_value",
-            });
-        });
+    /** @deprecated use `UnifiedUploadRequestDtoFileFormat$inboundSchema` instead. */
+    export const inboundSchema = UnifiedUploadRequestDtoFileFormat$inboundSchema;
+    /** @deprecated use `UnifiedUploadRequestDtoFileFormat$outboundSchema` instead. */
+    export const outboundSchema = UnifiedUploadRequestDtoFileFormat$outboundSchema;
+    /** @deprecated use `UnifiedUploadRequestDtoFileFormat$Outbound` instead. */
+    export type Outbound = UnifiedUploadRequestDtoFileFormat$Outbound;
 }
 
 /** @internal */
+export const UnifiedUploadRequestDto$inboundSchema: z.ZodType<
+    UnifiedUploadRequestDto,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        category: z
+            .nullable(z.lazy(() => UnifiedUploadRequestDtoCategory$inboundSchema))
+            .optional(),
+        confidential: z
+            .nullable(z.lazy(() => UnifiedUploadRequestDtoConfidential$inboundSchema))
+            .optional(),
+        content: z.nullable(z.string()).optional(),
+        file_format: z
+            .nullable(z.lazy(() => UnifiedUploadRequestDtoFileFormat$inboundSchema))
+            .optional(),
+        name: z.nullable(z.string()).optional(),
+        path: z.nullable(z.string()).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            file_format: "fileFormat",
+        });
+    });
+
+/** @internal */
+export type UnifiedUploadRequestDto$Outbound = {
+    category?: UnifiedUploadRequestDtoCategory$Outbound | null | undefined;
+    confidential?: UnifiedUploadRequestDtoConfidential$Outbound | null | undefined;
+    content?: string | null | undefined;
+    file_format?: UnifiedUploadRequestDtoFileFormat$Outbound | null | undefined;
+    name?: string | null | undefined;
+    path?: string | null | undefined;
+};
+
+/** @internal */
+export const UnifiedUploadRequestDto$outboundSchema: z.ZodType<
+    UnifiedUploadRequestDto$Outbound,
+    z.ZodTypeDef,
+    UnifiedUploadRequestDto
+> = z
+    .object({
+        category: z
+            .nullable(z.lazy(() => UnifiedUploadRequestDtoCategory$outboundSchema))
+            .optional(),
+        confidential: z
+            .nullable(z.lazy(() => UnifiedUploadRequestDtoConfidential$outboundSchema))
+            .optional(),
+        content: z.nullable(z.string()).optional(),
+        fileFormat: z
+            .nullable(z.lazy(() => UnifiedUploadRequestDtoFileFormat$outboundSchema))
+            .optional(),
+        name: z.nullable(z.string()).optional(),
+        path: z.nullable(z.string()).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            fileFormat: "file_format",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace UnifiedUploadRequestDto$ {
-    export const inboundSchema: z.ZodType<UnifiedUploadRequestDto, z.ZodTypeDef, unknown> = z
-        .object({
-            category: z
-                .nullable(z.lazy(() => UnifiedUploadRequestDtoCategory$.inboundSchema))
-                .optional(),
-            confidential: z
-                .nullable(z.lazy(() => UnifiedUploadRequestDtoConfidential$.inboundSchema))
-                .optional(),
-            content: z.nullable(z.string()).optional(),
-            file_format: z
-                .nullable(z.lazy(() => UnifiedUploadRequestDtoFileFormat$.inboundSchema))
-                .optional(),
-            name: z.nullable(z.string()).optional(),
-            path: z.nullable(z.string()).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                file_format: "fileFormat",
-            });
-        });
-
-    export type Outbound = {
-        category?: UnifiedUploadRequestDtoCategory$.Outbound | null | undefined;
-        confidential?: UnifiedUploadRequestDtoConfidential$.Outbound | null | undefined;
-        content?: string | null | undefined;
-        file_format?: UnifiedUploadRequestDtoFileFormat$.Outbound | null | undefined;
-        name?: string | null | undefined;
-        path?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, UnifiedUploadRequestDto> = z
-        .object({
-            category: z
-                .nullable(z.lazy(() => UnifiedUploadRequestDtoCategory$.outboundSchema))
-                .optional(),
-            confidential: z
-                .nullable(z.lazy(() => UnifiedUploadRequestDtoConfidential$.outboundSchema))
-                .optional(),
-            content: z.nullable(z.string()).optional(),
-            fileFormat: z
-                .nullable(z.lazy(() => UnifiedUploadRequestDtoFileFormat$.outboundSchema))
-                .optional(),
-            name: z.nullable(z.string()).optional(),
-            path: z.nullable(z.string()).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                fileFormat: "file_format",
-            });
-        });
+    /** @deprecated use `UnifiedUploadRequestDto$inboundSchema` instead. */
+    export const inboundSchema = UnifiedUploadRequestDto$inboundSchema;
+    /** @deprecated use `UnifiedUploadRequestDto$outboundSchema` instead. */
+    export const outboundSchema = UnifiedUploadRequestDto$outboundSchema;
+    /** @deprecated use `UnifiedUploadRequestDto$Outbound` instead. */
+    export type Outbound = UnifiedUploadRequestDto$Outbound;
 }

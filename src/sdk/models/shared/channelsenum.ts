@@ -42,89 +42,132 @@ export type ChannelsEnum = {
 };
 
 /** @internal */
+export const Four$inboundSchema: z.ZodType<Four, z.ZodTypeDef, unknown> = z.object({});
+
+/** @internal */
+export type Four$Outbound = {};
+
+/** @internal */
+export const Four$outboundSchema: z.ZodType<Four$Outbound, z.ZodTypeDef, Four> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace Four$ {
-    export const inboundSchema: z.ZodType<Four, z.ZodTypeDef, unknown> = z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Four> = z.object({});
+    /** @deprecated use `Four$inboundSchema` instead. */
+    export const inboundSchema = Four$inboundSchema;
+    /** @deprecated use `Four$outboundSchema` instead. */
+    export const outboundSchema = Four$outboundSchema;
+    /** @deprecated use `Four$Outbound` instead. */
+    export type Outbound = Four$Outbound;
 }
 
 /** @internal */
+export const SourceValue$inboundSchema: z.ZodType<SourceValue, z.ZodTypeDef, unknown> = z.union([
+    z.lazy(() => Four$inboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+]);
+
+/** @internal */
+export type SourceValue$Outbound = Four$Outbound | string | number | boolean;
+
+/** @internal */
+export const SourceValue$outboundSchema: z.ZodType<
+    SourceValue$Outbound,
+    z.ZodTypeDef,
+    SourceValue
+> = z.union([z.lazy(() => Four$outboundSchema), z.string(), z.number(), z.boolean()]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace SourceValue$ {
-    export const inboundSchema: z.ZodType<SourceValue, z.ZodTypeDef, unknown> = z.union([
-        z.lazy(() => Four$.inboundSchema),
-        z.string(),
-        z.number(),
-        z.boolean(),
-    ]);
-
-    export type Outbound = Four$.Outbound | string | number | boolean;
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, SourceValue> = z.union([
-        z.lazy(() => Four$.outboundSchema),
-        z.string(),
-        z.number(),
-        z.boolean(),
-    ]);
+    /** @deprecated use `SourceValue$inboundSchema` instead. */
+    export const inboundSchema = SourceValue$inboundSchema;
+    /** @deprecated use `SourceValue$outboundSchema` instead. */
+    export const outboundSchema = SourceValue$outboundSchema;
+    /** @deprecated use `SourceValue$Outbound` instead. */
+    export type Outbound = SourceValue$Outbound;
 }
 
 /** @internal */
+export const Value$inboundSchema: z.ZodType<ValueOpen, z.ZodTypeDef, unknown> = z.union([
+    z.nativeEnum(Value),
+    z.string().transform(catchUnrecognizedEnum),
+]);
+
+/** @internal */
+export const Value$outboundSchema: z.ZodType<ValueOpen, z.ZodTypeDef, ValueOpen> = z.union([
+    z.nativeEnum(Value),
+    z.string().and(z.custom<Unrecognized<string>>()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace Value$ {
-    export const inboundSchema: z.ZodType<ValueOpen, z.ZodTypeDef, unknown> = z.union([
-        z.nativeEnum(Value),
-        z.string().transform(catchUnrecognizedEnum),
-    ]);
-
-    export const outboundSchema: z.ZodType<ValueOpen, z.ZodTypeDef, ValueOpen> = z.union([
-        z.nativeEnum(Value),
-        z.string().and(z.custom<Unrecognized<string>>()),
-    ]);
+    /** @deprecated use `Value$inboundSchema` instead. */
+    export const inboundSchema = Value$inboundSchema;
+    /** @deprecated use `Value$outboundSchema` instead. */
+    export const outboundSchema = Value$outboundSchema;
 }
 
 /** @internal */
+export const ChannelsEnum$inboundSchema: z.ZodType<ChannelsEnum, z.ZodTypeDef, unknown> = z
+    .object({
+        source_value: z
+            .nullable(
+                z.union([z.lazy(() => Four$inboundSchema), z.string(), z.number(), z.boolean()])
+            )
+            .optional(),
+        value: z.nullable(Value$inboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            source_value: "sourceValue",
+        });
+    });
+
+/** @internal */
+export type ChannelsEnum$Outbound = {
+    source_value?: Four$Outbound | string | number | boolean | null | undefined;
+    value?: string | null | undefined;
+};
+
+/** @internal */
+export const ChannelsEnum$outboundSchema: z.ZodType<
+    ChannelsEnum$Outbound,
+    z.ZodTypeDef,
+    ChannelsEnum
+> = z
+    .object({
+        sourceValue: z
+            .nullable(
+                z.union([z.lazy(() => Four$outboundSchema), z.string(), z.number(), z.boolean()])
+            )
+            .optional(),
+        value: z.nullable(Value$outboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            sourceValue: "source_value",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace ChannelsEnum$ {
-    export const inboundSchema: z.ZodType<ChannelsEnum, z.ZodTypeDef, unknown> = z
-        .object({
-            source_value: z
-                .nullable(
-                    z.union([
-                        z.lazy(() => Four$.inboundSchema),
-                        z.string(),
-                        z.number(),
-                        z.boolean(),
-                    ])
-                )
-                .optional(),
-            value: z.nullable(Value$.inboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                source_value: "sourceValue",
-            });
-        });
-
-    export type Outbound = {
-        source_value?: Four$.Outbound | string | number | boolean | null | undefined;
-        value?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ChannelsEnum> = z
-        .object({
-            sourceValue: z
-                .nullable(
-                    z.union([
-                        z.lazy(() => Four$.outboundSchema),
-                        z.string(),
-                        z.number(),
-                        z.boolean(),
-                    ])
-                )
-                .optional(),
-            value: z.nullable(Value$.outboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                sourceValue: "source_value",
-            });
-        });
+    /** @deprecated use `ChannelsEnum$inboundSchema` instead. */
+    export const inboundSchema = ChannelsEnum$inboundSchema;
+    /** @deprecated use `ChannelsEnum$outboundSchema` instead. */
+    export const outboundSchema = ChannelsEnum$outboundSchema;
+    /** @deprecated use `ChannelsEnum$Outbound` instead. */
+    export type Outbound = ChannelsEnum$Outbound;
 }

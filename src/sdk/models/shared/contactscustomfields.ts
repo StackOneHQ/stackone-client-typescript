@@ -89,278 +89,433 @@ export type ContactsCustomFields = {
 };
 
 /** @internal */
+export const ContactsCustomFields4$inboundSchema: z.ZodType<
+    ContactsCustomFields4,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type ContactsCustomFields4$Outbound = {};
+
+/** @internal */
+export const ContactsCustomFields4$outboundSchema: z.ZodType<
+    ContactsCustomFields4$Outbound,
+    z.ZodTypeDef,
+    ContactsCustomFields4
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace ContactsCustomFields4$ {
-    export const inboundSchema: z.ZodType<ContactsCustomFields4, z.ZodTypeDef, unknown> = z.object(
-        {}
-    );
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ContactsCustomFields4> =
-        z.object({});
+    /** @deprecated use `ContactsCustomFields4$inboundSchema` instead. */
+    export const inboundSchema = ContactsCustomFields4$inboundSchema;
+    /** @deprecated use `ContactsCustomFields4$outboundSchema` instead. */
+    export const outboundSchema = ContactsCustomFields4$outboundSchema;
+    /** @deprecated use `ContactsCustomFields4$Outbound` instead. */
+    export type Outbound = ContactsCustomFields4$Outbound;
 }
 
 /** @internal */
+export const Options$inboundSchema: z.ZodType<Options, z.ZodTypeDef, unknown> = z.union([
+    z.lazy(() => ContactsCustomFields4$inboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+]);
+
+/** @internal */
+export type Options$Outbound = ContactsCustomFields4$Outbound | string | number | boolean;
+
+/** @internal */
+export const Options$outboundSchema: z.ZodType<Options$Outbound, z.ZodTypeDef, Options> = z.union([
+    z.lazy(() => ContactsCustomFields4$outboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace Options$ {
-    export const inboundSchema: z.ZodType<Options, z.ZodTypeDef, unknown> = z.union([
-        z.lazy(() => ContactsCustomFields4$.inboundSchema),
-        z.string(),
-        z.number(),
-        z.boolean(),
-    ]);
-
-    export type Outbound = ContactsCustomFields4$.Outbound | string | number | boolean;
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Options> = z.union([
-        z.lazy(() => ContactsCustomFields4$.outboundSchema),
-        z.string(),
-        z.number(),
-        z.boolean(),
-    ]);
+    /** @deprecated use `Options$inboundSchema` instead. */
+    export const inboundSchema = Options$inboundSchema;
+    /** @deprecated use `Options$outboundSchema` instead. */
+    export const outboundSchema = Options$outboundSchema;
+    /** @deprecated use `Options$Outbound` instead. */
+    export type Outbound = Options$Outbound;
 }
 
 /** @internal */
+export const ContactsCustomFieldsSchemasType4$inboundSchema: z.ZodType<
+    ContactsCustomFieldsSchemasType4,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type ContactsCustomFieldsSchemasType4$Outbound = {};
+
+/** @internal */
+export const ContactsCustomFieldsSchemasType4$outboundSchema: z.ZodType<
+    ContactsCustomFieldsSchemasType4$Outbound,
+    z.ZodTypeDef,
+    ContactsCustomFieldsSchemasType4
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace ContactsCustomFieldsSchemasType4$ {
-    export const inboundSchema: z.ZodType<ContactsCustomFieldsSchemasType4, z.ZodTypeDef, unknown> =
-        z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        ContactsCustomFieldsSchemasType4
-    > = z.object({});
+    /** @deprecated use `ContactsCustomFieldsSchemasType4$inboundSchema` instead. */
+    export const inboundSchema = ContactsCustomFieldsSchemasType4$inboundSchema;
+    /** @deprecated use `ContactsCustomFieldsSchemasType4$outboundSchema` instead. */
+    export const outboundSchema = ContactsCustomFieldsSchemasType4$outboundSchema;
+    /** @deprecated use `ContactsCustomFieldsSchemasType4$Outbound` instead. */
+    export type Outbound = ContactsCustomFieldsSchemasType4$Outbound;
 }
 
 /** @internal */
+export const ContactsCustomFieldsSourceValue$inboundSchema: z.ZodType<
+    ContactsCustomFieldsSourceValue,
+    z.ZodTypeDef,
+    unknown
+> = z.union([
+    z.lazy(() => ContactsCustomFieldsSchemasType4$inboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+]);
+
+/** @internal */
+export type ContactsCustomFieldsSourceValue$Outbound =
+    | ContactsCustomFieldsSchemasType4$Outbound
+    | string
+    | number
+    | boolean;
+
+/** @internal */
+export const ContactsCustomFieldsSourceValue$outboundSchema: z.ZodType<
+    ContactsCustomFieldsSourceValue$Outbound,
+    z.ZodTypeDef,
+    ContactsCustomFieldsSourceValue
+> = z.union([
+    z.lazy(() => ContactsCustomFieldsSchemasType4$outboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace ContactsCustomFieldsSourceValue$ {
-    export const inboundSchema: z.ZodType<ContactsCustomFieldsSourceValue, z.ZodTypeDef, unknown> =
-        z.union([
-            z.lazy(() => ContactsCustomFieldsSchemasType4$.inboundSchema),
-            z.string(),
-            z.number(),
-            z.boolean(),
-        ]);
-
-    export type Outbound = ContactsCustomFieldsSchemasType4$.Outbound | string | number | boolean;
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        ContactsCustomFieldsSourceValue
-    > = z.union([
-        z.lazy(() => ContactsCustomFieldsSchemasType4$.outboundSchema),
-        z.string(),
-        z.number(),
-        z.boolean(),
-    ]);
+    /** @deprecated use `ContactsCustomFieldsSourceValue$inboundSchema` instead. */
+    export const inboundSchema = ContactsCustomFieldsSourceValue$inboundSchema;
+    /** @deprecated use `ContactsCustomFieldsSourceValue$outboundSchema` instead. */
+    export const outboundSchema = ContactsCustomFieldsSourceValue$outboundSchema;
+    /** @deprecated use `ContactsCustomFieldsSourceValue$Outbound` instead. */
+    export type Outbound = ContactsCustomFieldsSourceValue$Outbound;
 }
 
 /** @internal */
+export const ContactsCustomFieldsSchemasValue$inboundSchema: z.ZodType<
+    ContactsCustomFieldsSchemasValueOpen,
+    z.ZodTypeDef,
+    unknown
+> = z.union([
+    z.nativeEnum(ContactsCustomFieldsSchemasValue),
+    z.string().transform(catchUnrecognizedEnum),
+]);
+
+/** @internal */
+export const ContactsCustomFieldsSchemasValue$outboundSchema: z.ZodType<
+    ContactsCustomFieldsSchemasValueOpen,
+    z.ZodTypeDef,
+    ContactsCustomFieldsSchemasValueOpen
+> = z.union([
+    z.nativeEnum(ContactsCustomFieldsSchemasValue),
+    z.string().and(z.custom<Unrecognized<string>>()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace ContactsCustomFieldsSchemasValue$ {
-    export const inboundSchema: z.ZodType<
-        ContactsCustomFieldsSchemasValueOpen,
-        z.ZodTypeDef,
-        unknown
-    > = z.union([
-        z.nativeEnum(ContactsCustomFieldsSchemasValue),
-        z.string().transform(catchUnrecognizedEnum),
-    ]);
-
-    export const outboundSchema: z.ZodType<
-        ContactsCustomFieldsSchemasValueOpen,
-        z.ZodTypeDef,
-        ContactsCustomFieldsSchemasValueOpen
-    > = z.union([
-        z.nativeEnum(ContactsCustomFieldsSchemasValue),
-        z.string().and(z.custom<Unrecognized<string>>()),
-    ]);
+    /** @deprecated use `ContactsCustomFieldsSchemasValue$inboundSchema` instead. */
+    export const inboundSchema = ContactsCustomFieldsSchemasValue$inboundSchema;
+    /** @deprecated use `ContactsCustomFieldsSchemasValue$outboundSchema` instead. */
+    export const outboundSchema = ContactsCustomFieldsSchemasValue$outboundSchema;
 }
 
 /** @internal */
+export const ContactsCustomFieldsType$inboundSchema: z.ZodType<
+    ContactsCustomFieldsType,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        source_value: z
+            .nullable(
+                z.union([
+                    z.lazy(() => ContactsCustomFieldsSchemasType4$inboundSchema),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                ])
+            )
+            .optional(),
+        value: z.nullable(ContactsCustomFieldsSchemasValue$inboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            source_value: "sourceValue",
+        });
+    });
+
+/** @internal */
+export type ContactsCustomFieldsType$Outbound = {
+    source_value?:
+        | ContactsCustomFieldsSchemasType4$Outbound
+        | string
+        | number
+        | boolean
+        | null
+        | undefined;
+    value?: string | null | undefined;
+};
+
+/** @internal */
+export const ContactsCustomFieldsType$outboundSchema: z.ZodType<
+    ContactsCustomFieldsType$Outbound,
+    z.ZodTypeDef,
+    ContactsCustomFieldsType
+> = z
+    .object({
+        sourceValue: z
+            .nullable(
+                z.union([
+                    z.lazy(() => ContactsCustomFieldsSchemasType4$outboundSchema),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                ])
+            )
+            .optional(),
+        value: z.nullable(ContactsCustomFieldsSchemasValue$outboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            sourceValue: "source_value",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace ContactsCustomFieldsType$ {
-    export const inboundSchema: z.ZodType<ContactsCustomFieldsType, z.ZodTypeDef, unknown> = z
-        .object({
-            source_value: z
-                .nullable(
-                    z.union([
-                        z.lazy(() => ContactsCustomFieldsSchemasType4$.inboundSchema),
-                        z.string(),
-                        z.number(),
-                        z.boolean(),
-                    ])
-                )
-                .optional(),
-            value: z.nullable(ContactsCustomFieldsSchemasValue$.inboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                source_value: "sourceValue",
-            });
-        });
-
-    export type Outbound = {
-        source_value?:
-            | ContactsCustomFieldsSchemasType4$.Outbound
-            | string
-            | number
-            | boolean
-            | null
-            | undefined;
-        value?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ContactsCustomFieldsType> = z
-        .object({
-            sourceValue: z
-                .nullable(
-                    z.union([
-                        z.lazy(() => ContactsCustomFieldsSchemasType4$.outboundSchema),
-                        z.string(),
-                        z.number(),
-                        z.boolean(),
-                    ])
-                )
-                .optional(),
-            value: z.nullable(ContactsCustomFieldsSchemasValue$.outboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                sourceValue: "source_value",
-            });
-        });
+    /** @deprecated use `ContactsCustomFieldsType$inboundSchema` instead. */
+    export const inboundSchema = ContactsCustomFieldsType$inboundSchema;
+    /** @deprecated use `ContactsCustomFieldsType$outboundSchema` instead. */
+    export const outboundSchema = ContactsCustomFieldsType$outboundSchema;
+    /** @deprecated use `ContactsCustomFieldsType$Outbound` instead. */
+    export type Outbound = ContactsCustomFieldsType$Outbound;
 }
 
 /** @internal */
+export const ContactsCustomFieldsSchemas4$inboundSchema: z.ZodType<
+    ContactsCustomFieldsSchemas4,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type ContactsCustomFieldsSchemas4$Outbound = {};
+
+/** @internal */
+export const ContactsCustomFieldsSchemas4$outboundSchema: z.ZodType<
+    ContactsCustomFieldsSchemas4$Outbound,
+    z.ZodTypeDef,
+    ContactsCustomFieldsSchemas4
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace ContactsCustomFieldsSchemas4$ {
-    export const inboundSchema: z.ZodType<ContactsCustomFieldsSchemas4, z.ZodTypeDef, unknown> =
-        z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ContactsCustomFieldsSchemas4> =
-        z.object({});
+    /** @deprecated use `ContactsCustomFieldsSchemas4$inboundSchema` instead. */
+    export const inboundSchema = ContactsCustomFieldsSchemas4$inboundSchema;
+    /** @deprecated use `ContactsCustomFieldsSchemas4$outboundSchema` instead. */
+    export const outboundSchema = ContactsCustomFieldsSchemas4$outboundSchema;
+    /** @deprecated use `ContactsCustomFieldsSchemas4$Outbound` instead. */
+    export type Outbound = ContactsCustomFieldsSchemas4$Outbound;
 }
 
 /** @internal */
+export const ContactsCustomFieldsValue$inboundSchema: z.ZodType<
+    ContactsCustomFieldsValue,
+    z.ZodTypeDef,
+    unknown
+> = z.union([
+    z.lazy(() => ContactsCustomFieldsSchemas4$inboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+]);
+
+/** @internal */
+export type ContactsCustomFieldsValue$Outbound =
+    | ContactsCustomFieldsSchemas4$Outbound
+    | string
+    | number
+    | boolean;
+
+/** @internal */
+export const ContactsCustomFieldsValue$outboundSchema: z.ZodType<
+    ContactsCustomFieldsValue$Outbound,
+    z.ZodTypeDef,
+    ContactsCustomFieldsValue
+> = z.union([
+    z.lazy(() => ContactsCustomFieldsSchemas4$outboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace ContactsCustomFieldsValue$ {
-    export const inboundSchema: z.ZodType<ContactsCustomFieldsValue, z.ZodTypeDef, unknown> =
-        z.union([
-            z.lazy(() => ContactsCustomFieldsSchemas4$.inboundSchema),
-            z.string(),
-            z.number(),
-            z.boolean(),
-        ]);
-
-    export type Outbound = ContactsCustomFieldsSchemas4$.Outbound | string | number | boolean;
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ContactsCustomFieldsValue> =
-        z.union([
-            z.lazy(() => ContactsCustomFieldsSchemas4$.outboundSchema),
-            z.string(),
-            z.number(),
-            z.boolean(),
-        ]);
+    /** @deprecated use `ContactsCustomFieldsValue$inboundSchema` instead. */
+    export const inboundSchema = ContactsCustomFieldsValue$inboundSchema;
+    /** @deprecated use `ContactsCustomFieldsValue$outboundSchema` instead. */
+    export const outboundSchema = ContactsCustomFieldsValue$outboundSchema;
+    /** @deprecated use `ContactsCustomFieldsValue$Outbound` instead. */
+    export type Outbound = ContactsCustomFieldsValue$Outbound;
 }
 
 /** @internal */
+export const ContactsCustomFields$inboundSchema: z.ZodType<
+    ContactsCustomFields,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        description: z.nullable(z.string()).optional(),
+        id: z.nullable(z.string()).optional(),
+        name: z.nullable(z.string()).optional(),
+        options: z
+            .nullable(
+                z.array(
+                    z.union([
+                        z.lazy(() => ContactsCustomFields4$inboundSchema),
+                        z.string(),
+                        z.number(),
+                        z.boolean(),
+                    ])
+                )
+            )
+            .optional(),
+        remote_id: z.nullable(z.string()).optional(),
+        remote_value_id: z.nullable(z.string()).optional(),
+        type: z.nullable(z.lazy(() => ContactsCustomFieldsType$inboundSchema)).optional(),
+        value: z
+            .nullable(
+                z.union([
+                    z.lazy(() => ContactsCustomFieldsSchemas4$inboundSchema),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                ])
+            )
+            .optional(),
+        value_id: z.nullable(z.string()).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            remote_id: "remoteId",
+            remote_value_id: "remoteValueId",
+            value_id: "valueId",
+        });
+    });
+
+/** @internal */
+export type ContactsCustomFields$Outbound = {
+    description?: string | null | undefined;
+    id?: string | null | undefined;
+    name?: string | null | undefined;
+    options?: Array<ContactsCustomFields4$Outbound | string | number | boolean> | null | undefined;
+    remote_id?: string | null | undefined;
+    remote_value_id?: string | null | undefined;
+    type?: ContactsCustomFieldsType$Outbound | null | undefined;
+    value?: ContactsCustomFieldsSchemas4$Outbound | string | number | boolean | null | undefined;
+    value_id?: string | null | undefined;
+};
+
+/** @internal */
+export const ContactsCustomFields$outboundSchema: z.ZodType<
+    ContactsCustomFields$Outbound,
+    z.ZodTypeDef,
+    ContactsCustomFields
+> = z
+    .object({
+        description: z.nullable(z.string()).optional(),
+        id: z.nullable(z.string()).optional(),
+        name: z.nullable(z.string()).optional(),
+        options: z
+            .nullable(
+                z.array(
+                    z.union([
+                        z.lazy(() => ContactsCustomFields4$outboundSchema),
+                        z.string(),
+                        z.number(),
+                        z.boolean(),
+                    ])
+                )
+            )
+            .optional(),
+        remoteId: z.nullable(z.string()).optional(),
+        remoteValueId: z.nullable(z.string()).optional(),
+        type: z.nullable(z.lazy(() => ContactsCustomFieldsType$outboundSchema)).optional(),
+        value: z
+            .nullable(
+                z.union([
+                    z.lazy(() => ContactsCustomFieldsSchemas4$outboundSchema),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                ])
+            )
+            .optional(),
+        valueId: z.nullable(z.string()).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            remoteId: "remote_id",
+            remoteValueId: "remote_value_id",
+            valueId: "value_id",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace ContactsCustomFields$ {
-    export const inboundSchema: z.ZodType<ContactsCustomFields, z.ZodTypeDef, unknown> = z
-        .object({
-            description: z.nullable(z.string()).optional(),
-            id: z.nullable(z.string()).optional(),
-            name: z.nullable(z.string()).optional(),
-            options: z
-                .nullable(
-                    z.array(
-                        z.union([
-                            z.lazy(() => ContactsCustomFields4$.inboundSchema),
-                            z.string(),
-                            z.number(),
-                            z.boolean(),
-                        ])
-                    )
-                )
-                .optional(),
-            remote_id: z.nullable(z.string()).optional(),
-            remote_value_id: z.nullable(z.string()).optional(),
-            type: z.nullable(z.lazy(() => ContactsCustomFieldsType$.inboundSchema)).optional(),
-            value: z
-                .nullable(
-                    z.union([
-                        z.lazy(() => ContactsCustomFieldsSchemas4$.inboundSchema),
-                        z.string(),
-                        z.number(),
-                        z.boolean(),
-                    ])
-                )
-                .optional(),
-            value_id: z.nullable(z.string()).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                remote_id: "remoteId",
-                remote_value_id: "remoteValueId",
-                value_id: "valueId",
-            });
-        });
-
-    export type Outbound = {
-        description?: string | null | undefined;
-        id?: string | null | undefined;
-        name?: string | null | undefined;
-        options?:
-            | Array<ContactsCustomFields4$.Outbound | string | number | boolean>
-            | null
-            | undefined;
-        remote_id?: string | null | undefined;
-        remote_value_id?: string | null | undefined;
-        type?: ContactsCustomFieldsType$.Outbound | null | undefined;
-        value?:
-            | ContactsCustomFieldsSchemas4$.Outbound
-            | string
-            | number
-            | boolean
-            | null
-            | undefined;
-        value_id?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ContactsCustomFields> = z
-        .object({
-            description: z.nullable(z.string()).optional(),
-            id: z.nullable(z.string()).optional(),
-            name: z.nullable(z.string()).optional(),
-            options: z
-                .nullable(
-                    z.array(
-                        z.union([
-                            z.lazy(() => ContactsCustomFields4$.outboundSchema),
-                            z.string(),
-                            z.number(),
-                            z.boolean(),
-                        ])
-                    )
-                )
-                .optional(),
-            remoteId: z.nullable(z.string()).optional(),
-            remoteValueId: z.nullable(z.string()).optional(),
-            type: z.nullable(z.lazy(() => ContactsCustomFieldsType$.outboundSchema)).optional(),
-            value: z
-                .nullable(
-                    z.union([
-                        z.lazy(() => ContactsCustomFieldsSchemas4$.outboundSchema),
-                        z.string(),
-                        z.number(),
-                        z.boolean(),
-                    ])
-                )
-                .optional(),
-            valueId: z.nullable(z.string()).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                remoteId: "remote_id",
-                remoteValueId: "remote_value_id",
-                valueId: "value_id",
-            });
-        });
+    /** @deprecated use `ContactsCustomFields$inboundSchema` instead. */
+    export const inboundSchema = ContactsCustomFields$inboundSchema;
+    /** @deprecated use `ContactsCustomFields$outboundSchema` instead. */
+    export const outboundSchema = ContactsCustomFields$outboundSchema;
+    /** @deprecated use `ContactsCustomFields$Outbound` instead. */
+    export type Outbound = ContactsCustomFields$Outbound;
 }

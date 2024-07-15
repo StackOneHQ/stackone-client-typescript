@@ -46,84 +46,126 @@ export type AtsGetRejectedReasonResponse = {
 };
 
 /** @internal */
+export const AtsGetRejectedReasonRequest$inboundSchema: z.ZodType<
+    AtsGetRejectedReasonRequest,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        fields: z.nullable(z.string()).optional(),
+        id: z.string(),
+        proxy: z.nullable(z.record(z.any())).optional(),
+        raw: z.nullable(z.boolean().default(false)),
+        "x-account-id": z.string(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            "x-account-id": "xAccountId",
+        });
+    });
+
+/** @internal */
+export type AtsGetRejectedReasonRequest$Outbound = {
+    fields?: string | null | undefined;
+    id: string;
+    proxy?: { [k: string]: any } | null | undefined;
+    raw: boolean | null;
+    "x-account-id": string;
+};
+
+/** @internal */
+export const AtsGetRejectedReasonRequest$outboundSchema: z.ZodType<
+    AtsGetRejectedReasonRequest$Outbound,
+    z.ZodTypeDef,
+    AtsGetRejectedReasonRequest
+> = z
+    .object({
+        fields: z.nullable(z.string()).optional(),
+        id: z.string(),
+        proxy: z.nullable(z.record(z.any())).optional(),
+        raw: z.nullable(z.boolean().default(false)),
+        xAccountId: z.string(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            xAccountId: "x-account-id",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace AtsGetRejectedReasonRequest$ {
-    export const inboundSchema: z.ZodType<AtsGetRejectedReasonRequest, z.ZodTypeDef, unknown> = z
-        .object({
-            fields: z.nullable(z.string()).optional(),
-            id: z.string(),
-            proxy: z.nullable(z.record(z.any())).optional(),
-            raw: z.nullable(z.boolean().default(false)),
-            "x-account-id": z.string(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                "x-account-id": "xAccountId",
-            });
-        });
-
-    export type Outbound = {
-        fields?: string | null | undefined;
-        id: string;
-        proxy?: { [k: string]: any } | null | undefined;
-        raw: boolean | null;
-        "x-account-id": string;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, AtsGetRejectedReasonRequest> = z
-        .object({
-            fields: z.nullable(z.string()).optional(),
-            id: z.string(),
-            proxy: z.nullable(z.record(z.any())).optional(),
-            raw: z.nullable(z.boolean().default(false)),
-            xAccountId: z.string(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                xAccountId: "x-account-id",
-            });
-        });
+    /** @deprecated use `AtsGetRejectedReasonRequest$inboundSchema` instead. */
+    export const inboundSchema = AtsGetRejectedReasonRequest$inboundSchema;
+    /** @deprecated use `AtsGetRejectedReasonRequest$outboundSchema` instead. */
+    export const outboundSchema = AtsGetRejectedReasonRequest$outboundSchema;
+    /** @deprecated use `AtsGetRejectedReasonRequest$Outbound` instead. */
+    export type Outbound = AtsGetRejectedReasonRequest$Outbound;
 }
 
 /** @internal */
+export const AtsGetRejectedReasonResponse$inboundSchema: z.ZodType<
+    AtsGetRejectedReasonResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        ContentType: z.string(),
+        RejectedReasonResult: shared.RejectedReasonResult$inboundSchema.optional(),
+        StatusCode: z.number().int(),
+        RawResponse: z.instanceof(Response),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            ContentType: "contentType",
+            RejectedReasonResult: "rejectedReasonResult",
+            StatusCode: "statusCode",
+            RawResponse: "rawResponse",
+        });
+    });
+
+/** @internal */
+export type AtsGetRejectedReasonResponse$Outbound = {
+    ContentType: string;
+    RejectedReasonResult?: shared.RejectedReasonResult$Outbound | undefined;
+    StatusCode: number;
+    RawResponse: never;
+};
+
+/** @internal */
+export const AtsGetRejectedReasonResponse$outboundSchema: z.ZodType<
+    AtsGetRejectedReasonResponse$Outbound,
+    z.ZodTypeDef,
+    AtsGetRejectedReasonResponse
+> = z
+    .object({
+        contentType: z.string(),
+        rejectedReasonResult: shared.RejectedReasonResult$outboundSchema.optional(),
+        statusCode: z.number().int(),
+        rawResponse: z.instanceof(Response).transform(() => {
+            throw new Error("Response cannot be serialized");
+        }),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            contentType: "ContentType",
+            rejectedReasonResult: "RejectedReasonResult",
+            statusCode: "StatusCode",
+            rawResponse: "RawResponse",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace AtsGetRejectedReasonResponse$ {
-    export const inboundSchema: z.ZodType<AtsGetRejectedReasonResponse, z.ZodTypeDef, unknown> = z
-        .object({
-            ContentType: z.string(),
-            RejectedReasonResult: shared.RejectedReasonResult$.inboundSchema.optional(),
-            StatusCode: z.number().int(),
-            RawResponse: z.instanceof(Response),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                ContentType: "contentType",
-                RejectedReasonResult: "rejectedReasonResult",
-                StatusCode: "statusCode",
-                RawResponse: "rawResponse",
-            });
-        });
-
-    export type Outbound = {
-        ContentType: string;
-        RejectedReasonResult?: shared.RejectedReasonResult$.Outbound | undefined;
-        StatusCode: number;
-        RawResponse: never;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, AtsGetRejectedReasonResponse> = z
-        .object({
-            contentType: z.string(),
-            rejectedReasonResult: shared.RejectedReasonResult$.outboundSchema.optional(),
-            statusCode: z.number().int(),
-            rawResponse: z.instanceof(Response).transform(() => {
-                throw new Error("Response cannot be serialized");
-            }),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                contentType: "ContentType",
-                rejectedReasonResult: "RejectedReasonResult",
-                statusCode: "StatusCode",
-                rawResponse: "RawResponse",
-            });
-        });
+    /** @deprecated use `AtsGetRejectedReasonResponse$inboundSchema` instead. */
+    export const inboundSchema = AtsGetRejectedReasonResponse$inboundSchema;
+    /** @deprecated use `AtsGetRejectedReasonResponse$outboundSchema` instead. */
+    export const outboundSchema = AtsGetRejectedReasonResponse$outboundSchema;
+    /** @deprecated use `AtsGetRejectedReasonResponse$Outbound` instead. */
+    export type Outbound = AtsGetRejectedReasonResponse$Outbound;
 }

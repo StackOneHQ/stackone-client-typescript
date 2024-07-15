@@ -3,7 +3,12 @@
  */
 
 import { remap as remap$ } from "../../../lib/primitives.js";
-import { SocialLink, SocialLink$ } from "./sociallink.js";
+import {
+    SocialLink,
+    SocialLink$inboundSchema,
+    SocialLink$Outbound,
+    SocialLink$outboundSchema,
+} from "./sociallink.js";
 import * as z from "zod";
 
 export type AtsCreateCandidateRequestDto = {
@@ -54,73 +59,94 @@ export type AtsCreateCandidateRequestDto = {
 };
 
 /** @internal */
+export const AtsCreateCandidateRequestDto$inboundSchema: z.ZodType<
+    AtsCreateCandidateRequestDto,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        company: z.nullable(z.string()).optional(),
+        country: z.nullable(z.string()).optional(),
+        email: z.nullable(z.string()).optional(),
+        first_name: z.nullable(z.string()).optional(),
+        hired_at: z
+            .nullable(
+                z
+                    .string()
+                    .datetime({ offset: true })
+                    .transform((v) => new Date(v))
+            )
+            .optional(),
+        last_name: z.nullable(z.string()).optional(),
+        name: z.nullable(z.string()).optional(),
+        passthrough: z.nullable(z.record(z.any())).optional(),
+        phone_number: z.nullable(z.string()).optional(),
+        social_links: z.nullable(z.array(SocialLink$inboundSchema)).optional(),
+        title: z.nullable(z.string()).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            first_name: "firstName",
+            hired_at: "hiredAt",
+            last_name: "lastName",
+            phone_number: "phoneNumber",
+            social_links: "socialLinks",
+        });
+    });
+
+/** @internal */
+export type AtsCreateCandidateRequestDto$Outbound = {
+    company?: string | null | undefined;
+    country?: string | null | undefined;
+    email?: string | null | undefined;
+    first_name?: string | null | undefined;
+    hired_at?: string | null | undefined;
+    last_name?: string | null | undefined;
+    name?: string | null | undefined;
+    passthrough?: { [k: string]: any } | null | undefined;
+    phone_number?: string | null | undefined;
+    social_links?: Array<SocialLink$Outbound> | null | undefined;
+    title?: string | null | undefined;
+};
+
+/** @internal */
+export const AtsCreateCandidateRequestDto$outboundSchema: z.ZodType<
+    AtsCreateCandidateRequestDto$Outbound,
+    z.ZodTypeDef,
+    AtsCreateCandidateRequestDto
+> = z
+    .object({
+        company: z.nullable(z.string()).optional(),
+        country: z.nullable(z.string()).optional(),
+        email: z.nullable(z.string()).optional(),
+        firstName: z.nullable(z.string()).optional(),
+        hiredAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+        lastName: z.nullable(z.string()).optional(),
+        name: z.nullable(z.string()).optional(),
+        passthrough: z.nullable(z.record(z.any())).optional(),
+        phoneNumber: z.nullable(z.string()).optional(),
+        socialLinks: z.nullable(z.array(SocialLink$outboundSchema)).optional(),
+        title: z.nullable(z.string()).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            firstName: "first_name",
+            hiredAt: "hired_at",
+            lastName: "last_name",
+            phoneNumber: "phone_number",
+            socialLinks: "social_links",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace AtsCreateCandidateRequestDto$ {
-    export const inboundSchema: z.ZodType<AtsCreateCandidateRequestDto, z.ZodTypeDef, unknown> = z
-        .object({
-            company: z.nullable(z.string()).optional(),
-            country: z.nullable(z.string()).optional(),
-            email: z.nullable(z.string()).optional(),
-            first_name: z.nullable(z.string()).optional(),
-            hired_at: z
-                .nullable(
-                    z
-                        .string()
-                        .datetime({ offset: true })
-                        .transform((v) => new Date(v))
-                )
-                .optional(),
-            last_name: z.nullable(z.string()).optional(),
-            name: z.nullable(z.string()).optional(),
-            passthrough: z.nullable(z.record(z.any())).optional(),
-            phone_number: z.nullable(z.string()).optional(),
-            social_links: z.nullable(z.array(SocialLink$.inboundSchema)).optional(),
-            title: z.nullable(z.string()).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                first_name: "firstName",
-                hired_at: "hiredAt",
-                last_name: "lastName",
-                phone_number: "phoneNumber",
-                social_links: "socialLinks",
-            });
-        });
-
-    export type Outbound = {
-        company?: string | null | undefined;
-        country?: string | null | undefined;
-        email?: string | null | undefined;
-        first_name?: string | null | undefined;
-        hired_at?: string | null | undefined;
-        last_name?: string | null | undefined;
-        name?: string | null | undefined;
-        passthrough?: { [k: string]: any } | null | undefined;
-        phone_number?: string | null | undefined;
-        social_links?: Array<SocialLink$.Outbound> | null | undefined;
-        title?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, AtsCreateCandidateRequestDto> = z
-        .object({
-            company: z.nullable(z.string()).optional(),
-            country: z.nullable(z.string()).optional(),
-            email: z.nullable(z.string()).optional(),
-            firstName: z.nullable(z.string()).optional(),
-            hiredAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
-            lastName: z.nullable(z.string()).optional(),
-            name: z.nullable(z.string()).optional(),
-            passthrough: z.nullable(z.record(z.any())).optional(),
-            phoneNumber: z.nullable(z.string()).optional(),
-            socialLinks: z.nullable(z.array(SocialLink$.outboundSchema)).optional(),
-            title: z.nullable(z.string()).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                firstName: "first_name",
-                hiredAt: "hired_at",
-                lastName: "last_name",
-                phoneNumber: "phone_number",
-                socialLinks: "social_links",
-            });
-        });
+    /** @deprecated use `AtsCreateCandidateRequestDto$inboundSchema` instead. */
+    export const inboundSchema = AtsCreateCandidateRequestDto$inboundSchema;
+    /** @deprecated use `AtsCreateCandidateRequestDto$outboundSchema` instead. */
+    export const outboundSchema = AtsCreateCandidateRequestDto$outboundSchema;
+    /** @deprecated use `AtsCreateCandidateRequestDto$Outbound` instead. */
+    export type Outbound = AtsCreateCandidateRequestDto$Outbound;
 }

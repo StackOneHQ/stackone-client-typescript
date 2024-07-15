@@ -54,8 +54,7 @@ export class Marketing extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) =>
-                operations.MarketingCreateEmailTemplateRequest$.outboundSchema.parse(value$),
+            (value$) => operations.MarketingCreateEmailTemplateRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = encodeJSON$("body", payload$.MarketingCreateEmailTemplateRequestDto, {
@@ -96,6 +95,7 @@ export class Marketing extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -103,6 +103,8 @@ export class Marketing extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -113,7 +115,9 @@ export class Marketing extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.MarketingCreateEmailTemplateResponse>()
-            .json(201, operations.MarketingCreateEmailTemplateResponse$, { key: "CreateResult" })
+            .json(201, operations.MarketingCreateEmailTemplateResponse$inboundSchema, {
+                key: "CreateResult",
+            })
             .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -132,7 +136,7 @@ export class Marketing extends ClientSDK {
         const payload$ = schemas$.parse(
             input$,
             (value$) =>
-                operations.MarketingCreateOmniChannelTemplateRequest$.outboundSchema.parse(value$),
+                operations.MarketingCreateOmniChannelTemplateRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = encodeJSON$("body", payload$.MarketingCreateTemplateRequestDto, {
@@ -173,6 +177,7 @@ export class Marketing extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -180,6 +185,8 @@ export class Marketing extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -191,7 +198,7 @@ export class Marketing extends ClientSDK {
 
         const [result$] =
             await this.matcher<operations.MarketingCreateOmniChannelTemplateResponse>()
-                .json(201, operations.MarketingCreateOmniChannelTemplateResponse$, {
+                .json(201, operations.MarketingCreateOmniChannelTemplateResponse$inboundSchema, {
                     key: "CreateResult",
                 })
                 .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
@@ -211,7 +218,7 @@ export class Marketing extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.MarketingCreatePushTemplateRequest$.outboundSchema.parse(value$),
+            (value$) => operations.MarketingCreatePushTemplateRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = encodeJSON$("body", payload$.MarketingCreatePushTemplateRequestDto, {
@@ -252,6 +259,7 @@ export class Marketing extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -259,6 +267,8 @@ export class Marketing extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -269,7 +279,9 @@ export class Marketing extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.MarketingCreatePushTemplateResponse>()
-            .json(201, operations.MarketingCreatePushTemplateResponse$, { key: "CreateResult" })
+            .json(201, operations.MarketingCreatePushTemplateResponse$inboundSchema, {
+                key: "CreateResult",
+            })
             .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -287,7 +299,7 @@ export class Marketing extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.MarketingGetCampaignRequest$.outboundSchema.parse(value$),
+            (value$) => operations.MarketingGetCampaignRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -336,6 +348,7 @@ export class Marketing extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -343,6 +356,8 @@ export class Marketing extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -353,7 +368,9 @@ export class Marketing extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.MarketingGetCampaignResponse>()
-            .json(200, operations.MarketingGetCampaignResponse$, { key: "CampaignResult" })
+            .json(200, operations.MarketingGetCampaignResponse$inboundSchema, {
+                key: "CampaignResult",
+            })
             .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -371,7 +388,7 @@ export class Marketing extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.MarketingGetEmailTemplateRequest$.outboundSchema.parse(value$),
+            (value$) => operations.MarketingGetEmailTemplateRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -422,6 +439,7 @@ export class Marketing extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -429,6 +447,8 @@ export class Marketing extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -439,7 +459,9 @@ export class Marketing extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.MarketingGetEmailTemplateResponse>()
-            .json(200, operations.MarketingGetEmailTemplateResponse$, { key: "TemplateResult" })
+            .json(200, operations.MarketingGetEmailTemplateResponse$inboundSchema, {
+                key: "TemplateResult",
+            })
             .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -458,7 +480,7 @@ export class Marketing extends ClientSDK {
         const payload$ = schemas$.parse(
             input$,
             (value$) =>
-                operations.MarketingGetOmniChannelTemplateRequest$.outboundSchema.parse(value$),
+                operations.MarketingGetOmniChannelTemplateRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -509,6 +531,7 @@ export class Marketing extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -516,6 +539,8 @@ export class Marketing extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -526,7 +551,7 @@ export class Marketing extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.MarketingGetOmniChannelTemplateResponse>()
-            .json(200, operations.MarketingGetOmniChannelTemplateResponse$, {
+            .json(200, operations.MarketingGetOmniChannelTemplateResponse$inboundSchema, {
                 key: "TemplateResult",
             })
             .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
@@ -546,7 +571,7 @@ export class Marketing extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.MarketingGetPushTemplateRequest$.outboundSchema.parse(value$),
+            (value$) => operations.MarketingGetPushTemplateRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -597,6 +622,7 @@ export class Marketing extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -604,6 +630,8 @@ export class Marketing extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -614,7 +642,9 @@ export class Marketing extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.MarketingGetPushTemplateResponse>()
-            .json(200, operations.MarketingGetPushTemplateResponse$, { key: "TemplateResult" })
+            .json(200, operations.MarketingGetPushTemplateResponse$inboundSchema, {
+                key: "TemplateResult",
+            })
             .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -632,7 +662,7 @@ export class Marketing extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.MarketingListCampaignsRequest$.outboundSchema.parse(value$),
+            (value$) => operations.MarketingListCampaignsRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -683,6 +713,7 @@ export class Marketing extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -690,6 +721,8 @@ export class Marketing extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -700,7 +733,9 @@ export class Marketing extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.MarketingListCampaignsResponse>()
-            .json(200, operations.MarketingListCampaignsResponse$, { key: "CampaignsPaginated" })
+            .json(200, operations.MarketingListCampaignsResponse$inboundSchema, {
+                key: "CampaignsPaginated",
+            })
             .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -718,7 +753,7 @@ export class Marketing extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.MarketingListEmailTemplatesRequest$.outboundSchema.parse(value$),
+            (value$) => operations.MarketingListEmailTemplatesRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -769,6 +804,7 @@ export class Marketing extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -776,6 +812,8 @@ export class Marketing extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -786,7 +824,7 @@ export class Marketing extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.MarketingListEmailTemplatesResponse>()
-            .json(200, operations.MarketingListEmailTemplatesResponse$, {
+            .json(200, operations.MarketingListEmailTemplatesResponse$inboundSchema, {
                 key: "TemplatesPaginated",
             })
             .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
@@ -807,7 +845,7 @@ export class Marketing extends ClientSDK {
         const payload$ = schemas$.parse(
             input$,
             (value$) =>
-                operations.MarketingListOmniChannelTemplatesRequest$.outboundSchema.parse(value$),
+                operations.MarketingListOmniChannelTemplatesRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -858,6 +896,7 @@ export class Marketing extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -865,6 +904,8 @@ export class Marketing extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -875,7 +916,7 @@ export class Marketing extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.MarketingListOmniChannelTemplatesResponse>()
-            .json(200, operations.MarketingListOmniChannelTemplatesResponse$, {
+            .json(200, operations.MarketingListOmniChannelTemplatesResponse$inboundSchema, {
                 key: "TemplatesPaginated",
             })
             .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
@@ -895,7 +936,7 @@ export class Marketing extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.MarketingListPushTemplatesRequest$.outboundSchema.parse(value$),
+            (value$) => operations.MarketingListPushTemplatesRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -946,6 +987,7 @@ export class Marketing extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -953,6 +995,8 @@ export class Marketing extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -963,7 +1007,7 @@ export class Marketing extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.MarketingListPushTemplatesResponse>()
-            .json(200, operations.MarketingListPushTemplatesResponse$, {
+            .json(200, operations.MarketingListPushTemplatesResponse$inboundSchema, {
                 key: "TemplatesPaginated",
             })
             .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
@@ -983,8 +1027,7 @@ export class Marketing extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) =>
-                operations.MarketingUpdateEmailTemplateRequest$.outboundSchema.parse(value$),
+            (value$) => operations.MarketingUpdateEmailTemplateRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = encodeJSON$("body", payload$.MarketingCreateEmailTemplateRequestDto, {
@@ -1030,6 +1073,7 @@ export class Marketing extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -1037,6 +1081,8 @@ export class Marketing extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -1047,7 +1093,9 @@ export class Marketing extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.MarketingUpdateEmailTemplateResponse>()
-            .json(200, operations.MarketingUpdateEmailTemplateResponse$, { key: "CreateResult" })
+            .json(200, operations.MarketingUpdateEmailTemplateResponse$inboundSchema, {
+                key: "CreateResult",
+            })
             .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -1066,7 +1114,7 @@ export class Marketing extends ClientSDK {
         const payload$ = schemas$.parse(
             input$,
             (value$) =>
-                operations.MarketingUpdateOmniChannelTemplateRequest$.outboundSchema.parse(value$),
+                operations.MarketingUpdateOmniChannelTemplateRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = encodeJSON$("body", payload$.MarketingCreateTemplateRequestDto, {
@@ -1112,6 +1160,7 @@ export class Marketing extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -1119,6 +1168,8 @@ export class Marketing extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -1130,7 +1181,7 @@ export class Marketing extends ClientSDK {
 
         const [result$] =
             await this.matcher<operations.MarketingUpdateOmniChannelTemplateResponse>()
-                .json(200, operations.MarketingUpdateOmniChannelTemplateResponse$, {
+                .json(200, operations.MarketingUpdateOmniChannelTemplateResponse$inboundSchema, {
                     key: "CreateResult",
                 })
                 .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
@@ -1150,7 +1201,7 @@ export class Marketing extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.MarketingUpdatePushTemplateRequest$.outboundSchema.parse(value$),
+            (value$) => operations.MarketingUpdatePushTemplateRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = encodeJSON$("body", payload$.MarketingCreatePushTemplateRequestDto, {
@@ -1196,6 +1247,7 @@ export class Marketing extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -1203,6 +1255,8 @@ export class Marketing extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -1213,7 +1267,9 @@ export class Marketing extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.MarketingUpdatePushTemplateResponse>()
-            .json(200, operations.MarketingUpdatePushTemplateResponse$, { key: "CreateResult" })
+            .json(200, operations.MarketingUpdatePushTemplateResponse$inboundSchema, {
+                key: "CreateResult",
+            })
             .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
             .match(response, { extraFields: responseFields$ });
 

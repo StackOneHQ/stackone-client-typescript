@@ -6,7 +6,9 @@ import { remap as remap$ } from "../../../lib/primitives.js";
 import { catchUnrecognizedEnum, OpenEnum, Unrecognized } from "../../types/enums.js";
 import {
     QuestionMultipleChoiceAnswers,
-    QuestionMultipleChoiceAnswers$,
+    QuestionMultipleChoiceAnswers$inboundSchema,
+    QuestionMultipleChoiceAnswers$Outbound,
+    QuestionMultipleChoiceAnswers$outboundSchema,
 } from "./questionmultiplechoiceanswers.js";
 import * as z from "zod";
 
@@ -71,158 +73,249 @@ export type Question = {
 };
 
 /** @internal */
+export const Question2$inboundSchema: z.ZodNativeEnum<typeof Question2> = z.nativeEnum(Question2);
+
+/** @internal */
+export const Question2$outboundSchema: z.ZodNativeEnum<typeof Question2> = Question2$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace Question2$ {
-    export const inboundSchema: z.ZodNativeEnum<typeof Question2> = z.nativeEnum(Question2);
-    export const outboundSchema: z.ZodNativeEnum<typeof Question2> = inboundSchema;
+    /** @deprecated use `Question2$inboundSchema` instead. */
+    export const inboundSchema = Question2$inboundSchema;
+    /** @deprecated use `Question2$outboundSchema` instead. */
+    export const outboundSchema = Question2$outboundSchema;
 }
 
 /** @internal */
+export const QuestionRequired$inboundSchema: z.ZodType<QuestionRequired, z.ZodTypeDef, unknown> =
+    z.union([z.boolean(), Question2$inboundSchema]);
+
+/** @internal */
+export type QuestionRequired$Outbound = boolean | string;
+
+/** @internal */
+export const QuestionRequired$outboundSchema: z.ZodType<
+    QuestionRequired$Outbound,
+    z.ZodTypeDef,
+    QuestionRequired
+> = z.union([z.boolean(), Question2$outboundSchema]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace QuestionRequired$ {
-    export const inboundSchema: z.ZodType<QuestionRequired, z.ZodTypeDef, unknown> = z.union([
-        z.boolean(),
-        Question2$.inboundSchema,
-    ]);
-
-    export type Outbound = boolean | string;
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, QuestionRequired> = z.union([
-        z.boolean(),
-        Question2$.outboundSchema,
-    ]);
+    /** @deprecated use `QuestionRequired$inboundSchema` instead. */
+    export const inboundSchema = QuestionRequired$inboundSchema;
+    /** @deprecated use `QuestionRequired$outboundSchema` instead. */
+    export const outboundSchema = QuestionRequired$outboundSchema;
+    /** @deprecated use `QuestionRequired$Outbound` instead. */
+    export type Outbound = QuestionRequired$Outbound;
 }
 
 /** @internal */
+export const Question4$inboundSchema: z.ZodType<Question4, z.ZodTypeDef, unknown> = z.object({});
+
+/** @internal */
+export type Question4$Outbound = {};
+
+/** @internal */
+export const Question4$outboundSchema: z.ZodType<Question4$Outbound, z.ZodTypeDef, Question4> =
+    z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace Question4$ {
-    export const inboundSchema: z.ZodType<Question4, z.ZodTypeDef, unknown> = z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Question4> = z.object({});
+    /** @deprecated use `Question4$inboundSchema` instead. */
+    export const inboundSchema = Question4$inboundSchema;
+    /** @deprecated use `Question4$outboundSchema` instead. */
+    export const outboundSchema = Question4$outboundSchema;
+    /** @deprecated use `Question4$Outbound` instead. */
+    export type Outbound = Question4$Outbound;
 }
 
 /** @internal */
+export const QuestionSourceValue$inboundSchema: z.ZodType<
+    QuestionSourceValue,
+    z.ZodTypeDef,
+    unknown
+> = z.union([z.lazy(() => Question4$inboundSchema), z.string(), z.number(), z.boolean()]);
+
+/** @internal */
+export type QuestionSourceValue$Outbound = Question4$Outbound | string | number | boolean;
+
+/** @internal */
+export const QuestionSourceValue$outboundSchema: z.ZodType<
+    QuestionSourceValue$Outbound,
+    z.ZodTypeDef,
+    QuestionSourceValue
+> = z.union([z.lazy(() => Question4$outboundSchema), z.string(), z.number(), z.boolean()]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace QuestionSourceValue$ {
-    export const inboundSchema: z.ZodType<QuestionSourceValue, z.ZodTypeDef, unknown> = z.union([
-        z.lazy(() => Question4$.inboundSchema),
-        z.string(),
-        z.number(),
-        z.boolean(),
-    ]);
-
-    export type Outbound = Question4$.Outbound | string | number | boolean;
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, QuestionSourceValue> = z.union([
-        z.lazy(() => Question4$.outboundSchema),
-        z.string(),
-        z.number(),
-        z.boolean(),
-    ]);
+    /** @deprecated use `QuestionSourceValue$inboundSchema` instead. */
+    export const inboundSchema = QuestionSourceValue$inboundSchema;
+    /** @deprecated use `QuestionSourceValue$outboundSchema` instead. */
+    export const outboundSchema = QuestionSourceValue$outboundSchema;
+    /** @deprecated use `QuestionSourceValue$Outbound` instead. */
+    export type Outbound = QuestionSourceValue$Outbound;
 }
 
 /** @internal */
+export const QuestionValue$inboundSchema: z.ZodType<QuestionValueOpen, z.ZodTypeDef, unknown> =
+    z.union([z.nativeEnum(QuestionValue), z.string().transform(catchUnrecognizedEnum)]);
+
+/** @internal */
+export const QuestionValue$outboundSchema: z.ZodType<
+    QuestionValueOpen,
+    z.ZodTypeDef,
+    QuestionValueOpen
+> = z.union([z.nativeEnum(QuestionValue), z.string().and(z.custom<Unrecognized<string>>())]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace QuestionValue$ {
-    export const inboundSchema: z.ZodType<QuestionValueOpen, z.ZodTypeDef, unknown> = z.union([
-        z.nativeEnum(QuestionValue),
-        z.string().transform(catchUnrecognizedEnum),
-    ]);
-
-    export const outboundSchema: z.ZodType<QuestionValueOpen, z.ZodTypeDef, QuestionValueOpen> =
-        z.union([z.nativeEnum(QuestionValue), z.string().and(z.custom<Unrecognized<string>>())]);
+    /** @deprecated use `QuestionValue$inboundSchema` instead. */
+    export const inboundSchema = QuestionValue$inboundSchema;
+    /** @deprecated use `QuestionValue$outboundSchema` instead. */
+    export const outboundSchema = QuestionValue$outboundSchema;
 }
 
 /** @internal */
+export const QuestionType$inboundSchema: z.ZodType<QuestionType, z.ZodTypeDef, unknown> = z
+    .object({
+        source_value: z
+            .nullable(
+                z.union([
+                    z.lazy(() => Question4$inboundSchema),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                ])
+            )
+            .optional(),
+        value: z.nullable(QuestionValue$inboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            source_value: "sourceValue",
+        });
+    });
+
+/** @internal */
+export type QuestionType$Outbound = {
+    source_value?: Question4$Outbound | string | number | boolean | null | undefined;
+    value?: string | null | undefined;
+};
+
+/** @internal */
+export const QuestionType$outboundSchema: z.ZodType<
+    QuestionType$Outbound,
+    z.ZodTypeDef,
+    QuestionType
+> = z
+    .object({
+        sourceValue: z
+            .nullable(
+                z.union([
+                    z.lazy(() => Question4$outboundSchema),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                ])
+            )
+            .optional(),
+        value: z.nullable(QuestionValue$outboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            sourceValue: "source_value",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace QuestionType$ {
-    export const inboundSchema: z.ZodType<QuestionType, z.ZodTypeDef, unknown> = z
-        .object({
-            source_value: z
-                .nullable(
-                    z.union([
-                        z.lazy(() => Question4$.inboundSchema),
-                        z.string(),
-                        z.number(),
-                        z.boolean(),
-                    ])
-                )
-                .optional(),
-            value: z.nullable(QuestionValue$.inboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                source_value: "sourceValue",
-            });
-        });
-
-    export type Outbound = {
-        source_value?: Question4$.Outbound | string | number | boolean | null | undefined;
-        value?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, QuestionType> = z
-        .object({
-            sourceValue: z
-                .nullable(
-                    z.union([
-                        z.lazy(() => Question4$.outboundSchema),
-                        z.string(),
-                        z.number(),
-                        z.boolean(),
-                    ])
-                )
-                .optional(),
-            value: z.nullable(QuestionValue$.outboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                sourceValue: "source_value",
-            });
-        });
+    /** @deprecated use `QuestionType$inboundSchema` instead. */
+    export const inboundSchema = QuestionType$inboundSchema;
+    /** @deprecated use `QuestionType$outboundSchema` instead. */
+    export const outboundSchema = QuestionType$outboundSchema;
+    /** @deprecated use `QuestionType$Outbound` instead. */
+    export type Outbound = QuestionType$Outbound;
 }
 
 /** @internal */
+export const Question$inboundSchema: z.ZodType<Question, z.ZodTypeDef, unknown> = z
+    .object({
+        id: z.nullable(z.string()).optional(),
+        multiple_choice_answers: z
+            .nullable(z.array(QuestionMultipleChoiceAnswers$inboundSchema))
+            .optional(),
+        name: z.nullable(z.string()).optional(),
+        remote_id: z.nullable(z.string()).optional(),
+        required: z.nullable(z.union([z.boolean(), Question2$inboundSchema])).optional(),
+        text: z.nullable(z.string()).optional(),
+        type: z.nullable(z.lazy(() => QuestionType$inboundSchema)).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            multiple_choice_answers: "multipleChoiceAnswers",
+            remote_id: "remoteId",
+        });
+    });
+
+/** @internal */
+export type Question$Outbound = {
+    id?: string | null | undefined;
+    multiple_choice_answers?: Array<QuestionMultipleChoiceAnswers$Outbound> | null | undefined;
+    name?: string | null | undefined;
+    remote_id?: string | null | undefined;
+    required?: boolean | string | null | undefined;
+    text?: string | null | undefined;
+    type?: QuestionType$Outbound | null | undefined;
+};
+
+/** @internal */
+export const Question$outboundSchema: z.ZodType<Question$Outbound, z.ZodTypeDef, Question> = z
+    .object({
+        id: z.nullable(z.string()).optional(),
+        multipleChoiceAnswers: z
+            .nullable(z.array(QuestionMultipleChoiceAnswers$outboundSchema))
+            .optional(),
+        name: z.nullable(z.string()).optional(),
+        remoteId: z.nullable(z.string()).optional(),
+        required: z.nullable(z.union([z.boolean(), Question2$outboundSchema])).optional(),
+        text: z.nullable(z.string()).optional(),
+        type: z.nullable(z.lazy(() => QuestionType$outboundSchema)).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            multipleChoiceAnswers: "multiple_choice_answers",
+            remoteId: "remote_id",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace Question$ {
-    export const inboundSchema: z.ZodType<Question, z.ZodTypeDef, unknown> = z
-        .object({
-            id: z.nullable(z.string()).optional(),
-            multiple_choice_answers: z
-                .nullable(z.array(QuestionMultipleChoiceAnswers$.inboundSchema))
-                .optional(),
-            name: z.nullable(z.string()).optional(),
-            remote_id: z.nullable(z.string()).optional(),
-            required: z.nullable(z.union([z.boolean(), Question2$.inboundSchema])).optional(),
-            text: z.nullable(z.string()).optional(),
-            type: z.nullable(z.lazy(() => QuestionType$.inboundSchema)).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                multiple_choice_answers: "multipleChoiceAnswers",
-                remote_id: "remoteId",
-            });
-        });
-
-    export type Outbound = {
-        id?: string | null | undefined;
-        multiple_choice_answers?: Array<QuestionMultipleChoiceAnswers$.Outbound> | null | undefined;
-        name?: string | null | undefined;
-        remote_id?: string | null | undefined;
-        required?: boolean | string | null | undefined;
-        text?: string | null | undefined;
-        type?: QuestionType$.Outbound | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Question> = z
-        .object({
-            id: z.nullable(z.string()).optional(),
-            multipleChoiceAnswers: z
-                .nullable(z.array(QuestionMultipleChoiceAnswers$.outboundSchema))
-                .optional(),
-            name: z.nullable(z.string()).optional(),
-            remoteId: z.nullable(z.string()).optional(),
-            required: z.nullable(z.union([z.boolean(), Question2$.outboundSchema])).optional(),
-            text: z.nullable(z.string()).optional(),
-            type: z.nullable(z.lazy(() => QuestionType$.outboundSchema)).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                multipleChoiceAnswers: "multiple_choice_answers",
-                remoteId: "remote_id",
-            });
-        });
+    /** @deprecated use `Question$inboundSchema` instead. */
+    export const inboundSchema = Question$inboundSchema;
+    /** @deprecated use `Question$outboundSchema` instead. */
+    export const outboundSchema = Question$outboundSchema;
+    /** @deprecated use `Question$Outbound` instead. */
+    export type Outbound = Question$Outbound;
 }

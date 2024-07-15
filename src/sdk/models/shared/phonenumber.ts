@@ -33,30 +33,58 @@ export type PhoneNumber = {
 };
 
 /** @internal */
-export namespace PhoneNumberType$ {
-    export const inboundSchema: z.ZodType<PhoneNumberTypeOpen, z.ZodTypeDef, unknown> = z.union([
-        z.nativeEnum(PhoneNumberType),
-        z.string().transform(catchUnrecognizedEnum),
-    ]);
+export const PhoneNumberType$inboundSchema: z.ZodType<PhoneNumberTypeOpen, z.ZodTypeDef, unknown> =
+    z.union([z.nativeEnum(PhoneNumberType), z.string().transform(catchUnrecognizedEnum)]);
 
-    export const outboundSchema: z.ZodType<PhoneNumberTypeOpen, z.ZodTypeDef, PhoneNumberTypeOpen> =
-        z.union([z.nativeEnum(PhoneNumberType), z.string().and(z.custom<Unrecognized<string>>())]);
+/** @internal */
+export const PhoneNumberType$outboundSchema: z.ZodType<
+    PhoneNumberTypeOpen,
+    z.ZodTypeDef,
+    PhoneNumberTypeOpen
+> = z.union([z.nativeEnum(PhoneNumberType), z.string().and(z.custom<Unrecognized<string>>())]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace PhoneNumberType$ {
+    /** @deprecated use `PhoneNumberType$inboundSchema` instead. */
+    export const inboundSchema = PhoneNumberType$inboundSchema;
+    /** @deprecated use `PhoneNumberType$outboundSchema` instead. */
+    export const outboundSchema = PhoneNumberType$outboundSchema;
 }
 
 /** @internal */
+export const PhoneNumber$inboundSchema: z.ZodType<PhoneNumber, z.ZodTypeDef, unknown> = z.object({
+    phone: z.nullable(z.string()).optional(),
+    type: z.nullable(PhoneNumberType$inboundSchema).optional(),
+});
+
+/** @internal */
+export type PhoneNumber$Outbound = {
+    phone?: string | null | undefined;
+    type?: string | null | undefined;
+};
+
+/** @internal */
+export const PhoneNumber$outboundSchema: z.ZodType<
+    PhoneNumber$Outbound,
+    z.ZodTypeDef,
+    PhoneNumber
+> = z.object({
+    phone: z.nullable(z.string()).optional(),
+    type: z.nullable(PhoneNumberType$outboundSchema).optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace PhoneNumber$ {
-    export const inboundSchema: z.ZodType<PhoneNumber, z.ZodTypeDef, unknown> = z.object({
-        phone: z.nullable(z.string()).optional(),
-        type: z.nullable(PhoneNumberType$.inboundSchema).optional(),
-    });
-
-    export type Outbound = {
-        phone?: string | null | undefined;
-        type?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, PhoneNumber> = z.object({
-        phone: z.nullable(z.string()).optional(),
-        type: z.nullable(PhoneNumberType$.outboundSchema).optional(),
-    });
+    /** @deprecated use `PhoneNumber$inboundSchema` instead. */
+    export const inboundSchema = PhoneNumber$inboundSchema;
+    /** @deprecated use `PhoneNumber$outboundSchema` instead. */
+    export const outboundSchema = PhoneNumber$outboundSchema;
+    /** @deprecated use `PhoneNumber$Outbound` instead. */
+    export type Outbound = PhoneNumber$Outbound;
 }

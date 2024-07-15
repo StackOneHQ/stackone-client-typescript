@@ -51,166 +51,269 @@ export type EmailMessages = {
 };
 
 /** @internal */
+export const MessageContent$inboundSchema: z.ZodType<MessageContent, z.ZodTypeDef, unknown> = z
+    .object({
+        body: z.nullable(z.string()).optional(),
+        from: z.nullable(z.string()).optional(),
+        preheader: z.nullable(z.string()).optional(),
+        "reply-to": z.nullable(z.string()).optional(),
+        subject: z.nullable(z.string()).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            "reply-to": "replyTo",
+        });
+    });
+
+/** @internal */
+export type MessageContent$Outbound = {
+    body?: string | null | undefined;
+    from?: string | null | undefined;
+    preheader?: string | null | undefined;
+    "reply-to"?: string | null | undefined;
+    subject?: string | null | undefined;
+};
+
+/** @internal */
+export const MessageContent$outboundSchema: z.ZodType<
+    MessageContent$Outbound,
+    z.ZodTypeDef,
+    MessageContent
+> = z
+    .object({
+        body: z.nullable(z.string()).optional(),
+        from: z.nullable(z.string()).optional(),
+        preheader: z.nullable(z.string()).optional(),
+        replyTo: z.nullable(z.string()).optional(),
+        subject: z.nullable(z.string()).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            replyTo: "reply-to",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace MessageContent$ {
-    export const inboundSchema: z.ZodType<MessageContent, z.ZodTypeDef, unknown> = z
-        .object({
-            body: z.nullable(z.string()).optional(),
-            from: z.nullable(z.string()).optional(),
-            preheader: z.nullable(z.string()).optional(),
-            "reply-to": z.nullable(z.string()).optional(),
-            subject: z.nullable(z.string()).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                "reply-to": "replyTo",
-            });
-        });
-
-    export type Outbound = {
-        body?: string | null | undefined;
-        from?: string | null | undefined;
-        preheader?: string | null | undefined;
-        "reply-to"?: string | null | undefined;
-        subject?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, MessageContent> = z
-        .object({
-            body: z.nullable(z.string()).optional(),
-            from: z.nullable(z.string()).optional(),
-            preheader: z.nullable(z.string()).optional(),
-            replyTo: z.nullable(z.string()).optional(),
-            subject: z.nullable(z.string()).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                replyTo: "reply-to",
-            });
-        });
+    /** @deprecated use `MessageContent$inboundSchema` instead. */
+    export const inboundSchema = MessageContent$inboundSchema;
+    /** @deprecated use `MessageContent$outboundSchema` instead. */
+    export const outboundSchema = MessageContent$outboundSchema;
+    /** @deprecated use `MessageContent$Outbound` instead. */
+    export type Outbound = MessageContent$Outbound;
 }
 
 /** @internal */
+export const EmailMessages4$inboundSchema: z.ZodType<EmailMessages4, z.ZodTypeDef, unknown> =
+    z.object({});
+
+/** @internal */
+export type EmailMessages4$Outbound = {};
+
+/** @internal */
+export const EmailMessages4$outboundSchema: z.ZodType<
+    EmailMessages4$Outbound,
+    z.ZodTypeDef,
+    EmailMessages4
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace EmailMessages4$ {
-    export const inboundSchema: z.ZodType<EmailMessages4, z.ZodTypeDef, unknown> = z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, EmailMessages4> = z.object({});
+    /** @deprecated use `EmailMessages4$inboundSchema` instead. */
+    export const inboundSchema = EmailMessages4$inboundSchema;
+    /** @deprecated use `EmailMessages4$outboundSchema` instead. */
+    export const outboundSchema = EmailMessages4$outboundSchema;
+    /** @deprecated use `EmailMessages4$Outbound` instead. */
+    export type Outbound = EmailMessages4$Outbound;
 }
 
 /** @internal */
+export const EmailMessagesSourceValue$inboundSchema: z.ZodType<
+    EmailMessagesSourceValue,
+    z.ZodTypeDef,
+    unknown
+> = z.union([z.lazy(() => EmailMessages4$inboundSchema), z.string(), z.number(), z.boolean()]);
+
+/** @internal */
+export type EmailMessagesSourceValue$Outbound = EmailMessages4$Outbound | string | number | boolean;
+
+/** @internal */
+export const EmailMessagesSourceValue$outboundSchema: z.ZodType<
+    EmailMessagesSourceValue$Outbound,
+    z.ZodTypeDef,
+    EmailMessagesSourceValue
+> = z.union([z.lazy(() => EmailMessages4$outboundSchema), z.string(), z.number(), z.boolean()]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace EmailMessagesSourceValue$ {
-    export const inboundSchema: z.ZodType<EmailMessagesSourceValue, z.ZodTypeDef, unknown> =
-        z.union([z.lazy(() => EmailMessages4$.inboundSchema), z.string(), z.number(), z.boolean()]);
-
-    export type Outbound = EmailMessages4$.Outbound | string | number | boolean;
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, EmailMessagesSourceValue> =
-        z.union([
-            z.lazy(() => EmailMessages4$.outboundSchema),
-            z.string(),
-            z.number(),
-            z.boolean(),
-        ]);
+    /** @deprecated use `EmailMessagesSourceValue$inboundSchema` instead. */
+    export const inboundSchema = EmailMessagesSourceValue$inboundSchema;
+    /** @deprecated use `EmailMessagesSourceValue$outboundSchema` instead. */
+    export const outboundSchema = EmailMessagesSourceValue$outboundSchema;
+    /** @deprecated use `EmailMessagesSourceValue$Outbound` instead. */
+    export type Outbound = EmailMessagesSourceValue$Outbound;
 }
 
 /** @internal */
+export const EmailMessagesValue$inboundSchema: z.ZodType<
+    EmailMessagesValue,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type EmailMessagesValue$Outbound = {};
+
+/** @internal */
+export const EmailMessagesValue$outboundSchema: z.ZodType<
+    EmailMessagesValue$Outbound,
+    z.ZodTypeDef,
+    EmailMessagesValue
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace EmailMessagesValue$ {
-    export const inboundSchema: z.ZodType<EmailMessagesValue, z.ZodTypeDef, unknown> = z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, EmailMessagesValue> = z.object(
-        {}
-    );
+    /** @deprecated use `EmailMessagesValue$inboundSchema` instead. */
+    export const inboundSchema = EmailMessagesValue$inboundSchema;
+    /** @deprecated use `EmailMessagesValue$outboundSchema` instead. */
+    export const outboundSchema = EmailMessagesValue$outboundSchema;
+    /** @deprecated use `EmailMessagesValue$Outbound` instead. */
+    export type Outbound = EmailMessagesValue$Outbound;
 }
 
 /** @internal */
+export const MessageType$inboundSchema: z.ZodType<MessageType, z.ZodTypeDef, unknown> = z
+    .object({
+        source_value: z
+            .nullable(
+                z.union([
+                    z.lazy(() => EmailMessages4$inboundSchema),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                ])
+            )
+            .optional(),
+        value: z.nullable(z.lazy(() => EmailMessagesValue$inboundSchema)).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            source_value: "sourceValue",
+        });
+    });
+
+/** @internal */
+export type MessageType$Outbound = {
+    source_value?: EmailMessages4$Outbound | string | number | boolean | null | undefined;
+    value?: EmailMessagesValue$Outbound | null | undefined;
+};
+
+/** @internal */
+export const MessageType$outboundSchema: z.ZodType<
+    MessageType$Outbound,
+    z.ZodTypeDef,
+    MessageType
+> = z
+    .object({
+        sourceValue: z
+            .nullable(
+                z.union([
+                    z.lazy(() => EmailMessages4$outboundSchema),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                ])
+            )
+            .optional(),
+        value: z.nullable(z.lazy(() => EmailMessagesValue$outboundSchema)).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            sourceValue: "source_value",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace MessageType$ {
-    export const inboundSchema: z.ZodType<MessageType, z.ZodTypeDef, unknown> = z
-        .object({
-            source_value: z
-                .nullable(
-                    z.union([
-                        z.lazy(() => EmailMessages4$.inboundSchema),
-                        z.string(),
-                        z.number(),
-                        z.boolean(),
-                    ])
-                )
-                .optional(),
-            value: z.nullable(z.lazy(() => EmailMessagesValue$.inboundSchema)).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                source_value: "sourceValue",
-            });
-        });
-
-    export type Outbound = {
-        source_value?: EmailMessages4$.Outbound | string | number | boolean | null | undefined;
-        value?: EmailMessagesValue$.Outbound | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, MessageType> = z
-        .object({
-            sourceValue: z
-                .nullable(
-                    z.union([
-                        z.lazy(() => EmailMessages4$.outboundSchema),
-                        z.string(),
-                        z.number(),
-                        z.boolean(),
-                    ])
-                )
-                .optional(),
-            value: z.nullable(z.lazy(() => EmailMessagesValue$.outboundSchema)).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                sourceValue: "source_value",
-            });
-        });
+    /** @deprecated use `MessageType$inboundSchema` instead. */
+    export const inboundSchema = MessageType$inboundSchema;
+    /** @deprecated use `MessageType$outboundSchema` instead. */
+    export const outboundSchema = MessageType$outboundSchema;
+    /** @deprecated use `MessageType$Outbound` instead. */
+    export type Outbound = MessageType$Outbound;
 }
 
 /** @internal */
+export const EmailMessages$inboundSchema: z.ZodType<EmailMessages, z.ZodTypeDef, unknown> = z
+    .object({
+        id: z.nullable(z.string()).optional(),
+        message_content: z.nullable(z.lazy(() => MessageContent$inboundSchema)).optional(),
+        message_type: z.nullable(z.lazy(() => MessageType$inboundSchema)).optional(),
+        name: z.nullable(z.string()).optional(),
+        remote_id: z.nullable(z.string()).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            message_content: "messageContent",
+            message_type: "messageType",
+            remote_id: "remoteId",
+        });
+    });
+
+/** @internal */
+export type EmailMessages$Outbound = {
+    id?: string | null | undefined;
+    message_content?: MessageContent$Outbound | null | undefined;
+    message_type?: MessageType$Outbound | null | undefined;
+    name?: string | null | undefined;
+    remote_id?: string | null | undefined;
+};
+
+/** @internal */
+export const EmailMessages$outboundSchema: z.ZodType<
+    EmailMessages$Outbound,
+    z.ZodTypeDef,
+    EmailMessages
+> = z
+    .object({
+        id: z.nullable(z.string()).optional(),
+        messageContent: z.nullable(z.lazy(() => MessageContent$outboundSchema)).optional(),
+        messageType: z.nullable(z.lazy(() => MessageType$outboundSchema)).optional(),
+        name: z.nullable(z.string()).optional(),
+        remoteId: z.nullable(z.string()).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            messageContent: "message_content",
+            messageType: "message_type",
+            remoteId: "remote_id",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace EmailMessages$ {
-    export const inboundSchema: z.ZodType<EmailMessages, z.ZodTypeDef, unknown> = z
-        .object({
-            id: z.nullable(z.string()).optional(),
-            message_content: z.nullable(z.lazy(() => MessageContent$.inboundSchema)).optional(),
-            message_type: z.nullable(z.lazy(() => MessageType$.inboundSchema)).optional(),
-            name: z.nullable(z.string()).optional(),
-            remote_id: z.nullable(z.string()).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                message_content: "messageContent",
-                message_type: "messageType",
-                remote_id: "remoteId",
-            });
-        });
-
-    export type Outbound = {
-        id?: string | null | undefined;
-        message_content?: MessageContent$.Outbound | null | undefined;
-        message_type?: MessageType$.Outbound | null | undefined;
-        name?: string | null | undefined;
-        remote_id?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, EmailMessages> = z
-        .object({
-            id: z.nullable(z.string()).optional(),
-            messageContent: z.nullable(z.lazy(() => MessageContent$.outboundSchema)).optional(),
-            messageType: z.nullable(z.lazy(() => MessageType$.outboundSchema)).optional(),
-            name: z.nullable(z.string()).optional(),
-            remoteId: z.nullable(z.string()).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                messageContent: "message_content",
-                messageType: "message_type",
-                remoteId: "remote_id",
-            });
-        });
+    /** @deprecated use `EmailMessages$inboundSchema` instead. */
+    export const inboundSchema = EmailMessages$inboundSchema;
+    /** @deprecated use `EmailMessages$outboundSchema` instead. */
+    export const outboundSchema = EmailMessages$outboundSchema;
+    /** @deprecated use `EmailMessages$Outbound` instead. */
+    export type Outbound = EmailMessages$Outbound;
 }

@@ -79,139 +79,194 @@ export type HrisListCompaniesResponse = {
 };
 
 /** @internal */
+export const HrisListCompaniesQueryParamFilter$inboundSchema: z.ZodType<
+    HrisListCompaniesQueryParamFilter,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        updated_after: z.nullable(z.string()).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            updated_after: "updatedAfter",
+        });
+    });
+
+/** @internal */
+export type HrisListCompaniesQueryParamFilter$Outbound = {
+    updated_after?: string | null | undefined;
+};
+
+/** @internal */
+export const HrisListCompaniesQueryParamFilter$outboundSchema: z.ZodType<
+    HrisListCompaniesQueryParamFilter$Outbound,
+    z.ZodTypeDef,
+    HrisListCompaniesQueryParamFilter
+> = z
+    .object({
+        updatedAfter: z.nullable(z.string()).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            updatedAfter: "updated_after",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace HrisListCompaniesQueryParamFilter$ {
-    export const inboundSchema: z.ZodType<
-        HrisListCompaniesQueryParamFilter,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            updated_after: z.nullable(z.string()).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                updated_after: "updatedAfter",
-            });
-        });
-
-    export type Outbound = {
-        updated_after?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        HrisListCompaniesQueryParamFilter
-    > = z
-        .object({
-            updatedAfter: z.nullable(z.string()).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                updatedAfter: "updated_after",
-            });
-        });
+    /** @deprecated use `HrisListCompaniesQueryParamFilter$inboundSchema` instead. */
+    export const inboundSchema = HrisListCompaniesQueryParamFilter$inboundSchema;
+    /** @deprecated use `HrisListCompaniesQueryParamFilter$outboundSchema` instead. */
+    export const outboundSchema = HrisListCompaniesQueryParamFilter$outboundSchema;
+    /** @deprecated use `HrisListCompaniesQueryParamFilter$Outbound` instead. */
+    export type Outbound = HrisListCompaniesQueryParamFilter$Outbound;
 }
 
 /** @internal */
+export const HrisListCompaniesRequest$inboundSchema: z.ZodType<
+    HrisListCompaniesRequest,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        fields: z.nullable(z.string()).optional(),
+        filter: z
+            .nullable(z.lazy(() => HrisListCompaniesQueryParamFilter$inboundSchema))
+            .optional(),
+        next: z.nullable(z.string()).optional(),
+        page: z.nullable(z.string()).optional(),
+        page_size: z.nullable(z.string().default("25")),
+        proxy: z.nullable(z.record(z.any())).optional(),
+        raw: z.nullable(z.boolean().default(false)),
+        updated_after: z.nullable(z.string()).optional(),
+        "x-account-id": z.string(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            page_size: "pageSize",
+            updated_after: "updatedAfter",
+            "x-account-id": "xAccountId",
+        });
+    });
+
+/** @internal */
+export type HrisListCompaniesRequest$Outbound = {
+    fields?: string | null | undefined;
+    filter?: HrisListCompaniesQueryParamFilter$Outbound | null | undefined;
+    next?: string | null | undefined;
+    page?: string | null | undefined;
+    page_size: string | null;
+    proxy?: { [k: string]: any } | null | undefined;
+    raw: boolean | null;
+    updated_after?: string | null | undefined;
+    "x-account-id": string;
+};
+
+/** @internal */
+export const HrisListCompaniesRequest$outboundSchema: z.ZodType<
+    HrisListCompaniesRequest$Outbound,
+    z.ZodTypeDef,
+    HrisListCompaniesRequest
+> = z
+    .object({
+        fields: z.nullable(z.string()).optional(),
+        filter: z
+            .nullable(z.lazy(() => HrisListCompaniesQueryParamFilter$outboundSchema))
+            .optional(),
+        next: z.nullable(z.string()).optional(),
+        page: z.nullable(z.string()).optional(),
+        pageSize: z.nullable(z.string().default("25")),
+        proxy: z.nullable(z.record(z.any())).optional(),
+        raw: z.nullable(z.boolean().default(false)),
+        updatedAfter: z.nullable(z.string()).optional(),
+        xAccountId: z.string(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            pageSize: "page_size",
+            updatedAfter: "updated_after",
+            xAccountId: "x-account-id",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace HrisListCompaniesRequest$ {
-    export const inboundSchema: z.ZodType<HrisListCompaniesRequest, z.ZodTypeDef, unknown> = z
-        .object({
-            fields: z.nullable(z.string()).optional(),
-            filter: z
-                .nullable(z.lazy(() => HrisListCompaniesQueryParamFilter$.inboundSchema))
-                .optional(),
-            next: z.nullable(z.string()).optional(),
-            page: z.nullable(z.string()).optional(),
-            page_size: z.nullable(z.string().default("25")),
-            proxy: z.nullable(z.record(z.any())).optional(),
-            raw: z.nullable(z.boolean().default(false)),
-            updated_after: z.nullable(z.string()).optional(),
-            "x-account-id": z.string(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                page_size: "pageSize",
-                updated_after: "updatedAfter",
-                "x-account-id": "xAccountId",
-            });
-        });
-
-    export type Outbound = {
-        fields?: string | null | undefined;
-        filter?: HrisListCompaniesQueryParamFilter$.Outbound | null | undefined;
-        next?: string | null | undefined;
-        page?: string | null | undefined;
-        page_size: string | null;
-        proxy?: { [k: string]: any } | null | undefined;
-        raw: boolean | null;
-        updated_after?: string | null | undefined;
-        "x-account-id": string;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, HrisListCompaniesRequest> = z
-        .object({
-            fields: z.nullable(z.string()).optional(),
-            filter: z
-                .nullable(z.lazy(() => HrisListCompaniesQueryParamFilter$.outboundSchema))
-                .optional(),
-            next: z.nullable(z.string()).optional(),
-            page: z.nullable(z.string()).optional(),
-            pageSize: z.nullable(z.string().default("25")),
-            proxy: z.nullable(z.record(z.any())).optional(),
-            raw: z.nullable(z.boolean().default(false)),
-            updatedAfter: z.nullable(z.string()).optional(),
-            xAccountId: z.string(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                pageSize: "page_size",
-                updatedAfter: "updated_after",
-                xAccountId: "x-account-id",
-            });
-        });
+    /** @deprecated use `HrisListCompaniesRequest$inboundSchema` instead. */
+    export const inboundSchema = HrisListCompaniesRequest$inboundSchema;
+    /** @deprecated use `HrisListCompaniesRequest$outboundSchema` instead. */
+    export const outboundSchema = HrisListCompaniesRequest$outboundSchema;
+    /** @deprecated use `HrisListCompaniesRequest$Outbound` instead. */
+    export type Outbound = HrisListCompaniesRequest$Outbound;
 }
 
 /** @internal */
+export const HrisListCompaniesResponse$inboundSchema: z.ZodType<
+    HrisListCompaniesResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        CompaniesPaginated: shared.CompaniesPaginated$inboundSchema.optional(),
+        ContentType: z.string(),
+        StatusCode: z.number().int(),
+        RawResponse: z.instanceof(Response),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            CompaniesPaginated: "companiesPaginated",
+            ContentType: "contentType",
+            StatusCode: "statusCode",
+            RawResponse: "rawResponse",
+        });
+    });
+
+/** @internal */
+export type HrisListCompaniesResponse$Outbound = {
+    CompaniesPaginated?: shared.CompaniesPaginated$Outbound | undefined;
+    ContentType: string;
+    StatusCode: number;
+    RawResponse: never;
+};
+
+/** @internal */
+export const HrisListCompaniesResponse$outboundSchema: z.ZodType<
+    HrisListCompaniesResponse$Outbound,
+    z.ZodTypeDef,
+    HrisListCompaniesResponse
+> = z
+    .object({
+        companiesPaginated: shared.CompaniesPaginated$outboundSchema.optional(),
+        contentType: z.string(),
+        statusCode: z.number().int(),
+        rawResponse: z.instanceof(Response).transform(() => {
+            throw new Error("Response cannot be serialized");
+        }),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            companiesPaginated: "CompaniesPaginated",
+            contentType: "ContentType",
+            statusCode: "StatusCode",
+            rawResponse: "RawResponse",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace HrisListCompaniesResponse$ {
-    export const inboundSchema: z.ZodType<HrisListCompaniesResponse, z.ZodTypeDef, unknown> = z
-        .object({
-            CompaniesPaginated: shared.CompaniesPaginated$.inboundSchema.optional(),
-            ContentType: z.string(),
-            StatusCode: z.number().int(),
-            RawResponse: z.instanceof(Response),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                CompaniesPaginated: "companiesPaginated",
-                ContentType: "contentType",
-                StatusCode: "statusCode",
-                RawResponse: "rawResponse",
-            });
-        });
-
-    export type Outbound = {
-        CompaniesPaginated?: shared.CompaniesPaginated$.Outbound | undefined;
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: never;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, HrisListCompaniesResponse> = z
-        .object({
-            companiesPaginated: shared.CompaniesPaginated$.outboundSchema.optional(),
-            contentType: z.string(),
-            statusCode: z.number().int(),
-            rawResponse: z.instanceof(Response).transform(() => {
-                throw new Error("Response cannot be serialized");
-            }),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                companiesPaginated: "CompaniesPaginated",
-                contentType: "ContentType",
-                statusCode: "StatusCode",
-                rawResponse: "RawResponse",
-            });
-        });
+    /** @deprecated use `HrisListCompaniesResponse$inboundSchema` instead. */
+    export const inboundSchema = HrisListCompaniesResponse$inboundSchema;
+    /** @deprecated use `HrisListCompaniesResponse$outboundSchema` instead. */
+    export const outboundSchema = HrisListCompaniesResponse$outboundSchema;
+    /** @deprecated use `HrisListCompaniesResponse$Outbound` instead. */
+    export type Outbound = HrisListCompaniesResponse$Outbound;
 }

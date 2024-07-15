@@ -3,8 +3,18 @@
  */
 
 import { remap as remap$ } from "../../../lib/primitives.js";
-import { IamRole, IamRole$ } from "./iamrole.js";
-import { RawResponse, RawResponse$ } from "./rawresponse.js";
+import {
+    IamRole,
+    IamRole$inboundSchema,
+    IamRole$Outbound,
+    IamRole$outboundSchema,
+} from "./iamrole.js";
+import {
+    RawResponse,
+    RawResponse$inboundSchema,
+    RawResponse$Outbound,
+    RawResponse$outboundSchema,
+} from "./rawresponse.js";
 import * as z from "zod";
 
 export type IamRolesPaginated = {
@@ -18,13 +28,13 @@ export type IamRolesPaginated = {
 };
 
 /** @internal */
-export namespace IamRolesPaginated$ {
-    export const inboundSchema: z.ZodType<IamRolesPaginated, z.ZodTypeDef, unknown> = z
+export const IamRolesPaginated$inboundSchema: z.ZodType<IamRolesPaginated, z.ZodTypeDef, unknown> =
+    z
         .object({
-            data: z.array(IamRole$.inboundSchema),
+            data: z.array(IamRole$inboundSchema),
             next: z.nullable(z.string()).optional(),
             next_page: z.nullable(z.string()).optional(),
-            raw: z.nullable(z.array(RawResponse$.inboundSchema)).optional(),
+            raw: z.nullable(z.array(RawResponse$inboundSchema)).optional(),
         })
         .transform((v) => {
             return remap$(v, {
@@ -32,23 +42,41 @@ export namespace IamRolesPaginated$ {
             });
         });
 
-    export type Outbound = {
-        data: Array<IamRole$.Outbound>;
-        next?: string | null | undefined;
-        next_page?: string | null | undefined;
-        raw?: Array<RawResponse$.Outbound> | null | undefined;
-    };
+/** @internal */
+export type IamRolesPaginated$Outbound = {
+    data: Array<IamRole$Outbound>;
+    next?: string | null | undefined;
+    next_page?: string | null | undefined;
+    raw?: Array<RawResponse$Outbound> | null | undefined;
+};
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, IamRolesPaginated> = z
-        .object({
-            data: z.array(IamRole$.outboundSchema),
-            next: z.nullable(z.string()).optional(),
-            nextPage: z.nullable(z.string()).optional(),
-            raw: z.nullable(z.array(RawResponse$.outboundSchema)).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                nextPage: "next_page",
-            });
+/** @internal */
+export const IamRolesPaginated$outboundSchema: z.ZodType<
+    IamRolesPaginated$Outbound,
+    z.ZodTypeDef,
+    IamRolesPaginated
+> = z
+    .object({
+        data: z.array(IamRole$outboundSchema),
+        next: z.nullable(z.string()).optional(),
+        nextPage: z.nullable(z.string()).optional(),
+        raw: z.nullable(z.array(RawResponse$outboundSchema)).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            nextPage: "next_page",
         });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace IamRolesPaginated$ {
+    /** @deprecated use `IamRolesPaginated$inboundSchema` instead. */
+    export const inboundSchema = IamRolesPaginated$inboundSchema;
+    /** @deprecated use `IamRolesPaginated$outboundSchema` instead. */
+    export const outboundSchema = IamRolesPaginated$outboundSchema;
+    /** @deprecated use `IamRolesPaginated$Outbound` instead. */
+    export type Outbound = IamRolesPaginated$Outbound;
 }

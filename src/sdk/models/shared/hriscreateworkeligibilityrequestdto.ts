@@ -4,7 +4,12 @@
 
 import { remap as remap$ } from "../../../lib/primitives.js";
 import { catchUnrecognizedEnum, OpenEnum, Unrecognized } from "../../types/enums.js";
-import { Content, Content$ } from "./content.js";
+import {
+    Content,
+    Content$inboundSchema,
+    Content$Outbound,
+    Content$outboundSchema,
+} from "./content.js";
 import * as z from "zod";
 
 export type HrisCreateWorkEligibilityRequestDtoSchemasDocument4 = {};
@@ -1654,671 +1659,888 @@ export type HrisCreateWorkEligibilityRequestDto = {
 };
 
 /** @internal */
+export const HrisCreateWorkEligibilityRequestDtoSchemasDocument4$inboundSchema: z.ZodType<
+    HrisCreateWorkEligibilityRequestDtoSchemasDocument4,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type HrisCreateWorkEligibilityRequestDtoSchemasDocument4$Outbound = {};
+
+/** @internal */
+export const HrisCreateWorkEligibilityRequestDtoSchemasDocument4$outboundSchema: z.ZodType<
+    HrisCreateWorkEligibilityRequestDtoSchemasDocument4$Outbound,
+    z.ZodTypeDef,
+    HrisCreateWorkEligibilityRequestDtoSchemasDocument4
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace HrisCreateWorkEligibilityRequestDtoSchemasDocument4$ {
-    export const inboundSchema: z.ZodType<
-        HrisCreateWorkEligibilityRequestDtoSchemasDocument4,
-        z.ZodTypeDef,
-        unknown
-    > = z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        HrisCreateWorkEligibilityRequestDtoSchemasDocument4
-    > = z.object({});
+    /** @deprecated use `HrisCreateWorkEligibilityRequestDtoSchemasDocument4$inboundSchema` instead. */
+    export const inboundSchema = HrisCreateWorkEligibilityRequestDtoSchemasDocument4$inboundSchema;
+    /** @deprecated use `HrisCreateWorkEligibilityRequestDtoSchemasDocument4$outboundSchema` instead. */
+    export const outboundSchema =
+        HrisCreateWorkEligibilityRequestDtoSchemasDocument4$outboundSchema;
+    /** @deprecated use `HrisCreateWorkEligibilityRequestDtoSchemasDocument4$Outbound` instead. */
+    export type Outbound = HrisCreateWorkEligibilityRequestDtoSchemasDocument4$Outbound;
 }
 
 /** @internal */
+export const HrisCreateWorkEligibilityRequestDtoSchemasDocumentSourceValue$inboundSchema: z.ZodType<
+    HrisCreateWorkEligibilityRequestDtoSchemasDocumentSourceValue,
+    z.ZodTypeDef,
+    unknown
+> = z.union([
+    z.lazy(() => HrisCreateWorkEligibilityRequestDtoSchemasDocument4$inboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+]);
+
+/** @internal */
+export type HrisCreateWorkEligibilityRequestDtoSchemasDocumentSourceValue$Outbound =
+    | HrisCreateWorkEligibilityRequestDtoSchemasDocument4$Outbound
+    | string
+    | number
+    | boolean;
+
+/** @internal */
+export const HrisCreateWorkEligibilityRequestDtoSchemasDocumentSourceValue$outboundSchema: z.ZodType<
+    HrisCreateWorkEligibilityRequestDtoSchemasDocumentSourceValue$Outbound,
+    z.ZodTypeDef,
+    HrisCreateWorkEligibilityRequestDtoSchemasDocumentSourceValue
+> = z.union([
+    z.lazy(() => HrisCreateWorkEligibilityRequestDtoSchemasDocument4$outboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace HrisCreateWorkEligibilityRequestDtoSchemasDocumentSourceValue$ {
-    export const inboundSchema: z.ZodType<
-        HrisCreateWorkEligibilityRequestDtoSchemasDocumentSourceValue,
-        z.ZodTypeDef,
-        unknown
-    > = z.union([
-        z.lazy(() => HrisCreateWorkEligibilityRequestDtoSchemasDocument4$.inboundSchema),
-        z.string(),
-        z.number(),
-        z.boolean(),
-    ]);
-
-    export type Outbound =
-        | HrisCreateWorkEligibilityRequestDtoSchemasDocument4$.Outbound
-        | string
-        | number
-        | boolean;
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        HrisCreateWorkEligibilityRequestDtoSchemasDocumentSourceValue
-    > = z.union([
-        z.lazy(() => HrisCreateWorkEligibilityRequestDtoSchemasDocument4$.outboundSchema),
-        z.string(),
-        z.number(),
-        z.boolean(),
-    ]);
+    /** @deprecated use `HrisCreateWorkEligibilityRequestDtoSchemasDocumentSourceValue$inboundSchema` instead. */
+    export const inboundSchema =
+        HrisCreateWorkEligibilityRequestDtoSchemasDocumentSourceValue$inboundSchema;
+    /** @deprecated use `HrisCreateWorkEligibilityRequestDtoSchemasDocumentSourceValue$outboundSchema` instead. */
+    export const outboundSchema =
+        HrisCreateWorkEligibilityRequestDtoSchemasDocumentSourceValue$outboundSchema;
+    /** @deprecated use `HrisCreateWorkEligibilityRequestDtoSchemasDocumentSourceValue$Outbound` instead. */
+    export type Outbound = HrisCreateWorkEligibilityRequestDtoSchemasDocumentSourceValue$Outbound;
 }
 
 /** @internal */
+export const HrisCreateWorkEligibilityRequestDtoCategory$inboundSchema: z.ZodType<
+    HrisCreateWorkEligibilityRequestDtoCategory,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        source_value: z
+            .nullable(
+                z.union([
+                    z.lazy(() => HrisCreateWorkEligibilityRequestDtoSchemasDocument4$inboundSchema),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                ])
+            )
+            .optional(),
+        value: z.nullable(z.string()).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            source_value: "sourceValue",
+        });
+    });
+
+/** @internal */
+export type HrisCreateWorkEligibilityRequestDtoCategory$Outbound = {
+    source_value?:
+        | HrisCreateWorkEligibilityRequestDtoSchemasDocument4$Outbound
+        | string
+        | number
+        | boolean
+        | null
+        | undefined;
+    value?: string | null | undefined;
+};
+
+/** @internal */
+export const HrisCreateWorkEligibilityRequestDtoCategory$outboundSchema: z.ZodType<
+    HrisCreateWorkEligibilityRequestDtoCategory$Outbound,
+    z.ZodTypeDef,
+    HrisCreateWorkEligibilityRequestDtoCategory
+> = z
+    .object({
+        sourceValue: z
+            .nullable(
+                z.union([
+                    z.lazy(
+                        () => HrisCreateWorkEligibilityRequestDtoSchemasDocument4$outboundSchema
+                    ),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                ])
+            )
+            .optional(),
+        value: z.nullable(z.string()).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            sourceValue: "source_value",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace HrisCreateWorkEligibilityRequestDtoCategory$ {
-    export const inboundSchema: z.ZodType<
-        HrisCreateWorkEligibilityRequestDtoCategory,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            source_value: z
-                .nullable(
-                    z.union([
-                        z.lazy(
-                            () => HrisCreateWorkEligibilityRequestDtoSchemasDocument4$.inboundSchema
-                        ),
-                        z.string(),
-                        z.number(),
-                        z.boolean(),
-                    ])
-                )
-                .optional(),
-            value: z.nullable(z.string()).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                source_value: "sourceValue",
-            });
-        });
-
-    export type Outbound = {
-        source_value?:
-            | HrisCreateWorkEligibilityRequestDtoSchemasDocument4$.Outbound
-            | string
-            | number
-            | boolean
-            | null
-            | undefined;
-        value?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        HrisCreateWorkEligibilityRequestDtoCategory
-    > = z
-        .object({
-            sourceValue: z
-                .nullable(
-                    z.union([
-                        z.lazy(
-                            () =>
-                                HrisCreateWorkEligibilityRequestDtoSchemasDocument4$.outboundSchema
-                        ),
-                        z.string(),
-                        z.number(),
-                        z.boolean(),
-                    ])
-                )
-                .optional(),
-            value: z.nullable(z.string()).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                sourceValue: "source_value",
-            });
-        });
+    /** @deprecated use `HrisCreateWorkEligibilityRequestDtoCategory$inboundSchema` instead. */
+    export const inboundSchema = HrisCreateWorkEligibilityRequestDtoCategory$inboundSchema;
+    /** @deprecated use `HrisCreateWorkEligibilityRequestDtoCategory$outboundSchema` instead. */
+    export const outboundSchema = HrisCreateWorkEligibilityRequestDtoCategory$outboundSchema;
+    /** @deprecated use `HrisCreateWorkEligibilityRequestDtoCategory$Outbound` instead. */
+    export type Outbound = HrisCreateWorkEligibilityRequestDtoCategory$Outbound;
 }
 
 /** @internal */
+export const HrisCreateWorkEligibilityRequestDtoSchemasDocumentFileFormat4$inboundSchema: z.ZodType<
+    HrisCreateWorkEligibilityRequestDtoSchemasDocumentFileFormat4,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type HrisCreateWorkEligibilityRequestDtoSchemasDocumentFileFormat4$Outbound = {};
+
+/** @internal */
+export const HrisCreateWorkEligibilityRequestDtoSchemasDocumentFileFormat4$outboundSchema: z.ZodType<
+    HrisCreateWorkEligibilityRequestDtoSchemasDocumentFileFormat4$Outbound,
+    z.ZodTypeDef,
+    HrisCreateWorkEligibilityRequestDtoSchemasDocumentFileFormat4
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace HrisCreateWorkEligibilityRequestDtoSchemasDocumentFileFormat4$ {
-    export const inboundSchema: z.ZodType<
-        HrisCreateWorkEligibilityRequestDtoSchemasDocumentFileFormat4,
-        z.ZodTypeDef,
-        unknown
-    > = z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        HrisCreateWorkEligibilityRequestDtoSchemasDocumentFileFormat4
-    > = z.object({});
+    /** @deprecated use `HrisCreateWorkEligibilityRequestDtoSchemasDocumentFileFormat4$inboundSchema` instead. */
+    export const inboundSchema =
+        HrisCreateWorkEligibilityRequestDtoSchemasDocumentFileFormat4$inboundSchema;
+    /** @deprecated use `HrisCreateWorkEligibilityRequestDtoSchemasDocumentFileFormat4$outboundSchema` instead. */
+    export const outboundSchema =
+        HrisCreateWorkEligibilityRequestDtoSchemasDocumentFileFormat4$outboundSchema;
+    /** @deprecated use `HrisCreateWorkEligibilityRequestDtoSchemasDocumentFileFormat4$Outbound` instead. */
+    export type Outbound = HrisCreateWorkEligibilityRequestDtoSchemasDocumentFileFormat4$Outbound;
 }
 
 /** @internal */
+export const HrisCreateWorkEligibilityRequestDtoSchemasSourceValue$inboundSchema: z.ZodType<
+    HrisCreateWorkEligibilityRequestDtoSchemasSourceValue,
+    z.ZodTypeDef,
+    unknown
+> = z.union([
+    z.lazy(() => HrisCreateWorkEligibilityRequestDtoSchemasDocumentFileFormat4$inboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+]);
+
+/** @internal */
+export type HrisCreateWorkEligibilityRequestDtoSchemasSourceValue$Outbound =
+    | HrisCreateWorkEligibilityRequestDtoSchemasDocumentFileFormat4$Outbound
+    | string
+    | number
+    | boolean;
+
+/** @internal */
+export const HrisCreateWorkEligibilityRequestDtoSchemasSourceValue$outboundSchema: z.ZodType<
+    HrisCreateWorkEligibilityRequestDtoSchemasSourceValue$Outbound,
+    z.ZodTypeDef,
+    HrisCreateWorkEligibilityRequestDtoSchemasSourceValue
+> = z.union([
+    z.lazy(() => HrisCreateWorkEligibilityRequestDtoSchemasDocumentFileFormat4$outboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace HrisCreateWorkEligibilityRequestDtoSchemasSourceValue$ {
-    export const inboundSchema: z.ZodType<
-        HrisCreateWorkEligibilityRequestDtoSchemasSourceValue,
-        z.ZodTypeDef,
-        unknown
-    > = z.union([
-        z.lazy(() => HrisCreateWorkEligibilityRequestDtoSchemasDocumentFileFormat4$.inboundSchema),
-        z.string(),
-        z.number(),
-        z.boolean(),
-    ]);
-
-    export type Outbound =
-        | HrisCreateWorkEligibilityRequestDtoSchemasDocumentFileFormat4$.Outbound
-        | string
-        | number
-        | boolean;
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        HrisCreateWorkEligibilityRequestDtoSchemasSourceValue
-    > = z.union([
-        z.lazy(() => HrisCreateWorkEligibilityRequestDtoSchemasDocumentFileFormat4$.outboundSchema),
-        z.string(),
-        z.number(),
-        z.boolean(),
-    ]);
+    /** @deprecated use `HrisCreateWorkEligibilityRequestDtoSchemasSourceValue$inboundSchema` instead. */
+    export const inboundSchema =
+        HrisCreateWorkEligibilityRequestDtoSchemasSourceValue$inboundSchema;
+    /** @deprecated use `HrisCreateWorkEligibilityRequestDtoSchemasSourceValue$outboundSchema` instead. */
+    export const outboundSchema =
+        HrisCreateWorkEligibilityRequestDtoSchemasSourceValue$outboundSchema;
+    /** @deprecated use `HrisCreateWorkEligibilityRequestDtoSchemasSourceValue$Outbound` instead. */
+    export type Outbound = HrisCreateWorkEligibilityRequestDtoSchemasSourceValue$Outbound;
 }
 
 /** @internal */
+export const HrisCreateWorkEligibilityRequestDtoSchemasDocumentValue$inboundSchema: z.ZodType<
+    HrisCreateWorkEligibilityRequestDtoSchemasDocumentValueOpen,
+    z.ZodTypeDef,
+    unknown
+> = z.union([
+    z.nativeEnum(HrisCreateWorkEligibilityRequestDtoSchemasDocumentValue),
+    z.string().transform(catchUnrecognizedEnum),
+]);
+
+/** @internal */
+export const HrisCreateWorkEligibilityRequestDtoSchemasDocumentValue$outboundSchema: z.ZodType<
+    HrisCreateWorkEligibilityRequestDtoSchemasDocumentValueOpen,
+    z.ZodTypeDef,
+    HrisCreateWorkEligibilityRequestDtoSchemasDocumentValueOpen
+> = z.union([
+    z.nativeEnum(HrisCreateWorkEligibilityRequestDtoSchemasDocumentValue),
+    z.string().and(z.custom<Unrecognized<string>>()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace HrisCreateWorkEligibilityRequestDtoSchemasDocumentValue$ {
-    export const inboundSchema: z.ZodType<
-        HrisCreateWorkEligibilityRequestDtoSchemasDocumentValueOpen,
-        z.ZodTypeDef,
-        unknown
-    > = z.union([
-        z.nativeEnum(HrisCreateWorkEligibilityRequestDtoSchemasDocumentValue),
-        z.string().transform(catchUnrecognizedEnum),
-    ]);
-
-    export const outboundSchema: z.ZodType<
-        HrisCreateWorkEligibilityRequestDtoSchemasDocumentValueOpen,
-        z.ZodTypeDef,
-        HrisCreateWorkEligibilityRequestDtoSchemasDocumentValueOpen
-    > = z.union([
-        z.nativeEnum(HrisCreateWorkEligibilityRequestDtoSchemasDocumentValue),
-        z.string().and(z.custom<Unrecognized<string>>()),
-    ]);
+    /** @deprecated use `HrisCreateWorkEligibilityRequestDtoSchemasDocumentValue$inboundSchema` instead. */
+    export const inboundSchema =
+        HrisCreateWorkEligibilityRequestDtoSchemasDocumentValue$inboundSchema;
+    /** @deprecated use `HrisCreateWorkEligibilityRequestDtoSchemasDocumentValue$outboundSchema` instead. */
+    export const outboundSchema =
+        HrisCreateWorkEligibilityRequestDtoSchemasDocumentValue$outboundSchema;
 }
 
 /** @internal */
+export const HrisCreateWorkEligibilityRequestDtoFileFormat$inboundSchema: z.ZodType<
+    HrisCreateWorkEligibilityRequestDtoFileFormat,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        source_value: z
+            .nullable(
+                z.union([
+                    z.lazy(
+                        () =>
+                            HrisCreateWorkEligibilityRequestDtoSchemasDocumentFileFormat4$inboundSchema
+                    ),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                ])
+            )
+            .optional(),
+        value: z
+            .nullable(HrisCreateWorkEligibilityRequestDtoSchemasDocumentValue$inboundSchema)
+            .optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            source_value: "sourceValue",
+        });
+    });
+
+/** @internal */
+export type HrisCreateWorkEligibilityRequestDtoFileFormat$Outbound = {
+    source_value?:
+        | HrisCreateWorkEligibilityRequestDtoSchemasDocumentFileFormat4$Outbound
+        | string
+        | number
+        | boolean
+        | null
+        | undefined;
+    value?: string | null | undefined;
+};
+
+/** @internal */
+export const HrisCreateWorkEligibilityRequestDtoFileFormat$outboundSchema: z.ZodType<
+    HrisCreateWorkEligibilityRequestDtoFileFormat$Outbound,
+    z.ZodTypeDef,
+    HrisCreateWorkEligibilityRequestDtoFileFormat
+> = z
+    .object({
+        sourceValue: z
+            .nullable(
+                z.union([
+                    z.lazy(
+                        () =>
+                            HrisCreateWorkEligibilityRequestDtoSchemasDocumentFileFormat4$outboundSchema
+                    ),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                ])
+            )
+            .optional(),
+        value: z
+            .nullable(HrisCreateWorkEligibilityRequestDtoSchemasDocumentValue$outboundSchema)
+            .optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            sourceValue: "source_value",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace HrisCreateWorkEligibilityRequestDtoFileFormat$ {
-    export const inboundSchema: z.ZodType<
-        HrisCreateWorkEligibilityRequestDtoFileFormat,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            source_value: z
-                .nullable(
-                    z.union([
-                        z.lazy(
-                            () =>
-                                HrisCreateWorkEligibilityRequestDtoSchemasDocumentFileFormat4$.inboundSchema
-                        ),
-                        z.string(),
-                        z.number(),
-                        z.boolean(),
-                    ])
-                )
-                .optional(),
-            value: z
-                .nullable(HrisCreateWorkEligibilityRequestDtoSchemasDocumentValue$.inboundSchema)
-                .optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                source_value: "sourceValue",
-            });
-        });
-
-    export type Outbound = {
-        source_value?:
-            | HrisCreateWorkEligibilityRequestDtoSchemasDocumentFileFormat4$.Outbound
-            | string
-            | number
-            | boolean
-            | null
-            | undefined;
-        value?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        HrisCreateWorkEligibilityRequestDtoFileFormat
-    > = z
-        .object({
-            sourceValue: z
-                .nullable(
-                    z.union([
-                        z.lazy(
-                            () =>
-                                HrisCreateWorkEligibilityRequestDtoSchemasDocumentFileFormat4$.outboundSchema
-                        ),
-                        z.string(),
-                        z.number(),
-                        z.boolean(),
-                    ])
-                )
-                .optional(),
-            value: z
-                .nullable(HrisCreateWorkEligibilityRequestDtoSchemasDocumentValue$.outboundSchema)
-                .optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                sourceValue: "source_value",
-            });
-        });
+    /** @deprecated use `HrisCreateWorkEligibilityRequestDtoFileFormat$inboundSchema` instead. */
+    export const inboundSchema = HrisCreateWorkEligibilityRequestDtoFileFormat$inboundSchema;
+    /** @deprecated use `HrisCreateWorkEligibilityRequestDtoFileFormat$outboundSchema` instead. */
+    export const outboundSchema = HrisCreateWorkEligibilityRequestDtoFileFormat$outboundSchema;
+    /** @deprecated use `HrisCreateWorkEligibilityRequestDtoFileFormat$Outbound` instead. */
+    export type Outbound = HrisCreateWorkEligibilityRequestDtoFileFormat$Outbound;
 }
 
 /** @internal */
+export const Document$inboundSchema: z.ZodType<Document, z.ZodTypeDef, unknown> = z
+    .object({
+        category: z
+            .nullable(z.lazy(() => HrisCreateWorkEligibilityRequestDtoCategory$inboundSchema))
+            .optional(),
+        contents: z.nullable(z.array(Content$inboundSchema)).optional(),
+        created_at: z
+            .nullable(
+                z
+                    .string()
+                    .datetime({ offset: true })
+                    .transform((v) => new Date(v))
+            )
+            .optional(),
+        file_format: z
+            .nullable(z.lazy(() => HrisCreateWorkEligibilityRequestDtoFileFormat$inboundSchema))
+            .optional(),
+        id: z.nullable(z.string()).optional(),
+        name: z.nullable(z.string()).optional(),
+        path: z.nullable(z.string()).optional(),
+        remote_id: z.nullable(z.string()).optional(),
+        remote_url: z.nullable(z.string()).optional(),
+        updated_at: z
+            .nullable(
+                z
+                    .string()
+                    .datetime({ offset: true })
+                    .transform((v) => new Date(v))
+            )
+            .optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            created_at: "createdAt",
+            file_format: "fileFormat",
+            remote_id: "remoteId",
+            remote_url: "remoteUrl",
+            updated_at: "updatedAt",
+        });
+    });
+
+/** @internal */
+export type Document$Outbound = {
+    category?: HrisCreateWorkEligibilityRequestDtoCategory$Outbound | null | undefined;
+    contents?: Array<Content$Outbound> | null | undefined;
+    created_at?: string | null | undefined;
+    file_format?: HrisCreateWorkEligibilityRequestDtoFileFormat$Outbound | null | undefined;
+    id?: string | null | undefined;
+    name?: string | null | undefined;
+    path?: string | null | undefined;
+    remote_id?: string | null | undefined;
+    remote_url?: string | null | undefined;
+    updated_at?: string | null | undefined;
+};
+
+/** @internal */
+export const Document$outboundSchema: z.ZodType<Document$Outbound, z.ZodTypeDef, Document> = z
+    .object({
+        category: z
+            .nullable(z.lazy(() => HrisCreateWorkEligibilityRequestDtoCategory$outboundSchema))
+            .optional(),
+        contents: z.nullable(z.array(Content$outboundSchema)).optional(),
+        createdAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+        fileFormat: z
+            .nullable(z.lazy(() => HrisCreateWorkEligibilityRequestDtoFileFormat$outboundSchema))
+            .optional(),
+        id: z.nullable(z.string()).optional(),
+        name: z.nullable(z.string()).optional(),
+        path: z.nullable(z.string()).optional(),
+        remoteId: z.nullable(z.string()).optional(),
+        remoteUrl: z.nullable(z.string()).optional(),
+        updatedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            createdAt: "created_at",
+            fileFormat: "file_format",
+            remoteId: "remote_id",
+            remoteUrl: "remote_url",
+            updatedAt: "updated_at",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace Document$ {
-    export const inboundSchema: z.ZodType<Document, z.ZodTypeDef, unknown> = z
-        .object({
-            category: z
-                .nullable(z.lazy(() => HrisCreateWorkEligibilityRequestDtoCategory$.inboundSchema))
-                .optional(),
-            contents: z.nullable(z.array(Content$.inboundSchema)).optional(),
-            created_at: z
-                .nullable(
-                    z
-                        .string()
-                        .datetime({ offset: true })
-                        .transform((v) => new Date(v))
-                )
-                .optional(),
-            file_format: z
-                .nullable(
-                    z.lazy(() => HrisCreateWorkEligibilityRequestDtoFileFormat$.inboundSchema)
-                )
-                .optional(),
-            id: z.nullable(z.string()).optional(),
-            name: z.nullable(z.string()).optional(),
-            path: z.nullable(z.string()).optional(),
-            remote_id: z.nullable(z.string()).optional(),
-            remote_url: z.nullable(z.string()).optional(),
-            updated_at: z
-                .nullable(
-                    z
-                        .string()
-                        .datetime({ offset: true })
-                        .transform((v) => new Date(v))
-                )
-                .optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                created_at: "createdAt",
-                file_format: "fileFormat",
-                remote_id: "remoteId",
-                remote_url: "remoteUrl",
-                updated_at: "updatedAt",
-            });
-        });
-
-    export type Outbound = {
-        category?: HrisCreateWorkEligibilityRequestDtoCategory$.Outbound | null | undefined;
-        contents?: Array<Content$.Outbound> | null | undefined;
-        created_at?: string | null | undefined;
-        file_format?: HrisCreateWorkEligibilityRequestDtoFileFormat$.Outbound | null | undefined;
-        id?: string | null | undefined;
-        name?: string | null | undefined;
-        path?: string | null | undefined;
-        remote_id?: string | null | undefined;
-        remote_url?: string | null | undefined;
-        updated_at?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Document> = z
-        .object({
-            category: z
-                .nullable(z.lazy(() => HrisCreateWorkEligibilityRequestDtoCategory$.outboundSchema))
-                .optional(),
-            contents: z.nullable(z.array(Content$.outboundSchema)).optional(),
-            createdAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
-            fileFormat: z
-                .nullable(
-                    z.lazy(() => HrisCreateWorkEligibilityRequestDtoFileFormat$.outboundSchema)
-                )
-                .optional(),
-            id: z.nullable(z.string()).optional(),
-            name: z.nullable(z.string()).optional(),
-            path: z.nullable(z.string()).optional(),
-            remoteId: z.nullable(z.string()).optional(),
-            remoteUrl: z.nullable(z.string()).optional(),
-            updatedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                createdAt: "created_at",
-                fileFormat: "file_format",
-                remoteId: "remote_id",
-                remoteUrl: "remote_url",
-                updatedAt: "updated_at",
-            });
-        });
+    /** @deprecated use `Document$inboundSchema` instead. */
+    export const inboundSchema = Document$inboundSchema;
+    /** @deprecated use `Document$outboundSchema` instead. */
+    export const outboundSchema = Document$outboundSchema;
+    /** @deprecated use `Document$Outbound` instead. */
+    export type Outbound = Document$Outbound;
 }
 
 /** @internal */
+export const HrisCreateWorkEligibilityRequestDto4$inboundSchema: z.ZodType<
+    HrisCreateWorkEligibilityRequestDto4,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type HrisCreateWorkEligibilityRequestDto4$Outbound = {};
+
+/** @internal */
+export const HrisCreateWorkEligibilityRequestDto4$outboundSchema: z.ZodType<
+    HrisCreateWorkEligibilityRequestDto4$Outbound,
+    z.ZodTypeDef,
+    HrisCreateWorkEligibilityRequestDto4
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace HrisCreateWorkEligibilityRequestDto4$ {
-    export const inboundSchema: z.ZodType<
-        HrisCreateWorkEligibilityRequestDto4,
-        z.ZodTypeDef,
-        unknown
-    > = z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        HrisCreateWorkEligibilityRequestDto4
-    > = z.object({});
+    /** @deprecated use `HrisCreateWorkEligibilityRequestDto4$inboundSchema` instead. */
+    export const inboundSchema = HrisCreateWorkEligibilityRequestDto4$inboundSchema;
+    /** @deprecated use `HrisCreateWorkEligibilityRequestDto4$outboundSchema` instead. */
+    export const outboundSchema = HrisCreateWorkEligibilityRequestDto4$outboundSchema;
+    /** @deprecated use `HrisCreateWorkEligibilityRequestDto4$Outbound` instead. */
+    export type Outbound = HrisCreateWorkEligibilityRequestDto4$Outbound;
 }
 
 /** @internal */
+export const HrisCreateWorkEligibilityRequestDtoSourceValue$inboundSchema: z.ZodType<
+    HrisCreateWorkEligibilityRequestDtoSourceValue,
+    z.ZodTypeDef,
+    unknown
+> = z.union([
+    z.lazy(() => HrisCreateWorkEligibilityRequestDto4$inboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+]);
+
+/** @internal */
+export type HrisCreateWorkEligibilityRequestDtoSourceValue$Outbound =
+    | HrisCreateWorkEligibilityRequestDto4$Outbound
+    | string
+    | number
+    | boolean;
+
+/** @internal */
+export const HrisCreateWorkEligibilityRequestDtoSourceValue$outboundSchema: z.ZodType<
+    HrisCreateWorkEligibilityRequestDtoSourceValue$Outbound,
+    z.ZodTypeDef,
+    HrisCreateWorkEligibilityRequestDtoSourceValue
+> = z.union([
+    z.lazy(() => HrisCreateWorkEligibilityRequestDto4$outboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace HrisCreateWorkEligibilityRequestDtoSourceValue$ {
-    export const inboundSchema: z.ZodType<
-        HrisCreateWorkEligibilityRequestDtoSourceValue,
-        z.ZodTypeDef,
-        unknown
-    > = z.union([
-        z.lazy(() => HrisCreateWorkEligibilityRequestDto4$.inboundSchema),
-        z.string(),
-        z.number(),
-        z.boolean(),
-    ]);
-
-    export type Outbound =
-        | HrisCreateWorkEligibilityRequestDto4$.Outbound
-        | string
-        | number
-        | boolean;
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        HrisCreateWorkEligibilityRequestDtoSourceValue
-    > = z.union([
-        z.lazy(() => HrisCreateWorkEligibilityRequestDto4$.outboundSchema),
-        z.string(),
-        z.number(),
-        z.boolean(),
-    ]);
+    /** @deprecated use `HrisCreateWorkEligibilityRequestDtoSourceValue$inboundSchema` instead. */
+    export const inboundSchema = HrisCreateWorkEligibilityRequestDtoSourceValue$inboundSchema;
+    /** @deprecated use `HrisCreateWorkEligibilityRequestDtoSourceValue$outboundSchema` instead. */
+    export const outboundSchema = HrisCreateWorkEligibilityRequestDtoSourceValue$outboundSchema;
+    /** @deprecated use `HrisCreateWorkEligibilityRequestDtoSourceValue$Outbound` instead. */
+    export type Outbound = HrisCreateWorkEligibilityRequestDtoSourceValue$Outbound;
 }
 
 /** @internal */
+export const HrisCreateWorkEligibilityRequestDtoValue$inboundSchema: z.ZodType<
+    HrisCreateWorkEligibilityRequestDtoValueOpen,
+    z.ZodTypeDef,
+    unknown
+> = z.union([
+    z.nativeEnum(HrisCreateWorkEligibilityRequestDtoValue),
+    z.string().transform(catchUnrecognizedEnum),
+]);
+
+/** @internal */
+export const HrisCreateWorkEligibilityRequestDtoValue$outboundSchema: z.ZodType<
+    HrisCreateWorkEligibilityRequestDtoValueOpen,
+    z.ZodTypeDef,
+    HrisCreateWorkEligibilityRequestDtoValueOpen
+> = z.union([
+    z.nativeEnum(HrisCreateWorkEligibilityRequestDtoValue),
+    z.string().and(z.custom<Unrecognized<string>>()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace HrisCreateWorkEligibilityRequestDtoValue$ {
-    export const inboundSchema: z.ZodType<
-        HrisCreateWorkEligibilityRequestDtoValueOpen,
-        z.ZodTypeDef,
-        unknown
-    > = z.union([
-        z.nativeEnum(HrisCreateWorkEligibilityRequestDtoValue),
-        z.string().transform(catchUnrecognizedEnum),
-    ]);
-
-    export const outboundSchema: z.ZodType<
-        HrisCreateWorkEligibilityRequestDtoValueOpen,
-        z.ZodTypeDef,
-        HrisCreateWorkEligibilityRequestDtoValueOpen
-    > = z.union([
-        z.nativeEnum(HrisCreateWorkEligibilityRequestDtoValue),
-        z.string().and(z.custom<Unrecognized<string>>()),
-    ]);
+    /** @deprecated use `HrisCreateWorkEligibilityRequestDtoValue$inboundSchema` instead. */
+    export const inboundSchema = HrisCreateWorkEligibilityRequestDtoValue$inboundSchema;
+    /** @deprecated use `HrisCreateWorkEligibilityRequestDtoValue$outboundSchema` instead. */
+    export const outboundSchema = HrisCreateWorkEligibilityRequestDtoValue$outboundSchema;
 }
 
 /** @internal */
-export namespace IssuedBy$ {
-    export const inboundSchema: z.ZodType<IssuedBy, z.ZodTypeDef, unknown> = z
-        .object({
-            source_value: z
-                .nullable(
-                    z.union([
-                        z.lazy(() => HrisCreateWorkEligibilityRequestDto4$.inboundSchema),
-                        z.string(),
-                        z.number(),
-                        z.boolean(),
-                    ])
-                )
-                .optional(),
-            value: z.nullable(HrisCreateWorkEligibilityRequestDtoValue$.inboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                source_value: "sourceValue",
-            });
+export const IssuedBy$inboundSchema: z.ZodType<IssuedBy, z.ZodTypeDef, unknown> = z
+    .object({
+        source_value: z
+            .nullable(
+                z.union([
+                    z.lazy(() => HrisCreateWorkEligibilityRequestDto4$inboundSchema),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                ])
+            )
+            .optional(),
+        value: z.nullable(HrisCreateWorkEligibilityRequestDtoValue$inboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            source_value: "sourceValue",
         });
-
-    export type Outbound = {
-        source_value?:
-            | HrisCreateWorkEligibilityRequestDto4$.Outbound
-            | string
-            | number
-            | boolean
-            | null
-            | undefined;
-        value?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, IssuedBy> = z
-        .object({
-            sourceValue: z
-                .nullable(
-                    z.union([
-                        z.lazy(() => HrisCreateWorkEligibilityRequestDto4$.outboundSchema),
-                        z.string(),
-                        z.number(),
-                        z.boolean(),
-                    ])
-                )
-                .optional(),
-            value: z.nullable(HrisCreateWorkEligibilityRequestDtoValue$.outboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                sourceValue: "source_value",
-            });
-        });
-}
+    });
 
 /** @internal */
-export namespace HrisCreateWorkEligibilityRequestDtoSchemas4$ {
-    export const inboundSchema: z.ZodType<
-        HrisCreateWorkEligibilityRequestDtoSchemas4,
-        z.ZodTypeDef,
-        unknown
-    > = z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        HrisCreateWorkEligibilityRequestDtoSchemas4
-    > = z.object({});
-}
-
-/** @internal */
-export namespace SourceType$ {
-    export const inboundSchema: z.ZodType<SourceType, z.ZodTypeDef, unknown> = z.union([
-        z.lazy(() => HrisCreateWorkEligibilityRequestDtoSchemas4$.inboundSchema),
-        z.string(),
-        z.number(),
-        z.boolean(),
-    ]);
-
-    export type Outbound =
-        | HrisCreateWorkEligibilityRequestDtoSchemas4$.Outbound
+export type IssuedBy$Outbound = {
+    source_value?:
+        | HrisCreateWorkEligibilityRequestDto4$Outbound
         | string
         | number
-        | boolean;
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, SourceType> = z.union([
-        z.lazy(() => HrisCreateWorkEligibilityRequestDtoSchemas4$.outboundSchema),
+        | boolean
+        | null
+        | undefined;
+    value?: string | null | undefined;
+};
+
+/** @internal */
+export const IssuedBy$outboundSchema: z.ZodType<IssuedBy$Outbound, z.ZodTypeDef, IssuedBy> = z
+    .object({
+        sourceValue: z
+            .nullable(
+                z.union([
+                    z.lazy(() => HrisCreateWorkEligibilityRequestDto4$outboundSchema),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                ])
+            )
+            .optional(),
+        value: z.nullable(HrisCreateWorkEligibilityRequestDtoValue$outboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            sourceValue: "source_value",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace IssuedBy$ {
+    /** @deprecated use `IssuedBy$inboundSchema` instead. */
+    export const inboundSchema = IssuedBy$inboundSchema;
+    /** @deprecated use `IssuedBy$outboundSchema` instead. */
+    export const outboundSchema = IssuedBy$outboundSchema;
+    /** @deprecated use `IssuedBy$Outbound` instead. */
+    export type Outbound = IssuedBy$Outbound;
+}
+
+/** @internal */
+export const HrisCreateWorkEligibilityRequestDtoSchemas4$inboundSchema: z.ZodType<
+    HrisCreateWorkEligibilityRequestDtoSchemas4,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type HrisCreateWorkEligibilityRequestDtoSchemas4$Outbound = {};
+
+/** @internal */
+export const HrisCreateWorkEligibilityRequestDtoSchemas4$outboundSchema: z.ZodType<
+    HrisCreateWorkEligibilityRequestDtoSchemas4$Outbound,
+    z.ZodTypeDef,
+    HrisCreateWorkEligibilityRequestDtoSchemas4
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace HrisCreateWorkEligibilityRequestDtoSchemas4$ {
+    /** @deprecated use `HrisCreateWorkEligibilityRequestDtoSchemas4$inboundSchema` instead. */
+    export const inboundSchema = HrisCreateWorkEligibilityRequestDtoSchemas4$inboundSchema;
+    /** @deprecated use `HrisCreateWorkEligibilityRequestDtoSchemas4$outboundSchema` instead. */
+    export const outboundSchema = HrisCreateWorkEligibilityRequestDtoSchemas4$outboundSchema;
+    /** @deprecated use `HrisCreateWorkEligibilityRequestDtoSchemas4$Outbound` instead. */
+    export type Outbound = HrisCreateWorkEligibilityRequestDtoSchemas4$Outbound;
+}
+
+/** @internal */
+export const SourceType$inboundSchema: z.ZodType<SourceType, z.ZodTypeDef, unknown> = z.union([
+    z.lazy(() => HrisCreateWorkEligibilityRequestDtoSchemas4$inboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+]);
+
+/** @internal */
+export type SourceType$Outbound =
+    | HrisCreateWorkEligibilityRequestDtoSchemas4$Outbound
+    | string
+    | number
+    | boolean;
+
+/** @internal */
+export const SourceType$outboundSchema: z.ZodType<SourceType$Outbound, z.ZodTypeDef, SourceType> =
+    z.union([
+        z.lazy(() => HrisCreateWorkEligibilityRequestDtoSchemas4$outboundSchema),
         z.string(),
         z.number(),
         z.boolean(),
     ]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace SourceType$ {
+    /** @deprecated use `SourceType$inboundSchema` instead. */
+    export const inboundSchema = SourceType$inboundSchema;
+    /** @deprecated use `SourceType$outboundSchema` instead. */
+    export const outboundSchema = SourceType$outboundSchema;
+    /** @deprecated use `SourceType$Outbound` instead. */
+    export type Outbound = SourceType$Outbound;
 }
 
 /** @internal */
+export const HrisCreateWorkEligibilityRequestDtoSchemasValue$inboundSchema: z.ZodType<
+    HrisCreateWorkEligibilityRequestDtoSchemasValueOpen,
+    z.ZodTypeDef,
+    unknown
+> = z.union([
+    z.nativeEnum(HrisCreateWorkEligibilityRequestDtoSchemasValue),
+    z.string().transform(catchUnrecognizedEnum),
+]);
+
+/** @internal */
+export const HrisCreateWorkEligibilityRequestDtoSchemasValue$outboundSchema: z.ZodType<
+    HrisCreateWorkEligibilityRequestDtoSchemasValueOpen,
+    z.ZodTypeDef,
+    HrisCreateWorkEligibilityRequestDtoSchemasValueOpen
+> = z.union([
+    z.nativeEnum(HrisCreateWorkEligibilityRequestDtoSchemasValue),
+    z.string().and(z.custom<Unrecognized<string>>()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace HrisCreateWorkEligibilityRequestDtoSchemasValue$ {
-    export const inboundSchema: z.ZodType<
-        HrisCreateWorkEligibilityRequestDtoSchemasValueOpen,
-        z.ZodTypeDef,
-        unknown
-    > = z.union([
-        z.nativeEnum(HrisCreateWorkEligibilityRequestDtoSchemasValue),
-        z.string().transform(catchUnrecognizedEnum),
-    ]);
-
-    export const outboundSchema: z.ZodType<
-        HrisCreateWorkEligibilityRequestDtoSchemasValueOpen,
-        z.ZodTypeDef,
-        HrisCreateWorkEligibilityRequestDtoSchemasValueOpen
-    > = z.union([
-        z.nativeEnum(HrisCreateWorkEligibilityRequestDtoSchemasValue),
-        z.string().and(z.custom<Unrecognized<string>>()),
-    ]);
+    /** @deprecated use `HrisCreateWorkEligibilityRequestDtoSchemasValue$inboundSchema` instead. */
+    export const inboundSchema = HrisCreateWorkEligibilityRequestDtoSchemasValue$inboundSchema;
+    /** @deprecated use `HrisCreateWorkEligibilityRequestDtoSchemasValue$outboundSchema` instead. */
+    export const outboundSchema = HrisCreateWorkEligibilityRequestDtoSchemasValue$outboundSchema;
 }
 
 /** @internal */
+export const HrisCreateWorkEligibilityRequestDtoType$inboundSchema: z.ZodType<
+    HrisCreateWorkEligibilityRequestDtoType,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        source_type: z
+            .nullable(
+                z.union([
+                    z.lazy(() => HrisCreateWorkEligibilityRequestDtoSchemas4$inboundSchema),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                ])
+            )
+            .optional(),
+        value: z.nullable(HrisCreateWorkEligibilityRequestDtoSchemasValue$inboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            source_type: "sourceType",
+        });
+    });
+
+/** @internal */
+export type HrisCreateWorkEligibilityRequestDtoType$Outbound = {
+    source_type?:
+        | HrisCreateWorkEligibilityRequestDtoSchemas4$Outbound
+        | string
+        | number
+        | boolean
+        | null
+        | undefined;
+    value?: string | null | undefined;
+};
+
+/** @internal */
+export const HrisCreateWorkEligibilityRequestDtoType$outboundSchema: z.ZodType<
+    HrisCreateWorkEligibilityRequestDtoType$Outbound,
+    z.ZodTypeDef,
+    HrisCreateWorkEligibilityRequestDtoType
+> = z
+    .object({
+        sourceType: z
+            .nullable(
+                z.union([
+                    z.lazy(() => HrisCreateWorkEligibilityRequestDtoSchemas4$outboundSchema),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                ])
+            )
+            .optional(),
+        value: z
+            .nullable(HrisCreateWorkEligibilityRequestDtoSchemasValue$outboundSchema)
+            .optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            sourceType: "source_type",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace HrisCreateWorkEligibilityRequestDtoType$ {
-    export const inboundSchema: z.ZodType<
-        HrisCreateWorkEligibilityRequestDtoType,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            source_type: z
-                .nullable(
-                    z.union([
-                        z.lazy(() => HrisCreateWorkEligibilityRequestDtoSchemas4$.inboundSchema),
-                        z.string(),
-                        z.number(),
-                        z.boolean(),
-                    ])
-                )
-                .optional(),
-            value: z
-                .nullable(HrisCreateWorkEligibilityRequestDtoSchemasValue$.inboundSchema)
-                .optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                source_type: "sourceType",
-            });
-        });
-
-    export type Outbound = {
-        source_type?:
-            | HrisCreateWorkEligibilityRequestDtoSchemas4$.Outbound
-            | string
-            | number
-            | boolean
-            | null
-            | undefined;
-        value?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        HrisCreateWorkEligibilityRequestDtoType
-    > = z
-        .object({
-            sourceType: z
-                .nullable(
-                    z.union([
-                        z.lazy(() => HrisCreateWorkEligibilityRequestDtoSchemas4$.outboundSchema),
-                        z.string(),
-                        z.number(),
-                        z.boolean(),
-                    ])
-                )
-                .optional(),
-            value: z
-                .nullable(HrisCreateWorkEligibilityRequestDtoSchemasValue$.outboundSchema)
-                .optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                sourceType: "source_type",
-            });
-        });
+    /** @deprecated use `HrisCreateWorkEligibilityRequestDtoType$inboundSchema` instead. */
+    export const inboundSchema = HrisCreateWorkEligibilityRequestDtoType$inboundSchema;
+    /** @deprecated use `HrisCreateWorkEligibilityRequestDtoType$outboundSchema` instead. */
+    export const outboundSchema = HrisCreateWorkEligibilityRequestDtoType$outboundSchema;
+    /** @deprecated use `HrisCreateWorkEligibilityRequestDtoType$Outbound` instead. */
+    export type Outbound = HrisCreateWorkEligibilityRequestDtoType$Outbound;
 }
 
 /** @internal */
+export const HrisCreateWorkEligibilityRequestDto$inboundSchema: z.ZodType<
+    HrisCreateWorkEligibilityRequestDto,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        document: z.nullable(z.lazy(() => Document$inboundSchema)).optional(),
+        issued_by: z.nullable(z.lazy(() => IssuedBy$inboundSchema)).optional(),
+        number: z.nullable(z.string()).optional(),
+        passthrough: z.nullable(z.record(z.any())).optional(),
+        sub_type: z.nullable(z.string()).optional(),
+        type: z
+            .nullable(z.lazy(() => HrisCreateWorkEligibilityRequestDtoType$inboundSchema))
+            .optional(),
+        valid_from: z
+            .nullable(
+                z
+                    .string()
+                    .datetime({ offset: true })
+                    .transform((v) => new Date(v))
+            )
+            .optional(),
+        valid_to: z
+            .nullable(
+                z
+                    .string()
+                    .datetime({ offset: true })
+                    .transform((v) => new Date(v))
+            )
+            .optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            issued_by: "issuedBy",
+            sub_type: "subType",
+            valid_from: "validFrom",
+            valid_to: "validTo",
+        });
+    });
+
+/** @internal */
+export type HrisCreateWorkEligibilityRequestDto$Outbound = {
+    document?: Document$Outbound | null | undefined;
+    issued_by?: IssuedBy$Outbound | null | undefined;
+    number?: string | null | undefined;
+    passthrough?: { [k: string]: any } | null | undefined;
+    sub_type?: string | null | undefined;
+    type?: HrisCreateWorkEligibilityRequestDtoType$Outbound | null | undefined;
+    valid_from?: string | null | undefined;
+    valid_to?: string | null | undefined;
+};
+
+/** @internal */
+export const HrisCreateWorkEligibilityRequestDto$outboundSchema: z.ZodType<
+    HrisCreateWorkEligibilityRequestDto$Outbound,
+    z.ZodTypeDef,
+    HrisCreateWorkEligibilityRequestDto
+> = z
+    .object({
+        document: z.nullable(z.lazy(() => Document$outboundSchema)).optional(),
+        issuedBy: z.nullable(z.lazy(() => IssuedBy$outboundSchema)).optional(),
+        number: z.nullable(z.string()).optional(),
+        passthrough: z.nullable(z.record(z.any())).optional(),
+        subType: z.nullable(z.string()).optional(),
+        type: z
+            .nullable(z.lazy(() => HrisCreateWorkEligibilityRequestDtoType$outboundSchema))
+            .optional(),
+        validFrom: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+        validTo: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            issuedBy: "issued_by",
+            subType: "sub_type",
+            validFrom: "valid_from",
+            validTo: "valid_to",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace HrisCreateWorkEligibilityRequestDto$ {
-    export const inboundSchema: z.ZodType<
-        HrisCreateWorkEligibilityRequestDto,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            document: z.nullable(z.lazy(() => Document$.inboundSchema)).optional(),
-            issued_by: z.nullable(z.lazy(() => IssuedBy$.inboundSchema)).optional(),
-            number: z.nullable(z.string()).optional(),
-            passthrough: z.nullable(z.record(z.any())).optional(),
-            sub_type: z.nullable(z.string()).optional(),
-            type: z
-                .nullable(z.lazy(() => HrisCreateWorkEligibilityRequestDtoType$.inboundSchema))
-                .optional(),
-            valid_from: z
-                .nullable(
-                    z
-                        .string()
-                        .datetime({ offset: true })
-                        .transform((v) => new Date(v))
-                )
-                .optional(),
-            valid_to: z
-                .nullable(
-                    z
-                        .string()
-                        .datetime({ offset: true })
-                        .transform((v) => new Date(v))
-                )
-                .optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                issued_by: "issuedBy",
-                sub_type: "subType",
-                valid_from: "validFrom",
-                valid_to: "validTo",
-            });
-        });
-
-    export type Outbound = {
-        document?: Document$.Outbound | null | undefined;
-        issued_by?: IssuedBy$.Outbound | null | undefined;
-        number?: string | null | undefined;
-        passthrough?: { [k: string]: any } | null | undefined;
-        sub_type?: string | null | undefined;
-        type?: HrisCreateWorkEligibilityRequestDtoType$.Outbound | null | undefined;
-        valid_from?: string | null | undefined;
-        valid_to?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        HrisCreateWorkEligibilityRequestDto
-    > = z
-        .object({
-            document: z.nullable(z.lazy(() => Document$.outboundSchema)).optional(),
-            issuedBy: z.nullable(z.lazy(() => IssuedBy$.outboundSchema)).optional(),
-            number: z.nullable(z.string()).optional(),
-            passthrough: z.nullable(z.record(z.any())).optional(),
-            subType: z.nullable(z.string()).optional(),
-            type: z
-                .nullable(z.lazy(() => HrisCreateWorkEligibilityRequestDtoType$.outboundSchema))
-                .optional(),
-            validFrom: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
-            validTo: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                issuedBy: "issued_by",
-                subType: "sub_type",
-                validFrom: "valid_from",
-                validTo: "valid_to",
-            });
-        });
+    /** @deprecated use `HrisCreateWorkEligibilityRequestDto$inboundSchema` instead. */
+    export const inboundSchema = HrisCreateWorkEligibilityRequestDto$inboundSchema;
+    /** @deprecated use `HrisCreateWorkEligibilityRequestDto$outboundSchema` instead. */
+    export const outboundSchema = HrisCreateWorkEligibilityRequestDto$outboundSchema;
+    /** @deprecated use `HrisCreateWorkEligibilityRequestDto$Outbound` instead. */
+    export type Outbound = HrisCreateWorkEligibilityRequestDto$Outbound;
 }

@@ -38,97 +38,123 @@ export type HrisDownloadEmployeeDocumentResponse = {
 };
 
 /** @internal */
+export const HrisDownloadEmployeeDocumentRequest$inboundSchema: z.ZodType<
+    HrisDownloadEmployeeDocumentRequest,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        format: z.nullable(z.string()).optional(),
+        id: z.string(),
+        subResourceId: z.string(),
+        "x-account-id": z.string(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            "x-account-id": "xAccountId",
+        });
+    });
+
+/** @internal */
+export type HrisDownloadEmployeeDocumentRequest$Outbound = {
+    format?: string | null | undefined;
+    id: string;
+    subResourceId: string;
+    "x-account-id": string;
+};
+
+/** @internal */
+export const HrisDownloadEmployeeDocumentRequest$outboundSchema: z.ZodType<
+    HrisDownloadEmployeeDocumentRequest$Outbound,
+    z.ZodTypeDef,
+    HrisDownloadEmployeeDocumentRequest
+> = z
+    .object({
+        format: z.nullable(z.string()).optional(),
+        id: z.string(),
+        subResourceId: z.string(),
+        xAccountId: z.string(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            xAccountId: "x-account-id",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace HrisDownloadEmployeeDocumentRequest$ {
-    export const inboundSchema: z.ZodType<
-        HrisDownloadEmployeeDocumentRequest,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            format: z.nullable(z.string()).optional(),
-            id: z.string(),
-            subResourceId: z.string(),
-            "x-account-id": z.string(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                "x-account-id": "xAccountId",
-            });
-        });
-
-    export type Outbound = {
-        format?: string | null | undefined;
-        id: string;
-        subResourceId: string;
-        "x-account-id": string;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        HrisDownloadEmployeeDocumentRequest
-    > = z
-        .object({
-            format: z.nullable(z.string()).optional(),
-            id: z.string(),
-            subResourceId: z.string(),
-            xAccountId: z.string(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                xAccountId: "x-account-id",
-            });
-        });
+    /** @deprecated use `HrisDownloadEmployeeDocumentRequest$inboundSchema` instead. */
+    export const inboundSchema = HrisDownloadEmployeeDocumentRequest$inboundSchema;
+    /** @deprecated use `HrisDownloadEmployeeDocumentRequest$outboundSchema` instead. */
+    export const outboundSchema = HrisDownloadEmployeeDocumentRequest$outboundSchema;
+    /** @deprecated use `HrisDownloadEmployeeDocumentRequest$Outbound` instead. */
+    export type Outbound = HrisDownloadEmployeeDocumentRequest$Outbound;
 }
 
 /** @internal */
+export const HrisDownloadEmployeeDocumentResponse$inboundSchema: z.ZodType<
+    HrisDownloadEmployeeDocumentResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        ContentType: z.string(),
+        StatusCode: z.number().int(),
+        RawResponse: z.instanceof(Response),
+        "response-stream": z.instanceof(ReadableStream<Uint8Array>).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            ContentType: "contentType",
+            StatusCode: "statusCode",
+            RawResponse: "rawResponse",
+            "response-stream": "responseStream",
+        });
+    });
+
+/** @internal */
+export type HrisDownloadEmployeeDocumentResponse$Outbound = {
+    ContentType: string;
+    StatusCode: number;
+    RawResponse: never;
+    "response-stream"?: ReadableStream<Uint8Array> | undefined;
+};
+
+/** @internal */
+export const HrisDownloadEmployeeDocumentResponse$outboundSchema: z.ZodType<
+    HrisDownloadEmployeeDocumentResponse$Outbound,
+    z.ZodTypeDef,
+    HrisDownloadEmployeeDocumentResponse
+> = z
+    .object({
+        contentType: z.string(),
+        statusCode: z.number().int(),
+        rawResponse: z.instanceof(Response).transform(() => {
+            throw new Error("Response cannot be serialized");
+        }),
+        responseStream: z.instanceof(ReadableStream<Uint8Array>).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            contentType: "ContentType",
+            statusCode: "StatusCode",
+            rawResponse: "RawResponse",
+            responseStream: "response-stream",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace HrisDownloadEmployeeDocumentResponse$ {
-    export const inboundSchema: z.ZodType<
-        HrisDownloadEmployeeDocumentResponse,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            ContentType: z.string(),
-            StatusCode: z.number().int(),
-            RawResponse: z.instanceof(Response),
-            "response-stream": z.instanceof(ReadableStream<Uint8Array>).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                ContentType: "contentType",
-                StatusCode: "statusCode",
-                RawResponse: "rawResponse",
-                "response-stream": "responseStream",
-            });
-        });
-
-    export type Outbound = {
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: never;
-        "response-stream"?: ReadableStream<Uint8Array> | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        HrisDownloadEmployeeDocumentResponse
-    > = z
-        .object({
-            contentType: z.string(),
-            statusCode: z.number().int(),
-            rawResponse: z.instanceof(Response).transform(() => {
-                throw new Error("Response cannot be serialized");
-            }),
-            responseStream: z.instanceof(ReadableStream<Uint8Array>).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                contentType: "ContentType",
-                statusCode: "StatusCode",
-                rawResponse: "RawResponse",
-                responseStream: "response-stream",
-            });
-        });
+    /** @deprecated use `HrisDownloadEmployeeDocumentResponse$inboundSchema` instead. */
+    export const inboundSchema = HrisDownloadEmployeeDocumentResponse$inboundSchema;
+    /** @deprecated use `HrisDownloadEmployeeDocumentResponse$outboundSchema` instead. */
+    export const outboundSchema = HrisDownloadEmployeeDocumentResponse$outboundSchema;
+    /** @deprecated use `HrisDownloadEmployeeDocumentResponse$Outbound` instead. */
+    export type Outbound = HrisDownloadEmployeeDocumentResponse$Outbound;
 }

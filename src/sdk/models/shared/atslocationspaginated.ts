@@ -3,8 +3,18 @@
  */
 
 import { remap as remap$ } from "../../../lib/primitives.js";
-import { ATSLocation, ATSLocation$ } from "./atslocation.js";
-import { RawResponse, RawResponse$ } from "./rawresponse.js";
+import {
+    ATSLocation,
+    ATSLocation$inboundSchema,
+    ATSLocation$Outbound,
+    ATSLocation$outboundSchema,
+} from "./atslocation.js";
+import {
+    RawResponse,
+    RawResponse$inboundSchema,
+    RawResponse$Outbound,
+    RawResponse$outboundSchema,
+} from "./rawresponse.js";
 import * as z from "zod";
 
 export type ATSLocationsPaginated = {
@@ -18,37 +28,58 @@ export type ATSLocationsPaginated = {
 };
 
 /** @internal */
+export const ATSLocationsPaginated$inboundSchema: z.ZodType<
+    ATSLocationsPaginated,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        data: z.array(ATSLocation$inboundSchema),
+        next: z.nullable(z.string()).optional(),
+        next_page: z.nullable(z.string()).optional(),
+        raw: z.nullable(z.array(RawResponse$inboundSchema)).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            next_page: "nextPage",
+        });
+    });
+
+/** @internal */
+export type ATSLocationsPaginated$Outbound = {
+    data: Array<ATSLocation$Outbound>;
+    next?: string | null | undefined;
+    next_page?: string | null | undefined;
+    raw?: Array<RawResponse$Outbound> | null | undefined;
+};
+
+/** @internal */
+export const ATSLocationsPaginated$outboundSchema: z.ZodType<
+    ATSLocationsPaginated$Outbound,
+    z.ZodTypeDef,
+    ATSLocationsPaginated
+> = z
+    .object({
+        data: z.array(ATSLocation$outboundSchema),
+        next: z.nullable(z.string()).optional(),
+        nextPage: z.nullable(z.string()).optional(),
+        raw: z.nullable(z.array(RawResponse$outboundSchema)).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            nextPage: "next_page",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace ATSLocationsPaginated$ {
-    export const inboundSchema: z.ZodType<ATSLocationsPaginated, z.ZodTypeDef, unknown> = z
-        .object({
-            data: z.array(ATSLocation$.inboundSchema),
-            next: z.nullable(z.string()).optional(),
-            next_page: z.nullable(z.string()).optional(),
-            raw: z.nullable(z.array(RawResponse$.inboundSchema)).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                next_page: "nextPage",
-            });
-        });
-
-    export type Outbound = {
-        data: Array<ATSLocation$.Outbound>;
-        next?: string | null | undefined;
-        next_page?: string | null | undefined;
-        raw?: Array<RawResponse$.Outbound> | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ATSLocationsPaginated> = z
-        .object({
-            data: z.array(ATSLocation$.outboundSchema),
-            next: z.nullable(z.string()).optional(),
-            nextPage: z.nullable(z.string()).optional(),
-            raw: z.nullable(z.array(RawResponse$.outboundSchema)).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                nextPage: "next_page",
-            });
-        });
+    /** @deprecated use `ATSLocationsPaginated$inboundSchema` instead. */
+    export const inboundSchema = ATSLocationsPaginated$inboundSchema;
+    /** @deprecated use `ATSLocationsPaginated$outboundSchema` instead. */
+    export const outboundSchema = ATSLocationsPaginated$outboundSchema;
+    /** @deprecated use `ATSLocationsPaginated$Outbound` instead. */
+    export type Outbound = ATSLocationsPaginated$Outbound;
 }

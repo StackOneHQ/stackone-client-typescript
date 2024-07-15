@@ -83,139 +83,193 @@ export type IamListPoliciesResponse = {
 };
 
 /** @internal */
+export const IamListPoliciesQueryParamFilter$inboundSchema: z.ZodType<
+    IamListPoliciesQueryParamFilter,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        updated_after: z.nullable(z.string()).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            updated_after: "updatedAfter",
+        });
+    });
+
+/** @internal */
+export type IamListPoliciesQueryParamFilter$Outbound = {
+    updated_after?: string | null | undefined;
+};
+
+/** @internal */
+export const IamListPoliciesQueryParamFilter$outboundSchema: z.ZodType<
+    IamListPoliciesQueryParamFilter$Outbound,
+    z.ZodTypeDef,
+    IamListPoliciesQueryParamFilter
+> = z
+    .object({
+        updatedAfter: z.nullable(z.string()).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            updatedAfter: "updated_after",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace IamListPoliciesQueryParamFilter$ {
-    export const inboundSchema: z.ZodType<IamListPoliciesQueryParamFilter, z.ZodTypeDef, unknown> =
-        z
-            .object({
-                updated_after: z.nullable(z.string()).optional(),
-            })
-            .transform((v) => {
-                return remap$(v, {
-                    updated_after: "updatedAfter",
-                });
-            });
-
-    export type Outbound = {
-        updated_after?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        IamListPoliciesQueryParamFilter
-    > = z
-        .object({
-            updatedAfter: z.nullable(z.string()).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                updatedAfter: "updated_after",
-            });
-        });
+    /** @deprecated use `IamListPoliciesQueryParamFilter$inboundSchema` instead. */
+    export const inboundSchema = IamListPoliciesQueryParamFilter$inboundSchema;
+    /** @deprecated use `IamListPoliciesQueryParamFilter$outboundSchema` instead. */
+    export const outboundSchema = IamListPoliciesQueryParamFilter$outboundSchema;
+    /** @deprecated use `IamListPoliciesQueryParamFilter$Outbound` instead. */
+    export type Outbound = IamListPoliciesQueryParamFilter$Outbound;
 }
 
 /** @internal */
+export const IamListPoliciesRequest$inboundSchema: z.ZodType<
+    IamListPoliciesRequest,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        expand: z.nullable(z.string()).optional(),
+        fields: z.nullable(z.string()).optional(),
+        filter: z.nullable(z.lazy(() => IamListPoliciesQueryParamFilter$inboundSchema)).optional(),
+        next: z.nullable(z.string()).optional(),
+        page: z.nullable(z.string()).optional(),
+        page_size: z.nullable(z.string().default("25")),
+        proxy: z.nullable(z.record(z.any())).optional(),
+        raw: z.nullable(z.boolean().default(false)),
+        updated_after: z.nullable(z.string()).optional(),
+        "x-account-id": z.string(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            page_size: "pageSize",
+            updated_after: "updatedAfter",
+            "x-account-id": "xAccountId",
+        });
+    });
+
+/** @internal */
+export type IamListPoliciesRequest$Outbound = {
+    expand?: string | null | undefined;
+    fields?: string | null | undefined;
+    filter?: IamListPoliciesQueryParamFilter$Outbound | null | undefined;
+    next?: string | null | undefined;
+    page?: string | null | undefined;
+    page_size: string | null;
+    proxy?: { [k: string]: any } | null | undefined;
+    raw: boolean | null;
+    updated_after?: string | null | undefined;
+    "x-account-id": string;
+};
+
+/** @internal */
+export const IamListPoliciesRequest$outboundSchema: z.ZodType<
+    IamListPoliciesRequest$Outbound,
+    z.ZodTypeDef,
+    IamListPoliciesRequest
+> = z
+    .object({
+        expand: z.nullable(z.string()).optional(),
+        fields: z.nullable(z.string()).optional(),
+        filter: z.nullable(z.lazy(() => IamListPoliciesQueryParamFilter$outboundSchema)).optional(),
+        next: z.nullable(z.string()).optional(),
+        page: z.nullable(z.string()).optional(),
+        pageSize: z.nullable(z.string().default("25")),
+        proxy: z.nullable(z.record(z.any())).optional(),
+        raw: z.nullable(z.boolean().default(false)),
+        updatedAfter: z.nullable(z.string()).optional(),
+        xAccountId: z.string(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            pageSize: "page_size",
+            updatedAfter: "updated_after",
+            xAccountId: "x-account-id",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace IamListPoliciesRequest$ {
-    export const inboundSchema: z.ZodType<IamListPoliciesRequest, z.ZodTypeDef, unknown> = z
-        .object({
-            expand: z.nullable(z.string()).optional(),
-            fields: z.nullable(z.string()).optional(),
-            filter: z
-                .nullable(z.lazy(() => IamListPoliciesQueryParamFilter$.inboundSchema))
-                .optional(),
-            next: z.nullable(z.string()).optional(),
-            page: z.nullable(z.string()).optional(),
-            page_size: z.nullable(z.string().default("25")),
-            proxy: z.nullable(z.record(z.any())).optional(),
-            raw: z.nullable(z.boolean().default(false)),
-            updated_after: z.nullable(z.string()).optional(),
-            "x-account-id": z.string(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                page_size: "pageSize",
-                updated_after: "updatedAfter",
-                "x-account-id": "xAccountId",
-            });
-        });
-
-    export type Outbound = {
-        expand?: string | null | undefined;
-        fields?: string | null | undefined;
-        filter?: IamListPoliciesQueryParamFilter$.Outbound | null | undefined;
-        next?: string | null | undefined;
-        page?: string | null | undefined;
-        page_size: string | null;
-        proxy?: { [k: string]: any } | null | undefined;
-        raw: boolean | null;
-        updated_after?: string | null | undefined;
-        "x-account-id": string;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, IamListPoliciesRequest> = z
-        .object({
-            expand: z.nullable(z.string()).optional(),
-            fields: z.nullable(z.string()).optional(),
-            filter: z
-                .nullable(z.lazy(() => IamListPoliciesQueryParamFilter$.outboundSchema))
-                .optional(),
-            next: z.nullable(z.string()).optional(),
-            page: z.nullable(z.string()).optional(),
-            pageSize: z.nullable(z.string().default("25")),
-            proxy: z.nullable(z.record(z.any())).optional(),
-            raw: z.nullable(z.boolean().default(false)),
-            updatedAfter: z.nullable(z.string()).optional(),
-            xAccountId: z.string(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                pageSize: "page_size",
-                updatedAfter: "updated_after",
-                xAccountId: "x-account-id",
-            });
-        });
+    /** @deprecated use `IamListPoliciesRequest$inboundSchema` instead. */
+    export const inboundSchema = IamListPoliciesRequest$inboundSchema;
+    /** @deprecated use `IamListPoliciesRequest$outboundSchema` instead. */
+    export const outboundSchema = IamListPoliciesRequest$outboundSchema;
+    /** @deprecated use `IamListPoliciesRequest$Outbound` instead. */
+    export type Outbound = IamListPoliciesRequest$Outbound;
 }
 
 /** @internal */
+export const IamListPoliciesResponse$inboundSchema: z.ZodType<
+    IamListPoliciesResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        ContentType: z.string(),
+        IamPoliciesPaginated: shared.IamPoliciesPaginated$inboundSchema.optional(),
+        StatusCode: z.number().int(),
+        RawResponse: z.instanceof(Response),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            ContentType: "contentType",
+            IamPoliciesPaginated: "iamPoliciesPaginated",
+            StatusCode: "statusCode",
+            RawResponse: "rawResponse",
+        });
+    });
+
+/** @internal */
+export type IamListPoliciesResponse$Outbound = {
+    ContentType: string;
+    IamPoliciesPaginated?: shared.IamPoliciesPaginated$Outbound | undefined;
+    StatusCode: number;
+    RawResponse: never;
+};
+
+/** @internal */
+export const IamListPoliciesResponse$outboundSchema: z.ZodType<
+    IamListPoliciesResponse$Outbound,
+    z.ZodTypeDef,
+    IamListPoliciesResponse
+> = z
+    .object({
+        contentType: z.string(),
+        iamPoliciesPaginated: shared.IamPoliciesPaginated$outboundSchema.optional(),
+        statusCode: z.number().int(),
+        rawResponse: z.instanceof(Response).transform(() => {
+            throw new Error("Response cannot be serialized");
+        }),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            contentType: "ContentType",
+            iamPoliciesPaginated: "IamPoliciesPaginated",
+            statusCode: "StatusCode",
+            rawResponse: "RawResponse",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace IamListPoliciesResponse$ {
-    export const inboundSchema: z.ZodType<IamListPoliciesResponse, z.ZodTypeDef, unknown> = z
-        .object({
-            ContentType: z.string(),
-            IamPoliciesPaginated: shared.IamPoliciesPaginated$.inboundSchema.optional(),
-            StatusCode: z.number().int(),
-            RawResponse: z.instanceof(Response),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                ContentType: "contentType",
-                IamPoliciesPaginated: "iamPoliciesPaginated",
-                StatusCode: "statusCode",
-                RawResponse: "rawResponse",
-            });
-        });
-
-    export type Outbound = {
-        ContentType: string;
-        IamPoliciesPaginated?: shared.IamPoliciesPaginated$.Outbound | undefined;
-        StatusCode: number;
-        RawResponse: never;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, IamListPoliciesResponse> = z
-        .object({
-            contentType: z.string(),
-            iamPoliciesPaginated: shared.IamPoliciesPaginated$.outboundSchema.optional(),
-            statusCode: z.number().int(),
-            rawResponse: z.instanceof(Response).transform(() => {
-                throw new Error("Response cannot be serialized");
-            }),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                contentType: "ContentType",
-                iamPoliciesPaginated: "IamPoliciesPaginated",
-                statusCode: "StatusCode",
-                rawResponse: "RawResponse",
-            });
-        });
+    /** @deprecated use `IamListPoliciesResponse$inboundSchema` instead. */
+    export const inboundSchema = IamListPoliciesResponse$inboundSchema;
+    /** @deprecated use `IamListPoliciesResponse$outboundSchema` instead. */
+    export const outboundSchema = IamListPoliciesResponse$outboundSchema;
+    /** @deprecated use `IamListPoliciesResponse$Outbound` instead. */
+    export type Outbound = IamListPoliciesResponse$Outbound;
 }

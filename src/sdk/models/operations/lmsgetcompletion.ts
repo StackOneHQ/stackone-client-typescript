@@ -46,84 +46,126 @@ export type LmsGetCompletionResponse = {
 };
 
 /** @internal */
+export const LmsGetCompletionRequest$inboundSchema: z.ZodType<
+    LmsGetCompletionRequest,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        fields: z.nullable(z.string()).optional(),
+        id: z.string(),
+        proxy: z.nullable(z.record(z.any())).optional(),
+        raw: z.nullable(z.boolean().default(false)),
+        "x-account-id": z.string(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            "x-account-id": "xAccountId",
+        });
+    });
+
+/** @internal */
+export type LmsGetCompletionRequest$Outbound = {
+    fields?: string | null | undefined;
+    id: string;
+    proxy?: { [k: string]: any } | null | undefined;
+    raw: boolean | null;
+    "x-account-id": string;
+};
+
+/** @internal */
+export const LmsGetCompletionRequest$outboundSchema: z.ZodType<
+    LmsGetCompletionRequest$Outbound,
+    z.ZodTypeDef,
+    LmsGetCompletionRequest
+> = z
+    .object({
+        fields: z.nullable(z.string()).optional(),
+        id: z.string(),
+        proxy: z.nullable(z.record(z.any())).optional(),
+        raw: z.nullable(z.boolean().default(false)),
+        xAccountId: z.string(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            xAccountId: "x-account-id",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace LmsGetCompletionRequest$ {
-    export const inboundSchema: z.ZodType<LmsGetCompletionRequest, z.ZodTypeDef, unknown> = z
-        .object({
-            fields: z.nullable(z.string()).optional(),
-            id: z.string(),
-            proxy: z.nullable(z.record(z.any())).optional(),
-            raw: z.nullable(z.boolean().default(false)),
-            "x-account-id": z.string(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                "x-account-id": "xAccountId",
-            });
-        });
-
-    export type Outbound = {
-        fields?: string | null | undefined;
-        id: string;
-        proxy?: { [k: string]: any } | null | undefined;
-        raw: boolean | null;
-        "x-account-id": string;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, LmsGetCompletionRequest> = z
-        .object({
-            fields: z.nullable(z.string()).optional(),
-            id: z.string(),
-            proxy: z.nullable(z.record(z.any())).optional(),
-            raw: z.nullable(z.boolean().default(false)),
-            xAccountId: z.string(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                xAccountId: "x-account-id",
-            });
-        });
+    /** @deprecated use `LmsGetCompletionRequest$inboundSchema` instead. */
+    export const inboundSchema = LmsGetCompletionRequest$inboundSchema;
+    /** @deprecated use `LmsGetCompletionRequest$outboundSchema` instead. */
+    export const outboundSchema = LmsGetCompletionRequest$outboundSchema;
+    /** @deprecated use `LmsGetCompletionRequest$Outbound` instead. */
+    export type Outbound = LmsGetCompletionRequest$Outbound;
 }
 
 /** @internal */
+export const LmsGetCompletionResponse$inboundSchema: z.ZodType<
+    LmsGetCompletionResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        CompletionResult: shared.CompletionResult$inboundSchema.optional(),
+        ContentType: z.string(),
+        StatusCode: z.number().int(),
+        RawResponse: z.instanceof(Response),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            CompletionResult: "completionResult",
+            ContentType: "contentType",
+            StatusCode: "statusCode",
+            RawResponse: "rawResponse",
+        });
+    });
+
+/** @internal */
+export type LmsGetCompletionResponse$Outbound = {
+    CompletionResult?: shared.CompletionResult$Outbound | undefined;
+    ContentType: string;
+    StatusCode: number;
+    RawResponse: never;
+};
+
+/** @internal */
+export const LmsGetCompletionResponse$outboundSchema: z.ZodType<
+    LmsGetCompletionResponse$Outbound,
+    z.ZodTypeDef,
+    LmsGetCompletionResponse
+> = z
+    .object({
+        completionResult: shared.CompletionResult$outboundSchema.optional(),
+        contentType: z.string(),
+        statusCode: z.number().int(),
+        rawResponse: z.instanceof(Response).transform(() => {
+            throw new Error("Response cannot be serialized");
+        }),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            completionResult: "CompletionResult",
+            contentType: "ContentType",
+            statusCode: "StatusCode",
+            rawResponse: "RawResponse",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace LmsGetCompletionResponse$ {
-    export const inboundSchema: z.ZodType<LmsGetCompletionResponse, z.ZodTypeDef, unknown> = z
-        .object({
-            CompletionResult: shared.CompletionResult$.inboundSchema.optional(),
-            ContentType: z.string(),
-            StatusCode: z.number().int(),
-            RawResponse: z.instanceof(Response),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                CompletionResult: "completionResult",
-                ContentType: "contentType",
-                StatusCode: "statusCode",
-                RawResponse: "rawResponse",
-            });
-        });
-
-    export type Outbound = {
-        CompletionResult?: shared.CompletionResult$.Outbound | undefined;
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: never;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, LmsGetCompletionResponse> = z
-        .object({
-            completionResult: shared.CompletionResult$.outboundSchema.optional(),
-            contentType: z.string(),
-            statusCode: z.number().int(),
-            rawResponse: z.instanceof(Response).transform(() => {
-                throw new Error("Response cannot be serialized");
-            }),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                completionResult: "CompletionResult",
-                contentType: "ContentType",
-                statusCode: "StatusCode",
-                rawResponse: "RawResponse",
-            });
-        });
+    /** @deprecated use `LmsGetCompletionResponse$inboundSchema` instead. */
+    export const inboundSchema = LmsGetCompletionResponse$inboundSchema;
+    /** @deprecated use `LmsGetCompletionResponse$outboundSchema` instead. */
+    export const outboundSchema = LmsGetCompletionResponse$outboundSchema;
+    /** @deprecated use `LmsGetCompletionResponse$Outbound` instead. */
+    export type Outbound = LmsGetCompletionResponse$Outbound;
 }

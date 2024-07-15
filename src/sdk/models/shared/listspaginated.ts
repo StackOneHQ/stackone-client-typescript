@@ -3,8 +3,13 @@
  */
 
 import { remap as remap$ } from "../../../lib/primitives.js";
-import { List, List$ } from "./list.js";
-import { RawResponse, RawResponse$ } from "./rawresponse.js";
+import { List, List$inboundSchema, List$Outbound, List$outboundSchema } from "./list.js";
+import {
+    RawResponse,
+    RawResponse$inboundSchema,
+    RawResponse$Outbound,
+    RawResponse$outboundSchema,
+} from "./rawresponse.js";
 import * as z from "zod";
 
 export type ListsPaginated = {
@@ -18,37 +23,54 @@ export type ListsPaginated = {
 };
 
 /** @internal */
+export const ListsPaginated$inboundSchema: z.ZodType<ListsPaginated, z.ZodTypeDef, unknown> = z
+    .object({
+        data: z.array(List$inboundSchema),
+        next: z.nullable(z.string()).optional(),
+        next_page: z.nullable(z.string()).optional(),
+        raw: z.nullable(z.array(RawResponse$inboundSchema)).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            next_page: "nextPage",
+        });
+    });
+
+/** @internal */
+export type ListsPaginated$Outbound = {
+    data: Array<List$Outbound>;
+    next?: string | null | undefined;
+    next_page?: string | null | undefined;
+    raw?: Array<RawResponse$Outbound> | null | undefined;
+};
+
+/** @internal */
+export const ListsPaginated$outboundSchema: z.ZodType<
+    ListsPaginated$Outbound,
+    z.ZodTypeDef,
+    ListsPaginated
+> = z
+    .object({
+        data: z.array(List$outboundSchema),
+        next: z.nullable(z.string()).optional(),
+        nextPage: z.nullable(z.string()).optional(),
+        raw: z.nullable(z.array(RawResponse$outboundSchema)).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            nextPage: "next_page",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace ListsPaginated$ {
-    export const inboundSchema: z.ZodType<ListsPaginated, z.ZodTypeDef, unknown> = z
-        .object({
-            data: z.array(List$.inboundSchema),
-            next: z.nullable(z.string()).optional(),
-            next_page: z.nullable(z.string()).optional(),
-            raw: z.nullable(z.array(RawResponse$.inboundSchema)).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                next_page: "nextPage",
-            });
-        });
-
-    export type Outbound = {
-        data: Array<List$.Outbound>;
-        next?: string | null | undefined;
-        next_page?: string | null | undefined;
-        raw?: Array<RawResponse$.Outbound> | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ListsPaginated> = z
-        .object({
-            data: z.array(List$.outboundSchema),
-            next: z.nullable(z.string()).optional(),
-            nextPage: z.nullable(z.string()).optional(),
-            raw: z.nullable(z.array(RawResponse$.outboundSchema)).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                nextPage: "next_page",
-            });
-        });
+    /** @deprecated use `ListsPaginated$inboundSchema` instead. */
+    export const inboundSchema = ListsPaginated$inboundSchema;
+    /** @deprecated use `ListsPaginated$outboundSchema` instead. */
+    export const outboundSchema = ListsPaginated$outboundSchema;
+    /** @deprecated use `ListsPaginated$Outbound` instead. */
+    export type Outbound = ListsPaginated$Outbound;
 }

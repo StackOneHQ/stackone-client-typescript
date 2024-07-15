@@ -378,296 +378,441 @@ export type HRISLocation = {
 };
 
 /** @internal */
+export const HRISLocation4$inboundSchema: z.ZodType<HRISLocation4, z.ZodTypeDef, unknown> =
+    z.object({});
+
+/** @internal */
+export type HRISLocation4$Outbound = {};
+
+/** @internal */
+export const HRISLocation4$outboundSchema: z.ZodType<
+    HRISLocation4$Outbound,
+    z.ZodTypeDef,
+    HRISLocation4
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace HRISLocation4$ {
-    export const inboundSchema: z.ZodType<HRISLocation4, z.ZodTypeDef, unknown> = z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, HRISLocation4> = z.object({});
+    /** @deprecated use `HRISLocation4$inboundSchema` instead. */
+    export const inboundSchema = HRISLocation4$inboundSchema;
+    /** @deprecated use `HRISLocation4$outboundSchema` instead. */
+    export const outboundSchema = HRISLocation4$outboundSchema;
+    /** @deprecated use `HRISLocation4$Outbound` instead. */
+    export type Outbound = HRISLocation4$Outbound;
 }
 
 /** @internal */
+export const HRISLocationSourceValue$inboundSchema: z.ZodType<
+    HRISLocationSourceValue,
+    z.ZodTypeDef,
+    unknown
+> = z.union([z.lazy(() => HRISLocation4$inboundSchema), z.string(), z.number(), z.boolean()]);
+
+/** @internal */
+export type HRISLocationSourceValue$Outbound = HRISLocation4$Outbound | string | number | boolean;
+
+/** @internal */
+export const HRISLocationSourceValue$outboundSchema: z.ZodType<
+    HRISLocationSourceValue$Outbound,
+    z.ZodTypeDef,
+    HRISLocationSourceValue
+> = z.union([z.lazy(() => HRISLocation4$outboundSchema), z.string(), z.number(), z.boolean()]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace HRISLocationSourceValue$ {
-    export const inboundSchema: z.ZodType<HRISLocationSourceValue, z.ZodTypeDef, unknown> = z.union(
-        [z.lazy(() => HRISLocation4$.inboundSchema), z.string(), z.number(), z.boolean()]
-    );
-
-    export type Outbound = HRISLocation4$.Outbound | string | number | boolean;
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, HRISLocationSourceValue> =
-        z.union([z.lazy(() => HRISLocation4$.outboundSchema), z.string(), z.number(), z.boolean()]);
+    /** @deprecated use `HRISLocationSourceValue$inboundSchema` instead. */
+    export const inboundSchema = HRISLocationSourceValue$inboundSchema;
+    /** @deprecated use `HRISLocationSourceValue$outboundSchema` instead. */
+    export const outboundSchema = HRISLocationSourceValue$outboundSchema;
+    /** @deprecated use `HRISLocationSourceValue$Outbound` instead. */
+    export type Outbound = HRISLocationSourceValue$Outbound;
 }
 
 /** @internal */
+export const HRISLocationValue$inboundSchema: z.ZodType<
+    HRISLocationValueOpen,
+    z.ZodTypeDef,
+    unknown
+> = z.union([z.nativeEnum(HRISLocationValue), z.string().transform(catchUnrecognizedEnum)]);
+
+/** @internal */
+export const HRISLocationValue$outboundSchema: z.ZodType<
+    HRISLocationValueOpen,
+    z.ZodTypeDef,
+    HRISLocationValueOpen
+> = z.union([z.nativeEnum(HRISLocationValue), z.string().and(z.custom<Unrecognized<string>>())]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace HRISLocationValue$ {
-    export const inboundSchema: z.ZodType<HRISLocationValueOpen, z.ZodTypeDef, unknown> = z.union([
-        z.nativeEnum(HRISLocationValue),
-        z.string().transform(catchUnrecognizedEnum),
-    ]);
-
-    export const outboundSchema: z.ZodType<
-        HRISLocationValueOpen,
-        z.ZodTypeDef,
-        HRISLocationValueOpen
-    > = z.union([
-        z.nativeEnum(HRISLocationValue),
-        z.string().and(z.custom<Unrecognized<string>>()),
-    ]);
+    /** @deprecated use `HRISLocationValue$inboundSchema` instead. */
+    export const inboundSchema = HRISLocationValue$inboundSchema;
+    /** @deprecated use `HRISLocationValue$outboundSchema` instead. */
+    export const outboundSchema = HRISLocationValue$outboundSchema;
 }
 
 /** @internal */
+export const HRISLocationCountry$inboundSchema: z.ZodType<
+    HRISLocationCountry,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        source_value: z
+            .nullable(
+                z.union([
+                    z.lazy(() => HRISLocation4$inboundSchema),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                ])
+            )
+            .optional(),
+        value: z.nullable(HRISLocationValue$inboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            source_value: "sourceValue",
+        });
+    });
+
+/** @internal */
+export type HRISLocationCountry$Outbound = {
+    source_value?: HRISLocation4$Outbound | string | number | boolean | null | undefined;
+    value?: string | null | undefined;
+};
+
+/** @internal */
+export const HRISLocationCountry$outboundSchema: z.ZodType<
+    HRISLocationCountry$Outbound,
+    z.ZodTypeDef,
+    HRISLocationCountry
+> = z
+    .object({
+        sourceValue: z
+            .nullable(
+                z.union([
+                    z.lazy(() => HRISLocation4$outboundSchema),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                ])
+            )
+            .optional(),
+        value: z.nullable(HRISLocationValue$outboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            sourceValue: "source_value",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace HRISLocationCountry$ {
-    export const inboundSchema: z.ZodType<HRISLocationCountry, z.ZodTypeDef, unknown> = z
-        .object({
-            source_value: z
-                .nullable(
-                    z.union([
-                        z.lazy(() => HRISLocation4$.inboundSchema),
-                        z.string(),
-                        z.number(),
-                        z.boolean(),
-                    ])
-                )
-                .optional(),
-            value: z.nullable(HRISLocationValue$.inboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                source_value: "sourceValue",
-            });
-        });
-
-    export type Outbound = {
-        source_value?: HRISLocation4$.Outbound | string | number | boolean | null | undefined;
-        value?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, HRISLocationCountry> = z
-        .object({
-            sourceValue: z
-                .nullable(
-                    z.union([
-                        z.lazy(() => HRISLocation4$.outboundSchema),
-                        z.string(),
-                        z.number(),
-                        z.boolean(),
-                    ])
-                )
-                .optional(),
-            value: z.nullable(HRISLocationValue$.outboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                sourceValue: "source_value",
-            });
-        });
+    /** @deprecated use `HRISLocationCountry$inboundSchema` instead. */
+    export const inboundSchema = HRISLocationCountry$inboundSchema;
+    /** @deprecated use `HRISLocationCountry$outboundSchema` instead. */
+    export const outboundSchema = HRISLocationCountry$outboundSchema;
+    /** @deprecated use `HRISLocationCountry$Outbound` instead. */
+    export type Outbound = HRISLocationCountry$Outbound;
 }
 
 /** @internal */
+export const HRISLocationSchemas4$inboundSchema: z.ZodType<
+    HRISLocationSchemas4,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type HRISLocationSchemas4$Outbound = {};
+
+/** @internal */
+export const HRISLocationSchemas4$outboundSchema: z.ZodType<
+    HRISLocationSchemas4$Outbound,
+    z.ZodTypeDef,
+    HRISLocationSchemas4
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace HRISLocationSchemas4$ {
-    export const inboundSchema: z.ZodType<HRISLocationSchemas4, z.ZodTypeDef, unknown> = z.object(
-        {}
-    );
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, HRISLocationSchemas4> = z.object(
-        {}
-    );
+    /** @deprecated use `HRISLocationSchemas4$inboundSchema` instead. */
+    export const inboundSchema = HRISLocationSchemas4$inboundSchema;
+    /** @deprecated use `HRISLocationSchemas4$outboundSchema` instead. */
+    export const outboundSchema = HRISLocationSchemas4$outboundSchema;
+    /** @deprecated use `HRISLocationSchemas4$Outbound` instead. */
+    export type Outbound = HRISLocationSchemas4$Outbound;
 }
 
 /** @internal */
+export const HRISLocationSchemasSourceValue$inboundSchema: z.ZodType<
+    HRISLocationSchemasSourceValue,
+    z.ZodTypeDef,
+    unknown
+> = z.union([
+    z.lazy(() => HRISLocationSchemas4$inboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+]);
+
+/** @internal */
+export type HRISLocationSchemasSourceValue$Outbound =
+    | HRISLocationSchemas4$Outbound
+    | string
+    | number
+    | boolean;
+
+/** @internal */
+export const HRISLocationSchemasSourceValue$outboundSchema: z.ZodType<
+    HRISLocationSchemasSourceValue$Outbound,
+    z.ZodTypeDef,
+    HRISLocationSchemasSourceValue
+> = z.union([
+    z.lazy(() => HRISLocationSchemas4$outboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace HRISLocationSchemasSourceValue$ {
-    export const inboundSchema: z.ZodType<HRISLocationSchemasSourceValue, z.ZodTypeDef, unknown> =
-        z.union([
-            z.lazy(() => HRISLocationSchemas4$.inboundSchema),
-            z.string(),
-            z.number(),
-            z.boolean(),
-        ]);
-
-    export type Outbound = HRISLocationSchemas4$.Outbound | string | number | boolean;
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, HRISLocationSchemasSourceValue> =
-        z.union([
-            z.lazy(() => HRISLocationSchemas4$.outboundSchema),
-            z.string(),
-            z.number(),
-            z.boolean(),
-        ]);
+    /** @deprecated use `HRISLocationSchemasSourceValue$inboundSchema` instead. */
+    export const inboundSchema = HRISLocationSchemasSourceValue$inboundSchema;
+    /** @deprecated use `HRISLocationSchemasSourceValue$outboundSchema` instead. */
+    export const outboundSchema = HRISLocationSchemasSourceValue$outboundSchema;
+    /** @deprecated use `HRISLocationSchemasSourceValue$Outbound` instead. */
+    export type Outbound = HRISLocationSchemasSourceValue$Outbound;
 }
 
 /** @internal */
+export const HRISLocationSchemasValue$inboundSchema: z.ZodType<
+    HRISLocationSchemasValueOpen,
+    z.ZodTypeDef,
+    unknown
+> = z.union([z.nativeEnum(HRISLocationSchemasValue), z.string().transform(catchUnrecognizedEnum)]);
+
+/** @internal */
+export const HRISLocationSchemasValue$outboundSchema: z.ZodType<
+    HRISLocationSchemasValueOpen,
+    z.ZodTypeDef,
+    HRISLocationSchemasValueOpen
+> = z.union([
+    z.nativeEnum(HRISLocationSchemasValue),
+    z.string().and(z.custom<Unrecognized<string>>()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace HRISLocationSchemasValue$ {
-    export const inboundSchema: z.ZodType<HRISLocationSchemasValueOpen, z.ZodTypeDef, unknown> =
-        z.union([
-            z.nativeEnum(HRISLocationSchemasValue),
-            z.string().transform(catchUnrecognizedEnum),
-        ]);
-
-    export const outboundSchema: z.ZodType<
-        HRISLocationSchemasValueOpen,
-        z.ZodTypeDef,
-        HRISLocationSchemasValueOpen
-    > = z.union([
-        z.nativeEnum(HRISLocationSchemasValue),
-        z.string().and(z.custom<Unrecognized<string>>()),
-    ]);
+    /** @deprecated use `HRISLocationSchemasValue$inboundSchema` instead. */
+    export const inboundSchema = HRISLocationSchemasValue$inboundSchema;
+    /** @deprecated use `HRISLocationSchemasValue$outboundSchema` instead. */
+    export const outboundSchema = HRISLocationSchemasValue$outboundSchema;
 }
 
 /** @internal */
+export const HRISLocationLocationType$inboundSchema: z.ZodType<
+    HRISLocationLocationType,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        source_value: z
+            .nullable(
+                z.union([
+                    z.lazy(() => HRISLocationSchemas4$inboundSchema),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                ])
+            )
+            .optional(),
+        value: z.nullable(HRISLocationSchemasValue$inboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            source_value: "sourceValue",
+        });
+    });
+
+/** @internal */
+export type HRISLocationLocationType$Outbound = {
+    source_value?: HRISLocationSchemas4$Outbound | string | number | boolean | null | undefined;
+    value?: string | null | undefined;
+};
+
+/** @internal */
+export const HRISLocationLocationType$outboundSchema: z.ZodType<
+    HRISLocationLocationType$Outbound,
+    z.ZodTypeDef,
+    HRISLocationLocationType
+> = z
+    .object({
+        sourceValue: z
+            .nullable(
+                z.union([
+                    z.lazy(() => HRISLocationSchemas4$outboundSchema),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                ])
+            )
+            .optional(),
+        value: z.nullable(HRISLocationSchemasValue$outboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            sourceValue: "source_value",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace HRISLocationLocationType$ {
-    export const inboundSchema: z.ZodType<HRISLocationLocationType, z.ZodTypeDef, unknown> = z
-        .object({
-            source_value: z
-                .nullable(
-                    z.union([
-                        z.lazy(() => HRISLocationSchemas4$.inboundSchema),
-                        z.string(),
-                        z.number(),
-                        z.boolean(),
-                    ])
-                )
-                .optional(),
-            value: z.nullable(HRISLocationSchemasValue$.inboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                source_value: "sourceValue",
-            });
-        });
-
-    export type Outbound = {
-        source_value?:
-            | HRISLocationSchemas4$.Outbound
-            | string
-            | number
-            | boolean
-            | null
-            | undefined;
-        value?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, HRISLocationLocationType> = z
-        .object({
-            sourceValue: z
-                .nullable(
-                    z.union([
-                        z.lazy(() => HRISLocationSchemas4$.outboundSchema),
-                        z.string(),
-                        z.number(),
-                        z.boolean(),
-                    ])
-                )
-                .optional(),
-            value: z.nullable(HRISLocationSchemasValue$.outboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                sourceValue: "source_value",
-            });
-        });
+    /** @deprecated use `HRISLocationLocationType$inboundSchema` instead. */
+    export const inboundSchema = HRISLocationLocationType$inboundSchema;
+    /** @deprecated use `HRISLocationLocationType$outboundSchema` instead. */
+    export const outboundSchema = HRISLocationLocationType$outboundSchema;
+    /** @deprecated use `HRISLocationLocationType$Outbound` instead. */
+    export type Outbound = HRISLocationLocationType$Outbound;
 }
 
 /** @internal */
+export const HRISLocation$inboundSchema: z.ZodType<HRISLocation, z.ZodTypeDef, unknown> = z
+    .object({
+        city: z.nullable(z.string()).optional(),
+        country: z.nullable(z.lazy(() => HRISLocationCountry$inboundSchema)).optional(),
+        created_at: z
+            .nullable(
+                z
+                    .string()
+                    .datetime({ offset: true })
+                    .transform((v) => new Date(v))
+            )
+            .optional(),
+        employee_id: z.nullable(z.string()).optional(),
+        id: z.nullable(z.string()).optional(),
+        location_type: z.nullable(z.lazy(() => HRISLocationLocationType$inboundSchema)).optional(),
+        name: z.nullable(z.string()).optional(),
+        phone_number: z.nullable(z.string()).optional(),
+        remote_employee_id: z.nullable(z.string()).optional(),
+        remote_id: z.nullable(z.string()).optional(),
+        state: z.nullable(z.string()).optional(),
+        street_1: z.nullable(z.string()).optional(),
+        street_2: z.nullable(z.string()).optional(),
+        updated_at: z
+            .nullable(
+                z
+                    .string()
+                    .datetime({ offset: true })
+                    .transform((v) => new Date(v))
+            )
+            .optional(),
+        zip_code: z.nullable(z.string()).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            created_at: "createdAt",
+            employee_id: "employeeId",
+            location_type: "locationType",
+            phone_number: "phoneNumber",
+            remote_employee_id: "remoteEmployeeId",
+            remote_id: "remoteId",
+            street_1: "street1",
+            street_2: "street2",
+            updated_at: "updatedAt",
+            zip_code: "zipCode",
+        });
+    });
+
+/** @internal */
+export type HRISLocation$Outbound = {
+    city?: string | null | undefined;
+    country?: HRISLocationCountry$Outbound | null | undefined;
+    created_at?: string | null | undefined;
+    employee_id?: string | null | undefined;
+    id?: string | null | undefined;
+    location_type?: HRISLocationLocationType$Outbound | null | undefined;
+    name?: string | null | undefined;
+    phone_number?: string | null | undefined;
+    remote_employee_id?: string | null | undefined;
+    remote_id?: string | null | undefined;
+    state?: string | null | undefined;
+    street_1?: string | null | undefined;
+    street_2?: string | null | undefined;
+    updated_at?: string | null | undefined;
+    zip_code?: string | null | undefined;
+};
+
+/** @internal */
+export const HRISLocation$outboundSchema: z.ZodType<
+    HRISLocation$Outbound,
+    z.ZodTypeDef,
+    HRISLocation
+> = z
+    .object({
+        city: z.nullable(z.string()).optional(),
+        country: z.nullable(z.lazy(() => HRISLocationCountry$outboundSchema)).optional(),
+        createdAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+        employeeId: z.nullable(z.string()).optional(),
+        id: z.nullable(z.string()).optional(),
+        locationType: z.nullable(z.lazy(() => HRISLocationLocationType$outboundSchema)).optional(),
+        name: z.nullable(z.string()).optional(),
+        phoneNumber: z.nullable(z.string()).optional(),
+        remoteEmployeeId: z.nullable(z.string()).optional(),
+        remoteId: z.nullable(z.string()).optional(),
+        state: z.nullable(z.string()).optional(),
+        street1: z.nullable(z.string()).optional(),
+        street2: z.nullable(z.string()).optional(),
+        updatedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+        zipCode: z.nullable(z.string()).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            createdAt: "created_at",
+            employeeId: "employee_id",
+            locationType: "location_type",
+            phoneNumber: "phone_number",
+            remoteEmployeeId: "remote_employee_id",
+            remoteId: "remote_id",
+            street1: "street_1",
+            street2: "street_2",
+            updatedAt: "updated_at",
+            zipCode: "zip_code",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace HRISLocation$ {
-    export const inboundSchema: z.ZodType<HRISLocation, z.ZodTypeDef, unknown> = z
-        .object({
-            city: z.nullable(z.string()).optional(),
-            country: z.nullable(z.lazy(() => HRISLocationCountry$.inboundSchema)).optional(),
-            created_at: z
-                .nullable(
-                    z
-                        .string()
-                        .datetime({ offset: true })
-                        .transform((v) => new Date(v))
-                )
-                .optional(),
-            employee_id: z.nullable(z.string()).optional(),
-            id: z.nullable(z.string()).optional(),
-            location_type: z
-                .nullable(z.lazy(() => HRISLocationLocationType$.inboundSchema))
-                .optional(),
-            name: z.nullable(z.string()).optional(),
-            phone_number: z.nullable(z.string()).optional(),
-            remote_employee_id: z.nullable(z.string()).optional(),
-            remote_id: z.nullable(z.string()).optional(),
-            state: z.nullable(z.string()).optional(),
-            street_1: z.nullable(z.string()).optional(),
-            street_2: z.nullable(z.string()).optional(),
-            updated_at: z
-                .nullable(
-                    z
-                        .string()
-                        .datetime({ offset: true })
-                        .transform((v) => new Date(v))
-                )
-                .optional(),
-            zip_code: z.nullable(z.string()).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                created_at: "createdAt",
-                employee_id: "employeeId",
-                location_type: "locationType",
-                phone_number: "phoneNumber",
-                remote_employee_id: "remoteEmployeeId",
-                remote_id: "remoteId",
-                street_1: "street1",
-                street_2: "street2",
-                updated_at: "updatedAt",
-                zip_code: "zipCode",
-            });
-        });
-
-    export type Outbound = {
-        city?: string | null | undefined;
-        country?: HRISLocationCountry$.Outbound | null | undefined;
-        created_at?: string | null | undefined;
-        employee_id?: string | null | undefined;
-        id?: string | null | undefined;
-        location_type?: HRISLocationLocationType$.Outbound | null | undefined;
-        name?: string | null | undefined;
-        phone_number?: string | null | undefined;
-        remote_employee_id?: string | null | undefined;
-        remote_id?: string | null | undefined;
-        state?: string | null | undefined;
-        street_1?: string | null | undefined;
-        street_2?: string | null | undefined;
-        updated_at?: string | null | undefined;
-        zip_code?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, HRISLocation> = z
-        .object({
-            city: z.nullable(z.string()).optional(),
-            country: z.nullable(z.lazy(() => HRISLocationCountry$.outboundSchema)).optional(),
-            createdAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
-            employeeId: z.nullable(z.string()).optional(),
-            id: z.nullable(z.string()).optional(),
-            locationType: z
-                .nullable(z.lazy(() => HRISLocationLocationType$.outboundSchema))
-                .optional(),
-            name: z.nullable(z.string()).optional(),
-            phoneNumber: z.nullable(z.string()).optional(),
-            remoteEmployeeId: z.nullable(z.string()).optional(),
-            remoteId: z.nullable(z.string()).optional(),
-            state: z.nullable(z.string()).optional(),
-            street1: z.nullable(z.string()).optional(),
-            street2: z.nullable(z.string()).optional(),
-            updatedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
-            zipCode: z.nullable(z.string()).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                createdAt: "created_at",
-                employeeId: "employee_id",
-                locationType: "location_type",
-                phoneNumber: "phone_number",
-                remoteEmployeeId: "remote_employee_id",
-                remoteId: "remote_id",
-                street1: "street_1",
-                street2: "street_2",
-                updatedAt: "updated_at",
-                zipCode: "zip_code",
-            });
-        });
+    /** @deprecated use `HRISLocation$inboundSchema` instead. */
+    export const inboundSchema = HRISLocation$inboundSchema;
+    /** @deprecated use `HRISLocation$outboundSchema` instead. */
+    export const outboundSchema = HRISLocation$outboundSchema;
+    /** @deprecated use `HRISLocation$Outbound` instead. */
+    export type Outbound = HRISLocation$Outbound;
 }

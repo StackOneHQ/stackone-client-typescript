@@ -16,19 +16,37 @@ export type CandidateEmail = {
 };
 
 /** @internal */
+export const CandidateEmail$inboundSchema: z.ZodType<CandidateEmail, z.ZodTypeDef, unknown> =
+    z.object({
+        type: z.nullable(z.string()).optional(),
+        value: z.nullable(z.string()).optional(),
+    });
+
+/** @internal */
+export type CandidateEmail$Outbound = {
+    type?: string | null | undefined;
+    value?: string | null | undefined;
+};
+
+/** @internal */
+export const CandidateEmail$outboundSchema: z.ZodType<
+    CandidateEmail$Outbound,
+    z.ZodTypeDef,
+    CandidateEmail
+> = z.object({
+    type: z.nullable(z.string()).optional(),
+    value: z.nullable(z.string()).optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace CandidateEmail$ {
-    export const inboundSchema: z.ZodType<CandidateEmail, z.ZodTypeDef, unknown> = z.object({
-        type: z.nullable(z.string()).optional(),
-        value: z.nullable(z.string()).optional(),
-    });
-
-    export type Outbound = {
-        type?: string | null | undefined;
-        value?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CandidateEmail> = z.object({
-        type: z.nullable(z.string()).optional(),
-        value: z.nullable(z.string()).optional(),
-    });
+    /** @deprecated use `CandidateEmail$inboundSchema` instead. */
+    export const inboundSchema = CandidateEmail$inboundSchema;
+    /** @deprecated use `CandidateEmail$outboundSchema` instead. */
+    export const outboundSchema = CandidateEmail$outboundSchema;
+    /** @deprecated use `CandidateEmail$Outbound` instead. */
+    export type Outbound = CandidateEmail$Outbound;
 }

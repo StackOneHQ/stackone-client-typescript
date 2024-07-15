@@ -26,53 +26,66 @@ export type StackoneCreateConnectSessionResponse = {
 };
 
 /** @internal */
+export const StackoneCreateConnectSessionResponse$inboundSchema: z.ZodType<
+    StackoneCreateConnectSessionResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        ConnectSessionToken: shared.ConnectSessionToken$inboundSchema.optional(),
+        ContentType: z.string(),
+        StatusCode: z.number().int(),
+        RawResponse: z.instanceof(Response),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            ConnectSessionToken: "connectSessionToken",
+            ContentType: "contentType",
+            StatusCode: "statusCode",
+            RawResponse: "rawResponse",
+        });
+    });
+
+/** @internal */
+export type StackoneCreateConnectSessionResponse$Outbound = {
+    ConnectSessionToken?: shared.ConnectSessionToken$Outbound | undefined;
+    ContentType: string;
+    StatusCode: number;
+    RawResponse: never;
+};
+
+/** @internal */
+export const StackoneCreateConnectSessionResponse$outboundSchema: z.ZodType<
+    StackoneCreateConnectSessionResponse$Outbound,
+    z.ZodTypeDef,
+    StackoneCreateConnectSessionResponse
+> = z
+    .object({
+        connectSessionToken: shared.ConnectSessionToken$outboundSchema.optional(),
+        contentType: z.string(),
+        statusCode: z.number().int(),
+        rawResponse: z.instanceof(Response).transform(() => {
+            throw new Error("Response cannot be serialized");
+        }),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            connectSessionToken: "ConnectSessionToken",
+            contentType: "ContentType",
+            statusCode: "StatusCode",
+            rawResponse: "RawResponse",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace StackoneCreateConnectSessionResponse$ {
-    export const inboundSchema: z.ZodType<
-        StackoneCreateConnectSessionResponse,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            ConnectSessionToken: shared.ConnectSessionToken$.inboundSchema.optional(),
-            ContentType: z.string(),
-            StatusCode: z.number().int(),
-            RawResponse: z.instanceof(Response),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                ConnectSessionToken: "connectSessionToken",
-                ContentType: "contentType",
-                StatusCode: "statusCode",
-                RawResponse: "rawResponse",
-            });
-        });
-
-    export type Outbound = {
-        ConnectSessionToken?: shared.ConnectSessionToken$.Outbound | undefined;
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: never;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        StackoneCreateConnectSessionResponse
-    > = z
-        .object({
-            connectSessionToken: shared.ConnectSessionToken$.outboundSchema.optional(),
-            contentType: z.string(),
-            statusCode: z.number().int(),
-            rawResponse: z.instanceof(Response).transform(() => {
-                throw new Error("Response cannot be serialized");
-            }),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                connectSessionToken: "ConnectSessionToken",
-                contentType: "ContentType",
-                statusCode: "StatusCode",
-                rawResponse: "RawResponse",
-            });
-        });
+    /** @deprecated use `StackoneCreateConnectSessionResponse$inboundSchema` instead. */
+    export const inboundSchema = StackoneCreateConnectSessionResponse$inboundSchema;
+    /** @deprecated use `StackoneCreateConnectSessionResponse$outboundSchema` instead. */
+    export const outboundSchema = StackoneCreateConnectSessionResponse$outboundSchema;
+    /** @deprecated use `StackoneCreateConnectSessionResponse$Outbound` instead. */
+    export type Outbound = StackoneCreateConnectSessionResponse$Outbound;
 }

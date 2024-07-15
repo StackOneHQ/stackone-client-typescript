@@ -72,155 +72,226 @@ export type Completion = {
 };
 
 /** @internal */
+export const Completion4$inboundSchema: z.ZodType<Completion4, z.ZodTypeDef, unknown> = z.object(
+    {}
+);
+
+/** @internal */
+export type Completion4$Outbound = {};
+
+/** @internal */
+export const Completion4$outboundSchema: z.ZodType<
+    Completion4$Outbound,
+    z.ZodTypeDef,
+    Completion4
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace Completion4$ {
-    export const inboundSchema: z.ZodType<Completion4, z.ZodTypeDef, unknown> = z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Completion4> = z.object({});
+    /** @deprecated use `Completion4$inboundSchema` instead. */
+    export const inboundSchema = Completion4$inboundSchema;
+    /** @deprecated use `Completion4$outboundSchema` instead. */
+    export const outboundSchema = Completion4$outboundSchema;
+    /** @deprecated use `Completion4$Outbound` instead. */
+    export type Outbound = Completion4$Outbound;
 }
 
 /** @internal */
+export const CompletionSourceValue$inboundSchema: z.ZodType<
+    CompletionSourceValue,
+    z.ZodTypeDef,
+    unknown
+> = z.union([z.lazy(() => Completion4$inboundSchema), z.string(), z.number(), z.boolean()]);
+
+/** @internal */
+export type CompletionSourceValue$Outbound = Completion4$Outbound | string | number | boolean;
+
+/** @internal */
+export const CompletionSourceValue$outboundSchema: z.ZodType<
+    CompletionSourceValue$Outbound,
+    z.ZodTypeDef,
+    CompletionSourceValue
+> = z.union([z.lazy(() => Completion4$outboundSchema), z.string(), z.number(), z.boolean()]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace CompletionSourceValue$ {
-    export const inboundSchema: z.ZodType<CompletionSourceValue, z.ZodTypeDef, unknown> = z.union([
-        z.lazy(() => Completion4$.inboundSchema),
-        z.string(),
-        z.number(),
-        z.boolean(),
-    ]);
-
-    export type Outbound = Completion4$.Outbound | string | number | boolean;
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CompletionSourceValue> = z.union(
-        [z.lazy(() => Completion4$.outboundSchema), z.string(), z.number(), z.boolean()]
-    );
+    /** @deprecated use `CompletionSourceValue$inboundSchema` instead. */
+    export const inboundSchema = CompletionSourceValue$inboundSchema;
+    /** @deprecated use `CompletionSourceValue$outboundSchema` instead. */
+    export const outboundSchema = CompletionSourceValue$outboundSchema;
+    /** @deprecated use `CompletionSourceValue$Outbound` instead. */
+    export type Outbound = CompletionSourceValue$Outbound;
 }
 
 /** @internal */
+export const CompletionValue$inboundSchema: z.ZodType<CompletionValueOpen, z.ZodTypeDef, unknown> =
+    z.union([z.nativeEnum(CompletionValue), z.string().transform(catchUnrecognizedEnum)]);
+
+/** @internal */
+export const CompletionValue$outboundSchema: z.ZodType<
+    CompletionValueOpen,
+    z.ZodTypeDef,
+    CompletionValueOpen
+> = z.union([z.nativeEnum(CompletionValue), z.string().and(z.custom<Unrecognized<string>>())]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace CompletionValue$ {
-    export const inboundSchema: z.ZodType<CompletionValueOpen, z.ZodTypeDef, unknown> = z.union([
-        z.nativeEnum(CompletionValue),
-        z.string().transform(catchUnrecognizedEnum),
-    ]);
-
-    export const outboundSchema: z.ZodType<CompletionValueOpen, z.ZodTypeDef, CompletionValueOpen> =
-        z.union([z.nativeEnum(CompletionValue), z.string().and(z.custom<Unrecognized<string>>())]);
+    /** @deprecated use `CompletionValue$inboundSchema` instead. */
+    export const inboundSchema = CompletionValue$inboundSchema;
+    /** @deprecated use `CompletionValue$outboundSchema` instead. */
+    export const outboundSchema = CompletionValue$outboundSchema;
 }
 
 /** @internal */
+export const Result$inboundSchema: z.ZodType<Result, z.ZodTypeDef, unknown> = z
+    .object({
+        source_value: z
+            .nullable(
+                z.union([
+                    z.lazy(() => Completion4$inboundSchema),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                ])
+            )
+            .optional(),
+        value: z.nullable(CompletionValue$inboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            source_value: "sourceValue",
+        });
+    });
+
+/** @internal */
+export type Result$Outbound = {
+    source_value?: Completion4$Outbound | string | number | boolean | null | undefined;
+    value?: string | null | undefined;
+};
+
+/** @internal */
+export const Result$outboundSchema: z.ZodType<Result$Outbound, z.ZodTypeDef, Result> = z
+    .object({
+        sourceValue: z
+            .nullable(
+                z.union([
+                    z.lazy(() => Completion4$outboundSchema),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                ])
+            )
+            .optional(),
+        value: z.nullable(CompletionValue$outboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            sourceValue: "source_value",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace Result$ {
-    export const inboundSchema: z.ZodType<Result, z.ZodTypeDef, unknown> = z
-        .object({
-            source_value: z
-                .nullable(
-                    z.union([
-                        z.lazy(() => Completion4$.inboundSchema),
-                        z.string(),
-                        z.number(),
-                        z.boolean(),
-                    ])
-                )
-                .optional(),
-            value: z.nullable(CompletionValue$.inboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                source_value: "sourceValue",
-            });
-        });
-
-    export type Outbound = {
-        source_value?: Completion4$.Outbound | string | number | boolean | null | undefined;
-        value?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Result> = z
-        .object({
-            sourceValue: z
-                .nullable(
-                    z.union([
-                        z.lazy(() => Completion4$.outboundSchema),
-                        z.string(),
-                        z.number(),
-                        z.boolean(),
-                    ])
-                )
-                .optional(),
-            value: z.nullable(CompletionValue$.outboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                sourceValue: "source_value",
-            });
-        });
+    /** @deprecated use `Result$inboundSchema` instead. */
+    export const inboundSchema = Result$inboundSchema;
+    /** @deprecated use `Result$outboundSchema` instead. */
+    export const outboundSchema = Result$outboundSchema;
+    /** @deprecated use `Result$Outbound` instead. */
+    export type Outbound = Result$Outbound;
 }
 
 /** @internal */
+export const Completion$inboundSchema: z.ZodType<Completion, z.ZodTypeDef, unknown> = z
+    .object({
+        completed_at: z.nullable(z.string()).optional(),
+        content_id: z.nullable(z.string()).optional(),
+        external_id: z.nullable(z.string()).optional(),
+        id: z.nullable(z.string()).optional(),
+        passthrough: z.nullable(z.record(z.any())).optional(),
+        remote_content_id: z.nullable(z.string()).optional(),
+        remote_external_id: z.nullable(z.string()).optional(),
+        remote_id: z.nullable(z.string()).optional(),
+        remote_user_id: z.nullable(z.string()).optional(),
+        result: z.nullable(z.lazy(() => Result$inboundSchema)).optional(),
+        user_id: z.nullable(z.string()).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            completed_at: "completedAt",
+            content_id: "contentId",
+            external_id: "externalId",
+            remote_content_id: "remoteContentId",
+            remote_external_id: "remoteExternalId",
+            remote_id: "remoteId",
+            remote_user_id: "remoteUserId",
+            user_id: "userId",
+        });
+    });
+
+/** @internal */
+export type Completion$Outbound = {
+    completed_at?: string | null | undefined;
+    content_id?: string | null | undefined;
+    external_id?: string | null | undefined;
+    id?: string | null | undefined;
+    passthrough?: { [k: string]: any } | null | undefined;
+    remote_content_id?: string | null | undefined;
+    remote_external_id?: string | null | undefined;
+    remote_id?: string | null | undefined;
+    remote_user_id?: string | null | undefined;
+    result?: Result$Outbound | null | undefined;
+    user_id?: string | null | undefined;
+};
+
+/** @internal */
+export const Completion$outboundSchema: z.ZodType<Completion$Outbound, z.ZodTypeDef, Completion> = z
+    .object({
+        completedAt: z.nullable(z.string()).optional(),
+        contentId: z.nullable(z.string()).optional(),
+        externalId: z.nullable(z.string()).optional(),
+        id: z.nullable(z.string()).optional(),
+        passthrough: z.nullable(z.record(z.any())).optional(),
+        remoteContentId: z.nullable(z.string()).optional(),
+        remoteExternalId: z.nullable(z.string()).optional(),
+        remoteId: z.nullable(z.string()).optional(),
+        remoteUserId: z.nullable(z.string()).optional(),
+        result: z.nullable(z.lazy(() => Result$outboundSchema)).optional(),
+        userId: z.nullable(z.string()).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            completedAt: "completed_at",
+            contentId: "content_id",
+            externalId: "external_id",
+            remoteContentId: "remote_content_id",
+            remoteExternalId: "remote_external_id",
+            remoteId: "remote_id",
+            remoteUserId: "remote_user_id",
+            userId: "user_id",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace Completion$ {
-    export const inboundSchema: z.ZodType<Completion, z.ZodTypeDef, unknown> = z
-        .object({
-            completed_at: z.nullable(z.string()).optional(),
-            content_id: z.nullable(z.string()).optional(),
-            external_id: z.nullable(z.string()).optional(),
-            id: z.nullable(z.string()).optional(),
-            passthrough: z.nullable(z.record(z.any())).optional(),
-            remote_content_id: z.nullable(z.string()).optional(),
-            remote_external_id: z.nullable(z.string()).optional(),
-            remote_id: z.nullable(z.string()).optional(),
-            remote_user_id: z.nullable(z.string()).optional(),
-            result: z.nullable(z.lazy(() => Result$.inboundSchema)).optional(),
-            user_id: z.nullable(z.string()).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                completed_at: "completedAt",
-                content_id: "contentId",
-                external_id: "externalId",
-                remote_content_id: "remoteContentId",
-                remote_external_id: "remoteExternalId",
-                remote_id: "remoteId",
-                remote_user_id: "remoteUserId",
-                user_id: "userId",
-            });
-        });
-
-    export type Outbound = {
-        completed_at?: string | null | undefined;
-        content_id?: string | null | undefined;
-        external_id?: string | null | undefined;
-        id?: string | null | undefined;
-        passthrough?: { [k: string]: any } | null | undefined;
-        remote_content_id?: string | null | undefined;
-        remote_external_id?: string | null | undefined;
-        remote_id?: string | null | undefined;
-        remote_user_id?: string | null | undefined;
-        result?: Result$.Outbound | null | undefined;
-        user_id?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Completion> = z
-        .object({
-            completedAt: z.nullable(z.string()).optional(),
-            contentId: z.nullable(z.string()).optional(),
-            externalId: z.nullable(z.string()).optional(),
-            id: z.nullable(z.string()).optional(),
-            passthrough: z.nullable(z.record(z.any())).optional(),
-            remoteContentId: z.nullable(z.string()).optional(),
-            remoteExternalId: z.nullable(z.string()).optional(),
-            remoteId: z.nullable(z.string()).optional(),
-            remoteUserId: z.nullable(z.string()).optional(),
-            result: z.nullable(z.lazy(() => Result$.outboundSchema)).optional(),
-            userId: z.nullable(z.string()).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                completedAt: "completed_at",
-                contentId: "content_id",
-                externalId: "external_id",
-                remoteContentId: "remote_content_id",
-                remoteExternalId: "remote_external_id",
-                remoteId: "remote_id",
-                remoteUserId: "remote_user_id",
-                userId: "user_id",
-            });
-        });
+    /** @deprecated use `Completion$inboundSchema` instead. */
+    export const inboundSchema = Completion$inboundSchema;
+    /** @deprecated use `Completion$outboundSchema` instead. */
+    export const outboundSchema = Completion$outboundSchema;
+    /** @deprecated use `Completion$Outbound` instead. */
+    export type Outbound = Completion$Outbound;
 }

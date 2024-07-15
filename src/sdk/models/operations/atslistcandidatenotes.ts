@@ -86,148 +86,202 @@ export type AtsListCandidateNotesResponse = {
 };
 
 /** @internal */
+export const AtsListCandidateNotesQueryParamFilter$inboundSchema: z.ZodType<
+    AtsListCandidateNotesQueryParamFilter,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        updated_after: z.nullable(z.string()).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            updated_after: "updatedAfter",
+        });
+    });
+
+/** @internal */
+export type AtsListCandidateNotesQueryParamFilter$Outbound = {
+    updated_after?: string | null | undefined;
+};
+
+/** @internal */
+export const AtsListCandidateNotesQueryParamFilter$outboundSchema: z.ZodType<
+    AtsListCandidateNotesQueryParamFilter$Outbound,
+    z.ZodTypeDef,
+    AtsListCandidateNotesQueryParamFilter
+> = z
+    .object({
+        updatedAfter: z.nullable(z.string()).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            updatedAfter: "updated_after",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace AtsListCandidateNotesQueryParamFilter$ {
-    export const inboundSchema: z.ZodType<
-        AtsListCandidateNotesQueryParamFilter,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            updated_after: z.nullable(z.string()).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                updated_after: "updatedAfter",
-            });
-        });
-
-    export type Outbound = {
-        updated_after?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        AtsListCandidateNotesQueryParamFilter
-    > = z
-        .object({
-            updatedAfter: z.nullable(z.string()).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                updatedAfter: "updated_after",
-            });
-        });
+    /** @deprecated use `AtsListCandidateNotesQueryParamFilter$inboundSchema` instead. */
+    export const inboundSchema = AtsListCandidateNotesQueryParamFilter$inboundSchema;
+    /** @deprecated use `AtsListCandidateNotesQueryParamFilter$outboundSchema` instead. */
+    export const outboundSchema = AtsListCandidateNotesQueryParamFilter$outboundSchema;
+    /** @deprecated use `AtsListCandidateNotesQueryParamFilter$Outbound` instead. */
+    export type Outbound = AtsListCandidateNotesQueryParamFilter$Outbound;
 }
 
 /** @internal */
+export const AtsListCandidateNotesRequest$inboundSchema: z.ZodType<
+    AtsListCandidateNotesRequest,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        fields: z.nullable(z.string()).optional(),
+        filter: z
+            .nullable(z.lazy(() => AtsListCandidateNotesQueryParamFilter$inboundSchema))
+            .optional(),
+        id: z.string(),
+        next: z.nullable(z.string()).optional(),
+        page: z.nullable(z.string()).optional(),
+        page_size: z.nullable(z.string().default("25")),
+        proxy: z.nullable(z.record(z.any())).optional(),
+        raw: z.nullable(z.boolean().default(false)),
+        sync_token: z.nullable(z.string()).optional(),
+        updated_after: z.nullable(z.string()).optional(),
+        "x-account-id": z.string(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            page_size: "pageSize",
+            sync_token: "syncToken",
+            updated_after: "updatedAfter",
+            "x-account-id": "xAccountId",
+        });
+    });
+
+/** @internal */
+export type AtsListCandidateNotesRequest$Outbound = {
+    fields?: string | null | undefined;
+    filter?: AtsListCandidateNotesQueryParamFilter$Outbound | null | undefined;
+    id: string;
+    next?: string | null | undefined;
+    page?: string | null | undefined;
+    page_size: string | null;
+    proxy?: { [k: string]: any } | null | undefined;
+    raw: boolean | null;
+    sync_token?: string | null | undefined;
+    updated_after?: string | null | undefined;
+    "x-account-id": string;
+};
+
+/** @internal */
+export const AtsListCandidateNotesRequest$outboundSchema: z.ZodType<
+    AtsListCandidateNotesRequest$Outbound,
+    z.ZodTypeDef,
+    AtsListCandidateNotesRequest
+> = z
+    .object({
+        fields: z.nullable(z.string()).optional(),
+        filter: z
+            .nullable(z.lazy(() => AtsListCandidateNotesQueryParamFilter$outboundSchema))
+            .optional(),
+        id: z.string(),
+        next: z.nullable(z.string()).optional(),
+        page: z.nullable(z.string()).optional(),
+        pageSize: z.nullable(z.string().default("25")),
+        proxy: z.nullable(z.record(z.any())).optional(),
+        raw: z.nullable(z.boolean().default(false)),
+        syncToken: z.nullable(z.string()).optional(),
+        updatedAfter: z.nullable(z.string()).optional(),
+        xAccountId: z.string(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            pageSize: "page_size",
+            syncToken: "sync_token",
+            updatedAfter: "updated_after",
+            xAccountId: "x-account-id",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace AtsListCandidateNotesRequest$ {
-    export const inboundSchema: z.ZodType<AtsListCandidateNotesRequest, z.ZodTypeDef, unknown> = z
-        .object({
-            fields: z.nullable(z.string()).optional(),
-            filter: z
-                .nullable(z.lazy(() => AtsListCandidateNotesQueryParamFilter$.inboundSchema))
-                .optional(),
-            id: z.string(),
-            next: z.nullable(z.string()).optional(),
-            page: z.nullable(z.string()).optional(),
-            page_size: z.nullable(z.string().default("25")),
-            proxy: z.nullable(z.record(z.any())).optional(),
-            raw: z.nullable(z.boolean().default(false)),
-            sync_token: z.nullable(z.string()).optional(),
-            updated_after: z.nullable(z.string()).optional(),
-            "x-account-id": z.string(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                page_size: "pageSize",
-                sync_token: "syncToken",
-                updated_after: "updatedAfter",
-                "x-account-id": "xAccountId",
-            });
-        });
-
-    export type Outbound = {
-        fields?: string | null | undefined;
-        filter?: AtsListCandidateNotesQueryParamFilter$.Outbound | null | undefined;
-        id: string;
-        next?: string | null | undefined;
-        page?: string | null | undefined;
-        page_size: string | null;
-        proxy?: { [k: string]: any } | null | undefined;
-        raw: boolean | null;
-        sync_token?: string | null | undefined;
-        updated_after?: string | null | undefined;
-        "x-account-id": string;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, AtsListCandidateNotesRequest> = z
-        .object({
-            fields: z.nullable(z.string()).optional(),
-            filter: z
-                .nullable(z.lazy(() => AtsListCandidateNotesQueryParamFilter$.outboundSchema))
-                .optional(),
-            id: z.string(),
-            next: z.nullable(z.string()).optional(),
-            page: z.nullable(z.string()).optional(),
-            pageSize: z.nullable(z.string().default("25")),
-            proxy: z.nullable(z.record(z.any())).optional(),
-            raw: z.nullable(z.boolean().default(false)),
-            syncToken: z.nullable(z.string()).optional(),
-            updatedAfter: z.nullable(z.string()).optional(),
-            xAccountId: z.string(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                pageSize: "page_size",
-                syncToken: "sync_token",
-                updatedAfter: "updated_after",
-                xAccountId: "x-account-id",
-            });
-        });
+    /** @deprecated use `AtsListCandidateNotesRequest$inboundSchema` instead. */
+    export const inboundSchema = AtsListCandidateNotesRequest$inboundSchema;
+    /** @deprecated use `AtsListCandidateNotesRequest$outboundSchema` instead. */
+    export const outboundSchema = AtsListCandidateNotesRequest$outboundSchema;
+    /** @deprecated use `AtsListCandidateNotesRequest$Outbound` instead. */
+    export type Outbound = AtsListCandidateNotesRequest$Outbound;
 }
 
 /** @internal */
-export namespace AtsListCandidateNotesResponse$ {
-    export const inboundSchema: z.ZodType<AtsListCandidateNotesResponse, z.ZodTypeDef, unknown> = z
-        .object({
-            ContentType: z.string(),
-            NotesPaginated: shared.NotesPaginated$.inboundSchema.optional(),
-            StatusCode: z.number().int(),
-            RawResponse: z.instanceof(Response),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                ContentType: "contentType",
-                NotesPaginated: "notesPaginated",
-                StatusCode: "statusCode",
-                RawResponse: "rawResponse",
-            });
+export const AtsListCandidateNotesResponse$inboundSchema: z.ZodType<
+    AtsListCandidateNotesResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        ContentType: z.string(),
+        NotesPaginated: shared.NotesPaginated$inboundSchema.optional(),
+        StatusCode: z.number().int(),
+        RawResponse: z.instanceof(Response),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            ContentType: "contentType",
+            NotesPaginated: "notesPaginated",
+            StatusCode: "statusCode",
+            RawResponse: "rawResponse",
         });
+    });
 
-    export type Outbound = {
-        ContentType: string;
-        NotesPaginated?: shared.NotesPaginated$.Outbound | undefined;
-        StatusCode: number;
-        RawResponse: never;
-    };
+/** @internal */
+export type AtsListCandidateNotesResponse$Outbound = {
+    ContentType: string;
+    NotesPaginated?: shared.NotesPaginated$Outbound | undefined;
+    StatusCode: number;
+    RawResponse: never;
+};
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, AtsListCandidateNotesResponse> =
-        z
-            .object({
-                contentType: z.string(),
-                notesPaginated: shared.NotesPaginated$.outboundSchema.optional(),
-                statusCode: z.number().int(),
-                rawResponse: z.instanceof(Response).transform(() => {
-                    throw new Error("Response cannot be serialized");
-                }),
-            })
-            .transform((v) => {
-                return remap$(v, {
-                    contentType: "ContentType",
-                    notesPaginated: "NotesPaginated",
-                    statusCode: "StatusCode",
-                    rawResponse: "RawResponse",
-                });
-            });
+/** @internal */
+export const AtsListCandidateNotesResponse$outboundSchema: z.ZodType<
+    AtsListCandidateNotesResponse$Outbound,
+    z.ZodTypeDef,
+    AtsListCandidateNotesResponse
+> = z
+    .object({
+        contentType: z.string(),
+        notesPaginated: shared.NotesPaginated$outboundSchema.optional(),
+        statusCode: z.number().int(),
+        rawResponse: z.instanceof(Response).transform(() => {
+            throw new Error("Response cannot be serialized");
+        }),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            contentType: "ContentType",
+            notesPaginated: "NotesPaginated",
+            statusCode: "StatusCode",
+            rawResponse: "RawResponse",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace AtsListCandidateNotesResponse$ {
+    /** @deprecated use `AtsListCandidateNotesResponse$inboundSchema` instead. */
+    export const inboundSchema = AtsListCandidateNotesResponse$inboundSchema;
+    /** @deprecated use `AtsListCandidateNotesResponse$outboundSchema` instead. */
+    export const outboundSchema = AtsListCandidateNotesResponse$outboundSchema;
+    /** @deprecated use `AtsListCandidateNotesResponse$Outbound` instead. */
+    export type Outbound = AtsListCandidateNotesResponse$Outbound;
 }

@@ -41,59 +41,80 @@ export type CrmCreateContactRequestDto = {
 };
 
 /** @internal */
+export const CrmCreateContactRequestDto$inboundSchema: z.ZodType<
+    CrmCreateContactRequestDto,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        account_ids: z.nullable(z.array(z.string())).optional(),
+        company_name: z.nullable(z.string()).optional(),
+        deal_ids: z.nullable(z.array(z.string())).optional(),
+        emails: z.nullable(z.array(z.string())).optional(),
+        first_name: z.nullable(z.string()).optional(),
+        last_name: z.nullable(z.string()).optional(),
+        passthrough: z.nullable(z.record(z.any())).optional(),
+        phone_numbers: z.nullable(z.array(z.string())).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            account_ids: "accountIds",
+            company_name: "companyName",
+            deal_ids: "dealIds",
+            first_name: "firstName",
+            last_name: "lastName",
+            phone_numbers: "phoneNumbers",
+        });
+    });
+
+/** @internal */
+export type CrmCreateContactRequestDto$Outbound = {
+    account_ids?: Array<string> | null | undefined;
+    company_name?: string | null | undefined;
+    deal_ids?: Array<string> | null | undefined;
+    emails?: Array<string> | null | undefined;
+    first_name?: string | null | undefined;
+    last_name?: string | null | undefined;
+    passthrough?: { [k: string]: any } | null | undefined;
+    phone_numbers?: Array<string> | null | undefined;
+};
+
+/** @internal */
+export const CrmCreateContactRequestDto$outboundSchema: z.ZodType<
+    CrmCreateContactRequestDto$Outbound,
+    z.ZodTypeDef,
+    CrmCreateContactRequestDto
+> = z
+    .object({
+        accountIds: z.nullable(z.array(z.string())).optional(),
+        companyName: z.nullable(z.string()).optional(),
+        dealIds: z.nullable(z.array(z.string())).optional(),
+        emails: z.nullable(z.array(z.string())).optional(),
+        firstName: z.nullable(z.string()).optional(),
+        lastName: z.nullable(z.string()).optional(),
+        passthrough: z.nullable(z.record(z.any())).optional(),
+        phoneNumbers: z.nullable(z.array(z.string())).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            accountIds: "account_ids",
+            companyName: "company_name",
+            dealIds: "deal_ids",
+            firstName: "first_name",
+            lastName: "last_name",
+            phoneNumbers: "phone_numbers",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace CrmCreateContactRequestDto$ {
-    export const inboundSchema: z.ZodType<CrmCreateContactRequestDto, z.ZodTypeDef, unknown> = z
-        .object({
-            account_ids: z.nullable(z.array(z.string())).optional(),
-            company_name: z.nullable(z.string()).optional(),
-            deal_ids: z.nullable(z.array(z.string())).optional(),
-            emails: z.nullable(z.array(z.string())).optional(),
-            first_name: z.nullable(z.string()).optional(),
-            last_name: z.nullable(z.string()).optional(),
-            passthrough: z.nullable(z.record(z.any())).optional(),
-            phone_numbers: z.nullable(z.array(z.string())).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                account_ids: "accountIds",
-                company_name: "companyName",
-                deal_ids: "dealIds",
-                first_name: "firstName",
-                last_name: "lastName",
-                phone_numbers: "phoneNumbers",
-            });
-        });
-
-    export type Outbound = {
-        account_ids?: Array<string> | null | undefined;
-        company_name?: string | null | undefined;
-        deal_ids?: Array<string> | null | undefined;
-        emails?: Array<string> | null | undefined;
-        first_name?: string | null | undefined;
-        last_name?: string | null | undefined;
-        passthrough?: { [k: string]: any } | null | undefined;
-        phone_numbers?: Array<string> | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CrmCreateContactRequestDto> = z
-        .object({
-            accountIds: z.nullable(z.array(z.string())).optional(),
-            companyName: z.nullable(z.string()).optional(),
-            dealIds: z.nullable(z.array(z.string())).optional(),
-            emails: z.nullable(z.array(z.string())).optional(),
-            firstName: z.nullable(z.string()).optional(),
-            lastName: z.nullable(z.string()).optional(),
-            passthrough: z.nullable(z.record(z.any())).optional(),
-            phoneNumbers: z.nullable(z.array(z.string())).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                accountIds: "account_ids",
-                companyName: "company_name",
-                dealIds: "deal_ids",
-                firstName: "first_name",
-                lastName: "last_name",
-                phoneNumbers: "phone_numbers",
-            });
-        });
+    /** @deprecated use `CrmCreateContactRequestDto$inboundSchema` instead. */
+    export const inboundSchema = CrmCreateContactRequestDto$inboundSchema;
+    /** @deprecated use `CrmCreateContactRequestDto$outboundSchema` instead. */
+    export const outboundSchema = CrmCreateContactRequestDto$outboundSchema;
+    /** @deprecated use `CrmCreateContactRequestDto$Outbound` instead. */
+    export type Outbound = CrmCreateContactRequestDto$Outbound;
 }

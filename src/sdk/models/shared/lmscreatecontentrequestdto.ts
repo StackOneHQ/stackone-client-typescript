@@ -4,8 +4,18 @@
 
 import { remap as remap$ } from "../../../lib/primitives.js";
 import { catchUnrecognizedEnum, OpenEnum, Unrecognized } from "../../types/enums.js";
-import { ContentLanguageEnum, ContentLanguageEnum$ } from "./contentlanguageenum.js";
-import { CreateCategoriesApiModel, CreateCategoriesApiModel$ } from "./createcategoriesapimodel.js";
+import {
+    ContentLanguageEnum,
+    ContentLanguageEnum$inboundSchema,
+    ContentLanguageEnum$Outbound,
+    ContentLanguageEnum$outboundSchema,
+} from "./contentlanguageenum.js";
+import {
+    CreateCategoriesApiModel,
+    CreateCategoriesApiModel$inboundSchema,
+    CreateCategoriesApiModel$Outbound,
+    CreateCategoriesApiModel$outboundSchema,
+} from "./createcategoriesapimodel.js";
 import * as z from "zod";
 
 export enum LmsCreateContentRequestDto2 {
@@ -93,219 +103,329 @@ export type LmsCreateContentRequestDto = {
 };
 
 /** @internal */
+export const LmsCreateContentRequestDto2$inboundSchema: z.ZodNativeEnum<
+    typeof LmsCreateContentRequestDto2
+> = z.nativeEnum(LmsCreateContentRequestDto2);
+
+/** @internal */
+export const LmsCreateContentRequestDto2$outboundSchema: z.ZodNativeEnum<
+    typeof LmsCreateContentRequestDto2
+> = LmsCreateContentRequestDto2$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace LmsCreateContentRequestDto2$ {
-    export const inboundSchema: z.ZodNativeEnum<typeof LmsCreateContentRequestDto2> = z.nativeEnum(
-        LmsCreateContentRequestDto2
-    );
-    export const outboundSchema: z.ZodNativeEnum<typeof LmsCreateContentRequestDto2> =
-        inboundSchema;
+    /** @deprecated use `LmsCreateContentRequestDto2$inboundSchema` instead. */
+    export const inboundSchema = LmsCreateContentRequestDto2$inboundSchema;
+    /** @deprecated use `LmsCreateContentRequestDto2$outboundSchema` instead. */
+    export const outboundSchema = LmsCreateContentRequestDto2$outboundSchema;
 }
 
 /** @internal */
+export const LmsCreateContentRequestDtoActive$inboundSchema: z.ZodType<
+    LmsCreateContentRequestDtoActive,
+    z.ZodTypeDef,
+    unknown
+> = z.union([z.boolean(), LmsCreateContentRequestDto2$inboundSchema]);
+
+/** @internal */
+export type LmsCreateContentRequestDtoActive$Outbound = boolean | string;
+
+/** @internal */
+export const LmsCreateContentRequestDtoActive$outboundSchema: z.ZodType<
+    LmsCreateContentRequestDtoActive$Outbound,
+    z.ZodTypeDef,
+    LmsCreateContentRequestDtoActive
+> = z.union([z.boolean(), LmsCreateContentRequestDto2$outboundSchema]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace LmsCreateContentRequestDtoActive$ {
-    export const inboundSchema: z.ZodType<LmsCreateContentRequestDtoActive, z.ZodTypeDef, unknown> =
-        z.union([z.boolean(), LmsCreateContentRequestDto2$.inboundSchema]);
-
-    export type Outbound = boolean | string;
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        LmsCreateContentRequestDtoActive
-    > = z.union([z.boolean(), LmsCreateContentRequestDto2$.outboundSchema]);
+    /** @deprecated use `LmsCreateContentRequestDtoActive$inboundSchema` instead. */
+    export const inboundSchema = LmsCreateContentRequestDtoActive$inboundSchema;
+    /** @deprecated use `LmsCreateContentRequestDtoActive$outboundSchema` instead. */
+    export const outboundSchema = LmsCreateContentRequestDtoActive$outboundSchema;
+    /** @deprecated use `LmsCreateContentRequestDtoActive$Outbound` instead. */
+    export type Outbound = LmsCreateContentRequestDtoActive$Outbound;
 }
 
 /** @internal */
+export const LmsCreateContentRequestDto4$inboundSchema: z.ZodType<
+    LmsCreateContentRequestDto4,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type LmsCreateContentRequestDto4$Outbound = {};
+
+/** @internal */
+export const LmsCreateContentRequestDto4$outboundSchema: z.ZodType<
+    LmsCreateContentRequestDto4$Outbound,
+    z.ZodTypeDef,
+    LmsCreateContentRequestDto4
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace LmsCreateContentRequestDto4$ {
-    export const inboundSchema: z.ZodType<LmsCreateContentRequestDto4, z.ZodTypeDef, unknown> =
-        z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, LmsCreateContentRequestDto4> =
-        z.object({});
+    /** @deprecated use `LmsCreateContentRequestDto4$inboundSchema` instead. */
+    export const inboundSchema = LmsCreateContentRequestDto4$inboundSchema;
+    /** @deprecated use `LmsCreateContentRequestDto4$outboundSchema` instead. */
+    export const outboundSchema = LmsCreateContentRequestDto4$outboundSchema;
+    /** @deprecated use `LmsCreateContentRequestDto4$Outbound` instead. */
+    export type Outbound = LmsCreateContentRequestDto4$Outbound;
 }
 
 /** @internal */
+export const LmsCreateContentRequestDtoSourceValue$inboundSchema: z.ZodType<
+    LmsCreateContentRequestDtoSourceValue,
+    z.ZodTypeDef,
+    unknown
+> = z.union([
+    z.lazy(() => LmsCreateContentRequestDto4$inboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+]);
+
+/** @internal */
+export type LmsCreateContentRequestDtoSourceValue$Outbound =
+    | LmsCreateContentRequestDto4$Outbound
+    | string
+    | number
+    | boolean;
+
+/** @internal */
+export const LmsCreateContentRequestDtoSourceValue$outboundSchema: z.ZodType<
+    LmsCreateContentRequestDtoSourceValue$Outbound,
+    z.ZodTypeDef,
+    LmsCreateContentRequestDtoSourceValue
+> = z.union([
+    z.lazy(() => LmsCreateContentRequestDto4$outboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace LmsCreateContentRequestDtoSourceValue$ {
-    export const inboundSchema: z.ZodType<
-        LmsCreateContentRequestDtoSourceValue,
-        z.ZodTypeDef,
-        unknown
-    > = z.union([
-        z.lazy(() => LmsCreateContentRequestDto4$.inboundSchema),
-        z.string(),
-        z.number(),
-        z.boolean(),
-    ]);
-
-    export type Outbound = LmsCreateContentRequestDto4$.Outbound | string | number | boolean;
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        LmsCreateContentRequestDtoSourceValue
-    > = z.union([
-        z.lazy(() => LmsCreateContentRequestDto4$.outboundSchema),
-        z.string(),
-        z.number(),
-        z.boolean(),
-    ]);
+    /** @deprecated use `LmsCreateContentRequestDtoSourceValue$inboundSchema` instead. */
+    export const inboundSchema = LmsCreateContentRequestDtoSourceValue$inboundSchema;
+    /** @deprecated use `LmsCreateContentRequestDtoSourceValue$outboundSchema` instead. */
+    export const outboundSchema = LmsCreateContentRequestDtoSourceValue$outboundSchema;
+    /** @deprecated use `LmsCreateContentRequestDtoSourceValue$Outbound` instead. */
+    export type Outbound = LmsCreateContentRequestDtoSourceValue$Outbound;
 }
 
 /** @internal */
+export const LmsCreateContentRequestDtoValue$inboundSchema: z.ZodType<
+    LmsCreateContentRequestDtoValueOpen,
+    z.ZodTypeDef,
+    unknown
+> = z.union([
+    z.nativeEnum(LmsCreateContentRequestDtoValue),
+    z.string().transform(catchUnrecognizedEnum),
+]);
+
+/** @internal */
+export const LmsCreateContentRequestDtoValue$outboundSchema: z.ZodType<
+    LmsCreateContentRequestDtoValueOpen,
+    z.ZodTypeDef,
+    LmsCreateContentRequestDtoValueOpen
+> = z.union([
+    z.nativeEnum(LmsCreateContentRequestDtoValue),
+    z.string().and(z.custom<Unrecognized<string>>()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace LmsCreateContentRequestDtoValue$ {
-    export const inboundSchema: z.ZodType<
-        LmsCreateContentRequestDtoValueOpen,
-        z.ZodTypeDef,
-        unknown
-    > = z.union([
-        z.nativeEnum(LmsCreateContentRequestDtoValue),
-        z.string().transform(catchUnrecognizedEnum),
-    ]);
-
-    export const outboundSchema: z.ZodType<
-        LmsCreateContentRequestDtoValueOpen,
-        z.ZodTypeDef,
-        LmsCreateContentRequestDtoValueOpen
-    > = z.union([
-        z.nativeEnum(LmsCreateContentRequestDtoValue),
-        z.string().and(z.custom<Unrecognized<string>>()),
-    ]);
+    /** @deprecated use `LmsCreateContentRequestDtoValue$inboundSchema` instead. */
+    export const inboundSchema = LmsCreateContentRequestDtoValue$inboundSchema;
+    /** @deprecated use `LmsCreateContentRequestDtoValue$outboundSchema` instead. */
+    export const outboundSchema = LmsCreateContentRequestDtoValue$outboundSchema;
 }
 
 /** @internal */
+export const LmsCreateContentRequestDtoContentType$inboundSchema: z.ZodType<
+    LmsCreateContentRequestDtoContentType,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        source_value: z
+            .nullable(
+                z.union([
+                    z.lazy(() => LmsCreateContentRequestDto4$inboundSchema),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                ])
+            )
+            .optional(),
+        value: z.nullable(LmsCreateContentRequestDtoValue$inboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            source_value: "sourceValue",
+        });
+    });
+
+/** @internal */
+export type LmsCreateContentRequestDtoContentType$Outbound = {
+    source_value?:
+        | LmsCreateContentRequestDto4$Outbound
+        | string
+        | number
+        | boolean
+        | null
+        | undefined;
+    value?: string | null | undefined;
+};
+
+/** @internal */
+export const LmsCreateContentRequestDtoContentType$outboundSchema: z.ZodType<
+    LmsCreateContentRequestDtoContentType$Outbound,
+    z.ZodTypeDef,
+    LmsCreateContentRequestDtoContentType
+> = z
+    .object({
+        sourceValue: z
+            .nullable(
+                z.union([
+                    z.lazy(() => LmsCreateContentRequestDto4$outboundSchema),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                ])
+            )
+            .optional(),
+        value: z.nullable(LmsCreateContentRequestDtoValue$outboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            sourceValue: "source_value",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace LmsCreateContentRequestDtoContentType$ {
-    export const inboundSchema: z.ZodType<
-        LmsCreateContentRequestDtoContentType,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            source_value: z
-                .nullable(
-                    z.union([
-                        z.lazy(() => LmsCreateContentRequestDto4$.inboundSchema),
-                        z.string(),
-                        z.number(),
-                        z.boolean(),
-                    ])
-                )
-                .optional(),
-            value: z.nullable(LmsCreateContentRequestDtoValue$.inboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                source_value: "sourceValue",
-            });
-        });
-
-    export type Outbound = {
-        source_value?:
-            | LmsCreateContentRequestDto4$.Outbound
-            | string
-            | number
-            | boolean
-            | null
-            | undefined;
-        value?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        LmsCreateContentRequestDtoContentType
-    > = z
-        .object({
-            sourceValue: z
-                .nullable(
-                    z.union([
-                        z.lazy(() => LmsCreateContentRequestDto4$.outboundSchema),
-                        z.string(),
-                        z.number(),
-                        z.boolean(),
-                    ])
-                )
-                .optional(),
-            value: z.nullable(LmsCreateContentRequestDtoValue$.outboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                sourceValue: "source_value",
-            });
-        });
+    /** @deprecated use `LmsCreateContentRequestDtoContentType$inboundSchema` instead. */
+    export const inboundSchema = LmsCreateContentRequestDtoContentType$inboundSchema;
+    /** @deprecated use `LmsCreateContentRequestDtoContentType$outboundSchema` instead. */
+    export const outboundSchema = LmsCreateContentRequestDtoContentType$outboundSchema;
+    /** @deprecated use `LmsCreateContentRequestDtoContentType$Outbound` instead. */
+    export type Outbound = LmsCreateContentRequestDtoContentType$Outbound;
 }
 
 /** @internal */
+export const LmsCreateContentRequestDto$inboundSchema: z.ZodType<
+    LmsCreateContentRequestDto,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        active: z
+            .nullable(z.union([z.boolean(), LmsCreateContentRequestDto2$inboundSchema]))
+            .optional(),
+        categories: z.nullable(z.array(CreateCategoriesApiModel$inboundSchema)).optional(),
+        content_type: z
+            .nullable(z.lazy(() => LmsCreateContentRequestDtoContentType$inboundSchema))
+            .optional(),
+        content_url: z.nullable(z.string()).optional(),
+        course_ids: z.nullable(z.array(z.string())).optional(),
+        cover_url: z.nullable(z.string()).optional(),
+        description: z.nullable(z.string()).optional(),
+        duration: z.nullable(z.string()).optional(),
+        external_id: z.nullable(z.string()).optional(),
+        languages: z.nullable(z.array(ContentLanguageEnum$inboundSchema)).optional(),
+        order: z.nullable(z.number()).optional(),
+        title: z.nullable(z.string()).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            content_type: "contentType",
+            content_url: "contentUrl",
+            course_ids: "courseIds",
+            cover_url: "coverUrl",
+            external_id: "externalId",
+        });
+    });
+
+/** @internal */
+export type LmsCreateContentRequestDto$Outbound = {
+    active?: boolean | string | null | undefined;
+    categories?: Array<CreateCategoriesApiModel$Outbound> | null | undefined;
+    content_type?: LmsCreateContentRequestDtoContentType$Outbound | null | undefined;
+    content_url?: string | null | undefined;
+    course_ids?: Array<string> | null | undefined;
+    cover_url?: string | null | undefined;
+    description?: string | null | undefined;
+    duration?: string | null | undefined;
+    external_id?: string | null | undefined;
+    languages?: Array<ContentLanguageEnum$Outbound> | null | undefined;
+    order?: number | null | undefined;
+    title?: string | null | undefined;
+};
+
+/** @internal */
+export const LmsCreateContentRequestDto$outboundSchema: z.ZodType<
+    LmsCreateContentRequestDto$Outbound,
+    z.ZodTypeDef,
+    LmsCreateContentRequestDto
+> = z
+    .object({
+        active: z
+            .nullable(z.union([z.boolean(), LmsCreateContentRequestDto2$outboundSchema]))
+            .optional(),
+        categories: z.nullable(z.array(CreateCategoriesApiModel$outboundSchema)).optional(),
+        contentType: z
+            .nullable(z.lazy(() => LmsCreateContentRequestDtoContentType$outboundSchema))
+            .optional(),
+        contentUrl: z.nullable(z.string()).optional(),
+        courseIds: z.nullable(z.array(z.string())).optional(),
+        coverUrl: z.nullable(z.string()).optional(),
+        description: z.nullable(z.string()).optional(),
+        duration: z.nullable(z.string()).optional(),
+        externalId: z.nullable(z.string()).optional(),
+        languages: z.nullable(z.array(ContentLanguageEnum$outboundSchema)).optional(),
+        order: z.nullable(z.number()).optional(),
+        title: z.nullable(z.string()).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            contentType: "content_type",
+            contentUrl: "content_url",
+            courseIds: "course_ids",
+            coverUrl: "cover_url",
+            externalId: "external_id",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace LmsCreateContentRequestDto$ {
-    export const inboundSchema: z.ZodType<LmsCreateContentRequestDto, z.ZodTypeDef, unknown> = z
-        .object({
-            active: z
-                .nullable(z.union([z.boolean(), LmsCreateContentRequestDto2$.inboundSchema]))
-                .optional(),
-            categories: z.nullable(z.array(CreateCategoriesApiModel$.inboundSchema)).optional(),
-            content_type: z
-                .nullable(z.lazy(() => LmsCreateContentRequestDtoContentType$.inboundSchema))
-                .optional(),
-            content_url: z.nullable(z.string()).optional(),
-            course_ids: z.nullable(z.array(z.string())).optional(),
-            cover_url: z.nullable(z.string()).optional(),
-            description: z.nullable(z.string()).optional(),
-            duration: z.nullable(z.string()).optional(),
-            external_id: z.nullable(z.string()).optional(),
-            languages: z.nullable(z.array(ContentLanguageEnum$.inboundSchema)).optional(),
-            order: z.nullable(z.number()).optional(),
-            title: z.nullable(z.string()).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                content_type: "contentType",
-                content_url: "contentUrl",
-                course_ids: "courseIds",
-                cover_url: "coverUrl",
-                external_id: "externalId",
-            });
-        });
-
-    export type Outbound = {
-        active?: boolean | string | null | undefined;
-        categories?: Array<CreateCategoriesApiModel$.Outbound> | null | undefined;
-        content_type?: LmsCreateContentRequestDtoContentType$.Outbound | null | undefined;
-        content_url?: string | null | undefined;
-        course_ids?: Array<string> | null | undefined;
-        cover_url?: string | null | undefined;
-        description?: string | null | undefined;
-        duration?: string | null | undefined;
-        external_id?: string | null | undefined;
-        languages?: Array<ContentLanguageEnum$.Outbound> | null | undefined;
-        order?: number | null | undefined;
-        title?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, LmsCreateContentRequestDto> = z
-        .object({
-            active: z
-                .nullable(z.union([z.boolean(), LmsCreateContentRequestDto2$.outboundSchema]))
-                .optional(),
-            categories: z.nullable(z.array(CreateCategoriesApiModel$.outboundSchema)).optional(),
-            contentType: z
-                .nullable(z.lazy(() => LmsCreateContentRequestDtoContentType$.outboundSchema))
-                .optional(),
-            contentUrl: z.nullable(z.string()).optional(),
-            courseIds: z.nullable(z.array(z.string())).optional(),
-            coverUrl: z.nullable(z.string()).optional(),
-            description: z.nullable(z.string()).optional(),
-            duration: z.nullable(z.string()).optional(),
-            externalId: z.nullable(z.string()).optional(),
-            languages: z.nullable(z.array(ContentLanguageEnum$.outboundSchema)).optional(),
-            order: z.nullable(z.number()).optional(),
-            title: z.nullable(z.string()).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                contentType: "content_type",
-                contentUrl: "content_url",
-                courseIds: "course_ids",
-                coverUrl: "cover_url",
-                externalId: "external_id",
-            });
-        });
+    /** @deprecated use `LmsCreateContentRequestDto$inboundSchema` instead. */
+    export const inboundSchema = LmsCreateContentRequestDto$inboundSchema;
+    /** @deprecated use `LmsCreateContentRequestDto$outboundSchema` instead. */
+    export const outboundSchema = LmsCreateContentRequestDto$outboundSchema;
+    /** @deprecated use `LmsCreateContentRequestDto$Outbound` instead. */
+    export type Outbound = LmsCreateContentRequestDto$Outbound;
 }

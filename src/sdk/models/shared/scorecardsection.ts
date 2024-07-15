@@ -3,7 +3,7 @@
  */
 
 import { remap as remap$ } from "../../../lib/primitives.js";
-import { Field, Field$ } from "./field.js";
+import { Field, Field$inboundSchema, Field$Outbound, Field$outboundSchema } from "./field.js";
 import * as z from "zod";
 
 export type ScorecardSection = {
@@ -26,37 +26,54 @@ export type ScorecardSection = {
 };
 
 /** @internal */
+export const ScorecardSection$inboundSchema: z.ZodType<ScorecardSection, z.ZodTypeDef, unknown> = z
+    .object({
+        fields: z.nullable(z.array(Field$inboundSchema)).optional(),
+        id: z.nullable(z.string()).optional(),
+        label: z.nullable(z.string()).optional(),
+        remote_id: z.nullable(z.string()).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            remote_id: "remoteId",
+        });
+    });
+
+/** @internal */
+export type ScorecardSection$Outbound = {
+    fields?: Array<Field$Outbound> | null | undefined;
+    id?: string | null | undefined;
+    label?: string | null | undefined;
+    remote_id?: string | null | undefined;
+};
+
+/** @internal */
+export const ScorecardSection$outboundSchema: z.ZodType<
+    ScorecardSection$Outbound,
+    z.ZodTypeDef,
+    ScorecardSection
+> = z
+    .object({
+        fields: z.nullable(z.array(Field$outboundSchema)).optional(),
+        id: z.nullable(z.string()).optional(),
+        label: z.nullable(z.string()).optional(),
+        remoteId: z.nullable(z.string()).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            remoteId: "remote_id",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace ScorecardSection$ {
-    export const inboundSchema: z.ZodType<ScorecardSection, z.ZodTypeDef, unknown> = z
-        .object({
-            fields: z.nullable(z.array(Field$.inboundSchema)).optional(),
-            id: z.nullable(z.string()).optional(),
-            label: z.nullable(z.string()).optional(),
-            remote_id: z.nullable(z.string()).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                remote_id: "remoteId",
-            });
-        });
-
-    export type Outbound = {
-        fields?: Array<Field$.Outbound> | null | undefined;
-        id?: string | null | undefined;
-        label?: string | null | undefined;
-        remote_id?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ScorecardSection> = z
-        .object({
-            fields: z.nullable(z.array(Field$.outboundSchema)).optional(),
-            id: z.nullable(z.string()).optional(),
-            label: z.nullable(z.string()).optional(),
-            remoteId: z.nullable(z.string()).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                remoteId: "remote_id",
-            });
-        });
+    /** @deprecated use `ScorecardSection$inboundSchema` instead. */
+    export const inboundSchema = ScorecardSection$inboundSchema;
+    /** @deprecated use `ScorecardSection$outboundSchema` instead. */
+    export const outboundSchema = ScorecardSection$outboundSchema;
+    /** @deprecated use `ScorecardSection$Outbound` instead. */
+    export type Outbound = ScorecardSection$Outbound;
 }

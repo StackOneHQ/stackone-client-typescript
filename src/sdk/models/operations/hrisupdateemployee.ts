@@ -35,80 +35,122 @@ export type HrisUpdateEmployeeResponse = {
 };
 
 /** @internal */
+export const HrisUpdateEmployeeRequest$inboundSchema: z.ZodType<
+    HrisUpdateEmployeeRequest,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        HrisCreateEmployeeRequestDto: shared.HrisCreateEmployeeRequestDto$inboundSchema,
+        id: z.string(),
+        "x-account-id": z.string(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            HrisCreateEmployeeRequestDto: "hrisCreateEmployeeRequestDto",
+            "x-account-id": "xAccountId",
+        });
+    });
+
+/** @internal */
+export type HrisUpdateEmployeeRequest$Outbound = {
+    HrisCreateEmployeeRequestDto: shared.HrisCreateEmployeeRequestDto$Outbound;
+    id: string;
+    "x-account-id": string;
+};
+
+/** @internal */
+export const HrisUpdateEmployeeRequest$outboundSchema: z.ZodType<
+    HrisUpdateEmployeeRequest$Outbound,
+    z.ZodTypeDef,
+    HrisUpdateEmployeeRequest
+> = z
+    .object({
+        hrisCreateEmployeeRequestDto: shared.HrisCreateEmployeeRequestDto$outboundSchema,
+        id: z.string(),
+        xAccountId: z.string(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            hrisCreateEmployeeRequestDto: "HrisCreateEmployeeRequestDto",
+            xAccountId: "x-account-id",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace HrisUpdateEmployeeRequest$ {
-    export const inboundSchema: z.ZodType<HrisUpdateEmployeeRequest, z.ZodTypeDef, unknown> = z
-        .object({
-            HrisCreateEmployeeRequestDto: shared.HrisCreateEmployeeRequestDto$.inboundSchema,
-            id: z.string(),
-            "x-account-id": z.string(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                HrisCreateEmployeeRequestDto: "hrisCreateEmployeeRequestDto",
-                "x-account-id": "xAccountId",
-            });
-        });
-
-    export type Outbound = {
-        HrisCreateEmployeeRequestDto: shared.HrisCreateEmployeeRequestDto$.Outbound;
-        id: string;
-        "x-account-id": string;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, HrisUpdateEmployeeRequest> = z
-        .object({
-            hrisCreateEmployeeRequestDto: shared.HrisCreateEmployeeRequestDto$.outboundSchema,
-            id: z.string(),
-            xAccountId: z.string(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                hrisCreateEmployeeRequestDto: "HrisCreateEmployeeRequestDto",
-                xAccountId: "x-account-id",
-            });
-        });
+    /** @deprecated use `HrisUpdateEmployeeRequest$inboundSchema` instead. */
+    export const inboundSchema = HrisUpdateEmployeeRequest$inboundSchema;
+    /** @deprecated use `HrisUpdateEmployeeRequest$outboundSchema` instead. */
+    export const outboundSchema = HrisUpdateEmployeeRequest$outboundSchema;
+    /** @deprecated use `HrisUpdateEmployeeRequest$Outbound` instead. */
+    export type Outbound = HrisUpdateEmployeeRequest$Outbound;
 }
 
 /** @internal */
+export const HrisUpdateEmployeeResponse$inboundSchema: z.ZodType<
+    HrisUpdateEmployeeResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        ContentType: z.string(),
+        CreateResult: shared.CreateResult$inboundSchema.optional(),
+        StatusCode: z.number().int(),
+        RawResponse: z.instanceof(Response),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            ContentType: "contentType",
+            CreateResult: "createResult",
+            StatusCode: "statusCode",
+            RawResponse: "rawResponse",
+        });
+    });
+
+/** @internal */
+export type HrisUpdateEmployeeResponse$Outbound = {
+    ContentType: string;
+    CreateResult?: shared.CreateResult$Outbound | undefined;
+    StatusCode: number;
+    RawResponse: never;
+};
+
+/** @internal */
+export const HrisUpdateEmployeeResponse$outboundSchema: z.ZodType<
+    HrisUpdateEmployeeResponse$Outbound,
+    z.ZodTypeDef,
+    HrisUpdateEmployeeResponse
+> = z
+    .object({
+        contentType: z.string(),
+        createResult: shared.CreateResult$outboundSchema.optional(),
+        statusCode: z.number().int(),
+        rawResponse: z.instanceof(Response).transform(() => {
+            throw new Error("Response cannot be serialized");
+        }),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            contentType: "ContentType",
+            createResult: "CreateResult",
+            statusCode: "StatusCode",
+            rawResponse: "RawResponse",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace HrisUpdateEmployeeResponse$ {
-    export const inboundSchema: z.ZodType<HrisUpdateEmployeeResponse, z.ZodTypeDef, unknown> = z
-        .object({
-            ContentType: z.string(),
-            CreateResult: shared.CreateResult$.inboundSchema.optional(),
-            StatusCode: z.number().int(),
-            RawResponse: z.instanceof(Response),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                ContentType: "contentType",
-                CreateResult: "createResult",
-                StatusCode: "statusCode",
-                RawResponse: "rawResponse",
-            });
-        });
-
-    export type Outbound = {
-        ContentType: string;
-        CreateResult?: shared.CreateResult$.Outbound | undefined;
-        StatusCode: number;
-        RawResponse: never;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, HrisUpdateEmployeeResponse> = z
-        .object({
-            contentType: z.string(),
-            createResult: shared.CreateResult$.outboundSchema.optional(),
-            statusCode: z.number().int(),
-            rawResponse: z.instanceof(Response).transform(() => {
-                throw new Error("Response cannot be serialized");
-            }),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                contentType: "ContentType",
-                createResult: "CreateResult",
-                statusCode: "StatusCode",
-                rawResponse: "RawResponse",
-            });
-        });
+    /** @deprecated use `HrisUpdateEmployeeResponse$inboundSchema` instead. */
+    export const inboundSchema = HrisUpdateEmployeeResponse$inboundSchema;
+    /** @deprecated use `HrisUpdateEmployeeResponse$outboundSchema` instead. */
+    export const outboundSchema = HrisUpdateEmployeeResponse$outboundSchema;
+    /** @deprecated use `HrisUpdateEmployeeResponse$Outbound` instead. */
+    export type Outbound = HrisUpdateEmployeeResponse$Outbound;
 }

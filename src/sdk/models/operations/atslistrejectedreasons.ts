@@ -85,147 +85,199 @@ export type AtsListRejectedReasonsResponse = {
 };
 
 /** @internal */
+export const AtsListRejectedReasonsQueryParamFilter$inboundSchema: z.ZodType<
+    AtsListRejectedReasonsQueryParamFilter,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        updated_after: z.nullable(z.string()).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            updated_after: "updatedAfter",
+        });
+    });
+
+/** @internal */
+export type AtsListRejectedReasonsQueryParamFilter$Outbound = {
+    updated_after?: string | null | undefined;
+};
+
+/** @internal */
+export const AtsListRejectedReasonsQueryParamFilter$outboundSchema: z.ZodType<
+    AtsListRejectedReasonsQueryParamFilter$Outbound,
+    z.ZodTypeDef,
+    AtsListRejectedReasonsQueryParamFilter
+> = z
+    .object({
+        updatedAfter: z.nullable(z.string()).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            updatedAfter: "updated_after",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace AtsListRejectedReasonsQueryParamFilter$ {
-    export const inboundSchema: z.ZodType<
-        AtsListRejectedReasonsQueryParamFilter,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            updated_after: z.nullable(z.string()).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                updated_after: "updatedAfter",
-            });
-        });
-
-    export type Outbound = {
-        updated_after?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        AtsListRejectedReasonsQueryParamFilter
-    > = z
-        .object({
-            updatedAfter: z.nullable(z.string()).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                updatedAfter: "updated_after",
-            });
-        });
+    /** @deprecated use `AtsListRejectedReasonsQueryParamFilter$inboundSchema` instead. */
+    export const inboundSchema = AtsListRejectedReasonsQueryParamFilter$inboundSchema;
+    /** @deprecated use `AtsListRejectedReasonsQueryParamFilter$outboundSchema` instead. */
+    export const outboundSchema = AtsListRejectedReasonsQueryParamFilter$outboundSchema;
+    /** @deprecated use `AtsListRejectedReasonsQueryParamFilter$Outbound` instead. */
+    export type Outbound = AtsListRejectedReasonsQueryParamFilter$Outbound;
 }
 
 /** @internal */
+export const AtsListRejectedReasonsRequest$inboundSchema: z.ZodType<
+    AtsListRejectedReasonsRequest,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        fields: z.nullable(z.string()).optional(),
+        filter: z
+            .nullable(z.lazy(() => AtsListRejectedReasonsQueryParamFilter$inboundSchema))
+            .optional(),
+        next: z.nullable(z.string()).optional(),
+        page: z.nullable(z.string()).optional(),
+        page_size: z.nullable(z.string().default("25")),
+        proxy: z.nullable(z.record(z.any())).optional(),
+        raw: z.nullable(z.boolean().default(false)),
+        sync_token: z.nullable(z.string()).optional(),
+        updated_after: z.nullable(z.string()).optional(),
+        "x-account-id": z.string(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            page_size: "pageSize",
+            sync_token: "syncToken",
+            updated_after: "updatedAfter",
+            "x-account-id": "xAccountId",
+        });
+    });
+
+/** @internal */
+export type AtsListRejectedReasonsRequest$Outbound = {
+    fields?: string | null | undefined;
+    filter?: AtsListRejectedReasonsQueryParamFilter$Outbound | null | undefined;
+    next?: string | null | undefined;
+    page?: string | null | undefined;
+    page_size: string | null;
+    proxy?: { [k: string]: any } | null | undefined;
+    raw: boolean | null;
+    sync_token?: string | null | undefined;
+    updated_after?: string | null | undefined;
+    "x-account-id": string;
+};
+
+/** @internal */
+export const AtsListRejectedReasonsRequest$outboundSchema: z.ZodType<
+    AtsListRejectedReasonsRequest$Outbound,
+    z.ZodTypeDef,
+    AtsListRejectedReasonsRequest
+> = z
+    .object({
+        fields: z.nullable(z.string()).optional(),
+        filter: z
+            .nullable(z.lazy(() => AtsListRejectedReasonsQueryParamFilter$outboundSchema))
+            .optional(),
+        next: z.nullable(z.string()).optional(),
+        page: z.nullable(z.string()).optional(),
+        pageSize: z.nullable(z.string().default("25")),
+        proxy: z.nullable(z.record(z.any())).optional(),
+        raw: z.nullable(z.boolean().default(false)),
+        syncToken: z.nullable(z.string()).optional(),
+        updatedAfter: z.nullable(z.string()).optional(),
+        xAccountId: z.string(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            pageSize: "page_size",
+            syncToken: "sync_token",
+            updatedAfter: "updated_after",
+            xAccountId: "x-account-id",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace AtsListRejectedReasonsRequest$ {
-    export const inboundSchema: z.ZodType<AtsListRejectedReasonsRequest, z.ZodTypeDef, unknown> = z
-        .object({
-            fields: z.nullable(z.string()).optional(),
-            filter: z
-                .nullable(z.lazy(() => AtsListRejectedReasonsQueryParamFilter$.inboundSchema))
-                .optional(),
-            next: z.nullable(z.string()).optional(),
-            page: z.nullable(z.string()).optional(),
-            page_size: z.nullable(z.string().default("25")),
-            proxy: z.nullable(z.record(z.any())).optional(),
-            raw: z.nullable(z.boolean().default(false)),
-            sync_token: z.nullable(z.string()).optional(),
-            updated_after: z.nullable(z.string()).optional(),
-            "x-account-id": z.string(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                page_size: "pageSize",
-                sync_token: "syncToken",
-                updated_after: "updatedAfter",
-                "x-account-id": "xAccountId",
-            });
-        });
-
-    export type Outbound = {
-        fields?: string | null | undefined;
-        filter?: AtsListRejectedReasonsQueryParamFilter$.Outbound | null | undefined;
-        next?: string | null | undefined;
-        page?: string | null | undefined;
-        page_size: string | null;
-        proxy?: { [k: string]: any } | null | undefined;
-        raw: boolean | null;
-        sync_token?: string | null | undefined;
-        updated_after?: string | null | undefined;
-        "x-account-id": string;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, AtsListRejectedReasonsRequest> =
-        z
-            .object({
-                fields: z.nullable(z.string()).optional(),
-                filter: z
-                    .nullable(z.lazy(() => AtsListRejectedReasonsQueryParamFilter$.outboundSchema))
-                    .optional(),
-                next: z.nullable(z.string()).optional(),
-                page: z.nullable(z.string()).optional(),
-                pageSize: z.nullable(z.string().default("25")),
-                proxy: z.nullable(z.record(z.any())).optional(),
-                raw: z.nullable(z.boolean().default(false)),
-                syncToken: z.nullable(z.string()).optional(),
-                updatedAfter: z.nullable(z.string()).optional(),
-                xAccountId: z.string(),
-            })
-            .transform((v) => {
-                return remap$(v, {
-                    pageSize: "page_size",
-                    syncToken: "sync_token",
-                    updatedAfter: "updated_after",
-                    xAccountId: "x-account-id",
-                });
-            });
+    /** @deprecated use `AtsListRejectedReasonsRequest$inboundSchema` instead. */
+    export const inboundSchema = AtsListRejectedReasonsRequest$inboundSchema;
+    /** @deprecated use `AtsListRejectedReasonsRequest$outboundSchema` instead. */
+    export const outboundSchema = AtsListRejectedReasonsRequest$outboundSchema;
+    /** @deprecated use `AtsListRejectedReasonsRequest$Outbound` instead. */
+    export type Outbound = AtsListRejectedReasonsRequest$Outbound;
 }
 
 /** @internal */
-export namespace AtsListRejectedReasonsResponse$ {
-    export const inboundSchema: z.ZodType<AtsListRejectedReasonsResponse, z.ZodTypeDef, unknown> = z
-        .object({
-            ContentType: z.string(),
-            RejectedReasonsPaginated: shared.RejectedReasonsPaginated$.inboundSchema.optional(),
-            StatusCode: z.number().int(),
-            RawResponse: z.instanceof(Response),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                ContentType: "contentType",
-                RejectedReasonsPaginated: "rejectedReasonsPaginated",
-                StatusCode: "statusCode",
-                RawResponse: "rawResponse",
-            });
+export const AtsListRejectedReasonsResponse$inboundSchema: z.ZodType<
+    AtsListRejectedReasonsResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        ContentType: z.string(),
+        RejectedReasonsPaginated: shared.RejectedReasonsPaginated$inboundSchema.optional(),
+        StatusCode: z.number().int(),
+        RawResponse: z.instanceof(Response),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            ContentType: "contentType",
+            RejectedReasonsPaginated: "rejectedReasonsPaginated",
+            StatusCode: "statusCode",
+            RawResponse: "rawResponse",
         });
+    });
 
-    export type Outbound = {
-        ContentType: string;
-        RejectedReasonsPaginated?: shared.RejectedReasonsPaginated$.Outbound | undefined;
-        StatusCode: number;
-        RawResponse: never;
-    };
+/** @internal */
+export type AtsListRejectedReasonsResponse$Outbound = {
+    ContentType: string;
+    RejectedReasonsPaginated?: shared.RejectedReasonsPaginated$Outbound | undefined;
+    StatusCode: number;
+    RawResponse: never;
+};
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, AtsListRejectedReasonsResponse> =
-        z
-            .object({
-                contentType: z.string(),
-                rejectedReasonsPaginated:
-                    shared.RejectedReasonsPaginated$.outboundSchema.optional(),
-                statusCode: z.number().int(),
-                rawResponse: z.instanceof(Response).transform(() => {
-                    throw new Error("Response cannot be serialized");
-                }),
-            })
-            .transform((v) => {
-                return remap$(v, {
-                    contentType: "ContentType",
-                    rejectedReasonsPaginated: "RejectedReasonsPaginated",
-                    statusCode: "StatusCode",
-                    rawResponse: "RawResponse",
-                });
-            });
+/** @internal */
+export const AtsListRejectedReasonsResponse$outboundSchema: z.ZodType<
+    AtsListRejectedReasonsResponse$Outbound,
+    z.ZodTypeDef,
+    AtsListRejectedReasonsResponse
+> = z
+    .object({
+        contentType: z.string(),
+        rejectedReasonsPaginated: shared.RejectedReasonsPaginated$outboundSchema.optional(),
+        statusCode: z.number().int(),
+        rawResponse: z.instanceof(Response).transform(() => {
+            throw new Error("Response cannot be serialized");
+        }),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            contentType: "ContentType",
+            rejectedReasonsPaginated: "RejectedReasonsPaginated",
+            statusCode: "StatusCode",
+            rawResponse: "RawResponse",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace AtsListRejectedReasonsResponse$ {
+    /** @deprecated use `AtsListRejectedReasonsResponse$inboundSchema` instead. */
+    export const inboundSchema = AtsListRejectedReasonsResponse$inboundSchema;
+    /** @deprecated use `AtsListRejectedReasonsResponse$outboundSchema` instead. */
+    export const outboundSchema = AtsListRejectedReasonsResponse$outboundSchema;
+    /** @deprecated use `AtsListRejectedReasonsResponse$Outbound` instead. */
+    export type Outbound = AtsListRejectedReasonsResponse$Outbound;
 }

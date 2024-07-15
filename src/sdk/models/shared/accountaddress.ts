@@ -336,252 +336,386 @@ export type AccountAddress = {
 };
 
 /** @internal */
+export const AccountAddressSchemas4$inboundSchema: z.ZodType<
+    AccountAddressSchemas4,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type AccountAddressSchemas4$Outbound = {};
+
+/** @internal */
+export const AccountAddressSchemas4$outboundSchema: z.ZodType<
+    AccountAddressSchemas4$Outbound,
+    z.ZodTypeDef,
+    AccountAddressSchemas4
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace AccountAddressSchemas4$ {
-    export const inboundSchema: z.ZodType<AccountAddressSchemas4, z.ZodTypeDef, unknown> = z.object(
-        {}
-    );
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, AccountAddressSchemas4> =
-        z.object({});
+    /** @deprecated use `AccountAddressSchemas4$inboundSchema` instead. */
+    export const inboundSchema = AccountAddressSchemas4$inboundSchema;
+    /** @deprecated use `AccountAddressSchemas4$outboundSchema` instead. */
+    export const outboundSchema = AccountAddressSchemas4$outboundSchema;
+    /** @deprecated use `AccountAddressSchemas4$Outbound` instead. */
+    export type Outbound = AccountAddressSchemas4$Outbound;
 }
 
 /** @internal */
+export const AccountAddressSchemasSourceValue$inboundSchema: z.ZodType<
+    AccountAddressSchemasSourceValue,
+    z.ZodTypeDef,
+    unknown
+> = z.union([
+    z.lazy(() => AccountAddressSchemas4$inboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+]);
+
+/** @internal */
+export type AccountAddressSchemasSourceValue$Outbound =
+    | AccountAddressSchemas4$Outbound
+    | string
+    | number
+    | boolean;
+
+/** @internal */
+export const AccountAddressSchemasSourceValue$outboundSchema: z.ZodType<
+    AccountAddressSchemasSourceValue$Outbound,
+    z.ZodTypeDef,
+    AccountAddressSchemasSourceValue
+> = z.union([
+    z.lazy(() => AccountAddressSchemas4$outboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace AccountAddressSchemasSourceValue$ {
-    export const inboundSchema: z.ZodType<AccountAddressSchemasSourceValue, z.ZodTypeDef, unknown> =
-        z.union([
-            z.lazy(() => AccountAddressSchemas4$.inboundSchema),
-            z.string(),
-            z.number(),
-            z.boolean(),
-        ]);
-
-    export type Outbound = AccountAddressSchemas4$.Outbound | string | number | boolean;
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        AccountAddressSchemasSourceValue
-    > = z.union([
-        z.lazy(() => AccountAddressSchemas4$.outboundSchema),
-        z.string(),
-        z.number(),
-        z.boolean(),
-    ]);
+    /** @deprecated use `AccountAddressSchemasSourceValue$inboundSchema` instead. */
+    export const inboundSchema = AccountAddressSchemasSourceValue$inboundSchema;
+    /** @deprecated use `AccountAddressSchemasSourceValue$outboundSchema` instead. */
+    export const outboundSchema = AccountAddressSchemasSourceValue$outboundSchema;
+    /** @deprecated use `AccountAddressSchemasSourceValue$Outbound` instead. */
+    export type Outbound = AccountAddressSchemasSourceValue$Outbound;
 }
 
 /** @internal */
+export const AccountAddressSchemasValue$inboundSchema: z.ZodType<
+    AccountAddressSchemasValueOpen,
+    z.ZodTypeDef,
+    unknown
+> = z.union([
+    z.nativeEnum(AccountAddressSchemasValue),
+    z.string().transform(catchUnrecognizedEnum),
+]);
+
+/** @internal */
+export const AccountAddressSchemasValue$outboundSchema: z.ZodType<
+    AccountAddressSchemasValueOpen,
+    z.ZodTypeDef,
+    AccountAddressSchemasValueOpen
+> = z.union([
+    z.nativeEnum(AccountAddressSchemasValue),
+    z.string().and(z.custom<Unrecognized<string>>()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace AccountAddressSchemasValue$ {
-    export const inboundSchema: z.ZodType<AccountAddressSchemasValueOpen, z.ZodTypeDef, unknown> =
-        z.union([
-            z.nativeEnum(AccountAddressSchemasValue),
-            z.string().transform(catchUnrecognizedEnum),
-        ]);
-
-    export const outboundSchema: z.ZodType<
-        AccountAddressSchemasValueOpen,
-        z.ZodTypeDef,
-        AccountAddressSchemasValueOpen
-    > = z.union([
-        z.nativeEnum(AccountAddressSchemasValue),
-        z.string().and(z.custom<Unrecognized<string>>()),
-    ]);
+    /** @deprecated use `AccountAddressSchemasValue$inboundSchema` instead. */
+    export const inboundSchema = AccountAddressSchemasValue$inboundSchema;
+    /** @deprecated use `AccountAddressSchemasValue$outboundSchema` instead. */
+    export const outboundSchema = AccountAddressSchemasValue$outboundSchema;
 }
 
 /** @internal */
+export const Country$inboundSchema: z.ZodType<Country, z.ZodTypeDef, unknown> = z
+    .object({
+        source_value: z
+            .nullable(
+                z.union([
+                    z.lazy(() => AccountAddressSchemas4$inboundSchema),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                ])
+            )
+            .optional(),
+        value: z.nullable(AccountAddressSchemasValue$inboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            source_value: "sourceValue",
+        });
+    });
+
+/** @internal */
+export type Country$Outbound = {
+    source_value?: AccountAddressSchemas4$Outbound | string | number | boolean | null | undefined;
+    value?: string | null | undefined;
+};
+
+/** @internal */
+export const Country$outboundSchema: z.ZodType<Country$Outbound, z.ZodTypeDef, Country> = z
+    .object({
+        sourceValue: z
+            .nullable(
+                z.union([
+                    z.lazy(() => AccountAddressSchemas4$outboundSchema),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                ])
+            )
+            .optional(),
+        value: z.nullable(AccountAddressSchemasValue$outboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            sourceValue: "source_value",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace Country$ {
-    export const inboundSchema: z.ZodType<Country, z.ZodTypeDef, unknown> = z
-        .object({
-            source_value: z
-                .nullable(
-                    z.union([
-                        z.lazy(() => AccountAddressSchemas4$.inboundSchema),
-                        z.string(),
-                        z.number(),
-                        z.boolean(),
-                    ])
-                )
-                .optional(),
-            value: z.nullable(AccountAddressSchemasValue$.inboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                source_value: "sourceValue",
-            });
-        });
-
-    export type Outbound = {
-        source_value?:
-            | AccountAddressSchemas4$.Outbound
-            | string
-            | number
-            | boolean
-            | null
-            | undefined;
-        value?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Country> = z
-        .object({
-            sourceValue: z
-                .nullable(
-                    z.union([
-                        z.lazy(() => AccountAddressSchemas4$.outboundSchema),
-                        z.string(),
-                        z.number(),
-                        z.boolean(),
-                    ])
-                )
-                .optional(),
-            value: z.nullable(AccountAddressSchemasValue$.outboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                sourceValue: "source_value",
-            });
-        });
+    /** @deprecated use `Country$inboundSchema` instead. */
+    export const inboundSchema = Country$inboundSchema;
+    /** @deprecated use `Country$outboundSchema` instead. */
+    export const outboundSchema = Country$outboundSchema;
+    /** @deprecated use `Country$Outbound` instead. */
+    export type Outbound = Country$Outbound;
 }
 
 /** @internal */
+export const AccountAddress4$inboundSchema: z.ZodType<AccountAddress4, z.ZodTypeDef, unknown> =
+    z.object({});
+
+/** @internal */
+export type AccountAddress4$Outbound = {};
+
+/** @internal */
+export const AccountAddress4$outboundSchema: z.ZodType<
+    AccountAddress4$Outbound,
+    z.ZodTypeDef,
+    AccountAddress4
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace AccountAddress4$ {
-    export const inboundSchema: z.ZodType<AccountAddress4, z.ZodTypeDef, unknown> = z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, AccountAddress4> = z.object({});
+    /** @deprecated use `AccountAddress4$inboundSchema` instead. */
+    export const inboundSchema = AccountAddress4$inboundSchema;
+    /** @deprecated use `AccountAddress4$outboundSchema` instead. */
+    export const outboundSchema = AccountAddress4$outboundSchema;
+    /** @deprecated use `AccountAddress4$Outbound` instead. */
+    export type Outbound = AccountAddress4$Outbound;
 }
 
 /** @internal */
+export const AccountAddressSourceValue$inboundSchema: z.ZodType<
+    AccountAddressSourceValue,
+    z.ZodTypeDef,
+    unknown
+> = z.union([z.lazy(() => AccountAddress4$inboundSchema), z.string(), z.number(), z.boolean()]);
+
+/** @internal */
+export type AccountAddressSourceValue$Outbound =
+    | AccountAddress4$Outbound
+    | string
+    | number
+    | boolean;
+
+/** @internal */
+export const AccountAddressSourceValue$outboundSchema: z.ZodType<
+    AccountAddressSourceValue$Outbound,
+    z.ZodTypeDef,
+    AccountAddressSourceValue
+> = z.union([z.lazy(() => AccountAddress4$outboundSchema), z.string(), z.number(), z.boolean()]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace AccountAddressSourceValue$ {
-    export const inboundSchema: z.ZodType<AccountAddressSourceValue, z.ZodTypeDef, unknown> =
-        z.union([
-            z.lazy(() => AccountAddress4$.inboundSchema),
-            z.string(),
-            z.number(),
-            z.boolean(),
-        ]);
-
-    export type Outbound = AccountAddress4$.Outbound | string | number | boolean;
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, AccountAddressSourceValue> =
-        z.union([
-            z.lazy(() => AccountAddress4$.outboundSchema),
-            z.string(),
-            z.number(),
-            z.boolean(),
-        ]);
+    /** @deprecated use `AccountAddressSourceValue$inboundSchema` instead. */
+    export const inboundSchema = AccountAddressSourceValue$inboundSchema;
+    /** @deprecated use `AccountAddressSourceValue$outboundSchema` instead. */
+    export const outboundSchema = AccountAddressSourceValue$outboundSchema;
+    /** @deprecated use `AccountAddressSourceValue$Outbound` instead. */
+    export type Outbound = AccountAddressSourceValue$Outbound;
 }
 
 /** @internal */
+export const AccountAddressValue$inboundSchema: z.ZodType<
+    AccountAddressValueOpen,
+    z.ZodTypeDef,
+    unknown
+> = z.union([z.nativeEnum(AccountAddressValue), z.string().transform(catchUnrecognizedEnum)]);
+
+/** @internal */
+export const AccountAddressValue$outboundSchema: z.ZodType<
+    AccountAddressValueOpen,
+    z.ZodTypeDef,
+    AccountAddressValueOpen
+> = z.union([z.nativeEnum(AccountAddressValue), z.string().and(z.custom<Unrecognized<string>>())]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace AccountAddressValue$ {
-    export const inboundSchema: z.ZodType<AccountAddressValueOpen, z.ZodTypeDef, unknown> = z.union(
-        [z.nativeEnum(AccountAddressValue), z.string().transform(catchUnrecognizedEnum)]
-    );
-
-    export const outboundSchema: z.ZodType<
-        AccountAddressValueOpen,
-        z.ZodTypeDef,
-        AccountAddressValueOpen
-    > = z.union([
-        z.nativeEnum(AccountAddressValue),
-        z.string().and(z.custom<Unrecognized<string>>()),
-    ]);
+    /** @deprecated use `AccountAddressValue$inboundSchema` instead. */
+    export const inboundSchema = AccountAddressValue$inboundSchema;
+    /** @deprecated use `AccountAddressValue$outboundSchema` instead. */
+    export const outboundSchema = AccountAddressValue$outboundSchema;
 }
 
 /** @internal */
+export const LocationType$inboundSchema: z.ZodType<LocationType, z.ZodTypeDef, unknown> = z
+    .object({
+        source_value: z
+            .nullable(
+                z.union([
+                    z.lazy(() => AccountAddress4$inboundSchema),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                ])
+            )
+            .optional(),
+        value: z.nullable(AccountAddressValue$inboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            source_value: "sourceValue",
+        });
+    });
+
+/** @internal */
+export type LocationType$Outbound = {
+    source_value?: AccountAddress4$Outbound | string | number | boolean | null | undefined;
+    value?: string | null | undefined;
+};
+
+/** @internal */
+export const LocationType$outboundSchema: z.ZodType<
+    LocationType$Outbound,
+    z.ZodTypeDef,
+    LocationType
+> = z
+    .object({
+        sourceValue: z
+            .nullable(
+                z.union([
+                    z.lazy(() => AccountAddress4$outboundSchema),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                ])
+            )
+            .optional(),
+        value: z.nullable(AccountAddressValue$outboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            sourceValue: "source_value",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace LocationType$ {
-    export const inboundSchema: z.ZodType<LocationType, z.ZodTypeDef, unknown> = z
-        .object({
-            source_value: z
-                .nullable(
-                    z.union([
-                        z.lazy(() => AccountAddress4$.inboundSchema),
-                        z.string(),
-                        z.number(),
-                        z.boolean(),
-                    ])
-                )
-                .optional(),
-            value: z.nullable(AccountAddressValue$.inboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                source_value: "sourceValue",
-            });
-        });
-
-    export type Outbound = {
-        source_value?: AccountAddress4$.Outbound | string | number | boolean | null | undefined;
-        value?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, LocationType> = z
-        .object({
-            sourceValue: z
-                .nullable(
-                    z.union([
-                        z.lazy(() => AccountAddress4$.outboundSchema),
-                        z.string(),
-                        z.number(),
-                        z.boolean(),
-                    ])
-                )
-                .optional(),
-            value: z.nullable(AccountAddressValue$.outboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                sourceValue: "source_value",
-            });
-        });
+    /** @deprecated use `LocationType$inboundSchema` instead. */
+    export const inboundSchema = LocationType$inboundSchema;
+    /** @deprecated use `LocationType$outboundSchema` instead. */
+    export const outboundSchema = LocationType$outboundSchema;
+    /** @deprecated use `LocationType$Outbound` instead. */
+    export type Outbound = LocationType$Outbound;
 }
 
 /** @internal */
+export const AccountAddress$inboundSchema: z.ZodType<AccountAddress, z.ZodTypeDef, unknown> = z
+    .object({
+        city: z.nullable(z.string()).optional(),
+        country: z.nullable(z.lazy(() => Country$inboundSchema)).optional(),
+        location_type: z.nullable(z.lazy(() => LocationType$inboundSchema)).optional(),
+        state: z.nullable(z.string()).optional(),
+        street_1: z.nullable(z.string()).optional(),
+        street_2: z.nullable(z.string()).optional(),
+        zip_code: z.nullable(z.string()).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            location_type: "locationType",
+            street_1: "street1",
+            street_2: "street2",
+            zip_code: "zipCode",
+        });
+    });
+
+/** @internal */
+export type AccountAddress$Outbound = {
+    city?: string | null | undefined;
+    country?: Country$Outbound | null | undefined;
+    location_type?: LocationType$Outbound | null | undefined;
+    state?: string | null | undefined;
+    street_1?: string | null | undefined;
+    street_2?: string | null | undefined;
+    zip_code?: string | null | undefined;
+};
+
+/** @internal */
+export const AccountAddress$outboundSchema: z.ZodType<
+    AccountAddress$Outbound,
+    z.ZodTypeDef,
+    AccountAddress
+> = z
+    .object({
+        city: z.nullable(z.string()).optional(),
+        country: z.nullable(z.lazy(() => Country$outboundSchema)).optional(),
+        locationType: z.nullable(z.lazy(() => LocationType$outboundSchema)).optional(),
+        state: z.nullable(z.string()).optional(),
+        street1: z.nullable(z.string()).optional(),
+        street2: z.nullable(z.string()).optional(),
+        zipCode: z.nullable(z.string()).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            locationType: "location_type",
+            street1: "street_1",
+            street2: "street_2",
+            zipCode: "zip_code",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace AccountAddress$ {
-    export const inboundSchema: z.ZodType<AccountAddress, z.ZodTypeDef, unknown> = z
-        .object({
-            city: z.nullable(z.string()).optional(),
-            country: z.nullable(z.lazy(() => Country$.inboundSchema)).optional(),
-            location_type: z.nullable(z.lazy(() => LocationType$.inboundSchema)).optional(),
-            state: z.nullable(z.string()).optional(),
-            street_1: z.nullable(z.string()).optional(),
-            street_2: z.nullable(z.string()).optional(),
-            zip_code: z.nullable(z.string()).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                location_type: "locationType",
-                street_1: "street1",
-                street_2: "street2",
-                zip_code: "zipCode",
-            });
-        });
-
-    export type Outbound = {
-        city?: string | null | undefined;
-        country?: Country$.Outbound | null | undefined;
-        location_type?: LocationType$.Outbound | null | undefined;
-        state?: string | null | undefined;
-        street_1?: string | null | undefined;
-        street_2?: string | null | undefined;
-        zip_code?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, AccountAddress> = z
-        .object({
-            city: z.nullable(z.string()).optional(),
-            country: z.nullable(z.lazy(() => Country$.outboundSchema)).optional(),
-            locationType: z.nullable(z.lazy(() => LocationType$.outboundSchema)).optional(),
-            state: z.nullable(z.string()).optional(),
-            street1: z.nullable(z.string()).optional(),
-            street2: z.nullable(z.string()).optional(),
-            zipCode: z.nullable(z.string()).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                locationType: "location_type",
-                street1: "street_1",
-                street2: "street_2",
-                zipCode: "zip_code",
-            });
-        });
+    /** @deprecated use `AccountAddress$inboundSchema` instead. */
+    export const inboundSchema = AccountAddress$inboundSchema;
+    /** @deprecated use `AccountAddress$outboundSchema` instead. */
+    export const outboundSchema = AccountAddress$outboundSchema;
+    /** @deprecated use `AccountAddress$Outbound` instead. */
+    export type Outbound = AccountAddress$Outbound;
 }

@@ -3,8 +3,18 @@
  */
 
 import { remap as remap$ } from "../../../lib/primitives.js";
-import { AssessmentsPackages, AssessmentsPackages$ } from "./assessmentspackages.js";
-import { RawResponse, RawResponse$ } from "./rawresponse.js";
+import {
+    AssessmentsPackages,
+    AssessmentsPackages$inboundSchema,
+    AssessmentsPackages$Outbound,
+    AssessmentsPackages$outboundSchema,
+} from "./assessmentspackages.js";
+import {
+    RawResponse,
+    RawResponse$inboundSchema,
+    RawResponse$Outbound,
+    RawResponse$outboundSchema,
+} from "./rawresponse.js";
 import * as z from "zod";
 
 export type AssessmentsPackagesPaginated = {
@@ -18,37 +28,58 @@ export type AssessmentsPackagesPaginated = {
 };
 
 /** @internal */
+export const AssessmentsPackagesPaginated$inboundSchema: z.ZodType<
+    AssessmentsPackagesPaginated,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        data: z.array(AssessmentsPackages$inboundSchema),
+        next: z.nullable(z.string()).optional(),
+        next_page: z.nullable(z.string()).optional(),
+        raw: z.nullable(z.array(RawResponse$inboundSchema)).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            next_page: "nextPage",
+        });
+    });
+
+/** @internal */
+export type AssessmentsPackagesPaginated$Outbound = {
+    data: Array<AssessmentsPackages$Outbound>;
+    next?: string | null | undefined;
+    next_page?: string | null | undefined;
+    raw?: Array<RawResponse$Outbound> | null | undefined;
+};
+
+/** @internal */
+export const AssessmentsPackagesPaginated$outboundSchema: z.ZodType<
+    AssessmentsPackagesPaginated$Outbound,
+    z.ZodTypeDef,
+    AssessmentsPackagesPaginated
+> = z
+    .object({
+        data: z.array(AssessmentsPackages$outboundSchema),
+        next: z.nullable(z.string()).optional(),
+        nextPage: z.nullable(z.string()).optional(),
+        raw: z.nullable(z.array(RawResponse$outboundSchema)).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            nextPage: "next_page",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace AssessmentsPackagesPaginated$ {
-    export const inboundSchema: z.ZodType<AssessmentsPackagesPaginated, z.ZodTypeDef, unknown> = z
-        .object({
-            data: z.array(AssessmentsPackages$.inboundSchema),
-            next: z.nullable(z.string()).optional(),
-            next_page: z.nullable(z.string()).optional(),
-            raw: z.nullable(z.array(RawResponse$.inboundSchema)).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                next_page: "nextPage",
-            });
-        });
-
-    export type Outbound = {
-        data: Array<AssessmentsPackages$.Outbound>;
-        next?: string | null | undefined;
-        next_page?: string | null | undefined;
-        raw?: Array<RawResponse$.Outbound> | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, AssessmentsPackagesPaginated> = z
-        .object({
-            data: z.array(AssessmentsPackages$.outboundSchema),
-            next: z.nullable(z.string()).optional(),
-            nextPage: z.nullable(z.string()).optional(),
-            raw: z.nullable(z.array(RawResponse$.outboundSchema)).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                nextPage: "next_page",
-            });
-        });
+    /** @deprecated use `AssessmentsPackagesPaginated$inboundSchema` instead. */
+    export const inboundSchema = AssessmentsPackagesPaginated$inboundSchema;
+    /** @deprecated use `AssessmentsPackagesPaginated$outboundSchema` instead. */
+    export const outboundSchema = AssessmentsPackagesPaginated$outboundSchema;
+    /** @deprecated use `AssessmentsPackagesPaginated$Outbound` instead. */
+    export type Outbound = AssessmentsPackagesPaginated$Outbound;
 }

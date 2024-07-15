@@ -3,7 +3,7 @@
  */
 
 import { remap as remap$ } from "../../../lib/primitives.js";
-import { Answer, Answer$ } from "./answer.js";
+import { Answer, Answer$inboundSchema, Answer$Outbound, Answer$outboundSchema } from "./answer.js";
 import * as z from "zod";
 
 export type Questionnaire = {
@@ -19,34 +19,51 @@ export type Questionnaire = {
 };
 
 /** @internal */
+export const Questionnaire$inboundSchema: z.ZodType<Questionnaire, z.ZodTypeDef, unknown> = z
+    .object({
+        answers: z.nullable(z.array(Answer$inboundSchema)).optional(),
+        id: z.nullable(z.string()).optional(),
+        remote_id: z.nullable(z.string()).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            remote_id: "remoteId",
+        });
+    });
+
+/** @internal */
+export type Questionnaire$Outbound = {
+    answers?: Array<Answer$Outbound> | null | undefined;
+    id?: string | null | undefined;
+    remote_id?: string | null | undefined;
+};
+
+/** @internal */
+export const Questionnaire$outboundSchema: z.ZodType<
+    Questionnaire$Outbound,
+    z.ZodTypeDef,
+    Questionnaire
+> = z
+    .object({
+        answers: z.nullable(z.array(Answer$outboundSchema)).optional(),
+        id: z.nullable(z.string()).optional(),
+        remoteId: z.nullable(z.string()).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            remoteId: "remote_id",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace Questionnaire$ {
-    export const inboundSchema: z.ZodType<Questionnaire, z.ZodTypeDef, unknown> = z
-        .object({
-            answers: z.nullable(z.array(Answer$.inboundSchema)).optional(),
-            id: z.nullable(z.string()).optional(),
-            remote_id: z.nullable(z.string()).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                remote_id: "remoteId",
-            });
-        });
-
-    export type Outbound = {
-        answers?: Array<Answer$.Outbound> | null | undefined;
-        id?: string | null | undefined;
-        remote_id?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Questionnaire> = z
-        .object({
-            answers: z.nullable(z.array(Answer$.outboundSchema)).optional(),
-            id: z.nullable(z.string()).optional(),
-            remoteId: z.nullable(z.string()).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                remoteId: "remote_id",
-            });
-        });
+    /** @deprecated use `Questionnaire$inboundSchema` instead. */
+    export const inboundSchema = Questionnaire$inboundSchema;
+    /** @deprecated use `Questionnaire$outboundSchema` instead. */
+    export const outboundSchema = Questionnaire$outboundSchema;
+    /** @deprecated use `Questionnaire$Outbound` instead. */
+    export type Outbound = Questionnaire$Outbound;
 }

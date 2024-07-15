@@ -34,77 +34,119 @@ export type AtsCreateOfferResponse = {
 };
 
 /** @internal */
+export const AtsCreateOfferRequest$inboundSchema: z.ZodType<
+    AtsCreateOfferRequest,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        AtsCreateOfferRequestDto: shared.AtsCreateOfferRequestDto$inboundSchema,
+        "x-account-id": z.string(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            AtsCreateOfferRequestDto: "atsCreateOfferRequestDto",
+            "x-account-id": "xAccountId",
+        });
+    });
+
+/** @internal */
+export type AtsCreateOfferRequest$Outbound = {
+    AtsCreateOfferRequestDto: shared.AtsCreateOfferRequestDto$Outbound;
+    "x-account-id": string;
+};
+
+/** @internal */
+export const AtsCreateOfferRequest$outboundSchema: z.ZodType<
+    AtsCreateOfferRequest$Outbound,
+    z.ZodTypeDef,
+    AtsCreateOfferRequest
+> = z
+    .object({
+        atsCreateOfferRequestDto: shared.AtsCreateOfferRequestDto$outboundSchema,
+        xAccountId: z.string(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            atsCreateOfferRequestDto: "AtsCreateOfferRequestDto",
+            xAccountId: "x-account-id",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace AtsCreateOfferRequest$ {
-    export const inboundSchema: z.ZodType<AtsCreateOfferRequest, z.ZodTypeDef, unknown> = z
-        .object({
-            AtsCreateOfferRequestDto: shared.AtsCreateOfferRequestDto$.inboundSchema,
-            "x-account-id": z.string(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                AtsCreateOfferRequestDto: "atsCreateOfferRequestDto",
-                "x-account-id": "xAccountId",
-            });
-        });
-
-    export type Outbound = {
-        AtsCreateOfferRequestDto: shared.AtsCreateOfferRequestDto$.Outbound;
-        "x-account-id": string;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, AtsCreateOfferRequest> = z
-        .object({
-            atsCreateOfferRequestDto: shared.AtsCreateOfferRequestDto$.outboundSchema,
-            xAccountId: z.string(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                atsCreateOfferRequestDto: "AtsCreateOfferRequestDto",
-                xAccountId: "x-account-id",
-            });
-        });
+    /** @deprecated use `AtsCreateOfferRequest$inboundSchema` instead. */
+    export const inboundSchema = AtsCreateOfferRequest$inboundSchema;
+    /** @deprecated use `AtsCreateOfferRequest$outboundSchema` instead. */
+    export const outboundSchema = AtsCreateOfferRequest$outboundSchema;
+    /** @deprecated use `AtsCreateOfferRequest$Outbound` instead. */
+    export type Outbound = AtsCreateOfferRequest$Outbound;
 }
 
 /** @internal */
+export const AtsCreateOfferResponse$inboundSchema: z.ZodType<
+    AtsCreateOfferResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        ContentType: z.string(),
+        CreateResult: shared.CreateResult$inboundSchema.optional(),
+        StatusCode: z.number().int(),
+        RawResponse: z.instanceof(Response),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            ContentType: "contentType",
+            CreateResult: "createResult",
+            StatusCode: "statusCode",
+            RawResponse: "rawResponse",
+        });
+    });
+
+/** @internal */
+export type AtsCreateOfferResponse$Outbound = {
+    ContentType: string;
+    CreateResult?: shared.CreateResult$Outbound | undefined;
+    StatusCode: number;
+    RawResponse: never;
+};
+
+/** @internal */
+export const AtsCreateOfferResponse$outboundSchema: z.ZodType<
+    AtsCreateOfferResponse$Outbound,
+    z.ZodTypeDef,
+    AtsCreateOfferResponse
+> = z
+    .object({
+        contentType: z.string(),
+        createResult: shared.CreateResult$outboundSchema.optional(),
+        statusCode: z.number().int(),
+        rawResponse: z.instanceof(Response).transform(() => {
+            throw new Error("Response cannot be serialized");
+        }),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            contentType: "ContentType",
+            createResult: "CreateResult",
+            statusCode: "StatusCode",
+            rawResponse: "RawResponse",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace AtsCreateOfferResponse$ {
-    export const inboundSchema: z.ZodType<AtsCreateOfferResponse, z.ZodTypeDef, unknown> = z
-        .object({
-            ContentType: z.string(),
-            CreateResult: shared.CreateResult$.inboundSchema.optional(),
-            StatusCode: z.number().int(),
-            RawResponse: z.instanceof(Response),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                ContentType: "contentType",
-                CreateResult: "createResult",
-                StatusCode: "statusCode",
-                RawResponse: "rawResponse",
-            });
-        });
-
-    export type Outbound = {
-        ContentType: string;
-        CreateResult?: shared.CreateResult$.Outbound | undefined;
-        StatusCode: number;
-        RawResponse: never;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, AtsCreateOfferResponse> = z
-        .object({
-            contentType: z.string(),
-            createResult: shared.CreateResult$.outboundSchema.optional(),
-            statusCode: z.number().int(),
-            rawResponse: z.instanceof(Response).transform(() => {
-                throw new Error("Response cannot be serialized");
-            }),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                contentType: "ContentType",
-                createResult: "CreateResult",
-                statusCode: "StatusCode",
-                rawResponse: "RawResponse",
-            });
-        });
+    /** @deprecated use `AtsCreateOfferResponse$inboundSchema` instead. */
+    export const inboundSchema = AtsCreateOfferResponse$inboundSchema;
+    /** @deprecated use `AtsCreateOfferResponse$outboundSchema` instead. */
+    export const outboundSchema = AtsCreateOfferResponse$outboundSchema;
+    /** @deprecated use `AtsCreateOfferResponse$Outbound` instead. */
+    export type Outbound = AtsCreateOfferResponse$Outbound;
 }

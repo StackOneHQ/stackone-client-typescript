@@ -32,88 +32,118 @@ export type ConnectSessionToken = {
 };
 
 /** @internal */
+export const ConnectSessionTokenCategories$inboundSchema: z.ZodNativeEnum<
+    typeof ConnectSessionTokenCategories
+> = z.nativeEnum(ConnectSessionTokenCategories);
+
+/** @internal */
+export const ConnectSessionTokenCategories$outboundSchema: z.ZodNativeEnum<
+    typeof ConnectSessionTokenCategories
+> = ConnectSessionTokenCategories$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace ConnectSessionTokenCategories$ {
-    export const inboundSchema: z.ZodNativeEnum<typeof ConnectSessionTokenCategories> =
-        z.nativeEnum(ConnectSessionTokenCategories);
-    export const outboundSchema: z.ZodNativeEnum<typeof ConnectSessionTokenCategories> =
-        inboundSchema;
+    /** @deprecated use `ConnectSessionTokenCategories$inboundSchema` instead. */
+    export const inboundSchema = ConnectSessionTokenCategories$inboundSchema;
+    /** @deprecated use `ConnectSessionTokenCategories$outboundSchema` instead. */
+    export const outboundSchema = ConnectSessionTokenCategories$outboundSchema;
 }
 
 /** @internal */
+export const ConnectSessionToken$inboundSchema: z.ZodType<
+    ConnectSessionToken,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        account_id: z.nullable(z.string()).optional(),
+        categories: z.nullable(z.array(ConnectSessionTokenCategories$inboundSchema)).optional(),
+        created_at: z
+            .string()
+            .datetime({ offset: true })
+            .transform((v) => new Date(v)),
+        id: z.number(),
+        label: z.nullable(z.string()).optional(),
+        organization_id: z.number(),
+        origin_owner_id: z.string(),
+        origin_owner_name: z.string(),
+        origin_username: z.nullable(z.string()).optional(),
+        project_id: z.string(),
+        provider: z.nullable(z.string()).optional(),
+        token: z.string(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            account_id: "accountId",
+            created_at: "createdAt",
+            organization_id: "organizationId",
+            origin_owner_id: "originOwnerId",
+            origin_owner_name: "originOwnerName",
+            origin_username: "originUsername",
+            project_id: "projectId",
+        });
+    });
+
+/** @internal */
+export type ConnectSessionToken$Outbound = {
+    account_id?: string | null | undefined;
+    categories?: Array<string> | null | undefined;
+    created_at: string;
+    id: number;
+    label?: string | null | undefined;
+    organization_id: number;
+    origin_owner_id: string;
+    origin_owner_name: string;
+    origin_username?: string | null | undefined;
+    project_id: string;
+    provider?: string | null | undefined;
+    token: string;
+};
+
+/** @internal */
+export const ConnectSessionToken$outboundSchema: z.ZodType<
+    ConnectSessionToken$Outbound,
+    z.ZodTypeDef,
+    ConnectSessionToken
+> = z
+    .object({
+        accountId: z.nullable(z.string()).optional(),
+        categories: z.nullable(z.array(ConnectSessionTokenCategories$outboundSchema)).optional(),
+        createdAt: z.date().transform((v) => v.toISOString()),
+        id: z.number(),
+        label: z.nullable(z.string()).optional(),
+        organizationId: z.number(),
+        originOwnerId: z.string(),
+        originOwnerName: z.string(),
+        originUsername: z.nullable(z.string()).optional(),
+        projectId: z.string(),
+        provider: z.nullable(z.string()).optional(),
+        token: z.string(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            accountId: "account_id",
+            createdAt: "created_at",
+            organizationId: "organization_id",
+            originOwnerId: "origin_owner_id",
+            originOwnerName: "origin_owner_name",
+            originUsername: "origin_username",
+            projectId: "project_id",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace ConnectSessionToken$ {
-    export const inboundSchema: z.ZodType<ConnectSessionToken, z.ZodTypeDef, unknown> = z
-        .object({
-            account_id: z.nullable(z.string()).optional(),
-            categories: z
-                .nullable(z.array(ConnectSessionTokenCategories$.inboundSchema))
-                .optional(),
-            created_at: z
-                .string()
-                .datetime({ offset: true })
-                .transform((v) => new Date(v)),
-            id: z.number(),
-            label: z.nullable(z.string()).optional(),
-            organization_id: z.number(),
-            origin_owner_id: z.string(),
-            origin_owner_name: z.string(),
-            origin_username: z.nullable(z.string()).optional(),
-            project_id: z.string(),
-            provider: z.nullable(z.string()).optional(),
-            token: z.string(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                account_id: "accountId",
-                created_at: "createdAt",
-                organization_id: "organizationId",
-                origin_owner_id: "originOwnerId",
-                origin_owner_name: "originOwnerName",
-                origin_username: "originUsername",
-                project_id: "projectId",
-            });
-        });
-
-    export type Outbound = {
-        account_id?: string | null | undefined;
-        categories?: Array<string> | null | undefined;
-        created_at: string;
-        id: number;
-        label?: string | null | undefined;
-        organization_id: number;
-        origin_owner_id: string;
-        origin_owner_name: string;
-        origin_username?: string | null | undefined;
-        project_id: string;
-        provider?: string | null | undefined;
-        token: string;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ConnectSessionToken> = z
-        .object({
-            accountId: z.nullable(z.string()).optional(),
-            categories: z
-                .nullable(z.array(ConnectSessionTokenCategories$.outboundSchema))
-                .optional(),
-            createdAt: z.date().transform((v) => v.toISOString()),
-            id: z.number(),
-            label: z.nullable(z.string()).optional(),
-            organizationId: z.number(),
-            originOwnerId: z.string(),
-            originOwnerName: z.string(),
-            originUsername: z.nullable(z.string()).optional(),
-            projectId: z.string(),
-            provider: z.nullable(z.string()).optional(),
-            token: z.string(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                accountId: "account_id",
-                createdAt: "created_at",
-                organizationId: "organization_id",
-                originOwnerId: "origin_owner_id",
-                originOwnerName: "origin_owner_name",
-                originUsername: "origin_username",
-                projectId: "project_id",
-            });
-        });
+    /** @deprecated use `ConnectSessionToken$inboundSchema` instead. */
+    export const inboundSchema = ConnectSessionToken$inboundSchema;
+    /** @deprecated use `ConnectSessionToken$outboundSchema` instead. */
+    export const outboundSchema = ConnectSessionToken$outboundSchema;
+    /** @deprecated use `ConnectSessionToken$Outbound` instead. */
+    export type Outbound = ConnectSessionToken$Outbound;
 }

@@ -93,226 +93,310 @@ export type AtsUpdateApplicationRequestDto = {
 };
 
 /** @internal */
+export const AtsUpdateApplicationRequestDto4$inboundSchema: z.ZodType<
+    AtsUpdateApplicationRequestDto4,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type AtsUpdateApplicationRequestDto4$Outbound = {};
+
+/** @internal */
+export const AtsUpdateApplicationRequestDto4$outboundSchema: z.ZodType<
+    AtsUpdateApplicationRequestDto4$Outbound,
+    z.ZodTypeDef,
+    AtsUpdateApplicationRequestDto4
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace AtsUpdateApplicationRequestDto4$ {
-    export const inboundSchema: z.ZodType<AtsUpdateApplicationRequestDto4, z.ZodTypeDef, unknown> =
-        z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        AtsUpdateApplicationRequestDto4
-    > = z.object({});
+    /** @deprecated use `AtsUpdateApplicationRequestDto4$inboundSchema` instead. */
+    export const inboundSchema = AtsUpdateApplicationRequestDto4$inboundSchema;
+    /** @deprecated use `AtsUpdateApplicationRequestDto4$outboundSchema` instead. */
+    export const outboundSchema = AtsUpdateApplicationRequestDto4$outboundSchema;
+    /** @deprecated use `AtsUpdateApplicationRequestDto4$Outbound` instead. */
+    export type Outbound = AtsUpdateApplicationRequestDto4$Outbound;
 }
 
 /** @internal */
+export const AtsUpdateApplicationRequestDtoSourceValue$inboundSchema: z.ZodType<
+    AtsUpdateApplicationRequestDtoSourceValue,
+    z.ZodTypeDef,
+    unknown
+> = z.union([
+    z.lazy(() => AtsUpdateApplicationRequestDto4$inboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+]);
+
+/** @internal */
+export type AtsUpdateApplicationRequestDtoSourceValue$Outbound =
+    | AtsUpdateApplicationRequestDto4$Outbound
+    | string
+    | number
+    | boolean;
+
+/** @internal */
+export const AtsUpdateApplicationRequestDtoSourceValue$outboundSchema: z.ZodType<
+    AtsUpdateApplicationRequestDtoSourceValue$Outbound,
+    z.ZodTypeDef,
+    AtsUpdateApplicationRequestDtoSourceValue
+> = z.union([
+    z.lazy(() => AtsUpdateApplicationRequestDto4$outboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace AtsUpdateApplicationRequestDtoSourceValue$ {
-    export const inboundSchema: z.ZodType<
-        AtsUpdateApplicationRequestDtoSourceValue,
-        z.ZodTypeDef,
-        unknown
-    > = z.union([
-        z.lazy(() => AtsUpdateApplicationRequestDto4$.inboundSchema),
-        z.string(),
-        z.number(),
-        z.boolean(),
-    ]);
-
-    export type Outbound = AtsUpdateApplicationRequestDto4$.Outbound | string | number | boolean;
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        AtsUpdateApplicationRequestDtoSourceValue
-    > = z.union([
-        z.lazy(() => AtsUpdateApplicationRequestDto4$.outboundSchema),
-        z.string(),
-        z.number(),
-        z.boolean(),
-    ]);
+    /** @deprecated use `AtsUpdateApplicationRequestDtoSourceValue$inboundSchema` instead. */
+    export const inboundSchema = AtsUpdateApplicationRequestDtoSourceValue$inboundSchema;
+    /** @deprecated use `AtsUpdateApplicationRequestDtoSourceValue$outboundSchema` instead. */
+    export const outboundSchema = AtsUpdateApplicationRequestDtoSourceValue$outboundSchema;
+    /** @deprecated use `AtsUpdateApplicationRequestDtoSourceValue$Outbound` instead. */
+    export type Outbound = AtsUpdateApplicationRequestDtoSourceValue$Outbound;
 }
 
 /** @internal */
+export const AtsUpdateApplicationRequestDtoValue$inboundSchema: z.ZodType<
+    AtsUpdateApplicationRequestDtoValueOpen,
+    z.ZodTypeDef,
+    unknown
+> = z.union([
+    z.nativeEnum(AtsUpdateApplicationRequestDtoValue),
+    z.string().transform(catchUnrecognizedEnum),
+]);
+
+/** @internal */
+export const AtsUpdateApplicationRequestDtoValue$outboundSchema: z.ZodType<
+    AtsUpdateApplicationRequestDtoValueOpen,
+    z.ZodTypeDef,
+    AtsUpdateApplicationRequestDtoValueOpen
+> = z.union([
+    z.nativeEnum(AtsUpdateApplicationRequestDtoValue),
+    z.string().and(z.custom<Unrecognized<string>>()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace AtsUpdateApplicationRequestDtoValue$ {
-    export const inboundSchema: z.ZodType<
-        AtsUpdateApplicationRequestDtoValueOpen,
-        z.ZodTypeDef,
-        unknown
-    > = z.union([
-        z.nativeEnum(AtsUpdateApplicationRequestDtoValue),
-        z.string().transform(catchUnrecognizedEnum),
-    ]);
-
-    export const outboundSchema: z.ZodType<
-        AtsUpdateApplicationRequestDtoValueOpen,
-        z.ZodTypeDef,
-        AtsUpdateApplicationRequestDtoValueOpen
-    > = z.union([
-        z.nativeEnum(AtsUpdateApplicationRequestDtoValue),
-        z.string().and(z.custom<Unrecognized<string>>()),
-    ]);
+    /** @deprecated use `AtsUpdateApplicationRequestDtoValue$inboundSchema` instead. */
+    export const inboundSchema = AtsUpdateApplicationRequestDtoValue$inboundSchema;
+    /** @deprecated use `AtsUpdateApplicationRequestDtoValue$outboundSchema` instead. */
+    export const outboundSchema = AtsUpdateApplicationRequestDtoValue$outboundSchema;
 }
 
 /** @internal */
+export const AtsUpdateApplicationRequestDtoApplicationStatus$inboundSchema: z.ZodType<
+    AtsUpdateApplicationRequestDtoApplicationStatus,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        source_value: z
+            .nullable(
+                z.union([
+                    z.lazy(() => AtsUpdateApplicationRequestDto4$inboundSchema),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                ])
+            )
+            .optional(),
+        value: z.nullable(AtsUpdateApplicationRequestDtoValue$inboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            source_value: "sourceValue",
+        });
+    });
+
+/** @internal */
+export type AtsUpdateApplicationRequestDtoApplicationStatus$Outbound = {
+    source_value?:
+        | AtsUpdateApplicationRequestDto4$Outbound
+        | string
+        | number
+        | boolean
+        | null
+        | undefined;
+    value?: string | null | undefined;
+};
+
+/** @internal */
+export const AtsUpdateApplicationRequestDtoApplicationStatus$outboundSchema: z.ZodType<
+    AtsUpdateApplicationRequestDtoApplicationStatus$Outbound,
+    z.ZodTypeDef,
+    AtsUpdateApplicationRequestDtoApplicationStatus
+> = z
+    .object({
+        sourceValue: z
+            .nullable(
+                z.union([
+                    z.lazy(() => AtsUpdateApplicationRequestDto4$outboundSchema),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                ])
+            )
+            .optional(),
+        value: z.nullable(AtsUpdateApplicationRequestDtoValue$outboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            sourceValue: "source_value",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace AtsUpdateApplicationRequestDtoApplicationStatus$ {
-    export const inboundSchema: z.ZodType<
-        AtsUpdateApplicationRequestDtoApplicationStatus,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            source_value: z
-                .nullable(
-                    z.union([
-                        z.lazy(() => AtsUpdateApplicationRequestDto4$.inboundSchema),
-                        z.string(),
-                        z.number(),
-                        z.boolean(),
-                    ])
-                )
-                .optional(),
-            value: z.nullable(AtsUpdateApplicationRequestDtoValue$.inboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                source_value: "sourceValue",
-            });
-        });
-
-    export type Outbound = {
-        source_value?:
-            | AtsUpdateApplicationRequestDto4$.Outbound
-            | string
-            | number
-            | boolean
-            | null
-            | undefined;
-        value?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        AtsUpdateApplicationRequestDtoApplicationStatus
-    > = z
-        .object({
-            sourceValue: z
-                .nullable(
-                    z.union([
-                        z.lazy(() => AtsUpdateApplicationRequestDto4$.outboundSchema),
-                        z.string(),
-                        z.number(),
-                        z.boolean(),
-                    ])
-                )
-                .optional(),
-            value: z.nullable(AtsUpdateApplicationRequestDtoValue$.outboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                sourceValue: "source_value",
-            });
-        });
+    /** @deprecated use `AtsUpdateApplicationRequestDtoApplicationStatus$inboundSchema` instead. */
+    export const inboundSchema = AtsUpdateApplicationRequestDtoApplicationStatus$inboundSchema;
+    /** @deprecated use `AtsUpdateApplicationRequestDtoApplicationStatus$outboundSchema` instead. */
+    export const outboundSchema = AtsUpdateApplicationRequestDtoApplicationStatus$outboundSchema;
+    /** @deprecated use `AtsUpdateApplicationRequestDtoApplicationStatus$Outbound` instead. */
+    export type Outbound = AtsUpdateApplicationRequestDtoApplicationStatus$Outbound;
 }
 
 /** @internal */
+export const AtsUpdateApplicationRequestDtoSource$inboundSchema: z.ZodType<
+    AtsUpdateApplicationRequestDtoSource,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        id: z.nullable(z.string()).optional(),
+        name: z.nullable(z.string()).optional(),
+        remote_id: z.nullable(z.string()).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            remote_id: "remoteId",
+        });
+    });
+
+/** @internal */
+export type AtsUpdateApplicationRequestDtoSource$Outbound = {
+    id?: string | null | undefined;
+    name?: string | null | undefined;
+    remote_id?: string | null | undefined;
+};
+
+/** @internal */
+export const AtsUpdateApplicationRequestDtoSource$outboundSchema: z.ZodType<
+    AtsUpdateApplicationRequestDtoSource$Outbound,
+    z.ZodTypeDef,
+    AtsUpdateApplicationRequestDtoSource
+> = z
+    .object({
+        id: z.nullable(z.string()).optional(),
+        name: z.nullable(z.string()).optional(),
+        remoteId: z.nullable(z.string()).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            remoteId: "remote_id",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace AtsUpdateApplicationRequestDtoSource$ {
-    export const inboundSchema: z.ZodType<
-        AtsUpdateApplicationRequestDtoSource,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            id: z.nullable(z.string()).optional(),
-            name: z.nullable(z.string()).optional(),
-            remote_id: z.nullable(z.string()).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                remote_id: "remoteId",
-            });
-        });
-
-    export type Outbound = {
-        id?: string | null | undefined;
-        name?: string | null | undefined;
-        remote_id?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        AtsUpdateApplicationRequestDtoSource
-    > = z
-        .object({
-            id: z.nullable(z.string()).optional(),
-            name: z.nullable(z.string()).optional(),
-            remoteId: z.nullable(z.string()).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                remoteId: "remote_id",
-            });
-        });
+    /** @deprecated use `AtsUpdateApplicationRequestDtoSource$inboundSchema` instead. */
+    export const inboundSchema = AtsUpdateApplicationRequestDtoSource$inboundSchema;
+    /** @deprecated use `AtsUpdateApplicationRequestDtoSource$outboundSchema` instead. */
+    export const outboundSchema = AtsUpdateApplicationRequestDtoSource$outboundSchema;
+    /** @deprecated use `AtsUpdateApplicationRequestDtoSource$Outbound` instead. */
+    export type Outbound = AtsUpdateApplicationRequestDtoSource$Outbound;
 }
 
 /** @internal */
-export namespace AtsUpdateApplicationRequestDto$ {
-    export const inboundSchema: z.ZodType<AtsUpdateApplicationRequestDto, z.ZodTypeDef, unknown> = z
-        .object({
-            application_status: z
-                .nullable(
-                    z.lazy(() => AtsUpdateApplicationRequestDtoApplicationStatus$.inboundSchema)
-                )
-                .optional(),
-            interview_stage_id: z.nullable(z.string()).optional(),
-            passthrough: z.nullable(z.record(z.any())).optional(),
-            rejected_reason_id: z.nullable(z.string()).optional(),
-            source: z
-                .nullable(z.lazy(() => AtsUpdateApplicationRequestDtoSource$.inboundSchema))
-                .optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                application_status: "applicationStatus",
-                interview_stage_id: "interviewStageId",
-                rejected_reason_id: "rejectedReasonId",
-            });
+export const AtsUpdateApplicationRequestDto$inboundSchema: z.ZodType<
+    AtsUpdateApplicationRequestDto,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        application_status: z
+            .nullable(z.lazy(() => AtsUpdateApplicationRequestDtoApplicationStatus$inboundSchema))
+            .optional(),
+        interview_stage_id: z.nullable(z.string()).optional(),
+        passthrough: z.nullable(z.record(z.any())).optional(),
+        rejected_reason_id: z.nullable(z.string()).optional(),
+        source: z
+            .nullable(z.lazy(() => AtsUpdateApplicationRequestDtoSource$inboundSchema))
+            .optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            application_status: "applicationStatus",
+            interview_stage_id: "interviewStageId",
+            rejected_reason_id: "rejectedReasonId",
         });
+    });
 
-    export type Outbound = {
-        application_status?:
-            | AtsUpdateApplicationRequestDtoApplicationStatus$.Outbound
-            | null
-            | undefined;
-        interview_stage_id?: string | null | undefined;
-        passthrough?: { [k: string]: any } | null | undefined;
-        rejected_reason_id?: string | null | undefined;
-        source?: AtsUpdateApplicationRequestDtoSource$.Outbound | null | undefined;
-    };
+/** @internal */
+export type AtsUpdateApplicationRequestDto$Outbound = {
+    application_status?:
+        | AtsUpdateApplicationRequestDtoApplicationStatus$Outbound
+        | null
+        | undefined;
+    interview_stage_id?: string | null | undefined;
+    passthrough?: { [k: string]: any } | null | undefined;
+    rejected_reason_id?: string | null | undefined;
+    source?: AtsUpdateApplicationRequestDtoSource$Outbound | null | undefined;
+};
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, AtsUpdateApplicationRequestDto> =
-        z
-            .object({
-                applicationStatus: z
-                    .nullable(
-                        z.lazy(
-                            () => AtsUpdateApplicationRequestDtoApplicationStatus$.outboundSchema
-                        )
-                    )
-                    .optional(),
-                interviewStageId: z.nullable(z.string()).optional(),
-                passthrough: z.nullable(z.record(z.any())).optional(),
-                rejectedReasonId: z.nullable(z.string()).optional(),
-                source: z
-                    .nullable(z.lazy(() => AtsUpdateApplicationRequestDtoSource$.outboundSchema))
-                    .optional(),
-            })
-            .transform((v) => {
-                return remap$(v, {
-                    applicationStatus: "application_status",
-                    interviewStageId: "interview_stage_id",
-                    rejectedReasonId: "rejected_reason_id",
-                });
-            });
+/** @internal */
+export const AtsUpdateApplicationRequestDto$outboundSchema: z.ZodType<
+    AtsUpdateApplicationRequestDto$Outbound,
+    z.ZodTypeDef,
+    AtsUpdateApplicationRequestDto
+> = z
+    .object({
+        applicationStatus: z
+            .nullable(z.lazy(() => AtsUpdateApplicationRequestDtoApplicationStatus$outboundSchema))
+            .optional(),
+        interviewStageId: z.nullable(z.string()).optional(),
+        passthrough: z.nullable(z.record(z.any())).optional(),
+        rejectedReasonId: z.nullable(z.string()).optional(),
+        source: z
+            .nullable(z.lazy(() => AtsUpdateApplicationRequestDtoSource$outboundSchema))
+            .optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            applicationStatus: "application_status",
+            interviewStageId: "interview_stage_id",
+            rejectedReasonId: "rejected_reason_id",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace AtsUpdateApplicationRequestDto$ {
+    /** @deprecated use `AtsUpdateApplicationRequestDto$inboundSchema` instead. */
+    export const inboundSchema = AtsUpdateApplicationRequestDto$inboundSchema;
+    /** @deprecated use `AtsUpdateApplicationRequestDto$outboundSchema` instead. */
+    export const outboundSchema = AtsUpdateApplicationRequestDto$outboundSchema;
+    /** @deprecated use `AtsUpdateApplicationRequestDto$Outbound` instead. */
+    export type Outbound = AtsUpdateApplicationRequestDto$Outbound;
 }

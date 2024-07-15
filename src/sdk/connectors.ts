@@ -51,7 +51,7 @@ export class Connectors extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.StackoneGetConnectorMetaRequest$.outboundSchema.parse(value$),
+            (value$) => operations.StackoneGetConnectorMetaRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -93,6 +93,7 @@ export class Connectors extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -100,6 +101,8 @@ export class Connectors extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "403", "404", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -110,7 +113,9 @@ export class Connectors extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.StackoneGetConnectorMetaResponse>()
-            .json(200, operations.StackoneGetConnectorMetaResponse$, { key: "ConnectorsMeta" })
+            .json(200, operations.StackoneGetConnectorMetaResponse$inboundSchema, {
+                key: "ConnectorsMeta",
+            })
             .fail([400, 403, 404, 429, "4XX", 500, 501, "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -128,7 +133,7 @@ export class Connectors extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.StackoneListConnectorsMetaRequest$.outboundSchema.parse(value$),
+            (value$) => operations.StackoneListConnectorsMetaRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -164,6 +169,7 @@ export class Connectors extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -171,6 +177,8 @@ export class Connectors extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "403", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -181,7 +189,9 @@ export class Connectors extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.StackoneListConnectorsMetaResponse>()
-            .json(200, operations.StackoneListConnectorsMetaResponse$, { key: "classes" })
+            .json(200, operations.StackoneListConnectorsMetaResponse$inboundSchema, {
+                key: "classes",
+            })
             .fail([400, 403, 429, "4XX", 500, 501, "5XX"])
             .match(response, { extraFields: responseFields$ });
 

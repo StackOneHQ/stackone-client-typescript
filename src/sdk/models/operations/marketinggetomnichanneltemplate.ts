@@ -46,100 +46,126 @@ export type MarketingGetOmniChannelTemplateResponse = {
 };
 
 /** @internal */
+export const MarketingGetOmniChannelTemplateRequest$inboundSchema: z.ZodType<
+    MarketingGetOmniChannelTemplateRequest,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        fields: z.nullable(z.string()).optional(),
+        id: z.string(),
+        proxy: z.nullable(z.record(z.any())).optional(),
+        raw: z.nullable(z.boolean().default(false)),
+        "x-account-id": z.string(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            "x-account-id": "xAccountId",
+        });
+    });
+
+/** @internal */
+export type MarketingGetOmniChannelTemplateRequest$Outbound = {
+    fields?: string | null | undefined;
+    id: string;
+    proxy?: { [k: string]: any } | null | undefined;
+    raw: boolean | null;
+    "x-account-id": string;
+};
+
+/** @internal */
+export const MarketingGetOmniChannelTemplateRequest$outboundSchema: z.ZodType<
+    MarketingGetOmniChannelTemplateRequest$Outbound,
+    z.ZodTypeDef,
+    MarketingGetOmniChannelTemplateRequest
+> = z
+    .object({
+        fields: z.nullable(z.string()).optional(),
+        id: z.string(),
+        proxy: z.nullable(z.record(z.any())).optional(),
+        raw: z.nullable(z.boolean().default(false)),
+        xAccountId: z.string(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            xAccountId: "x-account-id",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace MarketingGetOmniChannelTemplateRequest$ {
-    export const inboundSchema: z.ZodType<
-        MarketingGetOmniChannelTemplateRequest,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            fields: z.nullable(z.string()).optional(),
-            id: z.string(),
-            proxy: z.nullable(z.record(z.any())).optional(),
-            raw: z.nullable(z.boolean().default(false)),
-            "x-account-id": z.string(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                "x-account-id": "xAccountId",
-            });
-        });
-
-    export type Outbound = {
-        fields?: string | null | undefined;
-        id: string;
-        proxy?: { [k: string]: any } | null | undefined;
-        raw: boolean | null;
-        "x-account-id": string;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        MarketingGetOmniChannelTemplateRequest
-    > = z
-        .object({
-            fields: z.nullable(z.string()).optional(),
-            id: z.string(),
-            proxy: z.nullable(z.record(z.any())).optional(),
-            raw: z.nullable(z.boolean().default(false)),
-            xAccountId: z.string(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                xAccountId: "x-account-id",
-            });
-        });
+    /** @deprecated use `MarketingGetOmniChannelTemplateRequest$inboundSchema` instead. */
+    export const inboundSchema = MarketingGetOmniChannelTemplateRequest$inboundSchema;
+    /** @deprecated use `MarketingGetOmniChannelTemplateRequest$outboundSchema` instead. */
+    export const outboundSchema = MarketingGetOmniChannelTemplateRequest$outboundSchema;
+    /** @deprecated use `MarketingGetOmniChannelTemplateRequest$Outbound` instead. */
+    export type Outbound = MarketingGetOmniChannelTemplateRequest$Outbound;
 }
 
 /** @internal */
+export const MarketingGetOmniChannelTemplateResponse$inboundSchema: z.ZodType<
+    MarketingGetOmniChannelTemplateResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        ContentType: z.string(),
+        StatusCode: z.number().int(),
+        RawResponse: z.instanceof(Response),
+        TemplateResult: shared.TemplateResult$inboundSchema.optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            ContentType: "contentType",
+            StatusCode: "statusCode",
+            RawResponse: "rawResponse",
+            TemplateResult: "templateResult",
+        });
+    });
+
+/** @internal */
+export type MarketingGetOmniChannelTemplateResponse$Outbound = {
+    ContentType: string;
+    StatusCode: number;
+    RawResponse: never;
+    TemplateResult?: shared.TemplateResult$Outbound | undefined;
+};
+
+/** @internal */
+export const MarketingGetOmniChannelTemplateResponse$outboundSchema: z.ZodType<
+    MarketingGetOmniChannelTemplateResponse$Outbound,
+    z.ZodTypeDef,
+    MarketingGetOmniChannelTemplateResponse
+> = z
+    .object({
+        contentType: z.string(),
+        statusCode: z.number().int(),
+        rawResponse: z.instanceof(Response).transform(() => {
+            throw new Error("Response cannot be serialized");
+        }),
+        templateResult: shared.TemplateResult$outboundSchema.optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            contentType: "ContentType",
+            statusCode: "StatusCode",
+            rawResponse: "RawResponse",
+            templateResult: "TemplateResult",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace MarketingGetOmniChannelTemplateResponse$ {
-    export const inboundSchema: z.ZodType<
-        MarketingGetOmniChannelTemplateResponse,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            ContentType: z.string(),
-            StatusCode: z.number().int(),
-            RawResponse: z.instanceof(Response),
-            TemplateResult: shared.TemplateResult$.inboundSchema.optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                ContentType: "contentType",
-                StatusCode: "statusCode",
-                RawResponse: "rawResponse",
-                TemplateResult: "templateResult",
-            });
-        });
-
-    export type Outbound = {
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: never;
-        TemplateResult?: shared.TemplateResult$.Outbound | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        MarketingGetOmniChannelTemplateResponse
-    > = z
-        .object({
-            contentType: z.string(),
-            statusCode: z.number().int(),
-            rawResponse: z.instanceof(Response).transform(() => {
-                throw new Error("Response cannot be serialized");
-            }),
-            templateResult: shared.TemplateResult$.outboundSchema.optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                contentType: "ContentType",
-                statusCode: "StatusCode",
-                rawResponse: "RawResponse",
-                templateResult: "TemplateResult",
-            });
-        });
+    /** @deprecated use `MarketingGetOmniChannelTemplateResponse$inboundSchema` instead. */
+    export const inboundSchema = MarketingGetOmniChannelTemplateResponse$inboundSchema;
+    /** @deprecated use `MarketingGetOmniChannelTemplateResponse$outboundSchema` instead. */
+    export const outboundSchema = MarketingGetOmniChannelTemplateResponse$outboundSchema;
+    /** @deprecated use `MarketingGetOmniChannelTemplateResponse$Outbound` instead. */
+    export type Outbound = MarketingGetOmniChannelTemplateResponse$Outbound;
 }

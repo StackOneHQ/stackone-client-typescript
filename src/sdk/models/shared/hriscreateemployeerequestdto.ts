@@ -4,10 +4,30 @@
 
 import { remap as remap$ } from "../../../lib/primitives.js";
 import { catchUnrecognizedEnum, OpenEnum, Unrecognized } from "../../types/enums.js";
-import { CountryCodeEnum, CountryCodeEnum$ } from "./countrycodeenum.js";
-import { EmployeeCustomFields, EmployeeCustomFields$ } from "./employeecustomfields.js";
-import { Employment, Employment$ } from "./employment.js";
-import { HRISBenefit, HRISBenefit$ } from "./hrisbenefit.js";
+import {
+    CountryCodeEnum,
+    CountryCodeEnum$inboundSchema,
+    CountryCodeEnum$Outbound,
+    CountryCodeEnum$outboundSchema,
+} from "./countrycodeenum.js";
+import {
+    EmployeeCustomFields,
+    EmployeeCustomFields$inboundSchema,
+    EmployeeCustomFields$Outbound,
+    EmployeeCustomFields$outboundSchema,
+} from "./employeecustomfields.js";
+import {
+    Employment,
+    Employment$inboundSchema,
+    Employment$Outbound,
+    Employment$outboundSchema,
+} from "./employment.js";
+import {
+    HRISBenefit,
+    HRISBenefit$inboundSchema,
+    HRISBenefit$Outbound,
+    HRISBenefit$outboundSchema,
+} from "./hrisbenefit.js";
 import * as z from "zod";
 
 /**
@@ -8893,1932 +8913,2547 @@ export type HrisCreateEmployeeRequestDto = {
 };
 
 /** @internal */
+export const HrisCreateEmployeeRequestDtoAvatar$inboundSchema: z.ZodType<
+    HrisCreateEmployeeRequestDtoAvatar,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    base64: z.nullable(z.string()).optional(),
+    url: z.nullable(z.string()).optional(),
+});
+
+/** @internal */
+export type HrisCreateEmployeeRequestDtoAvatar$Outbound = {
+    base64?: string | null | undefined;
+    url?: string | null | undefined;
+};
+
+/** @internal */
+export const HrisCreateEmployeeRequestDtoAvatar$outboundSchema: z.ZodType<
+    HrisCreateEmployeeRequestDtoAvatar$Outbound,
+    z.ZodTypeDef,
+    HrisCreateEmployeeRequestDtoAvatar
+> = z.object({
+    base64: z.nullable(z.string()).optional(),
+    url: z.nullable(z.string()).optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace HrisCreateEmployeeRequestDtoAvatar$ {
-    export const inboundSchema: z.ZodType<
-        HrisCreateEmployeeRequestDtoAvatar,
-        z.ZodTypeDef,
-        unknown
-    > = z.object({
-        base64: z.nullable(z.string()).optional(),
-        url: z.nullable(z.string()).optional(),
-    });
-
-    export type Outbound = {
-        base64?: string | null | undefined;
-        url?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        HrisCreateEmployeeRequestDtoAvatar
-    > = z.object({
-        base64: z.nullable(z.string()).optional(),
-        url: z.nullable(z.string()).optional(),
-    });
+    /** @deprecated use `HrisCreateEmployeeRequestDtoAvatar$inboundSchema` instead. */
+    export const inboundSchema = HrisCreateEmployeeRequestDtoAvatar$inboundSchema;
+    /** @deprecated use `HrisCreateEmployeeRequestDtoAvatar$outboundSchema` instead. */
+    export const outboundSchema = HrisCreateEmployeeRequestDtoAvatar$outboundSchema;
+    /** @deprecated use `HrisCreateEmployeeRequestDtoAvatar$Outbound` instead. */
+    export type Outbound = HrisCreateEmployeeRequestDtoAvatar$Outbound;
 }
 
 /** @internal */
+export const HrisCreateEmployeeRequestDto4$inboundSchema: z.ZodType<
+    HrisCreateEmployeeRequestDto4,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type HrisCreateEmployeeRequestDto4$Outbound = {};
+
+/** @internal */
+export const HrisCreateEmployeeRequestDto4$outboundSchema: z.ZodType<
+    HrisCreateEmployeeRequestDto4$Outbound,
+    z.ZodTypeDef,
+    HrisCreateEmployeeRequestDto4
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace HrisCreateEmployeeRequestDto4$ {
-    export const inboundSchema: z.ZodType<HrisCreateEmployeeRequestDto4, z.ZodTypeDef, unknown> =
-        z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, HrisCreateEmployeeRequestDto4> =
-        z.object({});
+    /** @deprecated use `HrisCreateEmployeeRequestDto4$inboundSchema` instead. */
+    export const inboundSchema = HrisCreateEmployeeRequestDto4$inboundSchema;
+    /** @deprecated use `HrisCreateEmployeeRequestDto4$outboundSchema` instead. */
+    export const outboundSchema = HrisCreateEmployeeRequestDto4$outboundSchema;
+    /** @deprecated use `HrisCreateEmployeeRequestDto4$Outbound` instead. */
+    export type Outbound = HrisCreateEmployeeRequestDto4$Outbound;
 }
 
 /** @internal */
+export const HrisCreateEmployeeRequestDtoSourceValue$inboundSchema: z.ZodType<
+    HrisCreateEmployeeRequestDtoSourceValue,
+    z.ZodTypeDef,
+    unknown
+> = z.union([
+    z.lazy(() => HrisCreateEmployeeRequestDto4$inboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+]);
+
+/** @internal */
+export type HrisCreateEmployeeRequestDtoSourceValue$Outbound =
+    | HrisCreateEmployeeRequestDto4$Outbound
+    | string
+    | number
+    | boolean;
+
+/** @internal */
+export const HrisCreateEmployeeRequestDtoSourceValue$outboundSchema: z.ZodType<
+    HrisCreateEmployeeRequestDtoSourceValue$Outbound,
+    z.ZodTypeDef,
+    HrisCreateEmployeeRequestDtoSourceValue
+> = z.union([
+    z.lazy(() => HrisCreateEmployeeRequestDto4$outboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace HrisCreateEmployeeRequestDtoSourceValue$ {
-    export const inboundSchema: z.ZodType<
-        HrisCreateEmployeeRequestDtoSourceValue,
-        z.ZodTypeDef,
-        unknown
-    > = z.union([
-        z.lazy(() => HrisCreateEmployeeRequestDto4$.inboundSchema),
-        z.string(),
-        z.number(),
-        z.boolean(),
-    ]);
-
-    export type Outbound = HrisCreateEmployeeRequestDto4$.Outbound | string | number | boolean;
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        HrisCreateEmployeeRequestDtoSourceValue
-    > = z.union([
-        z.lazy(() => HrisCreateEmployeeRequestDto4$.outboundSchema),
-        z.string(),
-        z.number(),
-        z.boolean(),
-    ]);
+    /** @deprecated use `HrisCreateEmployeeRequestDtoSourceValue$inboundSchema` instead. */
+    export const inboundSchema = HrisCreateEmployeeRequestDtoSourceValue$inboundSchema;
+    /** @deprecated use `HrisCreateEmployeeRequestDtoSourceValue$outboundSchema` instead. */
+    export const outboundSchema = HrisCreateEmployeeRequestDtoSourceValue$outboundSchema;
+    /** @deprecated use `HrisCreateEmployeeRequestDtoSourceValue$Outbound` instead. */
+    export type Outbound = HrisCreateEmployeeRequestDtoSourceValue$Outbound;
 }
 
 /** @internal */
+export const HrisCreateEmployeeRequestDtoValue$inboundSchema: z.ZodType<
+    HrisCreateEmployeeRequestDtoValueOpen,
+    z.ZodTypeDef,
+    unknown
+> = z.union([
+    z.nativeEnum(HrisCreateEmployeeRequestDtoValue),
+    z.string().transform(catchUnrecognizedEnum),
+]);
+
+/** @internal */
+export const HrisCreateEmployeeRequestDtoValue$outboundSchema: z.ZodType<
+    HrisCreateEmployeeRequestDtoValueOpen,
+    z.ZodTypeDef,
+    HrisCreateEmployeeRequestDtoValueOpen
+> = z.union([
+    z.nativeEnum(HrisCreateEmployeeRequestDtoValue),
+    z.string().and(z.custom<Unrecognized<string>>()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace HrisCreateEmployeeRequestDtoValue$ {
-    export const inboundSchema: z.ZodType<
-        HrisCreateEmployeeRequestDtoValueOpen,
-        z.ZodTypeDef,
-        unknown
-    > = z.union([
-        z.nativeEnum(HrisCreateEmployeeRequestDtoValue),
-        z.string().transform(catchUnrecognizedEnum),
-    ]);
-
-    export const outboundSchema: z.ZodType<
-        HrisCreateEmployeeRequestDtoValueOpen,
-        z.ZodTypeDef,
-        HrisCreateEmployeeRequestDtoValueOpen
-    > = z.union([
-        z.nativeEnum(HrisCreateEmployeeRequestDtoValue),
-        z.string().and(z.custom<Unrecognized<string>>()),
-    ]);
+    /** @deprecated use `HrisCreateEmployeeRequestDtoValue$inboundSchema` instead. */
+    export const inboundSchema = HrisCreateEmployeeRequestDtoValue$inboundSchema;
+    /** @deprecated use `HrisCreateEmployeeRequestDtoValue$outboundSchema` instead. */
+    export const outboundSchema = HrisCreateEmployeeRequestDtoValue$outboundSchema;
 }
 
 /** @internal */
+export const HrisCreateEmployeeRequestDtoEmploymentContractType$inboundSchema: z.ZodType<
+    HrisCreateEmployeeRequestDtoEmploymentContractType,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        source_value: z
+            .nullable(
+                z.union([
+                    z.lazy(() => HrisCreateEmployeeRequestDto4$inboundSchema),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                ])
+            )
+            .optional(),
+        value: z.nullable(HrisCreateEmployeeRequestDtoValue$inboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            source_value: "sourceValue",
+        });
+    });
+
+/** @internal */
+export type HrisCreateEmployeeRequestDtoEmploymentContractType$Outbound = {
+    source_value?:
+        | HrisCreateEmployeeRequestDto4$Outbound
+        | string
+        | number
+        | boolean
+        | null
+        | undefined;
+    value?: string | null | undefined;
+};
+
+/** @internal */
+export const HrisCreateEmployeeRequestDtoEmploymentContractType$outboundSchema: z.ZodType<
+    HrisCreateEmployeeRequestDtoEmploymentContractType$Outbound,
+    z.ZodTypeDef,
+    HrisCreateEmployeeRequestDtoEmploymentContractType
+> = z
+    .object({
+        sourceValue: z
+            .nullable(
+                z.union([
+                    z.lazy(() => HrisCreateEmployeeRequestDto4$outboundSchema),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                ])
+            )
+            .optional(),
+        value: z.nullable(HrisCreateEmployeeRequestDtoValue$outboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            sourceValue: "source_value",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace HrisCreateEmployeeRequestDtoEmploymentContractType$ {
-    export const inboundSchema: z.ZodType<
-        HrisCreateEmployeeRequestDtoEmploymentContractType,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            source_value: z
-                .nullable(
-                    z.union([
-                        z.lazy(() => HrisCreateEmployeeRequestDto4$.inboundSchema),
-                        z.string(),
-                        z.number(),
-                        z.boolean(),
-                    ])
-                )
-                .optional(),
-            value: z.nullable(HrisCreateEmployeeRequestDtoValue$.inboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                source_value: "sourceValue",
-            });
-        });
-
-    export type Outbound = {
-        source_value?:
-            | HrisCreateEmployeeRequestDto4$.Outbound
-            | string
-            | number
-            | boolean
-            | null
-            | undefined;
-        value?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        HrisCreateEmployeeRequestDtoEmploymentContractType
-    > = z
-        .object({
-            sourceValue: z
-                .nullable(
-                    z.union([
-                        z.lazy(() => HrisCreateEmployeeRequestDto4$.outboundSchema),
-                        z.string(),
-                        z.number(),
-                        z.boolean(),
-                    ])
-                )
-                .optional(),
-            value: z.nullable(HrisCreateEmployeeRequestDtoValue$.outboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                sourceValue: "source_value",
-            });
-        });
+    /** @deprecated use `HrisCreateEmployeeRequestDtoEmploymentContractType$inboundSchema` instead. */
+    export const inboundSchema = HrisCreateEmployeeRequestDtoEmploymentContractType$inboundSchema;
+    /** @deprecated use `HrisCreateEmployeeRequestDtoEmploymentContractType$outboundSchema` instead. */
+    export const outboundSchema = HrisCreateEmployeeRequestDtoEmploymentContractType$outboundSchema;
+    /** @deprecated use `HrisCreateEmployeeRequestDtoEmploymentContractType$Outbound` instead. */
+    export type Outbound = HrisCreateEmployeeRequestDtoEmploymentContractType$Outbound;
 }
 
 /** @internal */
+export const HrisCreateEmployeeRequestDtoSchemas4$inboundSchema: z.ZodType<
+    HrisCreateEmployeeRequestDtoSchemas4,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type HrisCreateEmployeeRequestDtoSchemas4$Outbound = {};
+
+/** @internal */
+export const HrisCreateEmployeeRequestDtoSchemas4$outboundSchema: z.ZodType<
+    HrisCreateEmployeeRequestDtoSchemas4$Outbound,
+    z.ZodTypeDef,
+    HrisCreateEmployeeRequestDtoSchemas4
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace HrisCreateEmployeeRequestDtoSchemas4$ {
-    export const inboundSchema: z.ZodType<
-        HrisCreateEmployeeRequestDtoSchemas4,
-        z.ZodTypeDef,
-        unknown
-    > = z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        HrisCreateEmployeeRequestDtoSchemas4
-    > = z.object({});
+    /** @deprecated use `HrisCreateEmployeeRequestDtoSchemas4$inboundSchema` instead. */
+    export const inboundSchema = HrisCreateEmployeeRequestDtoSchemas4$inboundSchema;
+    /** @deprecated use `HrisCreateEmployeeRequestDtoSchemas4$outboundSchema` instead. */
+    export const outboundSchema = HrisCreateEmployeeRequestDtoSchemas4$outboundSchema;
+    /** @deprecated use `HrisCreateEmployeeRequestDtoSchemas4$Outbound` instead. */
+    export type Outbound = HrisCreateEmployeeRequestDtoSchemas4$Outbound;
 }
 
 /** @internal */
+export const HrisCreateEmployeeRequestDtoSchemasSourceValue$inboundSchema: z.ZodType<
+    HrisCreateEmployeeRequestDtoSchemasSourceValue,
+    z.ZodTypeDef,
+    unknown
+> = z.union([
+    z.lazy(() => HrisCreateEmployeeRequestDtoSchemas4$inboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+]);
+
+/** @internal */
+export type HrisCreateEmployeeRequestDtoSchemasSourceValue$Outbound =
+    | HrisCreateEmployeeRequestDtoSchemas4$Outbound
+    | string
+    | number
+    | boolean;
+
+/** @internal */
+export const HrisCreateEmployeeRequestDtoSchemasSourceValue$outboundSchema: z.ZodType<
+    HrisCreateEmployeeRequestDtoSchemasSourceValue$Outbound,
+    z.ZodTypeDef,
+    HrisCreateEmployeeRequestDtoSchemasSourceValue
+> = z.union([
+    z.lazy(() => HrisCreateEmployeeRequestDtoSchemas4$outboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace HrisCreateEmployeeRequestDtoSchemasSourceValue$ {
-    export const inboundSchema: z.ZodType<
-        HrisCreateEmployeeRequestDtoSchemasSourceValue,
-        z.ZodTypeDef,
-        unknown
-    > = z.union([
-        z.lazy(() => HrisCreateEmployeeRequestDtoSchemas4$.inboundSchema),
-        z.string(),
-        z.number(),
-        z.boolean(),
-    ]);
-
-    export type Outbound =
-        | HrisCreateEmployeeRequestDtoSchemas4$.Outbound
-        | string
-        | number
-        | boolean;
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        HrisCreateEmployeeRequestDtoSchemasSourceValue
-    > = z.union([
-        z.lazy(() => HrisCreateEmployeeRequestDtoSchemas4$.outboundSchema),
-        z.string(),
-        z.number(),
-        z.boolean(),
-    ]);
+    /** @deprecated use `HrisCreateEmployeeRequestDtoSchemasSourceValue$inboundSchema` instead. */
+    export const inboundSchema = HrisCreateEmployeeRequestDtoSchemasSourceValue$inboundSchema;
+    /** @deprecated use `HrisCreateEmployeeRequestDtoSchemasSourceValue$outboundSchema` instead. */
+    export const outboundSchema = HrisCreateEmployeeRequestDtoSchemasSourceValue$outboundSchema;
+    /** @deprecated use `HrisCreateEmployeeRequestDtoSchemasSourceValue$Outbound` instead. */
+    export type Outbound = HrisCreateEmployeeRequestDtoSchemasSourceValue$Outbound;
 }
 
 /** @internal */
+export const HrisCreateEmployeeRequestDtoSchemasValue$inboundSchema: z.ZodType<
+    HrisCreateEmployeeRequestDtoSchemasValueOpen,
+    z.ZodTypeDef,
+    unknown
+> = z.union([
+    z.nativeEnum(HrisCreateEmployeeRequestDtoSchemasValue),
+    z.string().transform(catchUnrecognizedEnum),
+]);
+
+/** @internal */
+export const HrisCreateEmployeeRequestDtoSchemasValue$outboundSchema: z.ZodType<
+    HrisCreateEmployeeRequestDtoSchemasValueOpen,
+    z.ZodTypeDef,
+    HrisCreateEmployeeRequestDtoSchemasValueOpen
+> = z.union([
+    z.nativeEnum(HrisCreateEmployeeRequestDtoSchemasValue),
+    z.string().and(z.custom<Unrecognized<string>>()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace HrisCreateEmployeeRequestDtoSchemasValue$ {
-    export const inboundSchema: z.ZodType<
-        HrisCreateEmployeeRequestDtoSchemasValueOpen,
-        z.ZodTypeDef,
-        unknown
-    > = z.union([
-        z.nativeEnum(HrisCreateEmployeeRequestDtoSchemasValue),
-        z.string().transform(catchUnrecognizedEnum),
-    ]);
-
-    export const outboundSchema: z.ZodType<
-        HrisCreateEmployeeRequestDtoSchemasValueOpen,
-        z.ZodTypeDef,
-        HrisCreateEmployeeRequestDtoSchemasValueOpen
-    > = z.union([
-        z.nativeEnum(HrisCreateEmployeeRequestDtoSchemasValue),
-        z.string().and(z.custom<Unrecognized<string>>()),
-    ]);
+    /** @deprecated use `HrisCreateEmployeeRequestDtoSchemasValue$inboundSchema` instead. */
+    export const inboundSchema = HrisCreateEmployeeRequestDtoSchemasValue$inboundSchema;
+    /** @deprecated use `HrisCreateEmployeeRequestDtoSchemasValue$outboundSchema` instead. */
+    export const outboundSchema = HrisCreateEmployeeRequestDtoSchemasValue$outboundSchema;
 }
 
 /** @internal */
+export const HrisCreateEmployeeRequestDtoEmploymentStatus$inboundSchema: z.ZodType<
+    HrisCreateEmployeeRequestDtoEmploymentStatus,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        source_value: z
+            .nullable(
+                z.union([
+                    z.lazy(() => HrisCreateEmployeeRequestDtoSchemas4$inboundSchema),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                ])
+            )
+            .optional(),
+        value: z.nullable(HrisCreateEmployeeRequestDtoSchemasValue$inboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            source_value: "sourceValue",
+        });
+    });
+
+/** @internal */
+export type HrisCreateEmployeeRequestDtoEmploymentStatus$Outbound = {
+    source_value?:
+        | HrisCreateEmployeeRequestDtoSchemas4$Outbound
+        | string
+        | number
+        | boolean
+        | null
+        | undefined;
+    value?: string | null | undefined;
+};
+
+/** @internal */
+export const HrisCreateEmployeeRequestDtoEmploymentStatus$outboundSchema: z.ZodType<
+    HrisCreateEmployeeRequestDtoEmploymentStatus$Outbound,
+    z.ZodTypeDef,
+    HrisCreateEmployeeRequestDtoEmploymentStatus
+> = z
+    .object({
+        sourceValue: z
+            .nullable(
+                z.union([
+                    z.lazy(() => HrisCreateEmployeeRequestDtoSchemas4$outboundSchema),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                ])
+            )
+            .optional(),
+        value: z.nullable(HrisCreateEmployeeRequestDtoSchemasValue$outboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            sourceValue: "source_value",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace HrisCreateEmployeeRequestDtoEmploymentStatus$ {
-    export const inboundSchema: z.ZodType<
-        HrisCreateEmployeeRequestDtoEmploymentStatus,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            source_value: z
-                .nullable(
-                    z.union([
-                        z.lazy(() => HrisCreateEmployeeRequestDtoSchemas4$.inboundSchema),
-                        z.string(),
-                        z.number(),
-                        z.boolean(),
-                    ])
-                )
-                .optional(),
-            value: z.nullable(HrisCreateEmployeeRequestDtoSchemasValue$.inboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                source_value: "sourceValue",
-            });
-        });
-
-    export type Outbound = {
-        source_value?:
-            | HrisCreateEmployeeRequestDtoSchemas4$.Outbound
-            | string
-            | number
-            | boolean
-            | null
-            | undefined;
-        value?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        HrisCreateEmployeeRequestDtoEmploymentStatus
-    > = z
-        .object({
-            sourceValue: z
-                .nullable(
-                    z.union([
-                        z.lazy(() => HrisCreateEmployeeRequestDtoSchemas4$.outboundSchema),
-                        z.string(),
-                        z.number(),
-                        z.boolean(),
-                    ])
-                )
-                .optional(),
-            value: z.nullable(HrisCreateEmployeeRequestDtoSchemasValue$.outboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                sourceValue: "source_value",
-            });
-        });
+    /** @deprecated use `HrisCreateEmployeeRequestDtoEmploymentStatus$inboundSchema` instead. */
+    export const inboundSchema = HrisCreateEmployeeRequestDtoEmploymentStatus$inboundSchema;
+    /** @deprecated use `HrisCreateEmployeeRequestDtoEmploymentStatus$outboundSchema` instead. */
+    export const outboundSchema = HrisCreateEmployeeRequestDtoEmploymentStatus$outboundSchema;
+    /** @deprecated use `HrisCreateEmployeeRequestDtoEmploymentStatus$Outbound` instead. */
+    export type Outbound = HrisCreateEmployeeRequestDtoEmploymentStatus$Outbound;
 }
 
 /** @internal */
+export const HrisCreateEmployeeRequestDtoSchemasEmploymentType4$inboundSchema: z.ZodType<
+    HrisCreateEmployeeRequestDtoSchemasEmploymentType4,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type HrisCreateEmployeeRequestDtoSchemasEmploymentType4$Outbound = {};
+
+/** @internal */
+export const HrisCreateEmployeeRequestDtoSchemasEmploymentType4$outboundSchema: z.ZodType<
+    HrisCreateEmployeeRequestDtoSchemasEmploymentType4$Outbound,
+    z.ZodTypeDef,
+    HrisCreateEmployeeRequestDtoSchemasEmploymentType4
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace HrisCreateEmployeeRequestDtoSchemasEmploymentType4$ {
-    export const inboundSchema: z.ZodType<
-        HrisCreateEmployeeRequestDtoSchemasEmploymentType4,
-        z.ZodTypeDef,
-        unknown
-    > = z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        HrisCreateEmployeeRequestDtoSchemasEmploymentType4
-    > = z.object({});
+    /** @deprecated use `HrisCreateEmployeeRequestDtoSchemasEmploymentType4$inboundSchema` instead. */
+    export const inboundSchema = HrisCreateEmployeeRequestDtoSchemasEmploymentType4$inboundSchema;
+    /** @deprecated use `HrisCreateEmployeeRequestDtoSchemasEmploymentType4$outboundSchema` instead. */
+    export const outboundSchema = HrisCreateEmployeeRequestDtoSchemasEmploymentType4$outboundSchema;
+    /** @deprecated use `HrisCreateEmployeeRequestDtoSchemasEmploymentType4$Outbound` instead. */
+    export type Outbound = HrisCreateEmployeeRequestDtoSchemasEmploymentType4$Outbound;
 }
 
 /** @internal */
+export const HrisCreateEmployeeRequestDtoSchemasEmploymentTypeSourceValue$inboundSchema: z.ZodType<
+    HrisCreateEmployeeRequestDtoSchemasEmploymentTypeSourceValue,
+    z.ZodTypeDef,
+    unknown
+> = z.union([
+    z.lazy(() => HrisCreateEmployeeRequestDtoSchemasEmploymentType4$inboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+]);
+
+/** @internal */
+export type HrisCreateEmployeeRequestDtoSchemasEmploymentTypeSourceValue$Outbound =
+    | HrisCreateEmployeeRequestDtoSchemasEmploymentType4$Outbound
+    | string
+    | number
+    | boolean;
+
+/** @internal */
+export const HrisCreateEmployeeRequestDtoSchemasEmploymentTypeSourceValue$outboundSchema: z.ZodType<
+    HrisCreateEmployeeRequestDtoSchemasEmploymentTypeSourceValue$Outbound,
+    z.ZodTypeDef,
+    HrisCreateEmployeeRequestDtoSchemasEmploymentTypeSourceValue
+> = z.union([
+    z.lazy(() => HrisCreateEmployeeRequestDtoSchemasEmploymentType4$outboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace HrisCreateEmployeeRequestDtoSchemasEmploymentTypeSourceValue$ {
-    export const inboundSchema: z.ZodType<
-        HrisCreateEmployeeRequestDtoSchemasEmploymentTypeSourceValue,
-        z.ZodTypeDef,
-        unknown
-    > = z.union([
-        z.lazy(() => HrisCreateEmployeeRequestDtoSchemasEmploymentType4$.inboundSchema),
-        z.string(),
-        z.number(),
-        z.boolean(),
-    ]);
-
-    export type Outbound =
-        | HrisCreateEmployeeRequestDtoSchemasEmploymentType4$.Outbound
-        | string
-        | number
-        | boolean;
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        HrisCreateEmployeeRequestDtoSchemasEmploymentTypeSourceValue
-    > = z.union([
-        z.lazy(() => HrisCreateEmployeeRequestDtoSchemasEmploymentType4$.outboundSchema),
-        z.string(),
-        z.number(),
-        z.boolean(),
-    ]);
+    /** @deprecated use `HrisCreateEmployeeRequestDtoSchemasEmploymentTypeSourceValue$inboundSchema` instead. */
+    export const inboundSchema =
+        HrisCreateEmployeeRequestDtoSchemasEmploymentTypeSourceValue$inboundSchema;
+    /** @deprecated use `HrisCreateEmployeeRequestDtoSchemasEmploymentTypeSourceValue$outboundSchema` instead. */
+    export const outboundSchema =
+        HrisCreateEmployeeRequestDtoSchemasEmploymentTypeSourceValue$outboundSchema;
+    /** @deprecated use `HrisCreateEmployeeRequestDtoSchemasEmploymentTypeSourceValue$Outbound` instead. */
+    export type Outbound = HrisCreateEmployeeRequestDtoSchemasEmploymentTypeSourceValue$Outbound;
 }
 
 /** @internal */
+export const HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue$inboundSchema: z.ZodType<
+    HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValueOpen,
+    z.ZodTypeDef,
+    unknown
+> = z.union([
+    z.nativeEnum(HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue),
+    z.string().transform(catchUnrecognizedEnum),
+]);
+
+/** @internal */
+export const HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue$outboundSchema: z.ZodType<
+    HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValueOpen,
+    z.ZodTypeDef,
+    HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValueOpen
+> = z.union([
+    z.nativeEnum(HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue),
+    z.string().and(z.custom<Unrecognized<string>>()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue$ {
-    export const inboundSchema: z.ZodType<
-        HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValueOpen,
-        z.ZodTypeDef,
-        unknown
-    > = z.union([
-        z.nativeEnum(HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue),
-        z.string().transform(catchUnrecognizedEnum),
-    ]);
-
-    export const outboundSchema: z.ZodType<
-        HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValueOpen,
-        z.ZodTypeDef,
-        HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValueOpen
-    > = z.union([
-        z.nativeEnum(HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue),
-        z.string().and(z.custom<Unrecognized<string>>()),
-    ]);
+    /** @deprecated use `HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue$inboundSchema` instead. */
+    export const inboundSchema =
+        HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue$inboundSchema;
+    /** @deprecated use `HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue$outboundSchema` instead. */
+    export const outboundSchema =
+        HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue$outboundSchema;
 }
 
 /** @internal */
+export const HrisCreateEmployeeRequestDtoEmploymentType$inboundSchema: z.ZodType<
+    HrisCreateEmployeeRequestDtoEmploymentType,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        source_value: z
+            .nullable(
+                z.union([
+                    z.lazy(() => HrisCreateEmployeeRequestDtoSchemasEmploymentType4$inboundSchema),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                ])
+            )
+            .optional(),
+        value: z
+            .nullable(HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue$inboundSchema)
+            .optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            source_value: "sourceValue",
+        });
+    });
+
+/** @internal */
+export type HrisCreateEmployeeRequestDtoEmploymentType$Outbound = {
+    source_value?:
+        | HrisCreateEmployeeRequestDtoSchemasEmploymentType4$Outbound
+        | string
+        | number
+        | boolean
+        | null
+        | undefined;
+    value?: string | null | undefined;
+};
+
+/** @internal */
+export const HrisCreateEmployeeRequestDtoEmploymentType$outboundSchema: z.ZodType<
+    HrisCreateEmployeeRequestDtoEmploymentType$Outbound,
+    z.ZodTypeDef,
+    HrisCreateEmployeeRequestDtoEmploymentType
+> = z
+    .object({
+        sourceValue: z
+            .nullable(
+                z.union([
+                    z.lazy(() => HrisCreateEmployeeRequestDtoSchemasEmploymentType4$outboundSchema),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                ])
+            )
+            .optional(),
+        value: z
+            .nullable(HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue$outboundSchema)
+            .optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            sourceValue: "source_value",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace HrisCreateEmployeeRequestDtoEmploymentType$ {
-    export const inboundSchema: z.ZodType<
-        HrisCreateEmployeeRequestDtoEmploymentType,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            source_value: z
-                .nullable(
-                    z.union([
-                        z.lazy(
-                            () => HrisCreateEmployeeRequestDtoSchemasEmploymentType4$.inboundSchema
-                        ),
-                        z.string(),
-                        z.number(),
-                        z.boolean(),
-                    ])
-                )
-                .optional(),
-            value: z
-                .nullable(HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue$.inboundSchema)
-                .optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                source_value: "sourceValue",
-            });
-        });
-
-    export type Outbound = {
-        source_value?:
-            | HrisCreateEmployeeRequestDtoSchemasEmploymentType4$.Outbound
-            | string
-            | number
-            | boolean
-            | null
-            | undefined;
-        value?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        HrisCreateEmployeeRequestDtoEmploymentType
-    > = z
-        .object({
-            sourceValue: z
-                .nullable(
-                    z.union([
-                        z.lazy(
-                            () => HrisCreateEmployeeRequestDtoSchemasEmploymentType4$.outboundSchema
-                        ),
-                        z.string(),
-                        z.number(),
-                        z.boolean(),
-                    ])
-                )
-                .optional(),
-            value: z
-                .nullable(HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue$.outboundSchema)
-                .optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                sourceValue: "source_value",
-            });
-        });
+    /** @deprecated use `HrisCreateEmployeeRequestDtoEmploymentType$inboundSchema` instead. */
+    export const inboundSchema = HrisCreateEmployeeRequestDtoEmploymentType$inboundSchema;
+    /** @deprecated use `HrisCreateEmployeeRequestDtoEmploymentType$outboundSchema` instead. */
+    export const outboundSchema = HrisCreateEmployeeRequestDtoEmploymentType$outboundSchema;
+    /** @deprecated use `HrisCreateEmployeeRequestDtoEmploymentType$Outbound` instead. */
+    export type Outbound = HrisCreateEmployeeRequestDtoEmploymentType$Outbound;
 }
 
 /** @internal */
+export const HrisCreateEmployeeRequestDtoSchemasEthnicity4$inboundSchema: z.ZodType<
+    HrisCreateEmployeeRequestDtoSchemasEthnicity4,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type HrisCreateEmployeeRequestDtoSchemasEthnicity4$Outbound = {};
+
+/** @internal */
+export const HrisCreateEmployeeRequestDtoSchemasEthnicity4$outboundSchema: z.ZodType<
+    HrisCreateEmployeeRequestDtoSchemasEthnicity4$Outbound,
+    z.ZodTypeDef,
+    HrisCreateEmployeeRequestDtoSchemasEthnicity4
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace HrisCreateEmployeeRequestDtoSchemasEthnicity4$ {
-    export const inboundSchema: z.ZodType<
-        HrisCreateEmployeeRequestDtoSchemasEthnicity4,
-        z.ZodTypeDef,
-        unknown
-    > = z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        HrisCreateEmployeeRequestDtoSchemasEthnicity4
-    > = z.object({});
+    /** @deprecated use `HrisCreateEmployeeRequestDtoSchemasEthnicity4$inboundSchema` instead. */
+    export const inboundSchema = HrisCreateEmployeeRequestDtoSchemasEthnicity4$inboundSchema;
+    /** @deprecated use `HrisCreateEmployeeRequestDtoSchemasEthnicity4$outboundSchema` instead. */
+    export const outboundSchema = HrisCreateEmployeeRequestDtoSchemasEthnicity4$outboundSchema;
+    /** @deprecated use `HrisCreateEmployeeRequestDtoSchemasEthnicity4$Outbound` instead. */
+    export type Outbound = HrisCreateEmployeeRequestDtoSchemasEthnicity4$Outbound;
 }
 
 /** @internal */
+export const HrisCreateEmployeeRequestDtoSchemasEthnicitySourceValue$inboundSchema: z.ZodType<
+    HrisCreateEmployeeRequestDtoSchemasEthnicitySourceValue,
+    z.ZodTypeDef,
+    unknown
+> = z.union([
+    z.lazy(() => HrisCreateEmployeeRequestDtoSchemasEthnicity4$inboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+]);
+
+/** @internal */
+export type HrisCreateEmployeeRequestDtoSchemasEthnicitySourceValue$Outbound =
+    | HrisCreateEmployeeRequestDtoSchemasEthnicity4$Outbound
+    | string
+    | number
+    | boolean;
+
+/** @internal */
+export const HrisCreateEmployeeRequestDtoSchemasEthnicitySourceValue$outboundSchema: z.ZodType<
+    HrisCreateEmployeeRequestDtoSchemasEthnicitySourceValue$Outbound,
+    z.ZodTypeDef,
+    HrisCreateEmployeeRequestDtoSchemasEthnicitySourceValue
+> = z.union([
+    z.lazy(() => HrisCreateEmployeeRequestDtoSchemasEthnicity4$outboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace HrisCreateEmployeeRequestDtoSchemasEthnicitySourceValue$ {
-    export const inboundSchema: z.ZodType<
-        HrisCreateEmployeeRequestDtoSchemasEthnicitySourceValue,
-        z.ZodTypeDef,
-        unknown
-    > = z.union([
-        z.lazy(() => HrisCreateEmployeeRequestDtoSchemasEthnicity4$.inboundSchema),
-        z.string(),
-        z.number(),
-        z.boolean(),
-    ]);
-
-    export type Outbound =
-        | HrisCreateEmployeeRequestDtoSchemasEthnicity4$.Outbound
-        | string
-        | number
-        | boolean;
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        HrisCreateEmployeeRequestDtoSchemasEthnicitySourceValue
-    > = z.union([
-        z.lazy(() => HrisCreateEmployeeRequestDtoSchemasEthnicity4$.outboundSchema),
-        z.string(),
-        z.number(),
-        z.boolean(),
-    ]);
+    /** @deprecated use `HrisCreateEmployeeRequestDtoSchemasEthnicitySourceValue$inboundSchema` instead. */
+    export const inboundSchema =
+        HrisCreateEmployeeRequestDtoSchemasEthnicitySourceValue$inboundSchema;
+    /** @deprecated use `HrisCreateEmployeeRequestDtoSchemasEthnicitySourceValue$outboundSchema` instead. */
+    export const outboundSchema =
+        HrisCreateEmployeeRequestDtoSchemasEthnicitySourceValue$outboundSchema;
+    /** @deprecated use `HrisCreateEmployeeRequestDtoSchemasEthnicitySourceValue$Outbound` instead. */
+    export type Outbound = HrisCreateEmployeeRequestDtoSchemasEthnicitySourceValue$Outbound;
 }
 
 /** @internal */
+export const HrisCreateEmployeeRequestDtoSchemasEthnicityValue$inboundSchema: z.ZodType<
+    HrisCreateEmployeeRequestDtoSchemasEthnicityValueOpen,
+    z.ZodTypeDef,
+    unknown
+> = z.union([
+    z.nativeEnum(HrisCreateEmployeeRequestDtoSchemasEthnicityValue),
+    z.string().transform(catchUnrecognizedEnum),
+]);
+
+/** @internal */
+export const HrisCreateEmployeeRequestDtoSchemasEthnicityValue$outboundSchema: z.ZodType<
+    HrisCreateEmployeeRequestDtoSchemasEthnicityValueOpen,
+    z.ZodTypeDef,
+    HrisCreateEmployeeRequestDtoSchemasEthnicityValueOpen
+> = z.union([
+    z.nativeEnum(HrisCreateEmployeeRequestDtoSchemasEthnicityValue),
+    z.string().and(z.custom<Unrecognized<string>>()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace HrisCreateEmployeeRequestDtoSchemasEthnicityValue$ {
-    export const inboundSchema: z.ZodType<
-        HrisCreateEmployeeRequestDtoSchemasEthnicityValueOpen,
-        z.ZodTypeDef,
-        unknown
-    > = z.union([
-        z.nativeEnum(HrisCreateEmployeeRequestDtoSchemasEthnicityValue),
-        z.string().transform(catchUnrecognizedEnum),
-    ]);
-
-    export const outboundSchema: z.ZodType<
-        HrisCreateEmployeeRequestDtoSchemasEthnicityValueOpen,
-        z.ZodTypeDef,
-        HrisCreateEmployeeRequestDtoSchemasEthnicityValueOpen
-    > = z.union([
-        z.nativeEnum(HrisCreateEmployeeRequestDtoSchemasEthnicityValue),
-        z.string().and(z.custom<Unrecognized<string>>()),
-    ]);
+    /** @deprecated use `HrisCreateEmployeeRequestDtoSchemasEthnicityValue$inboundSchema` instead. */
+    export const inboundSchema = HrisCreateEmployeeRequestDtoSchemasEthnicityValue$inboundSchema;
+    /** @deprecated use `HrisCreateEmployeeRequestDtoSchemasEthnicityValue$outboundSchema` instead. */
+    export const outboundSchema = HrisCreateEmployeeRequestDtoSchemasEthnicityValue$outboundSchema;
 }
 
 /** @internal */
+export const HrisCreateEmployeeRequestDtoEthnicity$inboundSchema: z.ZodType<
+    HrisCreateEmployeeRequestDtoEthnicity,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        source_value: z
+            .nullable(
+                z.union([
+                    z.lazy(() => HrisCreateEmployeeRequestDtoSchemasEthnicity4$inboundSchema),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                ])
+            )
+            .optional(),
+        value: z
+            .nullable(HrisCreateEmployeeRequestDtoSchemasEthnicityValue$inboundSchema)
+            .optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            source_value: "sourceValue",
+        });
+    });
+
+/** @internal */
+export type HrisCreateEmployeeRequestDtoEthnicity$Outbound = {
+    source_value?:
+        | HrisCreateEmployeeRequestDtoSchemasEthnicity4$Outbound
+        | string
+        | number
+        | boolean
+        | null
+        | undefined;
+    value?: string | null | undefined;
+};
+
+/** @internal */
+export const HrisCreateEmployeeRequestDtoEthnicity$outboundSchema: z.ZodType<
+    HrisCreateEmployeeRequestDtoEthnicity$Outbound,
+    z.ZodTypeDef,
+    HrisCreateEmployeeRequestDtoEthnicity
+> = z
+    .object({
+        sourceValue: z
+            .nullable(
+                z.union([
+                    z.lazy(() => HrisCreateEmployeeRequestDtoSchemasEthnicity4$outboundSchema),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                ])
+            )
+            .optional(),
+        value: z
+            .nullable(HrisCreateEmployeeRequestDtoSchemasEthnicityValue$outboundSchema)
+            .optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            sourceValue: "source_value",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace HrisCreateEmployeeRequestDtoEthnicity$ {
-    export const inboundSchema: z.ZodType<
-        HrisCreateEmployeeRequestDtoEthnicity,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            source_value: z
-                .nullable(
-                    z.union([
-                        z.lazy(() => HrisCreateEmployeeRequestDtoSchemasEthnicity4$.inboundSchema),
-                        z.string(),
-                        z.number(),
-                        z.boolean(),
-                    ])
-                )
-                .optional(),
-            value: z
-                .nullable(HrisCreateEmployeeRequestDtoSchemasEthnicityValue$.inboundSchema)
-                .optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                source_value: "sourceValue",
-            });
-        });
-
-    export type Outbound = {
-        source_value?:
-            | HrisCreateEmployeeRequestDtoSchemasEthnicity4$.Outbound
-            | string
-            | number
-            | boolean
-            | null
-            | undefined;
-        value?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        HrisCreateEmployeeRequestDtoEthnicity
-    > = z
-        .object({
-            sourceValue: z
-                .nullable(
-                    z.union([
-                        z.lazy(() => HrisCreateEmployeeRequestDtoSchemasEthnicity4$.outboundSchema),
-                        z.string(),
-                        z.number(),
-                        z.boolean(),
-                    ])
-                )
-                .optional(),
-            value: z
-                .nullable(HrisCreateEmployeeRequestDtoSchemasEthnicityValue$.outboundSchema)
-                .optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                sourceValue: "source_value",
-            });
-        });
+    /** @deprecated use `HrisCreateEmployeeRequestDtoEthnicity$inboundSchema` instead. */
+    export const inboundSchema = HrisCreateEmployeeRequestDtoEthnicity$inboundSchema;
+    /** @deprecated use `HrisCreateEmployeeRequestDtoEthnicity$outboundSchema` instead. */
+    export const outboundSchema = HrisCreateEmployeeRequestDtoEthnicity$outboundSchema;
+    /** @deprecated use `HrisCreateEmployeeRequestDtoEthnicity$Outbound` instead. */
+    export type Outbound = HrisCreateEmployeeRequestDtoEthnicity$Outbound;
 }
 
 /** @internal */
+export const HrisCreateEmployeeRequestDtoSchemasGender4$inboundSchema: z.ZodType<
+    HrisCreateEmployeeRequestDtoSchemasGender4,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type HrisCreateEmployeeRequestDtoSchemasGender4$Outbound = {};
+
+/** @internal */
+export const HrisCreateEmployeeRequestDtoSchemasGender4$outboundSchema: z.ZodType<
+    HrisCreateEmployeeRequestDtoSchemasGender4$Outbound,
+    z.ZodTypeDef,
+    HrisCreateEmployeeRequestDtoSchemasGender4
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace HrisCreateEmployeeRequestDtoSchemasGender4$ {
-    export const inboundSchema: z.ZodType<
-        HrisCreateEmployeeRequestDtoSchemasGender4,
-        z.ZodTypeDef,
-        unknown
-    > = z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        HrisCreateEmployeeRequestDtoSchemasGender4
-    > = z.object({});
+    /** @deprecated use `HrisCreateEmployeeRequestDtoSchemasGender4$inboundSchema` instead. */
+    export const inboundSchema = HrisCreateEmployeeRequestDtoSchemasGender4$inboundSchema;
+    /** @deprecated use `HrisCreateEmployeeRequestDtoSchemasGender4$outboundSchema` instead. */
+    export const outboundSchema = HrisCreateEmployeeRequestDtoSchemasGender4$outboundSchema;
+    /** @deprecated use `HrisCreateEmployeeRequestDtoSchemasGender4$Outbound` instead. */
+    export type Outbound = HrisCreateEmployeeRequestDtoSchemasGender4$Outbound;
 }
 
 /** @internal */
+export const HrisCreateEmployeeRequestDtoSchemasGenderSourceValue$inboundSchema: z.ZodType<
+    HrisCreateEmployeeRequestDtoSchemasGenderSourceValue,
+    z.ZodTypeDef,
+    unknown
+> = z.union([
+    z.lazy(() => HrisCreateEmployeeRequestDtoSchemasGender4$inboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+]);
+
+/** @internal */
+export type HrisCreateEmployeeRequestDtoSchemasGenderSourceValue$Outbound =
+    | HrisCreateEmployeeRequestDtoSchemasGender4$Outbound
+    | string
+    | number
+    | boolean;
+
+/** @internal */
+export const HrisCreateEmployeeRequestDtoSchemasGenderSourceValue$outboundSchema: z.ZodType<
+    HrisCreateEmployeeRequestDtoSchemasGenderSourceValue$Outbound,
+    z.ZodTypeDef,
+    HrisCreateEmployeeRequestDtoSchemasGenderSourceValue
+> = z.union([
+    z.lazy(() => HrisCreateEmployeeRequestDtoSchemasGender4$outboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace HrisCreateEmployeeRequestDtoSchemasGenderSourceValue$ {
-    export const inboundSchema: z.ZodType<
-        HrisCreateEmployeeRequestDtoSchemasGenderSourceValue,
-        z.ZodTypeDef,
-        unknown
-    > = z.union([
-        z.lazy(() => HrisCreateEmployeeRequestDtoSchemasGender4$.inboundSchema),
-        z.string(),
-        z.number(),
-        z.boolean(),
-    ]);
-
-    export type Outbound =
-        | HrisCreateEmployeeRequestDtoSchemasGender4$.Outbound
-        | string
-        | number
-        | boolean;
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        HrisCreateEmployeeRequestDtoSchemasGenderSourceValue
-    > = z.union([
-        z.lazy(() => HrisCreateEmployeeRequestDtoSchemasGender4$.outboundSchema),
-        z.string(),
-        z.number(),
-        z.boolean(),
-    ]);
+    /** @deprecated use `HrisCreateEmployeeRequestDtoSchemasGenderSourceValue$inboundSchema` instead. */
+    export const inboundSchema = HrisCreateEmployeeRequestDtoSchemasGenderSourceValue$inboundSchema;
+    /** @deprecated use `HrisCreateEmployeeRequestDtoSchemasGenderSourceValue$outboundSchema` instead. */
+    export const outboundSchema =
+        HrisCreateEmployeeRequestDtoSchemasGenderSourceValue$outboundSchema;
+    /** @deprecated use `HrisCreateEmployeeRequestDtoSchemasGenderSourceValue$Outbound` instead. */
+    export type Outbound = HrisCreateEmployeeRequestDtoSchemasGenderSourceValue$Outbound;
 }
 
 /** @internal */
+export const HrisCreateEmployeeRequestDtoSchemasGenderValue$inboundSchema: z.ZodType<
+    HrisCreateEmployeeRequestDtoSchemasGenderValueOpen,
+    z.ZodTypeDef,
+    unknown
+> = z.union([
+    z.nativeEnum(HrisCreateEmployeeRequestDtoSchemasGenderValue),
+    z.string().transform(catchUnrecognizedEnum),
+]);
+
+/** @internal */
+export const HrisCreateEmployeeRequestDtoSchemasGenderValue$outboundSchema: z.ZodType<
+    HrisCreateEmployeeRequestDtoSchemasGenderValueOpen,
+    z.ZodTypeDef,
+    HrisCreateEmployeeRequestDtoSchemasGenderValueOpen
+> = z.union([
+    z.nativeEnum(HrisCreateEmployeeRequestDtoSchemasGenderValue),
+    z.string().and(z.custom<Unrecognized<string>>()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace HrisCreateEmployeeRequestDtoSchemasGenderValue$ {
-    export const inboundSchema: z.ZodType<
-        HrisCreateEmployeeRequestDtoSchemasGenderValueOpen,
-        z.ZodTypeDef,
-        unknown
-    > = z.union([
-        z.nativeEnum(HrisCreateEmployeeRequestDtoSchemasGenderValue),
-        z.string().transform(catchUnrecognizedEnum),
-    ]);
-
-    export const outboundSchema: z.ZodType<
-        HrisCreateEmployeeRequestDtoSchemasGenderValueOpen,
-        z.ZodTypeDef,
-        HrisCreateEmployeeRequestDtoSchemasGenderValueOpen
-    > = z.union([
-        z.nativeEnum(HrisCreateEmployeeRequestDtoSchemasGenderValue),
-        z.string().and(z.custom<Unrecognized<string>>()),
-    ]);
+    /** @deprecated use `HrisCreateEmployeeRequestDtoSchemasGenderValue$inboundSchema` instead. */
+    export const inboundSchema = HrisCreateEmployeeRequestDtoSchemasGenderValue$inboundSchema;
+    /** @deprecated use `HrisCreateEmployeeRequestDtoSchemasGenderValue$outboundSchema` instead. */
+    export const outboundSchema = HrisCreateEmployeeRequestDtoSchemasGenderValue$outboundSchema;
 }
 
 /** @internal */
+export const HrisCreateEmployeeRequestDtoGender$inboundSchema: z.ZodType<
+    HrisCreateEmployeeRequestDtoGender,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        source_value: z
+            .nullable(
+                z.union([
+                    z.lazy(() => HrisCreateEmployeeRequestDtoSchemasGender4$inboundSchema),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                ])
+            )
+            .optional(),
+        value: z.nullable(HrisCreateEmployeeRequestDtoSchemasGenderValue$inboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            source_value: "sourceValue",
+        });
+    });
+
+/** @internal */
+export type HrisCreateEmployeeRequestDtoGender$Outbound = {
+    source_value?:
+        | HrisCreateEmployeeRequestDtoSchemasGender4$Outbound
+        | string
+        | number
+        | boolean
+        | null
+        | undefined;
+    value?: string | null | undefined;
+};
+
+/** @internal */
+export const HrisCreateEmployeeRequestDtoGender$outboundSchema: z.ZodType<
+    HrisCreateEmployeeRequestDtoGender$Outbound,
+    z.ZodTypeDef,
+    HrisCreateEmployeeRequestDtoGender
+> = z
+    .object({
+        sourceValue: z
+            .nullable(
+                z.union([
+                    z.lazy(() => HrisCreateEmployeeRequestDtoSchemasGender4$outboundSchema),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                ])
+            )
+            .optional(),
+        value: z.nullable(HrisCreateEmployeeRequestDtoSchemasGenderValue$outboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            sourceValue: "source_value",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace HrisCreateEmployeeRequestDtoGender$ {
-    export const inboundSchema: z.ZodType<
-        HrisCreateEmployeeRequestDtoGender,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            source_value: z
-                .nullable(
-                    z.union([
-                        z.lazy(() => HrisCreateEmployeeRequestDtoSchemasGender4$.inboundSchema),
-                        z.string(),
-                        z.number(),
-                        z.boolean(),
-                    ])
-                )
-                .optional(),
-            value: z
-                .nullable(HrisCreateEmployeeRequestDtoSchemasGenderValue$.inboundSchema)
-                .optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                source_value: "sourceValue",
-            });
-        });
-
-    export type Outbound = {
-        source_value?:
-            | HrisCreateEmployeeRequestDtoSchemasGender4$.Outbound
-            | string
-            | number
-            | boolean
-            | null
-            | undefined;
-        value?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        HrisCreateEmployeeRequestDtoGender
-    > = z
-        .object({
-            sourceValue: z
-                .nullable(
-                    z.union([
-                        z.lazy(() => HrisCreateEmployeeRequestDtoSchemasGender4$.outboundSchema),
-                        z.string(),
-                        z.number(),
-                        z.boolean(),
-                    ])
-                )
-                .optional(),
-            value: z
-                .nullable(HrisCreateEmployeeRequestDtoSchemasGenderValue$.outboundSchema)
-                .optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                sourceValue: "source_value",
-            });
-        });
+    /** @deprecated use `HrisCreateEmployeeRequestDtoGender$inboundSchema` instead. */
+    export const inboundSchema = HrisCreateEmployeeRequestDtoGender$inboundSchema;
+    /** @deprecated use `HrisCreateEmployeeRequestDtoGender$outboundSchema` instead. */
+    export const outboundSchema = HrisCreateEmployeeRequestDtoGender$outboundSchema;
+    /** @deprecated use `HrisCreateEmployeeRequestDtoGender$Outbound` instead. */
+    export type Outbound = HrisCreateEmployeeRequestDtoGender$Outbound;
 }
 
 /** @internal */
+export const HrisCreateEmployeeRequestDtoSchemasHomeLocation4$inboundSchema: z.ZodType<
+    HrisCreateEmployeeRequestDtoSchemasHomeLocation4,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type HrisCreateEmployeeRequestDtoSchemasHomeLocation4$Outbound = {};
+
+/** @internal */
+export const HrisCreateEmployeeRequestDtoSchemasHomeLocation4$outboundSchema: z.ZodType<
+    HrisCreateEmployeeRequestDtoSchemasHomeLocation4$Outbound,
+    z.ZodTypeDef,
+    HrisCreateEmployeeRequestDtoSchemasHomeLocation4
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace HrisCreateEmployeeRequestDtoSchemasHomeLocation4$ {
-    export const inboundSchema: z.ZodType<
-        HrisCreateEmployeeRequestDtoSchemasHomeLocation4,
-        z.ZodTypeDef,
-        unknown
-    > = z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        HrisCreateEmployeeRequestDtoSchemasHomeLocation4
-    > = z.object({});
+    /** @deprecated use `HrisCreateEmployeeRequestDtoSchemasHomeLocation4$inboundSchema` instead. */
+    export const inboundSchema = HrisCreateEmployeeRequestDtoSchemasHomeLocation4$inboundSchema;
+    /** @deprecated use `HrisCreateEmployeeRequestDtoSchemasHomeLocation4$outboundSchema` instead. */
+    export const outboundSchema = HrisCreateEmployeeRequestDtoSchemasHomeLocation4$outboundSchema;
+    /** @deprecated use `HrisCreateEmployeeRequestDtoSchemasHomeLocation4$Outbound` instead. */
+    export type Outbound = HrisCreateEmployeeRequestDtoSchemasHomeLocation4$Outbound;
 }
 
 /** @internal */
+export const HrisCreateEmployeeRequestDtoSchemasHomeLocationSourceValue$inboundSchema: z.ZodType<
+    HrisCreateEmployeeRequestDtoSchemasHomeLocationSourceValue,
+    z.ZodTypeDef,
+    unknown
+> = z.union([
+    z.lazy(() => HrisCreateEmployeeRequestDtoSchemasHomeLocation4$inboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+]);
+
+/** @internal */
+export type HrisCreateEmployeeRequestDtoSchemasHomeLocationSourceValue$Outbound =
+    | HrisCreateEmployeeRequestDtoSchemasHomeLocation4$Outbound
+    | string
+    | number
+    | boolean;
+
+/** @internal */
+export const HrisCreateEmployeeRequestDtoSchemasHomeLocationSourceValue$outboundSchema: z.ZodType<
+    HrisCreateEmployeeRequestDtoSchemasHomeLocationSourceValue$Outbound,
+    z.ZodTypeDef,
+    HrisCreateEmployeeRequestDtoSchemasHomeLocationSourceValue
+> = z.union([
+    z.lazy(() => HrisCreateEmployeeRequestDtoSchemasHomeLocation4$outboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace HrisCreateEmployeeRequestDtoSchemasHomeLocationSourceValue$ {
-    export const inboundSchema: z.ZodType<
-        HrisCreateEmployeeRequestDtoSchemasHomeLocationSourceValue,
-        z.ZodTypeDef,
-        unknown
-    > = z.union([
-        z.lazy(() => HrisCreateEmployeeRequestDtoSchemasHomeLocation4$.inboundSchema),
-        z.string(),
-        z.number(),
-        z.boolean(),
-    ]);
-
-    export type Outbound =
-        | HrisCreateEmployeeRequestDtoSchemasHomeLocation4$.Outbound
-        | string
-        | number
-        | boolean;
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        HrisCreateEmployeeRequestDtoSchemasHomeLocationSourceValue
-    > = z.union([
-        z.lazy(() => HrisCreateEmployeeRequestDtoSchemasHomeLocation4$.outboundSchema),
-        z.string(),
-        z.number(),
-        z.boolean(),
-    ]);
+    /** @deprecated use `HrisCreateEmployeeRequestDtoSchemasHomeLocationSourceValue$inboundSchema` instead. */
+    export const inboundSchema =
+        HrisCreateEmployeeRequestDtoSchemasHomeLocationSourceValue$inboundSchema;
+    /** @deprecated use `HrisCreateEmployeeRequestDtoSchemasHomeLocationSourceValue$outboundSchema` instead. */
+    export const outboundSchema =
+        HrisCreateEmployeeRequestDtoSchemasHomeLocationSourceValue$outboundSchema;
+    /** @deprecated use `HrisCreateEmployeeRequestDtoSchemasHomeLocationSourceValue$Outbound` instead. */
+    export type Outbound = HrisCreateEmployeeRequestDtoSchemasHomeLocationSourceValue$Outbound;
 }
 
 /** @internal */
+export const HrisCreateEmployeeRequestDtoSchemasHomeLocationValue$inboundSchema: z.ZodType<
+    HrisCreateEmployeeRequestDtoSchemasHomeLocationValueOpen,
+    z.ZodTypeDef,
+    unknown
+> = z.union([
+    z.nativeEnum(HrisCreateEmployeeRequestDtoSchemasHomeLocationValue),
+    z.string().transform(catchUnrecognizedEnum),
+]);
+
+/** @internal */
+export const HrisCreateEmployeeRequestDtoSchemasHomeLocationValue$outboundSchema: z.ZodType<
+    HrisCreateEmployeeRequestDtoSchemasHomeLocationValueOpen,
+    z.ZodTypeDef,
+    HrisCreateEmployeeRequestDtoSchemasHomeLocationValueOpen
+> = z.union([
+    z.nativeEnum(HrisCreateEmployeeRequestDtoSchemasHomeLocationValue),
+    z.string().and(z.custom<Unrecognized<string>>()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace HrisCreateEmployeeRequestDtoSchemasHomeLocationValue$ {
-    export const inboundSchema: z.ZodType<
-        HrisCreateEmployeeRequestDtoSchemasHomeLocationValueOpen,
-        z.ZodTypeDef,
-        unknown
-    > = z.union([
-        z.nativeEnum(HrisCreateEmployeeRequestDtoSchemasHomeLocationValue),
-        z.string().transform(catchUnrecognizedEnum),
-    ]);
-
-    export const outboundSchema: z.ZodType<
-        HrisCreateEmployeeRequestDtoSchemasHomeLocationValueOpen,
-        z.ZodTypeDef,
-        HrisCreateEmployeeRequestDtoSchemasHomeLocationValueOpen
-    > = z.union([
-        z.nativeEnum(HrisCreateEmployeeRequestDtoSchemasHomeLocationValue),
-        z.string().and(z.custom<Unrecognized<string>>()),
-    ]);
+    /** @deprecated use `HrisCreateEmployeeRequestDtoSchemasHomeLocationValue$inboundSchema` instead. */
+    export const inboundSchema = HrisCreateEmployeeRequestDtoSchemasHomeLocationValue$inboundSchema;
+    /** @deprecated use `HrisCreateEmployeeRequestDtoSchemasHomeLocationValue$outboundSchema` instead. */
+    export const outboundSchema =
+        HrisCreateEmployeeRequestDtoSchemasHomeLocationValue$outboundSchema;
 }
 
 /** @internal */
+export const HrisCreateEmployeeRequestDtoCountry$inboundSchema: z.ZodType<
+    HrisCreateEmployeeRequestDtoCountry,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        source_value: z
+            .nullable(
+                z.union([
+                    z.lazy(() => HrisCreateEmployeeRequestDtoSchemasHomeLocation4$inboundSchema),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                ])
+            )
+            .optional(),
+        value: z
+            .nullable(HrisCreateEmployeeRequestDtoSchemasHomeLocationValue$inboundSchema)
+            .optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            source_value: "sourceValue",
+        });
+    });
+
+/** @internal */
+export type HrisCreateEmployeeRequestDtoCountry$Outbound = {
+    source_value?:
+        | HrisCreateEmployeeRequestDtoSchemasHomeLocation4$Outbound
+        | string
+        | number
+        | boolean
+        | null
+        | undefined;
+    value?: string | null | undefined;
+};
+
+/** @internal */
+export const HrisCreateEmployeeRequestDtoCountry$outboundSchema: z.ZodType<
+    HrisCreateEmployeeRequestDtoCountry$Outbound,
+    z.ZodTypeDef,
+    HrisCreateEmployeeRequestDtoCountry
+> = z
+    .object({
+        sourceValue: z
+            .nullable(
+                z.union([
+                    z.lazy(() => HrisCreateEmployeeRequestDtoSchemasHomeLocation4$outboundSchema),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                ])
+            )
+            .optional(),
+        value: z
+            .nullable(HrisCreateEmployeeRequestDtoSchemasHomeLocationValue$outboundSchema)
+            .optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            sourceValue: "source_value",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace HrisCreateEmployeeRequestDtoCountry$ {
-    export const inboundSchema: z.ZodType<
-        HrisCreateEmployeeRequestDtoCountry,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            source_value: z
-                .nullable(
-                    z.union([
-                        z.lazy(
-                            () => HrisCreateEmployeeRequestDtoSchemasHomeLocation4$.inboundSchema
-                        ),
-                        z.string(),
-                        z.number(),
-                        z.boolean(),
-                    ])
-                )
-                .optional(),
-            value: z
-                .nullable(HrisCreateEmployeeRequestDtoSchemasHomeLocationValue$.inboundSchema)
-                .optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                source_value: "sourceValue",
-            });
-        });
-
-    export type Outbound = {
-        source_value?:
-            | HrisCreateEmployeeRequestDtoSchemasHomeLocation4$.Outbound
-            | string
-            | number
-            | boolean
-            | null
-            | undefined;
-        value?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        HrisCreateEmployeeRequestDtoCountry
-    > = z
-        .object({
-            sourceValue: z
-                .nullable(
-                    z.union([
-                        z.lazy(
-                            () => HrisCreateEmployeeRequestDtoSchemasHomeLocation4$.outboundSchema
-                        ),
-                        z.string(),
-                        z.number(),
-                        z.boolean(),
-                    ])
-                )
-                .optional(),
-            value: z
-                .nullable(HrisCreateEmployeeRequestDtoSchemasHomeLocationValue$.outboundSchema)
-                .optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                sourceValue: "source_value",
-            });
-        });
+    /** @deprecated use `HrisCreateEmployeeRequestDtoCountry$inboundSchema` instead. */
+    export const inboundSchema = HrisCreateEmployeeRequestDtoCountry$inboundSchema;
+    /** @deprecated use `HrisCreateEmployeeRequestDtoCountry$outboundSchema` instead. */
+    export const outboundSchema = HrisCreateEmployeeRequestDtoCountry$outboundSchema;
+    /** @deprecated use `HrisCreateEmployeeRequestDtoCountry$Outbound` instead. */
+    export type Outbound = HrisCreateEmployeeRequestDtoCountry$Outbound;
 }
 
 /** @internal */
+export const HrisCreateEmployeeRequestDtoSchemasHomeLocationState4$inboundSchema: z.ZodType<
+    HrisCreateEmployeeRequestDtoSchemasHomeLocationState4,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type HrisCreateEmployeeRequestDtoSchemasHomeLocationState4$Outbound = {};
+
+/** @internal */
+export const HrisCreateEmployeeRequestDtoSchemasHomeLocationState4$outboundSchema: z.ZodType<
+    HrisCreateEmployeeRequestDtoSchemasHomeLocationState4$Outbound,
+    z.ZodTypeDef,
+    HrisCreateEmployeeRequestDtoSchemasHomeLocationState4
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace HrisCreateEmployeeRequestDtoSchemasHomeLocationState4$ {
-    export const inboundSchema: z.ZodType<
-        HrisCreateEmployeeRequestDtoSchemasHomeLocationState4,
-        z.ZodTypeDef,
-        unknown
-    > = z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        HrisCreateEmployeeRequestDtoSchemasHomeLocationState4
-    > = z.object({});
+    /** @deprecated use `HrisCreateEmployeeRequestDtoSchemasHomeLocationState4$inboundSchema` instead. */
+    export const inboundSchema =
+        HrisCreateEmployeeRequestDtoSchemasHomeLocationState4$inboundSchema;
+    /** @deprecated use `HrisCreateEmployeeRequestDtoSchemasHomeLocationState4$outboundSchema` instead. */
+    export const outboundSchema =
+        HrisCreateEmployeeRequestDtoSchemasHomeLocationState4$outboundSchema;
+    /** @deprecated use `HrisCreateEmployeeRequestDtoSchemasHomeLocationState4$Outbound` instead. */
+    export type Outbound = HrisCreateEmployeeRequestDtoSchemasHomeLocationState4$Outbound;
 }
 
 /** @internal */
+export const HrisCreateEmployeeRequestDtoSchemasHomeLocationStateSourceValue$inboundSchema: z.ZodType<
+    HrisCreateEmployeeRequestDtoSchemasHomeLocationStateSourceValue,
+    z.ZodTypeDef,
+    unknown
+> = z.union([
+    z.lazy(() => HrisCreateEmployeeRequestDtoSchemasHomeLocationState4$inboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+]);
+
+/** @internal */
+export type HrisCreateEmployeeRequestDtoSchemasHomeLocationStateSourceValue$Outbound =
+    | HrisCreateEmployeeRequestDtoSchemasHomeLocationState4$Outbound
+    | string
+    | number
+    | boolean;
+
+/** @internal */
+export const HrisCreateEmployeeRequestDtoSchemasHomeLocationStateSourceValue$outboundSchema: z.ZodType<
+    HrisCreateEmployeeRequestDtoSchemasHomeLocationStateSourceValue$Outbound,
+    z.ZodTypeDef,
+    HrisCreateEmployeeRequestDtoSchemasHomeLocationStateSourceValue
+> = z.union([
+    z.lazy(() => HrisCreateEmployeeRequestDtoSchemasHomeLocationState4$outboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace HrisCreateEmployeeRequestDtoSchemasHomeLocationStateSourceValue$ {
-    export const inboundSchema: z.ZodType<
-        HrisCreateEmployeeRequestDtoSchemasHomeLocationStateSourceValue,
-        z.ZodTypeDef,
-        unknown
-    > = z.union([
-        z.lazy(() => HrisCreateEmployeeRequestDtoSchemasHomeLocationState4$.inboundSchema),
-        z.string(),
-        z.number(),
-        z.boolean(),
-    ]);
-
-    export type Outbound =
-        | HrisCreateEmployeeRequestDtoSchemasHomeLocationState4$.Outbound
-        | string
-        | number
-        | boolean;
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        HrisCreateEmployeeRequestDtoSchemasHomeLocationStateSourceValue
-    > = z.union([
-        z.lazy(() => HrisCreateEmployeeRequestDtoSchemasHomeLocationState4$.outboundSchema),
-        z.string(),
-        z.number(),
-        z.boolean(),
-    ]);
+    /** @deprecated use `HrisCreateEmployeeRequestDtoSchemasHomeLocationStateSourceValue$inboundSchema` instead. */
+    export const inboundSchema =
+        HrisCreateEmployeeRequestDtoSchemasHomeLocationStateSourceValue$inboundSchema;
+    /** @deprecated use `HrisCreateEmployeeRequestDtoSchemasHomeLocationStateSourceValue$outboundSchema` instead. */
+    export const outboundSchema =
+        HrisCreateEmployeeRequestDtoSchemasHomeLocationStateSourceValue$outboundSchema;
+    /** @deprecated use `HrisCreateEmployeeRequestDtoSchemasHomeLocationStateSourceValue$Outbound` instead. */
+    export type Outbound = HrisCreateEmployeeRequestDtoSchemasHomeLocationStateSourceValue$Outbound;
 }
 
 /** @internal */
+export const HrisCreateEmployeeRequestDtoSchemasHomeLocationStateValue$inboundSchema: z.ZodType<
+    HrisCreateEmployeeRequestDtoSchemasHomeLocationStateValueOpen,
+    z.ZodTypeDef,
+    unknown
+> = z.union([
+    z.nativeEnum(HrisCreateEmployeeRequestDtoSchemasHomeLocationStateValue),
+    z.string().transform(catchUnrecognizedEnum),
+]);
+
+/** @internal */
+export const HrisCreateEmployeeRequestDtoSchemasHomeLocationStateValue$outboundSchema: z.ZodType<
+    HrisCreateEmployeeRequestDtoSchemasHomeLocationStateValueOpen,
+    z.ZodTypeDef,
+    HrisCreateEmployeeRequestDtoSchemasHomeLocationStateValueOpen
+> = z.union([
+    z.nativeEnum(HrisCreateEmployeeRequestDtoSchemasHomeLocationStateValue),
+    z.string().and(z.custom<Unrecognized<string>>()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace HrisCreateEmployeeRequestDtoSchemasHomeLocationStateValue$ {
-    export const inboundSchema: z.ZodType<
-        HrisCreateEmployeeRequestDtoSchemasHomeLocationStateValueOpen,
-        z.ZodTypeDef,
-        unknown
-    > = z.union([
-        z.nativeEnum(HrisCreateEmployeeRequestDtoSchemasHomeLocationStateValue),
-        z.string().transform(catchUnrecognizedEnum),
-    ]);
-
-    export const outboundSchema: z.ZodType<
-        HrisCreateEmployeeRequestDtoSchemasHomeLocationStateValueOpen,
-        z.ZodTypeDef,
-        HrisCreateEmployeeRequestDtoSchemasHomeLocationStateValueOpen
-    > = z.union([
-        z.nativeEnum(HrisCreateEmployeeRequestDtoSchemasHomeLocationStateValue),
-        z.string().and(z.custom<Unrecognized<string>>()),
-    ]);
+    /** @deprecated use `HrisCreateEmployeeRequestDtoSchemasHomeLocationStateValue$inboundSchema` instead. */
+    export const inboundSchema =
+        HrisCreateEmployeeRequestDtoSchemasHomeLocationStateValue$inboundSchema;
+    /** @deprecated use `HrisCreateEmployeeRequestDtoSchemasHomeLocationStateValue$outboundSchema` instead. */
+    export const outboundSchema =
+        HrisCreateEmployeeRequestDtoSchemasHomeLocationStateValue$outboundSchema;
 }
 
 /** @internal */
+export const State$inboundSchema: z.ZodType<State, z.ZodTypeDef, unknown> = z
+    .object({
+        source_value: z
+            .nullable(
+                z.union([
+                    z.lazy(
+                        () => HrisCreateEmployeeRequestDtoSchemasHomeLocationState4$inboundSchema
+                    ),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                ])
+            )
+            .optional(),
+        value: z
+            .nullable(HrisCreateEmployeeRequestDtoSchemasHomeLocationStateValue$inboundSchema)
+            .optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            source_value: "sourceValue",
+        });
+    });
+
+/** @internal */
+export type State$Outbound = {
+    source_value?:
+        | HrisCreateEmployeeRequestDtoSchemasHomeLocationState4$Outbound
+        | string
+        | number
+        | boolean
+        | null
+        | undefined;
+    value?: string | null | undefined;
+};
+
+/** @internal */
+export const State$outboundSchema: z.ZodType<State$Outbound, z.ZodTypeDef, State> = z
+    .object({
+        sourceValue: z
+            .nullable(
+                z.union([
+                    z.lazy(
+                        () => HrisCreateEmployeeRequestDtoSchemasHomeLocationState4$outboundSchema
+                    ),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                ])
+            )
+            .optional(),
+        value: z
+            .nullable(HrisCreateEmployeeRequestDtoSchemasHomeLocationStateValue$outboundSchema)
+            .optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            sourceValue: "source_value",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace State$ {
-    export const inboundSchema: z.ZodType<State, z.ZodTypeDef, unknown> = z
-        .object({
-            source_value: z
-                .nullable(
-                    z.union([
-                        z.lazy(
-                            () =>
-                                HrisCreateEmployeeRequestDtoSchemasHomeLocationState4$.inboundSchema
-                        ),
-                        z.string(),
-                        z.number(),
-                        z.boolean(),
-                    ])
-                )
-                .optional(),
-            value: z
-                .nullable(HrisCreateEmployeeRequestDtoSchemasHomeLocationStateValue$.inboundSchema)
-                .optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                source_value: "sourceValue",
-            });
-        });
-
-    export type Outbound = {
-        source_value?:
-            | HrisCreateEmployeeRequestDtoSchemasHomeLocationState4$.Outbound
-            | string
-            | number
-            | boolean
-            | null
-            | undefined;
-        value?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, State> = z
-        .object({
-            sourceValue: z
-                .nullable(
-                    z.union([
-                        z.lazy(
-                            () =>
-                                HrisCreateEmployeeRequestDtoSchemasHomeLocationState4$.outboundSchema
-                        ),
-                        z.string(),
-                        z.number(),
-                        z.boolean(),
-                    ])
-                )
-                .optional(),
-            value: z
-                .nullable(HrisCreateEmployeeRequestDtoSchemasHomeLocationStateValue$.outboundSchema)
-                .optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                sourceValue: "source_value",
-            });
-        });
+    /** @deprecated use `State$inboundSchema` instead. */
+    export const inboundSchema = State$inboundSchema;
+    /** @deprecated use `State$outboundSchema` instead. */
+    export const outboundSchema = State$outboundSchema;
+    /** @deprecated use `State$Outbound` instead. */
+    export type Outbound = State$Outbound;
 }
 
 /** @internal */
+export const HrisCreateEmployeeRequestDtoHomeLocation$inboundSchema: z.ZodType<
+    HrisCreateEmployeeRequestDtoHomeLocation,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        city: z.nullable(z.string()).optional(),
+        country: z
+            .nullable(z.lazy(() => HrisCreateEmployeeRequestDtoCountry$inboundSchema))
+            .optional(),
+        name: z.nullable(z.string()).optional(),
+        passthrough: z.nullable(z.record(z.any())).optional(),
+        phone_number: z.nullable(z.string()).optional(),
+        state: z.nullable(z.lazy(() => State$inboundSchema)).optional(),
+        street_1: z.nullable(z.string()).optional(),
+        street_2: z.nullable(z.string()).optional(),
+        zip_code: z.nullable(z.string()).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            phone_number: "phoneNumber",
+            street_1: "street1",
+            street_2: "street2",
+            zip_code: "zipCode",
+        });
+    });
+
+/** @internal */
+export type HrisCreateEmployeeRequestDtoHomeLocation$Outbound = {
+    city?: string | null | undefined;
+    country?: HrisCreateEmployeeRequestDtoCountry$Outbound | null | undefined;
+    name?: string | null | undefined;
+    passthrough?: { [k: string]: any } | null | undefined;
+    phone_number?: string | null | undefined;
+    state?: State$Outbound | null | undefined;
+    street_1?: string | null | undefined;
+    street_2?: string | null | undefined;
+    zip_code?: string | null | undefined;
+};
+
+/** @internal */
+export const HrisCreateEmployeeRequestDtoHomeLocation$outboundSchema: z.ZodType<
+    HrisCreateEmployeeRequestDtoHomeLocation$Outbound,
+    z.ZodTypeDef,
+    HrisCreateEmployeeRequestDtoHomeLocation
+> = z
+    .object({
+        city: z.nullable(z.string()).optional(),
+        country: z
+            .nullable(z.lazy(() => HrisCreateEmployeeRequestDtoCountry$outboundSchema))
+            .optional(),
+        name: z.nullable(z.string()).optional(),
+        passthrough: z.nullable(z.record(z.any())).optional(),
+        phoneNumber: z.nullable(z.string()).optional(),
+        state: z.nullable(z.lazy(() => State$outboundSchema)).optional(),
+        street1: z.nullable(z.string()).optional(),
+        street2: z.nullable(z.string()).optional(),
+        zipCode: z.nullable(z.string()).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            phoneNumber: "phone_number",
+            street1: "street_1",
+            street2: "street_2",
+            zipCode: "zip_code",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace HrisCreateEmployeeRequestDtoHomeLocation$ {
-    export const inboundSchema: z.ZodType<
-        HrisCreateEmployeeRequestDtoHomeLocation,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            city: z.nullable(z.string()).optional(),
-            country: z
-                .nullable(z.lazy(() => HrisCreateEmployeeRequestDtoCountry$.inboundSchema))
-                .optional(),
-            name: z.nullable(z.string()).optional(),
-            passthrough: z.nullable(z.record(z.any())).optional(),
-            phone_number: z.nullable(z.string()).optional(),
-            state: z.nullable(z.lazy(() => State$.inboundSchema)).optional(),
-            street_1: z.nullable(z.string()).optional(),
-            street_2: z.nullable(z.string()).optional(),
-            zip_code: z.nullable(z.string()).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                phone_number: "phoneNumber",
-                street_1: "street1",
-                street_2: "street2",
-                zip_code: "zipCode",
-            });
-        });
-
-    export type Outbound = {
-        city?: string | null | undefined;
-        country?: HrisCreateEmployeeRequestDtoCountry$.Outbound | null | undefined;
-        name?: string | null | undefined;
-        passthrough?: { [k: string]: any } | null | undefined;
-        phone_number?: string | null | undefined;
-        state?: State$.Outbound | null | undefined;
-        street_1?: string | null | undefined;
-        street_2?: string | null | undefined;
-        zip_code?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        HrisCreateEmployeeRequestDtoHomeLocation
-    > = z
-        .object({
-            city: z.nullable(z.string()).optional(),
-            country: z
-                .nullable(z.lazy(() => HrisCreateEmployeeRequestDtoCountry$.outboundSchema))
-                .optional(),
-            name: z.nullable(z.string()).optional(),
-            passthrough: z.nullable(z.record(z.any())).optional(),
-            phoneNumber: z.nullable(z.string()).optional(),
-            state: z.nullable(z.lazy(() => State$.outboundSchema)).optional(),
-            street1: z.nullable(z.string()).optional(),
-            street2: z.nullable(z.string()).optional(),
-            zipCode: z.nullable(z.string()).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                phoneNumber: "phone_number",
-                street1: "street_1",
-                street2: "street_2",
-                zipCode: "zip_code",
-            });
-        });
+    /** @deprecated use `HrisCreateEmployeeRequestDtoHomeLocation$inboundSchema` instead. */
+    export const inboundSchema = HrisCreateEmployeeRequestDtoHomeLocation$inboundSchema;
+    /** @deprecated use `HrisCreateEmployeeRequestDtoHomeLocation$outboundSchema` instead. */
+    export const outboundSchema = HrisCreateEmployeeRequestDtoHomeLocation$outboundSchema;
+    /** @deprecated use `HrisCreateEmployeeRequestDtoHomeLocation$Outbound` instead. */
+    export type Outbound = HrisCreateEmployeeRequestDtoHomeLocation$Outbound;
 }
 
 /** @internal */
+export const HrisCreateEmployeeRequestDtoSchemasMaritalStatus4$inboundSchema: z.ZodType<
+    HrisCreateEmployeeRequestDtoSchemasMaritalStatus4,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type HrisCreateEmployeeRequestDtoSchemasMaritalStatus4$Outbound = {};
+
+/** @internal */
+export const HrisCreateEmployeeRequestDtoSchemasMaritalStatus4$outboundSchema: z.ZodType<
+    HrisCreateEmployeeRequestDtoSchemasMaritalStatus4$Outbound,
+    z.ZodTypeDef,
+    HrisCreateEmployeeRequestDtoSchemasMaritalStatus4
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace HrisCreateEmployeeRequestDtoSchemasMaritalStatus4$ {
-    export const inboundSchema: z.ZodType<
-        HrisCreateEmployeeRequestDtoSchemasMaritalStatus4,
-        z.ZodTypeDef,
-        unknown
-    > = z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        HrisCreateEmployeeRequestDtoSchemasMaritalStatus4
-    > = z.object({});
+    /** @deprecated use `HrisCreateEmployeeRequestDtoSchemasMaritalStatus4$inboundSchema` instead. */
+    export const inboundSchema = HrisCreateEmployeeRequestDtoSchemasMaritalStatus4$inboundSchema;
+    /** @deprecated use `HrisCreateEmployeeRequestDtoSchemasMaritalStatus4$outboundSchema` instead. */
+    export const outboundSchema = HrisCreateEmployeeRequestDtoSchemasMaritalStatus4$outboundSchema;
+    /** @deprecated use `HrisCreateEmployeeRequestDtoSchemasMaritalStatus4$Outbound` instead. */
+    export type Outbound = HrisCreateEmployeeRequestDtoSchemasMaritalStatus4$Outbound;
 }
 
 /** @internal */
+export const HrisCreateEmployeeRequestDtoSchemasMaritalStatusSourceValue$inboundSchema: z.ZodType<
+    HrisCreateEmployeeRequestDtoSchemasMaritalStatusSourceValue,
+    z.ZodTypeDef,
+    unknown
+> = z.union([
+    z.lazy(() => HrisCreateEmployeeRequestDtoSchemasMaritalStatus4$inboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+]);
+
+/** @internal */
+export type HrisCreateEmployeeRequestDtoSchemasMaritalStatusSourceValue$Outbound =
+    | HrisCreateEmployeeRequestDtoSchemasMaritalStatus4$Outbound
+    | string
+    | number
+    | boolean;
+
+/** @internal */
+export const HrisCreateEmployeeRequestDtoSchemasMaritalStatusSourceValue$outboundSchema: z.ZodType<
+    HrisCreateEmployeeRequestDtoSchemasMaritalStatusSourceValue$Outbound,
+    z.ZodTypeDef,
+    HrisCreateEmployeeRequestDtoSchemasMaritalStatusSourceValue
+> = z.union([
+    z.lazy(() => HrisCreateEmployeeRequestDtoSchemasMaritalStatus4$outboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace HrisCreateEmployeeRequestDtoSchemasMaritalStatusSourceValue$ {
-    export const inboundSchema: z.ZodType<
-        HrisCreateEmployeeRequestDtoSchemasMaritalStatusSourceValue,
-        z.ZodTypeDef,
-        unknown
-    > = z.union([
-        z.lazy(() => HrisCreateEmployeeRequestDtoSchemasMaritalStatus4$.inboundSchema),
-        z.string(),
-        z.number(),
-        z.boolean(),
-    ]);
-
-    export type Outbound =
-        | HrisCreateEmployeeRequestDtoSchemasMaritalStatus4$.Outbound
-        | string
-        | number
-        | boolean;
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        HrisCreateEmployeeRequestDtoSchemasMaritalStatusSourceValue
-    > = z.union([
-        z.lazy(() => HrisCreateEmployeeRequestDtoSchemasMaritalStatus4$.outboundSchema),
-        z.string(),
-        z.number(),
-        z.boolean(),
-    ]);
+    /** @deprecated use `HrisCreateEmployeeRequestDtoSchemasMaritalStatusSourceValue$inboundSchema` instead. */
+    export const inboundSchema =
+        HrisCreateEmployeeRequestDtoSchemasMaritalStatusSourceValue$inboundSchema;
+    /** @deprecated use `HrisCreateEmployeeRequestDtoSchemasMaritalStatusSourceValue$outboundSchema` instead. */
+    export const outboundSchema =
+        HrisCreateEmployeeRequestDtoSchemasMaritalStatusSourceValue$outboundSchema;
+    /** @deprecated use `HrisCreateEmployeeRequestDtoSchemasMaritalStatusSourceValue$Outbound` instead. */
+    export type Outbound = HrisCreateEmployeeRequestDtoSchemasMaritalStatusSourceValue$Outbound;
 }
 
 /** @internal */
+export const HrisCreateEmployeeRequestDtoSchemasMaritalStatusValue$inboundSchema: z.ZodType<
+    HrisCreateEmployeeRequestDtoSchemasMaritalStatusValueOpen,
+    z.ZodTypeDef,
+    unknown
+> = z.union([
+    z.nativeEnum(HrisCreateEmployeeRequestDtoSchemasMaritalStatusValue),
+    z.string().transform(catchUnrecognizedEnum),
+]);
+
+/** @internal */
+export const HrisCreateEmployeeRequestDtoSchemasMaritalStatusValue$outboundSchema: z.ZodType<
+    HrisCreateEmployeeRequestDtoSchemasMaritalStatusValueOpen,
+    z.ZodTypeDef,
+    HrisCreateEmployeeRequestDtoSchemasMaritalStatusValueOpen
+> = z.union([
+    z.nativeEnum(HrisCreateEmployeeRequestDtoSchemasMaritalStatusValue),
+    z.string().and(z.custom<Unrecognized<string>>()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace HrisCreateEmployeeRequestDtoSchemasMaritalStatusValue$ {
-    export const inboundSchema: z.ZodType<
-        HrisCreateEmployeeRequestDtoSchemasMaritalStatusValueOpen,
-        z.ZodTypeDef,
-        unknown
-    > = z.union([
-        z.nativeEnum(HrisCreateEmployeeRequestDtoSchemasMaritalStatusValue),
-        z.string().transform(catchUnrecognizedEnum),
-    ]);
-
-    export const outboundSchema: z.ZodType<
-        HrisCreateEmployeeRequestDtoSchemasMaritalStatusValueOpen,
-        z.ZodTypeDef,
-        HrisCreateEmployeeRequestDtoSchemasMaritalStatusValueOpen
-    > = z.union([
-        z.nativeEnum(HrisCreateEmployeeRequestDtoSchemasMaritalStatusValue),
-        z.string().and(z.custom<Unrecognized<string>>()),
-    ]);
+    /** @deprecated use `HrisCreateEmployeeRequestDtoSchemasMaritalStatusValue$inboundSchema` instead. */
+    export const inboundSchema =
+        HrisCreateEmployeeRequestDtoSchemasMaritalStatusValue$inboundSchema;
+    /** @deprecated use `HrisCreateEmployeeRequestDtoSchemasMaritalStatusValue$outboundSchema` instead. */
+    export const outboundSchema =
+        HrisCreateEmployeeRequestDtoSchemasMaritalStatusValue$outboundSchema;
 }
 
 /** @internal */
+export const HrisCreateEmployeeRequestDtoMaritalStatus$inboundSchema: z.ZodType<
+    HrisCreateEmployeeRequestDtoMaritalStatus,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        source_value: z
+            .nullable(
+                z.union([
+                    z.lazy(() => HrisCreateEmployeeRequestDtoSchemasMaritalStatus4$inboundSchema),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                ])
+            )
+            .optional(),
+        value: z
+            .nullable(HrisCreateEmployeeRequestDtoSchemasMaritalStatusValue$inboundSchema)
+            .optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            source_value: "sourceValue",
+        });
+    });
+
+/** @internal */
+export type HrisCreateEmployeeRequestDtoMaritalStatus$Outbound = {
+    source_value?:
+        | HrisCreateEmployeeRequestDtoSchemasMaritalStatus4$Outbound
+        | string
+        | number
+        | boolean
+        | null
+        | undefined;
+    value?: string | null | undefined;
+};
+
+/** @internal */
+export const HrisCreateEmployeeRequestDtoMaritalStatus$outboundSchema: z.ZodType<
+    HrisCreateEmployeeRequestDtoMaritalStatus$Outbound,
+    z.ZodTypeDef,
+    HrisCreateEmployeeRequestDtoMaritalStatus
+> = z
+    .object({
+        sourceValue: z
+            .nullable(
+                z.union([
+                    z.lazy(() => HrisCreateEmployeeRequestDtoSchemasMaritalStatus4$outboundSchema),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                ])
+            )
+            .optional(),
+        value: z
+            .nullable(HrisCreateEmployeeRequestDtoSchemasMaritalStatusValue$outboundSchema)
+            .optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            sourceValue: "source_value",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace HrisCreateEmployeeRequestDtoMaritalStatus$ {
-    export const inboundSchema: z.ZodType<
-        HrisCreateEmployeeRequestDtoMaritalStatus,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            source_value: z
-                .nullable(
-                    z.union([
-                        z.lazy(
-                            () => HrisCreateEmployeeRequestDtoSchemasMaritalStatus4$.inboundSchema
-                        ),
-                        z.string(),
-                        z.number(),
-                        z.boolean(),
-                    ])
-                )
-                .optional(),
-            value: z
-                .nullable(HrisCreateEmployeeRequestDtoSchemasMaritalStatusValue$.inboundSchema)
-                .optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                source_value: "sourceValue",
-            });
-        });
-
-    export type Outbound = {
-        source_value?:
-            | HrisCreateEmployeeRequestDtoSchemasMaritalStatus4$.Outbound
-            | string
-            | number
-            | boolean
-            | null
-            | undefined;
-        value?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        HrisCreateEmployeeRequestDtoMaritalStatus
-    > = z
-        .object({
-            sourceValue: z
-                .nullable(
-                    z.union([
-                        z.lazy(
-                            () => HrisCreateEmployeeRequestDtoSchemasMaritalStatus4$.outboundSchema
-                        ),
-                        z.string(),
-                        z.number(),
-                        z.boolean(),
-                    ])
-                )
-                .optional(),
-            value: z
-                .nullable(HrisCreateEmployeeRequestDtoSchemasMaritalStatusValue$.outboundSchema)
-                .optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                sourceValue: "source_value",
-            });
-        });
+    /** @deprecated use `HrisCreateEmployeeRequestDtoMaritalStatus$inboundSchema` instead. */
+    export const inboundSchema = HrisCreateEmployeeRequestDtoMaritalStatus$inboundSchema;
+    /** @deprecated use `HrisCreateEmployeeRequestDtoMaritalStatus$outboundSchema` instead. */
+    export const outboundSchema = HrisCreateEmployeeRequestDtoMaritalStatus$outboundSchema;
+    /** @deprecated use `HrisCreateEmployeeRequestDtoMaritalStatus$Outbound` instead. */
+    export type Outbound = HrisCreateEmployeeRequestDtoMaritalStatus$Outbound;
 }
 
 /** @internal */
+export const HrisCreateEmployeeRequestDtoSchemasPreferredLanguage4$inboundSchema: z.ZodType<
+    HrisCreateEmployeeRequestDtoSchemasPreferredLanguage4,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type HrisCreateEmployeeRequestDtoSchemasPreferredLanguage4$Outbound = {};
+
+/** @internal */
+export const HrisCreateEmployeeRequestDtoSchemasPreferredLanguage4$outboundSchema: z.ZodType<
+    HrisCreateEmployeeRequestDtoSchemasPreferredLanguage4$Outbound,
+    z.ZodTypeDef,
+    HrisCreateEmployeeRequestDtoSchemasPreferredLanguage4
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace HrisCreateEmployeeRequestDtoSchemasPreferredLanguage4$ {
-    export const inboundSchema: z.ZodType<
-        HrisCreateEmployeeRequestDtoSchemasPreferredLanguage4,
-        z.ZodTypeDef,
-        unknown
-    > = z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        HrisCreateEmployeeRequestDtoSchemasPreferredLanguage4
-    > = z.object({});
+    /** @deprecated use `HrisCreateEmployeeRequestDtoSchemasPreferredLanguage4$inboundSchema` instead. */
+    export const inboundSchema =
+        HrisCreateEmployeeRequestDtoSchemasPreferredLanguage4$inboundSchema;
+    /** @deprecated use `HrisCreateEmployeeRequestDtoSchemasPreferredLanguage4$outboundSchema` instead. */
+    export const outboundSchema =
+        HrisCreateEmployeeRequestDtoSchemasPreferredLanguage4$outboundSchema;
+    /** @deprecated use `HrisCreateEmployeeRequestDtoSchemasPreferredLanguage4$Outbound` instead. */
+    export type Outbound = HrisCreateEmployeeRequestDtoSchemasPreferredLanguage4$Outbound;
 }
 
 /** @internal */
+export const HrisCreateEmployeeRequestDtoSchemasPreferredLanguageSourceValue$inboundSchema: z.ZodType<
+    HrisCreateEmployeeRequestDtoSchemasPreferredLanguageSourceValue,
+    z.ZodTypeDef,
+    unknown
+> = z.union([
+    z.lazy(() => HrisCreateEmployeeRequestDtoSchemasPreferredLanguage4$inboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+]);
+
+/** @internal */
+export type HrisCreateEmployeeRequestDtoSchemasPreferredLanguageSourceValue$Outbound =
+    | HrisCreateEmployeeRequestDtoSchemasPreferredLanguage4$Outbound
+    | string
+    | number
+    | boolean;
+
+/** @internal */
+export const HrisCreateEmployeeRequestDtoSchemasPreferredLanguageSourceValue$outboundSchema: z.ZodType<
+    HrisCreateEmployeeRequestDtoSchemasPreferredLanguageSourceValue$Outbound,
+    z.ZodTypeDef,
+    HrisCreateEmployeeRequestDtoSchemasPreferredLanguageSourceValue
+> = z.union([
+    z.lazy(() => HrisCreateEmployeeRequestDtoSchemasPreferredLanguage4$outboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace HrisCreateEmployeeRequestDtoSchemasPreferredLanguageSourceValue$ {
-    export const inboundSchema: z.ZodType<
-        HrisCreateEmployeeRequestDtoSchemasPreferredLanguageSourceValue,
-        z.ZodTypeDef,
-        unknown
-    > = z.union([
-        z.lazy(() => HrisCreateEmployeeRequestDtoSchemasPreferredLanguage4$.inboundSchema),
-        z.string(),
-        z.number(),
-        z.boolean(),
-    ]);
-
-    export type Outbound =
-        | HrisCreateEmployeeRequestDtoSchemasPreferredLanguage4$.Outbound
-        | string
-        | number
-        | boolean;
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        HrisCreateEmployeeRequestDtoSchemasPreferredLanguageSourceValue
-    > = z.union([
-        z.lazy(() => HrisCreateEmployeeRequestDtoSchemasPreferredLanguage4$.outboundSchema),
-        z.string(),
-        z.number(),
-        z.boolean(),
-    ]);
+    /** @deprecated use `HrisCreateEmployeeRequestDtoSchemasPreferredLanguageSourceValue$inboundSchema` instead. */
+    export const inboundSchema =
+        HrisCreateEmployeeRequestDtoSchemasPreferredLanguageSourceValue$inboundSchema;
+    /** @deprecated use `HrisCreateEmployeeRequestDtoSchemasPreferredLanguageSourceValue$outboundSchema` instead. */
+    export const outboundSchema =
+        HrisCreateEmployeeRequestDtoSchemasPreferredLanguageSourceValue$outboundSchema;
+    /** @deprecated use `HrisCreateEmployeeRequestDtoSchemasPreferredLanguageSourceValue$Outbound` instead. */
+    export type Outbound = HrisCreateEmployeeRequestDtoSchemasPreferredLanguageSourceValue$Outbound;
 }
 
 /** @internal */
+export const HrisCreateEmployeeRequestDtoSchemasPreferredLanguageValue$inboundSchema: z.ZodType<
+    HrisCreateEmployeeRequestDtoSchemasPreferredLanguageValueOpen,
+    z.ZodTypeDef,
+    unknown
+> = z.union([
+    z.nativeEnum(HrisCreateEmployeeRequestDtoSchemasPreferredLanguageValue),
+    z.string().transform(catchUnrecognizedEnum),
+]);
+
+/** @internal */
+export const HrisCreateEmployeeRequestDtoSchemasPreferredLanguageValue$outboundSchema: z.ZodType<
+    HrisCreateEmployeeRequestDtoSchemasPreferredLanguageValueOpen,
+    z.ZodTypeDef,
+    HrisCreateEmployeeRequestDtoSchemasPreferredLanguageValueOpen
+> = z.union([
+    z.nativeEnum(HrisCreateEmployeeRequestDtoSchemasPreferredLanguageValue),
+    z.string().and(z.custom<Unrecognized<string>>()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace HrisCreateEmployeeRequestDtoSchemasPreferredLanguageValue$ {
-    export const inboundSchema: z.ZodType<
-        HrisCreateEmployeeRequestDtoSchemasPreferredLanguageValueOpen,
-        z.ZodTypeDef,
-        unknown
-    > = z.union([
-        z.nativeEnum(HrisCreateEmployeeRequestDtoSchemasPreferredLanguageValue),
-        z.string().transform(catchUnrecognizedEnum),
-    ]);
-
-    export const outboundSchema: z.ZodType<
-        HrisCreateEmployeeRequestDtoSchemasPreferredLanguageValueOpen,
-        z.ZodTypeDef,
-        HrisCreateEmployeeRequestDtoSchemasPreferredLanguageValueOpen
-    > = z.union([
-        z.nativeEnum(HrisCreateEmployeeRequestDtoSchemasPreferredLanguageValue),
-        z.string().and(z.custom<Unrecognized<string>>()),
-    ]);
+    /** @deprecated use `HrisCreateEmployeeRequestDtoSchemasPreferredLanguageValue$inboundSchema` instead. */
+    export const inboundSchema =
+        HrisCreateEmployeeRequestDtoSchemasPreferredLanguageValue$inboundSchema;
+    /** @deprecated use `HrisCreateEmployeeRequestDtoSchemasPreferredLanguageValue$outboundSchema` instead. */
+    export const outboundSchema =
+        HrisCreateEmployeeRequestDtoSchemasPreferredLanguageValue$outboundSchema;
 }
 
 /** @internal */
+export const HrisCreateEmployeeRequestDtoPreferredLanguage$inboundSchema: z.ZodType<
+    HrisCreateEmployeeRequestDtoPreferredLanguage,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        source_value: z
+            .nullable(
+                z.union([
+                    z.lazy(
+                        () => HrisCreateEmployeeRequestDtoSchemasPreferredLanguage4$inboundSchema
+                    ),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                ])
+            )
+            .optional(),
+        value: z
+            .nullable(HrisCreateEmployeeRequestDtoSchemasPreferredLanguageValue$inboundSchema)
+            .optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            source_value: "sourceValue",
+        });
+    });
+
+/** @internal */
+export type HrisCreateEmployeeRequestDtoPreferredLanguage$Outbound = {
+    source_value?:
+        | HrisCreateEmployeeRequestDtoSchemasPreferredLanguage4$Outbound
+        | string
+        | number
+        | boolean
+        | null
+        | undefined;
+    value?: string | null | undefined;
+};
+
+/** @internal */
+export const HrisCreateEmployeeRequestDtoPreferredLanguage$outboundSchema: z.ZodType<
+    HrisCreateEmployeeRequestDtoPreferredLanguage$Outbound,
+    z.ZodTypeDef,
+    HrisCreateEmployeeRequestDtoPreferredLanguage
+> = z
+    .object({
+        sourceValue: z
+            .nullable(
+                z.union([
+                    z.lazy(
+                        () => HrisCreateEmployeeRequestDtoSchemasPreferredLanguage4$outboundSchema
+                    ),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                ])
+            )
+            .optional(),
+        value: z
+            .nullable(HrisCreateEmployeeRequestDtoSchemasPreferredLanguageValue$outboundSchema)
+            .optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            sourceValue: "source_value",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace HrisCreateEmployeeRequestDtoPreferredLanguage$ {
-    export const inboundSchema: z.ZodType<
-        HrisCreateEmployeeRequestDtoPreferredLanguage,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            source_value: z
-                .nullable(
-                    z.union([
-                        z.lazy(
-                            () =>
-                                HrisCreateEmployeeRequestDtoSchemasPreferredLanguage4$.inboundSchema
-                        ),
-                        z.string(),
-                        z.number(),
-                        z.boolean(),
-                    ])
-                )
-                .optional(),
-            value: z
-                .nullable(HrisCreateEmployeeRequestDtoSchemasPreferredLanguageValue$.inboundSchema)
-                .optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                source_value: "sourceValue",
-            });
-        });
-
-    export type Outbound = {
-        source_value?:
-            | HrisCreateEmployeeRequestDtoSchemasPreferredLanguage4$.Outbound
-            | string
-            | number
-            | boolean
-            | null
-            | undefined;
-        value?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        HrisCreateEmployeeRequestDtoPreferredLanguage
-    > = z
-        .object({
-            sourceValue: z
-                .nullable(
-                    z.union([
-                        z.lazy(
-                            () =>
-                                HrisCreateEmployeeRequestDtoSchemasPreferredLanguage4$.outboundSchema
-                        ),
-                        z.string(),
-                        z.number(),
-                        z.boolean(),
-                    ])
-                )
-                .optional(),
-            value: z
-                .nullable(HrisCreateEmployeeRequestDtoSchemasPreferredLanguageValue$.outboundSchema)
-                .optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                sourceValue: "source_value",
-            });
-        });
+    /** @deprecated use `HrisCreateEmployeeRequestDtoPreferredLanguage$inboundSchema` instead. */
+    export const inboundSchema = HrisCreateEmployeeRequestDtoPreferredLanguage$inboundSchema;
+    /** @deprecated use `HrisCreateEmployeeRequestDtoPreferredLanguage$outboundSchema` instead. */
+    export const outboundSchema = HrisCreateEmployeeRequestDtoPreferredLanguage$outboundSchema;
+    /** @deprecated use `HrisCreateEmployeeRequestDtoPreferredLanguage$Outbound` instead. */
+    export type Outbound = HrisCreateEmployeeRequestDtoPreferredLanguage$Outbound;
 }
 
 /** @internal */
+export const HrisCreateEmployeeRequestDtoSchemasWorkLocation4$inboundSchema: z.ZodType<
+    HrisCreateEmployeeRequestDtoSchemasWorkLocation4,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type HrisCreateEmployeeRequestDtoSchemasWorkLocation4$Outbound = {};
+
+/** @internal */
+export const HrisCreateEmployeeRequestDtoSchemasWorkLocation4$outboundSchema: z.ZodType<
+    HrisCreateEmployeeRequestDtoSchemasWorkLocation4$Outbound,
+    z.ZodTypeDef,
+    HrisCreateEmployeeRequestDtoSchemasWorkLocation4
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace HrisCreateEmployeeRequestDtoSchemasWorkLocation4$ {
-    export const inboundSchema: z.ZodType<
-        HrisCreateEmployeeRequestDtoSchemasWorkLocation4,
-        z.ZodTypeDef,
-        unknown
-    > = z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        HrisCreateEmployeeRequestDtoSchemasWorkLocation4
-    > = z.object({});
+    /** @deprecated use `HrisCreateEmployeeRequestDtoSchemasWorkLocation4$inboundSchema` instead. */
+    export const inboundSchema = HrisCreateEmployeeRequestDtoSchemasWorkLocation4$inboundSchema;
+    /** @deprecated use `HrisCreateEmployeeRequestDtoSchemasWorkLocation4$outboundSchema` instead. */
+    export const outboundSchema = HrisCreateEmployeeRequestDtoSchemasWorkLocation4$outboundSchema;
+    /** @deprecated use `HrisCreateEmployeeRequestDtoSchemasWorkLocation4$Outbound` instead. */
+    export type Outbound = HrisCreateEmployeeRequestDtoSchemasWorkLocation4$Outbound;
 }
 
 /** @internal */
+export const HrisCreateEmployeeRequestDtoSchemasWorkLocationSourceValue$inboundSchema: z.ZodType<
+    HrisCreateEmployeeRequestDtoSchemasWorkLocationSourceValue,
+    z.ZodTypeDef,
+    unknown
+> = z.union([
+    z.lazy(() => HrisCreateEmployeeRequestDtoSchemasWorkLocation4$inboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+]);
+
+/** @internal */
+export type HrisCreateEmployeeRequestDtoSchemasWorkLocationSourceValue$Outbound =
+    | HrisCreateEmployeeRequestDtoSchemasWorkLocation4$Outbound
+    | string
+    | number
+    | boolean;
+
+/** @internal */
+export const HrisCreateEmployeeRequestDtoSchemasWorkLocationSourceValue$outboundSchema: z.ZodType<
+    HrisCreateEmployeeRequestDtoSchemasWorkLocationSourceValue$Outbound,
+    z.ZodTypeDef,
+    HrisCreateEmployeeRequestDtoSchemasWorkLocationSourceValue
+> = z.union([
+    z.lazy(() => HrisCreateEmployeeRequestDtoSchemasWorkLocation4$outboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace HrisCreateEmployeeRequestDtoSchemasWorkLocationSourceValue$ {
-    export const inboundSchema: z.ZodType<
-        HrisCreateEmployeeRequestDtoSchemasWorkLocationSourceValue,
-        z.ZodTypeDef,
-        unknown
-    > = z.union([
-        z.lazy(() => HrisCreateEmployeeRequestDtoSchemasWorkLocation4$.inboundSchema),
-        z.string(),
-        z.number(),
-        z.boolean(),
-    ]);
-
-    export type Outbound =
-        | HrisCreateEmployeeRequestDtoSchemasWorkLocation4$.Outbound
-        | string
-        | number
-        | boolean;
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        HrisCreateEmployeeRequestDtoSchemasWorkLocationSourceValue
-    > = z.union([
-        z.lazy(() => HrisCreateEmployeeRequestDtoSchemasWorkLocation4$.outboundSchema),
-        z.string(),
-        z.number(),
-        z.boolean(),
-    ]);
+    /** @deprecated use `HrisCreateEmployeeRequestDtoSchemasWorkLocationSourceValue$inboundSchema` instead. */
+    export const inboundSchema =
+        HrisCreateEmployeeRequestDtoSchemasWorkLocationSourceValue$inboundSchema;
+    /** @deprecated use `HrisCreateEmployeeRequestDtoSchemasWorkLocationSourceValue$outboundSchema` instead. */
+    export const outboundSchema =
+        HrisCreateEmployeeRequestDtoSchemasWorkLocationSourceValue$outboundSchema;
+    /** @deprecated use `HrisCreateEmployeeRequestDtoSchemasWorkLocationSourceValue$Outbound` instead. */
+    export type Outbound = HrisCreateEmployeeRequestDtoSchemasWorkLocationSourceValue$Outbound;
 }
 
 /** @internal */
+export const HrisCreateEmployeeRequestDtoSchemasWorkLocationValue$inboundSchema: z.ZodType<
+    HrisCreateEmployeeRequestDtoSchemasWorkLocationValueOpen,
+    z.ZodTypeDef,
+    unknown
+> = z.union([
+    z.nativeEnum(HrisCreateEmployeeRequestDtoSchemasWorkLocationValue),
+    z.string().transform(catchUnrecognizedEnum),
+]);
+
+/** @internal */
+export const HrisCreateEmployeeRequestDtoSchemasWorkLocationValue$outboundSchema: z.ZodType<
+    HrisCreateEmployeeRequestDtoSchemasWorkLocationValueOpen,
+    z.ZodTypeDef,
+    HrisCreateEmployeeRequestDtoSchemasWorkLocationValueOpen
+> = z.union([
+    z.nativeEnum(HrisCreateEmployeeRequestDtoSchemasWorkLocationValue),
+    z.string().and(z.custom<Unrecognized<string>>()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace HrisCreateEmployeeRequestDtoSchemasWorkLocationValue$ {
-    export const inboundSchema: z.ZodType<
-        HrisCreateEmployeeRequestDtoSchemasWorkLocationValueOpen,
-        z.ZodTypeDef,
-        unknown
-    > = z.union([
-        z.nativeEnum(HrisCreateEmployeeRequestDtoSchemasWorkLocationValue),
-        z.string().transform(catchUnrecognizedEnum),
-    ]);
-
-    export const outboundSchema: z.ZodType<
-        HrisCreateEmployeeRequestDtoSchemasWorkLocationValueOpen,
-        z.ZodTypeDef,
-        HrisCreateEmployeeRequestDtoSchemasWorkLocationValueOpen
-    > = z.union([
-        z.nativeEnum(HrisCreateEmployeeRequestDtoSchemasWorkLocationValue),
-        z.string().and(z.custom<Unrecognized<string>>()),
-    ]);
+    /** @deprecated use `HrisCreateEmployeeRequestDtoSchemasWorkLocationValue$inboundSchema` instead. */
+    export const inboundSchema = HrisCreateEmployeeRequestDtoSchemasWorkLocationValue$inboundSchema;
+    /** @deprecated use `HrisCreateEmployeeRequestDtoSchemasWorkLocationValue$outboundSchema` instead. */
+    export const outboundSchema =
+        HrisCreateEmployeeRequestDtoSchemasWorkLocationValue$outboundSchema;
 }
 
 /** @internal */
-export namespace HrisCreateEmployeeRequestDtoSchemasCountry$ {
-    export const inboundSchema: z.ZodType<
-        HrisCreateEmployeeRequestDtoSchemasCountry,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            source_value: z
-                .nullable(
-                    z.union([
-                        z.lazy(
-                            () => HrisCreateEmployeeRequestDtoSchemasWorkLocation4$.inboundSchema
-                        ),
-                        z.string(),
-                        z.number(),
-                        z.boolean(),
-                    ])
-                )
-                .optional(),
-            value: z
-                .nullable(HrisCreateEmployeeRequestDtoSchemasWorkLocationValue$.inboundSchema)
-                .optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                source_value: "sourceValue",
-            });
+export const HrisCreateEmployeeRequestDtoSchemasCountry$inboundSchema: z.ZodType<
+    HrisCreateEmployeeRequestDtoSchemasCountry,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        source_value: z
+            .nullable(
+                z.union([
+                    z.lazy(() => HrisCreateEmployeeRequestDtoSchemasWorkLocation4$inboundSchema),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                ])
+            )
+            .optional(),
+        value: z
+            .nullable(HrisCreateEmployeeRequestDtoSchemasWorkLocationValue$inboundSchema)
+            .optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            source_value: "sourceValue",
         });
-
-    export type Outbound = {
-        source_value?:
-            | HrisCreateEmployeeRequestDtoSchemasWorkLocation4$.Outbound
-            | string
-            | number
-            | boolean
-            | null
-            | undefined;
-        value?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        HrisCreateEmployeeRequestDtoSchemasCountry
-    > = z
-        .object({
-            sourceValue: z
-                .nullable(
-                    z.union([
-                        z.lazy(
-                            () => HrisCreateEmployeeRequestDtoSchemasWorkLocation4$.outboundSchema
-                        ),
-                        z.string(),
-                        z.number(),
-                        z.boolean(),
-                    ])
-                )
-                .optional(),
-            value: z
-                .nullable(HrisCreateEmployeeRequestDtoSchemasWorkLocationValue$.outboundSchema)
-                .optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                sourceValue: "source_value",
-            });
-        });
-}
+    });
 
 /** @internal */
-export namespace HrisCreateEmployeeRequestDtoSchemasWorkLocationState4$ {
-    export const inboundSchema: z.ZodType<
-        HrisCreateEmployeeRequestDtoSchemasWorkLocationState4,
-        z.ZodTypeDef,
-        unknown
-    > = z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        HrisCreateEmployeeRequestDtoSchemasWorkLocationState4
-    > = z.object({});
-}
-
-/** @internal */
-export namespace HrisCreateEmployeeRequestDtoSchemasWorkLocationStateSourceValue$ {
-    export const inboundSchema: z.ZodType<
-        HrisCreateEmployeeRequestDtoSchemasWorkLocationStateSourceValue,
-        z.ZodTypeDef,
-        unknown
-    > = z.union([
-        z.lazy(() => HrisCreateEmployeeRequestDtoSchemasWorkLocationState4$.inboundSchema),
-        z.string(),
-        z.number(),
-        z.boolean(),
-    ]);
-
-    export type Outbound =
-        | HrisCreateEmployeeRequestDtoSchemasWorkLocationState4$.Outbound
+export type HrisCreateEmployeeRequestDtoSchemasCountry$Outbound = {
+    source_value?:
+        | HrisCreateEmployeeRequestDtoSchemasWorkLocation4$Outbound
         | string
         | number
-        | boolean;
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        HrisCreateEmployeeRequestDtoSchemasWorkLocationStateSourceValue
-    > = z.union([
-        z.lazy(() => HrisCreateEmployeeRequestDtoSchemasWorkLocationState4$.outboundSchema),
-        z.string(),
-        z.number(),
-        z.boolean(),
-    ]);
+        | boolean
+        | null
+        | undefined;
+    value?: string | null | undefined;
+};
+
+/** @internal */
+export const HrisCreateEmployeeRequestDtoSchemasCountry$outboundSchema: z.ZodType<
+    HrisCreateEmployeeRequestDtoSchemasCountry$Outbound,
+    z.ZodTypeDef,
+    HrisCreateEmployeeRequestDtoSchemasCountry
+> = z
+    .object({
+        sourceValue: z
+            .nullable(
+                z.union([
+                    z.lazy(() => HrisCreateEmployeeRequestDtoSchemasWorkLocation4$outboundSchema),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                ])
+            )
+            .optional(),
+        value: z
+            .nullable(HrisCreateEmployeeRequestDtoSchemasWorkLocationValue$outboundSchema)
+            .optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            sourceValue: "source_value",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace HrisCreateEmployeeRequestDtoSchemasCountry$ {
+    /** @deprecated use `HrisCreateEmployeeRequestDtoSchemasCountry$inboundSchema` instead. */
+    export const inboundSchema = HrisCreateEmployeeRequestDtoSchemasCountry$inboundSchema;
+    /** @deprecated use `HrisCreateEmployeeRequestDtoSchemasCountry$outboundSchema` instead. */
+    export const outboundSchema = HrisCreateEmployeeRequestDtoSchemasCountry$outboundSchema;
+    /** @deprecated use `HrisCreateEmployeeRequestDtoSchemasCountry$Outbound` instead. */
+    export type Outbound = HrisCreateEmployeeRequestDtoSchemasCountry$Outbound;
 }
 
 /** @internal */
+export const HrisCreateEmployeeRequestDtoSchemasWorkLocationState4$inboundSchema: z.ZodType<
+    HrisCreateEmployeeRequestDtoSchemasWorkLocationState4,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type HrisCreateEmployeeRequestDtoSchemasWorkLocationState4$Outbound = {};
+
+/** @internal */
+export const HrisCreateEmployeeRequestDtoSchemasWorkLocationState4$outboundSchema: z.ZodType<
+    HrisCreateEmployeeRequestDtoSchemasWorkLocationState4$Outbound,
+    z.ZodTypeDef,
+    HrisCreateEmployeeRequestDtoSchemasWorkLocationState4
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace HrisCreateEmployeeRequestDtoSchemasWorkLocationState4$ {
+    /** @deprecated use `HrisCreateEmployeeRequestDtoSchemasWorkLocationState4$inboundSchema` instead. */
+    export const inboundSchema =
+        HrisCreateEmployeeRequestDtoSchemasWorkLocationState4$inboundSchema;
+    /** @deprecated use `HrisCreateEmployeeRequestDtoSchemasWorkLocationState4$outboundSchema` instead. */
+    export const outboundSchema =
+        HrisCreateEmployeeRequestDtoSchemasWorkLocationState4$outboundSchema;
+    /** @deprecated use `HrisCreateEmployeeRequestDtoSchemasWorkLocationState4$Outbound` instead. */
+    export type Outbound = HrisCreateEmployeeRequestDtoSchemasWorkLocationState4$Outbound;
+}
+
+/** @internal */
+export const HrisCreateEmployeeRequestDtoSchemasWorkLocationStateSourceValue$inboundSchema: z.ZodType<
+    HrisCreateEmployeeRequestDtoSchemasWorkLocationStateSourceValue,
+    z.ZodTypeDef,
+    unknown
+> = z.union([
+    z.lazy(() => HrisCreateEmployeeRequestDtoSchemasWorkLocationState4$inboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+]);
+
+/** @internal */
+export type HrisCreateEmployeeRequestDtoSchemasWorkLocationStateSourceValue$Outbound =
+    | HrisCreateEmployeeRequestDtoSchemasWorkLocationState4$Outbound
+    | string
+    | number
+    | boolean;
+
+/** @internal */
+export const HrisCreateEmployeeRequestDtoSchemasWorkLocationStateSourceValue$outboundSchema: z.ZodType<
+    HrisCreateEmployeeRequestDtoSchemasWorkLocationStateSourceValue$Outbound,
+    z.ZodTypeDef,
+    HrisCreateEmployeeRequestDtoSchemasWorkLocationStateSourceValue
+> = z.union([
+    z.lazy(() => HrisCreateEmployeeRequestDtoSchemasWorkLocationState4$outboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace HrisCreateEmployeeRequestDtoSchemasWorkLocationStateSourceValue$ {
+    /** @deprecated use `HrisCreateEmployeeRequestDtoSchemasWorkLocationStateSourceValue$inboundSchema` instead. */
+    export const inboundSchema =
+        HrisCreateEmployeeRequestDtoSchemasWorkLocationStateSourceValue$inboundSchema;
+    /** @deprecated use `HrisCreateEmployeeRequestDtoSchemasWorkLocationStateSourceValue$outboundSchema` instead. */
+    export const outboundSchema =
+        HrisCreateEmployeeRequestDtoSchemasWorkLocationStateSourceValue$outboundSchema;
+    /** @deprecated use `HrisCreateEmployeeRequestDtoSchemasWorkLocationStateSourceValue$Outbound` instead. */
+    export type Outbound = HrisCreateEmployeeRequestDtoSchemasWorkLocationStateSourceValue$Outbound;
+}
+
+/** @internal */
+export const HrisCreateEmployeeRequestDtoSchemasWorkLocationStateValue$inboundSchema: z.ZodType<
+    HrisCreateEmployeeRequestDtoSchemasWorkLocationStateValueOpen,
+    z.ZodTypeDef,
+    unknown
+> = z.union([
+    z.nativeEnum(HrisCreateEmployeeRequestDtoSchemasWorkLocationStateValue),
+    z.string().transform(catchUnrecognizedEnum),
+]);
+
+/** @internal */
+export const HrisCreateEmployeeRequestDtoSchemasWorkLocationStateValue$outboundSchema: z.ZodType<
+    HrisCreateEmployeeRequestDtoSchemasWorkLocationStateValueOpen,
+    z.ZodTypeDef,
+    HrisCreateEmployeeRequestDtoSchemasWorkLocationStateValueOpen
+> = z.union([
+    z.nativeEnum(HrisCreateEmployeeRequestDtoSchemasWorkLocationStateValue),
+    z.string().and(z.custom<Unrecognized<string>>()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace HrisCreateEmployeeRequestDtoSchemasWorkLocationStateValue$ {
-    export const inboundSchema: z.ZodType<
-        HrisCreateEmployeeRequestDtoSchemasWorkLocationStateValueOpen,
-        z.ZodTypeDef,
-        unknown
-    > = z.union([
-        z.nativeEnum(HrisCreateEmployeeRequestDtoSchemasWorkLocationStateValue),
-        z.string().transform(catchUnrecognizedEnum),
-    ]);
-
-    export const outboundSchema: z.ZodType<
-        HrisCreateEmployeeRequestDtoSchemasWorkLocationStateValueOpen,
-        z.ZodTypeDef,
-        HrisCreateEmployeeRequestDtoSchemasWorkLocationStateValueOpen
-    > = z.union([
-        z.nativeEnum(HrisCreateEmployeeRequestDtoSchemasWorkLocationStateValue),
-        z.string().and(z.custom<Unrecognized<string>>()),
-    ]);
+    /** @deprecated use `HrisCreateEmployeeRequestDtoSchemasWorkLocationStateValue$inboundSchema` instead. */
+    export const inboundSchema =
+        HrisCreateEmployeeRequestDtoSchemasWorkLocationStateValue$inboundSchema;
+    /** @deprecated use `HrisCreateEmployeeRequestDtoSchemasWorkLocationStateValue$outboundSchema` instead. */
+    export const outboundSchema =
+        HrisCreateEmployeeRequestDtoSchemasWorkLocationStateValue$outboundSchema;
 }
 
 /** @internal */
+export const HrisCreateEmployeeRequestDtoState$inboundSchema: z.ZodType<
+    HrisCreateEmployeeRequestDtoState,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        source_value: z
+            .nullable(
+                z.union([
+                    z.lazy(
+                        () => HrisCreateEmployeeRequestDtoSchemasWorkLocationState4$inboundSchema
+                    ),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                ])
+            )
+            .optional(),
+        value: z
+            .nullable(HrisCreateEmployeeRequestDtoSchemasWorkLocationStateValue$inboundSchema)
+            .optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            source_value: "sourceValue",
+        });
+    });
+
+/** @internal */
+export type HrisCreateEmployeeRequestDtoState$Outbound = {
+    source_value?:
+        | HrisCreateEmployeeRequestDtoSchemasWorkLocationState4$Outbound
+        | string
+        | number
+        | boolean
+        | null
+        | undefined;
+    value?: string | null | undefined;
+};
+
+/** @internal */
+export const HrisCreateEmployeeRequestDtoState$outboundSchema: z.ZodType<
+    HrisCreateEmployeeRequestDtoState$Outbound,
+    z.ZodTypeDef,
+    HrisCreateEmployeeRequestDtoState
+> = z
+    .object({
+        sourceValue: z
+            .nullable(
+                z.union([
+                    z.lazy(
+                        () => HrisCreateEmployeeRequestDtoSchemasWorkLocationState4$outboundSchema
+                    ),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                ])
+            )
+            .optional(),
+        value: z
+            .nullable(HrisCreateEmployeeRequestDtoSchemasWorkLocationStateValue$outboundSchema)
+            .optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            sourceValue: "source_value",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace HrisCreateEmployeeRequestDtoState$ {
-    export const inboundSchema: z.ZodType<
-        HrisCreateEmployeeRequestDtoState,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            source_value: z
-                .nullable(
-                    z.union([
-                        z.lazy(
-                            () =>
-                                HrisCreateEmployeeRequestDtoSchemasWorkLocationState4$.inboundSchema
-                        ),
-                        z.string(),
-                        z.number(),
-                        z.boolean(),
-                    ])
-                )
-                .optional(),
-            value: z
-                .nullable(HrisCreateEmployeeRequestDtoSchemasWorkLocationStateValue$.inboundSchema)
-                .optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                source_value: "sourceValue",
-            });
-        });
-
-    export type Outbound = {
-        source_value?:
-            | HrisCreateEmployeeRequestDtoSchemasWorkLocationState4$.Outbound
-            | string
-            | number
-            | boolean
-            | null
-            | undefined;
-        value?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        HrisCreateEmployeeRequestDtoState
-    > = z
-        .object({
-            sourceValue: z
-                .nullable(
-                    z.union([
-                        z.lazy(
-                            () =>
-                                HrisCreateEmployeeRequestDtoSchemasWorkLocationState4$.outboundSchema
-                        ),
-                        z.string(),
-                        z.number(),
-                        z.boolean(),
-                    ])
-                )
-                .optional(),
-            value: z
-                .nullable(HrisCreateEmployeeRequestDtoSchemasWorkLocationStateValue$.outboundSchema)
-                .optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                sourceValue: "source_value",
-            });
-        });
+    /** @deprecated use `HrisCreateEmployeeRequestDtoState$inboundSchema` instead. */
+    export const inboundSchema = HrisCreateEmployeeRequestDtoState$inboundSchema;
+    /** @deprecated use `HrisCreateEmployeeRequestDtoState$outboundSchema` instead. */
+    export const outboundSchema = HrisCreateEmployeeRequestDtoState$outboundSchema;
+    /** @deprecated use `HrisCreateEmployeeRequestDtoState$Outbound` instead. */
+    export type Outbound = HrisCreateEmployeeRequestDtoState$Outbound;
 }
 
 /** @internal */
+export const HrisCreateEmployeeRequestDtoWorkLocation$inboundSchema: z.ZodType<
+    HrisCreateEmployeeRequestDtoWorkLocation,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        city: z.nullable(z.string()).optional(),
+        country: z
+            .nullable(z.lazy(() => HrisCreateEmployeeRequestDtoSchemasCountry$inboundSchema))
+            .optional(),
+        name: z.nullable(z.string()).optional(),
+        passthrough: z.nullable(z.record(z.any())).optional(),
+        phone_number: z.nullable(z.string()).optional(),
+        state: z.nullable(z.lazy(() => HrisCreateEmployeeRequestDtoState$inboundSchema)).optional(),
+        street_1: z.nullable(z.string()).optional(),
+        street_2: z.nullable(z.string()).optional(),
+        zip_code: z.nullable(z.string()).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            phone_number: "phoneNumber",
+            street_1: "street1",
+            street_2: "street2",
+            zip_code: "zipCode",
+        });
+    });
+
+/** @internal */
+export type HrisCreateEmployeeRequestDtoWorkLocation$Outbound = {
+    city?: string | null | undefined;
+    country?: HrisCreateEmployeeRequestDtoSchemasCountry$Outbound | null | undefined;
+    name?: string | null | undefined;
+    passthrough?: { [k: string]: any } | null | undefined;
+    phone_number?: string | null | undefined;
+    state?: HrisCreateEmployeeRequestDtoState$Outbound | null | undefined;
+    street_1?: string | null | undefined;
+    street_2?: string | null | undefined;
+    zip_code?: string | null | undefined;
+};
+
+/** @internal */
+export const HrisCreateEmployeeRequestDtoWorkLocation$outboundSchema: z.ZodType<
+    HrisCreateEmployeeRequestDtoWorkLocation$Outbound,
+    z.ZodTypeDef,
+    HrisCreateEmployeeRequestDtoWorkLocation
+> = z
+    .object({
+        city: z.nullable(z.string()).optional(),
+        country: z
+            .nullable(z.lazy(() => HrisCreateEmployeeRequestDtoSchemasCountry$outboundSchema))
+            .optional(),
+        name: z.nullable(z.string()).optional(),
+        passthrough: z.nullable(z.record(z.any())).optional(),
+        phoneNumber: z.nullable(z.string()).optional(),
+        state: z
+            .nullable(z.lazy(() => HrisCreateEmployeeRequestDtoState$outboundSchema))
+            .optional(),
+        street1: z.nullable(z.string()).optional(),
+        street2: z.nullable(z.string()).optional(),
+        zipCode: z.nullable(z.string()).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            phoneNumber: "phone_number",
+            street1: "street_1",
+            street2: "street_2",
+            zipCode: "zip_code",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace HrisCreateEmployeeRequestDtoWorkLocation$ {
-    export const inboundSchema: z.ZodType<
-        HrisCreateEmployeeRequestDtoWorkLocation,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            city: z.nullable(z.string()).optional(),
-            country: z
-                .nullable(z.lazy(() => HrisCreateEmployeeRequestDtoSchemasCountry$.inboundSchema))
-                .optional(),
-            name: z.nullable(z.string()).optional(),
-            passthrough: z.nullable(z.record(z.any())).optional(),
-            phone_number: z.nullable(z.string()).optional(),
-            state: z
-                .nullable(z.lazy(() => HrisCreateEmployeeRequestDtoState$.inboundSchema))
-                .optional(),
-            street_1: z.nullable(z.string()).optional(),
-            street_2: z.nullable(z.string()).optional(),
-            zip_code: z.nullable(z.string()).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                phone_number: "phoneNumber",
-                street_1: "street1",
-                street_2: "street2",
-                zip_code: "zipCode",
-            });
-        });
-
-    export type Outbound = {
-        city?: string | null | undefined;
-        country?: HrisCreateEmployeeRequestDtoSchemasCountry$.Outbound | null | undefined;
-        name?: string | null | undefined;
-        passthrough?: { [k: string]: any } | null | undefined;
-        phone_number?: string | null | undefined;
-        state?: HrisCreateEmployeeRequestDtoState$.Outbound | null | undefined;
-        street_1?: string | null | undefined;
-        street_2?: string | null | undefined;
-        zip_code?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        HrisCreateEmployeeRequestDtoWorkLocation
-    > = z
-        .object({
-            city: z.nullable(z.string()).optional(),
-            country: z
-                .nullable(z.lazy(() => HrisCreateEmployeeRequestDtoSchemasCountry$.outboundSchema))
-                .optional(),
-            name: z.nullable(z.string()).optional(),
-            passthrough: z.nullable(z.record(z.any())).optional(),
-            phoneNumber: z.nullable(z.string()).optional(),
-            state: z
-                .nullable(z.lazy(() => HrisCreateEmployeeRequestDtoState$.outboundSchema))
-                .optional(),
-            street1: z.nullable(z.string()).optional(),
-            street2: z.nullable(z.string()).optional(),
-            zipCode: z.nullable(z.string()).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                phoneNumber: "phone_number",
-                street1: "street_1",
-                street2: "street_2",
-                zipCode: "zip_code",
-            });
-        });
+    /** @deprecated use `HrisCreateEmployeeRequestDtoWorkLocation$inboundSchema` instead. */
+    export const inboundSchema = HrisCreateEmployeeRequestDtoWorkLocation$inboundSchema;
+    /** @deprecated use `HrisCreateEmployeeRequestDtoWorkLocation$outboundSchema` instead. */
+    export const outboundSchema = HrisCreateEmployeeRequestDtoWorkLocation$outboundSchema;
+    /** @deprecated use `HrisCreateEmployeeRequestDtoWorkLocation$Outbound` instead. */
+    export type Outbound = HrisCreateEmployeeRequestDtoWorkLocation$Outbound;
 }
 
 /** @internal */
+export const HrisCreateEmployeeRequestDto$inboundSchema: z.ZodType<
+    HrisCreateEmployeeRequestDto,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        avatar: z
+            .nullable(z.lazy(() => HrisCreateEmployeeRequestDtoAvatar$inboundSchema))
+            .optional(),
+        avatar_url: z.nullable(z.string()).optional(),
+        benefits: z.nullable(z.array(HRISBenefit$inboundSchema)).optional(),
+        birthday: z
+            .nullable(
+                z
+                    .string()
+                    .datetime({ offset: true })
+                    .transform((v) => new Date(v))
+            )
+            .optional(),
+        citizenships: z.nullable(z.array(CountryCodeEnum$inboundSchema)).optional(),
+        company_name: z.nullable(z.string()).optional(),
+        custom_fields: z.nullable(z.array(EmployeeCustomFields$inboundSchema)).optional(),
+        date_of_birth: z
+            .nullable(
+                z
+                    .string()
+                    .datetime({ offset: true })
+                    .transform((v) => new Date(v))
+            )
+            .optional(),
+        department: z.nullable(z.string()).optional(),
+        display_name: z.nullable(z.string()).optional(),
+        employment_contract_type: z
+            .nullable(
+                z.lazy(() => HrisCreateEmployeeRequestDtoEmploymentContractType$inboundSchema)
+            )
+            .optional(),
+        employment_status: z
+            .nullable(z.lazy(() => HrisCreateEmployeeRequestDtoEmploymentStatus$inboundSchema))
+            .optional(),
+        employment_type: z
+            .nullable(z.lazy(() => HrisCreateEmployeeRequestDtoEmploymentType$inboundSchema))
+            .optional(),
+        employments: z.nullable(z.array(Employment$inboundSchema)).optional(),
+        ethnicity: z
+            .nullable(z.lazy(() => HrisCreateEmployeeRequestDtoEthnicity$inboundSchema))
+            .optional(),
+        first_name: z.nullable(z.string()).optional(),
+        gender: z
+            .nullable(z.lazy(() => HrisCreateEmployeeRequestDtoGender$inboundSchema))
+            .optional(),
+        hire_date: z
+            .nullable(
+                z
+                    .string()
+                    .datetime({ offset: true })
+                    .transform((v) => new Date(v))
+            )
+            .optional(),
+        home_location: z
+            .nullable(z.lazy(() => HrisCreateEmployeeRequestDtoHomeLocation$inboundSchema))
+            .optional(),
+        job_id: z.nullable(z.string()).optional(),
+        job_title: z.nullable(z.string()).optional(),
+        last_name: z.nullable(z.string()).optional(),
+        manager_id: z.nullable(z.string()).optional(),
+        marital_status: z
+            .nullable(z.lazy(() => HrisCreateEmployeeRequestDtoMaritalStatus$inboundSchema))
+            .optional(),
+        name: z.nullable(z.string()).optional(),
+        passthrough: z.nullable(z.record(z.any())).optional(),
+        personal_email: z.nullable(z.string()).optional(),
+        personal_phone_number: z.nullable(z.string()).optional(),
+        preferred_language: z
+            .nullable(z.lazy(() => HrisCreateEmployeeRequestDtoPreferredLanguage$inboundSchema))
+            .optional(),
+        start_date: z
+            .nullable(
+                z
+                    .string()
+                    .datetime({ offset: true })
+                    .transform((v) => new Date(v))
+            )
+            .optional(),
+        tenure: z.nullable(z.number()).optional(),
+        termination_date: z
+            .nullable(
+                z
+                    .string()
+                    .datetime({ offset: true })
+                    .transform((v) => new Date(v))
+            )
+            .optional(),
+        work_anniversary: z
+            .nullable(
+                z
+                    .string()
+                    .datetime({ offset: true })
+                    .transform((v) => new Date(v))
+            )
+            .optional(),
+        work_email: z.nullable(z.string()).optional(),
+        work_location: z
+            .nullable(z.lazy(() => HrisCreateEmployeeRequestDtoWorkLocation$inboundSchema))
+            .optional(),
+        work_phone_number: z.nullable(z.string()).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            avatar_url: "avatarUrl",
+            company_name: "companyName",
+            custom_fields: "customFields",
+            date_of_birth: "dateOfBirth",
+            display_name: "displayName",
+            employment_contract_type: "employmentContractType",
+            employment_status: "employmentStatus",
+            employment_type: "employmentType",
+            first_name: "firstName",
+            hire_date: "hireDate",
+            home_location: "homeLocation",
+            job_id: "jobId",
+            job_title: "jobTitle",
+            last_name: "lastName",
+            manager_id: "managerId",
+            marital_status: "maritalStatus",
+            personal_email: "personalEmail",
+            personal_phone_number: "personalPhoneNumber",
+            preferred_language: "preferredLanguage",
+            start_date: "startDate",
+            termination_date: "terminationDate",
+            work_anniversary: "workAnniversary",
+            work_email: "workEmail",
+            work_location: "workLocation",
+            work_phone_number: "workPhoneNumber",
+        });
+    });
+
+/** @internal */
+export type HrisCreateEmployeeRequestDto$Outbound = {
+    avatar?: HrisCreateEmployeeRequestDtoAvatar$Outbound | null | undefined;
+    avatar_url?: string | null | undefined;
+    benefits?: Array<HRISBenefit$Outbound> | null | undefined;
+    birthday?: string | null | undefined;
+    citizenships?: Array<CountryCodeEnum$Outbound> | null | undefined;
+    company_name?: string | null | undefined;
+    custom_fields?: Array<EmployeeCustomFields$Outbound> | null | undefined;
+    date_of_birth?: string | null | undefined;
+    department?: string | null | undefined;
+    display_name?: string | null | undefined;
+    employment_contract_type?:
+        | HrisCreateEmployeeRequestDtoEmploymentContractType$Outbound
+        | null
+        | undefined;
+    employment_status?: HrisCreateEmployeeRequestDtoEmploymentStatus$Outbound | null | undefined;
+    employment_type?: HrisCreateEmployeeRequestDtoEmploymentType$Outbound | null | undefined;
+    employments?: Array<Employment$Outbound> | null | undefined;
+    ethnicity?: HrisCreateEmployeeRequestDtoEthnicity$Outbound | null | undefined;
+    first_name?: string | null | undefined;
+    gender?: HrisCreateEmployeeRequestDtoGender$Outbound | null | undefined;
+    hire_date?: string | null | undefined;
+    home_location?: HrisCreateEmployeeRequestDtoHomeLocation$Outbound | null | undefined;
+    job_id?: string | null | undefined;
+    job_title?: string | null | undefined;
+    last_name?: string | null | undefined;
+    manager_id?: string | null | undefined;
+    marital_status?: HrisCreateEmployeeRequestDtoMaritalStatus$Outbound | null | undefined;
+    name?: string | null | undefined;
+    passthrough?: { [k: string]: any } | null | undefined;
+    personal_email?: string | null | undefined;
+    personal_phone_number?: string | null | undefined;
+    preferred_language?: HrisCreateEmployeeRequestDtoPreferredLanguage$Outbound | null | undefined;
+    start_date?: string | null | undefined;
+    tenure?: number | null | undefined;
+    termination_date?: string | null | undefined;
+    work_anniversary?: string | null | undefined;
+    work_email?: string | null | undefined;
+    work_location?: HrisCreateEmployeeRequestDtoWorkLocation$Outbound | null | undefined;
+    work_phone_number?: string | null | undefined;
+};
+
+/** @internal */
+export const HrisCreateEmployeeRequestDto$outboundSchema: z.ZodType<
+    HrisCreateEmployeeRequestDto$Outbound,
+    z.ZodTypeDef,
+    HrisCreateEmployeeRequestDto
+> = z
+    .object({
+        avatar: z
+            .nullable(z.lazy(() => HrisCreateEmployeeRequestDtoAvatar$outboundSchema))
+            .optional(),
+        avatarUrl: z.nullable(z.string()).optional(),
+        benefits: z.nullable(z.array(HRISBenefit$outboundSchema)).optional(),
+        birthday: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+        citizenships: z.nullable(z.array(CountryCodeEnum$outboundSchema)).optional(),
+        companyName: z.nullable(z.string()).optional(),
+        customFields: z.nullable(z.array(EmployeeCustomFields$outboundSchema)).optional(),
+        dateOfBirth: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+        department: z.nullable(z.string()).optional(),
+        displayName: z.nullable(z.string()).optional(),
+        employmentContractType: z
+            .nullable(
+                z.lazy(() => HrisCreateEmployeeRequestDtoEmploymentContractType$outboundSchema)
+            )
+            .optional(),
+        employmentStatus: z
+            .nullable(z.lazy(() => HrisCreateEmployeeRequestDtoEmploymentStatus$outboundSchema))
+            .optional(),
+        employmentType: z
+            .nullable(z.lazy(() => HrisCreateEmployeeRequestDtoEmploymentType$outboundSchema))
+            .optional(),
+        employments: z.nullable(z.array(Employment$outboundSchema)).optional(),
+        ethnicity: z
+            .nullable(z.lazy(() => HrisCreateEmployeeRequestDtoEthnicity$outboundSchema))
+            .optional(),
+        firstName: z.nullable(z.string()).optional(),
+        gender: z
+            .nullable(z.lazy(() => HrisCreateEmployeeRequestDtoGender$outboundSchema))
+            .optional(),
+        hireDate: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+        homeLocation: z
+            .nullable(z.lazy(() => HrisCreateEmployeeRequestDtoHomeLocation$outboundSchema))
+            .optional(),
+        jobId: z.nullable(z.string()).optional(),
+        jobTitle: z.nullable(z.string()).optional(),
+        lastName: z.nullable(z.string()).optional(),
+        managerId: z.nullable(z.string()).optional(),
+        maritalStatus: z
+            .nullable(z.lazy(() => HrisCreateEmployeeRequestDtoMaritalStatus$outboundSchema))
+            .optional(),
+        name: z.nullable(z.string()).optional(),
+        passthrough: z.nullable(z.record(z.any())).optional(),
+        personalEmail: z.nullable(z.string()).optional(),
+        personalPhoneNumber: z.nullable(z.string()).optional(),
+        preferredLanguage: z
+            .nullable(z.lazy(() => HrisCreateEmployeeRequestDtoPreferredLanguage$outboundSchema))
+            .optional(),
+        startDate: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+        tenure: z.nullable(z.number()).optional(),
+        terminationDate: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+        workAnniversary: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+        workEmail: z.nullable(z.string()).optional(),
+        workLocation: z
+            .nullable(z.lazy(() => HrisCreateEmployeeRequestDtoWorkLocation$outboundSchema))
+            .optional(),
+        workPhoneNumber: z.nullable(z.string()).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            avatarUrl: "avatar_url",
+            companyName: "company_name",
+            customFields: "custom_fields",
+            dateOfBirth: "date_of_birth",
+            displayName: "display_name",
+            employmentContractType: "employment_contract_type",
+            employmentStatus: "employment_status",
+            employmentType: "employment_type",
+            firstName: "first_name",
+            hireDate: "hire_date",
+            homeLocation: "home_location",
+            jobId: "job_id",
+            jobTitle: "job_title",
+            lastName: "last_name",
+            managerId: "manager_id",
+            maritalStatus: "marital_status",
+            personalEmail: "personal_email",
+            personalPhoneNumber: "personal_phone_number",
+            preferredLanguage: "preferred_language",
+            startDate: "start_date",
+            terminationDate: "termination_date",
+            workAnniversary: "work_anniversary",
+            workEmail: "work_email",
+            workLocation: "work_location",
+            workPhoneNumber: "work_phone_number",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace HrisCreateEmployeeRequestDto$ {
-    export const inboundSchema: z.ZodType<HrisCreateEmployeeRequestDto, z.ZodTypeDef, unknown> = z
-        .object({
-            avatar: z
-                .nullable(z.lazy(() => HrisCreateEmployeeRequestDtoAvatar$.inboundSchema))
-                .optional(),
-            avatar_url: z.nullable(z.string()).optional(),
-            benefits: z.nullable(z.array(HRISBenefit$.inboundSchema)).optional(),
-            birthday: z
-                .nullable(
-                    z
-                        .string()
-                        .datetime({ offset: true })
-                        .transform((v) => new Date(v))
-                )
-                .optional(),
-            citizenships: z.nullable(z.array(CountryCodeEnum$.inboundSchema)).optional(),
-            company_name: z.nullable(z.string()).optional(),
-            custom_fields: z.nullable(z.array(EmployeeCustomFields$.inboundSchema)).optional(),
-            date_of_birth: z
-                .nullable(
-                    z
-                        .string()
-                        .datetime({ offset: true })
-                        .transform((v) => new Date(v))
-                )
-                .optional(),
-            department: z.nullable(z.string()).optional(),
-            display_name: z.nullable(z.string()).optional(),
-            employment_contract_type: z
-                .nullable(
-                    z.lazy(() => HrisCreateEmployeeRequestDtoEmploymentContractType$.inboundSchema)
-                )
-                .optional(),
-            employment_status: z
-                .nullable(z.lazy(() => HrisCreateEmployeeRequestDtoEmploymentStatus$.inboundSchema))
-                .optional(),
-            employment_type: z
-                .nullable(z.lazy(() => HrisCreateEmployeeRequestDtoEmploymentType$.inboundSchema))
-                .optional(),
-            employments: z.nullable(z.array(Employment$.inboundSchema)).optional(),
-            ethnicity: z
-                .nullable(z.lazy(() => HrisCreateEmployeeRequestDtoEthnicity$.inboundSchema))
-                .optional(),
-            first_name: z.nullable(z.string()).optional(),
-            gender: z
-                .nullable(z.lazy(() => HrisCreateEmployeeRequestDtoGender$.inboundSchema))
-                .optional(),
-            hire_date: z
-                .nullable(
-                    z
-                        .string()
-                        .datetime({ offset: true })
-                        .transform((v) => new Date(v))
-                )
-                .optional(),
-            home_location: z
-                .nullable(z.lazy(() => HrisCreateEmployeeRequestDtoHomeLocation$.inboundSchema))
-                .optional(),
-            job_id: z.nullable(z.string()).optional(),
-            job_title: z.nullable(z.string()).optional(),
-            last_name: z.nullable(z.string()).optional(),
-            manager_id: z.nullable(z.string()).optional(),
-            marital_status: z
-                .nullable(z.lazy(() => HrisCreateEmployeeRequestDtoMaritalStatus$.inboundSchema))
-                .optional(),
-            name: z.nullable(z.string()).optional(),
-            passthrough: z.nullable(z.record(z.any())).optional(),
-            personal_email: z.nullable(z.string()).optional(),
-            personal_phone_number: z.nullable(z.string()).optional(),
-            preferred_language: z
-                .nullable(
-                    z.lazy(() => HrisCreateEmployeeRequestDtoPreferredLanguage$.inboundSchema)
-                )
-                .optional(),
-            start_date: z
-                .nullable(
-                    z
-                        .string()
-                        .datetime({ offset: true })
-                        .transform((v) => new Date(v))
-                )
-                .optional(),
-            tenure: z.nullable(z.number()).optional(),
-            termination_date: z
-                .nullable(
-                    z
-                        .string()
-                        .datetime({ offset: true })
-                        .transform((v) => new Date(v))
-                )
-                .optional(),
-            work_anniversary: z
-                .nullable(
-                    z
-                        .string()
-                        .datetime({ offset: true })
-                        .transform((v) => new Date(v))
-                )
-                .optional(),
-            work_email: z.nullable(z.string()).optional(),
-            work_location: z
-                .nullable(z.lazy(() => HrisCreateEmployeeRequestDtoWorkLocation$.inboundSchema))
-                .optional(),
-            work_phone_number: z.nullable(z.string()).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                avatar_url: "avatarUrl",
-                company_name: "companyName",
-                custom_fields: "customFields",
-                date_of_birth: "dateOfBirth",
-                display_name: "displayName",
-                employment_contract_type: "employmentContractType",
-                employment_status: "employmentStatus",
-                employment_type: "employmentType",
-                first_name: "firstName",
-                hire_date: "hireDate",
-                home_location: "homeLocation",
-                job_id: "jobId",
-                job_title: "jobTitle",
-                last_name: "lastName",
-                manager_id: "managerId",
-                marital_status: "maritalStatus",
-                personal_email: "personalEmail",
-                personal_phone_number: "personalPhoneNumber",
-                preferred_language: "preferredLanguage",
-                start_date: "startDate",
-                termination_date: "terminationDate",
-                work_anniversary: "workAnniversary",
-                work_email: "workEmail",
-                work_location: "workLocation",
-                work_phone_number: "workPhoneNumber",
-            });
-        });
-
-    export type Outbound = {
-        avatar?: HrisCreateEmployeeRequestDtoAvatar$.Outbound | null | undefined;
-        avatar_url?: string | null | undefined;
-        benefits?: Array<HRISBenefit$.Outbound> | null | undefined;
-        birthday?: string | null | undefined;
-        citizenships?: Array<CountryCodeEnum$.Outbound> | null | undefined;
-        company_name?: string | null | undefined;
-        custom_fields?: Array<EmployeeCustomFields$.Outbound> | null | undefined;
-        date_of_birth?: string | null | undefined;
-        department?: string | null | undefined;
-        display_name?: string | null | undefined;
-        employment_contract_type?:
-            | HrisCreateEmployeeRequestDtoEmploymentContractType$.Outbound
-            | null
-            | undefined;
-        employment_status?:
-            | HrisCreateEmployeeRequestDtoEmploymentStatus$.Outbound
-            | null
-            | undefined;
-        employment_type?: HrisCreateEmployeeRequestDtoEmploymentType$.Outbound | null | undefined;
-        employments?: Array<Employment$.Outbound> | null | undefined;
-        ethnicity?: HrisCreateEmployeeRequestDtoEthnicity$.Outbound | null | undefined;
-        first_name?: string | null | undefined;
-        gender?: HrisCreateEmployeeRequestDtoGender$.Outbound | null | undefined;
-        hire_date?: string | null | undefined;
-        home_location?: HrisCreateEmployeeRequestDtoHomeLocation$.Outbound | null | undefined;
-        job_id?: string | null | undefined;
-        job_title?: string | null | undefined;
-        last_name?: string | null | undefined;
-        manager_id?: string | null | undefined;
-        marital_status?: HrisCreateEmployeeRequestDtoMaritalStatus$.Outbound | null | undefined;
-        name?: string | null | undefined;
-        passthrough?: { [k: string]: any } | null | undefined;
-        personal_email?: string | null | undefined;
-        personal_phone_number?: string | null | undefined;
-        preferred_language?:
-            | HrisCreateEmployeeRequestDtoPreferredLanguage$.Outbound
-            | null
-            | undefined;
-        start_date?: string | null | undefined;
-        tenure?: number | null | undefined;
-        termination_date?: string | null | undefined;
-        work_anniversary?: string | null | undefined;
-        work_email?: string | null | undefined;
-        work_location?: HrisCreateEmployeeRequestDtoWorkLocation$.Outbound | null | undefined;
-        work_phone_number?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, HrisCreateEmployeeRequestDto> = z
-        .object({
-            avatar: z
-                .nullable(z.lazy(() => HrisCreateEmployeeRequestDtoAvatar$.outboundSchema))
-                .optional(),
-            avatarUrl: z.nullable(z.string()).optional(),
-            benefits: z.nullable(z.array(HRISBenefit$.outboundSchema)).optional(),
-            birthday: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
-            citizenships: z.nullable(z.array(CountryCodeEnum$.outboundSchema)).optional(),
-            companyName: z.nullable(z.string()).optional(),
-            customFields: z.nullable(z.array(EmployeeCustomFields$.outboundSchema)).optional(),
-            dateOfBirth: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
-            department: z.nullable(z.string()).optional(),
-            displayName: z.nullable(z.string()).optional(),
-            employmentContractType: z
-                .nullable(
-                    z.lazy(() => HrisCreateEmployeeRequestDtoEmploymentContractType$.outboundSchema)
-                )
-                .optional(),
-            employmentStatus: z
-                .nullable(
-                    z.lazy(() => HrisCreateEmployeeRequestDtoEmploymentStatus$.outboundSchema)
-                )
-                .optional(),
-            employmentType: z
-                .nullable(z.lazy(() => HrisCreateEmployeeRequestDtoEmploymentType$.outboundSchema))
-                .optional(),
-            employments: z.nullable(z.array(Employment$.outboundSchema)).optional(),
-            ethnicity: z
-                .nullable(z.lazy(() => HrisCreateEmployeeRequestDtoEthnicity$.outboundSchema))
-                .optional(),
-            firstName: z.nullable(z.string()).optional(),
-            gender: z
-                .nullable(z.lazy(() => HrisCreateEmployeeRequestDtoGender$.outboundSchema))
-                .optional(),
-            hireDate: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
-            homeLocation: z
-                .nullable(z.lazy(() => HrisCreateEmployeeRequestDtoHomeLocation$.outboundSchema))
-                .optional(),
-            jobId: z.nullable(z.string()).optional(),
-            jobTitle: z.nullable(z.string()).optional(),
-            lastName: z.nullable(z.string()).optional(),
-            managerId: z.nullable(z.string()).optional(),
-            maritalStatus: z
-                .nullable(z.lazy(() => HrisCreateEmployeeRequestDtoMaritalStatus$.outboundSchema))
-                .optional(),
-            name: z.nullable(z.string()).optional(),
-            passthrough: z.nullable(z.record(z.any())).optional(),
-            personalEmail: z.nullable(z.string()).optional(),
-            personalPhoneNumber: z.nullable(z.string()).optional(),
-            preferredLanguage: z
-                .nullable(
-                    z.lazy(() => HrisCreateEmployeeRequestDtoPreferredLanguage$.outboundSchema)
-                )
-                .optional(),
-            startDate: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
-            tenure: z.nullable(z.number()).optional(),
-            terminationDate: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
-            workAnniversary: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
-            workEmail: z.nullable(z.string()).optional(),
-            workLocation: z
-                .nullable(z.lazy(() => HrisCreateEmployeeRequestDtoWorkLocation$.outboundSchema))
-                .optional(),
-            workPhoneNumber: z.nullable(z.string()).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                avatarUrl: "avatar_url",
-                companyName: "company_name",
-                customFields: "custom_fields",
-                dateOfBirth: "date_of_birth",
-                displayName: "display_name",
-                employmentContractType: "employment_contract_type",
-                employmentStatus: "employment_status",
-                employmentType: "employment_type",
-                firstName: "first_name",
-                hireDate: "hire_date",
-                homeLocation: "home_location",
-                jobId: "job_id",
-                jobTitle: "job_title",
-                lastName: "last_name",
-                managerId: "manager_id",
-                maritalStatus: "marital_status",
-                personalEmail: "personal_email",
-                personalPhoneNumber: "personal_phone_number",
-                preferredLanguage: "preferred_language",
-                startDate: "start_date",
-                terminationDate: "termination_date",
-                workAnniversary: "work_anniversary",
-                workEmail: "work_email",
-                workLocation: "work_location",
-                workPhoneNumber: "work_phone_number",
-            });
-        });
+    /** @deprecated use `HrisCreateEmployeeRequestDto$inboundSchema` instead. */
+    export const inboundSchema = HrisCreateEmployeeRequestDto$inboundSchema;
+    /** @deprecated use `HrisCreateEmployeeRequestDto$outboundSchema` instead. */
+    export const outboundSchema = HrisCreateEmployeeRequestDto$outboundSchema;
+    /** @deprecated use `HrisCreateEmployeeRequestDto$Outbound` instead. */
+    export type Outbound = HrisCreateEmployeeRequestDto$Outbound;
 }

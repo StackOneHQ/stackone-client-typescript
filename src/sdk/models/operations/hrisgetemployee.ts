@@ -54,90 +54,132 @@ export type HrisGetEmployeeResponse = {
 };
 
 /** @internal */
+export const HrisGetEmployeeRequest$inboundSchema: z.ZodType<
+    HrisGetEmployeeRequest,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        expand: z.nullable(z.string()).optional(),
+        fields: z.nullable(z.string()).optional(),
+        id: z.string(),
+        include: z.nullable(z.string()).optional(),
+        proxy: z.nullable(z.record(z.any())).optional(),
+        raw: z.nullable(z.boolean().default(false)),
+        "x-account-id": z.string(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            "x-account-id": "xAccountId",
+        });
+    });
+
+/** @internal */
+export type HrisGetEmployeeRequest$Outbound = {
+    expand?: string | null | undefined;
+    fields?: string | null | undefined;
+    id: string;
+    include?: string | null | undefined;
+    proxy?: { [k: string]: any } | null | undefined;
+    raw: boolean | null;
+    "x-account-id": string;
+};
+
+/** @internal */
+export const HrisGetEmployeeRequest$outboundSchema: z.ZodType<
+    HrisGetEmployeeRequest$Outbound,
+    z.ZodTypeDef,
+    HrisGetEmployeeRequest
+> = z
+    .object({
+        expand: z.nullable(z.string()).optional(),
+        fields: z.nullable(z.string()).optional(),
+        id: z.string(),
+        include: z.nullable(z.string()).optional(),
+        proxy: z.nullable(z.record(z.any())).optional(),
+        raw: z.nullable(z.boolean().default(false)),
+        xAccountId: z.string(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            xAccountId: "x-account-id",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace HrisGetEmployeeRequest$ {
-    export const inboundSchema: z.ZodType<HrisGetEmployeeRequest, z.ZodTypeDef, unknown> = z
-        .object({
-            expand: z.nullable(z.string()).optional(),
-            fields: z.nullable(z.string()).optional(),
-            id: z.string(),
-            include: z.nullable(z.string()).optional(),
-            proxy: z.nullable(z.record(z.any())).optional(),
-            raw: z.nullable(z.boolean().default(false)),
-            "x-account-id": z.string(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                "x-account-id": "xAccountId",
-            });
-        });
-
-    export type Outbound = {
-        expand?: string | null | undefined;
-        fields?: string | null | undefined;
-        id: string;
-        include?: string | null | undefined;
-        proxy?: { [k: string]: any } | null | undefined;
-        raw: boolean | null;
-        "x-account-id": string;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, HrisGetEmployeeRequest> = z
-        .object({
-            expand: z.nullable(z.string()).optional(),
-            fields: z.nullable(z.string()).optional(),
-            id: z.string(),
-            include: z.nullable(z.string()).optional(),
-            proxy: z.nullable(z.record(z.any())).optional(),
-            raw: z.nullable(z.boolean().default(false)),
-            xAccountId: z.string(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                xAccountId: "x-account-id",
-            });
-        });
+    /** @deprecated use `HrisGetEmployeeRequest$inboundSchema` instead. */
+    export const inboundSchema = HrisGetEmployeeRequest$inboundSchema;
+    /** @deprecated use `HrisGetEmployeeRequest$outboundSchema` instead. */
+    export const outboundSchema = HrisGetEmployeeRequest$outboundSchema;
+    /** @deprecated use `HrisGetEmployeeRequest$Outbound` instead. */
+    export type Outbound = HrisGetEmployeeRequest$Outbound;
 }
 
 /** @internal */
+export const HrisGetEmployeeResponse$inboundSchema: z.ZodType<
+    HrisGetEmployeeResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        ContentType: z.string(),
+        EmployeeResult: shared.EmployeeResult$inboundSchema.optional(),
+        StatusCode: z.number().int(),
+        RawResponse: z.instanceof(Response),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            ContentType: "contentType",
+            EmployeeResult: "employeeResult",
+            StatusCode: "statusCode",
+            RawResponse: "rawResponse",
+        });
+    });
+
+/** @internal */
+export type HrisGetEmployeeResponse$Outbound = {
+    ContentType: string;
+    EmployeeResult?: shared.EmployeeResult$Outbound | undefined;
+    StatusCode: number;
+    RawResponse: never;
+};
+
+/** @internal */
+export const HrisGetEmployeeResponse$outboundSchema: z.ZodType<
+    HrisGetEmployeeResponse$Outbound,
+    z.ZodTypeDef,
+    HrisGetEmployeeResponse
+> = z
+    .object({
+        contentType: z.string(),
+        employeeResult: shared.EmployeeResult$outboundSchema.optional(),
+        statusCode: z.number().int(),
+        rawResponse: z.instanceof(Response).transform(() => {
+            throw new Error("Response cannot be serialized");
+        }),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            contentType: "ContentType",
+            employeeResult: "EmployeeResult",
+            statusCode: "StatusCode",
+            rawResponse: "RawResponse",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace HrisGetEmployeeResponse$ {
-    export const inboundSchema: z.ZodType<HrisGetEmployeeResponse, z.ZodTypeDef, unknown> = z
-        .object({
-            ContentType: z.string(),
-            EmployeeResult: shared.EmployeeResult$.inboundSchema.optional(),
-            StatusCode: z.number().int(),
-            RawResponse: z.instanceof(Response),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                ContentType: "contentType",
-                EmployeeResult: "employeeResult",
-                StatusCode: "statusCode",
-                RawResponse: "rawResponse",
-            });
-        });
-
-    export type Outbound = {
-        ContentType: string;
-        EmployeeResult?: shared.EmployeeResult$.Outbound | undefined;
-        StatusCode: number;
-        RawResponse: never;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, HrisGetEmployeeResponse> = z
-        .object({
-            contentType: z.string(),
-            employeeResult: shared.EmployeeResult$.outboundSchema.optional(),
-            statusCode: z.number().int(),
-            rawResponse: z.instanceof(Response).transform(() => {
-                throw new Error("Response cannot be serialized");
-            }),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                contentType: "ContentType",
-                employeeResult: "EmployeeResult",
-                statusCode: "StatusCode",
-                rawResponse: "RawResponse",
-            });
-        });
+    /** @deprecated use `HrisGetEmployeeResponse$inboundSchema` instead. */
+    export const inboundSchema = HrisGetEmployeeResponse$inboundSchema;
+    /** @deprecated use `HrisGetEmployeeResponse$outboundSchema` instead. */
+    export const outboundSchema = HrisGetEmployeeResponse$outboundSchema;
+    /** @deprecated use `HrisGetEmployeeResponse$Outbound` instead. */
+    export type Outbound = HrisGetEmployeeResponse$Outbound;
 }

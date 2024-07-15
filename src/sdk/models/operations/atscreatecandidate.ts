@@ -34,77 +34,119 @@ export type AtsCreateCandidateResponse = {
 };
 
 /** @internal */
+export const AtsCreateCandidateRequest$inboundSchema: z.ZodType<
+    AtsCreateCandidateRequest,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        AtsCreateCandidateRequestDto: shared.AtsCreateCandidateRequestDto$inboundSchema,
+        "x-account-id": z.string(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            AtsCreateCandidateRequestDto: "atsCreateCandidateRequestDto",
+            "x-account-id": "xAccountId",
+        });
+    });
+
+/** @internal */
+export type AtsCreateCandidateRequest$Outbound = {
+    AtsCreateCandidateRequestDto: shared.AtsCreateCandidateRequestDto$Outbound;
+    "x-account-id": string;
+};
+
+/** @internal */
+export const AtsCreateCandidateRequest$outboundSchema: z.ZodType<
+    AtsCreateCandidateRequest$Outbound,
+    z.ZodTypeDef,
+    AtsCreateCandidateRequest
+> = z
+    .object({
+        atsCreateCandidateRequestDto: shared.AtsCreateCandidateRequestDto$outboundSchema,
+        xAccountId: z.string(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            atsCreateCandidateRequestDto: "AtsCreateCandidateRequestDto",
+            xAccountId: "x-account-id",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace AtsCreateCandidateRequest$ {
-    export const inboundSchema: z.ZodType<AtsCreateCandidateRequest, z.ZodTypeDef, unknown> = z
-        .object({
-            AtsCreateCandidateRequestDto: shared.AtsCreateCandidateRequestDto$.inboundSchema,
-            "x-account-id": z.string(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                AtsCreateCandidateRequestDto: "atsCreateCandidateRequestDto",
-                "x-account-id": "xAccountId",
-            });
-        });
-
-    export type Outbound = {
-        AtsCreateCandidateRequestDto: shared.AtsCreateCandidateRequestDto$.Outbound;
-        "x-account-id": string;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, AtsCreateCandidateRequest> = z
-        .object({
-            atsCreateCandidateRequestDto: shared.AtsCreateCandidateRequestDto$.outboundSchema,
-            xAccountId: z.string(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                atsCreateCandidateRequestDto: "AtsCreateCandidateRequestDto",
-                xAccountId: "x-account-id",
-            });
-        });
+    /** @deprecated use `AtsCreateCandidateRequest$inboundSchema` instead. */
+    export const inboundSchema = AtsCreateCandidateRequest$inboundSchema;
+    /** @deprecated use `AtsCreateCandidateRequest$outboundSchema` instead. */
+    export const outboundSchema = AtsCreateCandidateRequest$outboundSchema;
+    /** @deprecated use `AtsCreateCandidateRequest$Outbound` instead. */
+    export type Outbound = AtsCreateCandidateRequest$Outbound;
 }
 
 /** @internal */
+export const AtsCreateCandidateResponse$inboundSchema: z.ZodType<
+    AtsCreateCandidateResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        ContentType: z.string(),
+        CreateResult: shared.CreateResult$inboundSchema.optional(),
+        StatusCode: z.number().int(),
+        RawResponse: z.instanceof(Response),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            ContentType: "contentType",
+            CreateResult: "createResult",
+            StatusCode: "statusCode",
+            RawResponse: "rawResponse",
+        });
+    });
+
+/** @internal */
+export type AtsCreateCandidateResponse$Outbound = {
+    ContentType: string;
+    CreateResult?: shared.CreateResult$Outbound | undefined;
+    StatusCode: number;
+    RawResponse: never;
+};
+
+/** @internal */
+export const AtsCreateCandidateResponse$outboundSchema: z.ZodType<
+    AtsCreateCandidateResponse$Outbound,
+    z.ZodTypeDef,
+    AtsCreateCandidateResponse
+> = z
+    .object({
+        contentType: z.string(),
+        createResult: shared.CreateResult$outboundSchema.optional(),
+        statusCode: z.number().int(),
+        rawResponse: z.instanceof(Response).transform(() => {
+            throw new Error("Response cannot be serialized");
+        }),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            contentType: "ContentType",
+            createResult: "CreateResult",
+            statusCode: "StatusCode",
+            rawResponse: "RawResponse",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace AtsCreateCandidateResponse$ {
-    export const inboundSchema: z.ZodType<AtsCreateCandidateResponse, z.ZodTypeDef, unknown> = z
-        .object({
-            ContentType: z.string(),
-            CreateResult: shared.CreateResult$.inboundSchema.optional(),
-            StatusCode: z.number().int(),
-            RawResponse: z.instanceof(Response),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                ContentType: "contentType",
-                CreateResult: "createResult",
-                StatusCode: "statusCode",
-                RawResponse: "rawResponse",
-            });
-        });
-
-    export type Outbound = {
-        ContentType: string;
-        CreateResult?: shared.CreateResult$.Outbound | undefined;
-        StatusCode: number;
-        RawResponse: never;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, AtsCreateCandidateResponse> = z
-        .object({
-            contentType: z.string(),
-            createResult: shared.CreateResult$.outboundSchema.optional(),
-            statusCode: z.number().int(),
-            rawResponse: z.instanceof(Response).transform(() => {
-                throw new Error("Response cannot be serialized");
-            }),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                contentType: "ContentType",
-                createResult: "CreateResult",
-                statusCode: "StatusCode",
-                rawResponse: "RawResponse",
-            });
-        });
+    /** @deprecated use `AtsCreateCandidateResponse$inboundSchema` instead. */
+    export const inboundSchema = AtsCreateCandidateResponse$inboundSchema;
+    /** @deprecated use `AtsCreateCandidateResponse$outboundSchema` instead. */
+    export const outboundSchema = AtsCreateCandidateResponse$outboundSchema;
+    /** @deprecated use `AtsCreateCandidateResponse$Outbound` instead. */
+    export type Outbound = AtsCreateCandidateResponse$Outbound;
 }

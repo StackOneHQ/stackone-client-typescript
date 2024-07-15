@@ -7,10 +7,28 @@ import * as z from "zod";
 export type PatchAccountDto = {};
 
 /** @internal */
+export const PatchAccountDto$inboundSchema: z.ZodType<PatchAccountDto, z.ZodTypeDef, unknown> =
+    z.object({});
+
+/** @internal */
+export type PatchAccountDto$Outbound = {};
+
+/** @internal */
+export const PatchAccountDto$outboundSchema: z.ZodType<
+    PatchAccountDto$Outbound,
+    z.ZodTypeDef,
+    PatchAccountDto
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace PatchAccountDto$ {
-    export const inboundSchema: z.ZodType<PatchAccountDto, z.ZodTypeDef, unknown> = z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, PatchAccountDto> = z.object({});
+    /** @deprecated use `PatchAccountDto$inboundSchema` instead. */
+    export const inboundSchema = PatchAccountDto$inboundSchema;
+    /** @deprecated use `PatchAccountDto$outboundSchema` instead. */
+    export const outboundSchema = PatchAccountDto$outboundSchema;
+    /** @deprecated use `PatchAccountDto$Outbound` instead. */
+    export type Outbound = PatchAccountDto$Outbound;
 }

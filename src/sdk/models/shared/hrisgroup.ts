@@ -60,138 +60,205 @@ export type HRISGroup = {
 };
 
 /** @internal */
+export const HRISGroup4$inboundSchema: z.ZodType<HRISGroup4, z.ZodTypeDef, unknown> = z.object({});
+
+/** @internal */
+export type HRISGroup4$Outbound = {};
+
+/** @internal */
+export const HRISGroup4$outboundSchema: z.ZodType<HRISGroup4$Outbound, z.ZodTypeDef, HRISGroup4> =
+    z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace HRISGroup4$ {
-    export const inboundSchema: z.ZodType<HRISGroup4, z.ZodTypeDef, unknown> = z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, HRISGroup4> = z.object({});
+    /** @deprecated use `HRISGroup4$inboundSchema` instead. */
+    export const inboundSchema = HRISGroup4$inboundSchema;
+    /** @deprecated use `HRISGroup4$outboundSchema` instead. */
+    export const outboundSchema = HRISGroup4$outboundSchema;
+    /** @deprecated use `HRISGroup4$Outbound` instead. */
+    export type Outbound = HRISGroup4$Outbound;
 }
 
 /** @internal */
+export const HRISGroupSourceValue$inboundSchema: z.ZodType<
+    HRISGroupSourceValue,
+    z.ZodTypeDef,
+    unknown
+> = z.union([z.lazy(() => HRISGroup4$inboundSchema), z.string(), z.number(), z.boolean()]);
+
+/** @internal */
+export type HRISGroupSourceValue$Outbound = HRISGroup4$Outbound | string | number | boolean;
+
+/** @internal */
+export const HRISGroupSourceValue$outboundSchema: z.ZodType<
+    HRISGroupSourceValue$Outbound,
+    z.ZodTypeDef,
+    HRISGroupSourceValue
+> = z.union([z.lazy(() => HRISGroup4$outboundSchema), z.string(), z.number(), z.boolean()]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace HRISGroupSourceValue$ {
-    export const inboundSchema: z.ZodType<HRISGroupSourceValue, z.ZodTypeDef, unknown> = z.union([
-        z.lazy(() => HRISGroup4$.inboundSchema),
-        z.string(),
-        z.number(),
-        z.boolean(),
-    ]);
-
-    export type Outbound = HRISGroup4$.Outbound | string | number | boolean;
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, HRISGroupSourceValue> = z.union([
-        z.lazy(() => HRISGroup4$.outboundSchema),
-        z.string(),
-        z.number(),
-        z.boolean(),
-    ]);
+    /** @deprecated use `HRISGroupSourceValue$inboundSchema` instead. */
+    export const inboundSchema = HRISGroupSourceValue$inboundSchema;
+    /** @deprecated use `HRISGroupSourceValue$outboundSchema` instead. */
+    export const outboundSchema = HRISGroupSourceValue$outboundSchema;
+    /** @deprecated use `HRISGroupSourceValue$Outbound` instead. */
+    export type Outbound = HRISGroupSourceValue$Outbound;
 }
 
 /** @internal */
+export const HRISGroupValue$inboundSchema: z.ZodType<HRISGroupValueOpen, z.ZodTypeDef, unknown> =
+    z.union([z.nativeEnum(HRISGroupValue), z.string().transform(catchUnrecognizedEnum)]);
+
+/** @internal */
+export const HRISGroupValue$outboundSchema: z.ZodType<
+    HRISGroupValueOpen,
+    z.ZodTypeDef,
+    HRISGroupValueOpen
+> = z.union([z.nativeEnum(HRISGroupValue), z.string().and(z.custom<Unrecognized<string>>())]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace HRISGroupValue$ {
-    export const inboundSchema: z.ZodType<HRISGroupValueOpen, z.ZodTypeDef, unknown> = z.union([
-        z.nativeEnum(HRISGroupValue),
-        z.string().transform(catchUnrecognizedEnum),
-    ]);
-
-    export const outboundSchema: z.ZodType<HRISGroupValueOpen, z.ZodTypeDef, HRISGroupValueOpen> =
-        z.union([z.nativeEnum(HRISGroupValue), z.string().and(z.custom<Unrecognized<string>>())]);
+    /** @deprecated use `HRISGroupValue$inboundSchema` instead. */
+    export const inboundSchema = HRISGroupValue$inboundSchema;
+    /** @deprecated use `HRISGroupValue$outboundSchema` instead. */
+    export const outboundSchema = HRISGroupValue$outboundSchema;
 }
 
 /** @internal */
+export const HRISGroupType$inboundSchema: z.ZodType<HRISGroupType, z.ZodTypeDef, unknown> = z
+    .object({
+        source_value: z
+            .nullable(
+                z.union([
+                    z.lazy(() => HRISGroup4$inboundSchema),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                ])
+            )
+            .optional(),
+        value: z.nullable(HRISGroupValue$inboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            source_value: "sourceValue",
+        });
+    });
+
+/** @internal */
+export type HRISGroupType$Outbound = {
+    source_value?: HRISGroup4$Outbound | string | number | boolean | null | undefined;
+    value?: string | null | undefined;
+};
+
+/** @internal */
+export const HRISGroupType$outboundSchema: z.ZodType<
+    HRISGroupType$Outbound,
+    z.ZodTypeDef,
+    HRISGroupType
+> = z
+    .object({
+        sourceValue: z
+            .nullable(
+                z.union([
+                    z.lazy(() => HRISGroup4$outboundSchema),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                ])
+            )
+            .optional(),
+        value: z.nullable(HRISGroupValue$outboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            sourceValue: "source_value",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace HRISGroupType$ {
-    export const inboundSchema: z.ZodType<HRISGroupType, z.ZodTypeDef, unknown> = z
-        .object({
-            source_value: z
-                .nullable(
-                    z.union([
-                        z.lazy(() => HRISGroup4$.inboundSchema),
-                        z.string(),
-                        z.number(),
-                        z.boolean(),
-                    ])
-                )
-                .optional(),
-            value: z.nullable(HRISGroupValue$.inboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                source_value: "sourceValue",
-            });
-        });
-
-    export type Outbound = {
-        source_value?: HRISGroup4$.Outbound | string | number | boolean | null | undefined;
-        value?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, HRISGroupType> = z
-        .object({
-            sourceValue: z
-                .nullable(
-                    z.union([
-                        z.lazy(() => HRISGroup4$.outboundSchema),
-                        z.string(),
-                        z.number(),
-                        z.boolean(),
-                    ])
-                )
-                .optional(),
-            value: z.nullable(HRISGroupValue$.outboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                sourceValue: "source_value",
-            });
-        });
+    /** @deprecated use `HRISGroupType$inboundSchema` instead. */
+    export const inboundSchema = HRISGroupType$inboundSchema;
+    /** @deprecated use `HRISGroupType$outboundSchema` instead. */
+    export const outboundSchema = HRISGroupType$outboundSchema;
+    /** @deprecated use `HRISGroupType$Outbound` instead. */
+    export type Outbound = HRISGroupType$Outbound;
 }
 
 /** @internal */
+export const HRISGroup$inboundSchema: z.ZodType<HRISGroup, z.ZodTypeDef, unknown> = z
+    .object({
+        id: z.nullable(z.string()).optional(),
+        name: z.nullable(z.string()).optional(),
+        owner_ids: z.nullable(z.array(z.string())).optional(),
+        parent_ids: z.nullable(z.array(z.string())).optional(),
+        remote_id: z.nullable(z.string()).optional(),
+        remote_parent_ids: z.nullable(z.array(z.string())).optional(),
+        type: z.nullable(z.lazy(() => HRISGroupType$inboundSchema)).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            owner_ids: "ownerIds",
+            parent_ids: "parentIds",
+            remote_id: "remoteId",
+            remote_parent_ids: "remoteParentIds",
+        });
+    });
+
+/** @internal */
+export type HRISGroup$Outbound = {
+    id?: string | null | undefined;
+    name?: string | null | undefined;
+    owner_ids?: Array<string> | null | undefined;
+    parent_ids?: Array<string> | null | undefined;
+    remote_id?: string | null | undefined;
+    remote_parent_ids?: Array<string> | null | undefined;
+    type?: HRISGroupType$Outbound | null | undefined;
+};
+
+/** @internal */
+export const HRISGroup$outboundSchema: z.ZodType<HRISGroup$Outbound, z.ZodTypeDef, HRISGroup> = z
+    .object({
+        id: z.nullable(z.string()).optional(),
+        name: z.nullable(z.string()).optional(),
+        ownerIds: z.nullable(z.array(z.string())).optional(),
+        parentIds: z.nullable(z.array(z.string())).optional(),
+        remoteId: z.nullable(z.string()).optional(),
+        remoteParentIds: z.nullable(z.array(z.string())).optional(),
+        type: z.nullable(z.lazy(() => HRISGroupType$outboundSchema)).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            ownerIds: "owner_ids",
+            parentIds: "parent_ids",
+            remoteId: "remote_id",
+            remoteParentIds: "remote_parent_ids",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace HRISGroup$ {
-    export const inboundSchema: z.ZodType<HRISGroup, z.ZodTypeDef, unknown> = z
-        .object({
-            id: z.nullable(z.string()).optional(),
-            name: z.nullable(z.string()).optional(),
-            owner_ids: z.nullable(z.array(z.string())).optional(),
-            parent_ids: z.nullable(z.array(z.string())).optional(),
-            remote_id: z.nullable(z.string()).optional(),
-            remote_parent_ids: z.nullable(z.array(z.string())).optional(),
-            type: z.nullable(z.lazy(() => HRISGroupType$.inboundSchema)).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                owner_ids: "ownerIds",
-                parent_ids: "parentIds",
-                remote_id: "remoteId",
-                remote_parent_ids: "remoteParentIds",
-            });
-        });
-
-    export type Outbound = {
-        id?: string | null | undefined;
-        name?: string | null | undefined;
-        owner_ids?: Array<string> | null | undefined;
-        parent_ids?: Array<string> | null | undefined;
-        remote_id?: string | null | undefined;
-        remote_parent_ids?: Array<string> | null | undefined;
-        type?: HRISGroupType$.Outbound | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, HRISGroup> = z
-        .object({
-            id: z.nullable(z.string()).optional(),
-            name: z.nullable(z.string()).optional(),
-            ownerIds: z.nullable(z.array(z.string())).optional(),
-            parentIds: z.nullable(z.array(z.string())).optional(),
-            remoteId: z.nullable(z.string()).optional(),
-            remoteParentIds: z.nullable(z.array(z.string())).optional(),
-            type: z.nullable(z.lazy(() => HRISGroupType$.outboundSchema)).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                ownerIds: "owner_ids",
-                parentIds: "parent_ids",
-                remoteId: "remote_id",
-                remoteParentIds: "remote_parent_ids",
-            });
-        });
+    /** @deprecated use `HRISGroup$inboundSchema` instead. */
+    export const inboundSchema = HRISGroup$inboundSchema;
+    /** @deprecated use `HRISGroup$outboundSchema` instead. */
+    export const outboundSchema = HRISGroup$outboundSchema;
+    /** @deprecated use `HRISGroup$Outbound` instead. */
+    export type Outbound = HRISGroup$Outbound;
 }

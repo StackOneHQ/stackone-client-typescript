@@ -432,106 +432,172 @@ export type ContentLanguageEnum = {
 };
 
 /** @internal */
+export const ContentLanguageEnum4$inboundSchema: z.ZodType<
+    ContentLanguageEnum4,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type ContentLanguageEnum4$Outbound = {};
+
+/** @internal */
+export const ContentLanguageEnum4$outboundSchema: z.ZodType<
+    ContentLanguageEnum4$Outbound,
+    z.ZodTypeDef,
+    ContentLanguageEnum4
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace ContentLanguageEnum4$ {
-    export const inboundSchema: z.ZodType<ContentLanguageEnum4, z.ZodTypeDef, unknown> = z.object(
-        {}
-    );
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ContentLanguageEnum4> = z.object(
-        {}
-    );
+    /** @deprecated use `ContentLanguageEnum4$inboundSchema` instead. */
+    export const inboundSchema = ContentLanguageEnum4$inboundSchema;
+    /** @deprecated use `ContentLanguageEnum4$outboundSchema` instead. */
+    export const outboundSchema = ContentLanguageEnum4$outboundSchema;
+    /** @deprecated use `ContentLanguageEnum4$Outbound` instead. */
+    export type Outbound = ContentLanguageEnum4$Outbound;
 }
 
 /** @internal */
+export const ContentLanguageEnumSourceValue$inboundSchema: z.ZodType<
+    ContentLanguageEnumSourceValue,
+    z.ZodTypeDef,
+    unknown
+> = z.union([
+    z.lazy(() => ContentLanguageEnum4$inboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+]);
+
+/** @internal */
+export type ContentLanguageEnumSourceValue$Outbound =
+    | ContentLanguageEnum4$Outbound
+    | string
+    | number
+    | boolean;
+
+/** @internal */
+export const ContentLanguageEnumSourceValue$outboundSchema: z.ZodType<
+    ContentLanguageEnumSourceValue$Outbound,
+    z.ZodTypeDef,
+    ContentLanguageEnumSourceValue
+> = z.union([
+    z.lazy(() => ContentLanguageEnum4$outboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace ContentLanguageEnumSourceValue$ {
-    export const inboundSchema: z.ZodType<ContentLanguageEnumSourceValue, z.ZodTypeDef, unknown> =
-        z.union([
-            z.lazy(() => ContentLanguageEnum4$.inboundSchema),
-            z.string(),
-            z.number(),
-            z.boolean(),
-        ]);
-
-    export type Outbound = ContentLanguageEnum4$.Outbound | string | number | boolean;
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ContentLanguageEnumSourceValue> =
-        z.union([
-            z.lazy(() => ContentLanguageEnum4$.outboundSchema),
-            z.string(),
-            z.number(),
-            z.boolean(),
-        ]);
+    /** @deprecated use `ContentLanguageEnumSourceValue$inboundSchema` instead. */
+    export const inboundSchema = ContentLanguageEnumSourceValue$inboundSchema;
+    /** @deprecated use `ContentLanguageEnumSourceValue$outboundSchema` instead. */
+    export const outboundSchema = ContentLanguageEnumSourceValue$outboundSchema;
+    /** @deprecated use `ContentLanguageEnumSourceValue$Outbound` instead. */
+    export type Outbound = ContentLanguageEnumSourceValue$Outbound;
 }
 
 /** @internal */
+export const ContentLanguageEnumValue$inboundSchema: z.ZodType<
+    ContentLanguageEnumValueOpen,
+    z.ZodTypeDef,
+    unknown
+> = z.union([z.nativeEnum(ContentLanguageEnumValue), z.string().transform(catchUnrecognizedEnum)]);
+
+/** @internal */
+export const ContentLanguageEnumValue$outboundSchema: z.ZodType<
+    ContentLanguageEnumValueOpen,
+    z.ZodTypeDef,
+    ContentLanguageEnumValueOpen
+> = z.union([
+    z.nativeEnum(ContentLanguageEnumValue),
+    z.string().and(z.custom<Unrecognized<string>>()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace ContentLanguageEnumValue$ {
-    export const inboundSchema: z.ZodType<ContentLanguageEnumValueOpen, z.ZodTypeDef, unknown> =
-        z.union([
-            z.nativeEnum(ContentLanguageEnumValue),
-            z.string().transform(catchUnrecognizedEnum),
-        ]);
-
-    export const outboundSchema: z.ZodType<
-        ContentLanguageEnumValueOpen,
-        z.ZodTypeDef,
-        ContentLanguageEnumValueOpen
-    > = z.union([
-        z.nativeEnum(ContentLanguageEnumValue),
-        z.string().and(z.custom<Unrecognized<string>>()),
-    ]);
+    /** @deprecated use `ContentLanguageEnumValue$inboundSchema` instead. */
+    export const inboundSchema = ContentLanguageEnumValue$inboundSchema;
+    /** @deprecated use `ContentLanguageEnumValue$outboundSchema` instead. */
+    export const outboundSchema = ContentLanguageEnumValue$outboundSchema;
 }
 
 /** @internal */
+export const ContentLanguageEnum$inboundSchema: z.ZodType<
+    ContentLanguageEnum,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        source_value: z
+            .nullable(
+                z.union([
+                    z.lazy(() => ContentLanguageEnum4$inboundSchema),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                ])
+            )
+            .optional(),
+        value: z.nullable(ContentLanguageEnumValue$inboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            source_value: "sourceValue",
+        });
+    });
+
+/** @internal */
+export type ContentLanguageEnum$Outbound = {
+    source_value?: ContentLanguageEnum4$Outbound | string | number | boolean | null | undefined;
+    value?: string | null | undefined;
+};
+
+/** @internal */
+export const ContentLanguageEnum$outboundSchema: z.ZodType<
+    ContentLanguageEnum$Outbound,
+    z.ZodTypeDef,
+    ContentLanguageEnum
+> = z
+    .object({
+        sourceValue: z
+            .nullable(
+                z.union([
+                    z.lazy(() => ContentLanguageEnum4$outboundSchema),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                ])
+            )
+            .optional(),
+        value: z.nullable(ContentLanguageEnumValue$outboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            sourceValue: "source_value",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace ContentLanguageEnum$ {
-    export const inboundSchema: z.ZodType<ContentLanguageEnum, z.ZodTypeDef, unknown> = z
-        .object({
-            source_value: z
-                .nullable(
-                    z.union([
-                        z.lazy(() => ContentLanguageEnum4$.inboundSchema),
-                        z.string(),
-                        z.number(),
-                        z.boolean(),
-                    ])
-                )
-                .optional(),
-            value: z.nullable(ContentLanguageEnumValue$.inboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                source_value: "sourceValue",
-            });
-        });
-
-    export type Outbound = {
-        source_value?:
-            | ContentLanguageEnum4$.Outbound
-            | string
-            | number
-            | boolean
-            | null
-            | undefined;
-        value?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ContentLanguageEnum> = z
-        .object({
-            sourceValue: z
-                .nullable(
-                    z.union([
-                        z.lazy(() => ContentLanguageEnum4$.outboundSchema),
-                        z.string(),
-                        z.number(),
-                        z.boolean(),
-                    ])
-                )
-                .optional(),
-            value: z.nullable(ContentLanguageEnumValue$.outboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                sourceValue: "source_value",
-            });
-        });
+    /** @deprecated use `ContentLanguageEnum$inboundSchema` instead. */
+    export const inboundSchema = ContentLanguageEnum$inboundSchema;
+    /** @deprecated use `ContentLanguageEnum$outboundSchema` instead. */
+    export const outboundSchema = ContentLanguageEnum$outboundSchema;
+    /** @deprecated use `ContentLanguageEnum$Outbound` instead. */
+    export type Outbound = ContentLanguageEnum$Outbound;
 }

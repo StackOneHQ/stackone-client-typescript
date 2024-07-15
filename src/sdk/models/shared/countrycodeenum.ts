@@ -278,93 +278,152 @@ export type CountryCodeEnum = {
 };
 
 /** @internal */
+export const CountryCodeEnum4$inboundSchema: z.ZodType<CountryCodeEnum4, z.ZodTypeDef, unknown> =
+    z.object({});
+
+/** @internal */
+export type CountryCodeEnum4$Outbound = {};
+
+/** @internal */
+export const CountryCodeEnum4$outboundSchema: z.ZodType<
+    CountryCodeEnum4$Outbound,
+    z.ZodTypeDef,
+    CountryCodeEnum4
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace CountryCodeEnum4$ {
-    export const inboundSchema: z.ZodType<CountryCodeEnum4, z.ZodTypeDef, unknown> = z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CountryCodeEnum4> = z.object({});
+    /** @deprecated use `CountryCodeEnum4$inboundSchema` instead. */
+    export const inboundSchema = CountryCodeEnum4$inboundSchema;
+    /** @deprecated use `CountryCodeEnum4$outboundSchema` instead. */
+    export const outboundSchema = CountryCodeEnum4$outboundSchema;
+    /** @deprecated use `CountryCodeEnum4$Outbound` instead. */
+    export type Outbound = CountryCodeEnum4$Outbound;
 }
 
 /** @internal */
+export const CountryCodeEnumSourceValue$inboundSchema: z.ZodType<
+    CountryCodeEnumSourceValue,
+    z.ZodTypeDef,
+    unknown
+> = z.union([z.lazy(() => CountryCodeEnum4$inboundSchema), z.string(), z.number(), z.boolean()]);
+
+/** @internal */
+export type CountryCodeEnumSourceValue$Outbound =
+    | CountryCodeEnum4$Outbound
+    | string
+    | number
+    | boolean;
+
+/** @internal */
+export const CountryCodeEnumSourceValue$outboundSchema: z.ZodType<
+    CountryCodeEnumSourceValue$Outbound,
+    z.ZodTypeDef,
+    CountryCodeEnumSourceValue
+> = z.union([z.lazy(() => CountryCodeEnum4$outboundSchema), z.string(), z.number(), z.boolean()]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace CountryCodeEnumSourceValue$ {
-    export const inboundSchema: z.ZodType<CountryCodeEnumSourceValue, z.ZodTypeDef, unknown> =
-        z.union([
-            z.lazy(() => CountryCodeEnum4$.inboundSchema),
-            z.string(),
-            z.number(),
-            z.boolean(),
-        ]);
-
-    export type Outbound = CountryCodeEnum4$.Outbound | string | number | boolean;
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CountryCodeEnumSourceValue> =
-        z.union([
-            z.lazy(() => CountryCodeEnum4$.outboundSchema),
-            z.string(),
-            z.number(),
-            z.boolean(),
-        ]);
+    /** @deprecated use `CountryCodeEnumSourceValue$inboundSchema` instead. */
+    export const inboundSchema = CountryCodeEnumSourceValue$inboundSchema;
+    /** @deprecated use `CountryCodeEnumSourceValue$outboundSchema` instead. */
+    export const outboundSchema = CountryCodeEnumSourceValue$outboundSchema;
+    /** @deprecated use `CountryCodeEnumSourceValue$Outbound` instead. */
+    export type Outbound = CountryCodeEnumSourceValue$Outbound;
 }
 
 /** @internal */
+export const CountryCodeEnumValue$inboundSchema: z.ZodType<
+    CountryCodeEnumValueOpen,
+    z.ZodTypeDef,
+    unknown
+> = z.union([z.nativeEnum(CountryCodeEnumValue), z.string().transform(catchUnrecognizedEnum)]);
+
+/** @internal */
+export const CountryCodeEnumValue$outboundSchema: z.ZodType<
+    CountryCodeEnumValueOpen,
+    z.ZodTypeDef,
+    CountryCodeEnumValueOpen
+> = z.union([z.nativeEnum(CountryCodeEnumValue), z.string().and(z.custom<Unrecognized<string>>())]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace CountryCodeEnumValue$ {
-    export const inboundSchema: z.ZodType<CountryCodeEnumValueOpen, z.ZodTypeDef, unknown> =
-        z.union([z.nativeEnum(CountryCodeEnumValue), z.string().transform(catchUnrecognizedEnum)]);
-
-    export const outboundSchema: z.ZodType<
-        CountryCodeEnumValueOpen,
-        z.ZodTypeDef,
-        CountryCodeEnumValueOpen
-    > = z.union([
-        z.nativeEnum(CountryCodeEnumValue),
-        z.string().and(z.custom<Unrecognized<string>>()),
-    ]);
+    /** @deprecated use `CountryCodeEnumValue$inboundSchema` instead. */
+    export const inboundSchema = CountryCodeEnumValue$inboundSchema;
+    /** @deprecated use `CountryCodeEnumValue$outboundSchema` instead. */
+    export const outboundSchema = CountryCodeEnumValue$outboundSchema;
 }
 
 /** @internal */
+export const CountryCodeEnum$inboundSchema: z.ZodType<CountryCodeEnum, z.ZodTypeDef, unknown> = z
+    .object({
+        source_value: z
+            .nullable(
+                z.union([
+                    z.lazy(() => CountryCodeEnum4$inboundSchema),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                ])
+            )
+            .optional(),
+        value: z.nullable(CountryCodeEnumValue$inboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            source_value: "sourceValue",
+        });
+    });
+
+/** @internal */
+export type CountryCodeEnum$Outbound = {
+    source_value?: CountryCodeEnum4$Outbound | string | number | boolean | null | undefined;
+    value?: string | null | undefined;
+};
+
+/** @internal */
+export const CountryCodeEnum$outboundSchema: z.ZodType<
+    CountryCodeEnum$Outbound,
+    z.ZodTypeDef,
+    CountryCodeEnum
+> = z
+    .object({
+        sourceValue: z
+            .nullable(
+                z.union([
+                    z.lazy(() => CountryCodeEnum4$outboundSchema),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                ])
+            )
+            .optional(),
+        value: z.nullable(CountryCodeEnumValue$outboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            sourceValue: "source_value",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace CountryCodeEnum$ {
-    export const inboundSchema: z.ZodType<CountryCodeEnum, z.ZodTypeDef, unknown> = z
-        .object({
-            source_value: z
-                .nullable(
-                    z.union([
-                        z.lazy(() => CountryCodeEnum4$.inboundSchema),
-                        z.string(),
-                        z.number(),
-                        z.boolean(),
-                    ])
-                )
-                .optional(),
-            value: z.nullable(CountryCodeEnumValue$.inboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                source_value: "sourceValue",
-            });
-        });
-
-    export type Outbound = {
-        source_value?: CountryCodeEnum4$.Outbound | string | number | boolean | null | undefined;
-        value?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CountryCodeEnum> = z
-        .object({
-            sourceValue: z
-                .nullable(
-                    z.union([
-                        z.lazy(() => CountryCodeEnum4$.outboundSchema),
-                        z.string(),
-                        z.number(),
-                        z.boolean(),
-                    ])
-                )
-                .optional(),
-            value: z.nullable(CountryCodeEnumValue$.outboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                sourceValue: "source_value",
-            });
-        });
+    /** @deprecated use `CountryCodeEnum$inboundSchema` instead. */
+    export const inboundSchema = CountryCodeEnum$inboundSchema;
+    /** @deprecated use `CountryCodeEnum$outboundSchema` instead. */
+    export const outboundSchema = CountryCodeEnum$outboundSchema;
+    /** @deprecated use `CountryCodeEnum$Outbound` instead. */
+    export type Outbound = CountryCodeEnum$Outbound;
 }

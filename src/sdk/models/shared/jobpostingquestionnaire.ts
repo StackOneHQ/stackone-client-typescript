@@ -3,7 +3,12 @@
  */
 
 import { remap as remap$ } from "../../../lib/primitives.js";
-import { Question, Question$ } from "./question.js";
+import {
+    Question,
+    Question$inboundSchema,
+    Question$Outbound,
+    Question$outboundSchema,
+} from "./question.js";
 import * as z from "zod";
 
 export enum JobPostingQuestionnaire2 {
@@ -28,64 +33,116 @@ export type JobPostingQuestionnaire = {
 };
 
 /** @internal */
+export const JobPostingQuestionnaire2$inboundSchema: z.ZodNativeEnum<
+    typeof JobPostingQuestionnaire2
+> = z.nativeEnum(JobPostingQuestionnaire2);
+
+/** @internal */
+export const JobPostingQuestionnaire2$outboundSchema: z.ZodNativeEnum<
+    typeof JobPostingQuestionnaire2
+> = JobPostingQuestionnaire2$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace JobPostingQuestionnaire2$ {
-    export const inboundSchema: z.ZodNativeEnum<typeof JobPostingQuestionnaire2> =
-        z.nativeEnum(JobPostingQuestionnaire2);
-    export const outboundSchema: z.ZodNativeEnum<typeof JobPostingQuestionnaire2> = inboundSchema;
+    /** @deprecated use `JobPostingQuestionnaire2$inboundSchema` instead. */
+    export const inboundSchema = JobPostingQuestionnaire2$inboundSchema;
+    /** @deprecated use `JobPostingQuestionnaire2$outboundSchema` instead. */
+    export const outboundSchema = JobPostingQuestionnaire2$outboundSchema;
 }
 
 /** @internal */
+export const JobPostingQuestionnaireInternal$inboundSchema: z.ZodType<
+    JobPostingQuestionnaireInternal,
+    z.ZodTypeDef,
+    unknown
+> = z.union([z.boolean(), JobPostingQuestionnaire2$inboundSchema]);
+
+/** @internal */
+export type JobPostingQuestionnaireInternal$Outbound = boolean | string;
+
+/** @internal */
+export const JobPostingQuestionnaireInternal$outboundSchema: z.ZodType<
+    JobPostingQuestionnaireInternal$Outbound,
+    z.ZodTypeDef,
+    JobPostingQuestionnaireInternal
+> = z.union([z.boolean(), JobPostingQuestionnaire2$outboundSchema]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace JobPostingQuestionnaireInternal$ {
-    export const inboundSchema: z.ZodType<JobPostingQuestionnaireInternal, z.ZodTypeDef, unknown> =
-        z.union([z.boolean(), JobPostingQuestionnaire2$.inboundSchema]);
-
-    export type Outbound = boolean | string;
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        JobPostingQuestionnaireInternal
-    > = z.union([z.boolean(), JobPostingQuestionnaire2$.outboundSchema]);
+    /** @deprecated use `JobPostingQuestionnaireInternal$inboundSchema` instead. */
+    export const inboundSchema = JobPostingQuestionnaireInternal$inboundSchema;
+    /** @deprecated use `JobPostingQuestionnaireInternal$outboundSchema` instead. */
+    export const outboundSchema = JobPostingQuestionnaireInternal$outboundSchema;
+    /** @deprecated use `JobPostingQuestionnaireInternal$Outbound` instead. */
+    export type Outbound = JobPostingQuestionnaireInternal$Outbound;
 }
 
 /** @internal */
+export const JobPostingQuestionnaire$inboundSchema: z.ZodType<
+    JobPostingQuestionnaire,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        id: z.nullable(z.string()).optional(),
+        internal: z
+            .nullable(z.union([z.boolean(), JobPostingQuestionnaire2$inboundSchema]))
+            .optional(),
+        name: z.nullable(z.string()).optional(),
+        questions: z.nullable(z.array(Question$inboundSchema)).optional(),
+        remote_id: z.nullable(z.string()).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            remote_id: "remoteId",
+        });
+    });
+
+/** @internal */
+export type JobPostingQuestionnaire$Outbound = {
+    id?: string | null | undefined;
+    internal?: boolean | string | null | undefined;
+    name?: string | null | undefined;
+    questions?: Array<Question$Outbound> | null | undefined;
+    remote_id?: string | null | undefined;
+};
+
+/** @internal */
+export const JobPostingQuestionnaire$outboundSchema: z.ZodType<
+    JobPostingQuestionnaire$Outbound,
+    z.ZodTypeDef,
+    JobPostingQuestionnaire
+> = z
+    .object({
+        id: z.nullable(z.string()).optional(),
+        internal: z
+            .nullable(z.union([z.boolean(), JobPostingQuestionnaire2$outboundSchema]))
+            .optional(),
+        name: z.nullable(z.string()).optional(),
+        questions: z.nullable(z.array(Question$outboundSchema)).optional(),
+        remoteId: z.nullable(z.string()).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            remoteId: "remote_id",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace JobPostingQuestionnaire$ {
-    export const inboundSchema: z.ZodType<JobPostingQuestionnaire, z.ZodTypeDef, unknown> = z
-        .object({
-            id: z.nullable(z.string()).optional(),
-            internal: z
-                .nullable(z.union([z.boolean(), JobPostingQuestionnaire2$.inboundSchema]))
-                .optional(),
-            name: z.nullable(z.string()).optional(),
-            questions: z.nullable(z.array(Question$.inboundSchema)).optional(),
-            remote_id: z.nullable(z.string()).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                remote_id: "remoteId",
-            });
-        });
-
-    export type Outbound = {
-        id?: string | null | undefined;
-        internal?: boolean | string | null | undefined;
-        name?: string | null | undefined;
-        questions?: Array<Question$.Outbound> | null | undefined;
-        remote_id?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, JobPostingQuestionnaire> = z
-        .object({
-            id: z.nullable(z.string()).optional(),
-            internal: z
-                .nullable(z.union([z.boolean(), JobPostingQuestionnaire2$.outboundSchema]))
-                .optional(),
-            name: z.nullable(z.string()).optional(),
-            questions: z.nullable(z.array(Question$.outboundSchema)).optional(),
-            remoteId: z.nullable(z.string()).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                remoteId: "remote_id",
-            });
-        });
+    /** @deprecated use `JobPostingQuestionnaire$inboundSchema` instead. */
+    export const inboundSchema = JobPostingQuestionnaire$inboundSchema;
+    /** @deprecated use `JobPostingQuestionnaire$outboundSchema` instead. */
+    export const outboundSchema = JobPostingQuestionnaire$outboundSchema;
+    /** @deprecated use `JobPostingQuestionnaire$Outbound` instead. */
+    export type Outbound = JobPostingQuestionnaire$Outbound;
 }

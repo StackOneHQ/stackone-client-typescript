@@ -47,148 +47,254 @@ export type PushMessages = {
 };
 
 /** @internal */
+export const PushMessagesMessageContent$inboundSchema: z.ZodType<
+    PushMessagesMessageContent,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    body: z.nullable(z.string()).optional(),
+});
+
+/** @internal */
+export type PushMessagesMessageContent$Outbound = {
+    body?: string | null | undefined;
+};
+
+/** @internal */
+export const PushMessagesMessageContent$outboundSchema: z.ZodType<
+    PushMessagesMessageContent$Outbound,
+    z.ZodTypeDef,
+    PushMessagesMessageContent
+> = z.object({
+    body: z.nullable(z.string()).optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace PushMessagesMessageContent$ {
-    export const inboundSchema: z.ZodType<PushMessagesMessageContent, z.ZodTypeDef, unknown> =
-        z.object({
-            body: z.nullable(z.string()).optional(),
-        });
-
-    export type Outbound = {
-        body?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, PushMessagesMessageContent> =
-        z.object({
-            body: z.nullable(z.string()).optional(),
-        });
+    /** @deprecated use `PushMessagesMessageContent$inboundSchema` instead. */
+    export const inboundSchema = PushMessagesMessageContent$inboundSchema;
+    /** @deprecated use `PushMessagesMessageContent$outboundSchema` instead. */
+    export const outboundSchema = PushMessagesMessageContent$outboundSchema;
+    /** @deprecated use `PushMessagesMessageContent$Outbound` instead. */
+    export type Outbound = PushMessagesMessageContent$Outbound;
 }
 
 /** @internal */
+export const PushMessages4$inboundSchema: z.ZodType<PushMessages4, z.ZodTypeDef, unknown> =
+    z.object({});
+
+/** @internal */
+export type PushMessages4$Outbound = {};
+
+/** @internal */
+export const PushMessages4$outboundSchema: z.ZodType<
+    PushMessages4$Outbound,
+    z.ZodTypeDef,
+    PushMessages4
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace PushMessages4$ {
-    export const inboundSchema: z.ZodType<PushMessages4, z.ZodTypeDef, unknown> = z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, PushMessages4> = z.object({});
+    /** @deprecated use `PushMessages4$inboundSchema` instead. */
+    export const inboundSchema = PushMessages4$inboundSchema;
+    /** @deprecated use `PushMessages4$outboundSchema` instead. */
+    export const outboundSchema = PushMessages4$outboundSchema;
+    /** @deprecated use `PushMessages4$Outbound` instead. */
+    export type Outbound = PushMessages4$Outbound;
 }
 
 /** @internal */
+export const PushMessagesSourceValue$inboundSchema: z.ZodType<
+    PushMessagesSourceValue,
+    z.ZodTypeDef,
+    unknown
+> = z.union([z.lazy(() => PushMessages4$inboundSchema), z.string(), z.number(), z.boolean()]);
+
+/** @internal */
+export type PushMessagesSourceValue$Outbound = PushMessages4$Outbound | string | number | boolean;
+
+/** @internal */
+export const PushMessagesSourceValue$outboundSchema: z.ZodType<
+    PushMessagesSourceValue$Outbound,
+    z.ZodTypeDef,
+    PushMessagesSourceValue
+> = z.union([z.lazy(() => PushMessages4$outboundSchema), z.string(), z.number(), z.boolean()]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace PushMessagesSourceValue$ {
-    export const inboundSchema: z.ZodType<PushMessagesSourceValue, z.ZodTypeDef, unknown> = z.union(
-        [z.lazy(() => PushMessages4$.inboundSchema), z.string(), z.number(), z.boolean()]
-    );
-
-    export type Outbound = PushMessages4$.Outbound | string | number | boolean;
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, PushMessagesSourceValue> =
-        z.union([z.lazy(() => PushMessages4$.outboundSchema), z.string(), z.number(), z.boolean()]);
+    /** @deprecated use `PushMessagesSourceValue$inboundSchema` instead. */
+    export const inboundSchema = PushMessagesSourceValue$inboundSchema;
+    /** @deprecated use `PushMessagesSourceValue$outboundSchema` instead. */
+    export const outboundSchema = PushMessagesSourceValue$outboundSchema;
+    /** @deprecated use `PushMessagesSourceValue$Outbound` instead. */
+    export type Outbound = PushMessagesSourceValue$Outbound;
 }
 
 /** @internal */
+export const PushMessagesValue$inboundSchema: z.ZodType<PushMessagesValue, z.ZodTypeDef, unknown> =
+    z.object({});
+
+/** @internal */
+export type PushMessagesValue$Outbound = {};
+
+/** @internal */
+export const PushMessagesValue$outboundSchema: z.ZodType<
+    PushMessagesValue$Outbound,
+    z.ZodTypeDef,
+    PushMessagesValue
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace PushMessagesValue$ {
-    export const inboundSchema: z.ZodType<PushMessagesValue, z.ZodTypeDef, unknown> = z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, PushMessagesValue> = z.object(
-        {}
-    );
+    /** @deprecated use `PushMessagesValue$inboundSchema` instead. */
+    export const inboundSchema = PushMessagesValue$inboundSchema;
+    /** @deprecated use `PushMessagesValue$outboundSchema` instead. */
+    export const outboundSchema = PushMessagesValue$outboundSchema;
+    /** @deprecated use `PushMessagesValue$Outbound` instead. */
+    export type Outbound = PushMessagesValue$Outbound;
 }
 
 /** @internal */
+export const PushMessagesMessageType$inboundSchema: z.ZodType<
+    PushMessagesMessageType,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        source_value: z
+            .nullable(
+                z.union([
+                    z.lazy(() => PushMessages4$inboundSchema),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                ])
+            )
+            .optional(),
+        value: z.nullable(z.lazy(() => PushMessagesValue$inboundSchema)).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            source_value: "sourceValue",
+        });
+    });
+
+/** @internal */
+export type PushMessagesMessageType$Outbound = {
+    source_value?: PushMessages4$Outbound | string | number | boolean | null | undefined;
+    value?: PushMessagesValue$Outbound | null | undefined;
+};
+
+/** @internal */
+export const PushMessagesMessageType$outboundSchema: z.ZodType<
+    PushMessagesMessageType$Outbound,
+    z.ZodTypeDef,
+    PushMessagesMessageType
+> = z
+    .object({
+        sourceValue: z
+            .nullable(
+                z.union([
+                    z.lazy(() => PushMessages4$outboundSchema),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                ])
+            )
+            .optional(),
+        value: z.nullable(z.lazy(() => PushMessagesValue$outboundSchema)).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            sourceValue: "source_value",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace PushMessagesMessageType$ {
-    export const inboundSchema: z.ZodType<PushMessagesMessageType, z.ZodTypeDef, unknown> = z
-        .object({
-            source_value: z
-                .nullable(
-                    z.union([
-                        z.lazy(() => PushMessages4$.inboundSchema),
-                        z.string(),
-                        z.number(),
-                        z.boolean(),
-                    ])
-                )
-                .optional(),
-            value: z.nullable(z.lazy(() => PushMessagesValue$.inboundSchema)).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                source_value: "sourceValue",
-            });
-        });
-
-    export type Outbound = {
-        source_value?: PushMessages4$.Outbound | string | number | boolean | null | undefined;
-        value?: PushMessagesValue$.Outbound | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, PushMessagesMessageType> = z
-        .object({
-            sourceValue: z
-                .nullable(
-                    z.union([
-                        z.lazy(() => PushMessages4$.outboundSchema),
-                        z.string(),
-                        z.number(),
-                        z.boolean(),
-                    ])
-                )
-                .optional(),
-            value: z.nullable(z.lazy(() => PushMessagesValue$.outboundSchema)).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                sourceValue: "source_value",
-            });
-        });
+    /** @deprecated use `PushMessagesMessageType$inboundSchema` instead. */
+    export const inboundSchema = PushMessagesMessageType$inboundSchema;
+    /** @deprecated use `PushMessagesMessageType$outboundSchema` instead. */
+    export const outboundSchema = PushMessagesMessageType$outboundSchema;
+    /** @deprecated use `PushMessagesMessageType$Outbound` instead. */
+    export type Outbound = PushMessagesMessageType$Outbound;
 }
 
 /** @internal */
+export const PushMessages$inboundSchema: z.ZodType<PushMessages, z.ZodTypeDef, unknown> = z
+    .object({
+        id: z.nullable(z.string()).optional(),
+        message_content: z
+            .nullable(z.lazy(() => PushMessagesMessageContent$inboundSchema))
+            .optional(),
+        message_type: z.nullable(z.lazy(() => PushMessagesMessageType$inboundSchema)).optional(),
+        name: z.nullable(z.string()).optional(),
+        remote_id: z.nullable(z.string()).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            message_content: "messageContent",
+            message_type: "messageType",
+            remote_id: "remoteId",
+        });
+    });
+
+/** @internal */
+export type PushMessages$Outbound = {
+    id?: string | null | undefined;
+    message_content?: PushMessagesMessageContent$Outbound | null | undefined;
+    message_type?: PushMessagesMessageType$Outbound | null | undefined;
+    name?: string | null | undefined;
+    remote_id?: string | null | undefined;
+};
+
+/** @internal */
+export const PushMessages$outboundSchema: z.ZodType<
+    PushMessages$Outbound,
+    z.ZodTypeDef,
+    PushMessages
+> = z
+    .object({
+        id: z.nullable(z.string()).optional(),
+        messageContent: z
+            .nullable(z.lazy(() => PushMessagesMessageContent$outboundSchema))
+            .optional(),
+        messageType: z.nullable(z.lazy(() => PushMessagesMessageType$outboundSchema)).optional(),
+        name: z.nullable(z.string()).optional(),
+        remoteId: z.nullable(z.string()).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            messageContent: "message_content",
+            messageType: "message_type",
+            remoteId: "remote_id",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace PushMessages$ {
-    export const inboundSchema: z.ZodType<PushMessages, z.ZodTypeDef, unknown> = z
-        .object({
-            id: z.nullable(z.string()).optional(),
-            message_content: z
-                .nullable(z.lazy(() => PushMessagesMessageContent$.inboundSchema))
-                .optional(),
-            message_type: z
-                .nullable(z.lazy(() => PushMessagesMessageType$.inboundSchema))
-                .optional(),
-            name: z.nullable(z.string()).optional(),
-            remote_id: z.nullable(z.string()).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                message_content: "messageContent",
-                message_type: "messageType",
-                remote_id: "remoteId",
-            });
-        });
-
-    export type Outbound = {
-        id?: string | null | undefined;
-        message_content?: PushMessagesMessageContent$.Outbound | null | undefined;
-        message_type?: PushMessagesMessageType$.Outbound | null | undefined;
-        name?: string | null | undefined;
-        remote_id?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, PushMessages> = z
-        .object({
-            id: z.nullable(z.string()).optional(),
-            messageContent: z
-                .nullable(z.lazy(() => PushMessagesMessageContent$.outboundSchema))
-                .optional(),
-            messageType: z
-                .nullable(z.lazy(() => PushMessagesMessageType$.outboundSchema))
-                .optional(),
-            name: z.nullable(z.string()).optional(),
-            remoteId: z.nullable(z.string()).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                messageContent: "message_content",
-                messageType: "message_type",
-                remoteId: "remote_id",
-            });
-        });
+    /** @deprecated use `PushMessages$inboundSchema` instead. */
+    export const inboundSchema = PushMessages$inboundSchema;
+    /** @deprecated use `PushMessages$outboundSchema` instead. */
+    export const outboundSchema = PushMessages$outboundSchema;
+    /** @deprecated use `PushMessages$Outbound` instead. */
+    export type Outbound = PushMessages$Outbound;
 }
