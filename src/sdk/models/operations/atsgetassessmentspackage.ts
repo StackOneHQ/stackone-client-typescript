@@ -46,95 +46,126 @@ export type AtsGetAssessmentsPackageResponse = {
 };
 
 /** @internal */
-export namespace AtsGetAssessmentsPackageRequest$ {
-    export const inboundSchema: z.ZodType<AtsGetAssessmentsPackageRequest, z.ZodTypeDef, unknown> =
-        z
-            .object({
-                fields: z.nullable(z.string()).optional(),
-                id: z.string(),
-                proxy: z.nullable(z.record(z.any())).optional(),
-                raw: z.nullable(z.boolean().default(false)),
-                "x-account-id": z.string(),
-            })
-            .transform((v) => {
-                return remap$(v, {
-                    "x-account-id": "xAccountId",
-                });
-            });
-
-    export type Outbound = {
-        fields?: string | null | undefined;
-        id: string;
-        proxy?: { [k: string]: any } | null | undefined;
-        raw: boolean | null;
-        "x-account-id": string;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        AtsGetAssessmentsPackageRequest
-    > = z
-        .object({
-            fields: z.nullable(z.string()).optional(),
-            id: z.string(),
-            proxy: z.nullable(z.record(z.any())).optional(),
-            raw: z.nullable(z.boolean().default(false)),
-            xAccountId: z.string(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                xAccountId: "x-account-id",
-            });
+export const AtsGetAssessmentsPackageRequest$inboundSchema: z.ZodType<
+    AtsGetAssessmentsPackageRequest,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        fields: z.nullable(z.string()).optional(),
+        id: z.string(),
+        proxy: z.nullable(z.record(z.any())).optional(),
+        raw: z.nullable(z.boolean().default(false)),
+        "x-account-id": z.string(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            "x-account-id": "xAccountId",
         });
+    });
+
+/** @internal */
+export type AtsGetAssessmentsPackageRequest$Outbound = {
+    fields?: string | null | undefined;
+    id: string;
+    proxy?: { [k: string]: any } | null | undefined;
+    raw: boolean | null;
+    "x-account-id": string;
+};
+
+/** @internal */
+export const AtsGetAssessmentsPackageRequest$outboundSchema: z.ZodType<
+    AtsGetAssessmentsPackageRequest$Outbound,
+    z.ZodTypeDef,
+    AtsGetAssessmentsPackageRequest
+> = z
+    .object({
+        fields: z.nullable(z.string()).optional(),
+        id: z.string(),
+        proxy: z.nullable(z.record(z.any())).optional(),
+        raw: z.nullable(z.boolean().default(false)),
+        xAccountId: z.string(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            xAccountId: "x-account-id",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace AtsGetAssessmentsPackageRequest$ {
+    /** @deprecated use `AtsGetAssessmentsPackageRequest$inboundSchema` instead. */
+    export const inboundSchema = AtsGetAssessmentsPackageRequest$inboundSchema;
+    /** @deprecated use `AtsGetAssessmentsPackageRequest$outboundSchema` instead. */
+    export const outboundSchema = AtsGetAssessmentsPackageRequest$outboundSchema;
+    /** @deprecated use `AtsGetAssessmentsPackageRequest$Outbound` instead. */
+    export type Outbound = AtsGetAssessmentsPackageRequest$Outbound;
 }
 
 /** @internal */
-export namespace AtsGetAssessmentsPackageResponse$ {
-    export const inboundSchema: z.ZodType<AtsGetAssessmentsPackageResponse, z.ZodTypeDef, unknown> =
-        z
-            .object({
-                AssessmentsPackagesResult:
-                    shared.AssessmentsPackagesResult$.inboundSchema.optional(),
-                ContentType: z.string(),
-                StatusCode: z.number().int(),
-                RawResponse: z.instanceof(Response),
-            })
-            .transform((v) => {
-                return remap$(v, {
-                    AssessmentsPackagesResult: "assessmentsPackagesResult",
-                    ContentType: "contentType",
-                    StatusCode: "statusCode",
-                    RawResponse: "rawResponse",
-                });
-            });
-
-    export type Outbound = {
-        AssessmentsPackagesResult?: shared.AssessmentsPackagesResult$.Outbound | undefined;
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: never;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        AtsGetAssessmentsPackageResponse
-    > = z
-        .object({
-            assessmentsPackagesResult: shared.AssessmentsPackagesResult$.outboundSchema.optional(),
-            contentType: z.string(),
-            statusCode: z.number().int(),
-            rawResponse: z.instanceof(Response).transform(() => {
-                throw new Error("Response cannot be serialized");
-            }),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                assessmentsPackagesResult: "AssessmentsPackagesResult",
-                contentType: "ContentType",
-                statusCode: "StatusCode",
-                rawResponse: "RawResponse",
-            });
+export const AtsGetAssessmentsPackageResponse$inboundSchema: z.ZodType<
+    AtsGetAssessmentsPackageResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        AssessmentsPackagesResult: shared.AssessmentsPackagesResult$inboundSchema.optional(),
+        ContentType: z.string(),
+        StatusCode: z.number().int(),
+        RawResponse: z.instanceof(Response),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            AssessmentsPackagesResult: "assessmentsPackagesResult",
+            ContentType: "contentType",
+            StatusCode: "statusCode",
+            RawResponse: "rawResponse",
         });
+    });
+
+/** @internal */
+export type AtsGetAssessmentsPackageResponse$Outbound = {
+    AssessmentsPackagesResult?: shared.AssessmentsPackagesResult$Outbound | undefined;
+    ContentType: string;
+    StatusCode: number;
+    RawResponse: never;
+};
+
+/** @internal */
+export const AtsGetAssessmentsPackageResponse$outboundSchema: z.ZodType<
+    AtsGetAssessmentsPackageResponse$Outbound,
+    z.ZodTypeDef,
+    AtsGetAssessmentsPackageResponse
+> = z
+    .object({
+        assessmentsPackagesResult: shared.AssessmentsPackagesResult$outboundSchema.optional(),
+        contentType: z.string(),
+        statusCode: z.number().int(),
+        rawResponse: z.instanceof(Response).transform(() => {
+            throw new Error("Response cannot be serialized");
+        }),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            assessmentsPackagesResult: "AssessmentsPackagesResult",
+            contentType: "ContentType",
+            statusCode: "StatusCode",
+            rawResponse: "RawResponse",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace AtsGetAssessmentsPackageResponse$ {
+    /** @deprecated use `AtsGetAssessmentsPackageResponse$inboundSchema` instead. */
+    export const inboundSchema = AtsGetAssessmentsPackageResponse$inboundSchema;
+    /** @deprecated use `AtsGetAssessmentsPackageResponse$outboundSchema` instead. */
+    export const outboundSchema = AtsGetAssessmentsPackageResponse$outboundSchema;
+    /** @deprecated use `AtsGetAssessmentsPackageResponse$Outbound` instead. */
+    export type Outbound = AtsGetAssessmentsPackageResponse$Outbound;
 }

@@ -3,8 +3,18 @@
  */
 
 import { remap as remap$ } from "../../../lib/primitives.js";
-import { Contact, Contact$ } from "./contact.js";
-import { RawResponse, RawResponse$ } from "./rawresponse.js";
+import {
+    Contact,
+    Contact$inboundSchema,
+    Contact$Outbound,
+    Contact$outboundSchema,
+} from "./contact.js";
+import {
+    RawResponse,
+    RawResponse$inboundSchema,
+    RawResponse$Outbound,
+    RawResponse$outboundSchema,
+} from "./rawresponse.js";
 import * as z from "zod";
 
 export type ContactsPaginated = {
@@ -18,13 +28,13 @@ export type ContactsPaginated = {
 };
 
 /** @internal */
-export namespace ContactsPaginated$ {
-    export const inboundSchema: z.ZodType<ContactsPaginated, z.ZodTypeDef, unknown> = z
+export const ContactsPaginated$inboundSchema: z.ZodType<ContactsPaginated, z.ZodTypeDef, unknown> =
+    z
         .object({
-            data: z.array(Contact$.inboundSchema),
+            data: z.array(Contact$inboundSchema),
             next: z.nullable(z.string()).optional(),
             next_page: z.nullable(z.string()).optional(),
-            raw: z.nullable(z.array(RawResponse$.inboundSchema)).optional(),
+            raw: z.nullable(z.array(RawResponse$inboundSchema)).optional(),
         })
         .transform((v) => {
             return remap$(v, {
@@ -32,23 +42,41 @@ export namespace ContactsPaginated$ {
             });
         });
 
-    export type Outbound = {
-        data: Array<Contact$.Outbound>;
-        next?: string | null | undefined;
-        next_page?: string | null | undefined;
-        raw?: Array<RawResponse$.Outbound> | null | undefined;
-    };
+/** @internal */
+export type ContactsPaginated$Outbound = {
+    data: Array<Contact$Outbound>;
+    next?: string | null | undefined;
+    next_page?: string | null | undefined;
+    raw?: Array<RawResponse$Outbound> | null | undefined;
+};
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ContactsPaginated> = z
-        .object({
-            data: z.array(Contact$.outboundSchema),
-            next: z.nullable(z.string()).optional(),
-            nextPage: z.nullable(z.string()).optional(),
-            raw: z.nullable(z.array(RawResponse$.outboundSchema)).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                nextPage: "next_page",
-            });
+/** @internal */
+export const ContactsPaginated$outboundSchema: z.ZodType<
+    ContactsPaginated$Outbound,
+    z.ZodTypeDef,
+    ContactsPaginated
+> = z
+    .object({
+        data: z.array(Contact$outboundSchema),
+        next: z.nullable(z.string()).optional(),
+        nextPage: z.nullable(z.string()).optional(),
+        raw: z.nullable(z.array(RawResponse$outboundSchema)).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            nextPage: "next_page",
         });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ContactsPaginated$ {
+    /** @deprecated use `ContactsPaginated$inboundSchema` instead. */
+    export const inboundSchema = ContactsPaginated$inboundSchema;
+    /** @deprecated use `ContactsPaginated$outboundSchema` instead. */
+    export const outboundSchema = ContactsPaginated$outboundSchema;
+    /** @deprecated use `ContactsPaginated$Outbound` instead. */
+    export type Outbound = ContactsPaginated$Outbound;
 }

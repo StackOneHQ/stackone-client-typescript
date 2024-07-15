@@ -46,84 +46,126 @@ export type AtsGetOfferResponse = {
 };
 
 /** @internal */
+export const AtsGetOfferRequest$inboundSchema: z.ZodType<
+    AtsGetOfferRequest,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        fields: z.nullable(z.string()).optional(),
+        id: z.string(),
+        proxy: z.nullable(z.record(z.any())).optional(),
+        raw: z.nullable(z.boolean().default(false)),
+        "x-account-id": z.string(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            "x-account-id": "xAccountId",
+        });
+    });
+
+/** @internal */
+export type AtsGetOfferRequest$Outbound = {
+    fields?: string | null | undefined;
+    id: string;
+    proxy?: { [k: string]: any } | null | undefined;
+    raw: boolean | null;
+    "x-account-id": string;
+};
+
+/** @internal */
+export const AtsGetOfferRequest$outboundSchema: z.ZodType<
+    AtsGetOfferRequest$Outbound,
+    z.ZodTypeDef,
+    AtsGetOfferRequest
+> = z
+    .object({
+        fields: z.nullable(z.string()).optional(),
+        id: z.string(),
+        proxy: z.nullable(z.record(z.any())).optional(),
+        raw: z.nullable(z.boolean().default(false)),
+        xAccountId: z.string(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            xAccountId: "x-account-id",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace AtsGetOfferRequest$ {
-    export const inboundSchema: z.ZodType<AtsGetOfferRequest, z.ZodTypeDef, unknown> = z
-        .object({
-            fields: z.nullable(z.string()).optional(),
-            id: z.string(),
-            proxy: z.nullable(z.record(z.any())).optional(),
-            raw: z.nullable(z.boolean().default(false)),
-            "x-account-id": z.string(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                "x-account-id": "xAccountId",
-            });
-        });
-
-    export type Outbound = {
-        fields?: string | null | undefined;
-        id: string;
-        proxy?: { [k: string]: any } | null | undefined;
-        raw: boolean | null;
-        "x-account-id": string;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, AtsGetOfferRequest> = z
-        .object({
-            fields: z.nullable(z.string()).optional(),
-            id: z.string(),
-            proxy: z.nullable(z.record(z.any())).optional(),
-            raw: z.nullable(z.boolean().default(false)),
-            xAccountId: z.string(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                xAccountId: "x-account-id",
-            });
-        });
+    /** @deprecated use `AtsGetOfferRequest$inboundSchema` instead. */
+    export const inboundSchema = AtsGetOfferRequest$inboundSchema;
+    /** @deprecated use `AtsGetOfferRequest$outboundSchema` instead. */
+    export const outboundSchema = AtsGetOfferRequest$outboundSchema;
+    /** @deprecated use `AtsGetOfferRequest$Outbound` instead. */
+    export type Outbound = AtsGetOfferRequest$Outbound;
 }
 
 /** @internal */
+export const AtsGetOfferResponse$inboundSchema: z.ZodType<
+    AtsGetOfferResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        ContentType: z.string(),
+        OffersResult: shared.OffersResult$inboundSchema.optional(),
+        StatusCode: z.number().int(),
+        RawResponse: z.instanceof(Response),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            ContentType: "contentType",
+            OffersResult: "offersResult",
+            StatusCode: "statusCode",
+            RawResponse: "rawResponse",
+        });
+    });
+
+/** @internal */
+export type AtsGetOfferResponse$Outbound = {
+    ContentType: string;
+    OffersResult?: shared.OffersResult$Outbound | undefined;
+    StatusCode: number;
+    RawResponse: never;
+};
+
+/** @internal */
+export const AtsGetOfferResponse$outboundSchema: z.ZodType<
+    AtsGetOfferResponse$Outbound,
+    z.ZodTypeDef,
+    AtsGetOfferResponse
+> = z
+    .object({
+        contentType: z.string(),
+        offersResult: shared.OffersResult$outboundSchema.optional(),
+        statusCode: z.number().int(),
+        rawResponse: z.instanceof(Response).transform(() => {
+            throw new Error("Response cannot be serialized");
+        }),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            contentType: "ContentType",
+            offersResult: "OffersResult",
+            statusCode: "StatusCode",
+            rawResponse: "RawResponse",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace AtsGetOfferResponse$ {
-    export const inboundSchema: z.ZodType<AtsGetOfferResponse, z.ZodTypeDef, unknown> = z
-        .object({
-            ContentType: z.string(),
-            OffersResult: shared.OffersResult$.inboundSchema.optional(),
-            StatusCode: z.number().int(),
-            RawResponse: z.instanceof(Response),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                ContentType: "contentType",
-                OffersResult: "offersResult",
-                StatusCode: "statusCode",
-                RawResponse: "rawResponse",
-            });
-        });
-
-    export type Outbound = {
-        ContentType: string;
-        OffersResult?: shared.OffersResult$.Outbound | undefined;
-        StatusCode: number;
-        RawResponse: never;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, AtsGetOfferResponse> = z
-        .object({
-            contentType: z.string(),
-            offersResult: shared.OffersResult$.outboundSchema.optional(),
-            statusCode: z.number().int(),
-            rawResponse: z.instanceof(Response).transform(() => {
-                throw new Error("Response cannot be serialized");
-            }),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                contentType: "ContentType",
-                offersResult: "OffersResult",
-                statusCode: "StatusCode",
-                rawResponse: "RawResponse",
-            });
-        });
+    /** @deprecated use `AtsGetOfferResponse$inboundSchema` instead. */
+    export const inboundSchema = AtsGetOfferResponse$inboundSchema;
+    /** @deprecated use `AtsGetOfferResponse$outboundSchema` instead. */
+    export const outboundSchema = AtsGetOfferResponse$outboundSchema;
+    /** @deprecated use `AtsGetOfferResponse$Outbound` instead. */
+    export type Outbound = AtsGetOfferResponse$Outbound;
 }

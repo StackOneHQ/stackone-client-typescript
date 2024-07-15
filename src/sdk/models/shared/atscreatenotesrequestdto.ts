@@ -4,7 +4,12 @@
 
 import { remap as remap$ } from "../../../lib/primitives.js";
 import { catchUnrecognizedEnum, OpenEnum, Unrecognized } from "../../types/enums.js";
-import { NoteContentApiModel, NoteContentApiModel$ } from "./notecontentapimodel.js";
+import {
+    NoteContentApiModel,
+    NoteContentApiModel$inboundSchema,
+    NoteContentApiModel$Outbound,
+    NoteContentApiModel$outboundSchema,
+} from "./notecontentapimodel.js";
 import * as z from "zod";
 
 export type AtsCreateNotesRequestDto4 = {};
@@ -61,149 +66,230 @@ export type AtsCreateNotesRequestDto = {
 };
 
 /** @internal */
+export const AtsCreateNotesRequestDto4$inboundSchema: z.ZodType<
+    AtsCreateNotesRequestDto4,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type AtsCreateNotesRequestDto4$Outbound = {};
+
+/** @internal */
+export const AtsCreateNotesRequestDto4$outboundSchema: z.ZodType<
+    AtsCreateNotesRequestDto4$Outbound,
+    z.ZodTypeDef,
+    AtsCreateNotesRequestDto4
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace AtsCreateNotesRequestDto4$ {
-    export const inboundSchema: z.ZodType<AtsCreateNotesRequestDto4, z.ZodTypeDef, unknown> =
-        z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, AtsCreateNotesRequestDto4> =
-        z.object({});
+    /** @deprecated use `AtsCreateNotesRequestDto4$inboundSchema` instead. */
+    export const inboundSchema = AtsCreateNotesRequestDto4$inboundSchema;
+    /** @deprecated use `AtsCreateNotesRequestDto4$outboundSchema` instead. */
+    export const outboundSchema = AtsCreateNotesRequestDto4$outboundSchema;
+    /** @deprecated use `AtsCreateNotesRequestDto4$Outbound` instead. */
+    export type Outbound = AtsCreateNotesRequestDto4$Outbound;
 }
 
 /** @internal */
+export const AtsCreateNotesRequestDtoSourceValue$inboundSchema: z.ZodType<
+    AtsCreateNotesRequestDtoSourceValue,
+    z.ZodTypeDef,
+    unknown
+> = z.union([
+    z.lazy(() => AtsCreateNotesRequestDto4$inboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+]);
+
+/** @internal */
+export type AtsCreateNotesRequestDtoSourceValue$Outbound =
+    | AtsCreateNotesRequestDto4$Outbound
+    | string
+    | number
+    | boolean;
+
+/** @internal */
+export const AtsCreateNotesRequestDtoSourceValue$outboundSchema: z.ZodType<
+    AtsCreateNotesRequestDtoSourceValue$Outbound,
+    z.ZodTypeDef,
+    AtsCreateNotesRequestDtoSourceValue
+> = z.union([
+    z.lazy(() => AtsCreateNotesRequestDto4$outboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace AtsCreateNotesRequestDtoSourceValue$ {
-    export const inboundSchema: z.ZodType<
-        AtsCreateNotesRequestDtoSourceValue,
-        z.ZodTypeDef,
-        unknown
-    > = z.union([
-        z.lazy(() => AtsCreateNotesRequestDto4$.inboundSchema),
-        z.string(),
-        z.number(),
-        z.boolean(),
-    ]);
-
-    export type Outbound = AtsCreateNotesRequestDto4$.Outbound | string | number | boolean;
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        AtsCreateNotesRequestDtoSourceValue
-    > = z.union([
-        z.lazy(() => AtsCreateNotesRequestDto4$.outboundSchema),
-        z.string(),
-        z.number(),
-        z.boolean(),
-    ]);
+    /** @deprecated use `AtsCreateNotesRequestDtoSourceValue$inboundSchema` instead. */
+    export const inboundSchema = AtsCreateNotesRequestDtoSourceValue$inboundSchema;
+    /** @deprecated use `AtsCreateNotesRequestDtoSourceValue$outboundSchema` instead. */
+    export const outboundSchema = AtsCreateNotesRequestDtoSourceValue$outboundSchema;
+    /** @deprecated use `AtsCreateNotesRequestDtoSourceValue$Outbound` instead. */
+    export type Outbound = AtsCreateNotesRequestDtoSourceValue$Outbound;
 }
 
 /** @internal */
+export const AtsCreateNotesRequestDtoValue$inboundSchema: z.ZodType<
+    AtsCreateNotesRequestDtoValueOpen,
+    z.ZodTypeDef,
+    unknown
+> = z.union([
+    z.nativeEnum(AtsCreateNotesRequestDtoValue),
+    z.string().transform(catchUnrecognizedEnum),
+]);
+
+/** @internal */
+export const AtsCreateNotesRequestDtoValue$outboundSchema: z.ZodType<
+    AtsCreateNotesRequestDtoValueOpen,
+    z.ZodTypeDef,
+    AtsCreateNotesRequestDtoValueOpen
+> = z.union([
+    z.nativeEnum(AtsCreateNotesRequestDtoValue),
+    z.string().and(z.custom<Unrecognized<string>>()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace AtsCreateNotesRequestDtoValue$ {
-    export const inboundSchema: z.ZodType<
-        AtsCreateNotesRequestDtoValueOpen,
-        z.ZodTypeDef,
-        unknown
-    > = z.union([
-        z.nativeEnum(AtsCreateNotesRequestDtoValue),
-        z.string().transform(catchUnrecognizedEnum),
-    ]);
-
-    export const outboundSchema: z.ZodType<
-        AtsCreateNotesRequestDtoValueOpen,
-        z.ZodTypeDef,
-        AtsCreateNotesRequestDtoValueOpen
-    > = z.union([
-        z.nativeEnum(AtsCreateNotesRequestDtoValue),
-        z.string().and(z.custom<Unrecognized<string>>()),
-    ]);
+    /** @deprecated use `AtsCreateNotesRequestDtoValue$inboundSchema` instead. */
+    export const inboundSchema = AtsCreateNotesRequestDtoValue$inboundSchema;
+    /** @deprecated use `AtsCreateNotesRequestDtoValue$outboundSchema` instead. */
+    export const outboundSchema = AtsCreateNotesRequestDtoValue$outboundSchema;
 }
 
 /** @internal */
+export const Visibility$inboundSchema: z.ZodType<Visibility, z.ZodTypeDef, unknown> = z
+    .object({
+        source_value: z
+            .nullable(
+                z.union([
+                    z.lazy(() => AtsCreateNotesRequestDto4$inboundSchema),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                ])
+            )
+            .optional(),
+        value: z.nullable(AtsCreateNotesRequestDtoValue$inboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            source_value: "sourceValue",
+        });
+    });
+
+/** @internal */
+export type Visibility$Outbound = {
+    source_value?:
+        | AtsCreateNotesRequestDto4$Outbound
+        | string
+        | number
+        | boolean
+        | null
+        | undefined;
+    value?: string | null | undefined;
+};
+
+/** @internal */
+export const Visibility$outboundSchema: z.ZodType<Visibility$Outbound, z.ZodTypeDef, Visibility> = z
+    .object({
+        sourceValue: z
+            .nullable(
+                z.union([
+                    z.lazy(() => AtsCreateNotesRequestDto4$outboundSchema),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                ])
+            )
+            .optional(),
+        value: z.nullable(AtsCreateNotesRequestDtoValue$outboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            sourceValue: "source_value",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace Visibility$ {
-    export const inboundSchema: z.ZodType<Visibility, z.ZodTypeDef, unknown> = z
-        .object({
-            source_value: z
-                .nullable(
-                    z.union([
-                        z.lazy(() => AtsCreateNotesRequestDto4$.inboundSchema),
-                        z.string(),
-                        z.number(),
-                        z.boolean(),
-                    ])
-                )
-                .optional(),
-            value: z.nullable(AtsCreateNotesRequestDtoValue$.inboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                source_value: "sourceValue",
-            });
-        });
-
-    export type Outbound = {
-        source_value?:
-            | AtsCreateNotesRequestDto4$.Outbound
-            | string
-            | number
-            | boolean
-            | null
-            | undefined;
-        value?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Visibility> = z
-        .object({
-            sourceValue: z
-                .nullable(
-                    z.union([
-                        z.lazy(() => AtsCreateNotesRequestDto4$.outboundSchema),
-                        z.string(),
-                        z.number(),
-                        z.boolean(),
-                    ])
-                )
-                .optional(),
-            value: z.nullable(AtsCreateNotesRequestDtoValue$.outboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                sourceValue: "source_value",
-            });
-        });
+    /** @deprecated use `Visibility$inboundSchema` instead. */
+    export const inboundSchema = Visibility$inboundSchema;
+    /** @deprecated use `Visibility$outboundSchema` instead. */
+    export const outboundSchema = Visibility$outboundSchema;
+    /** @deprecated use `Visibility$Outbound` instead. */
+    export type Outbound = Visibility$Outbound;
 }
 
 /** @internal */
+export const AtsCreateNotesRequestDto$inboundSchema: z.ZodType<
+    AtsCreateNotesRequestDto,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        author_id: z.nullable(z.string()).optional(),
+        content: z.nullable(z.array(NoteContentApiModel$inboundSchema)).optional(),
+        passthrough: z.nullable(z.record(z.any())).optional(),
+        visibility: z.nullable(z.lazy(() => Visibility$inboundSchema)).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            author_id: "authorId",
+        });
+    });
+
+/** @internal */
+export type AtsCreateNotesRequestDto$Outbound = {
+    author_id?: string | null | undefined;
+    content?: Array<NoteContentApiModel$Outbound> | null | undefined;
+    passthrough?: { [k: string]: any } | null | undefined;
+    visibility?: Visibility$Outbound | null | undefined;
+};
+
+/** @internal */
+export const AtsCreateNotesRequestDto$outboundSchema: z.ZodType<
+    AtsCreateNotesRequestDto$Outbound,
+    z.ZodTypeDef,
+    AtsCreateNotesRequestDto
+> = z
+    .object({
+        authorId: z.nullable(z.string()).optional(),
+        content: z.nullable(z.array(NoteContentApiModel$outboundSchema)).optional(),
+        passthrough: z.nullable(z.record(z.any())).optional(),
+        visibility: z.nullable(z.lazy(() => Visibility$outboundSchema)).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            authorId: "author_id",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace AtsCreateNotesRequestDto$ {
-    export const inboundSchema: z.ZodType<AtsCreateNotesRequestDto, z.ZodTypeDef, unknown> = z
-        .object({
-            author_id: z.nullable(z.string()).optional(),
-            content: z.nullable(z.array(NoteContentApiModel$.inboundSchema)).optional(),
-            passthrough: z.nullable(z.record(z.any())).optional(),
-            visibility: z.nullable(z.lazy(() => Visibility$.inboundSchema)).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                author_id: "authorId",
-            });
-        });
-
-    export type Outbound = {
-        author_id?: string | null | undefined;
-        content?: Array<NoteContentApiModel$.Outbound> | null | undefined;
-        passthrough?: { [k: string]: any } | null | undefined;
-        visibility?: Visibility$.Outbound | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, AtsCreateNotesRequestDto> = z
-        .object({
-            authorId: z.nullable(z.string()).optional(),
-            content: z.nullable(z.array(NoteContentApiModel$.outboundSchema)).optional(),
-            passthrough: z.nullable(z.record(z.any())).optional(),
-            visibility: z.nullable(z.lazy(() => Visibility$.outboundSchema)).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                authorId: "author_id",
-            });
-        });
+    /** @deprecated use `AtsCreateNotesRequestDto$inboundSchema` instead. */
+    export const inboundSchema = AtsCreateNotesRequestDto$inboundSchema;
+    /** @deprecated use `AtsCreateNotesRequestDto$outboundSchema` instead. */
+    export const outboundSchema = AtsCreateNotesRequestDto$outboundSchema;
+    /** @deprecated use `AtsCreateNotesRequestDto$Outbound` instead. */
+    export type Outbound = AtsCreateNotesRequestDto$Outbound;
 }

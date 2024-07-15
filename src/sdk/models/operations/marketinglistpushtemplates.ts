@@ -79,155 +79,194 @@ export type MarketingListPushTemplatesResponse = {
 };
 
 /** @internal */
+export const MarketingListPushTemplatesQueryParamFilter$inboundSchema: z.ZodType<
+    MarketingListPushTemplatesQueryParamFilter,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        updated_after: z.nullable(z.string()).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            updated_after: "updatedAfter",
+        });
+    });
+
+/** @internal */
+export type MarketingListPushTemplatesQueryParamFilter$Outbound = {
+    updated_after?: string | null | undefined;
+};
+
+/** @internal */
+export const MarketingListPushTemplatesQueryParamFilter$outboundSchema: z.ZodType<
+    MarketingListPushTemplatesQueryParamFilter$Outbound,
+    z.ZodTypeDef,
+    MarketingListPushTemplatesQueryParamFilter
+> = z
+    .object({
+        updatedAfter: z.nullable(z.string()).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            updatedAfter: "updated_after",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace MarketingListPushTemplatesQueryParamFilter$ {
-    export const inboundSchema: z.ZodType<
-        MarketingListPushTemplatesQueryParamFilter,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            updated_after: z.nullable(z.string()).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                updated_after: "updatedAfter",
-            });
-        });
-
-    export type Outbound = {
-        updated_after?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        MarketingListPushTemplatesQueryParamFilter
-    > = z
-        .object({
-            updatedAfter: z.nullable(z.string()).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                updatedAfter: "updated_after",
-            });
-        });
+    /** @deprecated use `MarketingListPushTemplatesQueryParamFilter$inboundSchema` instead. */
+    export const inboundSchema = MarketingListPushTemplatesQueryParamFilter$inboundSchema;
+    /** @deprecated use `MarketingListPushTemplatesQueryParamFilter$outboundSchema` instead. */
+    export const outboundSchema = MarketingListPushTemplatesQueryParamFilter$outboundSchema;
+    /** @deprecated use `MarketingListPushTemplatesQueryParamFilter$Outbound` instead. */
+    export type Outbound = MarketingListPushTemplatesQueryParamFilter$Outbound;
 }
 
 /** @internal */
+export const MarketingListPushTemplatesRequest$inboundSchema: z.ZodType<
+    MarketingListPushTemplatesRequest,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        fields: z.nullable(z.string()).optional(),
+        filter: z
+            .nullable(z.lazy(() => MarketingListPushTemplatesQueryParamFilter$inboundSchema))
+            .optional(),
+        next: z.nullable(z.string()).optional(),
+        page: z.nullable(z.string()).optional(),
+        page_size: z.nullable(z.string().default("25")),
+        proxy: z.nullable(z.record(z.any())).optional(),
+        raw: z.nullable(z.boolean().default(false)),
+        updated_after: z.nullable(z.string()).optional(),
+        "x-account-id": z.string(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            page_size: "pageSize",
+            updated_after: "updatedAfter",
+            "x-account-id": "xAccountId",
+        });
+    });
+
+/** @internal */
+export type MarketingListPushTemplatesRequest$Outbound = {
+    fields?: string | null | undefined;
+    filter?: MarketingListPushTemplatesQueryParamFilter$Outbound | null | undefined;
+    next?: string | null | undefined;
+    page?: string | null | undefined;
+    page_size: string | null;
+    proxy?: { [k: string]: any } | null | undefined;
+    raw: boolean | null;
+    updated_after?: string | null | undefined;
+    "x-account-id": string;
+};
+
+/** @internal */
+export const MarketingListPushTemplatesRequest$outboundSchema: z.ZodType<
+    MarketingListPushTemplatesRequest$Outbound,
+    z.ZodTypeDef,
+    MarketingListPushTemplatesRequest
+> = z
+    .object({
+        fields: z.nullable(z.string()).optional(),
+        filter: z
+            .nullable(z.lazy(() => MarketingListPushTemplatesQueryParamFilter$outboundSchema))
+            .optional(),
+        next: z.nullable(z.string()).optional(),
+        page: z.nullable(z.string()).optional(),
+        pageSize: z.nullable(z.string().default("25")),
+        proxy: z.nullable(z.record(z.any())).optional(),
+        raw: z.nullable(z.boolean().default(false)),
+        updatedAfter: z.nullable(z.string()).optional(),
+        xAccountId: z.string(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            pageSize: "page_size",
+            updatedAfter: "updated_after",
+            xAccountId: "x-account-id",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace MarketingListPushTemplatesRequest$ {
-    export const inboundSchema: z.ZodType<
-        MarketingListPushTemplatesRequest,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            fields: z.nullable(z.string()).optional(),
-            filter: z
-                .nullable(z.lazy(() => MarketingListPushTemplatesQueryParamFilter$.inboundSchema))
-                .optional(),
-            next: z.nullable(z.string()).optional(),
-            page: z.nullable(z.string()).optional(),
-            page_size: z.nullable(z.string().default("25")),
-            proxy: z.nullable(z.record(z.any())).optional(),
-            raw: z.nullable(z.boolean().default(false)),
-            updated_after: z.nullable(z.string()).optional(),
-            "x-account-id": z.string(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                page_size: "pageSize",
-                updated_after: "updatedAfter",
-                "x-account-id": "xAccountId",
-            });
-        });
-
-    export type Outbound = {
-        fields?: string | null | undefined;
-        filter?: MarketingListPushTemplatesQueryParamFilter$.Outbound | null | undefined;
-        next?: string | null | undefined;
-        page?: string | null | undefined;
-        page_size: string | null;
-        proxy?: { [k: string]: any } | null | undefined;
-        raw: boolean | null;
-        updated_after?: string | null | undefined;
-        "x-account-id": string;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        MarketingListPushTemplatesRequest
-    > = z
-        .object({
-            fields: z.nullable(z.string()).optional(),
-            filter: z
-                .nullable(z.lazy(() => MarketingListPushTemplatesQueryParamFilter$.outboundSchema))
-                .optional(),
-            next: z.nullable(z.string()).optional(),
-            page: z.nullable(z.string()).optional(),
-            pageSize: z.nullable(z.string().default("25")),
-            proxy: z.nullable(z.record(z.any())).optional(),
-            raw: z.nullable(z.boolean().default(false)),
-            updatedAfter: z.nullable(z.string()).optional(),
-            xAccountId: z.string(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                pageSize: "page_size",
-                updatedAfter: "updated_after",
-                xAccountId: "x-account-id",
-            });
-        });
+    /** @deprecated use `MarketingListPushTemplatesRequest$inboundSchema` instead. */
+    export const inboundSchema = MarketingListPushTemplatesRequest$inboundSchema;
+    /** @deprecated use `MarketingListPushTemplatesRequest$outboundSchema` instead. */
+    export const outboundSchema = MarketingListPushTemplatesRequest$outboundSchema;
+    /** @deprecated use `MarketingListPushTemplatesRequest$Outbound` instead. */
+    export type Outbound = MarketingListPushTemplatesRequest$Outbound;
 }
 
 /** @internal */
+export const MarketingListPushTemplatesResponse$inboundSchema: z.ZodType<
+    MarketingListPushTemplatesResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        ContentType: z.string(),
+        StatusCode: z.number().int(),
+        RawResponse: z.instanceof(Response),
+        TemplatesPaginated: shared.TemplatesPaginated$inboundSchema.optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            ContentType: "contentType",
+            StatusCode: "statusCode",
+            RawResponse: "rawResponse",
+            TemplatesPaginated: "templatesPaginated",
+        });
+    });
+
+/** @internal */
+export type MarketingListPushTemplatesResponse$Outbound = {
+    ContentType: string;
+    StatusCode: number;
+    RawResponse: never;
+    TemplatesPaginated?: shared.TemplatesPaginated$Outbound | undefined;
+};
+
+/** @internal */
+export const MarketingListPushTemplatesResponse$outboundSchema: z.ZodType<
+    MarketingListPushTemplatesResponse$Outbound,
+    z.ZodTypeDef,
+    MarketingListPushTemplatesResponse
+> = z
+    .object({
+        contentType: z.string(),
+        statusCode: z.number().int(),
+        rawResponse: z.instanceof(Response).transform(() => {
+            throw new Error("Response cannot be serialized");
+        }),
+        templatesPaginated: shared.TemplatesPaginated$outboundSchema.optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            contentType: "ContentType",
+            statusCode: "StatusCode",
+            rawResponse: "RawResponse",
+            templatesPaginated: "TemplatesPaginated",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace MarketingListPushTemplatesResponse$ {
-    export const inboundSchema: z.ZodType<
-        MarketingListPushTemplatesResponse,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            ContentType: z.string(),
-            StatusCode: z.number().int(),
-            RawResponse: z.instanceof(Response),
-            TemplatesPaginated: shared.TemplatesPaginated$.inboundSchema.optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                ContentType: "contentType",
-                StatusCode: "statusCode",
-                RawResponse: "rawResponse",
-                TemplatesPaginated: "templatesPaginated",
-            });
-        });
-
-    export type Outbound = {
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: never;
-        TemplatesPaginated?: shared.TemplatesPaginated$.Outbound | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        MarketingListPushTemplatesResponse
-    > = z
-        .object({
-            contentType: z.string(),
-            statusCode: z.number().int(),
-            rawResponse: z.instanceof(Response).transform(() => {
-                throw new Error("Response cannot be serialized");
-            }),
-            templatesPaginated: shared.TemplatesPaginated$.outboundSchema.optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                contentType: "ContentType",
-                statusCode: "StatusCode",
-                rawResponse: "RawResponse",
-                templatesPaginated: "TemplatesPaginated",
-            });
-        });
+    /** @deprecated use `MarketingListPushTemplatesResponse$inboundSchema` instead. */
+    export const inboundSchema = MarketingListPushTemplatesResponse$inboundSchema;
+    /** @deprecated use `MarketingListPushTemplatesResponse$outboundSchema` instead. */
+    export const outboundSchema = MarketingListPushTemplatesResponse$outboundSchema;
+    /** @deprecated use `MarketingListPushTemplatesResponse$Outbound` instead. */
+    export type Outbound = MarketingListPushTemplatesResponse$Outbound;
 }

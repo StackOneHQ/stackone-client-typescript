@@ -35,98 +35,124 @@ export type MarketingUpdatePushTemplateResponse = {
 };
 
 /** @internal */
+export const MarketingUpdatePushTemplateRequest$inboundSchema: z.ZodType<
+    MarketingUpdatePushTemplateRequest,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        MarketingCreatePushTemplateRequestDto:
+            shared.MarketingCreatePushTemplateRequestDto$inboundSchema,
+        id: z.string(),
+        "x-account-id": z.string(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            MarketingCreatePushTemplateRequestDto: "marketingCreatePushTemplateRequestDto",
+            "x-account-id": "xAccountId",
+        });
+    });
+
+/** @internal */
+export type MarketingUpdatePushTemplateRequest$Outbound = {
+    MarketingCreatePushTemplateRequestDto: shared.MarketingCreatePushTemplateRequestDto$Outbound;
+    id: string;
+    "x-account-id": string;
+};
+
+/** @internal */
+export const MarketingUpdatePushTemplateRequest$outboundSchema: z.ZodType<
+    MarketingUpdatePushTemplateRequest$Outbound,
+    z.ZodTypeDef,
+    MarketingUpdatePushTemplateRequest
+> = z
+    .object({
+        marketingCreatePushTemplateRequestDto:
+            shared.MarketingCreatePushTemplateRequestDto$outboundSchema,
+        id: z.string(),
+        xAccountId: z.string(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            marketingCreatePushTemplateRequestDto: "MarketingCreatePushTemplateRequestDto",
+            xAccountId: "x-account-id",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace MarketingUpdatePushTemplateRequest$ {
-    export const inboundSchema: z.ZodType<
-        MarketingUpdatePushTemplateRequest,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            MarketingCreatePushTemplateRequestDto:
-                shared.MarketingCreatePushTemplateRequestDto$.inboundSchema,
-            id: z.string(),
-            "x-account-id": z.string(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                MarketingCreatePushTemplateRequestDto: "marketingCreatePushTemplateRequestDto",
-                "x-account-id": "xAccountId",
-            });
-        });
-
-    export type Outbound = {
-        MarketingCreatePushTemplateRequestDto: shared.MarketingCreatePushTemplateRequestDto$.Outbound;
-        id: string;
-        "x-account-id": string;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        MarketingUpdatePushTemplateRequest
-    > = z
-        .object({
-            marketingCreatePushTemplateRequestDto:
-                shared.MarketingCreatePushTemplateRequestDto$.outboundSchema,
-            id: z.string(),
-            xAccountId: z.string(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                marketingCreatePushTemplateRequestDto: "MarketingCreatePushTemplateRequestDto",
-                xAccountId: "x-account-id",
-            });
-        });
+    /** @deprecated use `MarketingUpdatePushTemplateRequest$inboundSchema` instead. */
+    export const inboundSchema = MarketingUpdatePushTemplateRequest$inboundSchema;
+    /** @deprecated use `MarketingUpdatePushTemplateRequest$outboundSchema` instead. */
+    export const outboundSchema = MarketingUpdatePushTemplateRequest$outboundSchema;
+    /** @deprecated use `MarketingUpdatePushTemplateRequest$Outbound` instead. */
+    export type Outbound = MarketingUpdatePushTemplateRequest$Outbound;
 }
 
 /** @internal */
+export const MarketingUpdatePushTemplateResponse$inboundSchema: z.ZodType<
+    MarketingUpdatePushTemplateResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        ContentType: z.string(),
+        CreateResult: shared.CreateResult$inboundSchema.optional(),
+        StatusCode: z.number().int(),
+        RawResponse: z.instanceof(Response),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            ContentType: "contentType",
+            CreateResult: "createResult",
+            StatusCode: "statusCode",
+            RawResponse: "rawResponse",
+        });
+    });
+
+/** @internal */
+export type MarketingUpdatePushTemplateResponse$Outbound = {
+    ContentType: string;
+    CreateResult?: shared.CreateResult$Outbound | undefined;
+    StatusCode: number;
+    RawResponse: never;
+};
+
+/** @internal */
+export const MarketingUpdatePushTemplateResponse$outboundSchema: z.ZodType<
+    MarketingUpdatePushTemplateResponse$Outbound,
+    z.ZodTypeDef,
+    MarketingUpdatePushTemplateResponse
+> = z
+    .object({
+        contentType: z.string(),
+        createResult: shared.CreateResult$outboundSchema.optional(),
+        statusCode: z.number().int(),
+        rawResponse: z.instanceof(Response).transform(() => {
+            throw new Error("Response cannot be serialized");
+        }),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            contentType: "ContentType",
+            createResult: "CreateResult",
+            statusCode: "StatusCode",
+            rawResponse: "RawResponse",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace MarketingUpdatePushTemplateResponse$ {
-    export const inboundSchema: z.ZodType<
-        MarketingUpdatePushTemplateResponse,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            ContentType: z.string(),
-            CreateResult: shared.CreateResult$.inboundSchema.optional(),
-            StatusCode: z.number().int(),
-            RawResponse: z.instanceof(Response),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                ContentType: "contentType",
-                CreateResult: "createResult",
-                StatusCode: "statusCode",
-                RawResponse: "rawResponse",
-            });
-        });
-
-    export type Outbound = {
-        ContentType: string;
-        CreateResult?: shared.CreateResult$.Outbound | undefined;
-        StatusCode: number;
-        RawResponse: never;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        MarketingUpdatePushTemplateResponse
-    > = z
-        .object({
-            contentType: z.string(),
-            createResult: shared.CreateResult$.outboundSchema.optional(),
-            statusCode: z.number().int(),
-            rawResponse: z.instanceof(Response).transform(() => {
-                throw new Error("Response cannot be serialized");
-            }),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                contentType: "ContentType",
-                createResult: "CreateResult",
-                statusCode: "StatusCode",
-                rawResponse: "RawResponse",
-            });
-        });
+    /** @deprecated use `MarketingUpdatePushTemplateResponse$inboundSchema` instead. */
+    export const inboundSchema = MarketingUpdatePushTemplateResponse$inboundSchema;
+    /** @deprecated use `MarketingUpdatePushTemplateResponse$outboundSchema` instead. */
+    export const outboundSchema = MarketingUpdatePushTemplateResponse$outboundSchema;
+    /** @deprecated use `MarketingUpdatePushTemplateResponse$Outbound` instead. */
+    export type Outbound = MarketingUpdatePushTemplateResponse$Outbound;
 }

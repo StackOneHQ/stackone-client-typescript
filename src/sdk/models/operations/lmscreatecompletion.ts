@@ -34,77 +34,119 @@ export type LmsCreateCompletionResponse = {
 };
 
 /** @internal */
+export const LmsCreateCompletionRequest$inboundSchema: z.ZodType<
+    LmsCreateCompletionRequest,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        LmsCreateCompletionRequestDto: shared.LmsCreateCompletionRequestDto$inboundSchema,
+        "x-account-id": z.string(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            LmsCreateCompletionRequestDto: "lmsCreateCompletionRequestDto",
+            "x-account-id": "xAccountId",
+        });
+    });
+
+/** @internal */
+export type LmsCreateCompletionRequest$Outbound = {
+    LmsCreateCompletionRequestDto: shared.LmsCreateCompletionRequestDto$Outbound;
+    "x-account-id": string;
+};
+
+/** @internal */
+export const LmsCreateCompletionRequest$outboundSchema: z.ZodType<
+    LmsCreateCompletionRequest$Outbound,
+    z.ZodTypeDef,
+    LmsCreateCompletionRequest
+> = z
+    .object({
+        lmsCreateCompletionRequestDto: shared.LmsCreateCompletionRequestDto$outboundSchema,
+        xAccountId: z.string(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            lmsCreateCompletionRequestDto: "LmsCreateCompletionRequestDto",
+            xAccountId: "x-account-id",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace LmsCreateCompletionRequest$ {
-    export const inboundSchema: z.ZodType<LmsCreateCompletionRequest, z.ZodTypeDef, unknown> = z
-        .object({
-            LmsCreateCompletionRequestDto: shared.LmsCreateCompletionRequestDto$.inboundSchema,
-            "x-account-id": z.string(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                LmsCreateCompletionRequestDto: "lmsCreateCompletionRequestDto",
-                "x-account-id": "xAccountId",
-            });
-        });
-
-    export type Outbound = {
-        LmsCreateCompletionRequestDto: shared.LmsCreateCompletionRequestDto$.Outbound;
-        "x-account-id": string;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, LmsCreateCompletionRequest> = z
-        .object({
-            lmsCreateCompletionRequestDto: shared.LmsCreateCompletionRequestDto$.outboundSchema,
-            xAccountId: z.string(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                lmsCreateCompletionRequestDto: "LmsCreateCompletionRequestDto",
-                xAccountId: "x-account-id",
-            });
-        });
+    /** @deprecated use `LmsCreateCompletionRequest$inboundSchema` instead. */
+    export const inboundSchema = LmsCreateCompletionRequest$inboundSchema;
+    /** @deprecated use `LmsCreateCompletionRequest$outboundSchema` instead. */
+    export const outboundSchema = LmsCreateCompletionRequest$outboundSchema;
+    /** @deprecated use `LmsCreateCompletionRequest$Outbound` instead. */
+    export type Outbound = LmsCreateCompletionRequest$Outbound;
 }
 
 /** @internal */
+export const LmsCreateCompletionResponse$inboundSchema: z.ZodType<
+    LmsCreateCompletionResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        ContentType: z.string(),
+        CreateResult: shared.CreateResult$inboundSchema.optional(),
+        StatusCode: z.number().int(),
+        RawResponse: z.instanceof(Response),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            ContentType: "contentType",
+            CreateResult: "createResult",
+            StatusCode: "statusCode",
+            RawResponse: "rawResponse",
+        });
+    });
+
+/** @internal */
+export type LmsCreateCompletionResponse$Outbound = {
+    ContentType: string;
+    CreateResult?: shared.CreateResult$Outbound | undefined;
+    StatusCode: number;
+    RawResponse: never;
+};
+
+/** @internal */
+export const LmsCreateCompletionResponse$outboundSchema: z.ZodType<
+    LmsCreateCompletionResponse$Outbound,
+    z.ZodTypeDef,
+    LmsCreateCompletionResponse
+> = z
+    .object({
+        contentType: z.string(),
+        createResult: shared.CreateResult$outboundSchema.optional(),
+        statusCode: z.number().int(),
+        rawResponse: z.instanceof(Response).transform(() => {
+            throw new Error("Response cannot be serialized");
+        }),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            contentType: "ContentType",
+            createResult: "CreateResult",
+            statusCode: "StatusCode",
+            rawResponse: "RawResponse",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace LmsCreateCompletionResponse$ {
-    export const inboundSchema: z.ZodType<LmsCreateCompletionResponse, z.ZodTypeDef, unknown> = z
-        .object({
-            ContentType: z.string(),
-            CreateResult: shared.CreateResult$.inboundSchema.optional(),
-            StatusCode: z.number().int(),
-            RawResponse: z.instanceof(Response),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                ContentType: "contentType",
-                CreateResult: "createResult",
-                StatusCode: "statusCode",
-                RawResponse: "rawResponse",
-            });
-        });
-
-    export type Outbound = {
-        ContentType: string;
-        CreateResult?: shared.CreateResult$.Outbound | undefined;
-        StatusCode: number;
-        RawResponse: never;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, LmsCreateCompletionResponse> = z
-        .object({
-            contentType: z.string(),
-            createResult: shared.CreateResult$.outboundSchema.optional(),
-            statusCode: z.number().int(),
-            rawResponse: z.instanceof(Response).transform(() => {
-                throw new Error("Response cannot be serialized");
-            }),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                contentType: "ContentType",
-                createResult: "CreateResult",
-                statusCode: "StatusCode",
-                rawResponse: "RawResponse",
-            });
-        });
+    /** @deprecated use `LmsCreateCompletionResponse$inboundSchema` instead. */
+    export const inboundSchema = LmsCreateCompletionResponse$inboundSchema;
+    /** @deprecated use `LmsCreateCompletionResponse$outboundSchema` instead. */
+    export const outboundSchema = LmsCreateCompletionResponse$outboundSchema;
+    /** @deprecated use `LmsCreateCompletionResponse$Outbound` instead. */
+    export type Outbound = LmsCreateCompletionResponse$Outbound;
 }

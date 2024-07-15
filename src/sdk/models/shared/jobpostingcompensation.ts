@@ -149,415 +149,618 @@ export type JobPostingCompensation = {
 };
 
 /** @internal */
+export const JobPostingCompensation4$inboundSchema: z.ZodType<
+    JobPostingCompensation4,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type JobPostingCompensation4$Outbound = {};
+
+/** @internal */
+export const JobPostingCompensation4$outboundSchema: z.ZodType<
+    JobPostingCompensation4$Outbound,
+    z.ZodTypeDef,
+    JobPostingCompensation4
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace JobPostingCompensation4$ {
-    export const inboundSchema: z.ZodType<JobPostingCompensation4, z.ZodTypeDef, unknown> =
-        z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, JobPostingCompensation4> =
-        z.object({});
+    /** @deprecated use `JobPostingCompensation4$inboundSchema` instead. */
+    export const inboundSchema = JobPostingCompensation4$inboundSchema;
+    /** @deprecated use `JobPostingCompensation4$outboundSchema` instead. */
+    export const outboundSchema = JobPostingCompensation4$outboundSchema;
+    /** @deprecated use `JobPostingCompensation4$Outbound` instead. */
+    export type Outbound = JobPostingCompensation4$Outbound;
 }
 
 /** @internal */
+export const JobPostingCompensationSourceValue$inboundSchema: z.ZodType<
+    JobPostingCompensationSourceValue,
+    z.ZodTypeDef,
+    unknown
+> = z.union([
+    z.lazy(() => JobPostingCompensation4$inboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+]);
+
+/** @internal */
+export type JobPostingCompensationSourceValue$Outbound =
+    | JobPostingCompensation4$Outbound
+    | string
+    | number
+    | boolean;
+
+/** @internal */
+export const JobPostingCompensationSourceValue$outboundSchema: z.ZodType<
+    JobPostingCompensationSourceValue$Outbound,
+    z.ZodTypeDef,
+    JobPostingCompensationSourceValue
+> = z.union([
+    z.lazy(() => JobPostingCompensation4$outboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace JobPostingCompensationSourceValue$ {
-    export const inboundSchema: z.ZodType<
-        JobPostingCompensationSourceValue,
-        z.ZodTypeDef,
-        unknown
-    > = z.union([
-        z.lazy(() => JobPostingCompensation4$.inboundSchema),
-        z.string(),
-        z.number(),
-        z.boolean(),
-    ]);
-
-    export type Outbound = JobPostingCompensation4$.Outbound | string | number | boolean;
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        JobPostingCompensationSourceValue
-    > = z.union([
-        z.lazy(() => JobPostingCompensation4$.outboundSchema),
-        z.string(),
-        z.number(),
-        z.boolean(),
-    ]);
+    /** @deprecated use `JobPostingCompensationSourceValue$inboundSchema` instead. */
+    export const inboundSchema = JobPostingCompensationSourceValue$inboundSchema;
+    /** @deprecated use `JobPostingCompensationSourceValue$outboundSchema` instead. */
+    export const outboundSchema = JobPostingCompensationSourceValue$outboundSchema;
+    /** @deprecated use `JobPostingCompensationSourceValue$Outbound` instead. */
+    export type Outbound = JobPostingCompensationSourceValue$Outbound;
 }
 
 /** @internal */
+export const JobPostingCompensationValue$inboundSchema: z.ZodType<
+    JobPostingCompensationValueOpen,
+    z.ZodTypeDef,
+    unknown
+> = z.union([
+    z.nativeEnum(JobPostingCompensationValue),
+    z.string().transform(catchUnrecognizedEnum),
+]);
+
+/** @internal */
+export const JobPostingCompensationValue$outboundSchema: z.ZodType<
+    JobPostingCompensationValueOpen,
+    z.ZodTypeDef,
+    JobPostingCompensationValueOpen
+> = z.union([
+    z.nativeEnum(JobPostingCompensationValue),
+    z.string().and(z.custom<Unrecognized<string>>()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace JobPostingCompensationValue$ {
-    export const inboundSchema: z.ZodType<JobPostingCompensationValueOpen, z.ZodTypeDef, unknown> =
-        z.union([
-            z.nativeEnum(JobPostingCompensationValue),
-            z.string().transform(catchUnrecognizedEnum),
-        ]);
-
-    export const outboundSchema: z.ZodType<
-        JobPostingCompensationValueOpen,
-        z.ZodTypeDef,
-        JobPostingCompensationValueOpen
-    > = z.union([
-        z.nativeEnum(JobPostingCompensationValue),
-        z.string().and(z.custom<Unrecognized<string>>()),
-    ]);
+    /** @deprecated use `JobPostingCompensationValue$inboundSchema` instead. */
+    export const inboundSchema = JobPostingCompensationValue$inboundSchema;
+    /** @deprecated use `JobPostingCompensationValue$outboundSchema` instead. */
+    export const outboundSchema = JobPostingCompensationValue$outboundSchema;
 }
 
 /** @internal */
+export const JobPostingCompensationPayFrequency$inboundSchema: z.ZodType<
+    JobPostingCompensationPayFrequency,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        source_value: z
+            .nullable(
+                z.union([
+                    z.lazy(() => JobPostingCompensation4$inboundSchema),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                ])
+            )
+            .optional(),
+        value: z.nullable(JobPostingCompensationValue$inboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            source_value: "sourceValue",
+        });
+    });
+
+/** @internal */
+export type JobPostingCompensationPayFrequency$Outbound = {
+    source_value?: JobPostingCompensation4$Outbound | string | number | boolean | null | undefined;
+    value?: string | null | undefined;
+};
+
+/** @internal */
+export const JobPostingCompensationPayFrequency$outboundSchema: z.ZodType<
+    JobPostingCompensationPayFrequency$Outbound,
+    z.ZodTypeDef,
+    JobPostingCompensationPayFrequency
+> = z
+    .object({
+        sourceValue: z
+            .nullable(
+                z.union([
+                    z.lazy(() => JobPostingCompensation4$outboundSchema),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                ])
+            )
+            .optional(),
+        value: z.nullable(JobPostingCompensationValue$outboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            sourceValue: "source_value",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace JobPostingCompensationPayFrequency$ {
-    export const inboundSchema: z.ZodType<
-        JobPostingCompensationPayFrequency,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            source_value: z
-                .nullable(
-                    z.union([
-                        z.lazy(() => JobPostingCompensation4$.inboundSchema),
-                        z.string(),
-                        z.number(),
-                        z.boolean(),
-                    ])
-                )
-                .optional(),
-            value: z.nullable(JobPostingCompensationValue$.inboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                source_value: "sourceValue",
-            });
-        });
-
-    export type Outbound = {
-        source_value?:
-            | JobPostingCompensation4$.Outbound
-            | string
-            | number
-            | boolean
-            | null
-            | undefined;
-        value?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        JobPostingCompensationPayFrequency
-    > = z
-        .object({
-            sourceValue: z
-                .nullable(
-                    z.union([
-                        z.lazy(() => JobPostingCompensation4$.outboundSchema),
-                        z.string(),
-                        z.number(),
-                        z.boolean(),
-                    ])
-                )
-                .optional(),
-            value: z.nullable(JobPostingCompensationValue$.outboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                sourceValue: "source_value",
-            });
-        });
+    /** @deprecated use `JobPostingCompensationPayFrequency$inboundSchema` instead. */
+    export const inboundSchema = JobPostingCompensationPayFrequency$inboundSchema;
+    /** @deprecated use `JobPostingCompensationPayFrequency$outboundSchema` instead. */
+    export const outboundSchema = JobPostingCompensationPayFrequency$outboundSchema;
+    /** @deprecated use `JobPostingCompensationPayFrequency$Outbound` instead. */
+    export type Outbound = JobPostingCompensationPayFrequency$Outbound;
 }
 
 /** @internal */
+export const JobPostingCompensationSchemas4$inboundSchema: z.ZodType<
+    JobPostingCompensationSchemas4,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type JobPostingCompensationSchemas4$Outbound = {};
+
+/** @internal */
+export const JobPostingCompensationSchemas4$outboundSchema: z.ZodType<
+    JobPostingCompensationSchemas4$Outbound,
+    z.ZodTypeDef,
+    JobPostingCompensationSchemas4
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace JobPostingCompensationSchemas4$ {
-    export const inboundSchema: z.ZodType<JobPostingCompensationSchemas4, z.ZodTypeDef, unknown> =
-        z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, JobPostingCompensationSchemas4> =
-        z.object({});
+    /** @deprecated use `JobPostingCompensationSchemas4$inboundSchema` instead. */
+    export const inboundSchema = JobPostingCompensationSchemas4$inboundSchema;
+    /** @deprecated use `JobPostingCompensationSchemas4$outboundSchema` instead. */
+    export const outboundSchema = JobPostingCompensationSchemas4$outboundSchema;
+    /** @deprecated use `JobPostingCompensationSchemas4$Outbound` instead. */
+    export type Outbound = JobPostingCompensationSchemas4$Outbound;
 }
 
 /** @internal */
+export const JobPostingCompensationSchemasSourceValue$inboundSchema: z.ZodType<
+    JobPostingCompensationSchemasSourceValue,
+    z.ZodTypeDef,
+    unknown
+> = z.union([
+    z.lazy(() => JobPostingCompensationSchemas4$inboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+]);
+
+/** @internal */
+export type JobPostingCompensationSchemasSourceValue$Outbound =
+    | JobPostingCompensationSchemas4$Outbound
+    | string
+    | number
+    | boolean;
+
+/** @internal */
+export const JobPostingCompensationSchemasSourceValue$outboundSchema: z.ZodType<
+    JobPostingCompensationSchemasSourceValue$Outbound,
+    z.ZodTypeDef,
+    JobPostingCompensationSchemasSourceValue
+> = z.union([
+    z.lazy(() => JobPostingCompensationSchemas4$outboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace JobPostingCompensationSchemasSourceValue$ {
-    export const inboundSchema: z.ZodType<
-        JobPostingCompensationSchemasSourceValue,
-        z.ZodTypeDef,
-        unknown
-    > = z.union([
-        z.lazy(() => JobPostingCompensationSchemas4$.inboundSchema),
-        z.string(),
-        z.number(),
-        z.boolean(),
-    ]);
-
-    export type Outbound = JobPostingCompensationSchemas4$.Outbound | string | number | boolean;
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        JobPostingCompensationSchemasSourceValue
-    > = z.union([
-        z.lazy(() => JobPostingCompensationSchemas4$.outboundSchema),
-        z.string(),
-        z.number(),
-        z.boolean(),
-    ]);
+    /** @deprecated use `JobPostingCompensationSchemasSourceValue$inboundSchema` instead. */
+    export const inboundSchema = JobPostingCompensationSchemasSourceValue$inboundSchema;
+    /** @deprecated use `JobPostingCompensationSchemasSourceValue$outboundSchema` instead. */
+    export const outboundSchema = JobPostingCompensationSchemasSourceValue$outboundSchema;
+    /** @deprecated use `JobPostingCompensationSchemasSourceValue$Outbound` instead. */
+    export type Outbound = JobPostingCompensationSchemasSourceValue$Outbound;
 }
 
 /** @internal */
+export const JobPostingCompensationSchemasValue$inboundSchema: z.ZodType<
+    JobPostingCompensationSchemasValueOpen,
+    z.ZodTypeDef,
+    unknown
+> = z.union([
+    z.nativeEnum(JobPostingCompensationSchemasValue),
+    z.string().transform(catchUnrecognizedEnum),
+]);
+
+/** @internal */
+export const JobPostingCompensationSchemasValue$outboundSchema: z.ZodType<
+    JobPostingCompensationSchemasValueOpen,
+    z.ZodTypeDef,
+    JobPostingCompensationSchemasValueOpen
+> = z.union([
+    z.nativeEnum(JobPostingCompensationSchemasValue),
+    z.string().and(z.custom<Unrecognized<string>>()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace JobPostingCompensationSchemasValue$ {
-    export const inboundSchema: z.ZodType<
-        JobPostingCompensationSchemasValueOpen,
-        z.ZodTypeDef,
-        unknown
-    > = z.union([
-        z.nativeEnum(JobPostingCompensationSchemasValue),
-        z.string().transform(catchUnrecognizedEnum),
-    ]);
-
-    export const outboundSchema: z.ZodType<
-        JobPostingCompensationSchemasValueOpen,
-        z.ZodTypeDef,
-        JobPostingCompensationSchemasValueOpen
-    > = z.union([
-        z.nativeEnum(JobPostingCompensationSchemasValue),
-        z.string().and(z.custom<Unrecognized<string>>()),
-    ]);
+    /** @deprecated use `JobPostingCompensationSchemasValue$inboundSchema` instead. */
+    export const inboundSchema = JobPostingCompensationSchemasValue$inboundSchema;
+    /** @deprecated use `JobPostingCompensationSchemasValue$outboundSchema` instead. */
+    export const outboundSchema = JobPostingCompensationSchemasValue$outboundSchema;
 }
 
 /** @internal */
+export const JobPostingCompensationPayPeriod$inboundSchema: z.ZodType<
+    JobPostingCompensationPayPeriod,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        source_value: z
+            .nullable(
+                z.union([
+                    z.lazy(() => JobPostingCompensationSchemas4$inboundSchema),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                ])
+            )
+            .optional(),
+        value: z.nullable(JobPostingCompensationSchemasValue$inboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            source_value: "sourceValue",
+        });
+    });
+
+/** @internal */
+export type JobPostingCompensationPayPeriod$Outbound = {
+    source_value?:
+        | JobPostingCompensationSchemas4$Outbound
+        | string
+        | number
+        | boolean
+        | null
+        | undefined;
+    value?: string | null | undefined;
+};
+
+/** @internal */
+export const JobPostingCompensationPayPeriod$outboundSchema: z.ZodType<
+    JobPostingCompensationPayPeriod$Outbound,
+    z.ZodTypeDef,
+    JobPostingCompensationPayPeriod
+> = z
+    .object({
+        sourceValue: z
+            .nullable(
+                z.union([
+                    z.lazy(() => JobPostingCompensationSchemas4$outboundSchema),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                ])
+            )
+            .optional(),
+        value: z.nullable(JobPostingCompensationSchemasValue$outboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            sourceValue: "source_value",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace JobPostingCompensationPayPeriod$ {
-    export const inboundSchema: z.ZodType<JobPostingCompensationPayPeriod, z.ZodTypeDef, unknown> =
-        z
-            .object({
-                source_value: z
-                    .nullable(
-                        z.union([
-                            z.lazy(() => JobPostingCompensationSchemas4$.inboundSchema),
-                            z.string(),
-                            z.number(),
-                            z.boolean(),
-                        ])
-                    )
-                    .optional(),
-                value: z.nullable(JobPostingCompensationSchemasValue$.inboundSchema).optional(),
-            })
-            .transform((v) => {
-                return remap$(v, {
-                    source_value: "sourceValue",
-                });
-            });
-
-    export type Outbound = {
-        source_value?:
-            | JobPostingCompensationSchemas4$.Outbound
-            | string
-            | number
-            | boolean
-            | null
-            | undefined;
-        value?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        JobPostingCompensationPayPeriod
-    > = z
-        .object({
-            sourceValue: z
-                .nullable(
-                    z.union([
-                        z.lazy(() => JobPostingCompensationSchemas4$.outboundSchema),
-                        z.string(),
-                        z.number(),
-                        z.boolean(),
-                    ])
-                )
-                .optional(),
-            value: z.nullable(JobPostingCompensationSchemasValue$.outboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                sourceValue: "source_value",
-            });
-        });
+    /** @deprecated use `JobPostingCompensationPayPeriod$inboundSchema` instead. */
+    export const inboundSchema = JobPostingCompensationPayPeriod$inboundSchema;
+    /** @deprecated use `JobPostingCompensationPayPeriod$outboundSchema` instead. */
+    export const outboundSchema = JobPostingCompensationPayPeriod$outboundSchema;
+    /** @deprecated use `JobPostingCompensationPayPeriod$Outbound` instead. */
+    export type Outbound = JobPostingCompensationPayPeriod$Outbound;
 }
 
 /** @internal */
+export const JobPostingCompensationSchemasType4$inboundSchema: z.ZodType<
+    JobPostingCompensationSchemasType4,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type JobPostingCompensationSchemasType4$Outbound = {};
+
+/** @internal */
+export const JobPostingCompensationSchemasType4$outboundSchema: z.ZodType<
+    JobPostingCompensationSchemasType4$Outbound,
+    z.ZodTypeDef,
+    JobPostingCompensationSchemasType4
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace JobPostingCompensationSchemasType4$ {
-    export const inboundSchema: z.ZodType<
-        JobPostingCompensationSchemasType4,
-        z.ZodTypeDef,
-        unknown
-    > = z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        JobPostingCompensationSchemasType4
-    > = z.object({});
+    /** @deprecated use `JobPostingCompensationSchemasType4$inboundSchema` instead. */
+    export const inboundSchema = JobPostingCompensationSchemasType4$inboundSchema;
+    /** @deprecated use `JobPostingCompensationSchemasType4$outboundSchema` instead. */
+    export const outboundSchema = JobPostingCompensationSchemasType4$outboundSchema;
+    /** @deprecated use `JobPostingCompensationSchemasType4$Outbound` instead. */
+    export type Outbound = JobPostingCompensationSchemasType4$Outbound;
 }
 
 /** @internal */
+export const JobPostingCompensationSchemasTypeSourceValue$inboundSchema: z.ZodType<
+    JobPostingCompensationSchemasTypeSourceValue,
+    z.ZodTypeDef,
+    unknown
+> = z.union([
+    z.lazy(() => JobPostingCompensationSchemasType4$inboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+]);
+
+/** @internal */
+export type JobPostingCompensationSchemasTypeSourceValue$Outbound =
+    | JobPostingCompensationSchemasType4$Outbound
+    | string
+    | number
+    | boolean;
+
+/** @internal */
+export const JobPostingCompensationSchemasTypeSourceValue$outboundSchema: z.ZodType<
+    JobPostingCompensationSchemasTypeSourceValue$Outbound,
+    z.ZodTypeDef,
+    JobPostingCompensationSchemasTypeSourceValue
+> = z.union([
+    z.lazy(() => JobPostingCompensationSchemasType4$outboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace JobPostingCompensationSchemasTypeSourceValue$ {
-    export const inboundSchema: z.ZodType<
-        JobPostingCompensationSchemasTypeSourceValue,
-        z.ZodTypeDef,
-        unknown
-    > = z.union([
-        z.lazy(() => JobPostingCompensationSchemasType4$.inboundSchema),
-        z.string(),
-        z.number(),
-        z.boolean(),
-    ]);
-
-    export type Outbound = JobPostingCompensationSchemasType4$.Outbound | string | number | boolean;
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        JobPostingCompensationSchemasTypeSourceValue
-    > = z.union([
-        z.lazy(() => JobPostingCompensationSchemasType4$.outboundSchema),
-        z.string(),
-        z.number(),
-        z.boolean(),
-    ]);
+    /** @deprecated use `JobPostingCompensationSchemasTypeSourceValue$inboundSchema` instead. */
+    export const inboundSchema = JobPostingCompensationSchemasTypeSourceValue$inboundSchema;
+    /** @deprecated use `JobPostingCompensationSchemasTypeSourceValue$outboundSchema` instead. */
+    export const outboundSchema = JobPostingCompensationSchemasTypeSourceValue$outboundSchema;
+    /** @deprecated use `JobPostingCompensationSchemasTypeSourceValue$Outbound` instead. */
+    export type Outbound = JobPostingCompensationSchemasTypeSourceValue$Outbound;
 }
 
 /** @internal */
+export const JobPostingCompensationSchemasTypeValue$inboundSchema: z.ZodType<
+    JobPostingCompensationSchemasTypeValueOpen,
+    z.ZodTypeDef,
+    unknown
+> = z.union([
+    z.nativeEnum(JobPostingCompensationSchemasTypeValue),
+    z.string().transform(catchUnrecognizedEnum),
+]);
+
+/** @internal */
+export const JobPostingCompensationSchemasTypeValue$outboundSchema: z.ZodType<
+    JobPostingCompensationSchemasTypeValueOpen,
+    z.ZodTypeDef,
+    JobPostingCompensationSchemasTypeValueOpen
+> = z.union([
+    z.nativeEnum(JobPostingCompensationSchemasTypeValue),
+    z.string().and(z.custom<Unrecognized<string>>()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace JobPostingCompensationSchemasTypeValue$ {
-    export const inboundSchema: z.ZodType<
-        JobPostingCompensationSchemasTypeValueOpen,
-        z.ZodTypeDef,
-        unknown
-    > = z.union([
-        z.nativeEnum(JobPostingCompensationSchemasTypeValue),
-        z.string().transform(catchUnrecognizedEnum),
-    ]);
-
-    export const outboundSchema: z.ZodType<
-        JobPostingCompensationSchemasTypeValueOpen,
-        z.ZodTypeDef,
-        JobPostingCompensationSchemasTypeValueOpen
-    > = z.union([
-        z.nativeEnum(JobPostingCompensationSchemasTypeValue),
-        z.string().and(z.custom<Unrecognized<string>>()),
-    ]);
+    /** @deprecated use `JobPostingCompensationSchemasTypeValue$inboundSchema` instead. */
+    export const inboundSchema = JobPostingCompensationSchemasTypeValue$inboundSchema;
+    /** @deprecated use `JobPostingCompensationSchemasTypeValue$outboundSchema` instead. */
+    export const outboundSchema = JobPostingCompensationSchemasTypeValue$outboundSchema;
 }
 
 /** @internal */
+export const JobPostingCompensationType$inboundSchema: z.ZodType<
+    JobPostingCompensationType,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        source_value: z
+            .nullable(
+                z.union([
+                    z.lazy(() => JobPostingCompensationSchemasType4$inboundSchema),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                ])
+            )
+            .optional(),
+        value: z.nullable(JobPostingCompensationSchemasTypeValue$inboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            source_value: "sourceValue",
+        });
+    });
+
+/** @internal */
+export type JobPostingCompensationType$Outbound = {
+    source_value?:
+        | JobPostingCompensationSchemasType4$Outbound
+        | string
+        | number
+        | boolean
+        | null
+        | undefined;
+    value?: string | null | undefined;
+};
+
+/** @internal */
+export const JobPostingCompensationType$outboundSchema: z.ZodType<
+    JobPostingCompensationType$Outbound,
+    z.ZodTypeDef,
+    JobPostingCompensationType
+> = z
+    .object({
+        sourceValue: z
+            .nullable(
+                z.union([
+                    z.lazy(() => JobPostingCompensationSchemasType4$outboundSchema),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                ])
+            )
+            .optional(),
+        value: z.nullable(JobPostingCompensationSchemasTypeValue$outboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            sourceValue: "source_value",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace JobPostingCompensationType$ {
-    export const inboundSchema: z.ZodType<JobPostingCompensationType, z.ZodTypeDef, unknown> = z
-        .object({
-            source_value: z
-                .nullable(
-                    z.union([
-                        z.lazy(() => JobPostingCompensationSchemasType4$.inboundSchema),
-                        z.string(),
-                        z.number(),
-                        z.boolean(),
-                    ])
-                )
-                .optional(),
-            value: z.nullable(JobPostingCompensationSchemasTypeValue$.inboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                source_value: "sourceValue",
-            });
-        });
-
-    export type Outbound = {
-        source_value?:
-            | JobPostingCompensationSchemasType4$.Outbound
-            | string
-            | number
-            | boolean
-            | null
-            | undefined;
-        value?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, JobPostingCompensationType> = z
-        .object({
-            sourceValue: z
-                .nullable(
-                    z.union([
-                        z.lazy(() => JobPostingCompensationSchemasType4$.outboundSchema),
-                        z.string(),
-                        z.number(),
-                        z.boolean(),
-                    ])
-                )
-                .optional(),
-            value: z.nullable(JobPostingCompensationSchemasTypeValue$.outboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                sourceValue: "source_value",
-            });
-        });
+    /** @deprecated use `JobPostingCompensationType$inboundSchema` instead. */
+    export const inboundSchema = JobPostingCompensationType$inboundSchema;
+    /** @deprecated use `JobPostingCompensationType$outboundSchema` instead. */
+    export const outboundSchema = JobPostingCompensationType$outboundSchema;
+    /** @deprecated use `JobPostingCompensationType$Outbound` instead. */
+    export type Outbound = JobPostingCompensationType$Outbound;
 }
 
 /** @internal */
+export const JobPostingCompensation$inboundSchema: z.ZodType<
+    JobPostingCompensation,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        currency: z.nullable(z.string()).optional(),
+        max_value: z.nullable(z.string()).optional(),
+        min_value: z.nullable(z.string()).optional(),
+        name: z.nullable(z.string()).optional(),
+        pay_frequency: z
+            .nullable(z.lazy(() => JobPostingCompensationPayFrequency$inboundSchema))
+            .optional(),
+        pay_period: z
+            .nullable(z.lazy(() => JobPostingCompensationPayPeriod$inboundSchema))
+            .optional(),
+        type: z.nullable(z.lazy(() => JobPostingCompensationType$inboundSchema)).optional(),
+        value: z.nullable(z.string()).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            max_value: "maxValue",
+            min_value: "minValue",
+            pay_frequency: "payFrequency",
+            pay_period: "payPeriod",
+        });
+    });
+
+/** @internal */
+export type JobPostingCompensation$Outbound = {
+    currency?: string | null | undefined;
+    max_value?: string | null | undefined;
+    min_value?: string | null | undefined;
+    name?: string | null | undefined;
+    pay_frequency?: JobPostingCompensationPayFrequency$Outbound | null | undefined;
+    pay_period?: JobPostingCompensationPayPeriod$Outbound | null | undefined;
+    type?: JobPostingCompensationType$Outbound | null | undefined;
+    value?: string | null | undefined;
+};
+
+/** @internal */
+export const JobPostingCompensation$outboundSchema: z.ZodType<
+    JobPostingCompensation$Outbound,
+    z.ZodTypeDef,
+    JobPostingCompensation
+> = z
+    .object({
+        currency: z.nullable(z.string()).optional(),
+        maxValue: z.nullable(z.string()).optional(),
+        minValue: z.nullable(z.string()).optional(),
+        name: z.nullable(z.string()).optional(),
+        payFrequency: z
+            .nullable(z.lazy(() => JobPostingCompensationPayFrequency$outboundSchema))
+            .optional(),
+        payPeriod: z
+            .nullable(z.lazy(() => JobPostingCompensationPayPeriod$outboundSchema))
+            .optional(),
+        type: z.nullable(z.lazy(() => JobPostingCompensationType$outboundSchema)).optional(),
+        value: z.nullable(z.string()).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            maxValue: "max_value",
+            minValue: "min_value",
+            payFrequency: "pay_frequency",
+            payPeriod: "pay_period",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace JobPostingCompensation$ {
-    export const inboundSchema: z.ZodType<JobPostingCompensation, z.ZodTypeDef, unknown> = z
-        .object({
-            currency: z.nullable(z.string()).optional(),
-            max_value: z.nullable(z.string()).optional(),
-            min_value: z.nullable(z.string()).optional(),
-            name: z.nullable(z.string()).optional(),
-            pay_frequency: z
-                .nullable(z.lazy(() => JobPostingCompensationPayFrequency$.inboundSchema))
-                .optional(),
-            pay_period: z
-                .nullable(z.lazy(() => JobPostingCompensationPayPeriod$.inboundSchema))
-                .optional(),
-            type: z.nullable(z.lazy(() => JobPostingCompensationType$.inboundSchema)).optional(),
-            value: z.nullable(z.string()).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                max_value: "maxValue",
-                min_value: "minValue",
-                pay_frequency: "payFrequency",
-                pay_period: "payPeriod",
-            });
-        });
-
-    export type Outbound = {
-        currency?: string | null | undefined;
-        max_value?: string | null | undefined;
-        min_value?: string | null | undefined;
-        name?: string | null | undefined;
-        pay_frequency?: JobPostingCompensationPayFrequency$.Outbound | null | undefined;
-        pay_period?: JobPostingCompensationPayPeriod$.Outbound | null | undefined;
-        type?: JobPostingCompensationType$.Outbound | null | undefined;
-        value?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, JobPostingCompensation> = z
-        .object({
-            currency: z.nullable(z.string()).optional(),
-            maxValue: z.nullable(z.string()).optional(),
-            minValue: z.nullable(z.string()).optional(),
-            name: z.nullable(z.string()).optional(),
-            payFrequency: z
-                .nullable(z.lazy(() => JobPostingCompensationPayFrequency$.outboundSchema))
-                .optional(),
-            payPeriod: z
-                .nullable(z.lazy(() => JobPostingCompensationPayPeriod$.outboundSchema))
-                .optional(),
-            type: z.nullable(z.lazy(() => JobPostingCompensationType$.outboundSchema)).optional(),
-            value: z.nullable(z.string()).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                maxValue: "max_value",
-                minValue: "min_value",
-                payFrequency: "pay_frequency",
-                payPeriod: "pay_period",
-            });
-        });
+    /** @deprecated use `JobPostingCompensation$inboundSchema` instead. */
+    export const inboundSchema = JobPostingCompensation$inboundSchema;
+    /** @deprecated use `JobPostingCompensation$outboundSchema` instead. */
+    export const outboundSchema = JobPostingCompensation$outboundSchema;
+    /** @deprecated use `JobPostingCompensation$Outbound` instead. */
+    export type Outbound = JobPostingCompensation$Outbound;
 }

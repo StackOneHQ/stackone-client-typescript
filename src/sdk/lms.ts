@@ -54,7 +54,7 @@ export class Lms extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.LmsCreateCompletionRequest$.outboundSchema.parse(value$),
+            (value$) => operations.LmsCreateCompletionRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = encodeJSON$("body", payload$.LmsCreateCompletionRequestDto, {
@@ -95,6 +95,7 @@ export class Lms extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -102,6 +103,8 @@ export class Lms extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -112,7 +115,9 @@ export class Lms extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.LmsCreateCompletionResponse>()
-            .json(201, operations.LmsCreateCompletionResponse$, { key: "CreateResult" })
+            .json(201, operations.LmsCreateCompletionResponse$inboundSchema, {
+                key: "CreateResult",
+            })
             .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -130,7 +135,7 @@ export class Lms extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.LmsCreateContentRequest$.outboundSchema.parse(value$),
+            (value$) => operations.LmsCreateContentRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = encodeJSON$("body", payload$.LmsCreateContentRequestDto, { explode: true });
@@ -169,6 +174,7 @@ export class Lms extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -176,6 +182,8 @@ export class Lms extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -186,7 +194,7 @@ export class Lms extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.LmsCreateContentResponse>()
-            .json(201, operations.LmsCreateContentResponse$, { key: "CreateResult" })
+            .json(201, operations.LmsCreateContentResponse$inboundSchema, { key: "CreateResult" })
             .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -204,7 +212,7 @@ export class Lms extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.LmsGetCategoryRequest$.outboundSchema.parse(value$),
+            (value$) => operations.LmsGetCategoryRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -249,6 +257,7 @@ export class Lms extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -256,6 +265,8 @@ export class Lms extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -266,7 +277,7 @@ export class Lms extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.LmsGetCategoryResponse>()
-            .json(200, operations.LmsGetCategoryResponse$, { key: "CategoryResult" })
+            .json(200, operations.LmsGetCategoryResponse$inboundSchema, { key: "CategoryResult" })
             .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -284,7 +295,7 @@ export class Lms extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.LmsGetCompletionRequest$.outboundSchema.parse(value$),
+            (value$) => operations.LmsGetCompletionRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -329,6 +340,7 @@ export class Lms extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -336,6 +348,8 @@ export class Lms extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -346,7 +360,9 @@ export class Lms extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.LmsGetCompletionResponse>()
-            .json(200, operations.LmsGetCompletionResponse$, { key: "CompletionResult" })
+            .json(200, operations.LmsGetCompletionResponse$inboundSchema, {
+                key: "CompletionResult",
+            })
             .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -364,7 +380,7 @@ export class Lms extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.LmsGetContentRequest$.outboundSchema.parse(value$),
+            (value$) => operations.LmsGetContentRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -409,6 +425,7 @@ export class Lms extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -416,6 +433,8 @@ export class Lms extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -426,7 +445,7 @@ export class Lms extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.LmsGetContentResponse>()
-            .json(200, operations.LmsGetContentResponse$, { key: "ContentResult" })
+            .json(200, operations.LmsGetContentResponse$inboundSchema, { key: "ContentResult" })
             .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -444,7 +463,7 @@ export class Lms extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.LmsListCategoriesRequest$.outboundSchema.parse(value$),
+            (value$) => operations.LmsListCategoriesRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -495,6 +514,7 @@ export class Lms extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -502,6 +522,8 @@ export class Lms extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -512,7 +534,9 @@ export class Lms extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.LmsListCategoriesResponse>()
-            .json(200, operations.LmsListCategoriesResponse$, { key: "CategoriesPaginated" })
+            .json(200, operations.LmsListCategoriesResponse$inboundSchema, {
+                key: "CategoriesPaginated",
+            })
             .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -530,7 +554,7 @@ export class Lms extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.LmsListContentRequest$.outboundSchema.parse(value$),
+            (value$) => operations.LmsListContentRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -581,6 +605,7 @@ export class Lms extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -588,6 +613,8 @@ export class Lms extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -598,7 +625,7 @@ export class Lms extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.LmsListContentResponse>()
-            .json(200, operations.LmsListContentResponse$, { key: "ContentPaginated" })
+            .json(200, operations.LmsListContentResponse$inboundSchema, { key: "ContentPaginated" })
             .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -616,7 +643,7 @@ export class Lms extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.LmsUpdateContentRequest$.outboundSchema.parse(value$),
+            (value$) => operations.LmsUpdateContentRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = encodeJSON$("body", payload$.LmsCreateContentRequestDto, { explode: true });
@@ -658,6 +685,7 @@ export class Lms extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -665,6 +693,8 @@ export class Lms extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -675,7 +705,7 @@ export class Lms extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.LmsUpdateContentResponse>()
-            .json(201, operations.LmsUpdateContentResponse$, { key: "CreateResult" })
+            .json(201, operations.LmsUpdateContentResponse$inboundSchema, { key: "CreateResult" })
             .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
             .match(response, { extraFields: responseFields$ });
 

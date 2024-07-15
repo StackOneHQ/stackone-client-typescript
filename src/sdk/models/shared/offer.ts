@@ -4,7 +4,12 @@
 
 import { remap as remap$ } from "../../../lib/primitives.js";
 import { catchUnrecognizedEnum, OpenEnum, Unrecognized } from "../../types/enums.js";
-import { OfferHistory, OfferHistory$ } from "./offerhistory.js";
+import {
+    OfferHistory,
+    OfferHistory$inboundSchema,
+    OfferHistory$Outbound,
+    OfferHistory$outboundSchema,
+} from "./offerhistory.js";
 import * as z from "zod";
 
 export type Offer4 = {};
@@ -76,181 +81,231 @@ export type Offer = {
 };
 
 /** @internal */
+export const Offer4$inboundSchema: z.ZodType<Offer4, z.ZodTypeDef, unknown> = z.object({});
+
+/** @internal */
+export type Offer4$Outbound = {};
+
+/** @internal */
+export const Offer4$outboundSchema: z.ZodType<Offer4$Outbound, z.ZodTypeDef, Offer4> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace Offer4$ {
-    export const inboundSchema: z.ZodType<Offer4, z.ZodTypeDef, unknown> = z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Offer4> = z.object({});
+    /** @deprecated use `Offer4$inboundSchema` instead. */
+    export const inboundSchema = Offer4$inboundSchema;
+    /** @deprecated use `Offer4$outboundSchema` instead. */
+    export const outboundSchema = Offer4$outboundSchema;
+    /** @deprecated use `Offer4$Outbound` instead. */
+    export type Outbound = Offer4$Outbound;
 }
 
 /** @internal */
+export const OfferSourceValue$inboundSchema: z.ZodType<OfferSourceValue, z.ZodTypeDef, unknown> =
+    z.union([z.lazy(() => Offer4$inboundSchema), z.string(), z.number(), z.boolean()]);
+
+/** @internal */
+export type OfferSourceValue$Outbound = Offer4$Outbound | string | number | boolean;
+
+/** @internal */
+export const OfferSourceValue$outboundSchema: z.ZodType<
+    OfferSourceValue$Outbound,
+    z.ZodTypeDef,
+    OfferSourceValue
+> = z.union([z.lazy(() => Offer4$outboundSchema), z.string(), z.number(), z.boolean()]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace OfferSourceValue$ {
-    export const inboundSchema: z.ZodType<OfferSourceValue, z.ZodTypeDef, unknown> = z.union([
-        z.lazy(() => Offer4$.inboundSchema),
-        z.string(),
-        z.number(),
-        z.boolean(),
-    ]);
-
-    export type Outbound = Offer4$.Outbound | string | number | boolean;
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, OfferSourceValue> = z.union([
-        z.lazy(() => Offer4$.outboundSchema),
-        z.string(),
-        z.number(),
-        z.boolean(),
-    ]);
+    /** @deprecated use `OfferSourceValue$inboundSchema` instead. */
+    export const inboundSchema = OfferSourceValue$inboundSchema;
+    /** @deprecated use `OfferSourceValue$outboundSchema` instead. */
+    export const outboundSchema = OfferSourceValue$outboundSchema;
+    /** @deprecated use `OfferSourceValue$Outbound` instead. */
+    export type Outbound = OfferSourceValue$Outbound;
 }
 
 /** @internal */
+export const OfferValue$inboundSchema: z.ZodType<OfferValueOpen, z.ZodTypeDef, unknown> = z.union([
+    z.nativeEnum(OfferValue),
+    z.string().transform(catchUnrecognizedEnum),
+]);
+
+/** @internal */
+export const OfferValue$outboundSchema: z.ZodType<OfferValueOpen, z.ZodTypeDef, OfferValueOpen> =
+    z.union([z.nativeEnum(OfferValue), z.string().and(z.custom<Unrecognized<string>>())]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace OfferValue$ {
-    export const inboundSchema: z.ZodType<OfferValueOpen, z.ZodTypeDef, unknown> = z.union([
-        z.nativeEnum(OfferValue),
-        z.string().transform(catchUnrecognizedEnum),
-    ]);
-
-    export const outboundSchema: z.ZodType<OfferValueOpen, z.ZodTypeDef, OfferValueOpen> = z.union([
-        z.nativeEnum(OfferValue),
-        z.string().and(z.custom<Unrecognized<string>>()),
-    ]);
+    /** @deprecated use `OfferValue$inboundSchema` instead. */
+    export const inboundSchema = OfferValue$inboundSchema;
+    /** @deprecated use `OfferValue$outboundSchema` instead. */
+    export const outboundSchema = OfferValue$outboundSchema;
 }
 
 /** @internal */
+export const OfferOfferStatus$inboundSchema: z.ZodType<OfferOfferStatus, z.ZodTypeDef, unknown> = z
+    .object({
+        source_value: z
+            .nullable(
+                z.union([z.lazy(() => Offer4$inboundSchema), z.string(), z.number(), z.boolean()])
+            )
+            .optional(),
+        value: z.nullable(OfferValue$inboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            source_value: "sourceValue",
+        });
+    });
+
+/** @internal */
+export type OfferOfferStatus$Outbound = {
+    source_value?: Offer4$Outbound | string | number | boolean | null | undefined;
+    value?: string | null | undefined;
+};
+
+/** @internal */
+export const OfferOfferStatus$outboundSchema: z.ZodType<
+    OfferOfferStatus$Outbound,
+    z.ZodTypeDef,
+    OfferOfferStatus
+> = z
+    .object({
+        sourceValue: z
+            .nullable(
+                z.union([z.lazy(() => Offer4$outboundSchema), z.string(), z.number(), z.boolean()])
+            )
+            .optional(),
+        value: z.nullable(OfferValue$outboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            sourceValue: "source_value",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace OfferOfferStatus$ {
-    export const inboundSchema: z.ZodType<OfferOfferStatus, z.ZodTypeDef, unknown> = z
-        .object({
-            source_value: z
-                .nullable(
-                    z.union([
-                        z.lazy(() => Offer4$.inboundSchema),
-                        z.string(),
-                        z.number(),
-                        z.boolean(),
-                    ])
-                )
-                .optional(),
-            value: z.nullable(OfferValue$.inboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                source_value: "sourceValue",
-            });
-        });
-
-    export type Outbound = {
-        source_value?: Offer4$.Outbound | string | number | boolean | null | undefined;
-        value?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, OfferOfferStatus> = z
-        .object({
-            sourceValue: z
-                .nullable(
-                    z.union([
-                        z.lazy(() => Offer4$.outboundSchema),
-                        z.string(),
-                        z.number(),
-                        z.boolean(),
-                    ])
-                )
-                .optional(),
-            value: z.nullable(OfferValue$.outboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                sourceValue: "source_value",
-            });
-        });
+    /** @deprecated use `OfferOfferStatus$inboundSchema` instead. */
+    export const inboundSchema = OfferOfferStatus$inboundSchema;
+    /** @deprecated use `OfferOfferStatus$outboundSchema` instead. */
+    export const outboundSchema = OfferOfferStatus$outboundSchema;
+    /** @deprecated use `OfferOfferStatus$Outbound` instead. */
+    export type Outbound = OfferOfferStatus$Outbound;
 }
 
 /** @internal */
+export const Offer$inboundSchema: z.ZodType<Offer, z.ZodTypeDef, unknown> = z
+    .object({
+        application_id: z.nullable(z.string()).optional(),
+        created_at: z
+            .nullable(
+                z
+                    .string()
+                    .datetime({ offset: true })
+                    .transform((v) => new Date(v))
+            )
+            .optional(),
+        currency: z.nullable(z.string()).optional(),
+        id: z.nullable(z.string()).optional(),
+        offer_history: z.nullable(z.array(OfferHistory$inboundSchema)).optional(),
+        offer_status: z.nullable(z.lazy(() => OfferOfferStatus$inboundSchema)).optional(),
+        remote_application_id: z.nullable(z.string()).optional(),
+        remote_id: z.nullable(z.string()).optional(),
+        salary: z.nullable(z.number()).optional(),
+        start_date: z
+            .nullable(
+                z
+                    .string()
+                    .datetime({ offset: true })
+                    .transform((v) => new Date(v))
+            )
+            .optional(),
+        updated_at: z
+            .nullable(
+                z
+                    .string()
+                    .datetime({ offset: true })
+                    .transform((v) => new Date(v))
+            )
+            .optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            application_id: "applicationId",
+            created_at: "createdAt",
+            offer_history: "offerHistory",
+            offer_status: "offerStatus",
+            remote_application_id: "remoteApplicationId",
+            remote_id: "remoteId",
+            start_date: "startDate",
+            updated_at: "updatedAt",
+        });
+    });
+
+/** @internal */
+export type Offer$Outbound = {
+    application_id?: string | null | undefined;
+    created_at?: string | null | undefined;
+    currency?: string | null | undefined;
+    id?: string | null | undefined;
+    offer_history?: Array<OfferHistory$Outbound> | null | undefined;
+    offer_status?: OfferOfferStatus$Outbound | null | undefined;
+    remote_application_id?: string | null | undefined;
+    remote_id?: string | null | undefined;
+    salary?: number | null | undefined;
+    start_date?: string | null | undefined;
+    updated_at?: string | null | undefined;
+};
+
+/** @internal */
+export const Offer$outboundSchema: z.ZodType<Offer$Outbound, z.ZodTypeDef, Offer> = z
+    .object({
+        applicationId: z.nullable(z.string()).optional(),
+        createdAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+        currency: z.nullable(z.string()).optional(),
+        id: z.nullable(z.string()).optional(),
+        offerHistory: z.nullable(z.array(OfferHistory$outboundSchema)).optional(),
+        offerStatus: z.nullable(z.lazy(() => OfferOfferStatus$outboundSchema)).optional(),
+        remoteApplicationId: z.nullable(z.string()).optional(),
+        remoteId: z.nullable(z.string()).optional(),
+        salary: z.nullable(z.number()).optional(),
+        startDate: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+        updatedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            applicationId: "application_id",
+            createdAt: "created_at",
+            offerHistory: "offer_history",
+            offerStatus: "offer_status",
+            remoteApplicationId: "remote_application_id",
+            remoteId: "remote_id",
+            startDate: "start_date",
+            updatedAt: "updated_at",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace Offer$ {
-    export const inboundSchema: z.ZodType<Offer, z.ZodTypeDef, unknown> = z
-        .object({
-            application_id: z.nullable(z.string()).optional(),
-            created_at: z
-                .nullable(
-                    z
-                        .string()
-                        .datetime({ offset: true })
-                        .transform((v) => new Date(v))
-                )
-                .optional(),
-            currency: z.nullable(z.string()).optional(),
-            id: z.nullable(z.string()).optional(),
-            offer_history: z.nullable(z.array(OfferHistory$.inboundSchema)).optional(),
-            offer_status: z.nullable(z.lazy(() => OfferOfferStatus$.inboundSchema)).optional(),
-            remote_application_id: z.nullable(z.string()).optional(),
-            remote_id: z.nullable(z.string()).optional(),
-            salary: z.nullable(z.number()).optional(),
-            start_date: z
-                .nullable(
-                    z
-                        .string()
-                        .datetime({ offset: true })
-                        .transform((v) => new Date(v))
-                )
-                .optional(),
-            updated_at: z
-                .nullable(
-                    z
-                        .string()
-                        .datetime({ offset: true })
-                        .transform((v) => new Date(v))
-                )
-                .optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                application_id: "applicationId",
-                created_at: "createdAt",
-                offer_history: "offerHistory",
-                offer_status: "offerStatus",
-                remote_application_id: "remoteApplicationId",
-                remote_id: "remoteId",
-                start_date: "startDate",
-                updated_at: "updatedAt",
-            });
-        });
-
-    export type Outbound = {
-        application_id?: string | null | undefined;
-        created_at?: string | null | undefined;
-        currency?: string | null | undefined;
-        id?: string | null | undefined;
-        offer_history?: Array<OfferHistory$.Outbound> | null | undefined;
-        offer_status?: OfferOfferStatus$.Outbound | null | undefined;
-        remote_application_id?: string | null | undefined;
-        remote_id?: string | null | undefined;
-        salary?: number | null | undefined;
-        start_date?: string | null | undefined;
-        updated_at?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Offer> = z
-        .object({
-            applicationId: z.nullable(z.string()).optional(),
-            createdAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
-            currency: z.nullable(z.string()).optional(),
-            id: z.nullable(z.string()).optional(),
-            offerHistory: z.nullable(z.array(OfferHistory$.outboundSchema)).optional(),
-            offerStatus: z.nullable(z.lazy(() => OfferOfferStatus$.outboundSchema)).optional(),
-            remoteApplicationId: z.nullable(z.string()).optional(),
-            remoteId: z.nullable(z.string()).optional(),
-            salary: z.nullable(z.number()).optional(),
-            startDate: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
-            updatedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                applicationId: "application_id",
-                createdAt: "created_at",
-                offerHistory: "offer_history",
-                offerStatus: "offer_status",
-                remoteApplicationId: "remote_application_id",
-                remoteId: "remote_id",
-                startDate: "start_date",
-                updatedAt: "updated_at",
-            });
-        });
+    /** @deprecated use `Offer$inboundSchema` instead. */
+    export const inboundSchema = Offer$inboundSchema;
+    /** @deprecated use `Offer$outboundSchema` instead. */
+    export const outboundSchema = Offer$outboundSchema;
+    /** @deprecated use `Offer$Outbound` instead. */
+    export type Outbound = Offer$Outbound;
 }

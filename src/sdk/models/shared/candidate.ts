@@ -3,9 +3,24 @@
  */
 
 import { remap as remap$ } from "../../../lib/primitives.js";
-import { CandidateEmail, CandidateEmail$ } from "./candidateemail.js";
-import { PhoneNumber, PhoneNumber$ } from "./phonenumber.js";
-import { SocialLink, SocialLink$ } from "./sociallink.js";
+import {
+    CandidateEmail,
+    CandidateEmail$inboundSchema,
+    CandidateEmail$Outbound,
+    CandidateEmail$outboundSchema,
+} from "./candidateemail.js";
+import {
+    PhoneNumber,
+    PhoneNumber$inboundSchema,
+    PhoneNumber$Outbound,
+    PhoneNumber$outboundSchema,
+} from "./phonenumber.js";
+import {
+    SocialLink,
+    SocialLink$inboundSchema,
+    SocialLink$Outbound,
+    SocialLink$outboundSchema,
+} from "./sociallink.js";
 import * as z from "zod";
 
 export type Candidate = {
@@ -86,118 +101,131 @@ export type Candidate = {
 };
 
 /** @internal */
+export const Candidate$inboundSchema: z.ZodType<Candidate, z.ZodTypeDef, unknown> = z
+    .object({
+        application_ids: z.nullable(z.array(z.string())).optional(),
+        company: z.nullable(z.string()).optional(),
+        country: z.nullable(z.string()).optional(),
+        created_at: z
+            .nullable(
+                z
+                    .string()
+                    .datetime({ offset: true })
+                    .transform((v) => new Date(v))
+            )
+            .optional(),
+        email: z.nullable(z.string()).optional(),
+        emails: z.nullable(z.array(CandidateEmail$inboundSchema)).optional(),
+        first_name: z.nullable(z.string()).optional(),
+        hired_at: z
+            .nullable(
+                z
+                    .string()
+                    .datetime({ offset: true })
+                    .transform((v) => new Date(v))
+            )
+            .optional(),
+        id: z.nullable(z.string()).optional(),
+        last_name: z.nullable(z.string()).optional(),
+        name: z.nullable(z.string()).optional(),
+        phone: z.nullable(z.string()).optional(),
+        phone_numbers: z.nullable(z.array(PhoneNumber$inboundSchema)).optional(),
+        remote_application_ids: z.nullable(z.array(z.string())).optional(),
+        remote_id: z.nullable(z.string()).optional(),
+        social_links: z.nullable(z.array(SocialLink$inboundSchema)).optional(),
+        title: z.nullable(z.string()).optional(),
+        updated_at: z
+            .nullable(
+                z
+                    .string()
+                    .datetime({ offset: true })
+                    .transform((v) => new Date(v))
+            )
+            .optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            application_ids: "applicationIds",
+            created_at: "createdAt",
+            first_name: "firstName",
+            hired_at: "hiredAt",
+            last_name: "lastName",
+            phone_numbers: "phoneNumbers",
+            remote_application_ids: "remoteApplicationIds",
+            remote_id: "remoteId",
+            social_links: "socialLinks",
+            updated_at: "updatedAt",
+        });
+    });
+
+/** @internal */
+export type Candidate$Outbound = {
+    application_ids?: Array<string> | null | undefined;
+    company?: string | null | undefined;
+    country?: string | null | undefined;
+    created_at?: string | null | undefined;
+    email?: string | null | undefined;
+    emails?: Array<CandidateEmail$Outbound> | null | undefined;
+    first_name?: string | null | undefined;
+    hired_at?: string | null | undefined;
+    id?: string | null | undefined;
+    last_name?: string | null | undefined;
+    name?: string | null | undefined;
+    phone?: string | null | undefined;
+    phone_numbers?: Array<PhoneNumber$Outbound> | null | undefined;
+    remote_application_ids?: Array<string> | null | undefined;
+    remote_id?: string | null | undefined;
+    social_links?: Array<SocialLink$Outbound> | null | undefined;
+    title?: string | null | undefined;
+    updated_at?: string | null | undefined;
+};
+
+/** @internal */
+export const Candidate$outboundSchema: z.ZodType<Candidate$Outbound, z.ZodTypeDef, Candidate> = z
+    .object({
+        applicationIds: z.nullable(z.array(z.string())).optional(),
+        company: z.nullable(z.string()).optional(),
+        country: z.nullable(z.string()).optional(),
+        createdAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+        email: z.nullable(z.string()).optional(),
+        emails: z.nullable(z.array(CandidateEmail$outboundSchema)).optional(),
+        firstName: z.nullable(z.string()).optional(),
+        hiredAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+        id: z.nullable(z.string()).optional(),
+        lastName: z.nullable(z.string()).optional(),
+        name: z.nullable(z.string()).optional(),
+        phone: z.nullable(z.string()).optional(),
+        phoneNumbers: z.nullable(z.array(PhoneNumber$outboundSchema)).optional(),
+        remoteApplicationIds: z.nullable(z.array(z.string())).optional(),
+        remoteId: z.nullable(z.string()).optional(),
+        socialLinks: z.nullable(z.array(SocialLink$outboundSchema)).optional(),
+        title: z.nullable(z.string()).optional(),
+        updatedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            applicationIds: "application_ids",
+            createdAt: "created_at",
+            firstName: "first_name",
+            hiredAt: "hired_at",
+            lastName: "last_name",
+            phoneNumbers: "phone_numbers",
+            remoteApplicationIds: "remote_application_ids",
+            remoteId: "remote_id",
+            socialLinks: "social_links",
+            updatedAt: "updated_at",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace Candidate$ {
-    export const inboundSchema: z.ZodType<Candidate, z.ZodTypeDef, unknown> = z
-        .object({
-            application_ids: z.nullable(z.array(z.string())).optional(),
-            company: z.nullable(z.string()).optional(),
-            country: z.nullable(z.string()).optional(),
-            created_at: z
-                .nullable(
-                    z
-                        .string()
-                        .datetime({ offset: true })
-                        .transform((v) => new Date(v))
-                )
-                .optional(),
-            email: z.nullable(z.string()).optional(),
-            emails: z.nullable(z.array(CandidateEmail$.inboundSchema)).optional(),
-            first_name: z.nullable(z.string()).optional(),
-            hired_at: z
-                .nullable(
-                    z
-                        .string()
-                        .datetime({ offset: true })
-                        .transform((v) => new Date(v))
-                )
-                .optional(),
-            id: z.nullable(z.string()).optional(),
-            last_name: z.nullable(z.string()).optional(),
-            name: z.nullable(z.string()).optional(),
-            phone: z.nullable(z.string()).optional(),
-            phone_numbers: z.nullable(z.array(PhoneNumber$.inboundSchema)).optional(),
-            remote_application_ids: z.nullable(z.array(z.string())).optional(),
-            remote_id: z.nullable(z.string()).optional(),
-            social_links: z.nullable(z.array(SocialLink$.inboundSchema)).optional(),
-            title: z.nullable(z.string()).optional(),
-            updated_at: z
-                .nullable(
-                    z
-                        .string()
-                        .datetime({ offset: true })
-                        .transform((v) => new Date(v))
-                )
-                .optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                application_ids: "applicationIds",
-                created_at: "createdAt",
-                first_name: "firstName",
-                hired_at: "hiredAt",
-                last_name: "lastName",
-                phone_numbers: "phoneNumbers",
-                remote_application_ids: "remoteApplicationIds",
-                remote_id: "remoteId",
-                social_links: "socialLinks",
-                updated_at: "updatedAt",
-            });
-        });
-
-    export type Outbound = {
-        application_ids?: Array<string> | null | undefined;
-        company?: string | null | undefined;
-        country?: string | null | undefined;
-        created_at?: string | null | undefined;
-        email?: string | null | undefined;
-        emails?: Array<CandidateEmail$.Outbound> | null | undefined;
-        first_name?: string | null | undefined;
-        hired_at?: string | null | undefined;
-        id?: string | null | undefined;
-        last_name?: string | null | undefined;
-        name?: string | null | undefined;
-        phone?: string | null | undefined;
-        phone_numbers?: Array<PhoneNumber$.Outbound> | null | undefined;
-        remote_application_ids?: Array<string> | null | undefined;
-        remote_id?: string | null | undefined;
-        social_links?: Array<SocialLink$.Outbound> | null | undefined;
-        title?: string | null | undefined;
-        updated_at?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Candidate> = z
-        .object({
-            applicationIds: z.nullable(z.array(z.string())).optional(),
-            company: z.nullable(z.string()).optional(),
-            country: z.nullable(z.string()).optional(),
-            createdAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
-            email: z.nullable(z.string()).optional(),
-            emails: z.nullable(z.array(CandidateEmail$.outboundSchema)).optional(),
-            firstName: z.nullable(z.string()).optional(),
-            hiredAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
-            id: z.nullable(z.string()).optional(),
-            lastName: z.nullable(z.string()).optional(),
-            name: z.nullable(z.string()).optional(),
-            phone: z.nullable(z.string()).optional(),
-            phoneNumbers: z.nullable(z.array(PhoneNumber$.outboundSchema)).optional(),
-            remoteApplicationIds: z.nullable(z.array(z.string())).optional(),
-            remoteId: z.nullable(z.string()).optional(),
-            socialLinks: z.nullable(z.array(SocialLink$.outboundSchema)).optional(),
-            title: z.nullable(z.string()).optional(),
-            updatedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                applicationIds: "application_ids",
-                createdAt: "created_at",
-                firstName: "first_name",
-                hiredAt: "hired_at",
-                lastName: "last_name",
-                phoneNumbers: "phone_numbers",
-                remoteApplicationIds: "remote_application_ids",
-                remoteId: "remote_id",
-                socialLinks: "social_links",
-                updatedAt: "updated_at",
-            });
-        });
+    /** @deprecated use `Candidate$inboundSchema` instead. */
+    export const inboundSchema = Candidate$inboundSchema;
+    /** @deprecated use `Candidate$outboundSchema` instead. */
+    export const outboundSchema = Candidate$outboundSchema;
+    /** @deprecated use `Candidate$Outbound` instead. */
+    export type Outbound = Candidate$Outbound;
 }

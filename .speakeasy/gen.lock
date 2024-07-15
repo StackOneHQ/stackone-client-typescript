@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 7fa83af8-9e8e-4410-b7e2-cf1d0eaf688b
 management:
-  docChecksum: 8d756bf1b53b6427e722f7b1b96601e7
+  docChecksum: 0f2d1eb0229eeb87b34898b6c7525e97
   docVersion: 1.0.0
-  speakeasyVersion: 1.327.0
-  generationVersion: 2.359.6
-  releaseVersion: 4.11.0
-  configChecksum: 3fb4382fb656eaf61bae5b3790a53e40
+  speakeasyVersion: 1.335.0
+  generationVersion: 2.370.2
+  releaseVersion: 4.12.0
+  configChecksum: 11b3a89a3e5e3fa88d850de4f5c352a1
   repoURL: https://github.com/StackOneHQ/stackone-client-typescript.git
   repoSubDirectory: .
   installationURL: https://github.com/StackOneHQ/stackone-client-typescript
@@ -15,7 +15,8 @@ features:
   typescript:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.5
-    core: 3.11.3
+    core: 3.11.6
+    defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
     downloadStreams: 0.1.1
     examples: 2.81.4
@@ -26,8 +27,9 @@ features:
     nameOverrides: 2.81.2
     nullables: 0.1.0
     openEnums: 0.1.1
-    pagination: 2.82.2
+    pagination: 2.82.5
     responseFormat: 0.2.3
+    retries: 2.83.0
     sdkHooks: 0.1.0
     unions: 2.85.5
 generatedFiles:
@@ -50,6 +52,7 @@ generatedFiles:
   - src/index.ts
   - src/lib/base64.ts
   - src/lib/config.ts
+  - src/lib/dlv.ts
   - src/lib/encodings.ts
   - src/lib/http.ts
   - src/lib/is-plain-object.ts
@@ -1311,6 +1314,7 @@ generatedFiles:
   - docs/sdk/models/shared/proxyrequestbody.md
   - docs/sdk/models/shared/security.md
   - docs/sdks/stackone/README.md
+  - docs/lib/utils/retryconfig.md
   - docs/sdks/accounts/README.md
   - docs/sdks/connectsessions/README.md
   - docs/sdks/connectors/README.md

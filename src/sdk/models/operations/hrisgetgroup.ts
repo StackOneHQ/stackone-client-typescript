@@ -46,84 +46,126 @@ export type HrisGetGroupResponse = {
 };
 
 /** @internal */
+export const HrisGetGroupRequest$inboundSchema: z.ZodType<
+    HrisGetGroupRequest,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        fields: z.nullable(z.string()).optional(),
+        id: z.string(),
+        proxy: z.nullable(z.record(z.any())).optional(),
+        raw: z.nullable(z.boolean().default(false)),
+        "x-account-id": z.string(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            "x-account-id": "xAccountId",
+        });
+    });
+
+/** @internal */
+export type HrisGetGroupRequest$Outbound = {
+    fields?: string | null | undefined;
+    id: string;
+    proxy?: { [k: string]: any } | null | undefined;
+    raw: boolean | null;
+    "x-account-id": string;
+};
+
+/** @internal */
+export const HrisGetGroupRequest$outboundSchema: z.ZodType<
+    HrisGetGroupRequest$Outbound,
+    z.ZodTypeDef,
+    HrisGetGroupRequest
+> = z
+    .object({
+        fields: z.nullable(z.string()).optional(),
+        id: z.string(),
+        proxy: z.nullable(z.record(z.any())).optional(),
+        raw: z.nullable(z.boolean().default(false)),
+        xAccountId: z.string(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            xAccountId: "x-account-id",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace HrisGetGroupRequest$ {
-    export const inboundSchema: z.ZodType<HrisGetGroupRequest, z.ZodTypeDef, unknown> = z
-        .object({
-            fields: z.nullable(z.string()).optional(),
-            id: z.string(),
-            proxy: z.nullable(z.record(z.any())).optional(),
-            raw: z.nullable(z.boolean().default(false)),
-            "x-account-id": z.string(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                "x-account-id": "xAccountId",
-            });
-        });
-
-    export type Outbound = {
-        fields?: string | null | undefined;
-        id: string;
-        proxy?: { [k: string]: any } | null | undefined;
-        raw: boolean | null;
-        "x-account-id": string;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, HrisGetGroupRequest> = z
-        .object({
-            fields: z.nullable(z.string()).optional(),
-            id: z.string(),
-            proxy: z.nullable(z.record(z.any())).optional(),
-            raw: z.nullable(z.boolean().default(false)),
-            xAccountId: z.string(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                xAccountId: "x-account-id",
-            });
-        });
+    /** @deprecated use `HrisGetGroupRequest$inboundSchema` instead. */
+    export const inboundSchema = HrisGetGroupRequest$inboundSchema;
+    /** @deprecated use `HrisGetGroupRequest$outboundSchema` instead. */
+    export const outboundSchema = HrisGetGroupRequest$outboundSchema;
+    /** @deprecated use `HrisGetGroupRequest$Outbound` instead. */
+    export type Outbound = HrisGetGroupRequest$Outbound;
 }
 
 /** @internal */
+export const HrisGetGroupResponse$inboundSchema: z.ZodType<
+    HrisGetGroupResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        ContentType: z.string(),
+        HRISGroupsResult: shared.HRISGroupsResult$inboundSchema.optional(),
+        StatusCode: z.number().int(),
+        RawResponse: z.instanceof(Response),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            ContentType: "contentType",
+            HRISGroupsResult: "hrisGroupsResult",
+            StatusCode: "statusCode",
+            RawResponse: "rawResponse",
+        });
+    });
+
+/** @internal */
+export type HrisGetGroupResponse$Outbound = {
+    ContentType: string;
+    HRISGroupsResult?: shared.HRISGroupsResult$Outbound | undefined;
+    StatusCode: number;
+    RawResponse: never;
+};
+
+/** @internal */
+export const HrisGetGroupResponse$outboundSchema: z.ZodType<
+    HrisGetGroupResponse$Outbound,
+    z.ZodTypeDef,
+    HrisGetGroupResponse
+> = z
+    .object({
+        contentType: z.string(),
+        hrisGroupsResult: shared.HRISGroupsResult$outboundSchema.optional(),
+        statusCode: z.number().int(),
+        rawResponse: z.instanceof(Response).transform(() => {
+            throw new Error("Response cannot be serialized");
+        }),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            contentType: "ContentType",
+            hrisGroupsResult: "HRISGroupsResult",
+            statusCode: "StatusCode",
+            rawResponse: "RawResponse",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace HrisGetGroupResponse$ {
-    export const inboundSchema: z.ZodType<HrisGetGroupResponse, z.ZodTypeDef, unknown> = z
-        .object({
-            ContentType: z.string(),
-            HRISGroupsResult: shared.HRISGroupsResult$.inboundSchema.optional(),
-            StatusCode: z.number().int(),
-            RawResponse: z.instanceof(Response),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                ContentType: "contentType",
-                HRISGroupsResult: "hrisGroupsResult",
-                StatusCode: "statusCode",
-                RawResponse: "rawResponse",
-            });
-        });
-
-    export type Outbound = {
-        ContentType: string;
-        HRISGroupsResult?: shared.HRISGroupsResult$.Outbound | undefined;
-        StatusCode: number;
-        RawResponse: never;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, HrisGetGroupResponse> = z
-        .object({
-            contentType: z.string(),
-            hrisGroupsResult: shared.HRISGroupsResult$.outboundSchema.optional(),
-            statusCode: z.number().int(),
-            rawResponse: z.instanceof(Response).transform(() => {
-                throw new Error("Response cannot be serialized");
-            }),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                contentType: "ContentType",
-                hrisGroupsResult: "HRISGroupsResult",
-                statusCode: "StatusCode",
-                rawResponse: "RawResponse",
-            });
-        });
+    /** @deprecated use `HrisGetGroupResponse$inboundSchema` instead. */
+    export const inboundSchema = HrisGetGroupResponse$inboundSchema;
+    /** @deprecated use `HrisGetGroupResponse$outboundSchema` instead. */
+    export const outboundSchema = HrisGetGroupResponse$outboundSchema;
+    /** @deprecated use `HrisGetGroupResponse$Outbound` instead. */
+    export type Outbound = HrisGetGroupResponse$Outbound;
 }

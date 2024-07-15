@@ -7,6 +7,10 @@ import * as z from "zod";
 
 export type Category = {
     /**
+     * Whether the category is active and therefore available for use
+     */
+    active?: boolean | null | undefined;
+    /**
      * The ID associated with this category
      */
     id?: string | null | undefined;
@@ -21,34 +25,50 @@ export type Category = {
 };
 
 /** @internal */
+export const Category$inboundSchema: z.ZodType<Category, z.ZodTypeDef, unknown> = z
+    .object({
+        active: z.nullable(z.boolean()).optional(),
+        id: z.nullable(z.string()).optional(),
+        name: z.nullable(z.string()).optional(),
+        remote_id: z.nullable(z.string()).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            remote_id: "remoteId",
+        });
+    });
+
+/** @internal */
+export type Category$Outbound = {
+    active?: boolean | null | undefined;
+    id?: string | null | undefined;
+    name?: string | null | undefined;
+    remote_id?: string | null | undefined;
+};
+
+/** @internal */
+export const Category$outboundSchema: z.ZodType<Category$Outbound, z.ZodTypeDef, Category> = z
+    .object({
+        active: z.nullable(z.boolean()).optional(),
+        id: z.nullable(z.string()).optional(),
+        name: z.nullable(z.string()).optional(),
+        remoteId: z.nullable(z.string()).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            remoteId: "remote_id",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace Category$ {
-    export const inboundSchema: z.ZodType<Category, z.ZodTypeDef, unknown> = z
-        .object({
-            id: z.nullable(z.string()).optional(),
-            name: z.nullable(z.string()).optional(),
-            remote_id: z.nullable(z.string()).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                remote_id: "remoteId",
-            });
-        });
-
-    export type Outbound = {
-        id?: string | null | undefined;
-        name?: string | null | undefined;
-        remote_id?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Category> = z
-        .object({
-            id: z.nullable(z.string()).optional(),
-            name: z.nullable(z.string()).optional(),
-            remoteId: z.nullable(z.string()).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                remoteId: "remote_id",
-            });
-        });
+    /** @deprecated use `Category$inboundSchema` instead. */
+    export const inboundSchema = Category$inboundSchema;
+    /** @deprecated use `Category$outboundSchema` instead. */
+    export const outboundSchema = Category$outboundSchema;
+    /** @deprecated use `Category$Outbound` instead. */
+    export type Outbound = Category$Outbound;
 }

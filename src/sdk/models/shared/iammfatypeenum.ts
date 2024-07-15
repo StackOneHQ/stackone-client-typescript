@@ -35,94 +35,152 @@ export type IamMfaTypeEnum = {
 };
 
 /** @internal */
+export const IamMfaTypeEnum4$inboundSchema: z.ZodType<IamMfaTypeEnum4, z.ZodTypeDef, unknown> =
+    z.object({});
+
+/** @internal */
+export type IamMfaTypeEnum4$Outbound = {};
+
+/** @internal */
+export const IamMfaTypeEnum4$outboundSchema: z.ZodType<
+    IamMfaTypeEnum4$Outbound,
+    z.ZodTypeDef,
+    IamMfaTypeEnum4
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace IamMfaTypeEnum4$ {
-    export const inboundSchema: z.ZodType<IamMfaTypeEnum4, z.ZodTypeDef, unknown> = z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, IamMfaTypeEnum4> = z.object({});
+    /** @deprecated use `IamMfaTypeEnum4$inboundSchema` instead. */
+    export const inboundSchema = IamMfaTypeEnum4$inboundSchema;
+    /** @deprecated use `IamMfaTypeEnum4$outboundSchema` instead. */
+    export const outboundSchema = IamMfaTypeEnum4$outboundSchema;
+    /** @deprecated use `IamMfaTypeEnum4$Outbound` instead. */
+    export type Outbound = IamMfaTypeEnum4$Outbound;
 }
 
 /** @internal */
+export const IamMfaTypeEnumSourceValue$inboundSchema: z.ZodType<
+    IamMfaTypeEnumSourceValue,
+    z.ZodTypeDef,
+    unknown
+> = z.union([z.lazy(() => IamMfaTypeEnum4$inboundSchema), z.string(), z.number(), z.boolean()]);
+
+/** @internal */
+export type IamMfaTypeEnumSourceValue$Outbound =
+    | IamMfaTypeEnum4$Outbound
+    | string
+    | number
+    | boolean;
+
+/** @internal */
+export const IamMfaTypeEnumSourceValue$outboundSchema: z.ZodType<
+    IamMfaTypeEnumSourceValue$Outbound,
+    z.ZodTypeDef,
+    IamMfaTypeEnumSourceValue
+> = z.union([z.lazy(() => IamMfaTypeEnum4$outboundSchema), z.string(), z.number(), z.boolean()]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace IamMfaTypeEnumSourceValue$ {
-    export const inboundSchema: z.ZodType<IamMfaTypeEnumSourceValue, z.ZodTypeDef, unknown> =
-        z.union([
-            z.lazy(() => IamMfaTypeEnum4$.inboundSchema),
-            z.string(),
-            z.number(),
-            z.boolean(),
-        ]);
-
-    export type Outbound = IamMfaTypeEnum4$.Outbound | string | number | boolean;
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, IamMfaTypeEnumSourceValue> =
-        z.union([
-            z.lazy(() => IamMfaTypeEnum4$.outboundSchema),
-            z.string(),
-            z.number(),
-            z.boolean(),
-        ]);
+    /** @deprecated use `IamMfaTypeEnumSourceValue$inboundSchema` instead. */
+    export const inboundSchema = IamMfaTypeEnumSourceValue$inboundSchema;
+    /** @deprecated use `IamMfaTypeEnumSourceValue$outboundSchema` instead. */
+    export const outboundSchema = IamMfaTypeEnumSourceValue$outboundSchema;
+    /** @deprecated use `IamMfaTypeEnumSourceValue$Outbound` instead. */
+    export type Outbound = IamMfaTypeEnumSourceValue$Outbound;
 }
 
 /** @internal */
+export const IamMfaTypeEnumValue$inboundSchema: z.ZodType<
+    IamMfaTypeEnumValueOpen,
+    z.ZodTypeDef,
+    unknown
+> = z.union([z.nativeEnum(IamMfaTypeEnumValue), z.string().transform(catchUnrecognizedEnum)]);
+
+/** @internal */
+export const IamMfaTypeEnumValue$outboundSchema: z.ZodType<
+    IamMfaTypeEnumValueOpen,
+    z.ZodTypeDef,
+    IamMfaTypeEnumValueOpen
+> = z.union([z.nativeEnum(IamMfaTypeEnumValue), z.string().and(z.custom<Unrecognized<string>>())]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace IamMfaTypeEnumValue$ {
-    export const inboundSchema: z.ZodType<IamMfaTypeEnumValueOpen, z.ZodTypeDef, unknown> = z.union(
-        [z.nativeEnum(IamMfaTypeEnumValue), z.string().transform(catchUnrecognizedEnum)]
-    );
-
-    export const outboundSchema: z.ZodType<
-        IamMfaTypeEnumValueOpen,
-        z.ZodTypeDef,
-        IamMfaTypeEnumValueOpen
-    > = z.union([
-        z.nativeEnum(IamMfaTypeEnumValue),
-        z.string().and(z.custom<Unrecognized<string>>()),
-    ]);
+    /** @deprecated use `IamMfaTypeEnumValue$inboundSchema` instead. */
+    export const inboundSchema = IamMfaTypeEnumValue$inboundSchema;
+    /** @deprecated use `IamMfaTypeEnumValue$outboundSchema` instead. */
+    export const outboundSchema = IamMfaTypeEnumValue$outboundSchema;
 }
 
 /** @internal */
+export const IamMfaTypeEnum$inboundSchema: z.ZodType<IamMfaTypeEnum, z.ZodTypeDef, unknown> = z
+    .object({
+        source_value: z
+            .nullable(
+                z.union([
+                    z.lazy(() => IamMfaTypeEnum4$inboundSchema),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                ])
+            )
+            .optional(),
+        value: z.nullable(IamMfaTypeEnumValue$inboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            source_value: "sourceValue",
+        });
+    });
+
+/** @internal */
+export type IamMfaTypeEnum$Outbound = {
+    source_value?: IamMfaTypeEnum4$Outbound | string | number | boolean | null | undefined;
+    value?: string | null | undefined;
+};
+
+/** @internal */
+export const IamMfaTypeEnum$outboundSchema: z.ZodType<
+    IamMfaTypeEnum$Outbound,
+    z.ZodTypeDef,
+    IamMfaTypeEnum
+> = z
+    .object({
+        sourceValue: z
+            .nullable(
+                z.union([
+                    z.lazy(() => IamMfaTypeEnum4$outboundSchema),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                ])
+            )
+            .optional(),
+        value: z.nullable(IamMfaTypeEnumValue$outboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            sourceValue: "source_value",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace IamMfaTypeEnum$ {
-    export const inboundSchema: z.ZodType<IamMfaTypeEnum, z.ZodTypeDef, unknown> = z
-        .object({
-            source_value: z
-                .nullable(
-                    z.union([
-                        z.lazy(() => IamMfaTypeEnum4$.inboundSchema),
-                        z.string(),
-                        z.number(),
-                        z.boolean(),
-                    ])
-                )
-                .optional(),
-            value: z.nullable(IamMfaTypeEnumValue$.inboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                source_value: "sourceValue",
-            });
-        });
-
-    export type Outbound = {
-        source_value?: IamMfaTypeEnum4$.Outbound | string | number | boolean | null | undefined;
-        value?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, IamMfaTypeEnum> = z
-        .object({
-            sourceValue: z
-                .nullable(
-                    z.union([
-                        z.lazy(() => IamMfaTypeEnum4$.outboundSchema),
-                        z.string(),
-                        z.number(),
-                        z.boolean(),
-                    ])
-                )
-                .optional(),
-            value: z.nullable(IamMfaTypeEnumValue$.outboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                sourceValue: "source_value",
-            });
-        });
+    /** @deprecated use `IamMfaTypeEnum$inboundSchema` instead. */
+    export const inboundSchema = IamMfaTypeEnum$inboundSchema;
+    /** @deprecated use `IamMfaTypeEnum$outboundSchema` instead. */
+    export const outboundSchema = IamMfaTypeEnum$outboundSchema;
+    /** @deprecated use `IamMfaTypeEnum$Outbound` instead. */
+    export type Outbound = IamMfaTypeEnum$Outbound;
 }

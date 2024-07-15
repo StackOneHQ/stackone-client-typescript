@@ -79,136 +79,192 @@ export type HrisListBenefitsResponse = {
 };
 
 /** @internal */
+export const HrisListBenefitsQueryParamFilter$inboundSchema: z.ZodType<
+    HrisListBenefitsQueryParamFilter,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        updated_after: z.nullable(z.string()).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            updated_after: "updatedAfter",
+        });
+    });
+
+/** @internal */
+export type HrisListBenefitsQueryParamFilter$Outbound = {
+    updated_after?: string | null | undefined;
+};
+
+/** @internal */
+export const HrisListBenefitsQueryParamFilter$outboundSchema: z.ZodType<
+    HrisListBenefitsQueryParamFilter$Outbound,
+    z.ZodTypeDef,
+    HrisListBenefitsQueryParamFilter
+> = z
+    .object({
+        updatedAfter: z.nullable(z.string()).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            updatedAfter: "updated_after",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace HrisListBenefitsQueryParamFilter$ {
-    export const inboundSchema: z.ZodType<HrisListBenefitsQueryParamFilter, z.ZodTypeDef, unknown> =
-        z
-            .object({
-                updated_after: z.nullable(z.string()).optional(),
-            })
-            .transform((v) => {
-                return remap$(v, {
-                    updated_after: "updatedAfter",
-                });
-            });
-
-    export type Outbound = {
-        updated_after?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        HrisListBenefitsQueryParamFilter
-    > = z
-        .object({
-            updatedAfter: z.nullable(z.string()).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                updatedAfter: "updated_after",
-            });
-        });
+    /** @deprecated use `HrisListBenefitsQueryParamFilter$inboundSchema` instead. */
+    export const inboundSchema = HrisListBenefitsQueryParamFilter$inboundSchema;
+    /** @deprecated use `HrisListBenefitsQueryParamFilter$outboundSchema` instead. */
+    export const outboundSchema = HrisListBenefitsQueryParamFilter$outboundSchema;
+    /** @deprecated use `HrisListBenefitsQueryParamFilter$Outbound` instead. */
+    export type Outbound = HrisListBenefitsQueryParamFilter$Outbound;
 }
 
 /** @internal */
+export const HrisListBenefitsRequest$inboundSchema: z.ZodType<
+    HrisListBenefitsRequest,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        fields: z.nullable(z.string()).optional(),
+        filter: z.nullable(z.lazy(() => HrisListBenefitsQueryParamFilter$inboundSchema)).optional(),
+        next: z.nullable(z.string()).optional(),
+        page: z.nullable(z.string()).optional(),
+        page_size: z.nullable(z.string().default("25")),
+        proxy: z.nullable(z.record(z.any())).optional(),
+        raw: z.nullable(z.boolean().default(false)),
+        updated_after: z.nullable(z.string()).optional(),
+        "x-account-id": z.string(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            page_size: "pageSize",
+            updated_after: "updatedAfter",
+            "x-account-id": "xAccountId",
+        });
+    });
+
+/** @internal */
+export type HrisListBenefitsRequest$Outbound = {
+    fields?: string | null | undefined;
+    filter?: HrisListBenefitsQueryParamFilter$Outbound | null | undefined;
+    next?: string | null | undefined;
+    page?: string | null | undefined;
+    page_size: string | null;
+    proxy?: { [k: string]: any } | null | undefined;
+    raw: boolean | null;
+    updated_after?: string | null | undefined;
+    "x-account-id": string;
+};
+
+/** @internal */
+export const HrisListBenefitsRequest$outboundSchema: z.ZodType<
+    HrisListBenefitsRequest$Outbound,
+    z.ZodTypeDef,
+    HrisListBenefitsRequest
+> = z
+    .object({
+        fields: z.nullable(z.string()).optional(),
+        filter: z
+            .nullable(z.lazy(() => HrisListBenefitsQueryParamFilter$outboundSchema))
+            .optional(),
+        next: z.nullable(z.string()).optional(),
+        page: z.nullable(z.string()).optional(),
+        pageSize: z.nullable(z.string().default("25")),
+        proxy: z.nullable(z.record(z.any())).optional(),
+        raw: z.nullable(z.boolean().default(false)),
+        updatedAfter: z.nullable(z.string()).optional(),
+        xAccountId: z.string(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            pageSize: "page_size",
+            updatedAfter: "updated_after",
+            xAccountId: "x-account-id",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace HrisListBenefitsRequest$ {
-    export const inboundSchema: z.ZodType<HrisListBenefitsRequest, z.ZodTypeDef, unknown> = z
-        .object({
-            fields: z.nullable(z.string()).optional(),
-            filter: z
-                .nullable(z.lazy(() => HrisListBenefitsQueryParamFilter$.inboundSchema))
-                .optional(),
-            next: z.nullable(z.string()).optional(),
-            page: z.nullable(z.string()).optional(),
-            page_size: z.nullable(z.string().default("25")),
-            proxy: z.nullable(z.record(z.any())).optional(),
-            raw: z.nullable(z.boolean().default(false)),
-            updated_after: z.nullable(z.string()).optional(),
-            "x-account-id": z.string(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                page_size: "pageSize",
-                updated_after: "updatedAfter",
-                "x-account-id": "xAccountId",
-            });
-        });
-
-    export type Outbound = {
-        fields?: string | null | undefined;
-        filter?: HrisListBenefitsQueryParamFilter$.Outbound | null | undefined;
-        next?: string | null | undefined;
-        page?: string | null | undefined;
-        page_size: string | null;
-        proxy?: { [k: string]: any } | null | undefined;
-        raw: boolean | null;
-        updated_after?: string | null | undefined;
-        "x-account-id": string;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, HrisListBenefitsRequest> = z
-        .object({
-            fields: z.nullable(z.string()).optional(),
-            filter: z
-                .nullable(z.lazy(() => HrisListBenefitsQueryParamFilter$.outboundSchema))
-                .optional(),
-            next: z.nullable(z.string()).optional(),
-            page: z.nullable(z.string()).optional(),
-            pageSize: z.nullable(z.string().default("25")),
-            proxy: z.nullable(z.record(z.any())).optional(),
-            raw: z.nullable(z.boolean().default(false)),
-            updatedAfter: z.nullable(z.string()).optional(),
-            xAccountId: z.string(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                pageSize: "page_size",
-                updatedAfter: "updated_after",
-                xAccountId: "x-account-id",
-            });
-        });
+    /** @deprecated use `HrisListBenefitsRequest$inboundSchema` instead. */
+    export const inboundSchema = HrisListBenefitsRequest$inboundSchema;
+    /** @deprecated use `HrisListBenefitsRequest$outboundSchema` instead. */
+    export const outboundSchema = HrisListBenefitsRequest$outboundSchema;
+    /** @deprecated use `HrisListBenefitsRequest$Outbound` instead. */
+    export type Outbound = HrisListBenefitsRequest$Outbound;
 }
 
 /** @internal */
+export const HrisListBenefitsResponse$inboundSchema: z.ZodType<
+    HrisListBenefitsResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        ContentType: z.string(),
+        HRISBenefitsPaginated: shared.HRISBenefitsPaginated$inboundSchema.optional(),
+        StatusCode: z.number().int(),
+        RawResponse: z.instanceof(Response),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            ContentType: "contentType",
+            HRISBenefitsPaginated: "hrisBenefitsPaginated",
+            StatusCode: "statusCode",
+            RawResponse: "rawResponse",
+        });
+    });
+
+/** @internal */
+export type HrisListBenefitsResponse$Outbound = {
+    ContentType: string;
+    HRISBenefitsPaginated?: shared.HRISBenefitsPaginated$Outbound | undefined;
+    StatusCode: number;
+    RawResponse: never;
+};
+
+/** @internal */
+export const HrisListBenefitsResponse$outboundSchema: z.ZodType<
+    HrisListBenefitsResponse$Outbound,
+    z.ZodTypeDef,
+    HrisListBenefitsResponse
+> = z
+    .object({
+        contentType: z.string(),
+        hrisBenefitsPaginated: shared.HRISBenefitsPaginated$outboundSchema.optional(),
+        statusCode: z.number().int(),
+        rawResponse: z.instanceof(Response).transform(() => {
+            throw new Error("Response cannot be serialized");
+        }),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            contentType: "ContentType",
+            hrisBenefitsPaginated: "HRISBenefitsPaginated",
+            statusCode: "StatusCode",
+            rawResponse: "RawResponse",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace HrisListBenefitsResponse$ {
-    export const inboundSchema: z.ZodType<HrisListBenefitsResponse, z.ZodTypeDef, unknown> = z
-        .object({
-            ContentType: z.string(),
-            HRISBenefitsPaginated: shared.HRISBenefitsPaginated$.inboundSchema.optional(),
-            StatusCode: z.number().int(),
-            RawResponse: z.instanceof(Response),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                ContentType: "contentType",
-                HRISBenefitsPaginated: "hrisBenefitsPaginated",
-                StatusCode: "statusCode",
-                RawResponse: "rawResponse",
-            });
-        });
-
-    export type Outbound = {
-        ContentType: string;
-        HRISBenefitsPaginated?: shared.HRISBenefitsPaginated$.Outbound | undefined;
-        StatusCode: number;
-        RawResponse: never;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, HrisListBenefitsResponse> = z
-        .object({
-            contentType: z.string(),
-            hrisBenefitsPaginated: shared.HRISBenefitsPaginated$.outboundSchema.optional(),
-            statusCode: z.number().int(),
-            rawResponse: z.instanceof(Response).transform(() => {
-                throw new Error("Response cannot be serialized");
-            }),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                contentType: "ContentType",
-                hrisBenefitsPaginated: "HRISBenefitsPaginated",
-                statusCode: "StatusCode",
-                rawResponse: "RawResponse",
-            });
-        });
+    /** @deprecated use `HrisListBenefitsResponse$inboundSchema` instead. */
+    export const inboundSchema = HrisListBenefitsResponse$inboundSchema;
+    /** @deprecated use `HrisListBenefitsResponse$outboundSchema` instead. */
+    export const outboundSchema = HrisListBenefitsResponse$outboundSchema;
+    /** @deprecated use `HrisListBenefitsResponse$Outbound` instead. */
+    export type Outbound = HrisListBenefitsResponse$Outbound;
 }

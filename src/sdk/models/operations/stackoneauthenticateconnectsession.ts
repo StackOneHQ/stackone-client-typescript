@@ -26,53 +26,66 @@ export type StackoneAuthenticateConnectSessionResponse = {
 };
 
 /** @internal */
+export const StackoneAuthenticateConnectSessionResponse$inboundSchema: z.ZodType<
+    StackoneAuthenticateConnectSessionResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        ConnectSession: shared.ConnectSession$inboundSchema.optional(),
+        ContentType: z.string(),
+        StatusCode: z.number().int(),
+        RawResponse: z.instanceof(Response),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            ConnectSession: "connectSession",
+            ContentType: "contentType",
+            StatusCode: "statusCode",
+            RawResponse: "rawResponse",
+        });
+    });
+
+/** @internal */
+export type StackoneAuthenticateConnectSessionResponse$Outbound = {
+    ConnectSession?: shared.ConnectSession$Outbound | undefined;
+    ContentType: string;
+    StatusCode: number;
+    RawResponse: never;
+};
+
+/** @internal */
+export const StackoneAuthenticateConnectSessionResponse$outboundSchema: z.ZodType<
+    StackoneAuthenticateConnectSessionResponse$Outbound,
+    z.ZodTypeDef,
+    StackoneAuthenticateConnectSessionResponse
+> = z
+    .object({
+        connectSession: shared.ConnectSession$outboundSchema.optional(),
+        contentType: z.string(),
+        statusCode: z.number().int(),
+        rawResponse: z.instanceof(Response).transform(() => {
+            throw new Error("Response cannot be serialized");
+        }),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            connectSession: "ConnectSession",
+            contentType: "ContentType",
+            statusCode: "StatusCode",
+            rawResponse: "RawResponse",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace StackoneAuthenticateConnectSessionResponse$ {
-    export const inboundSchema: z.ZodType<
-        StackoneAuthenticateConnectSessionResponse,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            ConnectSession: shared.ConnectSession$.inboundSchema.optional(),
-            ContentType: z.string(),
-            StatusCode: z.number().int(),
-            RawResponse: z.instanceof(Response),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                ConnectSession: "connectSession",
-                ContentType: "contentType",
-                StatusCode: "statusCode",
-                RawResponse: "rawResponse",
-            });
-        });
-
-    export type Outbound = {
-        ConnectSession?: shared.ConnectSession$.Outbound | undefined;
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: never;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        StackoneAuthenticateConnectSessionResponse
-    > = z
-        .object({
-            connectSession: shared.ConnectSession$.outboundSchema.optional(),
-            contentType: z.string(),
-            statusCode: z.number().int(),
-            rawResponse: z.instanceof(Response).transform(() => {
-                throw new Error("Response cannot be serialized");
-            }),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                connectSession: "ConnectSession",
-                contentType: "ContentType",
-                statusCode: "StatusCode",
-                rawResponse: "RawResponse",
-            });
-        });
+    /** @deprecated use `StackoneAuthenticateConnectSessionResponse$inboundSchema` instead. */
+    export const inboundSchema = StackoneAuthenticateConnectSessionResponse$inboundSchema;
+    /** @deprecated use `StackoneAuthenticateConnectSessionResponse$outboundSchema` instead. */
+    export const outboundSchema = StackoneAuthenticateConnectSessionResponse$outboundSchema;
+    /** @deprecated use `StackoneAuthenticateConnectSessionResponse$Outbound` instead. */
+    export type Outbound = StackoneAuthenticateConnectSessionResponse$Outbound;
 }

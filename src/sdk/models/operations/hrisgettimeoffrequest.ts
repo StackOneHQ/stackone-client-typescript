@@ -46,85 +46,126 @@ export type HrisGetTimeOffRequestResponse = {
 };
 
 /** @internal */
+export const HrisGetTimeOffRequestRequest$inboundSchema: z.ZodType<
+    HrisGetTimeOffRequestRequest,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        fields: z.nullable(z.string()).optional(),
+        id: z.string(),
+        proxy: z.nullable(z.record(z.any())).optional(),
+        raw: z.nullable(z.boolean().default(false)),
+        "x-account-id": z.string(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            "x-account-id": "xAccountId",
+        });
+    });
+
+/** @internal */
+export type HrisGetTimeOffRequestRequest$Outbound = {
+    fields?: string | null | undefined;
+    id: string;
+    proxy?: { [k: string]: any } | null | undefined;
+    raw: boolean | null;
+    "x-account-id": string;
+};
+
+/** @internal */
+export const HrisGetTimeOffRequestRequest$outboundSchema: z.ZodType<
+    HrisGetTimeOffRequestRequest$Outbound,
+    z.ZodTypeDef,
+    HrisGetTimeOffRequestRequest
+> = z
+    .object({
+        fields: z.nullable(z.string()).optional(),
+        id: z.string(),
+        proxy: z.nullable(z.record(z.any())).optional(),
+        raw: z.nullable(z.boolean().default(false)),
+        xAccountId: z.string(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            xAccountId: "x-account-id",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace HrisGetTimeOffRequestRequest$ {
-    export const inboundSchema: z.ZodType<HrisGetTimeOffRequestRequest, z.ZodTypeDef, unknown> = z
-        .object({
-            fields: z.nullable(z.string()).optional(),
-            id: z.string(),
-            proxy: z.nullable(z.record(z.any())).optional(),
-            raw: z.nullable(z.boolean().default(false)),
-            "x-account-id": z.string(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                "x-account-id": "xAccountId",
-            });
-        });
-
-    export type Outbound = {
-        fields?: string | null | undefined;
-        id: string;
-        proxy?: { [k: string]: any } | null | undefined;
-        raw: boolean | null;
-        "x-account-id": string;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, HrisGetTimeOffRequestRequest> = z
-        .object({
-            fields: z.nullable(z.string()).optional(),
-            id: z.string(),
-            proxy: z.nullable(z.record(z.any())).optional(),
-            raw: z.nullable(z.boolean().default(false)),
-            xAccountId: z.string(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                xAccountId: "x-account-id",
-            });
-        });
+    /** @deprecated use `HrisGetTimeOffRequestRequest$inboundSchema` instead. */
+    export const inboundSchema = HrisGetTimeOffRequestRequest$inboundSchema;
+    /** @deprecated use `HrisGetTimeOffRequestRequest$outboundSchema` instead. */
+    export const outboundSchema = HrisGetTimeOffRequestRequest$outboundSchema;
+    /** @deprecated use `HrisGetTimeOffRequestRequest$Outbound` instead. */
+    export type Outbound = HrisGetTimeOffRequestRequest$Outbound;
 }
 
 /** @internal */
-export namespace HrisGetTimeOffRequestResponse$ {
-    export const inboundSchema: z.ZodType<HrisGetTimeOffRequestResponse, z.ZodTypeDef, unknown> = z
-        .object({
-            ContentType: z.string(),
-            StatusCode: z.number().int(),
-            RawResponse: z.instanceof(Response),
-            TimeOffResult: shared.TimeOffResult$.inboundSchema.optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                ContentType: "contentType",
-                StatusCode: "statusCode",
-                RawResponse: "rawResponse",
-                TimeOffResult: "timeOffResult",
-            });
+export const HrisGetTimeOffRequestResponse$inboundSchema: z.ZodType<
+    HrisGetTimeOffRequestResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        ContentType: z.string(),
+        StatusCode: z.number().int(),
+        RawResponse: z.instanceof(Response),
+        TimeOffResult: shared.TimeOffResult$inboundSchema.optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            ContentType: "contentType",
+            StatusCode: "statusCode",
+            RawResponse: "rawResponse",
+            TimeOffResult: "timeOffResult",
         });
+    });
 
-    export type Outbound = {
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: never;
-        TimeOffResult?: shared.TimeOffResult$.Outbound | undefined;
-    };
+/** @internal */
+export type HrisGetTimeOffRequestResponse$Outbound = {
+    ContentType: string;
+    StatusCode: number;
+    RawResponse: never;
+    TimeOffResult?: shared.TimeOffResult$Outbound | undefined;
+};
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, HrisGetTimeOffRequestResponse> =
-        z
-            .object({
-                contentType: z.string(),
-                statusCode: z.number().int(),
-                rawResponse: z.instanceof(Response).transform(() => {
-                    throw new Error("Response cannot be serialized");
-                }),
-                timeOffResult: shared.TimeOffResult$.outboundSchema.optional(),
-            })
-            .transform((v) => {
-                return remap$(v, {
-                    contentType: "ContentType",
-                    statusCode: "StatusCode",
-                    rawResponse: "RawResponse",
-                    timeOffResult: "TimeOffResult",
-                });
-            });
+/** @internal */
+export const HrisGetTimeOffRequestResponse$outboundSchema: z.ZodType<
+    HrisGetTimeOffRequestResponse$Outbound,
+    z.ZodTypeDef,
+    HrisGetTimeOffRequestResponse
+> = z
+    .object({
+        contentType: z.string(),
+        statusCode: z.number().int(),
+        rawResponse: z.instanceof(Response).transform(() => {
+            throw new Error("Response cannot be serialized");
+        }),
+        timeOffResult: shared.TimeOffResult$outboundSchema.optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            contentType: "ContentType",
+            statusCode: "StatusCode",
+            rawResponse: "RawResponse",
+            timeOffResult: "TimeOffResult",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace HrisGetTimeOffRequestResponse$ {
+    /** @deprecated use `HrisGetTimeOffRequestResponse$inboundSchema` instead. */
+    export const inboundSchema = HrisGetTimeOffRequestResponse$inboundSchema;
+    /** @deprecated use `HrisGetTimeOffRequestResponse$outboundSchema` instead. */
+    export const outboundSchema = HrisGetTimeOffRequestResponse$outboundSchema;
+    /** @deprecated use `HrisGetTimeOffRequestResponse$Outbound` instead. */
+    export type Outbound = HrisGetTimeOffRequestResponse$Outbound;
 }

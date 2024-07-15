@@ -72,154 +72,234 @@ export type HRISBenefit = {
 };
 
 /** @internal */
+export const HRISBenefit4$inboundSchema: z.ZodType<HRISBenefit4, z.ZodTypeDef, unknown> = z.object(
+    {}
+);
+
+/** @internal */
+export type HRISBenefit4$Outbound = {};
+
+/** @internal */
+export const HRISBenefit4$outboundSchema: z.ZodType<
+    HRISBenefit4$Outbound,
+    z.ZodTypeDef,
+    HRISBenefit4
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace HRISBenefit4$ {
-    export const inboundSchema: z.ZodType<HRISBenefit4, z.ZodTypeDef, unknown> = z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, HRISBenefit4> = z.object({});
+    /** @deprecated use `HRISBenefit4$inboundSchema` instead. */
+    export const inboundSchema = HRISBenefit4$inboundSchema;
+    /** @deprecated use `HRISBenefit4$outboundSchema` instead. */
+    export const outboundSchema = HRISBenefit4$outboundSchema;
+    /** @deprecated use `HRISBenefit4$Outbound` instead. */
+    export type Outbound = HRISBenefit4$Outbound;
 }
 
 /** @internal */
+export const HRISBenefitSourceValue$inboundSchema: z.ZodType<
+    HRISBenefitSourceValue,
+    z.ZodTypeDef,
+    unknown
+> = z.union([z.lazy(() => HRISBenefit4$inboundSchema), z.string(), z.number(), z.boolean()]);
+
+/** @internal */
+export type HRISBenefitSourceValue$Outbound = HRISBenefit4$Outbound | string | number | boolean;
+
+/** @internal */
+export const HRISBenefitSourceValue$outboundSchema: z.ZodType<
+    HRISBenefitSourceValue$Outbound,
+    z.ZodTypeDef,
+    HRISBenefitSourceValue
+> = z.union([z.lazy(() => HRISBenefit4$outboundSchema), z.string(), z.number(), z.boolean()]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace HRISBenefitSourceValue$ {
-    export const inboundSchema: z.ZodType<HRISBenefitSourceValue, z.ZodTypeDef, unknown> = z.union([
-        z.lazy(() => HRISBenefit4$.inboundSchema),
-        z.string(),
-        z.number(),
-        z.boolean(),
-    ]);
-
-    export type Outbound = HRISBenefit4$.Outbound | string | number | boolean;
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, HRISBenefitSourceValue> =
-        z.union([z.lazy(() => HRISBenefit4$.outboundSchema), z.string(), z.number(), z.boolean()]);
+    /** @deprecated use `HRISBenefitSourceValue$inboundSchema` instead. */
+    export const inboundSchema = HRISBenefitSourceValue$inboundSchema;
+    /** @deprecated use `HRISBenefitSourceValue$outboundSchema` instead. */
+    export const outboundSchema = HRISBenefitSourceValue$outboundSchema;
+    /** @deprecated use `HRISBenefitSourceValue$Outbound` instead. */
+    export type Outbound = HRISBenefitSourceValue$Outbound;
 }
 
 /** @internal */
+export const HRISBenefitValue$inboundSchema: z.ZodType<
+    HRISBenefitValueOpen,
+    z.ZodTypeDef,
+    unknown
+> = z.union([z.nativeEnum(HRISBenefitValue), z.string().transform(catchUnrecognizedEnum)]);
+
+/** @internal */
+export const HRISBenefitValue$outboundSchema: z.ZodType<
+    HRISBenefitValueOpen,
+    z.ZodTypeDef,
+    HRISBenefitValueOpen
+> = z.union([z.nativeEnum(HRISBenefitValue), z.string().and(z.custom<Unrecognized<string>>())]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace HRISBenefitValue$ {
-    export const inboundSchema: z.ZodType<HRISBenefitValueOpen, z.ZodTypeDef, unknown> = z.union([
-        z.nativeEnum(HRISBenefitValue),
-        z.string().transform(catchUnrecognizedEnum),
-    ]);
-
-    export const outboundSchema: z.ZodType<
-        HRISBenefitValueOpen,
-        z.ZodTypeDef,
-        HRISBenefitValueOpen
-    > = z.union([z.nativeEnum(HRISBenefitValue), z.string().and(z.custom<Unrecognized<string>>())]);
+    /** @deprecated use `HRISBenefitValue$inboundSchema` instead. */
+    export const inboundSchema = HRISBenefitValue$inboundSchema;
+    /** @deprecated use `HRISBenefitValue$outboundSchema` instead. */
+    export const outboundSchema = HRISBenefitValue$outboundSchema;
 }
 
 /** @internal */
+export const BenefitType$inboundSchema: z.ZodType<BenefitType, z.ZodTypeDef, unknown> = z
+    .object({
+        source_value: z
+            .nullable(
+                z.union([
+                    z.lazy(() => HRISBenefit4$inboundSchema),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                ])
+            )
+            .optional(),
+        value: z.nullable(HRISBenefitValue$inboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            source_value: "sourceValue",
+        });
+    });
+
+/** @internal */
+export type BenefitType$Outbound = {
+    source_value?: HRISBenefit4$Outbound | string | number | boolean | null | undefined;
+    value?: string | null | undefined;
+};
+
+/** @internal */
+export const BenefitType$outboundSchema: z.ZodType<
+    BenefitType$Outbound,
+    z.ZodTypeDef,
+    BenefitType
+> = z
+    .object({
+        sourceValue: z
+            .nullable(
+                z.union([
+                    z.lazy(() => HRISBenefit4$outboundSchema),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                ])
+            )
+            .optional(),
+        value: z.nullable(HRISBenefitValue$outboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            sourceValue: "source_value",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace BenefitType$ {
-    export const inboundSchema: z.ZodType<BenefitType, z.ZodTypeDef, unknown> = z
-        .object({
-            source_value: z
-                .nullable(
-                    z.union([
-                        z.lazy(() => HRISBenefit4$.inboundSchema),
-                        z.string(),
-                        z.number(),
-                        z.boolean(),
-                    ])
-                )
-                .optional(),
-            value: z.nullable(HRISBenefitValue$.inboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                source_value: "sourceValue",
-            });
-        });
-
-    export type Outbound = {
-        source_value?: HRISBenefit4$.Outbound | string | number | boolean | null | undefined;
-        value?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, BenefitType> = z
-        .object({
-            sourceValue: z
-                .nullable(
-                    z.union([
-                        z.lazy(() => HRISBenefit4$.outboundSchema),
-                        z.string(),
-                        z.number(),
-                        z.boolean(),
-                    ])
-                )
-                .optional(),
-            value: z.nullable(HRISBenefitValue$.outboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                sourceValue: "source_value",
-            });
-        });
+    /** @deprecated use `BenefitType$inboundSchema` instead. */
+    export const inboundSchema = BenefitType$inboundSchema;
+    /** @deprecated use `BenefitType$outboundSchema` instead. */
+    export const outboundSchema = BenefitType$outboundSchema;
+    /** @deprecated use `BenefitType$Outbound` instead. */
+    export type Outbound = BenefitType$Outbound;
 }
 
 /** @internal */
+export const HRISBenefit$inboundSchema: z.ZodType<HRISBenefit, z.ZodTypeDef, unknown> = z
+    .object({
+        benefit_type: z.nullable(z.lazy(() => BenefitType$inboundSchema)).optional(),
+        created_at: z
+            .nullable(
+                z
+                    .string()
+                    .datetime({ offset: true })
+                    .transform((v) => new Date(v))
+            )
+            .optional(),
+        description: z.nullable(z.string()).optional(),
+        id: z.nullable(z.string()).optional(),
+        name: z.nullable(z.string()).optional(),
+        provider: z.nullable(z.string()).optional(),
+        remote_id: z.nullable(z.string()).optional(),
+        updated_at: z
+            .nullable(
+                z
+                    .string()
+                    .datetime({ offset: true })
+                    .transform((v) => new Date(v))
+            )
+            .optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            benefit_type: "benefitType",
+            created_at: "createdAt",
+            remote_id: "remoteId",
+            updated_at: "updatedAt",
+        });
+    });
+
+/** @internal */
+export type HRISBenefit$Outbound = {
+    benefit_type?: BenefitType$Outbound | null | undefined;
+    created_at?: string | null | undefined;
+    description?: string | null | undefined;
+    id?: string | null | undefined;
+    name?: string | null | undefined;
+    provider?: string | null | undefined;
+    remote_id?: string | null | undefined;
+    updated_at?: string | null | undefined;
+};
+
+/** @internal */
+export const HRISBenefit$outboundSchema: z.ZodType<
+    HRISBenefit$Outbound,
+    z.ZodTypeDef,
+    HRISBenefit
+> = z
+    .object({
+        benefitType: z.nullable(z.lazy(() => BenefitType$outboundSchema)).optional(),
+        createdAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+        description: z.nullable(z.string()).optional(),
+        id: z.nullable(z.string()).optional(),
+        name: z.nullable(z.string()).optional(),
+        provider: z.nullable(z.string()).optional(),
+        remoteId: z.nullable(z.string()).optional(),
+        updatedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            benefitType: "benefit_type",
+            createdAt: "created_at",
+            remoteId: "remote_id",
+            updatedAt: "updated_at",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace HRISBenefit$ {
-    export const inboundSchema: z.ZodType<HRISBenefit, z.ZodTypeDef, unknown> = z
-        .object({
-            benefit_type: z.nullable(z.lazy(() => BenefitType$.inboundSchema)).optional(),
-            created_at: z
-                .nullable(
-                    z
-                        .string()
-                        .datetime({ offset: true })
-                        .transform((v) => new Date(v))
-                )
-                .optional(),
-            description: z.nullable(z.string()).optional(),
-            id: z.nullable(z.string()).optional(),
-            name: z.nullable(z.string()).optional(),
-            provider: z.nullable(z.string()).optional(),
-            remote_id: z.nullable(z.string()).optional(),
-            updated_at: z
-                .nullable(
-                    z
-                        .string()
-                        .datetime({ offset: true })
-                        .transform((v) => new Date(v))
-                )
-                .optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                benefit_type: "benefitType",
-                created_at: "createdAt",
-                remote_id: "remoteId",
-                updated_at: "updatedAt",
-            });
-        });
-
-    export type Outbound = {
-        benefit_type?: BenefitType$.Outbound | null | undefined;
-        created_at?: string | null | undefined;
-        description?: string | null | undefined;
-        id?: string | null | undefined;
-        name?: string | null | undefined;
-        provider?: string | null | undefined;
-        remote_id?: string | null | undefined;
-        updated_at?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, HRISBenefit> = z
-        .object({
-            benefitType: z.nullable(z.lazy(() => BenefitType$.outboundSchema)).optional(),
-            createdAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
-            description: z.nullable(z.string()).optional(),
-            id: z.nullable(z.string()).optional(),
-            name: z.nullable(z.string()).optional(),
-            provider: z.nullable(z.string()).optional(),
-            remoteId: z.nullable(z.string()).optional(),
-            updatedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                benefitType: "benefit_type",
-                createdAt: "created_at",
-                remoteId: "remote_id",
-                updatedAt: "updated_at",
-            });
-        });
+    /** @deprecated use `HRISBenefit$inboundSchema` instead. */
+    export const inboundSchema = HRISBenefit$inboundSchema;
+    /** @deprecated use `HRISBenefit$outboundSchema` instead. */
+    export const outboundSchema = HRISBenefit$outboundSchema;
+    /** @deprecated use `HRISBenefit$Outbound` instead. */
+    export type Outbound = HRISBenefit$Outbound;
 }

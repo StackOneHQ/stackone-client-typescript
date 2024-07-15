@@ -50,87 +50,129 @@ export type IamGetPolicyResponse = {
 };
 
 /** @internal */
+export const IamGetPolicyRequest$inboundSchema: z.ZodType<
+    IamGetPolicyRequest,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        expand: z.nullable(z.string()).optional(),
+        fields: z.nullable(z.string()).optional(),
+        id: z.string(),
+        proxy: z.nullable(z.record(z.any())).optional(),
+        raw: z.nullable(z.boolean().default(false)),
+        "x-account-id": z.string(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            "x-account-id": "xAccountId",
+        });
+    });
+
+/** @internal */
+export type IamGetPolicyRequest$Outbound = {
+    expand?: string | null | undefined;
+    fields?: string | null | undefined;
+    id: string;
+    proxy?: { [k: string]: any } | null | undefined;
+    raw: boolean | null;
+    "x-account-id": string;
+};
+
+/** @internal */
+export const IamGetPolicyRequest$outboundSchema: z.ZodType<
+    IamGetPolicyRequest$Outbound,
+    z.ZodTypeDef,
+    IamGetPolicyRequest
+> = z
+    .object({
+        expand: z.nullable(z.string()).optional(),
+        fields: z.nullable(z.string()).optional(),
+        id: z.string(),
+        proxy: z.nullable(z.record(z.any())).optional(),
+        raw: z.nullable(z.boolean().default(false)),
+        xAccountId: z.string(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            xAccountId: "x-account-id",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace IamGetPolicyRequest$ {
-    export const inboundSchema: z.ZodType<IamGetPolicyRequest, z.ZodTypeDef, unknown> = z
-        .object({
-            expand: z.nullable(z.string()).optional(),
-            fields: z.nullable(z.string()).optional(),
-            id: z.string(),
-            proxy: z.nullable(z.record(z.any())).optional(),
-            raw: z.nullable(z.boolean().default(false)),
-            "x-account-id": z.string(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                "x-account-id": "xAccountId",
-            });
-        });
-
-    export type Outbound = {
-        expand?: string | null | undefined;
-        fields?: string | null | undefined;
-        id: string;
-        proxy?: { [k: string]: any } | null | undefined;
-        raw: boolean | null;
-        "x-account-id": string;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, IamGetPolicyRequest> = z
-        .object({
-            expand: z.nullable(z.string()).optional(),
-            fields: z.nullable(z.string()).optional(),
-            id: z.string(),
-            proxy: z.nullable(z.record(z.any())).optional(),
-            raw: z.nullable(z.boolean().default(false)),
-            xAccountId: z.string(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                xAccountId: "x-account-id",
-            });
-        });
+    /** @deprecated use `IamGetPolicyRequest$inboundSchema` instead. */
+    export const inboundSchema = IamGetPolicyRequest$inboundSchema;
+    /** @deprecated use `IamGetPolicyRequest$outboundSchema` instead. */
+    export const outboundSchema = IamGetPolicyRequest$outboundSchema;
+    /** @deprecated use `IamGetPolicyRequest$Outbound` instead. */
+    export type Outbound = IamGetPolicyRequest$Outbound;
 }
 
 /** @internal */
+export const IamGetPolicyResponse$inboundSchema: z.ZodType<
+    IamGetPolicyResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        ContentType: z.string(),
+        IamPolicyResult: shared.IamPolicyResult$inboundSchema.optional(),
+        StatusCode: z.number().int(),
+        RawResponse: z.instanceof(Response),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            ContentType: "contentType",
+            IamPolicyResult: "iamPolicyResult",
+            StatusCode: "statusCode",
+            RawResponse: "rawResponse",
+        });
+    });
+
+/** @internal */
+export type IamGetPolicyResponse$Outbound = {
+    ContentType: string;
+    IamPolicyResult?: shared.IamPolicyResult$Outbound | undefined;
+    StatusCode: number;
+    RawResponse: never;
+};
+
+/** @internal */
+export const IamGetPolicyResponse$outboundSchema: z.ZodType<
+    IamGetPolicyResponse$Outbound,
+    z.ZodTypeDef,
+    IamGetPolicyResponse
+> = z
+    .object({
+        contentType: z.string(),
+        iamPolicyResult: shared.IamPolicyResult$outboundSchema.optional(),
+        statusCode: z.number().int(),
+        rawResponse: z.instanceof(Response).transform(() => {
+            throw new Error("Response cannot be serialized");
+        }),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            contentType: "ContentType",
+            iamPolicyResult: "IamPolicyResult",
+            statusCode: "StatusCode",
+            rawResponse: "RawResponse",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace IamGetPolicyResponse$ {
-    export const inboundSchema: z.ZodType<IamGetPolicyResponse, z.ZodTypeDef, unknown> = z
-        .object({
-            ContentType: z.string(),
-            IamPolicyResult: shared.IamPolicyResult$.inboundSchema.optional(),
-            StatusCode: z.number().int(),
-            RawResponse: z.instanceof(Response),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                ContentType: "contentType",
-                IamPolicyResult: "iamPolicyResult",
-                StatusCode: "statusCode",
-                RawResponse: "rawResponse",
-            });
-        });
-
-    export type Outbound = {
-        ContentType: string;
-        IamPolicyResult?: shared.IamPolicyResult$.Outbound | undefined;
-        StatusCode: number;
-        RawResponse: never;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, IamGetPolicyResponse> = z
-        .object({
-            contentType: z.string(),
-            iamPolicyResult: shared.IamPolicyResult$.outboundSchema.optional(),
-            statusCode: z.number().int(),
-            rawResponse: z.instanceof(Response).transform(() => {
-                throw new Error("Response cannot be serialized");
-            }),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                contentType: "ContentType",
-                iamPolicyResult: "IamPolicyResult",
-                statusCode: "StatusCode",
-                rawResponse: "RawResponse",
-            });
-        });
+    /** @deprecated use `IamGetPolicyResponse$inboundSchema` instead. */
+    export const inboundSchema = IamGetPolicyResponse$inboundSchema;
+    /** @deprecated use `IamGetPolicyResponse$outboundSchema` instead. */
+    export const outboundSchema = IamGetPolicyResponse$outboundSchema;
+    /** @deprecated use `IamGetPolicyResponse$Outbound` instead. */
+    export type Outbound = IamGetPolicyResponse$Outbound;
 }

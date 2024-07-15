@@ -46,84 +46,126 @@ export type LmsGetContentResponse = {
 };
 
 /** @internal */
+export const LmsGetContentRequest$inboundSchema: z.ZodType<
+    LmsGetContentRequest,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        fields: z.nullable(z.string()).optional(),
+        id: z.string(),
+        proxy: z.nullable(z.record(z.any())).optional(),
+        raw: z.nullable(z.boolean().default(false)),
+        "x-account-id": z.string(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            "x-account-id": "xAccountId",
+        });
+    });
+
+/** @internal */
+export type LmsGetContentRequest$Outbound = {
+    fields?: string | null | undefined;
+    id: string;
+    proxy?: { [k: string]: any } | null | undefined;
+    raw: boolean | null;
+    "x-account-id": string;
+};
+
+/** @internal */
+export const LmsGetContentRequest$outboundSchema: z.ZodType<
+    LmsGetContentRequest$Outbound,
+    z.ZodTypeDef,
+    LmsGetContentRequest
+> = z
+    .object({
+        fields: z.nullable(z.string()).optional(),
+        id: z.string(),
+        proxy: z.nullable(z.record(z.any())).optional(),
+        raw: z.nullable(z.boolean().default(false)),
+        xAccountId: z.string(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            xAccountId: "x-account-id",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace LmsGetContentRequest$ {
-    export const inboundSchema: z.ZodType<LmsGetContentRequest, z.ZodTypeDef, unknown> = z
-        .object({
-            fields: z.nullable(z.string()).optional(),
-            id: z.string(),
-            proxy: z.nullable(z.record(z.any())).optional(),
-            raw: z.nullable(z.boolean().default(false)),
-            "x-account-id": z.string(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                "x-account-id": "xAccountId",
-            });
-        });
-
-    export type Outbound = {
-        fields?: string | null | undefined;
-        id: string;
-        proxy?: { [k: string]: any } | null | undefined;
-        raw: boolean | null;
-        "x-account-id": string;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, LmsGetContentRequest> = z
-        .object({
-            fields: z.nullable(z.string()).optional(),
-            id: z.string(),
-            proxy: z.nullable(z.record(z.any())).optional(),
-            raw: z.nullable(z.boolean().default(false)),
-            xAccountId: z.string(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                xAccountId: "x-account-id",
-            });
-        });
+    /** @deprecated use `LmsGetContentRequest$inboundSchema` instead. */
+    export const inboundSchema = LmsGetContentRequest$inboundSchema;
+    /** @deprecated use `LmsGetContentRequest$outboundSchema` instead. */
+    export const outboundSchema = LmsGetContentRequest$outboundSchema;
+    /** @deprecated use `LmsGetContentRequest$Outbound` instead. */
+    export type Outbound = LmsGetContentRequest$Outbound;
 }
 
 /** @internal */
+export const LmsGetContentResponse$inboundSchema: z.ZodType<
+    LmsGetContentResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        ContentResult: shared.ContentResult$inboundSchema.optional(),
+        ContentType: z.string(),
+        StatusCode: z.number().int(),
+        RawResponse: z.instanceof(Response),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            ContentResult: "contentResult",
+            ContentType: "contentType",
+            StatusCode: "statusCode",
+            RawResponse: "rawResponse",
+        });
+    });
+
+/** @internal */
+export type LmsGetContentResponse$Outbound = {
+    ContentResult?: shared.ContentResult$Outbound | undefined;
+    ContentType: string;
+    StatusCode: number;
+    RawResponse: never;
+};
+
+/** @internal */
+export const LmsGetContentResponse$outboundSchema: z.ZodType<
+    LmsGetContentResponse$Outbound,
+    z.ZodTypeDef,
+    LmsGetContentResponse
+> = z
+    .object({
+        contentResult: shared.ContentResult$outboundSchema.optional(),
+        contentType: z.string(),
+        statusCode: z.number().int(),
+        rawResponse: z.instanceof(Response).transform(() => {
+            throw new Error("Response cannot be serialized");
+        }),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            contentResult: "ContentResult",
+            contentType: "ContentType",
+            statusCode: "StatusCode",
+            rawResponse: "RawResponse",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace LmsGetContentResponse$ {
-    export const inboundSchema: z.ZodType<LmsGetContentResponse, z.ZodTypeDef, unknown> = z
-        .object({
-            ContentResult: shared.ContentResult$.inboundSchema.optional(),
-            ContentType: z.string(),
-            StatusCode: z.number().int(),
-            RawResponse: z.instanceof(Response),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                ContentResult: "contentResult",
-                ContentType: "contentType",
-                StatusCode: "statusCode",
-                RawResponse: "rawResponse",
-            });
-        });
-
-    export type Outbound = {
-        ContentResult?: shared.ContentResult$.Outbound | undefined;
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: never;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, LmsGetContentResponse> = z
-        .object({
-            contentResult: shared.ContentResult$.outboundSchema.optional(),
-            contentType: z.string(),
-            statusCode: z.number().int(),
-            rawResponse: z.instanceof(Response).transform(() => {
-                throw new Error("Response cannot be serialized");
-            }),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                contentResult: "ContentResult",
-                contentType: "ContentType",
-                statusCode: "StatusCode",
-                rawResponse: "RawResponse",
-            });
-        });
+    /** @deprecated use `LmsGetContentResponse$inboundSchema` instead. */
+    export const inboundSchema = LmsGetContentResponse$inboundSchema;
+    /** @deprecated use `LmsGetContentResponse$outboundSchema` instead. */
+    export const outboundSchema = LmsGetContentResponse$outboundSchema;
+    /** @deprecated use `LmsGetContentResponse$Outbound` instead. */
+    export type Outbound = LmsGetContentResponse$Outbound;
 }

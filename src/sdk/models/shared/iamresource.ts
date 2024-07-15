@@ -59,152 +59,232 @@ export type IamResource = {
 };
 
 /** @internal */
+export const IamResource4$inboundSchema: z.ZodType<IamResource4, z.ZodTypeDef, unknown> = z.object(
+    {}
+);
+
+/** @internal */
+export type IamResource4$Outbound = {};
+
+/** @internal */
+export const IamResource4$outboundSchema: z.ZodType<
+    IamResource4$Outbound,
+    z.ZodTypeDef,
+    IamResource4
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace IamResource4$ {
-    export const inboundSchema: z.ZodType<IamResource4, z.ZodTypeDef, unknown> = z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, IamResource4> = z.object({});
+    /** @deprecated use `IamResource4$inboundSchema` instead. */
+    export const inboundSchema = IamResource4$inboundSchema;
+    /** @deprecated use `IamResource4$outboundSchema` instead. */
+    export const outboundSchema = IamResource4$outboundSchema;
+    /** @deprecated use `IamResource4$Outbound` instead. */
+    export type Outbound = IamResource4$Outbound;
 }
 
 /** @internal */
+export const IamResourceSourceValue$inboundSchema: z.ZodType<
+    IamResourceSourceValue,
+    z.ZodTypeDef,
+    unknown
+> = z.union([z.lazy(() => IamResource4$inboundSchema), z.string(), z.number(), z.boolean()]);
+
+/** @internal */
+export type IamResourceSourceValue$Outbound = IamResource4$Outbound | string | number | boolean;
+
+/** @internal */
+export const IamResourceSourceValue$outboundSchema: z.ZodType<
+    IamResourceSourceValue$Outbound,
+    z.ZodTypeDef,
+    IamResourceSourceValue
+> = z.union([z.lazy(() => IamResource4$outboundSchema), z.string(), z.number(), z.boolean()]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace IamResourceSourceValue$ {
-    export const inboundSchema: z.ZodType<IamResourceSourceValue, z.ZodTypeDef, unknown> = z.union([
-        z.lazy(() => IamResource4$.inboundSchema),
-        z.string(),
-        z.number(),
-        z.boolean(),
-    ]);
-
-    export type Outbound = IamResource4$.Outbound | string | number | boolean;
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, IamResourceSourceValue> =
-        z.union([z.lazy(() => IamResource4$.outboundSchema), z.string(), z.number(), z.boolean()]);
+    /** @deprecated use `IamResourceSourceValue$inboundSchema` instead. */
+    export const inboundSchema = IamResourceSourceValue$inboundSchema;
+    /** @deprecated use `IamResourceSourceValue$outboundSchema` instead. */
+    export const outboundSchema = IamResourceSourceValue$outboundSchema;
+    /** @deprecated use `IamResourceSourceValue$Outbound` instead. */
+    export type Outbound = IamResourceSourceValue$Outbound;
 }
 
 /** @internal */
+export const IamResourceValue$inboundSchema: z.ZodType<
+    IamResourceValueOpen,
+    z.ZodTypeDef,
+    unknown
+> = z.union([z.nativeEnum(IamResourceValue), z.string().transform(catchUnrecognizedEnum)]);
+
+/** @internal */
+export const IamResourceValue$outboundSchema: z.ZodType<
+    IamResourceValueOpen,
+    z.ZodTypeDef,
+    IamResourceValueOpen
+> = z.union([z.nativeEnum(IamResourceValue), z.string().and(z.custom<Unrecognized<string>>())]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace IamResourceValue$ {
-    export const inboundSchema: z.ZodType<IamResourceValueOpen, z.ZodTypeDef, unknown> = z.union([
-        z.nativeEnum(IamResourceValue),
-        z.string().transform(catchUnrecognizedEnum),
-    ]);
-
-    export const outboundSchema: z.ZodType<
-        IamResourceValueOpen,
-        z.ZodTypeDef,
-        IamResourceValueOpen
-    > = z.union([z.nativeEnum(IamResourceValue), z.string().and(z.custom<Unrecognized<string>>())]);
+    /** @deprecated use `IamResourceValue$inboundSchema` instead. */
+    export const inboundSchema = IamResourceValue$inboundSchema;
+    /** @deprecated use `IamResourceValue$outboundSchema` instead. */
+    export const outboundSchema = IamResourceValue$outboundSchema;
 }
 
 /** @internal */
+export const IamResourceType$inboundSchema: z.ZodType<IamResourceType, z.ZodTypeDef, unknown> = z
+    .object({
+        source_value: z
+            .nullable(
+                z.union([
+                    z.lazy(() => IamResource4$inboundSchema),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                ])
+            )
+            .optional(),
+        value: z.nullable(IamResourceValue$inboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            source_value: "sourceValue",
+        });
+    });
+
+/** @internal */
+export type IamResourceType$Outbound = {
+    source_value?: IamResource4$Outbound | string | number | boolean | null | undefined;
+    value?: string | null | undefined;
+};
+
+/** @internal */
+export const IamResourceType$outboundSchema: z.ZodType<
+    IamResourceType$Outbound,
+    z.ZodTypeDef,
+    IamResourceType
+> = z
+    .object({
+        sourceValue: z
+            .nullable(
+                z.union([
+                    z.lazy(() => IamResource4$outboundSchema),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                ])
+            )
+            .optional(),
+        value: z.nullable(IamResourceValue$outboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            sourceValue: "source_value",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace IamResourceType$ {
-    export const inboundSchema: z.ZodType<IamResourceType, z.ZodTypeDef, unknown> = z
-        .object({
-            source_value: z
-                .nullable(
-                    z.union([
-                        z.lazy(() => IamResource4$.inboundSchema),
-                        z.string(),
-                        z.number(),
-                        z.boolean(),
-                    ])
-                )
-                .optional(),
-            value: z.nullable(IamResourceValue$.inboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                source_value: "sourceValue",
-            });
-        });
-
-    export type Outbound = {
-        source_value?: IamResource4$.Outbound | string | number | boolean | null | undefined;
-        value?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, IamResourceType> = z
-        .object({
-            sourceValue: z
-                .nullable(
-                    z.union([
-                        z.lazy(() => IamResource4$.outboundSchema),
-                        z.string(),
-                        z.number(),
-                        z.boolean(),
-                    ])
-                )
-                .optional(),
-            value: z.nullable(IamResourceValue$.outboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                sourceValue: "source_value",
-            });
-        });
+    /** @deprecated use `IamResourceType$inboundSchema` instead. */
+    export const inboundSchema = IamResourceType$inboundSchema;
+    /** @deprecated use `IamResourceType$outboundSchema` instead. */
+    export const outboundSchema = IamResourceType$outboundSchema;
+    /** @deprecated use `IamResourceType$Outbound` instead. */
+    export type Outbound = IamResourceType$Outbound;
 }
 
 /** @internal */
+export const IamResource$inboundSchema: z.ZodType<IamResource, z.ZodTypeDef, unknown> = z
+    .object({
+        created_at: z
+            .nullable(
+                z
+                    .string()
+                    .datetime({ offset: true })
+                    .transform((v) => new Date(v))
+            )
+            .optional(),
+        description: z.nullable(z.string()).optional(),
+        id: z.nullable(z.string()).optional(),
+        location: z.nullable(z.string()).optional(),
+        name: z.nullable(z.string()).optional(),
+        remote_id: z.nullable(z.string()).optional(),
+        type: z.nullable(z.lazy(() => IamResourceType$inboundSchema)).optional(),
+        updated_at: z
+            .nullable(
+                z
+                    .string()
+                    .datetime({ offset: true })
+                    .transform((v) => new Date(v))
+            )
+            .optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            created_at: "createdAt",
+            remote_id: "remoteId",
+            updated_at: "updatedAt",
+        });
+    });
+
+/** @internal */
+export type IamResource$Outbound = {
+    created_at?: string | null | undefined;
+    description?: string | null | undefined;
+    id?: string | null | undefined;
+    location?: string | null | undefined;
+    name?: string | null | undefined;
+    remote_id?: string | null | undefined;
+    type?: IamResourceType$Outbound | null | undefined;
+    updated_at?: string | null | undefined;
+};
+
+/** @internal */
+export const IamResource$outboundSchema: z.ZodType<
+    IamResource$Outbound,
+    z.ZodTypeDef,
+    IamResource
+> = z
+    .object({
+        createdAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+        description: z.nullable(z.string()).optional(),
+        id: z.nullable(z.string()).optional(),
+        location: z.nullable(z.string()).optional(),
+        name: z.nullable(z.string()).optional(),
+        remoteId: z.nullable(z.string()).optional(),
+        type: z.nullable(z.lazy(() => IamResourceType$outboundSchema)).optional(),
+        updatedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            createdAt: "created_at",
+            remoteId: "remote_id",
+            updatedAt: "updated_at",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace IamResource$ {
-    export const inboundSchema: z.ZodType<IamResource, z.ZodTypeDef, unknown> = z
-        .object({
-            created_at: z
-                .nullable(
-                    z
-                        .string()
-                        .datetime({ offset: true })
-                        .transform((v) => new Date(v))
-                )
-                .optional(),
-            description: z.nullable(z.string()).optional(),
-            id: z.nullable(z.string()).optional(),
-            location: z.nullable(z.string()).optional(),
-            name: z.nullable(z.string()).optional(),
-            remote_id: z.nullable(z.string()).optional(),
-            type: z.nullable(z.lazy(() => IamResourceType$.inboundSchema)).optional(),
-            updated_at: z
-                .nullable(
-                    z
-                        .string()
-                        .datetime({ offset: true })
-                        .transform((v) => new Date(v))
-                )
-                .optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                created_at: "createdAt",
-                remote_id: "remoteId",
-                updated_at: "updatedAt",
-            });
-        });
-
-    export type Outbound = {
-        created_at?: string | null | undefined;
-        description?: string | null | undefined;
-        id?: string | null | undefined;
-        location?: string | null | undefined;
-        name?: string | null | undefined;
-        remote_id?: string | null | undefined;
-        type?: IamResourceType$.Outbound | null | undefined;
-        updated_at?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, IamResource> = z
-        .object({
-            createdAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
-            description: z.nullable(z.string()).optional(),
-            id: z.nullable(z.string()).optional(),
-            location: z.nullable(z.string()).optional(),
-            name: z.nullable(z.string()).optional(),
-            remoteId: z.nullable(z.string()).optional(),
-            type: z.nullable(z.lazy(() => IamResourceType$.outboundSchema)).optional(),
-            updatedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                createdAt: "created_at",
-                remoteId: "remote_id",
-                updatedAt: "updated_at",
-            });
-        });
+    /** @deprecated use `IamResource$inboundSchema` instead. */
+    export const inboundSchema = IamResource$inboundSchema;
+    /** @deprecated use `IamResource$outboundSchema` instead. */
+    export const outboundSchema = IamResource$outboundSchema;
+    /** @deprecated use `IamResource$Outbound` instead. */
+    export type Outbound = IamResource$Outbound;
 }

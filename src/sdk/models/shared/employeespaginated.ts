@@ -3,8 +3,18 @@
  */
 
 import { remap as remap$ } from "../../../lib/primitives.js";
-import { Employee, Employee$ } from "./employee.js";
-import { RawResponse, RawResponse$ } from "./rawresponse.js";
+import {
+    Employee,
+    Employee$inboundSchema,
+    Employee$Outbound,
+    Employee$outboundSchema,
+} from "./employee.js";
+import {
+    RawResponse,
+    RawResponse$inboundSchema,
+    RawResponse$Outbound,
+    RawResponse$outboundSchema,
+} from "./rawresponse.js";
 import * as z from "zod";
 
 export type EmployeesPaginated = {
@@ -18,37 +28,58 @@ export type EmployeesPaginated = {
 };
 
 /** @internal */
+export const EmployeesPaginated$inboundSchema: z.ZodType<
+    EmployeesPaginated,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        data: z.array(Employee$inboundSchema),
+        next: z.nullable(z.string()).optional(),
+        next_page: z.nullable(z.string()).optional(),
+        raw: z.nullable(z.array(RawResponse$inboundSchema)).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            next_page: "nextPage",
+        });
+    });
+
+/** @internal */
+export type EmployeesPaginated$Outbound = {
+    data: Array<Employee$Outbound>;
+    next?: string | null | undefined;
+    next_page?: string | null | undefined;
+    raw?: Array<RawResponse$Outbound> | null | undefined;
+};
+
+/** @internal */
+export const EmployeesPaginated$outboundSchema: z.ZodType<
+    EmployeesPaginated$Outbound,
+    z.ZodTypeDef,
+    EmployeesPaginated
+> = z
+    .object({
+        data: z.array(Employee$outboundSchema),
+        next: z.nullable(z.string()).optional(),
+        nextPage: z.nullable(z.string()).optional(),
+        raw: z.nullable(z.array(RawResponse$outboundSchema)).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            nextPage: "next_page",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace EmployeesPaginated$ {
-    export const inboundSchema: z.ZodType<EmployeesPaginated, z.ZodTypeDef, unknown> = z
-        .object({
-            data: z.array(Employee$.inboundSchema),
-            next: z.nullable(z.string()).optional(),
-            next_page: z.nullable(z.string()).optional(),
-            raw: z.nullable(z.array(RawResponse$.inboundSchema)).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                next_page: "nextPage",
-            });
-        });
-
-    export type Outbound = {
-        data: Array<Employee$.Outbound>;
-        next?: string | null | undefined;
-        next_page?: string | null | undefined;
-        raw?: Array<RawResponse$.Outbound> | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, EmployeesPaginated> = z
-        .object({
-            data: z.array(Employee$.outboundSchema),
-            next: z.nullable(z.string()).optional(),
-            nextPage: z.nullable(z.string()).optional(),
-            raw: z.nullable(z.array(RawResponse$.outboundSchema)).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                nextPage: "next_page",
-            });
-        });
+    /** @deprecated use `EmployeesPaginated$inboundSchema` instead. */
+    export const inboundSchema = EmployeesPaginated$inboundSchema;
+    /** @deprecated use `EmployeesPaginated$outboundSchema` instead. */
+    export const outboundSchema = EmployeesPaginated$outboundSchema;
+    /** @deprecated use `EmployeesPaginated$Outbound` instead. */
+    export type Outbound = EmployeesPaginated$Outbound;
 }

@@ -60,145 +60,232 @@ export type AssessmentsPackages = {
 };
 
 /** @internal */
+export const AssessmentsPackages4$inboundSchema: z.ZodType<
+    AssessmentsPackages4,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type AssessmentsPackages4$Outbound = {};
+
+/** @internal */
+export const AssessmentsPackages4$outboundSchema: z.ZodType<
+    AssessmentsPackages4$Outbound,
+    z.ZodTypeDef,
+    AssessmentsPackages4
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace AssessmentsPackages4$ {
-    export const inboundSchema: z.ZodType<AssessmentsPackages4, z.ZodTypeDef, unknown> = z.object(
-        {}
-    );
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, AssessmentsPackages4> = z.object(
-        {}
-    );
+    /** @deprecated use `AssessmentsPackages4$inboundSchema` instead. */
+    export const inboundSchema = AssessmentsPackages4$inboundSchema;
+    /** @deprecated use `AssessmentsPackages4$outboundSchema` instead. */
+    export const outboundSchema = AssessmentsPackages4$outboundSchema;
+    /** @deprecated use `AssessmentsPackages4$Outbound` instead. */
+    export type Outbound = AssessmentsPackages4$Outbound;
 }
 
 /** @internal */
+export const AssessmentsPackagesSourceValue$inboundSchema: z.ZodType<
+    AssessmentsPackagesSourceValue,
+    z.ZodTypeDef,
+    unknown
+> = z.union([
+    z.lazy(() => AssessmentsPackages4$inboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+]);
+
+/** @internal */
+export type AssessmentsPackagesSourceValue$Outbound =
+    | AssessmentsPackages4$Outbound
+    | string
+    | number
+    | boolean;
+
+/** @internal */
+export const AssessmentsPackagesSourceValue$outboundSchema: z.ZodType<
+    AssessmentsPackagesSourceValue$Outbound,
+    z.ZodTypeDef,
+    AssessmentsPackagesSourceValue
+> = z.union([
+    z.lazy(() => AssessmentsPackages4$outboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace AssessmentsPackagesSourceValue$ {
-    export const inboundSchema: z.ZodType<AssessmentsPackagesSourceValue, z.ZodTypeDef, unknown> =
-        z.union([
-            z.lazy(() => AssessmentsPackages4$.inboundSchema),
-            z.string(),
-            z.number(),
-            z.boolean(),
-        ]);
-
-    export type Outbound = AssessmentsPackages4$.Outbound | string | number | boolean;
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, AssessmentsPackagesSourceValue> =
-        z.union([
-            z.lazy(() => AssessmentsPackages4$.outboundSchema),
-            z.string(),
-            z.number(),
-            z.boolean(),
-        ]);
+    /** @deprecated use `AssessmentsPackagesSourceValue$inboundSchema` instead. */
+    export const inboundSchema = AssessmentsPackagesSourceValue$inboundSchema;
+    /** @deprecated use `AssessmentsPackagesSourceValue$outboundSchema` instead. */
+    export const outboundSchema = AssessmentsPackagesSourceValue$outboundSchema;
+    /** @deprecated use `AssessmentsPackagesSourceValue$Outbound` instead. */
+    export type Outbound = AssessmentsPackagesSourceValue$Outbound;
 }
 
 /** @internal */
+export const AssessmentsPackagesValue$inboundSchema: z.ZodType<
+    AssessmentsPackagesValueOpen,
+    z.ZodTypeDef,
+    unknown
+> = z.union([z.nativeEnum(AssessmentsPackagesValue), z.string().transform(catchUnrecognizedEnum)]);
+
+/** @internal */
+export const AssessmentsPackagesValue$outboundSchema: z.ZodType<
+    AssessmentsPackagesValueOpen,
+    z.ZodTypeDef,
+    AssessmentsPackagesValueOpen
+> = z.union([
+    z.nativeEnum(AssessmentsPackagesValue),
+    z.string().and(z.custom<Unrecognized<string>>()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace AssessmentsPackagesValue$ {
-    export const inboundSchema: z.ZodType<AssessmentsPackagesValueOpen, z.ZodTypeDef, unknown> =
-        z.union([
-            z.nativeEnum(AssessmentsPackagesValue),
-            z.string().transform(catchUnrecognizedEnum),
-        ]);
-
-    export const outboundSchema: z.ZodType<
-        AssessmentsPackagesValueOpen,
-        z.ZodTypeDef,
-        AssessmentsPackagesValueOpen
-    > = z.union([
-        z.nativeEnum(AssessmentsPackagesValue),
-        z.string().and(z.custom<Unrecognized<string>>()),
-    ]);
+    /** @deprecated use `AssessmentsPackagesValue$inboundSchema` instead. */
+    export const inboundSchema = AssessmentsPackagesValue$inboundSchema;
+    /** @deprecated use `AssessmentsPackagesValue$outboundSchema` instead. */
+    export const outboundSchema = AssessmentsPackagesValue$outboundSchema;
 }
 
 /** @internal */
+export const AssessmentsPackagesType$inboundSchema: z.ZodType<
+    AssessmentsPackagesType,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        source_value: z
+            .nullable(
+                z.union([
+                    z.lazy(() => AssessmentsPackages4$inboundSchema),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                ])
+            )
+            .optional(),
+        value: z.nullable(AssessmentsPackagesValue$inboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            source_value: "sourceValue",
+        });
+    });
+
+/** @internal */
+export type AssessmentsPackagesType$Outbound = {
+    source_value?: AssessmentsPackages4$Outbound | string | number | boolean | null | undefined;
+    value?: string | null | undefined;
+};
+
+/** @internal */
+export const AssessmentsPackagesType$outboundSchema: z.ZodType<
+    AssessmentsPackagesType$Outbound,
+    z.ZodTypeDef,
+    AssessmentsPackagesType
+> = z
+    .object({
+        sourceValue: z
+            .nullable(
+                z.union([
+                    z.lazy(() => AssessmentsPackages4$outboundSchema),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                ])
+            )
+            .optional(),
+        value: z.nullable(AssessmentsPackagesValue$outboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            sourceValue: "source_value",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace AssessmentsPackagesType$ {
-    export const inboundSchema: z.ZodType<AssessmentsPackagesType, z.ZodTypeDef, unknown> = z
-        .object({
-            source_value: z
-                .nullable(
-                    z.union([
-                        z.lazy(() => AssessmentsPackages4$.inboundSchema),
-                        z.string(),
-                        z.number(),
-                        z.boolean(),
-                    ])
-                )
-                .optional(),
-            value: z.nullable(AssessmentsPackagesValue$.inboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                source_value: "sourceValue",
-            });
-        });
-
-    export type Outbound = {
-        source_value?:
-            | AssessmentsPackages4$.Outbound
-            | string
-            | number
-            | boolean
-            | null
-            | undefined;
-        value?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, AssessmentsPackagesType> = z
-        .object({
-            sourceValue: z
-                .nullable(
-                    z.union([
-                        z.lazy(() => AssessmentsPackages4$.outboundSchema),
-                        z.string(),
-                        z.number(),
-                        z.boolean(),
-                    ])
-                )
-                .optional(),
-            value: z.nullable(AssessmentsPackagesValue$.outboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                sourceValue: "source_value",
-            });
-        });
+    /** @deprecated use `AssessmentsPackagesType$inboundSchema` instead. */
+    export const inboundSchema = AssessmentsPackagesType$inboundSchema;
+    /** @deprecated use `AssessmentsPackagesType$outboundSchema` instead. */
+    export const outboundSchema = AssessmentsPackagesType$outboundSchema;
+    /** @deprecated use `AssessmentsPackagesType$Outbound` instead. */
+    export type Outbound = AssessmentsPackagesType$Outbound;
 }
 
 /** @internal */
+export const AssessmentsPackages$inboundSchema: z.ZodType<
+    AssessmentsPackages,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        description: z.nullable(z.string()).optional(),
+        id: z.nullable(z.string()).optional(),
+        name: z.nullable(z.string()).optional(),
+        remote_id: z.nullable(z.string()).optional(),
+        type: z.nullable(z.lazy(() => AssessmentsPackagesType$inboundSchema)).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            remote_id: "remoteId",
+        });
+    });
+
+/** @internal */
+export type AssessmentsPackages$Outbound = {
+    description?: string | null | undefined;
+    id?: string | null | undefined;
+    name?: string | null | undefined;
+    remote_id?: string | null | undefined;
+    type?: AssessmentsPackagesType$Outbound | null | undefined;
+};
+
+/** @internal */
+export const AssessmentsPackages$outboundSchema: z.ZodType<
+    AssessmentsPackages$Outbound,
+    z.ZodTypeDef,
+    AssessmentsPackages
+> = z
+    .object({
+        description: z.nullable(z.string()).optional(),
+        id: z.nullable(z.string()).optional(),
+        name: z.nullable(z.string()).optional(),
+        remoteId: z.nullable(z.string()).optional(),
+        type: z.nullable(z.lazy(() => AssessmentsPackagesType$outboundSchema)).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            remoteId: "remote_id",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace AssessmentsPackages$ {
-    export const inboundSchema: z.ZodType<AssessmentsPackages, z.ZodTypeDef, unknown> = z
-        .object({
-            description: z.nullable(z.string()).optional(),
-            id: z.nullable(z.string()).optional(),
-            name: z.nullable(z.string()).optional(),
-            remote_id: z.nullable(z.string()).optional(),
-            type: z.nullable(z.lazy(() => AssessmentsPackagesType$.inboundSchema)).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                remote_id: "remoteId",
-            });
-        });
-
-    export type Outbound = {
-        description?: string | null | undefined;
-        id?: string | null | undefined;
-        name?: string | null | undefined;
-        remote_id?: string | null | undefined;
-        type?: AssessmentsPackagesType$.Outbound | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, AssessmentsPackages> = z
-        .object({
-            description: z.nullable(z.string()).optional(),
-            id: z.nullable(z.string()).optional(),
-            name: z.nullable(z.string()).optional(),
-            remoteId: z.nullable(z.string()).optional(),
-            type: z.nullable(z.lazy(() => AssessmentsPackagesType$.outboundSchema)).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                remoteId: "remote_id",
-            });
-        });
+    /** @deprecated use `AssessmentsPackages$inboundSchema` instead. */
+    export const inboundSchema = AssessmentsPackages$inboundSchema;
+    /** @deprecated use `AssessmentsPackages$outboundSchema` instead. */
+    export const outboundSchema = AssessmentsPackages$outboundSchema;
+    /** @deprecated use `AssessmentsPackages$Outbound` instead. */
+    export type Outbound = AssessmentsPackages$Outbound;
 }

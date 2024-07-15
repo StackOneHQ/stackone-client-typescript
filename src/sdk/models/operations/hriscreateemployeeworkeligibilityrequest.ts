@@ -35,98 +35,124 @@ export type HrisCreateEmployeeWorkEligibilityRequestResponse = {
 };
 
 /** @internal */
+export const HrisCreateEmployeeWorkEligibilityRequestRequest$inboundSchema: z.ZodType<
+    HrisCreateEmployeeWorkEligibilityRequestRequest,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        HrisCreateWorkEligibilityRequestDto:
+            shared.HrisCreateWorkEligibilityRequestDto$inboundSchema,
+        id: z.string(),
+        "x-account-id": z.string(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            HrisCreateWorkEligibilityRequestDto: "hrisCreateWorkEligibilityRequestDto",
+            "x-account-id": "xAccountId",
+        });
+    });
+
+/** @internal */
+export type HrisCreateEmployeeWorkEligibilityRequestRequest$Outbound = {
+    HrisCreateWorkEligibilityRequestDto: shared.HrisCreateWorkEligibilityRequestDto$Outbound;
+    id: string;
+    "x-account-id": string;
+};
+
+/** @internal */
+export const HrisCreateEmployeeWorkEligibilityRequestRequest$outboundSchema: z.ZodType<
+    HrisCreateEmployeeWorkEligibilityRequestRequest$Outbound,
+    z.ZodTypeDef,
+    HrisCreateEmployeeWorkEligibilityRequestRequest
+> = z
+    .object({
+        hrisCreateWorkEligibilityRequestDto:
+            shared.HrisCreateWorkEligibilityRequestDto$outboundSchema,
+        id: z.string(),
+        xAccountId: z.string(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            hrisCreateWorkEligibilityRequestDto: "HrisCreateWorkEligibilityRequestDto",
+            xAccountId: "x-account-id",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace HrisCreateEmployeeWorkEligibilityRequestRequest$ {
-    export const inboundSchema: z.ZodType<
-        HrisCreateEmployeeWorkEligibilityRequestRequest,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            HrisCreateWorkEligibilityRequestDto:
-                shared.HrisCreateWorkEligibilityRequestDto$.inboundSchema,
-            id: z.string(),
-            "x-account-id": z.string(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                HrisCreateWorkEligibilityRequestDto: "hrisCreateWorkEligibilityRequestDto",
-                "x-account-id": "xAccountId",
-            });
-        });
-
-    export type Outbound = {
-        HrisCreateWorkEligibilityRequestDto: shared.HrisCreateWorkEligibilityRequestDto$.Outbound;
-        id: string;
-        "x-account-id": string;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        HrisCreateEmployeeWorkEligibilityRequestRequest
-    > = z
-        .object({
-            hrisCreateWorkEligibilityRequestDto:
-                shared.HrisCreateWorkEligibilityRequestDto$.outboundSchema,
-            id: z.string(),
-            xAccountId: z.string(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                hrisCreateWorkEligibilityRequestDto: "HrisCreateWorkEligibilityRequestDto",
-                xAccountId: "x-account-id",
-            });
-        });
+    /** @deprecated use `HrisCreateEmployeeWorkEligibilityRequestRequest$inboundSchema` instead. */
+    export const inboundSchema = HrisCreateEmployeeWorkEligibilityRequestRequest$inboundSchema;
+    /** @deprecated use `HrisCreateEmployeeWorkEligibilityRequestRequest$outboundSchema` instead. */
+    export const outboundSchema = HrisCreateEmployeeWorkEligibilityRequestRequest$outboundSchema;
+    /** @deprecated use `HrisCreateEmployeeWorkEligibilityRequestRequest$Outbound` instead. */
+    export type Outbound = HrisCreateEmployeeWorkEligibilityRequestRequest$Outbound;
 }
 
 /** @internal */
+export const HrisCreateEmployeeWorkEligibilityRequestResponse$inboundSchema: z.ZodType<
+    HrisCreateEmployeeWorkEligibilityRequestResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        ContentType: z.string(),
+        CreateResult: shared.CreateResult$inboundSchema.optional(),
+        StatusCode: z.number().int(),
+        RawResponse: z.instanceof(Response),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            ContentType: "contentType",
+            CreateResult: "createResult",
+            StatusCode: "statusCode",
+            RawResponse: "rawResponse",
+        });
+    });
+
+/** @internal */
+export type HrisCreateEmployeeWorkEligibilityRequestResponse$Outbound = {
+    ContentType: string;
+    CreateResult?: shared.CreateResult$Outbound | undefined;
+    StatusCode: number;
+    RawResponse: never;
+};
+
+/** @internal */
+export const HrisCreateEmployeeWorkEligibilityRequestResponse$outboundSchema: z.ZodType<
+    HrisCreateEmployeeWorkEligibilityRequestResponse$Outbound,
+    z.ZodTypeDef,
+    HrisCreateEmployeeWorkEligibilityRequestResponse
+> = z
+    .object({
+        contentType: z.string(),
+        createResult: shared.CreateResult$outboundSchema.optional(),
+        statusCode: z.number().int(),
+        rawResponse: z.instanceof(Response).transform(() => {
+            throw new Error("Response cannot be serialized");
+        }),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            contentType: "ContentType",
+            createResult: "CreateResult",
+            statusCode: "StatusCode",
+            rawResponse: "RawResponse",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace HrisCreateEmployeeWorkEligibilityRequestResponse$ {
-    export const inboundSchema: z.ZodType<
-        HrisCreateEmployeeWorkEligibilityRequestResponse,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            ContentType: z.string(),
-            CreateResult: shared.CreateResult$.inboundSchema.optional(),
-            StatusCode: z.number().int(),
-            RawResponse: z.instanceof(Response),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                ContentType: "contentType",
-                CreateResult: "createResult",
-                StatusCode: "statusCode",
-                RawResponse: "rawResponse",
-            });
-        });
-
-    export type Outbound = {
-        ContentType: string;
-        CreateResult?: shared.CreateResult$.Outbound | undefined;
-        StatusCode: number;
-        RawResponse: never;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        HrisCreateEmployeeWorkEligibilityRequestResponse
-    > = z
-        .object({
-            contentType: z.string(),
-            createResult: shared.CreateResult$.outboundSchema.optional(),
-            statusCode: z.number().int(),
-            rawResponse: z.instanceof(Response).transform(() => {
-                throw new Error("Response cannot be serialized");
-            }),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                contentType: "ContentType",
-                createResult: "CreateResult",
-                statusCode: "StatusCode",
-                rawResponse: "RawResponse",
-            });
-        });
+    /** @deprecated use `HrisCreateEmployeeWorkEligibilityRequestResponse$inboundSchema` instead. */
+    export const inboundSchema = HrisCreateEmployeeWorkEligibilityRequestResponse$inboundSchema;
+    /** @deprecated use `HrisCreateEmployeeWorkEligibilityRequestResponse$outboundSchema` instead. */
+    export const outboundSchema = HrisCreateEmployeeWorkEligibilityRequestResponse$outboundSchema;
+    /** @deprecated use `HrisCreateEmployeeWorkEligibilityRequestResponse$Outbound` instead. */
+    export type Outbound = HrisCreateEmployeeWorkEligibilityRequestResponse$Outbound;
 }

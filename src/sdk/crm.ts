@@ -54,7 +54,7 @@ export class Crm extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.CrmCreateContactRequest$.outboundSchema.parse(value$),
+            (value$) => operations.CrmCreateContactRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = encodeJSON$("body", payload$.CrmCreateContactRequestDto, { explode: true });
@@ -93,6 +93,7 @@ export class Crm extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -100,6 +101,8 @@ export class Crm extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -110,7 +113,7 @@ export class Crm extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.CrmCreateContactResponse>()
-            .json(200, operations.CrmCreateContactResponse$, { key: "ContactResult" })
+            .json(200, operations.CrmCreateContactResponse$inboundSchema, { key: "ContactResult" })
             .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -128,7 +131,7 @@ export class Crm extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.CrmGetAccountRequest$.outboundSchema.parse(value$),
+            (value$) => operations.CrmGetAccountRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -177,6 +180,7 @@ export class Crm extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -184,6 +188,8 @@ export class Crm extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -194,7 +200,7 @@ export class Crm extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.CrmGetAccountResponse>()
-            .json(200, operations.CrmGetAccountResponse$, { key: "AccountResult" })
+            .json(200, operations.CrmGetAccountResponse$inboundSchema, { key: "AccountResult" })
             .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -212,7 +218,7 @@ export class Crm extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.CrmGetContactRequest$.outboundSchema.parse(value$),
+            (value$) => operations.CrmGetContactRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -262,6 +268,7 @@ export class Crm extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -269,6 +276,8 @@ export class Crm extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -279,7 +288,7 @@ export class Crm extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.CrmGetContactResponse>()
-            .json(200, operations.CrmGetContactResponse$, { key: "ContactResult" })
+            .json(200, operations.CrmGetContactResponse$inboundSchema, { key: "ContactResult" })
             .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -297,7 +306,7 @@ export class Crm extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.CrmGetListRequest$.outboundSchema.parse(value$),
+            (value$) => operations.CrmGetListRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -346,6 +355,7 @@ export class Crm extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -353,6 +363,8 @@ export class Crm extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -363,7 +375,7 @@ export class Crm extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.CrmGetListResponse>()
-            .json(200, operations.CrmGetListResponse$, { key: "ListResult" })
+            .json(200, operations.CrmGetListResponse$inboundSchema, { key: "ListResult" })
             .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -381,7 +393,7 @@ export class Crm extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.CrmListAccountsRequest$.outboundSchema.parse(value$),
+            (value$) => operations.CrmListAccountsRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -432,6 +444,7 @@ export class Crm extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -439,6 +452,8 @@ export class Crm extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -449,7 +464,9 @@ export class Crm extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.CrmListAccountsResponse>()
-            .json(200, operations.CrmListAccountsResponse$, { key: "AccountsPaginated" })
+            .json(200, operations.CrmListAccountsResponse$inboundSchema, {
+                key: "AccountsPaginated",
+            })
             .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -467,7 +484,7 @@ export class Crm extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.CrmListContactsRequest$.outboundSchema.parse(value$),
+            (value$) => operations.CrmListContactsRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -519,6 +536,7 @@ export class Crm extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -526,6 +544,8 @@ export class Crm extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -536,7 +556,9 @@ export class Crm extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.CrmListContactsResponse>()
-            .json(200, operations.CrmListContactsResponse$, { key: "ContactsPaginated" })
+            .json(200, operations.CrmListContactsResponse$inboundSchema, {
+                key: "ContactsPaginated",
+            })
             .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -554,7 +576,7 @@ export class Crm extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.CrmListListsRequest$.outboundSchema.parse(value$),
+            (value$) => operations.CrmListListsRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -605,6 +627,7 @@ export class Crm extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -612,6 +635,8 @@ export class Crm extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -622,7 +647,7 @@ export class Crm extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.CrmListListsResponse>()
-            .json(200, operations.CrmListListsResponse$, { key: "ListsPaginated" })
+            .json(200, operations.CrmListListsResponse$inboundSchema, { key: "ListsPaginated" })
             .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -640,7 +665,7 @@ export class Crm extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.CrmUpdateContactRequest$.outboundSchema.parse(value$),
+            (value$) => operations.CrmUpdateContactRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = encodeJSON$("body", payload$.CrmCreateContactRequestDto, { explode: true });
@@ -682,6 +707,7 @@ export class Crm extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -689,6 +715,8 @@ export class Crm extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -699,7 +727,7 @@ export class Crm extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.CrmUpdateContactResponse>()
-            .json(200, operations.CrmUpdateContactResponse$, { key: "ContactResult" })
+            .json(200, operations.CrmUpdateContactResponse$inboundSchema, { key: "ContactResult" })
             .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
             .match(response, { extraFields: responseFields$ });
 

@@ -46,84 +46,126 @@ export type HrisGetLocationResponse = {
 };
 
 /** @internal */
+export const HrisGetLocationRequest$inboundSchema: z.ZodType<
+    HrisGetLocationRequest,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        fields: z.nullable(z.string()).optional(),
+        id: z.string(),
+        proxy: z.nullable(z.record(z.any())).optional(),
+        raw: z.nullable(z.boolean().default(false)),
+        "x-account-id": z.string(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            "x-account-id": "xAccountId",
+        });
+    });
+
+/** @internal */
+export type HrisGetLocationRequest$Outbound = {
+    fields?: string | null | undefined;
+    id: string;
+    proxy?: { [k: string]: any } | null | undefined;
+    raw: boolean | null;
+    "x-account-id": string;
+};
+
+/** @internal */
+export const HrisGetLocationRequest$outboundSchema: z.ZodType<
+    HrisGetLocationRequest$Outbound,
+    z.ZodTypeDef,
+    HrisGetLocationRequest
+> = z
+    .object({
+        fields: z.nullable(z.string()).optional(),
+        id: z.string(),
+        proxy: z.nullable(z.record(z.any())).optional(),
+        raw: z.nullable(z.boolean().default(false)),
+        xAccountId: z.string(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            xAccountId: "x-account-id",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace HrisGetLocationRequest$ {
-    export const inboundSchema: z.ZodType<HrisGetLocationRequest, z.ZodTypeDef, unknown> = z
-        .object({
-            fields: z.nullable(z.string()).optional(),
-            id: z.string(),
-            proxy: z.nullable(z.record(z.any())).optional(),
-            raw: z.nullable(z.boolean().default(false)),
-            "x-account-id": z.string(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                "x-account-id": "xAccountId",
-            });
-        });
-
-    export type Outbound = {
-        fields?: string | null | undefined;
-        id: string;
-        proxy?: { [k: string]: any } | null | undefined;
-        raw: boolean | null;
-        "x-account-id": string;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, HrisGetLocationRequest> = z
-        .object({
-            fields: z.nullable(z.string()).optional(),
-            id: z.string(),
-            proxy: z.nullable(z.record(z.any())).optional(),
-            raw: z.nullable(z.boolean().default(false)),
-            xAccountId: z.string(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                xAccountId: "x-account-id",
-            });
-        });
+    /** @deprecated use `HrisGetLocationRequest$inboundSchema` instead. */
+    export const inboundSchema = HrisGetLocationRequest$inboundSchema;
+    /** @deprecated use `HrisGetLocationRequest$outboundSchema` instead. */
+    export const outboundSchema = HrisGetLocationRequest$outboundSchema;
+    /** @deprecated use `HrisGetLocationRequest$Outbound` instead. */
+    export type Outbound = HrisGetLocationRequest$Outbound;
 }
 
 /** @internal */
+export const HrisGetLocationResponse$inboundSchema: z.ZodType<
+    HrisGetLocationResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        ContentType: z.string(),
+        HRISLocationResult: shared.HRISLocationResult$inboundSchema.optional(),
+        StatusCode: z.number().int(),
+        RawResponse: z.instanceof(Response),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            ContentType: "contentType",
+            HRISLocationResult: "hrisLocationResult",
+            StatusCode: "statusCode",
+            RawResponse: "rawResponse",
+        });
+    });
+
+/** @internal */
+export type HrisGetLocationResponse$Outbound = {
+    ContentType: string;
+    HRISLocationResult?: shared.HRISLocationResult$Outbound | undefined;
+    StatusCode: number;
+    RawResponse: never;
+};
+
+/** @internal */
+export const HrisGetLocationResponse$outboundSchema: z.ZodType<
+    HrisGetLocationResponse$Outbound,
+    z.ZodTypeDef,
+    HrisGetLocationResponse
+> = z
+    .object({
+        contentType: z.string(),
+        hrisLocationResult: shared.HRISLocationResult$outboundSchema.optional(),
+        statusCode: z.number().int(),
+        rawResponse: z.instanceof(Response).transform(() => {
+            throw new Error("Response cannot be serialized");
+        }),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            contentType: "ContentType",
+            hrisLocationResult: "HRISLocationResult",
+            statusCode: "StatusCode",
+            rawResponse: "RawResponse",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace HrisGetLocationResponse$ {
-    export const inboundSchema: z.ZodType<HrisGetLocationResponse, z.ZodTypeDef, unknown> = z
-        .object({
-            ContentType: z.string(),
-            HRISLocationResult: shared.HRISLocationResult$.inboundSchema.optional(),
-            StatusCode: z.number().int(),
-            RawResponse: z.instanceof(Response),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                ContentType: "contentType",
-                HRISLocationResult: "hrisLocationResult",
-                StatusCode: "statusCode",
-                RawResponse: "rawResponse",
-            });
-        });
-
-    export type Outbound = {
-        ContentType: string;
-        HRISLocationResult?: shared.HRISLocationResult$.Outbound | undefined;
-        StatusCode: number;
-        RawResponse: never;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, HrisGetLocationResponse> = z
-        .object({
-            contentType: z.string(),
-            hrisLocationResult: shared.HRISLocationResult$.outboundSchema.optional(),
-            statusCode: z.number().int(),
-            rawResponse: z.instanceof(Response).transform(() => {
-                throw new Error("Response cannot be serialized");
-            }),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                contentType: "ContentType",
-                hrisLocationResult: "HRISLocationResult",
-                statusCode: "StatusCode",
-                rawResponse: "RawResponse",
-            });
-        });
+    /** @deprecated use `HrisGetLocationResponse$inboundSchema` instead. */
+    export const inboundSchema = HrisGetLocationResponse$inboundSchema;
+    /** @deprecated use `HrisGetLocationResponse$outboundSchema` instead. */
+    export const outboundSchema = HrisGetLocationResponse$outboundSchema;
+    /** @deprecated use `HrisGetLocationResponse$Outbound` instead. */
+    export type Outbound = HrisGetLocationResponse$Outbound;
 }

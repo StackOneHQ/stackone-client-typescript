@@ -49,7 +49,7 @@ export class ConnectSessions extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => shared.ConnectSessionAuthenticate$.outboundSchema.parse(value$),
+            (value$) => shared.ConnectSessionAuthenticate$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = encodeJSON$("body", payload$, { explode: true });
@@ -84,6 +84,7 @@ export class ConnectSessions extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -91,6 +92,8 @@ export class ConnectSessions extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "403", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -102,7 +105,7 @@ export class ConnectSessions extends ClientSDK {
 
         const [result$] =
             await this.matcher<operations.StackoneAuthenticateConnectSessionResponse>()
-                .json(201, operations.StackoneAuthenticateConnectSessionResponse$, {
+                .json(201, operations.StackoneAuthenticateConnectSessionResponse$inboundSchema, {
                     key: "ConnectSession",
                 })
                 .fail([400, 403, 429, "4XX", 500, 501, "5XX"])
@@ -122,7 +125,7 @@ export class ConnectSessions extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => shared.ConnectSessionCreate$.outboundSchema.parse(value$),
+            (value$) => shared.ConnectSessionCreate$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = encodeJSON$("body", payload$, { explode: true });
@@ -157,6 +160,7 @@ export class ConnectSessions extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -164,6 +168,8 @@ export class ConnectSessions extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "403", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -174,7 +180,7 @@ export class ConnectSessions extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.StackoneCreateConnectSessionResponse>()
-            .json(201, operations.StackoneCreateConnectSessionResponse$, {
+            .json(201, operations.StackoneCreateConnectSessionResponse$inboundSchema, {
                 key: "ConnectSessionToken",
             })
             .fail([400, 403, 429, "4XX", 500, 501, "5XX"])

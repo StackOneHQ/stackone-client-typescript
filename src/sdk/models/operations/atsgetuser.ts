@@ -46,8 +46,8 @@ export type AtsGetUserResponse = {
 };
 
 /** @internal */
-export namespace AtsGetUserRequest$ {
-    export const inboundSchema: z.ZodType<AtsGetUserRequest, z.ZodTypeDef, unknown> = z
+export const AtsGetUserRequest$inboundSchema: z.ZodType<AtsGetUserRequest, z.ZodTypeDef, unknown> =
+    z
         .object({
             fields: z.nullable(z.string()).optional(),
             id: z.string(),
@@ -61,69 +61,108 @@ export namespace AtsGetUserRequest$ {
             });
         });
 
-    export type Outbound = {
-        fields?: string | null | undefined;
-        id: string;
-        proxy?: { [k: string]: any } | null | undefined;
-        raw: boolean | null;
-        "x-account-id": string;
-    };
+/** @internal */
+export type AtsGetUserRequest$Outbound = {
+    fields?: string | null | undefined;
+    id: string;
+    proxy?: { [k: string]: any } | null | undefined;
+    raw: boolean | null;
+    "x-account-id": string;
+};
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, AtsGetUserRequest> = z
-        .object({
-            fields: z.nullable(z.string()).optional(),
-            id: z.string(),
-            proxy: z.nullable(z.record(z.any())).optional(),
-            raw: z.nullable(z.boolean().default(false)),
-            xAccountId: z.string(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                xAccountId: "x-account-id",
-            });
+/** @internal */
+export const AtsGetUserRequest$outboundSchema: z.ZodType<
+    AtsGetUserRequest$Outbound,
+    z.ZodTypeDef,
+    AtsGetUserRequest
+> = z
+    .object({
+        fields: z.nullable(z.string()).optional(),
+        id: z.string(),
+        proxy: z.nullable(z.record(z.any())).optional(),
+        raw: z.nullable(z.boolean().default(false)),
+        xAccountId: z.string(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            xAccountId: "x-account-id",
         });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace AtsGetUserRequest$ {
+    /** @deprecated use `AtsGetUserRequest$inboundSchema` instead. */
+    export const inboundSchema = AtsGetUserRequest$inboundSchema;
+    /** @deprecated use `AtsGetUserRequest$outboundSchema` instead. */
+    export const outboundSchema = AtsGetUserRequest$outboundSchema;
+    /** @deprecated use `AtsGetUserRequest$Outbound` instead. */
+    export type Outbound = AtsGetUserRequest$Outbound;
 }
 
 /** @internal */
+export const AtsGetUserResponse$inboundSchema: z.ZodType<
+    AtsGetUserResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        ContentType: z.string(),
+        StatusCode: z.number().int(),
+        RawResponse: z.instanceof(Response),
+        UserResult: shared.UserResult$inboundSchema.optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            ContentType: "contentType",
+            StatusCode: "statusCode",
+            RawResponse: "rawResponse",
+            UserResult: "userResult",
+        });
+    });
+
+/** @internal */
+export type AtsGetUserResponse$Outbound = {
+    ContentType: string;
+    StatusCode: number;
+    RawResponse: never;
+    UserResult?: shared.UserResult$Outbound | undefined;
+};
+
+/** @internal */
+export const AtsGetUserResponse$outboundSchema: z.ZodType<
+    AtsGetUserResponse$Outbound,
+    z.ZodTypeDef,
+    AtsGetUserResponse
+> = z
+    .object({
+        contentType: z.string(),
+        statusCode: z.number().int(),
+        rawResponse: z.instanceof(Response).transform(() => {
+            throw new Error("Response cannot be serialized");
+        }),
+        userResult: shared.UserResult$outboundSchema.optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            contentType: "ContentType",
+            statusCode: "StatusCode",
+            rawResponse: "RawResponse",
+            userResult: "UserResult",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace AtsGetUserResponse$ {
-    export const inboundSchema: z.ZodType<AtsGetUserResponse, z.ZodTypeDef, unknown> = z
-        .object({
-            ContentType: z.string(),
-            StatusCode: z.number().int(),
-            RawResponse: z.instanceof(Response),
-            UserResult: shared.UserResult$.inboundSchema.optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                ContentType: "contentType",
-                StatusCode: "statusCode",
-                RawResponse: "rawResponse",
-                UserResult: "userResult",
-            });
-        });
-
-    export type Outbound = {
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: never;
-        UserResult?: shared.UserResult$.Outbound | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, AtsGetUserResponse> = z
-        .object({
-            contentType: z.string(),
-            statusCode: z.number().int(),
-            rawResponse: z.instanceof(Response).transform(() => {
-                throw new Error("Response cannot be serialized");
-            }),
-            userResult: shared.UserResult$.outboundSchema.optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                contentType: "ContentType",
-                statusCode: "StatusCode",
-                rawResponse: "RawResponse",
-                userResult: "UserResult",
-            });
-        });
+    /** @deprecated use `AtsGetUserResponse$inboundSchema` instead. */
+    export const inboundSchema = AtsGetUserResponse$inboundSchema;
+    /** @deprecated use `AtsGetUserResponse$outboundSchema` instead. */
+    export const outboundSchema = AtsGetUserResponse$outboundSchema;
+    /** @deprecated use `AtsGetUserResponse$Outbound` instead. */
+    export type Outbound = AtsGetUserResponse$Outbound;
 }

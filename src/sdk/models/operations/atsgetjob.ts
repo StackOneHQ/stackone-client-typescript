@@ -50,53 +50,70 @@ export type AtsGetJobResponse = {
 };
 
 /** @internal */
+export const AtsGetJobRequest$inboundSchema: z.ZodType<AtsGetJobRequest, z.ZodTypeDef, unknown> = z
+    .object({
+        expand: z.nullable(z.string()).optional(),
+        fields: z.nullable(z.string()).optional(),
+        id: z.string(),
+        proxy: z.nullable(z.record(z.any())).optional(),
+        raw: z.nullable(z.boolean().default(false)),
+        "x-account-id": z.string(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            "x-account-id": "xAccountId",
+        });
+    });
+
+/** @internal */
+export type AtsGetJobRequest$Outbound = {
+    expand?: string | null | undefined;
+    fields?: string | null | undefined;
+    id: string;
+    proxy?: { [k: string]: any } | null | undefined;
+    raw: boolean | null;
+    "x-account-id": string;
+};
+
+/** @internal */
+export const AtsGetJobRequest$outboundSchema: z.ZodType<
+    AtsGetJobRequest$Outbound,
+    z.ZodTypeDef,
+    AtsGetJobRequest
+> = z
+    .object({
+        expand: z.nullable(z.string()).optional(),
+        fields: z.nullable(z.string()).optional(),
+        id: z.string(),
+        proxy: z.nullable(z.record(z.any())).optional(),
+        raw: z.nullable(z.boolean().default(false)),
+        xAccountId: z.string(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            xAccountId: "x-account-id",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace AtsGetJobRequest$ {
-    export const inboundSchema: z.ZodType<AtsGetJobRequest, z.ZodTypeDef, unknown> = z
-        .object({
-            expand: z.nullable(z.string()).optional(),
-            fields: z.nullable(z.string()).optional(),
-            id: z.string(),
-            proxy: z.nullable(z.record(z.any())).optional(),
-            raw: z.nullable(z.boolean().default(false)),
-            "x-account-id": z.string(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                "x-account-id": "xAccountId",
-            });
-        });
-
-    export type Outbound = {
-        expand?: string | null | undefined;
-        fields?: string | null | undefined;
-        id: string;
-        proxy?: { [k: string]: any } | null | undefined;
-        raw: boolean | null;
-        "x-account-id": string;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, AtsGetJobRequest> = z
-        .object({
-            expand: z.nullable(z.string()).optional(),
-            fields: z.nullable(z.string()).optional(),
-            id: z.string(),
-            proxy: z.nullable(z.record(z.any())).optional(),
-            raw: z.nullable(z.boolean().default(false)),
-            xAccountId: z.string(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                xAccountId: "x-account-id",
-            });
-        });
+    /** @deprecated use `AtsGetJobRequest$inboundSchema` instead. */
+    export const inboundSchema = AtsGetJobRequest$inboundSchema;
+    /** @deprecated use `AtsGetJobRequest$outboundSchema` instead. */
+    export const outboundSchema = AtsGetJobRequest$outboundSchema;
+    /** @deprecated use `AtsGetJobRequest$Outbound` instead. */
+    export type Outbound = AtsGetJobRequest$Outbound;
 }
 
 /** @internal */
-export namespace AtsGetJobResponse$ {
-    export const inboundSchema: z.ZodType<AtsGetJobResponse, z.ZodTypeDef, unknown> = z
+export const AtsGetJobResponse$inboundSchema: z.ZodType<AtsGetJobResponse, z.ZodTypeDef, unknown> =
+    z
         .object({
             ContentType: z.string(),
-            JobResult: shared.JobResult$.inboundSchema.optional(),
+            JobResult: shared.JobResult$inboundSchema.optional(),
             StatusCode: z.number().int(),
             RawResponse: z.instanceof(Response),
         })
@@ -109,28 +126,46 @@ export namespace AtsGetJobResponse$ {
             });
         });
 
-    export type Outbound = {
-        ContentType: string;
-        JobResult?: shared.JobResult$.Outbound | undefined;
-        StatusCode: number;
-        RawResponse: never;
-    };
+/** @internal */
+export type AtsGetJobResponse$Outbound = {
+    ContentType: string;
+    JobResult?: shared.JobResult$Outbound | undefined;
+    StatusCode: number;
+    RawResponse: never;
+};
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, AtsGetJobResponse> = z
-        .object({
-            contentType: z.string(),
-            jobResult: shared.JobResult$.outboundSchema.optional(),
-            statusCode: z.number().int(),
-            rawResponse: z.instanceof(Response).transform(() => {
-                throw new Error("Response cannot be serialized");
-            }),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                contentType: "ContentType",
-                jobResult: "JobResult",
-                statusCode: "StatusCode",
-                rawResponse: "RawResponse",
-            });
+/** @internal */
+export const AtsGetJobResponse$outboundSchema: z.ZodType<
+    AtsGetJobResponse$Outbound,
+    z.ZodTypeDef,
+    AtsGetJobResponse
+> = z
+    .object({
+        contentType: z.string(),
+        jobResult: shared.JobResult$outboundSchema.optional(),
+        statusCode: z.number().int(),
+        rawResponse: z.instanceof(Response).transform(() => {
+            throw new Error("Response cannot be serialized");
+        }),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            contentType: "ContentType",
+            jobResult: "JobResult",
+            statusCode: "StatusCode",
+            rawResponse: "RawResponse",
         });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace AtsGetJobResponse$ {
+    /** @deprecated use `AtsGetJobResponse$inboundSchema` instead. */
+    export const inboundSchema = AtsGetJobResponse$inboundSchema;
+    /** @deprecated use `AtsGetJobResponse$outboundSchema` instead. */
+    export const outboundSchema = AtsGetJobResponse$outboundSchema;
+    /** @deprecated use `AtsGetJobResponse$Outbound` instead. */
+    export type Outbound = AtsGetJobResponse$Outbound;
 }

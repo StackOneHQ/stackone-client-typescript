@@ -48,7 +48,7 @@ export class Proxy extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.StackoneProxyRequestRequest$.outboundSchema.parse(value$),
+            (value$) => operations.StackoneProxyRequestRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = encodeJSON$("body", payload$.ProxyRequestBody, { explode: true });
@@ -87,6 +87,7 @@ export class Proxy extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -94,6 +95,8 @@ export class Proxy extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -104,7 +107,7 @@ export class Proxy extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.StackoneProxyRequestResponse>()
-            .void(200, operations.StackoneProxyRequestResponse$)
+            .void(200, operations.StackoneProxyRequestResponse$inboundSchema)
             .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
             .match(response, { extraFields: responseFields$ });
 

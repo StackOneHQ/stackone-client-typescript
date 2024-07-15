@@ -33,6 +33,7 @@ export enum HrisDocumentsUploadRequestDtoValue {
     Other = "other",
     Benefit = "benefit",
     IdVerification = "id_verification",
+    BackgroundCheck = "background_check",
     UnmappedValue = "unmapped_value",
 }
 /**
@@ -1364,357 +1365,515 @@ export type HrisDocumentsUploadRequestDto = {
 };
 
 /** @internal */
+export const HrisDocumentsUploadRequestDtoValue$inboundSchema: z.ZodType<
+    HrisDocumentsUploadRequestDtoValueOpen,
+    z.ZodTypeDef,
+    unknown
+> = z.union([
+    z.nativeEnum(HrisDocumentsUploadRequestDtoValue),
+    z.string().transform(catchUnrecognizedEnum),
+]);
+
+/** @internal */
+export const HrisDocumentsUploadRequestDtoValue$outboundSchema: z.ZodType<
+    HrisDocumentsUploadRequestDtoValueOpen,
+    z.ZodTypeDef,
+    HrisDocumentsUploadRequestDtoValueOpen
+> = z.union([
+    z.nativeEnum(HrisDocumentsUploadRequestDtoValue),
+    z.string().and(z.custom<Unrecognized<string>>()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace HrisDocumentsUploadRequestDtoValue$ {
-    export const inboundSchema: z.ZodType<
-        HrisDocumentsUploadRequestDtoValueOpen,
-        z.ZodTypeDef,
-        unknown
-    > = z.union([
-        z.nativeEnum(HrisDocumentsUploadRequestDtoValue),
-        z.string().transform(catchUnrecognizedEnum),
-    ]);
-
-    export const outboundSchema: z.ZodType<
-        HrisDocumentsUploadRequestDtoValueOpen,
-        z.ZodTypeDef,
-        HrisDocumentsUploadRequestDtoValueOpen
-    > = z.union([
-        z.nativeEnum(HrisDocumentsUploadRequestDtoValue),
-        z.string().and(z.custom<Unrecognized<string>>()),
-    ]);
+    /** @deprecated use `HrisDocumentsUploadRequestDtoValue$inboundSchema` instead. */
+    export const inboundSchema = HrisDocumentsUploadRequestDtoValue$inboundSchema;
+    /** @deprecated use `HrisDocumentsUploadRequestDtoValue$outboundSchema` instead. */
+    export const outboundSchema = HrisDocumentsUploadRequestDtoValue$outboundSchema;
 }
 
 /** @internal */
+export const HrisDocumentsUploadRequestDtoCategory$inboundSchema: z.ZodType<
+    HrisDocumentsUploadRequestDtoCategory,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        source_value: z.nullable(z.string()).optional(),
+        value: z.nullable(HrisDocumentsUploadRequestDtoValue$inboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            source_value: "sourceValue",
+        });
+    });
+
+/** @internal */
+export type HrisDocumentsUploadRequestDtoCategory$Outbound = {
+    source_value?: string | null | undefined;
+    value?: string | null | undefined;
+};
+
+/** @internal */
+export const HrisDocumentsUploadRequestDtoCategory$outboundSchema: z.ZodType<
+    HrisDocumentsUploadRequestDtoCategory$Outbound,
+    z.ZodTypeDef,
+    HrisDocumentsUploadRequestDtoCategory
+> = z
+    .object({
+        sourceValue: z.nullable(z.string()).optional(),
+        value: z.nullable(HrisDocumentsUploadRequestDtoValue$outboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            sourceValue: "source_value",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace HrisDocumentsUploadRequestDtoCategory$ {
-    export const inboundSchema: z.ZodType<
-        HrisDocumentsUploadRequestDtoCategory,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            source_value: z.nullable(z.string()).optional(),
-            value: z.nullable(HrisDocumentsUploadRequestDtoValue$.inboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                source_value: "sourceValue",
-            });
-        });
-
-    export type Outbound = {
-        source_value?: string | null | undefined;
-        value?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        HrisDocumentsUploadRequestDtoCategory
-    > = z
-        .object({
-            sourceValue: z.nullable(z.string()).optional(),
-            value: z.nullable(HrisDocumentsUploadRequestDtoValue$.outboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                sourceValue: "source_value",
-            });
-        });
+    /** @deprecated use `HrisDocumentsUploadRequestDtoCategory$inboundSchema` instead. */
+    export const inboundSchema = HrisDocumentsUploadRequestDtoCategory$inboundSchema;
+    /** @deprecated use `HrisDocumentsUploadRequestDtoCategory$outboundSchema` instead. */
+    export const outboundSchema = HrisDocumentsUploadRequestDtoCategory$outboundSchema;
+    /** @deprecated use `HrisDocumentsUploadRequestDtoCategory$Outbound` instead. */
+    export type Outbound = HrisDocumentsUploadRequestDtoCategory$Outbound;
 }
 
 /** @internal */
+export const HrisDocumentsUploadRequestDto4$inboundSchema: z.ZodType<
+    HrisDocumentsUploadRequestDto4,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type HrisDocumentsUploadRequestDto4$Outbound = {};
+
+/** @internal */
+export const HrisDocumentsUploadRequestDto4$outboundSchema: z.ZodType<
+    HrisDocumentsUploadRequestDto4$Outbound,
+    z.ZodTypeDef,
+    HrisDocumentsUploadRequestDto4
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace HrisDocumentsUploadRequestDto4$ {
-    export const inboundSchema: z.ZodType<HrisDocumentsUploadRequestDto4, z.ZodTypeDef, unknown> =
-        z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, HrisDocumentsUploadRequestDto4> =
-        z.object({});
+    /** @deprecated use `HrisDocumentsUploadRequestDto4$inboundSchema` instead. */
+    export const inboundSchema = HrisDocumentsUploadRequestDto4$inboundSchema;
+    /** @deprecated use `HrisDocumentsUploadRequestDto4$outboundSchema` instead. */
+    export const outboundSchema = HrisDocumentsUploadRequestDto4$outboundSchema;
+    /** @deprecated use `HrisDocumentsUploadRequestDto4$Outbound` instead. */
+    export type Outbound = HrisDocumentsUploadRequestDto4$Outbound;
 }
 
 /** @internal */
+export const HrisDocumentsUploadRequestDtoSourceValue$inboundSchema: z.ZodType<
+    HrisDocumentsUploadRequestDtoSourceValue,
+    z.ZodTypeDef,
+    unknown
+> = z.union([
+    z.lazy(() => HrisDocumentsUploadRequestDto4$inboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+]);
+
+/** @internal */
+export type HrisDocumentsUploadRequestDtoSourceValue$Outbound =
+    | HrisDocumentsUploadRequestDto4$Outbound
+    | string
+    | number
+    | boolean;
+
+/** @internal */
+export const HrisDocumentsUploadRequestDtoSourceValue$outboundSchema: z.ZodType<
+    HrisDocumentsUploadRequestDtoSourceValue$Outbound,
+    z.ZodTypeDef,
+    HrisDocumentsUploadRequestDtoSourceValue
+> = z.union([
+    z.lazy(() => HrisDocumentsUploadRequestDto4$outboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace HrisDocumentsUploadRequestDtoSourceValue$ {
-    export const inboundSchema: z.ZodType<
-        HrisDocumentsUploadRequestDtoSourceValue,
-        z.ZodTypeDef,
-        unknown
-    > = z.union([
-        z.lazy(() => HrisDocumentsUploadRequestDto4$.inboundSchema),
-        z.string(),
-        z.number(),
-        z.boolean(),
-    ]);
-
-    export type Outbound = HrisDocumentsUploadRequestDto4$.Outbound | string | number | boolean;
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        HrisDocumentsUploadRequestDtoSourceValue
-    > = z.union([
-        z.lazy(() => HrisDocumentsUploadRequestDto4$.outboundSchema),
-        z.string(),
-        z.number(),
-        z.boolean(),
-    ]);
+    /** @deprecated use `HrisDocumentsUploadRequestDtoSourceValue$inboundSchema` instead. */
+    export const inboundSchema = HrisDocumentsUploadRequestDtoSourceValue$inboundSchema;
+    /** @deprecated use `HrisDocumentsUploadRequestDtoSourceValue$outboundSchema` instead. */
+    export const outboundSchema = HrisDocumentsUploadRequestDtoSourceValue$outboundSchema;
+    /** @deprecated use `HrisDocumentsUploadRequestDtoSourceValue$Outbound` instead. */
+    export type Outbound = HrisDocumentsUploadRequestDtoSourceValue$Outbound;
 }
 
 /** @internal */
+export const HrisDocumentsUploadRequestDtoSchemasValue$inboundSchema: z.ZodType<
+    HrisDocumentsUploadRequestDtoSchemasValueOpen,
+    z.ZodTypeDef,
+    unknown
+> = z.union([
+    z.nativeEnum(HrisDocumentsUploadRequestDtoSchemasValue),
+    z.string().transform(catchUnrecognizedEnum),
+]);
+
+/** @internal */
+export const HrisDocumentsUploadRequestDtoSchemasValue$outboundSchema: z.ZodType<
+    HrisDocumentsUploadRequestDtoSchemasValueOpen,
+    z.ZodTypeDef,
+    HrisDocumentsUploadRequestDtoSchemasValueOpen
+> = z.union([
+    z.nativeEnum(HrisDocumentsUploadRequestDtoSchemasValue),
+    z.string().and(z.custom<Unrecognized<string>>()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace HrisDocumentsUploadRequestDtoSchemasValue$ {
-    export const inboundSchema: z.ZodType<
-        HrisDocumentsUploadRequestDtoSchemasValueOpen,
-        z.ZodTypeDef,
-        unknown
-    > = z.union([
-        z.nativeEnum(HrisDocumentsUploadRequestDtoSchemasValue),
-        z.string().transform(catchUnrecognizedEnum),
-    ]);
-
-    export const outboundSchema: z.ZodType<
-        HrisDocumentsUploadRequestDtoSchemasValueOpen,
-        z.ZodTypeDef,
-        HrisDocumentsUploadRequestDtoSchemasValueOpen
-    > = z.union([
-        z.nativeEnum(HrisDocumentsUploadRequestDtoSchemasValue),
-        z.string().and(z.custom<Unrecognized<string>>()),
-    ]);
+    /** @deprecated use `HrisDocumentsUploadRequestDtoSchemasValue$inboundSchema` instead. */
+    export const inboundSchema = HrisDocumentsUploadRequestDtoSchemasValue$inboundSchema;
+    /** @deprecated use `HrisDocumentsUploadRequestDtoSchemasValue$outboundSchema` instead. */
+    export const outboundSchema = HrisDocumentsUploadRequestDtoSchemasValue$outboundSchema;
 }
 
 /** @internal */
-export namespace Confidential$ {
-    export const inboundSchema: z.ZodType<Confidential, z.ZodTypeDef, unknown> = z
-        .object({
-            source_value: z
-                .nullable(
-                    z.union([
-                        z.lazy(() => HrisDocumentsUploadRequestDto4$.inboundSchema),
-                        z.string(),
-                        z.number(),
-                        z.boolean(),
-                    ])
-                )
-                .optional(),
-            value: z.nullable(HrisDocumentsUploadRequestDtoSchemasValue$.inboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                source_value: "sourceValue",
-            });
+export const Confidential$inboundSchema: z.ZodType<Confidential, z.ZodTypeDef, unknown> = z
+    .object({
+        source_value: z
+            .nullable(
+                z.union([
+                    z.lazy(() => HrisDocumentsUploadRequestDto4$inboundSchema),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                ])
+            )
+            .optional(),
+        value: z.nullable(HrisDocumentsUploadRequestDtoSchemasValue$inboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            source_value: "sourceValue",
         });
-
-    export type Outbound = {
-        source_value?:
-            | HrisDocumentsUploadRequestDto4$.Outbound
-            | string
-            | number
-            | boolean
-            | null
-            | undefined;
-        value?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Confidential> = z
-        .object({
-            sourceValue: z
-                .nullable(
-                    z.union([
-                        z.lazy(() => HrisDocumentsUploadRequestDto4$.outboundSchema),
-                        z.string(),
-                        z.number(),
-                        z.boolean(),
-                    ])
-                )
-                .optional(),
-            value: z.nullable(HrisDocumentsUploadRequestDtoSchemasValue$.outboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                sourceValue: "source_value",
-            });
-        });
-}
+    });
 
 /** @internal */
-export namespace HrisDocumentsUploadRequestDtoSchemas4$ {
-    export const inboundSchema: z.ZodType<
-        HrisDocumentsUploadRequestDtoSchemas4,
-        z.ZodTypeDef,
-        unknown
-    > = z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        HrisDocumentsUploadRequestDtoSchemas4
-    > = z.object({});
-}
-
-/** @internal */
-export namespace HrisDocumentsUploadRequestDtoSchemasSourceValue$ {
-    export const inboundSchema: z.ZodType<
-        HrisDocumentsUploadRequestDtoSchemasSourceValue,
-        z.ZodTypeDef,
-        unknown
-    > = z.union([
-        z.lazy(() => HrisDocumentsUploadRequestDtoSchemas4$.inboundSchema),
-        z.string(),
-        z.number(),
-        z.boolean(),
-    ]);
-
-    export type Outbound =
-        | HrisDocumentsUploadRequestDtoSchemas4$.Outbound
+export type Confidential$Outbound = {
+    source_value?:
+        | HrisDocumentsUploadRequestDto4$Outbound
         | string
         | number
-        | boolean;
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        HrisDocumentsUploadRequestDtoSchemasSourceValue
-    > = z.union([
-        z.lazy(() => HrisDocumentsUploadRequestDtoSchemas4$.outboundSchema),
-        z.string(),
-        z.number(),
-        z.boolean(),
-    ]);
+        | boolean
+        | null
+        | undefined;
+    value?: string | null | undefined;
+};
+
+/** @internal */
+export const Confidential$outboundSchema: z.ZodType<
+    Confidential$Outbound,
+    z.ZodTypeDef,
+    Confidential
+> = z
+    .object({
+        sourceValue: z
+            .nullable(
+                z.union([
+                    z.lazy(() => HrisDocumentsUploadRequestDto4$outboundSchema),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                ])
+            )
+            .optional(),
+        value: z.nullable(HrisDocumentsUploadRequestDtoSchemasValue$outboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            sourceValue: "source_value",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace Confidential$ {
+    /** @deprecated use `Confidential$inboundSchema` instead. */
+    export const inboundSchema = Confidential$inboundSchema;
+    /** @deprecated use `Confidential$outboundSchema` instead. */
+    export const outboundSchema = Confidential$outboundSchema;
+    /** @deprecated use `Confidential$Outbound` instead. */
+    export type Outbound = Confidential$Outbound;
 }
 
 /** @internal */
+export const HrisDocumentsUploadRequestDtoSchemas4$inboundSchema: z.ZodType<
+    HrisDocumentsUploadRequestDtoSchemas4,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type HrisDocumentsUploadRequestDtoSchemas4$Outbound = {};
+
+/** @internal */
+export const HrisDocumentsUploadRequestDtoSchemas4$outboundSchema: z.ZodType<
+    HrisDocumentsUploadRequestDtoSchemas4$Outbound,
+    z.ZodTypeDef,
+    HrisDocumentsUploadRequestDtoSchemas4
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace HrisDocumentsUploadRequestDtoSchemas4$ {
+    /** @deprecated use `HrisDocumentsUploadRequestDtoSchemas4$inboundSchema` instead. */
+    export const inboundSchema = HrisDocumentsUploadRequestDtoSchemas4$inboundSchema;
+    /** @deprecated use `HrisDocumentsUploadRequestDtoSchemas4$outboundSchema` instead. */
+    export const outboundSchema = HrisDocumentsUploadRequestDtoSchemas4$outboundSchema;
+    /** @deprecated use `HrisDocumentsUploadRequestDtoSchemas4$Outbound` instead. */
+    export type Outbound = HrisDocumentsUploadRequestDtoSchemas4$Outbound;
+}
+
+/** @internal */
+export const HrisDocumentsUploadRequestDtoSchemasSourceValue$inboundSchema: z.ZodType<
+    HrisDocumentsUploadRequestDtoSchemasSourceValue,
+    z.ZodTypeDef,
+    unknown
+> = z.union([
+    z.lazy(() => HrisDocumentsUploadRequestDtoSchemas4$inboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+]);
+
+/** @internal */
+export type HrisDocumentsUploadRequestDtoSchemasSourceValue$Outbound =
+    | HrisDocumentsUploadRequestDtoSchemas4$Outbound
+    | string
+    | number
+    | boolean;
+
+/** @internal */
+export const HrisDocumentsUploadRequestDtoSchemasSourceValue$outboundSchema: z.ZodType<
+    HrisDocumentsUploadRequestDtoSchemasSourceValue$Outbound,
+    z.ZodTypeDef,
+    HrisDocumentsUploadRequestDtoSchemasSourceValue
+> = z.union([
+    z.lazy(() => HrisDocumentsUploadRequestDtoSchemas4$outboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace HrisDocumentsUploadRequestDtoSchemasSourceValue$ {
+    /** @deprecated use `HrisDocumentsUploadRequestDtoSchemasSourceValue$inboundSchema` instead. */
+    export const inboundSchema = HrisDocumentsUploadRequestDtoSchemasSourceValue$inboundSchema;
+    /** @deprecated use `HrisDocumentsUploadRequestDtoSchemasSourceValue$outboundSchema` instead. */
+    export const outboundSchema = HrisDocumentsUploadRequestDtoSchemasSourceValue$outboundSchema;
+    /** @deprecated use `HrisDocumentsUploadRequestDtoSchemasSourceValue$Outbound` instead. */
+    export type Outbound = HrisDocumentsUploadRequestDtoSchemasSourceValue$Outbound;
+}
+
+/** @internal */
+export const HrisDocumentsUploadRequestDtoSchemasFileFormatValue$inboundSchema: z.ZodType<
+    HrisDocumentsUploadRequestDtoSchemasFileFormatValueOpen,
+    z.ZodTypeDef,
+    unknown
+> = z.union([
+    z.nativeEnum(HrisDocumentsUploadRequestDtoSchemasFileFormatValue),
+    z.string().transform(catchUnrecognizedEnum),
+]);
+
+/** @internal */
+export const HrisDocumentsUploadRequestDtoSchemasFileFormatValue$outboundSchema: z.ZodType<
+    HrisDocumentsUploadRequestDtoSchemasFileFormatValueOpen,
+    z.ZodTypeDef,
+    HrisDocumentsUploadRequestDtoSchemasFileFormatValueOpen
+> = z.union([
+    z.nativeEnum(HrisDocumentsUploadRequestDtoSchemasFileFormatValue),
+    z.string().and(z.custom<Unrecognized<string>>()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace HrisDocumentsUploadRequestDtoSchemasFileFormatValue$ {
-    export const inboundSchema: z.ZodType<
-        HrisDocumentsUploadRequestDtoSchemasFileFormatValueOpen,
-        z.ZodTypeDef,
-        unknown
-    > = z.union([
-        z.nativeEnum(HrisDocumentsUploadRequestDtoSchemasFileFormatValue),
-        z.string().transform(catchUnrecognizedEnum),
-    ]);
-
-    export const outboundSchema: z.ZodType<
-        HrisDocumentsUploadRequestDtoSchemasFileFormatValueOpen,
-        z.ZodTypeDef,
-        HrisDocumentsUploadRequestDtoSchemasFileFormatValueOpen
-    > = z.union([
-        z.nativeEnum(HrisDocumentsUploadRequestDtoSchemasFileFormatValue),
-        z.string().and(z.custom<Unrecognized<string>>()),
-    ]);
+    /** @deprecated use `HrisDocumentsUploadRequestDtoSchemasFileFormatValue$inboundSchema` instead. */
+    export const inboundSchema = HrisDocumentsUploadRequestDtoSchemasFileFormatValue$inboundSchema;
+    /** @deprecated use `HrisDocumentsUploadRequestDtoSchemasFileFormatValue$outboundSchema` instead. */
+    export const outboundSchema =
+        HrisDocumentsUploadRequestDtoSchemasFileFormatValue$outboundSchema;
 }
 
 /** @internal */
+export const HrisDocumentsUploadRequestDtoFileFormat$inboundSchema: z.ZodType<
+    HrisDocumentsUploadRequestDtoFileFormat,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        source_value: z
+            .nullable(
+                z.union([
+                    z.lazy(() => HrisDocumentsUploadRequestDtoSchemas4$inboundSchema),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                ])
+            )
+            .optional(),
+        value: z
+            .nullable(HrisDocumentsUploadRequestDtoSchemasFileFormatValue$inboundSchema)
+            .optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            source_value: "sourceValue",
+        });
+    });
+
+/** @internal */
+export type HrisDocumentsUploadRequestDtoFileFormat$Outbound = {
+    source_value?:
+        | HrisDocumentsUploadRequestDtoSchemas4$Outbound
+        | string
+        | number
+        | boolean
+        | null
+        | undefined;
+    value?: string | null | undefined;
+};
+
+/** @internal */
+export const HrisDocumentsUploadRequestDtoFileFormat$outboundSchema: z.ZodType<
+    HrisDocumentsUploadRequestDtoFileFormat$Outbound,
+    z.ZodTypeDef,
+    HrisDocumentsUploadRequestDtoFileFormat
+> = z
+    .object({
+        sourceValue: z
+            .nullable(
+                z.union([
+                    z.lazy(() => HrisDocumentsUploadRequestDtoSchemas4$outboundSchema),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                ])
+            )
+            .optional(),
+        value: z
+            .nullable(HrisDocumentsUploadRequestDtoSchemasFileFormatValue$outboundSchema)
+            .optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            sourceValue: "source_value",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace HrisDocumentsUploadRequestDtoFileFormat$ {
-    export const inboundSchema: z.ZodType<
-        HrisDocumentsUploadRequestDtoFileFormat,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            source_value: z
-                .nullable(
-                    z.union([
-                        z.lazy(() => HrisDocumentsUploadRequestDtoSchemas4$.inboundSchema),
-                        z.string(),
-                        z.number(),
-                        z.boolean(),
-                    ])
-                )
-                .optional(),
-            value: z
-                .nullable(HrisDocumentsUploadRequestDtoSchemasFileFormatValue$.inboundSchema)
-                .optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                source_value: "sourceValue",
-            });
-        });
-
-    export type Outbound = {
-        source_value?:
-            | HrisDocumentsUploadRequestDtoSchemas4$.Outbound
-            | string
-            | number
-            | boolean
-            | null
-            | undefined;
-        value?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        HrisDocumentsUploadRequestDtoFileFormat
-    > = z
-        .object({
-            sourceValue: z
-                .nullable(
-                    z.union([
-                        z.lazy(() => HrisDocumentsUploadRequestDtoSchemas4$.outboundSchema),
-                        z.string(),
-                        z.number(),
-                        z.boolean(),
-                    ])
-                )
-                .optional(),
-            value: z
-                .nullable(HrisDocumentsUploadRequestDtoSchemasFileFormatValue$.outboundSchema)
-                .optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                sourceValue: "source_value",
-            });
-        });
+    /** @deprecated use `HrisDocumentsUploadRequestDtoFileFormat$inboundSchema` instead. */
+    export const inboundSchema = HrisDocumentsUploadRequestDtoFileFormat$inboundSchema;
+    /** @deprecated use `HrisDocumentsUploadRequestDtoFileFormat$outboundSchema` instead. */
+    export const outboundSchema = HrisDocumentsUploadRequestDtoFileFormat$outboundSchema;
+    /** @deprecated use `HrisDocumentsUploadRequestDtoFileFormat$Outbound` instead. */
+    export type Outbound = HrisDocumentsUploadRequestDtoFileFormat$Outbound;
 }
 
 /** @internal */
-export namespace HrisDocumentsUploadRequestDto$ {
-    export const inboundSchema: z.ZodType<HrisDocumentsUploadRequestDto, z.ZodTypeDef, unknown> = z
-        .object({
-            category: z
-                .nullable(z.lazy(() => HrisDocumentsUploadRequestDtoCategory$.inboundSchema))
-                .optional(),
-            confidential: z.nullable(z.lazy(() => Confidential$.inboundSchema)).optional(),
-            content: z.nullable(z.string()).optional(),
-            file_format: z
-                .nullable(z.lazy(() => HrisDocumentsUploadRequestDtoFileFormat$.inboundSchema))
-                .optional(),
-            name: z.nullable(z.string()).optional(),
-            path: z.nullable(z.string()).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                file_format: "fileFormat",
-            });
+export const HrisDocumentsUploadRequestDto$inboundSchema: z.ZodType<
+    HrisDocumentsUploadRequestDto,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        category: z
+            .nullable(z.lazy(() => HrisDocumentsUploadRequestDtoCategory$inboundSchema))
+            .optional(),
+        confidential: z.nullable(z.lazy(() => Confidential$inboundSchema)).optional(),
+        content: z.nullable(z.string()).optional(),
+        file_format: z
+            .nullable(z.lazy(() => HrisDocumentsUploadRequestDtoFileFormat$inboundSchema))
+            .optional(),
+        name: z.nullable(z.string()).optional(),
+        path: z.nullable(z.string()).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            file_format: "fileFormat",
         });
+    });
 
-    export type Outbound = {
-        category?: HrisDocumentsUploadRequestDtoCategory$.Outbound | null | undefined;
-        confidential?: Confidential$.Outbound | null | undefined;
-        content?: string | null | undefined;
-        file_format?: HrisDocumentsUploadRequestDtoFileFormat$.Outbound | null | undefined;
-        name?: string | null | undefined;
-        path?: string | null | undefined;
-    };
+/** @internal */
+export type HrisDocumentsUploadRequestDto$Outbound = {
+    category?: HrisDocumentsUploadRequestDtoCategory$Outbound | null | undefined;
+    confidential?: Confidential$Outbound | null | undefined;
+    content?: string | null | undefined;
+    file_format?: HrisDocumentsUploadRequestDtoFileFormat$Outbound | null | undefined;
+    name?: string | null | undefined;
+    path?: string | null | undefined;
+};
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, HrisDocumentsUploadRequestDto> =
-        z
-            .object({
-                category: z
-                    .nullable(z.lazy(() => HrisDocumentsUploadRequestDtoCategory$.outboundSchema))
-                    .optional(),
-                confidential: z.nullable(z.lazy(() => Confidential$.outboundSchema)).optional(),
-                content: z.nullable(z.string()).optional(),
-                fileFormat: z
-                    .nullable(z.lazy(() => HrisDocumentsUploadRequestDtoFileFormat$.outboundSchema))
-                    .optional(),
-                name: z.nullable(z.string()).optional(),
-                path: z.nullable(z.string()).optional(),
-            })
-            .transform((v) => {
-                return remap$(v, {
-                    fileFormat: "file_format",
-                });
-            });
+/** @internal */
+export const HrisDocumentsUploadRequestDto$outboundSchema: z.ZodType<
+    HrisDocumentsUploadRequestDto$Outbound,
+    z.ZodTypeDef,
+    HrisDocumentsUploadRequestDto
+> = z
+    .object({
+        category: z
+            .nullable(z.lazy(() => HrisDocumentsUploadRequestDtoCategory$outboundSchema))
+            .optional(),
+        confidential: z.nullable(z.lazy(() => Confidential$outboundSchema)).optional(),
+        content: z.nullable(z.string()).optional(),
+        fileFormat: z
+            .nullable(z.lazy(() => HrisDocumentsUploadRequestDtoFileFormat$outboundSchema))
+            .optional(),
+        name: z.nullable(z.string()).optional(),
+        path: z.nullable(z.string()).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            fileFormat: "file_format",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace HrisDocumentsUploadRequestDto$ {
+    /** @deprecated use `HrisDocumentsUploadRequestDto$inboundSchema` instead. */
+    export const inboundSchema = HrisDocumentsUploadRequestDto$inboundSchema;
+    /** @deprecated use `HrisDocumentsUploadRequestDto$outboundSchema` instead. */
+    export const outboundSchema = HrisDocumentsUploadRequestDto$outboundSchema;
+    /** @deprecated use `HrisDocumentsUploadRequestDto$Outbound` instead. */
+    export type Outbound = HrisDocumentsUploadRequestDto$Outbound;
 }

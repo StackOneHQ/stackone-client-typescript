@@ -4,7 +4,12 @@
 
 import { remap as remap$ } from "../../../lib/primitives.js";
 import { catchUnrecognizedEnum, OpenEnum, Unrecognized } from "../../types/enums.js";
-import { Content, Content$ } from "./content.js";
+import {
+    Content,
+    Content$inboundSchema,
+    Content$Outbound,
+    Content$outboundSchema,
+} from "./content.js";
 import * as z from "zod";
 
 export type AtsDocumentApiModel4 = {};
@@ -1359,395 +1364,593 @@ export type AtsDocumentApiModel = {
 };
 
 /** @internal */
+export const AtsDocumentApiModel4$inboundSchema: z.ZodType<
+    AtsDocumentApiModel4,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type AtsDocumentApiModel4$Outbound = {};
+
+/** @internal */
+export const AtsDocumentApiModel4$outboundSchema: z.ZodType<
+    AtsDocumentApiModel4$Outbound,
+    z.ZodTypeDef,
+    AtsDocumentApiModel4
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace AtsDocumentApiModel4$ {
-    export const inboundSchema: z.ZodType<AtsDocumentApiModel4, z.ZodTypeDef, unknown> = z.object(
-        {}
-    );
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, AtsDocumentApiModel4> = z.object(
-        {}
-    );
+    /** @deprecated use `AtsDocumentApiModel4$inboundSchema` instead. */
+    export const inboundSchema = AtsDocumentApiModel4$inboundSchema;
+    /** @deprecated use `AtsDocumentApiModel4$outboundSchema` instead. */
+    export const outboundSchema = AtsDocumentApiModel4$outboundSchema;
+    /** @deprecated use `AtsDocumentApiModel4$Outbound` instead. */
+    export type Outbound = AtsDocumentApiModel4$Outbound;
 }
 
 /** @internal */
+export const AtsDocumentApiModelSourceValue$inboundSchema: z.ZodType<
+    AtsDocumentApiModelSourceValue,
+    z.ZodTypeDef,
+    unknown
+> = z.union([
+    z.lazy(() => AtsDocumentApiModel4$inboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+]);
+
+/** @internal */
+export type AtsDocumentApiModelSourceValue$Outbound =
+    | AtsDocumentApiModel4$Outbound
+    | string
+    | number
+    | boolean;
+
+/** @internal */
+export const AtsDocumentApiModelSourceValue$outboundSchema: z.ZodType<
+    AtsDocumentApiModelSourceValue$Outbound,
+    z.ZodTypeDef,
+    AtsDocumentApiModelSourceValue
+> = z.union([
+    z.lazy(() => AtsDocumentApiModel4$outboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace AtsDocumentApiModelSourceValue$ {
-    export const inboundSchema: z.ZodType<AtsDocumentApiModelSourceValue, z.ZodTypeDef, unknown> =
-        z.union([
-            z.lazy(() => AtsDocumentApiModel4$.inboundSchema),
-            z.string(),
-            z.number(),
-            z.boolean(),
-        ]);
-
-    export type Outbound = AtsDocumentApiModel4$.Outbound | string | number | boolean;
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, AtsDocumentApiModelSourceValue> =
-        z.union([
-            z.lazy(() => AtsDocumentApiModel4$.outboundSchema),
-            z.string(),
-            z.number(),
-            z.boolean(),
-        ]);
+    /** @deprecated use `AtsDocumentApiModelSourceValue$inboundSchema` instead. */
+    export const inboundSchema = AtsDocumentApiModelSourceValue$inboundSchema;
+    /** @deprecated use `AtsDocumentApiModelSourceValue$outboundSchema` instead. */
+    export const outboundSchema = AtsDocumentApiModelSourceValue$outboundSchema;
+    /** @deprecated use `AtsDocumentApiModelSourceValue$Outbound` instead. */
+    export type Outbound = AtsDocumentApiModelSourceValue$Outbound;
 }
 
 /** @internal */
+export const AtsDocumentApiModelCategory$inboundSchema: z.ZodType<
+    AtsDocumentApiModelCategory,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        source_value: z
+            .nullable(
+                z.union([
+                    z.lazy(() => AtsDocumentApiModel4$inboundSchema),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                ])
+            )
+            .optional(),
+        value: z.nullable(z.string()).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            source_value: "sourceValue",
+        });
+    });
+
+/** @internal */
+export type AtsDocumentApiModelCategory$Outbound = {
+    source_value?: AtsDocumentApiModel4$Outbound | string | number | boolean | null | undefined;
+    value?: string | null | undefined;
+};
+
+/** @internal */
+export const AtsDocumentApiModelCategory$outboundSchema: z.ZodType<
+    AtsDocumentApiModelCategory$Outbound,
+    z.ZodTypeDef,
+    AtsDocumentApiModelCategory
+> = z
+    .object({
+        sourceValue: z
+            .nullable(
+                z.union([
+                    z.lazy(() => AtsDocumentApiModel4$outboundSchema),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                ])
+            )
+            .optional(),
+        value: z.nullable(z.string()).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            sourceValue: "source_value",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace AtsDocumentApiModelCategory$ {
-    export const inboundSchema: z.ZodType<AtsDocumentApiModelCategory, z.ZodTypeDef, unknown> = z
-        .object({
-            source_value: z
-                .nullable(
-                    z.union([
-                        z.lazy(() => AtsDocumentApiModel4$.inboundSchema),
-                        z.string(),
-                        z.number(),
-                        z.boolean(),
-                    ])
-                )
-                .optional(),
-            value: z.nullable(z.string()).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                source_value: "sourceValue",
-            });
-        });
-
-    export type Outbound = {
-        source_value?:
-            | AtsDocumentApiModel4$.Outbound
-            | string
-            | number
-            | boolean
-            | null
-            | undefined;
-        value?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, AtsDocumentApiModelCategory> = z
-        .object({
-            sourceValue: z
-                .nullable(
-                    z.union([
-                        z.lazy(() => AtsDocumentApiModel4$.outboundSchema),
-                        z.string(),
-                        z.number(),
-                        z.boolean(),
-                    ])
-                )
-                .optional(),
-            value: z.nullable(z.string()).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                sourceValue: "source_value",
-            });
-        });
+    /** @deprecated use `AtsDocumentApiModelCategory$inboundSchema` instead. */
+    export const inboundSchema = AtsDocumentApiModelCategory$inboundSchema;
+    /** @deprecated use `AtsDocumentApiModelCategory$outboundSchema` instead. */
+    export const outboundSchema = AtsDocumentApiModelCategory$outboundSchema;
+    /** @deprecated use `AtsDocumentApiModelCategory$Outbound` instead. */
+    export type Outbound = AtsDocumentApiModelCategory$Outbound;
 }
 
 /** @internal */
+export const AtsDocumentApiModelSchemas4$inboundSchema: z.ZodType<
+    AtsDocumentApiModelSchemas4,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type AtsDocumentApiModelSchemas4$Outbound = {};
+
+/** @internal */
+export const AtsDocumentApiModelSchemas4$outboundSchema: z.ZodType<
+    AtsDocumentApiModelSchemas4$Outbound,
+    z.ZodTypeDef,
+    AtsDocumentApiModelSchemas4
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace AtsDocumentApiModelSchemas4$ {
-    export const inboundSchema: z.ZodType<AtsDocumentApiModelSchemas4, z.ZodTypeDef, unknown> =
-        z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, AtsDocumentApiModelSchemas4> =
-        z.object({});
+    /** @deprecated use `AtsDocumentApiModelSchemas4$inboundSchema` instead. */
+    export const inboundSchema = AtsDocumentApiModelSchemas4$inboundSchema;
+    /** @deprecated use `AtsDocumentApiModelSchemas4$outboundSchema` instead. */
+    export const outboundSchema = AtsDocumentApiModelSchemas4$outboundSchema;
+    /** @deprecated use `AtsDocumentApiModelSchemas4$Outbound` instead. */
+    export type Outbound = AtsDocumentApiModelSchemas4$Outbound;
 }
 
 /** @internal */
+export const AtsDocumentApiModelSchemasSourceValue$inboundSchema: z.ZodType<
+    AtsDocumentApiModelSchemasSourceValue,
+    z.ZodTypeDef,
+    unknown
+> = z.union([
+    z.lazy(() => AtsDocumentApiModelSchemas4$inboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+]);
+
+/** @internal */
+export type AtsDocumentApiModelSchemasSourceValue$Outbound =
+    | AtsDocumentApiModelSchemas4$Outbound
+    | string
+    | number
+    | boolean;
+
+/** @internal */
+export const AtsDocumentApiModelSchemasSourceValue$outboundSchema: z.ZodType<
+    AtsDocumentApiModelSchemasSourceValue$Outbound,
+    z.ZodTypeDef,
+    AtsDocumentApiModelSchemasSourceValue
+> = z.union([
+    z.lazy(() => AtsDocumentApiModelSchemas4$outboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace AtsDocumentApiModelSchemasSourceValue$ {
-    export const inboundSchema: z.ZodType<
-        AtsDocumentApiModelSchemasSourceValue,
-        z.ZodTypeDef,
-        unknown
-    > = z.union([
-        z.lazy(() => AtsDocumentApiModelSchemas4$.inboundSchema),
-        z.string(),
-        z.number(),
-        z.boolean(),
-    ]);
-
-    export type Outbound = AtsDocumentApiModelSchemas4$.Outbound | string | number | boolean;
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        AtsDocumentApiModelSchemasSourceValue
-    > = z.union([
-        z.lazy(() => AtsDocumentApiModelSchemas4$.outboundSchema),
-        z.string(),
-        z.number(),
-        z.boolean(),
-    ]);
+    /** @deprecated use `AtsDocumentApiModelSchemasSourceValue$inboundSchema` instead. */
+    export const inboundSchema = AtsDocumentApiModelSchemasSourceValue$inboundSchema;
+    /** @deprecated use `AtsDocumentApiModelSchemasSourceValue$outboundSchema` instead. */
+    export const outboundSchema = AtsDocumentApiModelSchemasSourceValue$outboundSchema;
+    /** @deprecated use `AtsDocumentApiModelSchemasSourceValue$Outbound` instead. */
+    export type Outbound = AtsDocumentApiModelSchemasSourceValue$Outbound;
 }
 
 /** @internal */
+export const AtsDocumentApiModelValue$inboundSchema: z.ZodType<
+    AtsDocumentApiModelValueOpen,
+    z.ZodTypeDef,
+    unknown
+> = z.union([z.nativeEnum(AtsDocumentApiModelValue), z.string().transform(catchUnrecognizedEnum)]);
+
+/** @internal */
+export const AtsDocumentApiModelValue$outboundSchema: z.ZodType<
+    AtsDocumentApiModelValueOpen,
+    z.ZodTypeDef,
+    AtsDocumentApiModelValueOpen
+> = z.union([
+    z.nativeEnum(AtsDocumentApiModelValue),
+    z.string().and(z.custom<Unrecognized<string>>()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace AtsDocumentApiModelValue$ {
-    export const inboundSchema: z.ZodType<AtsDocumentApiModelValueOpen, z.ZodTypeDef, unknown> =
-        z.union([
-            z.nativeEnum(AtsDocumentApiModelValue),
-            z.string().transform(catchUnrecognizedEnum),
-        ]);
-
-    export const outboundSchema: z.ZodType<
-        AtsDocumentApiModelValueOpen,
-        z.ZodTypeDef,
-        AtsDocumentApiModelValueOpen
-    > = z.union([
-        z.nativeEnum(AtsDocumentApiModelValue),
-        z.string().and(z.custom<Unrecognized<string>>()),
-    ]);
+    /** @deprecated use `AtsDocumentApiModelValue$inboundSchema` instead. */
+    export const inboundSchema = AtsDocumentApiModelValue$inboundSchema;
+    /** @deprecated use `AtsDocumentApiModelValue$outboundSchema` instead. */
+    export const outboundSchema = AtsDocumentApiModelValue$outboundSchema;
 }
 
 /** @internal */
+export const FileFormat$inboundSchema: z.ZodType<FileFormat, z.ZodTypeDef, unknown> = z
+    .object({
+        source_value: z
+            .nullable(
+                z.union([
+                    z.lazy(() => AtsDocumentApiModelSchemas4$inboundSchema),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                ])
+            )
+            .optional(),
+        value: z.nullable(AtsDocumentApiModelValue$inboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            source_value: "sourceValue",
+        });
+    });
+
+/** @internal */
+export type FileFormat$Outbound = {
+    source_value?:
+        | AtsDocumentApiModelSchemas4$Outbound
+        | string
+        | number
+        | boolean
+        | null
+        | undefined;
+    value?: string | null | undefined;
+};
+
+/** @internal */
+export const FileFormat$outboundSchema: z.ZodType<FileFormat$Outbound, z.ZodTypeDef, FileFormat> = z
+    .object({
+        sourceValue: z
+            .nullable(
+                z.union([
+                    z.lazy(() => AtsDocumentApiModelSchemas4$outboundSchema),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                ])
+            )
+            .optional(),
+        value: z.nullable(AtsDocumentApiModelValue$outboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            sourceValue: "source_value",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace FileFormat$ {
-    export const inboundSchema: z.ZodType<FileFormat, z.ZodTypeDef, unknown> = z
-        .object({
-            source_value: z
-                .nullable(
-                    z.union([
-                        z.lazy(() => AtsDocumentApiModelSchemas4$.inboundSchema),
-                        z.string(),
-                        z.number(),
-                        z.boolean(),
-                    ])
-                )
-                .optional(),
-            value: z.nullable(AtsDocumentApiModelValue$.inboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                source_value: "sourceValue",
-            });
-        });
-
-    export type Outbound = {
-        source_value?:
-            | AtsDocumentApiModelSchemas4$.Outbound
-            | string
-            | number
-            | boolean
-            | null
-            | undefined;
-        value?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, FileFormat> = z
-        .object({
-            sourceValue: z
-                .nullable(
-                    z.union([
-                        z.lazy(() => AtsDocumentApiModelSchemas4$.outboundSchema),
-                        z.string(),
-                        z.number(),
-                        z.boolean(),
-                    ])
-                )
-                .optional(),
-            value: z.nullable(AtsDocumentApiModelValue$.outboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                sourceValue: "source_value",
-            });
-        });
+    /** @deprecated use `FileFormat$inboundSchema` instead. */
+    export const inboundSchema = FileFormat$inboundSchema;
+    /** @deprecated use `FileFormat$outboundSchema` instead. */
+    export const outboundSchema = FileFormat$outboundSchema;
+    /** @deprecated use `FileFormat$Outbound` instead. */
+    export type Outbound = FileFormat$Outbound;
 }
 
 /** @internal */
+export const AtsDocumentApiModelSchemasType4$inboundSchema: z.ZodType<
+    AtsDocumentApiModelSchemasType4,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type AtsDocumentApiModelSchemasType4$Outbound = {};
+
+/** @internal */
+export const AtsDocumentApiModelSchemasType4$outboundSchema: z.ZodType<
+    AtsDocumentApiModelSchemasType4$Outbound,
+    z.ZodTypeDef,
+    AtsDocumentApiModelSchemasType4
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace AtsDocumentApiModelSchemasType4$ {
-    export const inboundSchema: z.ZodType<AtsDocumentApiModelSchemasType4, z.ZodTypeDef, unknown> =
-        z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        AtsDocumentApiModelSchemasType4
-    > = z.object({});
+    /** @deprecated use `AtsDocumentApiModelSchemasType4$inboundSchema` instead. */
+    export const inboundSchema = AtsDocumentApiModelSchemasType4$inboundSchema;
+    /** @deprecated use `AtsDocumentApiModelSchemasType4$outboundSchema` instead. */
+    export const outboundSchema = AtsDocumentApiModelSchemasType4$outboundSchema;
+    /** @deprecated use `AtsDocumentApiModelSchemasType4$Outbound` instead. */
+    export type Outbound = AtsDocumentApiModelSchemasType4$Outbound;
 }
 
 /** @internal */
+export const AtsDocumentApiModelSchemasTypeSourceValue$inboundSchema: z.ZodType<
+    AtsDocumentApiModelSchemasTypeSourceValue,
+    z.ZodTypeDef,
+    unknown
+> = z.union([
+    z.lazy(() => AtsDocumentApiModelSchemasType4$inboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+]);
+
+/** @internal */
+export type AtsDocumentApiModelSchemasTypeSourceValue$Outbound =
+    | AtsDocumentApiModelSchemasType4$Outbound
+    | string
+    | number
+    | boolean;
+
+/** @internal */
+export const AtsDocumentApiModelSchemasTypeSourceValue$outboundSchema: z.ZodType<
+    AtsDocumentApiModelSchemasTypeSourceValue$Outbound,
+    z.ZodTypeDef,
+    AtsDocumentApiModelSchemasTypeSourceValue
+> = z.union([
+    z.lazy(() => AtsDocumentApiModelSchemasType4$outboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace AtsDocumentApiModelSchemasTypeSourceValue$ {
-    export const inboundSchema: z.ZodType<
-        AtsDocumentApiModelSchemasTypeSourceValue,
-        z.ZodTypeDef,
-        unknown
-    > = z.union([
-        z.lazy(() => AtsDocumentApiModelSchemasType4$.inboundSchema),
-        z.string(),
-        z.number(),
-        z.boolean(),
-    ]);
-
-    export type Outbound = AtsDocumentApiModelSchemasType4$.Outbound | string | number | boolean;
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        AtsDocumentApiModelSchemasTypeSourceValue
-    > = z.union([
-        z.lazy(() => AtsDocumentApiModelSchemasType4$.outboundSchema),
-        z.string(),
-        z.number(),
-        z.boolean(),
-    ]);
+    /** @deprecated use `AtsDocumentApiModelSchemasTypeSourceValue$inboundSchema` instead. */
+    export const inboundSchema = AtsDocumentApiModelSchemasTypeSourceValue$inboundSchema;
+    /** @deprecated use `AtsDocumentApiModelSchemasTypeSourceValue$outboundSchema` instead. */
+    export const outboundSchema = AtsDocumentApiModelSchemasTypeSourceValue$outboundSchema;
+    /** @deprecated use `AtsDocumentApiModelSchemasTypeSourceValue$Outbound` instead. */
+    export type Outbound = AtsDocumentApiModelSchemasTypeSourceValue$Outbound;
 }
 
 /** @internal */
+export const AtsDocumentApiModelSchemasValue$inboundSchema: z.ZodType<
+    AtsDocumentApiModelSchemasValueOpen,
+    z.ZodTypeDef,
+    unknown
+> = z.union([
+    z.nativeEnum(AtsDocumentApiModelSchemasValue),
+    z.string().transform(catchUnrecognizedEnum),
+]);
+
+/** @internal */
+export const AtsDocumentApiModelSchemasValue$outboundSchema: z.ZodType<
+    AtsDocumentApiModelSchemasValueOpen,
+    z.ZodTypeDef,
+    AtsDocumentApiModelSchemasValueOpen
+> = z.union([
+    z.nativeEnum(AtsDocumentApiModelSchemasValue),
+    z.string().and(z.custom<Unrecognized<string>>()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace AtsDocumentApiModelSchemasValue$ {
-    export const inboundSchema: z.ZodType<
-        AtsDocumentApiModelSchemasValueOpen,
-        z.ZodTypeDef,
-        unknown
-    > = z.union([
-        z.nativeEnum(AtsDocumentApiModelSchemasValue),
-        z.string().transform(catchUnrecognizedEnum),
-    ]);
-
-    export const outboundSchema: z.ZodType<
-        AtsDocumentApiModelSchemasValueOpen,
-        z.ZodTypeDef,
-        AtsDocumentApiModelSchemasValueOpen
-    > = z.union([
-        z.nativeEnum(AtsDocumentApiModelSchemasValue),
-        z.string().and(z.custom<Unrecognized<string>>()),
-    ]);
+    /** @deprecated use `AtsDocumentApiModelSchemasValue$inboundSchema` instead. */
+    export const inboundSchema = AtsDocumentApiModelSchemasValue$inboundSchema;
+    /** @deprecated use `AtsDocumentApiModelSchemasValue$outboundSchema` instead. */
+    export const outboundSchema = AtsDocumentApiModelSchemasValue$outboundSchema;
 }
 
 /** @internal */
+export const AtsDocumentApiModelType$inboundSchema: z.ZodType<
+    AtsDocumentApiModelType,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        source_value: z
+            .nullable(
+                z.union([
+                    z.lazy(() => AtsDocumentApiModelSchemasType4$inboundSchema),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                ])
+            )
+            .optional(),
+        value: z.nullable(AtsDocumentApiModelSchemasValue$inboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            source_value: "sourceValue",
+        });
+    });
+
+/** @internal */
+export type AtsDocumentApiModelType$Outbound = {
+    source_value?:
+        | AtsDocumentApiModelSchemasType4$Outbound
+        | string
+        | number
+        | boolean
+        | null
+        | undefined;
+    value?: string | null | undefined;
+};
+
+/** @internal */
+export const AtsDocumentApiModelType$outboundSchema: z.ZodType<
+    AtsDocumentApiModelType$Outbound,
+    z.ZodTypeDef,
+    AtsDocumentApiModelType
+> = z
+    .object({
+        sourceValue: z
+            .nullable(
+                z.union([
+                    z.lazy(() => AtsDocumentApiModelSchemasType4$outboundSchema),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                ])
+            )
+            .optional(),
+        value: z.nullable(AtsDocumentApiModelSchemasValue$outboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            sourceValue: "source_value",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace AtsDocumentApiModelType$ {
-    export const inboundSchema: z.ZodType<AtsDocumentApiModelType, z.ZodTypeDef, unknown> = z
-        .object({
-            source_value: z
-                .nullable(
-                    z.union([
-                        z.lazy(() => AtsDocumentApiModelSchemasType4$.inboundSchema),
-                        z.string(),
-                        z.number(),
-                        z.boolean(),
-                    ])
-                )
-                .optional(),
-            value: z.nullable(AtsDocumentApiModelSchemasValue$.inboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                source_value: "sourceValue",
-            });
-        });
-
-    export type Outbound = {
-        source_value?:
-            | AtsDocumentApiModelSchemasType4$.Outbound
-            | string
-            | number
-            | boolean
-            | null
-            | undefined;
-        value?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, AtsDocumentApiModelType> = z
-        .object({
-            sourceValue: z
-                .nullable(
-                    z.union([
-                        z.lazy(() => AtsDocumentApiModelSchemasType4$.outboundSchema),
-                        z.string(),
-                        z.number(),
-                        z.boolean(),
-                    ])
-                )
-                .optional(),
-            value: z.nullable(AtsDocumentApiModelSchemasValue$.outboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                sourceValue: "source_value",
-            });
-        });
+    /** @deprecated use `AtsDocumentApiModelType$inboundSchema` instead. */
+    export const inboundSchema = AtsDocumentApiModelType$inboundSchema;
+    /** @deprecated use `AtsDocumentApiModelType$outboundSchema` instead. */
+    export const outboundSchema = AtsDocumentApiModelType$outboundSchema;
+    /** @deprecated use `AtsDocumentApiModelType$Outbound` instead. */
+    export type Outbound = AtsDocumentApiModelType$Outbound;
 }
 
 /** @internal */
+export const AtsDocumentApiModel$inboundSchema: z.ZodType<
+    AtsDocumentApiModel,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        category: z.nullable(z.lazy(() => AtsDocumentApiModelCategory$inboundSchema)).optional(),
+        contents: z.nullable(z.array(Content$inboundSchema)).optional(),
+        created_at: z
+            .nullable(
+                z
+                    .string()
+                    .datetime({ offset: true })
+                    .transform((v) => new Date(v))
+            )
+            .optional(),
+        file_format: z.nullable(z.lazy(() => FileFormat$inboundSchema)).optional(),
+        id: z.nullable(z.string()).optional(),
+        name: z.nullable(z.string()).optional(),
+        path: z.nullable(z.string()).optional(),
+        remote_id: z.nullable(z.string()).optional(),
+        remote_url: z.nullable(z.string()).optional(),
+        type: z.nullable(z.lazy(() => AtsDocumentApiModelType$inboundSchema)).optional(),
+        updated_at: z
+            .nullable(
+                z
+                    .string()
+                    .datetime({ offset: true })
+                    .transform((v) => new Date(v))
+            )
+            .optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            created_at: "createdAt",
+            file_format: "fileFormat",
+            remote_id: "remoteId",
+            remote_url: "remoteUrl",
+            updated_at: "updatedAt",
+        });
+    });
+
+/** @internal */
+export type AtsDocumentApiModel$Outbound = {
+    category?: AtsDocumentApiModelCategory$Outbound | null | undefined;
+    contents?: Array<Content$Outbound> | null | undefined;
+    created_at?: string | null | undefined;
+    file_format?: FileFormat$Outbound | null | undefined;
+    id?: string | null | undefined;
+    name?: string | null | undefined;
+    path?: string | null | undefined;
+    remote_id?: string | null | undefined;
+    remote_url?: string | null | undefined;
+    type?: AtsDocumentApiModelType$Outbound | null | undefined;
+    updated_at?: string | null | undefined;
+};
+
+/** @internal */
+export const AtsDocumentApiModel$outboundSchema: z.ZodType<
+    AtsDocumentApiModel$Outbound,
+    z.ZodTypeDef,
+    AtsDocumentApiModel
+> = z
+    .object({
+        category: z.nullable(z.lazy(() => AtsDocumentApiModelCategory$outboundSchema)).optional(),
+        contents: z.nullable(z.array(Content$outboundSchema)).optional(),
+        createdAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+        fileFormat: z.nullable(z.lazy(() => FileFormat$outboundSchema)).optional(),
+        id: z.nullable(z.string()).optional(),
+        name: z.nullable(z.string()).optional(),
+        path: z.nullable(z.string()).optional(),
+        remoteId: z.nullable(z.string()).optional(),
+        remoteUrl: z.nullable(z.string()).optional(),
+        type: z.nullable(z.lazy(() => AtsDocumentApiModelType$outboundSchema)).optional(),
+        updatedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            createdAt: "created_at",
+            fileFormat: "file_format",
+            remoteId: "remote_id",
+            remoteUrl: "remote_url",
+            updatedAt: "updated_at",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace AtsDocumentApiModel$ {
-    export const inboundSchema: z.ZodType<AtsDocumentApiModel, z.ZodTypeDef, unknown> = z
-        .object({
-            category: z
-                .nullable(z.lazy(() => AtsDocumentApiModelCategory$.inboundSchema))
-                .optional(),
-            contents: z.nullable(z.array(Content$.inboundSchema)).optional(),
-            created_at: z
-                .nullable(
-                    z
-                        .string()
-                        .datetime({ offset: true })
-                        .transform((v) => new Date(v))
-                )
-                .optional(),
-            file_format: z.nullable(z.lazy(() => FileFormat$.inboundSchema)).optional(),
-            id: z.nullable(z.string()).optional(),
-            name: z.nullable(z.string()).optional(),
-            path: z.nullable(z.string()).optional(),
-            remote_id: z.nullable(z.string()).optional(),
-            remote_url: z.nullable(z.string()).optional(),
-            type: z.nullable(z.lazy(() => AtsDocumentApiModelType$.inboundSchema)).optional(),
-            updated_at: z
-                .nullable(
-                    z
-                        .string()
-                        .datetime({ offset: true })
-                        .transform((v) => new Date(v))
-                )
-                .optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                created_at: "createdAt",
-                file_format: "fileFormat",
-                remote_id: "remoteId",
-                remote_url: "remoteUrl",
-                updated_at: "updatedAt",
-            });
-        });
-
-    export type Outbound = {
-        category?: AtsDocumentApiModelCategory$.Outbound | null | undefined;
-        contents?: Array<Content$.Outbound> | null | undefined;
-        created_at?: string | null | undefined;
-        file_format?: FileFormat$.Outbound | null | undefined;
-        id?: string | null | undefined;
-        name?: string | null | undefined;
-        path?: string | null | undefined;
-        remote_id?: string | null | undefined;
-        remote_url?: string | null | undefined;
-        type?: AtsDocumentApiModelType$.Outbound | null | undefined;
-        updated_at?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, AtsDocumentApiModel> = z
-        .object({
-            category: z
-                .nullable(z.lazy(() => AtsDocumentApiModelCategory$.outboundSchema))
-                .optional(),
-            contents: z.nullable(z.array(Content$.outboundSchema)).optional(),
-            createdAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
-            fileFormat: z.nullable(z.lazy(() => FileFormat$.outboundSchema)).optional(),
-            id: z.nullable(z.string()).optional(),
-            name: z.nullable(z.string()).optional(),
-            path: z.nullable(z.string()).optional(),
-            remoteId: z.nullable(z.string()).optional(),
-            remoteUrl: z.nullable(z.string()).optional(),
-            type: z.nullable(z.lazy(() => AtsDocumentApiModelType$.outboundSchema)).optional(),
-            updatedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                createdAt: "created_at",
-                fileFormat: "file_format",
-                remoteId: "remote_id",
-                remoteUrl: "remote_url",
-                updatedAt: "updated_at",
-            });
-        });
+    /** @deprecated use `AtsDocumentApiModel$inboundSchema` instead. */
+    export const inboundSchema = AtsDocumentApiModel$inboundSchema;
+    /** @deprecated use `AtsDocumentApiModel$outboundSchema` instead. */
+    export const outboundSchema = AtsDocumentApiModel$outboundSchema;
+    /** @deprecated use `AtsDocumentApiModel$Outbound` instead. */
+    export type Outbound = AtsDocumentApiModel$Outbound;
 }

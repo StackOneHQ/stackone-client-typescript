@@ -94,61 +94,102 @@ export type InterviewPart = {
 };
 
 /** @internal */
+export const InterviewPart4$inboundSchema: z.ZodType<InterviewPart4, z.ZodTypeDef, unknown> =
+    z.object({});
+
+/** @internal */
+export type InterviewPart4$Outbound = {};
+
+/** @internal */
+export const InterviewPart4$outboundSchema: z.ZodType<
+    InterviewPart4$Outbound,
+    z.ZodTypeDef,
+    InterviewPart4
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace InterviewPart4$ {
-    export const inboundSchema: z.ZodType<InterviewPart4, z.ZodTypeDef, unknown> = z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, InterviewPart4> = z.object({});
+    /** @deprecated use `InterviewPart4$inboundSchema` instead. */
+    export const inboundSchema = InterviewPart4$inboundSchema;
+    /** @deprecated use `InterviewPart4$outboundSchema` instead. */
+    export const outboundSchema = InterviewPart4$outboundSchema;
+    /** @deprecated use `InterviewPart4$Outbound` instead. */
+    export type Outbound = InterviewPart4$Outbound;
 }
 
 /** @internal */
+export const InterviewPartSourceValue$inboundSchema: z.ZodType<
+    InterviewPartSourceValue,
+    z.ZodTypeDef,
+    unknown
+> = z.union([z.lazy(() => InterviewPart4$inboundSchema), z.string(), z.number(), z.boolean()]);
+
+/** @internal */
+export type InterviewPartSourceValue$Outbound = InterviewPart4$Outbound | string | number | boolean;
+
+/** @internal */
+export const InterviewPartSourceValue$outboundSchema: z.ZodType<
+    InterviewPartSourceValue$Outbound,
+    z.ZodTypeDef,
+    InterviewPartSourceValue
+> = z.union([z.lazy(() => InterviewPart4$outboundSchema), z.string(), z.number(), z.boolean()]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace InterviewPartSourceValue$ {
-    export const inboundSchema: z.ZodType<InterviewPartSourceValue, z.ZodTypeDef, unknown> =
-        z.union([z.lazy(() => InterviewPart4$.inboundSchema), z.string(), z.number(), z.boolean()]);
-
-    export type Outbound = InterviewPart4$.Outbound | string | number | boolean;
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, InterviewPartSourceValue> =
-        z.union([
-            z.lazy(() => InterviewPart4$.outboundSchema),
-            z.string(),
-            z.number(),
-            z.boolean(),
-        ]);
+    /** @deprecated use `InterviewPartSourceValue$inboundSchema` instead. */
+    export const inboundSchema = InterviewPartSourceValue$inboundSchema;
+    /** @deprecated use `InterviewPartSourceValue$outboundSchema` instead. */
+    export const outboundSchema = InterviewPartSourceValue$outboundSchema;
+    /** @deprecated use `InterviewPartSourceValue$Outbound` instead. */
+    export type Outbound = InterviewPartSourceValue$Outbound;
 }
 
 /** @internal */
+export const InterviewPartValue$inboundSchema: z.ZodType<
+    InterviewPartValueOpen,
+    z.ZodTypeDef,
+    unknown
+> = z.union([z.nativeEnum(InterviewPartValue), z.string().transform(catchUnrecognizedEnum)]);
+
+/** @internal */
+export const InterviewPartValue$outboundSchema: z.ZodType<
+    InterviewPartValueOpen,
+    z.ZodTypeDef,
+    InterviewPartValueOpen
+> = z.union([z.nativeEnum(InterviewPartValue), z.string().and(z.custom<Unrecognized<string>>())]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace InterviewPartValue$ {
-    export const inboundSchema: z.ZodType<InterviewPartValueOpen, z.ZodTypeDef, unknown> = z.union([
-        z.nativeEnum(InterviewPartValue),
-        z.string().transform(catchUnrecognizedEnum),
-    ]);
-
-    export const outboundSchema: z.ZodType<
-        InterviewPartValueOpen,
-        z.ZodTypeDef,
-        InterviewPartValueOpen
-    > = z.union([
-        z.nativeEnum(InterviewPartValue),
-        z.string().and(z.custom<Unrecognized<string>>()),
-    ]);
+    /** @deprecated use `InterviewPartValue$inboundSchema` instead. */
+    export const inboundSchema = InterviewPartValue$inboundSchema;
+    /** @deprecated use `InterviewPartValue$outboundSchema` instead. */
+    export const outboundSchema = InterviewPartValue$outboundSchema;
 }
 
 /** @internal */
-export namespace InterviewPartType$ {
-    export const inboundSchema: z.ZodType<InterviewPartType, z.ZodTypeDef, unknown> = z
+export const InterviewPartType$inboundSchema: z.ZodType<InterviewPartType, z.ZodTypeDef, unknown> =
+    z
         .object({
             source_value: z
                 .nullable(
                     z.union([
-                        z.lazy(() => InterviewPart4$.inboundSchema),
+                        z.lazy(() => InterviewPart4$inboundSchema),
                         z.string(),
                         z.number(),
                         z.boolean(),
                     ])
                 )
                 .optional(),
-            value: z.nullable(InterviewPartValue$.inboundSchema).optional(),
+            value: z.nullable(InterviewPartValue$inboundSchema).optional(),
         })
         .transform((v) => {
             return remap$(v, {
@@ -156,132 +197,167 @@ export namespace InterviewPartType$ {
             });
         });
 
-    export type Outbound = {
-        source_value?: InterviewPart4$.Outbound | string | number | boolean | null | undefined;
-        value?: string | null | undefined;
-    };
+/** @internal */
+export type InterviewPartType$Outbound = {
+    source_value?: InterviewPart4$Outbound | string | number | boolean | null | undefined;
+    value?: string | null | undefined;
+};
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, InterviewPartType> = z
-        .object({
-            sourceValue: z
-                .nullable(
-                    z.union([
-                        z.lazy(() => InterviewPart4$.outboundSchema),
-                        z.string(),
-                        z.number(),
-                        z.boolean(),
-                    ])
-                )
-                .optional(),
-            value: z.nullable(InterviewPartValue$.outboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                sourceValue: "source_value",
-            });
+/** @internal */
+export const InterviewPartType$outboundSchema: z.ZodType<
+    InterviewPartType$Outbound,
+    z.ZodTypeDef,
+    InterviewPartType
+> = z
+    .object({
+        sourceValue: z
+            .nullable(
+                z.union([
+                    z.lazy(() => InterviewPart4$outboundSchema),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                ])
+            )
+            .optional(),
+        value: z.nullable(InterviewPartValue$outboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            sourceValue: "source_value",
         });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace InterviewPartType$ {
+    /** @deprecated use `InterviewPartType$inboundSchema` instead. */
+    export const inboundSchema = InterviewPartType$inboundSchema;
+    /** @deprecated use `InterviewPartType$outboundSchema` instead. */
+    export const outboundSchema = InterviewPartType$outboundSchema;
+    /** @deprecated use `InterviewPartType$Outbound` instead. */
+    export type Outbound = InterviewPartType$Outbound;
 }
 
 /** @internal */
+export const InterviewPart$inboundSchema: z.ZodType<InterviewPart, z.ZodTypeDef, unknown> = z
+    .object({
+        created_at: z
+            .nullable(
+                z
+                    .string()
+                    .datetime({ offset: true })
+                    .transform((v) => new Date(v))
+            )
+            .optional(),
+        end_at: z
+            .nullable(
+                z
+                    .string()
+                    .datetime({ offset: true })
+                    .transform((v) => new Date(v))
+            )
+            .optional(),
+        id: z.nullable(z.string()).optional(),
+        interviewer_ids: z.nullable(z.array(z.string())).optional(),
+        meeting_provider: z.nullable(z.string()).optional(),
+        meeting_url: z.nullable(z.string()).optional(),
+        remote_id: z.nullable(z.string()).optional(),
+        remote_interviewer_ids: z.nullable(z.array(z.string())).optional(),
+        start_at: z
+            .nullable(
+                z
+                    .string()
+                    .datetime({ offset: true })
+                    .transform((v) => new Date(v))
+            )
+            .optional(),
+        title: z.nullable(z.string()).optional(),
+        type: z.nullable(z.lazy(() => InterviewPartType$inboundSchema)).optional(),
+        updated_at: z
+            .nullable(
+                z
+                    .string()
+                    .datetime({ offset: true })
+                    .transform((v) => new Date(v))
+            )
+            .optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            created_at: "createdAt",
+            end_at: "endAt",
+            interviewer_ids: "interviewerIds",
+            meeting_provider: "meetingProvider",
+            meeting_url: "meetingUrl",
+            remote_id: "remoteId",
+            remote_interviewer_ids: "remoteInterviewerIds",
+            start_at: "startAt",
+            updated_at: "updatedAt",
+        });
+    });
+
+/** @internal */
+export type InterviewPart$Outbound = {
+    created_at?: string | null | undefined;
+    end_at?: string | null | undefined;
+    id?: string | null | undefined;
+    interviewer_ids?: Array<string> | null | undefined;
+    meeting_provider?: string | null | undefined;
+    meeting_url?: string | null | undefined;
+    remote_id?: string | null | undefined;
+    remote_interviewer_ids?: Array<string> | null | undefined;
+    start_at?: string | null | undefined;
+    title?: string | null | undefined;
+    type?: InterviewPartType$Outbound | null | undefined;
+    updated_at?: string | null | undefined;
+};
+
+/** @internal */
+export const InterviewPart$outboundSchema: z.ZodType<
+    InterviewPart$Outbound,
+    z.ZodTypeDef,
+    InterviewPart
+> = z
+    .object({
+        createdAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+        endAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+        id: z.nullable(z.string()).optional(),
+        interviewerIds: z.nullable(z.array(z.string())).optional(),
+        meetingProvider: z.nullable(z.string()).optional(),
+        meetingUrl: z.nullable(z.string()).optional(),
+        remoteId: z.nullable(z.string()).optional(),
+        remoteInterviewerIds: z.nullable(z.array(z.string())).optional(),
+        startAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+        title: z.nullable(z.string()).optional(),
+        type: z.nullable(z.lazy(() => InterviewPartType$outboundSchema)).optional(),
+        updatedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            createdAt: "created_at",
+            endAt: "end_at",
+            interviewerIds: "interviewer_ids",
+            meetingProvider: "meeting_provider",
+            meetingUrl: "meeting_url",
+            remoteId: "remote_id",
+            remoteInterviewerIds: "remote_interviewer_ids",
+            startAt: "start_at",
+            updatedAt: "updated_at",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace InterviewPart$ {
-    export const inboundSchema: z.ZodType<InterviewPart, z.ZodTypeDef, unknown> = z
-        .object({
-            created_at: z
-                .nullable(
-                    z
-                        .string()
-                        .datetime({ offset: true })
-                        .transform((v) => new Date(v))
-                )
-                .optional(),
-            end_at: z
-                .nullable(
-                    z
-                        .string()
-                        .datetime({ offset: true })
-                        .transform((v) => new Date(v))
-                )
-                .optional(),
-            id: z.nullable(z.string()).optional(),
-            interviewer_ids: z.nullable(z.array(z.string())).optional(),
-            meeting_provider: z.nullable(z.string()).optional(),
-            meeting_url: z.nullable(z.string()).optional(),
-            remote_id: z.nullable(z.string()).optional(),
-            remote_interviewer_ids: z.nullable(z.array(z.string())).optional(),
-            start_at: z
-                .nullable(
-                    z
-                        .string()
-                        .datetime({ offset: true })
-                        .transform((v) => new Date(v))
-                )
-                .optional(),
-            title: z.nullable(z.string()).optional(),
-            type: z.nullable(z.lazy(() => InterviewPartType$.inboundSchema)).optional(),
-            updated_at: z
-                .nullable(
-                    z
-                        .string()
-                        .datetime({ offset: true })
-                        .transform((v) => new Date(v))
-                )
-                .optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                created_at: "createdAt",
-                end_at: "endAt",
-                interviewer_ids: "interviewerIds",
-                meeting_provider: "meetingProvider",
-                meeting_url: "meetingUrl",
-                remote_id: "remoteId",
-                remote_interviewer_ids: "remoteInterviewerIds",
-                start_at: "startAt",
-                updated_at: "updatedAt",
-            });
-        });
-
-    export type Outbound = {
-        created_at?: string | null | undefined;
-        end_at?: string | null | undefined;
-        id?: string | null | undefined;
-        interviewer_ids?: Array<string> | null | undefined;
-        meeting_provider?: string | null | undefined;
-        meeting_url?: string | null | undefined;
-        remote_id?: string | null | undefined;
-        remote_interviewer_ids?: Array<string> | null | undefined;
-        start_at?: string | null | undefined;
-        title?: string | null | undefined;
-        type?: InterviewPartType$.Outbound | null | undefined;
-        updated_at?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, InterviewPart> = z
-        .object({
-            createdAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
-            endAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
-            id: z.nullable(z.string()).optional(),
-            interviewerIds: z.nullable(z.array(z.string())).optional(),
-            meetingProvider: z.nullable(z.string()).optional(),
-            meetingUrl: z.nullable(z.string()).optional(),
-            remoteId: z.nullable(z.string()).optional(),
-            remoteInterviewerIds: z.nullable(z.array(z.string())).optional(),
-            startAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
-            title: z.nullable(z.string()).optional(),
-            type: z.nullable(z.lazy(() => InterviewPartType$.outboundSchema)).optional(),
-            updatedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                createdAt: "created_at",
-                endAt: "end_at",
-                interviewerIds: "interviewer_ids",
-                meetingProvider: "meeting_provider",
-                meetingUrl: "meeting_url",
-                remoteId: "remote_id",
-                remoteInterviewerIds: "remote_interviewer_ids",
-                startAt: "start_at",
-                updatedAt: "updated_at",
-            });
-        });
+    /** @deprecated use `InterviewPart$inboundSchema` instead. */
+    export const inboundSchema = InterviewPart$inboundSchema;
+    /** @deprecated use `InterviewPart$outboundSchema` instead. */
+    export const outboundSchema = InterviewPart$outboundSchema;
+    /** @deprecated use `InterviewPart$Outbound` instead. */
+    export type Outbound = InterviewPart$Outbound;
 }

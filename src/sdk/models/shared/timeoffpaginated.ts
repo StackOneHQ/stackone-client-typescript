@@ -3,8 +3,18 @@
  */
 
 import { remap as remap$ } from "../../../lib/primitives.js";
-import { RawResponse, RawResponse$ } from "./rawresponse.js";
-import { TimeOff, TimeOff$ } from "./timeoff.js";
+import {
+    RawResponse,
+    RawResponse$inboundSchema,
+    RawResponse$Outbound,
+    RawResponse$outboundSchema,
+} from "./rawresponse.js";
+import {
+    TimeOff,
+    TimeOff$inboundSchema,
+    TimeOff$Outbound,
+    TimeOff$outboundSchema,
+} from "./timeoff.js";
 import * as z from "zod";
 
 export type TimeOffPaginated = {
@@ -18,37 +28,54 @@ export type TimeOffPaginated = {
 };
 
 /** @internal */
+export const TimeOffPaginated$inboundSchema: z.ZodType<TimeOffPaginated, z.ZodTypeDef, unknown> = z
+    .object({
+        data: z.array(TimeOff$inboundSchema),
+        next: z.nullable(z.string()).optional(),
+        next_page: z.nullable(z.string()).optional(),
+        raw: z.nullable(z.array(RawResponse$inboundSchema)).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            next_page: "nextPage",
+        });
+    });
+
+/** @internal */
+export type TimeOffPaginated$Outbound = {
+    data: Array<TimeOff$Outbound>;
+    next?: string | null | undefined;
+    next_page?: string | null | undefined;
+    raw?: Array<RawResponse$Outbound> | null | undefined;
+};
+
+/** @internal */
+export const TimeOffPaginated$outboundSchema: z.ZodType<
+    TimeOffPaginated$Outbound,
+    z.ZodTypeDef,
+    TimeOffPaginated
+> = z
+    .object({
+        data: z.array(TimeOff$outboundSchema),
+        next: z.nullable(z.string()).optional(),
+        nextPage: z.nullable(z.string()).optional(),
+        raw: z.nullable(z.array(RawResponse$outboundSchema)).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            nextPage: "next_page",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace TimeOffPaginated$ {
-    export const inboundSchema: z.ZodType<TimeOffPaginated, z.ZodTypeDef, unknown> = z
-        .object({
-            data: z.array(TimeOff$.inboundSchema),
-            next: z.nullable(z.string()).optional(),
-            next_page: z.nullable(z.string()).optional(),
-            raw: z.nullable(z.array(RawResponse$.inboundSchema)).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                next_page: "nextPage",
-            });
-        });
-
-    export type Outbound = {
-        data: Array<TimeOff$.Outbound>;
-        next?: string | null | undefined;
-        next_page?: string | null | undefined;
-        raw?: Array<RawResponse$.Outbound> | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, TimeOffPaginated> = z
-        .object({
-            data: z.array(TimeOff$.outboundSchema),
-            next: z.nullable(z.string()).optional(),
-            nextPage: z.nullable(z.string()).optional(),
-            raw: z.nullable(z.array(RawResponse$.outboundSchema)).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                nextPage: "next_page",
-            });
-        });
+    /** @deprecated use `TimeOffPaginated$inboundSchema` instead. */
+    export const inboundSchema = TimeOffPaginated$inboundSchema;
+    /** @deprecated use `TimeOffPaginated$outboundSchema` instead. */
+    export const outboundSchema = TimeOffPaginated$outboundSchema;
+    /** @deprecated use `TimeOffPaginated$Outbound` instead. */
+    export type Outbound = TimeOffPaginated$Outbound;
 }

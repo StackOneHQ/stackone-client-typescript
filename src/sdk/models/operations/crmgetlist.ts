@@ -46,8 +46,8 @@ export type CrmGetListResponse = {
 };
 
 /** @internal */
-export namespace CrmGetListRequest$ {
-    export const inboundSchema: z.ZodType<CrmGetListRequest, z.ZodTypeDef, unknown> = z
+export const CrmGetListRequest$inboundSchema: z.ZodType<CrmGetListRequest, z.ZodTypeDef, unknown> =
+    z
         .object({
             fields: z.nullable(z.string()).optional(),
             id: z.string(),
@@ -61,69 +61,108 @@ export namespace CrmGetListRequest$ {
             });
         });
 
-    export type Outbound = {
-        fields?: string | null | undefined;
-        id: string;
-        proxy?: { [k: string]: any } | null | undefined;
-        raw: boolean | null;
-        "x-account-id": string;
-    };
+/** @internal */
+export type CrmGetListRequest$Outbound = {
+    fields?: string | null | undefined;
+    id: string;
+    proxy?: { [k: string]: any } | null | undefined;
+    raw: boolean | null;
+    "x-account-id": string;
+};
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CrmGetListRequest> = z
-        .object({
-            fields: z.nullable(z.string()).optional(),
-            id: z.string(),
-            proxy: z.nullable(z.record(z.any())).optional(),
-            raw: z.nullable(z.boolean().default(false)),
-            xAccountId: z.string(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                xAccountId: "x-account-id",
-            });
+/** @internal */
+export const CrmGetListRequest$outboundSchema: z.ZodType<
+    CrmGetListRequest$Outbound,
+    z.ZodTypeDef,
+    CrmGetListRequest
+> = z
+    .object({
+        fields: z.nullable(z.string()).optional(),
+        id: z.string(),
+        proxy: z.nullable(z.record(z.any())).optional(),
+        raw: z.nullable(z.boolean().default(false)),
+        xAccountId: z.string(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            xAccountId: "x-account-id",
         });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace CrmGetListRequest$ {
+    /** @deprecated use `CrmGetListRequest$inboundSchema` instead. */
+    export const inboundSchema = CrmGetListRequest$inboundSchema;
+    /** @deprecated use `CrmGetListRequest$outboundSchema` instead. */
+    export const outboundSchema = CrmGetListRequest$outboundSchema;
+    /** @deprecated use `CrmGetListRequest$Outbound` instead. */
+    export type Outbound = CrmGetListRequest$Outbound;
 }
 
 /** @internal */
+export const CrmGetListResponse$inboundSchema: z.ZodType<
+    CrmGetListResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        ContentType: z.string(),
+        ListResult: shared.ListResult$inboundSchema.optional(),
+        StatusCode: z.number().int(),
+        RawResponse: z.instanceof(Response),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            ContentType: "contentType",
+            ListResult: "listResult",
+            StatusCode: "statusCode",
+            RawResponse: "rawResponse",
+        });
+    });
+
+/** @internal */
+export type CrmGetListResponse$Outbound = {
+    ContentType: string;
+    ListResult?: shared.ListResult$Outbound | undefined;
+    StatusCode: number;
+    RawResponse: never;
+};
+
+/** @internal */
+export const CrmGetListResponse$outboundSchema: z.ZodType<
+    CrmGetListResponse$Outbound,
+    z.ZodTypeDef,
+    CrmGetListResponse
+> = z
+    .object({
+        contentType: z.string(),
+        listResult: shared.ListResult$outboundSchema.optional(),
+        statusCode: z.number().int(),
+        rawResponse: z.instanceof(Response).transform(() => {
+            throw new Error("Response cannot be serialized");
+        }),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            contentType: "ContentType",
+            listResult: "ListResult",
+            statusCode: "StatusCode",
+            rawResponse: "RawResponse",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace CrmGetListResponse$ {
-    export const inboundSchema: z.ZodType<CrmGetListResponse, z.ZodTypeDef, unknown> = z
-        .object({
-            ContentType: z.string(),
-            ListResult: shared.ListResult$.inboundSchema.optional(),
-            StatusCode: z.number().int(),
-            RawResponse: z.instanceof(Response),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                ContentType: "contentType",
-                ListResult: "listResult",
-                StatusCode: "statusCode",
-                RawResponse: "rawResponse",
-            });
-        });
-
-    export type Outbound = {
-        ContentType: string;
-        ListResult?: shared.ListResult$.Outbound | undefined;
-        StatusCode: number;
-        RawResponse: never;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CrmGetListResponse> = z
-        .object({
-            contentType: z.string(),
-            listResult: shared.ListResult$.outboundSchema.optional(),
-            statusCode: z.number().int(),
-            rawResponse: z.instanceof(Response).transform(() => {
-                throw new Error("Response cannot be serialized");
-            }),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                contentType: "ContentType",
-                listResult: "ListResult",
-                statusCode: "StatusCode",
-                rawResponse: "RawResponse",
-            });
-        });
+    /** @deprecated use `CrmGetListResponse$inboundSchema` instead. */
+    export const inboundSchema = CrmGetListResponse$inboundSchema;
+    /** @deprecated use `CrmGetListResponse$outboundSchema` instead. */
+    export const outboundSchema = CrmGetListResponse$outboundSchema;
+    /** @deprecated use `CrmGetListResponse$Outbound` instead. */
+    export type Outbound = CrmGetListResponse$Outbound;
 }

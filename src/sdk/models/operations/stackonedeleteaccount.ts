@@ -30,63 +30,102 @@ export type StackoneDeleteAccountResponse = {
 };
 
 /** @internal */
+export const StackoneDeleteAccountRequest$inboundSchema: z.ZodType<
+    StackoneDeleteAccountRequest,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    id: z.string(),
+});
+
+/** @internal */
+export type StackoneDeleteAccountRequest$Outbound = {
+    id: string;
+};
+
+/** @internal */
+export const StackoneDeleteAccountRequest$outboundSchema: z.ZodType<
+    StackoneDeleteAccountRequest$Outbound,
+    z.ZodTypeDef,
+    StackoneDeleteAccountRequest
+> = z.object({
+    id: z.string(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace StackoneDeleteAccountRequest$ {
-    export const inboundSchema: z.ZodType<StackoneDeleteAccountRequest, z.ZodTypeDef, unknown> =
-        z.object({
-            id: z.string(),
-        });
-
-    export type Outbound = {
-        id: string;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, StackoneDeleteAccountRequest> =
-        z.object({
-            id: z.string(),
-        });
+    /** @deprecated use `StackoneDeleteAccountRequest$inboundSchema` instead. */
+    export const inboundSchema = StackoneDeleteAccountRequest$inboundSchema;
+    /** @deprecated use `StackoneDeleteAccountRequest$outboundSchema` instead. */
+    export const outboundSchema = StackoneDeleteAccountRequest$outboundSchema;
+    /** @deprecated use `StackoneDeleteAccountRequest$Outbound` instead. */
+    export type Outbound = StackoneDeleteAccountRequest$Outbound;
 }
 
 /** @internal */
-export namespace StackoneDeleteAccountResponse$ {
-    export const inboundSchema: z.ZodType<StackoneDeleteAccountResponse, z.ZodTypeDef, unknown> = z
-        .object({
-            ContentType: z.string(),
-            LinkedAccount: shared.LinkedAccount$.inboundSchema.optional(),
-            StatusCode: z.number().int(),
-            RawResponse: z.instanceof(Response),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                ContentType: "contentType",
-                LinkedAccount: "linkedAccount",
-                StatusCode: "statusCode",
-                RawResponse: "rawResponse",
-            });
+export const StackoneDeleteAccountResponse$inboundSchema: z.ZodType<
+    StackoneDeleteAccountResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        ContentType: z.string(),
+        LinkedAccount: shared.LinkedAccount$inboundSchema.optional(),
+        StatusCode: z.number().int(),
+        RawResponse: z.instanceof(Response),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            ContentType: "contentType",
+            LinkedAccount: "linkedAccount",
+            StatusCode: "statusCode",
+            RawResponse: "rawResponse",
         });
+    });
 
-    export type Outbound = {
-        ContentType: string;
-        LinkedAccount?: shared.LinkedAccount$.Outbound | undefined;
-        StatusCode: number;
-        RawResponse: never;
-    };
+/** @internal */
+export type StackoneDeleteAccountResponse$Outbound = {
+    ContentType: string;
+    LinkedAccount?: shared.LinkedAccount$Outbound | undefined;
+    StatusCode: number;
+    RawResponse: never;
+};
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, StackoneDeleteAccountResponse> =
-        z
-            .object({
-                contentType: z.string(),
-                linkedAccount: shared.LinkedAccount$.outboundSchema.optional(),
-                statusCode: z.number().int(),
-                rawResponse: z.instanceof(Response).transform(() => {
-                    throw new Error("Response cannot be serialized");
-                }),
-            })
-            .transform((v) => {
-                return remap$(v, {
-                    contentType: "ContentType",
-                    linkedAccount: "LinkedAccount",
-                    statusCode: "StatusCode",
-                    rawResponse: "RawResponse",
-                });
-            });
+/** @internal */
+export const StackoneDeleteAccountResponse$outboundSchema: z.ZodType<
+    StackoneDeleteAccountResponse$Outbound,
+    z.ZodTypeDef,
+    StackoneDeleteAccountResponse
+> = z
+    .object({
+        contentType: z.string(),
+        linkedAccount: shared.LinkedAccount$outboundSchema.optional(),
+        statusCode: z.number().int(),
+        rawResponse: z.instanceof(Response).transform(() => {
+            throw new Error("Response cannot be serialized");
+        }),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            contentType: "ContentType",
+            linkedAccount: "LinkedAccount",
+            statusCode: "StatusCode",
+            rawResponse: "RawResponse",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace StackoneDeleteAccountResponse$ {
+    /** @deprecated use `StackoneDeleteAccountResponse$inboundSchema` instead. */
+    export const inboundSchema = StackoneDeleteAccountResponse$inboundSchema;
+    /** @deprecated use `StackoneDeleteAccountResponse$outboundSchema` instead. */
+    export const outboundSchema = StackoneDeleteAccountResponse$outboundSchema;
+    /** @deprecated use `StackoneDeleteAccountResponse$Outbound` instead. */
+    export type Outbound = StackoneDeleteAccountResponse$Outbound;
 }

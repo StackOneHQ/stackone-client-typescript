@@ -54,7 +54,7 @@ export class Ats extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.AtsCreateApplicationRequest$.outboundSchema.parse(value$),
+            (value$) => operations.AtsCreateApplicationRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = encodeJSON$("body", payload$.AtsCreateApplicationRequestDto, {
@@ -95,6 +95,7 @@ export class Ats extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -102,6 +103,8 @@ export class Ats extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -112,7 +115,9 @@ export class Ats extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.AtsCreateApplicationResponse>()
-            .json(201, operations.AtsCreateApplicationResponse$, { key: "CreateResult" })
+            .json(201, operations.AtsCreateApplicationResponse$inboundSchema, {
+                key: "CreateResult",
+            })
             .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -130,7 +135,7 @@ export class Ats extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.AtsCreateCandidateRequest$.outboundSchema.parse(value$),
+            (value$) => operations.AtsCreateCandidateRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = encodeJSON$("body", payload$.AtsCreateCandidateRequestDto, { explode: true });
@@ -169,6 +174,7 @@ export class Ats extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -176,6 +182,8 @@ export class Ats extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -186,7 +194,7 @@ export class Ats extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.AtsCreateCandidateResponse>()
-            .json(200, operations.AtsCreateCandidateResponse$, { key: "CreateResult" })
+            .json(200, operations.AtsCreateCandidateResponse$inboundSchema, { key: "CreateResult" })
             .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -204,7 +212,7 @@ export class Ats extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.AtsCreateCandidateNoteRequest$.outboundSchema.parse(value$),
+            (value$) => operations.AtsCreateCandidateNoteRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = encodeJSON$("body", payload$.AtsCreateNotesRequestDto, { explode: true });
@@ -246,6 +254,7 @@ export class Ats extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -253,6 +262,8 @@ export class Ats extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -263,7 +274,9 @@ export class Ats extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.AtsCreateCandidateNoteResponse>()
-            .json(201, operations.AtsCreateCandidateNoteResponse$, { key: "CreateResult" })
+            .json(201, operations.AtsCreateCandidateNoteResponse$inboundSchema, {
+                key: "CreateResult",
+            })
             .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -281,7 +294,7 @@ export class Ats extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.AtsCreateOfferRequest$.outboundSchema.parse(value$),
+            (value$) => operations.AtsCreateOfferRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = encodeJSON$("body", payload$.AtsCreateOfferRequestDto, { explode: true });
@@ -320,6 +333,7 @@ export class Ats extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -327,6 +341,8 @@ export class Ats extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -337,7 +353,7 @@ export class Ats extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.AtsCreateOfferResponse>()
-            .json(200, operations.AtsCreateOfferResponse$, { key: "CreateResult" })
+            .json(200, operations.AtsCreateOfferResponse$inboundSchema, { key: "CreateResult" })
             .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -356,7 +372,7 @@ export class Ats extends ClientSDK {
         const payload$ = schemas$.parse(
             input$,
             (value$) =>
-                operations.AtsDownloadApplicationDocumentRequest$.outboundSchema.parse(value$),
+                operations.AtsDownloadApplicationDocumentRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -405,6 +421,7 @@ export class Ats extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -412,6 +429,8 @@ export class Ats extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -422,7 +441,7 @@ export class Ats extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.AtsDownloadApplicationDocumentResponse>()
-            .stream(200, operations.AtsDownloadApplicationDocumentResponse$, {
+            .stream(200, operations.AtsDownloadApplicationDocumentResponse$inboundSchema, {
                 key: "response-stream",
             })
             .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
@@ -442,7 +461,7 @@ export class Ats extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.AtsGetApplicationRequest$.outboundSchema.parse(value$),
+            (value$) => operations.AtsGetApplicationRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -492,6 +511,7 @@ export class Ats extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -499,6 +519,8 @@ export class Ats extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -509,7 +531,9 @@ export class Ats extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.AtsGetApplicationResponse>()
-            .json(200, operations.AtsGetApplicationResponse$, { key: "ApplicationResult" })
+            .json(200, operations.AtsGetApplicationResponse$inboundSchema, {
+                key: "ApplicationResult",
+            })
             .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -527,7 +551,7 @@ export class Ats extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.AtsGetApplicationDocumentRequest$.outboundSchema.parse(value$),
+            (value$) => operations.AtsGetApplicationDocumentRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -582,6 +606,7 @@ export class Ats extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -589,6 +614,8 @@ export class Ats extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -599,7 +626,9 @@ export class Ats extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.AtsGetApplicationDocumentResponse>()
-            .json(200, operations.AtsGetApplicationDocumentResponse$, { key: "AtsDocumentResult" })
+            .json(200, operations.AtsGetApplicationDocumentResponse$inboundSchema, {
+                key: "AtsDocumentResult",
+            })
             .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -617,7 +646,7 @@ export class Ats extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.AtsGetApplicationOfferRequest$.outboundSchema.parse(value$),
+            (value$) => operations.AtsGetApplicationOfferRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -672,6 +701,7 @@ export class Ats extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -679,6 +709,8 @@ export class Ats extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -689,7 +721,9 @@ export class Ats extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.AtsGetApplicationOfferResponse>()
-            .json(200, operations.AtsGetApplicationOfferResponse$, { key: "OffersResult" })
+            .json(200, operations.AtsGetApplicationOfferResponse$inboundSchema, {
+                key: "OffersResult",
+            })
             .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -707,7 +741,7 @@ export class Ats extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.AtsGetApplicationScorecardRequest$.outboundSchema.parse(value$),
+            (value$) => operations.AtsGetApplicationScorecardRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -762,6 +796,7 @@ export class Ats extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -769,6 +804,8 @@ export class Ats extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -779,7 +816,9 @@ export class Ats extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.AtsGetApplicationScorecardResponse>()
-            .json(200, operations.AtsGetApplicationScorecardResponse$, { key: "ScorecardsResult" })
+            .json(200, operations.AtsGetApplicationScorecardResponse$inboundSchema, {
+                key: "ScorecardsResult",
+            })
             .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -797,7 +836,7 @@ export class Ats extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.AtsGetAssessmentsPackageRequest$.outboundSchema.parse(value$),
+            (value$) => operations.AtsGetAssessmentsPackageRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -848,6 +887,7 @@ export class Ats extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -855,6 +895,8 @@ export class Ats extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -865,7 +907,7 @@ export class Ats extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.AtsGetAssessmentsPackageResponse>()
-            .json(200, operations.AtsGetAssessmentsPackageResponse$, {
+            .json(200, operations.AtsGetAssessmentsPackageResponse$inboundSchema, {
                 key: "AssessmentsPackagesResult",
             })
             .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
@@ -885,7 +927,7 @@ export class Ats extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.AtsGetCandidateRequest$.outboundSchema.parse(value$),
+            (value$) => operations.AtsGetCandidateRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -934,6 +976,7 @@ export class Ats extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -941,6 +984,8 @@ export class Ats extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -951,7 +996,7 @@ export class Ats extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.AtsGetCandidateResponse>()
-            .json(200, operations.AtsGetCandidateResponse$, { key: "CandidateResult" })
+            .json(200, operations.AtsGetCandidateResponse$inboundSchema, { key: "CandidateResult" })
             .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -969,7 +1014,7 @@ export class Ats extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.AtsGetCandidateNoteRequest$.outboundSchema.parse(value$),
+            (value$) => operations.AtsGetCandidateNoteRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -1024,6 +1069,7 @@ export class Ats extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -1031,6 +1077,8 @@ export class Ats extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -1041,7 +1089,7 @@ export class Ats extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.AtsGetCandidateNoteResponse>()
-            .json(200, operations.AtsGetCandidateNoteResponse$, { key: "NoteResult" })
+            .json(200, operations.AtsGetCandidateNoteResponse$inboundSchema, { key: "NoteResult" })
             .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -1059,7 +1107,7 @@ export class Ats extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.AtsGetDepartmentRequest$.outboundSchema.parse(value$),
+            (value$) => operations.AtsGetDepartmentRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -1108,6 +1156,7 @@ export class Ats extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -1115,6 +1164,8 @@ export class Ats extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -1125,7 +1176,9 @@ export class Ats extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.AtsGetDepartmentResponse>()
-            .json(200, operations.AtsGetDepartmentResponse$, { key: "DepartmentResult" })
+            .json(200, operations.AtsGetDepartmentResponse$inboundSchema, {
+                key: "DepartmentResult",
+            })
             .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -1143,7 +1196,7 @@ export class Ats extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.AtsGetInterviewRequest$.outboundSchema.parse(value$),
+            (value$) => operations.AtsGetInterviewRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -1192,6 +1245,7 @@ export class Ats extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -1199,6 +1253,8 @@ export class Ats extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -1209,7 +1265,9 @@ export class Ats extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.AtsGetInterviewResponse>()
-            .json(200, operations.AtsGetInterviewResponse$, { key: "InterviewsResult" })
+            .json(200, operations.AtsGetInterviewResponse$inboundSchema, {
+                key: "InterviewsResult",
+            })
             .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -1227,7 +1285,7 @@ export class Ats extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.AtsGetInterviewStageRequest$.outboundSchema.parse(value$),
+            (value$) => operations.AtsGetInterviewStageRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -1276,6 +1334,7 @@ export class Ats extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -1283,6 +1342,8 @@ export class Ats extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -1293,7 +1354,9 @@ export class Ats extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.AtsGetInterviewStageResponse>()
-            .json(200, operations.AtsGetInterviewStageResponse$, { key: "InterviewStageResult" })
+            .json(200, operations.AtsGetInterviewStageResponse$inboundSchema, {
+                key: "InterviewStageResult",
+            })
             .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -1311,7 +1374,7 @@ export class Ats extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.AtsGetJobRequest$.outboundSchema.parse(value$),
+            (value$) => operations.AtsGetJobRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -1361,6 +1424,7 @@ export class Ats extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -1368,6 +1432,8 @@ export class Ats extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -1378,7 +1444,7 @@ export class Ats extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.AtsGetJobResponse>()
-            .json(200, operations.AtsGetJobResponse$, { key: "JobResult" })
+            .json(200, operations.AtsGetJobResponse$inboundSchema, { key: "JobResult" })
             .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -1396,7 +1462,7 @@ export class Ats extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.AtsGetJobPostingRequest$.outboundSchema.parse(value$),
+            (value$) => operations.AtsGetJobPostingRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -1446,6 +1512,7 @@ export class Ats extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -1453,6 +1520,8 @@ export class Ats extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -1463,7 +1532,9 @@ export class Ats extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.AtsGetJobPostingResponse>()
-            .json(200, operations.AtsGetJobPostingResponse$, { key: "JobPostingResult" })
+            .json(200, operations.AtsGetJobPostingResponse$inboundSchema, {
+                key: "JobPostingResult",
+            })
             .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -1481,7 +1552,7 @@ export class Ats extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.AtsGetListRequest$.outboundSchema.parse(value$),
+            (value$) => operations.AtsGetListRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -1530,6 +1601,7 @@ export class Ats extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -1537,6 +1609,8 @@ export class Ats extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -1547,7 +1621,7 @@ export class Ats extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.AtsGetListResponse>()
-            .json(200, operations.AtsGetListResponse$, { key: "ListResult" })
+            .json(200, operations.AtsGetListResponse$inboundSchema, { key: "ListResult" })
             .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -1565,7 +1639,7 @@ export class Ats extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.AtsGetLocationRequest$.outboundSchema.parse(value$),
+            (value$) => operations.AtsGetLocationRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -1614,6 +1688,7 @@ export class Ats extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -1621,6 +1696,8 @@ export class Ats extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -1631,7 +1708,9 @@ export class Ats extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.AtsGetLocationResponse>()
-            .json(200, operations.AtsGetLocationResponse$, { key: "ATSLocationResult" })
+            .json(200, operations.AtsGetLocationResponse$inboundSchema, {
+                key: "ATSLocationResult",
+            })
             .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -1649,7 +1728,7 @@ export class Ats extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.AtsGetOfferRequest$.outboundSchema.parse(value$),
+            (value$) => operations.AtsGetOfferRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -1698,6 +1777,7 @@ export class Ats extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -1705,6 +1785,8 @@ export class Ats extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -1715,7 +1797,7 @@ export class Ats extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.AtsGetOfferResponse>()
-            .json(200, operations.AtsGetOfferResponse$, { key: "OffersResult" })
+            .json(200, operations.AtsGetOfferResponse$inboundSchema, { key: "OffersResult" })
             .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -1733,7 +1815,7 @@ export class Ats extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.AtsGetRejectedReasonRequest$.outboundSchema.parse(value$),
+            (value$) => operations.AtsGetRejectedReasonRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -1782,6 +1864,7 @@ export class Ats extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -1789,6 +1872,8 @@ export class Ats extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -1799,7 +1884,9 @@ export class Ats extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.AtsGetRejectedReasonResponse>()
-            .json(200, operations.AtsGetRejectedReasonResponse$, { key: "RejectedReasonResult" })
+            .json(200, operations.AtsGetRejectedReasonResponse$inboundSchema, {
+                key: "RejectedReasonResult",
+            })
             .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -1817,7 +1904,7 @@ export class Ats extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.AtsGetUserRequest$.outboundSchema.parse(value$),
+            (value$) => operations.AtsGetUserRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -1866,6 +1953,7 @@ export class Ats extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -1873,6 +1961,8 @@ export class Ats extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -1883,7 +1973,7 @@ export class Ats extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.AtsGetUserResponse>()
-            .json(200, operations.AtsGetUserResponse$, { key: "UserResult" })
+            .json(200, operations.AtsGetUserResponse$inboundSchema, { key: "UserResult" })
             .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -1901,7 +1991,7 @@ export class Ats extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.AtsListApplicationDocumentsRequest$.outboundSchema.parse(value$),
+            (value$) => operations.AtsListApplicationDocumentsRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -1958,6 +2048,7 @@ export class Ats extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -1965,6 +2056,8 @@ export class Ats extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -1975,7 +2068,7 @@ export class Ats extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.AtsListApplicationDocumentsResponse>()
-            .json(200, operations.AtsListApplicationDocumentsResponse$, {
+            .json(200, operations.AtsListApplicationDocumentsResponse$inboundSchema, {
                 key: "AtsDocumentsPaginated",
             })
             .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
@@ -1995,8 +2088,7 @@ export class Ats extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) =>
-                operations.AtsListApplicationScorecardsRequest$.outboundSchema.parse(value$),
+            (value$) => operations.AtsListApplicationScorecardsRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -2053,6 +2145,7 @@ export class Ats extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -2060,6 +2153,8 @@ export class Ats extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -2070,7 +2165,7 @@ export class Ats extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.AtsListApplicationScorecardsResponse>()
-            .json(200, operations.AtsListApplicationScorecardsResponse$, {
+            .json(200, operations.AtsListApplicationScorecardsResponse$inboundSchema, {
                 key: "ScorecardsPaginated",
             })
             .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
@@ -2090,7 +2185,7 @@ export class Ats extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.AtsListApplicationsRequest$.outboundSchema.parse(value$),
+            (value$) => operations.AtsListApplicationsRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -2144,6 +2239,7 @@ export class Ats extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -2151,6 +2247,8 @@ export class Ats extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -2161,7 +2259,9 @@ export class Ats extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.AtsListApplicationsResponse>()
-            .json(200, operations.AtsListApplicationsResponse$, { key: "ApplicationsPaginated" })
+            .json(200, operations.AtsListApplicationsResponse$inboundSchema, {
+                key: "ApplicationsPaginated",
+            })
             .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -2179,7 +2279,7 @@ export class Ats extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.AtsListApplicationsOffersRequest$.outboundSchema.parse(value$),
+            (value$) => operations.AtsListApplicationsOffersRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -2236,6 +2336,7 @@ export class Ats extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -2243,6 +2344,8 @@ export class Ats extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -2253,7 +2356,9 @@ export class Ats extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.AtsListApplicationsOffersResponse>()
-            .json(200, operations.AtsListApplicationsOffersResponse$, { key: "OffersPaginated" })
+            .json(200, operations.AtsListApplicationsOffersResponse$inboundSchema, {
+                key: "OffersPaginated",
+            })
             .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -2271,7 +2376,7 @@ export class Ats extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.AtsListAssessmentsPackagesRequest$.outboundSchema.parse(value$),
+            (value$) => operations.AtsListAssessmentsPackagesRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -2322,6 +2427,7 @@ export class Ats extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -2329,6 +2435,8 @@ export class Ats extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -2339,7 +2447,7 @@ export class Ats extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.AtsListAssessmentsPackagesResponse>()
-            .json(200, operations.AtsListAssessmentsPackagesResponse$, {
+            .json(200, operations.AtsListAssessmentsPackagesResponse$inboundSchema, {
                 key: "AssessmentsPackagesPaginated",
             })
             .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
@@ -2359,7 +2467,7 @@ export class Ats extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.AtsListCandidateNotesRequest$.outboundSchema.parse(value$),
+            (value$) => operations.AtsListCandidateNotesRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -2414,6 +2522,7 @@ export class Ats extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -2421,6 +2530,8 @@ export class Ats extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -2431,7 +2542,9 @@ export class Ats extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.AtsListCandidateNotesResponse>()
-            .json(200, operations.AtsListCandidateNotesResponse$, { key: "NotesPaginated" })
+            .json(200, operations.AtsListCandidateNotesResponse$inboundSchema, {
+                key: "NotesPaginated",
+            })
             .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -2449,7 +2562,7 @@ export class Ats extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.AtsListCandidatesRequest$.outboundSchema.parse(value$),
+            (value$) => operations.AtsListCandidatesRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -2501,6 +2614,7 @@ export class Ats extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -2508,6 +2622,8 @@ export class Ats extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -2518,7 +2634,9 @@ export class Ats extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.AtsListCandidatesResponse>()
-            .json(200, operations.AtsListCandidatesResponse$, { key: "CandidatesPaginated" })
+            .json(200, operations.AtsListCandidatesResponse$inboundSchema, {
+                key: "CandidatesPaginated",
+            })
             .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -2536,7 +2654,7 @@ export class Ats extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.AtsListDepartmentsRequest$.outboundSchema.parse(value$),
+            (value$) => operations.AtsListDepartmentsRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -2588,6 +2706,7 @@ export class Ats extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -2595,6 +2714,8 @@ export class Ats extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -2605,7 +2726,9 @@ export class Ats extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.AtsListDepartmentsResponse>()
-            .json(200, operations.AtsListDepartmentsResponse$, { key: "DepartmentsPaginated" })
+            .json(200, operations.AtsListDepartmentsResponse$inboundSchema, {
+                key: "DepartmentsPaginated",
+            })
             .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -2623,7 +2746,7 @@ export class Ats extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.AtsListInterviewStagesRequest$.outboundSchema.parse(value$),
+            (value$) => operations.AtsListInterviewStagesRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -2675,6 +2798,7 @@ export class Ats extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -2682,6 +2806,8 @@ export class Ats extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -2692,7 +2818,7 @@ export class Ats extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.AtsListInterviewStagesResponse>()
-            .json(200, operations.AtsListInterviewStagesResponse$, {
+            .json(200, operations.AtsListInterviewStagesResponse$inboundSchema, {
                 key: "InterviewStagesPaginated",
             })
             .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
@@ -2712,7 +2838,7 @@ export class Ats extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.AtsListInterviewsRequest$.outboundSchema.parse(value$),
+            (value$) => operations.AtsListInterviewsRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -2764,6 +2890,7 @@ export class Ats extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -2771,6 +2898,8 @@ export class Ats extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -2781,7 +2910,9 @@ export class Ats extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.AtsListInterviewsResponse>()
-            .json(200, operations.AtsListInterviewsResponse$, { key: "InterviewsPaginated" })
+            .json(200, operations.AtsListInterviewsResponse$inboundSchema, {
+                key: "InterviewsPaginated",
+            })
             .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -2799,7 +2930,7 @@ export class Ats extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.AtsListJobPostingsRequest$.outboundSchema.parse(value$),
+            (value$) => operations.AtsListJobPostingsRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -2852,6 +2983,7 @@ export class Ats extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -2859,6 +2991,8 @@ export class Ats extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -2869,7 +3003,9 @@ export class Ats extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.AtsListJobPostingsResponse>()
-            .json(200, operations.AtsListJobPostingsResponse$, { key: "JobPostingsPaginated" })
+            .json(200, operations.AtsListJobPostingsResponse$inboundSchema, {
+                key: "JobPostingsPaginated",
+            })
             .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -2887,7 +3023,7 @@ export class Ats extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.AtsListJobsRequest$.outboundSchema.parse(value$),
+            (value$) => operations.AtsListJobsRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -2940,6 +3076,7 @@ export class Ats extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -2947,6 +3084,8 @@ export class Ats extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -2957,7 +3096,7 @@ export class Ats extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.AtsListJobsResponse>()
-            .json(200, operations.AtsListJobsResponse$, { key: "JobsPaginated" })
+            .json(200, operations.AtsListJobsResponse$inboundSchema, { key: "JobsPaginated" })
             .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -2975,7 +3114,7 @@ export class Ats extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.AtsListListsRequest$.outboundSchema.parse(value$),
+            (value$) => operations.AtsListListsRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -3026,6 +3165,7 @@ export class Ats extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -3033,6 +3173,8 @@ export class Ats extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -3043,7 +3185,7 @@ export class Ats extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.AtsListListsResponse>()
-            .json(200, operations.AtsListListsResponse$, { key: "ListsPaginated" })
+            .json(200, operations.AtsListListsResponse$inboundSchema, { key: "ListsPaginated" })
             .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -3061,7 +3203,7 @@ export class Ats extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.AtsListLocationsRequest$.outboundSchema.parse(value$),
+            (value$) => operations.AtsListLocationsRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -3113,6 +3255,7 @@ export class Ats extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -3120,6 +3263,8 @@ export class Ats extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -3130,7 +3275,9 @@ export class Ats extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.AtsListLocationsResponse>()
-            .json(200, operations.AtsListLocationsResponse$, { key: "ATSLocationsPaginated" })
+            .json(200, operations.AtsListLocationsResponse$inboundSchema, {
+                key: "ATSLocationsPaginated",
+            })
             .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -3148,7 +3295,7 @@ export class Ats extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.AtsListOffersRequest$.outboundSchema.parse(value$),
+            (value$) => operations.AtsListOffersRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -3200,6 +3347,7 @@ export class Ats extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -3207,6 +3355,8 @@ export class Ats extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -3217,7 +3367,7 @@ export class Ats extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.AtsListOffersResponse>()
-            .json(200, operations.AtsListOffersResponse$, { key: "OffersPaginated" })
+            .json(200, operations.AtsListOffersResponse$inboundSchema, { key: "OffersPaginated" })
             .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -3235,7 +3385,7 @@ export class Ats extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.AtsListRejectedReasonsRequest$.outboundSchema.parse(value$),
+            (value$) => operations.AtsListRejectedReasonsRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -3287,6 +3437,7 @@ export class Ats extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -3294,6 +3445,8 @@ export class Ats extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -3304,7 +3457,7 @@ export class Ats extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.AtsListRejectedReasonsResponse>()
-            .json(200, operations.AtsListRejectedReasonsResponse$, {
+            .json(200, operations.AtsListRejectedReasonsResponse$inboundSchema, {
                 key: "RejectedReasonsPaginated",
             })
             .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
@@ -3324,7 +3477,7 @@ export class Ats extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.AtsListUsersRequest$.outboundSchema.parse(value$),
+            (value$) => operations.AtsListUsersRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -3376,6 +3529,7 @@ export class Ats extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -3383,6 +3537,8 @@ export class Ats extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -3393,7 +3549,7 @@ export class Ats extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.AtsListUsersResponse>()
-            .json(200, operations.AtsListUsersResponse$, { key: "UsersPaginated" })
+            .json(200, operations.AtsListUsersResponse$inboundSchema, { key: "UsersPaginated" })
             .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -3411,7 +3567,7 @@ export class Ats extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.AtsUpdateApplicationRequest$.outboundSchema.parse(value$),
+            (value$) => operations.AtsUpdateApplicationRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = encodeJSON$("body", payload$.AtsUpdateApplicationRequestDto, {
@@ -3455,6 +3611,7 @@ export class Ats extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -3462,6 +3619,8 @@ export class Ats extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -3472,7 +3631,9 @@ export class Ats extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.AtsUpdateApplicationResponse>()
-            .json(200, operations.AtsUpdateApplicationResponse$, { key: "UpdateResult" })
+            .json(200, operations.AtsUpdateApplicationResponse$inboundSchema, {
+                key: "UpdateResult",
+            })
             .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -3490,7 +3651,7 @@ export class Ats extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.AtsUpdateCandidateRequest$.outboundSchema.parse(value$),
+            (value$) => operations.AtsUpdateCandidateRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = encodeJSON$("body", payload$.AtsUpdateCandidateRequestDto, { explode: true });
@@ -3532,6 +3693,7 @@ export class Ats extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -3539,6 +3701,8 @@ export class Ats extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -3549,7 +3713,7 @@ export class Ats extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.AtsUpdateCandidateResponse>()
-            .json(200, operations.AtsUpdateCandidateResponse$, { key: "CreateResult" })
+            .json(200, operations.AtsUpdateCandidateResponse$inboundSchema, { key: "CreateResult" })
             .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -3567,8 +3731,7 @@ export class Ats extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) =>
-                operations.AtsUploadApplicationDocumentRequest$.outboundSchema.parse(value$),
+            (value$) => operations.AtsUploadApplicationDocumentRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = encodeJSON$("body", payload$.UnifiedUploadRequestDto, { explode: true });
@@ -3612,6 +3775,7 @@ export class Ats extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -3619,6 +3783,8 @@ export class Ats extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -3629,7 +3795,7 @@ export class Ats extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.AtsUploadApplicationDocumentResponse>()
-            .json(200, operations.AtsUploadApplicationDocumentResponse$, {
+            .json(200, operations.AtsUploadApplicationDocumentResponse$inboundSchema, {
                 key: "WriteResultApiModel",
             })
             .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])

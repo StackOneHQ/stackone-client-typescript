@@ -6,24 +6,50 @@ import * as z from "zod";
 
 export type CreateCategoriesApiModel = {
     /**
+     * Whether the category is active and therefore available for use
+     */
+    active?: boolean | null | undefined;
+    /**
      * The name associated with this category
      */
     name?: string | null | undefined;
 };
 
 /** @internal */
+export const CreateCategoriesApiModel$inboundSchema: z.ZodType<
+    CreateCategoriesApiModel,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    active: z.nullable(z.boolean()).optional(),
+    name: z.nullable(z.string()).optional(),
+});
+
+/** @internal */
+export type CreateCategoriesApiModel$Outbound = {
+    active?: boolean | null | undefined;
+    name?: string | null | undefined;
+};
+
+/** @internal */
+export const CreateCategoriesApiModel$outboundSchema: z.ZodType<
+    CreateCategoriesApiModel$Outbound,
+    z.ZodTypeDef,
+    CreateCategoriesApiModel
+> = z.object({
+    active: z.nullable(z.boolean()).optional(),
+    name: z.nullable(z.string()).optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace CreateCategoriesApiModel$ {
-    export const inboundSchema: z.ZodType<CreateCategoriesApiModel, z.ZodTypeDef, unknown> =
-        z.object({
-            name: z.nullable(z.string()).optional(),
-        });
-
-    export type Outbound = {
-        name?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CreateCategoriesApiModel> =
-        z.object({
-            name: z.nullable(z.string()).optional(),
-        });
+    /** @deprecated use `CreateCategoriesApiModel$inboundSchema` instead. */
+    export const inboundSchema = CreateCategoriesApiModel$inboundSchema;
+    /** @deprecated use `CreateCategoriesApiModel$outboundSchema` instead. */
+    export const outboundSchema = CreateCategoriesApiModel$outboundSchema;
+    /** @deprecated use `CreateCategoriesApiModel$Outbound` instead. */
+    export type Outbound = CreateCategoriesApiModel$Outbound;
 }

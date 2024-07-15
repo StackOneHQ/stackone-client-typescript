@@ -52,7 +52,7 @@ export class Accounts extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.StackoneDeleteAccountRequest$.outboundSchema.parse(value$),
+            (value$) => operations.StackoneDeleteAccountRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -89,6 +89,7 @@ export class Accounts extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -96,6 +97,8 @@ export class Accounts extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "403", "404", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -106,7 +109,9 @@ export class Accounts extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.StackoneDeleteAccountResponse>()
-            .json(200, operations.StackoneDeleteAccountResponse$, { key: "LinkedAccount" })
+            .json(200, operations.StackoneDeleteAccountResponse$inboundSchema, {
+                key: "LinkedAccount",
+            })
             .fail([400, 403, 404, 429, "4XX", 500, 501, "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -124,7 +129,7 @@ export class Accounts extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.StackoneGetAccountRequest$.outboundSchema.parse(value$),
+            (value$) => operations.StackoneGetAccountRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -161,6 +166,7 @@ export class Accounts extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -168,6 +174,8 @@ export class Accounts extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "403", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -178,7 +186,9 @@ export class Accounts extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.StackoneGetAccountResponse>()
-            .json(200, operations.StackoneGetAccountResponse$, { key: "LinkedAccount" })
+            .json(200, operations.StackoneGetAccountResponse$inboundSchema, {
+                key: "LinkedAccount",
+            })
             .fail([400, 403, 429, "4XX", 500, 501, "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -196,7 +206,7 @@ export class Accounts extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.StackoneGetAccountMetaInfoRequest$.outboundSchema.parse(value$),
+            (value$) => operations.StackoneGetAccountMetaInfoRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -233,6 +243,7 @@ export class Accounts extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -240,6 +251,8 @@ export class Accounts extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "403", "404", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -250,7 +263,9 @@ export class Accounts extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.StackoneGetAccountMetaInfoResponse>()
-            .json(200, operations.StackoneGetAccountMetaInfoResponse$, { key: "LinkedAccountMeta" })
+            .json(200, operations.StackoneGetAccountMetaInfoResponse$inboundSchema, {
+                key: "LinkedAccountMeta",
+            })
             .fail([400, 403, 404, 429, "4XX", 500, 501, "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -268,7 +283,7 @@ export class Accounts extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.StackoneListLinkedAccountsRequest$.outboundSchema.parse(value$),
+            (value$) => operations.StackoneListLinkedAccountsRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -309,6 +324,7 @@ export class Accounts extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -316,6 +332,8 @@ export class Accounts extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "403", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -326,7 +344,9 @@ export class Accounts extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.StackoneListLinkedAccountsResponse>()
-            .json(200, operations.StackoneListLinkedAccountsResponse$, { key: "classes" })
+            .json(200, operations.StackoneListLinkedAccountsResponse$inboundSchema, {
+                key: "classes",
+            })
             .fail([400, 403, 429, "4XX", 500, 501, "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -344,7 +364,7 @@ export class Accounts extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.StackoneUpdateAccountRequest$.outboundSchema.parse(value$),
+            (value$) => operations.StackoneUpdateAccountRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = encodeJSON$("body", payload$.PatchAccountDto, { explode: true });
@@ -382,6 +402,7 @@ export class Accounts extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -389,6 +410,8 @@ export class Accounts extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "403", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -399,7 +422,9 @@ export class Accounts extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.StackoneUpdateAccountResponse>()
-            .json(200, operations.StackoneUpdateAccountResponse$, { key: "LinkedAccount" })
+            .json(200, operations.StackoneUpdateAccountResponse$inboundSchema, {
+                key: "LinkedAccount",
+            })
             .fail([400, 403, 429, "4XX", 500, 501, "5XX"])
             .match(response, { extraFields: responseFields$ });
 

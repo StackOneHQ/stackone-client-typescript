@@ -35,96 +35,122 @@ export type HrisCreateEmployeeTimeOffRequestResponse = {
 };
 
 /** @internal */
+export const HrisCreateEmployeeTimeOffRequestRequest$inboundSchema: z.ZodType<
+    HrisCreateEmployeeTimeOffRequestRequest,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        HrisCreateTimeOffRequestDto: shared.HrisCreateTimeOffRequestDto$inboundSchema,
+        id: z.string(),
+        "x-account-id": z.string(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            HrisCreateTimeOffRequestDto: "hrisCreateTimeOffRequestDto",
+            "x-account-id": "xAccountId",
+        });
+    });
+
+/** @internal */
+export type HrisCreateEmployeeTimeOffRequestRequest$Outbound = {
+    HrisCreateTimeOffRequestDto: shared.HrisCreateTimeOffRequestDto$Outbound;
+    id: string;
+    "x-account-id": string;
+};
+
+/** @internal */
+export const HrisCreateEmployeeTimeOffRequestRequest$outboundSchema: z.ZodType<
+    HrisCreateEmployeeTimeOffRequestRequest$Outbound,
+    z.ZodTypeDef,
+    HrisCreateEmployeeTimeOffRequestRequest
+> = z
+    .object({
+        hrisCreateTimeOffRequestDto: shared.HrisCreateTimeOffRequestDto$outboundSchema,
+        id: z.string(),
+        xAccountId: z.string(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            hrisCreateTimeOffRequestDto: "HrisCreateTimeOffRequestDto",
+            xAccountId: "x-account-id",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace HrisCreateEmployeeTimeOffRequestRequest$ {
-    export const inboundSchema: z.ZodType<
-        HrisCreateEmployeeTimeOffRequestRequest,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            HrisCreateTimeOffRequestDto: shared.HrisCreateTimeOffRequestDto$.inboundSchema,
-            id: z.string(),
-            "x-account-id": z.string(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                HrisCreateTimeOffRequestDto: "hrisCreateTimeOffRequestDto",
-                "x-account-id": "xAccountId",
-            });
-        });
-
-    export type Outbound = {
-        HrisCreateTimeOffRequestDto: shared.HrisCreateTimeOffRequestDto$.Outbound;
-        id: string;
-        "x-account-id": string;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        HrisCreateEmployeeTimeOffRequestRequest
-    > = z
-        .object({
-            hrisCreateTimeOffRequestDto: shared.HrisCreateTimeOffRequestDto$.outboundSchema,
-            id: z.string(),
-            xAccountId: z.string(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                hrisCreateTimeOffRequestDto: "HrisCreateTimeOffRequestDto",
-                xAccountId: "x-account-id",
-            });
-        });
+    /** @deprecated use `HrisCreateEmployeeTimeOffRequestRequest$inboundSchema` instead. */
+    export const inboundSchema = HrisCreateEmployeeTimeOffRequestRequest$inboundSchema;
+    /** @deprecated use `HrisCreateEmployeeTimeOffRequestRequest$outboundSchema` instead. */
+    export const outboundSchema = HrisCreateEmployeeTimeOffRequestRequest$outboundSchema;
+    /** @deprecated use `HrisCreateEmployeeTimeOffRequestRequest$Outbound` instead. */
+    export type Outbound = HrisCreateEmployeeTimeOffRequestRequest$Outbound;
 }
 
 /** @internal */
+export const HrisCreateEmployeeTimeOffRequestResponse$inboundSchema: z.ZodType<
+    HrisCreateEmployeeTimeOffRequestResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        ContentType: z.string(),
+        CreateResult: shared.CreateResult$inboundSchema.optional(),
+        StatusCode: z.number().int(),
+        RawResponse: z.instanceof(Response),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            ContentType: "contentType",
+            CreateResult: "createResult",
+            StatusCode: "statusCode",
+            RawResponse: "rawResponse",
+        });
+    });
+
+/** @internal */
+export type HrisCreateEmployeeTimeOffRequestResponse$Outbound = {
+    ContentType: string;
+    CreateResult?: shared.CreateResult$Outbound | undefined;
+    StatusCode: number;
+    RawResponse: never;
+};
+
+/** @internal */
+export const HrisCreateEmployeeTimeOffRequestResponse$outboundSchema: z.ZodType<
+    HrisCreateEmployeeTimeOffRequestResponse$Outbound,
+    z.ZodTypeDef,
+    HrisCreateEmployeeTimeOffRequestResponse
+> = z
+    .object({
+        contentType: z.string(),
+        createResult: shared.CreateResult$outboundSchema.optional(),
+        statusCode: z.number().int(),
+        rawResponse: z.instanceof(Response).transform(() => {
+            throw new Error("Response cannot be serialized");
+        }),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            contentType: "ContentType",
+            createResult: "CreateResult",
+            statusCode: "StatusCode",
+            rawResponse: "RawResponse",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace HrisCreateEmployeeTimeOffRequestResponse$ {
-    export const inboundSchema: z.ZodType<
-        HrisCreateEmployeeTimeOffRequestResponse,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            ContentType: z.string(),
-            CreateResult: shared.CreateResult$.inboundSchema.optional(),
-            StatusCode: z.number().int(),
-            RawResponse: z.instanceof(Response),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                ContentType: "contentType",
-                CreateResult: "createResult",
-                StatusCode: "statusCode",
-                RawResponse: "rawResponse",
-            });
-        });
-
-    export type Outbound = {
-        ContentType: string;
-        CreateResult?: shared.CreateResult$.Outbound | undefined;
-        StatusCode: number;
-        RawResponse: never;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        HrisCreateEmployeeTimeOffRequestResponse
-    > = z
-        .object({
-            contentType: z.string(),
-            createResult: shared.CreateResult$.outboundSchema.optional(),
-            statusCode: z.number().int(),
-            rawResponse: z.instanceof(Response).transform(() => {
-                throw new Error("Response cannot be serialized");
-            }),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                contentType: "ContentType",
-                createResult: "CreateResult",
-                statusCode: "StatusCode",
-                rawResponse: "RawResponse",
-            });
-        });
+    /** @deprecated use `HrisCreateEmployeeTimeOffRequestResponse$inboundSchema` instead. */
+    export const inboundSchema = HrisCreateEmployeeTimeOffRequestResponse$inboundSchema;
+    /** @deprecated use `HrisCreateEmployeeTimeOffRequestResponse$outboundSchema` instead. */
+    export const outboundSchema = HrisCreateEmployeeTimeOffRequestResponse$outboundSchema;
+    /** @deprecated use `HrisCreateEmployeeTimeOffRequestResponse$Outbound` instead. */
+    export type Outbound = HrisCreateEmployeeTimeOffRequestResponse$Outbound;
 }

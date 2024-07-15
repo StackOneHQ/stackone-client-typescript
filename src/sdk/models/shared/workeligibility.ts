@@ -4,7 +4,12 @@
 
 import { remap as remap$ } from "../../../lib/primitives.js";
 import { catchUnrecognizedEnum, OpenEnum, Unrecognized } from "../../types/enums.js";
-import { Content, Content$ } from "./content.js";
+import {
+    Content,
+    Content$inboundSchema,
+    Content$Outbound,
+    Content$outboundSchema,
+} from "./content.js";
 import * as z from "zod";
 
 export type WorkEligibilitySchemasDocument4 = {};
@@ -1632,565 +1637,846 @@ export type WorkEligibility = {
 };
 
 /** @internal */
+export const WorkEligibilitySchemasDocument4$inboundSchema: z.ZodType<
+    WorkEligibilitySchemasDocument4,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type WorkEligibilitySchemasDocument4$Outbound = {};
+
+/** @internal */
+export const WorkEligibilitySchemasDocument4$outboundSchema: z.ZodType<
+    WorkEligibilitySchemasDocument4$Outbound,
+    z.ZodTypeDef,
+    WorkEligibilitySchemasDocument4
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace WorkEligibilitySchemasDocument4$ {
-    export const inboundSchema: z.ZodType<WorkEligibilitySchemasDocument4, z.ZodTypeDef, unknown> =
-        z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        WorkEligibilitySchemasDocument4
-    > = z.object({});
+    /** @deprecated use `WorkEligibilitySchemasDocument4$inboundSchema` instead. */
+    export const inboundSchema = WorkEligibilitySchemasDocument4$inboundSchema;
+    /** @deprecated use `WorkEligibilitySchemasDocument4$outboundSchema` instead. */
+    export const outboundSchema = WorkEligibilitySchemasDocument4$outboundSchema;
+    /** @deprecated use `WorkEligibilitySchemasDocument4$Outbound` instead. */
+    export type Outbound = WorkEligibilitySchemasDocument4$Outbound;
 }
 
 /** @internal */
+export const WorkEligibilitySchemasDocumentSourceValue$inboundSchema: z.ZodType<
+    WorkEligibilitySchemasDocumentSourceValue,
+    z.ZodTypeDef,
+    unknown
+> = z.union([
+    z.lazy(() => WorkEligibilitySchemasDocument4$inboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+]);
+
+/** @internal */
+export type WorkEligibilitySchemasDocumentSourceValue$Outbound =
+    | WorkEligibilitySchemasDocument4$Outbound
+    | string
+    | number
+    | boolean;
+
+/** @internal */
+export const WorkEligibilitySchemasDocumentSourceValue$outboundSchema: z.ZodType<
+    WorkEligibilitySchemasDocumentSourceValue$Outbound,
+    z.ZodTypeDef,
+    WorkEligibilitySchemasDocumentSourceValue
+> = z.union([
+    z.lazy(() => WorkEligibilitySchemasDocument4$outboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace WorkEligibilitySchemasDocumentSourceValue$ {
-    export const inboundSchema: z.ZodType<
-        WorkEligibilitySchemasDocumentSourceValue,
-        z.ZodTypeDef,
-        unknown
-    > = z.union([
-        z.lazy(() => WorkEligibilitySchemasDocument4$.inboundSchema),
-        z.string(),
-        z.number(),
-        z.boolean(),
-    ]);
-
-    export type Outbound = WorkEligibilitySchemasDocument4$.Outbound | string | number | boolean;
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        WorkEligibilitySchemasDocumentSourceValue
-    > = z.union([
-        z.lazy(() => WorkEligibilitySchemasDocument4$.outboundSchema),
-        z.string(),
-        z.number(),
-        z.boolean(),
-    ]);
+    /** @deprecated use `WorkEligibilitySchemasDocumentSourceValue$inboundSchema` instead. */
+    export const inboundSchema = WorkEligibilitySchemasDocumentSourceValue$inboundSchema;
+    /** @deprecated use `WorkEligibilitySchemasDocumentSourceValue$outboundSchema` instead. */
+    export const outboundSchema = WorkEligibilitySchemasDocumentSourceValue$outboundSchema;
+    /** @deprecated use `WorkEligibilitySchemasDocumentSourceValue$Outbound` instead. */
+    export type Outbound = WorkEligibilitySchemasDocumentSourceValue$Outbound;
 }
 
 /** @internal */
-export namespace WorkEligibilityCategory$ {
-    export const inboundSchema: z.ZodType<WorkEligibilityCategory, z.ZodTypeDef, unknown> = z
-        .object({
-            source_value: z
-                .nullable(
-                    z.union([
-                        z.lazy(() => WorkEligibilitySchemasDocument4$.inboundSchema),
-                        z.string(),
-                        z.number(),
-                        z.boolean(),
-                    ])
-                )
-                .optional(),
-            value: z.nullable(z.string()).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                source_value: "sourceValue",
-            });
+export const WorkEligibilityCategory$inboundSchema: z.ZodType<
+    WorkEligibilityCategory,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        source_value: z
+            .nullable(
+                z.union([
+                    z.lazy(() => WorkEligibilitySchemasDocument4$inboundSchema),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                ])
+            )
+            .optional(),
+        value: z.nullable(z.string()).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            source_value: "sourceValue",
         });
-
-    export type Outbound = {
-        source_value?:
-            | WorkEligibilitySchemasDocument4$.Outbound
-            | string
-            | number
-            | boolean
-            | null
-            | undefined;
-        value?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, WorkEligibilityCategory> = z
-        .object({
-            sourceValue: z
-                .nullable(
-                    z.union([
-                        z.lazy(() => WorkEligibilitySchemasDocument4$.outboundSchema),
-                        z.string(),
-                        z.number(),
-                        z.boolean(),
-                    ])
-                )
-                .optional(),
-            value: z.nullable(z.string()).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                sourceValue: "source_value",
-            });
-        });
-}
+    });
 
 /** @internal */
-export namespace WorkEligibilitySchemasDocumentFileFormat4$ {
-    export const inboundSchema: z.ZodType<
-        WorkEligibilitySchemasDocumentFileFormat4,
-        z.ZodTypeDef,
-        unknown
-    > = z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        WorkEligibilitySchemasDocumentFileFormat4
-    > = z.object({});
-}
-
-/** @internal */
-export namespace WorkEligibilitySchemasSourceValue$ {
-    export const inboundSchema: z.ZodType<
-        WorkEligibilitySchemasSourceValue,
-        z.ZodTypeDef,
-        unknown
-    > = z.union([
-        z.lazy(() => WorkEligibilitySchemasDocumentFileFormat4$.inboundSchema),
-        z.string(),
-        z.number(),
-        z.boolean(),
-    ]);
-
-    export type Outbound =
-        | WorkEligibilitySchemasDocumentFileFormat4$.Outbound
+export type WorkEligibilityCategory$Outbound = {
+    source_value?:
+        | WorkEligibilitySchemasDocument4$Outbound
         | string
         | number
-        | boolean;
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        WorkEligibilitySchemasSourceValue
-    > = z.union([
-        z.lazy(() => WorkEligibilitySchemasDocumentFileFormat4$.outboundSchema),
-        z.string(),
-        z.number(),
-        z.boolean(),
-    ]);
+        | boolean
+        | null
+        | undefined;
+    value?: string | null | undefined;
+};
+
+/** @internal */
+export const WorkEligibilityCategory$outboundSchema: z.ZodType<
+    WorkEligibilityCategory$Outbound,
+    z.ZodTypeDef,
+    WorkEligibilityCategory
+> = z
+    .object({
+        sourceValue: z
+            .nullable(
+                z.union([
+                    z.lazy(() => WorkEligibilitySchemasDocument4$outboundSchema),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                ])
+            )
+            .optional(),
+        value: z.nullable(z.string()).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            sourceValue: "source_value",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace WorkEligibilityCategory$ {
+    /** @deprecated use `WorkEligibilityCategory$inboundSchema` instead. */
+    export const inboundSchema = WorkEligibilityCategory$inboundSchema;
+    /** @deprecated use `WorkEligibilityCategory$outboundSchema` instead. */
+    export const outboundSchema = WorkEligibilityCategory$outboundSchema;
+    /** @deprecated use `WorkEligibilityCategory$Outbound` instead. */
+    export type Outbound = WorkEligibilityCategory$Outbound;
 }
 
 /** @internal */
+export const WorkEligibilitySchemasDocumentFileFormat4$inboundSchema: z.ZodType<
+    WorkEligibilitySchemasDocumentFileFormat4,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type WorkEligibilitySchemasDocumentFileFormat4$Outbound = {};
+
+/** @internal */
+export const WorkEligibilitySchemasDocumentFileFormat4$outboundSchema: z.ZodType<
+    WorkEligibilitySchemasDocumentFileFormat4$Outbound,
+    z.ZodTypeDef,
+    WorkEligibilitySchemasDocumentFileFormat4
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace WorkEligibilitySchemasDocumentFileFormat4$ {
+    /** @deprecated use `WorkEligibilitySchemasDocumentFileFormat4$inboundSchema` instead. */
+    export const inboundSchema = WorkEligibilitySchemasDocumentFileFormat4$inboundSchema;
+    /** @deprecated use `WorkEligibilitySchemasDocumentFileFormat4$outboundSchema` instead. */
+    export const outboundSchema = WorkEligibilitySchemasDocumentFileFormat4$outboundSchema;
+    /** @deprecated use `WorkEligibilitySchemasDocumentFileFormat4$Outbound` instead. */
+    export type Outbound = WorkEligibilitySchemasDocumentFileFormat4$Outbound;
+}
+
+/** @internal */
+export const WorkEligibilitySchemasSourceValue$inboundSchema: z.ZodType<
+    WorkEligibilitySchemasSourceValue,
+    z.ZodTypeDef,
+    unknown
+> = z.union([
+    z.lazy(() => WorkEligibilitySchemasDocumentFileFormat4$inboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+]);
+
+/** @internal */
+export type WorkEligibilitySchemasSourceValue$Outbound =
+    | WorkEligibilitySchemasDocumentFileFormat4$Outbound
+    | string
+    | number
+    | boolean;
+
+/** @internal */
+export const WorkEligibilitySchemasSourceValue$outboundSchema: z.ZodType<
+    WorkEligibilitySchemasSourceValue$Outbound,
+    z.ZodTypeDef,
+    WorkEligibilitySchemasSourceValue
+> = z.union([
+    z.lazy(() => WorkEligibilitySchemasDocumentFileFormat4$outboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace WorkEligibilitySchemasSourceValue$ {
+    /** @deprecated use `WorkEligibilitySchemasSourceValue$inboundSchema` instead. */
+    export const inboundSchema = WorkEligibilitySchemasSourceValue$inboundSchema;
+    /** @deprecated use `WorkEligibilitySchemasSourceValue$outboundSchema` instead. */
+    export const outboundSchema = WorkEligibilitySchemasSourceValue$outboundSchema;
+    /** @deprecated use `WorkEligibilitySchemasSourceValue$Outbound` instead. */
+    export type Outbound = WorkEligibilitySchemasSourceValue$Outbound;
+}
+
+/** @internal */
+export const WorkEligibilitySchemasDocumentValue$inboundSchema: z.ZodType<
+    WorkEligibilitySchemasDocumentValueOpen,
+    z.ZodTypeDef,
+    unknown
+> = z.union([
+    z.nativeEnum(WorkEligibilitySchemasDocumentValue),
+    z.string().transform(catchUnrecognizedEnum),
+]);
+
+/** @internal */
+export const WorkEligibilitySchemasDocumentValue$outboundSchema: z.ZodType<
+    WorkEligibilitySchemasDocumentValueOpen,
+    z.ZodTypeDef,
+    WorkEligibilitySchemasDocumentValueOpen
+> = z.union([
+    z.nativeEnum(WorkEligibilitySchemasDocumentValue),
+    z.string().and(z.custom<Unrecognized<string>>()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace WorkEligibilitySchemasDocumentValue$ {
-    export const inboundSchema: z.ZodType<
-        WorkEligibilitySchemasDocumentValueOpen,
-        z.ZodTypeDef,
-        unknown
-    > = z.union([
-        z.nativeEnum(WorkEligibilitySchemasDocumentValue),
-        z.string().transform(catchUnrecognizedEnum),
-    ]);
-
-    export const outboundSchema: z.ZodType<
-        WorkEligibilitySchemasDocumentValueOpen,
-        z.ZodTypeDef,
-        WorkEligibilitySchemasDocumentValueOpen
-    > = z.union([
-        z.nativeEnum(WorkEligibilitySchemasDocumentValue),
-        z.string().and(z.custom<Unrecognized<string>>()),
-    ]);
+    /** @deprecated use `WorkEligibilitySchemasDocumentValue$inboundSchema` instead. */
+    export const inboundSchema = WorkEligibilitySchemasDocumentValue$inboundSchema;
+    /** @deprecated use `WorkEligibilitySchemasDocumentValue$outboundSchema` instead. */
+    export const outboundSchema = WorkEligibilitySchemasDocumentValue$outboundSchema;
 }
 
 /** @internal */
+export const WorkEligibilityFileFormat$inboundSchema: z.ZodType<
+    WorkEligibilityFileFormat,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        source_value: z
+            .nullable(
+                z.union([
+                    z.lazy(() => WorkEligibilitySchemasDocumentFileFormat4$inboundSchema),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                ])
+            )
+            .optional(),
+        value: z.nullable(WorkEligibilitySchemasDocumentValue$inboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            source_value: "sourceValue",
+        });
+    });
+
+/** @internal */
+export type WorkEligibilityFileFormat$Outbound = {
+    source_value?:
+        | WorkEligibilitySchemasDocumentFileFormat4$Outbound
+        | string
+        | number
+        | boolean
+        | null
+        | undefined;
+    value?: string | null | undefined;
+};
+
+/** @internal */
+export const WorkEligibilityFileFormat$outboundSchema: z.ZodType<
+    WorkEligibilityFileFormat$Outbound,
+    z.ZodTypeDef,
+    WorkEligibilityFileFormat
+> = z
+    .object({
+        sourceValue: z
+            .nullable(
+                z.union([
+                    z.lazy(() => WorkEligibilitySchemasDocumentFileFormat4$outboundSchema),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                ])
+            )
+            .optional(),
+        value: z.nullable(WorkEligibilitySchemasDocumentValue$outboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            sourceValue: "source_value",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace WorkEligibilityFileFormat$ {
-    export const inboundSchema: z.ZodType<WorkEligibilityFileFormat, z.ZodTypeDef, unknown> = z
-        .object({
-            source_value: z
-                .nullable(
-                    z.union([
-                        z.lazy(() => WorkEligibilitySchemasDocumentFileFormat4$.inboundSchema),
-                        z.string(),
-                        z.number(),
-                        z.boolean(),
-                    ])
-                )
-                .optional(),
-            value: z.nullable(WorkEligibilitySchemasDocumentValue$.inboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                source_value: "sourceValue",
-            });
-        });
-
-    export type Outbound = {
-        source_value?:
-            | WorkEligibilitySchemasDocumentFileFormat4$.Outbound
-            | string
-            | number
-            | boolean
-            | null
-            | undefined;
-        value?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, WorkEligibilityFileFormat> = z
-        .object({
-            sourceValue: z
-                .nullable(
-                    z.union([
-                        z.lazy(() => WorkEligibilitySchemasDocumentFileFormat4$.outboundSchema),
-                        z.string(),
-                        z.number(),
-                        z.boolean(),
-                    ])
-                )
-                .optional(),
-            value: z.nullable(WorkEligibilitySchemasDocumentValue$.outboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                sourceValue: "source_value",
-            });
-        });
+    /** @deprecated use `WorkEligibilityFileFormat$inboundSchema` instead. */
+    export const inboundSchema = WorkEligibilityFileFormat$inboundSchema;
+    /** @deprecated use `WorkEligibilityFileFormat$outboundSchema` instead. */
+    export const outboundSchema = WorkEligibilityFileFormat$outboundSchema;
+    /** @deprecated use `WorkEligibilityFileFormat$Outbound` instead. */
+    export type Outbound = WorkEligibilityFileFormat$Outbound;
 }
 
 /** @internal */
+export const WorkEligibilityDocument$inboundSchema: z.ZodType<
+    WorkEligibilityDocument,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        category: z.nullable(z.lazy(() => WorkEligibilityCategory$inboundSchema)).optional(),
+        contents: z.nullable(z.array(Content$inboundSchema)).optional(),
+        created_at: z
+            .nullable(
+                z
+                    .string()
+                    .datetime({ offset: true })
+                    .transform((v) => new Date(v))
+            )
+            .optional(),
+        file_format: z.nullable(z.lazy(() => WorkEligibilityFileFormat$inboundSchema)).optional(),
+        id: z.nullable(z.string()).optional(),
+        name: z.nullable(z.string()).optional(),
+        path: z.nullable(z.string()).optional(),
+        remote_id: z.nullable(z.string()).optional(),
+        remote_url: z.nullable(z.string()).optional(),
+        updated_at: z
+            .nullable(
+                z
+                    .string()
+                    .datetime({ offset: true })
+                    .transform((v) => new Date(v))
+            )
+            .optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            created_at: "createdAt",
+            file_format: "fileFormat",
+            remote_id: "remoteId",
+            remote_url: "remoteUrl",
+            updated_at: "updatedAt",
+        });
+    });
+
+/** @internal */
+export type WorkEligibilityDocument$Outbound = {
+    category?: WorkEligibilityCategory$Outbound | null | undefined;
+    contents?: Array<Content$Outbound> | null | undefined;
+    created_at?: string | null | undefined;
+    file_format?: WorkEligibilityFileFormat$Outbound | null | undefined;
+    id?: string | null | undefined;
+    name?: string | null | undefined;
+    path?: string | null | undefined;
+    remote_id?: string | null | undefined;
+    remote_url?: string | null | undefined;
+    updated_at?: string | null | undefined;
+};
+
+/** @internal */
+export const WorkEligibilityDocument$outboundSchema: z.ZodType<
+    WorkEligibilityDocument$Outbound,
+    z.ZodTypeDef,
+    WorkEligibilityDocument
+> = z
+    .object({
+        category: z.nullable(z.lazy(() => WorkEligibilityCategory$outboundSchema)).optional(),
+        contents: z.nullable(z.array(Content$outboundSchema)).optional(),
+        createdAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+        fileFormat: z.nullable(z.lazy(() => WorkEligibilityFileFormat$outboundSchema)).optional(),
+        id: z.nullable(z.string()).optional(),
+        name: z.nullable(z.string()).optional(),
+        path: z.nullable(z.string()).optional(),
+        remoteId: z.nullable(z.string()).optional(),
+        remoteUrl: z.nullable(z.string()).optional(),
+        updatedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            createdAt: "created_at",
+            fileFormat: "file_format",
+            remoteId: "remote_id",
+            remoteUrl: "remote_url",
+            updatedAt: "updated_at",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace WorkEligibilityDocument$ {
-    export const inboundSchema: z.ZodType<WorkEligibilityDocument, z.ZodTypeDef, unknown> = z
-        .object({
-            category: z.nullable(z.lazy(() => WorkEligibilityCategory$.inboundSchema)).optional(),
-            contents: z.nullable(z.array(Content$.inboundSchema)).optional(),
-            created_at: z
-                .nullable(
-                    z
-                        .string()
-                        .datetime({ offset: true })
-                        .transform((v) => new Date(v))
-                )
-                .optional(),
-            file_format: z
-                .nullable(z.lazy(() => WorkEligibilityFileFormat$.inboundSchema))
-                .optional(),
-            id: z.nullable(z.string()).optional(),
-            name: z.nullable(z.string()).optional(),
-            path: z.nullable(z.string()).optional(),
-            remote_id: z.nullable(z.string()).optional(),
-            remote_url: z.nullable(z.string()).optional(),
-            updated_at: z
-                .nullable(
-                    z
-                        .string()
-                        .datetime({ offset: true })
-                        .transform((v) => new Date(v))
-                )
-                .optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                created_at: "createdAt",
-                file_format: "fileFormat",
-                remote_id: "remoteId",
-                remote_url: "remoteUrl",
-                updated_at: "updatedAt",
-            });
-        });
-
-    export type Outbound = {
-        category?: WorkEligibilityCategory$.Outbound | null | undefined;
-        contents?: Array<Content$.Outbound> | null | undefined;
-        created_at?: string | null | undefined;
-        file_format?: WorkEligibilityFileFormat$.Outbound | null | undefined;
-        id?: string | null | undefined;
-        name?: string | null | undefined;
-        path?: string | null | undefined;
-        remote_id?: string | null | undefined;
-        remote_url?: string | null | undefined;
-        updated_at?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, WorkEligibilityDocument> = z
-        .object({
-            category: z.nullable(z.lazy(() => WorkEligibilityCategory$.outboundSchema)).optional(),
-            contents: z.nullable(z.array(Content$.outboundSchema)).optional(),
-            createdAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
-            fileFormat: z
-                .nullable(z.lazy(() => WorkEligibilityFileFormat$.outboundSchema))
-                .optional(),
-            id: z.nullable(z.string()).optional(),
-            name: z.nullable(z.string()).optional(),
-            path: z.nullable(z.string()).optional(),
-            remoteId: z.nullable(z.string()).optional(),
-            remoteUrl: z.nullable(z.string()).optional(),
-            updatedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                createdAt: "created_at",
-                fileFormat: "file_format",
-                remoteId: "remote_id",
-                remoteUrl: "remote_url",
-                updatedAt: "updated_at",
-            });
-        });
+    /** @deprecated use `WorkEligibilityDocument$inboundSchema` instead. */
+    export const inboundSchema = WorkEligibilityDocument$inboundSchema;
+    /** @deprecated use `WorkEligibilityDocument$outboundSchema` instead. */
+    export const outboundSchema = WorkEligibilityDocument$outboundSchema;
+    /** @deprecated use `WorkEligibilityDocument$Outbound` instead. */
+    export type Outbound = WorkEligibilityDocument$Outbound;
 }
 
 /** @internal */
+export const WorkEligibility4$inboundSchema: z.ZodType<WorkEligibility4, z.ZodTypeDef, unknown> =
+    z.object({});
+
+/** @internal */
+export type WorkEligibility4$Outbound = {};
+
+/** @internal */
+export const WorkEligibility4$outboundSchema: z.ZodType<
+    WorkEligibility4$Outbound,
+    z.ZodTypeDef,
+    WorkEligibility4
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace WorkEligibility4$ {
-    export const inboundSchema: z.ZodType<WorkEligibility4, z.ZodTypeDef, unknown> = z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, WorkEligibility4> = z.object({});
+    /** @deprecated use `WorkEligibility4$inboundSchema` instead. */
+    export const inboundSchema = WorkEligibility4$inboundSchema;
+    /** @deprecated use `WorkEligibility4$outboundSchema` instead. */
+    export const outboundSchema = WorkEligibility4$outboundSchema;
+    /** @deprecated use `WorkEligibility4$Outbound` instead. */
+    export type Outbound = WorkEligibility4$Outbound;
 }
 
 /** @internal */
+export const WorkEligibilitySourceValue$inboundSchema: z.ZodType<
+    WorkEligibilitySourceValue,
+    z.ZodTypeDef,
+    unknown
+> = z.union([z.lazy(() => WorkEligibility4$inboundSchema), z.string(), z.number(), z.boolean()]);
+
+/** @internal */
+export type WorkEligibilitySourceValue$Outbound =
+    | WorkEligibility4$Outbound
+    | string
+    | number
+    | boolean;
+
+/** @internal */
+export const WorkEligibilitySourceValue$outboundSchema: z.ZodType<
+    WorkEligibilitySourceValue$Outbound,
+    z.ZodTypeDef,
+    WorkEligibilitySourceValue
+> = z.union([z.lazy(() => WorkEligibility4$outboundSchema), z.string(), z.number(), z.boolean()]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace WorkEligibilitySourceValue$ {
-    export const inboundSchema: z.ZodType<WorkEligibilitySourceValue, z.ZodTypeDef, unknown> =
-        z.union([
-            z.lazy(() => WorkEligibility4$.inboundSchema),
-            z.string(),
-            z.number(),
-            z.boolean(),
-        ]);
-
-    export type Outbound = WorkEligibility4$.Outbound | string | number | boolean;
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, WorkEligibilitySourceValue> =
-        z.union([
-            z.lazy(() => WorkEligibility4$.outboundSchema),
-            z.string(),
-            z.number(),
-            z.boolean(),
-        ]);
+    /** @deprecated use `WorkEligibilitySourceValue$inboundSchema` instead. */
+    export const inboundSchema = WorkEligibilitySourceValue$inboundSchema;
+    /** @deprecated use `WorkEligibilitySourceValue$outboundSchema` instead. */
+    export const outboundSchema = WorkEligibilitySourceValue$outboundSchema;
+    /** @deprecated use `WorkEligibilitySourceValue$Outbound` instead. */
+    export type Outbound = WorkEligibilitySourceValue$Outbound;
 }
 
 /** @internal */
+export const WorkEligibilityValue$inboundSchema: z.ZodType<
+    WorkEligibilityValueOpen,
+    z.ZodTypeDef,
+    unknown
+> = z.union([z.nativeEnum(WorkEligibilityValue), z.string().transform(catchUnrecognizedEnum)]);
+
+/** @internal */
+export const WorkEligibilityValue$outboundSchema: z.ZodType<
+    WorkEligibilityValueOpen,
+    z.ZodTypeDef,
+    WorkEligibilityValueOpen
+> = z.union([z.nativeEnum(WorkEligibilityValue), z.string().and(z.custom<Unrecognized<string>>())]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace WorkEligibilityValue$ {
-    export const inboundSchema: z.ZodType<WorkEligibilityValueOpen, z.ZodTypeDef, unknown> =
-        z.union([z.nativeEnum(WorkEligibilityValue), z.string().transform(catchUnrecognizedEnum)]);
-
-    export const outboundSchema: z.ZodType<
-        WorkEligibilityValueOpen,
-        z.ZodTypeDef,
-        WorkEligibilityValueOpen
-    > = z.union([
-        z.nativeEnum(WorkEligibilityValue),
-        z.string().and(z.custom<Unrecognized<string>>()),
-    ]);
+    /** @deprecated use `WorkEligibilityValue$inboundSchema` instead. */
+    export const inboundSchema = WorkEligibilityValue$inboundSchema;
+    /** @deprecated use `WorkEligibilityValue$outboundSchema` instead. */
+    export const outboundSchema = WorkEligibilityValue$outboundSchema;
 }
 
 /** @internal */
+export const WorkEligibilityIssuedBy$inboundSchema: z.ZodType<
+    WorkEligibilityIssuedBy,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        source_value: z
+            .nullable(
+                z.union([
+                    z.lazy(() => WorkEligibility4$inboundSchema),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                ])
+            )
+            .optional(),
+        value: z.nullable(WorkEligibilityValue$inboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            source_value: "sourceValue",
+        });
+    });
+
+/** @internal */
+export type WorkEligibilityIssuedBy$Outbound = {
+    source_value?: WorkEligibility4$Outbound | string | number | boolean | null | undefined;
+    value?: string | null | undefined;
+};
+
+/** @internal */
+export const WorkEligibilityIssuedBy$outboundSchema: z.ZodType<
+    WorkEligibilityIssuedBy$Outbound,
+    z.ZodTypeDef,
+    WorkEligibilityIssuedBy
+> = z
+    .object({
+        sourceValue: z
+            .nullable(
+                z.union([
+                    z.lazy(() => WorkEligibility4$outboundSchema),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                ])
+            )
+            .optional(),
+        value: z.nullable(WorkEligibilityValue$outboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            sourceValue: "source_value",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace WorkEligibilityIssuedBy$ {
-    export const inboundSchema: z.ZodType<WorkEligibilityIssuedBy, z.ZodTypeDef, unknown> = z
-        .object({
-            source_value: z
-                .nullable(
-                    z.union([
-                        z.lazy(() => WorkEligibility4$.inboundSchema),
-                        z.string(),
-                        z.number(),
-                        z.boolean(),
-                    ])
-                )
-                .optional(),
-            value: z.nullable(WorkEligibilityValue$.inboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                source_value: "sourceValue",
-            });
-        });
-
-    export type Outbound = {
-        source_value?: WorkEligibility4$.Outbound | string | number | boolean | null | undefined;
-        value?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, WorkEligibilityIssuedBy> = z
-        .object({
-            sourceValue: z
-                .nullable(
-                    z.union([
-                        z.lazy(() => WorkEligibility4$.outboundSchema),
-                        z.string(),
-                        z.number(),
-                        z.boolean(),
-                    ])
-                )
-                .optional(),
-            value: z.nullable(WorkEligibilityValue$.outboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                sourceValue: "source_value",
-            });
-        });
+    /** @deprecated use `WorkEligibilityIssuedBy$inboundSchema` instead. */
+    export const inboundSchema = WorkEligibilityIssuedBy$inboundSchema;
+    /** @deprecated use `WorkEligibilityIssuedBy$outboundSchema` instead. */
+    export const outboundSchema = WorkEligibilityIssuedBy$outboundSchema;
+    /** @deprecated use `WorkEligibilityIssuedBy$Outbound` instead. */
+    export type Outbound = WorkEligibilityIssuedBy$Outbound;
 }
 
 /** @internal */
+export const WorkEligibilitySchemas4$inboundSchema: z.ZodType<
+    WorkEligibilitySchemas4,
+    z.ZodTypeDef,
+    unknown
+> = z.object({});
+
+/** @internal */
+export type WorkEligibilitySchemas4$Outbound = {};
+
+/** @internal */
+export const WorkEligibilitySchemas4$outboundSchema: z.ZodType<
+    WorkEligibilitySchemas4$Outbound,
+    z.ZodTypeDef,
+    WorkEligibilitySchemas4
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace WorkEligibilitySchemas4$ {
-    export const inboundSchema: z.ZodType<WorkEligibilitySchemas4, z.ZodTypeDef, unknown> =
-        z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, WorkEligibilitySchemas4> =
-        z.object({});
+    /** @deprecated use `WorkEligibilitySchemas4$inboundSchema` instead. */
+    export const inboundSchema = WorkEligibilitySchemas4$inboundSchema;
+    /** @deprecated use `WorkEligibilitySchemas4$outboundSchema` instead. */
+    export const outboundSchema = WorkEligibilitySchemas4$outboundSchema;
+    /** @deprecated use `WorkEligibilitySchemas4$Outbound` instead. */
+    export type Outbound = WorkEligibilitySchemas4$Outbound;
 }
 
 /** @internal */
+export const WorkEligibilitySourceType$inboundSchema: z.ZodType<
+    WorkEligibilitySourceType,
+    z.ZodTypeDef,
+    unknown
+> = z.union([
+    z.lazy(() => WorkEligibilitySchemas4$inboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+]);
+
+/** @internal */
+export type WorkEligibilitySourceType$Outbound =
+    | WorkEligibilitySchemas4$Outbound
+    | string
+    | number
+    | boolean;
+
+/** @internal */
+export const WorkEligibilitySourceType$outboundSchema: z.ZodType<
+    WorkEligibilitySourceType$Outbound,
+    z.ZodTypeDef,
+    WorkEligibilitySourceType
+> = z.union([
+    z.lazy(() => WorkEligibilitySchemas4$outboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace WorkEligibilitySourceType$ {
-    export const inboundSchema: z.ZodType<WorkEligibilitySourceType, z.ZodTypeDef, unknown> =
-        z.union([
-            z.lazy(() => WorkEligibilitySchemas4$.inboundSchema),
-            z.string(),
-            z.number(),
-            z.boolean(),
-        ]);
-
-    export type Outbound = WorkEligibilitySchemas4$.Outbound | string | number | boolean;
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, WorkEligibilitySourceType> =
-        z.union([
-            z.lazy(() => WorkEligibilitySchemas4$.outboundSchema),
-            z.string(),
-            z.number(),
-            z.boolean(),
-        ]);
+    /** @deprecated use `WorkEligibilitySourceType$inboundSchema` instead. */
+    export const inboundSchema = WorkEligibilitySourceType$inboundSchema;
+    /** @deprecated use `WorkEligibilitySourceType$outboundSchema` instead. */
+    export const outboundSchema = WorkEligibilitySourceType$outboundSchema;
+    /** @deprecated use `WorkEligibilitySourceType$Outbound` instead. */
+    export type Outbound = WorkEligibilitySourceType$Outbound;
 }
 
 /** @internal */
+export const WorkEligibilitySchemasValue$inboundSchema: z.ZodType<
+    WorkEligibilitySchemasValueOpen,
+    z.ZodTypeDef,
+    unknown
+> = z.union([
+    z.nativeEnum(WorkEligibilitySchemasValue),
+    z.string().transform(catchUnrecognizedEnum),
+]);
+
+/** @internal */
+export const WorkEligibilitySchemasValue$outboundSchema: z.ZodType<
+    WorkEligibilitySchemasValueOpen,
+    z.ZodTypeDef,
+    WorkEligibilitySchemasValueOpen
+> = z.union([
+    z.nativeEnum(WorkEligibilitySchemasValue),
+    z.string().and(z.custom<Unrecognized<string>>()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace WorkEligibilitySchemasValue$ {
-    export const inboundSchema: z.ZodType<WorkEligibilitySchemasValueOpen, z.ZodTypeDef, unknown> =
-        z.union([
-            z.nativeEnum(WorkEligibilitySchemasValue),
-            z.string().transform(catchUnrecognizedEnum),
-        ]);
-
-    export const outboundSchema: z.ZodType<
-        WorkEligibilitySchemasValueOpen,
-        z.ZodTypeDef,
-        WorkEligibilitySchemasValueOpen
-    > = z.union([
-        z.nativeEnum(WorkEligibilitySchemasValue),
-        z.string().and(z.custom<Unrecognized<string>>()),
-    ]);
+    /** @deprecated use `WorkEligibilitySchemasValue$inboundSchema` instead. */
+    export const inboundSchema = WorkEligibilitySchemasValue$inboundSchema;
+    /** @deprecated use `WorkEligibilitySchemasValue$outboundSchema` instead. */
+    export const outboundSchema = WorkEligibilitySchemasValue$outboundSchema;
 }
 
 /** @internal */
+export const WorkEligibilityType$inboundSchema: z.ZodType<
+    WorkEligibilityType,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        source_type: z
+            .nullable(
+                z.union([
+                    z.lazy(() => WorkEligibilitySchemas4$inboundSchema),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                ])
+            )
+            .optional(),
+        value: z.nullable(WorkEligibilitySchemasValue$inboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            source_type: "sourceType",
+        });
+    });
+
+/** @internal */
+export type WorkEligibilityType$Outbound = {
+    source_type?: WorkEligibilitySchemas4$Outbound | string | number | boolean | null | undefined;
+    value?: string | null | undefined;
+};
+
+/** @internal */
+export const WorkEligibilityType$outboundSchema: z.ZodType<
+    WorkEligibilityType$Outbound,
+    z.ZodTypeDef,
+    WorkEligibilityType
+> = z
+    .object({
+        sourceType: z
+            .nullable(
+                z.union([
+                    z.lazy(() => WorkEligibilitySchemas4$outboundSchema),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                ])
+            )
+            .optional(),
+        value: z.nullable(WorkEligibilitySchemasValue$outboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            sourceType: "source_type",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace WorkEligibilityType$ {
-    export const inboundSchema: z.ZodType<WorkEligibilityType, z.ZodTypeDef, unknown> = z
-        .object({
-            source_type: z
-                .nullable(
-                    z.union([
-                        z.lazy(() => WorkEligibilitySchemas4$.inboundSchema),
-                        z.string(),
-                        z.number(),
-                        z.boolean(),
-                    ])
-                )
-                .optional(),
-            value: z.nullable(WorkEligibilitySchemasValue$.inboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                source_type: "sourceType",
-            });
-        });
-
-    export type Outbound = {
-        source_type?:
-            | WorkEligibilitySchemas4$.Outbound
-            | string
-            | number
-            | boolean
-            | null
-            | undefined;
-        value?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, WorkEligibilityType> = z
-        .object({
-            sourceType: z
-                .nullable(
-                    z.union([
-                        z.lazy(() => WorkEligibilitySchemas4$.outboundSchema),
-                        z.string(),
-                        z.number(),
-                        z.boolean(),
-                    ])
-                )
-                .optional(),
-            value: z.nullable(WorkEligibilitySchemasValue$.outboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                sourceType: "source_type",
-            });
-        });
+    /** @deprecated use `WorkEligibilityType$inboundSchema` instead. */
+    export const inboundSchema = WorkEligibilityType$inboundSchema;
+    /** @deprecated use `WorkEligibilityType$outboundSchema` instead. */
+    export const outboundSchema = WorkEligibilityType$outboundSchema;
+    /** @deprecated use `WorkEligibilityType$Outbound` instead. */
+    export type Outbound = WorkEligibilityType$Outbound;
 }
 
 /** @internal */
+export const WorkEligibility$inboundSchema: z.ZodType<WorkEligibility, z.ZodTypeDef, unknown> = z
+    .object({
+        document: z.nullable(z.lazy(() => WorkEligibilityDocument$inboundSchema)).optional(),
+        id: z.nullable(z.string()).optional(),
+        issued_by: z.nullable(z.lazy(() => WorkEligibilityIssuedBy$inboundSchema)).optional(),
+        number: z.nullable(z.string()).optional(),
+        remote_id: z.nullable(z.string()).optional(),
+        sub_type: z.nullable(z.string()).optional(),
+        type: z.nullable(z.lazy(() => WorkEligibilityType$inboundSchema)).optional(),
+        valid_from: z
+            .nullable(
+                z
+                    .string()
+                    .datetime({ offset: true })
+                    .transform((v) => new Date(v))
+            )
+            .optional(),
+        valid_to: z
+            .nullable(
+                z
+                    .string()
+                    .datetime({ offset: true })
+                    .transform((v) => new Date(v))
+            )
+            .optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            issued_by: "issuedBy",
+            remote_id: "remoteId",
+            sub_type: "subType",
+            valid_from: "validFrom",
+            valid_to: "validTo",
+        });
+    });
+
+/** @internal */
+export type WorkEligibility$Outbound = {
+    document?: WorkEligibilityDocument$Outbound | null | undefined;
+    id?: string | null | undefined;
+    issued_by?: WorkEligibilityIssuedBy$Outbound | null | undefined;
+    number?: string | null | undefined;
+    remote_id?: string | null | undefined;
+    sub_type?: string | null | undefined;
+    type?: WorkEligibilityType$Outbound | null | undefined;
+    valid_from?: string | null | undefined;
+    valid_to?: string | null | undefined;
+};
+
+/** @internal */
+export const WorkEligibility$outboundSchema: z.ZodType<
+    WorkEligibility$Outbound,
+    z.ZodTypeDef,
+    WorkEligibility
+> = z
+    .object({
+        document: z.nullable(z.lazy(() => WorkEligibilityDocument$outboundSchema)).optional(),
+        id: z.nullable(z.string()).optional(),
+        issuedBy: z.nullable(z.lazy(() => WorkEligibilityIssuedBy$outboundSchema)).optional(),
+        number: z.nullable(z.string()).optional(),
+        remoteId: z.nullable(z.string()).optional(),
+        subType: z.nullable(z.string()).optional(),
+        type: z.nullable(z.lazy(() => WorkEligibilityType$outboundSchema)).optional(),
+        validFrom: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+        validTo: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            issuedBy: "issued_by",
+            remoteId: "remote_id",
+            subType: "sub_type",
+            validFrom: "valid_from",
+            validTo: "valid_to",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace WorkEligibility$ {
-    export const inboundSchema: z.ZodType<WorkEligibility, z.ZodTypeDef, unknown> = z
-        .object({
-            document: z.nullable(z.lazy(() => WorkEligibilityDocument$.inboundSchema)).optional(),
-            id: z.nullable(z.string()).optional(),
-            issued_by: z.nullable(z.lazy(() => WorkEligibilityIssuedBy$.inboundSchema)).optional(),
-            number: z.nullable(z.string()).optional(),
-            remote_id: z.nullable(z.string()).optional(),
-            sub_type: z.nullable(z.string()).optional(),
-            type: z.nullable(z.lazy(() => WorkEligibilityType$.inboundSchema)).optional(),
-            valid_from: z
-                .nullable(
-                    z
-                        .string()
-                        .datetime({ offset: true })
-                        .transform((v) => new Date(v))
-                )
-                .optional(),
-            valid_to: z
-                .nullable(
-                    z
-                        .string()
-                        .datetime({ offset: true })
-                        .transform((v) => new Date(v))
-                )
-                .optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                issued_by: "issuedBy",
-                remote_id: "remoteId",
-                sub_type: "subType",
-                valid_from: "validFrom",
-                valid_to: "validTo",
-            });
-        });
-
-    export type Outbound = {
-        document?: WorkEligibilityDocument$.Outbound | null | undefined;
-        id?: string | null | undefined;
-        issued_by?: WorkEligibilityIssuedBy$.Outbound | null | undefined;
-        number?: string | null | undefined;
-        remote_id?: string | null | undefined;
-        sub_type?: string | null | undefined;
-        type?: WorkEligibilityType$.Outbound | null | undefined;
-        valid_from?: string | null | undefined;
-        valid_to?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, WorkEligibility> = z
-        .object({
-            document: z.nullable(z.lazy(() => WorkEligibilityDocument$.outboundSchema)).optional(),
-            id: z.nullable(z.string()).optional(),
-            issuedBy: z.nullable(z.lazy(() => WorkEligibilityIssuedBy$.outboundSchema)).optional(),
-            number: z.nullable(z.string()).optional(),
-            remoteId: z.nullable(z.string()).optional(),
-            subType: z.nullable(z.string()).optional(),
-            type: z.nullable(z.lazy(() => WorkEligibilityType$.outboundSchema)).optional(),
-            validFrom: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
-            validTo: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                issuedBy: "issued_by",
-                remoteId: "remote_id",
-                subType: "sub_type",
-                validFrom: "valid_from",
-                validTo: "valid_to",
-            });
-        });
+    /** @deprecated use `WorkEligibility$inboundSchema` instead. */
+    export const inboundSchema = WorkEligibility$inboundSchema;
+    /** @deprecated use `WorkEligibility$outboundSchema` instead. */
+    export const outboundSchema = WorkEligibility$outboundSchema;
+    /** @deprecated use `WorkEligibility$Outbound` instead. */
+    export type Outbound = WorkEligibility$Outbound;
 }

@@ -30,4 +30,5 @@ The category name to associate with the file
 | `Other`           | other             |
 | `Benefit`         | benefit           |
 | `IdVerification`  | id_verification   |
+| `BackgroundCheck` | background_check  |
 | `UnmappedValue`   | unmapped_value    |

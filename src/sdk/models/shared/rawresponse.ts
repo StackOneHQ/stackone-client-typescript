@@ -12,25 +12,42 @@ export type RawResponse = {
 };
 
 /** @internal */
+export const RawResponse$inboundSchema: z.ZodType<RawResponse, z.ZodTypeDef, unknown> = z.object({
+    body: z.nullable(z.string()).optional(),
+    method: z.string(),
+    response: z.nullable(z.record(z.any())).optional(),
+    url: z.string(),
+});
+
+/** @internal */
+export type RawResponse$Outbound = {
+    body?: string | null | undefined;
+    method: string;
+    response?: { [k: string]: any } | null | undefined;
+    url: string;
+};
+
+/** @internal */
+export const RawResponse$outboundSchema: z.ZodType<
+    RawResponse$Outbound,
+    z.ZodTypeDef,
+    RawResponse
+> = z.object({
+    body: z.nullable(z.string()).optional(),
+    method: z.string(),
+    response: z.nullable(z.record(z.any())).optional(),
+    url: z.string(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace RawResponse$ {
-    export const inboundSchema: z.ZodType<RawResponse, z.ZodTypeDef, unknown> = z.object({
-        body: z.nullable(z.string()).optional(),
-        method: z.string(),
-        response: z.nullable(z.record(z.any())).optional(),
-        url: z.string(),
-    });
-
-    export type Outbound = {
-        body?: string | null | undefined;
-        method: string;
-        response?: { [k: string]: any } | null | undefined;
-        url: string;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, RawResponse> = z.object({
-        body: z.nullable(z.string()).optional(),
-        method: z.string(),
-        response: z.nullable(z.record(z.any())).optional(),
-        url: z.string(),
-    });
+    /** @deprecated use `RawResponse$inboundSchema` instead. */
+    export const inboundSchema = RawResponse$inboundSchema;
+    /** @deprecated use `RawResponse$outboundSchema` instead. */
+    export const outboundSchema = RawResponse$outboundSchema;
+    /** @deprecated use `RawResponse$Outbound` instead. */
+    export type Outbound = RawResponse$Outbound;
 }

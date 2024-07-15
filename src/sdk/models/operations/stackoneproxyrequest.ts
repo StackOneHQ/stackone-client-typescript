@@ -33,72 +33,114 @@ export type StackoneProxyRequestResponse = {
 };
 
 /** @internal */
+export const StackoneProxyRequestRequest$inboundSchema: z.ZodType<
+    StackoneProxyRequestRequest,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        ProxyRequestBody: shared.ProxyRequestBody$inboundSchema,
+        "x-account-id": z.string(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            ProxyRequestBody: "proxyRequestBody",
+            "x-account-id": "xAccountId",
+        });
+    });
+
+/** @internal */
+export type StackoneProxyRequestRequest$Outbound = {
+    ProxyRequestBody: shared.ProxyRequestBody$Outbound;
+    "x-account-id": string;
+};
+
+/** @internal */
+export const StackoneProxyRequestRequest$outboundSchema: z.ZodType<
+    StackoneProxyRequestRequest$Outbound,
+    z.ZodTypeDef,
+    StackoneProxyRequestRequest
+> = z
+    .object({
+        proxyRequestBody: shared.ProxyRequestBody$outboundSchema,
+        xAccountId: z.string(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            proxyRequestBody: "ProxyRequestBody",
+            xAccountId: "x-account-id",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace StackoneProxyRequestRequest$ {
-    export const inboundSchema: z.ZodType<StackoneProxyRequestRequest, z.ZodTypeDef, unknown> = z
-        .object({
-            ProxyRequestBody: shared.ProxyRequestBody$.inboundSchema,
-            "x-account-id": z.string(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                ProxyRequestBody: "proxyRequestBody",
-                "x-account-id": "xAccountId",
-            });
-        });
-
-    export type Outbound = {
-        ProxyRequestBody: shared.ProxyRequestBody$.Outbound;
-        "x-account-id": string;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, StackoneProxyRequestRequest> = z
-        .object({
-            proxyRequestBody: shared.ProxyRequestBody$.outboundSchema,
-            xAccountId: z.string(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                proxyRequestBody: "ProxyRequestBody",
-                xAccountId: "x-account-id",
-            });
-        });
+    /** @deprecated use `StackoneProxyRequestRequest$inboundSchema` instead. */
+    export const inboundSchema = StackoneProxyRequestRequest$inboundSchema;
+    /** @deprecated use `StackoneProxyRequestRequest$outboundSchema` instead. */
+    export const outboundSchema = StackoneProxyRequestRequest$outboundSchema;
+    /** @deprecated use `StackoneProxyRequestRequest$Outbound` instead. */
+    export type Outbound = StackoneProxyRequestRequest$Outbound;
 }
 
 /** @internal */
+export const StackoneProxyRequestResponse$inboundSchema: z.ZodType<
+    StackoneProxyRequestResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        ContentType: z.string(),
+        StatusCode: z.number().int(),
+        RawResponse: z.instanceof(Response),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            ContentType: "contentType",
+            StatusCode: "statusCode",
+            RawResponse: "rawResponse",
+        });
+    });
+
+/** @internal */
+export type StackoneProxyRequestResponse$Outbound = {
+    ContentType: string;
+    StatusCode: number;
+    RawResponse: never;
+};
+
+/** @internal */
+export const StackoneProxyRequestResponse$outboundSchema: z.ZodType<
+    StackoneProxyRequestResponse$Outbound,
+    z.ZodTypeDef,
+    StackoneProxyRequestResponse
+> = z
+    .object({
+        contentType: z.string(),
+        statusCode: z.number().int(),
+        rawResponse: z.instanceof(Response).transform(() => {
+            throw new Error("Response cannot be serialized");
+        }),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            contentType: "ContentType",
+            statusCode: "StatusCode",
+            rawResponse: "RawResponse",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace StackoneProxyRequestResponse$ {
-    export const inboundSchema: z.ZodType<StackoneProxyRequestResponse, z.ZodTypeDef, unknown> = z
-        .object({
-            ContentType: z.string(),
-            StatusCode: z.number().int(),
-            RawResponse: z.instanceof(Response),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                ContentType: "contentType",
-                StatusCode: "statusCode",
-                RawResponse: "rawResponse",
-            });
-        });
-
-    export type Outbound = {
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: never;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, StackoneProxyRequestResponse> = z
-        .object({
-            contentType: z.string(),
-            statusCode: z.number().int(),
-            rawResponse: z.instanceof(Response).transform(() => {
-                throw new Error("Response cannot be serialized");
-            }),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                contentType: "ContentType",
-                statusCode: "StatusCode",
-                rawResponse: "RawResponse",
-            });
-        });
+    /** @deprecated use `StackoneProxyRequestResponse$inboundSchema` instead. */
+    export const inboundSchema = StackoneProxyRequestResponse$inboundSchema;
+    /** @deprecated use `StackoneProxyRequestResponse$outboundSchema` instead. */
+    export const outboundSchema = StackoneProxyRequestResponse$outboundSchema;
+    /** @deprecated use `StackoneProxyRequestResponse$Outbound` instead. */
+    export type Outbound = StackoneProxyRequestResponse$Outbound;
 }

@@ -3,8 +3,18 @@
  */
 
 import { remap as remap$ } from "../../../lib/primitives.js";
-import { Interview, Interview$ } from "./interview.js";
-import { RawResponse, RawResponse$ } from "./rawresponse.js";
+import {
+    Interview,
+    Interview$inboundSchema,
+    Interview$Outbound,
+    Interview$outboundSchema,
+} from "./interview.js";
+import {
+    RawResponse,
+    RawResponse$inboundSchema,
+    RawResponse$Outbound,
+    RawResponse$outboundSchema,
+} from "./rawresponse.js";
 import * as z from "zod";
 
 export type InterviewsPaginated = {
@@ -18,37 +28,58 @@ export type InterviewsPaginated = {
 };
 
 /** @internal */
+export const InterviewsPaginated$inboundSchema: z.ZodType<
+    InterviewsPaginated,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        data: z.array(Interview$inboundSchema),
+        next: z.nullable(z.string()).optional(),
+        next_page: z.nullable(z.string()).optional(),
+        raw: z.nullable(z.array(RawResponse$inboundSchema)).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            next_page: "nextPage",
+        });
+    });
+
+/** @internal */
+export type InterviewsPaginated$Outbound = {
+    data: Array<Interview$Outbound>;
+    next?: string | null | undefined;
+    next_page?: string | null | undefined;
+    raw?: Array<RawResponse$Outbound> | null | undefined;
+};
+
+/** @internal */
+export const InterviewsPaginated$outboundSchema: z.ZodType<
+    InterviewsPaginated$Outbound,
+    z.ZodTypeDef,
+    InterviewsPaginated
+> = z
+    .object({
+        data: z.array(Interview$outboundSchema),
+        next: z.nullable(z.string()).optional(),
+        nextPage: z.nullable(z.string()).optional(),
+        raw: z.nullable(z.array(RawResponse$outboundSchema)).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            nextPage: "next_page",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace InterviewsPaginated$ {
-    export const inboundSchema: z.ZodType<InterviewsPaginated, z.ZodTypeDef, unknown> = z
-        .object({
-            data: z.array(Interview$.inboundSchema),
-            next: z.nullable(z.string()).optional(),
-            next_page: z.nullable(z.string()).optional(),
-            raw: z.nullable(z.array(RawResponse$.inboundSchema)).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                next_page: "nextPage",
-            });
-        });
-
-    export type Outbound = {
-        data: Array<Interview$.Outbound>;
-        next?: string | null | undefined;
-        next_page?: string | null | undefined;
-        raw?: Array<RawResponse$.Outbound> | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, InterviewsPaginated> = z
-        .object({
-            data: z.array(Interview$.outboundSchema),
-            next: z.nullable(z.string()).optional(),
-            nextPage: z.nullable(z.string()).optional(),
-            raw: z.nullable(z.array(RawResponse$.outboundSchema)).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                nextPage: "next_page",
-            });
-        });
+    /** @deprecated use `InterviewsPaginated$inboundSchema` instead. */
+    export const inboundSchema = InterviewsPaginated$inboundSchema;
+    /** @deprecated use `InterviewsPaginated$outboundSchema` instead. */
+    export const outboundSchema = InterviewsPaginated$outboundSchema;
+    /** @deprecated use `InterviewsPaginated$Outbound` instead. */
+    export type Outbound = InterviewsPaginated$Outbound;
 }

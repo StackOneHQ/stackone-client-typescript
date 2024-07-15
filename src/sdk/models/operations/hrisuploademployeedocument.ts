@@ -35,96 +35,122 @@ export type HrisUploadEmployeeDocumentResponse = {
 };
 
 /** @internal */
+export const HrisUploadEmployeeDocumentRequest$inboundSchema: z.ZodType<
+    HrisUploadEmployeeDocumentRequest,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        HrisDocumentsUploadRequestDto: shared.HrisDocumentsUploadRequestDto$inboundSchema,
+        id: z.string(),
+        "x-account-id": z.string(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            HrisDocumentsUploadRequestDto: "hrisDocumentsUploadRequestDto",
+            "x-account-id": "xAccountId",
+        });
+    });
+
+/** @internal */
+export type HrisUploadEmployeeDocumentRequest$Outbound = {
+    HrisDocumentsUploadRequestDto: shared.HrisDocumentsUploadRequestDto$Outbound;
+    id: string;
+    "x-account-id": string;
+};
+
+/** @internal */
+export const HrisUploadEmployeeDocumentRequest$outboundSchema: z.ZodType<
+    HrisUploadEmployeeDocumentRequest$Outbound,
+    z.ZodTypeDef,
+    HrisUploadEmployeeDocumentRequest
+> = z
+    .object({
+        hrisDocumentsUploadRequestDto: shared.HrisDocumentsUploadRequestDto$outboundSchema,
+        id: z.string(),
+        xAccountId: z.string(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            hrisDocumentsUploadRequestDto: "HrisDocumentsUploadRequestDto",
+            xAccountId: "x-account-id",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace HrisUploadEmployeeDocumentRequest$ {
-    export const inboundSchema: z.ZodType<
-        HrisUploadEmployeeDocumentRequest,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            HrisDocumentsUploadRequestDto: shared.HrisDocumentsUploadRequestDto$.inboundSchema,
-            id: z.string(),
-            "x-account-id": z.string(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                HrisDocumentsUploadRequestDto: "hrisDocumentsUploadRequestDto",
-                "x-account-id": "xAccountId",
-            });
-        });
-
-    export type Outbound = {
-        HrisDocumentsUploadRequestDto: shared.HrisDocumentsUploadRequestDto$.Outbound;
-        id: string;
-        "x-account-id": string;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        HrisUploadEmployeeDocumentRequest
-    > = z
-        .object({
-            hrisDocumentsUploadRequestDto: shared.HrisDocumentsUploadRequestDto$.outboundSchema,
-            id: z.string(),
-            xAccountId: z.string(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                hrisDocumentsUploadRequestDto: "HrisDocumentsUploadRequestDto",
-                xAccountId: "x-account-id",
-            });
-        });
+    /** @deprecated use `HrisUploadEmployeeDocumentRequest$inboundSchema` instead. */
+    export const inboundSchema = HrisUploadEmployeeDocumentRequest$inboundSchema;
+    /** @deprecated use `HrisUploadEmployeeDocumentRequest$outboundSchema` instead. */
+    export const outboundSchema = HrisUploadEmployeeDocumentRequest$outboundSchema;
+    /** @deprecated use `HrisUploadEmployeeDocumentRequest$Outbound` instead. */
+    export type Outbound = HrisUploadEmployeeDocumentRequest$Outbound;
 }
 
 /** @internal */
+export const HrisUploadEmployeeDocumentResponse$inboundSchema: z.ZodType<
+    HrisUploadEmployeeDocumentResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        ContentType: z.string(),
+        StatusCode: z.number().int(),
+        RawResponse: z.instanceof(Response),
+        WriteResultApiModel: shared.WriteResultApiModel$inboundSchema.optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            ContentType: "contentType",
+            StatusCode: "statusCode",
+            RawResponse: "rawResponse",
+            WriteResultApiModel: "writeResultApiModel",
+        });
+    });
+
+/** @internal */
+export type HrisUploadEmployeeDocumentResponse$Outbound = {
+    ContentType: string;
+    StatusCode: number;
+    RawResponse: never;
+    WriteResultApiModel?: shared.WriteResultApiModel$Outbound | undefined;
+};
+
+/** @internal */
+export const HrisUploadEmployeeDocumentResponse$outboundSchema: z.ZodType<
+    HrisUploadEmployeeDocumentResponse$Outbound,
+    z.ZodTypeDef,
+    HrisUploadEmployeeDocumentResponse
+> = z
+    .object({
+        contentType: z.string(),
+        statusCode: z.number().int(),
+        rawResponse: z.instanceof(Response).transform(() => {
+            throw new Error("Response cannot be serialized");
+        }),
+        writeResultApiModel: shared.WriteResultApiModel$outboundSchema.optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            contentType: "ContentType",
+            statusCode: "StatusCode",
+            rawResponse: "RawResponse",
+            writeResultApiModel: "WriteResultApiModel",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace HrisUploadEmployeeDocumentResponse$ {
-    export const inboundSchema: z.ZodType<
-        HrisUploadEmployeeDocumentResponse,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            ContentType: z.string(),
-            StatusCode: z.number().int(),
-            RawResponse: z.instanceof(Response),
-            WriteResultApiModel: shared.WriteResultApiModel$.inboundSchema.optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                ContentType: "contentType",
-                StatusCode: "statusCode",
-                RawResponse: "rawResponse",
-                WriteResultApiModel: "writeResultApiModel",
-            });
-        });
-
-    export type Outbound = {
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: never;
-        WriteResultApiModel?: shared.WriteResultApiModel$.Outbound | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        HrisUploadEmployeeDocumentResponse
-    > = z
-        .object({
-            contentType: z.string(),
-            statusCode: z.number().int(),
-            rawResponse: z.instanceof(Response).transform(() => {
-                throw new Error("Response cannot be serialized");
-            }),
-            writeResultApiModel: shared.WriteResultApiModel$.outboundSchema.optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                contentType: "ContentType",
-                statusCode: "StatusCode",
-                rawResponse: "RawResponse",
-                writeResultApiModel: "WriteResultApiModel",
-            });
-        });
+    /** @deprecated use `HrisUploadEmployeeDocumentResponse$inboundSchema` instead. */
+    export const inboundSchema = HrisUploadEmployeeDocumentResponse$inboundSchema;
+    /** @deprecated use `HrisUploadEmployeeDocumentResponse$outboundSchema` instead. */
+    export const outboundSchema = HrisUploadEmployeeDocumentResponse$outboundSchema;
+    /** @deprecated use `HrisUploadEmployeeDocumentResponse$Outbound` instead. */
+    export type Outbound = HrisUploadEmployeeDocumentResponse$Outbound;
 }

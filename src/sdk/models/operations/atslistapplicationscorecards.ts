@@ -86,151 +86,194 @@ export type AtsListApplicationScorecardsResponse = {
 };
 
 /** @internal */
+export const QueryParamFilter$inboundSchema: z.ZodType<QueryParamFilter, z.ZodTypeDef, unknown> = z
+    .object({
+        updated_after: z.nullable(z.string()).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            updated_after: "updatedAfter",
+        });
+    });
+
+/** @internal */
+export type QueryParamFilter$Outbound = {
+    updated_after?: string | null | undefined;
+};
+
+/** @internal */
+export const QueryParamFilter$outboundSchema: z.ZodType<
+    QueryParamFilter$Outbound,
+    z.ZodTypeDef,
+    QueryParamFilter
+> = z
+    .object({
+        updatedAfter: z.nullable(z.string()).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            updatedAfter: "updated_after",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace QueryParamFilter$ {
-    export const inboundSchema: z.ZodType<QueryParamFilter, z.ZodTypeDef, unknown> = z
-        .object({
-            updated_after: z.nullable(z.string()).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                updated_after: "updatedAfter",
-            });
-        });
-
-    export type Outbound = {
-        updated_after?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, QueryParamFilter> = z
-        .object({
-            updatedAfter: z.nullable(z.string()).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                updatedAfter: "updated_after",
-            });
-        });
+    /** @deprecated use `QueryParamFilter$inboundSchema` instead. */
+    export const inboundSchema = QueryParamFilter$inboundSchema;
+    /** @deprecated use `QueryParamFilter$outboundSchema` instead. */
+    export const outboundSchema = QueryParamFilter$outboundSchema;
+    /** @deprecated use `QueryParamFilter$Outbound` instead. */
+    export type Outbound = QueryParamFilter$Outbound;
 }
 
 /** @internal */
+export const AtsListApplicationScorecardsRequest$inboundSchema: z.ZodType<
+    AtsListApplicationScorecardsRequest,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        fields: z.nullable(z.string()).optional(),
+        filter: z.nullable(z.lazy(() => QueryParamFilter$inboundSchema)).optional(),
+        id: z.string(),
+        next: z.nullable(z.string()).optional(),
+        page: z.nullable(z.string()).optional(),
+        page_size: z.nullable(z.string().default("25")),
+        proxy: z.nullable(z.record(z.any())).optional(),
+        raw: z.nullable(z.boolean().default(false)),
+        sync_token: z.nullable(z.string()).optional(),
+        updated_after: z.nullable(z.string()).optional(),
+        "x-account-id": z.string(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            page_size: "pageSize",
+            sync_token: "syncToken",
+            updated_after: "updatedAfter",
+            "x-account-id": "xAccountId",
+        });
+    });
+
+/** @internal */
+export type AtsListApplicationScorecardsRequest$Outbound = {
+    fields?: string | null | undefined;
+    filter?: QueryParamFilter$Outbound | null | undefined;
+    id: string;
+    next?: string | null | undefined;
+    page?: string | null | undefined;
+    page_size: string | null;
+    proxy?: { [k: string]: any } | null | undefined;
+    raw: boolean | null;
+    sync_token?: string | null | undefined;
+    updated_after?: string | null | undefined;
+    "x-account-id": string;
+};
+
+/** @internal */
+export const AtsListApplicationScorecardsRequest$outboundSchema: z.ZodType<
+    AtsListApplicationScorecardsRequest$Outbound,
+    z.ZodTypeDef,
+    AtsListApplicationScorecardsRequest
+> = z
+    .object({
+        fields: z.nullable(z.string()).optional(),
+        filter: z.nullable(z.lazy(() => QueryParamFilter$outboundSchema)).optional(),
+        id: z.string(),
+        next: z.nullable(z.string()).optional(),
+        page: z.nullable(z.string()).optional(),
+        pageSize: z.nullable(z.string().default("25")),
+        proxy: z.nullable(z.record(z.any())).optional(),
+        raw: z.nullable(z.boolean().default(false)),
+        syncToken: z.nullable(z.string()).optional(),
+        updatedAfter: z.nullable(z.string()).optional(),
+        xAccountId: z.string(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            pageSize: "page_size",
+            syncToken: "sync_token",
+            updatedAfter: "updated_after",
+            xAccountId: "x-account-id",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace AtsListApplicationScorecardsRequest$ {
-    export const inboundSchema: z.ZodType<
-        AtsListApplicationScorecardsRequest,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            fields: z.nullable(z.string()).optional(),
-            filter: z.nullable(z.lazy(() => QueryParamFilter$.inboundSchema)).optional(),
-            id: z.string(),
-            next: z.nullable(z.string()).optional(),
-            page: z.nullable(z.string()).optional(),
-            page_size: z.nullable(z.string().default("25")),
-            proxy: z.nullable(z.record(z.any())).optional(),
-            raw: z.nullable(z.boolean().default(false)),
-            sync_token: z.nullable(z.string()).optional(),
-            updated_after: z.nullable(z.string()).optional(),
-            "x-account-id": z.string(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                page_size: "pageSize",
-                sync_token: "syncToken",
-                updated_after: "updatedAfter",
-                "x-account-id": "xAccountId",
-            });
-        });
-
-    export type Outbound = {
-        fields?: string | null | undefined;
-        filter?: QueryParamFilter$.Outbound | null | undefined;
-        id: string;
-        next?: string | null | undefined;
-        page?: string | null | undefined;
-        page_size: string | null;
-        proxy?: { [k: string]: any } | null | undefined;
-        raw: boolean | null;
-        sync_token?: string | null | undefined;
-        updated_after?: string | null | undefined;
-        "x-account-id": string;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        AtsListApplicationScorecardsRequest
-    > = z
-        .object({
-            fields: z.nullable(z.string()).optional(),
-            filter: z.nullable(z.lazy(() => QueryParamFilter$.outboundSchema)).optional(),
-            id: z.string(),
-            next: z.nullable(z.string()).optional(),
-            page: z.nullable(z.string()).optional(),
-            pageSize: z.nullable(z.string().default("25")),
-            proxy: z.nullable(z.record(z.any())).optional(),
-            raw: z.nullable(z.boolean().default(false)),
-            syncToken: z.nullable(z.string()).optional(),
-            updatedAfter: z.nullable(z.string()).optional(),
-            xAccountId: z.string(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                pageSize: "page_size",
-                syncToken: "sync_token",
-                updatedAfter: "updated_after",
-                xAccountId: "x-account-id",
-            });
-        });
+    /** @deprecated use `AtsListApplicationScorecardsRequest$inboundSchema` instead. */
+    export const inboundSchema = AtsListApplicationScorecardsRequest$inboundSchema;
+    /** @deprecated use `AtsListApplicationScorecardsRequest$outboundSchema` instead. */
+    export const outboundSchema = AtsListApplicationScorecardsRequest$outboundSchema;
+    /** @deprecated use `AtsListApplicationScorecardsRequest$Outbound` instead. */
+    export type Outbound = AtsListApplicationScorecardsRequest$Outbound;
 }
 
 /** @internal */
+export const AtsListApplicationScorecardsResponse$inboundSchema: z.ZodType<
+    AtsListApplicationScorecardsResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        ContentType: z.string(),
+        ScorecardsPaginated: shared.ScorecardsPaginated$inboundSchema.optional(),
+        StatusCode: z.number().int(),
+        RawResponse: z.instanceof(Response),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            ContentType: "contentType",
+            ScorecardsPaginated: "scorecardsPaginated",
+            StatusCode: "statusCode",
+            RawResponse: "rawResponse",
+        });
+    });
+
+/** @internal */
+export type AtsListApplicationScorecardsResponse$Outbound = {
+    ContentType: string;
+    ScorecardsPaginated?: shared.ScorecardsPaginated$Outbound | undefined;
+    StatusCode: number;
+    RawResponse: never;
+};
+
+/** @internal */
+export const AtsListApplicationScorecardsResponse$outboundSchema: z.ZodType<
+    AtsListApplicationScorecardsResponse$Outbound,
+    z.ZodTypeDef,
+    AtsListApplicationScorecardsResponse
+> = z
+    .object({
+        contentType: z.string(),
+        scorecardsPaginated: shared.ScorecardsPaginated$outboundSchema.optional(),
+        statusCode: z.number().int(),
+        rawResponse: z.instanceof(Response).transform(() => {
+            throw new Error("Response cannot be serialized");
+        }),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            contentType: "ContentType",
+            scorecardsPaginated: "ScorecardsPaginated",
+            statusCode: "StatusCode",
+            rawResponse: "RawResponse",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace AtsListApplicationScorecardsResponse$ {
-    export const inboundSchema: z.ZodType<
-        AtsListApplicationScorecardsResponse,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            ContentType: z.string(),
-            ScorecardsPaginated: shared.ScorecardsPaginated$.inboundSchema.optional(),
-            StatusCode: z.number().int(),
-            RawResponse: z.instanceof(Response),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                ContentType: "contentType",
-                ScorecardsPaginated: "scorecardsPaginated",
-                StatusCode: "statusCode",
-                RawResponse: "rawResponse",
-            });
-        });
-
-    export type Outbound = {
-        ContentType: string;
-        ScorecardsPaginated?: shared.ScorecardsPaginated$.Outbound | undefined;
-        StatusCode: number;
-        RawResponse: never;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        AtsListApplicationScorecardsResponse
-    > = z
-        .object({
-            contentType: z.string(),
-            scorecardsPaginated: shared.ScorecardsPaginated$.outboundSchema.optional(),
-            statusCode: z.number().int(),
-            rawResponse: z.instanceof(Response).transform(() => {
-                throw new Error("Response cannot be serialized");
-            }),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                contentType: "ContentType",
-                scorecardsPaginated: "ScorecardsPaginated",
-                statusCode: "StatusCode",
-                rawResponse: "RawResponse",
-            });
-        });
+    /** @deprecated use `AtsListApplicationScorecardsResponse$inboundSchema` instead. */
+    export const inboundSchema = AtsListApplicationScorecardsResponse$inboundSchema;
+    /** @deprecated use `AtsListApplicationScorecardsResponse$outboundSchema` instead. */
+    export const outboundSchema = AtsListApplicationScorecardsResponse$outboundSchema;
+    /** @deprecated use `AtsListApplicationScorecardsResponse$Outbound` instead. */
+    export type Outbound = AtsListApplicationScorecardsResponse$Outbound;
 }

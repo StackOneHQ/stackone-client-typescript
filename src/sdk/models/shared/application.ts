@@ -4,14 +4,54 @@
 
 import { remap as remap$ } from "../../../lib/primitives.js";
 import { catchUnrecognizedEnum, OpenEnum, Unrecognized } from "../../types/enums.js";
-import { ApplicationAttachment, ApplicationAttachment$ } from "./applicationattachment.js";
-import { AtsDocumentApiModel, AtsDocumentApiModel$ } from "./atsdocumentapimodel.js";
-import { CandidateEmail, CandidateEmail$ } from "./candidateemail.js";
-import { PhoneNumber, PhoneNumber$ } from "./phonenumber.js";
-import { Questionnaire, Questionnaire$ } from "./questionnaire.js";
-import { RejectedReason, RejectedReason$ } from "./rejectedreason.js";
-import { ResultLink, ResultLink$ } from "./resultlink.js";
-import { SocialLink, SocialLink$ } from "./sociallink.js";
+import {
+    ApplicationAttachment,
+    ApplicationAttachment$inboundSchema,
+    ApplicationAttachment$Outbound,
+    ApplicationAttachment$outboundSchema,
+} from "./applicationattachment.js";
+import {
+    AtsDocumentApiModel,
+    AtsDocumentApiModel$inboundSchema,
+    AtsDocumentApiModel$Outbound,
+    AtsDocumentApiModel$outboundSchema,
+} from "./atsdocumentapimodel.js";
+import {
+    CandidateEmail,
+    CandidateEmail$inboundSchema,
+    CandidateEmail$Outbound,
+    CandidateEmail$outboundSchema,
+} from "./candidateemail.js";
+import {
+    PhoneNumber,
+    PhoneNumber$inboundSchema,
+    PhoneNumber$Outbound,
+    PhoneNumber$outboundSchema,
+} from "./phonenumber.js";
+import {
+    Questionnaire,
+    Questionnaire$inboundSchema,
+    Questionnaire$Outbound,
+    Questionnaire$outboundSchema,
+} from "./questionnaire.js";
+import {
+    RejectedReason,
+    RejectedReason$inboundSchema,
+    RejectedReason$Outbound,
+    RejectedReason$outboundSchema,
+} from "./rejectedreason.js";
+import {
+    ResultLink,
+    ResultLink$inboundSchema,
+    ResultLink$Outbound,
+    ResultLink$outboundSchema,
+} from "./resultlink.js";
+import {
+    SocialLink,
+    SocialLink$inboundSchema,
+    SocialLink$Outbound,
+    SocialLink$outboundSchema,
+} from "./sociallink.js";
 import * as z from "zod";
 
 export type Application4 = {};
@@ -229,57 +269,103 @@ export type Application = {
 };
 
 /** @internal */
+export const Application4$inboundSchema: z.ZodType<Application4, z.ZodTypeDef, unknown> = z.object(
+    {}
+);
+
+/** @internal */
+export type Application4$Outbound = {};
+
+/** @internal */
+export const Application4$outboundSchema: z.ZodType<
+    Application4$Outbound,
+    z.ZodTypeDef,
+    Application4
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace Application4$ {
-    export const inboundSchema: z.ZodType<Application4, z.ZodTypeDef, unknown> = z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Application4> = z.object({});
+    /** @deprecated use `Application4$inboundSchema` instead. */
+    export const inboundSchema = Application4$inboundSchema;
+    /** @deprecated use `Application4$outboundSchema` instead. */
+    export const outboundSchema = Application4$outboundSchema;
+    /** @deprecated use `Application4$Outbound` instead. */
+    export type Outbound = Application4$Outbound;
 }
 
 /** @internal */
+export const ApplicationSourceValue$inboundSchema: z.ZodType<
+    ApplicationSourceValue,
+    z.ZodTypeDef,
+    unknown
+> = z.union([z.lazy(() => Application4$inboundSchema), z.string(), z.number(), z.boolean()]);
+
+/** @internal */
+export type ApplicationSourceValue$Outbound = Application4$Outbound | string | number | boolean;
+
+/** @internal */
+export const ApplicationSourceValue$outboundSchema: z.ZodType<
+    ApplicationSourceValue$Outbound,
+    z.ZodTypeDef,
+    ApplicationSourceValue
+> = z.union([z.lazy(() => Application4$outboundSchema), z.string(), z.number(), z.boolean()]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace ApplicationSourceValue$ {
-    export const inboundSchema: z.ZodType<ApplicationSourceValue, z.ZodTypeDef, unknown> = z.union([
-        z.lazy(() => Application4$.inboundSchema),
-        z.string(),
-        z.number(),
-        z.boolean(),
-    ]);
-
-    export type Outbound = Application4$.Outbound | string | number | boolean;
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ApplicationSourceValue> =
-        z.union([z.lazy(() => Application4$.outboundSchema), z.string(), z.number(), z.boolean()]);
+    /** @deprecated use `ApplicationSourceValue$inboundSchema` instead. */
+    export const inboundSchema = ApplicationSourceValue$inboundSchema;
+    /** @deprecated use `ApplicationSourceValue$outboundSchema` instead. */
+    export const outboundSchema = ApplicationSourceValue$outboundSchema;
+    /** @deprecated use `ApplicationSourceValue$Outbound` instead. */
+    export type Outbound = ApplicationSourceValue$Outbound;
 }
 
 /** @internal */
+export const ApplicationValue$inboundSchema: z.ZodType<
+    ApplicationValueOpen,
+    z.ZodTypeDef,
+    unknown
+> = z.union([z.nativeEnum(ApplicationValue), z.string().transform(catchUnrecognizedEnum)]);
+
+/** @internal */
+export const ApplicationValue$outboundSchema: z.ZodType<
+    ApplicationValueOpen,
+    z.ZodTypeDef,
+    ApplicationValueOpen
+> = z.union([z.nativeEnum(ApplicationValue), z.string().and(z.custom<Unrecognized<string>>())]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace ApplicationValue$ {
-    export const inboundSchema: z.ZodType<ApplicationValueOpen, z.ZodTypeDef, unknown> = z.union([
-        z.nativeEnum(ApplicationValue),
-        z.string().transform(catchUnrecognizedEnum),
-    ]);
-
-    export const outboundSchema: z.ZodType<
-        ApplicationValueOpen,
-        z.ZodTypeDef,
-        ApplicationValueOpen
-    > = z.union([z.nativeEnum(ApplicationValue), z.string().and(z.custom<Unrecognized<string>>())]);
+    /** @deprecated use `ApplicationValue$inboundSchema` instead. */
+    export const inboundSchema = ApplicationValue$inboundSchema;
+    /** @deprecated use `ApplicationValue$outboundSchema` instead. */
+    export const outboundSchema = ApplicationValue$outboundSchema;
 }
 
 /** @internal */
-export namespace ApplicationStatus$ {
-    export const inboundSchema: z.ZodType<ApplicationStatus, z.ZodTypeDef, unknown> = z
+export const ApplicationStatus$inboundSchema: z.ZodType<ApplicationStatus, z.ZodTypeDef, unknown> =
+    z
         .object({
             source_value: z
                 .nullable(
                     z.union([
-                        z.lazy(() => Application4$.inboundSchema),
+                        z.lazy(() => Application4$inboundSchema),
                         z.string(),
                         z.number(),
                         z.boolean(),
                     ])
                 )
                 .optional(),
-            value: z.nullable(ApplicationValue$.inboundSchema).optional(),
+            value: z.nullable(ApplicationValue$inboundSchema).optional(),
         })
         .transform((v) => {
             return remap$(v, {
@@ -287,347 +373,433 @@ export namespace ApplicationStatus$ {
             });
         });
 
-    export type Outbound = {
-        source_value?: Application4$.Outbound | string | number | boolean | null | undefined;
-        value?: string | null | undefined;
-    };
+/** @internal */
+export type ApplicationStatus$Outbound = {
+    source_value?: Application4$Outbound | string | number | boolean | null | undefined;
+    value?: string | null | undefined;
+};
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ApplicationStatus> = z
-        .object({
-            sourceValue: z
-                .nullable(
-                    z.union([
-                        z.lazy(() => Application4$.outboundSchema),
-                        z.string(),
-                        z.number(),
-                        z.boolean(),
-                    ])
-                )
-                .optional(),
-            value: z.nullable(ApplicationValue$.outboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                sourceValue: "source_value",
-            });
+/** @internal */
+export const ApplicationStatus$outboundSchema: z.ZodType<
+    ApplicationStatus$Outbound,
+    z.ZodTypeDef,
+    ApplicationStatus
+> = z
+    .object({
+        sourceValue: z
+            .nullable(
+                z.union([
+                    z.lazy(() => Application4$outboundSchema),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                ])
+            )
+            .optional(),
+        value: z.nullable(ApplicationValue$outboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            sourceValue: "source_value",
         });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ApplicationStatus$ {
+    /** @deprecated use `ApplicationStatus$inboundSchema` instead. */
+    export const inboundSchema = ApplicationStatus$inboundSchema;
+    /** @deprecated use `ApplicationStatus$outboundSchema` instead. */
+    export const outboundSchema = ApplicationStatus$outboundSchema;
+    /** @deprecated use `ApplicationStatus$Outbound` instead. */
+    export type Outbound = ApplicationStatus$Outbound;
 }
 
 /** @internal */
+export const ApplicationCandidate$inboundSchema: z.ZodType<
+    ApplicationCandidate,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        company: z.nullable(z.string()).optional(),
+        email: z.nullable(z.string()).optional(),
+        emails: z.nullable(z.array(CandidateEmail$inboundSchema)).optional(),
+        first_name: z.nullable(z.string()).optional(),
+        last_name: z.nullable(z.string()).optional(),
+        name: z.nullable(z.string()).optional(),
+        phone_numbers: z.nullable(z.array(PhoneNumber$inboundSchema)).optional(),
+        social_links: z.nullable(z.array(SocialLink$inboundSchema)).optional(),
+        title: z.nullable(z.string()).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            first_name: "firstName",
+            last_name: "lastName",
+            phone_numbers: "phoneNumbers",
+            social_links: "socialLinks",
+        });
+    });
+
+/** @internal */
+export type ApplicationCandidate$Outbound = {
+    company?: string | null | undefined;
+    email?: string | null | undefined;
+    emails?: Array<CandidateEmail$Outbound> | null | undefined;
+    first_name?: string | null | undefined;
+    last_name?: string | null | undefined;
+    name?: string | null | undefined;
+    phone_numbers?: Array<PhoneNumber$Outbound> | null | undefined;
+    social_links?: Array<SocialLink$Outbound> | null | undefined;
+    title?: string | null | undefined;
+};
+
+/** @internal */
+export const ApplicationCandidate$outboundSchema: z.ZodType<
+    ApplicationCandidate$Outbound,
+    z.ZodTypeDef,
+    ApplicationCandidate
+> = z
+    .object({
+        company: z.nullable(z.string()).optional(),
+        email: z.nullable(z.string()).optional(),
+        emails: z.nullable(z.array(CandidateEmail$outboundSchema)).optional(),
+        firstName: z.nullable(z.string()).optional(),
+        lastName: z.nullable(z.string()).optional(),
+        name: z.nullable(z.string()).optional(),
+        phoneNumbers: z.nullable(z.array(PhoneNumber$outboundSchema)).optional(),
+        socialLinks: z.nullable(z.array(SocialLink$outboundSchema)).optional(),
+        title: z.nullable(z.string()).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            firstName: "first_name",
+            lastName: "last_name",
+            phoneNumbers: "phone_numbers",
+            socialLinks: "social_links",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace ApplicationCandidate$ {
-    export const inboundSchema: z.ZodType<ApplicationCandidate, z.ZodTypeDef, unknown> = z
-        .object({
-            company: z.nullable(z.string()).optional(),
-            email: z.nullable(z.string()).optional(),
-            emails: z.nullable(z.array(CandidateEmail$.inboundSchema)).optional(),
-            first_name: z.nullable(z.string()).optional(),
-            last_name: z.nullable(z.string()).optional(),
-            name: z.nullable(z.string()).optional(),
-            phone_numbers: z.nullable(z.array(PhoneNumber$.inboundSchema)).optional(),
-            social_links: z.nullable(z.array(SocialLink$.inboundSchema)).optional(),
-            title: z.nullable(z.string()).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                first_name: "firstName",
-                last_name: "lastName",
-                phone_numbers: "phoneNumbers",
-                social_links: "socialLinks",
-            });
-        });
-
-    export type Outbound = {
-        company?: string | null | undefined;
-        email?: string | null | undefined;
-        emails?: Array<CandidateEmail$.Outbound> | null | undefined;
-        first_name?: string | null | undefined;
-        last_name?: string | null | undefined;
-        name?: string | null | undefined;
-        phone_numbers?: Array<PhoneNumber$.Outbound> | null | undefined;
-        social_links?: Array<SocialLink$.Outbound> | null | undefined;
-        title?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ApplicationCandidate> = z
-        .object({
-            company: z.nullable(z.string()).optional(),
-            email: z.nullable(z.string()).optional(),
-            emails: z.nullable(z.array(CandidateEmail$.outboundSchema)).optional(),
-            firstName: z.nullable(z.string()).optional(),
-            lastName: z.nullable(z.string()).optional(),
-            name: z.nullable(z.string()).optional(),
-            phoneNumbers: z.nullable(z.array(PhoneNumber$.outboundSchema)).optional(),
-            socialLinks: z.nullable(z.array(SocialLink$.outboundSchema)).optional(),
-            title: z.nullable(z.string()).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                firstName: "first_name",
-                lastName: "last_name",
-                phoneNumbers: "phone_numbers",
-                socialLinks: "social_links",
-            });
-        });
+    /** @deprecated use `ApplicationCandidate$inboundSchema` instead. */
+    export const inboundSchema = ApplicationCandidate$inboundSchema;
+    /** @deprecated use `ApplicationCandidate$outboundSchema` instead. */
+    export const outboundSchema = ApplicationCandidate$outboundSchema;
+    /** @deprecated use `ApplicationCandidate$Outbound` instead. */
+    export type Outbound = ApplicationCandidate$Outbound;
 }
 
 /** @internal */
+export const ApplicationInterviewStage$inboundSchema: z.ZodType<
+    ApplicationInterviewStage,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        created_at: z
+            .nullable(
+                z
+                    .string()
+                    .datetime({ offset: true })
+                    .transform((v) => new Date(v))
+            )
+            .optional(),
+        id: z.nullable(z.string()).optional(),
+        name: z.nullable(z.string()).optional(),
+        order: z.nullable(z.number()).optional(),
+        remote_id: z.nullable(z.string()).optional(),
+        updated_at: z
+            .nullable(
+                z
+                    .string()
+                    .datetime({ offset: true })
+                    .transform((v) => new Date(v))
+            )
+            .optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            created_at: "createdAt",
+            remote_id: "remoteId",
+            updated_at: "updatedAt",
+        });
+    });
+
+/** @internal */
+export type ApplicationInterviewStage$Outbound = {
+    created_at?: string | null | undefined;
+    id?: string | null | undefined;
+    name?: string | null | undefined;
+    order?: number | null | undefined;
+    remote_id?: string | null | undefined;
+    updated_at?: string | null | undefined;
+};
+
+/** @internal */
+export const ApplicationInterviewStage$outboundSchema: z.ZodType<
+    ApplicationInterviewStage$Outbound,
+    z.ZodTypeDef,
+    ApplicationInterviewStage
+> = z
+    .object({
+        createdAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+        id: z.nullable(z.string()).optional(),
+        name: z.nullable(z.string()).optional(),
+        order: z.nullable(z.number()).optional(),
+        remoteId: z.nullable(z.string()).optional(),
+        updatedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            createdAt: "created_at",
+            remoteId: "remote_id",
+            updatedAt: "updated_at",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace ApplicationInterviewStage$ {
-    export const inboundSchema: z.ZodType<ApplicationInterviewStage, z.ZodTypeDef, unknown> = z
-        .object({
-            created_at: z
-                .nullable(
-                    z
-                        .string()
-                        .datetime({ offset: true })
-                        .transform((v) => new Date(v))
-                )
-                .optional(),
-            id: z.nullable(z.string()).optional(),
-            name: z.nullable(z.string()).optional(),
-            order: z.nullable(z.number()).optional(),
-            remote_id: z.nullable(z.string()).optional(),
-            updated_at: z
-                .nullable(
-                    z
-                        .string()
-                        .datetime({ offset: true })
-                        .transform((v) => new Date(v))
-                )
-                .optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                created_at: "createdAt",
-                remote_id: "remoteId",
-                updated_at: "updatedAt",
-            });
-        });
-
-    export type Outbound = {
-        created_at?: string | null | undefined;
-        id?: string | null | undefined;
-        name?: string | null | undefined;
-        order?: number | null | undefined;
-        remote_id?: string | null | undefined;
-        updated_at?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ApplicationInterviewStage> = z
-        .object({
-            createdAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
-            id: z.nullable(z.string()).optional(),
-            name: z.nullable(z.string()).optional(),
-            order: z.nullable(z.number()).optional(),
-            remoteId: z.nullable(z.string()).optional(),
-            updatedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                createdAt: "created_at",
-                remoteId: "remote_id",
-                updatedAt: "updated_at",
-            });
-        });
+    /** @deprecated use `ApplicationInterviewStage$inboundSchema` instead. */
+    export const inboundSchema = ApplicationInterviewStage$inboundSchema;
+    /** @deprecated use `ApplicationInterviewStage$outboundSchema` instead. */
+    export const outboundSchema = ApplicationInterviewStage$outboundSchema;
+    /** @deprecated use `ApplicationInterviewStage$Outbound` instead. */
+    export type Outbound = ApplicationInterviewStage$Outbound;
 }
 
 /** @internal */
+export const Source$inboundSchema: z.ZodType<Source, z.ZodTypeDef, unknown> = z
+    .object({
+        id: z.nullable(z.string()).optional(),
+        name: z.nullable(z.string()).optional(),
+        remote_id: z.nullable(z.string()).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            remote_id: "remoteId",
+        });
+    });
+
+/** @internal */
+export type Source$Outbound = {
+    id?: string | null | undefined;
+    name?: string | null | undefined;
+    remote_id?: string | null | undefined;
+};
+
+/** @internal */
+export const Source$outboundSchema: z.ZodType<Source$Outbound, z.ZodTypeDef, Source> = z
+    .object({
+        id: z.nullable(z.string()).optional(),
+        name: z.nullable(z.string()).optional(),
+        remoteId: z.nullable(z.string()).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            remoteId: "remote_id",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace Source$ {
-    export const inboundSchema: z.ZodType<Source, z.ZodTypeDef, unknown> = z
-        .object({
-            id: z.nullable(z.string()).optional(),
-            name: z.nullable(z.string()).optional(),
-            remote_id: z.nullable(z.string()).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                remote_id: "remoteId",
-            });
-        });
-
-    export type Outbound = {
-        id?: string | null | undefined;
-        name?: string | null | undefined;
-        remote_id?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Source> = z
-        .object({
-            id: z.nullable(z.string()).optional(),
-            name: z.nullable(z.string()).optional(),
-            remoteId: z.nullable(z.string()).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                remoteId: "remote_id",
-            });
-        });
+    /** @deprecated use `Source$inboundSchema` instead. */
+    export const inboundSchema = Source$inboundSchema;
+    /** @deprecated use `Source$outboundSchema` instead. */
+    export const outboundSchema = Source$outboundSchema;
+    /** @deprecated use `Source$Outbound` instead. */
+    export type Outbound = Source$Outbound;
 }
 
 /** @internal */
+export const Application$inboundSchema: z.ZodType<Application, z.ZodTypeDef, unknown> = z
+    .object({
+        application_status: z.nullable(z.lazy(() => ApplicationStatus$inboundSchema)).optional(),
+        attachments: z.nullable(z.array(ApplicationAttachment$inboundSchema)).optional(),
+        candidate: z.nullable(z.lazy(() => ApplicationCandidate$inboundSchema)).optional(),
+        candidate_id: z.nullable(z.string()).optional(),
+        created_at: z
+            .nullable(
+                z
+                    .string()
+                    .datetime({ offset: true })
+                    .transform((v) => new Date(v))
+            )
+            .optional(),
+        documents: z.nullable(z.array(AtsDocumentApiModel$inboundSchema)).optional(),
+        id: z.nullable(z.string()).optional(),
+        interview_stage: z
+            .nullable(z.lazy(() => ApplicationInterviewStage$inboundSchema))
+            .optional(),
+        interview_stage_id: z.nullable(z.string()).optional(),
+        job_id: z.nullable(z.string()).optional(),
+        location_id: z.nullable(z.string()).optional(),
+        location_ids: z.nullable(z.array(z.string())).optional(),
+        questionnaires: z.nullable(z.array(Questionnaire$inboundSchema)).optional(),
+        rejected_at: z
+            .nullable(
+                z
+                    .string()
+                    .datetime({ offset: true })
+                    .transform((v) => new Date(v))
+            )
+            .optional(),
+        rejected_reason_ids: z.nullable(z.array(z.string())).optional(),
+        rejected_reasons: z.nullable(z.array(RejectedReason$inboundSchema)).optional(),
+        remote_candidate_id: z.nullable(z.string()).optional(),
+        remote_id: z.nullable(z.string()).optional(),
+        remote_interview_stage_id: z.nullable(z.string()).optional(),
+        remote_job_id: z.nullable(z.string()).optional(),
+        remote_location_id: z.nullable(z.string()).optional(),
+        remote_location_ids: z.nullable(z.array(z.string())).optional(),
+        remote_rejected_reason_ids: z.nullable(z.array(z.string())).optional(),
+        result_links: z.nullable(z.array(ResultLink$inboundSchema)).optional(),
+        source: z.nullable(z.lazy(() => Source$inboundSchema)).optional(),
+        updated_at: z
+            .nullable(
+                z
+                    .string()
+                    .datetime({ offset: true })
+                    .transform((v) => new Date(v))
+            )
+            .optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            application_status: "applicationStatus",
+            candidate_id: "candidateId",
+            created_at: "createdAt",
+            interview_stage: "interviewStage",
+            interview_stage_id: "interviewStageId",
+            job_id: "jobId",
+            location_id: "locationId",
+            location_ids: "locationIds",
+            rejected_at: "rejectedAt",
+            rejected_reason_ids: "rejectedReasonIds",
+            rejected_reasons: "rejectedReasons",
+            remote_candidate_id: "remoteCandidateId",
+            remote_id: "remoteId",
+            remote_interview_stage_id: "remoteInterviewStageId",
+            remote_job_id: "remoteJobId",
+            remote_location_id: "remoteLocationId",
+            remote_location_ids: "remoteLocationIds",
+            remote_rejected_reason_ids: "remoteRejectedReasonIds",
+            result_links: "resultLinks",
+            updated_at: "updatedAt",
+        });
+    });
+
+/** @internal */
+export type Application$Outbound = {
+    application_status?: ApplicationStatus$Outbound | null | undefined;
+    attachments?: Array<ApplicationAttachment$Outbound> | null | undefined;
+    candidate?: ApplicationCandidate$Outbound | null | undefined;
+    candidate_id?: string | null | undefined;
+    created_at?: string | null | undefined;
+    documents?: Array<AtsDocumentApiModel$Outbound> | null | undefined;
+    id?: string | null | undefined;
+    interview_stage?: ApplicationInterviewStage$Outbound | null | undefined;
+    interview_stage_id?: string | null | undefined;
+    job_id?: string | null | undefined;
+    location_id?: string | null | undefined;
+    location_ids?: Array<string> | null | undefined;
+    questionnaires?: Array<Questionnaire$Outbound> | null | undefined;
+    rejected_at?: string | null | undefined;
+    rejected_reason_ids?: Array<string> | null | undefined;
+    rejected_reasons?: Array<RejectedReason$Outbound> | null | undefined;
+    remote_candidate_id?: string | null | undefined;
+    remote_id?: string | null | undefined;
+    remote_interview_stage_id?: string | null | undefined;
+    remote_job_id?: string | null | undefined;
+    remote_location_id?: string | null | undefined;
+    remote_location_ids?: Array<string> | null | undefined;
+    remote_rejected_reason_ids?: Array<string> | null | undefined;
+    result_links?: Array<ResultLink$Outbound> | null | undefined;
+    source?: Source$Outbound | null | undefined;
+    updated_at?: string | null | undefined;
+};
+
+/** @internal */
+export const Application$outboundSchema: z.ZodType<
+    Application$Outbound,
+    z.ZodTypeDef,
+    Application
+> = z
+    .object({
+        applicationStatus: z.nullable(z.lazy(() => ApplicationStatus$outboundSchema)).optional(),
+        attachments: z.nullable(z.array(ApplicationAttachment$outboundSchema)).optional(),
+        candidate: z.nullable(z.lazy(() => ApplicationCandidate$outboundSchema)).optional(),
+        candidateId: z.nullable(z.string()).optional(),
+        createdAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+        documents: z.nullable(z.array(AtsDocumentApiModel$outboundSchema)).optional(),
+        id: z.nullable(z.string()).optional(),
+        interviewStage: z
+            .nullable(z.lazy(() => ApplicationInterviewStage$outboundSchema))
+            .optional(),
+        interviewStageId: z.nullable(z.string()).optional(),
+        jobId: z.nullable(z.string()).optional(),
+        locationId: z.nullable(z.string()).optional(),
+        locationIds: z.nullable(z.array(z.string())).optional(),
+        questionnaires: z.nullable(z.array(Questionnaire$outboundSchema)).optional(),
+        rejectedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+        rejectedReasonIds: z.nullable(z.array(z.string())).optional(),
+        rejectedReasons: z.nullable(z.array(RejectedReason$outboundSchema)).optional(),
+        remoteCandidateId: z.nullable(z.string()).optional(),
+        remoteId: z.nullable(z.string()).optional(),
+        remoteInterviewStageId: z.nullable(z.string()).optional(),
+        remoteJobId: z.nullable(z.string()).optional(),
+        remoteLocationId: z.nullable(z.string()).optional(),
+        remoteLocationIds: z.nullable(z.array(z.string())).optional(),
+        remoteRejectedReasonIds: z.nullable(z.array(z.string())).optional(),
+        resultLinks: z.nullable(z.array(ResultLink$outboundSchema)).optional(),
+        source: z.nullable(z.lazy(() => Source$outboundSchema)).optional(),
+        updatedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            applicationStatus: "application_status",
+            candidateId: "candidate_id",
+            createdAt: "created_at",
+            interviewStage: "interview_stage",
+            interviewStageId: "interview_stage_id",
+            jobId: "job_id",
+            locationId: "location_id",
+            locationIds: "location_ids",
+            rejectedAt: "rejected_at",
+            rejectedReasonIds: "rejected_reason_ids",
+            rejectedReasons: "rejected_reasons",
+            remoteCandidateId: "remote_candidate_id",
+            remoteId: "remote_id",
+            remoteInterviewStageId: "remote_interview_stage_id",
+            remoteJobId: "remote_job_id",
+            remoteLocationId: "remote_location_id",
+            remoteLocationIds: "remote_location_ids",
+            remoteRejectedReasonIds: "remote_rejected_reason_ids",
+            resultLinks: "result_links",
+            updatedAt: "updated_at",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace Application$ {
-    export const inboundSchema: z.ZodType<Application, z.ZodTypeDef, unknown> = z
-        .object({
-            application_status: z
-                .nullable(z.lazy(() => ApplicationStatus$.inboundSchema))
-                .optional(),
-            attachments: z.nullable(z.array(ApplicationAttachment$.inboundSchema)).optional(),
-            candidate: z.nullable(z.lazy(() => ApplicationCandidate$.inboundSchema)).optional(),
-            candidate_id: z.nullable(z.string()).optional(),
-            created_at: z
-                .nullable(
-                    z
-                        .string()
-                        .datetime({ offset: true })
-                        .transform((v) => new Date(v))
-                )
-                .optional(),
-            documents: z.nullable(z.array(AtsDocumentApiModel$.inboundSchema)).optional(),
-            id: z.nullable(z.string()).optional(),
-            interview_stage: z
-                .nullable(z.lazy(() => ApplicationInterviewStage$.inboundSchema))
-                .optional(),
-            interview_stage_id: z.nullable(z.string()).optional(),
-            job_id: z.nullable(z.string()).optional(),
-            location_id: z.nullable(z.string()).optional(),
-            location_ids: z.nullable(z.array(z.string())).optional(),
-            questionnaires: z.nullable(z.array(Questionnaire$.inboundSchema)).optional(),
-            rejected_at: z
-                .nullable(
-                    z
-                        .string()
-                        .datetime({ offset: true })
-                        .transform((v) => new Date(v))
-                )
-                .optional(),
-            rejected_reason_ids: z.nullable(z.array(z.string())).optional(),
-            rejected_reasons: z.nullable(z.array(RejectedReason$.inboundSchema)).optional(),
-            remote_candidate_id: z.nullable(z.string()).optional(),
-            remote_id: z.nullable(z.string()).optional(),
-            remote_interview_stage_id: z.nullable(z.string()).optional(),
-            remote_job_id: z.nullable(z.string()).optional(),
-            remote_location_id: z.nullable(z.string()).optional(),
-            remote_location_ids: z.nullable(z.array(z.string())).optional(),
-            remote_rejected_reason_ids: z.nullable(z.array(z.string())).optional(),
-            result_links: z.nullable(z.array(ResultLink$.inboundSchema)).optional(),
-            source: z.nullable(z.lazy(() => Source$.inboundSchema)).optional(),
-            updated_at: z
-                .nullable(
-                    z
-                        .string()
-                        .datetime({ offset: true })
-                        .transform((v) => new Date(v))
-                )
-                .optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                application_status: "applicationStatus",
-                candidate_id: "candidateId",
-                created_at: "createdAt",
-                interview_stage: "interviewStage",
-                interview_stage_id: "interviewStageId",
-                job_id: "jobId",
-                location_id: "locationId",
-                location_ids: "locationIds",
-                rejected_at: "rejectedAt",
-                rejected_reason_ids: "rejectedReasonIds",
-                rejected_reasons: "rejectedReasons",
-                remote_candidate_id: "remoteCandidateId",
-                remote_id: "remoteId",
-                remote_interview_stage_id: "remoteInterviewStageId",
-                remote_job_id: "remoteJobId",
-                remote_location_id: "remoteLocationId",
-                remote_location_ids: "remoteLocationIds",
-                remote_rejected_reason_ids: "remoteRejectedReasonIds",
-                result_links: "resultLinks",
-                updated_at: "updatedAt",
-            });
-        });
-
-    export type Outbound = {
-        application_status?: ApplicationStatus$.Outbound | null | undefined;
-        attachments?: Array<ApplicationAttachment$.Outbound> | null | undefined;
-        candidate?: ApplicationCandidate$.Outbound | null | undefined;
-        candidate_id?: string | null | undefined;
-        created_at?: string | null | undefined;
-        documents?: Array<AtsDocumentApiModel$.Outbound> | null | undefined;
-        id?: string | null | undefined;
-        interview_stage?: ApplicationInterviewStage$.Outbound | null | undefined;
-        interview_stage_id?: string | null | undefined;
-        job_id?: string | null | undefined;
-        location_id?: string | null | undefined;
-        location_ids?: Array<string> | null | undefined;
-        questionnaires?: Array<Questionnaire$.Outbound> | null | undefined;
-        rejected_at?: string | null | undefined;
-        rejected_reason_ids?: Array<string> | null | undefined;
-        rejected_reasons?: Array<RejectedReason$.Outbound> | null | undefined;
-        remote_candidate_id?: string | null | undefined;
-        remote_id?: string | null | undefined;
-        remote_interview_stage_id?: string | null | undefined;
-        remote_job_id?: string | null | undefined;
-        remote_location_id?: string | null | undefined;
-        remote_location_ids?: Array<string> | null | undefined;
-        remote_rejected_reason_ids?: Array<string> | null | undefined;
-        result_links?: Array<ResultLink$.Outbound> | null | undefined;
-        source?: Source$.Outbound | null | undefined;
-        updated_at?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Application> = z
-        .object({
-            applicationStatus: z
-                .nullable(z.lazy(() => ApplicationStatus$.outboundSchema))
-                .optional(),
-            attachments: z.nullable(z.array(ApplicationAttachment$.outboundSchema)).optional(),
-            candidate: z.nullable(z.lazy(() => ApplicationCandidate$.outboundSchema)).optional(),
-            candidateId: z.nullable(z.string()).optional(),
-            createdAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
-            documents: z.nullable(z.array(AtsDocumentApiModel$.outboundSchema)).optional(),
-            id: z.nullable(z.string()).optional(),
-            interviewStage: z
-                .nullable(z.lazy(() => ApplicationInterviewStage$.outboundSchema))
-                .optional(),
-            interviewStageId: z.nullable(z.string()).optional(),
-            jobId: z.nullable(z.string()).optional(),
-            locationId: z.nullable(z.string()).optional(),
-            locationIds: z.nullable(z.array(z.string())).optional(),
-            questionnaires: z.nullable(z.array(Questionnaire$.outboundSchema)).optional(),
-            rejectedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
-            rejectedReasonIds: z.nullable(z.array(z.string())).optional(),
-            rejectedReasons: z.nullable(z.array(RejectedReason$.outboundSchema)).optional(),
-            remoteCandidateId: z.nullable(z.string()).optional(),
-            remoteId: z.nullable(z.string()).optional(),
-            remoteInterviewStageId: z.nullable(z.string()).optional(),
-            remoteJobId: z.nullable(z.string()).optional(),
-            remoteLocationId: z.nullable(z.string()).optional(),
-            remoteLocationIds: z.nullable(z.array(z.string())).optional(),
-            remoteRejectedReasonIds: z.nullable(z.array(z.string())).optional(),
-            resultLinks: z.nullable(z.array(ResultLink$.outboundSchema)).optional(),
-            source: z.nullable(z.lazy(() => Source$.outboundSchema)).optional(),
-            updatedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                applicationStatus: "application_status",
-                candidateId: "candidate_id",
-                createdAt: "created_at",
-                interviewStage: "interview_stage",
-                interviewStageId: "interview_stage_id",
-                jobId: "job_id",
-                locationId: "location_id",
-                locationIds: "location_ids",
-                rejectedAt: "rejected_at",
-                rejectedReasonIds: "rejected_reason_ids",
-                rejectedReasons: "rejected_reasons",
-                remoteCandidateId: "remote_candidate_id",
-                remoteId: "remote_id",
-                remoteInterviewStageId: "remote_interview_stage_id",
-                remoteJobId: "remote_job_id",
-                remoteLocationId: "remote_location_id",
-                remoteLocationIds: "remote_location_ids",
-                remoteRejectedReasonIds: "remote_rejected_reason_ids",
-                resultLinks: "result_links",
-                updatedAt: "updated_at",
-            });
-        });
+    /** @deprecated use `Application$inboundSchema` instead. */
+    export const inboundSchema = Application$inboundSchema;
+    /** @deprecated use `Application$outboundSchema` instead. */
+    export const outboundSchema = Application$outboundSchema;
+    /** @deprecated use `Application$Outbound` instead. */
+    export type Outbound = Application$Outbound;
 }

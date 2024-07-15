@@ -4,6 +4,7 @@
 
 import { SDKHooks } from "../hooks/hooks.js";
 import { SDKOptions, serverURLFromOptions } from "../lib/config.js";
+import { dlv } from "../lib/dlv.js";
 import {
     encodeDeepObjectQuery as encodeDeepObjectQuery$,
     encodeFormQuery as encodeFormQuery$,
@@ -16,7 +17,6 @@ import * as schemas$ from "../lib/schemas.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as operations from "./models/operations/index.js";
 import { createPageIterator, PageIterator, Paginator } from "./types/operations.js";
-import jp from "jsonpath";
 
 export class Hris extends ClientSDK {
     private readonly options$: SDKOptions & { hooks?: SDKHooks };
@@ -56,7 +56,7 @@ export class Hris extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.HrisCreateEmployeeRequest$.outboundSchema.parse(value$),
+            (value$) => operations.HrisCreateEmployeeRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = encodeJSON$("body", payload$.HrisCreateEmployeeRequestDto, { explode: true });
@@ -95,6 +95,7 @@ export class Hris extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -102,6 +103,8 @@ export class Hris extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -112,7 +115,7 @@ export class Hris extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.HrisCreateEmployeeResponse>()
-            .json(201, operations.HrisCreateEmployeeResponse$, { key: "CreateResult" })
+            .json(201, operations.HrisCreateEmployeeResponse$inboundSchema, { key: "CreateResult" })
             .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -131,7 +134,7 @@ export class Hris extends ClientSDK {
         const payload$ = schemas$.parse(
             input$,
             (value$) =>
-                operations.HrisCreateEmployeeTimeOffRequestRequest$.outboundSchema.parse(value$),
+                operations.HrisCreateEmployeeTimeOffRequestRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = encodeJSON$("body", payload$.HrisCreateTimeOffRequestDto, { explode: true });
@@ -175,6 +178,7 @@ export class Hris extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -182,6 +186,8 @@ export class Hris extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -192,7 +198,7 @@ export class Hris extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.HrisCreateEmployeeTimeOffRequestResponse>()
-            .json(201, operations.HrisCreateEmployeeTimeOffRequestResponse$, {
+            .json(201, operations.HrisCreateEmployeeTimeOffRequestResponse$inboundSchema, {
                 key: "CreateResult",
             })
             .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
@@ -213,7 +219,7 @@ export class Hris extends ClientSDK {
         const payload$ = schemas$.parse(
             input$,
             (value$) =>
-                operations.HrisCreateEmployeeWorkEligibilityRequestRequest$.outboundSchema.parse(
+                operations.HrisCreateEmployeeWorkEligibilityRequestRequest$outboundSchema.parse(
                     value$
                 ),
             "Input validation failed"
@@ -261,6 +267,7 @@ export class Hris extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -268,6 +275,8 @@ export class Hris extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -279,9 +288,11 @@ export class Hris extends ClientSDK {
 
         const [result$] =
             await this.matcher<operations.HrisCreateEmployeeWorkEligibilityRequestResponse>()
-                .json(201, operations.HrisCreateEmployeeWorkEligibilityRequestResponse$, {
-                    key: "CreateResult",
-                })
+                .json(
+                    201,
+                    operations.HrisCreateEmployeeWorkEligibilityRequestResponse$inboundSchema,
+                    { key: "CreateResult" }
+                )
                 .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
                 .match(response, { extraFields: responseFields$ });
 
@@ -299,7 +310,7 @@ export class Hris extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.HrisCreateTimeOffRequestRequest$.outboundSchema.parse(value$),
+            (value$) => operations.HrisCreateTimeOffRequestRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = encodeJSON$("body", payload$.HrisCreateTimeOffRequestDto, { explode: true });
@@ -338,6 +349,7 @@ export class Hris extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -345,6 +357,8 @@ export class Hris extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -355,7 +369,9 @@ export class Hris extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.HrisCreateTimeOffRequestResponse>()
-            .json(201, operations.HrisCreateTimeOffRequestResponse$, { key: "CreateResult" })
+            .json(201, operations.HrisCreateTimeOffRequestResponse$inboundSchema, {
+                key: "CreateResult",
+            })
             .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -373,8 +389,7 @@ export class Hris extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) =>
-                operations.HrisDownloadEmployeeDocumentRequest$.outboundSchema.parse(value$),
+            (value$) => operations.HrisDownloadEmployeeDocumentRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -423,6 +438,7 @@ export class Hris extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -430,6 +446,8 @@ export class Hris extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -440,7 +458,7 @@ export class Hris extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.HrisDownloadEmployeeDocumentResponse>()
-            .stream(200, operations.HrisDownloadEmployeeDocumentResponse$, {
+            .stream(200, operations.HrisDownloadEmployeeDocumentResponse$inboundSchema, {
                 key: "response-stream",
             })
             .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
@@ -460,7 +478,7 @@ export class Hris extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.HrisGetBenefitRequest$.outboundSchema.parse(value$),
+            (value$) => operations.HrisGetBenefitRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -509,6 +527,7 @@ export class Hris extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -516,6 +535,8 @@ export class Hris extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -526,7 +547,9 @@ export class Hris extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.HrisGetBenefitResponse>()
-            .json(200, operations.HrisGetBenefitResponse$, { key: "HRISBenefitResult" })
+            .json(200, operations.HrisGetBenefitResponse$inboundSchema, {
+                key: "HRISBenefitResult",
+            })
             .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -544,7 +567,7 @@ export class Hris extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.HrisGetCompanyRequest$.outboundSchema.parse(value$),
+            (value$) => operations.HrisGetCompanyRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -593,6 +616,7 @@ export class Hris extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -600,6 +624,8 @@ export class Hris extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -610,7 +636,7 @@ export class Hris extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.HrisGetCompanyResponse>()
-            .json(200, operations.HrisGetCompanyResponse$, { key: "CompanyResult" })
+            .json(200, operations.HrisGetCompanyResponse$inboundSchema, { key: "CompanyResult" })
             .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -628,7 +654,7 @@ export class Hris extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.HrisGetEmployeeRequest$.outboundSchema.parse(value$),
+            (value$) => operations.HrisGetEmployeeRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -679,6 +705,7 @@ export class Hris extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -686,6 +713,8 @@ export class Hris extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -696,7 +725,7 @@ export class Hris extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.HrisGetEmployeeResponse>()
-            .json(200, operations.HrisGetEmployeeResponse$, { key: "EmployeeResult" })
+            .json(200, operations.HrisGetEmployeeResponse$inboundSchema, { key: "EmployeeResult" })
             .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -714,7 +743,7 @@ export class Hris extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.HrisGetEmployeeDocumentRequest$.outboundSchema.parse(value$),
+            (value$) => operations.HrisGetEmployeeDocumentRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -769,6 +798,7 @@ export class Hris extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -776,6 +806,8 @@ export class Hris extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -786,7 +818,9 @@ export class Hris extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.HrisGetEmployeeDocumentResponse>()
-            .json(200, operations.HrisGetEmployeeDocumentResponse$, { key: "HrisDocumentResult" })
+            .json(200, operations.HrisGetEmployeeDocumentResponse$inboundSchema, {
+                key: "HrisDocumentResult",
+            })
             .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -805,7 +839,7 @@ export class Hris extends ClientSDK {
         const payload$ = schemas$.parse(
             input$,
             (value$) =>
-                operations.HrisGetEmployeeDocumentCategoryRequest$.outboundSchema.parse(value$),
+                operations.HrisGetEmployeeDocumentCategoryRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -856,6 +890,7 @@ export class Hris extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -863,6 +898,8 @@ export class Hris extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -873,7 +910,7 @@ export class Hris extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.HrisGetEmployeeDocumentCategoryResponse>()
-            .json(200, operations.HrisGetEmployeeDocumentCategoryResponse$, {
+            .json(200, operations.HrisGetEmployeeDocumentCategoryResponse$inboundSchema, {
                 key: "ReferenceResult",
             })
             .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
@@ -894,7 +931,7 @@ export class Hris extends ClientSDK {
         const payload$ = schemas$.parse(
             input$,
             (value$) =>
-                operations.HrisGetEmployeesTimeOffRequestRequest$.outboundSchema.parse(value$),
+                operations.HrisGetEmployeesTimeOffRequestRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -949,6 +986,7 @@ export class Hris extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -956,6 +994,8 @@ export class Hris extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -966,7 +1006,9 @@ export class Hris extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.HrisGetEmployeesTimeOffRequestResponse>()
-            .json(200, operations.HrisGetEmployeesTimeOffRequestResponse$, { key: "TimeOffResult" })
+            .json(200, operations.HrisGetEmployeesTimeOffRequestResponse$inboundSchema, {
+                key: "TimeOffResult",
+            })
             .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -985,7 +1027,7 @@ export class Hris extends ClientSDK {
         const payload$ = schemas$.parse(
             input$,
             (value$) =>
-                operations.HrisGetEmployeesWorkEligibilityRequest$.outboundSchema.parse(value$),
+                operations.HrisGetEmployeesWorkEligibilityRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -1040,6 +1082,7 @@ export class Hris extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -1047,6 +1090,8 @@ export class Hris extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -1057,7 +1102,7 @@ export class Hris extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.HrisGetEmployeesWorkEligibilityResponse>()
-            .json(200, operations.HrisGetEmployeesWorkEligibilityResponse$, {
+            .json(200, operations.HrisGetEmployeesWorkEligibilityResponse$inboundSchema, {
                 key: "WorkEligibilityResult",
             })
             .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
@@ -1077,7 +1122,7 @@ export class Hris extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.HrisGetEmploymentRequest$.outboundSchema.parse(value$),
+            (value$) => operations.HrisGetEmploymentRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -1127,6 +1172,7 @@ export class Hris extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -1134,6 +1180,8 @@ export class Hris extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -1144,7 +1192,9 @@ export class Hris extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.HrisGetEmploymentResponse>()
-            .json(200, operations.HrisGetEmploymentResponse$, { key: "EmploymentResult" })
+            .json(200, operations.HrisGetEmploymentResponse$inboundSchema, {
+                key: "EmploymentResult",
+            })
             .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -1162,7 +1212,7 @@ export class Hris extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.HrisGetGroupRequest$.outboundSchema.parse(value$),
+            (value$) => operations.HrisGetGroupRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -1211,6 +1261,7 @@ export class Hris extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -1218,6 +1269,8 @@ export class Hris extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -1228,7 +1281,7 @@ export class Hris extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.HrisGetGroupResponse>()
-            .json(200, operations.HrisGetGroupResponse$, { key: "HRISGroupsResult" })
+            .json(200, operations.HrisGetGroupResponse$inboundSchema, { key: "HRISGroupsResult" })
             .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -1246,7 +1299,7 @@ export class Hris extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.HrisGetJobRequest$.outboundSchema.parse(value$),
+            (value$) => operations.HrisGetJobRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -1295,6 +1348,7 @@ export class Hris extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -1302,6 +1356,8 @@ export class Hris extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -1312,7 +1368,7 @@ export class Hris extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.HrisGetJobResponse>()
-            .json(200, operations.HrisGetJobResponse$, { key: "JobResult" })
+            .json(200, operations.HrisGetJobResponse$inboundSchema, { key: "JobResult" })
             .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -1330,7 +1386,7 @@ export class Hris extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.HrisGetLocationRequest$.outboundSchema.parse(value$),
+            (value$) => operations.HrisGetLocationRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -1379,6 +1435,7 @@ export class Hris extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -1386,6 +1443,8 @@ export class Hris extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -1396,7 +1455,9 @@ export class Hris extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.HrisGetLocationResponse>()
-            .json(200, operations.HrisGetLocationResponse$, { key: "HRISLocationResult" })
+            .json(200, operations.HrisGetLocationResponse$inboundSchema, {
+                key: "HRISLocationResult",
+            })
             .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -1414,7 +1475,7 @@ export class Hris extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.HrisGetTimeOffRequestRequest$.outboundSchema.parse(value$),
+            (value$) => operations.HrisGetTimeOffRequestRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -1463,6 +1524,7 @@ export class Hris extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -1470,6 +1532,8 @@ export class Hris extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -1480,7 +1544,9 @@ export class Hris extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.HrisGetTimeOffRequestResponse>()
-            .json(200, operations.HrisGetTimeOffRequestResponse$, { key: "TimeOffResult" })
+            .json(200, operations.HrisGetTimeOffRequestResponse$inboundSchema, {
+                key: "TimeOffResult",
+            })
             .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -1498,7 +1564,7 @@ export class Hris extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.HrisListBenefitsRequest$.outboundSchema.parse(value$),
+            (value$) => operations.HrisListBenefitsRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -1549,6 +1615,7 @@ export class Hris extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -1556,6 +1623,8 @@ export class Hris extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -1566,7 +1635,9 @@ export class Hris extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.HrisListBenefitsResponse>()
-            .json(200, operations.HrisListBenefitsResponse$, { key: "HRISBenefitsPaginated" })
+            .json(200, operations.HrisListBenefitsResponse$inboundSchema, {
+                key: "HRISBenefitsPaginated",
+            })
             .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -1584,7 +1655,7 @@ export class Hris extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.HrisListCompaniesRequest$.outboundSchema.parse(value$),
+            (value$) => operations.HrisListCompaniesRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -1635,6 +1706,7 @@ export class Hris extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -1642,6 +1714,8 @@ export class Hris extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -1652,7 +1726,9 @@ export class Hris extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.HrisListCompaniesResponse>()
-            .json(200, operations.HrisListCompaniesResponse$, { key: "CompaniesPaginated" })
+            .json(200, operations.HrisListCompaniesResponse$inboundSchema, {
+                key: "CompaniesPaginated",
+            })
             .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -1670,7 +1746,7 @@ export class Hris extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.HrisListEmployeeCategoriesRequest$.outboundSchema.parse(value$),
+            (value$) => operations.HrisListEmployeeCategoriesRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -1721,6 +1797,7 @@ export class Hris extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -1728,6 +1805,8 @@ export class Hris extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -1738,7 +1817,7 @@ export class Hris extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.HrisListEmployeeCategoriesResponse>()
-            .json(200, operations.HrisListEmployeeCategoriesResponse$, {
+            .json(200, operations.HrisListEmployeeCategoriesResponse$inboundSchema, {
                 key: "ReferencePaginated",
             })
             .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
@@ -1758,7 +1837,7 @@ export class Hris extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.HrisListEmployeeDocumentsRequest$.outboundSchema.parse(value$),
+            (value$) => operations.HrisListEmployeeDocumentsRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -1814,6 +1893,7 @@ export class Hris extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -1821,6 +1901,8 @@ export class Hris extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -1831,7 +1913,7 @@ export class Hris extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.HrisListEmployeeDocumentsResponse>()
-            .json(200, operations.HrisListEmployeeDocumentsResponse$, {
+            .json(200, operations.HrisListEmployeeDocumentsResponse$inboundSchema, {
                 key: "HrisDocumentsPaginated",
             })
             .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
@@ -1852,7 +1934,7 @@ export class Hris extends ClientSDK {
         const payload$ = schemas$.parse(
             input$,
             (value$) =>
-                operations.HrisListEmployeeTimeOffRequestsRequest$.outboundSchema.parse(value$),
+                operations.HrisListEmployeeTimeOffRequestsRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -1908,6 +1990,7 @@ export class Hris extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -1915,6 +1998,8 @@ export class Hris extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -1925,7 +2010,7 @@ export class Hris extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.HrisListEmployeeTimeOffRequestsResponse>()
-            .json(200, operations.HrisListEmployeeTimeOffRequestsResponse$, {
+            .json(200, operations.HrisListEmployeeTimeOffRequestsResponse$inboundSchema, {
                 key: "TimeOffPaginated",
             })
             .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
@@ -1946,7 +2031,7 @@ export class Hris extends ClientSDK {
         const payload$ = schemas$.parse(
             input$,
             (value$) =>
-                operations.HrisListEmployeeWorkEligibilityRequest$.outboundSchema.parse(value$),
+                operations.HrisListEmployeeWorkEligibilityRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -2002,6 +2087,7 @@ export class Hris extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -2009,6 +2095,8 @@ export class Hris extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -2019,7 +2107,7 @@ export class Hris extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.HrisListEmployeeWorkEligibilityResponse>()
-            .json(200, operations.HrisListEmployeeWorkEligibilityResponse$, {
+            .json(200, operations.HrisListEmployeeWorkEligibilityResponse$inboundSchema, {
                 key: "WorkEligibilityPaginated",
             })
             .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
@@ -2039,7 +2127,7 @@ export class Hris extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.HrisListEmployeesRequest$.outboundSchema.parse(value$),
+            (value$) => operations.HrisListEmployeesRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -2092,6 +2180,7 @@ export class Hris extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -2099,6 +2188,8 @@ export class Hris extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -2109,14 +2200,17 @@ export class Hris extends ClientSDK {
         };
 
         const [result$, raw$] = await this.matcher<operations.HrisListEmployeesResponse>()
-            .json(200, operations.HrisListEmployeesResponse$, { key: "EmployeesPaginated" })
+            .json(200, operations.HrisListEmployeesResponse$inboundSchema, {
+                key: "EmployeesPaginated",
+            })
             .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
             .match(response, { extraFields: responseFields$ });
 
         const nextFunc = (
             responseData: unknown
         ): Paginator<operations.HrisListEmployeesResponse> => {
-            const nextCursor = jp.value(responseData, "$.next");
+            const nextCursor = dlv(responseData, "next");
+
             if (nextCursor == null) {
                 return () => null;
             }
@@ -2146,7 +2240,7 @@ export class Hris extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.HrisListEmploymentsRequest$.outboundSchema.parse(value$),
+            (value$) => operations.HrisListEmploymentsRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -2198,6 +2292,7 @@ export class Hris extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -2205,6 +2300,8 @@ export class Hris extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -2215,7 +2312,9 @@ export class Hris extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.HrisListEmploymentsResponse>()
-            .json(200, operations.HrisListEmploymentsResponse$, { key: "EmploymentsPaginated" })
+            .json(200, operations.HrisListEmploymentsResponse$inboundSchema, {
+                key: "EmploymentsPaginated",
+            })
             .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -2233,7 +2332,7 @@ export class Hris extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.HrisListGroupsRequest$.outboundSchema.parse(value$),
+            (value$) => operations.HrisListGroupsRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -2284,6 +2383,7 @@ export class Hris extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -2291,6 +2391,8 @@ export class Hris extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -2301,7 +2403,9 @@ export class Hris extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.HrisListGroupsResponse>()
-            .json(200, operations.HrisListGroupsResponse$, { key: "HRISGroupsPaginated" })
+            .json(200, operations.HrisListGroupsResponse$inboundSchema, {
+                key: "HRISGroupsPaginated",
+            })
             .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -2319,7 +2423,7 @@ export class Hris extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.HrisListJobsRequest$.outboundSchema.parse(value$),
+            (value$) => operations.HrisListJobsRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -2370,6 +2474,7 @@ export class Hris extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -2377,6 +2482,8 @@ export class Hris extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -2387,7 +2494,7 @@ export class Hris extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.HrisListJobsResponse>()
-            .json(200, operations.HrisListJobsResponse$, { key: "JobsPaginated" })
+            .json(200, operations.HrisListJobsResponse$inboundSchema, { key: "JobsPaginated" })
             .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -2405,7 +2512,7 @@ export class Hris extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.HrisListLocationsRequest$.outboundSchema.parse(value$),
+            (value$) => operations.HrisListLocationsRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -2456,6 +2563,7 @@ export class Hris extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -2463,6 +2571,8 @@ export class Hris extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -2473,7 +2583,9 @@ export class Hris extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.HrisListLocationsResponse>()
-            .json(200, operations.HrisListLocationsResponse$, { key: "HRISLocationsPaginated" })
+            .json(200, operations.HrisListLocationsResponse$inboundSchema, {
+                key: "HRISLocationsPaginated",
+            })
             .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -2491,7 +2603,7 @@ export class Hris extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.HrisListTimeOffRequestsRequest$.outboundSchema.parse(value$),
+            (value$) => operations.HrisListTimeOffRequestsRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -2542,6 +2654,7 @@ export class Hris extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -2549,6 +2662,8 @@ export class Hris extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -2559,7 +2674,9 @@ export class Hris extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.HrisListTimeOffRequestsResponse>()
-            .json(200, operations.HrisListTimeOffRequestsResponse$, { key: "TimeOffPaginated" })
+            .json(200, operations.HrisListTimeOffRequestsResponse$inboundSchema, {
+                key: "TimeOffPaginated",
+            })
             .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -2577,7 +2694,7 @@ export class Hris extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.HrisUpdateEmployeeRequest$.outboundSchema.parse(value$),
+            (value$) => operations.HrisUpdateEmployeeRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = encodeJSON$("body", payload$.HrisCreateEmployeeRequestDto, { explode: true });
@@ -2619,6 +2736,7 @@ export class Hris extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -2626,6 +2744,8 @@ export class Hris extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -2636,7 +2756,7 @@ export class Hris extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.HrisUpdateEmployeeResponse>()
-            .json(200, operations.HrisUpdateEmployeeResponse$, { key: "CreateResult" })
+            .json(200, operations.HrisUpdateEmployeeResponse$inboundSchema, { key: "CreateResult" })
             .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -2655,7 +2775,7 @@ export class Hris extends ClientSDK {
         const payload$ = schemas$.parse(
             input$,
             (value$) =>
-                operations.HrisUpdateEmployeeWorkEligibilityRequestRequest$.outboundSchema.parse(
+                operations.HrisUpdateEmployeeWorkEligibilityRequestRequest$outboundSchema.parse(
                     value$
                 ),
             "Input validation failed"
@@ -2707,6 +2827,7 @@ export class Hris extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -2714,6 +2835,8 @@ export class Hris extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -2725,7 +2848,10 @@ export class Hris extends ClientSDK {
 
         const [result$] =
             await this.matcher<operations.HrisUpdateEmployeeWorkEligibilityRequestResponse>()
-                .void(200, operations.HrisUpdateEmployeeWorkEligibilityRequestResponse$)
+                .void(
+                    200,
+                    operations.HrisUpdateEmployeeWorkEligibilityRequestResponse$inboundSchema
+                )
                 .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
                 .match(response, { extraFields: responseFields$ });
 
@@ -2743,7 +2869,7 @@ export class Hris extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.HrisUpdateTimeOffRequestRequest$.outboundSchema.parse(value$),
+            (value$) => operations.HrisUpdateTimeOffRequestRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = encodeJSON$("body", payload$.HrisCreateTimeOffRequestDto, { explode: true });
@@ -2785,6 +2911,7 @@ export class Hris extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -2792,6 +2919,8 @@ export class Hris extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -2802,7 +2931,9 @@ export class Hris extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.HrisUpdateTimeOffRequestResponse>()
-            .json(200, operations.HrisUpdateTimeOffRequestResponse$, { key: "CreateResult" })
+            .json(200, operations.HrisUpdateTimeOffRequestResponse$inboundSchema, {
+                key: "CreateResult",
+            })
             .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -2820,7 +2951,7 @@ export class Hris extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.HrisUploadEmployeeDocumentRequest$.outboundSchema.parse(value$),
+            (value$) => operations.HrisUploadEmployeeDocumentRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = encodeJSON$("body", payload$.HrisDocumentsUploadRequestDto, {
@@ -2866,6 +2997,7 @@ export class Hris extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -2873,6 +3005,8 @@ export class Hris extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -2883,7 +3017,7 @@ export class Hris extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.HrisUploadEmployeeDocumentResponse>()
-            .json(200, operations.HrisUploadEmployeeDocumentResponse$, {
+            .json(200, operations.HrisUploadEmployeeDocumentResponse$inboundSchema, {
                 key: "WriteResultApiModel",
             })
             .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])

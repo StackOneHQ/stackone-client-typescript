@@ -83,139 +83,193 @@ export type CrmListContactsResponse = {
 };
 
 /** @internal */
+export const CrmListContactsQueryParamFilter$inboundSchema: z.ZodType<
+    CrmListContactsQueryParamFilter,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        updated_after: z.nullable(z.string()).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            updated_after: "updatedAfter",
+        });
+    });
+
+/** @internal */
+export type CrmListContactsQueryParamFilter$Outbound = {
+    updated_after?: string | null | undefined;
+};
+
+/** @internal */
+export const CrmListContactsQueryParamFilter$outboundSchema: z.ZodType<
+    CrmListContactsQueryParamFilter$Outbound,
+    z.ZodTypeDef,
+    CrmListContactsQueryParamFilter
+> = z
+    .object({
+        updatedAfter: z.nullable(z.string()).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            updatedAfter: "updated_after",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace CrmListContactsQueryParamFilter$ {
-    export const inboundSchema: z.ZodType<CrmListContactsQueryParamFilter, z.ZodTypeDef, unknown> =
-        z
-            .object({
-                updated_after: z.nullable(z.string()).optional(),
-            })
-            .transform((v) => {
-                return remap$(v, {
-                    updated_after: "updatedAfter",
-                });
-            });
-
-    export type Outbound = {
-        updated_after?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        CrmListContactsQueryParamFilter
-    > = z
-        .object({
-            updatedAfter: z.nullable(z.string()).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                updatedAfter: "updated_after",
-            });
-        });
+    /** @deprecated use `CrmListContactsQueryParamFilter$inboundSchema` instead. */
+    export const inboundSchema = CrmListContactsQueryParamFilter$inboundSchema;
+    /** @deprecated use `CrmListContactsQueryParamFilter$outboundSchema` instead. */
+    export const outboundSchema = CrmListContactsQueryParamFilter$outboundSchema;
+    /** @deprecated use `CrmListContactsQueryParamFilter$Outbound` instead. */
+    export type Outbound = CrmListContactsQueryParamFilter$Outbound;
 }
 
 /** @internal */
+export const CrmListContactsRequest$inboundSchema: z.ZodType<
+    CrmListContactsRequest,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        fields: z.nullable(z.string()).optional(),
+        filter: z.nullable(z.lazy(() => CrmListContactsQueryParamFilter$inboundSchema)).optional(),
+        include: z.nullable(z.string()).optional(),
+        next: z.nullable(z.string()).optional(),
+        page: z.nullable(z.string()).optional(),
+        page_size: z.nullable(z.string().default("25")),
+        proxy: z.nullable(z.record(z.any())).optional(),
+        raw: z.nullable(z.boolean().default(false)),
+        updated_after: z.nullable(z.string()).optional(),
+        "x-account-id": z.string(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            page_size: "pageSize",
+            updated_after: "updatedAfter",
+            "x-account-id": "xAccountId",
+        });
+    });
+
+/** @internal */
+export type CrmListContactsRequest$Outbound = {
+    fields?: string | null | undefined;
+    filter?: CrmListContactsQueryParamFilter$Outbound | null | undefined;
+    include?: string | null | undefined;
+    next?: string | null | undefined;
+    page?: string | null | undefined;
+    page_size: string | null;
+    proxy?: { [k: string]: any } | null | undefined;
+    raw: boolean | null;
+    updated_after?: string | null | undefined;
+    "x-account-id": string;
+};
+
+/** @internal */
+export const CrmListContactsRequest$outboundSchema: z.ZodType<
+    CrmListContactsRequest$Outbound,
+    z.ZodTypeDef,
+    CrmListContactsRequest
+> = z
+    .object({
+        fields: z.nullable(z.string()).optional(),
+        filter: z.nullable(z.lazy(() => CrmListContactsQueryParamFilter$outboundSchema)).optional(),
+        include: z.nullable(z.string()).optional(),
+        next: z.nullable(z.string()).optional(),
+        page: z.nullable(z.string()).optional(),
+        pageSize: z.nullable(z.string().default("25")),
+        proxy: z.nullable(z.record(z.any())).optional(),
+        raw: z.nullable(z.boolean().default(false)),
+        updatedAfter: z.nullable(z.string()).optional(),
+        xAccountId: z.string(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            pageSize: "page_size",
+            updatedAfter: "updated_after",
+            xAccountId: "x-account-id",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace CrmListContactsRequest$ {
-    export const inboundSchema: z.ZodType<CrmListContactsRequest, z.ZodTypeDef, unknown> = z
-        .object({
-            fields: z.nullable(z.string()).optional(),
-            filter: z
-                .nullable(z.lazy(() => CrmListContactsQueryParamFilter$.inboundSchema))
-                .optional(),
-            include: z.nullable(z.string()).optional(),
-            next: z.nullable(z.string()).optional(),
-            page: z.nullable(z.string()).optional(),
-            page_size: z.nullable(z.string().default("25")),
-            proxy: z.nullable(z.record(z.any())).optional(),
-            raw: z.nullable(z.boolean().default(false)),
-            updated_after: z.nullable(z.string()).optional(),
-            "x-account-id": z.string(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                page_size: "pageSize",
-                updated_after: "updatedAfter",
-                "x-account-id": "xAccountId",
-            });
-        });
-
-    export type Outbound = {
-        fields?: string | null | undefined;
-        filter?: CrmListContactsQueryParamFilter$.Outbound | null | undefined;
-        include?: string | null | undefined;
-        next?: string | null | undefined;
-        page?: string | null | undefined;
-        page_size: string | null;
-        proxy?: { [k: string]: any } | null | undefined;
-        raw: boolean | null;
-        updated_after?: string | null | undefined;
-        "x-account-id": string;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CrmListContactsRequest> = z
-        .object({
-            fields: z.nullable(z.string()).optional(),
-            filter: z
-                .nullable(z.lazy(() => CrmListContactsQueryParamFilter$.outboundSchema))
-                .optional(),
-            include: z.nullable(z.string()).optional(),
-            next: z.nullable(z.string()).optional(),
-            page: z.nullable(z.string()).optional(),
-            pageSize: z.nullable(z.string().default("25")),
-            proxy: z.nullable(z.record(z.any())).optional(),
-            raw: z.nullable(z.boolean().default(false)),
-            updatedAfter: z.nullable(z.string()).optional(),
-            xAccountId: z.string(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                pageSize: "page_size",
-                updatedAfter: "updated_after",
-                xAccountId: "x-account-id",
-            });
-        });
+    /** @deprecated use `CrmListContactsRequest$inboundSchema` instead. */
+    export const inboundSchema = CrmListContactsRequest$inboundSchema;
+    /** @deprecated use `CrmListContactsRequest$outboundSchema` instead. */
+    export const outboundSchema = CrmListContactsRequest$outboundSchema;
+    /** @deprecated use `CrmListContactsRequest$Outbound` instead. */
+    export type Outbound = CrmListContactsRequest$Outbound;
 }
 
 /** @internal */
+export const CrmListContactsResponse$inboundSchema: z.ZodType<
+    CrmListContactsResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        ContactsPaginated: shared.ContactsPaginated$inboundSchema.optional(),
+        ContentType: z.string(),
+        StatusCode: z.number().int(),
+        RawResponse: z.instanceof(Response),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            ContactsPaginated: "contactsPaginated",
+            ContentType: "contentType",
+            StatusCode: "statusCode",
+            RawResponse: "rawResponse",
+        });
+    });
+
+/** @internal */
+export type CrmListContactsResponse$Outbound = {
+    ContactsPaginated?: shared.ContactsPaginated$Outbound | undefined;
+    ContentType: string;
+    StatusCode: number;
+    RawResponse: never;
+};
+
+/** @internal */
+export const CrmListContactsResponse$outboundSchema: z.ZodType<
+    CrmListContactsResponse$Outbound,
+    z.ZodTypeDef,
+    CrmListContactsResponse
+> = z
+    .object({
+        contactsPaginated: shared.ContactsPaginated$outboundSchema.optional(),
+        contentType: z.string(),
+        statusCode: z.number().int(),
+        rawResponse: z.instanceof(Response).transform(() => {
+            throw new Error("Response cannot be serialized");
+        }),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            contactsPaginated: "ContactsPaginated",
+            contentType: "ContentType",
+            statusCode: "StatusCode",
+            rawResponse: "RawResponse",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace CrmListContactsResponse$ {
-    export const inboundSchema: z.ZodType<CrmListContactsResponse, z.ZodTypeDef, unknown> = z
-        .object({
-            ContactsPaginated: shared.ContactsPaginated$.inboundSchema.optional(),
-            ContentType: z.string(),
-            StatusCode: z.number().int(),
-            RawResponse: z.instanceof(Response),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                ContactsPaginated: "contactsPaginated",
-                ContentType: "contentType",
-                StatusCode: "statusCode",
-                RawResponse: "rawResponse",
-            });
-        });
-
-    export type Outbound = {
-        ContactsPaginated?: shared.ContactsPaginated$.Outbound | undefined;
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: never;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CrmListContactsResponse> = z
-        .object({
-            contactsPaginated: shared.ContactsPaginated$.outboundSchema.optional(),
-            contentType: z.string(),
-            statusCode: z.number().int(),
-            rawResponse: z.instanceof(Response).transform(() => {
-                throw new Error("Response cannot be serialized");
-            }),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                contactsPaginated: "ContactsPaginated",
-                contentType: "ContentType",
-                statusCode: "StatusCode",
-                rawResponse: "RawResponse",
-            });
-        });
+    /** @deprecated use `CrmListContactsResponse$inboundSchema` instead. */
+    export const inboundSchema = CrmListContactsResponse$inboundSchema;
+    /** @deprecated use `CrmListContactsResponse$outboundSchema` instead. */
+    export const outboundSchema = CrmListContactsResponse$outboundSchema;
+    /** @deprecated use `CrmListContactsResponse$Outbound` instead. */
+    export type Outbound = CrmListContactsResponse$Outbound;
 }

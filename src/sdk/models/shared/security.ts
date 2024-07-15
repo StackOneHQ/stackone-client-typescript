@@ -11,33 +11,46 @@ export type Security = {
 };
 
 /** @internal */
+export const Security$inboundSchema: z.ZodType<Security, z.ZodTypeDef, unknown> = z
+    .object({
+        Password: z.string().optional(),
+        Username: z.string().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            Password: "password",
+            Username: "username",
+        });
+    });
+
+/** @internal */
+export type Security$Outbound = {
+    Password?: string | undefined;
+    Username?: string | undefined;
+};
+
+/** @internal */
+export const Security$outboundSchema: z.ZodType<Security$Outbound, z.ZodTypeDef, Security> = z
+    .object({
+        password: z.string().optional(),
+        username: z.string().optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            password: "Password",
+            username: "Username",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace Security$ {
-    export const inboundSchema: z.ZodType<Security, z.ZodTypeDef, unknown> = z
-        .object({
-            Password: z.string().optional(),
-            Username: z.string().optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                Password: "password",
-                Username: "username",
-            });
-        });
-
-    export type Outbound = {
-        Password?: string | undefined;
-        Username?: string | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Security> = z
-        .object({
-            password: z.string().optional(),
-            username: z.string().optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                password: "Password",
-                username: "Username",
-            });
-        });
+    /** @deprecated use `Security$inboundSchema` instead. */
+    export const inboundSchema = Security$inboundSchema;
+    /** @deprecated use `Security$outboundSchema` instead. */
+    export const outboundSchema = Security$outboundSchema;
+    /** @deprecated use `Security$Outbound` instead. */
+    export type Outbound = Security$Outbound;
 }

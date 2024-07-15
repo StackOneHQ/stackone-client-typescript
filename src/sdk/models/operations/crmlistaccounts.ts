@@ -79,136 +79,190 @@ export type CrmListAccountsResponse = {
 };
 
 /** @internal */
+export const CrmListAccountsQueryParamFilter$inboundSchema: z.ZodType<
+    CrmListAccountsQueryParamFilter,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        updated_after: z.nullable(z.string()).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            updated_after: "updatedAfter",
+        });
+    });
+
+/** @internal */
+export type CrmListAccountsQueryParamFilter$Outbound = {
+    updated_after?: string | null | undefined;
+};
+
+/** @internal */
+export const CrmListAccountsQueryParamFilter$outboundSchema: z.ZodType<
+    CrmListAccountsQueryParamFilter$Outbound,
+    z.ZodTypeDef,
+    CrmListAccountsQueryParamFilter
+> = z
+    .object({
+        updatedAfter: z.nullable(z.string()).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            updatedAfter: "updated_after",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace CrmListAccountsQueryParamFilter$ {
-    export const inboundSchema: z.ZodType<CrmListAccountsQueryParamFilter, z.ZodTypeDef, unknown> =
-        z
-            .object({
-                updated_after: z.nullable(z.string()).optional(),
-            })
-            .transform((v) => {
-                return remap$(v, {
-                    updated_after: "updatedAfter",
-                });
-            });
-
-    export type Outbound = {
-        updated_after?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        CrmListAccountsQueryParamFilter
-    > = z
-        .object({
-            updatedAfter: z.nullable(z.string()).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                updatedAfter: "updated_after",
-            });
-        });
+    /** @deprecated use `CrmListAccountsQueryParamFilter$inboundSchema` instead. */
+    export const inboundSchema = CrmListAccountsQueryParamFilter$inboundSchema;
+    /** @deprecated use `CrmListAccountsQueryParamFilter$outboundSchema` instead. */
+    export const outboundSchema = CrmListAccountsQueryParamFilter$outboundSchema;
+    /** @deprecated use `CrmListAccountsQueryParamFilter$Outbound` instead. */
+    export type Outbound = CrmListAccountsQueryParamFilter$Outbound;
 }
 
 /** @internal */
+export const CrmListAccountsRequest$inboundSchema: z.ZodType<
+    CrmListAccountsRequest,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        fields: z.nullable(z.string()).optional(),
+        filter: z.nullable(z.lazy(() => CrmListAccountsQueryParamFilter$inboundSchema)).optional(),
+        next: z.nullable(z.string()).optional(),
+        page: z.nullable(z.string()).optional(),
+        page_size: z.nullable(z.string().default("25")),
+        proxy: z.nullable(z.record(z.any())).optional(),
+        raw: z.nullable(z.boolean().default(false)),
+        updated_after: z.nullable(z.string()).optional(),
+        "x-account-id": z.string(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            page_size: "pageSize",
+            updated_after: "updatedAfter",
+            "x-account-id": "xAccountId",
+        });
+    });
+
+/** @internal */
+export type CrmListAccountsRequest$Outbound = {
+    fields?: string | null | undefined;
+    filter?: CrmListAccountsQueryParamFilter$Outbound | null | undefined;
+    next?: string | null | undefined;
+    page?: string | null | undefined;
+    page_size: string | null;
+    proxy?: { [k: string]: any } | null | undefined;
+    raw: boolean | null;
+    updated_after?: string | null | undefined;
+    "x-account-id": string;
+};
+
+/** @internal */
+export const CrmListAccountsRequest$outboundSchema: z.ZodType<
+    CrmListAccountsRequest$Outbound,
+    z.ZodTypeDef,
+    CrmListAccountsRequest
+> = z
+    .object({
+        fields: z.nullable(z.string()).optional(),
+        filter: z.nullable(z.lazy(() => CrmListAccountsQueryParamFilter$outboundSchema)).optional(),
+        next: z.nullable(z.string()).optional(),
+        page: z.nullable(z.string()).optional(),
+        pageSize: z.nullable(z.string().default("25")),
+        proxy: z.nullable(z.record(z.any())).optional(),
+        raw: z.nullable(z.boolean().default(false)),
+        updatedAfter: z.nullable(z.string()).optional(),
+        xAccountId: z.string(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            pageSize: "page_size",
+            updatedAfter: "updated_after",
+            xAccountId: "x-account-id",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace CrmListAccountsRequest$ {
-    export const inboundSchema: z.ZodType<CrmListAccountsRequest, z.ZodTypeDef, unknown> = z
-        .object({
-            fields: z.nullable(z.string()).optional(),
-            filter: z
-                .nullable(z.lazy(() => CrmListAccountsQueryParamFilter$.inboundSchema))
-                .optional(),
-            next: z.nullable(z.string()).optional(),
-            page: z.nullable(z.string()).optional(),
-            page_size: z.nullable(z.string().default("25")),
-            proxy: z.nullable(z.record(z.any())).optional(),
-            raw: z.nullable(z.boolean().default(false)),
-            updated_after: z.nullable(z.string()).optional(),
-            "x-account-id": z.string(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                page_size: "pageSize",
-                updated_after: "updatedAfter",
-                "x-account-id": "xAccountId",
-            });
-        });
-
-    export type Outbound = {
-        fields?: string | null | undefined;
-        filter?: CrmListAccountsQueryParamFilter$.Outbound | null | undefined;
-        next?: string | null | undefined;
-        page?: string | null | undefined;
-        page_size: string | null;
-        proxy?: { [k: string]: any } | null | undefined;
-        raw: boolean | null;
-        updated_after?: string | null | undefined;
-        "x-account-id": string;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CrmListAccountsRequest> = z
-        .object({
-            fields: z.nullable(z.string()).optional(),
-            filter: z
-                .nullable(z.lazy(() => CrmListAccountsQueryParamFilter$.outboundSchema))
-                .optional(),
-            next: z.nullable(z.string()).optional(),
-            page: z.nullable(z.string()).optional(),
-            pageSize: z.nullable(z.string().default("25")),
-            proxy: z.nullable(z.record(z.any())).optional(),
-            raw: z.nullable(z.boolean().default(false)),
-            updatedAfter: z.nullable(z.string()).optional(),
-            xAccountId: z.string(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                pageSize: "page_size",
-                updatedAfter: "updated_after",
-                xAccountId: "x-account-id",
-            });
-        });
+    /** @deprecated use `CrmListAccountsRequest$inboundSchema` instead. */
+    export const inboundSchema = CrmListAccountsRequest$inboundSchema;
+    /** @deprecated use `CrmListAccountsRequest$outboundSchema` instead. */
+    export const outboundSchema = CrmListAccountsRequest$outboundSchema;
+    /** @deprecated use `CrmListAccountsRequest$Outbound` instead. */
+    export type Outbound = CrmListAccountsRequest$Outbound;
 }
 
 /** @internal */
+export const CrmListAccountsResponse$inboundSchema: z.ZodType<
+    CrmListAccountsResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        AccountsPaginated: shared.AccountsPaginated$inboundSchema.optional(),
+        ContentType: z.string(),
+        StatusCode: z.number().int(),
+        RawResponse: z.instanceof(Response),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            AccountsPaginated: "accountsPaginated",
+            ContentType: "contentType",
+            StatusCode: "statusCode",
+            RawResponse: "rawResponse",
+        });
+    });
+
+/** @internal */
+export type CrmListAccountsResponse$Outbound = {
+    AccountsPaginated?: shared.AccountsPaginated$Outbound | undefined;
+    ContentType: string;
+    StatusCode: number;
+    RawResponse: never;
+};
+
+/** @internal */
+export const CrmListAccountsResponse$outboundSchema: z.ZodType<
+    CrmListAccountsResponse$Outbound,
+    z.ZodTypeDef,
+    CrmListAccountsResponse
+> = z
+    .object({
+        accountsPaginated: shared.AccountsPaginated$outboundSchema.optional(),
+        contentType: z.string(),
+        statusCode: z.number().int(),
+        rawResponse: z.instanceof(Response).transform(() => {
+            throw new Error("Response cannot be serialized");
+        }),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            accountsPaginated: "AccountsPaginated",
+            contentType: "ContentType",
+            statusCode: "StatusCode",
+            rawResponse: "RawResponse",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace CrmListAccountsResponse$ {
-    export const inboundSchema: z.ZodType<CrmListAccountsResponse, z.ZodTypeDef, unknown> = z
-        .object({
-            AccountsPaginated: shared.AccountsPaginated$.inboundSchema.optional(),
-            ContentType: z.string(),
-            StatusCode: z.number().int(),
-            RawResponse: z.instanceof(Response),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                AccountsPaginated: "accountsPaginated",
-                ContentType: "contentType",
-                StatusCode: "statusCode",
-                RawResponse: "rawResponse",
-            });
-        });
-
-    export type Outbound = {
-        AccountsPaginated?: shared.AccountsPaginated$.Outbound | undefined;
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: never;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, CrmListAccountsResponse> = z
-        .object({
-            accountsPaginated: shared.AccountsPaginated$.outboundSchema.optional(),
-            contentType: z.string(),
-            statusCode: z.number().int(),
-            rawResponse: z.instanceof(Response).transform(() => {
-                throw new Error("Response cannot be serialized");
-            }),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                accountsPaginated: "AccountsPaginated",
-                contentType: "ContentType",
-                statusCode: "StatusCode",
-                rawResponse: "RawResponse",
-            });
-        });
+    /** @deprecated use `CrmListAccountsResponse$inboundSchema` instead. */
+    export const inboundSchema = CrmListAccountsResponse$inboundSchema;
+    /** @deprecated use `CrmListAccountsResponse$outboundSchema` instead. */
+    export const outboundSchema = CrmListAccountsResponse$outboundSchema;
+    /** @deprecated use `CrmListAccountsResponse$Outbound` instead. */
+    export type Outbound = CrmListAccountsResponse$Outbound;
 }

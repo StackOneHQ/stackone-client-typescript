@@ -44,41 +44,69 @@ export type ProxyRequestBody = {
 };
 
 /** @internal */
-export namespace Method$ {
-    export const inboundSchema: z.ZodType<MethodOpen, z.ZodTypeDef, unknown> = z.union([
-        z.nativeEnum(Method),
-        z.string().transform(catchUnrecognizedEnum),
-    ]);
+export const Method$inboundSchema: z.ZodType<MethodOpen, z.ZodTypeDef, unknown> = z.union([
+    z.nativeEnum(Method),
+    z.string().transform(catchUnrecognizedEnum),
+]);
 
-    export const outboundSchema: z.ZodType<MethodOpen, z.ZodTypeDef, MethodOpen> = z.union([
-        z.nativeEnum(Method),
-        z.string().and(z.custom<Unrecognized<string>>()),
-    ]);
+/** @internal */
+export const Method$outboundSchema: z.ZodType<MethodOpen, z.ZodTypeDef, MethodOpen> = z.union([
+    z.nativeEnum(Method),
+    z.string().and(z.custom<Unrecognized<string>>()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace Method$ {
+    /** @deprecated use `Method$inboundSchema` instead. */
+    export const inboundSchema = Method$inboundSchema;
+    /** @deprecated use `Method$outboundSchema` instead. */
+    export const outboundSchema = Method$outboundSchema;
 }
 
 /** @internal */
+export const ProxyRequestBody$inboundSchema: z.ZodType<ProxyRequestBody, z.ZodTypeDef, unknown> =
+    z.object({
+        body: z.nullable(z.record(z.any())).optional(),
+        headers: z.nullable(z.record(z.any())).optional(),
+        method: z.nullable(Method$inboundSchema.default(Method.Get)),
+        path: z.nullable(z.string()).optional(),
+        url: z.nullable(z.string()).optional(),
+    });
+
+/** @internal */
+export type ProxyRequestBody$Outbound = {
+    body?: { [k: string]: any } | null | undefined;
+    headers?: { [k: string]: any } | null | undefined;
+    method: string | null;
+    path?: string | null | undefined;
+    url?: string | null | undefined;
+};
+
+/** @internal */
+export const ProxyRequestBody$outboundSchema: z.ZodType<
+    ProxyRequestBody$Outbound,
+    z.ZodTypeDef,
+    ProxyRequestBody
+> = z.object({
+    body: z.nullable(z.record(z.any())).optional(),
+    headers: z.nullable(z.record(z.any())).optional(),
+    method: z.nullable(Method$outboundSchema.default(Method.Get)),
+    path: z.nullable(z.string()).optional(),
+    url: z.nullable(z.string()).optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace ProxyRequestBody$ {
-    export const inboundSchema: z.ZodType<ProxyRequestBody, z.ZodTypeDef, unknown> = z.object({
-        body: z.nullable(z.record(z.any())).optional(),
-        headers: z.nullable(z.record(z.any())).optional(),
-        method: z.nullable(Method$.inboundSchema.default(Method.Get)),
-        path: z.nullable(z.string()).optional(),
-        url: z.nullable(z.string()).optional(),
-    });
-
-    export type Outbound = {
-        body?: { [k: string]: any } | null | undefined;
-        headers?: { [k: string]: any } | null | undefined;
-        method: string | null;
-        path?: string | null | undefined;
-        url?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ProxyRequestBody> = z.object({
-        body: z.nullable(z.record(z.any())).optional(),
-        headers: z.nullable(z.record(z.any())).optional(),
-        method: z.nullable(Method$.outboundSchema.default(Method.Get)),
-        path: z.nullable(z.string()).optional(),
-        url: z.nullable(z.string()).optional(),
-    });
+    /** @deprecated use `ProxyRequestBody$inboundSchema` instead. */
+    export const inboundSchema = ProxyRequestBody$inboundSchema;
+    /** @deprecated use `ProxyRequestBody$outboundSchema` instead. */
+    export const outboundSchema = ProxyRequestBody$outboundSchema;
+    /** @deprecated use `ProxyRequestBody$Outbound` instead. */
+    export type Outbound = ProxyRequestBody$Outbound;
 }

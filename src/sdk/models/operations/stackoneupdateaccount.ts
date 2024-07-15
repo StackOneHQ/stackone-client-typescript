@@ -31,76 +31,117 @@ export type StackoneUpdateAccountResponse = {
 };
 
 /** @internal */
+export const StackoneUpdateAccountRequest$inboundSchema: z.ZodType<
+    StackoneUpdateAccountRequest,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        PatchAccountDto: shared.PatchAccountDto$inboundSchema,
+        id: z.string(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            PatchAccountDto: "patchAccountDto",
+        });
+    });
+
+/** @internal */
+export type StackoneUpdateAccountRequest$Outbound = {
+    PatchAccountDto: shared.PatchAccountDto$Outbound;
+    id: string;
+};
+
+/** @internal */
+export const StackoneUpdateAccountRequest$outboundSchema: z.ZodType<
+    StackoneUpdateAccountRequest$Outbound,
+    z.ZodTypeDef,
+    StackoneUpdateAccountRequest
+> = z
+    .object({
+        patchAccountDto: shared.PatchAccountDto$outboundSchema,
+        id: z.string(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            patchAccountDto: "PatchAccountDto",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace StackoneUpdateAccountRequest$ {
-    export const inboundSchema: z.ZodType<StackoneUpdateAccountRequest, z.ZodTypeDef, unknown> = z
-        .object({
-            PatchAccountDto: shared.PatchAccountDto$.inboundSchema,
-            id: z.string(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                PatchAccountDto: "patchAccountDto",
-            });
-        });
-
-    export type Outbound = {
-        PatchAccountDto: shared.PatchAccountDto$.Outbound;
-        id: string;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, StackoneUpdateAccountRequest> = z
-        .object({
-            patchAccountDto: shared.PatchAccountDto$.outboundSchema,
-            id: z.string(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                patchAccountDto: "PatchAccountDto",
-            });
-        });
+    /** @deprecated use `StackoneUpdateAccountRequest$inboundSchema` instead. */
+    export const inboundSchema = StackoneUpdateAccountRequest$inboundSchema;
+    /** @deprecated use `StackoneUpdateAccountRequest$outboundSchema` instead. */
+    export const outboundSchema = StackoneUpdateAccountRequest$outboundSchema;
+    /** @deprecated use `StackoneUpdateAccountRequest$Outbound` instead. */
+    export type Outbound = StackoneUpdateAccountRequest$Outbound;
 }
 
 /** @internal */
-export namespace StackoneUpdateAccountResponse$ {
-    export const inboundSchema: z.ZodType<StackoneUpdateAccountResponse, z.ZodTypeDef, unknown> = z
-        .object({
-            ContentType: z.string(),
-            LinkedAccount: shared.LinkedAccount$.inboundSchema.optional(),
-            StatusCode: z.number().int(),
-            RawResponse: z.instanceof(Response),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                ContentType: "contentType",
-                LinkedAccount: "linkedAccount",
-                StatusCode: "statusCode",
-                RawResponse: "rawResponse",
-            });
+export const StackoneUpdateAccountResponse$inboundSchema: z.ZodType<
+    StackoneUpdateAccountResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        ContentType: z.string(),
+        LinkedAccount: shared.LinkedAccount$inboundSchema.optional(),
+        StatusCode: z.number().int(),
+        RawResponse: z.instanceof(Response),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            ContentType: "contentType",
+            LinkedAccount: "linkedAccount",
+            StatusCode: "statusCode",
+            RawResponse: "rawResponse",
         });
+    });
 
-    export type Outbound = {
-        ContentType: string;
-        LinkedAccount?: shared.LinkedAccount$.Outbound | undefined;
-        StatusCode: number;
-        RawResponse: never;
-    };
+/** @internal */
+export type StackoneUpdateAccountResponse$Outbound = {
+    ContentType: string;
+    LinkedAccount?: shared.LinkedAccount$Outbound | undefined;
+    StatusCode: number;
+    RawResponse: never;
+};
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, StackoneUpdateAccountResponse> =
-        z
-            .object({
-                contentType: z.string(),
-                linkedAccount: shared.LinkedAccount$.outboundSchema.optional(),
-                statusCode: z.number().int(),
-                rawResponse: z.instanceof(Response).transform(() => {
-                    throw new Error("Response cannot be serialized");
-                }),
-            })
-            .transform((v) => {
-                return remap$(v, {
-                    contentType: "ContentType",
-                    linkedAccount: "LinkedAccount",
-                    statusCode: "StatusCode",
-                    rawResponse: "RawResponse",
-                });
-            });
+/** @internal */
+export const StackoneUpdateAccountResponse$outboundSchema: z.ZodType<
+    StackoneUpdateAccountResponse$Outbound,
+    z.ZodTypeDef,
+    StackoneUpdateAccountResponse
+> = z
+    .object({
+        contentType: z.string(),
+        linkedAccount: shared.LinkedAccount$outboundSchema.optional(),
+        statusCode: z.number().int(),
+        rawResponse: z.instanceof(Response).transform(() => {
+            throw new Error("Response cannot be serialized");
+        }),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            contentType: "ContentType",
+            linkedAccount: "LinkedAccount",
+            statusCode: "StatusCode",
+            rawResponse: "RawResponse",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace StackoneUpdateAccountResponse$ {
+    /** @deprecated use `StackoneUpdateAccountResponse$inboundSchema` instead. */
+    export const inboundSchema = StackoneUpdateAccountResponse$inboundSchema;
+    /** @deprecated use `StackoneUpdateAccountResponse$outboundSchema` instead. */
+    export const outboundSchema = StackoneUpdateAccountResponse$outboundSchema;
+    /** @deprecated use `StackoneUpdateAccountResponse$Outbound` instead. */
+    export type Outbound = StackoneUpdateAccountResponse$Outbound;
 }

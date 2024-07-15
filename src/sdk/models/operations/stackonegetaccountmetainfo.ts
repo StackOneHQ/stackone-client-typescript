@@ -30,76 +30,102 @@ export type StackoneGetAccountMetaInfoResponse = {
 };
 
 /** @internal */
+export const StackoneGetAccountMetaInfoRequest$inboundSchema: z.ZodType<
+    StackoneGetAccountMetaInfoRequest,
+    z.ZodTypeDef,
+    unknown
+> = z.object({
+    id: z.string(),
+});
+
+/** @internal */
+export type StackoneGetAccountMetaInfoRequest$Outbound = {
+    id: string;
+};
+
+/** @internal */
+export const StackoneGetAccountMetaInfoRequest$outboundSchema: z.ZodType<
+    StackoneGetAccountMetaInfoRequest$Outbound,
+    z.ZodTypeDef,
+    StackoneGetAccountMetaInfoRequest
+> = z.object({
+    id: z.string(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace StackoneGetAccountMetaInfoRequest$ {
-    export const inboundSchema: z.ZodType<
-        StackoneGetAccountMetaInfoRequest,
-        z.ZodTypeDef,
-        unknown
-    > = z.object({
-        id: z.string(),
-    });
-
-    export type Outbound = {
-        id: string;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        StackoneGetAccountMetaInfoRequest
-    > = z.object({
-        id: z.string(),
-    });
+    /** @deprecated use `StackoneGetAccountMetaInfoRequest$inboundSchema` instead. */
+    export const inboundSchema = StackoneGetAccountMetaInfoRequest$inboundSchema;
+    /** @deprecated use `StackoneGetAccountMetaInfoRequest$outboundSchema` instead. */
+    export const outboundSchema = StackoneGetAccountMetaInfoRequest$outboundSchema;
+    /** @deprecated use `StackoneGetAccountMetaInfoRequest$Outbound` instead. */
+    export type Outbound = StackoneGetAccountMetaInfoRequest$Outbound;
 }
 
 /** @internal */
+export const StackoneGetAccountMetaInfoResponse$inboundSchema: z.ZodType<
+    StackoneGetAccountMetaInfoResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        ContentType: z.string(),
+        LinkedAccountMeta: shared.LinkedAccountMeta$inboundSchema.optional(),
+        StatusCode: z.number().int(),
+        RawResponse: z.instanceof(Response),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            ContentType: "contentType",
+            LinkedAccountMeta: "linkedAccountMeta",
+            StatusCode: "statusCode",
+            RawResponse: "rawResponse",
+        });
+    });
+
+/** @internal */
+export type StackoneGetAccountMetaInfoResponse$Outbound = {
+    ContentType: string;
+    LinkedAccountMeta?: shared.LinkedAccountMeta$Outbound | undefined;
+    StatusCode: number;
+    RawResponse: never;
+};
+
+/** @internal */
+export const StackoneGetAccountMetaInfoResponse$outboundSchema: z.ZodType<
+    StackoneGetAccountMetaInfoResponse$Outbound,
+    z.ZodTypeDef,
+    StackoneGetAccountMetaInfoResponse
+> = z
+    .object({
+        contentType: z.string(),
+        linkedAccountMeta: shared.LinkedAccountMeta$outboundSchema.optional(),
+        statusCode: z.number().int(),
+        rawResponse: z.instanceof(Response).transform(() => {
+            throw new Error("Response cannot be serialized");
+        }),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            contentType: "ContentType",
+            linkedAccountMeta: "LinkedAccountMeta",
+            statusCode: "StatusCode",
+            rawResponse: "RawResponse",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace StackoneGetAccountMetaInfoResponse$ {
-    export const inboundSchema: z.ZodType<
-        StackoneGetAccountMetaInfoResponse,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            ContentType: z.string(),
-            LinkedAccountMeta: shared.LinkedAccountMeta$.inboundSchema.optional(),
-            StatusCode: z.number().int(),
-            RawResponse: z.instanceof(Response),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                ContentType: "contentType",
-                LinkedAccountMeta: "linkedAccountMeta",
-                StatusCode: "statusCode",
-                RawResponse: "rawResponse",
-            });
-        });
-
-    export type Outbound = {
-        ContentType: string;
-        LinkedAccountMeta?: shared.LinkedAccountMeta$.Outbound | undefined;
-        StatusCode: number;
-        RawResponse: never;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        StackoneGetAccountMetaInfoResponse
-    > = z
-        .object({
-            contentType: z.string(),
-            linkedAccountMeta: shared.LinkedAccountMeta$.outboundSchema.optional(),
-            statusCode: z.number().int(),
-            rawResponse: z.instanceof(Response).transform(() => {
-                throw new Error("Response cannot be serialized");
-            }),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                contentType: "ContentType",
-                linkedAccountMeta: "LinkedAccountMeta",
-                statusCode: "StatusCode",
-                rawResponse: "RawResponse",
-            });
-        });
+    /** @deprecated use `StackoneGetAccountMetaInfoResponse$inboundSchema` instead. */
+    export const inboundSchema = StackoneGetAccountMetaInfoResponse$inboundSchema;
+    /** @deprecated use `StackoneGetAccountMetaInfoResponse$outboundSchema` instead. */
+    export const outboundSchema = StackoneGetAccountMetaInfoResponse$outboundSchema;
+    /** @deprecated use `StackoneGetAccountMetaInfoResponse$Outbound` instead. */
+    export type Outbound = StackoneGetAccountMetaInfoResponse$Outbound;
 }

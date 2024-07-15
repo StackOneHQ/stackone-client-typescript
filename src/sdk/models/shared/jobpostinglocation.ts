@@ -18,34 +18,55 @@ export type JobPostingLocation = {
 };
 
 /** @internal */
+export const JobPostingLocation$inboundSchema: z.ZodType<
+    JobPostingLocation,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        id: z.nullable(z.string()).optional(),
+        name: z.nullable(z.string()).optional(),
+        remote_id: z.nullable(z.string()).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            remote_id: "remoteId",
+        });
+    });
+
+/** @internal */
+export type JobPostingLocation$Outbound = {
+    id?: string | null | undefined;
+    name?: string | null | undefined;
+    remote_id?: string | null | undefined;
+};
+
+/** @internal */
+export const JobPostingLocation$outboundSchema: z.ZodType<
+    JobPostingLocation$Outbound,
+    z.ZodTypeDef,
+    JobPostingLocation
+> = z
+    .object({
+        id: z.nullable(z.string()).optional(),
+        name: z.nullable(z.string()).optional(),
+        remoteId: z.nullable(z.string()).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            remoteId: "remote_id",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace JobPostingLocation$ {
-    export const inboundSchema: z.ZodType<JobPostingLocation, z.ZodTypeDef, unknown> = z
-        .object({
-            id: z.nullable(z.string()).optional(),
-            name: z.nullable(z.string()).optional(),
-            remote_id: z.nullable(z.string()).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                remote_id: "remoteId",
-            });
-        });
-
-    export type Outbound = {
-        id?: string | null | undefined;
-        name?: string | null | undefined;
-        remote_id?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, JobPostingLocation> = z
-        .object({
-            id: z.nullable(z.string()).optional(),
-            name: z.nullable(z.string()).optional(),
-            remoteId: z.nullable(z.string()).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                remoteId: "remote_id",
-            });
-        });
+    /** @deprecated use `JobPostingLocation$inboundSchema` instead. */
+    export const inboundSchema = JobPostingLocation$inboundSchema;
+    /** @deprecated use `JobPostingLocation$outboundSchema` instead. */
+    export const outboundSchema = JobPostingLocation$outboundSchema;
+    /** @deprecated use `JobPostingLocation$Outbound` instead. */
+    export type Outbound = JobPostingLocation$Outbound;
 }

@@ -79,139 +79,194 @@ export type LmsListCategoriesResponse = {
 };
 
 /** @internal */
+export const LmsListCategoriesQueryParamFilter$inboundSchema: z.ZodType<
+    LmsListCategoriesQueryParamFilter,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        updated_after: z.nullable(z.string()).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            updated_after: "updatedAfter",
+        });
+    });
+
+/** @internal */
+export type LmsListCategoriesQueryParamFilter$Outbound = {
+    updated_after?: string | null | undefined;
+};
+
+/** @internal */
+export const LmsListCategoriesQueryParamFilter$outboundSchema: z.ZodType<
+    LmsListCategoriesQueryParamFilter$Outbound,
+    z.ZodTypeDef,
+    LmsListCategoriesQueryParamFilter
+> = z
+    .object({
+        updatedAfter: z.nullable(z.string()).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            updatedAfter: "updated_after",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace LmsListCategoriesQueryParamFilter$ {
-    export const inboundSchema: z.ZodType<
-        LmsListCategoriesQueryParamFilter,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            updated_after: z.nullable(z.string()).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                updated_after: "updatedAfter",
-            });
-        });
-
-    export type Outbound = {
-        updated_after?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        LmsListCategoriesQueryParamFilter
-    > = z
-        .object({
-            updatedAfter: z.nullable(z.string()).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                updatedAfter: "updated_after",
-            });
-        });
+    /** @deprecated use `LmsListCategoriesQueryParamFilter$inboundSchema` instead. */
+    export const inboundSchema = LmsListCategoriesQueryParamFilter$inboundSchema;
+    /** @deprecated use `LmsListCategoriesQueryParamFilter$outboundSchema` instead. */
+    export const outboundSchema = LmsListCategoriesQueryParamFilter$outboundSchema;
+    /** @deprecated use `LmsListCategoriesQueryParamFilter$Outbound` instead. */
+    export type Outbound = LmsListCategoriesQueryParamFilter$Outbound;
 }
 
 /** @internal */
+export const LmsListCategoriesRequest$inboundSchema: z.ZodType<
+    LmsListCategoriesRequest,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        fields: z.nullable(z.string()).optional(),
+        filter: z
+            .nullable(z.lazy(() => LmsListCategoriesQueryParamFilter$inboundSchema))
+            .optional(),
+        next: z.nullable(z.string()).optional(),
+        page: z.nullable(z.string()).optional(),
+        page_size: z.nullable(z.string().default("25")),
+        proxy: z.nullable(z.record(z.any())).optional(),
+        raw: z.nullable(z.boolean().default(false)),
+        updated_after: z.nullable(z.string()).optional(),
+        "x-account-id": z.string(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            page_size: "pageSize",
+            updated_after: "updatedAfter",
+            "x-account-id": "xAccountId",
+        });
+    });
+
+/** @internal */
+export type LmsListCategoriesRequest$Outbound = {
+    fields?: string | null | undefined;
+    filter?: LmsListCategoriesQueryParamFilter$Outbound | null | undefined;
+    next?: string | null | undefined;
+    page?: string | null | undefined;
+    page_size: string | null;
+    proxy?: { [k: string]: any } | null | undefined;
+    raw: boolean | null;
+    updated_after?: string | null | undefined;
+    "x-account-id": string;
+};
+
+/** @internal */
+export const LmsListCategoriesRequest$outboundSchema: z.ZodType<
+    LmsListCategoriesRequest$Outbound,
+    z.ZodTypeDef,
+    LmsListCategoriesRequest
+> = z
+    .object({
+        fields: z.nullable(z.string()).optional(),
+        filter: z
+            .nullable(z.lazy(() => LmsListCategoriesQueryParamFilter$outboundSchema))
+            .optional(),
+        next: z.nullable(z.string()).optional(),
+        page: z.nullable(z.string()).optional(),
+        pageSize: z.nullable(z.string().default("25")),
+        proxy: z.nullable(z.record(z.any())).optional(),
+        raw: z.nullable(z.boolean().default(false)),
+        updatedAfter: z.nullable(z.string()).optional(),
+        xAccountId: z.string(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            pageSize: "page_size",
+            updatedAfter: "updated_after",
+            xAccountId: "x-account-id",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace LmsListCategoriesRequest$ {
-    export const inboundSchema: z.ZodType<LmsListCategoriesRequest, z.ZodTypeDef, unknown> = z
-        .object({
-            fields: z.nullable(z.string()).optional(),
-            filter: z
-                .nullable(z.lazy(() => LmsListCategoriesQueryParamFilter$.inboundSchema))
-                .optional(),
-            next: z.nullable(z.string()).optional(),
-            page: z.nullable(z.string()).optional(),
-            page_size: z.nullable(z.string().default("25")),
-            proxy: z.nullable(z.record(z.any())).optional(),
-            raw: z.nullable(z.boolean().default(false)),
-            updated_after: z.nullable(z.string()).optional(),
-            "x-account-id": z.string(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                page_size: "pageSize",
-                updated_after: "updatedAfter",
-                "x-account-id": "xAccountId",
-            });
-        });
-
-    export type Outbound = {
-        fields?: string | null | undefined;
-        filter?: LmsListCategoriesQueryParamFilter$.Outbound | null | undefined;
-        next?: string | null | undefined;
-        page?: string | null | undefined;
-        page_size: string | null;
-        proxy?: { [k: string]: any } | null | undefined;
-        raw: boolean | null;
-        updated_after?: string | null | undefined;
-        "x-account-id": string;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, LmsListCategoriesRequest> = z
-        .object({
-            fields: z.nullable(z.string()).optional(),
-            filter: z
-                .nullable(z.lazy(() => LmsListCategoriesQueryParamFilter$.outboundSchema))
-                .optional(),
-            next: z.nullable(z.string()).optional(),
-            page: z.nullable(z.string()).optional(),
-            pageSize: z.nullable(z.string().default("25")),
-            proxy: z.nullable(z.record(z.any())).optional(),
-            raw: z.nullable(z.boolean().default(false)),
-            updatedAfter: z.nullable(z.string()).optional(),
-            xAccountId: z.string(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                pageSize: "page_size",
-                updatedAfter: "updated_after",
-                xAccountId: "x-account-id",
-            });
-        });
+    /** @deprecated use `LmsListCategoriesRequest$inboundSchema` instead. */
+    export const inboundSchema = LmsListCategoriesRequest$inboundSchema;
+    /** @deprecated use `LmsListCategoriesRequest$outboundSchema` instead. */
+    export const outboundSchema = LmsListCategoriesRequest$outboundSchema;
+    /** @deprecated use `LmsListCategoriesRequest$Outbound` instead. */
+    export type Outbound = LmsListCategoriesRequest$Outbound;
 }
 
 /** @internal */
+export const LmsListCategoriesResponse$inboundSchema: z.ZodType<
+    LmsListCategoriesResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        CategoriesPaginated: shared.CategoriesPaginated$inboundSchema.optional(),
+        ContentType: z.string(),
+        StatusCode: z.number().int(),
+        RawResponse: z.instanceof(Response),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            CategoriesPaginated: "categoriesPaginated",
+            ContentType: "contentType",
+            StatusCode: "statusCode",
+            RawResponse: "rawResponse",
+        });
+    });
+
+/** @internal */
+export type LmsListCategoriesResponse$Outbound = {
+    CategoriesPaginated?: shared.CategoriesPaginated$Outbound | undefined;
+    ContentType: string;
+    StatusCode: number;
+    RawResponse: never;
+};
+
+/** @internal */
+export const LmsListCategoriesResponse$outboundSchema: z.ZodType<
+    LmsListCategoriesResponse$Outbound,
+    z.ZodTypeDef,
+    LmsListCategoriesResponse
+> = z
+    .object({
+        categoriesPaginated: shared.CategoriesPaginated$outboundSchema.optional(),
+        contentType: z.string(),
+        statusCode: z.number().int(),
+        rawResponse: z.instanceof(Response).transform(() => {
+            throw new Error("Response cannot be serialized");
+        }),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            categoriesPaginated: "CategoriesPaginated",
+            contentType: "ContentType",
+            statusCode: "StatusCode",
+            rawResponse: "RawResponse",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace LmsListCategoriesResponse$ {
-    export const inboundSchema: z.ZodType<LmsListCategoriesResponse, z.ZodTypeDef, unknown> = z
-        .object({
-            CategoriesPaginated: shared.CategoriesPaginated$.inboundSchema.optional(),
-            ContentType: z.string(),
-            StatusCode: z.number().int(),
-            RawResponse: z.instanceof(Response),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                CategoriesPaginated: "categoriesPaginated",
-                ContentType: "contentType",
-                StatusCode: "statusCode",
-                RawResponse: "rawResponse",
-            });
-        });
-
-    export type Outbound = {
-        CategoriesPaginated?: shared.CategoriesPaginated$.Outbound | undefined;
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: never;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, LmsListCategoriesResponse> = z
-        .object({
-            categoriesPaginated: shared.CategoriesPaginated$.outboundSchema.optional(),
-            contentType: z.string(),
-            statusCode: z.number().int(),
-            rawResponse: z.instanceof(Response).transform(() => {
-                throw new Error("Response cannot be serialized");
-            }),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                categoriesPaginated: "CategoriesPaginated",
-                contentType: "ContentType",
-                statusCode: "StatusCode",
-                rawResponse: "RawResponse",
-            });
-        });
+    /** @deprecated use `LmsListCategoriesResponse$inboundSchema` instead. */
+    export const inboundSchema = LmsListCategoriesResponse$inboundSchema;
+    /** @deprecated use `LmsListCategoriesResponse$outboundSchema` instead. */
+    export const outboundSchema = LmsListCategoriesResponse$outboundSchema;
+    /** @deprecated use `LmsListCategoriesResponse$Outbound` instead. */
+    export type Outbound = LmsListCategoriesResponse$Outbound;
 }

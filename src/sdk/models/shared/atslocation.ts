@@ -18,34 +18,51 @@ export type ATSLocation = {
 };
 
 /** @internal */
+export const ATSLocation$inboundSchema: z.ZodType<ATSLocation, z.ZodTypeDef, unknown> = z
+    .object({
+        id: z.nullable(z.string()).optional(),
+        name: z.nullable(z.string()).optional(),
+        remote_id: z.nullable(z.string()).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            remote_id: "remoteId",
+        });
+    });
+
+/** @internal */
+export type ATSLocation$Outbound = {
+    id?: string | null | undefined;
+    name?: string | null | undefined;
+    remote_id?: string | null | undefined;
+};
+
+/** @internal */
+export const ATSLocation$outboundSchema: z.ZodType<
+    ATSLocation$Outbound,
+    z.ZodTypeDef,
+    ATSLocation
+> = z
+    .object({
+        id: z.nullable(z.string()).optional(),
+        name: z.nullable(z.string()).optional(),
+        remoteId: z.nullable(z.string()).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            remoteId: "remote_id",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace ATSLocation$ {
-    export const inboundSchema: z.ZodType<ATSLocation, z.ZodTypeDef, unknown> = z
-        .object({
-            id: z.nullable(z.string()).optional(),
-            name: z.nullable(z.string()).optional(),
-            remote_id: z.nullable(z.string()).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                remote_id: "remoteId",
-            });
-        });
-
-    export type Outbound = {
-        id?: string | null | undefined;
-        name?: string | null | undefined;
-        remote_id?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, ATSLocation> = z
-        .object({
-            id: z.nullable(z.string()).optional(),
-            name: z.nullable(z.string()).optional(),
-            remoteId: z.nullable(z.string()).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                remoteId: "remote_id",
-            });
-        });
+    /** @deprecated use `ATSLocation$inboundSchema` instead. */
+    export const inboundSchema = ATSLocation$inboundSchema;
+    /** @deprecated use `ATSLocation$outboundSchema` instead. */
+    export const outboundSchema = ATSLocation$outboundSchema;
+    /** @deprecated use `ATSLocation$Outbound` instead. */
+    export type Outbound = ATSLocation$Outbound;
 }

@@ -4,7 +4,12 @@
 
 import { remap as remap$ } from "../../../lib/primitives.js";
 import { catchUnrecognizedEnum, OpenEnum, Unrecognized } from "../../types/enums.js";
-import { NoteContentApiModel, NoteContentApiModel$ } from "./notecontentapimodel.js";
+import {
+    NoteContentApiModel,
+    NoteContentApiModel$inboundSchema,
+    NoteContentApiModel$Outbound,
+    NoteContentApiModel$outboundSchema,
+} from "./notecontentapimodel.js";
 import * as z from "zod";
 
 export type Note4 = {};
@@ -77,171 +82,221 @@ export type Note = {
 };
 
 /** @internal */
+export const Note4$inboundSchema: z.ZodType<Note4, z.ZodTypeDef, unknown> = z.object({});
+
+/** @internal */
+export type Note4$Outbound = {};
+
+/** @internal */
+export const Note4$outboundSchema: z.ZodType<Note4$Outbound, z.ZodTypeDef, Note4> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace Note4$ {
-    export const inboundSchema: z.ZodType<Note4, z.ZodTypeDef, unknown> = z.object({});
-
-    export type Outbound = {};
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Note4> = z.object({});
+    /** @deprecated use `Note4$inboundSchema` instead. */
+    export const inboundSchema = Note4$inboundSchema;
+    /** @deprecated use `Note4$outboundSchema` instead. */
+    export const outboundSchema = Note4$outboundSchema;
+    /** @deprecated use `Note4$Outbound` instead. */
+    export type Outbound = Note4$Outbound;
 }
 
 /** @internal */
+export const NoteSourceValue$inboundSchema: z.ZodType<NoteSourceValue, z.ZodTypeDef, unknown> =
+    z.union([z.lazy(() => Note4$inboundSchema), z.string(), z.number(), z.boolean()]);
+
+/** @internal */
+export type NoteSourceValue$Outbound = Note4$Outbound | string | number | boolean;
+
+/** @internal */
+export const NoteSourceValue$outboundSchema: z.ZodType<
+    NoteSourceValue$Outbound,
+    z.ZodTypeDef,
+    NoteSourceValue
+> = z.union([z.lazy(() => Note4$outboundSchema), z.string(), z.number(), z.boolean()]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace NoteSourceValue$ {
-    export const inboundSchema: z.ZodType<NoteSourceValue, z.ZodTypeDef, unknown> = z.union([
-        z.lazy(() => Note4$.inboundSchema),
-        z.string(),
-        z.number(),
-        z.boolean(),
-    ]);
-
-    export type Outbound = Note4$.Outbound | string | number | boolean;
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, NoteSourceValue> = z.union([
-        z.lazy(() => Note4$.outboundSchema),
-        z.string(),
-        z.number(),
-        z.boolean(),
-    ]);
+    /** @deprecated use `NoteSourceValue$inboundSchema` instead. */
+    export const inboundSchema = NoteSourceValue$inboundSchema;
+    /** @deprecated use `NoteSourceValue$outboundSchema` instead. */
+    export const outboundSchema = NoteSourceValue$outboundSchema;
+    /** @deprecated use `NoteSourceValue$Outbound` instead. */
+    export type Outbound = NoteSourceValue$Outbound;
 }
 
 /** @internal */
+export const NoteValue$inboundSchema: z.ZodType<NoteValueOpen, z.ZodTypeDef, unknown> = z.union([
+    z.nativeEnum(NoteValue),
+    z.string().transform(catchUnrecognizedEnum),
+]);
+
+/** @internal */
+export const NoteValue$outboundSchema: z.ZodType<NoteValueOpen, z.ZodTypeDef, NoteValueOpen> =
+    z.union([z.nativeEnum(NoteValue), z.string().and(z.custom<Unrecognized<string>>())]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace NoteValue$ {
-    export const inboundSchema: z.ZodType<NoteValueOpen, z.ZodTypeDef, unknown> = z.union([
-        z.nativeEnum(NoteValue),
-        z.string().transform(catchUnrecognizedEnum),
-    ]);
-
-    export const outboundSchema: z.ZodType<NoteValueOpen, z.ZodTypeDef, NoteValueOpen> = z.union([
-        z.nativeEnum(NoteValue),
-        z.string().and(z.custom<Unrecognized<string>>()),
-    ]);
+    /** @deprecated use `NoteValue$inboundSchema` instead. */
+    export const inboundSchema = NoteValue$inboundSchema;
+    /** @deprecated use `NoteValue$outboundSchema` instead. */
+    export const outboundSchema = NoteValue$outboundSchema;
 }
 
 /** @internal */
+export const NoteVisibility$inboundSchema: z.ZodType<NoteVisibility, z.ZodTypeDef, unknown> = z
+    .object({
+        source_value: z
+            .nullable(
+                z.union([z.lazy(() => Note4$inboundSchema), z.string(), z.number(), z.boolean()])
+            )
+            .optional(),
+        value: z.nullable(NoteValue$inboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            source_value: "sourceValue",
+        });
+    });
+
+/** @internal */
+export type NoteVisibility$Outbound = {
+    source_value?: Note4$Outbound | string | number | boolean | null | undefined;
+    value?: string | null | undefined;
+};
+
+/** @internal */
+export const NoteVisibility$outboundSchema: z.ZodType<
+    NoteVisibility$Outbound,
+    z.ZodTypeDef,
+    NoteVisibility
+> = z
+    .object({
+        sourceValue: z
+            .nullable(
+                z.union([z.lazy(() => Note4$outboundSchema), z.string(), z.number(), z.boolean()])
+            )
+            .optional(),
+        value: z.nullable(NoteValue$outboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            sourceValue: "source_value",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace NoteVisibility$ {
-    export const inboundSchema: z.ZodType<NoteVisibility, z.ZodTypeDef, unknown> = z
-        .object({
-            source_value: z
-                .nullable(
-                    z.union([
-                        z.lazy(() => Note4$.inboundSchema),
-                        z.string(),
-                        z.number(),
-                        z.boolean(),
-                    ])
-                )
-                .optional(),
-            value: z.nullable(NoteValue$.inboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                source_value: "sourceValue",
-            });
-        });
-
-    export type Outbound = {
-        source_value?: Note4$.Outbound | string | number | boolean | null | undefined;
-        value?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, NoteVisibility> = z
-        .object({
-            sourceValue: z
-                .nullable(
-                    z.union([
-                        z.lazy(() => Note4$.outboundSchema),
-                        z.string(),
-                        z.number(),
-                        z.boolean(),
-                    ])
-                )
-                .optional(),
-            value: z.nullable(NoteValue$.outboundSchema).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                sourceValue: "source_value",
-            });
-        });
+    /** @deprecated use `NoteVisibility$inboundSchema` instead. */
+    export const inboundSchema = NoteVisibility$inboundSchema;
+    /** @deprecated use `NoteVisibility$outboundSchema` instead. */
+    export const outboundSchema = NoteVisibility$outboundSchema;
+    /** @deprecated use `NoteVisibility$Outbound` instead. */
+    export type Outbound = NoteVisibility$Outbound;
 }
 
 /** @internal */
+export const Note$inboundSchema: z.ZodType<Note, z.ZodTypeDef, unknown> = z
+    .object({
+        author_id: z.nullable(z.string()).optional(),
+        content: z.nullable(z.array(NoteContentApiModel$inboundSchema)).optional(),
+        created_at: z
+            .nullable(
+                z
+                    .string()
+                    .datetime({ offset: true })
+                    .transform((v) => new Date(v))
+            )
+            .optional(),
+        deleted_at: z
+            .nullable(
+                z
+                    .string()
+                    .datetime({ offset: true })
+                    .transform((v) => new Date(v))
+            )
+            .optional(),
+        id: z.nullable(z.string()).optional(),
+        remote_author_id: z.nullable(z.string()).optional(),
+        remote_id: z.nullable(z.string()).optional(),
+        updated_at: z
+            .nullable(
+                z
+                    .string()
+                    .datetime({ offset: true })
+                    .transform((v) => new Date(v))
+            )
+            .optional(),
+        visibility: z.nullable(z.lazy(() => NoteVisibility$inboundSchema)).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            author_id: "authorId",
+            created_at: "createdAt",
+            deleted_at: "deletedAt",
+            remote_author_id: "remoteAuthorId",
+            remote_id: "remoteId",
+            updated_at: "updatedAt",
+        });
+    });
+
+/** @internal */
+export type Note$Outbound = {
+    author_id?: string | null | undefined;
+    content?: Array<NoteContentApiModel$Outbound> | null | undefined;
+    created_at?: string | null | undefined;
+    deleted_at?: string | null | undefined;
+    id?: string | null | undefined;
+    remote_author_id?: string | null | undefined;
+    remote_id?: string | null | undefined;
+    updated_at?: string | null | undefined;
+    visibility?: NoteVisibility$Outbound | null | undefined;
+};
+
+/** @internal */
+export const Note$outboundSchema: z.ZodType<Note$Outbound, z.ZodTypeDef, Note> = z
+    .object({
+        authorId: z.nullable(z.string()).optional(),
+        content: z.nullable(z.array(NoteContentApiModel$outboundSchema)).optional(),
+        createdAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+        deletedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+        id: z.nullable(z.string()).optional(),
+        remoteAuthorId: z.nullable(z.string()).optional(),
+        remoteId: z.nullable(z.string()).optional(),
+        updatedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+        visibility: z.nullable(z.lazy(() => NoteVisibility$outboundSchema)).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            authorId: "author_id",
+            createdAt: "created_at",
+            deletedAt: "deleted_at",
+            remoteAuthorId: "remote_author_id",
+            remoteId: "remote_id",
+            updatedAt: "updated_at",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace Note$ {
-    export const inboundSchema: z.ZodType<Note, z.ZodTypeDef, unknown> = z
-        .object({
-            author_id: z.nullable(z.string()).optional(),
-            content: z.nullable(z.array(NoteContentApiModel$.inboundSchema)).optional(),
-            created_at: z
-                .nullable(
-                    z
-                        .string()
-                        .datetime({ offset: true })
-                        .transform((v) => new Date(v))
-                )
-                .optional(),
-            deleted_at: z
-                .nullable(
-                    z
-                        .string()
-                        .datetime({ offset: true })
-                        .transform((v) => new Date(v))
-                )
-                .optional(),
-            id: z.nullable(z.string()).optional(),
-            remote_author_id: z.nullable(z.string()).optional(),
-            remote_id: z.nullable(z.string()).optional(),
-            updated_at: z
-                .nullable(
-                    z
-                        .string()
-                        .datetime({ offset: true })
-                        .transform((v) => new Date(v))
-                )
-                .optional(),
-            visibility: z.nullable(z.lazy(() => NoteVisibility$.inboundSchema)).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                author_id: "authorId",
-                created_at: "createdAt",
-                deleted_at: "deletedAt",
-                remote_author_id: "remoteAuthorId",
-                remote_id: "remoteId",
-                updated_at: "updatedAt",
-            });
-        });
-
-    export type Outbound = {
-        author_id?: string | null | undefined;
-        content?: Array<NoteContentApiModel$.Outbound> | null | undefined;
-        created_at?: string | null | undefined;
-        deleted_at?: string | null | undefined;
-        id?: string | null | undefined;
-        remote_author_id?: string | null | undefined;
-        remote_id?: string | null | undefined;
-        updated_at?: string | null | undefined;
-        visibility?: NoteVisibility$.Outbound | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, Note> = z
-        .object({
-            authorId: z.nullable(z.string()).optional(),
-            content: z.nullable(z.array(NoteContentApiModel$.outboundSchema)).optional(),
-            createdAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
-            deletedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
-            id: z.nullable(z.string()).optional(),
-            remoteAuthorId: z.nullable(z.string()).optional(),
-            remoteId: z.nullable(z.string()).optional(),
-            updatedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
-            visibility: z.nullable(z.lazy(() => NoteVisibility$.outboundSchema)).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                authorId: "author_id",
-                createdAt: "created_at",
-                deletedAt: "deleted_at",
-                remoteAuthorId: "remote_author_id",
-                remoteId: "remote_id",
-                updatedAt: "updated_at",
-            });
-        });
+    /** @deprecated use `Note$inboundSchema` instead. */
+    export const inboundSchema = Note$inboundSchema;
+    /** @deprecated use `Note$outboundSchema` instead. */
+    export const outboundSchema = Note$outboundSchema;
+    /** @deprecated use `Note$Outbound` instead. */
+    export type Outbound = Note$Outbound;
 }

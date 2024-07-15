@@ -79,159 +79,196 @@ export type MarketingListOmniChannelTemplatesResponse = {
 };
 
 /** @internal */
+export const MarketingListOmniChannelTemplatesQueryParamFilter$inboundSchema: z.ZodType<
+    MarketingListOmniChannelTemplatesQueryParamFilter,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        updated_after: z.nullable(z.string()).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            updated_after: "updatedAfter",
+        });
+    });
+
+/** @internal */
+export type MarketingListOmniChannelTemplatesQueryParamFilter$Outbound = {
+    updated_after?: string | null | undefined;
+};
+
+/** @internal */
+export const MarketingListOmniChannelTemplatesQueryParamFilter$outboundSchema: z.ZodType<
+    MarketingListOmniChannelTemplatesQueryParamFilter$Outbound,
+    z.ZodTypeDef,
+    MarketingListOmniChannelTemplatesQueryParamFilter
+> = z
+    .object({
+        updatedAfter: z.nullable(z.string()).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            updatedAfter: "updated_after",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace MarketingListOmniChannelTemplatesQueryParamFilter$ {
-    export const inboundSchema: z.ZodType<
-        MarketingListOmniChannelTemplatesQueryParamFilter,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            updated_after: z.nullable(z.string()).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                updated_after: "updatedAfter",
-            });
-        });
-
-    export type Outbound = {
-        updated_after?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        MarketingListOmniChannelTemplatesQueryParamFilter
-    > = z
-        .object({
-            updatedAfter: z.nullable(z.string()).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                updatedAfter: "updated_after",
-            });
-        });
+    /** @deprecated use `MarketingListOmniChannelTemplatesQueryParamFilter$inboundSchema` instead. */
+    export const inboundSchema = MarketingListOmniChannelTemplatesQueryParamFilter$inboundSchema;
+    /** @deprecated use `MarketingListOmniChannelTemplatesQueryParamFilter$outboundSchema` instead. */
+    export const outboundSchema = MarketingListOmniChannelTemplatesQueryParamFilter$outboundSchema;
+    /** @deprecated use `MarketingListOmniChannelTemplatesQueryParamFilter$Outbound` instead. */
+    export type Outbound = MarketingListOmniChannelTemplatesQueryParamFilter$Outbound;
 }
 
 /** @internal */
+export const MarketingListOmniChannelTemplatesRequest$inboundSchema: z.ZodType<
+    MarketingListOmniChannelTemplatesRequest,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        fields: z.nullable(z.string()).optional(),
+        filter: z
+            .nullable(z.lazy(() => MarketingListOmniChannelTemplatesQueryParamFilter$inboundSchema))
+            .optional(),
+        next: z.nullable(z.string()).optional(),
+        page: z.nullable(z.string()).optional(),
+        page_size: z.nullable(z.string().default("25")),
+        proxy: z.nullable(z.record(z.any())).optional(),
+        raw: z.nullable(z.boolean().default(false)),
+        updated_after: z.nullable(z.string()).optional(),
+        "x-account-id": z.string(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            page_size: "pageSize",
+            updated_after: "updatedAfter",
+            "x-account-id": "xAccountId",
+        });
+    });
+
+/** @internal */
+export type MarketingListOmniChannelTemplatesRequest$Outbound = {
+    fields?: string | null | undefined;
+    filter?: MarketingListOmniChannelTemplatesQueryParamFilter$Outbound | null | undefined;
+    next?: string | null | undefined;
+    page?: string | null | undefined;
+    page_size: string | null;
+    proxy?: { [k: string]: any } | null | undefined;
+    raw: boolean | null;
+    updated_after?: string | null | undefined;
+    "x-account-id": string;
+};
+
+/** @internal */
+export const MarketingListOmniChannelTemplatesRequest$outboundSchema: z.ZodType<
+    MarketingListOmniChannelTemplatesRequest$Outbound,
+    z.ZodTypeDef,
+    MarketingListOmniChannelTemplatesRequest
+> = z
+    .object({
+        fields: z.nullable(z.string()).optional(),
+        filter: z
+            .nullable(
+                z.lazy(() => MarketingListOmniChannelTemplatesQueryParamFilter$outboundSchema)
+            )
+            .optional(),
+        next: z.nullable(z.string()).optional(),
+        page: z.nullable(z.string()).optional(),
+        pageSize: z.nullable(z.string().default("25")),
+        proxy: z.nullable(z.record(z.any())).optional(),
+        raw: z.nullable(z.boolean().default(false)),
+        updatedAfter: z.nullable(z.string()).optional(),
+        xAccountId: z.string(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            pageSize: "page_size",
+            updatedAfter: "updated_after",
+            xAccountId: "x-account-id",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace MarketingListOmniChannelTemplatesRequest$ {
-    export const inboundSchema: z.ZodType<
-        MarketingListOmniChannelTemplatesRequest,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            fields: z.nullable(z.string()).optional(),
-            filter: z
-                .nullable(
-                    z.lazy(() => MarketingListOmniChannelTemplatesQueryParamFilter$.inboundSchema)
-                )
-                .optional(),
-            next: z.nullable(z.string()).optional(),
-            page: z.nullable(z.string()).optional(),
-            page_size: z.nullable(z.string().default("25")),
-            proxy: z.nullable(z.record(z.any())).optional(),
-            raw: z.nullable(z.boolean().default(false)),
-            updated_after: z.nullable(z.string()).optional(),
-            "x-account-id": z.string(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                page_size: "pageSize",
-                updated_after: "updatedAfter",
-                "x-account-id": "xAccountId",
-            });
-        });
-
-    export type Outbound = {
-        fields?: string | null | undefined;
-        filter?: MarketingListOmniChannelTemplatesQueryParamFilter$.Outbound | null | undefined;
-        next?: string | null | undefined;
-        page?: string | null | undefined;
-        page_size: string | null;
-        proxy?: { [k: string]: any } | null | undefined;
-        raw: boolean | null;
-        updated_after?: string | null | undefined;
-        "x-account-id": string;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        MarketingListOmniChannelTemplatesRequest
-    > = z
-        .object({
-            fields: z.nullable(z.string()).optional(),
-            filter: z
-                .nullable(
-                    z.lazy(() => MarketingListOmniChannelTemplatesQueryParamFilter$.outboundSchema)
-                )
-                .optional(),
-            next: z.nullable(z.string()).optional(),
-            page: z.nullable(z.string()).optional(),
-            pageSize: z.nullable(z.string().default("25")),
-            proxy: z.nullable(z.record(z.any())).optional(),
-            raw: z.nullable(z.boolean().default(false)),
-            updatedAfter: z.nullable(z.string()).optional(),
-            xAccountId: z.string(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                pageSize: "page_size",
-                updatedAfter: "updated_after",
-                xAccountId: "x-account-id",
-            });
-        });
+    /** @deprecated use `MarketingListOmniChannelTemplatesRequest$inboundSchema` instead. */
+    export const inboundSchema = MarketingListOmniChannelTemplatesRequest$inboundSchema;
+    /** @deprecated use `MarketingListOmniChannelTemplatesRequest$outboundSchema` instead. */
+    export const outboundSchema = MarketingListOmniChannelTemplatesRequest$outboundSchema;
+    /** @deprecated use `MarketingListOmniChannelTemplatesRequest$Outbound` instead. */
+    export type Outbound = MarketingListOmniChannelTemplatesRequest$Outbound;
 }
 
 /** @internal */
+export const MarketingListOmniChannelTemplatesResponse$inboundSchema: z.ZodType<
+    MarketingListOmniChannelTemplatesResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        ContentType: z.string(),
+        StatusCode: z.number().int(),
+        RawResponse: z.instanceof(Response),
+        TemplatesPaginated: shared.TemplatesPaginated$inboundSchema.optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            ContentType: "contentType",
+            StatusCode: "statusCode",
+            RawResponse: "rawResponse",
+            TemplatesPaginated: "templatesPaginated",
+        });
+    });
+
+/** @internal */
+export type MarketingListOmniChannelTemplatesResponse$Outbound = {
+    ContentType: string;
+    StatusCode: number;
+    RawResponse: never;
+    TemplatesPaginated?: shared.TemplatesPaginated$Outbound | undefined;
+};
+
+/** @internal */
+export const MarketingListOmniChannelTemplatesResponse$outboundSchema: z.ZodType<
+    MarketingListOmniChannelTemplatesResponse$Outbound,
+    z.ZodTypeDef,
+    MarketingListOmniChannelTemplatesResponse
+> = z
+    .object({
+        contentType: z.string(),
+        statusCode: z.number().int(),
+        rawResponse: z.instanceof(Response).transform(() => {
+            throw new Error("Response cannot be serialized");
+        }),
+        templatesPaginated: shared.TemplatesPaginated$outboundSchema.optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            contentType: "ContentType",
+            statusCode: "StatusCode",
+            rawResponse: "RawResponse",
+            templatesPaginated: "TemplatesPaginated",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace MarketingListOmniChannelTemplatesResponse$ {
-    export const inboundSchema: z.ZodType<
-        MarketingListOmniChannelTemplatesResponse,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            ContentType: z.string(),
-            StatusCode: z.number().int(),
-            RawResponse: z.instanceof(Response),
-            TemplatesPaginated: shared.TemplatesPaginated$.inboundSchema.optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                ContentType: "contentType",
-                StatusCode: "statusCode",
-                RawResponse: "rawResponse",
-                TemplatesPaginated: "templatesPaginated",
-            });
-        });
-
-    export type Outbound = {
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: never;
-        TemplatesPaginated?: shared.TemplatesPaginated$.Outbound | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        MarketingListOmniChannelTemplatesResponse
-    > = z
-        .object({
-            contentType: z.string(),
-            statusCode: z.number().int(),
-            rawResponse: z.instanceof(Response).transform(() => {
-                throw new Error("Response cannot be serialized");
-            }),
-            templatesPaginated: shared.TemplatesPaginated$.outboundSchema.optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                contentType: "ContentType",
-                statusCode: "StatusCode",
-                rawResponse: "RawResponse",
-                templatesPaginated: "TemplatesPaginated",
-            });
-        });
+    /** @deprecated use `MarketingListOmniChannelTemplatesResponse$inboundSchema` instead. */
+    export const inboundSchema = MarketingListOmniChannelTemplatesResponse$inboundSchema;
+    /** @deprecated use `MarketingListOmniChannelTemplatesResponse$outboundSchema` instead. */
+    export const outboundSchema = MarketingListOmniChannelTemplatesResponse$outboundSchema;
+    /** @deprecated use `MarketingListOmniChannelTemplatesResponse$Outbound` instead. */
+    export type Outbound = MarketingListOmniChannelTemplatesResponse$Outbound;
 }

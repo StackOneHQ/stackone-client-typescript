@@ -16,19 +16,33 @@ export type SocialLink = {
 };
 
 /** @internal */
+export const SocialLink$inboundSchema: z.ZodType<SocialLink, z.ZodTypeDef, unknown> = z.object({
+    type: z.nullable(z.string()).optional(),
+    url: z.nullable(z.string()).optional(),
+});
+
+/** @internal */
+export type SocialLink$Outbound = {
+    type?: string | null | undefined;
+    url?: string | null | undefined;
+};
+
+/** @internal */
+export const SocialLink$outboundSchema: z.ZodType<SocialLink$Outbound, z.ZodTypeDef, SocialLink> =
+    z.object({
+        type: z.nullable(z.string()).optional(),
+        url: z.nullable(z.string()).optional(),
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace SocialLink$ {
-    export const inboundSchema: z.ZodType<SocialLink, z.ZodTypeDef, unknown> = z.object({
-        type: z.nullable(z.string()).optional(),
-        url: z.nullable(z.string()).optional(),
-    });
-
-    export type Outbound = {
-        type?: string | null | undefined;
-        url?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, SocialLink> = z.object({
-        type: z.nullable(z.string()).optional(),
-        url: z.nullable(z.string()).optional(),
-    });
+    /** @deprecated use `SocialLink$inboundSchema` instead. */
+    export const inboundSchema = SocialLink$inboundSchema;
+    /** @deprecated use `SocialLink$outboundSchema` instead. */
+    export const outboundSchema = SocialLink$outboundSchema;
+    /** @deprecated use `SocialLink$Outbound` instead. */
+    export type Outbound = SocialLink$Outbound;
 }

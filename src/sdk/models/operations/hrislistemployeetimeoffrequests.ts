@@ -80,162 +80,197 @@ export type HrisListEmployeeTimeOffRequestsResponse = {
 };
 
 /** @internal */
+export const HrisListEmployeeTimeOffRequestsQueryParamFilter$inboundSchema: z.ZodType<
+    HrisListEmployeeTimeOffRequestsQueryParamFilter,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        updated_after: z.nullable(z.string()).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            updated_after: "updatedAfter",
+        });
+    });
+
+/** @internal */
+export type HrisListEmployeeTimeOffRequestsQueryParamFilter$Outbound = {
+    updated_after?: string | null | undefined;
+};
+
+/** @internal */
+export const HrisListEmployeeTimeOffRequestsQueryParamFilter$outboundSchema: z.ZodType<
+    HrisListEmployeeTimeOffRequestsQueryParamFilter$Outbound,
+    z.ZodTypeDef,
+    HrisListEmployeeTimeOffRequestsQueryParamFilter
+> = z
+    .object({
+        updatedAfter: z.nullable(z.string()).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            updatedAfter: "updated_after",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace HrisListEmployeeTimeOffRequestsQueryParamFilter$ {
-    export const inboundSchema: z.ZodType<
-        HrisListEmployeeTimeOffRequestsQueryParamFilter,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            updated_after: z.nullable(z.string()).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                updated_after: "updatedAfter",
-            });
-        });
-
-    export type Outbound = {
-        updated_after?: string | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        HrisListEmployeeTimeOffRequestsQueryParamFilter
-    > = z
-        .object({
-            updatedAfter: z.nullable(z.string()).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                updatedAfter: "updated_after",
-            });
-        });
+    /** @deprecated use `HrisListEmployeeTimeOffRequestsQueryParamFilter$inboundSchema` instead. */
+    export const inboundSchema = HrisListEmployeeTimeOffRequestsQueryParamFilter$inboundSchema;
+    /** @deprecated use `HrisListEmployeeTimeOffRequestsQueryParamFilter$outboundSchema` instead. */
+    export const outboundSchema = HrisListEmployeeTimeOffRequestsQueryParamFilter$outboundSchema;
+    /** @deprecated use `HrisListEmployeeTimeOffRequestsQueryParamFilter$Outbound` instead. */
+    export type Outbound = HrisListEmployeeTimeOffRequestsQueryParamFilter$Outbound;
 }
 
 /** @internal */
+export const HrisListEmployeeTimeOffRequestsRequest$inboundSchema: z.ZodType<
+    HrisListEmployeeTimeOffRequestsRequest,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        fields: z.nullable(z.string()).optional(),
+        filter: z
+            .nullable(z.lazy(() => HrisListEmployeeTimeOffRequestsQueryParamFilter$inboundSchema))
+            .optional(),
+        id: z.string(),
+        next: z.nullable(z.string()).optional(),
+        page: z.nullable(z.string()).optional(),
+        page_size: z.nullable(z.string().default("25")),
+        proxy: z.nullable(z.record(z.any())).optional(),
+        raw: z.nullable(z.boolean().default(false)),
+        updated_after: z.nullable(z.string()).optional(),
+        "x-account-id": z.string(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            page_size: "pageSize",
+            updated_after: "updatedAfter",
+            "x-account-id": "xAccountId",
+        });
+    });
+
+/** @internal */
+export type HrisListEmployeeTimeOffRequestsRequest$Outbound = {
+    fields?: string | null | undefined;
+    filter?: HrisListEmployeeTimeOffRequestsQueryParamFilter$Outbound | null | undefined;
+    id: string;
+    next?: string | null | undefined;
+    page?: string | null | undefined;
+    page_size: string | null;
+    proxy?: { [k: string]: any } | null | undefined;
+    raw: boolean | null;
+    updated_after?: string | null | undefined;
+    "x-account-id": string;
+};
+
+/** @internal */
+export const HrisListEmployeeTimeOffRequestsRequest$outboundSchema: z.ZodType<
+    HrisListEmployeeTimeOffRequestsRequest$Outbound,
+    z.ZodTypeDef,
+    HrisListEmployeeTimeOffRequestsRequest
+> = z
+    .object({
+        fields: z.nullable(z.string()).optional(),
+        filter: z
+            .nullable(z.lazy(() => HrisListEmployeeTimeOffRequestsQueryParamFilter$outboundSchema))
+            .optional(),
+        id: z.string(),
+        next: z.nullable(z.string()).optional(),
+        page: z.nullable(z.string()).optional(),
+        pageSize: z.nullable(z.string().default("25")),
+        proxy: z.nullable(z.record(z.any())).optional(),
+        raw: z.nullable(z.boolean().default(false)),
+        updatedAfter: z.nullable(z.string()).optional(),
+        xAccountId: z.string(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            pageSize: "page_size",
+            updatedAfter: "updated_after",
+            xAccountId: "x-account-id",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace HrisListEmployeeTimeOffRequestsRequest$ {
-    export const inboundSchema: z.ZodType<
-        HrisListEmployeeTimeOffRequestsRequest,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            fields: z.nullable(z.string()).optional(),
-            filter: z
-                .nullable(
-                    z.lazy(() => HrisListEmployeeTimeOffRequestsQueryParamFilter$.inboundSchema)
-                )
-                .optional(),
-            id: z.string(),
-            next: z.nullable(z.string()).optional(),
-            page: z.nullable(z.string()).optional(),
-            page_size: z.nullable(z.string().default("25")),
-            proxy: z.nullable(z.record(z.any())).optional(),
-            raw: z.nullable(z.boolean().default(false)),
-            updated_after: z.nullable(z.string()).optional(),
-            "x-account-id": z.string(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                page_size: "pageSize",
-                updated_after: "updatedAfter",
-                "x-account-id": "xAccountId",
-            });
-        });
-
-    export type Outbound = {
-        fields?: string | null | undefined;
-        filter?: HrisListEmployeeTimeOffRequestsQueryParamFilter$.Outbound | null | undefined;
-        id: string;
-        next?: string | null | undefined;
-        page?: string | null | undefined;
-        page_size: string | null;
-        proxy?: { [k: string]: any } | null | undefined;
-        raw: boolean | null;
-        updated_after?: string | null | undefined;
-        "x-account-id": string;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        HrisListEmployeeTimeOffRequestsRequest
-    > = z
-        .object({
-            fields: z.nullable(z.string()).optional(),
-            filter: z
-                .nullable(
-                    z.lazy(() => HrisListEmployeeTimeOffRequestsQueryParamFilter$.outboundSchema)
-                )
-                .optional(),
-            id: z.string(),
-            next: z.nullable(z.string()).optional(),
-            page: z.nullable(z.string()).optional(),
-            pageSize: z.nullable(z.string().default("25")),
-            proxy: z.nullable(z.record(z.any())).optional(),
-            raw: z.nullable(z.boolean().default(false)),
-            updatedAfter: z.nullable(z.string()).optional(),
-            xAccountId: z.string(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                pageSize: "page_size",
-                updatedAfter: "updated_after",
-                xAccountId: "x-account-id",
-            });
-        });
+    /** @deprecated use `HrisListEmployeeTimeOffRequestsRequest$inboundSchema` instead. */
+    export const inboundSchema = HrisListEmployeeTimeOffRequestsRequest$inboundSchema;
+    /** @deprecated use `HrisListEmployeeTimeOffRequestsRequest$outboundSchema` instead. */
+    export const outboundSchema = HrisListEmployeeTimeOffRequestsRequest$outboundSchema;
+    /** @deprecated use `HrisListEmployeeTimeOffRequestsRequest$Outbound` instead. */
+    export type Outbound = HrisListEmployeeTimeOffRequestsRequest$Outbound;
 }
 
 /** @internal */
+export const HrisListEmployeeTimeOffRequestsResponse$inboundSchema: z.ZodType<
+    HrisListEmployeeTimeOffRequestsResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        ContentType: z.string(),
+        StatusCode: z.number().int(),
+        RawResponse: z.instanceof(Response),
+        TimeOffPaginated: shared.TimeOffPaginated$inboundSchema.optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            ContentType: "contentType",
+            StatusCode: "statusCode",
+            RawResponse: "rawResponse",
+            TimeOffPaginated: "timeOffPaginated",
+        });
+    });
+
+/** @internal */
+export type HrisListEmployeeTimeOffRequestsResponse$Outbound = {
+    ContentType: string;
+    StatusCode: number;
+    RawResponse: never;
+    TimeOffPaginated?: shared.TimeOffPaginated$Outbound | undefined;
+};
+
+/** @internal */
+export const HrisListEmployeeTimeOffRequestsResponse$outboundSchema: z.ZodType<
+    HrisListEmployeeTimeOffRequestsResponse$Outbound,
+    z.ZodTypeDef,
+    HrisListEmployeeTimeOffRequestsResponse
+> = z
+    .object({
+        contentType: z.string(),
+        statusCode: z.number().int(),
+        rawResponse: z.instanceof(Response).transform(() => {
+            throw new Error("Response cannot be serialized");
+        }),
+        timeOffPaginated: shared.TimeOffPaginated$outboundSchema.optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            contentType: "ContentType",
+            statusCode: "StatusCode",
+            rawResponse: "RawResponse",
+            timeOffPaginated: "TimeOffPaginated",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace HrisListEmployeeTimeOffRequestsResponse$ {
-    export const inboundSchema: z.ZodType<
-        HrisListEmployeeTimeOffRequestsResponse,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            ContentType: z.string(),
-            StatusCode: z.number().int(),
-            RawResponse: z.instanceof(Response),
-            TimeOffPaginated: shared.TimeOffPaginated$.inboundSchema.optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                ContentType: "contentType",
-                StatusCode: "statusCode",
-                RawResponse: "rawResponse",
-                TimeOffPaginated: "timeOffPaginated",
-            });
-        });
-
-    export type Outbound = {
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: never;
-        TimeOffPaginated?: shared.TimeOffPaginated$.Outbound | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        HrisListEmployeeTimeOffRequestsResponse
-    > = z
-        .object({
-            contentType: z.string(),
-            statusCode: z.number().int(),
-            rawResponse: z.instanceof(Response).transform(() => {
-                throw new Error("Response cannot be serialized");
-            }),
-            timeOffPaginated: shared.TimeOffPaginated$.outboundSchema.optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                contentType: "ContentType",
-                statusCode: "StatusCode",
-                rawResponse: "RawResponse",
-                timeOffPaginated: "TimeOffPaginated",
-            });
-        });
+    /** @deprecated use `HrisListEmployeeTimeOffRequestsResponse$inboundSchema` instead. */
+    export const inboundSchema = HrisListEmployeeTimeOffRequestsResponse$inboundSchema;
+    /** @deprecated use `HrisListEmployeeTimeOffRequestsResponse$outboundSchema` instead. */
+    export const outboundSchema = HrisListEmployeeTimeOffRequestsResponse$outboundSchema;
+    /** @deprecated use `HrisListEmployeeTimeOffRequestsResponse$Outbound` instead. */
+    export type Outbound = HrisListEmployeeTimeOffRequestsResponse$Outbound;
 }

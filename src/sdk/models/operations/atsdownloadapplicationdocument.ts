@@ -38,97 +38,123 @@ export type AtsDownloadApplicationDocumentResponse = {
 };
 
 /** @internal */
+export const AtsDownloadApplicationDocumentRequest$inboundSchema: z.ZodType<
+    AtsDownloadApplicationDocumentRequest,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        format: z.nullable(z.string()).optional(),
+        id: z.string(),
+        subResourceId: z.string(),
+        "x-account-id": z.string(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            "x-account-id": "xAccountId",
+        });
+    });
+
+/** @internal */
+export type AtsDownloadApplicationDocumentRequest$Outbound = {
+    format?: string | null | undefined;
+    id: string;
+    subResourceId: string;
+    "x-account-id": string;
+};
+
+/** @internal */
+export const AtsDownloadApplicationDocumentRequest$outboundSchema: z.ZodType<
+    AtsDownloadApplicationDocumentRequest$Outbound,
+    z.ZodTypeDef,
+    AtsDownloadApplicationDocumentRequest
+> = z
+    .object({
+        format: z.nullable(z.string()).optional(),
+        id: z.string(),
+        subResourceId: z.string(),
+        xAccountId: z.string(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            xAccountId: "x-account-id",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace AtsDownloadApplicationDocumentRequest$ {
-    export const inboundSchema: z.ZodType<
-        AtsDownloadApplicationDocumentRequest,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            format: z.nullable(z.string()).optional(),
-            id: z.string(),
-            subResourceId: z.string(),
-            "x-account-id": z.string(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                "x-account-id": "xAccountId",
-            });
-        });
-
-    export type Outbound = {
-        format?: string | null | undefined;
-        id: string;
-        subResourceId: string;
-        "x-account-id": string;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        AtsDownloadApplicationDocumentRequest
-    > = z
-        .object({
-            format: z.nullable(z.string()).optional(),
-            id: z.string(),
-            subResourceId: z.string(),
-            xAccountId: z.string(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                xAccountId: "x-account-id",
-            });
-        });
+    /** @deprecated use `AtsDownloadApplicationDocumentRequest$inboundSchema` instead. */
+    export const inboundSchema = AtsDownloadApplicationDocumentRequest$inboundSchema;
+    /** @deprecated use `AtsDownloadApplicationDocumentRequest$outboundSchema` instead. */
+    export const outboundSchema = AtsDownloadApplicationDocumentRequest$outboundSchema;
+    /** @deprecated use `AtsDownloadApplicationDocumentRequest$Outbound` instead. */
+    export type Outbound = AtsDownloadApplicationDocumentRequest$Outbound;
 }
 
 /** @internal */
+export const AtsDownloadApplicationDocumentResponse$inboundSchema: z.ZodType<
+    AtsDownloadApplicationDocumentResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        ContentType: z.string(),
+        StatusCode: z.number().int(),
+        RawResponse: z.instanceof(Response),
+        "response-stream": z.instanceof(ReadableStream<Uint8Array>).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            ContentType: "contentType",
+            StatusCode: "statusCode",
+            RawResponse: "rawResponse",
+            "response-stream": "responseStream",
+        });
+    });
+
+/** @internal */
+export type AtsDownloadApplicationDocumentResponse$Outbound = {
+    ContentType: string;
+    StatusCode: number;
+    RawResponse: never;
+    "response-stream"?: ReadableStream<Uint8Array> | undefined;
+};
+
+/** @internal */
+export const AtsDownloadApplicationDocumentResponse$outboundSchema: z.ZodType<
+    AtsDownloadApplicationDocumentResponse$Outbound,
+    z.ZodTypeDef,
+    AtsDownloadApplicationDocumentResponse
+> = z
+    .object({
+        contentType: z.string(),
+        statusCode: z.number().int(),
+        rawResponse: z.instanceof(Response).transform(() => {
+            throw new Error("Response cannot be serialized");
+        }),
+        responseStream: z.instanceof(ReadableStream<Uint8Array>).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            contentType: "ContentType",
+            statusCode: "StatusCode",
+            rawResponse: "RawResponse",
+            responseStream: "response-stream",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace AtsDownloadApplicationDocumentResponse$ {
-    export const inboundSchema: z.ZodType<
-        AtsDownloadApplicationDocumentResponse,
-        z.ZodTypeDef,
-        unknown
-    > = z
-        .object({
-            ContentType: z.string(),
-            StatusCode: z.number().int(),
-            RawResponse: z.instanceof(Response),
-            "response-stream": z.instanceof(ReadableStream<Uint8Array>).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                ContentType: "contentType",
-                StatusCode: "statusCode",
-                RawResponse: "rawResponse",
-                "response-stream": "responseStream",
-            });
-        });
-
-    export type Outbound = {
-        ContentType: string;
-        StatusCode: number;
-        RawResponse: never;
-        "response-stream"?: ReadableStream<Uint8Array> | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        AtsDownloadApplicationDocumentResponse
-    > = z
-        .object({
-            contentType: z.string(),
-            statusCode: z.number().int(),
-            rawResponse: z.instanceof(Response).transform(() => {
-                throw new Error("Response cannot be serialized");
-            }),
-            responseStream: z.instanceof(ReadableStream<Uint8Array>).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                contentType: "ContentType",
-                statusCode: "StatusCode",
-                rawResponse: "RawResponse",
-                responseStream: "response-stream",
-            });
-        });
+    /** @deprecated use `AtsDownloadApplicationDocumentResponse$inboundSchema` instead. */
+    export const inboundSchema = AtsDownloadApplicationDocumentResponse$inboundSchema;
+    /** @deprecated use `AtsDownloadApplicationDocumentResponse$outboundSchema` instead. */
+    export const outboundSchema = AtsDownloadApplicationDocumentResponse$outboundSchema;
+    /** @deprecated use `AtsDownloadApplicationDocumentResponse$Outbound` instead. */
+    export type Outbound = AtsDownloadApplicationDocumentResponse$Outbound;
 }

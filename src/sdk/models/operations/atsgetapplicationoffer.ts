@@ -47,89 +47,129 @@ export type AtsGetApplicationOfferResponse = {
 };
 
 /** @internal */
-export namespace AtsGetApplicationOfferRequest$ {
-    export const inboundSchema: z.ZodType<AtsGetApplicationOfferRequest, z.ZodTypeDef, unknown> = z
-        .object({
-            fields: z.nullable(z.string()).optional(),
-            id: z.string(),
-            proxy: z.nullable(z.record(z.any())).optional(),
-            raw: z.nullable(z.boolean().default(false)),
-            subResourceId: z.string(),
-            "x-account-id": z.string(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                "x-account-id": "xAccountId",
-            });
+export const AtsGetApplicationOfferRequest$inboundSchema: z.ZodType<
+    AtsGetApplicationOfferRequest,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        fields: z.nullable(z.string()).optional(),
+        id: z.string(),
+        proxy: z.nullable(z.record(z.any())).optional(),
+        raw: z.nullable(z.boolean().default(false)),
+        subResourceId: z.string(),
+        "x-account-id": z.string(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            "x-account-id": "xAccountId",
         });
+    });
 
-    export type Outbound = {
-        fields?: string | null | undefined;
-        id: string;
-        proxy?: { [k: string]: any } | null | undefined;
-        raw: boolean | null;
-        subResourceId: string;
-        "x-account-id": string;
-    };
+/** @internal */
+export type AtsGetApplicationOfferRequest$Outbound = {
+    fields?: string | null | undefined;
+    id: string;
+    proxy?: { [k: string]: any } | null | undefined;
+    raw: boolean | null;
+    subResourceId: string;
+    "x-account-id": string;
+};
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, AtsGetApplicationOfferRequest> =
-        z
-            .object({
-                fields: z.nullable(z.string()).optional(),
-                id: z.string(),
-                proxy: z.nullable(z.record(z.any())).optional(),
-                raw: z.nullable(z.boolean().default(false)),
-                subResourceId: z.string(),
-                xAccountId: z.string(),
-            })
-            .transform((v) => {
-                return remap$(v, {
-                    xAccountId: "x-account-id",
-                });
-            });
+/** @internal */
+export const AtsGetApplicationOfferRequest$outboundSchema: z.ZodType<
+    AtsGetApplicationOfferRequest$Outbound,
+    z.ZodTypeDef,
+    AtsGetApplicationOfferRequest
+> = z
+    .object({
+        fields: z.nullable(z.string()).optional(),
+        id: z.string(),
+        proxy: z.nullable(z.record(z.any())).optional(),
+        raw: z.nullable(z.boolean().default(false)),
+        subResourceId: z.string(),
+        xAccountId: z.string(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            xAccountId: "x-account-id",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace AtsGetApplicationOfferRequest$ {
+    /** @deprecated use `AtsGetApplicationOfferRequest$inboundSchema` instead. */
+    export const inboundSchema = AtsGetApplicationOfferRequest$inboundSchema;
+    /** @deprecated use `AtsGetApplicationOfferRequest$outboundSchema` instead. */
+    export const outboundSchema = AtsGetApplicationOfferRequest$outboundSchema;
+    /** @deprecated use `AtsGetApplicationOfferRequest$Outbound` instead. */
+    export type Outbound = AtsGetApplicationOfferRequest$Outbound;
 }
 
 /** @internal */
-export namespace AtsGetApplicationOfferResponse$ {
-    export const inboundSchema: z.ZodType<AtsGetApplicationOfferResponse, z.ZodTypeDef, unknown> = z
-        .object({
-            ContentType: z.string(),
-            OffersResult: shared.OffersResult$.inboundSchema.optional(),
-            StatusCode: z.number().int(),
-            RawResponse: z.instanceof(Response),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                ContentType: "contentType",
-                OffersResult: "offersResult",
-                StatusCode: "statusCode",
-                RawResponse: "rawResponse",
-            });
+export const AtsGetApplicationOfferResponse$inboundSchema: z.ZodType<
+    AtsGetApplicationOfferResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        ContentType: z.string(),
+        OffersResult: shared.OffersResult$inboundSchema.optional(),
+        StatusCode: z.number().int(),
+        RawResponse: z.instanceof(Response),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            ContentType: "contentType",
+            OffersResult: "offersResult",
+            StatusCode: "statusCode",
+            RawResponse: "rawResponse",
         });
+    });
 
-    export type Outbound = {
-        ContentType: string;
-        OffersResult?: shared.OffersResult$.Outbound | undefined;
-        StatusCode: number;
-        RawResponse: never;
-    };
+/** @internal */
+export type AtsGetApplicationOfferResponse$Outbound = {
+    ContentType: string;
+    OffersResult?: shared.OffersResult$Outbound | undefined;
+    StatusCode: number;
+    RawResponse: never;
+};
 
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, AtsGetApplicationOfferResponse> =
-        z
-            .object({
-                contentType: z.string(),
-                offersResult: shared.OffersResult$.outboundSchema.optional(),
-                statusCode: z.number().int(),
-                rawResponse: z.instanceof(Response).transform(() => {
-                    throw new Error("Response cannot be serialized");
-                }),
-            })
-            .transform((v) => {
-                return remap$(v, {
-                    contentType: "ContentType",
-                    offersResult: "OffersResult",
-                    statusCode: "StatusCode",
-                    rawResponse: "RawResponse",
-                });
-            });
+/** @internal */
+export const AtsGetApplicationOfferResponse$outboundSchema: z.ZodType<
+    AtsGetApplicationOfferResponse$Outbound,
+    z.ZodTypeDef,
+    AtsGetApplicationOfferResponse
+> = z
+    .object({
+        contentType: z.string(),
+        offersResult: shared.OffersResult$outboundSchema.optional(),
+        statusCode: z.number().int(),
+        rawResponse: z.instanceof(Response).transform(() => {
+            throw new Error("Response cannot be serialized");
+        }),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            contentType: "ContentType",
+            offersResult: "OffersResult",
+            statusCode: "StatusCode",
+            rawResponse: "RawResponse",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace AtsGetApplicationOfferResponse$ {
+    /** @deprecated use `AtsGetApplicationOfferResponse$inboundSchema` instead. */
+    export const inboundSchema = AtsGetApplicationOfferResponse$inboundSchema;
+    /** @deprecated use `AtsGetApplicationOfferResponse$outboundSchema` instead. */
+    export const outboundSchema = AtsGetApplicationOfferResponse$outboundSchema;
+    /** @deprecated use `AtsGetApplicationOfferResponse$Outbound` instead. */
+    export type Outbound = AtsGetApplicationOfferResponse$Outbound;
 }

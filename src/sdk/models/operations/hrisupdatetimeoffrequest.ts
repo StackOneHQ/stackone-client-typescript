@@ -35,90 +35,122 @@ export type HrisUpdateTimeOffRequestResponse = {
 };
 
 /** @internal */
-export namespace HrisUpdateTimeOffRequestRequest$ {
-    export const inboundSchema: z.ZodType<HrisUpdateTimeOffRequestRequest, z.ZodTypeDef, unknown> =
-        z
-            .object({
-                HrisCreateTimeOffRequestDto: shared.HrisCreateTimeOffRequestDto$.inboundSchema,
-                id: z.string(),
-                "x-account-id": z.string(),
-            })
-            .transform((v) => {
-                return remap$(v, {
-                    HrisCreateTimeOffRequestDto: "hrisCreateTimeOffRequestDto",
-                    "x-account-id": "xAccountId",
-                });
-            });
-
-    export type Outbound = {
-        HrisCreateTimeOffRequestDto: shared.HrisCreateTimeOffRequestDto$.Outbound;
-        id: string;
-        "x-account-id": string;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        HrisUpdateTimeOffRequestRequest
-    > = z
-        .object({
-            hrisCreateTimeOffRequestDto: shared.HrisCreateTimeOffRequestDto$.outboundSchema,
-            id: z.string(),
-            xAccountId: z.string(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                hrisCreateTimeOffRequestDto: "HrisCreateTimeOffRequestDto",
-                xAccountId: "x-account-id",
-            });
+export const HrisUpdateTimeOffRequestRequest$inboundSchema: z.ZodType<
+    HrisUpdateTimeOffRequestRequest,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        HrisCreateTimeOffRequestDto: shared.HrisCreateTimeOffRequestDto$inboundSchema,
+        id: z.string(),
+        "x-account-id": z.string(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            HrisCreateTimeOffRequestDto: "hrisCreateTimeOffRequestDto",
+            "x-account-id": "xAccountId",
         });
+    });
+
+/** @internal */
+export type HrisUpdateTimeOffRequestRequest$Outbound = {
+    HrisCreateTimeOffRequestDto: shared.HrisCreateTimeOffRequestDto$Outbound;
+    id: string;
+    "x-account-id": string;
+};
+
+/** @internal */
+export const HrisUpdateTimeOffRequestRequest$outboundSchema: z.ZodType<
+    HrisUpdateTimeOffRequestRequest$Outbound,
+    z.ZodTypeDef,
+    HrisUpdateTimeOffRequestRequest
+> = z
+    .object({
+        hrisCreateTimeOffRequestDto: shared.HrisCreateTimeOffRequestDto$outboundSchema,
+        id: z.string(),
+        xAccountId: z.string(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            hrisCreateTimeOffRequestDto: "HrisCreateTimeOffRequestDto",
+            xAccountId: "x-account-id",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace HrisUpdateTimeOffRequestRequest$ {
+    /** @deprecated use `HrisUpdateTimeOffRequestRequest$inboundSchema` instead. */
+    export const inboundSchema = HrisUpdateTimeOffRequestRequest$inboundSchema;
+    /** @deprecated use `HrisUpdateTimeOffRequestRequest$outboundSchema` instead. */
+    export const outboundSchema = HrisUpdateTimeOffRequestRequest$outboundSchema;
+    /** @deprecated use `HrisUpdateTimeOffRequestRequest$Outbound` instead. */
+    export type Outbound = HrisUpdateTimeOffRequestRequest$Outbound;
 }
 
 /** @internal */
-export namespace HrisUpdateTimeOffRequestResponse$ {
-    export const inboundSchema: z.ZodType<HrisUpdateTimeOffRequestResponse, z.ZodTypeDef, unknown> =
-        z
-            .object({
-                ContentType: z.string(),
-                CreateResult: shared.CreateResult$.inboundSchema.optional(),
-                StatusCode: z.number().int(),
-                RawResponse: z.instanceof(Response),
-            })
-            .transform((v) => {
-                return remap$(v, {
-                    ContentType: "contentType",
-                    CreateResult: "createResult",
-                    StatusCode: "statusCode",
-                    RawResponse: "rawResponse",
-                });
-            });
-
-    export type Outbound = {
-        ContentType: string;
-        CreateResult?: shared.CreateResult$.Outbound | undefined;
-        StatusCode: number;
-        RawResponse: never;
-    };
-
-    export const outboundSchema: z.ZodType<
-        Outbound,
-        z.ZodTypeDef,
-        HrisUpdateTimeOffRequestResponse
-    > = z
-        .object({
-            contentType: z.string(),
-            createResult: shared.CreateResult$.outboundSchema.optional(),
-            statusCode: z.number().int(),
-            rawResponse: z.instanceof(Response).transform(() => {
-                throw new Error("Response cannot be serialized");
-            }),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                contentType: "ContentType",
-                createResult: "CreateResult",
-                statusCode: "StatusCode",
-                rawResponse: "RawResponse",
-            });
+export const HrisUpdateTimeOffRequestResponse$inboundSchema: z.ZodType<
+    HrisUpdateTimeOffRequestResponse,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        ContentType: z.string(),
+        CreateResult: shared.CreateResult$inboundSchema.optional(),
+        StatusCode: z.number().int(),
+        RawResponse: z.instanceof(Response),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            ContentType: "contentType",
+            CreateResult: "createResult",
+            StatusCode: "statusCode",
+            RawResponse: "rawResponse",
         });
+    });
+
+/** @internal */
+export type HrisUpdateTimeOffRequestResponse$Outbound = {
+    ContentType: string;
+    CreateResult?: shared.CreateResult$Outbound | undefined;
+    StatusCode: number;
+    RawResponse: never;
+};
+
+/** @internal */
+export const HrisUpdateTimeOffRequestResponse$outboundSchema: z.ZodType<
+    HrisUpdateTimeOffRequestResponse$Outbound,
+    z.ZodTypeDef,
+    HrisUpdateTimeOffRequestResponse
+> = z
+    .object({
+        contentType: z.string(),
+        createResult: shared.CreateResult$outboundSchema.optional(),
+        statusCode: z.number().int(),
+        rawResponse: z.instanceof(Response).transform(() => {
+            throw new Error("Response cannot be serialized");
+        }),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            contentType: "ContentType",
+            createResult: "CreateResult",
+            statusCode: "StatusCode",
+            rawResponse: "RawResponse",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace HrisUpdateTimeOffRequestResponse$ {
+    /** @deprecated use `HrisUpdateTimeOffRequestResponse$inboundSchema` instead. */
+    export const inboundSchema = HrisUpdateTimeOffRequestResponse$inboundSchema;
+    /** @deprecated use `HrisUpdateTimeOffRequestResponse$outboundSchema` instead. */
+    export const outboundSchema = HrisUpdateTimeOffRequestResponse$outboundSchema;
+    /** @deprecated use `HrisUpdateTimeOffRequestResponse$Outbound` instead. */
+    export type Outbound = HrisUpdateTimeOffRequestResponse$Outbound;
 }

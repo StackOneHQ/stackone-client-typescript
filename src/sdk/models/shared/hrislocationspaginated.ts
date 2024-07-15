@@ -3,8 +3,18 @@
  */
 
 import { remap as remap$ } from "../../../lib/primitives.js";
-import { HRISLocation, HRISLocation$ } from "./hrislocation.js";
-import { RawResponse, RawResponse$ } from "./rawresponse.js";
+import {
+    HRISLocation,
+    HRISLocation$inboundSchema,
+    HRISLocation$Outbound,
+    HRISLocation$outboundSchema,
+} from "./hrislocation.js";
+import {
+    RawResponse,
+    RawResponse$inboundSchema,
+    RawResponse$Outbound,
+    RawResponse$outboundSchema,
+} from "./rawresponse.js";
 import * as z from "zod";
 
 export type HRISLocationsPaginated = {
@@ -18,37 +28,58 @@ export type HRISLocationsPaginated = {
 };
 
 /** @internal */
+export const HRISLocationsPaginated$inboundSchema: z.ZodType<
+    HRISLocationsPaginated,
+    z.ZodTypeDef,
+    unknown
+> = z
+    .object({
+        data: z.array(HRISLocation$inboundSchema),
+        next: z.nullable(z.string()).optional(),
+        next_page: z.nullable(z.string()).optional(),
+        raw: z.nullable(z.array(RawResponse$inboundSchema)).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            next_page: "nextPage",
+        });
+    });
+
+/** @internal */
+export type HRISLocationsPaginated$Outbound = {
+    data: Array<HRISLocation$Outbound>;
+    next?: string | null | undefined;
+    next_page?: string | null | undefined;
+    raw?: Array<RawResponse$Outbound> | null | undefined;
+};
+
+/** @internal */
+export const HRISLocationsPaginated$outboundSchema: z.ZodType<
+    HRISLocationsPaginated$Outbound,
+    z.ZodTypeDef,
+    HRISLocationsPaginated
+> = z
+    .object({
+        data: z.array(HRISLocation$outboundSchema),
+        next: z.nullable(z.string()).optional(),
+        nextPage: z.nullable(z.string()).optional(),
+        raw: z.nullable(z.array(RawResponse$outboundSchema)).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            nextPage: "next_page",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace HRISLocationsPaginated$ {
-    export const inboundSchema: z.ZodType<HRISLocationsPaginated, z.ZodTypeDef, unknown> = z
-        .object({
-            data: z.array(HRISLocation$.inboundSchema),
-            next: z.nullable(z.string()).optional(),
-            next_page: z.nullable(z.string()).optional(),
-            raw: z.nullable(z.array(RawResponse$.inboundSchema)).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                next_page: "nextPage",
-            });
-        });
-
-    export type Outbound = {
-        data: Array<HRISLocation$.Outbound>;
-        next?: string | null | undefined;
-        next_page?: string | null | undefined;
-        raw?: Array<RawResponse$.Outbound> | null | undefined;
-    };
-
-    export const outboundSchema: z.ZodType<Outbound, z.ZodTypeDef, HRISLocationsPaginated> = z
-        .object({
-            data: z.array(HRISLocation$.outboundSchema),
-            next: z.nullable(z.string()).optional(),
-            nextPage: z.nullable(z.string()).optional(),
-            raw: z.nullable(z.array(RawResponse$.outboundSchema)).optional(),
-        })
-        .transform((v) => {
-            return remap$(v, {
-                nextPage: "next_page",
-            });
-        });
+    /** @deprecated use `HRISLocationsPaginated$inboundSchema` instead. */
+    export const inboundSchema = HRISLocationsPaginated$inboundSchema;
+    /** @deprecated use `HRISLocationsPaginated$outboundSchema` instead. */
+    export const outboundSchema = HRISLocationsPaginated$outboundSchema;
+    /** @deprecated use `HRISLocationsPaginated$Outbound` instead. */
+    export type Outbound = HRISLocationsPaginated$Outbound;
 }

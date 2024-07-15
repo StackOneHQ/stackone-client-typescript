@@ -53,7 +53,7 @@ export class Iam extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.IamGetGroupRequest$.outboundSchema.parse(value$),
+            (value$) => operations.IamGetGroupRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -103,6 +103,7 @@ export class Iam extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -110,6 +111,8 @@ export class Iam extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -120,7 +123,7 @@ export class Iam extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.IamGetGroupResponse>()
-            .json(200, operations.IamGetGroupResponse$, { key: "IamGroupResult" })
+            .json(200, operations.IamGetGroupResponse$inboundSchema, { key: "IamGroupResult" })
             .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -138,7 +141,7 @@ export class Iam extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.IamGetPolicyRequest$.outboundSchema.parse(value$),
+            (value$) => operations.IamGetPolicyRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -188,6 +191,7 @@ export class Iam extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -195,6 +199,8 @@ export class Iam extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -205,7 +211,7 @@ export class Iam extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.IamGetPolicyResponse>()
-            .json(200, operations.IamGetPolicyResponse$, { key: "IamPolicyResult" })
+            .json(200, operations.IamGetPolicyResponse$inboundSchema, { key: "IamPolicyResult" })
             .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -223,7 +229,7 @@ export class Iam extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.IamGetRoleRequest$.outboundSchema.parse(value$),
+            (value$) => operations.IamGetRoleRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -273,6 +279,7 @@ export class Iam extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -280,6 +287,8 @@ export class Iam extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -290,7 +299,7 @@ export class Iam extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.IamGetRoleResponse>()
-            .json(200, operations.IamGetRoleResponse$, { key: "IamRoleResult" })
+            .json(200, operations.IamGetRoleResponse$inboundSchema, { key: "IamRoleResult" })
             .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -308,7 +317,7 @@ export class Iam extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.IamGetUserRequest$.outboundSchema.parse(value$),
+            (value$) => operations.IamGetUserRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -358,6 +367,7 @@ export class Iam extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -365,6 +375,8 @@ export class Iam extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -375,7 +387,7 @@ export class Iam extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.IamGetUserResponse>()
-            .json(200, operations.IamGetUserResponse$, { key: "IamUserResult" })
+            .json(200, operations.IamGetUserResponse$inboundSchema, { key: "IamUserResult" })
             .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -393,7 +405,7 @@ export class Iam extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.IamListGroupsRequest$.outboundSchema.parse(value$),
+            (value$) => operations.IamListGroupsRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -445,6 +457,7 @@ export class Iam extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -452,6 +465,8 @@ export class Iam extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -462,7 +477,9 @@ export class Iam extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.IamListGroupsResponse>()
-            .json(200, operations.IamListGroupsResponse$, { key: "IamGroupsPaginated" })
+            .json(200, operations.IamListGroupsResponse$inboundSchema, {
+                key: "IamGroupsPaginated",
+            })
             .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -480,7 +497,7 @@ export class Iam extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.IamListPoliciesRequest$.outboundSchema.parse(value$),
+            (value$) => operations.IamListPoliciesRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -532,6 +549,7 @@ export class Iam extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -539,6 +557,8 @@ export class Iam extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -549,7 +569,9 @@ export class Iam extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.IamListPoliciesResponse>()
-            .json(200, operations.IamListPoliciesResponse$, { key: "IamPoliciesPaginated" })
+            .json(200, operations.IamListPoliciesResponse$inboundSchema, {
+                key: "IamPoliciesPaginated",
+            })
             .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -567,7 +589,7 @@ export class Iam extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.IamListRolesRequest$.outboundSchema.parse(value$),
+            (value$) => operations.IamListRolesRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -619,6 +641,7 @@ export class Iam extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -626,6 +649,8 @@ export class Iam extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -636,7 +661,7 @@ export class Iam extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.IamListRolesResponse>()
-            .json(200, operations.IamListRolesResponse$, { key: "IamRolesPaginated" })
+            .json(200, operations.IamListRolesResponse$inboundSchema, { key: "IamRolesPaginated" })
             .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
             .match(response, { extraFields: responseFields$ });
 
@@ -654,7 +679,7 @@ export class Iam extends ClientSDK {
 
         const payload$ = schemas$.parse(
             input$,
-            (value$) => operations.IamListUsersRequest$.outboundSchema.parse(value$),
+            (value$) => operations.IamListUsersRequest$outboundSchema.parse(value$),
             "Input validation failed"
         );
         const body$ = null;
@@ -706,6 +731,7 @@ export class Iam extends ClientSDK {
                 headers: headers$,
                 query: query$,
                 body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
             },
             options
         );
@@ -713,6 +739,8 @@ export class Iam extends ClientSDK {
         const response = await this.do$(request$, {
             context,
             errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
         });
 
         const responseFields$ = {
@@ -723,7 +751,7 @@ export class Iam extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.IamListUsersResponse>()
-            .json(200, operations.IamListUsersResponse$, { key: "IamUsersPaginated" })
+            .json(200, operations.IamListUsersResponse$inboundSchema, { key: "IamUsersPaginated" })
             .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
             .match(response, { extraFields: responseFields$ });
 
