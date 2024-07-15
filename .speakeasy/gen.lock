@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 7fa83af8-9e8e-4410-b7e2-cf1d0eaf688b
 management:
-  docChecksum: 0f2d1eb0229eeb87b34898b6c7525e97
+  docChecksum: a74b0f0af302fe8b50f41cf7b35e00b9
   docVersion: 1.0.0
-  speakeasyVersion: 1.335.0
-  generationVersion: 2.370.2
-  releaseVersion: 4.12.0
-  configChecksum: 11b3a89a3e5e3fa88d850de4f5c352a1
+  speakeasyVersion: 1.335.2
+  generationVersion: 2.372.3
+  releaseVersion: 4.12.1
+  configChecksum: 4375ebe03b761207a42c36f7370dd3b6
   repoURL: https://github.com/StackOneHQ/stackone-client-typescript.git
   repoSubDirectory: .
   installationURL: https://github.com/StackOneHQ/stackone-client-typescript
@@ -236,6 +236,7 @@ generatedFiles:
   - src/sdk/models/shared/assessmentspackages.ts
   - src/sdk/models/shared/candidateresult.ts
   - src/sdk/models/shared/candidate.ts
+  - src/sdk/models/shared/candidatecustomfields.ts
   - src/sdk/models/shared/noteresult.ts
   - src/sdk/models/shared/note.ts
   - src/sdk/models/shared/departmentresult.ts
@@ -307,6 +308,7 @@ generatedFiles:
   - src/sdk/models/shared/company.ts
   - src/sdk/models/shared/employeeresult.ts
   - src/sdk/models/shared/employee.ts
+  - src/sdk/models/shared/hrisgroup.ts
   - src/sdk/models/shared/costcenters.ts
   - src/sdk/models/shared/hrisdocumentresult.ts
   - src/sdk/models/shared/hrisdocumentapimodel.ts
@@ -318,7 +320,6 @@ generatedFiles:
   - src/sdk/models/shared/workeligibility.ts
   - src/sdk/models/shared/employmentresult.ts
   - src/sdk/models/shared/hrisgroupsresult.ts
-  - src/sdk/models/shared/hrisgroup.ts
   - src/sdk/models/shared/hrislocationresult.ts
   - src/sdk/models/shared/hrislocation.ts
   - src/sdk/models/shared/hrisbenefitspaginated.ts
@@ -779,6 +780,15 @@ generatedFiles:
   - docs/sdk/models/shared/assessmentspackages.md
   - docs/sdk/models/shared/candidateresult.md
   - docs/sdk/models/shared/candidate.md
+  - docs/sdk/models/shared/four.md
+  - docs/sdk/models/shared/options.md
+  - docs/sdk/models/shared/candidatecustomfieldsschemas4.md
+  - docs/sdk/models/shared/candidatecustomfieldssourcevalue.md
+  - docs/sdk/models/shared/candidatecustomfieldsvalue.md
+  - docs/sdk/models/shared/candidatecustomfieldstype.md
+  - docs/sdk/models/shared/candidatecustomfields4.md
+  - docs/sdk/models/shared/value.md
+  - docs/sdk/models/shared/candidatecustomfields.md
   - docs/sdk/models/shared/noteresult.md
   - docs/sdk/models/shared/note4.md
   - docs/sdk/models/shared/notesourcevalue.md
@@ -904,7 +914,7 @@ generatedFiles:
   - docs/sdk/models/shared/contactresult.md
   - docs/sdk/models/shared/contact.md
   - docs/sdk/models/shared/contactscustomfields4.md
-  - docs/sdk/models/shared/options.md
+  - docs/sdk/models/shared/contactscustomfieldsoptions.md
   - docs/sdk/models/shared/contactscustomfieldsschemastype4.md
   - docs/sdk/models/shared/contactscustomfieldssourcevalue.md
   - docs/sdk/models/shared/contactscustomfieldsschemasvalue.md
@@ -1065,11 +1075,6 @@ generatedFiles:
   - docs/sdk/models/shared/employeeschemasgendersourcevalue.md
   - docs/sdk/models/shared/employeeschemasgendervalue.md
   - docs/sdk/models/shared/gender.md
-  - docs/sdk/models/shared/employeeschemasgroups4.md
-  - docs/sdk/models/shared/employeeschemasgroupssourcevalue.md
-  - docs/sdk/models/shared/employeeschemasgroupsvalue.md
-  - docs/sdk/models/shared/employeetype.md
-  - docs/sdk/models/shared/groups.md
   - docs/sdk/models/shared/employeeschemashomelocation4.md
   - docs/sdk/models/shared/employeeschemashomelocationsourcevalue.md
   - docs/sdk/models/shared/employeeschemashomelocationvalue.md
@@ -1087,7 +1092,7 @@ generatedFiles:
   - docs/sdk/models/shared/employeeschemasnationalidentitynumber4.md
   - docs/sdk/models/shared/employeeschemasnationalidentitynumbersourcevalue.md
   - docs/sdk/models/shared/employeeschemasnationalidentitynumbervalue.md
-  - docs/sdk/models/shared/employeeschemastype.md
+  - docs/sdk/models/shared/employeetype.md
   - docs/sdk/models/shared/nationalidentitynumber.md
   - docs/sdk/models/shared/employeeschemaspreferredlanguage4.md
   - docs/sdk/models/shared/employeeschemaspreferredlanguagesourcevalue.md
@@ -1103,6 +1108,11 @@ generatedFiles:
   - docs/sdk/models/shared/employeeschemaslocationtype.md
   - docs/sdk/models/shared/worklocation.md
   - docs/sdk/models/shared/employee.md
+  - docs/sdk/models/shared/hrisgroup4.md
+  - docs/sdk/models/shared/hrisgroupsourcevalue.md
+  - docs/sdk/models/shared/hrisgroupvalue.md
+  - docs/sdk/models/shared/hrisgrouptype.md
+  - docs/sdk/models/shared/hrisgroup.md
   - docs/sdk/models/shared/costcenters.md
   - docs/sdk/models/shared/hrisdocumentresult.md
   - docs/sdk/models/shared/hrisdocumentapimodel4.md
@@ -1156,11 +1166,6 @@ generatedFiles:
   - docs/sdk/models/shared/workeligibility.md
   - docs/sdk/models/shared/employmentresult.md
   - docs/sdk/models/shared/hrisgroupsresult.md
-  - docs/sdk/models/shared/hrisgroup4.md
-  - docs/sdk/models/shared/hrisgroupsourcevalue.md
-  - docs/sdk/models/shared/hrisgroupvalue.md
-  - docs/sdk/models/shared/hrisgrouptype.md
-  - docs/sdk/models/shared/hrisgroup.md
   - docs/sdk/models/shared/hrislocationresult.md
   - docs/sdk/models/shared/hrislocation4.md
   - docs/sdk/models/shared/hrislocationsourcevalue.md
@@ -1302,9 +1307,9 @@ generatedFiles:
   - docs/sdk/models/shared/campaignschemasvalue.md
   - docs/sdk/models/shared/status.md
   - docs/sdk/models/shared/campaign.md
-  - docs/sdk/models/shared/four.md
+  - docs/sdk/models/shared/channelsenum4.md
   - docs/sdk/models/shared/sourcevalue.md
-  - docs/sdk/models/shared/value.md
+  - docs/sdk/models/shared/channelsenumvalue.md
   - docs/sdk/models/shared/channelsenum.md
   - docs/sdk/models/shared/templateresult.md
   - docs/sdk/models/shared/template.md

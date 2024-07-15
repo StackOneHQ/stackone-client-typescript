@@ -8,7 +8,7 @@ import * as z from "zod";
 
 export type ContactsCustomFields4 = {};
 
-export type Options = ContactsCustomFields4 | string | number | boolean;
+export type ContactsCustomFieldsOptions = ContactsCustomFields4 | string | number | boolean;
 
 export type ContactsCustomFieldsSchemasType4 = {};
 
@@ -119,7 +119,11 @@ export namespace ContactsCustomFields4$ {
 }
 
 /** @internal */
-export const Options$inboundSchema: z.ZodType<Options, z.ZodTypeDef, unknown> = z.union([
+export const ContactsCustomFieldsOptions$inboundSchema: z.ZodType<
+    ContactsCustomFieldsOptions,
+    z.ZodTypeDef,
+    unknown
+> = z.union([
     z.lazy(() => ContactsCustomFields4$inboundSchema),
     z.string(),
     z.number(),
@@ -127,10 +131,18 @@ export const Options$inboundSchema: z.ZodType<Options, z.ZodTypeDef, unknown> = 
 ]);
 
 /** @internal */
-export type Options$Outbound = ContactsCustomFields4$Outbound | string | number | boolean;
+export type ContactsCustomFieldsOptions$Outbound =
+    | ContactsCustomFields4$Outbound
+    | string
+    | number
+    | boolean;
 
 /** @internal */
-export const Options$outboundSchema: z.ZodType<Options$Outbound, z.ZodTypeDef, Options> = z.union([
+export const ContactsCustomFieldsOptions$outboundSchema: z.ZodType<
+    ContactsCustomFieldsOptions$Outbound,
+    z.ZodTypeDef,
+    ContactsCustomFieldsOptions
+> = z.union([
     z.lazy(() => ContactsCustomFields4$outboundSchema),
     z.string(),
     z.number(),
@@ -141,13 +153,13 @@ export const Options$outboundSchema: z.ZodType<Options$Outbound, z.ZodTypeDef, O
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Options$ {
-    /** @deprecated use `Options$inboundSchema` instead. */
-    export const inboundSchema = Options$inboundSchema;
-    /** @deprecated use `Options$outboundSchema` instead. */
-    export const outboundSchema = Options$outboundSchema;
-    /** @deprecated use `Options$Outbound` instead. */
-    export type Outbound = Options$Outbound;
+export namespace ContactsCustomFieldsOptions$ {
+    /** @deprecated use `ContactsCustomFieldsOptions$inboundSchema` instead. */
+    export const inboundSchema = ContactsCustomFieldsOptions$inboundSchema;
+    /** @deprecated use `ContactsCustomFieldsOptions$outboundSchema` instead. */
+    export const outboundSchema = ContactsCustomFieldsOptions$outboundSchema;
+    /** @deprecated use `ContactsCustomFieldsOptions$Outbound` instead. */
+    export type Outbound = ContactsCustomFieldsOptions$Outbound;
 }
 
 /** @internal */

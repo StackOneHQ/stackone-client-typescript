@@ -13,6 +13,10 @@ export type AtsGetCandidateRequest = {
     fields?: string | null | undefined;
     id: string;
     /**
+     * The comma separated list of fields that will be included in the response
+     */
+    include?: string | null | undefined;
+    /**
      * Query parameters that can be used to pass through parameters to the underlying provider request by surrounding them with 'proxy' key
      */
     proxy?: { [k: string]: any } | null | undefined;
@@ -54,6 +58,7 @@ export const AtsGetCandidateRequest$inboundSchema: z.ZodType<
     .object({
         fields: z.nullable(z.string()).optional(),
         id: z.string(),
+        include: z.nullable(z.string()).optional(),
         proxy: z.nullable(z.record(z.any())).optional(),
         raw: z.nullable(z.boolean().default(false)),
         "x-account-id": z.string(),
@@ -68,6 +73,7 @@ export const AtsGetCandidateRequest$inboundSchema: z.ZodType<
 export type AtsGetCandidateRequest$Outbound = {
     fields?: string | null | undefined;
     id: string;
+    include?: string | null | undefined;
     proxy?: { [k: string]: any } | null | undefined;
     raw: boolean | null;
     "x-account-id": string;
@@ -82,6 +88,7 @@ export const AtsGetCandidateRequest$outboundSchema: z.ZodType<
     .object({
         fields: z.nullable(z.string()).optional(),
         id: z.string(),
+        include: z.nullable(z.string()).optional(),
         proxy: z.nullable(z.record(z.any())).optional(),
         raw: z.nullable(z.boolean().default(false)),
         xAccountId: z.string(),

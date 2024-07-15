@@ -30,6 +30,7 @@ export * from "./campaign.js";
 export * from "./campaignresult.js";
 export * from "./campaignspaginated.js";
 export * from "./candidate.js";
+export * from "./candidatecustomfields.js";
 export * from "./candidateemail.js";
 export * from "./candidateresult.js";
 export * from "./candidatespaginated.js";

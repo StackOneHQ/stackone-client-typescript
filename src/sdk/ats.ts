@@ -943,6 +943,7 @@ export class Ats extends ClientSDK {
             }),
             encodeFormQuery$({
                 fields: payload$.fields,
+                include: payload$.include,
                 raw: payload$.raw,
             })
         );
@@ -2576,6 +2577,7 @@ export class Ats extends ClientSDK {
             }),
             encodeFormQuery$({
                 fields: payload$.fields,
+                include: payload$.include,
                 next: payload$.next,
                 page: payload$.page,
                 page_size: payload$.page_size,

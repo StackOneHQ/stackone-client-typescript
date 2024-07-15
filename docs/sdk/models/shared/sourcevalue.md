@@ -23,9 +23,9 @@ const value: number = /* values here */
 const value: boolean = /* values here */
 ```
 
-### `shared.Four`
+### `shared.ChannelsEnum4`
 
 ```typescript
-const value: shared.Four = /* values here */
+const value: shared.ChannelsEnum4 = /* values here */
 ```
 
