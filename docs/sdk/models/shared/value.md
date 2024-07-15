@@ -1,16 +1,31 @@
 # Value
 
-The Channels of the campaign.
+The value associated with the custom field.
 
 
-## Values
+## Supported Types
 
-| Name            | Value           |
-| --------------- | --------------- |
-| `Email`         | email           |
-| `Sms`           | sms             |
-| `WebPush`       | web_push        |
-| `IosPush`       | ios_push        |
-| `AndroidPush`   | android_push    |
-| `Unknown`       | unknown         |
-| `UnmappedValue` | unmapped_value  |
+### `string`
+
+```typescript
+const value: string = /* values here */
+```
+
+### `number`
+
+```typescript
+const value: number = /* values here */
+```
+
+### `boolean`
+
+```typescript
+const value: boolean = /* values here */
+```
+
+### `shared.CandidateCustomFields4`
+
+```typescript
+const value: shared.CandidateCustomFields4 = /* values here */
+```
+

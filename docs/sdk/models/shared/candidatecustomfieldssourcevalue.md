@@ -1,4 +1,4 @@
-# Options
+# CandidateCustomFieldsSourceValue
 
 
 ## Supported Types
@@ -21,9 +21,9 @@ const value: number = /* values here */
 const value: boolean = /* values here */
 ```
 
-### `shared.Four`
+### `shared.CandidateCustomFieldsSchemas4`
 
 ```typescript
-const value: shared.Four = /* values here */
+const value: shared.CandidateCustomFieldsSchemas4 = /* values here */
 ```
 

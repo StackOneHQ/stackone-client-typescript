@@ -30,6 +30,10 @@ export type AtsListCandidatesRequest = {
      */
     filter?: AtsListCandidatesQueryParamFilter | null | undefined;
     /**
+     * The comma separated list of fields that will be included in the response
+     */
+    include?: string | null | undefined;
+    /**
      * The unified cursor
      */
     next?: string | null | undefined;
@@ -150,6 +154,7 @@ export const AtsListCandidatesRequest$inboundSchema: z.ZodType<
         filter: z
             .nullable(z.lazy(() => AtsListCandidatesQueryParamFilter$inboundSchema))
             .optional(),
+        include: z.nullable(z.string()).optional(),
         next: z.nullable(z.string()).optional(),
         page: z.nullable(z.string()).optional(),
         page_size: z.nullable(z.string().default("25")),
@@ -172,6 +177,7 @@ export const AtsListCandidatesRequest$inboundSchema: z.ZodType<
 export type AtsListCandidatesRequest$Outbound = {
     fields?: string | null | undefined;
     filter?: AtsListCandidatesQueryParamFilter$Outbound | null | undefined;
+    include?: string | null | undefined;
     next?: string | null | undefined;
     page?: string | null | undefined;
     page_size: string | null;
@@ -193,6 +199,7 @@ export const AtsListCandidatesRequest$outboundSchema: z.ZodType<
         filter: z
             .nullable(z.lazy(() => AtsListCandidatesQueryParamFilter$outboundSchema))
             .optional(),
+        include: z.nullable(z.string()).optional(),
         next: z.nullable(z.string()).optional(),
         page: z.nullable(z.string()).optional(),
         pageSize: z.nullable(z.string().default("25")),

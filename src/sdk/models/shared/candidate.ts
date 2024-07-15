@@ -4,6 +4,12 @@
 
 import { remap as remap$ } from "../../../lib/primitives.js";
 import {
+    CandidateCustomFields,
+    CandidateCustomFields$inboundSchema,
+    CandidateCustomFields$Outbound,
+    CandidateCustomFields$outboundSchema,
+} from "./candidatecustomfields.js";
+import {
     CandidateEmail,
     CandidateEmail$inboundSchema,
     CandidateEmail$Outbound,
@@ -40,6 +46,10 @@ export type Candidate = {
      * Candidate created date
      */
     createdAt?: Date | null | undefined;
+    /**
+     * The candidate custom fields
+     */
+    customFields?: Array<CandidateCustomFields> | null | undefined;
     /**
      * Candidate email
      */
@@ -114,6 +124,7 @@ export const Candidate$inboundSchema: z.ZodType<Candidate, z.ZodTypeDef, unknown
                     .transform((v) => new Date(v))
             )
             .optional(),
+        custom_fields: z.nullable(z.array(CandidateCustomFields$inboundSchema)).optional(),
         email: z.nullable(z.string()).optional(),
         emails: z.nullable(z.array(CandidateEmail$inboundSchema)).optional(),
         first_name: z.nullable(z.string()).optional(),
@@ -147,6 +158,7 @@ export const Candidate$inboundSchema: z.ZodType<Candidate, z.ZodTypeDef, unknown
         return remap$(v, {
             application_ids: "applicationIds",
             created_at: "createdAt",
+            custom_fields: "customFields",
             first_name: "firstName",
             hired_at: "hiredAt",
             last_name: "lastName",
@@ -164,6 +176,7 @@ export type Candidate$Outbound = {
     company?: string | null | undefined;
     country?: string | null | undefined;
     created_at?: string | null | undefined;
+    custom_fields?: Array<CandidateCustomFields$Outbound> | null | undefined;
     email?: string | null | undefined;
     emails?: Array<CandidateEmail$Outbound> | null | undefined;
     first_name?: string | null | undefined;
@@ -187,6 +200,7 @@ export const Candidate$outboundSchema: z.ZodType<Candidate$Outbound, z.ZodTypeDe
         company: z.nullable(z.string()).optional(),
         country: z.nullable(z.string()).optional(),
         createdAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+        customFields: z.nullable(z.array(CandidateCustomFields$outboundSchema)).optional(),
         email: z.nullable(z.string()).optional(),
         emails: z.nullable(z.array(CandidateEmail$outboundSchema)).optional(),
         firstName: z.nullable(z.string()).optional(),
@@ -206,6 +220,7 @@ export const Candidate$outboundSchema: z.ZodType<Candidate$Outbound, z.ZodTypeDe
         return remap$(v, {
             applicationIds: "application_ids",
             createdAt: "created_at",
+            customFields: "custom_fields",
             firstName: "first_name",
             hiredAt: "hired_at",
             lastName: "last_name",

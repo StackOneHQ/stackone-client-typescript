@@ -1,4 +1,4 @@
-# EmployeeSchemasGroupsSourceValue
+# ContactsCustomFieldsOptions
 
 
 ## Supported Types
@@ -21,9 +21,9 @@ const value: number = /* values here */
 const value: boolean = /* values here */
 ```
 
-### `shared.EmployeeSchemasGroups4`
+### `shared.ContactsCustomFields4`
 
 ```typescript
-const value: shared.EmployeeSchemasGroups4 = /* values here */
+const value: shared.ContactsCustomFields4 = /* values here */
 ```
 

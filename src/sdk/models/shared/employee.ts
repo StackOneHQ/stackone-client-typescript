@@ -34,6 +34,12 @@ import {
     HRISBenefit$Outbound,
     HRISBenefit$outboundSchema,
 } from "./hrisbenefit.js";
+import {
+    HRISGroup,
+    HRISGroup$inboundSchema,
+    HRISGroup$Outbound,
+    HRISGroup$outboundSchema,
+} from "./hrisgroup.js";
 import * as z from "zod";
 
 /**
@@ -222,62 +228,6 @@ export type EmployeeSchemasGenderValueOpen = OpenEnum<typeof EmployeeSchemasGend
 export type Gender = {
     sourceValue?: EmployeeSchemasGender4 | string | number | boolean | null | undefined;
     value?: EmployeeSchemasGenderValueOpen | null | undefined;
-};
-
-export type EmployeeSchemasGroups4 = {};
-
-export type EmployeeSchemasGroupsSourceValue = EmployeeSchemasGroups4 | string | number | boolean;
-
-export enum EmployeeSchemasGroupsValue {
-    Workspace = "workspace",
-    Team = "team",
-    Department = "department",
-    Group = "group",
-    Organization = "organization",
-    UnmappedValue = "unmapped_value",
-}
-export type EmployeeSchemasGroupsValueOpen = OpenEnum<typeof EmployeeSchemasGroupsValue>;
-
-/**
- * The type of the group
- */
-export type EmployeeType = {
-    sourceValue?: EmployeeSchemasGroups4 | string | number | boolean | null | undefined;
-    value?: EmployeeSchemasGroupsValueOpen | null | undefined;
-};
-
-/**
- * The employee groups
- */
-export type Groups = {
-    /**
-     * Unique identifier
-     */
-    id?: string | null | undefined;
-    /**
-     * The name of the group
-     */
-    name?: string | null | undefined;
-    /**
-     * The list of group owner ids of the given group
-     */
-    ownerIds?: Array<string> | null | undefined;
-    /**
-     * The list of parent group ids of the given group
-     */
-    parentIds?: Array<string> | null | undefined;
-    /**
-     * Provider's unique identifier
-     */
-    remoteId?: string | null | undefined;
-    /**
-     * Provider's list of parent group ids of the given group
-     */
-    remoteParentIds?: Array<string> | null | undefined;
-    /**
-     * The type of the group
-     */
-    type?: EmployeeType | null | undefined;
 };
 
 export type EmployeeSchemasHomeLocation4 = {};
@@ -736,7 +686,7 @@ export type EmployeeSchemasNationalIdentityNumberValueOpen = OpenEnum<
     typeof EmployeeSchemasNationalIdentityNumberValue
 >;
 
-export type EmployeeSchemasType = {
+export type EmployeeType = {
     sourceValue?:
         | EmployeeSchemasNationalIdentityNumber4
         | string
@@ -754,7 +704,7 @@ export type EmployeeSchemasType = {
  * The national identity number
  */
 export type NationalIdentityNumber = {
-    type?: EmployeeSchemasType | null | undefined;
+    type?: EmployeeType | null | undefined;
     value?: string | null | undefined;
 };
 
@@ -1367,7 +1317,7 @@ export type Employee = {
     /**
      * The employee groups
      */
-    groups?: Groups | null | undefined;
+    groups?: Array<HRISGroup> | null | undefined;
     /**
      * The employee hire date
      */
@@ -2382,240 +2332,6 @@ export namespace Gender$ {
 }
 
 /** @internal */
-export const EmployeeSchemasGroups4$inboundSchema: z.ZodType<
-    EmployeeSchemasGroups4,
-    z.ZodTypeDef,
-    unknown
-> = z.object({});
-
-/** @internal */
-export type EmployeeSchemasGroups4$Outbound = {};
-
-/** @internal */
-export const EmployeeSchemasGroups4$outboundSchema: z.ZodType<
-    EmployeeSchemasGroups4$Outbound,
-    z.ZodTypeDef,
-    EmployeeSchemasGroups4
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EmployeeSchemasGroups4$ {
-    /** @deprecated use `EmployeeSchemasGroups4$inboundSchema` instead. */
-    export const inboundSchema = EmployeeSchemasGroups4$inboundSchema;
-    /** @deprecated use `EmployeeSchemasGroups4$outboundSchema` instead. */
-    export const outboundSchema = EmployeeSchemasGroups4$outboundSchema;
-    /** @deprecated use `EmployeeSchemasGroups4$Outbound` instead. */
-    export type Outbound = EmployeeSchemasGroups4$Outbound;
-}
-
-/** @internal */
-export const EmployeeSchemasGroupsSourceValue$inboundSchema: z.ZodType<
-    EmployeeSchemasGroupsSourceValue,
-    z.ZodTypeDef,
-    unknown
-> = z.union([
-    z.lazy(() => EmployeeSchemasGroups4$inboundSchema),
-    z.string(),
-    z.number(),
-    z.boolean(),
-]);
-
-/** @internal */
-export type EmployeeSchemasGroupsSourceValue$Outbound =
-    | EmployeeSchemasGroups4$Outbound
-    | string
-    | number
-    | boolean;
-
-/** @internal */
-export const EmployeeSchemasGroupsSourceValue$outboundSchema: z.ZodType<
-    EmployeeSchemasGroupsSourceValue$Outbound,
-    z.ZodTypeDef,
-    EmployeeSchemasGroupsSourceValue
-> = z.union([
-    z.lazy(() => EmployeeSchemasGroups4$outboundSchema),
-    z.string(),
-    z.number(),
-    z.boolean(),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EmployeeSchemasGroupsSourceValue$ {
-    /** @deprecated use `EmployeeSchemasGroupsSourceValue$inboundSchema` instead. */
-    export const inboundSchema = EmployeeSchemasGroupsSourceValue$inboundSchema;
-    /** @deprecated use `EmployeeSchemasGroupsSourceValue$outboundSchema` instead. */
-    export const outboundSchema = EmployeeSchemasGroupsSourceValue$outboundSchema;
-    /** @deprecated use `EmployeeSchemasGroupsSourceValue$Outbound` instead. */
-    export type Outbound = EmployeeSchemasGroupsSourceValue$Outbound;
-}
-
-/** @internal */
-export const EmployeeSchemasGroupsValue$inboundSchema: z.ZodType<
-    EmployeeSchemasGroupsValueOpen,
-    z.ZodTypeDef,
-    unknown
-> = z.union([
-    z.nativeEnum(EmployeeSchemasGroupsValue),
-    z.string().transform(catchUnrecognizedEnum),
-]);
-
-/** @internal */
-export const EmployeeSchemasGroupsValue$outboundSchema: z.ZodType<
-    EmployeeSchemasGroupsValueOpen,
-    z.ZodTypeDef,
-    EmployeeSchemasGroupsValueOpen
-> = z.union([
-    z.nativeEnum(EmployeeSchemasGroupsValue),
-    z.string().and(z.custom<Unrecognized<string>>()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EmployeeSchemasGroupsValue$ {
-    /** @deprecated use `EmployeeSchemasGroupsValue$inboundSchema` instead. */
-    export const inboundSchema = EmployeeSchemasGroupsValue$inboundSchema;
-    /** @deprecated use `EmployeeSchemasGroupsValue$outboundSchema` instead. */
-    export const outboundSchema = EmployeeSchemasGroupsValue$outboundSchema;
-}
-
-/** @internal */
-export const EmployeeType$inboundSchema: z.ZodType<EmployeeType, z.ZodTypeDef, unknown> = z
-    .object({
-        source_value: z
-            .nullable(
-                z.union([
-                    z.lazy(() => EmployeeSchemasGroups4$inboundSchema),
-                    z.string(),
-                    z.number(),
-                    z.boolean(),
-                ])
-            )
-            .optional(),
-        value: z.nullable(EmployeeSchemasGroupsValue$inboundSchema).optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            source_value: "sourceValue",
-        });
-    });
-
-/** @internal */
-export type EmployeeType$Outbound = {
-    source_value?: EmployeeSchemasGroups4$Outbound | string | number | boolean | null | undefined;
-    value?: string | null | undefined;
-};
-
-/** @internal */
-export const EmployeeType$outboundSchema: z.ZodType<
-    EmployeeType$Outbound,
-    z.ZodTypeDef,
-    EmployeeType
-> = z
-    .object({
-        sourceValue: z
-            .nullable(
-                z.union([
-                    z.lazy(() => EmployeeSchemasGroups4$outboundSchema),
-                    z.string(),
-                    z.number(),
-                    z.boolean(),
-                ])
-            )
-            .optional(),
-        value: z.nullable(EmployeeSchemasGroupsValue$outboundSchema).optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            sourceValue: "source_value",
-        });
-    });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EmployeeType$ {
-    /** @deprecated use `EmployeeType$inboundSchema` instead. */
-    export const inboundSchema = EmployeeType$inboundSchema;
-    /** @deprecated use `EmployeeType$outboundSchema` instead. */
-    export const outboundSchema = EmployeeType$outboundSchema;
-    /** @deprecated use `EmployeeType$Outbound` instead. */
-    export type Outbound = EmployeeType$Outbound;
-}
-
-/** @internal */
-export const Groups$inboundSchema: z.ZodType<Groups, z.ZodTypeDef, unknown> = z
-    .object({
-        id: z.nullable(z.string()).optional(),
-        name: z.nullable(z.string()).optional(),
-        owner_ids: z.nullable(z.array(z.string())).optional(),
-        parent_ids: z.nullable(z.array(z.string())).optional(),
-        remote_id: z.nullable(z.string()).optional(),
-        remote_parent_ids: z.nullable(z.array(z.string())).optional(),
-        type: z.nullable(z.lazy(() => EmployeeType$inboundSchema)).optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            owner_ids: "ownerIds",
-            parent_ids: "parentIds",
-            remote_id: "remoteId",
-            remote_parent_ids: "remoteParentIds",
-        });
-    });
-
-/** @internal */
-export type Groups$Outbound = {
-    id?: string | null | undefined;
-    name?: string | null | undefined;
-    owner_ids?: Array<string> | null | undefined;
-    parent_ids?: Array<string> | null | undefined;
-    remote_id?: string | null | undefined;
-    remote_parent_ids?: Array<string> | null | undefined;
-    type?: EmployeeType$Outbound | null | undefined;
-};
-
-/** @internal */
-export const Groups$outboundSchema: z.ZodType<Groups$Outbound, z.ZodTypeDef, Groups> = z
-    .object({
-        id: z.nullable(z.string()).optional(),
-        name: z.nullable(z.string()).optional(),
-        ownerIds: z.nullable(z.array(z.string())).optional(),
-        parentIds: z.nullable(z.array(z.string())).optional(),
-        remoteId: z.nullable(z.string()).optional(),
-        remoteParentIds: z.nullable(z.array(z.string())).optional(),
-        type: z.nullable(z.lazy(() => EmployeeType$outboundSchema)).optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            ownerIds: "owner_ids",
-            parentIds: "parent_ids",
-            remoteId: "remote_id",
-            remoteParentIds: "remote_parent_ids",
-        });
-    });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Groups$ {
-    /** @deprecated use `Groups$inboundSchema` instead. */
-    export const inboundSchema = Groups$inboundSchema;
-    /** @deprecated use `Groups$outboundSchema` instead. */
-    export const outboundSchema = Groups$outboundSchema;
-    /** @deprecated use `Groups$Outbound` instead. */
-    export type Outbound = Groups$Outbound;
-}
-
-/** @internal */
 export const EmployeeSchemasHomeLocation4$inboundSchema: z.ZodType<
     EmployeeSchemasHomeLocation4,
     z.ZodTypeDef,
@@ -3404,11 +3120,7 @@ export namespace EmployeeSchemasNationalIdentityNumberValue$ {
 }
 
 /** @internal */
-export const EmployeeSchemasType$inboundSchema: z.ZodType<
-    EmployeeSchemasType,
-    z.ZodTypeDef,
-    unknown
-> = z
+export const EmployeeType$inboundSchema: z.ZodType<EmployeeType, z.ZodTypeDef, unknown> = z
     .object({
         source_value: z
             .nullable(
@@ -3429,7 +3141,7 @@ export const EmployeeSchemasType$inboundSchema: z.ZodType<
     });
 
 /** @internal */
-export type EmployeeSchemasType$Outbound = {
+export type EmployeeType$Outbound = {
     source_value?:
         | EmployeeSchemasNationalIdentityNumber4$Outbound
         | string
@@ -3441,10 +3153,10 @@ export type EmployeeSchemasType$Outbound = {
 };
 
 /** @internal */
-export const EmployeeSchemasType$outboundSchema: z.ZodType<
-    EmployeeSchemasType$Outbound,
+export const EmployeeType$outboundSchema: z.ZodType<
+    EmployeeType$Outbound,
     z.ZodTypeDef,
-    EmployeeSchemasType
+    EmployeeType
 > = z
     .object({
         sourceValue: z
@@ -3469,13 +3181,13 @@ export const EmployeeSchemasType$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace EmployeeSchemasType$ {
-    /** @deprecated use `EmployeeSchemasType$inboundSchema` instead. */
-    export const inboundSchema = EmployeeSchemasType$inboundSchema;
-    /** @deprecated use `EmployeeSchemasType$outboundSchema` instead. */
-    export const outboundSchema = EmployeeSchemasType$outboundSchema;
-    /** @deprecated use `EmployeeSchemasType$Outbound` instead. */
-    export type Outbound = EmployeeSchemasType$Outbound;
+export namespace EmployeeType$ {
+    /** @deprecated use `EmployeeType$inboundSchema` instead. */
+    export const inboundSchema = EmployeeType$inboundSchema;
+    /** @deprecated use `EmployeeType$outboundSchema` instead. */
+    export const outboundSchema = EmployeeType$outboundSchema;
+    /** @deprecated use `EmployeeType$Outbound` instead. */
+    export type Outbound = EmployeeType$Outbound;
 }
 
 /** @internal */
@@ -3484,13 +3196,13 @@ export const NationalIdentityNumber$inboundSchema: z.ZodType<
     z.ZodTypeDef,
     unknown
 > = z.object({
-    type: z.nullable(z.lazy(() => EmployeeSchemasType$inboundSchema)).optional(),
+    type: z.nullable(z.lazy(() => EmployeeType$inboundSchema)).optional(),
     value: z.nullable(z.string()).optional(),
 });
 
 /** @internal */
 export type NationalIdentityNumber$Outbound = {
-    type?: EmployeeSchemasType$Outbound | null | undefined;
+    type?: EmployeeType$Outbound | null | undefined;
     value?: string | null | undefined;
 };
 
@@ -3500,7 +3212,7 @@ export const NationalIdentityNumber$outboundSchema: z.ZodType<
     z.ZodTypeDef,
     NationalIdentityNumber
 > = z.object({
-    type: z.nullable(z.lazy(() => EmployeeSchemasType$outboundSchema)).optional(),
+    type: z.nullable(z.lazy(() => EmployeeType$outboundSchema)).optional(),
     value: z.nullable(z.string()).optional(),
 });
 
@@ -4223,7 +3935,7 @@ export const Employee$inboundSchema: z.ZodType<Employee, z.ZodTypeDef, unknown> 
         ethnicity: z.nullable(z.lazy(() => Ethnicity$inboundSchema)).optional(),
         first_name: z.nullable(z.string()).optional(),
         gender: z.nullable(z.lazy(() => Gender$inboundSchema)).optional(),
-        groups: z.nullable(z.lazy(() => Groups$inboundSchema)).optional(),
+        groups: z.nullable(z.array(HRISGroup$inboundSchema)).optional(),
         hire_date: z
             .nullable(
                 z
@@ -4345,7 +4057,7 @@ export type Employee$Outbound = {
     ethnicity?: Ethnicity$Outbound | null | undefined;
     first_name?: string | null | undefined;
     gender?: Gender$Outbound | null | undefined;
-    groups?: Groups$Outbound | null | undefined;
+    groups?: Array<HRISGroup$Outbound> | null | undefined;
     hire_date?: string | null | undefined;
     home_location?: HomeLocation$Outbound | null | undefined;
     id?: string | null | undefined;
@@ -4397,7 +4109,7 @@ export const Employee$outboundSchema: z.ZodType<Employee$Outbound, z.ZodTypeDef,
         ethnicity: z.nullable(z.lazy(() => Ethnicity$outboundSchema)).optional(),
         firstName: z.nullable(z.string()).optional(),
         gender: z.nullable(z.lazy(() => Gender$outboundSchema)).optional(),
-        groups: z.nullable(z.lazy(() => Groups$outboundSchema)).optional(),
+        groups: z.nullable(z.array(HRISGroup$outboundSchema)).optional(),
         hireDate: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
         homeLocation: z.nullable(z.lazy(() => HomeLocation$outboundSchema)).optional(),
         id: z.nullable(z.string()).optional(),
