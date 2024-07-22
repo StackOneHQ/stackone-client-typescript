@@ -44,6 +44,87 @@ export class Marketing extends ClientSDK {
     }
 
     /**
+     * Create Content Block
+     */
+    async createContentBlock(
+        request: operations.MarketingCreateContentBlockRequest,
+        options?: RequestOptions
+    ): Promise<operations.MarketingCreateContentBlockResponse> {
+        const input$ = request;
+
+        const payload$ = schemas$.parse(
+            input$,
+            (value$) => operations.MarketingCreateContentBlockRequest$outboundSchema.parse(value$),
+            "Input validation failed"
+        );
+        const body$ = encodeJSON$("body", payload$.MarketingCreateContentBlocksRequestDto, {
+            explode: true,
+        });
+
+        const path$ = this.templateURLComponent("/unified/marketing/content_blocks")();
+
+        const query$ = "";
+
+        const headers$ = new Headers({
+            "Content-Type": "application/json",
+            Accept: "application/json",
+            "x-account-id": encodeSimple$("x-account-id", payload$["x-account-id"], {
+                explode: false,
+                charEncoding: "none",
+            }),
+        });
+
+        const security$ =
+            typeof this.options$.security === "function"
+                ? await this.options$.security()
+                : this.options$.security;
+
+        const context = {
+            operationID: "marketing_create_content_block",
+            oAuth2Scopes: [],
+            securitySource: this.options$.security,
+        };
+        const securitySettings$ = this.resolveGlobalSecurity(security$);
+
+        const request$ = this.createRequest$(
+            context,
+            {
+                security: securitySettings$,
+                method: "POST",
+                path: path$,
+                headers: headers$,
+                query: query$,
+                body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
+            },
+            options
+        );
+
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
+        });
+
+        const responseFields$ = {
+            ContentType: response.headers.get("content-type") ?? "application/octet-stream",
+            StatusCode: response.status,
+            RawResponse: response,
+            Headers: {},
+        };
+
+        const [result$] = await this.matcher<operations.MarketingCreateContentBlockResponse>()
+            .json(201, operations.MarketingCreateContentBlockResponse$inboundSchema, {
+                key: "CreateResult",
+            })
+            .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
+            .match(response, { extraFields: responseFields$ });
+
+        return result$;
+    }
+
+    /**
      * Create email template
      */
     async createEmailTemplate(
@@ -370,6 +451,97 @@ export class Marketing extends ClientSDK {
         const [result$] = await this.matcher<operations.MarketingGetCampaignResponse>()
             .json(200, operations.MarketingGetCampaignResponse$inboundSchema, {
                 key: "CampaignResult",
+            })
+            .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
+            .match(response, { extraFields: responseFields$ });
+
+        return result$;
+    }
+
+    /**
+     * Get Content Blocks
+     */
+    async getContentBlock(
+        request: operations.MarketingGetContentBlockRequest,
+        options?: RequestOptions
+    ): Promise<operations.MarketingGetContentBlockResponse> {
+        const input$ = request;
+
+        const payload$ = schemas$.parse(
+            input$,
+            (value$) => operations.MarketingGetContentBlockRequest$outboundSchema.parse(value$),
+            "Input validation failed"
+        );
+        const body$ = null;
+
+        const pathParams$ = {
+            id: encodeSimple$("id", payload$.id, { explode: false, charEncoding: "percent" }),
+        };
+        const path$ = this.templateURLComponent("/unified/marketing/content_blocks/{id}")(
+            pathParams$
+        );
+
+        const query$ = queryJoin$(
+            encodeDeepObjectQuery$({
+                proxy: payload$.proxy,
+            }),
+            encodeFormQuery$({
+                fields: payload$.fields,
+                raw: payload$.raw,
+            })
+        );
+
+        const headers$ = new Headers({
+            Accept: "application/json",
+            "x-account-id": encodeSimple$("x-account-id", payload$["x-account-id"], {
+                explode: false,
+                charEncoding: "none",
+            }),
+        });
+
+        const security$ =
+            typeof this.options$.security === "function"
+                ? await this.options$.security()
+                : this.options$.security;
+
+        const context = {
+            operationID: "marketing_get_content_block",
+            oAuth2Scopes: [],
+            securitySource: this.options$.security,
+        };
+        const securitySettings$ = this.resolveGlobalSecurity(security$);
+
+        const request$ = this.createRequest$(
+            context,
+            {
+                security: securitySettings$,
+                method: "GET",
+                path: path$,
+                headers: headers$,
+                query: query$,
+                body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
+            },
+            options
+        );
+
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
+        });
+
+        const responseFields$ = {
+            ContentType: response.headers.get("content-type") ?? "application/octet-stream",
+            StatusCode: response.status,
+            RawResponse: response,
+            Headers: {},
+        };
+
+        const [result$] = await this.matcher<operations.MarketingGetContentBlockResponse>()
+            .json(200, operations.MarketingGetContentBlockResponse$inboundSchema, {
+                key: "ContentBlocksPaginated",
             })
             .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
             .match(response, { extraFields: responseFields$ });
@@ -743,6 +915,97 @@ export class Marketing extends ClientSDK {
     }
 
     /**
+     * List Content Blocks
+     */
+    async listContentBlocks(
+        request: operations.MarketingListContentBlocksRequest,
+        options?: RequestOptions
+    ): Promise<operations.MarketingListContentBlocksResponse> {
+        const input$ = request;
+
+        const payload$ = schemas$.parse(
+            input$,
+            (value$) => operations.MarketingListContentBlocksRequest$outboundSchema.parse(value$),
+            "Input validation failed"
+        );
+        const body$ = null;
+
+        const path$ = this.templateURLComponent("/unified/marketing/content_blocks")();
+
+        const query$ = queryJoin$(
+            encodeDeepObjectQuery$({
+                filter: payload$.filter,
+                proxy: payload$.proxy,
+            }),
+            encodeFormQuery$({
+                fields: payload$.fields,
+                next: payload$.next,
+                page: payload$.page,
+                page_size: payload$.page_size,
+                raw: payload$.raw,
+                updated_after: payload$.updated_after,
+            })
+        );
+
+        const headers$ = new Headers({
+            Accept: "application/json",
+            "x-account-id": encodeSimple$("x-account-id", payload$["x-account-id"], {
+                explode: false,
+                charEncoding: "none",
+            }),
+        });
+
+        const security$ =
+            typeof this.options$.security === "function"
+                ? await this.options$.security()
+                : this.options$.security;
+
+        const context = {
+            operationID: "marketing_list_content_blocks",
+            oAuth2Scopes: [],
+            securitySource: this.options$.security,
+        };
+        const securitySettings$ = this.resolveGlobalSecurity(security$);
+
+        const request$ = this.createRequest$(
+            context,
+            {
+                security: securitySettings$,
+                method: "GET",
+                path: path$,
+                headers: headers$,
+                query: query$,
+                body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
+            },
+            options
+        );
+
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
+        });
+
+        const responseFields$ = {
+            ContentType: response.headers.get("content-type") ?? "application/octet-stream",
+            StatusCode: response.status,
+            RawResponse: response,
+            Headers: {},
+        };
+
+        const [result$] = await this.matcher<operations.MarketingListContentBlocksResponse>()
+            .json(200, operations.MarketingListContentBlocksResponse$inboundSchema, {
+                key: "ContentBlocksPaginated",
+            })
+            .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
+            .match(response, { extraFields: responseFields$ });
+
+        return result$;
+    }
+
+    /**
      * List email templates
      */
     async listEmailTemplates(
@@ -1009,6 +1272,92 @@ export class Marketing extends ClientSDK {
         const [result$] = await this.matcher<operations.MarketingListPushTemplatesResponse>()
             .json(200, operations.MarketingListPushTemplatesResponse$inboundSchema, {
                 key: "TemplatesPaginated",
+            })
+            .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
+            .match(response, { extraFields: responseFields$ });
+
+        return result$;
+    }
+
+    /**
+     * Update email template
+     */
+    async updateContentBlock(
+        request: operations.MarketingUpdateContentBlockRequest,
+        options?: RequestOptions
+    ): Promise<operations.MarketingUpdateContentBlockResponse> {
+        const input$ = request;
+
+        const payload$ = schemas$.parse(
+            input$,
+            (value$) => operations.MarketingUpdateContentBlockRequest$outboundSchema.parse(value$),
+            "Input validation failed"
+        );
+        const body$ = encodeJSON$("body", payload$.MarketingCreateContentBlocksRequestDto, {
+            explode: true,
+        });
+
+        const pathParams$ = {
+            id: encodeSimple$("id", payload$.id, { explode: false, charEncoding: "percent" }),
+        };
+        const path$ = this.templateURLComponent("/unified/marketing/content_blocks/{id}")(
+            pathParams$
+        );
+
+        const query$ = "";
+
+        const headers$ = new Headers({
+            "Content-Type": "application/json",
+            Accept: "application/json",
+            "x-account-id": encodeSimple$("x-account-id", payload$["x-account-id"], {
+                explode: false,
+                charEncoding: "none",
+            }),
+        });
+
+        const security$ =
+            typeof this.options$.security === "function"
+                ? await this.options$.security()
+                : this.options$.security;
+
+        const context = {
+            operationID: "marketing_update_content_block",
+            oAuth2Scopes: [],
+            securitySource: this.options$.security,
+        };
+        const securitySettings$ = this.resolveGlobalSecurity(security$);
+
+        const request$ = this.createRequest$(
+            context,
+            {
+                security: securitySettings$,
+                method: "PATCH",
+                path: path$,
+                headers: headers$,
+                query: query$,
+                body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
+            },
+            options
+        );
+
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
+        });
+
+        const responseFields$ = {
+            ContentType: response.headers.get("content-type") ?? "application/octet-stream",
+            StatusCode: response.status,
+            RawResponse: response,
+            Headers: {},
+        };
+
+        const [result$] = await this.matcher<operations.MarketingUpdateContentBlockResponse>()
+            .json(200, operations.MarketingUpdateContentBlockResponse$inboundSchema, {
+                key: "CreateResult",
             })
             .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
             .match(response, { extraFields: responseFields$ });

@@ -87,7 +87,7 @@ export type LmsCreateContentRequestDto = {
     /**
      * The external ID associated with this content
      */
-    externalId?: string | null | undefined;
+    externalReference?: string | null | undefined;
     /**
      * The languages associated with this content
      */
@@ -352,7 +352,7 @@ export const LmsCreateContentRequestDto$inboundSchema: z.ZodType<
         cover_url: z.nullable(z.string()).optional(),
         description: z.nullable(z.string()).optional(),
         duration: z.nullable(z.string()).optional(),
-        external_id: z.nullable(z.string()).optional(),
+        external_reference: z.nullable(z.string()).optional(),
         languages: z.nullable(z.array(ContentLanguageEnum$inboundSchema)).optional(),
         order: z.nullable(z.number()).optional(),
         title: z.nullable(z.string()).optional(),
@@ -363,7 +363,7 @@ export const LmsCreateContentRequestDto$inboundSchema: z.ZodType<
             content_url: "contentUrl",
             course_ids: "courseIds",
             cover_url: "coverUrl",
-            external_id: "externalId",
+            external_reference: "externalReference",
         });
     });
 
@@ -377,7 +377,7 @@ export type LmsCreateContentRequestDto$Outbound = {
     cover_url?: string | null | undefined;
     description?: string | null | undefined;
     duration?: string | null | undefined;
-    external_id?: string | null | undefined;
+    external_reference?: string | null | undefined;
     languages?: Array<ContentLanguageEnum$Outbound> | null | undefined;
     order?: number | null | undefined;
     title?: string | null | undefined;
@@ -402,7 +402,7 @@ export const LmsCreateContentRequestDto$outboundSchema: z.ZodType<
         coverUrl: z.nullable(z.string()).optional(),
         description: z.nullable(z.string()).optional(),
         duration: z.nullable(z.string()).optional(),
-        externalId: z.nullable(z.string()).optional(),
+        externalReference: z.nullable(z.string()).optional(),
         languages: z.nullable(z.array(ContentLanguageEnum$outboundSchema)).optional(),
         order: z.nullable(z.number()).optional(),
         title: z.nullable(z.string()).optional(),
@@ -413,7 +413,7 @@ export const LmsCreateContentRequestDto$outboundSchema: z.ZodType<
             contentUrl: "content_url",
             courseIds: "course_ids",
             coverUrl: "cover_url",
-            externalId: "external_id",
+            externalReference: "external_reference",
         });
     });
 

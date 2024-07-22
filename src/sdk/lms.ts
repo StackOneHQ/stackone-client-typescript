@@ -61,7 +61,7 @@ export class Lms extends ClientSDK {
             explode: true,
         });
 
-        const path$ = this.templateURLComponent("/unified/lms/completion")();
+        const path$ = this.templateURLComponent("/unified/lms/completions")();
 
         const query$ = "";
 
@@ -303,7 +303,7 @@ export class Lms extends ClientSDK {
         const pathParams$ = {
             id: encodeSimple$("id", payload$.id, { explode: false, charEncoding: "percent" }),
         };
-        const path$ = this.templateURLComponent("/unified/lms/completion/{id}")(pathParams$);
+        const path$ = this.templateURLComponent("/unified/lms/completions/{id}")(pathParams$);
 
         const query$ = encodeFormQuery$({
             fields: payload$.fields,
@@ -705,7 +705,84 @@ export class Lms extends ClientSDK {
         };
 
         const [result$] = await this.matcher<operations.LmsUpdateContentResponse>()
-            .json(201, operations.LmsUpdateContentResponse$inboundSchema, { key: "CreateResult" })
+            .json(201, operations.LmsUpdateContentResponse$inboundSchema, { key: "UpdateResult" })
+            .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
+            .match(response, { extraFields: responseFields$ });
+
+        return result$;
+    }
+
+    /**
+     * Upsert Content
+     */
+    async upsertContent(
+        request: operations.LmsUpsertContentRequest,
+        options?: RequestOptions
+    ): Promise<operations.LmsUpsertContentResponse> {
+        const input$ = request;
+
+        const payload$ = schemas$.parse(
+            input$,
+            (value$) => operations.LmsUpsertContentRequest$outboundSchema.parse(value$),
+            "Input validation failed"
+        );
+        const body$ = encodeJSON$("body", payload$.LmsUpsertContentRequestDto, { explode: true });
+
+        const path$ = this.templateURLComponent("/unified/lms/content")();
+
+        const query$ = "";
+
+        const headers$ = new Headers({
+            "Content-Type": "application/json",
+            Accept: "application/json",
+            "x-account-id": encodeSimple$("x-account-id", payload$["x-account-id"], {
+                explode: false,
+                charEncoding: "none",
+            }),
+        });
+
+        const security$ =
+            typeof this.options$.security === "function"
+                ? await this.options$.security()
+                : this.options$.security;
+
+        const context = {
+            operationID: "lms_upsert_content",
+            oAuth2Scopes: [],
+            securitySource: this.options$.security,
+        };
+        const securitySettings$ = this.resolveGlobalSecurity(security$);
+
+        const request$ = this.createRequest$(
+            context,
+            {
+                security: securitySettings$,
+                method: "PUT",
+                path: path$,
+                headers: headers$,
+                query: query$,
+                body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
+            },
+            options
+        );
+
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
+        });
+
+        const responseFields$ = {
+            ContentType: response.headers.get("content-type") ?? "application/octet-stream",
+            StatusCode: response.status,
+            RawResponse: response,
+            Headers: {},
+        };
+
+        const [result$] = await this.matcher<operations.LmsUpsertContentResponse>()
+            .json(201, operations.LmsUpsertContentResponse$inboundSchema, { key: "CreateResult" })
             .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
             .match(response, { extraFields: responseFields$ });
 

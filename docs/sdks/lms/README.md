@@ -11,6 +11,7 @@
 * [listCategories](#listcategories) - List Categories
 * [listContent](#listcontent) - List Content
 * [updateContent](#updatecontent) - Update Content
+* [upsertContent](#upsertcontent) - Upsert Content
 
 ## createCompletion
 
@@ -142,7 +143,7 @@ async function run() {
       coverUrl: "https://www.googledrive.com/?v=16873",
       description: "This video acts as learning content for software engineers.",
       duration: "P3Y6M4DT12H30M5S",
-      externalId: "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1",
+      externalReference: "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1",
       languages: [
         {
           value: ContentLanguageEnumValue.EnGB,
@@ -292,7 +293,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.lms.getContent({
-    fields: "id,remote_id,external_id,remote_external_id,course_ids,remote_course_ids,title,description,languages,content_url,content_type,cover_url,active,duration,categories,order",
+    fields: "id,remote_id,external_reference,course_ids,remote_course_ids,title,description,languages,content_url,content_type,cover_url,active,duration,categories,order",
     id: "<id>",
     xAccountId: "<value>",
   });
@@ -390,7 +391,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.lms.listContent({
-    fields: "id,remote_id,external_id,remote_external_id,course_ids,remote_course_ids,title,description,languages,content_url,content_type,cover_url,active,duration,categories,order",
+    fields: "id,remote_id,external_reference,course_ids,remote_course_ids,title,description,languages,content_url,content_type,cover_url,active,duration,categories,order",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
@@ -456,7 +457,7 @@ async function run() {
       coverUrl: "https://www.googledrive.com/?v=16873",
       description: "This video acts as learning content for software engineers.",
       duration: "P3Y6M4DT12H30M5S",
-      externalId: "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1",
+      externalReference: "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1",
       languages: [
         {
           value: ContentLanguageEnumValue.EnGB,
@@ -489,6 +490,77 @@ run();
 ### Response
 
 **Promise\<[operations.LmsUpdateContentResponse](../../sdk/models/operations/lmsupdatecontentresponse.md)\>**
+### Errors
+
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
+
+## upsertContent
+
+Upsert Content
+
+### Example Usage
+
+```typescript
+import { StackOne } from "@stackone/stackone-client-ts";
+import { ContentLanguageEnumValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
+
+async function run() {
+  const result = await stackOne.lms.upsertContent({
+    lmsUpsertContentRequestDto: {
+    active: true,
+      categories: [
+        {
+          active: true,
+          name: "Technology",
+        },
+      ],
+      contentUrl: "https://www.youtube.com/watch?v=16873",
+      courseIds: [
+        "16873-SOFTWARE-ENG-COURSE",
+      ],
+      coverUrl: "https://www.googledrive.com/?v=16873",
+      description: "This video acts as learning content for software engineers.",
+      duration: "P3Y6M4DT12H30M5S",
+      externalReference: "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1",
+      languages: [
+        {
+          value: ContentLanguageEnumValue.EnGB,
+        },
+      ],
+      order: 1,
+      title: "Software Engineer Lv 1",
+    },
+    xAccountId: "<value>",
+  });
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.LmsUpsertContentRequest](../../sdk/models/operations/lmsupsertcontentrequest.md)                                                                                   | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+
+### Response
+
+**Promise\<[operations.LmsUpsertContentResponse](../../sdk/models/operations/lmsupsertcontentresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

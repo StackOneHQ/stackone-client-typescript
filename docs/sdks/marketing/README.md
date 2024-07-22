@@ -3,20 +3,107 @@
 
 ### Available Operations
 
+* [createContentBlock](#createcontentblock) - Create Content Block
 * [createEmailTemplate](#createemailtemplate) - Create email template
 * [createOmniChannelTemplate](#createomnichanneltemplate) - Create omni-channel template
 * [createPushTemplate](#createpushtemplate) - Create push template
 * [getCampaign](#getcampaign) - Get campaign
+* [getContentBlock](#getcontentblock) - Get Content Blocks
 * [getEmailTemplate](#getemailtemplate) - Get email template
 * [getOmniChannelTemplate](#getomnichanneltemplate) - Get omni-channel template
 * [getPushTemplate](#getpushtemplate) - Get push template
 * [listCampaigns](#listcampaigns) - List campaigns
+* [listContentBlocks](#listcontentblocks) - List Content Blocks
 * [listEmailTemplates](#listemailtemplates) - List email templates
 * [listOmniChannelTemplates](#listomnichanneltemplates) - List omni-channel templates
 * [listPushTemplates](#listpushtemplates) - List push templates
+* [updateContentBlock](#updatecontentblock) - Update email template
 * [updateEmailTemplate](#updateemailtemplate) - Update email template
 * [updateOmniChannelTemplate](#updateomnichanneltemplate) - Update omni-channel template
 * [updatePushTemplate](#updatepushtemplate) - Update push template
+
+## createContentBlock
+
+Create Content Block
+
+### Example Usage
+
+```typescript
+import { StackOne } from "@stackone/stackone-client-ts";
+
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
+
+async function run() {
+  const result = await stackOne.marketing.createContentBlock({
+    marketingCreateContentBlocksRequestDto: {
+      passthrough: {
+        "0": "{",
+        "1": "\"",
+        "2": "o",
+        "3": "t",
+        "4": "h",
+        "5": "e",
+        "6": "r",
+        "7": "_",
+        "8": "k",
+        "9": "n",
+        "10": "o",
+        "11": "w",
+        "12": "n",
+        "13": "_",
+        "14": "n",
+        "15": "a",
+        "16": "m",
+        "17": "e",
+        "18": "s",
+        "19": "\"",
+        "20": ":",
+        "21": " ",
+        "22": "\"",
+        "23": "J",
+        "24": "o",
+        "25": "h",
+        "26": "n",
+        "27": " ",
+        "28": "D",
+        "29": "o",
+        "30": "e",
+        "31": "\"",
+        "32": "}",
+      },
+    },
+    xAccountId: "<value>",
+  });
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.MarketingCreateContentBlockRequest](../../sdk/models/operations/marketingcreatecontentblockrequest.md)                                                             | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+
+### Response
+
+**Promise\<[operations.MarketingCreateContentBlockResponse](../../sdk/models/operations/marketingcreatecontentblockresponse.md)\>**
+### Errors
+
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## createEmailTemplate
 
@@ -342,6 +429,54 @@ run();
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 4xx-5xx         | */*             |
 
+## getContentBlock
+
+Get Content Blocks
+
+### Example Usage
+
+```typescript
+import { StackOne } from "@stackone/stackone-client-ts";
+
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
+
+async function run() {
+  const result = await stackOne.marketing.getContentBlock({
+    fields: "id,remote_id,name,type,content,status,tags,created_at,updated_at",
+    id: "<id>",
+    xAccountId: "<value>",
+  });
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.MarketingGetContentBlockRequest](../../sdk/models/operations/marketinggetcontentblockrequest.md)                                                                   | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+
+### Response
+
+**Promise\<[operations.MarketingGetContentBlockResponse](../../sdk/models/operations/marketinggetcontentblockresponse.md)\>**
+### Errors
+
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
+
 ## getEmailTemplate
 
 Get email template
@@ -536,6 +671,56 @@ run();
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 4xx-5xx         | */*             |
 
+## listContentBlocks
+
+List Content Blocks
+
+### Example Usage
+
+```typescript
+import { StackOne } from "@stackone/stackone-client-ts";
+
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
+
+async function run() {
+  const result = await stackOne.marketing.listContentBlocks({
+    fields: "id,remote_id,name,type,content,status,tags,created_at,updated_at",
+    filter: {
+      updatedAfter: "2020-01-01T00:00:00.000Z",
+    },
+    xAccountId: "<value>",
+  });
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.MarketingListContentBlocksRequest](../../sdk/models/operations/marketinglistcontentblocksrequest.md)                                                               | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+
+### Response
+
+**Promise\<[operations.MarketingListContentBlocksResponse](../../sdk/models/operations/marketinglistcontentblocksresponse.md)\>**
+### Errors
+
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
+
 ## listEmailTemplates
 
 List email templates
@@ -680,6 +865,90 @@ run();
 ### Response
 
 **Promise\<[operations.MarketingListPushTemplatesResponse](../../sdk/models/operations/marketinglistpushtemplatesresponse.md)\>**
+### Errors
+
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
+
+## updateContentBlock
+
+Update email template
+
+### Example Usage
+
+```typescript
+import { StackOne } from "@stackone/stackone-client-ts";
+
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
+
+async function run() {
+  const result = await stackOne.marketing.updateContentBlock({
+    marketingCreateContentBlocksRequestDto: {
+      passthrough: {
+        "0": "{",
+        "1": "\"",
+        "2": "o",
+        "3": "t",
+        "4": "h",
+        "5": "e",
+        "6": "r",
+        "7": "_",
+        "8": "k",
+        "9": "n",
+        "10": "o",
+        "11": "w",
+        "12": "n",
+        "13": "_",
+        "14": "n",
+        "15": "a",
+        "16": "m",
+        "17": "e",
+        "18": "s",
+        "19": "\"",
+        "20": ":",
+        "21": " ",
+        "22": "\"",
+        "23": "J",
+        "24": "o",
+        "25": "h",
+        "26": "n",
+        "27": " ",
+        "28": "D",
+        "29": "o",
+        "30": "e",
+        "31": "\"",
+        "32": "}",
+      },
+    },
+    id: "<id>",
+    xAccountId: "<value>",
+  });
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.MarketingUpdateContentBlockRequest](../../sdk/models/operations/marketingupdatecontentblockrequest.md)                                                             | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+
+### Response
+
+**Promise\<[operations.MarketingUpdateContentBlockResponse](../../sdk/models/operations/marketingupdatecontentblockresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

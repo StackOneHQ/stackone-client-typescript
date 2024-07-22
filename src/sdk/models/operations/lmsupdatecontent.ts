@@ -21,10 +21,6 @@ export type LmsUpdateContentResponse = {
      */
     contentType: string;
     /**
-     * The content was updated successfully.
-     */
-    createResult?: shared.CreateResult | undefined;
-    /**
      * HTTP response status code for this operation
      */
     statusCode: number;
@@ -32,6 +28,10 @@ export type LmsUpdateContentResponse = {
      * Raw HTTP response; suitable for custom response parsing
      */
     rawResponse: Response;
+    /**
+     * The content was updated successfully.
+     */
+    updateResult?: shared.UpdateResult | undefined;
 };
 
 /** @internal */
@@ -98,25 +98,25 @@ export const LmsUpdateContentResponse$inboundSchema: z.ZodType<
 > = z
     .object({
         ContentType: z.string(),
-        CreateResult: shared.CreateResult$inboundSchema.optional(),
         StatusCode: z.number().int(),
         RawResponse: z.instanceof(Response),
+        UpdateResult: shared.UpdateResult$inboundSchema.optional(),
     })
     .transform((v) => {
         return remap$(v, {
             ContentType: "contentType",
-            CreateResult: "createResult",
             StatusCode: "statusCode",
             RawResponse: "rawResponse",
+            UpdateResult: "updateResult",
         });
     });
 
 /** @internal */
 export type LmsUpdateContentResponse$Outbound = {
     ContentType: string;
-    CreateResult?: shared.CreateResult$Outbound | undefined;
     StatusCode: number;
     RawResponse: never;
+    UpdateResult?: shared.UpdateResult$Outbound | undefined;
 };
 
 /** @internal */
@@ -127,18 +127,18 @@ export const LmsUpdateContentResponse$outboundSchema: z.ZodType<
 > = z
     .object({
         contentType: z.string(),
-        createResult: shared.CreateResult$outboundSchema.optional(),
         statusCode: z.number().int(),
         rawResponse: z.instanceof(Response).transform(() => {
             throw new Error("Response cannot be serialized");
         }),
+        updateResult: shared.UpdateResult$outboundSchema.optional(),
     })
     .transform((v) => {
         return remap$(v, {
             contentType: "ContentType",
-            createResult: "CreateResult",
             statusCode: "StatusCode",
             rawResponse: "RawResponse",
+            updateResult: "UpdateResult",
         });
     });
 

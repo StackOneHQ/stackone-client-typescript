@@ -644,6 +644,97 @@ export class Hris extends ClientSDK {
     }
 
     /**
+     * Get Department Group
+     */
+    async getDepartmentGroup(
+        request: operations.HrisGetDepartmentGroupRequest,
+        options?: RequestOptions
+    ): Promise<operations.HrisGetDepartmentGroupResponse> {
+        const input$ = request;
+
+        const payload$ = schemas$.parse(
+            input$,
+            (value$) => operations.HrisGetDepartmentGroupRequest$outboundSchema.parse(value$),
+            "Input validation failed"
+        );
+        const body$ = null;
+
+        const pathParams$ = {
+            id: encodeSimple$("id", payload$.id, { explode: false, charEncoding: "percent" }),
+        };
+        const path$ = this.templateURLComponent("/unified/hris/groups/departments/{id}")(
+            pathParams$
+        );
+
+        const query$ = queryJoin$(
+            encodeDeepObjectQuery$({
+                proxy: payload$.proxy,
+            }),
+            encodeFormQuery$({
+                fields: payload$.fields,
+                raw: payload$.raw,
+            })
+        );
+
+        const headers$ = new Headers({
+            Accept: "application/json",
+            "x-account-id": encodeSimple$("x-account-id", payload$["x-account-id"], {
+                explode: false,
+                charEncoding: "none",
+            }),
+        });
+
+        const security$ =
+            typeof this.options$.security === "function"
+                ? await this.options$.security()
+                : this.options$.security;
+
+        const context = {
+            operationID: "hris_get_department_group",
+            oAuth2Scopes: [],
+            securitySource: this.options$.security,
+        };
+        const securitySettings$ = this.resolveGlobalSecurity(security$);
+
+        const request$ = this.createRequest$(
+            context,
+            {
+                security: securitySettings$,
+                method: "GET",
+                path: path$,
+                headers: headers$,
+                query: query$,
+                body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
+            },
+            options
+        );
+
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
+        });
+
+        const responseFields$ = {
+            ContentType: response.headers.get("content-type") ?? "application/octet-stream",
+            StatusCode: response.status,
+            RawResponse: response,
+            Headers: {},
+        };
+
+        const [result$] = await this.matcher<operations.HrisGetDepartmentGroupResponse>()
+            .json(200, operations.HrisGetDepartmentGroupResponse$inboundSchema, {
+                key: "HRISDepartmentsResult",
+            })
+            .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
+            .match(response, { extraFields: responseFields$ });
+
+        return result$;
+    }
+
+    /**
      * Get Employee
      */
     async getEmployee(
@@ -1728,6 +1819,97 @@ export class Hris extends ClientSDK {
         const [result$] = await this.matcher<operations.HrisListCompaniesResponse>()
             .json(200, operations.HrisListCompaniesResponse$inboundSchema, {
                 key: "CompaniesPaginated",
+            })
+            .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
+            .match(response, { extraFields: responseFields$ });
+
+        return result$;
+    }
+
+    /**
+     * List Department Groups
+     */
+    async listDepartmentGroups(
+        request: operations.HrisListDepartmentGroupsRequest,
+        options?: RequestOptions
+    ): Promise<operations.HrisListDepartmentGroupsResponse> {
+        const input$ = request;
+
+        const payload$ = schemas$.parse(
+            input$,
+            (value$) => operations.HrisListDepartmentGroupsRequest$outboundSchema.parse(value$),
+            "Input validation failed"
+        );
+        const body$ = null;
+
+        const path$ = this.templateURLComponent("/unified/hris/groups/departments")();
+
+        const query$ = queryJoin$(
+            encodeDeepObjectQuery$({
+                filter: payload$.filter,
+                proxy: payload$.proxy,
+            }),
+            encodeFormQuery$({
+                fields: payload$.fields,
+                next: payload$.next,
+                page: payload$.page,
+                page_size: payload$.page_size,
+                raw: payload$.raw,
+                updated_after: payload$.updated_after,
+            })
+        );
+
+        const headers$ = new Headers({
+            Accept: "application/json",
+            "x-account-id": encodeSimple$("x-account-id", payload$["x-account-id"], {
+                explode: false,
+                charEncoding: "none",
+            }),
+        });
+
+        const security$ =
+            typeof this.options$.security === "function"
+                ? await this.options$.security()
+                : this.options$.security;
+
+        const context = {
+            operationID: "hris_list_department_groups",
+            oAuth2Scopes: [],
+            securitySource: this.options$.security,
+        };
+        const securitySettings$ = this.resolveGlobalSecurity(security$);
+
+        const request$ = this.createRequest$(
+            context,
+            {
+                security: securitySettings$,
+                method: "GET",
+                path: path$,
+                headers: headers$,
+                query: query$,
+                body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
+            },
+            options
+        );
+
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
+        });
+
+        const responseFields$ = {
+            ContentType: response.headers.get("content-type") ?? "application/octet-stream",
+            StatusCode: response.status,
+            RawResponse: response,
+            Headers: {},
+        };
+
+        const [result$] = await this.matcher<operations.HrisListDepartmentGroupsResponse>()
+            .json(200, operations.HrisListDepartmentGroupsResponse$inboundSchema, {
+                key: "HRISDepartmentsPaginated",
             })
             .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
             .match(response, { extraFields: responseFields$ });
