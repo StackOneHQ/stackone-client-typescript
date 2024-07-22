@@ -156,6 +156,7 @@ run();
 * [downloadEmployeeDocument](docs/sdks/hris/README.md#downloademployeedocument) - Download Employee Document
 * [getBenefit](docs/sdks/hris/README.md#getbenefit) - Get Benefit
 * [getCompany](docs/sdks/hris/README.md#getcompany) - Get Company
+* [getDepartmentGroup](docs/sdks/hris/README.md#getdepartmentgroup) - Get Department Group
 * [getEmployee](docs/sdks/hris/README.md#getemployee) - Get Employee
 * [getEmployeeDocument](docs/sdks/hris/README.md#getemployeedocument) - Get Employee Document
 * [getEmployeeDocumentCategory](docs/sdks/hris/README.md#getemployeedocumentcategory) - Get Employee Document Category
@@ -168,6 +169,7 @@ run();
 * [getTimeOffRequest](docs/sdks/hris/README.md#gettimeoffrequest) - Get time off request
 * [listBenefits](docs/sdks/hris/README.md#listbenefits) - List benefits
 * [listCompanies](docs/sdks/hris/README.md#listcompanies) - List Companies
+* [listDepartmentGroups](docs/sdks/hris/README.md#listdepartmentgroups) - List Department Groups
 * [listEmployeeCategories](docs/sdks/hris/README.md#listemployeecategories) - List Employee Document Categories
 * [listEmployeeDocuments](docs/sdks/hris/README.md#listemployeedocuments) - List Employee Documents
 * [listEmployeeTimeOffRequests](docs/sdks/hris/README.md#listemployeetimeoffrequests) - List Employee Time Off Requests
@@ -204,20 +206,25 @@ run();
 * [listCategories](docs/sdks/lms/README.md#listcategories) - List Categories
 * [listContent](docs/sdks/lms/README.md#listcontent) - List Content
 * [updateContent](docs/sdks/lms/README.md#updatecontent) - Update Content
+* [upsertContent](docs/sdks/lms/README.md#upsertcontent) - Upsert Content
 
 ### [marketing](docs/sdks/marketing/README.md)
 
+* [createContentBlock](docs/sdks/marketing/README.md#createcontentblock) - Create Content Block
 * [createEmailTemplate](docs/sdks/marketing/README.md#createemailtemplate) - Create email template
 * [createOmniChannelTemplate](docs/sdks/marketing/README.md#createomnichanneltemplate) - Create omni-channel template
 * [createPushTemplate](docs/sdks/marketing/README.md#createpushtemplate) - Create push template
 * [getCampaign](docs/sdks/marketing/README.md#getcampaign) - Get campaign
+* [getContentBlock](docs/sdks/marketing/README.md#getcontentblock) - Get Content Blocks
 * [getEmailTemplate](docs/sdks/marketing/README.md#getemailtemplate) - Get email template
 * [getOmniChannelTemplate](docs/sdks/marketing/README.md#getomnichanneltemplate) - Get omni-channel template
 * [getPushTemplate](docs/sdks/marketing/README.md#getpushtemplate) - Get push template
 * [listCampaigns](docs/sdks/marketing/README.md#listcampaigns) - List campaigns
+* [listContentBlocks](docs/sdks/marketing/README.md#listcontentblocks) - List Content Blocks
 * [listEmailTemplates](docs/sdks/marketing/README.md#listemailtemplates) - List email templates
 * [listOmniChannelTemplates](docs/sdks/marketing/README.md#listomnichanneltemplates) - List omni-channel templates
 * [listPushTemplates](docs/sdks/marketing/README.md#listpushtemplates) - List push templates
+* [updateContentBlock](docs/sdks/marketing/README.md#updatecontentblock) - Update email template
 * [updateEmailTemplate](docs/sdks/marketing/README.md#updateemailtemplate) - Update email template
 * [updateOmniChannelTemplate](docs/sdks/marketing/README.md#updateomnichanneltemplate) - Update omni-channel template
 * [updatePushTemplate](docs/sdks/marketing/README.md#updatepushtemplate) - Update push template

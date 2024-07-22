@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 7fa83af8-9e8e-4410-b7e2-cf1d0eaf688b
 management:
-  docChecksum: a74b0f0af302fe8b50f41cf7b35e00b9
+  docChecksum: 9d2b833aad9a65768c17767cca3cca4b
   docVersion: 1.0.0
-  speakeasyVersion: 1.335.2
-  generationVersion: 2.372.3
-  releaseVersion: 4.12.1
-  configChecksum: 4375ebe03b761207a42c36f7370dd3b6
+  speakeasyVersion: 1.344.1
+  generationVersion: 2.376.2
+  releaseVersion: 4.12.2
+  configChecksum: cf689de00c7fddbee98c97ae6ebd7007
   repoURL: https://github.com/StackOneHQ/stackone-client-typescript.git
   repoSubDirectory: .
   installationURL: https://github.com/StackOneHQ/stackone-client-typescript
@@ -15,7 +15,7 @@ features:
   typescript:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.5
-    core: 3.11.6
+    core: 3.11.7
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
     downloadStreams: 0.1.1
@@ -27,11 +27,11 @@ features:
     nameOverrides: 2.81.2
     nullables: 0.1.0
     openEnums: 0.1.1
-    pagination: 2.82.5
+    pagination: 2.82.6
     responseFormat: 0.2.3
     retries: 2.83.0
     sdkHooks: 0.1.0
-    unions: 2.85.5
+    unions: 2.85.6
 generatedFiles:
   - src/sdk/accounts.ts
   - src/sdk/connectsessions.ts
@@ -137,6 +137,7 @@ generatedFiles:
   - src/sdk/models/operations/hrisdownloademployeedocument.ts
   - src/sdk/models/operations/hrisgetbenefit.ts
   - src/sdk/models/operations/hrisgetcompany.ts
+  - src/sdk/models/operations/hrisgetdepartmentgroup.ts
   - src/sdk/models/operations/hrisgetemployee.ts
   - src/sdk/models/operations/hrisgetemployeedocument.ts
   - src/sdk/models/operations/hrisgetemployeedocumentcategory.ts
@@ -149,6 +150,7 @@ generatedFiles:
   - src/sdk/models/operations/hrisgettimeoffrequest.ts
   - src/sdk/models/operations/hrislistbenefits.ts
   - src/sdk/models/operations/hrislistcompanies.ts
+  - src/sdk/models/operations/hrislistdepartmentgroups.ts
   - src/sdk/models/operations/hrislistemployeecategories.ts
   - src/sdk/models/operations/hrislistemployeedocuments.ts
   - src/sdk/models/operations/hrislistemployeetimeoffrequests.ts
@@ -179,17 +181,22 @@ generatedFiles:
   - src/sdk/models/operations/lmslistcategories.ts
   - src/sdk/models/operations/lmslistcontent.ts
   - src/sdk/models/operations/lmsupdatecontent.ts
+  - src/sdk/models/operations/lmsupsertcontent.ts
+  - src/sdk/models/operations/marketingcreatecontentblock.ts
   - src/sdk/models/operations/marketingcreateemailtemplate.ts
   - src/sdk/models/operations/marketingcreateomnichanneltemplate.ts
   - src/sdk/models/operations/marketingcreatepushtemplate.ts
   - src/sdk/models/operations/marketinggetcampaign.ts
+  - src/sdk/models/operations/marketinggetcontentblock.ts
   - src/sdk/models/operations/marketinggetemailtemplate.ts
   - src/sdk/models/operations/marketinggetomnichanneltemplate.ts
   - src/sdk/models/operations/marketinggetpushtemplate.ts
   - src/sdk/models/operations/marketinglistcampaigns.ts
+  - src/sdk/models/operations/marketinglistcontentblocks.ts
   - src/sdk/models/operations/marketinglistemailtemplates.ts
   - src/sdk/models/operations/marketinglistomnichanneltemplates.ts
   - src/sdk/models/operations/marketinglistpushtemplates.ts
+  - src/sdk/models/operations/marketingupdatecontentblock.ts
   - src/sdk/models/operations/marketingupdateemailtemplate.ts
   - src/sdk/models/operations/marketingupdateomnichanneltemplate.ts
   - src/sdk/models/operations/marketingupdatepushtemplate.ts
@@ -306,6 +313,8 @@ generatedFiles:
   - src/sdk/models/shared/hrisbenefitresult.ts
   - src/sdk/models/shared/companyresult.ts
   - src/sdk/models/shared/company.ts
+  - src/sdk/models/shared/hrisdepartmentsresult.ts
+  - src/sdk/models/shared/hrisdepartment.ts
   - src/sdk/models/shared/employeeresult.ts
   - src/sdk/models/shared/employee.ts
   - src/sdk/models/shared/hrisgroup.ts
@@ -324,6 +333,7 @@ generatedFiles:
   - src/sdk/models/shared/hrislocation.ts
   - src/sdk/models/shared/hrisbenefitspaginated.ts
   - src/sdk/models/shared/companiespaginated.ts
+  - src/sdk/models/shared/hrisdepartmentspaginated.ts
   - src/sdk/models/shared/referencepaginated.ts
   - src/sdk/models/shared/hrisdocumentspaginated.ts
   - src/sdk/models/shared/timeoffpaginated.ts
@@ -357,6 +367,8 @@ generatedFiles:
   - src/sdk/models/shared/contentresult.ts
   - src/sdk/models/shared/categoriespaginated.ts
   - src/sdk/models/shared/contentpaginated.ts
+  - src/sdk/models/shared/lmsupsertcontentrequestdto.ts
+  - src/sdk/models/shared/marketingcreatecontentblocksrequestdto.ts
   - src/sdk/models/shared/marketingcreateemailtemplaterequestdto.ts
   - src/sdk/models/shared/emailmessages.ts
   - src/sdk/models/shared/marketingcreatetemplaterequestdto.ts
@@ -366,6 +378,8 @@ generatedFiles:
   - src/sdk/models/shared/campaignresult.ts
   - src/sdk/models/shared/campaign.ts
   - src/sdk/models/shared/channelsenum.ts
+  - src/sdk/models/shared/contentblockspaginated.ts
+  - src/sdk/models/shared/contentblock.ts
   - src/sdk/models/shared/templateresult.ts
   - src/sdk/models/shared/template.ts
   - src/sdk/models/shared/campaignspaginated.ts
@@ -525,6 +539,8 @@ generatedFiles:
   - docs/sdk/models/operations/hrisgetbenefitresponse.md
   - docs/sdk/models/operations/hrisgetcompanyrequest.md
   - docs/sdk/models/operations/hrisgetcompanyresponse.md
+  - docs/sdk/models/operations/hrisgetdepartmentgrouprequest.md
+  - docs/sdk/models/operations/hrisgetdepartmentgroupresponse.md
   - docs/sdk/models/operations/hrisgetemployeerequest.md
   - docs/sdk/models/operations/hrisgetemployeeresponse.md
   - docs/sdk/models/operations/hrisgetemployeedocumentrequest.md
@@ -551,6 +567,9 @@ generatedFiles:
   - docs/sdk/models/operations/hrislistcompaniesqueryparamfilter.md
   - docs/sdk/models/operations/hrislistcompaniesrequest.md
   - docs/sdk/models/operations/hrislistcompaniesresponse.md
+  - docs/sdk/models/operations/hrislistdepartmentgroupsqueryparamfilter.md
+  - docs/sdk/models/operations/hrislistdepartmentgroupsrequest.md
+  - docs/sdk/models/operations/hrislistdepartmentgroupsresponse.md
   - docs/sdk/models/operations/hrislistemployeecategoriesqueryparamfilter.md
   - docs/sdk/models/operations/hrislistemployeecategoriesrequest.md
   - docs/sdk/models/operations/hrislistemployeecategoriesresponse.md
@@ -627,6 +646,10 @@ generatedFiles:
   - docs/sdk/models/operations/lmslistcontentresponse.md
   - docs/sdk/models/operations/lmsupdatecontentrequest.md
   - docs/sdk/models/operations/lmsupdatecontentresponse.md
+  - docs/sdk/models/operations/lmsupsertcontentrequest.md
+  - docs/sdk/models/operations/lmsupsertcontentresponse.md
+  - docs/sdk/models/operations/marketingcreatecontentblockrequest.md
+  - docs/sdk/models/operations/marketingcreatecontentblockresponse.md
   - docs/sdk/models/operations/marketingcreateemailtemplaterequest.md
   - docs/sdk/models/operations/marketingcreateemailtemplateresponse.md
   - docs/sdk/models/operations/marketingcreateomnichanneltemplaterequest.md
@@ -635,6 +658,8 @@ generatedFiles:
   - docs/sdk/models/operations/marketingcreatepushtemplateresponse.md
   - docs/sdk/models/operations/marketinggetcampaignrequest.md
   - docs/sdk/models/operations/marketinggetcampaignresponse.md
+  - docs/sdk/models/operations/marketinggetcontentblockrequest.md
+  - docs/sdk/models/operations/marketinggetcontentblockresponse.md
   - docs/sdk/models/operations/marketinggetemailtemplaterequest.md
   - docs/sdk/models/operations/marketinggetemailtemplateresponse.md
   - docs/sdk/models/operations/marketinggetomnichanneltemplaterequest.md
@@ -644,6 +669,9 @@ generatedFiles:
   - docs/sdk/models/operations/marketinglistcampaignsqueryparamfilter.md
   - docs/sdk/models/operations/marketinglistcampaignsrequest.md
   - docs/sdk/models/operations/marketinglistcampaignsresponse.md
+  - docs/sdk/models/operations/marketinglistcontentblocksqueryparamfilter.md
+  - docs/sdk/models/operations/marketinglistcontentblocksrequest.md
+  - docs/sdk/models/operations/marketinglistcontentblocksresponse.md
   - docs/sdk/models/operations/marketinglistemailtemplatesqueryparamfilter.md
   - docs/sdk/models/operations/marketinglistemailtemplatesrequest.md
   - docs/sdk/models/operations/marketinglistemailtemplatesresponse.md
@@ -653,6 +681,8 @@ generatedFiles:
   - docs/sdk/models/operations/marketinglistpushtemplatesqueryparamfilter.md
   - docs/sdk/models/operations/marketinglistpushtemplatesrequest.md
   - docs/sdk/models/operations/marketinglistpushtemplatesresponse.md
+  - docs/sdk/models/operations/marketingupdatecontentblockrequest.md
+  - docs/sdk/models/operations/marketingupdatecontentblockresponse.md
   - docs/sdk/models/operations/marketingupdateemailtemplaterequest.md
   - docs/sdk/models/operations/marketingupdateemailtemplateresponse.md
   - docs/sdk/models/operations/marketingupdateomnichanneltemplaterequest.md
@@ -1052,6 +1082,12 @@ generatedFiles:
   - docs/sdk/models/shared/hrisbenefitresult.md
   - docs/sdk/models/shared/companyresult.md
   - docs/sdk/models/shared/company.md
+  - docs/sdk/models/shared/hrisdepartmentsresult.md
+  - docs/sdk/models/shared/hrisdepartment4.md
+  - docs/sdk/models/shared/hrisdepartmentsourcevalue.md
+  - docs/sdk/models/shared/hrisdepartmentvalue.md
+  - docs/sdk/models/shared/hrisdepartmenttype.md
+  - docs/sdk/models/shared/hrisdepartment.md
   - docs/sdk/models/shared/employeeresult.md
   - docs/sdk/models/shared/avatar.md
   - docs/sdk/models/shared/employeecompany.md
@@ -1178,6 +1214,7 @@ generatedFiles:
   - docs/sdk/models/shared/hrislocation.md
   - docs/sdk/models/shared/hrisbenefitspaginated.md
   - docs/sdk/models/shared/companiespaginated.md
+  - docs/sdk/models/shared/hrisdepartmentspaginated.md
   - docs/sdk/models/shared/referencepaginated.md
   - docs/sdk/models/shared/hrisdocumentspaginated.md
   - docs/sdk/models/shared/timeoffpaginated.md
@@ -1269,6 +1306,14 @@ generatedFiles:
   - docs/sdk/models/shared/contentresult.md
   - docs/sdk/models/shared/categoriespaginated.md
   - docs/sdk/models/shared/contentpaginated.md
+  - docs/sdk/models/shared/lmsupsertcontentrequestdto2.md
+  - docs/sdk/models/shared/lmsupsertcontentrequestdtoactive.md
+  - docs/sdk/models/shared/lmsupsertcontentrequestdto4.md
+  - docs/sdk/models/shared/lmsupsertcontentrequestdtosourcevalue.md
+  - docs/sdk/models/shared/lmsupsertcontentrequestdtovalue.md
+  - docs/sdk/models/shared/lmsupsertcontentrequestdtocontenttype.md
+  - docs/sdk/models/shared/lmsupsertcontentrequestdto.md
+  - docs/sdk/models/shared/marketingcreatecontentblocksrequestdto.md
   - docs/sdk/models/shared/marketingcreateemailtemplaterequestdto.md
   - docs/sdk/models/shared/messagecontent.md
   - docs/sdk/models/shared/emailmessages4.md
@@ -1311,6 +1356,16 @@ generatedFiles:
   - docs/sdk/models/shared/sourcevalue.md
   - docs/sdk/models/shared/channelsenumvalue.md
   - docs/sdk/models/shared/channelsenum.md
+  - docs/sdk/models/shared/contentblockspaginated.md
+  - docs/sdk/models/shared/contentblock4.md
+  - docs/sdk/models/shared/contentblocksourcevalue.md
+  - docs/sdk/models/shared/contentblockvalue.md
+  - docs/sdk/models/shared/contentblockstatus.md
+  - docs/sdk/models/shared/contentblockschemas4.md
+  - docs/sdk/models/shared/contentblockschemassourcevalue.md
+  - docs/sdk/models/shared/contentblockschemasvalue.md
+  - docs/sdk/models/shared/contentblocktype.md
+  - docs/sdk/models/shared/contentblock.md
   - docs/sdk/models/shared/templateresult.md
   - docs/sdk/models/shared/template.md
   - docs/sdk/models/shared/campaignspaginated.md
@@ -1335,3 +1390,4 @@ generatedFiles:
   - src/hooks/hooks.ts
   - src/hooks/types.ts
   - src/hooks/index.ts
+  - CONTRIBUTING.md

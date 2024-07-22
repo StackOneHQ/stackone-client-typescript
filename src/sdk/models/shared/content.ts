@@ -83,7 +83,7 @@ export type Content = {
     /**
      * The external ID associated with this content
      */
-    externalId?: string | null | undefined;
+    externalReference?: string | null | undefined;
     /**
      * The ID associated with this content
      */
@@ -100,10 +100,6 @@ export type Content = {
      * Provider's unique identifier of the parent course ID associated with this content
      */
     remoteCourseIds?: Array<string> | null | undefined;
-    /**
-     * Provider's unique identifier of the external ID associated with this content
-     */
-    remoteExternalId?: string | null | undefined;
     /**
      * Provider's unique identifier
      */
@@ -309,12 +305,11 @@ export const Content$inboundSchema: z.ZodType<Content, z.ZodTypeDef, unknown> = 
         cover_url: z.nullable(z.string()).optional(),
         description: z.nullable(z.string()).optional(),
         duration: z.nullable(z.string()).optional(),
-        external_id: z.nullable(z.string()).optional(),
+        external_reference: z.nullable(z.string()).optional(),
         id: z.nullable(z.string()).optional(),
         languages: z.nullable(z.array(ContentLanguageEnum$inboundSchema)).optional(),
         order: z.nullable(z.number()).optional(),
         remote_course_ids: z.nullable(z.array(z.string())).optional(),
-        remote_external_id: z.nullable(z.string()).optional(),
         remote_id: z.nullable(z.string()).optional(),
         title: z.nullable(z.string()).optional(),
     })
@@ -324,9 +319,8 @@ export const Content$inboundSchema: z.ZodType<Content, z.ZodTypeDef, unknown> = 
             content_url: "contentUrl",
             course_ids: "courseIds",
             cover_url: "coverUrl",
-            external_id: "externalId",
+            external_reference: "externalReference",
             remote_course_ids: "remoteCourseIds",
-            remote_external_id: "remoteExternalId",
             remote_id: "remoteId",
         });
     });
@@ -341,12 +335,11 @@ export type Content$Outbound = {
     cover_url?: string | null | undefined;
     description?: string | null | undefined;
     duration?: string | null | undefined;
-    external_id?: string | null | undefined;
+    external_reference?: string | null | undefined;
     id?: string | null | undefined;
     languages?: Array<ContentLanguageEnum$Outbound> | null | undefined;
     order?: number | null | undefined;
     remote_course_ids?: Array<string> | null | undefined;
-    remote_external_id?: string | null | undefined;
     remote_id?: string | null | undefined;
     title?: string | null | undefined;
 };
@@ -362,12 +355,11 @@ export const Content$outboundSchema: z.ZodType<Content$Outbound, z.ZodTypeDef, C
         coverUrl: z.nullable(z.string()).optional(),
         description: z.nullable(z.string()).optional(),
         duration: z.nullable(z.string()).optional(),
-        externalId: z.nullable(z.string()).optional(),
+        externalReference: z.nullable(z.string()).optional(),
         id: z.nullable(z.string()).optional(),
         languages: z.nullable(z.array(ContentLanguageEnum$outboundSchema)).optional(),
         order: z.nullable(z.number()).optional(),
         remoteCourseIds: z.nullable(z.array(z.string())).optional(),
-        remoteExternalId: z.nullable(z.string()).optional(),
         remoteId: z.nullable(z.string()).optional(),
         title: z.nullable(z.string()).optional(),
     })
@@ -377,9 +369,8 @@ export const Content$outboundSchema: z.ZodType<Content$Outbound, z.ZodTypeDef, C
             contentUrl: "content_url",
             courseIds: "course_ids",
             coverUrl: "cover_url",
-            externalId: "external_id",
+            externalReference: "external_reference",
             remoteCourseIds: "remote_course_ids",
-            remoteExternalId: "remote_external_id",
             remoteId: "remote_id",
         });
     });
