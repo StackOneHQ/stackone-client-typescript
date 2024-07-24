@@ -4,6 +4,12 @@
 
 import { remap as remap$ } from "../../../lib/primitives.js";
 import {
+    CandidateCustomFields,
+    CandidateCustomFields$inboundSchema,
+    CandidateCustomFields$Outbound,
+    CandidateCustomFields$outboundSchema,
+} from "./candidatecustomfields.js";
+import {
     SocialLink,
     SocialLink$inboundSchema,
     SocialLink$Outbound,
@@ -20,6 +26,10 @@ export type AtsCreateCandidateRequestDto = {
      * Candidate country
      */
     country?: string | null | undefined;
+    /**
+     * The candidate custom fields
+     */
+    customFields?: Array<CandidateCustomFields> | null | undefined;
     /**
      * Candidate email
      */
@@ -67,6 +77,7 @@ export const AtsCreateCandidateRequestDto$inboundSchema: z.ZodType<
     .object({
         company: z.nullable(z.string()).optional(),
         country: z.nullable(z.string()).optional(),
+        custom_fields: z.nullable(z.array(CandidateCustomFields$inboundSchema)).optional(),
         email: z.nullable(z.string()).optional(),
         first_name: z.nullable(z.string()).optional(),
         hired_at: z
@@ -86,6 +97,7 @@ export const AtsCreateCandidateRequestDto$inboundSchema: z.ZodType<
     })
     .transform((v) => {
         return remap$(v, {
+            custom_fields: "customFields",
             first_name: "firstName",
             hired_at: "hiredAt",
             last_name: "lastName",
@@ -98,6 +110,7 @@ export const AtsCreateCandidateRequestDto$inboundSchema: z.ZodType<
 export type AtsCreateCandidateRequestDto$Outbound = {
     company?: string | null | undefined;
     country?: string | null | undefined;
+    custom_fields?: Array<CandidateCustomFields$Outbound> | null | undefined;
     email?: string | null | undefined;
     first_name?: string | null | undefined;
     hired_at?: string | null | undefined;
@@ -118,6 +131,7 @@ export const AtsCreateCandidateRequestDto$outboundSchema: z.ZodType<
     .object({
         company: z.nullable(z.string()).optional(),
         country: z.nullable(z.string()).optional(),
+        customFields: z.nullable(z.array(CandidateCustomFields$outboundSchema)).optional(),
         email: z.nullable(z.string()).optional(),
         firstName: z.nullable(z.string()).optional(),
         hiredAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
@@ -130,6 +144,7 @@ export const AtsCreateCandidateRequestDto$outboundSchema: z.ZodType<
     })
     .transform((v) => {
         return remap$(v, {
+            customFields: "custom_fields",
             firstName: "first_name",
             hiredAt: "hired_at",
             lastName: "last_name",

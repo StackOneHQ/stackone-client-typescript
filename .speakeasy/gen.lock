@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 7fa83af8-9e8e-4410-b7e2-cf1d0eaf688b
 management:
-  docChecksum: 9d2b833aad9a65768c17767cca3cca4b
+  docChecksum: 8a934b9255de3806ef145c0ac9e4c540
   docVersion: 1.0.0
-  speakeasyVersion: 1.344.1
-  generationVersion: 2.376.2
-  releaseVersion: 4.12.2
-  configChecksum: cf689de00c7fddbee98c97ae6ebd7007
+  speakeasyVersion: 1.345.4
+  generationVersion: 2.378.3
+  releaseVersion: 4.12.3
+  configChecksum: e00eac91d9b6629674dd34bce32816aa
   repoURL: https://github.com/StackOneHQ/stackone-client-typescript.git
   repoSubDirectory: .
   installationURL: https://github.com/StackOneHQ/stackone-client-typescript
@@ -15,7 +15,7 @@ features:
   typescript:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.5
-    core: 3.11.7
+    core: 3.11.9
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
     downloadStreams: 0.1.1
@@ -186,20 +186,24 @@ generatedFiles:
   - src/sdk/models/operations/marketingcreateemailtemplate.ts
   - src/sdk/models/operations/marketingcreateomnichanneltemplate.ts
   - src/sdk/models/operations/marketingcreatepushtemplate.ts
+  - src/sdk/models/operations/marketingcreatesmstemplate.ts
   - src/sdk/models/operations/marketinggetcampaign.ts
   - src/sdk/models/operations/marketinggetcontentblock.ts
   - src/sdk/models/operations/marketinggetemailtemplate.ts
   - src/sdk/models/operations/marketinggetomnichanneltemplate.ts
   - src/sdk/models/operations/marketinggetpushtemplate.ts
+  - src/sdk/models/operations/marketinggetsmstemplate.ts
   - src/sdk/models/operations/marketinglistcampaigns.ts
   - src/sdk/models/operations/marketinglistcontentblocks.ts
   - src/sdk/models/operations/marketinglistemailtemplates.ts
   - src/sdk/models/operations/marketinglistomnichanneltemplates.ts
   - src/sdk/models/operations/marketinglistpushtemplates.ts
+  - src/sdk/models/operations/marketinglistsmstemplates.ts
   - src/sdk/models/operations/marketingupdatecontentblock.ts
   - src/sdk/models/operations/marketingupdateemailtemplate.ts
   - src/sdk/models/operations/marketingupdateomnichanneltemplate.ts
   - src/sdk/models/operations/marketingupdatepushtemplate.ts
+  - src/sdk/models/operations/marketingupdatesmstemplate.ts
   - src/sdk/models/operations/stackoneproxyrequest.ts
   - src/sdk/models/shared/linkedaccount.ts
   - src/sdk/models/shared/linkedaccountmeta.ts
@@ -215,6 +219,7 @@ generatedFiles:
   - src/sdk/models/shared/questionnaire.ts
   - src/sdk/models/shared/answer.ts
   - src/sdk/models/shared/sociallink.ts
+  - src/sdk/models/shared/candidatecustomfields.ts
   - src/sdk/models/shared/atscreatecandidaterequestdto.ts
   - src/sdk/models/shared/atscreatenotesrequestdto.ts
   - src/sdk/models/shared/notecontentapimodel.ts
@@ -243,7 +248,6 @@ generatedFiles:
   - src/sdk/models/shared/assessmentspackages.ts
   - src/sdk/models/shared/candidateresult.ts
   - src/sdk/models/shared/candidate.ts
-  - src/sdk/models/shared/candidatecustomfields.ts
   - src/sdk/models/shared/noteresult.ts
   - src/sdk/models/shared/note.ts
   - src/sdk/models/shared/departmentresult.ts
@@ -375,6 +379,8 @@ generatedFiles:
   - src/sdk/models/shared/message.ts
   - src/sdk/models/shared/marketingcreatepushtemplaterequestdto.ts
   - src/sdk/models/shared/pushmessages.ts
+  - src/sdk/models/shared/marketingcreatesmstemplaterequestdto.ts
+  - src/sdk/models/shared/smsmessages.ts
   - src/sdk/models/shared/campaignresult.ts
   - src/sdk/models/shared/campaign.ts
   - src/sdk/models/shared/channelsenum.ts
@@ -656,6 +662,8 @@ generatedFiles:
   - docs/sdk/models/operations/marketingcreateomnichanneltemplateresponse.md
   - docs/sdk/models/operations/marketingcreatepushtemplaterequest.md
   - docs/sdk/models/operations/marketingcreatepushtemplateresponse.md
+  - docs/sdk/models/operations/marketingcreatesmstemplaterequest.md
+  - docs/sdk/models/operations/marketingcreatesmstemplateresponse.md
   - docs/sdk/models/operations/marketinggetcampaignrequest.md
   - docs/sdk/models/operations/marketinggetcampaignresponse.md
   - docs/sdk/models/operations/marketinggetcontentblockrequest.md
@@ -666,6 +674,8 @@ generatedFiles:
   - docs/sdk/models/operations/marketinggetomnichanneltemplateresponse.md
   - docs/sdk/models/operations/marketinggetpushtemplaterequest.md
   - docs/sdk/models/operations/marketinggetpushtemplateresponse.md
+  - docs/sdk/models/operations/marketinggetsmstemplaterequest.md
+  - docs/sdk/models/operations/marketinggetsmstemplateresponse.md
   - docs/sdk/models/operations/marketinglistcampaignsqueryparamfilter.md
   - docs/sdk/models/operations/marketinglistcampaignsrequest.md
   - docs/sdk/models/operations/marketinglistcampaignsresponse.md
@@ -681,6 +691,9 @@ generatedFiles:
   - docs/sdk/models/operations/marketinglistpushtemplatesqueryparamfilter.md
   - docs/sdk/models/operations/marketinglistpushtemplatesrequest.md
   - docs/sdk/models/operations/marketinglistpushtemplatesresponse.md
+  - docs/sdk/models/operations/marketinglistsmstemplatesqueryparamfilter.md
+  - docs/sdk/models/operations/marketinglistsmstemplatesrequest.md
+  - docs/sdk/models/operations/marketinglistsmstemplatesresponse.md
   - docs/sdk/models/operations/marketingupdatecontentblockrequest.md
   - docs/sdk/models/operations/marketingupdatecontentblockresponse.md
   - docs/sdk/models/operations/marketingupdateemailtemplaterequest.md
@@ -689,6 +702,8 @@ generatedFiles:
   - docs/sdk/models/operations/marketingupdateomnichanneltemplateresponse.md
   - docs/sdk/models/operations/marketingupdatepushtemplaterequest.md
   - docs/sdk/models/operations/marketingupdatepushtemplateresponse.md
+  - docs/sdk/models/operations/marketingupdatesmstemplaterequest.md
+  - docs/sdk/models/operations/marketingupdatesmstemplateresponse.md
   - docs/sdk/models/operations/stackoneproxyrequestrequest.md
   - docs/sdk/models/operations/stackoneproxyrequestresponse.md
   - docs/sdk/models/shared/credentials.md
@@ -726,6 +741,15 @@ generatedFiles:
   - docs/sdk/models/shared/type.md
   - docs/sdk/models/shared/answer.md
   - docs/sdk/models/shared/sociallink.md
+  - docs/sdk/models/shared/four.md
+  - docs/sdk/models/shared/options.md
+  - docs/sdk/models/shared/candidatecustomfieldsschemas4.md
+  - docs/sdk/models/shared/candidatecustomfieldssourcevalue.md
+  - docs/sdk/models/shared/candidatecustomfieldsvalue.md
+  - docs/sdk/models/shared/candidatecustomfieldstype.md
+  - docs/sdk/models/shared/candidatecustomfields4.md
+  - docs/sdk/models/shared/value.md
+  - docs/sdk/models/shared/candidatecustomfields.md
   - docs/sdk/models/shared/atscreatecandidaterequestdto.md
   - docs/sdk/models/shared/atscreatenotesrequestdto4.md
   - docs/sdk/models/shared/atscreatenotesrequestdtosourcevalue.md
@@ -810,15 +834,6 @@ generatedFiles:
   - docs/sdk/models/shared/assessmentspackages.md
   - docs/sdk/models/shared/candidateresult.md
   - docs/sdk/models/shared/candidate.md
-  - docs/sdk/models/shared/four.md
-  - docs/sdk/models/shared/options.md
-  - docs/sdk/models/shared/candidatecustomfieldsschemas4.md
-  - docs/sdk/models/shared/candidatecustomfieldssourcevalue.md
-  - docs/sdk/models/shared/candidatecustomfieldsvalue.md
-  - docs/sdk/models/shared/candidatecustomfieldstype.md
-  - docs/sdk/models/shared/candidatecustomfields4.md
-  - docs/sdk/models/shared/value.md
-  - docs/sdk/models/shared/candidatecustomfields.md
   - docs/sdk/models/shared/noteresult.md
   - docs/sdk/models/shared/note4.md
   - docs/sdk/models/shared/notesourcevalue.md
@@ -1338,6 +1353,13 @@ generatedFiles:
   - docs/sdk/models/shared/pushmessagesvalue.md
   - docs/sdk/models/shared/pushmessagesmessagetype.md
   - docs/sdk/models/shared/pushmessages.md
+  - docs/sdk/models/shared/marketingcreatesmstemplaterequestdto.md
+  - docs/sdk/models/shared/smsmessagesmessagecontent.md
+  - docs/sdk/models/shared/smsmessages4.md
+  - docs/sdk/models/shared/smsmessagessourcevalue.md
+  - docs/sdk/models/shared/smsmessagesvalue.md
+  - docs/sdk/models/shared/smsmessagesmessagetype.md
+  - docs/sdk/models/shared/smsmessages.md
   - docs/sdk/models/shared/campaignresult.md
   - docs/sdk/models/shared/two.md
   - docs/sdk/models/shared/archived.md

@@ -207,6 +207,8 @@ export class Marketing extends ClientSDK {
 
     /**
      * Create omni-channel template
+     *
+     * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     async createOmniChannelTemplate(
         request: operations.MarketingCreateOmniChannelTemplateRequest,
@@ -361,6 +363,87 @@ export class Marketing extends ClientSDK {
 
         const [result$] = await this.matcher<operations.MarketingCreatePushTemplateResponse>()
             .json(201, operations.MarketingCreatePushTemplateResponse$inboundSchema, {
+                key: "CreateResult",
+            })
+            .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
+            .match(response, { extraFields: responseFields$ });
+
+        return result$;
+    }
+
+    /**
+     * Create sms template
+     */
+    async createSmsTemplate(
+        request: operations.MarketingCreateSmsTemplateRequest,
+        options?: RequestOptions
+    ): Promise<operations.MarketingCreateSmsTemplateResponse> {
+        const input$ = request;
+
+        const payload$ = schemas$.parse(
+            input$,
+            (value$) => operations.MarketingCreateSmsTemplateRequest$outboundSchema.parse(value$),
+            "Input validation failed"
+        );
+        const body$ = encodeJSON$("body", payload$.MarketingCreateSmsTemplateRequestDto, {
+            explode: true,
+        });
+
+        const path$ = this.templateURLComponent("/unified/marketing/templates/sms")();
+
+        const query$ = "";
+
+        const headers$ = new Headers({
+            "Content-Type": "application/json",
+            Accept: "application/json",
+            "x-account-id": encodeSimple$("x-account-id", payload$["x-account-id"], {
+                explode: false,
+                charEncoding: "none",
+            }),
+        });
+
+        const security$ =
+            typeof this.options$.security === "function"
+                ? await this.options$.security()
+                : this.options$.security;
+
+        const context = {
+            operationID: "marketing_create_sms_template",
+            oAuth2Scopes: [],
+            securitySource: this.options$.security,
+        };
+        const securitySettings$ = this.resolveGlobalSecurity(security$);
+
+        const request$ = this.createRequest$(
+            context,
+            {
+                security: securitySettings$,
+                method: "POST",
+                path: path$,
+                headers: headers$,
+                query: query$,
+                body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
+            },
+            options
+        );
+
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
+        });
+
+        const responseFields$ = {
+            ContentType: response.headers.get("content-type") ?? "application/octet-stream",
+            StatusCode: response.status,
+            RawResponse: response,
+            Headers: {},
+        };
+
+        const [result$] = await this.matcher<operations.MarketingCreateSmsTemplateResponse>()
+            .json(201, operations.MarketingCreateSmsTemplateResponse$inboundSchema, {
                 key: "CreateResult",
             })
             .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
@@ -642,6 +725,8 @@ export class Marketing extends ClientSDK {
 
     /**
      * Get omni-channel template
+     *
+     * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     async getOmniChannelTemplate(
         request: operations.MarketingGetOmniChannelTemplateRequest,
@@ -815,6 +900,97 @@ export class Marketing extends ClientSDK {
 
         const [result$] = await this.matcher<operations.MarketingGetPushTemplateResponse>()
             .json(200, operations.MarketingGetPushTemplateResponse$inboundSchema, {
+                key: "TemplateResult",
+            })
+            .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
+            .match(response, { extraFields: responseFields$ });
+
+        return result$;
+    }
+
+    /**
+     * Get sms template
+     */
+    async getSmsTemplate(
+        request: operations.MarketingGetSmsTemplateRequest,
+        options?: RequestOptions
+    ): Promise<operations.MarketingGetSmsTemplateResponse> {
+        const input$ = request;
+
+        const payload$ = schemas$.parse(
+            input$,
+            (value$) => operations.MarketingGetSmsTemplateRequest$outboundSchema.parse(value$),
+            "Input validation failed"
+        );
+        const body$ = null;
+
+        const pathParams$ = {
+            id: encodeSimple$("id", payload$.id, { explode: false, charEncoding: "percent" }),
+        };
+        const path$ = this.templateURLComponent("/unified/marketing/templates/sms/{id}")(
+            pathParams$
+        );
+
+        const query$ = queryJoin$(
+            encodeDeepObjectQuery$({
+                proxy: payload$.proxy,
+            }),
+            encodeFormQuery$({
+                fields: payload$.fields,
+                raw: payload$.raw,
+            })
+        );
+
+        const headers$ = new Headers({
+            Accept: "application/json",
+            "x-account-id": encodeSimple$("x-account-id", payload$["x-account-id"], {
+                explode: false,
+                charEncoding: "none",
+            }),
+        });
+
+        const security$ =
+            typeof this.options$.security === "function"
+                ? await this.options$.security()
+                : this.options$.security;
+
+        const context = {
+            operationID: "marketing_get_sms_template",
+            oAuth2Scopes: [],
+            securitySource: this.options$.security,
+        };
+        const securitySettings$ = this.resolveGlobalSecurity(security$);
+
+        const request$ = this.createRequest$(
+            context,
+            {
+                security: securitySettings$,
+                method: "GET",
+                path: path$,
+                headers: headers$,
+                query: query$,
+                body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
+            },
+            options
+        );
+
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
+        });
+
+        const responseFields$ = {
+            ContentType: response.headers.get("content-type") ?? "application/octet-stream",
+            StatusCode: response.status,
+            RawResponse: response,
+            Headers: {},
+        };
+
+        const [result$] = await this.matcher<operations.MarketingGetSmsTemplateResponse>()
+            .json(200, operations.MarketingGetSmsTemplateResponse$inboundSchema, {
                 key: "TemplateResult",
             })
             .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
@@ -1098,6 +1274,8 @@ export class Marketing extends ClientSDK {
 
     /**
      * List omni-channel templates
+     *
+     * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     async listOmniChannelTemplates(
         request: operations.MarketingListOmniChannelTemplatesRequest,
@@ -1280,6 +1458,97 @@ export class Marketing extends ClientSDK {
     }
 
     /**
+     * List sms templates
+     */
+    async listSmsTemplates(
+        request: operations.MarketingListSmsTemplatesRequest,
+        options?: RequestOptions
+    ): Promise<operations.MarketingListSmsTemplatesResponse> {
+        const input$ = request;
+
+        const payload$ = schemas$.parse(
+            input$,
+            (value$) => operations.MarketingListSmsTemplatesRequest$outboundSchema.parse(value$),
+            "Input validation failed"
+        );
+        const body$ = null;
+
+        const path$ = this.templateURLComponent("/unified/marketing/templates/sms")();
+
+        const query$ = queryJoin$(
+            encodeDeepObjectQuery$({
+                filter: payload$.filter,
+                proxy: payload$.proxy,
+            }),
+            encodeFormQuery$({
+                fields: payload$.fields,
+                next: payload$.next,
+                page: payload$.page,
+                page_size: payload$.page_size,
+                raw: payload$.raw,
+                updated_after: payload$.updated_after,
+            })
+        );
+
+        const headers$ = new Headers({
+            Accept: "application/json",
+            "x-account-id": encodeSimple$("x-account-id", payload$["x-account-id"], {
+                explode: false,
+                charEncoding: "none",
+            }),
+        });
+
+        const security$ =
+            typeof this.options$.security === "function"
+                ? await this.options$.security()
+                : this.options$.security;
+
+        const context = {
+            operationID: "marketing_list_sms_templates",
+            oAuth2Scopes: [],
+            securitySource: this.options$.security,
+        };
+        const securitySettings$ = this.resolveGlobalSecurity(security$);
+
+        const request$ = this.createRequest$(
+            context,
+            {
+                security: securitySettings$,
+                method: "GET",
+                path: path$,
+                headers: headers$,
+                query: query$,
+                body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
+            },
+            options
+        );
+
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
+        });
+
+        const responseFields$ = {
+            ContentType: response.headers.get("content-type") ?? "application/octet-stream",
+            StatusCode: response.status,
+            RawResponse: response,
+            Headers: {},
+        };
+
+        const [result$] = await this.matcher<operations.MarketingListSmsTemplatesResponse>()
+            .json(200, operations.MarketingListSmsTemplatesResponse$inboundSchema, {
+                key: "TemplatesPaginated",
+            })
+            .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
+            .match(response, { extraFields: responseFields$ });
+
+        return result$;
+    }
+
+    /**
      * Update email template
      */
     async updateContentBlock(
@@ -1453,6 +1722,8 @@ export class Marketing extends ClientSDK {
 
     /**
      * Update omni-channel template
+     *
+     * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     async updateOmniChannelTemplate(
         request: operations.MarketingUpdateOmniChannelTemplateRequest,
@@ -1617,6 +1888,92 @@ export class Marketing extends ClientSDK {
 
         const [result$] = await this.matcher<operations.MarketingUpdatePushTemplateResponse>()
             .json(200, operations.MarketingUpdatePushTemplateResponse$inboundSchema, {
+                key: "CreateResult",
+            })
+            .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
+            .match(response, { extraFields: responseFields$ });
+
+        return result$;
+    }
+
+    /**
+     * Update sms template
+     */
+    async updateSmsTemplate(
+        request: operations.MarketingUpdateSmsTemplateRequest,
+        options?: RequestOptions
+    ): Promise<operations.MarketingUpdateSmsTemplateResponse> {
+        const input$ = request;
+
+        const payload$ = schemas$.parse(
+            input$,
+            (value$) => operations.MarketingUpdateSmsTemplateRequest$outboundSchema.parse(value$),
+            "Input validation failed"
+        );
+        const body$ = encodeJSON$("body", payload$.MarketingCreateSmsTemplateRequestDto, {
+            explode: true,
+        });
+
+        const pathParams$ = {
+            id: encodeSimple$("id", payload$.id, { explode: false, charEncoding: "percent" }),
+        };
+        const path$ = this.templateURLComponent("/unified/marketing/templates/sms/{id}")(
+            pathParams$
+        );
+
+        const query$ = "";
+
+        const headers$ = new Headers({
+            "Content-Type": "application/json",
+            Accept: "application/json",
+            "x-account-id": encodeSimple$("x-account-id", payload$["x-account-id"], {
+                explode: false,
+                charEncoding: "none",
+            }),
+        });
+
+        const security$ =
+            typeof this.options$.security === "function"
+                ? await this.options$.security()
+                : this.options$.security;
+
+        const context = {
+            operationID: "marketing_update_sms_template",
+            oAuth2Scopes: [],
+            securitySource: this.options$.security,
+        };
+        const securitySettings$ = this.resolveGlobalSecurity(security$);
+
+        const request$ = this.createRequest$(
+            context,
+            {
+                security: securitySettings$,
+                method: "PATCH",
+                path: path$,
+                headers: headers$,
+                query: query$,
+                body: body$,
+                timeoutMs: options?.timeoutMs || this.options$.timeoutMs || -1,
+            },
+            options
+        );
+
+        const response = await this.do$(request$, {
+            context,
+            errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+            retryConfig: options?.retries || this.options$.retryConfig,
+            retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
+        });
+
+        const responseFields$ = {
+            ContentType: response.headers.get("content-type") ?? "application/octet-stream",
+            StatusCode: response.status,
+            RawResponse: response,
+            Headers: {},
+        };
+
+        const [result$] = await this.matcher<operations.MarketingUpdateSmsTemplateResponse>()
+            .json(200, operations.MarketingUpdateSmsTemplateResponse$inboundSchema, {
                 key: "CreateResult",
             })
             .fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])

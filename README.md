@@ -212,22 +212,26 @@ run();
 
 * [createContentBlock](docs/sdks/marketing/README.md#createcontentblock) - Create Content Block
 * [createEmailTemplate](docs/sdks/marketing/README.md#createemailtemplate) - Create email template
-* [createOmniChannelTemplate](docs/sdks/marketing/README.md#createomnichanneltemplate) - Create omni-channel template
+* [~~createOmniChannelTemplate~~](docs/sdks/marketing/README.md#createomnichanneltemplate) - Create omni-channel template :warning: **Deprecated**
 * [createPushTemplate](docs/sdks/marketing/README.md#createpushtemplate) - Create push template
+* [createSmsTemplate](docs/sdks/marketing/README.md#createsmstemplate) - Create sms template
 * [getCampaign](docs/sdks/marketing/README.md#getcampaign) - Get campaign
 * [getContentBlock](docs/sdks/marketing/README.md#getcontentblock) - Get Content Blocks
 * [getEmailTemplate](docs/sdks/marketing/README.md#getemailtemplate) - Get email template
-* [getOmniChannelTemplate](docs/sdks/marketing/README.md#getomnichanneltemplate) - Get omni-channel template
+* [~~getOmniChannelTemplate~~](docs/sdks/marketing/README.md#getomnichanneltemplate) - Get omni-channel template :warning: **Deprecated**
 * [getPushTemplate](docs/sdks/marketing/README.md#getpushtemplate) - Get push template
+* [getSmsTemplate](docs/sdks/marketing/README.md#getsmstemplate) - Get sms template
 * [listCampaigns](docs/sdks/marketing/README.md#listcampaigns) - List campaigns
 * [listContentBlocks](docs/sdks/marketing/README.md#listcontentblocks) - List Content Blocks
 * [listEmailTemplates](docs/sdks/marketing/README.md#listemailtemplates) - List email templates
-* [listOmniChannelTemplates](docs/sdks/marketing/README.md#listomnichanneltemplates) - List omni-channel templates
+* [~~listOmniChannelTemplates~~](docs/sdks/marketing/README.md#listomnichanneltemplates) - List omni-channel templates :warning: **Deprecated**
 * [listPushTemplates](docs/sdks/marketing/README.md#listpushtemplates) - List push templates
+* [listSmsTemplates](docs/sdks/marketing/README.md#listsmstemplates) - List sms templates
 * [updateContentBlock](docs/sdks/marketing/README.md#updatecontentblock) - Update email template
 * [updateEmailTemplate](docs/sdks/marketing/README.md#updateemailtemplate) - Update email template
-* [updateOmniChannelTemplate](docs/sdks/marketing/README.md#updateomnichanneltemplate) - Update omni-channel template
+* [~~updateOmniChannelTemplate~~](docs/sdks/marketing/README.md#updateomnichanneltemplate) - Update omni-channel template :warning: **Deprecated**
 * [updatePushTemplate](docs/sdks/marketing/README.md#updatepushtemplate) - Update push template
+* [updateSmsTemplate](docs/sdks/marketing/README.md#updatesmstemplate) - Update sms template
 
 ### [proxy](docs/sdks/proxy/README.md)
 
