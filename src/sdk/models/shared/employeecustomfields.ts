@@ -24,7 +24,6 @@ export enum EmployeeCustomFieldsSchemasValue {
     Integer = "integer",
     List = "list",
     Text = "text",
-    UnmappedValue = "unmapped_value",
 }
 export type EmployeeCustomFieldsSchemasValueOpen = OpenEnum<
     typeof EmployeeCustomFieldsSchemasValue

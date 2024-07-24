@@ -5,22 +5,26 @@
 
 * [createContentBlock](#createcontentblock) - Create Content Block
 * [createEmailTemplate](#createemailtemplate) - Create email template
-* [createOmniChannelTemplate](#createomnichanneltemplate) - Create omni-channel template
+* [~~createOmniChannelTemplate~~](#createomnichanneltemplate) - Create omni-channel template :warning: **Deprecated**
 * [createPushTemplate](#createpushtemplate) - Create push template
+* [createSmsTemplate](#createsmstemplate) - Create sms template
 * [getCampaign](#getcampaign) - Get campaign
 * [getContentBlock](#getcontentblock) - Get Content Blocks
 * [getEmailTemplate](#getemailtemplate) - Get email template
-* [getOmniChannelTemplate](#getomnichanneltemplate) - Get omni-channel template
+* [~~getOmniChannelTemplate~~](#getomnichanneltemplate) - Get omni-channel template :warning: **Deprecated**
 * [getPushTemplate](#getpushtemplate) - Get push template
+* [getSmsTemplate](#getsmstemplate) - Get sms template
 * [listCampaigns](#listcampaigns) - List campaigns
 * [listContentBlocks](#listcontentblocks) - List Content Blocks
 * [listEmailTemplates](#listemailtemplates) - List email templates
-* [listOmniChannelTemplates](#listomnichanneltemplates) - List omni-channel templates
+* [~~listOmniChannelTemplates~~](#listomnichanneltemplates) - List omni-channel templates :warning: **Deprecated**
 * [listPushTemplates](#listpushtemplates) - List push templates
+* [listSmsTemplates](#listsmstemplates) - List sms templates
 * [updateContentBlock](#updatecontentblock) - Update email template
 * [updateEmailTemplate](#updateemailtemplate) - Update email template
-* [updateOmniChannelTemplate](#updateomnichanneltemplate) - Update omni-channel template
+* [~~updateOmniChannelTemplate~~](#updateomnichanneltemplate) - Update omni-channel template :warning: **Deprecated**
 * [updatePushTemplate](#updatepushtemplate) - Update push template
+* [updateSmsTemplate](#updatesmstemplate) - Update sms template
 
 ## createContentBlock
 
@@ -197,9 +201,11 @@ run();
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 4xx-5xx         | */*             |
 
-## createOmniChannelTemplate
+## ~~createOmniChannelTemplate~~
 
 Create omni-channel template
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -381,6 +387,98 @@ run();
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 4xx-5xx         | */*             |
 
+## createSmsTemplate
+
+Create sms template
+
+### Example Usage
+
+```typescript
+import { StackOne } from "@stackone/stackone-client-ts";
+
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
+
+async function run() {
+  const result = await stackOne.marketing.createSmsTemplate({
+    marketingCreateSmsTemplateRequestDto: {
+      messages: [
+        {
+          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          messageType: {
+          sourceValue: "Email",
+          },
+          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        },
+      ],
+      passthrough: {
+        "0": "{",
+        "1": "\"",
+        "2": "o",
+        "3": "t",
+        "4": "h",
+        "5": "e",
+        "6": "r",
+        "7": "_",
+        "8": "k",
+        "9": "n",
+        "10": "o",
+        "11": "w",
+        "12": "n",
+        "13": "_",
+        "14": "n",
+        "15": "a",
+        "16": "m",
+        "17": "e",
+        "18": "s",
+        "19": "\"",
+        "20": ":",
+        "21": " ",
+        "22": "\"",
+        "23": "J",
+        "24": "o",
+        "25": "h",
+        "26": "n",
+        "27": " ",
+        "28": "D",
+        "29": "o",
+        "30": "e",
+        "31": "\"",
+        "32": "}",
+      },
+    },
+    xAccountId: "<value>",
+  });
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.MarketingCreateSmsTemplateRequest](../../sdk/models/operations/marketingcreatesmstemplaterequest.md)                                                               | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+
+### Response
+
+**Promise\<[operations.MarketingCreateSmsTemplateResponse](../../sdk/models/operations/marketingcreatesmstemplateresponse.md)\>**
+### Errors
+
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
+
 ## getCampaign
 
 Get campaign
@@ -525,9 +623,11 @@ run();
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 4xx-5xx         | */*             |
 
-## getOmniChannelTemplate
+## ~~getOmniChannelTemplate~~
 
 Get omni-channel template
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -615,6 +715,54 @@ run();
 ### Response
 
 **Promise\<[operations.MarketingGetPushTemplateResponse](../../sdk/models/operations/marketinggetpushtemplateresponse.md)\>**
+### Errors
+
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
+
+## getSmsTemplate
+
+Get sms template
+
+### Example Usage
+
+```typescript
+import { StackOne } from "@stackone/stackone-client-ts";
+
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
+
+async function run() {
+  const result = await stackOne.marketing.getSmsTemplate({
+    fields: "id,remote_id,name,messages,created_at,updated_at,tags",
+    id: "<id>",
+    xAccountId: "<value>",
+  });
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.MarketingGetSmsTemplateRequest](../../sdk/models/operations/marketinggetsmstemplaterequest.md)                                                                     | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+
+### Response
+
+**Promise\<[operations.MarketingGetSmsTemplateResponse](../../sdk/models/operations/marketinggetsmstemplateresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -771,9 +919,11 @@ run();
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 4xx-5xx         | */*             |
 
-## listOmniChannelTemplates
+## ~~listOmniChannelTemplates~~
 
 List omni-channel templates
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -865,6 +1015,56 @@ run();
 ### Response
 
 **Promise\<[operations.MarketingListPushTemplatesResponse](../../sdk/models/operations/marketinglistpushtemplatesresponse.md)\>**
+### Errors
+
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
+
+## listSmsTemplates
+
+List sms templates
+
+### Example Usage
+
+```typescript
+import { StackOne } from "@stackone/stackone-client-ts";
+
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
+
+async function run() {
+  const result = await stackOne.marketing.listSmsTemplates({
+    fields: "id,remote_id,name,messages,created_at,updated_at,tags",
+    filter: {
+      updatedAfter: "2020-01-01T00:00:00.000Z",
+    },
+    xAccountId: "<value>",
+  });
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.MarketingListSmsTemplatesRequest](../../sdk/models/operations/marketinglistsmstemplatesrequest.md)                                                                 | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+
+### Response
+
+**Promise\<[operations.MarketingListSmsTemplatesResponse](../../sdk/models/operations/marketinglistsmstemplatesresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -1048,9 +1248,11 @@ run();
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 4xx-5xx         | */*             |
 
-## updateOmniChannelTemplate
+## ~~updateOmniChannelTemplate~~
 
 Update omni-channel template
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -1228,6 +1430,99 @@ run();
 ### Response
 
 **Promise\<[operations.MarketingUpdatePushTemplateResponse](../../sdk/models/operations/marketingupdatepushtemplateresponse.md)\>**
+### Errors
+
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
+
+## updateSmsTemplate
+
+Update sms template
+
+### Example Usage
+
+```typescript
+import { StackOne } from "@stackone/stackone-client-ts";
+
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
+
+async function run() {
+  const result = await stackOne.marketing.updateSmsTemplate({
+    marketingCreateSmsTemplateRequestDto: {
+      messages: [
+        {
+          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          messageType: {
+          sourceValue: "Email",
+          },
+          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        },
+      ],
+      passthrough: {
+        "0": "{",
+        "1": "\"",
+        "2": "o",
+        "3": "t",
+        "4": "h",
+        "5": "e",
+        "6": "r",
+        "7": "_",
+        "8": "k",
+        "9": "n",
+        "10": "o",
+        "11": "w",
+        "12": "n",
+        "13": "_",
+        "14": "n",
+        "15": "a",
+        "16": "m",
+        "17": "e",
+        "18": "s",
+        "19": "\"",
+        "20": ":",
+        "21": " ",
+        "22": "\"",
+        "23": "J",
+        "24": "o",
+        "25": "h",
+        "26": "n",
+        "27": " ",
+        "28": "D",
+        "29": "o",
+        "30": "e",
+        "31": "\"",
+        "32": "}",
+      },
+    },
+    id: "<id>",
+    xAccountId: "<value>",
+  });
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.MarketingUpdateSmsTemplateRequest](../../sdk/models/operations/marketingupdatesmstemplaterequest.md)                                                               | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+
+### Response
+
+**Promise\<[operations.MarketingUpdateSmsTemplateResponse](../../sdk/models/operations/marketingupdatesmstemplateresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

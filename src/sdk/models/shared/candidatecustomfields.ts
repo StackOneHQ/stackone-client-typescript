@@ -24,7 +24,6 @@ export enum CandidateCustomFieldsValue {
     Integer = "integer",
     List = "list",
     Text = "text",
-    UnmappedValue = "unmapped_value",
 }
 export type CandidateCustomFieldsValueOpen = OpenEnum<typeof CandidateCustomFieldsValue>;
 

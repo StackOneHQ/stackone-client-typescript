@@ -72,6 +72,24 @@ async function run() {
       candidate: {
         company: "Company Inc.",
         country: "United States",
+        customFields: [
+          {
+            description: "The completion status of the employee's training.",
+            id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+            name: "Training Completion Status",
+            options: [
+              "Not Started",
+              "In Progress",
+              "Completed",
+              "Overdue",
+            ],
+            remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+            remoteValueId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
+            type: {},
+          value: "Completed",
+            valueId: "value_456",
+          },
+        ],
         email: "sestier.romain123@gmail.com",
         firstName: "Romain",
         hiredAt: new Date("2021-01-01T01:01:01.000Z"),
@@ -163,7 +181,7 @@ async function run() {
         {
           answers: [
             {
-              id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+              id: "answer1",
               remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
               type: {
               sourceValue: "Short Text",
@@ -171,14 +189,10 @@ async function run() {
               },
               values: [
                 "Yes",
-                "No Travel",
-                "It sounds pretty cool.",
-                "Excel",
-                "Power Point",
               ],
             },
           ],
-          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          id: "right_to_work",
           remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         },
       ],
@@ -237,6 +251,24 @@ async function run() {
     atsCreateCandidateRequestDto: {
       company: "Company Inc.",
       country: "United States",
+      customFields: [
+        {
+          description: "The completion status of the employee's training.",
+          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          name: "Training Completion Status",
+          options: [
+            "Not Started",
+            "In Progress",
+            "Completed",
+            "Overdue",
+          ],
+          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          remoteValueId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
+          type: {},
+        value: "Completed",
+          valueId: "value_456",
+        },
+      ],
       email: "sestier.romain123@gmail.com",
       firstName: "Romain",
       hiredAt: new Date("2021-01-01T01:01:01.000Z"),
@@ -2355,6 +2387,24 @@ async function run() {
       ],
       company: "Company Inc.",
       country: "United States",
+      customFields: [
+        {
+          description: "The completion status of the employee's training.",
+          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          name: "Training Completion Status",
+          options: [
+            "Not Started",
+            "In Progress",
+            "Completed",
+            "Overdue",
+          ],
+          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          remoteValueId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
+          type: {},
+        value: "Completed",
+          valueId: "value_456",
+        },
+      ],
       email: "sestier.romain123@gmail.com",
       emails: [
         {
