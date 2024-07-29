@@ -13,6 +13,7 @@
 * [getApplicationOffer](#getapplicationoffer) - Get Application Offer
 * [getApplicationScorecard](#getapplicationscorecard) - Get Application Scorecard
 * [getAssessmentsPackage](#getassessmentspackage) - Get Assessments Package
+* [getAssessmentsResult](#getassessmentsresult) - Get Assessments Results
 * [getCandidate](#getcandidate) - Get Candidate
 * [getCandidateNote](#getcandidatenote) - Get Candidate Note
 * [getDepartment](#getdepartment) - Get Department
@@ -25,11 +26,13 @@
 * [getOffer](#getoffer) - Get Offer
 * [getRejectedReason](#getrejectedreason) - Get Rejected Reason
 * [getUser](#getuser) - Get User
+* [listApplicationCustomFieldDefinitions](#listapplicationcustomfielddefinitions) - List application custom field definitions
 * [listApplicationDocuments](#listapplicationdocuments) - List Application Documents
 * [listApplicationScorecards](#listapplicationscorecards) - List Application Scorecards
 * [listApplications](#listapplications) - List Applications
 * [listApplicationsOffers](#listapplicationsoffers) - List Application Offers
 * [listAssessmentsPackages](#listassessmentspackages) - List Assessments Packages
+* [listCandidateCustomFieldDefinitions](#listcandidatecustomfielddefinitions) - List candidate custom field definitions
 * [listCandidateNotes](#listcandidatenotes) - List Candidate Notes
 * [listCandidates](#listcandidates) - List Candidates
 * [listDepartments](#listdepartments) - List Departments
@@ -605,8 +608,9 @@ const stackOne = new StackOne({
 async function run() {
   const result = await stackOne.ats.getApplication({
     expand: "documents",
-    fields: "id,remote_id,candidate_id,remote_candidate_id,job_id,remote_job_id,interview_stage,interview_stage_id,remote_interview_stage_id,rejected_reason,rejected_reason_id,remote_rejected_reason_id,rejected_reason_ids,remote_rejected_reason_ids,rejected_reasons,rejected_at,location_id,remote_location_id,location_ids,remote_location_ids,status,application_status,questionnaires,attachments,result_links,source,created_at,updated_at,documents,candidate",
+    fields: "id,remote_id,candidate_id,remote_candidate_id,job_id,remote_job_id,interview_stage,interview_stage_id,remote_interview_stage_id,rejected_reason,rejected_reason_id,remote_rejected_reason_id,rejected_reason_ids,remote_rejected_reason_ids,rejected_reasons,rejected_at,location_id,remote_location_id,location_ids,remote_location_ids,status,application_status,questionnaires,attachments,result_links,source,created_at,updated_at,documents,custom_fields,candidate",
     id: "<id>",
+    include: "attachments,custom_fields",
     xAccountId: "<value>",
   });
 
@@ -824,6 +828,53 @@ run();
 ### Response
 
 **Promise\<[operations.AtsGetAssessmentsPackageResponse](../../sdk/models/operations/atsgetassessmentspackageresponse.md)\>**
+### Errors
+
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
+
+## getAssessmentsResult
+
+Get Assessments Results
+
+### Example Usage
+
+```typescript
+import { StackOne } from "@stackone/stackone-client-ts";
+
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
+
+async function run() {
+  const result = await stackOne.ats.getAssessmentsResult({
+    id: "<id>",
+    xAccountId: "<value>",
+  });
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.AtsGetAssessmentsResultRequest](../../sdk/models/operations/atsgetassessmentsresultrequest.md)                                                                     | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+
+### Response
+
+**Promise\<[operations.AtsGetAssessmentsResultResponse](../../sdk/models/operations/atsgetassessmentsresultresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
@@ -1410,6 +1461,56 @@ run();
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 4xx-5xx         | */*             |
 
+## listApplicationCustomFieldDefinitions
+
+List application custom field definitions
+
+### Example Usage
+
+```typescript
+import { StackOne } from "@stackone/stackone-client-ts";
+
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
+
+async function run() {
+  const result = await stackOne.ats.listApplicationCustomFieldDefinitions({
+    fields: "id,remote_id,name,description,type,options",
+    filter: {
+      updatedAfter: "2020-01-01T00:00:00.000Z",
+    },
+    xAccountId: "<value>",
+  });
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.AtsListApplicationCustomFieldDefinitionsRequest](../../sdk/models/operations/atslistapplicationcustomfielddefinitionsrequest.md)                                   | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+
+### Response
+
+**Promise\<[operations.AtsListApplicationCustomFieldDefinitionsResponse](../../sdk/models/operations/atslistapplicationcustomfielddefinitionsresponse.md)\>**
+### Errors
+
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
+
 ## listApplicationDocuments
 
 List Application Documents
@@ -1530,10 +1631,11 @@ const stackOne = new StackOne({
 async function run() {
   const result = await stackOne.ats.listApplications({
     expand: "documents",
-    fields: "id,remote_id,candidate_id,remote_candidate_id,job_id,remote_job_id,interview_stage,interview_stage_id,remote_interview_stage_id,rejected_reason,rejected_reason_id,remote_rejected_reason_id,rejected_reason_ids,remote_rejected_reason_ids,rejected_reasons,rejected_at,location_id,remote_location_id,location_ids,remote_location_ids,status,application_status,questionnaires,attachments,result_links,source,created_at,updated_at,documents,candidate",
+    fields: "id,remote_id,candidate_id,remote_candidate_id,job_id,remote_job_id,interview_stage,interview_stage_id,remote_interview_stage_id,rejected_reason,rejected_reason_id,remote_rejected_reason_id,rejected_reason_ids,remote_rejected_reason_ids,rejected_reasons,rejected_at,location_id,remote_location_id,location_ids,remote_location_ids,status,application_status,questionnaires,attachments,result_links,source,created_at,updated_at,documents,custom_fields,candidate",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
+    include: "attachments,custom_fields",
     xAccountId: "<value>",
   });
 
@@ -1657,6 +1759,56 @@ run();
 ### Response
 
 **Promise\<[operations.AtsListAssessmentsPackagesResponse](../../sdk/models/operations/atslistassessmentspackagesresponse.md)\>**
+### Errors
+
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
+
+## listCandidateCustomFieldDefinitions
+
+List candidate custom field definitions
+
+### Example Usage
+
+```typescript
+import { StackOne } from "@stackone/stackone-client-ts";
+
+const stackOne = new StackOne({
+  security: {
+    password: "<YOUR_PASSWORD_HERE>",
+  },
+});
+
+async function run() {
+  const result = await stackOne.ats.listCandidateCustomFieldDefinitions({
+    fields: "id,remote_id,name,description,type,options",
+    filter: {
+      updatedAfter: "2020-01-01T00:00:00.000Z",
+    },
+    xAccountId: "<value>",
+  });
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.AtsListCandidateCustomFieldDefinitionsRequest](../../sdk/models/operations/atslistcandidatecustomfielddefinitionsrequest.md)                                       | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+
+### Response
+
+**Promise\<[operations.AtsListCandidateCustomFieldDefinitionsResponse](../../sdk/models/operations/atslistcandidatecustomfielddefinitionsresponse.md)\>**
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

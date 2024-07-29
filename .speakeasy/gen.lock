@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 7fa83af8-9e8e-4410-b7e2-cf1d0eaf688b
 management:
-  docChecksum: 8a934b9255de3806ef145c0ac9e4c540
+  docChecksum: fd8e8675a6eb93dedef9b047eba4dc34
   docVersion: 1.0.0
-  speakeasyVersion: 1.345.4
-  generationVersion: 2.378.3
-  releaseVersion: 4.12.3
-  configChecksum: e00eac91d9b6629674dd34bce32816aa
+  speakeasyVersion: 1.346.3
+  generationVersion: 2.379.6
+  releaseVersion: 4.12.4
+  configChecksum: fd6179deda0c9bc5359dbea192c3f83f
   repoURL: https://github.com/StackOneHQ/stackone-client-typescript.git
   repoSubDirectory: .
   installationURL: https://github.com/StackOneHQ/stackone-client-typescript
@@ -15,7 +15,7 @@ features:
   typescript:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.5
-    core: 3.11.9
+    core: 3.11.10
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
     downloadStreams: 0.1.1
@@ -90,6 +90,7 @@ generatedFiles:
   - src/sdk/models/operations/atsgetapplicationoffer.ts
   - src/sdk/models/operations/atsgetapplicationscorecard.ts
   - src/sdk/models/operations/atsgetassessmentspackage.ts
+  - src/sdk/models/operations/atsgetassessmentsresult.ts
   - src/sdk/models/operations/atsgetcandidate.ts
   - src/sdk/models/operations/atsgetcandidatenote.ts
   - src/sdk/models/operations/atsgetdepartment.ts
@@ -102,11 +103,13 @@ generatedFiles:
   - src/sdk/models/operations/atsgetoffer.ts
   - src/sdk/models/operations/atsgetrejectedreason.ts
   - src/sdk/models/operations/atsgetuser.ts
+  - src/sdk/models/operations/atslistapplicationcustomfielddefinitions.ts
   - src/sdk/models/operations/atslistapplicationdocuments.ts
   - src/sdk/models/operations/atslistapplicationscorecards.ts
   - src/sdk/models/operations/atslistapplications.ts
   - src/sdk/models/operations/atslistapplicationsoffers.ts
   - src/sdk/models/operations/atslistassessmentspackages.ts
+  - src/sdk/models/operations/atslistcandidatecustomfielddefinitions.ts
   - src/sdk/models/operations/atslistcandidatenotes.ts
   - src/sdk/models/operations/atslistcandidates.ts
   - src/sdk/models/operations/atslistdepartments.ts
@@ -184,23 +187,27 @@ generatedFiles:
   - src/sdk/models/operations/lmsupsertcontent.ts
   - src/sdk/models/operations/marketingcreatecontentblock.ts
   - src/sdk/models/operations/marketingcreateemailtemplate.ts
+  - src/sdk/models/operations/marketingcreateinapptemplate.ts
   - src/sdk/models/operations/marketingcreateomnichanneltemplate.ts
   - src/sdk/models/operations/marketingcreatepushtemplate.ts
   - src/sdk/models/operations/marketingcreatesmstemplate.ts
   - src/sdk/models/operations/marketinggetcampaign.ts
   - src/sdk/models/operations/marketinggetcontentblock.ts
   - src/sdk/models/operations/marketinggetemailtemplate.ts
+  - src/sdk/models/operations/marketinggetinapptemplate.ts
   - src/sdk/models/operations/marketinggetomnichanneltemplate.ts
   - src/sdk/models/operations/marketinggetpushtemplate.ts
   - src/sdk/models/operations/marketinggetsmstemplate.ts
   - src/sdk/models/operations/marketinglistcampaigns.ts
   - src/sdk/models/operations/marketinglistcontentblocks.ts
   - src/sdk/models/operations/marketinglistemailtemplates.ts
+  - src/sdk/models/operations/marketinglistinapptemplates.ts
   - src/sdk/models/operations/marketinglistomnichanneltemplates.ts
   - src/sdk/models/operations/marketinglistpushtemplates.ts
   - src/sdk/models/operations/marketinglistsmstemplates.ts
   - src/sdk/models/operations/marketingupdatecontentblock.ts
   - src/sdk/models/operations/marketingupdateemailtemplate.ts
+  - src/sdk/models/operations/marketingupdateinapptemplate.ts
   - src/sdk/models/operations/marketingupdateomnichanneltemplate.ts
   - src/sdk/models/operations/marketingupdatepushtemplate.ts
   - src/sdk/models/operations/marketingupdatesmstemplate.ts
@@ -234,6 +241,7 @@ generatedFiles:
   - src/sdk/models/shared/content.ts
   - src/sdk/models/shared/contentlanguageenum.ts
   - src/sdk/models/shared/category.ts
+  - src/sdk/models/shared/applicationcustomfields.ts
   - src/sdk/models/shared/phonenumber.ts
   - src/sdk/models/shared/candidateemail.ts
   - src/sdk/models/shared/applicationattachment.ts
@@ -246,6 +254,8 @@ generatedFiles:
   - src/sdk/models/shared/field.ts
   - src/sdk/models/shared/assessmentspackagesresult.ts
   - src/sdk/models/shared/assessmentspackages.ts
+  - src/sdk/models/shared/assessmentsresultsresult.ts
+  - src/sdk/models/shared/assessmentsresults.ts
   - src/sdk/models/shared/candidateresult.ts
   - src/sdk/models/shared/candidate.ts
   - src/sdk/models/shared/noteresult.ts
@@ -276,6 +286,8 @@ generatedFiles:
   - src/sdk/models/shared/rejectedreasonresult.ts
   - src/sdk/models/shared/userresult.ts
   - src/sdk/models/shared/user.ts
+  - src/sdk/models/shared/customfielddefinitionspaginated.ts
+  - src/sdk/models/shared/customfielddefinition.ts
   - src/sdk/models/shared/atsdocumentspaginated.ts
   - src/sdk/models/shared/scorecardspaginated.ts
   - src/sdk/models/shared/applicationspaginated.ts
@@ -375,6 +387,8 @@ generatedFiles:
   - src/sdk/models/shared/marketingcreatecontentblocksrequestdto.ts
   - src/sdk/models/shared/marketingcreateemailtemplaterequestdto.ts
   - src/sdk/models/shared/emailmessages.ts
+  - src/sdk/models/shared/marketingcreateinapptemplaterequestdto.ts
+  - src/sdk/models/shared/inappmessages.ts
   - src/sdk/models/shared/marketingcreatetemplaterequestdto.ts
   - src/sdk/models/shared/message.ts
   - src/sdk/models/shared/marketingcreatepushtemplaterequestdto.ts
@@ -431,6 +445,8 @@ generatedFiles:
   - docs/sdk/models/operations/atsgetapplicationscorecardresponse.md
   - docs/sdk/models/operations/atsgetassessmentspackagerequest.md
   - docs/sdk/models/operations/atsgetassessmentspackageresponse.md
+  - docs/sdk/models/operations/atsgetassessmentsresultrequest.md
+  - docs/sdk/models/operations/atsgetassessmentsresultresponse.md
   - docs/sdk/models/operations/atsgetcandidaterequest.md
   - docs/sdk/models/operations/atsgetcandidateresponse.md
   - docs/sdk/models/operations/atsgetcandidatenoterequest.md
@@ -456,9 +472,12 @@ generatedFiles:
   - docs/sdk/models/operations/atsgetuserrequest.md
   - docs/sdk/models/operations/atsgetuserresponse.md
   - docs/sdk/models/operations/filter.md
+  - docs/sdk/models/operations/atslistapplicationcustomfielddefinitionsrequest.md
+  - docs/sdk/models/operations/atslistapplicationcustomfielddefinitionsresponse.md
+  - docs/sdk/models/operations/queryparamfilter.md
   - docs/sdk/models/operations/atslistapplicationdocumentsrequest.md
   - docs/sdk/models/operations/atslistapplicationdocumentsresponse.md
-  - docs/sdk/models/operations/queryparamfilter.md
+  - docs/sdk/models/operations/atslistapplicationscorecardsqueryparamfilter.md
   - docs/sdk/models/operations/atslistapplicationscorecardsrequest.md
   - docs/sdk/models/operations/atslistapplicationscorecardsresponse.md
   - docs/sdk/models/operations/atslistapplicationsqueryparamfilter.md
@@ -470,6 +489,9 @@ generatedFiles:
   - docs/sdk/models/operations/atslistassessmentspackagesqueryparamfilter.md
   - docs/sdk/models/operations/atslistassessmentspackagesrequest.md
   - docs/sdk/models/operations/atslistassessmentspackagesresponse.md
+  - docs/sdk/models/operations/atslistcandidatecustomfielddefinitionsqueryparamfilter.md
+  - docs/sdk/models/operations/atslistcandidatecustomfielddefinitionsrequest.md
+  - docs/sdk/models/operations/atslistcandidatecustomfielddefinitionsresponse.md
   - docs/sdk/models/operations/atslistcandidatenotesqueryparamfilter.md
   - docs/sdk/models/operations/atslistcandidatenotesrequest.md
   - docs/sdk/models/operations/atslistcandidatenotesresponse.md
@@ -658,6 +680,8 @@ generatedFiles:
   - docs/sdk/models/operations/marketingcreatecontentblockresponse.md
   - docs/sdk/models/operations/marketingcreateemailtemplaterequest.md
   - docs/sdk/models/operations/marketingcreateemailtemplateresponse.md
+  - docs/sdk/models/operations/marketingcreateinapptemplaterequest.md
+  - docs/sdk/models/operations/marketingcreateinapptemplateresponse.md
   - docs/sdk/models/operations/marketingcreateomnichanneltemplaterequest.md
   - docs/sdk/models/operations/marketingcreateomnichanneltemplateresponse.md
   - docs/sdk/models/operations/marketingcreatepushtemplaterequest.md
@@ -670,6 +694,8 @@ generatedFiles:
   - docs/sdk/models/operations/marketinggetcontentblockresponse.md
   - docs/sdk/models/operations/marketinggetemailtemplaterequest.md
   - docs/sdk/models/operations/marketinggetemailtemplateresponse.md
+  - docs/sdk/models/operations/marketinggetinapptemplaterequest.md
+  - docs/sdk/models/operations/marketinggetinapptemplateresponse.md
   - docs/sdk/models/operations/marketinggetomnichanneltemplaterequest.md
   - docs/sdk/models/operations/marketinggetomnichanneltemplateresponse.md
   - docs/sdk/models/operations/marketinggetpushtemplaterequest.md
@@ -685,6 +711,9 @@ generatedFiles:
   - docs/sdk/models/operations/marketinglistemailtemplatesqueryparamfilter.md
   - docs/sdk/models/operations/marketinglistemailtemplatesrequest.md
   - docs/sdk/models/operations/marketinglistemailtemplatesresponse.md
+  - docs/sdk/models/operations/marketinglistinapptemplatesqueryparamfilter.md
+  - docs/sdk/models/operations/marketinglistinapptemplatesrequest.md
+  - docs/sdk/models/operations/marketinglistinapptemplatesresponse.md
   - docs/sdk/models/operations/marketinglistomnichanneltemplatesqueryparamfilter.md
   - docs/sdk/models/operations/marketinglistomnichanneltemplatesrequest.md
   - docs/sdk/models/operations/marketinglistomnichanneltemplatesresponse.md
@@ -698,6 +727,8 @@ generatedFiles:
   - docs/sdk/models/operations/marketingupdatecontentblockresponse.md
   - docs/sdk/models/operations/marketingupdateemailtemplaterequest.md
   - docs/sdk/models/operations/marketingupdateemailtemplateresponse.md
+  - docs/sdk/models/operations/marketingupdateinapptemplaterequest.md
+  - docs/sdk/models/operations/marketingupdateinapptemplateresponse.md
   - docs/sdk/models/operations/marketingupdateomnichanneltemplaterequest.md
   - docs/sdk/models/operations/marketingupdateomnichanneltemplateresponse.md
   - docs/sdk/models/operations/marketingupdatepushtemplaterequest.md
@@ -741,14 +772,14 @@ generatedFiles:
   - docs/sdk/models/shared/type.md
   - docs/sdk/models/shared/answer.md
   - docs/sdk/models/shared/sociallink.md
-  - docs/sdk/models/shared/four.md
-  - docs/sdk/models/shared/options.md
-  - docs/sdk/models/shared/candidatecustomfieldsschemas4.md
-  - docs/sdk/models/shared/candidatecustomfieldssourcevalue.md
-  - docs/sdk/models/shared/candidatecustomfieldsvalue.md
-  - docs/sdk/models/shared/candidatecustomfieldstype.md
   - docs/sdk/models/shared/candidatecustomfields4.md
-  - docs/sdk/models/shared/value.md
+  - docs/sdk/models/shared/candidatecustomfieldsoptions.md
+  - docs/sdk/models/shared/candidatecustomfieldsschemastype4.md
+  - docs/sdk/models/shared/candidatecustomfieldssourcevalue.md
+  - docs/sdk/models/shared/candidatecustomfieldsschemasvalue.md
+  - docs/sdk/models/shared/candidatecustomfieldstype.md
+  - docs/sdk/models/shared/candidatecustomfieldsschemas4.md
+  - docs/sdk/models/shared/candidatecustomfieldsvalue.md
   - docs/sdk/models/shared/candidatecustomfields.md
   - docs/sdk/models/shared/atscreatecandidaterequestdto.md
   - docs/sdk/models/shared/atscreatenotesrequestdto4.md
@@ -803,6 +834,15 @@ generatedFiles:
   - docs/sdk/models/shared/contentlanguageenumvalue.md
   - docs/sdk/models/shared/contentlanguageenum.md
   - docs/sdk/models/shared/category.md
+  - docs/sdk/models/shared/four.md
+  - docs/sdk/models/shared/options.md
+  - docs/sdk/models/shared/applicationcustomfieldsschemas4.md
+  - docs/sdk/models/shared/applicationcustomfieldssourcevalue.md
+  - docs/sdk/models/shared/applicationcustomfieldsvalue.md
+  - docs/sdk/models/shared/applicationcustomfieldstype.md
+  - docs/sdk/models/shared/applicationcustomfields4.md
+  - docs/sdk/models/shared/value.md
+  - docs/sdk/models/shared/applicationcustomfields.md
   - docs/sdk/models/shared/phonenumbertype.md
   - docs/sdk/models/shared/phonenumber.md
   - docs/sdk/models/shared/candidateemail.md
@@ -832,6 +872,16 @@ generatedFiles:
   - docs/sdk/models/shared/assessmentspackagesvalue.md
   - docs/sdk/models/shared/assessmentspackagestype.md
   - docs/sdk/models/shared/assessmentspackages.md
+  - docs/sdk/models/shared/assessmentsresultsresult.md
+  - docs/sdk/models/shared/assessmentsresults4.md
+  - docs/sdk/models/shared/assessmentsresultssourcevalue.md
+  - docs/sdk/models/shared/assessmentsresultsvalue.md
+  - docs/sdk/models/shared/assessmentsresultscontenttype.md
+  - docs/sdk/models/shared/attachments.md
+  - docs/sdk/models/shared/assessmentsresultscandidate.md
+  - docs/sdk/models/shared/score.md
+  - docs/sdk/models/shared/status.md
+  - docs/sdk/models/shared/assessmentsresults.md
   - docs/sdk/models/shared/candidateresult.md
   - docs/sdk/models/shared/candidate.md
   - docs/sdk/models/shared/noteresult.md
@@ -918,6 +968,14 @@ generatedFiles:
   - docs/sdk/models/shared/rejectedreasonresult.md
   - docs/sdk/models/shared/userresult.md
   - docs/sdk/models/shared/user.md
+  - docs/sdk/models/shared/customfielddefinitionspaginated.md
+  - docs/sdk/models/shared/customfielddefinition4.md
+  - docs/sdk/models/shared/customfielddefinitionoptions.md
+  - docs/sdk/models/shared/customfielddefinitionschemas4.md
+  - docs/sdk/models/shared/customfielddefinitionsourcevalue.md
+  - docs/sdk/models/shared/customfielddefinitionvalue.md
+  - docs/sdk/models/shared/customfielddefinitiontype.md
+  - docs/sdk/models/shared/customfielddefinition.md
   - docs/sdk/models/shared/atsdocumentspaginated.md
   - docs/sdk/models/shared/scorecardspaginated.md
   - docs/sdk/models/shared/applicationspaginated.md
@@ -1336,6 +1394,13 @@ generatedFiles:
   - docs/sdk/models/shared/emailmessagesvalue.md
   - docs/sdk/models/shared/messagetype.md
   - docs/sdk/models/shared/emailmessages.md
+  - docs/sdk/models/shared/marketingcreateinapptemplaterequestdto.md
+  - docs/sdk/models/shared/inappmessagesmessagecontent.md
+  - docs/sdk/models/shared/inappmessages4.md
+  - docs/sdk/models/shared/inappmessagessourcevalue.md
+  - docs/sdk/models/shared/inappmessagesvalue.md
+  - docs/sdk/models/shared/inappmessagesmessagetype.md
+  - docs/sdk/models/shared/inappmessages.md
   - docs/sdk/models/shared/marketingcreatetemplaterequestdto.md
   - docs/sdk/models/shared/pushmessagecontentsschemas.md
   - docs/sdk/models/shared/schemas.md
@@ -1372,7 +1437,7 @@ generatedFiles:
   - docs/sdk/models/shared/campaignschemas4.md
   - docs/sdk/models/shared/campaignschemassourcevalue.md
   - docs/sdk/models/shared/campaignschemasvalue.md
-  - docs/sdk/models/shared/status.md
+  - docs/sdk/models/shared/campaignstatus.md
   - docs/sdk/models/shared/campaign.md
   - docs/sdk/models/shared/channelsenum4.md
   - docs/sdk/models/shared/sourcevalue.md

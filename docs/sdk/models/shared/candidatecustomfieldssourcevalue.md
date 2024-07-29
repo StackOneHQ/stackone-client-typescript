@@ -21,9 +21,9 @@ const value: number = /* values here */
 const value: boolean = /* values here */
 ```
 
-### `shared.CandidateCustomFieldsSchemas4`
+### `shared.CandidateCustomFieldsSchemasType4`
 
 ```typescript
-const value: shared.CandidateCustomFieldsSchemas4 = /* values here */
+const value: shared.CandidateCustomFieldsSchemasType4 = /* values here */
 ```
 
