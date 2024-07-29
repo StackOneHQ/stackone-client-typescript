@@ -1,9 +1,9 @@
-speakeasyVersion: 1.345.4
+speakeasyVersion: 1.346.3
 sources:
     my-source:
         sourceNamespace: my-source
-        sourceRevisionDigest: sha256:290995fc4cb0a4c869cef396d347664628abd70d1c4e8fe143cd8c4f9c3b8e00
-        sourceBlobDigest: sha256:f4380bc3dc0f870ff34d98cde219944e62665c50f213182623501885dbef83b2
+        sourceRevisionDigest: sha256:6b028584dcc8b088dae65508d14b1255ed5e6b0d1c92948603fee5a1e627bec0
+        sourceBlobDigest: sha256:e7283ddfdcf4d436c7ff80fb7835bc2bad4ae5be45a7292f4edbd63efd63475e
         tags:
             - latest
             - main
@@ -11,8 +11,8 @@ targets:
     StackOneTypeScriptClient:
         source: my-source
         sourceNamespace: my-source
-        sourceRevisionDigest: sha256:290995fc4cb0a4c869cef396d347664628abd70d1c4e8fe143cd8c4f9c3b8e00
-        sourceBlobDigest: sha256:f4380bc3dc0f870ff34d98cde219944e62665c50f213182623501885dbef83b2
+        sourceRevisionDigest: sha256:6b028584dcc8b088dae65508d14b1255ed5e6b0d1c92948603fee5a1e627bec0
+        sourceBlobDigest: sha256:e7283ddfdcf4d436c7ff80fb7835bc2bad4ae5be45a7292f4edbd63efd63475e
         outLocation: /github/workspace/repo
 workflow:
     workflowVersion: 1.0.0
@@ -20,13 +20,13 @@ workflow:
     sources:
         my-source:
             inputs:
-                - location: https://api2.eu1.stackone.com/oas/stackone.json
-                - location: https://api2.eu1.stackone.com/oas/hris.json
-                - location: https://api2.eu1.stackone.com/oas/ats.json
-                - location: https://api2.eu1.stackone.com/oas/crm.json
-                - location: https://api2.eu1.stackone.com/oas/iam.json
-                - location: https://api2.eu1.stackone.com/oas/marketing.json
-                - location: https://api2.eu1.stackone.com/oas/lms.json
+                - location: https://api.eu1.stackone.com/oas/stackone.json
+                - location: https://api.eu1.stackone.com/oas/hris.json
+                - location: https://api.eu1.stackone.com/oas/ats.json
+                - location: https://api.eu1.stackone.com/oas/crm.json
+                - location: https://api.eu1.stackone.com/oas/iam.json
+                - location: https://api.eu1.stackone.com/oas/marketing.json
+                - location: https://api.eu1.stackone.com/oas/lms.json
             registry:
                 location: registry.speakeasyapi.dev/stackone/stackone/my-source
     targets:

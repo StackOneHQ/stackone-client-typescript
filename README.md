@@ -103,6 +103,7 @@ run();
 * [getApplicationOffer](docs/sdks/ats/README.md#getapplicationoffer) - Get Application Offer
 * [getApplicationScorecard](docs/sdks/ats/README.md#getapplicationscorecard) - Get Application Scorecard
 * [getAssessmentsPackage](docs/sdks/ats/README.md#getassessmentspackage) - Get Assessments Package
+* [getAssessmentsResult](docs/sdks/ats/README.md#getassessmentsresult) - Get Assessments Results
 * [getCandidate](docs/sdks/ats/README.md#getcandidate) - Get Candidate
 * [getCandidateNote](docs/sdks/ats/README.md#getcandidatenote) - Get Candidate Note
 * [getDepartment](docs/sdks/ats/README.md#getdepartment) - Get Department
@@ -115,11 +116,13 @@ run();
 * [getOffer](docs/sdks/ats/README.md#getoffer) - Get Offer
 * [getRejectedReason](docs/sdks/ats/README.md#getrejectedreason) - Get Rejected Reason
 * [getUser](docs/sdks/ats/README.md#getuser) - Get User
+* [listApplicationCustomFieldDefinitions](docs/sdks/ats/README.md#listapplicationcustomfielddefinitions) - List application custom field definitions
 * [listApplicationDocuments](docs/sdks/ats/README.md#listapplicationdocuments) - List Application Documents
 * [listApplicationScorecards](docs/sdks/ats/README.md#listapplicationscorecards) - List Application Scorecards
 * [listApplications](docs/sdks/ats/README.md#listapplications) - List Applications
 * [listApplicationsOffers](docs/sdks/ats/README.md#listapplicationsoffers) - List Application Offers
 * [listAssessmentsPackages](docs/sdks/ats/README.md#listassessmentspackages) - List Assessments Packages
+* [listCandidateCustomFieldDefinitions](docs/sdks/ats/README.md#listcandidatecustomfielddefinitions) - List candidate custom field definitions
 * [listCandidateNotes](docs/sdks/ats/README.md#listcandidatenotes) - List Candidate Notes
 * [listCandidates](docs/sdks/ats/README.md#listcandidates) - List Candidates
 * [listDepartments](docs/sdks/ats/README.md#listdepartments) - List Departments
@@ -212,23 +215,27 @@ run();
 
 * [createContentBlock](docs/sdks/marketing/README.md#createcontentblock) - Create Content Block
 * [createEmailTemplate](docs/sdks/marketing/README.md#createemailtemplate) - Create email template
+* [createInAppTemplate](docs/sdks/marketing/README.md#createinapptemplate) - Create in_app template
 * [~~createOmniChannelTemplate~~](docs/sdks/marketing/README.md#createomnichanneltemplate) - Create omni-channel template :warning: **Deprecated**
 * [createPushTemplate](docs/sdks/marketing/README.md#createpushtemplate) - Create push template
 * [createSmsTemplate](docs/sdks/marketing/README.md#createsmstemplate) - Create sms template
 * [getCampaign](docs/sdks/marketing/README.md#getcampaign) - Get campaign
 * [getContentBlock](docs/sdks/marketing/README.md#getcontentblock) - Get Content Blocks
 * [getEmailTemplate](docs/sdks/marketing/README.md#getemailtemplate) - Get email template
+* [getInAppTemplate](docs/sdks/marketing/README.md#getinapptemplate) - Get in_app template
 * [~~getOmniChannelTemplate~~](docs/sdks/marketing/README.md#getomnichanneltemplate) - Get omni-channel template :warning: **Deprecated**
 * [getPushTemplate](docs/sdks/marketing/README.md#getpushtemplate) - Get push template
 * [getSmsTemplate](docs/sdks/marketing/README.md#getsmstemplate) - Get sms template
 * [listCampaigns](docs/sdks/marketing/README.md#listcampaigns) - List campaigns
 * [listContentBlocks](docs/sdks/marketing/README.md#listcontentblocks) - List Content Blocks
 * [listEmailTemplates](docs/sdks/marketing/README.md#listemailtemplates) - List email templates
+* [listInAppTemplates](docs/sdks/marketing/README.md#listinapptemplates) - List in_app templates
 * [~~listOmniChannelTemplates~~](docs/sdks/marketing/README.md#listomnichanneltemplates) - List omni-channel templates :warning: **Deprecated**
 * [listPushTemplates](docs/sdks/marketing/README.md#listpushtemplates) - List push templates
 * [listSmsTemplates](docs/sdks/marketing/README.md#listsmstemplates) - List sms templates
 * [updateContentBlock](docs/sdks/marketing/README.md#updatecontentblock) - Update email template
 * [updateEmailTemplate](docs/sdks/marketing/README.md#updateemailtemplate) - Update email template
+* [updateInAppTemplate](docs/sdks/marketing/README.md#updateinapptemplate) - Update in_app template
 * [~~updateOmniChannelTemplate~~](docs/sdks/marketing/README.md#updateomnichanneltemplate) - Update omni-channel template :warning: **Deprecated**
 * [updatePushTemplate](docs/sdks/marketing/README.md#updatepushtemplate) - Update push template
 * [updateSmsTemplate](docs/sdks/marketing/README.md#updatesmstemplate) - Update sms template
