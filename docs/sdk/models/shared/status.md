@@ -1,11 +1,14 @@
 # Status
 
-Status of the Campaign
+The status of the candidates assessment.
 
 
-## Fields
+## Values
 
-| Field                                                                             | Type                                                                              | Required                                                                          | Description                                                                       | Example                                                                           |
-| --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
-| `sourceValue`                                                                     | *shared.CampaignSchemasSourceValue*                                               | :heavy_minus_sign:                                                                | The source value of the Status.                                                   | Email                                                                             |
-| `value`                                                                           | [shared.CampaignSchemasValue](../../../sdk/models/shared/campaignschemasvalue.md) | :heavy_minus_sign:                                                                | The Status of the campaign.                                                       | email                                                                             |
+| Name         | Value        |
+| ------------ | ------------ |
+| `InProgress` | in_progress  |
+| `Pending`    | pending      |
+| `Completed`  | completed    |
+| `Rejected`   | rejected     |
+| `Expired`    | expired      |
