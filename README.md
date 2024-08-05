@@ -45,7 +45,8 @@ import { StackOne } from "@stackone/stackone-client-ts";
 
 const stackOne = new StackOne({
     security: {
-        password: "<YOUR_PASSWORD_HERE>",
+        password: "",
+        username: "",
     },
 });
 
@@ -57,6 +58,7 @@ async function run() {
             updatedAfter: "2020-01-01T00:00:00.000Z",
         },
         include: "avatar_url,avatar,custom_fields,job_description,benefits",
+        updatedAfter: "2020-01-01T00:00:00.000Z",
         xAccountId: "<value>",
     });
 
@@ -101,8 +103,10 @@ run();
 * [getApplication](docs/sdks/ats/README.md#getapplication) - Get Application
 * [getApplicationDocument](docs/sdks/ats/README.md#getapplicationdocument) - Get Application Document
 * [getApplicationOffer](docs/sdks/ats/README.md#getapplicationoffer) - Get Application Offer
+* [getApplicationScheduledInterview](docs/sdks/ats/README.md#getapplicationscheduledinterview) - Get Applications scheduled interview
 * [getApplicationScorecard](docs/sdks/ats/README.md#getapplicationscorecard) - Get Application Scorecard
 * [getAssessmentsPackage](docs/sdks/ats/README.md#getassessmentspackage) - Get Assessments Package
+* [getAssessmentsRequest](docs/sdks/ats/README.md#getassessmentsrequest) - Get Assessments Requests
 * [getAssessmentsResult](docs/sdks/ats/README.md#getassessmentsresult) - Get Assessments Results
 * [getCandidate](docs/sdks/ats/README.md#getcandidate) - Get Candidate
 * [getCandidateNote](docs/sdks/ats/README.md#getcandidatenote) - Get Candidate Note
@@ -121,6 +125,7 @@ run();
 * [listApplicationScorecards](docs/sdks/ats/README.md#listapplicationscorecards) - List Application Scorecards
 * [listApplications](docs/sdks/ats/README.md#listapplications) - List Applications
 * [listApplicationsOffers](docs/sdks/ats/README.md#listapplicationsoffers) - List Application Offers
+* [listApplicationsScheduledInterviews](docs/sdks/ats/README.md#listapplicationsscheduledinterviews) - List Applications scheduled interviews
 * [listAssessmentsPackages](docs/sdks/ats/README.md#listassessmentspackages) - List Assessments Packages
 * [listCandidateCustomFieldDefinitions](docs/sdks/ats/README.md#listcandidatecustomfielddefinitions) - List candidate custom field definitions
 * [listCandidateNotes](docs/sdks/ats/README.md#listcandidatenotes) - List Candidate Notes
@@ -206,39 +211,41 @@ run();
 * [getCategory](docs/sdks/lms/README.md#getcategory) - Get Category
 * [getCompletion](docs/sdks/lms/README.md#getcompletion) - Get Completion
 * [getContent](docs/sdks/lms/README.md#getcontent) - Get Content
+* [getUser](docs/sdks/lms/README.md#getuser) - Get User
 * [listCategories](docs/sdks/lms/README.md#listcategories) - List Categories
 * [listContent](docs/sdks/lms/README.md#listcontent) - List Content
+* [listUsers](docs/sdks/lms/README.md#listusers) - List Users
 * [updateContent](docs/sdks/lms/README.md#updatecontent) - Update Content
 * [upsertContent](docs/sdks/lms/README.md#upsertcontent) - Upsert Content
 
 ### [marketing](docs/sdks/marketing/README.md)
 
 * [createContentBlock](docs/sdks/marketing/README.md#createcontentblock) - Create Content Block
-* [createEmailTemplate](docs/sdks/marketing/README.md#createemailtemplate) - Create email template
-* [createInAppTemplate](docs/sdks/marketing/README.md#createinapptemplate) - Create in_app template
-* [~~createOmniChannelTemplate~~](docs/sdks/marketing/README.md#createomnichanneltemplate) - Create omni-channel template :warning: **Deprecated**
-* [createPushTemplate](docs/sdks/marketing/README.md#createpushtemplate) - Create push template
-* [createSmsTemplate](docs/sdks/marketing/README.md#createsmstemplate) - Create sms template
+* [createEmailTemplate](docs/sdks/marketing/README.md#createemailtemplate) - Create Email Templates
+* [createInAppTemplate](docs/sdks/marketing/README.md#createinapptemplate) - Create In-App Template
+* [~~createOmniChannelTemplate~~](docs/sdks/marketing/README.md#createomnichanneltemplate) - Create Omni-Channel Template :warning: **Deprecated**
+* [createPushTemplate](docs/sdks/marketing/README.md#createpushtemplate) - Create Push Template
+* [createSmsTemplate](docs/sdks/marketing/README.md#createsmstemplate) - Create SMS Template
 * [getCampaign](docs/sdks/marketing/README.md#getcampaign) - Get campaign
 * [getContentBlock](docs/sdks/marketing/README.md#getcontentblock) - Get Content Blocks
-* [getEmailTemplate](docs/sdks/marketing/README.md#getemailtemplate) - Get email template
-* [getInAppTemplate](docs/sdks/marketing/README.md#getinapptemplate) - Get in_app template
-* [~~getOmniChannelTemplate~~](docs/sdks/marketing/README.md#getomnichanneltemplate) - Get omni-channel template :warning: **Deprecated**
-* [getPushTemplate](docs/sdks/marketing/README.md#getpushtemplate) - Get push template
-* [getSmsTemplate](docs/sdks/marketing/README.md#getsmstemplate) - Get sms template
+* [getEmailTemplate](docs/sdks/marketing/README.md#getemailtemplate) - Get Email Templates
+* [getInAppTemplate](docs/sdks/marketing/README.md#getinapptemplate) - Get In-App Template
+* [~~getOmniChannelTemplate~~](docs/sdks/marketing/README.md#getomnichanneltemplate) - Get Omni-Channel Template :warning: **Deprecated**
+* [getPushTemplate](docs/sdks/marketing/README.md#getpushtemplate) - Get Push Template
+* [getSmsTemplate](docs/sdks/marketing/README.md#getsmstemplate) - Get SMS Template
 * [listCampaigns](docs/sdks/marketing/README.md#listcampaigns) - List campaigns
 * [listContentBlocks](docs/sdks/marketing/README.md#listcontentblocks) - List Content Blocks
-* [listEmailTemplates](docs/sdks/marketing/README.md#listemailtemplates) - List email templates
-* [listInAppTemplates](docs/sdks/marketing/README.md#listinapptemplates) - List in_app templates
-* [~~listOmniChannelTemplates~~](docs/sdks/marketing/README.md#listomnichanneltemplates) - List omni-channel templates :warning: **Deprecated**
-* [listPushTemplates](docs/sdks/marketing/README.md#listpushtemplates) - List push templates
-* [listSmsTemplates](docs/sdks/marketing/README.md#listsmstemplates) - List sms templates
-* [updateContentBlock](docs/sdks/marketing/README.md#updatecontentblock) - Update email template
-* [updateEmailTemplate](docs/sdks/marketing/README.md#updateemailtemplate) - Update email template
-* [updateInAppTemplate](docs/sdks/marketing/README.md#updateinapptemplate) - Update in_app template
-* [~~updateOmniChannelTemplate~~](docs/sdks/marketing/README.md#updateomnichanneltemplate) - Update omni-channel template :warning: **Deprecated**
-* [updatePushTemplate](docs/sdks/marketing/README.md#updatepushtemplate) - Update push template
-* [updateSmsTemplate](docs/sdks/marketing/README.md#updatesmstemplate) - Update sms template
+* [listEmailTemplates](docs/sdks/marketing/README.md#listemailtemplates) - List Email Templates
+* [listInAppTemplates](docs/sdks/marketing/README.md#listinapptemplates) - List In-App Templates
+* [~~listOmniChannelTemplates~~](docs/sdks/marketing/README.md#listomnichanneltemplates) - List Omni-Channel Templates :warning: **Deprecated**
+* [listPushTemplates](docs/sdks/marketing/README.md#listpushtemplates) - List Push Templates
+* [listSmsTemplates](docs/sdks/marketing/README.md#listsmstemplates) - List SMS Templates
+* [updateContentBlock](docs/sdks/marketing/README.md#updatecontentblock) - Update Content Block
+* [updateEmailTemplate](docs/sdks/marketing/README.md#updateemailtemplate) - Update Email Templates
+* [updateInAppTemplate](docs/sdks/marketing/README.md#updateinapptemplate) - Update In-App Template
+* [~~updateOmniChannelTemplate~~](docs/sdks/marketing/README.md#updateomnichanneltemplate) - Update Omni-Channel Template :warning: **Deprecated**
+* [updatePushTemplate](docs/sdks/marketing/README.md#updatepushtemplate) - Update Push Template
+* [updateSmsTemplate](docs/sdks/marketing/README.md#updatesmstemplate) - Update SMS Template
 
 ### [proxy](docs/sdks/proxy/README.md)
 
@@ -262,7 +269,8 @@ import { StackOne } from "@stackone/stackone-client-ts";
 
 const stackOne = new StackOne({
     security: {
-        password: "<YOUR_PASSWORD_HERE>",
+        password: "",
+        username: "",
     },
 });
 
@@ -274,6 +282,7 @@ async function run() {
             updatedAfter: "2020-01-01T00:00:00.000Z",
         },
         include: "avatar_url,avatar,custom_fields,job_description,benefits",
+        updatedAfter: "2020-01-01T00:00:00.000Z",
         xAccountId: "<value>",
     });
 
@@ -305,7 +314,8 @@ import { SDKValidationError } from "@stackone/stackone-client-ts/sdk/models/erro
 
 const stackOne = new StackOne({
     security: {
-        password: "<YOUR_PASSWORD_HERE>",
+        password: "",
+        username: "",
     },
 });
 
@@ -412,7 +422,8 @@ import { StackOne } from "@stackone/stackone-client-ts";
 
 const stackOne = new StackOne({
     security: {
-        password: "<YOUR_PASSWORD_HERE>",
+        password: "",
+        username: "",
     },
 });
 
@@ -447,7 +458,8 @@ import { StackOne } from "@stackone/stackone-client-ts";
 
 const stackOne = new StackOne({
     security: {
-        password: "<YOUR_PASSWORD_HERE>",
+        password: "",
+        username: "",
     },
 });
 
@@ -494,7 +506,8 @@ const stackOne = new StackOne({
         retryConnectionErrors: false,
     },
     security: {
-        password: "<YOUR_PASSWORD_HERE>",
+        password: "",
+        username: "",
     },
 });
 

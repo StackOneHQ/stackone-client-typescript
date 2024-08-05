@@ -73,7 +73,7 @@ export type MarketingListInAppTemplatesResponse = {
      */
     rawResponse: Response;
     /**
-     * The list of in_app templates was retrieved.
+     * The list of in-app templates was retrieved.
      */
     templatesPaginated?: shared.TemplatesPaginated | undefined;
 };

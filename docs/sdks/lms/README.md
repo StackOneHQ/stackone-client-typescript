@@ -8,8 +8,10 @@
 * [getCategory](#getcategory) - Get Category
 * [getCompletion](#getcompletion) - Get Completion
 * [getContent](#getcontent) - Get Content
+* [getUser](#getuser) - Get User
 * [listCategories](#listcategories) - List Categories
 * [listContent](#listcontent) - List Content
+* [listUsers](#listusers) - List Users
 * [updateContent](#updatecontent) - Update Content
 * [upsertContent](#upsertcontent) - Upsert Content
 
@@ -24,7 +26,8 @@ import { StackOne } from "@stackone/stackone-client-ts";
 
 const stackOne = new StackOne({
   security: {
-    password: "<YOUR_PASSWORD_HERE>",
+    password: "",
+    username: "",
   },
 });
 
@@ -122,7 +125,8 @@ import { ContentLanguageEnumValue } from "@stackone/stackone-client-ts/sdk/model
 
 const stackOne = new StackOne({
   security: {
-    password: "<YOUR_PASSWORD_HERE>",
+    password: "",
+    username: "",
   },
 });
 
@@ -192,7 +196,8 @@ import { StackOne } from "@stackone/stackone-client-ts";
 
 const stackOne = new StackOne({
   security: {
-    password: "<YOUR_PASSWORD_HERE>",
+    password: "",
+    username: "",
   },
 });
 
@@ -240,7 +245,8 @@ import { StackOne } from "@stackone/stackone-client-ts";
 
 const stackOne = new StackOne({
   security: {
-    password: "<YOUR_PASSWORD_HERE>",
+    password: "",
+    username: "",
   },
 });
 
@@ -287,7 +293,8 @@ import { StackOne } from "@stackone/stackone-client-ts";
 
 const stackOne = new StackOne({
   security: {
-    password: "<YOUR_PASSWORD_HERE>",
+    password: "",
+    username: "",
   },
 });
 
@@ -324,6 +331,55 @@ run();
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 4xx-5xx         | */*             |
 
+## getUser
+
+Get User
+
+### Example Usage
+
+```typescript
+import { StackOne } from "@stackone/stackone-client-ts";
+
+const stackOne = new StackOne({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const result = await stackOne.lms.getUser({
+    fields: "id,remote_id,email,phone_number,created_at,updated_at,name",
+    id: "<id>",
+    xAccountId: "<value>",
+  });
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.LmsGetUserRequest](../../sdk/models/operations/lmsgetuserrequest.md)                                                                                               | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+
+### Response
+
+**Promise\<[operations.LmsGetUserResponse](../../sdk/models/operations/lmsgetuserresponse.md)\>**
+### Errors
+
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
+
 ## listCategories
 
 List Categories
@@ -335,7 +391,8 @@ import { StackOne } from "@stackone/stackone-client-ts";
 
 const stackOne = new StackOne({
   security: {
-    password: "<YOUR_PASSWORD_HERE>",
+    password: "",
+    username: "",
   },
 });
 
@@ -345,6 +402,7 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
+    updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
 
@@ -385,7 +443,8 @@ import { StackOne } from "@stackone/stackone-client-ts";
 
 const stackOne = new StackOne({
   security: {
-    password: "<YOUR_PASSWORD_HERE>",
+    password: "",
+    username: "",
   },
 });
 
@@ -395,6 +454,7 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
+    updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
 
@@ -424,6 +484,58 @@ run();
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 4xx-5xx         | */*             |
 
+## listUsers
+
+List Users
+
+### Example Usage
+
+```typescript
+import { StackOne } from "@stackone/stackone-client-ts";
+
+const stackOne = new StackOne({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const result = await stackOne.lms.listUsers({
+    fields: "id,remote_id,email,phone_number,created_at,updated_at,name",
+    filter: {
+      updatedAfter: "2020-01-01T00:00:00.000Z",
+    },
+    updatedAfter: "2020-01-01T00:00:00.000Z",
+    xAccountId: "<value>",
+  });
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.LmsListUsersRequest](../../sdk/models/operations/lmslistusersrequest.md)                                                                                           | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+
+### Response
+
+**Promise\<[operations.LmsListUsersResponse](../../sdk/models/operations/lmslistusersresponse.md)\>**
+### Errors
+
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
+
 ## updateContent
 
 Update Content
@@ -436,7 +548,8 @@ import { ContentLanguageEnumValue } from "@stackone/stackone-client-ts/sdk/model
 
 const stackOne = new StackOne({
   security: {
-    password: "<YOUR_PASSWORD_HERE>",
+    password: "",
+    username: "",
   },
 });
 
@@ -508,7 +621,8 @@ import { ContentLanguageEnumValue } from "@stackone/stackone-client-ts/sdk/model
 
 const stackOne = new StackOne({
   security: {
-    password: "<YOUR_PASSWORD_HERE>",
+    password: "",
+    username: "",
   },
 });
 

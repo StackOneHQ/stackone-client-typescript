@@ -175,7 +175,17 @@ export function resolveGlobalSecurity(
     return resolveSecurity([
         {
             type: "http:basic",
-            value: { username: security?.username, password: security?.password },
+            value: { password: security?.password, username: security?.username },
         },
     ]);
+}
+
+export async function extractSecurity<T extends string | Record<string, unknown>>(
+    sec: T | (() => Promise<T>) | undefined
+): Promise<T | undefined> {
+    if (sec == null) {
+        return;
+    }
+
+    return typeof sec === "function" ? sec() : sec;
 }

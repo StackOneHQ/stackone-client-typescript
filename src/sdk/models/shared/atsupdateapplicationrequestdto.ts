@@ -4,6 +4,12 @@
 
 import { remap as remap$ } from "../../../lib/primitives.js";
 import { catchUnrecognizedEnum, OpenEnum, Unrecognized } from "../../types/enums.js";
+import {
+    ApplicationCustomFields,
+    ApplicationCustomFields$inboundSchema,
+    ApplicationCustomFields$Outbound,
+    ApplicationCustomFields$outboundSchema,
+} from "./applicationcustomfields.js";
 import * as z from "zod";
 
 export type AtsUpdateApplicationRequestDto4 = {};
@@ -77,6 +83,10 @@ export type AtsUpdateApplicationRequestDtoSource = {
 
 export type AtsUpdateApplicationRequestDto = {
     applicationStatus?: AtsUpdateApplicationRequestDtoApplicationStatus | null | undefined;
+    /**
+     * The application custom fields
+     */
+    customFields?: Array<ApplicationCustomFields> | null | undefined;
     /**
      * Unique identifier of the interview stage
      */
@@ -336,6 +346,7 @@ export const AtsUpdateApplicationRequestDto$inboundSchema: z.ZodType<
         application_status: z
             .nullable(z.lazy(() => AtsUpdateApplicationRequestDtoApplicationStatus$inboundSchema))
             .optional(),
+        custom_fields: z.nullable(z.array(ApplicationCustomFields$inboundSchema)).optional(),
         interview_stage_id: z.nullable(z.string()).optional(),
         passthrough: z.nullable(z.record(z.any())).optional(),
         rejected_reason_id: z.nullable(z.string()).optional(),
@@ -346,6 +357,7 @@ export const AtsUpdateApplicationRequestDto$inboundSchema: z.ZodType<
     .transform((v) => {
         return remap$(v, {
             application_status: "applicationStatus",
+            custom_fields: "customFields",
             interview_stage_id: "interviewStageId",
             rejected_reason_id: "rejectedReasonId",
         });
@@ -357,6 +369,7 @@ export type AtsUpdateApplicationRequestDto$Outbound = {
         | AtsUpdateApplicationRequestDtoApplicationStatus$Outbound
         | null
         | undefined;
+    custom_fields?: Array<ApplicationCustomFields$Outbound> | null | undefined;
     interview_stage_id?: string | null | undefined;
     passthrough?: { [k: string]: any } | null | undefined;
     rejected_reason_id?: string | null | undefined;
@@ -373,6 +386,7 @@ export const AtsUpdateApplicationRequestDto$outboundSchema: z.ZodType<
         applicationStatus: z
             .nullable(z.lazy(() => AtsUpdateApplicationRequestDtoApplicationStatus$outboundSchema))
             .optional(),
+        customFields: z.nullable(z.array(ApplicationCustomFields$outboundSchema)).optional(),
         interviewStageId: z.nullable(z.string()).optional(),
         passthrough: z.nullable(z.record(z.any())).optional(),
         rejectedReasonId: z.nullable(z.string()).optional(),
@@ -383,6 +397,7 @@ export const AtsUpdateApplicationRequestDto$outboundSchema: z.ZodType<
     .transform((v) => {
         return remap$(v, {
             applicationStatus: "application_status",
+            customFields: "custom_fields",
             interviewStageId: "interview_stage_id",
             rejectedReasonId: "rejected_reason_id",
         });

@@ -40,7 +40,7 @@ export type MarketingGetInAppTemplateResponse = {
      */
     rawResponse: Response;
     /**
-     * The in_app template with the given identifier was retrieved.
+     * The in-app template with the given identifier was retrieved.
      */
     templateResult?: shared.TemplateResult | undefined;
 };

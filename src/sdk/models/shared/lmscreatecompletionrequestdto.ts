@@ -33,7 +33,7 @@ export type LmsCreateCompletionRequestDtoResult = {
 /**
  * The user associated with this completion
  */
-export type LmsCreateCompletionRequestDtoUser = {
+export type User = {
     /**
      * The date the user was created
      */
@@ -92,7 +92,7 @@ export type LmsCreateCompletionRequestDto = {
     /**
      * The user associated with this completion
      */
-    user?: LmsCreateCompletionRequestDtoUser | null | undefined;
+    user?: User | null | undefined;
     /**
      * The user ID associated with this completion
      */
@@ -280,11 +280,7 @@ export namespace LmsCreateCompletionRequestDtoResult$ {
 }
 
 /** @internal */
-export const LmsCreateCompletionRequestDtoUser$inboundSchema: z.ZodType<
-    LmsCreateCompletionRequestDtoUser,
-    z.ZodTypeDef,
-    unknown
-> = z
+export const User$inboundSchema: z.ZodType<User, z.ZodTypeDef, unknown> = z
     .object({
         created_at: z.nullable(z.string()).optional(),
         email: z.nullable(z.string()).optional(),
@@ -304,7 +300,7 @@ export const LmsCreateCompletionRequestDtoUser$inboundSchema: z.ZodType<
     });
 
 /** @internal */
-export type LmsCreateCompletionRequestDtoUser$Outbound = {
+export type User$Outbound = {
     created_at?: string | null | undefined;
     email?: string | null | undefined;
     id?: string | null | undefined;
@@ -315,11 +311,7 @@ export type LmsCreateCompletionRequestDtoUser$Outbound = {
 };
 
 /** @internal */
-export const LmsCreateCompletionRequestDtoUser$outboundSchema: z.ZodType<
-    LmsCreateCompletionRequestDtoUser$Outbound,
-    z.ZodTypeDef,
-    LmsCreateCompletionRequestDtoUser
-> = z
+export const User$outboundSchema: z.ZodType<User$Outbound, z.ZodTypeDef, User> = z
     .object({
         createdAt: z.nullable(z.string()).optional(),
         email: z.nullable(z.string()).optional(),
@@ -342,13 +334,13 @@ export const LmsCreateCompletionRequestDtoUser$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace LmsCreateCompletionRequestDtoUser$ {
-    /** @deprecated use `LmsCreateCompletionRequestDtoUser$inboundSchema` instead. */
-    export const inboundSchema = LmsCreateCompletionRequestDtoUser$inboundSchema;
-    /** @deprecated use `LmsCreateCompletionRequestDtoUser$outboundSchema` instead. */
-    export const outboundSchema = LmsCreateCompletionRequestDtoUser$outboundSchema;
-    /** @deprecated use `LmsCreateCompletionRequestDtoUser$Outbound` instead. */
-    export type Outbound = LmsCreateCompletionRequestDtoUser$Outbound;
+export namespace User$ {
+    /** @deprecated use `User$inboundSchema` instead. */
+    export const inboundSchema = User$inboundSchema;
+    /** @deprecated use `User$outboundSchema` instead. */
+    export const outboundSchema = User$outboundSchema;
+    /** @deprecated use `User$Outbound` instead. */
+    export type Outbound = User$Outbound;
 }
 
 /** @internal */
@@ -366,7 +358,7 @@ export const LmsCreateCompletionRequestDto$inboundSchema: z.ZodType<
         result: z
             .nullable(z.lazy(() => LmsCreateCompletionRequestDtoResult$inboundSchema))
             .optional(),
-        user: z.nullable(z.lazy(() => LmsCreateCompletionRequestDtoUser$inboundSchema)).optional(),
+        user: z.nullable(z.lazy(() => User$inboundSchema)).optional(),
         user_id: z.nullable(z.string()).optional(),
     })
     .transform((v) => {
@@ -386,7 +378,7 @@ export type LmsCreateCompletionRequestDto$Outbound = {
     external_id?: string | null | undefined;
     passthrough?: { [k: string]: any } | null | undefined;
     result?: LmsCreateCompletionRequestDtoResult$Outbound | null | undefined;
-    user?: LmsCreateCompletionRequestDtoUser$Outbound | null | undefined;
+    user?: User$Outbound | null | undefined;
     user_id?: string | null | undefined;
 };
 
@@ -405,7 +397,7 @@ export const LmsCreateCompletionRequestDto$outboundSchema: z.ZodType<
         result: z
             .nullable(z.lazy(() => LmsCreateCompletionRequestDtoResult$outboundSchema))
             .optional(),
-        user: z.nullable(z.lazy(() => LmsCreateCompletionRequestDtoUser$outboundSchema)).optional(),
+        user: z.nullable(z.lazy(() => User$outboundSchema)).optional(),
         userId: z.nullable(z.string()).optional(),
     })
     .transform((v) => {
