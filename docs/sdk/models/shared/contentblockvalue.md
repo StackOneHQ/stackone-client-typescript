@@ -5,6 +5,8 @@ The Status of the content blocks.
 
 ## Values
 
-| Name   | Value  |
-| ------ | ------ |
-| `Text` | text   |
+| Name       | Value      |
+| ---------- | ---------- |
+| `Draft`    | draft      |
+| `Live`     | live       |
+| `Archived` | archived   |

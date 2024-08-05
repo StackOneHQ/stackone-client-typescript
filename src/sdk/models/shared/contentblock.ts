@@ -17,7 +17,9 @@ export type ContentBlockSourceValue = ContentBlock4 | string | number | boolean;
  * The Status of the content blocks.
  */
 export enum ContentBlockValue {
-    Text = "text",
+    Draft = "draft",
+    Live = "live",
+    Archived = "archived",
 }
 /**
  * The Status of the content blocks.
@@ -50,6 +52,9 @@ export type ContentBlockSchemasSourceValue = ContentBlockSchemas4 | string | num
  */
 export enum ContentBlockSchemasValue {
     Text = "text",
+    Html = "html",
+    Image = "image",
+    CodeSnippet = "code-snippet",
 }
 /**
  * The type of the content blocks.

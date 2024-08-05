@@ -185,6 +185,7 @@ export * from "./scorecardsresult.js";
 export * from "./security.js";
 export * from "./smsmessages.js";
 export * from "./sociallink.js";
+export * from "./statusreason.js";
 export * from "./template.js";
 export * from "./templateresult.js";
 export * from "./templatespaginated.js";

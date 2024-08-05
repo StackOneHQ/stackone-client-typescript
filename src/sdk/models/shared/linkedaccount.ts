@@ -4,6 +4,12 @@
 
 import { remap as remap$ } from "../../../lib/primitives.js";
 import { catchUnrecognizedEnum, OpenEnum, Unrecognized } from "../../types/enums.js";
+import {
+    StatusReason,
+    StatusReason$inboundSchema,
+    StatusReason$Outbound,
+    StatusReason$outboundSchema,
+} from "./statusreason.js";
 import * as z from "zod";
 
 export type Credentials = {};
@@ -28,7 +34,7 @@ export type LinkedAccount = {
     provider: string;
     setupInformation?: SetupInformation | null | undefined;
     status: LinkedAccountStatusOpen;
-    statusReasons?: Array<string> | null | undefined;
+    statusReasons?: Array<StatusReason> | null | undefined;
     updatedAt: Date;
 };
 
@@ -128,7 +134,7 @@ export const LinkedAccount$inboundSchema: z.ZodType<LinkedAccount, z.ZodTypeDef,
         provider: z.string(),
         setup_information: z.nullable(z.lazy(() => SetupInformation$inboundSchema)).optional(),
         status: LinkedAccountStatus$inboundSchema,
-        status_reasons: z.nullable(z.array(z.string())).optional(),
+        status_reasons: z.nullable(z.array(StatusReason$inboundSchema)).optional(),
         updated_at: z
             .string()
             .datetime({ offset: true })
@@ -158,7 +164,7 @@ export type LinkedAccount$Outbound = {
     provider: string;
     setup_information?: SetupInformation$Outbound | null | undefined;
     status: string;
-    status_reasons?: Array<string> | null | undefined;
+    status_reasons?: Array<StatusReason$Outbound> | null | undefined;
     updated_at: string;
 };
 
@@ -179,7 +185,7 @@ export const LinkedAccount$outboundSchema: z.ZodType<
         provider: z.string(),
         setupInformation: z.nullable(z.lazy(() => SetupInformation$outboundSchema)).optional(),
         status: LinkedAccountStatus$outboundSchema,
-        statusReasons: z.nullable(z.array(z.string())).optional(),
+        statusReasons: z.nullable(z.array(StatusReason$outboundSchema)).optional(),
         updatedAt: z.date().transform((v) => v.toISOString()),
     })
     .transform((v) => {

@@ -409,14 +409,13 @@ const sdk = new StackOne({ httpClient });
 
 ### Per-Client Security Schemes
 
-This SDK supports the following security schemes globally:
+This SDK supports the following security scheme globally:
 
-| Name       | Type       | Scheme     |
-| ---------- | ---------- | ---------- |
-| `password` | http       | HTTP Basic |
-| `username` | http       | HTTP Basic |
+| Name                  | Type                  | Scheme                |
+| --------------------- | --------------------- | --------------------- |
+| `username` `password` | http                  | HTTP Basic            |
 
-You can set the security parameters through the `security` optional parameter when initializing the SDK client instance. The selected scheme will be used by default to authenticate with the API for all operations that support it. For example:
+You can set the security parameters through the `security` optional parameter when initializing the SDK client instance. For example:
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
 
