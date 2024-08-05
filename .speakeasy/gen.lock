@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 7fa83af8-9e8e-4410-b7e2-cf1d0eaf688b
 management:
-  docChecksum: a80d8dc9d07a461eeb6ecd9964452bb3
+  docChecksum: dc0627fbb386c5f911ff7c21bec373b1
   docVersion: 1.0.0
-  speakeasyVersion: 1.352.1
-  generationVersion: 2.385.1
-  releaseVersion: 4.13.0
-  configChecksum: 97ea6a06996d8ef0c62d9c02b2fcc260
+  speakeasyVersion: 1.352.2
+  generationVersion: 2.385.2
+  releaseVersion: 4.13.1
+  configChecksum: a51f04da9ccf61e96d84c747b350af69
   repoURL: https://github.com/StackOneHQ/stackone-client-typescript.git
   repoSubDirectory: .
   installationURL: https://github.com/StackOneHQ/stackone-client-typescript
@@ -21,7 +21,7 @@ features:
     downloadStreams: 0.1.1
     envVarSecurityUsage: 0.1.1
     examples: 2.81.4
-    globalSecurity: 2.82.9
+    globalSecurity: 2.82.10
     globalSecurityCallbacks: 0.1.0
     globalServerURLs: 2.82.4
     groups: 2.81.2
@@ -222,6 +222,7 @@ generatedFiles:
   - src/sdk/models/operations/marketingupdatesmstemplate.ts
   - src/sdk/models/operations/stackoneproxyrequest.ts
   - src/sdk/models/shared/linkedaccount.ts
+  - src/sdk/models/shared/statusreason.ts
   - src/sdk/models/shared/linkedaccountmeta.ts
   - src/sdk/models/shared/patchaccountdto.ts
   - src/sdk/models/shared/connectsession.ts
@@ -765,6 +766,7 @@ generatedFiles:
   - docs/sdk/models/shared/setupinformation.md
   - docs/sdk/models/shared/linkedaccountstatus.md
   - docs/sdk/models/shared/linkedaccount.md
+  - docs/sdk/models/shared/statusreason.md
   - docs/sdk/models/shared/linkedaccountmetacategory.md
   - docs/sdk/models/shared/linkedaccountmeta.md
   - docs/sdk/models/shared/patchaccountdto.md
