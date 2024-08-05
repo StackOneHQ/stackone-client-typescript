@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 7fa83af8-9e8e-4410-b7e2-cf1d0eaf688b
 management:
-  docChecksum: c97627bf41e3f3e4b526ba0405c78709
+  docChecksum: a80d8dc9d07a461eeb6ecd9964452bb3
   docVersion: 1.0.0
-  speakeasyVersion: 1.346.3
-  generationVersion: 2.379.6
-  releaseVersion: 4.12.4
-  configChecksum: fd6179deda0c9bc5359dbea192c3f83f
+  speakeasyVersion: 1.352.1
+  generationVersion: 2.385.1
+  releaseVersion: 4.13.0
+  configChecksum: 97ea6a06996d8ef0c62d9c02b2fcc260
   repoURL: https://github.com/StackOneHQ/stackone-client-typescript.git
   repoSubDirectory: .
   installationURL: https://github.com/StackOneHQ/stackone-client-typescript
@@ -15,10 +15,11 @@ features:
   typescript:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.5
-    core: 3.11.10
+    core: 3.11.13
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
     downloadStreams: 0.1.1
+    envVarSecurityUsage: 0.1.1
     examples: 2.81.4
     globalSecurity: 2.82.9
     globalSecurityCallbacks: 0.1.0
@@ -56,6 +57,7 @@ generatedFiles:
   - src/lib/encodings.ts
   - src/lib/http.ts
   - src/lib/is-plain-object.ts
+  - src/lib/matchers.ts
   - src/lib/primitives.ts
   - src/lib/retries.ts
   - src/lib/schemas.ts
@@ -63,10 +65,12 @@ generatedFiles:
   - src/lib/security.ts
   - src/lib/url.ts
   - src/sdk/index.ts
+  - src/sdk/models/errors/httpclienterrors.ts
   - src/sdk/models/errors/sdkerror.ts
   - src/sdk/models/errors/sdkvalidationerror.ts
   - src/sdk/types/blobs.ts
   - src/sdk/types/enums.ts
+  - src/sdk/types/fp.ts
   - src/sdk/types/index.ts
   - src/sdk/types/operations.ts
   - src/sdk/types/rfcdate.ts
@@ -88,8 +92,10 @@ generatedFiles:
   - src/sdk/models/operations/atsgetapplication.ts
   - src/sdk/models/operations/atsgetapplicationdocument.ts
   - src/sdk/models/operations/atsgetapplicationoffer.ts
+  - src/sdk/models/operations/atsgetapplicationscheduledinterview.ts
   - src/sdk/models/operations/atsgetapplicationscorecard.ts
   - src/sdk/models/operations/atsgetassessmentspackage.ts
+  - src/sdk/models/operations/atsgetassessmentsrequest.ts
   - src/sdk/models/operations/atsgetassessmentsresult.ts
   - src/sdk/models/operations/atsgetcandidate.ts
   - src/sdk/models/operations/atsgetcandidatenote.ts
@@ -108,6 +114,7 @@ generatedFiles:
   - src/sdk/models/operations/atslistapplicationscorecards.ts
   - src/sdk/models/operations/atslistapplications.ts
   - src/sdk/models/operations/atslistapplicationsoffers.ts
+  - src/sdk/models/operations/atslistapplicationsscheduledinterviews.ts
   - src/sdk/models/operations/atslistassessmentspackages.ts
   - src/sdk/models/operations/atslistcandidatecustomfielddefinitions.ts
   - src/sdk/models/operations/atslistcandidatenotes.ts
@@ -181,8 +188,10 @@ generatedFiles:
   - src/sdk/models/operations/lmsgetcategory.ts
   - src/sdk/models/operations/lmsgetcompletion.ts
   - src/sdk/models/operations/lmsgetcontent.ts
+  - src/sdk/models/operations/lmsgetuser.ts
   - src/sdk/models/operations/lmslistcategories.ts
   - src/sdk/models/operations/lmslistcontent.ts
+  - src/sdk/models/operations/lmslistusers.ts
   - src/sdk/models/operations/lmsupdatecontent.ts
   - src/sdk/models/operations/lmsupsertcontent.ts
   - src/sdk/models/operations/marketingcreatecontentblock.ts
@@ -248,6 +257,10 @@ generatedFiles:
   - src/sdk/models/shared/atsdocumentresult.ts
   - src/sdk/models/shared/offersresult.ts
   - src/sdk/models/shared/offer.ts
+  - src/sdk/models/shared/scheduledinterviewsresult.ts
+  - src/sdk/models/shared/scheduledinterview.ts
+  - src/sdk/models/shared/interviewer.ts
+  - src/sdk/models/shared/interviewpart.ts
   - src/sdk/models/shared/scorecardsresult.ts
   - src/sdk/models/shared/scorecard.ts
   - src/sdk/models/shared/scorecardsection.ts
@@ -264,8 +277,6 @@ generatedFiles:
   - src/sdk/models/shared/department.ts
   - src/sdk/models/shared/interviewsresult.ts
   - src/sdk/models/shared/interview.ts
-  - src/sdk/models/shared/interviewer.ts
-  - src/sdk/models/shared/interviewpart.ts
   - src/sdk/models/shared/interviewstageresult.ts
   - src/sdk/models/shared/interviewstage.ts
   - src/sdk/models/shared/jobresult.ts
@@ -285,13 +296,14 @@ generatedFiles:
   - src/sdk/models/shared/atslocation.ts
   - src/sdk/models/shared/rejectedreasonresult.ts
   - src/sdk/models/shared/userresult.ts
-  - src/sdk/models/shared/user.ts
+  - src/sdk/models/shared/lmsuser.ts
   - src/sdk/models/shared/customfielddefinitionspaginated.ts
   - src/sdk/models/shared/customfielddefinition.ts
   - src/sdk/models/shared/atsdocumentspaginated.ts
   - src/sdk/models/shared/scorecardspaginated.ts
   - src/sdk/models/shared/applicationspaginated.ts
   - src/sdk/models/shared/offerspaginated.ts
+  - src/sdk/models/shared/scheduledinterviewspaginated.ts
   - src/sdk/models/shared/assessmentspackagespaginated.ts
   - src/sdk/models/shared/notespaginated.ts
   - src/sdk/models/shared/candidatespaginated.ts
@@ -441,10 +453,14 @@ generatedFiles:
   - docs/sdk/models/operations/atsgetapplicationdocumentresponse.md
   - docs/sdk/models/operations/atsgetapplicationofferrequest.md
   - docs/sdk/models/operations/atsgetapplicationofferresponse.md
+  - docs/sdk/models/operations/atsgetapplicationscheduledinterviewrequest.md
+  - docs/sdk/models/operations/atsgetapplicationscheduledinterviewresponse.md
   - docs/sdk/models/operations/atsgetapplicationscorecardrequest.md
   - docs/sdk/models/operations/atsgetapplicationscorecardresponse.md
   - docs/sdk/models/operations/atsgetassessmentspackagerequest.md
   - docs/sdk/models/operations/atsgetassessmentspackageresponse.md
+  - docs/sdk/models/operations/atsgetassessmentsrequestrequest.md
+  - docs/sdk/models/operations/atsgetassessmentsrequestresponse.md
   - docs/sdk/models/operations/atsgetassessmentsresultrequest.md
   - docs/sdk/models/operations/atsgetassessmentsresultresponse.md
   - docs/sdk/models/operations/atsgetcandidaterequest.md
@@ -486,6 +502,9 @@ generatedFiles:
   - docs/sdk/models/operations/atslistapplicationsoffersqueryparamfilter.md
   - docs/sdk/models/operations/atslistapplicationsoffersrequest.md
   - docs/sdk/models/operations/atslistapplicationsoffersresponse.md
+  - docs/sdk/models/operations/atslistapplicationsscheduledinterviewsqueryparamfilter.md
+  - docs/sdk/models/operations/atslistapplicationsscheduledinterviewsrequest.md
+  - docs/sdk/models/operations/atslistapplicationsscheduledinterviewsresponse.md
   - docs/sdk/models/operations/atslistassessmentspackagesqueryparamfilter.md
   - docs/sdk/models/operations/atslistassessmentspackagesrequest.md
   - docs/sdk/models/operations/atslistassessmentspackagesresponse.md
@@ -666,12 +685,17 @@ generatedFiles:
   - docs/sdk/models/operations/lmsgetcompletionresponse.md
   - docs/sdk/models/operations/lmsgetcontentrequest.md
   - docs/sdk/models/operations/lmsgetcontentresponse.md
+  - docs/sdk/models/operations/lmsgetuserrequest.md
+  - docs/sdk/models/operations/lmsgetuserresponse.md
   - docs/sdk/models/operations/lmslistcategoriesqueryparamfilter.md
   - docs/sdk/models/operations/lmslistcategoriesrequest.md
   - docs/sdk/models/operations/lmslistcategoriesresponse.md
   - docs/sdk/models/operations/lmslistcontentqueryparamfilter.md
   - docs/sdk/models/operations/lmslistcontentrequest.md
   - docs/sdk/models/operations/lmslistcontentresponse.md
+  - docs/sdk/models/operations/lmslistusersqueryparamfilter.md
+  - docs/sdk/models/operations/lmslistusersrequest.md
+  - docs/sdk/models/operations/lmslistusersresponse.md
   - docs/sdk/models/operations/lmsupdatecontentrequest.md
   - docs/sdk/models/operations/lmsupdatecontentresponse.md
   - docs/sdk/models/operations/lmsupsertcontentrequest.md
@@ -858,6 +882,19 @@ generatedFiles:
   - docs/sdk/models/shared/offervalue.md
   - docs/sdk/models/shared/offerofferstatus.md
   - docs/sdk/models/shared/offer.md
+  - docs/sdk/models/shared/scheduledinterviewsresult.md
+  - docs/sdk/models/shared/scheduledinterviewinterviewstage.md
+  - docs/sdk/models/shared/scheduledinterview4.md
+  - docs/sdk/models/shared/scheduledinterviewsourcevalue.md
+  - docs/sdk/models/shared/scheduledinterviewvalue.md
+  - docs/sdk/models/shared/scheduledinterviewinterviewstatus.md
+  - docs/sdk/models/shared/scheduledinterview.md
+  - docs/sdk/models/shared/interviewer.md
+  - docs/sdk/models/shared/interviewpart4.md
+  - docs/sdk/models/shared/interviewpartsourcevalue.md
+  - docs/sdk/models/shared/interviewpartvalue.md
+  - docs/sdk/models/shared/interviewparttype.md
+  - docs/sdk/models/shared/interviewpart.md
   - docs/sdk/models/shared/scorecardsresult.md
   - docs/sdk/models/shared/overallrecommendation.md
   - docs/sdk/models/shared/scorecard.md
@@ -899,12 +936,6 @@ generatedFiles:
   - docs/sdk/models/shared/interviewvalue.md
   - docs/sdk/models/shared/interviewstatus.md
   - docs/sdk/models/shared/interview.md
-  - docs/sdk/models/shared/interviewer.md
-  - docs/sdk/models/shared/interviewpart4.md
-  - docs/sdk/models/shared/interviewpartsourcevalue.md
-  - docs/sdk/models/shared/interviewpartvalue.md
-  - docs/sdk/models/shared/interviewparttype.md
-  - docs/sdk/models/shared/interviewpart.md
   - docs/sdk/models/shared/interviewstageresult.md
   - docs/sdk/models/shared/interviewstage.md
   - docs/sdk/models/shared/jobresult.md
@@ -967,7 +998,7 @@ generatedFiles:
   - docs/sdk/models/shared/atslocation.md
   - docs/sdk/models/shared/rejectedreasonresult.md
   - docs/sdk/models/shared/userresult.md
-  - docs/sdk/models/shared/user.md
+  - docs/sdk/models/shared/lmsuser.md
   - docs/sdk/models/shared/customfielddefinitionspaginated.md
   - docs/sdk/models/shared/customfielddefinition4.md
   - docs/sdk/models/shared/customfielddefinitionoptions.md
@@ -980,6 +1011,7 @@ generatedFiles:
   - docs/sdk/models/shared/scorecardspaginated.md
   - docs/sdk/models/shared/applicationspaginated.md
   - docs/sdk/models/shared/offerspaginated.md
+  - docs/sdk/models/shared/scheduledinterviewspaginated.md
   - docs/sdk/models/shared/assessmentspackagespaginated.md
   - docs/sdk/models/shared/notespaginated.md
   - docs/sdk/models/shared/candidatespaginated.md
@@ -1359,7 +1391,7 @@ generatedFiles:
   - docs/sdk/models/shared/lmscreatecompletionrequestdtosourcevalue.md
   - docs/sdk/models/shared/lmscreatecompletionrequestdtovalue.md
   - docs/sdk/models/shared/lmscreatecompletionrequestdtoresult.md
-  - docs/sdk/models/shared/lmscreatecompletionrequestdtouser.md
+  - docs/sdk/models/shared/user.md
   - docs/sdk/models/shared/lmscreatecompletionrequestdto.md
   - docs/sdk/models/shared/lmscreatecontentrequestdto2.md
   - docs/sdk/models/shared/lmscreatecontentrequestdtoactive.md

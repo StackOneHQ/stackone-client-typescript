@@ -1,0 +1,9 @@
+# ScheduledInterviewInterviewStatus
+
+
+## Fields
+
+| Field                                                                                   | Type                                                                                    | Required                                                                                | Description                                                                             | Example                                                                                 |
+| --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| `sourceValue`                                                                           | *shared.ScheduledInterviewSourceValue*                                                  | :heavy_minus_sign:                                                                      | The source value of the interview status.                                               | Unscheduled                                                                             |
+| `value`                                                                                 | [shared.ScheduledInterviewValue](../../../sdk/models/shared/scheduledinterviewvalue.md) | :heavy_minus_sign:                                                                      | The status of the interview.                                                            | unscheduled                                                                             |

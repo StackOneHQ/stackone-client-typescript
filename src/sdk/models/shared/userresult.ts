@@ -3,35 +3,40 @@
  */
 
 import {
+    LmsUser,
+    LmsUser$inboundSchema,
+    LmsUser$Outbound,
+    LmsUser$outboundSchema,
+} from "./lmsuser.js";
+import {
     RawResponse,
     RawResponse$inboundSchema,
     RawResponse$Outbound,
     RawResponse$outboundSchema,
 } from "./rawresponse.js";
-import { User, User$inboundSchema, User$Outbound, User$outboundSchema } from "./user.js";
 import * as z from "zod";
 
 export type UserResult = {
-    data: User;
+    data: LmsUser;
     raw?: Array<RawResponse> | null | undefined;
 };
 
 /** @internal */
 export const UserResult$inboundSchema: z.ZodType<UserResult, z.ZodTypeDef, unknown> = z.object({
-    data: User$inboundSchema,
+    data: LmsUser$inboundSchema,
     raw: z.nullable(z.array(RawResponse$inboundSchema)).optional(),
 });
 
 /** @internal */
 export type UserResult$Outbound = {
-    data: User$Outbound;
+    data: LmsUser$Outbound;
     raw?: Array<RawResponse$Outbound> | null | undefined;
 };
 
 /** @internal */
 export const UserResult$outboundSchema: z.ZodType<UserResult$Outbound, z.ZodTypeDef, UserResult> =
     z.object({
-        data: User$outboundSchema,
+        data: LmsUser$outboundSchema,
         raw: z.nullable(z.array(RawResponse$outboundSchema)).optional(),
     });
 

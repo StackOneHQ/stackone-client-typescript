@@ -1,5 +1,7 @@
 # User
 
+The user associated with this completion
+
 
 ## Fields
 

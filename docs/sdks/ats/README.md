@@ -11,8 +11,10 @@
 * [getApplication](#getapplication) - Get Application
 * [getApplicationDocument](#getapplicationdocument) - Get Application Document
 * [getApplicationOffer](#getapplicationoffer) - Get Application Offer
+* [getApplicationScheduledInterview](#getapplicationscheduledinterview) - Get Applications scheduled interview
 * [getApplicationScorecard](#getapplicationscorecard) - Get Application Scorecard
 * [getAssessmentsPackage](#getassessmentspackage) - Get Assessments Package
+* [getAssessmentsRequest](#getassessmentsrequest) - Get Assessments Requests
 * [getAssessmentsResult](#getassessmentsresult) - Get Assessments Results
 * [getCandidate](#getcandidate) - Get Candidate
 * [getCandidateNote](#getcandidatenote) - Get Candidate Note
@@ -31,6 +33,7 @@
 * [listApplicationScorecards](#listapplicationscorecards) - List Application Scorecards
 * [listApplications](#listapplications) - List Applications
 * [listApplicationsOffers](#listapplicationsoffers) - List Application Offers
+* [listApplicationsScheduledInterviews](#listapplicationsscheduledinterviews) - List Applications scheduled interviews
 * [listAssessmentsPackages](#listassessmentspackages) - List Assessments Packages
 * [listCandidateCustomFieldDefinitions](#listcandidatecustomfielddefinitions) - List candidate custom field definitions
 * [listCandidateNotes](#listcandidatenotes) - List Candidate Notes
@@ -61,7 +64,8 @@ import { AnswerValue, AtsCreateApplicationRequestDtoValue } from "@stackone/stac
 
 const stackOne = new StackOne({
   security: {
-    password: "<YOUR_PASSWORD_HERE>",
+    password: "",
+    username: "",
   },
 });
 
@@ -245,7 +249,8 @@ import { StackOne } from "@stackone/stackone-client-ts";
 
 const stackOne = new StackOne({
   security: {
-    password: "<YOUR_PASSWORD_HERE>",
+    password: "",
+    username: "",
   },
 });
 
@@ -362,7 +367,8 @@ import { AtsCreateNotesRequestDtoValue } from "@stackone/stackone-client-ts/sdk/
 
 const stackOne = new StackOne({
   security: {
-    password: "<YOUR_PASSWORD_HERE>",
+    password: "",
+    username: "",
   },
 });
 
@@ -457,7 +463,8 @@ import { AtsCreateOfferRequestDtoValue } from "@stackone/stackone-client-ts/sdk/
 
 const stackOne = new StackOne({
   security: {
-    password: "<YOUR_PASSWORD_HERE>",
+    password: "",
+    username: "",
   },
 });
 
@@ -552,7 +559,8 @@ import { StackOne } from "@stackone/stackone-client-ts";
 
 const stackOne = new StackOne({
   security: {
-    password: "<YOUR_PASSWORD_HERE>",
+    password: "",
+    username: "",
   },
 });
 
@@ -601,7 +609,8 @@ import { StackOne } from "@stackone/stackone-client-ts";
 
 const stackOne = new StackOne({
   security: {
-    password: "<YOUR_PASSWORD_HERE>",
+    password: "",
+    username: "",
   },
 });
 
@@ -651,7 +660,8 @@ import { StackOne } from "@stackone/stackone-client-ts";
 
 const stackOne = new StackOne({
   security: {
-    password: "<YOUR_PASSWORD_HERE>",
+    password: "",
+    username: "",
   },
 });
 
@@ -700,7 +710,8 @@ import { StackOne } from "@stackone/stackone-client-ts";
 
 const stackOne = new StackOne({
   security: {
-    password: "<YOUR_PASSWORD_HERE>",
+    password: "",
+    username: "",
   },
 });
 
@@ -738,6 +749,56 @@ run();
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 4xx-5xx         | */*             |
 
+## getApplicationScheduledInterview
+
+Get Applications scheduled interview
+
+### Example Usage
+
+```typescript
+import { StackOne } from "@stackone/stackone-client-ts";
+
+const stackOne = new StackOne({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const result = await stackOne.ats.getApplicationScheduledInterview({
+    fields: "id,remote_id,candidate_id,remote_candidate_id,job_id,remote_job_id,interview_stage,interview_stage_id,remote_interview_stage_id,rejected_reason,rejected_reason_id,remote_rejected_reason_id,rejected_reason_ids,remote_rejected_reason_ids,rejected_reasons,rejected_at,location_id,remote_location_id,location_ids,remote_location_ids,status,application_status,questionnaires,attachments,result_links,source,created_at,updated_at,documents,custom_fields,candidate",
+    id: "<id>",
+    subResourceId: "<value>",
+    xAccountId: "<value>",
+  });
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.AtsGetApplicationScheduledInterviewRequest](../../sdk/models/operations/atsgetapplicationscheduledinterviewrequest.md)                                             | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+
+### Response
+
+**Promise\<[operations.AtsGetApplicationScheduledInterviewResponse](../../sdk/models/operations/atsgetapplicationscheduledinterviewresponse.md)\>**
+### Errors
+
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
+
 ## getApplicationScorecard
 
 Get Application Scorecard
@@ -749,7 +810,8 @@ import { StackOne } from "@stackone/stackone-client-ts";
 
 const stackOne = new StackOne({
   security: {
-    password: "<YOUR_PASSWORD_HERE>",
+    password: "",
+    username: "",
   },
 });
 
@@ -798,7 +860,8 @@ import { StackOne } from "@stackone/stackone-client-ts";
 
 const stackOne = new StackOne({
   security: {
-    password: "<YOUR_PASSWORD_HERE>",
+    password: "",
+    username: "",
   },
 });
 
@@ -834,6 +897,54 @@ run();
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 4xx-5xx         | */*             |
 
+## getAssessmentsRequest
+
+Get Assessments Requests
+
+### Example Usage
+
+```typescript
+import { StackOne } from "@stackone/stackone-client-ts";
+
+const stackOne = new StackOne({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const result = await stackOne.ats.getAssessmentsRequest({
+    id: "<id>",
+    xAccountId: "<value>",
+  });
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.AtsGetAssessmentsRequestRequest](../../sdk/models/operations/atsgetassessmentsrequestrequest.md)                                                                   | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+
+### Response
+
+**Promise\<[operations.AtsGetAssessmentsRequestResponse](../../sdk/models/operations/atsgetassessmentsrequestresponse.md)\>**
+### Errors
+
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
+
 ## getAssessmentsResult
 
 Get Assessments Results
@@ -845,7 +956,8 @@ import { StackOne } from "@stackone/stackone-client-ts";
 
 const stackOne = new StackOne({
   security: {
-    password: "<YOUR_PASSWORD_HERE>",
+    password: "",
+    username: "",
   },
 });
 
@@ -892,7 +1004,8 @@ import { StackOne } from "@stackone/stackone-client-ts";
 
 const stackOne = new StackOne({
   security: {
-    password: "<YOUR_PASSWORD_HERE>",
+    password: "",
+    username: "",
   },
 });
 
@@ -941,7 +1054,8 @@ import { StackOne } from "@stackone/stackone-client-ts";
 
 const stackOne = new StackOne({
   security: {
-    password: "<YOUR_PASSWORD_HERE>",
+    password: "",
+    username: "",
   },
 });
 
@@ -990,7 +1104,8 @@ import { StackOne } from "@stackone/stackone-client-ts";
 
 const stackOne = new StackOne({
   security: {
-    password: "<YOUR_PASSWORD_HERE>",
+    password: "",
+    username: "",
   },
 });
 
@@ -1038,7 +1153,8 @@ import { StackOne } from "@stackone/stackone-client-ts";
 
 const stackOne = new StackOne({
   security: {
-    password: "<YOUR_PASSWORD_HERE>",
+    password: "",
+    username: "",
   },
 });
 
@@ -1086,7 +1202,8 @@ import { StackOne } from "@stackone/stackone-client-ts";
 
 const stackOne = new StackOne({
   security: {
-    password: "<YOUR_PASSWORD_HERE>",
+    password: "",
+    username: "",
   },
 });
 
@@ -1134,7 +1251,8 @@ import { StackOne } from "@stackone/stackone-client-ts";
 
 const stackOne = new StackOne({
   security: {
-    password: "<YOUR_PASSWORD_HERE>",
+    password: "",
+    username: "",
   },
 });
 
@@ -1183,7 +1301,8 @@ import { StackOne } from "@stackone/stackone-client-ts";
 
 const stackOne = new StackOne({
   security: {
-    password: "<YOUR_PASSWORD_HERE>",
+    password: "",
+    username: "",
   },
 });
 
@@ -1232,7 +1351,8 @@ import { StackOne } from "@stackone/stackone-client-ts";
 
 const stackOne = new StackOne({
   security: {
-    password: "<YOUR_PASSWORD_HERE>",
+    password: "",
+    username: "",
   },
 });
 
@@ -1280,7 +1400,8 @@ import { StackOne } from "@stackone/stackone-client-ts";
 
 const stackOne = new StackOne({
   security: {
-    password: "<YOUR_PASSWORD_HERE>",
+    password: "",
+    username: "",
   },
 });
 
@@ -1328,7 +1449,8 @@ import { StackOne } from "@stackone/stackone-client-ts";
 
 const stackOne = new StackOne({
   security: {
-    password: "<YOUR_PASSWORD_HERE>",
+    password: "",
+    username: "",
   },
 });
 
@@ -1376,7 +1498,8 @@ import { StackOne } from "@stackone/stackone-client-ts";
 
 const stackOne = new StackOne({
   security: {
-    password: "<YOUR_PASSWORD_HERE>",
+    password: "",
+    username: "",
   },
 });
 
@@ -1424,7 +1547,8 @@ import { StackOne } from "@stackone/stackone-client-ts";
 
 const stackOne = new StackOne({
   security: {
-    password: "<YOUR_PASSWORD_HERE>",
+    password: "",
+    username: "",
   },
 });
 
@@ -1472,7 +1596,8 @@ import { StackOne } from "@stackone/stackone-client-ts";
 
 const stackOne = new StackOne({
   security: {
-    password: "<YOUR_PASSWORD_HERE>",
+    password: "",
+    username: "",
   },
 });
 
@@ -1482,6 +1607,7 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
+    updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
 
@@ -1522,7 +1648,8 @@ import { StackOne } from "@stackone/stackone-client-ts";
 
 const stackOne = new StackOne({
   security: {
-    password: "<YOUR_PASSWORD_HERE>",
+    password: "",
+    username: "",
   },
 });
 
@@ -1533,6 +1660,7 @@ async function run() {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
     id: "<id>",
+    updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
 
@@ -1573,7 +1701,8 @@ import { StackOne } from "@stackone/stackone-client-ts";
 
 const stackOne = new StackOne({
   security: {
-    password: "<YOUR_PASSWORD_HERE>",
+    password: "",
+    username: "",
   },
 });
 
@@ -1584,6 +1713,7 @@ async function run() {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
     id: "<id>",
+    updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
 
@@ -1624,7 +1754,8 @@ import { StackOne } from "@stackone/stackone-client-ts";
 
 const stackOne = new StackOne({
   security: {
-    password: "<YOUR_PASSWORD_HERE>",
+    password: "",
+    username: "",
   },
 });
 
@@ -1636,6 +1767,8 @@ async function run() {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
     include: "attachments,custom_fields",
+    jobId: "cxQiyiuasdFKfdsYfer",
+    updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
 
@@ -1676,7 +1809,8 @@ import { StackOne } from "@stackone/stackone-client-ts";
 
 const stackOne = new StackOne({
   security: {
-    password: "<YOUR_PASSWORD_HERE>",
+    password: "",
+    username: "",
   },
 });
 
@@ -1687,6 +1821,7 @@ async function run() {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
     id: "<id>",
+    updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
 
@@ -1716,6 +1851,59 @@ run();
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 4xx-5xx         | */*             |
 
+## listApplicationsScheduledInterviews
+
+List Applications scheduled interviews
+
+### Example Usage
+
+```typescript
+import { StackOne } from "@stackone/stackone-client-ts";
+
+const stackOne = new StackOne({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const result = await stackOne.ats.listApplicationsScheduledInterviews({
+    fields: "id,remote_id,application_id,remote_application_id,interview_stage_id,remote_interview_stage_id,interview_stage,status,interview_status,interviewer_ids,remote_interviewer_ids,interview_parts,interviewers,start_at,end_at,meeting_url,created_at,updated_at",
+    filter: {
+      updatedAfter: "2020-01-01T00:00:00.000Z",
+    },
+    id: "<id>",
+    updatedAfter: "2020-01-01T00:00:00.000Z",
+    xAccountId: "<value>",
+  });
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.AtsListApplicationsScheduledInterviewsRequest](../../sdk/models/operations/atslistapplicationsscheduledinterviewsrequest.md)                                       | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+
+### Response
+
+**Promise\<[operations.AtsListApplicationsScheduledInterviewsResponse](../../sdk/models/operations/atslistapplicationsscheduledinterviewsresponse.md)\>**
+### Errors
+
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
+
 ## listAssessmentsPackages
 
 List Assessments Packages
@@ -1727,7 +1915,8 @@ import { StackOne } from "@stackone/stackone-client-ts";
 
 const stackOne = new StackOne({
   security: {
-    password: "<YOUR_PASSWORD_HERE>",
+    password: "",
+    username: "",
   },
 });
 
@@ -1736,6 +1925,7 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
+    updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
 
@@ -1776,7 +1966,8 @@ import { StackOne } from "@stackone/stackone-client-ts";
 
 const stackOne = new StackOne({
   security: {
-    password: "<YOUR_PASSWORD_HERE>",
+    password: "",
+    username: "",
   },
 });
 
@@ -1786,6 +1977,7 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
+    updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
 
@@ -1826,7 +2018,8 @@ import { StackOne } from "@stackone/stackone-client-ts";
 
 const stackOne = new StackOne({
   security: {
-    password: "<YOUR_PASSWORD_HERE>",
+    password: "",
+    username: "",
   },
 });
 
@@ -1837,6 +2030,7 @@ async function run() {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
     id: "<id>",
+    updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
 
@@ -1877,7 +2071,8 @@ import { StackOne } from "@stackone/stackone-client-ts";
 
 const stackOne = new StackOne({
   security: {
-    password: "<YOUR_PASSWORD_HERE>",
+    password: "",
+    username: "",
   },
 });
 
@@ -1888,6 +2083,7 @@ async function run() {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
     include: "custom_fields",
+    updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
 
@@ -1928,7 +2124,8 @@ import { StackOne } from "@stackone/stackone-client-ts";
 
 const stackOne = new StackOne({
   security: {
-    password: "<YOUR_PASSWORD_HERE>",
+    password: "",
+    username: "",
   },
 });
 
@@ -1938,6 +2135,7 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
+    updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
 
@@ -1978,7 +2176,8 @@ import { StackOne } from "@stackone/stackone-client-ts";
 
 const stackOne = new StackOne({
   security: {
-    password: "<YOUR_PASSWORD_HERE>",
+    password: "",
+    username: "",
   },
 });
 
@@ -1988,6 +2187,7 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
+    updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
 
@@ -2028,7 +2228,8 @@ import { StackOne } from "@stackone/stackone-client-ts";
 
 const stackOne = new StackOne({
   security: {
-    password: "<YOUR_PASSWORD_HERE>",
+    password: "",
+    username: "",
   },
 });
 
@@ -2038,6 +2239,7 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
+    updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
 
@@ -2078,7 +2280,8 @@ import { StackOne } from "@stackone/stackone-client-ts";
 
 const stackOne = new StackOne({
   security: {
-    password: "<YOUR_PASSWORD_HERE>",
+    password: "",
+    username: "",
   },
 });
 
@@ -2089,6 +2292,7 @@ async function run() {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
     include: "questionnaires",
+    updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
 
@@ -2129,7 +2333,8 @@ import { StackOne } from "@stackone/stackone-client-ts";
 
 const stackOne = new StackOne({
   security: {
-    password: "<YOUR_PASSWORD_HERE>",
+    password: "",
+    username: "",
   },
 });
 
@@ -2140,6 +2345,7 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
+    updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
 
@@ -2180,7 +2386,8 @@ import { StackOne } from "@stackone/stackone-client-ts";
 
 const stackOne = new StackOne({
   security: {
-    password: "<YOUR_PASSWORD_HERE>",
+    password: "",
+    username: "",
   },
 });
 
@@ -2190,6 +2397,7 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
+    updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
 
@@ -2230,7 +2438,8 @@ import { StackOne } from "@stackone/stackone-client-ts";
 
 const stackOne = new StackOne({
   security: {
-    password: "<YOUR_PASSWORD_HERE>",
+    password: "",
+    username: "",
   },
 });
 
@@ -2240,6 +2449,7 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
+    updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
 
@@ -2280,7 +2490,8 @@ import { StackOne } from "@stackone/stackone-client-ts";
 
 const stackOne = new StackOne({
   security: {
-    password: "<YOUR_PASSWORD_HERE>",
+    password: "",
+    username: "",
   },
 });
 
@@ -2290,6 +2501,7 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
+    updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
 
@@ -2330,7 +2542,8 @@ import { StackOne } from "@stackone/stackone-client-ts";
 
 const stackOne = new StackOne({
   security: {
-    password: "<YOUR_PASSWORD_HERE>",
+    password: "",
+    username: "",
   },
 });
 
@@ -2340,6 +2553,7 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
+    updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
 
@@ -2380,7 +2594,8 @@ import { StackOne } from "@stackone/stackone-client-ts";
 
 const stackOne = new StackOne({
   security: {
-    password: "<YOUR_PASSWORD_HERE>",
+    password: "",
+    username: "",
   },
 });
 
@@ -2390,6 +2605,7 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
+    updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
 
@@ -2431,7 +2647,8 @@ import { AtsUpdateApplicationRequestDtoValue } from "@stackone/stackone-client-t
 
 const stackOne = new StackOne({
   security: {
-    password: "<YOUR_PASSWORD_HERE>",
+    password: "",
+    username: "",
   },
 });
 
@@ -2442,6 +2659,24 @@ async function run() {
       sourceValue: "Hired",
         value: AtsUpdateApplicationRequestDtoValue.Hired,
       },
+      customFields: [
+        {
+          description: "The completion status of the employee's training.",
+          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          name: "Training Completion Status",
+          options: [
+            "Not Started",
+            "In Progress",
+            "Completed",
+            "Overdue",
+          ],
+          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          remoteValueId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
+          type: {},
+        value: "Completed",
+          valueId: "value_456",
+        },
+      ],
       interviewStageId: "18bcbb1b-3cbc-4198-a999-460861d19480",
       passthrough: {
         "0": "{",
@@ -2526,7 +2761,8 @@ import { StackOne } from "@stackone/stackone-client-ts";
 
 const stackOne = new StackOne({
   security: {
-    password: "<YOUR_PASSWORD_HERE>",
+    password: "",
+    username: "",
   },
 });
 
@@ -2658,7 +2894,8 @@ import { UnifiedUploadRequestDtoSchemasValue, UnifiedUploadRequestDtoValue } fro
 
 const stackOne = new StackOne({
   security: {
-    password: "<YOUR_PASSWORD_HERE>",
+    password: "",
+    username: "",
   },
 });
 

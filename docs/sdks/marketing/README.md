@@ -4,31 +4,31 @@
 ### Available Operations
 
 * [createContentBlock](#createcontentblock) - Create Content Block
-* [createEmailTemplate](#createemailtemplate) - Create email template
-* [createInAppTemplate](#createinapptemplate) - Create in_app template
-* [~~createOmniChannelTemplate~~](#createomnichanneltemplate) - Create omni-channel template :warning: **Deprecated**
-* [createPushTemplate](#createpushtemplate) - Create push template
-* [createSmsTemplate](#createsmstemplate) - Create sms template
+* [createEmailTemplate](#createemailtemplate) - Create Email Templates
+* [createInAppTemplate](#createinapptemplate) - Create In-App Template
+* [~~createOmniChannelTemplate~~](#createomnichanneltemplate) - Create Omni-Channel Template :warning: **Deprecated**
+* [createPushTemplate](#createpushtemplate) - Create Push Template
+* [createSmsTemplate](#createsmstemplate) - Create SMS Template
 * [getCampaign](#getcampaign) - Get campaign
 * [getContentBlock](#getcontentblock) - Get Content Blocks
-* [getEmailTemplate](#getemailtemplate) - Get email template
-* [getInAppTemplate](#getinapptemplate) - Get in_app template
-* [~~getOmniChannelTemplate~~](#getomnichanneltemplate) - Get omni-channel template :warning: **Deprecated**
-* [getPushTemplate](#getpushtemplate) - Get push template
-* [getSmsTemplate](#getsmstemplate) - Get sms template
+* [getEmailTemplate](#getemailtemplate) - Get Email Templates
+* [getInAppTemplate](#getinapptemplate) - Get In-App Template
+* [~~getOmniChannelTemplate~~](#getomnichanneltemplate) - Get Omni-Channel Template :warning: **Deprecated**
+* [getPushTemplate](#getpushtemplate) - Get Push Template
+* [getSmsTemplate](#getsmstemplate) - Get SMS Template
 * [listCampaigns](#listcampaigns) - List campaigns
 * [listContentBlocks](#listcontentblocks) - List Content Blocks
-* [listEmailTemplates](#listemailtemplates) - List email templates
-* [listInAppTemplates](#listinapptemplates) - List in_app templates
-* [~~listOmniChannelTemplates~~](#listomnichanneltemplates) - List omni-channel templates :warning: **Deprecated**
-* [listPushTemplates](#listpushtemplates) - List push templates
-* [listSmsTemplates](#listsmstemplates) - List sms templates
-* [updateContentBlock](#updatecontentblock) - Update email template
-* [updateEmailTemplate](#updateemailtemplate) - Update email template
-* [updateInAppTemplate](#updateinapptemplate) - Update in_app template
-* [~~updateOmniChannelTemplate~~](#updateomnichanneltemplate) - Update omni-channel template :warning: **Deprecated**
-* [updatePushTemplate](#updatepushtemplate) - Update push template
-* [updateSmsTemplate](#updatesmstemplate) - Update sms template
+* [listEmailTemplates](#listemailtemplates) - List Email Templates
+* [listInAppTemplates](#listinapptemplates) - List In-App Templates
+* [~~listOmniChannelTemplates~~](#listomnichanneltemplates) - List Omni-Channel Templates :warning: **Deprecated**
+* [listPushTemplates](#listpushtemplates) - List Push Templates
+* [listSmsTemplates](#listsmstemplates) - List SMS Templates
+* [updateContentBlock](#updatecontentblock) - Update Content Block
+* [updateEmailTemplate](#updateemailtemplate) - Update Email Templates
+* [updateInAppTemplate](#updateinapptemplate) - Update In-App Template
+* [~~updateOmniChannelTemplate~~](#updateomnichanneltemplate) - Update Omni-Channel Template :warning: **Deprecated**
+* [updatePushTemplate](#updatepushtemplate) - Update Push Template
+* [updateSmsTemplate](#updatesmstemplate) - Update SMS Template
 
 ## createContentBlock
 
@@ -41,7 +41,8 @@ import { StackOne } from "@stackone/stackone-client-ts";
 
 const stackOne = new StackOne({
   security: {
-    password: "<YOUR_PASSWORD_HERE>",
+    password: "",
+    username: "",
   },
 });
 
@@ -115,7 +116,7 @@ run();
 
 ## createEmailTemplate
 
-Create email template
+Create Email Templates
 
 ### Example Usage
 
@@ -124,7 +125,8 @@ import { StackOne } from "@stackone/stackone-client-ts";
 
 const stackOne = new StackOne({
   security: {
-    password: "<YOUR_PASSWORD_HERE>",
+    password: "",
+    username: "",
   },
 });
 
@@ -207,7 +209,7 @@ run();
 
 ## createInAppTemplate
 
-Create in_app template
+Create In-App Template
 
 ### Example Usage
 
@@ -216,7 +218,8 @@ import { StackOne } from "@stackone/stackone-client-ts";
 
 const stackOne = new StackOne({
   security: {
-    password: "<YOUR_PASSWORD_HERE>",
+    password: "",
+    username: "",
   },
 });
 
@@ -299,7 +302,7 @@ run();
 
 ## ~~createOmniChannelTemplate~~
 
-Create omni-channel template
+Create Omni-Channel Template
 
 > :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
@@ -310,7 +313,8 @@ import { StackOne } from "@stackone/stackone-client-ts";
 
 const stackOne = new StackOne({
   security: {
-    password: "<YOUR_PASSWORD_HERE>",
+    password: "",
+    username: "",
   },
 });
 
@@ -393,7 +397,7 @@ run();
 
 ## createPushTemplate
 
-Create push template
+Create Push Template
 
 ### Example Usage
 
@@ -402,7 +406,8 @@ import { StackOne } from "@stackone/stackone-client-ts";
 
 const stackOne = new StackOne({
   security: {
-    password: "<YOUR_PASSWORD_HERE>",
+    password: "",
+    username: "",
   },
 });
 
@@ -485,7 +490,7 @@ run();
 
 ## createSmsTemplate
 
-Create sms template
+Create SMS Template
 
 ### Example Usage
 
@@ -494,7 +499,8 @@ import { StackOne } from "@stackone/stackone-client-ts";
 
 const stackOne = new StackOne({
   security: {
-    password: "<YOUR_PASSWORD_HERE>",
+    password: "",
+    username: "",
   },
 });
 
@@ -586,7 +592,8 @@ import { StackOne } from "@stackone/stackone-client-ts";
 
 const stackOne = new StackOne({
   security: {
-    password: "<YOUR_PASSWORD_HERE>",
+    password: "",
+    username: "",
   },
 });
 
@@ -634,7 +641,8 @@ import { StackOne } from "@stackone/stackone-client-ts";
 
 const stackOne = new StackOne({
   security: {
-    password: "<YOUR_PASSWORD_HERE>",
+    password: "",
+    username: "",
   },
 });
 
@@ -673,7 +681,7 @@ run();
 
 ## getEmailTemplate
 
-Get email template
+Get Email Templates
 
 ### Example Usage
 
@@ -682,7 +690,8 @@ import { StackOne } from "@stackone/stackone-client-ts";
 
 const stackOne = new StackOne({
   security: {
-    password: "<YOUR_PASSWORD_HERE>",
+    password: "",
+    username: "",
   },
 });
 
@@ -721,7 +730,7 @@ run();
 
 ## getInAppTemplate
 
-Get in_app template
+Get In-App Template
 
 ### Example Usage
 
@@ -730,7 +739,8 @@ import { StackOne } from "@stackone/stackone-client-ts";
 
 const stackOne = new StackOne({
   security: {
-    password: "<YOUR_PASSWORD_HERE>",
+    password: "",
+    username: "",
   },
 });
 
@@ -769,7 +779,7 @@ run();
 
 ## ~~getOmniChannelTemplate~~
 
-Get omni-channel template
+Get Omni-Channel Template
 
 > :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
@@ -780,7 +790,8 @@ import { StackOne } from "@stackone/stackone-client-ts";
 
 const stackOne = new StackOne({
   security: {
-    password: "<YOUR_PASSWORD_HERE>",
+    password: "",
+    username: "",
   },
 });
 
@@ -819,7 +830,7 @@ run();
 
 ## getPushTemplate
 
-Get push template
+Get Push Template
 
 ### Example Usage
 
@@ -828,7 +839,8 @@ import { StackOne } from "@stackone/stackone-client-ts";
 
 const stackOne = new StackOne({
   security: {
-    password: "<YOUR_PASSWORD_HERE>",
+    password: "",
+    username: "",
   },
 });
 
@@ -867,7 +879,7 @@ run();
 
 ## getSmsTemplate
 
-Get sms template
+Get SMS Template
 
 ### Example Usage
 
@@ -876,7 +888,8 @@ import { StackOne } from "@stackone/stackone-client-ts";
 
 const stackOne = new StackOne({
   security: {
-    password: "<YOUR_PASSWORD_HERE>",
+    password: "",
+    username: "",
   },
 });
 
@@ -924,7 +937,8 @@ import { StackOne } from "@stackone/stackone-client-ts";
 
 const stackOne = new StackOne({
   security: {
-    password: "<YOUR_PASSWORD_HERE>",
+    password: "",
+    username: "",
   },
 });
 
@@ -934,6 +948,7 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
+    updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
 
@@ -974,7 +989,8 @@ import { StackOne } from "@stackone/stackone-client-ts";
 
 const stackOne = new StackOne({
   security: {
-    password: "<YOUR_PASSWORD_HERE>",
+    password: "",
+    username: "",
   },
 });
 
@@ -984,6 +1000,7 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
+    updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
 
@@ -1015,7 +1032,7 @@ run();
 
 ## listEmailTemplates
 
-List email templates
+List Email Templates
 
 ### Example Usage
 
@@ -1024,7 +1041,8 @@ import { StackOne } from "@stackone/stackone-client-ts";
 
 const stackOne = new StackOne({
   security: {
-    password: "<YOUR_PASSWORD_HERE>",
+    password: "",
+    username: "",
   },
 });
 
@@ -1034,6 +1052,7 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
+    updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
 
@@ -1065,7 +1084,7 @@ run();
 
 ## listInAppTemplates
 
-List in_app templates
+List In-App Templates
 
 ### Example Usage
 
@@ -1074,7 +1093,8 @@ import { StackOne } from "@stackone/stackone-client-ts";
 
 const stackOne = new StackOne({
   security: {
-    password: "<YOUR_PASSWORD_HERE>",
+    password: "",
+    username: "",
   },
 });
 
@@ -1084,6 +1104,7 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
+    updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
 
@@ -1115,7 +1136,7 @@ run();
 
 ## ~~listOmniChannelTemplates~~
 
-List omni-channel templates
+List Omni-Channel Templates
 
 > :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
@@ -1126,7 +1147,8 @@ import { StackOne } from "@stackone/stackone-client-ts";
 
 const stackOne = new StackOne({
   security: {
-    password: "<YOUR_PASSWORD_HERE>",
+    password: "",
+    username: "",
   },
 });
 
@@ -1136,6 +1158,7 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
+    updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
 
@@ -1167,7 +1190,7 @@ run();
 
 ## listPushTemplates
 
-List push templates
+List Push Templates
 
 ### Example Usage
 
@@ -1176,7 +1199,8 @@ import { StackOne } from "@stackone/stackone-client-ts";
 
 const stackOne = new StackOne({
   security: {
-    password: "<YOUR_PASSWORD_HERE>",
+    password: "",
+    username: "",
   },
 });
 
@@ -1186,6 +1210,7 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
+    updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
 
@@ -1217,7 +1242,7 @@ run();
 
 ## listSmsTemplates
 
-List sms templates
+List SMS Templates
 
 ### Example Usage
 
@@ -1226,7 +1251,8 @@ import { StackOne } from "@stackone/stackone-client-ts";
 
 const stackOne = new StackOne({
   security: {
-    password: "<YOUR_PASSWORD_HERE>",
+    password: "",
+    username: "",
   },
 });
 
@@ -1236,6 +1262,7 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
+    updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
 
@@ -1267,7 +1294,7 @@ run();
 
 ## updateContentBlock
 
-Update email template
+Update Content Block
 
 ### Example Usage
 
@@ -1276,7 +1303,8 @@ import { StackOne } from "@stackone/stackone-client-ts";
 
 const stackOne = new StackOne({
   security: {
-    password: "<YOUR_PASSWORD_HERE>",
+    password: "",
+    username: "",
   },
 });
 
@@ -1351,7 +1379,7 @@ run();
 
 ## updateEmailTemplate
 
-Update email template
+Update Email Templates
 
 ### Example Usage
 
@@ -1360,7 +1388,8 @@ import { StackOne } from "@stackone/stackone-client-ts";
 
 const stackOne = new StackOne({
   security: {
-    password: "<YOUR_PASSWORD_HERE>",
+    password: "",
+    username: "",
   },
 });
 
@@ -1444,7 +1473,7 @@ run();
 
 ## updateInAppTemplate
 
-Update in_app template
+Update In-App Template
 
 ### Example Usage
 
@@ -1453,7 +1482,8 @@ import { StackOne } from "@stackone/stackone-client-ts";
 
 const stackOne = new StackOne({
   security: {
-    password: "<YOUR_PASSWORD_HERE>",
+    password: "",
+    username: "",
   },
 });
 
@@ -1537,7 +1567,7 @@ run();
 
 ## ~~updateOmniChannelTemplate~~
 
-Update omni-channel template
+Update Omni-Channel Template
 
 > :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
@@ -1548,7 +1578,8 @@ import { StackOne } from "@stackone/stackone-client-ts";
 
 const stackOne = new StackOne({
   security: {
-    password: "<YOUR_PASSWORD_HERE>",
+    password: "",
+    username: "",
   },
 });
 
@@ -1632,7 +1663,7 @@ run();
 
 ## updatePushTemplate
 
-Update push template
+Update Push Template
 
 ### Example Usage
 
@@ -1641,7 +1672,8 @@ import { StackOne } from "@stackone/stackone-client-ts";
 
 const stackOne = new StackOne({
   security: {
-    password: "<YOUR_PASSWORD_HERE>",
+    password: "",
+    username: "",
   },
 });
 
@@ -1725,7 +1757,7 @@ run();
 
 ## updateSmsTemplate
 
-Update sms template
+Update SMS Template
 
 ### Example Usage
 
@@ -1734,7 +1766,8 @@ import { StackOne } from "@stackone/stackone-client-ts";
 
 const stackOne = new StackOne({
   security: {
-    password: "<YOUR_PASSWORD_HERE>",
+    password: "",
+    username: "",
   },
 });
 

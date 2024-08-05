@@ -5,25 +5,25 @@
 import { remap as remap$ } from "../../../lib/primitives.js";
 import * as z from "zod";
 
-export type User = {
+export type LmsUser = {
     /**
-     * The date the user was created
+     * The created_at date
      */
-    createdAt?: string | null | undefined;
+    createdAt?: Date | null | undefined;
     /**
-     * The email of the user
+     * The user email
      */
     email?: string | null | undefined;
     /**
-     * The user ID
+     * Unique identifier
      */
     id?: string | null | undefined;
     /**
-     * The name of the user
+     * The user name
      */
     name?: string | null | undefined;
     /**
-     * The phone number of the user
+     * The user phone number
      */
     phoneNumber?: string | null | undefined;
     /**
@@ -31,21 +31,35 @@ export type User = {
      */
     remoteId?: string | null | undefined;
     /**
-     * The date the user was last updated
+     * The updated_at date
      */
-    updatedAt?: string | null | undefined;
+    updatedAt?: Date | null | undefined;
 };
 
 /** @internal */
-export const User$inboundSchema: z.ZodType<User, z.ZodTypeDef, unknown> = z
+export const LmsUser$inboundSchema: z.ZodType<LmsUser, z.ZodTypeDef, unknown> = z
     .object({
-        created_at: z.nullable(z.string()).optional(),
+        created_at: z
+            .nullable(
+                z
+                    .string()
+                    .datetime({ offset: true })
+                    .transform((v) => new Date(v))
+            )
+            .optional(),
         email: z.nullable(z.string()).optional(),
         id: z.nullable(z.string()).optional(),
         name: z.nullable(z.string()).optional(),
         phone_number: z.nullable(z.string()).optional(),
         remote_id: z.nullable(z.string()).optional(),
-        updated_at: z.nullable(z.string()).optional(),
+        updated_at: z
+            .nullable(
+                z
+                    .string()
+                    .datetime({ offset: true })
+                    .transform((v) => new Date(v))
+            )
+            .optional(),
     })
     .transform((v) => {
         return remap$(v, {
@@ -57,7 +71,7 @@ export const User$inboundSchema: z.ZodType<User, z.ZodTypeDef, unknown> = z
     });
 
 /** @internal */
-export type User$Outbound = {
+export type LmsUser$Outbound = {
     created_at?: string | null | undefined;
     email?: string | null | undefined;
     id?: string | null | undefined;
@@ -68,15 +82,15 @@ export type User$Outbound = {
 };
 
 /** @internal */
-export const User$outboundSchema: z.ZodType<User$Outbound, z.ZodTypeDef, User> = z
+export const LmsUser$outboundSchema: z.ZodType<LmsUser$Outbound, z.ZodTypeDef, LmsUser> = z
     .object({
-        createdAt: z.nullable(z.string()).optional(),
+        createdAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
         email: z.nullable(z.string()).optional(),
         id: z.nullable(z.string()).optional(),
         name: z.nullable(z.string()).optional(),
         phoneNumber: z.nullable(z.string()).optional(),
         remoteId: z.nullable(z.string()).optional(),
-        updatedAt: z.nullable(z.string()).optional(),
+        updatedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
     })
     .transform((v) => {
         return remap$(v, {
@@ -91,11 +105,11 @@ export const User$outboundSchema: z.ZodType<User$Outbound, z.ZodTypeDef, User> =
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace User$ {
-    /** @deprecated use `User$inboundSchema` instead. */
-    export const inboundSchema = User$inboundSchema;
-    /** @deprecated use `User$outboundSchema` instead. */
-    export const outboundSchema = User$outboundSchema;
-    /** @deprecated use `User$Outbound` instead. */
-    export type Outbound = User$Outbound;
+export namespace LmsUser$ {
+    /** @deprecated use `LmsUser$inboundSchema` instead. */
+    export const inboundSchema = LmsUser$inboundSchema;
+    /** @deprecated use `LmsUser$outboundSchema` instead. */
+    export const outboundSchema = LmsUser$outboundSchema;
+    /** @deprecated use `LmsUser$Outbound` instead. */
+    export type Outbound = LmsUser$Outbound;
 }

@@ -17,13 +17,14 @@ import { StackOne } from "@stackone/stackone-client-ts";
 
 const stackOne = new StackOne({
   security: {
-    password: "<YOUR_PASSWORD_HERE>",
+    password: "",
+    username: "",
   },
 });
 
 async function run() {
   const result = await stackOne.connectors.getConnectorMeta({
-    include: "field_path,unmapped_fields,resources,inactive",
+    include: "field_path,unmapped_fields,resources,inactive,webhooks",
     provider: "<value>",
   });
 
@@ -64,13 +65,14 @@ import { StackOne } from "@stackone/stackone-client-ts";
 
 const stackOne = new StackOne({
   security: {
-    password: "<YOUR_PASSWORD_HERE>",
+    password: "",
+    username: "",
   },
 });
 
 async function run() {
   const result = await stackOne.connectors.listConnectorsMeta({
-    include: "field_path,unmapped_fields,resources,inactive",
+    include: "field_path,unmapped_fields,resources,inactive,webhooks",
   });
 
   // Handle the result
