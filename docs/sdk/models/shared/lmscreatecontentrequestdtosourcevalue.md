@@ -1,5 +1,12 @@
 # LmsCreateContentRequestDtoSourceValue
 
+## Example Usage
+
+```typescript
+import { LmsCreateContentRequestDtoSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: LmsCreateContentRequestDtoSourceValue = {};
+```
 
 ## Supported Types
 

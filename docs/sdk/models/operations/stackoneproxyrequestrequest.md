@@ -1,5 +1,21 @@
 # StackoneProxyRequestRequest
 
+## Example Usage
+
+```typescript
+import { StackoneProxyRequestRequest } from "@stackone/stackone-client-ts/sdk/models/operations";
+
+let value: StackoneProxyRequestRequest = {
+    proxyRequestBody: {
+        headers: {
+            "Content-Type": "application/json",
+        },
+        path: "/employees/directory",
+        url: "https://api.sample-integration.com/v1",
+    },
+    xAccountId: "<value>",
+};
+```
 
 ## Fields
 

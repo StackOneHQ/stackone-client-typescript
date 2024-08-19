@@ -1,5 +1,12 @@
 # HrisCreateWorkEligibilityRequestDtoSchemasDocumentSourceValue
 
+## Example Usage
+
+```typescript
+import { HrisCreateWorkEligibilityRequestDtoSchemasDocumentSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: HrisCreateWorkEligibilityRequestDtoSchemasDocumentSourceValue = 4314.18;
+```
 
 ## Supported Types
 

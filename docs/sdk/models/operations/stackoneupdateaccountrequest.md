@@ -1,5 +1,15 @@
 # StackoneUpdateAccountRequest
 
+## Example Usage
+
+```typescript
+import { StackoneUpdateAccountRequest } from "@stackone/stackone-client-ts/sdk/models/operations";
+
+let value: StackoneUpdateAccountRequest = {
+    patchAccountDto: {},
+    id: "<id>",
+};
+```
 
 ## Fields
 

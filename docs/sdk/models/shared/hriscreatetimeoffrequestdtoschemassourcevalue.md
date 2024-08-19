@@ -1,5 +1,12 @@
 # HrisCreateTimeOffRequestDtoSchemasSourceValue
 
+## Example Usage
+
+```typescript
+import { HrisCreateTimeOffRequestDtoSchemasSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: HrisCreateTimeOffRequestDtoSchemasSourceValue = {};
+```
 
 ## Supported Types
 

@@ -2,6 +2,13 @@
 
 The value associated with the custom field.
 
+## Example Usage
+
+```typescript
+import { ContactsCustomFieldsValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: ContactsCustomFieldsValue = "Completed";
+```
 
 ## Supported Types
 

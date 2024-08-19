@@ -2,6 +2,13 @@
 
 The source value of the job postings status.
 
+## Example Usage
+
+```typescript
+import { JobPostingSchemasStatusSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: JobPostingSchemasStatusSourceValue = "Live";
+```
 
 ## Supported Types
 

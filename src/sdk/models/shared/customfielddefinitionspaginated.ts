@@ -9,6 +9,12 @@ import {
     CustomFieldDefinition$Outbound,
     CustomFieldDefinition$outboundSchema,
 } from "./customfielddefinition.js";
+import {
+    RawResponse,
+    RawResponse$inboundSchema,
+    RawResponse$Outbound,
+    RawResponse$outboundSchema,
+} from "./rawresponse.js";
 import * as z from "zod";
 
 export type CustomFieldDefinitionsPaginated = {
@@ -18,7 +24,7 @@ export type CustomFieldDefinitionsPaginated = {
      * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     nextPage?: string | null | undefined;
-    raw?: Array<CustomFieldDefinition> | null | undefined;
+    raw?: Array<RawResponse> | null | undefined;
 };
 
 /** @internal */
@@ -31,7 +37,7 @@ export const CustomFieldDefinitionsPaginated$inboundSchema: z.ZodType<
         data: z.array(CustomFieldDefinition$inboundSchema),
         next: z.nullable(z.string()).optional(),
         next_page: z.nullable(z.string()).optional(),
-        raw: z.nullable(z.array(CustomFieldDefinition$inboundSchema)).optional(),
+        raw: z.nullable(z.array(RawResponse$inboundSchema)).optional(),
     })
     .transform((v) => {
         return remap$(v, {
@@ -44,7 +50,7 @@ export type CustomFieldDefinitionsPaginated$Outbound = {
     data: Array<CustomFieldDefinition$Outbound>;
     next?: string | null | undefined;
     next_page?: string | null | undefined;
-    raw?: Array<CustomFieldDefinition$Outbound> | null | undefined;
+    raw?: Array<RawResponse$Outbound> | null | undefined;
 };
 
 /** @internal */
@@ -57,7 +63,7 @@ export const CustomFieldDefinitionsPaginated$outboundSchema: z.ZodType<
         data: z.array(CustomFieldDefinition$outboundSchema),
         next: z.nullable(z.string()).optional(),
         nextPage: z.nullable(z.string()).optional(),
-        raw: z.nullable(z.array(CustomFieldDefinition$outboundSchema)).optional(),
+        raw: z.nullable(z.array(RawResponse$outboundSchema)).optional(),
     })
     .transform((v) => {
         return remap$(v, {

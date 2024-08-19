@@ -1,5 +1,16 @@
 # AtsGetLocationRequest
 
+## Example Usage
+
+```typescript
+import { AtsGetLocationRequest } from "@stackone/stackone-client-ts/sdk/models/operations";
+
+let value: AtsGetLocationRequest = {
+    fields: "id,remote_id,name",
+    id: "<id>",
+    xAccountId: "<value>",
+};
+```
 
 ## Fields
 

@@ -1,5 +1,12 @@
 # EmployeeSchemasEthnicitySourceValue
 
+## Example Usage
+
+```typescript
+import { EmployeeSchemasEthnicitySourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: EmployeeSchemasEthnicitySourceValue = false;
+```
 
 ## Supported Types
 

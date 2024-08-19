@@ -1,5 +1,14 @@
 # StatusReason
 
+## Example Usage
+
+```typescript
+import { StatusReason } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: StatusReason = {
+    timestamp: new Date("2024-10-15T12:12:25.877Z"),
+};
+```
 
 ## Fields
 

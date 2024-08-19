@@ -2,6 +2,16 @@
 
 Visibility of the note
 
+## Example Usage
+
+```typescript
+import { AtsCreateNotesRequestDtoValue, Visibility } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: Visibility = {
+    sourceValue: "Public",
+    value: AtsCreateNotesRequestDtoValue.Public,
+};
+```
 
 ## Fields
 

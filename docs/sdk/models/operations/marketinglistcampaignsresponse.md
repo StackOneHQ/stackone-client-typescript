@@ -1,5 +1,87 @@
 # MarketingListCampaignsResponse
 
+## Example Usage
+
+```typescript
+import { MarketingListCampaignsResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
+import { CampaignSchemasValue, CampaignValue, ChannelsEnumValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: MarketingListCampaignsResponse = {
+  campaignsPaginated: {
+    data: [
+      {
+        channels: [
+          {
+          sourceValue: "SMS",
+            value: ChannelsEnumValue.Sms,
+          },
+        ],
+        createdAt: new Date("2021-01-01T01:01:01.000Z"),
+        firstSentAt: new Date("2021-01-01T01:01:01.000Z"),
+        id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        lastSentAt: new Date("2021-01-01T01:01:01.000Z"),
+        messages: [
+          {
+            id: "message-id-1",
+          messageContent:     {
+                body: "This is an example SMS body.",
+                from: "1-555-123-4567",
+              },
+            messageType: {
+            sourceValue: "Email",
+              value: {},
+            },
+            name: "SMS Message",
+            remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          },
+          {
+            id: "message-id-2",
+          messageContent:     {
+                body: "<h1>This is an example</h1>
+                          <p>email body</p>",
+                from: "Jane Smith",
+                preheader: "This is the preheader of the email.",
+                replyTo: "reply@example.com",
+                subject: "Example Email Subject",
+              },
+            messageType: {
+            sourceValue: "Email",
+              value: {},
+            },
+            name: "Email Message",
+            remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          },
+          {
+            id: "message-id-3",
+          messageContent:     {
+                body: "This is an example push notification body.",
+              },
+            messageType: {
+            sourceValue: "Email",
+              value: {},
+            },
+            name: "iOS Push Message",
+            remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          },
+        ],
+        remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        scheduleType: {
+        sourceValue: "Immediate",
+          value: CampaignValue.Immediate,
+        },
+        status: {
+        sourceValue: "Email",
+          value: CampaignSchemasValue.Draft,
+        },
+        updatedAt: new Date("2021-01-01T01:01:01.000Z"),
+      },
+    ],
+  },
+  contentType: "<value>",
+  statusCode: 688661,
+  rawResponse:   new Response('{"message": "hello world"}', {headers: {"Content-Type": "application/json"}}),
+};
+```
 
 ## Fields
 

@@ -1,7 +1,12 @@
 # SourceValue
 
-The source value of the Channels.
+## Example Usage
 
+```typescript
+import { SourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: SourceValue = "<value>";
+```
 
 ## Supported Types
 
@@ -23,9 +28,9 @@ const value: number = /* values here */
 const value: boolean = /* values here */
 ```
 
-### `shared.ChannelsEnum4`
+### `shared.AssignmentStatusEnum4`
 
 ```typescript
-const value: shared.ChannelsEnum4 = /* values here */
+const value: shared.AssignmentStatusEnum4 = /* values here */
 ```
 

@@ -1,5 +1,20 @@
 # LinkedAccount
 
+## Example Usage
+
+```typescript
+import { LinkedAccount, LinkedAccountStatus } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: LinkedAccount = {
+    createdAt: new Date("2024-10-06T14:07:47.374Z"),
+    id: "<id>",
+    originOwnerId: "<value>",
+    originOwnerName: "<value>",
+    provider: "<value>",
+    status: LinkedAccountStatus.Inactive,
+    updatedAt: new Date("2022-04-02T02:11:27.054Z"),
+};
+```
 
 ## Fields
 

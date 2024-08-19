@@ -1,5 +1,35 @@
 # HrisGetEmployeeDocumentResponse
 
+## Example Usage
+
+```typescript
+import { HrisGetEmployeeDocumentResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
+import { HrisDocumentApiModelSchemasValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: HrisGetEmployeeDocumentResponse = {
+    contentType: "<value>",
+    hrisDocumentResult: {
+        data: {
+            category: {},
+            createdAt: new Date("2021-01-01T01:01:01.000Z"),
+            fileFormat: {
+                sourceValue: "abc",
+                value: HrisDocumentApiModelSchemasValue.Pdf,
+            },
+            id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+            name: "My Document",
+            path: "/path/to/file",
+            remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+            remoteUrl: "https://example.com/file.pdf",
+            updatedAt: new Date("2021-01-02T01:01:01.000Z"),
+        },
+    },
+    statusCode: 170909,
+    rawResponse: new Response('{"message": "hello world"}', {
+        headers: { "Content-Type": "application/json" },
+    }),
+};
+```
 
 ## Fields
 

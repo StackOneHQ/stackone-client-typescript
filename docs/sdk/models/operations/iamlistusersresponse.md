@@ -1,5 +1,21 @@
 # IamListUsersResponse
 
+## Example Usage
+
+```typescript
+import { IamListUsersResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
+
+let value: IamListUsersResponse = {
+    contentType: "<value>",
+    iamUsersPaginated: {
+        data: [],
+    },
+    statusCode: 778346,
+    rawResponse: new Response('{"message": "hello world"}', {
+        headers: { "Content-Type": "application/json" },
+    }),
+};
+```
 
 ## Fields
 

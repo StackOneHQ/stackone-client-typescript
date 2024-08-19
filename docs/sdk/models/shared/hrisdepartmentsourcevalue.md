@@ -1,5 +1,12 @@
 # HRISDepartmentSourceValue
 
+## Example Usage
+
+```typescript
+import { HRISDepartmentSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: HRISDepartmentSourceValue = 972.6;
+```
 
 ## Supported Types
 

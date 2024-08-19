@@ -2,6 +2,13 @@
 
 The source value of the pay period.
 
+## Example Usage
+
+```typescript
+import { JobPostingCompensationSchemasSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: JobPostingCompensationSchemasSourceValue = "Hour";
+```
 
 ## Supported Types
 

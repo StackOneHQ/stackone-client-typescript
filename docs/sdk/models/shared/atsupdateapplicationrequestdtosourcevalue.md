@@ -2,6 +2,13 @@
 
 The source value of the application status.
 
+## Example Usage
+
+```typescript
+import { AtsUpdateApplicationRequestDtoSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: AtsUpdateApplicationRequestDtoSourceValue = "Hired";
+```
 
 ## Supported Types
 

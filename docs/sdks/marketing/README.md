@@ -95,6 +95,79 @@ async function run() {
 run();
 ```
 
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
+import { marketingCreateContentBlock } from "@stackone/stackone-client-ts/funcs/marketingCreateContentBlock.js";
+
+// Use `StackOneCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const stackOne = new StackOneCore({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const res = await marketingCreateContentBlock(stackOne, {
+    marketingCreateContentBlocksRequestDto: {
+      passthrough: {
+        "0": "{",
+        "1": "\"",
+        "2": "o",
+        "3": "t",
+        "4": "h",
+        "5": "e",
+        "6": "r",
+        "7": "_",
+        "8": "k",
+        "9": "n",
+        "10": "o",
+        "11": "w",
+        "12": "n",
+        "13": "_",
+        "14": "n",
+        "15": "a",
+        "16": "m",
+        "17": "e",
+        "18": "s",
+        "19": "\"",
+        "20": ":",
+        "21": " ",
+        "22": "\"",
+        "23": "J",
+        "24": "o",
+        "25": "h",
+        "26": "n",
+        "27": " ",
+        "28": "D",
+        "29": "o",
+        "30": "e",
+        "31": "\"",
+        "32": "}",
+      },
+    },
+    xAccountId: "<value>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
 ### Parameters
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
@@ -188,6 +261,88 @@ async function run() {
 run();
 ```
 
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
+import { marketingCreateEmailTemplate } from "@stackone/stackone-client-ts/funcs/marketingCreateEmailTemplate.js";
+
+// Use `StackOneCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const stackOne = new StackOneCore({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const res = await marketingCreateEmailTemplate(stackOne, {
+    marketingCreateEmailTemplateRequestDto: {
+      messages: [
+        {
+          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          messageType: {
+          sourceValue: "Email",
+          },
+          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        },
+      ],
+      passthrough: {
+        "0": "{",
+        "1": "\"",
+        "2": "o",
+        "3": "t",
+        "4": "h",
+        "5": "e",
+        "6": "r",
+        "7": "_",
+        "8": "k",
+        "9": "n",
+        "10": "o",
+        "11": "w",
+        "12": "n",
+        "13": "_",
+        "14": "n",
+        "15": "a",
+        "16": "m",
+        "17": "e",
+        "18": "s",
+        "19": "\"",
+        "20": ":",
+        "21": " ",
+        "22": "\"",
+        "23": "J",
+        "24": "o",
+        "25": "h",
+        "26": "n",
+        "27": " ",
+        "28": "D",
+        "29": "o",
+        "30": "e",
+        "31": "\"",
+        "32": "}",
+      },
+    },
+    xAccountId: "<value>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
 ### Parameters
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
@@ -273,6 +428,88 @@ async function run() {
     },
     xAccountId: "<value>",
   });
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
+import { marketingCreateInAppTemplate } from "@stackone/stackone-client-ts/funcs/marketingCreateInAppTemplate.js";
+
+// Use `StackOneCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const stackOne = new StackOneCore({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const res = await marketingCreateInAppTemplate(stackOne, {
+    marketingCreateInAppTemplateRequestDto: {
+      messages: [
+        {
+          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          messageType: {
+          sourceValue: "Email",
+          },
+          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        },
+      ],
+      passthrough: {
+        "0": "{",
+        "1": "\"",
+        "2": "o",
+        "3": "t",
+        "4": "h",
+        "5": "e",
+        "6": "r",
+        "7": "_",
+        "8": "k",
+        "9": "n",
+        "10": "o",
+        "11": "w",
+        "12": "n",
+        "13": "_",
+        "14": "n",
+        "15": "a",
+        "16": "m",
+        "17": "e",
+        "18": "s",
+        "19": "\"",
+        "20": ":",
+        "21": " ",
+        "22": "\"",
+        "23": "J",
+        "24": "o",
+        "25": "h",
+        "26": "n",
+        "27": " ",
+        "28": "D",
+        "29": "o",
+        "30": "e",
+        "31": "\"",
+        "32": "}",
+      },
+    },
+    xAccountId: "<value>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
 
   // Handle the result
   console.log(result)
@@ -376,6 +613,88 @@ async function run() {
 run();
 ```
 
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
+import { marketingCreateOmniChannelTemplate } from "@stackone/stackone-client-ts/funcs/marketingCreateOmniChannelTemplate.js";
+
+// Use `StackOneCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const stackOne = new StackOneCore({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const res = await marketingCreateOmniChannelTemplate(stackOne, {
+    marketingCreateTemplateRequestDto: {
+      messages: [
+        {
+          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          messageType: {
+          sourceValue: "Email",
+          },
+          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        },
+      ],
+      passthrough: {
+        "0": "{",
+        "1": "\"",
+        "2": "o",
+        "3": "t",
+        "4": "h",
+        "5": "e",
+        "6": "r",
+        "7": "_",
+        "8": "k",
+        "9": "n",
+        "10": "o",
+        "11": "w",
+        "12": "n",
+        "13": "_",
+        "14": "n",
+        "15": "a",
+        "16": "m",
+        "17": "e",
+        "18": "s",
+        "19": "\"",
+        "20": ":",
+        "21": " ",
+        "22": "\"",
+        "23": "J",
+        "24": "o",
+        "25": "h",
+        "26": "n",
+        "27": " ",
+        "28": "D",
+        "29": "o",
+        "30": "e",
+        "31": "\"",
+        "32": "}",
+      },
+    },
+    xAccountId: "<value>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
 ### Parameters
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
@@ -461,6 +780,88 @@ async function run() {
     },
     xAccountId: "<value>",
   });
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
+import { marketingCreatePushTemplate } from "@stackone/stackone-client-ts/funcs/marketingCreatePushTemplate.js";
+
+// Use `StackOneCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const stackOne = new StackOneCore({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const res = await marketingCreatePushTemplate(stackOne, {
+    marketingCreatePushTemplateRequestDto: {
+      messages: [
+        {
+          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          messageType: {
+          sourceValue: "Email",
+          },
+          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        },
+      ],
+      passthrough: {
+        "0": "{",
+        "1": "\"",
+        "2": "o",
+        "3": "t",
+        "4": "h",
+        "5": "e",
+        "6": "r",
+        "7": "_",
+        "8": "k",
+        "9": "n",
+        "10": "o",
+        "11": "w",
+        "12": "n",
+        "13": "_",
+        "14": "n",
+        "15": "a",
+        "16": "m",
+        "17": "e",
+        "18": "s",
+        "19": "\"",
+        "20": ":",
+        "21": " ",
+        "22": "\"",
+        "23": "J",
+        "24": "o",
+        "25": "h",
+        "26": "n",
+        "27": " ",
+        "28": "D",
+        "29": "o",
+        "30": "e",
+        "31": "\"",
+        "32": "}",
+      },
+    },
+    xAccountId: "<value>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
 
   // Handle the result
   console.log(result)
@@ -562,6 +963,88 @@ async function run() {
 run();
 ```
 
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
+import { marketingCreateSmsTemplate } from "@stackone/stackone-client-ts/funcs/marketingCreateSmsTemplate.js";
+
+// Use `StackOneCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const stackOne = new StackOneCore({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const res = await marketingCreateSmsTemplate(stackOne, {
+    marketingCreateSmsTemplateRequestDto: {
+      messages: [
+        {
+          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          messageType: {
+          sourceValue: "Email",
+          },
+          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        },
+      ],
+      passthrough: {
+        "0": "{",
+        "1": "\"",
+        "2": "o",
+        "3": "t",
+        "4": "h",
+        "5": "e",
+        "6": "r",
+        "7": "_",
+        "8": "k",
+        "9": "n",
+        "10": "o",
+        "11": "w",
+        "12": "n",
+        "13": "_",
+        "14": "n",
+        "15": "a",
+        "16": "m",
+        "17": "e",
+        "18": "s",
+        "19": "\"",
+        "20": ":",
+        "21": " ",
+        "22": "\"",
+        "23": "J",
+        "24": "o",
+        "25": "h",
+        "26": "n",
+        "27": " ",
+        "28": "D",
+        "29": "o",
+        "30": "e",
+        "31": "\"",
+        "32": "}",
+      },
+    },
+    xAccountId: "<value>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
 ### Parameters
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
@@ -603,6 +1086,44 @@ async function run() {
     id: "<id>",
     xAccountId: "<value>",
   });
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
+import { marketingGetCampaign } from "@stackone/stackone-client-ts/funcs/marketingGetCampaign.js";
+
+// Use `StackOneCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const stackOne = new StackOneCore({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const res = await marketingGetCampaign(stackOne, {
+    fields: "id,remote_id,name,created_at,updated_at,description,schedule_type,status,channels,first_sent_at,last_sent_at,tags,messages",
+    id: "<id>",
+    xAccountId: "<value>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
 
   // Handle the result
   console.log(result)
@@ -660,6 +1181,44 @@ async function run() {
 run();
 ```
 
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
+import { marketingGetContentBlock } from "@stackone/stackone-client-ts/funcs/marketingGetContentBlock.js";
+
+// Use `StackOneCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const stackOne = new StackOneCore({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const res = await marketingGetContentBlock(stackOne, {
+    fields: "id,remote_id,name,type,content,status,tags,created_at,updated_at",
+    id: "<id>",
+    xAccountId: "<value>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
 ### Parameters
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
@@ -709,6 +1268,44 @@ async function run() {
 run();
 ```
 
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
+import { marketingGetEmailTemplate } from "@stackone/stackone-client-ts/funcs/marketingGetEmailTemplate.js";
+
+// Use `StackOneCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const stackOne = new StackOneCore({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const res = await marketingGetEmailTemplate(stackOne, {
+    fields: "id,remote_id,name,messages,created_at,updated_at,tags",
+    id: "<id>",
+    xAccountId: "<value>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
 ### Parameters
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
@@ -750,6 +1347,44 @@ async function run() {
     id: "<id>",
     xAccountId: "<value>",
   });
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
+import { marketingGetInAppTemplate } from "@stackone/stackone-client-ts/funcs/marketingGetInAppTemplate.js";
+
+// Use `StackOneCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const stackOne = new StackOneCore({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const res = await marketingGetInAppTemplate(stackOne, {
+    fields: "id,remote_id,name,messages,created_at,updated_at,tags",
+    id: "<id>",
+    xAccountId: "<value>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
 
   // Handle the result
   console.log(result)
@@ -809,6 +1444,44 @@ async function run() {
 run();
 ```
 
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
+import { marketingGetOmniChannelTemplate } from "@stackone/stackone-client-ts/funcs/marketingGetOmniChannelTemplate.js";
+
+// Use `StackOneCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const stackOne = new StackOneCore({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const res = await marketingGetOmniChannelTemplate(stackOne, {
+    fields: "id,remote_id,name,messages,created_at,updated_at,tags",
+    id: "<id>",
+    xAccountId: "<value>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
 ### Parameters
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
@@ -858,6 +1531,44 @@ async function run() {
 run();
 ```
 
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
+import { marketingGetPushTemplate } from "@stackone/stackone-client-ts/funcs/marketingGetPushTemplate.js";
+
+// Use `StackOneCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const stackOne = new StackOneCore({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const res = await marketingGetPushTemplate(stackOne, {
+    fields: "id,remote_id,name,messages,created_at,updated_at,tags",
+    id: "<id>",
+    xAccountId: "<value>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
 ### Parameters
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
@@ -899,6 +1610,44 @@ async function run() {
     id: "<id>",
     xAccountId: "<value>",
   });
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
+import { marketingGetSmsTemplate } from "@stackone/stackone-client-ts/funcs/marketingGetSmsTemplate.js";
+
+// Use `StackOneCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const stackOne = new StackOneCore({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const res = await marketingGetSmsTemplate(stackOne, {
+    fields: "id,remote_id,name,messages,created_at,updated_at,tags",
+    id: "<id>",
+    xAccountId: "<value>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
 
   // Handle the result
   console.log(result)
@@ -959,6 +1708,47 @@ async function run() {
 run();
 ```
 
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
+import { marketingListCampaigns } from "@stackone/stackone-client-ts/funcs/marketingListCampaigns.js";
+
+// Use `StackOneCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const stackOne = new StackOneCore({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const res = await marketingListCampaigns(stackOne, {
+    fields: "id,remote_id,name,created_at,updated_at,description,schedule_type,status,channels,first_sent_at,last_sent_at,tags,messages",
+    filter: {
+      updatedAfter: "2020-01-01T00:00:00.000Z",
+    },
+    updatedAfter: "2020-01-01T00:00:00.000Z",
+    xAccountId: "<value>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
 ### Parameters
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
@@ -1003,6 +1793,47 @@ async function run() {
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
+import { marketingListContentBlocks } from "@stackone/stackone-client-ts/funcs/marketingListContentBlocks.js";
+
+// Use `StackOneCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const stackOne = new StackOneCore({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const res = await marketingListContentBlocks(stackOne, {
+    fields: "id,remote_id,name,type,content,status,tags,created_at,updated_at",
+    filter: {
+      updatedAfter: "2020-01-01T00:00:00.000Z",
+    },
+    updatedAfter: "2020-01-01T00:00:00.000Z",
+    xAccountId: "<value>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
 
   // Handle the result
   console.log(result)
@@ -1063,6 +1894,47 @@ async function run() {
 run();
 ```
 
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
+import { marketingListEmailTemplates } from "@stackone/stackone-client-ts/funcs/marketingListEmailTemplates.js";
+
+// Use `StackOneCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const stackOne = new StackOneCore({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const res = await marketingListEmailTemplates(stackOne, {
+    fields: "id,remote_id,name,messages,created_at,updated_at,tags",
+    filter: {
+      updatedAfter: "2020-01-01T00:00:00.000Z",
+    },
+    updatedAfter: "2020-01-01T00:00:00.000Z",
+    xAccountId: "<value>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
 ### Parameters
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
@@ -1107,6 +1979,47 @@ async function run() {
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
+import { marketingListInAppTemplates } from "@stackone/stackone-client-ts/funcs/marketingListInAppTemplates.js";
+
+// Use `StackOneCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const stackOne = new StackOneCore({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const res = await marketingListInAppTemplates(stackOne, {
+    fields: "id,remote_id,name,messages,created_at,updated_at,tags",
+    filter: {
+      updatedAfter: "2020-01-01T00:00:00.000Z",
+    },
+    updatedAfter: "2020-01-01T00:00:00.000Z",
+    xAccountId: "<value>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
 
   // Handle the result
   console.log(result)
@@ -1169,6 +2082,47 @@ async function run() {
 run();
 ```
 
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
+import { marketingListOmniChannelTemplates } from "@stackone/stackone-client-ts/funcs/marketingListOmniChannelTemplates.js";
+
+// Use `StackOneCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const stackOne = new StackOneCore({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const res = await marketingListOmniChannelTemplates(stackOne, {
+    fields: "id,remote_id,name,messages,created_at,updated_at,tags",
+    filter: {
+      updatedAfter: "2020-01-01T00:00:00.000Z",
+    },
+    updatedAfter: "2020-01-01T00:00:00.000Z",
+    xAccountId: "<value>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
 ### Parameters
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
@@ -1221,6 +2175,47 @@ async function run() {
 run();
 ```
 
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
+import { marketingListPushTemplates } from "@stackone/stackone-client-ts/funcs/marketingListPushTemplates.js";
+
+// Use `StackOneCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const stackOne = new StackOneCore({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const res = await marketingListPushTemplates(stackOne, {
+    fields: "id,remote_id,name,messages,created_at,updated_at,tags",
+    filter: {
+      updatedAfter: "2020-01-01T00:00:00.000Z",
+    },
+    updatedAfter: "2020-01-01T00:00:00.000Z",
+    xAccountId: "<value>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
 ### Parameters
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
@@ -1265,6 +2260,47 @@ async function run() {
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
+import { marketingListSmsTemplates } from "@stackone/stackone-client-ts/funcs/marketingListSmsTemplates.js";
+
+// Use `StackOneCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const stackOne = new StackOneCore({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const res = await marketingListSmsTemplates(stackOne, {
+    fields: "id,remote_id,name,messages,created_at,updated_at,tags",
+    filter: {
+      updatedAfter: "2020-01-01T00:00:00.000Z",
+    },
+    updatedAfter: "2020-01-01T00:00:00.000Z",
+    xAccountId: "<value>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
 
   // Handle the result
   console.log(result)
@@ -1350,6 +2386,80 @@ async function run() {
     id: "<id>",
     xAccountId: "<value>",
   });
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
+import { marketingUpdateContentBlock } from "@stackone/stackone-client-ts/funcs/marketingUpdateContentBlock.js";
+
+// Use `StackOneCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const stackOne = new StackOneCore({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const res = await marketingUpdateContentBlock(stackOne, {
+    marketingCreateContentBlocksRequestDto: {
+      passthrough: {
+        "0": "{",
+        "1": "\"",
+        "2": "o",
+        "3": "t",
+        "4": "h",
+        "5": "e",
+        "6": "r",
+        "7": "_",
+        "8": "k",
+        "9": "n",
+        "10": "o",
+        "11": "w",
+        "12": "n",
+        "13": "_",
+        "14": "n",
+        "15": "a",
+        "16": "m",
+        "17": "e",
+        "18": "s",
+        "19": "\"",
+        "20": ":",
+        "21": " ",
+        "22": "\"",
+        "23": "J",
+        "24": "o",
+        "25": "h",
+        "26": "n",
+        "27": " ",
+        "28": "D",
+        "29": "o",
+        "30": "e",
+        "31": "\"",
+        "32": "}",
+      },
+    },
+    id: "<id>",
+    xAccountId: "<value>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
 
   // Handle the result
   console.log(result)
@@ -1452,6 +2562,89 @@ async function run() {
 run();
 ```
 
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
+import { marketingUpdateEmailTemplate } from "@stackone/stackone-client-ts/funcs/marketingUpdateEmailTemplate.js";
+
+// Use `StackOneCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const stackOne = new StackOneCore({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const res = await marketingUpdateEmailTemplate(stackOne, {
+    marketingCreateEmailTemplateRequestDto: {
+      messages: [
+        {
+          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          messageType: {
+          sourceValue: "Email",
+          },
+          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        },
+      ],
+      passthrough: {
+        "0": "{",
+        "1": "\"",
+        "2": "o",
+        "3": "t",
+        "4": "h",
+        "5": "e",
+        "6": "r",
+        "7": "_",
+        "8": "k",
+        "9": "n",
+        "10": "o",
+        "11": "w",
+        "12": "n",
+        "13": "_",
+        "14": "n",
+        "15": "a",
+        "16": "m",
+        "17": "e",
+        "18": "s",
+        "19": "\"",
+        "20": ":",
+        "21": " ",
+        "22": "\"",
+        "23": "J",
+        "24": "o",
+        "25": "h",
+        "26": "n",
+        "27": " ",
+        "28": "D",
+        "29": "o",
+        "30": "e",
+        "31": "\"",
+        "32": "}",
+      },
+    },
+    id: "<id>",
+    xAccountId: "<value>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
 ### Parameters
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
@@ -1538,6 +2731,89 @@ async function run() {
     id: "<id>",
     xAccountId: "<value>",
   });
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
+import { marketingUpdateInAppTemplate } from "@stackone/stackone-client-ts/funcs/marketingUpdateInAppTemplate.js";
+
+// Use `StackOneCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const stackOne = new StackOneCore({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const res = await marketingUpdateInAppTemplate(stackOne, {
+    marketingCreateInAppTemplateRequestDto: {
+      messages: [
+        {
+          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          messageType: {
+          sourceValue: "Email",
+          },
+          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        },
+      ],
+      passthrough: {
+        "0": "{",
+        "1": "\"",
+        "2": "o",
+        "3": "t",
+        "4": "h",
+        "5": "e",
+        "6": "r",
+        "7": "_",
+        "8": "k",
+        "9": "n",
+        "10": "o",
+        "11": "w",
+        "12": "n",
+        "13": "_",
+        "14": "n",
+        "15": "a",
+        "16": "m",
+        "17": "e",
+        "18": "s",
+        "19": "\"",
+        "20": ":",
+        "21": " ",
+        "22": "\"",
+        "23": "J",
+        "24": "o",
+        "25": "h",
+        "26": "n",
+        "27": " ",
+        "28": "D",
+        "29": "o",
+        "30": "e",
+        "31": "\"",
+        "32": "}",
+      },
+    },
+    id: "<id>",
+    xAccountId: "<value>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
 
   // Handle the result
   console.log(result)
@@ -1642,6 +2918,89 @@ async function run() {
 run();
 ```
 
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
+import { marketingUpdateOmniChannelTemplate } from "@stackone/stackone-client-ts/funcs/marketingUpdateOmniChannelTemplate.js";
+
+// Use `StackOneCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const stackOne = new StackOneCore({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const res = await marketingUpdateOmniChannelTemplate(stackOne, {
+    marketingCreateTemplateRequestDto: {
+      messages: [
+        {
+          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          messageType: {
+          sourceValue: "Email",
+          },
+          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        },
+      ],
+      passthrough: {
+        "0": "{",
+        "1": "\"",
+        "2": "o",
+        "3": "t",
+        "4": "h",
+        "5": "e",
+        "6": "r",
+        "7": "_",
+        "8": "k",
+        "9": "n",
+        "10": "o",
+        "11": "w",
+        "12": "n",
+        "13": "_",
+        "14": "n",
+        "15": "a",
+        "16": "m",
+        "17": "e",
+        "18": "s",
+        "19": "\"",
+        "20": ":",
+        "21": " ",
+        "22": "\"",
+        "23": "J",
+        "24": "o",
+        "25": "h",
+        "26": "n",
+        "27": " ",
+        "28": "D",
+        "29": "o",
+        "30": "e",
+        "31": "\"",
+        "32": "}",
+      },
+    },
+    id: "<id>",
+    xAccountId: "<value>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
 ### Parameters
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
@@ -1736,6 +3095,89 @@ async function run() {
 run();
 ```
 
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
+import { marketingUpdatePushTemplate } from "@stackone/stackone-client-ts/funcs/marketingUpdatePushTemplate.js";
+
+// Use `StackOneCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const stackOne = new StackOneCore({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const res = await marketingUpdatePushTemplate(stackOne, {
+    marketingCreatePushTemplateRequestDto: {
+      messages: [
+        {
+          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          messageType: {
+          sourceValue: "Email",
+          },
+          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        },
+      ],
+      passthrough: {
+        "0": "{",
+        "1": "\"",
+        "2": "o",
+        "3": "t",
+        "4": "h",
+        "5": "e",
+        "6": "r",
+        "7": "_",
+        "8": "k",
+        "9": "n",
+        "10": "o",
+        "11": "w",
+        "12": "n",
+        "13": "_",
+        "14": "n",
+        "15": "a",
+        "16": "m",
+        "17": "e",
+        "18": "s",
+        "19": "\"",
+        "20": ":",
+        "21": " ",
+        "22": "\"",
+        "23": "J",
+        "24": "o",
+        "25": "h",
+        "26": "n",
+        "27": " ",
+        "28": "D",
+        "29": "o",
+        "30": "e",
+        "31": "\"",
+        "32": "}",
+      },
+    },
+    id: "<id>",
+    xAccountId: "<value>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
 ### Parameters
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
@@ -1822,6 +3264,89 @@ async function run() {
     id: "<id>",
     xAccountId: "<value>",
   });
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
+import { marketingUpdateSmsTemplate } from "@stackone/stackone-client-ts/funcs/marketingUpdateSmsTemplate.js";
+
+// Use `StackOneCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const stackOne = new StackOneCore({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const res = await marketingUpdateSmsTemplate(stackOne, {
+    marketingCreateSmsTemplateRequestDto: {
+      messages: [
+        {
+          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          messageType: {
+          sourceValue: "Email",
+          },
+          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        },
+      ],
+      passthrough: {
+        "0": "{",
+        "1": "\"",
+        "2": "o",
+        "3": "t",
+        "4": "h",
+        "5": "e",
+        "6": "r",
+        "7": "_",
+        "8": "k",
+        "9": "n",
+        "10": "o",
+        "11": "w",
+        "12": "n",
+        "13": "_",
+        "14": "n",
+        "15": "a",
+        "16": "m",
+        "17": "e",
+        "18": "s",
+        "19": "\"",
+        "20": ":",
+        "21": " ",
+        "22": "\"",
+        "23": "J",
+        "24": "o",
+        "25": "h",
+        "26": "n",
+        "27": " ",
+        "28": "D",
+        "29": "o",
+        "30": "e",
+        "31": "\"",
+        "32": "}",
+      },
+    },
+    id: "<id>",
+    xAccountId: "<value>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
 
   // Handle the result
   console.log(result)

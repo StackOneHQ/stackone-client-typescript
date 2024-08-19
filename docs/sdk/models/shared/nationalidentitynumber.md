@@ -2,6 +2,18 @@
 
 The national identity number
 
+## Example Usage
+
+```typescript
+import { EmployeeSchemasNationalIdentityNumberValue, NationalIdentityNumber } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: NationalIdentityNumber = {
+    type: {
+        value: EmployeeSchemasNationalIdentityNumberValue.Ssn,
+    },
+    value: "123456789",
+};
+```
 
 ## Fields
 

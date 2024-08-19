@@ -1,5 +1,19 @@
 # HrisListEmployeeDocumentsRequest
 
+## Example Usage
+
+```typescript
+import { HrisListEmployeeDocumentsRequest } from "@stackone/stackone-client-ts/sdk/models/operations";
+
+let value: HrisListEmployeeDocumentsRequest = {
+    fields: "id,remote_id,name,path,type,category,contents,created_at,updated_at,remote_url,file_format",
+    filter: {
+        updatedAfter: "2020-01-01T00:00:00.000Z",
+    },
+    id: "<id>",
+    xAccountId: "<value>",
+};
+```
 
 ## Fields
 

@@ -1,5 +1,12 @@
 # ApplicationCustomFieldsSourceValue
 
+## Example Usage
+
+```typescript
+import { ApplicationCustomFieldsSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: ApplicationCustomFieldsSourceValue = {};
+```
 
 ## Supported Types
 

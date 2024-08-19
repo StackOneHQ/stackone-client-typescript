@@ -1,5 +1,14 @@
 # IamPermissionType
 
+## Example Usage
+
+```typescript
+import { IamPermissionType, IamPermissionValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: IamPermissionType = {
+    value: IamPermissionValue.ReadWrite,
+};
+```
 
 ## Fields
 

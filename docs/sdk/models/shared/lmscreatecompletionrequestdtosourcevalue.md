@@ -1,5 +1,12 @@
 # LmsCreateCompletionRequestDtoSourceValue
 
+## Example Usage
+
+```typescript
+import { LmsCreateCompletionRequestDtoSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: LmsCreateCompletionRequestDtoSourceValue = 9755.22;
+```
 
 ## Supported Types
 

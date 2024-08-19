@@ -1,5 +1,14 @@
 # InAppMessagesMessageType
 
+## Example Usage
+
+```typescript
+import { InAppMessagesMessageType } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: InAppMessagesMessageType = {
+    sourceValue: "Email",
+};
+```
 
 ## Fields
 

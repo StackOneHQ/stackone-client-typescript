@@ -2,6 +2,13 @@
 
 The employee gender
 
+## Example Usage
+
+```typescript
+import { HrisCreateEmployeeRequestDtoGender } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: HrisCreateEmployeeRequestDtoGender = {};
+```
 
 ## Fields
 

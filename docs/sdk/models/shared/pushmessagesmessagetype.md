@@ -1,5 +1,14 @@
 # PushMessagesMessageType
 
+## Example Usage
+
+```typescript
+import { PushMessagesMessageType } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: PushMessagesMessageType = {
+    sourceValue: "Email",
+};
+```
 
 ## Fields
 

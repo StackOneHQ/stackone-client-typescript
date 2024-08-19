@@ -1,5 +1,12 @@
 # CandidateCustomFieldsOptions
 
+## Example Usage
+
+```typescript
+import { CandidateCustomFieldsOptions } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: CandidateCustomFieldsOptions = {};
+```
 
 ## Supported Types
 

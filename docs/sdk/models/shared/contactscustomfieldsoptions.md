@@ -1,5 +1,12 @@
 # ContactsCustomFieldsOptions
 
+## Example Usage
+
+```typescript
+import { ContactsCustomFieldsOptions } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: ContactsCustomFieldsOptions = false;
+```
 
 ## Supported Types
 

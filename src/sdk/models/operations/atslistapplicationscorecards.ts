@@ -149,7 +149,7 @@ export const AtsListApplicationScorecardsRequest$inboundSchema: z.ZodType<
         page: z.nullable(z.string()).optional(),
         page_size: z.nullable(z.string().default("25")),
         proxy: z.nullable(z.record(z.any())).optional(),
-        raw: z.nullable(z.boolean().default(false)),
+        raw: z.nullable(z.boolean()),
         sync_token: z.nullable(z.string()).optional(),
         updated_after: z.nullable(z.string()).optional(),
         "x-account-id": z.string(),

@@ -1,5 +1,14 @@
 # ContentLanguageEnum
 
+## Example Usage
+
+```typescript
+import { ContentLanguageEnum, ContentLanguageEnumValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: ContentLanguageEnum = {
+    value: ContentLanguageEnumValue.EnGB,
+};
+```
 
 ## Fields
 

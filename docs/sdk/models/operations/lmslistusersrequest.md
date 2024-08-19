@@ -1,5 +1,18 @@
 # LmsListUsersRequest
 
+## Example Usage
+
+```typescript
+import { LmsListUsersRequest } from "@stackone/stackone-client-ts/sdk/models/operations";
+
+let value: LmsListUsersRequest = {
+    fields: "id,remote_id,email,phone_number,created_at,updated_at,name",
+    filter: {
+        updatedAfter: "2020-01-01T00:00:00.000Z",
+    },
+    xAccountId: "<value>",
+};
+```
 
 ## Fields
 

@@ -1,5 +1,14 @@
 # IamGroupType
 
+## Example Usage
+
+```typescript
+import { IamGroupType, IamGroupValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: IamGroupType = {
+    value: IamGroupValue.Team,
+};
+```
 
 ## Fields
 

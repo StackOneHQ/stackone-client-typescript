@@ -2,6 +2,13 @@
 
 The original value from the provider used to derive the unified message type.
 
+## Example Usage
+
+```typescript
+import { SmsMessagesSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: SmsMessagesSourceValue = "Email";
+```
 
 ## Supported Types
 

@@ -1,5 +1,12 @@
 # ContentSourceValue
 
+## Example Usage
+
+```typescript
+import { ContentSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: ContentSourceValue = "<value>";
+```
 
 ## Supported Types
 

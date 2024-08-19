@@ -1,5 +1,12 @@
 # ContentLanguageEnumSourceValue
 
+## Example Usage
+
+```typescript
+import { ContentLanguageEnumSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: ContentLanguageEnumSourceValue = false;
+```
 
 ## Supported Types
 

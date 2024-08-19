@@ -2,6 +2,13 @@
 
 The source value of the notes visibility.
 
+## Example Usage
+
+```typescript
+import { NoteSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: NoteSourceValue = "Public";
+```
 
 ## Supported Types
 

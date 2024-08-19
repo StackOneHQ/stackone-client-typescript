@@ -1,5 +1,12 @@
 # EmploymentSourceValue
 
+## Example Usage
+
+```typescript
+import { EmploymentSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: EmploymentSourceValue = {};
+```
 
 ## Supported Types
 

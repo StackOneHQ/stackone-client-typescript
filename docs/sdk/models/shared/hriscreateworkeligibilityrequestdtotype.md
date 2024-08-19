@@ -1,5 +1,12 @@
 # HrisCreateWorkEligibilityRequestDtoType
 
+## Example Usage
+
+```typescript
+import { HrisCreateWorkEligibilityRequestDtoType } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: HrisCreateWorkEligibilityRequestDtoType = {};
+```
 
 ## Fields
 

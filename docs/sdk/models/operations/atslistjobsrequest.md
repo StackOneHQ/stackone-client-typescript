@@ -1,5 +1,19 @@
 # AtsListJobsRequest
 
+## Example Usage
+
+```typescript
+import { AtsListJobsRequest } from "@stackone/stackone-client-ts/sdk/models/operations";
+
+let value: AtsListJobsRequest = {
+    expand: "job_postings,interview_stages",
+    fields: "id,remote_id,code,title,status,job_status,department_ids,remote_department_ids,location_ids,remote_location_ids,hiring_team,interview_stages,confidential,created_at,updated_at",
+    filter: {
+        updatedAfter: "2020-01-01T00:00:00.000Z",
+    },
+    xAccountId: "<value>",
+};
+```
 
 ## Fields
 

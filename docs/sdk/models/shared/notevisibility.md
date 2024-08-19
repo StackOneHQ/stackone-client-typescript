@@ -2,6 +2,16 @@
 
 Visibility of the note
 
+## Example Usage
+
+```typescript
+import { NoteValue, NoteVisibility } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: NoteVisibility = {
+    sourceValue: "Public",
+    value: NoteValue.Public,
+};
+```
 
 ## Fields
 

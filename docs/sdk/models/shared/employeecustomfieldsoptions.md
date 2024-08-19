@@ -1,5 +1,12 @@
 # EmployeeCustomFieldsOptions
 
+## Example Usage
+
+```typescript
+import { EmployeeCustomFieldsOptions } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: EmployeeCustomFieldsOptions = "<value>";
+```
 
 ## Supported Types
 

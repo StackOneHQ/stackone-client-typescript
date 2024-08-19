@@ -2,6 +2,13 @@
 
 The type of the time off request
 
+## Example Usage
+
+```typescript
+import { TimeOffType } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: TimeOffType = {};
+```
 
 ## Fields
 

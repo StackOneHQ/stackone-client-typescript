@@ -1,5 +1,17 @@
 # AtsGetJobPostingRequest
 
+## Example Usage
+
+```typescript
+import { AtsGetJobPostingRequest } from "@stackone/stackone-client-ts/sdk/models/operations";
+
+let value: AtsGetJobPostingRequest = {
+    fields: "id,remote_id,title,locations,internal,status,job_id,remote_job_id,content,compensation,employment_type,employment_contract_type,external_url,external_apply_url,questionnaires,updated_at,created_at",
+    id: "<id>",
+    include: "questionnaires",
+    xAccountId: "<value>",
+};
+```
 
 ## Fields
 

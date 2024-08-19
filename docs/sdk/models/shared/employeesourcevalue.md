@@ -1,5 +1,12 @@
 # EmployeeSourceValue
 
+## Example Usage
+
+```typescript
+import { EmployeeSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: EmployeeSourceValue = 9840.43;
+```
 
 ## Supported Types
 

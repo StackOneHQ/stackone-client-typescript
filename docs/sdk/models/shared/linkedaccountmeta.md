@@ -1,5 +1,18 @@
 # LinkedAccountMeta
 
+## Example Usage
+
+```typescript
+import { LinkedAccountMeta, LinkedAccountMetaCategory } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: LinkedAccountMeta = {
+    category: LinkedAccountMetaCategory.HrisLegacy,
+    models: {
+        key: "<value>",
+    },
+    provider: "<value>",
+};
+```
 
 ## Fields
 

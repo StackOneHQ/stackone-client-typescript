@@ -1,5 +1,19 @@
 # JobHiringTeam
 
+## Example Usage
+
+```typescript
+import { JobHiringTeam } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: JobHiringTeam = {
+    email: "john.doe@gmail.com",
+    firstName: "John",
+    lastName: "Doe",
+    remoteUserId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
+    role: "Software Engineer",
+    userId: "123456",
+};
+```
 
 ## Fields
 

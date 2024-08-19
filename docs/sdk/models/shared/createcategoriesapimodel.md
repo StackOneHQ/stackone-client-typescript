@@ -1,5 +1,15 @@
 # CreateCategoriesApiModel
 
+## Example Usage
+
+```typescript
+import { CreateCategoriesApiModel } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: CreateCategoriesApiModel = {
+    active: true,
+    name: "Information-Technology",
+};
+```
 
 ## Fields
 

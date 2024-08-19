@@ -1,5 +1,12 @@
 # HRISBenefitSourceValue
 
+## Example Usage
+
+```typescript
+import { HRISBenefitSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: HRISBenefitSourceValue = false;
+```
 
 ## Supported Types
 

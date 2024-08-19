@@ -1,5 +1,19 @@
 # AtsListApplicationsOffersRequest
 
+## Example Usage
+
+```typescript
+import { AtsListApplicationsOffersRequest } from "@stackone/stackone-client-ts/sdk/models/operations";
+
+let value: AtsListApplicationsOffersRequest = {
+    fields: "id,remote_id,application_id,remote_application_id,start_date,status,offer_status,salary,currency,created_at,updated_at,offer_history",
+    filter: {
+        updatedAfter: "2020-01-01T00:00:00.000Z",
+    },
+    id: "<id>",
+    xAccountId: "<value>",
+};
+```
 
 ## Fields
 

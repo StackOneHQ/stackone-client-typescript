@@ -1,5 +1,12 @@
 # LmsUpsertContentRequestDtoSourceValue
 
+## Example Usage
+
+```typescript
+import { LmsUpsertContentRequestDtoSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: LmsUpsertContentRequestDtoSourceValue = 5210.37;
+```
 
 ## Supported Types
 

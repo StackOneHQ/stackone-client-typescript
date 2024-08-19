@@ -1,7 +1,17 @@
 # EmployeeSchemasEthnicityValue
 
+## Example Usage
+
+```typescript
+import { EmployeeSchemasEthnicityValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: EmployeeSchemasEthnicityValue =
+    EmployeeSchemasEthnicityValue.AmericanIndianOrAlaskaNative;
+```
 
 ## Values
+
+This is an open enum. Unrecognized values will be captured as the `Unrecognized<string>` branded type.
 
 | Name                                | Value                               |
 | ----------------------------------- | ----------------------------------- |
@@ -15,3 +25,4 @@
 | `NotDisclosed`                      | not_disclosed                       |
 | `Other`                             | other                               |
 | `UnmappedValue`                     | unmapped_value                      |
+| -                                   | `Unrecognized<string>`              |

@@ -1,5 +1,12 @@
 # IamResourceSourceValue
 
+## Example Usage
+
+```typescript
+import { IamResourceSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: IamResourceSourceValue = 4535.43;
+```
 
 ## Supported Types
 

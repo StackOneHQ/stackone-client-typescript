@@ -56,7 +56,7 @@ export const HrisGetEmployeesTimeOffRequestRequest$inboundSchema: z.ZodType<
         fields: z.nullable(z.string()).optional(),
         id: z.string(),
         proxy: z.nullable(z.record(z.any())).optional(),
-        raw: z.nullable(z.boolean().default(false)),
+        raw: z.nullable(z.boolean()),
         subResourceId: z.string(),
         "x-account-id": z.string(),
     })

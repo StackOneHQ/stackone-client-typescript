@@ -1,5 +1,17 @@
 # AtsGetApplicationDocumentRequest
 
+## Example Usage
+
+```typescript
+import { AtsGetApplicationDocumentRequest } from "@stackone/stackone-client-ts/sdk/models/operations";
+
+let value: AtsGetApplicationDocumentRequest = {
+    fields: "id,remote_id,name,path,type,category,contents,created_at,updated_at,remote_url,file_format",
+    id: "<id>",
+    subResourceId: "<value>",
+    xAccountId: "<value>",
+};
+```
 
 ## Fields
 

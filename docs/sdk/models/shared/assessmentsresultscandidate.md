@@ -1,5 +1,14 @@
 # AssessmentsResultsCandidate
 
+## Example Usage
+
+```typescript
+import { AssessmentsResultsCandidate } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: AssessmentsResultsCandidate = {
+    resultUrl: "https://exmaple.com/result?id=xyz",
+};
+```
 
 ## Fields
 

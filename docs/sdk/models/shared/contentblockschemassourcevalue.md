@@ -2,6 +2,13 @@
 
 The source value of the type.
 
+## Example Usage
+
+```typescript
+import { ContentBlockSchemasSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: ContentBlockSchemasSourceValue = "text";
+```
 
 ## Supported Types
 

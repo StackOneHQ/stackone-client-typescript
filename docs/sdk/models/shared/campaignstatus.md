@@ -2,6 +2,16 @@
 
 Status of the Campaign
 
+## Example Usage
+
+```typescript
+import { CampaignSchemasValue, CampaignStatus } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: CampaignStatus = {
+    sourceValue: "Email",
+    value: CampaignSchemasValue.Archived,
+};
+```
 
 ## Fields
 

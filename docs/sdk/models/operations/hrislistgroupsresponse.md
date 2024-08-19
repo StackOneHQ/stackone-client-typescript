@@ -1,5 +1,30 @@
 # HrisListGroupsResponse
 
+## Example Usage
+
+```typescript
+import { HrisListGroupsResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
+import { HRISGroupValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: HrisListGroupsResponse = {
+    contentType: "<value>",
+    hrisGroupsPaginated: {
+        data: [
+            {
+                id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+                remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+                type: {
+                    value: HRISGroupValue.Team,
+                },
+            },
+        ],
+    },
+    statusCode: 995300,
+    rawResponse: new Response('{"message": "hello world"}', {
+        headers: { "Content-Type": "application/json" },
+    }),
+};
+```
 
 ## Fields
 

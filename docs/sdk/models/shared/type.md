@@ -2,6 +2,16 @@
 
 Type of the answer
 
+## Example Usage
+
+```typescript
+import { AnswerValue, Type } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: Type = {
+    sourceValue: "Short Text",
+    value: AnswerValue.ShortText,
+};
+```
 
 ## Fields
 

@@ -34,6 +34,42 @@ async function run() {
 run();
 ```
 
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
+import { connectSessionsAuthenticateConnectSession } from "@stackone/stackone-client-ts/funcs/connectSessionsAuthenticateConnectSession.js";
+
+// Use `StackOneCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const stackOne = new StackOneCore({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const res = await connectSessionsAuthenticateConnectSession(stackOne, {
+    token: "<value>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
 ### Parameters
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
@@ -85,6 +121,54 @@ async function run() {
     originOwnerId: "<value>",
     originOwnerName: "<value>",
   });
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
+import { connectSessionsCreateConnectSession } from "@stackone/stackone-client-ts/funcs/connectSessionsCreateConnectSession.js";
+import { ConnectSessionCreateCategories } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+// Use `StackOneCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const stackOne = new StackOneCore({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const res = await connectSessionsCreateConnectSession(stackOne, {
+    categories: [
+      ConnectSessionCreateCategories.Ats,
+      ConnectSessionCreateCategories.Hris,
+      ConnectSessionCreateCategories.Marketing,
+      ConnectSessionCreateCategories.Crm,
+      ConnectSessionCreateCategories.Iam,
+      ConnectSessionCreateCategories.Marketing,
+      ConnectSessionCreateCategories.Lms,
+      ConnectSessionCreateCategories.Crm,
+    ],
+    originOwnerId: "<value>",
+    originOwnerName: "<value>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
 
   // Handle the result
   console.log(result)

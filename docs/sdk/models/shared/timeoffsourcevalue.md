@@ -1,5 +1,12 @@
 # TimeOffSourceValue
 
+## Example Usage
+
+```typescript
+import { TimeOffSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: TimeOffSourceValue = false;
+```
 
 ## Supported Types
 

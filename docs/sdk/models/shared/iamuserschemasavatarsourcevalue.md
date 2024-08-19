@@ -1,5 +1,12 @@
 # IamUserSchemasAvatarSourceValue
 
+## Example Usage
+
+```typescript
+import { IamUserSchemasAvatarSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: IamUserSchemasAvatarSourceValue = 7220.56;
+```
 
 ## Supported Types
 

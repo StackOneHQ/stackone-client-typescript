@@ -2,6 +2,16 @@
 
 The file format of the file
 
+## Example Usage
+
+```typescript
+import { HrisDocumentApiModelFileFormat, HrisDocumentApiModelSchemasValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: HrisDocumentApiModelFileFormat = {
+    sourceValue: "abc",
+    value: HrisDocumentApiModelSchemasValue.Pdf,
+};
+```
 
 ## Fields
 

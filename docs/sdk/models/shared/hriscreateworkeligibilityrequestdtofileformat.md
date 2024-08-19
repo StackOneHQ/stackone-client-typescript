@@ -2,6 +2,19 @@
 
 The file format of the file
 
+## Example Usage
+
+```typescript
+import {
+  HrisCreateWorkEligibilityRequestDtoFileFormat,
+  HrisCreateWorkEligibilityRequestDtoSchemasDocumentValue,
+} from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: HrisCreateWorkEligibilityRequestDtoFileFormat = {
+    sourceValue: "abc",
+    value: HrisCreateWorkEligibilityRequestDtoSchemasDocumentValue.Pdf,
+};
+```
 
 ## Fields
 

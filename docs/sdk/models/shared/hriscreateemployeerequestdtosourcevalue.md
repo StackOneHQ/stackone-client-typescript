@@ -1,5 +1,12 @@
 # HrisCreateEmployeeRequestDtoSourceValue
 
+## Example Usage
+
+```typescript
+import { HrisCreateEmployeeRequestDtoSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: HrisCreateEmployeeRequestDtoSourceValue = false;
+```
 
 ## Supported Types
 

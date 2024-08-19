@@ -40,6 +40,49 @@ async function run() {
 run();
 ```
 
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
+import { proxyProxyRequest } from "@stackone/stackone-client-ts/funcs/proxyProxyRequest.js";
+
+// Use `StackOneCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const stackOne = new StackOneCore({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const res = await proxyProxyRequest(stackOne, {
+    proxyRequestBody: {
+      headers: {
+        "Content-Type": "application/json",
+      },
+      path: "/employees/directory",
+      url: "https://api.sample-integration.com/v1",
+    },
+    xAccountId: "<value>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
 ### Parameters
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |

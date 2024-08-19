@@ -1,5 +1,12 @@
 # IamPermissionSourceValue
 
+## Example Usage
+
+```typescript
+import { IamPermissionSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: IamPermissionSourceValue = false;
+```
 
 ## Supported Types
 

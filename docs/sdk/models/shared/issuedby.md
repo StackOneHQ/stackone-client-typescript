@@ -2,6 +2,15 @@
 
 The country code of the issued by authority
 
+## Example Usage
+
+```typescript
+import { HrisCreateWorkEligibilityRequestDtoValue, IssuedBy } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: IssuedBy = {
+    value: HrisCreateWorkEligibilityRequestDtoValue.Us,
+};
+```
 
 ## Fields
 

@@ -1,5 +1,12 @@
 # EmployeeSchemasPreferredLanguageSourceValue
 
+## Example Usage
+
+```typescript
+import { EmployeeSchemasPreferredLanguageSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: EmployeeSchemasPreferredLanguageSourceValue = {};
+```
 
 ## Supported Types
 

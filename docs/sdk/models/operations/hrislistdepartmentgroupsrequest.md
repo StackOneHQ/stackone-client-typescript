@@ -1,5 +1,18 @@
 # HrisListDepartmentGroupsRequest
 
+## Example Usage
+
+```typescript
+import { HrisListDepartmentGroupsRequest } from "@stackone/stackone-client-ts/sdk/models/operations";
+
+let value: HrisListDepartmentGroupsRequest = {
+    fields: "id,remote_id,name",
+    filter: {
+        updatedAfter: "2020-01-01T00:00:00.000Z",
+    },
+    xAccountId: "<value>",
+};
+```
 
 ## Fields
 

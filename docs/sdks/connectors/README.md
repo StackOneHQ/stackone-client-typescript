@@ -35,6 +35,43 @@ async function run() {
 run();
 ```
 
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
+import { connectorsGetConnectorMeta } from "@stackone/stackone-client-ts/funcs/connectorsGetConnectorMeta.js";
+
+// Use `StackOneCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const stackOne = new StackOneCore({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const res = await connectorsGetConnectorMeta(stackOne, {
+    include: "field_path,unmapped_fields,resources,inactive,webhooks",
+    provider: "<value>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
 ### Parameters
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
@@ -74,6 +111,42 @@ async function run() {
   const result = await stackOne.connectors.listConnectorsMeta({
     include: "field_path,unmapped_fields,resources,inactive,webhooks",
   });
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
+import { connectorsListConnectorsMeta } from "@stackone/stackone-client-ts/funcs/connectorsListConnectorsMeta.js";
+
+// Use `StackOneCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const stackOne = new StackOneCore({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const res = await connectorsListConnectorsMeta(stackOne, {
+    include: "field_path,unmapped_fields,resources,inactive,webhooks",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
 
   // Handle the result
   console.log(result)

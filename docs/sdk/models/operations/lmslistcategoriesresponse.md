@@ -1,5 +1,28 @@
 # LmsListCategoriesResponse
 
+## Example Usage
+
+```typescript
+import { LmsListCategoriesResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
+
+let value: LmsListCategoriesResponse = {
+    categoriesPaginated: {
+        data: [
+            {
+                active: true,
+                id: "16873-IT345",
+                name: "Information-Technology",
+                remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+            },
+        ],
+    },
+    contentType: "<value>",
+    statusCode: 673660,
+    rawResponse: new Response('{"message": "hello world"}', {
+        headers: { "Content-Type": "application/json" },
+    }),
+};
+```
 
 ## Fields
 

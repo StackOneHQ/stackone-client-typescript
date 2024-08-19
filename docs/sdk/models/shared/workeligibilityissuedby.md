@@ -2,6 +2,15 @@
 
 The country code of the issued by authority
 
+## Example Usage
+
+```typescript
+import { WorkEligibilityIssuedBy, WorkEligibilityValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: WorkEligibilityIssuedBy = {
+    value: WorkEligibilityValue.Us,
+};
+```
 
 ## Fields
 

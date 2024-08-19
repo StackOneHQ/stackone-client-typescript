@@ -2,6 +2,13 @@
 
 The employee ethnicity
 
+## Example Usage
+
+```typescript
+import { HrisCreateEmployeeRequestDtoEthnicity } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: HrisCreateEmployeeRequestDtoEthnicity = {};
+```
 
 ## Fields
 

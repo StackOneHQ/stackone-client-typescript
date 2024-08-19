@@ -2,6 +2,13 @@
 
 The source value of the location type.
 
+## Example Usage
+
+```typescript
+import { AccountAddressSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: AccountAddressSourceValue = "Home";
+```
 
 ## Supported Types
 

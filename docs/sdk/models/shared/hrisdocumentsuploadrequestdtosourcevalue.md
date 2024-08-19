@@ -1,5 +1,12 @@
 # HrisDocumentsUploadRequestDtoSourceValue
 
+## Example Usage
+
+```typescript
+import { HrisDocumentsUploadRequestDtoSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: HrisDocumentsUploadRequestDtoSourceValue = "public";
+```
 
 ## Supported Types
 

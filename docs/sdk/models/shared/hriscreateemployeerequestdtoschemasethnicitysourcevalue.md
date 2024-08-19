@@ -1,5 +1,12 @@
 # HrisCreateEmployeeRequestDtoSchemasEthnicitySourceValue
 
+## Example Usage
+
+```typescript
+import { HrisCreateEmployeeRequestDtoSchemasEthnicitySourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: HrisCreateEmployeeRequestDtoSchemasEthnicitySourceValue = 4238.55;
+```
 
 ## Supported Types
 

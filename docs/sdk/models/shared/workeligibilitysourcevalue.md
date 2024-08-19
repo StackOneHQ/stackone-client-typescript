@@ -1,5 +1,12 @@
 # WorkEligibilitySourceValue
 
+## Example Usage
+
+```typescript
+import { WorkEligibilitySourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: WorkEligibilitySourceValue = {};
+```
 
 ## Supported Types
 

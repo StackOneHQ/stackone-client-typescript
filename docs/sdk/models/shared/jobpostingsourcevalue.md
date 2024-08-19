@@ -2,6 +2,13 @@
 
 The source value of the employment contract type.
 
+## Example Usage
+
+```typescript
+import { JobPostingSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: JobPostingSourceValue = "FullTime";
+```
 
 ## Supported Types
 

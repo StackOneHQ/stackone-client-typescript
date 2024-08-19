@@ -1,5 +1,28 @@
 # AtsListCandidateCustomFieldDefinitionsResponse
 
+## Example Usage
+
+```typescript
+import { AtsListCandidateCustomFieldDefinitionsResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
+
+let value: AtsListCandidateCustomFieldDefinitionsResponse = {
+    contentType: "<value>",
+    customFieldDefinitionsPaginated: {
+        data: [
+            {
+                id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+                options: ["Not Started", "In Progress", "Completed", "Overdue"],
+                remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+                type: {},
+            },
+        ],
+    },
+    statusCode: 105907,
+    rawResponse: new Response('{"message": "hello world"}', {
+        headers: { "Content-Type": "application/json" },
+    }),
+};
+```
 
 ## Fields
 

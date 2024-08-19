@@ -1,5 +1,15 @@
 # JobPostingStatus
 
+## Example Usage
+
+```typescript
+import { JobPostingSchemasStatusValue, JobPostingStatus } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: JobPostingStatus = {
+    sourceValue: "Live",
+    value: JobPostingSchemasStatusValue.Live,
+};
+```
 
 ## Fields
 

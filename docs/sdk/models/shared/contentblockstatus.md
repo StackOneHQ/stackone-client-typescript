@@ -2,6 +2,16 @@
 
 Stackone enum identifying the status of content block.
 
+## Example Usage
+
+```typescript
+import { ContentBlockStatus, ContentBlockValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: ContentBlockStatus = {
+    sourceValue: "active",
+    value: ContentBlockValue.Live,
+};
+```
 
 ## Fields
 

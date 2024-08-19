@@ -101,6 +101,7 @@ run();
 * [createOffer](docs/sdks/ats/README.md#createoffer) - Creates an offer
 * [downloadApplicationDocument](docs/sdks/ats/README.md#downloadapplicationdocument) - Download Application Document
 * [getApplication](docs/sdks/ats/README.md#getapplication) - Get Application
+* [getApplicationCustomFieldDefinition](docs/sdks/ats/README.md#getapplicationcustomfielddefinition) - Get Application Custom Field Definition
 * [getApplicationDocument](docs/sdks/ats/README.md#getapplicationdocument) - Get Application Document
 * [getApplicationOffer](docs/sdks/ats/README.md#getapplicationoffer) - Get Application Offer
 * [getApplicationScheduledInterview](docs/sdks/ats/README.md#getapplicationscheduledinterview) - Get Applications scheduled interview
@@ -109,6 +110,7 @@ run();
 * [getAssessmentsRequest](docs/sdks/ats/README.md#getassessmentsrequest) - Get Assessments Requests
 * [getAssessmentsResult](docs/sdks/ats/README.md#getassessmentsresult) - Get Assessments Results
 * [getCandidate](docs/sdks/ats/README.md#getcandidate) - Get Candidate
+* [getCandidateCustomFieldDefinition](docs/sdks/ats/README.md#getcandidatecustomfielddefinition) - Get Candidate Custom Field Definition
 * [getCandidateNote](docs/sdks/ats/README.md#getcandidatenote) - Get Candidate Note
 * [getDepartment](docs/sdks/ats/README.md#getdepartment) - Get Department
 * [getInterview](docs/sdks/ats/README.md#getinterview) - Get Interview
@@ -120,14 +122,14 @@ run();
 * [getOffer](docs/sdks/ats/README.md#getoffer) - Get Offer
 * [getRejectedReason](docs/sdks/ats/README.md#getrejectedreason) - Get Rejected Reason
 * [getUser](docs/sdks/ats/README.md#getuser) - Get User
-* [listApplicationCustomFieldDefinitions](docs/sdks/ats/README.md#listapplicationcustomfielddefinitions) - List application custom field definitions
+* [listApplicationCustomFieldDefinitions](docs/sdks/ats/README.md#listapplicationcustomfielddefinitions) - List Application Custom Field Definitions
 * [listApplicationDocuments](docs/sdks/ats/README.md#listapplicationdocuments) - List Application Documents
 * [listApplicationScorecards](docs/sdks/ats/README.md#listapplicationscorecards) - List Application Scorecards
 * [listApplications](docs/sdks/ats/README.md#listapplications) - List Applications
 * [listApplicationsOffers](docs/sdks/ats/README.md#listapplicationsoffers) - List Application Offers
 * [listApplicationsScheduledInterviews](docs/sdks/ats/README.md#listapplicationsscheduledinterviews) - List Applications scheduled interviews
 * [listAssessmentsPackages](docs/sdks/ats/README.md#listassessmentspackages) - List Assessments Packages
-* [listCandidateCustomFieldDefinitions](docs/sdks/ats/README.md#listcandidatecustomfielddefinitions) - List candidate custom field definitions
+* [listCandidateCustomFieldDefinitions](docs/sdks/ats/README.md#listcandidatecustomfielddefinitions) - List Candidate Custom Field Definitions
 * [listCandidateNotes](docs/sdks/ats/README.md#listcandidatenotes) - List Candidate Notes
 * [listCandidates](docs/sdks/ats/README.md#listcandidates) - List Candidates
 * [listDepartments](docs/sdks/ats/README.md#listdepartments) - List Departments
@@ -168,6 +170,7 @@ run();
 * [getEmployee](docs/sdks/hris/README.md#getemployee) - Get Employee
 * [getEmployeeDocument](docs/sdks/hris/README.md#getemployeedocument) - Get Employee Document
 * [getEmployeeDocumentCategory](docs/sdks/hris/README.md#getemployeedocumentcategory) - Get Employee Document Category
+* [getEmployeeEmployment](docs/sdks/hris/README.md#getemployeeemployment) - Get Employee Employment
 * [getEmployeesTimeOffRequest](docs/sdks/hris/README.md#getemployeestimeoffrequest) - Get Employees Time Off Request
 * [getEmployeesWorkEligibility](docs/sdks/hris/README.md#getemployeesworkeligibility) - Get Employees Work Eligibility
 * [getEmployment](docs/sdks/hris/README.md#getemployment) - Get Employment
@@ -180,6 +183,7 @@ run();
 * [listDepartmentGroups](docs/sdks/hris/README.md#listdepartmentgroups) - List Department Groups
 * [listEmployeeCategories](docs/sdks/hris/README.md#listemployeecategories) - List Employee Document Categories
 * [listEmployeeDocuments](docs/sdks/hris/README.md#listemployeedocuments) - List Employee Documents
+* [listEmployeeEmployments](docs/sdks/hris/README.md#listemployeeemployments) - List Employee Employments
 * [listEmployeeTimeOffRequests](docs/sdks/hris/README.md#listemployeetimeoffrequests) - List Employee Time Off Requests
 * [listEmployeeWorkEligibility](docs/sdks/hris/README.md#listemployeeworkeligibility) - List Employee Work Eligibility
 * [listEmployees](docs/sdks/hris/README.md#listemployees) - List Employees
@@ -206,14 +210,18 @@ run();
 
 ### [lms](docs/sdks/lms/README.md)
 
-* [createCompletion](docs/sdks/lms/README.md#createcompletion) - Create Completion
+* [createCompletion](docs/sdks/lms/README.md#createcompletion) - Create User Completion
 * [createContent](docs/sdks/lms/README.md#createcontent) - Create Content
+* [getAssignment](docs/sdks/lms/README.md#getassignment) - Get User Assignment
 * [getCategory](docs/sdks/lms/README.md#getcategory) - Get Category
-* [getCompletion](docs/sdks/lms/README.md#getcompletion) - Get Completion
+* [getCompletion](docs/sdks/lms/README.md#getcompletion) - Get User Completion
 * [getContent](docs/sdks/lms/README.md#getcontent) - Get Content
+* [getCourse](docs/sdks/lms/README.md#getcourse) - Get Course
 * [getUser](docs/sdks/lms/README.md#getuser) - Get User
+* [listAssignments](docs/sdks/lms/README.md#listassignments) - List User Assignments
 * [listCategories](docs/sdks/lms/README.md#listcategories) - List Categories
 * [listContent](docs/sdks/lms/README.md#listcontent) - List Content
+* [listCourses](docs/sdks/lms/README.md#listcourses) - List Courses
 * [listUsers](docs/sdks/lms/README.md#listusers) - List Users
 * [updateContent](docs/sdks/lms/README.md#updatecontent) - Update Content
 * [upsertContent](docs/sdks/lms/README.md#upsertcontent) - Upsert Content
@@ -523,6 +531,195 @@ run();
 
 ```
 <!-- End Retries [retries] -->
+
+<!-- Start Standalone functions [standalone-funcs] -->
+## Standalone functions
+
+All the methods listed above are available as standalone functions. These
+functions are ideal for use in applications running in the browser, serverless
+runtimes or other environments where application bundle size is a primary
+concern. When using a bundler to build your application, all unused
+functionality will be either excluded from the final bundle or tree-shaken away.
+
+To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
+
+<details>
+
+<summary>Available standalone functions</summary>
+
+- [accountsDeleteAccount](docs/sdks/accounts/README.md#deleteaccount)
+- [accountsGetAccountMetaInfo](docs/sdks/accounts/README.md#getaccountmetainfo)
+- [accountsGetAccount](docs/sdks/accounts/README.md#getaccount)
+- [accountsListLinkedAccounts](docs/sdks/accounts/README.md#listlinkedaccounts)
+- [accountsUpdateAccount](docs/sdks/accounts/README.md#updateaccount)
+- [atsCreateApplication](docs/sdks/ats/README.md#createapplication)
+- [atsCreateCandidateNote](docs/sdks/ats/README.md#createcandidatenote)
+- [atsCreateCandidate](docs/sdks/ats/README.md#createcandidate)
+- [atsCreateOffer](docs/sdks/ats/README.md#createoffer)
+- [atsDownloadApplicationDocument](docs/sdks/ats/README.md#downloadapplicationdocument)
+- [atsGetApplicationCustomFieldDefinition](docs/sdks/ats/README.md#getapplicationcustomfielddefinition)
+- [atsGetApplicationDocument](docs/sdks/ats/README.md#getapplicationdocument)
+- [atsGetApplicationOffer](docs/sdks/ats/README.md#getapplicationoffer)
+- [atsGetApplicationScheduledInterview](docs/sdks/ats/README.md#getapplicationscheduledinterview)
+- [atsGetApplicationScorecard](docs/sdks/ats/README.md#getapplicationscorecard)
+- [atsGetApplication](docs/sdks/ats/README.md#getapplication)
+- [atsGetAssessmentsPackage](docs/sdks/ats/README.md#getassessmentspackage)
+- [atsGetAssessmentsRequest](docs/sdks/ats/README.md#getassessmentsrequest)
+- [atsGetAssessmentsResult](docs/sdks/ats/README.md#getassessmentsresult)
+- [atsGetCandidateCustomFieldDefinition](docs/sdks/ats/README.md#getcandidatecustomfielddefinition)
+- [atsGetCandidateNote](docs/sdks/ats/README.md#getcandidatenote)
+- [atsGetCandidate](docs/sdks/ats/README.md#getcandidate)
+- [atsGetDepartment](docs/sdks/ats/README.md#getdepartment)
+- [atsGetInterviewStage](docs/sdks/ats/README.md#getinterviewstage)
+- [atsGetInterview](docs/sdks/ats/README.md#getinterview)
+- [atsGetJobPosting](docs/sdks/ats/README.md#getjobposting)
+- [atsGetJob](docs/sdks/ats/README.md#getjob)
+- [atsGetList](docs/sdks/ats/README.md#getlist)
+- [atsGetLocation](docs/sdks/ats/README.md#getlocation)
+- [atsGetOffer](docs/sdks/ats/README.md#getoffer)
+- [atsGetRejectedReason](docs/sdks/ats/README.md#getrejectedreason)
+- [atsGetUser](docs/sdks/ats/README.md#getuser)
+- [atsListApplicationCustomFieldDefinitions](docs/sdks/ats/README.md#listapplicationcustomfielddefinitions)
+- [atsListApplicationDocuments](docs/sdks/ats/README.md#listapplicationdocuments)
+- [atsListApplicationScorecards](docs/sdks/ats/README.md#listapplicationscorecards)
+- [atsListApplicationsOffers](docs/sdks/ats/README.md#listapplicationsoffers)
+- [atsListApplicationsScheduledInterviews](docs/sdks/ats/README.md#listapplicationsscheduledinterviews)
+- [atsListApplications](docs/sdks/ats/README.md#listapplications)
+- [atsListAssessmentsPackages](docs/sdks/ats/README.md#listassessmentspackages)
+- [atsListCandidateCustomFieldDefinitions](docs/sdks/ats/README.md#listcandidatecustomfielddefinitions)
+- [atsListCandidateNotes](docs/sdks/ats/README.md#listcandidatenotes)
+- [atsListCandidates](docs/sdks/ats/README.md#listcandidates)
+- [atsListDepartments](docs/sdks/ats/README.md#listdepartments)
+- [atsListInterviewStages](docs/sdks/ats/README.md#listinterviewstages)
+- [atsListInterviews](docs/sdks/ats/README.md#listinterviews)
+- [atsListJobPostings](docs/sdks/ats/README.md#listjobpostings)
+- [atsListJobs](docs/sdks/ats/README.md#listjobs)
+- [atsListLists](docs/sdks/ats/README.md#listlists)
+- [atsListLocations](docs/sdks/ats/README.md#listlocations)
+- [atsListOffers](docs/sdks/ats/README.md#listoffers)
+- [atsListRejectedReasons](docs/sdks/ats/README.md#listrejectedreasons)
+- [atsListUsers](docs/sdks/ats/README.md#listusers)
+- [atsUpdateApplication](docs/sdks/ats/README.md#updateapplication)
+- [atsUpdateCandidate](docs/sdks/ats/README.md#updatecandidate)
+- [atsUploadApplicationDocument](docs/sdks/ats/README.md#uploadapplicationdocument)
+- [connectSessionsAuthenticateConnectSession](docs/sdks/connectsessions/README.md#authenticateconnectsession)
+- [connectSessionsCreateConnectSession](docs/sdks/connectsessions/README.md#createconnectsession)
+- [connectorsGetConnectorMeta](docs/sdks/connectors/README.md#getconnectormeta)
+- [connectorsListConnectorsMeta](docs/sdks/connectors/README.md#listconnectorsmeta)
+- [crmCreateContact](docs/sdks/crm/README.md#createcontact)
+- [crmGetAccount](docs/sdks/crm/README.md#getaccount)
+- [crmGetContact](docs/sdks/crm/README.md#getcontact)
+- [crmGetList](docs/sdks/crm/README.md#getlist)
+- [crmListAccounts](docs/sdks/crm/README.md#listaccounts)
+- [crmListContacts](docs/sdks/crm/README.md#listcontacts)
+- [crmListLists](docs/sdks/crm/README.md#listlists)
+- [crmUpdateContact](docs/sdks/crm/README.md#updatecontact)
+- [hrisCreateEmployeeTimeOffRequest](docs/sdks/hris/README.md#createemployeetimeoffrequest)
+- [hrisCreateEmployeeWorkEligibilityRequest](docs/sdks/hris/README.md#createemployeeworkeligibilityrequest)
+- [hrisCreateEmployee](docs/sdks/hris/README.md#createemployee)
+- [hrisCreateTimeOffRequest](docs/sdks/hris/README.md#createtimeoffrequest)
+- [hrisDownloadEmployeeDocument](docs/sdks/hris/README.md#downloademployeedocument)
+- [hrisGetBenefit](docs/sdks/hris/README.md#getbenefit)
+- [hrisGetCompany](docs/sdks/hris/README.md#getcompany)
+- [hrisGetDepartmentGroup](docs/sdks/hris/README.md#getdepartmentgroup)
+- [hrisGetEmployeeDocumentCategory](docs/sdks/hris/README.md#getemployeedocumentcategory)
+- [hrisGetEmployeeDocument](docs/sdks/hris/README.md#getemployeedocument)
+- [hrisGetEmployeeEmployment](docs/sdks/hris/README.md#getemployeeemployment)
+- [hrisGetEmployee](docs/sdks/hris/README.md#getemployee)
+- [hrisGetEmployeesTimeOffRequest](docs/sdks/hris/README.md#getemployeestimeoffrequest)
+- [hrisGetEmployeesWorkEligibility](docs/sdks/hris/README.md#getemployeesworkeligibility)
+- [hrisGetEmployment](docs/sdks/hris/README.md#getemployment)
+- [hrisGetGroup](docs/sdks/hris/README.md#getgroup)
+- [hrisGetJob](docs/sdks/hris/README.md#getjob)
+- [hrisGetLocation](docs/sdks/hris/README.md#getlocation)
+- [hrisGetTimeOffRequest](docs/sdks/hris/README.md#gettimeoffrequest)
+- [hrisListBenefits](docs/sdks/hris/README.md#listbenefits)
+- [hrisListCompanies](docs/sdks/hris/README.md#listcompanies)
+- [hrisListDepartmentGroups](docs/sdks/hris/README.md#listdepartmentgroups)
+- [hrisListEmployeeCategories](docs/sdks/hris/README.md#listemployeecategories)
+- [hrisListEmployeeDocuments](docs/sdks/hris/README.md#listemployeedocuments)
+- [hrisListEmployeeEmployments](docs/sdks/hris/README.md#listemployeeemployments)
+- [hrisListEmployeeTimeOffRequests](docs/sdks/hris/README.md#listemployeetimeoffrequests)
+- [hrisListEmployeeWorkEligibility](docs/sdks/hris/README.md#listemployeeworkeligibility)
+- [hrisListEmployees](docs/sdks/hris/README.md#listemployees)
+- [hrisListEmployments](docs/sdks/hris/README.md#listemployments)
+- [hrisListGroups](docs/sdks/hris/README.md#listgroups)
+- [hrisListJobs](docs/sdks/hris/README.md#listjobs)
+- [hrisListLocations](docs/sdks/hris/README.md#listlocations)
+- [hrisListTimeOffRequests](docs/sdks/hris/README.md#listtimeoffrequests)
+- [hrisUpdateEmployeeWorkEligibilityRequest](docs/sdks/hris/README.md#updateemployeeworkeligibilityrequest)
+- [hrisUpdateEmployee](docs/sdks/hris/README.md#updateemployee)
+- [hrisUpdateTimeOffRequest](docs/sdks/hris/README.md#updatetimeoffrequest)
+- [hrisUploadEmployeeDocument](docs/sdks/hris/README.md#uploademployeedocument)
+- [iamGetGroup](docs/sdks/iam/README.md#getgroup)
+- [iamGetPolicy](docs/sdks/iam/README.md#getpolicy)
+- [iamGetRole](docs/sdks/iam/README.md#getrole)
+- [iamGetUser](docs/sdks/iam/README.md#getuser)
+- [iamListGroups](docs/sdks/iam/README.md#listgroups)
+- [iamListPolicies](docs/sdks/iam/README.md#listpolicies)
+- [iamListRoles](docs/sdks/iam/README.md#listroles)
+- [iamListUsers](docs/sdks/iam/README.md#listusers)
+- [lmsCreateCompletion](docs/sdks/lms/README.md#createcompletion)
+- [lmsCreateContent](docs/sdks/lms/README.md#createcontent)
+- [lmsGetAssignment](docs/sdks/lms/README.md#getassignment)
+- [lmsGetCategory](docs/sdks/lms/README.md#getcategory)
+- [lmsGetCompletion](docs/sdks/lms/README.md#getcompletion)
+- [lmsGetContent](docs/sdks/lms/README.md#getcontent)
+- [lmsGetCourse](docs/sdks/lms/README.md#getcourse)
+- [lmsGetUser](docs/sdks/lms/README.md#getuser)
+- [lmsListAssignments](docs/sdks/lms/README.md#listassignments)
+- [lmsListCategories](docs/sdks/lms/README.md#listcategories)
+- [lmsListContent](docs/sdks/lms/README.md#listcontent)
+- [lmsListCourses](docs/sdks/lms/README.md#listcourses)
+- [lmsListUsers](docs/sdks/lms/README.md#listusers)
+- [lmsUpdateContent](docs/sdks/lms/README.md#updatecontent)
+- [lmsUpsertContent](docs/sdks/lms/README.md#upsertcontent)
+- [marketingCreateContentBlock](docs/sdks/marketing/README.md#createcontentblock)
+- [marketingCreateEmailTemplate](docs/sdks/marketing/README.md#createemailtemplate)
+- [marketingCreateInAppTemplate](docs/sdks/marketing/README.md#createinapptemplate)
+- [marketingCreateOmniChannelTemplate](docs/sdks/marketing/README.md#createomnichanneltemplate)
+- [marketingCreatePushTemplate](docs/sdks/marketing/README.md#createpushtemplate)
+- [marketingCreateSmsTemplate](docs/sdks/marketing/README.md#createsmstemplate)
+- [marketingGetCampaign](docs/sdks/marketing/README.md#getcampaign)
+- [marketingGetContentBlock](docs/sdks/marketing/README.md#getcontentblock)
+- [marketingGetEmailTemplate](docs/sdks/marketing/README.md#getemailtemplate)
+- [marketingGetInAppTemplate](docs/sdks/marketing/README.md#getinapptemplate)
+- [marketingGetOmniChannelTemplate](docs/sdks/marketing/README.md#getomnichanneltemplate)
+- [marketingGetPushTemplate](docs/sdks/marketing/README.md#getpushtemplate)
+- [marketingGetSmsTemplate](docs/sdks/marketing/README.md#getsmstemplate)
+- [marketingListCampaigns](docs/sdks/marketing/README.md#listcampaigns)
+- [marketingListContentBlocks](docs/sdks/marketing/README.md#listcontentblocks)
+- [marketingListEmailTemplates](docs/sdks/marketing/README.md#listemailtemplates)
+- [marketingListInAppTemplates](docs/sdks/marketing/README.md#listinapptemplates)
+- [marketingListOmniChannelTemplates](docs/sdks/marketing/README.md#listomnichanneltemplates)
+- [marketingListPushTemplates](docs/sdks/marketing/README.md#listpushtemplates)
+- [marketingListSmsTemplates](docs/sdks/marketing/README.md#listsmstemplates)
+- [marketingUpdateContentBlock](docs/sdks/marketing/README.md#updatecontentblock)
+- [marketingUpdateEmailTemplate](docs/sdks/marketing/README.md#updateemailtemplate)
+- [marketingUpdateInAppTemplate](docs/sdks/marketing/README.md#updateinapptemplate)
+- [marketingUpdateOmniChannelTemplate](docs/sdks/marketing/README.md#updateomnichanneltemplate)
+- [marketingUpdatePushTemplate](docs/sdks/marketing/README.md#updatepushtemplate)
+- [marketingUpdateSmsTemplate](docs/sdks/marketing/README.md#updatesmstemplate)
+- [proxyProxyRequest](docs/sdks/proxy/README.md#proxyrequest)
+
+
+</details>
+<!-- End Standalone functions [standalone-funcs] -->
+
+<!-- Start Debugging [debug] -->
+## Debugging
+
+To log HTTP requests and responses, you can pass a logger that matches `console`'s interface as an SDK option.
+
+> [!WARNING]
+> Beware that debug logging will reveal secrets, like API tokens in headers, in log messages printed to a console or files. It's recommended to use this feature only during local development and not in production.
+
+```typescript
+import { StackOne } from "@stackone/stackone-client-ts";
+
+const sdk = new StackOne({ debugLogger: console });
+```
+<!-- End Debugging [debug] -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 

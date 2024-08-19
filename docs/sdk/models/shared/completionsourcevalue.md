@@ -1,5 +1,12 @@
 # CompletionSourceValue
 
+## Example Usage
+
+```typescript
+import { CompletionSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: CompletionSourceValue = 9441.24;
+```
 
 ## Supported Types
 

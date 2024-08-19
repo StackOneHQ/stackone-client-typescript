@@ -2,6 +2,13 @@
 
 The source value of the application status.
 
+## Example Usage
+
+```typescript
+import { ApplicationSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: ApplicationSourceValue = "Hired";
+```
 
 ## Supported Types
 

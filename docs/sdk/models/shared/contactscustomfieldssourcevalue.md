@@ -1,5 +1,12 @@
 # ContactsCustomFieldsSourceValue
 
+## Example Usage
+
+```typescript
+import { ContactsCustomFieldsSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: ContactsCustomFieldsSourceValue = false;
+```
 
 ## Supported Types
 

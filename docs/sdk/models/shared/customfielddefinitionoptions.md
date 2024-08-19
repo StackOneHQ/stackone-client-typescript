@@ -1,5 +1,12 @@
 # CustomFieldDefinitionOptions
 
+## Example Usage
+
+```typescript
+import { CustomFieldDefinitionOptions } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: CustomFieldDefinitionOptions = "<value>";
+```
 
 ## Supported Types
 

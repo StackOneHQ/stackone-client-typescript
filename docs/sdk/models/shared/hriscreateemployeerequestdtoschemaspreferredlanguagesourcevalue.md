@@ -1,5 +1,12 @@
 # HrisCreateEmployeeRequestDtoSchemasPreferredLanguageSourceValue
 
+## Example Usage
+
+```typescript
+import { HrisCreateEmployeeRequestDtoSchemasPreferredLanguageSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: HrisCreateEmployeeRequestDtoSchemasPreferredLanguageSourceValue = 3834.62;
+```
 
 ## Supported Types
 

@@ -2,6 +2,13 @@
 
 The source value of the rejected reason type.
 
+## Example Usage
+
+```typescript
+import { RejectedReasonSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: RejectedReasonSourceValue = "RejectedByOrg";
+```
 
 ## Supported Types
 

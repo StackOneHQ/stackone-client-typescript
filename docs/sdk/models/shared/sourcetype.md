@@ -1,5 +1,12 @@
 # SourceType
 
+## Example Usage
+
+```typescript
+import { SourceType } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: SourceType = {};
+```
 
 ## Supported Types
 

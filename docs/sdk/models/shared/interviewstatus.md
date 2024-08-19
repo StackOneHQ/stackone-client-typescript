@@ -1,5 +1,15 @@
 # InterviewStatus
 
+## Example Usage
+
+```typescript
+import { InterviewStatus, InterviewValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: InterviewStatus = {
+    sourceValue: "Unscheduled",
+    value: InterviewValue.Unscheduled,
+};
+```
 
 ## Fields
 

@@ -1,5 +1,12 @@
 # EmployeeSchemasMaritalStatusSourceValue
 
+## Example Usage
+
+```typescript
+import { EmployeeSchemasMaritalStatusSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: EmployeeSchemasMaritalStatusSourceValue = 7142.42;
+```
 
 ## Supported Types
 

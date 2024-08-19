@@ -2,6 +2,13 @@
 
 The type of the benefit
 
+## Example Usage
+
+```typescript
+import { BenefitType } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: BenefitType = {};
+```
 
 ## Fields
 

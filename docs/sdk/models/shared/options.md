@@ -1,5 +1,12 @@
 # Options
 
+## Example Usage
+
+```typescript
+import { Options } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: Options = 5920.42;
+```
 
 ## Supported Types
 

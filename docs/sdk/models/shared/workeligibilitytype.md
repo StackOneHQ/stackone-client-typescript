@@ -1,5 +1,12 @@
 # WorkEligibilityType
 
+## Example Usage
+
+```typescript
+import { WorkEligibilityType } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: WorkEligibilityType = {};
+```
 
 ## Fields
 

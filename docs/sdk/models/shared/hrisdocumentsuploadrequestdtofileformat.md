@@ -2,6 +2,19 @@
 
 The file format of the file
 
+## Example Usage
+
+```typescript
+import {
+  HrisDocumentsUploadRequestDtoFileFormat,
+  HrisDocumentsUploadRequestDtoSchemasFileFormatValue,
+} from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: HrisDocumentsUploadRequestDtoFileFormat = {
+    sourceValue: "abc",
+    value: HrisDocumentsUploadRequestDtoSchemasFileFormatValue.Pdf,
+};
+```
 
 ## Fields
 

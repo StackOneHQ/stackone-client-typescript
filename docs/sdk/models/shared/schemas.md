@@ -1,5 +1,12 @@
 # Schemas
 
+## Example Usage
+
+```typescript
+import { Schemas } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: Schemas = {};
+```
 
 ## Fields
 

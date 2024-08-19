@@ -1,5 +1,15 @@
 # QuestionType
 
+## Example Usage
+
+```typescript
+import { QuestionType, QuestionValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: QuestionType = {
+    sourceValue: "ShortText",
+    value: QuestionValue.ShortText,
+};
+```
 
 ## Fields
 

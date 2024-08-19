@@ -1,5 +1,12 @@
 # HrisCreateEmployeeRequestDtoSchemasGenderSourceValue
 
+## Example Usage
+
+```typescript
+import { HrisCreateEmployeeRequestDtoSchemasGenderSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: HrisCreateEmployeeRequestDtoSchemasGenderSourceValue = false;
+```
 
 ## Supported Types
 

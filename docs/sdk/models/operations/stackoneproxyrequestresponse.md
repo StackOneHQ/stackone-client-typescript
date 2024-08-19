@@ -1,5 +1,18 @@
 # StackoneProxyRequestResponse
 
+## Example Usage
+
+```typescript
+import { StackoneProxyRequestResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
+
+let value: StackoneProxyRequestResponse = {
+    contentType: "<value>",
+    statusCode: 916723,
+    rawResponse: new Response('{"message": "hello world"}', {
+        headers: { "Content-Type": "application/json" },
+    }),
+};
+```
 
 ## Fields
 

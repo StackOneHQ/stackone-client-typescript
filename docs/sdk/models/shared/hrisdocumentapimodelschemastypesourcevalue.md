@@ -1,5 +1,12 @@
 # HrisDocumentApiModelSchemasTypeSourceValue
 
+## Example Usage
+
+```typescript
+import { HrisDocumentApiModelSchemasTypeSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: HrisDocumentApiModelSchemasTypeSourceValue = "<value>";
+```
 
 ## Supported Types
 

@@ -1,5 +1,12 @@
 # CandidateCustomFieldsSourceValue
 
+## Example Usage
+
+```typescript
+import { CandidateCustomFieldsSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: CandidateCustomFieldsSourceValue = 46.95;
+```
 
 ## Supported Types
 

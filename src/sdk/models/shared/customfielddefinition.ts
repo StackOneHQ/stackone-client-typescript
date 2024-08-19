@@ -25,6 +25,11 @@ export enum CustomFieldDefinitionValue {
     List = "list",
     Checkbox = "checkbox",
     Text = "text",
+    Boolean = "boolean",
+    SingleSelect = "single_select",
+    MultiSelect = "multi_select",
+    Url = "url",
+    Other = "other",
 }
 export type CustomFieldDefinitionValueOpen = OpenEnum<typeof CustomFieldDefinitionValue>;
 

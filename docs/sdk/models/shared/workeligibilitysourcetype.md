@@ -1,5 +1,12 @@
 # WorkEligibilitySourceType
 
+## Example Usage
+
+```typescript
+import { WorkEligibilitySourceType } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: WorkEligibilitySourceType = {};
+```
 
 ## Supported Types
 

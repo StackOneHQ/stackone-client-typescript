@@ -1,5 +1,15 @@
 # OfferStatus
 
+## Example Usage
+
+```typescript
+import { AtsCreateOfferRequestDtoValue, OfferStatus } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: OfferStatus = {
+    sourceValue: "Pending",
+    value: AtsCreateOfferRequestDtoValue.Pending,
+};
+```
 
 ## Fields
 

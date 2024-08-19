@@ -1,5 +1,31 @@
 # HrisUploadEmployeeDocumentResponse
 
+## Example Usage
+
+```typescript
+import { HrisUploadEmployeeDocumentResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
+
+let value: HrisUploadEmployeeDocumentResponse = {
+    contentType: "<value>",
+    statusCode: 623510,
+    rawResponse: new Response('{"message": "hello world"}', {
+        headers: { "Content-Type": "application/json" },
+    }),
+    writeResultApiModel: {
+        message: "Employee created successfully",
+        providerErrors: [
+            {
+                headers: {},
+                raw: {},
+                status: 400,
+                url: "https://api.someprovider.com/v1/endpoint",
+            },
+        ],
+        statusCode: 201,
+        timestamp: new Date("2021-01-01T01:01:01.000Z"),
+    },
+};
+```
 
 ## Fields
 

@@ -2,6 +2,13 @@
 
 The type of the custom field.
 
+## Example Usage
+
+```typescript
+import { ContactsCustomFieldsType } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: ContactsCustomFieldsType = {};
+```
 
 ## Fields
 

@@ -52,7 +52,7 @@ export const AtsGetUserRequest$inboundSchema: z.ZodType<AtsGetUserRequest, z.Zod
             fields: z.nullable(z.string()).optional(),
             id: z.string(),
             proxy: z.nullable(z.record(z.any())).optional(),
-            raw: z.nullable(z.boolean().default(false)),
+            raw: z.nullable(z.boolean()),
             "x-account-id": z.string(),
         })
         .transform((v) => {

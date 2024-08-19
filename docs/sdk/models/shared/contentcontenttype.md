@@ -2,6 +2,13 @@
 
 The type of content
 
+## Example Usage
+
+```typescript
+import { ContentContentType } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: ContentContentType = {};
+```
 
 ## Fields
 

@@ -2,6 +2,13 @@
 
 The source value of the status.
 
+## Example Usage
+
+```typescript
+import { ContentBlockSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: ContentBlockSourceValue = "active";
+```
 
 ## Supported Types
 

@@ -2,6 +2,13 @@
 
 The source value of the answer type.
 
+## Example Usage
+
+```typescript
+import { AnswerSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: AnswerSourceValue = "Short Text";
+```
 
 ## Supported Types
 

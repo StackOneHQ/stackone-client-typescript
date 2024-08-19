@@ -1,5 +1,18 @@
 # AtsUpdateApplicationRequestDtoApplicationStatus
 
+## Example Usage
+
+```typescript
+import {
+  AtsUpdateApplicationRequestDtoApplicationStatus,
+  AtsUpdateApplicationRequestDtoValue,
+} from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: AtsUpdateApplicationRequestDtoApplicationStatus = {
+    sourceValue: "Hired",
+    value: AtsUpdateApplicationRequestDtoValue.Hired,
+};
+```
 
 ## Fields
 

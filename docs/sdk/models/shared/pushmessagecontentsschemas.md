@@ -1,5 +1,12 @@
 # PushMessageContentsSchemas
 
+## Example Usage
+
+```typescript
+import { PushMessageContentsSchemas } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: PushMessageContentsSchemas = {};
+```
 
 ## Fields
 

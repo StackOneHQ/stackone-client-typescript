@@ -1,5 +1,15 @@
 # SocialLink
 
+## Example Usage
+
+```typescript
+import { SocialLink } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: SocialLink = {
+    type: "linkedin",
+    url: "https://www.linkedin.com/in/romainsestier/",
+};
+```
 
 ## Fields
 

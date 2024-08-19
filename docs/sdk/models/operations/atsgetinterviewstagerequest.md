@@ -1,5 +1,16 @@
 # AtsGetInterviewStageRequest
 
+## Example Usage
+
+```typescript
+import { AtsGetInterviewStageRequest } from "@stackone/stackone-client-ts/sdk/models/operations";
+
+let value: AtsGetInterviewStageRequest = {
+    fields: "id,remote_id,name,order,created_at,updated_at",
+    id: "<id>",
+    xAccountId: "<value>",
+};
+```
 
 ## Fields
 

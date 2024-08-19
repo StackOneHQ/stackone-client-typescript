@@ -1,5 +1,12 @@
 # CustomFieldDefinitionSourceValue
 
+## Example Usage
+
+```typescript
+import { CustomFieldDefinitionSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: CustomFieldDefinitionSourceValue = {};
+```
 
 ## Supported Types
 

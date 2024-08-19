@@ -1,5 +1,12 @@
 # AtsDownloadApplicationDocumentResponse
 
+## Example Usage
+
+```typescript
+import { AtsDownloadApplicationDocumentResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
+
+// No examples available for this model
+```
 
 ## Fields
 

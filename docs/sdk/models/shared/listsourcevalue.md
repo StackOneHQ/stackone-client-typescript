@@ -2,6 +2,13 @@
 
 The source value of the list type.
 
+## Example Usage
+
+```typescript
+import { ListSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: ListSourceValue = "Contacts";
+```
 
 ## Supported Types
 

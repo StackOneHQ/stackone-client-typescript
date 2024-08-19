@@ -4383,6 +4383,10 @@ export type HrisCreateEmployeeRequestDtoHomeLocation = {
      */
     country?: HrisCreateEmployeeRequestDtoCountry | null | undefined;
     /**
+     * Unique identifier
+     */
+    id?: string | null | undefined;
+    /**
      * The name of the location
      */
     name?: string | null | undefined;
@@ -8736,6 +8740,10 @@ export type HrisCreateEmployeeRequestDtoWorkLocation = {
      */
     country?: HrisCreateEmployeeRequestDtoSchemasCountry | null | undefined;
     /**
+     * Unique identifier
+     */
+    id?: string | null | undefined;
+    /**
      * The name of the location
      */
     name?: string | null | undefined;
@@ -10250,6 +10258,7 @@ export const HrisCreateEmployeeRequestDtoHomeLocation$inboundSchema: z.ZodType<
         country: z
             .nullable(z.lazy(() => HrisCreateEmployeeRequestDtoCountry$inboundSchema))
             .optional(),
+        id: z.nullable(z.string()).optional(),
         name: z.nullable(z.string()).optional(),
         passthrough: z.nullable(z.record(z.any())).optional(),
         phone_number: z.nullable(z.string()).optional(),
@@ -10271,6 +10280,7 @@ export const HrisCreateEmployeeRequestDtoHomeLocation$inboundSchema: z.ZodType<
 export type HrisCreateEmployeeRequestDtoHomeLocation$Outbound = {
     city?: string | null | undefined;
     country?: HrisCreateEmployeeRequestDtoCountry$Outbound | null | undefined;
+    id?: string | null | undefined;
     name?: string | null | undefined;
     passthrough?: { [k: string]: any } | null | undefined;
     phone_number?: string | null | undefined;
@@ -10291,6 +10301,7 @@ export const HrisCreateEmployeeRequestDtoHomeLocation$outboundSchema: z.ZodType<
         country: z
             .nullable(z.lazy(() => HrisCreateEmployeeRequestDtoCountry$outboundSchema))
             .optional(),
+        id: z.nullable(z.string()).optional(),
         name: z.nullable(z.string()).optional(),
         passthrough: z.nullable(z.record(z.any())).optional(),
         phoneNumber: z.nullable(z.string()).optional(),
@@ -11095,6 +11106,7 @@ export const HrisCreateEmployeeRequestDtoWorkLocation$inboundSchema: z.ZodType<
         country: z
             .nullable(z.lazy(() => HrisCreateEmployeeRequestDtoSchemasCountry$inboundSchema))
             .optional(),
+        id: z.nullable(z.string()).optional(),
         name: z.nullable(z.string()).optional(),
         passthrough: z.nullable(z.record(z.any())).optional(),
         phone_number: z.nullable(z.string()).optional(),
@@ -11116,6 +11128,7 @@ export const HrisCreateEmployeeRequestDtoWorkLocation$inboundSchema: z.ZodType<
 export type HrisCreateEmployeeRequestDtoWorkLocation$Outbound = {
     city?: string | null | undefined;
     country?: HrisCreateEmployeeRequestDtoSchemasCountry$Outbound | null | undefined;
+    id?: string | null | undefined;
     name?: string | null | undefined;
     passthrough?: { [k: string]: any } | null | undefined;
     phone_number?: string | null | undefined;
@@ -11136,6 +11149,7 @@ export const HrisCreateEmployeeRequestDtoWorkLocation$outboundSchema: z.ZodType<
         country: z
             .nullable(z.lazy(() => HrisCreateEmployeeRequestDtoSchemasCountry$outboundSchema))
             .optional(),
+        id: z.nullable(z.string()).optional(),
         name: z.nullable(z.string()).optional(),
         passthrough: z.nullable(z.record(z.any())).optional(),
         phoneNumber: z.nullable(z.string()).optional(),

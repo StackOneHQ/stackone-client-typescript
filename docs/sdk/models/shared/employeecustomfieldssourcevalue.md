@@ -1,5 +1,12 @@
 # EmployeeCustomFieldsSourceValue
 
+## Example Usage
+
+```typescript
+import { EmployeeCustomFieldsSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: EmployeeCustomFieldsSourceValue = 923.73;
+```
 
 ## Supported Types
 

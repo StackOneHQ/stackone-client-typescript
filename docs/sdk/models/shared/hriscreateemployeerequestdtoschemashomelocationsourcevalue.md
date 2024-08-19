@@ -1,5 +1,12 @@
 # HrisCreateEmployeeRequestDtoSchemasHomeLocationSourceValue
 
+## Example Usage
+
+```typescript
+import { HrisCreateEmployeeRequestDtoSchemasHomeLocationSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: HrisCreateEmployeeRequestDtoSchemasHomeLocationSourceValue = "<value>";
+```
 
 ## Supported Types
 

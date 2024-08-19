@@ -1,5 +1,19 @@
 # AtsListCandidateNotesRequest
 
+## Example Usage
+
+```typescript
+import { AtsListCandidateNotesRequest } from "@stackone/stackone-client-ts/sdk/models/operations";
+
+let value: AtsListCandidateNotesRequest = {
+    fields: "id,remote_id,content,author_id,remote_author_id,visibility,created_at,updated_at,deleted_at",
+    filter: {
+        updatedAfter: "2020-01-01T00:00:00.000Z",
+    },
+    id: "<id>",
+    xAccountId: "<value>",
+};
+```
 
 ## Fields
 

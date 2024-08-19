@@ -1,5 +1,18 @@
 # CrmListListsRequest
 
+## Example Usage
+
+```typescript
+import { CrmListListsRequest } from "@stackone/stackone-client-ts/sdk/models/operations";
+
+let value: CrmListListsRequest = {
+    fields: "id,remote_id,name,created_at,updated_at,items,type",
+    filter: {
+        updatedAfter: "2020-01-01T00:00:00.000Z",
+    },
+    xAccountId: "<value>",
+};
+```
 
 ## Fields
 

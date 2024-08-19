@@ -1,5 +1,12 @@
 # HRISGroupSourceValue
 
+## Example Usage
+
+```typescript
+import { HRISGroupSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: HRISGroupSourceValue = {};
+```
 
 ## Supported Types
 

@@ -1,5 +1,12 @@
 # JobPostingQuestionnaireInternal
 
+## Example Usage
+
+```typescript
+import { JobPostingQuestionnaire2, JobPostingQuestionnaireInternal } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: JobPostingQuestionnaireInternal = JobPostingQuestionnaire2.True;
+```
 
 ## Supported Types
 

@@ -2,6 +2,13 @@
 
 The employee ethnicity
 
+## Example Usage
+
+```typescript
+import { Ethnicity } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: Ethnicity = {};
+```
 
 ## Fields
 

@@ -2,6 +2,13 @@
 
 The source value of the notes visibility.
 
+## Example Usage
+
+```typescript
+import { AtsCreateNotesRequestDtoSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: AtsCreateNotesRequestDtoSourceValue = "Public";
+```
 
 ## Supported Types
 

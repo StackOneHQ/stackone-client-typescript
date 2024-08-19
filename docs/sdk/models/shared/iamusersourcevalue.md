@@ -1,5 +1,12 @@
 # IamUserSourceValue
 
+## Example Usage
+
+```typescript
+import { IamUserSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: IamUserSourceValue = "<value>";
+```
 
 ## Supported Types
 

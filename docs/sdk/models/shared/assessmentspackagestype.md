@@ -1,5 +1,15 @@
 # AssessmentsPackagesType
 
+## Example Usage
+
+```typescript
+import { AssessmentsPackagesType, AssessmentsPackagesValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: AssessmentsPackagesType = {
+    sourceValue: "Skill Test",
+    value: AssessmentsPackagesValue.SkillTest,
+};
+```
 
 ## Fields
 

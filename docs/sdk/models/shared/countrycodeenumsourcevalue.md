@@ -1,5 +1,12 @@
 # CountryCodeEnumSourceValue
 
+## Example Usage
+
+```typescript
+import { CountryCodeEnumSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: CountryCodeEnumSourceValue = 5908.73;
+```
 
 ## Supported Types
 

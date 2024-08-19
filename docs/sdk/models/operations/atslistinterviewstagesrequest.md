@@ -1,5 +1,18 @@
 # AtsListInterviewStagesRequest
 
+## Example Usage
+
+```typescript
+import { AtsListInterviewStagesRequest } from "@stackone/stackone-client-ts/sdk/models/operations";
+
+let value: AtsListInterviewStagesRequest = {
+    fields: "id,remote_id,name,order,created_at,updated_at",
+    filter: {
+        updatedAfter: "2020-01-01T00:00:00.000Z",
+    },
+    xAccountId: "<value>",
+};
+```
 
 ## Fields
 

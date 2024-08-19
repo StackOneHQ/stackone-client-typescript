@@ -1,15 +1,25 @@
 # LinkedAccountMetaCategory
 
+## Example Usage
+
+```typescript
+import { LinkedAccountMetaCategory } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: LinkedAccountMetaCategory = LinkedAccountMetaCategory.HrisLegacy;
+```
 
 ## Values
 
-| Name         | Value        |
-| ------------ | ------------ |
-| `Ats`        | ats          |
-| `Hris`       | hris         |
-| `HrisLegacy` | hris-legacy  |
-| `Crm`        | crm          |
-| `Iam`        | iam          |
-| `Marketing`  | marketing    |
-| `Lms`        | lms          |
-| `Stackone`   | stackone     |
+This is an open enum. Unrecognized values will be captured as the `Unrecognized<string>` branded type.
+
+| Name                   | Value                  |
+| ---------------------- | ---------------------- |
+| `Ats`                  | ats                    |
+| `Hris`                 | hris                   |
+| `HrisLegacy`           | hris-legacy            |
+| `Crm`                  | crm                    |
+| `Iam`                  | iam                    |
+| `Marketing`            | marketing              |
+| `Lms`                  | lms                    |
+| `Stackone`             | stackone               |
+| -                      | `Unrecognized<string>` |

@@ -2,6 +2,16 @@
 
 The location type
 
+## Example Usage
+
+```typescript
+import { AccountAddressValue, LocationType } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: LocationType = {
+    sourceValue: "Home",
+    value: AccountAddressValue.Home,
+};
+```
 
 ## Fields
 

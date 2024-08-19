@@ -1,5 +1,48 @@
 # CrmListAccountsResponse
 
+## Example Usage
+
+```typescript
+import { CrmListAccountsResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
+import { AccountAddressSchemasValue, AccountAddressValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: CrmListAccountsResponse = {
+    accountsPaginated: {
+        data: [
+            {
+                addresses: [
+                    {
+                        country: {
+                            sourceValue: "GB",
+                            value: AccountAddressSchemasValue.Gb,
+                        },
+                        locationType: {
+                            sourceValue: "Home",
+                            value: AccountAddressValue.Home,
+                        },
+                    },
+                ],
+                createdAt: new Date("2021-01-01T01:01:01.000Z"),
+                id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+                industries: [
+                    "Information Technology",
+                    "Airlines & Airports",
+                    "Personal Care & Household Products",
+                ],
+                phoneNumbers: ["+1123425334"],
+                remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+                remoteOwnerId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
+                updatedAt: new Date("2021-01-01T01:01:01.000Z"),
+            },
+        ],
+    },
+    contentType: "<value>",
+    statusCode: 449950,
+    rawResponse: new Response('{"message": "hello world"}', {
+        headers: { "Content-Type": "application/json" },
+    }),
+};
+```
 
 ## Fields
 
