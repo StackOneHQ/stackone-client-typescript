@@ -1,5 +1,14 @@
 # SmsMessagesMessageType
 
+## Example Usage
+
+```typescript
+import { SmsMessagesMessageType } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: SmsMessagesMessageType = {
+    sourceValue: "Email",
+};
+```
 
 ## Fields
 

@@ -1,5 +1,12 @@
 # WorkEligibilitySchemasDocumentSourceValue
 
+## Example Usage
+
+```typescript
+import { WorkEligibilitySchemasDocumentSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: WorkEligibilitySchemasDocumentSourceValue = "<value>";
+```
 
 ## Supported Types
 
@@ -25,5 +32,11 @@ const value: boolean = /* values here */
 
 ```typescript
 const value: shared.WorkEligibilitySchemasDocument4 = /* values here */
+```
+
+### `any[]`
+
+```typescript
+const value: any[] = /* values here */
 ```
 

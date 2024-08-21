@@ -1,5 +1,16 @@
 # UpdateResult
 
+## Example Usage
+
+```typescript
+import { UpdateResult } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: UpdateResult = {
+    message: "Record updated successfully.",
+    statusCode: 200,
+    timestamp: new Date("2021-01-01T01:01:01.000Z"),
+};
+```
 
 ## Fields
 

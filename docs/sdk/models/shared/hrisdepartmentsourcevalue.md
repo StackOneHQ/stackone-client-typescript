@@ -1,5 +1,12 @@
 # HRISDepartmentSourceValue
 
+## Example Usage
+
+```typescript
+import { HRISDepartmentSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: HRISDepartmentSourceValue = false;
+```
 
 ## Supported Types
 
@@ -25,5 +32,11 @@ const value: boolean = /* values here */
 
 ```typescript
 const value: shared.HRISDepartment4 = /* values here */
+```
+
+### `any[]`
+
+```typescript
+const value: any[] = /* values here */
 ```
 

@@ -2,6 +2,16 @@
 
 The confidentiality level of the file to be uploaded
 
+## Example Usage
+
+```typescript
+import { UnifiedUploadRequestDtoConfidential, UnifiedUploadRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: UnifiedUploadRequestDtoConfidential = {
+    sourceValue: "public",
+    value: UnifiedUploadRequestDtoValue.True,
+};
+```
 
 ## Fields
 

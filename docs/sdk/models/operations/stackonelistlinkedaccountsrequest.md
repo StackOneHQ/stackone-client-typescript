@@ -1,5 +1,12 @@
 # StackoneListLinkedAccountsRequest
 
+## Example Usage
+
+```typescript
+import { StackoneListLinkedAccountsRequest } from "@stackone/stackone-client-ts/sdk/models/operations";
+
+let value: StackoneListLinkedAccountsRequest = {};
+```
 
 ## Fields
 

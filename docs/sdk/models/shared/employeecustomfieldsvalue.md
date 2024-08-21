@@ -2,6 +2,13 @@
 
 The value associated with the custom field.
 
+## Example Usage
+
+```typescript
+import { EmployeeCustomFieldsValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: EmployeeCustomFieldsValue = "Completed";
+```
 
 ## Supported Types
 
@@ -23,9 +30,15 @@ const value: number = /* values here */
 const value: boolean = /* values here */
 ```
 
-### `shared.EmployeeCustomFieldsSchemas4`
+### `shared.EmployeeCustomFields4`
 
 ```typescript
-const value: shared.EmployeeCustomFieldsSchemas4 = /* values here */
+const value: shared.EmployeeCustomFields4 = /* values here */
+```
+
+### `any[]`
+
+```typescript
+const value: any[] = /* values here */
 ```
 

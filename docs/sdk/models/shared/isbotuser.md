@@ -2,6 +2,13 @@
 
 Indicates if the user is a bot or service user
 
+## Example Usage
+
+```typescript
+import { IsBotUser } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: IsBotUser = true;
+```
 
 ## Supported Types
 

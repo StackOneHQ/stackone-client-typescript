@@ -2,6 +2,13 @@
 
 The category of the file
 
+## Example Usage
+
+```typescript
+import { WorkEligibilityCategory } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: WorkEligibilityCategory = {};
+```
 
 ## Fields
 

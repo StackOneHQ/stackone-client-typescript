@@ -35,7 +35,7 @@ export type Job4 = {};
 /**
  * The source value of the job status.
  */
-export type JobSourceValue = Job4 | string | number | boolean;
+export type JobSourceValue = Job4 | string | number | boolean | Array<any>;
 
 /**
  * The status of the job.
@@ -63,7 +63,7 @@ export type JobStatus = {
     /**
      * The source value of the job status.
      */
-    sourceValue?: Job4 | string | number | boolean | null | undefined;
+    sourceValue?: Job4 | string | number | boolean | Array<any> | null | undefined;
     /**
      * The status of the job.
      */
@@ -181,17 +181,29 @@ export namespace Job4$ {
 
 /** @internal */
 export const JobSourceValue$inboundSchema: z.ZodType<JobSourceValue, z.ZodTypeDef, unknown> =
-    z.union([z.lazy(() => Job4$inboundSchema), z.string(), z.number(), z.boolean()]);
+    z.union([
+        z.lazy(() => Job4$inboundSchema),
+        z.string(),
+        z.number(),
+        z.boolean(),
+        z.array(z.any()),
+    ]);
 
 /** @internal */
-export type JobSourceValue$Outbound = Job4$Outbound | string | number | boolean;
+export type JobSourceValue$Outbound = Job4$Outbound | string | number | boolean | Array<any>;
 
 /** @internal */
 export const JobSourceValue$outboundSchema: z.ZodType<
     JobSourceValue$Outbound,
     z.ZodTypeDef,
     JobSourceValue
-> = z.union([z.lazy(() => Job4$outboundSchema), z.string(), z.number(), z.boolean()]);
+> = z.union([
+    z.lazy(() => Job4$outboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+    z.array(z.any()),
+]);
 
 /**
  * @internal
@@ -233,7 +245,13 @@ export const JobStatus$inboundSchema: z.ZodType<JobStatus, z.ZodTypeDef, unknown
     .object({
         source_value: z
             .nullable(
-                z.union([z.lazy(() => Job4$inboundSchema), z.string(), z.number(), z.boolean()])
+                z.union([
+                    z.lazy(() => Job4$inboundSchema),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                    z.array(z.any()),
+                ])
             )
             .optional(),
         value: z.nullable(JobValue$inboundSchema).optional(),
@@ -246,7 +264,7 @@ export const JobStatus$inboundSchema: z.ZodType<JobStatus, z.ZodTypeDef, unknown
 
 /** @internal */
 export type JobStatus$Outbound = {
-    source_value?: Job4$Outbound | string | number | boolean | null | undefined;
+    source_value?: Job4$Outbound | string | number | boolean | Array<any> | null | undefined;
     value?: string | null | undefined;
 };
 
@@ -255,7 +273,13 @@ export const JobStatus$outboundSchema: z.ZodType<JobStatus$Outbound, z.ZodTypeDe
     .object({
         sourceValue: z
             .nullable(
-                z.union([z.lazy(() => Job4$outboundSchema), z.string(), z.number(), z.boolean()])
+                z.union([
+                    z.lazy(() => Job4$outboundSchema),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                    z.array(z.any()),
+                ])
             )
             .optional(),
         value: z.nullable(JobValue$outboundSchema).optional(),

@@ -2,6 +2,13 @@
 
 The source value of the application status.
 
+## Example Usage
+
+```typescript
+import { AtsCreateApplicationRequestDtoSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: AtsCreateApplicationRequestDtoSourceValue = "Hired";
+```
 
 ## Supported Types
 
@@ -27,5 +34,11 @@ const value: boolean = /* values here */
 
 ```typescript
 const value: shared.AtsCreateApplicationRequestDto4 = /* values here */
+```
+
+### `any[]`
+
+```typescript
+const value: any[] = /* values here */
 ```
 

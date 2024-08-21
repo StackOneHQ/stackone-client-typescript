@@ -1,5 +1,12 @@
 # EmployeeSchemasSourceValue
 
+## Example Usage
+
+```typescript
+import { EmployeeSchemasSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: EmployeeSchemasSourceValue = "<value>";
+```
 
 ## Supported Types
 
@@ -25,5 +32,11 @@ const value: boolean = /* values here */
 
 ```typescript
 const value: shared.EmployeeSchemas4 = /* values here */
+```
+
+### `any[]`
+
+```typescript
+const value: any[] = /* values here */
 ```
 

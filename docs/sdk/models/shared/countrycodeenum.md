@@ -1,5 +1,14 @@
 # CountryCodeEnum
 
+## Example Usage
+
+```typescript
+import { CountryCodeEnum, CountryCodeEnumValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: CountryCodeEnum = {
+    value: CountryCodeEnumValue.Us,
+};
+```
 
 ## Fields
 

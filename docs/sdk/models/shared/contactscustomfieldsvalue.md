@@ -2,6 +2,13 @@
 
 The value associated with the custom field.
 
+## Example Usage
+
+```typescript
+import { ContactsCustomFieldsValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: ContactsCustomFieldsValue = "Completed";
+```
 
 ## Supported Types
 
@@ -23,9 +30,15 @@ const value: number = /* values here */
 const value: boolean = /* values here */
 ```
 
-### `shared.ContactsCustomFieldsSchemas4`
+### `shared.ContactsCustomFields4`
 
 ```typescript
-const value: shared.ContactsCustomFieldsSchemas4 = /* values here */
+const value: shared.ContactsCustomFields4 = /* values here */
+```
+
+### `any[]`
+
+```typescript
+const value: any[] = /* values here */
 ```
 

@@ -1,5 +1,30 @@
 # HrisListDepartmentGroupsResponse
 
+## Example Usage
+
+```typescript
+import { HrisListDepartmentGroupsResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
+import { HRISDepartmentValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: HrisListDepartmentGroupsResponse = {
+    contentType: "<value>",
+    hrisDepartmentsPaginated: {
+        data: [
+            {
+                id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+                remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+                type: {
+                    value: HRISDepartmentValue.Department,
+                },
+            },
+        ],
+    },
+    statusCode: 675439,
+    rawResponse: new Response('{"message": "hello world"}', {
+        headers: { "Content-Type": "application/json" },
+    }),
+};
+```
 
 ## Fields
 

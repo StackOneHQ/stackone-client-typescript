@@ -2,6 +2,13 @@
 
 The employee employment status
 
+## Example Usage
+
+```typescript
+import { HrisCreateEmployeeRequestDtoEmploymentStatus } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: HrisCreateEmployeeRequestDtoEmploymentStatus = {};
+```
 
 ## Fields
 

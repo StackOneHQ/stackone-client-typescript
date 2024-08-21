@@ -1,5 +1,17 @@
 # IamGetUserRequest
 
+## Example Usage
+
+```typescript
+import { IamGetUserRequest } from "@stackone/stackone-client-ts/sdk/models/operations";
+
+let value: IamGetUserRequest = {
+    expand: "roles,groups",
+    fields: "id,remote_id,first_name,last_name,name,primary_email_address,username,roles,groups,status,avatar,is_bot_user,last_active_at,last_login_at,created_at,updated_at,multi_factor_enabled",
+    id: "<id>",
+    xAccountId: "<value>",
+};
+```
 
 ## Fields
 

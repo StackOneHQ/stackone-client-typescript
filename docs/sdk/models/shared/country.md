@@ -2,6 +2,16 @@
 
 The country code
 
+## Example Usage
+
+```typescript
+import { AccountAddressSchemasValue, Country } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: Country = {
+    sourceValue: true,
+    value: AccountAddressSchemasValue.Gb,
+};
+```
 
 ## Fields
 

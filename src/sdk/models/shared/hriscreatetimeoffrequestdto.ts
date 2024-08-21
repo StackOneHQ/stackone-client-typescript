@@ -32,7 +32,8 @@ export type HrisCreateTimeOffRequestDtoSourceValue =
     | HrisCreateTimeOffRequestDto4
     | string
     | number
-    | boolean;
+    | boolean
+    | Array<any>;
 
 export enum HrisCreateTimeOffRequestDtoValue {
     Approved = "approved",
@@ -49,7 +50,14 @@ export type HrisCreateTimeOffRequestDtoValueOpen = OpenEnum<
  * The status of the time off request
  */
 export type HrisCreateTimeOffRequestDtoStatus = {
-    sourceValue?: HrisCreateTimeOffRequestDto4 | string | number | boolean | null | undefined;
+    sourceValue?:
+        | HrisCreateTimeOffRequestDto4
+        | string
+        | number
+        | boolean
+        | Array<any>
+        | null
+        | undefined;
     value?: HrisCreateTimeOffRequestDtoValueOpen | null | undefined;
 };
 
@@ -59,7 +67,8 @@ export type HrisCreateTimeOffRequestDtoSchemasSourceValue =
     | HrisCreateTimeOffRequestDtoSchemas4
     | string
     | number
-    | boolean;
+    | boolean
+    | Array<any>;
 
 export enum HrisCreateTimeOffRequestDtoSchemasValue {
     Sick = "sick",
@@ -88,6 +97,7 @@ export type HrisCreateTimeOffRequestDtoType = {
         | string
         | number
         | boolean
+        | Array<any>
         | null
         | undefined;
     value?: HrisCreateTimeOffRequestDtoSchemasValueOpen | null | undefined;
@@ -269,6 +279,7 @@ export const HrisCreateTimeOffRequestDtoSourceValue$inboundSchema: z.ZodType<
     z.string(),
     z.number(),
     z.boolean(),
+    z.array(z.any()),
 ]);
 
 /** @internal */
@@ -276,7 +287,8 @@ export type HrisCreateTimeOffRequestDtoSourceValue$Outbound =
     | HrisCreateTimeOffRequestDto4$Outbound
     | string
     | number
-    | boolean;
+    | boolean
+    | Array<any>;
 
 /** @internal */
 export const HrisCreateTimeOffRequestDtoSourceValue$outboundSchema: z.ZodType<
@@ -288,6 +300,7 @@ export const HrisCreateTimeOffRequestDtoSourceValue$outboundSchema: z.ZodType<
     z.string(),
     z.number(),
     z.boolean(),
+    z.array(z.any()),
 ]);
 
 /**
@@ -348,6 +361,7 @@ export const HrisCreateTimeOffRequestDtoStatus$inboundSchema: z.ZodType<
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),
@@ -366,6 +380,7 @@ export type HrisCreateTimeOffRequestDtoStatus$Outbound = {
         | string
         | number
         | boolean
+        | Array<any>
         | null
         | undefined;
     value?: string | null | undefined;
@@ -385,6 +400,7 @@ export const HrisCreateTimeOffRequestDtoStatus$outboundSchema: z.ZodType<
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),
@@ -449,6 +465,7 @@ export const HrisCreateTimeOffRequestDtoSchemasSourceValue$inboundSchema: z.ZodT
     z.string(),
     z.number(),
     z.boolean(),
+    z.array(z.any()),
 ]);
 
 /** @internal */
@@ -456,7 +473,8 @@ export type HrisCreateTimeOffRequestDtoSchemasSourceValue$Outbound =
     | HrisCreateTimeOffRequestDtoSchemas4$Outbound
     | string
     | number
-    | boolean;
+    | boolean
+    | Array<any>;
 
 /** @internal */
 export const HrisCreateTimeOffRequestDtoSchemasSourceValue$outboundSchema: z.ZodType<
@@ -468,6 +486,7 @@ export const HrisCreateTimeOffRequestDtoSchemasSourceValue$outboundSchema: z.Zod
     z.string(),
     z.number(),
     z.boolean(),
+    z.array(z.any()),
 ]);
 
 /**
@@ -528,6 +547,7 @@ export const HrisCreateTimeOffRequestDtoType$inboundSchema: z.ZodType<
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),
@@ -546,6 +566,7 @@ export type HrisCreateTimeOffRequestDtoType$Outbound = {
         | string
         | number
         | boolean
+        | Array<any>
         | null
         | undefined;
     value?: string | null | undefined;
@@ -565,6 +586,7 @@ export const HrisCreateTimeOffRequestDtoType$outboundSchema: z.ZodType<
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),

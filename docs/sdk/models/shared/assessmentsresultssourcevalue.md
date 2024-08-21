@@ -2,6 +2,13 @@
 
 The source value of the content type.
 
+## Example Usage
+
+```typescript
+import { AssessmentsResultsSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: AssessmentsResultsSourceValue = "Text";
+```
 
 ## Supported Types
 
@@ -27,5 +34,11 @@ const value: boolean = /* values here */
 
 ```typescript
 const value: shared.AssessmentsResults4 = /* values here */
+```
+
+### `any[]`
+
+```typescript
+const value: any[] = /* values here */
 ```
 

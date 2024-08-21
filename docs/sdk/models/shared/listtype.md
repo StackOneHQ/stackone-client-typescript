@@ -2,6 +2,16 @@
 
 The list type
 
+## Example Usage
+
+```typescript
+import { ListType, ListValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: ListType = {
+    sourceValue: true,
+    value: ListValue.Contacts,
+};
+```
 
 ## Fields
 

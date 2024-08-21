@@ -1,5 +1,21 @@
 # AccountAddress
 
+## Example Usage
+
+```typescript
+import { AccountAddress, AccountAddressSchemasValue, AccountAddressValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: AccountAddress = {
+    country: {
+        sourceValue: true,
+        value: AccountAddressSchemasValue.Gb,
+    },
+    locationType: {
+        sourceValue: ["Home"],
+        value: AccountAddressValue.Home,
+    },
+};
+```
 
 ## Fields
 

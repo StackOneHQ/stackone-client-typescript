@@ -8,7 +8,7 @@ import * as z from "zod";
 
 export type IamResource4 = {};
 
-export type IamResourceSourceValue = IamResource4 | string | number | boolean;
+export type IamResourceSourceValue = IamResource4 | string | number | boolean | Array<any>;
 
 /**
  * The type of the resource, e.g. user, group, permission, etc.
@@ -28,7 +28,7 @@ export enum IamResourceValue {
 export type IamResourceValueOpen = OpenEnum<typeof IamResourceValue>;
 
 export type IamResourceType = {
-    sourceValue?: IamResource4 | string | number | boolean | null | undefined;
+    sourceValue?: IamResource4 | string | number | boolean | Array<any> | null | undefined;
     /**
      * The type of the resource, e.g. user, group, permission, etc.
      */
@@ -91,17 +91,34 @@ export const IamResourceSourceValue$inboundSchema: z.ZodType<
     IamResourceSourceValue,
     z.ZodTypeDef,
     unknown
-> = z.union([z.lazy(() => IamResource4$inboundSchema), z.string(), z.number(), z.boolean()]);
+> = z.union([
+    z.lazy(() => IamResource4$inboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+    z.array(z.any()),
+]);
 
 /** @internal */
-export type IamResourceSourceValue$Outbound = IamResource4$Outbound | string | number | boolean;
+export type IamResourceSourceValue$Outbound =
+    | IamResource4$Outbound
+    | string
+    | number
+    | boolean
+    | Array<any>;
 
 /** @internal */
 export const IamResourceSourceValue$outboundSchema: z.ZodType<
     IamResourceSourceValue$Outbound,
     z.ZodTypeDef,
     IamResourceSourceValue
-> = z.union([z.lazy(() => IamResource4$outboundSchema), z.string(), z.number(), z.boolean()]);
+> = z.union([
+    z.lazy(() => IamResource4$outboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+    z.array(z.any()),
+]);
 
 /**
  * @internal
@@ -151,6 +168,7 @@ export const IamResourceType$inboundSchema: z.ZodType<IamResourceType, z.ZodType
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),
@@ -164,7 +182,14 @@ export const IamResourceType$inboundSchema: z.ZodType<IamResourceType, z.ZodType
 
 /** @internal */
 export type IamResourceType$Outbound = {
-    source_value?: IamResource4$Outbound | string | number | boolean | null | undefined;
+    source_value?:
+        | IamResource4$Outbound
+        | string
+        | number
+        | boolean
+        | Array<any>
+        | null
+        | undefined;
     value?: string | null | undefined;
 };
 
@@ -182,6 +207,7 @@ export const IamResourceType$outboundSchema: z.ZodType<
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),

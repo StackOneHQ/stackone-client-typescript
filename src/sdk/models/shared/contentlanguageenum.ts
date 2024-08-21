@@ -8,7 +8,12 @@ import * as z from "zod";
 
 export type ContentLanguageEnum4 = {};
 
-export type ContentLanguageEnumSourceValue = ContentLanguageEnum4 | string | number | boolean;
+export type ContentLanguageEnumSourceValue =
+    | ContentLanguageEnum4
+    | string
+    | number
+    | boolean
+    | Array<any>;
 
 /**
  * The Locale Code of the language
@@ -424,7 +429,7 @@ export enum ContentLanguageEnumValue {
 export type ContentLanguageEnumValueOpen = OpenEnum<typeof ContentLanguageEnumValue>;
 
 export type ContentLanguageEnum = {
-    sourceValue?: ContentLanguageEnum4 | string | number | boolean | null | undefined;
+    sourceValue?: ContentLanguageEnum4 | string | number | boolean | Array<any> | null | undefined;
     /**
      * The Locale Code of the language
      */
@@ -471,6 +476,7 @@ export const ContentLanguageEnumSourceValue$inboundSchema: z.ZodType<
     z.string(),
     z.number(),
     z.boolean(),
+    z.array(z.any()),
 ]);
 
 /** @internal */
@@ -478,7 +484,8 @@ export type ContentLanguageEnumSourceValue$Outbound =
     | ContentLanguageEnum4$Outbound
     | string
     | number
-    | boolean;
+    | boolean
+    | Array<any>;
 
 /** @internal */
 export const ContentLanguageEnumSourceValue$outboundSchema: z.ZodType<
@@ -490,6 +497,7 @@ export const ContentLanguageEnumSourceValue$outboundSchema: z.ZodType<
     z.string(),
     z.number(),
     z.boolean(),
+    z.array(z.any()),
 ]);
 
 /**
@@ -547,6 +555,7 @@ export const ContentLanguageEnum$inboundSchema: z.ZodType<
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),
@@ -560,7 +569,14 @@ export const ContentLanguageEnum$inboundSchema: z.ZodType<
 
 /** @internal */
 export type ContentLanguageEnum$Outbound = {
-    source_value?: ContentLanguageEnum4$Outbound | string | number | boolean | null | undefined;
+    source_value?:
+        | ContentLanguageEnum4$Outbound
+        | string
+        | number
+        | boolean
+        | Array<any>
+        | null
+        | undefined;
     value?: string | null | undefined;
 };
 
@@ -578,6 +594,7 @@ export const ContentLanguageEnum$outboundSchema: z.ZodType<
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),

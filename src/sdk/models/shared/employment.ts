@@ -8,7 +8,7 @@ import * as z from "zod";
 
 export type Employment4 = {};
 
-export type EmploymentSourceValue = Employment4 | string | number | boolean;
+export type EmploymentSourceValue = Employment4 | string | number | boolean | Array<any>;
 
 export enum EmploymentValue {
     FullTime = "full_time",
@@ -22,7 +22,7 @@ export type EmploymentValueOpen = OpenEnum<typeof EmploymentValue>;
  * The employment work schedule type (e.g., full-time, part-time)
  */
 export type EmploymentEmploymentContractType = {
-    sourceValue?: Employment4 | string | number | boolean | null | undefined;
+    sourceValue?: Employment4 | string | number | boolean | Array<any> | null | undefined;
     value?: EmploymentValueOpen | null | undefined;
 };
 
@@ -31,7 +31,12 @@ export type EmploymentSchemas4 = {};
 /**
  * The source value of the employment type.
  */
-export type EmploymentSchemasSourceValue = EmploymentSchemas4 | string | number | boolean;
+export type EmploymentSchemasSourceValue =
+    | EmploymentSchemas4
+    | string
+    | number
+    | boolean
+    | Array<any>;
 
 /**
  * The type of the employment.
@@ -67,7 +72,7 @@ export type EmploymentEmploymentType = {
     /**
      * The source value of the employment type.
      */
-    sourceValue?: EmploymentSchemas4 | string | number | boolean | null | undefined;
+    sourceValue?: EmploymentSchemas4 | string | number | boolean | Array<any> | null | undefined;
     /**
      * The type of the employment.
      */
@@ -83,7 +88,8 @@ export type EmploymentSchemasPayFrequencySourceValue =
     | EmploymentSchemasPayFrequency4
     | string
     | number
-    | boolean;
+    | boolean
+    | Array<any>;
 
 /**
  * The pay frequency of the job postings.
@@ -119,7 +125,14 @@ export type PayFrequency = {
     /**
      * The source value of the pay frequency.
      */
-    sourceValue?: EmploymentSchemasPayFrequency4 | string | number | boolean | null | undefined;
+    sourceValue?:
+        | EmploymentSchemasPayFrequency4
+        | string
+        | number
+        | boolean
+        | Array<any>
+        | null
+        | undefined;
     /**
      * The pay frequency of the job postings.
      */
@@ -135,7 +148,8 @@ export type EmploymentSchemasPayPeriodSourceValue =
     | EmploymentSchemasPayPeriod4
     | string
     | number
-    | boolean;
+    | boolean
+    | Array<any>;
 
 /**
  * The pay period of the job postings.
@@ -167,7 +181,14 @@ export type PayPeriod = {
     /**
      * The source value of the pay period.
      */
-    sourceValue?: EmploymentSchemasPayPeriod4 | string | number | boolean | null | undefined;
+    sourceValue?:
+        | EmploymentSchemasPayPeriod4
+        | string
+        | number
+        | boolean
+        | Array<any>
+        | null
+        | undefined;
     /**
      * The pay period of the job postings.
      */
@@ -266,17 +287,34 @@ export const EmploymentSourceValue$inboundSchema: z.ZodType<
     EmploymentSourceValue,
     z.ZodTypeDef,
     unknown
-> = z.union([z.lazy(() => Employment4$inboundSchema), z.string(), z.number(), z.boolean()]);
+> = z.union([
+    z.lazy(() => Employment4$inboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+    z.array(z.any()),
+]);
 
 /** @internal */
-export type EmploymentSourceValue$Outbound = Employment4$Outbound | string | number | boolean;
+export type EmploymentSourceValue$Outbound =
+    | Employment4$Outbound
+    | string
+    | number
+    | boolean
+    | Array<any>;
 
 /** @internal */
 export const EmploymentSourceValue$outboundSchema: z.ZodType<
     EmploymentSourceValue$Outbound,
     z.ZodTypeDef,
     EmploymentSourceValue
-> = z.union([z.lazy(() => Employment4$outboundSchema), z.string(), z.number(), z.boolean()]);
+> = z.union([
+    z.lazy(() => Employment4$outboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+    z.array(z.any()),
+]);
 
 /**
  * @internal
@@ -327,6 +365,7 @@ export const EmploymentEmploymentContractType$inboundSchema: z.ZodType<
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),
@@ -340,7 +379,7 @@ export const EmploymentEmploymentContractType$inboundSchema: z.ZodType<
 
 /** @internal */
 export type EmploymentEmploymentContractType$Outbound = {
-    source_value?: Employment4$Outbound | string | number | boolean | null | undefined;
+    source_value?: Employment4$Outbound | string | number | boolean | Array<any> | null | undefined;
     value?: string | null | undefined;
 };
 
@@ -358,6 +397,7 @@ export const EmploymentEmploymentContractType$outboundSchema: z.ZodType<
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),
@@ -417,21 +457,34 @@ export const EmploymentSchemasSourceValue$inboundSchema: z.ZodType<
     EmploymentSchemasSourceValue,
     z.ZodTypeDef,
     unknown
-> = z.union([z.lazy(() => EmploymentSchemas4$inboundSchema), z.string(), z.number(), z.boolean()]);
+> = z.union([
+    z.lazy(() => EmploymentSchemas4$inboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+    z.array(z.any()),
+]);
 
 /** @internal */
 export type EmploymentSchemasSourceValue$Outbound =
     | EmploymentSchemas4$Outbound
     | string
     | number
-    | boolean;
+    | boolean
+    | Array<any>;
 
 /** @internal */
 export const EmploymentSchemasSourceValue$outboundSchema: z.ZodType<
     EmploymentSchemasSourceValue$Outbound,
     z.ZodTypeDef,
     EmploymentSchemasSourceValue
-> = z.union([z.lazy(() => EmploymentSchemas4$outboundSchema), z.string(), z.number(), z.boolean()]);
+> = z.union([
+    z.lazy(() => EmploymentSchemas4$outboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+    z.array(z.any()),
+]);
 
 /**
  * @internal
@@ -488,6 +541,7 @@ export const EmploymentEmploymentType$inboundSchema: z.ZodType<
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),
@@ -501,7 +555,14 @@ export const EmploymentEmploymentType$inboundSchema: z.ZodType<
 
 /** @internal */
 export type EmploymentEmploymentType$Outbound = {
-    source_value?: EmploymentSchemas4$Outbound | string | number | boolean | null | undefined;
+    source_value?:
+        | EmploymentSchemas4$Outbound
+        | string
+        | number
+        | boolean
+        | Array<any>
+        | null
+        | undefined;
     value?: string | null | undefined;
 };
 
@@ -519,6 +580,7 @@ export const EmploymentEmploymentType$outboundSchema: z.ZodType<
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),
@@ -583,6 +645,7 @@ export const EmploymentSchemasPayFrequencySourceValue$inboundSchema: z.ZodType<
     z.string(),
     z.number(),
     z.boolean(),
+    z.array(z.any()),
 ]);
 
 /** @internal */
@@ -590,7 +653,8 @@ export type EmploymentSchemasPayFrequencySourceValue$Outbound =
     | EmploymentSchemasPayFrequency4$Outbound
     | string
     | number
-    | boolean;
+    | boolean
+    | Array<any>;
 
 /** @internal */
 export const EmploymentSchemasPayFrequencySourceValue$outboundSchema: z.ZodType<
@@ -602,6 +666,7 @@ export const EmploymentSchemasPayFrequencySourceValue$outboundSchema: z.ZodType<
     z.string(),
     z.number(),
     z.boolean(),
+    z.array(z.any()),
 ]);
 
 /**
@@ -658,6 +723,7 @@ export const PayFrequency$inboundSchema: z.ZodType<PayFrequency, z.ZodTypeDef, u
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),
@@ -676,6 +742,7 @@ export type PayFrequency$Outbound = {
         | string
         | number
         | boolean
+        | Array<any>
         | null
         | undefined;
     value?: string | null | undefined;
@@ -695,6 +762,7 @@ export const PayFrequency$outboundSchema: z.ZodType<
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),
@@ -759,6 +827,7 @@ export const EmploymentSchemasPayPeriodSourceValue$inboundSchema: z.ZodType<
     z.string(),
     z.number(),
     z.boolean(),
+    z.array(z.any()),
 ]);
 
 /** @internal */
@@ -766,7 +835,8 @@ export type EmploymentSchemasPayPeriodSourceValue$Outbound =
     | EmploymentSchemasPayPeriod4$Outbound
     | string
     | number
-    | boolean;
+    | boolean
+    | Array<any>;
 
 /** @internal */
 export const EmploymentSchemasPayPeriodSourceValue$outboundSchema: z.ZodType<
@@ -778,6 +848,7 @@ export const EmploymentSchemasPayPeriodSourceValue$outboundSchema: z.ZodType<
     z.string(),
     z.number(),
     z.boolean(),
+    z.array(z.any()),
 ]);
 
 /**
@@ -834,6 +905,7 @@ export const PayPeriod$inboundSchema: z.ZodType<PayPeriod, z.ZodTypeDef, unknown
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),
@@ -852,6 +924,7 @@ export type PayPeriod$Outbound = {
         | string
         | number
         | boolean
+        | Array<any>
         | null
         | undefined;
     value?: string | null | undefined;
@@ -867,6 +940,7 @@ export const PayPeriod$outboundSchema: z.ZodType<PayPeriod$Outbound, z.ZodTypeDe
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),

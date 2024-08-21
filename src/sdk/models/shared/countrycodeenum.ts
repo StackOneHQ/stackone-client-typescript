@@ -8,7 +8,7 @@ import * as z from "zod";
 
 export type CountryCodeEnum4 = {};
 
-export type CountryCodeEnumSourceValue = CountryCodeEnum4 | string | number | boolean;
+export type CountryCodeEnumSourceValue = CountryCodeEnum4 | string | number | boolean | Array<any>;
 
 /**
  * The ISO3166-1 Alpha2 Code of the Country
@@ -270,7 +270,7 @@ export enum CountryCodeEnumValue {
 export type CountryCodeEnumValueOpen = OpenEnum<typeof CountryCodeEnumValue>;
 
 export type CountryCodeEnum = {
-    sourceValue?: CountryCodeEnum4 | string | number | boolean | null | undefined;
+    sourceValue?: CountryCodeEnum4 | string | number | boolean | Array<any> | null | undefined;
     /**
      * The ISO3166-1 Alpha2 Code of the Country
      */
@@ -309,21 +309,34 @@ export const CountryCodeEnumSourceValue$inboundSchema: z.ZodType<
     CountryCodeEnumSourceValue,
     z.ZodTypeDef,
     unknown
-> = z.union([z.lazy(() => CountryCodeEnum4$inboundSchema), z.string(), z.number(), z.boolean()]);
+> = z.union([
+    z.lazy(() => CountryCodeEnum4$inboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+    z.array(z.any()),
+]);
 
 /** @internal */
 export type CountryCodeEnumSourceValue$Outbound =
     | CountryCodeEnum4$Outbound
     | string
     | number
-    | boolean;
+    | boolean
+    | Array<any>;
 
 /** @internal */
 export const CountryCodeEnumSourceValue$outboundSchema: z.ZodType<
     CountryCodeEnumSourceValue$Outbound,
     z.ZodTypeDef,
     CountryCodeEnumSourceValue
-> = z.union([z.lazy(() => CountryCodeEnum4$outboundSchema), z.string(), z.number(), z.boolean()]);
+> = z.union([
+    z.lazy(() => CountryCodeEnum4$outboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+    z.array(z.any()),
+]);
 
 /**
  * @internal
@@ -373,6 +386,7 @@ export const CountryCodeEnum$inboundSchema: z.ZodType<CountryCodeEnum, z.ZodType
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),
@@ -386,7 +400,14 @@ export const CountryCodeEnum$inboundSchema: z.ZodType<CountryCodeEnum, z.ZodType
 
 /** @internal */
 export type CountryCodeEnum$Outbound = {
-    source_value?: CountryCodeEnum4$Outbound | string | number | boolean | null | undefined;
+    source_value?:
+        | CountryCodeEnum4$Outbound
+        | string
+        | number
+        | boolean
+        | Array<any>
+        | null
+        | undefined;
     value?: string | null | undefined;
 };
 
@@ -404,6 +425,7 @@ export const CountryCodeEnum$outboundSchema: z.ZodType<
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),

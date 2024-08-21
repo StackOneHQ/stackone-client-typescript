@@ -1,5 +1,40 @@
 # AccountsPaginated
 
+## Example Usage
+
+```typescript
+import { AccountAddressSchemasValue, AccountAddressValue, AccountsPaginated } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: AccountsPaginated = {
+    data: [
+        {
+            addresses: [
+                {
+                    country: {
+                        sourceValue: GB,
+                        value: AccountAddressSchemasValue.Gb,
+                    },
+                    locationType: {
+                        sourceValue: ["Home"],
+                        value: AccountAddressValue.Home,
+                    },
+                },
+            ],
+            createdAt: new Date("2021-01-01T01:01:01.000Z"),
+            id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+            industries: [
+                "Information Technology",
+                "Airlines & Airports",
+                "Personal Care & Household Products",
+            ],
+            phoneNumbers: ["+1123425334"],
+            remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+            remoteOwnerId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
+            updatedAt: new Date("2021-01-01T01:01:01.000Z"),
+        },
+    ],
+};
+```
 
 ## Fields
 

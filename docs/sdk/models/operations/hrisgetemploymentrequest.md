@@ -1,5 +1,17 @@
 # HrisGetEmploymentRequest
 
+## Example Usage
+
+```typescript
+import { HrisGetEmploymentRequest } from "@stackone/stackone-client-ts/sdk/models/operations";
+
+let value: HrisGetEmploymentRequest = {
+    expand: "groups",
+    fields: "id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,employment_type,employment_contract_type,created_at,updated_at",
+    id: "<id>",
+    xAccountId: "<value>",
+};
+```
 
 ## Fields
 

@@ -1,5 +1,17 @@
 # IamGetPolicyRequest
 
+## Example Usage
+
+```typescript
+import { IamGetPolicyRequest } from "@stackone/stackone-client-ts/sdk/models/operations";
+
+let value: IamGetPolicyRequest = {
+    expand: "permissions",
+    fields: "id,remote_id,name,permissions,description,created_at,updated_at",
+    id: "<id>",
+    xAccountId: "<value>",
+};
+```
 
 ## Fields
 

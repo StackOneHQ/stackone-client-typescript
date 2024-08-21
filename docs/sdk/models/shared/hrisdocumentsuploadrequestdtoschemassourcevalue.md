@@ -1,5 +1,12 @@
 # HrisDocumentsUploadRequestDtoSchemasSourceValue
 
+## Example Usage
+
+```typescript
+import { HrisDocumentsUploadRequestDtoSchemasSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: HrisDocumentsUploadRequestDtoSchemasSourceValue = "abc";
+```
 
 ## Supported Types
 
@@ -25,5 +32,11 @@ const value: boolean = /* values here */
 
 ```typescript
 const value: shared.HrisDocumentsUploadRequestDtoSchemas4 = /* values here */
+```
+
+### `any[]`
+
+```typescript
+const value: any[] = /* values here */
 ```
 

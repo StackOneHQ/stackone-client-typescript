@@ -1,5 +1,12 @@
 # HrisDocumentApiModelSourceValue
 
+## Example Usage
+
+```typescript
+import { HrisDocumentApiModelSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: HrisDocumentApiModelSourceValue = false;
+```
 
 ## Supported Types
 
@@ -25,5 +32,11 @@ const value: boolean = /* values here */
 
 ```typescript
 const value: shared.HrisDocumentApiModel4 = /* values here */
+```
+
+### `any[]`
+
+```typescript
+const value: any[] = /* values here */
 ```
 

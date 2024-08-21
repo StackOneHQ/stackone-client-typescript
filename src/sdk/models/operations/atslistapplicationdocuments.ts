@@ -9,7 +9,7 @@ import * as z from "zod";
 /**
  * Filter parameters that allow greater customisation of the list response
  */
-export type QueryParamFilter = {
+export type AtsListApplicationDocumentsQueryParamFilter = {
     /**
      * Use a string with a date to only select results updated after that given date
      */
@@ -24,7 +24,7 @@ export type AtsListApplicationDocumentsRequest = {
     /**
      * Filter parameters that allow greater customisation of the list response
      */
-    filter?: QueryParamFilter | null | undefined;
+    filter?: AtsListApplicationDocumentsQueryParamFilter | null | undefined;
     id: string;
     /**
      * The unified cursor
@@ -86,7 +86,11 @@ export type AtsListApplicationDocumentsResponse = {
 };
 
 /** @internal */
-export const QueryParamFilter$inboundSchema: z.ZodType<QueryParamFilter, z.ZodTypeDef, unknown> = z
+export const AtsListApplicationDocumentsQueryParamFilter$inboundSchema: z.ZodType<
+    AtsListApplicationDocumentsQueryParamFilter,
+    z.ZodTypeDef,
+    unknown
+> = z
     .object({
         updated_after: z.nullable(z.string()).optional(),
     })
@@ -97,15 +101,15 @@ export const QueryParamFilter$inboundSchema: z.ZodType<QueryParamFilter, z.ZodTy
     });
 
 /** @internal */
-export type QueryParamFilter$Outbound = {
+export type AtsListApplicationDocumentsQueryParamFilter$Outbound = {
     updated_after?: string | null | undefined;
 };
 
 /** @internal */
-export const QueryParamFilter$outboundSchema: z.ZodType<
-    QueryParamFilter$Outbound,
+export const AtsListApplicationDocumentsQueryParamFilter$outboundSchema: z.ZodType<
+    AtsListApplicationDocumentsQueryParamFilter$Outbound,
     z.ZodTypeDef,
-    QueryParamFilter
+    AtsListApplicationDocumentsQueryParamFilter
 > = z
     .object({
         updatedAfter: z.nullable(z.string()).optional(),
@@ -120,13 +124,13 @@ export const QueryParamFilter$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace QueryParamFilter$ {
-    /** @deprecated use `QueryParamFilter$inboundSchema` instead. */
-    export const inboundSchema = QueryParamFilter$inboundSchema;
-    /** @deprecated use `QueryParamFilter$outboundSchema` instead. */
-    export const outboundSchema = QueryParamFilter$outboundSchema;
-    /** @deprecated use `QueryParamFilter$Outbound` instead. */
-    export type Outbound = QueryParamFilter$Outbound;
+export namespace AtsListApplicationDocumentsQueryParamFilter$ {
+    /** @deprecated use `AtsListApplicationDocumentsQueryParamFilter$inboundSchema` instead. */
+    export const inboundSchema = AtsListApplicationDocumentsQueryParamFilter$inboundSchema;
+    /** @deprecated use `AtsListApplicationDocumentsQueryParamFilter$outboundSchema` instead. */
+    export const outboundSchema = AtsListApplicationDocumentsQueryParamFilter$outboundSchema;
+    /** @deprecated use `AtsListApplicationDocumentsQueryParamFilter$Outbound` instead. */
+    export type Outbound = AtsListApplicationDocumentsQueryParamFilter$Outbound;
 }
 
 /** @internal */
@@ -137,13 +141,15 @@ export const AtsListApplicationDocumentsRequest$inboundSchema: z.ZodType<
 > = z
     .object({
         fields: z.nullable(z.string()).optional(),
-        filter: z.nullable(z.lazy(() => QueryParamFilter$inboundSchema)).optional(),
+        filter: z
+            .nullable(z.lazy(() => AtsListApplicationDocumentsQueryParamFilter$inboundSchema))
+            .optional(),
         id: z.string(),
         next: z.nullable(z.string()).optional(),
         page: z.nullable(z.string()).optional(),
         page_size: z.nullable(z.string().default("25")),
         proxy: z.nullable(z.record(z.any())).optional(),
-        raw: z.nullable(z.boolean().default(false)),
+        raw: z.nullable(z.boolean()),
         sync_token: z.nullable(z.string()).optional(),
         updated_after: z.nullable(z.string()).optional(),
         "x-account-id": z.string(),
@@ -160,7 +166,7 @@ export const AtsListApplicationDocumentsRequest$inboundSchema: z.ZodType<
 /** @internal */
 export type AtsListApplicationDocumentsRequest$Outbound = {
     fields?: string | null | undefined;
-    filter?: QueryParamFilter$Outbound | null | undefined;
+    filter?: AtsListApplicationDocumentsQueryParamFilter$Outbound | null | undefined;
     id: string;
     next?: string | null | undefined;
     page?: string | null | undefined;
@@ -180,7 +186,9 @@ export const AtsListApplicationDocumentsRequest$outboundSchema: z.ZodType<
 > = z
     .object({
         fields: z.nullable(z.string()).optional(),
-        filter: z.nullable(z.lazy(() => QueryParamFilter$outboundSchema)).optional(),
+        filter: z
+            .nullable(z.lazy(() => AtsListApplicationDocumentsQueryParamFilter$outboundSchema))
+            .optional(),
         id: z.string(),
         next: z.nullable(z.string()).optional(),
         page: z.nullable(z.string()).optional(),

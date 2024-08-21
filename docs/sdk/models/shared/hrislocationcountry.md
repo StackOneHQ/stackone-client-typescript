@@ -2,6 +2,15 @@
 
 The country code
 
+## Example Usage
+
+```typescript
+import { HRISLocationCountry, HRISLocationValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: HRISLocationCountry = {
+    value: HRISLocationValue.Us,
+};
+```
 
 ## Fields
 

@@ -1,5 +1,30 @@
 # JobPostingCompensation
 
+## Example Usage
+
+```typescript
+import {
+  JobPostingCompensation,
+  JobPostingCompensationSchemasTypeValue,
+  JobPostingCompensationSchemasValue,
+  JobPostingCompensationValue,
+} from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: JobPostingCompensation = {
+    payFrequency: {
+        sourceValue: {},
+        value: JobPostingCompensationValue.Hourly,
+    },
+    payPeriod: {
+        sourceValue: true,
+        value: JobPostingCompensationSchemasValue.Hour,
+    },
+    type: {
+        sourceValue: "Salary",
+        value: JobPostingCompensationSchemasTypeValue.Salary,
+    },
+};
+```
 
 ## Fields
 

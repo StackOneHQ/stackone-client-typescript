@@ -11,7 +11,7 @@ export type ContentBlock4 = {};
 /**
  * The source value of the status.
  */
-export type ContentBlockSourceValue = ContentBlock4 | string | number | boolean;
+export type ContentBlockSourceValue = ContentBlock4 | string | number | boolean | Array<any>;
 
 /**
  * The Status of the content blocks.
@@ -33,7 +33,7 @@ export type ContentBlockStatus = {
     /**
      * The source value of the status.
      */
-    sourceValue?: ContentBlock4 | string | number | boolean | null | undefined;
+    sourceValue?: ContentBlock4 | string | number | boolean | Array<any> | null | undefined;
     /**
      * The Status of the content blocks.
      */
@@ -45,7 +45,12 @@ export type ContentBlockSchemas4 = {};
 /**
  * The source value of the type.
  */
-export type ContentBlockSchemasSourceValue = ContentBlockSchemas4 | string | number | boolean;
+export type ContentBlockSchemasSourceValue =
+    | ContentBlockSchemas4
+    | string
+    | number
+    | boolean
+    | Array<any>;
 
 /**
  * The type of the content blocks.
@@ -68,7 +73,7 @@ export type ContentBlockType = {
     /**
      * The source value of the type.
      */
-    sourceValue?: ContentBlockSchemas4 | string | number | boolean | null | undefined;
+    sourceValue?: ContentBlockSchemas4 | string | number | boolean | Array<any> | null | undefined;
     /**
      * The type of the content blocks.
      */
@@ -137,17 +142,34 @@ export const ContentBlockSourceValue$inboundSchema: z.ZodType<
     ContentBlockSourceValue,
     z.ZodTypeDef,
     unknown
-> = z.union([z.lazy(() => ContentBlock4$inboundSchema), z.string(), z.number(), z.boolean()]);
+> = z.union([
+    z.lazy(() => ContentBlock4$inboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+    z.array(z.any()),
+]);
 
 /** @internal */
-export type ContentBlockSourceValue$Outbound = ContentBlock4$Outbound | string | number | boolean;
+export type ContentBlockSourceValue$Outbound =
+    | ContentBlock4$Outbound
+    | string
+    | number
+    | boolean
+    | Array<any>;
 
 /** @internal */
 export const ContentBlockSourceValue$outboundSchema: z.ZodType<
     ContentBlockSourceValue$Outbound,
     z.ZodTypeDef,
     ContentBlockSourceValue
-> = z.union([z.lazy(() => ContentBlock4$outboundSchema), z.string(), z.number(), z.boolean()]);
+> = z.union([
+    z.lazy(() => ContentBlock4$outboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+    z.array(z.any()),
+]);
 
 /**
  * @internal
@@ -201,6 +223,7 @@ export const ContentBlockStatus$inboundSchema: z.ZodType<
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),
@@ -214,7 +237,14 @@ export const ContentBlockStatus$inboundSchema: z.ZodType<
 
 /** @internal */
 export type ContentBlockStatus$Outbound = {
-    source_value?: ContentBlock4$Outbound | string | number | boolean | null | undefined;
+    source_value?:
+        | ContentBlock4$Outbound
+        | string
+        | number
+        | boolean
+        | Array<any>
+        | null
+        | undefined;
     value?: string | null | undefined;
 };
 
@@ -232,6 +262,7 @@ export const ContentBlockStatus$outboundSchema: z.ZodType<
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),
@@ -296,6 +327,7 @@ export const ContentBlockSchemasSourceValue$inboundSchema: z.ZodType<
     z.string(),
     z.number(),
     z.boolean(),
+    z.array(z.any()),
 ]);
 
 /** @internal */
@@ -303,7 +335,8 @@ export type ContentBlockSchemasSourceValue$Outbound =
     | ContentBlockSchemas4$Outbound
     | string
     | number
-    | boolean;
+    | boolean
+    | Array<any>;
 
 /** @internal */
 export const ContentBlockSchemasSourceValue$outboundSchema: z.ZodType<
@@ -315,6 +348,7 @@ export const ContentBlockSchemasSourceValue$outboundSchema: z.ZodType<
     z.string(),
     z.number(),
     z.boolean(),
+    z.array(z.any()),
 ]);
 
 /**
@@ -368,6 +402,7 @@ export const ContentBlockType$inboundSchema: z.ZodType<ContentBlockType, z.ZodTy
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),
@@ -381,7 +416,14 @@ export const ContentBlockType$inboundSchema: z.ZodType<ContentBlockType, z.ZodTy
 
 /** @internal */
 export type ContentBlockType$Outbound = {
-    source_value?: ContentBlockSchemas4$Outbound | string | number | boolean | null | undefined;
+    source_value?:
+        | ContentBlockSchemas4$Outbound
+        | string
+        | number
+        | boolean
+        | Array<any>
+        | null
+        | undefined;
     value?: string | null | undefined;
 };
 
@@ -399,6 +441,7 @@ export const ContentBlockType$outboundSchema: z.ZodType<
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),

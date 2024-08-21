@@ -2,6 +2,13 @@
 
 The employee marital status
 
+## Example Usage
+
+```typescript
+import { HrisCreateEmployeeRequestDtoMaritalStatus } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: HrisCreateEmployeeRequestDtoMaritalStatus = {};
+```
 
 ## Fields
 

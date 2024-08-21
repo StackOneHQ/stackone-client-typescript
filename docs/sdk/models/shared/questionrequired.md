@@ -1,5 +1,12 @@
 # QuestionRequired
 
+## Example Usage
+
+```typescript
+import { Question2, QuestionRequired } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: QuestionRequired = Question2.True;
+```
 
 ## Supported Types
 

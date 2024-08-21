@@ -8,7 +8,7 @@ import * as z from "zod";
 
 export type Completion4 = {};
 
-export type CompletionSourceValue = Completion4 | string | number | boolean;
+export type CompletionSourceValue = Completion4 | string | number | boolean | Array<any>;
 
 export enum CompletionValue {
     Pass = "Pass",
@@ -20,7 +20,7 @@ export type CompletionValueOpen = OpenEnum<typeof CompletionValue>;
  * The result of the completion
  */
 export type Result = {
-    sourceValue?: Completion4 | string | number | boolean | null | undefined;
+    sourceValue?: Completion4 | string | number | boolean | Array<any> | null | undefined;
     value?: CompletionValueOpen | null | undefined;
 };
 
@@ -46,7 +46,7 @@ export type Completion = {
      */
     passthrough?: { [k: string]: any } | null | undefined;
     /**
-     * Provider's unique identifier of the content
+     * Provider's unique identifier of the completion
      */
     remoteContentId?: string | null | undefined;
     /**
@@ -58,17 +58,9 @@ export type Completion = {
      */
     remoteId?: string | null | undefined;
     /**
-     * Provider's unique identifier of the user
-     */
-    remoteUserId?: string | null | undefined;
-    /**
      * The result of the completion
      */
     result?: Result | null | undefined;
-    /**
-     * The user ID associated with this completion
-     */
-    userId?: string | null | undefined;
 };
 
 /** @internal */
@@ -104,17 +96,34 @@ export const CompletionSourceValue$inboundSchema: z.ZodType<
     CompletionSourceValue,
     z.ZodTypeDef,
     unknown
-> = z.union([z.lazy(() => Completion4$inboundSchema), z.string(), z.number(), z.boolean()]);
+> = z.union([
+    z.lazy(() => Completion4$inboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+    z.array(z.any()),
+]);
 
 /** @internal */
-export type CompletionSourceValue$Outbound = Completion4$Outbound | string | number | boolean;
+export type CompletionSourceValue$Outbound =
+    | Completion4$Outbound
+    | string
+    | number
+    | boolean
+    | Array<any>;
 
 /** @internal */
 export const CompletionSourceValue$outboundSchema: z.ZodType<
     CompletionSourceValue$Outbound,
     z.ZodTypeDef,
     CompletionSourceValue
-> = z.union([z.lazy(() => Completion4$outboundSchema), z.string(), z.number(), z.boolean()]);
+> = z.union([
+    z.lazy(() => Completion4$outboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+    z.array(z.any()),
+]);
 
 /**
  * @internal
@@ -161,6 +170,7 @@ export const Result$inboundSchema: z.ZodType<Result, z.ZodTypeDef, unknown> = z
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),
@@ -174,7 +184,7 @@ export const Result$inboundSchema: z.ZodType<Result, z.ZodTypeDef, unknown> = z
 
 /** @internal */
 export type Result$Outbound = {
-    source_value?: Completion4$Outbound | string | number | boolean | null | undefined;
+    source_value?: Completion4$Outbound | string | number | boolean | Array<any> | null | undefined;
     value?: string | null | undefined;
 };
 
@@ -188,6 +198,7 @@ export const Result$outboundSchema: z.ZodType<Result$Outbound, z.ZodTypeDef, Res
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),
@@ -223,9 +234,7 @@ export const Completion$inboundSchema: z.ZodType<Completion, z.ZodTypeDef, unkno
         remote_content_id: z.nullable(z.string()).optional(),
         remote_external_id: z.nullable(z.string()).optional(),
         remote_id: z.nullable(z.string()).optional(),
-        remote_user_id: z.nullable(z.string()).optional(),
         result: z.nullable(z.lazy(() => Result$inboundSchema)).optional(),
-        user_id: z.nullable(z.string()).optional(),
     })
     .transform((v) => {
         return remap$(v, {
@@ -235,8 +244,6 @@ export const Completion$inboundSchema: z.ZodType<Completion, z.ZodTypeDef, unkno
             remote_content_id: "remoteContentId",
             remote_external_id: "remoteExternalId",
             remote_id: "remoteId",
-            remote_user_id: "remoteUserId",
-            user_id: "userId",
         });
     });
 
@@ -250,9 +257,7 @@ export type Completion$Outbound = {
     remote_content_id?: string | null | undefined;
     remote_external_id?: string | null | undefined;
     remote_id?: string | null | undefined;
-    remote_user_id?: string | null | undefined;
     result?: Result$Outbound | null | undefined;
-    user_id?: string | null | undefined;
 };
 
 /** @internal */
@@ -266,9 +271,7 @@ export const Completion$outboundSchema: z.ZodType<Completion$Outbound, z.ZodType
         remoteContentId: z.nullable(z.string()).optional(),
         remoteExternalId: z.nullable(z.string()).optional(),
         remoteId: z.nullable(z.string()).optional(),
-        remoteUserId: z.nullable(z.string()).optional(),
         result: z.nullable(z.lazy(() => Result$outboundSchema)).optional(),
-        userId: z.nullable(z.string()).optional(),
     })
     .transform((v) => {
         return remap$(v, {
@@ -278,8 +281,6 @@ export const Completion$outboundSchema: z.ZodType<Completion$Outbound, z.ZodType
             remoteContentId: "remote_content_id",
             remoteExternalId: "remote_external_id",
             remoteId: "remote_id",
-            remoteUserId: "remote_user_id",
-            userId: "user_id",
         });
     });
 

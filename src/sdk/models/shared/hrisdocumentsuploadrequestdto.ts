@@ -63,7 +63,8 @@ export type HrisDocumentsUploadRequestDtoSourceValue =
     | HrisDocumentsUploadRequestDto4
     | string
     | number
-    | boolean;
+    | boolean
+    | Array<any>;
 
 /**
  * Whether the file is confidential or not
@@ -83,7 +84,14 @@ export type HrisDocumentsUploadRequestDtoSchemasValueOpen = OpenEnum<
  * The confidentiality level of the file to be uploaded
  */
 export type Confidential = {
-    sourceValue?: HrisDocumentsUploadRequestDto4 | string | number | boolean | null | undefined;
+    sourceValue?:
+        | HrisDocumentsUploadRequestDto4
+        | string
+        | number
+        | boolean
+        | Array<any>
+        | null
+        | undefined;
     /**
      * Whether the file is confidential or not
      */
@@ -96,7 +104,8 @@ export type HrisDocumentsUploadRequestDtoSchemasSourceValue =
     | HrisDocumentsUploadRequestDtoSchemas4
     | string
     | number
-    | boolean;
+    | boolean
+    | Array<any>;
 
 /**
  * The file format of the file, expressed as a file extension
@@ -1329,6 +1338,7 @@ export type HrisDocumentsUploadRequestDtoFileFormat = {
         | string
         | number
         | boolean
+        | Array<any>
         | null
         | undefined;
     /**
@@ -1342,6 +1352,10 @@ export type HrisDocumentsUploadRequestDto = {
      * The category to be associated with the file to be uploaded. Id will take precedence over name.
      */
     category?: HrisDocumentsUploadRequestDtoCategory | null | undefined;
+    /**
+     * The categoryId of the documents
+     */
+    categoryId?: string | null | undefined;
     /**
      * The confidentiality level of the file to be uploaded
      */
@@ -1486,6 +1500,7 @@ export const HrisDocumentsUploadRequestDtoSourceValue$inboundSchema: z.ZodType<
     z.string(),
     z.number(),
     z.boolean(),
+    z.array(z.any()),
 ]);
 
 /** @internal */
@@ -1493,7 +1508,8 @@ export type HrisDocumentsUploadRequestDtoSourceValue$Outbound =
     | HrisDocumentsUploadRequestDto4$Outbound
     | string
     | number
-    | boolean;
+    | boolean
+    | Array<any>;
 
 /** @internal */
 export const HrisDocumentsUploadRequestDtoSourceValue$outboundSchema: z.ZodType<
@@ -1505,6 +1521,7 @@ export const HrisDocumentsUploadRequestDtoSourceValue$outboundSchema: z.ZodType<
     z.string(),
     z.number(),
     z.boolean(),
+    z.array(z.any()),
 ]);
 
 /**
@@ -1561,6 +1578,7 @@ export const Confidential$inboundSchema: z.ZodType<Confidential, z.ZodTypeDef, u
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),
@@ -1579,6 +1597,7 @@ export type Confidential$Outbound = {
         | string
         | number
         | boolean
+        | Array<any>
         | null
         | undefined;
     value?: string | null | undefined;
@@ -1598,6 +1617,7 @@ export const Confidential$outboundSchema: z.ZodType<
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),
@@ -1662,6 +1682,7 @@ export const HrisDocumentsUploadRequestDtoSchemasSourceValue$inboundSchema: z.Zo
     z.string(),
     z.number(),
     z.boolean(),
+    z.array(z.any()),
 ]);
 
 /** @internal */
@@ -1669,7 +1690,8 @@ export type HrisDocumentsUploadRequestDtoSchemasSourceValue$Outbound =
     | HrisDocumentsUploadRequestDtoSchemas4$Outbound
     | string
     | number
-    | boolean;
+    | boolean
+    | Array<any>;
 
 /** @internal */
 export const HrisDocumentsUploadRequestDtoSchemasSourceValue$outboundSchema: z.ZodType<
@@ -1681,6 +1703,7 @@ export const HrisDocumentsUploadRequestDtoSchemasSourceValue$outboundSchema: z.Z
     z.string(),
     z.number(),
     z.boolean(),
+    z.array(z.any()),
 ]);
 
 /**
@@ -1742,6 +1765,7 @@ export const HrisDocumentsUploadRequestDtoFileFormat$inboundSchema: z.ZodType<
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),
@@ -1762,6 +1786,7 @@ export type HrisDocumentsUploadRequestDtoFileFormat$Outbound = {
         | string
         | number
         | boolean
+        | Array<any>
         | null
         | undefined;
     value?: string | null | undefined;
@@ -1781,6 +1806,7 @@ export const HrisDocumentsUploadRequestDtoFileFormat$outboundSchema: z.ZodType<
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),
@@ -1817,6 +1843,7 @@ export const HrisDocumentsUploadRequestDto$inboundSchema: z.ZodType<
         category: z
             .nullable(z.lazy(() => HrisDocumentsUploadRequestDtoCategory$inboundSchema))
             .optional(),
+        category_id: z.nullable(z.string()).optional(),
         confidential: z.nullable(z.lazy(() => Confidential$inboundSchema)).optional(),
         content: z.nullable(z.string()).optional(),
         file_format: z
@@ -1827,6 +1854,7 @@ export const HrisDocumentsUploadRequestDto$inboundSchema: z.ZodType<
     })
     .transform((v) => {
         return remap$(v, {
+            category_id: "categoryId",
             file_format: "fileFormat",
         });
     });
@@ -1834,6 +1862,7 @@ export const HrisDocumentsUploadRequestDto$inboundSchema: z.ZodType<
 /** @internal */
 export type HrisDocumentsUploadRequestDto$Outbound = {
     category?: HrisDocumentsUploadRequestDtoCategory$Outbound | null | undefined;
+    category_id?: string | null | undefined;
     confidential?: Confidential$Outbound | null | undefined;
     content?: string | null | undefined;
     file_format?: HrisDocumentsUploadRequestDtoFileFormat$Outbound | null | undefined;
@@ -1851,6 +1880,7 @@ export const HrisDocumentsUploadRequestDto$outboundSchema: z.ZodType<
         category: z
             .nullable(z.lazy(() => HrisDocumentsUploadRequestDtoCategory$outboundSchema))
             .optional(),
+        categoryId: z.nullable(z.string()).optional(),
         confidential: z.nullable(z.lazy(() => Confidential$outboundSchema)).optional(),
         content: z.nullable(z.string()).optional(),
         fileFormat: z
@@ -1861,6 +1891,7 @@ export const HrisDocumentsUploadRequestDto$outboundSchema: z.ZodType<
     })
     .transform((v) => {
         return remap$(v, {
+            categoryId: "category_id",
             fileFormat: "file_format",
         });
     });

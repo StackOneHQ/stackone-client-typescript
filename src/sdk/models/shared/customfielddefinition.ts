@@ -8,7 +8,7 @@ import * as z from "zod";
 
 export type CustomFieldDefinition4 = {};
 
-export type CustomFieldDefinitionOptions = CustomFieldDefinition4 | string | number | boolean;
+export type Options = CustomFieldDefinition4 | string | number | boolean | Array<any>;
 
 export type CustomFieldDefinitionSchemas4 = {};
 
@@ -16,7 +16,8 @@ export type CustomFieldDefinitionSourceValue =
     | CustomFieldDefinitionSchemas4
     | string
     | number
-    | boolean;
+    | boolean
+    | Array<any>;
 
 export enum CustomFieldDefinitionValue {
     Date = "date",
@@ -25,6 +26,11 @@ export enum CustomFieldDefinitionValue {
     List = "list",
     Checkbox = "checkbox",
     Text = "text",
+    Boolean = "boolean",
+    SingleSelect = "single_select",
+    MultiSelect = "multi_select",
+    Url = "url",
+    Other = "other",
 }
 export type CustomFieldDefinitionValueOpen = OpenEnum<typeof CustomFieldDefinitionValue>;
 
@@ -32,7 +38,14 @@ export type CustomFieldDefinitionValueOpen = OpenEnum<typeof CustomFieldDefiniti
  * The type of the custom field.
  */
 export type CustomFieldDefinitionType = {
-    sourceValue?: CustomFieldDefinitionSchemas4 | string | number | boolean | null | undefined;
+    sourceValue?:
+        | CustomFieldDefinitionSchemas4
+        | string
+        | number
+        | boolean
+        | Array<any>
+        | null
+        | undefined;
     value?: CustomFieldDefinitionValueOpen | null | undefined;
 };
 
@@ -46,7 +59,10 @@ export type CustomFieldDefinition = {
     /**
      * An array of possible options for the custom field.
      */
-    options?: Array<CustomFieldDefinition4 | string | number | boolean> | null | undefined;
+    options?:
+        | Array<CustomFieldDefinition4 | string | number | boolean | Array<any>>
+        | null
+        | undefined;
     /**
      * Provider's unique identifier
      */
@@ -88,47 +104,42 @@ export namespace CustomFieldDefinition4$ {
 }
 
 /** @internal */
-export const CustomFieldDefinitionOptions$inboundSchema: z.ZodType<
-    CustomFieldDefinitionOptions,
-    z.ZodTypeDef,
-    unknown
-> = z.union([
+export const Options$inboundSchema: z.ZodType<Options, z.ZodTypeDef, unknown> = z.union([
     z.lazy(() => CustomFieldDefinition4$inboundSchema),
     z.string(),
     z.number(),
     z.boolean(),
+    z.array(z.any()),
 ]);
 
 /** @internal */
-export type CustomFieldDefinitionOptions$Outbound =
+export type Options$Outbound =
     | CustomFieldDefinition4$Outbound
     | string
     | number
-    | boolean;
+    | boolean
+    | Array<any>;
 
 /** @internal */
-export const CustomFieldDefinitionOptions$outboundSchema: z.ZodType<
-    CustomFieldDefinitionOptions$Outbound,
-    z.ZodTypeDef,
-    CustomFieldDefinitionOptions
-> = z.union([
+export const Options$outboundSchema: z.ZodType<Options$Outbound, z.ZodTypeDef, Options> = z.union([
     z.lazy(() => CustomFieldDefinition4$outboundSchema),
     z.string(),
     z.number(),
     z.boolean(),
+    z.array(z.any()),
 ]);
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace CustomFieldDefinitionOptions$ {
-    /** @deprecated use `CustomFieldDefinitionOptions$inboundSchema` instead. */
-    export const inboundSchema = CustomFieldDefinitionOptions$inboundSchema;
-    /** @deprecated use `CustomFieldDefinitionOptions$outboundSchema` instead. */
-    export const outboundSchema = CustomFieldDefinitionOptions$outboundSchema;
-    /** @deprecated use `CustomFieldDefinitionOptions$Outbound` instead. */
-    export type Outbound = CustomFieldDefinitionOptions$Outbound;
+export namespace Options$ {
+    /** @deprecated use `Options$inboundSchema` instead. */
+    export const inboundSchema = Options$inboundSchema;
+    /** @deprecated use `Options$outboundSchema` instead. */
+    export const outboundSchema = Options$outboundSchema;
+    /** @deprecated use `Options$Outbound` instead. */
+    export type Outbound = Options$Outbound;
 }
 
 /** @internal */
@@ -171,6 +182,7 @@ export const CustomFieldDefinitionSourceValue$inboundSchema: z.ZodType<
     z.string(),
     z.number(),
     z.boolean(),
+    z.array(z.any()),
 ]);
 
 /** @internal */
@@ -178,7 +190,8 @@ export type CustomFieldDefinitionSourceValue$Outbound =
     | CustomFieldDefinitionSchemas4$Outbound
     | string
     | number
-    | boolean;
+    | boolean
+    | Array<any>;
 
 /** @internal */
 export const CustomFieldDefinitionSourceValue$outboundSchema: z.ZodType<
@@ -190,6 +203,7 @@ export const CustomFieldDefinitionSourceValue$outboundSchema: z.ZodType<
     z.string(),
     z.number(),
     z.boolean(),
+    z.array(z.any()),
 ]);
 
 /**
@@ -250,6 +264,7 @@ export const CustomFieldDefinitionType$inboundSchema: z.ZodType<
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),
@@ -268,6 +283,7 @@ export type CustomFieldDefinitionType$Outbound = {
         | string
         | number
         | boolean
+        | Array<any>
         | null
         | undefined;
     value?: string | null | undefined;
@@ -287,6 +303,7 @@ export const CustomFieldDefinitionType$outboundSchema: z.ZodType<
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),
@@ -329,6 +346,7 @@ export const CustomFieldDefinition$inboundSchema: z.ZodType<
                         z.string(),
                         z.number(),
                         z.boolean(),
+                        z.array(z.any()),
                     ])
                 )
             )
@@ -347,7 +365,10 @@ export type CustomFieldDefinition$Outbound = {
     description?: string | null | undefined;
     id?: string | null | undefined;
     name?: string | null | undefined;
-    options?: Array<CustomFieldDefinition4$Outbound | string | number | boolean> | null | undefined;
+    options?:
+        | Array<CustomFieldDefinition4$Outbound | string | number | boolean | Array<any>>
+        | null
+        | undefined;
     remote_id?: string | null | undefined;
     type?: CustomFieldDefinitionType$Outbound | null | undefined;
 };
@@ -370,6 +391,7 @@ export const CustomFieldDefinition$outboundSchema: z.ZodType<
                         z.string(),
                         z.number(),
                         z.boolean(),
+                        z.array(z.any()),
                     ])
                 )
             )

@@ -11,7 +11,12 @@ export type ApplicationAttachment4 = {};
 /**
  * The source value of the content type.
  */
-export type ApplicationAttachmentSourceValue = ApplicationAttachment4 | string | number | boolean;
+export type ApplicationAttachmentSourceValue =
+    | ApplicationAttachment4
+    | string
+    | number
+    | boolean
+    | Array<any>;
 
 /**
  * The content type of the attachment.
@@ -29,7 +34,14 @@ export type ContentType = {
     /**
      * The source value of the content type.
      */
-    sourceValue?: ApplicationAttachment4 | string | number | boolean | null | undefined;
+    sourceValue?:
+        | ApplicationAttachment4
+        | string
+        | number
+        | boolean
+        | Array<any>
+        | null
+        | undefined;
     /**
      * The content type of the attachment.
      */
@@ -92,6 +104,7 @@ export const ApplicationAttachmentSourceValue$inboundSchema: z.ZodType<
     z.string(),
     z.number(),
     z.boolean(),
+    z.array(z.any()),
 ]);
 
 /** @internal */
@@ -99,7 +112,8 @@ export type ApplicationAttachmentSourceValue$Outbound =
     | ApplicationAttachment4$Outbound
     | string
     | number
-    | boolean;
+    | boolean
+    | Array<any>;
 
 /** @internal */
 export const ApplicationAttachmentSourceValue$outboundSchema: z.ZodType<
@@ -111,6 +125,7 @@ export const ApplicationAttachmentSourceValue$outboundSchema: z.ZodType<
     z.string(),
     z.number(),
     z.boolean(),
+    z.array(z.any()),
 ]);
 
 /**
@@ -167,6 +182,7 @@ export const ContentType$inboundSchema: z.ZodType<ContentType, z.ZodTypeDef, unk
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),
@@ -180,7 +196,14 @@ export const ContentType$inboundSchema: z.ZodType<ContentType, z.ZodTypeDef, unk
 
 /** @internal */
 export type ContentType$Outbound = {
-    source_value?: ApplicationAttachment4$Outbound | string | number | boolean | null | undefined;
+    source_value?:
+        | ApplicationAttachment4$Outbound
+        | string
+        | number
+        | boolean
+        | Array<any>
+        | null
+        | undefined;
     value?: string | null | undefined;
 };
 
@@ -198,6 +221,7 @@ export const ContentType$outboundSchema: z.ZodType<
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),

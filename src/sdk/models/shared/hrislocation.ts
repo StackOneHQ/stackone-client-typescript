@@ -8,7 +8,7 @@ import * as z from "zod";
 
 export type HRISLocation4 = {};
 
-export type HRISLocationSourceValue = HRISLocation4 | string | number | boolean;
+export type HRISLocationSourceValue = HRISLocation4 | string | number | boolean | Array<any>;
 
 /**
  * The ISO3166-1 Alpha2 Code of the Country
@@ -273,7 +273,7 @@ export type HRISLocationValueOpen = OpenEnum<typeof HRISLocationValue>;
  * The country code
  */
 export type HRISLocationCountry = {
-    sourceValue?: HRISLocation4 | string | number | boolean | null | undefined;
+    sourceValue?: HRISLocation4 | string | number | boolean | Array<any> | null | undefined;
     /**
      * The ISO3166-1 Alpha2 Code of the Country
      */
@@ -285,7 +285,12 @@ export type HRISLocationSchemas4 = {};
 /**
  * The source value of the location type.
  */
-export type HRISLocationSchemasSourceValue = HRISLocationSchemas4 | string | number | boolean;
+export type HRISLocationSchemasSourceValue =
+    | HRISLocationSchemas4
+    | string
+    | number
+    | boolean
+    | Array<any>;
 
 /**
  * The type of the location.
@@ -307,7 +312,7 @@ export type HRISLocationLocationType = {
     /**
      * The source value of the location type.
      */
-    sourceValue?: HRISLocationSchemas4 | string | number | boolean | null | undefined;
+    sourceValue?: HRISLocationSchemas4 | string | number | boolean | Array<any> | null | undefined;
     /**
      * The type of the location.
      */
@@ -409,17 +414,34 @@ export const HRISLocationSourceValue$inboundSchema: z.ZodType<
     HRISLocationSourceValue,
     z.ZodTypeDef,
     unknown
-> = z.union([z.lazy(() => HRISLocation4$inboundSchema), z.string(), z.number(), z.boolean()]);
+> = z.union([
+    z.lazy(() => HRISLocation4$inboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+    z.array(z.any()),
+]);
 
 /** @internal */
-export type HRISLocationSourceValue$Outbound = HRISLocation4$Outbound | string | number | boolean;
+export type HRISLocationSourceValue$Outbound =
+    | HRISLocation4$Outbound
+    | string
+    | number
+    | boolean
+    | Array<any>;
 
 /** @internal */
 export const HRISLocationSourceValue$outboundSchema: z.ZodType<
     HRISLocationSourceValue$Outbound,
     z.ZodTypeDef,
     HRISLocationSourceValue
-> = z.union([z.lazy(() => HRISLocation4$outboundSchema), z.string(), z.number(), z.boolean()]);
+> = z.union([
+    z.lazy(() => HRISLocation4$outboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+    z.array(z.any()),
+]);
 
 /**
  * @internal
@@ -473,6 +495,7 @@ export const HRISLocationCountry$inboundSchema: z.ZodType<
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),
@@ -486,7 +509,14 @@ export const HRISLocationCountry$inboundSchema: z.ZodType<
 
 /** @internal */
 export type HRISLocationCountry$Outbound = {
-    source_value?: HRISLocation4$Outbound | string | number | boolean | null | undefined;
+    source_value?:
+        | HRISLocation4$Outbound
+        | string
+        | number
+        | boolean
+        | Array<any>
+        | null
+        | undefined;
     value?: string | null | undefined;
 };
 
@@ -504,6 +534,7 @@ export const HRISLocationCountry$outboundSchema: z.ZodType<
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),
@@ -568,6 +599,7 @@ export const HRISLocationSchemasSourceValue$inboundSchema: z.ZodType<
     z.string(),
     z.number(),
     z.boolean(),
+    z.array(z.any()),
 ]);
 
 /** @internal */
@@ -575,7 +607,8 @@ export type HRISLocationSchemasSourceValue$Outbound =
     | HRISLocationSchemas4$Outbound
     | string
     | number
-    | boolean;
+    | boolean
+    | Array<any>;
 
 /** @internal */
 export const HRISLocationSchemasSourceValue$outboundSchema: z.ZodType<
@@ -587,6 +620,7 @@ export const HRISLocationSchemasSourceValue$outboundSchema: z.ZodType<
     z.string(),
     z.number(),
     z.boolean(),
+    z.array(z.any()),
 ]);
 
 /**
@@ -644,6 +678,7 @@ export const HRISLocationLocationType$inboundSchema: z.ZodType<
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),
@@ -657,7 +692,14 @@ export const HRISLocationLocationType$inboundSchema: z.ZodType<
 
 /** @internal */
 export type HRISLocationLocationType$Outbound = {
-    source_value?: HRISLocationSchemas4$Outbound | string | number | boolean | null | undefined;
+    source_value?:
+        | HRISLocationSchemas4$Outbound
+        | string
+        | number
+        | boolean
+        | Array<any>
+        | null
+        | undefined;
     value?: string | null | undefined;
 };
 
@@ -675,6 +717,7 @@ export const HRISLocationLocationType$outboundSchema: z.ZodType<
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),

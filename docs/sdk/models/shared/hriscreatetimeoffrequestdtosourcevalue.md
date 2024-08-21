@@ -1,5 +1,12 @@
 # HrisCreateTimeOffRequestDtoSourceValue
 
+## Example Usage
+
+```typescript
+import { HrisCreateTimeOffRequestDtoSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: HrisCreateTimeOffRequestDtoSourceValue = {};
+```
 
 ## Supported Types
 
@@ -25,5 +32,11 @@ const value: boolean = /* values here */
 
 ```typescript
 const value: shared.HrisCreateTimeOffRequestDto4 = /* values here */
+```
+
+### `any[]`
+
+```typescript
+const value: any[] = /* values here */
 ```
 

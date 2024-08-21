@@ -2,6 +2,16 @@
 
 Status of the job
 
+## Example Usage
+
+```typescript
+import { JobStatus, JobValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: JobStatus = {
+    sourceValue: ["Published"],
+    value: JobValue.Published,
+};
+```
 
 ## Fields
 

@@ -1,5 +1,12 @@
 # IamMfaTypeEnumSourceValue
 
+## Example Usage
+
+```typescript
+import { IamMfaTypeEnumSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: IamMfaTypeEnumSourceValue = false;
+```
 
 ## Supported Types
 
@@ -25,5 +32,11 @@ const value: boolean = /* values here */
 
 ```typescript
 const value: shared.IamMfaTypeEnum4 = /* values here */
+```
+
+### `any[]`
+
+```typescript
+const value: any[] = /* values here */
 ```
 

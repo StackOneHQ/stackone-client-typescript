@@ -1,5 +1,19 @@
 # HrisListEmployeeWorkEligibilityRequest
 
+## Example Usage
+
+```typescript
+import { HrisListEmployeeWorkEligibilityRequest } from "@stackone/stackone-client-ts/sdk/models/operations";
+
+let value: HrisListEmployeeWorkEligibilityRequest = {
+    fields: "id,remote_id,type,sub_type,document,valid_from,valid_to,issued_by,number",
+    filter: {
+        updatedAfter: "2020-01-01T00:00:00.000Z",
+    },
+    id: "<id>",
+    xAccountId: "<value>",
+};
+```
 
 ## Fields
 

@@ -1,5 +1,14 @@
 # PhoneNumber
 
+## Example Usage
+
+```typescript
+import { PhoneNumber } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: PhoneNumber = {
+    phone: "+447700112233",
+};
+```
 
 ## Fields
 

@@ -1,5 +1,16 @@
 # OfferHistory
 
+## Example Usage
+
+```typescript
+import { OfferHistory } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: OfferHistory = {
+    createdAt: new Date("2021-01-01T01:01:01.000Z"),
+    startDate: new Date("2021-01-01T01:01:01.000Z"),
+    updatedAt: new Date("2021-01-01T01:01:01.000Z"),
+};
+```
 
 ## Fields
 

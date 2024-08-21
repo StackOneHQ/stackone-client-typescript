@@ -8,7 +8,7 @@ import * as z from "zod";
 
 export type HRISBenefit4 = {};
 
-export type HRISBenefitSourceValue = HRISBenefit4 | string | number | boolean;
+export type HRISBenefitSourceValue = HRISBenefit4 | string | number | boolean | Array<any>;
 
 /**
  * The type of the benefit
@@ -29,7 +29,7 @@ export type HRISBenefitValueOpen = OpenEnum<typeof HRISBenefitValue>;
  * The type of the benefit
  */
 export type BenefitType = {
-    sourceValue?: HRISBenefit4 | string | number | boolean | null | undefined;
+    sourceValue?: HRISBenefit4 | string | number | boolean | Array<any> | null | undefined;
     /**
      * The type of the benefit
      */
@@ -104,17 +104,34 @@ export const HRISBenefitSourceValue$inboundSchema: z.ZodType<
     HRISBenefitSourceValue,
     z.ZodTypeDef,
     unknown
-> = z.union([z.lazy(() => HRISBenefit4$inboundSchema), z.string(), z.number(), z.boolean()]);
+> = z.union([
+    z.lazy(() => HRISBenefit4$inboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+    z.array(z.any()),
+]);
 
 /** @internal */
-export type HRISBenefitSourceValue$Outbound = HRISBenefit4$Outbound | string | number | boolean;
+export type HRISBenefitSourceValue$Outbound =
+    | HRISBenefit4$Outbound
+    | string
+    | number
+    | boolean
+    | Array<any>;
 
 /** @internal */
 export const HRISBenefitSourceValue$outboundSchema: z.ZodType<
     HRISBenefitSourceValue$Outbound,
     z.ZodTypeDef,
     HRISBenefitSourceValue
-> = z.union([z.lazy(() => HRISBenefit4$outboundSchema), z.string(), z.number(), z.boolean()]);
+> = z.union([
+    z.lazy(() => HRISBenefit4$outboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+    z.array(z.any()),
+]);
 
 /**
  * @internal
@@ -164,6 +181,7 @@ export const BenefitType$inboundSchema: z.ZodType<BenefitType, z.ZodTypeDef, unk
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),
@@ -177,7 +195,14 @@ export const BenefitType$inboundSchema: z.ZodType<BenefitType, z.ZodTypeDef, unk
 
 /** @internal */
 export type BenefitType$Outbound = {
-    source_value?: HRISBenefit4$Outbound | string | number | boolean | null | undefined;
+    source_value?:
+        | HRISBenefit4$Outbound
+        | string
+        | number
+        | boolean
+        | Array<any>
+        | null
+        | undefined;
     value?: string | null | undefined;
 };
 
@@ -195,6 +220,7 @@ export const BenefitType$outboundSchema: z.ZodType<
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),

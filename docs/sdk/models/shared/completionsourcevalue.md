@@ -1,5 +1,12 @@
 # CompletionSourceValue
 
+## Example Usage
+
+```typescript
+import { CompletionSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: CompletionSourceValue = {};
+```
 
 ## Supported Types
 
@@ -25,5 +32,11 @@ const value: boolean = /* values here */
 
 ```typescript
 const value: shared.Completion4 = /* values here */
+```
+
+### `any[]`
+
+```typescript
+const value: any[] = /* values here */
 ```
 

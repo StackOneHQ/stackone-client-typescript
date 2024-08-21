@@ -2,6 +2,13 @@
 
 The employee gender
 
+## Example Usage
+
+```typescript
+import { Gender } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: Gender = {};
+```
 
 ## Fields
 

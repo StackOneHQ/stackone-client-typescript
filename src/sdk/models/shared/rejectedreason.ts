@@ -11,7 +11,7 @@ export type RejectedReason4 = {};
 /**
  * The source value of the rejected reason type.
  */
-export type RejectedReasonSourceValue = RejectedReason4 | string | number | boolean;
+export type RejectedReasonSourceValue = RejectedReason4 | string | number | boolean | Array<any>;
 
 /**
  * The type of the rejected reason.
@@ -32,7 +32,7 @@ export type RejectedReasonType = {
     /**
      * The source value of the rejected reason type.
      */
-    sourceValue?: RejectedReason4 | string | number | boolean | null | undefined;
+    sourceValue?: RejectedReason4 | string | number | boolean | Array<any> | null | undefined;
     /**
      * The type of the rejected reason.
      */
@@ -93,21 +93,34 @@ export const RejectedReasonSourceValue$inboundSchema: z.ZodType<
     RejectedReasonSourceValue,
     z.ZodTypeDef,
     unknown
-> = z.union([z.lazy(() => RejectedReason4$inboundSchema), z.string(), z.number(), z.boolean()]);
+> = z.union([
+    z.lazy(() => RejectedReason4$inboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+    z.array(z.any()),
+]);
 
 /** @internal */
 export type RejectedReasonSourceValue$Outbound =
     | RejectedReason4$Outbound
     | string
     | number
-    | boolean;
+    | boolean
+    | Array<any>;
 
 /** @internal */
 export const RejectedReasonSourceValue$outboundSchema: z.ZodType<
     RejectedReasonSourceValue$Outbound,
     z.ZodTypeDef,
     RejectedReasonSourceValue
-> = z.union([z.lazy(() => RejectedReason4$outboundSchema), z.string(), z.number(), z.boolean()]);
+> = z.union([
+    z.lazy(() => RejectedReason4$outboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+    z.array(z.any()),
+]);
 
 /**
  * @internal
@@ -161,6 +174,7 @@ export const RejectedReasonType$inboundSchema: z.ZodType<
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),
@@ -174,7 +188,14 @@ export const RejectedReasonType$inboundSchema: z.ZodType<
 
 /** @internal */
 export type RejectedReasonType$Outbound = {
-    source_value?: RejectedReason4$Outbound | string | number | boolean | null | undefined;
+    source_value?:
+        | RejectedReason4$Outbound
+        | string
+        | number
+        | boolean
+        | Array<any>
+        | null
+        | undefined;
     value?: string | null | undefined;
 };
 
@@ -192,6 +213,7 @@ export const RejectedReasonType$outboundSchema: z.ZodType<
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),

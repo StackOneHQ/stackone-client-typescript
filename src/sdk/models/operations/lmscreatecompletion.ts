@@ -8,6 +8,7 @@ import * as z from "zod";
 
 export type LmsCreateCompletionRequest = {
     lmsCreateCompletionRequestDto: shared.LmsCreateCompletionRequestDto;
+    id: string;
     /**
      * The account identifier
      */
@@ -41,6 +42,7 @@ export const LmsCreateCompletionRequest$inboundSchema: z.ZodType<
 > = z
     .object({
         LmsCreateCompletionRequestDto: shared.LmsCreateCompletionRequestDto$inboundSchema,
+        id: z.string(),
         "x-account-id": z.string(),
     })
     .transform((v) => {
@@ -53,6 +55,7 @@ export const LmsCreateCompletionRequest$inboundSchema: z.ZodType<
 /** @internal */
 export type LmsCreateCompletionRequest$Outbound = {
     LmsCreateCompletionRequestDto: shared.LmsCreateCompletionRequestDto$Outbound;
+    id: string;
     "x-account-id": string;
 };
 
@@ -64,6 +67,7 @@ export const LmsCreateCompletionRequest$outboundSchema: z.ZodType<
 > = z
     .object({
         lmsCreateCompletionRequestDto: shared.LmsCreateCompletionRequestDto$outboundSchema,
+        id: z.string(),
         xAccountId: z.string(),
     })
     .transform((v) => {

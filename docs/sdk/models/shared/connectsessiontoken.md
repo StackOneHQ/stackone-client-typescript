@@ -1,5 +1,30 @@
 # ConnectSessionToken
 
+## Example Usage
+
+```typescript
+import { ConnectSessionToken, ConnectSessionTokenCategories } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: ConnectSessionToken = {
+    categories: [
+        ConnectSessionTokenCategories.Ats,
+        ConnectSessionTokenCategories.Hris,
+        ConnectSessionTokenCategories.Hris,
+        ConnectSessionTokenCategories.Crm,
+        ConnectSessionTokenCategories.Iam,
+        ConnectSessionTokenCategories.Marketing,
+        ConnectSessionTokenCategories.Lms,
+        ConnectSessionTokenCategories.Hris,
+    ],
+    createdAt: new Date("2022-09-01T19:08:47.580Z"),
+    id: 1861.93,
+    organizationId: 2187.49,
+    originOwnerId: "<value>",
+    originOwnerName: "<value>",
+    projectId: "<value>",
+    token: "<value>",
+};
+```
 
 ## Fields
 

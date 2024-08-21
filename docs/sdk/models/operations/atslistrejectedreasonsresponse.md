@@ -1,5 +1,32 @@
 # AtsListRejectedReasonsResponse
 
+## Example Usage
+
+```typescript
+import { AtsListRejectedReasonsResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
+import { RejectedReasonValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: AtsListRejectedReasonsResponse = {
+    contentType: "<value>",
+    rejectedReasonsPaginated: {
+        data: [
+            {
+                id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+                label: "Failed Phone Screen",
+                rejectedReasonType: {
+                    sourceValue: "RejectedByOrg",
+                    value: RejectedReasonValue.RejectedByOrganization,
+                },
+                remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+            },
+        ],
+    },
+    statusCode: 441711,
+    rawResponse: new Response('{"message": "hello world"}', {
+        headers: { "Content-Type": "application/json" },
+    }),
+};
+```
 
 ## Fields
 

@@ -1,5 +1,24 @@
 # AtsGetDepartmentResponse
 
+## Example Usage
+
+```typescript
+import { AtsGetDepartmentResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
+
+let value: AtsGetDepartmentResponse = {
+    contentType: "<value>",
+    departmentResult: {
+        data: {
+            id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+            remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        },
+    },
+    statusCode: 414662,
+    rawResponse: new Response('{"message": "hello world"}', {
+        headers: { "Content-Type": "application/json" },
+    }),
+};
+```
 
 ## Fields
 

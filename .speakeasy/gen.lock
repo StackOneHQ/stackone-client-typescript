@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 7fa83af8-9e8e-4410-b7e2-cf1d0eaf688b
 management:
-  docChecksum: dc0627fbb386c5f911ff7c21bec373b1
+  docChecksum: 35bbb8a02f4ab11515f3916fc44c15a5
   docVersion: 1.0.0
-  speakeasyVersion: 1.352.2
-  generationVersion: 2.385.2
-  releaseVersion: 4.13.1
-  configChecksum: a51f04da9ccf61e96d84c747b350af69
+  speakeasyVersion: 1.377.1
+  generationVersion: 2.404.1
+  releaseVersion: 4.14.0
+  configChecksum: 8453bd7dd10172624aeb2596ee904cd3
   repoURL: https://github.com/StackOneHQ/stackone-client-typescript.git
   repoSubDirectory: .
   installationURL: https://github.com/StackOneHQ/stackone-client-typescript
@@ -14,14 +14,14 @@ management:
 features:
   typescript:
     additionalDependencies: 0.1.0
-    constsAndDefaults: 0.1.5
-    core: 3.11.13
+    constsAndDefaults: 0.1.10
+    core: 3.14.1
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
     downloadStreams: 0.1.1
     envVarSecurityUsage: 0.1.1
     examples: 2.81.4
-    globalSecurity: 2.82.10
+    globalSecurity: 2.82.11
     globalSecurityCallbacks: 0.1.0
     globalServerURLs: 2.82.4
     groups: 2.81.2
@@ -32,8 +32,162 @@ features:
     responseFormat: 0.2.3
     retries: 2.83.0
     sdkHooks: 0.1.0
-    unions: 2.85.6
+    unions: 2.85.7
 generatedFiles:
+  - src/funcs/accountsDeleteAccount.ts
+  - src/funcs/accountsGetAccount.ts
+  - src/funcs/accountsGetAccountMetaInfo.ts
+  - src/funcs/accountsListLinkedAccounts.ts
+  - src/funcs/accountsUpdateAccount.ts
+  - src/funcs/connectSessionsAuthenticateConnectSession.ts
+  - src/funcs/connectSessionsCreateConnectSession.ts
+  - src/funcs/connectorsGetConnectorMeta.ts
+  - src/funcs/connectorsListConnectorsMeta.ts
+  - src/funcs/atsCreateApplication.ts
+  - src/funcs/atsCreateCandidate.ts
+  - src/funcs/atsCreateCandidateNote.ts
+  - src/funcs/atsCreateOffer.ts
+  - src/funcs/atsDownloadApplicationDocument.ts
+  - src/funcs/atsGetApplication.ts
+  - src/funcs/atsGetApplicationCustomFieldDefinition.ts
+  - src/funcs/atsGetApplicationDocument.ts
+  - src/funcs/atsGetApplicationOffer.ts
+  - src/funcs/atsGetApplicationScheduledInterview.ts
+  - src/funcs/atsGetApplicationScorecard.ts
+  - src/funcs/atsGetAssessmentsPackage.ts
+  - src/funcs/atsGetAssessmentsRequest.ts
+  - src/funcs/atsGetAssessmentsResult.ts
+  - src/funcs/atsGetCandidate.ts
+  - src/funcs/atsGetCandidateCustomFieldDefinition.ts
+  - src/funcs/atsGetCandidateNote.ts
+  - src/funcs/atsGetDepartment.ts
+  - src/funcs/atsGetInterview.ts
+  - src/funcs/atsGetInterviewStage.ts
+  - src/funcs/atsGetJob.ts
+  - src/funcs/atsGetJobPosting.ts
+  - src/funcs/atsGetList.ts
+  - src/funcs/atsGetLocation.ts
+  - src/funcs/atsGetOffer.ts
+  - src/funcs/atsGetRejectedReason.ts
+  - src/funcs/atsGetUser.ts
+  - src/funcs/atsListApplicationCustomFieldDefinitions.ts
+  - src/funcs/atsListApplicationDocuments.ts
+  - src/funcs/atsListApplicationScorecards.ts
+  - src/funcs/atsListApplications.ts
+  - src/funcs/atsListApplicationsOffers.ts
+  - src/funcs/atsListApplicationsScheduledInterviews.ts
+  - src/funcs/atsListAssessmentsPackages.ts
+  - src/funcs/atsListCandidateCustomFieldDefinitions.ts
+  - src/funcs/atsListCandidateNotes.ts
+  - src/funcs/atsListCandidates.ts
+  - src/funcs/atsListDepartments.ts
+  - src/funcs/atsListInterviewStages.ts
+  - src/funcs/atsListInterviews.ts
+  - src/funcs/atsListJobPostings.ts
+  - src/funcs/atsListJobs.ts
+  - src/funcs/atsListLists.ts
+  - src/funcs/atsListLocations.ts
+  - src/funcs/atsListOffers.ts
+  - src/funcs/atsListRejectedReasons.ts
+  - src/funcs/atsListUsers.ts
+  - src/funcs/atsUpdateApplication.ts
+  - src/funcs/atsUpdateCandidate.ts
+  - src/funcs/atsUploadApplicationDocument.ts
+  - src/funcs/crmCreateContact.ts
+  - src/funcs/crmGetAccount.ts
+  - src/funcs/crmGetContact.ts
+  - src/funcs/crmGetList.ts
+  - src/funcs/crmListAccounts.ts
+  - src/funcs/crmListContacts.ts
+  - src/funcs/crmListLists.ts
+  - src/funcs/crmUpdateContact.ts
+  - src/funcs/hrisCreateEmployee.ts
+  - src/funcs/hrisCreateEmployeeTimeOffRequest.ts
+  - src/funcs/hrisCreateEmployeeWorkEligibilityRequest.ts
+  - src/funcs/hrisCreateTimeOffRequest.ts
+  - src/funcs/hrisDownloadEmployeeDocument.ts
+  - src/funcs/hrisGetBenefit.ts
+  - src/funcs/hrisGetCompany.ts
+  - src/funcs/hrisGetDepartmentGroup.ts
+  - src/funcs/hrisGetEmployee.ts
+  - src/funcs/hrisGetEmployeeDocument.ts
+  - src/funcs/hrisGetEmployeeDocumentCategory.ts
+  - src/funcs/hrisGetEmployeeEmployment.ts
+  - src/funcs/hrisGetEmployeesTimeOffRequest.ts
+  - src/funcs/hrisGetEmployeesWorkEligibility.ts
+  - src/funcs/hrisGetEmployment.ts
+  - src/funcs/hrisGetGroup.ts
+  - src/funcs/hrisGetJob.ts
+  - src/funcs/hrisGetLocation.ts
+  - src/funcs/hrisGetTimeOffRequest.ts
+  - src/funcs/hrisListBenefits.ts
+  - src/funcs/hrisListCompanies.ts
+  - src/funcs/hrisListDepartmentGroups.ts
+  - src/funcs/hrisListEmployeeCategories.ts
+  - src/funcs/hrisListEmployeeDocuments.ts
+  - src/funcs/hrisListEmployeeEmployments.ts
+  - src/funcs/hrisListEmployeeTimeOffRequests.ts
+  - src/funcs/hrisListEmployeeWorkEligibility.ts
+  - src/funcs/hrisListEmployees.ts
+  - src/funcs/hrisListEmployments.ts
+  - src/funcs/hrisListGroups.ts
+  - src/funcs/hrisListJobs.ts
+  - src/funcs/hrisListLocations.ts
+  - src/funcs/hrisListTimeOffRequests.ts
+  - src/funcs/hrisUpdateEmployee.ts
+  - src/funcs/hrisUpdateEmployeeWorkEligibilityRequest.ts
+  - src/funcs/hrisUpdateTimeOffRequest.ts
+  - src/funcs/hrisUploadEmployeeDocument.ts
+  - src/funcs/iamGetGroup.ts
+  - src/funcs/iamGetPolicy.ts
+  - src/funcs/iamGetRole.ts
+  - src/funcs/iamGetUser.ts
+  - src/funcs/iamListGroups.ts
+  - src/funcs/iamListPolicies.ts
+  - src/funcs/iamListRoles.ts
+  - src/funcs/iamListUsers.ts
+  - src/funcs/lmsCreateCompletion.ts
+  - src/funcs/lmsCreateContent.ts
+  - src/funcs/lmsGetAssignment.ts
+  - src/funcs/lmsGetCategory.ts
+  - src/funcs/lmsGetCompletion.ts
+  - src/funcs/lmsGetContent.ts
+  - src/funcs/lmsGetCourse.ts
+  - src/funcs/lmsGetUser.ts
+  - src/funcs/lmsListAssignments.ts
+  - src/funcs/lmsListCategories.ts
+  - src/funcs/lmsListContent.ts
+  - src/funcs/lmsListCourses.ts
+  - src/funcs/lmsListUsers.ts
+  - src/funcs/lmsUpdateContent.ts
+  - src/funcs/lmsUpsertContent.ts
+  - src/funcs/marketingCreateContentBlock.ts
+  - src/funcs/marketingCreateEmailTemplate.ts
+  - src/funcs/marketingCreateInAppTemplate.ts
+  - src/funcs/marketingCreateOmniChannelTemplate.ts
+  - src/funcs/marketingCreatePushTemplate.ts
+  - src/funcs/marketingCreateSmsTemplate.ts
+  - src/funcs/marketingGetCampaign.ts
+  - src/funcs/marketingGetContentBlock.ts
+  - src/funcs/marketingGetEmailTemplate.ts
+  - src/funcs/marketingGetInAppTemplate.ts
+  - src/funcs/marketingGetOmniChannelTemplate.ts
+  - src/funcs/marketingGetPushTemplate.ts
+  - src/funcs/marketingGetSmsTemplate.ts
+  - src/funcs/marketingListCampaigns.ts
+  - src/funcs/marketingListContentBlocks.ts
+  - src/funcs/marketingListEmailTemplates.ts
+  - src/funcs/marketingListInAppTemplates.ts
+  - src/funcs/marketingListOmniChannelTemplates.ts
+  - src/funcs/marketingListPushTemplates.ts
+  - src/funcs/marketingListSmsTemplates.ts
+  - src/funcs/marketingUpdateContentBlock.ts
+  - src/funcs/marketingUpdateEmailTemplate.ts
+  - src/funcs/marketingUpdateInAppTemplate.ts
+  - src/funcs/marketingUpdateOmniChannelTemplate.ts
+  - src/funcs/marketingUpdatePushTemplate.ts
+  - src/funcs/marketingUpdateSmsTemplate.ts
+  - src/funcs/proxyProxyRequest.ts
   - src/sdk/accounts.ts
   - src/sdk/connectsessions.ts
   - src/sdk/connectors.ts
@@ -47,9 +201,11 @@ generatedFiles:
   - src/sdk/sdk.ts
   - .eslintrc.cjs
   - .npmignore
+  - FUNCTIONS.md
   - RUNTIMES.md
   - jsr.json
   - package.json
+  - src/core.ts
   - src/index.ts
   - src/lib/base64.ts
   - src/lib/config.ts
@@ -57,6 +213,7 @@ generatedFiles:
   - src/lib/encodings.ts
   - src/lib/http.ts
   - src/lib/is-plain-object.ts
+  - src/lib/logger.ts
   - src/lib/matchers.ts
   - src/lib/primitives.ts
   - src/lib/retries.ts
@@ -69,6 +226,7 @@ generatedFiles:
   - src/sdk/models/errors/sdkerror.ts
   - src/sdk/models/errors/sdkvalidationerror.ts
   - src/sdk/types/blobs.ts
+  - src/sdk/types/constdatetime.ts
   - src/sdk/types/enums.ts
   - src/sdk/types/fp.ts
   - src/sdk/types/index.ts
@@ -90,6 +248,7 @@ generatedFiles:
   - src/sdk/models/operations/atscreateoffer.ts
   - src/sdk/models/operations/atsdownloadapplicationdocument.ts
   - src/sdk/models/operations/atsgetapplication.ts
+  - src/sdk/models/operations/atsgetapplicationcustomfielddefinition.ts
   - src/sdk/models/operations/atsgetapplicationdocument.ts
   - src/sdk/models/operations/atsgetapplicationoffer.ts
   - src/sdk/models/operations/atsgetapplicationscheduledinterview.ts
@@ -98,6 +257,7 @@ generatedFiles:
   - src/sdk/models/operations/atsgetassessmentsrequest.ts
   - src/sdk/models/operations/atsgetassessmentsresult.ts
   - src/sdk/models/operations/atsgetcandidate.ts
+  - src/sdk/models/operations/atsgetcandidatecustomfielddefinition.ts
   - src/sdk/models/operations/atsgetcandidatenote.ts
   - src/sdk/models/operations/atsgetdepartment.ts
   - src/sdk/models/operations/atsgetinterview.ts
@@ -151,6 +311,7 @@ generatedFiles:
   - src/sdk/models/operations/hrisgetemployee.ts
   - src/sdk/models/operations/hrisgetemployeedocument.ts
   - src/sdk/models/operations/hrisgetemployeedocumentcategory.ts
+  - src/sdk/models/operations/hrisgetemployeeemployment.ts
   - src/sdk/models/operations/hrisgetemployeestimeoffrequest.ts
   - src/sdk/models/operations/hrisgetemployeesworkeligibility.ts
   - src/sdk/models/operations/hrisgetemployment.ts
@@ -163,6 +324,7 @@ generatedFiles:
   - src/sdk/models/operations/hrislistdepartmentgroups.ts
   - src/sdk/models/operations/hrislistemployeecategories.ts
   - src/sdk/models/operations/hrislistemployeedocuments.ts
+  - src/sdk/models/operations/hrislistemployeeemployments.ts
   - src/sdk/models/operations/hrislistemployeetimeoffrequests.ts
   - src/sdk/models/operations/hrislistemployeeworkeligibility.ts
   - src/sdk/models/operations/hrislistemployees.ts
@@ -185,12 +347,16 @@ generatedFiles:
   - src/sdk/models/operations/iamlistusers.ts
   - src/sdk/models/operations/lmscreatecompletion.ts
   - src/sdk/models/operations/lmscreatecontent.ts
+  - src/sdk/models/operations/lmsgetassignment.ts
   - src/sdk/models/operations/lmsgetcategory.ts
   - src/sdk/models/operations/lmsgetcompletion.ts
   - src/sdk/models/operations/lmsgetcontent.ts
+  - src/sdk/models/operations/lmsgetcourse.ts
   - src/sdk/models/operations/lmsgetuser.ts
+  - src/sdk/models/operations/lmslistassignments.ts
   - src/sdk/models/operations/lmslistcategories.ts
   - src/sdk/models/operations/lmslistcontent.ts
+  - src/sdk/models/operations/lmslistcourses.ts
   - src/sdk/models/operations/lmslistusers.ts
   - src/sdk/models/operations/lmsupdatecontent.ts
   - src/sdk/models/operations/lmsupsertcontent.ts
@@ -255,6 +421,8 @@ generatedFiles:
   - src/sdk/models/shared/phonenumber.ts
   - src/sdk/models/shared/candidateemail.ts
   - src/sdk/models/shared/applicationattachment.ts
+  - src/sdk/models/shared/customfielddefinitionresultapimodel.ts
+  - src/sdk/models/shared/customfielddefinition.ts
   - src/sdk/models/shared/atsdocumentresult.ts
   - src/sdk/models/shared/offersresult.ts
   - src/sdk/models/shared/offer.ts
@@ -299,7 +467,6 @@ generatedFiles:
   - src/sdk/models/shared/userresult.ts
   - src/sdk/models/shared/lmsuser.ts
   - src/sdk/models/shared/customfielddefinitionspaginated.ts
-  - src/sdk/models/shared/customfielddefinition.ts
   - src/sdk/models/shared/atsdocumentspaginated.ts
   - src/sdk/models/shared/scorecardspaginated.ts
   - src/sdk/models/shared/applicationspaginated.ts
@@ -352,11 +519,11 @@ generatedFiles:
   - src/sdk/models/shared/hrisdocumentapimodel.ts
   - src/sdk/models/shared/referenceresult.ts
   - src/sdk/models/shared/reference.ts
+  - src/sdk/models/shared/employmentresult.ts
   - src/sdk/models/shared/timeoffresult.ts
   - src/sdk/models/shared/timeoff.ts
   - src/sdk/models/shared/workeligibilityresult.ts
   - src/sdk/models/shared/workeligibility.ts
-  - src/sdk/models/shared/employmentresult.ts
   - src/sdk/models/shared/hrisgroupsresult.ts
   - src/sdk/models/shared/hrislocationresult.ts
   - src/sdk/models/shared/hrislocation.ts
@@ -365,10 +532,10 @@ generatedFiles:
   - src/sdk/models/shared/hrisdepartmentspaginated.ts
   - src/sdk/models/shared/referencepaginated.ts
   - src/sdk/models/shared/hrisdocumentspaginated.ts
+  - src/sdk/models/shared/employmentspaginated.ts
   - src/sdk/models/shared/timeoffpaginated.ts
   - src/sdk/models/shared/workeligibilitypaginated.ts
   - src/sdk/models/shared/employeespaginated.ts
-  - src/sdk/models/shared/employmentspaginated.ts
   - src/sdk/models/shared/hrisgroupspaginated.ts
   - src/sdk/models/shared/hrislocationspaginated.ts
   - src/sdk/models/shared/hrisdocumentsuploadrequestdto.ts
@@ -390,12 +557,20 @@ generatedFiles:
   - src/sdk/models/shared/lmscreatecompletionrequestdto.ts
   - src/sdk/models/shared/lmscreatecontentrequestdto.ts
   - src/sdk/models/shared/createcategoriesapimodel.ts
+  - src/sdk/models/shared/assignmentresult.ts
+  - src/sdk/models/shared/assignment.ts
+  - src/sdk/models/shared/assignmentstatusenum.ts
   - src/sdk/models/shared/categoryresult.ts
   - src/sdk/models/shared/completionresult.ts
   - src/sdk/models/shared/completion.ts
   - src/sdk/models/shared/contentresult.ts
+  - src/sdk/models/shared/courseresult.ts
+  - src/sdk/models/shared/course.ts
+  - src/sdk/models/shared/skills.ts
+  - src/sdk/models/shared/assignmentspaginated.ts
   - src/sdk/models/shared/categoriespaginated.ts
   - src/sdk/models/shared/contentpaginated.ts
+  - src/sdk/models/shared/coursepaginated.ts
   - src/sdk/models/shared/lmsupsertcontentrequestdto.ts
   - src/sdk/models/shared/marketingcreatecontentblocksrequestdto.ts
   - src/sdk/models/shared/marketingcreateemailtemplaterequestdto.ts
@@ -450,6 +625,9 @@ generatedFiles:
   - docs/sdk/models/operations/atsdownloadapplicationdocumentresponse.md
   - docs/sdk/models/operations/atsgetapplicationrequest.md
   - docs/sdk/models/operations/atsgetapplicationresponse.md
+  - docs/sdk/models/operations/filter.md
+  - docs/sdk/models/operations/atsgetapplicationcustomfielddefinitionrequest.md
+  - docs/sdk/models/operations/atsgetapplicationcustomfielddefinitionresponse.md
   - docs/sdk/models/operations/atsgetapplicationdocumentrequest.md
   - docs/sdk/models/operations/atsgetapplicationdocumentresponse.md
   - docs/sdk/models/operations/atsgetapplicationofferrequest.md
@@ -466,6 +644,9 @@ generatedFiles:
   - docs/sdk/models/operations/atsgetassessmentsresultresponse.md
   - docs/sdk/models/operations/atsgetcandidaterequest.md
   - docs/sdk/models/operations/atsgetcandidateresponse.md
+  - docs/sdk/models/operations/queryparamfilter.md
+  - docs/sdk/models/operations/atsgetcandidatecustomfielddefinitionrequest.md
+  - docs/sdk/models/operations/atsgetcandidatecustomfielddefinitionresponse.md
   - docs/sdk/models/operations/atsgetcandidatenoterequest.md
   - docs/sdk/models/operations/atsgetcandidatenoteresponse.md
   - docs/sdk/models/operations/atsgetdepartmentrequest.md
@@ -488,10 +669,10 @@ generatedFiles:
   - docs/sdk/models/operations/atsgetrejectedreasonresponse.md
   - docs/sdk/models/operations/atsgetuserrequest.md
   - docs/sdk/models/operations/atsgetuserresponse.md
-  - docs/sdk/models/operations/filter.md
+  - docs/sdk/models/operations/atslistapplicationcustomfielddefinitionsqueryparamfilter.md
   - docs/sdk/models/operations/atslistapplicationcustomfielddefinitionsrequest.md
   - docs/sdk/models/operations/atslistapplicationcustomfielddefinitionsresponse.md
-  - docs/sdk/models/operations/queryparamfilter.md
+  - docs/sdk/models/operations/atslistapplicationdocumentsqueryparamfilter.md
   - docs/sdk/models/operations/atslistapplicationdocumentsrequest.md
   - docs/sdk/models/operations/atslistapplicationdocumentsresponse.md
   - docs/sdk/models/operations/atslistapplicationscorecardsqueryparamfilter.md
@@ -595,6 +776,8 @@ generatedFiles:
   - docs/sdk/models/operations/hrisgetemployeedocumentresponse.md
   - docs/sdk/models/operations/hrisgetemployeedocumentcategoryrequest.md
   - docs/sdk/models/operations/hrisgetemployeedocumentcategoryresponse.md
+  - docs/sdk/models/operations/hrisgetemployeeemploymentrequest.md
+  - docs/sdk/models/operations/hrisgetemployeeemploymentresponse.md
   - docs/sdk/models/operations/hrisgetemployeestimeoffrequestrequest.md
   - docs/sdk/models/operations/hrisgetemployeestimeoffrequestresponse.md
   - docs/sdk/models/operations/hrisgetemployeesworkeligibilityrequest.md
@@ -624,6 +807,9 @@ generatedFiles:
   - docs/sdk/models/operations/hrislistemployeedocumentsqueryparamfilter.md
   - docs/sdk/models/operations/hrislistemployeedocumentsrequest.md
   - docs/sdk/models/operations/hrislistemployeedocumentsresponse.md
+  - docs/sdk/models/operations/hrislistemployeeemploymentsqueryparamfilter.md
+  - docs/sdk/models/operations/hrislistemployeeemploymentsrequest.md
+  - docs/sdk/models/operations/hrislistemployeeemploymentsresponse.md
   - docs/sdk/models/operations/hrislistemployeetimeoffrequestsqueryparamfilter.md
   - docs/sdk/models/operations/hrislistemployeetimeoffrequestsrequest.md
   - docs/sdk/models/operations/hrislistemployeetimeoffrequestsresponse.md
@@ -680,20 +866,31 @@ generatedFiles:
   - docs/sdk/models/operations/lmscreatecompletionresponse.md
   - docs/sdk/models/operations/lmscreatecontentrequest.md
   - docs/sdk/models/operations/lmscreatecontentresponse.md
+  - docs/sdk/models/operations/lmsgetassignmentrequest.md
+  - docs/sdk/models/operations/lmsgetassignmentresponse.md
   - docs/sdk/models/operations/lmsgetcategoryrequest.md
   - docs/sdk/models/operations/lmsgetcategoryresponse.md
+  - docs/sdk/models/operations/lmsgetcompletionqueryparamfilter.md
   - docs/sdk/models/operations/lmsgetcompletionrequest.md
   - docs/sdk/models/operations/lmsgetcompletionresponse.md
   - docs/sdk/models/operations/lmsgetcontentrequest.md
   - docs/sdk/models/operations/lmsgetcontentresponse.md
+  - docs/sdk/models/operations/lmsgetcourserequest.md
+  - docs/sdk/models/operations/lmsgetcourseresponse.md
   - docs/sdk/models/operations/lmsgetuserrequest.md
   - docs/sdk/models/operations/lmsgetuserresponse.md
+  - docs/sdk/models/operations/lmslistassignmentsqueryparamfilter.md
+  - docs/sdk/models/operations/lmslistassignmentsrequest.md
+  - docs/sdk/models/operations/lmslistassignmentsresponse.md
   - docs/sdk/models/operations/lmslistcategoriesqueryparamfilter.md
   - docs/sdk/models/operations/lmslistcategoriesrequest.md
   - docs/sdk/models/operations/lmslistcategoriesresponse.md
   - docs/sdk/models/operations/lmslistcontentqueryparamfilter.md
   - docs/sdk/models/operations/lmslistcontentrequest.md
   - docs/sdk/models/operations/lmslistcontentresponse.md
+  - docs/sdk/models/operations/lmslistcoursesqueryparamfilter.md
+  - docs/sdk/models/operations/lmslistcoursesrequest.md
+  - docs/sdk/models/operations/lmslistcoursesresponse.md
   - docs/sdk/models/operations/lmslistusersqueryparamfilter.md
   - docs/sdk/models/operations/lmslistusersrequest.md
   - docs/sdk/models/operations/lmslistusersresponse.md
@@ -799,12 +996,6 @@ generatedFiles:
   - docs/sdk/models/shared/answer.md
   - docs/sdk/models/shared/sociallink.md
   - docs/sdk/models/shared/candidatecustomfields4.md
-  - docs/sdk/models/shared/candidatecustomfieldsoptions.md
-  - docs/sdk/models/shared/candidatecustomfieldsschemastype4.md
-  - docs/sdk/models/shared/candidatecustomfieldssourcevalue.md
-  - docs/sdk/models/shared/candidatecustomfieldsschemasvalue.md
-  - docs/sdk/models/shared/candidatecustomfieldstype.md
-  - docs/sdk/models/shared/candidatecustomfieldsschemas4.md
   - docs/sdk/models/shared/candidatecustomfieldsvalue.md
   - docs/sdk/models/shared/candidatecustomfields.md
   - docs/sdk/models/shared/atscreatecandidaterequestdto.md
@@ -861,12 +1052,6 @@ generatedFiles:
   - docs/sdk/models/shared/contentlanguageenum.md
   - docs/sdk/models/shared/category.md
   - docs/sdk/models/shared/four.md
-  - docs/sdk/models/shared/options.md
-  - docs/sdk/models/shared/applicationcustomfieldsschemas4.md
-  - docs/sdk/models/shared/applicationcustomfieldssourcevalue.md
-  - docs/sdk/models/shared/applicationcustomfieldsvalue.md
-  - docs/sdk/models/shared/applicationcustomfieldstype.md
-  - docs/sdk/models/shared/applicationcustomfields4.md
   - docs/sdk/models/shared/value.md
   - docs/sdk/models/shared/applicationcustomfields.md
   - docs/sdk/models/shared/phonenumbertype.md
@@ -877,6 +1062,14 @@ generatedFiles:
   - docs/sdk/models/shared/applicationattachmentvalue.md
   - docs/sdk/models/shared/contenttype.md
   - docs/sdk/models/shared/applicationattachment.md
+  - docs/sdk/models/shared/customfielddefinitionresultapimodel.md
+  - docs/sdk/models/shared/customfielddefinition4.md
+  - docs/sdk/models/shared/options.md
+  - docs/sdk/models/shared/customfielddefinitionschemas4.md
+  - docs/sdk/models/shared/customfielddefinitionsourcevalue.md
+  - docs/sdk/models/shared/customfielddefinitionvalue.md
+  - docs/sdk/models/shared/customfielddefinitiontype.md
+  - docs/sdk/models/shared/customfielddefinition.md
   - docs/sdk/models/shared/atsdocumentresult.md
   - docs/sdk/models/shared/offersresult.md
   - docs/sdk/models/shared/offer4.md
@@ -1002,13 +1195,6 @@ generatedFiles:
   - docs/sdk/models/shared/userresult.md
   - docs/sdk/models/shared/lmsuser.md
   - docs/sdk/models/shared/customfielddefinitionspaginated.md
-  - docs/sdk/models/shared/customfielddefinition4.md
-  - docs/sdk/models/shared/customfielddefinitionoptions.md
-  - docs/sdk/models/shared/customfielddefinitionschemas4.md
-  - docs/sdk/models/shared/customfielddefinitionsourcevalue.md
-  - docs/sdk/models/shared/customfielddefinitionvalue.md
-  - docs/sdk/models/shared/customfielddefinitiontype.md
-  - docs/sdk/models/shared/customfielddefinition.md
   - docs/sdk/models/shared/atsdocumentspaginated.md
   - docs/sdk/models/shared/scorecardspaginated.md
   - docs/sdk/models/shared/applicationspaginated.md
@@ -1051,12 +1237,6 @@ generatedFiles:
   - docs/sdk/models/shared/contactresult.md
   - docs/sdk/models/shared/contact.md
   - docs/sdk/models/shared/contactscustomfields4.md
-  - docs/sdk/models/shared/contactscustomfieldsoptions.md
-  - docs/sdk/models/shared/contactscustomfieldsschemastype4.md
-  - docs/sdk/models/shared/contactscustomfieldssourcevalue.md
-  - docs/sdk/models/shared/contactscustomfieldsschemasvalue.md
-  - docs/sdk/models/shared/contactscustomfieldstype.md
-  - docs/sdk/models/shared/contactscustomfieldsschemas4.md
   - docs/sdk/models/shared/contactscustomfieldsvalue.md
   - docs/sdk/models/shared/contactscustomfields.md
   - docs/sdk/models/shared/crmcreatecontactrequestdto.md
@@ -1139,12 +1319,6 @@ generatedFiles:
   - docs/sdk/models/shared/payperiod.md
   - docs/sdk/models/shared/employment.md
   - docs/sdk/models/shared/employeecustomfields4.md
-  - docs/sdk/models/shared/employeecustomfieldsoptions.md
-  - docs/sdk/models/shared/employeecustomfieldsschemastype4.md
-  - docs/sdk/models/shared/employeecustomfieldssourcevalue.md
-  - docs/sdk/models/shared/employeecustomfieldsschemasvalue.md
-  - docs/sdk/models/shared/employeecustomfieldstype.md
-  - docs/sdk/models/shared/employeecustomfieldsschemas4.md
   - docs/sdk/models/shared/employeecustomfieldsvalue.md
   - docs/sdk/models/shared/employeecustomfields.md
   - docs/sdk/models/shared/countrycodeenum4.md
@@ -1275,6 +1449,7 @@ generatedFiles:
   - docs/sdk/models/shared/reference2.md
   - docs/sdk/models/shared/referenceactive.md
   - docs/sdk/models/shared/reference.md
+  - docs/sdk/models/shared/employmentresult.md
   - docs/sdk/models/shared/timeoffresult.md
   - docs/sdk/models/shared/timeoff2.md
   - docs/sdk/models/shared/timeoffendhalfday.md
@@ -1307,7 +1482,6 @@ generatedFiles:
   - docs/sdk/models/shared/workeligibilityschemasvalue.md
   - docs/sdk/models/shared/workeligibilitytype.md
   - docs/sdk/models/shared/workeligibility.md
-  - docs/sdk/models/shared/employmentresult.md
   - docs/sdk/models/shared/hrisgroupsresult.md
   - docs/sdk/models/shared/hrislocationresult.md
   - docs/sdk/models/shared/hrislocation4.md
@@ -1324,10 +1498,10 @@ generatedFiles:
   - docs/sdk/models/shared/hrisdepartmentspaginated.md
   - docs/sdk/models/shared/referencepaginated.md
   - docs/sdk/models/shared/hrisdocumentspaginated.md
+  - docs/sdk/models/shared/employmentspaginated.md
   - docs/sdk/models/shared/timeoffpaginated.md
   - docs/sdk/models/shared/workeligibilitypaginated.md
   - docs/sdk/models/shared/employeespaginated.md
-  - docs/sdk/models/shared/employmentspaginated.md
   - docs/sdk/models/shared/hrisgroupspaginated.md
   - docs/sdk/models/shared/hrislocationspaginated.md
   - docs/sdk/models/shared/hrisdocumentsuploadrequestdtovalue.md
@@ -1393,7 +1567,6 @@ generatedFiles:
   - docs/sdk/models/shared/lmscreatecompletionrequestdtosourcevalue.md
   - docs/sdk/models/shared/lmscreatecompletionrequestdtovalue.md
   - docs/sdk/models/shared/lmscreatecompletionrequestdtoresult.md
-  - docs/sdk/models/shared/user.md
   - docs/sdk/models/shared/lmscreatecompletionrequestdto.md
   - docs/sdk/models/shared/lmscreatecontentrequestdto2.md
   - docs/sdk/models/shared/lmscreatecontentrequestdtoactive.md
@@ -1403,6 +1576,12 @@ generatedFiles:
   - docs/sdk/models/shared/lmscreatecontentrequestdtocontenttype.md
   - docs/sdk/models/shared/lmscreatecontentrequestdto.md
   - docs/sdk/models/shared/createcategoriesapimodel.md
+  - docs/sdk/models/shared/assignmentresult.md
+  - docs/sdk/models/shared/assignment.md
+  - docs/sdk/models/shared/assignmentstatusenum4.md
+  - docs/sdk/models/shared/sourcevalue.md
+  - docs/sdk/models/shared/assignmentstatusenumvalue.md
+  - docs/sdk/models/shared/assignmentstatusenum.md
   - docs/sdk/models/shared/categoryresult.md
   - docs/sdk/models/shared/completionresult.md
   - docs/sdk/models/shared/completion4.md
@@ -1411,8 +1590,17 @@ generatedFiles:
   - docs/sdk/models/shared/result.md
   - docs/sdk/models/shared/completion.md
   - docs/sdk/models/shared/contentresult.md
+  - docs/sdk/models/shared/courseresult.md
+  - docs/sdk/models/shared/course4.md
+  - docs/sdk/models/shared/coursesourcevalue.md
+  - docs/sdk/models/shared/coursevalue.md
+  - docs/sdk/models/shared/coursetype.md
+  - docs/sdk/models/shared/course.md
+  - docs/sdk/models/shared/skills.md
+  - docs/sdk/models/shared/assignmentspaginated.md
   - docs/sdk/models/shared/categoriespaginated.md
   - docs/sdk/models/shared/contentpaginated.md
+  - docs/sdk/models/shared/coursepaginated.md
   - docs/sdk/models/shared/lmsupsertcontentrequestdto2.md
   - docs/sdk/models/shared/lmsupsertcontentrequestdtoactive.md
   - docs/sdk/models/shared/lmsupsertcontentrequestdto4.md
@@ -1474,7 +1662,7 @@ generatedFiles:
   - docs/sdk/models/shared/campaignstatus.md
   - docs/sdk/models/shared/campaign.md
   - docs/sdk/models/shared/channelsenum4.md
-  - docs/sdk/models/shared/sourcevalue.md
+  - docs/sdk/models/shared/channelsenumsourcevalue.md
   - docs/sdk/models/shared/channelsenumvalue.md
   - docs/sdk/models/shared/channelsenum.md
   - docs/sdk/models/shared/contentblockspaginated.md

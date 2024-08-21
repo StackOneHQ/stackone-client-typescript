@@ -2,6 +2,16 @@
 
 The employee employment type
 
+## Example Usage
+
+```typescript
+import { EmployeeSchemasEmploymentTypeValue, EmploymentType } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: EmploymentType = {
+    sourceValue: {},
+    value: EmployeeSchemasEmploymentTypeValue.Permanent,
+};
+```
 
 ## Fields
 

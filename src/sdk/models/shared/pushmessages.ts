@@ -14,7 +14,7 @@ export type PushMessages4 = {};
 /**
  * The original value from the provider used to derive the unified message type.
  */
-export type PushMessagesSourceValue = PushMessages4 | string | number | boolean;
+export type PushMessagesSourceValue = PushMessages4 | string | number | boolean | Array<any>;
 
 /**
  * The unified message type.
@@ -25,7 +25,7 @@ export type PushMessagesMessageType = {
     /**
      * The original value from the provider used to derive the unified message type.
      */
-    sourceValue?: PushMessages4 | string | number | boolean | null | undefined;
+    sourceValue?: PushMessages4 | string | number | boolean | Array<any> | null | undefined;
     /**
      * The unified message type.
      */
@@ -114,17 +114,34 @@ export const PushMessagesSourceValue$inboundSchema: z.ZodType<
     PushMessagesSourceValue,
     z.ZodTypeDef,
     unknown
-> = z.union([z.lazy(() => PushMessages4$inboundSchema), z.string(), z.number(), z.boolean()]);
+> = z.union([
+    z.lazy(() => PushMessages4$inboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+    z.array(z.any()),
+]);
 
 /** @internal */
-export type PushMessagesSourceValue$Outbound = PushMessages4$Outbound | string | number | boolean;
+export type PushMessagesSourceValue$Outbound =
+    | PushMessages4$Outbound
+    | string
+    | number
+    | boolean
+    | Array<any>;
 
 /** @internal */
 export const PushMessagesSourceValue$outboundSchema: z.ZodType<
     PushMessagesSourceValue$Outbound,
     z.ZodTypeDef,
     PushMessagesSourceValue
-> = z.union([z.lazy(() => PushMessages4$outboundSchema), z.string(), z.number(), z.boolean()]);
+> = z.union([
+    z.lazy(() => PushMessages4$outboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+    z.array(z.any()),
+]);
 
 /**
  * @internal
@@ -180,6 +197,7 @@ export const PushMessagesMessageType$inboundSchema: z.ZodType<
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),
@@ -193,7 +211,14 @@ export const PushMessagesMessageType$inboundSchema: z.ZodType<
 
 /** @internal */
 export type PushMessagesMessageType$Outbound = {
-    source_value?: PushMessages4$Outbound | string | number | boolean | null | undefined;
+    source_value?:
+        | PushMessages4$Outbound
+        | string
+        | number
+        | boolean
+        | Array<any>
+        | null
+        | undefined;
     value?: PushMessagesValue$Outbound | null | undefined;
 };
 
@@ -211,6 +236,7 @@ export const PushMessagesMessageType$outboundSchema: z.ZodType<
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),

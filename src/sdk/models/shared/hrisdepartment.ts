@@ -8,7 +8,7 @@ import * as z from "zod";
 
 export type HRISDepartment4 = {};
 
-export type HRISDepartmentSourceValue = HRISDepartment4 | string | number | boolean;
+export type HRISDepartmentSourceValue = HRISDepartment4 | string | number | boolean | Array<any>;
 
 export enum HRISDepartmentValue {
     Department = "department",
@@ -19,7 +19,7 @@ export type HRISDepartmentValueOpen = OpenEnum<typeof HRISDepartmentValue>;
  * The type of the department group
  */
 export type HRISDepartmentType = {
-    sourceValue?: HRISDepartment4 | string | number | boolean | null | undefined;
+    sourceValue?: HRISDepartment4 | string | number | boolean | Array<any> | null | undefined;
     value?: HRISDepartmentValueOpen | null | undefined;
 };
 
@@ -86,21 +86,34 @@ export const HRISDepartmentSourceValue$inboundSchema: z.ZodType<
     HRISDepartmentSourceValue,
     z.ZodTypeDef,
     unknown
-> = z.union([z.lazy(() => HRISDepartment4$inboundSchema), z.string(), z.number(), z.boolean()]);
+> = z.union([
+    z.lazy(() => HRISDepartment4$inboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+    z.array(z.any()),
+]);
 
 /** @internal */
 export type HRISDepartmentSourceValue$Outbound =
     | HRISDepartment4$Outbound
     | string
     | number
-    | boolean;
+    | boolean
+    | Array<any>;
 
 /** @internal */
 export const HRISDepartmentSourceValue$outboundSchema: z.ZodType<
     HRISDepartmentSourceValue$Outbound,
     z.ZodTypeDef,
     HRISDepartmentSourceValue
-> = z.union([z.lazy(() => HRISDepartment4$outboundSchema), z.string(), z.number(), z.boolean()]);
+> = z.union([
+    z.lazy(() => HRISDepartment4$outboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+    z.array(z.any()),
+]);
 
 /**
  * @internal
@@ -154,6 +167,7 @@ export const HRISDepartmentType$inboundSchema: z.ZodType<
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),
@@ -167,7 +181,14 @@ export const HRISDepartmentType$inboundSchema: z.ZodType<
 
 /** @internal */
 export type HRISDepartmentType$Outbound = {
-    source_value?: HRISDepartment4$Outbound | string | number | boolean | null | undefined;
+    source_value?:
+        | HRISDepartment4$Outbound
+        | string
+        | number
+        | boolean
+        | Array<any>
+        | null
+        | undefined;
     value?: string | null | undefined;
 };
 
@@ -185,6 +206,7 @@ export const HRISDepartmentType$outboundSchema: z.ZodType<
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),

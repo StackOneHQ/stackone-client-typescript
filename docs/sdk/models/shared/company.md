@@ -1,5 +1,19 @@
 # Company
 
+## Example Usage
+
+```typescript
+import { Company } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: Company = {
+    createdAt: new Date("2023-02-23T00:00:00.000Z"),
+    displayName: "StackOne",
+    id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+    name: "StackOne Technologies PLC",
+    remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+    updatedAt: new Date("2024-02-23T00:00:00.000Z"),
+};
+```
 
 ## Fields
 

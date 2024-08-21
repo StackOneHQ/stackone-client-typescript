@@ -1,5 +1,18 @@
 # StackoneGetAccountResponse
 
+## Example Usage
+
+```typescript
+import { StackoneGetAccountResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
+
+let value: StackoneGetAccountResponse = {
+    contentType: "<value>",
+    statusCode: 592845,
+    rawResponse: new Response('{"message": "hello world"}', {
+        headers: { "Content-Type": "application/json" },
+    }),
+};
+```
 
 ## Fields
 

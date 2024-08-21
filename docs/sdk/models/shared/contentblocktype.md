@@ -2,6 +2,16 @@
 
 Stackone enum identifying the type of content block.
 
+## Example Usage
+
+```typescript
+import { ContentBlockSchemasValue, ContentBlockType } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: ContentBlockType = {
+    sourceValue: "text",
+    value: ContentBlockSchemasValue.Image,
+};
+```
 
 ## Fields
 

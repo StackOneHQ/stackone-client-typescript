@@ -1,5 +1,12 @@
 # SmsMessageContentsSchemas
 
+## Example Usage
+
+```typescript
+import { SmsMessageContentsSchemas } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: SmsMessageContentsSchemas = {};
+```
 
 ## Fields
 

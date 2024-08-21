@@ -1,5 +1,12 @@
 # MessageMessageContent
 
+## Example Usage
+
+```typescript
+import { MessageMessageContent } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: MessageMessageContent = {};
+```
 
 ## Supported Types
 

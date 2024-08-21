@@ -11,7 +11,12 @@ export type JobPostingCompensation4 = {};
 /**
  * The source value of the pay frequency.
  */
-export type JobPostingCompensationSourceValue = JobPostingCompensation4 | string | number | boolean;
+export type JobPostingCompensationSourceValue =
+    | JobPostingCompensation4
+    | string
+    | number
+    | boolean
+    | Array<any>;
 
 /**
  * The pay frequency of the job postings.
@@ -42,7 +47,14 @@ export type JobPostingCompensationPayFrequency = {
     /**
      * The source value of the pay frequency.
      */
-    sourceValue?: JobPostingCompensation4 | string | number | boolean | null | undefined;
+    sourceValue?:
+        | JobPostingCompensation4
+        | string
+        | number
+        | boolean
+        | Array<any>
+        | null
+        | undefined;
     /**
      * The pay frequency of the job postings.
      */
@@ -58,7 +70,8 @@ export type JobPostingCompensationSchemasSourceValue =
     | JobPostingCompensationSchemas4
     | string
     | number
-    | boolean;
+    | boolean
+    | Array<any>;
 
 /**
  * The pay period of the job postings.
@@ -89,7 +102,14 @@ export type JobPostingCompensationPayPeriod = {
     /**
      * The source value of the pay period.
      */
-    sourceValue?: JobPostingCompensationSchemas4 | string | number | boolean | null | undefined;
+    sourceValue?:
+        | JobPostingCompensationSchemas4
+        | string
+        | number
+        | boolean
+        | Array<any>
+        | null
+        | undefined;
     /**
      * The pay period of the job postings.
      */
@@ -105,7 +125,8 @@ export type JobPostingCompensationSchemasTypeSourceValue =
     | JobPostingCompensationSchemasType4
     | string
     | number
-    | boolean;
+    | boolean
+    | Array<any>;
 
 /**
  * The type of the compensation.
@@ -130,7 +151,14 @@ export type JobPostingCompensationType = {
     /**
      * The source value of the compensation type.
      */
-    sourceValue?: JobPostingCompensationSchemasType4 | string | number | boolean | null | undefined;
+    sourceValue?:
+        | JobPostingCompensationSchemasType4
+        | string
+        | number
+        | boolean
+        | Array<any>
+        | null
+        | undefined;
     /**
      * The type of the compensation.
      */
@@ -188,6 +216,7 @@ export const JobPostingCompensationSourceValue$inboundSchema: z.ZodType<
     z.string(),
     z.number(),
     z.boolean(),
+    z.array(z.any()),
 ]);
 
 /** @internal */
@@ -195,7 +224,8 @@ export type JobPostingCompensationSourceValue$Outbound =
     | JobPostingCompensation4$Outbound
     | string
     | number
-    | boolean;
+    | boolean
+    | Array<any>;
 
 /** @internal */
 export const JobPostingCompensationSourceValue$outboundSchema: z.ZodType<
@@ -207,6 +237,7 @@ export const JobPostingCompensationSourceValue$outboundSchema: z.ZodType<
     z.string(),
     z.number(),
     z.boolean(),
+    z.array(z.any()),
 ]);
 
 /**
@@ -267,6 +298,7 @@ export const JobPostingCompensationPayFrequency$inboundSchema: z.ZodType<
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),
@@ -280,7 +312,14 @@ export const JobPostingCompensationPayFrequency$inboundSchema: z.ZodType<
 
 /** @internal */
 export type JobPostingCompensationPayFrequency$Outbound = {
-    source_value?: JobPostingCompensation4$Outbound | string | number | boolean | null | undefined;
+    source_value?:
+        | JobPostingCompensation4$Outbound
+        | string
+        | number
+        | boolean
+        | Array<any>
+        | null
+        | undefined;
     value?: string | null | undefined;
 };
 
@@ -298,6 +337,7 @@ export const JobPostingCompensationPayFrequency$outboundSchema: z.ZodType<
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),
@@ -362,6 +402,7 @@ export const JobPostingCompensationSchemasSourceValue$inboundSchema: z.ZodType<
     z.string(),
     z.number(),
     z.boolean(),
+    z.array(z.any()),
 ]);
 
 /** @internal */
@@ -369,7 +410,8 @@ export type JobPostingCompensationSchemasSourceValue$Outbound =
     | JobPostingCompensationSchemas4$Outbound
     | string
     | number
-    | boolean;
+    | boolean
+    | Array<any>;
 
 /** @internal */
 export const JobPostingCompensationSchemasSourceValue$outboundSchema: z.ZodType<
@@ -381,6 +423,7 @@ export const JobPostingCompensationSchemasSourceValue$outboundSchema: z.ZodType<
     z.string(),
     z.number(),
     z.boolean(),
+    z.array(z.any()),
 ]);
 
 /**
@@ -441,6 +484,7 @@ export const JobPostingCompensationPayPeriod$inboundSchema: z.ZodType<
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),
@@ -459,6 +503,7 @@ export type JobPostingCompensationPayPeriod$Outbound = {
         | string
         | number
         | boolean
+        | Array<any>
         | null
         | undefined;
     value?: string | null | undefined;
@@ -478,6 +523,7 @@ export const JobPostingCompensationPayPeriod$outboundSchema: z.ZodType<
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),
@@ -542,6 +588,7 @@ export const JobPostingCompensationSchemasTypeSourceValue$inboundSchema: z.ZodTy
     z.string(),
     z.number(),
     z.boolean(),
+    z.array(z.any()),
 ]);
 
 /** @internal */
@@ -549,7 +596,8 @@ export type JobPostingCompensationSchemasTypeSourceValue$Outbound =
     | JobPostingCompensationSchemasType4$Outbound
     | string
     | number
-    | boolean;
+    | boolean
+    | Array<any>;
 
 /** @internal */
 export const JobPostingCompensationSchemasTypeSourceValue$outboundSchema: z.ZodType<
@@ -561,6 +609,7 @@ export const JobPostingCompensationSchemasTypeSourceValue$outboundSchema: z.ZodT
     z.string(),
     z.number(),
     z.boolean(),
+    z.array(z.any()),
 ]);
 
 /**
@@ -621,6 +670,7 @@ export const JobPostingCompensationType$inboundSchema: z.ZodType<
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),
@@ -639,6 +689,7 @@ export type JobPostingCompensationType$Outbound = {
         | string
         | number
         | boolean
+        | Array<any>
         | null
         | undefined;
     value?: string | null | undefined;
@@ -658,6 +709,7 @@ export const JobPostingCompensationType$outboundSchema: z.ZodType<
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),

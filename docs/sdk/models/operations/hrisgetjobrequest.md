@@ -1,5 +1,16 @@
 # HrisGetJobRequest
 
+## Example Usage
+
+```typescript
+import { HrisGetJobRequest } from "@stackone/stackone-client-ts/sdk/models/operations";
+
+let value: HrisGetJobRequest = {
+    fields: "id,remote_id,name,type,parent_ids,remote_parent_ids,owner_ids,remote_owner_ids",
+    id: "<id>",
+    xAccountId: "<value>",
+};
+```
 
 ## Fields
 

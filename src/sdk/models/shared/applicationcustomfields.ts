@@ -3,51 +3,16 @@
  */
 
 import { remap as remap$ } from "../../../lib/primitives.js";
-import { catchUnrecognizedEnum, OpenEnum, Unrecognized } from "../../types/enums.js";
 import * as z from "zod";
 
 export type Four = {};
 
-export type Options = Four | string | number | boolean;
-
-export type ApplicationCustomFieldsSchemas4 = {};
-
-export type ApplicationCustomFieldsSourceValue =
-    | ApplicationCustomFieldsSchemas4
-    | string
-    | number
-    | boolean;
-
-export enum ApplicationCustomFieldsValue {
-    Date = "date",
-    Float = "float",
-    Integer = "integer",
-    List = "list",
-    Checkbox = "checkbox",
-    Text = "text",
-}
-export type ApplicationCustomFieldsValueOpen = OpenEnum<typeof ApplicationCustomFieldsValue>;
-
-/**
- * The type of the custom field.
- */
-export type ApplicationCustomFieldsType = {
-    sourceValue?: ApplicationCustomFieldsSchemas4 | string | number | boolean | null | undefined;
-    value?: ApplicationCustomFieldsValueOpen | null | undefined;
-};
-
-export type ApplicationCustomFields4 = {};
-
 /**
  * The value associated with the custom field.
  */
-export type Value = ApplicationCustomFields4 | string | number | boolean;
+export type Value = Four | string | number | boolean | Array<any>;
 
 export type ApplicationCustomFields = {
-    /**
-     * The description of the custom field.
-     */
-    description?: string | null | undefined;
     /**
      * Unique identifier
      */
@@ -57,10 +22,6 @@ export type ApplicationCustomFields = {
      */
     name?: string | null | undefined;
     /**
-     * An array of possible options for the custom field.
-     */
-    options?: Array<Four | string | number | boolean> | null | undefined;
-    /**
      * Provider's unique identifier
      */
     remoteId?: string | null | undefined;
@@ -69,13 +30,9 @@ export type ApplicationCustomFields = {
      */
     remoteValueId?: string | null | undefined;
     /**
-     * The type of the custom field.
-     */
-    type?: ApplicationCustomFieldsType | null | undefined;
-    /**
      * The value associated with the custom field.
      */
-    value?: ApplicationCustomFields4 | string | number | boolean | null | undefined;
+    value?: Four | string | number | boolean | Array<any> | null | undefined;
     /**
      * The unique identifier for the value of the custom field.
      */
@@ -105,264 +62,24 @@ export namespace Four$ {
 }
 
 /** @internal */
-export const Options$inboundSchema: z.ZodType<Options, z.ZodTypeDef, unknown> = z.union([
+export const Value$inboundSchema: z.ZodType<Value, z.ZodTypeDef, unknown> = z.union([
     z.lazy(() => Four$inboundSchema),
     z.string(),
     z.number(),
     z.boolean(),
+    z.array(z.any()),
 ]);
 
 /** @internal */
-export type Options$Outbound = Four$Outbound | string | number | boolean;
+export type Value$Outbound = Four$Outbound | string | number | boolean | Array<any>;
 
 /** @internal */
-export const Options$outboundSchema: z.ZodType<Options$Outbound, z.ZodTypeDef, Options> = z.union([
+export const Value$outboundSchema: z.ZodType<Value$Outbound, z.ZodTypeDef, Value> = z.union([
     z.lazy(() => Four$outboundSchema),
     z.string(),
     z.number(),
     z.boolean(),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Options$ {
-    /** @deprecated use `Options$inboundSchema` instead. */
-    export const inboundSchema = Options$inboundSchema;
-    /** @deprecated use `Options$outboundSchema` instead. */
-    export const outboundSchema = Options$outboundSchema;
-    /** @deprecated use `Options$Outbound` instead. */
-    export type Outbound = Options$Outbound;
-}
-
-/** @internal */
-export const ApplicationCustomFieldsSchemas4$inboundSchema: z.ZodType<
-    ApplicationCustomFieldsSchemas4,
-    z.ZodTypeDef,
-    unknown
-> = z.object({});
-
-/** @internal */
-export type ApplicationCustomFieldsSchemas4$Outbound = {};
-
-/** @internal */
-export const ApplicationCustomFieldsSchemas4$outboundSchema: z.ZodType<
-    ApplicationCustomFieldsSchemas4$Outbound,
-    z.ZodTypeDef,
-    ApplicationCustomFieldsSchemas4
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ApplicationCustomFieldsSchemas4$ {
-    /** @deprecated use `ApplicationCustomFieldsSchemas4$inboundSchema` instead. */
-    export const inboundSchema = ApplicationCustomFieldsSchemas4$inboundSchema;
-    /** @deprecated use `ApplicationCustomFieldsSchemas4$outboundSchema` instead. */
-    export const outboundSchema = ApplicationCustomFieldsSchemas4$outboundSchema;
-    /** @deprecated use `ApplicationCustomFieldsSchemas4$Outbound` instead. */
-    export type Outbound = ApplicationCustomFieldsSchemas4$Outbound;
-}
-
-/** @internal */
-export const ApplicationCustomFieldsSourceValue$inboundSchema: z.ZodType<
-    ApplicationCustomFieldsSourceValue,
-    z.ZodTypeDef,
-    unknown
-> = z.union([
-    z.lazy(() => ApplicationCustomFieldsSchemas4$inboundSchema),
-    z.string(),
-    z.number(),
-    z.boolean(),
-]);
-
-/** @internal */
-export type ApplicationCustomFieldsSourceValue$Outbound =
-    | ApplicationCustomFieldsSchemas4$Outbound
-    | string
-    | number
-    | boolean;
-
-/** @internal */
-export const ApplicationCustomFieldsSourceValue$outboundSchema: z.ZodType<
-    ApplicationCustomFieldsSourceValue$Outbound,
-    z.ZodTypeDef,
-    ApplicationCustomFieldsSourceValue
-> = z.union([
-    z.lazy(() => ApplicationCustomFieldsSchemas4$outboundSchema),
-    z.string(),
-    z.number(),
-    z.boolean(),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ApplicationCustomFieldsSourceValue$ {
-    /** @deprecated use `ApplicationCustomFieldsSourceValue$inboundSchema` instead. */
-    export const inboundSchema = ApplicationCustomFieldsSourceValue$inboundSchema;
-    /** @deprecated use `ApplicationCustomFieldsSourceValue$outboundSchema` instead. */
-    export const outboundSchema = ApplicationCustomFieldsSourceValue$outboundSchema;
-    /** @deprecated use `ApplicationCustomFieldsSourceValue$Outbound` instead. */
-    export type Outbound = ApplicationCustomFieldsSourceValue$Outbound;
-}
-
-/** @internal */
-export const ApplicationCustomFieldsValue$inboundSchema: z.ZodType<
-    ApplicationCustomFieldsValueOpen,
-    z.ZodTypeDef,
-    unknown
-> = z.union([
-    z.nativeEnum(ApplicationCustomFieldsValue),
-    z.string().transform(catchUnrecognizedEnum),
-]);
-
-/** @internal */
-export const ApplicationCustomFieldsValue$outboundSchema: z.ZodType<
-    ApplicationCustomFieldsValueOpen,
-    z.ZodTypeDef,
-    ApplicationCustomFieldsValueOpen
-> = z.union([
-    z.nativeEnum(ApplicationCustomFieldsValue),
-    z.string().and(z.custom<Unrecognized<string>>()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ApplicationCustomFieldsValue$ {
-    /** @deprecated use `ApplicationCustomFieldsValue$inboundSchema` instead. */
-    export const inboundSchema = ApplicationCustomFieldsValue$inboundSchema;
-    /** @deprecated use `ApplicationCustomFieldsValue$outboundSchema` instead. */
-    export const outboundSchema = ApplicationCustomFieldsValue$outboundSchema;
-}
-
-/** @internal */
-export const ApplicationCustomFieldsType$inboundSchema: z.ZodType<
-    ApplicationCustomFieldsType,
-    z.ZodTypeDef,
-    unknown
-> = z
-    .object({
-        source_value: z
-            .nullable(
-                z.union([
-                    z.lazy(() => ApplicationCustomFieldsSchemas4$inboundSchema),
-                    z.string(),
-                    z.number(),
-                    z.boolean(),
-                ])
-            )
-            .optional(),
-        value: z.nullable(ApplicationCustomFieldsValue$inboundSchema).optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            source_value: "sourceValue",
-        });
-    });
-
-/** @internal */
-export type ApplicationCustomFieldsType$Outbound = {
-    source_value?:
-        | ApplicationCustomFieldsSchemas4$Outbound
-        | string
-        | number
-        | boolean
-        | null
-        | undefined;
-    value?: string | null | undefined;
-};
-
-/** @internal */
-export const ApplicationCustomFieldsType$outboundSchema: z.ZodType<
-    ApplicationCustomFieldsType$Outbound,
-    z.ZodTypeDef,
-    ApplicationCustomFieldsType
-> = z
-    .object({
-        sourceValue: z
-            .nullable(
-                z.union([
-                    z.lazy(() => ApplicationCustomFieldsSchemas4$outboundSchema),
-                    z.string(),
-                    z.number(),
-                    z.boolean(),
-                ])
-            )
-            .optional(),
-        value: z.nullable(ApplicationCustomFieldsValue$outboundSchema).optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            sourceValue: "source_value",
-        });
-    });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ApplicationCustomFieldsType$ {
-    /** @deprecated use `ApplicationCustomFieldsType$inboundSchema` instead. */
-    export const inboundSchema = ApplicationCustomFieldsType$inboundSchema;
-    /** @deprecated use `ApplicationCustomFieldsType$outboundSchema` instead. */
-    export const outboundSchema = ApplicationCustomFieldsType$outboundSchema;
-    /** @deprecated use `ApplicationCustomFieldsType$Outbound` instead. */
-    export type Outbound = ApplicationCustomFieldsType$Outbound;
-}
-
-/** @internal */
-export const ApplicationCustomFields4$inboundSchema: z.ZodType<
-    ApplicationCustomFields4,
-    z.ZodTypeDef,
-    unknown
-> = z.object({});
-
-/** @internal */
-export type ApplicationCustomFields4$Outbound = {};
-
-/** @internal */
-export const ApplicationCustomFields4$outboundSchema: z.ZodType<
-    ApplicationCustomFields4$Outbound,
-    z.ZodTypeDef,
-    ApplicationCustomFields4
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ApplicationCustomFields4$ {
-    /** @deprecated use `ApplicationCustomFields4$inboundSchema` instead. */
-    export const inboundSchema = ApplicationCustomFields4$inboundSchema;
-    /** @deprecated use `ApplicationCustomFields4$outboundSchema` instead. */
-    export const outboundSchema = ApplicationCustomFields4$outboundSchema;
-    /** @deprecated use `ApplicationCustomFields4$Outbound` instead. */
-    export type Outbound = ApplicationCustomFields4$Outbound;
-}
-
-/** @internal */
-export const Value$inboundSchema: z.ZodType<Value, z.ZodTypeDef, unknown> = z.union([
-    z.lazy(() => ApplicationCustomFields4$inboundSchema),
-    z.string(),
-    z.number(),
-    z.boolean(),
-]);
-
-/** @internal */
-export type Value$Outbound = ApplicationCustomFields4$Outbound | string | number | boolean;
-
-/** @internal */
-export const Value$outboundSchema: z.ZodType<Value$Outbound, z.ZodTypeDef, Value> = z.union([
-    z.lazy(() => ApplicationCustomFields4$outboundSchema),
-    z.string(),
-    z.number(),
-    z.boolean(),
+    z.array(z.any()),
 ]);
 
 /**
@@ -385,26 +102,18 @@ export const ApplicationCustomFields$inboundSchema: z.ZodType<
     unknown
 > = z
     .object({
-        description: z.nullable(z.string()).optional(),
         id: z.nullable(z.string()).optional(),
         name: z.nullable(z.string()).optional(),
-        options: z
-            .nullable(
-                z.array(
-                    z.union([z.lazy(() => Four$inboundSchema), z.string(), z.number(), z.boolean()])
-                )
-            )
-            .optional(),
         remote_id: z.nullable(z.string()).optional(),
         remote_value_id: z.nullable(z.string()).optional(),
-        type: z.nullable(z.lazy(() => ApplicationCustomFieldsType$inboundSchema)).optional(),
         value: z
             .nullable(
                 z.union([
-                    z.lazy(() => ApplicationCustomFields4$inboundSchema),
+                    z.lazy(() => Four$inboundSchema),
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),
@@ -420,14 +129,11 @@ export const ApplicationCustomFields$inboundSchema: z.ZodType<
 
 /** @internal */
 export type ApplicationCustomFields$Outbound = {
-    description?: string | null | undefined;
     id?: string | null | undefined;
     name?: string | null | undefined;
-    options?: Array<Four$Outbound | string | number | boolean> | null | undefined;
     remote_id?: string | null | undefined;
     remote_value_id?: string | null | undefined;
-    type?: ApplicationCustomFieldsType$Outbound | null | undefined;
-    value?: ApplicationCustomFields4$Outbound | string | number | boolean | null | undefined;
+    value?: Four$Outbound | string | number | boolean | Array<any> | null | undefined;
     value_id?: string | null | undefined;
 };
 
@@ -438,31 +144,18 @@ export const ApplicationCustomFields$outboundSchema: z.ZodType<
     ApplicationCustomFields
 > = z
     .object({
-        description: z.nullable(z.string()).optional(),
         id: z.nullable(z.string()).optional(),
         name: z.nullable(z.string()).optional(),
-        options: z
-            .nullable(
-                z.array(
-                    z.union([
-                        z.lazy(() => Four$outboundSchema),
-                        z.string(),
-                        z.number(),
-                        z.boolean(),
-                    ])
-                )
-            )
-            .optional(),
         remoteId: z.nullable(z.string()).optional(),
         remoteValueId: z.nullable(z.string()).optional(),
-        type: z.nullable(z.lazy(() => ApplicationCustomFieldsType$outboundSchema)).optional(),
         value: z
             .nullable(
                 z.union([
-                    z.lazy(() => ApplicationCustomFields4$outboundSchema),
+                    z.lazy(() => Four$outboundSchema),
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),

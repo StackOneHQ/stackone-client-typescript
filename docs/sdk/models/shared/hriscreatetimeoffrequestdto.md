@@ -1,5 +1,22 @@
 # HrisCreateTimeOffRequestDto
 
+## Example Usage
+
+```typescript
+import { HrisCreateTimeOffRequestDto, HrisCreateTimeOffRequestDto2 } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: HrisCreateTimeOffRequestDto = {
+    approverId: "1687-4",
+    employeeId: "1687-3",
+    endDate: new Date("2021-01-01T01:01:01.000Z"),
+    endHalfDay: HrisCreateTimeOffRequestDto2.True,
+    passthrough: {
+        other_known_names: "John Doe",
+    },
+    startDate: new Date("2021-01-01T01:01:01.000Z"),
+    startHalfDay: true,
+};
+```
 
 ## Fields
 
@@ -9,7 +26,7 @@
 | `employeeId`                                                                                                | *string*                                                                                                    | :heavy_minus_sign:                                                                                          | The employee ID                                                                                             | 1687-3                                                                                                      |
 | `endDate`                                                                                                   | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)               | :heavy_minus_sign:                                                                                          | The end date of the time off request                                                                        | 2021-01-01T01:01:01.000Z                                                                                    |
 | `endHalfDay`                                                                                                | *shared.EndHalfDay*                                                                                         | :heavy_minus_sign:                                                                                          | True if the end of the time off request ends half way through the day                                       | true                                                                                                        |
-| `passthrough`                                                                                               | Record<string, *any*>                                                                                       | :heavy_minus_sign:                                                                                          | Value to pass through to the provider                                                                       | {"other_known_names": "John Doe"}                                                                           |
+| `passthrough`                                                                                               | Record<string, *any*>                                                                                       | :heavy_minus_sign:                                                                                          | Value to pass through to the provider                                                                       | {<br/>"other_known_names": "John Doe"<br/>}                                                                 |
 | `startDate`                                                                                                 | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)               | :heavy_minus_sign:                                                                                          | The start date of the time off request                                                                      | 2021-01-01T01:01:01.000Z                                                                                    |
 | `startHalfDay`                                                                                              | *shared.StartHalfDay*                                                                                       | :heavy_minus_sign:                                                                                          | True if the start of the time off request begins half way through the day                                   | true                                                                                                        |
 | `status`                                                                                                    | [shared.HrisCreateTimeOffRequestDtoStatus](../../../sdk/models/shared/hriscreatetimeoffrequestdtostatus.md) | :heavy_minus_sign:                                                                                          | The status of the time off request                                                                          |                                                                                                             |

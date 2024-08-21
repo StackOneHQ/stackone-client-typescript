@@ -1,5 +1,16 @@
 # AtsGetListRequest
 
+## Example Usage
+
+```typescript
+import { AtsGetListRequest } from "@stackone/stackone-client-ts/sdk/models/operations";
+
+let value: AtsGetListRequest = {
+    fields: "id,remote_id,name,created_at,updated_at,items,type",
+    id: "<id>",
+    xAccountId: "<value>",
+};
+```
 
 ## Fields
 

@@ -1,5 +1,14 @@
 # IamMfaTypeEnum
 
+## Example Usage
+
+```typescript
+import { IamMfaTypeEnum, IamMfaTypeEnumValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: IamMfaTypeEnum = {
+    value: IamMfaTypeEnumValue.Totp,
+};
+```
 
 ## Fields
 

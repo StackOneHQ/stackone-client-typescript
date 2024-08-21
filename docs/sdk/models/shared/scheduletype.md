@@ -2,6 +2,16 @@
 
 The schedule type
 
+## Example Usage
+
+```typescript
+import { CampaignValue, ScheduleType } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: ScheduleType = {
+    sourceValue: true,
+    value: CampaignValue.Immediate,
+};
+```
 
 ## Fields
 

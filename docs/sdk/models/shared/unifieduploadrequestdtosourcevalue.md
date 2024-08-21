@@ -1,5 +1,12 @@
 # UnifiedUploadRequestDtoSourceValue
 
+## Example Usage
+
+```typescript
+import { UnifiedUploadRequestDtoSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: UnifiedUploadRequestDtoSourceValue = "public";
+```
 
 ## Supported Types
 
@@ -25,5 +32,11 @@ const value: boolean = /* values here */
 
 ```typescript
 const value: shared.UnifiedUploadRequestDto4 = /* values here */
+```
+
+### `any[]`
+
+```typescript
+const value: any[] = /* values here */
 ```
 

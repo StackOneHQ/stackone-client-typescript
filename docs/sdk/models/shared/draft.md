@@ -1,5 +1,12 @@
 # Draft
 
+## Example Usage
+
+```typescript
+import { Draft } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: Draft = false;
+```
 
 ## Supported Types
 

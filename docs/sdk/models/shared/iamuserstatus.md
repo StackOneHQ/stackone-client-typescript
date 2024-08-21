@@ -1,5 +1,14 @@
 # IamUserStatus
 
+## Example Usage
+
+```typescript
+import { IamUserStatus, IamUserValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: IamUserStatus = {
+    value: IamUserValue.Enabled,
+};
+```
 
 ## Fields
 

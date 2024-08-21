@@ -2,6 +2,13 @@
 
 The employee avatar
 
+## Example Usage
+
+```typescript
+import { Avatar } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: Avatar = {};
+```
 
 ## Fields
 

@@ -1,5 +1,12 @@
 # IamResourceSourceValue
 
+## Example Usage
+
+```typescript
+import { IamResourceSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: IamResourceSourceValue = {};
+```
 
 ## Supported Types
 
@@ -25,5 +32,11 @@ const value: boolean = /* values here */
 
 ```typescript
 const value: shared.IamResource4 = /* values here */
+```
+
+### `any[]`
+
+```typescript
+const value: any[] = /* values here */
 ```
 

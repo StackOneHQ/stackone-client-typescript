@@ -26,7 +26,8 @@ export type UnifiedUploadRequestDtoSourceValue =
     | UnifiedUploadRequestDto4
     | string
     | number
-    | boolean;
+    | boolean
+    | Array<any>;
 
 /**
  * Whether the file is confidential or not
@@ -44,7 +45,14 @@ export type UnifiedUploadRequestDtoValueOpen = OpenEnum<typeof UnifiedUploadRequ
  * The confidentiality level of the file to be uploaded
  */
 export type UnifiedUploadRequestDtoConfidential = {
-    sourceValue?: UnifiedUploadRequestDto4 | string | number | boolean | null | undefined;
+    sourceValue?:
+        | UnifiedUploadRequestDto4
+        | string
+        | number
+        | boolean
+        | Array<any>
+        | null
+        | undefined;
     /**
      * Whether the file is confidential or not
      */
@@ -57,7 +65,8 @@ export type UnifiedUploadRequestDtoSchemasSourceValue =
     | UnifiedUploadRequestDtoSchemas4
     | string
     | number
-    | boolean;
+    | boolean
+    | Array<any>;
 
 /**
  * The file format of the file, expressed as a file extension
@@ -1285,7 +1294,14 @@ export type UnifiedUploadRequestDtoSchemasValueOpen = OpenEnum<
  * The file format of the file
  */
 export type UnifiedUploadRequestDtoFileFormat = {
-    sourceValue?: UnifiedUploadRequestDtoSchemas4 | string | number | boolean | null | undefined;
+    sourceValue?:
+        | UnifiedUploadRequestDtoSchemas4
+        | string
+        | number
+        | boolean
+        | Array<any>
+        | null
+        | undefined;
     /**
      * The file format of the file, expressed as a file extension
      */
@@ -1297,6 +1313,10 @@ export type UnifiedUploadRequestDto = {
      * The category object for associating uploaded files. If both an ID and a name are provided, the ID takes precedence.
      */
     category?: UnifiedUploadRequestDtoCategory | null | undefined;
+    /**
+     * The categoryId of the documents
+     */
+    categoryId?: string | null | undefined;
     /**
      * The confidentiality level of the file to be uploaded
      */
@@ -1410,6 +1430,7 @@ export const UnifiedUploadRequestDtoSourceValue$inboundSchema: z.ZodType<
     z.string(),
     z.number(),
     z.boolean(),
+    z.array(z.any()),
 ]);
 
 /** @internal */
@@ -1417,7 +1438,8 @@ export type UnifiedUploadRequestDtoSourceValue$Outbound =
     | UnifiedUploadRequestDto4$Outbound
     | string
     | number
-    | boolean;
+    | boolean
+    | Array<any>;
 
 /** @internal */
 export const UnifiedUploadRequestDtoSourceValue$outboundSchema: z.ZodType<
@@ -1429,6 +1451,7 @@ export const UnifiedUploadRequestDtoSourceValue$outboundSchema: z.ZodType<
     z.string(),
     z.number(),
     z.boolean(),
+    z.array(z.any()),
 ]);
 
 /**
@@ -1489,6 +1512,7 @@ export const UnifiedUploadRequestDtoConfidential$inboundSchema: z.ZodType<
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),
@@ -1502,7 +1526,14 @@ export const UnifiedUploadRequestDtoConfidential$inboundSchema: z.ZodType<
 
 /** @internal */
 export type UnifiedUploadRequestDtoConfidential$Outbound = {
-    source_value?: UnifiedUploadRequestDto4$Outbound | string | number | boolean | null | undefined;
+    source_value?:
+        | UnifiedUploadRequestDto4$Outbound
+        | string
+        | number
+        | boolean
+        | Array<any>
+        | null
+        | undefined;
     value?: string | null | undefined;
 };
 
@@ -1520,6 +1551,7 @@ export const UnifiedUploadRequestDtoConfidential$outboundSchema: z.ZodType<
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),
@@ -1584,6 +1616,7 @@ export const UnifiedUploadRequestDtoSchemasSourceValue$inboundSchema: z.ZodType<
     z.string(),
     z.number(),
     z.boolean(),
+    z.array(z.any()),
 ]);
 
 /** @internal */
@@ -1591,7 +1624,8 @@ export type UnifiedUploadRequestDtoSchemasSourceValue$Outbound =
     | UnifiedUploadRequestDtoSchemas4$Outbound
     | string
     | number
-    | boolean;
+    | boolean
+    | Array<any>;
 
 /** @internal */
 export const UnifiedUploadRequestDtoSchemasSourceValue$outboundSchema: z.ZodType<
@@ -1603,6 +1637,7 @@ export const UnifiedUploadRequestDtoSchemasSourceValue$outboundSchema: z.ZodType
     z.string(),
     z.number(),
     z.boolean(),
+    z.array(z.any()),
 ]);
 
 /**
@@ -1663,6 +1698,7 @@ export const UnifiedUploadRequestDtoFileFormat$inboundSchema: z.ZodType<
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),
@@ -1681,6 +1717,7 @@ export type UnifiedUploadRequestDtoFileFormat$Outbound = {
         | string
         | number
         | boolean
+        | Array<any>
         | null
         | undefined;
     value?: string | null | undefined;
@@ -1700,6 +1737,7 @@ export const UnifiedUploadRequestDtoFileFormat$outboundSchema: z.ZodType<
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),
@@ -1734,6 +1772,7 @@ export const UnifiedUploadRequestDto$inboundSchema: z.ZodType<
         category: z
             .nullable(z.lazy(() => UnifiedUploadRequestDtoCategory$inboundSchema))
             .optional(),
+        category_id: z.nullable(z.string()).optional(),
         confidential: z
             .nullable(z.lazy(() => UnifiedUploadRequestDtoConfidential$inboundSchema))
             .optional(),
@@ -1746,6 +1785,7 @@ export const UnifiedUploadRequestDto$inboundSchema: z.ZodType<
     })
     .transform((v) => {
         return remap$(v, {
+            category_id: "categoryId",
             file_format: "fileFormat",
         });
     });
@@ -1753,6 +1793,7 @@ export const UnifiedUploadRequestDto$inboundSchema: z.ZodType<
 /** @internal */
 export type UnifiedUploadRequestDto$Outbound = {
     category?: UnifiedUploadRequestDtoCategory$Outbound | null | undefined;
+    category_id?: string | null | undefined;
     confidential?: UnifiedUploadRequestDtoConfidential$Outbound | null | undefined;
     content?: string | null | undefined;
     file_format?: UnifiedUploadRequestDtoFileFormat$Outbound | null | undefined;
@@ -1770,6 +1811,7 @@ export const UnifiedUploadRequestDto$outboundSchema: z.ZodType<
         category: z
             .nullable(z.lazy(() => UnifiedUploadRequestDtoCategory$outboundSchema))
             .optional(),
+        categoryId: z.nullable(z.string()).optional(),
         confidential: z
             .nullable(z.lazy(() => UnifiedUploadRequestDtoConfidential$outboundSchema))
             .optional(),
@@ -1782,6 +1824,7 @@ export const UnifiedUploadRequestDto$outboundSchema: z.ZodType<
     })
     .transform((v) => {
         return remap$(v, {
+            categoryId: "category_id",
             fileFormat: "file_format",
         });
     });

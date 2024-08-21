@@ -2,6 +2,13 @@
 
 The source value of the compensation type.
 
+## Example Usage
+
+```typescript
+import { JobPostingCompensationSchemasTypeSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: JobPostingCompensationSchemasTypeSourceValue = "Salary";
+```
 
 ## Supported Types
 
@@ -27,5 +34,11 @@ const value: boolean = /* values here */
 
 ```typescript
 const value: shared.JobPostingCompensationSchemasType4 = /* values here */
+```
+
+### `any[]`
+
+```typescript
+const value: any[] = /* values here */
 ```
 

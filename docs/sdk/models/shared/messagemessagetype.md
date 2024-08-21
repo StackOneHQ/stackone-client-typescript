@@ -2,6 +2,15 @@
 
 Stackone enum identifying the type of message associated with the content.
 
+## Example Usage
+
+```typescript
+import { MessageMessageType } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: MessageMessageType = {
+    sourceValue: true,
+};
+```
 
 ## Fields
 

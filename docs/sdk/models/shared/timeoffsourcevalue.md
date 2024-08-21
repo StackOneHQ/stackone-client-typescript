@@ -1,5 +1,12 @@
 # TimeOffSourceValue
 
+## Example Usage
+
+```typescript
+import { TimeOffSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: TimeOffSourceValue = "<value>";
+```
 
 ## Supported Types
 
@@ -25,5 +32,11 @@ const value: boolean = /* values here */
 
 ```typescript
 const value: shared.TimeOff4 = /* values here */
+```
+
+### `any[]`
+
+```typescript
+const value: any[] = /* values here */
 ```
 

@@ -2,6 +2,16 @@
 
 The file format of the file
 
+## Example Usage
+
+```typescript
+import { IamUserFileFormat, IamUserSchemasValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: IamUserFileFormat = {
+    sourceValue: "abc",
+    value: IamUserSchemasValue.Pdf,
+};
+```
 
 ## Fields
 

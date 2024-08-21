@@ -14,7 +14,7 @@ import * as z from "zod";
 
 export type IamPermission4 = {};
 
-export type IamPermissionSourceValue = IamPermission4 | string | number | boolean;
+export type IamPermissionSourceValue = IamPermission4 | string | number | boolean | Array<any>;
 
 /**
  * The type of the permission, e.g. read, read_write, delete, etc.
@@ -34,7 +34,7 @@ export enum IamPermissionValue {
 export type IamPermissionValueOpen = OpenEnum<typeof IamPermissionValue>;
 
 export type IamPermissionType = {
-    sourceValue?: IamPermission4 | string | number | boolean | null | undefined;
+    sourceValue?: IamPermission4 | string | number | boolean | Array<any> | null | undefined;
     /**
      * The type of the permission, e.g. read, read_write, delete, etc.
      */
@@ -96,17 +96,34 @@ export const IamPermissionSourceValue$inboundSchema: z.ZodType<
     IamPermissionSourceValue,
     z.ZodTypeDef,
     unknown
-> = z.union([z.lazy(() => IamPermission4$inboundSchema), z.string(), z.number(), z.boolean()]);
+> = z.union([
+    z.lazy(() => IamPermission4$inboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+    z.array(z.any()),
+]);
 
 /** @internal */
-export type IamPermissionSourceValue$Outbound = IamPermission4$Outbound | string | number | boolean;
+export type IamPermissionSourceValue$Outbound =
+    | IamPermission4$Outbound
+    | string
+    | number
+    | boolean
+    | Array<any>;
 
 /** @internal */
 export const IamPermissionSourceValue$outboundSchema: z.ZodType<
     IamPermissionSourceValue$Outbound,
     z.ZodTypeDef,
     IamPermissionSourceValue
-> = z.union([z.lazy(() => IamPermission4$outboundSchema), z.string(), z.number(), z.boolean()]);
+> = z.union([
+    z.lazy(() => IamPermission4$outboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+    z.array(z.any()),
+]);
 
 /**
  * @internal
@@ -157,6 +174,7 @@ export const IamPermissionType$inboundSchema: z.ZodType<IamPermissionType, z.Zod
                         z.string(),
                         z.number(),
                         z.boolean(),
+                        z.array(z.any()),
                     ])
                 )
                 .optional(),
@@ -170,7 +188,14 @@ export const IamPermissionType$inboundSchema: z.ZodType<IamPermissionType, z.Zod
 
 /** @internal */
 export type IamPermissionType$Outbound = {
-    source_value?: IamPermission4$Outbound | string | number | boolean | null | undefined;
+    source_value?:
+        | IamPermission4$Outbound
+        | string
+        | number
+        | boolean
+        | Array<any>
+        | null
+        | undefined;
     value?: string | null | undefined;
 };
 
@@ -188,6 +213,7 @@ export const IamPermissionType$outboundSchema: z.ZodType<
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),

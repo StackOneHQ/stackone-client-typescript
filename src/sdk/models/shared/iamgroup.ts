@@ -14,7 +14,7 @@ import * as z from "zod";
 
 export type IamGroup4 = {};
 
-export type IamGroupSourceValue = IamGroup4 | string | number | boolean;
+export type IamGroupSourceValue = IamGroup4 | string | number | boolean | Array<any>;
 
 export enum IamGroupValue {
     Workspace = "workspace",
@@ -27,7 +27,7 @@ export enum IamGroupValue {
 export type IamGroupValueOpen = OpenEnum<typeof IamGroupValue>;
 
 export type IamGroupType = {
-    sourceValue?: IamGroup4 | string | number | boolean | null | undefined;
+    sourceValue?: IamGroup4 | string | number | boolean | Array<any> | null | undefined;
     value?: IamGroupValueOpen | null | undefined;
 };
 
@@ -84,17 +84,34 @@ export const IamGroupSourceValue$inboundSchema: z.ZodType<
     IamGroupSourceValue,
     z.ZodTypeDef,
     unknown
-> = z.union([z.lazy(() => IamGroup4$inboundSchema), z.string(), z.number(), z.boolean()]);
+> = z.union([
+    z.lazy(() => IamGroup4$inboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+    z.array(z.any()),
+]);
 
 /** @internal */
-export type IamGroupSourceValue$Outbound = IamGroup4$Outbound | string | number | boolean;
+export type IamGroupSourceValue$Outbound =
+    | IamGroup4$Outbound
+    | string
+    | number
+    | boolean
+    | Array<any>;
 
 /** @internal */
 export const IamGroupSourceValue$outboundSchema: z.ZodType<
     IamGroupSourceValue$Outbound,
     z.ZodTypeDef,
     IamGroupSourceValue
-> = z.union([z.lazy(() => IamGroup4$outboundSchema), z.string(), z.number(), z.boolean()]);
+> = z.union([
+    z.lazy(() => IamGroup4$outboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+    z.array(z.any()),
+]);
 
 /**
  * @internal
@@ -141,6 +158,7 @@ export const IamGroupType$inboundSchema: z.ZodType<IamGroupType, z.ZodTypeDef, u
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),
@@ -154,7 +172,7 @@ export const IamGroupType$inboundSchema: z.ZodType<IamGroupType, z.ZodTypeDef, u
 
 /** @internal */
 export type IamGroupType$Outbound = {
-    source_value?: IamGroup4$Outbound | string | number | boolean | null | undefined;
+    source_value?: IamGroup4$Outbound | string | number | boolean | Array<any> | null | undefined;
     value?: string | null | undefined;
 };
 
@@ -172,6 +190,7 @@ export const IamGroupType$outboundSchema: z.ZodType<
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),

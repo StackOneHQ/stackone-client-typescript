@@ -1,5 +1,15 @@
 # JobPostingContent
 
+## Example Usage
+
+```typescript
+import { JobPostingContent } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: JobPostingContent = {
+    html: "<p>This is an HTML description</p>",
+    plain: "This is a plain text description",
+};
+```
 
 ## Fields
 

@@ -2,6 +2,13 @@
 
 The source value of the interview type.
 
+## Example Usage
+
+```typescript
+import { InterviewPartSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: InterviewPartSourceValue = "Onsite Interview";
+```
 
 ## Supported Types
 
@@ -27,5 +34,11 @@ const value: boolean = /* values here */
 
 ```typescript
 const value: shared.InterviewPart4 = /* values here */
+```
+
+### `any[]`
+
+```typescript
+const value: any[] = /* values here */
 ```
 

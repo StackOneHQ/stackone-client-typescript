@@ -2,6 +2,16 @@
 
 The file format of the file
 
+## Example Usage
+
+```typescript
+import { AtsDocumentApiModelValue, FileFormat } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: FileFormat = {
+    sourceValue: true,
+    value: AtsDocumentApiModelValue.Pdf,
+};
+```
 
 ## Fields
 

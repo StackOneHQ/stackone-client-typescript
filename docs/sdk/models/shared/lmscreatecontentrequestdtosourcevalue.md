@@ -1,5 +1,12 @@
 # LmsCreateContentRequestDtoSourceValue
 
+## Example Usage
+
+```typescript
+import { LmsCreateContentRequestDtoSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: LmsCreateContentRequestDtoSourceValue = ["<value>"];
+```
 
 ## Supported Types
 
@@ -25,5 +32,11 @@ const value: boolean = /* values here */
 
 ```typescript
 const value: shared.LmsCreateContentRequestDto4 = /* values here */
+```
+
+### `any[]`
+
+```typescript
+const value: any[] = /* values here */
 ```
 

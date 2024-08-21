@@ -37,7 +37,7 @@ export type Campaign4 = {};
 /**
  * The source value of the schedule type.
  */
-export type CampaignSourceValue = Campaign4 | string | number | boolean;
+export type CampaignSourceValue = Campaign4 | string | number | boolean | Array<any>;
 
 /**
  * The schedule type of the campaign.
@@ -61,7 +61,7 @@ export type ScheduleType = {
     /**
      * The source value of the schedule type.
      */
-    sourceValue?: Campaign4 | string | number | boolean | null | undefined;
+    sourceValue?: Campaign4 | string | number | boolean | Array<any> | null | undefined;
     /**
      * The schedule type of the campaign.
      */
@@ -73,7 +73,7 @@ export type CampaignSchemas4 = {};
 /**
  * The source value of the Status.
  */
-export type CampaignSchemasSourceValue = CampaignSchemas4 | string | number | boolean;
+export type CampaignSchemasSourceValue = CampaignSchemas4 | string | number | boolean | Array<any>;
 
 /**
  * The Status of the campaign.
@@ -95,7 +95,7 @@ export type CampaignStatus = {
     /**
      * The source value of the Status.
      */
-    sourceValue?: CampaignSchemas4 | string | number | boolean | null | undefined;
+    sourceValue?: CampaignSchemas4 | string | number | boolean | Array<any> | null | undefined;
     /**
      * The Status of the campaign.
      */
@@ -263,17 +263,34 @@ export const CampaignSourceValue$inboundSchema: z.ZodType<
     CampaignSourceValue,
     z.ZodTypeDef,
     unknown
-> = z.union([z.lazy(() => Campaign4$inboundSchema), z.string(), z.number(), z.boolean()]);
+> = z.union([
+    z.lazy(() => Campaign4$inboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+    z.array(z.any()),
+]);
 
 /** @internal */
-export type CampaignSourceValue$Outbound = Campaign4$Outbound | string | number | boolean;
+export type CampaignSourceValue$Outbound =
+    | Campaign4$Outbound
+    | string
+    | number
+    | boolean
+    | Array<any>;
 
 /** @internal */
 export const CampaignSourceValue$outboundSchema: z.ZodType<
     CampaignSourceValue$Outbound,
     z.ZodTypeDef,
     CampaignSourceValue
-> = z.union([z.lazy(() => Campaign4$outboundSchema), z.string(), z.number(), z.boolean()]);
+> = z.union([
+    z.lazy(() => Campaign4$outboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+    z.array(z.any()),
+]);
 
 /**
  * @internal
@@ -320,6 +337,7 @@ export const ScheduleType$inboundSchema: z.ZodType<ScheduleType, z.ZodTypeDef, u
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),
@@ -333,7 +351,7 @@ export const ScheduleType$inboundSchema: z.ZodType<ScheduleType, z.ZodTypeDef, u
 
 /** @internal */
 export type ScheduleType$Outbound = {
-    source_value?: Campaign4$Outbound | string | number | boolean | null | undefined;
+    source_value?: Campaign4$Outbound | string | number | boolean | Array<any> | null | undefined;
     value?: string | null | undefined;
 };
 
@@ -351,6 +369,7 @@ export const ScheduleType$outboundSchema: z.ZodType<
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),
@@ -407,21 +426,34 @@ export const CampaignSchemasSourceValue$inboundSchema: z.ZodType<
     CampaignSchemasSourceValue,
     z.ZodTypeDef,
     unknown
-> = z.union([z.lazy(() => CampaignSchemas4$inboundSchema), z.string(), z.number(), z.boolean()]);
+> = z.union([
+    z.lazy(() => CampaignSchemas4$inboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+    z.array(z.any()),
+]);
 
 /** @internal */
 export type CampaignSchemasSourceValue$Outbound =
     | CampaignSchemas4$Outbound
     | string
     | number
-    | boolean;
+    | boolean
+    | Array<any>;
 
 /** @internal */
 export const CampaignSchemasSourceValue$outboundSchema: z.ZodType<
     CampaignSchemasSourceValue$Outbound,
     z.ZodTypeDef,
     CampaignSchemasSourceValue
-> = z.union([z.lazy(() => CampaignSchemas4$outboundSchema), z.string(), z.number(), z.boolean()]);
+> = z.union([
+    z.lazy(() => CampaignSchemas4$outboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+    z.array(z.any()),
+]);
 
 /**
  * @internal
@@ -471,6 +503,7 @@ export const CampaignStatus$inboundSchema: z.ZodType<CampaignStatus, z.ZodTypeDe
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),
@@ -484,7 +517,14 @@ export const CampaignStatus$inboundSchema: z.ZodType<CampaignStatus, z.ZodTypeDe
 
 /** @internal */
 export type CampaignStatus$Outbound = {
-    source_value?: CampaignSchemas4$Outbound | string | number | boolean | null | undefined;
+    source_value?:
+        | CampaignSchemas4$Outbound
+        | string
+        | number
+        | boolean
+        | Array<any>
+        | null
+        | undefined;
     value?: string | null | undefined;
 };
 
@@ -502,6 +542,7 @@ export const CampaignStatus$outboundSchema: z.ZodType<
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),

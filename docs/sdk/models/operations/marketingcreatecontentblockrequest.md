@@ -1,5 +1,19 @@
 # MarketingCreateContentBlockRequest
 
+## Example Usage
+
+```typescript
+import { MarketingCreateContentBlockRequest } from "@stackone/stackone-client-ts/sdk/models/operations";
+
+let value: MarketingCreateContentBlockRequest = {
+    marketingCreateContentBlocksRequestDto: {
+        passthrough: {
+            other_known_names: "John Doe",
+        },
+    },
+    xAccountId: "<value>",
+};
+```
 
 ## Fields
 

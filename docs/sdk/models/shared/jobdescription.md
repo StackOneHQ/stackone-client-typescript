@@ -2,6 +2,15 @@
 
 The employee job description
 
+## Example Usage
+
+```typescript
+import { JobDescription } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: JobDescription = {
+    text: "Testing the laws of motion",
+};
+```
 
 ## Fields
 

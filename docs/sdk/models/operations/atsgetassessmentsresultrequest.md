@@ -1,5 +1,15 @@
 # AtsGetAssessmentsResultRequest
 
+## Example Usage
+
+```typescript
+import { AtsGetAssessmentsResultRequest } from "@stackone/stackone-client-ts/sdk/models/operations";
+
+let value: AtsGetAssessmentsResultRequest = {
+    id: "<id>",
+    xAccountId: "<value>",
+};
+```
 
 ## Fields
 

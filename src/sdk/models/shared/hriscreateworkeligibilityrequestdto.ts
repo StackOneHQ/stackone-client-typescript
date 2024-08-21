@@ -18,7 +18,8 @@ export type HrisCreateWorkEligibilityRequestDtoSchemasDocumentSourceValue =
     | HrisCreateWorkEligibilityRequestDtoSchemasDocument4
     | string
     | number
-    | boolean;
+    | boolean
+    | Array<any>;
 
 /**
  * The category of the file
@@ -29,6 +30,7 @@ export type HrisCreateWorkEligibilityRequestDtoCategory = {
         | string
         | number
         | boolean
+        | Array<any>
         | null
         | undefined;
     /**
@@ -43,7 +45,8 @@ export type HrisCreateWorkEligibilityRequestDtoSchemasSourceValue =
     | HrisCreateWorkEligibilityRequestDtoSchemasDocumentFileFormat4
     | string
     | number
-    | boolean;
+    | boolean
+    | Array<any>;
 
 /**
  * The file format of the file, expressed as a file extension
@@ -1276,6 +1279,7 @@ export type HrisCreateWorkEligibilityRequestDtoFileFormat = {
         | string
         | number
         | boolean
+        | Array<any>
         | null
         | undefined;
     /**
@@ -1289,6 +1293,10 @@ export type Document = {
      * The category of the file
      */
     category?: HrisCreateWorkEligibilityRequestDtoCategory | null | undefined;
+    /**
+     * The categoryId of the documents
+     */
+    categoryId?: string | null | undefined;
     /**
      * The content of the file. Deprecated, use `url` and `file_format` one level up instead
      *
@@ -1335,7 +1343,8 @@ export type HrisCreateWorkEligibilityRequestDtoSourceValue =
     | HrisCreateWorkEligibilityRequestDto4
     | string
     | number
-    | boolean;
+    | boolean
+    | Array<any>;
 
 /**
  * The ISO3166-1 Alpha2 Code of the Country
@@ -1607,6 +1616,7 @@ export type IssuedBy = {
         | string
         | number
         | boolean
+        | Array<any>
         | null
         | undefined;
     /**
@@ -1617,7 +1627,12 @@ export type IssuedBy = {
 
 export type HrisCreateWorkEligibilityRequestDtoSchemas4 = {};
 
-export type SourceType = HrisCreateWorkEligibilityRequestDtoSchemas4 | string | number | boolean;
+export type SourceType =
+    | HrisCreateWorkEligibilityRequestDtoSchemas4
+    | string
+    | number
+    | boolean
+    | Array<any>;
 
 export enum HrisCreateWorkEligibilityRequestDtoSchemasValue {
     Visa = "visa",
@@ -1636,6 +1651,7 @@ export type HrisCreateWorkEligibilityRequestDtoType = {
         | string
         | number
         | boolean
+        | Array<any>
         | null
         | undefined;
     value?: HrisCreateWorkEligibilityRequestDtoSchemasValueOpen | null | undefined;
@@ -1699,6 +1715,7 @@ export const HrisCreateWorkEligibilityRequestDtoSchemasDocumentSourceValue$inbou
     z.string(),
     z.number(),
     z.boolean(),
+    z.array(z.any()),
 ]);
 
 /** @internal */
@@ -1706,7 +1723,8 @@ export type HrisCreateWorkEligibilityRequestDtoSchemasDocumentSourceValue$Outbou
     | HrisCreateWorkEligibilityRequestDtoSchemasDocument4$Outbound
     | string
     | number
-    | boolean;
+    | boolean
+    | Array<any>;
 
 /** @internal */
 export const HrisCreateWorkEligibilityRequestDtoSchemasDocumentSourceValue$outboundSchema: z.ZodType<
@@ -1718,6 +1736,7 @@ export const HrisCreateWorkEligibilityRequestDtoSchemasDocumentSourceValue$outbo
     z.string(),
     z.number(),
     z.boolean(),
+    z.array(z.any()),
 ]);
 
 /**
@@ -1749,6 +1768,7 @@ export const HrisCreateWorkEligibilityRequestDtoCategory$inboundSchema: z.ZodTyp
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),
@@ -1767,6 +1787,7 @@ export type HrisCreateWorkEligibilityRequestDtoCategory$Outbound = {
         | string
         | number
         | boolean
+        | Array<any>
         | null
         | undefined;
     value?: string | null | undefined;
@@ -1788,6 +1809,7 @@ export const HrisCreateWorkEligibilityRequestDtoCategory$outboundSchema: z.ZodTy
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),
@@ -1854,6 +1876,7 @@ export const HrisCreateWorkEligibilityRequestDtoSchemasSourceValue$inboundSchema
     z.string(),
     z.number(),
     z.boolean(),
+    z.array(z.any()),
 ]);
 
 /** @internal */
@@ -1861,7 +1884,8 @@ export type HrisCreateWorkEligibilityRequestDtoSchemasSourceValue$Outbound =
     | HrisCreateWorkEligibilityRequestDtoSchemasDocumentFileFormat4$Outbound
     | string
     | number
-    | boolean;
+    | boolean
+    | Array<any>;
 
 /** @internal */
 export const HrisCreateWorkEligibilityRequestDtoSchemasSourceValue$outboundSchema: z.ZodType<
@@ -1873,6 +1897,7 @@ export const HrisCreateWorkEligibilityRequestDtoSchemasSourceValue$outboundSchem
     z.string(),
     z.number(),
     z.boolean(),
+    z.array(z.any()),
 ]);
 
 /**
@@ -1940,6 +1965,7 @@ export const HrisCreateWorkEligibilityRequestDtoFileFormat$inboundSchema: z.ZodT
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),
@@ -1960,6 +1986,7 @@ export type HrisCreateWorkEligibilityRequestDtoFileFormat$Outbound = {
         | string
         | number
         | boolean
+        | Array<any>
         | null
         | undefined;
     value?: string | null | undefined;
@@ -1982,6 +2009,7 @@ export const HrisCreateWorkEligibilityRequestDtoFileFormat$outboundSchema: z.Zod
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),
@@ -2014,6 +2042,7 @@ export const Document$inboundSchema: z.ZodType<Document, z.ZodTypeDef, unknown> 
         category: z
             .nullable(z.lazy(() => HrisCreateWorkEligibilityRequestDtoCategory$inboundSchema))
             .optional(),
+        category_id: z.nullable(z.string()).optional(),
         contents: z.nullable(z.array(Content$inboundSchema)).optional(),
         created_at: z
             .nullable(
@@ -2042,6 +2071,7 @@ export const Document$inboundSchema: z.ZodType<Document, z.ZodTypeDef, unknown> 
     })
     .transform((v) => {
         return remap$(v, {
+            category_id: "categoryId",
             created_at: "createdAt",
             file_format: "fileFormat",
             remote_id: "remoteId",
@@ -2053,6 +2083,7 @@ export const Document$inboundSchema: z.ZodType<Document, z.ZodTypeDef, unknown> 
 /** @internal */
 export type Document$Outbound = {
     category?: HrisCreateWorkEligibilityRequestDtoCategory$Outbound | null | undefined;
+    category_id?: string | null | undefined;
     contents?: Array<Content$Outbound> | null | undefined;
     created_at?: string | null | undefined;
     file_format?: HrisCreateWorkEligibilityRequestDtoFileFormat$Outbound | null | undefined;
@@ -2070,6 +2101,7 @@ export const Document$outboundSchema: z.ZodType<Document$Outbound, z.ZodTypeDef,
         category: z
             .nullable(z.lazy(() => HrisCreateWorkEligibilityRequestDtoCategory$outboundSchema))
             .optional(),
+        categoryId: z.nullable(z.string()).optional(),
         contents: z.nullable(z.array(Content$outboundSchema)).optional(),
         createdAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
         fileFormat: z
@@ -2084,6 +2116,7 @@ export const Document$outboundSchema: z.ZodType<Document$Outbound, z.ZodTypeDef,
     })
     .transform((v) => {
         return remap$(v, {
+            categoryId: "category_id",
             createdAt: "created_at",
             fileFormat: "file_format",
             remoteId: "remote_id",
@@ -2145,6 +2178,7 @@ export const HrisCreateWorkEligibilityRequestDtoSourceValue$inboundSchema: z.Zod
     z.string(),
     z.number(),
     z.boolean(),
+    z.array(z.any()),
 ]);
 
 /** @internal */
@@ -2152,7 +2186,8 @@ export type HrisCreateWorkEligibilityRequestDtoSourceValue$Outbound =
     | HrisCreateWorkEligibilityRequestDto4$Outbound
     | string
     | number
-    | boolean;
+    | boolean
+    | Array<any>;
 
 /** @internal */
 export const HrisCreateWorkEligibilityRequestDtoSourceValue$outboundSchema: z.ZodType<
@@ -2164,6 +2199,7 @@ export const HrisCreateWorkEligibilityRequestDtoSourceValue$outboundSchema: z.Zo
     z.string(),
     z.number(),
     z.boolean(),
+    z.array(z.any()),
 ]);
 
 /**
@@ -2220,6 +2256,7 @@ export const IssuedBy$inboundSchema: z.ZodType<IssuedBy, z.ZodTypeDef, unknown> 
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),
@@ -2238,6 +2275,7 @@ export type IssuedBy$Outbound = {
         | string
         | number
         | boolean
+        | Array<any>
         | null
         | undefined;
     value?: string | null | undefined;
@@ -2253,6 +2291,7 @@ export const IssuedBy$outboundSchema: z.ZodType<IssuedBy$Outbound, z.ZodTypeDef,
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),
@@ -2313,6 +2352,7 @@ export const SourceType$inboundSchema: z.ZodType<SourceType, z.ZodTypeDef, unkno
     z.string(),
     z.number(),
     z.boolean(),
+    z.array(z.any()),
 ]);
 
 /** @internal */
@@ -2320,7 +2360,8 @@ export type SourceType$Outbound =
     | HrisCreateWorkEligibilityRequestDtoSchemas4$Outbound
     | string
     | number
-    | boolean;
+    | boolean
+    | Array<any>;
 
 /** @internal */
 export const SourceType$outboundSchema: z.ZodType<SourceType$Outbound, z.ZodTypeDef, SourceType> =
@@ -2329,6 +2370,7 @@ export const SourceType$outboundSchema: z.ZodType<SourceType$Outbound, z.ZodType
         z.string(),
         z.number(),
         z.boolean(),
+        z.array(z.any()),
     ]);
 
 /**
@@ -2389,6 +2431,7 @@ export const HrisCreateWorkEligibilityRequestDtoType$inboundSchema: z.ZodType<
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),
@@ -2407,6 +2450,7 @@ export type HrisCreateWorkEligibilityRequestDtoType$Outbound = {
         | string
         | number
         | boolean
+        | Array<any>
         | null
         | undefined;
     value?: string | null | undefined;
@@ -2426,6 +2470,7 @@ export const HrisCreateWorkEligibilityRequestDtoType$outboundSchema: z.ZodType<
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),

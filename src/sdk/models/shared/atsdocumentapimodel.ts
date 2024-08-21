@@ -14,13 +14,18 @@ import * as z from "zod";
 
 export type AtsDocumentApiModel4 = {};
 
-export type AtsDocumentApiModelSourceValue = AtsDocumentApiModel4 | string | number | boolean;
+export type AtsDocumentApiModelSourceValue =
+    | AtsDocumentApiModel4
+    | string
+    | number
+    | boolean
+    | Array<any>;
 
 /**
  * The category of the the document
  */
 export type AtsDocumentApiModelCategory = {
-    sourceValue?: AtsDocumentApiModel4 | string | number | boolean | null | undefined;
+    sourceValue?: AtsDocumentApiModel4 | string | number | boolean | Array<any> | null | undefined;
     /**
      * The category of the file
      */
@@ -33,7 +38,8 @@ export type AtsDocumentApiModelSchemasSourceValue =
     | AtsDocumentApiModelSchemas4
     | string
     | number
-    | boolean;
+    | boolean
+    | Array<any>;
 
 /**
  * The file format of the file, expressed as a file extension
@@ -1259,7 +1265,14 @@ export type AtsDocumentApiModelValueOpen = OpenEnum<typeof AtsDocumentApiModelVa
  * The file format of the file
  */
 export type FileFormat = {
-    sourceValue?: AtsDocumentApiModelSchemas4 | string | number | boolean | null | undefined;
+    sourceValue?:
+        | AtsDocumentApiModelSchemas4
+        | string
+        | number
+        | boolean
+        | Array<any>
+        | null
+        | undefined;
     /**
      * The file format of the file, expressed as a file extension
      */
@@ -1272,7 +1285,8 @@ export type AtsDocumentApiModelSchemasTypeSourceValue =
     | AtsDocumentApiModelSchemasType4
     | string
     | number
-    | boolean;
+    | boolean
+    | Array<any>;
 
 /**
  * The category of the file
@@ -1305,7 +1319,14 @@ export type AtsDocumentApiModelSchemasValueOpen = OpenEnum<typeof AtsDocumentApi
  * @deprecated class: This will be removed in a future release, please migrate away from it as soon as possible.
  */
 export type AtsDocumentApiModelType = {
-    sourceValue?: AtsDocumentApiModelSchemasType4 | string | number | boolean | null | undefined;
+    sourceValue?:
+        | AtsDocumentApiModelSchemasType4
+        | string
+        | number
+        | boolean
+        | Array<any>
+        | null
+        | undefined;
     /**
      * The category of the file
      */
@@ -1317,6 +1338,10 @@ export type AtsDocumentApiModel = {
      * The category of the the document
      */
     category?: AtsDocumentApiModelCategory | null | undefined;
+    /**
+     * The categoryId of the documents
+     */
+    categoryId?: string | null | undefined;
     /**
      * The content of the file. Deprecated, use `url` and `file_format` one level up instead
      *
@@ -1403,6 +1428,7 @@ export const AtsDocumentApiModelSourceValue$inboundSchema: z.ZodType<
     z.string(),
     z.number(),
     z.boolean(),
+    z.array(z.any()),
 ]);
 
 /** @internal */
@@ -1410,7 +1436,8 @@ export type AtsDocumentApiModelSourceValue$Outbound =
     | AtsDocumentApiModel4$Outbound
     | string
     | number
-    | boolean;
+    | boolean
+    | Array<any>;
 
 /** @internal */
 export const AtsDocumentApiModelSourceValue$outboundSchema: z.ZodType<
@@ -1422,6 +1449,7 @@ export const AtsDocumentApiModelSourceValue$outboundSchema: z.ZodType<
     z.string(),
     z.number(),
     z.boolean(),
+    z.array(z.any()),
 ]);
 
 /**
@@ -1451,6 +1479,7 @@ export const AtsDocumentApiModelCategory$inboundSchema: z.ZodType<
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),
@@ -1464,7 +1493,14 @@ export const AtsDocumentApiModelCategory$inboundSchema: z.ZodType<
 
 /** @internal */
 export type AtsDocumentApiModelCategory$Outbound = {
-    source_value?: AtsDocumentApiModel4$Outbound | string | number | boolean | null | undefined;
+    source_value?:
+        | AtsDocumentApiModel4$Outbound
+        | string
+        | number
+        | boolean
+        | Array<any>
+        | null
+        | undefined;
     value?: string | null | undefined;
 };
 
@@ -1482,6 +1518,7 @@ export const AtsDocumentApiModelCategory$outboundSchema: z.ZodType<
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),
@@ -1546,6 +1583,7 @@ export const AtsDocumentApiModelSchemasSourceValue$inboundSchema: z.ZodType<
     z.string(),
     z.number(),
     z.boolean(),
+    z.array(z.any()),
 ]);
 
 /** @internal */
@@ -1553,7 +1591,8 @@ export type AtsDocumentApiModelSchemasSourceValue$Outbound =
     | AtsDocumentApiModelSchemas4$Outbound
     | string
     | number
-    | boolean;
+    | boolean
+    | Array<any>;
 
 /** @internal */
 export const AtsDocumentApiModelSchemasSourceValue$outboundSchema: z.ZodType<
@@ -1565,6 +1604,7 @@ export const AtsDocumentApiModelSchemasSourceValue$outboundSchema: z.ZodType<
     z.string(),
     z.number(),
     z.boolean(),
+    z.array(z.any()),
 ]);
 
 /**
@@ -1618,6 +1658,7 @@ export const FileFormat$inboundSchema: z.ZodType<FileFormat, z.ZodTypeDef, unkno
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),
@@ -1636,6 +1677,7 @@ export type FileFormat$Outbound = {
         | string
         | number
         | boolean
+        | Array<any>
         | null
         | undefined;
     value?: string | null | undefined;
@@ -1651,6 +1693,7 @@ export const FileFormat$outboundSchema: z.ZodType<FileFormat$Outbound, z.ZodType
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),
@@ -1715,6 +1758,7 @@ export const AtsDocumentApiModelSchemasTypeSourceValue$inboundSchema: z.ZodType<
     z.string(),
     z.number(),
     z.boolean(),
+    z.array(z.any()),
 ]);
 
 /** @internal */
@@ -1722,7 +1766,8 @@ export type AtsDocumentApiModelSchemasTypeSourceValue$Outbound =
     | AtsDocumentApiModelSchemasType4$Outbound
     | string
     | number
-    | boolean;
+    | boolean
+    | Array<any>;
 
 /** @internal */
 export const AtsDocumentApiModelSchemasTypeSourceValue$outboundSchema: z.ZodType<
@@ -1734,6 +1779,7 @@ export const AtsDocumentApiModelSchemasTypeSourceValue$outboundSchema: z.ZodType
     z.string(),
     z.number(),
     z.boolean(),
+    z.array(z.any()),
 ]);
 
 /**
@@ -1794,6 +1840,7 @@ export const AtsDocumentApiModelType$inboundSchema: z.ZodType<
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),
@@ -1812,6 +1859,7 @@ export type AtsDocumentApiModelType$Outbound = {
         | string
         | number
         | boolean
+        | Array<any>
         | null
         | undefined;
     value?: string | null | undefined;
@@ -1831,6 +1879,7 @@ export const AtsDocumentApiModelType$outboundSchema: z.ZodType<
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),
@@ -1863,6 +1912,7 @@ export const AtsDocumentApiModel$inboundSchema: z.ZodType<
 > = z
     .object({
         category: z.nullable(z.lazy(() => AtsDocumentApiModelCategory$inboundSchema)).optional(),
+        category_id: z.nullable(z.string()).optional(),
         contents: z.nullable(z.array(Content$inboundSchema)).optional(),
         created_at: z
             .nullable(
@@ -1890,6 +1940,7 @@ export const AtsDocumentApiModel$inboundSchema: z.ZodType<
     })
     .transform((v) => {
         return remap$(v, {
+            category_id: "categoryId",
             created_at: "createdAt",
             file_format: "fileFormat",
             remote_id: "remoteId",
@@ -1901,6 +1952,7 @@ export const AtsDocumentApiModel$inboundSchema: z.ZodType<
 /** @internal */
 export type AtsDocumentApiModel$Outbound = {
     category?: AtsDocumentApiModelCategory$Outbound | null | undefined;
+    category_id?: string | null | undefined;
     contents?: Array<Content$Outbound> | null | undefined;
     created_at?: string | null | undefined;
     file_format?: FileFormat$Outbound | null | undefined;
@@ -1921,6 +1973,7 @@ export const AtsDocumentApiModel$outboundSchema: z.ZodType<
 > = z
     .object({
         category: z.nullable(z.lazy(() => AtsDocumentApiModelCategory$outboundSchema)).optional(),
+        categoryId: z.nullable(z.string()).optional(),
         contents: z.nullable(z.array(Content$outboundSchema)).optional(),
         createdAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
         fileFormat: z.nullable(z.lazy(() => FileFormat$outboundSchema)).optional(),
@@ -1934,6 +1987,7 @@ export const AtsDocumentApiModel$outboundSchema: z.ZodType<
     })
     .transform((v) => {
         return remap$(v, {
+            categoryId: "category_id",
             createdAt: "created_at",
             fileFormat: "file_format",
             remoteId: "remote_id",

@@ -1,5 +1,12 @@
 # AtsDocumentApiModelSchemasTypeSourceValue
 
+## Example Usage
+
+```typescript
+import { AtsDocumentApiModelSchemasTypeSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: AtsDocumentApiModelSchemasTypeSourceValue = 4560.15;
+```
 
 ## Supported Types
 
@@ -25,5 +32,11 @@ const value: boolean = /* values here */
 
 ```typescript
 const value: shared.AtsDocumentApiModelSchemasType4 = /* values here */
+```
+
+### `any[]`
+
+```typescript
+const value: any[] = /* values here */
 ```
 

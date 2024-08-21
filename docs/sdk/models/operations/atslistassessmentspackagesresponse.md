@@ -1,5 +1,34 @@
 # AtsListAssessmentsPackagesResponse
 
+## Example Usage
+
+```typescript
+import { AtsListAssessmentsPackagesResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
+import { AssessmentsPackagesValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: AtsListAssessmentsPackagesResponse = {
+    assessmentsPackagesPaginated: {
+        data: [
+            {
+                description:
+                    "Skills test to gauge a candidate's proficiency in job-specific skills",
+                id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+                name: "Skill Assessment",
+                remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+                type: {
+                    sourceValue: ["Skill Test"],
+                    value: AssessmentsPackagesValue.SkillTest,
+                },
+            },
+        ],
+    },
+    contentType: "<value>",
+    statusCode: 653108,
+    rawResponse: new Response('{"message": "hello world"}', {
+        headers: { "Content-Type": "application/json" },
+    }),
+};
+```
 
 ## Fields
 

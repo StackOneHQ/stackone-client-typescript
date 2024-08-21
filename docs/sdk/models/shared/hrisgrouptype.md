@@ -2,6 +2,15 @@
 
 The type of the group
 
+## Example Usage
+
+```typescript
+import { HRISGroupType, HRISGroupValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: HRISGroupType = {
+    value: HRISGroupValue.Team,
+};
+```
 
 ## Fields
 

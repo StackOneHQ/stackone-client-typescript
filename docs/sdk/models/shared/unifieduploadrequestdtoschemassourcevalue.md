@@ -1,5 +1,12 @@
 # UnifiedUploadRequestDtoSchemasSourceValue
 
+## Example Usage
+
+```typescript
+import { UnifiedUploadRequestDtoSchemasSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: UnifiedUploadRequestDtoSchemasSourceValue = "abc";
+```
 
 ## Supported Types
 
@@ -25,5 +32,11 @@ const value: boolean = /* values here */
 
 ```typescript
 const value: shared.UnifiedUploadRequestDtoSchemas4 = /* values here */
+```
+
+### `any[]`
+
+```typescript
+const value: any[] = /* values here */
 ```
 
