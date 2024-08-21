@@ -1,5 +1,24 @@
 # RejectedReasonsPaginated
 
+## Example Usage
+
+```typescript
+import { RejectedReasonsPaginated, RejectedReasonValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: RejectedReasonsPaginated = {
+    data: [
+        {
+            id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+            label: "Failed Phone Screen",
+            rejectedReasonType: {
+                sourceValue: "RejectedByOrg",
+                value: RejectedReasonValue.RejectedByOrganization,
+            },
+            remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        },
+    ],
+};
+```
 
 ## Fields
 

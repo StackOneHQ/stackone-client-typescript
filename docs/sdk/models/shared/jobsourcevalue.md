@@ -2,6 +2,13 @@
 
 The source value of the job status.
 
+## Example Usage
+
+```typescript
+import { JobSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: JobSourceValue = "Published";
+```
 
 ## Supported Types
 
@@ -27,5 +34,11 @@ const value: boolean = /* values here */
 
 ```typescript
 const value: shared.Job4 = /* values here */
+```
+
+### `any[]`
+
+```typescript
+const value: any[] = /* values here */
 ```
 

@@ -1,5 +1,16 @@
 # ProviderErrorApiModel
 
+## Example Usage
+
+```typescript
+import { ProviderErrorApiModel } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: ProviderErrorApiModel = {
+    headers: {},
+    status: 400,
+    url: "https://api.someprovider.com/v1/endpoint",
+};
+```
 
 ## Fields
 

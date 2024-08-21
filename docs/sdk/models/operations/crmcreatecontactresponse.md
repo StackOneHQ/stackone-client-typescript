@@ -1,5 +1,51 @@
 # CrmCreateContactResponse
 
+## Example Usage
+
+```typescript
+import { CrmCreateContactResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
+
+let value: CrmCreateContactResponse = {
+    contactResult: {
+        data: {
+            accountIds: ["account-123", "account-456"],
+            companyName: "Apple Inc.",
+            createdAt: new Date("2021-01-01T01:01:01.000Z"),
+            customFields: [
+                {
+                    id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+                    name: "Training Completion Status",
+                    remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+                    remoteValueId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
+                    value: ["Completed"],
+                    valueId: "value_456",
+                },
+            ],
+            dealIds: ["deal-001", "deal-002"],
+            emails: ["steve@apple.com"],
+            firstName: "Steve",
+            id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+            lastName: "Wozniak",
+            phoneNumbers: ["123-456-7890"],
+            remoteAccountIds: [
+                "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
+                "e3cb75bf-aa84-466e-a6c1-b8322b257a49",
+            ],
+            remoteDealIds: [
+                "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
+                "e3cb75bf-aa84-466e-a6c1-b8322b257a49",
+            ],
+            remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+            updatedAt: new Date("2021-01-01T01:01:01.000Z"),
+        },
+    },
+    contentType: "<value>",
+    statusCode: 414263,
+    rawResponse: new Response('{"message": "hello world"}', {
+        headers: { "Content-Type": "application/json" },
+    }),
+};
+```
 
 ## Fields
 

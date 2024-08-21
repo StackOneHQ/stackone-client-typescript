@@ -2,6 +2,13 @@
 
 The result of the completion
 
+## Example Usage
+
+```typescript
+import { LmsCreateCompletionRequestDtoResult } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: LmsCreateCompletionRequestDtoResult = {};
+```
 
 ## Fields
 

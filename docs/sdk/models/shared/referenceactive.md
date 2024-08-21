@@ -2,6 +2,13 @@
 
 The reference status
 
+## Example Usage
+
+```typescript
+import { ReferenceActive } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: ReferenceActive = true;
+```
 
 ## Supported Types
 

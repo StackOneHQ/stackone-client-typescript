@@ -1,5 +1,16 @@
 # HrisGetLocationRequest
 
+## Example Usage
+
+```typescript
+import { HrisGetLocationRequest } from "@stackone/stackone-client-ts/sdk/models/operations";
+
+let value: HrisGetLocationRequest = {
+    fields: "id,remote_id,employee_id,remote_employee_id,name,phone_number,street_1,street_2,city,state,zip_code,country,location_type,created_at,updated_at",
+    id: "<id>",
+    xAccountId: "<value>",
+};
+```
 
 ## Fields
 

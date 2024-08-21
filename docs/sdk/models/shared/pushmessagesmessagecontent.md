@@ -1,5 +1,12 @@
 # PushMessagesMessageContent
 
+## Example Usage
+
+```typescript
+import { PushMessagesMessageContent } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: PushMessagesMessageContent = {};
+```
 
 ## Fields
 

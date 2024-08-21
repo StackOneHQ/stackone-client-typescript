@@ -1,5 +1,19 @@
 # IamListRolesRequest
 
+## Example Usage
+
+```typescript
+import { IamListRolesRequest } from "@stackone/stackone-client-ts/sdk/models/operations";
+
+let value: IamListRolesRequest = {
+    expand: "policies",
+    fields: "id,remote_id,name,type,policies,description,created_at,updated_at",
+    filter: {
+        updatedAfter: "2020-01-01T00:00:00.000Z",
+    },
+    xAccountId: "<value>",
+};
+```
 
 ## Fields
 

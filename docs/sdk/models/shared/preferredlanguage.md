@@ -2,6 +2,15 @@
 
 The employee preferred language
 
+## Example Usage
+
+```typescript
+import { EmployeeSchemasPreferredLanguageValue, PreferredLanguage } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: PreferredLanguage = {
+    value: EmployeeSchemasPreferredLanguageValue.Eng,
+};
+```
 
 ## Fields
 

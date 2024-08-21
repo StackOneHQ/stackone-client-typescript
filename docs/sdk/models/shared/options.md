@@ -1,5 +1,12 @@
 # Options
 
+## Example Usage
+
+```typescript
+import { Options } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: Options = {};
+```
 
 ## Supported Types
 
@@ -21,9 +28,15 @@ const value: number = /* values here */
 const value: boolean = /* values here */
 ```
 
-### `shared.Four`
+### `shared.CustomFieldDefinition4`
 
 ```typescript
-const value: shared.Four = /* values here */
+const value: shared.CustomFieldDefinition4 = /* values here */
+```
+
+### `any[]`
+
+```typescript
+const value: any[] = /* values here */
 ```
 

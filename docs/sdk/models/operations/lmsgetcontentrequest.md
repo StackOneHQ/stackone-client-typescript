@@ -1,5 +1,16 @@
 # LmsGetContentRequest
 
+## Example Usage
+
+```typescript
+import { LmsGetContentRequest } from "@stackone/stackone-client-ts/sdk/models/operations";
+
+let value: LmsGetContentRequest = {
+    fields: "id,remote_id,external_reference,course_ids,remote_course_ids,title,description,languages,content_url,content_type,cover_url,active,duration,categories,order",
+    id: "<id>",
+    xAccountId: "<value>",
+};
+```
 
 ## Fields
 

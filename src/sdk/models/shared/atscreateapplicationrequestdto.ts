@@ -33,7 +33,8 @@ export type AtsCreateApplicationRequestDtoSourceValue =
     | AtsCreateApplicationRequestDto4
     | string
     | number
-    | boolean;
+    | boolean
+    | Array<any>;
 
 /**
  * The status of the application.
@@ -71,7 +72,14 @@ export type AtsCreateApplicationRequestDtoApplicationStatus = {
     /**
      * The source value of the application status.
      */
-    sourceValue?: AtsCreateApplicationRequestDto4 | string | number | boolean | null | undefined;
+    sourceValue?:
+        | AtsCreateApplicationRequestDto4
+        | string
+        | number
+        | boolean
+        | Array<any>
+        | null
+        | undefined;
     /**
      * The status of the application.
      */
@@ -216,6 +224,7 @@ export const AtsCreateApplicationRequestDtoSourceValue$inboundSchema: z.ZodType<
     z.string(),
     z.number(),
     z.boolean(),
+    z.array(z.any()),
 ]);
 
 /** @internal */
@@ -223,7 +232,8 @@ export type AtsCreateApplicationRequestDtoSourceValue$Outbound =
     | AtsCreateApplicationRequestDto4$Outbound
     | string
     | number
-    | boolean;
+    | boolean
+    | Array<any>;
 
 /** @internal */
 export const AtsCreateApplicationRequestDtoSourceValue$outboundSchema: z.ZodType<
@@ -235,6 +245,7 @@ export const AtsCreateApplicationRequestDtoSourceValue$outboundSchema: z.ZodType
     z.string(),
     z.number(),
     z.boolean(),
+    z.array(z.any()),
 ]);
 
 /**
@@ -295,6 +306,7 @@ export const AtsCreateApplicationRequestDtoApplicationStatus$inboundSchema: z.Zo
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),
@@ -313,6 +325,7 @@ export type AtsCreateApplicationRequestDtoApplicationStatus$Outbound = {
         | string
         | number
         | boolean
+        | Array<any>
         | null
         | undefined;
     value?: string | null | undefined;
@@ -332,6 +345,7 @@ export const AtsCreateApplicationRequestDtoApplicationStatus$outboundSchema: z.Z
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),

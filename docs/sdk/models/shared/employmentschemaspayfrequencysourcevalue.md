@@ -2,6 +2,13 @@
 
 The source value of the pay frequency.
 
+## Example Usage
+
+```typescript
+import { EmploymentSchemasPayFrequencySourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: EmploymentSchemasPayFrequencySourceValue = "Hourly";
+```
 
 ## Supported Types
 
@@ -27,5 +34,11 @@ const value: boolean = /* values here */
 
 ```typescript
 const value: shared.EmploymentSchemasPayFrequency4 = /* values here */
+```
+
+### `any[]`
+
+```typescript
+const value: any[] = /* values here */
 ```
 

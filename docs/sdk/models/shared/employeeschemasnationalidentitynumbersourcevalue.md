@@ -1,5 +1,12 @@
 # EmployeeSchemasNationalIdentityNumberSourceValue
 
+## Example Usage
+
+```typescript
+import { EmployeeSchemasNationalIdentityNumberSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: EmployeeSchemasNationalIdentityNumberSourceValue = "<value>";
+```
 
 ## Supported Types
 
@@ -25,5 +32,11 @@ const value: boolean = /* values here */
 
 ```typescript
 const value: shared.EmployeeSchemasNationalIdentityNumber4 = /* values here */
+```
+
+### `any[]`
+
+```typescript
+const value: any[] = /* values here */
 ```
 

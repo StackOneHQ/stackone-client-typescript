@@ -1,5 +1,32 @@
 # LmsGetCompletionResponse
 
+## Example Usage
+
+```typescript
+import { LmsGetCompletionResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
+
+let value: LmsGetCompletionResponse = {
+    completionResult: {
+        data: {
+            completedAt: "2021-07-21T14:00:00.000Z",
+            contentId: "16873-ENG-VIDEO-1",
+            externalId: "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1-COMPLETION",
+            id: "123456",
+            passthrough: {
+                other_known_names: "John Doe",
+            },
+            remoteContentId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
+            remoteExternalId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
+            remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        },
+    },
+    contentType: "<value>",
+    statusCode: 352312,
+    rawResponse: new Response('{"message": "hello world"}', {
+        headers: { "Content-Type": "application/json" },
+    }),
+};
+```
 
 ## Fields
 

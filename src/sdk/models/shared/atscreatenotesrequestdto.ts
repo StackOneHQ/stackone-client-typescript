@@ -21,7 +21,8 @@ export type AtsCreateNotesRequestDtoSourceValue =
     | AtsCreateNotesRequestDto4
     | string
     | number
-    | boolean;
+    | boolean
+    | Array<any>;
 
 /**
  * The visibility of the notes.
@@ -42,7 +43,14 @@ export type Visibility = {
     /**
      * The source value of the notes visibility.
      */
-    sourceValue?: AtsCreateNotesRequestDto4 | string | number | boolean | null | undefined;
+    sourceValue?:
+        | AtsCreateNotesRequestDto4
+        | string
+        | number
+        | boolean
+        | Array<any>
+        | null
+        | undefined;
     /**
      * The visibility of the notes.
      */
@@ -105,6 +113,7 @@ export const AtsCreateNotesRequestDtoSourceValue$inboundSchema: z.ZodType<
     z.string(),
     z.number(),
     z.boolean(),
+    z.array(z.any()),
 ]);
 
 /** @internal */
@@ -112,7 +121,8 @@ export type AtsCreateNotesRequestDtoSourceValue$Outbound =
     | AtsCreateNotesRequestDto4$Outbound
     | string
     | number
-    | boolean;
+    | boolean
+    | Array<any>;
 
 /** @internal */
 export const AtsCreateNotesRequestDtoSourceValue$outboundSchema: z.ZodType<
@@ -124,6 +134,7 @@ export const AtsCreateNotesRequestDtoSourceValue$outboundSchema: z.ZodType<
     z.string(),
     z.number(),
     z.boolean(),
+    z.array(z.any()),
 ]);
 
 /**
@@ -180,6 +191,7 @@ export const Visibility$inboundSchema: z.ZodType<Visibility, z.ZodTypeDef, unkno
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),
@@ -198,6 +210,7 @@ export type Visibility$Outbound = {
         | string
         | number
         | boolean
+        | Array<any>
         | null
         | undefined;
     value?: string | null | undefined;
@@ -213,6 +226,7 @@ export const Visibility$outboundSchema: z.ZodType<Visibility$Outbound, z.ZodType
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),

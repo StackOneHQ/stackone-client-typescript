@@ -1,5 +1,21 @@
 # CategoriesPaginated
 
+## Example Usage
+
+```typescript
+import { CategoriesPaginated } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: CategoriesPaginated = {
+    data: [
+        {
+            active: true,
+            id: "16873-IT345",
+            name: "Information-Technology",
+            remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        },
+    ],
+};
+```
 
 ## Fields
 

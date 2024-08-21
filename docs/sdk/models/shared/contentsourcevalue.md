@@ -1,5 +1,12 @@
 # ContentSourceValue
 
+## Example Usage
+
+```typescript
+import { ContentSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: ContentSourceValue = 1372.2;
+```
 
 ## Supported Types
 
@@ -25,5 +32,11 @@ const value: boolean = /* values here */
 
 ```typescript
 const value: shared.Content4 = /* values here */
+```
+
+### `any[]`
+
+```typescript
+const value: any[] = /* values here */
 ```
 

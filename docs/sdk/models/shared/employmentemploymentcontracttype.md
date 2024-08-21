@@ -2,6 +2,13 @@
 
 The employment work schedule type (e.g., full-time, part-time)
 
+## Example Usage
+
+```typescript
+import { EmploymentEmploymentContractType } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: EmploymentEmploymentContractType = {};
+```
 
 ## Fields
 

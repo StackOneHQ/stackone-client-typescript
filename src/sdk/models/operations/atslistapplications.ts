@@ -15,6 +15,10 @@ export type AtsListApplicationsQueryParamFilter = {
      */
     jobId?: string | null | undefined;
     /**
+     * Filter to select applications by stage and sub-stage
+     */
+    stage?: string | null | undefined;
+    /**
      * Use a string with a date to only select results updated after that given date
      */
     updatedAfter?: string | null | undefined;
@@ -110,6 +114,7 @@ export const AtsListApplicationsQueryParamFilter$inboundSchema: z.ZodType<
 > = z
     .object({
         job_id: z.nullable(z.string()).optional(),
+        stage: z.nullable(z.string()).optional(),
         updated_after: z.nullable(z.string()).optional(),
     })
     .transform((v) => {
@@ -122,6 +127,7 @@ export const AtsListApplicationsQueryParamFilter$inboundSchema: z.ZodType<
 /** @internal */
 export type AtsListApplicationsQueryParamFilter$Outbound = {
     job_id?: string | null | undefined;
+    stage?: string | null | undefined;
     updated_after?: string | null | undefined;
 };
 
@@ -133,6 +139,7 @@ export const AtsListApplicationsQueryParamFilter$outboundSchema: z.ZodType<
 > = z
     .object({
         jobId: z.nullable(z.string()).optional(),
+        stage: z.nullable(z.string()).optional(),
         updatedAfter: z.nullable(z.string()).optional(),
     })
     .transform((v) => {
@@ -173,7 +180,7 @@ export const AtsListApplicationsRequest$inboundSchema: z.ZodType<
         page: z.nullable(z.string()).optional(),
         page_size: z.nullable(z.string().default("25")),
         proxy: z.nullable(z.record(z.any())).optional(),
-        raw: z.nullable(z.boolean().default(false)),
+        raw: z.nullable(z.boolean()),
         sync_token: z.nullable(z.string()).optional(),
         updated_after: z.nullable(z.string()).optional(),
         "x-account-id": z.string(),

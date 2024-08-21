@@ -11,7 +11,12 @@ export type AssessmentsResults4 = {};
 /**
  * The source value of the content type.
  */
-export type AssessmentsResultsSourceValue = AssessmentsResults4 | string | number | boolean;
+export type AssessmentsResultsSourceValue =
+    | AssessmentsResults4
+    | string
+    | number
+    | boolean
+    | Array<any>;
 
 /**
  * The content type of the attachment.
@@ -29,7 +34,7 @@ export type AssessmentsResultsContentType = {
     /**
      * The source value of the content type.
      */
-    sourceValue?: AssessmentsResults4 | string | number | boolean | null | undefined;
+    sourceValue?: AssessmentsResults4 | string | number | boolean | Array<any> | null | undefined;
     /**
      * The content type of the attachment.
      */
@@ -158,14 +163,21 @@ export const AssessmentsResultsSourceValue$inboundSchema: z.ZodType<
     AssessmentsResultsSourceValue,
     z.ZodTypeDef,
     unknown
-> = z.union([z.lazy(() => AssessmentsResults4$inboundSchema), z.string(), z.number(), z.boolean()]);
+> = z.union([
+    z.lazy(() => AssessmentsResults4$inboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+    z.array(z.any()),
+]);
 
 /** @internal */
 export type AssessmentsResultsSourceValue$Outbound =
     | AssessmentsResults4$Outbound
     | string
     | number
-    | boolean;
+    | boolean
+    | Array<any>;
 
 /** @internal */
 export const AssessmentsResultsSourceValue$outboundSchema: z.ZodType<
@@ -177,6 +189,7 @@ export const AssessmentsResultsSourceValue$outboundSchema: z.ZodType<
     z.string(),
     z.number(),
     z.boolean(),
+    z.array(z.any()),
 ]);
 
 /**
@@ -234,6 +247,7 @@ export const AssessmentsResultsContentType$inboundSchema: z.ZodType<
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),
@@ -247,7 +261,14 @@ export const AssessmentsResultsContentType$inboundSchema: z.ZodType<
 
 /** @internal */
 export type AssessmentsResultsContentType$Outbound = {
-    source_value?: AssessmentsResults4$Outbound | string | number | boolean | null | undefined;
+    source_value?:
+        | AssessmentsResults4$Outbound
+        | string
+        | number
+        | boolean
+        | Array<any>
+        | null
+        | undefined;
     value?: string | null | undefined;
 };
 
@@ -265,6 +286,7 @@ export const AssessmentsResultsContentType$outboundSchema: z.ZodType<
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),

@@ -1,5 +1,12 @@
 # EmploymentSourceValue
 
+## Example Usage
+
+```typescript
+import { EmploymentSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: EmploymentSourceValue = 896.03;
+```
 
 ## Supported Types
 
@@ -25,5 +32,11 @@ const value: boolean = /* values here */
 
 ```typescript
 const value: shared.Employment4 = /* values here */
+```
+
+### `any[]`
+
+```typescript
+const value: any[] = /* values here */
 ```
 

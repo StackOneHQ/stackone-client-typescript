@@ -2,6 +2,13 @@
 
 The source value of the ISO 3166-1 alpha-2 code of the country.
 
+## Example Usage
+
+```typescript
+import { AccountAddressSchemasSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: AccountAddressSchemasSourceValue = "GB";
+```
 
 ## Supported Types
 
@@ -27,5 +34,11 @@ const value: boolean = /* values here */
 
 ```typescript
 const value: shared.AccountAddressSchemas4 = /* values here */
+```
+
+### `any[]`
+
+```typescript
+const value: any[] = /* values here */
 ```
 

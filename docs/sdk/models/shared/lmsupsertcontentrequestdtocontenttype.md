@@ -2,6 +2,13 @@
 
 The type of content
 
+## Example Usage
+
+```typescript
+import { LmsUpsertContentRequestDtoContentType } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: LmsUpsertContentRequestDtoContentType = {};
+```
 
 ## Fields
 

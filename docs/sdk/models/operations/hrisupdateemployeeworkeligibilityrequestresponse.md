@@ -1,5 +1,18 @@
 # HrisUpdateEmployeeWorkEligibilityRequestResponse
 
+## Example Usage
+
+```typescript
+import { HrisUpdateEmployeeWorkEligibilityRequestResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
+
+let value: HrisUpdateEmployeeWorkEligibilityRequestResponse = {
+    contentType: "<value>",
+    statusCode: 574325,
+    rawResponse: new Response('{"message": "hello world"}', {
+        headers: { "Content-Type": "application/json" },
+    }),
+};
+```
 
 ## Fields
 

@@ -1,5 +1,15 @@
 # Security
 
+## Example Usage
+
+```typescript
+import { Security } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: Security = {
+    password: "",
+    username: "",
+};
+```
 
 ## Fields
 

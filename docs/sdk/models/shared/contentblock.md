@@ -1,5 +1,25 @@
 # ContentBlock
 
+## Example Usage
+
+```typescript
+import { ContentBlock, ContentBlockSchemasValue, ContentBlockValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: ContentBlock = {
+    createdAt: new Date("2021-01-01T00:00:00.000Z"),
+    id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+    remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+    status: {
+        sourceValue: "active",
+        value: ContentBlockValue.Live,
+    },
+    type: {
+        sourceValue: true,
+        value: ContentBlockSchemasValue.Html,
+    },
+    updatedAt: new Date("2021-01-01T00:00:00.000Z"),
+};
+```
 
 ## Fields
 

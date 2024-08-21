@@ -2,6 +2,13 @@
 
 The source value of the questions type.
 
+## Example Usage
+
+```typescript
+import { QuestionSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: QuestionSourceValue = "ShortText";
+```
 
 ## Supported Types
 
@@ -27,5 +34,11 @@ const value: boolean = /* values here */
 
 ```typescript
 const value: shared.Question4 = /* values here */
+```
+
+### `any[]`
+
+```typescript
+const value: any[] = /* values here */
 ```
 

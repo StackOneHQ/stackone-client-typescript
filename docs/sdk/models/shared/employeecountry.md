@@ -2,6 +2,15 @@
 
 The country code
 
+## Example Usage
+
+```typescript
+import { EmployeeCountry, EmployeeSchemasHomeLocationValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: EmployeeCountry = {
+    value: EmployeeSchemasHomeLocationValue.Us,
+};
+```
 
 ## Fields
 

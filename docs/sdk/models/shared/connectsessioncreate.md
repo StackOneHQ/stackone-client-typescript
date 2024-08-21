@@ -1,5 +1,25 @@
 # ConnectSessionCreate
 
+## Example Usage
+
+```typescript
+import { ConnectSessionCreate, ConnectSessionCreateCategories } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: ConnectSessionCreate = {
+    categories: [
+        ConnectSessionCreateCategories.Ats,
+        ConnectSessionCreateCategories.Hris,
+        ConnectSessionCreateCategories.Iam,
+        ConnectSessionCreateCategories.Crm,
+        ConnectSessionCreateCategories.Iam,
+        ConnectSessionCreateCategories.Marketing,
+        ConnectSessionCreateCategories.Lms,
+        ConnectSessionCreateCategories.Marketing,
+    ],
+    originOwnerId: "<value>",
+    originOwnerName: "<value>",
+};
+```
 
 ## Fields
 

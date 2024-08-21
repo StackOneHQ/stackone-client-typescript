@@ -1,5 +1,15 @@
 # ContentType
 
+## Example Usage
+
+```typescript
+import { ApplicationAttachmentValue, ContentType } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: ContentType = {
+    sourceValue: ["Text"],
+    value: ApplicationAttachmentValue.Text,
+};
+```
 
 ## Fields
 

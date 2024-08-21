@@ -1,5 +1,14 @@
 # MessageType
 
+## Example Usage
+
+```typescript
+import { MessageType } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: MessageType = {
+    sourceValue: "Email",
+};
+```
 
 ## Fields
 

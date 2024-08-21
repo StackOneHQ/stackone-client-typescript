@@ -14,7 +14,7 @@ import * as z from "zod";
 
 export type IamRole4 = {};
 
-export type IamRoleSourceValue = IamRole4 | string | number | boolean;
+export type IamRoleSourceValue = IamRole4 | string | number | boolean | Array<any>;
 
 export enum IamRoleValue {
     Admin = "admin",
@@ -29,7 +29,7 @@ export enum IamRoleValue {
 export type IamRoleValueOpen = OpenEnum<typeof IamRoleValue>;
 
 export type IamRoleType = {
-    sourceValue?: IamRole4 | string | number | boolean | null | undefined;
+    sourceValue?: IamRole4 | string | number | boolean | Array<any> | null | undefined;
     value?: IamRoleValueOpen | null | undefined;
 };
 
@@ -81,17 +81,34 @@ export const IamRoleSourceValue$inboundSchema: z.ZodType<
     IamRoleSourceValue,
     z.ZodTypeDef,
     unknown
-> = z.union([z.lazy(() => IamRole4$inboundSchema), z.string(), z.number(), z.boolean()]);
+> = z.union([
+    z.lazy(() => IamRole4$inboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+    z.array(z.any()),
+]);
 
 /** @internal */
-export type IamRoleSourceValue$Outbound = IamRole4$Outbound | string | number | boolean;
+export type IamRoleSourceValue$Outbound =
+    | IamRole4$Outbound
+    | string
+    | number
+    | boolean
+    | Array<any>;
 
 /** @internal */
 export const IamRoleSourceValue$outboundSchema: z.ZodType<
     IamRoleSourceValue$Outbound,
     z.ZodTypeDef,
     IamRoleSourceValue
-> = z.union([z.lazy(() => IamRole4$outboundSchema), z.string(), z.number(), z.boolean()]);
+> = z.union([
+    z.lazy(() => IamRole4$outboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+    z.array(z.any()),
+]);
 
 /**
  * @internal
@@ -133,7 +150,13 @@ export const IamRoleType$inboundSchema: z.ZodType<IamRoleType, z.ZodTypeDef, unk
     .object({
         source_value: z
             .nullable(
-                z.union([z.lazy(() => IamRole4$inboundSchema), z.string(), z.number(), z.boolean()])
+                z.union([
+                    z.lazy(() => IamRole4$inboundSchema),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                    z.array(z.any()),
+                ])
             )
             .optional(),
         value: z.nullable(IamRoleValue$inboundSchema).optional(),
@@ -146,7 +169,7 @@ export const IamRoleType$inboundSchema: z.ZodType<IamRoleType, z.ZodTypeDef, unk
 
 /** @internal */
 export type IamRoleType$Outbound = {
-    source_value?: IamRole4$Outbound | string | number | boolean | null | undefined;
+    source_value?: IamRole4$Outbound | string | number | boolean | Array<any> | null | undefined;
     value?: string | null | undefined;
 };
 
@@ -164,6 +187,7 @@ export const IamRoleType$outboundSchema: z.ZodType<
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),

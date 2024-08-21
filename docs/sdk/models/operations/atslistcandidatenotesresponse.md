@@ -1,5 +1,41 @@
 # AtsListCandidateNotesResponse
 
+## Example Usage
+
+```typescript
+import { AtsListCandidateNotesResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
+import { NoteValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: AtsListCandidateNotesResponse = {
+    contentType: "<value>",
+    notesPaginated: {
+        data: [
+            {
+                authorId: "1234567890",
+                content: [
+                    {
+                        body: "This candidate seems like a good fit for the role",
+                    },
+                ],
+                createdAt: new Date("2021-01-01T01:01:01.000Z"),
+                deletedAt: new Date("2021-01-01T01:01:01.000Z"),
+                id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+                remoteAuthorId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
+                remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+                updatedAt: new Date("2021-01-01T01:01:01.000Z"),
+                visibility: {
+                    sourceValue: Public,
+                    value: NoteValue.Public,
+                },
+            },
+        ],
+    },
+    statusCode: 414369,
+    rawResponse: new Response('{"message": "hello world"}', {
+        headers: { "Content-Type": "application/json" },
+    }),
+};
+```
 
 ## Fields
 

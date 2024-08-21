@@ -2,8 +2,17 @@
 
 The file format of the file, expressed as a file extension
 
+## Example Usage
+
+```typescript
+import { HrisDocumentApiModelSchemasValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: HrisDocumentApiModelSchemasValue = HrisDocumentApiModelSchemasValue.Pdf;
+```
 
 ## Values
+
+This is an open enum. Unrecognized values will be captured as the `Unrecognized<string>` branded type.
 
 | Name                      | Value                     |
 | ------------------------- | ------------------------- |
@@ -1217,3 +1226,4 @@ The file format of the file, expressed as a file extension
 | `Movie`                   | movie                     |
 | `Smv`                     | smv                       |
 | `Ice`                     | ice                       |
+| -                         | `Unrecognized<string>`    |

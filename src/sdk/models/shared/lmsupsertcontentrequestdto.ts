@@ -34,7 +34,8 @@ export type LmsUpsertContentRequestDtoSourceValue =
     | LmsUpsertContentRequestDto4
     | string
     | number
-    | boolean;
+    | boolean
+    | Array<any>;
 
 export enum LmsUpsertContentRequestDtoValue {
     Video = "video",
@@ -47,7 +48,14 @@ export type LmsUpsertContentRequestDtoValueOpen = OpenEnum<typeof LmsUpsertConte
  * The type of content
  */
 export type LmsUpsertContentRequestDtoContentType = {
-    sourceValue?: LmsUpsertContentRequestDto4 | string | number | boolean | null | undefined;
+    sourceValue?:
+        | LmsUpsertContentRequestDto4
+        | string
+        | number
+        | boolean
+        | Array<any>
+        | null
+        | undefined;
     value?: LmsUpsertContentRequestDtoValueOpen | null | undefined;
 };
 
@@ -193,6 +201,7 @@ export const LmsUpsertContentRequestDtoSourceValue$inboundSchema: z.ZodType<
     z.string(),
     z.number(),
     z.boolean(),
+    z.array(z.any()),
 ]);
 
 /** @internal */
@@ -200,7 +209,8 @@ export type LmsUpsertContentRequestDtoSourceValue$Outbound =
     | LmsUpsertContentRequestDto4$Outbound
     | string
     | number
-    | boolean;
+    | boolean
+    | Array<any>;
 
 /** @internal */
 export const LmsUpsertContentRequestDtoSourceValue$outboundSchema: z.ZodType<
@@ -212,6 +222,7 @@ export const LmsUpsertContentRequestDtoSourceValue$outboundSchema: z.ZodType<
     z.string(),
     z.number(),
     z.boolean(),
+    z.array(z.any()),
 ]);
 
 /**
@@ -272,6 +283,7 @@ export const LmsUpsertContentRequestDtoContentType$inboundSchema: z.ZodType<
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),
@@ -290,6 +302,7 @@ export type LmsUpsertContentRequestDtoContentType$Outbound = {
         | string
         | number
         | boolean
+        | Array<any>
         | null
         | undefined;
     value?: string | null | undefined;
@@ -309,6 +322,7 @@ export const LmsUpsertContentRequestDtoContentType$outboundSchema: z.ZodType<
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),

@@ -1,5 +1,15 @@
 # ResultLink
 
+## Example Usage
+
+```typescript
+import { ResultLink } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: ResultLink = {
+    label: "assessment result link",
+    url: "http://example.com/assessment-result/4565765/data",
+};
+```
 
 ## Fields
 

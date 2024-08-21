@@ -24,7 +24,7 @@ export type Question4 = {};
 /**
  * The source value of the questions type.
  */
-export type QuestionSourceValue = Question4 | string | number | boolean;
+export type QuestionSourceValue = Question4 | string | number | boolean | Array<any>;
 
 /**
  * The type of the questions.
@@ -49,7 +49,7 @@ export type QuestionType = {
     /**
      * The source value of the questions type.
      */
-    sourceValue?: Question4 | string | number | boolean | null | undefined;
+    sourceValue?: Question4 | string | number | boolean | Array<any> | null | undefined;
     /**
      * The type of the questions.
      */
@@ -144,17 +144,34 @@ export const QuestionSourceValue$inboundSchema: z.ZodType<
     QuestionSourceValue,
     z.ZodTypeDef,
     unknown
-> = z.union([z.lazy(() => Question4$inboundSchema), z.string(), z.number(), z.boolean()]);
+> = z.union([
+    z.lazy(() => Question4$inboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+    z.array(z.any()),
+]);
 
 /** @internal */
-export type QuestionSourceValue$Outbound = Question4$Outbound | string | number | boolean;
+export type QuestionSourceValue$Outbound =
+    | Question4$Outbound
+    | string
+    | number
+    | boolean
+    | Array<any>;
 
 /** @internal */
 export const QuestionSourceValue$outboundSchema: z.ZodType<
     QuestionSourceValue$Outbound,
     z.ZodTypeDef,
     QuestionSourceValue
-> = z.union([z.lazy(() => Question4$outboundSchema), z.string(), z.number(), z.boolean()]);
+> = z.union([
+    z.lazy(() => Question4$outboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+    z.array(z.any()),
+]);
 
 /**
  * @internal
@@ -201,6 +218,7 @@ export const QuestionType$inboundSchema: z.ZodType<QuestionType, z.ZodTypeDef, u
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),
@@ -214,7 +232,7 @@ export const QuestionType$inboundSchema: z.ZodType<QuestionType, z.ZodTypeDef, u
 
 /** @internal */
 export type QuestionType$Outbound = {
-    source_value?: Question4$Outbound | string | number | boolean | null | undefined;
+    source_value?: Question4$Outbound | string | number | boolean | Array<any> | null | undefined;
     value?: string | null | undefined;
 };
 
@@ -232,6 +250,7 @@ export const QuestionType$outboundSchema: z.ZodType<
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),

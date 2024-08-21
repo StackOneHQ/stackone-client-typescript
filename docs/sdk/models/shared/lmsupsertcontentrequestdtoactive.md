@@ -2,6 +2,13 @@
 
 Whether the content is active and available for users.
 
+## Example Usage
+
+```typescript
+import { LmsUpsertContentRequestDtoActive } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: LmsUpsertContentRequestDtoActive = true;
+```
 
 ## Supported Types
 

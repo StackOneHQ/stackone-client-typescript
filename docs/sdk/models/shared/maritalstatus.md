@@ -2,6 +2,13 @@
 
 The employee marital status
 
+## Example Usage
+
+```typescript
+import { MaritalStatus } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: MaritalStatus = {};
+```
 
 ## Fields
 

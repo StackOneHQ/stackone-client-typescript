@@ -11,7 +11,12 @@ export type AssessmentsPackages4 = {};
 /**
  * The source value of the assessment type.
  */
-export type AssessmentsPackagesSourceValue = AssessmentsPackages4 | string | number | boolean;
+export type AssessmentsPackagesSourceValue =
+    | AssessmentsPackages4
+    | string
+    | number
+    | boolean
+    | Array<any>;
 
 /**
  * The type of the assessment.
@@ -32,7 +37,7 @@ export type AssessmentsPackagesType = {
     /**
      * The source value of the assessment type.
      */
-    sourceValue?: AssessmentsPackages4 | string | number | boolean | null | undefined;
+    sourceValue?: AssessmentsPackages4 | string | number | boolean | Array<any> | null | undefined;
     /**
      * The type of the assessment.
      */
@@ -99,6 +104,7 @@ export const AssessmentsPackagesSourceValue$inboundSchema: z.ZodType<
     z.string(),
     z.number(),
     z.boolean(),
+    z.array(z.any()),
 ]);
 
 /** @internal */
@@ -106,7 +112,8 @@ export type AssessmentsPackagesSourceValue$Outbound =
     | AssessmentsPackages4$Outbound
     | string
     | number
-    | boolean;
+    | boolean
+    | Array<any>;
 
 /** @internal */
 export const AssessmentsPackagesSourceValue$outboundSchema: z.ZodType<
@@ -118,6 +125,7 @@ export const AssessmentsPackagesSourceValue$outboundSchema: z.ZodType<
     z.string(),
     z.number(),
     z.boolean(),
+    z.array(z.any()),
 ]);
 
 /**
@@ -175,6 +183,7 @@ export const AssessmentsPackagesType$inboundSchema: z.ZodType<
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),
@@ -188,7 +197,14 @@ export const AssessmentsPackagesType$inboundSchema: z.ZodType<
 
 /** @internal */
 export type AssessmentsPackagesType$Outbound = {
-    source_value?: AssessmentsPackages4$Outbound | string | number | boolean | null | undefined;
+    source_value?:
+        | AssessmentsPackages4$Outbound
+        | string
+        | number
+        | boolean
+        | Array<any>
+        | null
+        | undefined;
     value?: string | null | undefined;
 };
 
@@ -206,6 +222,7 @@ export const AssessmentsPackagesType$outboundSchema: z.ZodType<
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),

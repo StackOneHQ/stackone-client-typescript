@@ -1,5 +1,16 @@
 # HrisGetBenefitRequest
 
+## Example Usage
+
+```typescript
+import { HrisGetBenefitRequest } from "@stackone/stackone-client-ts/sdk/models/operations";
+
+let value: HrisGetBenefitRequest = {
+    fields: "id,remote_id,name,benefit_type,provider,description,created_at,updated_at",
+    id: "<id>",
+    xAccountId: "<value>",
+};
+```
 
 ## Fields
 

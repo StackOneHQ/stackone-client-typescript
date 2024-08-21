@@ -1,5 +1,12 @@
 # EmployeeSchemasPreferredLanguageSourceValue
 
+## Example Usage
+
+```typescript
+import { EmployeeSchemasPreferredLanguageSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: EmployeeSchemasPreferredLanguageSourceValue = false;
+```
 
 ## Supported Types
 
@@ -25,5 +32,11 @@ const value: boolean = /* values here */
 
 ```typescript
 const value: shared.EmployeeSchemasPreferredLanguage4 = /* values here */
+```
+
+### `any[]`
+
+```typescript
+const value: any[] = /* values here */
 ```
 

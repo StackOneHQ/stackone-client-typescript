@@ -2,6 +2,13 @@
 
 The ISO3166-2 sub division where the location is situated
 
+## Example Usage
+
+```typescript
+import { HrisCreateEmployeeRequestDtoState } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: HrisCreateEmployeeRequestDtoState = {};
+```
 
 ## Fields
 

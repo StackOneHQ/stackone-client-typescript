@@ -30,7 +30,7 @@ export type Active = boolean | Content2;
 
 export type Content4 = {};
 
-export type ContentSourceValue = Content4 | string | number | boolean;
+export type ContentSourceValue = Content4 | string | number | boolean | Array<any>;
 
 export enum ContentValue {
     Video = "video",
@@ -43,7 +43,7 @@ export type ContentValueOpen = OpenEnum<typeof ContentValue>;
  * The type of content
  */
 export type ContentContentType = {
-    sourceValue?: Content4 | string | number | boolean | null | undefined;
+    sourceValue?: Content4 | string | number | boolean | Array<any> | null | undefined;
     value?: ContentValueOpen | null | undefined;
 };
 
@@ -183,17 +183,34 @@ export const ContentSourceValue$inboundSchema: z.ZodType<
     ContentSourceValue,
     z.ZodTypeDef,
     unknown
-> = z.union([z.lazy(() => Content4$inboundSchema), z.string(), z.number(), z.boolean()]);
+> = z.union([
+    z.lazy(() => Content4$inboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+    z.array(z.any()),
+]);
 
 /** @internal */
-export type ContentSourceValue$Outbound = Content4$Outbound | string | number | boolean;
+export type ContentSourceValue$Outbound =
+    | Content4$Outbound
+    | string
+    | number
+    | boolean
+    | Array<any>;
 
 /** @internal */
 export const ContentSourceValue$outboundSchema: z.ZodType<
     ContentSourceValue$Outbound,
     z.ZodTypeDef,
     ContentSourceValue
-> = z.union([z.lazy(() => Content4$outboundSchema), z.string(), z.number(), z.boolean()]);
+> = z.union([
+    z.lazy(() => Content4$outboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+    z.array(z.any()),
+]);
 
 /**
  * @internal
@@ -239,7 +256,13 @@ export const ContentContentType$inboundSchema: z.ZodType<
     .object({
         source_value: z
             .nullable(
-                z.union([z.lazy(() => Content4$inboundSchema), z.string(), z.number(), z.boolean()])
+                z.union([
+                    z.lazy(() => Content4$inboundSchema),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                    z.array(z.any()),
+                ])
             )
             .optional(),
         value: z.nullable(ContentValue$inboundSchema).optional(),
@@ -252,7 +275,7 @@ export const ContentContentType$inboundSchema: z.ZodType<
 
 /** @internal */
 export type ContentContentType$Outbound = {
-    source_value?: Content4$Outbound | string | number | boolean | null | undefined;
+    source_value?: Content4$Outbound | string | number | boolean | Array<any> | null | undefined;
     value?: string | null | undefined;
 };
 
@@ -270,6 +293,7 @@ export const ContentContentType$outboundSchema: z.ZodType<
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),

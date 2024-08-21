@@ -1,5 +1,30 @@
 # HrisListCompaniesResponse
 
+## Example Usage
+
+```typescript
+import { HrisListCompaniesResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
+
+let value: HrisListCompaniesResponse = {
+    companiesPaginated: {
+        data: [
+            {
+                createdAt: new Date("2023-02-23T00:00:00.000Z"),
+                displayName: "StackOne",
+                id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+                name: "StackOne Technologies PLC",
+                remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+                updatedAt: new Date("2024-02-23T00:00:00.000Z"),
+            },
+        ],
+    },
+    contentType: "<value>",
+    statusCode: 396506,
+    rawResponse: new Response('{"message": "hello world"}', {
+        headers: { "Content-Type": "application/json" },
+    }),
+};
+```
 
 ## Fields
 

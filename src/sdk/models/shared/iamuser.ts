@@ -32,13 +32,18 @@ import * as z from "zod";
 
 export type IamUserSchemasAvatar4 = {};
 
-export type IamUserSchemasAvatarSourceValue = IamUserSchemasAvatar4 | string | number | boolean;
+export type IamUserSchemasAvatarSourceValue =
+    | IamUserSchemasAvatar4
+    | string
+    | number
+    | boolean
+    | Array<any>;
 
 /**
  * The category of the file
  */
 export type IamUserCategory = {
-    sourceValue?: IamUserSchemasAvatar4 | string | number | boolean | null | undefined;
+    sourceValue?: IamUserSchemasAvatar4 | string | number | boolean | Array<any> | null | undefined;
     /**
      * The category of the file
      */
@@ -47,7 +52,7 @@ export type IamUserCategory = {
 
 export type IamUserSchemas4 = {};
 
-export type IamUserSchemasSourceValue = IamUserSchemas4 | string | number | boolean;
+export type IamUserSchemasSourceValue = IamUserSchemas4 | string | number | boolean | Array<any>;
 
 /**
  * The file format of the file, expressed as a file extension
@@ -1273,7 +1278,7 @@ export type IamUserSchemasValueOpen = OpenEnum<typeof IamUserSchemasValue>;
  * The file format of the file
  */
 export type IamUserFileFormat = {
-    sourceValue?: IamUserSchemas4 | string | number | boolean | null | undefined;
+    sourceValue?: IamUserSchemas4 | string | number | boolean | Array<any> | null | undefined;
     /**
      * The file format of the file, expressed as a file extension
      */
@@ -1288,6 +1293,10 @@ export type IamUserAvatar = {
      * The category of the file
      */
     category?: IamUserCategory | null | undefined;
+    /**
+     * The categoryId of the documents
+     */
+    categoryId?: string | null | undefined;
     /**
      * The content of the file. Deprecated, use `url` and `file_format` one level up instead
      *
@@ -1340,7 +1349,7 @@ export type IsBotUser = boolean | IamUser2;
 
 export type IamUser4 = {};
 
-export type IamUserSourceValue = IamUser4 | string | number | boolean;
+export type IamUserSourceValue = IamUser4 | string | number | boolean | Array<any>;
 
 /**
  * The status of the user, e.g. whether the user is enabled, has been disabled (eg. by an admin), or is pending (ie: awaiting approval by the user or an admin).
@@ -1357,7 +1366,7 @@ export enum IamUserValue {
 export type IamUserValueOpen = OpenEnum<typeof IamUserValue>;
 
 export type IamUserStatus = {
-    sourceValue?: IamUser4 | string | number | boolean | null | undefined;
+    sourceValue?: IamUser4 | string | number | boolean | Array<any> | null | undefined;
     /**
      * The status of the user, e.g. whether the user is enabled, has been disabled (eg. by an admin), or is pending (ie: awaiting approval by the user or an admin).
      */
@@ -1463,6 +1472,7 @@ export const IamUserSchemasAvatarSourceValue$inboundSchema: z.ZodType<
     z.string(),
     z.number(),
     z.boolean(),
+    z.array(z.any()),
 ]);
 
 /** @internal */
@@ -1470,7 +1480,8 @@ export type IamUserSchemasAvatarSourceValue$Outbound =
     | IamUserSchemasAvatar4$Outbound
     | string
     | number
-    | boolean;
+    | boolean
+    | Array<any>;
 
 /** @internal */
 export const IamUserSchemasAvatarSourceValue$outboundSchema: z.ZodType<
@@ -1482,6 +1493,7 @@ export const IamUserSchemasAvatarSourceValue$outboundSchema: z.ZodType<
     z.string(),
     z.number(),
     z.boolean(),
+    z.array(z.any()),
 ]);
 
 /**
@@ -1507,6 +1519,7 @@ export const IamUserCategory$inboundSchema: z.ZodType<IamUserCategory, z.ZodType
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),
@@ -1520,7 +1533,14 @@ export const IamUserCategory$inboundSchema: z.ZodType<IamUserCategory, z.ZodType
 
 /** @internal */
 export type IamUserCategory$Outbound = {
-    source_value?: IamUserSchemasAvatar4$Outbound | string | number | boolean | null | undefined;
+    source_value?:
+        | IamUserSchemasAvatar4$Outbound
+        | string
+        | number
+        | boolean
+        | Array<any>
+        | null
+        | undefined;
     value?: string | null | undefined;
 };
 
@@ -1538,6 +1558,7 @@ export const IamUserCategory$outboundSchema: z.ZodType<
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),
@@ -1594,21 +1615,34 @@ export const IamUserSchemasSourceValue$inboundSchema: z.ZodType<
     IamUserSchemasSourceValue,
     z.ZodTypeDef,
     unknown
-> = z.union([z.lazy(() => IamUserSchemas4$inboundSchema), z.string(), z.number(), z.boolean()]);
+> = z.union([
+    z.lazy(() => IamUserSchemas4$inboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+    z.array(z.any()),
+]);
 
 /** @internal */
 export type IamUserSchemasSourceValue$Outbound =
     | IamUserSchemas4$Outbound
     | string
     | number
-    | boolean;
+    | boolean
+    | Array<any>;
 
 /** @internal */
 export const IamUserSchemasSourceValue$outboundSchema: z.ZodType<
     IamUserSchemasSourceValue$Outbound,
     z.ZodTypeDef,
     IamUserSchemasSourceValue
-> = z.union([z.lazy(() => IamUserSchemas4$outboundSchema), z.string(), z.number(), z.boolean()]);
+> = z.union([
+    z.lazy(() => IamUserSchemas4$outboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+    z.array(z.any()),
+]);
 
 /**
  * @internal
@@ -1659,6 +1693,7 @@ export const IamUserFileFormat$inboundSchema: z.ZodType<IamUserFileFormat, z.Zod
                         z.string(),
                         z.number(),
                         z.boolean(),
+                        z.array(z.any()),
                     ])
                 )
                 .optional(),
@@ -1672,7 +1707,14 @@ export const IamUserFileFormat$inboundSchema: z.ZodType<IamUserFileFormat, z.Zod
 
 /** @internal */
 export type IamUserFileFormat$Outbound = {
-    source_value?: IamUserSchemas4$Outbound | string | number | boolean | null | undefined;
+    source_value?:
+        | IamUserSchemas4$Outbound
+        | string
+        | number
+        | boolean
+        | Array<any>
+        | null
+        | undefined;
     value?: string | null | undefined;
 };
 
@@ -1690,6 +1732,7 @@ export const IamUserFileFormat$outboundSchema: z.ZodType<
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),
@@ -1718,6 +1761,7 @@ export namespace IamUserFileFormat$ {
 export const IamUserAvatar$inboundSchema: z.ZodType<IamUserAvatar, z.ZodTypeDef, unknown> = z
     .object({
         category: z.nullable(z.lazy(() => IamUserCategory$inboundSchema)).optional(),
+        category_id: z.nullable(z.string()).optional(),
         contents: z.nullable(z.array(Content$inboundSchema)).optional(),
         created_at: z
             .nullable(
@@ -1744,6 +1788,7 @@ export const IamUserAvatar$inboundSchema: z.ZodType<IamUserAvatar, z.ZodTypeDef,
     })
     .transform((v) => {
         return remap$(v, {
+            category_id: "categoryId",
             created_at: "createdAt",
             file_format: "fileFormat",
             remote_id: "remoteId",
@@ -1755,6 +1800,7 @@ export const IamUserAvatar$inboundSchema: z.ZodType<IamUserAvatar, z.ZodTypeDef,
 /** @internal */
 export type IamUserAvatar$Outbound = {
     category?: IamUserCategory$Outbound | null | undefined;
+    category_id?: string | null | undefined;
     contents?: Array<Content$Outbound> | null | undefined;
     created_at?: string | null | undefined;
     file_format?: IamUserFileFormat$Outbound | null | undefined;
@@ -1774,6 +1820,7 @@ export const IamUserAvatar$outboundSchema: z.ZodType<
 > = z
     .object({
         category: z.nullable(z.lazy(() => IamUserCategory$outboundSchema)).optional(),
+        categoryId: z.nullable(z.string()).optional(),
         contents: z.nullable(z.array(Content$outboundSchema)).optional(),
         createdAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
         fileFormat: z.nullable(z.lazy(() => IamUserFileFormat$outboundSchema)).optional(),
@@ -1786,6 +1833,7 @@ export const IamUserAvatar$outboundSchema: z.ZodType<
     })
     .transform((v) => {
         return remap$(v, {
+            categoryId: "category_id",
             createdAt: "created_at",
             fileFormat: "file_format",
             remoteId: "remote_id",
@@ -1878,17 +1926,34 @@ export const IamUserSourceValue$inboundSchema: z.ZodType<
     IamUserSourceValue,
     z.ZodTypeDef,
     unknown
-> = z.union([z.lazy(() => IamUser4$inboundSchema), z.string(), z.number(), z.boolean()]);
+> = z.union([
+    z.lazy(() => IamUser4$inboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+    z.array(z.any()),
+]);
 
 /** @internal */
-export type IamUserSourceValue$Outbound = IamUser4$Outbound | string | number | boolean;
+export type IamUserSourceValue$Outbound =
+    | IamUser4$Outbound
+    | string
+    | number
+    | boolean
+    | Array<any>;
 
 /** @internal */
 export const IamUserSourceValue$outboundSchema: z.ZodType<
     IamUserSourceValue$Outbound,
     z.ZodTypeDef,
     IamUserSourceValue
-> = z.union([z.lazy(() => IamUser4$outboundSchema), z.string(), z.number(), z.boolean()]);
+> = z.union([
+    z.lazy(() => IamUser4$outboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+    z.array(z.any()),
+]);
 
 /**
  * @internal
@@ -1930,7 +1995,13 @@ export const IamUserStatus$inboundSchema: z.ZodType<IamUserStatus, z.ZodTypeDef,
     .object({
         source_value: z
             .nullable(
-                z.union([z.lazy(() => IamUser4$inboundSchema), z.string(), z.number(), z.boolean()])
+                z.union([
+                    z.lazy(() => IamUser4$inboundSchema),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                    z.array(z.any()),
+                ])
             )
             .optional(),
         value: z.nullable(IamUserValue$inboundSchema).optional(),
@@ -1943,7 +2014,7 @@ export const IamUserStatus$inboundSchema: z.ZodType<IamUserStatus, z.ZodTypeDef,
 
 /** @internal */
 export type IamUserStatus$Outbound = {
-    source_value?: IamUser4$Outbound | string | number | boolean | null | undefined;
+    source_value?: IamUser4$Outbound | string | number | boolean | Array<any> | null | undefined;
     value?: string | null | undefined;
 };
 
@@ -1961,6 +2032,7 @@ export const IamUserStatus$outboundSchema: z.ZodType<
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),

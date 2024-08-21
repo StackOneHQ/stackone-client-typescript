@@ -12,7 +12,8 @@ export type LmsCreateCompletionRequestDtoSourceValue =
     | LmsCreateCompletionRequestDto4
     | string
     | number
-    | boolean;
+    | boolean
+    | Array<any>;
 
 export enum LmsCreateCompletionRequestDtoValue {
     Pass = "Pass",
@@ -26,42 +27,15 @@ export type LmsCreateCompletionRequestDtoValueOpen = OpenEnum<
  * The result of the completion
  */
 export type LmsCreateCompletionRequestDtoResult = {
-    sourceValue?: LmsCreateCompletionRequestDto4 | string | number | boolean | null | undefined;
+    sourceValue?:
+        | LmsCreateCompletionRequestDto4
+        | string
+        | number
+        | boolean
+        | Array<any>
+        | null
+        | undefined;
     value?: LmsCreateCompletionRequestDtoValueOpen | null | undefined;
-};
-
-/**
- * The user associated with this completion
- */
-export type User = {
-    /**
-     * The date the user was created
-     */
-    createdAt?: string | null | undefined;
-    /**
-     * The email of the user
-     */
-    email?: string | null | undefined;
-    /**
-     * The user ID
-     */
-    id?: string | null | undefined;
-    /**
-     * The name of the user
-     */
-    name?: string | null | undefined;
-    /**
-     * The phone number of the user
-     */
-    phoneNumber?: string | null | undefined;
-    /**
-     * Provider's unique identifier
-     */
-    remoteId?: string | null | undefined;
-    /**
-     * The date the user was last updated
-     */
-    updatedAt?: string | null | undefined;
 };
 
 export type LmsCreateCompletionRequestDto = {
@@ -74,10 +48,6 @@ export type LmsCreateCompletionRequestDto = {
      */
     contentId?: string | null | undefined;
     /**
-     * The comma separated list of fields that will be expanded in the response
-     */
-    expand?: string | null | undefined;
-    /**
      * The external ID associated with this completion
      */
     externalId?: string | null | undefined;
@@ -89,14 +59,6 @@ export type LmsCreateCompletionRequestDto = {
      * The result of the completion
      */
     result?: LmsCreateCompletionRequestDtoResult | null | undefined;
-    /**
-     * The user associated with this completion
-     */
-    user?: User | null | undefined;
-    /**
-     * The user ID associated with this completion
-     */
-    userId?: string | null | undefined;
 };
 
 /** @internal */
@@ -139,6 +101,7 @@ export const LmsCreateCompletionRequestDtoSourceValue$inboundSchema: z.ZodType<
     z.string(),
     z.number(),
     z.boolean(),
+    z.array(z.any()),
 ]);
 
 /** @internal */
@@ -146,7 +109,8 @@ export type LmsCreateCompletionRequestDtoSourceValue$Outbound =
     | LmsCreateCompletionRequestDto4$Outbound
     | string
     | number
-    | boolean;
+    | boolean
+    | Array<any>;
 
 /** @internal */
 export const LmsCreateCompletionRequestDtoSourceValue$outboundSchema: z.ZodType<
@@ -158,6 +122,7 @@ export const LmsCreateCompletionRequestDtoSourceValue$outboundSchema: z.ZodType<
     z.string(),
     z.number(),
     z.boolean(),
+    z.array(z.any()),
 ]);
 
 /**
@@ -218,6 +183,7 @@ export const LmsCreateCompletionRequestDtoResult$inboundSchema: z.ZodType<
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),
@@ -236,6 +202,7 @@ export type LmsCreateCompletionRequestDtoResult$Outbound = {
         | string
         | number
         | boolean
+        | Array<any>
         | null
         | undefined;
     value?: string | null | undefined;
@@ -255,6 +222,7 @@ export const LmsCreateCompletionRequestDtoResult$outboundSchema: z.ZodType<
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),
@@ -280,70 +248,6 @@ export namespace LmsCreateCompletionRequestDtoResult$ {
 }
 
 /** @internal */
-export const User$inboundSchema: z.ZodType<User, z.ZodTypeDef, unknown> = z
-    .object({
-        created_at: z.nullable(z.string()).optional(),
-        email: z.nullable(z.string()).optional(),
-        id: z.nullable(z.string()).optional(),
-        name: z.nullable(z.string()).optional(),
-        phone_number: z.nullable(z.string()).optional(),
-        remote_id: z.nullable(z.string()).optional(),
-        updated_at: z.nullable(z.string()).optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            created_at: "createdAt",
-            phone_number: "phoneNumber",
-            remote_id: "remoteId",
-            updated_at: "updatedAt",
-        });
-    });
-
-/** @internal */
-export type User$Outbound = {
-    created_at?: string | null | undefined;
-    email?: string | null | undefined;
-    id?: string | null | undefined;
-    name?: string | null | undefined;
-    phone_number?: string | null | undefined;
-    remote_id?: string | null | undefined;
-    updated_at?: string | null | undefined;
-};
-
-/** @internal */
-export const User$outboundSchema: z.ZodType<User$Outbound, z.ZodTypeDef, User> = z
-    .object({
-        createdAt: z.nullable(z.string()).optional(),
-        email: z.nullable(z.string()).optional(),
-        id: z.nullable(z.string()).optional(),
-        name: z.nullable(z.string()).optional(),
-        phoneNumber: z.nullable(z.string()).optional(),
-        remoteId: z.nullable(z.string()).optional(),
-        updatedAt: z.nullable(z.string()).optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            createdAt: "created_at",
-            phoneNumber: "phone_number",
-            remoteId: "remote_id",
-            updatedAt: "updated_at",
-        });
-    });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace User$ {
-    /** @deprecated use `User$inboundSchema` instead. */
-    export const inboundSchema = User$inboundSchema;
-    /** @deprecated use `User$outboundSchema` instead. */
-    export const outboundSchema = User$outboundSchema;
-    /** @deprecated use `User$Outbound` instead. */
-    export type Outbound = User$Outbound;
-}
-
-/** @internal */
 export const LmsCreateCompletionRequestDto$inboundSchema: z.ZodType<
     LmsCreateCompletionRequestDto,
     z.ZodTypeDef,
@@ -352,21 +256,17 @@ export const LmsCreateCompletionRequestDto$inboundSchema: z.ZodType<
     .object({
         completed_at: z.nullable(z.string()).optional(),
         content_id: z.nullable(z.string()).optional(),
-        expand: z.nullable(z.string()).optional(),
         external_id: z.nullable(z.string()).optional(),
         passthrough: z.nullable(z.record(z.any())).optional(),
         result: z
             .nullable(z.lazy(() => LmsCreateCompletionRequestDtoResult$inboundSchema))
             .optional(),
-        user: z.nullable(z.lazy(() => User$inboundSchema)).optional(),
-        user_id: z.nullable(z.string()).optional(),
     })
     .transform((v) => {
         return remap$(v, {
             completed_at: "completedAt",
             content_id: "contentId",
             external_id: "externalId",
-            user_id: "userId",
         });
     });
 
@@ -374,12 +274,9 @@ export const LmsCreateCompletionRequestDto$inboundSchema: z.ZodType<
 export type LmsCreateCompletionRequestDto$Outbound = {
     completed_at?: string | null | undefined;
     content_id?: string | null | undefined;
-    expand?: string | null | undefined;
     external_id?: string | null | undefined;
     passthrough?: { [k: string]: any } | null | undefined;
     result?: LmsCreateCompletionRequestDtoResult$Outbound | null | undefined;
-    user?: User$Outbound | null | undefined;
-    user_id?: string | null | undefined;
 };
 
 /** @internal */
@@ -391,21 +288,17 @@ export const LmsCreateCompletionRequestDto$outboundSchema: z.ZodType<
     .object({
         completedAt: z.nullable(z.string()).optional(),
         contentId: z.nullable(z.string()).optional(),
-        expand: z.nullable(z.string()).optional(),
         externalId: z.nullable(z.string()).optional(),
         passthrough: z.nullable(z.record(z.any())).optional(),
         result: z
             .nullable(z.lazy(() => LmsCreateCompletionRequestDtoResult$outboundSchema))
             .optional(),
-        user: z.nullable(z.lazy(() => User$outboundSchema)).optional(),
-        userId: z.nullable(z.string()).optional(),
     })
     .transform((v) => {
         return remap$(v, {
             completedAt: "completed_at",
             contentId: "content_id",
             externalId: "external_id",
-            userId: "user_id",
         });
     });
 

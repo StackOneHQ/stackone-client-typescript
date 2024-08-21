@@ -1,5 +1,12 @@
 # HRISBenefitSourceValue
 
+## Example Usage
+
+```typescript
+import { HRISBenefitSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: HRISBenefitSourceValue = ["<value>"];
+```
 
 ## Supported Types
 
@@ -25,5 +32,11 @@ const value: boolean = /* values here */
 
 ```typescript
 const value: shared.HRISBenefit4 = /* values here */
+```
+
+### `any[]`
+
+```typescript
+const value: any[] = /* values here */
 ```
 

@@ -2,6 +2,13 @@
 
 The status of the time off request
 
+## Example Usage
+
+```typescript
+import { HrisCreateTimeOffRequestDtoStatus } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: HrisCreateTimeOffRequestDtoStatus = {};
+```
 
 ## Fields
 

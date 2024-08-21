@@ -2,6 +2,18 @@
 
 The country code
 
+## Example Usage
+
+```typescript
+import {
+  HrisCreateEmployeeRequestDtoCountry,
+  HrisCreateEmployeeRequestDtoSchemasHomeLocationValue,
+} from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: HrisCreateEmployeeRequestDtoCountry = {
+    value: HrisCreateEmployeeRequestDtoSchemasHomeLocationValue.Us,
+};
+```
 
 ## Fields
 

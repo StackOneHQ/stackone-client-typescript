@@ -65,7 +65,7 @@ export type Application4 = {};
 /**
  * The source value of the application status.
  */
-export type ApplicationSourceValue = Application4 | string | number | boolean;
+export type ApplicationSourceValue = Application4 | string | number | boolean | Array<any>;
 
 /**
  * The status of the application.
@@ -101,7 +101,7 @@ export type ApplicationStatus = {
     /**
      * The source value of the application status.
      */
-    sourceValue?: Application4 | string | number | boolean | null | undefined;
+    sourceValue?: Application4 | string | number | boolean | Array<any> | null | undefined;
     /**
      * The status of the application.
      */
@@ -311,17 +311,34 @@ export const ApplicationSourceValue$inboundSchema: z.ZodType<
     ApplicationSourceValue,
     z.ZodTypeDef,
     unknown
-> = z.union([z.lazy(() => Application4$inboundSchema), z.string(), z.number(), z.boolean()]);
+> = z.union([
+    z.lazy(() => Application4$inboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+    z.array(z.any()),
+]);
 
 /** @internal */
-export type ApplicationSourceValue$Outbound = Application4$Outbound | string | number | boolean;
+export type ApplicationSourceValue$Outbound =
+    | Application4$Outbound
+    | string
+    | number
+    | boolean
+    | Array<any>;
 
 /** @internal */
 export const ApplicationSourceValue$outboundSchema: z.ZodType<
     ApplicationSourceValue$Outbound,
     z.ZodTypeDef,
     ApplicationSourceValue
-> = z.union([z.lazy(() => Application4$outboundSchema), z.string(), z.number(), z.boolean()]);
+> = z.union([
+    z.lazy(() => Application4$outboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+    z.array(z.any()),
+]);
 
 /**
  * @internal
@@ -372,6 +389,7 @@ export const ApplicationStatus$inboundSchema: z.ZodType<ApplicationStatus, z.Zod
                         z.string(),
                         z.number(),
                         z.boolean(),
+                        z.array(z.any()),
                     ])
                 )
                 .optional(),
@@ -385,7 +403,14 @@ export const ApplicationStatus$inboundSchema: z.ZodType<ApplicationStatus, z.Zod
 
 /** @internal */
 export type ApplicationStatus$Outbound = {
-    source_value?: Application4$Outbound | string | number | boolean | null | undefined;
+    source_value?:
+        | Application4$Outbound
+        | string
+        | number
+        | boolean
+        | Array<any>
+        | null
+        | undefined;
     value?: string | null | undefined;
 };
 
@@ -403,6 +428,7 @@ export const ApplicationStatus$outboundSchema: z.ZodType<
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),

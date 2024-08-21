@@ -2,6 +2,13 @@
 
 The category of the the document
 
+## Example Usage
+
+```typescript
+import { HrisDocumentApiModelCategory } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: HrisDocumentApiModelCategory = {};
+```
 
 ## Fields
 

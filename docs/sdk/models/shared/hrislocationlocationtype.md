@@ -2,6 +2,16 @@
 
 The location type
 
+## Example Usage
+
+```typescript
+import { HRISLocationLocationType, HRISLocationSchemasValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: HRISLocationLocationType = {
+    sourceValue: "Home",
+    value: HRISLocationSchemasValue.Home,
+};
+```
 
 ## Fields
 

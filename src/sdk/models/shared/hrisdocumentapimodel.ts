@@ -14,7 +14,12 @@ import * as z from "zod";
 
 export type HrisDocumentApiModel4 = {};
 
-export type HrisDocumentApiModelSourceValue = HrisDocumentApiModel4 | string | number | boolean;
+export type HrisDocumentApiModelSourceValue =
+    | HrisDocumentApiModel4
+    | string
+    | number
+    | boolean
+    | Array<any>;
 
 /**
  * The category of the file
@@ -55,7 +60,7 @@ export type HrisDocumentApiModelValueOpen = OpenEnum<typeof HrisDocumentApiModel
  * The category of the the document
  */
 export type HrisDocumentApiModelCategory = {
-    sourceValue?: HrisDocumentApiModel4 | string | number | boolean | null | undefined;
+    sourceValue?: HrisDocumentApiModel4 | string | number | boolean | Array<any> | null | undefined;
     /**
      * The category of the file
      */
@@ -68,7 +73,8 @@ export type HrisDocumentApiModelSchemasSourceValue =
     | HrisDocumentApiModelSchemas4
     | string
     | number
-    | boolean;
+    | boolean
+    | Array<any>;
 
 /**
  * The file format of the file, expressed as a file extension
@@ -1296,7 +1302,14 @@ export type HrisDocumentApiModelSchemasValueOpen = OpenEnum<
  * The file format of the file
  */
 export type HrisDocumentApiModelFileFormat = {
-    sourceValue?: HrisDocumentApiModelSchemas4 | string | number | boolean | null | undefined;
+    sourceValue?:
+        | HrisDocumentApiModelSchemas4
+        | string
+        | number
+        | boolean
+        | Array<any>
+        | null
+        | undefined;
     /**
      * The file format of the file, expressed as a file extension
      */
@@ -1309,7 +1322,8 @@ export type HrisDocumentApiModelSchemasTypeSourceValue =
     | HrisDocumentApiModelSchemasType4
     | string
     | number
-    | boolean;
+    | boolean
+    | Array<any>;
 
 /**
  * The category of the file
@@ -1354,7 +1368,14 @@ export type HrisDocumentApiModelSchemasTypeValueOpen = OpenEnum<
  * @deprecated class: This will be removed in a future release, please migrate away from it as soon as possible.
  */
 export type HrisDocumentApiModelType = {
-    sourceValue?: HrisDocumentApiModelSchemasType4 | string | number | boolean | null | undefined;
+    sourceValue?:
+        | HrisDocumentApiModelSchemasType4
+        | string
+        | number
+        | boolean
+        | Array<any>
+        | null
+        | undefined;
     /**
      * The category of the file
      */
@@ -1366,6 +1387,10 @@ export type HrisDocumentApiModel = {
      * The category of the the document
      */
     category?: HrisDocumentApiModelCategory | null | undefined;
+    /**
+     * The categoryId of the documents
+     */
+    categoryId?: string | null | undefined;
     /**
      * The content of the file. Deprecated, use `url` and `file_format` one level up instead
      *
@@ -1452,6 +1477,7 @@ export const HrisDocumentApiModelSourceValue$inboundSchema: z.ZodType<
     z.string(),
     z.number(),
     z.boolean(),
+    z.array(z.any()),
 ]);
 
 /** @internal */
@@ -1459,7 +1485,8 @@ export type HrisDocumentApiModelSourceValue$Outbound =
     | HrisDocumentApiModel4$Outbound
     | string
     | number
-    | boolean;
+    | boolean
+    | Array<any>;
 
 /** @internal */
 export const HrisDocumentApiModelSourceValue$outboundSchema: z.ZodType<
@@ -1471,6 +1498,7 @@ export const HrisDocumentApiModelSourceValue$outboundSchema: z.ZodType<
     z.string(),
     z.number(),
     z.boolean(),
+    z.array(z.any()),
 ]);
 
 /**
@@ -1528,6 +1556,7 @@ export const HrisDocumentApiModelCategory$inboundSchema: z.ZodType<
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),
@@ -1541,7 +1570,14 @@ export const HrisDocumentApiModelCategory$inboundSchema: z.ZodType<
 
 /** @internal */
 export type HrisDocumentApiModelCategory$Outbound = {
-    source_value?: HrisDocumentApiModel4$Outbound | string | number | boolean | null | undefined;
+    source_value?:
+        | HrisDocumentApiModel4$Outbound
+        | string
+        | number
+        | boolean
+        | Array<any>
+        | null
+        | undefined;
     value?: string | null | undefined;
 };
 
@@ -1559,6 +1595,7 @@ export const HrisDocumentApiModelCategory$outboundSchema: z.ZodType<
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),
@@ -1623,6 +1660,7 @@ export const HrisDocumentApiModelSchemasSourceValue$inboundSchema: z.ZodType<
     z.string(),
     z.number(),
     z.boolean(),
+    z.array(z.any()),
 ]);
 
 /** @internal */
@@ -1630,7 +1668,8 @@ export type HrisDocumentApiModelSchemasSourceValue$Outbound =
     | HrisDocumentApiModelSchemas4$Outbound
     | string
     | number
-    | boolean;
+    | boolean
+    | Array<any>;
 
 /** @internal */
 export const HrisDocumentApiModelSchemasSourceValue$outboundSchema: z.ZodType<
@@ -1642,6 +1681,7 @@ export const HrisDocumentApiModelSchemasSourceValue$outboundSchema: z.ZodType<
     z.string(),
     z.number(),
     z.boolean(),
+    z.array(z.any()),
 ]);
 
 /**
@@ -1702,6 +1742,7 @@ export const HrisDocumentApiModelFileFormat$inboundSchema: z.ZodType<
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),
@@ -1720,6 +1761,7 @@ export type HrisDocumentApiModelFileFormat$Outbound = {
         | string
         | number
         | boolean
+        | Array<any>
         | null
         | undefined;
     value?: string | null | undefined;
@@ -1739,6 +1781,7 @@ export const HrisDocumentApiModelFileFormat$outboundSchema: z.ZodType<
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),
@@ -1803,6 +1846,7 @@ export const HrisDocumentApiModelSchemasTypeSourceValue$inboundSchema: z.ZodType
     z.string(),
     z.number(),
     z.boolean(),
+    z.array(z.any()),
 ]);
 
 /** @internal */
@@ -1810,7 +1854,8 @@ export type HrisDocumentApiModelSchemasTypeSourceValue$Outbound =
     | HrisDocumentApiModelSchemasType4$Outbound
     | string
     | number
-    | boolean;
+    | boolean
+    | Array<any>;
 
 /** @internal */
 export const HrisDocumentApiModelSchemasTypeSourceValue$outboundSchema: z.ZodType<
@@ -1822,6 +1867,7 @@ export const HrisDocumentApiModelSchemasTypeSourceValue$outboundSchema: z.ZodTyp
     z.string(),
     z.number(),
     z.boolean(),
+    z.array(z.any()),
 ]);
 
 /**
@@ -1882,6 +1928,7 @@ export const HrisDocumentApiModelType$inboundSchema: z.ZodType<
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),
@@ -1900,6 +1947,7 @@ export type HrisDocumentApiModelType$Outbound = {
         | string
         | number
         | boolean
+        | Array<any>
         | null
         | undefined;
     value?: string | null | undefined;
@@ -1919,6 +1967,7 @@ export const HrisDocumentApiModelType$outboundSchema: z.ZodType<
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),
@@ -1951,6 +2000,7 @@ export const HrisDocumentApiModel$inboundSchema: z.ZodType<
 > = z
     .object({
         category: z.nullable(z.lazy(() => HrisDocumentApiModelCategory$inboundSchema)).optional(),
+        category_id: z.nullable(z.string()).optional(),
         contents: z.nullable(z.array(Content$inboundSchema)).optional(),
         created_at: z
             .nullable(
@@ -1980,6 +2030,7 @@ export const HrisDocumentApiModel$inboundSchema: z.ZodType<
     })
     .transform((v) => {
         return remap$(v, {
+            category_id: "categoryId",
             created_at: "createdAt",
             file_format: "fileFormat",
             remote_id: "remoteId",
@@ -1991,6 +2042,7 @@ export const HrisDocumentApiModel$inboundSchema: z.ZodType<
 /** @internal */
 export type HrisDocumentApiModel$Outbound = {
     category?: HrisDocumentApiModelCategory$Outbound | null | undefined;
+    category_id?: string | null | undefined;
     contents?: Array<Content$Outbound> | null | undefined;
     created_at?: string | null | undefined;
     file_format?: HrisDocumentApiModelFileFormat$Outbound | null | undefined;
@@ -2011,6 +2063,7 @@ export const HrisDocumentApiModel$outboundSchema: z.ZodType<
 > = z
     .object({
         category: z.nullable(z.lazy(() => HrisDocumentApiModelCategory$outboundSchema)).optional(),
+        categoryId: z.nullable(z.string()).optional(),
         contents: z.nullable(z.array(Content$outboundSchema)).optional(),
         createdAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
         fileFormat: z
@@ -2026,6 +2079,7 @@ export const HrisDocumentApiModel$outboundSchema: z.ZodType<
     })
     .transform((v) => {
         return remap$(v, {
+            categoryId: "category_id",
             createdAt: "created_at",
             fileFormat: "file_format",
             remoteId: "remote_id",

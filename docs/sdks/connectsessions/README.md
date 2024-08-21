@@ -1,6 +1,8 @@
 # ConnectSessions
 (*connectSessions*)
 
+## Overview
+
 ### Available Operations
 
 * [authenticateConnectSession](#authenticateconnectsession) - Authenticate Connect Session
@@ -34,6 +36,41 @@ async function run() {
 run();
 ```
 
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
+import { connectSessionsAuthenticateConnectSession } from "@stackone/stackone-client-ts/funcs/connectSessionsAuthenticateConnectSession.js";
+
+// Use `StackOneCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const stackOne = new StackOneCore({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const res = await connectSessionsAuthenticateConnectSession(stackOne, {
+    token: "<value>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
 ### Parameters
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
@@ -43,15 +80,16 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.StackoneAuthenticateConnectSessionResponse](../../sdk/models/operations/stackoneauthenticateconnectsessionresponse.md)\>**
+
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 4xx-5xx         | */*             |
+
 
 ## createConnectSession
 
@@ -93,6 +131,53 @@ async function run() {
 run();
 ```
 
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
+import { connectSessionsCreateConnectSession } from "@stackone/stackone-client-ts/funcs/connectSessionsCreateConnectSession.js";
+import { ConnectSessionCreateCategories } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+// Use `StackOneCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const stackOne = new StackOneCore({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const res = await connectSessionsCreateConnectSession(stackOne, {
+    categories: [
+      ConnectSessionCreateCategories.Ats,
+      ConnectSessionCreateCategories.Hris,
+      ConnectSessionCreateCategories.Marketing,
+      ConnectSessionCreateCategories.Crm,
+      ConnectSessionCreateCategories.Iam,
+      ConnectSessionCreateCategories.Marketing,
+      ConnectSessionCreateCategories.Lms,
+      ConnectSessionCreateCategories.Crm,
+    ],
+    originOwnerId: "<value>",
+    originOwnerName: "<value>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
 ### Parameters
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
@@ -102,10 +187,10 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.StackoneCreateConnectSessionResponse](../../sdk/models/operations/stackonecreateconnectsessionresponse.md)\>**
+
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

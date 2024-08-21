@@ -2,6 +2,15 @@
 
 ATS Candidate Filter
 
+## Example Usage
+
+```typescript
+import { AtsListCandidatesQueryParamFilter } from "@stackone/stackone-client-ts/sdk/models/operations";
+
+let value: AtsListCandidatesQueryParamFilter = {
+    updatedAfter: "2020-01-01T00:00:00.000Z",
+};
+```
 
 ## Fields
 

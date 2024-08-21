@@ -21,7 +21,8 @@ export type AtsCreateOfferRequestDtoSourceValue =
     | AtsCreateOfferRequestDto4
     | string
     | number
-    | boolean;
+    | boolean
+    | Array<any>;
 
 /**
  * The status of the offer.
@@ -45,7 +46,14 @@ export type OfferStatus = {
     /**
      * The source value of the offer status.
      */
-    sourceValue?: AtsCreateOfferRequestDto4 | string | number | boolean | null | undefined;
+    sourceValue?:
+        | AtsCreateOfferRequestDto4
+        | string
+        | number
+        | boolean
+        | Array<any>
+        | null
+        | undefined;
     /**
      * The status of the offer.
      */
@@ -108,6 +116,7 @@ export const AtsCreateOfferRequestDtoSourceValue$inboundSchema: z.ZodType<
     z.string(),
     z.number(),
     z.boolean(),
+    z.array(z.any()),
 ]);
 
 /** @internal */
@@ -115,7 +124,8 @@ export type AtsCreateOfferRequestDtoSourceValue$Outbound =
     | AtsCreateOfferRequestDto4$Outbound
     | string
     | number
-    | boolean;
+    | boolean
+    | Array<any>;
 
 /** @internal */
 export const AtsCreateOfferRequestDtoSourceValue$outboundSchema: z.ZodType<
@@ -127,6 +137,7 @@ export const AtsCreateOfferRequestDtoSourceValue$outboundSchema: z.ZodType<
     z.string(),
     z.number(),
     z.boolean(),
+    z.array(z.any()),
 ]);
 
 /**
@@ -183,6 +194,7 @@ export const OfferStatus$inboundSchema: z.ZodType<OfferStatus, z.ZodTypeDef, unk
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),
@@ -201,6 +213,7 @@ export type OfferStatus$Outbound = {
         | string
         | number
         | boolean
+        | Array<any>
         | null
         | undefined;
     value?: string | null | undefined;
@@ -220,6 +233,7 @@ export const OfferStatus$outboundSchema: z.ZodType<
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),

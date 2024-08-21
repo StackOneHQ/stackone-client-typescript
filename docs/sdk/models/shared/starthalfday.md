@@ -2,6 +2,13 @@
 
 True if the start of the time off request begins half way through the day
 
+## Example Usage
+
+```typescript
+import { StartHalfDay } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: StartHalfDay = true;
+```
 
 ## Supported Types
 

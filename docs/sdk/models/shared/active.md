@@ -2,6 +2,13 @@
 
 Whether the content is active and available for users.
 
+## Example Usage
+
+```typescript
+import { Active } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: Active = true;
+```
 
 ## Supported Types
 

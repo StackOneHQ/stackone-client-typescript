@@ -1,5 +1,14 @@
 # NoteContentApiModel
 
+## Example Usage
+
+```typescript
+import { NoteContentApiModel } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: NoteContentApiModel = {
+    body: "This candidate seems like a good fit for the role",
+};
+```
 
 ## Fields
 

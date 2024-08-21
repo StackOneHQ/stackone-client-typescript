@@ -9,7 +9,7 @@ import * as z from "zod";
 /**
  * Filter parameters that allow greater customisation of the list response
  */
-export type Filter = {
+export type AtsListApplicationCustomFieldDefinitionsQueryParamFilter = {
     /**
      * Use a string with a date to only select results updated after that given date
      */
@@ -24,7 +24,7 @@ export type AtsListApplicationCustomFieldDefinitionsRequest = {
     /**
      * Filter parameters that allow greater customisation of the list response
      */
-    filter?: Filter | null | undefined;
+    filter?: AtsListApplicationCustomFieldDefinitionsQueryParamFilter | null | undefined;
     /**
      * The unified cursor
      */
@@ -85,7 +85,11 @@ export type AtsListApplicationCustomFieldDefinitionsResponse = {
 };
 
 /** @internal */
-export const Filter$inboundSchema: z.ZodType<Filter, z.ZodTypeDef, unknown> = z
+export const AtsListApplicationCustomFieldDefinitionsQueryParamFilter$inboundSchema: z.ZodType<
+    AtsListApplicationCustomFieldDefinitionsQueryParamFilter,
+    z.ZodTypeDef,
+    unknown
+> = z
     .object({
         updated_after: z.nullable(z.string()).optional(),
     })
@@ -96,12 +100,16 @@ export const Filter$inboundSchema: z.ZodType<Filter, z.ZodTypeDef, unknown> = z
     });
 
 /** @internal */
-export type Filter$Outbound = {
+export type AtsListApplicationCustomFieldDefinitionsQueryParamFilter$Outbound = {
     updated_after?: string | null | undefined;
 };
 
 /** @internal */
-export const Filter$outboundSchema: z.ZodType<Filter$Outbound, z.ZodTypeDef, Filter> = z
+export const AtsListApplicationCustomFieldDefinitionsQueryParamFilter$outboundSchema: z.ZodType<
+    AtsListApplicationCustomFieldDefinitionsQueryParamFilter$Outbound,
+    z.ZodTypeDef,
+    AtsListApplicationCustomFieldDefinitionsQueryParamFilter
+> = z
     .object({
         updatedAfter: z.nullable(z.string()).optional(),
     })
@@ -115,13 +123,15 @@ export const Filter$outboundSchema: z.ZodType<Filter$Outbound, z.ZodTypeDef, Fil
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Filter$ {
-    /** @deprecated use `Filter$inboundSchema` instead. */
-    export const inboundSchema = Filter$inboundSchema;
-    /** @deprecated use `Filter$outboundSchema` instead. */
-    export const outboundSchema = Filter$outboundSchema;
-    /** @deprecated use `Filter$Outbound` instead. */
-    export type Outbound = Filter$Outbound;
+export namespace AtsListApplicationCustomFieldDefinitionsQueryParamFilter$ {
+    /** @deprecated use `AtsListApplicationCustomFieldDefinitionsQueryParamFilter$inboundSchema` instead. */
+    export const inboundSchema =
+        AtsListApplicationCustomFieldDefinitionsQueryParamFilter$inboundSchema;
+    /** @deprecated use `AtsListApplicationCustomFieldDefinitionsQueryParamFilter$outboundSchema` instead. */
+    export const outboundSchema =
+        AtsListApplicationCustomFieldDefinitionsQueryParamFilter$outboundSchema;
+    /** @deprecated use `AtsListApplicationCustomFieldDefinitionsQueryParamFilter$Outbound` instead. */
+    export type Outbound = AtsListApplicationCustomFieldDefinitionsQueryParamFilter$Outbound;
 }
 
 /** @internal */
@@ -132,12 +142,16 @@ export const AtsListApplicationCustomFieldDefinitionsRequest$inboundSchema: z.Zo
 > = z
     .object({
         fields: z.nullable(z.string()).optional(),
-        filter: z.nullable(z.lazy(() => Filter$inboundSchema)).optional(),
+        filter: z
+            .nullable(
+                z.lazy(() => AtsListApplicationCustomFieldDefinitionsQueryParamFilter$inboundSchema)
+            )
+            .optional(),
         next: z.nullable(z.string()).optional(),
         page: z.nullable(z.string()).optional(),
         page_size: z.nullable(z.string().default("25")),
         proxy: z.nullable(z.record(z.any())).optional(),
-        raw: z.nullable(z.boolean().default(false)),
+        raw: z.nullable(z.boolean()),
         sync_token: z.nullable(z.string()).optional(),
         updated_after: z.nullable(z.string()).optional(),
         "x-account-id": z.string(),
@@ -154,7 +168,7 @@ export const AtsListApplicationCustomFieldDefinitionsRequest$inboundSchema: z.Zo
 /** @internal */
 export type AtsListApplicationCustomFieldDefinitionsRequest$Outbound = {
     fields?: string | null | undefined;
-    filter?: Filter$Outbound | null | undefined;
+    filter?: AtsListApplicationCustomFieldDefinitionsQueryParamFilter$Outbound | null | undefined;
     next?: string | null | undefined;
     page?: string | null | undefined;
     page_size: string | null;
@@ -173,7 +187,13 @@ export const AtsListApplicationCustomFieldDefinitionsRequest$outboundSchema: z.Z
 > = z
     .object({
         fields: z.nullable(z.string()).optional(),
-        filter: z.nullable(z.lazy(() => Filter$outboundSchema)).optional(),
+        filter: z
+            .nullable(
+                z.lazy(
+                    () => AtsListApplicationCustomFieldDefinitionsQueryParamFilter$outboundSchema
+                )
+            )
+            .optional(),
         next: z.nullable(z.string()).optional(),
         page: z.nullable(z.string()).optional(),
         pageSize: z.nullable(z.string().default("25")),

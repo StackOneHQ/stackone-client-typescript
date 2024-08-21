@@ -1,5 +1,12 @@
 # WorkEligibilitySourceValue
 
+## Example Usage
+
+```typescript
+import { WorkEligibilitySourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: WorkEligibilitySourceValue = 5392.24;
+```
 
 ## Supported Types
 
@@ -25,5 +32,11 @@ const value: boolean = /* values here */
 
 ```typescript
 const value: shared.WorkEligibility4 = /* values here */
+```
+
+### `any[]`
+
+```typescript
+const value: any[] = /* values here */
 ```
 

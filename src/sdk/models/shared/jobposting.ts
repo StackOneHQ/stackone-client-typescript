@@ -34,7 +34,7 @@ export type JobPosting4 = {};
 /**
  * The source value of the employment contract type.
  */
-export type JobPostingSourceValue = JobPosting4 | string | number | boolean;
+export type JobPostingSourceValue = JobPosting4 | string | number | boolean | Array<any>;
 
 /**
  * The employment contract type.
@@ -54,7 +54,7 @@ export type JobPostingEmploymentContractType = {
     /**
      * The source value of the employment contract type.
      */
-    sourceValue?: JobPosting4 | string | number | boolean | null | undefined;
+    sourceValue?: JobPosting4 | string | number | boolean | Array<any> | null | undefined;
     /**
      * The employment contract type.
      */
@@ -66,7 +66,12 @@ export type JobPostingSchemas4 = {};
 /**
  * The source value of the employment type.
  */
-export type JobPostingSchemasSourceValue = JobPostingSchemas4 | string | number | boolean;
+export type JobPostingSchemasSourceValue =
+    | JobPostingSchemas4
+    | string
+    | number
+    | boolean
+    | Array<any>;
 
 /**
  * The type of the employment.
@@ -99,7 +104,7 @@ export type JobPostingEmploymentType = {
     /**
      * The source value of the employment type.
      */
-    sourceValue?: JobPostingSchemas4 | string | number | boolean | null | undefined;
+    sourceValue?: JobPostingSchemas4 | string | number | boolean | Array<any> | null | undefined;
     /**
      * The type of the employment.
      */
@@ -121,7 +126,8 @@ export type JobPostingSchemasStatusSourceValue =
     | JobPostingSchemasStatus4
     | string
     | number
-    | boolean;
+    | boolean
+    | Array<any>;
 
 /**
  * The status of the job postings.
@@ -145,7 +151,14 @@ export type JobPostingStatus = {
     /**
      * The source value of the job postings status.
      */
-    sourceValue?: JobPostingSchemasStatus4 | string | number | boolean | null | undefined;
+    sourceValue?:
+        | JobPostingSchemasStatus4
+        | string
+        | number
+        | boolean
+        | Array<any>
+        | null
+        | undefined;
     /**
      * The status of the job postings.
      */
@@ -256,17 +269,34 @@ export const JobPostingSourceValue$inboundSchema: z.ZodType<
     JobPostingSourceValue,
     z.ZodTypeDef,
     unknown
-> = z.union([z.lazy(() => JobPosting4$inboundSchema), z.string(), z.number(), z.boolean()]);
+> = z.union([
+    z.lazy(() => JobPosting4$inboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+    z.array(z.any()),
+]);
 
 /** @internal */
-export type JobPostingSourceValue$Outbound = JobPosting4$Outbound | string | number | boolean;
+export type JobPostingSourceValue$Outbound =
+    | JobPosting4$Outbound
+    | string
+    | number
+    | boolean
+    | Array<any>;
 
 /** @internal */
 export const JobPostingSourceValue$outboundSchema: z.ZodType<
     JobPostingSourceValue$Outbound,
     z.ZodTypeDef,
     JobPostingSourceValue
-> = z.union([z.lazy(() => JobPosting4$outboundSchema), z.string(), z.number(), z.boolean()]);
+> = z.union([
+    z.lazy(() => JobPosting4$outboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+    z.array(z.any()),
+]);
 
 /**
  * @internal
@@ -317,6 +347,7 @@ export const JobPostingEmploymentContractType$inboundSchema: z.ZodType<
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),
@@ -330,7 +361,7 @@ export const JobPostingEmploymentContractType$inboundSchema: z.ZodType<
 
 /** @internal */
 export type JobPostingEmploymentContractType$Outbound = {
-    source_value?: JobPosting4$Outbound | string | number | boolean | null | undefined;
+    source_value?: JobPosting4$Outbound | string | number | boolean | Array<any> | null | undefined;
     value?: string | null | undefined;
 };
 
@@ -348,6 +379,7 @@ export const JobPostingEmploymentContractType$outboundSchema: z.ZodType<
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),
@@ -407,21 +439,34 @@ export const JobPostingSchemasSourceValue$inboundSchema: z.ZodType<
     JobPostingSchemasSourceValue,
     z.ZodTypeDef,
     unknown
-> = z.union([z.lazy(() => JobPostingSchemas4$inboundSchema), z.string(), z.number(), z.boolean()]);
+> = z.union([
+    z.lazy(() => JobPostingSchemas4$inboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+    z.array(z.any()),
+]);
 
 /** @internal */
 export type JobPostingSchemasSourceValue$Outbound =
     | JobPostingSchemas4$Outbound
     | string
     | number
-    | boolean;
+    | boolean
+    | Array<any>;
 
 /** @internal */
 export const JobPostingSchemasSourceValue$outboundSchema: z.ZodType<
     JobPostingSchemasSourceValue$Outbound,
     z.ZodTypeDef,
     JobPostingSchemasSourceValue
-> = z.union([z.lazy(() => JobPostingSchemas4$outboundSchema), z.string(), z.number(), z.boolean()]);
+> = z.union([
+    z.lazy(() => JobPostingSchemas4$outboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+    z.array(z.any()),
+]);
 
 /**
  * @internal
@@ -478,6 +523,7 @@ export const JobPostingEmploymentType$inboundSchema: z.ZodType<
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),
@@ -491,7 +537,14 @@ export const JobPostingEmploymentType$inboundSchema: z.ZodType<
 
 /** @internal */
 export type JobPostingEmploymentType$Outbound = {
-    source_value?: JobPostingSchemas4$Outbound | string | number | boolean | null | undefined;
+    source_value?:
+        | JobPostingSchemas4$Outbound
+        | string
+        | number
+        | boolean
+        | Array<any>
+        | null
+        | undefined;
     value?: string | null | undefined;
 };
 
@@ -509,6 +562,7 @@ export const JobPostingEmploymentType$outboundSchema: z.ZodType<
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),
@@ -595,6 +649,7 @@ export const JobPostingSchemasStatusSourceValue$inboundSchema: z.ZodType<
     z.string(),
     z.number(),
     z.boolean(),
+    z.array(z.any()),
 ]);
 
 /** @internal */
@@ -602,7 +657,8 @@ export type JobPostingSchemasStatusSourceValue$Outbound =
     | JobPostingSchemasStatus4$Outbound
     | string
     | number
-    | boolean;
+    | boolean
+    | Array<any>;
 
 /** @internal */
 export const JobPostingSchemasStatusSourceValue$outboundSchema: z.ZodType<
@@ -614,6 +670,7 @@ export const JobPostingSchemasStatusSourceValue$outboundSchema: z.ZodType<
     z.string(),
     z.number(),
     z.boolean(),
+    z.array(z.any()),
 ]);
 
 /**
@@ -670,6 +727,7 @@ export const JobPostingStatus$inboundSchema: z.ZodType<JobPostingStatus, z.ZodTy
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),
@@ -683,7 +741,14 @@ export const JobPostingStatus$inboundSchema: z.ZodType<JobPostingStatus, z.ZodTy
 
 /** @internal */
 export type JobPostingStatus$Outbound = {
-    source_value?: JobPostingSchemasStatus4$Outbound | string | number | boolean | null | undefined;
+    source_value?:
+        | JobPostingSchemasStatus4$Outbound
+        | string
+        | number
+        | boolean
+        | Array<any>
+        | null
+        | undefined;
     value?: string | null | undefined;
 };
 
@@ -701,6 +766,7 @@ export const JobPostingStatus$outboundSchema: z.ZodType<
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),

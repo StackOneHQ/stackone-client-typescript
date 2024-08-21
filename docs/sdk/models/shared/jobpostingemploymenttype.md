@@ -1,5 +1,15 @@
 # JobPostingEmploymentType
 
+## Example Usage
+
+```typescript
+import { JobPostingEmploymentType, JobPostingSchemasValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: JobPostingEmploymentType = {
+    sourceValue: {},
+    value: JobPostingSchemasValue.Permanent,
+};
+```
 
 ## Fields
 

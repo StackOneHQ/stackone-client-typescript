@@ -15,7 +15,7 @@ export type SmsMessages4 = {};
 /**
  * The original value from the provider used to derive the unified message type.
  */
-export type SmsMessagesSourceValue = SmsMessages4 | string | number | boolean;
+export type SmsMessagesSourceValue = SmsMessages4 | string | number | boolean | Array<any>;
 
 /**
  * The unified message type.
@@ -26,7 +26,7 @@ export type SmsMessagesMessageType = {
     /**
      * The original value from the provider used to derive the unified message type.
      */
-    sourceValue?: SmsMessages4 | string | number | boolean | null | undefined;
+    sourceValue?: SmsMessages4 | string | number | boolean | Array<any> | null | undefined;
     /**
      * The unified message type.
      */
@@ -119,17 +119,34 @@ export const SmsMessagesSourceValue$inboundSchema: z.ZodType<
     SmsMessagesSourceValue,
     z.ZodTypeDef,
     unknown
-> = z.union([z.lazy(() => SmsMessages4$inboundSchema), z.string(), z.number(), z.boolean()]);
+> = z.union([
+    z.lazy(() => SmsMessages4$inboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+    z.array(z.any()),
+]);
 
 /** @internal */
-export type SmsMessagesSourceValue$Outbound = SmsMessages4$Outbound | string | number | boolean;
+export type SmsMessagesSourceValue$Outbound =
+    | SmsMessages4$Outbound
+    | string
+    | number
+    | boolean
+    | Array<any>;
 
 /** @internal */
 export const SmsMessagesSourceValue$outboundSchema: z.ZodType<
     SmsMessagesSourceValue$Outbound,
     z.ZodTypeDef,
     SmsMessagesSourceValue
-> = z.union([z.lazy(() => SmsMessages4$outboundSchema), z.string(), z.number(), z.boolean()]);
+> = z.union([
+    z.lazy(() => SmsMessages4$outboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+    z.array(z.any()),
+]);
 
 /**
  * @internal
@@ -185,6 +202,7 @@ export const SmsMessagesMessageType$inboundSchema: z.ZodType<
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),
@@ -198,7 +216,14 @@ export const SmsMessagesMessageType$inboundSchema: z.ZodType<
 
 /** @internal */
 export type SmsMessagesMessageType$Outbound = {
-    source_value?: SmsMessages4$Outbound | string | number | boolean | null | undefined;
+    source_value?:
+        | SmsMessages4$Outbound
+        | string
+        | number
+        | boolean
+        | Array<any>
+        | null
+        | undefined;
     value?: SmsMessagesValue$Outbound | null | undefined;
 };
 
@@ -216,6 +241,7 @@ export const SmsMessagesMessageType$outboundSchema: z.ZodType<
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),

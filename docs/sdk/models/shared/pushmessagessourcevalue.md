@@ -2,6 +2,13 @@
 
 The original value from the provider used to derive the unified message type.
 
+## Example Usage
+
+```typescript
+import { PushMessagesSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: PushMessagesSourceValue = "Email";
+```
 
 ## Supported Types
 
@@ -27,5 +34,11 @@ const value: boolean = /* values here */
 
 ```typescript
 const value: shared.PushMessages4 = /* values here */
+```
+
+### `any[]`
+
+```typescript
+const value: any[] = /* values here */
 ```
 

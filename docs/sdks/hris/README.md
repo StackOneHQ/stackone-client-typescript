@@ -1,6 +1,8 @@
 # Hris
 (*hris*)
 
+## Overview
+
 ### Available Operations
 
 * [createEmployee](#createemployee) - Creates an employee
@@ -14,6 +16,7 @@
 * [getEmployee](#getemployee) - Get Employee
 * [getEmployeeDocument](#getemployeedocument) - Get Employee Document
 * [getEmployeeDocumentCategory](#getemployeedocumentcategory) - Get Employee Document Category
+* [getEmployeeEmployment](#getemployeeemployment) - Get Employee Employment
 * [getEmployeesTimeOffRequest](#getemployeestimeoffrequest) - Get Employees Time Off Request
 * [getEmployeesWorkEligibility](#getemployeesworkeligibility) - Get Employees Work Eligibility
 * [getEmployment](#getemployment) - Get Employment
@@ -26,6 +29,7 @@
 * [listDepartmentGroups](#listdepartmentgroups) - List Department Groups
 * [listEmployeeCategories](#listemployeecategories) - List Employee Document Categories
 * [listEmployeeDocuments](#listemployeedocuments) - List Employee Documents
+* [listEmployeeEmployments](#listemployeeemployments) - List Employee Employments
 * [listEmployeeTimeOffRequests](#listemployeetimeoffrequests) - List Employee Time Off Requests
 * [listEmployeeWorkEligibility](#listemployeeworkeligibility) - List Employee Work Eligibility
 * [listEmployees](#listemployees) - List Employees
@@ -90,19 +94,11 @@ async function run() {
       companyName: "Example Corp",
       customFields: [
         {
-          description: "The completion status of the employee's training.",
           id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
           name: "Training Completion Status",
-          options: [
-            "Not Started",
-            "In Progress",
-            "Completed",
-            "Overdue",
-          ],
           remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
           remoteValueId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
-          type: {},
-        value: "Completed",
+          value: Completed,
           valueId: "value_456",
         },
       ],
@@ -112,7 +108,7 @@ async function run() {
       employmentContractType: {},
       employmentStatus: {},
       employmentType: {
-      sourceValue: "Permanent",
+        sourceValue: {},
         value: HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue.Permanent,
       },
       employments: [
@@ -122,18 +118,20 @@ async function run() {
           employeeId: "1687-3",
           employmentContractType: {},
           employmentType: {
-          sourceValue: "Permanent",
+            sourceValue: Permanent,
             value: EmploymentSchemasValue.Permanent,
           },
           id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
           jobTitle: "Software Engineer",
           payCurrency: "USD",
           payFrequency: {
-          sourceValue: "Hourly",
+            sourceValue: {},
             value: EmploymentSchemasPayFrequencyValue.Hourly,
           },
           payPeriod: {
-          sourceValue: "Hour",
+            sourceValue: [
+              "Hour",
+            ],
             value: EmploymentSchemasPayPeriodValue.Hour,
           },
           payRate: "40.00",
@@ -151,41 +149,10 @@ async function run() {
         country: {
           value: HrisCreateEmployeeRequestDtoSchemasHomeLocationValue.Us,
         },
+        id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         name: "Woolsthorpe Manor",
         passthrough: {
-          "0": "{",
-          "1": "\"",
-          "2": "o",
-          "3": "t",
-          "4": "h",
-          "5": "e",
-          "6": "r",
-          "7": "_",
-          "8": "k",
-          "9": "n",
-          "10": "o",
-          "11": "w",
-          "12": "n",
-          "13": "_",
-          "14": "n",
-          "15": "a",
-          "16": "m",
-          "17": "e",
-          "18": "s",
-          "19": "\"",
-          "20": ":",
-          "21": " ",
-          "22": "\"",
-          "23": "J",
-          "24": "o",
-          "25": "h",
-          "26": "n",
-          "27": " ",
-          "28": "D",
-          "29": "o",
-          "30": "e",
-          "31": "\"",
-          "32": "}",
+          "other_known_names": "John Doe",
         },
         phoneNumber: "+44 1476 860 364",
         state: {},
@@ -200,39 +167,7 @@ async function run() {
       maritalStatus: {},
       name: "Issac Newton",
       passthrough: {
-        "0": "{",
-        "1": "\"",
-        "2": "o",
-        "3": "t",
-        "4": "h",
-        "5": "e",
-        "6": "r",
-        "7": "_",
-        "8": "k",
-        "9": "n",
-        "10": "o",
-        "11": "w",
-        "12": "n",
-        "13": "_",
-        "14": "n",
-        "15": "a",
-        "16": "m",
-        "17": "e",
-        "18": "s",
-        "19": "\"",
-        "20": ":",
-        "21": " ",
-        "22": "\"",
-        "23": "J",
-        "24": "o",
-        "25": "h",
-        "26": "n",
-        "27": " ",
-        "28": "D",
-        "29": "o",
-        "30": "e",
-        "31": "\"",
-        "32": "}",
+        "other_known_names": "John Doe",
       },
       personalEmail: "isaac.newton@example.com",
       personalPhoneNumber: "+1234567890",
@@ -249,41 +184,10 @@ async function run() {
         country: {
           value: HrisCreateEmployeeRequestDtoSchemasWorkLocationValue.Us,
         },
+        id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         name: "Woolsthorpe Manor",
         passthrough: {
-          "0": "{",
-          "1": "\"",
-          "2": "o",
-          "3": "t",
-          "4": "h",
-          "5": "e",
-          "6": "r",
-          "7": "_",
-          "8": "k",
-          "9": "n",
-          "10": "o",
-          "11": "w",
-          "12": "n",
-          "13": "_",
-          "14": "n",
-          "15": "a",
-          "16": "m",
-          "17": "e",
-          "18": "s",
-          "19": "\"",
-          "20": ":",
-          "21": " ",
-          "22": "\"",
-          "23": "J",
-          "24": "o",
-          "25": "h",
-          "26": "n",
-          "27": " ",
-          "28": "D",
-          "29": "o",
-          "30": "e",
-          "31": "\"",
-          "32": "}",
+          "other_known_names": "John Doe",
         },
         phoneNumber: "+44 1476 860 364",
         state: {},
@@ -303,6 +207,177 @@ async function run() {
 run();
 ```
 
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
+import { hrisCreateEmployee } from "@stackone/stackone-client-ts/funcs/hrisCreateEmployee.js";
+import {
+  CountryCodeEnumValue,
+  EmploymentSchemasPayFrequencyValue,
+  EmploymentSchemasPayPeriodValue,
+  EmploymentSchemasValue,
+  HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue,
+  HrisCreateEmployeeRequestDtoSchemasHomeLocationValue,
+  HrisCreateEmployeeRequestDtoSchemasPreferredLanguageValue,
+  HrisCreateEmployeeRequestDtoSchemasWorkLocationValue,
+} from "@stackone/stackone-client-ts/sdk/models/shared";
+
+// Use `StackOneCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const stackOne = new StackOneCore({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const res = await hrisCreateEmployee(stackOne, {
+    hrisCreateEmployeeRequestDto: {
+      avatar: {},
+      avatarUrl: "https://example.com/avatar.png",
+      benefits: [
+        {
+          createdAt: new Date("2021-01-01T00:00:00Z"),
+          description: "Health insurance for employees",
+          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          name: "Health Insurance",
+          provider: "Aetna",
+          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          updatedAt: new Date("2021-01-01T00:00:00Z"),
+        },
+      ],
+      birthday: new Date("2021-01-01T00:00:00Z"),
+      citizenships: [
+        {
+          value: CountryCodeEnumValue.Us,
+        },
+      ],
+      companyName: "Example Corp",
+      customFields: [
+        {
+          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          name: "Training Completion Status",
+          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          remoteValueId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
+          value: [
+            "Completed",
+          ],
+          valueId: "value_456",
+        },
+      ],
+      dateOfBirth: new Date("1990-01-01T00:00.000Z"),
+      department: "Physics",
+      displayName: "Sir Issac Newton",
+      employmentContractType: {},
+      employmentStatus: {},
+      employmentType: {
+        sourceValue: "Permanent",
+        value: HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue.Permanent,
+      },
+      employments: [
+        {
+          createdAt: new Date("2021-01-01T01:01:01.000Z"),
+          effectiveDate: new Date("2021-01-01T01:01:01.000Z"),
+          employeeId: "1687-3",
+          employmentContractType: {},
+          employmentType: {
+            sourceValue: "Permanent",
+            value: EmploymentSchemasValue.Permanent,
+          },
+          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          jobTitle: "Software Engineer",
+          payCurrency: "USD",
+          payFrequency: {
+            sourceValue: "Hourly",
+            value: EmploymentSchemasPayFrequencyValue.Hourly,
+          },
+          payPeriod: {
+            sourceValue: true,
+            value: EmploymentSchemasPayPeriodValue.Hour,
+          },
+          payRate: "40.00",
+          remoteEmployeeId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
+          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          updatedAt: new Date("2021-01-01T01:01:01.000Z"),
+        },
+      ],
+      ethnicity: {},
+      firstName: "Issac",
+      gender: {},
+      hireDate: new Date("2021-01-01T00:00.000Z"),
+      homeLocation: {
+        city: "Grantham",
+        country: {
+          value: HrisCreateEmployeeRequestDtoSchemasHomeLocationValue.Us,
+        },
+        id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        name: "Woolsthorpe Manor",
+        passthrough: {
+          "other_known_names": "John Doe",
+        },
+        phoneNumber: "+44 1476 860 364",
+        state: {},
+        street1: "Water Lane",
+        street2: "Woolsthorpe by Colsterworth",
+        zipCode: "NG33 5NR",
+      },
+      jobId: "R-6789",
+      jobTitle: "Physicist",
+      lastName: "Newton",
+      managerId: "67890",
+      maritalStatus: {},
+      name: "Issac Newton",
+      passthrough: {
+        "other_known_names": "John Doe",
+      },
+      personalEmail: "isaac.newton@example.com",
+      personalPhoneNumber: "+1234567890",
+      preferredLanguage: {
+        value: HrisCreateEmployeeRequestDtoSchemasPreferredLanguageValue.Eng,
+      },
+      startDate: new Date("2021-01-01T00:00.000Z"),
+      tenure: 2,
+      terminationDate: new Date("2021-01-01T00:00:00Z"),
+      workAnniversary: new Date("2021-01-01T00:00:00Z"),
+      workEmail: "newton@example.com",
+      workLocation: {
+        city: "Grantham",
+        country: {
+          value: HrisCreateEmployeeRequestDtoSchemasWorkLocationValue.Us,
+        },
+        id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        name: "Woolsthorpe Manor",
+        passthrough: {
+          "other_known_names": "John Doe",
+        },
+        phoneNumber: "+44 1476 860 364",
+        state: {},
+        street1: "Water Lane",
+        street2: "Woolsthorpe by Colsterworth",
+        zipCode: "NG33 5NR",
+      },
+      workPhoneNumber: "+1234567890",
+    },
+    xAccountId: "<value>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
 ### Parameters
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
@@ -312,15 +387,16 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.HrisCreateEmployeeResponse](../../sdk/models/operations/hriscreateemployeeresponse.md)\>**
+
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 4xx-5xx         | */*             |
+
 
 ## createEmployeeTimeOffRequest
 
@@ -330,6 +406,7 @@ Create Employee Time Off Request
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
+import { HrisCreateTimeOffRequestDto2, HrisCreateTimeOffRequestDtoSchemas2 } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 const stackOne = new StackOne({
   security: {
@@ -344,48 +421,64 @@ async function run() {
       approverId: "1687-4",
       employeeId: "1687-3",
       endDate: new Date("2021-01-01T01:01:01.000Z"),
-    endHalfDay: true,
+      endHalfDay: HrisCreateTimeOffRequestDto2.True,
       passthrough: {
-        "0": "{",
-        "1": "\"",
-        "2": "o",
-        "3": "t",
-        "4": "h",
-        "5": "e",
-        "6": "r",
-        "7": "_",
-        "8": "k",
-        "9": "n",
-        "10": "o",
-        "11": "w",
-        "12": "n",
-        "13": "_",
-        "14": "n",
-        "15": "a",
-        "16": "m",
-        "17": "e",
-        "18": "s",
-        "19": "\"",
-        "20": ":",
-        "21": " ",
-        "22": "\"",
-        "23": "J",
-        "24": "o",
-        "25": "h",
-        "26": "n",
-        "27": " ",
-        "28": "D",
-        "29": "o",
-        "30": "e",
-        "31": "\"",
-        "32": "}",
+        "other_known_names": "John Doe",
       },
       startDate: new Date("2021-01-01T01:01:01.000Z"),
-    startHalfDay: true,
+      startHalfDay: HrisCreateTimeOffRequestDtoSchemas2.True,
     },
     id: "<id>",
     xAccountId: "<value>",
   });
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
+import { hrisCreateEmployeeTimeOffRequest } from "@stackone/stackone-client-ts/funcs/hrisCreateEmployeeTimeOffRequest.js";
+import { HrisCreateTimeOffRequestDto2 } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+// Use `StackOneCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const stackOne = new StackOneCore({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const res = await hrisCreateEmployeeTimeOffRequest(stackOne, {
+    hrisCreateTimeOffRequestDto: {
+      approverId: "1687-4",
+      employeeId: "1687-3",
+      endDate: new Date("2021-01-01T01:01:01.000Z"),
+      endHalfDay: HrisCreateTimeOffRequestDto2.True,
+      passthrough: {
+        "other_known_names": "John Doe",
+      },
+      startDate: new Date("2021-01-01T01:01:01.000Z"),
+      startHalfDay: true,
+    },
+    id: "<id>",
+    xAccountId: "<value>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
 
   // Handle the result
   console.log(result)
@@ -403,15 +496,16 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.HrisCreateEmployeeTimeOffRequestResponse](../../sdk/models/operations/hriscreateemployeetimeoffrequestresponse.md)\>**
+
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 4xx-5xx         | */*             |
+
 
 ## createEmployeeWorkEligibilityRequest
 
@@ -438,9 +532,10 @@ async function run() {
     hrisCreateWorkEligibilityRequestDto: {
       document: {
         category: {},
+        categoryId: "6530",
         createdAt: new Date("2021-01-01T01:01:01.000Z"),
         fileFormat: {
-        sourceValue: "abc",
+          sourceValue: {},
           value: HrisCreateWorkEligibilityRequestDtoSchemasDocumentValue.Pdf,
         },
         id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
@@ -455,39 +550,7 @@ async function run() {
       },
       number: "1234567890",
       passthrough: {
-        "0": "{",
-        "1": "\"",
-        "2": "o",
-        "3": "t",
-        "4": "h",
-        "5": "e",
-        "6": "r",
-        "7": "_",
-        "8": "k",
-        "9": "n",
-        "10": "o",
-        "11": "w",
-        "12": "n",
-        "13": "_",
-        "14": "n",
-        "15": "a",
-        "16": "m",
-        "17": "e",
-        "18": "s",
-        "19": "\"",
-        "20": ":",
-        "21": " ",
-        "22": "\"",
-        "23": "J",
-        "24": "o",
-        "25": "h",
-        "26": "n",
-        "27": " ",
-        "28": "D",
-        "29": "o",
-        "30": "e",
-        "31": "\"",
-        "32": "}",
+        "other_known_names": "John Doe",
       },
       subType: "H1B",
       type: {},
@@ -505,6 +568,76 @@ async function run() {
 run();
 ```
 
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
+import { hrisCreateEmployeeWorkEligibilityRequest } from "@stackone/stackone-client-ts/funcs/hrisCreateEmployeeWorkEligibilityRequest.js";
+import {
+  HrisCreateWorkEligibilityRequestDtoSchemasDocumentValue,
+  HrisCreateWorkEligibilityRequestDtoValue,
+} from "@stackone/stackone-client-ts/sdk/models/shared";
+
+// Use `StackOneCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const stackOne = new StackOneCore({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const res = await hrisCreateEmployeeWorkEligibilityRequest(stackOne, {
+    hrisCreateWorkEligibilityRequestDto: {
+      document: {
+        category: {},
+        categoryId: "6530",
+        createdAt: new Date("2021-01-01T01:01:01.000Z"),
+        fileFormat: {
+          sourceValue: [
+            "abc",
+          ],
+          value: HrisCreateWorkEligibilityRequestDtoSchemasDocumentValue.Pdf,
+        },
+        id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        name: "My Document",
+        path: "/path/to/file",
+        remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        remoteUrl: "https://example.com/file.pdf",
+        updatedAt: new Date("2021-01-02T01:01:01.000Z"),
+      },
+      issuedBy: {
+        value: HrisCreateWorkEligibilityRequestDtoValue.Us,
+      },
+      number: "1234567890",
+      passthrough: {
+        "other_known_names": "John Doe",
+      },
+      subType: "H1B",
+      type: {},
+      validFrom: new Date("2021-01-01T00:00.000Z"),
+      validTo: new Date("2021-01-01T00:00.000Z"),
+    },
+    id: "<id>",
+    xAccountId: "<value>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
 ### Parameters
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
@@ -514,15 +647,16 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.HrisCreateEmployeeWorkEligibilityRequestResponse](../../sdk/models/operations/hriscreateemployeeworkeligibilityrequestresponse.md)\>**
+
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 4xx-5xx         | */*             |
+
 
 ## createTimeOffRequest
 
@@ -532,6 +666,7 @@ Creates a time off request
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
+import { HrisCreateTimeOffRequestDto2, HrisCreateTimeOffRequestDtoSchemas2 } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 const stackOne = new StackOne({
   security: {
@@ -546,47 +681,61 @@ async function run() {
       approverId: "1687-4",
       employeeId: "1687-3",
       endDate: new Date("2021-01-01T01:01:01.000Z"),
-    endHalfDay: true,
+      endHalfDay: HrisCreateTimeOffRequestDto2.True,
       passthrough: {
-        "0": "{",
-        "1": "\"",
-        "2": "o",
-        "3": "t",
-        "4": "h",
-        "5": "e",
-        "6": "r",
-        "7": "_",
-        "8": "k",
-        "9": "n",
-        "10": "o",
-        "11": "w",
-        "12": "n",
-        "13": "_",
-        "14": "n",
-        "15": "a",
-        "16": "m",
-        "17": "e",
-        "18": "s",
-        "19": "\"",
-        "20": ":",
-        "21": " ",
-        "22": "\"",
-        "23": "J",
-        "24": "o",
-        "25": "h",
-        "26": "n",
-        "27": " ",
-        "28": "D",
-        "29": "o",
-        "30": "e",
-        "31": "\"",
-        "32": "}",
+        "other_known_names": "John Doe",
       },
       startDate: new Date("2021-01-01T01:01:01.000Z"),
-    startHalfDay: true,
+      startHalfDay: HrisCreateTimeOffRequestDtoSchemas2.True,
     },
     xAccountId: "<value>",
   });
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
+import { hrisCreateTimeOffRequest } from "@stackone/stackone-client-ts/funcs/hrisCreateTimeOffRequest.js";
+
+// Use `StackOneCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const stackOne = new StackOneCore({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const res = await hrisCreateTimeOffRequest(stackOne, {
+    hrisCreateTimeOffRequestDto: {
+      approverId: "1687-4",
+      employeeId: "1687-3",
+      endDate: new Date("2021-01-01T01:01:01.000Z"),
+      endHalfDay: true,
+      passthrough: {
+        "other_known_names": "John Doe",
+      },
+      startDate: new Date("2021-01-01T01:01:01.000Z"),
+      startHalfDay: true,
+    },
+    xAccountId: "<value>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
 
   // Handle the result
   console.log(result)
@@ -604,15 +753,16 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.HrisCreateTimeOffRequestResponse](../../sdk/models/operations/hriscreatetimeoffrequestresponse.md)\>**
+
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 4xx-5xx         | */*             |
+
 
 ## downloadEmployeeDocument
 
@@ -645,6 +795,44 @@ async function run() {
 run();
 ```
 
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
+import { hrisDownloadEmployeeDocument } from "@stackone/stackone-client-ts/funcs/hrisDownloadEmployeeDocument.js";
+
+// Use `StackOneCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const stackOne = new StackOneCore({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const res = await hrisDownloadEmployeeDocument(stackOne, {
+    format: "base64",
+    id: "<id>",
+    subResourceId: "<value>",
+    xAccountId: "<value>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
 ### Parameters
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
@@ -654,15 +842,16 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.HrisDownloadEmployeeDocumentResponse](../../sdk/models/operations/hrisdownloademployeedocumentresponse.md)\>**
+
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 4xx-5xx         | */*             |
+
 
 ## getBenefit
 
@@ -694,6 +883,43 @@ async function run() {
 run();
 ```
 
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
+import { hrisGetBenefit } from "@stackone/stackone-client-ts/funcs/hrisGetBenefit.js";
+
+// Use `StackOneCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const stackOne = new StackOneCore({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const res = await hrisGetBenefit(stackOne, {
+    fields: "id,remote_id,name,benefit_type,provider,description,created_at,updated_at",
+    id: "<id>",
+    xAccountId: "<value>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
 ### Parameters
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
@@ -703,15 +929,16 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.HrisGetBenefitResponse](../../sdk/models/operations/hrisgetbenefitresponse.md)\>**
+
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 4xx-5xx         | */*             |
+
 
 ## getCompany
 
@@ -743,6 +970,43 @@ async function run() {
 run();
 ```
 
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
+import { hrisGetCompany } from "@stackone/stackone-client-ts/funcs/hrisGetCompany.js";
+
+// Use `StackOneCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const stackOne = new StackOneCore({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const res = await hrisGetCompany(stackOne, {
+    fields: "id,remote_id,name,full_name,display_name,created_at,updated_at",
+    id: "<id>",
+    xAccountId: "<value>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
 ### Parameters
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
@@ -752,15 +1016,16 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.HrisGetCompanyResponse](../../sdk/models/operations/hrisgetcompanyresponse.md)\>**
+
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 4xx-5xx         | */*             |
+
 
 ## getDepartmentGroup
 
@@ -792,6 +1057,43 @@ async function run() {
 run();
 ```
 
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
+import { hrisGetDepartmentGroup } from "@stackone/stackone-client-ts/funcs/hrisGetDepartmentGroup.js";
+
+// Use `StackOneCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const stackOne = new StackOneCore({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const res = await hrisGetDepartmentGroup(stackOne, {
+    fields: "id,remote_id,name",
+    id: "<id>",
+    xAccountId: "<value>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
 ### Parameters
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
@@ -801,15 +1103,16 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.HrisGetDepartmentGroupResponse](../../sdk/models/operations/hrisgetdepartmentgroupresponse.md)\>**
+
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 4xx-5xx         | */*             |
+
 
 ## getEmployee
 
@@ -843,6 +1146,45 @@ async function run() {
 run();
 ```
 
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
+import { hrisGetEmployee } from "@stackone/stackone-client-ts/funcs/hrisGetEmployee.js";
+
+// Use `StackOneCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const stackOne = new StackOneCore({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const res = await hrisGetEmployee(stackOne, {
+    expand: "company,employments,work_location,home_location,custom_fields,groups",
+    fields: "id,remote_id,first_name,last_name,name,display_name,gender,ethnicity,date_of_birth,birthday,marital_status,avatar_url,avatar,personal_email,personal_phone_number,work_email,work_phone_number,job_title,job_description,department,cost_centers,benefits,manager_id,remote_manager_id,hire_date,start_date,tenure,work_anniversary,employment_type,employment_contract_type,employment_status,termination_date,company_name,preferred_language,citizenships,home_location,work_location,employments,custom_fields,documents,created_at,updated_at,employee_number,national_identity_number",
+    id: "<id>",
+    include: "avatar_url,avatar,custom_fields,job_description,benefits",
+    xAccountId: "<value>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
 ### Parameters
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
@@ -852,15 +1194,16 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.HrisGetEmployeeResponse](../../sdk/models/operations/hrisgetemployeeresponse.md)\>**
+
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 4xx-5xx         | */*             |
+
 
 ## getEmployeeDocument
 
@@ -880,11 +1223,49 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.hris.getEmployeeDocument({
-    fields: "id,remote_id,name,path,type,category,contents,created_at,updated_at,remote_url,file_format",
+    fields: "id,remote_id,name,path,type,category,category_id,remote_category_id,contents,created_at,updated_at,remote_url,file_format",
     id: "<id>",
     subResourceId: "<value>",
     xAccountId: "<value>",
   });
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
+import { hrisGetEmployeeDocument } from "@stackone/stackone-client-ts/funcs/hrisGetEmployeeDocument.js";
+
+// Use `StackOneCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const stackOne = new StackOneCore({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const res = await hrisGetEmployeeDocument(stackOne, {
+    fields: "id,remote_id,name,path,type,category,category_id,remote_category_id,contents,created_at,updated_at,remote_url,file_format",
+    id: "<id>",
+    subResourceId: "<value>",
+    xAccountId: "<value>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
 
   // Handle the result
   console.log(result)
@@ -902,15 +1283,16 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.HrisGetEmployeeDocumentResponse](../../sdk/models/operations/hrisgetemployeedocumentresponse.md)\>**
+
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 4xx-5xx         | */*             |
+
 
 ## getEmployeeDocumentCategory
 
@@ -942,6 +1324,43 @@ async function run() {
 run();
 ```
 
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
+import { hrisGetEmployeeDocumentCategory } from "@stackone/stackone-client-ts/funcs/hrisGetEmployeeDocumentCategory.js";
+
+// Use `StackOneCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const stackOne = new StackOneCore({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const res = await hrisGetEmployeeDocumentCategory(stackOne, {
+    fields: "id,remote_id,name,active",
+    id: "<id>",
+    xAccountId: "<value>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
 ### Parameters
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
@@ -951,15 +1370,107 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.HrisGetEmployeeDocumentCategoryResponse](../../sdk/models/operations/hrisgetemployeedocumentcategoryresponse.md)\>**
+
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 4xx-5xx         | */*             |
+
+
+## getEmployeeEmployment
+
+Get Employee Employment
+
+### Example Usage
+
+```typescript
+import { StackOne } from "@stackone/stackone-client-ts";
+
+const stackOne = new StackOne({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const result = await stackOne.hris.getEmployeeEmployment({
+    expand: "groups",
+    fields: "id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,employment_type,employment_contract_type,created_at,updated_at",
+    id: "<id>",
+    subResourceId: "<value>",
+    xAccountId: "<value>",
+  });
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
+import { hrisGetEmployeeEmployment } from "@stackone/stackone-client-ts/funcs/hrisGetEmployeeEmployment.js";
+
+// Use `StackOneCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const stackOne = new StackOneCore({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const res = await hrisGetEmployeeEmployment(stackOne, {
+    expand: "groups",
+    fields: "id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,employment_type,employment_contract_type,created_at,updated_at",
+    id: "<id>",
+    subResourceId: "<value>",
+    xAccountId: "<value>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.HrisGetEmployeeEmploymentRequest](../../sdk/models/operations/hrisgetemployeeemploymentrequest.md)                                                                 | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[operations.HrisGetEmployeeEmploymentResponse](../../sdk/models/operations/hrisgetemployeeemploymentresponse.md)\>**
+
+### Errors
+
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
+
 
 ## getEmployeesTimeOffRequest
 
@@ -992,6 +1503,44 @@ async function run() {
 run();
 ```
 
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
+import { hrisGetEmployeesTimeOffRequest } from "@stackone/stackone-client-ts/funcs/hrisGetEmployeesTimeOffRequest.js";
+
+// Use `StackOneCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const stackOne = new StackOneCore({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const res = await hrisGetEmployeesTimeOffRequest(stackOne, {
+    fields: "id,remote_id,employee_id,remote_employee_id,approver_id,remote_approver_id,status,type,start_date,end_date,start_half_day,end_half_day,duration,created_at,updated_at",
+    id: "<id>",
+    subResourceId: "<value>",
+    xAccountId: "<value>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
 ### Parameters
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
@@ -1001,15 +1550,16 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.HrisGetEmployeesTimeOffRequestResponse](../../sdk/models/operations/hrisgetemployeestimeoffrequestresponse.md)\>**
+
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 4xx-5xx         | */*             |
+
 
 ## getEmployeesWorkEligibility
 
@@ -1042,6 +1592,44 @@ async function run() {
 run();
 ```
 
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
+import { hrisGetEmployeesWorkEligibility } from "@stackone/stackone-client-ts/funcs/hrisGetEmployeesWorkEligibility.js";
+
+// Use `StackOneCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const stackOne = new StackOneCore({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const res = await hrisGetEmployeesWorkEligibility(stackOne, {
+    fields: "id,remote_id,type,sub_type,document,valid_from,valid_to,issued_by,number",
+    id: "<id>",
+    subResourceId: "<value>",
+    xAccountId: "<value>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
 ### Parameters
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
@@ -1051,15 +1639,16 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.HrisGetEmployeesWorkEligibilityResponse](../../sdk/models/operations/hrisgetemployeesworkeligibilityresponse.md)\>**
+
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 4xx-5xx         | */*             |
+
 
 ## getEmployment
 
@@ -1092,6 +1681,44 @@ async function run() {
 run();
 ```
 
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
+import { hrisGetEmployment } from "@stackone/stackone-client-ts/funcs/hrisGetEmployment.js";
+
+// Use `StackOneCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const stackOne = new StackOneCore({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const res = await hrisGetEmployment(stackOne, {
+    expand: "groups",
+    fields: "id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,employment_type,employment_contract_type,created_at,updated_at",
+    id: "<id>",
+    xAccountId: "<value>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
 ### Parameters
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
@@ -1101,15 +1728,16 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.HrisGetEmploymentResponse](../../sdk/models/operations/hrisgetemploymentresponse.md)\>**
+
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 4xx-5xx         | */*             |
+
 
 ## getGroup
 
@@ -1141,6 +1769,43 @@ async function run() {
 run();
 ```
 
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
+import { hrisGetGroup } from "@stackone/stackone-client-ts/funcs/hrisGetGroup.js";
+
+// Use `StackOneCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const stackOne = new StackOneCore({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const res = await hrisGetGroup(stackOne, {
+    fields: "id,remote_id,name,type,parent_ids,remote_parent_ids,owner_ids,remote_owner_ids",
+    id: "<id>",
+    xAccountId: "<value>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
 ### Parameters
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
@@ -1150,15 +1815,16 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.HrisGetGroupResponse](../../sdk/models/operations/hrisgetgroupresponse.md)\>**
+
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 4xx-5xx         | */*             |
+
 
 ## getJob
 
@@ -1190,6 +1856,43 @@ async function run() {
 run();
 ```
 
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
+import { hrisGetJob } from "@stackone/stackone-client-ts/funcs/hrisGetJob.js";
+
+// Use `StackOneCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const stackOne = new StackOneCore({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const res = await hrisGetJob(stackOne, {
+    fields: "id,remote_id,name,type,parent_ids,remote_parent_ids,owner_ids,remote_owner_ids",
+    id: "<id>",
+    xAccountId: "<value>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
 ### Parameters
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
@@ -1199,15 +1902,16 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.HrisGetJobResponse](../../sdk/models/operations/hrisgetjobresponse.md)\>**
+
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 4xx-5xx         | */*             |
+
 
 ## getLocation
 
@@ -1239,6 +1943,43 @@ async function run() {
 run();
 ```
 
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
+import { hrisGetLocation } from "@stackone/stackone-client-ts/funcs/hrisGetLocation.js";
+
+// Use `StackOneCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const stackOne = new StackOneCore({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const res = await hrisGetLocation(stackOne, {
+    fields: "id,remote_id,employee_id,remote_employee_id,name,phone_number,street_1,street_2,city,state,zip_code,country,location_type,created_at,updated_at",
+    id: "<id>",
+    xAccountId: "<value>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
 ### Parameters
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
@@ -1248,15 +1989,16 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.HrisGetLocationResponse](../../sdk/models/operations/hrisgetlocationresponse.md)\>**
+
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 4xx-5xx         | */*             |
+
 
 ## getTimeOffRequest
 
@@ -1288,6 +2030,43 @@ async function run() {
 run();
 ```
 
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
+import { hrisGetTimeOffRequest } from "@stackone/stackone-client-ts/funcs/hrisGetTimeOffRequest.js";
+
+// Use `StackOneCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const stackOne = new StackOneCore({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const res = await hrisGetTimeOffRequest(stackOne, {
+    fields: "id,remote_id,employee_id,remote_employee_id,approver_id,remote_approver_id,status,type,start_date,end_date,start_half_day,end_half_day,duration,created_at,updated_at",
+    id: "<id>",
+    xAccountId: "<value>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
 ### Parameters
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
@@ -1297,15 +2076,16 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.HrisGetTimeOffRequestResponse](../../sdk/models/operations/hrisgettimeoffrequestresponse.md)\>**
+
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 4xx-5xx         | */*             |
+
 
 ## listBenefits
 
@@ -1340,6 +2120,46 @@ async function run() {
 run();
 ```
 
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
+import { hrisListBenefits } from "@stackone/stackone-client-ts/funcs/hrisListBenefits.js";
+
+// Use `StackOneCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const stackOne = new StackOneCore({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const res = await hrisListBenefits(stackOne, {
+    fields: "id,remote_id,name,benefit_type,provider,description,created_at,updated_at",
+    filter: {
+      updatedAfter: "2020-01-01T00:00:00.000Z",
+    },
+    updatedAfter: "2020-01-01T00:00:00.000Z",
+    xAccountId: "<value>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
 ### Parameters
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
@@ -1349,15 +2169,16 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.HrisListBenefitsResponse](../../sdk/models/operations/hrislistbenefitsresponse.md)\>**
+
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 4xx-5xx         | */*             |
+
 
 ## listCompanies
 
@@ -1392,6 +2213,46 @@ async function run() {
 run();
 ```
 
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
+import { hrisListCompanies } from "@stackone/stackone-client-ts/funcs/hrisListCompanies.js";
+
+// Use `StackOneCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const stackOne = new StackOneCore({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const res = await hrisListCompanies(stackOne, {
+    fields: "id,remote_id,name,full_name,display_name,created_at,updated_at",
+    filter: {
+      updatedAfter: "2020-01-01T00:00:00.000Z",
+    },
+    updatedAfter: "2020-01-01T00:00:00.000Z",
+    xAccountId: "<value>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
 ### Parameters
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
@@ -1401,15 +2262,16 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.HrisListCompaniesResponse](../../sdk/models/operations/hrislistcompaniesresponse.md)\>**
+
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 4xx-5xx         | */*             |
+
 
 ## listDepartmentGroups
 
@@ -1444,6 +2306,46 @@ async function run() {
 run();
 ```
 
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
+import { hrisListDepartmentGroups } from "@stackone/stackone-client-ts/funcs/hrisListDepartmentGroups.js";
+
+// Use `StackOneCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const stackOne = new StackOneCore({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const res = await hrisListDepartmentGroups(stackOne, {
+    fields: "id,remote_id,name",
+    filter: {
+      updatedAfter: "2020-01-01T00:00:00.000Z",
+    },
+    updatedAfter: "2020-01-01T00:00:00.000Z",
+    xAccountId: "<value>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
 ### Parameters
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
@@ -1453,15 +2355,16 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.HrisListDepartmentGroupsResponse](../../sdk/models/operations/hrislistdepartmentgroupsresponse.md)\>**
+
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 4xx-5xx         | */*             |
+
 
 ## listEmployeeCategories
 
@@ -1496,6 +2399,46 @@ async function run() {
 run();
 ```
 
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
+import { hrisListEmployeeCategories } from "@stackone/stackone-client-ts/funcs/hrisListEmployeeCategories.js";
+
+// Use `StackOneCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const stackOne = new StackOneCore({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const res = await hrisListEmployeeCategories(stackOne, {
+    fields: "id,remote_id,name,active",
+    filter: {
+      updatedAfter: "2020-01-01T00:00:00.000Z",
+    },
+    updatedAfter: "2020-01-01T00:00:00.000Z",
+    xAccountId: "<value>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
 ### Parameters
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
@@ -1505,15 +2448,16 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.HrisListEmployeeCategoriesResponse](../../sdk/models/operations/hrislistemployeecategoriesresponse.md)\>**
+
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 4xx-5xx         | */*             |
+
 
 ## listEmployeeDocuments
 
@@ -1533,7 +2477,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.hris.listEmployeeDocuments({
-    fields: "id,remote_id,name,path,type,category,contents,created_at,updated_at,remote_url,file_format",
+    fields: "id,remote_id,name,path,type,category,category_id,remote_category_id,contents,created_at,updated_at,remote_url,file_format",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
@@ -1541,6 +2485,47 @@ async function run() {
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
+import { hrisListEmployeeDocuments } from "@stackone/stackone-client-ts/funcs/hrisListEmployeeDocuments.js";
+
+// Use `StackOneCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const stackOne = new StackOneCore({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const res = await hrisListEmployeeDocuments(stackOne, {
+    fields: "id,remote_id,name,path,type,category,category_id,remote_category_id,contents,created_at,updated_at,remote_url,file_format",
+    filter: {
+      updatedAfter: "2020-01-01T00:00:00.000Z",
+    },
+    id: "<id>",
+    updatedAfter: "2020-01-01T00:00:00.000Z",
+    xAccountId: "<value>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
 
   // Handle the result
   console.log(result)
@@ -1558,15 +2543,113 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.HrisListEmployeeDocumentsResponse](../../sdk/models/operations/hrislistemployeedocumentsresponse.md)\>**
+
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 4xx-5xx         | */*             |
+
+
+## listEmployeeEmployments
+
+List Employee Employments
+
+### Example Usage
+
+```typescript
+import { StackOne } from "@stackone/stackone-client-ts";
+
+const stackOne = new StackOne({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const result = await stackOne.hris.listEmployeeEmployments({
+    expand: "groups",
+    fields: "id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,employment_type,employment_contract_type,created_at,updated_at",
+    filter: {
+      updatedAfter: "2020-01-01T00:00:00.000Z",
+    },
+    id: "<id>",
+    updatedAfter: "2020-01-01T00:00:00.000Z",
+    xAccountId: "<value>",
+  });
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
+import { hrisListEmployeeEmployments } from "@stackone/stackone-client-ts/funcs/hrisListEmployeeEmployments.js";
+
+// Use `StackOneCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const stackOne = new StackOneCore({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const res = await hrisListEmployeeEmployments(stackOne, {
+    expand: "groups",
+    fields: "id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,employment_type,employment_contract_type,created_at,updated_at",
+    filter: {
+      updatedAfter: "2020-01-01T00:00:00.000Z",
+    },
+    id: "<id>",
+    updatedAfter: "2020-01-01T00:00:00.000Z",
+    xAccountId: "<value>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.HrisListEmployeeEmploymentsRequest](../../sdk/models/operations/hrislistemployeeemploymentsrequest.md)                                                             | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[operations.HrisListEmployeeEmploymentsResponse](../../sdk/models/operations/hrislistemployeeemploymentsresponse.md)\>**
+
+### Errors
+
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
+
 
 ## listEmployeeTimeOffRequests
 
@@ -1602,6 +2685,47 @@ async function run() {
 run();
 ```
 
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
+import { hrisListEmployeeTimeOffRequests } from "@stackone/stackone-client-ts/funcs/hrisListEmployeeTimeOffRequests.js";
+
+// Use `StackOneCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const stackOne = new StackOneCore({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const res = await hrisListEmployeeTimeOffRequests(stackOne, {
+    fields: "id,remote_id,employee_id,remote_employee_id,approver_id,remote_approver_id,status,type,start_date,end_date,start_half_day,end_half_day,duration,created_at,updated_at",
+    filter: {
+      updatedAfter: "2020-01-01T00:00:00.000Z",
+    },
+    id: "<id>",
+    updatedAfter: "2020-01-01T00:00:00.000Z",
+    xAccountId: "<value>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
 ### Parameters
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
@@ -1611,15 +2735,16 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.HrisListEmployeeTimeOffRequestsResponse](../../sdk/models/operations/hrislistemployeetimeoffrequestsresponse.md)\>**
+
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 4xx-5xx         | */*             |
+
 
 ## listEmployeeWorkEligibility
 
@@ -1655,6 +2780,47 @@ async function run() {
 run();
 ```
 
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
+import { hrisListEmployeeWorkEligibility } from "@stackone/stackone-client-ts/funcs/hrisListEmployeeWorkEligibility.js";
+
+// Use `StackOneCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const stackOne = new StackOneCore({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const res = await hrisListEmployeeWorkEligibility(stackOne, {
+    fields: "id,remote_id,type,sub_type,document,valid_from,valid_to,issued_by,number",
+    filter: {
+      updatedAfter: "2020-01-01T00:00:00.000Z",
+    },
+    id: "<id>",
+    updatedAfter: "2020-01-01T00:00:00.000Z",
+    xAccountId: "<value>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
 ### Parameters
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
@@ -1664,15 +2830,16 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.HrisListEmployeeWorkEligibilityResponse](../../sdk/models/operations/hrislistemployeeworkeligibilityresponse.md)\>**
+
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 4xx-5xx         | */*             |
+
 
 ## listEmployees
 
@@ -1710,6 +2877,49 @@ async function run() {
 run();
 ```
 
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
+import { hrisListEmployees } from "@stackone/stackone-client-ts/funcs/hrisListEmployees.js";
+
+// Use `StackOneCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const stackOne = new StackOneCore({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const res = await hrisListEmployees(stackOne, {
+    expand: "company,employments,work_location,home_location,custom_fields,groups",
+    fields: "id,remote_id,first_name,last_name,name,display_name,gender,ethnicity,date_of_birth,birthday,marital_status,avatar_url,avatar,personal_email,personal_phone_number,work_email,work_phone_number,job_title,job_description,department,cost_centers,benefits,manager_id,remote_manager_id,hire_date,start_date,tenure,work_anniversary,employment_type,employment_contract_type,employment_status,termination_date,company_name,preferred_language,citizenships,home_location,work_location,employments,custom_fields,documents,created_at,updated_at,employee_number,national_identity_number",
+    filter: {
+      updatedAfter: "2020-01-01T00:00:00.000Z",
+    },
+    include: "avatar_url,avatar,custom_fields,job_description,benefits",
+    updatedAfter: "2020-01-01T00:00:00.000Z",
+    xAccountId: "<value>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  for await (const page of result) {
+    // handle page
+  }
+}
+
+run();
+```
+
 ### Parameters
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
@@ -1719,15 +2929,16 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.HrisListEmployeesResponse](../../sdk/models/operations/hrislistemployeesresponse.md)\>**
+
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 4xx-5xx         | */*             |
+
 
 ## listEmployments
 
@@ -1763,6 +2974,47 @@ async function run() {
 run();
 ```
 
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
+import { hrisListEmployments } from "@stackone/stackone-client-ts/funcs/hrisListEmployments.js";
+
+// Use `StackOneCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const stackOne = new StackOneCore({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const res = await hrisListEmployments(stackOne, {
+    expand: "groups",
+    fields: "id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,employment_type,employment_contract_type,created_at,updated_at",
+    filter: {
+      updatedAfter: "2020-01-01T00:00:00.000Z",
+    },
+    updatedAfter: "2020-01-01T00:00:00.000Z",
+    xAccountId: "<value>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
 ### Parameters
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
@@ -1772,15 +3024,16 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.HrisListEmploymentsResponse](../../sdk/models/operations/hrislistemploymentsresponse.md)\>**
+
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 4xx-5xx         | */*             |
+
 
 ## listGroups
 
@@ -1815,6 +3068,46 @@ async function run() {
 run();
 ```
 
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
+import { hrisListGroups } from "@stackone/stackone-client-ts/funcs/hrisListGroups.js";
+
+// Use `StackOneCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const stackOne = new StackOneCore({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const res = await hrisListGroups(stackOne, {
+    fields: "id,remote_id,name,type,parent_ids,remote_parent_ids,owner_ids,remote_owner_ids",
+    filter: {
+      updatedAfter: "2020-01-01T00:00:00.000Z",
+    },
+    updatedAfter: "2020-01-01T00:00:00.000Z",
+    xAccountId: "<value>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
 ### Parameters
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
@@ -1824,15 +3117,16 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.HrisListGroupsResponse](../../sdk/models/operations/hrislistgroupsresponse.md)\>**
+
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 4xx-5xx         | */*             |
+
 
 ## listJobs
 
@@ -1867,6 +3161,46 @@ async function run() {
 run();
 ```
 
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
+import { hrisListJobs } from "@stackone/stackone-client-ts/funcs/hrisListJobs.js";
+
+// Use `StackOneCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const stackOne = new StackOneCore({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const res = await hrisListJobs(stackOne, {
+    fields: "id,remote_id,name,type,parent_ids,remote_parent_ids,owner_ids,remote_owner_ids",
+    filter: {
+      updatedAfter: "2020-01-01T00:00:00.000Z",
+    },
+    updatedAfter: "2020-01-01T00:00:00.000Z",
+    xAccountId: "<value>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
 ### Parameters
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
@@ -1876,15 +3210,16 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.HrisListJobsResponse](../../sdk/models/operations/hrislistjobsresponse.md)\>**
+
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 4xx-5xx         | */*             |
+
 
 ## listLocations
 
@@ -1919,6 +3254,46 @@ async function run() {
 run();
 ```
 
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
+import { hrisListLocations } from "@stackone/stackone-client-ts/funcs/hrisListLocations.js";
+
+// Use `StackOneCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const stackOne = new StackOneCore({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const res = await hrisListLocations(stackOne, {
+    fields: "id,remote_id,employee_id,remote_employee_id,name,phone_number,street_1,street_2,city,state,zip_code,country,location_type,created_at,updated_at",
+    filter: {
+      updatedAfter: "2020-01-01T00:00:00.000Z",
+    },
+    updatedAfter: "2020-01-01T00:00:00.000Z",
+    xAccountId: "<value>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
 ### Parameters
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
@@ -1928,15 +3303,16 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.HrisListLocationsResponse](../../sdk/models/operations/hrislistlocationsresponse.md)\>**
+
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 4xx-5xx         | */*             |
+
 
 ## listTimeOffRequests
 
@@ -1971,6 +3347,46 @@ async function run() {
 run();
 ```
 
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
+import { hrisListTimeOffRequests } from "@stackone/stackone-client-ts/funcs/hrisListTimeOffRequests.js";
+
+// Use `StackOneCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const stackOne = new StackOneCore({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const res = await hrisListTimeOffRequests(stackOne, {
+    fields: "id,remote_id,employee_id,remote_employee_id,approver_id,remote_approver_id,status,type,start_date,end_date,start_half_day,end_half_day,duration,created_at,updated_at",
+    filter: {
+      updatedAfter: "2020-01-01T00:00:00.000Z",
+    },
+    updatedAfter: "2020-01-01T00:00:00.000Z",
+    xAccountId: "<value>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
 ### Parameters
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
@@ -1980,15 +3396,16 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.HrisListTimeOffRequestsResponse](../../sdk/models/operations/hrislisttimeoffrequestsresponse.md)\>**
+
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 4xx-5xx         | */*             |
+
 
 ## updateEmployee
 
@@ -2041,19 +3458,11 @@ async function run() {
       companyName: "Example Corp",
       customFields: [
         {
-          description: "The completion status of the employee's training.",
           id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
           name: "Training Completion Status",
-          options: [
-            "Not Started",
-            "In Progress",
-            "Completed",
-            "Overdue",
-          ],
           remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
           remoteValueId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
-          type: {},
-        value: "Completed",
+          value: Completed,
           valueId: "value_456",
         },
       ],
@@ -2063,7 +3472,7 @@ async function run() {
       employmentContractType: {},
       employmentStatus: {},
       employmentType: {
-      sourceValue: "Permanent",
+        sourceValue: {},
         value: HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue.Permanent,
       },
       employments: [
@@ -2073,18 +3482,20 @@ async function run() {
           employeeId: "1687-3",
           employmentContractType: {},
           employmentType: {
-          sourceValue: "Permanent",
+            sourceValue: true,
             value: EmploymentSchemasValue.Permanent,
           },
           id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
           jobTitle: "Software Engineer",
           payCurrency: "USD",
           payFrequency: {
-          sourceValue: "Hourly",
+            sourceValue: [
+              "Hourly",
+            ],
             value: EmploymentSchemasPayFrequencyValue.Hourly,
           },
           payPeriod: {
-          sourceValue: "Hour",
+            sourceValue: "Hour",
             value: EmploymentSchemasPayPeriodValue.Hour,
           },
           payRate: "40.00",
@@ -2102,41 +3513,10 @@ async function run() {
         country: {
           value: HrisCreateEmployeeRequestDtoSchemasHomeLocationValue.Us,
         },
+        id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         name: "Woolsthorpe Manor",
         passthrough: {
-          "0": "{",
-          "1": "\"",
-          "2": "o",
-          "3": "t",
-          "4": "h",
-          "5": "e",
-          "6": "r",
-          "7": "_",
-          "8": "k",
-          "9": "n",
-          "10": "o",
-          "11": "w",
-          "12": "n",
-          "13": "_",
-          "14": "n",
-          "15": "a",
-          "16": "m",
-          "17": "e",
-          "18": "s",
-          "19": "\"",
-          "20": ":",
-          "21": " ",
-          "22": "\"",
-          "23": "J",
-          "24": "o",
-          "25": "h",
-          "26": "n",
-          "27": " ",
-          "28": "D",
-          "29": "o",
-          "30": "e",
-          "31": "\"",
-          "32": "}",
+          "other_known_names": "John Doe",
         },
         phoneNumber: "+44 1476 860 364",
         state: {},
@@ -2151,39 +3531,7 @@ async function run() {
       maritalStatus: {},
       name: "Issac Newton",
       passthrough: {
-        "0": "{",
-        "1": "\"",
-        "2": "o",
-        "3": "t",
-        "4": "h",
-        "5": "e",
-        "6": "r",
-        "7": "_",
-        "8": "k",
-        "9": "n",
-        "10": "o",
-        "11": "w",
-        "12": "n",
-        "13": "_",
-        "14": "n",
-        "15": "a",
-        "16": "m",
-        "17": "e",
-        "18": "s",
-        "19": "\"",
-        "20": ":",
-        "21": " ",
-        "22": "\"",
-        "23": "J",
-        "24": "o",
-        "25": "h",
-        "26": "n",
-        "27": " ",
-        "28": "D",
-        "29": "o",
-        "30": "e",
-        "31": "\"",
-        "32": "}",
+        "other_known_names": "John Doe",
       },
       personalEmail: "isaac.newton@example.com",
       personalPhoneNumber: "+1234567890",
@@ -2200,41 +3548,10 @@ async function run() {
         country: {
           value: HrisCreateEmployeeRequestDtoSchemasWorkLocationValue.Us,
         },
+        id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         name: "Woolsthorpe Manor",
         passthrough: {
-          "0": "{",
-          "1": "\"",
-          "2": "o",
-          "3": "t",
-          "4": "h",
-          "5": "e",
-          "6": "r",
-          "7": "_",
-          "8": "k",
-          "9": "n",
-          "10": "o",
-          "11": "w",
-          "12": "n",
-          "13": "_",
-          "14": "n",
-          "15": "a",
-          "16": "m",
-          "17": "e",
-          "18": "s",
-          "19": "\"",
-          "20": ":",
-          "21": " ",
-          "22": "\"",
-          "23": "J",
-          "24": "o",
-          "25": "h",
-          "26": "n",
-          "27": " ",
-          "28": "D",
-          "29": "o",
-          "30": "e",
-          "31": "\"",
-          "32": "}",
+          "other_known_names": "John Doe",
         },
         phoneNumber: "+44 1476 860 364",
         state: {},
@@ -2255,6 +3572,176 @@ async function run() {
 run();
 ```
 
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
+import { hrisUpdateEmployee } from "@stackone/stackone-client-ts/funcs/hrisUpdateEmployee.js";
+import {
+  CountryCodeEnumValue,
+  EmploymentSchemasPayFrequencyValue,
+  EmploymentSchemasPayPeriodValue,
+  EmploymentSchemasValue,
+  HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue,
+  HrisCreateEmployeeRequestDtoSchemasHomeLocationValue,
+  HrisCreateEmployeeRequestDtoSchemasPreferredLanguageValue,
+  HrisCreateEmployeeRequestDtoSchemasWorkLocationValue,
+} from "@stackone/stackone-client-ts/sdk/models/shared";
+
+// Use `StackOneCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const stackOne = new StackOneCore({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const res = await hrisUpdateEmployee(stackOne, {
+    hrisCreateEmployeeRequestDto: {
+      avatar: {},
+      avatarUrl: "https://example.com/avatar.png",
+      benefits: [
+        {
+          createdAt: new Date("2021-01-01T00:00:00Z"),
+          description: "Health insurance for employees",
+          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          name: "Health Insurance",
+          provider: "Aetna",
+          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          updatedAt: new Date("2021-01-01T00:00:00Z"),
+        },
+      ],
+      birthday: new Date("2021-01-01T00:00:00Z"),
+      citizenships: [
+        {
+          value: CountryCodeEnumValue.Us,
+        },
+      ],
+      companyName: "Example Corp",
+      customFields: [
+        {
+          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          name: "Training Completion Status",
+          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          remoteValueId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
+          value: true,
+          valueId: "value_456",
+        },
+      ],
+      dateOfBirth: new Date("1990-01-01T00:00.000Z"),
+      department: "Physics",
+      displayName: "Sir Issac Newton",
+      employmentContractType: {},
+      employmentStatus: {},
+      employmentType: {
+        sourceValue: Permanent,
+        value: HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue.Permanent,
+      },
+      employments: [
+        {
+          createdAt: new Date("2021-01-01T01:01:01.000Z"),
+          effectiveDate: new Date("2021-01-01T01:01:01.000Z"),
+          employeeId: "1687-3",
+          employmentContractType: {},
+          employmentType: {
+            sourceValue: true,
+            value: EmploymentSchemasValue.Permanent,
+          },
+          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          jobTitle: "Software Engineer",
+          payCurrency: "USD",
+          payFrequency: {
+            sourceValue: true,
+            value: EmploymentSchemasPayFrequencyValue.Hourly,
+          },
+          payPeriod: {
+            sourceValue: "Hour",
+            value: EmploymentSchemasPayPeriodValue.Hour,
+          },
+          payRate: "40.00",
+          remoteEmployeeId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
+          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          updatedAt: new Date("2021-01-01T01:01:01.000Z"),
+        },
+      ],
+      ethnicity: {},
+      firstName: "Issac",
+      gender: {},
+      hireDate: new Date("2021-01-01T00:00.000Z"),
+      homeLocation: {
+        city: "Grantham",
+        country: {
+          value: HrisCreateEmployeeRequestDtoSchemasHomeLocationValue.Us,
+        },
+        id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        name: "Woolsthorpe Manor",
+        passthrough: {
+          "other_known_names": "John Doe",
+        },
+        phoneNumber: "+44 1476 860 364",
+        state: {},
+        street1: "Water Lane",
+        street2: "Woolsthorpe by Colsterworth",
+        zipCode: "NG33 5NR",
+      },
+      jobId: "R-6789",
+      jobTitle: "Physicist",
+      lastName: "Newton",
+      managerId: "67890",
+      maritalStatus: {},
+      name: "Issac Newton",
+      passthrough: {
+        "other_known_names": "John Doe",
+      },
+      personalEmail: "isaac.newton@example.com",
+      personalPhoneNumber: "+1234567890",
+      preferredLanguage: {
+        value: HrisCreateEmployeeRequestDtoSchemasPreferredLanguageValue.Eng,
+      },
+      startDate: new Date("2021-01-01T00:00.000Z"),
+      tenure: 2,
+      terminationDate: new Date("2021-01-01T00:00:00Z"),
+      workAnniversary: new Date("2021-01-01T00:00:00Z"),
+      workEmail: "newton@example.com",
+      workLocation: {
+        city: "Grantham",
+        country: {
+          value: HrisCreateEmployeeRequestDtoSchemasWorkLocationValue.Us,
+        },
+        id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        name: "Woolsthorpe Manor",
+        passthrough: {
+          "other_known_names": "John Doe",
+        },
+        phoneNumber: "+44 1476 860 364",
+        state: {},
+        street1: "Water Lane",
+        street2: "Woolsthorpe by Colsterworth",
+        zipCode: "NG33 5NR",
+      },
+      workPhoneNumber: "+1234567890",
+    },
+    id: "<id>",
+    xAccountId: "<value>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
 ### Parameters
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
@@ -2264,15 +3751,16 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.HrisUpdateEmployeeResponse](../../sdk/models/operations/hrisupdateemployeeresponse.md)\>**
+
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 4xx-5xx         | */*             |
+
 
 ## updateEmployeeWorkEligibilityRequest
 
@@ -2299,9 +3787,10 @@ async function run() {
     hrisCreateWorkEligibilityRequestDto: {
       document: {
         category: {},
+        categoryId: "6530",
         createdAt: new Date("2021-01-01T01:01:01.000Z"),
         fileFormat: {
-        sourceValue: "abc",
+          sourceValue: abc,
           value: HrisCreateWorkEligibilityRequestDtoSchemasDocumentValue.Pdf,
         },
         id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
@@ -2316,39 +3805,7 @@ async function run() {
       },
       number: "1234567890",
       passthrough: {
-        "0": "{",
-        "1": "\"",
-        "2": "o",
-        "3": "t",
-        "4": "h",
-        "5": "e",
-        "6": "r",
-        "7": "_",
-        "8": "k",
-        "9": "n",
-        "10": "o",
-        "11": "w",
-        "12": "n",
-        "13": "_",
-        "14": "n",
-        "15": "a",
-        "16": "m",
-        "17": "e",
-        "18": "s",
-        "19": "\"",
-        "20": ":",
-        "21": " ",
-        "22": "\"",
-        "23": "J",
-        "24": "o",
-        "25": "h",
-        "26": "n",
-        "27": " ",
-        "28": "D",
-        "29": "o",
-        "30": "e",
-        "31": "\"",
-        "32": "}",
+        "other_known_names": "John Doe",
       },
       subType: "H1B",
       type: {},
@@ -2367,6 +3824,75 @@ async function run() {
 run();
 ```
 
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
+import { hrisUpdateEmployeeWorkEligibilityRequest } from "@stackone/stackone-client-ts/funcs/hrisUpdateEmployeeWorkEligibilityRequest.js";
+import {
+  HrisCreateWorkEligibilityRequestDtoSchemasDocumentValue,
+  HrisCreateWorkEligibilityRequestDtoValue,
+} from "@stackone/stackone-client-ts/sdk/models/shared";
+
+// Use `StackOneCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const stackOne = new StackOneCore({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const res = await hrisUpdateEmployeeWorkEligibilityRequest(stackOne, {
+    hrisCreateWorkEligibilityRequestDto: {
+      document: {
+        category: {},
+        categoryId: "6530",
+        createdAt: new Date("2021-01-01T01:01:01.000Z"),
+        fileFormat: {
+          sourceValue: {},
+          value: HrisCreateWorkEligibilityRequestDtoSchemasDocumentValue.Pdf,
+        },
+        id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        name: "My Document",
+        path: "/path/to/file",
+        remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        remoteUrl: "https://example.com/file.pdf",
+        updatedAt: new Date("2021-01-02T01:01:01.000Z"),
+      },
+      issuedBy: {
+        value: HrisCreateWorkEligibilityRequestDtoValue.Us,
+      },
+      number: "1234567890",
+      passthrough: {
+        "other_known_names": "John Doe",
+      },
+      subType: "H1B",
+      type: {},
+      validFrom: new Date("2021-01-01T00:00.000Z"),
+      validTo: new Date("2021-01-01T00:00.000Z"),
+    },
+    id: "<id>",
+    subResourceId: "<value>",
+    xAccountId: "<value>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
 ### Parameters
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
@@ -2376,15 +3902,16 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.HrisUpdateEmployeeWorkEligibilityRequestResponse](../../sdk/models/operations/hrisupdateemployeeworkeligibilityrequestresponse.md)\>**
+
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 4xx-5xx         | */*             |
+
 
 ## updateTimeOffRequest
 
@@ -2394,6 +3921,7 @@ Update time off request
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
+import { HrisCreateTimeOffRequestDtoSchemas2 } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 const stackOne = new StackOne({
   security: {
@@ -2408,48 +3936,64 @@ async function run() {
       approverId: "1687-4",
       employeeId: "1687-3",
       endDate: new Date("2021-01-01T01:01:01.000Z"),
-    endHalfDay: true,
+      endHalfDay: true,
       passthrough: {
-        "0": "{",
-        "1": "\"",
-        "2": "o",
-        "3": "t",
-        "4": "h",
-        "5": "e",
-        "6": "r",
-        "7": "_",
-        "8": "k",
-        "9": "n",
-        "10": "o",
-        "11": "w",
-        "12": "n",
-        "13": "_",
-        "14": "n",
-        "15": "a",
-        "16": "m",
-        "17": "e",
-        "18": "s",
-        "19": "\"",
-        "20": ":",
-        "21": " ",
-        "22": "\"",
-        "23": "J",
-        "24": "o",
-        "25": "h",
-        "26": "n",
-        "27": " ",
-        "28": "D",
-        "29": "o",
-        "30": "e",
-        "31": "\"",
-        "32": "}",
+        "other_known_names": "John Doe",
       },
       startDate: new Date("2021-01-01T01:01:01.000Z"),
-    startHalfDay: true,
+      startHalfDay: HrisCreateTimeOffRequestDtoSchemas2.True,
     },
     id: "<id>",
     xAccountId: "<value>",
   });
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
+import { hrisUpdateTimeOffRequest } from "@stackone/stackone-client-ts/funcs/hrisUpdateTimeOffRequest.js";
+import { HrisCreateTimeOffRequestDtoSchemas2 } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+// Use `StackOneCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const stackOne = new StackOneCore({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const res = await hrisUpdateTimeOffRequest(stackOne, {
+    hrisCreateTimeOffRequestDto: {
+      approverId: "1687-4",
+      employeeId: "1687-3",
+      endDate: new Date("2021-01-01T01:01:01.000Z"),
+      endHalfDay: true,
+      passthrough: {
+        "other_known_names": "John Doe",
+      },
+      startDate: new Date("2021-01-01T01:01:01.000Z"),
+      startHalfDay: HrisCreateTimeOffRequestDtoSchemas2.True,
+    },
+    id: "<id>",
+    xAccountId: "<value>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
 
   // Handle the result
   console.log(result)
@@ -2467,15 +4011,16 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.HrisUpdateTimeOffRequestResponse](../../sdk/models/operations/hrisupdatetimeoffrequestresponse.md)\>**
+
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 4xx-5xx         | */*             |
+
 
 ## uploadEmployeeDocument
 
@@ -2505,13 +4050,14 @@ async function run() {
         sourceValue: "550e8400-e29b-41d4-a716-446655440000",
         value: HrisDocumentsUploadRequestDtoValue.UnmappedValue,
       },
+      categoryId: "6530",
       confidential: {
-      sourceValue: "public",
+        sourceValue: {},
         value: HrisDocumentsUploadRequestDtoSchemasValue.True,
       },
       content: "VGhpcyBpc24ndCByZWFsbHkgYSBzYW1wbGUgZmlsZSwgYnV0IG5vIG9uZSB3aWxsIGV2ZXIga25vdyE",
       fileFormat: {
-      sourceValue: "abc",
+        sourceValue: {},
         value: HrisDocumentsUploadRequestDtoSchemasFileFormatValue.Pdf,
       },
       name: "weather-forecast",
@@ -2520,6 +4066,67 @@ async function run() {
     id: "<id>",
     xAccountId: "<value>",
   });
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
+import { hrisUploadEmployeeDocument } from "@stackone/stackone-client-ts/funcs/hrisUploadEmployeeDocument.js";
+import {
+  HrisDocumentsUploadRequestDtoSchemasFileFormatValue,
+  HrisDocumentsUploadRequestDtoSchemasValue,
+  HrisDocumentsUploadRequestDtoValue,
+} from "@stackone/stackone-client-ts/sdk/models/shared";
+
+// Use `StackOneCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const stackOne = new StackOneCore({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const res = await hrisUploadEmployeeDocument(stackOne, {
+    hrisDocumentsUploadRequestDto: {
+      category: {
+        sourceValue: "550e8400-e29b-41d4-a716-446655440000",
+        value: HrisDocumentsUploadRequestDtoValue.Resume,
+      },
+      categoryId: "6530",
+      confidential: {
+        sourceValue: true,
+        value: HrisDocumentsUploadRequestDtoSchemasValue.True,
+      },
+      content: "VGhpcyBpc24ndCByZWFsbHkgYSBzYW1wbGUgZmlsZSwgYnV0IG5vIG9uZSB3aWxsIGV2ZXIga25vdyE",
+      fileFormat: {
+        sourceValue: [
+          "abc",
+        ],
+        value: HrisDocumentsUploadRequestDtoSchemasFileFormatValue.Pdf,
+      },
+      name: "weather-forecast",
+      path: "/path/to/file",
+    },
+    id: "<id>",
+    xAccountId: "<value>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
 
   // Handle the result
   console.log(result)
@@ -2537,10 +4144,10 @@ run();
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
-
 ### Response
 
 **Promise\<[operations.HrisUploadEmployeeDocumentResponse](../../sdk/models/operations/hrisuploademployeedocumentresponse.md)\>**
+
 ### Errors
 
 | Error Object    | Status Code     | Content Type    |

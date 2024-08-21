@@ -1,5 +1,40 @@
 # AssessmentsResultsResult
 
+## Example Usage
+
+```typescript
+import { AssessmentsResultsResult, AssessmentsResultsValue, Status } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: AssessmentsResultsResult = {
+    data: {
+        assessmentDate: new Date("2021-01-01T01:01:01.000Z"),
+        assessmentId: "f15aad8e-8db6-4194-8299-a525eb8fc30f",
+        attachments: {
+            contentType: {
+                sourceValue: true,
+                value: AssessmentsResultsValue.Text,
+            },
+            url: "http://example.com/resume.pdf",
+        },
+        candidate: {
+            resultUrl: "https://exmaple.com/result?id=xyz",
+        },
+        id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        result: "pass",
+        score: {
+            label: "Percentage",
+            max: "100",
+            min: "0",
+            value: "80",
+        },
+        status: Status.Completed,
+        submissionDate: new Date("2021-01-01T01:01:01.000Z"),
+        summary:
+            "Candidate demonstrates strong understanding of core concepts, but struggles with application",
+    },
+};
+```
 
 ## Fields
 

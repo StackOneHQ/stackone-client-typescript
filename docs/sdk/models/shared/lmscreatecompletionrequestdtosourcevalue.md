@@ -1,5 +1,12 @@
 # LmsCreateCompletionRequestDtoSourceValue
 
+## Example Usage
+
+```typescript
+import { LmsCreateCompletionRequestDtoSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: LmsCreateCompletionRequestDtoSourceValue = false;
+```
 
 ## Supported Types
 
@@ -25,5 +32,11 @@ const value: boolean = /* values here */
 
 ```typescript
 const value: shared.LmsCreateCompletionRequestDto4 = /* values here */
+```
+
+### `any[]`
+
+```typescript
+const value: any[] = /* values here */
 ```
 

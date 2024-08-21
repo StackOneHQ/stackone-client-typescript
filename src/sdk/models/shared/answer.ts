@@ -11,7 +11,7 @@ export type Answer4 = {};
 /**
  * The source value of the answer type.
  */
-export type AnswerSourceValue = Answer4 | string | number | boolean;
+export type AnswerSourceValue = Answer4 | string | number | boolean | Array<any>;
 
 /**
  * The type of the answer.
@@ -39,7 +39,7 @@ export type Type = {
     /**
      * The source value of the answer type.
      */
-    sourceValue?: Answer4 | string | number | boolean | null | undefined;
+    sourceValue?: Answer4 | string | number | boolean | Array<any> | null | undefined;
     /**
      * The type of the answer.
      */
@@ -91,17 +91,29 @@ export namespace Answer4$ {
 
 /** @internal */
 export const AnswerSourceValue$inboundSchema: z.ZodType<AnswerSourceValue, z.ZodTypeDef, unknown> =
-    z.union([z.lazy(() => Answer4$inboundSchema), z.string(), z.number(), z.boolean()]);
+    z.union([
+        z.lazy(() => Answer4$inboundSchema),
+        z.string(),
+        z.number(),
+        z.boolean(),
+        z.array(z.any()),
+    ]);
 
 /** @internal */
-export type AnswerSourceValue$Outbound = Answer4$Outbound | string | number | boolean;
+export type AnswerSourceValue$Outbound = Answer4$Outbound | string | number | boolean | Array<any>;
 
 /** @internal */
 export const AnswerSourceValue$outboundSchema: z.ZodType<
     AnswerSourceValue$Outbound,
     z.ZodTypeDef,
     AnswerSourceValue
-> = z.union([z.lazy(() => Answer4$outboundSchema), z.string(), z.number(), z.boolean()]);
+> = z.union([
+    z.lazy(() => Answer4$outboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+    z.array(z.any()),
+]);
 
 /**
  * @internal
@@ -141,7 +153,13 @@ export const Type$inboundSchema: z.ZodType<Type, z.ZodTypeDef, unknown> = z
     .object({
         source_value: z
             .nullable(
-                z.union([z.lazy(() => Answer4$inboundSchema), z.string(), z.number(), z.boolean()])
+                z.union([
+                    z.lazy(() => Answer4$inboundSchema),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                    z.array(z.any()),
+                ])
             )
             .optional(),
         value: z.nullable(AnswerValue$inboundSchema).optional(),
@@ -154,7 +172,7 @@ export const Type$inboundSchema: z.ZodType<Type, z.ZodTypeDef, unknown> = z
 
 /** @internal */
 export type Type$Outbound = {
-    source_value?: Answer4$Outbound | string | number | boolean | null | undefined;
+    source_value?: Answer4$Outbound | string | number | boolean | Array<any> | null | undefined;
     value?: string | null | undefined;
 };
 
@@ -163,7 +181,13 @@ export const Type$outboundSchema: z.ZodType<Type$Outbound, z.ZodTypeDef, Type> =
     .object({
         sourceValue: z
             .nullable(
-                z.union([z.lazy(() => Answer4$outboundSchema), z.string(), z.number(), z.boolean()])
+                z.union([
+                    z.lazy(() => Answer4$outboundSchema),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                    z.array(z.any()),
+                ])
             )
             .optional(),
         value: z.nullable(AnswerValue$outboundSchema).optional(),

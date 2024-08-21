@@ -82,7 +82,7 @@ export type EmployeeCompany = {
 
 export type Employee4 = {};
 
-export type EmployeeSourceValue = Employee4 | string | number | boolean;
+export type EmployeeSourceValue = Employee4 | string | number | boolean | Array<any>;
 
 export enum EmployeeValue {
     FullTime = "full_time",
@@ -96,13 +96,13 @@ export type EmployeeValueOpen = OpenEnum<typeof EmployeeValue>;
  * The employment work schedule type (e.g., full-time, part-time)
  */
 export type EmploymentContractType = {
-    sourceValue?: Employee4 | string | number | boolean | null | undefined;
+    sourceValue?: Employee4 | string | number | boolean | Array<any> | null | undefined;
     value?: EmployeeValueOpen | null | undefined;
 };
 
 export type EmployeeSchemas4 = {};
 
-export type EmployeeSchemasSourceValue = EmployeeSchemas4 | string | number | boolean;
+export type EmployeeSchemasSourceValue = EmployeeSchemas4 | string | number | boolean | Array<any>;
 
 export enum EmployeeSchemasValue {
     Active = "active",
@@ -119,7 +119,7 @@ export type EmployeeSchemasValueOpen = OpenEnum<typeof EmployeeSchemasValue>;
  * The employee employment status
  */
 export type EmploymentStatus = {
-    sourceValue?: EmployeeSchemas4 | string | number | boolean | null | undefined;
+    sourceValue?: EmployeeSchemas4 | string | number | boolean | Array<any> | null | undefined;
     value?: EmployeeSchemasValueOpen | null | undefined;
 };
 
@@ -132,7 +132,8 @@ export type EmployeeSchemasEmploymentTypeSourceValue =
     | EmployeeSchemasEmploymentType4
     | string
     | number
-    | boolean;
+    | boolean
+    | Array<any>;
 
 /**
  * The type of the employment.
@@ -170,7 +171,14 @@ export type EmploymentType = {
     /**
      * The source value of the employment type.
      */
-    sourceValue?: EmployeeSchemasEmploymentType4 | string | number | boolean | null | undefined;
+    sourceValue?:
+        | EmployeeSchemasEmploymentType4
+        | string
+        | number
+        | boolean
+        | Array<any>
+        | null
+        | undefined;
     /**
      * The type of the employment.
      */
@@ -183,7 +191,8 @@ export type EmployeeSchemasEthnicitySourceValue =
     | EmployeeSchemasEthnicity4
     | string
     | number
-    | boolean;
+    | boolean
+    | Array<any>;
 
 export enum EmployeeSchemasEthnicityValue {
     White = "white",
@@ -203,13 +212,25 @@ export type EmployeeSchemasEthnicityValueOpen = OpenEnum<typeof EmployeeSchemasE
  * The employee ethnicity
  */
 export type Ethnicity = {
-    sourceValue?: EmployeeSchemasEthnicity4 | string | number | boolean | null | undefined;
+    sourceValue?:
+        | EmployeeSchemasEthnicity4
+        | string
+        | number
+        | boolean
+        | Array<any>
+        | null
+        | undefined;
     value?: EmployeeSchemasEthnicityValueOpen | null | undefined;
 };
 
 export type EmployeeSchemasGender4 = {};
 
-export type EmployeeSchemasGenderSourceValue = EmployeeSchemasGender4 | string | number | boolean;
+export type EmployeeSchemasGenderSourceValue =
+    | EmployeeSchemasGender4
+    | string
+    | number
+    | boolean
+    | Array<any>;
 
 export enum EmployeeSchemasGenderValue {
     Male = "male",
@@ -226,7 +247,14 @@ export type EmployeeSchemasGenderValueOpen = OpenEnum<typeof EmployeeSchemasGend
  * The employee gender
  */
 export type Gender = {
-    sourceValue?: EmployeeSchemasGender4 | string | number | boolean | null | undefined;
+    sourceValue?:
+        | EmployeeSchemasGender4
+        | string
+        | number
+        | boolean
+        | Array<any>
+        | null
+        | undefined;
     value?: EmployeeSchemasGenderValueOpen | null | undefined;
 };
 
@@ -236,7 +264,8 @@ export type EmployeeSchemasHomeLocationSourceValue =
     | EmployeeSchemasHomeLocation4
     | string
     | number
-    | boolean;
+    | boolean
+    | Array<any>;
 
 /**
  * The ISO3166-1 Alpha2 Code of the Country
@@ -503,7 +532,14 @@ export type EmployeeSchemasHomeLocationValueOpen = OpenEnum<
  * The country code
  */
 export type EmployeeCountry = {
-    sourceValue?: EmployeeSchemasHomeLocation4 | string | number | boolean | null | undefined;
+    sourceValue?:
+        | EmployeeSchemasHomeLocation4
+        | string
+        | number
+        | boolean
+        | Array<any>
+        | null
+        | undefined;
     /**
      * The ISO3166-1 Alpha2 Code of the Country
      */
@@ -519,7 +555,8 @@ export type EmployeeSchemasHomeLocationLocationTypeSourceValue =
     | EmployeeSchemasHomeLocationLocationType4
     | string
     | number
-    | boolean;
+    | boolean
+    | Array<any>;
 
 /**
  * The type of the location.
@@ -548,6 +585,7 @@ export type EmployeeLocationType = {
         | string
         | number
         | boolean
+        | Array<any>
         | null
         | undefined;
     /**
@@ -635,7 +673,8 @@ export type EmployeeSchemasMaritalStatusSourceValue =
     | EmployeeSchemasMaritalStatus4
     | string
     | number
-    | boolean;
+    | boolean
+    | Array<any>;
 
 export enum EmployeeSchemasMaritalStatusValue {
     Single = "single",
@@ -657,7 +696,14 @@ export type EmployeeSchemasMaritalStatusValueOpen = OpenEnum<
  * The employee marital status
  */
 export type MaritalStatus = {
-    sourceValue?: EmployeeSchemasMaritalStatus4 | string | number | boolean | null | undefined;
+    sourceValue?:
+        | EmployeeSchemasMaritalStatus4
+        | string
+        | number
+        | boolean
+        | Array<any>
+        | null
+        | undefined;
     value?: EmployeeSchemasMaritalStatusValueOpen | null | undefined;
 };
 
@@ -667,7 +713,8 @@ export type EmployeeSchemasNationalIdentityNumberSourceValue =
     | EmployeeSchemasNationalIdentityNumber4
     | string
     | number
-    | boolean;
+    | boolean
+    | Array<any>;
 
 /**
  * The type of the national identity number
@@ -692,6 +739,7 @@ export type EmployeeType = {
         | string
         | number
         | boolean
+        | Array<any>
         | null
         | undefined;
     /**
@@ -714,7 +762,8 @@ export type EmployeeSchemasPreferredLanguageSourceValue =
     | EmployeeSchemasPreferredLanguage4
     | string
     | number
-    | boolean;
+    | boolean
+    | Array<any>;
 
 /**
  * The ISO639-2 Code of the language
@@ -830,7 +879,14 @@ export type EmployeeSchemasPreferredLanguageValueOpen = OpenEnum<
  * The employee preferred language
  */
 export type PreferredLanguage = {
-    sourceValue?: EmployeeSchemasPreferredLanguage4 | string | number | boolean | null | undefined;
+    sourceValue?:
+        | EmployeeSchemasPreferredLanguage4
+        | string
+        | number
+        | boolean
+        | Array<any>
+        | null
+        | undefined;
     /**
      * The ISO639-2 Code of the language
      */
@@ -843,7 +899,8 @@ export type EmployeeSchemasWorkLocationSourceValue =
     | EmployeeSchemasWorkLocation4
     | string
     | number
-    | boolean;
+    | boolean
+    | Array<any>;
 
 /**
  * The ISO3166-1 Alpha2 Code of the Country
@@ -1110,7 +1167,14 @@ export type EmployeeSchemasWorkLocationValueOpen = OpenEnum<
  * The country code
  */
 export type EmployeeSchemasCountry = {
-    sourceValue?: EmployeeSchemasWorkLocation4 | string | number | boolean | null | undefined;
+    sourceValue?:
+        | EmployeeSchemasWorkLocation4
+        | string
+        | number
+        | boolean
+        | Array<any>
+        | null
+        | undefined;
     /**
      * The ISO3166-1 Alpha2 Code of the Country
      */
@@ -1126,7 +1190,8 @@ export type EmployeeSchemasWorkLocationLocationTypeSourceValue =
     | EmployeeSchemasWorkLocationLocationType4
     | string
     | number
-    | boolean;
+    | boolean
+    | Array<any>;
 
 /**
  * The type of the location.
@@ -1155,6 +1220,7 @@ export type EmployeeSchemasLocationType = {
         | string
         | number
         | boolean
+        | Array<any>
         | null
         | undefined;
     /**
@@ -1550,17 +1616,34 @@ export const EmployeeSourceValue$inboundSchema: z.ZodType<
     EmployeeSourceValue,
     z.ZodTypeDef,
     unknown
-> = z.union([z.lazy(() => Employee4$inboundSchema), z.string(), z.number(), z.boolean()]);
+> = z.union([
+    z.lazy(() => Employee4$inboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+    z.array(z.any()),
+]);
 
 /** @internal */
-export type EmployeeSourceValue$Outbound = Employee4$Outbound | string | number | boolean;
+export type EmployeeSourceValue$Outbound =
+    | Employee4$Outbound
+    | string
+    | number
+    | boolean
+    | Array<any>;
 
 /** @internal */
 export const EmployeeSourceValue$outboundSchema: z.ZodType<
     EmployeeSourceValue$Outbound,
     z.ZodTypeDef,
     EmployeeSourceValue
-> = z.union([z.lazy(() => Employee4$outboundSchema), z.string(), z.number(), z.boolean()]);
+> = z.union([
+    z.lazy(() => Employee4$outboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+    z.array(z.any()),
+]);
 
 /**
  * @internal
@@ -1611,6 +1694,7 @@ export const EmploymentContractType$inboundSchema: z.ZodType<
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),
@@ -1624,7 +1708,7 @@ export const EmploymentContractType$inboundSchema: z.ZodType<
 
 /** @internal */
 export type EmploymentContractType$Outbound = {
-    source_value?: Employee4$Outbound | string | number | boolean | null | undefined;
+    source_value?: Employee4$Outbound | string | number | boolean | Array<any> | null | undefined;
     value?: string | null | undefined;
 };
 
@@ -1642,6 +1726,7 @@ export const EmploymentContractType$outboundSchema: z.ZodType<
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),
@@ -1698,21 +1783,34 @@ export const EmployeeSchemasSourceValue$inboundSchema: z.ZodType<
     EmployeeSchemasSourceValue,
     z.ZodTypeDef,
     unknown
-> = z.union([z.lazy(() => EmployeeSchemas4$inboundSchema), z.string(), z.number(), z.boolean()]);
+> = z.union([
+    z.lazy(() => EmployeeSchemas4$inboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+    z.array(z.any()),
+]);
 
 /** @internal */
 export type EmployeeSchemasSourceValue$Outbound =
     | EmployeeSchemas4$Outbound
     | string
     | number
-    | boolean;
+    | boolean
+    | Array<any>;
 
 /** @internal */
 export const EmployeeSchemasSourceValue$outboundSchema: z.ZodType<
     EmployeeSchemasSourceValue$Outbound,
     z.ZodTypeDef,
     EmployeeSchemasSourceValue
-> = z.union([z.lazy(() => EmployeeSchemas4$outboundSchema), z.string(), z.number(), z.boolean()]);
+> = z.union([
+    z.lazy(() => EmployeeSchemas4$outboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+    z.array(z.any()),
+]);
 
 /**
  * @internal
@@ -1762,6 +1860,7 @@ export const EmploymentStatus$inboundSchema: z.ZodType<EmploymentStatus, z.ZodTy
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),
@@ -1775,7 +1874,14 @@ export const EmploymentStatus$inboundSchema: z.ZodType<EmploymentStatus, z.ZodTy
 
 /** @internal */
 export type EmploymentStatus$Outbound = {
-    source_value?: EmployeeSchemas4$Outbound | string | number | boolean | null | undefined;
+    source_value?:
+        | EmployeeSchemas4$Outbound
+        | string
+        | number
+        | boolean
+        | Array<any>
+        | null
+        | undefined;
     value?: string | null | undefined;
 };
 
@@ -1793,6 +1899,7 @@ export const EmploymentStatus$outboundSchema: z.ZodType<
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),
@@ -1857,6 +1964,7 @@ export const EmployeeSchemasEmploymentTypeSourceValue$inboundSchema: z.ZodType<
     z.string(),
     z.number(),
     z.boolean(),
+    z.array(z.any()),
 ]);
 
 /** @internal */
@@ -1864,7 +1972,8 @@ export type EmployeeSchemasEmploymentTypeSourceValue$Outbound =
     | EmployeeSchemasEmploymentType4$Outbound
     | string
     | number
-    | boolean;
+    | boolean
+    | Array<any>;
 
 /** @internal */
 export const EmployeeSchemasEmploymentTypeSourceValue$outboundSchema: z.ZodType<
@@ -1876,6 +1985,7 @@ export const EmployeeSchemasEmploymentTypeSourceValue$outboundSchema: z.ZodType<
     z.string(),
     z.number(),
     z.boolean(),
+    z.array(z.any()),
 ]);
 
 /**
@@ -1932,6 +2042,7 @@ export const EmploymentType$inboundSchema: z.ZodType<EmploymentType, z.ZodTypeDe
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),
@@ -1950,6 +2061,7 @@ export type EmploymentType$Outbound = {
         | string
         | number
         | boolean
+        | Array<any>
         | null
         | undefined;
     value?: string | null | undefined;
@@ -1969,6 +2081,7 @@ export const EmploymentType$outboundSchema: z.ZodType<
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),
@@ -2033,6 +2146,7 @@ export const EmployeeSchemasEthnicitySourceValue$inboundSchema: z.ZodType<
     z.string(),
     z.number(),
     z.boolean(),
+    z.array(z.any()),
 ]);
 
 /** @internal */
@@ -2040,7 +2154,8 @@ export type EmployeeSchemasEthnicitySourceValue$Outbound =
     | EmployeeSchemasEthnicity4$Outbound
     | string
     | number
-    | boolean;
+    | boolean
+    | Array<any>;
 
 /** @internal */
 export const EmployeeSchemasEthnicitySourceValue$outboundSchema: z.ZodType<
@@ -2052,6 +2167,7 @@ export const EmployeeSchemasEthnicitySourceValue$outboundSchema: z.ZodType<
     z.string(),
     z.number(),
     z.boolean(),
+    z.array(z.any()),
 ]);
 
 /**
@@ -2108,6 +2224,7 @@ export const Ethnicity$inboundSchema: z.ZodType<Ethnicity, z.ZodTypeDef, unknown
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),
@@ -2126,6 +2243,7 @@ export type Ethnicity$Outbound = {
         | string
         | number
         | boolean
+        | Array<any>
         | null
         | undefined;
     value?: string | null | undefined;
@@ -2141,6 +2259,7 @@ export const Ethnicity$outboundSchema: z.ZodType<Ethnicity$Outbound, z.ZodTypeDe
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),
@@ -2205,6 +2324,7 @@ export const EmployeeSchemasGenderSourceValue$inboundSchema: z.ZodType<
     z.string(),
     z.number(),
     z.boolean(),
+    z.array(z.any()),
 ]);
 
 /** @internal */
@@ -2212,7 +2332,8 @@ export type EmployeeSchemasGenderSourceValue$Outbound =
     | EmployeeSchemasGender4$Outbound
     | string
     | number
-    | boolean;
+    | boolean
+    | Array<any>;
 
 /** @internal */
 export const EmployeeSchemasGenderSourceValue$outboundSchema: z.ZodType<
@@ -2224,6 +2345,7 @@ export const EmployeeSchemasGenderSourceValue$outboundSchema: z.ZodType<
     z.string(),
     z.number(),
     z.boolean(),
+    z.array(z.any()),
 ]);
 
 /**
@@ -2280,6 +2402,7 @@ export const Gender$inboundSchema: z.ZodType<Gender, z.ZodTypeDef, unknown> = z
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),
@@ -2293,7 +2416,14 @@ export const Gender$inboundSchema: z.ZodType<Gender, z.ZodTypeDef, unknown> = z
 
 /** @internal */
 export type Gender$Outbound = {
-    source_value?: EmployeeSchemasGender4$Outbound | string | number | boolean | null | undefined;
+    source_value?:
+        | EmployeeSchemasGender4$Outbound
+        | string
+        | number
+        | boolean
+        | Array<any>
+        | null
+        | undefined;
     value?: string | null | undefined;
 };
 
@@ -2307,6 +2437,7 @@ export const Gender$outboundSchema: z.ZodType<Gender$Outbound, z.ZodTypeDef, Gen
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),
@@ -2371,6 +2502,7 @@ export const EmployeeSchemasHomeLocationSourceValue$inboundSchema: z.ZodType<
     z.string(),
     z.number(),
     z.boolean(),
+    z.array(z.any()),
 ]);
 
 /** @internal */
@@ -2378,7 +2510,8 @@ export type EmployeeSchemasHomeLocationSourceValue$Outbound =
     | EmployeeSchemasHomeLocation4$Outbound
     | string
     | number
-    | boolean;
+    | boolean
+    | Array<any>;
 
 /** @internal */
 export const EmployeeSchemasHomeLocationSourceValue$outboundSchema: z.ZodType<
@@ -2390,6 +2523,7 @@ export const EmployeeSchemasHomeLocationSourceValue$outboundSchema: z.ZodType<
     z.string(),
     z.number(),
     z.boolean(),
+    z.array(z.any()),
 ]);
 
 /**
@@ -2446,6 +2580,7 @@ export const EmployeeCountry$inboundSchema: z.ZodType<EmployeeCountry, z.ZodType
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),
@@ -2464,6 +2599,7 @@ export type EmployeeCountry$Outbound = {
         | string
         | number
         | boolean
+        | Array<any>
         | null
         | undefined;
     value?: string | null | undefined;
@@ -2483,6 +2619,7 @@ export const EmployeeCountry$outboundSchema: z.ZodType<
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),
@@ -2547,6 +2684,7 @@ export const EmployeeSchemasHomeLocationLocationTypeSourceValue$inboundSchema: z
     z.string(),
     z.number(),
     z.boolean(),
+    z.array(z.any()),
 ]);
 
 /** @internal */
@@ -2554,7 +2692,8 @@ export type EmployeeSchemasHomeLocationLocationTypeSourceValue$Outbound =
     | EmployeeSchemasHomeLocationLocationType4$Outbound
     | string
     | number
-    | boolean;
+    | boolean
+    | Array<any>;
 
 /** @internal */
 export const EmployeeSchemasHomeLocationLocationTypeSourceValue$outboundSchema: z.ZodType<
@@ -2566,6 +2705,7 @@ export const EmployeeSchemasHomeLocationLocationTypeSourceValue$outboundSchema: 
     z.string(),
     z.number(),
     z.boolean(),
+    z.array(z.any()),
 ]);
 
 /**
@@ -2626,6 +2766,7 @@ export const EmployeeLocationType$inboundSchema: z.ZodType<
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),
@@ -2644,6 +2785,7 @@ export type EmployeeLocationType$Outbound = {
         | string
         | number
         | boolean
+        | Array<any>
         | null
         | undefined;
     value?: string | null | undefined;
@@ -2663,6 +2805,7 @@ export const EmployeeLocationType$outboundSchema: z.ZodType<
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),
@@ -2878,6 +3021,7 @@ export const EmployeeSchemasMaritalStatusSourceValue$inboundSchema: z.ZodType<
     z.string(),
     z.number(),
     z.boolean(),
+    z.array(z.any()),
 ]);
 
 /** @internal */
@@ -2885,7 +3029,8 @@ export type EmployeeSchemasMaritalStatusSourceValue$Outbound =
     | EmployeeSchemasMaritalStatus4$Outbound
     | string
     | number
-    | boolean;
+    | boolean
+    | Array<any>;
 
 /** @internal */
 export const EmployeeSchemasMaritalStatusSourceValue$outboundSchema: z.ZodType<
@@ -2897,6 +3042,7 @@ export const EmployeeSchemasMaritalStatusSourceValue$outboundSchema: z.ZodType<
     z.string(),
     z.number(),
     z.boolean(),
+    z.array(z.any()),
 ]);
 
 /**
@@ -2953,6 +3099,7 @@ export const MaritalStatus$inboundSchema: z.ZodType<MaritalStatus, z.ZodTypeDef,
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),
@@ -2971,6 +3118,7 @@ export type MaritalStatus$Outbound = {
         | string
         | number
         | boolean
+        | Array<any>
         | null
         | undefined;
     value?: string | null | undefined;
@@ -2990,6 +3138,7 @@ export const MaritalStatus$outboundSchema: z.ZodType<
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),
@@ -3054,6 +3203,7 @@ export const EmployeeSchemasNationalIdentityNumberSourceValue$inboundSchema: z.Z
     z.string(),
     z.number(),
     z.boolean(),
+    z.array(z.any()),
 ]);
 
 /** @internal */
@@ -3061,7 +3211,8 @@ export type EmployeeSchemasNationalIdentityNumberSourceValue$Outbound =
     | EmployeeSchemasNationalIdentityNumber4$Outbound
     | string
     | number
-    | boolean;
+    | boolean
+    | Array<any>;
 
 /** @internal */
 export const EmployeeSchemasNationalIdentityNumberSourceValue$outboundSchema: z.ZodType<
@@ -3073,6 +3224,7 @@ export const EmployeeSchemasNationalIdentityNumberSourceValue$outboundSchema: z.
     z.string(),
     z.number(),
     z.boolean(),
+    z.array(z.any()),
 ]);
 
 /**
@@ -3129,6 +3281,7 @@ export const EmployeeType$inboundSchema: z.ZodType<EmployeeType, z.ZodTypeDef, u
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),
@@ -3147,6 +3300,7 @@ export type EmployeeType$Outbound = {
         | string
         | number
         | boolean
+        | Array<any>
         | null
         | undefined;
     value?: string | null | undefined;
@@ -3166,6 +3320,7 @@ export const EmployeeType$outboundSchema: z.ZodType<
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),
@@ -3269,6 +3424,7 @@ export const EmployeeSchemasPreferredLanguageSourceValue$inboundSchema: z.ZodTyp
     z.string(),
     z.number(),
     z.boolean(),
+    z.array(z.any()),
 ]);
 
 /** @internal */
@@ -3276,7 +3432,8 @@ export type EmployeeSchemasPreferredLanguageSourceValue$Outbound =
     | EmployeeSchemasPreferredLanguage4$Outbound
     | string
     | number
-    | boolean;
+    | boolean
+    | Array<any>;
 
 /** @internal */
 export const EmployeeSchemasPreferredLanguageSourceValue$outboundSchema: z.ZodType<
@@ -3288,6 +3445,7 @@ export const EmployeeSchemasPreferredLanguageSourceValue$outboundSchema: z.ZodTy
     z.string(),
     z.number(),
     z.boolean(),
+    z.array(z.any()),
 ]);
 
 /**
@@ -3345,6 +3503,7 @@ export const PreferredLanguage$inboundSchema: z.ZodType<PreferredLanguage, z.Zod
                         z.string(),
                         z.number(),
                         z.boolean(),
+                        z.array(z.any()),
                     ])
                 )
                 .optional(),
@@ -3363,6 +3522,7 @@ export type PreferredLanguage$Outbound = {
         | string
         | number
         | boolean
+        | Array<any>
         | null
         | undefined;
     value?: string | null | undefined;
@@ -3382,6 +3542,7 @@ export const PreferredLanguage$outboundSchema: z.ZodType<
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),
@@ -3446,6 +3607,7 @@ export const EmployeeSchemasWorkLocationSourceValue$inboundSchema: z.ZodType<
     z.string(),
     z.number(),
     z.boolean(),
+    z.array(z.any()),
 ]);
 
 /** @internal */
@@ -3453,7 +3615,8 @@ export type EmployeeSchemasWorkLocationSourceValue$Outbound =
     | EmployeeSchemasWorkLocation4$Outbound
     | string
     | number
-    | boolean;
+    | boolean
+    | Array<any>;
 
 /** @internal */
 export const EmployeeSchemasWorkLocationSourceValue$outboundSchema: z.ZodType<
@@ -3465,6 +3628,7 @@ export const EmployeeSchemasWorkLocationSourceValue$outboundSchema: z.ZodType<
     z.string(),
     z.number(),
     z.boolean(),
+    z.array(z.any()),
 ]);
 
 /**
@@ -3525,6 +3689,7 @@ export const EmployeeSchemasCountry$inboundSchema: z.ZodType<
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),
@@ -3543,6 +3708,7 @@ export type EmployeeSchemasCountry$Outbound = {
         | string
         | number
         | boolean
+        | Array<any>
         | null
         | undefined;
     value?: string | null | undefined;
@@ -3562,6 +3728,7 @@ export const EmployeeSchemasCountry$outboundSchema: z.ZodType<
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),
@@ -3626,6 +3793,7 @@ export const EmployeeSchemasWorkLocationLocationTypeSourceValue$inboundSchema: z
     z.string(),
     z.number(),
     z.boolean(),
+    z.array(z.any()),
 ]);
 
 /** @internal */
@@ -3633,7 +3801,8 @@ export type EmployeeSchemasWorkLocationLocationTypeSourceValue$Outbound =
     | EmployeeSchemasWorkLocationLocationType4$Outbound
     | string
     | number
-    | boolean;
+    | boolean
+    | Array<any>;
 
 /** @internal */
 export const EmployeeSchemasWorkLocationLocationTypeSourceValue$outboundSchema: z.ZodType<
@@ -3645,6 +3814,7 @@ export const EmployeeSchemasWorkLocationLocationTypeSourceValue$outboundSchema: 
     z.string(),
     z.number(),
     z.boolean(),
+    z.array(z.any()),
 ]);
 
 /**
@@ -3705,6 +3875,7 @@ export const EmployeeSchemasLocationType$inboundSchema: z.ZodType<
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),
@@ -3723,6 +3894,7 @@ export type EmployeeSchemasLocationType$Outbound = {
         | string
         | number
         | boolean
+        | Array<any>
         | null
         | undefined;
     value?: string | null | undefined;
@@ -3742,6 +3914,7 @@ export const EmployeeSchemasLocationType$outboundSchema: z.ZodType<
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),

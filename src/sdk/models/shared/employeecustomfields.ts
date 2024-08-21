@@ -3,53 +3,21 @@
  */
 
 import { remap as remap$ } from "../../../lib/primitives.js";
-import { catchUnrecognizedEnum, OpenEnum, Unrecognized } from "../../types/enums.js";
 import * as z from "zod";
 
 export type EmployeeCustomFields4 = {};
 
-export type EmployeeCustomFieldsOptions = EmployeeCustomFields4 | string | number | boolean;
-
-export type EmployeeCustomFieldsSchemasType4 = {};
-
-export type EmployeeCustomFieldsSourceValue =
-    | EmployeeCustomFieldsSchemasType4
-    | string
-    | number
-    | boolean;
-
-export enum EmployeeCustomFieldsSchemasValue {
-    Date = "date",
-    Float = "float",
-    Integer = "integer",
-    List = "list",
-    Checkbox = "checkbox",
-    Text = "text",
-}
-export type EmployeeCustomFieldsSchemasValueOpen = OpenEnum<
-    typeof EmployeeCustomFieldsSchemasValue
->;
-
-/**
- * The type of the custom field.
- */
-export type EmployeeCustomFieldsType = {
-    sourceValue?: EmployeeCustomFieldsSchemasType4 | string | number | boolean | null | undefined;
-    value?: EmployeeCustomFieldsSchemasValueOpen | null | undefined;
-};
-
-export type EmployeeCustomFieldsSchemas4 = {};
-
 /**
  * The value associated with the custom field.
  */
-export type EmployeeCustomFieldsValue = EmployeeCustomFieldsSchemas4 | string | number | boolean;
+export type EmployeeCustomFieldsValue =
+    | EmployeeCustomFields4
+    | string
+    | number
+    | boolean
+    | Array<any>;
 
 export type EmployeeCustomFields = {
-    /**
-     * The description of the custom field.
-     */
-    description?: string | null | undefined;
     /**
      * Unique identifier
      */
@@ -59,10 +27,6 @@ export type EmployeeCustomFields = {
      */
     name?: string | null | undefined;
     /**
-     * An array of possible options for the custom field.
-     */
-    options?: Array<EmployeeCustomFields4 | string | number | boolean> | null | undefined;
-    /**
      * Provider's unique identifier
      */
     remoteId?: string | null | undefined;
@@ -71,13 +35,9 @@ export type EmployeeCustomFields = {
      */
     remoteValueId?: string | null | undefined;
     /**
-     * The type of the custom field.
-     */
-    type?: EmployeeCustomFieldsType | null | undefined;
-    /**
      * The value associated with the custom field.
      */
-    value?: EmployeeCustomFieldsSchemas4 | string | number | boolean | null | undefined;
+    value?: EmployeeCustomFields4 | string | number | boolean | Array<any> | null | undefined;
     /**
      * The unique identifier for the value of the custom field.
      */
@@ -115,8 +75,8 @@ export namespace EmployeeCustomFields4$ {
 }
 
 /** @internal */
-export const EmployeeCustomFieldsOptions$inboundSchema: z.ZodType<
-    EmployeeCustomFieldsOptions,
+export const EmployeeCustomFieldsValue$inboundSchema: z.ZodType<
+    EmployeeCustomFieldsValue,
     z.ZodTypeDef,
     unknown
 > = z.union([
@@ -124,268 +84,16 @@ export const EmployeeCustomFieldsOptions$inboundSchema: z.ZodType<
     z.string(),
     z.number(),
     z.boolean(),
-]);
-
-/** @internal */
-export type EmployeeCustomFieldsOptions$Outbound =
-    | EmployeeCustomFields4$Outbound
-    | string
-    | number
-    | boolean;
-
-/** @internal */
-export const EmployeeCustomFieldsOptions$outboundSchema: z.ZodType<
-    EmployeeCustomFieldsOptions$Outbound,
-    z.ZodTypeDef,
-    EmployeeCustomFieldsOptions
-> = z.union([
-    z.lazy(() => EmployeeCustomFields4$outboundSchema),
-    z.string(),
-    z.number(),
-    z.boolean(),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EmployeeCustomFieldsOptions$ {
-    /** @deprecated use `EmployeeCustomFieldsOptions$inboundSchema` instead. */
-    export const inboundSchema = EmployeeCustomFieldsOptions$inboundSchema;
-    /** @deprecated use `EmployeeCustomFieldsOptions$outboundSchema` instead. */
-    export const outboundSchema = EmployeeCustomFieldsOptions$outboundSchema;
-    /** @deprecated use `EmployeeCustomFieldsOptions$Outbound` instead. */
-    export type Outbound = EmployeeCustomFieldsOptions$Outbound;
-}
-
-/** @internal */
-export const EmployeeCustomFieldsSchemasType4$inboundSchema: z.ZodType<
-    EmployeeCustomFieldsSchemasType4,
-    z.ZodTypeDef,
-    unknown
-> = z.object({});
-
-/** @internal */
-export type EmployeeCustomFieldsSchemasType4$Outbound = {};
-
-/** @internal */
-export const EmployeeCustomFieldsSchemasType4$outboundSchema: z.ZodType<
-    EmployeeCustomFieldsSchemasType4$Outbound,
-    z.ZodTypeDef,
-    EmployeeCustomFieldsSchemasType4
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EmployeeCustomFieldsSchemasType4$ {
-    /** @deprecated use `EmployeeCustomFieldsSchemasType4$inboundSchema` instead. */
-    export const inboundSchema = EmployeeCustomFieldsSchemasType4$inboundSchema;
-    /** @deprecated use `EmployeeCustomFieldsSchemasType4$outboundSchema` instead. */
-    export const outboundSchema = EmployeeCustomFieldsSchemasType4$outboundSchema;
-    /** @deprecated use `EmployeeCustomFieldsSchemasType4$Outbound` instead. */
-    export type Outbound = EmployeeCustomFieldsSchemasType4$Outbound;
-}
-
-/** @internal */
-export const EmployeeCustomFieldsSourceValue$inboundSchema: z.ZodType<
-    EmployeeCustomFieldsSourceValue,
-    z.ZodTypeDef,
-    unknown
-> = z.union([
-    z.lazy(() => EmployeeCustomFieldsSchemasType4$inboundSchema),
-    z.string(),
-    z.number(),
-    z.boolean(),
-]);
-
-/** @internal */
-export type EmployeeCustomFieldsSourceValue$Outbound =
-    | EmployeeCustomFieldsSchemasType4$Outbound
-    | string
-    | number
-    | boolean;
-
-/** @internal */
-export const EmployeeCustomFieldsSourceValue$outboundSchema: z.ZodType<
-    EmployeeCustomFieldsSourceValue$Outbound,
-    z.ZodTypeDef,
-    EmployeeCustomFieldsSourceValue
-> = z.union([
-    z.lazy(() => EmployeeCustomFieldsSchemasType4$outboundSchema),
-    z.string(),
-    z.number(),
-    z.boolean(),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EmployeeCustomFieldsSourceValue$ {
-    /** @deprecated use `EmployeeCustomFieldsSourceValue$inboundSchema` instead. */
-    export const inboundSchema = EmployeeCustomFieldsSourceValue$inboundSchema;
-    /** @deprecated use `EmployeeCustomFieldsSourceValue$outboundSchema` instead. */
-    export const outboundSchema = EmployeeCustomFieldsSourceValue$outboundSchema;
-    /** @deprecated use `EmployeeCustomFieldsSourceValue$Outbound` instead. */
-    export type Outbound = EmployeeCustomFieldsSourceValue$Outbound;
-}
-
-/** @internal */
-export const EmployeeCustomFieldsSchemasValue$inboundSchema: z.ZodType<
-    EmployeeCustomFieldsSchemasValueOpen,
-    z.ZodTypeDef,
-    unknown
-> = z.union([
-    z.nativeEnum(EmployeeCustomFieldsSchemasValue),
-    z.string().transform(catchUnrecognizedEnum),
-]);
-
-/** @internal */
-export const EmployeeCustomFieldsSchemasValue$outboundSchema: z.ZodType<
-    EmployeeCustomFieldsSchemasValueOpen,
-    z.ZodTypeDef,
-    EmployeeCustomFieldsSchemasValueOpen
-> = z.union([
-    z.nativeEnum(EmployeeCustomFieldsSchemasValue),
-    z.string().and(z.custom<Unrecognized<string>>()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EmployeeCustomFieldsSchemasValue$ {
-    /** @deprecated use `EmployeeCustomFieldsSchemasValue$inboundSchema` instead. */
-    export const inboundSchema = EmployeeCustomFieldsSchemasValue$inboundSchema;
-    /** @deprecated use `EmployeeCustomFieldsSchemasValue$outboundSchema` instead. */
-    export const outboundSchema = EmployeeCustomFieldsSchemasValue$outboundSchema;
-}
-
-/** @internal */
-export const EmployeeCustomFieldsType$inboundSchema: z.ZodType<
-    EmployeeCustomFieldsType,
-    z.ZodTypeDef,
-    unknown
-> = z
-    .object({
-        source_value: z
-            .nullable(
-                z.union([
-                    z.lazy(() => EmployeeCustomFieldsSchemasType4$inboundSchema),
-                    z.string(),
-                    z.number(),
-                    z.boolean(),
-                ])
-            )
-            .optional(),
-        value: z.nullable(EmployeeCustomFieldsSchemasValue$inboundSchema).optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            source_value: "sourceValue",
-        });
-    });
-
-/** @internal */
-export type EmployeeCustomFieldsType$Outbound = {
-    source_value?:
-        | EmployeeCustomFieldsSchemasType4$Outbound
-        | string
-        | number
-        | boolean
-        | null
-        | undefined;
-    value?: string | null | undefined;
-};
-
-/** @internal */
-export const EmployeeCustomFieldsType$outboundSchema: z.ZodType<
-    EmployeeCustomFieldsType$Outbound,
-    z.ZodTypeDef,
-    EmployeeCustomFieldsType
-> = z
-    .object({
-        sourceValue: z
-            .nullable(
-                z.union([
-                    z.lazy(() => EmployeeCustomFieldsSchemasType4$outboundSchema),
-                    z.string(),
-                    z.number(),
-                    z.boolean(),
-                ])
-            )
-            .optional(),
-        value: z.nullable(EmployeeCustomFieldsSchemasValue$outboundSchema).optional(),
-    })
-    .transform((v) => {
-        return remap$(v, {
-            sourceValue: "source_value",
-        });
-    });
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EmployeeCustomFieldsType$ {
-    /** @deprecated use `EmployeeCustomFieldsType$inboundSchema` instead. */
-    export const inboundSchema = EmployeeCustomFieldsType$inboundSchema;
-    /** @deprecated use `EmployeeCustomFieldsType$outboundSchema` instead. */
-    export const outboundSchema = EmployeeCustomFieldsType$outboundSchema;
-    /** @deprecated use `EmployeeCustomFieldsType$Outbound` instead. */
-    export type Outbound = EmployeeCustomFieldsType$Outbound;
-}
-
-/** @internal */
-export const EmployeeCustomFieldsSchemas4$inboundSchema: z.ZodType<
-    EmployeeCustomFieldsSchemas4,
-    z.ZodTypeDef,
-    unknown
-> = z.object({});
-
-/** @internal */
-export type EmployeeCustomFieldsSchemas4$Outbound = {};
-
-/** @internal */
-export const EmployeeCustomFieldsSchemas4$outboundSchema: z.ZodType<
-    EmployeeCustomFieldsSchemas4$Outbound,
-    z.ZodTypeDef,
-    EmployeeCustomFieldsSchemas4
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace EmployeeCustomFieldsSchemas4$ {
-    /** @deprecated use `EmployeeCustomFieldsSchemas4$inboundSchema` instead. */
-    export const inboundSchema = EmployeeCustomFieldsSchemas4$inboundSchema;
-    /** @deprecated use `EmployeeCustomFieldsSchemas4$outboundSchema` instead. */
-    export const outboundSchema = EmployeeCustomFieldsSchemas4$outboundSchema;
-    /** @deprecated use `EmployeeCustomFieldsSchemas4$Outbound` instead. */
-    export type Outbound = EmployeeCustomFieldsSchemas4$Outbound;
-}
-
-/** @internal */
-export const EmployeeCustomFieldsValue$inboundSchema: z.ZodType<
-    EmployeeCustomFieldsValue,
-    z.ZodTypeDef,
-    unknown
-> = z.union([
-    z.lazy(() => EmployeeCustomFieldsSchemas4$inboundSchema),
-    z.string(),
-    z.number(),
-    z.boolean(),
+    z.array(z.any()),
 ]);
 
 /** @internal */
 export type EmployeeCustomFieldsValue$Outbound =
-    | EmployeeCustomFieldsSchemas4$Outbound
+    | EmployeeCustomFields4$Outbound
     | string
     | number
-    | boolean;
+    | boolean
+    | Array<any>;
 
 /** @internal */
 export const EmployeeCustomFieldsValue$outboundSchema: z.ZodType<
@@ -393,10 +101,11 @@ export const EmployeeCustomFieldsValue$outboundSchema: z.ZodType<
     z.ZodTypeDef,
     EmployeeCustomFieldsValue
 > = z.union([
-    z.lazy(() => EmployeeCustomFieldsSchemas4$outboundSchema),
+    z.lazy(() => EmployeeCustomFields4$outboundSchema),
     z.string(),
     z.number(),
     z.boolean(),
+    z.array(z.any()),
 ]);
 
 /**
@@ -419,31 +128,18 @@ export const EmployeeCustomFields$inboundSchema: z.ZodType<
     unknown
 > = z
     .object({
-        description: z.nullable(z.string()).optional(),
         id: z.nullable(z.string()).optional(),
         name: z.nullable(z.string()).optional(),
-        options: z
-            .nullable(
-                z.array(
-                    z.union([
-                        z.lazy(() => EmployeeCustomFields4$inboundSchema),
-                        z.string(),
-                        z.number(),
-                        z.boolean(),
-                    ])
-                )
-            )
-            .optional(),
         remote_id: z.nullable(z.string()).optional(),
         remote_value_id: z.nullable(z.string()).optional(),
-        type: z.nullable(z.lazy(() => EmployeeCustomFieldsType$inboundSchema)).optional(),
         value: z
             .nullable(
                 z.union([
-                    z.lazy(() => EmployeeCustomFieldsSchemas4$inboundSchema),
+                    z.lazy(() => EmployeeCustomFields4$inboundSchema),
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),
@@ -459,14 +155,18 @@ export const EmployeeCustomFields$inboundSchema: z.ZodType<
 
 /** @internal */
 export type EmployeeCustomFields$Outbound = {
-    description?: string | null | undefined;
     id?: string | null | undefined;
     name?: string | null | undefined;
-    options?: Array<EmployeeCustomFields4$Outbound | string | number | boolean> | null | undefined;
     remote_id?: string | null | undefined;
     remote_value_id?: string | null | undefined;
-    type?: EmployeeCustomFieldsType$Outbound | null | undefined;
-    value?: EmployeeCustomFieldsSchemas4$Outbound | string | number | boolean | null | undefined;
+    value?:
+        | EmployeeCustomFields4$Outbound
+        | string
+        | number
+        | boolean
+        | Array<any>
+        | null
+        | undefined;
     value_id?: string | null | undefined;
 };
 
@@ -477,31 +177,18 @@ export const EmployeeCustomFields$outboundSchema: z.ZodType<
     EmployeeCustomFields
 > = z
     .object({
-        description: z.nullable(z.string()).optional(),
         id: z.nullable(z.string()).optional(),
         name: z.nullable(z.string()).optional(),
-        options: z
-            .nullable(
-                z.array(
-                    z.union([
-                        z.lazy(() => EmployeeCustomFields4$outboundSchema),
-                        z.string(),
-                        z.number(),
-                        z.boolean(),
-                    ])
-                )
-            )
-            .optional(),
         remoteId: z.nullable(z.string()).optional(),
         remoteValueId: z.nullable(z.string()).optional(),
-        type: z.nullable(z.lazy(() => EmployeeCustomFieldsType$outboundSchema)).optional(),
         value: z
             .nullable(
                 z.union([
-                    z.lazy(() => EmployeeCustomFieldsSchemas4$outboundSchema),
+                    z.lazy(() => EmployeeCustomFields4$outboundSchema),
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),

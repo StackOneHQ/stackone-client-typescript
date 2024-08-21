@@ -8,7 +8,7 @@ import * as z from "zod";
 
 export type IamMfaTypeEnum4 = {};
 
-export type IamMfaTypeEnumSourceValue = IamMfaTypeEnum4 | string | number | boolean;
+export type IamMfaTypeEnumSourceValue = IamMfaTypeEnum4 | string | number | boolean | Array<any>;
 
 /**
  * The unified value for the type of multi-factor authentication. If the provider does not send back a type but does specify that MFA is set-up for this user, the value will be set to 'unknown'.'
@@ -27,7 +27,7 @@ export enum IamMfaTypeEnumValue {
 export type IamMfaTypeEnumValueOpen = OpenEnum<typeof IamMfaTypeEnumValue>;
 
 export type IamMfaTypeEnum = {
-    sourceValue?: IamMfaTypeEnum4 | string | number | boolean | null | undefined;
+    sourceValue?: IamMfaTypeEnum4 | string | number | boolean | Array<any> | null | undefined;
     /**
      * The unified value for the type of multi-factor authentication. If the provider does not send back a type but does specify that MFA is set-up for this user, the value will be set to 'unknown'.'
      */
@@ -66,21 +66,34 @@ export const IamMfaTypeEnumSourceValue$inboundSchema: z.ZodType<
     IamMfaTypeEnumSourceValue,
     z.ZodTypeDef,
     unknown
-> = z.union([z.lazy(() => IamMfaTypeEnum4$inboundSchema), z.string(), z.number(), z.boolean()]);
+> = z.union([
+    z.lazy(() => IamMfaTypeEnum4$inboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+    z.array(z.any()),
+]);
 
 /** @internal */
 export type IamMfaTypeEnumSourceValue$Outbound =
     | IamMfaTypeEnum4$Outbound
     | string
     | number
-    | boolean;
+    | boolean
+    | Array<any>;
 
 /** @internal */
 export const IamMfaTypeEnumSourceValue$outboundSchema: z.ZodType<
     IamMfaTypeEnumSourceValue$Outbound,
     z.ZodTypeDef,
     IamMfaTypeEnumSourceValue
-> = z.union([z.lazy(() => IamMfaTypeEnum4$outboundSchema), z.string(), z.number(), z.boolean()]);
+> = z.union([
+    z.lazy(() => IamMfaTypeEnum4$outboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+    z.array(z.any()),
+]);
 
 /**
  * @internal
@@ -130,6 +143,7 @@ export const IamMfaTypeEnum$inboundSchema: z.ZodType<IamMfaTypeEnum, z.ZodTypeDe
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),
@@ -143,7 +157,14 @@ export const IamMfaTypeEnum$inboundSchema: z.ZodType<IamMfaTypeEnum, z.ZodTypeDe
 
 /** @internal */
 export type IamMfaTypeEnum$Outbound = {
-    source_value?: IamMfaTypeEnum4$Outbound | string | number | boolean | null | undefined;
+    source_value?:
+        | IamMfaTypeEnum4$Outbound
+        | string
+        | number
+        | boolean
+        | Array<any>
+        | null
+        | undefined;
     value?: string | null | undefined;
 };
 
@@ -161,6 +182,7 @@ export const IamMfaTypeEnum$outboundSchema: z.ZodType<
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),

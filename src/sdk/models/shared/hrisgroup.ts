@@ -8,7 +8,7 @@ import * as z from "zod";
 
 export type HRISGroup4 = {};
 
-export type HRISGroupSourceValue = HRISGroup4 | string | number | boolean;
+export type HRISGroupSourceValue = HRISGroup4 | string | number | boolean | Array<any>;
 
 export enum HRISGroupValue {
     Workspace = "workspace",
@@ -24,7 +24,7 @@ export type HRISGroupValueOpen = OpenEnum<typeof HRISGroupValue>;
  * The type of the group
  */
 export type HRISGroupType = {
-    sourceValue?: HRISGroup4 | string | number | boolean | null | undefined;
+    sourceValue?: HRISGroup4 | string | number | boolean | Array<any> | null | undefined;
     value?: HRISGroupValueOpen | null | undefined;
 };
 
@@ -87,17 +87,34 @@ export const HRISGroupSourceValue$inboundSchema: z.ZodType<
     HRISGroupSourceValue,
     z.ZodTypeDef,
     unknown
-> = z.union([z.lazy(() => HRISGroup4$inboundSchema), z.string(), z.number(), z.boolean()]);
+> = z.union([
+    z.lazy(() => HRISGroup4$inboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+    z.array(z.any()),
+]);
 
 /** @internal */
-export type HRISGroupSourceValue$Outbound = HRISGroup4$Outbound | string | number | boolean;
+export type HRISGroupSourceValue$Outbound =
+    | HRISGroup4$Outbound
+    | string
+    | number
+    | boolean
+    | Array<any>;
 
 /** @internal */
 export const HRISGroupSourceValue$outboundSchema: z.ZodType<
     HRISGroupSourceValue$Outbound,
     z.ZodTypeDef,
     HRISGroupSourceValue
-> = z.union([z.lazy(() => HRISGroup4$outboundSchema), z.string(), z.number(), z.boolean()]);
+> = z.union([
+    z.lazy(() => HRISGroup4$outboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+    z.array(z.any()),
+]);
 
 /**
  * @internal
@@ -144,6 +161,7 @@ export const HRISGroupType$inboundSchema: z.ZodType<HRISGroupType, z.ZodTypeDef,
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),
@@ -157,7 +175,7 @@ export const HRISGroupType$inboundSchema: z.ZodType<HRISGroupType, z.ZodTypeDef,
 
 /** @internal */
 export type HRISGroupType$Outbound = {
-    source_value?: HRISGroup4$Outbound | string | number | boolean | null | undefined;
+    source_value?: HRISGroup4$Outbound | string | number | boolean | Array<any> | null | undefined;
     value?: string | null | undefined;
 };
 
@@ -175,6 +193,7 @@ export const HRISGroupType$outboundSchema: z.ZodType<
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),

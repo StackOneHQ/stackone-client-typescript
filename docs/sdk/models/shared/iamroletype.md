@@ -1,5 +1,14 @@
 # IamRoleType
 
+## Example Usage
+
+```typescript
+import { IamRoleType, IamRoleValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: IamRoleType = {
+    value: IamRoleValue.Admin,
+};
+```
 
 ## Fields
 

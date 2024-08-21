@@ -2,6 +2,13 @@
 
 The source value of the Status.
 
+## Example Usage
+
+```typescript
+import { CampaignSchemasSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: CampaignSchemasSourceValue = "Email";
+```
 
 ## Supported Types
 
@@ -27,5 +34,11 @@ const value: boolean = /* values here */
 
 ```typescript
 const value: shared.CampaignSchemas4 = /* values here */
+```
+
+### `any[]`
+
+```typescript
+const value: any[] = /* values here */
 ```
 

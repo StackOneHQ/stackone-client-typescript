@@ -1,5 +1,16 @@
 # HrisGetDepartmentGroupRequest
 
+## Example Usage
+
+```typescript
+import { HrisGetDepartmentGroupRequest } from "@stackone/stackone-client-ts/sdk/models/operations";
+
+let value: HrisGetDepartmentGroupRequest = {
+    fields: "id,remote_id,name",
+    id: "<id>",
+    xAccountId: "<value>",
+};
+```
 
 ## Fields
 

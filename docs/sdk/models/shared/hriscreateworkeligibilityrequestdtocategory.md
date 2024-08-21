@@ -2,6 +2,13 @@
 
 The category of the file
 
+## Example Usage
+
+```typescript
+import { HrisCreateWorkEligibilityRequestDtoCategory } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: HrisCreateWorkEligibilityRequestDtoCategory = {};
+```
 
 ## Fields
 

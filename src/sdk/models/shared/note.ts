@@ -17,7 +17,7 @@ export type Note4 = {};
 /**
  * The source value of the notes visibility.
  */
-export type NoteSourceValue = Note4 | string | number | boolean;
+export type NoteSourceValue = Note4 | string | number | boolean | Array<any>;
 
 /**
  * The visibility of the notes.
@@ -38,7 +38,7 @@ export type NoteVisibility = {
     /**
      * The source value of the notes visibility.
      */
-    sourceValue?: Note4 | string | number | boolean | null | undefined;
+    sourceValue?: Note4 | string | number | boolean | Array<any> | null | undefined;
     /**
      * The visibility of the notes.
      */
@@ -105,17 +105,29 @@ export namespace Note4$ {
 
 /** @internal */
 export const NoteSourceValue$inboundSchema: z.ZodType<NoteSourceValue, z.ZodTypeDef, unknown> =
-    z.union([z.lazy(() => Note4$inboundSchema), z.string(), z.number(), z.boolean()]);
+    z.union([
+        z.lazy(() => Note4$inboundSchema),
+        z.string(),
+        z.number(),
+        z.boolean(),
+        z.array(z.any()),
+    ]);
 
 /** @internal */
-export type NoteSourceValue$Outbound = Note4$Outbound | string | number | boolean;
+export type NoteSourceValue$Outbound = Note4$Outbound | string | number | boolean | Array<any>;
 
 /** @internal */
 export const NoteSourceValue$outboundSchema: z.ZodType<
     NoteSourceValue$Outbound,
     z.ZodTypeDef,
     NoteSourceValue
-> = z.union([z.lazy(() => Note4$outboundSchema), z.string(), z.number(), z.boolean()]);
+> = z.union([
+    z.lazy(() => Note4$outboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+    z.array(z.any()),
+]);
 
 /**
  * @internal
@@ -156,7 +168,13 @@ export const NoteVisibility$inboundSchema: z.ZodType<NoteVisibility, z.ZodTypeDe
     .object({
         source_value: z
             .nullable(
-                z.union([z.lazy(() => Note4$inboundSchema), z.string(), z.number(), z.boolean()])
+                z.union([
+                    z.lazy(() => Note4$inboundSchema),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                    z.array(z.any()),
+                ])
             )
             .optional(),
         value: z.nullable(NoteValue$inboundSchema).optional(),
@@ -169,7 +187,7 @@ export const NoteVisibility$inboundSchema: z.ZodType<NoteVisibility, z.ZodTypeDe
 
 /** @internal */
 export type NoteVisibility$Outbound = {
-    source_value?: Note4$Outbound | string | number | boolean | null | undefined;
+    source_value?: Note4$Outbound | string | number | boolean | Array<any> | null | undefined;
     value?: string | null | undefined;
 };
 
@@ -182,7 +200,13 @@ export const NoteVisibility$outboundSchema: z.ZodType<
     .object({
         sourceValue: z
             .nullable(
-                z.union([z.lazy(() => Note4$outboundSchema), z.string(), z.number(), z.boolean()])
+                z.union([
+                    z.lazy(() => Note4$outboundSchema),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                    z.array(z.any()),
+                ])
             )
             .optional(),
         value: z.nullable(NoteValue$outboundSchema).optional(),

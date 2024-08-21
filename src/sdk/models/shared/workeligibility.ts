@@ -18,13 +18,21 @@ export type WorkEligibilitySchemasDocumentSourceValue =
     | WorkEligibilitySchemasDocument4
     | string
     | number
-    | boolean;
+    | boolean
+    | Array<any>;
 
 /**
  * The category of the file
  */
 export type WorkEligibilityCategory = {
-    sourceValue?: WorkEligibilitySchemasDocument4 | string | number | boolean | null | undefined;
+    sourceValue?:
+        | WorkEligibilitySchemasDocument4
+        | string
+        | number
+        | boolean
+        | Array<any>
+        | null
+        | undefined;
     /**
      * The category of the file
      */
@@ -37,7 +45,8 @@ export type WorkEligibilitySchemasSourceValue =
     | WorkEligibilitySchemasDocumentFileFormat4
     | string
     | number
-    | boolean;
+    | boolean
+    | Array<any>;
 
 /**
  * The file format of the file, expressed as a file extension
@@ -1270,6 +1279,7 @@ export type WorkEligibilityFileFormat = {
         | string
         | number
         | boolean
+        | Array<any>
         | null
         | undefined;
     /**
@@ -1283,6 +1293,10 @@ export type WorkEligibilityDocument = {
      * The category of the file
      */
     category?: WorkEligibilityCategory | null | undefined;
+    /**
+     * The categoryId of the documents
+     */
+    categoryId?: string | null | undefined;
     /**
      * The content of the file. Deprecated, use `url` and `file_format` one level up instead
      *
@@ -1325,7 +1339,7 @@ export type WorkEligibilityDocument = {
 
 export type WorkEligibility4 = {};
 
-export type WorkEligibilitySourceValue = WorkEligibility4 | string | number | boolean;
+export type WorkEligibilitySourceValue = WorkEligibility4 | string | number | boolean | Array<any>;
 
 /**
  * The ISO3166-1 Alpha2 Code of the Country
@@ -1590,7 +1604,7 @@ export type WorkEligibilityValueOpen = OpenEnum<typeof WorkEligibilityValue>;
  * The country code of the issued by authority
  */
 export type WorkEligibilityIssuedBy = {
-    sourceValue?: WorkEligibility4 | string | number | boolean | null | undefined;
+    sourceValue?: WorkEligibility4 | string | number | boolean | Array<any> | null | undefined;
     /**
      * The ISO3166-1 Alpha2 Code of the Country
      */
@@ -1599,7 +1613,12 @@ export type WorkEligibilityIssuedBy = {
 
 export type WorkEligibilitySchemas4 = {};
 
-export type WorkEligibilitySourceType = WorkEligibilitySchemas4 | string | number | boolean;
+export type WorkEligibilitySourceType =
+    | WorkEligibilitySchemas4
+    | string
+    | number
+    | boolean
+    | Array<any>;
 
 export enum WorkEligibilitySchemasValue {
     Visa = "visa",
@@ -1611,7 +1630,14 @@ export enum WorkEligibilitySchemasValue {
 export type WorkEligibilitySchemasValueOpen = OpenEnum<typeof WorkEligibilitySchemasValue>;
 
 export type WorkEligibilityType = {
-    sourceType?: WorkEligibilitySchemas4 | string | number | boolean | null | undefined;
+    sourceType?:
+        | WorkEligibilitySchemas4
+        | string
+        | number
+        | boolean
+        | Array<any>
+        | null
+        | undefined;
     value?: WorkEligibilitySchemasValueOpen | null | undefined;
 };
 
@@ -1676,6 +1702,7 @@ export const WorkEligibilitySchemasDocumentSourceValue$inboundSchema: z.ZodType<
     z.string(),
     z.number(),
     z.boolean(),
+    z.array(z.any()),
 ]);
 
 /** @internal */
@@ -1683,7 +1710,8 @@ export type WorkEligibilitySchemasDocumentSourceValue$Outbound =
     | WorkEligibilitySchemasDocument4$Outbound
     | string
     | number
-    | boolean;
+    | boolean
+    | Array<any>;
 
 /** @internal */
 export const WorkEligibilitySchemasDocumentSourceValue$outboundSchema: z.ZodType<
@@ -1695,6 +1723,7 @@ export const WorkEligibilitySchemasDocumentSourceValue$outboundSchema: z.ZodType
     z.string(),
     z.number(),
     z.boolean(),
+    z.array(z.any()),
 ]);
 
 /**
@@ -1724,6 +1753,7 @@ export const WorkEligibilityCategory$inboundSchema: z.ZodType<
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),
@@ -1742,6 +1772,7 @@ export type WorkEligibilityCategory$Outbound = {
         | string
         | number
         | boolean
+        | Array<any>
         | null
         | undefined;
     value?: string | null | undefined;
@@ -1761,6 +1792,7 @@ export const WorkEligibilityCategory$outboundSchema: z.ZodType<
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),
@@ -1825,6 +1857,7 @@ export const WorkEligibilitySchemasSourceValue$inboundSchema: z.ZodType<
     z.string(),
     z.number(),
     z.boolean(),
+    z.array(z.any()),
 ]);
 
 /** @internal */
@@ -1832,7 +1865,8 @@ export type WorkEligibilitySchemasSourceValue$Outbound =
     | WorkEligibilitySchemasDocumentFileFormat4$Outbound
     | string
     | number
-    | boolean;
+    | boolean
+    | Array<any>;
 
 /** @internal */
 export const WorkEligibilitySchemasSourceValue$outboundSchema: z.ZodType<
@@ -1844,6 +1878,7 @@ export const WorkEligibilitySchemasSourceValue$outboundSchema: z.ZodType<
     z.string(),
     z.number(),
     z.boolean(),
+    z.array(z.any()),
 ]);
 
 /**
@@ -1904,6 +1939,7 @@ export const WorkEligibilityFileFormat$inboundSchema: z.ZodType<
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),
@@ -1922,6 +1958,7 @@ export type WorkEligibilityFileFormat$Outbound = {
         | string
         | number
         | boolean
+        | Array<any>
         | null
         | undefined;
     value?: string | null | undefined;
@@ -1941,6 +1978,7 @@ export const WorkEligibilityFileFormat$outboundSchema: z.ZodType<
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),
@@ -1973,6 +2011,7 @@ export const WorkEligibilityDocument$inboundSchema: z.ZodType<
 > = z
     .object({
         category: z.nullable(z.lazy(() => WorkEligibilityCategory$inboundSchema)).optional(),
+        category_id: z.nullable(z.string()).optional(),
         contents: z.nullable(z.array(Content$inboundSchema)).optional(),
         created_at: z
             .nullable(
@@ -1999,6 +2038,7 @@ export const WorkEligibilityDocument$inboundSchema: z.ZodType<
     })
     .transform((v) => {
         return remap$(v, {
+            category_id: "categoryId",
             created_at: "createdAt",
             file_format: "fileFormat",
             remote_id: "remoteId",
@@ -2010,6 +2050,7 @@ export const WorkEligibilityDocument$inboundSchema: z.ZodType<
 /** @internal */
 export type WorkEligibilityDocument$Outbound = {
     category?: WorkEligibilityCategory$Outbound | null | undefined;
+    category_id?: string | null | undefined;
     contents?: Array<Content$Outbound> | null | undefined;
     created_at?: string | null | undefined;
     file_format?: WorkEligibilityFileFormat$Outbound | null | undefined;
@@ -2029,6 +2070,7 @@ export const WorkEligibilityDocument$outboundSchema: z.ZodType<
 > = z
     .object({
         category: z.nullable(z.lazy(() => WorkEligibilityCategory$outboundSchema)).optional(),
+        categoryId: z.nullable(z.string()).optional(),
         contents: z.nullable(z.array(Content$outboundSchema)).optional(),
         createdAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
         fileFormat: z.nullable(z.lazy(() => WorkEligibilityFileFormat$outboundSchema)).optional(),
@@ -2041,6 +2083,7 @@ export const WorkEligibilityDocument$outboundSchema: z.ZodType<
     })
     .transform((v) => {
         return remap$(v, {
+            categoryId: "category_id",
             createdAt: "created_at",
             fileFormat: "file_format",
             remoteId: "remote_id",
@@ -2094,21 +2137,34 @@ export const WorkEligibilitySourceValue$inboundSchema: z.ZodType<
     WorkEligibilitySourceValue,
     z.ZodTypeDef,
     unknown
-> = z.union([z.lazy(() => WorkEligibility4$inboundSchema), z.string(), z.number(), z.boolean()]);
+> = z.union([
+    z.lazy(() => WorkEligibility4$inboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+    z.array(z.any()),
+]);
 
 /** @internal */
 export type WorkEligibilitySourceValue$Outbound =
     | WorkEligibility4$Outbound
     | string
     | number
-    | boolean;
+    | boolean
+    | Array<any>;
 
 /** @internal */
 export const WorkEligibilitySourceValue$outboundSchema: z.ZodType<
     WorkEligibilitySourceValue$Outbound,
     z.ZodTypeDef,
     WorkEligibilitySourceValue
-> = z.union([z.lazy(() => WorkEligibility4$outboundSchema), z.string(), z.number(), z.boolean()]);
+> = z.union([
+    z.lazy(() => WorkEligibility4$outboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+    z.array(z.any()),
+]);
 
 /**
  * @internal
@@ -2162,6 +2218,7 @@ export const WorkEligibilityIssuedBy$inboundSchema: z.ZodType<
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),
@@ -2175,7 +2232,14 @@ export const WorkEligibilityIssuedBy$inboundSchema: z.ZodType<
 
 /** @internal */
 export type WorkEligibilityIssuedBy$Outbound = {
-    source_value?: WorkEligibility4$Outbound | string | number | boolean | null | undefined;
+    source_value?:
+        | WorkEligibility4$Outbound
+        | string
+        | number
+        | boolean
+        | Array<any>
+        | null
+        | undefined;
     value?: string | null | undefined;
 };
 
@@ -2193,6 +2257,7 @@ export const WorkEligibilityIssuedBy$outboundSchema: z.ZodType<
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),
@@ -2257,6 +2322,7 @@ export const WorkEligibilitySourceType$inboundSchema: z.ZodType<
     z.string(),
     z.number(),
     z.boolean(),
+    z.array(z.any()),
 ]);
 
 /** @internal */
@@ -2264,7 +2330,8 @@ export type WorkEligibilitySourceType$Outbound =
     | WorkEligibilitySchemas4$Outbound
     | string
     | number
-    | boolean;
+    | boolean
+    | Array<any>;
 
 /** @internal */
 export const WorkEligibilitySourceType$outboundSchema: z.ZodType<
@@ -2276,6 +2343,7 @@ export const WorkEligibilitySourceType$outboundSchema: z.ZodType<
     z.string(),
     z.number(),
     z.boolean(),
+    z.array(z.any()),
 ]);
 
 /**
@@ -2336,6 +2404,7 @@ export const WorkEligibilityType$inboundSchema: z.ZodType<
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),
@@ -2349,7 +2418,14 @@ export const WorkEligibilityType$inboundSchema: z.ZodType<
 
 /** @internal */
 export type WorkEligibilityType$Outbound = {
-    source_type?: WorkEligibilitySchemas4$Outbound | string | number | boolean | null | undefined;
+    source_type?:
+        | WorkEligibilitySchemas4$Outbound
+        | string
+        | number
+        | boolean
+        | Array<any>
+        | null
+        | undefined;
     value?: string | null | undefined;
 };
 
@@ -2367,6 +2443,7 @@ export const WorkEligibilityType$outboundSchema: z.ZodType<
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),

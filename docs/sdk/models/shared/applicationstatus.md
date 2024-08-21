@@ -1,5 +1,15 @@
 # ApplicationStatus
 
+## Example Usage
+
+```typescript
+import { ApplicationStatus, ApplicationValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: ApplicationStatus = {
+    sourceValue: {},
+    value: ApplicationValue.Hired,
+};
+```
 
 ## Fields
 

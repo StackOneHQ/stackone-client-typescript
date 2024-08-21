@@ -2,6 +2,42 @@
 
 Candidate Properties. Provide this OR candidate_id, but not both. Providing this attempts to create a new candidate with the application.
 
+## Example Usage
+
+```typescript
+import { AtsCreateApplicationRequestDtoCandidate } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: AtsCreateApplicationRequestDtoCandidate = {
+    company: "Company Inc.",
+    country: "United States",
+    customFields: [
+        {
+            id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+            name: "Training Completion Status",
+            remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+            remoteValueId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
+            value: true,
+            valueId: "value_456",
+        },
+    ],
+    email: "sestier.romain123@gmail.com",
+    firstName: "Romain",
+    hiredAt: new Date("2021-01-01T01:01:01.000Z"),
+    lastName: "Sestier",
+    name: "Romain Sestier",
+    passthrough: {
+        other_known_names: "John Doe",
+    },
+    phoneNumber: "+1234567890",
+    socialLinks: [
+        {
+            type: "linkedin",
+            url: "https://www.linkedin.com/in/romainsestier/",
+        },
+    ],
+    title: "Software Engineer",
+};
+```
 
 ## Fields
 
@@ -15,7 +51,7 @@ Candidate Properties. Provide this OR candidate_id, but not both. Providing this
 | `hiredAt`                                                                                     | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) | :heavy_minus_sign:                                                                            | Candidate hired date                                                                          | 2021-01-01T01:01:01.000Z                                                                      |
 | `lastName`                                                                                    | *string*                                                                                      | :heavy_minus_sign:                                                                            | Candidate last name                                                                           | Sestier                                                                                       |
 | `name`                                                                                        | *string*                                                                                      | :heavy_minus_sign:                                                                            | Candidate name                                                                                | Romain Sestier                                                                                |
-| `passthrough`                                                                                 | Record<string, *any*>                                                                         | :heavy_minus_sign:                                                                            | Value to pass through to the provider                                                         | {"other_known_names": "John Doe"}                                                             |
+| `passthrough`                                                                                 | Record<string, *any*>                                                                         | :heavy_minus_sign:                                                                            | Value to pass through to the provider                                                         | {<br/>"other_known_names": "John Doe"<br/>}                                                   |
 | `phoneNumber`                                                                                 | *string*                                                                                      | :heavy_minus_sign:                                                                            | The candidate personal phone number                                                           | +1234567890                                                                                   |
 | `socialLinks`                                                                                 | [shared.SocialLink](../../../sdk/models/shared/sociallink.md)[]                               | :heavy_minus_sign:                                                                            | List of candidate social links                                                                |                                                                                               |
 | `title`                                                                                       | *string*                                                                                      | :heavy_minus_sign:                                                                            | Candidate title                                                                               | Software Engineer                                                                             |

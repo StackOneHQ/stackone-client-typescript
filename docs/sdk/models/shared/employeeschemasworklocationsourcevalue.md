@@ -1,5 +1,12 @@
 # EmployeeSchemasWorkLocationSourceValue
 
+## Example Usage
+
+```typescript
+import { EmployeeSchemasWorkLocationSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: EmployeeSchemasWorkLocationSourceValue = "<value>";
+```
 
 ## Supported Types
 
@@ -25,5 +32,11 @@ const value: boolean = /* values here */
 
 ```typescript
 const value: shared.EmployeeSchemasWorkLocation4 = /* values here */
+```
+
+### `any[]`
+
+```typescript
+const value: any[] = /* values here */
 ```
 

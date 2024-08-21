@@ -1,5 +1,16 @@
 # LmsGetCategoryRequest
 
+## Example Usage
+
+```typescript
+import { LmsGetCategoryRequest } from "@stackone/stackone-client-ts/sdk/models/operations";
+
+let value: LmsGetCategoryRequest = {
+    fields: "id,remote_id,name,active",
+    id: "<id>",
+    xAccountId: "<value>",
+};
+```
 
 ## Fields
 

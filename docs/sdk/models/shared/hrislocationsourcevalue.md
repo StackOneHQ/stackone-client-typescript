@@ -1,5 +1,12 @@
 # HRISLocationSourceValue
 
+## Example Usage
+
+```typescript
+import { HRISLocationSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: HRISLocationSourceValue = ["<value>"];
+```
 
 ## Supported Types
 
@@ -25,5 +32,11 @@ const value: boolean = /* values here */
 
 ```typescript
 const value: shared.HRISLocation4 = /* values here */
+```
+
+### `any[]`
+
+```typescript
+const value: any[] = /* values here */
 ```
 

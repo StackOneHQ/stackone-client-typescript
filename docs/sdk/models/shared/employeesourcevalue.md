@@ -1,5 +1,12 @@
 # EmployeeSourceValue
 
+## Example Usage
+
+```typescript
+import { EmployeeSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: EmployeeSourceValue = false;
+```
 
 ## Supported Types
 
@@ -25,5 +32,11 @@ const value: boolean = /* values here */
 
 ```typescript
 const value: shared.Employee4 = /* values here */
+```
+
+### `any[]`
+
+```typescript
+const value: any[] = /* values here */
 ```
 

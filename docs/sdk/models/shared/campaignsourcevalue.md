@@ -2,6 +2,13 @@
 
 The source value of the schedule type.
 
+## Example Usage
+
+```typescript
+import { CampaignSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: CampaignSourceValue = "Immediate";
+```
 
 ## Supported Types
 
@@ -27,5 +34,11 @@ const value: boolean = /* values here */
 
 ```typescript
 const value: shared.Campaign4 = /* values here */
+```
+
+### `any[]`
+
+```typescript
+const value: any[] = /* values here */
 ```
 

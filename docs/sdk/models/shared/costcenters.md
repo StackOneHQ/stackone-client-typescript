@@ -1,5 +1,15 @@
 # CostCenters
 
+## Example Usage
+
+```typescript
+import { CostCenters } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: CostCenters = {
+    distributionPercentage: 100,
+    name: "R&D",
+};
+```
 
 ## Fields
 

@@ -2,10 +2,20 @@
 
 Whether the file is confidential or not
 
+## Example Usage
+
+```typescript
+import { UnifiedUploadRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: UnifiedUploadRequestDtoValue = UnifiedUploadRequestDtoValue.True;
+```
 
 ## Values
 
-| Name    | Value   |
-| ------- | ------- |
-| `True`  | true    |
-| `False` | false   |
+This is an open enum. Unrecognized values will be captured as the `Unrecognized<string>` branded type.
+
+| Name                   | Value                  |
+| ---------------------- | ---------------------- |
+| `True`                 | true                   |
+| `False`                | false                  |
+| -                      | `Unrecognized<string>` |

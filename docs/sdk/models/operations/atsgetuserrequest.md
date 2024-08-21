@@ -1,5 +1,16 @@
 # AtsGetUserRequest
 
+## Example Usage
+
+```typescript
+import { AtsGetUserRequest } from "@stackone/stackone-client-ts/sdk/models/operations";
+
+let value: AtsGetUserRequest = {
+    fields: "id,remote_id,first_name,last_name,name,email",
+    id: "<id>",
+    xAccountId: "<value>",
+};
+```
 
 ## Fields
 

@@ -2,6 +2,13 @@
 
 Indicates if the field is required
 
+## Example Usage
+
+```typescript
+import { RequiredT } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: RequiredT = true;
+```
 
 ## Supported Types
 

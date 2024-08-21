@@ -17,7 +17,7 @@ export type List4 = {};
 /**
  * The source value of the list type.
  */
-export type ListSourceValue = List4 | string | number | boolean;
+export type ListSourceValue = List4 | string | number | boolean | Array<any>;
 
 /**
  * The type of the list.
@@ -40,7 +40,7 @@ export type ListType = {
     /**
      * The source value of the list type.
      */
-    sourceValue?: List4 | string | number | boolean | null | undefined;
+    sourceValue?: List4 | string | number | boolean | Array<any> | null | undefined;
     /**
      * The type of the list.
      */
@@ -96,17 +96,29 @@ export namespace List4$ {
 
 /** @internal */
 export const ListSourceValue$inboundSchema: z.ZodType<ListSourceValue, z.ZodTypeDef, unknown> =
-    z.union([z.lazy(() => List4$inboundSchema), z.string(), z.number(), z.boolean()]);
+    z.union([
+        z.lazy(() => List4$inboundSchema),
+        z.string(),
+        z.number(),
+        z.boolean(),
+        z.array(z.any()),
+    ]);
 
 /** @internal */
-export type ListSourceValue$Outbound = List4$Outbound | string | number | boolean;
+export type ListSourceValue$Outbound = List4$Outbound | string | number | boolean | Array<any>;
 
 /** @internal */
 export const ListSourceValue$outboundSchema: z.ZodType<
     ListSourceValue$Outbound,
     z.ZodTypeDef,
     ListSourceValue
-> = z.union([z.lazy(() => List4$outboundSchema), z.string(), z.number(), z.boolean()]);
+> = z.union([
+    z.lazy(() => List4$outboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+    z.array(z.any()),
+]);
 
 /**
  * @internal
@@ -147,7 +159,13 @@ export const ListType$inboundSchema: z.ZodType<ListType, z.ZodTypeDef, unknown> 
     .object({
         source_value: z
             .nullable(
-                z.union([z.lazy(() => List4$inboundSchema), z.string(), z.number(), z.boolean()])
+                z.union([
+                    z.lazy(() => List4$inboundSchema),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                    z.array(z.any()),
+                ])
             )
             .optional(),
         value: z.nullable(ListValue$inboundSchema).optional(),
@@ -160,7 +178,7 @@ export const ListType$inboundSchema: z.ZodType<ListType, z.ZodTypeDef, unknown> 
 
 /** @internal */
 export type ListType$Outbound = {
-    source_value?: List4$Outbound | string | number | boolean | null | undefined;
+    source_value?: List4$Outbound | string | number | boolean | Array<any> | null | undefined;
     value?: string | null | undefined;
 };
 
@@ -169,7 +187,13 @@ export const ListType$outboundSchema: z.ZodType<ListType$Outbound, z.ZodTypeDef,
     .object({
         sourceValue: z
             .nullable(
-                z.union([z.lazy(() => List4$outboundSchema), z.string(), z.number(), z.boolean()])
+                z.union([
+                    z.lazy(() => List4$outboundSchema),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                    z.array(z.any()),
+                ])
             )
             .optional(),
         value: z.nullable(ListValue$outboundSchema).optional(),

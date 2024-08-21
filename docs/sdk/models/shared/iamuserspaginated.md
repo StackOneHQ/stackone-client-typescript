@@ -1,5 +1,14 @@
 # IamUsersPaginated
 
+## Example Usage
+
+```typescript
+import { IamUsersPaginated } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: IamUsersPaginated = {
+    data: [],
+};
+```
 
 ## Fields
 

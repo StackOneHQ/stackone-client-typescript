@@ -44,7 +44,7 @@ export type Interview4 = {};
 /**
  * The source value of the interview status.
  */
-export type InterviewSourceValue = Interview4 | string | number | boolean;
+export type InterviewSourceValue = Interview4 | string | number | boolean | Array<any>;
 
 /**
  * The status of the interview.
@@ -66,7 +66,7 @@ export type InterviewStatus = {
     /**
      * The source value of the interview status.
      */
-    sourceValue?: Interview4 | string | number | boolean | null | undefined;
+    sourceValue?: Interview4 | string | number | boolean | Array<any> | null | undefined;
     /**
      * The status of the interview.
      */
@@ -229,17 +229,34 @@ export const InterviewSourceValue$inboundSchema: z.ZodType<
     InterviewSourceValue,
     z.ZodTypeDef,
     unknown
-> = z.union([z.lazy(() => Interview4$inboundSchema), z.string(), z.number(), z.boolean()]);
+> = z.union([
+    z.lazy(() => Interview4$inboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+    z.array(z.any()),
+]);
 
 /** @internal */
-export type InterviewSourceValue$Outbound = Interview4$Outbound | string | number | boolean;
+export type InterviewSourceValue$Outbound =
+    | Interview4$Outbound
+    | string
+    | number
+    | boolean
+    | Array<any>;
 
 /** @internal */
 export const InterviewSourceValue$outboundSchema: z.ZodType<
     InterviewSourceValue$Outbound,
     z.ZodTypeDef,
     InterviewSourceValue
-> = z.union([z.lazy(() => Interview4$outboundSchema), z.string(), z.number(), z.boolean()]);
+> = z.union([
+    z.lazy(() => Interview4$outboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+    z.array(z.any()),
+]);
 
 /**
  * @internal
@@ -286,6 +303,7 @@ export const InterviewStatus$inboundSchema: z.ZodType<InterviewStatus, z.ZodType
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),
@@ -299,7 +317,7 @@ export const InterviewStatus$inboundSchema: z.ZodType<InterviewStatus, z.ZodType
 
 /** @internal */
 export type InterviewStatus$Outbound = {
-    source_value?: Interview4$Outbound | string | number | boolean | null | undefined;
+    source_value?: Interview4$Outbound | string | number | boolean | Array<any> | null | undefined;
     value?: string | null | undefined;
 };
 
@@ -317,6 +335,7 @@ export const InterviewStatus$outboundSchema: z.ZodType<
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),

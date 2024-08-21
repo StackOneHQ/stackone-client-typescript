@@ -44,7 +44,12 @@ export type ScheduledInterview4 = {};
 /**
  * The source value of the interview status.
  */
-export type ScheduledInterviewSourceValue = ScheduledInterview4 | string | number | boolean;
+export type ScheduledInterviewSourceValue =
+    | ScheduledInterview4
+    | string
+    | number
+    | boolean
+    | Array<any>;
 
 /**
  * The status of the interview.
@@ -66,7 +71,7 @@ export type ScheduledInterviewInterviewStatus = {
     /**
      * The source value of the interview status.
      */
-    sourceValue?: ScheduledInterview4 | string | number | boolean | null | undefined;
+    sourceValue?: ScheduledInterview4 | string | number | boolean | Array<any> | null | undefined;
     /**
      * The status of the interview.
      */
@@ -236,14 +241,21 @@ export const ScheduledInterviewSourceValue$inboundSchema: z.ZodType<
     ScheduledInterviewSourceValue,
     z.ZodTypeDef,
     unknown
-> = z.union([z.lazy(() => ScheduledInterview4$inboundSchema), z.string(), z.number(), z.boolean()]);
+> = z.union([
+    z.lazy(() => ScheduledInterview4$inboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+    z.array(z.any()),
+]);
 
 /** @internal */
 export type ScheduledInterviewSourceValue$Outbound =
     | ScheduledInterview4$Outbound
     | string
     | number
-    | boolean;
+    | boolean
+    | Array<any>;
 
 /** @internal */
 export const ScheduledInterviewSourceValue$outboundSchema: z.ZodType<
@@ -255,6 +267,7 @@ export const ScheduledInterviewSourceValue$outboundSchema: z.ZodType<
     z.string(),
     z.number(),
     z.boolean(),
+    z.array(z.any()),
 ]);
 
 /**
@@ -312,6 +325,7 @@ export const ScheduledInterviewInterviewStatus$inboundSchema: z.ZodType<
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),
@@ -325,7 +339,14 @@ export const ScheduledInterviewInterviewStatus$inboundSchema: z.ZodType<
 
 /** @internal */
 export type ScheduledInterviewInterviewStatus$Outbound = {
-    source_value?: ScheduledInterview4$Outbound | string | number | boolean | null | undefined;
+    source_value?:
+        | ScheduledInterview4$Outbound
+        | string
+        | number
+        | boolean
+        | Array<any>
+        | null
+        | undefined;
     value?: string | null | undefined;
 };
 
@@ -343,6 +364,7 @@ export const ScheduledInterviewInterviewStatus$outboundSchema: z.ZodType<
                     z.string(),
                     z.number(),
                     z.boolean(),
+                    z.array(z.any()),
                 ])
             )
             .optional(),

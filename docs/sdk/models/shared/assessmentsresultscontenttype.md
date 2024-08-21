@@ -1,5 +1,15 @@
 # AssessmentsResultsContentType
 
+## Example Usage
+
+```typescript
+import { AssessmentsResultsContentType, AssessmentsResultsValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: AssessmentsResultsContentType = {
+    sourceValue: true,
+    value: AssessmentsResultsValue.Text,
+};
+```
 
 ## Fields
 

@@ -1,5 +1,12 @@
 # CountryCodeEnumSourceValue
 
+## Example Usage
+
+```typescript
+import { CountryCodeEnumSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: CountryCodeEnumSourceValue = ["<value>"];
+```
 
 ## Supported Types
 
@@ -25,5 +32,11 @@ const value: boolean = /* values here */
 
 ```typescript
 const value: shared.CountryCodeEnum4 = /* values here */
+```
+
+### `any[]`
+
+```typescript
+const value: any[] = /* values here */
 ```
 
