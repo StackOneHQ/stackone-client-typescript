@@ -5,7 +5,7 @@
 ```typescript
 import { ConnectSessionCreateCategories } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: ConnectSessionCreateCategories = ConnectSessionCreateCategories.Stackone;
+let value: ConnectSessionCreateCategories = ConnectSessionCreateCategories.Iam;
 ```
 
 ## Values

@@ -13,7 +13,7 @@ let value: AtsGetLocationResponse = {
         },
     },
     contentType: "<value>",
-    statusCode: 969810,
+    statusCode: 653140,
     rawResponse: new Response('{"message": "hello world"}', {
         headers: { "Content-Type": "application/json" },
     }),

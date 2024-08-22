@@ -14,16 +14,16 @@ let value: HrisUploadEmployeeDocumentRequest = {
     hrisDocumentsUploadRequestDto: {
         category: {
             sourceValue: "550e8400-e29b-41d4-a716-446655440000",
-            value: HrisDocumentsUploadRequestDtoValue.NationalId,
+            value: HrisDocumentsUploadRequestDtoValue.Payroll,
         },
         categoryId: "6530",
         confidential: {
-            sourceValue: public,
+            sourceValue: true,
             value: HrisDocumentsUploadRequestDtoSchemasValue.True,
         },
         content: "VGhpcyBpc24ndCByZWFsbHkgYSBzYW1wbGUgZmlsZSwgYnV0IG5vIG9uZSB3aWxsIGV2ZXIga25vdyE",
         fileFormat: {
-            sourceValue: true,
+            sourceValue: abc,
             value: HrisDocumentsUploadRequestDtoSchemasFileFormatValue.Pdf,
         },
         name: "weather-forecast",

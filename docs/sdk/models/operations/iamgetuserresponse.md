@@ -10,6 +10,7 @@ import {
   IamPermissionValue,
   IamResourceValue,
   IamRoleValue,
+  IamUser2,
   IamUserSchemasValue,
   IamUserValue,
 } from "@stackone/stackone-client-ts/sdk/models/shared";
@@ -23,7 +24,7 @@ let value: IamGetUserResponse = {
                 categoryId: "6530",
                 createdAt: new Date("2021-01-01T01:01:01.000Z"),
                 fileFormat: {
-                    sourceValue: "abc",
+                    sourceValue: true,
                     value: IamUserSchemasValue.Pdf,
                 },
                 id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
@@ -94,7 +95,7 @@ let value: IamGetUserResponse = {
                 },
             ],
             id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-            isBotUser: true,
+            isBotUser: IamUser2.True,
             lastActiveAt: new Date("2021-01-01T01:01:01.000Z"),
             lastLoginAt: new Date("2021-01-01T01:01:01.000Z"),
             lastName: "Solo",
@@ -158,7 +159,7 @@ let value: IamGetUserResponse = {
             username: "hansolo1977",
         },
     },
-    statusCode: 984043,
+    statusCode: 891924,
     rawResponse: new Response('{"message": "hello world"}', {
         headers: { "Content-Type": "application/json" },
     }),

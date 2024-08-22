@@ -49,7 +49,7 @@ export * from "./companiespaginated.js";
 export * from "./company.js";
 export * from "./companyresult.js";
 export * from "./completion.js";
-export * from "./completionresult.js";
+export * from "./completionspaginated.js";
 export * from "./connectorsmeta.js";
 export * from "./connectsession.js";
 export * from "./connectsessionauthenticate.js";

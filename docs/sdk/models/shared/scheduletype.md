@@ -8,7 +8,7 @@ The schedule type
 import { CampaignValue, ScheduleType } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: ScheduleType = {
-    sourceValue: true,
+    sourceValue: Immediate,
     value: CampaignValue.Immediate,
 };
 ```

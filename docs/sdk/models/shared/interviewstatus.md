@@ -6,7 +6,7 @@
 import { InterviewStatus, InterviewValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: InterviewStatus = {
-    sourceValue: Unscheduled,
+    sourceValue: true,
     value: InterviewValue.Unscheduled,
 };
 ```

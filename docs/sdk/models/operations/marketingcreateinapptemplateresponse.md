@@ -16,7 +16,7 @@ let value: MarketingCreateInAppTemplateResponse = {
         statusCode: 201,
         timestamp: new Date("2021-01-01T01:01:01.000Z"),
     },
-    statusCode: 569101,
+    statusCode: 139972,
     rawResponse: new Response('{"message": "hello world"}', {
         headers: { "Content-Type": "application/json" },
     }),

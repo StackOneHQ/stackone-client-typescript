@@ -28,7 +28,7 @@ let value: AtsGetCandidateNoteResponse = {
             },
         },
     },
-    statusCode: 105907,
+    statusCode: 473600,
     rawResponse: new Response('{"message": "hello world"}', {
         headers: { "Content-Type": "application/json" },
     }),

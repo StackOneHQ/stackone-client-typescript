@@ -7,7 +7,7 @@ import { AccountAddress, AccountAddressSchemasValue, AccountAddressValue } from 
 
 let value: AccountAddress = {
     country: {
-        sourceValue: true,
+        sourceValue: {},
         value: AccountAddressSchemasValue.Gb,
     },
     locationType: {

@@ -7,7 +7,7 @@ import { AtsUpdateApplicationResponse } from "@stackone/stackone-client-ts/sdk/m
 
 let value: AtsUpdateApplicationResponse = {
     contentType: "<value>",
-    statusCode: 359444,
+    statusCode: 296140,
     rawResponse: new Response('{"message": "hello world"}', {
         headers: { "Content-Type": "application/json" },
     }),

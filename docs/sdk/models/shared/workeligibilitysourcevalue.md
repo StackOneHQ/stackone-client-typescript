@@ -5,7 +5,7 @@
 ```typescript
 import { WorkEligibilitySourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: WorkEligibilitySourceValue = 5392.24;
+let value: WorkEligibilitySourceValue = "<value>";
 ```
 
 ## Supported Types

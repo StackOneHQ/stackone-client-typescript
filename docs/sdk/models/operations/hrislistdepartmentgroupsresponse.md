@@ -19,7 +19,7 @@ let value: HrisListDepartmentGroupsResponse = {
             },
         ],
     },
-    statusCode: 675439,
+    statusCode: 881104,
     rawResponse: new Response('{"message": "hello world"}', {
         headers: { "Content-Type": "application/json" },
     }),

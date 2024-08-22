@@ -21,7 +21,7 @@ let value: AtsGetCandidateResponse = {
                     name: "Training Completion Status",
                     remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
                     remoteValueId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
-                    value: true,
+                    value: {},
                     valueId: "value_456",
                 },
             ],
@@ -58,7 +58,7 @@ let value: AtsGetCandidateResponse = {
         },
     },
     contentType: "<value>",
-    statusCode: 944669,
+    statusCode: 521848,
     rawResponse: new Response('{"message": "hello world"}', {
         headers: { "Content-Type": "application/json" },
     }),

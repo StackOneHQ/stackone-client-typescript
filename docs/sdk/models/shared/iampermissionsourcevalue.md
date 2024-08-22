@@ -5,7 +5,7 @@
 ```typescript
 import { IamPermissionSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: IamPermissionSourceValue = {};
+let value: IamPermissionSourceValue = 4581.39;
 ```
 
 ## Supported Types

@@ -15,7 +15,7 @@ let value: LmsGetCategoryResponse = {
         },
     },
     contentType: "<value>",
-    statusCode: 919483,
+    statusCode: 352312,
     rawResponse: new Response('{"message": "hello world"}', {
         headers: { "Content-Type": "application/json" },
     }),

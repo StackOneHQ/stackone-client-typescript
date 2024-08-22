@@ -24,7 +24,7 @@ let value: EmploymentResult = {
         jobTitle: "Software Engineer",
         payCurrency: "USD",
         payFrequency: {
-            sourceValue: ["Hourly"],
+            sourceValue: true,
             value: EmploymentSchemasPayFrequencyValue.Hourly,
         },
         payPeriod: {

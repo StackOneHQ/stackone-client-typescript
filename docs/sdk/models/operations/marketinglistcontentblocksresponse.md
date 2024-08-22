@@ -18,15 +18,15 @@ let value: MarketingListContentBlocksResponse = {
                     value: ContentBlockValue.Live,
                 },
                 type: {
-                    sourceValue: "text",
-                    value: ContentBlockSchemasValue.CodeSnippet,
+                    sourceValue: {},
+                    value: ContentBlockSchemasValue.Html,
                 },
                 updatedAt: new Date("2021-01-01T00:00:00.000Z"),
             },
         ],
     },
     contentType: "<value>",
-    statusCode: 463451,
+    statusCode: 223924,
     rawResponse: new Response('{"message": "hello world"}', {
         headers: { "Content-Type": "application/json" },
     }),

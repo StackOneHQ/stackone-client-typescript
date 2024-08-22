@@ -9,14 +9,14 @@ import * as z from "zod";
 /**
  * Filter parameters that allow greater customisation of the list response
  */
-export type LmsGetCompletionQueryParamFilter = {
+export type LmsListCompletionsQueryParamFilter = {
     /**
      * Use a string with a date to only select results updated after that given date
      */
     updatedAfter?: string | null | undefined;
 };
 
-export type LmsGetCompletionRequest = {
+export type LmsListCompletionsRequest = {
     /**
      * The comma separated list of fields that will be returned in the response (if empty, all fields are returned)
      */
@@ -24,7 +24,7 @@ export type LmsGetCompletionRequest = {
     /**
      * Filter parameters that allow greater customisation of the list response
      */
-    filter?: LmsGetCompletionQueryParamFilter | null | undefined;
+    filter?: LmsListCompletionsQueryParamFilter | null | undefined;
     id: string;
     /**
      * The unified cursor
@@ -60,11 +60,11 @@ export type LmsGetCompletionRequest = {
     xAccountId: string;
 };
 
-export type LmsGetCompletionResponse = {
+export type LmsListCompletionsResponse = {
     /**
-     * The completion with the given identifier was retrieved.
+     * The completions with for the users with the given identifier were retrieved.
      */
-    completionResult?: shared.CompletionResult | undefined;
+    completionsPaginated?: shared.CompletionsPaginated | undefined;
     /**
      * HTTP response content type for this operation
      */
@@ -80,8 +80,8 @@ export type LmsGetCompletionResponse = {
 };
 
 /** @internal */
-export const LmsGetCompletionQueryParamFilter$inboundSchema: z.ZodType<
-    LmsGetCompletionQueryParamFilter,
+export const LmsListCompletionsQueryParamFilter$inboundSchema: z.ZodType<
+    LmsListCompletionsQueryParamFilter,
     z.ZodTypeDef,
     unknown
 > = z
@@ -95,15 +95,15 @@ export const LmsGetCompletionQueryParamFilter$inboundSchema: z.ZodType<
     });
 
 /** @internal */
-export type LmsGetCompletionQueryParamFilter$Outbound = {
+export type LmsListCompletionsQueryParamFilter$Outbound = {
     updated_after?: string | null | undefined;
 };
 
 /** @internal */
-export const LmsGetCompletionQueryParamFilter$outboundSchema: z.ZodType<
-    LmsGetCompletionQueryParamFilter$Outbound,
+export const LmsListCompletionsQueryParamFilter$outboundSchema: z.ZodType<
+    LmsListCompletionsQueryParamFilter$Outbound,
     z.ZodTypeDef,
-    LmsGetCompletionQueryParamFilter
+    LmsListCompletionsQueryParamFilter
 > = z
     .object({
         updatedAfter: z.nullable(z.string()).optional(),
@@ -118,24 +118,26 @@ export const LmsGetCompletionQueryParamFilter$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace LmsGetCompletionQueryParamFilter$ {
-    /** @deprecated use `LmsGetCompletionQueryParamFilter$inboundSchema` instead. */
-    export const inboundSchema = LmsGetCompletionQueryParamFilter$inboundSchema;
-    /** @deprecated use `LmsGetCompletionQueryParamFilter$outboundSchema` instead. */
-    export const outboundSchema = LmsGetCompletionQueryParamFilter$outboundSchema;
-    /** @deprecated use `LmsGetCompletionQueryParamFilter$Outbound` instead. */
-    export type Outbound = LmsGetCompletionQueryParamFilter$Outbound;
+export namespace LmsListCompletionsQueryParamFilter$ {
+    /** @deprecated use `LmsListCompletionsQueryParamFilter$inboundSchema` instead. */
+    export const inboundSchema = LmsListCompletionsQueryParamFilter$inboundSchema;
+    /** @deprecated use `LmsListCompletionsQueryParamFilter$outboundSchema` instead. */
+    export const outboundSchema = LmsListCompletionsQueryParamFilter$outboundSchema;
+    /** @deprecated use `LmsListCompletionsQueryParamFilter$Outbound` instead. */
+    export type Outbound = LmsListCompletionsQueryParamFilter$Outbound;
 }
 
 /** @internal */
-export const LmsGetCompletionRequest$inboundSchema: z.ZodType<
-    LmsGetCompletionRequest,
+export const LmsListCompletionsRequest$inboundSchema: z.ZodType<
+    LmsListCompletionsRequest,
     z.ZodTypeDef,
     unknown
 > = z
     .object({
         fields: z.nullable(z.string()).optional(),
-        filter: z.nullable(z.lazy(() => LmsGetCompletionQueryParamFilter$inboundSchema)).optional(),
+        filter: z
+            .nullable(z.lazy(() => LmsListCompletionsQueryParamFilter$inboundSchema))
+            .optional(),
         id: z.string(),
         next: z.nullable(z.string()).optional(),
         page: z.nullable(z.string()).optional(),
@@ -154,9 +156,9 @@ export const LmsGetCompletionRequest$inboundSchema: z.ZodType<
     });
 
 /** @internal */
-export type LmsGetCompletionRequest$Outbound = {
+export type LmsListCompletionsRequest$Outbound = {
     fields?: string | null | undefined;
-    filter?: LmsGetCompletionQueryParamFilter$Outbound | null | undefined;
+    filter?: LmsListCompletionsQueryParamFilter$Outbound | null | undefined;
     id: string;
     next?: string | null | undefined;
     page?: string | null | undefined;
@@ -168,15 +170,15 @@ export type LmsGetCompletionRequest$Outbound = {
 };
 
 /** @internal */
-export const LmsGetCompletionRequest$outboundSchema: z.ZodType<
-    LmsGetCompletionRequest$Outbound,
+export const LmsListCompletionsRequest$outboundSchema: z.ZodType<
+    LmsListCompletionsRequest$Outbound,
     z.ZodTypeDef,
-    LmsGetCompletionRequest
+    LmsListCompletionsRequest
 > = z
     .object({
         fields: z.nullable(z.string()).optional(),
         filter: z
-            .nullable(z.lazy(() => LmsGetCompletionQueryParamFilter$outboundSchema))
+            .nullable(z.lazy(() => LmsListCompletionsQueryParamFilter$outboundSchema))
             .optional(),
         id: z.string(),
         next: z.nullable(z.string()).optional(),
@@ -199,30 +201,30 @@ export const LmsGetCompletionRequest$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace LmsGetCompletionRequest$ {
-    /** @deprecated use `LmsGetCompletionRequest$inboundSchema` instead. */
-    export const inboundSchema = LmsGetCompletionRequest$inboundSchema;
-    /** @deprecated use `LmsGetCompletionRequest$outboundSchema` instead. */
-    export const outboundSchema = LmsGetCompletionRequest$outboundSchema;
-    /** @deprecated use `LmsGetCompletionRequest$Outbound` instead. */
-    export type Outbound = LmsGetCompletionRequest$Outbound;
+export namespace LmsListCompletionsRequest$ {
+    /** @deprecated use `LmsListCompletionsRequest$inboundSchema` instead. */
+    export const inboundSchema = LmsListCompletionsRequest$inboundSchema;
+    /** @deprecated use `LmsListCompletionsRequest$outboundSchema` instead. */
+    export const outboundSchema = LmsListCompletionsRequest$outboundSchema;
+    /** @deprecated use `LmsListCompletionsRequest$Outbound` instead. */
+    export type Outbound = LmsListCompletionsRequest$Outbound;
 }
 
 /** @internal */
-export const LmsGetCompletionResponse$inboundSchema: z.ZodType<
-    LmsGetCompletionResponse,
+export const LmsListCompletionsResponse$inboundSchema: z.ZodType<
+    LmsListCompletionsResponse,
     z.ZodTypeDef,
     unknown
 > = z
     .object({
-        CompletionResult: shared.CompletionResult$inboundSchema.optional(),
+        CompletionsPaginated: shared.CompletionsPaginated$inboundSchema.optional(),
         ContentType: z.string(),
         StatusCode: z.number().int(),
         RawResponse: z.instanceof(Response),
     })
     .transform((v) => {
         return remap$(v, {
-            CompletionResult: "completionResult",
+            CompletionsPaginated: "completionsPaginated",
             ContentType: "contentType",
             StatusCode: "statusCode",
             RawResponse: "rawResponse",
@@ -230,21 +232,21 @@ export const LmsGetCompletionResponse$inboundSchema: z.ZodType<
     });
 
 /** @internal */
-export type LmsGetCompletionResponse$Outbound = {
-    CompletionResult?: shared.CompletionResult$Outbound | undefined;
+export type LmsListCompletionsResponse$Outbound = {
+    CompletionsPaginated?: shared.CompletionsPaginated$Outbound | undefined;
     ContentType: string;
     StatusCode: number;
     RawResponse: never;
 };
 
 /** @internal */
-export const LmsGetCompletionResponse$outboundSchema: z.ZodType<
-    LmsGetCompletionResponse$Outbound,
+export const LmsListCompletionsResponse$outboundSchema: z.ZodType<
+    LmsListCompletionsResponse$Outbound,
     z.ZodTypeDef,
-    LmsGetCompletionResponse
+    LmsListCompletionsResponse
 > = z
     .object({
-        completionResult: shared.CompletionResult$outboundSchema.optional(),
+        completionsPaginated: shared.CompletionsPaginated$outboundSchema.optional(),
         contentType: z.string(),
         statusCode: z.number().int(),
         rawResponse: z.instanceof(Response).transform(() => {
@@ -253,7 +255,7 @@ export const LmsGetCompletionResponse$outboundSchema: z.ZodType<
     })
     .transform((v) => {
         return remap$(v, {
-            completionResult: "CompletionResult",
+            completionsPaginated: "CompletionsPaginated",
             contentType: "ContentType",
             statusCode: "StatusCode",
             rawResponse: "RawResponse",
@@ -264,11 +266,11 @@ export const LmsGetCompletionResponse$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace LmsGetCompletionResponse$ {
-    /** @deprecated use `LmsGetCompletionResponse$inboundSchema` instead. */
-    export const inboundSchema = LmsGetCompletionResponse$inboundSchema;
-    /** @deprecated use `LmsGetCompletionResponse$outboundSchema` instead. */
-    export const outboundSchema = LmsGetCompletionResponse$outboundSchema;
-    /** @deprecated use `LmsGetCompletionResponse$Outbound` instead. */
-    export type Outbound = LmsGetCompletionResponse$Outbound;
+export namespace LmsListCompletionsResponse$ {
+    /** @deprecated use `LmsListCompletionsResponse$inboundSchema` instead. */
+    export const inboundSchema = LmsListCompletionsResponse$inboundSchema;
+    /** @deprecated use `LmsListCompletionsResponse$outboundSchema` instead. */
+    export const outboundSchema = LmsListCompletionsResponse$outboundSchema;
+    /** @deprecated use `LmsListCompletionsResponse$Outbound` instead. */
+    export type Outbound = LmsListCompletionsResponse$Outbound;
 }

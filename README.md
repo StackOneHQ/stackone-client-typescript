@@ -214,12 +214,12 @@ run();
 * [createContent](docs/sdks/lms/README.md#createcontent) - Create Content
 * [getAssignment](docs/sdks/lms/README.md#getassignment) - Get User Assignment
 * [getCategory](docs/sdks/lms/README.md#getcategory) - Get Category
-* [getCompletion](docs/sdks/lms/README.md#getcompletion) - Get User Completion
 * [getContent](docs/sdks/lms/README.md#getcontent) - Get Content
 * [getCourse](docs/sdks/lms/README.md#getcourse) - Get Course
 * [getUser](docs/sdks/lms/README.md#getuser) - Get User
 * [listAssignments](docs/sdks/lms/README.md#listassignments) - List User Assignments
 * [listCategories](docs/sdks/lms/README.md#listcategories) - List Categories
+* [listCompletions](docs/sdks/lms/README.md#listcompletions) - List User Completions
 * [listContent](docs/sdks/lms/README.md#listcontent) - List Content
 * [listCourses](docs/sdks/lms/README.md#listcourses) - List Courses
 * [listUsers](docs/sdks/lms/README.md#listusers) - List Users
@@ -663,12 +663,12 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [lmsCreateContent](docs/sdks/lms/README.md#createcontent)
 - [lmsGetAssignment](docs/sdks/lms/README.md#getassignment)
 - [lmsGetCategory](docs/sdks/lms/README.md#getcategory)
-- [lmsGetCompletion](docs/sdks/lms/README.md#getcompletion)
 - [lmsGetContent](docs/sdks/lms/README.md#getcontent)
 - [lmsGetCourse](docs/sdks/lms/README.md#getcourse)
 - [lmsGetUser](docs/sdks/lms/README.md#getuser)
 - [lmsListAssignments](docs/sdks/lms/README.md#listassignments)
 - [lmsListCategories](docs/sdks/lms/README.md#listcategories)
+- [lmsListCompletions](docs/sdks/lms/README.md#listcompletions)
 - [lmsListContent](docs/sdks/lms/README.md#listcontent)
 - [lmsListCourses](docs/sdks/lms/README.md#listcourses)
 - [lmsListUsers](docs/sdks/lms/README.md#listusers)

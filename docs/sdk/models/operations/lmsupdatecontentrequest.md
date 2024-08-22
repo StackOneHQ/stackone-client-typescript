@@ -4,11 +4,11 @@
 
 ```typescript
 import { LmsUpdateContentRequest } from "@stackone/stackone-client-ts/sdk/models/operations";
-import { ContentLanguageEnumValue, LmsCreateContentRequestDto2 } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { ContentLanguageEnumValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: LmsUpdateContentRequest = {
     lmsCreateContentRequestDto: {
-        active: LmsCreateContentRequestDto2.True,
+        active: true,
         categories: [
             {
                 active: true,

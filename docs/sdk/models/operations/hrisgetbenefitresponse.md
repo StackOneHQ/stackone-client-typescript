@@ -18,7 +18,7 @@ let value: HrisGetBenefitResponse = {
             updatedAt: new Date("2021-01-01T00:00:00Z"),
         },
     },
-    statusCode: 552822,
+    statusCode: 20107,
     rawResponse: new Response('{"message": "hello world"}', {
         headers: { "Content-Type": "application/json" },
     }),

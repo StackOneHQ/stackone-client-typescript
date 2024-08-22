@@ -3,12 +3,12 @@
 ## Example Usage
 
 ```typescript
-import { AssessmentsResultsValue, Attachments } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { AssessmentsResultsSchemasValue, Attachments } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: Attachments = {
     contentType: {
-        sourceValue: "Text",
-        value: AssessmentsResultsValue.Text,
+        sourceValue: {},
+        value: AssessmentsResultsSchemasValue.Text,
     },
     url: "http://example.com/resume.pdf",
 };

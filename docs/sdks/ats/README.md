@@ -1388,6 +1388,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.getAssessmentsRequest({
+    fields: "assessment_id,remote_assessment_id,candidate,score,assessment_date,submission_date,summary,result,result_url,attachments",
     id: "<id>",
     xAccountId: "<value>",
   });
@@ -1418,6 +1419,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await atsGetAssessmentsRequest(stackOne, {
+    fields: "assessment_id,remote_assessment_id,candidate,score,assessment_date,submission_date,summary,result,result_url,attachments",
     id: "<id>",
     xAccountId: "<value>",
   });
@@ -1473,6 +1475,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.getAssessmentsResult({
+    fields: "assessment_id,remote_assessment_id,candidate,score,assessment_date,submission_date,summary,result,result_url,attachments",
     id: "<id>",
     xAccountId: "<value>",
   });
@@ -1503,6 +1506,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await atsGetAssessmentsResult(stackOne, {
+    fields: "assessment_id,remote_assessment_id,candidate,score,assessment_date,submission_date,summary,result,result_url,attachments",
     id: "<id>",
     xAccountId: "<value>",
   });

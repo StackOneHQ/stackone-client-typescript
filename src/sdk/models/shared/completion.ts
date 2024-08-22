@@ -19,7 +19,7 @@ export type CompletionValueOpen = OpenEnum<typeof CompletionValue>;
 /**
  * The result of the completion
  */
-export type Result = {
+export type CompletionResult = {
     sourceValue?: Completion4 | string | number | boolean | Array<any> | null | undefined;
     value?: CompletionValueOpen | null | undefined;
 };
@@ -60,7 +60,7 @@ export type Completion = {
     /**
      * The result of the completion
      */
-    result?: Result | null | undefined;
+    result?: CompletionResult | null | undefined;
 };
 
 /** @internal */
@@ -161,7 +161,7 @@ export namespace CompletionValue$ {
 }
 
 /** @internal */
-export const Result$inboundSchema: z.ZodType<Result, z.ZodTypeDef, unknown> = z
+export const CompletionResult$inboundSchema: z.ZodType<CompletionResult, z.ZodTypeDef, unknown> = z
     .object({
         source_value: z
             .nullable(
@@ -183,13 +183,17 @@ export const Result$inboundSchema: z.ZodType<Result, z.ZodTypeDef, unknown> = z
     });
 
 /** @internal */
-export type Result$Outbound = {
+export type CompletionResult$Outbound = {
     source_value?: Completion4$Outbound | string | number | boolean | Array<any> | null | undefined;
     value?: string | null | undefined;
 };
 
 /** @internal */
-export const Result$outboundSchema: z.ZodType<Result$Outbound, z.ZodTypeDef, Result> = z
+export const CompletionResult$outboundSchema: z.ZodType<
+    CompletionResult$Outbound,
+    z.ZodTypeDef,
+    CompletionResult
+> = z
     .object({
         sourceValue: z
             .nullable(
@@ -214,13 +218,13 @@ export const Result$outboundSchema: z.ZodType<Result$Outbound, z.ZodTypeDef, Res
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Result$ {
-    /** @deprecated use `Result$inboundSchema` instead. */
-    export const inboundSchema = Result$inboundSchema;
-    /** @deprecated use `Result$outboundSchema` instead. */
-    export const outboundSchema = Result$outboundSchema;
-    /** @deprecated use `Result$Outbound` instead. */
-    export type Outbound = Result$Outbound;
+export namespace CompletionResult$ {
+    /** @deprecated use `CompletionResult$inboundSchema` instead. */
+    export const inboundSchema = CompletionResult$inboundSchema;
+    /** @deprecated use `CompletionResult$outboundSchema` instead. */
+    export const outboundSchema = CompletionResult$outboundSchema;
+    /** @deprecated use `CompletionResult$Outbound` instead. */
+    export type Outbound = CompletionResult$Outbound;
 }
 
 /** @internal */
@@ -234,7 +238,7 @@ export const Completion$inboundSchema: z.ZodType<Completion, z.ZodTypeDef, unkno
         remote_content_id: z.nullable(z.string()).optional(),
         remote_external_id: z.nullable(z.string()).optional(),
         remote_id: z.nullable(z.string()).optional(),
-        result: z.nullable(z.lazy(() => Result$inboundSchema)).optional(),
+        result: z.nullable(z.lazy(() => CompletionResult$inboundSchema)).optional(),
     })
     .transform((v) => {
         return remap$(v, {
@@ -257,7 +261,7 @@ export type Completion$Outbound = {
     remote_content_id?: string | null | undefined;
     remote_external_id?: string | null | undefined;
     remote_id?: string | null | undefined;
-    result?: Result$Outbound | null | undefined;
+    result?: CompletionResult$Outbound | null | undefined;
 };
 
 /** @internal */
@@ -271,7 +275,7 @@ export const Completion$outboundSchema: z.ZodType<Completion$Outbound, z.ZodType
         remoteContentId: z.nullable(z.string()).optional(),
         remoteExternalId: z.nullable(z.string()).optional(),
         remoteId: z.nullable(z.string()).optional(),
-        result: z.nullable(z.lazy(() => Result$outboundSchema)).optional(),
+        result: z.nullable(z.lazy(() => CompletionResult$outboundSchema)).optional(),
     })
     .transform((v) => {
         return remap$(v, {
