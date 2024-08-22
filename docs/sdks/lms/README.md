@@ -9,12 +9,12 @@
 * [createContent](#createcontent) - Create Content
 * [getAssignment](#getassignment) - Get User Assignment
 * [getCategory](#getcategory) - Get Category
-* [getCompletion](#getcompletion) - Get User Completion
 * [getContent](#getcontent) - Get Content
 * [getCourse](#getcourse) - Get Course
 * [getUser](#getuser) - Get User
 * [listAssignments](#listassignments) - List User Assignments
 * [listCategories](#listcategories) - List Categories
+* [listCompletions](#listcompletions) - List User Completions
 * [listContent](#listcontent) - List Content
 * [listCourses](#listcourses) - List Courses
 * [listUsers](#listusers) - List Users
@@ -429,101 +429,6 @@ run();
 | errors.SDKError | 4xx-5xx         | */*             |
 
 
-## getCompletion
-
-Get User Completion
-
-### Example Usage
-
-```typescript
-import { StackOne } from "@stackone/stackone-client-ts";
-
-const stackOne = new StackOne({
-  security: {
-    password: "",
-    username: "",
-  },
-});
-
-async function run() {
-  const result = await stackOne.lms.getCompletion({
-    fields: "id,remote_id,external_id,remote_external_id,content_id,remote_content_id,user_id,remote_user_id,completed_at,updated_at,created_at,result",
-    filter: {
-      updatedAfter: "2020-01-01T00:00:00.000Z",
-    },
-    id: "<id>",
-    updatedAfter: "2020-01-01T00:00:00.000Z",
-    xAccountId: "<value>",
-  });
-
-  // Handle the result
-  console.log(result)
-}
-
-run();
-```
-
-### Standalone function
-
-The standalone function version of this method:
-
-```typescript
-import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
-import { lmsGetCompletion } from "@stackone/stackone-client-ts/funcs/lmsGetCompletion.js";
-
-// Use `StackOneCore` for best tree-shaking performance.
-// You can create one instance of it to use across an application.
-const stackOne = new StackOneCore({
-  security: {
-    password: "",
-    username: "",
-  },
-});
-
-async function run() {
-  const res = await lmsGetCompletion(stackOne, {
-    fields: "id,remote_id,external_id,remote_external_id,content_id,remote_content_id,user_id,remote_user_id,completed_at,updated_at,created_at,result",
-    filter: {
-      updatedAfter: "2020-01-01T00:00:00.000Z",
-    },
-    id: "<id>",
-    updatedAfter: "2020-01-01T00:00:00.000Z",
-    xAccountId: "<value>",
-  });
-
-  if (!res.ok) {
-    throw res.error;
-  }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result)
-}
-
-run();
-```
-
-### Parameters
-
-| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.LmsGetCompletionRequest](../../sdk/models/operations/lmsgetcompletionrequest.md)                                                                                   | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
-| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
-| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
-| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
-
-### Response
-
-**Promise\<[operations.LmsGetCompletionResponse](../../sdk/models/operations/lmsgetcompletionresponse.md)\>**
-
-### Errors
-
-| Error Object    | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 4xx-5xx         | */*             |
-
-
 ## getContent
 
 Get Content
@@ -629,7 +534,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.lms.getCourse({
-    fields: "id,remote_id,external_reference,content_ids,remote_content_ids,title,description,languages,course_type,cover_url,active,duration,categories,skills,updated_at,created_at",
+    fields: "id,remote_id,external_reference,content_ids,remote_content_ids,title,description,languages,course_type,cover_url,url,active,duration,categories,skills,updated_at,created_at",
     id: "<id>",
     xAccountId: "<value>",
   });
@@ -660,7 +565,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await lmsGetCourse(stackOne, {
-    fields: "id,remote_id,external_reference,content_ids,remote_content_ids,title,description,languages,course_type,cover_url,active,duration,categories,skills,updated_at,created_at",
+    fields: "id,remote_id,external_reference,content_ids,remote_content_ids,title,description,languages,course_type,cover_url,url,active,duration,categories,skills,updated_at,created_at",
     id: "<id>",
     xAccountId: "<value>",
   });
@@ -973,6 +878,101 @@ run();
 | errors.SDKError | 4xx-5xx         | */*             |
 
 
+## listCompletions
+
+List User Completions
+
+### Example Usage
+
+```typescript
+import { StackOne } from "@stackone/stackone-client-ts";
+
+const stackOne = new StackOne({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const result = await stackOne.lms.listCompletions({
+    fields: "id,remote_id,external_id,remote_external_id,content_id,remote_content_id,user_id,remote_user_id,completed_at,updated_at,created_at,result",
+    filter: {
+      updatedAfter: "2020-01-01T00:00:00.000Z",
+    },
+    id: "<id>",
+    updatedAfter: "2020-01-01T00:00:00.000Z",
+    xAccountId: "<value>",
+  });
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
+import { lmsListCompletions } from "@stackone/stackone-client-ts/funcs/lmsListCompletions.js";
+
+// Use `StackOneCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const stackOne = new StackOneCore({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const res = await lmsListCompletions(stackOne, {
+    fields: "id,remote_id,external_id,remote_external_id,content_id,remote_content_id,user_id,remote_user_id,completed_at,updated_at,created_at,result",
+    filter: {
+      updatedAfter: "2020-01-01T00:00:00.000Z",
+    },
+    id: "<id>",
+    updatedAfter: "2020-01-01T00:00:00.000Z",
+    xAccountId: "<value>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.LmsListCompletionsRequest](../../sdk/models/operations/lmslistcompletionsrequest.md)                                                                               | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[operations.LmsListCompletionsResponse](../../sdk/models/operations/lmslistcompletionsresponse.md)\>**
+
+### Errors
+
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
+
+
 ## listContent
 
 List Content
@@ -1084,7 +1084,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.lms.listCourses({
-    fields: "id,remote_id,external_reference,content_ids,remote_content_ids,title,description,languages,course_type,cover_url,active,duration,categories,skills,updated_at,created_at",
+    fields: "id,remote_id,external_reference,content_ids,remote_content_ids,title,description,languages,course_type,cover_url,url,active,duration,categories,skills,updated_at,created_at",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
@@ -1118,7 +1118,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await lmsListCourses(stackOne, {
-    fields: "id,remote_id,external_reference,content_ids,remote_content_ids,title,description,languages,course_type,cover_url,active,duration,categories,skills,updated_at,created_at",
+    fields: "id,remote_id,external_reference,content_ids,remote_content_ids,title,description,languages,course_type,cover_url,url,active,duration,categories,skills,updated_at,created_at",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },

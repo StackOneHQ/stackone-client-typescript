@@ -15,7 +15,7 @@ let value: ApplicationsPaginated = {
     data: [
         {
             applicationStatus: {
-                sourceValue: Hired,
+                sourceValue: true,
                 value: ApplicationValue.Hired,
             },
             candidate: {
@@ -90,7 +90,7 @@ let value: ApplicationsPaginated = {
                             id: "answer1",
                             remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
                             type: {
-                                sourceValue: true,
+                                sourceValue: ["Short Text"],
                                 value: AnswerValue.ShortText,
                             },
                             values: ["Yes"],
@@ -107,7 +107,7 @@ let value: ApplicationsPaginated = {
                     id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
                     label: "Failed Phone Screen",
                     rejectedReasonType: {
-                        sourceValue: RejectedByOrg,
+                        sourceValue: true,
                         value: RejectedReasonValue.RejectedByOrganization,
                     },
                     remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",

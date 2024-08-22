@@ -1,13 +1,13 @@
 # AssessmentsResultsValue
 
-The content type of the attachment.
+The result of the assessment.
 
 ## Example Usage
 
 ```typescript
 import { AssessmentsResultsValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: AssessmentsResultsValue = AssessmentsResultsValue.Text;
+let value: AssessmentsResultsValue = AssessmentsResultsValue.Passed;
 ```
 
 ## Values
@@ -16,6 +16,8 @@ This is an open enum. Unrecognized values will be captured as the `Unrecognized<
 
 | Name                   | Value                  |
 | ---------------------- | ---------------------- |
-| `Text`                 | text                   |
-| `UnmappedValue`        | unmapped_value         |
+| `Cancelled`            | cancelled              |
+| `Expired`              | expired                |
+| `Failed`               | failed                 |
+| `Passed`               | passed                 |
 | -                      | `Unrecognized<string>` |

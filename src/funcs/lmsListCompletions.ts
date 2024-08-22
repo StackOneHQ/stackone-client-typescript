@@ -25,15 +25,15 @@ import * as operations from "../sdk/models/operations/index.js";
 import { Result } from "../sdk/types/fp.js";
 
 /**
- * Get User Completion
+ * List User Completions
  */
-export async function lmsGetCompletion(
+export async function lmsListCompletions(
     client$: StackOneCore,
-    request: operations.LmsGetCompletionRequest,
+    request: operations.LmsListCompletionsRequest,
     options?: RequestOptions
 ): Promise<
     Result<
-        operations.LmsGetCompletionResponse,
+        operations.LmsListCompletionsResponse,
         | SDKError
         | SDKValidationError
         | UnexpectedClientError
@@ -47,7 +47,7 @@ export async function lmsGetCompletion(
 
     const parsed$ = schemas$.safeParse(
         input$,
-        (value$) => operations.LmsGetCompletionRequest$outboundSchema.parse(value$),
+        (value$) => operations.LmsListCompletionsRequest$outboundSchema.parse(value$),
         "Input validation failed"
     );
     if (!parsed$.ok) {
@@ -83,7 +83,7 @@ export async function lmsGetCompletion(
 
     const security$ = await extractSecurity(client$.options$.security);
     const context = {
-        operationID: "lms_get_completion",
+        operationID: "lms_list_completions",
         oAuth2Scopes: [],
         securitySource: client$.options$.security,
     };
@@ -126,7 +126,7 @@ export async function lmsGetCompletion(
     };
 
     const [result$] = await m$.match<
-        operations.LmsGetCompletionResponse,
+        operations.LmsListCompletionsResponse,
         | SDKError
         | SDKValidationError
         | UnexpectedClientError
@@ -135,8 +135,8 @@ export async function lmsGetCompletion(
         | RequestTimeoutError
         | ConnectionError
     >(
-        m$.json(200, operations.LmsGetCompletionResponse$inboundSchema, {
-            key: "CompletionResult",
+        m$.json(200, operations.LmsListCompletionsResponse$inboundSchema, {
+            key: "CompletionsPaginated",
         }),
         m$.fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
     )(response, { extraFields: responseFields$ });

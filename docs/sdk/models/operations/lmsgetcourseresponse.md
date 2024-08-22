@@ -45,6 +45,7 @@ let value: LmsGetCourseResponse = {
             ],
             title: "Software Engineer Lv 1",
             updatedAt: "2021-07-21T14:00:00.000Z",
+            url: "https://www.linkedinlearning.com/?v=16873",
         },
     },
     statusCode: 998848,

@@ -40,7 +40,7 @@ let value: AtsListInterviewsResponse = {
                     updatedAt: new Date("2021-01-01T01:01:01.000Z"),
                 },
                 interviewStatus: {
-                    sourceValue: Unscheduled,
+                    sourceValue: {},
                     value: InterviewValue.Unscheduled,
                 },
                 interviewers: [
@@ -61,7 +61,7 @@ let value: AtsListInterviewsResponse = {
             },
         ],
     },
-    statusCode: 110375,
+    statusCode: 656330,
     rawResponse: new Response('{"message": "hello world"}', {
         headers: { "Content-Type": "application/json" },
     }),

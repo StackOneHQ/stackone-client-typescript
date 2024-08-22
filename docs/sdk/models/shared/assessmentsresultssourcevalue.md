@@ -1,13 +1,13 @@
 # AssessmentsResultsSourceValue
 
-The source value of the content type.
+The source value of the assessment result.
 
 ## Example Usage
 
 ```typescript
 import { AssessmentsResultsSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: AssessmentsResultsSourceValue = "Text";
+let value: AssessmentsResultsSourceValue = "Passed";
 ```
 
 ## Supported Types

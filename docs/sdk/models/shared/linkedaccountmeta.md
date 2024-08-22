@@ -6,7 +6,7 @@
 import { LinkedAccountMeta, LinkedAccountMetaCategory } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: LinkedAccountMeta = {
-    category: LinkedAccountMetaCategory.Lms,
+    category: LinkedAccountMetaCategory.Iam,
     models: {
         key: "<value>",
     },

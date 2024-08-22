@@ -18,7 +18,7 @@ let value: HrisGetLocationResponse = {
             employeeId: "1687-3",
             id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
             locationType: {
-                sourceValue: {},
+                sourceValue: "Home",
                 value: HRISLocationSchemasValue.Home,
             },
             name: "Woolsthorpe Manor",
@@ -32,7 +32,7 @@ let value: HrisGetLocationResponse = {
             zipCode: "NG33 5NR",
         },
     },
-    statusCode: 116202,
+    statusCode: 297437,
     rawResponse: new Response('{"message": "hello world"}', {
         headers: { "Content-Type": "application/json" },
     }),

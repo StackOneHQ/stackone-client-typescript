@@ -110,7 +110,7 @@ export type Job = {
     /**
      * Provider's department ids of the job
      */
-    remoteDepartmentIds?: string | null | undefined;
+    remoteDepartmentIds?: Array<string> | null | undefined;
     /**
      * Provider's unique identifier
      */
@@ -118,7 +118,7 @@ export type Job = {
     /**
      * Provider's location ids of the job
      */
-    remoteLocationIds?: string | null | undefined;
+    remoteLocationIds?: Array<string> | null | undefined;
     /**
      * Status of the job
      *
@@ -322,9 +322,9 @@ export const Job$inboundSchema: z.ZodType<Job, z.ZodTypeDef, unknown> = z
         interview_stages: z.nullable(z.array(InterviewStage$inboundSchema)).optional(),
         job_status: z.nullable(z.lazy(() => JobStatus$inboundSchema)).optional(),
         location_ids: z.nullable(z.array(z.string())).optional(),
-        remote_department_ids: z.nullable(z.string()).optional(),
+        remote_department_ids: z.nullable(z.array(z.string())).optional(),
         remote_id: z.nullable(z.string()).optional(),
-        remote_location_ids: z.nullable(z.string()).optional(),
+        remote_location_ids: z.nullable(z.array(z.string())).optional(),
         status: z.nullable(z.string()).optional(),
         title: z.nullable(z.string()).optional(),
         updated_at: z
@@ -362,9 +362,9 @@ export type Job$Outbound = {
     interview_stages?: Array<InterviewStage$Outbound> | null | undefined;
     job_status?: JobStatus$Outbound | null | undefined;
     location_ids?: Array<string> | null | undefined;
-    remote_department_ids?: string | null | undefined;
+    remote_department_ids?: Array<string> | null | undefined;
     remote_id?: string | null | undefined;
-    remote_location_ids?: string | null | undefined;
+    remote_location_ids?: Array<string> | null | undefined;
     status?: string | null | undefined;
     title?: string | null | undefined;
     updated_at?: string | null | undefined;
@@ -382,9 +382,9 @@ export const Job$outboundSchema: z.ZodType<Job$Outbound, z.ZodTypeDef, Job> = z
         interviewStages: z.nullable(z.array(InterviewStage$outboundSchema)).optional(),
         jobStatus: z.nullable(z.lazy(() => JobStatus$outboundSchema)).optional(),
         locationIds: z.nullable(z.array(z.string())).optional(),
-        remoteDepartmentIds: z.nullable(z.string()).optional(),
+        remoteDepartmentIds: z.nullable(z.array(z.string())).optional(),
         remoteId: z.nullable(z.string()).optional(),
-        remoteLocationIds: z.nullable(z.string()).optional(),
+        remoteLocationIds: z.nullable(z.array(z.string())).optional(),
         status: z.nullable(z.string()).optional(),
         title: z.nullable(z.string()).optional(),
         updatedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),

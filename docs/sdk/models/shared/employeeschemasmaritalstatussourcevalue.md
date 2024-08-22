@@ -5,7 +5,7 @@
 ```typescript
 import { EmployeeSchemasMaritalStatusSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: EmployeeSchemasMaritalStatusSourceValue = "<value>";
+let value: EmployeeSchemasMaritalStatusSourceValue = 1334.65;
 ```
 
 ## Supported Types

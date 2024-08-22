@@ -24,25 +24,43 @@ export type Course4 = {};
 export type CourseSourceValue = Course4 | string | number | boolean | Array<any>;
 
 export enum CourseValue {
+    Active = "ACTIVE",
+    Inactive = "INACTIVE",
+}
+export type CourseValueOpen = OpenEnum<typeof CourseValue>;
+
+/**
+ * Whether the course is active and available for users.
+ */
+export type CourseActive = {
+    sourceValue?: Course4 | string | number | boolean | Array<any> | null | undefined;
+    value?: CourseValueOpen | null | undefined;
+};
+
+export type CourseSchemas4 = {};
+
+export type CourseSchemasSourceValue = CourseSchemas4 | string | number | boolean | Array<any>;
+
+export enum CourseSchemasValue {
     Video = "video",
     Quiz = "quiz",
     Document = "document",
 }
-export type CourseValueOpen = OpenEnum<typeof CourseValue>;
+export type CourseSchemasValueOpen = OpenEnum<typeof CourseSchemasValue>;
 
 /**
  * The media type for the course
  */
 export type CourseType = {
-    sourceValue?: Course4 | string | number | boolean | Array<any> | null | undefined;
-    value?: CourseValueOpen | null | undefined;
+    sourceValue?: CourseSchemas4 | string | number | boolean | Array<any> | null | undefined;
+    value?: CourseSchemasValueOpen | null | undefined;
 };
 
 export type Course = {
     /**
      * Whether the course is active and available for users.
      */
-    active?: boolean | null | undefined;
+    active?: CourseActive | null | undefined;
     /**
      * The categories associated with this course
      */
@@ -103,6 +121,10 @@ export type Course = {
      * The date on which the course was last updated.
      */
     updatedAt?: string | null | undefined;
+    /**
+     * The redirect URL of the course.
+     */
+    url?: string | null | undefined;
 };
 
 /** @internal */
@@ -189,7 +211,7 @@ export namespace CourseValue$ {
 }
 
 /** @internal */
-export const CourseType$inboundSchema: z.ZodType<CourseType, z.ZodTypeDef, unknown> = z
+export const CourseActive$inboundSchema: z.ZodType<CourseActive, z.ZodTypeDef, unknown> = z
     .object({
         source_value: z
             .nullable(
@@ -211,13 +233,17 @@ export const CourseType$inboundSchema: z.ZodType<CourseType, z.ZodTypeDef, unkno
     });
 
 /** @internal */
-export type CourseType$Outbound = {
+export type CourseActive$Outbound = {
     source_value?: Course4$Outbound | string | number | boolean | Array<any> | null | undefined;
     value?: string | null | undefined;
 };
 
 /** @internal */
-export const CourseType$outboundSchema: z.ZodType<CourseType$Outbound, z.ZodTypeDef, CourseType> = z
+export const CourseActive$outboundSchema: z.ZodType<
+    CourseActive$Outbound,
+    z.ZodTypeDef,
+    CourseActive
+> = z
     .object({
         sourceValue: z
             .nullable(
@@ -242,6 +268,175 @@ export const CourseType$outboundSchema: z.ZodType<CourseType$Outbound, z.ZodType
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
+export namespace CourseActive$ {
+    /** @deprecated use `CourseActive$inboundSchema` instead. */
+    export const inboundSchema = CourseActive$inboundSchema;
+    /** @deprecated use `CourseActive$outboundSchema` instead. */
+    export const outboundSchema = CourseActive$outboundSchema;
+    /** @deprecated use `CourseActive$Outbound` instead. */
+    export type Outbound = CourseActive$Outbound;
+}
+
+/** @internal */
+export const CourseSchemas4$inboundSchema: z.ZodType<CourseSchemas4, z.ZodTypeDef, unknown> =
+    z.object({});
+
+/** @internal */
+export type CourseSchemas4$Outbound = {};
+
+/** @internal */
+export const CourseSchemas4$outboundSchema: z.ZodType<
+    CourseSchemas4$Outbound,
+    z.ZodTypeDef,
+    CourseSchemas4
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace CourseSchemas4$ {
+    /** @deprecated use `CourseSchemas4$inboundSchema` instead. */
+    export const inboundSchema = CourseSchemas4$inboundSchema;
+    /** @deprecated use `CourseSchemas4$outboundSchema` instead. */
+    export const outboundSchema = CourseSchemas4$outboundSchema;
+    /** @deprecated use `CourseSchemas4$Outbound` instead. */
+    export type Outbound = CourseSchemas4$Outbound;
+}
+
+/** @internal */
+export const CourseSchemasSourceValue$inboundSchema: z.ZodType<
+    CourseSchemasSourceValue,
+    z.ZodTypeDef,
+    unknown
+> = z.union([
+    z.lazy(() => CourseSchemas4$inboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+    z.array(z.any()),
+]);
+
+/** @internal */
+export type CourseSchemasSourceValue$Outbound =
+    | CourseSchemas4$Outbound
+    | string
+    | number
+    | boolean
+    | Array<any>;
+
+/** @internal */
+export const CourseSchemasSourceValue$outboundSchema: z.ZodType<
+    CourseSchemasSourceValue$Outbound,
+    z.ZodTypeDef,
+    CourseSchemasSourceValue
+> = z.union([
+    z.lazy(() => CourseSchemas4$outboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+    z.array(z.any()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace CourseSchemasSourceValue$ {
+    /** @deprecated use `CourseSchemasSourceValue$inboundSchema` instead. */
+    export const inboundSchema = CourseSchemasSourceValue$inboundSchema;
+    /** @deprecated use `CourseSchemasSourceValue$outboundSchema` instead. */
+    export const outboundSchema = CourseSchemasSourceValue$outboundSchema;
+    /** @deprecated use `CourseSchemasSourceValue$Outbound` instead. */
+    export type Outbound = CourseSchemasSourceValue$Outbound;
+}
+
+/** @internal */
+export const CourseSchemasValue$inboundSchema: z.ZodType<
+    CourseSchemasValueOpen,
+    z.ZodTypeDef,
+    unknown
+> = z.union([z.nativeEnum(CourseSchemasValue), z.string().transform(catchUnrecognizedEnum)]);
+
+/** @internal */
+export const CourseSchemasValue$outboundSchema: z.ZodType<
+    CourseSchemasValueOpen,
+    z.ZodTypeDef,
+    CourseSchemasValueOpen
+> = z.union([z.nativeEnum(CourseSchemasValue), z.string().and(z.custom<Unrecognized<string>>())]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace CourseSchemasValue$ {
+    /** @deprecated use `CourseSchemasValue$inboundSchema` instead. */
+    export const inboundSchema = CourseSchemasValue$inboundSchema;
+    /** @deprecated use `CourseSchemasValue$outboundSchema` instead. */
+    export const outboundSchema = CourseSchemasValue$outboundSchema;
+}
+
+/** @internal */
+export const CourseType$inboundSchema: z.ZodType<CourseType, z.ZodTypeDef, unknown> = z
+    .object({
+        source_value: z
+            .nullable(
+                z.union([
+                    z.lazy(() => CourseSchemas4$inboundSchema),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                    z.array(z.any()),
+                ])
+            )
+            .optional(),
+        value: z.nullable(CourseSchemasValue$inboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            source_value: "sourceValue",
+        });
+    });
+
+/** @internal */
+export type CourseType$Outbound = {
+    source_value?:
+        | CourseSchemas4$Outbound
+        | string
+        | number
+        | boolean
+        | Array<any>
+        | null
+        | undefined;
+    value?: string | null | undefined;
+};
+
+/** @internal */
+export const CourseType$outboundSchema: z.ZodType<CourseType$Outbound, z.ZodTypeDef, CourseType> = z
+    .object({
+        sourceValue: z
+            .nullable(
+                z.union([
+                    z.lazy(() => CourseSchemas4$outboundSchema),
+                    z.string(),
+                    z.number(),
+                    z.boolean(),
+                    z.array(z.any()),
+                ])
+            )
+            .optional(),
+        value: z.nullable(CourseSchemasValue$outboundSchema).optional(),
+    })
+    .transform((v) => {
+        return remap$(v, {
+            sourceValue: "source_value",
+        });
+    });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
 export namespace CourseType$ {
     /** @deprecated use `CourseType$inboundSchema` instead. */
     export const inboundSchema = CourseType$inboundSchema;
@@ -254,7 +449,7 @@ export namespace CourseType$ {
 /** @internal */
 export const Course$inboundSchema: z.ZodType<Course, z.ZodTypeDef, unknown> = z
     .object({
-        active: z.nullable(z.boolean()).optional(),
+        active: z.nullable(z.lazy(() => CourseActive$inboundSchema)).optional(),
         categories: z.nullable(z.array(Category$inboundSchema)).optional(),
         content_ids: z.nullable(z.array(z.string())).optional(),
         course_type: z.nullable(z.lazy(() => CourseType$inboundSchema)).optional(),
@@ -270,6 +465,7 @@ export const Course$inboundSchema: z.ZodType<Course, z.ZodTypeDef, unknown> = z
         skills: z.nullable(z.array(Skills$inboundSchema)).optional(),
         title: z.nullable(z.string()).optional(),
         updated_at: z.nullable(z.string()).optional(),
+        url: z.nullable(z.string()).optional(),
     })
     .transform((v) => {
         return remap$(v, {
@@ -286,7 +482,7 @@ export const Course$inboundSchema: z.ZodType<Course, z.ZodTypeDef, unknown> = z
 
 /** @internal */
 export type Course$Outbound = {
-    active?: boolean | null | undefined;
+    active?: CourseActive$Outbound | null | undefined;
     categories?: Array<Category$Outbound> | null | undefined;
     content_ids?: Array<string> | null | undefined;
     course_type?: CourseType$Outbound | null | undefined;
@@ -302,12 +498,13 @@ export type Course$Outbound = {
     skills?: Array<Skills$Outbound> | null | undefined;
     title?: string | null | undefined;
     updated_at?: string | null | undefined;
+    url?: string | null | undefined;
 };
 
 /** @internal */
 export const Course$outboundSchema: z.ZodType<Course$Outbound, z.ZodTypeDef, Course> = z
     .object({
-        active: z.nullable(z.boolean()).optional(),
+        active: z.nullable(z.lazy(() => CourseActive$outboundSchema)).optional(),
         categories: z.nullable(z.array(Category$outboundSchema)).optional(),
         contentIds: z.nullable(z.array(z.string())).optional(),
         courseType: z.nullable(z.lazy(() => CourseType$outboundSchema)).optional(),
@@ -323,6 +520,7 @@ export const Course$outboundSchema: z.ZodType<Course$Outbound, z.ZodTypeDef, Cou
         skills: z.nullable(z.array(Skills$outboundSchema)).optional(),
         title: z.nullable(z.string()).optional(),
         updatedAt: z.nullable(z.string()).optional(),
+        url: z.nullable(z.string()).optional(),
     })
     .transform((v) => {
         return remap$(v, {

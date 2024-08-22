@@ -26,7 +26,7 @@ let value: AtsGetInterviewResponse = {
                     startAt: new Date("2021-01-01T17:00:00.000Z"),
                     title: "Interview (Informal Interview) - Elon and StackOne",
                     type: {
-                        sourceValue: true,
+                        sourceValue: "Onsite Interview",
                         value: InterviewPartValue.OnSite,
                     },
                     updatedAt: new Date("2021-01-01T01:01:01.000Z"),
@@ -39,7 +39,7 @@ let value: AtsGetInterviewResponse = {
                 updatedAt: new Date("2021-01-01T01:01:01.000Z"),
             },
             interviewStatus: {
-                sourceValue: Unscheduled,
+                sourceValue: {},
                 value: InterviewValue.Unscheduled,
             },
             interviewers: [
@@ -59,7 +59,7 @@ let value: AtsGetInterviewResponse = {
             updatedAt: new Date("2021-01-01T01:01:01.000Z"),
         },
     },
-    statusCode: 186332,
+    statusCode: 736918,
     rawResponse: new Response('{"message": "hello world"}', {
         headers: { "Content-Type": "application/json" },
     }),

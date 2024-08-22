@@ -7,7 +7,7 @@ The type of the content blocks.
 ```typescript
 import { ContentBlockSchemasValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: ContentBlockSchemasValue = ContentBlockSchemasValue.CodeSnippet;
+let value: ContentBlockSchemasValue = ContentBlockSchemasValue.Text;
 ```
 
 ## Values

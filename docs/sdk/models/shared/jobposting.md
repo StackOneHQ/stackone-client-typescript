@@ -13,7 +13,6 @@ import {
   JobPostingSchemasStatusValue,
   JobPostingSchemasValue,
   JobPostingValue,
-  Question2,
   QuestionValue,
 } from "@stackone/stackone-client-ts/sdk/models/shared";
 
@@ -24,23 +23,6 @@ let value: JobPosting = {
             maxValue: "55000",
             minValue: "45000",
             name: "Base Salary",
-            payFrequency: {
-                sourceValue: "Hourly",
-                value: JobPostingCompensationValue.Hourly,
-            },
-            payPeriod: {
-                sourceValue: {},
-                value: JobPostingCompensationSchemasValue.Hour,
-            },
-            type: {
-                sourceValue: {},
-                value: JobPostingCompensationSchemasTypeValue.Salary,
-            },
-            value: "50000",
-        },
-        {
-            currency: "USD",
-            name: "Bonus",
             payFrequency: {
                 sourceValue: {},
                 value: JobPostingCompensationValue.Hourly,
@@ -53,6 +35,23 @@ let value: JobPosting = {
                 sourceValue: ["Salary"],
                 value: JobPostingCompensationSchemasTypeValue.Salary,
             },
+            value: "50000",
+        },
+        {
+            currency: "USD",
+            name: "Bonus",
+            payFrequency: {
+                sourceValue: Hourly,
+                value: JobPostingCompensationValue.Hourly,
+            },
+            payPeriod: {
+                sourceValue: "Hour",
+                value: JobPostingCompensationSchemasValue.Hour,
+            },
+            type: {
+                sourceValue: {},
+                value: JobPostingCompensationSchemasTypeValue.Salary,
+            },
             value: "10%",
         },
     ],
@@ -62,11 +61,11 @@ let value: JobPosting = {
     },
     createdAt: new Date("2021-01-01T01:01:01.000Z"),
     employmentContractType: {
-        sourceValue: FullTime,
+        sourceValue: true,
         value: JobPostingValue.FullTime,
     },
     employmentType: {
-        sourceValue: "Permanent",
+        sourceValue: {},
         value: JobPostingSchemasValue.Permanent,
     },
     externalApplyUrl: "https://www.example.com/job-posting/abcd1234/apply",
@@ -104,7 +103,7 @@ let value: JobPosting = {
                     required: true,
                     text: "What is your name?",
                     type: {
-                        sourceValue: {},
+                        sourceValue: true,
                         value: QuestionValue.ShortText,
                     },
                 },
@@ -117,10 +116,10 @@ let value: JobPosting = {
                         },
                     ],
                     remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-                    required: Question2.False,
+                    required: false,
                     text: "What are your hobbies?",
                     type: {
-                        sourceValue: true,
+                        sourceValue: ["ShortText"],
                         value: QuestionValue.ShortText,
                     },
                 },
@@ -152,7 +151,7 @@ let value: JobPosting = {
                     required: true,
                     text: "What is your favorite animal?",
                     type: {
-                        sourceValue: "ShortText",
+                        sourceValue: ShortText,
                         value: QuestionValue.ShortText,
                     },
                 },
@@ -176,7 +175,7 @@ let value: JobPosting = {
                     required: true,
                     text: "Please upload your resume.",
                     type: {
-                        sourceValue: ["ShortText"],
+                        sourceValue: ShortText,
                         value: QuestionValue.ShortText,
                     },
                 },
@@ -233,7 +232,7 @@ let value: JobPosting = {
                     remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
                     text: "How many years of experience do you have?",
                     type: {
-                        sourceValue: ShortText,
+                        sourceValue: {},
                         value: QuestionValue.ShortText,
                     },
                 },
@@ -248,7 +247,7 @@ let value: JobPosting = {
                     remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
                     text: "When did you start your most recent position?",
                     type: {
-                        sourceValue: ShortText,
+                        sourceValue: "ShortText",
                         value: QuestionValue.ShortText,
                     },
                 },
@@ -259,7 +258,7 @@ let value: JobPosting = {
     remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
     remoteJobPostingId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
     status: {
-        sourceValue: {},
+        sourceValue: "Live",
         value: JobPostingSchemasStatusValue.Live,
     },
     title: "Software Engineer",

@@ -1,24 +1,21 @@
 # Status
 
-The status of the candidates assessment.
+Status of the Campaign
 
 ## Example Usage
 
 ```typescript
-import { Status } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { CampaignSchemasValue, Status } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: Status = Status.Completed;
+let value: Status = {
+    sourceValue: Email,
+    value: CampaignSchemasValue.Draft,
+};
 ```
 
-## Values
+## Fields
 
-This is an open enum. Unrecognized values will be captured as the `Unrecognized<string>` branded type.
-
-| Name                   | Value                  |
-| ---------------------- | ---------------------- |
-| `InProgress`           | in_progress            |
-| `Pending`              | pending                |
-| `Completed`            | completed              |
-| `Rejected`             | rejected               |
-| `Expired`              | expired                |
-| -                      | `Unrecognized<string>` |
+| Field                                                                             | Type                                                                              | Required                                                                          | Description                                                                       | Example                                                                           |
+| --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| `sourceValue`                                                                     | *shared.CampaignSchemasSourceValue*                                               | :heavy_minus_sign:                                                                | The source value of the Status.                                                   | Email                                                                             |
+| `value`                                                                           | [shared.CampaignSchemasValue](../../../sdk/models/shared/campaignschemasvalue.md) | :heavy_minus_sign:                                                                | The Status of the campaign.                                                       | email                                                                             |

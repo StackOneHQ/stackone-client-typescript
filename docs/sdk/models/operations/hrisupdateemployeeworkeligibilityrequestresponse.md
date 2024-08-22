@@ -7,7 +7,7 @@ import { HrisUpdateEmployeeWorkEligibilityRequestResponse } from "@stackone/stac
 
 let value: HrisUpdateEmployeeWorkEligibilityRequestResponse = {
     contentType: "<value>",
-    statusCode: 574325,
+    statusCode: 33625,
     rawResponse: new Response('{"message": "hello world"}', {
         headers: { "Content-Type": "application/json" },
     }),

@@ -5,7 +5,7 @@
 ```typescript
 import { CourseValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: CourseValue = CourseValue.Video;
+let value: CourseValue = CourseValue.Inactive;
 ```
 
 ## Values
@@ -14,7 +14,6 @@ This is an open enum. Unrecognized values will be captured as the `Unrecognized<
 
 | Name                   | Value                  |
 | ---------------------- | ---------------------- |
-| `Video`                | video                  |
-| `Quiz`                 | quiz                   |
-| `Document`             | document               |
+| `Active`               | ACTIVE                 |
+| `Inactive`             | INACTIVE               |
 | -                      | `Unrecognized<string>` |

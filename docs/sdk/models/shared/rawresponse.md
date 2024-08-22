@@ -7,7 +7,7 @@ import { RawResponse } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: RawResponse = {
     method: "<value>",
-    url: "http://thoughtful-barracks.net",
+    url: "https://best-respite.net",
 };
 ```
 

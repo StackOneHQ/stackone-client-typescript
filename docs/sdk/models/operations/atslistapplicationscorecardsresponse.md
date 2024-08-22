@@ -4,7 +4,7 @@
 
 ```typescript
 import { AtsListApplicationScorecardsResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
-import { Field2, FieldType, OverallRecommendation } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { FieldType, OverallRecommendation } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: AtsListApplicationScorecardsResponse = {
     contentType: "<value>",
@@ -18,7 +18,7 @@ let value: AtsListApplicationScorecardsResponse = {
                 id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
                 interviewId: "1314-15",
                 label: "Technical Interview",
-                overallRecommendation: OverallRecommendation.Yes,
+                overallRecommendation: OverallRecommendation.No,
                 remoteApplicationId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
                 remoteAuthorId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
                 remoteCandidateId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
@@ -31,8 +31,8 @@ let value: AtsListApplicationScorecardsResponse = {
                                 id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
                                 label: "Problem Solving",
                                 remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-                                required: Field2.True,
-                                type: FieldType.Boolean,
+                                required: true,
+                                type: FieldType.Date,
                                 values: ["Excellent", "Good", "Average", "Poor"],
                             },
                         ],
@@ -45,7 +45,7 @@ let value: AtsListApplicationScorecardsResponse = {
             },
         ],
     },
-    statusCode: 325047,
+    statusCode: 38425,
     rawResponse: new Response('{"message": "hello world"}', {
         headers: { "Content-Type": "application/json" },
     }),

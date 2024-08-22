@@ -5,7 +5,7 @@
 ```typescript
 import { HRISDepartmentSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: HRISDepartmentSourceValue = false;
+let value: HRISDepartmentSourceValue = 8268.71;
 ```
 
 ## Supported Types

@@ -44,7 +44,7 @@ let value: IamListPoliciesResponse = {
             },
         ],
     },
-    statusCode: 260341,
+    statusCode: 806194,
     rawResponse: new Response('{"message": "hello world"}', {
         headers: { "Content-Type": "application/json" },
     }),

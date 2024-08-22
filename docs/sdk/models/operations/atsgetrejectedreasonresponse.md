@@ -13,13 +13,13 @@ let value: AtsGetRejectedReasonResponse = {
             id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
             label: "Failed Phone Screen",
             rejectedReasonType: {
-                sourceValue: {},
+                sourceValue: RejectedByOrg,
                 value: RejectedReasonValue.RejectedByOrganization,
             },
             remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         },
     },
-    statusCode: 170909,
+    statusCode: 358152,
     rawResponse: new Response('{"message": "hello world"}', {
         headers: { "Content-Type": "application/json" },
     }),

@@ -5,7 +5,7 @@
 ```typescript
 import { HRISBenefitSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: HRISBenefitSourceValue = ["<value>"];
+let value: HRISBenefitSourceValue = "<value>";
 ```
 
 ## Supported Types

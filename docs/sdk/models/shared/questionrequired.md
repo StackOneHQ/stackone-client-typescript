@@ -5,7 +5,7 @@
 ```typescript
 import { Question2, QuestionRequired } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: QuestionRequired = Question2.True;
+let value: QuestionRequired = Question2.False;
 ```
 
 ## Supported Types

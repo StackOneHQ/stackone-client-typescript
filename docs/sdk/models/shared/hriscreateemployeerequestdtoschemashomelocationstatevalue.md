@@ -6,7 +6,7 @@
 import { HrisCreateEmployeeRequestDtoSchemasHomeLocationStateValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: HrisCreateEmployeeRequestDtoSchemasHomeLocationStateValue =
-    HrisCreateEmployeeRequestDtoSchemasHomeLocationStateValue.GyEb;
+    HrisCreateEmployeeRequestDtoSchemasHomeLocationStateValue.Ag04;
 ```
 
 ## Values

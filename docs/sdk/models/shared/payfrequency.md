@@ -8,7 +8,7 @@ The pay frequency
 import { EmploymentSchemasPayFrequencyValue, PayFrequency } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: PayFrequency = {
-    sourceValue: ["Hourly"],
+    sourceValue: true,
     value: EmploymentSchemasPayFrequencyValue.Hourly,
 };
 ```

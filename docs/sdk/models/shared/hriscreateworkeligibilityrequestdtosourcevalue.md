@@ -5,7 +5,7 @@
 ```typescript
 import { HrisCreateWorkEligibilityRequestDtoSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: HrisCreateWorkEligibilityRequestDtoSourceValue = 4585.15;
+let value: HrisCreateWorkEligibilityRequestDtoSourceValue = {};
 ```
 
 ## Supported Types

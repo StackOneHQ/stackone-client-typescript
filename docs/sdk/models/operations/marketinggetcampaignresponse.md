@@ -11,7 +11,7 @@ let value: MarketingGetCampaignResponse = {
     data: {
       channels: [
         {
-          sourceValue: SMS,
+          sourceValue: true,
           value: ChannelsEnumValue.Sms,
         },
       ],
@@ -44,7 +44,7 @@ let value: MarketingGetCampaignResponse = {
             subject: "Example Email Subject",
           },
           messageType: {
-            sourceValue: true,
+            sourceValue: {},
             value: {},
           },
           name: "Email Message",
@@ -56,7 +56,7 @@ let value: MarketingGetCampaignResponse = {
             body: "This is an example push notification body.",
           },
           messageType: {
-            sourceValue: {},
+            sourceValue: "Email",
             value: {},
           },
           name: "iOS Push Message",
@@ -65,20 +65,20 @@ let value: MarketingGetCampaignResponse = {
       ],
       remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
       scheduleType: {
-        sourceValue: "Immediate",
+        sourceValue: [
+          "Immediate",
+        ],
         value: CampaignValue.Immediate,
       },
       status: {
-        sourceValue: [
-          "Email",
-        ],
-        value: CampaignSchemasValue.Archived,
+        sourceValue: Email,
+        value: CampaignSchemasValue.Live,
       },
       updatedAt: new Date("2021-01-01T01:01:01.000Z"),
     },
   },
   contentType: "<value>",
-  statusCode: 975522,
+  statusCode: 16627,
   rawResponse:   new Response('{"message": "hello world"}', {headers: {"Content-Type": "application/json"}}),
 };
 ```

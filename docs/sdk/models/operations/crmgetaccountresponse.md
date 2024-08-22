@@ -12,11 +12,11 @@ let value: CrmGetAccountResponse = {
             addresses: [
                 {
                     country: {
-                        sourceValue: ["GB"],
+                        sourceValue: "GB",
                         value: AccountAddressSchemasValue.Gb,
                     },
                     locationType: {
-                        sourceValue: "Home",
+                        sourceValue: Home,
                         value: AccountAddressValue.Home,
                     },
                 },
@@ -35,7 +35,7 @@ let value: CrmGetAccountResponse = {
         },
     },
     contentType: "<value>",
-    statusCode: 216822,
+    statusCode: 692472,
     rawResponse: new Response('{"message": "hello world"}', {
         headers: { "Content-Type": "application/json" },
     }),

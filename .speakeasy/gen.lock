@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 7fa83af8-9e8e-4410-b7e2-cf1d0eaf688b
 management:
-  docChecksum: 35bbb8a02f4ab11515f3916fc44c15a5
+  docChecksum: 84d13d0f4505feca971f56c706f5fb31
   docVersion: 1.0.0
-  speakeasyVersion: 1.377.1
-  generationVersion: 2.404.1
-  releaseVersion: 4.14.0
-  configChecksum: 8453bd7dd10172624aeb2596ee904cd3
+  speakeasyVersion: 1.377.3
+  generationVersion: 2.404.2
+  releaseVersion: 4.14.1
+  configChecksum: ddba24a49898363623ec481f78de7b9f
   repoURL: https://github.com/StackOneHQ/stackone-client-typescript.git
   repoSubDirectory: .
   installationURL: https://github.com/StackOneHQ/stackone-client-typescript
@@ -150,12 +150,12 @@ generatedFiles:
   - src/funcs/lmsCreateContent.ts
   - src/funcs/lmsGetAssignment.ts
   - src/funcs/lmsGetCategory.ts
-  - src/funcs/lmsGetCompletion.ts
   - src/funcs/lmsGetContent.ts
   - src/funcs/lmsGetCourse.ts
   - src/funcs/lmsGetUser.ts
   - src/funcs/lmsListAssignments.ts
   - src/funcs/lmsListCategories.ts
+  - src/funcs/lmsListCompletions.ts
   - src/funcs/lmsListContent.ts
   - src/funcs/lmsListCourses.ts
   - src/funcs/lmsListUsers.ts
@@ -349,12 +349,12 @@ generatedFiles:
   - src/sdk/models/operations/lmscreatecontent.ts
   - src/sdk/models/operations/lmsgetassignment.ts
   - src/sdk/models/operations/lmsgetcategory.ts
-  - src/sdk/models/operations/lmsgetcompletion.ts
   - src/sdk/models/operations/lmsgetcontent.ts
   - src/sdk/models/operations/lmsgetcourse.ts
   - src/sdk/models/operations/lmsgetuser.ts
   - src/sdk/models/operations/lmslistassignments.ts
   - src/sdk/models/operations/lmslistcategories.ts
+  - src/sdk/models/operations/lmslistcompletions.ts
   - src/sdk/models/operations/lmslistcontent.ts
   - src/sdk/models/operations/lmslistcourses.ts
   - src/sdk/models/operations/lmslistusers.ts
@@ -561,14 +561,14 @@ generatedFiles:
   - src/sdk/models/shared/assignment.ts
   - src/sdk/models/shared/assignmentstatusenum.ts
   - src/sdk/models/shared/categoryresult.ts
-  - src/sdk/models/shared/completionresult.ts
-  - src/sdk/models/shared/completion.ts
   - src/sdk/models/shared/contentresult.ts
   - src/sdk/models/shared/courseresult.ts
   - src/sdk/models/shared/course.ts
   - src/sdk/models/shared/skills.ts
   - src/sdk/models/shared/assignmentspaginated.ts
   - src/sdk/models/shared/categoriespaginated.ts
+  - src/sdk/models/shared/completionspaginated.ts
+  - src/sdk/models/shared/completion.ts
   - src/sdk/models/shared/contentpaginated.ts
   - src/sdk/models/shared/coursepaginated.ts
   - src/sdk/models/shared/lmsupsertcontentrequestdto.ts
@@ -870,9 +870,6 @@ generatedFiles:
   - docs/sdk/models/operations/lmsgetassignmentresponse.md
   - docs/sdk/models/operations/lmsgetcategoryrequest.md
   - docs/sdk/models/operations/lmsgetcategoryresponse.md
-  - docs/sdk/models/operations/lmsgetcompletionqueryparamfilter.md
-  - docs/sdk/models/operations/lmsgetcompletionrequest.md
-  - docs/sdk/models/operations/lmsgetcompletionresponse.md
   - docs/sdk/models/operations/lmsgetcontentrequest.md
   - docs/sdk/models/operations/lmsgetcontentresponse.md
   - docs/sdk/models/operations/lmsgetcourserequest.md
@@ -885,6 +882,9 @@ generatedFiles:
   - docs/sdk/models/operations/lmslistcategoriesqueryparamfilter.md
   - docs/sdk/models/operations/lmslistcategoriesrequest.md
   - docs/sdk/models/operations/lmslistcategoriesresponse.md
+  - docs/sdk/models/operations/lmslistcompletionsqueryparamfilter.md
+  - docs/sdk/models/operations/lmslistcompletionsrequest.md
+  - docs/sdk/models/operations/lmslistcompletionsresponse.md
   - docs/sdk/models/operations/lmslistcontentqueryparamfilter.md
   - docs/sdk/models/operations/lmslistcontentrequest.md
   - docs/sdk/models/operations/lmslistcontentresponse.md
@@ -1105,14 +1105,17 @@ generatedFiles:
   - docs/sdk/models/shared/assessmentspackagestype.md
   - docs/sdk/models/shared/assessmentspackages.md
   - docs/sdk/models/shared/assessmentsresultsresult.md
-  - docs/sdk/models/shared/assessmentsresults4.md
-  - docs/sdk/models/shared/assessmentsresultssourcevalue.md
-  - docs/sdk/models/shared/assessmentsresultsvalue.md
+  - docs/sdk/models/shared/assessmentsresultsschemas4.md
+  - docs/sdk/models/shared/assessmentsresultsschemassourcevalue.md
+  - docs/sdk/models/shared/assessmentsresultsschemasvalue.md
   - docs/sdk/models/shared/assessmentsresultscontenttype.md
   - docs/sdk/models/shared/attachments.md
   - docs/sdk/models/shared/assessmentsresultscandidate.md
+  - docs/sdk/models/shared/assessmentsresults4.md
+  - docs/sdk/models/shared/assessmentsresultssourcevalue.md
+  - docs/sdk/models/shared/assessmentsresultsvalue.md
+  - docs/sdk/models/shared/result.md
   - docs/sdk/models/shared/score.md
-  - docs/sdk/models/shared/status.md
   - docs/sdk/models/shared/assessmentsresults.md
   - docs/sdk/models/shared/candidateresult.md
   - docs/sdk/models/shared/candidate.md
@@ -1583,22 +1586,26 @@ generatedFiles:
   - docs/sdk/models/shared/assignmentstatusenumvalue.md
   - docs/sdk/models/shared/assignmentstatusenum.md
   - docs/sdk/models/shared/categoryresult.md
-  - docs/sdk/models/shared/completionresult.md
-  - docs/sdk/models/shared/completion4.md
-  - docs/sdk/models/shared/completionsourcevalue.md
-  - docs/sdk/models/shared/completionvalue.md
-  - docs/sdk/models/shared/result.md
-  - docs/sdk/models/shared/completion.md
   - docs/sdk/models/shared/contentresult.md
   - docs/sdk/models/shared/courseresult.md
   - docs/sdk/models/shared/course4.md
   - docs/sdk/models/shared/coursesourcevalue.md
   - docs/sdk/models/shared/coursevalue.md
+  - docs/sdk/models/shared/courseactive.md
+  - docs/sdk/models/shared/courseschemas4.md
+  - docs/sdk/models/shared/courseschemassourcevalue.md
+  - docs/sdk/models/shared/courseschemasvalue.md
   - docs/sdk/models/shared/coursetype.md
   - docs/sdk/models/shared/course.md
   - docs/sdk/models/shared/skills.md
   - docs/sdk/models/shared/assignmentspaginated.md
   - docs/sdk/models/shared/categoriespaginated.md
+  - docs/sdk/models/shared/completionspaginated.md
+  - docs/sdk/models/shared/completion4.md
+  - docs/sdk/models/shared/completionsourcevalue.md
+  - docs/sdk/models/shared/completionvalue.md
+  - docs/sdk/models/shared/completionresult.md
+  - docs/sdk/models/shared/completion.md
   - docs/sdk/models/shared/contentpaginated.md
   - docs/sdk/models/shared/coursepaginated.md
   - docs/sdk/models/shared/lmsupsertcontentrequestdto2.md
@@ -1659,7 +1666,7 @@ generatedFiles:
   - docs/sdk/models/shared/campaignschemas4.md
   - docs/sdk/models/shared/campaignschemassourcevalue.md
   - docs/sdk/models/shared/campaignschemasvalue.md
-  - docs/sdk/models/shared/campaignstatus.md
+  - docs/sdk/models/shared/status.md
   - docs/sdk/models/shared/campaign.md
   - docs/sdk/models/shared/channelsenum4.md
   - docs/sdk/models/shared/channelsenumsourcevalue.md

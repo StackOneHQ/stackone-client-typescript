@@ -16,7 +16,7 @@ let value: HrisCreateTimeOffRequestResponse = {
         statusCode: 201,
         timestamp: new Date("2021-01-01T01:01:01.000Z"),
     },
-    statusCode: 586513,
+    statusCode: 552822,
     rawResponse: new Response('{"message": "hello world"}', {
         headers: { "Content-Type": "application/json" },
     }),

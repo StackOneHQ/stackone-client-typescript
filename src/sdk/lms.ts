@@ -6,12 +6,12 @@ import { lmsCreateCompletion } from "../funcs/lmsCreateCompletion.js";
 import { lmsCreateContent } from "../funcs/lmsCreateContent.js";
 import { lmsGetAssignment } from "../funcs/lmsGetAssignment.js";
 import { lmsGetCategory } from "../funcs/lmsGetCategory.js";
-import { lmsGetCompletion } from "../funcs/lmsGetCompletion.js";
 import { lmsGetContent } from "../funcs/lmsGetContent.js";
 import { lmsGetCourse } from "../funcs/lmsGetCourse.js";
 import { lmsGetUser } from "../funcs/lmsGetUser.js";
 import { lmsListAssignments } from "../funcs/lmsListAssignments.js";
 import { lmsListCategories } from "../funcs/lmsListCategories.js";
+import { lmsListCompletions } from "../funcs/lmsListCompletions.js";
 import { lmsListContent } from "../funcs/lmsListContent.js";
 import { lmsListCourses } from "../funcs/lmsListCourses.js";
 import { lmsListUsers } from "../funcs/lmsListUsers.js";
@@ -63,16 +63,6 @@ export class Lms extends ClientSDK {
     }
 
     /**
-     * Get User Completion
-     */
-    async getCompletion(
-        request: operations.LmsGetCompletionRequest,
-        options?: RequestOptions
-    ): Promise<operations.LmsGetCompletionResponse> {
-        return unwrapAsync(lmsGetCompletion(this, request, options));
-    }
-
-    /**
      * Get Content
      */
     async getContent(
@@ -120,6 +110,16 @@ export class Lms extends ClientSDK {
         options?: RequestOptions
     ): Promise<operations.LmsListCategoriesResponse> {
         return unwrapAsync(lmsListCategories(this, request, options));
+    }
+
+    /**
+     * List User Completions
+     */
+    async listCompletions(
+        request: operations.LmsListCompletionsRequest,
+        options?: RequestOptions
+    ): Promise<operations.LmsListCompletionsResponse> {
+        return unwrapAsync(lmsListCompletions(this, request, options));
     }
 
     /**

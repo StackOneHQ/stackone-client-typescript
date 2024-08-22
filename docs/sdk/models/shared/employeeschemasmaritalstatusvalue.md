@@ -5,7 +5,7 @@
 ```typescript
 import { EmployeeSchemasMaritalStatusValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: EmployeeSchemasMaritalStatusValue = EmployeeSchemasMaritalStatusValue.Divorced;
+let value: EmployeeSchemasMaritalStatusValue = EmployeeSchemasMaritalStatusValue.Married;
 ```
 
 ## Values
