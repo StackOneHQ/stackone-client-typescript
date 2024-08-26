@@ -357,7 +357,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.accounts.updateAccount({
-    patchAccountDto: {},
+    patchAccountExternalDto: {},
     id: "<id>",
   });
 
@@ -387,7 +387,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await accountsUpdateAccount(stackOne, {
-    patchAccountDto: {},
+    patchAccountExternalDto: {},
     id: "<id>",
   });
 

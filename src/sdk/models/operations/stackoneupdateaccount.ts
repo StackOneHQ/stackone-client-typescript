@@ -7,7 +7,7 @@ import * as shared from "../shared/index.js";
 import * as z from "zod";
 
 export type StackoneUpdateAccountRequest = {
-    patchAccountDto: shared.PatchAccountDto;
+    patchAccountExternalDto: shared.PatchAccountExternalDto;
     id: string;
 };
 
@@ -37,18 +37,18 @@ export const StackoneUpdateAccountRequest$inboundSchema: z.ZodType<
     unknown
 > = z
     .object({
-        PatchAccountDto: shared.PatchAccountDto$inboundSchema,
+        PatchAccountExternalDto: shared.PatchAccountExternalDto$inboundSchema,
         id: z.string(),
     })
     .transform((v) => {
         return remap$(v, {
-            PatchAccountDto: "patchAccountDto",
+            PatchAccountExternalDto: "patchAccountExternalDto",
         });
     });
 
 /** @internal */
 export type StackoneUpdateAccountRequest$Outbound = {
-    PatchAccountDto: shared.PatchAccountDto$Outbound;
+    PatchAccountExternalDto: shared.PatchAccountExternalDto$Outbound;
     id: string;
 };
 
@@ -59,12 +59,12 @@ export const StackoneUpdateAccountRequest$outboundSchema: z.ZodType<
     StackoneUpdateAccountRequest
 > = z
     .object({
-        patchAccountDto: shared.PatchAccountDto$outboundSchema,
+        patchAccountExternalDto: shared.PatchAccountExternalDto$outboundSchema,
         id: z.string(),
     })
     .transform((v) => {
         return remap$(v, {
-            patchAccountDto: "PatchAccountDto",
+            patchAccountExternalDto: "PatchAccountExternalDto",
         });
     });
 

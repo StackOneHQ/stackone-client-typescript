@@ -51,7 +51,7 @@ export async function accountsUpdateAccount(
         return parsed$;
     }
     const payload$ = parsed$.value;
-    const body$ = encodeJSON$("body", payload$.PatchAccountDto, { explode: true });
+    const body$ = encodeJSON$("body", payload$.PatchAccountExternalDto, { explode: true });
 
     const pathParams$ = {
         id: encodeSimple$("id", payload$.id, { explode: false, charEncoding: "percent" }),

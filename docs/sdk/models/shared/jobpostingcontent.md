@@ -17,3 +17,4 @@ let value: JobPostingContent = {
 | ------------------ | ------------------ | ------------------ | ------------------ |
 | `html`             | *string*           | :heavy_minus_sign: | N/A                |
 | `plain`            | *string*           | :heavy_minus_sign: | N/A                |
+| `section`          | *string*[]         | :heavy_minus_sign: | N/A                |
