@@ -167,7 +167,7 @@ export * from "./offer.js";
 export * from "./offerhistory.js";
 export * from "./offerspaginated.js";
 export * from "./offersresult.js";
-export * from "./patchaccountdto.js";
+export * from "./patchaccountexternaldto.js";
 export * from "./phonenumber.js";
 export * from "./providererrorapimodel.js";
 export * from "./proxyrequestbody.js";

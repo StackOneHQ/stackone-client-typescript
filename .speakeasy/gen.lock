@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 7fa83af8-9e8e-4410-b7e2-cf1d0eaf688b
 management:
-  docChecksum: 84d13d0f4505feca971f56c706f5fb31
+  docChecksum: c8436e8f2924bb6e569865ffdf15d025
   docVersion: 1.0.0
-  speakeasyVersion: 1.377.3
-  generationVersion: 2.404.2
-  releaseVersion: 4.14.1
-  configChecksum: ddba24a49898363623ec481f78de7b9f
+  speakeasyVersion: 1.379.0
+  generationVersion: 2.404.3
+  releaseVersion: 4.14.2
+  configChecksum: 65529d672463405a2f0649b4b97f1fd6
   repoURL: https://github.com/StackOneHQ/stackone-client-typescript.git
   repoSubDirectory: .
   installationURL: https://github.com/StackOneHQ/stackone-client-typescript
@@ -14,7 +14,7 @@ management:
 features:
   typescript:
     additionalDependencies: 0.1.0
-    constsAndDefaults: 0.1.10
+    constsAndDefaults: 0.1.11
     core: 3.14.1
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
@@ -390,7 +390,7 @@ generatedFiles:
   - src/sdk/models/shared/linkedaccount.ts
   - src/sdk/models/shared/statusreason.ts
   - src/sdk/models/shared/linkedaccountmeta.ts
-  - src/sdk/models/shared/patchaccountdto.ts
+  - src/sdk/models/shared/patchaccountexternaldto.ts
   - src/sdk/models/shared/connectsession.ts
   - src/sdk/models/shared/connectsessionauthenticate.ts
   - src/sdk/models/shared/connectsessiontoken.ts
@@ -966,7 +966,11 @@ generatedFiles:
   - docs/sdk/models/shared/statusreason.md
   - docs/sdk/models/shared/linkedaccountmetacategory.md
   - docs/sdk/models/shared/linkedaccountmeta.md
-  - docs/sdk/models/shared/patchaccountdto.md
+  - docs/sdk/models/shared/patchaccountexternaldtocredentials.md
+  - docs/sdk/models/shared/label.md
+  - docs/sdk/models/shared/secrets.md
+  - docs/sdk/models/shared/patchaccountexternaldtosetupinformation.md
+  - docs/sdk/models/shared/patchaccountexternaldto.md
   - docs/sdk/models/shared/categories.md
   - docs/sdk/models/shared/connectsession.md
   - docs/sdk/models/shared/connectsessionauthenticate.md

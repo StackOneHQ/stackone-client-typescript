@@ -120,7 +120,7 @@ export const ConnectSessionCreate$inboundSchema: z.ZodType<
         expires_in: z.nullable(z.number().default(1800)),
         label: z.nullable(z.string()).optional(),
         metadata: z.nullable(z.lazy(() => Metadata$inboundSchema)).optional(),
-        multiple: z.nullable(z.boolean()),
+        multiple: z.nullable(z.boolean().default(false)),
         origin_owner_id: z.string(),
         origin_owner_name: z.string(),
         origin_username: z.nullable(z.string()).optional(),

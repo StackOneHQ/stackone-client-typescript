@@ -27,6 +27,7 @@ import * as z from "zod";
 export type JobPostingContent = {
     html?: string | null | undefined;
     plain?: string | null | undefined;
+    section?: Array<string> | null | undefined;
 };
 
 export type JobPosting4 = {};
@@ -205,12 +206,14 @@ export const JobPostingContent$inboundSchema: z.ZodType<JobPostingContent, z.Zod
     z.object({
         html: z.nullable(z.string()).optional(),
         plain: z.nullable(z.string()).optional(),
+        section: z.nullable(z.array(z.string())).optional(),
     });
 
 /** @internal */
 export type JobPostingContent$Outbound = {
     html?: string | null | undefined;
     plain?: string | null | undefined;
+    section?: Array<string> | null | undefined;
 };
 
 /** @internal */
@@ -221,6 +224,7 @@ export const JobPostingContent$outboundSchema: z.ZodType<
 > = z.object({
     html: z.nullable(z.string()).optional(),
     plain: z.nullable(z.string()).optional(),
+    section: z.nullable(z.array(z.string())).optional(),
 });
 
 /**

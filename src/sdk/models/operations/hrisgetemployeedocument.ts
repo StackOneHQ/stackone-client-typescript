@@ -56,7 +56,7 @@ export const HrisGetEmployeeDocumentRequest$inboundSchema: z.ZodType<
         fields: z.nullable(z.string()).optional(),
         id: z.string(),
         proxy: z.nullable(z.record(z.any())).optional(),
-        raw: z.nullable(z.boolean()),
+        raw: z.nullable(z.boolean().default(false)),
         subResourceId: z.string(),
         "x-account-id": z.string(),
     })
