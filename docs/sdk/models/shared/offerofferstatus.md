@@ -6,7 +6,7 @@
 import { OfferOfferStatus, OfferValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: OfferOfferStatus = {
-    sourceValue: {},
+    sourceValue: Pending,
     value: OfferValue.Pending,
 };
 ```

@@ -5,7 +5,7 @@
 ```typescript
 import { LmsUpsertContentRequestDtoSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: LmsUpsertContentRequestDtoSourceValue = false;
+let value: LmsUpsertContentRequestDtoSourceValue = ["<value>"];
 ```
 
 ## Supported Types

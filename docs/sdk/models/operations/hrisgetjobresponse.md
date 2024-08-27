@@ -33,7 +33,7 @@ let value: HrisGetJobResponse = {
                 },
             ],
             jobStatus: {
-                sourceValue: ["Published"],
+                sourceValue: Published,
                 value: JobValue.Published,
             },
             locationIds: ["668570", "678571", "688572"],
@@ -44,7 +44,7 @@ let value: HrisGetJobResponse = {
             updatedAt: new Date("2021-01-01T01:01:01.000Z"),
         },
     },
-    statusCode: 699479,
+    statusCode: 767024,
     rawResponse: new Response('{"message": "hello world"}', {
         headers: { "Content-Type": "application/json" },
     }),

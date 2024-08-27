@@ -20,7 +20,7 @@ let value: HrisListBenefitsResponse = {
             },
         ],
     },
-    statusCode: 396506,
+    statusCode: 249796,
     rawResponse: new Response('{"message": "hello world"}', {
         headers: { "Content-Type": "application/json" },
     }),

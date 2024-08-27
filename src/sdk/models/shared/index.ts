@@ -136,6 +136,7 @@ export * from "./job.js";
 export * from "./jobhiringteam.js";
 export * from "./jobposting.js";
 export * from "./jobpostingcompensation.js";
+export * from "./jobpostingcontentsection.js";
 export * from "./jobpostinglocation.js";
 export * from "./jobpostingquestionnaire.js";
 export * from "./jobpostingresult.js";

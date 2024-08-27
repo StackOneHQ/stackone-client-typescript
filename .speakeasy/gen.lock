@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 7fa83af8-9e8e-4410-b7e2-cf1d0eaf688b
 management:
-  docChecksum: c8436e8f2924bb6e569865ffdf15d025
+  docChecksum: 808611690761837648ce40916ab3407b
   docVersion: 1.0.0
-  speakeasyVersion: 1.379.0
-  generationVersion: 2.404.3
-  releaseVersion: 4.14.2
-  configChecksum: 65529d672463405a2f0649b4b97f1fd6
+  speakeasyVersion: 1.379.4
+  generationVersion: 2.404.9
+  releaseVersion: 4.14.3
+  configChecksum: 694830705e8da90e10e0092509fcc6aa
   repoURL: https://github.com/StackOneHQ/stackone-client-typescript.git
   repoSubDirectory: .
   installationURL: https://github.com/StackOneHQ/stackone-client-typescript
@@ -457,6 +457,7 @@ generatedFiles:
   - src/sdk/models/shared/question.ts
   - src/sdk/models/shared/questionmultiplechoiceanswers.ts
   - src/sdk/models/shared/jobpostinglocation.ts
+  - src/sdk/models/shared/jobpostingcontentsection.ts
   - src/sdk/models/shared/jobpostingcompensation.ts
   - src/sdk/models/shared/listresult.ts
   - src/sdk/models/shared/list.ts
@@ -1176,6 +1177,11 @@ generatedFiles:
   - docs/sdk/models/shared/question.md
   - docs/sdk/models/shared/questionmultiplechoiceanswers.md
   - docs/sdk/models/shared/jobpostinglocation.md
+  - docs/sdk/models/shared/jobpostingcontentsection4.md
+  - docs/sdk/models/shared/jobpostingcontentsectionsourcevalue.md
+  - docs/sdk/models/shared/jobpostingcontentsectionvalue.md
+  - docs/sdk/models/shared/jobpostingcontentsectiontype.md
+  - docs/sdk/models/shared/jobpostingcontentsection.md
   - docs/sdk/models/shared/jobpostingcompensation4.md
   - docs/sdk/models/shared/jobpostingcompensationsourcevalue.md
   - docs/sdk/models/shared/jobpostingcompensationvalue.md

@@ -5,7 +5,7 @@
 ```typescript
 import { AtsDocumentApiModelSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: AtsDocumentApiModelSourceValue = false;
+let value: AtsDocumentApiModelSourceValue = {};
 ```
 
 ## Supported Types

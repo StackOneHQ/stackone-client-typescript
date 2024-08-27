@@ -17,7 +17,7 @@ let value: AtsListApplicationCustomFieldDefinitionsResponse = {
             },
         ],
     },
-    statusCode: 750686,
+    statusCode: 315428,
     rawResponse: new Response('{"message": "hello world"}', {
         headers: { "Content-Type": "application/json" },
     }),

@@ -1,13 +1,13 @@
 # AssessmentsPackagesSourceValue
 
-The source value of the assessment type.
+The source value of the description type.
 
 ## Example Usage
 
 ```typescript
 import { AssessmentsPackagesSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: AssessmentsPackagesSourceValue = "Skill Test";
+let value: AssessmentsPackagesSourceValue = "key_responsibilities";
 ```
 
 ## Supported Types

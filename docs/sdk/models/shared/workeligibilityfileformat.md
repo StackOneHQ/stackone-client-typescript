@@ -8,7 +8,7 @@ The file format of the file
 import { WorkEligibilityFileFormat, WorkEligibilitySchemasDocumentValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: WorkEligibilityFileFormat = {
-    sourceValue: "abc",
+    sourceValue: true,
     value: WorkEligibilitySchemasDocumentValue.Pdf,
 };
 ```

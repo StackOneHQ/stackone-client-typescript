@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { FieldType, OverallRecommendation, ScorecardsPaginated } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { Field2, FieldType, OverallRecommendation, ScorecardsPaginated } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: ScorecardsPaginated = {
     data: [
@@ -28,8 +28,8 @@ let value: ScorecardsPaginated = {
                             id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
                             label: "Problem Solving",
                             remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-                            required: true,
-                            type: FieldType.UnmappedValue,
+                            required: Field2.True,
+                            type: FieldType.Email,
                             values: ["Excellent", "Good", "Average", "Poor"],
                         },
                     ],

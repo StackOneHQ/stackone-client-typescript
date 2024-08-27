@@ -30,7 +30,7 @@ let value: AtsListCandidateNotesResponse = {
             },
         ],
     },
-    statusCode: 474697,
+    statusCode: 244425,
     rawResponse: new Response('{"message": "hello world"}', {
         headers: { "Content-Type": "application/json" },
     }),

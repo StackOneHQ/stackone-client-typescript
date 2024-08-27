@@ -3,14 +3,10 @@
 ## Example Usage
 
 ```typescript
-import {
-  ContentLanguageEnumValue,
-  LmsCreateContentRequestDto,
-  LmsCreateContentRequestDto2,
-} from "@stackone/stackone-client-ts/sdk/models/shared";
+import { ContentLanguageEnumValue, LmsCreateContentRequestDto } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: LmsCreateContentRequestDto = {
-    active: LmsCreateContentRequestDto2.True,
+    active: true,
     categories: [
         {
             active: true,

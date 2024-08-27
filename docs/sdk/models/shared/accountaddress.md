@@ -7,11 +7,11 @@ import { AccountAddress, AccountAddressSchemasValue, AccountAddressValue } from 
 
 let value: AccountAddress = {
     country: {
-        sourceValue: {},
+        sourceValue: "GB",
         value: AccountAddressSchemasValue.Gb,
     },
     locationType: {
-        sourceValue: ["Home"],
+        sourceValue: Home,
         value: AccountAddressValue.Home,
     },
 };

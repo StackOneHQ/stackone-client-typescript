@@ -9,6 +9,7 @@ import {
   JobPostingCompensationSchemasTypeValue,
   JobPostingCompensationSchemasValue,
   JobPostingCompensationValue,
+  JobPostingContentSectionValue,
   JobPostingQuestionnaire2,
   JobPostingSchemasStatusValue,
   JobPostingSchemasValue,
@@ -62,14 +63,26 @@ let value: AtsGetJobPostingResponse = {
             content: {
                 html: "<p>This is an HTML description</p>",
                 plain: "This is a plain text description",
+                section: [
+                    {
+                        content: "This is a plain description",
+                        id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+                        label: "Key Responsibilities",
+                        remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+                        type: {
+                            sourceValue: key_responsibilities,
+                            value: JobPostingContentSectionValue.Responsibilities,
+                        },
+                    },
+                ],
             },
             createdAt: new Date("2021-01-01T01:01:01.000Z"),
             employmentContractType: {
-                sourceValue: FullTime,
+                sourceValue: {},
                 value: JobPostingValue.FullTime,
             },
             employmentType: {
-                sourceValue: {},
+                sourceValue: Permanent,
                 value: JobPostingSchemasValue.Permanent,
             },
             externalApplyUrl: "https://www.example.com/job-posting/abcd1234/apply",
@@ -107,7 +120,7 @@ let value: AtsGetJobPostingResponse = {
                             required: true,
                             text: "What is your name?",
                             type: {
-                                sourceValue: ShortText,
+                                sourceValue: ["ShortText"],
                                 value: QuestionValue.ShortText,
                             },
                         },
@@ -123,7 +136,7 @@ let value: AtsGetJobPostingResponse = {
                             required: Question2.False,
                             text: "What are your hobbies?",
                             type: {
-                                sourceValue: {},
+                                sourceValue: true,
                                 value: QuestionValue.ShortText,
                             },
                         },
@@ -155,7 +168,7 @@ let value: AtsGetJobPostingResponse = {
                             required: true,
                             text: "What is your favorite animal?",
                             type: {
-                                sourceValue: true,
+                                sourceValue: ShortText,
                                 value: QuestionValue.ShortText,
                             },
                         },
@@ -179,7 +192,7 @@ let value: AtsGetJobPostingResponse = {
                             required: true,
                             text: "Please upload your resume.",
                             type: {
-                                sourceValue: ShortText,
+                                sourceValue: {},
                                 value: QuestionValue.ShortText,
                             },
                         },
@@ -206,7 +219,7 @@ let value: AtsGetJobPostingResponse = {
                             required: true,
                             text: "Select the programming languages you are proficient in.",
                             type: {
-                                sourceValue: {},
+                                sourceValue: true,
                                 value: QuestionValue.ShortText,
                             },
                         },
@@ -221,7 +234,7 @@ let value: AtsGetJobPostingResponse = {
                             remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
                             text: "Are you willing to relocate?",
                             type: {
-                                sourceValue: true,
+                                sourceValue: ["ShortText"],
                                 value: QuestionValue.ShortText,
                             },
                         },
@@ -236,7 +249,7 @@ let value: AtsGetJobPostingResponse = {
                             remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
                             text: "How many years of experience do you have?",
                             type: {
-                                sourceValue: ["ShortText"],
+                                sourceValue: {},
                                 value: QuestionValue.ShortText,
                             },
                         },
@@ -251,7 +264,7 @@ let value: AtsGetJobPostingResponse = {
                             remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
                             text: "When did you start your most recent position?",
                             type: {
-                                sourceValue: {},
+                                sourceValue: "ShortText",
                                 value: QuestionValue.ShortText,
                             },
                         },
@@ -269,7 +282,7 @@ let value: AtsGetJobPostingResponse = {
             updatedAt: new Date("2021-01-01T01:01:01.000Z"),
         },
     },
-    statusCode: 60225,
+    statusCode: 969810,
     rawResponse: new Response('{"message": "hello world"}', {
         headers: { "Content-Type": "application/json" },
     }),

@@ -3,14 +3,14 @@
 ## Example Usage
 
 ```typescript
-import { Field, Field2, FieldType } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { Field, FieldType } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: Field = {
     id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
     label: "Problem Solving",
     remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-    required: Field2.True,
-    type: FieldType.SingleSelect,
+    required: true,
+    type: FieldType.UnmappedValue,
     values: ["Excellent", "Good", "Average", "Poor"],
 };
 ```

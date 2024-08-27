@@ -7,7 +7,7 @@ import { StackoneProxyRequestResponse } from "@stackone/stackone-client-ts/sdk/m
 
 let value: StackoneProxyRequestResponse = {
     contentType: "<value>",
-    statusCode: 992397,
+    statusCode: 613966,
     rawResponse: new Response('{"message": "hello world"}', {
         headers: { "Content-Type": "application/json" },
     }),

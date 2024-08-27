@@ -9,7 +9,7 @@ let value: CampaignResult = {
   data: {
     channels: [
       {
-        sourceValue: true,
+        sourceValue: {},
         value: ChannelsEnumValue.Sms,
       },
     ],
@@ -44,7 +44,7 @@ let value: CampaignResult = {
           subject: "Example Email Subject",
         },
         messageType: {
-          sourceValue: {},
+          sourceValue: "Email",
           value: {},
         },
         name: "Email Message",
@@ -56,7 +56,9 @@ let value: CampaignResult = {
           body: "This is an example push notification body.",
         },
         messageType: {
-          sourceValue: "Email",
+          sourceValue: [
+            "Email",
+          ],
           value: {},
         },
         name: "iOS Push Message",
@@ -65,13 +67,11 @@ let value: CampaignResult = {
     ],
     remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
     scheduleType: {
-      sourceValue: {},
+      sourceValue: "Immediate",
       value: CampaignValue.Immediate,
     },
     status: {
-      sourceValue: [
-        "Email",
-      ],
+      sourceValue: true,
       value: CampaignSchemasValue.Draft,
     },
     updatedAt: new Date("2021-01-01T01:01:01.000Z"),

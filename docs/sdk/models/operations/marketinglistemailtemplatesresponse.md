@@ -7,7 +7,7 @@ import { MarketingListEmailTemplatesResponse } from "@stackone/stackone-client-t
 
 let value: MarketingListEmailTemplatesResponse = {
     contentType: "<value>",
-    statusCode: 874573,
+    statusCode: 928082,
     rawResponse: new Response('{"message": "hello world"}', {
         headers: { "Content-Type": "application/json" },
     }),

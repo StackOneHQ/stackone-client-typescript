@@ -4,13 +4,13 @@
 
 ```typescript
 import { LmsListContentResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
-import { ContentLanguageEnumValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { Content2, ContentLanguageEnumValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: LmsListContentResponse = {
     contentPaginated: {
         data: [
             {
-                active: true,
+                active: Content2.True,
                 categories: [
                     {
                         active: true,
@@ -42,7 +42,7 @@ let value: LmsListContentResponse = {
         ],
     },
     contentType: "<value>",
-    statusCode: 162493,
+    statusCode: 166847,
     rawResponse: new Response('{"message": "hello world"}', {
         headers: { "Content-Type": "application/json" },
     }),

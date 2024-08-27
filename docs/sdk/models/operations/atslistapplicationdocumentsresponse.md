@@ -14,7 +14,7 @@ let value: AtsListApplicationDocumentsResponse = {
                 categoryId: "6530",
                 createdAt: new Date("2021-01-01T01:01:01.000Z"),
                 fileFormat: {
-                    sourceValue: abc,
+                    sourceValue: {},
                     value: AtsDocumentApiModelValue.Pdf,
                 },
                 id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
@@ -27,7 +27,7 @@ let value: AtsListApplicationDocumentsResponse = {
         ],
     },
     contentType: "<value>",
-    statusCode: 607831,
+    statusCode: 363711,
     rawResponse: new Response('{"message": "hello world"}', {
         headers: { "Content-Type": "application/json" },
     }),

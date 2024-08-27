@@ -24,7 +24,8 @@ async function run() {
     });
 
     for await (const page of result) {
-        // handle page
+        // Handle the page
+        console.log(page);
     }
 }
 

@@ -5,7 +5,7 @@
 ```typescript
 import { CustomFieldDefinitionValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: CustomFieldDefinitionValue = CustomFieldDefinitionValue.List;
+let value: CustomFieldDefinitionValue = CustomFieldDefinitionValue.Boolean;
 ```
 
 ## Values

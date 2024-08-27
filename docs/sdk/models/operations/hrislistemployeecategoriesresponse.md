@@ -4,20 +4,21 @@
 
 ```typescript
 import { HrisListEmployeeCategoriesResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
+import { Reference2 } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: HrisListEmployeeCategoriesResponse = {
     contentType: "<value>",
     referencePaginated: {
         data: [
             {
-                active: true,
+                active: Reference2.True,
                 id: "1687-3",
                 name: "1687-4",
                 remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
             },
         ],
     },
-    statusCode: 581273,
+    statusCode: 965417,
     rawResponse: new Response('{"message": "hello world"}', {
         headers: { "Content-Type": "application/json" },
     }),

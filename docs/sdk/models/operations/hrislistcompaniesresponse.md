@@ -19,7 +19,7 @@ let value: HrisListCompaniesResponse = {
         ],
     },
     contentType: "<value>",
-    statusCode: 675439,
+    statusCode: 581273,
     rawResponse: new Response('{"message": "hello world"}', {
         headers: { "Content-Type": "application/json" },
     }),

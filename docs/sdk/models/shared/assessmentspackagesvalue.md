@@ -1,13 +1,13 @@
 # AssessmentsPackagesValue
 
-The type of the assessment.
+The type of the description.
 
 ## Example Usage
 
 ```typescript
 import { AssessmentsPackagesValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: AssessmentsPackagesValue = AssessmentsPackagesValue.SkillTest;
+let value: AssessmentsPackagesValue = AssessmentsPackagesValue.Responsibilities;
 ```
 
 ## Values
@@ -16,9 +16,7 @@ This is an open enum. Unrecognized values will be captured as the `Unrecognized<
 
 | Name                   | Value                  |
 | ---------------------- | ---------------------- |
-| `VideoInterview`       | video_interview        |
-| `BehavioralAssessment` | behavioral_assessment  |
-| `BackgroundCheck`      | background_check       |
-| `ReferenceCheck`       | reference_check        |
-| `SkillTest`            | skill_test             |
+| `Responsibilities`     | responsibilities       |
+| `Skills`               | skills                 |
+| `Benefits`             | benefits               |
 | -                      | `Unrecognized<string>` |

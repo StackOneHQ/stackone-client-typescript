@@ -5,7 +5,7 @@
 ```typescript
 import { CourseValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: CourseValue = CourseValue.Inactive;
+let value: CourseValue = CourseValue.Active;
 ```
 
 ## Values

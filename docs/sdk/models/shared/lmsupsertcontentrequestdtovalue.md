@@ -5,7 +5,7 @@
 ```typescript
 import { LmsUpsertContentRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: LmsUpsertContentRequestDtoValue = LmsUpsertContentRequestDtoValue.Quiz;
+let value: LmsUpsertContentRequestDtoValue = LmsUpsertContentRequestDtoValue.Document;
 ```
 
 ## Values

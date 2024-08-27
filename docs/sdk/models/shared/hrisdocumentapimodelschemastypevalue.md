@@ -7,7 +7,7 @@ The category of the file
 ```typescript
 import { HrisDocumentApiModelSchemasTypeValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: HrisDocumentApiModelSchemasTypeValue = HrisDocumentApiModelSchemasTypeValue.Policy;
+let value: HrisDocumentApiModelSchemasTypeValue = HrisDocumentApiModelSchemasTypeValue.CoverLetter;
 ```
 
 ## Values

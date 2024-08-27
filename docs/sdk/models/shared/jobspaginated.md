@@ -31,7 +31,7 @@ let value: JobsPaginated = {
                 },
             ],
             jobStatus: {
-                sourceValue: Published,
+                sourceValue: "Published",
                 value: JobValue.Published,
             },
             locationIds: ["668570", "678571", "688572"],

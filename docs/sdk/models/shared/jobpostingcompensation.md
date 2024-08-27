@@ -12,15 +12,15 @@ import {
 
 let value: JobPostingCompensation = {
     payFrequency: {
-        sourceValue: "Hourly",
+        sourceValue: {},
         value: JobPostingCompensationValue.Hourly,
     },
     payPeriod: {
-        sourceValue: true,
+        sourceValue: Hour,
         value: JobPostingCompensationSchemasValue.Hour,
     },
     type: {
-        sourceValue: true,
+        sourceValue: Salary,
         value: JobPostingCompensationSchemasTypeValue.Salary,
     },
 };

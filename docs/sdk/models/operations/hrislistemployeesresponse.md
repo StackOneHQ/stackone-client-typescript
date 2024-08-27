@@ -76,7 +76,7 @@ let value: HrisListEmployeesResponse = {
                 employmentContractType: {},
                 employmentStatus: {},
                 employmentType: {
-                    sourceValue: Permanent,
+                    sourceValue: {},
                     value: EmployeeSchemasEmploymentTypeValue.Permanent,
                 },
                 employments: [
@@ -93,11 +93,11 @@ let value: HrisListEmployeesResponse = {
                         jobTitle: "Software Engineer",
                         payCurrency: "USD",
                         payFrequency: {
-                            sourceValue: {},
+                            sourceValue: "Hourly",
                             value: EmploymentSchemasPayFrequencyValue.Hourly,
                         },
                         payPeriod: {
-                            sourceValue: {},
+                            sourceValue: true,
                             value: EmploymentSchemasPayPeriodValue.Hour,
                         },
                         payRate: "40.00",
@@ -128,7 +128,7 @@ let value: HrisListEmployeesResponse = {
                     employeeId: "1687-3",
                     id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
                     locationType: {
-                        sourceValue: true,
+                        sourceValue: Home,
                         value: EmployeeSchemasHomeLocationLocationTypeValue.Home,
                     },
                     name: "Woolsthorpe Manor",
@@ -178,7 +178,7 @@ let value: HrisListEmployeesResponse = {
                     employeeId: "1687-3",
                     id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
                     locationType: {
-                        sourceValue: "Home",
+                        sourceValue: {},
                         value: EmployeeSchemasWorkLocationLocationTypeValue.Home,
                     },
                     name: "Woolsthorpe Manor",
@@ -195,7 +195,7 @@ let value: HrisListEmployeesResponse = {
             },
         ],
     },
-    statusCode: 470132,
+    statusCode: 660174,
     rawResponse: new Response('{"message": "hello world"}', {
         headers: { "Content-Type": "application/json" },
     }),
