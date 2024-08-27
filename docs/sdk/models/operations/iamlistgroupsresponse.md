@@ -67,7 +67,7 @@ let value: IamListGroupsResponse = {
             },
         ],
     },
-    statusCode: 260341,
+    statusCode: 703889,
     rawResponse: new Response('{"message": "hello world"}', {
         headers: { "Content-Type": "application/json" },
     }),

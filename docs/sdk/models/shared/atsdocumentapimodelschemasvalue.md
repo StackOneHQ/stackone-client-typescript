@@ -7,7 +7,7 @@ The category of the file
 ```typescript
 import { AtsDocumentApiModelSchemasValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: AtsDocumentApiModelSchemasValue = AtsDocumentApiModelSchemasValue.OfferLetter;
+let value: AtsDocumentApiModelSchemasValue = AtsDocumentApiModelSchemasValue.Resume;
 ```
 
 ## Values

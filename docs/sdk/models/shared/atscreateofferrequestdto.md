@@ -14,7 +14,7 @@ let value: AtsCreateOfferRequestDto = {
         },
     ],
     offerStatus: {
-        sourceValue: ["Pending"],
+        sourceValue: "Pending",
         value: AtsCreateOfferRequestDtoValue.Pending,
     },
     passthrough: {

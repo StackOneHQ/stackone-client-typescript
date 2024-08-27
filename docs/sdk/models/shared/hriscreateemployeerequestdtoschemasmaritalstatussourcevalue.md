@@ -5,7 +5,7 @@
 ```typescript
 import { HrisCreateEmployeeRequestDtoSchemasMaritalStatusSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: HrisCreateEmployeeRequestDtoSchemasMaritalStatusSourceValue = false;
+let value: HrisCreateEmployeeRequestDtoSchemasMaritalStatusSourceValue = 896.03;
 ```
 
 ## Supported Types

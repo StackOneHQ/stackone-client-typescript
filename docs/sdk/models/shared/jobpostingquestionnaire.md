@@ -18,7 +18,7 @@ let value: JobPostingQuestionnaire = {
             ],
             remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
             type: {
-                sourceValue: "ShortText",
+                sourceValue: {},
                 value: QuestionValue.ShortText,
             },
         },

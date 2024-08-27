@@ -10,7 +10,7 @@ let value: IamListUsersResponse = {
     iamUsersPaginated: {
         data: [],
     },
-    statusCode: 703889,
+    statusCode: 99569,
     rawResponse: new Response('{"message": "hello world"}', {
         headers: { "Content-Type": "application/json" },
     }),

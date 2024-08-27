@@ -16,7 +16,7 @@ let value: LmsCreateContentResponse = {
         statusCode: 201,
         timestamp: new Date("2021-01-01T01:01:01.000Z"),
     },
-    statusCode: 99569,
+    statusCode: 714242,
     rawResponse: new Response('{"message": "hello world"}', {
         headers: { "Content-Type": "application/json" },
     }),

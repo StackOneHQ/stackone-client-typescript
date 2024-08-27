@@ -29,7 +29,7 @@ let value: Job = {
         },
     ],
     jobStatus: {
-        sourceValue: true,
+        sourceValue: "Published",
         value: JobValue.Published,
     },
     locationIds: ["668570", "678571", "688572"],

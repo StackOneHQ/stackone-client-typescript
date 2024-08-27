@@ -7,7 +7,7 @@ import { MarketingGetInAppTemplateResponse } from "@stackone/stackone-client-ts/
 
 let value: MarketingGetInAppTemplateResponse = {
     contentType: "<value>",
-    statusCode: 944124,
+    statusCode: 171629,
     rawResponse: new Response('{"message": "hello world"}', {
         headers: { "Content-Type": "application/json" },
     }),

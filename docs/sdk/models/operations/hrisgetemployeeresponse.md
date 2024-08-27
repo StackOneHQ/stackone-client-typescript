@@ -64,7 +64,7 @@ let value: HrisGetEmployeeResponse = {
                     name: "Training Completion Status",
                     remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
                     remoteValueId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
-                    value: Completed,
+                    value: {},
                     valueId: "value_456",
                 },
             ],
@@ -75,7 +75,7 @@ let value: HrisGetEmployeeResponse = {
             employmentContractType: {},
             employmentStatus: {},
             employmentType: {
-                sourceValue: "Permanent",
+                sourceValue: true,
                 value: EmployeeSchemasEmploymentTypeValue.Permanent,
             },
             employments: [
@@ -85,7 +85,7 @@ let value: HrisGetEmployeeResponse = {
                     employeeId: "1687-3",
                     employmentContractType: {},
                     employmentType: {
-                        sourceValue: "Permanent",
+                        sourceValue: Permanent,
                         value: EmploymentSchemasValue.Permanent,
                     },
                     id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
@@ -96,7 +96,7 @@ let value: HrisGetEmployeeResponse = {
                         value: EmploymentSchemasPayFrequencyValue.Hourly,
                     },
                     payPeriod: {
-                        sourceValue: true,
+                        sourceValue: {},
                         value: EmploymentSchemasPayPeriodValue.Hour,
                     },
                     payRate: "40.00",
@@ -177,7 +177,7 @@ let value: HrisGetEmployeeResponse = {
                 employeeId: "1687-3",
                 id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
                 locationType: {
-                    sourceValue: {},
+                    sourceValue: ["Home"],
                     value: EmployeeSchemasWorkLocationLocationTypeValue.Home,
                 },
                 name: "Woolsthorpe Manor",
@@ -193,7 +193,7 @@ let value: HrisGetEmployeeResponse = {
             workPhoneNumber: "+1234567890",
         },
     },
-    statusCode: 735194,
+    statusCode: 433288,
     rawResponse: new Response('{"message": "hello world"}', {
         headers: { "Content-Type": "application/json" },
     }),

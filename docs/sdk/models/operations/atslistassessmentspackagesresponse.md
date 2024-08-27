@@ -16,14 +16,14 @@ let value: AtsListAssessmentsPackagesResponse = {
                 name: "Skill Assessment",
                 remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
                 type: {
-                    sourceValue: true,
-                    value: AssessmentsPackagesValue.SkillTest,
+                    sourceValue: key_responsibilities,
+                    value: AssessmentsPackagesValue.Responsibilities,
                 },
             },
         ],
     },
     contentType: "<value>",
-    statusCode: 253291,
+    statusCode: 414369,
     rawResponse: new Response('{"message": "hello world"}', {
         headers: { "Content-Type": "application/json" },
     }),

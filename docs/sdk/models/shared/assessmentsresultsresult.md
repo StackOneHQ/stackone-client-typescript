@@ -15,7 +15,7 @@ let value: AssessmentsResultsResult = {
         assessmentId: "f15aad8e-8db6-4194-8299-a525eb8fc30f",
         attachments: {
             contentType: {
-                sourceValue: true,
+                sourceValue: {},
                 value: AssessmentsResultsSchemasValue.Text,
             },
             url: "http://example.com/resume.pdf",
@@ -27,7 +27,7 @@ let value: AssessmentsResultsResult = {
         id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         result: {
-            sourceValue: true,
+            sourceValue: Passed,
             value: AssessmentsResultsValue.Passed,
         },
         resultUrl: "https://exmaple.com/result?id=xyz",

@@ -42,7 +42,7 @@ let value: HrisCreateEmployeeRequestDto = {
             name: "Training Completion Status",
             remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
             remoteValueId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
-            value: "Completed",
+            value: {},
             valueId: "value_456",
         },
     ],
@@ -52,7 +52,7 @@ let value: HrisCreateEmployeeRequestDto = {
     employmentContractType: {},
     employmentStatus: {},
     employmentType: {
-        sourceValue: {},
+        sourceValue: true,
         value: HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue.Permanent,
     },
     employments: [
@@ -62,7 +62,7 @@ let value: HrisCreateEmployeeRequestDto = {
             employeeId: "1687-3",
             employmentContractType: {},
             employmentType: {
-                sourceValue: {},
+                sourceValue: ["Permanent"],
                 value: EmploymentSchemasValue.Permanent,
             },
             id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",

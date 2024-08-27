@@ -5,7 +5,7 @@
 ```typescript
 import { LmsCreateContentRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: LmsCreateContentRequestDtoValue = LmsCreateContentRequestDtoValue.Document;
+let value: LmsCreateContentRequestDtoValue = LmsCreateContentRequestDtoValue.Video;
 ```
 
 ## Values

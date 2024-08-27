@@ -5,7 +5,7 @@
 ```typescript
 import { HRISLocationSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: HRISLocationSourceValue = false;
+let value: HRISLocationSourceValue = ["<value>"];
 ```
 
 ## Supported Types

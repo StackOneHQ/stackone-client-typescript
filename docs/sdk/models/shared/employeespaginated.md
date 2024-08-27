@@ -63,7 +63,7 @@ let value: EmployeesPaginated = {
                     name: "Training Completion Status",
                     remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
                     remoteValueId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
-                    value: true,
+                    value: Completed,
                     valueId: "value_456",
                 },
             ],
@@ -84,18 +84,18 @@ let value: EmployeesPaginated = {
                     employeeId: "1687-3",
                     employmentContractType: {},
                     employmentType: {
-                        sourceValue: true,
+                        sourceValue: {},
                         value: EmploymentSchemasValue.Permanent,
                     },
                     id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
                     jobTitle: "Software Engineer",
                     payCurrency: "USD",
                     payFrequency: {
-                        sourceValue: {},
+                        sourceValue: "Hourly",
                         value: EmploymentSchemasPayFrequencyValue.Hourly,
                     },
                     payPeriod: {
-                        sourceValue: true,
+                        sourceValue: {},
                         value: EmploymentSchemasPayPeriodValue.Hour,
                     },
                     payRate: "40.00",
@@ -126,7 +126,7 @@ let value: EmployeesPaginated = {
                 employeeId: "1687-3",
                 id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
                 locationType: {
-                    sourceValue: Home,
+                    sourceValue: {},
                     value: EmployeeSchemasHomeLocationLocationTypeValue.Home,
                 },
                 name: "Woolsthorpe Manor",
@@ -176,7 +176,7 @@ let value: EmployeesPaginated = {
                 employeeId: "1687-3",
                 id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
                 locationType: {
-                    sourceValue: {},
+                    sourceValue: Home,
                     value: EmployeeSchemasWorkLocationLocationTypeValue.Home,
                 },
                 name: "Woolsthorpe Manor",

@@ -14,12 +14,12 @@ let value: AtsUploadApplicationDocumentRequest = {
         },
         categoryId: "6530",
         confidential: {
-            sourceValue: {},
+            sourceValue: true,
             value: UnifiedUploadRequestDtoValue.True,
         },
         content: "VGhpcyBpc24ndCByZWFsbHkgYSBzYW1wbGUgZmlsZSwgYnV0IG5vIG9uZSB3aWxsIGV2ZXIga25vdyE",
         fileFormat: {
-            sourceValue: abc,
+            sourceValue: ["abc"],
             value: UnifiedUploadRequestDtoSchemasValue.Pdf,
         },
         name: "weather-forecast",

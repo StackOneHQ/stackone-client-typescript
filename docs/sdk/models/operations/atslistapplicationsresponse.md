@@ -11,7 +11,7 @@ let value: AtsListApplicationsResponse = {
         data: [
             {
                 applicationStatus: {
-                    sourceValue: true,
+                    sourceValue: {},
                     value: ApplicationValue.Hired,
                 },
                 candidate: {
@@ -47,7 +47,7 @@ let value: AtsListApplicationsResponse = {
                         name: "Training Completion Status",
                         remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
                         remoteValueId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
-                        value: {},
+                        value: ["Completed"],
                         valueId: "value_456",
                     },
                 ],
@@ -86,7 +86,7 @@ let value: AtsListApplicationsResponse = {
                                 id: "answer1",
                                 remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
                                 type: {
-                                    sourceValue: ["Short Text"],
+                                    sourceValue: "Short Text",
                                     value: AnswerValue.ShortText,
                                 },
                                 values: ["Yes"],
@@ -103,7 +103,7 @@ let value: AtsListApplicationsResponse = {
                         id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
                         label: "Failed Phone Screen",
                         rejectedReasonType: {
-                            sourceValue: "RejectedByOrg",
+                            sourceValue: {},
                             value: RejectedReasonValue.RejectedByOrganization,
                         },
                         remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
@@ -132,7 +132,7 @@ let value: AtsListApplicationsResponse = {
         ],
     },
     contentType: "<value>",
-    statusCode: 652790,
+    statusCode: 208876,
     rawResponse: new Response('{"message": "hello world"}', {
         headers: { "Content-Type": "application/json" },
     }),

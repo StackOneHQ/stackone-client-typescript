@@ -5,7 +5,7 @@
 ```typescript
 import { HrisCreateTimeOffRequestDtoSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: HrisCreateTimeOffRequestDtoSourceValue = "<value>";
+let value: HrisCreateTimeOffRequestDtoSourceValue = false;
 ```
 
 ## Supported Types

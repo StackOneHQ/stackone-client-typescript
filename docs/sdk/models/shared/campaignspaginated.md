@@ -10,7 +10,7 @@ let value: CampaignsPaginated = {
     {
       channels: [
         {
-          sourceValue: "SMS",
+          sourceValue: {},
           value: ChannelsEnumValue.Sms,
         },
       ],
@@ -26,7 +26,7 @@ let value: CampaignsPaginated = {
             from: "1-555-123-4567",
           },
           messageType: {
-            sourceValue: true,
+            sourceValue: Email,
             value: {},
           },
           name: "SMS Message",
@@ -43,7 +43,9 @@ let value: CampaignsPaginated = {
             subject: "Example Email Subject",
           },
           messageType: {
-            sourceValue: "Email",
+            sourceValue: [
+              "Email",
+            ],
             value: {},
           },
           name: "Email Message",
@@ -55,9 +57,7 @@ let value: CampaignsPaginated = {
             body: "This is an example push notification body.",
           },
           messageType: {
-            sourceValue: [
-              "Email",
-            ],
+            sourceValue: Email,
             value: {},
           },
           name: "iOS Push Message",
@@ -66,12 +66,14 @@ let value: CampaignsPaginated = {
       ],
       remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
       scheduleType: {
-        sourceValue: {},
+        sourceValue: [
+          "Immediate",
+        ],
         value: CampaignValue.Immediate,
       },
       status: {
-        sourceValue: Email,
-        value: CampaignSchemasValue.Live,
+        sourceValue: "Email",
+        value: CampaignSchemasValue.Archived,
       },
       updatedAt: new Date("2021-01-01T01:01:01.000Z"),
     },

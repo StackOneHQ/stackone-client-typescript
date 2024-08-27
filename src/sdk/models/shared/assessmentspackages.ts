@@ -9,7 +9,7 @@ import * as z from "zod";
 export type AssessmentsPackages4 = {};
 
 /**
- * The source value of the assessment type.
+ * The source value of the description type.
  */
 export type AssessmentsPackagesSourceValue =
     | AssessmentsPackages4
@@ -19,27 +19,25 @@ export type AssessmentsPackagesSourceValue =
     | Array<any>;
 
 /**
- * The type of the assessment.
+ * The type of the description.
  */
 export enum AssessmentsPackagesValue {
-    VideoInterview = "video_interview",
-    BehavioralAssessment = "behavioral_assessment",
-    BackgroundCheck = "background_check",
-    ReferenceCheck = "reference_check",
-    SkillTest = "skill_test",
+    Responsibilities = "responsibilities",
+    Skills = "skills",
+    Benefits = "benefits",
 }
 /**
- * The type of the assessment.
+ * The type of the description.
  */
 export type AssessmentsPackagesValueOpen = OpenEnum<typeof AssessmentsPackagesValue>;
 
 export type AssessmentsPackagesType = {
     /**
-     * The source value of the assessment type.
+     * The source value of the description type.
      */
     sourceValue?: AssessmentsPackages4 | string | number | boolean | Array<any> | null | undefined;
     /**
-     * The type of the assessment.
+     * The type of the description.
      */
     value?: AssessmentsPackagesValueOpen | null | undefined;
 };

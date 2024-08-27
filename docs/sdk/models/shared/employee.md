@@ -61,7 +61,7 @@ let value: Employee = {
             name: "Training Completion Status",
             remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
             remoteValueId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
-            value: {},
+            value: ["Completed"],
             valueId: "value_456",
         },
     ],
@@ -72,7 +72,7 @@ let value: Employee = {
     employmentContractType: {},
     employmentStatus: {},
     employmentType: {
-        sourceValue: true,
+        sourceValue: Permanent,
         value: EmployeeSchemasEmploymentTypeValue.Permanent,
     },
     employments: [
@@ -82,7 +82,7 @@ let value: Employee = {
             employeeId: "1687-3",
             employmentContractType: {},
             employmentType: {
-                sourceValue: "Permanent",
+                sourceValue: true,
                 value: EmploymentSchemasValue.Permanent,
             },
             id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
@@ -174,7 +174,7 @@ let value: Employee = {
         employeeId: "1687-3",
         id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         locationType: {
-            sourceValue: Home,
+            sourceValue: "Home",
             value: EmployeeSchemasWorkLocationLocationTypeValue.Home,
         },
         name: "Woolsthorpe Manor",

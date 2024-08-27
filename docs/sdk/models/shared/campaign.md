@@ -8,7 +8,7 @@ import { Campaign, CampaignSchemasValue, CampaignValue, ChannelsEnumValue } from
 let value: Campaign = {
   channels: [
     {
-      sourceValue: {},
+      sourceValue: "SMS",
       value: ChannelsEnumValue.Sms,
     },
   ],
@@ -24,9 +24,7 @@ let value: Campaign = {
         from: "1-555-123-4567",
       },
       messageType: {
-        sourceValue: [
-          "Email",
-        ],
+        sourceValue: true,
         value: {},
       },
       name: "SMS Message",
@@ -43,7 +41,7 @@ let value: Campaign = {
         subject: "Example Email Subject",
       },
       messageType: {
-        sourceValue: "Email",
+        sourceValue: true,
         value: {},
       },
       name: "Email Message",
@@ -55,7 +53,7 @@ let value: Campaign = {
         body: "This is an example push notification body.",
       },
       messageType: {
-        sourceValue: true,
+        sourceValue: {},
         value: {},
       },
       name: "iOS Push Message",
@@ -69,7 +67,7 @@ let value: Campaign = {
   },
   status: {
     sourceValue: true,
-    value: CampaignSchemasValue.Archived,
+    value: CampaignSchemasValue.Draft,
   },
   updatedAt: new Date("2021-01-01T01:01:01.000Z"),
 };

@@ -25,11 +25,11 @@ let value: EmploymentsPaginated = {
             jobTitle: "Software Engineer",
             payCurrency: "USD",
             payFrequency: {
-                sourceValue: {},
+                sourceValue: true,
                 value: EmploymentSchemasPayFrequencyValue.Hourly,
             },
             payPeriod: {
-                sourceValue: ["Hour"],
+                sourceValue: {},
                 value: EmploymentSchemasPayPeriodValue.Hour,
             },
             payRate: "40.00",

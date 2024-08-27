@@ -8,7 +8,7 @@ import { TimeOff2, TimeOffSchemas2 } from "@stackone/stackone-client-ts/sdk/mode
 
 let value: HrisGetEmployeesTimeOffRequestResponse = {
     contentType: "<value>",
-    statusCode: 896039,
+    statusCode: 223081,
     rawResponse: new Response('{"message": "hello world"}', {
         headers: { "Content-Type": "application/json" },
     }),
