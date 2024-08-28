@@ -60,7 +60,7 @@ let value: JobPostingResult = {
         content: {
             html: "<p>This is an HTML description</p>",
             plain: "This is a plain text description",
-            section: [
+            sections: [
                 {
                     content: "This is a plain description",
                     id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",

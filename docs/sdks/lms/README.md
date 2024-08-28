@@ -621,7 +621,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.lms.getUser({
-    fields: "id,remote_id,email,phone_number,created_at,updated_at,name",
+    fields: "id,remote_id,external_reference,email,phone_number,created_at,updated_at,name",
     id: "<id>",
     xAccountId: "<value>",
   });
@@ -652,7 +652,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await lmsGetUser(stackOne, {
-    fields: "id,remote_id,email,phone_number,created_at,updated_at,name",
+    fields: "id,remote_id,external_reference,email,phone_number,created_at,updated_at,name",
     id: "<id>",
     xAccountId: "<value>",
   });
@@ -1177,7 +1177,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.lms.listUsers({
-    fields: "id,remote_id,email,phone_number,created_at,updated_at,name",
+    fields: "id,remote_id,external_reference,email,phone_number,created_at,updated_at,name",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
@@ -1211,7 +1211,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await lmsListUsers(stackOne, {
-    fields: "id,remote_id,email,phone_number,created_at,updated_at,name",
+    fields: "id,remote_id,external_reference,email,phone_number,created_at,updated_at,name",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
