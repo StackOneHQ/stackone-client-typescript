@@ -15,6 +15,10 @@ export type LmsUser = {
      */
     email?: string | null | undefined;
     /**
+     * The external ID associated with this user
+     */
+    externalReference?: string | null | undefined;
+    /**
      * Unique identifier
      */
     id?: string | null | undefined;
@@ -48,6 +52,7 @@ export const LmsUser$inboundSchema: z.ZodType<LmsUser, z.ZodTypeDef, unknown> = 
             )
             .optional(),
         email: z.nullable(z.string()).optional(),
+        external_reference: z.nullable(z.string()).optional(),
         id: z.nullable(z.string()).optional(),
         name: z.nullable(z.string()).optional(),
         phone_number: z.nullable(z.string()).optional(),
@@ -64,6 +69,7 @@ export const LmsUser$inboundSchema: z.ZodType<LmsUser, z.ZodTypeDef, unknown> = 
     .transform((v) => {
         return remap$(v, {
             created_at: "createdAt",
+            external_reference: "externalReference",
             phone_number: "phoneNumber",
             remote_id: "remoteId",
             updated_at: "updatedAt",
@@ -74,6 +80,7 @@ export const LmsUser$inboundSchema: z.ZodType<LmsUser, z.ZodTypeDef, unknown> = 
 export type LmsUser$Outbound = {
     created_at?: string | null | undefined;
     email?: string | null | undefined;
+    external_reference?: string | null | undefined;
     id?: string | null | undefined;
     name?: string | null | undefined;
     phone_number?: string | null | undefined;
@@ -86,6 +93,7 @@ export const LmsUser$outboundSchema: z.ZodType<LmsUser$Outbound, z.ZodTypeDef, L
     .object({
         createdAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
         email: z.nullable(z.string()).optional(),
+        externalReference: z.nullable(z.string()).optional(),
         id: z.nullable(z.string()).optional(),
         name: z.nullable(z.string()).optional(),
         phoneNumber: z.nullable(z.string()).optional(),
@@ -95,6 +103,7 @@ export const LmsUser$outboundSchema: z.ZodType<LmsUser$Outbound, z.ZodTypeDef, L
     .transform((v) => {
         return remap$(v, {
             createdAt: "created_at",
+            externalReference: "external_reference",
             phoneNumber: "phone_number",
             remoteId: "remote_id",
             updatedAt: "updated_at",
