@@ -1383,6 +1383,10 @@ export type AtsDocumentApiModel = {
      */
     type?: AtsDocumentApiModelType | null | undefined;
     /**
+     * Custom Unified Fields configured in your StackOne project
+     */
+    unifiedCustomFields?: { [k: string]: any } | null | undefined;
+    /**
      * The update date of the file
      */
     updatedAt?: Date | null | undefined;
@@ -1929,6 +1933,7 @@ export const AtsDocumentApiModel$inboundSchema: z.ZodType<
         remote_id: z.nullable(z.string()).optional(),
         remote_url: z.nullable(z.string()).optional(),
         type: z.nullable(z.lazy(() => AtsDocumentApiModelType$inboundSchema)).optional(),
+        unified_custom_fields: z.nullable(z.record(z.any())).optional(),
         updated_at: z
             .nullable(
                 z
@@ -1945,6 +1950,7 @@ export const AtsDocumentApiModel$inboundSchema: z.ZodType<
             file_format: "fileFormat",
             remote_id: "remoteId",
             remote_url: "remoteUrl",
+            unified_custom_fields: "unifiedCustomFields",
             updated_at: "updatedAt",
         });
     });
@@ -1962,6 +1968,7 @@ export type AtsDocumentApiModel$Outbound = {
     remote_id?: string | null | undefined;
     remote_url?: string | null | undefined;
     type?: AtsDocumentApiModelType$Outbound | null | undefined;
+    unified_custom_fields?: { [k: string]: any } | null | undefined;
     updated_at?: string | null | undefined;
 };
 
@@ -1983,6 +1990,7 @@ export const AtsDocumentApiModel$outboundSchema: z.ZodType<
         remoteId: z.nullable(z.string()).optional(),
         remoteUrl: z.nullable(z.string()).optional(),
         type: z.nullable(z.lazy(() => AtsDocumentApiModelType$outboundSchema)).optional(),
+        unifiedCustomFields: z.nullable(z.record(z.any())).optional(),
         updatedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
     })
     .transform((v) => {
@@ -1992,6 +2000,7 @@ export const AtsDocumentApiModel$outboundSchema: z.ZodType<
             fileFormat: "file_format",
             remoteId: "remote_id",
             remoteUrl: "remote_url",
+            unifiedCustomFields: "unified_custom_fields",
             updatedAt: "updated_at",
         });
     });

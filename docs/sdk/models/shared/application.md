@@ -67,6 +67,10 @@ let value: Application = {
             path: "/path/to/file",
             remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
             remoteUrl: "https://example.com/file.pdf",
+            unifiedCustomFields: {
+                my_project_custom_field_1: "REF-1236",
+                my_project_custom_field_2: "some other value",
+            },
             updatedAt: new Date("2021-01-02T01:01:01.000Z"),
         },
     ],
@@ -75,6 +79,10 @@ let value: Application = {
         createdAt: new Date("2021-01-01T01:01:01.000Z"),
         id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        unifiedCustomFields: {
+            my_project_custom_field_1: "REF-1236",
+            my_project_custom_field_2: "some other value",
+        },
         updatedAt: new Date("2021-01-01T01:01:01.000Z"),
     },
     interviewStageId: "18bcbb1b-3cbc-4198-a999-460861d19480",
@@ -109,6 +117,10 @@ let value: Application = {
                 value: RejectedReasonValue.RejectedByOrganization,
             },
             remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+            unifiedCustomFields: {
+                my_project_custom_field_1: "REF-1236",
+                my_project_custom_field_2: "some other value",
+            },
         },
     ],
     remoteCandidateId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
@@ -128,6 +140,10 @@ let value: Application = {
         id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         name: "LinkedIn",
         remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+    },
+    unifiedCustomFields: {
+        my_project_custom_field_1: "REF-1236",
+        my_project_custom_field_2: "some other value",
     },
     updatedAt: new Date("2021-01-01T01:01:01.000Z"),
 };
@@ -163,4 +179,5 @@ let value: Application = {
 | `remoteRejectedReasonIds`                                                                                                                               | *string*[]                                                                                                                                              | :heavy_minus_sign:                                                                                                                                      | Provider's unique identifiers of the rejection reasons                                                                                                  | [<br/>"f223d7f6-908b-48f0-9237-b201c307f609"<br/>]                                                                                                      |
 | `resultLinks`                                                                                                                                           | [shared.ResultLink](../../../sdk/models/shared/resultlink.md)[]                                                                                         | :heavy_minus_sign:                                                                                                                                      | N/A                                                                                                                                                     |                                                                                                                                                         |
 | `source`                                                                                                                                                | [shared.Source](../../../sdk/models/shared/source.md)                                                                                                   | :heavy_minus_sign:                                                                                                                                      | N/A                                                                                                                                                     |                                                                                                                                                         |
+| `unifiedCustomFields`                                                                                                                                   | Record<string, *any*>                                                                                                                                   | :heavy_minus_sign:                                                                                                                                      | Custom Unified Fields configured in your StackOne project                                                                                               | {<br/>"my_project_custom_field_1": "REF-1236",<br/>"my_project_custom_field_2": "some other value"<br/>}                                                |
 | `updatedAt`                                                                                                                                             | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)                                                           | :heavy_minus_sign:                                                                                                                                      | Date of last update                                                                                                                                     | 2021-01-01T01:01:01.000Z                                                                                                                                |

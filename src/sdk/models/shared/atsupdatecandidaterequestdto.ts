@@ -92,6 +92,10 @@ export type AtsUpdateCandidateRequestDto = {
      * Candidate title
      */
     title?: string | null | undefined;
+    /**
+     * Custom Unified Fields configured in your StackOne project
+     */
+    unifiedCustomFields?: { [k: string]: any } | null | undefined;
 };
 
 /** @internal */
@@ -123,6 +127,7 @@ export const AtsUpdateCandidateRequestDto$inboundSchema: z.ZodType<
         phone_numbers: z.nullable(z.array(PhoneNumber$inboundSchema)).optional(),
         social_links: z.nullable(z.array(SocialLink$inboundSchema)).optional(),
         title: z.nullable(z.string()).optional(),
+        unified_custom_fields: z.nullable(z.record(z.any())).optional(),
     })
     .transform((v) => {
         return remap$(v, {
@@ -133,6 +138,7 @@ export const AtsUpdateCandidateRequestDto$inboundSchema: z.ZodType<
             last_name: "lastName",
             phone_numbers: "phoneNumbers",
             social_links: "socialLinks",
+            unified_custom_fields: "unifiedCustomFields",
         });
     });
 
@@ -153,6 +159,7 @@ export type AtsUpdateCandidateRequestDto$Outbound = {
     phone_numbers?: Array<PhoneNumber$Outbound> | null | undefined;
     social_links?: Array<SocialLink$Outbound> | null | undefined;
     title?: string | null | undefined;
+    unified_custom_fields?: { [k: string]: any } | null | undefined;
 };
 
 /** @internal */
@@ -177,6 +184,7 @@ export const AtsUpdateCandidateRequestDto$outboundSchema: z.ZodType<
         phoneNumbers: z.nullable(z.array(PhoneNumber$outboundSchema)).optional(),
         socialLinks: z.nullable(z.array(SocialLink$outboundSchema)).optional(),
         title: z.nullable(z.string()).optional(),
+        unifiedCustomFields: z.nullable(z.record(z.any())).optional(),
     })
     .transform((v) => {
         return remap$(v, {
@@ -187,6 +195,7 @@ export const AtsUpdateCandidateRequestDto$outboundSchema: z.ZodType<
             lastName: "last_name",
             phoneNumbers: "phone_numbers",
             socialLinks: "social_links",
+            unifiedCustomFields: "unified_custom_fields",
         });
     });
 

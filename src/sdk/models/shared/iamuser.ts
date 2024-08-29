@@ -1426,6 +1426,10 @@ export type IamUser = {
     roles?: Array<IamRole> | null | undefined;
     status?: IamUserStatus | null | undefined;
     /**
+     * Custom Unified Fields configured in your StackOne project
+     */
+    unifiedCustomFields?: { [k: string]: any } | null | undefined;
+    /**
      * The date the user was created
      */
     updatedAt?: Date | null | undefined;
@@ -2096,6 +2100,7 @@ export const IamUser$inboundSchema: z.ZodType<IamUser, z.ZodTypeDef, unknown> = 
         remote_id: z.nullable(z.string()).optional(),
         roles: z.nullable(z.array(IamRole$inboundSchema)).optional(),
         status: z.nullable(z.lazy(() => IamUserStatus$inboundSchema)).optional(),
+        unified_custom_fields: z.nullable(z.record(z.any())).optional(),
         updated_at: z
             .nullable(
                 z
@@ -2117,6 +2122,7 @@ export const IamUser$inboundSchema: z.ZodType<IamUser, z.ZodTypeDef, unknown> = 
             multi_factor_enabled: "multiFactorEnabled",
             primary_email_address: "primaryEmailAddress",
             remote_id: "remoteId",
+            unified_custom_fields: "unifiedCustomFields",
             updated_at: "updatedAt",
         });
     });
@@ -2138,6 +2144,7 @@ export type IamUser$Outbound = {
     remote_id?: string | null | undefined;
     roles?: Array<IamRole$Outbound> | null | undefined;
     status?: IamUserStatus$Outbound | null | undefined;
+    unified_custom_fields?: { [k: string]: any } | null | undefined;
     updated_at?: string | null | undefined;
     username?: string | null | undefined;
 };
@@ -2160,6 +2167,7 @@ export const IamUser$outboundSchema: z.ZodType<IamUser$Outbound, z.ZodTypeDef, I
         remoteId: z.nullable(z.string()).optional(),
         roles: z.nullable(z.array(IamRole$outboundSchema)).optional(),
         status: z.nullable(z.lazy(() => IamUserStatus$outboundSchema)).optional(),
+        unifiedCustomFields: z.nullable(z.record(z.any())).optional(),
         updatedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
         username: z.nullable(z.string()).optional(),
     })
@@ -2174,6 +2182,7 @@ export const IamUser$outboundSchema: z.ZodType<IamUser$Outbound, z.ZodTypeDef, I
             multiFactorEnabled: "multi_factor_enabled",
             primaryEmailAddress: "primary_email_address",
             remoteId: "remote_id",
+            unifiedCustomFields: "unified_custom_fields",
             updatedAt: "updated_at",
         });
     });

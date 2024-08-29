@@ -11,6 +11,10 @@ let value: LmsUpsertContentRequestDto = {
         {
             active: true,
             name: "Technology",
+            unifiedCustomFields: {
+                my_project_custom_field_1: "REF-1236",
+                my_project_custom_field_2: "some other value",
+            },
         },
     ],
     contentUrl: "https://www.youtube.com/watch?v=16873",
@@ -26,6 +30,10 @@ let value: LmsUpsertContentRequestDto = {
     ],
     order: 1,
     title: "Software Engineer Lv 1",
+    unifiedCustomFields: {
+        my_project_custom_field_1: "REF-1236",
+        my_project_custom_field_2: "some other value",
+    },
 };
 ```
 
@@ -45,3 +53,4 @@ let value: LmsUpsertContentRequestDto = {
 | `languages`                                                                                                                                                        | [shared.ContentLanguageEnum](../../../sdk/models/shared/contentlanguageenum.md)[]                                                                                  | :heavy_minus_sign:                                                                                                                                                 | The languages associated with this content                                                                                                                         |                                                                                                                                                                    |
 | `order`                                                                                                                                                            | *number*                                                                                                                                                           | :heavy_minus_sign:                                                                                                                                                 | The order of the individual content within a content grouping. This is not applicable for pushing individual content.                                              | 1                                                                                                                                                                  |
 | `title`                                                                                                                                                            | *string*                                                                                                                                                           | :heavy_minus_sign:                                                                                                                                                 | The title of the content                                                                                                                                           | Software Engineer Lv 1                                                                                                                                             |
+| `unifiedCustomFields`                                                                                                                                              | Record<string, *any*>                                                                                                                                              | :heavy_minus_sign:                                                                                                                                                 | Custom Unified Fields configured in your StackOne project                                                                                                          | {<br/>"my_project_custom_field_1": "REF-1236",<br/>"my_project_custom_field_2": "some other value"<br/>}                                                           |

@@ -72,6 +72,10 @@ export type Note = {
      */
     remoteId?: string | null | undefined;
     /**
+     * Custom Unified Fields configured in your StackOne project
+     */
+    unifiedCustomFields?: { [k: string]: any } | null | undefined;
+    /**
      * Date of last update
      */
     updatedAt?: Date | null | undefined;
@@ -254,6 +258,7 @@ export const Note$inboundSchema: z.ZodType<Note, z.ZodTypeDef, unknown> = z
         id: z.nullable(z.string()).optional(),
         remote_author_id: z.nullable(z.string()).optional(),
         remote_id: z.nullable(z.string()).optional(),
+        unified_custom_fields: z.nullable(z.record(z.any())).optional(),
         updated_at: z
             .nullable(
                 z
@@ -271,6 +276,7 @@ export const Note$inboundSchema: z.ZodType<Note, z.ZodTypeDef, unknown> = z
             deleted_at: "deletedAt",
             remote_author_id: "remoteAuthorId",
             remote_id: "remoteId",
+            unified_custom_fields: "unifiedCustomFields",
             updated_at: "updatedAt",
         });
     });
@@ -284,6 +290,7 @@ export type Note$Outbound = {
     id?: string | null | undefined;
     remote_author_id?: string | null | undefined;
     remote_id?: string | null | undefined;
+    unified_custom_fields?: { [k: string]: any } | null | undefined;
     updated_at?: string | null | undefined;
     visibility?: NoteVisibility$Outbound | null | undefined;
 };
@@ -298,6 +305,7 @@ export const Note$outboundSchema: z.ZodType<Note$Outbound, z.ZodTypeDef, Note> =
         id: z.nullable(z.string()).optional(),
         remoteAuthorId: z.nullable(z.string()).optional(),
         remoteId: z.nullable(z.string()).optional(),
+        unifiedCustomFields: z.nullable(z.record(z.any())).optional(),
         updatedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
         visibility: z.nullable(z.lazy(() => NoteVisibility$outboundSchema)).optional(),
     })
@@ -308,6 +316,7 @@ export const Note$outboundSchema: z.ZodType<Note$Outbound, z.ZodTypeDef, Note> =
             deletedAt: "deleted_at",
             remoteAuthorId: "remote_author_id",
             remoteId: "remote_id",
+            unifiedCustomFields: "unified_custom_fields",
             updatedAt: "updated_at",
         });
     });

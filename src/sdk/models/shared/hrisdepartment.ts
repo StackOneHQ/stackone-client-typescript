@@ -52,6 +52,10 @@ export type HRISDepartment = {
      * The type of the department group
      */
     type?: HRISDepartmentType | null | undefined;
+    /**
+     * Custom Unified Fields configured in your StackOne project
+     */
+    unifiedCustomFields?: { [k: string]: any } | null | undefined;
 };
 
 /** @internal */
@@ -241,6 +245,7 @@ export const HRISDepartment$inboundSchema: z.ZodType<HRISDepartment, z.ZodTypeDe
         remote_id: z.nullable(z.string()).optional(),
         remote_parent_ids: z.nullable(z.array(z.string())).optional(),
         type: z.nullable(z.lazy(() => HRISDepartmentType$inboundSchema)).optional(),
+        unified_custom_fields: z.nullable(z.record(z.any())).optional(),
     })
     .transform((v) => {
         return remap$(v, {
@@ -248,6 +253,7 @@ export const HRISDepartment$inboundSchema: z.ZodType<HRISDepartment, z.ZodTypeDe
             parent_ids: "parentIds",
             remote_id: "remoteId",
             remote_parent_ids: "remoteParentIds",
+            unified_custom_fields: "unifiedCustomFields",
         });
     });
 
@@ -260,6 +266,7 @@ export type HRISDepartment$Outbound = {
     remote_id?: string | null | undefined;
     remote_parent_ids?: Array<string> | null | undefined;
     type?: HRISDepartmentType$Outbound | null | undefined;
+    unified_custom_fields?: { [k: string]: any } | null | undefined;
 };
 
 /** @internal */
@@ -276,6 +283,7 @@ export const HRISDepartment$outboundSchema: z.ZodType<
         remoteId: z.nullable(z.string()).optional(),
         remoteParentIds: z.nullable(z.array(z.string())).optional(),
         type: z.nullable(z.lazy(() => HRISDepartmentType$outboundSchema)).optional(),
+        unifiedCustomFields: z.nullable(z.record(z.any())).optional(),
     })
     .transform((v) => {
         return remap$(v, {
@@ -283,6 +291,7 @@ export const HRISDepartment$outboundSchema: z.ZodType<
             parentIds: "parent_ids",
             remoteId: "remote_id",
             remoteParentIds: "remote_parent_ids",
+            unifiedCustomFields: "unified_custom_fields",
         });
     });
 

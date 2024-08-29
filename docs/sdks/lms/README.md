@@ -147,6 +147,10 @@ async function run() {
         {
           active: true,
           name: "Technology",
+          unifiedCustomFields: {
+            "my_project_custom_field_1": "REF-1236",
+            "my_project_custom_field_2": "some other value",
+          },
         },
       ],
       contentUrl: "https://www.youtube.com/watch?v=16873",
@@ -164,6 +168,10 @@ async function run() {
       ],
       order: 1,
       title: "Software Engineer Lv 1",
+      unifiedCustomFields: {
+        "my_project_custom_field_1": "REF-1236",
+        "my_project_custom_field_2": "some other value",
+      },
     },
     xAccountId: "<value>",
   });
@@ -201,6 +209,10 @@ async function run() {
         {
           active: true,
           name: "Technology",
+          unifiedCustomFields: {
+            "my_project_custom_field_1": "REF-1236",
+            "my_project_custom_field_2": "some other value",
+          },
         },
       ],
       contentUrl: "https://www.youtube.com/watch?v=16873",
@@ -218,6 +230,10 @@ async function run() {
       ],
       order: 1,
       title: "Software Engineer Lv 1",
+      unifiedCustomFields: {
+        "my_project_custom_field_1": "REF-1236",
+        "my_project_custom_field_2": "some other value",
+      },
     },
     xAccountId: "<value>",
   });
@@ -1277,6 +1293,10 @@ async function run() {
         {
           active: true,
           name: "Technology",
+          unifiedCustomFields: {
+            "my_project_custom_field_1": "REF-1236",
+            "my_project_custom_field_2": "some other value",
+          },
         },
       ],
       contentUrl: "https://www.youtube.com/watch?v=16873",
@@ -1294,6 +1314,10 @@ async function run() {
       ],
       order: 1,
       title: "Software Engineer Lv 1",
+      unifiedCustomFields: {
+        "my_project_custom_field_1": "REF-1236",
+        "my_project_custom_field_2": "some other value",
+      },
     },
     id: "<id>",
     xAccountId: "<value>",
@@ -1332,6 +1356,10 @@ async function run() {
         {
           active: true,
           name: "Technology",
+          unifiedCustomFields: {
+            "my_project_custom_field_1": "REF-1236",
+            "my_project_custom_field_2": "some other value",
+          },
         },
       ],
       contentUrl: "https://www.youtube.com/watch?v=16873",
@@ -1349,6 +1377,10 @@ async function run() {
       ],
       order: 1,
       title: "Software Engineer Lv 1",
+      unifiedCustomFields: {
+        "my_project_custom_field_1": "REF-1236",
+        "my_project_custom_field_2": "some other value",
+      },
     },
     id: "<id>",
     xAccountId: "<value>",
@@ -1412,6 +1444,10 @@ async function run() {
         {
           active: true,
           name: "Technology",
+          unifiedCustomFields: {
+            "my_project_custom_field_1": "REF-1236",
+            "my_project_custom_field_2": "some other value",
+          },
         },
       ],
       contentUrl: "https://www.youtube.com/watch?v=16873",
@@ -1429,6 +1465,10 @@ async function run() {
       ],
       order: 1,
       title: "Software Engineer Lv 1",
+      unifiedCustomFields: {
+        "my_project_custom_field_1": "REF-1236",
+        "my_project_custom_field_2": "some other value",
+      },
     },
     xAccountId: "<value>",
   });
@@ -1466,6 +1506,10 @@ async function run() {
         {
           active: true,
           name: "Technology",
+          unifiedCustomFields: {
+            "my_project_custom_field_1": "REF-1236",
+            "my_project_custom_field_2": "some other value",
+          },
         },
       ],
       contentUrl: "https://www.youtube.com/watch?v=16873",
@@ -1483,6 +1527,10 @@ async function run() {
       ],
       order: 1,
       title: "Software Engineer Lv 1",
+      unifiedCustomFields: {
+        "my_project_custom_field_1": "REF-1236",
+        "my_project_custom_field_2": "some other value",
+      },
     },
     xAccountId: "<value>",
   });

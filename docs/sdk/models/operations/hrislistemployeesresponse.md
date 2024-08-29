@@ -49,6 +49,10 @@ let value: HrisListEmployeesResponse = {
                     id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
                     name: "StackOne Technologies PLC",
                     remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+                    unifiedCustomFields: {
+                        my_project_custom_field_1: "REF-1236",
+                        my_project_custom_field_2: "some other value",
+                    },
                     updatedAt: new Date("2024-02-23T00:00:00.000Z"),
                 },
                 companyName: "Example Corp",
@@ -103,6 +107,10 @@ let value: HrisListEmployeesResponse = {
                         payRate: "40.00",
                         remoteEmployeeId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
                         remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+                        unifiedCustomFields: {
+                            my_project_custom_field_1: "REF-1236",
+                            my_project_custom_field_2: "some other value",
+                        },
                         updatedAt: new Date("2021-01-01T01:01:01.000Z"),
                     },
                 ],
@@ -115,6 +123,10 @@ let value: HrisListEmployeesResponse = {
                         remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
                         type: {
                             value: HRISGroupValue.Team,
+                        },
+                        unifiedCustomFields: {
+                            my_project_custom_field_1: "REF-1236",
+                            my_project_custom_field_2: "some other value",
                         },
                     },
                 ],
@@ -138,6 +150,10 @@ let value: HrisListEmployeesResponse = {
                     state: "Lincolnshire",
                     street1: "Water Lane",
                     street2: "Woolsthorpe by Colsterworth",
+                    unifiedCustomFields: {
+                        my_project_custom_field_1: "REF-1236",
+                        my_project_custom_field_2: "some other value",
+                    },
                     updatedAt: new Date("2021-01-01T01:01:01.000Z"),
                     zipCode: "NG33 5NR",
                 },
@@ -166,6 +182,10 @@ let value: HrisListEmployeesResponse = {
                 startDate: new Date("2021-01-01T00:00.000Z"),
                 tenure: 2,
                 terminationDate: new Date("2021-01-01T00:00:00Z"),
+                unifiedCustomFields: {
+                    my_project_custom_field_1: "REF-1236",
+                    my_project_custom_field_2: "some other value",
+                },
                 updatedAt: new Date("2021-01-01T01:01:01.000Z"),
                 workAnniversary: new Date("2021-01-01T00:00:00Z"),
                 workEmail: "newton@example.com",
@@ -188,6 +208,10 @@ let value: HrisListEmployeesResponse = {
                     state: "Lincolnshire",
                     street1: "Water Lane",
                     street2: "Woolsthorpe by Colsterworth",
+                    unifiedCustomFields: {
+                        my_project_custom_field_1: "REF-1236",
+                        my_project_custom_field_2: "some other value",
+                    },
                     updatedAt: new Date("2021-01-01T01:01:01.000Z"),
                     zipCode: "NG33 5NR",
                 },

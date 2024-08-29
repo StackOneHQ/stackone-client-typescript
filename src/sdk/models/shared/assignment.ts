@@ -33,10 +33,6 @@ export type Assignment = {
      */
     id?: string | null | undefined;
     /**
-     * Value to pass through to the provider
-     */
-    passthrough?: { [k: string]: any } | null | undefined;
-    /**
      * Provider's unique identifier of the course related to the assignment
      */
     remoteCourseId?: string | null | undefined;
@@ -53,6 +49,10 @@ export type Assignment = {
      */
     status?: Array<AssignmentStatusEnum> | null | undefined;
     /**
+     * Custom Unified Fields configured in your StackOne project
+     */
+    unifiedCustomFields?: { [k: string]: any } | null | undefined;
+    /**
      * The date the assignment was last updated
      */
     updatedAt?: string | null | undefined;
@@ -66,11 +66,11 @@ export const Assignment$inboundSchema: z.ZodType<Assignment, z.ZodTypeDef, unkno
         due_date: z.nullable(z.string()).optional(),
         external_id: z.nullable(z.string()).optional(),
         id: z.nullable(z.string()).optional(),
-        passthrough: z.nullable(z.record(z.any())).optional(),
         remote_course_id: z.nullable(z.string()).optional(),
         remote_external_id: z.nullable(z.string()).optional(),
         remote_id: z.nullable(z.string()).optional(),
         status: z.nullable(z.array(AssignmentStatusEnum$inboundSchema)).optional(),
+        unified_custom_fields: z.nullable(z.record(z.any())).optional(),
         updated_at: z.nullable(z.string()).optional(),
     })
     .transform((v) => {
@@ -82,6 +82,7 @@ export const Assignment$inboundSchema: z.ZodType<Assignment, z.ZodTypeDef, unkno
             remote_course_id: "remoteCourseId",
             remote_external_id: "remoteExternalId",
             remote_id: "remoteId",
+            unified_custom_fields: "unifiedCustomFields",
             updated_at: "updatedAt",
         });
     });
@@ -93,11 +94,11 @@ export type Assignment$Outbound = {
     due_date?: string | null | undefined;
     external_id?: string | null | undefined;
     id?: string | null | undefined;
-    passthrough?: { [k: string]: any } | null | undefined;
     remote_course_id?: string | null | undefined;
     remote_external_id?: string | null | undefined;
     remote_id?: string | null | undefined;
     status?: Array<AssignmentStatusEnum$Outbound> | null | undefined;
+    unified_custom_fields?: { [k: string]: any } | null | undefined;
     updated_at?: string | null | undefined;
 };
 
@@ -109,11 +110,11 @@ export const Assignment$outboundSchema: z.ZodType<Assignment$Outbound, z.ZodType
         dueDate: z.nullable(z.string()).optional(),
         externalId: z.nullable(z.string()).optional(),
         id: z.nullable(z.string()).optional(),
-        passthrough: z.nullable(z.record(z.any())).optional(),
         remoteCourseId: z.nullable(z.string()).optional(),
         remoteExternalId: z.nullable(z.string()).optional(),
         remoteId: z.nullable(z.string()).optional(),
         status: z.nullable(z.array(AssignmentStatusEnum$outboundSchema)).optional(),
+        unifiedCustomFields: z.nullable(z.record(z.any())).optional(),
         updatedAt: z.nullable(z.string()).optional(),
     })
     .transform((v) => {
@@ -125,6 +126,7 @@ export const Assignment$outboundSchema: z.ZodType<Assignment$Outbound, z.ZodType
             remoteCourseId: "remote_course_id",
             remoteExternalId: "remote_external_id",
             remoteId: "remote_id",
+            unifiedCustomFields: "unified_custom_fields",
             updatedAt: "updated_at",
         });
     });

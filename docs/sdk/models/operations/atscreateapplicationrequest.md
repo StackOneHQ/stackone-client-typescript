@@ -41,6 +41,10 @@ let value: AtsCreateApplicationRequest = {
                 },
             ],
             title: "Software Engineer",
+            unifiedCustomFields: {
+                my_project_custom_field_1: "REF-1236",
+                my_project_custom_field_2: "some other value",
+            },
         },
         candidateId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
         jobId: "4071538b-3cac-4fbf-ac76-f78ed250ffdd",

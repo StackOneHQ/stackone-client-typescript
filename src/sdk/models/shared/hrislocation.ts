@@ -373,6 +373,10 @@ export type HRISLocation = {
      */
     street2?: string | null | undefined;
     /**
+     * Custom Unified Fields configured in your StackOne project
+     */
+    unifiedCustomFields?: { [k: string]: any } | null | undefined;
+    /**
      * The updated_at date
      */
     updatedAt?: Date | null | undefined;
@@ -765,6 +769,7 @@ export const HRISLocation$inboundSchema: z.ZodType<HRISLocation, z.ZodTypeDef, u
         state: z.nullable(z.string()).optional(),
         street_1: z.nullable(z.string()).optional(),
         street_2: z.nullable(z.string()).optional(),
+        unified_custom_fields: z.nullable(z.record(z.any())).optional(),
         updated_at: z
             .nullable(
                 z
@@ -785,6 +790,7 @@ export const HRISLocation$inboundSchema: z.ZodType<HRISLocation, z.ZodTypeDef, u
             remote_id: "remoteId",
             street_1: "street1",
             street_2: "street2",
+            unified_custom_fields: "unifiedCustomFields",
             updated_at: "updatedAt",
             zip_code: "zipCode",
         });
@@ -805,6 +811,7 @@ export type HRISLocation$Outbound = {
     state?: string | null | undefined;
     street_1?: string | null | undefined;
     street_2?: string | null | undefined;
+    unified_custom_fields?: { [k: string]: any } | null | undefined;
     updated_at?: string | null | undefined;
     zip_code?: string | null | undefined;
 };
@@ -829,6 +836,7 @@ export const HRISLocation$outboundSchema: z.ZodType<
         state: z.nullable(z.string()).optional(),
         street1: z.nullable(z.string()).optional(),
         street2: z.nullable(z.string()).optional(),
+        unifiedCustomFields: z.nullable(z.record(z.any())).optional(),
         updatedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
         zipCode: z.nullable(z.string()).optional(),
     })
@@ -842,6 +850,7 @@ export const HRISLocation$outboundSchema: z.ZodType<
             remoteId: "remote_id",
             street1: "street_1",
             street2: "street_2",
+            unifiedCustomFields: "unified_custom_fields",
             updatedAt: "updated_at",
             zipCode: "zip_code",
         });

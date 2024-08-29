@@ -57,6 +57,10 @@ export type HRISGroup = {
      * The type of the group
      */
     type?: HRISGroupType | null | undefined;
+    /**
+     * Custom Unified Fields configured in your StackOne project
+     */
+    unifiedCustomFields?: { [k: string]: any } | null | undefined;
 };
 
 /** @internal */
@@ -228,6 +232,7 @@ export const HRISGroup$inboundSchema: z.ZodType<HRISGroup, z.ZodTypeDef, unknown
         remote_id: z.nullable(z.string()).optional(),
         remote_parent_ids: z.nullable(z.array(z.string())).optional(),
         type: z.nullable(z.lazy(() => HRISGroupType$inboundSchema)).optional(),
+        unified_custom_fields: z.nullable(z.record(z.any())).optional(),
     })
     .transform((v) => {
         return remap$(v, {
@@ -235,6 +240,7 @@ export const HRISGroup$inboundSchema: z.ZodType<HRISGroup, z.ZodTypeDef, unknown
             parent_ids: "parentIds",
             remote_id: "remoteId",
             remote_parent_ids: "remoteParentIds",
+            unified_custom_fields: "unifiedCustomFields",
         });
     });
 
@@ -247,6 +253,7 @@ export type HRISGroup$Outbound = {
     remote_id?: string | null | undefined;
     remote_parent_ids?: Array<string> | null | undefined;
     type?: HRISGroupType$Outbound | null | undefined;
+    unified_custom_fields?: { [k: string]: any } | null | undefined;
 };
 
 /** @internal */
@@ -259,6 +266,7 @@ export const HRISGroup$outboundSchema: z.ZodType<HRISGroup$Outbound, z.ZodTypeDe
         remoteId: z.nullable(z.string()).optional(),
         remoteParentIds: z.nullable(z.array(z.string())).optional(),
         type: z.nullable(z.lazy(() => HRISGroupType$outboundSchema)).optional(),
+        unifiedCustomFields: z.nullable(z.record(z.any())).optional(),
     })
     .transform((v) => {
         return remap$(v, {
@@ -266,6 +274,7 @@ export const HRISGroup$outboundSchema: z.ZodType<HRISGroup$Outbound, z.ZodTypeDe
             parentIds: "parent_ids",
             remoteId: "remote_id",
             remoteParentIds: "remote_parent_ids",
+            unifiedCustomFields: "unified_custom_fields",
         });
     });
 

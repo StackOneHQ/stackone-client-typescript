@@ -108,6 +108,10 @@ export type LmsUpsertContentRequestDto = {
      * The title of the content
      */
     title?: string | null | undefined;
+    /**
+     * Custom Unified Fields configured in your StackOne project
+     */
+    unifiedCustomFields?: { [k: string]: any } | null | undefined;
 };
 
 /** @internal */
@@ -370,6 +374,7 @@ export const LmsUpsertContentRequestDto$inboundSchema: z.ZodType<
         languages: z.nullable(z.array(ContentLanguageEnum$inboundSchema)).optional(),
         order: z.nullable(z.number()).optional(),
         title: z.nullable(z.string()).optional(),
+        unified_custom_fields: z.nullable(z.record(z.any())).optional(),
     })
     .transform((v) => {
         return remap$(v, {
@@ -378,6 +383,7 @@ export const LmsUpsertContentRequestDto$inboundSchema: z.ZodType<
             course_ids: "courseIds",
             cover_url: "coverUrl",
             external_reference: "externalReference",
+            unified_custom_fields: "unifiedCustomFields",
         });
     });
 
@@ -395,6 +401,7 @@ export type LmsUpsertContentRequestDto$Outbound = {
     languages?: Array<ContentLanguageEnum$Outbound> | null | undefined;
     order?: number | null | undefined;
     title?: string | null | undefined;
+    unified_custom_fields?: { [k: string]: any } | null | undefined;
 };
 
 /** @internal */
@@ -420,6 +427,7 @@ export const LmsUpsertContentRequestDto$outboundSchema: z.ZodType<
         languages: z.nullable(z.array(ContentLanguageEnum$outboundSchema)).optional(),
         order: z.nullable(z.number()).optional(),
         title: z.nullable(z.string()).optional(),
+        unifiedCustomFields: z.nullable(z.record(z.any())).optional(),
     })
     .transform((v) => {
         return remap$(v, {
@@ -428,6 +436,7 @@ export const LmsUpsertContentRequestDto$outboundSchema: z.ZodType<
             courseIds: "course_ids",
             coverUrl: "cover_url",
             externalReference: "external_reference",
+            unifiedCustomFields: "unified_custom_fields",
         });
     });
 

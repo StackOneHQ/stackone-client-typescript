@@ -105,6 +105,10 @@ export type Candidate = {
      */
     title?: string | null | undefined;
     /**
+     * Custom Unified Fields configured in your StackOne project
+     */
+    unifiedCustomFields?: { [k: string]: any } | null | undefined;
+    /**
      * Candidate updated date
      */
     updatedAt?: Date | null | undefined;
@@ -145,6 +149,7 @@ export const Candidate$inboundSchema: z.ZodType<Candidate, z.ZodTypeDef, unknown
         remote_id: z.nullable(z.string()).optional(),
         social_links: z.nullable(z.array(SocialLink$inboundSchema)).optional(),
         title: z.nullable(z.string()).optional(),
+        unified_custom_fields: z.nullable(z.record(z.any())).optional(),
         updated_at: z
             .nullable(
                 z
@@ -166,6 +171,7 @@ export const Candidate$inboundSchema: z.ZodType<Candidate, z.ZodTypeDef, unknown
             remote_application_ids: "remoteApplicationIds",
             remote_id: "remoteId",
             social_links: "socialLinks",
+            unified_custom_fields: "unifiedCustomFields",
             updated_at: "updatedAt",
         });
     });
@@ -190,6 +196,7 @@ export type Candidate$Outbound = {
     remote_id?: string | null | undefined;
     social_links?: Array<SocialLink$Outbound> | null | undefined;
     title?: string | null | undefined;
+    unified_custom_fields?: { [k: string]: any } | null | undefined;
     updated_at?: string | null | undefined;
 };
 
@@ -214,6 +221,7 @@ export const Candidate$outboundSchema: z.ZodType<Candidate$Outbound, z.ZodTypeDe
         remoteId: z.nullable(z.string()).optional(),
         socialLinks: z.nullable(z.array(SocialLink$outboundSchema)).optional(),
         title: z.nullable(z.string()).optional(),
+        unifiedCustomFields: z.nullable(z.record(z.any())).optional(),
         updatedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
     })
     .transform((v) => {
@@ -228,6 +236,7 @@ export const Candidate$outboundSchema: z.ZodType<Candidate$Outbound, z.ZodTypeDe
             remoteApplicationIds: "remote_application_ids",
             remoteId: "remote_id",
             socialLinks: "social_links",
+            unifiedCustomFields: "unified_custom_fields",
             updatedAt: "updated_at",
         });
     });

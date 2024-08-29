@@ -15,6 +15,10 @@ export type ATSLocation = {
      * Provider's unique identifier
      */
     remoteId?: string | null | undefined;
+    /**
+     * Custom Unified Fields configured in your StackOne project
+     */
+    unifiedCustomFields?: { [k: string]: any } | null | undefined;
 };
 
 /** @internal */
@@ -23,10 +27,12 @@ export const ATSLocation$inboundSchema: z.ZodType<ATSLocation, z.ZodTypeDef, unk
         id: z.nullable(z.string()).optional(),
         name: z.nullable(z.string()).optional(),
         remote_id: z.nullable(z.string()).optional(),
+        unified_custom_fields: z.nullable(z.record(z.any())).optional(),
     })
     .transform((v) => {
         return remap$(v, {
             remote_id: "remoteId",
+            unified_custom_fields: "unifiedCustomFields",
         });
     });
 
@@ -35,6 +41,7 @@ export type ATSLocation$Outbound = {
     id?: string | null | undefined;
     name?: string | null | undefined;
     remote_id?: string | null | undefined;
+    unified_custom_fields?: { [k: string]: any } | null | undefined;
 };
 
 /** @internal */
@@ -47,10 +54,12 @@ export const ATSLocation$outboundSchema: z.ZodType<
         id: z.nullable(z.string()).optional(),
         name: z.nullable(z.string()).optional(),
         remoteId: z.nullable(z.string()).optional(),
+        unifiedCustomFields: z.nullable(z.record(z.any())).optional(),
     })
     .transform((v) => {
         return remap$(v, {
             remoteId: "remote_id",
+            unifiedCustomFields: "unified_custom_fields",
         });
     });
 

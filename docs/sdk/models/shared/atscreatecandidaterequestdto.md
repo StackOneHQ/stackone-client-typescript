@@ -34,6 +34,10 @@ let value: AtsCreateCandidateRequestDto = {
         },
     ],
     title: "Software Engineer",
+    unifiedCustomFields: {
+        my_project_custom_field_1: "REF-1236",
+        my_project_custom_field_2: "some other value",
+    },
 };
 ```
 
@@ -53,3 +57,4 @@ let value: AtsCreateCandidateRequestDto = {
 | `phoneNumber`                                                                                 | *string*                                                                                      | :heavy_minus_sign:                                                                            | The candidate personal phone number                                                           | +1234567890                                                                                   |
 | `socialLinks`                                                                                 | [shared.SocialLink](../../../sdk/models/shared/sociallink.md)[]                               | :heavy_minus_sign:                                                                            | List of candidate social links                                                                |                                                                                               |
 | `title`                                                                                       | *string*                                                                                      | :heavy_minus_sign:                                                                            | Candidate title                                                                               | Software Engineer                                                                             |
+| `unifiedCustomFields`                                                                         | Record<string, *any*>                                                                         | :heavy_minus_sign:                                                                            | Custom Unified Fields configured in your StackOne project                                     | {<br/>"my_project_custom_field_1": "REF-1236",<br/>"my_project_custom_field_2": "some other value"<br/>} |
