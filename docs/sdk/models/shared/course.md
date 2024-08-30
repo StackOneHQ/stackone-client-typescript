@@ -12,6 +12,10 @@ let value: Course = {
             id: "12345",
             name: "Technology",
             remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+            unifiedCustomFields: {
+                my_project_custom_field_1: "REF-1236",
+                my_project_custom_field_2: "some other value",
+            },
         },
     ],
     contentIds: ["16873-SOFTWARE-ENG-COURSE", "16874-SOFTWARE-ENG-COURSE"],
@@ -40,6 +44,10 @@ let value: Course = {
         },
     ],
     title: "Software Engineer Lv 1",
+    unifiedCustomFields: {
+        my_project_custom_field_1: "REF-1236",
+        my_project_custom_field_2: "some other value",
+    },
     updatedAt: "2021-07-21T14:00:00.000Z",
     url: "https://www.linkedinlearning.com/?v=16873",
 };
@@ -64,5 +72,6 @@ let value: Course = {
 | `remoteId`                                                                                                                                                        | *string*                                                                                                                                                          | :heavy_minus_sign:                                                                                                                                                | Provider's unique identifier                                                                                                                                      | 8187e5da-dc77-475e-9949-af0f1fa4e4e3                                                                                                                              |
 | `skills`                                                                                                                                                          | [shared.Skills](../../../sdk/models/shared/skills.md)[]                                                                                                           | :heavy_minus_sign:                                                                                                                                                | The skills associated with this course                                                                                                                            | [<br/>{<br/>"id": "12345",<br/>"name": "Sales Techniques"<br/>}<br/>]                                                                                             |
 | `title`                                                                                                                                                           | *string*                                                                                                                                                          | :heavy_minus_sign:                                                                                                                                                | The title of the course                                                                                                                                           | Software Engineer Lv 1                                                                                                                                            |
+| `unifiedCustomFields`                                                                                                                                             | Record<string, *any*>                                                                                                                                             | :heavy_minus_sign:                                                                                                                                                | Custom Unified Fields configured in your StackOne project                                                                                                         | {<br/>"my_project_custom_field_1": "REF-1236",<br/>"my_project_custom_field_2": "some other value"<br/>}                                                          |
 | `updatedAt`                                                                                                                                                       | *string*                                                                                                                                                          | :heavy_minus_sign:                                                                                                                                                | The date on which the course was last updated.                                                                                                                    | 2021-07-21T14:00:00.000Z                                                                                                                                          |
 | `url`                                                                                                                                                             | *string*                                                                                                                                                          | :heavy_minus_sign:                                                                                                                                                | The redirect URL of the course.                                                                                                                                   | https://www.linkedinlearning.com/?v=16873                                                                                                                         |

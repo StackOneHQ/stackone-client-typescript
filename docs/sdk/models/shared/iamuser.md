@@ -151,6 +151,10 @@ let value: IamUser = {
     status: {
         value: IamUserValue.Enabled,
     },
+    unifiedCustomFields: {
+        my_project_custom_field_1: "REF-1236",
+        my_project_custom_field_2: "some other value",
+    },
     updatedAt: new Date("2021-01-01T01:01:01.000Z"),
     username: "hansolo1977",
 };
@@ -175,5 +179,6 @@ let value: IamUser = {
 | `remoteId`                                                                                     | *string*                                                                                       | :heavy_minus_sign:                                                                             | Provider's unique identifier                                                                   | 8187e5da-dc77-475e-9949-af0f1fa4e4e3                                                           |
 | `roles`                                                                                        | [shared.IamRole](../../../sdk/models/shared/iamrole.md)[]                                      | :heavy_minus_sign:                                                                             | List of roles the user is assigned to                                                          |                                                                                                |
 | `status`                                                                                       | [shared.IamUserStatus](../../../sdk/models/shared/iamuserstatus.md)                            | :heavy_minus_sign:                                                                             | N/A                                                                                            |                                                                                                |
+| `unifiedCustomFields`                                                                          | Record<string, *any*>                                                                          | :heavy_minus_sign:                                                                             | Custom Unified Fields configured in your StackOne project                                      | {<br/>"my_project_custom_field_1": "REF-1236",<br/>"my_project_custom_field_2": "some other value"<br/>} |
 | `updatedAt`                                                                                    | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)  | :heavy_minus_sign:                                                                             | The date the user was created                                                                  | 2021-01-01T01:01:01.000Z                                                                       |
 | `username`                                                                                     | *string*                                                                                       | :heavy_minus_sign:                                                                             | N/A                                                                                            | hansolo1977                                                                                    |

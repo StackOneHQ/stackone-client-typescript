@@ -32,6 +32,10 @@ let value: Interview = {
         createdAt: new Date("2021-01-01T01:01:01.000Z"),
         id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        unifiedCustomFields: {
+            my_project_custom_field_1: "REF-1236",
+            my_project_custom_field_2: "some other value",
+        },
         updatedAt: new Date("2021-01-01T01:01:01.000Z"),
     },
     interviewStatus: {
@@ -52,6 +56,10 @@ let value: Interview = {
         "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
     ],
     startAt: new Date("2021-01-01T01:01:01.000Z"),
+    unifiedCustomFields: {
+        my_project_custom_field_1: "REF-1236",
+        my_project_custom_field_2: "some other value",
+    },
     updatedAt: new Date("2021-01-01T01:01:01.000Z"),
 };
 ```
@@ -76,4 +84,5 @@ let value: Interview = {
 | `remoteInterviewStageId`                                                                      | *string*                                                                                      | :heavy_minus_sign:                                                                            | Provider's unique identifier of the interview stage                                           | e3cb75bf-aa84-466e-a6c1-b8322b257a48                                                          |
 | `remoteInterviewerIds`                                                                        | *string*[]                                                                                    | :heavy_minus_sign:                                                                            | Provider's unique identifiers of the interviewers                                             | [<br/>"e3cb75bf-aa84-466e-a6c1-b8322b257a48",<br/>"e3cb75bf-aa84-466e-a6c1-b8322b257a48"<br/>] |
 | `startAt`                                                                                     | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) | :heavy_minus_sign:                                                                            | Interview start date                                                                          | 2021-01-01T01:01:01.000Z                                                                      |
+| `unifiedCustomFields`                                                                         | Record<string, *any*>                                                                         | :heavy_minus_sign:                                                                            | Custom Unified Fields configured in your StackOne project                                     | {<br/>"my_project_custom_field_1": "REF-1236",<br/>"my_project_custom_field_2": "some other value"<br/>} |
 | `updatedAt`                                                                                   | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) | :heavy_minus_sign:                                                                            | Interview updated date                                                                        | 2021-01-01T01:01:01.000Z                                                                      |

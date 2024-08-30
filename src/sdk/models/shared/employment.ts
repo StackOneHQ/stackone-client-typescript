@@ -249,6 +249,10 @@ export type Employment = {
      */
     remoteId?: string | null | undefined;
     /**
+     * Custom Unified Fields configured in your StackOne project
+     */
+    unifiedCustomFields?: { [k: string]: any } | null | undefined;
+    /**
      * The updated_at date
      */
     updatedAt?: Date | null | undefined;
@@ -999,6 +1003,7 @@ export const Employment$inboundSchema: z.ZodType<Employment, z.ZodTypeDef, unkno
         pay_rate: z.nullable(z.string()).optional(),
         remote_employee_id: z.nullable(z.string()).optional(),
         remote_id: z.nullable(z.string()).optional(),
+        unified_custom_fields: z.nullable(z.record(z.any())).optional(),
         updated_at: z
             .nullable(
                 z
@@ -1022,6 +1027,7 @@ export const Employment$inboundSchema: z.ZodType<Employment, z.ZodTypeDef, unkno
             pay_rate: "payRate",
             remote_employee_id: "remoteEmployeeId",
             remote_id: "remoteId",
+            unified_custom_fields: "unifiedCustomFields",
             updated_at: "updatedAt",
         });
     });
@@ -1041,6 +1047,7 @@ export type Employment$Outbound = {
     pay_rate?: string | null | undefined;
     remote_employee_id?: string | null | undefined;
     remote_id?: string | null | undefined;
+    unified_custom_fields?: { [k: string]: any } | null | undefined;
     updated_at?: string | null | undefined;
 };
 
@@ -1064,6 +1071,7 @@ export const Employment$outboundSchema: z.ZodType<Employment$Outbound, z.ZodType
         payRate: z.nullable(z.string()).optional(),
         remoteEmployeeId: z.nullable(z.string()).optional(),
         remoteId: z.nullable(z.string()).optional(),
+        unifiedCustomFields: z.nullable(z.record(z.any())).optional(),
         updatedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
     })
     .transform((v) => {
@@ -1080,6 +1088,7 @@ export const Employment$outboundSchema: z.ZodType<Employment$Outbound, z.ZodType
             payRate: "pay_rate",
             remoteEmployeeId: "remote_employee_id",
             remoteId: "remote_id",
+            unifiedCustomFields: "unified_custom_fields",
             updatedAt: "updated_at",
         });
     });

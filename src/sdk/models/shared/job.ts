@@ -130,6 +130,10 @@ export type Job = {
      */
     title?: string | null | undefined;
     /**
+     * Custom Unified Fields configured in your StackOne project
+     */
+    unifiedCustomFields?: { [k: string]: any } | null | undefined;
+    /**
      * Date of last update
      */
     updatedAt?: Date | null | undefined;
@@ -327,6 +331,7 @@ export const Job$inboundSchema: z.ZodType<Job, z.ZodTypeDef, unknown> = z
         remote_location_ids: z.nullable(z.array(z.string())).optional(),
         status: z.nullable(z.string()).optional(),
         title: z.nullable(z.string()).optional(),
+        unified_custom_fields: z.nullable(z.record(z.any())).optional(),
         updated_at: z
             .nullable(
                 z
@@ -347,6 +352,7 @@ export const Job$inboundSchema: z.ZodType<Job, z.ZodTypeDef, unknown> = z
             remote_department_ids: "remoteDepartmentIds",
             remote_id: "remoteId",
             remote_location_ids: "remoteLocationIds",
+            unified_custom_fields: "unifiedCustomFields",
             updated_at: "updatedAt",
         });
     });
@@ -367,6 +373,7 @@ export type Job$Outbound = {
     remote_location_ids?: Array<string> | null | undefined;
     status?: string | null | undefined;
     title?: string | null | undefined;
+    unified_custom_fields?: { [k: string]: any } | null | undefined;
     updated_at?: string | null | undefined;
 };
 
@@ -387,6 +394,7 @@ export const Job$outboundSchema: z.ZodType<Job$Outbound, z.ZodTypeDef, Job> = z
         remoteLocationIds: z.nullable(z.array(z.string())).optional(),
         status: z.nullable(z.string()).optional(),
         title: z.nullable(z.string()).optional(),
+        unifiedCustomFields: z.nullable(z.record(z.any())).optional(),
         updatedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
     })
     .transform((v) => {
@@ -400,6 +408,7 @@ export const Job$outboundSchema: z.ZodType<Job$Outbound, z.ZodTypeDef, Job> = z
             remoteDepartmentIds: "remote_department_ids",
             remoteId: "remote_id",
             remoteLocationIds: "remote_location_ids",
+            unifiedCustomFields: "unified_custom_fields",
             updatedAt: "updated_at",
         });
     });

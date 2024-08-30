@@ -13,12 +13,13 @@ let value: LmsListCompletionsResponse = {
                 contentId: "16873-ENG-VIDEO-1",
                 externalId: "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1-COMPLETION",
                 id: "123456",
-                passthrough: {
-                    other_known_names: "John Doe",
-                },
                 remoteContentId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
                 remoteExternalId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
                 remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+                unifiedCustomFields: {
+                    my_project_custom_field_1: "REF-1236",
+                    my_project_custom_field_2: "some other value",
+                },
             },
         ],
     },

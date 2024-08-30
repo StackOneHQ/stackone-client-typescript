@@ -42,10 +42,6 @@ export type Completion = {
      */
     id?: string | null | undefined;
     /**
-     * Value to pass through to the provider
-     */
-    passthrough?: { [k: string]: any } | null | undefined;
-    /**
      * Provider's unique identifier of the completion
      */
     remoteContentId?: string | null | undefined;
@@ -61,6 +57,10 @@ export type Completion = {
      * The result of the completion
      */
     result?: CompletionResult | null | undefined;
+    /**
+     * Custom Unified Fields configured in your StackOne project
+     */
+    unifiedCustomFields?: { [k: string]: any } | null | undefined;
 };
 
 /** @internal */
@@ -234,11 +234,11 @@ export const Completion$inboundSchema: z.ZodType<Completion, z.ZodTypeDef, unkno
         content_id: z.nullable(z.string()).optional(),
         external_id: z.nullable(z.string()).optional(),
         id: z.nullable(z.string()).optional(),
-        passthrough: z.nullable(z.record(z.any())).optional(),
         remote_content_id: z.nullable(z.string()).optional(),
         remote_external_id: z.nullable(z.string()).optional(),
         remote_id: z.nullable(z.string()).optional(),
         result: z.nullable(z.lazy(() => CompletionResult$inboundSchema)).optional(),
+        unified_custom_fields: z.nullable(z.record(z.any())).optional(),
     })
     .transform((v) => {
         return remap$(v, {
@@ -248,6 +248,7 @@ export const Completion$inboundSchema: z.ZodType<Completion, z.ZodTypeDef, unkno
             remote_content_id: "remoteContentId",
             remote_external_id: "remoteExternalId",
             remote_id: "remoteId",
+            unified_custom_fields: "unifiedCustomFields",
         });
     });
 
@@ -257,11 +258,11 @@ export type Completion$Outbound = {
     content_id?: string | null | undefined;
     external_id?: string | null | undefined;
     id?: string | null | undefined;
-    passthrough?: { [k: string]: any } | null | undefined;
     remote_content_id?: string | null | undefined;
     remote_external_id?: string | null | undefined;
     remote_id?: string | null | undefined;
     result?: CompletionResult$Outbound | null | undefined;
+    unified_custom_fields?: { [k: string]: any } | null | undefined;
 };
 
 /** @internal */
@@ -271,11 +272,11 @@ export const Completion$outboundSchema: z.ZodType<Completion$Outbound, z.ZodType
         contentId: z.nullable(z.string()).optional(),
         externalId: z.nullable(z.string()).optional(),
         id: z.nullable(z.string()).optional(),
-        passthrough: z.nullable(z.record(z.any())).optional(),
         remoteContentId: z.nullable(z.string()).optional(),
         remoteExternalId: z.nullable(z.string()).optional(),
         remoteId: z.nullable(z.string()).optional(),
         result: z.nullable(z.lazy(() => CompletionResult$outboundSchema)).optional(),
+        unifiedCustomFields: z.nullable(z.record(z.any())).optional(),
     })
     .transform((v) => {
         return remap$(v, {
@@ -285,6 +286,7 @@ export const Completion$outboundSchema: z.ZodType<Completion$Outbound, z.ZodType
             remoteContentId: "remote_content_id",
             remoteExternalId: "remote_external_id",
             remoteId: "remote_id",
+            unifiedCustomFields: "unified_custom_fields",
         });
     });
 

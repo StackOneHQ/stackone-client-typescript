@@ -202,6 +202,10 @@ export type JobPosting = {
     status?: JobPostingStatus | null | undefined;
     title?: string | null | undefined;
     /**
+     * Custom Unified Fields configured in your StackOne project
+     */
+    unifiedCustomFields?: { [k: string]: any } | null | undefined;
+    /**
      * Date of last update
      */
     updatedAt?: Date | null | undefined;
@@ -831,6 +835,7 @@ export const JobPosting$inboundSchema: z.ZodType<JobPosting, z.ZodTypeDef, unkno
         remote_job_posting_id: z.nullable(z.string()).optional(),
         status: z.nullable(z.lazy(() => JobPostingStatus$inboundSchema)).optional(),
         title: z.nullable(z.string()).optional(),
+        unified_custom_fields: z.nullable(z.record(z.any())).optional(),
         updated_at: z
             .nullable(
                 z
@@ -850,6 +855,7 @@ export const JobPosting$inboundSchema: z.ZodType<JobPosting, z.ZodTypeDef, unkno
             job_id: "jobId",
             remote_id: "remoteId",
             remote_job_posting_id: "remoteJobPostingId",
+            unified_custom_fields: "unifiedCustomFields",
             updated_at: "updatedAt",
         });
     });
@@ -872,6 +878,7 @@ export type JobPosting$Outbound = {
     remote_job_posting_id?: string | null | undefined;
     status?: JobPostingStatus$Outbound | null | undefined;
     title?: string | null | undefined;
+    unified_custom_fields?: { [k: string]: any } | null | undefined;
     updated_at?: string | null | undefined;
 };
 
@@ -898,6 +905,7 @@ export const JobPosting$outboundSchema: z.ZodType<JobPosting$Outbound, z.ZodType
         remoteJobPostingId: z.nullable(z.string()).optional(),
         status: z.nullable(z.lazy(() => JobPostingStatus$outboundSchema)).optional(),
         title: z.nullable(z.string()).optional(),
+        unifiedCustomFields: z.nullable(z.record(z.any())).optional(),
         updatedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
     })
     .transform((v) => {
@@ -910,6 +918,7 @@ export const JobPosting$outboundSchema: z.ZodType<JobPosting$Outbound, z.ZodType
             jobId: "job_id",
             remoteId: "remote_id",
             remoteJobPostingId: "remote_job_posting_id",
+            unifiedCustomFields: "unified_custom_fields",
             updatedAt: "updated_at",
         });
     });

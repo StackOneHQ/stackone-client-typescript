@@ -108,6 +108,10 @@ export type Content = {
      * The title of the content
      */
     title?: string | null | undefined;
+    /**
+     * Custom Unified Fields configured in your StackOne project
+     */
+    unifiedCustomFields?: { [k: string]: any } | null | undefined;
 };
 
 /** @internal */
@@ -336,6 +340,7 @@ export const Content$inboundSchema: z.ZodType<Content, z.ZodTypeDef, unknown> = 
         remote_course_ids: z.nullable(z.array(z.string())).optional(),
         remote_id: z.nullable(z.string()).optional(),
         title: z.nullable(z.string()).optional(),
+        unified_custom_fields: z.nullable(z.record(z.any())).optional(),
     })
     .transform((v) => {
         return remap$(v, {
@@ -346,6 +351,7 @@ export const Content$inboundSchema: z.ZodType<Content, z.ZodTypeDef, unknown> = 
             external_reference: "externalReference",
             remote_course_ids: "remoteCourseIds",
             remote_id: "remoteId",
+            unified_custom_fields: "unifiedCustomFields",
         });
     });
 
@@ -366,6 +372,7 @@ export type Content$Outbound = {
     remote_course_ids?: Array<string> | null | undefined;
     remote_id?: string | null | undefined;
     title?: string | null | undefined;
+    unified_custom_fields?: { [k: string]: any } | null | undefined;
 };
 
 /** @internal */
@@ -386,6 +393,7 @@ export const Content$outboundSchema: z.ZodType<Content$Outbound, z.ZodTypeDef, C
         remoteCourseIds: z.nullable(z.array(z.string())).optional(),
         remoteId: z.nullable(z.string()).optional(),
         title: z.nullable(z.string()).optional(),
+        unifiedCustomFields: z.nullable(z.record(z.any())).optional(),
     })
     .transform((v) => {
         return remap$(v, {
@@ -396,6 +404,7 @@ export const Content$outboundSchema: z.ZodType<Content$Outbound, z.ZodTypeDef, C
             externalReference: "external_reference",
             remoteCourseIds: "remote_course_ids",
             remoteId: "remote_id",
+            unifiedCustomFields: "unified_custom_fields",
         });
     });
 

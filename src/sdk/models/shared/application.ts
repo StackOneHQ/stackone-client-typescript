@@ -163,6 +163,10 @@ export type ApplicationInterviewStage = {
      */
     remoteId?: string | null | undefined;
     /**
+     * Custom Unified Fields configured in your StackOne project
+     */
+    unifiedCustomFields?: { [k: string]: any } | null | undefined;
+    /**
      * Interview Stage updated date
      */
     updatedAt?: Date | null | undefined;
@@ -272,6 +276,10 @@ export type Application = {
     remoteRejectedReasonIds?: Array<string> | null | undefined;
     resultLinks?: Array<ResultLink> | null | undefined;
     source?: Source | null | undefined;
+    /**
+     * Custom Unified Fields configured in your StackOne project
+     */
+    unifiedCustomFields?: { [k: string]: any } | null | undefined;
     /**
      * Date of last update
      */
@@ -550,6 +558,7 @@ export const ApplicationInterviewStage$inboundSchema: z.ZodType<
         name: z.nullable(z.string()).optional(),
         order: z.nullable(z.number()).optional(),
         remote_id: z.nullable(z.string()).optional(),
+        unified_custom_fields: z.nullable(z.record(z.any())).optional(),
         updated_at: z
             .nullable(
                 z
@@ -563,6 +572,7 @@ export const ApplicationInterviewStage$inboundSchema: z.ZodType<
         return remap$(v, {
             created_at: "createdAt",
             remote_id: "remoteId",
+            unified_custom_fields: "unifiedCustomFields",
             updated_at: "updatedAt",
         });
     });
@@ -574,6 +584,7 @@ export type ApplicationInterviewStage$Outbound = {
     name?: string | null | undefined;
     order?: number | null | undefined;
     remote_id?: string | null | undefined;
+    unified_custom_fields?: { [k: string]: any } | null | undefined;
     updated_at?: string | null | undefined;
 };
 
@@ -589,12 +600,14 @@ export const ApplicationInterviewStage$outboundSchema: z.ZodType<
         name: z.nullable(z.string()).optional(),
         order: z.nullable(z.number()).optional(),
         remoteId: z.nullable(z.string()).optional(),
+        unifiedCustomFields: z.nullable(z.record(z.any())).optional(),
         updatedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
     })
     .transform((v) => {
         return remap$(v, {
             createdAt: "created_at",
             remoteId: "remote_id",
+            unifiedCustomFields: "unified_custom_fields",
             updatedAt: "updated_at",
         });
     });
@@ -703,6 +716,7 @@ export const Application$inboundSchema: z.ZodType<Application, z.ZodTypeDef, unk
         remote_rejected_reason_ids: z.nullable(z.array(z.string())).optional(),
         result_links: z.nullable(z.array(ResultLink$inboundSchema)).optional(),
         source: z.nullable(z.lazy(() => Source$inboundSchema)).optional(),
+        unified_custom_fields: z.nullable(z.record(z.any())).optional(),
         updated_at: z
             .nullable(
                 z
@@ -734,6 +748,7 @@ export const Application$inboundSchema: z.ZodType<Application, z.ZodTypeDef, unk
             remote_location_ids: "remoteLocationIds",
             remote_rejected_reason_ids: "remoteRejectedReasonIds",
             result_links: "resultLinks",
+            unified_custom_fields: "unifiedCustomFields",
             updated_at: "updatedAt",
         });
     });
@@ -766,6 +781,7 @@ export type Application$Outbound = {
     remote_rejected_reason_ids?: Array<string> | null | undefined;
     result_links?: Array<ResultLink$Outbound> | null | undefined;
     source?: Source$Outbound | null | undefined;
+    unified_custom_fields?: { [k: string]: any } | null | undefined;
     updated_at?: string | null | undefined;
 };
 
@@ -804,6 +820,7 @@ export const Application$outboundSchema: z.ZodType<
         remoteRejectedReasonIds: z.nullable(z.array(z.string())).optional(),
         resultLinks: z.nullable(z.array(ResultLink$outboundSchema)).optional(),
         source: z.nullable(z.lazy(() => Source$outboundSchema)).optional(),
+        unifiedCustomFields: z.nullable(z.record(z.any())).optional(),
         updatedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
     })
     .transform((v) => {
@@ -828,6 +845,7 @@ export const Application$outboundSchema: z.ZodType<
             remoteLocationIds: "remote_location_ids",
             remoteRejectedReasonIds: "remote_rejected_reason_ids",
             resultLinks: "result_links",
+            unifiedCustomFields: "unified_custom_fields",
             updatedAt: "updated_at",
         });
     });

@@ -118,6 +118,10 @@ export type Course = {
      */
     title?: string | null | undefined;
     /**
+     * Custom Unified Fields configured in your StackOne project
+     */
+    unifiedCustomFields?: { [k: string]: any } | null | undefined;
+    /**
      * The date on which the course was last updated.
      */
     updatedAt?: string | null | undefined;
@@ -464,6 +468,7 @@ export const Course$inboundSchema: z.ZodType<Course, z.ZodTypeDef, unknown> = z
         remote_id: z.nullable(z.string()).optional(),
         skills: z.nullable(z.array(Skills$inboundSchema)).optional(),
         title: z.nullable(z.string()).optional(),
+        unified_custom_fields: z.nullable(z.record(z.any())).optional(),
         updated_at: z.nullable(z.string()).optional(),
         url: z.nullable(z.string()).optional(),
     })
@@ -476,6 +481,7 @@ export const Course$inboundSchema: z.ZodType<Course, z.ZodTypeDef, unknown> = z
             external_reference: "externalReference",
             remote_content_ids: "remoteContentIds",
             remote_id: "remoteId",
+            unified_custom_fields: "unifiedCustomFields",
             updated_at: "updatedAt",
         });
     });
@@ -497,6 +503,7 @@ export type Course$Outbound = {
     remote_id?: string | null | undefined;
     skills?: Array<Skills$Outbound> | null | undefined;
     title?: string | null | undefined;
+    unified_custom_fields?: { [k: string]: any } | null | undefined;
     updated_at?: string | null | undefined;
     url?: string | null | undefined;
 };
@@ -519,6 +526,7 @@ export const Course$outboundSchema: z.ZodType<Course$Outbound, z.ZodTypeDef, Cou
         remoteId: z.nullable(z.string()).optional(),
         skills: z.nullable(z.array(Skills$outboundSchema)).optional(),
         title: z.nullable(z.string()).optional(),
+        unifiedCustomFields: z.nullable(z.record(z.any())).optional(),
         updatedAt: z.nullable(z.string()).optional(),
         url: z.nullable(z.string()).optional(),
     })
@@ -531,6 +539,7 @@ export const Course$outboundSchema: z.ZodType<Course$Outbound, z.ZodTypeDef, Cou
             externalReference: "external_reference",
             remoteContentIds: "remote_content_ids",
             remoteId: "remote_id",
+            unifiedCustomFields: "unified_custom_fields",
             updatedAt: "updated_at",
         });
     });

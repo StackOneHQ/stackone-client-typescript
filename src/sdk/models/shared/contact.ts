@@ -65,6 +65,10 @@ export type Contact = {
      */
     remoteId?: string | null | undefined;
     /**
+     * Custom Unified Fields configured in your StackOne project
+     */
+    unifiedCustomFields?: { [k: string]: any } | null | undefined;
+    /**
      * Timestamp when the contact was last updated
      */
     updatedAt?: Date | null | undefined;
@@ -93,6 +97,7 @@ export const Contact$inboundSchema: z.ZodType<Contact, z.ZodTypeDef, unknown> = 
         remote_account_ids: z.nullable(z.array(z.string())).optional(),
         remote_deal_ids: z.nullable(z.array(z.string())).optional(),
         remote_id: z.nullable(z.string()).optional(),
+        unified_custom_fields: z.nullable(z.record(z.any())).optional(),
         updated_at: z
             .nullable(
                 z
@@ -115,6 +120,7 @@ export const Contact$inboundSchema: z.ZodType<Contact, z.ZodTypeDef, unknown> = 
             remote_account_ids: "remoteAccountIds",
             remote_deal_ids: "remoteDealIds",
             remote_id: "remoteId",
+            unified_custom_fields: "unifiedCustomFields",
             updated_at: "updatedAt",
         });
     });
@@ -134,6 +140,7 @@ export type Contact$Outbound = {
     remote_account_ids?: Array<string> | null | undefined;
     remote_deal_ids?: Array<string> | null | undefined;
     remote_id?: string | null | undefined;
+    unified_custom_fields?: { [k: string]: any } | null | undefined;
     updated_at?: string | null | undefined;
 };
 
@@ -153,6 +160,7 @@ export const Contact$outboundSchema: z.ZodType<Contact$Outbound, z.ZodTypeDef, C
         remoteAccountIds: z.nullable(z.array(z.string())).optional(),
         remoteDealIds: z.nullable(z.array(z.string())).optional(),
         remoteId: z.nullable(z.string()).optional(),
+        unifiedCustomFields: z.nullable(z.record(z.any())).optional(),
         updatedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
     })
     .transform((v) => {
@@ -168,6 +176,7 @@ export const Contact$outboundSchema: z.ZodType<Contact$Outbound, z.ZodTypeDef, C
             remoteAccountIds: "remote_account_ids",
             remoteDealIds: "remote_deal_ids",
             remoteId: "remote_id",
+            unifiedCustomFields: "unified_custom_fields",
             updatedAt: "updated_at",
         });
     });

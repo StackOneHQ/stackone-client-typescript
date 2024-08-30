@@ -67,6 +67,10 @@ export type List = {
      */
     type?: ListType | null | undefined;
     /**
+     * Custom Unified Fields configured in your StackOne project
+     */
+    unifiedCustomFields?: { [k: string]: any } | null | undefined;
+    /**
      * Timestamp when the list was last updated
      */
     updatedAt?: Date | null | undefined;
@@ -233,6 +237,7 @@ export const List$inboundSchema: z.ZodType<List, z.ZodTypeDef, unknown> = z
         name: z.nullable(z.string()).optional(),
         remote_id: z.nullable(z.string()).optional(),
         type: z.nullable(z.lazy(() => ListType$inboundSchema)).optional(),
+        unified_custom_fields: z.nullable(z.record(z.any())).optional(),
         updated_at: z
             .nullable(
                 z
@@ -246,6 +251,7 @@ export const List$inboundSchema: z.ZodType<List, z.ZodTypeDef, unknown> = z
         return remap$(v, {
             created_at: "createdAt",
             remote_id: "remoteId",
+            unified_custom_fields: "unifiedCustomFields",
             updated_at: "updatedAt",
         });
     });
@@ -258,6 +264,7 @@ export type List$Outbound = {
     name?: string | null | undefined;
     remote_id?: string | null | undefined;
     type?: ListType$Outbound | null | undefined;
+    unified_custom_fields?: { [k: string]: any } | null | undefined;
     updated_at?: string | null | undefined;
 };
 
@@ -270,12 +277,14 @@ export const List$outboundSchema: z.ZodType<List$Outbound, z.ZodTypeDef, List> =
         name: z.nullable(z.string()).optional(),
         remoteId: z.nullable(z.string()).optional(),
         type: z.nullable(z.lazy(() => ListType$outboundSchema)).optional(),
+        unifiedCustomFields: z.nullable(z.record(z.any())).optional(),
         updatedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
     })
     .transform((v) => {
         return remap$(v, {
             createdAt: "created_at",
             remoteId: "remote_id",
+            unifiedCustomFields: "unified_custom_fields",
             updatedAt: "updated_at",
         });
     });

@@ -75,6 +75,10 @@ export type EmployeeCompany = {
      */
     remoteId?: string | null | undefined;
     /**
+     * Custom Unified Fields configured in your StackOne project
+     */
+    unifiedCustomFields?: { [k: string]: any } | null | undefined;
+    /**
      * The updated_at date
      */
     updatedAt?: Date | null | undefined;
@@ -650,6 +654,10 @@ export type HomeLocation = {
      * The second line of the address
      */
     street2?: string | null | undefined;
+    /**
+     * Custom Unified Fields configured in your StackOne project
+     */
+    unifiedCustomFields?: { [k: string]: any } | null | undefined;
     /**
      * The updated_at date
      */
@@ -1286,6 +1294,10 @@ export type WorkLocation = {
      */
     street2?: string | null | undefined;
     /**
+     * Custom Unified Fields configured in your StackOne project
+     */
+    unifiedCustomFields?: { [k: string]: any } | null | undefined;
+    /**
      * The updated_at date
      */
     updatedAt?: Date | null | undefined;
@@ -1457,6 +1469,10 @@ export type Employee = {
      */
     terminationDate?: Date | null | undefined;
     /**
+     * Custom Unified Fields configured in your StackOne project
+     */
+    unifiedCustomFields?: { [k: string]: any } | null | undefined;
+    /**
      * The updated_at date
      */
     updatedAt?: Date | null | undefined;
@@ -1524,6 +1540,7 @@ export const EmployeeCompany$inboundSchema: z.ZodType<EmployeeCompany, z.ZodType
         id: z.nullable(z.string()).optional(),
         name: z.nullable(z.string()).optional(),
         remote_id: z.nullable(z.string()).optional(),
+        unified_custom_fields: z.nullable(z.record(z.any())).optional(),
         updated_at: z
             .nullable(
                 z
@@ -1538,6 +1555,7 @@ export const EmployeeCompany$inboundSchema: z.ZodType<EmployeeCompany, z.ZodType
             created_at: "createdAt",
             display_name: "displayName",
             remote_id: "remoteId",
+            unified_custom_fields: "unifiedCustomFields",
             updated_at: "updatedAt",
         });
     });
@@ -1549,6 +1567,7 @@ export type EmployeeCompany$Outbound = {
     id?: string | null | undefined;
     name?: string | null | undefined;
     remote_id?: string | null | undefined;
+    unified_custom_fields?: { [k: string]: any } | null | undefined;
     updated_at?: string | null | undefined;
 };
 
@@ -1564,6 +1583,7 @@ export const EmployeeCompany$outboundSchema: z.ZodType<
         id: z.nullable(z.string()).optional(),
         name: z.nullable(z.string()).optional(),
         remoteId: z.nullable(z.string()).optional(),
+        unifiedCustomFields: z.nullable(z.record(z.any())).optional(),
         updatedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
     })
     .transform((v) => {
@@ -1571,6 +1591,7 @@ export const EmployeeCompany$outboundSchema: z.ZodType<
             createdAt: "created_at",
             displayName: "display_name",
             remoteId: "remote_id",
+            unifiedCustomFields: "unified_custom_fields",
             updatedAt: "updated_at",
         });
     });
@@ -2853,6 +2874,7 @@ export const HomeLocation$inboundSchema: z.ZodType<HomeLocation, z.ZodTypeDef, u
         state: z.nullable(z.string()).optional(),
         street_1: z.nullable(z.string()).optional(),
         street_2: z.nullable(z.string()).optional(),
+        unified_custom_fields: z.nullable(z.record(z.any())).optional(),
         updated_at: z
             .nullable(
                 z
@@ -2873,6 +2895,7 @@ export const HomeLocation$inboundSchema: z.ZodType<HomeLocation, z.ZodTypeDef, u
             remote_id: "remoteId",
             street_1: "street1",
             street_2: "street2",
+            unified_custom_fields: "unifiedCustomFields",
             updated_at: "updatedAt",
             zip_code: "zipCode",
         });
@@ -2893,6 +2916,7 @@ export type HomeLocation$Outbound = {
     state?: string | null | undefined;
     street_1?: string | null | undefined;
     street_2?: string | null | undefined;
+    unified_custom_fields?: { [k: string]: any } | null | undefined;
     updated_at?: string | null | undefined;
     zip_code?: string | null | undefined;
 };
@@ -2917,6 +2941,7 @@ export const HomeLocation$outboundSchema: z.ZodType<
         state: z.nullable(z.string()).optional(),
         street1: z.nullable(z.string()).optional(),
         street2: z.nullable(z.string()).optional(),
+        unifiedCustomFields: z.nullable(z.record(z.any())).optional(),
         updatedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
         zipCode: z.nullable(z.string()).optional(),
     })
@@ -2930,6 +2955,7 @@ export const HomeLocation$outboundSchema: z.ZodType<
             remoteId: "remote_id",
             street1: "street_1",
             street2: "street_2",
+            unifiedCustomFields: "unified_custom_fields",
             updatedAt: "updated_at",
             zipCode: "zip_code",
         });
@@ -3964,6 +3990,7 @@ export const WorkLocation$inboundSchema: z.ZodType<WorkLocation, z.ZodTypeDef, u
         state: z.nullable(z.string()).optional(),
         street_1: z.nullable(z.string()).optional(),
         street_2: z.nullable(z.string()).optional(),
+        unified_custom_fields: z.nullable(z.record(z.any())).optional(),
         updated_at: z
             .nullable(
                 z
@@ -3984,6 +4011,7 @@ export const WorkLocation$inboundSchema: z.ZodType<WorkLocation, z.ZodTypeDef, u
             remote_id: "remoteId",
             street_1: "street1",
             street_2: "street2",
+            unified_custom_fields: "unifiedCustomFields",
             updated_at: "updatedAt",
             zip_code: "zipCode",
         });
@@ -4004,6 +4032,7 @@ export type WorkLocation$Outbound = {
     state?: string | null | undefined;
     street_1?: string | null | undefined;
     street_2?: string | null | undefined;
+    unified_custom_fields?: { [k: string]: any } | null | undefined;
     updated_at?: string | null | undefined;
     zip_code?: string | null | undefined;
 };
@@ -4030,6 +4059,7 @@ export const WorkLocation$outboundSchema: z.ZodType<
         state: z.nullable(z.string()).optional(),
         street1: z.nullable(z.string()).optional(),
         street2: z.nullable(z.string()).optional(),
+        unifiedCustomFields: z.nullable(z.record(z.any())).optional(),
         updatedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
         zipCode: z.nullable(z.string()).optional(),
     })
@@ -4043,6 +4073,7 @@ export const WorkLocation$outboundSchema: z.ZodType<
             remoteId: "remote_id",
             street1: "street_1",
             street2: "street_2",
+            unifiedCustomFields: "unified_custom_fields",
             updatedAt: "updated_at",
             zipCode: "zip_code",
         });
@@ -4150,6 +4181,7 @@ export const Employee$inboundSchema: z.ZodType<Employee, z.ZodTypeDef, unknown> 
                     .transform((v) => new Date(v))
             )
             .optional(),
+        unified_custom_fields: z.nullable(z.record(z.any())).optional(),
         updated_at: z
             .nullable(
                 z
@@ -4199,6 +4231,7 @@ export const Employee$inboundSchema: z.ZodType<Employee, z.ZodTypeDef, unknown> 
             remote_manager_id: "remoteManagerId",
             start_date: "startDate",
             termination_date: "terminationDate",
+            unified_custom_fields: "unifiedCustomFields",
             updated_at: "updatedAt",
             work_anniversary: "workAnniversary",
             work_email: "workEmail",
@@ -4249,6 +4282,7 @@ export type Employee$Outbound = {
     start_date?: string | null | undefined;
     tenure?: number | null | undefined;
     termination_date?: string | null | undefined;
+    unified_custom_fields?: { [k: string]: any } | null | undefined;
     updated_at?: string | null | undefined;
     work_anniversary?: string | null | undefined;
     work_email?: string | null | undefined;
@@ -4303,6 +4337,7 @@ export const Employee$outboundSchema: z.ZodType<Employee$Outbound, z.ZodTypeDef,
         startDate: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
         tenure: z.nullable(z.number()).optional(),
         terminationDate: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+        unifiedCustomFields: z.nullable(z.record(z.any())).optional(),
         updatedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
         workAnniversary: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
         workEmail: z.nullable(z.string()).optional(),
@@ -4338,6 +4373,7 @@ export const Employee$outboundSchema: z.ZodType<Employee$Outbound, z.ZodTypeDef,
             remoteManagerId: "remote_manager_id",
             startDate: "start_date",
             terminationDate: "termination_date",
+            unifiedCustomFields: "unified_custom_fields",
             updatedAt: "updated_at",
             workAnniversary: "work_anniversary",
             workEmail: "work_email",

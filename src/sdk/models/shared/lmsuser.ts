@@ -35,6 +35,10 @@ export type LmsUser = {
      */
     remoteId?: string | null | undefined;
     /**
+     * Custom Unified Fields configured in your StackOne project
+     */
+    unifiedCustomFields?: { [k: string]: any } | null | undefined;
+    /**
      * The updated_at date
      */
     updatedAt?: Date | null | undefined;
@@ -57,6 +61,7 @@ export const LmsUser$inboundSchema: z.ZodType<LmsUser, z.ZodTypeDef, unknown> = 
         name: z.nullable(z.string()).optional(),
         phone_number: z.nullable(z.string()).optional(),
         remote_id: z.nullable(z.string()).optional(),
+        unified_custom_fields: z.nullable(z.record(z.any())).optional(),
         updated_at: z
             .nullable(
                 z
@@ -72,6 +77,7 @@ export const LmsUser$inboundSchema: z.ZodType<LmsUser, z.ZodTypeDef, unknown> = 
             external_reference: "externalReference",
             phone_number: "phoneNumber",
             remote_id: "remoteId",
+            unified_custom_fields: "unifiedCustomFields",
             updated_at: "updatedAt",
         });
     });
@@ -85,6 +91,7 @@ export type LmsUser$Outbound = {
     name?: string | null | undefined;
     phone_number?: string | null | undefined;
     remote_id?: string | null | undefined;
+    unified_custom_fields?: { [k: string]: any } | null | undefined;
     updated_at?: string | null | undefined;
 };
 
@@ -98,6 +105,7 @@ export const LmsUser$outboundSchema: z.ZodType<LmsUser$Outbound, z.ZodTypeDef, L
         name: z.nullable(z.string()).optional(),
         phoneNumber: z.nullable(z.string()).optional(),
         remoteId: z.nullable(z.string()).optional(),
+        unifiedCustomFields: z.nullable(z.record(z.any())).optional(),
         updatedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
     })
     .transform((v) => {
@@ -106,6 +114,7 @@ export const LmsUser$outboundSchema: z.ZodType<LmsUser$Outbound, z.ZodTypeDef, L
             externalReference: "external_reference",
             phoneNumber: "phone_number",
             remoteId: "remote_id",
+            unifiedCustomFields: "unified_custom_fields",
             updatedAt: "updated_at",
         });
     });

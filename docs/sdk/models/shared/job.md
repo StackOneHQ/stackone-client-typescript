@@ -25,6 +25,10 @@ let value: Job = {
             createdAt: new Date("2021-01-01T01:01:01.000Z"),
             id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
             remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+            unifiedCustomFields: {
+                my_project_custom_field_1: "REF-1236",
+                my_project_custom_field_2: "some other value",
+            },
             updatedAt: new Date("2021-01-01T01:01:01.000Z"),
         },
     ],
@@ -37,6 +41,10 @@ let value: Job = {
     remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
     remoteLocationIds: ["668570", "678571", "688572"],
     title: "Software Engineer",
+    unifiedCustomFields: {
+        my_project_custom_field_1: "REF-1236",
+        my_project_custom_field_2: "some other value",
+    },
     updatedAt: new Date("2021-01-01T01:01:01.000Z"),
 };
 ```
@@ -59,4 +67,5 @@ let value: Job = {
 | `remoteLocationIds`                                                                                                                        | *string*[]                                                                                                                                 | :heavy_minus_sign:                                                                                                                         | Provider's location ids of the job                                                                                                         | [<br/>"668570",<br/>"678571",<br/>"688572"<br/>]                                                                                           |
 | ~~`status`~~                                                                                                                               | *string*                                                                                                                                   | :heavy_minus_sign:                                                                                                                         | : warning: ** DEPRECATED **: This will be removed in a future release, please migrate away from it as soon as possible.<br/><br/>Status of the job | archived                                                                                                                                   |
 | `title`                                                                                                                                    | *string*                                                                                                                                   | :heavy_minus_sign:                                                                                                                         | Title of the job                                                                                                                           | Software Engineer                                                                                                                          |
+| `unifiedCustomFields`                                                                                                                      | Record<string, *any*>                                                                                                                      | :heavy_minus_sign:                                                                                                                         | Custom Unified Fields configured in your StackOne project                                                                                  | {<br/>"my_project_custom_field_1": "REF-1236",<br/>"my_project_custom_field_2": "some other value"<br/>}                                   |
 | `updatedAt`                                                                                                                                | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)                                              | :heavy_minus_sign:                                                                                                                         | Date of last update                                                                                                                        | 2021-01-01T01:01:01.000Z                                                                                                                   |

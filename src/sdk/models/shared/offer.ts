@@ -75,6 +75,10 @@ export type Offer = {
      */
     startDate?: Date | null | undefined;
     /**
+     * Custom Unified Fields configured in your StackOne project
+     */
+    unifiedCustomFields?: { [k: string]: any } | null | undefined;
+    /**
      * Date of last update
      */
     updatedAt?: Date | null | undefined;
@@ -256,6 +260,7 @@ export const Offer$inboundSchema: z.ZodType<Offer, z.ZodTypeDef, unknown> = z
                     .transform((v) => new Date(v))
             )
             .optional(),
+        unified_custom_fields: z.nullable(z.record(z.any())).optional(),
         updated_at: z
             .nullable(
                 z
@@ -274,6 +279,7 @@ export const Offer$inboundSchema: z.ZodType<Offer, z.ZodTypeDef, unknown> = z
             remote_application_id: "remoteApplicationId",
             remote_id: "remoteId",
             start_date: "startDate",
+            unified_custom_fields: "unifiedCustomFields",
             updated_at: "updatedAt",
         });
     });
@@ -290,6 +296,7 @@ export type Offer$Outbound = {
     remote_id?: string | null | undefined;
     salary?: number | null | undefined;
     start_date?: string | null | undefined;
+    unified_custom_fields?: { [k: string]: any } | null | undefined;
     updated_at?: string | null | undefined;
 };
 
@@ -306,6 +313,7 @@ export const Offer$outboundSchema: z.ZodType<Offer$Outbound, z.ZodTypeDef, Offer
         remoteId: z.nullable(z.string()).optional(),
         salary: z.nullable(z.number()).optional(),
         startDate: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
+        unifiedCustomFields: z.nullable(z.record(z.any())).optional(),
         updatedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
     })
     .transform((v) => {
@@ -317,6 +325,7 @@ export const Offer$outboundSchema: z.ZodType<Offer$Outbound, z.ZodTypeDef, Offer
             remoteApplicationId: "remote_application_id",
             remoteId: "remote_id",
             startDate: "start_date",
+            unifiedCustomFields: "unified_custom_fields",
             updatedAt: "updated_at",
         });
     });

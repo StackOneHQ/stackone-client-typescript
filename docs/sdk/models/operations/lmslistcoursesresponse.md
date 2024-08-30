@@ -17,6 +17,10 @@ let value: LmsListCoursesResponse = {
                         id: "12345",
                         name: "Technology",
                         remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+                        unifiedCustomFields: {
+                            my_project_custom_field_1: "REF-1236",
+                            my_project_custom_field_2: "some other value",
+                        },
                     },
                 ],
                 contentIds: ["16873-SOFTWARE-ENG-COURSE", "16874-SOFTWARE-ENG-COURSE"],
@@ -45,6 +49,10 @@ let value: LmsListCoursesResponse = {
                     },
                 ],
                 title: "Software Engineer Lv 1",
+                unifiedCustomFields: {
+                    my_project_custom_field_1: "REF-1236",
+                    my_project_custom_field_2: "some other value",
+                },
                 updatedAt: "2021-07-21T14:00:00.000Z",
                 url: "https://www.linkedinlearning.com/?v=16873",
             },

@@ -24,6 +24,10 @@ let value: HRISLocation = {
     state: "Lincolnshire",
     street1: "Water Lane",
     street2: "Woolsthorpe by Colsterworth",
+    unifiedCustomFields: {
+        my_project_custom_field_1: "REF-1236",
+        my_project_custom_field_2: "some other value",
+    },
     updatedAt: new Date("2021-01-01T01:01:01.000Z"),
     zipCode: "NG33 5NR",
 };
@@ -46,5 +50,6 @@ let value: HRISLocation = {
 | `state`                                                                                       | *string*                                                                                      | :heavy_minus_sign:                                                                            | The state where the location is situated                                                      | Lincolnshire                                                                                  |
 | `street1`                                                                                     | *string*                                                                                      | :heavy_minus_sign:                                                                            | The first line of the address                                                                 | Water Lane                                                                                    |
 | `street2`                                                                                     | *string*                                                                                      | :heavy_minus_sign:                                                                            | The second line of the address                                                                | Woolsthorpe by Colsterworth                                                                   |
+| `unifiedCustomFields`                                                                         | Record<string, *any*>                                                                         | :heavy_minus_sign:                                                                            | Custom Unified Fields configured in your StackOne project                                     | {<br/>"my_project_custom_field_1": "REF-1236",<br/>"my_project_custom_field_2": "some other value"<br/>} |
 | `updatedAt`                                                                                   | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) | :heavy_minus_sign:                                                                            | The updated_at date                                                                           | 2021-01-01T01:01:01.000Z                                                                      |
 | `zipCode`                                                                                     | *string*                                                                                      | :heavy_minus_sign:                                                                            | The ZIP code/Postal code of the location                                                      | NG33 5NR                                                                                      |

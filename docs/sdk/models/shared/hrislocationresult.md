@@ -25,6 +25,10 @@ let value: HRISLocationResult = {
         state: "Lincolnshire",
         street1: "Water Lane",
         street2: "Woolsthorpe by Colsterworth",
+        unifiedCustomFields: {
+            my_project_custom_field_1: "REF-1236",
+            my_project_custom_field_2: "some other value",
+        },
         updatedAt: new Date("2021-01-01T01:01:01.000Z"),
         zipCode: "NG33 5NR",
     },

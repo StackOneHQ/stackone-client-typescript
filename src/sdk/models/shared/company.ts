@@ -27,6 +27,10 @@ export type Company = {
      */
     remoteId?: string | null | undefined;
     /**
+     * Custom Unified Fields configured in your StackOne project
+     */
+    unifiedCustomFields?: { [k: string]: any } | null | undefined;
+    /**
      * The updated_at date
      */
     updatedAt?: Date | null | undefined;
@@ -47,6 +51,7 @@ export const Company$inboundSchema: z.ZodType<Company, z.ZodTypeDef, unknown> = 
         id: z.nullable(z.string()).optional(),
         name: z.nullable(z.string()).optional(),
         remote_id: z.nullable(z.string()).optional(),
+        unified_custom_fields: z.nullable(z.record(z.any())).optional(),
         updated_at: z
             .nullable(
                 z
@@ -61,6 +66,7 @@ export const Company$inboundSchema: z.ZodType<Company, z.ZodTypeDef, unknown> = 
             created_at: "createdAt",
             display_name: "displayName",
             remote_id: "remoteId",
+            unified_custom_fields: "unifiedCustomFields",
             updated_at: "updatedAt",
         });
     });
@@ -72,6 +78,7 @@ export type Company$Outbound = {
     id?: string | null | undefined;
     name?: string | null | undefined;
     remote_id?: string | null | undefined;
+    unified_custom_fields?: { [k: string]: any } | null | undefined;
     updated_at?: string | null | undefined;
 };
 
@@ -83,6 +90,7 @@ export const Company$outboundSchema: z.ZodType<Company$Outbound, z.ZodTypeDef, C
         id: z.nullable(z.string()).optional(),
         name: z.nullable(z.string()).optional(),
         remoteId: z.nullable(z.string()).optional(),
+        unifiedCustomFields: z.nullable(z.record(z.any())).optional(),
         updatedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
     })
     .transform((v) => {
@@ -90,6 +98,7 @@ export const Company$outboundSchema: z.ZodType<Company$Outbound, z.ZodTypeDef, C
             createdAt: "created_at",
             displayName: "display_name",
             remoteId: "remote_id",
+            unifiedCustomFields: "unified_custom_fields",
             updatedAt: "updated_at",
         });
     });

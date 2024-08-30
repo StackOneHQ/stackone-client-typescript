@@ -59,6 +59,10 @@ export type RejectedReason = {
      * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     type?: string | null | undefined;
+    /**
+     * Custom Unified Fields configured in your StackOne project
+     */
+    unifiedCustomFields?: { [k: string]: any } | null | undefined;
 };
 
 /** @internal */
@@ -246,11 +250,13 @@ export const RejectedReason$inboundSchema: z.ZodType<RejectedReason, z.ZodTypeDe
         rejected_reason_type: z.nullable(z.lazy(() => RejectedReasonType$inboundSchema)).optional(),
         remote_id: z.nullable(z.string()).optional(),
         type: z.nullable(z.string()).optional(),
+        unified_custom_fields: z.nullable(z.record(z.any())).optional(),
     })
     .transform((v) => {
         return remap$(v, {
             rejected_reason_type: "rejectedReasonType",
             remote_id: "remoteId",
+            unified_custom_fields: "unifiedCustomFields",
         });
     });
 
@@ -261,6 +267,7 @@ export type RejectedReason$Outbound = {
     rejected_reason_type?: RejectedReasonType$Outbound | null | undefined;
     remote_id?: string | null | undefined;
     type?: string | null | undefined;
+    unified_custom_fields?: { [k: string]: any } | null | undefined;
 };
 
 /** @internal */
@@ -275,11 +282,13 @@ export const RejectedReason$outboundSchema: z.ZodType<
         rejectedReasonType: z.nullable(z.lazy(() => RejectedReasonType$outboundSchema)).optional(),
         remoteId: z.nullable(z.string()).optional(),
         type: z.nullable(z.string()).optional(),
+        unifiedCustomFields: z.nullable(z.record(z.any())).optional(),
     })
     .transform((v) => {
         return remap$(v, {
             rejectedReasonType: "rejected_reason_type",
             remoteId: "remote_id",
+            unifiedCustomFields: "unified_custom_fields",
         });
     });
 

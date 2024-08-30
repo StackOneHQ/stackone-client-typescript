@@ -66,6 +66,10 @@ export type AtsCreateCandidateRequestDto = {
      * Candidate title
      */
     title?: string | null | undefined;
+    /**
+     * Custom Unified Fields configured in your StackOne project
+     */
+    unifiedCustomFields?: { [k: string]: any } | null | undefined;
 };
 
 /** @internal */
@@ -94,6 +98,7 @@ export const AtsCreateCandidateRequestDto$inboundSchema: z.ZodType<
         phone_number: z.nullable(z.string()).optional(),
         social_links: z.nullable(z.array(SocialLink$inboundSchema)).optional(),
         title: z.nullable(z.string()).optional(),
+        unified_custom_fields: z.nullable(z.record(z.any())).optional(),
     })
     .transform((v) => {
         return remap$(v, {
@@ -103,6 +108,7 @@ export const AtsCreateCandidateRequestDto$inboundSchema: z.ZodType<
             last_name: "lastName",
             phone_number: "phoneNumber",
             social_links: "socialLinks",
+            unified_custom_fields: "unifiedCustomFields",
         });
     });
 
@@ -120,6 +126,7 @@ export type AtsCreateCandidateRequestDto$Outbound = {
     phone_number?: string | null | undefined;
     social_links?: Array<SocialLink$Outbound> | null | undefined;
     title?: string | null | undefined;
+    unified_custom_fields?: { [k: string]: any } | null | undefined;
 };
 
 /** @internal */
@@ -141,6 +148,7 @@ export const AtsCreateCandidateRequestDto$outboundSchema: z.ZodType<
         phoneNumber: z.nullable(z.string()).optional(),
         socialLinks: z.nullable(z.array(SocialLink$outboundSchema)).optional(),
         title: z.nullable(z.string()).optional(),
+        unifiedCustomFields: z.nullable(z.record(z.any())).optional(),
     })
     .transform((v) => {
         return remap$(v, {
@@ -150,6 +158,7 @@ export const AtsCreateCandidateRequestDto$outboundSchema: z.ZodType<
             lastName: "last_name",
             phoneNumber: "phone_number",
             socialLinks: "social_links",
+            unifiedCustomFields: "unified_custom_fields",
         });
     });
 

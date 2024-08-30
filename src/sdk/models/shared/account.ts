@@ -42,6 +42,10 @@ export type Account = {
      */
     remoteOwnerId?: string | null | undefined;
     /**
+     * Custom Unified Fields configured in your StackOne project
+     */
+    unifiedCustomFields?: { [k: string]: any } | null | undefined;
+    /**
      * Timestamp when the account was last updated
      */
     updatedAt?: Date | null | undefined;
@@ -69,6 +73,7 @@ export const Account$inboundSchema: z.ZodType<Account, z.ZodTypeDef, unknown> = 
         phone_numbers: z.nullable(z.array(z.string())).optional(),
         remote_id: z.nullable(z.string()).optional(),
         remote_owner_id: z.nullable(z.string()).optional(),
+        unified_custom_fields: z.nullable(z.record(z.any())).optional(),
         updated_at: z
             .nullable(
                 z
@@ -87,6 +92,7 @@ export const Account$inboundSchema: z.ZodType<Account, z.ZodTypeDef, unknown> = 
             phone_numbers: "phoneNumbers",
             remote_id: "remoteId",
             remote_owner_id: "remoteOwnerId",
+            unified_custom_fields: "unifiedCustomFields",
             updated_at: "updatedAt",
         });
     });
@@ -104,6 +110,7 @@ export type Account$Outbound = {
     phone_numbers?: Array<string> | null | undefined;
     remote_id?: string | null | undefined;
     remote_owner_id?: string | null | undefined;
+    unified_custom_fields?: { [k: string]: any } | null | undefined;
     updated_at?: string | null | undefined;
     website?: string | null | undefined;
 };
@@ -122,6 +129,7 @@ export const Account$outboundSchema: z.ZodType<Account$Outbound, z.ZodTypeDef, A
         phoneNumbers: z.nullable(z.array(z.string())).optional(),
         remoteId: z.nullable(z.string()).optional(),
         remoteOwnerId: z.nullable(z.string()).optional(),
+        unifiedCustomFields: z.nullable(z.record(z.any())).optional(),
         updatedAt: z.nullable(z.date().transform((v) => v.toISOString())).optional(),
         website: z.nullable(z.string()).optional(),
     })
@@ -133,6 +141,7 @@ export const Account$outboundSchema: z.ZodType<Account$Outbound, z.ZodTypeDef, A
             phoneNumbers: "phone_numbers",
             remoteId: "remote_id",
             remoteOwnerId: "remote_owner_id",
+            unifiedCustomFields: "unified_custom_fields",
             updatedAt: "updated_at",
         });
     });

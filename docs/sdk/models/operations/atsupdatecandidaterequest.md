@@ -49,6 +49,10 @@ let value: AtsUpdateCandidateRequest = {
             },
         ],
         title: "Software Engineer",
+        unifiedCustomFields: {
+            my_project_custom_field_1: "REF-1236",
+            my_project_custom_field_2: "some other value",
+        },
     },
     id: "<id>",
     xAccountId: "<value>",
