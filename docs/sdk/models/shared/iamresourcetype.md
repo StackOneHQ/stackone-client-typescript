@@ -6,7 +6,7 @@
 import { IamResourceType, IamResourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: IamResourceType = {
-    value: IamResourceValue.File,
+  value: IamResourceValue.File,
 };
 ```
 

@@ -6,7 +6,7 @@
 import { IamUserStatus, IamUserValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: IamUserStatus = {
-    value: IamUserValue.Enabled,
+  value: IamUserValue.Enabled,
 };
 ```
 

@@ -6,8 +6,8 @@
 import { AssessmentsResultsCandidate } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: AssessmentsResultsCandidate = {
-    id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-    profileUrl: "https://exmaple.com/candidate?id=xyz",
+  id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+  profileUrl: "https://exmaple.com/candidate?id=xyz",
 };
 ```
 

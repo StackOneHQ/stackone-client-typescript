@@ -15,83 +15,115 @@ import * as operations from "./models/operations/index.js";
 import { unwrapAsync } from "./types/fp.js";
 
 export class Iam extends ClientSDK {
-    /**
-     * Get Group
-     */
-    async getGroup(
-        request: operations.IamGetGroupRequest,
-        options?: RequestOptions
-    ): Promise<operations.IamGetGroupResponse> {
-        return unwrapAsync(iamGetGroup(this, request, options));
-    }
+  /**
+   * Get Group
+   */
+  async getGroup(
+    request: operations.IamGetGroupRequest,
+    options?: RequestOptions,
+  ): Promise<operations.IamGetGroupResponse> {
+    return unwrapAsync(iamGetGroup(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Get Policy
-     */
-    async getPolicy(
-        request: operations.IamGetPolicyRequest,
-        options?: RequestOptions
-    ): Promise<operations.IamGetPolicyResponse> {
-        return unwrapAsync(iamGetPolicy(this, request, options));
-    }
+  /**
+   * Get Policy
+   */
+  async getPolicy(
+    request: operations.IamGetPolicyRequest,
+    options?: RequestOptions,
+  ): Promise<operations.IamGetPolicyResponse> {
+    return unwrapAsync(iamGetPolicy(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Get Role
-     */
-    async getRole(
-        request: operations.IamGetRoleRequest,
-        options?: RequestOptions
-    ): Promise<operations.IamGetRoleResponse> {
-        return unwrapAsync(iamGetRole(this, request, options));
-    }
+  /**
+   * Get Role
+   */
+  async getRole(
+    request: operations.IamGetRoleRequest,
+    options?: RequestOptions,
+  ): Promise<operations.IamGetRoleResponse> {
+    return unwrapAsync(iamGetRole(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Get User
-     */
-    async getUser(
-        request: operations.IamGetUserRequest,
-        options?: RequestOptions
-    ): Promise<operations.IamGetUserResponse> {
-        return unwrapAsync(iamGetUser(this, request, options));
-    }
+  /**
+   * Get User
+   */
+  async getUser(
+    request: operations.IamGetUserRequest,
+    options?: RequestOptions,
+  ): Promise<operations.IamGetUserResponse> {
+    return unwrapAsync(iamGetUser(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * List Groups
-     */
-    async listGroups(
-        request: operations.IamListGroupsRequest,
-        options?: RequestOptions
-    ): Promise<operations.IamListGroupsResponse> {
-        return unwrapAsync(iamListGroups(this, request, options));
-    }
+  /**
+   * List Groups
+   */
+  async listGroups(
+    request: operations.IamListGroupsRequest,
+    options?: RequestOptions,
+  ): Promise<operations.IamListGroupsResponse> {
+    return unwrapAsync(iamListGroups(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * List Policies
-     */
-    async listPolicies(
-        request: operations.IamListPoliciesRequest,
-        options?: RequestOptions
-    ): Promise<operations.IamListPoliciesResponse> {
-        return unwrapAsync(iamListPolicies(this, request, options));
-    }
+  /**
+   * List Policies
+   */
+  async listPolicies(
+    request: operations.IamListPoliciesRequest,
+    options?: RequestOptions,
+  ): Promise<operations.IamListPoliciesResponse> {
+    return unwrapAsync(iamListPolicies(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * List Roles
-     */
-    async listRoles(
-        request: operations.IamListRolesRequest,
-        options?: RequestOptions
-    ): Promise<operations.IamListRolesResponse> {
-        return unwrapAsync(iamListRoles(this, request, options));
-    }
+  /**
+   * List Roles
+   */
+  async listRoles(
+    request: operations.IamListRolesRequest,
+    options?: RequestOptions,
+  ): Promise<operations.IamListRolesResponse> {
+    return unwrapAsync(iamListRoles(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * List Users
-     */
-    async listUsers(
-        request: operations.IamListUsersRequest,
-        options?: RequestOptions
-    ): Promise<operations.IamListUsersResponse> {
-        return unwrapAsync(iamListUsers(this, request, options));
-    }
+  /**
+   * List Users
+   */
+  async listUsers(
+    request: operations.IamListUsersRequest,
+    options?: RequestOptions,
+  ): Promise<operations.IamListUsersResponse> {
+    return unwrapAsync(iamListUsers(
+      this,
+      request,
+      options,
+    ));
+  }
 }

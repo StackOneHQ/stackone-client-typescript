@@ -7,7 +7,8 @@ The type of the description.
 ```typescript
 import { JobPostingContentSectionValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: JobPostingContentSectionValue = JobPostingContentSectionValue.Responsibilities;
+let value: JobPostingContentSectionValue =
+  JobPostingContentSectionValue.Responsibilities;
 ```
 
 ## Values

@@ -6,23 +6,23 @@
 import { ConnectSessionToken, ConnectSessionTokenCategories } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: ConnectSessionToken = {
-    categories: [
-        ConnectSessionTokenCategories.Ats,
-        ConnectSessionTokenCategories.Hris,
-        ConnectSessionTokenCategories.Hris,
-        ConnectSessionTokenCategories.Crm,
-        ConnectSessionTokenCategories.Iam,
-        ConnectSessionTokenCategories.Marketing,
-        ConnectSessionTokenCategories.Lms,
-        ConnectSessionTokenCategories.Stackone,
-    ],
-    createdAt: new Date("2023-09-17T06:03:43.855Z"),
-    id: 7395.51,
-    organizationId: 4521.09,
-    originOwnerId: "<value>",
-    originOwnerName: "<value>",
-    projectId: "<value>",
-    token: "<value>",
+  categories: [
+    ConnectSessionTokenCategories.Ats,
+    ConnectSessionTokenCategories.Hris,
+    ConnectSessionTokenCategories.Crm,
+    ConnectSessionTokenCategories.Crm,
+    ConnectSessionTokenCategories.Iam,
+    ConnectSessionTokenCategories.Marketing,
+    ConnectSessionTokenCategories.Lms,
+    ConnectSessionTokenCategories.Iam,
+  ],
+  createdAt: new Date("2022-07-16T20:17:42.476Z"),
+  id: 5424.99,
+  organizationId: 246.78,
+  originOwnerId: "<value>",
+  originOwnerName: "<value>",
+  projectId: "<value>",
+  token: "<value>",
 };
 ```
 

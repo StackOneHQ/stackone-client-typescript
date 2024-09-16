@@ -12,7 +12,7 @@ let value: MarketingListCampaignsResponse = {
       {
         channels: [
           {
-            sourceValue: "SMS",
+            sourceValue: true,
             value: ChannelsEnumValue.Sms,
           },
         ],
@@ -28,7 +28,7 @@ let value: MarketingListCampaignsResponse = {
               from: "1-555-123-4567",
             },
             messageType: {
-              sourceValue: Email,
+              sourceValue: {},
               value: {},
             },
             name: "SMS Message",
@@ -37,8 +37,8 @@ let value: MarketingListCampaignsResponse = {
           {
             id: "message-id-2",
             messageContent: {
-              body: "<h1>This is an example</h1>
-                        <p>email body</p>",
+              body: "<h1>This is an example</h1>\n"
+                + "            <p>email body</p>",
               from: "Jane Smith",
               preheader: "This is the preheader of the email.",
               replyTo: "reply@example.com",
@@ -57,7 +57,7 @@ let value: MarketingListCampaignsResponse = {
               body: "This is an example push notification body.",
             },
             messageType: {
-              sourceValue: "Email",
+              sourceValue: true,
               value: {},
             },
             name: "iOS Push Message",
@@ -66,11 +66,11 @@ let value: MarketingListCampaignsResponse = {
         ],
         remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         scheduleType: {
-          sourceValue: "Immediate",
+          sourceValue: {},
           value: CampaignValue.Immediate,
         },
         status: {
-          sourceValue: "Email",
+          sourceValue: Email,
           value: CampaignSchemasValue.Live,
         },
         updatedAt: new Date("2021-01-01T01:01:01.000Z"),
@@ -78,8 +78,10 @@ let value: MarketingListCampaignsResponse = {
     ],
   },
   contentType: "<value>",
-  statusCode: 463451,
-  rawResponse:   new Response('{"message": "hello world"}', {headers: {"Content-Type": "application/json"}}),
+  statusCode: 934214,
+  rawResponse: new Response("{\"message\": \"hello world\"}", {
+    headers: { "Content-Type": "application/json" },
+  }),
 };
 ```
 

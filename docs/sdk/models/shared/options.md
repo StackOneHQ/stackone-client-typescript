@@ -5,7 +5,7 @@
 ```typescript
 import { Options } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: Options = ["<value>"];
+let value: Options = "<value>";
 ```
 
 ## Supported Types

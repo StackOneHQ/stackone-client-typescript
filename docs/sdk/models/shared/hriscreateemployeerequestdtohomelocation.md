@@ -11,20 +11,20 @@ import {
 } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: HrisCreateEmployeeRequestDtoHomeLocation = {
-    city: "Grantham",
-    country: {
-        value: HrisCreateEmployeeRequestDtoSchemasHomeLocationValue.Us,
-    },
-    id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-    name: "Woolsthorpe Manor",
-    passthrough: {
-        other_known_names: "John Doe",
-    },
-    phoneNumber: "+44 1476 860 364",
-    state: {},
-    street1: "Water Lane",
-    street2: "Woolsthorpe by Colsterworth",
-    zipCode: "NG33 5NR",
+  city: "Grantham",
+  country: {
+    value: HrisCreateEmployeeRequestDtoSchemasHomeLocationValue.Us,
+  },
+  id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+  name: "Woolsthorpe Manor",
+  passthrough: {
+    "other_known_names": "John Doe",
+  },
+  phoneNumber: "+44 1476 860 364",
+  state: {},
+  street1: "Water Lane",
+  street2: "Woolsthorpe by Colsterworth",
+  zipCode: "NG33 5NR",
 };
 ```
 

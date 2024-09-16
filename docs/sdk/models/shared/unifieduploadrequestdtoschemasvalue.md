@@ -7,7 +7,8 @@ The file format of the file, expressed as a file extension
 ```typescript
 import { UnifiedUploadRequestDtoSchemasValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: UnifiedUploadRequestDtoSchemasValue = UnifiedUploadRequestDtoSchemasValue.Pdf;
+let value: UnifiedUploadRequestDtoSchemasValue =
+  UnifiedUploadRequestDtoSchemasValue.Pdf;
 ```
 
 ## Values

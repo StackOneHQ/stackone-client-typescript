@@ -6,22 +6,22 @@
 import { Categories, ConnectSession } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: ConnectSession = {
-    categories: [
-        Categories.Ats,
-        Categories.Hris,
-        Categories.Iam,
-        Categories.Crm,
-        Categories.Iam,
-        Categories.Marketing,
-        Categories.Lms,
-        Categories.Crm,
-    ],
-    createdAt: new Date("2022-08-21T18:43:11.151Z"),
-    id: 2098.43,
-    organizationId: 2224.43,
-    originOwnerId: "<value>",
-    originOwnerName: "<value>",
-    projectId: "<value>",
+  categories: [
+    Categories.Ats,
+    Categories.Hris,
+    Categories.Crm,
+    Categories.Crm,
+    Categories.Iam,
+    Categories.Marketing,
+    Categories.Lms,
+    Categories.Crm,
+  ],
+  createdAt: new Date("2022-12-08T17:28:43.478Z"),
+  id: 8810.05,
+  organizationId: 6963.44,
+  originOwnerId: "<value>",
+  originOwnerName: "<value>",
+  projectId: "<value>",
 };
 ```
 

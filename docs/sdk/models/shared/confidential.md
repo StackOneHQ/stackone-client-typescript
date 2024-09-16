@@ -8,8 +8,8 @@ The confidentiality level of the file to be uploaded
 import { Confidential, HrisDocumentsUploadRequestDtoSchemasValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: Confidential = {
-    sourceValue: {},
-    value: HrisDocumentsUploadRequestDtoSchemasValue.True,
+  sourceValue: public,
+  value: HrisDocumentsUploadRequestDtoSchemasValue.True,
 };
 ```
 

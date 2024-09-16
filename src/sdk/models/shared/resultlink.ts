@@ -5,44 +5,51 @@
 import * as z from "zod";
 
 export type ResultLink = {
-    /**
-     * The label of the result link.
-     */
-    label?: string | null | undefined;
-    /**
-     * The URL of the result link.
-     */
-    url?: string | null | undefined;
+  /**
+   * The label of the result link.
+   */
+  label?: string | null | undefined;
+  /**
+   * The URL of the result link.
+   */
+  url?: string | null | undefined;
 };
 
 /** @internal */
-export const ResultLink$inboundSchema: z.ZodType<ResultLink, z.ZodTypeDef, unknown> = z.object({
-    label: z.nullable(z.string()).optional(),
-    url: z.nullable(z.string()).optional(),
+export const ResultLink$inboundSchema: z.ZodType<
+  ResultLink,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  label: z.nullable(z.string()).optional(),
+  url: z.nullable(z.string()).optional(),
 });
 
 /** @internal */
 export type ResultLink$Outbound = {
-    label?: string | null | undefined;
-    url?: string | null | undefined;
+  label?: string | null | undefined;
+  url?: string | null | undefined;
 };
 
 /** @internal */
-export const ResultLink$outboundSchema: z.ZodType<ResultLink$Outbound, z.ZodTypeDef, ResultLink> =
-    z.object({
-        label: z.nullable(z.string()).optional(),
-        url: z.nullable(z.string()).optional(),
-    });
+export const ResultLink$outboundSchema: z.ZodType<
+  ResultLink$Outbound,
+  z.ZodTypeDef,
+  ResultLink
+> = z.object({
+  label: z.nullable(z.string()).optional(),
+  url: z.nullable(z.string()).optional(),
+});
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace ResultLink$ {
-    /** @deprecated use `ResultLink$inboundSchema` instead. */
-    export const inboundSchema = ResultLink$inboundSchema;
-    /** @deprecated use `ResultLink$outboundSchema` instead. */
-    export const outboundSchema = ResultLink$outboundSchema;
-    /** @deprecated use `ResultLink$Outbound` instead. */
-    export type Outbound = ResultLink$Outbound;
+  /** @deprecated use `ResultLink$inboundSchema` instead. */
+  export const inboundSchema = ResultLink$inboundSchema;
+  /** @deprecated use `ResultLink$outboundSchema` instead. */
+  export const outboundSchema = ResultLink$outboundSchema;
+  /** @deprecated use `ResultLink$Outbound` instead. */
+  export type Outbound = ResultLink$Outbound;
 }

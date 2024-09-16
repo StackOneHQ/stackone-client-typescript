@@ -6,8 +6,8 @@
 import { ChannelsEnum, ChannelsEnumValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: ChannelsEnum = {
-    sourceValue: "SMS",
-    value: ChannelsEnumValue.Sms,
+  sourceValue: SMS,
+  value: ChannelsEnumValue.Sms,
 };
 ```
 

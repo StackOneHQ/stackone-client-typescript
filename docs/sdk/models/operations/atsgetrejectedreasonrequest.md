@@ -6,9 +6,9 @@
 import { AtsGetRejectedReasonRequest } from "@stackone/stackone-client-ts/sdk/models/operations";
 
 let value: AtsGetRejectedReasonRequest = {
-    fields: "id,remote_id,label,type,rejected_reason_type",
-    id: "<id>",
-    xAccountId: "<value>",
+  fields: "id,remote_id,label,type,rejected_reason_type",
+  id: "<id>",
+  xAccountId: "<value>",
 };
 ```
 

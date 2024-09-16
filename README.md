@@ -4,8 +4,33 @@
     <a href="https://speakeasyapi.dev/"><img src="https://custom-icon-badges.demolab.com/badge/-Built%20By%20Speakeasy-212015?style=for-the-badge&logoColor=FBE331&logo=speakeasy&labelColor=545454" /></a>    
 </div>
 
+<!-- Start Summary [summary] -->
+## Summary
+
+LMS: The documentation for the StackOne Unified API - LMS
+<!-- End Summary [summary] -->
+
+<!-- Start Table of Contents [toc] -->
+## Table of Contents
+
+* [SDK Installation](#sdk-installation)
+* [Requirements](#requirements)
+* [SDK Example Usage](#sdk-example-usage)
+* [Available Resources and Operations](#available-resources-and-operations)
+* [Standalone functions](#standalone-functions)
+* [Pagination](#pagination)
+* [Retries](#retries)
+* [Error Handling](#error-handling)
+* [Server Selection](#server-selection)
+* [Custom HTTP Client](#custom-http-client)
+* [Authentication](#authentication)
+* [Debugging](#debugging)
+<!-- End Table of Contents [toc] -->
+
 <!-- Start SDK Installation [installation] -->
 ## SDK Installation
+
+The SDK can be installed with either [npm](https://www.npmjs.com/), [pnpm](https://pnpm.io/), [bun](https://bun.sh/) or [yarn](https://classic.yarnpkg.com/en/) package managers.
 
 ### NPM
 
@@ -44,28 +69,30 @@ yarn add @stackone/stackone-client-ts zod
 import { StackOne } from "@stackone/stackone-client-ts";
 
 const stackOne = new StackOne({
-    security: {
-        password: "",
-        username: "",
-    },
+  security: {
+    password: "",
+    username: "",
+  },
 });
 
 async function run() {
-    const result = await stackOne.hris.listEmployees({
-        expand: "company,employments,work_location,home_location,custom_fields,groups",
-        fields: "id,remote_id,first_name,last_name,name,display_name,gender,ethnicity,date_of_birth,birthday,marital_status,avatar_url,avatar,personal_email,personal_phone_number,work_email,work_phone_number,job_title,job_description,department,cost_centers,benefits,manager_id,remote_manager_id,hire_date,start_date,tenure,work_anniversary,employment_type,employment_contract_type,employment_status,termination_date,company_name,preferred_language,citizenships,home_location,work_location,employments,custom_fields,documents,created_at,updated_at,employee_number,national_identity_number",
-        filter: {
-            updatedAfter: "2020-01-01T00:00:00.000Z",
-        },
-        include: "avatar_url,avatar,custom_fields,job_description,benefits",
-        updatedAfter: "2020-01-01T00:00:00.000Z",
-        xAccountId: "<value>",
-    });
+  const result = await stackOne.hris.listEmployees({
+    expand:
+      "company,employments,work_location,home_location,custom_fields,groups",
+    fields:
+      "id,remote_id,first_name,last_name,name,display_name,gender,ethnicity,date_of_birth,birthday,marital_status,avatar_url,avatar,personal_email,personal_phone_number,work_email,work_phone_number,job_id,remote_job_id,job_title,job_description,department_id,remote_department_id,department,cost_centers,benefits,manager_id,remote_manager_id,hire_date,start_date,tenure,work_anniversary,employment_type,employment_contract_type,employment_status,termination_date,company_name,preferred_language,citizenships,home_location,work_location,employments,custom_fields,documents,created_at,updated_at,employee_number,national_identity_number",
+    filter: {
+      updatedAfter: "2020-01-01T00:00:00.000Z",
+    },
+    include: "avatar_url,avatar,custom_fields,job_description,benefits",
+    updatedAfter: "2020-01-01T00:00:00.000Z",
+    xAccountId: "<value>",
+  });
 
-    for await (const page of result) {
-        // Handle the page
-        console.log(page);
-    }
+  for await (const page of result) {
+    // Handle the page
+    console.log(page);
+  }
 }
 
 run();
@@ -76,6 +103,9 @@ run();
 <!-- Start Available Resources and Operations [operations] -->
 ## Available Resources and Operations
 
+<details open>
+<summary>Available methods</summary>
+
 ### [accounts](docs/sdks/accounts/README.md)
 
 * [deleteAccount](docs/sdks/accounts/README.md#deleteaccount) - Delete Account
@@ -83,16 +113,6 @@ run();
 * [getAccountMetaInfo](docs/sdks/accounts/README.md#getaccountmetainfo) - Get meta information of the account
 * [listLinkedAccounts](docs/sdks/accounts/README.md#listlinkedaccounts) - List Accounts
 * [updateAccount](docs/sdks/accounts/README.md#updateaccount) - Update Account
-
-### [connectSessions](docs/sdks/connectsessions/README.md)
-
-* [authenticateConnectSession](docs/sdks/connectsessions/README.md#authenticateconnectsession) - Authenticate Connect Session
-* [createConnectSession](docs/sdks/connectsessions/README.md#createconnectsession) - Create Connect Session
-
-### [connectors](docs/sdks/connectors/README.md)
-
-* [getConnectorMeta](docs/sdks/connectors/README.md#getconnectormeta) - Get Connector Meta information for the given provider key
-* [listConnectorsMeta](docs/sdks/connectors/README.md#listconnectorsmeta) - List Connectors Meta Information for all providers
 
 ### [ats](docs/sdks/ats/README.md)
 
@@ -117,6 +137,7 @@ run();
 * [getInterview](docs/sdks/ats/README.md#getinterview) - Get Interview
 * [getInterviewStage](docs/sdks/ats/README.md#getinterviewstage) - Get Interview Stage
 * [getJob](docs/sdks/ats/README.md#getjob) - Get Job
+* [getJobCustomFieldDefinition](docs/sdks/ats/README.md#getjobcustomfielddefinition) - Get Job Custom Field Definition
 * [getJobPosting](docs/sdks/ats/README.md#getjobposting) - Get Job Posting
 * [getList](docs/sdks/ats/README.md#getlist) - Get List
 * [getLocation](docs/sdks/ats/README.md#getlocation) - Get Location
@@ -136,6 +157,7 @@ run();
 * [listDepartments](docs/sdks/ats/README.md#listdepartments) - List Departments
 * [listInterviewStages](docs/sdks/ats/README.md#listinterviewstages) - List Interview Stages
 * [listInterviews](docs/sdks/ats/README.md#listinterviews) - List Interviews
+* [listJobCustomFieldDefinitions](docs/sdks/ats/README.md#listjobcustomfielddefinitions) - List Job Custom Field Definitions
 * [listJobPostings](docs/sdks/ats/README.md#listjobpostings) - List Job Postings
 * [listJobs](docs/sdks/ats/README.md#listjobs) - List Jobs
 * [listLists](docs/sdks/ats/README.md#listlists) - Get all Lists
@@ -143,9 +165,21 @@ run();
 * [listOffers](docs/sdks/ats/README.md#listoffers) - List Offers
 * [listRejectedReasons](docs/sdks/ats/README.md#listrejectedreasons) - List Rejected Reasons
 * [listUsers](docs/sdks/ats/README.md#listusers) - List Users
+* [moveApplication](docs/sdks/ats/README.md#moveapplication) - Move Application
+* [rejectApplication](docs/sdks/ats/README.md#rejectapplication) - Reject Application
 * [updateApplication](docs/sdks/ats/README.md#updateapplication) - Update an Application
 * [updateCandidate](docs/sdks/ats/README.md#updatecandidate) - Update Candidate
 * [uploadApplicationDocument](docs/sdks/ats/README.md#uploadapplicationdocument) - Upload Application Document
+
+### [connectors](docs/sdks/connectors/README.md)
+
+* [getConnectorMeta](docs/sdks/connectors/README.md#getconnectormeta) - Get Connector Meta information for the given provider key
+* [listConnectorsMeta](docs/sdks/connectors/README.md#listconnectorsmeta) - List Connectors Meta Information for all providers
+
+### [connectSessions](docs/sdks/connectsessions/README.md)
+
+* [authenticateConnectSession](docs/sdks/connectsessions/README.md#authenticateconnectsession) - Authenticate Connect Session
+* [createConnectSession](docs/sdks/connectsessions/README.md#createconnectsession) - Create Connect Session
 
 ### [crm](docs/sdks/crm/README.md)
 
@@ -160,6 +194,7 @@ run();
 
 ### [hris](docs/sdks/hris/README.md)
 
+* [batchUploadEmployeeDocument](docs/sdks/hris/README.md#batchuploademployeedocument) - Batch Upload Employee Document
 * [createEmployee](docs/sdks/hris/README.md#createemployee) - Creates an employee
 * [createEmployeeTimeOffRequest](docs/sdks/hris/README.md#createemployeetimeoffrequest) - Create Employee Time Off Request
 * [createEmployeeWorkEligibilityRequest](docs/sdks/hris/README.md#createemployeeworkeligibilityrequest) - Create Employee Work Eligibility Request
@@ -211,18 +246,26 @@ run();
 
 ### [lms](docs/sdks/lms/README.md)
 
-* [createCompletion](docs/sdks/lms/README.md#createcompletion) - Create User Completion
+* [batchUpsertContent](docs/sdks/lms/README.md#batchupsertcontent) - Batch Upsert Content
 * [createContent](docs/sdks/lms/README.md#createcontent) - Create Content
-* [getAssignment](docs/sdks/lms/README.md#getassignment) - Get User Assignment
+* [createUserCompletion](docs/sdks/lms/README.md#createusercompletion) - Create User Completion
+* [getAssignment](docs/sdks/lms/README.md#getassignment) - Get Assignment
 * [getCategory](docs/sdks/lms/README.md#getcategory) - Get Category
+* [getCompletion](docs/sdks/lms/README.md#getcompletion) - Get Completion
 * [getContent](docs/sdks/lms/README.md#getcontent) - Get Content
 * [getCourse](docs/sdks/lms/README.md#getcourse) - Get Course
+* [getSkill](docs/sdks/lms/README.md#getskill) - Get Skill
 * [getUser](docs/sdks/lms/README.md#getuser) - Get User
-* [listAssignments](docs/sdks/lms/README.md#listassignments) - List User Assignments
+* [getUserAssignment](docs/sdks/lms/README.md#getuserassignment) - Get User Assignment
+* [getUserCompletion](docs/sdks/lms/README.md#getusercompletion) - Get User Completion
+* [listAssignments](docs/sdks/lms/README.md#listassignments) - List Assignments
 * [listCategories](docs/sdks/lms/README.md#listcategories) - List Categories
-* [listCompletions](docs/sdks/lms/README.md#listcompletions) - List User Completions
+* [listCompletions](docs/sdks/lms/README.md#listcompletions) - List Completions
 * [listContent](docs/sdks/lms/README.md#listcontent) - List Content
 * [listCourses](docs/sdks/lms/README.md#listcourses) - List Courses
+* [listSkills](docs/sdks/lms/README.md#listskills) - List Skills
+* [listUserAssignments](docs/sdks/lms/README.md#listuserassignments) - List User Assignments
+* [listUserCompletions](docs/sdks/lms/README.md#listusercompletions) - List User Completions
 * [listUsers](docs/sdks/lms/README.md#listusers) - List Users
 * [updateContent](docs/sdks/lms/README.md#updatecontent) - Update Content
 * [upsertContent](docs/sdks/lms/README.md#upsertcontent) - Upsert Content
@@ -259,6 +302,9 @@ run();
 ### [proxy](docs/sdks/proxy/README.md)
 
 * [proxyRequest](docs/sdks/proxy/README.md#proxyrequest) - Proxy Request
+
+
+</details>
 <!-- End Available Resources and Operations [operations] -->
 
 <!-- Start Pagination [pagination] -->
@@ -277,28 +323,30 @@ Here's an example of one such pagination call:
 import { StackOne } from "@stackone/stackone-client-ts";
 
 const stackOne = new StackOne({
-    security: {
-        password: "",
-        username: "",
-    },
+  security: {
+    password: "",
+    username: "",
+  },
 });
 
 async function run() {
-    const result = await stackOne.hris.listEmployees({
-        expand: "company,employments,work_location,home_location,custom_fields,groups",
-        fields: "id,remote_id,first_name,last_name,name,display_name,gender,ethnicity,date_of_birth,birthday,marital_status,avatar_url,avatar,personal_email,personal_phone_number,work_email,work_phone_number,job_title,job_description,department,cost_centers,benefits,manager_id,remote_manager_id,hire_date,start_date,tenure,work_anniversary,employment_type,employment_contract_type,employment_status,termination_date,company_name,preferred_language,citizenships,home_location,work_location,employments,custom_fields,documents,created_at,updated_at,employee_number,national_identity_number",
-        filter: {
-            updatedAfter: "2020-01-01T00:00:00.000Z",
-        },
-        include: "avatar_url,avatar,custom_fields,job_description,benefits",
-        updatedAfter: "2020-01-01T00:00:00.000Z",
-        xAccountId: "<value>",
-    });
+  const result = await stackOne.hris.listEmployees({
+    expand:
+      "company,employments,work_location,home_location,custom_fields,groups",
+    fields:
+      "id,remote_id,first_name,last_name,name,display_name,gender,ethnicity,date_of_birth,birthday,marital_status,avatar_url,avatar,personal_email,personal_phone_number,work_email,work_phone_number,job_id,remote_job_id,job_title,job_description,department_id,remote_department_id,department,cost_centers,benefits,manager_id,remote_manager_id,hire_date,start_date,tenure,work_anniversary,employment_type,employment_contract_type,employment_status,termination_date,company_name,preferred_language,citizenships,home_location,work_location,employments,custom_fields,documents,created_at,updated_at,employee_number,national_identity_number",
+    filter: {
+      updatedAfter: "2020-01-01T00:00:00.000Z",
+    },
+    include: "avatar_url,avatar,custom_fields,job_description,benefits",
+    updatedAfter: "2020-01-01T00:00:00.000Z",
+    xAccountId: "<value>",
+  });
 
-    for await (const page of result) {
-        // Handle the page
-        console.log(page);
-    }
+  for await (const page of result) {
+    // Handle the page
+    console.log(page);
+  }
 }
 
 run();
@@ -323,35 +371,35 @@ import { StackOne } from "@stackone/stackone-client-ts";
 import { SDKValidationError } from "@stackone/stackone-client-ts/sdk/models/errors";
 
 const stackOne = new StackOne({
-    security: {
-        password: "",
-        username: "",
-    },
+  security: {
+    password: "",
+    username: "",
+  },
 });
 
 async function run() {
-    let result;
-    try {
-        result = await stackOne.accounts.deleteAccount({
-            id: "<id>",
-        });
-    } catch (err) {
-        switch (true) {
-            case err instanceof SDKValidationError: {
-                // Validation errors can be pretty-printed
-                console.error(err.pretty());
-                // Raw value may also be inspected
-                console.error(err.rawValue);
-                return;
-            }
-            default: {
-                throw err;
-            }
-        }
-    }
+  let result;
+  try {
+    result = await stackOne.accounts.deleteAccount({
+      id: "<id>",
+    });
 
     // Handle the result
     console.log(result);
+  } catch (err) {
+    switch (true) {
+      case (err instanceof SDKValidationError): {
+        // Validation errors can be pretty-printed
+        console.error(err.pretty());
+        // Raw value may also be inspected
+        console.error(err.rawValue);
+        return;
+      }
+      default: {
+        throw err;
+      }
+    }
+  }
 }
 
 run();
@@ -430,19 +478,19 @@ You can set the security parameters through the `security` optional parameter wh
 import { StackOne } from "@stackone/stackone-client-ts";
 
 const stackOne = new StackOne({
-    security: {
-        password: "",
-        username: "",
-    },
+  security: {
+    password: "",
+    username: "",
+  },
 });
 
 async function run() {
-    const result = await stackOne.accounts.deleteAccount({
-        id: "<id>",
-    });
+  const result = await stackOne.accounts.deleteAccount({
+    id: "<id>",
+  });
 
-    // Handle the result
-    console.log(result);
+  // Handle the result
+  console.log(result);
 }
 
 run();
@@ -466,33 +514,30 @@ To change the default retry strategy for a single API call, simply provide a ret
 import { StackOne } from "@stackone/stackone-client-ts";
 
 const stackOne = new StackOne({
-    security: {
-        password: "",
-        username: "",
-    },
+  security: {
+    password: "",
+    username: "",
+  },
 });
 
 async function run() {
-    const result = await stackOne.accounts.deleteAccount(
-        {
-            id: "<id>",
-        },
-        {
-            retries: {
-                strategy: "backoff",
-                backoff: {
-                    initialInterval: 1,
-                    maxInterval: 50,
-                    exponent: 1.1,
-                    maxElapsedTime: 100,
-                },
-                retryConnectionErrors: false,
-            },
-        }
-    );
+  const result = await stackOne.accounts.deleteAccount({
+    id: "<id>",
+  }, {
+    retries: {
+      strategy: "backoff",
+      backoff: {
+        initialInterval: 1,
+        maxInterval: 50,
+        exponent: 1.1,
+        maxElapsedTime: 100,
+      },
+      retryConnectionErrors: false,
+    },
+  });
 
-    // Handle the result
-    console.log(result);
+  // Handle the result
+  console.log(result);
 }
 
 run();
@@ -504,29 +549,29 @@ If you'd like to override the default retry strategy for all operations that sup
 import { StackOne } from "@stackone/stackone-client-ts";
 
 const stackOne = new StackOne({
-    retryConfig: {
-        strategy: "backoff",
-        backoff: {
-            initialInterval: 1,
-            maxInterval: 50,
-            exponent: 1.1,
-            maxElapsedTime: 100,
-        },
-        retryConnectionErrors: false,
+  retryConfig: {
+    strategy: "backoff",
+    backoff: {
+      initialInterval: 1,
+      maxInterval: 50,
+      exponent: 1.1,
+      maxElapsedTime: 100,
     },
-    security: {
-        password: "",
-        username: "",
-    },
+    retryConnectionErrors: false,
+  },
+  security: {
+    password: "",
+    username: "",
+  },
 });
 
 async function run() {
-    const result = await stackOne.accounts.deleteAccount({
-        id: "<id>",
-    });
+  const result = await stackOne.accounts.deleteAccount({
+    id: "<id>",
+  });
 
-    // Handle the result
-    console.log(result);
+  // Handle the result
+  console.log(result);
 }
 
 run();
@@ -574,6 +619,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [atsGetDepartment](docs/sdks/ats/README.md#getdepartment)
 - [atsGetInterviewStage](docs/sdks/ats/README.md#getinterviewstage)
 - [atsGetInterview](docs/sdks/ats/README.md#getinterview)
+- [atsGetJobCustomFieldDefinition](docs/sdks/ats/README.md#getjobcustomfielddefinition)
 - [atsGetJobPosting](docs/sdks/ats/README.md#getjobposting)
 - [atsGetJob](docs/sdks/ats/README.md#getjob)
 - [atsGetList](docs/sdks/ats/README.md#getlist)
@@ -594,6 +640,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [atsListDepartments](docs/sdks/ats/README.md#listdepartments)
 - [atsListInterviewStages](docs/sdks/ats/README.md#listinterviewstages)
 - [atsListInterviews](docs/sdks/ats/README.md#listinterviews)
+- [atsListJobCustomFieldDefinitions](docs/sdks/ats/README.md#listjobcustomfielddefinitions)
 - [atsListJobPostings](docs/sdks/ats/README.md#listjobpostings)
 - [atsListJobs](docs/sdks/ats/README.md#listjobs)
 - [atsListLists](docs/sdks/ats/README.md#listlists)
@@ -601,6 +648,8 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [atsListOffers](docs/sdks/ats/README.md#listoffers)
 - [atsListRejectedReasons](docs/sdks/ats/README.md#listrejectedreasons)
 - [atsListUsers](docs/sdks/ats/README.md#listusers)
+- [atsMoveApplication](docs/sdks/ats/README.md#moveapplication)
+- [atsRejectApplication](docs/sdks/ats/README.md#rejectapplication)
 - [atsUpdateApplication](docs/sdks/ats/README.md#updateapplication)
 - [atsUpdateCandidate](docs/sdks/ats/README.md#updatecandidate)
 - [atsUploadApplicationDocument](docs/sdks/ats/README.md#uploadapplicationdocument)
@@ -616,6 +665,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [crmListContacts](docs/sdks/crm/README.md#listcontacts)
 - [crmListLists](docs/sdks/crm/README.md#listlists)
 - [crmUpdateContact](docs/sdks/crm/README.md#updatecontact)
+- [hrisBatchUploadEmployeeDocument](docs/sdks/hris/README.md#batchuploademployeedocument)
 - [hrisCreateEmployeeTimeOffRequest](docs/sdks/hris/README.md#createemployeetimeoffrequest)
 - [hrisCreateEmployeeWorkEligibilityRequest](docs/sdks/hris/README.md#createemployeeworkeligibilityrequest)
 - [hrisCreateEmployee](docs/sdks/hris/README.md#createemployee)
@@ -661,18 +711,26 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [iamListPolicies](docs/sdks/iam/README.md#listpolicies)
 - [iamListRoles](docs/sdks/iam/README.md#listroles)
 - [iamListUsers](docs/sdks/iam/README.md#listusers)
-- [lmsCreateCompletion](docs/sdks/lms/README.md#createcompletion)
+- [lmsBatchUpsertContent](docs/sdks/lms/README.md#batchupsertcontent)
 - [lmsCreateContent](docs/sdks/lms/README.md#createcontent)
+- [lmsCreateUserCompletion](docs/sdks/lms/README.md#createusercompletion)
 - [lmsGetAssignment](docs/sdks/lms/README.md#getassignment)
 - [lmsGetCategory](docs/sdks/lms/README.md#getcategory)
+- [lmsGetCompletion](docs/sdks/lms/README.md#getcompletion)
 - [lmsGetContent](docs/sdks/lms/README.md#getcontent)
 - [lmsGetCourse](docs/sdks/lms/README.md#getcourse)
+- [lmsGetSkill](docs/sdks/lms/README.md#getskill)
+- [lmsGetUserAssignment](docs/sdks/lms/README.md#getuserassignment)
+- [lmsGetUserCompletion](docs/sdks/lms/README.md#getusercompletion)
 - [lmsGetUser](docs/sdks/lms/README.md#getuser)
 - [lmsListAssignments](docs/sdks/lms/README.md#listassignments)
 - [lmsListCategories](docs/sdks/lms/README.md#listcategories)
 - [lmsListCompletions](docs/sdks/lms/README.md#listcompletions)
 - [lmsListContent](docs/sdks/lms/README.md#listcontent)
 - [lmsListCourses](docs/sdks/lms/README.md#listcourses)
+- [lmsListSkills](docs/sdks/lms/README.md#listskills)
+- [lmsListUserAssignments](docs/sdks/lms/README.md#listuserassignments)
+- [lmsListUserCompletions](docs/sdks/lms/README.md#listusercompletions)
 - [lmsListUsers](docs/sdks/lms/README.md#listusers)
 - [lmsUpdateContent](docs/sdks/lms/README.md#updatecontent)
 - [lmsUpsertContent](docs/sdks/lms/README.md#upsertcontent)

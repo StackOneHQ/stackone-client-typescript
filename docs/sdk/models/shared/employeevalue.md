@@ -5,7 +5,7 @@
 ```typescript
 import { EmployeeValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: EmployeeValue = EmployeeValue.Shifts;
+let value: EmployeeValue = EmployeeValue.UnmappedValue;
 ```
 
 ## Values

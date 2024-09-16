@@ -15,83 +15,115 @@ import * as operations from "./models/operations/index.js";
 import { unwrapAsync } from "./types/fp.js";
 
 export class Crm extends ClientSDK {
-    /**
-     * Creates a new Contact
-     */
-    async createContact(
-        request: operations.CrmCreateContactRequest,
-        options?: RequestOptions
-    ): Promise<operations.CrmCreateContactResponse> {
-        return unwrapAsync(crmCreateContact(this, request, options));
-    }
+  /**
+   * Creates a new Contact
+   */
+  async createContact(
+    request: operations.CrmCreateContactRequest,
+    options?: RequestOptions,
+  ): Promise<operations.CrmCreateContactResponse> {
+    return unwrapAsync(crmCreateContact(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Get Account
-     */
-    async getAccount(
-        request: operations.CrmGetAccountRequest,
-        options?: RequestOptions
-    ): Promise<operations.CrmGetAccountResponse> {
-        return unwrapAsync(crmGetAccount(this, request, options));
-    }
+  /**
+   * Get Account
+   */
+  async getAccount(
+    request: operations.CrmGetAccountRequest,
+    options?: RequestOptions,
+  ): Promise<operations.CrmGetAccountResponse> {
+    return unwrapAsync(crmGetAccount(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Get Contact
-     */
-    async getContact(
-        request: operations.CrmGetContactRequest,
-        options?: RequestOptions
-    ): Promise<operations.CrmGetContactResponse> {
-        return unwrapAsync(crmGetContact(this, request, options));
-    }
+  /**
+   * Get Contact
+   */
+  async getContact(
+    request: operations.CrmGetContactRequest,
+    options?: RequestOptions,
+  ): Promise<operations.CrmGetContactResponse> {
+    return unwrapAsync(crmGetContact(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Get List
-     */
-    async getList(
-        request: operations.CrmGetListRequest,
-        options?: RequestOptions
-    ): Promise<operations.CrmGetListResponse> {
-        return unwrapAsync(crmGetList(this, request, options));
-    }
+  /**
+   * Get List
+   */
+  async getList(
+    request: operations.CrmGetListRequest,
+    options?: RequestOptions,
+  ): Promise<operations.CrmGetListResponse> {
+    return unwrapAsync(crmGetList(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * List Accounts
-     */
-    async listAccounts(
-        request: operations.CrmListAccountsRequest,
-        options?: RequestOptions
-    ): Promise<operations.CrmListAccountsResponse> {
-        return unwrapAsync(crmListAccounts(this, request, options));
-    }
+  /**
+   * List Accounts
+   */
+  async listAccounts(
+    request: operations.CrmListAccountsRequest,
+    options?: RequestOptions,
+  ): Promise<operations.CrmListAccountsResponse> {
+    return unwrapAsync(crmListAccounts(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * List Contacts
-     */
-    async listContacts(
-        request: operations.CrmListContactsRequest,
-        options?: RequestOptions
-    ): Promise<operations.CrmListContactsResponse> {
-        return unwrapAsync(crmListContacts(this, request, options));
-    }
+  /**
+   * List Contacts
+   */
+  async listContacts(
+    request: operations.CrmListContactsRequest,
+    options?: RequestOptions,
+  ): Promise<operations.CrmListContactsResponse> {
+    return unwrapAsync(crmListContacts(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Get all Lists
-     */
-    async listLists(
-        request: operations.CrmListListsRequest,
-        options?: RequestOptions
-    ): Promise<operations.CrmListListsResponse> {
-        return unwrapAsync(crmListLists(this, request, options));
-    }
+  /**
+   * Get all Lists
+   */
+  async listLists(
+    request: operations.CrmListListsRequest,
+    options?: RequestOptions,
+  ): Promise<operations.CrmListListsResponse> {
+    return unwrapAsync(crmListLists(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Update Contact (early access)
-     */
-    async updateContact(
-        request: operations.CrmUpdateContactRequest,
-        options?: RequestOptions
-    ): Promise<operations.CrmUpdateContactResponse> {
-        return unwrapAsync(crmUpdateContact(this, request, options));
-    }
+  /**
+   * Update Contact (early access)
+   */
+  async updateContact(
+    request: operations.CrmUpdateContactRequest,
+    options?: RequestOptions,
+  ): Promise<operations.CrmUpdateContactResponse> {
+    return unwrapAsync(crmUpdateContact(
+      this,
+      request,
+      options,
+    ));
+  }
 }

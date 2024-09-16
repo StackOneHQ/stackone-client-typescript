@@ -23,6 +23,7 @@ import { atsGetDepartment } from "../funcs/atsGetDepartment.js";
 import { atsGetInterview } from "../funcs/atsGetInterview.js";
 import { atsGetInterviewStage } from "../funcs/atsGetInterviewStage.js";
 import { atsGetJob } from "../funcs/atsGetJob.js";
+import { atsGetJobCustomFieldDefinition } from "../funcs/atsGetJobCustomFieldDefinition.js";
 import { atsGetJobPosting } from "../funcs/atsGetJobPosting.js";
 import { atsGetList } from "../funcs/atsGetList.js";
 import { atsGetLocation } from "../funcs/atsGetLocation.js";
@@ -31,8 +32,8 @@ import { atsGetRejectedReason } from "../funcs/atsGetRejectedReason.js";
 import { atsGetUser } from "../funcs/atsGetUser.js";
 import { atsListApplicationCustomFieldDefinitions } from "../funcs/atsListApplicationCustomFieldDefinitions.js";
 import { atsListApplicationDocuments } from "../funcs/atsListApplicationDocuments.js";
-import { atsListApplicationScorecards } from "../funcs/atsListApplicationScorecards.js";
 import { atsListApplications } from "../funcs/atsListApplications.js";
+import { atsListApplicationScorecards } from "../funcs/atsListApplicationScorecards.js";
 import { atsListApplicationsOffers } from "../funcs/atsListApplicationsOffers.js";
 import { atsListApplicationsScheduledInterviews } from "../funcs/atsListApplicationsScheduledInterviews.js";
 import { atsListAssessmentsPackages } from "../funcs/atsListAssessmentsPackages.js";
@@ -40,8 +41,9 @@ import { atsListCandidateCustomFieldDefinitions } from "../funcs/atsListCandidat
 import { atsListCandidateNotes } from "../funcs/atsListCandidateNotes.js";
 import { atsListCandidates } from "../funcs/atsListCandidates.js";
 import { atsListDepartments } from "../funcs/atsListDepartments.js";
-import { atsListInterviewStages } from "../funcs/atsListInterviewStages.js";
 import { atsListInterviews } from "../funcs/atsListInterviews.js";
+import { atsListInterviewStages } from "../funcs/atsListInterviewStages.js";
+import { atsListJobCustomFieldDefinitions } from "../funcs/atsListJobCustomFieldDefinitions.js";
 import { atsListJobPostings } from "../funcs/atsListJobPostings.js";
 import { atsListJobs } from "../funcs/atsListJobs.js";
 import { atsListLists } from "../funcs/atsListLists.js";
@@ -49,6 +51,8 @@ import { atsListLocations } from "../funcs/atsListLocations.js";
 import { atsListOffers } from "../funcs/atsListOffers.js";
 import { atsListRejectedReasons } from "../funcs/atsListRejectedReasons.js";
 import { atsListUsers } from "../funcs/atsListUsers.js";
+import { atsMoveApplication } from "../funcs/atsMoveApplication.js";
+import { atsRejectApplication } from "../funcs/atsRejectApplication.js";
 import { atsUpdateApplication } from "../funcs/atsUpdateApplication.js";
 import { atsUpdateCandidate } from "../funcs/atsUpdateCandidate.js";
 import { atsUploadApplicationDocument } from "../funcs/atsUploadApplicationDocument.js";
@@ -57,503 +61,759 @@ import * as operations from "./models/operations/index.js";
 import { unwrapAsync } from "./types/fp.js";
 
 export class Ats extends ClientSDK {
-    /**
-     * Create Application
-     */
-    async createApplication(
-        request: operations.AtsCreateApplicationRequest,
-        options?: RequestOptions
-    ): Promise<operations.AtsCreateApplicationResponse> {
-        return unwrapAsync(atsCreateApplication(this, request, options));
-    }
+  /**
+   * Create Application
+   */
+  async createApplication(
+    request: operations.AtsCreateApplicationRequest,
+    options?: RequestOptions,
+  ): Promise<operations.AtsCreateApplicationResponse> {
+    return unwrapAsync(atsCreateApplication(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Create Candidate
-     */
-    async createCandidate(
-        request: operations.AtsCreateCandidateRequest,
-        options?: RequestOptions
-    ): Promise<operations.AtsCreateCandidateResponse> {
-        return unwrapAsync(atsCreateCandidate(this, request, options));
-    }
+  /**
+   * Create Candidate
+   */
+  async createCandidate(
+    request: operations.AtsCreateCandidateRequest,
+    options?: RequestOptions,
+  ): Promise<operations.AtsCreateCandidateResponse> {
+    return unwrapAsync(atsCreateCandidate(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Create Candidate Note
-     */
-    async createCandidateNote(
-        request: operations.AtsCreateCandidateNoteRequest,
-        options?: RequestOptions
-    ): Promise<operations.AtsCreateCandidateNoteResponse> {
-        return unwrapAsync(atsCreateCandidateNote(this, request, options));
-    }
+  /**
+   * Create Candidate Note
+   */
+  async createCandidateNote(
+    request: operations.AtsCreateCandidateNoteRequest,
+    options?: RequestOptions,
+  ): Promise<operations.AtsCreateCandidateNoteResponse> {
+    return unwrapAsync(atsCreateCandidateNote(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Creates an offer
-     */
-    async createOffer(
-        request: operations.AtsCreateOfferRequest,
-        options?: RequestOptions
-    ): Promise<operations.AtsCreateOfferResponse> {
-        return unwrapAsync(atsCreateOffer(this, request, options));
-    }
+  /**
+   * Creates an offer
+   */
+  async createOffer(
+    request: operations.AtsCreateOfferRequest,
+    options?: RequestOptions,
+  ): Promise<operations.AtsCreateOfferResponse> {
+    return unwrapAsync(atsCreateOffer(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Download Application Document
-     */
-    async downloadApplicationDocument(
-        request: operations.AtsDownloadApplicationDocumentRequest,
-        options?: RequestOptions
-    ): Promise<operations.AtsDownloadApplicationDocumentResponse> {
-        return unwrapAsync(atsDownloadApplicationDocument(this, request, options));
-    }
+  /**
+   * Download Application Document
+   */
+  async downloadApplicationDocument(
+    request: operations.AtsDownloadApplicationDocumentRequest,
+    options?: RequestOptions,
+  ): Promise<operations.AtsDownloadApplicationDocumentResponse> {
+    return unwrapAsync(atsDownloadApplicationDocument(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Get Application
-     */
-    async getApplication(
-        request: operations.AtsGetApplicationRequest,
-        options?: RequestOptions
-    ): Promise<operations.AtsGetApplicationResponse> {
-        return unwrapAsync(atsGetApplication(this, request, options));
-    }
+  /**
+   * Get Application
+   */
+  async getApplication(
+    request: operations.AtsGetApplicationRequest,
+    options?: RequestOptions,
+  ): Promise<operations.AtsGetApplicationResponse> {
+    return unwrapAsync(atsGetApplication(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Get Application Custom Field Definition
-     */
-    async getApplicationCustomFieldDefinition(
-        request: operations.AtsGetApplicationCustomFieldDefinitionRequest,
-        options?: RequestOptions
-    ): Promise<operations.AtsGetApplicationCustomFieldDefinitionResponse> {
-        return unwrapAsync(atsGetApplicationCustomFieldDefinition(this, request, options));
-    }
+  /**
+   * Get Application Custom Field Definition
+   */
+  async getApplicationCustomFieldDefinition(
+    request: operations.AtsGetApplicationCustomFieldDefinitionRequest,
+    options?: RequestOptions,
+  ): Promise<operations.AtsGetApplicationCustomFieldDefinitionResponse> {
+    return unwrapAsync(atsGetApplicationCustomFieldDefinition(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Get Application Document
-     */
-    async getApplicationDocument(
-        request: operations.AtsGetApplicationDocumentRequest,
-        options?: RequestOptions
-    ): Promise<operations.AtsGetApplicationDocumentResponse> {
-        return unwrapAsync(atsGetApplicationDocument(this, request, options));
-    }
+  /**
+   * Get Application Document
+   */
+  async getApplicationDocument(
+    request: operations.AtsGetApplicationDocumentRequest,
+    options?: RequestOptions,
+  ): Promise<operations.AtsGetApplicationDocumentResponse> {
+    return unwrapAsync(atsGetApplicationDocument(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Get Application Offer
-     */
-    async getApplicationOffer(
-        request: operations.AtsGetApplicationOfferRequest,
-        options?: RequestOptions
-    ): Promise<operations.AtsGetApplicationOfferResponse> {
-        return unwrapAsync(atsGetApplicationOffer(this, request, options));
-    }
+  /**
+   * Get Application Offer
+   */
+  async getApplicationOffer(
+    request: operations.AtsGetApplicationOfferRequest,
+    options?: RequestOptions,
+  ): Promise<operations.AtsGetApplicationOfferResponse> {
+    return unwrapAsync(atsGetApplicationOffer(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Get Applications scheduled interview
-     */
-    async getApplicationScheduledInterview(
-        request: operations.AtsGetApplicationScheduledInterviewRequest,
-        options?: RequestOptions
-    ): Promise<operations.AtsGetApplicationScheduledInterviewResponse> {
-        return unwrapAsync(atsGetApplicationScheduledInterview(this, request, options));
-    }
+  /**
+   * Get Applications scheduled interview
+   */
+  async getApplicationScheduledInterview(
+    request: operations.AtsGetApplicationScheduledInterviewRequest,
+    options?: RequestOptions,
+  ): Promise<operations.AtsGetApplicationScheduledInterviewResponse> {
+    return unwrapAsync(atsGetApplicationScheduledInterview(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Get Application Scorecard
-     */
-    async getApplicationScorecard(
-        request: operations.AtsGetApplicationScorecardRequest,
-        options?: RequestOptions
-    ): Promise<operations.AtsGetApplicationScorecardResponse> {
-        return unwrapAsync(atsGetApplicationScorecard(this, request, options));
-    }
+  /**
+   * Get Application Scorecard
+   */
+  async getApplicationScorecard(
+    request: operations.AtsGetApplicationScorecardRequest,
+    options?: RequestOptions,
+  ): Promise<operations.AtsGetApplicationScorecardResponse> {
+    return unwrapAsync(atsGetApplicationScorecard(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Get Assessments Package
-     */
-    async getAssessmentsPackage(
-        request: operations.AtsGetAssessmentsPackageRequest,
-        options?: RequestOptions
-    ): Promise<operations.AtsGetAssessmentsPackageResponse> {
-        return unwrapAsync(atsGetAssessmentsPackage(this, request, options));
-    }
+  /**
+   * Get Assessments Package
+   */
+  async getAssessmentsPackage(
+    request: operations.AtsGetAssessmentsPackageRequest,
+    options?: RequestOptions,
+  ): Promise<operations.AtsGetAssessmentsPackageResponse> {
+    return unwrapAsync(atsGetAssessmentsPackage(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Get Assessments Requests
-     */
-    async getAssessmentsRequest(
-        request: operations.AtsGetAssessmentsRequestRequest,
-        options?: RequestOptions
-    ): Promise<operations.AtsGetAssessmentsRequestResponse> {
-        return unwrapAsync(atsGetAssessmentsRequest(this, request, options));
-    }
+  /**
+   * Get Assessments Requests
+   */
+  async getAssessmentsRequest(
+    request: operations.AtsGetAssessmentsRequestRequest,
+    options?: RequestOptions,
+  ): Promise<operations.AtsGetAssessmentsRequestResponse> {
+    return unwrapAsync(atsGetAssessmentsRequest(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Get Assessments Results
-     */
-    async getAssessmentsResult(
-        request: operations.AtsGetAssessmentsResultRequest,
-        options?: RequestOptions
-    ): Promise<operations.AtsGetAssessmentsResultResponse> {
-        return unwrapAsync(atsGetAssessmentsResult(this, request, options));
-    }
+  /**
+   * Get Assessments Results
+   */
+  async getAssessmentsResult(
+    request: operations.AtsGetAssessmentsResultRequest,
+    options?: RequestOptions,
+  ): Promise<operations.AtsGetAssessmentsResultResponse> {
+    return unwrapAsync(atsGetAssessmentsResult(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Get Candidate
-     */
-    async getCandidate(
-        request: operations.AtsGetCandidateRequest,
-        options?: RequestOptions
-    ): Promise<operations.AtsGetCandidateResponse> {
-        return unwrapAsync(atsGetCandidate(this, request, options));
-    }
+  /**
+   * Get Candidate
+   */
+  async getCandidate(
+    request: operations.AtsGetCandidateRequest,
+    options?: RequestOptions,
+  ): Promise<operations.AtsGetCandidateResponse> {
+    return unwrapAsync(atsGetCandidate(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Get Candidate Custom Field Definition
-     */
-    async getCandidateCustomFieldDefinition(
-        request: operations.AtsGetCandidateCustomFieldDefinitionRequest,
-        options?: RequestOptions
-    ): Promise<operations.AtsGetCandidateCustomFieldDefinitionResponse> {
-        return unwrapAsync(atsGetCandidateCustomFieldDefinition(this, request, options));
-    }
+  /**
+   * Get Candidate Custom Field Definition
+   */
+  async getCandidateCustomFieldDefinition(
+    request: operations.AtsGetCandidateCustomFieldDefinitionRequest,
+    options?: RequestOptions,
+  ): Promise<operations.AtsGetCandidateCustomFieldDefinitionResponse> {
+    return unwrapAsync(atsGetCandidateCustomFieldDefinition(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Get Candidate Note
-     */
-    async getCandidateNote(
-        request: operations.AtsGetCandidateNoteRequest,
-        options?: RequestOptions
-    ): Promise<operations.AtsGetCandidateNoteResponse> {
-        return unwrapAsync(atsGetCandidateNote(this, request, options));
-    }
+  /**
+   * Get Candidate Note
+   */
+  async getCandidateNote(
+    request: operations.AtsGetCandidateNoteRequest,
+    options?: RequestOptions,
+  ): Promise<operations.AtsGetCandidateNoteResponse> {
+    return unwrapAsync(atsGetCandidateNote(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Get Department
-     */
-    async getDepartment(
-        request: operations.AtsGetDepartmentRequest,
-        options?: RequestOptions
-    ): Promise<operations.AtsGetDepartmentResponse> {
-        return unwrapAsync(atsGetDepartment(this, request, options));
-    }
+  /**
+   * Get Department
+   */
+  async getDepartment(
+    request: operations.AtsGetDepartmentRequest,
+    options?: RequestOptions,
+  ): Promise<operations.AtsGetDepartmentResponse> {
+    return unwrapAsync(atsGetDepartment(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Get Interview
-     */
-    async getInterview(
-        request: operations.AtsGetInterviewRequest,
-        options?: RequestOptions
-    ): Promise<operations.AtsGetInterviewResponse> {
-        return unwrapAsync(atsGetInterview(this, request, options));
-    }
+  /**
+   * Get Interview
+   */
+  async getInterview(
+    request: operations.AtsGetInterviewRequest,
+    options?: RequestOptions,
+  ): Promise<operations.AtsGetInterviewResponse> {
+    return unwrapAsync(atsGetInterview(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Get Interview Stage
-     */
-    async getInterviewStage(
-        request: operations.AtsGetInterviewStageRequest,
-        options?: RequestOptions
-    ): Promise<operations.AtsGetInterviewStageResponse> {
-        return unwrapAsync(atsGetInterviewStage(this, request, options));
-    }
+  /**
+   * Get Interview Stage
+   */
+  async getInterviewStage(
+    request: operations.AtsGetInterviewStageRequest,
+    options?: RequestOptions,
+  ): Promise<operations.AtsGetInterviewStageResponse> {
+    return unwrapAsync(atsGetInterviewStage(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Get Job
-     */
-    async getJob(
-        request: operations.AtsGetJobRequest,
-        options?: RequestOptions
-    ): Promise<operations.AtsGetJobResponse> {
-        return unwrapAsync(atsGetJob(this, request, options));
-    }
+  /**
+   * Get Job
+   */
+  async getJob(
+    request: operations.AtsGetJobRequest,
+    options?: RequestOptions,
+  ): Promise<operations.AtsGetJobResponse> {
+    return unwrapAsync(atsGetJob(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Get Job Posting
-     */
-    async getJobPosting(
-        request: operations.AtsGetJobPostingRequest,
-        options?: RequestOptions
-    ): Promise<operations.AtsGetJobPostingResponse> {
-        return unwrapAsync(atsGetJobPosting(this, request, options));
-    }
+  /**
+   * Get Job Custom Field Definition
+   */
+  async getJobCustomFieldDefinition(
+    request: operations.AtsGetJobCustomFieldDefinitionRequest,
+    options?: RequestOptions,
+  ): Promise<operations.AtsGetJobCustomFieldDefinitionResponse> {
+    return unwrapAsync(atsGetJobCustomFieldDefinition(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Get List
-     */
-    async getList(
-        request: operations.AtsGetListRequest,
-        options?: RequestOptions
-    ): Promise<operations.AtsGetListResponse> {
-        return unwrapAsync(atsGetList(this, request, options));
-    }
+  /**
+   * Get Job Posting
+   */
+  async getJobPosting(
+    request: operations.AtsGetJobPostingRequest,
+    options?: RequestOptions,
+  ): Promise<operations.AtsGetJobPostingResponse> {
+    return unwrapAsync(atsGetJobPosting(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Get Location
-     */
-    async getLocation(
-        request: operations.AtsGetLocationRequest,
-        options?: RequestOptions
-    ): Promise<operations.AtsGetLocationResponse> {
-        return unwrapAsync(atsGetLocation(this, request, options));
-    }
+  /**
+   * Get List
+   */
+  async getList(
+    request: operations.AtsGetListRequest,
+    options?: RequestOptions,
+  ): Promise<operations.AtsGetListResponse> {
+    return unwrapAsync(atsGetList(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Get Offer
-     */
-    async getOffer(
-        request: operations.AtsGetOfferRequest,
-        options?: RequestOptions
-    ): Promise<operations.AtsGetOfferResponse> {
-        return unwrapAsync(atsGetOffer(this, request, options));
-    }
+  /**
+   * Get Location
+   */
+  async getLocation(
+    request: operations.AtsGetLocationRequest,
+    options?: RequestOptions,
+  ): Promise<operations.AtsGetLocationResponse> {
+    return unwrapAsync(atsGetLocation(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Get Rejected Reason
-     */
-    async getRejectedReason(
-        request: operations.AtsGetRejectedReasonRequest,
-        options?: RequestOptions
-    ): Promise<operations.AtsGetRejectedReasonResponse> {
-        return unwrapAsync(atsGetRejectedReason(this, request, options));
-    }
+  /**
+   * Get Offer
+   */
+  async getOffer(
+    request: operations.AtsGetOfferRequest,
+    options?: RequestOptions,
+  ): Promise<operations.AtsGetOfferResponse> {
+    return unwrapAsync(atsGetOffer(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Get User
-     */
-    async getUser(
-        request: operations.AtsGetUserRequest,
-        options?: RequestOptions
-    ): Promise<operations.AtsGetUserResponse> {
-        return unwrapAsync(atsGetUser(this, request, options));
-    }
+  /**
+   * Get Rejected Reason
+   */
+  async getRejectedReason(
+    request: operations.AtsGetRejectedReasonRequest,
+    options?: RequestOptions,
+  ): Promise<operations.AtsGetRejectedReasonResponse> {
+    return unwrapAsync(atsGetRejectedReason(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * List Application Custom Field Definitions
-     */
-    async listApplicationCustomFieldDefinitions(
-        request: operations.AtsListApplicationCustomFieldDefinitionsRequest,
-        options?: RequestOptions
-    ): Promise<operations.AtsListApplicationCustomFieldDefinitionsResponse> {
-        return unwrapAsync(atsListApplicationCustomFieldDefinitions(this, request, options));
-    }
+  /**
+   * Get User
+   */
+  async getUser(
+    request: operations.AtsGetUserRequest,
+    options?: RequestOptions,
+  ): Promise<operations.AtsGetUserResponse> {
+    return unwrapAsync(atsGetUser(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * List Application Documents
-     */
-    async listApplicationDocuments(
-        request: operations.AtsListApplicationDocumentsRequest,
-        options?: RequestOptions
-    ): Promise<operations.AtsListApplicationDocumentsResponse> {
-        return unwrapAsync(atsListApplicationDocuments(this, request, options));
-    }
+  /**
+   * List Application Custom Field Definitions
+   */
+  async listApplicationCustomFieldDefinitions(
+    request: operations.AtsListApplicationCustomFieldDefinitionsRequest,
+    options?: RequestOptions,
+  ): Promise<operations.AtsListApplicationCustomFieldDefinitionsResponse> {
+    return unwrapAsync(atsListApplicationCustomFieldDefinitions(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * List Application Scorecards
-     */
-    async listApplicationScorecards(
-        request: operations.AtsListApplicationScorecardsRequest,
-        options?: RequestOptions
-    ): Promise<operations.AtsListApplicationScorecardsResponse> {
-        return unwrapAsync(atsListApplicationScorecards(this, request, options));
-    }
+  /**
+   * List Application Documents
+   */
+  async listApplicationDocuments(
+    request: operations.AtsListApplicationDocumentsRequest,
+    options?: RequestOptions,
+  ): Promise<operations.AtsListApplicationDocumentsResponse> {
+    return unwrapAsync(atsListApplicationDocuments(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * List Applications
-     */
-    async listApplications(
-        request: operations.AtsListApplicationsRequest,
-        options?: RequestOptions
-    ): Promise<operations.AtsListApplicationsResponse> {
-        return unwrapAsync(atsListApplications(this, request, options));
-    }
+  /**
+   * List Application Scorecards
+   */
+  async listApplicationScorecards(
+    request: operations.AtsListApplicationScorecardsRequest,
+    options?: RequestOptions,
+  ): Promise<operations.AtsListApplicationScorecardsResponse> {
+    return unwrapAsync(atsListApplicationScorecards(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * List Application Offers
-     */
-    async listApplicationsOffers(
-        request: operations.AtsListApplicationsOffersRequest,
-        options?: RequestOptions
-    ): Promise<operations.AtsListApplicationsOffersResponse> {
-        return unwrapAsync(atsListApplicationsOffers(this, request, options));
-    }
+  /**
+   * List Applications
+   */
+  async listApplications(
+    request: operations.AtsListApplicationsRequest,
+    options?: RequestOptions,
+  ): Promise<operations.AtsListApplicationsResponse> {
+    return unwrapAsync(atsListApplications(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * List Applications scheduled interviews
-     */
-    async listApplicationsScheduledInterviews(
-        request: operations.AtsListApplicationsScheduledInterviewsRequest,
-        options?: RequestOptions
-    ): Promise<operations.AtsListApplicationsScheduledInterviewsResponse> {
-        return unwrapAsync(atsListApplicationsScheduledInterviews(this, request, options));
-    }
+  /**
+   * List Application Offers
+   */
+  async listApplicationsOffers(
+    request: operations.AtsListApplicationsOffersRequest,
+    options?: RequestOptions,
+  ): Promise<operations.AtsListApplicationsOffersResponse> {
+    return unwrapAsync(atsListApplicationsOffers(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * List Assessments Packages
-     */
-    async listAssessmentsPackages(
-        request: operations.AtsListAssessmentsPackagesRequest,
-        options?: RequestOptions
-    ): Promise<operations.AtsListAssessmentsPackagesResponse> {
-        return unwrapAsync(atsListAssessmentsPackages(this, request, options));
-    }
+  /**
+   * List Applications scheduled interviews
+   */
+  async listApplicationsScheduledInterviews(
+    request: operations.AtsListApplicationsScheduledInterviewsRequest,
+    options?: RequestOptions,
+  ): Promise<operations.AtsListApplicationsScheduledInterviewsResponse> {
+    return unwrapAsync(atsListApplicationsScheduledInterviews(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * List Candidate Custom Field Definitions
-     */
-    async listCandidateCustomFieldDefinitions(
-        request: operations.AtsListCandidateCustomFieldDefinitionsRequest,
-        options?: RequestOptions
-    ): Promise<operations.AtsListCandidateCustomFieldDefinitionsResponse> {
-        return unwrapAsync(atsListCandidateCustomFieldDefinitions(this, request, options));
-    }
+  /**
+   * List Assessments Packages
+   */
+  async listAssessmentsPackages(
+    request: operations.AtsListAssessmentsPackagesRequest,
+    options?: RequestOptions,
+  ): Promise<operations.AtsListAssessmentsPackagesResponse> {
+    return unwrapAsync(atsListAssessmentsPackages(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * List Candidate Notes
-     */
-    async listCandidateNotes(
-        request: operations.AtsListCandidateNotesRequest,
-        options?: RequestOptions
-    ): Promise<operations.AtsListCandidateNotesResponse> {
-        return unwrapAsync(atsListCandidateNotes(this, request, options));
-    }
+  /**
+   * List Candidate Custom Field Definitions
+   */
+  async listCandidateCustomFieldDefinitions(
+    request: operations.AtsListCandidateCustomFieldDefinitionsRequest,
+    options?: RequestOptions,
+  ): Promise<operations.AtsListCandidateCustomFieldDefinitionsResponse> {
+    return unwrapAsync(atsListCandidateCustomFieldDefinitions(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * List Candidates
-     */
-    async listCandidates(
-        request: operations.AtsListCandidatesRequest,
-        options?: RequestOptions
-    ): Promise<operations.AtsListCandidatesResponse> {
-        return unwrapAsync(atsListCandidates(this, request, options));
-    }
+  /**
+   * List Candidate Notes
+   */
+  async listCandidateNotes(
+    request: operations.AtsListCandidateNotesRequest,
+    options?: RequestOptions,
+  ): Promise<operations.AtsListCandidateNotesResponse> {
+    return unwrapAsync(atsListCandidateNotes(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * List Departments
-     */
-    async listDepartments(
-        request: operations.AtsListDepartmentsRequest,
-        options?: RequestOptions
-    ): Promise<operations.AtsListDepartmentsResponse> {
-        return unwrapAsync(atsListDepartments(this, request, options));
-    }
+  /**
+   * List Candidates
+   */
+  async listCandidates(
+    request: operations.AtsListCandidatesRequest,
+    options?: RequestOptions,
+  ): Promise<operations.AtsListCandidatesResponse> {
+    return unwrapAsync(atsListCandidates(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * List Interview Stages
-     */
-    async listInterviewStages(
-        request: operations.AtsListInterviewStagesRequest,
-        options?: RequestOptions
-    ): Promise<operations.AtsListInterviewStagesResponse> {
-        return unwrapAsync(atsListInterviewStages(this, request, options));
-    }
+  /**
+   * List Departments
+   */
+  async listDepartments(
+    request: operations.AtsListDepartmentsRequest,
+    options?: RequestOptions,
+  ): Promise<operations.AtsListDepartmentsResponse> {
+    return unwrapAsync(atsListDepartments(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * List Interviews
-     */
-    async listInterviews(
-        request: operations.AtsListInterviewsRequest,
-        options?: RequestOptions
-    ): Promise<operations.AtsListInterviewsResponse> {
-        return unwrapAsync(atsListInterviews(this, request, options));
-    }
+  /**
+   * List Interview Stages
+   */
+  async listInterviewStages(
+    request: operations.AtsListInterviewStagesRequest,
+    options?: RequestOptions,
+  ): Promise<operations.AtsListInterviewStagesResponse> {
+    return unwrapAsync(atsListInterviewStages(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * List Job Postings
-     */
-    async listJobPostings(
-        request: operations.AtsListJobPostingsRequest,
-        options?: RequestOptions
-    ): Promise<operations.AtsListJobPostingsResponse> {
-        return unwrapAsync(atsListJobPostings(this, request, options));
-    }
+  /**
+   * List Interviews
+   */
+  async listInterviews(
+    request: operations.AtsListInterviewsRequest,
+    options?: RequestOptions,
+  ): Promise<operations.AtsListInterviewsResponse> {
+    return unwrapAsync(atsListInterviews(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * List Jobs
-     */
-    async listJobs(
-        request: operations.AtsListJobsRequest,
-        options?: RequestOptions
-    ): Promise<operations.AtsListJobsResponse> {
-        return unwrapAsync(atsListJobs(this, request, options));
-    }
+  /**
+   * List Job Custom Field Definitions
+   */
+  async listJobCustomFieldDefinitions(
+    request: operations.AtsListJobCustomFieldDefinitionsRequest,
+    options?: RequestOptions,
+  ): Promise<operations.AtsListJobCustomFieldDefinitionsResponse> {
+    return unwrapAsync(atsListJobCustomFieldDefinitions(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Get all Lists
-     */
-    async listLists(
-        request: operations.AtsListListsRequest,
-        options?: RequestOptions
-    ): Promise<operations.AtsListListsResponse> {
-        return unwrapAsync(atsListLists(this, request, options));
-    }
+  /**
+   * List Job Postings
+   */
+  async listJobPostings(
+    request: operations.AtsListJobPostingsRequest,
+    options?: RequestOptions,
+  ): Promise<operations.AtsListJobPostingsResponse> {
+    return unwrapAsync(atsListJobPostings(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * List locations
-     */
-    async listLocations(
-        request: operations.AtsListLocationsRequest,
-        options?: RequestOptions
-    ): Promise<operations.AtsListLocationsResponse> {
-        return unwrapAsync(atsListLocations(this, request, options));
-    }
+  /**
+   * List Jobs
+   */
+  async listJobs(
+    request: operations.AtsListJobsRequest,
+    options?: RequestOptions,
+  ): Promise<operations.AtsListJobsResponse> {
+    return unwrapAsync(atsListJobs(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * List Offers
-     */
-    async listOffers(
-        request: operations.AtsListOffersRequest,
-        options?: RequestOptions
-    ): Promise<operations.AtsListOffersResponse> {
-        return unwrapAsync(atsListOffers(this, request, options));
-    }
+  /**
+   * Get all Lists
+   */
+  async listLists(
+    request: operations.AtsListListsRequest,
+    options?: RequestOptions,
+  ): Promise<operations.AtsListListsResponse> {
+    return unwrapAsync(atsListLists(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * List Rejected Reasons
-     */
-    async listRejectedReasons(
-        request: operations.AtsListRejectedReasonsRequest,
-        options?: RequestOptions
-    ): Promise<operations.AtsListRejectedReasonsResponse> {
-        return unwrapAsync(atsListRejectedReasons(this, request, options));
-    }
+  /**
+   * List locations
+   */
+  async listLocations(
+    request: operations.AtsListLocationsRequest,
+    options?: RequestOptions,
+  ): Promise<operations.AtsListLocationsResponse> {
+    return unwrapAsync(atsListLocations(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * List Users
-     */
-    async listUsers(
-        request: operations.AtsListUsersRequest,
-        options?: RequestOptions
-    ): Promise<operations.AtsListUsersResponse> {
-        return unwrapAsync(atsListUsers(this, request, options));
-    }
+  /**
+   * List Offers
+   */
+  async listOffers(
+    request: operations.AtsListOffersRequest,
+    options?: RequestOptions,
+  ): Promise<operations.AtsListOffersResponse> {
+    return unwrapAsync(atsListOffers(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Update an Application
-     */
-    async updateApplication(
-        request: operations.AtsUpdateApplicationRequest,
-        options?: RequestOptions
-    ): Promise<operations.AtsUpdateApplicationResponse> {
-        return unwrapAsync(atsUpdateApplication(this, request, options));
-    }
+  /**
+   * List Rejected Reasons
+   */
+  async listRejectedReasons(
+    request: operations.AtsListRejectedReasonsRequest,
+    options?: RequestOptions,
+  ): Promise<operations.AtsListRejectedReasonsResponse> {
+    return unwrapAsync(atsListRejectedReasons(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Update Candidate
-     */
-    async updateCandidate(
-        request: operations.AtsUpdateCandidateRequest,
-        options?: RequestOptions
-    ): Promise<operations.AtsUpdateCandidateResponse> {
-        return unwrapAsync(atsUpdateCandidate(this, request, options));
-    }
+  /**
+   * List Users
+   */
+  async listUsers(
+    request: operations.AtsListUsersRequest,
+    options?: RequestOptions,
+  ): Promise<operations.AtsListUsersResponse> {
+    return unwrapAsync(atsListUsers(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Upload Application Document
-     */
-    async uploadApplicationDocument(
-        request: operations.AtsUploadApplicationDocumentRequest,
-        options?: RequestOptions
-    ): Promise<operations.AtsUploadApplicationDocumentResponse> {
-        return unwrapAsync(atsUploadApplicationDocument(this, request, options));
-    }
+  /**
+   * Move Application
+   */
+  async moveApplication(
+    request: operations.AtsMoveApplicationRequest,
+    options?: RequestOptions,
+  ): Promise<operations.AtsMoveApplicationResponse> {
+    return unwrapAsync(atsMoveApplication(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Reject Application
+   */
+  async rejectApplication(
+    request: operations.AtsRejectApplicationRequest,
+    options?: RequestOptions,
+  ): Promise<operations.AtsRejectApplicationResponse> {
+    return unwrapAsync(atsRejectApplication(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Update an Application
+   */
+  async updateApplication(
+    request: operations.AtsUpdateApplicationRequest,
+    options?: RequestOptions,
+  ): Promise<operations.AtsUpdateApplicationResponse> {
+    return unwrapAsync(atsUpdateApplication(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Update Candidate
+   */
+  async updateCandidate(
+    request: operations.AtsUpdateCandidateRequest,
+    options?: RequestOptions,
+  ): Promise<operations.AtsUpdateCandidateResponse> {
+    return unwrapAsync(atsUpdateCandidate(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Upload Application Document
+   */
+  async uploadApplicationDocument(
+    request: operations.AtsUploadApplicationDocumentRequest,
+    options?: RequestOptions,
+  ): Promise<operations.AtsUploadApplicationDocumentResponse> {
+    return unwrapAsync(atsUploadApplicationDocument(
+      this,
+      request,
+      options,
+    ));
+  }
 }

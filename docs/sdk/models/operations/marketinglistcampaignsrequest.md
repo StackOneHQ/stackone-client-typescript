@@ -6,11 +6,12 @@
 import { MarketingListCampaignsRequest } from "@stackone/stackone-client-ts/sdk/models/operations";
 
 let value: MarketingListCampaignsRequest = {
-    fields: "id,remote_id,name,created_at,updated_at,description,schedule_type,status,channels,first_sent_at,last_sent_at,tags,messages",
-    filter: {
-        updatedAfter: "2020-01-01T00:00:00.000Z",
-    },
-    xAccountId: "<value>",
+  fields:
+    "id,remote_id,name,created_at,updated_at,description,schedule_type,status,channels,first_sent_at,last_sent_at,tags,messages",
+  filter: {
+    updatedAfter: "2020-01-01T00:00:00.000Z",
+  },
+  xAccountId: "<value>",
 };
 ```
 

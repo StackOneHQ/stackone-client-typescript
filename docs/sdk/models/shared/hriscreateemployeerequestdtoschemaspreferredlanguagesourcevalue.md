@@ -5,7 +5,8 @@
 ```typescript
 import { HrisCreateEmployeeRequestDtoSchemasPreferredLanguageSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: HrisCreateEmployeeRequestDtoSchemasPreferredLanguageSourceValue = {};
+let value: HrisCreateEmployeeRequestDtoSchemasPreferredLanguageSourceValue =
+  false;
 ```
 
 ## Supported Types

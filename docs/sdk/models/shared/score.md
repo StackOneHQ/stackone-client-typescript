@@ -6,10 +6,10 @@
 import { Score } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: Score = {
-    label: "Percentage",
-    max: "100",
-    min: "0",
-    value: "80",
+  label: "Percentage",
+  max: "100",
+  min: "0",
+  value: "80",
 };
 ```
 

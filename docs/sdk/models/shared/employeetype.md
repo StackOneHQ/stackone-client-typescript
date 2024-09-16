@@ -6,7 +6,7 @@
 import { EmployeeSchemasNationalIdentityNumberValue, EmployeeType } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: EmployeeType = {
-    value: EmployeeSchemasNationalIdentityNumberValue.Ssn,
+  value: EmployeeSchemasNationalIdentityNumberValue.Ssn,
 };
 ```
 

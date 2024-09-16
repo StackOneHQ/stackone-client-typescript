@@ -7,7 +7,8 @@ The ISO3166-1 Alpha2 Code of the Country
 ```typescript
 import { HrisCreateWorkEligibilityRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: HrisCreateWorkEligibilityRequestDtoValue = HrisCreateWorkEligibilityRequestDtoValue.Us;
+let value: HrisCreateWorkEligibilityRequestDtoValue =
+  HrisCreateWorkEligibilityRequestDtoValue.Us;
 ```
 
 ## Values

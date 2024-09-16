@@ -8,7 +8,7 @@ The type of the employment.
 import { HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue =
-    HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue.Permanent;
+  HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue.Permanent;
 ```
 
 ## Values

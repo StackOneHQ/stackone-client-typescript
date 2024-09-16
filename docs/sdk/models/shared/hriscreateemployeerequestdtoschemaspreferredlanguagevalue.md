@@ -8,7 +8,7 @@ The ISO639-2 Code of the language
 import { HrisCreateEmployeeRequestDtoSchemasPreferredLanguageValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: HrisCreateEmployeeRequestDtoSchemasPreferredLanguageValue =
-    HrisCreateEmployeeRequestDtoSchemasPreferredLanguageValue.Eng;
+  HrisCreateEmployeeRequestDtoSchemasPreferredLanguageValue.Eng;
 ```
 
 ## Values

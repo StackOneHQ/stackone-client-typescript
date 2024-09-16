@@ -6,23 +6,23 @@
 import { LmsGetCategoryResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
 
 let value: LmsGetCategoryResponse = {
-    categoryResult: {
-        data: {
-            active: true,
-            id: "16873-IT345",
-            name: "Information-Technology",
-            remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-            unifiedCustomFields: {
-                my_project_custom_field_1: "REF-1236",
-                my_project_custom_field_2: "some other value",
-            },
-        },
+  categoryResult: {
+    data: {
+      active: true,
+      id: "16873-IT345",
+      name: "Information-Technology",
+      remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+      unifiedCustomFields: {
+        "my_project_custom_field_1": "REF-1236",
+        "my_project_custom_field_2": "some other value",
+      },
     },
-    contentType: "<value>",
-    statusCode: 998848,
-    rawResponse: new Response('{"message": "hello world"}', {
-        headers: { "Content-Type": "application/json" },
-    }),
+  },
+  contentType: "<value>",
+  statusCode: 848009,
+  rawResponse: new Response("{\"message\": \"hello world\"}", {
+    headers: { "Content-Type": "application/json" },
+  }),
 };
 ```
 

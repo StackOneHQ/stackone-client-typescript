@@ -6,12 +6,13 @@
 import { CrmListContactsRequest } from "@stackone/stackone-client-ts/sdk/models/operations";
 
 let value: CrmListContactsRequest = {
-    fields: "id,remote_id,first_name,last_name,company_name,emails,phone_numbers,deal_ids,remote_deal_ids,account_ids,remote_account_ids,custom_fields,created_at,updated_at",
-    filter: {
-        updatedAfter: "2020-01-01T00:00:00.000Z",
-    },
-    include: "custom_fields",
-    xAccountId: "<value>",
+  fields:
+    "id,remote_id,first_name,last_name,company_name,emails,phone_numbers,deal_ids,remote_deal_ids,account_ids,remote_account_ids,custom_fields,created_at,updated_at",
+  filter: {
+    updatedAfter: "2020-01-01T00:00:00.000Z",
+  },
+  include: "custom_fields",
+  xAccountId: "<value>",
 };
 ```
 

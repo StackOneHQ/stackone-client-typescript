@@ -6,17 +6,17 @@
 import { HRISBenefitsPaginated } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: HRISBenefitsPaginated = {
-    data: [
-        {
-            createdAt: new Date("2021-01-01T00:00:00Z"),
-            description: "Health insurance for employees",
-            id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-            name: "Health Insurance",
-            provider: "Aetna",
-            remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-            updatedAt: new Date("2021-01-01T00:00:00Z"),
-        },
-    ],
+  data: [
+    {
+      createdAt: new Date("2021-01-01T00:00:00Z"),
+      description: "Health insurance for employees",
+      id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+      name: "Health Insurance",
+      provider: "Aetna",
+      remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+      updatedAt: new Date("2021-01-01T00:00:00Z"),
+    },
+  ],
 };
 ```
 

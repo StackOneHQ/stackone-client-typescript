@@ -9,7 +9,9 @@ let value: CampaignResult = {
   data: {
     channels: [
       {
-        sourceValue: {},
+        sourceValue: [
+          "SMS",
+        ],
         value: ChannelsEnumValue.Sms,
       },
     ],
@@ -25,9 +27,7 @@ let value: CampaignResult = {
           from: "1-555-123-4567",
         },
         messageType: {
-          sourceValue: [
-            "Email",
-          ],
+          sourceValue: Email,
           value: {},
         },
         name: "SMS Message",
@@ -36,8 +36,8 @@ let value: CampaignResult = {
       {
         id: "message-id-2",
         messageContent: {
-          body: "<h1>This is an example</h1>
-                    <p>email body</p>",
+          body: "<h1>This is an example</h1>\n"
+            + "            <p>email body</p>",
           from: "Jane Smith",
           preheader: "This is the preheader of the email.",
           replyTo: "reply@example.com",
@@ -67,11 +67,11 @@ let value: CampaignResult = {
     ],
     remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
     scheduleType: {
-      sourceValue: "Immediate",
+      sourceValue: Immediate,
       value: CampaignValue.Immediate,
     },
     status: {
-      sourceValue: true,
+      sourceValue: Email,
       value: CampaignSchemasValue.Draft,
     },
     updatedAt: new Date("2021-01-01T01:01:01.000Z"),

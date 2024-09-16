@@ -7,44 +7,48 @@ import { CrmListAccountsResponse } from "@stackone/stackone-client-ts/sdk/models
 import { AccountAddressSchemasValue, AccountAddressValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: CrmListAccountsResponse = {
-    accountsPaginated: {
-        data: [
-            {
-                addresses: [
-                    {
-                        country: {
-                            sourceValue: "GB",
-                            value: AccountAddressSchemasValue.Gb,
-                        },
-                        locationType: {
-                            sourceValue: ["Home"],
-                            value: AccountAddressValue.Home,
-                        },
-                    },
-                ],
-                createdAt: new Date("2021-01-01T01:01:01.000Z"),
-                id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-                industries: [
-                    "Information Technology",
-                    "Airlines & Airports",
-                    "Personal Care & Household Products",
-                ],
-                phoneNumbers: ["+1123425334"],
-                remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-                remoteOwnerId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
-                unifiedCustomFields: {
-                    my_project_custom_field_1: "REF-1236",
-                    my_project_custom_field_2: "some other value",
-                },
-                updatedAt: new Date("2021-01-01T01:01:01.000Z"),
+  accountsPaginated: {
+    data: [
+      {
+        addresses: [
+          {
+            country: {
+              sourceValue: [
+                "GB",
+              ],
+              value: AccountAddressSchemasValue.Gb,
             },
+            locationType: {
+              sourceValue: Home,
+              value: AccountAddressValue.Home,
+            },
+          },
         ],
-    },
-    contentType: "<value>",
-    statusCode: 575947,
-    rawResponse: new Response('{"message": "hello world"}', {
-        headers: { "Content-Type": "application/json" },
-    }),
+        createdAt: new Date("2021-01-01T01:01:01.000Z"),
+        id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        industries: [
+          "Information Technology",
+          "Airlines & Airports",
+          "Personal Care & Household Products",
+        ],
+        phoneNumbers: [
+          "+1123425334",
+        ],
+        remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        remoteOwnerId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
+        unifiedCustomFields: {
+          "my_project_custom_field_1": "REF-1236",
+          "my_project_custom_field_2": "some other value",
+        },
+        updatedAt: new Date("2021-01-01T01:01:01.000Z"),
+      },
+    ],
+  },
+  contentType: "<value>",
+  statusCode: 318569,
+  rawResponse: new Response("{\"message\": \"hello world\"}", {
+    headers: { "Content-Type": "application/json" },
+  }),
 };
 ```
 

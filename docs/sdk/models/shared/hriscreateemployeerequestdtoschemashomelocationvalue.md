@@ -8,7 +8,7 @@ The ISO3166-1 Alpha2 Code of the Country
 import { HrisCreateEmployeeRequestDtoSchemasHomeLocationValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: HrisCreateEmployeeRequestDtoSchemasHomeLocationValue =
-    HrisCreateEmployeeRequestDtoSchemasHomeLocationValue.Us;
+  HrisCreateEmployeeRequestDtoSchemasHomeLocationValue.Us;
 ```
 
 ## Values

@@ -7,7 +7,7 @@ The source value of the employment type.
 ```typescript
 import { HrisCreateEmployeeRequestDtoSchemasEmploymentTypeSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: HrisCreateEmployeeRequestDtoSchemasEmploymentTypeSourceValue = "Permanent";
+let value: HrisCreateEmployeeRequestDtoSchemasEmploymentTypeSourceValue = {};
 ```
 
 ## Supported Types

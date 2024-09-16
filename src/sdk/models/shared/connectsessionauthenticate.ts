@@ -5,33 +5,33 @@
 import * as z from "zod";
 
 export type ConnectSessionAuthenticate = {
-    /**
-     * The token to authenticate with
-     */
-    token: string;
+  /**
+   * The token to authenticate with
+   */
+  token: string;
 };
 
 /** @internal */
 export const ConnectSessionAuthenticate$inboundSchema: z.ZodType<
-    ConnectSessionAuthenticate,
-    z.ZodTypeDef,
-    unknown
+  ConnectSessionAuthenticate,
+  z.ZodTypeDef,
+  unknown
 > = z.object({
-    token: z.string(),
+  token: z.string(),
 });
 
 /** @internal */
 export type ConnectSessionAuthenticate$Outbound = {
-    token: string;
+  token: string;
 };
 
 /** @internal */
 export const ConnectSessionAuthenticate$outboundSchema: z.ZodType<
-    ConnectSessionAuthenticate$Outbound,
-    z.ZodTypeDef,
-    ConnectSessionAuthenticate
+  ConnectSessionAuthenticate$Outbound,
+  z.ZodTypeDef,
+  ConnectSessionAuthenticate
 > = z.object({
-    token: z.string(),
+  token: z.string(),
 });
 
 /**
@@ -39,10 +39,10 @@ export const ConnectSessionAuthenticate$outboundSchema: z.ZodType<
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace ConnectSessionAuthenticate$ {
-    /** @deprecated use `ConnectSessionAuthenticate$inboundSchema` instead. */
-    export const inboundSchema = ConnectSessionAuthenticate$inboundSchema;
-    /** @deprecated use `ConnectSessionAuthenticate$outboundSchema` instead. */
-    export const outboundSchema = ConnectSessionAuthenticate$outboundSchema;
-    /** @deprecated use `ConnectSessionAuthenticate$Outbound` instead. */
-    export type Outbound = ConnectSessionAuthenticate$Outbound;
+  /** @deprecated use `ConnectSessionAuthenticate$inboundSchema` instead. */
+  export const inboundSchema = ConnectSessionAuthenticate$inboundSchema;
+  /** @deprecated use `ConnectSessionAuthenticate$outboundSchema` instead. */
+  export const outboundSchema = ConnectSessionAuthenticate$outboundSchema;
+  /** @deprecated use `ConnectSessionAuthenticate$Outbound` instead. */
+  export type Outbound = ConnectSessionAuthenticate$Outbound;
 }

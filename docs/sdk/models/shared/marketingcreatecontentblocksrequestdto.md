@@ -6,9 +6,9 @@
 import { MarketingCreateContentBlocksRequestDto } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: MarketingCreateContentBlocksRequestDto = {
-    passthrough: {
-        other_known_names: "John Doe",
-    },
+  passthrough: {
+    "other_known_names": "John Doe",
+  },
 };
 ```
 

@@ -7,7 +7,8 @@ The status of the application.
 ```typescript
 import { AtsCreateApplicationRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: AtsCreateApplicationRequestDtoValue = AtsCreateApplicationRequestDtoValue.Hired;
+let value: AtsCreateApplicationRequestDtoValue =
+  AtsCreateApplicationRequestDtoValue.Hired;
 ```
 
 ## Values

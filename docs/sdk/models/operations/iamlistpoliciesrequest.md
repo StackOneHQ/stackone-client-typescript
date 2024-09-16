@@ -6,12 +6,12 @@
 import { IamListPoliciesRequest } from "@stackone/stackone-client-ts/sdk/models/operations";
 
 let value: IamListPoliciesRequest = {
-    expand: "permissions",
-    fields: "id,remote_id,name,permissions,description,created_at,updated_at",
-    filter: {
-        updatedAfter: "2020-01-01T00:00:00.000Z",
-    },
-    xAccountId: "<value>",
+  expand: "permissions",
+  fields: "id,remote_id,name,permissions,description,created_at,updated_at",
+  filter: {
+    updatedAfter: "2020-01-01T00:00:00.000Z",
+  },
+  xAccountId: "<value>",
 };
 ```
 

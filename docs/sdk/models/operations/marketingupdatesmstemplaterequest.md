@@ -6,22 +6,22 @@
 import { MarketingUpdateSmsTemplateRequest } from "@stackone/stackone-client-ts/sdk/models/operations";
 
 let value: MarketingUpdateSmsTemplateRequest = {
-    marketingCreateSmsTemplateRequestDto: {
-        messages: [
-            {
-                id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-                messageType: {
-                    sourceValue: ["Email"],
-                },
-                remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-            },
-        ],
-        passthrough: {
-            other_known_names: "John Doe",
+  marketingCreateSmsTemplateRequestDto: {
+    messages: [
+      {
+        id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        messageType: {
+          sourceValue: true,
         },
+        remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+      },
+    ],
+    passthrough: {
+      "other_known_names": "John Doe",
     },
-    id: "<id>",
-    xAccountId: "<value>",
+  },
+  id: "<id>",
+  xAccountId: "<value>",
 };
 ```
 

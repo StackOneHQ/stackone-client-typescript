@@ -7,7 +7,9 @@ The original value from the provider used to derive the unified message type.
 ```typescript
 import { PushMessagesSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: PushMessagesSourceValue = "Email";
+let value: PushMessagesSourceValue = [
+  "Email",
+];
 ```
 
 ## Supported Types

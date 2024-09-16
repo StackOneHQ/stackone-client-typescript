@@ -8,7 +8,7 @@ Whether the file is confidential or not
 import { HrisDocumentsUploadRequestDtoSchemasValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: HrisDocumentsUploadRequestDtoSchemasValue =
-    HrisDocumentsUploadRequestDtoSchemasValue.True;
+  HrisDocumentsUploadRequestDtoSchemasValue.True;
 ```
 
 ## Values

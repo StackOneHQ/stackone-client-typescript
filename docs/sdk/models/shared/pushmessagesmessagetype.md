@@ -6,7 +6,7 @@
 import { PushMessagesMessageType } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: PushMessagesMessageType = {
-    sourceValue: true,
+  sourceValue: Email,
 };
 ```
 

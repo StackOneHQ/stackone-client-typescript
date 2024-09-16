@@ -6,9 +6,9 @@
 import { AtsGetDepartmentRequest } from "@stackone/stackone-client-ts/sdk/models/operations";
 
 let value: AtsGetDepartmentRequest = {
-    fields: "id,remote_id,name",
-    id: "<id>",
-    xAccountId: "<value>",
+  fields: "id,remote_id,name",
+  id: "<id>",
+  xAccountId: "<value>",
 };
 ```
 

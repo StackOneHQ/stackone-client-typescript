@@ -6,10 +6,10 @@
 import { HrisDownloadEmployeeDocumentRequest } from "@stackone/stackone-client-ts/sdk/models/operations";
 
 let value: HrisDownloadEmployeeDocumentRequest = {
-    format: "base64",
-    id: "<id>",
-    subResourceId: "<value>",
-    xAccountId: "<value>",
+  format: "base64",
+  id: "<id>",
+  subResourceId: "<value>",
+  xAccountId: "<value>",
 };
 ```
 

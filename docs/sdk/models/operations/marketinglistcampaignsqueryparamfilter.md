@@ -8,7 +8,7 @@ Filter parameters that allow greater customisation of the list response
 import { MarketingListCampaignsQueryParamFilter } from "@stackone/stackone-client-ts/sdk/models/operations";
 
 let value: MarketingListCampaignsQueryParamFilter = {
-    updatedAfter: "2020-01-01T00:00:00.000Z",
+  updatedAfter: "2020-01-01T00:00:00.000Z",
 };
 ```
 

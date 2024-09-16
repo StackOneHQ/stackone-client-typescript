@@ -7,7 +7,8 @@ The pay period of the job postings.
 ```typescript
 import { EmploymentSchemasPayPeriodValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: EmploymentSchemasPayPeriodValue = EmploymentSchemasPayPeriodValue.Hour;
+let value: EmploymentSchemasPayPeriodValue =
+  EmploymentSchemasPayPeriodValue.Hour;
 ```
 
 ## Values

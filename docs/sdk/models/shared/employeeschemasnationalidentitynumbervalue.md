@@ -8,7 +8,7 @@ The type of the national identity number
 import { EmployeeSchemasNationalIdentityNumberValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: EmployeeSchemasNationalIdentityNumberValue =
-    EmployeeSchemasNationalIdentityNumberValue.Ssn;
+  EmployeeSchemasNationalIdentityNumberValue.Ssn;
 ```
 
 ## Values

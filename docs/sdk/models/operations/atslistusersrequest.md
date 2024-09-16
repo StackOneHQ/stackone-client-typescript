@@ -6,11 +6,11 @@
 import { AtsListUsersRequest } from "@stackone/stackone-client-ts/sdk/models/operations";
 
 let value: AtsListUsersRequest = {
-    fields: "id,remote_id,first_name,last_name,name,email",
-    filter: {
-        updatedAfter: "2020-01-01T00:00:00.000Z",
-    },
-    xAccountId: "<value>",
+  fields: "id,remote_id,first_name,last_name,name,email",
+  filter: {
+    updatedAfter: "2020-01-01T00:00:00.000Z",
+  },
+  xAccountId: "<value>",
 };
 ```
 

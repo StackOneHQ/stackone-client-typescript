@@ -27,9 +27,7 @@ let value: MarketingGetCampaignResponse = {
             from: "1-555-123-4567",
           },
           messageType: {
-            sourceValue: [
-              "Email",
-            ],
+            sourceValue: "Email",
             value: {},
           },
           name: "SMS Message",
@@ -38,15 +36,15 @@ let value: MarketingGetCampaignResponse = {
         {
           id: "message-id-2",
           messageContent: {
-            body: "<h1>This is an example</h1>
-                      <p>email body</p>",
+            body: "<h1>This is an example</h1>\n"
+              + "            <p>email body</p>",
             from: "Jane Smith",
             preheader: "This is the preheader of the email.",
             replyTo: "reply@example.com",
             subject: "Example Email Subject",
           },
           messageType: {
-            sourceValue: Email,
+            sourceValue: "Email",
             value: {},
           },
           name: "Email Message",
@@ -58,9 +56,7 @@ let value: MarketingGetCampaignResponse = {
             body: "This is an example push notification body.",
           },
           messageType: {
-            sourceValue: [
-              "Email",
-            ],
+            sourceValue: "Email",
             value: {},
           },
           name: "iOS Push Message",
@@ -69,21 +65,21 @@ let value: MarketingGetCampaignResponse = {
       ],
       remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
       scheduleType: {
-        sourceValue: "Immediate",
+        sourceValue: {},
         value: CampaignValue.Immediate,
       },
       status: {
-        sourceValue: [
-          "Email",
-        ],
+        sourceValue: true,
         value: CampaignSchemasValue.Draft,
       },
       updatedAt: new Date("2021-01-01T01:01:01.000Z"),
     },
   },
   contentType: "<value>",
-  statusCode: 11714,
-  rawResponse:   new Response('{"message": "hello world"}', {headers: {"Content-Type": "application/json"}}),
+  statusCode: 874573,
+  rawResponse: new Response("{\"message\": \"hello world\"}", {
+    headers: { "Content-Type": "application/json" },
+  }),
 };
 ```
 

@@ -6,13 +6,13 @@
 import { ApplicationAttachment, ApplicationAttachmentValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: ApplicationAttachment = {
-    content: "Base64 encoded content",
-    contentType: {
-        sourceValue: Text,
-        value: ApplicationAttachmentValue.Text,
-    },
-    fileName: "resume.pdf",
-    url: "http://example.com/resume.pdf",
+  content: "Base64 encoded content",
+  contentType: {
+    sourceValue: Text,
+    value: ApplicationAttachmentValue.Text,
+  },
+  fileName: "resume.pdf",
+  url: "http://example.com/resume.pdf",
 };
 ```
 

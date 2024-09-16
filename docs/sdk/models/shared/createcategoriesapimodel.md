@@ -6,12 +6,12 @@
 import { CreateCategoriesApiModel } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: CreateCategoriesApiModel = {
-    active: true,
-    name: "Information-Technology",
-    unifiedCustomFields: {
-        my_project_custom_field_1: "REF-1236",
-        my_project_custom_field_2: "some other value",
-    },
+  active: true,
+  name: "Information-Technology",
+  unifiedCustomFields: {
+    "my_project_custom_field_1": "REF-1236",
+    "my_project_custom_field_2": "some other value",
+  },
 };
 ```
 

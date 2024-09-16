@@ -6,17 +6,17 @@
 import { WriteResultApiModel } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: WriteResultApiModel = {
-    message: "Employee created successfully",
-    providerErrors: [
-        {
-            headers: {},
-            raw: {},
-            status: 400,
-            url: "https://api.someprovider.com/v1/endpoint",
-        },
-    ],
-    statusCode: 201,
-    timestamp: new Date("2021-01-01T01:01:01.000Z"),
+  message: "Employee created successfully",
+  providerErrors: [
+    {
+      headers: {},
+      raw: {},
+      status: 400,
+      url: "https://api.someprovider.com/v1/endpoint",
+    },
+  ],
+  statusCode: 201,
+  timestamp: new Date("2021-01-01T01:01:01.000Z"),
 };
 ```
 

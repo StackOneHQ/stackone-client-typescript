@@ -33,271 +33,375 @@ import * as operations from "./models/operations/index.js";
 import { unwrapAsync } from "./types/fp.js";
 
 export class Marketing extends ClientSDK {
-    /**
-     * Create Content Block
-     */
-    async createContentBlock(
-        request: operations.MarketingCreateContentBlockRequest,
-        options?: RequestOptions
-    ): Promise<operations.MarketingCreateContentBlockResponse> {
-        return unwrapAsync(marketingCreateContentBlock(this, request, options));
-    }
+  /**
+   * Create Content Block
+   */
+  async createContentBlock(
+    request: operations.MarketingCreateContentBlockRequest,
+    options?: RequestOptions,
+  ): Promise<operations.MarketingCreateContentBlockResponse> {
+    return unwrapAsync(marketingCreateContentBlock(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Create Email Templates
-     */
-    async createEmailTemplate(
-        request: operations.MarketingCreateEmailTemplateRequest,
-        options?: RequestOptions
-    ): Promise<operations.MarketingCreateEmailTemplateResponse> {
-        return unwrapAsync(marketingCreateEmailTemplate(this, request, options));
-    }
+  /**
+   * Create Email Templates
+   */
+  async createEmailTemplate(
+    request: operations.MarketingCreateEmailTemplateRequest,
+    options?: RequestOptions,
+  ): Promise<operations.MarketingCreateEmailTemplateResponse> {
+    return unwrapAsync(marketingCreateEmailTemplate(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Create In-App Template
-     */
-    async createInAppTemplate(
-        request: operations.MarketingCreateInAppTemplateRequest,
-        options?: RequestOptions
-    ): Promise<operations.MarketingCreateInAppTemplateResponse> {
-        return unwrapAsync(marketingCreateInAppTemplate(this, request, options));
-    }
+  /**
+   * Create In-App Template
+   */
+  async createInAppTemplate(
+    request: operations.MarketingCreateInAppTemplateRequest,
+    options?: RequestOptions,
+  ): Promise<operations.MarketingCreateInAppTemplateResponse> {
+    return unwrapAsync(marketingCreateInAppTemplate(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Create Omni-Channel Template
-     *
-     * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
-     */
-    async createOmniChannelTemplate(
-        request: operations.MarketingCreateOmniChannelTemplateRequest,
-        options?: RequestOptions
-    ): Promise<operations.MarketingCreateOmniChannelTemplateResponse> {
-        return unwrapAsync(marketingCreateOmniChannelTemplate(this, request, options));
-    }
+  /**
+   * Create Omni-Channel Template
+   *
+   * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
+   */
+  async createOmniChannelTemplate(
+    request: operations.MarketingCreateOmniChannelTemplateRequest,
+    options?: RequestOptions,
+  ): Promise<operations.MarketingCreateOmniChannelTemplateResponse> {
+    return unwrapAsync(marketingCreateOmniChannelTemplate(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Create Push Template
-     */
-    async createPushTemplate(
-        request: operations.MarketingCreatePushTemplateRequest,
-        options?: RequestOptions
-    ): Promise<operations.MarketingCreatePushTemplateResponse> {
-        return unwrapAsync(marketingCreatePushTemplate(this, request, options));
-    }
+  /**
+   * Create Push Template
+   */
+  async createPushTemplate(
+    request: operations.MarketingCreatePushTemplateRequest,
+    options?: RequestOptions,
+  ): Promise<operations.MarketingCreatePushTemplateResponse> {
+    return unwrapAsync(marketingCreatePushTemplate(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Create SMS Template
-     */
-    async createSmsTemplate(
-        request: operations.MarketingCreateSmsTemplateRequest,
-        options?: RequestOptions
-    ): Promise<operations.MarketingCreateSmsTemplateResponse> {
-        return unwrapAsync(marketingCreateSmsTemplate(this, request, options));
-    }
+  /**
+   * Create SMS Template
+   */
+  async createSmsTemplate(
+    request: operations.MarketingCreateSmsTemplateRequest,
+    options?: RequestOptions,
+  ): Promise<operations.MarketingCreateSmsTemplateResponse> {
+    return unwrapAsync(marketingCreateSmsTemplate(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Get campaign
-     */
-    async getCampaign(
-        request: operations.MarketingGetCampaignRequest,
-        options?: RequestOptions
-    ): Promise<operations.MarketingGetCampaignResponse> {
-        return unwrapAsync(marketingGetCampaign(this, request, options));
-    }
+  /**
+   * Get campaign
+   */
+  async getCampaign(
+    request: operations.MarketingGetCampaignRequest,
+    options?: RequestOptions,
+  ): Promise<operations.MarketingGetCampaignResponse> {
+    return unwrapAsync(marketingGetCampaign(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Get Content Blocks
-     */
-    async getContentBlock(
-        request: operations.MarketingGetContentBlockRequest,
-        options?: RequestOptions
-    ): Promise<operations.MarketingGetContentBlockResponse> {
-        return unwrapAsync(marketingGetContentBlock(this, request, options));
-    }
+  /**
+   * Get Content Blocks
+   */
+  async getContentBlock(
+    request: operations.MarketingGetContentBlockRequest,
+    options?: RequestOptions,
+  ): Promise<operations.MarketingGetContentBlockResponse> {
+    return unwrapAsync(marketingGetContentBlock(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Get Email Templates
-     */
-    async getEmailTemplate(
-        request: operations.MarketingGetEmailTemplateRequest,
-        options?: RequestOptions
-    ): Promise<operations.MarketingGetEmailTemplateResponse> {
-        return unwrapAsync(marketingGetEmailTemplate(this, request, options));
-    }
+  /**
+   * Get Email Templates
+   */
+  async getEmailTemplate(
+    request: operations.MarketingGetEmailTemplateRequest,
+    options?: RequestOptions,
+  ): Promise<operations.MarketingGetEmailTemplateResponse> {
+    return unwrapAsync(marketingGetEmailTemplate(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Get In-App Template
-     */
-    async getInAppTemplate(
-        request: operations.MarketingGetInAppTemplateRequest,
-        options?: RequestOptions
-    ): Promise<operations.MarketingGetInAppTemplateResponse> {
-        return unwrapAsync(marketingGetInAppTemplate(this, request, options));
-    }
+  /**
+   * Get In-App Template
+   */
+  async getInAppTemplate(
+    request: operations.MarketingGetInAppTemplateRequest,
+    options?: RequestOptions,
+  ): Promise<operations.MarketingGetInAppTemplateResponse> {
+    return unwrapAsync(marketingGetInAppTemplate(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Get Omni-Channel Template
-     *
-     * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
-     */
-    async getOmniChannelTemplate(
-        request: operations.MarketingGetOmniChannelTemplateRequest,
-        options?: RequestOptions
-    ): Promise<operations.MarketingGetOmniChannelTemplateResponse> {
-        return unwrapAsync(marketingGetOmniChannelTemplate(this, request, options));
-    }
+  /**
+   * Get Omni-Channel Template
+   *
+   * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
+   */
+  async getOmniChannelTemplate(
+    request: operations.MarketingGetOmniChannelTemplateRequest,
+    options?: RequestOptions,
+  ): Promise<operations.MarketingGetOmniChannelTemplateResponse> {
+    return unwrapAsync(marketingGetOmniChannelTemplate(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Get Push Template
-     */
-    async getPushTemplate(
-        request: operations.MarketingGetPushTemplateRequest,
-        options?: RequestOptions
-    ): Promise<operations.MarketingGetPushTemplateResponse> {
-        return unwrapAsync(marketingGetPushTemplate(this, request, options));
-    }
+  /**
+   * Get Push Template
+   */
+  async getPushTemplate(
+    request: operations.MarketingGetPushTemplateRequest,
+    options?: RequestOptions,
+  ): Promise<operations.MarketingGetPushTemplateResponse> {
+    return unwrapAsync(marketingGetPushTemplate(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Get SMS Template
-     */
-    async getSmsTemplate(
-        request: operations.MarketingGetSmsTemplateRequest,
-        options?: RequestOptions
-    ): Promise<operations.MarketingGetSmsTemplateResponse> {
-        return unwrapAsync(marketingGetSmsTemplate(this, request, options));
-    }
+  /**
+   * Get SMS Template
+   */
+  async getSmsTemplate(
+    request: operations.MarketingGetSmsTemplateRequest,
+    options?: RequestOptions,
+  ): Promise<operations.MarketingGetSmsTemplateResponse> {
+    return unwrapAsync(marketingGetSmsTemplate(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * List campaigns
-     */
-    async listCampaigns(
-        request: operations.MarketingListCampaignsRequest,
-        options?: RequestOptions
-    ): Promise<operations.MarketingListCampaignsResponse> {
-        return unwrapAsync(marketingListCampaigns(this, request, options));
-    }
+  /**
+   * List campaigns
+   */
+  async listCampaigns(
+    request: operations.MarketingListCampaignsRequest,
+    options?: RequestOptions,
+  ): Promise<operations.MarketingListCampaignsResponse> {
+    return unwrapAsync(marketingListCampaigns(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * List Content Blocks
-     */
-    async listContentBlocks(
-        request: operations.MarketingListContentBlocksRequest,
-        options?: RequestOptions
-    ): Promise<operations.MarketingListContentBlocksResponse> {
-        return unwrapAsync(marketingListContentBlocks(this, request, options));
-    }
+  /**
+   * List Content Blocks
+   */
+  async listContentBlocks(
+    request: operations.MarketingListContentBlocksRequest,
+    options?: RequestOptions,
+  ): Promise<operations.MarketingListContentBlocksResponse> {
+    return unwrapAsync(marketingListContentBlocks(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * List Email Templates
-     */
-    async listEmailTemplates(
-        request: operations.MarketingListEmailTemplatesRequest,
-        options?: RequestOptions
-    ): Promise<operations.MarketingListEmailTemplatesResponse> {
-        return unwrapAsync(marketingListEmailTemplates(this, request, options));
-    }
+  /**
+   * List Email Templates
+   */
+  async listEmailTemplates(
+    request: operations.MarketingListEmailTemplatesRequest,
+    options?: RequestOptions,
+  ): Promise<operations.MarketingListEmailTemplatesResponse> {
+    return unwrapAsync(marketingListEmailTemplates(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * List In-App Templates
-     */
-    async listInAppTemplates(
-        request: operations.MarketingListInAppTemplatesRequest,
-        options?: RequestOptions
-    ): Promise<operations.MarketingListInAppTemplatesResponse> {
-        return unwrapAsync(marketingListInAppTemplates(this, request, options));
-    }
+  /**
+   * List In-App Templates
+   */
+  async listInAppTemplates(
+    request: operations.MarketingListInAppTemplatesRequest,
+    options?: RequestOptions,
+  ): Promise<operations.MarketingListInAppTemplatesResponse> {
+    return unwrapAsync(marketingListInAppTemplates(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * List Omni-Channel Templates
-     *
-     * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
-     */
-    async listOmniChannelTemplates(
-        request: operations.MarketingListOmniChannelTemplatesRequest,
-        options?: RequestOptions
-    ): Promise<operations.MarketingListOmniChannelTemplatesResponse> {
-        return unwrapAsync(marketingListOmniChannelTemplates(this, request, options));
-    }
+  /**
+   * List Omni-Channel Templates
+   *
+   * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
+   */
+  async listOmniChannelTemplates(
+    request: operations.MarketingListOmniChannelTemplatesRequest,
+    options?: RequestOptions,
+  ): Promise<operations.MarketingListOmniChannelTemplatesResponse> {
+    return unwrapAsync(marketingListOmniChannelTemplates(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * List Push Templates
-     */
-    async listPushTemplates(
-        request: operations.MarketingListPushTemplatesRequest,
-        options?: RequestOptions
-    ): Promise<operations.MarketingListPushTemplatesResponse> {
-        return unwrapAsync(marketingListPushTemplates(this, request, options));
-    }
+  /**
+   * List Push Templates
+   */
+  async listPushTemplates(
+    request: operations.MarketingListPushTemplatesRequest,
+    options?: RequestOptions,
+  ): Promise<operations.MarketingListPushTemplatesResponse> {
+    return unwrapAsync(marketingListPushTemplates(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * List SMS Templates
-     */
-    async listSmsTemplates(
-        request: operations.MarketingListSmsTemplatesRequest,
-        options?: RequestOptions
-    ): Promise<operations.MarketingListSmsTemplatesResponse> {
-        return unwrapAsync(marketingListSmsTemplates(this, request, options));
-    }
+  /**
+   * List SMS Templates
+   */
+  async listSmsTemplates(
+    request: operations.MarketingListSmsTemplatesRequest,
+    options?: RequestOptions,
+  ): Promise<operations.MarketingListSmsTemplatesResponse> {
+    return unwrapAsync(marketingListSmsTemplates(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Update Content Block
-     */
-    async updateContentBlock(
-        request: operations.MarketingUpdateContentBlockRequest,
-        options?: RequestOptions
-    ): Promise<operations.MarketingUpdateContentBlockResponse> {
-        return unwrapAsync(marketingUpdateContentBlock(this, request, options));
-    }
+  /**
+   * Update Content Block
+   */
+  async updateContentBlock(
+    request: operations.MarketingUpdateContentBlockRequest,
+    options?: RequestOptions,
+  ): Promise<operations.MarketingUpdateContentBlockResponse> {
+    return unwrapAsync(marketingUpdateContentBlock(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Update Email Templates
-     */
-    async updateEmailTemplate(
-        request: operations.MarketingUpdateEmailTemplateRequest,
-        options?: RequestOptions
-    ): Promise<operations.MarketingUpdateEmailTemplateResponse> {
-        return unwrapAsync(marketingUpdateEmailTemplate(this, request, options));
-    }
+  /**
+   * Update Email Templates
+   */
+  async updateEmailTemplate(
+    request: operations.MarketingUpdateEmailTemplateRequest,
+    options?: RequestOptions,
+  ): Promise<operations.MarketingUpdateEmailTemplateResponse> {
+    return unwrapAsync(marketingUpdateEmailTemplate(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Update In-App Template
-     */
-    async updateInAppTemplate(
-        request: operations.MarketingUpdateInAppTemplateRequest,
-        options?: RequestOptions
-    ): Promise<operations.MarketingUpdateInAppTemplateResponse> {
-        return unwrapAsync(marketingUpdateInAppTemplate(this, request, options));
-    }
+  /**
+   * Update In-App Template
+   */
+  async updateInAppTemplate(
+    request: operations.MarketingUpdateInAppTemplateRequest,
+    options?: RequestOptions,
+  ): Promise<operations.MarketingUpdateInAppTemplateResponse> {
+    return unwrapAsync(marketingUpdateInAppTemplate(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Update Omni-Channel Template
-     *
-     * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
-     */
-    async updateOmniChannelTemplate(
-        request: operations.MarketingUpdateOmniChannelTemplateRequest,
-        options?: RequestOptions
-    ): Promise<operations.MarketingUpdateOmniChannelTemplateResponse> {
-        return unwrapAsync(marketingUpdateOmniChannelTemplate(this, request, options));
-    }
+  /**
+   * Update Omni-Channel Template
+   *
+   * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
+   */
+  async updateOmniChannelTemplate(
+    request: operations.MarketingUpdateOmniChannelTemplateRequest,
+    options?: RequestOptions,
+  ): Promise<operations.MarketingUpdateOmniChannelTemplateResponse> {
+    return unwrapAsync(marketingUpdateOmniChannelTemplate(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Update Push Template
-     */
-    async updatePushTemplate(
-        request: operations.MarketingUpdatePushTemplateRequest,
-        options?: RequestOptions
-    ): Promise<operations.MarketingUpdatePushTemplateResponse> {
-        return unwrapAsync(marketingUpdatePushTemplate(this, request, options));
-    }
+  /**
+   * Update Push Template
+   */
+  async updatePushTemplate(
+    request: operations.MarketingUpdatePushTemplateRequest,
+    options?: RequestOptions,
+  ): Promise<operations.MarketingUpdatePushTemplateResponse> {
+    return unwrapAsync(marketingUpdatePushTemplate(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Update SMS Template
-     */
-    async updateSmsTemplate(
-        request: operations.MarketingUpdateSmsTemplateRequest,
-        options?: RequestOptions
-    ): Promise<operations.MarketingUpdateSmsTemplateResponse> {
-        return unwrapAsync(marketingUpdateSmsTemplate(this, request, options));
-    }
+  /**
+   * Update SMS Template
+   */
+  async updateSmsTemplate(
+    request: operations.MarketingUpdateSmsTemplateRequest,
+    options?: RequestOptions,
+  ): Promise<operations.MarketingUpdateSmsTemplateResponse> {
+    return unwrapAsync(marketingUpdateSmsTemplate(
+      this,
+      request,
+      options,
+    ));
+  }
 }

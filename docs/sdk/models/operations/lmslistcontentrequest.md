@@ -6,11 +6,12 @@
 import { LmsListContentRequest } from "@stackone/stackone-client-ts/sdk/models/operations";
 
 let value: LmsListContentRequest = {
-    fields: "id,remote_id,external_reference,course_ids,remote_course_ids,title,description,languages,content_url,content_type,cover_url,active,duration,categories,order",
-    filter: {
-        updatedAfter: "2020-01-01T00:00:00.000Z",
-    },
-    xAccountId: "<value>",
+  fields:
+    "id,remote_id,external_reference,course_ids,remote_course_ids,title,description,languages,content_url,content_type,cover_url,active,duration,categories,order",
+  filter: {
+    updatedAfter: "2020-01-01T00:00:00.000Z",
+  },
+  xAccountId: "<value>",
 };
 ```
 

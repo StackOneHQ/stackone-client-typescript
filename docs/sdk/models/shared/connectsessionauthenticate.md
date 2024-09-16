@@ -6,7 +6,7 @@
 import { ConnectSessionAuthenticate } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: ConnectSessionAuthenticate = {
-    token: "<value>",
+  token: "<value>",
 };
 ```
 

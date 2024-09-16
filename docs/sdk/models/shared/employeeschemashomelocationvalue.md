@@ -7,7 +7,8 @@ The ISO3166-1 Alpha2 Code of the Country
 ```typescript
 import { EmployeeSchemasHomeLocationValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: EmployeeSchemasHomeLocationValue = EmployeeSchemasHomeLocationValue.Us;
+let value: EmployeeSchemasHomeLocationValue =
+  EmployeeSchemasHomeLocationValue.Us;
 ```
 
 ## Values

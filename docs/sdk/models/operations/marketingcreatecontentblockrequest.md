@@ -6,12 +6,12 @@
 import { MarketingCreateContentBlockRequest } from "@stackone/stackone-client-ts/sdk/models/operations";
 
 let value: MarketingCreateContentBlockRequest = {
-    marketingCreateContentBlocksRequestDto: {
-        passthrough: {
-            other_known_names: "John Doe",
-        },
+  marketingCreateContentBlocksRequestDto: {
+    passthrough: {
+      "other_known_names": "John Doe",
     },
-    xAccountId: "<value>",
+  },
+  xAccountId: "<value>",
 };
 ```
 

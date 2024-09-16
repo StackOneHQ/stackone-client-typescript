@@ -6,8 +6,8 @@
 import { AssessmentsPackagesType, AssessmentsPackagesValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: AssessmentsPackagesType = {
-    sourceValue: true,
-    value: AssessmentsPackagesValue.Responsibilities,
+  sourceValue: {},
+  value: AssessmentsPackagesValue.Responsibilities,
 };
 ```
 

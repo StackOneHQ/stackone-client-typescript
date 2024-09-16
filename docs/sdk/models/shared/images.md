@@ -8,8 +8,9 @@ Image assets for this provider
 import { Images } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: Images = {
-    logoUrl: "https://app.stackone.com/assets/logos/hibob.png",
-    originalLogoHorizontalUrl: "https://app.stackone.com/assets/logos/source/hibob.png",
+  logoUrl: "https://app.stackone.com/assets/logos/hibob.png",
+  originalLogoHorizontalUrl:
+    "https://app.stackone.com/assets/logos/source/hibob.png",
 };
 ```
 

@@ -6,29 +6,29 @@
 import { ApplicationCandidate } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: ApplicationCandidate = {
-    company: "Company Inc.",
-    email: "john.doe@example.com",
-    emails: [
-        {
-            type: "personal",
-            value: "sestier.romain123@gmail.com",
-        },
-    ],
-    firstName: "John",
-    lastName: "Doe",
-    name: "Romain Sestier",
-    phoneNumbers: [
-        {
-            phone: "+447700112233",
-        },
-    ],
-    socialLinks: [
-        {
-            type: "linkedin",
-            url: "https://www.linkedin.com/in/romainsestier/",
-        },
-    ],
-    title: "Software Engineer",
+  company: "Company Inc.",
+  email: "john.doe@example.com",
+  emails: [
+    {
+      type: "personal",
+      value: "sestier.romain123@gmail.com",
+    },
+  ],
+  firstName: "John",
+  lastName: "Doe",
+  name: "Romain Sestier",
+  phoneNumbers: [
+    {
+      phone: "+447700112233",
+    },
+  ],
+  socialLinks: [
+    {
+      type: "linkedin",
+      url: "https://www.linkedin.com/in/romainsestier/",
+    },
+  ],
+  title: "Software Engineer",
 };
 ```
 

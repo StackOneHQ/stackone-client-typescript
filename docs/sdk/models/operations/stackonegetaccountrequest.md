@@ -6,7 +6,7 @@
 import { StackoneGetAccountRequest } from "@stackone/stackone-client-ts/sdk/models/operations";
 
 let value: StackoneGetAccountRequest = {
-    id: "<id>",
+  id: "<id>",
 };
 ```
 

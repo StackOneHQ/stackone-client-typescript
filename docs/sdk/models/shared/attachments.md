@@ -6,11 +6,11 @@
 import { AssessmentsResultsSchemasValue, Attachments } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: Attachments = {
-    contentType: {
-        sourceValue: true,
-        value: AssessmentsResultsSchemasValue.Text,
-    },
-    url: "http://example.com/resume.pdf",
+  contentType: {
+    sourceValue: "Text",
+    value: AssessmentsResultsSchemasValue.Text,
+  },
+  url: "http://example.com/resume.pdf",
 };
 ```
 

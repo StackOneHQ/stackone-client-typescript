@@ -7,28 +7,28 @@ import { AtsListRejectedReasonsResponse } from "@stackone/stackone-client-ts/sdk
 import { RejectedReasonValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: AtsListRejectedReasonsResponse = {
-    contentType: "<value>",
-    rejectedReasonsPaginated: {
-        data: [
-            {
-                id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-                label: "Failed Phone Screen",
-                rejectedReasonType: {
-                    sourceValue: "RejectedByOrg",
-                    value: RejectedReasonValue.RejectedByOrganization,
-                },
-                remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-                unifiedCustomFields: {
-                    my_project_custom_field_1: "REF-1236",
-                    my_project_custom_field_2: "some other value",
-                },
-            },
-        ],
-    },
-    statusCode: 359444,
-    rawResponse: new Response('{"message": "hello world"}', {
-        headers: { "Content-Type": "application/json" },
-    }),
+  contentType: "<value>",
+  rejectedReasonsPaginated: {
+    data: [
+      {
+        id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        label: "Failed Phone Screen",
+        rejectedReasonType: {
+          sourceValue: RejectedByOrg,
+          value: RejectedReasonValue.RejectedByOrganization,
+        },
+        remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        unifiedCustomFields: {
+          "my_project_custom_field_1": "REF-1236",
+          "my_project_custom_field_2": "some other value",
+        },
+      },
+    ],
+  },
+  statusCode: 480894,
+  rawResponse: new Response("{\"message\": \"hello world\"}", {
+    headers: { "Content-Type": "application/json" },
+  }),
 };
 ```
 

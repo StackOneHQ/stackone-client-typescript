@@ -6,7 +6,7 @@
 import { ContentLanguageEnum, ContentLanguageEnumValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: ContentLanguageEnum = {
-    value: ContentLanguageEnumValue.EnGB,
+  value: ContentLanguageEnumValue.EnGB,
 };
 ```
 

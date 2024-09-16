@@ -8,7 +8,7 @@ LMS Users Filter
 import { LmsListUsersQueryParamFilter } from "@stackone/stackone-client-ts/sdk/models/operations";
 
 let value: LmsListUsersQueryParamFilter = {
-    updatedAfter: "2020-01-01T00:00:00.000Z",
+  updatedAfter: "2020-01-01T00:00:00.000Z",
 };
 ```
 

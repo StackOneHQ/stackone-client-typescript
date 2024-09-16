@@ -5,7 +5,7 @@
 ```typescript
 import { LmsCreateCompletionRequestDtoSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: LmsCreateCompletionRequestDtoSourceValue = ["<value>"];
+let value: LmsCreateCompletionRequestDtoSourceValue = 6339.31;
 ```
 
 ## Supported Types

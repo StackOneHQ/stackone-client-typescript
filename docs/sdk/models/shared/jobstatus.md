@@ -8,8 +8,8 @@ Status of the job
 import { JobStatus, JobValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: JobStatus = {
-    sourceValue: "Published",
-    value: JobValue.Published,
+  sourceValue: {},
+  value: JobValue.Published,
 };
 ```
 

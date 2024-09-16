@@ -5,7 +5,7 @@
 ```typescript
 import { CourseSchemasValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: CourseSchemasValue = CourseSchemasValue.Quiz;
+let value: CourseSchemasValue = CourseSchemasValue.Document;
 ```
 
 ## Values

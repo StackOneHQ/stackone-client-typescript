@@ -7,7 +7,8 @@ The ISO639-2 Code of the language
 ```typescript
 import { EmployeeSchemasPreferredLanguageValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: EmployeeSchemasPreferredLanguageValue = EmployeeSchemasPreferredLanguageValue.Eng;
+let value: EmployeeSchemasPreferredLanguageValue =
+  EmployeeSchemasPreferredLanguageValue.Eng;
 ```
 
 ## Values

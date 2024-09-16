@@ -5,7 +5,7 @@
 ```typescript
 import { CourseSchemasSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: CourseSchemasSourceValue = ["<value>"];
+let value: CourseSchemasSourceValue = 8225.6;
 ```
 
 ## Supported Types

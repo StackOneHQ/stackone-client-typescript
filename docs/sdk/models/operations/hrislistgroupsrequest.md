@@ -6,11 +6,12 @@
 import { HrisListGroupsRequest } from "@stackone/stackone-client-ts/sdk/models/operations";
 
 let value: HrisListGroupsRequest = {
-    fields: "id,remote_id,name,type,parent_ids,remote_parent_ids,owner_ids,remote_owner_ids",
-    filter: {
-        updatedAfter: "2020-01-01T00:00:00.000Z",
-    },
-    xAccountId: "<value>",
+  fields:
+    "id,remote_id,name,type,parent_ids,remote_parent_ids,owner_ids,remote_owner_ids",
+  filter: {
+    updatedAfter: "2020-01-01T00:00:00.000Z",
+  },
+  xAccountId: "<value>",
 };
 ```
 

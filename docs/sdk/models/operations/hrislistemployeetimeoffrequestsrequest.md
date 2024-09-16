@@ -6,12 +6,13 @@
 import { HrisListEmployeeTimeOffRequestsRequest } from "@stackone/stackone-client-ts/sdk/models/operations";
 
 let value: HrisListEmployeeTimeOffRequestsRequest = {
-    fields: "id,remote_id,employee_id,remote_employee_id,approver_id,remote_approver_id,status,type,start_date,end_date,start_half_day,end_half_day,duration,created_at,updated_at",
-    filter: {
-        updatedAfter: "2020-01-01T00:00:00.000Z",
-    },
-    id: "<id>",
-    xAccountId: "<value>",
+  fields:
+    "id,remote_id,employee_id,remote_employee_id,approver_id,remote_approver_id,status,type,start_date,end_date,start_half_day,end_half_day,duration,created_at,updated_at",
+  filter: {
+    updatedAfter: "2020-01-01T00:00:00.000Z",
+  },
+  id: "<id>",
+  xAccountId: "<value>",
 };
 ```
 

@@ -7,24 +7,24 @@ import { HrisGetGroupResponse } from "@stackone/stackone-client-ts/sdk/models/op
 import { HRISGroupValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: HrisGetGroupResponse = {
-    contentType: "<value>",
-    hrisGroupsResult: {
-        data: {
-            id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-            remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-            type: {
-                value: HRISGroupValue.Team,
-            },
-            unifiedCustomFields: {
-                my_project_custom_field_1: "REF-1236",
-                my_project_custom_field_2: "some other value",
-            },
-        },
+  contentType: "<value>",
+  hrisGroupsResult: {
+    data: {
+      id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+      remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+      type: {
+        value: HRISGroupValue.Team,
+      },
+      unifiedCustomFields: {
+        "my_project_custom_field_1": "REF-1236",
+        "my_project_custom_field_2": "some other value",
+      },
     },
-    statusCode: 116202,
-    rawResponse: new Response('{"message": "hello world"}', {
-        headers: { "Content-Type": "application/json" },
-    }),
+  },
+  statusCode: 249796,
+  rawResponse: new Response("{\"message\": \"hello world\"}", {
+    headers: { "Content-Type": "application/json" },
+  }),
 };
 ```
 

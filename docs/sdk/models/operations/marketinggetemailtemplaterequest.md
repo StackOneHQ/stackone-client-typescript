@@ -6,9 +6,9 @@
 import { MarketingGetEmailTemplateRequest } from "@stackone/stackone-client-ts/sdk/models/operations";
 
 let value: MarketingGetEmailTemplateRequest = {
-    fields: "id,remote_id,name,messages,created_at,updated_at,tags",
-    id: "<id>",
-    xAccountId: "<value>",
+  fields: "id,remote_id,name,messages,created_at,updated_at,tags",
+  id: "<id>",
+  xAccountId: "<value>",
 };
 ```
 

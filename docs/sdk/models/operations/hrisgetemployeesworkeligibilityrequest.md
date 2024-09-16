@@ -6,10 +6,11 @@
 import { HrisGetEmployeesWorkEligibilityRequest } from "@stackone/stackone-client-ts/sdk/models/operations";
 
 let value: HrisGetEmployeesWorkEligibilityRequest = {
-    fields: "id,remote_id,type,sub_type,document,valid_from,valid_to,issued_by,number",
-    id: "<id>",
-    subResourceId: "<value>",
-    xAccountId: "<value>",
+  fields:
+    "id,remote_id,type,sub_type,document,valid_from,valid_to,issued_by,number",
+  id: "<id>",
+  subResourceId: "<value>",
+  xAccountId: "<value>",
 };
 ```
 

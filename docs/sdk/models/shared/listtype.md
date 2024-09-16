@@ -8,8 +8,8 @@ The list type
 import { ListType, ListValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: ListType = {
-    sourceValue: true,
-    value: ListValue.Contacts,
+  sourceValue: true,
+  value: ListValue.Contacts,
 };
 ```
 
