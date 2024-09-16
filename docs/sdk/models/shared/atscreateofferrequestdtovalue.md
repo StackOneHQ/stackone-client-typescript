@@ -7,7 +7,8 @@ The status of the offer.
 ```typescript
 import { AtsCreateOfferRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: AtsCreateOfferRequestDtoValue = AtsCreateOfferRequestDtoValue.Pending;
+let value: AtsCreateOfferRequestDtoValue =
+  AtsCreateOfferRequestDtoValue.Pending;
 ```
 
 ## Values

@@ -8,7 +8,7 @@ The employee preferred language
 import { EmployeeSchemasPreferredLanguageValue, PreferredLanguage } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: PreferredLanguage = {
-    value: EmployeeSchemasPreferredLanguageValue.Eng,
+  value: EmployeeSchemasPreferredLanguageValue.Eng,
 };
 ```
 

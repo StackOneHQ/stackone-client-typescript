@@ -5,7 +5,8 @@
 ```typescript
 import { HrisCreateTimeOffRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: HrisCreateTimeOffRequestDtoValue = HrisCreateTimeOffRequestDtoValue.Pending;
+let value: HrisCreateTimeOffRequestDtoValue =
+  HrisCreateTimeOffRequestDtoValue.Approved;
 ```
 
 ## Values

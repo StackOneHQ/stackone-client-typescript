@@ -8,7 +8,7 @@ The file format of the file, expressed as a file extension
 import { HrisDocumentsUploadRequestDtoSchemasFileFormatValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: HrisDocumentsUploadRequestDtoSchemasFileFormatValue =
-    HrisDocumentsUploadRequestDtoSchemasFileFormatValue.Pdf;
+  HrisDocumentsUploadRequestDtoSchemasFileFormatValue.Pdf;
 ```
 
 ## Values

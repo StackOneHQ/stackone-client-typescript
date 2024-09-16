@@ -9,23 +9,31 @@ import * as operations from "./models/operations/index.js";
 import { unwrapAsync } from "./types/fp.js";
 
 export class Connectors extends ClientSDK {
-    /**
-     * Get Connector Meta information for the given provider key
-     */
-    async getConnectorMeta(
-        request: operations.StackoneGetConnectorMetaRequest,
-        options?: RequestOptions
-    ): Promise<operations.StackoneGetConnectorMetaResponse> {
-        return unwrapAsync(connectorsGetConnectorMeta(this, request, options));
-    }
+  /**
+   * Get Connector Meta information for the given provider key
+   */
+  async getConnectorMeta(
+    request: operations.StackoneGetConnectorMetaRequest,
+    options?: RequestOptions,
+  ): Promise<operations.StackoneGetConnectorMetaResponse> {
+    return unwrapAsync(connectorsGetConnectorMeta(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * List Connectors Meta Information for all providers
-     */
-    async listConnectorsMeta(
-        request: operations.StackoneListConnectorsMetaRequest,
-        options?: RequestOptions
-    ): Promise<operations.StackoneListConnectorsMetaResponse> {
-        return unwrapAsync(connectorsListConnectorsMeta(this, request, options));
-    }
+  /**
+   * List Connectors Meta Information for all providers
+   */
+  async listConnectorsMeta(
+    request: operations.StackoneListConnectorsMetaRequest,
+    options?: RequestOptions,
+  ): Promise<operations.StackoneListConnectorsMetaResponse> {
+    return unwrapAsync(connectorsListConnectorsMeta(
+      this,
+      request,
+      options,
+    ));
+  }
 }

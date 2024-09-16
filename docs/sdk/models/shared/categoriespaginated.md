@@ -6,18 +6,18 @@
 import { CategoriesPaginated } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: CategoriesPaginated = {
-    data: [
-        {
-            active: true,
-            id: "16873-IT345",
-            name: "Information-Technology",
-            remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-            unifiedCustomFields: {
-                my_project_custom_field_1: "REF-1236",
-                my_project_custom_field_2: "some other value",
-            },
-        },
-    ],
+  data: [
+    {
+      active: true,
+      id: "16873-IT345",
+      name: "Information-Technology",
+      remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+      unifiedCustomFields: {
+        "my_project_custom_field_1": "REF-1236",
+        "my_project_custom_field_2": "some other value",
+      },
+    },
+  ],
 };
 ```
 

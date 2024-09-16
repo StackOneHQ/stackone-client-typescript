@@ -5,37 +5,40 @@
 import * as z from "zod";
 
 export type CandidateEmail = {
-    /**
-     * Type of the email
-     */
-    type?: string | null | undefined;
-    /**
-     * Email value
-     */
-    value?: string | null | undefined;
+  /**
+   * Type of the email
+   */
+  type?: string | null | undefined;
+  /**
+   * Email value
+   */
+  value?: string | null | undefined;
 };
 
 /** @internal */
-export const CandidateEmail$inboundSchema: z.ZodType<CandidateEmail, z.ZodTypeDef, unknown> =
-    z.object({
-        type: z.nullable(z.string()).optional(),
-        value: z.nullable(z.string()).optional(),
-    });
+export const CandidateEmail$inboundSchema: z.ZodType<
+  CandidateEmail,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  type: z.nullable(z.string()).optional(),
+  value: z.nullable(z.string()).optional(),
+});
 
 /** @internal */
 export type CandidateEmail$Outbound = {
-    type?: string | null | undefined;
-    value?: string | null | undefined;
+  type?: string | null | undefined;
+  value?: string | null | undefined;
 };
 
 /** @internal */
 export const CandidateEmail$outboundSchema: z.ZodType<
-    CandidateEmail$Outbound,
-    z.ZodTypeDef,
-    CandidateEmail
+  CandidateEmail$Outbound,
+  z.ZodTypeDef,
+  CandidateEmail
 > = z.object({
-    type: z.nullable(z.string()).optional(),
-    value: z.nullable(z.string()).optional(),
+  type: z.nullable(z.string()).optional(),
+  value: z.nullable(z.string()).optional(),
 });
 
 /**
@@ -43,10 +46,10 @@ export const CandidateEmail$outboundSchema: z.ZodType<
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace CandidateEmail$ {
-    /** @deprecated use `CandidateEmail$inboundSchema` instead. */
-    export const inboundSchema = CandidateEmail$inboundSchema;
-    /** @deprecated use `CandidateEmail$outboundSchema` instead. */
-    export const outboundSchema = CandidateEmail$outboundSchema;
-    /** @deprecated use `CandidateEmail$Outbound` instead. */
-    export type Outbound = CandidateEmail$Outbound;
+  /** @deprecated use `CandidateEmail$inboundSchema` instead. */
+  export const inboundSchema = CandidateEmail$inboundSchema;
+  /** @deprecated use `CandidateEmail$outboundSchema` instead. */
+  export const outboundSchema = CandidateEmail$outboundSchema;
+  /** @deprecated use `CandidateEmail$Outbound` instead. */
+  export type Outbound = CandidateEmail$Outbound;
 }

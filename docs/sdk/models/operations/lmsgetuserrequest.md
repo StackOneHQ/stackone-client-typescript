@@ -6,9 +6,10 @@
 import { LmsGetUserRequest } from "@stackone/stackone-client-ts/sdk/models/operations";
 
 let value: LmsGetUserRequest = {
-    fields: "id,remote_id,external_reference,email,phone_number,created_at,updated_at,name",
-    id: "<id>",
-    xAccountId: "<value>",
+  fields:
+    "id,remote_id,external_reference,email,phone_number,created_at,updated_at,name",
+  id: "<id>",
+  xAccountId: "<value>",
 };
 ```
 

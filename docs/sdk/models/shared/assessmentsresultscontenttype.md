@@ -6,8 +6,8 @@
 import { AssessmentsResultsContentType, AssessmentsResultsSchemasValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: AssessmentsResultsContentType = {
-    sourceValue: "Text",
-    value: AssessmentsResultsSchemasValue.Text,
+  sourceValue: {},
+  value: AssessmentsResultsSchemasValue.Text,
 };
 ```
 

@@ -6,7 +6,7 @@
 import { SmsMessagesMessageType } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: SmsMessagesMessageType = {
-    sourceValue: {},
+  sourceValue: {},
 };
 ```
 

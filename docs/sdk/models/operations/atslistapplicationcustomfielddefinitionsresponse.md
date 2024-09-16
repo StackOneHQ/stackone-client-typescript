@@ -6,21 +6,26 @@
 import { AtsListApplicationCustomFieldDefinitionsResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
 
 let value: AtsListApplicationCustomFieldDefinitionsResponse = {
-    contentType: "<value>",
-    customFieldDefinitionsPaginated: {
-        data: [
-            {
-                id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-                options: ["Not Started", "In Progress", "Completed", "Overdue"],
-                remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-                type: {},
-            },
+  contentType: "<value>",
+  customFieldDefinitionsPaginated: {
+    data: [
+      {
+        id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        options: [
+          "Not Started",
+          "In Progress",
+          "Completed",
+          "Overdue",
         ],
-    },
-    statusCode: 315428,
-    rawResponse: new Response('{"message": "hello world"}', {
-        headers: { "Content-Type": "application/json" },
-    }),
+        remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        type: {},
+      },
+    ],
+  },
+  statusCode: 607831,
+  rawResponse: new Response("{\"message\": \"hello world\"}", {
+    headers: { "Content-Type": "application/json" },
+  }),
 };
 ```
 

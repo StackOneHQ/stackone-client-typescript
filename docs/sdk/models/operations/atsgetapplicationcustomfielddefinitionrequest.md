@@ -6,12 +6,12 @@
 import { AtsGetApplicationCustomFieldDefinitionRequest } from "@stackone/stackone-client-ts/sdk/models/operations";
 
 let value: AtsGetApplicationCustomFieldDefinitionRequest = {
-    fields: "id,remote_id,name,description,type,options",
-    filter: {
-        updatedAfter: "2020-01-01T00:00:00.000Z",
-    },
-    id: "<id>",
-    xAccountId: "<value>",
+  fields: "id,remote_id,name,description,type,options",
+  filter: {
+    updatedAfter: "2020-01-01T00:00:00.000Z",
+  },
+  id: "<id>",
+  xAccountId: "<value>",
 };
 ```
 

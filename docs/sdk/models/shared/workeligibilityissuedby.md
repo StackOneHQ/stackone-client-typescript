@@ -8,7 +8,7 @@ The country code of the issued by authority
 import { WorkEligibilityIssuedBy, WorkEligibilityValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: WorkEligibilityIssuedBy = {
-    value: WorkEligibilityValue.Us,
+  value: WorkEligibilityValue.Us,
 };
 ```
 

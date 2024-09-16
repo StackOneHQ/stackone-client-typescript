@@ -6,7 +6,9 @@
 import { InAppMessagesMessageType } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: InAppMessagesMessageType = {
-    sourceValue: true,
+  sourceValue: [
+    "Email",
+  ],
 };
 ```
 

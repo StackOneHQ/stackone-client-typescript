@@ -6,8 +6,8 @@
 import { JobPostingContentSectionType, JobPostingContentSectionValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: JobPostingContentSectionType = {
-    sourceValue: true,
-    value: JobPostingContentSectionValue.Responsibilities,
+  sourceValue: true,
+  value: JobPostingContentSectionValue.Responsibilities,
 };
 ```
 

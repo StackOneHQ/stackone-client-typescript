@@ -6,13 +6,14 @@
 import { HrisListEmployeeEmploymentsRequest } from "@stackone/stackone-client-ts/sdk/models/operations";
 
 let value: HrisListEmployeeEmploymentsRequest = {
-    expand: "groups",
-    fields: "id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,employment_type,employment_contract_type,created_at,updated_at",
-    filter: {
-        updatedAfter: "2020-01-01T00:00:00.000Z",
-    },
-    id: "<id>",
-    xAccountId: "<value>",
+  expand: "groups",
+  fields:
+    "id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,employment_type,employment_contract_type,created_at,updated_at",
+  filter: {
+    updatedAfter: "2020-01-01T00:00:00.000Z",
+  },
+  id: "<id>",
+  xAccountId: "<value>",
 };
 ```
 

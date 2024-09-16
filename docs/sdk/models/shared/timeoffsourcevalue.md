@@ -5,7 +5,7 @@
 ```typescript
 import { TimeOffSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: TimeOffSourceValue = 3926.76;
+let value: TimeOffSourceValue = false;
 ```
 
 ## Supported Types

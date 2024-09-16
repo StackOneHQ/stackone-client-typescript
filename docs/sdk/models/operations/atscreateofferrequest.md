@@ -7,24 +7,26 @@ import { AtsCreateOfferRequest } from "@stackone/stackone-client-ts/sdk/models/o
 import { AtsCreateOfferRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: AtsCreateOfferRequest = {
-    atsCreateOfferRequestDto: {
-        offerHistory: [
-            {
-                createdAt: new Date("2021-01-01T01:01:01.000Z"),
-                startDate: new Date("2021-01-01T01:01:01.000Z"),
-                updatedAt: new Date("2021-01-01T01:01:01.000Z"),
-            },
-        ],
-        offerStatus: {
-            sourceValue: ["Pending"],
-            value: AtsCreateOfferRequestDtoValue.Pending,
-        },
-        passthrough: {
-            other_known_names: "John Doe",
-        },
+  atsCreateOfferRequestDto: {
+    offerHistory: [
+      {
+        createdAt: new Date("2021-01-01T01:01:01.000Z"),
         startDate: new Date("2021-01-01T01:01:01.000Z"),
+        updatedAt: new Date("2021-01-01T01:01:01.000Z"),
+      },
+    ],
+    offerStatus: {
+      sourceValue: [
+        "Pending",
+      ],
+      value: AtsCreateOfferRequestDtoValue.Pending,
     },
-    xAccountId: "<value>",
+    passthrough: {
+      "other_known_names": "John Doe",
+    },
+    startDate: new Date("2021-01-01T01:01:01.000Z"),
+  },
+  xAccountId: "<value>",
 };
 ```
 

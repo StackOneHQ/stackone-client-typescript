@@ -8,7 +8,7 @@ The file format of the file, expressed as a file extension
 import { HrisCreateWorkEligibilityRequestDtoSchemasDocumentValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: HrisCreateWorkEligibilityRequestDtoSchemasDocumentValue =
-    HrisCreateWorkEligibilityRequestDtoSchemasDocumentValue.Pdf;
+  HrisCreateWorkEligibilityRequestDtoSchemasDocumentValue.Pdf;
 ```
 
 ## Values

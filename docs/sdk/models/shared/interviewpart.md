@@ -6,21 +6,27 @@
 import { InterviewPart, InterviewPartValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: InterviewPart = {
-    createdAt: new Date("2021-01-01T01:01:01.000Z"),
-    endAt: new Date("2021-01-01T18:00:00.000Z"),
-    id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-    interviewerIds: ["cx28iQahdfDHa", "cx28iQokkD78das"],
-    meetingProvider: "zoom",
-    meetingUrl: "zoomus://zoom.us/join?confno=123456789",
-    remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-    remoteInterviewerIds: ["cx28iQahdfDHa", "cx28iQokkD78das"],
-    startAt: new Date("2021-01-01T17:00:00.000Z"),
-    title: "Interview (Informal Interview) - Elon and StackOne",
-    type: {
-        sourceValue: true,
-        value: InterviewPartValue.OnSite,
-    },
-    updatedAt: new Date("2021-01-01T01:01:01.000Z"),
+  createdAt: new Date("2021-01-01T01:01:01.000Z"),
+  endAt: new Date("2021-01-01T18:00:00.000Z"),
+  id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+  interviewerIds: [
+    "cx28iQahdfDHa",
+    "cx28iQokkD78das",
+  ],
+  meetingProvider: "zoom",
+  meetingUrl: "zoomus://zoom.us/join?confno=123456789",
+  remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+  remoteInterviewerIds: [
+    "cx28iQahdfDHa",
+    "cx28iQokkD78das",
+  ],
+  startAt: new Date("2021-01-01T17:00:00.000Z"),
+  title: "Interview (Informal Interview) - Elon and StackOne",
+  type: {
+    sourceValue: Onsite Interview,
+    value: InterviewPartValue.OnSite,
+  },
+  updatedAt: new Date("2021-01-01T01:01:01.000Z"),
 };
 ```
 

@@ -7,7 +7,8 @@ The type of the compensation.
 ```typescript
 import { JobPostingCompensationSchemasTypeValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: JobPostingCompensationSchemasTypeValue = JobPostingCompensationSchemasTypeValue.Salary;
+let value: JobPostingCompensationSchemasTypeValue =
+  JobPostingCompensationSchemasTypeValue.Salary;
 ```
 
 ## Values

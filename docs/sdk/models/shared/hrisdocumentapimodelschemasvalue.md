@@ -7,7 +7,8 @@ The file format of the file, expressed as a file extension
 ```typescript
 import { HrisDocumentApiModelSchemasValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: HrisDocumentApiModelSchemasValue = HrisDocumentApiModelSchemasValue.Pdf;
+let value: HrisDocumentApiModelSchemasValue =
+  HrisDocumentApiModelSchemasValue.Pdf;
 ```
 
 ## Values

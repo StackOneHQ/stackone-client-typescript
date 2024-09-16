@@ -6,8 +6,8 @@
 import { AtsCreateOfferRequestDtoValue, OfferStatus } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: OfferStatus = {
-    sourceValue: {},
-    value: AtsCreateOfferRequestDtoValue.Pending,
+  sourceValue: Pending,
+  value: AtsCreateOfferRequestDtoValue.Pending,
 };
 ```
 

@@ -6,22 +6,22 @@
 import { HrisGetBenefitResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
 
 let value: HrisGetBenefitResponse = {
-    contentType: "<value>",
-    hrisBenefitResult: {
-        data: {
-            createdAt: new Date("2021-01-01T00:00:00Z"),
-            description: "Health insurance for employees",
-            id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-            name: "Health Insurance",
-            provider: "Aetna",
-            remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-            updatedAt: new Date("2021-01-01T00:00:00Z"),
-        },
+  contentType: "<value>",
+  hrisBenefitResult: {
+    data: {
+      createdAt: new Date("2021-01-01T00:00:00Z"),
+      description: "Health insurance for employees",
+      id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+      name: "Health Insurance",
+      provider: "Aetna",
+      remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+      updatedAt: new Date("2021-01-01T00:00:00Z"),
     },
-    statusCode: 369808,
-    rawResponse: new Response('{"message": "hello world"}', {
-        headers: { "Content-Type": "application/json" },
-    }),
+  },
+  statusCode: 288476,
+  rawResponse: new Response("{\"message\": \"hello world\"}", {
+    headers: { "Content-Type": "application/json" },
+  }),
 };
 ```
 

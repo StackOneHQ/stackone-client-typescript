@@ -8,7 +8,7 @@ The country code
 import { EmployeeSchemasCountry, EmployeeSchemasWorkLocationValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: EmployeeSchemasCountry = {
-    value: EmployeeSchemasWorkLocationValue.Us,
+  value: EmployeeSchemasWorkLocationValue.Us,
 };
 ```
 

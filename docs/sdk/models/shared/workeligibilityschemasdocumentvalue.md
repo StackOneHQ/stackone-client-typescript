@@ -7,7 +7,8 @@ The file format of the file, expressed as a file extension
 ```typescript
 import { WorkEligibilitySchemasDocumentValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: WorkEligibilitySchemasDocumentValue = WorkEligibilitySchemasDocumentValue.Pdf;
+let value: WorkEligibilitySchemasDocumentValue =
+  WorkEligibilitySchemasDocumentValue.Pdf;
 ```
 
 ## Values

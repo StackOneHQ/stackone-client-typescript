@@ -6,10 +6,10 @@
 import { IamGetRoleRequest } from "@stackone/stackone-client-ts/sdk/models/operations";
 
 let value: IamGetRoleRequest = {
-    expand: "policies",
-    fields: "id,remote_id,name,type,policies,description,created_at,updated_at",
-    id: "<id>",
-    xAccountId: "<value>",
+  expand: "policies",
+  fields: "id,remote_id,name,type,policies,description,created_at,updated_at",
+  id: "<id>",
+  xAccountId: "<value>",
 };
 ```
 

@@ -6,14 +6,14 @@
 import { IamListUsersResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
 
 let value: IamListUsersResponse = {
-    contentType: "<value>",
-    iamUsersPaginated: {
-        data: [],
-    },
-    statusCode: 99569,
-    rawResponse: new Response('{"message": "hello world"}', {
-        headers: { "Content-Type": "application/json" },
-    }),
+  contentType: "<value>",
+  iamUsersPaginated: {
+    data: [],
+  },
+  statusCode: 37559,
+  rawResponse: new Response("{\"message\": \"hello world\"}", {
+    headers: { "Content-Type": "application/json" },
+  }),
 };
 ```
 

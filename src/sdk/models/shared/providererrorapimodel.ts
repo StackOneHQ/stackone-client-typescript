@@ -9,88 +9,93 @@ export type Headers = {};
 export type Raw = {};
 
 export type ProviderErrorApiModel = {
-    headers?: Headers | null | undefined;
-    raw?: Raw | null | undefined;
-    status?: number | null | undefined;
-    url?: string | null | undefined;
+  headers?: Headers | null | undefined;
+  raw?: Raw | null | undefined;
+  status?: number | null | undefined;
+  url?: string | null | undefined;
 };
 
 /** @internal */
-export const Headers$inboundSchema: z.ZodType<Headers, z.ZodTypeDef, unknown> = z.object({});
+export const Headers$inboundSchema: z.ZodType<Headers, z.ZodTypeDef, unknown> =
+  z.object({});
 
 /** @internal */
 export type Headers$Outbound = {};
 
 /** @internal */
-export const Headers$outboundSchema: z.ZodType<Headers$Outbound, z.ZodTypeDef, Headers> = z.object(
-    {}
-);
+export const Headers$outboundSchema: z.ZodType<
+  Headers$Outbound,
+  z.ZodTypeDef,
+  Headers
+> = z.object({});
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace Headers$ {
-    /** @deprecated use `Headers$inboundSchema` instead. */
-    export const inboundSchema = Headers$inboundSchema;
-    /** @deprecated use `Headers$outboundSchema` instead. */
-    export const outboundSchema = Headers$outboundSchema;
-    /** @deprecated use `Headers$Outbound` instead. */
-    export type Outbound = Headers$Outbound;
+  /** @deprecated use `Headers$inboundSchema` instead. */
+  export const inboundSchema = Headers$inboundSchema;
+  /** @deprecated use `Headers$outboundSchema` instead. */
+  export const outboundSchema = Headers$outboundSchema;
+  /** @deprecated use `Headers$Outbound` instead. */
+  export type Outbound = Headers$Outbound;
 }
 
 /** @internal */
-export const Raw$inboundSchema: z.ZodType<Raw, z.ZodTypeDef, unknown> = z.object({});
+export const Raw$inboundSchema: z.ZodType<Raw, z.ZodTypeDef, unknown> = z
+  .object({});
 
 /** @internal */
 export type Raw$Outbound = {};
 
 /** @internal */
-export const Raw$outboundSchema: z.ZodType<Raw$Outbound, z.ZodTypeDef, Raw> = z.object({});
+export const Raw$outboundSchema: z.ZodType<Raw$Outbound, z.ZodTypeDef, Raw> = z
+  .object({});
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace Raw$ {
-    /** @deprecated use `Raw$inboundSchema` instead. */
-    export const inboundSchema = Raw$inboundSchema;
-    /** @deprecated use `Raw$outboundSchema` instead. */
-    export const outboundSchema = Raw$outboundSchema;
-    /** @deprecated use `Raw$Outbound` instead. */
-    export type Outbound = Raw$Outbound;
+  /** @deprecated use `Raw$inboundSchema` instead. */
+  export const inboundSchema = Raw$inboundSchema;
+  /** @deprecated use `Raw$outboundSchema` instead. */
+  export const outboundSchema = Raw$outboundSchema;
+  /** @deprecated use `Raw$Outbound` instead. */
+  export type Outbound = Raw$Outbound;
 }
 
 /** @internal */
 export const ProviderErrorApiModel$inboundSchema: z.ZodType<
-    ProviderErrorApiModel,
-    z.ZodTypeDef,
-    unknown
+  ProviderErrorApiModel,
+  z.ZodTypeDef,
+  unknown
 > = z.object({
-    headers: z.nullable(z.lazy(() => Headers$inboundSchema)).optional(),
-    raw: z.nullable(z.lazy(() => Raw$inboundSchema)).optional(),
-    status: z.nullable(z.number()).optional(),
-    url: z.nullable(z.string()).optional(),
+  headers: z.nullable(z.lazy(() => Headers$inboundSchema)).optional(),
+  raw: z.nullable(z.lazy(() => Raw$inboundSchema)).optional(),
+  status: z.nullable(z.number()).optional(),
+  url: z.nullable(z.string()).optional(),
 });
 
 /** @internal */
 export type ProviderErrorApiModel$Outbound = {
-    headers?: Headers$Outbound | null | undefined;
-    raw?: Raw$Outbound | null | undefined;
-    status?: number | null | undefined;
-    url?: string | null | undefined;
+  headers?: Headers$Outbound | null | undefined;
+  raw?: Raw$Outbound | null | undefined;
+  status?: number | null | undefined;
+  url?: string | null | undefined;
 };
 
 /** @internal */
 export const ProviderErrorApiModel$outboundSchema: z.ZodType<
-    ProviderErrorApiModel$Outbound,
-    z.ZodTypeDef,
-    ProviderErrorApiModel
+  ProviderErrorApiModel$Outbound,
+  z.ZodTypeDef,
+  ProviderErrorApiModel
 > = z.object({
-    headers: z.nullable(z.lazy(() => Headers$outboundSchema)).optional(),
-    raw: z.nullable(z.lazy(() => Raw$outboundSchema)).optional(),
-    status: z.nullable(z.number()).optional(),
-    url: z.nullable(z.string()).optional(),
+  headers: z.nullable(z.lazy(() => Headers$outboundSchema)).optional(),
+  raw: z.nullable(z.lazy(() => Raw$outboundSchema)).optional(),
+  status: z.nullable(z.number()).optional(),
+  url: z.nullable(z.string()).optional(),
 });
 
 /**
@@ -98,10 +103,10 @@ export const ProviderErrorApiModel$outboundSchema: z.ZodType<
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace ProviderErrorApiModel$ {
-    /** @deprecated use `ProviderErrorApiModel$inboundSchema` instead. */
-    export const inboundSchema = ProviderErrorApiModel$inboundSchema;
-    /** @deprecated use `ProviderErrorApiModel$outboundSchema` instead. */
-    export const outboundSchema = ProviderErrorApiModel$outboundSchema;
-    /** @deprecated use `ProviderErrorApiModel$Outbound` instead. */
-    export type Outbound = ProviderErrorApiModel$Outbound;
+  /** @deprecated use `ProviderErrorApiModel$inboundSchema` instead. */
+  export const inboundSchema = ProviderErrorApiModel$inboundSchema;
+  /** @deprecated use `ProviderErrorApiModel$outboundSchema` instead. */
+  export const outboundSchema = ProviderErrorApiModel$outboundSchema;
+  /** @deprecated use `ProviderErrorApiModel$Outbound` instead. */
+  export type Outbound = ProviderErrorApiModel$Outbound;
 }

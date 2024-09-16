@@ -8,8 +8,10 @@ The file format of the file
 import { HrisDocumentApiModelFileFormat, HrisDocumentApiModelSchemasValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: HrisDocumentApiModelFileFormat = {
-    sourceValue: true,
-    value: HrisDocumentApiModelSchemasValue.Pdf,
+  sourceValue: [
+    "abc",
+  ],
+  value: HrisDocumentApiModelSchemasValue.Pdf,
 };
 ```
 

@@ -6,11 +6,11 @@
 import { StackoneDeleteAccountResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
 
 let value: StackoneDeleteAccountResponse = {
-    contentType: "<value>",
-    statusCode: 548814,
-    rawResponse: new Response('{"message": "hello world"}', {
-        headers: { "Content-Type": "application/json" },
-    }),
+  contentType: "<value>",
+  statusCode: 548814,
+  rawResponse: new Response("{\"message\": \"hello world\"}", {
+    headers: { "Content-Type": "application/json" },
+  }),
 };
 ```
 

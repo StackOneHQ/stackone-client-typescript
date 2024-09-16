@@ -8,8 +8,8 @@ The type of employment (e.g., contractor, permanent)
 import { EmploymentEmploymentType, EmploymentSchemasValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: EmploymentEmploymentType = {
-    sourceValue: Permanent,
-    value: EmploymentSchemasValue.Permanent,
+  sourceValue: true,
+  value: EmploymentSchemasValue.Permanent,
 };
 ```
 

@@ -8,7 +8,7 @@ The type of the group
 import { HRISGroupType, HRISGroupValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: HRISGroupType = {
-    value: HRISGroupValue.Team,
+  value: HRISGroupValue.Team,
 };
 ```
 

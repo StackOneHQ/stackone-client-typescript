@@ -34,7 +34,7 @@ async function run() {
     },
     xAccountId: "<value>",
   });
-
+  
   // Handle the result
   console.log(result)
 }

@@ -24,7 +24,9 @@ let value: Campaign = {
         from: "1-555-123-4567",
       },
       messageType: {
-        sourceValue: true,
+        sourceValue: [
+          "Email",
+        ],
         value: {},
       },
       name: "SMS Message",
@@ -33,15 +35,15 @@ let value: Campaign = {
     {
       id: "message-id-2",
       messageContent: {
-        body: "<h1>This is an example</h1>
-                  <p>email body</p>",
+        body: "<h1>This is an example</h1>\n"
+          + "            <p>email body</p>",
         from: "Jane Smith",
         preheader: "This is the preheader of the email.",
         replyTo: "reply@example.com",
         subject: "Example Email Subject",
       },
       messageType: {
-        sourceValue: true,
+        sourceValue: {},
         value: {},
       },
       name: "Email Message",
@@ -53,7 +55,7 @@ let value: Campaign = {
         body: "This is an example push notification body.",
       },
       messageType: {
-        sourceValue: {},
+        sourceValue: Email,
         value: {},
       },
       name: "iOS Push Message",
@@ -66,8 +68,8 @@ let value: Campaign = {
     value: CampaignValue.Immediate,
   },
   status: {
-    sourceValue: true,
-    value: CampaignSchemasValue.Draft,
+    sourceValue: Email,
+    value: CampaignSchemasValue.Archived,
   },
   updatedAt: new Date("2021-01-01T01:01:01.000Z"),
 };

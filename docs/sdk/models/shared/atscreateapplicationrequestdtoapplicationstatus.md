@@ -9,8 +9,8 @@ import {
 } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: AtsCreateApplicationRequestDtoApplicationStatus = {
-    sourceValue: {},
-    value: AtsCreateApplicationRequestDtoValue.Hired,
+  sourceValue: true,
+  value: AtsCreateApplicationRequestDtoValue.Hired,
 };
 ```
 

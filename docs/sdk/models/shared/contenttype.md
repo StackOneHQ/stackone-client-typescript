@@ -6,8 +6,8 @@
 import { ApplicationAttachmentValue, ContentType } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: ContentType = {
-    sourceValue: true,
-    value: ApplicationAttachmentValue.Text,
+  sourceValue: {},
+  value: ApplicationAttachmentValue.Text,
 };
 ```
 

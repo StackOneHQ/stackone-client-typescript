@@ -7,7 +7,9 @@ The source value of the list type.
 ```typescript
 import { ListSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: ListSourceValue = "Contacts";
+let value: ListSourceValue = [
+  "Contacts",
+];
 ```
 
 ## Supported Types

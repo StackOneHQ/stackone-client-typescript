@@ -5,7 +5,8 @@
 ```typescript
 import { HrisCreateEmployeeRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: HrisCreateEmployeeRequestDtoValue = HrisCreateEmployeeRequestDtoValue.FullTime;
+let value: HrisCreateEmployeeRequestDtoValue =
+  HrisCreateEmployeeRequestDtoValue.UnmappedValue;
 ```
 
 ## Values

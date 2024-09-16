@@ -7,7 +7,8 @@ The pay frequency of the job postings.
 ```typescript
 import { EmploymentSchemasPayFrequencyValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: EmploymentSchemasPayFrequencyValue = EmploymentSchemasPayFrequencyValue.Hourly;
+let value: EmploymentSchemasPayFrequencyValue =
+  EmploymentSchemasPayFrequencyValue.Hourly;
 ```
 
 ## Values

@@ -11,7 +11,7 @@ import {
 } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: HrisCreateEmployeeRequestDtoCountry = {
-    value: HrisCreateEmployeeRequestDtoSchemasHomeLocationValue.Us,
+  value: HrisCreateEmployeeRequestDtoSchemasHomeLocationValue.Us,
 };
 ```
 

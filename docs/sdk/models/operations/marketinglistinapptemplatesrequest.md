@@ -6,11 +6,11 @@
 import { MarketingListInAppTemplatesRequest } from "@stackone/stackone-client-ts/sdk/models/operations";
 
 let value: MarketingListInAppTemplatesRequest = {
-    fields: "id,remote_id,name,messages,created_at,updated_at,tags",
-    filter: {
-        updatedAfter: "2020-01-01T00:00:00.000Z",
-    },
-    xAccountId: "<value>",
+  fields: "id,remote_id,name,messages,created_at,updated_at,tags",
+  filter: {
+    updatedAfter: "2020-01-01T00:00:00.000Z",
+  },
+  xAccountId: "<value>",
 };
 ```
 

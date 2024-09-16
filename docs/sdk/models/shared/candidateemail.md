@@ -6,8 +6,8 @@
 import { CandidateEmail } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: CandidateEmail = {
-    type: "personal",
-    value: "sestier.romain123@gmail.com",
+  type: "personal",
+  value: "sestier.romain123@gmail.com",
 };
 ```
 

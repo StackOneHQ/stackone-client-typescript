@@ -6,18 +6,18 @@
 import { Question, QuestionValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: Question = {
-    id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-    multipleChoiceAnswers: [
-        {
-            id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-            remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-        },
-    ],
-    remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-    type: {
-        sourceValue: true,
-        value: QuestionValue.ShortText,
+  id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+  multipleChoiceAnswers: [
+    {
+      id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+      remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
     },
+  ],
+  remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+  type: {
+    sourceValue: "ShortText",
+    value: QuestionValue.ShortText,
+  },
 };
 ```
 

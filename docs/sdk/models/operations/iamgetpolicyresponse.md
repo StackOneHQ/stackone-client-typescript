@@ -7,45 +7,45 @@ import { IamGetPolicyResponse } from "@stackone/stackone-client-ts/sdk/models/op
 import { IamPermissionValue, IamResourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: IamGetPolicyResponse = {
-    contentType: "<value>",
-    iamPolicyResult: {
-        data: {
-            createdAt: new Date("2021-01-01T01:01:01.000Z"),
-            id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-            name: "Remote Contractor Policy",
-            permissions: [
-                {
-                    createdAt: new Date("2021-01-01T01:01:01.000Z"),
-                    id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-                    name: "read:users",
-                    remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-                    resources: [
-                        {
-                            createdAt: new Date("2021-01-01T01:01:01.000Z"),
-                            id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-                            location: "s3://bucket-name/folder-name",
-                            name: "Company History Records",
-                            remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-                            type: {
-                                value: IamResourceValue.File,
-                            },
-                            updatedAt: new Date("2021-01-01T01:01:01.000Z"),
-                        },
-                    ],
-                    type: {
-                        value: IamPermissionValue.ReadWrite,
-                    },
-                    updatedAt: new Date("2021-01-01T01:01:01.000Z"),
-                },
-            ],
-            remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-            updatedAt: new Date("2021-01-01T01:01:01.000Z"),
+  contentType: "<value>",
+  iamPolicyResult: {
+    data: {
+      createdAt: new Date("2021-01-01T01:01:01.000Z"),
+      id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+      name: "Remote Contractor Policy",
+      permissions: [
+        {
+          createdAt: new Date("2021-01-01T01:01:01.000Z"),
+          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          name: "read:users",
+          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          resources: [
+            {
+              createdAt: new Date("2021-01-01T01:01:01.000Z"),
+              id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+              location: "s3://bucket-name/folder-name",
+              name: "Company History Records",
+              remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+              type: {
+                value: IamResourceValue.File,
+              },
+              updatedAt: new Date("2021-01-01T01:01:01.000Z"),
+            },
+          ],
+          type: {
+            value: IamPermissionValue.ReadWrite,
+          },
+          updatedAt: new Date("2021-01-01T01:01:01.000Z"),
         },
+      ],
+      remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+      updatedAt: new Date("2021-01-01T01:01:01.000Z"),
     },
-    statusCode: 984043,
-    rawResponse: new Response('{"message": "hello world"}', {
-        headers: { "Content-Type": "application/json" },
-    }),
+  },
+  statusCode: 352312,
+  rawResponse: new Response("{\"message\": \"hello world\"}", {
+    headers: { "Content-Type": "application/json" },
+  }),
 };
 ```
 

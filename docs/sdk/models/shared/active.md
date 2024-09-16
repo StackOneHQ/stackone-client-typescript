@@ -5,9 +5,9 @@ Whether the content is active and available for users.
 ## Example Usage
 
 ```typescript
-import { Active } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { Active, Content2 } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: Active = true;
+let value: Active = Content2.True;
 ```
 
 ## Supported Types

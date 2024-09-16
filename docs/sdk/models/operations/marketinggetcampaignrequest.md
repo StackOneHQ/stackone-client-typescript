@@ -6,9 +6,10 @@
 import { MarketingGetCampaignRequest } from "@stackone/stackone-client-ts/sdk/models/operations";
 
 let value: MarketingGetCampaignRequest = {
-    fields: "id,remote_id,name,created_at,updated_at,description,schedule_type,status,channels,first_sent_at,last_sent_at,tags,messages",
-    id: "<id>",
-    xAccountId: "<value>",
+  fields:
+    "id,remote_id,name,created_at,updated_at,description,schedule_type,status,channels,first_sent_at,last_sent_at,tags,messages",
+  id: "<id>",
+  xAccountId: "<value>",
 };
 ```
 

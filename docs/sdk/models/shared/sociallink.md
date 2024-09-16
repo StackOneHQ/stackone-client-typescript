@@ -6,8 +6,8 @@
 import { SocialLink } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: SocialLink = {
-    type: "linkedin",
-    url: "https://www.linkedin.com/in/romainsestier/",
+  type: "linkedin",
+  url: "https://www.linkedin.com/in/romainsestier/",
 };
 ```
 

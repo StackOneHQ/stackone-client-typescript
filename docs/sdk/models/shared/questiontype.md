@@ -6,8 +6,8 @@
 import { QuestionType, QuestionValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: QuestionType = {
-    sourceValue: "ShortText",
-    value: QuestionValue.ShortText,
+  sourceValue: ShortText,
+  value: QuestionValue.ShortText,
 };
 ```
 

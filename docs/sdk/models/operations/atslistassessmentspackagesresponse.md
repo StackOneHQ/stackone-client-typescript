@@ -7,26 +7,26 @@ import { AtsListAssessmentsPackagesResponse } from "@stackone/stackone-client-ts
 import { AssessmentsPackagesValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: AtsListAssessmentsPackagesResponse = {
-    assessmentsPackagesPaginated: {
-        data: [
-            {
-                description:
-                    "Skills test to gauge a candidate's proficiency in job-specific skills",
-                id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-                name: "Skill Assessment",
-                remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-                type: {
-                    sourceValue: key_responsibilities,
-                    value: AssessmentsPackagesValue.Responsibilities,
-                },
-            },
-        ],
-    },
-    contentType: "<value>",
-    statusCode: 414369,
-    rawResponse: new Response('{"message": "hello world"}', {
-        headers: { "Content-Type": "application/json" },
-    }),
+  assessmentsPackagesPaginated: {
+    data: [
+      {
+        description:
+          "Skills test to gauge a candidate's proficiency in job-specific skills",
+        id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        name: "Skill Assessment",
+        remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        type: {
+          sourceValue: true,
+          value: AssessmentsPackagesValue.Responsibilities,
+        },
+      },
+    ],
+  },
+  contentType: "<value>",
+  statusCode: 466311,
+  rawResponse: new Response("{\"message\": \"hello world\"}", {
+    headers: { "Content-Type": "application/json" },
+  }),
 };
 ```
 

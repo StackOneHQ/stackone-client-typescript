@@ -8,13 +8,17 @@ import * as operations from "./models/operations/index.js";
 import { unwrapAsync } from "./types/fp.js";
 
 export class Proxy extends ClientSDK {
-    /**
-     * Proxy Request
-     */
-    async proxyRequest(
-        request: operations.StackoneProxyRequestRequest,
-        options?: RequestOptions
-    ): Promise<operations.StackoneProxyRequestResponse> {
-        return unwrapAsync(proxyProxyRequest(this, request, options));
-    }
+  /**
+   * Proxy Request
+   */
+  async proxyRequest(
+    request: operations.StackoneProxyRequestRequest,
+    options?: RequestOptions,
+  ): Promise<operations.StackoneProxyRequestResponse> {
+    return unwrapAsync(proxyProxyRequest(
+      this,
+      request,
+      options,
+    ));
+  }
 }

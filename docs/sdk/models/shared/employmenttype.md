@@ -8,8 +8,8 @@ The employee employment type
 import { EmployeeSchemasEmploymentTypeValue, EmploymentType } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: EmploymentType = {
-    sourceValue: "Permanent",
-    value: EmployeeSchemasEmploymentTypeValue.Permanent,
+  sourceValue: true,
+  value: EmployeeSchemasEmploymentTypeValue.Permanent,
 };
 ```
 

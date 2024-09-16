@@ -6,14 +6,19 @@
 import { CustomFieldDefinitionsPaginated } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: CustomFieldDefinitionsPaginated = {
-    data: [
-        {
-            id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-            options: ["Not Started", "In Progress", "Completed", "Overdue"],
-            remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-            type: {},
-        },
-    ],
+  data: [
+    {
+      id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+      options: [
+        "Not Started",
+        "In Progress",
+        "Completed",
+        "Overdue",
+      ],
+      remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+      type: {},
+    },
+  ],
 };
 ```
 

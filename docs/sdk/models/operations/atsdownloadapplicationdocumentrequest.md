@@ -6,10 +6,10 @@
 import { AtsDownloadApplicationDocumentRequest } from "@stackone/stackone-client-ts/sdk/models/operations";
 
 let value: AtsDownloadApplicationDocumentRequest = {
-    format: "base64",
-    id: "<id>",
-    subResourceId: "<value>",
-    xAccountId: "<value>",
+  format: "base64",
+  id: "<id>",
+  subResourceId: "<value>",
+  xAccountId: "<value>",
 };
 ```
 

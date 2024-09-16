@@ -56,7 +56,7 @@ async function run() {
     },
     xAccountId: "<value>",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -163,7 +163,7 @@ async function run() {
     id: "<id>",
     xAccountId: "<value>",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -251,7 +251,7 @@ async function run() {
     include: "custom_fields",
     xAccountId: "<value>",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -339,7 +339,7 @@ async function run() {
     id: "<id>",
     xAccountId: "<value>",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -429,7 +429,7 @@ async function run() {
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -523,7 +523,7 @@ async function run() {
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -617,7 +617,7 @@ async function run() {
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -728,7 +728,7 @@ async function run() {
     id: "<id>",
     xAccountId: "<value>",
   });
-
+  
   // Handle the result
   console.log(result)
 }

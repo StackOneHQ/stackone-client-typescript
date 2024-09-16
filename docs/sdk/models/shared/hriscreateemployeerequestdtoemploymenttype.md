@@ -11,8 +11,8 @@ import {
 } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: HrisCreateEmployeeRequestDtoEmploymentType = {
-    sourceValue: {},
-    value: HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue.Permanent,
+  sourceValue: true,
+  value: HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue.Permanent,
 };
 ```
 

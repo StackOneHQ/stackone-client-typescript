@@ -8,7 +8,7 @@ The type of the location.
 import { EmployeeSchemasWorkLocationLocationTypeValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: EmployeeSchemasWorkLocationLocationTypeValue =
-    EmployeeSchemasWorkLocationLocationTypeValue.Home;
+  EmployeeSchemasWorkLocationLocationTypeValue.Home;
 ```
 
 ## Values

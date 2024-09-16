@@ -6,7 +6,7 @@
 import { NoteContentApiModel } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: NoteContentApiModel = {
-    body: "This candidate seems like a good fit for the role",
+  body: "This candidate seems like a good fit for the role",
 };
 ```
 

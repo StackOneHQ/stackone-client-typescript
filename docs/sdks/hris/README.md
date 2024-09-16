@@ -5,6 +5,7 @@
 
 ### Available Operations
 
+* [batchUploadEmployeeDocument](#batchuploademployeedocument) - Batch Upload Employee Document
 * [createEmployee](#createemployee) - Creates an employee
 * [createEmployeeTimeOffRequest](#createemployeetimeoffrequest) - Create Employee Time Off Request
 * [createEmployeeWorkEligibilityRequest](#createemployeeworkeligibilityrequest) - Create Employee Work Eligibility Request
@@ -43,6 +44,147 @@
 * [updateTimeOffRequest](#updatetimeoffrequest) - Update time off request
 * [uploadEmployeeDocument](#uploademployeedocument) - Upload Employee Document
 
+## batchUploadEmployeeDocument
+
+Batch Upload Employee Document
+
+### Example Usage
+
+```typescript
+import { StackOne } from "@stackone/stackone-client-ts";
+import {
+  HrisDocumentsUploadRequestDtoSchemasFileFormatValue,
+  HrisDocumentsUploadRequestDtoSchemasValue,
+  HrisDocumentsUploadRequestDtoValue,
+} from "@stackone/stackone-client-ts/sdk/models/shared";
+
+const stackOne = new StackOne({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const result = await stackOne.hris.batchUploadEmployeeDocument({
+    hrisBatchDocumentUploadRequestDto: {
+      items: [
+        {
+          category: {
+            sourceValue: "550e8400-e29b-41d4-a716-446655440000",
+            value: HrisDocumentsUploadRequestDtoValue.Academic,
+          },
+          categoryId: "6530",
+          confidential: {
+            sourceValue: [
+              "public",
+            ],
+            value: HrisDocumentsUploadRequestDtoSchemasValue.True,
+          },
+          content: "VGhpcyBpc24ndCByZWFsbHkgYSBzYW1wbGUgZmlsZSwgYnV0IG5vIG9uZSB3aWxsIGV2ZXIga25vdyE",
+          fileFormat: {
+            sourceValue: true,
+            value: HrisDocumentsUploadRequestDtoSchemasFileFormatValue.Pdf,
+          },
+          name: "weather-forecast",
+          path: "/path/to/file",
+        },
+      ],
+    },
+    id: "<id>",
+    xAccountId: "<value>",
+  });
+  
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
+import { hrisBatchUploadEmployeeDocument } from "@stackone/stackone-client-ts/funcs/hrisBatchUploadEmployeeDocument.js";
+import {
+  HrisDocumentsUploadRequestDtoSchemasFileFormatValue,
+  HrisDocumentsUploadRequestDtoSchemasValue,
+  HrisDocumentsUploadRequestDtoValue,
+} from "@stackone/stackone-client-ts/sdk/models/shared";
+
+// Use `StackOneCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const stackOne = new StackOneCore({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const res = await hrisBatchUploadEmployeeDocument(stackOne, {
+    hrisBatchDocumentUploadRequestDto: {
+      items: [
+        {
+          category: {
+            sourceValue: "550e8400-e29b-41d4-a716-446655440000",
+            value: HrisDocumentsUploadRequestDtoValue.NationalId,
+          },
+          categoryId: "6530",
+          confidential: {
+            sourceValue: true,
+            value: HrisDocumentsUploadRequestDtoSchemasValue.True,
+          },
+          content: "VGhpcyBpc24ndCByZWFsbHkgYSBzYW1wbGUgZmlsZSwgYnV0IG5vIG9uZSB3aWxsIGV2ZXIga25vdyE",
+          fileFormat: {
+            sourceValue: {},
+            value: HrisDocumentsUploadRequestDtoSchemasFileFormatValue.Pdf,
+          },
+          name: "weather-forecast",
+          path: "/path/to/file",
+        },
+      ],
+    },
+    id: "<id>",
+    xAccountId: "<value>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.HrisBatchUploadEmployeeDocumentRequest](../../sdk/models/operations/hrisbatchuploademployeedocumentrequest.md)                                                     | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[operations.HrisBatchUploadEmployeeDocumentResponse](../../sdk/models/operations/hrisbatchuploademployeedocumentresponse.md)\>**
+
+### Errors
+
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
+
+
 ## createEmployee
 
 Creates an employee
@@ -58,6 +200,7 @@ import {
   EmploymentSchemasValue,
   HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue,
   HrisCreateEmployeeRequestDtoSchemasHomeLocationValue,
+  HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberValue,
   HrisCreateEmployeeRequestDtoSchemasPreferredLanguageValue,
   HrisCreateEmployeeRequestDtoSchemasWorkLocationValue,
 } from "@stackone/stackone-client-ts/sdk/models/shared";
@@ -104,11 +247,12 @@ async function run() {
       ],
       dateOfBirth: new Date("1990-01-01T00:00.000Z"),
       department: "Physics",
+      departmentId: "3093",
       displayName: "Sir Issac Newton",
       employmentContractType: {},
       employmentStatus: {},
       employmentType: {
-        sourceValue: {},
+        sourceValue: "Permanent",
         value: HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue.Permanent,
       },
       employments: [
@@ -118,20 +262,18 @@ async function run() {
           employeeId: "1687-3",
           employmentContractType: {},
           employmentType: {
-            sourceValue: Permanent,
+            sourceValue: {},
             value: EmploymentSchemasValue.Permanent,
           },
           id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
           jobTitle: "Software Engineer",
           payCurrency: "USD",
           payFrequency: {
-            sourceValue: {},
+            sourceValue: Hourly,
             value: EmploymentSchemasPayFrequencyValue.Hourly,
           },
           payPeriod: {
-            sourceValue: [
-              "Hour",
-            ],
+            sourceValue: {},
             value: EmploymentSchemasPayPeriodValue.Hour,
           },
           payRate: "40.00",
@@ -170,6 +312,12 @@ async function run() {
       managerId: "67890",
       maritalStatus: {},
       name: "Issac Newton",
+      nationalIdentityNumber: {
+        type: {
+          value: HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberValue.Ssn,
+        },
+        value: "123456789",
+      },
       passthrough: {
         "other_known_names": "John Doe",
       },
@@ -203,7 +351,7 @@ async function run() {
     },
     xAccountId: "<value>",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -225,6 +373,7 @@ import {
   EmploymentSchemasValue,
   HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue,
   HrisCreateEmployeeRequestDtoSchemasHomeLocationValue,
+  HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberValue,
   HrisCreateEmployeeRequestDtoSchemasPreferredLanguageValue,
   HrisCreateEmployeeRequestDtoSchemasWorkLocationValue,
 } from "@stackone/stackone-client-ts/sdk/models/shared";
@@ -267,14 +416,13 @@ async function run() {
           name: "Training Completion Status",
           remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
           remoteValueId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
-          value: [
-            "Completed",
-          ],
+          value: true,
           valueId: "value_456",
         },
       ],
       dateOfBirth: new Date("1990-01-01T00:00.000Z"),
       department: "Physics",
+      departmentId: "3093",
       displayName: "Sir Issac Newton",
       employmentContractType: {},
       employmentStatus: {},
@@ -289,18 +437,22 @@ async function run() {
           employeeId: "1687-3",
           employmentContractType: {},
           employmentType: {
-            sourceValue: "Permanent",
+            sourceValue: [
+              "Permanent",
+            ],
             value: EmploymentSchemasValue.Permanent,
           },
           id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
           jobTitle: "Software Engineer",
           payCurrency: "USD",
           payFrequency: {
-            sourceValue: "Hourly",
+            sourceValue: [
+              "Hourly",
+            ],
             value: EmploymentSchemasPayFrequencyValue.Hourly,
           },
           payPeriod: {
-            sourceValue: true,
+            sourceValue: "Hour",
             value: EmploymentSchemasPayPeriodValue.Hour,
           },
           payRate: "40.00",
@@ -339,6 +491,12 @@ async function run() {
       managerId: "67890",
       maritalStatus: {},
       name: "Issac Newton",
+      nationalIdentityNumber: {
+        type: {
+          value: HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberValue.Ssn,
+        },
+        value: "123456789",
+      },
       passthrough: {
         "other_known_names": "John Doe",
       },
@@ -414,7 +572,6 @@ Create Employee Time Off Request
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
-import { HrisCreateTimeOffRequestDto2, HrisCreateTimeOffRequestDtoSchemas2 } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 const stackOne = new StackOne({
   security: {
@@ -429,17 +586,17 @@ async function run() {
       approverId: "1687-4",
       employeeId: "1687-3",
       endDate: new Date("2021-01-01T01:01:01.000Z"),
-      endHalfDay: HrisCreateTimeOffRequestDto2.True,
+      endHalfDay: true,
       passthrough: {
         "other_known_names": "John Doe",
       },
       startDate: new Date("2021-01-01T01:01:01.000Z"),
-      startHalfDay: HrisCreateTimeOffRequestDtoSchemas2.True,
+      startHalfDay: true,
     },
     id: "<id>",
     xAccountId: "<value>",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -454,7 +611,6 @@ The standalone function version of this method:
 ```typescript
 import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
 import { hrisCreateEmployeeTimeOffRequest } from "@stackone/stackone-client-ts/funcs/hrisCreateEmployeeTimeOffRequest.js";
-import { HrisCreateTimeOffRequestDto2 } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 // Use `StackOneCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -471,7 +627,7 @@ async function run() {
       approverId: "1687-4",
       employeeId: "1687-3",
       endDate: new Date("2021-01-01T01:01:01.000Z"),
-      endHalfDay: HrisCreateTimeOffRequestDto2.True,
+      endHalfDay: true,
       passthrough: {
         "other_known_names": "John Doe",
       },
@@ -543,7 +699,7 @@ async function run() {
         categoryId: "6530",
         createdAt: new Date("2021-01-01T01:01:01.000Z"),
         fileFormat: {
-          sourceValue: {},
+          sourceValue: "abc",
           value: HrisCreateWorkEligibilityRequestDtoSchemasDocumentValue.Pdf,
         },
         id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
@@ -568,7 +724,7 @@ async function run() {
     id: "<id>",
     xAccountId: "<value>",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -605,9 +761,7 @@ async function run() {
         categoryId: "6530",
         createdAt: new Date("2021-01-01T01:01:01.000Z"),
         fileFormat: {
-          sourceValue: [
-            "abc",
-          ],
+          sourceValue: "abc",
           value: HrisCreateWorkEligibilityRequestDtoSchemasDocumentValue.Pdf,
         },
         id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
@@ -674,7 +828,6 @@ Creates a time off request
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
-import { HrisCreateTimeOffRequestDto2, HrisCreateTimeOffRequestDtoSchemas2 } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 const stackOne = new StackOne({
   security: {
@@ -689,16 +842,16 @@ async function run() {
       approverId: "1687-4",
       employeeId: "1687-3",
       endDate: new Date("2021-01-01T01:01:01.000Z"),
-      endHalfDay: HrisCreateTimeOffRequestDto2.True,
+      endHalfDay: true,
       passthrough: {
         "other_known_names": "John Doe",
       },
       startDate: new Date("2021-01-01T01:01:01.000Z"),
-      startHalfDay: HrisCreateTimeOffRequestDtoSchemas2.True,
+      startHalfDay: true,
     },
     xAccountId: "<value>",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -795,7 +948,7 @@ async function run() {
     subResourceId: "<value>",
     xAccountId: "<value>",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -883,7 +1036,7 @@ async function run() {
     id: "<id>",
     xAccountId: "<value>",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -970,7 +1123,7 @@ async function run() {
     id: "<id>",
     xAccountId: "<value>",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -1057,7 +1210,7 @@ async function run() {
     id: "<id>",
     xAccountId: "<value>",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -1141,12 +1294,12 @@ const stackOne = new StackOne({
 async function run() {
   const result = await stackOne.hris.getEmployee({
     expand: "company,employments,work_location,home_location,custom_fields,groups",
-    fields: "id,remote_id,first_name,last_name,name,display_name,gender,ethnicity,date_of_birth,birthday,marital_status,avatar_url,avatar,personal_email,personal_phone_number,work_email,work_phone_number,job_title,job_description,department,cost_centers,benefits,manager_id,remote_manager_id,hire_date,start_date,tenure,work_anniversary,employment_type,employment_contract_type,employment_status,termination_date,company_name,preferred_language,citizenships,home_location,work_location,employments,custom_fields,documents,created_at,updated_at,employee_number,national_identity_number",
+    fields: "id,remote_id,first_name,last_name,name,display_name,gender,ethnicity,date_of_birth,birthday,marital_status,avatar_url,avatar,personal_email,personal_phone_number,work_email,work_phone_number,job_id,remote_job_id,job_title,job_description,department_id,remote_department_id,department,cost_centers,benefits,manager_id,remote_manager_id,hire_date,start_date,tenure,work_anniversary,employment_type,employment_contract_type,employment_status,termination_date,company_name,preferred_language,citizenships,home_location,work_location,employments,custom_fields,documents,created_at,updated_at,employee_number,national_identity_number",
     id: "<id>",
     include: "avatar_url,avatar,custom_fields,job_description,benefits",
     xAccountId: "<value>",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -1174,7 +1327,7 @@ const stackOne = new StackOneCore({
 async function run() {
   const res = await hrisGetEmployee(stackOne, {
     expand: "company,employments,work_location,home_location,custom_fields,groups",
-    fields: "id,remote_id,first_name,last_name,name,display_name,gender,ethnicity,date_of_birth,birthday,marital_status,avatar_url,avatar,personal_email,personal_phone_number,work_email,work_phone_number,job_title,job_description,department,cost_centers,benefits,manager_id,remote_manager_id,hire_date,start_date,tenure,work_anniversary,employment_type,employment_contract_type,employment_status,termination_date,company_name,preferred_language,citizenships,home_location,work_location,employments,custom_fields,documents,created_at,updated_at,employee_number,national_identity_number",
+    fields: "id,remote_id,first_name,last_name,name,display_name,gender,ethnicity,date_of_birth,birthday,marital_status,avatar_url,avatar,personal_email,personal_phone_number,work_email,work_phone_number,job_id,remote_job_id,job_title,job_description,department_id,remote_department_id,department,cost_centers,benefits,manager_id,remote_manager_id,hire_date,start_date,tenure,work_anniversary,employment_type,employment_contract_type,employment_status,termination_date,company_name,preferred_language,citizenships,home_location,work_location,employments,custom_fields,documents,created_at,updated_at,employee_number,national_identity_number",
     id: "<id>",
     include: "avatar_url,avatar,custom_fields,job_description,benefits",
     xAccountId: "<value>",
@@ -1236,7 +1389,7 @@ async function run() {
     subResourceId: "<value>",
     xAccountId: "<value>",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -1324,7 +1477,7 @@ async function run() {
     id: "<id>",
     xAccountId: "<value>",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -1413,7 +1566,7 @@ async function run() {
     subResourceId: "<value>",
     xAccountId: "<value>",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -1503,7 +1656,7 @@ async function run() {
     subResourceId: "<value>",
     xAccountId: "<value>",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -1592,7 +1745,7 @@ async function run() {
     subResourceId: "<value>",
     xAccountId: "<value>",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -1681,7 +1834,7 @@ async function run() {
     id: "<id>",
     xAccountId: "<value>",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -1769,7 +1922,7 @@ async function run() {
     id: "<id>",
     xAccountId: "<value>",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -1856,7 +2009,7 @@ async function run() {
     id: "<id>",
     xAccountId: "<value>",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -1943,7 +2096,7 @@ async function run() {
     id: "<id>",
     xAccountId: "<value>",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -2030,7 +2183,7 @@ async function run() {
     id: "<id>",
     xAccountId: "<value>",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -2120,7 +2273,7 @@ async function run() {
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -2213,7 +2366,7 @@ async function run() {
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -2306,7 +2459,7 @@ async function run() {
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -2399,7 +2552,7 @@ async function run() {
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -2493,7 +2646,7 @@ async function run() {
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -2589,7 +2742,7 @@ async function run() {
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -2685,7 +2838,7 @@ async function run() {
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -2780,7 +2933,7 @@ async function run() {
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -2868,7 +3021,7 @@ const stackOne = new StackOne({
 async function run() {
   const result = await stackOne.hris.listEmployees({
     expand: "company,employments,work_location,home_location,custom_fields,groups",
-    fields: "id,remote_id,first_name,last_name,name,display_name,gender,ethnicity,date_of_birth,birthday,marital_status,avatar_url,avatar,personal_email,personal_phone_number,work_email,work_phone_number,job_title,job_description,department,cost_centers,benefits,manager_id,remote_manager_id,hire_date,start_date,tenure,work_anniversary,employment_type,employment_contract_type,employment_status,termination_date,company_name,preferred_language,citizenships,home_location,work_location,employments,custom_fields,documents,created_at,updated_at,employee_number,national_identity_number",
+    fields: "id,remote_id,first_name,last_name,name,display_name,gender,ethnicity,date_of_birth,birthday,marital_status,avatar_url,avatar,personal_email,personal_phone_number,work_email,work_phone_number,job_id,remote_job_id,job_title,job_description,department_id,remote_department_id,department,cost_centers,benefits,manager_id,remote_manager_id,hire_date,start_date,tenure,work_anniversary,employment_type,employment_contract_type,employment_status,termination_date,company_name,preferred_language,citizenships,home_location,work_location,employments,custom_fields,documents,created_at,updated_at,employee_number,national_identity_number",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
@@ -2876,7 +3029,7 @@ async function run() {
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
-
+  
   for await (const page of result) {
     // Handle the page
     console.log(page);
@@ -2906,7 +3059,7 @@ const stackOne = new StackOneCore({
 async function run() {
   const res = await hrisListEmployees(stackOne, {
     expand: "company,employments,work_location,home_location,custom_fields,groups",
-    fields: "id,remote_id,first_name,last_name,name,display_name,gender,ethnicity,date_of_birth,birthday,marital_status,avatar_url,avatar,personal_email,personal_phone_number,work_email,work_phone_number,job_title,job_description,department,cost_centers,benefits,manager_id,remote_manager_id,hire_date,start_date,tenure,work_anniversary,employment_type,employment_contract_type,employment_status,termination_date,company_name,preferred_language,citizenships,home_location,work_location,employments,custom_fields,documents,created_at,updated_at,employee_number,national_identity_number",
+    fields: "id,remote_id,first_name,last_name,name,display_name,gender,ethnicity,date_of_birth,birthday,marital_status,avatar_url,avatar,personal_email,personal_phone_number,work_email,work_phone_number,job_id,remote_job_id,job_title,job_description,department_id,remote_department_id,department,cost_centers,benefits,manager_id,remote_manager_id,hire_date,start_date,tenure,work_anniversary,employment_type,employment_contract_type,employment_status,termination_date,company_name,preferred_language,citizenships,home_location,work_location,employments,custom_fields,documents,created_at,updated_at,employee_number,national_identity_number",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
@@ -2976,7 +3129,7 @@ async function run() {
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -3070,7 +3223,7 @@ async function run() {
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -3163,7 +3316,7 @@ async function run() {
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -3256,7 +3409,7 @@ async function run() {
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -3349,7 +3502,7 @@ async function run() {
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -3432,6 +3585,7 @@ import {
   EmploymentSchemasValue,
   HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue,
   HrisCreateEmployeeRequestDtoSchemasHomeLocationValue,
+  HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberValue,
   HrisCreateEmployeeRequestDtoSchemasPreferredLanguageValue,
   HrisCreateEmployeeRequestDtoSchemasWorkLocationValue,
 } from "@stackone/stackone-client-ts/sdk/models/shared";
@@ -3478,11 +3632,12 @@ async function run() {
       ],
       dateOfBirth: new Date("1990-01-01T00:00.000Z"),
       department: "Physics",
+      departmentId: "3093",
       displayName: "Sir Issac Newton",
       employmentContractType: {},
       employmentStatus: {},
       employmentType: {
-        sourceValue: {},
+        sourceValue: "Permanent",
         value: HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue.Permanent,
       },
       employments: [
@@ -3492,20 +3647,20 @@ async function run() {
           employeeId: "1687-3",
           employmentContractType: {},
           employmentType: {
-            sourceValue: true,
+            sourceValue: {},
             value: EmploymentSchemasValue.Permanent,
           },
           id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
           jobTitle: "Software Engineer",
           payCurrency: "USD",
           payFrequency: {
-            sourceValue: [
-              "Hourly",
-            ],
+            sourceValue: true,
             value: EmploymentSchemasPayFrequencyValue.Hourly,
           },
           payPeriod: {
-            sourceValue: "Hour",
+            sourceValue: [
+              "Hour",
+            ],
             value: EmploymentSchemasPayPeriodValue.Hour,
           },
           payRate: "40.00",
@@ -3544,6 +3699,12 @@ async function run() {
       managerId: "67890",
       maritalStatus: {},
       name: "Issac Newton",
+      nationalIdentityNumber: {
+        type: {
+          value: HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberValue.Ssn,
+        },
+        value: "123456789",
+      },
       passthrough: {
         "other_known_names": "John Doe",
       },
@@ -3578,7 +3739,7 @@ async function run() {
     id: "<id>",
     xAccountId: "<value>",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -3600,6 +3761,7 @@ import {
   EmploymentSchemasValue,
   HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue,
   HrisCreateEmployeeRequestDtoSchemasHomeLocationValue,
+  HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberValue,
   HrisCreateEmployeeRequestDtoSchemasPreferredLanguageValue,
   HrisCreateEmployeeRequestDtoSchemasWorkLocationValue,
 } from "@stackone/stackone-client-ts/sdk/models/shared";
@@ -3642,17 +3804,18 @@ async function run() {
           name: "Training Completion Status",
           remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
           remoteValueId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
-          value: true,
+          value: {},
           valueId: "value_456",
         },
       ],
       dateOfBirth: new Date("1990-01-01T00:00.000Z"),
       department: "Physics",
+      departmentId: "3093",
       displayName: "Sir Issac Newton",
       employmentContractType: {},
       employmentStatus: {},
       employmentType: {
-        sourceValue: Permanent,
+        sourceValue: "Permanent",
         value: HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue.Permanent,
       },
       employments: [
@@ -3662,7 +3825,7 @@ async function run() {
           employeeId: "1687-3",
           employmentContractType: {},
           employmentType: {
-            sourceValue: true,
+            sourceValue: {},
             value: EmploymentSchemasValue.Permanent,
           },
           id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
@@ -3673,7 +3836,7 @@ async function run() {
             value: EmploymentSchemasPayFrequencyValue.Hourly,
           },
           payPeriod: {
-            sourceValue: "Hour",
+            sourceValue: Hour,
             value: EmploymentSchemasPayPeriodValue.Hour,
           },
           payRate: "40.00",
@@ -3712,6 +3875,12 @@ async function run() {
       managerId: "67890",
       maritalStatus: {},
       name: "Issac Newton",
+      nationalIdentityNumber: {
+        type: {
+          value: HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberValue.Ssn,
+        },
+        value: "123456789",
+      },
       passthrough: {
         "other_known_names": "John Doe",
       },
@@ -3808,7 +3977,7 @@ async function run() {
         categoryId: "6530",
         createdAt: new Date("2021-01-01T01:01:01.000Z"),
         fileFormat: {
-          sourceValue: abc,
+          sourceValue: "abc",
           value: HrisCreateWorkEligibilityRequestDtoSchemasDocumentValue.Pdf,
         },
         id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
@@ -3834,7 +4003,7 @@ async function run() {
     subResourceId: "<value>",
     xAccountId: "<value>",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -3871,7 +4040,7 @@ async function run() {
         categoryId: "6530",
         createdAt: new Date("2021-01-01T01:01:01.000Z"),
         fileFormat: {
-          sourceValue: {},
+          sourceValue: "abc",
           value: HrisCreateWorkEligibilityRequestDtoSchemasDocumentValue.Pdf,
         },
         id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
@@ -3939,7 +4108,6 @@ Update time off request
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
-import { HrisCreateTimeOffRequestDtoSchemas2 } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 const stackOne = new StackOne({
   security: {
@@ -3959,12 +4127,12 @@ async function run() {
         "other_known_names": "John Doe",
       },
       startDate: new Date("2021-01-01T01:01:01.000Z"),
-      startHalfDay: HrisCreateTimeOffRequestDtoSchemas2.True,
+      startHalfDay: true,
     },
     id: "<id>",
     xAccountId: "<value>",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -3979,7 +4147,6 @@ The standalone function version of this method:
 ```typescript
 import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
 import { hrisUpdateTimeOffRequest } from "@stackone/stackone-client-ts/funcs/hrisUpdateTimeOffRequest.js";
-import { HrisCreateTimeOffRequestDtoSchemas2 } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 // Use `StackOneCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -4001,7 +4168,7 @@ async function run() {
         "other_known_names": "John Doe",
       },
       startDate: new Date("2021-01-01T01:01:01.000Z"),
-      startHalfDay: HrisCreateTimeOffRequestDtoSchemas2.True,
+      startHalfDay: true,
     },
     id: "<id>",
     xAccountId: "<value>",
@@ -4070,12 +4237,12 @@ async function run() {
       },
       categoryId: "6530",
       confidential: {
-        sourceValue: {},
+        sourceValue: "public",
         value: HrisDocumentsUploadRequestDtoSchemasValue.True,
       },
       content: "VGhpcyBpc24ndCByZWFsbHkgYSBzYW1wbGUgZmlsZSwgYnV0IG5vIG9uZSB3aWxsIGV2ZXIga25vdyE",
       fileFormat: {
-        sourceValue: {},
+        sourceValue: "abc",
         value: HrisDocumentsUploadRequestDtoSchemasFileFormatValue.Pdf,
       },
       name: "weather-forecast",
@@ -4084,7 +4251,7 @@ async function run() {
     id: "<id>",
     xAccountId: "<value>",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -4119,18 +4286,16 @@ async function run() {
     hrisDocumentsUploadRequestDto: {
       category: {
         sourceValue: "550e8400-e29b-41d4-a716-446655440000",
-        value: HrisDocumentsUploadRequestDtoValue.Resume,
+        value: HrisDocumentsUploadRequestDtoValue.UnmappedValue,
       },
       categoryId: "6530",
       confidential: {
-        sourceValue: true,
+        sourceValue: "public",
         value: HrisDocumentsUploadRequestDtoSchemasValue.True,
       },
       content: "VGhpcyBpc24ndCByZWFsbHkgYSBzYW1wbGUgZmlsZSwgYnV0IG5vIG9uZSB3aWxsIGV2ZXIga25vdyE",
       fileFormat: {
-        sourceValue: [
-          "abc",
-        ],
+        sourceValue: "abc",
         value: HrisDocumentsUploadRequestDtoSchemasFileFormatValue.Pdf,
       },
       name: "weather-forecast",

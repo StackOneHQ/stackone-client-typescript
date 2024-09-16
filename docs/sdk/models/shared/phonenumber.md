@@ -6,7 +6,7 @@
 import { PhoneNumber } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: PhoneNumber = {
-    phone: "+447700112233",
+  phone: "+447700112233",
 };
 ```
 

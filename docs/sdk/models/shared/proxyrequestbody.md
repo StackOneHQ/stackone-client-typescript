@@ -6,11 +6,11 @@
 import { ProxyRequestBody } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: ProxyRequestBody = {
-    headers: {
-        "Content-Type": "application/json",
-    },
-    path: "/employees/directory",
-    url: "https://api.sample-integration.com/v1",
+  headers: {
+    "Content-Type": "application/json",
+  },
+  path: "/employees/directory",
+  url: "https://api.sample-integration.com/v1",
 };
 ```
 

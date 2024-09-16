@@ -7,60 +7,60 @@ import { StackoneGetConnectorMetaResponse } from "@stackone/stackone-client-ts/s
 import { ConnectorsMetaCategory } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: StackoneGetConnectorMetaResponse = {
-    connectorsMeta: {
-        active: true,
-        category: ConnectorsMetaCategory.Hris,
-        models: {
-            employees: {
-                create: {
-                    apiPath: "/unified/hris/employees/:id",
-                    input: {
-                        defaultFields: [
-                            {
-                                name: "first_name",
-                                type: "string",
-                            },
-                        ],
-                    },
-                    output: {
-                        defaultFields: [
-                            {
-                                name: "id",
-                                type: "string",
-                            },
-                        ],
-                    },
-                },
-            },
-            time_off: {
-                get: {
-                    apiPath: "/unified/hris/employees/:id/time_off/:id",
-                    output: {
-                        defaultFields: [
-                            {
-                                name: "id",
-                                type: "string",
-                            },
-                        ],
-                    },
-                },
-            },
+  connectorsMeta: {
+    active: true,
+    category: ConnectorsMetaCategory.Hris,
+    models: {
+      "employees": {
+        "create": {
+          "apiPath": "/unified/hris/employees/:id",
+          "input": {
+            "defaultFields": [
+              {
+                "name": "first_name",
+                "type": "string",
+              },
+            ],
+          },
+          "output": {
+            "defaultFields": [
+              {
+                "name": "id",
+                "type": "string",
+              },
+            ],
+          },
         },
-        provider: "hibob",
-        providerName: "Hibob",
-        resources: {
-            images: {
-                logoUrl: "https://app.stackone.com/assets/logos/hibob.png",
-                originalLogoHorizontalUrl:
-                    "https://app.stackone.com/assets/logos/original/hibob_horizontal.png",
-            },
+      },
+      "time_off": {
+        "get": {
+          "apiPath": "/unified/hris/employees/:id/time_off/:id",
+          "output": {
+            "defaultFields": [
+              {
+                "name": "id",
+                "type": "string",
+              },
+            ],
+          },
         },
+      },
     },
-    contentType: "<value>",
-    statusCode: 272656,
-    rawResponse: new Response('{"message": "hello world"}', {
-        headers: { "Content-Type": "application/json" },
-    }),
+    provider: "hibob",
+    providerName: "Hibob",
+    resources: {
+      images: {
+        logoUrl: "https://app.stackone.com/assets/logos/hibob.png",
+        originalLogoHorizontalUrl:
+          "https://app.stackone.com/assets/logos/original/hibob_horizontal.png",
+      },
+    },
+  },
+  contentType: "<value>",
+  statusCode: 272656,
+  rawResponse: new Response("{\"message\": \"hello world\"}", {
+    headers: { "Content-Type": "application/json" },
+  }),
 };
 ```
 

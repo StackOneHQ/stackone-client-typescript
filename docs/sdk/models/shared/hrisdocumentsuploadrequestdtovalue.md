@@ -7,7 +7,8 @@ The category name to associate with the file
 ```typescript
 import { HrisDocumentsUploadRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: HrisDocumentsUploadRequestDtoValue = HrisDocumentsUploadRequestDtoValue.Visa;
+let value: HrisDocumentsUploadRequestDtoValue =
+  HrisDocumentsUploadRequestDtoValue.Academic;
 ```
 
 ## Values

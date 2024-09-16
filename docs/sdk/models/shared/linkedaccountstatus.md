@@ -5,7 +5,7 @@
 ```typescript
 import { LinkedAccountStatus } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: LinkedAccountStatus = LinkedAccountStatus.Error;
+let value: LinkedAccountStatus = LinkedAccountStatus.Inactive;
 ```
 
 ## Values

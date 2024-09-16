@@ -4,10 +4,10 @@
 
 import { StackOneCore } from "../core.js";
 import {
-    encodeDeepObjectQuery as encodeDeepObjectQuery$,
-    encodeFormQuery as encodeFormQuery$,
-    encodeSimple as encodeSimple$,
-    queryJoin as queryJoin$,
+  encodeDeepObjectQuery as encodeDeepObjectQuery$,
+  encodeFormQuery as encodeFormQuery$,
+  encodeSimple as encodeSimple$,
+  queryJoin as queryJoin$,
 } from "../lib/encodings.js";
 import * as m$ from "../lib/matchers.js";
 import * as schemas$ from "../lib/schemas.js";
@@ -15,11 +15,11 @@ import { RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
 import {
-    ConnectionError,
-    InvalidRequestError,
-    RequestAbortedError,
-    RequestTimeoutError,
-    UnexpectedClientError,
+  ConnectionError,
+  InvalidRequestError,
+  RequestAbortedError,
+  RequestTimeoutError,
+  UnexpectedClientError,
 } from "../sdk/models/errors/httpclienterrors.js";
 import { SDKError } from "../sdk/models/errors/sdkerror.js";
 import { SDKValidationError } from "../sdk/models/errors/sdkvalidationerror.js";
@@ -30,126 +30,132 @@ import { Result } from "../sdk/types/fp.js";
  * List Employee Employments
  */
 export async function hrisListEmployeeEmployments(
-    client$: StackOneCore,
-    request: operations.HrisListEmployeeEmploymentsRequest,
-    options?: RequestOptions
+  client$: StackOneCore,
+  request: operations.HrisListEmployeeEmploymentsRequest,
+  options?: RequestOptions,
 ): Promise<
-    Result<
-        operations.HrisListEmployeeEmploymentsResponse,
-        | SDKError
-        | SDKValidationError
-        | UnexpectedClientError
-        | InvalidRequestError
-        | RequestAbortedError
-        | RequestTimeoutError
-        | ConnectionError
-    >
+  Result<
+    operations.HrisListEmployeeEmploymentsResponse,
+    | SDKError
+    | SDKValidationError
+    | UnexpectedClientError
+    | InvalidRequestError
+    | RequestAbortedError
+    | RequestTimeoutError
+    | ConnectionError
+  >
 > {
-    const input$ = request;
+  const input$ = request;
 
-    const parsed$ = schemas$.safeParse(
-        input$,
-        (value$) => operations.HrisListEmployeeEmploymentsRequest$outboundSchema.parse(value$),
-        "Input validation failed"
-    );
-    if (!parsed$.ok) {
-        return parsed$;
-    }
-    const payload$ = parsed$.value;
-    const body$ = null;
+  const parsed$ = schemas$.safeParse(
+    input$,
+    (value$) =>
+      operations.HrisListEmployeeEmploymentsRequest$outboundSchema.parse(
+        value$,
+      ),
+    "Input validation failed",
+  );
+  if (!parsed$.ok) {
+    return parsed$;
+  }
+  const payload$ = parsed$.value;
+  const body$ = null;
 
-    const pathParams$ = {
-        id: encodeSimple$("id", payload$.id, { explode: false, charEncoding: "percent" }),
-    };
+  const pathParams$ = {
+    id: encodeSimple$("id", payload$.id, {
+      explode: false,
+      charEncoding: "percent",
+    }),
+  };
 
-    const path$ = pathToFunc("/unified/hris/employees/{id}/employments")(pathParams$);
+  const path$ = pathToFunc("/unified/hris/employees/{id}/employments")(
+    pathParams$,
+  );
 
-    const query$ = queryJoin$(
-        encodeDeepObjectQuery$({
-            filter: payload$.filter,
-            proxy: payload$.proxy,
-        }),
-        encodeFormQuery$({
-            expand: payload$.expand,
-            fields: payload$.fields,
-            next: payload$.next,
-            page: payload$.page,
-            page_size: payload$.page_size,
-            raw: payload$.raw,
-            updated_after: payload$.updated_after,
-        })
-    );
+  const query$ = queryJoin$(
+    encodeDeepObjectQuery$({
+      "filter": payload$.filter,
+      "proxy": payload$.proxy,
+    }),
+    encodeFormQuery$({
+      "expand": payload$.expand,
+      "fields": payload$.fields,
+      "next": payload$.next,
+      "page": payload$.page,
+      "page_size": payload$.page_size,
+      "raw": payload$.raw,
+      "updated_after": payload$.updated_after,
+    }),
+  );
 
-    const headers$ = new Headers({
-        Accept: "application/json",
-        "x-account-id": encodeSimple$("x-account-id", payload$["x-account-id"], {
-            explode: false,
-            charEncoding: "none",
-        }),
-    });
+  const headers$ = new Headers({
+    Accept: "application/json",
+    "x-account-id": encodeSimple$("x-account-id", payload$["x-account-id"], {
+      explode: false,
+      charEncoding: "none",
+    }),
+  });
 
-    const security$ = await extractSecurity(client$.options$.security);
-    const context = {
-        operationID: "hris_list_employee_employments",
-        oAuth2Scopes: [],
-        securitySource: client$.options$.security,
-    };
-    const securitySettings$ = resolveGlobalSecurity(security$);
+  const security$ = await extractSecurity(client$.options$.security);
+  const context = {
+    operationID: "hris_list_employee_employments",
+    oAuth2Scopes: [],
+    securitySource: client$.options$.security,
+  };
+  const securitySettings$ = resolveGlobalSecurity(security$);
 
-    const requestRes = client$.createRequest$(
-        context,
-        {
-            security: securitySettings$,
-            method: "GET",
-            path: path$,
-            headers: headers$,
-            query: query$,
-            body: body$,
-            timeoutMs: options?.timeoutMs || client$.options$.timeoutMs || -1,
-        },
-        options
-    );
-    if (!requestRes.ok) {
-        return requestRes;
-    }
-    const request$ = requestRes.value;
+  const requestRes = client$.createRequest$(context, {
+    security: securitySettings$,
+    method: "GET",
+    path: path$,
+    headers: headers$,
+    query: query$,
+    body: body$,
+    timeoutMs: options?.timeoutMs || client$.options$.timeoutMs || -1,
+  }, options);
+  if (!requestRes.ok) {
+    return requestRes;
+  }
+  const request$ = requestRes.value;
 
-    const doResult = await client$.do$(request$, {
-        context,
-        errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
-        retryConfig: options?.retries || client$.options$.retryConfig,
-        retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
-    });
-    if (!doResult.ok) {
-        return doResult;
-    }
-    const response = doResult.value;
+  const doResult = await client$.do$(request$, {
+    context,
+    errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+    retryConfig: options?.retries
+      || client$.options$.retryConfig,
+    retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
+  });
+  if (!doResult.ok) {
+    return doResult;
+  }
+  const response = doResult.value;
 
-    const responseFields$ = {
-        ContentType: response.headers.get("content-type") ?? "application/octet-stream",
-        StatusCode: response.status,
-        RawResponse: response,
-        Headers: {},
-    };
+  const responseFields$ = {
+    ContentType: response.headers.get("content-type")
+      ?? "application/octet-stream",
+    StatusCode: response.status,
+    RawResponse: response,
+    Headers: {},
+  };
 
-    const [result$] = await m$.match<
-        operations.HrisListEmployeeEmploymentsResponse,
-        | SDKError
-        | SDKValidationError
-        | UnexpectedClientError
-        | InvalidRequestError
-        | RequestAbortedError
-        | RequestTimeoutError
-        | ConnectionError
-    >(
-        m$.json(200, operations.HrisListEmployeeEmploymentsResponse$inboundSchema, {
-            key: "EmploymentsPaginated",
-        }),
-        m$.fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"])
-    )(response, { extraFields: responseFields$ });
-    if (!result$.ok) {
-        return result$;
-    }
-
+  const [result$] = await m$.match<
+    operations.HrisListEmployeeEmploymentsResponse,
+    | SDKError
+    | SDKValidationError
+    | UnexpectedClientError
+    | InvalidRequestError
+    | RequestAbortedError
+    | RequestTimeoutError
+    | ConnectionError
+  >(
+    m$.json(200, operations.HrisListEmployeeEmploymentsResponse$inboundSchema, {
+      key: "EmploymentsPaginated",
+    }),
+    m$.fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"]),
+  )(response, { extraFields: responseFields$ });
+  if (!result$.ok) {
     return result$;
+  }
+
+  return result$;
 }

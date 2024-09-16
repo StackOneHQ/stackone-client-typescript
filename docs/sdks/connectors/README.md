@@ -29,7 +29,7 @@ async function run() {
     include: "field_path,unmapped_fields,resources,inactive,webhooks",
     provider: "<value>",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -113,7 +113,7 @@ async function run() {
   const result = await stackOne.connectors.listConnectorsMeta({
     include: "field_path,unmapped_fields,resources,inactive,webhooks",
   });
-
+  
   // Handle the result
   console.log(result)
 }

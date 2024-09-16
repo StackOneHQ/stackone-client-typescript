@@ -6,8 +6,8 @@
 import { StackoneGetConnectorMetaRequest } from "@stackone/stackone-client-ts/sdk/models/operations";
 
 let value: StackoneGetConnectorMetaRequest = {
-    include: "field_path,unmapped_fields,resources,inactive,webhooks",
-    provider: "<value>",
+  include: "field_path,unmapped_fields,resources,inactive,webhooks",
+  provider: "<value>",
 };
 ```
 

@@ -6,19 +6,19 @@
 import { AtsCreateNotesRequestDto, AtsCreateNotesRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: AtsCreateNotesRequestDto = {
-    authorId: "1234567890",
-    content: [
-        {
-            body: "This candidate seems like a good fit for the role",
-        },
-    ],
-    passthrough: {
-        other_known_names: "John Doe",
+  authorId: "1234567890",
+  content: [
+    {
+      body: "This candidate seems like a good fit for the role",
     },
-    visibility: {
-        sourceValue: Public,
-        value: AtsCreateNotesRequestDtoValue.Public,
-    },
+  ],
+  passthrough: {
+    "other_known_names": "John Doe",
+  },
+  visibility: {
+    sourceValue: "Public",
+    value: AtsCreateNotesRequestDtoValue.Public,
+  },
 };
 ```
 

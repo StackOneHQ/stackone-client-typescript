@@ -10,23 +10,31 @@ import * as shared from "./models/shared/index.js";
 import { unwrapAsync } from "./types/fp.js";
 
 export class ConnectSessions extends ClientSDK {
-    /**
-     * Authenticate Connect Session
-     */
-    async authenticateConnectSession(
-        request: shared.ConnectSessionAuthenticate,
-        options?: RequestOptions
-    ): Promise<operations.StackoneAuthenticateConnectSessionResponse> {
-        return unwrapAsync(connectSessionsAuthenticateConnectSession(this, request, options));
-    }
+  /**
+   * Authenticate Connect Session
+   */
+  async authenticateConnectSession(
+    request: shared.ConnectSessionAuthenticate,
+    options?: RequestOptions,
+  ): Promise<operations.StackoneAuthenticateConnectSessionResponse> {
+    return unwrapAsync(connectSessionsAuthenticateConnectSession(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Create Connect Session
-     */
-    async createConnectSession(
-        request: shared.ConnectSessionCreate,
-        options?: RequestOptions
-    ): Promise<operations.StackoneCreateConnectSessionResponse> {
-        return unwrapAsync(connectSessionsCreateConnectSession(this, request, options));
-    }
+  /**
+   * Create Connect Session
+   */
+  async createConnectSession(
+    request: shared.ConnectSessionCreate,
+    options?: RequestOptions,
+  ): Promise<operations.StackoneCreateConnectSessionResponse> {
+    return unwrapAsync(connectSessionsCreateConnectSession(
+      this,
+      request,
+      options,
+    ));
+  }
 }

@@ -5,7 +5,7 @@
 ```typescript
 import { Campaign2 } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: Campaign2 = Campaign2.True;
+let value: Campaign2 = Campaign2.False;
 ```
 
 ## Values

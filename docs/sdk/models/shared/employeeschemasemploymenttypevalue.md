@@ -7,7 +7,8 @@ The type of the employment.
 ```typescript
 import { EmployeeSchemasEmploymentTypeValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: EmployeeSchemasEmploymentTypeValue = EmployeeSchemasEmploymentTypeValue.Permanent;
+let value: EmployeeSchemasEmploymentTypeValue =
+  EmployeeSchemasEmploymentTypeValue.Permanent;
 ```
 
 ## Values

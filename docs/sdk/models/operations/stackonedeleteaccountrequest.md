@@ -6,7 +6,7 @@
 import { StackoneDeleteAccountRequest } from "@stackone/stackone-client-ts/sdk/models/operations";
 
 let value: StackoneDeleteAccountRequest = {
-    id: "<id>",
+  id: "<id>",
 };
 ```
 

@@ -6,11 +6,11 @@
 import { HrisUpdateEmployeeWorkEligibilityRequestResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
 
 let value: HrisUpdateEmployeeWorkEligibilityRequestResponse = {
-    contentType: "<value>",
-    statusCode: 652103,
-    rawResponse: new Response('{"message": "hello world"}', {
-        headers: { "Content-Type": "application/json" },
-    }),
+  contentType: "<value>",
+  statusCode: 891924,
+  rawResponse: new Response("{\"message\": \"hello world\"}", {
+    headers: { "Content-Type": "application/json" },
+  }),
 };
 ```
 

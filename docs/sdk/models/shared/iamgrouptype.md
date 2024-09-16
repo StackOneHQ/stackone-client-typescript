@@ -6,7 +6,7 @@
 import { IamGroupType, IamGroupValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: IamGroupType = {
-    value: IamGroupValue.Team,
+  value: IamGroupValue.Team,
 };
 ```
 

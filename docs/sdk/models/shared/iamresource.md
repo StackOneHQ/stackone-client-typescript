@@ -6,15 +6,15 @@
 import { IamResource, IamResourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: IamResource = {
-    createdAt: new Date("2021-01-01T01:01:01.000Z"),
-    id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-    location: "s3://bucket-name/folder-name",
-    name: "Company History Records",
-    remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-    type: {
-        value: IamResourceValue.File,
-    },
-    updatedAt: new Date("2021-01-01T01:01:01.000Z"),
+  createdAt: new Date("2021-01-01T01:01:01.000Z"),
+  id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+  location: "s3://bucket-name/folder-name",
+  name: "Company History Records",
+  remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+  type: {
+    value: IamResourceValue.File,
+  },
+  updatedAt: new Date("2021-01-01T01:01:01.000Z"),
 };
 ```
 

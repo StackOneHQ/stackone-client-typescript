@@ -6,19 +6,24 @@
 import { Field2, FieldType, ScorecardSection } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: ScorecardSection = {
-    fields: [
-        {
-            id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-            label: "Problem Solving",
-            remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-            required: Field2.True,
-            type: FieldType.SingleSelect,
-            values: ["Excellent", "Good", "Average", "Poor"],
-        },
-    ],
-    id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-    label: "Technical Skills",
-    remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+  fields: [
+    {
+      id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+      label: "Problem Solving",
+      remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+      required: Field2.True,
+      type: FieldType.MultiSelect,
+      values: [
+        "Excellent",
+        "Good",
+        "Average",
+        "Poor",
+      ],
+    },
+  ],
+  id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+  label: "Technical Skills",
+  remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
 };
 ```
 

@@ -26,6 +26,7 @@
 * [getInterview](#getinterview) - Get Interview
 * [getInterviewStage](#getinterviewstage) - Get Interview Stage
 * [getJob](#getjob) - Get Job
+* [getJobCustomFieldDefinition](#getjobcustomfielddefinition) - Get Job Custom Field Definition
 * [getJobPosting](#getjobposting) - Get Job Posting
 * [getList](#getlist) - Get List
 * [getLocation](#getlocation) - Get Location
@@ -45,6 +46,7 @@
 * [listDepartments](#listdepartments) - List Departments
 * [listInterviewStages](#listinterviewstages) - List Interview Stages
 * [listInterviews](#listinterviews) - List Interviews
+* [listJobCustomFieldDefinitions](#listjobcustomfielddefinitions) - List Job Custom Field Definitions
 * [listJobPostings](#listjobpostings) - List Job Postings
 * [listJobs](#listjobs) - List Jobs
 * [listLists](#listlists) - Get all Lists
@@ -52,6 +54,8 @@
 * [listOffers](#listoffers) - List Offers
 * [listRejectedReasons](#listrejectedreasons) - List Rejected Reasons
 * [listUsers](#listusers) - List Users
+* [moveApplication](#moveapplication) - Move Application
+* [rejectApplication](#rejectapplication) - Reject Application
 * [updateApplication](#updateapplication) - Update an Application
 * [updateCandidate](#updatecandidate) - Update Candidate
 * [uploadApplicationDocument](#uploadapplicationdocument) - Upload Application Document
@@ -77,7 +81,107 @@ async function run() {
   const result = await stackOne.ats.createApplication({
     atsCreateApplicationRequestDto: {
       applicationStatus: {
-        sourceValue: true,
+        sourceValue: "Hired",
+        value: AtsCreateApplicationRequestDtoValue.Hired,
+      },
+      candidate: {
+        company: "Company Inc.",
+        country: "United States",
+        customFields: [
+          {
+            id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+            name: "Training Completion Status",
+            remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+            remoteValueId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
+            value: true,
+            valueId: "value_456",
+          },
+        ],
+        email: "sestier.romain123@gmail.com",
+        firstName: "Romain",
+        hiredAt: new Date("2021-01-01T01:01:01.000Z"),
+        lastName: "Sestier",
+        name: "Romain Sestier",
+        passthrough: {
+          "other_known_names": "John Doe",
+        },
+        phoneNumber: "+1234567890",
+        socialLinks: [
+          {
+            type: "linkedin",
+            url: "https://www.linkedin.com/in/romainsestier/",
+          },
+        ],
+        title: "Software Engineer",
+        unifiedCustomFields: {
+          "my_project_custom_field_1": "REF-1236",
+          "my_project_custom_field_2": "some other value",
+        },
+      },
+      candidateId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
+      jobId: "4071538b-3cac-4fbf-ac76-f78ed250ffdd",
+      locationId: "dd8d41d1-5eb8-4408-9c87-9ba44604eae4",
+      passthrough: {
+        "other_known_names": "John Doe",
+      },
+      questionnaires: [
+        {
+          answers: [
+            {
+              id: "answer1",
+              remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+              type: {
+                sourceValue: "Short Text",
+                value: AnswerValue.ShortText,
+              },
+              values: [
+                "Yes",
+              ],
+            },
+          ],
+          id: "right_to_work",
+          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        },
+      ],
+      source: {
+        id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        name: "LinkedIn",
+        remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+      },
+    },
+    xAccountId: "<value>",
+  });
+  
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
+import { atsCreateApplication } from "@stackone/stackone-client-ts/funcs/atsCreateApplication.js";
+import { AnswerValue, AtsCreateApplicationRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+// Use `StackOneCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const stackOne = new StackOneCore({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const res = await atsCreateApplication(stackOne, {
+    atsCreateApplicationRequestDto: {
+      applicationStatus: {
+        sourceValue: "Hired",
         value: AtsCreateApplicationRequestDtoValue.Hired,
       },
       candidate: {
@@ -127,107 +231,7 @@ async function run() {
               id: "answer1",
               remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
               type: {
-                sourceValue: {},
-                value: AnswerValue.ShortText,
-              },
-              values: [
-                "Yes",
-              ],
-            },
-          ],
-          id: "right_to_work",
-          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-        },
-      ],
-      source: {
-        id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-        name: "LinkedIn",
-        remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-      },
-    },
-    xAccountId: "<value>",
-  });
-
-  // Handle the result
-  console.log(result)
-}
-
-run();
-```
-
-### Standalone function
-
-The standalone function version of this method:
-
-```typescript
-import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
-import { atsCreateApplication } from "@stackone/stackone-client-ts/funcs/atsCreateApplication.js";
-import { AnswerValue, AtsCreateApplicationRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
-
-// Use `StackOneCore` for best tree-shaking performance.
-// You can create one instance of it to use across an application.
-const stackOne = new StackOneCore({
-  security: {
-    password: "",
-    username: "",
-  },
-});
-
-async function run() {
-  const res = await atsCreateApplication(stackOne, {
-    atsCreateApplicationRequestDto: {
-      applicationStatus: {
-        sourceValue: Hired,
-        value: AtsCreateApplicationRequestDtoValue.Hired,
-      },
-      candidate: {
-        company: "Company Inc.",
-        country: "United States",
-        customFields: [
-          {
-            id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-            name: "Training Completion Status",
-            remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-            remoteValueId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
-            value: Completed,
-            valueId: "value_456",
-          },
-        ],
-        email: "sestier.romain123@gmail.com",
-        firstName: "Romain",
-        hiredAt: new Date("2021-01-01T01:01:01.000Z"),
-        lastName: "Sestier",
-        name: "Romain Sestier",
-        passthrough: {
-          "other_known_names": "John Doe",
-        },
-        phoneNumber: "+1234567890",
-        socialLinks: [
-          {
-            type: "linkedin",
-            url: "https://www.linkedin.com/in/romainsestier/",
-          },
-        ],
-        title: "Software Engineer",
-        unifiedCustomFields: {
-          "my_project_custom_field_1": "REF-1236",
-          "my_project_custom_field_2": "some other value",
-        },
-      },
-      candidateId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
-      jobId: "4071538b-3cac-4fbf-ac76-f78ed250ffdd",
-      locationId: "dd8d41d1-5eb8-4408-9c87-9ba44604eae4",
-      passthrough: {
-        "other_known_names": "John Doe",
-      },
-      questionnaires: [
-        {
-          answers: [
-            {
-              id: "answer1",
-              remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-              type: {
-                sourceValue: true,
+                sourceValue: "Short Text",
                 value: AnswerValue.ShortText,
               },
               values: [
@@ -335,7 +339,7 @@ async function run() {
     },
     xAccountId: "<value>",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -469,7 +473,7 @@ async function run() {
     id: "<id>",
     xAccountId: "<value>",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -508,9 +512,7 @@ async function run() {
         "other_known_names": "John Doe",
       },
       visibility: {
-        sourceValue: [
-          "Public",
-        ],
+        sourceValue: "Public",
         value: AtsCreateNotesRequestDtoValue.Public,
       },
     },
@@ -579,7 +581,7 @@ async function run() {
         },
       ],
       offerStatus: {
-        sourceValue: true,
+        sourceValue: "Pending",
         value: AtsCreateOfferRequestDtoValue.Pending,
       },
       passthrough: {
@@ -589,7 +591,7 @@ async function run() {
     },
     xAccountId: "<value>",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -626,7 +628,7 @@ async function run() {
         },
       ],
       offerStatus: {
-        sourceValue: Pending,
+        sourceValue: "Pending",
         value: AtsCreateOfferRequestDtoValue.Pending,
       },
       passthrough: {
@@ -693,7 +695,7 @@ async function run() {
     subResourceId: "<value>",
     xAccountId: "<value>",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -783,7 +785,7 @@ async function run() {
     include: "attachments,custom_fields",
     xAccountId: "<value>",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -876,7 +878,7 @@ async function run() {
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -968,7 +970,7 @@ async function run() {
     subResourceId: "<value>",
     xAccountId: "<value>",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -1057,7 +1059,7 @@ async function run() {
     subResourceId: "<value>",
     xAccountId: "<value>",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -1146,7 +1148,7 @@ async function run() {
     subResourceId: "<value>",
     xAccountId: "<value>",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -1235,7 +1237,7 @@ async function run() {
     subResourceId: "<value>",
     xAccountId: "<value>",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -1322,7 +1324,7 @@ async function run() {
     id: "<id>",
     xAccountId: "<value>",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -1408,7 +1410,7 @@ async function run() {
     id: "<id>",
     xAccountId: "<value>",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -1495,7 +1497,7 @@ async function run() {
     id: "<id>",
     xAccountId: "<value>",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -1583,7 +1585,7 @@ async function run() {
     include: "custom_fields",
     xAccountId: "<value>",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -1675,7 +1677,7 @@ async function run() {
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -1767,7 +1769,7 @@ async function run() {
     subResourceId: "<value>",
     xAccountId: "<value>",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -1855,7 +1857,7 @@ async function run() {
     id: "<id>",
     xAccountId: "<value>",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -1942,7 +1944,7 @@ async function run() {
     id: "<id>",
     xAccountId: "<value>",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -2029,7 +2031,7 @@ async function run() {
     id: "<id>",
     xAccountId: "<value>",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -2113,11 +2115,12 @@ const stackOne = new StackOne({
 async function run() {
   const result = await stackOne.ats.getJob({
     expand: "job_postings,interview_stages",
-    fields: "id,remote_id,code,title,status,job_status,department_ids,remote_department_ids,location_ids,remote_location_ids,hiring_team,interview_stages,confidential,created_at,updated_at",
+    fields: "id,remote_id,code,title,status,job_status,department_ids,remote_department_ids,location_ids,remote_location_ids,hiring_team,interview_stages,confidential,custom_fields,created_at,updated_at",
     id: "<id>",
+    include: "custom_fields",
     xAccountId: "<value>",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -2145,8 +2148,9 @@ const stackOne = new StackOneCore({
 async function run() {
   const res = await atsGetJob(stackOne, {
     expand: "job_postings,interview_stages",
-    fields: "id,remote_id,code,title,status,job_status,department_ids,remote_department_ids,location_ids,remote_location_ids,hiring_team,interview_stages,confidential,created_at,updated_at",
+    fields: "id,remote_id,code,title,status,job_status,department_ids,remote_department_ids,location_ids,remote_location_ids,hiring_team,interview_stages,confidential,custom_fields,created_at,updated_at",
     id: "<id>",
+    include: "custom_fields",
     xAccountId: "<value>",
   });
 
@@ -2183,6 +2187,101 @@ run();
 | errors.SDKError | 4xx-5xx         | */*             |
 
 
+## getJobCustomFieldDefinition
+
+Get Job Custom Field Definition
+
+### Example Usage
+
+```typescript
+import { StackOne } from "@stackone/stackone-client-ts";
+
+const stackOne = new StackOne({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const result = await stackOne.ats.getJobCustomFieldDefinition({
+    fields: "id,remote_id,name,description,type,options",
+    filter: {
+      updatedAfter: "2020-01-01T00:00:00.000Z",
+    },
+    id: "<id>",
+    updatedAfter: "2020-01-01T00:00:00.000Z",
+    xAccountId: "<value>",
+  });
+  
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
+import { atsGetJobCustomFieldDefinition } from "@stackone/stackone-client-ts/funcs/atsGetJobCustomFieldDefinition.js";
+
+// Use `StackOneCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const stackOne = new StackOneCore({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const res = await atsGetJobCustomFieldDefinition(stackOne, {
+    fields: "id,remote_id,name,description,type,options",
+    filter: {
+      updatedAfter: "2020-01-01T00:00:00.000Z",
+    },
+    id: "<id>",
+    updatedAfter: "2020-01-01T00:00:00.000Z",
+    xAccountId: "<value>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.AtsGetJobCustomFieldDefinitionRequest](../../sdk/models/operations/atsgetjobcustomfielddefinitionrequest.md)                                                       | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[operations.AtsGetJobCustomFieldDefinitionResponse](../../sdk/models/operations/atsgetjobcustomfielddefinitionresponse.md)\>**
+
+### Errors
+
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
+
+
 ## getJobPosting
 
 Get Job Posting
@@ -2206,7 +2305,7 @@ async function run() {
     include: "questionnaires",
     xAccountId: "<value>",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -2294,7 +2393,7 @@ async function run() {
     id: "<id>",
     xAccountId: "<value>",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -2381,7 +2480,7 @@ async function run() {
     id: "<id>",
     xAccountId: "<value>",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -2468,7 +2567,7 @@ async function run() {
     id: "<id>",
     xAccountId: "<value>",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -2555,7 +2654,7 @@ async function run() {
     id: "<id>",
     xAccountId: "<value>",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -2642,7 +2741,7 @@ async function run() {
     id: "<id>",
     xAccountId: "<value>",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -2732,7 +2831,7 @@ async function run() {
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -2826,7 +2925,7 @@ async function run() {
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -2921,7 +3020,7 @@ async function run() {
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -3018,7 +3117,7 @@ async function run() {
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -3115,7 +3214,7 @@ async function run() {
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -3210,7 +3309,7 @@ async function run() {
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -3303,7 +3402,7 @@ async function run() {
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -3395,7 +3494,7 @@ async function run() {
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -3489,7 +3588,7 @@ async function run() {
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -3584,7 +3683,7 @@ async function run() {
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -3678,7 +3777,7 @@ async function run() {
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -3771,7 +3870,7 @@ async function run() {
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -3864,7 +3963,7 @@ async function run() {
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -3932,6 +4031,99 @@ run();
 | errors.SDKError | 4xx-5xx         | */*             |
 
 
+## listJobCustomFieldDefinitions
+
+List Job Custom Field Definitions
+
+### Example Usage
+
+```typescript
+import { StackOne } from "@stackone/stackone-client-ts";
+
+const stackOne = new StackOne({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const result = await stackOne.ats.listJobCustomFieldDefinitions({
+    fields: "id,remote_id,name,description,type,options",
+    filter: {
+      updatedAfter: "2020-01-01T00:00:00.000Z",
+    },
+    updatedAfter: "2020-01-01T00:00:00.000Z",
+    xAccountId: "<value>",
+  });
+  
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
+import { atsListJobCustomFieldDefinitions } from "@stackone/stackone-client-ts/funcs/atsListJobCustomFieldDefinitions.js";
+
+// Use `StackOneCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const stackOne = new StackOneCore({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const res = await atsListJobCustomFieldDefinitions(stackOne, {
+    fields: "id,remote_id,name,description,type,options",
+    filter: {
+      updatedAfter: "2020-01-01T00:00:00.000Z",
+    },
+    updatedAfter: "2020-01-01T00:00:00.000Z",
+    xAccountId: "<value>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.AtsListJobCustomFieldDefinitionsRequest](../../sdk/models/operations/atslistjobcustomfielddefinitionsrequest.md)                                                   | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[operations.AtsListJobCustomFieldDefinitionsResponse](../../sdk/models/operations/atslistjobcustomfielddefinitionsresponse.md)\>**
+
+### Errors
+
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
+
+
 ## listJobPostings
 
 List Job Postings
@@ -3958,7 +4150,7 @@ async function run() {
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -4046,14 +4238,15 @@ const stackOne = new StackOne({
 async function run() {
   const result = await stackOne.ats.listJobs({
     expand: "job_postings,interview_stages",
-    fields: "id,remote_id,code,title,status,job_status,department_ids,remote_department_ids,location_ids,remote_location_ids,hiring_team,interview_stages,confidential,created_at,updated_at",
+    fields: "id,remote_id,code,title,status,job_status,department_ids,remote_department_ids,location_ids,remote_location_ids,hiring_team,interview_stages,confidential,custom_fields,created_at,updated_at",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
+    include: "custom_fields",
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -4081,10 +4274,11 @@ const stackOne = new StackOneCore({
 async function run() {
   const res = await atsListJobs(stackOne, {
     expand: "job_postings,interview_stages",
-    fields: "id,remote_id,code,title,status,job_status,department_ids,remote_department_ids,location_ids,remote_location_ids,hiring_team,interview_stages,confidential,created_at,updated_at",
+    fields: "id,remote_id,code,title,status,job_status,department_ids,remote_department_ids,location_ids,remote_location_ids,hiring_team,interview_stages,confidential,custom_fields,created_at,updated_at",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
+    include: "custom_fields",
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
@@ -4147,7 +4341,7 @@ async function run() {
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -4240,7 +4434,7 @@ async function run() {
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -4333,7 +4527,7 @@ async function run() {
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -4426,7 +4620,7 @@ async function run() {
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -4519,7 +4713,7 @@ async function run() {
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -4587,6 +4781,200 @@ run();
 | errors.SDKError | 4xx-5xx         | */*             |
 
 
+## moveApplication
+
+Move Application
+
+### Example Usage
+
+```typescript
+import { StackOne } from "@stackone/stackone-client-ts";
+
+const stackOne = new StackOne({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const result = await stackOne.ats.moveApplication({
+    atsMoveApplicationRequestDto: {
+      interviewStageId: "f223d7f6-908b-48f0-9237-b201c307f609",
+      passthrough: {
+        "other_known_names": "John Doe",
+      },
+    },
+    id: "<id>",
+    xAccountId: "<value>",
+  });
+  
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
+import { atsMoveApplication } from "@stackone/stackone-client-ts/funcs/atsMoveApplication.js";
+
+// Use `StackOneCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const stackOne = new StackOneCore({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const res = await atsMoveApplication(stackOne, {
+    atsMoveApplicationRequestDto: {
+      interviewStageId: "f223d7f6-908b-48f0-9237-b201c307f609",
+      passthrough: {
+        "other_known_names": "John Doe",
+      },
+    },
+    id: "<id>",
+    xAccountId: "<value>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.AtsMoveApplicationRequest](../../sdk/models/operations/atsmoveapplicationrequest.md)                                                                               | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[operations.AtsMoveApplicationResponse](../../sdk/models/operations/atsmoveapplicationresponse.md)\>**
+
+### Errors
+
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
+
+
+## rejectApplication
+
+Reject Application
+
+### Example Usage
+
+```typescript
+import { StackOne } from "@stackone/stackone-client-ts";
+
+const stackOne = new StackOne({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const result = await stackOne.ats.rejectApplication({
+    atsRejectApplicationRequestDto: {
+      passthrough: {
+        "other_known_names": "John Doe",
+      },
+      rejectedReasonId: "f223d7f6-908b-48f0-9237-b201c307f609",
+    },
+    id: "<id>",
+    xAccountId: "<value>",
+  });
+  
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
+import { atsRejectApplication } from "@stackone/stackone-client-ts/funcs/atsRejectApplication.js";
+
+// Use `StackOneCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const stackOne = new StackOneCore({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const res = await atsRejectApplication(stackOne, {
+    atsRejectApplicationRequestDto: {
+      passthrough: {
+        "other_known_names": "John Doe",
+      },
+      rejectedReasonId: "f223d7f6-908b-48f0-9237-b201c307f609",
+    },
+    id: "<id>",
+    xAccountId: "<value>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.AtsRejectApplicationRequest](../../sdk/models/operations/atsrejectapplicationrequest.md)                                                                           | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[operations.AtsRejectApplicationResponse](../../sdk/models/operations/atsrejectapplicationresponse.md)\>**
+
+### Errors
+
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
+
+
 ## updateApplication
 
 Update an Application
@@ -4608,7 +4996,7 @@ async function run() {
   const result = await stackOne.ats.updateApplication({
     atsUpdateApplicationRequestDto: {
       applicationStatus: {
-        sourceValue: Hired,
+        sourceValue: "Hired",
         value: AtsUpdateApplicationRequestDtoValue.Hired,
       },
       customFields: [
@@ -4617,9 +5005,7 @@ async function run() {
           name: "Training Completion Status",
           remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
           remoteValueId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
-          value: [
-            "Completed",
-          ],
+          value: Completed,
           valueId: "value_456",
         },
       ],
@@ -4637,7 +5023,7 @@ async function run() {
     id: "<id>",
     xAccountId: "<value>",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -4667,9 +5053,7 @@ async function run() {
   const res = await atsUpdateApplication(stackOne, {
     atsUpdateApplicationRequestDto: {
       applicationStatus: {
-        sourceValue: [
-          "Hired",
-        ],
+        sourceValue: "Hired",
         value: AtsUpdateApplicationRequestDtoValue.Hired,
       },
       customFields: [
@@ -4678,7 +5062,9 @@ async function run() {
           name: "Training Completion Status",
           remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
           remoteValueId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
-          value: true,
+          value: [
+            "Completed",
+          ],
           valueId: "value_456",
         },
       ],
@@ -4801,7 +5187,7 @@ async function run() {
     id: "<id>",
     xAccountId: "<value>",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -4944,9 +5330,7 @@ async function run() {
       },
       content: "VGhpcyBpc24ndCByZWFsbHkgYSBzYW1wbGUgZmlsZSwgYnV0IG5vIG9uZSB3aWxsIGV2ZXIga25vdyE",
       fileFormat: {
-        sourceValue: [
-          "abc",
-        ],
+        sourceValue: "abc",
         value: UnifiedUploadRequestDtoSchemasValue.Pdf,
       },
       name: "weather-forecast",
@@ -4955,7 +5339,7 @@ async function run() {
     id: "<id>",
     xAccountId: "<value>",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -4990,12 +5374,12 @@ async function run() {
       },
       categoryId: "6530",
       confidential: {
-        sourceValue: true,
+        sourceValue: "public",
         value: UnifiedUploadRequestDtoValue.True,
       },
       content: "VGhpcyBpc24ndCByZWFsbHkgYSBzYW1wbGUgZmlsZSwgYnV0IG5vIG9uZSB3aWxsIGV2ZXIga25vdyE",
       fileFormat: {
-        sourceValue: {},
+        sourceValue: "abc",
         value: UnifiedUploadRequestDtoSchemasValue.Pdf,
       },
       name: "weather-forecast",

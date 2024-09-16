@@ -6,10 +6,11 @@
 import { IamGetGroupRequest } from "@stackone/stackone-client-ts/sdk/models/operations";
 
 let value: IamGetGroupRequest = {
-    expand: "roles",
-    fields: "id,remote_id,parent_id,remote_parent_id,name,description,roles,type,created_at,updated_at",
-    id: "<id>",
-    xAccountId: "<value>",
+  expand: "roles",
+  fields:
+    "id,remote_id,parent_id,remote_parent_id,name,description,roles,type,created_at,updated_at",
+  id: "<id>",
+  xAccountId: "<value>",
 };
 ```
 

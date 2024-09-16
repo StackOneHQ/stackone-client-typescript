@@ -4,21 +4,22 @@
 
 ```typescript
 import { HrisUpdateTimeOffRequestRequest } from "@stackone/stackone-client-ts/sdk/models/operations";
+import { HrisCreateTimeOffRequestDtoSchemas2 } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: HrisUpdateTimeOffRequestRequest = {
-    hrisCreateTimeOffRequestDto: {
-        approverId: "1687-4",
-        employeeId: "1687-3",
-        endDate: new Date("2021-01-01T01:01:01.000Z"),
-        endHalfDay: true,
-        passthrough: {
-            other_known_names: "John Doe",
-        },
-        startDate: new Date("2021-01-01T01:01:01.000Z"),
-        startHalfDay: true,
+  hrisCreateTimeOffRequestDto: {
+    approverId: "1687-4",
+    employeeId: "1687-3",
+    endDate: new Date("2021-01-01T01:01:01.000Z"),
+    endHalfDay: true,
+    passthrough: {
+      "other_known_names": "John Doe",
     },
-    id: "<id>",
-    xAccountId: "<value>",
+    startDate: new Date("2021-01-01T01:01:01.000Z"),
+    startHalfDay: HrisCreateTimeOffRequestDtoSchemas2.True,
+  },
+  id: "<id>",
+  xAccountId: "<value>",
 };
 ```
 

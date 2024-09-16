@@ -6,8 +6,8 @@
 import { JobPostingEmploymentType, JobPostingSchemasValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: JobPostingEmploymentType = {
-    sourceValue: Permanent,
-    value: JobPostingSchemasValue.Permanent,
+  sourceValue: {},
+  value: JobPostingSchemasValue.Permanent,
 };
 ```
 

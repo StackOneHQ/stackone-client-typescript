@@ -11,18 +11,22 @@ import {
 } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: JobPostingCompensation = {
-    payFrequency: {
-        sourceValue: {},
-        value: JobPostingCompensationValue.Hourly,
-    },
-    payPeriod: {
-        sourceValue: Hour,
-        value: JobPostingCompensationSchemasValue.Hour,
-    },
-    type: {
-        sourceValue: Salary,
-        value: JobPostingCompensationSchemasTypeValue.Salary,
-    },
+  payFrequency: {
+    sourceValue: [
+      "Hourly",
+    ],
+    value: JobPostingCompensationValue.Hourly,
+  },
+  payPeriod: {
+    sourceValue: Hour,
+    value: JobPostingCompensationSchemasValue.Hour,
+  },
+  type: {
+    sourceValue: [
+      "Salary",
+    ],
+    value: JobPostingCompensationSchemasTypeValue.Salary,
+  },
 };
 ```
 

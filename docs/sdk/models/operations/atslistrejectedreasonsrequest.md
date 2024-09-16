@@ -6,11 +6,11 @@
 import { AtsListRejectedReasonsRequest } from "@stackone/stackone-client-ts/sdk/models/operations";
 
 let value: AtsListRejectedReasonsRequest = {
-    fields: "id,remote_id,label,type,rejected_reason_type",
-    filter: {
-        updatedAfter: "2020-01-01T00:00:00.000Z",
-    },
-    xAccountId: "<value>",
+  fields: "id,remote_id,label,type,rejected_reason_type",
+  filter: {
+    updatedAfter: "2020-01-01T00:00:00.000Z",
+  },
+  xAccountId: "<value>",
 };
 ```
 

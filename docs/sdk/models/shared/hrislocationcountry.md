@@ -8,7 +8,7 @@ The country code
 import { HRISLocationCountry, HRISLocationValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: HRISLocationCountry = {
-    value: HRISLocationValue.Us,
+  value: HRISLocationValue.Us,
 };
 ```
 

@@ -28,7 +28,7 @@ async function run() {
   const result = await stackOne.connectSessions.authenticateConnectSession({
     token: "<value>",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -123,7 +123,7 @@ async function run() {
     originOwnerId: "<value>",
     originOwnerName: "<value>",
   });
-
+  
   // Handle the result
   console.log(result)
 }
@@ -154,12 +154,12 @@ async function run() {
     categories: [
       ConnectSessionCreateCategories.Ats,
       ConnectSessionCreateCategories.Hris,
-      ConnectSessionCreateCategories.Marketing,
+      ConnectSessionCreateCategories.HrisLegacy,
       ConnectSessionCreateCategories.Crm,
       ConnectSessionCreateCategories.Iam,
       ConnectSessionCreateCategories.Marketing,
       ConnectSessionCreateCategories.Lms,
-      ConnectSessionCreateCategories.Crm,
+      ConnectSessionCreateCategories.Stackone,
     ],
     originOwnerId: "<value>",
     originOwnerName: "<value>",

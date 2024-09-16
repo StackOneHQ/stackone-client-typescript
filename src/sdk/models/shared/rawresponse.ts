@@ -5,38 +5,42 @@
 import * as z from "zod";
 
 export type RawResponse = {
-    body?: string | null | undefined;
-    method: string;
-    response?: { [k: string]: any } | null | undefined;
-    url: string;
+  body?: string | null | undefined;
+  method: string;
+  response?: { [k: string]: any } | null | undefined;
+  url: string;
 };
 
 /** @internal */
-export const RawResponse$inboundSchema: z.ZodType<RawResponse, z.ZodTypeDef, unknown> = z.object({
-    body: z.nullable(z.string()).optional(),
-    method: z.string(),
-    response: z.nullable(z.record(z.any())).optional(),
-    url: z.string(),
+export const RawResponse$inboundSchema: z.ZodType<
+  RawResponse,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  body: z.nullable(z.string()).optional(),
+  method: z.string(),
+  response: z.nullable(z.record(z.any())).optional(),
+  url: z.string(),
 });
 
 /** @internal */
 export type RawResponse$Outbound = {
-    body?: string | null | undefined;
-    method: string;
-    response?: { [k: string]: any } | null | undefined;
-    url: string;
+  body?: string | null | undefined;
+  method: string;
+  response?: { [k: string]: any } | null | undefined;
+  url: string;
 };
 
 /** @internal */
 export const RawResponse$outboundSchema: z.ZodType<
-    RawResponse$Outbound,
-    z.ZodTypeDef,
-    RawResponse
+  RawResponse$Outbound,
+  z.ZodTypeDef,
+  RawResponse
 > = z.object({
-    body: z.nullable(z.string()).optional(),
-    method: z.string(),
-    response: z.nullable(z.record(z.any())).optional(),
-    url: z.string(),
+  body: z.nullable(z.string()).optional(),
+  method: z.string(),
+  response: z.nullable(z.record(z.any())).optional(),
+  url: z.string(),
 });
 
 /**
@@ -44,10 +48,10 @@ export const RawResponse$outboundSchema: z.ZodType<
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
 export namespace RawResponse$ {
-    /** @deprecated use `RawResponse$inboundSchema` instead. */
-    export const inboundSchema = RawResponse$inboundSchema;
-    /** @deprecated use `RawResponse$outboundSchema` instead. */
-    export const outboundSchema = RawResponse$outboundSchema;
-    /** @deprecated use `RawResponse$Outbound` instead. */
-    export type Outbound = RawResponse$Outbound;
+  /** @deprecated use `RawResponse$inboundSchema` instead. */
+  export const inboundSchema = RawResponse$inboundSchema;
+  /** @deprecated use `RawResponse$outboundSchema` instead. */
+  export const outboundSchema = RawResponse$outboundSchema;
+  /** @deprecated use `RawResponse$Outbound` instead. */
+  export type Outbound = RawResponse$Outbound;
 }

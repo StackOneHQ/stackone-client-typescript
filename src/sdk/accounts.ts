@@ -12,53 +12,73 @@ import * as operations from "./models/operations/index.js";
 import { unwrapAsync } from "./types/fp.js";
 
 export class Accounts extends ClientSDK {
-    /**
-     * Delete Account
-     */
-    async deleteAccount(
-        request: operations.StackoneDeleteAccountRequest,
-        options?: RequestOptions
-    ): Promise<operations.StackoneDeleteAccountResponse> {
-        return unwrapAsync(accountsDeleteAccount(this, request, options));
-    }
+  /**
+   * Delete Account
+   */
+  async deleteAccount(
+    request: operations.StackoneDeleteAccountRequest,
+    options?: RequestOptions,
+  ): Promise<operations.StackoneDeleteAccountResponse> {
+    return unwrapAsync(accountsDeleteAccount(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Get Account
-     */
-    async getAccount(
-        request: operations.StackoneGetAccountRequest,
-        options?: RequestOptions
-    ): Promise<operations.StackoneGetAccountResponse> {
-        return unwrapAsync(accountsGetAccount(this, request, options));
-    }
+  /**
+   * Get Account
+   */
+  async getAccount(
+    request: operations.StackoneGetAccountRequest,
+    options?: RequestOptions,
+  ): Promise<operations.StackoneGetAccountResponse> {
+    return unwrapAsync(accountsGetAccount(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Get meta information of the account
-     */
-    async getAccountMetaInfo(
-        request: operations.StackoneGetAccountMetaInfoRequest,
-        options?: RequestOptions
-    ): Promise<operations.StackoneGetAccountMetaInfoResponse> {
-        return unwrapAsync(accountsGetAccountMetaInfo(this, request, options));
-    }
+  /**
+   * Get meta information of the account
+   */
+  async getAccountMetaInfo(
+    request: operations.StackoneGetAccountMetaInfoRequest,
+    options?: RequestOptions,
+  ): Promise<operations.StackoneGetAccountMetaInfoResponse> {
+    return unwrapAsync(accountsGetAccountMetaInfo(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * List Accounts
-     */
-    async listLinkedAccounts(
-        request: operations.StackoneListLinkedAccountsRequest,
-        options?: RequestOptions
-    ): Promise<operations.StackoneListLinkedAccountsResponse> {
-        return unwrapAsync(accountsListLinkedAccounts(this, request, options));
-    }
+  /**
+   * List Accounts
+   */
+  async listLinkedAccounts(
+    request: operations.StackoneListLinkedAccountsRequest,
+    options?: RequestOptions,
+  ): Promise<operations.StackoneListLinkedAccountsResponse> {
+    return unwrapAsync(accountsListLinkedAccounts(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Update Account
-     */
-    async updateAccount(
-        request: operations.StackoneUpdateAccountRequest,
-        options?: RequestOptions
-    ): Promise<operations.StackoneUpdateAccountResponse> {
-        return unwrapAsync(accountsUpdateAccount(this, request, options));
-    }
+  /**
+   * Update Account
+   */
+  async updateAccount(
+    request: operations.StackoneUpdateAccountRequest,
+    options?: RequestOptions,
+  ): Promise<operations.StackoneUpdateAccountResponse> {
+    return unwrapAsync(accountsUpdateAccount(
+      this,
+      request,
+      options,
+    ));
+  }
 }

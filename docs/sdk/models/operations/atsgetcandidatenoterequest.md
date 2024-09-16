@@ -6,10 +6,11 @@
 import { AtsGetCandidateNoteRequest } from "@stackone/stackone-client-ts/sdk/models/operations";
 
 let value: AtsGetCandidateNoteRequest = {
-    fields: "id,remote_id,content,author_id,remote_author_id,visibility,created_at,updated_at,deleted_at",
-    id: "<id>",
-    subResourceId: "<value>",
-    xAccountId: "<value>",
+  fields:
+    "id,remote_id,content,author_id,remote_author_id,visibility,created_at,updated_at,deleted_at",
+  id: "<id>",
+  subResourceId: "<value>",
+  xAccountId: "<value>",
 };
 ```
 
