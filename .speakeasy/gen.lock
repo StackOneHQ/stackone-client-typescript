@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 7fa83af8-9e8e-4410-b7e2-cf1d0eaf688b
 management:
-  docChecksum: 43b55b872f5c12f5339953cf8fcbf412
+  docChecksum: de84401ba9916a47e406f9d090860ac4
   docVersion: 1.0.0
-  speakeasyVersion: 1.401.2
+  speakeasyVersion: 1.401.3
   generationVersion: 2.421.3
-  releaseVersion: 4.15.2
-  configChecksum: e3d725da77a62a8095f0b04dc55f1334
+  releaseVersion: 4.15.3
+  configChecksum: c102e0cb51aa3dfc7af073f5a0c8dbfc
   repoURL: https://github.com/StackOneHQ/stackone-client-typescript.git
   repoSubDirectory: .
   installationURL: https://github.com/StackOneHQ/stackone-client-typescript
@@ -624,7 +624,34 @@ generatedFiles:
   - docs/sdk/models/shared/coursesourcevalue.md
   - docs/sdk/models/shared/coursetype.md
   - docs/sdk/models/shared/coursevalue.md
+  - docs/sdk/models/shared/createanswer.md
+  - docs/sdk/models/shared/createanswer4.md
+  - docs/sdk/models/shared/createanswersourcevalue.md
+  - docs/sdk/models/shared/createanswertype.md
+  - docs/sdk/models/shared/createanswervalue.md
   - docs/sdk/models/shared/createcategoriesapimodel.md
+  - docs/sdk/models/shared/createemploymentapimodel.md
+  - docs/sdk/models/shared/createemploymentapimodel4.md
+  - docs/sdk/models/shared/createemploymentapimodelschemas4.md
+  - docs/sdk/models/shared/createemploymentapimodelschemaspayfrequency4.md
+  - docs/sdk/models/shared/createemploymentapimodelschemaspayfrequencysourcevalue.md
+  - docs/sdk/models/shared/createemploymentapimodelschemaspayfrequencyvalue.md
+  - docs/sdk/models/shared/createemploymentapimodelschemaspayperiod4.md
+  - docs/sdk/models/shared/createemploymentapimodelschemaspayperiodsourcevalue.md
+  - docs/sdk/models/shared/createemploymentapimodelschemaspayperiodvalue.md
+  - docs/sdk/models/shared/createemploymentapimodelschemassourcevalue.md
+  - docs/sdk/models/shared/createemploymentapimodelschemasvalue.md
+  - docs/sdk/models/shared/createemploymentapimodelsourcevalue.md
+  - docs/sdk/models/shared/createemploymentapimodelvalue.md
+  - docs/sdk/models/shared/createhrisbenefit.md
+  - docs/sdk/models/shared/createhrisbenefit4.md
+  - docs/sdk/models/shared/createhrisbenefitsourcevalue.md
+  - docs/sdk/models/shared/createhrisbenefitvalue.md
+  - docs/sdk/models/shared/createmessage.md
+  - docs/sdk/models/shared/createmessage4.md
+  - docs/sdk/models/shared/createmessagesourcevalue.md
+  - docs/sdk/models/shared/createmessagevalue.md
+  - docs/sdk/models/shared/createquestionnaire.md
   - docs/sdk/models/shared/createresult.md
   - docs/sdk/models/shared/createresultdataapimodel.md
   - docs/sdk/models/shared/credentials.md
@@ -644,6 +671,8 @@ generatedFiles:
   - docs/sdk/models/shared/draft.md
   - docs/sdk/models/shared/emailmessages.md
   - docs/sdk/models/shared/emailmessages4.md
+  - docs/sdk/models/shared/emailmessagesmessagecontent.md
+  - docs/sdk/models/shared/emailmessagesmessagetype.md
   - docs/sdk/models/shared/emailmessagessourcevalue.md
   - docs/sdk/models/shared/emailmessagesvalue.md
   - docs/sdk/models/shared/employee.md
@@ -653,6 +682,8 @@ generatedFiles:
   - docs/sdk/models/shared/employeecustomfields.md
   - docs/sdk/models/shared/employeecustomfields4.md
   - docs/sdk/models/shared/employeecustomfieldsvalue.md
+  - docs/sdk/models/shared/employeeemploymentcontracttype.md
+  - docs/sdk/models/shared/employeeemploymenttype.md
   - docs/sdk/models/shared/employeelocationtype.md
   - docs/sdk/models/shared/employeeresult.md
   - docs/sdk/models/shared/employeeschemas4.md
@@ -699,6 +730,8 @@ generatedFiles:
   - docs/sdk/models/shared/employmentcontracttype.md
   - docs/sdk/models/shared/employmentemploymentcontracttype.md
   - docs/sdk/models/shared/employmentemploymenttype.md
+  - docs/sdk/models/shared/employmentpayfrequency.md
+  - docs/sdk/models/shared/employmentpayperiod.md
   - docs/sdk/models/shared/employmentresult.md
   - docs/sdk/models/shared/employmentschemas4.md
   - docs/sdk/models/shared/employmentschemaspayfrequency4.md
@@ -727,6 +760,7 @@ generatedFiles:
   - docs/sdk/models/shared/hrisbatchdocumentuploadrequestdto.md
   - docs/sdk/models/shared/hrisbenefit.md
   - docs/sdk/models/shared/hrisbenefit4.md
+  - docs/sdk/models/shared/hrisbenefitbenefittype.md
   - docs/sdk/models/shared/hrisbenefitresult.md
   - docs/sdk/models/shared/hrisbenefitsourcevalue.md
   - docs/sdk/models/shared/hrisbenefitspaginated.md
@@ -1647,7 +1681,12 @@ generatedFiles:
   - src/sdk/models/shared/course.ts
   - src/sdk/models/shared/coursepaginated.ts
   - src/sdk/models/shared/courseresult.ts
+  - src/sdk/models/shared/createanswer.ts
   - src/sdk/models/shared/createcategoriesapimodel.ts
+  - src/sdk/models/shared/createemploymentapimodel.ts
+  - src/sdk/models/shared/createhrisbenefit.ts
+  - src/sdk/models/shared/createmessage.ts
+  - src/sdk/models/shared/createquestionnaire.ts
   - src/sdk/models/shared/createresult.ts
   - src/sdk/models/shared/createresultdataapimodel.ts
   - src/sdk/models/shared/crmcreatecontactrequestdto.ts
@@ -1740,7 +1779,6 @@ generatedFiles:
   - src/sdk/models/shared/marketingcreatepushtemplaterequestdto.ts
   - src/sdk/models/shared/marketingcreatesmstemplaterequestdto.ts
   - src/sdk/models/shared/marketingcreatetemplaterequestdto.ts
-  - src/sdk/models/shared/message.ts
   - src/sdk/models/shared/moveapplicationresult.ts
   - src/sdk/models/shared/note.ts
   - src/sdk/models/shared/notecontentapimodel.ts
@@ -1882,7 +1920,7 @@ examples:
         header:
           x-account-id: "<value>"
       requestBody:
-        application/json: {"application_status": {"source_value": "Hired", "value": "hired"}, "candidate": {"company": "Company Inc.", "country": "United States", "custom_fields": [], "email": "sestier.romain123@gmail.com", "first_name": "Romain", "hired_at": "2021-01-01T01:01:01.000Z", "last_name": "Sestier", "name": "Romain Sestier", "passthrough": {"other_known_names": "John Doe"}, "phone_number": "+1234567890", "social_links": [], "title": "Software Engineer", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}}, "candidate_id": "e3cb75bf-aa84-466e-a6c1-b8322b257a48", "job_id": "4071538b-3cac-4fbf-ac76-f78ed250ffdd", "location_id": "dd8d41d1-5eb8-4408-9c87-9ba44604eae4", "passthrough": {"other_known_names": "John Doe"}, "questionnaires": [{"answers": [{"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "type": {"source_value": "Short Text", "value": "short_text"}, "values": ["Yes", "No Travel", "It sounds pretty cool.", "Excel", "Power Point"]}], "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}], "source": {"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "name": "LinkedIn", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}}
+        application/json: {"application_status": {"source_value": "Hired", "value": "hired"}, "candidate": {"company": "Company Inc.", "country": "United States", "custom_fields": [], "email": "sestier.romain123@gmail.com", "first_name": "Romain", "hired_at": "2021-01-01T01:01:01.000Z", "last_name": "Sestier", "name": "Romain Sestier", "passthrough": {"other_known_names": "John Doe"}, "phone_number": "+1234567890", "social_links": [], "title": "Software Engineer", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}}, "candidate_id": "e3cb75bf-aa84-466e-a6c1-b8322b257a48", "job_id": "4071538b-3cac-4fbf-ac76-f78ed250ffdd", "location_id": "dd8d41d1-5eb8-4408-9c87-9ba44604eae4", "passthrough": {"other_known_names": "John Doe"}, "questionnaires": [{"answers": [{"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "type": {"source_value": "Short Text", "value": "short_text"}, "values": ["Yes", "No Travel", "It sounds pretty cool.", "Excel", "Power Point"]}], "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}], "source": {"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "name": "LinkedIn"}}
       responses:
         "201":
           application/json: {"data": {"external_reference": "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1", "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}, "message": "Record created successfully.", "statusCode": 201, "timestamp": "2021-01-01T01:01:01.000Z"}
@@ -2520,7 +2558,7 @@ examples:
         header:
           x-account-id: "<value>"
       requestBody:
-        application/json: {"application_status": {"source_value": "Hired", "value": "hired"}, "custom_fields": [], "interview_stage_id": "18bcbb1b-3cbc-4198-a999-460861d19480", "passthrough": {"other_known_names": "John Doe"}, "rejected_reason_id": "f223d7f6-908b-48f0-9237-b201c307f609", "source": {"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "name": "LinkedIn", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}}
+        application/json: {"application_status": {"source_value": "Hired", "value": "hired"}, "custom_fields": [], "interview_stage_id": "18bcbb1b-3cbc-4198-a999-460861d19480", "passthrough": {"other_known_names": "John Doe"}, "rejected_reason_id": "f223d7f6-908b-48f0-9237-b201c307f609", "source": {"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "name": "LinkedIn"}}
       responses:
         "200":
           application/json: {"message": "Record updated successfully.", "statusCode": 200, "timestamp": "2021-01-01T01:01:01.000Z"}
@@ -2532,7 +2570,7 @@ examples:
         header:
           x-account-id: "<value>"
       requestBody:
-        application/json: {"application_ids": ["123e4567-e89b-12d3-a456-426614174000", "523e1234-e89b-fdd2-a456-762545121101"], "company": "Company Inc.", "country": "United States", "custom_fields": [], "email": "sestier.romain123@gmail.com", "emails": [], "first_name": "Romain", "hired_at": "2021-01-01T01:01:01.000Z", "last_name": "Sestier", "name": "Romain Sestier", "passthrough": {"other_known_names": "John Doe"}, "phone_numbers": [], "social_links": [], "title": "Software Engineer", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}}
+        application/json: {"application_ids": ["123e4567-e89b-12d3-a456-426614174000", "523e1234-e89b-fdd2-a456-762545121101"], "company": "Company Inc.", "country": "United States", "custom_fields": [], "email": "sestier.romain123@gmail.com", "emails": [], "first_name": "Romain", "hired_at": "2021-01-01T01:01:01.000Z", "last_name": "Sestier", "name": "Romain Sestier", "passthrough": {"other_known_names": "John Doe"}, "phone_number": "+1234567890", "phone_numbers": [], "social_links": [], "title": "Software Engineer", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}}
       responses:
         "200":
           application/json: {"data": {"external_reference": "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1", "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}, "message": "Record created successfully.", "statusCode": 201, "timestamp": "2021-01-01T01:01:01.000Z"}

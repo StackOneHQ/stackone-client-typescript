@@ -6,7 +6,7 @@
 import { HrisCreateEmployeeRequestDtoSchemasValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: HrisCreateEmployeeRequestDtoSchemasValue =
-  HrisCreateEmployeeRequestDtoSchemasValue.Active;
+  HrisCreateEmployeeRequestDtoSchemasValue.Leave;
 ```
 
 ## Values

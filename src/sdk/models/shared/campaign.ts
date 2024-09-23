@@ -20,7 +20,7 @@ import {
   Message$inboundSchema,
   Message$Outbound,
   Message$outboundSchema,
-} from "./message.js";
+} from "./createmessage.js";
 
 export enum Two {
   True = "true",

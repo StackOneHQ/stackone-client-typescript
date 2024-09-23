@@ -5,7 +5,7 @@
 ```typescript
 import { ContentSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: ContentSourceValue = 3790.57;
+let value: ContentSourceValue = "<value>";
 ```
 
 ## Supported Types

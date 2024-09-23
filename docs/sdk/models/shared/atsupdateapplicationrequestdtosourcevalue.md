@@ -7,9 +7,7 @@ The source value of the application status.
 ```typescript
 import { AtsUpdateApplicationRequestDtoSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: AtsUpdateApplicationRequestDtoSourceValue = [
-  "Hired",
-];
+let value: AtsUpdateApplicationRequestDtoSourceValue = "Hired";
 ```
 
 ## Supported Types

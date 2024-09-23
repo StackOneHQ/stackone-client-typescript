@@ -68,7 +68,7 @@ Create Application
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
-import { AnswerValue, AtsCreateApplicationRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { AtsCreateApplicationRequestDtoValue, CreateAnswerValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 const stackOne = new StackOne({
   security: {
@@ -129,10 +129,9 @@ async function run() {
           answers: [
             {
               id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-              remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
               type: {
                 sourceValue: "Short Text",
-                value: AnswerValue.ShortText,
+                value: CreateAnswerValue.ShortText,
               },
               values: [
                 "Yes",
@@ -144,13 +143,11 @@ async function run() {
             },
           ],
           id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         },
       ],
       source: {
         id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         name: "LinkedIn",
-        remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
       },
     },
     xAccountId: "<value>",
@@ -170,7 +167,7 @@ The standalone function version of this method:
 ```typescript
 import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
 import { atsCreateApplication } from "@stackone/stackone-client-ts/funcs/atsCreateApplication.js";
-import { AnswerValue, AtsCreateApplicationRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { AtsCreateApplicationRequestDtoValue, CreateAnswerValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 // Use `StackOneCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -235,10 +232,9 @@ async function run() {
           answers: [
             {
               id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-              remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
               type: {
                 sourceValue: "Short Text",
-                value: AnswerValue.ShortText,
+                value: CreateAnswerValue.ShortText,
               },
               values: [
                 "Yes",
@@ -250,13 +246,11 @@ async function run() {
             },
           ],
           id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         },
       ],
       source: {
         id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         name: "LinkedIn",
-        remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
       },
     },
     xAccountId: "<value>",
@@ -5027,7 +5021,6 @@ async function run() {
       source: {
         id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         name: "LinkedIn",
-        remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
       },
     },
     id: "<id>",
@@ -5086,7 +5079,6 @@ async function run() {
       source: {
         id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         name: "LinkedIn",
-        remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
       },
     },
     id: "<id>",
@@ -5177,6 +5169,7 @@ async function run() {
       passthrough: {
         "other_known_names": "John Doe",
       },
+      phoneNumber: "+1234567890",
       phoneNumbers: [
         {
           phone: "+447700112233",
@@ -5255,6 +5248,7 @@ async function run() {
       passthrough: {
         "other_known_names": "John Doe",
       },
+      phoneNumber: "+1234567890",
       phoneNumbers: [
         {
           phone: "+447700112233",

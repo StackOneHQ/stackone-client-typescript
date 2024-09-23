@@ -37,7 +37,7 @@ export type HRISBenefitValueOpen = OpenEnum<typeof HRISBenefitValue>;
 /**
  * The type of the benefit
  */
-export type BenefitType = {
+export type HRISBenefitBenefitType = {
   sourceValue?:
     | HRISBenefit4
     | string
@@ -56,7 +56,7 @@ export type HRISBenefit = {
   /**
    * The type of the benefit
    */
-  benefitType?: BenefitType | null | undefined;
+  benefitType?: HRISBenefitBenefitType | null | undefined;
   /**
    * The date and time the benefit was created
    */
@@ -197,8 +197,8 @@ export namespace HRISBenefitValue$ {
 }
 
 /** @internal */
-export const BenefitType$inboundSchema: z.ZodType<
-  BenefitType,
+export const HRISBenefitBenefitType$inboundSchema: z.ZodType<
+  HRISBenefitBenefitType,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -219,7 +219,7 @@ export const BenefitType$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type BenefitType$Outbound = {
+export type HRISBenefitBenefitType$Outbound = {
   source_value?:
     | HRISBenefit4$Outbound
     | string
@@ -232,10 +232,10 @@ export type BenefitType$Outbound = {
 };
 
 /** @internal */
-export const BenefitType$outboundSchema: z.ZodType<
-  BenefitType$Outbound,
+export const HRISBenefitBenefitType$outboundSchema: z.ZodType<
+  HRISBenefitBenefitType$Outbound,
   z.ZodTypeDef,
-  BenefitType
+  HRISBenefitBenefitType
 > = z.object({
   sourceValue: z.nullable(
     z.union([
@@ -257,13 +257,13 @@ export const BenefitType$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace BenefitType$ {
-  /** @deprecated use `BenefitType$inboundSchema` instead. */
-  export const inboundSchema = BenefitType$inboundSchema;
-  /** @deprecated use `BenefitType$outboundSchema` instead. */
-  export const outboundSchema = BenefitType$outboundSchema;
-  /** @deprecated use `BenefitType$Outbound` instead. */
-  export type Outbound = BenefitType$Outbound;
+export namespace HRISBenefitBenefitType$ {
+  /** @deprecated use `HRISBenefitBenefitType$inboundSchema` instead. */
+  export const inboundSchema = HRISBenefitBenefitType$inboundSchema;
+  /** @deprecated use `HRISBenefitBenefitType$outboundSchema` instead. */
+  export const outboundSchema = HRISBenefitBenefitType$outboundSchema;
+  /** @deprecated use `HRISBenefitBenefitType$Outbound` instead. */
+  export type Outbound = HRISBenefitBenefitType$Outbound;
 }
 
 /** @internal */
@@ -272,7 +272,8 @@ export const HRISBenefit$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  benefit_type: z.nullable(z.lazy(() => BenefitType$inboundSchema)).optional(),
+  benefit_type: z.nullable(z.lazy(() => HRISBenefitBenefitType$inboundSchema))
+    .optional(),
   created_at: z.nullable(
     z.string().datetime({ offset: true }).transform(v => new Date(v)),
   ).optional(),
@@ -295,7 +296,7 @@ export const HRISBenefit$inboundSchema: z.ZodType<
 
 /** @internal */
 export type HRISBenefit$Outbound = {
-  benefit_type?: BenefitType$Outbound | null | undefined;
+  benefit_type?: HRISBenefitBenefitType$Outbound | null | undefined;
   created_at?: string | null | undefined;
   description?: string | null | undefined;
   id?: string | null | undefined;
@@ -311,7 +312,8 @@ export const HRISBenefit$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   HRISBenefit
 > = z.object({
-  benefitType: z.nullable(z.lazy(() => BenefitType$outboundSchema)).optional(),
+  benefitType: z.nullable(z.lazy(() => HRISBenefitBenefitType$outboundSchema))
+    .optional(),
   createdAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
   description: z.nullable(z.string()).optional(),
   id: z.nullable(z.string()).optional(),
