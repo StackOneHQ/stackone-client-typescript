@@ -5,9 +5,7 @@
 ```typescript
 import { HrisCreateEmployeeRequestDtoSchemasSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: HrisCreateEmployeeRequestDtoSchemasSourceValue = [
-  "<value>",
-];
+let value: HrisCreateEmployeeRequestDtoSchemasSourceValue = "<value>";
 ```
 
 ## Supported Types

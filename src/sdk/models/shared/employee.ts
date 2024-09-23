@@ -108,7 +108,7 @@ export type EmployeeValueOpen = OpenEnum<typeof EmployeeValue>;
 /**
  * The employment work schedule type (e.g., full-time, part-time)
  */
-export type EmploymentContractType = {
+export type EmployeeEmploymentContractType = {
   sourceValue?:
     | Employee4
     | string
@@ -199,7 +199,7 @@ export type EmployeeSchemasEmploymentTypeValueOpen = OpenEnum<
 /**
  * The employee employment type
  */
-export type EmploymentType = {
+export type EmployeeEmploymentType = {
   /**
    * The source value of the employment type.
    */
@@ -1403,7 +1403,7 @@ export type Employee = {
   /**
    * The employment work schedule type (e.g., full-time, part-time)
    */
-  employmentContractType?: EmploymentContractType | null | undefined;
+  employmentContractType?: EmployeeEmploymentContractType | null | undefined;
   /**
    * The employee employment status
    */
@@ -1411,7 +1411,7 @@ export type Employee = {
   /**
    * The employee employment type
    */
-  employmentType?: EmploymentType | null | undefined;
+  employmentType?: EmployeeEmploymentType | null | undefined;
   /**
    * The employee employments
    */
@@ -1754,8 +1754,8 @@ export namespace EmployeeValue$ {
 }
 
 /** @internal */
-export const EmploymentContractType$inboundSchema: z.ZodType<
-  EmploymentContractType,
+export const EmployeeEmploymentContractType$inboundSchema: z.ZodType<
+  EmployeeEmploymentContractType,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -1776,7 +1776,7 @@ export const EmploymentContractType$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type EmploymentContractType$Outbound = {
+export type EmployeeEmploymentContractType$Outbound = {
   source_value?:
     | Employee4$Outbound
     | string
@@ -1789,10 +1789,10 @@ export type EmploymentContractType$Outbound = {
 };
 
 /** @internal */
-export const EmploymentContractType$outboundSchema: z.ZodType<
-  EmploymentContractType$Outbound,
+export const EmployeeEmploymentContractType$outboundSchema: z.ZodType<
+  EmployeeEmploymentContractType$Outbound,
   z.ZodTypeDef,
-  EmploymentContractType
+  EmployeeEmploymentContractType
 > = z.object({
   sourceValue: z.nullable(
     z.union([
@@ -1814,13 +1814,13 @@ export const EmploymentContractType$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace EmploymentContractType$ {
-  /** @deprecated use `EmploymentContractType$inboundSchema` instead. */
-  export const inboundSchema = EmploymentContractType$inboundSchema;
-  /** @deprecated use `EmploymentContractType$outboundSchema` instead. */
-  export const outboundSchema = EmploymentContractType$outboundSchema;
-  /** @deprecated use `EmploymentContractType$Outbound` instead. */
-  export type Outbound = EmploymentContractType$Outbound;
+export namespace EmployeeEmploymentContractType$ {
+  /** @deprecated use `EmployeeEmploymentContractType$inboundSchema` instead. */
+  export const inboundSchema = EmployeeEmploymentContractType$inboundSchema;
+  /** @deprecated use `EmployeeEmploymentContractType$outboundSchema` instead. */
+  export const outboundSchema = EmployeeEmploymentContractType$outboundSchema;
+  /** @deprecated use `EmployeeEmploymentContractType$Outbound` instead. */
+  export type Outbound = EmployeeEmploymentContractType$Outbound;
 }
 
 /** @internal */
@@ -2115,8 +2115,8 @@ export namespace EmployeeSchemasEmploymentTypeValue$ {
 }
 
 /** @internal */
-export const EmploymentType$inboundSchema: z.ZodType<
-  EmploymentType,
+export const EmployeeEmploymentType$inboundSchema: z.ZodType<
+  EmployeeEmploymentType,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -2138,7 +2138,7 @@ export const EmploymentType$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type EmploymentType$Outbound = {
+export type EmployeeEmploymentType$Outbound = {
   source_value?:
     | EmployeeSchemasEmploymentType4$Outbound
     | string
@@ -2151,10 +2151,10 @@ export type EmploymentType$Outbound = {
 };
 
 /** @internal */
-export const EmploymentType$outboundSchema: z.ZodType<
-  EmploymentType$Outbound,
+export const EmployeeEmploymentType$outboundSchema: z.ZodType<
+  EmployeeEmploymentType$Outbound,
   z.ZodTypeDef,
-  EmploymentType
+  EmployeeEmploymentType
 > = z.object({
   sourceValue: z.nullable(
     z.union([
@@ -2177,13 +2177,13 @@ export const EmploymentType$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace EmploymentType$ {
-  /** @deprecated use `EmploymentType$inboundSchema` instead. */
-  export const inboundSchema = EmploymentType$inboundSchema;
-  /** @deprecated use `EmploymentType$outboundSchema` instead. */
-  export const outboundSchema = EmploymentType$outboundSchema;
-  /** @deprecated use `EmploymentType$Outbound` instead. */
-  export type Outbound = EmploymentType$Outbound;
+export namespace EmployeeEmploymentType$ {
+  /** @deprecated use `EmployeeEmploymentType$inboundSchema` instead. */
+  export const inboundSchema = EmployeeEmploymentType$inboundSchema;
+  /** @deprecated use `EmployeeEmploymentType$outboundSchema` instead. */
+  export const outboundSchema = EmployeeEmploymentType$outboundSchema;
+  /** @deprecated use `EmployeeEmploymentType$Outbound` instead. */
+  export type Outbound = EmployeeEmploymentType$Outbound;
 }
 
 /** @internal */
@@ -4190,12 +4190,13 @@ export const Employee$inboundSchema: z.ZodType<
   display_name: z.nullable(z.string()).optional(),
   employee_number: z.nullable(z.string()).optional(),
   employment_contract_type: z.nullable(
-    z.lazy(() => EmploymentContractType$inboundSchema),
+    z.lazy(() => EmployeeEmploymentContractType$inboundSchema),
   ).optional(),
   employment_status: z.nullable(z.lazy(() => EmploymentStatus$inboundSchema))
     .optional(),
-  employment_type: z.nullable(z.lazy(() => EmploymentType$inboundSchema))
-    .optional(),
+  employment_type: z.nullable(
+    z.lazy(() => EmployeeEmploymentType$inboundSchema),
+  ).optional(),
   employments: z.nullable(z.array(Employment$inboundSchema)).optional(),
   ethnicity: z.nullable(z.lazy(() => Ethnicity$inboundSchema)).optional(),
   first_name: z.nullable(z.string()).optional(),
@@ -4300,9 +4301,12 @@ export type Employee$Outbound = {
   department_id?: string | null | undefined;
   display_name?: string | null | undefined;
   employee_number?: string | null | undefined;
-  employment_contract_type?: EmploymentContractType$Outbound | null | undefined;
+  employment_contract_type?:
+    | EmployeeEmploymentContractType$Outbound
+    | null
+    | undefined;
   employment_status?: EmploymentStatus$Outbound | null | undefined;
-  employment_type?: EmploymentType$Outbound | null | undefined;
+  employment_type?: EmployeeEmploymentType$Outbound | null | undefined;
   employments?: Array<Employment$Outbound> | null | undefined;
   ethnicity?: Ethnicity$Outbound | null | undefined;
   first_name?: string | null | undefined;
@@ -4358,12 +4362,13 @@ export const Employee$outboundSchema: z.ZodType<
   displayName: z.nullable(z.string()).optional(),
   employeeNumber: z.nullable(z.string()).optional(),
   employmentContractType: z.nullable(
-    z.lazy(() => EmploymentContractType$outboundSchema),
+    z.lazy(() => EmployeeEmploymentContractType$outboundSchema),
   ).optional(),
   employmentStatus: z.nullable(z.lazy(() => EmploymentStatus$outboundSchema))
     .optional(),
-  employmentType: z.nullable(z.lazy(() => EmploymentType$outboundSchema))
-    .optional(),
+  employmentType: z.nullable(
+    z.lazy(() => EmployeeEmploymentType$outboundSchema),
+  ).optional(),
   employments: z.nullable(z.array(Employment$outboundSchema)).optional(),
   ethnicity: z.nullable(z.lazy(() => Ethnicity$outboundSchema)).optional(),
   firstName: z.nullable(z.string()).optional(),

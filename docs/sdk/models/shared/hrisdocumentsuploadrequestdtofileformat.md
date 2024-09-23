@@ -11,7 +11,7 @@ import {
 } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: HrisDocumentsUploadRequestDtoFileFormat = {
-  sourceValue: "abc",
+  sourceValue: {},
   value: HrisDocumentsUploadRequestDtoSchemasFileFormatValue.Pdf,
 };
 ```

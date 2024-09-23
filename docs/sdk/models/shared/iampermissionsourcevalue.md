@@ -5,9 +5,7 @@
 ```typescript
 import { IamPermissionSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: IamPermissionSourceValue = [
-  "<value>",
-];
+let value: IamPermissionSourceValue = 3396.31;
 ```
 
 ## Supported Types

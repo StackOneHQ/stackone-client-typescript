@@ -5,7 +5,7 @@
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
 
-export type MessageContent = {
+export type EmailMessagesMessageContent = {
   body?: string | null | undefined;
   from?: string | null | undefined;
   preheader?: string | null | undefined;
@@ -30,7 +30,7 @@ export type EmailMessagesSourceValue =
  */
 export type EmailMessagesValue = {};
 
-export type MessageType = {
+export type EmailMessagesMessageType = {
   /**
    * The original value from the provider used to derive the unified message type.
    */
@@ -53,8 +53,8 @@ export type EmailMessages = {
    * Unique identifier
    */
   id?: string | null | undefined;
-  messageContent?: MessageContent | null | undefined;
-  messageType?: MessageType | null | undefined;
+  messageContent?: EmailMessagesMessageContent | null | undefined;
+  messageType?: EmailMessagesMessageType | null | undefined;
   name?: string | null | undefined;
   /**
    * Provider's unique identifier
@@ -63,8 +63,8 @@ export type EmailMessages = {
 };
 
 /** @internal */
-export const MessageContent$inboundSchema: z.ZodType<
-  MessageContent,
+export const EmailMessagesMessageContent$inboundSchema: z.ZodType<
+  EmailMessagesMessageContent,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -80,7 +80,7 @@ export const MessageContent$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type MessageContent$Outbound = {
+export type EmailMessagesMessageContent$Outbound = {
   body?: string | null | undefined;
   from?: string | null | undefined;
   preheader?: string | null | undefined;
@@ -89,10 +89,10 @@ export type MessageContent$Outbound = {
 };
 
 /** @internal */
-export const MessageContent$outboundSchema: z.ZodType<
-  MessageContent$Outbound,
+export const EmailMessagesMessageContent$outboundSchema: z.ZodType<
+  EmailMessagesMessageContent$Outbound,
   z.ZodTypeDef,
-  MessageContent
+  EmailMessagesMessageContent
 > = z.object({
   body: z.nullable(z.string()).optional(),
   from: z.nullable(z.string()).optional(),
@@ -109,13 +109,13 @@ export const MessageContent$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace MessageContent$ {
-  /** @deprecated use `MessageContent$inboundSchema` instead. */
-  export const inboundSchema = MessageContent$inboundSchema;
-  /** @deprecated use `MessageContent$outboundSchema` instead. */
-  export const outboundSchema = MessageContent$outboundSchema;
-  /** @deprecated use `MessageContent$Outbound` instead. */
-  export type Outbound = MessageContent$Outbound;
+export namespace EmailMessagesMessageContent$ {
+  /** @deprecated use `EmailMessagesMessageContent$inboundSchema` instead. */
+  export const inboundSchema = EmailMessagesMessageContent$inboundSchema;
+  /** @deprecated use `EmailMessagesMessageContent$outboundSchema` instead. */
+  export const outboundSchema = EmailMessagesMessageContent$outboundSchema;
+  /** @deprecated use `EmailMessagesMessageContent$Outbound` instead. */
+  export type Outbound = EmailMessagesMessageContent$Outbound;
 }
 
 /** @internal */
@@ -226,8 +226,8 @@ export namespace EmailMessagesValue$ {
 }
 
 /** @internal */
-export const MessageType$inboundSchema: z.ZodType<
-  MessageType,
+export const EmailMessagesMessageType$inboundSchema: z.ZodType<
+  EmailMessagesMessageType,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -248,7 +248,7 @@ export const MessageType$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type MessageType$Outbound = {
+export type EmailMessagesMessageType$Outbound = {
   source_value?:
     | EmailMessages4$Outbound
     | string
@@ -261,10 +261,10 @@ export type MessageType$Outbound = {
 };
 
 /** @internal */
-export const MessageType$outboundSchema: z.ZodType<
-  MessageType$Outbound,
+export const EmailMessagesMessageType$outboundSchema: z.ZodType<
+  EmailMessagesMessageType$Outbound,
   z.ZodTypeDef,
-  MessageType
+  EmailMessagesMessageType
 > = z.object({
   sourceValue: z.nullable(
     z.union([
@@ -286,13 +286,13 @@ export const MessageType$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace MessageType$ {
-  /** @deprecated use `MessageType$inboundSchema` instead. */
-  export const inboundSchema = MessageType$inboundSchema;
-  /** @deprecated use `MessageType$outboundSchema` instead. */
-  export const outboundSchema = MessageType$outboundSchema;
-  /** @deprecated use `MessageType$Outbound` instead. */
-  export type Outbound = MessageType$Outbound;
+export namespace EmailMessagesMessageType$ {
+  /** @deprecated use `EmailMessagesMessageType$inboundSchema` instead. */
+  export const inboundSchema = EmailMessagesMessageType$inboundSchema;
+  /** @deprecated use `EmailMessagesMessageType$outboundSchema` instead. */
+  export const outboundSchema = EmailMessagesMessageType$outboundSchema;
+  /** @deprecated use `EmailMessagesMessageType$Outbound` instead. */
+  export type Outbound = EmailMessagesMessageType$Outbound;
 }
 
 /** @internal */
@@ -302,9 +302,11 @@ export const EmailMessages$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   id: z.nullable(z.string()).optional(),
-  message_content: z.nullable(z.lazy(() => MessageContent$inboundSchema))
+  message_content: z.nullable(
+    z.lazy(() => EmailMessagesMessageContent$inboundSchema),
+  ).optional(),
+  message_type: z.nullable(z.lazy(() => EmailMessagesMessageType$inboundSchema))
     .optional(),
-  message_type: z.nullable(z.lazy(() => MessageType$inboundSchema)).optional(),
   name: z.nullable(z.string()).optional(),
   remote_id: z.nullable(z.string()).optional(),
 }).transform((v) => {
@@ -318,8 +320,8 @@ export const EmailMessages$inboundSchema: z.ZodType<
 /** @internal */
 export type EmailMessages$Outbound = {
   id?: string | null | undefined;
-  message_content?: MessageContent$Outbound | null | undefined;
-  message_type?: MessageType$Outbound | null | undefined;
+  message_content?: EmailMessagesMessageContent$Outbound | null | undefined;
+  message_type?: EmailMessagesMessageType$Outbound | null | undefined;
   name?: string | null | undefined;
   remote_id?: string | null | undefined;
 };
@@ -331,9 +333,11 @@ export const EmailMessages$outboundSchema: z.ZodType<
   EmailMessages
 > = z.object({
   id: z.nullable(z.string()).optional(),
-  messageContent: z.nullable(z.lazy(() => MessageContent$outboundSchema))
+  messageContent: z.nullable(
+    z.lazy(() => EmailMessagesMessageContent$outboundSchema),
+  ).optional(),
+  messageType: z.nullable(z.lazy(() => EmailMessagesMessageType$outboundSchema))
     .optional(),
-  messageType: z.nullable(z.lazy(() => MessageType$outboundSchema)).optional(),
   name: z.nullable(z.string()).optional(),
   remoteId: z.nullable(z.string()).optional(),
 }).transform((v) => {

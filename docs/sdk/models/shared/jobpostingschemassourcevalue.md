@@ -7,9 +7,7 @@ The source value of the employment type.
 ```typescript
 import { JobPostingSchemasSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: JobPostingSchemasSourceValue = [
-  "Permanent",
-];
+let value: JobPostingSchemasSourceValue = "Permanent";
 ```
 
 ## Supported Types

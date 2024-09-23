@@ -5,7 +5,7 @@
 ```typescript
 import { HrisDocumentsUploadRequestDtoSchemasSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: HrisDocumentsUploadRequestDtoSchemasSourceValue = {};
+let value: HrisDocumentsUploadRequestDtoSchemasSourceValue = "abc";
 ```
 
 ## Supported Types
