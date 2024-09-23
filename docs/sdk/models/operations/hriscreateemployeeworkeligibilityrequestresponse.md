@@ -17,7 +17,7 @@ let value: HrisCreateEmployeeWorkEligibilityRequestResponse = {
     statusCode: 201,
     timestamp: new Date("2021-01-01T01:01:01.000Z"),
   },
-  statusCode: 569618,
+  statusCode: 377752,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

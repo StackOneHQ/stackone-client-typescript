@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 7fa83af8-9e8e-4410-b7e2-cf1d0eaf688b
 management:
-  docChecksum: d681deb26478864fb9546a67f441f9a1
+  docChecksum: 43b55b872f5c12f5339953cf8fcbf412
   docVersion: 1.0.0
-  speakeasyVersion: 1.397.2
-  generationVersion: 2.415.8
-  releaseVersion: 4.15.1
-  configChecksum: b5a14fc6ea48d984f8b050b4daf3675b
+  speakeasyVersion: 1.401.2
+  generationVersion: 2.421.3
+  releaseVersion: 4.15.2
+  configChecksum: e3d725da77a62a8095f0b04dc55f1334
   repoURL: https://github.com/StackOneHQ/stackone-client-typescript.git
   repoSubDirectory: .
   installationURL: https://github.com/StackOneHQ/stackone-client-typescript
@@ -15,7 +15,7 @@ features:
   typescript:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.11
-    core: 3.17.3
+    core: 3.17.6
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
     downloadStreams: 0.1.1
@@ -1850,14 +1850,14 @@ examples:
         application/json: {"token": "<value>"}
       responses:
         "201":
-          application/json: {"categories": ["ats", "hris", "hris-legacy", "crm", "iam", "marketing", "lms", "lms"], "created_at": "2022-11-06T21:29:11.002Z", "id": "2863.15", "organization_id": "5844.8", "origin_owner_id": "<value>", "origin_owner_name": "<value>", "project_id": "<value>"}
+          application/json: {"categories": ["ats", "hris", "hris-legacy", "crm", "iam", "marketing", "lms", "hris-legacy"], "created_at": "2022-11-06T21:29:11.002Z", "id": "2863.15", "organization_id": "5844.8", "origin_owner_id": "<value>", "origin_owner_name": "<value>", "project_id": "<value>"}
   stackone_create_connect_session:
     speakeasy-default-stackone-create-connect-session:
       requestBody:
-        application/json: {"categories": ["ats", "hris", "hris-legacy", "crm", "iam", "marketing", "lms", "stackone"], "origin_owner_id": "<value>", "origin_owner_name": "<value>"}
+        application/json: {"categories": ["ats", "hris", "hris-legacy", "crm", "iam", "marketing", "lms", "ats"], "origin_owner_id": "<value>", "origin_owner_name": "<value>"}
       responses:
         "201":
-          application/json: {"categories": ["ats", "hris", "ats", "crm", "iam", "marketing", "lms", "iam"], "created_at": "2024-01-28T04:32:28.342Z", "id": "4207.79", "organization_id": "6497.42", "origin_owner_id": "<value>", "origin_owner_name": "<value>", "project_id": "<value>", "token": "<value>"}
+          application/json: {"categories": ["ats", "hris", "marketing", "crm", "iam", "marketing", "lms", "marketing"], "created_at": "2024-01-28T04:32:28.342Z", "id": "4207.79", "organization_id": "6497.42", "origin_owner_id": "<value>", "origin_owner_name": "<value>", "project_id": "<value>", "token": "<value>"}
   stackone_get_connector_meta:
     "":
       parameters:
@@ -1882,7 +1882,7 @@ examples:
         header:
           x-account-id: "<value>"
       requestBody:
-        application/json: {"application_status": {"source_value": "Hired", "value": "hired"}, "candidate": {"company": "Company Inc.", "country": "United States", "custom_fields": [], "email": "sestier.romain123@gmail.com", "first_name": "Romain", "hired_at": "2021-01-01T01:01:01.000Z", "last_name": "Sestier", "name": "Romain Sestier", "passthrough": {"other_known_names": "John Doe"}, "phone_number": "+1234567890", "social_links": [], "title": "Software Engineer", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}}, "candidate_id": "e3cb75bf-aa84-466e-a6c1-b8322b257a48", "job_id": "4071538b-3cac-4fbf-ac76-f78ed250ffdd", "location_id": "dd8d41d1-5eb8-4408-9c87-9ba44604eae4", "passthrough": {"other_known_names": "John Doe"}, "questionnaires": [{"answers": [{"id": "answer1", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "type": {"source_value": "Short Text", "value": "short_text"}, "values": ["Yes"]}], "id": "right_to_work", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}], "source": {"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "name": "LinkedIn", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}}
+        application/json: {"application_status": {"source_value": "Hired", "value": "hired"}, "candidate": {"company": "Company Inc.", "country": "United States", "custom_fields": [], "email": "sestier.romain123@gmail.com", "first_name": "Romain", "hired_at": "2021-01-01T01:01:01.000Z", "last_name": "Sestier", "name": "Romain Sestier", "passthrough": {"other_known_names": "John Doe"}, "phone_number": "+1234567890", "social_links": [], "title": "Software Engineer", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}}, "candidate_id": "e3cb75bf-aa84-466e-a6c1-b8322b257a48", "job_id": "4071538b-3cac-4fbf-ac76-f78ed250ffdd", "location_id": "dd8d41d1-5eb8-4408-9c87-9ba44604eae4", "passthrough": {"other_known_names": "John Doe"}, "questionnaires": [{"answers": [{"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "type": {"source_value": "Short Text", "value": "short_text"}, "values": ["Yes", "No Travel", "It sounds pretty cool.", "Excel", "Power Point"]}], "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}], "source": {"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "name": "LinkedIn", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}}
       responses:
         "201":
           application/json: {"data": {"external_reference": "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1", "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}, "message": "Record created successfully.", "statusCode": 201, "timestamp": "2021-01-01T01:01:01.000Z"}
@@ -2219,7 +2219,7 @@ examples:
           x-account-id: "<value>"
       responses:
         "200":
-          application/json: {"data": {"created_at": "2021-01-01T01:01:01.000Z", "email": "john@dew.com", "external_reference": "al60043", "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "name": "John Dew", "phone_number": "+1234567890", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}, "updated_at": "2021-01-01T01:01:01.000Z"}}
+          application/json: {"data": {"active": true, "created_at": "2021-01-01T01:01:01.000Z", "email": "john@dew.com", "external_reference": "al60043", "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "name": "John Dew", "phone_number": "+1234567890", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}, "updated_at": "2021-01-01T01:01:01.000Z"}}
   ats_list_application_custom_field_definitions:
     "":
       parameters:
@@ -3232,7 +3232,7 @@ examples:
         header:
           x-account-id: "<value>"
       requestBody:
-        application/json: {"active": true, "categories": [{"active": true, "name": "Technology", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}}], "content_url": "https://www.youtube.com/watch?v=16873", "course_ids": ["16873-SOFTWARE-ENG-COURSE"], "cover_url": "https://www.googledrive.com/?v=16873", "description": "This video acts as learning content for software engineers.", "duration": "P3Y6M4DT12H30M5S", "external_reference": "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1", "languages": [], "order": 1, "title": "Software Engineer Lv 1", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}}
+        application/json: {"active": true, "categories": [{"active": true, "name": "Information-Technology", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}}], "content_url": "https://www.youtube.com/watch?v=16873", "course_ids": ["16873-SOFTWARE-ENG-COURSE"], "cover_url": "https://www.googledrive.com/?v=16873", "description": "This video acts as learning content for software engineers.", "duration": "P3Y6M4DT12H30M5S", "external_reference": "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1", "languages": [], "order": 1, "title": "Software Engineer Lv 1", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}}
       responses:
         "201":
           application/json: {"data": {"external_reference": "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1", "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}, "message": "Record created successfully.", "statusCode": 201, "timestamp": "2021-01-01T01:01:01.000Z"}
@@ -3324,12 +3324,12 @@ examples:
         path:
           id: "<id>"
         query:
-          fields: "id,remote_id,external_reference,email,phone_number,created_at,updated_at,name"
+          fields: "id,remote_id,external_reference,active,email,phone_number,created_at,updated_at,name"
         header:
           x-account-id: "<value>"
       responses:
         "200":
-          application/json: {"data": {"created_at": "2021-01-01T01:01:01.000Z", "email": "john@dew.com", "external_reference": "al60043", "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "name": "John Dew", "phone_number": "+1234567890", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}, "updated_at": "2021-01-01T01:01:01.000Z"}}
+          application/json: {"data": {"active": true, "created_at": "2021-01-01T01:01:01.000Z", "email": "john@dew.com", "external_reference": "al60043", "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "name": "John Dew", "phone_number": "+1234567890", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}, "updated_at": "2021-01-01T01:01:01.000Z"}}
   lms_get_user_assignment:
     speakeasy-default-lms-get-user-assignment:
       parameters:
@@ -3466,7 +3466,7 @@ examples:
     "":
       parameters:
         query:
-          fields: "id,remote_id,external_reference,email,phone_number,created_at,updated_at,name"
+          fields: "id,remote_id,external_reference,active,email,phone_number,created_at,updated_at,name"
           filter: {"updated_after": "2020-01-01T00:00:00.000Z"}
           updated_after: "2020-01-01T00:00:00.000Z"
         header:
@@ -3482,7 +3482,7 @@ examples:
         header:
           x-account-id: "<value>"
       requestBody:
-        application/json: {"active": true, "categories": [{"active": true, "name": "Technology", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}}], "content_url": "https://www.youtube.com/watch?v=16873", "course_ids": ["16873-SOFTWARE-ENG-COURSE"], "cover_url": "https://www.googledrive.com/?v=16873", "description": "This video acts as learning content for software engineers.", "duration": "P3Y6M4DT12H30M5S", "external_reference": "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1", "languages": [], "order": 1, "title": "Software Engineer Lv 1", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}}
+        application/json: {"active": true, "categories": [{"active": true, "name": "Information-Technology", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}}], "content_url": "https://www.youtube.com/watch?v=16873", "course_ids": ["16873-SOFTWARE-ENG-COURSE"], "cover_url": "https://www.googledrive.com/?v=16873", "description": "This video acts as learning content for software engineers.", "duration": "P3Y6M4DT12H30M5S", "external_reference": "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1", "languages": [], "order": 1, "title": "Software Engineer Lv 1", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}}
       responses:
         "201":
           application/json: {"message": "Record updated successfully.", "statusCode": 200, "timestamp": "2021-01-01T01:01:01.000Z"}
@@ -3492,7 +3492,7 @@ examples:
         header:
           x-account-id: "<value>"
       requestBody:
-        application/json: {"active": true, "categories": [{"active": true, "name": "Technology", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}}], "content_url": "https://www.youtube.com/watch?v=16873", "course_ids": ["16873-SOFTWARE-ENG-COURSE"], "cover_url": "https://www.googledrive.com/?v=16873", "description": "This video acts as learning content for software engineers.", "duration": "P3Y6M4DT12H30M5S", "external_reference": "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1", "languages": [], "order": 1, "title": "Software Engineer Lv 1", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}}
+        application/json: {"active": true, "categories": [{"active": true, "name": "Information-Technology", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}}], "content_url": "https://www.youtube.com/watch?v=16873", "course_ids": ["16873-SOFTWARE-ENG-COURSE"], "cover_url": "https://www.googledrive.com/?v=16873", "description": "This video acts as learning content for software engineers.", "duration": "P3Y6M4DT12H30M5S", "external_reference": "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1", "languages": [], "order": 1, "title": "Software Engineer Lv 1", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}}
       responses:
         "201":
           application/json: {"data": {"external_reference": "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1", "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}, "message": "Record created successfully.", "statusCode": 201, "timestamp": "2021-01-01T01:01:01.000Z"}

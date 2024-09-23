@@ -8,7 +8,7 @@ The category of the file
 import { HrisDocumentApiModelSchemasTypeValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: HrisDocumentApiModelSchemasTypeValue =
-  HrisDocumentApiModelSchemasTypeValue.Application;
+  HrisDocumentApiModelSchemasTypeValue.DriverLicense;
 ```
 
 ## Values

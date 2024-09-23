@@ -54,7 +54,7 @@ let value: LmsListContentResponse = {
     ],
   },
   contentType: "<value>",
-  statusCode: 420075,
+  statusCode: 683282,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

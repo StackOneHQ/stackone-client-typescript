@@ -9,7 +9,7 @@ let value: Account = {
   addresses: [
     {
       country: {
-        sourceValue: true,
+        sourceValue: GB,
         value: AccountAddressSchemasValue.Gb,
       },
       locationType: {

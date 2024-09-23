@@ -5,7 +5,9 @@
 ```typescript
 import { IamUserSchemasAvatarSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: IamUserSchemasAvatarSourceValue = 1629.54;
+let value: IamUserSchemasAvatarSourceValue = [
+  "<value>",
+];
 ```
 
 ## Supported Types

@@ -11,7 +11,7 @@ import {
 } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: HrisCreateWorkEligibilityRequestDtoFileFormat = {
-  sourceValue: true,
+  sourceValue: "abc",
   value: HrisCreateWorkEligibilityRequestDtoSchemasDocumentValue.Pdf,
 };
 ```

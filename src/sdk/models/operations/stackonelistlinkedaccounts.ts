@@ -25,6 +25,8 @@ export type StackoneListLinkedAccountsRequest = {
   pageSize?: number | null | undefined;
   /**
    * The provider of the results to fetch
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   provider?: string | null | undefined;
   /**

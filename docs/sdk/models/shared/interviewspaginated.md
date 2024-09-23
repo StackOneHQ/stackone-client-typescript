@@ -30,7 +30,7 @@ let value: InterviewsPaginated = {
           startAt: new Date("2021-01-01T17:00:00.000Z"),
           title: "Interview (Informal Interview) - Elon and StackOne",
           type: {
-            sourceValue: true,
+            sourceValue: {},
             value: InterviewPartValue.OnSite,
           },
           updatedAt: new Date("2021-01-01T01:01:01.000Z"),
@@ -47,7 +47,9 @@ let value: InterviewsPaginated = {
         updatedAt: new Date("2021-01-01T01:01:01.000Z"),
       },
       interviewStatus: {
-        sourceValue: {},
+        sourceValue: [
+          "Unscheduled",
+        ],
         value: InterviewValue.Unscheduled,
       },
       interviewers: [

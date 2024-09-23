@@ -10,13 +10,11 @@ let value: AccountResult = {
     addresses: [
       {
         country: {
-          sourceValue: [
-            "GB",
-          ],
+          sourceValue: GB,
           value: AccountAddressSchemasValue.Gb,
         },
         locationType: {
-          sourceValue: "Home",
+          sourceValue: true,
           value: AccountAddressValue.Home,
         },
       },

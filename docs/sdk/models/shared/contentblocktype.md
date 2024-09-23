@@ -9,7 +9,7 @@ import { ContentBlockSchemasValue, ContentBlockType } from "@stackone/stackone-c
 
 let value: ContentBlockType = {
   sourceValue: text,
-  value: ContentBlockSchemasValue.Html,
+  value: ContentBlockSchemasValue.Image,
 };
 ```
 

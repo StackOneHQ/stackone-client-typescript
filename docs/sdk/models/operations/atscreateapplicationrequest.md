@@ -9,7 +9,9 @@ import { AnswerValue, AtsCreateApplicationRequestDtoValue } from "@stackone/stac
 let value: AtsCreateApplicationRequest = {
   atsCreateApplicationRequestDto: {
     applicationStatus: {
-      sourceValue: true,
+      sourceValue: [
+        "Hired",
+      ],
       value: AtsCreateApplicationRequestDtoValue.Hired,
     },
     candidate: {
@@ -21,7 +23,9 @@ let value: AtsCreateApplicationRequest = {
           name: "Training Completion Status",
           remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
           remoteValueId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
-          value: {},
+          value: [
+            "Completed",
+          ],
           valueId: "value_456",
         },
       ],
@@ -59,9 +63,7 @@ let value: AtsCreateApplicationRequest = {
             id: "answer1",
             remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
             type: {
-              sourceValue: [
-                "Short Text",
-              ],
+              sourceValue: {},
               value: AnswerValue.ShortText,
             },
             values: [

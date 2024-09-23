@@ -7,7 +7,7 @@ import { MarketingGetOmniChannelTemplateResponse } from "@stackone/stackone-clie
 
 let value: MarketingGetOmniChannelTemplateResponse = {
   contentType: "<value>",
-  statusCode: 31838,
+  statusCode: 903984,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

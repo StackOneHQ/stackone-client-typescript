@@ -8,9 +8,7 @@ Type of the answer
 import { AnswerValue, Type } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: Type = {
-  sourceValue: [
-    "Short Text",
-  ],
+  sourceValue: "Short Text",
   value: AnswerValue.ShortText,
 };
 ```

@@ -7,9 +7,7 @@ The source value of the job postings status.
 ```typescript
 import { JobPostingSchemasStatusSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: JobPostingSchemasStatusSourceValue = [
-  "Live",
-];
+let value: JobPostingSchemasStatusSourceValue = "Live";
 ```
 
 ## Supported Types

@@ -6,7 +6,7 @@
 import { JobPostingCompensationSchemasTypeValue, JobPostingCompensationType } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: JobPostingCompensationType = {
-  sourceValue: true,
+  sourceValue: Salary,
   value: JobPostingCompensationSchemasTypeValue.Salary,
 };
 ```

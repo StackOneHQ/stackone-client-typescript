@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Field2, FieldType, ScorecardSection } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { FieldType, ScorecardSection } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: ScorecardSection = {
   fields: [
@@ -11,8 +11,8 @@ let value: ScorecardSection = {
       id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
       label: "Problem Solving",
       remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-      required: Field2.True,
-      type: FieldType.MultiSelect,
+      required: true,
+      type: FieldType.Boolean,
       values: [
         "Excellent",
         "Good",

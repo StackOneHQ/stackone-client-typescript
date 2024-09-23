@@ -91,18 +91,20 @@ let value: HrisListEmployeesResponse = {
             employeeId: "1687-3",
             employmentContractType: {},
             employmentType: {
-              sourceValue: {},
+              sourceValue: "Permanent",
               value: EmploymentSchemasValue.Permanent,
             },
             id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
             jobTitle: "Software Engineer",
             payCurrency: "USD",
             payFrequency: {
-              sourceValue: {},
+              sourceValue: "Hourly",
               value: EmploymentSchemasPayFrequencyValue.Hourly,
             },
             payPeriod: {
-              sourceValue: true,
+              sourceValue: [
+                "Hour",
+              ],
               value: EmploymentSchemasPayPeriodValue.Hour,
             },
             payRate: "40.00",
@@ -141,9 +143,7 @@ let value: HrisListEmployeesResponse = {
           employeeId: "1687-3",
           id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
           locationType: {
-            sourceValue: [
-              "Home",
-            ],
+            sourceValue: {},
             value: EmployeeSchemasHomeLocationLocationTypeValue.Home,
           },
           name: "Woolsthorpe Manor",
@@ -202,7 +202,7 @@ let value: HrisListEmployeesResponse = {
           employeeId: "1687-3",
           id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
           locationType: {
-            sourceValue: "Home",
+            sourceValue: {},
             value: EmployeeSchemasWorkLocationLocationTypeValue.Home,
           },
           name: "Woolsthorpe Manor",
@@ -223,7 +223,7 @@ let value: HrisListEmployeesResponse = {
       },
     ],
   },
-  statusCode: 102863,
+  statusCode: 281730,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

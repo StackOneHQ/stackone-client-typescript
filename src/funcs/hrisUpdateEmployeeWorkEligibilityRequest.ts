@@ -3,12 +3,9 @@
  */
 
 import { StackOneCore } from "../core.js";
-import {
-  encodeJSON as encodeJSON$,
-  encodeSimple as encodeSimple$,
-} from "../lib/encodings.js";
-import * as m$ from "../lib/matchers.js";
-import * as schemas$ from "../lib/schemas.js";
+import { encodeJSON, encodeSimple } from "../lib/encodings.js";
+import * as M from "../lib/matchers.js";
+import { safeParse } from "../lib/schemas.js";
 import { RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
@@ -28,7 +25,7 @@ import { Result } from "../sdk/types/fp.js";
  * Update Employee Work Eligibility Request
  */
 export async function hrisUpdateEmployeeWorkEligibilityRequest(
-  client$: StackOneCore,
+  client: StackOneCore,
   request: operations.HrisUpdateEmployeeWorkEligibilityRequestRequest,
   options?: RequestOptions,
 ): Promise<
@@ -43,75 +40,73 @@ export async function hrisUpdateEmployeeWorkEligibilityRequest(
     | ConnectionError
   >
 > {
-  const input$ = request;
+  const input = request;
 
-  const parsed$ = schemas$.safeParse(
-    input$,
-    (value$) =>
+  const parsed = safeParse(
+    input,
+    (value) =>
       operations.HrisUpdateEmployeeWorkEligibilityRequestRequest$outboundSchema
-        .parse(value$),
+        .parse(value),
     "Input validation failed",
   );
-  if (!parsed$.ok) {
-    return parsed$;
+  if (!parsed.ok) {
+    return parsed;
   }
-  const payload$ = parsed$.value;
-  const body$ = encodeJSON$(
-    "body",
-    payload$.HrisCreateWorkEligibilityRequestDto,
-    { explode: true },
-  );
+  const payload = parsed.value;
+  const body = encodeJSON("body", payload.HrisCreateWorkEligibilityRequestDto, {
+    explode: true,
+  });
 
-  const pathParams$ = {
-    id: encodeSimple$("id", payload$.id, {
+  const pathParams = {
+    id: encodeSimple("id", payload.id, {
       explode: false,
       charEncoding: "percent",
     }),
-    subResourceId: encodeSimple$("subResourceId", payload$.subResourceId, {
+    subResourceId: encodeSimple("subResourceId", payload.subResourceId, {
       explode: false,
       charEncoding: "percent",
     }),
   };
 
-  const path$ = pathToFunc(
+  const path = pathToFunc(
     "/unified/hris/employees/{id}/work_eligibility/{subResourceId}",
-  )(pathParams$);
+  )(pathParams);
 
-  const headers$ = new Headers({
+  const headers = new Headers({
     "Content-Type": "application/json",
     Accept: "*/*",
-    "x-account-id": encodeSimple$("x-account-id", payload$["x-account-id"], {
+    "x-account-id": encodeSimple("x-account-id", payload["x-account-id"], {
       explode: false,
       charEncoding: "none",
     }),
   });
 
-  const security$ = await extractSecurity(client$.options$.security);
+  const securityInput = await extractSecurity(client._options.security);
   const context = {
     operationID: "hris_update_employee_work_eligibility_request",
     oAuth2Scopes: [],
-    securitySource: client$.options$.security,
+    securitySource: client._options.security,
   };
-  const securitySettings$ = resolveGlobalSecurity(security$);
+  const requestSecurity = resolveGlobalSecurity(securityInput);
 
-  const requestRes = client$.createRequest$(context, {
-    security: securitySettings$,
+  const requestRes = client._createRequest(context, {
+    security: requestSecurity,
     method: "PATCH",
-    path: path$,
-    headers: headers$,
-    body: body$,
-    timeoutMs: options?.timeoutMs || client$.options$.timeoutMs || -1,
+    path: path,
+    headers: headers,
+    body: body,
+    timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {
     return requestRes;
   }
-  const request$ = requestRes.value;
+  const req = requestRes.value;
 
-  const doResult = await client$.do$(request$, {
+  const doResult = await client._do(req, {
     context,
     errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
     retryConfig: options?.retries
-      || client$.options$.retryConfig,
+      || client._options.retryConfig,
     retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
   });
   if (!doResult.ok) {
@@ -119,7 +114,7 @@ export async function hrisUpdateEmployeeWorkEligibilityRequest(
   }
   const response = doResult.value;
 
-  const responseFields$ = {
+  const responseFields = {
     ContentType: response.headers.get("content-type")
       ?? "application/octet-stream",
     StatusCode: response.status,
@@ -127,7 +122,7 @@ export async function hrisUpdateEmployeeWorkEligibilityRequest(
     Headers: {},
   };
 
-  const [result$] = await m$.match<
+  const [result] = await M.match<
     operations.HrisUpdateEmployeeWorkEligibilityRequestResponse,
     | SDKError
     | SDKValidationError
@@ -137,15 +132,15 @@ export async function hrisUpdateEmployeeWorkEligibilityRequest(
     | RequestTimeoutError
     | ConnectionError
   >(
-    m$.nil(
+    M.nil(
       200,
       operations.HrisUpdateEmployeeWorkEligibilityRequestResponse$inboundSchema,
     ),
-    m$.fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"]),
-  )(response, { extraFields: responseFields$ });
-  if (!result$.ok) {
-    return result$;
+    M.fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"]),
+  )(response, { extraFields: responseFields });
+  if (!result.ok) {
+    return result;
   }
 
-  return result$;
+  return result;
 }

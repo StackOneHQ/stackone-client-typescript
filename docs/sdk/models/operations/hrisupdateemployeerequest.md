@@ -67,18 +67,18 @@ let value: HrisUpdateEmployeeRequest = {
         employeeId: "1687-3",
         employmentContractType: {},
         employmentType: {
-          sourceValue: "Permanent",
+          sourceValue: {},
           value: EmploymentSchemasValue.Permanent,
         },
         id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         jobTitle: "Software Engineer",
         payCurrency: "USD",
         payFrequency: {
-          sourceValue: Hourly,
+          sourceValue: "Hourly",
           value: EmploymentSchemasPayFrequencyValue.Hourly,
         },
         payPeriod: {
-          sourceValue: "Hour",
+          sourceValue: Hour,
           value: EmploymentSchemasPayPeriodValue.Hour,
         },
         payRate: "40.00",

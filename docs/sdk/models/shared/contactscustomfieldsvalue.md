@@ -7,7 +7,9 @@ The value associated with the custom field.
 ```typescript
 import { ContactsCustomFieldsValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: ContactsCustomFieldsValue = true;
+let value: ContactsCustomFieldsValue = [
+  "Completed",
+];
 ```
 
 ## Supported Types

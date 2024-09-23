@@ -5,7 +5,7 @@
 ```typescript
 import { HrisDocumentApiModelSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: HrisDocumentApiModelSourceValue = false;
+let value: HrisDocumentApiModelSourceValue = 5964.33;
 ```
 
 ## Supported Types

@@ -7,7 +7,9 @@ The original value from the provider used to derive the unified message type.
 ```typescript
 import { InAppMessagesSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: InAppMessagesSourceValue = Email;
+let value: InAppMessagesSourceValue = [
+  "Email",
+];
 ```
 
 ## Supported Types

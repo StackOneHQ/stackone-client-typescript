@@ -5,7 +5,9 @@
 ```typescript
 import { CustomFieldDefinitionSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: CustomFieldDefinitionSourceValue = false;
+let value: CustomFieldDefinitionSourceValue = [
+  "<value>",
+];
 ```
 
 ## Supported Types

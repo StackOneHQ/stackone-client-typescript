@@ -19,7 +19,7 @@ let value: AtsListDepartmentsResponse = {
       },
     ],
   },
-  statusCode: 110375,
+  statusCode: 956084,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

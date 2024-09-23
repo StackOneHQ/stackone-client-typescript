@@ -7,7 +7,7 @@ The source value of the Status.
 ```typescript
 import { CampaignSchemasSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: CampaignSchemasSourceValue = Email;
+let value: CampaignSchemasSourceValue = "Email";
 ```
 
 ## Supported Types

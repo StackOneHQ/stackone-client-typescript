@@ -65,7 +65,9 @@ let value: Employee = {
       name: "Training Completion Status",
       remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
       remoteValueId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
-      value: "Completed",
+      value: [
+        "Completed",
+      ],
       valueId: "value_456",
     },
   ],
@@ -77,7 +79,9 @@ let value: Employee = {
   employmentContractType: {},
   employmentStatus: {},
   employmentType: {
-    sourceValue: "Permanent",
+    sourceValue: [
+      "Permanent",
+    ],
     value: EmployeeSchemasEmploymentTypeValue.Permanent,
   },
   employments: [
@@ -87,14 +91,14 @@ let value: Employee = {
       employeeId: "1687-3",
       employmentContractType: {},
       employmentType: {
-        sourceValue: {},
+        sourceValue: "Permanent",
         value: EmploymentSchemasValue.Permanent,
       },
       id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
       jobTitle: "Software Engineer",
       payCurrency: "USD",
       payFrequency: {
-        sourceValue: {},
+        sourceValue: "Hourly",
         value: EmploymentSchemasPayFrequencyValue.Hourly,
       },
       payPeriod: {
@@ -137,9 +141,7 @@ let value: Employee = {
     employeeId: "1687-3",
     id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
     locationType: {
-      sourceValue: [
-        "Home",
-      ],
+      sourceValue: "Home",
       value: EmployeeSchemasHomeLocationLocationTypeValue.Home,
     },
     name: "Woolsthorpe Manor",
@@ -198,7 +200,7 @@ let value: Employee = {
     employeeId: "1687-3",
     id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
     locationType: {
-      sourceValue: "Home",
+      sourceValue: true,
       value: EmployeeSchemasWorkLocationLocationTypeValue.Home,
     },
     name: "Woolsthorpe Manor",

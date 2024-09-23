@@ -3,12 +3,9 @@
  */
 
 import { StackOneCore } from "../core.js";
-import {
-  encodeFormQuery as encodeFormQuery$,
-  encodeSimple as encodeSimple$,
-} from "../lib/encodings.js";
-import * as m$ from "../lib/matchers.js";
-import * as schemas$ from "../lib/schemas.js";
+import { encodeFormQuery, encodeSimple } from "../lib/encodings.js";
+import * as M from "../lib/matchers.js";
+import { safeParse } from "../lib/schemas.js";
 import { RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
@@ -28,7 +25,7 @@ import { Result } from "../sdk/types/fp.js";
  * Get Connector Meta information for the given provider key
  */
 export async function connectorsGetConnectorMeta(
-  client$: StackOneCore,
+  client: StackOneCore,
   request: operations.StackoneGetConnectorMetaRequest,
   options?: RequestOptions,
 ): Promise<
@@ -43,64 +40,64 @@ export async function connectorsGetConnectorMeta(
     | ConnectionError
   >
 > {
-  const input$ = request;
+  const input = request;
 
-  const parsed$ = schemas$.safeParse(
-    input$,
-    (value$) =>
-      operations.StackoneGetConnectorMetaRequest$outboundSchema.parse(value$),
+  const parsed = safeParse(
+    input,
+    (value) =>
+      operations.StackoneGetConnectorMetaRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
-  if (!parsed$.ok) {
-    return parsed$;
+  if (!parsed.ok) {
+    return parsed;
   }
-  const payload$ = parsed$.value;
-  const body$ = null;
+  const payload = parsed.value;
+  const body = null;
 
-  const pathParams$ = {
-    provider: encodeSimple$("provider", payload$.provider, {
+  const pathParams = {
+    provider: encodeSimple("provider", payload.provider, {
       explode: false,
       charEncoding: "percent",
     }),
   };
 
-  const path$ = pathToFunc("/connectors/meta/{provider}")(pathParams$);
+  const path = pathToFunc("/connectors/meta/{provider}")(pathParams);
 
-  const query$ = encodeFormQuery$({
-    "include": payload$.include,
+  const query = encodeFormQuery({
+    "include": payload.include,
   });
 
-  const headers$ = new Headers({
+  const headers = new Headers({
     Accept: "application/json",
   });
 
-  const security$ = await extractSecurity(client$.options$.security);
+  const securityInput = await extractSecurity(client._options.security);
   const context = {
     operationID: "stackone_get_connector_meta",
     oAuth2Scopes: [],
-    securitySource: client$.options$.security,
+    securitySource: client._options.security,
   };
-  const securitySettings$ = resolveGlobalSecurity(security$);
+  const requestSecurity = resolveGlobalSecurity(securityInput);
 
-  const requestRes = client$.createRequest$(context, {
-    security: securitySettings$,
+  const requestRes = client._createRequest(context, {
+    security: requestSecurity,
     method: "GET",
-    path: path$,
-    headers: headers$,
-    query: query$,
-    body: body$,
-    timeoutMs: options?.timeoutMs || client$.options$.timeoutMs || -1,
+    path: path,
+    headers: headers,
+    query: query,
+    body: body,
+    timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {
     return requestRes;
   }
-  const request$ = requestRes.value;
+  const req = requestRes.value;
 
-  const doResult = await client$.do$(request$, {
+  const doResult = await client._do(req, {
     context,
     errorCodes: ["400", "403", "404", "429", "4XX", "500", "501", "5XX"],
     retryConfig: options?.retries
-      || client$.options$.retryConfig,
+      || client._options.retryConfig,
     retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
   });
   if (!doResult.ok) {
@@ -108,7 +105,7 @@ export async function connectorsGetConnectorMeta(
   }
   const response = doResult.value;
 
-  const responseFields$ = {
+  const responseFields = {
     ContentType: response.headers.get("content-type")
       ?? "application/octet-stream",
     StatusCode: response.status,
@@ -116,7 +113,7 @@ export async function connectorsGetConnectorMeta(
     Headers: {},
   };
 
-  const [result$] = await m$.match<
+  const [result] = await M.match<
     operations.StackoneGetConnectorMetaResponse,
     | SDKError
     | SDKValidationError
@@ -126,14 +123,14 @@ export async function connectorsGetConnectorMeta(
     | RequestTimeoutError
     | ConnectionError
   >(
-    m$.json(200, operations.StackoneGetConnectorMetaResponse$inboundSchema, {
+    M.json(200, operations.StackoneGetConnectorMetaResponse$inboundSchema, {
       key: "ConnectorsMeta",
     }),
-    m$.fail([400, 403, 404, 429, "4XX", 500, 501, "5XX"]),
-  )(response, { extraFields: responseFields$ });
-  if (!result$.ok) {
-    return result$;
+    M.fail([400, 403, 404, 429, "4XX", 500, 501, "5XX"]),
+  )(response, { extraFields: responseFields });
+  if (!result.ok) {
+    return result;
   }
 
-  return result$;
+  return result;
 }

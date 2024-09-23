@@ -5,7 +5,7 @@
 ```typescript
 import { CourseSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: CourseSourceValue = false;
+let value: CourseSourceValue = 7708.73;
 ```
 
 ## Supported Types

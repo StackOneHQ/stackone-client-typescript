@@ -8,7 +8,7 @@ The country code
 import { AccountAddressSchemasValue, Country } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: Country = {
-  sourceValue: "GB",
+  sourceValue: {},
   value: AccountAddressSchemasValue.Gb,
 };
 ```

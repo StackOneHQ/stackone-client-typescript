@@ -21,7 +21,7 @@ let value: AtsListListsResponse = {
         ],
         remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         type: {
-          sourceValue: true,
+          sourceValue: "Contacts",
           value: ListValue.Contacts,
         },
         unifiedCustomFields: {
@@ -32,7 +32,7 @@ let value: AtsListListsResponse = {
       },
     ],
   },
-  statusCode: 282807,
+  statusCode: 615560,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

@@ -5,9 +5,9 @@ True if the end of the time off request ends half way through the day
 ## Example Usage
 
 ```typescript
-import { TimeOffEndHalfDay } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { TimeOff2, TimeOffEndHalfDay } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: TimeOffEndHalfDay = true;
+let value: TimeOffEndHalfDay = TimeOff2.True;
 ```
 
 ## Supported Types

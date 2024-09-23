@@ -7,9 +7,7 @@ The source value of the questions type.
 ```typescript
 import { QuestionSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: QuestionSourceValue = [
-  "ShortText",
-];
+let value: QuestionSourceValue = "ShortText";
 ```
 
 ## Supported Types

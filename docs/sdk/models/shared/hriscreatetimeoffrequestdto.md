@@ -3,11 +3,7 @@
 ## Example Usage
 
 ```typescript
-import {
-  HrisCreateTimeOffRequestDto,
-  HrisCreateTimeOffRequestDto2,
-  HrisCreateTimeOffRequestDtoSchemas2,
-} from "@stackone/stackone-client-ts/sdk/models/shared";
+import { HrisCreateTimeOffRequestDto, HrisCreateTimeOffRequestDto2 } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: HrisCreateTimeOffRequestDto = {
   approverId: "1687-4",
@@ -18,7 +14,7 @@ let value: HrisCreateTimeOffRequestDto = {
     "other_known_names": "John Doe",
   },
   startDate: new Date("2021-01-01T01:01:01.000Z"),
-  startHalfDay: HrisCreateTimeOffRequestDtoSchemas2.True,
+  startHalfDay: true,
 };
 ```
 

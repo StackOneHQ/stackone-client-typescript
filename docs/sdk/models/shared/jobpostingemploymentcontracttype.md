@@ -6,7 +6,7 @@
 import { JobPostingEmploymentContractType, JobPostingValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: JobPostingEmploymentContractType = {
-  sourceValue: true,
+  sourceValue: {},
   value: JobPostingValue.FullTime,
 };
 ```

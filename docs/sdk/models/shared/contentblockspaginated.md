@@ -12,11 +12,11 @@ let value: ContentBlocksPaginated = {
       id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
       remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
       status: {
-        sourceValue: {},
+        sourceValue: "active",
         value: ContentBlockValue.Live,
       },
       type: {
-        sourceValue: {},
+        sourceValue: text,
         value: ContentBlockSchemasValue.Text,
       },
       updatedAt: new Date("2021-01-01T00:00:00.000Z"),

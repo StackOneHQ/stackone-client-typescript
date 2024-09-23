@@ -68,7 +68,9 @@ let value: HrisGetEmployeeResponse = {
           name: "Training Completion Status",
           remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
           remoteValueId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
-          value: Completed,
+          value: [
+            "Completed",
+          ],
           valueId: "value_456",
         },
       ],
@@ -80,7 +82,9 @@ let value: HrisGetEmployeeResponse = {
       employmentContractType: {},
       employmentStatus: {},
       employmentType: {
-        sourceValue: {},
+        sourceValue: [
+          "Permanent",
+        ],
         value: EmployeeSchemasEmploymentTypeValue.Permanent,
       },
       employments: [
@@ -90,18 +94,18 @@ let value: HrisGetEmployeeResponse = {
           employeeId: "1687-3",
           employmentContractType: {},
           employmentType: {
-            sourceValue: true,
+            sourceValue: Permanent,
             value: EmploymentSchemasValue.Permanent,
           },
           id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
           jobTitle: "Software Engineer",
           payCurrency: "USD",
           payFrequency: {
-            sourceValue: Hourly,
+            sourceValue: {},
             value: EmploymentSchemasPayFrequencyValue.Hourly,
           },
           payPeriod: {
-            sourceValue: true,
+            sourceValue: Hour,
             value: EmploymentSchemasPayPeriodValue.Hour,
           },
           payRate: "40.00",
@@ -140,9 +144,7 @@ let value: HrisGetEmployeeResponse = {
         employeeId: "1687-3",
         id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         locationType: {
-          sourceValue: [
-            "Home",
-          ],
+          sourceValue: "Home",
           value: EmployeeSchemasHomeLocationLocationTypeValue.Home,
         },
         name: "Woolsthorpe Manor",
@@ -201,7 +203,7 @@ let value: HrisGetEmployeeResponse = {
         employeeId: "1687-3",
         id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         locationType: {
-          sourceValue: true,
+          sourceValue: {},
           value: EmployeeSchemasWorkLocationLocationTypeValue.Home,
         },
         name: "Woolsthorpe Manor",
@@ -221,7 +223,7 @@ let value: HrisGetEmployeeResponse = {
       workPhoneNumber: "+1234567890",
     },
   },
-  statusCode: 638921,
+  statusCode: 320017,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

@@ -8,7 +8,9 @@ The pay period
 import { EmploymentSchemasPayPeriodValue, PayPeriod } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: PayPeriod = {
-  sourceValue: "Hour",
+  sourceValue: [
+    "Hour",
+  ],
   value: EmploymentSchemasPayPeriodValue.Hour,
 };
 ```

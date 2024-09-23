@@ -54,7 +54,7 @@ let value: HrisCreateEmployeeRequestDto = {
   employmentContractType: {},
   employmentStatus: {},
   employmentType: {
-    sourceValue: true,
+    sourceValue: {},
     value: HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue.Permanent,
   },
   employments: [
@@ -64,14 +64,14 @@ let value: HrisCreateEmployeeRequestDto = {
       employeeId: "1687-3",
       employmentContractType: {},
       employmentType: {
-        sourceValue: "Permanent",
+        sourceValue: true,
         value: EmploymentSchemasValue.Permanent,
       },
       id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
       jobTitle: "Software Engineer",
       payCurrency: "USD",
       payFrequency: {
-        sourceValue: true,
+        sourceValue: "Hourly",
         value: EmploymentSchemasPayFrequencyValue.Hourly,
       },
       payPeriod: {

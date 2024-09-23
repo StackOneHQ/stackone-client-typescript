@@ -5,7 +5,9 @@
 ```typescript
 import { SourceType } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: SourceType = {};
+let value: SourceType = [
+  "<value>",
+];
 ```
 
 ## Supported Types

@@ -6,7 +6,9 @@
 import { RejectedReasonType, RejectedReasonValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: RejectedReasonType = {
-  sourceValue: "RejectedByOrg",
+  sourceValue: [
+    "RejectedByOrg",
+  ],
   value: RejectedReasonValue.RejectedByOrganization,
 };
 ```

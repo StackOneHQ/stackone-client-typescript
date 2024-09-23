@@ -32,7 +32,7 @@ let value: AtsGetCandidateNoteResponse = {
       },
     },
   },
-  statusCode: 473600,
+  statusCode: 244425,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

@@ -5,9 +5,7 @@
 ```typescript
 import { HRISGroupSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: HRISGroupSourceValue = [
-  "<value>",
-];
+let value: HRISGroupSourceValue = "<value>";
 ```
 
 ## Supported Types

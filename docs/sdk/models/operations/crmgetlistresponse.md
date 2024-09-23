@@ -20,7 +20,9 @@ let value: CrmGetListResponse = {
       ],
       remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
       type: {
-        sourceValue: true,
+        sourceValue: [
+          "Contacts",
+        ],
         value: ListValue.Contacts,
       },
       unifiedCustomFields: {
@@ -30,7 +32,7 @@ let value: CrmGetListResponse = {
       updatedAt: new Date("2021-01-01T01:01:01.000Z"),
     },
   },
-  statusCode: 83112,
+  statusCode: 704415,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

@@ -11,7 +11,7 @@ let value: JobPostingContentSection = {
   label: "Key Responsibilities",
   remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
   type: {
-    sourceValue: "key_responsibilities",
+    sourceValue: {},
     value: JobPostingContentSectionValue.Responsibilities,
   },
 };

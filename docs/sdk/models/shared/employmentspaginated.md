@@ -25,7 +25,9 @@ let value: EmploymentsPaginated = {
       jobTitle: "Software Engineer",
       payCurrency: "USD",
       payFrequency: {
-        sourceValue: "Hourly",
+        sourceValue: [
+          "Hourly",
+        ],
         value: EmploymentSchemasPayFrequencyValue.Hourly,
       },
       payPeriod: {

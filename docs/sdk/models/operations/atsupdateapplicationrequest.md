@@ -9,9 +9,7 @@ import { AtsUpdateApplicationRequestDtoValue } from "@stackone/stackone-client-t
 let value: AtsUpdateApplicationRequest = {
   atsUpdateApplicationRequestDto: {
     applicationStatus: {
-      sourceValue: [
-        "Hired",
-      ],
+      sourceValue: {},
       value: AtsUpdateApplicationRequestDtoValue.Hired,
     },
     customFields: [
@@ -20,7 +18,9 @@ let value: AtsUpdateApplicationRequest = {
         name: "Training Completion Status",
         remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         remoteValueId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
-        value: true,
+        value: [
+          "Completed",
+        ],
         valueId: "value_456",
       },
     ],

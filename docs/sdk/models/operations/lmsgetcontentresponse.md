@@ -4,12 +4,12 @@
 
 ```typescript
 import { LmsGetContentResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
-import { Content2, ContentLanguageEnumValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { ContentLanguageEnumValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: LmsGetContentResponse = {
   contentResult: {
     data: {
-      active: Content2.True,
+      active: true,
       categories: [
         {
           active: true,
@@ -52,7 +52,7 @@ let value: LmsGetContentResponse = {
     },
   },
   contentType: "<value>",
-  statusCode: 411397,
+  statusCode: 420539,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

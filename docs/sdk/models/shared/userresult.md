@@ -7,6 +7,7 @@ import { UserResult } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: UserResult = {
   data: {
+    active: true,
     createdAt: new Date("2021-01-01T01:01:01.000Z"),
     email: "john@dew.com",
     externalReference: "al60043",

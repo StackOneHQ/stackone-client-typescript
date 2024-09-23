@@ -25,13 +25,13 @@ let value: JobPosting = {
       minValue: "45000",
       name: "Base Salary",
       payFrequency: {
-        sourceValue: Hourly,
+        sourceValue: [
+          "Hourly",
+        ],
         value: JobPostingCompensationValue.Hourly,
       },
       payPeriod: {
-        sourceValue: [
-          "Hour",
-        ],
+        sourceValue: true,
         value: JobPostingCompensationSchemasValue.Hour,
       },
       type: {
@@ -46,15 +46,19 @@ let value: JobPosting = {
       currency: "USD",
       name: "Bonus",
       payFrequency: {
-        sourceValue: "Hourly",
+        sourceValue: true,
         value: JobPostingCompensationValue.Hourly,
       },
       payPeriod: {
-        sourceValue: {},
+        sourceValue: [
+          "Hour",
+        ],
         value: JobPostingCompensationSchemasValue.Hour,
       },
       type: {
-        sourceValue: {},
+        sourceValue: [
+          "Salary",
+        ],
         value: JobPostingCompensationSchemasTypeValue.Salary,
       },
       value: "10%",
@@ -70,7 +74,9 @@ let value: JobPosting = {
         label: "Key Responsibilities",
         remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         type: {
-          sourceValue: "key_responsibilities",
+          sourceValue: [
+            "key_responsibilities",
+          ],
           value: JobPostingContentSectionValue.Responsibilities,
         },
       },
@@ -84,7 +90,7 @@ let value: JobPosting = {
     value: JobPostingValue.FullTime,
   },
   employmentType: {
-    sourceValue: Permanent,
+    sourceValue: "Permanent",
     value: JobPostingSchemasValue.Permanent,
   },
   externalApplyUrl: "https://www.example.com/job-posting/abcd1234/apply",
@@ -122,9 +128,7 @@ let value: JobPosting = {
           required: true,
           text: "What is your name?",
           type: {
-            sourceValue: [
-              "ShortText",
-            ],
+            sourceValue: "ShortText",
             value: QuestionValue.ShortText,
           },
         },
@@ -140,7 +144,9 @@ let value: JobPosting = {
           required: false,
           text: "What are your hobbies?",
           type: {
-            sourceValue: {},
+            sourceValue: [
+              "ShortText",
+            ],
             value: QuestionValue.ShortText,
           },
         },
@@ -172,9 +178,7 @@ let value: JobPosting = {
           required: true,
           text: "What is your favorite animal?",
           type: {
-            sourceValue: [
-              "ShortText",
-            ],
+            sourceValue: ShortText,
             value: QuestionValue.ShortText,
           },
         },
@@ -198,9 +202,7 @@ let value: JobPosting = {
           required: true,
           text: "Please upload your resume.",
           type: {
-            sourceValue: [
-              "ShortText",
-            ],
+            sourceValue: "ShortText",
             value: QuestionValue.ShortText,
           },
         },
@@ -227,7 +229,9 @@ let value: JobPosting = {
           required: true,
           text: "Select the programming languages you are proficient in.",
           type: {
-            sourceValue: true,
+            sourceValue: [
+              "ShortText",
+            ],
             value: QuestionValue.ShortText,
           },
         },
@@ -242,7 +246,7 @@ let value: JobPosting = {
           remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
           text: "Are you willing to relocate?",
           type: {
-            sourceValue: {},
+            sourceValue: true,
             value: QuestionValue.ShortText,
           },
         },
@@ -257,7 +261,9 @@ let value: JobPosting = {
           remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
           text: "How many years of experience do you have?",
           type: {
-            sourceValue: true,
+            sourceValue: [
+              "ShortText",
+            ],
             value: QuestionValue.ShortText,
           },
         },

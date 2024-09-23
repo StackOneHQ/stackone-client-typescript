@@ -76,9 +76,7 @@ async function run() {
           },
           categoryId: "6530",
           confidential: {
-            sourceValue: [
-              "public",
-            ],
+            sourceValue: true,
             value: HrisDocumentsUploadRequestDtoSchemasValue.True,
           },
           content: "VGhpcyBpc24ndCByZWFsbHkgYSBzYW1wbGUgZmlsZSwgYnV0IG5vIG9uZSB3aWxsIGV2ZXIga25vdyE",
@@ -135,7 +133,7 @@ async function run() {
           },
           categoryId: "6530",
           confidential: {
-            sourceValue: true,
+            sourceValue: "public",
             value: HrisDocumentsUploadRequestDtoSchemasValue.True,
           },
           content: "VGhpcyBpc24ndCByZWFsbHkgYSBzYW1wbGUgZmlsZSwgYnV0IG5vIG9uZSB3aWxsIGV2ZXIga25vdyE",
@@ -262,18 +260,22 @@ async function run() {
           employeeId: "1687-3",
           employmentContractType: {},
           employmentType: {
-            sourceValue: {},
+            sourceValue: Permanent,
             value: EmploymentSchemasValue.Permanent,
           },
           id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
           jobTitle: "Software Engineer",
           payCurrency: "USD",
           payFrequency: {
-            sourceValue: Hourly,
+            sourceValue: [
+              "Hourly",
+            ],
             value: EmploymentSchemasPayFrequencyValue.Hourly,
           },
           payPeriod: {
-            sourceValue: {},
+            sourceValue: [
+              "Hour",
+            ],
             value: EmploymentSchemasPayPeriodValue.Hour,
           },
           payRate: "40.00",
@@ -437,9 +439,7 @@ async function run() {
           employeeId: "1687-3",
           employmentContractType: {},
           employmentType: {
-            sourceValue: [
-              "Permanent",
-            ],
+            sourceValue: true,
             value: EmploymentSchemasValue.Permanent,
           },
           id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
@@ -452,7 +452,7 @@ async function run() {
             value: EmploymentSchemasPayFrequencyValue.Hourly,
           },
           payPeriod: {
-            sourceValue: "Hour",
+            sourceValue: true,
             value: EmploymentSchemasPayPeriodValue.Hour,
           },
           payRate: "40.00",
@@ -3647,20 +3647,18 @@ async function run() {
           employeeId: "1687-3",
           employmentContractType: {},
           employmentType: {
-            sourceValue: {},
+            sourceValue: true,
             value: EmploymentSchemasValue.Permanent,
           },
           id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
           jobTitle: "Software Engineer",
           payCurrency: "USD",
           payFrequency: {
-            sourceValue: true,
+            sourceValue: "Hourly",
             value: EmploymentSchemasPayFrequencyValue.Hourly,
           },
           payPeriod: {
-            sourceValue: [
-              "Hour",
-            ],
+            sourceValue: "Hour",
             value: EmploymentSchemasPayPeriodValue.Hour,
           },
           payRate: "40.00",
@@ -3804,7 +3802,7 @@ async function run() {
           name: "Training Completion Status",
           remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
           remoteValueId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
-          value: {},
+          value: "Completed",
           valueId: "value_456",
         },
       ],
@@ -3825,18 +3823,18 @@ async function run() {
           employeeId: "1687-3",
           employmentContractType: {},
           employmentType: {
-            sourceValue: {},
+            sourceValue: true,
             value: EmploymentSchemasValue.Permanent,
           },
           id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
           jobTitle: "Software Engineer",
           payCurrency: "USD",
           payFrequency: {
-            sourceValue: true,
+            sourceValue: "Hourly",
             value: EmploymentSchemasPayFrequencyValue.Hourly,
           },
           payPeriod: {
-            sourceValue: Hour,
+            sourceValue: "Hour",
             value: EmploymentSchemasPayPeriodValue.Hour,
           },
           payRate: "40.00",

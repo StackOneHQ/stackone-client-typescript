@@ -5,7 +5,7 @@
 ```typescript
 import { UnifiedUploadRequestDtoSchemasSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: UnifiedUploadRequestDtoSchemasSourceValue = true;
+let value: UnifiedUploadRequestDtoSchemasSourceValue = "abc";
 ```
 
 ## Supported Types

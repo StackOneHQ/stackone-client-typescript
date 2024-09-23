@@ -5,7 +5,9 @@
 ```typescript
 import { EmployeeSchemasEthnicitySourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: EmployeeSchemasEthnicitySourceValue = false;
+let value: EmployeeSchemasEthnicitySourceValue = [
+  "<value>",
+];
 ```
 
 ## Supported Types

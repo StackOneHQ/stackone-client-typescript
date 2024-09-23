@@ -8,9 +8,7 @@ Status of the Campaign
 import { CampaignSchemasValue, Status } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: Status = {
-  sourceValue: [
-    "Email",
-  ],
+  sourceValue: Email,
   value: CampaignSchemasValue.Live,
 };
 ```

@@ -5,7 +5,7 @@
 ```typescript
 import { IamResourceSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: IamResourceSourceValue = 9903.45;
+let value: IamResourceSourceValue = {};
 ```
 
 ## Supported Types

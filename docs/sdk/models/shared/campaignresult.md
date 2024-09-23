@@ -27,7 +27,7 @@ let value: CampaignResult = {
           from: "1-555-123-4567",
         },
         messageType: {
-          sourceValue: Email,
+          sourceValue: "Email",
           value: {},
         },
         name: "SMS Message",
@@ -44,7 +44,9 @@ let value: CampaignResult = {
           subject: "Example Email Subject",
         },
         messageType: {
-          sourceValue: "Email",
+          sourceValue: [
+            "Email",
+          ],
           value: {},
         },
         name: "Email Message",
@@ -56,9 +58,7 @@ let value: CampaignResult = {
           body: "This is an example push notification body.",
         },
         messageType: {
-          sourceValue: [
-            "Email",
-          ],
+          sourceValue: true,
           value: {},
         },
         name: "iOS Push Message",
@@ -72,7 +72,7 @@ let value: CampaignResult = {
     },
     status: {
       sourceValue: Email,
-      value: CampaignSchemasValue.Draft,
+      value: CampaignSchemasValue.Live,
     },
     updatedAt: new Date("2021-01-01T01:01:01.000Z"),
   },

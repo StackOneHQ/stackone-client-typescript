@@ -21,7 +21,9 @@ let value: AtsListOffersResponse = {
           },
         ],
         offerStatus: {
-          sourceValue: "Pending",
+          sourceValue: [
+            "Pending",
+          ],
           value: OfferValue.Pending,
         },
         remoteApplicationId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
@@ -35,7 +37,7 @@ let value: AtsListOffersResponse = {
       },
     ],
   },
-  statusCode: 359444,
+  statusCode: 807319,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

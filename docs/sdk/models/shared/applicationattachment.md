@@ -8,7 +8,9 @@ import { ApplicationAttachment, ApplicationAttachmentValue } from "@stackone/sta
 let value: ApplicationAttachment = {
   content: "Base64 encoded content",
   contentType: {
-    sourceValue: Text,
+    sourceValue: [
+      "Text",
+    ],
     value: ApplicationAttachmentValue.Text,
   },
   fileName: "resume.pdf",

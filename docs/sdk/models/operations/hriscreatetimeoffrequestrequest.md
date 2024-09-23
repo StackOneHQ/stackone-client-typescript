@@ -4,7 +4,6 @@
 
 ```typescript
 import { HrisCreateTimeOffRequestRequest } from "@stackone/stackone-client-ts/sdk/models/operations";
-import { HrisCreateTimeOffRequestDtoSchemas2 } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: HrisCreateTimeOffRequestRequest = {
   hrisCreateTimeOffRequestDto: {
@@ -16,7 +15,7 @@ let value: HrisCreateTimeOffRequestRequest = {
       "other_known_names": "John Doe",
     },
     startDate: new Date("2021-01-01T01:01:01.000Z"),
-    startHalfDay: HrisCreateTimeOffRequestDtoSchemas2.True,
+    startHalfDay: true,
   },
   xAccountId: "<value>",
 };

@@ -8,7 +8,7 @@ The location type
 import { AccountAddressValue, LocationType } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: LocationType = {
-  sourceValue: {},
+  sourceValue: Home,
   value: AccountAddressValue.Home,
 };
 ```

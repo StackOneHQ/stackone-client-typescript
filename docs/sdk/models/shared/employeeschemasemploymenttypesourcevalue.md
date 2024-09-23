@@ -7,7 +7,9 @@ The source value of the employment type.
 ```typescript
 import { EmployeeSchemasEmploymentTypeSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: EmployeeSchemasEmploymentTypeSourceValue = true;
+let value: EmployeeSchemasEmploymentTypeSourceValue = [
+  "Permanent",
+];
 ```
 
 ## Supported Types
