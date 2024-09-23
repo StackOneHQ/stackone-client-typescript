@@ -53,7 +53,7 @@ let value: Campaign = {
         body: "This is an example push notification body.",
       },
       messageType: {
-        sourceValue: true,
+        sourceValue: {},
         value: {},
       },
       name: "iOS Push Message",
@@ -62,14 +62,12 @@ let value: Campaign = {
   ],
   remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
   scheduleType: {
-    sourceValue: [
-      "Immediate",
-    ],
+    sourceValue: Immediate,
     value: CampaignValue.Immediate,
   },
   status: {
     sourceValue: Email,
-    value: CampaignSchemasValue.Draft,
+    value: CampaignSchemasValue.Live,
   },
   updatedAt: new Date("2021-01-01T01:01:01.000Z"),
 };

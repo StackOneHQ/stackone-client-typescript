@@ -13,7 +13,6 @@ let value: MarketingCreateOmniChannelTemplateRequest = {
         messageType: {
           sourceValue: "Email",
         },
-        remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
       },
     ],
     passthrough: {

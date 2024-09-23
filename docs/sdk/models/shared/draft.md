@@ -3,9 +3,9 @@
 ## Example Usage
 
 ```typescript
-import { Campaign2, Draft } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { Draft } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: Draft = Campaign2.False;
+let value: Draft = false;
 ```
 
 ## Supported Types

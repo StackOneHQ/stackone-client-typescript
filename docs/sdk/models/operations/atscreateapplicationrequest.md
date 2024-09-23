@@ -4,7 +4,7 @@
 
 ```typescript
 import { AtsCreateApplicationRequest } from "@stackone/stackone-client-ts/sdk/models/operations";
-import { AnswerValue, AtsCreateApplicationRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { AtsCreateApplicationRequestDtoValue, CreateAnswerValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: AtsCreateApplicationRequest = {
   atsCreateApplicationRequestDto: {
@@ -61,10 +61,9 @@ let value: AtsCreateApplicationRequest = {
         answers: [
           {
             id: "answer1",
-            remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
             type: {
               sourceValue: {},
-              value: AnswerValue.ShortText,
+              value: CreateAnswerValue.ShortText,
             },
             values: [
               "Yes",
@@ -72,13 +71,11 @@ let value: AtsCreateApplicationRequest = {
           },
         ],
         id: "right_to_work",
-        remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
       },
     ],
     source: {
       id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
       name: "LinkedIn",
-      remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
     },
   },
   xAccountId: "<value>",
