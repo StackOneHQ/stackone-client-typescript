@@ -6,7 +6,7 @@
 import { HrisCreateEmployeeRequestDtoSchemasPreferredLanguageSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: HrisCreateEmployeeRequestDtoSchemasPreferredLanguageSourceValue =
-  661.49;
+  "<value>";
 ```
 
 ## Supported Types

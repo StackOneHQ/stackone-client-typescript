@@ -11,13 +11,13 @@ let value: AccountsPaginated = {
       addresses: [
         {
           country: {
-            sourceValue: "GB",
+            sourceValue: [
+              "GB",
+            ],
             value: AccountAddressSchemasValue.Gb,
           },
           locationType: {
-            sourceValue: [
-              "Home",
-            ],
+            sourceValue: {},
             value: AccountAddressValue.Home,
           },
         },

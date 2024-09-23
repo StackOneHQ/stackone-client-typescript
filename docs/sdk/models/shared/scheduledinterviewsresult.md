@@ -29,7 +29,7 @@ let value: ScheduledInterviewsResult = {
         startAt: new Date("2021-01-01T17:00:00.000Z"),
         title: "Interview (Informal Interview) - Elon and StackOne",
         type: {
-          sourceValue: "Onsite Interview",
+          sourceValue: true,
           value: InterviewPartValue.OnSite,
         },
         updatedAt: new Date("2021-01-01T01:01:01.000Z"),
@@ -46,7 +46,7 @@ let value: ScheduledInterviewsResult = {
       updatedAt: new Date("2021-01-01T01:01:01.000Z"),
     },
     interviewStatus: {
-      sourceValue: Unscheduled,
+      sourceValue: "Unscheduled",
       value: ScheduledInterviewValue.Unscheduled,
     },
     interviewers: [

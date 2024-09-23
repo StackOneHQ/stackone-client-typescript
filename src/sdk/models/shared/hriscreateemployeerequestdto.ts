@@ -16,23 +16,23 @@ import {
   CountryCodeEnum$outboundSchema,
 } from "./countrycodeenum.js";
 import {
+  CreateEmploymentApiModel,
+  CreateEmploymentApiModel$inboundSchema,
+  CreateEmploymentApiModel$Outbound,
+  CreateEmploymentApiModel$outboundSchema,
+} from "./createemploymentapimodel.js";
+import {
+  CreateHRISBenefit,
+  CreateHRISBenefit$inboundSchema,
+  CreateHRISBenefit$Outbound,
+  CreateHRISBenefit$outboundSchema,
+} from "./createhrisbenefit.js";
+import {
   EmployeeCustomFields,
   EmployeeCustomFields$inboundSchema,
   EmployeeCustomFields$Outbound,
   EmployeeCustomFields$outboundSchema,
 } from "./employeecustomfields.js";
-import {
-  Employment,
-  Employment$inboundSchema,
-  Employment$Outbound,
-  Employment$outboundSchema,
-} from "./employment.js";
-import {
-  HRISBenefit,
-  HRISBenefit$inboundSchema,
-  HRISBenefit$Outbound,
-  HRISBenefit$outboundSchema,
-} from "./hrisbenefit.js";
 
 /**
  * The employee avatar
@@ -8889,7 +8889,7 @@ export type HrisCreateEmployeeRequestDto = {
   /**
    * Current benefits of the employee
    */
-  benefits?: Array<HRISBenefit> | null | undefined;
+  benefits?: Array<CreateHRISBenefit> | null | undefined;
   /**
    * The employee birthday
    */
@@ -8946,7 +8946,7 @@ export type HrisCreateEmployeeRequestDto = {
   /**
    * The employee employments
    */
-  employments?: Array<Employment> | null | undefined;
+  employments?: Array<CreateEmploymentApiModel> | null | undefined;
   /**
    * The employee ethnicity
    */
@@ -11749,7 +11749,7 @@ export const HrisCreateEmployeeRequestDto$inboundSchema: z.ZodType<
     z.lazy(() => HrisCreateEmployeeRequestDtoAvatar$inboundSchema),
   ).optional(),
   avatar_url: z.nullable(z.string()).optional(),
-  benefits: z.nullable(z.array(HRISBenefit$inboundSchema)).optional(),
+  benefits: z.nullable(z.array(CreateHRISBenefit$inboundSchema)).optional(),
   birthday: z.nullable(
     z.string().datetime({ offset: true }).transform(v => new Date(v)),
   ).optional(),
@@ -11774,7 +11774,8 @@ export const HrisCreateEmployeeRequestDto$inboundSchema: z.ZodType<
   employment_type: z.nullable(
     z.lazy(() => HrisCreateEmployeeRequestDtoEmploymentType$inboundSchema),
   ).optional(),
-  employments: z.nullable(z.array(Employment$inboundSchema)).optional(),
+  employments: z.nullable(z.array(CreateEmploymentApiModel$inboundSchema))
+    .optional(),
   ethnicity: z.nullable(
     z.lazy(() => HrisCreateEmployeeRequestDtoEthnicity$inboundSchema),
   ).optional(),
@@ -11858,7 +11859,7 @@ export const HrisCreateEmployeeRequestDto$inboundSchema: z.ZodType<
 export type HrisCreateEmployeeRequestDto$Outbound = {
   avatar?: HrisCreateEmployeeRequestDtoAvatar$Outbound | null | undefined;
   avatar_url?: string | null | undefined;
-  benefits?: Array<HRISBenefit$Outbound> | null | undefined;
+  benefits?: Array<CreateHRISBenefit$Outbound> | null | undefined;
   birthday?: string | null | undefined;
   citizenships?: Array<CountryCodeEnum$Outbound> | null | undefined;
   company_name?: string | null | undefined;
@@ -11879,7 +11880,7 @@ export type HrisCreateEmployeeRequestDto$Outbound = {
     | HrisCreateEmployeeRequestDtoEmploymentType$Outbound
     | null
     | undefined;
-  employments?: Array<Employment$Outbound> | null | undefined;
+  employments?: Array<CreateEmploymentApiModel$Outbound> | null | undefined;
   ethnicity?: HrisCreateEmployeeRequestDtoEthnicity$Outbound | null | undefined;
   first_name?: string | null | undefined;
   gender?: HrisCreateEmployeeRequestDtoGender$Outbound | null | undefined;
@@ -11930,7 +11931,7 @@ export const HrisCreateEmployeeRequestDto$outboundSchema: z.ZodType<
     z.lazy(() => HrisCreateEmployeeRequestDtoAvatar$outboundSchema),
   ).optional(),
   avatarUrl: z.nullable(z.string()).optional(),
-  benefits: z.nullable(z.array(HRISBenefit$outboundSchema)).optional(),
+  benefits: z.nullable(z.array(CreateHRISBenefit$outboundSchema)).optional(),
   birthday: z.nullable(z.date().transform(v => v.toISOString())).optional(),
   citizenships: z.nullable(z.array(CountryCodeEnum$outboundSchema)).optional(),
   companyName: z.nullable(z.string()).optional(),
@@ -11951,7 +11952,8 @@ export const HrisCreateEmployeeRequestDto$outboundSchema: z.ZodType<
   employmentType: z.nullable(
     z.lazy(() => HrisCreateEmployeeRequestDtoEmploymentType$outboundSchema),
   ).optional(),
-  employments: z.nullable(z.array(Employment$outboundSchema)).optional(),
+  employments: z.nullable(z.array(CreateEmploymentApiModel$outboundSchema))
+    .optional(),
   ethnicity: z.nullable(
     z.lazy(() => HrisCreateEmployeeRequestDtoEthnicity$outboundSchema),
   ).optional(),

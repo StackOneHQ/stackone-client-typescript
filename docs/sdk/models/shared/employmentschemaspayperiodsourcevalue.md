@@ -7,7 +7,7 @@ The source value of the pay period.
 ```typescript
 import { EmploymentSchemasPayPeriodSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: EmploymentSchemasPayPeriodSourceValue = "Hour";
+let value: EmploymentSchemasPayPeriodSourceValue = true;
 ```
 
 ## Supported Types

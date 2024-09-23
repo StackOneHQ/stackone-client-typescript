@@ -5,7 +5,7 @@
 ```typescript
 import { IamGroupSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: IamGroupSourceValue = false;
+let value: IamGroupSourceValue = 9371.17;
 ```
 
 ## Supported Types

@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { TimeOff2, TimeOffResult } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { TimeOff2, TimeOffResult, TimeOffSchemas2 } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: TimeOffResult = {
   data: {
@@ -18,7 +18,7 @@ let value: TimeOffResult = {
     remoteEmployeeId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
     remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
     startDate: new Date("2021-01-01T01:01:01.000Z"),
-    startHalfDay: true,
+    startHalfDay: TimeOffSchemas2.True,
     updatedDate: new Date("2021-01-01T01:01:01.000Z"),
   },
 };

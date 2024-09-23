@@ -5,9 +5,7 @@
 ```typescript
 import { HRISLocationSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: HRISLocationSourceValue = [
-  "<value>",
-];
+let value: HRISLocationSourceValue = {};
 ```
 
 ## Supported Types
