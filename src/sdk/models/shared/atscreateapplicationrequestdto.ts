@@ -16,11 +16,11 @@ import {
   CandidateCustomFields$outboundSchema,
 } from "./candidatecustomfields.js";
 import {
-  Questionnaire,
-  Questionnaire$inboundSchema,
-  Questionnaire$Outbound,
-  Questionnaire$outboundSchema,
-} from "./questionnaire.js";
+  CreateQuestionnaire,
+  CreateQuestionnaire$inboundSchema,
+  CreateQuestionnaire$Outbound,
+  CreateQuestionnaire$outboundSchema,
+} from "./createquestionnaire.js";
 import {
   SocialLink,
   SocialLink$inboundSchema,
@@ -157,10 +157,6 @@ export type AtsCreateApplicationRequestDtoSource = {
    * The source of the application
    */
   name?: string | null | undefined;
-  /**
-   * Provider's unique identifier
-   */
-  remoteId?: string | null | undefined;
 };
 
 export type AtsCreateApplicationRequestDto = {
@@ -191,7 +187,7 @@ export type AtsCreateApplicationRequestDto = {
   /**
    * Questionnaires associated with the application
    */
-  questionnaires?: Array<Questionnaire> | null | undefined;
+  questionnaires?: Array<CreateQuestionnaire> | null | undefined;
   source?: AtsCreateApplicationRequestDtoSource | null | undefined;
 };
 
@@ -492,18 +488,12 @@ export const AtsCreateApplicationRequestDtoSource$inboundSchema: z.ZodType<
 > = z.object({
   id: z.nullable(z.string()).optional(),
   name: z.nullable(z.string()).optional(),
-  remote_id: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "remote_id": "remoteId",
-  });
 });
 
 /** @internal */
 export type AtsCreateApplicationRequestDtoSource$Outbound = {
   id?: string | null | undefined;
   name?: string | null | undefined;
-  remote_id?: string | null | undefined;
 };
 
 /** @internal */
@@ -514,11 +504,6 @@ export const AtsCreateApplicationRequestDtoSource$outboundSchema: z.ZodType<
 > = z.object({
   id: z.nullable(z.string()).optional(),
   name: z.nullable(z.string()).optional(),
-  remoteId: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    remoteId: "remote_id",
-  });
 });
 
 /**
@@ -552,7 +537,8 @@ export const AtsCreateApplicationRequestDto$inboundSchema: z.ZodType<
   job_id: z.nullable(z.string()).optional(),
   location_id: z.nullable(z.string()).optional(),
   passthrough: z.nullable(z.record(z.any())).optional(),
-  questionnaires: z.nullable(z.array(Questionnaire$inboundSchema)).optional(),
+  questionnaires: z.nullable(z.array(CreateQuestionnaire$inboundSchema))
+    .optional(),
   source: z.nullable(
     z.lazy(() => AtsCreateApplicationRequestDtoSource$inboundSchema),
   ).optional(),
@@ -579,7 +565,7 @@ export type AtsCreateApplicationRequestDto$Outbound = {
   job_id?: string | null | undefined;
   location_id?: string | null | undefined;
   passthrough?: { [k: string]: any } | null | undefined;
-  questionnaires?: Array<Questionnaire$Outbound> | null | undefined;
+  questionnaires?: Array<CreateQuestionnaire$Outbound> | null | undefined;
   source?: AtsCreateApplicationRequestDtoSource$Outbound | null | undefined;
 };
 
@@ -601,7 +587,8 @@ export const AtsCreateApplicationRequestDto$outboundSchema: z.ZodType<
   jobId: z.nullable(z.string()).optional(),
   locationId: z.nullable(z.string()).optional(),
   passthrough: z.nullable(z.record(z.any())).optional(),
-  questionnaires: z.nullable(z.array(Questionnaire$outboundSchema)).optional(),
+  questionnaires: z.nullable(z.array(CreateQuestionnaire$outboundSchema))
+    .optional(),
   source: z.nullable(
     z.lazy(() => AtsCreateApplicationRequestDtoSource$outboundSchema),
   ).optional(),

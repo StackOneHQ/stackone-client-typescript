@@ -13,7 +13,7 @@ import {
 let value: HrisDocumentsUploadRequestDto = {
   category: {
     sourceValue: "550e8400-e29b-41d4-a716-446655440000",
-    value: HrisDocumentsUploadRequestDtoValue.HomeAddress,
+    value: HrisDocumentsUploadRequestDtoValue.Confidential,
   },
   categoryId: "6530",
   confidential: {
@@ -23,7 +23,9 @@ let value: HrisDocumentsUploadRequestDto = {
   content:
     "VGhpcyBpc24ndCByZWFsbHkgYSBzYW1wbGUgZmlsZSwgYnV0IG5vIG9uZSB3aWxsIGV2ZXIga25vdyE",
   fileFormat: {
-    sourceValue: {},
+    sourceValue: [
+      "abc",
+    ],
     value: HrisDocumentsUploadRequestDtoSchemasFileFormatValue.Pdf,
   },
   name: "weather-forecast",

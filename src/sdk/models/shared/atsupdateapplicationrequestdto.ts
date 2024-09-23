@@ -87,10 +87,6 @@ export type AtsUpdateApplicationRequestDtoSource = {
    * The source of the application
    */
   name?: string | null | undefined;
-  /**
-   * Provider's unique identifier
-   */
-  remoteId?: string | null | undefined;
 };
 
 export type AtsUpdateApplicationRequestDto = {
@@ -316,18 +312,12 @@ export const AtsUpdateApplicationRequestDtoSource$inboundSchema: z.ZodType<
 > = z.object({
   id: z.nullable(z.string()).optional(),
   name: z.nullable(z.string()).optional(),
-  remote_id: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "remote_id": "remoteId",
-  });
 });
 
 /** @internal */
 export type AtsUpdateApplicationRequestDtoSource$Outbound = {
   id?: string | null | undefined;
   name?: string | null | undefined;
-  remote_id?: string | null | undefined;
 };
 
 /** @internal */
@@ -338,11 +328,6 @@ export const AtsUpdateApplicationRequestDtoSource$outboundSchema: z.ZodType<
 > = z.object({
   id: z.nullable(z.string()).optional(),
   name: z.nullable(z.string()).optional(),
-  remoteId: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    remoteId: "remote_id",
-  });
 });
 
 /**

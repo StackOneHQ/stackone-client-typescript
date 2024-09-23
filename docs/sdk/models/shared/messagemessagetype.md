@@ -8,7 +8,9 @@ Stackone enum identifying the type of message associated with the content.
 import { MessageMessageType } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: MessageMessageType = {
-  sourceValue: Email,
+  sourceValue: [
+    "Email",
+  ],
 };
 ```
 

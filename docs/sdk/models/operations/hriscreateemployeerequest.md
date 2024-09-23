@@ -6,9 +6,9 @@
 import { HrisCreateEmployeeRequest } from "@stackone/stackone-client-ts/sdk/models/operations";
 import {
   CountryCodeEnumValue,
-  EmploymentSchemasPayFrequencyValue,
-  EmploymentSchemasPayPeriodValue,
-  EmploymentSchemasValue,
+  CreateEmploymentApiModelSchemasPayFrequencyValue,
+  CreateEmploymentApiModelSchemasPayPeriodValue,
+  CreateEmploymentApiModelSchemasValue,
   HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue,
   HrisCreateEmployeeRequestDtoSchemasHomeLocationValue,
   HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberValue,
@@ -27,7 +27,6 @@ let value: HrisCreateEmployeeRequest = {
         id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         name: "Health Insurance",
         provider: "Aetna",
-        remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         updatedAt: new Date("2021-01-01T00:00:00Z"),
       },
     ],
@@ -68,22 +67,20 @@ let value: HrisCreateEmployeeRequest = {
         employmentContractType: {},
         employmentType: {
           sourceValue: {},
-          value: EmploymentSchemasValue.Permanent,
+          value: CreateEmploymentApiModelSchemasValue.Permanent,
         },
         id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         jobTitle: "Software Engineer",
         payCurrency: "USD",
         payFrequency: {
           sourceValue: true,
-          value: EmploymentSchemasPayFrequencyValue.Hourly,
+          value: CreateEmploymentApiModelSchemasPayFrequencyValue.Hourly,
         },
         payPeriod: {
           sourceValue: Hour,
-          value: EmploymentSchemasPayPeriodValue.Hour,
+          value: CreateEmploymentApiModelSchemasPayPeriodValue.Hour,
         },
         payRate: "40.00",
-        remoteEmployeeId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
-        remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         unifiedCustomFields: {
           "my_project_custom_field_1": "REF-1236",
           "my_project_custom_field_2": "some other value",

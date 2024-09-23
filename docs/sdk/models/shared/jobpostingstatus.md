@@ -6,9 +6,7 @@
 import { JobPostingSchemasStatusValue, JobPostingStatus } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: JobPostingStatus = {
-  sourceValue: [
-    "Live",
-  ],
+  sourceValue: true,
   value: JobPostingSchemasStatusValue.Live,
 };
 ```

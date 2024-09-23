@@ -5,7 +5,7 @@
 ```typescript
 import { EmployeeSchemasGenderValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: EmployeeSchemasGenderValue = EmployeeSchemasGenderValue.Diverse;
+let value: EmployeeSchemasGenderValue = EmployeeSchemasGenderValue.Female;
 ```
 
 ## Values

@@ -9,11 +9,11 @@ let value: Account = {
   addresses: [
     {
       country: {
-        sourceValue: GB,
+        sourceValue: {},
         value: AccountAddressSchemasValue.Gb,
       },
       locationType: {
-        sourceValue: {},
+        sourceValue: Home,
         value: AccountAddressValue.Home,
       },
     },

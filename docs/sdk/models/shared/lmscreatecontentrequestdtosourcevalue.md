@@ -5,7 +5,7 @@
 ```typescript
 import { LmsCreateContentRequestDtoSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: LmsCreateContentRequestDtoSourceValue = 3165.43;
+let value: LmsCreateContentRequestDtoSourceValue = {};
 ```
 
 ## Supported Types

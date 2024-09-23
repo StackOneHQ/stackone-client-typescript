@@ -81,6 +81,10 @@ export type AtsUpdateCandidateRequestDto = {
    */
   phone?: string | null | undefined;
   /**
+   * The candidate personal phone number
+   */
+  phoneNumber?: string | null | undefined;
+  /**
    * List of candidate phone numbers including the type of the number when available
    */
   phoneNumbers?: Array<PhoneNumber> | null | undefined;
@@ -119,6 +123,7 @@ export const AtsUpdateCandidateRequestDto$inboundSchema: z.ZodType<
   name: z.nullable(z.string()).optional(),
   passthrough: z.nullable(z.record(z.any())).optional(),
   phone: z.nullable(z.string()).optional(),
+  phone_number: z.nullable(z.string()).optional(),
   phone_numbers: z.nullable(z.array(PhoneNumber$inboundSchema)).optional(),
   social_links: z.nullable(z.array(SocialLink$inboundSchema)).optional(),
   title: z.nullable(z.string()).optional(),
@@ -130,6 +135,7 @@ export const AtsUpdateCandidateRequestDto$inboundSchema: z.ZodType<
     "first_name": "firstName",
     "hired_at": "hiredAt",
     "last_name": "lastName",
+    "phone_number": "phoneNumber",
     "phone_numbers": "phoneNumbers",
     "social_links": "socialLinks",
     "unified_custom_fields": "unifiedCustomFields",
@@ -150,6 +156,7 @@ export type AtsUpdateCandidateRequestDto$Outbound = {
   name?: string | null | undefined;
   passthrough?: { [k: string]: any } | null | undefined;
   phone?: string | null | undefined;
+  phone_number?: string | null | undefined;
   phone_numbers?: Array<PhoneNumber$Outbound> | null | undefined;
   social_links?: Array<SocialLink$Outbound> | null | undefined;
   title?: string | null | undefined;
@@ -175,6 +182,7 @@ export const AtsUpdateCandidateRequestDto$outboundSchema: z.ZodType<
   name: z.nullable(z.string()).optional(),
   passthrough: z.nullable(z.record(z.any())).optional(),
   phone: z.nullable(z.string()).optional(),
+  phoneNumber: z.nullable(z.string()).optional(),
   phoneNumbers: z.nullable(z.array(PhoneNumber$outboundSchema)).optional(),
   socialLinks: z.nullable(z.array(SocialLink$outboundSchema)).optional(),
   title: z.nullable(z.string()).optional(),
@@ -186,6 +194,7 @@ export const AtsUpdateCandidateRequestDto$outboundSchema: z.ZodType<
     firstName: "first_name",
     hiredAt: "hired_at",
     lastName: "last_name",
+    phoneNumber: "phone_number",
     phoneNumbers: "phone_numbers",
     socialLinks: "social_links",
     unifiedCustomFields: "unified_custom_fields",
