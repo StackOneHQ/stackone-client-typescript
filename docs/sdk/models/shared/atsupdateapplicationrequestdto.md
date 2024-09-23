@@ -7,7 +7,7 @@ import { AtsUpdateApplicationRequestDto, AtsUpdateApplicationRequestDtoValue } f
 
 let value: AtsUpdateApplicationRequestDto = {
   applicationStatus: {
-    sourceValue: Hired,
+    sourceValue: true,
     value: AtsUpdateApplicationRequestDtoValue.Hired,
   },
   customFields: [

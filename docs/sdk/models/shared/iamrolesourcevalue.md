@@ -5,7 +5,7 @@
 ```typescript
 import { IamRoleSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: IamRoleSourceValue = {};
+let value: IamRoleSourceValue = 5156.38;
 ```
 
 ## Supported Types

@@ -7,9 +7,7 @@ The source value of the interview status.
 ```typescript
 import { ScheduledInterviewSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: ScheduledInterviewSourceValue = [
-  "Unscheduled",
-];
+let value: ScheduledInterviewSourceValue = "Unscheduled";
 ```
 
 ## Supported Types

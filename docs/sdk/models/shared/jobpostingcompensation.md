@@ -18,13 +18,11 @@ let value: JobPostingCompensation = {
     value: JobPostingCompensationValue.Hourly,
   },
   payPeriod: {
-    sourceValue: Hour,
+    sourceValue: "Hour",
     value: JobPostingCompensationSchemasValue.Hour,
   },
   type: {
-    sourceValue: [
-      "Salary",
-    ],
+    sourceValue: Salary,
     value: JobPostingCompensationSchemasTypeValue.Salary,
   },
 };

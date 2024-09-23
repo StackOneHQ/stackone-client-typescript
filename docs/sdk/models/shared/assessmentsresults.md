@@ -10,7 +10,7 @@ let value: AssessmentsResults = {
   assessmentId: "f15aad8e-8db6-4194-8299-a525eb8fc30f",
   attachments: {
     contentType: {
-      sourceValue: "Text",
+      sourceValue: {},
       value: AssessmentsResultsSchemasValue.Text,
     },
     url: "http://example.com/resume.pdf",

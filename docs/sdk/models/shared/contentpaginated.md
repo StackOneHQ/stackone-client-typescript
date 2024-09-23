@@ -3,12 +3,12 @@
 ## Example Usage
 
 ```typescript
-import { Content2, ContentLanguageEnumValue, ContentPaginated } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { ContentLanguageEnumValue, ContentPaginated } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: ContentPaginated = {
   data: [
     {
-      active: Content2.True,
+      active: true,
       categories: [
         {
           active: true,

@@ -22,7 +22,7 @@ let value: AtsListCandidateCustomFieldDefinitionsResponse = {
       },
     ],
   },
-  statusCode: 474697,
+  statusCode: 581273,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

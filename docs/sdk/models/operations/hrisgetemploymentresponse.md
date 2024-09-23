@@ -19,7 +19,7 @@ let value: HrisGetEmploymentResponse = {
       employeeId: "1687-3",
       employmentContractType: {},
       employmentType: {
-        sourceValue: true,
+        sourceValue: Permanent,
         value: EmploymentSchemasValue.Permanent,
       },
       id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
@@ -30,7 +30,7 @@ let value: HrisGetEmploymentResponse = {
         value: EmploymentSchemasPayFrequencyValue.Hourly,
       },
       payPeriod: {
-        sourceValue: {},
+        sourceValue: true,
         value: EmploymentSchemasPayPeriodValue.Hour,
       },
       payRate: "40.00",
@@ -43,7 +43,7 @@ let value: HrisGetEmploymentResponse = {
       updatedAt: new Date("2021-01-01T01:01:01.000Z"),
     },
   },
-  statusCode: 881104,
+  statusCode: 25662,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

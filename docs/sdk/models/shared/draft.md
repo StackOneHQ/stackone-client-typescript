@@ -5,7 +5,7 @@
 ```typescript
 import { Campaign2, Draft } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: Draft = Campaign2.True;
+let value: Draft = Campaign2.False;
 ```
 
 ## Supported Types

@@ -7,7 +7,7 @@ The source value of the offer status.
 ```typescript
 import { AtsCreateOfferRequestDtoSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: AtsCreateOfferRequestDtoSourceValue = "Pending";
+let value: AtsCreateOfferRequestDtoSourceValue = {};
 ```
 
 ## Supported Types

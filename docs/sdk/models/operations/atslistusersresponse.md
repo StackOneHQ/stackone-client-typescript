@@ -7,13 +7,14 @@ import { AtsListUsersResponse } from "@stackone/stackone-client-ts/sdk/models/op
 
 let value: AtsListUsersResponse = {
   contentType: "<value>",
-  statusCode: 118727,
+  statusCode: 69167,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),
   usersPaginated: {
     data: [
       {
+        active: true,
         createdAt: new Date("2021-01-01T01:01:01.000Z"),
         email: "john@dew.com",
         externalReference: "al60043",

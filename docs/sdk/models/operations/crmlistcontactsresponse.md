@@ -21,7 +21,7 @@ let value: CrmListContactsResponse = {
             name: "Training Completion Status",
             remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
             remoteValueId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
-            value: "Completed",
+            value: true,
             valueId: "value_456",
           },
         ],
@@ -56,7 +56,7 @@ let value: CrmListContactsResponse = {
     ],
   },
   contentType: "<value>",
-  statusCode: 667411,
+  statusCode: 237893,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

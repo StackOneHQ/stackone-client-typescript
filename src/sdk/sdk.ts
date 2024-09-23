@@ -17,51 +17,51 @@ import { Proxy } from "./proxy.js";
 export class StackOne extends ClientSDK {
   private _accounts?: Accounts;
   get accounts(): Accounts {
-    return (this._accounts ??= new Accounts(this.options$));
+    return (this._accounts ??= new Accounts(this._options));
   }
 
   private _connectSessions?: ConnectSessions;
   get connectSessions(): ConnectSessions {
-    return (this._connectSessions ??= new ConnectSessions(this.options$));
+    return (this._connectSessions ??= new ConnectSessions(this._options));
   }
 
   private _connectors?: Connectors;
   get connectors(): Connectors {
-    return (this._connectors ??= new Connectors(this.options$));
+    return (this._connectors ??= new Connectors(this._options));
   }
 
   private _ats?: Ats;
   get ats(): Ats {
-    return (this._ats ??= new Ats(this.options$));
+    return (this._ats ??= new Ats(this._options));
   }
 
   private _crm?: Crm;
   get crm(): Crm {
-    return (this._crm ??= new Crm(this.options$));
+    return (this._crm ??= new Crm(this._options));
   }
 
   private _hris?: Hris;
   get hris(): Hris {
-    return (this._hris ??= new Hris(this.options$));
+    return (this._hris ??= new Hris(this._options));
   }
 
   private _iam?: Iam;
   get iam(): Iam {
-    return (this._iam ??= new Iam(this.options$));
+    return (this._iam ??= new Iam(this._options));
   }
 
   private _lms?: Lms;
   get lms(): Lms {
-    return (this._lms ??= new Lms(this.options$));
+    return (this._lms ??= new Lms(this._options));
   }
 
   private _marketing?: Marketing;
   get marketing(): Marketing {
-    return (this._marketing ??= new Marketing(this.options$));
+    return (this._marketing ??= new Marketing(this._options));
   }
 
   private _proxy?: Proxy;
   get proxy(): Proxy {
-    return (this._proxy ??= new Proxy(this.options$));
+    return (this._proxy ??= new Proxy(this._options));
   }
 }

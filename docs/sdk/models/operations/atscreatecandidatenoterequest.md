@@ -18,7 +18,7 @@ let value: AtsCreateCandidateNoteRequest = {
       "other_known_names": "John Doe",
     },
     visibility: {
-      sourceValue: Public,
+      sourceValue: {},
       value: AtsCreateNotesRequestDtoValue.Public,
     },
   },

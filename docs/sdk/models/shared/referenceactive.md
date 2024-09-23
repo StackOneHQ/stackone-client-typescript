@@ -5,9 +5,9 @@ The reference status
 ## Example Usage
 
 ```typescript
-import { ReferenceActive } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { Reference2, ReferenceActive } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: ReferenceActive = true;
+let value: ReferenceActive = Reference2.True;
 ```
 
 ## Supported Types

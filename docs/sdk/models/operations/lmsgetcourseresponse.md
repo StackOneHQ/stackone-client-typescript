@@ -60,7 +60,7 @@ let value: LmsGetCourseResponse = {
       url: "https://www.linkedinlearning.com/?v=16873",
     },
   },
-  statusCode: 569101,
+  statusCode: 557369,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

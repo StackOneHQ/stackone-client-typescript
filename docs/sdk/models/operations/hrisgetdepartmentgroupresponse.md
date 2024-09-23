@@ -21,7 +21,7 @@ let value: HrisGetDepartmentGroupResponse = {
       },
     },
   },
-  statusCode: 433288,
+  statusCode: 536579,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

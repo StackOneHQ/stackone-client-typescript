@@ -8,7 +8,7 @@ import { ConnectorsMetaCategory } from "@stackone/stackone-client-ts/sdk/models/
 
 let value: StackoneListConnectorsMetaResponse = {
   contentType: "<value>",
-  statusCode: 383441,
+  statusCode: 778157,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

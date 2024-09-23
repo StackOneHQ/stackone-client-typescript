@@ -5,9 +5,7 @@
 ```typescript
 import { EmployeeSchemasNationalIdentityNumberSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: EmployeeSchemasNationalIdentityNumberSourceValue = [
-  "<value>",
-];
+let value: EmployeeSchemasNationalIdentityNumberSourceValue = false;
 ```
 
 ## Supported Types

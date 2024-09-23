@@ -20,7 +20,7 @@ let value: HrisListEmploymentsResponse = {
         employeeId: "1687-3",
         employmentContractType: {},
         employmentType: {
-          sourceValue: Permanent,
+          sourceValue: true,
           value: EmploymentSchemasValue.Permanent,
         },
         id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
@@ -45,7 +45,7 @@ let value: HrisListEmploymentsResponse = {
       },
     ],
   },
-  statusCode: 354047,
+  statusCode: 977496,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

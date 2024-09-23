@@ -7,7 +7,7 @@ The source value of the description type.
 ```typescript
 import { JobPostingContentSectionSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: JobPostingContentSectionSourceValue = true;
+let value: JobPostingContentSectionSourceValue = {};
 ```
 
 ## Supported Types

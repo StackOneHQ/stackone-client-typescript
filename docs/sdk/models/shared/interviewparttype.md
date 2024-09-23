@@ -6,7 +6,9 @@
 import { InterviewPartType, InterviewPartValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: InterviewPartType = {
-  sourceValue: true,
+  sourceValue: [
+    "Onsite Interview",
+  ],
   value: InterviewPartValue.OnSite,
 };
 ```

@@ -8,7 +8,7 @@ The file format of the file
 import { IamUserFileFormat, IamUserSchemasValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: IamUserFileFormat = {
-  sourceValue: {},
+  sourceValue: "abc",
   value: IamUserSchemasValue.Pdf,
 };
 ```

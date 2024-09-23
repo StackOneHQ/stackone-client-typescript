@@ -7,7 +7,9 @@ The source value of the offer status.
 ```typescript
 import { OfferSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: OfferSourceValue = true;
+let value: OfferSourceValue = [
+  "Pending",
+];
 ```
 
 ## Supported Types

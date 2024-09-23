@@ -5,7 +5,7 @@
 ```typescript
 import { ContentValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: ContentValue = ContentValue.Document;
+let value: ContentValue = ContentValue.Quiz;
 ```
 
 ## Values

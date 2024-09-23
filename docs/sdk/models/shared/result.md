@@ -6,7 +6,7 @@
 import { AssessmentsResultsValue, Result } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: Result = {
-  sourceValue: Passed,
+  sourceValue: {},
   value: AssessmentsResultsValue.Passed,
 };
 ```

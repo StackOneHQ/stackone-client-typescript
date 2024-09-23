@@ -20,7 +20,7 @@ let value: AtsGetJobCustomFieldDefinitionResponse = {
       type: {},
     },
   },
-  statusCode: 18789,
+  statusCode: 837945,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

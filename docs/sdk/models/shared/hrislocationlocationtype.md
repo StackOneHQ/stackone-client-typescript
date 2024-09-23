@@ -8,7 +8,7 @@ The location type
 import { HRISLocationLocationType, HRISLocationSchemasValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: HRISLocationLocationType = {
-  sourceValue: true,
+  sourceValue: "Home",
   value: HRISLocationSchemasValue.Home,
 };
 ```

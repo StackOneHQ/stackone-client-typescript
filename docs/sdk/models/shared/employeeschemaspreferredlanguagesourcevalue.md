@@ -5,7 +5,7 @@
 ```typescript
 import { EmployeeSchemasPreferredLanguageSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: EmployeeSchemasPreferredLanguageSourceValue = "<value>";
+let value: EmployeeSchemasPreferredLanguageSourceValue = false;
 ```
 
 ## Supported Types

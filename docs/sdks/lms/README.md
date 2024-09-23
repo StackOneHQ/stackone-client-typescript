@@ -101,7 +101,7 @@ The standalone function version of this method:
 ```typescript
 import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
 import { lmsBatchUpsertContent } from "@stackone/stackone-client-ts/funcs/lmsBatchUpsertContent.js";
-import { ContentLanguageEnumValue, LmsUpsertContentRequestDto2 } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { ContentLanguageEnumValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 // Use `StackOneCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -117,7 +117,7 @@ async function run() {
     lmsBatchUpsertContentRequestDto: {
       items: [
         {
-          active: LmsUpsertContentRequestDto2.True,
+          active: true,
           categories: [
             {
               active: true,
@@ -210,7 +210,7 @@ async function run() {
       categories: [
         {
           active: true,
-          name: "Technology",
+          name: "Information-Technology",
           unifiedCustomFields: {
             "my_project_custom_field_1": "REF-1236",
             "my_project_custom_field_2": "some other value",
@@ -272,7 +272,7 @@ async function run() {
       categories: [
         {
           active: true,
-          name: "Technology",
+          name: "Information-Technology",
           unifiedCustomFields: {
             "my_project_custom_field_1": "REF-1236",
             "my_project_custom_field_2": "some other value",
@@ -974,7 +974,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.lms.getUser({
-    fields: "id,remote_id,external_reference,email,phone_number,created_at,updated_at,name",
+    fields: "id,remote_id,external_reference,active,email,phone_number,created_at,updated_at,name",
     id: "<id>",
     xAccountId: "<value>",
   });
@@ -1005,7 +1005,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await lmsGetUser(stackOne, {
-    fields: "id,remote_id,external_reference,email,phone_number,created_at,updated_at,name",
+    fields: "id,remote_id,external_reference,active,email,phone_number,created_at,updated_at,name",
     id: "<id>",
     xAccountId: "<value>",
   });
@@ -1999,7 +1999,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.lms.listUsers({
-    fields: "id,remote_id,external_reference,email,phone_number,created_at,updated_at,name",
+    fields: "id,remote_id,external_reference,active,email,phone_number,created_at,updated_at,name",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
@@ -2033,7 +2033,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await lmsListUsers(stackOne, {
-    fields: "id,remote_id,external_reference,email,phone_number,created_at,updated_at,name",
+    fields: "id,remote_id,external_reference,active,email,phone_number,created_at,updated_at,name",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
@@ -2098,7 +2098,7 @@ async function run() {
       categories: [
         {
           active: true,
-          name: "Technology",
+          name: "Information-Technology",
           unifiedCustomFields: {
             "my_project_custom_field_1": "REF-1236",
             "my_project_custom_field_2": "some other value",
@@ -2161,7 +2161,7 @@ async function run() {
       categories: [
         {
           active: true,
-          name: "Technology",
+          name: "Information-Technology",
           unifiedCustomFields: {
             "my_project_custom_field_1": "REF-1236",
             "my_project_custom_field_2": "some other value",
@@ -2249,7 +2249,7 @@ async function run() {
       categories: [
         {
           active: true,
-          name: "Technology",
+          name: "Information-Technology",
           unifiedCustomFields: {
             "my_project_custom_field_1": "REF-1236",
             "my_project_custom_field_2": "some other value",
@@ -2311,7 +2311,7 @@ async function run() {
       categories: [
         {
           active: true,
-          name: "Technology",
+          name: "Information-Technology",
           unifiedCustomFields: {
             "my_project_custom_field_1": "REF-1236",
             "my_project_custom_field_2": "some other value",

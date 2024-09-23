@@ -5,7 +5,7 @@
 ```typescript
 import { TimeOffSchemasValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: TimeOffSchemasValue = TimeOffSchemasValue.AnnualLeave;
+let value: TimeOffSchemasValue = TimeOffSchemasValue.UnmappedValue;
 ```
 
 ## Values

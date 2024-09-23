@@ -7,13 +7,14 @@ import { LmsListUsersResponse } from "@stackone/stackone-client-ts/sdk/models/op
 
 let value: LmsListUsersResponse = {
   contentType: "<value>",
-  statusCode: 975522,
+  statusCode: 788546,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),
   usersPaginated: {
     data: [
       {
+        active: true,
         createdAt: new Date("2021-01-01T01:01:01.000Z"),
         email: "john@dew.com",
         externalReference: "al60043",

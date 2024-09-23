@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { FieldType, OverallRecommendation, Scorecard } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { Field2, FieldType, OverallRecommendation, Scorecard } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: Scorecard = {
   applicationId: "1011-12",
@@ -26,8 +26,8 @@ let value: Scorecard = {
           id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
           label: "Problem Solving",
           remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-          required: true,
-          type: FieldType.Date,
+          required: Field2.True,
+          type: FieldType.SingleSelect,
           values: [
             "Excellent",
             "Good",

@@ -7,7 +7,7 @@ import { AnswerValue, AtsCreateApplicationRequestDto, AtsCreateApplicationReques
 
 let value: AtsCreateApplicationRequestDto = {
   applicationStatus: {
-    sourceValue: {},
+    sourceValue: "Hired",
     value: AtsCreateApplicationRequestDtoValue.Hired,
   },
   candidate: {
@@ -19,7 +19,7 @@ let value: AtsCreateApplicationRequestDto = {
         name: "Training Completion Status",
         remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         remoteValueId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
-        value: true,
+        value: {},
         valueId: "value_456",
       },
     ],
@@ -57,7 +57,9 @@ let value: AtsCreateApplicationRequestDto = {
           id: "answer1",
           remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
           type: {
-            sourceValue: {},
+            sourceValue: [
+              "Short Text",
+            ],
             value: AnswerValue.ShortText,
           },
           values: [

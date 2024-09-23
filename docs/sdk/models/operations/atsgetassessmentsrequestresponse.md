@@ -13,7 +13,7 @@ let value: AtsGetAssessmentsRequestResponse = {
       assessmentId: "f15aad8e-8db6-4194-8299-a525eb8fc30f",
       attachments: {
         contentType: {
-          sourceValue: {},
+          sourceValue: Text,
           value: AssessmentsResultsSchemasValue.Text,
         },
         url: "http://example.com/resume.pdf",
@@ -25,7 +25,7 @@ let value: AtsGetAssessmentsRequestResponse = {
       id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
       remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
       result: {
-        sourceValue: {},
+        sourceValue: true,
         value: AssessmentsResultsValue.Passed,
       },
       resultUrl: "https://exmaple.com/result?id=xyz",
@@ -41,7 +41,7 @@ let value: AtsGetAssessmentsRequestResponse = {
     },
   },
   contentType: "<value>",
-  statusCode: 582020,
+  statusCode: 438601,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

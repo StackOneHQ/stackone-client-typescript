@@ -14,9 +14,7 @@ import {
 let value: ApplicationResult = {
   data: {
     applicationStatus: {
-      sourceValue: [
-        "Hired",
-      ],
+      sourceValue: true,
       value: ApplicationValue.Hired,
     },
     candidate: {
@@ -52,7 +50,7 @@ let value: ApplicationResult = {
         name: "Training Completion Status",
         remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         remoteValueId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
-        value: Completed,
+        value: true,
         valueId: "value_456",
       },
     ],
@@ -62,9 +60,7 @@ let value: ApplicationResult = {
         categoryId: "6530",
         createdAt: new Date("2021-01-01T01:01:01.000Z"),
         fileFormat: {
-          sourceValue: [
-            "abc",
-          ],
+          sourceValue: true,
           value: AtsDocumentApiModelValue.Pdf,
         },
         id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",

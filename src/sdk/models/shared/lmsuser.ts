@@ -7,6 +7,10 @@ import { remap as remap$ } from "../../../lib/primitives.js";
 
 export type LmsUser = {
   /**
+   * The user active status
+   */
+  active?: boolean | null | undefined;
+  /**
    * The created_at date
    */
   createdAt?: Date | null | undefined;
@@ -47,6 +51,7 @@ export type LmsUser = {
 /** @internal */
 export const LmsUser$inboundSchema: z.ZodType<LmsUser, z.ZodTypeDef, unknown> =
   z.object({
+    active: z.nullable(z.boolean()).optional(),
     created_at: z.nullable(
       z.string().datetime({ offset: true }).transform(v => new Date(v)),
     ).optional(),
@@ -73,6 +78,7 @@ export const LmsUser$inboundSchema: z.ZodType<LmsUser, z.ZodTypeDef, unknown> =
 
 /** @internal */
 export type LmsUser$Outbound = {
+  active?: boolean | null | undefined;
   created_at?: string | null | undefined;
   email?: string | null | undefined;
   external_reference?: string | null | undefined;
@@ -90,6 +96,7 @@ export const LmsUser$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   LmsUser
 > = z.object({
+  active: z.nullable(z.boolean()).optional(),
   createdAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
   email: z.nullable(z.string()).optional(),
   externalReference: z.nullable(z.string()).optional(),

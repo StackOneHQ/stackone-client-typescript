@@ -128,7 +128,7 @@ async function run() {
         {
           answers: [
             {
-              id: "answer1",
+              id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
               remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
               type: {
                 sourceValue: "Short Text",
@@ -136,10 +136,14 @@ async function run() {
               },
               values: [
                 "Yes",
+                "No Travel",
+                "It sounds pretty cool.",
+                "Excel",
+                "Power Point",
               ],
             },
           ],
-          id: "right_to_work",
+          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
           remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         },
       ],
@@ -193,7 +197,9 @@ async function run() {
             name: "Training Completion Status",
             remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
             remoteValueId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
-            value: {},
+            value: [
+              "Completed",
+            ],
             valueId: "value_456",
           },
         ],
@@ -228,7 +234,7 @@ async function run() {
         {
           answers: [
             {
-              id: "answer1",
+              id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
               remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
               type: {
                 sourceValue: "Short Text",
@@ -236,10 +242,14 @@ async function run() {
               },
               values: [
                 "Yes",
+                "No Travel",
+                "It sounds pretty cool.",
+                "Excel",
+                "Power Point",
               ],
             },
           ],
-          id: "right_to_work",
+          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
           remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         },
       ],
@@ -375,7 +385,7 @@ async function run() {
           name: "Training Completion Status",
           remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
           remoteValueId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
-          value: Completed,
+          value: {},
           valueId: "value_456",
         },
       ],
@@ -5227,7 +5237,7 @@ async function run() {
           name: "Training Completion Status",
           remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
           remoteValueId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
-          value: "Completed",
+          value: Completed,
           valueId: "value_456",
         },
       ],

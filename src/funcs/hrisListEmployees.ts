@@ -5,13 +5,13 @@
 import { StackOneCore } from "../core.js";
 import { dlv } from "../lib/dlv.js";
 import {
-  encodeDeepObjectQuery as encodeDeepObjectQuery$,
-  encodeFormQuery as encodeFormQuery$,
-  encodeSimple as encodeSimple$,
-  queryJoin as queryJoin$,
+  encodeDeepObjectQuery,
+  encodeFormQuery,
+  encodeSimple,
+  queryJoin,
 } from "../lib/encodings.js";
-import * as m$ from "../lib/matchers.js";
-import * as schemas$ from "../lib/schemas.js";
+import * as M from "../lib/matchers.js";
+import { safeParse } from "../lib/schemas.js";
 import { RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
@@ -37,7 +37,7 @@ import {
  * List Employees
  */
 export async function hrisListEmployees(
-  client$: StackOneCore,
+  client: StackOneCore,
   request: operations.HrisListEmployeesRequest,
   options?: RequestOptions,
 ): Promise<
@@ -54,74 +54,73 @@ export async function hrisListEmployees(
     >
   >
 > {
-  const input$ = request;
+  const input = request;
 
-  const parsed$ = schemas$.safeParse(
-    input$,
-    (value$) =>
-      operations.HrisListEmployeesRequest$outboundSchema.parse(value$),
+  const parsed = safeParse(
+    input,
+    (value) => operations.HrisListEmployeesRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
-  if (!parsed$.ok) {
-    return haltIterator(parsed$);
+  if (!parsed.ok) {
+    return haltIterator(parsed);
   }
-  const payload$ = parsed$.value;
-  const body$ = null;
+  const payload = parsed.value;
+  const body = null;
 
-  const path$ = pathToFunc("/unified/hris/employees")();
+  const path = pathToFunc("/unified/hris/employees")();
 
-  const query$ = queryJoin$(
-    encodeDeepObjectQuery$({
-      "filter": payload$.filter,
-      "proxy": payload$.proxy,
+  const query = queryJoin(
+    encodeDeepObjectQuery({
+      "filter": payload.filter,
+      "proxy": payload.proxy,
     }),
-    encodeFormQuery$({
-      "expand": payload$.expand,
-      "fields": payload$.fields,
-      "include": payload$.include,
-      "next": payload$.next,
-      "page": payload$.page,
-      "page_size": payload$.page_size,
-      "raw": payload$.raw,
-      "updated_after": payload$.updated_after,
+    encodeFormQuery({
+      "expand": payload.expand,
+      "fields": payload.fields,
+      "include": payload.include,
+      "next": payload.next,
+      "page": payload.page,
+      "page_size": payload.page_size,
+      "raw": payload.raw,
+      "updated_after": payload.updated_after,
     }),
   );
 
-  const headers$ = new Headers({
+  const headers = new Headers({
     Accept: "application/json",
-    "x-account-id": encodeSimple$("x-account-id", payload$["x-account-id"], {
+    "x-account-id": encodeSimple("x-account-id", payload["x-account-id"], {
       explode: false,
       charEncoding: "none",
     }),
   });
 
-  const security$ = await extractSecurity(client$.options$.security);
+  const securityInput = await extractSecurity(client._options.security);
   const context = {
     operationID: "hris_list_employees",
     oAuth2Scopes: [],
-    securitySource: client$.options$.security,
+    securitySource: client._options.security,
   };
-  const securitySettings$ = resolveGlobalSecurity(security$);
+  const requestSecurity = resolveGlobalSecurity(securityInput);
 
-  const requestRes = client$.createRequest$(context, {
-    security: securitySettings$,
+  const requestRes = client._createRequest(context, {
+    security: requestSecurity,
     method: "GET",
-    path: path$,
-    headers: headers$,
-    query: query$,
-    body: body$,
-    timeoutMs: options?.timeoutMs || client$.options$.timeoutMs || -1,
+    path: path,
+    headers: headers,
+    query: query,
+    body: body,
+    timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {
     return haltIterator(requestRes);
   }
-  const request$ = requestRes.value;
+  const req = requestRes.value;
 
-  const doResult = await client$.do$(request$, {
+  const doResult = await client._do(req, {
     context,
     errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
     retryConfig: options?.retries
-      || client$.options$.retryConfig,
+      || client._options.retryConfig,
     retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
   });
   if (!doResult.ok) {
@@ -129,7 +128,7 @@ export async function hrisListEmployees(
   }
   const response = doResult.value;
 
-  const responseFields$ = {
+  const responseFields = {
     ContentType: response.headers.get("content-type")
       ?? "application/octet-stream",
     StatusCode: response.status,
@@ -137,7 +136,7 @@ export async function hrisListEmployees(
     Headers: {},
   };
 
-  const [result$, raw$] = await m$.match<
+  const [result, raw] = await M.match<
     operations.HrisListEmployeesResponse,
     | SDKError
     | SDKValidationError
@@ -147,13 +146,13 @@ export async function hrisListEmployees(
     | RequestTimeoutError
     | ConnectionError
   >(
-    m$.json(200, operations.HrisListEmployeesResponse$inboundSchema, {
+    M.json(200, operations.HrisListEmployeesResponse$inboundSchema, {
       key: "EmployeesPaginated",
     }),
-    m$.fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"]),
-  )(response, { extraFields: responseFields$ });
-  if (!result$.ok) {
-    return haltIterator(result$);
+    M.fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"]),
+  )(response, { extraFields: responseFields });
+  if (!result.ok) {
+    return haltIterator(result);
   }
 
   const nextFunc = (
@@ -178,15 +177,15 @@ export async function hrisListEmployees(
 
     return () =>
       hrisListEmployees(
-        client$,
+        client,
         {
-          ...input$,
+          ...input,
           next: nextCursor,
         },
         options,
       );
   };
 
-  const page$ = { ...result$, next: nextFunc(raw$) };
-  return { ...page$, ...createPageIterator(page$, (v) => !v.ok) };
+  const page = { ...result, next: nextFunc(raw) };
+  return { ...page, ...createPageIterator(page, (v) => !v.ok) };
 }

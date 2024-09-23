@@ -16,13 +16,13 @@ let value: UnifiedUploadRequestDto = {
   },
   categoryId: "6530",
   confidential: {
-    sourceValue: true,
+    sourceValue: "public",
     value: UnifiedUploadRequestDtoValue.True,
   },
   content:
     "VGhpcyBpc24ndCByZWFsbHkgYSBzYW1wbGUgZmlsZSwgYnV0IG5vIG9uZSB3aWxsIGV2ZXIga25vdyE",
   fileFormat: {
-    sourceValue: {},
+    sourceValue: true,
     value: UnifiedUploadRequestDtoSchemasValue.Pdf,
   },
   name: "weather-forecast",

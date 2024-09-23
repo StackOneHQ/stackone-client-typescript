@@ -4,13 +4,13 @@
 
 import { StackOneCore } from "../core.js";
 import {
-  encodeDeepObjectQuery as encodeDeepObjectQuery$,
-  encodeFormQuery as encodeFormQuery$,
-  encodeSimple as encodeSimple$,
-  queryJoin as queryJoin$,
+  encodeDeepObjectQuery,
+  encodeFormQuery,
+  encodeSimple,
+  queryJoin,
 } from "../lib/encodings.js";
-import * as m$ from "../lib/matchers.js";
-import * as schemas$ from "../lib/schemas.js";
+import * as M from "../lib/matchers.js";
+import { safeParse } from "../lib/schemas.js";
 import { RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
@@ -30,7 +30,7 @@ import { Result } from "../sdk/types/fp.js";
  * List Employee Work Eligibility
  */
 export async function hrisListEmployeeWorkEligibility(
-  client$: StackOneCore,
+  client: StackOneCore,
   request: operations.HrisListEmployeeWorkEligibilityRequest,
   options?: RequestOptions,
 ): Promise<
@@ -45,83 +45,83 @@ export async function hrisListEmployeeWorkEligibility(
     | ConnectionError
   >
 > {
-  const input$ = request;
+  const input = request;
 
-  const parsed$ = schemas$.safeParse(
-    input$,
-    (value$) =>
+  const parsed = safeParse(
+    input,
+    (value) =>
       operations.HrisListEmployeeWorkEligibilityRequest$outboundSchema.parse(
-        value$,
+        value,
       ),
     "Input validation failed",
   );
-  if (!parsed$.ok) {
-    return parsed$;
+  if (!parsed.ok) {
+    return parsed;
   }
-  const payload$ = parsed$.value;
-  const body$ = null;
+  const payload = parsed.value;
+  const body = null;
 
-  const pathParams$ = {
-    id: encodeSimple$("id", payload$.id, {
+  const pathParams = {
+    id: encodeSimple("id", payload.id, {
       explode: false,
       charEncoding: "percent",
     }),
   };
 
-  const path$ = pathToFunc("/unified/hris/employees/{id}/work_eligibility")(
-    pathParams$,
+  const path = pathToFunc("/unified/hris/employees/{id}/work_eligibility")(
+    pathParams,
   );
 
-  const query$ = queryJoin$(
-    encodeDeepObjectQuery$({
-      "filter": payload$.filter,
-      "proxy": payload$.proxy,
+  const query = queryJoin(
+    encodeDeepObjectQuery({
+      "filter": payload.filter,
+      "proxy": payload.proxy,
     }),
-    encodeFormQuery$({
-      "fields": payload$.fields,
-      "next": payload$.next,
-      "page": payload$.page,
-      "page_size": payload$.page_size,
-      "raw": payload$.raw,
-      "updated_after": payload$.updated_after,
+    encodeFormQuery({
+      "fields": payload.fields,
+      "next": payload.next,
+      "page": payload.page,
+      "page_size": payload.page_size,
+      "raw": payload.raw,
+      "updated_after": payload.updated_after,
     }),
   );
 
-  const headers$ = new Headers({
+  const headers = new Headers({
     Accept: "application/json",
-    "x-account-id": encodeSimple$("x-account-id", payload$["x-account-id"], {
+    "x-account-id": encodeSimple("x-account-id", payload["x-account-id"], {
       explode: false,
       charEncoding: "none",
     }),
   });
 
-  const security$ = await extractSecurity(client$.options$.security);
+  const securityInput = await extractSecurity(client._options.security);
   const context = {
     operationID: "hris_list_employee_work_eligibility",
     oAuth2Scopes: [],
-    securitySource: client$.options$.security,
+    securitySource: client._options.security,
   };
-  const securitySettings$ = resolveGlobalSecurity(security$);
+  const requestSecurity = resolveGlobalSecurity(securityInput);
 
-  const requestRes = client$.createRequest$(context, {
-    security: securitySettings$,
+  const requestRes = client._createRequest(context, {
+    security: requestSecurity,
     method: "GET",
-    path: path$,
-    headers: headers$,
-    query: query$,
-    body: body$,
-    timeoutMs: options?.timeoutMs || client$.options$.timeoutMs || -1,
+    path: path,
+    headers: headers,
+    query: query,
+    body: body,
+    timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {
     return requestRes;
   }
-  const request$ = requestRes.value;
+  const req = requestRes.value;
 
-  const doResult = await client$.do$(request$, {
+  const doResult = await client._do(req, {
     context,
     errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
     retryConfig: options?.retries
-      || client$.options$.retryConfig,
+      || client._options.retryConfig,
     retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
   });
   if (!doResult.ok) {
@@ -129,7 +129,7 @@ export async function hrisListEmployeeWorkEligibility(
   }
   const response = doResult.value;
 
-  const responseFields$ = {
+  const responseFields = {
     ContentType: response.headers.get("content-type")
       ?? "application/octet-stream",
     StatusCode: response.status,
@@ -137,7 +137,7 @@ export async function hrisListEmployeeWorkEligibility(
     Headers: {},
   };
 
-  const [result$] = await m$.match<
+  const [result] = await M.match<
     operations.HrisListEmployeeWorkEligibilityResponse,
     | SDKError
     | SDKValidationError
@@ -147,16 +147,16 @@ export async function hrisListEmployeeWorkEligibility(
     | RequestTimeoutError
     | ConnectionError
   >(
-    m$.json(
+    M.json(
       200,
       operations.HrisListEmployeeWorkEligibilityResponse$inboundSchema,
       { key: "WorkEligibilityPaginated" },
     ),
-    m$.fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"]),
-  )(response, { extraFields: responseFields$ });
-  if (!result$.ok) {
-    return result$;
+    M.fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"]),
+  )(response, { extraFields: responseFields });
+  if (!result.ok) {
+    return result;
   }
 
-  return result$;
+  return result;
 }
