@@ -22,6 +22,67 @@ export type SmsMessageContentsSchemas = {
   from?: string | null | undefined;
 };
 
+export type MessageContent =
+  | PushMessageContentsSchemas
+  | SmsMessageContentsSchemas
+  | Schemas;
+
+export type CreateMessage4 = {};
+
+/**
+ * The original value from the provider used to derive the unified message type.
+ */
+export type CreateMessageSourceValue =
+  | CreateMessage4
+  | string
+  | number
+  | boolean
+  | Array<any>;
+
+/**
+ * The unified message type.
+ */
+export type CreateMessageValue = {};
+
+/**
+ * Stackone enum identifying the type of message associated with the content.
+ */
+export type MessageType = {
+  /**
+   * The original value from the provider used to derive the unified message type.
+   */
+  sourceValue?:
+    | CreateMessage4
+    | string
+    | number
+    | boolean
+    | Array<any>
+    | null
+    | undefined;
+  /**
+   * The unified message type.
+   */
+  value?: CreateMessageValue | null | undefined;
+};
+
+export type CreateMessage = {
+  /**
+   * Unique identifier
+   */
+  id?: string | null | undefined;
+  messageContent?:
+    | PushMessageContentsSchemas
+    | SmsMessageContentsSchemas
+    | Schemas
+    | null
+    | undefined;
+  /**
+   * Stackone enum identifying the type of message associated with the content.
+   */
+  messageType?: MessageType | null | undefined;
+  name?: string | null | undefined;
+};
+
 export type MessageMessageContent =
   | PushMessageContentsSchemas
   | SmsMessageContentsSchemas
@@ -213,6 +274,296 @@ export namespace SmsMessageContentsSchemas$ {
   export const outboundSchema = SmsMessageContentsSchemas$outboundSchema;
   /** @deprecated use `SmsMessageContentsSchemas$Outbound` instead. */
   export type Outbound = SmsMessageContentsSchemas$Outbound;
+}
+
+/** @internal */
+export const MessageContent$inboundSchema: z.ZodType<
+  MessageContent,
+  z.ZodTypeDef,
+  unknown
+> = z.union([
+  z.lazy(() => PushMessageContentsSchemas$inboundSchema),
+  z.lazy(() => SmsMessageContentsSchemas$inboundSchema),
+  z.lazy(() => Schemas$inboundSchema),
+]);
+
+/** @internal */
+export type MessageContent$Outbound =
+  | PushMessageContentsSchemas$Outbound
+  | SmsMessageContentsSchemas$Outbound
+  | Schemas$Outbound;
+
+/** @internal */
+export const MessageContent$outboundSchema: z.ZodType<
+  MessageContent$Outbound,
+  z.ZodTypeDef,
+  MessageContent
+> = z.union([
+  z.lazy(() => PushMessageContentsSchemas$outboundSchema),
+  z.lazy(() => SmsMessageContentsSchemas$outboundSchema),
+  z.lazy(() => Schemas$outboundSchema),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace MessageContent$ {
+  /** @deprecated use `MessageContent$inboundSchema` instead. */
+  export const inboundSchema = MessageContent$inboundSchema;
+  /** @deprecated use `MessageContent$outboundSchema` instead. */
+  export const outboundSchema = MessageContent$outboundSchema;
+  /** @deprecated use `MessageContent$Outbound` instead. */
+  export type Outbound = MessageContent$Outbound;
+}
+
+/** @internal */
+export const CreateMessage4$inboundSchema: z.ZodType<
+  CreateMessage4,
+  z.ZodTypeDef,
+  unknown
+> = z.object({});
+
+/** @internal */
+export type CreateMessage4$Outbound = {};
+
+/** @internal */
+export const CreateMessage4$outboundSchema: z.ZodType<
+  CreateMessage4$Outbound,
+  z.ZodTypeDef,
+  CreateMessage4
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace CreateMessage4$ {
+  /** @deprecated use `CreateMessage4$inboundSchema` instead. */
+  export const inboundSchema = CreateMessage4$inboundSchema;
+  /** @deprecated use `CreateMessage4$outboundSchema` instead. */
+  export const outboundSchema = CreateMessage4$outboundSchema;
+  /** @deprecated use `CreateMessage4$Outbound` instead. */
+  export type Outbound = CreateMessage4$Outbound;
+}
+
+/** @internal */
+export const CreateMessageSourceValue$inboundSchema: z.ZodType<
+  CreateMessageSourceValue,
+  z.ZodTypeDef,
+  unknown
+> = z.union([
+  z.lazy(() => CreateMessage4$inboundSchema),
+  z.string(),
+  z.number(),
+  z.boolean(),
+  z.array(z.any()),
+]);
+
+/** @internal */
+export type CreateMessageSourceValue$Outbound =
+  | CreateMessage4$Outbound
+  | string
+  | number
+  | boolean
+  | Array<any>;
+
+/** @internal */
+export const CreateMessageSourceValue$outboundSchema: z.ZodType<
+  CreateMessageSourceValue$Outbound,
+  z.ZodTypeDef,
+  CreateMessageSourceValue
+> = z.union([
+  z.lazy(() => CreateMessage4$outboundSchema),
+  z.string(),
+  z.number(),
+  z.boolean(),
+  z.array(z.any()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace CreateMessageSourceValue$ {
+  /** @deprecated use `CreateMessageSourceValue$inboundSchema` instead. */
+  export const inboundSchema = CreateMessageSourceValue$inboundSchema;
+  /** @deprecated use `CreateMessageSourceValue$outboundSchema` instead. */
+  export const outboundSchema = CreateMessageSourceValue$outboundSchema;
+  /** @deprecated use `CreateMessageSourceValue$Outbound` instead. */
+  export type Outbound = CreateMessageSourceValue$Outbound;
+}
+
+/** @internal */
+export const CreateMessageValue$inboundSchema: z.ZodType<
+  CreateMessageValue,
+  z.ZodTypeDef,
+  unknown
+> = z.object({});
+
+/** @internal */
+export type CreateMessageValue$Outbound = {};
+
+/** @internal */
+export const CreateMessageValue$outboundSchema: z.ZodType<
+  CreateMessageValue$Outbound,
+  z.ZodTypeDef,
+  CreateMessageValue
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace CreateMessageValue$ {
+  /** @deprecated use `CreateMessageValue$inboundSchema` instead. */
+  export const inboundSchema = CreateMessageValue$inboundSchema;
+  /** @deprecated use `CreateMessageValue$outboundSchema` instead. */
+  export const outboundSchema = CreateMessageValue$outboundSchema;
+  /** @deprecated use `CreateMessageValue$Outbound` instead. */
+  export type Outbound = CreateMessageValue$Outbound;
+}
+
+/** @internal */
+export const MessageType$inboundSchema: z.ZodType<
+  MessageType,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  source_value: z.nullable(
+    z.union([
+      z.lazy(() => CreateMessage4$inboundSchema),
+      z.string(),
+      z.number(),
+      z.boolean(),
+      z.array(z.any()),
+    ]),
+  ).optional(),
+  value: z.nullable(z.lazy(() => CreateMessageValue$inboundSchema)).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    "source_value": "sourceValue",
+  });
+});
+
+/** @internal */
+export type MessageType$Outbound = {
+  source_value?:
+    | CreateMessage4$Outbound
+    | string
+    | number
+    | boolean
+    | Array<any>
+    | null
+    | undefined;
+  value?: CreateMessageValue$Outbound | null | undefined;
+};
+
+/** @internal */
+export const MessageType$outboundSchema: z.ZodType<
+  MessageType$Outbound,
+  z.ZodTypeDef,
+  MessageType
+> = z.object({
+  sourceValue: z.nullable(
+    z.union([
+      z.lazy(() => CreateMessage4$outboundSchema),
+      z.string(),
+      z.number(),
+      z.boolean(),
+      z.array(z.any()),
+    ]),
+  ).optional(),
+  value: z.nullable(z.lazy(() => CreateMessageValue$outboundSchema)).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    sourceValue: "source_value",
+  });
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace MessageType$ {
+  /** @deprecated use `MessageType$inboundSchema` instead. */
+  export const inboundSchema = MessageType$inboundSchema;
+  /** @deprecated use `MessageType$outboundSchema` instead. */
+  export const outboundSchema = MessageType$outboundSchema;
+  /** @deprecated use `MessageType$Outbound` instead. */
+  export type Outbound = MessageType$Outbound;
+}
+
+/** @internal */
+export const CreateMessage$inboundSchema: z.ZodType<
+  CreateMessage,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  id: z.nullable(z.string()).optional(),
+  message_content: z.nullable(
+    z.union([
+      z.lazy(() => PushMessageContentsSchemas$inboundSchema),
+      z.lazy(() => SmsMessageContentsSchemas$inboundSchema),
+      z.lazy(() => Schemas$inboundSchema),
+    ]),
+  ).optional(),
+  message_type: z.nullable(z.lazy(() => MessageType$inboundSchema)).optional(),
+  name: z.nullable(z.string()).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    "message_content": "messageContent",
+    "message_type": "messageType",
+  });
+});
+
+/** @internal */
+export type CreateMessage$Outbound = {
+  id?: string | null | undefined;
+  message_content?:
+    | PushMessageContentsSchemas$Outbound
+    | SmsMessageContentsSchemas$Outbound
+    | Schemas$Outbound
+    | null
+    | undefined;
+  message_type?: MessageType$Outbound | null | undefined;
+  name?: string | null | undefined;
+};
+
+/** @internal */
+export const CreateMessage$outboundSchema: z.ZodType<
+  CreateMessage$Outbound,
+  z.ZodTypeDef,
+  CreateMessage
+> = z.object({
+  id: z.nullable(z.string()).optional(),
+  messageContent: z.nullable(
+    z.union([
+      z.lazy(() => PushMessageContentsSchemas$outboundSchema),
+      z.lazy(() => SmsMessageContentsSchemas$outboundSchema),
+      z.lazy(() => Schemas$outboundSchema),
+    ]),
+  ).optional(),
+  messageType: z.nullable(z.lazy(() => MessageType$outboundSchema)).optional(),
+  name: z.nullable(z.string()).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    messageContent: "message_content",
+    messageType: "message_type",
+  });
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace CreateMessage$ {
+  /** @deprecated use `CreateMessage$inboundSchema` instead. */
+  export const inboundSchema = CreateMessage$inboundSchema;
+  /** @deprecated use `CreateMessage$outboundSchema` instead. */
+  export const outboundSchema = CreateMessage$outboundSchema;
+  /** @deprecated use `CreateMessage$Outbound` instead. */
+  export type Outbound = CreateMessage$Outbound;
 }
 
 /** @internal */

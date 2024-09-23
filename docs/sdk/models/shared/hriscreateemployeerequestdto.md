@@ -5,9 +5,9 @@
 ```typescript
 import {
   CountryCodeEnumValue,
-  EmploymentSchemasPayFrequencyValue,
-  EmploymentSchemasPayPeriodValue,
-  EmploymentSchemasValue,
+  CreateEmploymentApiModelSchemasPayFrequencyValue,
+  CreateEmploymentApiModelSchemasPayPeriodValue,
+  CreateEmploymentApiModelSchemasValue,
   HrisCreateEmployeeRequestDto,
   HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue,
   HrisCreateEmployeeRequestDtoSchemasHomeLocationValue,
@@ -26,7 +26,6 @@ let value: HrisCreateEmployeeRequestDto = {
       id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
       name: "Health Insurance",
       provider: "Aetna",
-      remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
       updatedAt: new Date("2021-01-01T00:00:00Z"),
     },
   ],
@@ -43,7 +42,7 @@ let value: HrisCreateEmployeeRequestDto = {
       name: "Training Completion Status",
       remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
       remoteValueId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
-      value: true,
+      value: {},
       valueId: "value_456",
     },
   ],
@@ -54,7 +53,7 @@ let value: HrisCreateEmployeeRequestDto = {
   employmentContractType: {},
   employmentStatus: {},
   employmentType: {
-    sourceValue: {},
+    sourceValue: true,
     value: HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue.Permanent,
   },
   employments: [
@@ -64,23 +63,21 @@ let value: HrisCreateEmployeeRequestDto = {
       employeeId: "1687-3",
       employmentContractType: {},
       employmentType: {
-        sourceValue: true,
-        value: EmploymentSchemasValue.Permanent,
+        sourceValue: "Permanent",
+        value: CreateEmploymentApiModelSchemasValue.Permanent,
       },
       id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
       jobTitle: "Software Engineer",
       payCurrency: "USD",
       payFrequency: {
         sourceValue: "Hourly",
-        value: EmploymentSchemasPayFrequencyValue.Hourly,
+        value: CreateEmploymentApiModelSchemasPayFrequencyValue.Hourly,
       },
       payPeriod: {
-        sourceValue: "Hour",
-        value: EmploymentSchemasPayPeriodValue.Hour,
+        sourceValue: true,
+        value: CreateEmploymentApiModelSchemasPayPeriodValue.Hour,
       },
       payRate: "40.00",
-      remoteEmployeeId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
-      remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
       unifiedCustomFields: {
         "my_project_custom_field_1": "REF-1236",
         "my_project_custom_field_2": "some other value",
@@ -159,7 +156,7 @@ let value: HrisCreateEmployeeRequestDto = {
 | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
 | `avatar`                                                                                                                                      | [shared.HrisCreateEmployeeRequestDtoAvatar](../../../sdk/models/shared/hriscreateemployeerequestdtoavatar.md)                                 | :heavy_minus_sign:                                                                                                                            | The employee avatar                                                                                                                           | https://example.com/avatar.png                                                                                                                |
 | `avatarUrl`                                                                                                                                   | *string*                                                                                                                                      | :heavy_minus_sign:                                                                                                                            | The employee avatar Url                                                                                                                       | https://example.com/avatar.png                                                                                                                |
-| `benefits`                                                                                                                                    | [shared.HRISBenefit](../../../sdk/models/shared/hrisbenefit.md)[]                                                                             | :heavy_minus_sign:                                                                                                                            | Current benefits of the employee                                                                                                              |                                                                                                                                               |
+| `benefits`                                                                                                                                    | [shared.CreateHRISBenefit](../../../sdk/models/shared/createhrisbenefit.md)[]                                                                 | :heavy_minus_sign:                                                                                                                            | Current benefits of the employee                                                                                                              |                                                                                                                                               |
 | `birthday`                                                                                                                                    | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)                                                 | :heavy_minus_sign:                                                                                                                            | The employee birthday                                                                                                                         | 2021-01-01T00:00:00Z                                                                                                                          |
 | `citizenships`                                                                                                                                | [shared.CountryCodeEnum](../../../sdk/models/shared/countrycodeenum.md)[]                                                                     | :heavy_minus_sign:                                                                                                                            | The citizenships of the Employee                                                                                                              |                                                                                                                                               |
 | `companyName`                                                                                                                                 | *string*                                                                                                                                      | :heavy_minus_sign:                                                                                                                            | The employee company name                                                                                                                     | Example Corp                                                                                                                                  |
@@ -171,7 +168,7 @@ let value: HrisCreateEmployeeRequestDto = {
 | `employmentContractType`                                                                                                                      | [shared.HrisCreateEmployeeRequestDtoEmploymentContractType](../../../sdk/models/shared/hriscreateemployeerequestdtoemploymentcontracttype.md) | :heavy_minus_sign:                                                                                                                            | The employment work schedule type (e.g., full-time, part-time)                                                                                | full_time                                                                                                                                     |
 | `employmentStatus`                                                                                                                            | [shared.HrisCreateEmployeeRequestDtoEmploymentStatus](../../../sdk/models/shared/hriscreateemployeerequestdtoemploymentstatus.md)             | :heavy_minus_sign:                                                                                                                            | The employee employment status                                                                                                                | active                                                                                                                                        |
 | `employmentType`                                                                                                                              | [shared.HrisCreateEmployeeRequestDtoEmploymentType](../../../sdk/models/shared/hriscreateemployeerequestdtoemploymenttype.md)                 | :heavy_minus_sign:                                                                                                                            | The employee employment type                                                                                                                  | full_time                                                                                                                                     |
-| `employments`                                                                                                                                 | [shared.Employment](../../../sdk/models/shared/employment.md)[]                                                                               | :heavy_minus_sign:                                                                                                                            | The employee employments                                                                                                                      |                                                                                                                                               |
+| `employments`                                                                                                                                 | [shared.CreateEmploymentApiModel](../../../sdk/models/shared/createemploymentapimodel.md)[]                                                   | :heavy_minus_sign:                                                                                                                            | The employee employments                                                                                                                      |                                                                                                                                               |
 | `ethnicity`                                                                                                                                   | [shared.HrisCreateEmployeeRequestDtoEthnicity](../../../sdk/models/shared/hriscreateemployeerequestdtoethnicity.md)                           | :heavy_minus_sign:                                                                                                                            | The employee ethnicity                                                                                                                        | white                                                                                                                                         |
 | `firstName`                                                                                                                                   | *string*                                                                                                                                      | :heavy_minus_sign:                                                                                                                            | The employee first name                                                                                                                       | Issac                                                                                                                                         |
 | `gender`                                                                                                                                      | [shared.HrisCreateEmployeeRequestDtoGender](../../../sdk/models/shared/hriscreateemployeerequestdtogender.md)                                 | :heavy_minus_sign:                                                                                                                            | The employee gender                                                                                                                           | male                                                                                                                                          |

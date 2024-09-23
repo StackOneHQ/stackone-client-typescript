@@ -7,7 +7,7 @@ import { HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberSourceValue } 
 
 let value:
   HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberSourceValue =
-    1000.14;
+    "<value>";
 ```
 
 ## Supported Types

@@ -3,7 +3,11 @@
 ## Example Usage
 
 ```typescript
-import { AnswerValue, AtsCreateApplicationRequestDto, AtsCreateApplicationRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+import {
+  AtsCreateApplicationRequestDto,
+  AtsCreateApplicationRequestDtoValue,
+  CreateAnswerValue,
+} from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: AtsCreateApplicationRequestDto = {
   applicationStatus: {
@@ -55,12 +59,11 @@ let value: AtsCreateApplicationRequestDto = {
       answers: [
         {
           id: "answer1",
-          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
           type: {
             sourceValue: [
               "Short Text",
             ],
-            value: AnswerValue.ShortText,
+            value: CreateAnswerValue.ShortText,
           },
           values: [
             "Yes",
@@ -68,13 +71,11 @@ let value: AtsCreateApplicationRequestDto = {
         },
       ],
       id: "right_to_work",
-      remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
     },
   ],
   source: {
     id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
     name: "LinkedIn",
-    remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
   },
 };
 ```
@@ -89,5 +90,5 @@ let value: AtsCreateApplicationRequestDto = {
 | `jobId`                                                                                                                                   | *string*                                                                                                                                  | :heavy_minus_sign:                                                                                                                        | Unique identifier of the job                                                                                                              | 4071538b-3cac-4fbf-ac76-f78ed250ffdd                                                                                                      |
 | `locationId`                                                                                                                              | *string*                                                                                                                                  | :heavy_minus_sign:                                                                                                                        | Unique identifier of the location                                                                                                         | dd8d41d1-5eb8-4408-9c87-9ba44604eae4                                                                                                      |
 | `passthrough`                                                                                                                             | Record<string, *any*>                                                                                                                     | :heavy_minus_sign:                                                                                                                        | Value to pass through to the provider                                                                                                     | {<br/>"other_known_names": "John Doe"<br/>}                                                                                               |
-| `questionnaires`                                                                                                                          | [shared.Questionnaire](../../../sdk/models/shared/questionnaire.md)[]                                                                     | :heavy_minus_sign:                                                                                                                        | Questionnaires associated with the application                                                                                            | {<br/>"id": "right_to_work",<br/>"answers": [<br/>{<br/>"id": "answer1",<br/>"type": "text",<br/>"values": [<br/>"Yes"<br/>]<br/>}<br/>]<br/>} |
+| `questionnaires`                                                                                                                          | [shared.CreateQuestionnaire](../../../sdk/models/shared/createquestionnaire.md)[]                                                         | :heavy_minus_sign:                                                                                                                        | Questionnaires associated with the application                                                                                            | {<br/>"id": "right_to_work",<br/>"answers": [<br/>{<br/>"id": "answer1",<br/>"type": "text",<br/>"values": [<br/>"Yes"<br/>]<br/>}<br/>]<br/>} |
 | `source`                                                                                                                                  | [shared.AtsCreateApplicationRequestDtoSource](../../../sdk/models/shared/atscreateapplicationrequestdtosource.md)                         | :heavy_minus_sign:                                                                                                                        | N/A                                                                                                                                       |                                                                                                                                           |

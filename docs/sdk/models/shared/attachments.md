@@ -7,7 +7,7 @@ import { AssessmentsResultsSchemasValue, Attachments } from "@stackone/stackone-
 
 let value: Attachments = {
   contentType: {
-    sourceValue: "Text",
+    sourceValue: {},
     value: AssessmentsResultsSchemasValue.Text,
   },
   url: "http://example.com/resume.pdf",

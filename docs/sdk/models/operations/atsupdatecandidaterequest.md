@@ -39,6 +39,7 @@ let value: AtsUpdateCandidateRequest = {
     passthrough: {
       "other_known_names": "John Doe",
     },
+    phoneNumber: "+1234567890",
     phoneNumbers: [
       {
         phone: "+447700112233",
