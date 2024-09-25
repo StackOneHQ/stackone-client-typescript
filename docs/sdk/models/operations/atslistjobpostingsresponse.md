@@ -30,15 +30,15 @@ let value: AtsListJobPostingsResponse = {
             minValue: "45000",
             name: "Base Salary",
             payFrequency: {
-              sourceValue: {},
+              sourceValue: "Hourly",
               value: JobPostingCompensationValue.Hourly,
             },
             payPeriod: {
-              sourceValue: Hour,
+              sourceValue: "Hour",
               value: JobPostingCompensationSchemasValue.Hour,
             },
             type: {
-              sourceValue: {},
+              sourceValue: "Salary",
               value: JobPostingCompensationSchemasTypeValue.Salary,
             },
             value: "50000",
@@ -47,7 +47,7 @@ let value: AtsListJobPostingsResponse = {
             currency: "USD",
             name: "Bonus",
             payFrequency: {
-              sourceValue: true,
+              sourceValue: "Hourly",
               value: JobPostingCompensationValue.Hourly,
             },
             payPeriod: {
@@ -55,7 +55,7 @@ let value: AtsListJobPostingsResponse = {
               value: JobPostingCompensationSchemasValue.Hour,
             },
             type: {
-              sourceValue: Salary,
+              sourceValue: "Salary",
               value: JobPostingCompensationSchemasTypeValue.Salary,
             },
             value: "10%",
@@ -71,7 +71,7 @@ let value: AtsListJobPostingsResponse = {
               label: "Key Responsibilities",
               remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
               type: {
-                sourceValue: true,
+                sourceValue: "key_responsibilities",
                 value: JobPostingContentSectionValue.Responsibilities,
               },
             },
@@ -79,11 +79,11 @@ let value: AtsListJobPostingsResponse = {
         },
         createdAt: new Date("2021-01-01T01:01:01.000Z"),
         employmentContractType: {
-          sourceValue: true,
+          sourceValue: "FullTime",
           value: JobPostingValue.FullTime,
         },
         employmentType: {
-          sourceValue: true,
+          sourceValue: "Permanent",
           value: JobPostingSchemasValue.Permanent,
         },
         externalApplyUrl: "https://www.example.com/job-posting/abcd1234/apply",
@@ -121,7 +121,7 @@ let value: AtsListJobPostingsResponse = {
                 required: true,
                 text: "What is your name?",
                 type: {
-                  sourceValue: {},
+                  sourceValue: "ShortText",
                   value: QuestionValue.ShortText,
                 },
               },
@@ -134,12 +134,10 @@ let value: AtsListJobPostingsResponse = {
                   },
                 ],
                 remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-                required: Question2.True,
+                required: Question2.False,
                 text: "What are your hobbies?",
                 type: {
-                  sourceValue: [
-                    "ShortText",
-                  ],
+                  sourceValue: "ShortText",
                   value: QuestionValue.ShortText,
                 },
               },
@@ -171,7 +169,7 @@ let value: AtsListJobPostingsResponse = {
                 required: true,
                 text: "What is your favorite animal?",
                 type: {
-                  sourceValue: ShortText,
+                  sourceValue: "ShortText",
                   value: QuestionValue.ShortText,
                 },
               },
@@ -195,7 +193,7 @@ let value: AtsListJobPostingsResponse = {
                 required: true,
                 text: "Please upload your resume.",
                 type: {
-                  sourceValue: true,
+                  sourceValue: "ShortText",
                   value: QuestionValue.ShortText,
                 },
               },
@@ -222,9 +220,7 @@ let value: AtsListJobPostingsResponse = {
                 required: true,
                 text: "Select the programming languages you are proficient in.",
                 type: {
-                  sourceValue: [
-                    "ShortText",
-                  ],
+                  sourceValue: "ShortText",
                   value: QuestionValue.ShortText,
                 },
               },
@@ -239,9 +235,7 @@ let value: AtsListJobPostingsResponse = {
                 remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
                 text: "Are you willing to relocate?",
                 type: {
-                  sourceValue: [
-                    "ShortText",
-                  ],
+                  sourceValue: "ShortText",
                   value: QuestionValue.ShortText,
                 },
               },
@@ -256,7 +250,7 @@ let value: AtsListJobPostingsResponse = {
                 remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
                 text: "How many years of experience do you have?",
                 type: {
-                  sourceValue: {},
+                  sourceValue: "ShortText",
                   value: QuestionValue.ShortText,
                 },
               },
@@ -282,9 +276,7 @@ let value: AtsListJobPostingsResponse = {
         remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         remoteJobPostingId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
         status: {
-          sourceValue: [
-            "Live",
-          ],
+          sourceValue: "Live",
           value: JobPostingSchemasStatusValue.Live,
         },
         title: "Software Engineer",
@@ -296,7 +288,7 @@ let value: AtsListJobPostingsResponse = {
       },
     ],
   },
-  statusCode: 714242,
+  statusCode: 414,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

@@ -87,7 +87,7 @@ export type HrisDocumentsUploadRequestDtoSchemasValueOpen = OpenEnum<
 /**
  * The confidentiality level of the file to be uploaded
  */
-export type Confidential = {
+export type HrisDocumentsUploadRequestDtoConfidential = {
   sourceValue?:
     | HrisDocumentsUploadRequestDto4
     | string
@@ -1366,7 +1366,7 @@ export type HrisDocumentsUploadRequestDto = {
   /**
    * The confidentiality level of the file to be uploaded
    */
-  confidential?: Confidential | null | undefined;
+  confidential?: HrisDocumentsUploadRequestDtoConfidential | null | undefined;
   /**
    * The base64 encoded content of the file to upload
    */
@@ -1584,8 +1584,8 @@ export namespace HrisDocumentsUploadRequestDtoSchemasValue$ {
 }
 
 /** @internal */
-export const Confidential$inboundSchema: z.ZodType<
-  Confidential,
+export const HrisDocumentsUploadRequestDtoConfidential$inboundSchema: z.ZodType<
+  HrisDocumentsUploadRequestDtoConfidential,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -1607,7 +1607,7 @@ export const Confidential$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type Confidential$Outbound = {
+export type HrisDocumentsUploadRequestDtoConfidential$Outbound = {
   source_value?:
     | HrisDocumentsUploadRequestDto4$Outbound
     | string
@@ -1620,39 +1620,42 @@ export type Confidential$Outbound = {
 };
 
 /** @internal */
-export const Confidential$outboundSchema: z.ZodType<
-  Confidential$Outbound,
-  z.ZodTypeDef,
-  Confidential
-> = z.object({
-  sourceValue: z.nullable(
-    z.union([
-      z.lazy(() => HrisDocumentsUploadRequestDto4$outboundSchema),
-      z.string(),
-      z.number(),
-      z.boolean(),
-      z.array(z.any()),
-    ]),
-  ).optional(),
-  value: z.nullable(HrisDocumentsUploadRequestDtoSchemasValue$outboundSchema)
-    .optional(),
-}).transform((v) => {
-  return remap$(v, {
-    sourceValue: "source_value",
+export const HrisDocumentsUploadRequestDtoConfidential$outboundSchema:
+  z.ZodType<
+    HrisDocumentsUploadRequestDtoConfidential$Outbound,
+    z.ZodTypeDef,
+    HrisDocumentsUploadRequestDtoConfidential
+  > = z.object({
+    sourceValue: z.nullable(
+      z.union([
+        z.lazy(() => HrisDocumentsUploadRequestDto4$outboundSchema),
+        z.string(),
+        z.number(),
+        z.boolean(),
+        z.array(z.any()),
+      ]),
+    ).optional(),
+    value: z.nullable(HrisDocumentsUploadRequestDtoSchemasValue$outboundSchema)
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      sourceValue: "source_value",
+    });
   });
-});
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Confidential$ {
-  /** @deprecated use `Confidential$inboundSchema` instead. */
-  export const inboundSchema = Confidential$inboundSchema;
-  /** @deprecated use `Confidential$outboundSchema` instead. */
-  export const outboundSchema = Confidential$outboundSchema;
-  /** @deprecated use `Confidential$Outbound` instead. */
-  export type Outbound = Confidential$Outbound;
+export namespace HrisDocumentsUploadRequestDtoConfidential$ {
+  /** @deprecated use `HrisDocumentsUploadRequestDtoConfidential$inboundSchema` instead. */
+  export const inboundSchema =
+    HrisDocumentsUploadRequestDtoConfidential$inboundSchema;
+  /** @deprecated use `HrisDocumentsUploadRequestDtoConfidential$outboundSchema` instead. */
+  export const outboundSchema =
+    HrisDocumentsUploadRequestDtoConfidential$outboundSchema;
+  /** @deprecated use `HrisDocumentsUploadRequestDtoConfidential$Outbound` instead. */
+  export type Outbound = HrisDocumentsUploadRequestDtoConfidential$Outbound;
 }
 
 /** @internal */
@@ -1861,7 +1864,9 @@ export const HrisDocumentsUploadRequestDto$inboundSchema: z.ZodType<
     z.lazy(() => HrisDocumentsUploadRequestDtoCategory$inboundSchema),
   ).optional(),
   category_id: z.nullable(z.string()).optional(),
-  confidential: z.nullable(z.lazy(() => Confidential$inboundSchema)).optional(),
+  confidential: z.nullable(
+    z.lazy(() => HrisDocumentsUploadRequestDtoConfidential$inboundSchema),
+  ).optional(),
   content: z.nullable(z.string()).optional(),
   file_format: z.nullable(
     z.lazy(() => HrisDocumentsUploadRequestDtoFileFormat$inboundSchema),
@@ -1879,7 +1884,10 @@ export const HrisDocumentsUploadRequestDto$inboundSchema: z.ZodType<
 export type HrisDocumentsUploadRequestDto$Outbound = {
   category?: HrisDocumentsUploadRequestDtoCategory$Outbound | null | undefined;
   category_id?: string | null | undefined;
-  confidential?: Confidential$Outbound | null | undefined;
+  confidential?:
+    | HrisDocumentsUploadRequestDtoConfidential$Outbound
+    | null
+    | undefined;
   content?: string | null | undefined;
   file_format?:
     | HrisDocumentsUploadRequestDtoFileFormat$Outbound
@@ -1899,8 +1907,9 @@ export const HrisDocumentsUploadRequestDto$outboundSchema: z.ZodType<
     z.lazy(() => HrisDocumentsUploadRequestDtoCategory$outboundSchema),
   ).optional(),
   categoryId: z.nullable(z.string()).optional(),
-  confidential: z.nullable(z.lazy(() => Confidential$outboundSchema))
-    .optional(),
+  confidential: z.nullable(
+    z.lazy(() => HrisDocumentsUploadRequestDtoConfidential$outboundSchema),
+  ).optional(),
   content: z.nullable(z.string()).optional(),
   fileFormat: z.nullable(
     z.lazy(() => HrisDocumentsUploadRequestDtoFileFormat$outboundSchema),

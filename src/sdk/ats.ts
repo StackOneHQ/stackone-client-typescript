@@ -5,6 +5,7 @@
 import { atsCreateApplication } from "../funcs/atsCreateApplication.js";
 import { atsCreateCandidate } from "../funcs/atsCreateCandidate.js";
 import { atsCreateCandidateNote } from "../funcs/atsCreateCandidateNote.js";
+import { atsCreateJob } from "../funcs/atsCreateJob.js";
 import { atsCreateOffer } from "../funcs/atsCreateOffer.js";
 import { atsDownloadApplicationDocument } from "../funcs/atsDownloadApplicationDocument.js";
 import { atsGetApplication } from "../funcs/atsGetApplication.js";
@@ -55,6 +56,7 @@ import { atsMoveApplication } from "../funcs/atsMoveApplication.js";
 import { atsRejectApplication } from "../funcs/atsRejectApplication.js";
 import { atsUpdateApplication } from "../funcs/atsUpdateApplication.js";
 import { atsUpdateCandidate } from "../funcs/atsUpdateCandidate.js";
+import { atsUpdateJob } from "../funcs/atsUpdateJob.js";
 import { atsUploadApplicationDocument } from "../funcs/atsUploadApplicationDocument.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as operations from "./models/operations/index.js";
@@ -97,6 +99,20 @@ export class Ats extends ClientSDK {
     options?: RequestOptions,
   ): Promise<operations.AtsCreateCandidateNoteResponse> {
     return unwrapAsync(atsCreateCandidateNote(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Create Job
+   */
+  async createJob(
+    request: operations.AtsCreateJobRequest,
+    options?: RequestOptions,
+  ): Promise<operations.AtsCreateJobResponse> {
+    return unwrapAsync(atsCreateJob(
       this,
       request,
       options,
@@ -797,6 +813,20 @@ export class Ats extends ClientSDK {
     options?: RequestOptions,
   ): Promise<operations.AtsUpdateCandidateResponse> {
     return unwrapAsync(atsUpdateCandidate(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Update Job
+   */
+  async updateJob(
+    request: operations.AtsUpdateJobRequest,
+    options?: RequestOptions,
+  ): Promise<operations.AtsUpdateJobResponse> {
+    return unwrapAsync(atsUpdateJob(
       this,
       request,
       options,

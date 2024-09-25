@@ -13,9 +13,7 @@ let value: AtsGetAssessmentsResultResponse = {
       assessmentId: "f15aad8e-8db6-4194-8299-a525eb8fc30f",
       attachments: {
         contentType: {
-          sourceValue: [
-            "Text",
-          ],
+          sourceValue: "Text",
           value: AssessmentsResultsSchemasValue.Text,
         },
         url: "http://example.com/resume.pdf",
@@ -43,7 +41,7 @@ let value: AtsGetAssessmentsResultResponse = {
     },
   },
   contentType: "<value>",
-  statusCode: 208876,
+  statusCode: 407,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

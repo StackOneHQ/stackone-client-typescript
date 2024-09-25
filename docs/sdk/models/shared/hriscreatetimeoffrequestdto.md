@@ -3,13 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { HrisCreateTimeOffRequestDto, HrisCreateTimeOffRequestDto2 } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { HrisCreateTimeOffRequestDto } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: HrisCreateTimeOffRequestDto = {
   approverId: "1687-4",
   employeeId: "1687-3",
   endDate: new Date("2021-01-01T01:01:01.000Z"),
-  endHalfDay: HrisCreateTimeOffRequestDto2.True,
+  endHalfDay: true,
   passthrough: {
     "other_known_names": "John Doe",
   },

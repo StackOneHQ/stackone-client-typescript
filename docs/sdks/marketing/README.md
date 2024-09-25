@@ -57,9 +57,9 @@ async function run() {
     },
     xAccountId: "<value>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -99,7 +99,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -148,7 +148,7 @@ async function run() {
         {
           id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
           messageType: {
-            sourceValue: true,
+            sourceValue: "Email",
           },
           remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         },
@@ -159,9 +159,9 @@ async function run() {
     },
     xAccountId: "<value>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -191,7 +191,7 @@ async function run() {
         {
           id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
           messageType: {
-            sourceValue: Email,
+            sourceValue: "Email",
           },
           remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         },
@@ -210,7 +210,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -270,9 +270,9 @@ async function run() {
     },
     xAccountId: "<value>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -302,7 +302,7 @@ async function run() {
         {
           id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
           messageType: {
-            sourceValue: {},
+            sourceValue: "Email",
           },
           remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         },
@@ -321,7 +321,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -372,11 +372,8 @@ async function run() {
         {
           id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
           messageType: {
-            sourceValue: [
-              "Email",
-            ],
+            sourceValue: "Email",
           },
-          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         },
       ],
       passthrough: {
@@ -385,9 +382,9 @@ async function run() {
     },
     xAccountId: "<value>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -417,11 +414,8 @@ async function run() {
         {
           id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
           messageType: {
-            sourceValue: [
-              "Email",
-            ],
+            sourceValue: "Email",
           },
-          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         },
       ],
       passthrough: {
@@ -438,7 +432,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -487,9 +481,7 @@ async function run() {
         {
           id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
           messageType: {
-            sourceValue: [
-              "Email",
-            ],
+            sourceValue: "Email",
           },
           remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         },
@@ -500,9 +492,9 @@ async function run() {
     },
     xAccountId: "<value>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -532,7 +524,7 @@ async function run() {
         {
           id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
           messageType: {
-            sourceValue: {},
+            sourceValue: "Email",
           },
           remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         },
@@ -551,7 +543,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -600,7 +592,7 @@ async function run() {
         {
           id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
           messageType: {
-            sourceValue: {},
+            sourceValue: "Email",
           },
           remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         },
@@ -611,9 +603,9 @@ async function run() {
     },
     xAccountId: "<value>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -643,7 +635,7 @@ async function run() {
         {
           id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
           messageType: {
-            sourceValue: {},
+            sourceValue: "Email",
           },
           remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         },
@@ -662,7 +654,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -710,9 +702,9 @@ async function run() {
     id: "<id>",
     xAccountId: "<value>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -749,7 +741,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -797,9 +789,9 @@ async function run() {
     id: "<id>",
     xAccountId: "<value>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -836,7 +828,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -884,9 +876,9 @@ async function run() {
     id: "<id>",
     xAccountId: "<value>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -923,7 +915,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -971,9 +963,9 @@ async function run() {
     id: "<id>",
     xAccountId: "<value>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -1010,7 +1002,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -1060,9 +1052,9 @@ async function run() {
     id: "<id>",
     xAccountId: "<value>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -1099,7 +1091,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -1147,9 +1139,9 @@ async function run() {
     id: "<id>",
     xAccountId: "<value>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -1186,7 +1178,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -1234,9 +1226,9 @@ async function run() {
     id: "<id>",
     xAccountId: "<value>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -1273,7 +1265,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -1324,9 +1316,9 @@ async function run() {
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -1366,7 +1358,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -1417,9 +1409,9 @@ async function run() {
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -1459,7 +1451,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -1510,9 +1502,9 @@ async function run() {
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -1552,7 +1544,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -1603,9 +1595,9 @@ async function run() {
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -1645,7 +1637,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -1698,9 +1690,9 @@ async function run() {
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -1740,7 +1732,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -1791,9 +1783,9 @@ async function run() {
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -1833,7 +1825,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -1884,9 +1876,9 @@ async function run() {
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -1926,7 +1918,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -1978,9 +1970,9 @@ async function run() {
     id: "<id>",
     xAccountId: "<value>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -2021,7 +2013,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -2070,7 +2062,7 @@ async function run() {
         {
           id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
           messageType: {
-            sourceValue: Email,
+            sourceValue: "Email",
           },
           remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         },
@@ -2082,9 +2074,9 @@ async function run() {
     id: "<id>",
     xAccountId: "<value>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -2114,7 +2106,7 @@ async function run() {
         {
           id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
           messageType: {
-            sourceValue: true,
+            sourceValue: "Email",
           },
           remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         },
@@ -2134,7 +2126,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -2183,7 +2175,7 @@ async function run() {
         {
           id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
           messageType: {
-            sourceValue: Email,
+            sourceValue: "Email",
           },
           remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         },
@@ -2195,9 +2187,9 @@ async function run() {
     id: "<id>",
     xAccountId: "<value>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -2227,7 +2219,7 @@ async function run() {
         {
           id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
           messageType: {
-            sourceValue: true,
+            sourceValue: "Email",
           },
           remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         },
@@ -2247,7 +2239,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -2300,7 +2292,6 @@ async function run() {
           messageType: {
             sourceValue: "Email",
           },
-          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         },
       ],
       passthrough: {
@@ -2310,9 +2301,9 @@ async function run() {
     id: "<id>",
     xAccountId: "<value>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -2342,11 +2333,8 @@ async function run() {
         {
           id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
           messageType: {
-            sourceValue: [
-              "Email",
-            ],
+            sourceValue: "Email",
           },
-          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         },
       ],
       passthrough: {
@@ -2364,7 +2352,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -2413,9 +2401,7 @@ async function run() {
         {
           id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
           messageType: {
-            sourceValue: [
-              "Email",
-            ],
+            sourceValue: "Email",
           },
           remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         },
@@ -2427,9 +2413,9 @@ async function run() {
     id: "<id>",
     xAccountId: "<value>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -2459,9 +2445,7 @@ async function run() {
         {
           id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
           messageType: {
-            sourceValue: [
-              "Email",
-            ],
+            sourceValue: "Email",
           },
           remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         },
@@ -2481,7 +2465,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -2530,7 +2514,7 @@ async function run() {
         {
           id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
           messageType: {
-            sourceValue: Email,
+            sourceValue: "Email",
           },
           remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         },
@@ -2542,9 +2526,9 @@ async function run() {
     id: "<id>",
     xAccountId: "<value>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -2574,7 +2558,7 @@ async function run() {
         {
           id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
           messageType: {
-            sourceValue: {},
+            sourceValue: "Email",
           },
           remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         },
@@ -2594,7 +2578,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();

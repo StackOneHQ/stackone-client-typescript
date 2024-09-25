@@ -14,6 +14,7 @@ import {
   JobPostingSchemasStatusValue,
   JobPostingSchemasValue,
   JobPostingValue,
+  Question2,
   QuestionValue,
 } from "@stackone/stackone-client-ts/sdk/models/shared";
 
@@ -32,13 +33,11 @@ let value: AtsGetJobPostingResponse = {
             value: JobPostingCompensationValue.Hourly,
           },
           payPeriod: {
-            sourceValue: [
-              "Hour",
-            ],
+            sourceValue: "Hour",
             value: JobPostingCompensationSchemasValue.Hour,
           },
           type: {
-            sourceValue: true,
+            sourceValue: "Salary",
             value: JobPostingCompensationSchemasTypeValue.Salary,
           },
           value: "50000",
@@ -47,17 +46,15 @@ let value: AtsGetJobPostingResponse = {
           currency: "USD",
           name: "Bonus",
           payFrequency: {
-            sourceValue: [
-              "Hourly",
-            ],
+            sourceValue: "Hourly",
             value: JobPostingCompensationValue.Hourly,
           },
           payPeriod: {
-            sourceValue: {},
+            sourceValue: "Hour",
             value: JobPostingCompensationSchemasValue.Hour,
           },
           type: {
-            sourceValue: {},
+            sourceValue: "Salary",
             value: JobPostingCompensationSchemasTypeValue.Salary,
           },
           value: "10%",
@@ -81,7 +78,7 @@ let value: AtsGetJobPostingResponse = {
       },
       createdAt: new Date("2021-01-01T01:01:01.000Z"),
       employmentContractType: {
-        sourceValue: FullTime,
+        sourceValue: "FullTime",
         value: JobPostingValue.FullTime,
       },
       employmentType: {
@@ -123,7 +120,7 @@ let value: AtsGetJobPostingResponse = {
               required: true,
               text: "What is your name?",
               type: {
-                sourceValue: ShortText,
+                sourceValue: "ShortText",
                 value: QuestionValue.ShortText,
               },
             },
@@ -136,10 +133,10 @@ let value: AtsGetJobPostingResponse = {
                 },
               ],
               remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-              required: false,
+              required: Question2.True,
               text: "What are your hobbies?",
               type: {
-                sourceValue: ShortText,
+                sourceValue: "ShortText",
                 value: QuestionValue.ShortText,
               },
             },
@@ -171,7 +168,7 @@ let value: AtsGetJobPostingResponse = {
               required: true,
               text: "What is your favorite animal?",
               type: {
-                sourceValue: true,
+                sourceValue: "ShortText",
                 value: QuestionValue.ShortText,
               },
             },
@@ -222,7 +219,7 @@ let value: AtsGetJobPostingResponse = {
               required: true,
               text: "Select the programming languages you are proficient in.",
               type: {
-                sourceValue: {},
+                sourceValue: "ShortText",
                 value: QuestionValue.ShortText,
               },
             },
@@ -237,7 +234,7 @@ let value: AtsGetJobPostingResponse = {
               remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
               text: "Are you willing to relocate?",
               type: {
-                sourceValue: true,
+                sourceValue: "ShortText",
                 value: QuestionValue.ShortText,
               },
             },
@@ -252,7 +249,7 @@ let value: AtsGetJobPostingResponse = {
               remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
               text: "How many years of experience do you have?",
               type: {
-                sourceValue: ShortText,
+                sourceValue: "ShortText",
                 value: QuestionValue.ShortText,
               },
             },
@@ -267,7 +264,7 @@ let value: AtsGetJobPostingResponse = {
               remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
               text: "When did you start your most recent position?",
               type: {
-                sourceValue: true,
+                sourceValue: "ShortText",
                 value: QuestionValue.ShortText,
               },
             },
@@ -289,7 +286,7 @@ let value: AtsGetJobPostingResponse = {
       updatedAt: new Date("2021-01-01T01:01:01.000Z"),
     },
   },
-  statusCode: 575947,
+  statusCode: 201,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

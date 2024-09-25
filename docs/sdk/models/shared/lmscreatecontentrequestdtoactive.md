@@ -5,9 +5,9 @@ Whether the content is active and available for users.
 ## Example Usage
 
 ```typescript
-import { LmsCreateContentRequestDto2, LmsCreateContentRequestDtoActive } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { LmsCreateContentRequestDtoActive } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: LmsCreateContentRequestDtoActive = LmsCreateContentRequestDto2.True;
+let value: LmsCreateContentRequestDtoActive = true;
 ```
 
 ## Supported Types

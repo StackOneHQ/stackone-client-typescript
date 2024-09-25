@@ -6,9 +6,9 @@
 import { HrisUpdateEmployeeRequest } from "@stackone/stackone-client-ts/sdk/models/operations";
 import {
   CountryCodeEnumValue,
-  EmploymentSchemasPayFrequencyValue,
-  EmploymentSchemasPayPeriodValue,
-  EmploymentSchemasValue,
+  CreateEmploymentApiModelSchemasPayFrequencyValue,
+  CreateEmploymentApiModelSchemasPayPeriodValue,
+  CreateEmploymentApiModelSchemasValue,
   HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue,
   HrisCreateEmployeeRequestDtoSchemasHomeLocationValue,
   HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberValue,
@@ -27,7 +27,6 @@ let value: HrisUpdateEmployeeRequest = {
         id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         name: "Health Insurance",
         provider: "Aetna",
-        remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         updatedAt: new Date("2021-01-01T00:00:00Z"),
       },
     ],
@@ -44,7 +43,7 @@ let value: HrisUpdateEmployeeRequest = {
         name: "Training Completion Status",
         remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         remoteValueId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
-        value: Completed,
+        value: "Completed",
         valueId: "value_456",
       },
     ],
@@ -55,9 +54,7 @@ let value: HrisUpdateEmployeeRequest = {
     employmentContractType: {},
     employmentStatus: {},
     employmentType: {
-      sourceValue: [
-        "Permanent",
-      ],
+      sourceValue: "Permanent",
       value: HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue.Permanent,
     },
     employments: [
@@ -67,23 +64,21 @@ let value: HrisUpdateEmployeeRequest = {
         employeeId: "1687-3",
         employmentContractType: {},
         employmentType: {
-          sourceValue: {},
-          value: EmploymentSchemasValue.Permanent,
+          sourceValue: "Permanent",
+          value: CreateEmploymentApiModelSchemasValue.Permanent,
         },
         id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         jobTitle: "Software Engineer",
         payCurrency: "USD",
         payFrequency: {
           sourceValue: "Hourly",
-          value: EmploymentSchemasPayFrequencyValue.Hourly,
+          value: CreateEmploymentApiModelSchemasPayFrequencyValue.Hourly,
         },
         payPeriod: {
-          sourceValue: Hour,
-          value: EmploymentSchemasPayPeriodValue.Hour,
+          sourceValue: "Hour",
+          value: CreateEmploymentApiModelSchemasPayPeriodValue.Hour,
         },
         payRate: "40.00",
-        remoteEmployeeId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
-        remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         unifiedCustomFields: {
           "my_project_custom_field_1": "REF-1236",
           "my_project_custom_field_2": "some other value",

@@ -54,6 +54,10 @@ export type Completion = {
    */
   contentId?: string | null | undefined;
   /**
+   * The created date of the completion
+   */
+  createdAt?: string | null | undefined;
+  /**
    * The external ID associated with this completion
    */
   externalId?: string | null | undefined;
@@ -74,6 +78,10 @@ export type Completion = {
    */
   remoteId?: string | null | undefined;
   /**
+   * Provider's unique identifier of the user related to the completion
+   */
+  remoteUserId?: string | null | undefined;
+  /**
    * The result of the completion
    */
   result?: CompletionSchemasResult | null | undefined;
@@ -81,6 +89,14 @@ export type Completion = {
    * Custom Unified Fields configured in your StackOne project
    */
   unifiedCustomFields?: { [k: string]: any } | null | undefined;
+  /**
+   * The updated date of the completion
+   */
+  updatedAt?: string | null | undefined;
+  /**
+   * The user ID associated with this completion
+   */
+  userId?: string | null | undefined;
 };
 
 /** @internal */
@@ -271,24 +287,32 @@ export const Completion$inboundSchema: z.ZodType<
   completed_at: z.nullable(z.string()).optional(),
   content_external_reference: z.nullable(z.string()).optional(),
   content_id: z.nullable(z.string()).optional(),
+  created_at: z.nullable(z.string()).optional(),
   external_id: z.nullable(z.string()).optional(),
   id: z.nullable(z.string()).optional(),
   remote_content_id: z.nullable(z.string()).optional(),
   remote_external_id: z.nullable(z.string()).optional(),
   remote_id: z.nullable(z.string()).optional(),
+  remote_user_id: z.nullable(z.string()).optional(),
   result: z.nullable(z.lazy(() => CompletionSchemasResult$inboundSchema))
     .optional(),
   unified_custom_fields: z.nullable(z.record(z.any())).optional(),
+  updated_at: z.nullable(z.string()).optional(),
+  user_id: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
     "completed_at": "completedAt",
     "content_external_reference": "contentExternalReference",
     "content_id": "contentId",
+    "created_at": "createdAt",
     "external_id": "externalId",
     "remote_content_id": "remoteContentId",
     "remote_external_id": "remoteExternalId",
     "remote_id": "remoteId",
+    "remote_user_id": "remoteUserId",
     "unified_custom_fields": "unifiedCustomFields",
+    "updated_at": "updatedAt",
+    "user_id": "userId",
   });
 });
 
@@ -297,13 +321,17 @@ export type Completion$Outbound = {
   completed_at?: string | null | undefined;
   content_external_reference?: string | null | undefined;
   content_id?: string | null | undefined;
+  created_at?: string | null | undefined;
   external_id?: string | null | undefined;
   id?: string | null | undefined;
   remote_content_id?: string | null | undefined;
   remote_external_id?: string | null | undefined;
   remote_id?: string | null | undefined;
+  remote_user_id?: string | null | undefined;
   result?: CompletionSchemasResult$Outbound | null | undefined;
   unified_custom_fields?: { [k: string]: any } | null | undefined;
+  updated_at?: string | null | undefined;
+  user_id?: string | null | undefined;
 };
 
 /** @internal */
@@ -315,24 +343,32 @@ export const Completion$outboundSchema: z.ZodType<
   completedAt: z.nullable(z.string()).optional(),
   contentExternalReference: z.nullable(z.string()).optional(),
   contentId: z.nullable(z.string()).optional(),
+  createdAt: z.nullable(z.string()).optional(),
   externalId: z.nullable(z.string()).optional(),
   id: z.nullable(z.string()).optional(),
   remoteContentId: z.nullable(z.string()).optional(),
   remoteExternalId: z.nullable(z.string()).optional(),
   remoteId: z.nullable(z.string()).optional(),
+  remoteUserId: z.nullable(z.string()).optional(),
   result: z.nullable(z.lazy(() => CompletionSchemasResult$outboundSchema))
     .optional(),
   unifiedCustomFields: z.nullable(z.record(z.any())).optional(),
+  updatedAt: z.nullable(z.string()).optional(),
+  userId: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
     completedAt: "completed_at",
     contentExternalReference: "content_external_reference",
     contentId: "content_id",
+    createdAt: "created_at",
     externalId: "external_id",
     remoteContentId: "remote_content_id",
     remoteExternalId: "remote_external_id",
     remoteId: "remote_id",
+    remoteUserId: "remote_user_id",
     unifiedCustomFields: "unified_custom_fields",
+    updatedAt: "updated_at",
+    userId: "user_id",
   });
 });
 

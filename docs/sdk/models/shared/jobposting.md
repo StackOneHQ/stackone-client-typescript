@@ -25,19 +25,15 @@ let value: JobPosting = {
       minValue: "45000",
       name: "Base Salary",
       payFrequency: {
-        sourceValue: [
-          "Hourly",
-        ],
+        sourceValue: "Hourly",
         value: JobPostingCompensationValue.Hourly,
       },
       payPeriod: {
-        sourceValue: true,
+        sourceValue: "Hour",
         value: JobPostingCompensationSchemasValue.Hour,
       },
       type: {
-        sourceValue: [
-          "Salary",
-        ],
+        sourceValue: "Salary",
         value: JobPostingCompensationSchemasTypeValue.Salary,
       },
       value: "50000",
@@ -46,19 +42,15 @@ let value: JobPosting = {
       currency: "USD",
       name: "Bonus",
       payFrequency: {
-        sourceValue: true,
+        sourceValue: "Hourly",
         value: JobPostingCompensationValue.Hourly,
       },
       payPeriod: {
-        sourceValue: [
-          "Hour",
-        ],
+        sourceValue: "Hour",
         value: JobPostingCompensationSchemasValue.Hour,
       },
       type: {
-        sourceValue: [
-          "Salary",
-        ],
+        sourceValue: "Salary",
         value: JobPostingCompensationSchemasTypeValue.Salary,
       },
       value: "10%",
@@ -74,9 +66,7 @@ let value: JobPosting = {
         label: "Key Responsibilities",
         remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         type: {
-          sourceValue: [
-            "key_responsibilities",
-          ],
+          sourceValue: "key_responsibilities",
           value: JobPostingContentSectionValue.Responsibilities,
         },
       },
@@ -84,9 +74,7 @@ let value: JobPosting = {
   },
   createdAt: new Date("2021-01-01T01:01:01.000Z"),
   employmentContractType: {
-    sourceValue: [
-      "FullTime",
-    ],
+    sourceValue: "FullTime",
     value: JobPostingValue.FullTime,
   },
   employmentType: {
@@ -144,9 +132,7 @@ let value: JobPosting = {
           required: false,
           text: "What are your hobbies?",
           type: {
-            sourceValue: [
-              "ShortText",
-            ],
+            sourceValue: "ShortText",
             value: QuestionValue.ShortText,
           },
         },
@@ -178,7 +164,7 @@ let value: JobPosting = {
           required: true,
           text: "What is your favorite animal?",
           type: {
-            sourceValue: ShortText,
+            sourceValue: "ShortText",
             value: QuestionValue.ShortText,
           },
         },
@@ -229,9 +215,7 @@ let value: JobPosting = {
           required: true,
           text: "Select the programming languages you are proficient in.",
           type: {
-            sourceValue: [
-              "ShortText",
-            ],
+            sourceValue: "ShortText",
             value: QuestionValue.ShortText,
           },
         },
@@ -246,7 +230,7 @@ let value: JobPosting = {
           remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
           text: "Are you willing to relocate?",
           type: {
-            sourceValue: true,
+            sourceValue: "ShortText",
             value: QuestionValue.ShortText,
           },
         },
@@ -261,9 +245,7 @@ let value: JobPosting = {
           remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
           text: "How many years of experience do you have?",
           type: {
-            sourceValue: [
-              "ShortText",
-            ],
+            sourceValue: "ShortText",
             value: QuestionValue.ShortText,
           },
         },
@@ -289,7 +271,7 @@ let value: JobPosting = {
   remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
   remoteJobPostingId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
   status: {
-    sourceValue: {},
+    sourceValue: "Live",
     value: JobPostingSchemasStatusValue.Live,
   },
   title: "Software Engineer",

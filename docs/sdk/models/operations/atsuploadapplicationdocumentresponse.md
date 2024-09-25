@@ -7,7 +7,7 @@ import { AtsUploadApplicationDocumentResponse } from "@stackone/stackone-client-
 
 let value: AtsUploadApplicationDocumentResponse = {
   contentType: "<value>",
-  statusCode: 171629,
+  statusCode: 507,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

@@ -11,7 +11,7 @@ let value: AtsListApplicationsResponse = {
     data: [
       {
         applicationStatus: {
-          sourceValue: Hired,
+          sourceValue: "Hired",
           value: ApplicationValue.Hired,
         },
         candidate: {
@@ -47,7 +47,7 @@ let value: AtsListApplicationsResponse = {
             name: "Training Completion Status",
             remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
             remoteValueId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
-            value: true,
+            value: "Completed",
             valueId: "value_456",
           },
         ],
@@ -57,7 +57,7 @@ let value: AtsListApplicationsResponse = {
             categoryId: "6530",
             createdAt: new Date("2021-01-01T01:01:01.000Z"),
             fileFormat: {
-              sourceValue: true,
+              sourceValue: "abc",
               value: AtsDocumentApiModelValue.Pdf,
             },
             id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
@@ -96,7 +96,7 @@ let value: AtsListApplicationsResponse = {
                 id: "answer1",
                 remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
                 type: {
-                  sourceValue: true,
+                  sourceValue: "Short Text",
                   value: AnswerValue.ShortText,
                 },
                 values: [
@@ -117,7 +117,7 @@ let value: AtsListApplicationsResponse = {
             id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
             label: "Failed Phone Screen",
             rejectedReasonType: {
-              sourceValue: RejectedByOrg,
+              sourceValue: "RejectedByOrg",
               value: RejectedReasonValue.RejectedByOrganization,
             },
             remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
@@ -158,7 +158,7 @@ let value: AtsListApplicationsResponse = {
     ],
   },
   contentType: "<value>",
-  statusCode: 952749,
+  statusCode: 300,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

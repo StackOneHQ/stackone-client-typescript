@@ -76,12 +76,12 @@ async function run() {
           },
           categoryId: "6530",
           confidential: {
-            sourceValue: true,
+            sourceValue: "public",
             value: HrisDocumentsUploadRequestDtoSchemasValue.True,
           },
           content: "VGhpcyBpc24ndCByZWFsbHkgYSBzYW1wbGUgZmlsZSwgYnV0IG5vIG9uZSB3aWxsIGV2ZXIga25vdyE",
           fileFormat: {
-            sourceValue: true,
+            sourceValue: "abc",
             value: HrisDocumentsUploadRequestDtoSchemasFileFormatValue.Pdf,
           },
           name: "weather-forecast",
@@ -92,9 +92,9 @@ async function run() {
     id: "<id>",
     xAccountId: "<value>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -129,7 +129,7 @@ async function run() {
         {
           category: {
             sourceValue: "550e8400-e29b-41d4-a716-446655440000",
-            value: HrisDocumentsUploadRequestDtoValue.NationalId,
+            value: HrisDocumentsUploadRequestDtoValue.OfferLetter,
           },
           categoryId: "6530",
           confidential: {
@@ -138,7 +138,7 @@ async function run() {
           },
           content: "VGhpcyBpc24ndCByZWFsbHkgYSBzYW1wbGUgZmlsZSwgYnV0IG5vIG9uZSB3aWxsIGV2ZXIga25vdyE",
           fileFormat: {
-            sourceValue: {},
+            sourceValue: "abc",
             value: HrisDocumentsUploadRequestDtoSchemasFileFormatValue.Pdf,
           },
           name: "weather-forecast",
@@ -157,7 +157,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -193,9 +193,9 @@ Creates an employee
 import { StackOne } from "@stackone/stackone-client-ts";
 import {
   CountryCodeEnumValue,
-  EmploymentSchemasPayFrequencyValue,
-  EmploymentSchemasPayPeriodValue,
-  EmploymentSchemasValue,
+  CreateEmploymentApiModelSchemasPayFrequencyValue,
+  CreateEmploymentApiModelSchemasPayPeriodValue,
+  CreateEmploymentApiModelSchemasValue,
   HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue,
   HrisCreateEmployeeRequestDtoSchemasHomeLocationValue,
   HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberValue,
@@ -222,7 +222,6 @@ async function run() {
           id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
           name: "Health Insurance",
           provider: "Aetna",
-          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
           updatedAt: new Date("2021-01-01T00:00:00Z"),
         },
       ],
@@ -239,7 +238,7 @@ async function run() {
           name: "Training Completion Status",
           remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
           remoteValueId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
-          value: Completed,
+          value: "Completed",
           valueId: "value_456",
         },
       ],
@@ -260,27 +259,21 @@ async function run() {
           employeeId: "1687-3",
           employmentContractType: {},
           employmentType: {
-            sourceValue: Permanent,
-            value: EmploymentSchemasValue.Permanent,
+            sourceValue: "Permanent",
+            value: CreateEmploymentApiModelSchemasValue.Permanent,
           },
           id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
           jobTitle: "Software Engineer",
           payCurrency: "USD",
           payFrequency: {
-            sourceValue: [
-              "Hourly",
-            ],
-            value: EmploymentSchemasPayFrequencyValue.Hourly,
+            sourceValue: "Hourly",
+            value: CreateEmploymentApiModelSchemasPayFrequencyValue.Hourly,
           },
           payPeriod: {
-            sourceValue: [
-              "Hour",
-            ],
-            value: EmploymentSchemasPayPeriodValue.Hour,
+            sourceValue: "Hour",
+            value: CreateEmploymentApiModelSchemasPayPeriodValue.Hour,
           },
           payRate: "40.00",
-          remoteEmployeeId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
-          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
           unifiedCustomFields: {
             "my_project_custom_field_1": "REF-1236",
             "my_project_custom_field_2": "some other value",
@@ -353,9 +346,9 @@ async function run() {
     },
     xAccountId: "<value>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -370,9 +363,9 @@ import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
 import { hrisCreateEmployee } from "@stackone/stackone-client-ts/funcs/hrisCreateEmployee.js";
 import {
   CountryCodeEnumValue,
-  EmploymentSchemasPayFrequencyValue,
-  EmploymentSchemasPayPeriodValue,
-  EmploymentSchemasValue,
+  CreateEmploymentApiModelSchemasPayFrequencyValue,
+  CreateEmploymentApiModelSchemasPayPeriodValue,
+  CreateEmploymentApiModelSchemasValue,
   HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue,
   HrisCreateEmployeeRequestDtoSchemasHomeLocationValue,
   HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberValue,
@@ -401,7 +394,6 @@ async function run() {
           id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
           name: "Health Insurance",
           provider: "Aetna",
-          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
           updatedAt: new Date("2021-01-01T00:00:00Z"),
         },
       ],
@@ -418,7 +410,7 @@ async function run() {
           name: "Training Completion Status",
           remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
           remoteValueId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
-          value: true,
+          value: "Completed",
           valueId: "value_456",
         },
       ],
@@ -439,25 +431,21 @@ async function run() {
           employeeId: "1687-3",
           employmentContractType: {},
           employmentType: {
-            sourceValue: true,
-            value: EmploymentSchemasValue.Permanent,
+            sourceValue: "Permanent",
+            value: CreateEmploymentApiModelSchemasValue.Permanent,
           },
           id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
           jobTitle: "Software Engineer",
           payCurrency: "USD",
           payFrequency: {
-            sourceValue: [
-              "Hourly",
-            ],
-            value: EmploymentSchemasPayFrequencyValue.Hourly,
+            sourceValue: "Hourly",
+            value: CreateEmploymentApiModelSchemasPayFrequencyValue.Hourly,
           },
           payPeriod: {
-            sourceValue: true,
-            value: EmploymentSchemasPayPeriodValue.Hour,
+            sourceValue: "Hour",
+            value: CreateEmploymentApiModelSchemasPayPeriodValue.Hour,
           },
           payRate: "40.00",
-          remoteEmployeeId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
-          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
           unifiedCustomFields: {
             "my_project_custom_field_1": "REF-1236",
             "my_project_custom_field_2": "some other value",
@@ -538,7 +526,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -596,9 +584,9 @@ async function run() {
     id: "<id>",
     xAccountId: "<value>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -645,7 +633,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -724,9 +712,9 @@ async function run() {
     id: "<id>",
     xAccountId: "<value>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -794,7 +782,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -851,9 +839,9 @@ async function run() {
     },
     xAccountId: "<value>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -899,7 +887,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -948,9 +936,9 @@ async function run() {
     subResourceId: "<value>",
     xAccountId: "<value>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -988,7 +976,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -1036,9 +1024,9 @@ async function run() {
     id: "<id>",
     xAccountId: "<value>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -1075,7 +1063,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -1123,9 +1111,9 @@ async function run() {
     id: "<id>",
     xAccountId: "<value>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -1162,7 +1150,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -1210,9 +1198,9 @@ async function run() {
     id: "<id>",
     xAccountId: "<value>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -1249,7 +1237,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -1299,9 +1287,9 @@ async function run() {
     include: "avatar_url,avatar,custom_fields,job_description,benefits",
     xAccountId: "<value>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -1340,7 +1328,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -1389,9 +1377,9 @@ async function run() {
     subResourceId: "<value>",
     xAccountId: "<value>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -1429,7 +1417,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -1477,9 +1465,9 @@ async function run() {
     id: "<id>",
     xAccountId: "<value>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -1516,7 +1504,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -1566,9 +1554,9 @@ async function run() {
     subResourceId: "<value>",
     xAccountId: "<value>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -1607,7 +1595,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -1656,9 +1644,9 @@ async function run() {
     subResourceId: "<value>",
     xAccountId: "<value>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -1696,7 +1684,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -1745,9 +1733,9 @@ async function run() {
     subResourceId: "<value>",
     xAccountId: "<value>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -1785,7 +1773,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -1834,9 +1822,9 @@ async function run() {
     id: "<id>",
     xAccountId: "<value>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -1874,7 +1862,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -1922,9 +1910,9 @@ async function run() {
     id: "<id>",
     xAccountId: "<value>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -1961,7 +1949,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -2009,9 +1997,9 @@ async function run() {
     id: "<id>",
     xAccountId: "<value>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -2048,7 +2036,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -2096,9 +2084,9 @@ async function run() {
     id: "<id>",
     xAccountId: "<value>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -2135,7 +2123,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -2183,9 +2171,9 @@ async function run() {
     id: "<id>",
     xAccountId: "<value>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -2222,7 +2210,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -2273,9 +2261,9 @@ async function run() {
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -2315,7 +2303,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -2366,9 +2354,9 @@ async function run() {
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -2408,7 +2396,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -2459,9 +2447,9 @@ async function run() {
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -2501,7 +2489,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -2552,9 +2540,9 @@ async function run() {
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -2594,7 +2582,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -2646,9 +2634,9 @@ async function run() {
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -2689,7 +2677,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -2742,9 +2730,9 @@ async function run() {
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -2786,7 +2774,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -2838,9 +2826,9 @@ async function run() {
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -2881,7 +2869,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -2933,9 +2921,9 @@ async function run() {
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -2976,7 +2964,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -3029,7 +3017,7 @@ async function run() {
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
-  
+
   for await (const page of result) {
     // Handle the page
     console.log(page);
@@ -3129,9 +3117,9 @@ async function run() {
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -3172,7 +3160,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -3223,9 +3211,9 @@ async function run() {
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -3265,7 +3253,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -3316,9 +3304,9 @@ async function run() {
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -3358,7 +3346,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -3409,9 +3397,9 @@ async function run() {
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -3451,7 +3439,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -3502,9 +3490,9 @@ async function run() {
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -3544,7 +3532,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -3580,9 +3568,9 @@ Updates an employee
 import { StackOne } from "@stackone/stackone-client-ts";
 import {
   CountryCodeEnumValue,
-  EmploymentSchemasPayFrequencyValue,
-  EmploymentSchemasPayPeriodValue,
-  EmploymentSchemasValue,
+  CreateEmploymentApiModelSchemasPayFrequencyValue,
+  CreateEmploymentApiModelSchemasPayPeriodValue,
+  CreateEmploymentApiModelSchemasValue,
   HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue,
   HrisCreateEmployeeRequestDtoSchemasHomeLocationValue,
   HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberValue,
@@ -3609,7 +3597,6 @@ async function run() {
           id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
           name: "Health Insurance",
           provider: "Aetna",
-          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
           updatedAt: new Date("2021-01-01T00:00:00Z"),
         },
       ],
@@ -3626,7 +3613,7 @@ async function run() {
           name: "Training Completion Status",
           remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
           remoteValueId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
-          value: Completed,
+          value: "Completed",
           valueId: "value_456",
         },
       ],
@@ -3647,23 +3634,21 @@ async function run() {
           employeeId: "1687-3",
           employmentContractType: {},
           employmentType: {
-            sourceValue: true,
-            value: EmploymentSchemasValue.Permanent,
+            sourceValue: "Permanent",
+            value: CreateEmploymentApiModelSchemasValue.Permanent,
           },
           id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
           jobTitle: "Software Engineer",
           payCurrency: "USD",
           payFrequency: {
             sourceValue: "Hourly",
-            value: EmploymentSchemasPayFrequencyValue.Hourly,
+            value: CreateEmploymentApiModelSchemasPayFrequencyValue.Hourly,
           },
           payPeriod: {
             sourceValue: "Hour",
-            value: EmploymentSchemasPayPeriodValue.Hour,
+            value: CreateEmploymentApiModelSchemasPayPeriodValue.Hour,
           },
           payRate: "40.00",
-          remoteEmployeeId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
-          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
           unifiedCustomFields: {
             "my_project_custom_field_1": "REF-1236",
             "my_project_custom_field_2": "some other value",
@@ -3737,9 +3722,9 @@ async function run() {
     id: "<id>",
     xAccountId: "<value>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -3754,9 +3739,9 @@ import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
 import { hrisUpdateEmployee } from "@stackone/stackone-client-ts/funcs/hrisUpdateEmployee.js";
 import {
   CountryCodeEnumValue,
-  EmploymentSchemasPayFrequencyValue,
-  EmploymentSchemasPayPeriodValue,
-  EmploymentSchemasValue,
+  CreateEmploymentApiModelSchemasPayFrequencyValue,
+  CreateEmploymentApiModelSchemasPayPeriodValue,
+  CreateEmploymentApiModelSchemasValue,
   HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue,
   HrisCreateEmployeeRequestDtoSchemasHomeLocationValue,
   HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberValue,
@@ -3785,7 +3770,6 @@ async function run() {
           id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
           name: "Health Insurance",
           provider: "Aetna",
-          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
           updatedAt: new Date("2021-01-01T00:00:00Z"),
         },
       ],
@@ -3823,23 +3807,21 @@ async function run() {
           employeeId: "1687-3",
           employmentContractType: {},
           employmentType: {
-            sourceValue: true,
-            value: EmploymentSchemasValue.Permanent,
+            sourceValue: "Permanent",
+            value: CreateEmploymentApiModelSchemasValue.Permanent,
           },
           id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
           jobTitle: "Software Engineer",
           payCurrency: "USD",
           payFrequency: {
             sourceValue: "Hourly",
-            value: EmploymentSchemasPayFrequencyValue.Hourly,
+            value: CreateEmploymentApiModelSchemasPayFrequencyValue.Hourly,
           },
           payPeriod: {
             sourceValue: "Hour",
-            value: EmploymentSchemasPayPeriodValue.Hour,
+            value: CreateEmploymentApiModelSchemasPayPeriodValue.Hour,
           },
           payRate: "40.00",
-          remoteEmployeeId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
-          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
           unifiedCustomFields: {
             "my_project_custom_field_1": "REF-1236",
             "my_project_custom_field_2": "some other value",
@@ -3921,7 +3903,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -4001,9 +3983,9 @@ async function run() {
     subResourceId: "<value>",
     xAccountId: "<value>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -4072,7 +4054,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -4130,9 +4112,9 @@ async function run() {
     id: "<id>",
     xAccountId: "<value>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -4179,7 +4161,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -4249,9 +4231,9 @@ async function run() {
     id: "<id>",
     xAccountId: "<value>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -4310,7 +4292,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();

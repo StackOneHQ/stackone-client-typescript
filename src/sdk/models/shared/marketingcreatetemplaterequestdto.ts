@@ -4,14 +4,14 @@
 
 import * as z from "zod";
 import {
-  Message,
-  Message$inboundSchema,
-  Message$Outbound,
-  Message$outboundSchema,
-} from "./message.js";
+  CreateMessage,
+  CreateMessage$inboundSchema,
+  CreateMessage$Outbound,
+  CreateMessage$outboundSchema,
+} from "./createmessage.js";
 
 export type MarketingCreateTemplateRequestDto = {
-  messages?: Array<Message> | null | undefined;
+  messages?: Array<CreateMessage> | null | undefined;
   name?: string | null | undefined;
   /**
    * Value to pass through to the provider
@@ -26,7 +26,7 @@ export const MarketingCreateTemplateRequestDto$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  messages: z.nullable(z.array(Message$inboundSchema)).optional(),
+  messages: z.nullable(z.array(CreateMessage$inboundSchema)).optional(),
   name: z.nullable(z.string()).optional(),
   passthrough: z.nullable(z.record(z.any())).optional(),
   tags: z.nullable(z.array(z.string())).optional(),
@@ -34,7 +34,7 @@ export const MarketingCreateTemplateRequestDto$inboundSchema: z.ZodType<
 
 /** @internal */
 export type MarketingCreateTemplateRequestDto$Outbound = {
-  messages?: Array<Message$Outbound> | null | undefined;
+  messages?: Array<CreateMessage$Outbound> | null | undefined;
   name?: string | null | undefined;
   passthrough?: { [k: string]: any } | null | undefined;
   tags?: Array<string> | null | undefined;
@@ -46,7 +46,7 @@ export const MarketingCreateTemplateRequestDto$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   MarketingCreateTemplateRequestDto
 > = z.object({
-  messages: z.nullable(z.array(Message$outboundSchema)).optional(),
+  messages: z.nullable(z.array(CreateMessage$outboundSchema)).optional(),
   name: z.nullable(z.string()).optional(),
   passthrough: z.nullable(z.record(z.any())).optional(),
   tags: z.nullable(z.array(z.string())).optional(),

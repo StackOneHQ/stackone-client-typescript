@@ -18,7 +18,7 @@ let value: OffersPaginated = {
         },
       ],
       offerStatus: {
-        sourceValue: true,
+        sourceValue: "Pending",
         value: OfferValue.Pending,
       },
       remoteApplicationId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",

@@ -27,12 +27,12 @@ let value: AtsGetCandidateNoteResponse = {
       },
       updatedAt: new Date("2021-01-01T01:01:01.000Z"),
       visibility: {
-        sourceValue: true,
+        sourceValue: "Public",
         value: NoteValue.Public,
       },
     },
   },
-  statusCode: 244425,
+  statusCode: 404,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

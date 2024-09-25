@@ -15,9 +15,7 @@ let value: AccountsPaginated = {
             value: AccountAddressSchemasValue.Gb,
           },
           locationType: {
-            sourceValue: [
-              "Home",
-            ],
+            sourceValue: "Home",
             value: AccountAddressValue.Home,
           },
         },

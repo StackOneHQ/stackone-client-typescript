@@ -7,7 +7,7 @@ The source value of the pay frequency.
 ```typescript
 import { JobPostingCompensationSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: JobPostingCompensationSourceValue = true;
+let value: JobPostingCompensationSourceValue = "Hourly";
 ```
 
 ## Supported Types

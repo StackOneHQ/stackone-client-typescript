@@ -8,9 +8,7 @@ Visibility of the note
 import { NoteValue, NoteVisibility } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: NoteVisibility = {
-  sourceValue: [
-    "Public",
-  ],
+  sourceValue: "Public",
   value: NoteValue.Public,
 };
 ```

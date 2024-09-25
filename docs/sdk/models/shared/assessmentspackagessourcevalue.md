@@ -7,7 +7,7 @@ The source value of the description type.
 ```typescript
 import { AssessmentsPackagesSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: AssessmentsPackagesSourceValue = {};
+let value: AssessmentsPackagesSourceValue = "key_responsibilities";
 ```
 
 ## Supported Types

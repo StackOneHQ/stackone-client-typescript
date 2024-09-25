@@ -10,7 +10,7 @@ let value: AtsGetApplicationResponse = {
   applicationResult: {
     data: {
       applicationStatus: {
-        sourceValue: true,
+        sourceValue: "Hired",
         value: ApplicationValue.Hired,
       },
       candidate: {
@@ -46,7 +46,7 @@ let value: AtsGetApplicationResponse = {
           name: "Training Completion Status",
           remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
           remoteValueId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
-          value: Completed,
+          value: "Completed",
           valueId: "value_456",
         },
       ],
@@ -56,7 +56,7 @@ let value: AtsGetApplicationResponse = {
           categoryId: "6530",
           createdAt: new Date("2021-01-01T01:01:01.000Z"),
           fileFormat: {
-            sourceValue: {},
+            sourceValue: "abc",
             value: AtsDocumentApiModelValue.Pdf,
           },
           id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
@@ -95,7 +95,7 @@ let value: AtsGetApplicationResponse = {
               id: "answer1",
               remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
               type: {
-                sourceValue: true,
+                sourceValue: "Short Text",
                 value: AnswerValue.ShortText,
               },
               values: [
@@ -116,7 +116,7 @@ let value: AtsGetApplicationResponse = {
           id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
           label: "Failed Phone Screen",
           rejectedReasonType: {
-            sourceValue: true,
+            sourceValue: "RejectedByOrg",
             value: RejectedReasonValue.RejectedByOrganization,
           },
           remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
@@ -156,7 +156,7 @@ let value: AtsGetApplicationResponse = {
     },
   },
   contentType: "<value>",
-  statusCode: 18789,
+  statusCode: 507,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

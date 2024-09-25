@@ -7,7 +7,7 @@ The source value of the status.
 ```typescript
 import { ContentBlockSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: ContentBlockSourceValue = {};
+let value: ContentBlockSourceValue = "active";
 ```
 
 ## Supported Types

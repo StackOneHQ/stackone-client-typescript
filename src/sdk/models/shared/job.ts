@@ -69,7 +69,7 @@ export type JobValueOpen = OpenEnum<typeof JobValue>;
 /**
  * Status of the job
  */
-export type JobStatus = {
+export type JobJobStatus = {
   /**
    * The source value of the job status.
    */
@@ -123,7 +123,7 @@ export type Job = {
   /**
    * Status of the job
    */
-  jobStatus?: JobStatus | null | undefined;
+  jobStatus?: JobJobStatus | null | undefined;
   /**
    * Location ids of the job
    */
@@ -296,8 +296,8 @@ export namespace JobValue$ {
 }
 
 /** @internal */
-export const JobStatus$inboundSchema: z.ZodType<
-  JobStatus,
+export const JobJobStatus$inboundSchema: z.ZodType<
+  JobJobStatus,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -318,7 +318,7 @@ export const JobStatus$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type JobStatus$Outbound = {
+export type JobJobStatus$Outbound = {
   source_value?:
     | Job4$Outbound
     | string
@@ -331,10 +331,10 @@ export type JobStatus$Outbound = {
 };
 
 /** @internal */
-export const JobStatus$outboundSchema: z.ZodType<
-  JobStatus$Outbound,
+export const JobJobStatus$outboundSchema: z.ZodType<
+  JobJobStatus$Outbound,
   z.ZodTypeDef,
-  JobStatus
+  JobJobStatus
 > = z.object({
   sourceValue: z.nullable(
     z.union([
@@ -356,13 +356,13 @@ export const JobStatus$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace JobStatus$ {
-  /** @deprecated use `JobStatus$inboundSchema` instead. */
-  export const inboundSchema = JobStatus$inboundSchema;
-  /** @deprecated use `JobStatus$outboundSchema` instead. */
-  export const outboundSchema = JobStatus$outboundSchema;
-  /** @deprecated use `JobStatus$Outbound` instead. */
-  export type Outbound = JobStatus$Outbound;
+export namespace JobJobStatus$ {
+  /** @deprecated use `JobJobStatus$inboundSchema` instead. */
+  export const inboundSchema = JobJobStatus$inboundSchema;
+  /** @deprecated use `JobJobStatus$outboundSchema` instead. */
+  export const outboundSchema = JobJobStatus$outboundSchema;
+  /** @deprecated use `JobJobStatus$Outbound` instead. */
+  export type Outbound = JobJobStatus$Outbound;
 }
 
 /** @internal */
@@ -380,7 +380,7 @@ export const Job$inboundSchema: z.ZodType<Job, z.ZodTypeDef, unknown> = z
     id: z.nullable(z.string()).optional(),
     interview_stages: z.nullable(z.array(InterviewStage$inboundSchema))
       .optional(),
-    job_status: z.nullable(z.lazy(() => JobStatus$inboundSchema)).optional(),
+    job_status: z.nullable(z.lazy(() => JobJobStatus$inboundSchema)).optional(),
     location_ids: z.nullable(z.array(z.string())).optional(),
     remote_department_ids: z.nullable(z.array(z.string())).optional(),
     remote_id: z.nullable(z.string()).optional(),
@@ -418,7 +418,7 @@ export type Job$Outbound = {
   hiring_team?: Array<JobHiringTeam$Outbound> | null | undefined;
   id?: string | null | undefined;
   interview_stages?: Array<InterviewStage$Outbound> | null | undefined;
-  job_status?: JobStatus$Outbound | null | undefined;
+  job_status?: JobJobStatus$Outbound | null | undefined;
   location_ids?: Array<string> | null | undefined;
   remote_department_ids?: Array<string> | null | undefined;
   remote_id?: string | null | undefined;
@@ -442,7 +442,7 @@ export const Job$outboundSchema: z.ZodType<Job$Outbound, z.ZodTypeDef, Job> = z
     id: z.nullable(z.string()).optional(),
     interviewStages: z.nullable(z.array(InterviewStage$outboundSchema))
       .optional(),
-    jobStatus: z.nullable(z.lazy(() => JobStatus$outboundSchema)).optional(),
+    jobStatus: z.nullable(z.lazy(() => JobJobStatus$outboundSchema)).optional(),
     locationIds: z.nullable(z.array(z.string())).optional(),
     remoteDepartmentIds: z.nullable(z.array(z.string())).optional(),
     remoteId: z.nullable(z.string()).optional(),

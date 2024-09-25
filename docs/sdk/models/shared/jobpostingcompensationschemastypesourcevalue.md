@@ -7,7 +7,7 @@ The source value of the compensation type.
 ```typescript
 import { JobPostingCompensationSchemasTypeSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: JobPostingCompensationSchemasTypeSourceValue = true;
+let value: JobPostingCompensationSchemasTypeSourceValue = "Salary";
 ```
 
 ## Supported Types

@@ -7,7 +7,7 @@ The source value of the answer type.
 ```typescript
 import { AnswerSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: AnswerSourceValue = true;
+let value: AnswerSourceValue = "Short Text";
 ```
 
 ## Supported Types

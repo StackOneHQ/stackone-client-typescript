@@ -13,7 +13,7 @@ let value: AssessmentsPackagesResult = {
     name: "Skill Assessment",
     remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
     type: {
-      sourceValue: true,
+      sourceValue: "key_responsibilities",
       value: AssessmentsPackagesValue.Responsibilities,
     },
   },

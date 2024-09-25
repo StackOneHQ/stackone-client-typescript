@@ -5,7 +5,7 @@
 ```typescript
 import { CompletionSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: CompletionSourceValue = false;
+let value: CompletionSourceValue = 3416.98;
 ```
 
 ## Supported Types

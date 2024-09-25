@@ -45,7 +45,7 @@ let value: ScheduledInterview = {
     updatedAt: new Date("2021-01-01T01:01:01.000Z"),
   },
   interviewStatus: {
-    sourceValue: {},
+    sourceValue: "Unscheduled",
     value: ScheduledInterviewValue.Unscheduled,
   },
   interviewers: [

@@ -7,7 +7,7 @@ The source value of the Channels.
 ```typescript
 import { ChannelsEnumSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: ChannelsEnumSourceValue = SMS;
+let value: ChannelsEnumSourceValue = "SMS";
 ```
 
 ## Supported Types

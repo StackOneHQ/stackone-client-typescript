@@ -6,7 +6,7 @@
 import { ApplicationStatus, ApplicationValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: ApplicationStatus = {
-  sourceValue: Hired,
+  sourceValue: "Hired",
   value: ApplicationValue.Hired,
 };
 ```

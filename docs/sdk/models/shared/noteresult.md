@@ -24,7 +24,7 @@ let value: NoteResult = {
     },
     updatedAt: new Date("2021-01-01T01:01:01.000Z"),
     visibility: {
-      sourceValue: Public,
+      sourceValue: "Public",
       value: NoteValue.Public,
     },
   },

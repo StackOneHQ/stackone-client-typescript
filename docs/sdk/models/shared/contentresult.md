@@ -3,11 +3,11 @@
 ## Example Usage
 
 ```typescript
-import { Content2, ContentLanguageEnumValue, ContentResult } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { ContentLanguageEnumValue, ContentResult } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: ContentResult = {
   data: {
-    active: Content2.True,
+    active: true,
     categories: [
       {
         active: true,

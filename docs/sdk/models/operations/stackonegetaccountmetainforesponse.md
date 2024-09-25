@@ -7,7 +7,7 @@ import { StackoneGetAccountMetaInfoResponse } from "@stackone/stackone-client-ts
 
 let value: StackoneGetAccountMetaInfoResponse = {
   contentType: "<value>",
-  statusCode: 602763,
+  statusCode: 305,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

@@ -4,11 +4,10 @@
 
 ```typescript
 import { HrisGetTimeOffRequestResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
-import { TimeOffSchemas2 } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: HrisGetTimeOffRequestResponse = {
   contentType: "<value>",
-  statusCode: 863856,
+  statusCode: 302,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),
@@ -25,7 +24,7 @@ let value: HrisGetTimeOffRequestResponse = {
       remoteEmployeeId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
       remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
       startDate: new Date("2021-01-01T01:01:01.000Z"),
-      startHalfDay: TimeOffSchemas2.True,
+      startHalfDay: true,
       updatedDate: new Date("2021-01-01T01:01:01.000Z"),
     },
   },

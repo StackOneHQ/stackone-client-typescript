@@ -8,12 +8,23 @@ import { MessageContent } from "@stackone/stackone-client-ts/sdk/models/shared";
 let value: MessageContent = {};
 ```
 
-## Fields
+## Supported Types
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `body`             | *string*           | :heavy_minus_sign: | N/A                |
-| `from`             | *string*           | :heavy_minus_sign: | N/A                |
-| `preheader`        | *string*           | :heavy_minus_sign: | N/A                |
-| `replyTo`          | *string*           | :heavy_minus_sign: | N/A                |
-| `subject`          | *string*           | :heavy_minus_sign: | N/A                |
+### `shared.SmsMessageContentsSchemas`
+
+```typescript
+const value: shared.SmsMessageContentsSchemas = /* values here */
+```
+
+### `shared.Schemas`
+
+```typescript
+const value: shared.Schemas = /* values here */
+```
+
+### `shared.PushMessageContentsSchemas`
+
+```typescript
+const value: shared.PushMessageContentsSchemas = /* values here */
+```
+

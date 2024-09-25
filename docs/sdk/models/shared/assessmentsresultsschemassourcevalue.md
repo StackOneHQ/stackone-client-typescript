@@ -7,7 +7,7 @@ The source value of the content type.
 ```typescript
 import { AssessmentsResultsSchemasSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: AssessmentsResultsSchemasSourceValue = Text;
+let value: AssessmentsResultsSchemasSourceValue = "Text";
 ```
 
 ## Supported Types

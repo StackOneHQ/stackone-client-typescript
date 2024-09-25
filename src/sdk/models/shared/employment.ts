@@ -146,7 +146,7 @@ export type EmploymentSchemasPayFrequencyValueOpen = OpenEnum<
 /**
  * The pay frequency
  */
-export type PayFrequency = {
+export type EmploymentPayFrequency = {
   /**
    * The source value of the pay frequency.
    */
@@ -204,7 +204,7 @@ export type EmploymentSchemasPayPeriodValueOpen = OpenEnum<
 /**
  * The pay period
  */
-export type PayPeriod = {
+export type EmploymentPayPeriod = {
   /**
    * The source value of the pay period.
    */
@@ -258,11 +258,11 @@ export type Employment = {
   /**
    * The pay frequency
    */
-  payFrequency?: PayFrequency | null | undefined;
+  payFrequency?: EmploymentPayFrequency | null | undefined;
   /**
    * The pay period
    */
-  payPeriod?: PayPeriod | null | undefined;
+  payPeriod?: EmploymentPayPeriod | null | undefined;
   /**
    * The pay rate for the employee
    */
@@ -756,8 +756,8 @@ export namespace EmploymentSchemasPayFrequencyValue$ {
 }
 
 /** @internal */
-export const PayFrequency$inboundSchema: z.ZodType<
-  PayFrequency,
+export const EmploymentPayFrequency$inboundSchema: z.ZodType<
+  EmploymentPayFrequency,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -779,7 +779,7 @@ export const PayFrequency$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type PayFrequency$Outbound = {
+export type EmploymentPayFrequency$Outbound = {
   source_value?:
     | EmploymentSchemasPayFrequency4$Outbound
     | string
@@ -792,10 +792,10 @@ export type PayFrequency$Outbound = {
 };
 
 /** @internal */
-export const PayFrequency$outboundSchema: z.ZodType<
-  PayFrequency$Outbound,
+export const EmploymentPayFrequency$outboundSchema: z.ZodType<
+  EmploymentPayFrequency$Outbound,
   z.ZodTypeDef,
-  PayFrequency
+  EmploymentPayFrequency
 > = z.object({
   sourceValue: z.nullable(
     z.union([
@@ -818,13 +818,13 @@ export const PayFrequency$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PayFrequency$ {
-  /** @deprecated use `PayFrequency$inboundSchema` instead. */
-  export const inboundSchema = PayFrequency$inboundSchema;
-  /** @deprecated use `PayFrequency$outboundSchema` instead. */
-  export const outboundSchema = PayFrequency$outboundSchema;
-  /** @deprecated use `PayFrequency$Outbound` instead. */
-  export type Outbound = PayFrequency$Outbound;
+export namespace EmploymentPayFrequency$ {
+  /** @deprecated use `EmploymentPayFrequency$inboundSchema` instead. */
+  export const inboundSchema = EmploymentPayFrequency$inboundSchema;
+  /** @deprecated use `EmploymentPayFrequency$outboundSchema` instead. */
+  export const outboundSchema = EmploymentPayFrequency$outboundSchema;
+  /** @deprecated use `EmploymentPayFrequency$Outbound` instead. */
+  export type Outbound = EmploymentPayFrequency$Outbound;
 }
 
 /** @internal */
@@ -939,8 +939,8 @@ export namespace EmploymentSchemasPayPeriodValue$ {
 }
 
 /** @internal */
-export const PayPeriod$inboundSchema: z.ZodType<
-  PayPeriod,
+export const EmploymentPayPeriod$inboundSchema: z.ZodType<
+  EmploymentPayPeriod,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -961,7 +961,7 @@ export const PayPeriod$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type PayPeriod$Outbound = {
+export type EmploymentPayPeriod$Outbound = {
   source_value?:
     | EmploymentSchemasPayPeriod4$Outbound
     | string
@@ -974,10 +974,10 @@ export type PayPeriod$Outbound = {
 };
 
 /** @internal */
-export const PayPeriod$outboundSchema: z.ZodType<
-  PayPeriod$Outbound,
+export const EmploymentPayPeriod$outboundSchema: z.ZodType<
+  EmploymentPayPeriod$Outbound,
   z.ZodTypeDef,
-  PayPeriod
+  EmploymentPayPeriod
 > = z.object({
   sourceValue: z.nullable(
     z.union([
@@ -999,13 +999,13 @@ export const PayPeriod$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace PayPeriod$ {
-  /** @deprecated use `PayPeriod$inboundSchema` instead. */
-  export const inboundSchema = PayPeriod$inboundSchema;
-  /** @deprecated use `PayPeriod$outboundSchema` instead. */
-  export const outboundSchema = PayPeriod$outboundSchema;
-  /** @deprecated use `PayPeriod$Outbound` instead. */
-  export type Outbound = PayPeriod$Outbound;
+export namespace EmploymentPayPeriod$ {
+  /** @deprecated use `EmploymentPayPeriod$inboundSchema` instead. */
+  export const inboundSchema = EmploymentPayPeriod$inboundSchema;
+  /** @deprecated use `EmploymentPayPeriod$outboundSchema` instead. */
+  export const outboundSchema = EmploymentPayPeriod$outboundSchema;
+  /** @deprecated use `EmploymentPayPeriod$Outbound` instead. */
+  export type Outbound = EmploymentPayPeriod$Outbound;
 }
 
 /** @internal */
@@ -1030,9 +1030,10 @@ export const Employment$inboundSchema: z.ZodType<
   id: z.nullable(z.string()).optional(),
   job_title: z.nullable(z.string()).optional(),
   pay_currency: z.nullable(z.string()).optional(),
-  pay_frequency: z.nullable(z.lazy(() => PayFrequency$inboundSchema))
+  pay_frequency: z.nullable(z.lazy(() => EmploymentPayFrequency$inboundSchema))
     .optional(),
-  pay_period: z.nullable(z.lazy(() => PayPeriod$inboundSchema)).optional(),
+  pay_period: z.nullable(z.lazy(() => EmploymentPayPeriod$inboundSchema))
+    .optional(),
   pay_rate: z.nullable(z.string()).optional(),
   remote_employee_id: z.nullable(z.string()).optional(),
   remote_id: z.nullable(z.string()).optional(),
@@ -1072,8 +1073,8 @@ export type Employment$Outbound = {
   id?: string | null | undefined;
   job_title?: string | null | undefined;
   pay_currency?: string | null | undefined;
-  pay_frequency?: PayFrequency$Outbound | null | undefined;
-  pay_period?: PayPeriod$Outbound | null | undefined;
+  pay_frequency?: EmploymentPayFrequency$Outbound | null | undefined;
+  pay_period?: EmploymentPayPeriod$Outbound | null | undefined;
   pay_rate?: string | null | undefined;
   remote_employee_id?: string | null | undefined;
   remote_id?: string | null | undefined;
@@ -1100,9 +1101,10 @@ export const Employment$outboundSchema: z.ZodType<
   id: z.nullable(z.string()).optional(),
   jobTitle: z.nullable(z.string()).optional(),
   payCurrency: z.nullable(z.string()).optional(),
-  payFrequency: z.nullable(z.lazy(() => PayFrequency$outboundSchema))
+  payFrequency: z.nullable(z.lazy(() => EmploymentPayFrequency$outboundSchema))
     .optional(),
-  payPeriod: z.nullable(z.lazy(() => PayPeriod$outboundSchema)).optional(),
+  payPeriod: z.nullable(z.lazy(() => EmploymentPayPeriod$outboundSchema))
+    .optional(),
   payRate: z.nullable(z.string()).optional(),
   remoteEmployeeId: z.nullable(z.string()).optional(),
   remoteId: z.nullable(z.string()).optional(),

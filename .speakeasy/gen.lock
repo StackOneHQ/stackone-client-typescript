@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 7fa83af8-9e8e-4410-b7e2-cf1d0eaf688b
 management:
-  docChecksum: 43b55b872f5c12f5339953cf8fcbf412
+  docChecksum: b2bf7a6c1ed2227b28cf8779b19af198
   docVersion: 1.0.0
-  speakeasyVersion: 1.401.2
-  generationVersion: 2.421.3
-  releaseVersion: 4.15.2
-  configChecksum: e3d725da77a62a8095f0b04dc55f1334
+  speakeasyVersion: 1.402.14
+  generationVersion: 2.422.22
+  releaseVersion: 4.15.3
+  configChecksum: c102e0cb51aa3dfc7af073f5a0c8dbfc
   repoURL: https://github.com/StackOneHQ/stackone-client-typescript.git
   repoSubDirectory: .
   installationURL: https://github.com/StackOneHQ/stackone-client-typescript
@@ -15,7 +15,7 @@ features:
   typescript:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.11
-    core: 3.17.6
+    core: 3.17.7
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
     downloadStreams: 0.1.1
@@ -49,6 +49,8 @@ generatedFiles:
   - docs/sdk/models/operations/atscreatecandidatenoteresponse.md
   - docs/sdk/models/operations/atscreatecandidaterequest.md
   - docs/sdk/models/operations/atscreatecandidateresponse.md
+  - docs/sdk/models/operations/atscreatejobrequest.md
+  - docs/sdk/models/operations/atscreatejobresponse.md
   - docs/sdk/models/operations/atscreateofferrequest.md
   - docs/sdk/models/operations/atscreateofferresponse.md
   - docs/sdk/models/operations/atsdownloadapplicationdocumentrequest.md
@@ -171,6 +173,8 @@ generatedFiles:
   - docs/sdk/models/operations/atsupdateapplicationresponse.md
   - docs/sdk/models/operations/atsupdatecandidaterequest.md
   - docs/sdk/models/operations/atsupdatecandidateresponse.md
+  - docs/sdk/models/operations/atsupdatejobrequest.md
+  - docs/sdk/models/operations/atsupdatejobresponse.md
   - docs/sdk/models/operations/atsuploadapplicationdocumentrequest.md
   - docs/sdk/models/operations/atsuploadapplicationdocumentresponse.md
   - docs/sdk/models/operations/crmcreatecontactrequest.md
@@ -497,6 +501,10 @@ generatedFiles:
   - docs/sdk/models/shared/atscreateapplicationrequestdtosourcevalue.md
   - docs/sdk/models/shared/atscreateapplicationrequestdtovalue.md
   - docs/sdk/models/shared/atscreatecandidaterequestdto.md
+  - docs/sdk/models/shared/atscreatejobrequestdto.md
+  - docs/sdk/models/shared/atscreatejobrequestdto4.md
+  - docs/sdk/models/shared/atscreatejobrequestdtosourcevalue.md
+  - docs/sdk/models/shared/atscreatejobrequestdtovalue.md
   - docs/sdk/models/shared/atscreatenotesrequestdto.md
   - docs/sdk/models/shared/atscreatenotesrequestdto4.md
   - docs/sdk/models/shared/atscreatenotesrequestdtosourcevalue.md
@@ -530,6 +538,12 @@ generatedFiles:
   - docs/sdk/models/shared/atsupdateapplicationrequestdtosourcevalue.md
   - docs/sdk/models/shared/atsupdateapplicationrequestdtovalue.md
   - docs/sdk/models/shared/atsupdatecandidaterequestdto.md
+  - docs/sdk/models/shared/atsupdatejobrequestdto.md
+  - docs/sdk/models/shared/atsupdatejobrequestdto4.md
+  - docs/sdk/models/shared/atsupdatejobrequestdtoconfidential.md
+  - docs/sdk/models/shared/atsupdatejobrequestdtojobstatus.md
+  - docs/sdk/models/shared/atsupdatejobrequestdtosourcevalue.md
+  - docs/sdk/models/shared/atsupdatejobrequestdtovalue.md
   - docs/sdk/models/shared/attachments.md
   - docs/sdk/models/shared/avatar.md
   - docs/sdk/models/shared/batchresultapimodel.md
@@ -624,7 +638,34 @@ generatedFiles:
   - docs/sdk/models/shared/coursesourcevalue.md
   - docs/sdk/models/shared/coursetype.md
   - docs/sdk/models/shared/coursevalue.md
+  - docs/sdk/models/shared/createanswer.md
+  - docs/sdk/models/shared/createanswer4.md
+  - docs/sdk/models/shared/createanswersourcevalue.md
+  - docs/sdk/models/shared/createanswertype.md
+  - docs/sdk/models/shared/createanswervalue.md
   - docs/sdk/models/shared/createcategoriesapimodel.md
+  - docs/sdk/models/shared/createemploymentapimodel.md
+  - docs/sdk/models/shared/createemploymentapimodel4.md
+  - docs/sdk/models/shared/createemploymentapimodelschemas4.md
+  - docs/sdk/models/shared/createemploymentapimodelschemaspayfrequency4.md
+  - docs/sdk/models/shared/createemploymentapimodelschemaspayfrequencysourcevalue.md
+  - docs/sdk/models/shared/createemploymentapimodelschemaspayfrequencyvalue.md
+  - docs/sdk/models/shared/createemploymentapimodelschemaspayperiod4.md
+  - docs/sdk/models/shared/createemploymentapimodelschemaspayperiodsourcevalue.md
+  - docs/sdk/models/shared/createemploymentapimodelschemaspayperiodvalue.md
+  - docs/sdk/models/shared/createemploymentapimodelschemassourcevalue.md
+  - docs/sdk/models/shared/createemploymentapimodelschemasvalue.md
+  - docs/sdk/models/shared/createemploymentapimodelsourcevalue.md
+  - docs/sdk/models/shared/createemploymentapimodelvalue.md
+  - docs/sdk/models/shared/createhrisbenefit.md
+  - docs/sdk/models/shared/createhrisbenefit4.md
+  - docs/sdk/models/shared/createhrisbenefitsourcevalue.md
+  - docs/sdk/models/shared/createhrisbenefitvalue.md
+  - docs/sdk/models/shared/createmessage.md
+  - docs/sdk/models/shared/createmessage4.md
+  - docs/sdk/models/shared/createmessagesourcevalue.md
+  - docs/sdk/models/shared/createmessagevalue.md
+  - docs/sdk/models/shared/createquestionnaire.md
   - docs/sdk/models/shared/createresult.md
   - docs/sdk/models/shared/createresultdataapimodel.md
   - docs/sdk/models/shared/credentials.md
@@ -644,6 +685,8 @@ generatedFiles:
   - docs/sdk/models/shared/draft.md
   - docs/sdk/models/shared/emailmessages.md
   - docs/sdk/models/shared/emailmessages4.md
+  - docs/sdk/models/shared/emailmessagesmessagecontent.md
+  - docs/sdk/models/shared/emailmessagesmessagetype.md
   - docs/sdk/models/shared/emailmessagessourcevalue.md
   - docs/sdk/models/shared/emailmessagesvalue.md
   - docs/sdk/models/shared/employee.md
@@ -653,6 +696,8 @@ generatedFiles:
   - docs/sdk/models/shared/employeecustomfields.md
   - docs/sdk/models/shared/employeecustomfields4.md
   - docs/sdk/models/shared/employeecustomfieldsvalue.md
+  - docs/sdk/models/shared/employeeemploymentcontracttype.md
+  - docs/sdk/models/shared/employeeemploymenttype.md
   - docs/sdk/models/shared/employeelocationtype.md
   - docs/sdk/models/shared/employeeresult.md
   - docs/sdk/models/shared/employeeschemas4.md
@@ -699,6 +744,8 @@ generatedFiles:
   - docs/sdk/models/shared/employmentcontracttype.md
   - docs/sdk/models/shared/employmentemploymentcontracttype.md
   - docs/sdk/models/shared/employmentemploymenttype.md
+  - docs/sdk/models/shared/employmentpayfrequency.md
+  - docs/sdk/models/shared/employmentpayperiod.md
   - docs/sdk/models/shared/employmentresult.md
   - docs/sdk/models/shared/employmentschemas4.md
   - docs/sdk/models/shared/employmentschemaspayfrequency4.md
@@ -727,6 +774,7 @@ generatedFiles:
   - docs/sdk/models/shared/hrisbatchdocumentuploadrequestdto.md
   - docs/sdk/models/shared/hrisbenefit.md
   - docs/sdk/models/shared/hrisbenefit4.md
+  - docs/sdk/models/shared/hrisbenefitbenefittype.md
   - docs/sdk/models/shared/hrisbenefitresult.md
   - docs/sdk/models/shared/hrisbenefitsourcevalue.md
   - docs/sdk/models/shared/hrisbenefitspaginated.md
@@ -833,6 +881,7 @@ generatedFiles:
   - docs/sdk/models/shared/hrisdocumentsuploadrequestdto.md
   - docs/sdk/models/shared/hrisdocumentsuploadrequestdto4.md
   - docs/sdk/models/shared/hrisdocumentsuploadrequestdtocategory.md
+  - docs/sdk/models/shared/hrisdocumentsuploadrequestdtoconfidential.md
   - docs/sdk/models/shared/hrisdocumentsuploadrequestdtofileformat.md
   - docs/sdk/models/shared/hrisdocumentsuploadrequestdtoschemas4.md
   - docs/sdk/models/shared/hrisdocumentsuploadrequestdtoschemasfileformatvalue.md
@@ -940,6 +989,7 @@ generatedFiles:
   - docs/sdk/models/shared/jobcustomfieldsvalue.md
   - docs/sdk/models/shared/jobdescription.md
   - docs/sdk/models/shared/jobhiringteam.md
+  - docs/sdk/models/shared/jobjobstatus.md
   - docs/sdk/models/shared/jobposting.md
   - docs/sdk/models/shared/jobposting4.md
   - docs/sdk/models/shared/jobpostingcompensation.md
@@ -984,6 +1034,7 @@ generatedFiles:
   - docs/sdk/models/shared/jobstatus.md
   - docs/sdk/models/shared/jobvalue.md
   - docs/sdk/models/shared/label.md
+  - docs/sdk/models/shared/level.md
   - docs/sdk/models/shared/linkedaccount.md
   - docs/sdk/models/shared/linkedaccountmeta.md
   - docs/sdk/models/shared/linkedaccountmetacategory.md
@@ -1121,7 +1172,10 @@ generatedFiles:
   - docs/sdk/models/shared/setupinformation.md
   - docs/sdk/models/shared/skillresult.md
   - docs/sdk/models/shared/skills.md
+  - docs/sdk/models/shared/skills4.md
   - docs/sdk/models/shared/skillspaginated.md
+  - docs/sdk/models/shared/skillssourcevalue.md
+  - docs/sdk/models/shared/skillsvalue.md
   - docs/sdk/models/shared/smsmessagecontentsschemas.md
   - docs/sdk/models/shared/smsmessages.md
   - docs/sdk/models/shared/smsmessages4.md
@@ -1215,6 +1269,7 @@ generatedFiles:
   - src/funcs/atsCreateApplication.ts
   - src/funcs/atsCreateCandidate.ts
   - src/funcs/atsCreateCandidateNote.ts
+  - src/funcs/atsCreateJob.ts
   - src/funcs/atsCreateOffer.ts
   - src/funcs/atsDownloadApplicationDocument.ts
   - src/funcs/atsGetApplication.ts
@@ -1265,6 +1320,7 @@ generatedFiles:
   - src/funcs/atsRejectApplication.ts
   - src/funcs/atsUpdateApplication.ts
   - src/funcs/atsUpdateCandidate.ts
+  - src/funcs/atsUpdateJob.ts
   - src/funcs/atsUploadApplicationDocument.ts
   - src/funcs/connectSessionsAuthenticateConnectSession.ts
   - src/funcs/connectSessionsCreateConnectSession.ts
@@ -1410,6 +1466,7 @@ generatedFiles:
   - src/sdk/models/operations/atscreateapplication.ts
   - src/sdk/models/operations/atscreatecandidate.ts
   - src/sdk/models/operations/atscreatecandidatenote.ts
+  - src/sdk/models/operations/atscreatejob.ts
   - src/sdk/models/operations/atscreateoffer.ts
   - src/sdk/models/operations/atsdownloadapplicationdocument.ts
   - src/sdk/models/operations/atsgetapplication.ts
@@ -1460,6 +1517,7 @@ generatedFiles:
   - src/sdk/models/operations/atsrejectapplication.ts
   - src/sdk/models/operations/atsupdateapplication.ts
   - src/sdk/models/operations/atsupdatecandidate.ts
+  - src/sdk/models/operations/atsupdatejob.ts
   - src/sdk/models/operations/atsuploadapplicationdocument.ts
   - src/sdk/models/operations/crmcreatecontact.ts
   - src/sdk/models/operations/crmgetaccount.ts
@@ -1596,6 +1654,7 @@ generatedFiles:
   - src/sdk/models/shared/assignmentstatusenum.ts
   - src/sdk/models/shared/atscreateapplicationrequestdto.ts
   - src/sdk/models/shared/atscreatecandidaterequestdto.ts
+  - src/sdk/models/shared/atscreatejobrequestdto.ts
   - src/sdk/models/shared/atscreatenotesrequestdto.ts
   - src/sdk/models/shared/atscreateofferrequestdto.ts
   - src/sdk/models/shared/atsdocumentapimodel.ts
@@ -1608,6 +1667,7 @@ generatedFiles:
   - src/sdk/models/shared/atsrejectapplicationrequestdto.ts
   - src/sdk/models/shared/atsupdateapplicationrequestdto.ts
   - src/sdk/models/shared/atsupdatecandidaterequestdto.ts
+  - src/sdk/models/shared/atsupdatejobrequestdto.ts
   - src/sdk/models/shared/batchresultapimodel.ts
   - src/sdk/models/shared/campaign.ts
   - src/sdk/models/shared/campaignresult.ts
@@ -1647,7 +1707,12 @@ generatedFiles:
   - src/sdk/models/shared/course.ts
   - src/sdk/models/shared/coursepaginated.ts
   - src/sdk/models/shared/courseresult.ts
+  - src/sdk/models/shared/createanswer.ts
   - src/sdk/models/shared/createcategoriesapimodel.ts
+  - src/sdk/models/shared/createemploymentapimodel.ts
+  - src/sdk/models/shared/createhrisbenefit.ts
+  - src/sdk/models/shared/createmessage.ts
+  - src/sdk/models/shared/createquestionnaire.ts
   - src/sdk/models/shared/createresult.ts
   - src/sdk/models/shared/createresultdataapimodel.ts
   - src/sdk/models/shared/crmcreatecontactrequestdto.ts
@@ -1740,7 +1805,6 @@ generatedFiles:
   - src/sdk/models/shared/marketingcreatepushtemplaterequestdto.ts
   - src/sdk/models/shared/marketingcreatesmstemplaterequestdto.ts
   - src/sdk/models/shared/marketingcreatetemplaterequestdto.ts
-  - src/sdk/models/shared/message.ts
   - src/sdk/models/shared/moveapplicationresult.ts
   - src/sdk/models/shared/note.ts
   - src/sdk/models/shared/notecontentapimodel.ts
@@ -1882,7 +1946,7 @@ examples:
         header:
           x-account-id: "<value>"
       requestBody:
-        application/json: {"application_status": {"source_value": "Hired", "value": "hired"}, "candidate": {"company": "Company Inc.", "country": "United States", "custom_fields": [], "email": "sestier.romain123@gmail.com", "first_name": "Romain", "hired_at": "2021-01-01T01:01:01.000Z", "last_name": "Sestier", "name": "Romain Sestier", "passthrough": {"other_known_names": "John Doe"}, "phone_number": "+1234567890", "social_links": [], "title": "Software Engineer", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}}, "candidate_id": "e3cb75bf-aa84-466e-a6c1-b8322b257a48", "job_id": "4071538b-3cac-4fbf-ac76-f78ed250ffdd", "location_id": "dd8d41d1-5eb8-4408-9c87-9ba44604eae4", "passthrough": {"other_known_names": "John Doe"}, "questionnaires": [{"answers": [{"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "type": {"source_value": "Short Text", "value": "short_text"}, "values": ["Yes", "No Travel", "It sounds pretty cool.", "Excel", "Power Point"]}], "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}], "source": {"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "name": "LinkedIn", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}}
+        application/json: {"application_status": {"source_value": "Hired", "value": "hired"}, "candidate": {"company": "Company Inc.", "country": "United States", "custom_fields": [], "email": "sestier.romain123@gmail.com", "first_name": "Romain", "hired_at": "2021-01-01T01:01:01.000Z", "last_name": "Sestier", "name": "Romain Sestier", "passthrough": {"other_known_names": "John Doe"}, "phone_number": "+1234567890", "social_links": [], "title": "Software Engineer", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}}, "candidate_id": "e3cb75bf-aa84-466e-a6c1-b8322b257a48", "job_id": "4071538b-3cac-4fbf-ac76-f78ed250ffdd", "location_id": "dd8d41d1-5eb8-4408-9c87-9ba44604eae4", "passthrough": {"other_known_names": "John Doe"}, "questionnaires": [{"answers": [{"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "type": {"source_value": "Short Text", "value": "short_text"}, "values": ["Yes", "No Travel", "It sounds pretty cool.", "Excel", "Power Point"]}], "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}], "source": {"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "name": "LinkedIn"}}
       responses:
         "201":
           application/json: {"data": {"external_reference": "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1", "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}, "message": "Record created successfully.", "statusCode": 201, "timestamp": "2021-01-01T01:01:01.000Z"}
@@ -2520,7 +2584,7 @@ examples:
         header:
           x-account-id: "<value>"
       requestBody:
-        application/json: {"application_status": {"source_value": "Hired", "value": "hired"}, "custom_fields": [], "interview_stage_id": "18bcbb1b-3cbc-4198-a999-460861d19480", "passthrough": {"other_known_names": "John Doe"}, "rejected_reason_id": "f223d7f6-908b-48f0-9237-b201c307f609", "source": {"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "name": "LinkedIn", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}}
+        application/json: {"application_status": {"source_value": "Hired", "value": "hired"}, "custom_fields": [], "interview_stage_id": "18bcbb1b-3cbc-4198-a999-460861d19480", "passthrough": {"other_known_names": "John Doe"}, "rejected_reason_id": "f223d7f6-908b-48f0-9237-b201c307f609", "source": {"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "name": "LinkedIn"}}
       responses:
         "200":
           application/json: {"message": "Record updated successfully.", "statusCode": 200, "timestamp": "2021-01-01T01:01:01.000Z"}
@@ -3281,7 +3345,7 @@ examples:
           x-account-id: "<value>"
       responses:
         "200":
-          application/json: {"data": {"completed_at": "2021-07-21T14:00:00.000Z", "content_external_reference": "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1-CONTENT", "content_id": "16873-ENG-VIDEO-1", "external_id": "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1-COMPLETION", "id": "123456", "remote_content_id": "e3cb75bf-aa84-466e-a6c1-b8322b257a48", "remote_external_id": "e3cb75bf-aa84-466e-a6c1-b8322b257a48", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}}}
+          application/json: {"data": {"completed_at": "2021-07-21T14:00:00.000Z", "content_external_reference": "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1-CONTENT", "content_id": "16873-ENG-VIDEO-1", "created_at": "2021-07-21T14:00:00.000Z", "external_id": "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1-COMPLETION", "id": "123456", "remote_content_id": "e3cb75bf-aa84-466e-a6c1-b8322b257a48", "remote_external_id": "e3cb75bf-aa84-466e-a6c1-b8322b257a48", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_user_id": "e3cb75bf-aa84-466e-a6c1-b8322b257a48", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}, "updated_at": "2021-07-21T14:00:00.000Z", "user_id": "c28xyrc55866bvuv"}}
   lms_get_content:
     "":
       parameters:
@@ -3353,7 +3417,7 @@ examples:
           x-account-id: "<value>"
       responses:
         "200":
-          application/json: {"data": {"completed_at": "2021-07-21T14:00:00.000Z", "content_external_reference": "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1-CONTENT", "content_id": "16873-ENG-VIDEO-1", "external_id": "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1-COMPLETION", "id": "123456", "remote_content_id": "e3cb75bf-aa84-466e-a6c1-b8322b257a48", "remote_external_id": "e3cb75bf-aa84-466e-a6c1-b8322b257a48", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}}}
+          application/json: {"data": {"completed_at": "2021-07-21T14:00:00.000Z", "content_external_reference": "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1-CONTENT", "content_id": "16873-ENG-VIDEO-1", "created_at": "2021-07-21T14:00:00.000Z", "external_id": "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1-COMPLETION", "id": "123456", "remote_content_id": "e3cb75bf-aa84-466e-a6c1-b8322b257a48", "remote_external_id": "e3cb75bf-aa84-466e-a6c1-b8322b257a48", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_user_id": "e3cb75bf-aa84-466e-a6c1-b8322b257a48", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}, "updated_at": "2021-07-21T14:00:00.000Z", "user_id": "c28xyrc55866bvuv"}}
   lms_list_assignments:
     "":
       parameters:
@@ -3803,3 +3867,25 @@ examples:
           x-account-id: "<value>"
       requestBody:
         application/json: {"headers": {"Content-Type": "application/json"}, "path": "/employees/directory", "url": "https://api.sample-integration.com/v1"}
+  ats_create_job:
+    speakeasy-default-ats-create-job:
+      parameters:
+        header:
+          x-account-id: "<value>"
+      requestBody:
+        application/json: {"code": "184919", "custom_fields": [{"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "name": "Training Completion Status", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_value_id": "e3cb75bf-aa84-466e-a6c1-b8322b257a48", "value": "Completed", "value_id": "value_456"}, {"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "name": "Training Completion Status", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_value_id": "e3cb75bf-aa84-466e-a6c1-b8322b257a48", "value": "Completed", "value_id": "value_456"}, {"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "name": "Training Completion Status", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_value_id": "e3cb75bf-aa84-466e-a6c1-b8322b257a48", "value": "Completed", "value_id": "value_456"}], "department_ids": ["308570", "308571", "308572"], "hiring_team": [{"email": "john.doe@gmail.com", "first_name": "John", "last_name": "Doe", "remote_user_id": "e3cb75bf-aa84-466e-a6c1-b8322b257a48", "role": "Software Engineer", "user_id": "123456"}], "interview_stages": [{"created_at": "2021-01-01T01:01:01.000Z", "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}, "updated_at": "2021-01-01T01:01:01.000Z"}], "job_status": {"source_value": "Published", "value": "published"}, "location_ids": ["668570", "678571", "688572"], "passthrough": {"other_known_names": "John Doe"}, "title": "Software Engineer", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}}
+      responses:
+        "200":
+          application/json: {"data": {"external_reference": "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1", "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}, "message": "Record created successfully.", "statusCode": 201, "timestamp": "2021-01-01T01:01:01.000Z"}
+  ats_update_job:
+    speakeasy-default-ats-update-job:
+      parameters:
+        path:
+          id: "<id>"
+        header:
+          x-account-id: "<value>"
+      requestBody:
+        application/json: {"code": "184919", "custom_fields": [{"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "name": "Training Completion Status", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_value_id": "e3cb75bf-aa84-466e-a6c1-b8322b257a48", "value": "Completed", "value_id": "value_456"}], "department_ids": ["308570", "308571", "308572"], "hiring_team": [{"email": "john.doe@gmail.com", "first_name": "John", "last_name": "Doe", "remote_user_id": "e3cb75bf-aa84-466e-a6c1-b8322b257a48", "role": "Software Engineer", "user_id": "123456"}, {"email": "john.doe@gmail.com", "first_name": "John", "last_name": "Doe", "remote_user_id": "e3cb75bf-aa84-466e-a6c1-b8322b257a48", "role": "Software Engineer", "user_id": "123456"}], "interview_stages": [], "job_status": {"source_value": "Published", "value": "published"}, "location_ids": ["668570", "678571", "688572"], "passthrough": {"other_known_names": "John Doe"}, "title": "Software Engineer", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}}
+      responses:
+        "200":
+          application/json: {"data": {"external_reference": "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1", "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}, "message": "Record created successfully.", "statusCode": 201, "timestamp": "2021-01-01T01:01:01.000Z"}

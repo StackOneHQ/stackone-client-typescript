@@ -49,19 +49,11 @@ export type LmsListUserCompletionsRequest = {
    */
   raw?: boolean | null | undefined;
   /**
-   * Provider's unique identifier of the user
-   */
-  remoteUserId?: string | null | undefined;
-  /**
    * Use a string with a date to only select results updated after that given date
    *
    * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   updatedAfter?: string | null | undefined;
-  /**
-   * The user ID associated with this completion
-   */
-  userId?: string | null | undefined;
   /**
    * The account identifier
    */
@@ -149,16 +141,12 @@ export const LmsListUserCompletionsRequest$inboundSchema: z.ZodType<
   page_size: z.nullable(z.string().default("25")),
   proxy: z.nullable(z.record(z.any())).optional(),
   raw: z.nullable(z.boolean().default(false)),
-  remote_user_id: z.nullable(z.string()).optional(),
   updated_after: z.nullable(z.string()).optional(),
-  user_id: z.nullable(z.string()).optional(),
   "x-account-id": z.string(),
 }).transform((v) => {
   return remap$(v, {
     "page_size": "pageSize",
-    "remote_user_id": "remoteUserId",
     "updated_after": "updatedAfter",
-    "user_id": "userId",
     "x-account-id": "xAccountId",
   });
 });
@@ -173,9 +161,7 @@ export type LmsListUserCompletionsRequest$Outbound = {
   page_size: string | null;
   proxy?: { [k: string]: any } | null | undefined;
   raw: boolean | null;
-  remote_user_id?: string | null | undefined;
   updated_after?: string | null | undefined;
-  user_id?: string | null | undefined;
   "x-account-id": string;
 };
 
@@ -195,16 +181,12 @@ export const LmsListUserCompletionsRequest$outboundSchema: z.ZodType<
   pageSize: z.nullable(z.string().default("25")),
   proxy: z.nullable(z.record(z.any())).optional(),
   raw: z.nullable(z.boolean().default(false)),
-  remoteUserId: z.nullable(z.string()).optional(),
   updatedAfter: z.nullable(z.string()).optional(),
-  userId: z.nullable(z.string()).optional(),
   xAccountId: z.string(),
 }).transform((v) => {
   return remap$(v, {
     pageSize: "page_size",
-    remoteUserId: "remote_user_id",
     updatedAfter: "updated_after",
-    userId: "user_id",
     xAccountId: "x-account-id",
   });
 });

@@ -5,7 +5,7 @@
 ```typescript
 import { CountryCodeEnumSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: CountryCodeEnumSourceValue = 5010.63;
+let value: CountryCodeEnumSourceValue = "<value>";
 ```
 
 ## Supported Types

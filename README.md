@@ -119,6 +119,7 @@ run();
 * [createApplication](docs/sdks/ats/README.md#createapplication) - Create Application
 * [createCandidate](docs/sdks/ats/README.md#createcandidate) - Create Candidate
 * [createCandidateNote](docs/sdks/ats/README.md#createcandidatenote) - Create Candidate Note
+* [createJob](docs/sdks/ats/README.md#createjob) - Create Job
 * [createOffer](docs/sdks/ats/README.md#createoffer) - Creates an offer
 * [downloadApplicationDocument](docs/sdks/ats/README.md#downloadapplicationdocument) - Download Application Document
 * [getApplication](docs/sdks/ats/README.md#getapplication) - Get Application
@@ -169,6 +170,7 @@ run();
 * [rejectApplication](docs/sdks/ats/README.md#rejectapplication) - Reject Application
 * [updateApplication](docs/sdks/ats/README.md#updateapplication) - Update an Application
 * [updateCandidate](docs/sdks/ats/README.md#updatecandidate) - Update Candidate
+* [updateJob](docs/sdks/ats/README.md#updatejob) - Update Job
 * [uploadApplicationDocument](docs/sdks/ats/README.md#uploadapplicationdocument) - Upload Application Document
 
 ### [connectors](docs/sdks/connectors/README.md)
@@ -602,6 +604,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [atsCreateApplication](docs/sdks/ats/README.md#createapplication)
 - [atsCreateCandidateNote](docs/sdks/ats/README.md#createcandidatenote)
 - [atsCreateCandidate](docs/sdks/ats/README.md#createcandidate)
+- [atsCreateJob](docs/sdks/ats/README.md#createjob)
 - [atsCreateOffer](docs/sdks/ats/README.md#createoffer)
 - [atsDownloadApplicationDocument](docs/sdks/ats/README.md#downloadapplicationdocument)
 - [atsGetApplicationCustomFieldDefinition](docs/sdks/ats/README.md#getapplicationcustomfielddefinition)
@@ -652,6 +655,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [atsRejectApplication](docs/sdks/ats/README.md#rejectapplication)
 - [atsUpdateApplication](docs/sdks/ats/README.md#updateapplication)
 - [atsUpdateCandidate](docs/sdks/ats/README.md#updatecandidate)
+- [atsUpdateJob](docs/sdks/ats/README.md#updatejob)
 - [atsUploadApplicationDocument](docs/sdks/ats/README.md#uploadapplicationdocument)
 - [connectSessionsAuthenticateConnectSession](docs/sdks/connectsessions/README.md#authenticateconnectsession)
 - [connectSessionsCreateConnectSession](docs/sdks/connectsessions/README.md#createconnectsession)
