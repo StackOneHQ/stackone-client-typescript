@@ -11,9 +11,7 @@ let value: MarketingUpdateInAppTemplateRequest = {
       {
         id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         messageType: {
-          sourceValue: [
-            "Email",
-          ],
+          sourceValue: "Email",
         },
         remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
       },

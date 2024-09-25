@@ -5,7 +5,7 @@
 ```typescript
 import { ContentLanguageEnumSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: ContentLanguageEnumSourceValue = 1718.53;
+let value: ContentLanguageEnumSourceValue = "<value>";
 ```
 
 ## Supported Types

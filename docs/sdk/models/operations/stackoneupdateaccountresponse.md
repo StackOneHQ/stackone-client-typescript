@@ -7,7 +7,7 @@ import { StackoneUpdateAccountResponse } from "@stackone/stackone-client-ts/sdk/
 
 let value: StackoneUpdateAccountResponse = {
   contentType: "<value>",
-  statusCode: 423655,
+  statusCode: 504,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

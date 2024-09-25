@@ -3,9 +3,9 @@
 ## Example Usage
 
 ```typescript
-import { Archived, Two } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { Archived } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: Archived = Two.False;
+let value: Archived = false;
 ```
 
 ## Supported Types

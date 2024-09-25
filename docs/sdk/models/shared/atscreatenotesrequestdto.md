@@ -16,7 +16,7 @@ let value: AtsCreateNotesRequestDto = {
     "other_known_names": "John Doe",
   },
   visibility: {
-    sourceValue: Public,
+    sourceValue: "Public",
     value: AtsCreateNotesRequestDtoValue.Public,
   },
 };

@@ -32,7 +32,7 @@ let value: AtsGetApplicationScheduledInterviewResponse = {
           startAt: new Date("2021-01-01T17:00:00.000Z"),
           title: "Interview (Informal Interview) - Elon and StackOne",
           type: {
-            sourceValue: Onsite Interview,
+            sourceValue: "Onsite Interview",
             value: InterviewPartValue.OnSite,
           },
           updatedAt: new Date("2021-01-01T01:01:01.000Z"),
@@ -49,7 +49,7 @@ let value: AtsGetApplicationScheduledInterviewResponse = {
         updatedAt: new Date("2021-01-01T01:01:01.000Z"),
       },
       interviewStatus: {
-        sourceValue: true,
+        sourceValue: "Unscheduled",
         value: ScheduledInterviewValue.Unscheduled,
       },
       interviewers: [
@@ -69,8 +69,10 @@ let value: AtsGetApplicationScheduledInterviewResponse = {
       updatedAt: new Date("2021-01-01T01:01:01.000Z"),
     },
   },
-  statusCode: 697631,
-  rawResponse: new Response('{"message": "hello world"}', {headers: {"Content-Type": "application/json"}}),
+  statusCode: 201,
+  rawResponse: new Response("{\"message\": \"hello world\"}", {
+    headers: { "Content-Type": "application/json" },
+  }),
 };
 ```
 

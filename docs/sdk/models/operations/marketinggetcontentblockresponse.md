@@ -14,11 +14,11 @@ let value: MarketingGetContentBlockResponse = {
         id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         status: {
-          sourceValue: {},
+          sourceValue: "active",
           value: ContentBlockValue.Live,
         },
         type: {
-          sourceValue: text,
+          sourceValue: "text",
           value: ContentBlockSchemasValue.Text,
         },
         updatedAt: new Date("2021-01-01T00:00:00.000Z"),
@@ -26,7 +26,7 @@ let value: MarketingGetContentBlockResponse = {
     ],
   },
   contentType: "<value>",
-  statusCode: 392676,
+  statusCode: 305,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

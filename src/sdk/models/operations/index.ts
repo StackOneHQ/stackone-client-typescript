@@ -5,6 +5,7 @@
 export * from "./atscreateapplication.js";
 export * from "./atscreatecandidate.js";
 export * from "./atscreatecandidatenote.js";
+export * from "./atscreatejob.js";
 export * from "./atscreateoffer.js";
 export * from "./atsdownloadapplicationdocument.js";
 export * from "./atsgetapplication.js";
@@ -55,6 +56,7 @@ export * from "./atsmoveapplication.js";
 export * from "./atsrejectapplication.js";
 export * from "./atsupdateapplication.js";
 export * from "./atsupdatecandidate.js";
+export * from "./atsupdatejob.js";
 export * from "./atsuploadapplicationdocument.js";
 export * from "./crmcreatecontact.js";
 export * from "./crmgetaccount.js";

@@ -6,8 +6,7 @@
 import { HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value:
-  HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberSourceValue =
-    1000.14;
+  HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberSourceValue = false;
 ```
 
 ## Supported Types

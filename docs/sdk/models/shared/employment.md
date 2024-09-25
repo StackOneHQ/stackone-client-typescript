@@ -16,20 +16,18 @@ let value: Employment = {
   employeeId: "1687-3",
   employmentContractType: {},
   employmentType: {
-    sourceValue: Permanent,
+    sourceValue: "Permanent",
     value: EmploymentSchemasValue.Permanent,
   },
   id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
   jobTitle: "Software Engineer",
   payCurrency: "USD",
   payFrequency: {
-    sourceValue: [
-      "Hourly",
-    ],
+    sourceValue: "Hourly",
     value: EmploymentSchemasPayFrequencyValue.Hourly,
   },
   payPeriod: {
-    sourceValue: {},
+    sourceValue: "Hour",
     value: EmploymentSchemasPayPeriodValue.Hour,
   },
   payRate: "40.00",
@@ -55,8 +53,8 @@ let value: Employment = {
 | `id`                                                                                                      | *string*                                                                                                  | :heavy_minus_sign:                                                                                        | Unique identifier                                                                                         | 8187e5da-dc77-475e-9949-af0f1fa4e4e3                                                                      |
 | `jobTitle`                                                                                                | *string*                                                                                                  | :heavy_minus_sign:                                                                                        | The job title of the employee                                                                             | Software Engineer                                                                                         |
 | `payCurrency`                                                                                             | *string*                                                                                                  | :heavy_minus_sign:                                                                                        | The currency used for pay                                                                                 | USD                                                                                                       |
-| `payFrequency`                                                                                            | [shared.PayFrequency](../../../sdk/models/shared/payfrequency.md)                                         | :heavy_minus_sign:                                                                                        | The pay frequency                                                                                         | hourly                                                                                                    |
-| `payPeriod`                                                                                               | [shared.PayPeriod](../../../sdk/models/shared/payperiod.md)                                               | :heavy_minus_sign:                                                                                        | The pay period                                                                                            | monthly                                                                                                   |
+| `payFrequency`                                                                                            | [shared.EmploymentPayFrequency](../../../sdk/models/shared/employmentpayfrequency.md)                     | :heavy_minus_sign:                                                                                        | The pay frequency                                                                                         | hourly                                                                                                    |
+| `payPeriod`                                                                                               | [shared.EmploymentPayPeriod](../../../sdk/models/shared/employmentpayperiod.md)                           | :heavy_minus_sign:                                                                                        | The pay period                                                                                            | monthly                                                                                                   |
 | `payRate`                                                                                                 | *string*                                                                                                  | :heavy_minus_sign:                                                                                        | The pay rate for the employee                                                                             | 40.00                                                                                                     |
 | `remoteEmployeeId`                                                                                        | *string*                                                                                                  | :heavy_minus_sign:                                                                                        | Provider's unique identifier of the employee associated with this employment                              | e3cb75bf-aa84-466e-a6c1-b8322b257a48                                                                      |
 | `remoteId`                                                                                                | *string*                                                                                                  | :heavy_minus_sign:                                                                                        | Provider's unique identifier                                                                              | 8187e5da-dc77-475e-9949-af0f1fa4e4e3                                                                      |

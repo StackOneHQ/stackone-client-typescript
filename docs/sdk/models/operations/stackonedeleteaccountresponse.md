@@ -7,7 +7,7 @@ import { StackoneDeleteAccountResponse } from "@stackone/stackone-client-ts/sdk/
 
 let value: StackoneDeleteAccountResponse = {
   contentType: "<value>",
-  statusCode: 548814,
+  statusCode: 306,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

@@ -20,20 +20,18 @@ let value: HrisListEmployeeEmploymentsResponse = {
         employeeId: "1687-3",
         employmentContractType: {},
         employmentType: {
-          sourceValue: Permanent,
+          sourceValue: "Permanent",
           value: EmploymentSchemasValue.Permanent,
         },
         id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         jobTitle: "Software Engineer",
         payCurrency: "USD",
         payFrequency: {
-          sourceValue: [
-            "Hourly",
-          ],
+          sourceValue: "Hourly",
           value: EmploymentSchemasPayFrequencyValue.Hourly,
         },
         payPeriod: {
-          sourceValue: {},
+          sourceValue: "Hour",
           value: EmploymentSchemasPayPeriodValue.Hour,
         },
         payRate: "40.00",
@@ -47,7 +45,7 @@ let value: HrisListEmployeeEmploymentsResponse = {
       },
     ],
   },
-  statusCode: 748664,
+  statusCode: 206,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

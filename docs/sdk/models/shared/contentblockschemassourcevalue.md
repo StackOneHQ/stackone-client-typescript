@@ -7,7 +7,7 @@ The source value of the type.
 ```typescript
 import { ContentBlockSchemasSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: ContentBlockSchemasSourceValue = text;
+let value: ContentBlockSchemasSourceValue = "text";
 ```
 
 ## Supported Types

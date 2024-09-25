@@ -7,9 +7,7 @@ The source value of the location type.
 ```typescript
 import { EmployeeSchemasWorkLocationLocationTypeSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: EmployeeSchemasWorkLocationLocationTypeSourceValue = [
-  "Home",
-];
+let value: EmployeeSchemasWorkLocationLocationTypeSourceValue = "Home";
 ```
 
 ## Supported Types

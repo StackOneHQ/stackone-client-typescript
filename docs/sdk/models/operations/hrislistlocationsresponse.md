@@ -19,9 +19,7 @@ let value: HrisListLocationsResponse = {
         employeeId: "1687-3",
         id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         locationType: {
-          sourceValue: [
-            "Home",
-          ],
+          sourceValue: "Home",
           value: HRISLocationSchemasValue.Home,
         },
         name: "Woolsthorpe Manor",
@@ -40,7 +38,7 @@ let value: HrisListLocationsResponse = {
       },
     ],
   },
-  statusCode: 941378,
+  statusCode: 507,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

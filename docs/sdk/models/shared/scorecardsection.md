@@ -12,7 +12,7 @@ let value: ScorecardSection = {
       label: "Problem Solving",
       remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
       required: true,
-      type: FieldType.Boolean,
+      type: FieldType.UnmappedValue,
       values: [
         "Excellent",
         "Good",

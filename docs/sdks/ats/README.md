@@ -8,6 +8,7 @@
 * [createApplication](#createapplication) - Create Application
 * [createCandidate](#createcandidate) - Create Candidate
 * [createCandidateNote](#createcandidatenote) - Create Candidate Note
+* [createJob](#createjob) - Create Job
 * [createOffer](#createoffer) - Creates an offer
 * [downloadApplicationDocument](#downloadapplicationdocument) - Download Application Document
 * [getApplication](#getapplication) - Get Application
@@ -58,6 +59,7 @@
 * [rejectApplication](#rejectapplication) - Reject Application
 * [updateApplication](#updateapplication) - Update an Application
 * [updateCandidate](#updatecandidate) - Update Candidate
+* [updateJob](#updatejob) - Update Job
 * [uploadApplicationDocument](#uploadapplicationdocument) - Upload Application Document
 
 ## createApplication
@@ -68,7 +70,7 @@ Create Application
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
-import { AnswerValue, AtsCreateApplicationRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { AtsCreateApplicationRequestDtoValue, CreateAnswerValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 const stackOne = new StackOne({
   security: {
@@ -93,7 +95,7 @@ async function run() {
             name: "Training Completion Status",
             remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
             remoteValueId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
-            value: true,
+            value: "Completed",
             valueId: "value_456",
           },
         ],
@@ -129,10 +131,9 @@ async function run() {
           answers: [
             {
               id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-              remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
               type: {
                 sourceValue: "Short Text",
-                value: AnswerValue.ShortText,
+                value: CreateAnswerValue.ShortText,
               },
               values: [
                 "Yes",
@@ -144,20 +145,18 @@ async function run() {
             },
           ],
           id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         },
       ],
       source: {
         id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         name: "LinkedIn",
-        remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
       },
     },
     xAccountId: "<value>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -170,7 +169,7 @@ The standalone function version of this method:
 ```typescript
 import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
 import { atsCreateApplication } from "@stackone/stackone-client-ts/funcs/atsCreateApplication.js";
-import { AnswerValue, AtsCreateApplicationRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { AtsCreateApplicationRequestDtoValue, CreateAnswerValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 // Use `StackOneCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -197,9 +196,7 @@ async function run() {
             name: "Training Completion Status",
             remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
             remoteValueId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
-            value: [
-              "Completed",
-            ],
+            value: "Completed",
             valueId: "value_456",
           },
         ],
@@ -235,10 +232,9 @@ async function run() {
           answers: [
             {
               id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-              remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
               type: {
                 sourceValue: "Short Text",
-                value: AnswerValue.ShortText,
+                value: CreateAnswerValue.ShortText,
               },
               values: [
                 "Yes",
@@ -250,13 +246,11 @@ async function run() {
             },
           ],
           id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         },
       ],
       source: {
         id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         name: "LinkedIn",
-        remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
       },
     },
     xAccountId: "<value>",
@@ -269,7 +263,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -322,7 +316,7 @@ async function run() {
           name: "Training Completion Status",
           remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
           remoteValueId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
-          value: Completed,
+          value: "Completed",
           valueId: "value_456",
         },
       ],
@@ -349,9 +343,9 @@ async function run() {
     },
     xAccountId: "<value>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -385,7 +379,7 @@ async function run() {
           name: "Training Completion Status",
           remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
           remoteValueId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
-          value: {},
+          value: "Completed",
           valueId: "value_456",
         },
       ],
@@ -420,7 +414,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -483,9 +477,9 @@ async function run() {
     id: "<id>",
     xAccountId: "<value>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -537,7 +531,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -555,6 +549,237 @@ run();
 ### Response
 
 **Promise\<[operations.AtsCreateCandidateNoteResponse](../../sdk/models/operations/atscreatecandidatenoteresponse.md)\>**
+
+### Errors
+
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
+
+
+## createJob
+
+Create Job
+
+### Example Usage
+
+```typescript
+import { StackOne } from "@stackone/stackone-client-ts";
+import { AtsCreateJobRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+const stackOne = new StackOne({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const result = await stackOne.ats.createJob({
+    atsCreateJobRequestDto: {
+      code: "184919",
+      customFields: [
+        {
+          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          name: "Training Completion Status",
+          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          remoteValueId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
+          value: "Completed",
+          valueId: "value_456",
+        },
+        {
+          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          name: "Training Completion Status",
+          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          remoteValueId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
+          value: "Completed",
+          valueId: "value_456",
+        },
+        {
+          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          name: "Training Completion Status",
+          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          remoteValueId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
+          value: "Completed",
+          valueId: "value_456",
+        },
+      ],
+      departmentIds: [
+        "308570",
+        "308571",
+        "308572",
+      ],
+      hiringTeam: [
+        {
+          email: "john.doe@gmail.com",
+          firstName: "John",
+          lastName: "Doe",
+          remoteUserId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
+          role: "Software Engineer",
+          userId: "123456",
+        },
+      ],
+      interviewStages: [
+        {
+          createdAt: new Date("2021-01-01T01:01:01.000Z"),
+          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          unifiedCustomFields: {
+            "my_project_custom_field_1": "REF-1236",
+            "my_project_custom_field_2": "some other value",
+          },
+          updatedAt: new Date("2021-01-01T01:01:01.000Z"),
+        },
+      ],
+      jobStatus: {
+        sourceValue: "Published",
+        value: AtsCreateJobRequestDtoValue.Published,
+      },
+      locationIds: [
+        "668570",
+        "678571",
+        "688572",
+      ],
+      passthrough: {
+        "other_known_names": "John Doe",
+      },
+      title: "Software Engineer",
+      unifiedCustomFields: {
+        "my_project_custom_field_1": "REF-1236",
+        "my_project_custom_field_2": "some other value",
+      },
+    },
+    xAccountId: "<value>",
+  });
+
+  // Handle the result
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
+import { atsCreateJob } from "@stackone/stackone-client-ts/funcs/atsCreateJob.js";
+import { AtsCreateJobRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+// Use `StackOneCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const stackOne = new StackOneCore({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const res = await atsCreateJob(stackOne, {
+    atsCreateJobRequestDto: {
+      code: "184919",
+      customFields: [
+        {
+          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          name: "Training Completion Status",
+          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          remoteValueId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
+          value: "Completed",
+          valueId: "value_456",
+        },
+        {
+          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          name: "Training Completion Status",
+          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          remoteValueId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
+          value: "Completed",
+          valueId: "value_456",
+        },
+        {
+          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          name: "Training Completion Status",
+          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          remoteValueId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
+          value: "Completed",
+          valueId: "value_456",
+        },
+      ],
+      departmentIds: [
+        "308570",
+        "308571",
+        "308572",
+      ],
+      hiringTeam: [
+        {
+          email: "john.doe@gmail.com",
+          firstName: "John",
+          lastName: "Doe",
+          remoteUserId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
+          role: "Software Engineer",
+          userId: "123456",
+        },
+      ],
+      interviewStages: [
+        {
+          createdAt: new Date("2021-01-01T01:01:01.000Z"),
+          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          unifiedCustomFields: {
+            "my_project_custom_field_1": "REF-1236",
+            "my_project_custom_field_2": "some other value",
+          },
+          updatedAt: new Date("2021-01-01T01:01:01.000Z"),
+        },
+      ],
+      jobStatus: {
+        sourceValue: "Published",
+        value: AtsCreateJobRequestDtoValue.Published,
+      },
+      locationIds: [
+        "668570",
+        "678571",
+        "688572",
+      ],
+      passthrough: {
+        "other_known_names": "John Doe",
+      },
+      title: "Software Engineer",
+      unifiedCustomFields: {
+        "my_project_custom_field_1": "REF-1236",
+        "my_project_custom_field_2": "some other value",
+      },
+    },
+    xAccountId: "<value>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.AtsCreateJobRequest](../../sdk/models/operations/atscreatejobrequest.md)                                                                                           | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[operations.AtsCreateJobResponse](../../sdk/models/operations/atscreatejobresponse.md)\>**
 
 ### Errors
 
@@ -601,9 +826,9 @@ async function run() {
     },
     xAccountId: "<value>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -656,7 +881,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -705,9 +930,9 @@ async function run() {
     subResourceId: "<value>",
     xAccountId: "<value>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -745,7 +970,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -795,9 +1020,9 @@ async function run() {
     include: "attachments,custom_fields",
     xAccountId: "<value>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -836,7 +1061,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -888,9 +1113,9 @@ async function run() {
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -931,7 +1156,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -980,9 +1205,9 @@ async function run() {
     subResourceId: "<value>",
     xAccountId: "<value>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -1020,7 +1245,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -1069,9 +1294,9 @@ async function run() {
     subResourceId: "<value>",
     xAccountId: "<value>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -1109,7 +1334,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -1158,9 +1383,9 @@ async function run() {
     subResourceId: "<value>",
     xAccountId: "<value>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -1198,7 +1423,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -1247,9 +1472,9 @@ async function run() {
     subResourceId: "<value>",
     xAccountId: "<value>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -1287,7 +1512,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -1334,9 +1559,9 @@ async function run() {
     id: "<id>",
     xAccountId: "<value>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -1372,7 +1597,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -1420,9 +1645,9 @@ async function run() {
     id: "<id>",
     xAccountId: "<value>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -1459,7 +1684,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -1507,9 +1732,9 @@ async function run() {
     id: "<id>",
     xAccountId: "<value>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -1546,7 +1771,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -1595,9 +1820,9 @@ async function run() {
     include: "custom_fields",
     xAccountId: "<value>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -1635,7 +1860,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -1687,9 +1912,9 @@ async function run() {
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -1730,7 +1955,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -1779,9 +2004,9 @@ async function run() {
     subResourceId: "<value>",
     xAccountId: "<value>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -1819,7 +2044,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -1867,9 +2092,9 @@ async function run() {
     id: "<id>",
     xAccountId: "<value>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -1906,7 +2131,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -1954,9 +2179,9 @@ async function run() {
     id: "<id>",
     xAccountId: "<value>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -1993,7 +2218,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -2041,9 +2266,9 @@ async function run() {
     id: "<id>",
     xAccountId: "<value>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -2080,7 +2305,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -2130,9 +2355,9 @@ async function run() {
     include: "custom_fields",
     xAccountId: "<value>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -2171,7 +2396,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -2223,9 +2448,9 @@ async function run() {
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -2266,7 +2491,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -2315,9 +2540,9 @@ async function run() {
     include: "questionnaires",
     xAccountId: "<value>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -2355,7 +2580,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -2403,9 +2628,9 @@ async function run() {
     id: "<id>",
     xAccountId: "<value>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -2442,7 +2667,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -2490,9 +2715,9 @@ async function run() {
     id: "<id>",
     xAccountId: "<value>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -2529,7 +2754,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -2577,9 +2802,9 @@ async function run() {
     id: "<id>",
     xAccountId: "<value>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -2616,7 +2841,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -2664,9 +2889,9 @@ async function run() {
     id: "<id>",
     xAccountId: "<value>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -2703,7 +2928,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -2751,9 +2976,9 @@ async function run() {
     id: "<id>",
     xAccountId: "<value>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -2790,7 +3015,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -2841,9 +3066,9 @@ async function run() {
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -2883,7 +3108,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -2935,9 +3160,9 @@ async function run() {
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -2978,7 +3203,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -3030,9 +3255,9 @@ async function run() {
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -3073,7 +3298,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -3127,9 +3352,9 @@ async function run() {
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -3172,7 +3397,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -3224,9 +3449,9 @@ async function run() {
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -3267,7 +3492,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -3319,9 +3544,9 @@ async function run() {
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -3362,7 +3587,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -3412,9 +3637,9 @@ async function run() {
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -3453,7 +3678,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -3504,9 +3729,9 @@ async function run() {
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -3546,7 +3771,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -3598,9 +3823,9 @@ async function run() {
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -3641,7 +3866,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -3693,9 +3918,9 @@ async function run() {
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -3736,7 +3961,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -3787,9 +4012,9 @@ async function run() {
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -3829,7 +4054,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -3880,9 +4105,9 @@ async function run() {
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -3922,7 +4147,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -3973,9 +4198,9 @@ async function run() {
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -4015,7 +4240,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -4066,9 +4291,9 @@ async function run() {
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -4108,7 +4333,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -4160,9 +4385,9 @@ async function run() {
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -4203,7 +4428,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -4256,9 +4481,9 @@ async function run() {
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -4300,7 +4525,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -4351,9 +4576,9 @@ async function run() {
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -4393,7 +4618,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -4444,9 +4669,9 @@ async function run() {
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -4486,7 +4711,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -4537,9 +4762,9 @@ async function run() {
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -4579,7 +4804,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -4630,9 +4855,9 @@ async function run() {
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -4672,7 +4897,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -4723,9 +4948,9 @@ async function run() {
     updatedAfter: "2020-01-01T00:00:00.000Z",
     xAccountId: "<value>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -4765,7 +4990,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -4818,9 +5043,9 @@ async function run() {
     id: "<id>",
     xAccountId: "<value>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -4862,7 +5087,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -4915,9 +5140,9 @@ async function run() {
     id: "<id>",
     xAccountId: "<value>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -4959,7 +5184,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -5015,7 +5240,7 @@ async function run() {
           name: "Training Completion Status",
           remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
           remoteValueId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
-          value: Completed,
+          value: "Completed",
           valueId: "value_456",
         },
       ],
@@ -5027,15 +5252,14 @@ async function run() {
       source: {
         id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         name: "LinkedIn",
-        remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
       },
     },
     id: "<id>",
     xAccountId: "<value>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -5072,9 +5296,7 @@ async function run() {
           name: "Training Completion Status",
           remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
           remoteValueId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
-          value: [
-            "Completed",
-          ],
+          value: "Completed",
           valueId: "value_456",
         },
       ],
@@ -5086,7 +5308,6 @@ async function run() {
       source: {
         id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         name: "LinkedIn",
-        remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
       },
     },
     id: "<id>",
@@ -5100,7 +5321,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -5157,9 +5378,7 @@ async function run() {
           name: "Training Completion Status",
           remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
           remoteValueId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
-          value: [
-            "Completed",
-          ],
+          value: "Completed",
           valueId: "value_456",
         },
       ],
@@ -5197,9 +5416,9 @@ async function run() {
     id: "<id>",
     xAccountId: "<value>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -5237,7 +5456,7 @@ async function run() {
           name: "Training Completion Status",
           remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
           remoteValueId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
-          value: Completed,
+          value: "Completed",
           valueId: "value_456",
         },
       ],
@@ -5283,7 +5502,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -5301,6 +5520,223 @@ run();
 ### Response
 
 **Promise\<[operations.AtsUpdateCandidateResponse](../../sdk/models/operations/atsupdatecandidateresponse.md)\>**
+
+### Errors
+
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
+
+
+## updateJob
+
+Update Job
+
+### Example Usage
+
+```typescript
+import { StackOne } from "@stackone/stackone-client-ts";
+import { AtsUpdateJobRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+const stackOne = new StackOne({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const result = await stackOne.ats.updateJob({
+    atsUpdateJobRequestDto: {
+      code: "184919",
+      customFields: [
+        {
+          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          name: "Training Completion Status",
+          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          remoteValueId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
+          value: "Completed",
+          valueId: "value_456",
+        },
+      ],
+      departmentIds: [
+        "308570",
+        "308571",
+        "308572",
+      ],
+      hiringTeam: [
+        {
+          email: "john.doe@gmail.com",
+          firstName: "John",
+          lastName: "Doe",
+          remoteUserId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
+          role: "Software Engineer",
+          userId: "123456",
+        },
+        {
+          email: "john.doe@gmail.com",
+          firstName: "John",
+          lastName: "Doe",
+          remoteUserId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
+          role: "Software Engineer",
+          userId: "123456",
+        },
+      ],
+      interviewStages: [
+        {
+          createdAt: new Date("2021-01-01T01:01:01.000Z"),
+          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          unifiedCustomFields: {
+            "my_project_custom_field_1": "REF-1236",
+            "my_project_custom_field_2": "some other value",
+          },
+          updatedAt: new Date("2021-01-01T01:01:01.000Z"),
+        },
+      ],
+      jobStatus: {
+        sourceValue: "Published",
+        value: AtsUpdateJobRequestDtoValue.Published,
+      },
+      locationIds: [
+        "668570",
+        "678571",
+        "688572",
+      ],
+      passthrough: {
+        "other_known_names": "John Doe",
+      },
+      title: "Software Engineer",
+      unifiedCustomFields: {
+        "my_project_custom_field_1": "REF-1236",
+        "my_project_custom_field_2": "some other value",
+      },
+    },
+    id: "<id>",
+    xAccountId: "<value>",
+  });
+
+  // Handle the result
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
+import { atsUpdateJob } from "@stackone/stackone-client-ts/funcs/atsUpdateJob.js";
+import { AtsUpdateJobRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+// Use `StackOneCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const stackOne = new StackOneCore({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const res = await atsUpdateJob(stackOne, {
+    atsUpdateJobRequestDto: {
+      code: "184919",
+      customFields: [
+        {
+          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          name: "Training Completion Status",
+          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          remoteValueId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
+          value: "Completed",
+          valueId: "value_456",
+        },
+      ],
+      departmentIds: [
+        "308570",
+        "308571",
+        "308572",
+      ],
+      hiringTeam: [
+        {
+          email: "john.doe@gmail.com",
+          firstName: "John",
+          lastName: "Doe",
+          remoteUserId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
+          role: "Software Engineer",
+          userId: "123456",
+        },
+        {
+          email: "john.doe@gmail.com",
+          firstName: "John",
+          lastName: "Doe",
+          remoteUserId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
+          role: "Software Engineer",
+          userId: "123456",
+        },
+      ],
+      interviewStages: [
+        {
+          createdAt: new Date("2021-01-01T01:01:01.000Z"),
+          id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          unifiedCustomFields: {
+            "my_project_custom_field_1": "REF-1236",
+            "my_project_custom_field_2": "some other value",
+          },
+          updatedAt: new Date("2021-01-01T01:01:01.000Z"),
+        },
+      ],
+      jobStatus: {
+        sourceValue: "Published",
+        value: AtsUpdateJobRequestDtoValue.Published,
+      },
+      locationIds: [
+        "668570",
+        "678571",
+        "688572",
+      ],
+      passthrough: {
+        "other_known_names": "John Doe",
+      },
+      title: "Software Engineer",
+      unifiedCustomFields: {
+        "my_project_custom_field_1": "REF-1236",
+        "my_project_custom_field_2": "some other value",
+      },
+    },
+    id: "<id>",
+    xAccountId: "<value>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.AtsUpdateJobRequest](../../sdk/models/operations/atsupdatejobrequest.md)                                                                                           | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[operations.AtsUpdateJobResponse](../../sdk/models/operations/atsupdatejobresponse.md)\>**
 
 ### Errors
 
@@ -5349,9 +5785,9 @@ async function run() {
     id: "<id>",
     xAccountId: "<value>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -5406,7 +5842,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();

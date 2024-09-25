@@ -7,7 +7,7 @@ The source value of the interview type.
 ```typescript
 import { InterviewPartSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: InterviewPartSourceValue = Onsite Interview;
+let value: InterviewPartSourceValue = "Onsite Interview";
 ```
 
 ## Supported Types

@@ -7,7 +7,7 @@ import { HrisUploadEmployeeDocumentResponse } from "@stackone/stackone-client-ts
 
 let value: HrisUploadEmployeeDocumentResponse = {
   contentType: "<value>",
-  statusCode: 511319,
+  statusCode: 204,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

@@ -31,9 +31,9 @@ async function run() {
   const result = await stackOne.accounts.deleteAccount({
     id: "<id>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -68,7 +68,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -114,9 +114,9 @@ async function run() {
   const result = await stackOne.accounts.getAccount({
     id: "<id>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -151,7 +151,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -197,9 +197,9 @@ async function run() {
   const result = await stackOne.accounts.getAccountMetaInfo({
     id: "<id>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -234,7 +234,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -278,9 +278,9 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.accounts.listLinkedAccounts({});
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -313,7 +313,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -360,9 +360,9 @@ async function run() {
     patchAccountExternalDto: {},
     id: "<id>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -398,7 +398,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();

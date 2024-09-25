@@ -7,7 +7,7 @@ The value associated with the custom field.
 ```typescript
 import { Value } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: Value = true;
+let value: Value = "Completed";
 ```
 
 ## Supported Types

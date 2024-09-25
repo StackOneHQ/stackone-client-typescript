@@ -5,7 +5,7 @@
 ```typescript
 import { IamMfaTypeEnumSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: IamMfaTypeEnumSourceValue = 6002.13;
+let value: IamMfaTypeEnumSourceValue = 9241.59;
 ```
 
 ## Supported Types

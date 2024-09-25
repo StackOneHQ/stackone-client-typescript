@@ -14,7 +14,7 @@ import {
 let value: ApplicationResult = {
   data: {
     applicationStatus: {
-      sourceValue: true,
+      sourceValue: "Hired",
       value: ApplicationValue.Hired,
     },
     candidate: {
@@ -50,7 +50,7 @@ let value: ApplicationResult = {
         name: "Training Completion Status",
         remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         remoteValueId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
-        value: true,
+        value: "Completed",
         valueId: "value_456",
       },
     ],
@@ -60,7 +60,7 @@ let value: ApplicationResult = {
         categoryId: "6530",
         createdAt: new Date("2021-01-01T01:01:01.000Z"),
         fileFormat: {
-          sourceValue: true,
+          sourceValue: "abc",
           value: AtsDocumentApiModelValue.Pdf,
         },
         id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
@@ -99,7 +99,7 @@ let value: ApplicationResult = {
             id: "answer1",
             remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
             type: {
-              sourceValue: Short Text,
+              sourceValue: "Short Text",
               value: AnswerValue.ShortText,
             },
             values: [
@@ -120,7 +120,7 @@ let value: ApplicationResult = {
         id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         label: "Failed Phone Screen",
         rejectedReasonType: {
-          sourceValue: {},
+          sourceValue: "RejectedByOrg",
           value: RejectedReasonValue.RejectedByOrganization,
         },
         remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",

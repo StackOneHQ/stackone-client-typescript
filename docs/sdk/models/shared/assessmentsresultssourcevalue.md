@@ -7,7 +7,7 @@ The source value of the assessment result.
 ```typescript
 import { AssessmentsResultsSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: AssessmentsResultsSourceValue = Passed;
+let value: AssessmentsResultsSourceValue = "Passed";
 ```
 
 ## Supported Types

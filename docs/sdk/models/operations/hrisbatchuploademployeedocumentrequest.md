@@ -20,13 +20,13 @@ let value: HrisBatchUploadEmployeeDocumentRequest = {
         },
         categoryId: "6530",
         confidential: {
-          sourceValue: public,
+          sourceValue: "public",
           value: HrisDocumentsUploadRequestDtoSchemasValue.True,
         },
         content:
           "VGhpcyBpc24ndCByZWFsbHkgYSBzYW1wbGUgZmlsZSwgYnV0IG5vIG9uZSB3aWxsIGV2ZXIga25vdyE",
         fileFormat: {
-          sourceValue: abc,
+          sourceValue: "abc",
           value: HrisDocumentsUploadRequestDtoSchemasFileFormatValue.Pdf,
         },
         name: "weather-forecast",

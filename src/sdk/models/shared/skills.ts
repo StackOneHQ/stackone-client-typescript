@@ -4,6 +4,41 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import {
+  catchUnrecognizedEnum,
+  OpenEnum,
+  Unrecognized,
+} from "../../types/enums.js";
+
+export type Skills4 = {};
+
+export type SkillsSourceValue =
+  | Skills4
+  | string
+  | number
+  | boolean
+  | Array<any>;
+
+export enum SkillsValue {
+  Primary = "primary",
+  Secondary = "secondary",
+}
+export type SkillsValueOpen = OpenEnum<typeof SkillsValue>;
+
+/**
+ * The hierarchal level of the skill
+ */
+export type Level = {
+  sourceValue?:
+    | Skills4
+    | string
+    | number
+    | boolean
+    | Array<any>
+    | null
+    | undefined;
+  value?: SkillsValueOpen | null | undefined;
+};
 
 export type Skills = {
   /**
@@ -15,6 +50,10 @@ export type Skills = {
    */
   id?: string | null | undefined;
   /**
+   * The hierarchal level of the skill
+   */
+  level?: Level | null | undefined;
+  /**
    * The name associated with this skill
    */
   name?: string | null | undefined;
@@ -25,10 +64,184 @@ export type Skills = {
 };
 
 /** @internal */
+export const Skills4$inboundSchema: z.ZodType<Skills4, z.ZodTypeDef, unknown> =
+  z.object({});
+
+/** @internal */
+export type Skills4$Outbound = {};
+
+/** @internal */
+export const Skills4$outboundSchema: z.ZodType<
+  Skills4$Outbound,
+  z.ZodTypeDef,
+  Skills4
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace Skills4$ {
+  /** @deprecated use `Skills4$inboundSchema` instead. */
+  export const inboundSchema = Skills4$inboundSchema;
+  /** @deprecated use `Skills4$outboundSchema` instead. */
+  export const outboundSchema = Skills4$outboundSchema;
+  /** @deprecated use `Skills4$Outbound` instead. */
+  export type Outbound = Skills4$Outbound;
+}
+
+/** @internal */
+export const SkillsSourceValue$inboundSchema: z.ZodType<
+  SkillsSourceValue,
+  z.ZodTypeDef,
+  unknown
+> = z.union([
+  z.lazy(() => Skills4$inboundSchema),
+  z.string(),
+  z.number(),
+  z.boolean(),
+  z.array(z.any()),
+]);
+
+/** @internal */
+export type SkillsSourceValue$Outbound =
+  | Skills4$Outbound
+  | string
+  | number
+  | boolean
+  | Array<any>;
+
+/** @internal */
+export const SkillsSourceValue$outboundSchema: z.ZodType<
+  SkillsSourceValue$Outbound,
+  z.ZodTypeDef,
+  SkillsSourceValue
+> = z.union([
+  z.lazy(() => Skills4$outboundSchema),
+  z.string(),
+  z.number(),
+  z.boolean(),
+  z.array(z.any()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace SkillsSourceValue$ {
+  /** @deprecated use `SkillsSourceValue$inboundSchema` instead. */
+  export const inboundSchema = SkillsSourceValue$inboundSchema;
+  /** @deprecated use `SkillsSourceValue$outboundSchema` instead. */
+  export const outboundSchema = SkillsSourceValue$outboundSchema;
+  /** @deprecated use `SkillsSourceValue$Outbound` instead. */
+  export type Outbound = SkillsSourceValue$Outbound;
+}
+
+/** @internal */
+export const SkillsValue$inboundSchema: z.ZodType<
+  SkillsValueOpen,
+  z.ZodTypeDef,
+  unknown
+> = z
+  .union([
+    z.nativeEnum(SkillsValue),
+    z.string().transform(catchUnrecognizedEnum),
+  ]);
+
+/** @internal */
+export const SkillsValue$outboundSchema: z.ZodType<
+  SkillsValueOpen,
+  z.ZodTypeDef,
+  SkillsValueOpen
+> = z.union([
+  z.nativeEnum(SkillsValue),
+  z.string().and(z.custom<Unrecognized<string>>()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace SkillsValue$ {
+  /** @deprecated use `SkillsValue$inboundSchema` instead. */
+  export const inboundSchema = SkillsValue$inboundSchema;
+  /** @deprecated use `SkillsValue$outboundSchema` instead. */
+  export const outboundSchema = SkillsValue$outboundSchema;
+}
+
+/** @internal */
+export const Level$inboundSchema: z.ZodType<Level, z.ZodTypeDef, unknown> = z
+  .object({
+    source_value: z.nullable(
+      z.union([
+        z.lazy(() => Skills4$inboundSchema),
+        z.string(),
+        z.number(),
+        z.boolean(),
+        z.array(z.any()),
+      ]),
+    ).optional(),
+    value: z.nullable(SkillsValue$inboundSchema).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "source_value": "sourceValue",
+    });
+  });
+
+/** @internal */
+export type Level$Outbound = {
+  source_value?:
+    | Skills4$Outbound
+    | string
+    | number
+    | boolean
+    | Array<any>
+    | null
+    | undefined;
+  value?: string | null | undefined;
+};
+
+/** @internal */
+export const Level$outboundSchema: z.ZodType<
+  Level$Outbound,
+  z.ZodTypeDef,
+  Level
+> = z.object({
+  sourceValue: z.nullable(
+    z.union([
+      z.lazy(() => Skills4$outboundSchema),
+      z.string(),
+      z.number(),
+      z.boolean(),
+      z.array(z.any()),
+    ]),
+  ).optional(),
+  value: z.nullable(SkillsValue$outboundSchema).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    sourceValue: "source_value",
+  });
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace Level$ {
+  /** @deprecated use `Level$inboundSchema` instead. */
+  export const inboundSchema = Level$inboundSchema;
+  /** @deprecated use `Level$outboundSchema` instead. */
+  export const outboundSchema = Level$outboundSchema;
+  /** @deprecated use `Level$Outbound` instead. */
+  export type Outbound = Level$Outbound;
+}
+
+/** @internal */
 export const Skills$inboundSchema: z.ZodType<Skills, z.ZodTypeDef, unknown> = z
   .object({
     active: z.nullable(z.boolean()).optional(),
     id: z.nullable(z.string()).optional(),
+    level: z.nullable(z.lazy(() => Level$inboundSchema)).optional(),
     name: z.nullable(z.string()).optional(),
     remote_id: z.nullable(z.string()).optional(),
   }).transform((v) => {
@@ -41,6 +254,7 @@ export const Skills$inboundSchema: z.ZodType<Skills, z.ZodTypeDef, unknown> = z
 export type Skills$Outbound = {
   active?: boolean | null | undefined;
   id?: string | null | undefined;
+  level?: Level$Outbound | null | undefined;
   name?: string | null | undefined;
   remote_id?: string | null | undefined;
 };
@@ -53,6 +267,7 @@ export const Skills$outboundSchema: z.ZodType<
 > = z.object({
   active: z.nullable(z.boolean()).optional(),
   id: z.nullable(z.string()).optional(),
+  level: z.nullable(z.lazy(() => Level$outboundSchema)).optional(),
   name: z.nullable(z.string()).optional(),
   remoteId: z.nullable(z.string()).optional(),
 }).transform((v) => {

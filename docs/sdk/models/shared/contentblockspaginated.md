@@ -16,8 +16,8 @@ let value: ContentBlocksPaginated = {
         value: ContentBlockValue.Live,
       },
       type: {
-        sourceValue: text,
-        value: ContentBlockSchemasValue.Text,
+        sourceValue: "text",
+        value: ContentBlockSchemasValue.Image,
       },
       updatedAt: new Date("2021-01-01T00:00:00.000Z"),
     },

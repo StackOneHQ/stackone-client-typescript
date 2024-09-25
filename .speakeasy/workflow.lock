@@ -1,9 +1,9 @@
-speakeasyVersion: 1.401.2
+speakeasyVersion: 1.402.14
 sources:
     my-source:
         sourceNamespace: my-source
-        sourceRevisionDigest: sha256:428ae41226bbf79d6bd1cd39c59392ca5b45de2ab79403692e4ba78d222ab679
-        sourceBlobDigest: sha256:73cf054f212065a8304425932dc56d31f8f793ec6893ee6524855fb8baa5c0be
+        sourceRevisionDigest: sha256:c33e3c2d15871bba70877d1237e113773b17cf2f90297703b947936428ab7339
+        sourceBlobDigest: sha256:1832fd01c230697b4afd939405ea95784c3089d2c51ca22ba420bb394f2f0522
         tags:
             - latest
             - main
@@ -11,8 +11,8 @@ targets:
     StackOneTypeScriptClient:
         source: my-source
         sourceNamespace: my-source
-        sourceRevisionDigest: sha256:428ae41226bbf79d6bd1cd39c59392ca5b45de2ab79403692e4ba78d222ab679
-        sourceBlobDigest: sha256:73cf054f212065a8304425932dc56d31f8f793ec6893ee6524855fb8baa5c0be
+        sourceRevisionDigest: sha256:c33e3c2d15871bba70877d1237e113773b17cf2f90297703b947936428ab7339
+        sourceBlobDigest: sha256:1832fd01c230697b4afd939405ea95784c3089d2c51ca22ba420bb394f2f0522
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest

@@ -7,9 +7,7 @@ The source value of the schedule type.
 ```typescript
 import { CampaignSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: CampaignSourceValue = [
-  "Immediate",
-];
+let value: CampaignSourceValue = "Immediate";
 ```
 
 ## Supported Types

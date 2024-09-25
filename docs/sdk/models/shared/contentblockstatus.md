@@ -8,7 +8,7 @@ Stackone enum identifying the status of content block.
 import { ContentBlockStatus, ContentBlockValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: ContentBlockStatus = {
-  sourceValue: active,
+  sourceValue: "active",
   value: ContentBlockValue.Live,
 };
 ```

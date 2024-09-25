@@ -55,7 +55,7 @@ let value: IamListRolesResponse = {
       },
     ],
   },
-  statusCode: 81101,
+  statusCode: 226,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

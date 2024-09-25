@@ -8,7 +8,7 @@ The file format of the file
 import { AtsDocumentApiModelValue, FileFormat } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: FileFormat = {
-  sourceValue: abc,
+  sourceValue: "abc",
   value: AtsDocumentApiModelValue.Pdf,
 };
 ```

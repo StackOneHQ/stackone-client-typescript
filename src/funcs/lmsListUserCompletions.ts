@@ -71,9 +71,7 @@ export async function lmsListUserCompletions(
     "page_size": payload.page_size,
     "proxy": payload.proxy,
     "raw": payload.raw,
-    "remote_user_id": payload.remote_user_id,
     "updated_after": payload.updated_after,
-    "user_id": payload.user_id,
   });
 
   const headers = new Headers({

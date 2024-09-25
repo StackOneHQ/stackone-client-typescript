@@ -7,7 +7,7 @@ import { StackoneListLinkedAccountsResponse } from "@stackone/stackone-client-ts
 
 let value: StackoneListLinkedAccountsResponse = {
   contentType: "<value>",
-  statusCode: 544883,
+  statusCode: 308,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

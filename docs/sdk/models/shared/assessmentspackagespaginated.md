@@ -14,9 +14,7 @@ let value: AssessmentsPackagesPaginated = {
       name: "Skill Assessment",
       remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
       type: {
-        sourceValue: [
-          "key_responsibilities",
-        ],
+        sourceValue: "key_responsibilities",
         value: AssessmentsPackagesValue.Responsibilities,
       },
     },

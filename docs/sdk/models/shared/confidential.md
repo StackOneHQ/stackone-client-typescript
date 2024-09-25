@@ -1,21 +1,21 @@
 # Confidential
 
-The confidentiality level of the file to be uploaded
+Confidential status of the job
 
 ## Example Usage
 
 ```typescript
-import { Confidential, HrisDocumentsUploadRequestDtoSchemasValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { Confidential } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: Confidential = {
-  sourceValue: "public",
-  value: HrisDocumentsUploadRequestDtoSchemasValue.True,
-};
+let value: Confidential = Confidential.False;
 ```
 
-## Fields
+## Values
 
-| Field                                                                                                                       | Type                                                                                                                        | Required                                                                                                                    | Description                                                                                                                 | Example                                                                                                                     |
-| --------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
-| `sourceValue`                                                                                                               | *shared.HrisDocumentsUploadRequestDtoSourceValue*                                                                           | :heavy_minus_sign:                                                                                                          | N/A                                                                                                                         | public                                                                                                                      |
-| `value`                                                                                                                     | [shared.HrisDocumentsUploadRequestDtoSchemasValue](../../../sdk/models/shared/hrisdocumentsuploadrequestdtoschemasvalue.md) | :heavy_minus_sign:                                                                                                          | Whether the file is confidential or not                                                                                     | true                                                                                                                        |
+This is an open enum. Unrecognized values will be captured as the `Unrecognized<string>` branded type.
+
+| Name                   | Value                  |
+| ---------------------- | ---------------------- |
+| `True`                 | true                   |
+| `False`                | false                  |
+| -                      | `Unrecognized<string>` |

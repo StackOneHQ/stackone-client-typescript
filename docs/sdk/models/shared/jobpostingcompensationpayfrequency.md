@@ -6,7 +6,7 @@
 import { JobPostingCompensationPayFrequency, JobPostingCompensationValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: JobPostingCompensationPayFrequency = {
-  sourceValue: Hourly,
+  sourceValue: "Hourly",
   value: JobPostingCompensationValue.Hourly,
 };
 ```

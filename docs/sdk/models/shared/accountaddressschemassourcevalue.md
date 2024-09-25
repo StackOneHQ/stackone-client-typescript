@@ -7,7 +7,7 @@ The source value of the ISO 3166-1 alpha-2 code of the country.
 ```typescript
 import { AccountAddressSchemasSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: AccountAddressSchemasSourceValue = GB;
+let value: AccountAddressSchemasSourceValue = "GB";
 ```
 
 ## Supported Types

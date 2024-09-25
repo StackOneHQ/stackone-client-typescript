@@ -28,9 +28,9 @@ async function run() {
   const result = await stackOne.connectSessions.authenticateConnectSession({
     token: "<value>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -65,7 +65,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -123,9 +123,9 @@ async function run() {
     originOwnerId: "<value>",
     originOwnerName: "<value>",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -172,7 +172,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();

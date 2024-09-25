@@ -5,9 +5,9 @@ True if the start of the time off request begins half way through the day
 ## Example Usage
 
 ```typescript
-import { HrisCreateTimeOffRequestDtoSchemas2, StartHalfDay } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { StartHalfDay } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: StartHalfDay = HrisCreateTimeOffRequestDtoSchemas2.True;
+let value: StartHalfDay = true;
 ```
 
 ## Supported Types

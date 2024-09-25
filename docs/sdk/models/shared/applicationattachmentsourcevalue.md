@@ -7,7 +7,7 @@ The source value of the content type.
 ```typescript
 import { ApplicationAttachmentSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: ApplicationAttachmentSourceValue = Text;
+let value: ApplicationAttachmentSourceValue = "Text";
 ```
 
 ## Supported Types

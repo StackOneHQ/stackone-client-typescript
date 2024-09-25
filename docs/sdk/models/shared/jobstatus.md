@@ -5,17 +5,17 @@ Status of the job
 ## Example Usage
 
 ```typescript
-import { JobStatus, JobValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { AtsCreateJobRequestDtoValue, JobStatus } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: JobStatus = {
-  sourceValue: Published,
-  value: JobValue.Published,
+  sourceValue: "Published",
+  value: AtsCreateJobRequestDtoValue.Published,
 };
 ```
 
 ## Fields
 
-| Field                                                     | Type                                                      | Required                                                  | Description                                               | Example                                                   |
-| --------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------- |
-| `sourceValue`                                             | *shared.JobSourceValue*                                   | :heavy_minus_sign:                                        | The source value of the job status.                       | Published                                                 |
-| `value`                                                   | [shared.JobValue](../../../sdk/models/shared/jobvalue.md) | :heavy_minus_sign:                                        | The status of the job.                                    | published                                                 |
+| Field                                                                                           | Type                                                                                            | Required                                                                                        | Description                                                                                     | Example                                                                                         |
+| ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| `sourceValue`                                                                                   | *shared.AtsCreateJobRequestDtoSourceValue*                                                      | :heavy_minus_sign:                                                                              | The source value of the job status.                                                             | Published                                                                                       |
+| `value`                                                                                         | [shared.AtsCreateJobRequestDtoValue](../../../sdk/models/shared/atscreatejobrequestdtovalue.md) | :heavy_minus_sign:                                                                              | The status of the job.                                                                          | published                                                                                       |
