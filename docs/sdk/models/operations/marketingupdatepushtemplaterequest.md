@@ -21,7 +21,7 @@ let value: MarketingUpdatePushTemplateRequest = {
     },
   },
   id: "<id>",
-  xAccountId: "<value>",
+  xAccountId: "<id>",
 };
 ```
 

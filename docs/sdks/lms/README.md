@@ -541,7 +541,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.lms.getCategory({
-    fields: "id,remote_id,name,active",
+    fields: "id,remote_id,name,active,level",
     id: "<id>",
     xAccountId: "<value>",
   });
@@ -572,7 +572,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await lmsGetCategory(stackOne, {
-    fields: "id,remote_id,name,active",
+    fields: "id,remote_id,name,active,level",
     id: "<id>",
     xAccountId: "<value>",
   });
@@ -1332,7 +1332,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.lms.listCategories({
-    fields: "id,remote_id,name,active",
+    fields: "id,remote_id,name,active,level",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
@@ -1366,7 +1366,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await lmsListCategories(stackOne, {
-    fields: "id,remote_id,name,active",
+    fields: "id,remote_id,name,active,level",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },

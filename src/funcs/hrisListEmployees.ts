@@ -170,7 +170,6 @@ export async function hrisListEmployees(
     >
   > => {
     const nextCursor = dlv(responseData, "next");
-
     if (nextCursor == null) {
       return () => null;
     }

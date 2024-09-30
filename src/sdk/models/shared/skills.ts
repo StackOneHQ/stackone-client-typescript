@@ -28,7 +28,7 @@ export type SkillsValueOpen = OpenEnum<typeof SkillsValue>;
 /**
  * The hierarchal level of the skill
  */
-export type Level = {
+export type SkillsLevel = {
   sourceValue?:
     | Skills4
     | string
@@ -52,7 +52,7 @@ export type Skills = {
   /**
    * The hierarchal level of the skill
    */
-  level?: Level | null | undefined;
+  level?: SkillsLevel | null | undefined;
   /**
    * The name associated with this skill
    */
@@ -170,26 +170,29 @@ export namespace SkillsValue$ {
 }
 
 /** @internal */
-export const Level$inboundSchema: z.ZodType<Level, z.ZodTypeDef, unknown> = z
-  .object({
-    source_value: z.nullable(
-      z.union([
-        z.lazy(() => Skills4$inboundSchema),
-        z.string(),
-        z.number(),
-        z.boolean(),
-        z.array(z.any()),
-      ]),
-    ).optional(),
-    value: z.nullable(SkillsValue$inboundSchema).optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      "source_value": "sourceValue",
-    });
+export const SkillsLevel$inboundSchema: z.ZodType<
+  SkillsLevel,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  source_value: z.nullable(
+    z.union([
+      z.lazy(() => Skills4$inboundSchema),
+      z.string(),
+      z.number(),
+      z.boolean(),
+      z.array(z.any()),
+    ]),
+  ).optional(),
+  value: z.nullable(SkillsValue$inboundSchema).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    "source_value": "sourceValue",
   });
+});
 
 /** @internal */
-export type Level$Outbound = {
+export type SkillsLevel$Outbound = {
   source_value?:
     | Skills4$Outbound
     | string
@@ -202,10 +205,10 @@ export type Level$Outbound = {
 };
 
 /** @internal */
-export const Level$outboundSchema: z.ZodType<
-  Level$Outbound,
+export const SkillsLevel$outboundSchema: z.ZodType<
+  SkillsLevel$Outbound,
   z.ZodTypeDef,
-  Level
+  SkillsLevel
 > = z.object({
   sourceValue: z.nullable(
     z.union([
@@ -227,13 +230,13 @@ export const Level$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Level$ {
-  /** @deprecated use `Level$inboundSchema` instead. */
-  export const inboundSchema = Level$inboundSchema;
-  /** @deprecated use `Level$outboundSchema` instead. */
-  export const outboundSchema = Level$outboundSchema;
-  /** @deprecated use `Level$Outbound` instead. */
-  export type Outbound = Level$Outbound;
+export namespace SkillsLevel$ {
+  /** @deprecated use `SkillsLevel$inboundSchema` instead. */
+  export const inboundSchema = SkillsLevel$inboundSchema;
+  /** @deprecated use `SkillsLevel$outboundSchema` instead. */
+  export const outboundSchema = SkillsLevel$outboundSchema;
+  /** @deprecated use `SkillsLevel$Outbound` instead. */
+  export type Outbound = SkillsLevel$Outbound;
 }
 
 /** @internal */
@@ -241,7 +244,7 @@ export const Skills$inboundSchema: z.ZodType<Skills, z.ZodTypeDef, unknown> = z
   .object({
     active: z.nullable(z.boolean()).optional(),
     id: z.nullable(z.string()).optional(),
-    level: z.nullable(z.lazy(() => Level$inboundSchema)).optional(),
+    level: z.nullable(z.lazy(() => SkillsLevel$inboundSchema)).optional(),
     name: z.nullable(z.string()).optional(),
     remote_id: z.nullable(z.string()).optional(),
   }).transform((v) => {
@@ -254,7 +257,7 @@ export const Skills$inboundSchema: z.ZodType<Skills, z.ZodTypeDef, unknown> = z
 export type Skills$Outbound = {
   active?: boolean | null | undefined;
   id?: string | null | undefined;
-  level?: Level$Outbound | null | undefined;
+  level?: SkillsLevel$Outbound | null | undefined;
   name?: string | null | undefined;
   remote_id?: string | null | undefined;
 };
@@ -267,7 +270,7 @@ export const Skills$outboundSchema: z.ZodType<
 > = z.object({
   active: z.nullable(z.boolean()).optional(),
   id: z.nullable(z.string()).optional(),
-  level: z.nullable(z.lazy(() => Level$outboundSchema)).optional(),
+  level: z.nullable(z.lazy(() => SkillsLevel$outboundSchema)).optional(),
   name: z.nullable(z.string()).optional(),
   remoteId: z.nullable(z.string()).optional(),
 }).transform((v) => {

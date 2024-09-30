@@ -29,7 +29,7 @@ let value: CrmUpdateContactRequest = {
     ],
   },
   id: "<id>",
-  xAccountId: "<value>",
+  xAccountId: "<id>",
 };
 ```
 

@@ -11,7 +11,7 @@ let value: AtsGetCandidateCustomFieldDefinitionRequest = {
     updatedAfter: "2020-01-01T00:00:00.000Z",
   },
   id: "<id>",
-  xAccountId: "<value>",
+  xAccountId: "<id>",
 };
 ```
 

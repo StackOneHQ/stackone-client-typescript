@@ -8,7 +8,7 @@ import { AtsGetLocationRequest } from "@stackone/stackone-client-ts/sdk/models/o
 let value: AtsGetLocationRequest = {
   fields: "id,remote_id,name",
   id: "<id>",
-  xAccountId: "<value>",
+  xAccountId: "<id>",
 };
 ```
 

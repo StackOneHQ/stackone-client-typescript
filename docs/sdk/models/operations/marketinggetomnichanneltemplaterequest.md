@@ -8,7 +8,7 @@ import { MarketingGetOmniChannelTemplateRequest } from "@stackone/stackone-clien
 let value: MarketingGetOmniChannelTemplateRequest = {
   fields: "id,remote_id,name,messages,created_at,updated_at,tags",
   id: "<id>",
-  xAccountId: "<value>",
+  xAccountId: "<id>",
 };
 ```
 

@@ -9,7 +9,7 @@ let value: IamGetRoleRequest = {
   expand: "policies",
   fields: "id,remote_id,name,type,policies,description,created_at,updated_at",
   id: "<id>",
-  xAccountId: "<value>",
+  xAccountId: "<id>",
 };
 ```
 

@@ -9,8 +9,8 @@ let value: HrisGetEmployeesWorkEligibilityRequest = {
   fields:
     "id,remote_id,type,sub_type,document,valid_from,valid_to,issued_by,number",
   id: "<id>",
-  subResourceId: "<value>",
-  xAccountId: "<value>",
+  subResourceId: "<id>",
+  xAccountId: "<id>",
 };
 ```
 

@@ -44,7 +44,7 @@ let value: LmsBatchUpsertContentRequest = {
       },
     ],
   },
-  xAccountId: "<value>",
+  xAccountId: "<id>",
 };
 ```
 

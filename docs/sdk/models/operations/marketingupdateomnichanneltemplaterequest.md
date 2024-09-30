@@ -20,7 +20,7 @@ let value: MarketingUpdateOmniChannelTemplateRequest = {
     },
   },
   id: "<id>",
-  xAccountId: "<value>",
+  xAccountId: "<id>",
 };
 ```
 

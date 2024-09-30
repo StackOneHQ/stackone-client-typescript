@@ -40,7 +40,7 @@ let value: AtsCreateCandidateRequest = {
       "my_project_custom_field_2": "some other value",
     },
   },
-  xAccountId: "<value>",
+  xAccountId: "<id>",
 };
 ```
 

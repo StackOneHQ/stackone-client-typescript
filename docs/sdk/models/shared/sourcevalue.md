@@ -1,42 +1,37 @@
 # SourceValue
 
-## Example Usage
-
-```typescript
-import { SourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
-
-let value: SourceValue = {};
-```
 
 ## Supported Types
 
 ### `string`
 
 ```typescript
-const value: string = /* values here */
+const value: string = "<value>";
 ```
 
 ### `number`
 
 ```typescript
-const value: number = /* values here */
+const value: number = 5058.66;
 ```
 
 ### `boolean`
 
 ```typescript
-const value: boolean = /* values here */
+const value: boolean = false;
 ```
 
 ### `shared.AssignmentStatusEnum4`
 
 ```typescript
-const value: shared.AssignmentStatusEnum4 = /* values here */
+const value: shared.AssignmentStatusEnum4 = {};
 ```
 
 ### `any[]`
 
 ```typescript
-const value: any[] = /* values here */
+const value: any[] = [
+  "<value>",
+];
 ```
 

@@ -28,7 +28,7 @@ let value: CrmCreateContactRequest = {
       "123-456-7890",
     ],
   },
-  xAccountId: "<value>",
+  xAccountId: "<id>",
 };
 ```
 

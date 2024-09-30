@@ -33,7 +33,7 @@ let value: AtsUpdateApplicationRequest = {
     },
   },
   id: "<id>",
-  xAccountId: "<value>",
+  xAccountId: "<id>",
 };
 ```
 

@@ -27,6 +27,11 @@ export enum IamMfaTypeEnumValue {
   Email = "email",
   Push = "push",
   Totp = "totp",
+  PhoneCall = "phone_call",
+  Question = "question",
+  SoftwareToken = "software_token",
+  HardwareToken = "hardware_token",
+  Web = "web",
   Unknown = "unknown",
   UnmappedValue = "unmapped_value",
 }

@@ -6,7 +6,7 @@
 import { LmsCreateContentRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: LmsCreateContentRequestDtoValue =
-  LmsCreateContentRequestDtoValue.Video;
+  LmsCreateContentRequestDtoValue.Quiz;
 ```
 
 ## Values

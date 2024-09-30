@@ -9,7 +9,7 @@ let value: LmsGetUserRequest = {
   fields:
     "id,remote_id,external_reference,active,email,phone_number,created_at,updated_at,name",
   id: "<id>",
-  xAccountId: "<value>",
+  xAccountId: "<id>",
 };
 ```
 

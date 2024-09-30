@@ -1,42 +1,37 @@
 # SkillsSourceValue
 
-## Example Usage
-
-```typescript
-import { SkillsSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
-
-let value: SkillsSourceValue = "<value>";
-```
 
 ## Supported Types
 
 ### `string`
 
 ```typescript
-const value: string = /* values here */
+const value: string = "<value>";
 ```
 
 ### `number`
 
 ```typescript
-const value: number = /* values here */
+const value: number = 486.90;
 ```
 
 ### `boolean`
 
 ```typescript
-const value: boolean = /* values here */
+const value: boolean = false;
 ```
 
 ### `shared.Skills4`
 
 ```typescript
-const value: shared.Skills4 = /* values here */
+const value: shared.Skills4 = {};
 ```
 
 ### `any[]`
 
 ```typescript
-const value: any[] = /* values here */
+const value: any[] = [
+  "<value>",
+];
 ```
 

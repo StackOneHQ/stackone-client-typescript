@@ -65,7 +65,7 @@ let value: AtsUpdateJobRequest = {
     },
   },
   id: "<id>",
-  xAccountId: "<value>",
+  xAccountId: "<id>",
 };
 ```
 

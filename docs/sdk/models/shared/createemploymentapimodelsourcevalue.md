@@ -1,44 +1,37 @@
 # CreateEmploymentApiModelSourceValue
 
-## Example Usage
-
-```typescript
-import { CreateEmploymentApiModelSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
-
-let value: CreateEmploymentApiModelSourceValue = [
-  "<value>",
-];
-```
 
 ## Supported Types
 
 ### `string`
 
 ```typescript
-const value: string = /* values here */
+const value: string = "<value>";
 ```
 
 ### `number`
 
 ```typescript
-const value: number = /* values here */
+const value: number = 7065.75;
 ```
 
 ### `boolean`
 
 ```typescript
-const value: boolean = /* values here */
+const value: boolean = false;
 ```
 
 ### `shared.CreateEmploymentApiModel4`
 
 ```typescript
-const value: shared.CreateEmploymentApiModel4 = /* values here */
+const value: shared.CreateEmploymentApiModel4 = {};
 ```
 
 ### `any[]`
 
 ```typescript
-const value: any[] = /* values here */
+const value: any[] = [
+  "<value>",
+];
 ```
 

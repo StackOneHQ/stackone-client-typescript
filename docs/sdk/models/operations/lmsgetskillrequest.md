@@ -8,7 +8,7 @@ import { LmsGetSkillRequest } from "@stackone/stackone-client-ts/sdk/models/oper
 let value: LmsGetSkillRequest = {
   fields: "id,remote_id,name,active,level",
   id: "<id>",
-  xAccountId: "<value>",
+  xAccountId: "<id>",
 };
 ```
 

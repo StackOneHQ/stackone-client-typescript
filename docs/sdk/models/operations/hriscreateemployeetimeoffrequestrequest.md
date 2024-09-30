@@ -18,7 +18,7 @@ let value: HrisCreateEmployeeTimeOffRequestRequest = {
     startHalfDay: true,
   },
   id: "<id>",
-  xAccountId: "<value>",
+  xAccountId: "<id>",
 };
 ```
 

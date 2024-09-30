@@ -1,24 +1,17 @@
 # Archived
 
-## Example Usage
-
-```typescript
-import { Archived } from "@stackone/stackone-client-ts/sdk/models/shared";
-
-let value: Archived = false;
-```
 
 ## Supported Types
 
 ### `boolean`
 
 ```typescript
-const value: boolean = /* values here */
+const value: boolean = false;
 ```
 
 ### `shared.Two`
 
 ```typescript
-const value: shared.Two = /* values here */
+const value: shared.Two = Two.True;
 ```
 

@@ -1,42 +1,37 @@
 # ContentSourceValue
 
-## Example Usage
-
-```typescript
-import { ContentSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
-
-let value: ContentSourceValue = {};
-```
 
 ## Supported Types
 
 ### `string`
 
 ```typescript
-const value: string = /* values here */
+const value: string = "<value>";
 ```
 
 ### `number`
 
 ```typescript
-const value: number = /* values here */
+const value: number = 6288.98;
 ```
 
 ### `boolean`
 
 ```typescript
-const value: boolean = /* values here */
+const value: boolean = false;
 ```
 
 ### `shared.Content4`
 
 ```typescript
-const value: shared.Content4 = /* values here */
+const value: shared.Content4 = {};
 ```
 
 ### `any[]`
 
 ```typescript
-const value: any[] = /* values here */
+const value: any[] = [
+  "<value>",
+];
 ```
 

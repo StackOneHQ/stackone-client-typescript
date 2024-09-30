@@ -7,7 +7,7 @@ import { AtsGetAssessmentsPackageRequest } from "@stackone/stackone-client-ts/sd
 
 let value: AtsGetAssessmentsPackageRequest = {
   id: "<id>",
-  xAccountId: "<value>",
+  xAccountId: "<id>",
 };
 ```
 

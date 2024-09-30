@@ -13,7 +13,7 @@ let value: AtsMoveApplicationRequest = {
     },
   },
   id: "<id>",
-  xAccountId: "<value>",
+  xAccountId: "<id>",
 };
 ```
 

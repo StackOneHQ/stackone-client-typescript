@@ -1,42 +1,37 @@
 # IamMfaTypeEnumSourceValue
 
-## Example Usage
-
-```typescript
-import { IamMfaTypeEnumSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
-
-let value: IamMfaTypeEnumSourceValue = 9241.59;
-```
 
 ## Supported Types
 
 ### `string`
 
 ```typescript
-const value: string = /* values here */
+const value: string = "<value>";
 ```
 
 ### `number`
 
 ```typescript
-const value: number = /* values here */
+const value: number = 2748.24;
 ```
 
 ### `boolean`
 
 ```typescript
-const value: boolean = /* values here */
+const value: boolean = false;
 ```
 
 ### `shared.IamMfaTypeEnum4`
 
 ```typescript
-const value: shared.IamMfaTypeEnum4 = /* values here */
+const value: shared.IamMfaTypeEnum4 = {};
 ```
 
 ### `any[]`
 
 ```typescript
-const value: any[] = /* values here */
+const value: any[] = [
+  "<value>",
+];
 ```
 

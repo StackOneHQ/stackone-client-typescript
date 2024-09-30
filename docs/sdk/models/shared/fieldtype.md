@@ -7,7 +7,7 @@ The type of the field
 ```typescript
 import { FieldType } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: FieldType = FieldType.LongText;
+let value: FieldType = FieldType.UnmappedValue;
 ```
 
 ## Values

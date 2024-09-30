@@ -9,7 +9,7 @@ let value: AtsGetAssessmentsResultRequest = {
   fields:
     "assessment_id,remote_assessment_id,candidate,score,assessment_date,submission_date,summary,result,result_url,attachments",
   id: "<id>",
-  xAccountId: "<value>",
+  xAccountId: "<id>",
 };
 ```
 

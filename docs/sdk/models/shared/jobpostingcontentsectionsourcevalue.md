@@ -2,43 +2,38 @@
 
 The source value of the description type.
 
-## Example Usage
-
-```typescript
-import { JobPostingContentSectionSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
-
-let value: JobPostingContentSectionSourceValue = "key_responsibilities";
-```
 
 ## Supported Types
 
 ### `string`
 
 ```typescript
-const value: string = /* values here */
+const value: string = "key_responsibilities";
 ```
 
 ### `number`
 
 ```typescript
-const value: number = /* values here */
+const value: number = key_responsibilities;
 ```
 
 ### `boolean`
 
 ```typescript
-const value: boolean = /* values here */
+const value: boolean = true;
 ```
 
 ### `shared.JobPostingContentSection4`
 
 ```typescript
-const value: shared.JobPostingContentSection4 = /* values here */
+const value: shared.JobPostingContentSection4 = {};
 ```
 
 ### `any[]`
 
 ```typescript
-const value: any[] = /* values here */
+const value: any[] = [
+  "key_responsibilities",
+];
 ```
 

@@ -2,43 +2,38 @@
 
 The source value of the Channels.
 
-## Example Usage
-
-```typescript
-import { ChannelsEnumSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
-
-let value: ChannelsEnumSourceValue = "SMS";
-```
 
 ## Supported Types
 
 ### `string`
 
 ```typescript
-const value: string = /* values here */
+const value: string = "SMS";
 ```
 
 ### `number`
 
 ```typescript
-const value: number = /* values here */
+const value: number = SMS;
 ```
 
 ### `boolean`
 
 ```typescript
-const value: boolean = /* values here */
+const value: boolean = true;
 ```
 
 ### `shared.ChannelsEnum4`
 
 ```typescript
-const value: shared.ChannelsEnum4 = /* values here */
+const value: shared.ChannelsEnum4 = {};
 ```
 
 ### `any[]`
 
 ```typescript
-const value: any[] = /* values here */
+const value: any[] = [
+  "SMS",
+];
 ```
 

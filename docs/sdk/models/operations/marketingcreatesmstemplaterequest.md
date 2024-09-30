@@ -20,7 +20,7 @@ let value: MarketingCreateSmsTemplateRequest = {
       "other_known_names": "John Doe",
     },
   },
-  xAccountId: "<value>",
+  xAccountId: "<id>",
 };
 ```
 

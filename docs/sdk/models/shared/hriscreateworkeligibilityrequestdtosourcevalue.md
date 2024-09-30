@@ -1,42 +1,37 @@
 # HrisCreateWorkEligibilityRequestDtoSourceValue
 
-## Example Usage
-
-```typescript
-import { HrisCreateWorkEligibilityRequestDtoSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
-
-let value: HrisCreateWorkEligibilityRequestDtoSourceValue = 1059.06;
-```
 
 ## Supported Types
 
 ### `string`
 
 ```typescript
-const value: string = /* values here */
+const value: string = "<value>";
 ```
 
 ### `number`
 
 ```typescript
-const value: number = /* values here */
+const value: number = 9689.72;
 ```
 
 ### `boolean`
 
 ```typescript
-const value: boolean = /* values here */
+const value: boolean = false;
 ```
 
 ### `shared.HrisCreateWorkEligibilityRequestDto4`
 
 ```typescript
-const value: shared.HrisCreateWorkEligibilityRequestDto4 = /* values here */
+const value: shared.HrisCreateWorkEligibilityRequestDto4 = {};
 ```
 
 ### `any[]`
 
 ```typescript
-const value: any[] = /* values here */
+const value: any[] = [
+  "<value>",
+];
 ```
 

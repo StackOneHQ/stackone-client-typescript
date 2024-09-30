@@ -19,9 +19,9 @@ let value: ConnectSessionToken = {
   createdAt: new Date("2022-09-21T01:29:35.775Z"),
   id: 1605.39,
   organizationId: 7963.91,
-  originOwnerId: "<value>",
+  originOwnerId: "<id>",
   originOwnerName: "<value>",
-  projectId: "<value>",
+  projectId: "<id>",
   token: "<value>",
 };
 ```

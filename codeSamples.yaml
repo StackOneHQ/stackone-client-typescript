@@ -155,7 +155,7 @@ actions:
                   Categories.Lms,
                   Categories.Ats,
                 ],
-                originOwnerId: "<value>",
+                originOwnerId: "<id>",
                 originOwnerName: "<value>",
               });
 
@@ -265,7 +265,7 @@ actions:
                 expand: "documents",
                 include: "attachments,custom_fields",
                 jobId: "cxQiyiuasdFKfdsYfer",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
               });
 
               // Handle the result
@@ -291,7 +291,7 @@ actions:
 
             async function run() {
               const result = await stackOne.ats.createApplication({
-                xAccountId: "<value>",
+                xAccountId: "<id>",
                 atsCreateApplicationRequestDto: {
                   passthrough: {
                     "other_known_names": "John Doe",
@@ -403,7 +403,7 @@ actions:
                 fields: "id,remote_id,candidate_id,remote_candidate_id,job_id,remote_job_id,interview_stage,interview_stage_id,remote_interview_stage_id,rejected_reason,rejected_reason_id,remote_rejected_reason_id,rejected_reason_ids,remote_rejected_reason_ids,rejected_reasons,rejected_at,location_id,remote_location_id,location_ids,remote_location_ids,status,application_status,questionnaires,attachments,result_links,source,created_at,updated_at,documents,custom_fields,candidate",
                 expand: "documents",
                 include: "attachments,custom_fields",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
               });
 
               // Handle the result
@@ -430,7 +430,7 @@ actions:
             async function run() {
               const result = await stackOne.ats.updateApplication({
                 id: "<id>",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
                 atsUpdateApplicationRequestDto: {
                   passthrough: {
                     "other_known_names": "John Doe",
@@ -486,7 +486,7 @@ actions:
                   updatedAfter: "2020-01-01T00:00:00.000Z",
                 },
                 updatedAfter: "2020-01-01T00:00:00.000Z",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
               });
 
               // Handle the result
@@ -513,7 +513,7 @@ actions:
             async function run() {
               const result = await stackOne.ats.uploadApplicationDocument({
                 id: "<id>",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
                 unifiedUploadRequestDto: {
                   name: "weather-forecast",
                   fileFormat: {
@@ -557,9 +557,9 @@ actions:
             async function run() {
               const result = await stackOne.ats.getApplicationDocument({
                 id: "<id>",
-                subResourceId: "<value>",
+                subResourceId: "<id>",
                 fields: "id,remote_id,name,path,type,category,category_id,remote_category_id,contents,created_at,updated_at,remote_url,file_format",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
               });
 
               // Handle the result
@@ -585,9 +585,9 @@ actions:
             async function run() {
               const result = await stackOne.ats.downloadApplicationDocument({
                 id: "<id>",
-                subResourceId: "<value>",
+                subResourceId: "<id>",
                 format: "base64",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
               });
 
               // Handle the result
@@ -613,7 +613,7 @@ actions:
             async function run() {
               const result = await stackOne.ats.moveApplication({
                 id: "<id>",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
                 atsMoveApplicationRequestDto: {
                   passthrough: {
                     "other_known_names": "John Doe",
@@ -650,7 +650,7 @@ actions:
                   updatedAfter: "2020-01-01T00:00:00.000Z",
                 },
                 updatedAfter: "2020-01-01T00:00:00.000Z",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
               });
 
               // Handle the result
@@ -676,9 +676,9 @@ actions:
             async function run() {
               const result = await stackOne.ats.getApplicationOffer({
                 id: "<id>",
-                subResourceId: "<value>",
+                subResourceId: "<id>",
                 fields: "id,remote_id,application_id,remote_application_id,start_date,status,offer_status,salary,currency,created_at,updated_at,offer_history",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
               });
 
               // Handle the result
@@ -704,7 +704,7 @@ actions:
             async function run() {
               const result = await stackOne.ats.rejectApplication({
                 id: "<id>",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
                 atsRejectApplicationRequestDto: {
                   passthrough: {
                     "other_known_names": "John Doe",
@@ -741,7 +741,7 @@ actions:
                   updatedAfter: "2020-01-01T00:00:00.000Z",
                 },
                 updatedAfter: "2020-01-01T00:00:00.000Z",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
               });
 
               // Handle the result
@@ -767,9 +767,9 @@ actions:
             async function run() {
               const result = await stackOne.ats.getApplicationScheduledInterview({
                 id: "<id>",
-                subResourceId: "<value>",
+                subResourceId: "<id>",
                 fields: "id,remote_id,candidate_id,remote_candidate_id,job_id,remote_job_id,interview_stage,interview_stage_id,remote_interview_stage_id,rejected_reason,rejected_reason_id,remote_rejected_reason_id,rejected_reason_ids,remote_rejected_reason_ids,rejected_reasons,rejected_at,location_id,remote_location_id,location_ids,remote_location_ids,status,application_status,questionnaires,attachments,result_links,source,created_at,updated_at,documents,custom_fields,candidate",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
               });
 
               // Handle the result
@@ -800,7 +800,7 @@ actions:
                   updatedAfter: "2020-01-01T00:00:00.000Z",
                 },
                 updatedAfter: "2020-01-01T00:00:00.000Z",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
               });
 
               // Handle the result
@@ -826,9 +826,9 @@ actions:
             async function run() {
               const result = await stackOne.ats.getApplicationScorecard({
                 id: "<id>",
-                subResourceId: "<value>",
+                subResourceId: "<id>",
                 fields: "id,remote_id,sections,label,candidate_id,remote_candidate_id,application_id,remote_application_id,interview_id,remote_interview_id,author_id,remote_author_id,overall_recommendation,created_at,updated_at",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
               });
 
               // Handle the result
@@ -855,7 +855,7 @@ actions:
               const result = await stackOne.ats.getAssessmentsRequest({
                 id: "<id>",
                 fields: "assessment_id,remote_assessment_id,candidate,score,assessment_date,submission_date,summary,result,result_url,attachments",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
               });
 
               // Handle the result
@@ -882,7 +882,7 @@ actions:
               const result = await stackOne.ats.getAssessmentsResult({
                 id: "<id>",
                 fields: "assessment_id,remote_assessment_id,candidate,score,assessment_date,submission_date,summary,result,result_url,attachments",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
               });
 
               // Handle the result
@@ -911,7 +911,7 @@ actions:
                   updatedAfter: "2020-01-01T00:00:00.000Z",
                 },
                 updatedAfter: "2020-01-01T00:00:00.000Z",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
               });
 
               // Handle the result
@@ -937,7 +937,7 @@ actions:
             async function run() {
               const result = await stackOne.ats.getAssessmentsPackage({
                 id: "<id>",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
               });
 
               // Handle the result
@@ -968,7 +968,7 @@ actions:
                 },
                 updatedAfter: "2020-01-01T00:00:00.000Z",
                 include: "custom_fields",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
               });
 
               // Handle the result
@@ -993,7 +993,7 @@ actions:
 
             async function run() {
               const result = await stackOne.ats.createCandidate({
-                xAccountId: "<value>",
+                xAccountId: "<id>",
                 atsCreateCandidateRequestDto: {
                   passthrough: {
                     "other_known_names": "John Doe",
@@ -1055,7 +1055,7 @@ actions:
                 id: "<id>",
                 fields: "id,remote_id,name,first_name,last_name,email,emails,social_links,phone,phone_numbers,company,title,application_ids,remote_application_ids,hired_at,custom_fields,created_at,updated_at",
                 include: "custom_fields",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
               });
 
               // Handle the result
@@ -1081,7 +1081,7 @@ actions:
             async function run() {
               const result = await stackOne.ats.updateCandidate({
                 id: "<id>",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
                 atsUpdateCandidateRequestDto: {
                   passthrough: {
                     "other_known_names": "John Doe",
@@ -1168,7 +1168,7 @@ actions:
                   updatedAfter: "2020-01-01T00:00:00.000Z",
                 },
                 updatedAfter: "2020-01-01T00:00:00.000Z",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
               });
 
               // Handle the result
@@ -1195,7 +1195,7 @@ actions:
             async function run() {
               const result = await stackOne.ats.createCandidateNote({
                 id: "<id>",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
                 atsCreateNotesRequestDto: {
                   content: [
                     {
@@ -1236,9 +1236,9 @@ actions:
             async function run() {
               const result = await stackOne.ats.getCandidateNote({
                 id: "<id>",
-                subResourceId: "<value>",
+                subResourceId: "<id>",
                 fields: "id,remote_id,content,author_id,remote_author_id,visibility,created_at,updated_at,deleted_at",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
               });
 
               // Handle the result
@@ -1268,7 +1268,7 @@ actions:
                   updatedAfter: "2020-01-01T00:00:00.000Z",
                 },
                 updatedAfter: "2020-01-01T00:00:00.000Z",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
               });
 
               // Handle the result
@@ -1299,7 +1299,7 @@ actions:
                   updatedAfter: "2020-01-01T00:00:00.000Z",
                 },
                 updatedAfter: "2020-01-01T00:00:00.000Z",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
               });
 
               // Handle the result
@@ -1329,7 +1329,7 @@ actions:
                   updatedAfter: "2020-01-01T00:00:00.000Z",
                 },
                 updatedAfter: "2020-01-01T00:00:00.000Z",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
               });
 
               // Handle the result
@@ -1360,7 +1360,7 @@ actions:
                   updatedAfter: "2020-01-01T00:00:00.000Z",
                 },
                 updatedAfter: "2020-01-01T00:00:00.000Z",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
               });
 
               // Handle the result
@@ -1390,7 +1390,7 @@ actions:
                   updatedAfter: "2020-01-01T00:00:00.000Z",
                 },
                 updatedAfter: "2020-01-01T00:00:00.000Z",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
               });
 
               // Handle the result
@@ -1421,7 +1421,7 @@ actions:
                   updatedAfter: "2020-01-01T00:00:00.000Z",
                 },
                 updatedAfter: "2020-01-01T00:00:00.000Z",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
               });
 
               // Handle the result
@@ -1451,7 +1451,7 @@ actions:
                   updatedAfter: "2020-01-01T00:00:00.000Z",
                 },
                 updatedAfter: "2020-01-01T00:00:00.000Z",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
               });
 
               // Handle the result
@@ -1478,7 +1478,7 @@ actions:
               const result = await stackOne.ats.getDepartment({
                 id: "<id>",
                 fields: "id,remote_id,name",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
               });
 
               // Handle the result
@@ -1508,7 +1508,7 @@ actions:
                   updatedAfter: "2020-01-01T00:00:00.000Z",
                 },
                 updatedAfter: "2020-01-01T00:00:00.000Z",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
               });
 
               // Handle the result
@@ -1535,7 +1535,7 @@ actions:
               const result = await stackOne.ats.getInterviewStage({
                 id: "<id>",
                 fields: "id,remote_id,name,order,created_at,updated_at",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
               });
 
               // Handle the result
@@ -1565,7 +1565,7 @@ actions:
                   updatedAfter: "2020-01-01T00:00:00.000Z",
                 },
                 updatedAfter: "2020-01-01T00:00:00.000Z",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
               });
 
               // Handle the result
@@ -1592,7 +1592,7 @@ actions:
               const result = await stackOne.ats.getInterview({
                 id: "<id>",
                 fields: "id,remote_id,application_id,remote_application_id,interview_stage_id,remote_interview_stage_id,interview_stage,status,interview_status,interviewer_ids,remote_interviewer_ids,interview_parts,interviewers,start_at,end_at,meeting_url,created_at,updated_at",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
               });
 
               // Handle the result
@@ -1623,7 +1623,7 @@ actions:
                 },
                 updatedAfter: "2020-01-01T00:00:00.000Z",
                 include: "questionnaires",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
               });
 
               // Handle the result
@@ -1651,7 +1651,7 @@ actions:
                 id: "<id>",
                 fields: "id,remote_id,title,locations,internal,status,job_id,remote_job_id,content,compensation,employment_type,employment_contract_type,external_url,external_apply_url,questionnaires,updated_at,created_at",
                 include: "questionnaires",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
               });
 
               // Handle the result
@@ -1683,7 +1683,7 @@ actions:
                 updatedAfter: "2020-01-01T00:00:00.000Z",
                 expand: "job_postings,interview_stages",
                 include: "custom_fields",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
               });
 
               // Handle the result
@@ -1709,7 +1709,7 @@ actions:
 
             async function run() {
               const result = await stackOne.ats.createJob({
-                xAccountId: "<value>",
+                xAccountId: "<id>",
                 atsCreateJobRequestDto: {
                   unifiedCustomFields: {
                     "my_project_custom_field_1": "REF-1236",
@@ -1811,7 +1811,7 @@ actions:
                 fields: "id,remote_id,code,title,status,job_status,department_ids,remote_department_ids,location_ids,remote_location_ids,hiring_team,interview_stages,confidential,custom_fields,created_at,updated_at",
                 expand: "job_postings,interview_stages",
                 include: "custom_fields",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
               });
 
               // Handle the result
@@ -1838,7 +1838,7 @@ actions:
             async function run() {
               const result = await stackOne.ats.updateJob({
                 id: "<id>",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
                 atsUpdateJobRequestDto: {
                   unifiedCustomFields: {
                     "my_project_custom_field_1": "REF-1236",
@@ -1935,7 +1935,7 @@ actions:
                   updatedAfter: "2020-01-01T00:00:00.000Z",
                 },
                 updatedAfter: "2020-01-01T00:00:00.000Z",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
               });
 
               // Handle the result
@@ -1962,7 +1962,7 @@ actions:
               const result = await stackOne.ats.getList({
                 id: "<id>",
                 fields: "id,remote_id,name,created_at,updated_at,items,type",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
               });
 
               // Handle the result
@@ -1992,7 +1992,7 @@ actions:
                   updatedAfter: "2020-01-01T00:00:00.000Z",
                 },
                 updatedAfter: "2020-01-01T00:00:00.000Z",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
               });
 
               // Handle the result
@@ -2019,7 +2019,7 @@ actions:
               const result = await stackOne.ats.getLocation({
                 id: "<id>",
                 fields: "id,remote_id,name",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
               });
 
               // Handle the result
@@ -2049,7 +2049,7 @@ actions:
                   updatedAfter: "2020-01-01T00:00:00.000Z",
                 },
                 updatedAfter: "2020-01-01T00:00:00.000Z",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
               });
 
               // Handle the result
@@ -2075,7 +2075,7 @@ actions:
 
             async function run() {
               const result = await stackOne.ats.createOffer({
-                xAccountId: "<value>",
+                xAccountId: "<id>",
                 atsCreateOfferRequestDto: {
                   startDate: new Date("2021-01-01T01:01:01.000Z"),
                   offerStatus: {
@@ -2124,7 +2124,7 @@ actions:
               const result = await stackOne.ats.getOffer({
                 id: "<id>",
                 fields: "id,remote_id,application_id,remote_application_id,start_date,status,offer_status,salary,currency,created_at,updated_at,offer_history",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
               });
 
               // Handle the result
@@ -2154,7 +2154,7 @@ actions:
                   updatedAfter: "2020-01-01T00:00:00.000Z",
                 },
                 updatedAfter: "2020-01-01T00:00:00.000Z",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
               });
 
               // Handle the result
@@ -2181,7 +2181,7 @@ actions:
               const result = await stackOne.ats.getRejectedReason({
                 id: "<id>",
                 fields: "id,remote_id,label,type,rejected_reason_type",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
               });
 
               // Handle the result
@@ -2211,7 +2211,7 @@ actions:
                   updatedAfter: "2020-01-01T00:00:00.000Z",
                 },
                 updatedAfter: "2020-01-01T00:00:00.000Z",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
               });
 
               // Handle the result
@@ -2238,7 +2238,7 @@ actions:
               const result = await stackOne.ats.getUser({
                 id: "<id>",
                 fields: "id,remote_id,first_name,last_name,name,email",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
               });
 
               // Handle the result
@@ -2268,7 +2268,7 @@ actions:
                   updatedAfter: "2020-01-01T00:00:00.000Z",
                 },
                 updatedAfter: "2020-01-01T00:00:00.000Z",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
               });
 
               // Handle the result
@@ -2295,7 +2295,7 @@ actions:
               const result = await stackOne.crm.getAccount({
                 id: "<id>",
                 fields: "id,remote_id,owner_id,remote_owner_id,name,description,industries,annual_revenue,website,addresses,phone_numbers,created_at,updated_at",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
               });
 
               // Handle the result
@@ -2326,7 +2326,7 @@ actions:
                 },
                 updatedAfter: "2020-01-01T00:00:00.000Z",
                 include: "custom_fields",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
               });
 
               // Handle the result
@@ -2351,7 +2351,7 @@ actions:
 
             async function run() {
               const result = await stackOne.crm.createContact({
-                xAccountId: "<value>",
+                xAccountId: "<id>",
                 crmCreateContactRequestDto: {
                   firstName: "Steve",
                   lastName: "Wozniak",
@@ -2401,7 +2401,7 @@ actions:
                 id: "<id>",
                 fields: "id,remote_id,first_name,last_name,company_name,emails,phone_numbers,deal_ids,remote_deal_ids,account_ids,remote_account_ids,custom_fields,created_at,updated_at",
                 include: "custom_fields",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
               });
 
               // Handle the result
@@ -2427,7 +2427,7 @@ actions:
             async function run() {
               const result = await stackOne.crm.updateContact({
                 id: "<id>",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
                 crmCreateContactRequestDto: {
                   firstName: "Steve",
                   lastName: "Wozniak",
@@ -2479,7 +2479,7 @@ actions:
                   updatedAfter: "2020-01-01T00:00:00.000Z",
                 },
                 updatedAfter: "2020-01-01T00:00:00.000Z",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
               });
 
               // Handle the result
@@ -2506,7 +2506,7 @@ actions:
               const result = await stackOne.crm.getList({
                 id: "<id>",
                 fields: "id,remote_id,name,created_at,updated_at,items,type",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
               });
 
               // Handle the result
@@ -2536,7 +2536,7 @@ actions:
                   updatedAfter: "2020-01-01T00:00:00.000Z",
                 },
                 updatedAfter: "2020-01-01T00:00:00.000Z",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
               });
 
               // Handle the result
@@ -2563,7 +2563,7 @@ actions:
               const result = await stackOne.hris.getBenefit({
                 id: "<id>",
                 fields: "id,remote_id,name,benefit_type,provider,description,created_at,updated_at",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
               });
 
               // Handle the result
@@ -2593,7 +2593,7 @@ actions:
                   updatedAfter: "2020-01-01T00:00:00.000Z",
                 },
                 updatedAfter: "2020-01-01T00:00:00.000Z",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
               });
 
               // Handle the result
@@ -2620,7 +2620,7 @@ actions:
               const result = await stackOne.hris.getCompany({
                 id: "<id>",
                 fields: "id,remote_id,name,full_name,display_name,created_at,updated_at",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
               });
 
               // Handle the result
@@ -2650,7 +2650,7 @@ actions:
                   updatedAfter: "2020-01-01T00:00:00.000Z",
                 },
                 updatedAfter: "2020-01-01T00:00:00.000Z",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
               });
 
               // Handle the result
@@ -2677,7 +2677,7 @@ actions:
               const result = await stackOne.hris.getEmployeeDocumentCategory({
                 id: "<id>",
                 fields: "id,remote_id,name,active",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
               });
 
               // Handle the result
@@ -2709,7 +2709,7 @@ actions:
                 updatedAfter: "2020-01-01T00:00:00.000Z",
                 expand: "company,employments,work_location,home_location,custom_fields,groups",
                 include: "avatar_url,avatar,custom_fields,job_description,benefits",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
               });
 
               for await (const page of result) {
@@ -2747,7 +2747,7 @@ actions:
 
             async function run() {
               const result = await stackOne.hris.createEmployee({
-                xAccountId: "<value>",
+                xAccountId: "<id>",
                 hrisCreateEmployeeRequestDto: {
                   firstName: "Issac",
                   lastName: "Newton",
@@ -2940,7 +2940,7 @@ actions:
                 fields: "id,remote_id,first_name,last_name,name,display_name,gender,ethnicity,date_of_birth,birthday,marital_status,avatar_url,avatar,personal_email,personal_phone_number,work_email,work_phone_number,job_id,remote_job_id,job_title,job_description,department_id,remote_department_id,department,cost_centers,benefits,manager_id,remote_manager_id,hire_date,start_date,tenure,work_anniversary,employment_type,employment_contract_type,employment_status,termination_date,company_name,preferred_language,citizenships,home_location,work_location,employments,custom_fields,documents,created_at,updated_at,employee_number,national_identity_number",
                 expand: "company,employments,work_location,home_location,custom_fields,groups",
                 include: "avatar_url,avatar,custom_fields,job_description,benefits",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
               });
 
               // Handle the result
@@ -2977,7 +2977,7 @@ actions:
             async function run() {
               const result = await stackOne.hris.updateEmployee({
                 id: "<id>",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
                 hrisCreateEmployeeRequestDto: {
                   firstName: "Issac",
                   lastName: "Newton",
@@ -3140,7 +3140,7 @@ actions:
                   updatedAfter: "2020-01-01T00:00:00.000Z",
                 },
                 updatedAfter: "2020-01-01T00:00:00.000Z",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
               });
 
               // Handle the result
@@ -3171,7 +3171,7 @@ actions:
             async function run() {
               const result = await stackOne.hris.uploadEmployeeDocument({
                 id: "<id>",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
                 hrisDocumentsUploadRequestDto: {
                   name: "weather-forecast",
                   fileFormat: {
@@ -3220,7 +3220,7 @@ actions:
             async function run() {
               const result = await stackOne.hris.batchUploadEmployeeDocument({
                 id: "<id>",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
                 hrisBatchDocumentUploadRequestDto: {
                   items: [
                     {
@@ -3268,9 +3268,9 @@ actions:
             async function run() {
               const result = await stackOne.hris.getEmployeeDocument({
                 id: "<id>",
-                subResourceId: "<value>",
+                subResourceId: "<id>",
                 fields: "id,remote_id,name,path,type,category,category_id,remote_category_id,contents,created_at,updated_at,remote_url,file_format",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
               });
 
               // Handle the result
@@ -3296,9 +3296,9 @@ actions:
             async function run() {
               const result = await stackOne.hris.downloadEmployeeDocument({
                 id: "<id>",
-                subResourceId: "<value>",
+                subResourceId: "<id>",
                 format: "base64",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
               });
 
               // Handle the result
@@ -3330,7 +3330,7 @@ actions:
                 },
                 updatedAfter: "2020-01-01T00:00:00.000Z",
                 expand: "groups",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
               });
 
               // Handle the result
@@ -3356,10 +3356,10 @@ actions:
             async function run() {
               const result = await stackOne.hris.getEmployeeEmployment({
                 id: "<id>",
-                subResourceId: "<value>",
+                subResourceId: "<id>",
                 fields: "id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,employment_type,employment_contract_type,created_at,updated_at",
                 expand: "groups",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
               });
 
               // Handle the result
@@ -3390,7 +3390,7 @@ actions:
                   updatedAfter: "2020-01-01T00:00:00.000Z",
                 },
                 updatedAfter: "2020-01-01T00:00:00.000Z",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
               });
 
               // Handle the result
@@ -3416,7 +3416,7 @@ actions:
             async function run() {
               const result = await stackOne.hris.createEmployeeTimeOffRequest({
                 id: "<id>",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
                 hrisCreateTimeOffRequestDto: {
                   employeeId: "1687-3",
                   approverId: "1687-4",
@@ -3453,9 +3453,9 @@ actions:
             async function run() {
               const result = await stackOne.hris.getEmployeesTimeOffRequest({
                 id: "<id>",
-                subResourceId: "<value>",
+                subResourceId: "<id>",
                 fields: "id,remote_id,employee_id,remote_employee_id,approver_id,remote_approver_id,status,type,start_date,end_date,start_half_day,end_half_day,duration,created_at,updated_at",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
               });
 
               // Handle the result
@@ -3486,7 +3486,7 @@ actions:
                   updatedAfter: "2020-01-01T00:00:00.000Z",
                 },
                 updatedAfter: "2020-01-01T00:00:00.000Z",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
               });
 
               // Handle the result
@@ -3516,7 +3516,7 @@ actions:
             async function run() {
               const result = await stackOne.hris.createEmployeeWorkEligibilityRequest({
                 id: "<id>",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
                 hrisCreateWorkEligibilityRequestDto: {
                   document: {
                     id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
@@ -3570,9 +3570,9 @@ actions:
             async function run() {
               const result = await stackOne.hris.getEmployeesWorkEligibility({
                 id: "<id>",
-                subResourceId: "<value>",
+                subResourceId: "<id>",
                 fields: "id,remote_id,type,sub_type,document,valid_from,valid_to,issued_by,number",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
               });
 
               // Handle the result
@@ -3602,8 +3602,8 @@ actions:
             async function run() {
               const result = await stackOne.hris.updateEmployeeWorkEligibilityRequest({
                 id: "<id>",
-                subResourceId: "<value>",
-                xAccountId: "<value>",
+                subResourceId: "<id>",
+                xAccountId: "<id>",
                 hrisCreateWorkEligibilityRequestDto: {
                   document: {
                     id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
@@ -3662,7 +3662,7 @@ actions:
                 },
                 updatedAfter: "2020-01-01T00:00:00.000Z",
                 expand: "groups",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
               });
 
               // Handle the result
@@ -3690,7 +3690,7 @@ actions:
                 id: "<id>",
                 fields: "id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,employment_type,employment_contract_type,created_at,updated_at",
                 expand: "groups",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
               });
 
               // Handle the result
@@ -3720,7 +3720,7 @@ actions:
                   updatedAfter: "2020-01-01T00:00:00.000Z",
                 },
                 updatedAfter: "2020-01-01T00:00:00.000Z",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
               });
 
               // Handle the result
@@ -3750,7 +3750,7 @@ actions:
                   updatedAfter: "2020-01-01T00:00:00.000Z",
                 },
                 updatedAfter: "2020-01-01T00:00:00.000Z",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
               });
 
               // Handle the result
@@ -3777,7 +3777,7 @@ actions:
               const result = await stackOne.hris.getDepartmentGroup({
                 id: "<id>",
                 fields: "id,remote_id,name",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
               });
 
               // Handle the result
@@ -3804,7 +3804,7 @@ actions:
               const result = await stackOne.hris.getGroup({
                 id: "<id>",
                 fields: "id,remote_id,name,type,parent_ids,remote_parent_ids,owner_ids,remote_owner_ids",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
               });
 
               // Handle the result
@@ -3834,7 +3834,7 @@ actions:
                   updatedAfter: "2020-01-01T00:00:00.000Z",
                 },
                 updatedAfter: "2020-01-01T00:00:00.000Z",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
               });
 
               // Handle the result
@@ -3861,7 +3861,7 @@ actions:
               const result = await stackOne.hris.getJob({
                 id: "<id>",
                 fields: "id,remote_id,name,type,parent_ids,remote_parent_ids,owner_ids,remote_owner_ids",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
               });
 
               // Handle the result
@@ -3891,7 +3891,7 @@ actions:
                   updatedAfter: "2020-01-01T00:00:00.000Z",
                 },
                 updatedAfter: "2020-01-01T00:00:00.000Z",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
               });
 
               // Handle the result
@@ -3918,7 +3918,7 @@ actions:
               const result = await stackOne.hris.getLocation({
                 id: "<id>",
                 fields: "id,remote_id,employee_id,remote_employee_id,name,phone_number,street_1,street_2,city,state,zip_code,country,location_type,created_at,updated_at",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
               });
 
               // Handle the result
@@ -3948,7 +3948,7 @@ actions:
                   updatedAfter: "2020-01-01T00:00:00.000Z",
                 },
                 updatedAfter: "2020-01-01T00:00:00.000Z",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
               });
 
               // Handle the result
@@ -3973,7 +3973,7 @@ actions:
 
             async function run() {
               const result = await stackOne.hris.createTimeOffRequest({
-                xAccountId: "<value>",
+                xAccountId: "<id>",
                 hrisCreateTimeOffRequestDto: {
                   employeeId: "1687-3",
                   approverId: "1687-4",
@@ -4011,7 +4011,7 @@ actions:
               const result = await stackOne.hris.getTimeOffRequest({
                 id: "<id>",
                 fields: "id,remote_id,employee_id,remote_employee_id,approver_id,remote_approver_id,status,type,start_date,end_date,start_half_day,end_half_day,duration,created_at,updated_at",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
               });
 
               // Handle the result
@@ -4037,7 +4037,7 @@ actions:
             async function run() {
               const result = await stackOne.hris.updateTimeOffRequest({
                 id: "<id>",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
                 hrisCreateTimeOffRequestDto: {
                   employeeId: "1687-3",
                   approverId: "1687-4",
@@ -4079,7 +4079,7 @@ actions:
                 },
                 updatedAfter: "2020-01-01T00:00:00.000Z",
                 expand: "roles",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
               });
 
               // Handle the result
@@ -4107,7 +4107,7 @@ actions:
                 id: "<id>",
                 fields: "id,remote_id,parent_id,remote_parent_id,name,description,roles,type,created_at,updated_at",
                 expand: "roles",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
               });
 
               // Handle the result
@@ -4138,7 +4138,7 @@ actions:
                 },
                 updatedAfter: "2020-01-01T00:00:00.000Z",
                 expand: "permissions",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
               });
 
               // Handle the result
@@ -4166,7 +4166,7 @@ actions:
                 id: "<id>",
                 fields: "id,remote_id,name,permissions,description,created_at,updated_at",
                 expand: "permissions",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
               });
 
               // Handle the result
@@ -4197,7 +4197,7 @@ actions:
                 },
                 updatedAfter: "2020-01-01T00:00:00.000Z",
                 expand: "policies",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
               });
 
               // Handle the result
@@ -4225,7 +4225,7 @@ actions:
                 id: "<id>",
                 fields: "id,remote_id,name,type,policies,description,created_at,updated_at",
                 expand: "policies",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
               });
 
               // Handle the result
@@ -4256,7 +4256,7 @@ actions:
                 },
                 updatedAfter: "2020-01-01T00:00:00.000Z",
                 expand: "roles,groups",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
               });
 
               // Handle the result
@@ -4284,7 +4284,7 @@ actions:
                 id: "<id>",
                 fields: "id,remote_id,first_name,last_name,name,primary_email_address,username,roles,groups,status,avatar,is_bot_user,last_active_at,last_login_at,created_at,updated_at,multi_factor_enabled",
                 expand: "roles,groups",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
               });
 
               // Handle the result
@@ -4316,7 +4316,7 @@ actions:
                 updatedAfter: "2020-01-01T00:00:00.000Z",
                 userId: "c28xyrc55866bvuv",
                 remoteUserId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
               });
 
               // Handle the result
@@ -4342,7 +4342,7 @@ actions:
             async function run() {
               const result = await stackOne.lms.getAssignment({
                 id: "<id>",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
               });
 
               // Handle the result
@@ -4367,12 +4367,12 @@ actions:
 
             async function run() {
               const result = await stackOne.lms.listCategories({
-                fields: "id,remote_id,name,active",
+                fields: "id,remote_id,name,active,level",
                 filter: {
                   updatedAfter: "2020-01-01T00:00:00.000Z",
                 },
                 updatedAfter: "2020-01-01T00:00:00.000Z",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
               });
 
               // Handle the result
@@ -4398,8 +4398,8 @@ actions:
             async function run() {
               const result = await stackOne.lms.getCategory({
                 id: "<id>",
-                fields: "id,remote_id,name,active",
-                xAccountId: "<value>",
+                fields: "id,remote_id,name,active,level",
+                xAccountId: "<id>",
               });
 
               // Handle the result
@@ -4429,7 +4429,7 @@ actions:
                   updatedAfter: "2020-01-01T00:00:00.000Z",
                 },
                 updatedAfter: "2020-01-01T00:00:00.000Z",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
               });
 
               // Handle the result
@@ -4455,7 +4455,7 @@ actions:
             async function run() {
               const result = await stackOne.lms.getCompletion({
                 id: "<id>",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
               });
 
               // Handle the result
@@ -4485,7 +4485,7 @@ actions:
                   updatedAfter: "2020-01-01T00:00:00.000Z",
                 },
                 updatedAfter: "2020-01-01T00:00:00.000Z",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
               });
 
               // Handle the result
@@ -4511,7 +4511,7 @@ actions:
 
             async function run() {
               const result = await stackOne.lms.createContent({
-                xAccountId: "<value>",
+                xAccountId: "<id>",
                 lmsCreateContentRequestDto: {
                   unifiedCustomFields: {
                     "my_project_custom_field_1": "REF-1236",
@@ -4569,7 +4569,7 @@ actions:
 
             async function run() {
               const result = await stackOne.lms.upsertContent({
-                xAccountId: "<value>",
+                xAccountId: "<id>",
                 lmsUpsertContentRequestDto: {
                   unifiedCustomFields: {
                     "my_project_custom_field_1": "REF-1236",
@@ -4627,7 +4627,7 @@ actions:
 
             async function run() {
               const result = await stackOne.lms.batchUpsertContent({
-                xAccountId: "<value>",
+                xAccountId: "<id>",
                 lmsBatchUpsertContentRequestDto: {
                   items: [
                     {
@@ -4725,7 +4725,7 @@ actions:
               const result = await stackOne.lms.getContent({
                 id: "<id>",
                 fields: "id,remote_id,external_reference,course_ids,remote_course_ids,title,description,languages,content_url,content_type,cover_url,active,duration,categories,order",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
               });
 
               // Handle the result
@@ -4752,7 +4752,7 @@ actions:
             async function run() {
               const result = await stackOne.lms.updateContent({
                 id: "<id>",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
                 lmsCreateContentRequestDto: {
                   unifiedCustomFields: {
                     "my_project_custom_field_1": "REF-1236",
@@ -4820,7 +4820,7 @@ actions:
                   updatedAfter: "2020-01-01T00:00:00.000Z",
                 },
                 updatedAfter: "2020-01-01T00:00:00.000Z",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
               });
 
               // Handle the result
@@ -4847,7 +4847,7 @@ actions:
               const result = await stackOne.lms.getCourse({
                 id: "<id>",
                 fields: "id,remote_id,external_reference,content_ids,remote_content_ids,title,description,languages,course_type,cover_url,url,active,duration,categories,skills,updated_at,created_at",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
               });
 
               // Handle the result
@@ -4877,7 +4877,7 @@ actions:
                   updatedAfter: "2020-01-01T00:00:00.000Z",
                 },
                 updatedAfter: "2020-01-01T00:00:00.000Z",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
               });
 
               // Handle the result
@@ -4904,7 +4904,7 @@ actions:
               const result = await stackOne.lms.getSkill({
                 id: "<id>",
                 fields: "id,remote_id,name,active,level",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
               });
 
               // Handle the result
@@ -4934,7 +4934,7 @@ actions:
                   updatedAfter: "2020-01-01T00:00:00.000Z",
                 },
                 updatedAfter: "2020-01-01T00:00:00.000Z",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
               });
 
               // Handle the result
@@ -4961,7 +4961,7 @@ actions:
               const result = await stackOne.lms.getUser({
                 id: "<id>",
                 fields: "id,remote_id,external_reference,active,email,phone_number,created_at,updated_at,name",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
               });
 
               // Handle the result
@@ -4994,7 +4994,7 @@ actions:
                 updatedAfter: "2020-01-01T00:00:00.000Z",
                 userId: "c28xyrc55866bvuv",
                 remoteUserId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
               });
 
               // Handle the result
@@ -5020,8 +5020,8 @@ actions:
             async function run() {
               const result = await stackOne.lms.getUserAssignment({
                 id: "<id>",
-                subResourceId: "<value>",
-                xAccountId: "<value>",
+                subResourceId: "<id>",
+                xAccountId: "<id>",
               });
 
               // Handle the result
@@ -5052,7 +5052,7 @@ actions:
                   updatedAfter: "2020-01-01T00:00:00.000Z",
                 },
                 updatedAfter: "2020-01-01T00:00:00.000Z",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
               });
 
               // Handle the result
@@ -5078,7 +5078,7 @@ actions:
             async function run() {
               const result = await stackOne.lms.createUserCompletion({
                 id: "<id>",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
                 lmsCreateCompletionRequestDto: {
                   passthrough: {
                     "other_known_names": "John Doe",
@@ -5113,8 +5113,8 @@ actions:
             async function run() {
               const result = await stackOne.lms.getUserCompletion({
                 id: "<id>",
-                subResourceId: "<value>",
-                xAccountId: "<value>",
+                subResourceId: "<id>",
+                xAccountId: "<id>",
               });
 
               // Handle the result
@@ -5144,7 +5144,7 @@ actions:
                   updatedAfter: "2020-01-01T00:00:00.000Z",
                 },
                 updatedAfter: "2020-01-01T00:00:00.000Z",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
               });
 
               // Handle the result
@@ -5171,7 +5171,7 @@ actions:
               const result = await stackOne.marketing.getCampaign({
                 id: "<id>",
                 fields: "id,remote_id,name,created_at,updated_at,description,schedule_type,status,channels,first_sent_at,last_sent_at,tags,messages",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
               });
 
               // Handle the result
@@ -5201,7 +5201,7 @@ actions:
                   updatedAfter: "2020-01-01T00:00:00.000Z",
                 },
                 updatedAfter: "2020-01-01T00:00:00.000Z",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
               });
 
               // Handle the result
@@ -5226,7 +5226,7 @@ actions:
 
             async function run() {
               const result = await stackOne.marketing.createContentBlock({
-                xAccountId: "<value>",
+                xAccountId: "<id>",
                 marketingCreateContentBlocksRequestDto: {
                   passthrough: {
                     "other_known_names": "John Doe",
@@ -5258,7 +5258,7 @@ actions:
               const result = await stackOne.marketing.getContentBlock({
                 id: "<id>",
                 fields: "id,remote_id,name,type,content,status,tags,created_at,updated_at",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
               });
 
               // Handle the result
@@ -5284,7 +5284,7 @@ actions:
             async function run() {
               const result = await stackOne.marketing.updateContentBlock({
                 id: "<id>",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
                 marketingCreateContentBlocksRequestDto: {
                   passthrough: {
                     "other_known_names": "John Doe",
@@ -5319,7 +5319,7 @@ actions:
                   updatedAfter: "2020-01-01T00:00:00.000Z",
                 },
                 updatedAfter: "2020-01-01T00:00:00.000Z",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
               });
 
               // Handle the result
@@ -5344,7 +5344,7 @@ actions:
 
             async function run() {
               const result = await stackOne.marketing.createEmailTemplate({
-                xAccountId: "<value>",
+                xAccountId: "<id>",
                 marketingCreateEmailTemplateRequestDto: {
                   messages: [
                     {
@@ -5392,7 +5392,7 @@ actions:
               const result = await stackOne.marketing.getEmailTemplate({
                 id: "<id>",
                 fields: "id,remote_id,name,messages,created_at,updated_at,tags",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
               });
 
               // Handle the result
@@ -5418,7 +5418,7 @@ actions:
             async function run() {
               const result = await stackOne.marketing.updateEmailTemplate({
                 id: "<id>",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
                 marketingCreateEmailTemplateRequestDto: {
                   messages: [
                     {
@@ -5462,7 +5462,7 @@ actions:
                   updatedAfter: "2020-01-01T00:00:00.000Z",
                 },
                 updatedAfter: "2020-01-01T00:00:00.000Z",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
               });
 
               // Handle the result
@@ -5487,7 +5487,7 @@ actions:
 
             async function run() {
               const result = await stackOne.marketing.createInAppTemplate({
-                xAccountId: "<value>",
+                xAccountId: "<id>",
                 marketingCreateInAppTemplateRequestDto: {
                   messages: [
                     {
@@ -5528,7 +5528,7 @@ actions:
               const result = await stackOne.marketing.getInAppTemplate({
                 id: "<id>",
                 fields: "id,remote_id,name,messages,created_at,updated_at,tags",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
               });
 
               // Handle the result
@@ -5554,7 +5554,7 @@ actions:
             async function run() {
               const result = await stackOne.marketing.updateInAppTemplate({
                 id: "<id>",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
                 marketingCreateInAppTemplateRequestDto: {
                   messages: [
                     {
@@ -5598,7 +5598,7 @@ actions:
                   updatedAfter: "2020-01-01T00:00:00.000Z",
                 },
                 updatedAfter: "2020-01-01T00:00:00.000Z",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
               });
 
               // Handle the result
@@ -5623,7 +5623,7 @@ actions:
 
             async function run() {
               const result = await stackOne.marketing.createPushTemplate({
-                xAccountId: "<value>",
+                xAccountId: "<id>",
                 marketingCreatePushTemplateRequestDto: {
                   messages: [
                     {
@@ -5678,7 +5678,7 @@ actions:
               const result = await stackOne.marketing.getPushTemplate({
                 id: "<id>",
                 fields: "id,remote_id,name,messages,created_at,updated_at,tags",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
               });
 
               // Handle the result
@@ -5704,7 +5704,7 @@ actions:
             async function run() {
               const result = await stackOne.marketing.updatePushTemplate({
                 id: "<id>",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
                 marketingCreatePushTemplateRequestDto: {
                   messages: [
                     {
@@ -5762,7 +5762,7 @@ actions:
                   updatedAfter: "2020-01-01T00:00:00.000Z",
                 },
                 updatedAfter: "2020-01-01T00:00:00.000Z",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
               });
 
               // Handle the result
@@ -5787,7 +5787,7 @@ actions:
 
             async function run() {
               const result = await stackOne.marketing.createSmsTemplate({
-                xAccountId: "<value>",
+                xAccountId: "<id>",
                 marketingCreateSmsTemplateRequestDto: {
                   messages: [
                     {
@@ -5842,7 +5842,7 @@ actions:
               const result = await stackOne.marketing.getSmsTemplate({
                 id: "<id>",
                 fields: "id,remote_id,name,messages,created_at,updated_at,tags",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
               });
 
               // Handle the result
@@ -5868,7 +5868,7 @@ actions:
             async function run() {
               const result = await stackOne.marketing.updateSmsTemplate({
                 id: "<id>",
-                xAccountId: "<value>",
+                xAccountId: "<id>",
                 marketingCreateSmsTemplateRequestDto: {
                   messages: [
                     {
@@ -5907,7 +5907,7 @@ actions:
 
             async function run() {
               const result = await stackOne.proxy.proxyRequest({
-                xAccountId: "<value>",
+                xAccountId: "<id>",
                 proxyRequestBody: {
                   url: "https://api.sample-integration.com/v1",
                   path: "/employees/directory",

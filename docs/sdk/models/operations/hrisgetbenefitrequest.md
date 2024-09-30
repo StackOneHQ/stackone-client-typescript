@@ -9,7 +9,7 @@ let value: HrisGetBenefitRequest = {
   fields:
     "id,remote_id,name,benefit_type,provider,description,created_at,updated_at",
   id: "<id>",
-  xAccountId: "<value>",
+  xAccountId: "<id>",
 };
 ```
 

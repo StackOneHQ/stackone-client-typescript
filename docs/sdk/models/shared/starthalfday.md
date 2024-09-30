@@ -2,25 +2,19 @@
 
 True if the start of the time off request begins half way through the day
 
-## Example Usage
-
-```typescript
-import { StartHalfDay } from "@stackone/stackone-client-ts/sdk/models/shared";
-
-let value: StartHalfDay = true;
-```
 
 ## Supported Types
 
 ### `boolean`
 
 ```typescript
-const value: boolean = /* values here */
+const value: boolean = true;
 ```
 
 ### `shared.HrisCreateTimeOffRequestDtoSchemas2`
 
 ```typescript
-const value: shared.HrisCreateTimeOffRequestDtoSchemas2 = /* values here */
+const value: shared.HrisCreateTimeOffRequestDtoSchemas2 =
+  HrisCreateTimeOffRequestDtoSchemas2.True;
 ```
 

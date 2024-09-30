@@ -1,24 +1,17 @@
 # QuestionRequired
 
-## Example Usage
-
-```typescript
-import { QuestionRequired } from "@stackone/stackone-client-ts/sdk/models/shared";
-
-let value: QuestionRequired = false;
-```
 
 ## Supported Types
 
 ### `boolean`
 
 ```typescript
-const value: boolean = /* values here */
+const value: boolean = false;
 ```
 
 ### `shared.Question2`
 
 ```typescript
-const value: shared.Question2 = /* values here */
+const value: shared.Question2 = Question2.True;
 ```
 

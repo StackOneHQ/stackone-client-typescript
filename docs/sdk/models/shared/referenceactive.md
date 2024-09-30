@@ -2,25 +2,18 @@
 
 The reference status
 
-## Example Usage
-
-```typescript
-import { ReferenceActive } from "@stackone/stackone-client-ts/sdk/models/shared";
-
-let value: ReferenceActive = true;
-```
 
 ## Supported Types
 
 ### `boolean`
 
 ```typescript
-const value: boolean = /* values here */
+const value: boolean = true;
 ```
 
 ### `shared.Reference2`
 
 ```typescript
-const value: shared.Reference2 = /* values here */
+const value: shared.Reference2 = Reference2.True;
 ```
 

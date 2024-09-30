@@ -1,42 +1,37 @@
 # IamUserSchemasAvatarSourceValue
 
-## Example Usage
-
-```typescript
-import { IamUserSchemasAvatarSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
-
-let value: IamUserSchemasAvatarSourceValue = false;
-```
 
 ## Supported Types
 
 ### `string`
 
 ```typescript
-const value: string = /* values here */
+const value: string = "<value>";
 ```
 
 ### `number`
 
 ```typescript
-const value: number = /* values here */
+const value: number = 9677.95;
 ```
 
 ### `boolean`
 
 ```typescript
-const value: boolean = /* values here */
+const value: boolean = false;
 ```
 
 ### `shared.IamUserSchemasAvatar4`
 
 ```typescript
-const value: shared.IamUserSchemasAvatar4 = /* values here */
+const value: shared.IamUserSchemasAvatar4 = {};
 ```
 
 ### `any[]`
 
 ```typescript
-const value: any[] = /* values here */
+const value: any[] = [
+  "<value>",
+];
 ```
 

@@ -1,44 +1,37 @@
 # CourseSourceValue
 
-## Example Usage
-
-```typescript
-import { CourseSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
-
-let value: CourseSourceValue = [
-  "<value>",
-];
-```
 
 ## Supported Types
 
 ### `string`
 
 ```typescript
-const value: string = /* values here */
+const value: string = "<value>";
 ```
 
 ### `number`
 
 ```typescript
-const value: number = /* values here */
+const value: number = 7505.95;
 ```
 
 ### `boolean`
 
 ```typescript
-const value: boolean = /* values here */
+const value: boolean = false;
 ```
 
 ### `shared.Course4`
 
 ```typescript
-const value: shared.Course4 = /* values here */
+const value: shared.Course4 = {};
 ```
 
 ### `any[]`
 
 ```typescript
-const value: any[] = /* values here */
+const value: any[] = [
+  "<value>",
+];
 ```
 

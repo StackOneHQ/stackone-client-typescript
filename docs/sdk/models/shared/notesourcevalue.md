@@ -2,43 +2,38 @@
 
 The source value of the notes visibility.
 
-## Example Usage
-
-```typescript
-import { NoteSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
-
-let value: NoteSourceValue = "Public";
-```
 
 ## Supported Types
 
 ### `string`
 
 ```typescript
-const value: string = /* values here */
+const value: string = "Public";
 ```
 
 ### `number`
 
 ```typescript
-const value: number = /* values here */
+const value: number = Public;
 ```
 
 ### `boolean`
 
 ```typescript
-const value: boolean = /* values here */
+const value: boolean = true;
 ```
 
 ### `shared.Note4`
 
 ```typescript
-const value: shared.Note4 = /* values here */
+const value: shared.Note4 = {};
 ```
 
 ### `any[]`
 
 ```typescript
-const value: any[] = /* values here */
+const value: any[] = [
+  "Public",
+];
 ```
 

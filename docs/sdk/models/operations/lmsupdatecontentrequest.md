@@ -40,7 +40,7 @@ let value: LmsUpdateContentRequest = {
     },
   },
   id: "<id>",
-  xAccountId: "<value>",
+  xAccountId: "<id>",
 };
 ```
 

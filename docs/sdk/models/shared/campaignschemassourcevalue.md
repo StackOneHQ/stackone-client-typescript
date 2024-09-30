@@ -2,43 +2,38 @@
 
 The source value of the Status.
 
-## Example Usage
-
-```typescript
-import { CampaignSchemasSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
-
-let value: CampaignSchemasSourceValue = "Email";
-```
 
 ## Supported Types
 
 ### `string`
 
 ```typescript
-const value: string = /* values here */
+const value: string = "Email";
 ```
 
 ### `number`
 
 ```typescript
-const value: number = /* values here */
+const value: number = Email;
 ```
 
 ### `boolean`
 
 ```typescript
-const value: boolean = /* values here */
+const value: boolean = true;
 ```
 
 ### `shared.CampaignSchemas4`
 
 ```typescript
-const value: shared.CampaignSchemas4 = /* values here */
+const value: shared.CampaignSchemas4 = {};
 ```
 
 ### `any[]`
 
 ```typescript
-const value: any[] = /* values here */
+const value: any[] = [
+  "Email",
+];
 ```
 
