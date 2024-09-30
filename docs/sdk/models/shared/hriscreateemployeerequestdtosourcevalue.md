@@ -1,44 +1,37 @@
 # HrisCreateEmployeeRequestDtoSourceValue
 
-## Example Usage
-
-```typescript
-import { HrisCreateEmployeeRequestDtoSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
-
-let value: HrisCreateEmployeeRequestDtoSourceValue = [
-  "<value>",
-];
-```
 
 ## Supported Types
 
 ### `string`
 
 ```typescript
-const value: string = /* values here */
+const value: string = "<value>";
 ```
 
 ### `number`
 
 ```typescript
-const value: number = /* values here */
+const value: number = 9742.56;
 ```
 
 ### `boolean`
 
 ```typescript
-const value: boolean = /* values here */
+const value: boolean = false;
 ```
 
 ### `shared.HrisCreateEmployeeRequestDto4`
 
 ```typescript
-const value: shared.HrisCreateEmployeeRequestDto4 = /* values here */
+const value: shared.HrisCreateEmployeeRequestDto4 = {};
 ```
 
 ### `any[]`
 
 ```typescript
-const value: any[] = /* values here */
+const value: any[] = [
+  "<value>",
+];
 ```
 

@@ -55,7 +55,7 @@ let value: AtsUpdateCandidateRequest = {
     },
   },
   id: "<id>",
-  xAccountId: "<value>",
+  xAccountId: "<id>",
 };
 ```
 

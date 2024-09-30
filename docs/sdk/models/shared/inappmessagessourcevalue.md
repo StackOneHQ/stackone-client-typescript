@@ -2,43 +2,38 @@
 
 The original value from the provider used to derive the unified message type.
 
-## Example Usage
-
-```typescript
-import { InAppMessagesSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
-
-let value: InAppMessagesSourceValue = "Email";
-```
 
 ## Supported Types
 
 ### `string`
 
 ```typescript
-const value: string = /* values here */
+const value: string = "Email";
 ```
 
 ### `number`
 
 ```typescript
-const value: number = /* values here */
+const value: number = Email;
 ```
 
 ### `boolean`
 
 ```typescript
-const value: boolean = /* values here */
+const value: boolean = true;
 ```
 
 ### `shared.InAppMessages4`
 
 ```typescript
-const value: shared.InAppMessages4 = /* values here */
+const value: shared.InAppMessages4 = {};
 ```
 
 ### `any[]`
 
 ```typescript
-const value: any[] = /* values here */
+const value: any[] = [
+  "Email",
+];
 ```
 

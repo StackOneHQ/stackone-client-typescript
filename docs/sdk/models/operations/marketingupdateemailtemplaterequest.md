@@ -21,7 +21,7 @@ let value: MarketingUpdateEmailTemplateRequest = {
     },
   },
   id: "<id>",
-  xAccountId: "<value>",
+  xAccountId: "<id>",
 };
 ```
 

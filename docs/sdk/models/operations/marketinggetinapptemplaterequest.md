@@ -8,7 +8,7 @@ import { MarketingGetInAppTemplateRequest } from "@stackone/stackone-client-ts/s
 let value: MarketingGetInAppTemplateRequest = {
   fields: "id,remote_id,name,messages,created_at,updated_at,tags",
   id: "<id>",
-  xAccountId: "<value>",
+  xAccountId: "<id>",
 };
 ```
 

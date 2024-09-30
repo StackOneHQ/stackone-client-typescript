@@ -2,43 +2,38 @@
 
 The source value of the employment type.
 
-## Example Usage
-
-```typescript
-import { JobPostingSchemasSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
-
-let value: JobPostingSchemasSourceValue = "Permanent";
-```
 
 ## Supported Types
 
 ### `string`
 
 ```typescript
-const value: string = /* values here */
+const value: string = "Permanent";
 ```
 
 ### `number`
 
 ```typescript
-const value: number = /* values here */
+const value: number = Permanent;
 ```
 
 ### `boolean`
 
 ```typescript
-const value: boolean = /* values here */
+const value: boolean = true;
 ```
 
 ### `shared.JobPostingSchemas4`
 
 ```typescript
-const value: shared.JobPostingSchemas4 = /* values here */
+const value: shared.JobPostingSchemas4 = {};
 ```
 
 ### `any[]`
 
 ```typescript
-const value: any[] = /* values here */
+const value: any[] = [
+  "Permanent",
+];
 ```
 

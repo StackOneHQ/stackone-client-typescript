@@ -23,7 +23,7 @@ let value: AtsCreateCandidateNoteRequest = {
     },
   },
   id: "<id>",
-  xAccountId: "<value>",
+  xAccountId: "<id>",
 };
 ```
 

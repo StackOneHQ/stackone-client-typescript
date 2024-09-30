@@ -1,44 +1,37 @@
 # EmployeeSchemasMaritalStatusSourceValue
 
-## Example Usage
-
-```typescript
-import { EmployeeSchemasMaritalStatusSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
-
-let value: EmployeeSchemasMaritalStatusSourceValue = [
-  "<value>",
-];
-```
 
 ## Supported Types
 
 ### `string`
 
 ```typescript
-const value: string = /* values here */
+const value: string = "<value>";
 ```
 
 ### `number`
 
 ```typescript
-const value: number = /* values here */
+const value: number = 7487.88;
 ```
 
 ### `boolean`
 
 ```typescript
-const value: boolean = /* values here */
+const value: boolean = false;
 ```
 
 ### `shared.EmployeeSchemasMaritalStatus4`
 
 ```typescript
-const value: shared.EmployeeSchemasMaritalStatus4 = /* values here */
+const value: shared.EmployeeSchemasMaritalStatus4 = {};
 ```
 
 ### `any[]`
 
 ```typescript
-const value: any[] = /* values here */
+const value: any[] = [
+  "<value>",
+];
 ```
 

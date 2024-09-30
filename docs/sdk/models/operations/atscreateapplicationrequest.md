@@ -74,7 +74,7 @@ let value: AtsCreateApplicationRequest = {
       name: "LinkedIn",
     },
   },
-  xAccountId: "<value>",
+  xAccountId: "<id>",
 };
 ```
 

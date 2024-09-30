@@ -1,43 +1,37 @@
 # HrisCreateEmployeeRequestDtoSchemasMaritalStatusSourceValue
 
-## Example Usage
-
-```typescript
-import { HrisCreateEmployeeRequestDtoSchemasMaritalStatusSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
-
-let value: HrisCreateEmployeeRequestDtoSchemasMaritalStatusSourceValue =
-  6658.59;
-```
 
 ## Supported Types
 
 ### `string`
 
 ```typescript
-const value: string = /* values here */
+const value: string = "<value>";
 ```
 
 ### `number`
 
 ```typescript
-const value: number = /* values here */
+const value: number = 6625.05;
 ```
 
 ### `boolean`
 
 ```typescript
-const value: boolean = /* values here */
+const value: boolean = false;
 ```
 
 ### `shared.HrisCreateEmployeeRequestDtoSchemasMaritalStatus4`
 
 ```typescript
-const value: shared.HrisCreateEmployeeRequestDtoSchemasMaritalStatus4 = /* values here */
+const value: shared.HrisCreateEmployeeRequestDtoSchemasMaritalStatus4 = {};
 ```
 
 ### `any[]`
 
 ```typescript
-const value: any[] = /* values here */
+const value: any[] = [
+  "<value>",
+];
 ```
 

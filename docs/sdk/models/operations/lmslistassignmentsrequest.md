@@ -13,7 +13,7 @@ let value: LmsListAssignmentsRequest = {
   },
   remoteUserId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
   userId: "c28xyrc55866bvuv",
-  xAccountId: "<value>",
+  xAccountId: "<id>",
 };
 ```
 

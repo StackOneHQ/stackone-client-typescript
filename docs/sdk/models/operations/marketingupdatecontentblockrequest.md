@@ -12,7 +12,7 @@ let value: MarketingUpdateContentBlockRequest = {
     },
   },
   id: "<id>",
-  xAccountId: "<value>",
+  xAccountId: "<id>",
 };
 ```
 

@@ -35,7 +35,7 @@ let value: HrisBatchUploadEmployeeDocumentRequest = {
     ],
   },
   id: "<id>",
-  xAccountId: "<value>",
+  xAccountId: "<id>",
 };
 ```
 

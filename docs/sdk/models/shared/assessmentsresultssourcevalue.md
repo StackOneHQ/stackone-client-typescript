@@ -2,43 +2,38 @@
 
 The source value of the assessment result.
 
-## Example Usage
-
-```typescript
-import { AssessmentsResultsSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
-
-let value: AssessmentsResultsSourceValue = "Passed";
-```
 
 ## Supported Types
 
 ### `string`
 
 ```typescript
-const value: string = /* values here */
+const value: string = "Passed";
 ```
 
 ### `number`
 
 ```typescript
-const value: number = /* values here */
+const value: number = Passed;
 ```
 
 ### `boolean`
 
 ```typescript
-const value: boolean = /* values here */
+const value: boolean = true;
 ```
 
 ### `shared.AssessmentsResults4`
 
 ```typescript
-const value: shared.AssessmentsResults4 = /* values here */
+const value: shared.AssessmentsResults4 = {};
 ```
 
 ### `any[]`
 
 ```typescript
-const value: any[] = /* values here */
+const value: any[] = [
+  "Passed",
+];
 ```
 

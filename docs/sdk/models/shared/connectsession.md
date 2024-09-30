@@ -19,9 +19,9 @@ let value: ConnectSession = {
   createdAt: new Date("2024-09-17T19:59:01.360Z"),
   id: 6900.25,
   organizationId: 6996.22,
-  originOwnerId: "<value>",
+  originOwnerId: "<id>",
   originOwnerName: "<value>",
-  projectId: "<value>",
+  projectId: "<id>",
 };
 ```
 

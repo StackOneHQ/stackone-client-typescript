@@ -2,43 +2,38 @@
 
 The source value of the interview status.
 
-## Example Usage
-
-```typescript
-import { ScheduledInterviewSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
-
-let value: ScheduledInterviewSourceValue = "Unscheduled";
-```
 
 ## Supported Types
 
 ### `string`
 
 ```typescript
-const value: string = /* values here */
+const value: string = "Unscheduled";
 ```
 
 ### `number`
 
 ```typescript
-const value: number = /* values here */
+const value: number = Unscheduled;
 ```
 
 ### `boolean`
 
 ```typescript
-const value: boolean = /* values here */
+const value: boolean = true;
 ```
 
 ### `shared.ScheduledInterview4`
 
 ```typescript
-const value: shared.ScheduledInterview4 = /* values here */
+const value: shared.ScheduledInterview4 = {};
 ```
 
 ### `any[]`
 
 ```typescript
-const value: any[] = /* values here */
+const value: any[] = [
+  "Unscheduled",
+];
 ```
 

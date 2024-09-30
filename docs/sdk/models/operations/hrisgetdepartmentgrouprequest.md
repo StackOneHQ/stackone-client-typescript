@@ -8,7 +8,7 @@ import { HrisGetDepartmentGroupRequest } from "@stackone/stackone-client-ts/sdk/
 let value: HrisGetDepartmentGroupRequest = {
   fields: "id,remote_id,name",
   id: "<id>",
-  xAccountId: "<value>",
+  xAccountId: "<id>",
 };
 ```
 

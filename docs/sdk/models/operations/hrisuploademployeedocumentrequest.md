@@ -31,7 +31,7 @@ let value: HrisUploadEmployeeDocumentRequest = {
     path: "/path/to/file",
   },
   id: "<id>",
-  xAccountId: "<value>",
+  xAccountId: "<id>",
 };
 ```
 

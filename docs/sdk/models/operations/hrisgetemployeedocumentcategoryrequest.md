@@ -8,7 +8,7 @@ import { HrisGetEmployeeDocumentCategoryRequest } from "@stackone/stackone-clien
 let value: HrisGetEmployeeDocumentCategoryRequest = {
   fields: "id,remote_id,name,active",
   id: "<id>",
-  xAccountId: "<value>",
+  xAccountId: "<id>",
 };
 ```
 

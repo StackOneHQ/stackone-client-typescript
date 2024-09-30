@@ -12,7 +12,7 @@ let value: CrmListContactsRequest = {
     updatedAfter: "2020-01-01T00:00:00.000Z",
   },
   include: "custom_fields",
-  xAccountId: "<value>",
+  xAccountId: "<id>",
 };
 ```
 

@@ -1,24 +1,17 @@
 # JobPostingQuestionnaireInternal
 
-## Example Usage
-
-```typescript
-import { JobPostingQuestionnaire2, JobPostingQuestionnaireInternal } from "@stackone/stackone-client-ts/sdk/models/shared";
-
-let value: JobPostingQuestionnaireInternal = JobPostingQuestionnaire2.True;
-```
 
 ## Supported Types
 
 ### `boolean`
 
 ```typescript
-const value: boolean = /* values here */
+const value: boolean = false;
 ```
 
 ### `shared.JobPostingQuestionnaire2`
 
 ```typescript
-const value: shared.JobPostingQuestionnaire2 = /* values here */
+const value: shared.JobPostingQuestionnaire2 = JobPostingQuestionnaire2.True;
 ```
 

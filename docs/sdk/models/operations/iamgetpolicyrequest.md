@@ -9,7 +9,7 @@ let value: IamGetPolicyRequest = {
   expand: "permissions",
   fields: "id,remote_id,name,permissions,description,created_at,updated_at",
   id: "<id>",
-  xAccountId: "<value>",
+  xAccountId: "<id>",
 };
 ```
 

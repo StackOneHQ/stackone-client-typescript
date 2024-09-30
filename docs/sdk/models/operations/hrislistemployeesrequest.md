@@ -14,7 +14,7 @@ let value: HrisListEmployeesRequest = {
     updatedAfter: "2020-01-01T00:00:00.000Z",
   },
   include: "avatar_url,avatar,custom_fields,job_description,benefits",
-  xAccountId: "<value>",
+  xAccountId: "<id>",
 };
 ```
 

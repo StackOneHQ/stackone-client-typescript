@@ -23,6 +23,7 @@ export type ContentLanguageEnumSourceValue =
  * The Locale Code of the language
  */
 export enum ContentLanguageEnumValue {
+  ARAR = "ar_AR",
   AaER = "aa_ER",
   AfNA = "af_NA",
   AfZA = "af_ZA",
@@ -192,6 +193,7 @@ export enum ContentLanguageEnumValue {
   EsGT = "es_GT",
   EsHN = "es_HN",
   EsIC = "es_IC",
+  EsLA = "es_LA",
   EsMX = "es_MX",
   EsNI = "es_NI",
   EsPA = "es_PA",

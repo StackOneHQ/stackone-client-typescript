@@ -16,7 +16,7 @@ let value: LmsCreateUserCompletionRequest = {
     },
   },
   id: "<id>",
-  xAccountId: "<value>",
+  xAccountId: "<id>",
 };
 ```
 

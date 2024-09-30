@@ -39,8 +39,8 @@ let value: HrisUpdateEmployeeWorkEligibilityRequestRequest = {
     validTo: new Date("2021-01-01T00:00.000Z"),
   },
   id: "<id>",
-  subResourceId: "<value>",
-  xAccountId: "<value>",
+  subResourceId: "<id>",
+  xAccountId: "<id>",
 };
 ```
 

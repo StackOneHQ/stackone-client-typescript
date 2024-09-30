@@ -1,42 +1,37 @@
 # HRISLocationSourceValue
 
-## Example Usage
-
-```typescript
-import { HRISLocationSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
-
-let value: HRISLocationSourceValue = false;
-```
 
 ## Supported Types
 
 ### `string`
 
 ```typescript
-const value: string = /* values here */
+const value: string = "<value>";
 ```
 
 ### `number`
 
 ```typescript
-const value: number = /* values here */
+const value: number = 4174.86;
 ```
 
 ### `boolean`
 
 ```typescript
-const value: boolean = /* values here */
+const value: boolean = false;
 ```
 
 ### `shared.HRISLocation4`
 
 ```typescript
-const value: shared.HRISLocation4 = /* values here */
+const value: shared.HRISLocation4 = {};
 ```
 
 ### `any[]`
 
 ```typescript
-const value: any[] = /* values here */
+const value: any[] = [
+  "<value>",
+];
 ```
 

@@ -2,43 +2,38 @@
 
 The source value of the offer status.
 
-## Example Usage
-
-```typescript
-import { OfferSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
-
-let value: OfferSourceValue = "Pending";
-```
 
 ## Supported Types
 
 ### `string`
 
 ```typescript
-const value: string = /* values here */
+const value: string = "Pending";
 ```
 
 ### `number`
 
 ```typescript
-const value: number = /* values here */
+const value: number = Pending;
 ```
 
 ### `boolean`
 
 ```typescript
-const value: boolean = /* values here */
+const value: boolean = true;
 ```
 
 ### `shared.Offer4`
 
 ```typescript
-const value: shared.Offer4 = /* values here */
+const value: shared.Offer4 = {};
 ```
 
 ### `any[]`
 
 ```typescript
-const value: any[] = /* values here */
+const value: any[] = [
+  "Pending",
+];
 ```
 

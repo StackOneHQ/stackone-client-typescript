@@ -1,42 +1,37 @@
 # TimeOffSchemasSourceValue
 
-## Example Usage
-
-```typescript
-import { TimeOffSchemasSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
-
-let value: TimeOffSchemasSourceValue = 8953.86;
-```
 
 ## Supported Types
 
 ### `string`
 
 ```typescript
-const value: string = /* values here */
+const value: string = "<value>";
 ```
 
 ### `number`
 
 ```typescript
-const value: number = /* values here */
+const value: number = 9679.66;
 ```
 
 ### `boolean`
 
 ```typescript
-const value: boolean = /* values here */
+const value: boolean = false;
 ```
 
 ### `shared.TimeOffSchemas4`
 
 ```typescript
-const value: shared.TimeOffSchemas4 = /* values here */
+const value: shared.TimeOffSchemas4 = {};
 ```
 
 ### `any[]`
 
 ```typescript
-const value: any[] = /* values here */
+const value: any[] = [
+  "<value>",
+];
 ```
 

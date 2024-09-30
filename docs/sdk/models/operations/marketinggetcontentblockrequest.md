@@ -8,7 +8,7 @@ import { MarketingGetContentBlockRequest } from "@stackone/stackone-client-ts/sd
 let value: MarketingGetContentBlockRequest = {
   fields: "id,remote_id,name,type,content,status,tags,created_at,updated_at",
   id: "<id>",
-  xAccountId: "<value>",
+  xAccountId: "<id>",
 };
 ```
 

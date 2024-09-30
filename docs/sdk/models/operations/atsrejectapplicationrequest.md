@@ -13,7 +13,7 @@ let value: AtsRejectApplicationRequest = {
     rejectedReasonId: "f223d7f6-908b-48f0-9237-b201c307f609",
   },
   id: "<id>",
-  xAccountId: "<value>",
+  xAccountId: "<id>",
 };
 ```
 

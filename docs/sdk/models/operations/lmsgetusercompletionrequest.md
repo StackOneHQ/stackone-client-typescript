@@ -7,8 +7,8 @@ import { LmsGetUserCompletionRequest } from "@stackone/stackone-client-ts/sdk/mo
 
 let value: LmsGetUserCompletionRequest = {
   id: "<id>",
-  subResourceId: "<value>",
-  xAccountId: "<value>",
+  subResourceId: "<id>",
+  xAccountId: "<id>",
 };
 ```
 

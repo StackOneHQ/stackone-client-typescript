@@ -1,43 +1,37 @@
 # HrisCreateEmployeeRequestDtoSchemasPreferredLanguageSourceValue
 
-## Example Usage
-
-```typescript
-import { HrisCreateEmployeeRequestDtoSchemasPreferredLanguageSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
-
-let value: HrisCreateEmployeeRequestDtoSchemasPreferredLanguageSourceValue =
-  false;
-```
 
 ## Supported Types
 
 ### `string`
 
 ```typescript
-const value: string = /* values here */
+const value: string = "<value>";
 ```
 
 ### `number`
 
 ```typescript
-const value: number = /* values here */
+const value: number = 5173.09;
 ```
 
 ### `boolean`
 
 ```typescript
-const value: boolean = /* values here */
+const value: boolean = false;
 ```
 
 ### `shared.HrisCreateEmployeeRequestDtoSchemasPreferredLanguage4`
 
 ```typescript
-const value: shared.HrisCreateEmployeeRequestDtoSchemasPreferredLanguage4 = /* values here */
+const value: shared.HrisCreateEmployeeRequestDtoSchemasPreferredLanguage4 = {};
 ```
 
 ### `any[]`
 
 ```typescript
-const value: any[] = /* values here */
+const value: any[] = [
+  "<value>",
+];
 ```
 

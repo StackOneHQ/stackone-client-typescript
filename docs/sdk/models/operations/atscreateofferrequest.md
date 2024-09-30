@@ -24,7 +24,7 @@ let value: AtsCreateOfferRequest = {
     },
     startDate: new Date("2021-01-01T01:01:01.000Z"),
   },
-  xAccountId: "<value>",
+  xAccountId: "<id>",
 };
 ```
 

@@ -1,42 +1,37 @@
 # IamResourceSourceValue
 
-## Example Usage
-
-```typescript
-import { IamResourceSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
-
-let value: IamResourceSourceValue = 3730.35;
-```
 
 ## Supported Types
 
 ### `string`
 
 ```typescript
-const value: string = /* values here */
+const value: string = "<value>";
 ```
 
 ### `number`
 
 ```typescript
-const value: number = /* values here */
+const value: number = 8953.86;
 ```
 
 ### `boolean`
 
 ```typescript
-const value: boolean = /* values here */
+const value: boolean = false;
 ```
 
 ### `shared.IamResource4`
 
 ```typescript
-const value: shared.IamResource4 = /* values here */
+const value: shared.IamResource4 = {};
 ```
 
 ### `any[]`
 
 ```typescript
-const value: any[] = /* values here */
+const value: any[] = [
+  "<value>",
+];
 ```
 

@@ -8,7 +8,7 @@ import { LinkedAccount, LinkedAccountStatus } from "@stackone/stackone-client-ts
 let value: LinkedAccount = {
   createdAt: new Date("2024-11-14T05:17:46.077Z"),
   id: "<id>",
-  originOwnerId: "<value>",
+  originOwnerId: "<id>",
   originOwnerName: "<value>",
   provider: "<value>",
   status: LinkedAccountStatus.Active,

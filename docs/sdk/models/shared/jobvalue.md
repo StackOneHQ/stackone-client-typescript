@@ -24,5 +24,6 @@ This is an open enum. Unrecognized values will be captured as the `Unrecognized<
 | `Closed`               | closed                 |
 | `Open`                 | open                   |
 | `Deleted`              | deleted                |
+| `OnHold`               | on_hold                |
 | `UnmappedValue`        | unmapped_value         |
 | -                      | `Unrecognized<string>` |

@@ -18,7 +18,7 @@ let value: HrisUpdateTimeOffRequestRequest = {
     startHalfDay: true,
   },
   id: "<id>",
-  xAccountId: "<value>",
+  xAccountId: "<id>",
 };
 ```
 

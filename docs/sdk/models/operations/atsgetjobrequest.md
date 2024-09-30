@@ -11,7 +11,7 @@ let value: AtsGetJobRequest = {
     "id,remote_id,code,title,status,job_status,department_ids,remote_department_ids,location_ids,remote_location_ids,hiring_team,interview_stages,confidential,custom_fields,created_at,updated_at",
   id: "<id>",
   include: "custom_fields",
-  xAccountId: "<value>",
+  xAccountId: "<id>",
 };
 ```
 

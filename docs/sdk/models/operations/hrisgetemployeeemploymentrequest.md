@@ -10,8 +10,8 @@ let value: HrisGetEmployeeEmploymentRequest = {
   fields:
     "id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,employment_type,employment_contract_type,created_at,updated_at",
   id: "<id>",
-  subResourceId: "<value>",
-  xAccountId: "<value>",
+  subResourceId: "<id>",
+  xAccountId: "<id>",
 };
 ```
 

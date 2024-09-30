@@ -66,6 +66,7 @@ export enum AtsUpdateJobRequestDtoValue {
   Closed = "closed",
   Open = "open",
   Deleted = "deleted",
+  OnHold = "on_hold",
   UnmappedValue = "unmapped_value",
 }
 /**

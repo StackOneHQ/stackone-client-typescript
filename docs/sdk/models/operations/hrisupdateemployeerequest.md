@@ -151,7 +151,7 @@ let value: HrisUpdateEmployeeRequest = {
     workPhoneNumber: "+1234567890",
   },
   id: "<id>",
-  xAccountId: "<value>",
+  xAccountId: "<id>",
 };
 ```
 

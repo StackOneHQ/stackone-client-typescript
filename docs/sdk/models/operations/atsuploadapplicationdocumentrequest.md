@@ -27,7 +27,7 @@ let value: AtsUploadApplicationDocumentRequest = {
     path: "/path/to/file",
   },
   id: "<id>",
-  xAccountId: "<value>",
+  xAccountId: "<id>",
 };
 ```
 

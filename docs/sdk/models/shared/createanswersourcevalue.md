@@ -2,43 +2,38 @@
 
 The source value of the answer type.
 
-## Example Usage
-
-```typescript
-import { CreateAnswerSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
-
-let value: CreateAnswerSourceValue = "Short Text";
-```
 
 ## Supported Types
 
 ### `string`
 
 ```typescript
-const value: string = /* values here */
+const value: string = "Short Text";
 ```
 
 ### `number`
 
 ```typescript
-const value: number = /* values here */
+const value: number = Short Text;
 ```
 
 ### `boolean`
 
 ```typescript
-const value: boolean = /* values here */
+const value: boolean = true;
 ```
 
 ### `shared.CreateAnswer4`
 
 ```typescript
-const value: shared.CreateAnswer4 = /* values here */
+const value: shared.CreateAnswer4 = {};
 ```
 
 ### `any[]`
 
 ```typescript
-const value: any[] = /* values here */
+const value: any[] = [
+  "Short Text",
+];
 ```
 

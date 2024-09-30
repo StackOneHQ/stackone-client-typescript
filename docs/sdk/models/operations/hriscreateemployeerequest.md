@@ -150,7 +150,7 @@ let value: HrisCreateEmployeeRequest = {
     },
     workPhoneNumber: "+1234567890",
   },
-  xAccountId: "<value>",
+  xAccountId: "<id>",
 };
 ```
 

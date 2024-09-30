@@ -1,6 +1,6 @@
 # Level
 
-The hierarchal level of the skill
+The hierarchal level of the category
 
 ## Example Usage
 
@@ -12,7 +12,7 @@ let value: Level = {};
 
 ## Fields
 
-| Field                                                           | Type                                                            | Required                                                        | Description                                                     |
-| --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- |
-| `sourceValue`                                                   | *shared.SkillsSourceValue*                                      | :heavy_minus_sign:                                              | N/A                                                             |
-| `value`                                                         | [shared.SkillsValue](../../../sdk/models/shared/skillsvalue.md) | :heavy_minus_sign:                                              | N/A                                                             |
+| Field                                                               | Type                                                                | Required                                                            | Description                                                         |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `sourceValue`                                                       | *shared.CategorySourceValue*                                        | :heavy_minus_sign:                                                  | N/A                                                                 |
+| `value`                                                             | [shared.CategoryValue](../../../sdk/models/shared/categoryvalue.md) | :heavy_minus_sign:                                                  | N/A                                                                 |

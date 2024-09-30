@@ -7,8 +7,8 @@ import { LmsGetUserAssignmentRequest } from "@stackone/stackone-client-ts/sdk/mo
 
 let value: LmsGetUserAssignmentRequest = {
   id: "<id>",
-  subResourceId: "<value>",
-  xAccountId: "<value>",
+  subResourceId: "<id>",
+  xAccountId: "<id>",
 };
 ```
 

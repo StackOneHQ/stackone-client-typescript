@@ -11,7 +11,7 @@ let value: AtsGetApplicationRequest = {
     "id,remote_id,candidate_id,remote_candidate_id,job_id,remote_job_id,interview_stage,interview_stage_id,remote_interview_stage_id,rejected_reason,rejected_reason_id,remote_rejected_reason_id,rejected_reason_ids,remote_rejected_reason_ids,rejected_reasons,rejected_at,location_id,remote_location_id,location_ids,remote_location_ids,status,application_status,questionnaires,attachments,result_links,source,created_at,updated_at,documents,custom_fields,candidate",
   id: "<id>",
   include: "attachments,custom_fields",
-  xAccountId: "<value>",
+  xAccountId: "<id>",
 };
 ```
 

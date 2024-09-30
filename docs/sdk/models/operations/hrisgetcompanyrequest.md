@@ -8,7 +8,7 @@ import { HrisGetCompanyRequest } from "@stackone/stackone-client-ts/sdk/models/o
 let value: HrisGetCompanyRequest = {
   fields: "id,remote_id,name,full_name,display_name,created_at,updated_at",
   id: "<id>",
-  xAccountId: "<value>",
+  xAccountId: "<id>",
 };
 ```
 

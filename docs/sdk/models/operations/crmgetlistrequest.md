@@ -8,7 +8,7 @@ import { CrmGetListRequest } from "@stackone/stackone-client-ts/sdk/models/opera
 let value: CrmGetListRequest = {
   fields: "id,remote_id,name,created_at,updated_at,items,type",
   id: "<id>",
-  xAccountId: "<value>",
+  xAccountId: "<id>",
 };
 ```
 

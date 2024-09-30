@@ -16,6 +16,7 @@ This is an open enum. Unrecognized values will be captured as the `Unrecognized<
 
 | Name                   | Value                  |
 | ---------------------- | ---------------------- |
+| `ARAR`                 | ar_AR                  |
 | `AaER`                 | aa_ER                  |
 | `AfNA`                 | af_NA                  |
 | `AfZA`                 | af_ZA                  |
@@ -185,6 +186,7 @@ This is an open enum. Unrecognized values will be captured as the `Unrecognized<
 | `EsGT`                 | es_GT                  |
 | `EsHN`                 | es_HN                  |
 | `EsIC`                 | es_IC                  |
+| `EsLA`                 | es_LA                  |
 | `EsMX`                 | es_MX                  |
 | `EsNI`                 | es_NI                  |
 | `EsPA`                 | es_PA                  |

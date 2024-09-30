@@ -2,43 +2,38 @@
 
 The source value of the application status.
 
-## Example Usage
-
-```typescript
-import { ApplicationSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
-
-let value: ApplicationSourceValue = "Hired";
-```
 
 ## Supported Types
 
 ### `string`
 
 ```typescript
-const value: string = /* values here */
+const value: string = "Hired";
 ```
 
 ### `number`
 
 ```typescript
-const value: number = /* values here */
+const value: number = Hired;
 ```
 
 ### `boolean`
 
 ```typescript
-const value: boolean = /* values here */
+const value: boolean = true;
 ```
 
 ### `shared.Application4`
 
 ```typescript
-const value: shared.Application4 = /* values here */
+const value: shared.Application4 = {};
 ```
 
 ### `any[]`
 
 ```typescript
-const value: any[] = /* values here */
+const value: any[] = [
+  "Hired",
+];
 ```
 

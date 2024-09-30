@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 7fa83af8-9e8e-4410-b7e2-cf1d0eaf688b
 management:
-  docChecksum: b2bf7a6c1ed2227b28cf8779b19af198
+  docChecksum: ce635a69c15c7abfb757636a12a05e37
   docVersion: 1.0.0
-  speakeasyVersion: 1.402.14
-  generationVersion: 2.422.22
-  releaseVersion: 4.15.3
-  configChecksum: c102e0cb51aa3dfc7af073f5a0c8dbfc
+  speakeasyVersion: 1.404.5
+  generationVersion: 2.426.2
+  releaseVersion: 4.16.0
+  configChecksum: 13cb860c6e6b6f7cf6f7ce93a290169d
   repoURL: https://github.com/StackOneHQ/stackone-client-typescript.git
   repoSubDirectory: .
   installationURL: https://github.com/StackOneHQ/stackone-client-typescript
@@ -15,7 +15,7 @@ features:
   typescript:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.11
-    core: 3.17.7
+    core: 3.18.0
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
     downloadStreams: 0.1.1
@@ -29,7 +29,7 @@ features:
     nameOverrides: 2.81.2
     nullables: 0.1.0
     openEnums: 0.1.1
-    pagination: 2.82.6
+    pagination: 2.82.7
     responseFormat: 0.2.3
     retries: 2.83.0
     sdkHooks: 0.1.0
@@ -568,7 +568,10 @@ generatedFiles:
   - docs/sdk/models/shared/categories.md
   - docs/sdk/models/shared/categoriespaginated.md
   - docs/sdk/models/shared/category.md
+  - docs/sdk/models/shared/category4.md
   - docs/sdk/models/shared/categoryresult.md
+  - docs/sdk/models/shared/categorysourcevalue.md
+  - docs/sdk/models/shared/categoryvalue.md
   - docs/sdk/models/shared/channelsenum.md
   - docs/sdk/models/shared/channelsenum4.md
   - docs/sdk/models/shared/channelsenumsourcevalue.md
@@ -644,6 +647,10 @@ generatedFiles:
   - docs/sdk/models/shared/createanswertype.md
   - docs/sdk/models/shared/createanswervalue.md
   - docs/sdk/models/shared/createcategoriesapimodel.md
+  - docs/sdk/models/shared/createcategoriesapimodel4.md
+  - docs/sdk/models/shared/createcategoriesapimodellevel.md
+  - docs/sdk/models/shared/createcategoriesapimodelsourcevalue.md
+  - docs/sdk/models/shared/createcategoriesapimodelvalue.md
   - docs/sdk/models/shared/createemploymentapimodel.md
   - docs/sdk/models/shared/createemploymentapimodel4.md
   - docs/sdk/models/shared/createemploymentapimodelschemas4.md
@@ -1173,6 +1180,7 @@ generatedFiles:
   - docs/sdk/models/shared/skillresult.md
   - docs/sdk/models/shared/skills.md
   - docs/sdk/models/shared/skills4.md
+  - docs/sdk/models/shared/skillslevel.md
   - docs/sdk/models/shared/skillspaginated.md
   - docs/sdk/models/shared/skillssourcevalue.md
   - docs/sdk/models/shared/skillsvalue.md
@@ -3329,7 +3337,7 @@ examples:
         path:
           id: "<id>"
         query:
-          fields: "id,remote_id,name,active"
+          fields: "id,remote_id,name,active,level"
         header:
           x-account-id: "<value>"
       responses:
@@ -3436,7 +3444,7 @@ examples:
     "":
       parameters:
         query:
-          fields: "id,remote_id,name,active"
+          fields: "id,remote_id,name,active,level"
           filter: {"updated_after": "2020-01-01T00:00:00.000Z"}
           updated_after: "2020-01-01T00:00:00.000Z"
         header:

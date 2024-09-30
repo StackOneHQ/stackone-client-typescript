@@ -1,42 +1,37 @@
 # AtsDocumentApiModelSchemasSourceValue
 
-## Example Usage
-
-```typescript
-import { AtsDocumentApiModelSchemasSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
-
-let value: AtsDocumentApiModelSchemasSourceValue = "abc";
-```
 
 ## Supported Types
 
 ### `string`
 
 ```typescript
-const value: string = /* values here */
+const value: string = "abc";
 ```
 
 ### `number`
 
 ```typescript
-const value: number = /* values here */
+const value: number = abc;
 ```
 
 ### `boolean`
 
 ```typescript
-const value: boolean = /* values here */
+const value: boolean = true;
 ```
 
 ### `shared.AtsDocumentApiModelSchemas4`
 
 ```typescript
-const value: shared.AtsDocumentApiModelSchemas4 = /* values here */
+const value: shared.AtsDocumentApiModelSchemas4 = {};
 ```
 
 ### `any[]`
 
 ```typescript
-const value: any[] = /* values here */
+const value: any[] = [
+  "abc",
+];
 ```
 

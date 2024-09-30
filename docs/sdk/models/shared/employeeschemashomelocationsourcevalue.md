@@ -1,42 +1,37 @@
 # EmployeeSchemasHomeLocationSourceValue
 
-## Example Usage
-
-```typescript
-import { EmployeeSchemasHomeLocationSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
-
-let value: EmployeeSchemasHomeLocationSourceValue = false;
-```
 
 ## Supported Types
 
 ### `string`
 
 ```typescript
-const value: string = /* values here */
+const value: string = "<value>";
 ```
 
 ### `number`
 
 ```typescript
-const value: number = /* values here */
+const value: number = 3742.96;
 ```
 
 ### `boolean`
 
 ```typescript
-const value: boolean = /* values here */
+const value: boolean = false;
 ```
 
 ### `shared.EmployeeSchemasHomeLocation4`
 
 ```typescript
-const value: shared.EmployeeSchemasHomeLocation4 = /* values here */
+const value: shared.EmployeeSchemasHomeLocation4 = {};
 ```
 
 ### `any[]`
 
 ```typescript
-const value: any[] = /* values here */
+const value: any[] = [
+  "<value>",
+];
 ```
 

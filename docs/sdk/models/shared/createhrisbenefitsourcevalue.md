@@ -1,42 +1,37 @@
 # CreateHRISBenefitSourceValue
 
-## Example Usage
-
-```typescript
-import { CreateHRISBenefitSourceValue } from "@stackone/stackone-client-ts/sdk/models/shared";
-
-let value: CreateHRISBenefitSourceValue = 3485.19;
-```
 
 ## Supported Types
 
 ### `string`
 
 ```typescript
-const value: string = /* values here */
+const value: string = "<value>";
 ```
 
 ### `number`
 
 ```typescript
-const value: number = /* values here */
+const value: number = 8286.57;
 ```
 
 ### `boolean`
 
 ```typescript
-const value: boolean = /* values here */
+const value: boolean = false;
 ```
 
 ### `shared.CreateHRISBenefit4`
 
 ```typescript
-const value: shared.CreateHRISBenefit4 = /* values here */
+const value: shared.CreateHRISBenefit4 = {};
 ```
 
 ### `any[]`
 
 ```typescript
-const value: any[] = /* values here */
+const value: any[] = [
+  "<value>",
+];
 ```
 

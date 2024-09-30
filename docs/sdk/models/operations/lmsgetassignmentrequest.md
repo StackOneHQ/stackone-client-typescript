@@ -7,7 +7,7 @@ import { LmsGetAssignmentRequest } from "@stackone/stackone-client-ts/sdk/models
 
 let value: LmsGetAssignmentRequest = {
   id: "<id>",
-  xAccountId: "<value>",
+  xAccountId: "<id>",
 };
 ```
 

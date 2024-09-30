@@ -10,7 +10,7 @@ let value: IamGetGroupRequest = {
   fields:
     "id,remote_id,parent_id,remote_parent_id,name,description,roles,type,created_at,updated_at",
   id: "<id>",
-  xAccountId: "<value>",
+  xAccountId: "<id>",
 };
 ```
 

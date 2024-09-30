@@ -21,7 +21,7 @@ let value: MarketingUpdateInAppTemplateRequest = {
     },
   },
   id: "<id>",
-  xAccountId: "<value>",
+  xAccountId: "<id>",
 };
 ```
 

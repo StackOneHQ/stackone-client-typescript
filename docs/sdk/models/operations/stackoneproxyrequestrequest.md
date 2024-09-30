@@ -13,7 +13,7 @@ let value: StackoneProxyRequestRequest = {
     path: "/employees/directory",
     url: "https://api.sample-integration.com/v1",
   },
-  xAccountId: "<value>",
+  xAccountId: "<id>",
 };
 ```
 
