@@ -45,10 +45,8 @@ export async function hrisGetLocation(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) => operations.HrisGetLocationRequest$outboundSchema.parse(value),
     "Input validation failed",
   );

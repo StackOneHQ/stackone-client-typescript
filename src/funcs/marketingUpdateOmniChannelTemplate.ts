@@ -42,10 +42,8 @@ export async function marketingUpdateOmniChannelTemplate(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) =>
       operations.MarketingUpdateOmniChannelTemplateRequest$outboundSchema.parse(
         value,

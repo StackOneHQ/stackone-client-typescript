@@ -45,10 +45,8 @@ export async function atsGetCandidateCustomFieldDefinition(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) =>
       operations.AtsGetCandidateCustomFieldDefinitionRequest$outboundSchema
         .parse(value),

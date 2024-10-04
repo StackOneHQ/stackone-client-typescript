@@ -40,10 +40,8 @@ export async function marketingCreateEmailTemplate(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) =>
       operations.MarketingCreateEmailTemplateRequest$outboundSchema.parse(
         value,

@@ -45,10 +45,8 @@ export async function atsListApplicationScorecards(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) =>
       operations.AtsListApplicationScorecardsRequest$outboundSchema.parse(
         value,

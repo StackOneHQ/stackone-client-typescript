@@ -40,10 +40,8 @@ export async function hrisBatchUploadEmployeeDocument(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) =>
       operations.HrisBatchUploadEmployeeDocumentRequest$outboundSchema.parse(
         value,

@@ -4424,7 +4424,7 @@ actions:
 
             async function run() {
               const result = await stackOne.lms.listCompletions({
-                fields: "id,remote_id,external_id,remote_external_id,content_id,remote_content_id,user_id,remote_user_id,completed_at,updated_at,created_at,result,content_external_reference",
+                fields: "id,remote_id,external_id,remote_external_id,content_id,remote_content_id,course_id,remote_course_id,user_id,remote_user_id,completed_at,updated_at,created_at,result,content_external_reference",
                 filter: {
                   updatedAfter: "2020-01-01T00:00:00.000Z",
                 },
@@ -5047,7 +5047,7 @@ actions:
             async function run() {
               const result = await stackOne.lms.listUserCompletions({
                 id: "<id>",
-                fields: "id,remote_id,external_id,remote_external_id,content_id,remote_content_id,user_id,remote_user_id,completed_at,updated_at,created_at,result,content_external_reference",
+                fields: "id,remote_id,external_id,remote_external_id,content_id,remote_content_id,course_id,remote_course_id,user_id,remote_user_id,completed_at,updated_at,created_at,result,content_external_reference",
                 filter: {
                   updatedAfter: "2020-01-01T00:00:00.000Z",
                 },

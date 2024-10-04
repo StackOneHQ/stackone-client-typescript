@@ -45,10 +45,8 @@ export async function lmsListCourses(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) => operations.LmsListCoursesRequest$outboundSchema.parse(value),
     "Input validation failed",
   );

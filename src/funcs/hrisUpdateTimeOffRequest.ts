@@ -40,10 +40,8 @@ export async function hrisUpdateTimeOffRequest(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) =>
       operations.HrisUpdateTimeOffRequestRequest$outboundSchema.parse(value),
     "Input validation failed",

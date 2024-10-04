@@ -41,10 +41,8 @@ export async function connectSessionsAuthenticateConnectSession(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) => shared.ConnectSessionAuthenticate$outboundSchema.parse(value),
     "Input validation failed",
   );

@@ -40,10 +40,8 @@ export async function atsMoveApplication(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) => operations.AtsMoveApplicationRequest$outboundSchema.parse(value),
     "Input validation failed",
   );

@@ -45,10 +45,8 @@ export async function hrisListEmployeeWorkEligibility(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) =>
       operations.HrisListEmployeeWorkEligibilityRequest$outboundSchema.parse(
         value,

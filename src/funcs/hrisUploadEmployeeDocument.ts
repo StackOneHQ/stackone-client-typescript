@@ -40,10 +40,8 @@ export async function hrisUploadEmployeeDocument(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) =>
       operations.HrisUploadEmployeeDocumentRequest$outboundSchema.parse(value),
     "Input validation failed",

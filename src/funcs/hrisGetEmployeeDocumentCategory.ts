@@ -45,10 +45,8 @@ export async function hrisGetEmployeeDocumentCategory(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) =>
       operations.HrisGetEmployeeDocumentCategoryRequest$outboundSchema.parse(
         value,

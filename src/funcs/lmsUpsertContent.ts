@@ -40,10 +40,8 @@ export async function lmsUpsertContent(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) => operations.LmsUpsertContentRequest$outboundSchema.parse(value),
     "Input validation failed",
   );

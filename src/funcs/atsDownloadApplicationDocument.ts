@@ -40,10 +40,8 @@ export async function atsDownloadApplicationDocument(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) =>
       operations.AtsDownloadApplicationDocumentRequest$outboundSchema.parse(
         value,

@@ -46,13 +46,17 @@ export type Completion = {
    */
   completedAt?: string | null | undefined;
   /**
-   * The external ID associated with this content
+   * The external reference associated with this content
    */
   contentExternalReference?: string | null | undefined;
   /**
    * The content ID associated with this completion
    */
   contentId?: string | null | undefined;
+  /**
+   * The course ID associated with this completion
+   */
+  courseId?: string | null | undefined;
   /**
    * The created date of the completion
    */
@@ -66,11 +70,15 @@ export type Completion = {
    */
   id?: string | null | undefined;
   /**
-   * Provider's unique identifier of the completion
+   * Provider's unique identifier of the content associated with the completion
    */
   remoteContentId?: string | null | undefined;
   /**
-   * Provider's unique identifier of the content
+   * Provider's unique identifier of the course associated with the completion
+   */
+  remoteCourseId?: string | null | undefined;
+  /**
+   * Provider's unique identifier of the content external reference
    */
   remoteExternalId?: string | null | undefined;
   /**
@@ -287,10 +295,12 @@ export const Completion$inboundSchema: z.ZodType<
   completed_at: z.nullable(z.string()).optional(),
   content_external_reference: z.nullable(z.string()).optional(),
   content_id: z.nullable(z.string()).optional(),
+  course_id: z.nullable(z.string()).optional(),
   created_at: z.nullable(z.string()).optional(),
   external_id: z.nullable(z.string()).optional(),
   id: z.nullable(z.string()).optional(),
   remote_content_id: z.nullable(z.string()).optional(),
+  remote_course_id: z.nullable(z.string()).optional(),
   remote_external_id: z.nullable(z.string()).optional(),
   remote_id: z.nullable(z.string()).optional(),
   remote_user_id: z.nullable(z.string()).optional(),
@@ -304,9 +314,11 @@ export const Completion$inboundSchema: z.ZodType<
     "completed_at": "completedAt",
     "content_external_reference": "contentExternalReference",
     "content_id": "contentId",
+    "course_id": "courseId",
     "created_at": "createdAt",
     "external_id": "externalId",
     "remote_content_id": "remoteContentId",
+    "remote_course_id": "remoteCourseId",
     "remote_external_id": "remoteExternalId",
     "remote_id": "remoteId",
     "remote_user_id": "remoteUserId",
@@ -321,10 +333,12 @@ export type Completion$Outbound = {
   completed_at?: string | null | undefined;
   content_external_reference?: string | null | undefined;
   content_id?: string | null | undefined;
+  course_id?: string | null | undefined;
   created_at?: string | null | undefined;
   external_id?: string | null | undefined;
   id?: string | null | undefined;
   remote_content_id?: string | null | undefined;
+  remote_course_id?: string | null | undefined;
   remote_external_id?: string | null | undefined;
   remote_id?: string | null | undefined;
   remote_user_id?: string | null | undefined;
@@ -343,10 +357,12 @@ export const Completion$outboundSchema: z.ZodType<
   completedAt: z.nullable(z.string()).optional(),
   contentExternalReference: z.nullable(z.string()).optional(),
   contentId: z.nullable(z.string()).optional(),
+  courseId: z.nullable(z.string()).optional(),
   createdAt: z.nullable(z.string()).optional(),
   externalId: z.nullable(z.string()).optional(),
   id: z.nullable(z.string()).optional(),
   remoteContentId: z.nullable(z.string()).optional(),
+  remoteCourseId: z.nullable(z.string()).optional(),
   remoteExternalId: z.nullable(z.string()).optional(),
   remoteId: z.nullable(z.string()).optional(),
   remoteUserId: z.nullable(z.string()).optional(),
@@ -360,9 +376,11 @@ export const Completion$outboundSchema: z.ZodType<
     completedAt: "completed_at",
     contentExternalReference: "content_external_reference",
     contentId: "content_id",
+    courseId: "course_id",
     createdAt: "created_at",
     externalId: "external_id",
     remoteContentId: "remote_content_id",
+    remoteCourseId: "remote_course_id",
     remoteExternalId: "remote_external_id",
     remoteId: "remote_id",
     remoteUserId: "remote_user_id",

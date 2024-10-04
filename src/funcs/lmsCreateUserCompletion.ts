@@ -40,10 +40,8 @@ export async function lmsCreateUserCompletion(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) =>
       operations.LmsCreateUserCompletionRequest$outboundSchema.parse(value),
     "Input validation failed",

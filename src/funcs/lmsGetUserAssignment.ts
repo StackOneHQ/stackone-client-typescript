@@ -45,10 +45,8 @@ export async function lmsGetUserAssignment(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) =>
       operations.LmsGetUserAssignmentRequest$outboundSchema.parse(value),
     "Input validation failed",

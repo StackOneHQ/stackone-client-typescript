@@ -40,10 +40,8 @@ export async function accountsGetAccount(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) => operations.StackoneGetAccountRequest$outboundSchema.parse(value),
     "Input validation failed",
   );

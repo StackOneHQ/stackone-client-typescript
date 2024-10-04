@@ -45,10 +45,8 @@ export async function hrisGetBenefit(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) => operations.HrisGetBenefitRequest$outboundSchema.parse(value),
     "Input validation failed",
   );

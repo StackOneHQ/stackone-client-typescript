@@ -45,10 +45,8 @@ export async function crmGetList(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) => operations.CrmGetListRequest$outboundSchema.parse(value),
     "Input validation failed",
   );

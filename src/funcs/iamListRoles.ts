@@ -45,10 +45,8 @@ export async function iamListRoles(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) => operations.IamListRolesRequest$outboundSchema.parse(value),
     "Input validation failed",
   );

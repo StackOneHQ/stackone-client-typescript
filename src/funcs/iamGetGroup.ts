@@ -45,10 +45,8 @@ export async function iamGetGroup(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) => operations.IamGetGroupRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
