@@ -40,10 +40,8 @@ export async function lmsBatchUpsertContent(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) =>
       operations.LmsBatchUpsertContentRequest$outboundSchema.parse(value),
     "Input validation failed",

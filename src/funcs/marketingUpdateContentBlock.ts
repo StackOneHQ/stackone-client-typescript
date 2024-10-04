@@ -40,10 +40,8 @@ export async function marketingUpdateContentBlock(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) =>
       operations.MarketingUpdateContentBlockRequest$outboundSchema.parse(value),
     "Input validation failed",

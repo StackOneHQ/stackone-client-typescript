@@ -40,10 +40,8 @@ export async function hrisDownloadEmployeeDocument(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) =>
       operations.HrisDownloadEmployeeDocumentRequest$outboundSchema.parse(
         value,

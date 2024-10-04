@@ -40,10 +40,8 @@ export async function marketingCreatePushTemplate(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) =>
       operations.MarketingCreatePushTemplateRequest$outboundSchema.parse(value),
     "Input validation failed",

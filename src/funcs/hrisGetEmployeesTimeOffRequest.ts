@@ -45,10 +45,8 @@ export async function hrisGetEmployeesTimeOffRequest(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) =>
       operations.HrisGetEmployeesTimeOffRequestRequest$outboundSchema.parse(
         value,

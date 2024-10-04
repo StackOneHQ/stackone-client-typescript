@@ -40,10 +40,8 @@ export async function marketingUpdateInAppTemplate(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) =>
       operations.MarketingUpdateInAppTemplateRequest$outboundSchema.parse(
         value,

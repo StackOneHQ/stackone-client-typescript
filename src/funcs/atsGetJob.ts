@@ -45,10 +45,8 @@ export async function atsGetJob(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) => operations.AtsGetJobRequest$outboundSchema.parse(value),
     "Input validation failed",
   );

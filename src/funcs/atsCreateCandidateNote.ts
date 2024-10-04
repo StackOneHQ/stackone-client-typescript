@@ -40,10 +40,8 @@ export async function atsCreateCandidateNote(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) =>
       operations.AtsCreateCandidateNoteRequest$outboundSchema.parse(value),
     "Input validation failed",

@@ -45,10 +45,8 @@ export async function hrisListDepartmentGroups(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) =>
       operations.HrisListDepartmentGroupsRequest$outboundSchema.parse(value),
     "Input validation failed",

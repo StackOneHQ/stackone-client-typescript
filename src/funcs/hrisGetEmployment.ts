@@ -45,10 +45,8 @@ export async function hrisGetEmployment(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) => operations.HrisGetEmploymentRequest$outboundSchema.parse(value),
     "Input validation failed",
   );

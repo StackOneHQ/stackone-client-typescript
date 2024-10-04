@@ -45,10 +45,8 @@ export async function atsListJobCustomFieldDefinitions(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) =>
       operations.AtsListJobCustomFieldDefinitionsRequest$outboundSchema.parse(
         value,

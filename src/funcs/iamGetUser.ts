@@ -45,10 +45,8 @@ export async function iamGetUser(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) => operations.IamGetUserRequest$outboundSchema.parse(value),
     "Input validation failed",
   );

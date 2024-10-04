@@ -40,10 +40,8 @@ export async function connectorsGetConnectorMeta(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) =>
       operations.StackoneGetConnectorMetaRequest$outboundSchema.parse(value),
     "Input validation failed",

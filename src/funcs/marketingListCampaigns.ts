@@ -45,10 +45,8 @@ export async function marketingListCampaigns(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) =>
       operations.MarketingListCampaignsRequest$outboundSchema.parse(value),
     "Input validation failed",

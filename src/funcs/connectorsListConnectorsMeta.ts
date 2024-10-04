@@ -40,10 +40,8 @@ export async function connectorsListConnectorsMeta(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) =>
       operations.StackoneListConnectorsMetaRequest$outboundSchema.parse(value),
     "Input validation failed",

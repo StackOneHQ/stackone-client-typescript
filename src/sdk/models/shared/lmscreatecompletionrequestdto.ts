@@ -48,7 +48,7 @@ export type LmsCreateCompletionRequestDto = {
    */
   completedAt?: string | null | undefined;
   /**
-   * The external ID associated with this content
+   * The external reference associated with this content
    */
   contentExternalReference?: string | null | undefined;
   /**

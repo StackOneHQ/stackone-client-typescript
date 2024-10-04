@@ -40,10 +40,8 @@ export async function proxyProxyRequest(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) =>
       operations.StackoneProxyRequestRequest$outboundSchema.parse(value),
     "Input validation failed",

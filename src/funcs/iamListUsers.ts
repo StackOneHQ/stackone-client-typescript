@@ -45,10 +45,8 @@ export async function iamListUsers(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) => operations.IamListUsersRequest$outboundSchema.parse(value),
     "Input validation failed",
   );

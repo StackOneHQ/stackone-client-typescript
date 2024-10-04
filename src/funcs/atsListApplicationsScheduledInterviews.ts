@@ -45,10 +45,8 @@ export async function atsListApplicationsScheduledInterviews(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) =>
       operations.AtsListApplicationsScheduledInterviewsRequest$outboundSchema
         .parse(value),

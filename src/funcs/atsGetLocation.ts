@@ -45,10 +45,8 @@ export async function atsGetLocation(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) => operations.AtsGetLocationRequest$outboundSchema.parse(value),
     "Input validation failed",
   );

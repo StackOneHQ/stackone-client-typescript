@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 7fa83af8-9e8e-4410-b7e2-cf1d0eaf688b
 management:
-  docChecksum: ce635a69c15c7abfb757636a12a05e37
+  docChecksum: 17ec3916d7a4b1bd06fa13c2a397704e
   docVersion: 1.0.0
-  speakeasyVersion: 1.404.5
-  generationVersion: 2.426.2
-  releaseVersion: 4.16.0
-  configChecksum: 13cb860c6e6b6f7cf6f7ce93a290169d
+  speakeasyVersion: 1.408.0
+  generationVersion: 2.429.0
+  releaseVersion: 4.16.1
+  configChecksum: db49fae7417050189dd5590952ed9156
   repoURL: https://github.com/StackOneHQ/stackone-client-typescript.git
   repoSubDirectory: .
   installationURL: https://github.com/StackOneHQ/stackone-client-typescript
@@ -15,7 +15,7 @@ features:
   typescript:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.11
-    core: 3.18.0
+    core: 3.18.2
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
     downloadStreams: 0.1.1
@@ -3353,7 +3353,7 @@ examples:
           x-account-id: "<value>"
       responses:
         "200":
-          application/json: {"data": {"completed_at": "2021-07-21T14:00:00.000Z", "content_external_reference": "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1-CONTENT", "content_id": "16873-ENG-VIDEO-1", "created_at": "2021-07-21T14:00:00.000Z", "external_id": "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1-COMPLETION", "id": "123456", "remote_content_id": "e3cb75bf-aa84-466e-a6c1-b8322b257a48", "remote_external_id": "e3cb75bf-aa84-466e-a6c1-b8322b257a48", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_user_id": "e3cb75bf-aa84-466e-a6c1-b8322b257a48", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}, "updated_at": "2021-07-21T14:00:00.000Z", "user_id": "c28xyrc55866bvuv"}}
+          application/json: {"data": {"completed_at": "2021-07-21T14:00:00.000Z", "content_external_reference": "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1-CONTENT", "content_id": "16873-ENG-VIDEO-1", "course_id": "16873-ENG-COURSE-1", "created_at": "2021-07-21T14:00:00.000Z", "external_id": "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1-COMPLETION", "id": "123456", "remote_content_id": "e3cb75bf-aa84-466e-a6c1-b8322b257a48", "remote_course_id": "e3cb75bf-aa84-466e-a6c1-b8322b257a48", "remote_external_id": "e3cb75bf-aa84-466e-a6c1-b8322b257a48", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_user_id": "e3cb75bf-aa84-466e-a6c1-b8322b257a48", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}, "updated_at": "2021-07-21T14:00:00.000Z", "user_id": "c28xyrc55866bvuv"}}
   lms_get_content:
     "":
       parameters:
@@ -3425,7 +3425,7 @@ examples:
           x-account-id: "<value>"
       responses:
         "200":
-          application/json: {"data": {"completed_at": "2021-07-21T14:00:00.000Z", "content_external_reference": "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1-CONTENT", "content_id": "16873-ENG-VIDEO-1", "created_at": "2021-07-21T14:00:00.000Z", "external_id": "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1-COMPLETION", "id": "123456", "remote_content_id": "e3cb75bf-aa84-466e-a6c1-b8322b257a48", "remote_external_id": "e3cb75bf-aa84-466e-a6c1-b8322b257a48", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_user_id": "e3cb75bf-aa84-466e-a6c1-b8322b257a48", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}, "updated_at": "2021-07-21T14:00:00.000Z", "user_id": "c28xyrc55866bvuv"}}
+          application/json: {"data": {"completed_at": "2021-07-21T14:00:00.000Z", "content_external_reference": "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1-CONTENT", "content_id": "16873-ENG-VIDEO-1", "course_id": "16873-ENG-COURSE-1", "created_at": "2021-07-21T14:00:00.000Z", "external_id": "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1-COMPLETION", "id": "123456", "remote_content_id": "e3cb75bf-aa84-466e-a6c1-b8322b257a48", "remote_course_id": "e3cb75bf-aa84-466e-a6c1-b8322b257a48", "remote_external_id": "e3cb75bf-aa84-466e-a6c1-b8322b257a48", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_user_id": "e3cb75bf-aa84-466e-a6c1-b8322b257a48", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}, "updated_at": "2021-07-21T14:00:00.000Z", "user_id": "c28xyrc55866bvuv"}}
   lms_list_assignments:
     "":
       parameters:
@@ -3456,7 +3456,7 @@ examples:
     "":
       parameters:
         query:
-          fields: "id,remote_id,external_id,remote_external_id,content_id,remote_content_id,user_id,remote_user_id,completed_at,updated_at,created_at,result,content_external_reference"
+          fields: "id,remote_id,external_id,remote_external_id,content_id,remote_content_id,course_id,remote_course_id,user_id,remote_user_id,completed_at,updated_at,created_at,result,content_external_reference"
           filter: {"updated_after": "2020-01-01T00:00:00.000Z"}
           updated_after: "2020-01-01T00:00:00.000Z"
           user_id: "746359"
@@ -3524,7 +3524,7 @@ examples:
         path:
           id: "<id>"
         query:
-          fields: "id,remote_id,external_id,remote_external_id,content_id,remote_content_id,user_id,remote_user_id,completed_at,updated_at,created_at,result,content_external_reference"
+          fields: "id,remote_id,external_id,remote_external_id,content_id,remote_content_id,course_id,remote_course_id,user_id,remote_user_id,completed_at,updated_at,created_at,result,content_external_reference"
           filter: {"updated_after": "2020-01-01T00:00:00.000Z"}
           updated_after: "2020-01-01T00:00:00.000Z"
           user_id: "746359"

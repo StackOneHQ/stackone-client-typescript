@@ -45,10 +45,8 @@ export async function atsGetDepartment(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) => operations.AtsGetDepartmentRequest$outboundSchema.parse(value),
     "Input validation failed",
   );

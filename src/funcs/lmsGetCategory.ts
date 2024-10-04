@@ -40,10 +40,8 @@ export async function lmsGetCategory(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) => operations.LmsGetCategoryRequest$outboundSchema.parse(value),
     "Input validation failed",
   );

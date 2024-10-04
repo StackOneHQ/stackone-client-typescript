@@ -40,10 +40,8 @@ export async function lmsGetUser(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) => operations.LmsGetUserRequest$outboundSchema.parse(value),
     "Input validation failed",
   );

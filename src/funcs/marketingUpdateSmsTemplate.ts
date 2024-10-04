@@ -40,10 +40,8 @@ export async function marketingUpdateSmsTemplate(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) =>
       operations.MarketingUpdateSmsTemplateRequest$outboundSchema.parse(value),
     "Input validation failed",
