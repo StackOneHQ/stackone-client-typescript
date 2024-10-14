@@ -7,7 +7,15 @@ import { remap as remap$ } from "../../../lib/primitives.js";
 
 export type CostCenters = {
   distributionPercentage?: number | null | undefined;
+  /**
+   * Unique identifier
+   */
+  id?: string | null | undefined;
   name?: string | null | undefined;
+  /**
+   * Provider's unique identifier
+   */
+  remoteId?: string | null | undefined;
 };
 
 /** @internal */
@@ -17,17 +25,22 @@ export const CostCenters$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   distribution_percentage: z.nullable(z.number()).optional(),
+  id: z.nullable(z.string()).optional(),
   name: z.nullable(z.string()).optional(),
+  remote_id: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
     "distribution_percentage": "distributionPercentage",
+    "remote_id": "remoteId",
   });
 });
 
 /** @internal */
 export type CostCenters$Outbound = {
   distribution_percentage?: number | null | undefined;
+  id?: string | null | undefined;
   name?: string | null | undefined;
+  remote_id?: string | null | undefined;
 };
 
 /** @internal */
@@ -37,10 +50,13 @@ export const CostCenters$outboundSchema: z.ZodType<
   CostCenters
 > = z.object({
   distributionPercentage: z.nullable(z.number()).optional(),
+  id: z.nullable(z.string()).optional(),
   name: z.nullable(z.string()).optional(),
+  remoteId: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
     distributionPercentage: "distribution_percentage",
+    remoteId: "remote_id",
   });
 });
 
