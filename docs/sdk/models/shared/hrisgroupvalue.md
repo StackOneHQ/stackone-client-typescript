@@ -20,4 +20,5 @@ This is an open enum. Unrecognized values will be captured as the `Unrecognized<
 | `Group`                | group                  |
 | `Organization`         | organization           |
 | `UnmappedValue`        | unmapped_value         |
+| `CostCenter`           | cost_center            |
 | -                      | `Unrecognized<string>` |

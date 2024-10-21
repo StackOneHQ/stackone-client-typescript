@@ -65,7 +65,11 @@ export type HRISDepartment = {
    */
   remoteId?: string | null | undefined;
   /**
-   * Provider's list of parent group ids of the given group
+   * The list of remote group owner ids of the given group
+   */
+  remoteOwnerIds?: Array<string> | null | undefined;
+  /**
+   * Provider's list of parent group remote ids of the given group
    */
   remoteParentIds?: Array<string> | null | undefined;
   /**
@@ -268,6 +272,7 @@ export const HRISDepartment$inboundSchema: z.ZodType<
   owner_ids: z.nullable(z.array(z.string())).optional(),
   parent_ids: z.nullable(z.array(z.string())).optional(),
   remote_id: z.nullable(z.string()).optional(),
+  remote_owner_ids: z.nullable(z.array(z.string())).optional(),
   remote_parent_ids: z.nullable(z.array(z.string())).optional(),
   type: z.nullable(z.lazy(() => HRISDepartmentType$inboundSchema)).optional(),
   unified_custom_fields: z.nullable(z.record(z.any())).optional(),
@@ -276,6 +281,7 @@ export const HRISDepartment$inboundSchema: z.ZodType<
     "owner_ids": "ownerIds",
     "parent_ids": "parentIds",
     "remote_id": "remoteId",
+    "remote_owner_ids": "remoteOwnerIds",
     "remote_parent_ids": "remoteParentIds",
     "unified_custom_fields": "unifiedCustomFields",
   });
@@ -288,6 +294,7 @@ export type HRISDepartment$Outbound = {
   owner_ids?: Array<string> | null | undefined;
   parent_ids?: Array<string> | null | undefined;
   remote_id?: string | null | undefined;
+  remote_owner_ids?: Array<string> | null | undefined;
   remote_parent_ids?: Array<string> | null | undefined;
   type?: HRISDepartmentType$Outbound | null | undefined;
   unified_custom_fields?: { [k: string]: any } | null | undefined;
@@ -304,6 +311,7 @@ export const HRISDepartment$outboundSchema: z.ZodType<
   ownerIds: z.nullable(z.array(z.string())).optional(),
   parentIds: z.nullable(z.array(z.string())).optional(),
   remoteId: z.nullable(z.string()).optional(),
+  remoteOwnerIds: z.nullable(z.array(z.string())).optional(),
   remoteParentIds: z.nullable(z.array(z.string())).optional(),
   type: z.nullable(z.lazy(() => HRISDepartmentType$outboundSchema)).optional(),
   unifiedCustomFields: z.nullable(z.record(z.any())).optional(),
@@ -312,6 +320,7 @@ export const HRISDepartment$outboundSchema: z.ZodType<
     ownerIds: "owner_ids",
     parentIds: "parent_ids",
     remoteId: "remote_id",
+    remoteOwnerIds: "remote_owner_ids",
     remoteParentIds: "remote_parent_ids",
     unifiedCustomFields: "unified_custom_fields",
   });

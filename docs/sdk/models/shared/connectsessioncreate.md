@@ -14,7 +14,7 @@ let value: ConnectSessionCreate = {
     ConnectSessionCreateCategories.Iam,
     ConnectSessionCreateCategories.Marketing,
     ConnectSessionCreateCategories.Lms,
-    ConnectSessionCreateCategories.Iam,
+    ConnectSessionCreateCategories.Ats,
   ],
   originOwnerId: "<id>",
   originOwnerName: "<value>",

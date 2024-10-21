@@ -14,7 +14,7 @@ let value: HrisUploadEmployeeDocumentRequest = {
   hrisDocumentsUploadRequestDto: {
     category: {
       sourceValue: "550e8400-e29b-41d4-a716-446655440000",
-      value: HrisDocumentsUploadRequestDtoValue.Resume,
+      value: HrisDocumentsUploadRequestDtoValue.Certificates,
     },
     categoryId: "6530",
     confidential: {

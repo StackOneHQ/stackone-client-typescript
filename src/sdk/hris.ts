@@ -4,12 +4,14 @@
 
 import { hrisBatchUploadEmployeeDocument } from "../funcs/hrisBatchUploadEmployeeDocument.js";
 import { hrisCreateEmployee } from "../funcs/hrisCreateEmployee.js";
+import { hrisCreateEmployeeEmployment } from "../funcs/hrisCreateEmployeeEmployment.js";
 import { hrisCreateEmployeeTimeOffRequest } from "../funcs/hrisCreateEmployeeTimeOffRequest.js";
 import { hrisCreateEmployeeWorkEligibilityRequest } from "../funcs/hrisCreateEmployeeWorkEligibilityRequest.js";
 import { hrisCreateTimeOffRequest } from "../funcs/hrisCreateTimeOffRequest.js";
 import { hrisDownloadEmployeeDocument } from "../funcs/hrisDownloadEmployeeDocument.js";
 import { hrisGetBenefit } from "../funcs/hrisGetBenefit.js";
 import { hrisGetCompany } from "../funcs/hrisGetCompany.js";
+import { hrisGetCostCenterGroup } from "../funcs/hrisGetCostCenterGroup.js";
 import { hrisGetDepartmentGroup } from "../funcs/hrisGetDepartmentGroup.js";
 import { hrisGetEmployee } from "../funcs/hrisGetEmployee.js";
 import { hrisGetEmployeeDocument } from "../funcs/hrisGetEmployeeDocument.js";
@@ -24,6 +26,7 @@ import { hrisGetLocation } from "../funcs/hrisGetLocation.js";
 import { hrisGetTimeOffRequest } from "../funcs/hrisGetTimeOffRequest.js";
 import { hrisListBenefits } from "../funcs/hrisListBenefits.js";
 import { hrisListCompanies } from "../funcs/hrisListCompanies.js";
+import { hrisListCostCenterGroups } from "../funcs/hrisListCostCenterGroups.js";
 import { hrisListDepartmentGroups } from "../funcs/hrisListDepartmentGroups.js";
 import { hrisListEmployeeCategories } from "../funcs/hrisListEmployeeCategories.js";
 import { hrisListEmployeeDocuments } from "../funcs/hrisListEmployeeDocuments.js";
@@ -37,6 +40,7 @@ import { hrisListJobs } from "../funcs/hrisListJobs.js";
 import { hrisListLocations } from "../funcs/hrisListLocations.js";
 import { hrisListTimeOffRequests } from "../funcs/hrisListTimeOffRequests.js";
 import { hrisUpdateEmployee } from "../funcs/hrisUpdateEmployee.js";
+import { hrisUpdateEmployeeEmployment } from "../funcs/hrisUpdateEmployeeEmployment.js";
 import { hrisUpdateEmployeeWorkEligibilityRequest } from "../funcs/hrisUpdateEmployeeWorkEligibilityRequest.js";
 import { hrisUpdateTimeOffRequest } from "../funcs/hrisUpdateTimeOffRequest.js";
 import { hrisUploadEmployeeDocument } from "../funcs/hrisUploadEmployeeDocument.js";
@@ -68,6 +72,20 @@ export class Hris extends ClientSDK {
     options?: RequestOptions,
   ): Promise<operations.HrisCreateEmployeeResponse> {
     return unwrapAsync(hrisCreateEmployee(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Create Employee Employment
+   */
+  async createEmployeeEmployment(
+    request: operations.HrisCreateEmployeeEmploymentRequest,
+    options?: RequestOptions,
+  ): Promise<operations.HrisCreateEmployeeEmploymentResponse> {
+    return unwrapAsync(hrisCreateEmployeeEmployment(
       this,
       request,
       options,
@@ -152,6 +170,20 @@ export class Hris extends ClientSDK {
     options?: RequestOptions,
   ): Promise<operations.HrisGetCompanyResponse> {
     return unwrapAsync(hrisGetCompany(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Get Cost Center Group
+   */
+  async getCostCenterGroup(
+    request: operations.HrisGetCostCenterGroupRequest,
+    options?: RequestOptions,
+  ): Promise<operations.HrisGetCostCenterGroupResponse> {
+    return unwrapAsync(hrisGetCostCenterGroup(
       this,
       request,
       options,
@@ -355,6 +387,20 @@ export class Hris extends ClientSDK {
   }
 
   /**
+   * List Cost Center Groups
+   */
+  async listCostCenterGroups(
+    request: operations.HrisListCostCenterGroupsRequest,
+    options?: RequestOptions,
+  ): Promise<operations.HrisListCostCenterGroupsResponse> {
+    return unwrapAsync(hrisListCostCenterGroups(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
    * List Department Groups
    */
   async listDepartmentGroups(
@@ -530,6 +576,20 @@ export class Hris extends ClientSDK {
     options?: RequestOptions,
   ): Promise<operations.HrisUpdateEmployeeResponse> {
     return unwrapAsync(hrisUpdateEmployee(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Update Employee Employment
+   */
+  async updateEmployeeEmployment(
+    request: operations.HrisUpdateEmployeeEmploymentRequest,
+    options?: RequestOptions,
+  ): Promise<operations.HrisUpdateEmployeeEmploymentResponse> {
+    return unwrapAsync(hrisUpdateEmployeeEmployment(
       this,
       request,
       options,

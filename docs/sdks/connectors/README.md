@@ -26,7 +26,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.connectors.getConnectorMeta({
-    include: "field_path,unmapped_fields,resources,inactive,webhooks",
+    include: "field_path,unmapped_fields,resources,inactive,webhooks,static_fields",
     provider: "<value>",
   });
 
@@ -56,7 +56,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await connectorsGetConnectorMeta(stackOne, {
-    include: "field_path,unmapped_fields,resources,inactive,webhooks",
+    include: "field_path,unmapped_fields,resources,inactive,webhooks,static_fields",
     provider: "<value>",
   });
 
@@ -110,7 +110,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.connectors.listConnectorsMeta({
-    include: "field_path,unmapped_fields,resources,inactive,webhooks",
+    include: "field_path,unmapped_fields,resources,inactive,webhooks,static_fields",
   });
 
   // Handle the result
@@ -139,7 +139,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await connectorsListConnectorsMeta(stackOne, {
-    include: "field_path,unmapped_fields,resources,inactive,webhooks",
+    include: "field_path,unmapped_fields,resources,inactive,webhooks,static_fields",
   });
 
   if (!res.ok) {

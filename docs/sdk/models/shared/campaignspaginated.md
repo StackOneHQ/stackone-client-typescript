@@ -69,7 +69,7 @@ let value: CampaignsPaginated = {
       },
       status: {
         sourceValue: "Email",
-        value: CampaignSchemasValue.Draft,
+        value: CampaignSchemasValue.Live,
       },
       updatedAt: new Date("2021-01-01T01:01:01.000Z"),
     },
