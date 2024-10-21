@@ -4502,26 +4502,425 @@ export type HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberSourceValue
   | Array<any>;
 
 /**
- * The type of the national identity number
+ * The ISO3166-1 Alpha2 Code of the Country
  */
 export enum HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberValue {
-  Ssn = "ssn",
-  Nin = "nin",
-  Sin = "sin",
-  Other = "other",
-  Unknown = "unknown",
+  Af = "AF",
+  Al = "AL",
+  Dz = "DZ",
+  As = "AS",
+  Ad = "AD",
+  Ao = "AO",
+  Ai = "AI",
+  Aq = "AQ",
+  Ag = "AG",
+  Ar = "AR",
+  Am = "AM",
+  Aw = "AW",
+  Au = "AU",
+  At = "AT",
+  Az = "AZ",
+  Bs = "BS",
+  Bh = "BH",
+  Bd = "BD",
+  Bb = "BB",
+  By = "BY",
+  Be = "BE",
+  Bz = "BZ",
+  Bj = "BJ",
+  Bm = "BM",
+  Bt = "BT",
+  Bo = "BO",
+  Bq = "BQ",
+  Ba = "BA",
+  Bw = "BW",
+  Bv = "BV",
+  Br = "BR",
+  Io = "IO",
+  Bn = "BN",
+  Bg = "BG",
+  Bf = "BF",
+  Bi = "BI",
+  Kh = "KH",
+  Cm = "CM",
+  Ca = "CA",
+  Cv = "CV",
+  Ky = "KY",
+  Cf = "CF",
+  Td = "TD",
+  Cl = "CL",
+  Cn = "CN",
+  Cx = "CX",
+  Cc = "CC",
+  Co = "CO",
+  Km = "KM",
+  Cg = "CG",
+  Cd = "CD",
+  Ck = "CK",
+  Cr = "CR",
+  Hr = "HR",
+  Cu = "CU",
+  Cw = "CW",
+  Cy = "CY",
+  Cz = "CZ",
+  Ci = "CI",
+  Dk = "DK",
+  Dj = "DJ",
+  Dm = "DM",
+  Do = "DO",
+  Ec = "EC",
+  Eg = "EG",
+  Sv = "SV",
+  Gq = "GQ",
+  Er = "ER",
+  Ee = "EE",
+  Et = "ET",
+  Fk = "FK",
+  Fo = "FO",
+  Fj = "FJ",
+  Fi = "FI",
+  Fr = "FR",
+  Gf = "GF",
+  Pf = "PF",
+  Tf = "TF",
+  Ga = "GA",
+  Gm = "GM",
+  Ge = "GE",
+  De = "DE",
+  Gh = "GH",
+  Gi = "GI",
+  Gr = "GR",
+  Gl = "GL",
+  Gd = "GD",
+  Gp = "GP",
+  Gu = "GU",
+  Gt = "GT",
+  Gg = "GG",
+  Gn = "GN",
+  Gw = "GW",
+  Gy = "GY",
+  Ht = "HT",
+  Hm = "HM",
+  Va = "VA",
+  Hn = "HN",
+  Hk = "HK",
+  Hu = "HU",
+  Is = "IS",
+  In = "IN",
+  Id = "ID",
+  Ir = "IR",
+  Iq = "IQ",
+  Ie = "IE",
+  Im = "IM",
+  Il = "IL",
+  It = "IT",
+  Jm = "JM",
+  Jp = "JP",
+  Je = "JE",
+  Jo = "JO",
+  Kz = "KZ",
+  Ke = "KE",
+  Ki = "KI",
+  Kp = "KP",
+  Kr = "KR",
+  Kw = "KW",
+  Kg = "KG",
+  La = "LA",
+  Lv = "LV",
+  Lb = "LB",
+  Ls = "LS",
+  Lr = "LR",
+  Ly = "LY",
+  Li = "LI",
+  Lt = "LT",
+  Lu = "LU",
+  Mo = "MO",
+  Mk = "MK",
+  Mg = "MG",
+  Mw = "MW",
+  My = "MY",
+  Mv = "MV",
+  Ml = "ML",
+  Mt = "MT",
+  Mh = "MH",
+  Mq = "MQ",
+  Mr = "MR",
+  Mu = "MU",
+  Yt = "YT",
+  Mx = "MX",
+  Fm = "FM",
+  Md = "MD",
+  Mc = "MC",
+  Mn = "MN",
+  Me = "ME",
+  Ms = "MS",
+  Ma = "MA",
+  Mz = "MZ",
+  Mm = "MM",
+  Na = "NA",
+  Nr = "NR",
+  Np = "NP",
+  Nl = "NL",
+  Nc = "NC",
+  Nz = "NZ",
+  Ni = "NI",
+  Ne = "NE",
+  Ng = "NG",
+  Nu = "NU",
+  Nf = "NF",
+  Mp = "MP",
+  No = "NO",
+  Om = "OM",
+  Pk = "PK",
+  Pw = "PW",
+  Ps = "PS",
+  Pa = "PA",
+  Pg = "PG",
+  Py = "PY",
+  Pe = "PE",
+  Ph = "PH",
+  Pn = "PN",
+  Pl = "PL",
+  Pt = "PT",
+  Pr = "PR",
+  Qa = "QA",
+  Ro = "RO",
+  Ru = "RU",
+  Rw = "RW",
+  Re = "RE",
+  Bl = "BL",
+  Sh = "SH",
+  Kn = "KN",
+  Lc = "LC",
+  Mf = "MF",
+  Pm = "PM",
+  Vc = "VC",
+  Ws = "WS",
+  Sm = "SM",
+  St = "ST",
+  Sa = "SA",
+  Sn = "SN",
+  Rs = "RS",
+  Sc = "SC",
+  Sl = "SL",
+  Sg = "SG",
+  Sx = "SX",
+  Sk = "SK",
+  Si = "SI",
+  Sb = "SB",
+  So = "SO",
+  Za = "ZA",
+  Gs = "GS",
+  Ss = "SS",
+  Es = "ES",
+  Lk = "LK",
+  Sd = "SD",
+  Sr = "SR",
+  Sj = "SJ",
+  Sz = "SZ",
+  Se = "SE",
+  Ch = "CH",
+  Sy = "SY",
+  Tw = "TW",
+  Tj = "TJ",
+  Tz = "TZ",
+  Th = "TH",
+  Tl = "TL",
+  Tg = "TG",
+  Tk = "TK",
+  To = "TO",
+  Tt = "TT",
+  Tn = "TN",
+  Tr = "TR",
+  Tm = "TM",
+  Tc = "TC",
+  Tv = "TV",
+  Ug = "UG",
+  Ua = "UA",
+  Ae = "AE",
+  Gb = "GB",
+  Us = "US",
+  Um = "UM",
+  Uy = "UY",
+  Uz = "UZ",
+  Vu = "VU",
+  Ve = "VE",
+  Vn = "VN",
+  Vg = "VG",
+  Vi = "VI",
+  Wf = "WF",
+  Eh = "EH",
+  Ye = "YE",
+  Zm = "ZM",
+  Zw = "ZW",
+  UnmappedValue = "unmapped_value",
 }
 /**
- * The type of the national identity number
+ * The ISO3166-1 Alpha2 Code of the Country
  */
 export type HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberValueOpen =
   OpenEnum<
     typeof HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberValue
   >;
 
-export type HrisCreateEmployeeRequestDtoType = {
+/**
+ * The country code
+ */
+export type HrisCreateEmployeeRequestDtoSchemasCountry = {
   sourceValue?:
     | HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumber4
+    | string
+    | number
+    | boolean
+    | Array<any>
+    | null
+    | undefined;
+  /**
+   * The ISO3166-1 Alpha2 Code of the Country
+   */
+  value?:
+    | HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberValueOpen
+    | null
+    | undefined;
+};
+
+export type HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberType4 = {};
+
+export type HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberTypeSourceValue =
+  | HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberType4
+  | string
+  | number
+  | boolean
+  | Array<any>;
+
+/**
+ * The type of the national identity number
+ */
+export enum HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberTypeValue {
+  Ssn = "ssn",
+  Nin = "nin",
+  Sin = "sin",
+  Nid = "nid",
+  Pin = "pin",
+  Umcn = "umcn",
+  Pic = "pic",
+  Ric = "ric",
+  Idnum = "idnum",
+  Cid = "cid",
+  Nidnr = "nidnr",
+  Pan = "pan",
+  Aadhaar = "aadhaar",
+  Epic = "epic",
+  Ptn = "ptn",
+  Tin = "tin",
+  Uprc = "uprc",
+  Pcode = "pcode",
+  Ssi = "ssi",
+  Cedula = "cedula",
+  Passport = "passport",
+  Voterid = "voterid",
+  Ntin = "ntin",
+  Bn = "bn",
+  Fnr = "fnr",
+  Mva = "mva",
+  CivilId = "civil_id",
+  Cnic = "cnic",
+  Nric = "nric",
+  Fin = "fin",
+  Uen = "uen",
+  Registrationnumber = "registrationnumber",
+  Nic = "nic",
+  Personnummer = "personnummer",
+  Ahv = "ahv",
+  Id = "id",
+  Eid = "eid",
+  Va = "va",
+  Pid = "pid",
+  Nrt = "nrt",
+  Nipt = "nipt",
+  Cbu = "cbu",
+  Cuit = "cuit",
+  Dni = "dni",
+  Businessid = "businessid",
+  Vnr = "vnr",
+  Abn = "abn",
+  Acn = "acn",
+  Tfn = "tfn",
+  Jmbg = "jmbg",
+  Bis = "bis",
+  Insz = "insz",
+  Nn = "nn",
+  Egn = "egn",
+  Pnf = "pnf",
+  Vat = "vat",
+  Cnpj = "cnpj",
+  Unp = "unp",
+  Gst = "gst",
+  Pst = "pst",
+  Qst = "qst",
+  Ni = "ni",
+  Dic = "dic",
+  Rc = "rc",
+  Uid = "uid",
+  Rut = "rut",
+  Uscc = "uscc",
+  Cpf = "cpf",
+  Cpj = "cpj",
+  Cr = "cr",
+  Stnr = "stnr",
+  Svnr = "svnr",
+  Ncf = "ncf",
+  Rnc = "rnc",
+  Nif = "nif",
+  Ci = "ci",
+  Ik = "ik",
+  Kmkr = "kmkr",
+  Registrikood = "registrikood",
+  Tn = "tn",
+  Ruc = "ruc",
+  Nit = "nit",
+  Alv = "alv",
+  Hetu = "hetu",
+  Ytunnus = "ytunnus",
+  Vn = "vn",
+  Utr = "utr",
+  Nifp = "nifp",
+  Amka = "amka",
+  Cui = "cui",
+  Nir = "nir",
+  Siren = "siren",
+  Siret = "siret",
+  Tva = "tva",
+  Oib = "oib",
+  Hkid = "hkid",
+  Anum = "anum",
+  Kennitala = "kennitala",
+  Vsk = "vsk",
+  Npwp = "npwp",
+  Pps = "pps",
+  Gstin = "gstin",
+  Idnr = "idnr",
+  Hr = "hr",
+  Aic = "aic",
+  Codicefiscale = "codicefiscale",
+  Iva = "iva",
+  Peid = "peid",
+  Asmens = "asmens",
+  Pvm = "pvm",
+  Other = "other",
+  Unknown = "unknown",
+}
+/**
+ * The type of the national identity number
+ */
+export type HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberTypeValueOpen =
+  OpenEnum<
+    typeof HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberTypeValue
+  >;
+
+export type HrisCreateEmployeeRequestDtoType = {
+  sourceValue?:
+    | HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberType4
     | string
     | number
     | boolean
@@ -4532,7 +4931,7 @@ export type HrisCreateEmployeeRequestDtoType = {
    * The type of the national identity number
    */
   value?:
-    | HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberValueOpen
+    | HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberTypeValueOpen
     | null
     | undefined;
 };
@@ -4541,6 +4940,10 @@ export type HrisCreateEmployeeRequestDtoType = {
  * The national identity number
  */
 export type HrisCreateEmployeeRequestDtoNationalIdentityNumber = {
+  /**
+   * The country code
+   */
+  country?: HrisCreateEmployeeRequestDtoSchemasCountry | null | undefined;
   type?: HrisCreateEmployeeRequestDtoType | null | undefined;
   value?: string | null | undefined;
 };
@@ -4957,7 +5360,7 @@ export type HrisCreateEmployeeRequestDtoSchemasWorkLocationValueOpen = OpenEnum<
 /**
  * The country code
  */
-export type HrisCreateEmployeeRequestDtoSchemasCountry = {
+export type HrisCreateEmployeeRequestDtoSchemasWorkLocationCountry = {
   sourceValue?:
     | HrisCreateEmployeeRequestDtoSchemasWorkLocation4
     | string
@@ -8842,7 +9245,10 @@ export type HrisCreateEmployeeRequestDtoWorkLocation = {
   /**
    * The country code
    */
-  country?: HrisCreateEmployeeRequestDtoSchemasCountry | null | undefined;
+  country?:
+    | HrisCreateEmployeeRequestDtoSchemasWorkLocationCountry
+    | null
+    | undefined;
   /**
    * Unique identifier
    */
@@ -10903,6 +11309,217 @@ export namespace HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberValue$
 }
 
 /** @internal */
+export const HrisCreateEmployeeRequestDtoSchemasCountry$inboundSchema:
+  z.ZodType<HrisCreateEmployeeRequestDtoSchemasCountry, z.ZodTypeDef, unknown> =
+    z.object({
+      source_value: z.nullable(
+        z.union([
+          z.lazy(() =>
+            HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumber4$inboundSchema
+          ),
+          z.string(),
+          z.number(),
+          z.boolean(),
+          z.array(z.any()),
+        ]),
+      ).optional(),
+      value: z.nullable(
+        HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberValue$inboundSchema,
+      ).optional(),
+    }).transform((v) => {
+      return remap$(v, {
+        "source_value": "sourceValue",
+      });
+    });
+
+/** @internal */
+export type HrisCreateEmployeeRequestDtoSchemasCountry$Outbound = {
+  source_value?:
+    | HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumber4$Outbound
+    | string
+    | number
+    | boolean
+    | Array<any>
+    | null
+    | undefined;
+  value?: string | null | undefined;
+};
+
+/** @internal */
+export const HrisCreateEmployeeRequestDtoSchemasCountry$outboundSchema:
+  z.ZodType<
+    HrisCreateEmployeeRequestDtoSchemasCountry$Outbound,
+    z.ZodTypeDef,
+    HrisCreateEmployeeRequestDtoSchemasCountry
+  > = z.object({
+    sourceValue: z.nullable(
+      z.union([
+        z.lazy(() =>
+          HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumber4$outboundSchema
+        ),
+        z.string(),
+        z.number(),
+        z.boolean(),
+        z.array(z.any()),
+      ]),
+    ).optional(),
+    value: z.nullable(
+      HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberValue$outboundSchema,
+    ).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      sourceValue: "source_value",
+    });
+  });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace HrisCreateEmployeeRequestDtoSchemasCountry$ {
+  /** @deprecated use `HrisCreateEmployeeRequestDtoSchemasCountry$inboundSchema` instead. */
+  export const inboundSchema =
+    HrisCreateEmployeeRequestDtoSchemasCountry$inboundSchema;
+  /** @deprecated use `HrisCreateEmployeeRequestDtoSchemasCountry$outboundSchema` instead. */
+  export const outboundSchema =
+    HrisCreateEmployeeRequestDtoSchemasCountry$outboundSchema;
+  /** @deprecated use `HrisCreateEmployeeRequestDtoSchemasCountry$Outbound` instead. */
+  export type Outbound = HrisCreateEmployeeRequestDtoSchemasCountry$Outbound;
+}
+
+/** @internal */
+export const HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberType4$inboundSchema:
+  z.ZodType<
+    HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberType4,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({});
+
+/** @internal */
+export type HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberType4$Outbound =
+  {};
+
+/** @internal */
+export const HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberType4$outboundSchema:
+  z.ZodType<
+    HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberType4$Outbound,
+    z.ZodTypeDef,
+    HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberType4
+  > = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberType4$ {
+  /** @deprecated use `HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberType4$inboundSchema` instead. */
+  export const inboundSchema =
+    HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberType4$inboundSchema;
+  /** @deprecated use `HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberType4$outboundSchema` instead. */
+  export const outboundSchema =
+    HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberType4$outboundSchema;
+  /** @deprecated use `HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberType4$Outbound` instead. */
+  export type Outbound =
+    HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberType4$Outbound;
+}
+
+/** @internal */
+export const HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberTypeSourceValue$inboundSchema:
+  z.ZodType<
+    HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberTypeSourceValue,
+    z.ZodTypeDef,
+    unknown
+  > = z.union([
+    z.lazy(() =>
+      HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberType4$inboundSchema
+    ),
+    z.string(),
+    z.number(),
+    z.boolean(),
+    z.array(z.any()),
+  ]);
+
+/** @internal */
+export type HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberTypeSourceValue$Outbound =
+  | HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberType4$Outbound
+  | string
+  | number
+  | boolean
+  | Array<any>;
+
+/** @internal */
+export const HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberTypeSourceValue$outboundSchema:
+  z.ZodType<
+    HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberTypeSourceValue$Outbound,
+    z.ZodTypeDef,
+    HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberTypeSourceValue
+  > = z.union([
+    z.lazy(() =>
+      HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberType4$outboundSchema
+    ),
+    z.string(),
+    z.number(),
+    z.boolean(),
+    z.array(z.any()),
+  ]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberTypeSourceValue$ {
+  /** @deprecated use `HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberTypeSourceValue$inboundSchema` instead. */
+  export const inboundSchema =
+    HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberTypeSourceValue$inboundSchema;
+  /** @deprecated use `HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberTypeSourceValue$outboundSchema` instead. */
+  export const outboundSchema =
+    HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberTypeSourceValue$outboundSchema;
+  /** @deprecated use `HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberTypeSourceValue$Outbound` instead. */
+  export type Outbound =
+    HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberTypeSourceValue$Outbound;
+}
+
+/** @internal */
+export const HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberTypeValue$inboundSchema:
+  z.ZodType<
+    HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberTypeValueOpen,
+    z.ZodTypeDef,
+    unknown
+  > = z
+    .union([
+      z.nativeEnum(
+        HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberTypeValue,
+      ),
+      z.string().transform(catchUnrecognizedEnum),
+    ]);
+
+/** @internal */
+export const HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberTypeValue$outboundSchema:
+  z.ZodType<
+    HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberTypeValueOpen,
+    z.ZodTypeDef,
+    HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberTypeValueOpen
+  > = z.union([
+    z.nativeEnum(
+      HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberTypeValue,
+    ),
+    z.string().and(z.custom<Unrecognized<string>>()),
+  ]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberTypeValue$ {
+  /** @deprecated use `HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberTypeValue$inboundSchema` instead. */
+  export const inboundSchema =
+    HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberTypeValue$inboundSchema;
+  /** @deprecated use `HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberTypeValue$outboundSchema` instead. */
+  export const outboundSchema =
+    HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberTypeValue$outboundSchema;
+}
+
+/** @internal */
 export const HrisCreateEmployeeRequestDtoType$inboundSchema: z.ZodType<
   HrisCreateEmployeeRequestDtoType,
   z.ZodTypeDef,
@@ -10911,7 +11528,7 @@ export const HrisCreateEmployeeRequestDtoType$inboundSchema: z.ZodType<
   source_value: z.nullable(
     z.union([
       z.lazy(() =>
-        HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumber4$inboundSchema
+        HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberType4$inboundSchema
       ),
       z.string(),
       z.number(),
@@ -10920,7 +11537,7 @@ export const HrisCreateEmployeeRequestDtoType$inboundSchema: z.ZodType<
     ]),
   ).optional(),
   value: z.nullable(
-    HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberValue$inboundSchema,
+    HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberTypeValue$inboundSchema,
   ).optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -10931,7 +11548,7 @@ export const HrisCreateEmployeeRequestDtoType$inboundSchema: z.ZodType<
 /** @internal */
 export type HrisCreateEmployeeRequestDtoType$Outbound = {
   source_value?:
-    | HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumber4$Outbound
+    | HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberType4$Outbound
     | string
     | number
     | boolean
@@ -10950,7 +11567,7 @@ export const HrisCreateEmployeeRequestDtoType$outboundSchema: z.ZodType<
   sourceValue: z.nullable(
     z.union([
       z.lazy(() =>
-        HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumber4$outboundSchema
+        HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberType4$outboundSchema
       ),
       z.string(),
       z.number(),
@@ -10959,7 +11576,7 @@ export const HrisCreateEmployeeRequestDtoType$outboundSchema: z.ZodType<
     ]),
   ).optional(),
   value: z.nullable(
-    HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberValue$outboundSchema,
+    HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberTypeValue$outboundSchema,
   ).optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -10987,6 +11604,9 @@ export const HrisCreateEmployeeRequestDtoNationalIdentityNumber$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = z.object({
+    country: z.nullable(
+      z.lazy(() => HrisCreateEmployeeRequestDtoSchemasCountry$inboundSchema),
+    ).optional(),
     type: z.nullable(
       z.lazy(() => HrisCreateEmployeeRequestDtoType$inboundSchema),
     ).optional(),
@@ -10995,6 +11615,10 @@ export const HrisCreateEmployeeRequestDtoNationalIdentityNumber$inboundSchema:
 
 /** @internal */
 export type HrisCreateEmployeeRequestDtoNationalIdentityNumber$Outbound = {
+  country?:
+    | HrisCreateEmployeeRequestDtoSchemasCountry$Outbound
+    | null
+    | undefined;
   type?: HrisCreateEmployeeRequestDtoType$Outbound | null | undefined;
   value?: string | null | undefined;
 };
@@ -11006,6 +11630,9 @@ export const HrisCreateEmployeeRequestDtoNationalIdentityNumber$outboundSchema:
     z.ZodTypeDef,
     HrisCreateEmployeeRequestDtoNationalIdentityNumber
   > = z.object({
+    country: z.nullable(
+      z.lazy(() => HrisCreateEmployeeRequestDtoSchemasCountry$outboundSchema),
+    ).optional(),
     type: z.nullable(
       z.lazy(() => HrisCreateEmployeeRequestDtoType$outboundSchema),
     ).optional(),
@@ -11365,31 +11992,34 @@ export namespace HrisCreateEmployeeRequestDtoSchemasWorkLocationValue$ {
 }
 
 /** @internal */
-export const HrisCreateEmployeeRequestDtoSchemasCountry$inboundSchema:
-  z.ZodType<HrisCreateEmployeeRequestDtoSchemasCountry, z.ZodTypeDef, unknown> =
-    z.object({
-      source_value: z.nullable(
-        z.union([
-          z.lazy(() =>
-            HrisCreateEmployeeRequestDtoSchemasWorkLocation4$inboundSchema
-          ),
-          z.string(),
-          z.number(),
-          z.boolean(),
-          z.array(z.any()),
-        ]),
-      ).optional(),
-      value: z.nullable(
-        HrisCreateEmployeeRequestDtoSchemasWorkLocationValue$inboundSchema,
-      ).optional(),
-    }).transform((v) => {
-      return remap$(v, {
-        "source_value": "sourceValue",
-      });
+export const HrisCreateEmployeeRequestDtoSchemasWorkLocationCountry$inboundSchema:
+  z.ZodType<
+    HrisCreateEmployeeRequestDtoSchemasWorkLocationCountry,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    source_value: z.nullable(
+      z.union([
+        z.lazy(() =>
+          HrisCreateEmployeeRequestDtoSchemasWorkLocation4$inboundSchema
+        ),
+        z.string(),
+        z.number(),
+        z.boolean(),
+        z.array(z.any()),
+      ]),
+    ).optional(),
+    value: z.nullable(
+      HrisCreateEmployeeRequestDtoSchemasWorkLocationValue$inboundSchema,
+    ).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "source_value": "sourceValue",
     });
+  });
 
 /** @internal */
-export type HrisCreateEmployeeRequestDtoSchemasCountry$Outbound = {
+export type HrisCreateEmployeeRequestDtoSchemasWorkLocationCountry$Outbound = {
   source_value?:
     | HrisCreateEmployeeRequestDtoSchemasWorkLocation4$Outbound
     | string
@@ -11402,11 +12032,11 @@ export type HrisCreateEmployeeRequestDtoSchemasCountry$Outbound = {
 };
 
 /** @internal */
-export const HrisCreateEmployeeRequestDtoSchemasCountry$outboundSchema:
+export const HrisCreateEmployeeRequestDtoSchemasWorkLocationCountry$outboundSchema:
   z.ZodType<
-    HrisCreateEmployeeRequestDtoSchemasCountry$Outbound,
+    HrisCreateEmployeeRequestDtoSchemasWorkLocationCountry$Outbound,
     z.ZodTypeDef,
-    HrisCreateEmployeeRequestDtoSchemasCountry
+    HrisCreateEmployeeRequestDtoSchemasWorkLocationCountry
   > = z.object({
     sourceValue: z.nullable(
       z.union([
@@ -11432,15 +12062,16 @@ export const HrisCreateEmployeeRequestDtoSchemasCountry$outboundSchema:
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace HrisCreateEmployeeRequestDtoSchemasCountry$ {
-  /** @deprecated use `HrisCreateEmployeeRequestDtoSchemasCountry$inboundSchema` instead. */
+export namespace HrisCreateEmployeeRequestDtoSchemasWorkLocationCountry$ {
+  /** @deprecated use `HrisCreateEmployeeRequestDtoSchemasWorkLocationCountry$inboundSchema` instead. */
   export const inboundSchema =
-    HrisCreateEmployeeRequestDtoSchemasCountry$inboundSchema;
-  /** @deprecated use `HrisCreateEmployeeRequestDtoSchemasCountry$outboundSchema` instead. */
+    HrisCreateEmployeeRequestDtoSchemasWorkLocationCountry$inboundSchema;
+  /** @deprecated use `HrisCreateEmployeeRequestDtoSchemasWorkLocationCountry$outboundSchema` instead. */
   export const outboundSchema =
-    HrisCreateEmployeeRequestDtoSchemasCountry$outboundSchema;
-  /** @deprecated use `HrisCreateEmployeeRequestDtoSchemasCountry$Outbound` instead. */
-  export type Outbound = HrisCreateEmployeeRequestDtoSchemasCountry$Outbound;
+    HrisCreateEmployeeRequestDtoSchemasWorkLocationCountry$outboundSchema;
+  /** @deprecated use `HrisCreateEmployeeRequestDtoSchemasWorkLocationCountry$Outbound` instead. */
+  export type Outbound =
+    HrisCreateEmployeeRequestDtoSchemasWorkLocationCountry$Outbound;
 }
 
 /** @internal */
@@ -11657,7 +12288,9 @@ export const HrisCreateEmployeeRequestDtoWorkLocation$inboundSchema: z.ZodType<
 > = z.object({
   city: z.nullable(z.string()).optional(),
   country: z.nullable(
-    z.lazy(() => HrisCreateEmployeeRequestDtoSchemasCountry$inboundSchema),
+    z.lazy(() =>
+      HrisCreateEmployeeRequestDtoSchemasWorkLocationCountry$inboundSchema
+    ),
   ).optional(),
   id: z.nullable(z.string()).optional(),
   name: z.nullable(z.string()).optional(),
@@ -11682,7 +12315,7 @@ export const HrisCreateEmployeeRequestDtoWorkLocation$inboundSchema: z.ZodType<
 export type HrisCreateEmployeeRequestDtoWorkLocation$Outbound = {
   city?: string | null | undefined;
   country?:
-    | HrisCreateEmployeeRequestDtoSchemasCountry$Outbound
+    | HrisCreateEmployeeRequestDtoSchemasWorkLocationCountry$Outbound
     | null
     | undefined;
   id?: string | null | undefined;
@@ -11703,7 +12336,9 @@ export const HrisCreateEmployeeRequestDtoWorkLocation$outboundSchema: z.ZodType<
 > = z.object({
   city: z.nullable(z.string()).optional(),
   country: z.nullable(
-    z.lazy(() => HrisCreateEmployeeRequestDtoSchemasCountry$outboundSchema),
+    z.lazy(() =>
+      HrisCreateEmployeeRequestDtoSchemasWorkLocationCountry$outboundSchema
+    ),
   ).optional(),
   id: z.nullable(z.string()).optional(),
   name: z.nullable(z.string()).optional(),

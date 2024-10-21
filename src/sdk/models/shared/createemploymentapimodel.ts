@@ -229,10 +229,6 @@ export type PayPeriod = {
 
 export type CreateEmploymentApiModel = {
   /**
-   * The created_at date
-   */
-  createdAt?: Date | null | undefined;
-  /**
    * The effective date of the employment contract
    */
   effectiveDate?: Date | null | undefined;
@@ -276,10 +272,6 @@ export type CreateEmploymentApiModel = {
    * Custom Unified Fields configured in your StackOne project
    */
   unifiedCustomFields?: { [k: string]: any } | null | undefined;
-  /**
-   * The updated_at date
-   */
-  updatedAt?: Date | null | undefined;
 };
 
 /** @internal */
@@ -1043,9 +1035,6 @@ export const CreateEmploymentApiModel$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  created_at: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
   effective_date: z.nullable(
     z.string().datetime({ offset: true }).transform(v => new Date(v)),
   ).optional(),
@@ -1063,12 +1052,8 @@ export const CreateEmploymentApiModel$inboundSchema: z.ZodType<
   pay_period: z.nullable(z.lazy(() => PayPeriod$inboundSchema)).optional(),
   pay_rate: z.nullable(z.string()).optional(),
   unified_custom_fields: z.nullable(z.record(z.any())).optional(),
-  updated_at: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
 }).transform((v) => {
   return remap$(v, {
-    "created_at": "createdAt",
     "effective_date": "effectiveDate",
     "employee_id": "employeeId",
     "employment_contract_type": "employmentContractType",
@@ -1079,13 +1064,11 @@ export const CreateEmploymentApiModel$inboundSchema: z.ZodType<
     "pay_period": "payPeriod",
     "pay_rate": "payRate",
     "unified_custom_fields": "unifiedCustomFields",
-    "updated_at": "updatedAt",
   });
 });
 
 /** @internal */
 export type CreateEmploymentApiModel$Outbound = {
-  created_at?: string | null | undefined;
   effective_date?: string | null | undefined;
   employee_id?: string | null | undefined;
   employment_contract_type?: EmploymentContractType$Outbound | null | undefined;
@@ -1097,7 +1080,6 @@ export type CreateEmploymentApiModel$Outbound = {
   pay_period?: PayPeriod$Outbound | null | undefined;
   pay_rate?: string | null | undefined;
   unified_custom_fields?: { [k: string]: any } | null | undefined;
-  updated_at?: string | null | undefined;
 };
 
 /** @internal */
@@ -1106,7 +1088,6 @@ export const CreateEmploymentApiModel$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CreateEmploymentApiModel
 > = z.object({
-  createdAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
   effectiveDate: z.nullable(z.date().transform(v => v.toISOString()))
     .optional(),
   employeeId: z.nullable(z.string()).optional(),
@@ -1123,10 +1104,8 @@ export const CreateEmploymentApiModel$outboundSchema: z.ZodType<
   payPeriod: z.nullable(z.lazy(() => PayPeriod$outboundSchema)).optional(),
   payRate: z.nullable(z.string()).optional(),
   unifiedCustomFields: z.nullable(z.record(z.any())).optional(),
-  updatedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
 }).transform((v) => {
   return remap$(v, {
-    createdAt: "created_at",
     effectiveDate: "effective_date",
     employeeId: "employee_id",
     employmentContractType: "employment_contract_type",
@@ -1137,7 +1116,6 @@ export const CreateEmploymentApiModel$outboundSchema: z.ZodType<
     payPeriod: "pay_period",
     payRate: "pay_rate",
     unifiedCustomFields: "unified_custom_fields",
-    updatedAt: "updated_at",
   });
 });
 

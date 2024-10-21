@@ -19,14 +19,14 @@ let value: MarketingListContentBlocksResponse = {
         },
         type: {
           sourceValue: "text",
-          value: ContentBlockSchemasValue.CodeSnippet,
+          value: ContentBlockSchemasValue.Html,
         },
         updatedAt: new Date("2021-01-01T00:00:00.000Z"),
       },
     ],
   },
   contentType: "<value>",
-  statusCode: 102,
+  statusCode: 201,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

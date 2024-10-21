@@ -7,12 +7,14 @@
 
 * [batchUploadEmployeeDocument](#batchuploademployeedocument) - Batch Upload Employee Document
 * [createEmployee](#createemployee) - Creates an employee
+* [createEmployeeEmployment](#createemployeeemployment) - Create Employee Employment
 * [createEmployeeTimeOffRequest](#createemployeetimeoffrequest) - Create Employee Time Off Request
 * [createEmployeeWorkEligibilityRequest](#createemployeeworkeligibilityrequest) - Create Employee Work Eligibility Request
 * [createTimeOffRequest](#createtimeoffrequest) - Creates a time off request
 * [downloadEmployeeDocument](#downloademployeedocument) - Download Employee Document
 * [getBenefit](#getbenefit) - Get Benefit
 * [getCompany](#getcompany) - Get Company
+* [getCostCenterGroup](#getcostcentergroup) - Get Cost Center Group
 * [getDepartmentGroup](#getdepartmentgroup) - Get Department Group
 * [getEmployee](#getemployee) - Get Employee
 * [getEmployeeDocument](#getemployeedocument) - Get Employee Document
@@ -27,6 +29,7 @@
 * [getTimeOffRequest](#gettimeoffrequest) - Get time off request
 * [listBenefits](#listbenefits) - List benefits
 * [listCompanies](#listcompanies) - List Companies
+* [listCostCenterGroups](#listcostcentergroups) - List Cost Center Groups
 * [listDepartmentGroups](#listdepartmentgroups) - List Department Groups
 * [listEmployeeCategories](#listemployeecategories) - List Employee Document Categories
 * [listEmployeeDocuments](#listemployeedocuments) - List Employee Documents
@@ -40,6 +43,7 @@
 * [listLocations](#listlocations) - List locations
 * [listTimeOffRequests](#listtimeoffrequests) - List time off requests
 * [updateEmployee](#updateemployee) - Updates an employee
+* [updateEmployeeEmployment](#updateemployeeemployment) - Update Employee Employment
 * [updateEmployeeWorkEligibilityRequest](#updateemployeeworkeligibilityrequest) - Update Employee Work Eligibility Request
 * [updateTimeOffRequest](#updatetimeoffrequest) - Update time off request
 * [uploadEmployeeDocument](#uploademployeedocument) - Upload Employee Document
@@ -197,6 +201,7 @@ import {
   CreateEmploymentApiModelSchemasValue,
   HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue,
   HrisCreateEmployeeRequestDtoSchemasHomeLocationValue,
+  HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberTypeValue,
   HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberValue,
   HrisCreateEmployeeRequestDtoSchemasPreferredLanguageValue,
   HrisCreateEmployeeRequestDtoSchemasWorkLocationValue,
@@ -253,7 +258,6 @@ async function run() {
       },
       employments: [
         {
-          createdAt: new Date("2021-01-01T01:01:01.000Z"),
           effectiveDate: new Date("2021-01-01T01:01:01.000Z"),
           employeeId: "1687-3",
           employmentContractType: {},
@@ -277,7 +281,6 @@ async function run() {
             "my_project_custom_field_1": "REF-1236",
             "my_project_custom_field_2": "some other value",
           },
-          updatedAt: new Date("2021-01-01T01:01:01.000Z"),
         },
       ],
       ethnicity: {},
@@ -307,8 +310,11 @@ async function run() {
       maritalStatus: {},
       name: "Issac Newton",
       nationalIdentityNumber: {
+        country: {
+          value: HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberValue.Us,
+        },
         type: {
-          value: HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberValue.Ssn,
+          value: HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberTypeValue.Ssn,
         },
         value: "123456789",
       },
@@ -367,6 +373,7 @@ import {
   CreateEmploymentApiModelSchemasValue,
   HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue,
   HrisCreateEmployeeRequestDtoSchemasHomeLocationValue,
+  HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberTypeValue,
   HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberValue,
   HrisCreateEmployeeRequestDtoSchemasPreferredLanguageValue,
   HrisCreateEmployeeRequestDtoSchemasWorkLocationValue,
@@ -425,7 +432,6 @@ async function run() {
       },
       employments: [
         {
-          createdAt: new Date("2021-01-01T01:01:01.000Z"),
           effectiveDate: new Date("2021-01-01T01:01:01.000Z"),
           employeeId: "1687-3",
           employmentContractType: {},
@@ -449,7 +455,6 @@ async function run() {
             "my_project_custom_field_1": "REF-1236",
             "my_project_custom_field_2": "some other value",
           },
-          updatedAt: new Date("2021-01-01T01:01:01.000Z"),
         },
       ],
       ethnicity: {},
@@ -479,8 +484,11 @@ async function run() {
       maritalStatus: {},
       name: "Issac Newton",
       nationalIdentityNumber: {
+        country: {
+          value: HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberValue.Us,
+        },
         type: {
-          value: HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberValue.Ssn,
+          value: HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberTypeValue.Ssn,
         },
         value: "123456789",
       },
@@ -543,6 +551,156 @@ run();
 ### Response
 
 **Promise\<[operations.HrisCreateEmployeeResponse](../../sdk/models/operations/hriscreateemployeeresponse.md)\>**
+
+### Errors
+
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |
+
+## createEmployeeEmployment
+
+Create Employee Employment
+
+### Example Usage
+
+```typescript
+import { StackOne } from "@stackone/stackone-client-ts";
+import {
+  HrisCreateEmploymentRequestDtoSchemasPayFrequencyValue,
+  HrisCreateEmploymentRequestDtoSchemasPayPeriodValue,
+  HrisCreateEmploymentRequestDtoSchemasValue,
+} from "@stackone/stackone-client-ts/sdk/models/shared";
+
+const stackOne = new StackOne({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const result = await stackOne.hris.createEmployeeEmployment({
+    hrisCreateEmploymentRequestDto: {
+      effectiveDate: new Date("2021-01-01T01:01:01.000Z"),
+      employeeId: "1687-3",
+      employmentContractType: {},
+      employmentType: {
+        sourceValue: "Permanent",
+        value: HrisCreateEmploymentRequestDtoSchemasValue.Permanent,
+      },
+      id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+      jobTitle: "Software Engineer",
+      passthrough: {
+        "other_known_names": "John Doe",
+      },
+      payCurrency: "USD",
+      payFrequency: {
+        sourceValue: "Hourly",
+        value: HrisCreateEmploymentRequestDtoSchemasPayFrequencyValue.Hourly,
+      },
+      payPeriod: {
+        sourceValue: "Hour",
+        value: HrisCreateEmploymentRequestDtoSchemasPayPeriodValue.Hour,
+      },
+      payRate: "40.00",
+      unifiedCustomFields: {
+        "my_project_custom_field_1": "REF-1236",
+        "my_project_custom_field_2": "some other value",
+      },
+    },
+    id: "<id>",
+    xAccountId: "<id>",
+  });
+
+  // Handle the result
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
+import { hrisCreateEmployeeEmployment } from "@stackone/stackone-client-ts/funcs/hrisCreateEmployeeEmployment.js";
+import {
+  HrisCreateEmploymentRequestDtoSchemasPayFrequencyValue,
+  HrisCreateEmploymentRequestDtoSchemasPayPeriodValue,
+  HrisCreateEmploymentRequestDtoSchemasValue,
+} from "@stackone/stackone-client-ts/sdk/models/shared";
+
+// Use `StackOneCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const stackOne = new StackOneCore({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const res = await hrisCreateEmployeeEmployment(stackOne, {
+    hrisCreateEmploymentRequestDto: {
+      effectiveDate: new Date("2021-01-01T01:01:01.000Z"),
+      employeeId: "1687-3",
+      employmentContractType: {},
+      employmentType: {
+        sourceValue: "Permanent",
+        value: HrisCreateEmploymentRequestDtoSchemasValue.Permanent,
+      },
+      id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+      jobTitle: "Software Engineer",
+      passthrough: {
+        "other_known_names": "John Doe",
+      },
+      payCurrency: "USD",
+      payFrequency: {
+        sourceValue: "Hourly",
+        value: HrisCreateEmploymentRequestDtoSchemasPayFrequencyValue.Hourly,
+      },
+      payPeriod: {
+        sourceValue: "Hour",
+        value: HrisCreateEmploymentRequestDtoSchemasPayPeriodValue.Hour,
+      },
+      payRate: "40.00",
+      unifiedCustomFields: {
+        "my_project_custom_field_1": "REF-1236",
+        "my_project_custom_field_2": "some other value",
+      },
+    },
+    id: "<id>",
+    xAccountId: "<id>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.HrisCreateEmployeeEmploymentRequest](../../sdk/models/operations/hriscreateemployeeemploymentrequest.md)                                                           | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[operations.HrisCreateEmployeeEmploymentResponse](../../sdk/models/operations/hriscreateemployeeemploymentresponse.md)\>**
 
 ### Errors
 
@@ -1161,6 +1319,92 @@ run();
 ### Response
 
 **Promise\<[operations.HrisGetCompanyResponse](../../sdk/models/operations/hrisgetcompanyresponse.md)\>**
+
+### Errors
+
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |
+
+## getCostCenterGroup
+
+Get Cost Center Group
+
+### Example Usage
+
+```typescript
+import { StackOne } from "@stackone/stackone-client-ts";
+
+const stackOne = new StackOne({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const result = await stackOne.hris.getCostCenterGroup({
+    fields: "id,remote_id,name,type,parent_ids,remote_parent_ids,owner_ids,remote_owner_ids",
+    id: "<id>",
+    xAccountId: "<id>",
+  });
+
+  // Handle the result
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
+import { hrisGetCostCenterGroup } from "@stackone/stackone-client-ts/funcs/hrisGetCostCenterGroup.js";
+
+// Use `StackOneCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const stackOne = new StackOneCore({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const res = await hrisGetCostCenterGroup(stackOne, {
+    fields: "id,remote_id,name,type,parent_ids,remote_parent_ids,owner_ids,remote_owner_ids",
+    id: "<id>",
+    xAccountId: "<id>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.HrisGetCostCenterGroupRequest](../../sdk/models/operations/hrisgetcostcentergrouprequest.md)                                                                       | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[operations.HrisGetCostCenterGroupResponse](../../sdk/models/operations/hrisgetcostcentergroupresponse.md)\>**
 
 ### Errors
 
@@ -2400,6 +2644,98 @@ run();
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 4XX, 5XX        | \*/\*           |
 
+## listCostCenterGroups
+
+List Cost Center Groups
+
+### Example Usage
+
+```typescript
+import { StackOne } from "@stackone/stackone-client-ts";
+
+const stackOne = new StackOne({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const result = await stackOne.hris.listCostCenterGroups({
+    fields: "id,remote_id,name,type,parent_ids,remote_parent_ids,owner_ids,remote_owner_ids",
+    filter: {
+      updatedAfter: "2020-01-01T00:00:00.000Z",
+    },
+    updatedAfter: "2020-01-01T00:00:00.000Z",
+    xAccountId: "<id>",
+  });
+
+  // Handle the result
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
+import { hrisListCostCenterGroups } from "@stackone/stackone-client-ts/funcs/hrisListCostCenterGroups.js";
+
+// Use `StackOneCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const stackOne = new StackOneCore({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const res = await hrisListCostCenterGroups(stackOne, {
+    fields: "id,remote_id,name,type,parent_ids,remote_parent_ids,owner_ids,remote_owner_ids",
+    filter: {
+      updatedAfter: "2020-01-01T00:00:00.000Z",
+    },
+    updatedAfter: "2020-01-01T00:00:00.000Z",
+    xAccountId: "<id>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.HrisListCostCenterGroupsRequest](../../sdk/models/operations/hrislistcostcentergroupsrequest.md)                                                                   | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[operations.HrisListCostCenterGroupsResponse](../../sdk/models/operations/hrislistcostcentergroupsresponse.md)\>**
+
+### Errors
+
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |
+
 ## listDepartmentGroups
 
 List Department Groups
@@ -3539,6 +3875,7 @@ import {
   CreateEmploymentApiModelSchemasValue,
   HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue,
   HrisCreateEmployeeRequestDtoSchemasHomeLocationValue,
+  HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberTypeValue,
   HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberValue,
   HrisCreateEmployeeRequestDtoSchemasPreferredLanguageValue,
   HrisCreateEmployeeRequestDtoSchemasWorkLocationValue,
@@ -3595,7 +3932,6 @@ async function run() {
       },
       employments: [
         {
-          createdAt: new Date("2021-01-01T01:01:01.000Z"),
           effectiveDate: new Date("2021-01-01T01:01:01.000Z"),
           employeeId: "1687-3",
           employmentContractType: {},
@@ -3619,7 +3955,6 @@ async function run() {
             "my_project_custom_field_1": "REF-1236",
             "my_project_custom_field_2": "some other value",
           },
-          updatedAt: new Date("2021-01-01T01:01:01.000Z"),
         },
       ],
       ethnicity: {},
@@ -3649,8 +3984,11 @@ async function run() {
       maritalStatus: {},
       name: "Issac Newton",
       nationalIdentityNumber: {
+        country: {
+          value: HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberValue.Us,
+        },
         type: {
-          value: HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberValue.Ssn,
+          value: HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberTypeValue.Ssn,
         },
         value: "123456789",
       },
@@ -3710,6 +4048,7 @@ import {
   CreateEmploymentApiModelSchemasValue,
   HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue,
   HrisCreateEmployeeRequestDtoSchemasHomeLocationValue,
+  HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberTypeValue,
   HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberValue,
   HrisCreateEmployeeRequestDtoSchemasPreferredLanguageValue,
   HrisCreateEmployeeRequestDtoSchemasWorkLocationValue,
@@ -3768,7 +4107,6 @@ async function run() {
       },
       employments: [
         {
-          createdAt: new Date("2021-01-01T01:01:01.000Z"),
           effectiveDate: new Date("2021-01-01T01:01:01.000Z"),
           employeeId: "1687-3",
           employmentContractType: {},
@@ -3792,7 +4130,6 @@ async function run() {
             "my_project_custom_field_1": "REF-1236",
             "my_project_custom_field_2": "some other value",
           },
-          updatedAt: new Date("2021-01-01T01:01:01.000Z"),
         },
       ],
       ethnicity: {},
@@ -3822,8 +4159,11 @@ async function run() {
       maritalStatus: {},
       name: "Issac Newton",
       nationalIdentityNumber: {
+        country: {
+          value: HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberValue.Us,
+        },
         type: {
-          value: HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberValue.Ssn,
+          value: HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberTypeValue.Ssn,
         },
         value: "123456789",
       },
@@ -3887,6 +4227,158 @@ run();
 ### Response
 
 **Promise\<[operations.HrisUpdateEmployeeResponse](../../sdk/models/operations/hrisupdateemployeeresponse.md)\>**
+
+### Errors
+
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |
+
+## updateEmployeeEmployment
+
+Update Employee Employment
+
+### Example Usage
+
+```typescript
+import { StackOne } from "@stackone/stackone-client-ts";
+import {
+  HrisCreateEmploymentRequestDtoSchemasPayFrequencyValue,
+  HrisCreateEmploymentRequestDtoSchemasPayPeriodValue,
+  HrisCreateEmploymentRequestDtoSchemasValue,
+} from "@stackone/stackone-client-ts/sdk/models/shared";
+
+const stackOne = new StackOne({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const result = await stackOne.hris.updateEmployeeEmployment({
+    hrisCreateEmploymentRequestDto: {
+      effectiveDate: new Date("2021-01-01T01:01:01.000Z"),
+      employeeId: "1687-3",
+      employmentContractType: {},
+      employmentType: {
+        sourceValue: "Permanent",
+        value: HrisCreateEmploymentRequestDtoSchemasValue.Permanent,
+      },
+      id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+      jobTitle: "Software Engineer",
+      passthrough: {
+        "other_known_names": "John Doe",
+      },
+      payCurrency: "USD",
+      payFrequency: {
+        sourceValue: "Hourly",
+        value: HrisCreateEmploymentRequestDtoSchemasPayFrequencyValue.Hourly,
+      },
+      payPeriod: {
+        sourceValue: "Hour",
+        value: HrisCreateEmploymentRequestDtoSchemasPayPeriodValue.Hour,
+      },
+      payRate: "40.00",
+      unifiedCustomFields: {
+        "my_project_custom_field_1": "REF-1236",
+        "my_project_custom_field_2": "some other value",
+      },
+    },
+    id: "<id>",
+    subResourceId: "<id>",
+    xAccountId: "<id>",
+  });
+
+  // Handle the result
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
+import { hrisUpdateEmployeeEmployment } from "@stackone/stackone-client-ts/funcs/hrisUpdateEmployeeEmployment.js";
+import {
+  HrisCreateEmploymentRequestDtoSchemasPayFrequencyValue,
+  HrisCreateEmploymentRequestDtoSchemasPayPeriodValue,
+  HrisCreateEmploymentRequestDtoSchemasValue,
+} from "@stackone/stackone-client-ts/sdk/models/shared";
+
+// Use `StackOneCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const stackOne = new StackOneCore({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const res = await hrisUpdateEmployeeEmployment(stackOne, {
+    hrisCreateEmploymentRequestDto: {
+      effectiveDate: new Date("2021-01-01T01:01:01.000Z"),
+      employeeId: "1687-3",
+      employmentContractType: {},
+      employmentType: {
+        sourceValue: "Permanent",
+        value: HrisCreateEmploymentRequestDtoSchemasValue.Permanent,
+      },
+      id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+      jobTitle: "Software Engineer",
+      passthrough: {
+        "other_known_names": "John Doe",
+      },
+      payCurrency: "USD",
+      payFrequency: {
+        sourceValue: "Hourly",
+        value: HrisCreateEmploymentRequestDtoSchemasPayFrequencyValue.Hourly,
+      },
+      payPeriod: {
+        sourceValue: "Hour",
+        value: HrisCreateEmploymentRequestDtoSchemasPayPeriodValue.Hour,
+      },
+      payRate: "40.00",
+      unifiedCustomFields: {
+        "my_project_custom_field_1": "REF-1236",
+        "my_project_custom_field_2": "some other value",
+      },
+    },
+    id: "<id>",
+    subResourceId: "<id>",
+    xAccountId: "<id>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.HrisUpdateEmployeeEmploymentRequest](../../sdk/models/operations/hrisupdateemployeeemploymentrequest.md)                                                           | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[operations.HrisUpdateEmployeeEmploymentResponse](../../sdk/models/operations/hrisupdateemployeeemploymentresponse.md)\>**
 
 ### Errors
 

@@ -757,23 +757,270 @@ export type EmployeeSchemasNationalIdentityNumberSourceValue =
   | Array<any>;
 
 /**
- * The type of the national identity number
+ * The ISO3166-1 Alpha2 Code of the Country
  */
 export enum EmployeeSchemasNationalIdentityNumberValue {
-  Ssn = "ssn",
-  Nin = "nin",
-  Sin = "sin",
-  Other = "other",
-  Unknown = "unknown",
+  Af = "AF",
+  Al = "AL",
+  Dz = "DZ",
+  As = "AS",
+  Ad = "AD",
+  Ao = "AO",
+  Ai = "AI",
+  Aq = "AQ",
+  Ag = "AG",
+  Ar = "AR",
+  Am = "AM",
+  Aw = "AW",
+  Au = "AU",
+  At = "AT",
+  Az = "AZ",
+  Bs = "BS",
+  Bh = "BH",
+  Bd = "BD",
+  Bb = "BB",
+  By = "BY",
+  Be = "BE",
+  Bz = "BZ",
+  Bj = "BJ",
+  Bm = "BM",
+  Bt = "BT",
+  Bo = "BO",
+  Bq = "BQ",
+  Ba = "BA",
+  Bw = "BW",
+  Bv = "BV",
+  Br = "BR",
+  Io = "IO",
+  Bn = "BN",
+  Bg = "BG",
+  Bf = "BF",
+  Bi = "BI",
+  Kh = "KH",
+  Cm = "CM",
+  Ca = "CA",
+  Cv = "CV",
+  Ky = "KY",
+  Cf = "CF",
+  Td = "TD",
+  Cl = "CL",
+  Cn = "CN",
+  Cx = "CX",
+  Cc = "CC",
+  Co = "CO",
+  Km = "KM",
+  Cg = "CG",
+  Cd = "CD",
+  Ck = "CK",
+  Cr = "CR",
+  Hr = "HR",
+  Cu = "CU",
+  Cw = "CW",
+  Cy = "CY",
+  Cz = "CZ",
+  Ci = "CI",
+  Dk = "DK",
+  Dj = "DJ",
+  Dm = "DM",
+  Do = "DO",
+  Ec = "EC",
+  Eg = "EG",
+  Sv = "SV",
+  Gq = "GQ",
+  Er = "ER",
+  Ee = "EE",
+  Et = "ET",
+  Fk = "FK",
+  Fo = "FO",
+  Fj = "FJ",
+  Fi = "FI",
+  Fr = "FR",
+  Gf = "GF",
+  Pf = "PF",
+  Tf = "TF",
+  Ga = "GA",
+  Gm = "GM",
+  Ge = "GE",
+  De = "DE",
+  Gh = "GH",
+  Gi = "GI",
+  Gr = "GR",
+  Gl = "GL",
+  Gd = "GD",
+  Gp = "GP",
+  Gu = "GU",
+  Gt = "GT",
+  Gg = "GG",
+  Gn = "GN",
+  Gw = "GW",
+  Gy = "GY",
+  Ht = "HT",
+  Hm = "HM",
+  Va = "VA",
+  Hn = "HN",
+  Hk = "HK",
+  Hu = "HU",
+  Is = "IS",
+  In = "IN",
+  Id = "ID",
+  Ir = "IR",
+  Iq = "IQ",
+  Ie = "IE",
+  Im = "IM",
+  Il = "IL",
+  It = "IT",
+  Jm = "JM",
+  Jp = "JP",
+  Je = "JE",
+  Jo = "JO",
+  Kz = "KZ",
+  Ke = "KE",
+  Ki = "KI",
+  Kp = "KP",
+  Kr = "KR",
+  Kw = "KW",
+  Kg = "KG",
+  La = "LA",
+  Lv = "LV",
+  Lb = "LB",
+  Ls = "LS",
+  Lr = "LR",
+  Ly = "LY",
+  Li = "LI",
+  Lt = "LT",
+  Lu = "LU",
+  Mo = "MO",
+  Mk = "MK",
+  Mg = "MG",
+  Mw = "MW",
+  My = "MY",
+  Mv = "MV",
+  Ml = "ML",
+  Mt = "MT",
+  Mh = "MH",
+  Mq = "MQ",
+  Mr = "MR",
+  Mu = "MU",
+  Yt = "YT",
+  Mx = "MX",
+  Fm = "FM",
+  Md = "MD",
+  Mc = "MC",
+  Mn = "MN",
+  Me = "ME",
+  Ms = "MS",
+  Ma = "MA",
+  Mz = "MZ",
+  Mm = "MM",
+  Na = "NA",
+  Nr = "NR",
+  Np = "NP",
+  Nl = "NL",
+  Nc = "NC",
+  Nz = "NZ",
+  Ni = "NI",
+  Ne = "NE",
+  Ng = "NG",
+  Nu = "NU",
+  Nf = "NF",
+  Mp = "MP",
+  No = "NO",
+  Om = "OM",
+  Pk = "PK",
+  Pw = "PW",
+  Ps = "PS",
+  Pa = "PA",
+  Pg = "PG",
+  Py = "PY",
+  Pe = "PE",
+  Ph = "PH",
+  Pn = "PN",
+  Pl = "PL",
+  Pt = "PT",
+  Pr = "PR",
+  Qa = "QA",
+  Ro = "RO",
+  Ru = "RU",
+  Rw = "RW",
+  Re = "RE",
+  Bl = "BL",
+  Sh = "SH",
+  Kn = "KN",
+  Lc = "LC",
+  Mf = "MF",
+  Pm = "PM",
+  Vc = "VC",
+  Ws = "WS",
+  Sm = "SM",
+  St = "ST",
+  Sa = "SA",
+  Sn = "SN",
+  Rs = "RS",
+  Sc = "SC",
+  Sl = "SL",
+  Sg = "SG",
+  Sx = "SX",
+  Sk = "SK",
+  Si = "SI",
+  Sb = "SB",
+  So = "SO",
+  Za = "ZA",
+  Gs = "GS",
+  Ss = "SS",
+  Es = "ES",
+  Lk = "LK",
+  Sd = "SD",
+  Sr = "SR",
+  Sj = "SJ",
+  Sz = "SZ",
+  Se = "SE",
+  Ch = "CH",
+  Sy = "SY",
+  Tw = "TW",
+  Tj = "TJ",
+  Tz = "TZ",
+  Th = "TH",
+  Tl = "TL",
+  Tg = "TG",
+  Tk = "TK",
+  To = "TO",
+  Tt = "TT",
+  Tn = "TN",
+  Tr = "TR",
+  Tm = "TM",
+  Tc = "TC",
+  Tv = "TV",
+  Ug = "UG",
+  Ua = "UA",
+  Ae = "AE",
+  Gb = "GB",
+  Us = "US",
+  Um = "UM",
+  Uy = "UY",
+  Uz = "UZ",
+  Vu = "VU",
+  Ve = "VE",
+  Vn = "VN",
+  Vg = "VG",
+  Vi = "VI",
+  Wf = "WF",
+  Eh = "EH",
+  Ye = "YE",
+  Zm = "ZM",
+  Zw = "ZW",
+  UnmappedValue = "unmapped_value",
 }
 /**
- * The type of the national identity number
+ * The ISO3166-1 Alpha2 Code of the Country
  */
 export type EmployeeSchemasNationalIdentityNumberValueOpen = OpenEnum<
   typeof EmployeeSchemasNationalIdentityNumberValue
 >;
 
-export type EmployeeType = {
+/**
+ * The country code
+ */
+export type EmployeeSchemasCountry = {
   sourceValue?:
     | EmployeeSchemasNationalIdentityNumber4
     | string
@@ -783,15 +1030,167 @@ export type EmployeeType = {
     | null
     | undefined;
   /**
-   * The type of the national identity number
+   * The ISO3166-1 Alpha2 Code of the Country
    */
   value?: EmployeeSchemasNationalIdentityNumberValueOpen | null | undefined;
+};
+
+export type EmployeeSchemasNationalIdentityNumberType4 = {};
+
+export type EmployeeSchemasNationalIdentityNumberTypeSourceValue =
+  | EmployeeSchemasNationalIdentityNumberType4
+  | string
+  | number
+  | boolean
+  | Array<any>;
+
+/**
+ * The type of the national identity number
+ */
+export enum EmployeeSchemasNationalIdentityNumberTypeValue {
+  Ssn = "ssn",
+  Nin = "nin",
+  Sin = "sin",
+  Nid = "nid",
+  Pin = "pin",
+  Umcn = "umcn",
+  Pic = "pic",
+  Ric = "ric",
+  Idnum = "idnum",
+  Cid = "cid",
+  Nidnr = "nidnr",
+  Pan = "pan",
+  Aadhaar = "aadhaar",
+  Epic = "epic",
+  Ptn = "ptn",
+  Tin = "tin",
+  Uprc = "uprc",
+  Pcode = "pcode",
+  Ssi = "ssi",
+  Cedula = "cedula",
+  Passport = "passport",
+  Voterid = "voterid",
+  Ntin = "ntin",
+  Bn = "bn",
+  Fnr = "fnr",
+  Mva = "mva",
+  CivilId = "civil_id",
+  Cnic = "cnic",
+  Nric = "nric",
+  Fin = "fin",
+  Uen = "uen",
+  Registrationnumber = "registrationnumber",
+  Nic = "nic",
+  Personnummer = "personnummer",
+  Ahv = "ahv",
+  Id = "id",
+  Eid = "eid",
+  Va = "va",
+  Pid = "pid",
+  Nrt = "nrt",
+  Nipt = "nipt",
+  Cbu = "cbu",
+  Cuit = "cuit",
+  Dni = "dni",
+  Businessid = "businessid",
+  Vnr = "vnr",
+  Abn = "abn",
+  Acn = "acn",
+  Tfn = "tfn",
+  Jmbg = "jmbg",
+  Bis = "bis",
+  Insz = "insz",
+  Nn = "nn",
+  Egn = "egn",
+  Pnf = "pnf",
+  Vat = "vat",
+  Cnpj = "cnpj",
+  Unp = "unp",
+  Gst = "gst",
+  Pst = "pst",
+  Qst = "qst",
+  Ni = "ni",
+  Dic = "dic",
+  Rc = "rc",
+  Uid = "uid",
+  Rut = "rut",
+  Uscc = "uscc",
+  Cpf = "cpf",
+  Cpj = "cpj",
+  Cr = "cr",
+  Stnr = "stnr",
+  Svnr = "svnr",
+  Ncf = "ncf",
+  Rnc = "rnc",
+  Nif = "nif",
+  Ci = "ci",
+  Ik = "ik",
+  Kmkr = "kmkr",
+  Registrikood = "registrikood",
+  Tn = "tn",
+  Ruc = "ruc",
+  Nit = "nit",
+  Alv = "alv",
+  Hetu = "hetu",
+  Ytunnus = "ytunnus",
+  Vn = "vn",
+  Utr = "utr",
+  Nifp = "nifp",
+  Amka = "amka",
+  Cui = "cui",
+  Nir = "nir",
+  Siren = "siren",
+  Siret = "siret",
+  Tva = "tva",
+  Oib = "oib",
+  Hkid = "hkid",
+  Anum = "anum",
+  Kennitala = "kennitala",
+  Vsk = "vsk",
+  Npwp = "npwp",
+  Pps = "pps",
+  Gstin = "gstin",
+  Idnr = "idnr",
+  Hr = "hr",
+  Aic = "aic",
+  Codicefiscale = "codicefiscale",
+  Iva = "iva",
+  Peid = "peid",
+  Asmens = "asmens",
+  Pvm = "pvm",
+  Other = "other",
+  Unknown = "unknown",
+}
+/**
+ * The type of the national identity number
+ */
+export type EmployeeSchemasNationalIdentityNumberTypeValueOpen = OpenEnum<
+  typeof EmployeeSchemasNationalIdentityNumberTypeValue
+>;
+
+export type EmployeeType = {
+  sourceValue?:
+    | EmployeeSchemasNationalIdentityNumberType4
+    | string
+    | number
+    | boolean
+    | Array<any>
+    | null
+    | undefined;
+  /**
+   * The type of the national identity number
+   */
+  value?: EmployeeSchemasNationalIdentityNumberTypeValueOpen | null | undefined;
 };
 
 /**
  * The national identity number
  */
 export type NationalIdentityNumber = {
+  /**
+   * The country code
+   */
+  country?: EmployeeSchemasCountry | null | undefined;
   type?: EmployeeType | null | undefined;
   value?: string | null | undefined;
 };
@@ -1206,7 +1605,7 @@ export type EmployeeSchemasWorkLocationValueOpen = OpenEnum<
 /**
  * The country code
  */
-export type EmployeeSchemasCountry = {
+export type EmployeeSchemasWorkLocationCountry = {
   sourceValue?:
     | EmployeeSchemasWorkLocation4
     | string
@@ -1280,7 +1679,7 @@ export type WorkLocation = {
   /**
    * The country code
    */
-  country?: EmployeeSchemasCountry | null | undefined;
+  country?: EmployeeSchemasWorkLocationCountry | null | undefined;
   /**
    * The created_at date
    */
@@ -3371,8 +3770,8 @@ export namespace EmployeeSchemasNationalIdentityNumberValue$ {
 }
 
 /** @internal */
-export const EmployeeType$inboundSchema: z.ZodType<
-  EmployeeType,
+export const EmployeeSchemasCountry$inboundSchema: z.ZodType<
+  EmployeeSchemasCountry,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -3394,9 +3793,201 @@ export const EmployeeType$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type EmployeeType$Outbound = {
+export type EmployeeSchemasCountry$Outbound = {
   source_value?:
     | EmployeeSchemasNationalIdentityNumber4$Outbound
+    | string
+    | number
+    | boolean
+    | Array<any>
+    | null
+    | undefined;
+  value?: string | null | undefined;
+};
+
+/** @internal */
+export const EmployeeSchemasCountry$outboundSchema: z.ZodType<
+  EmployeeSchemasCountry$Outbound,
+  z.ZodTypeDef,
+  EmployeeSchemasCountry
+> = z.object({
+  sourceValue: z.nullable(
+    z.union([
+      z.lazy(() => EmployeeSchemasNationalIdentityNumber4$outboundSchema),
+      z.string(),
+      z.number(),
+      z.boolean(),
+      z.array(z.any()),
+    ]),
+  ).optional(),
+  value: z.nullable(EmployeeSchemasNationalIdentityNumberValue$outboundSchema)
+    .optional(),
+}).transform((v) => {
+  return remap$(v, {
+    sourceValue: "source_value",
+  });
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace EmployeeSchemasCountry$ {
+  /** @deprecated use `EmployeeSchemasCountry$inboundSchema` instead. */
+  export const inboundSchema = EmployeeSchemasCountry$inboundSchema;
+  /** @deprecated use `EmployeeSchemasCountry$outboundSchema` instead. */
+  export const outboundSchema = EmployeeSchemasCountry$outboundSchema;
+  /** @deprecated use `EmployeeSchemasCountry$Outbound` instead. */
+  export type Outbound = EmployeeSchemasCountry$Outbound;
+}
+
+/** @internal */
+export const EmployeeSchemasNationalIdentityNumberType4$inboundSchema:
+  z.ZodType<EmployeeSchemasNationalIdentityNumberType4, z.ZodTypeDef, unknown> =
+    z.object({});
+
+/** @internal */
+export type EmployeeSchemasNationalIdentityNumberType4$Outbound = {};
+
+/** @internal */
+export const EmployeeSchemasNationalIdentityNumberType4$outboundSchema:
+  z.ZodType<
+    EmployeeSchemasNationalIdentityNumberType4$Outbound,
+    z.ZodTypeDef,
+    EmployeeSchemasNationalIdentityNumberType4
+  > = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace EmployeeSchemasNationalIdentityNumberType4$ {
+  /** @deprecated use `EmployeeSchemasNationalIdentityNumberType4$inboundSchema` instead. */
+  export const inboundSchema =
+    EmployeeSchemasNationalIdentityNumberType4$inboundSchema;
+  /** @deprecated use `EmployeeSchemasNationalIdentityNumberType4$outboundSchema` instead. */
+  export const outboundSchema =
+    EmployeeSchemasNationalIdentityNumberType4$outboundSchema;
+  /** @deprecated use `EmployeeSchemasNationalIdentityNumberType4$Outbound` instead. */
+  export type Outbound = EmployeeSchemasNationalIdentityNumberType4$Outbound;
+}
+
+/** @internal */
+export const EmployeeSchemasNationalIdentityNumberTypeSourceValue$inboundSchema:
+  z.ZodType<
+    EmployeeSchemasNationalIdentityNumberTypeSourceValue,
+    z.ZodTypeDef,
+    unknown
+  > = z.union([
+    z.lazy(() => EmployeeSchemasNationalIdentityNumberType4$inboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+    z.array(z.any()),
+  ]);
+
+/** @internal */
+export type EmployeeSchemasNationalIdentityNumberTypeSourceValue$Outbound =
+  | EmployeeSchemasNationalIdentityNumberType4$Outbound
+  | string
+  | number
+  | boolean
+  | Array<any>;
+
+/** @internal */
+export const EmployeeSchemasNationalIdentityNumberTypeSourceValue$outboundSchema:
+  z.ZodType<
+    EmployeeSchemasNationalIdentityNumberTypeSourceValue$Outbound,
+    z.ZodTypeDef,
+    EmployeeSchemasNationalIdentityNumberTypeSourceValue
+  > = z.union([
+    z.lazy(() => EmployeeSchemasNationalIdentityNumberType4$outboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+    z.array(z.any()),
+  ]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace EmployeeSchemasNationalIdentityNumberTypeSourceValue$ {
+  /** @deprecated use `EmployeeSchemasNationalIdentityNumberTypeSourceValue$inboundSchema` instead. */
+  export const inboundSchema =
+    EmployeeSchemasNationalIdentityNumberTypeSourceValue$inboundSchema;
+  /** @deprecated use `EmployeeSchemasNationalIdentityNumberTypeSourceValue$outboundSchema` instead. */
+  export const outboundSchema =
+    EmployeeSchemasNationalIdentityNumberTypeSourceValue$outboundSchema;
+  /** @deprecated use `EmployeeSchemasNationalIdentityNumberTypeSourceValue$Outbound` instead. */
+  export type Outbound =
+    EmployeeSchemasNationalIdentityNumberTypeSourceValue$Outbound;
+}
+
+/** @internal */
+export const EmployeeSchemasNationalIdentityNumberTypeValue$inboundSchema:
+  z.ZodType<
+    EmployeeSchemasNationalIdentityNumberTypeValueOpen,
+    z.ZodTypeDef,
+    unknown
+  > = z
+    .union([
+      z.nativeEnum(EmployeeSchemasNationalIdentityNumberTypeValue),
+      z.string().transform(catchUnrecognizedEnum),
+    ]);
+
+/** @internal */
+export const EmployeeSchemasNationalIdentityNumberTypeValue$outboundSchema:
+  z.ZodType<
+    EmployeeSchemasNationalIdentityNumberTypeValueOpen,
+    z.ZodTypeDef,
+    EmployeeSchemasNationalIdentityNumberTypeValueOpen
+  > = z.union([
+    z.nativeEnum(EmployeeSchemasNationalIdentityNumberTypeValue),
+    z.string().and(z.custom<Unrecognized<string>>()),
+  ]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace EmployeeSchemasNationalIdentityNumberTypeValue$ {
+  /** @deprecated use `EmployeeSchemasNationalIdentityNumberTypeValue$inboundSchema` instead. */
+  export const inboundSchema =
+    EmployeeSchemasNationalIdentityNumberTypeValue$inboundSchema;
+  /** @deprecated use `EmployeeSchemasNationalIdentityNumberTypeValue$outboundSchema` instead. */
+  export const outboundSchema =
+    EmployeeSchemasNationalIdentityNumberTypeValue$outboundSchema;
+}
+
+/** @internal */
+export const EmployeeType$inboundSchema: z.ZodType<
+  EmployeeType,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  source_value: z.nullable(
+    z.union([
+      z.lazy(() => EmployeeSchemasNationalIdentityNumberType4$inboundSchema),
+      z.string(),
+      z.number(),
+      z.boolean(),
+      z.array(z.any()),
+    ]),
+  ).optional(),
+  value: z.nullable(
+    EmployeeSchemasNationalIdentityNumberTypeValue$inboundSchema,
+  ).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    "source_value": "sourceValue",
+  });
+});
+
+/** @internal */
+export type EmployeeType$Outbound = {
+  source_value?:
+    | EmployeeSchemasNationalIdentityNumberType4$Outbound
     | string
     | number
     | boolean
@@ -3414,15 +4005,16 @@ export const EmployeeType$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => EmployeeSchemasNationalIdentityNumber4$outboundSchema),
+      z.lazy(() => EmployeeSchemasNationalIdentityNumberType4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
       z.array(z.any()),
     ]),
   ).optional(),
-  value: z.nullable(EmployeeSchemasNationalIdentityNumberValue$outboundSchema)
-    .optional(),
+  value: z.nullable(
+    EmployeeSchemasNationalIdentityNumberTypeValue$outboundSchema,
+  ).optional(),
 }).transform((v) => {
   return remap$(v, {
     sourceValue: "source_value",
@@ -3448,12 +4040,15 @@ export const NationalIdentityNumber$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  country: z.nullable(z.lazy(() => EmployeeSchemasCountry$inboundSchema))
+    .optional(),
   type: z.nullable(z.lazy(() => EmployeeType$inboundSchema)).optional(),
   value: z.nullable(z.string()).optional(),
 });
 
 /** @internal */
 export type NationalIdentityNumber$Outbound = {
+  country?: EmployeeSchemasCountry$Outbound | null | undefined;
   type?: EmployeeType$Outbound | null | undefined;
   value?: string | null | undefined;
 };
@@ -3464,6 +4059,8 @@ export const NationalIdentityNumber$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   NationalIdentityNumber
 > = z.object({
+  country: z.nullable(z.lazy(() => EmployeeSchemasCountry$outboundSchema))
+    .optional(),
   type: z.nullable(z.lazy(() => EmployeeType$outboundSchema)).optional(),
   value: z.nullable(z.string()).optional(),
 });
@@ -3781,8 +4378,8 @@ export namespace EmployeeSchemasWorkLocationValue$ {
 }
 
 /** @internal */
-export const EmployeeSchemasCountry$inboundSchema: z.ZodType<
-  EmployeeSchemasCountry,
+export const EmployeeSchemasWorkLocationCountry$inboundSchema: z.ZodType<
+  EmployeeSchemasWorkLocationCountry,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -3803,7 +4400,7 @@ export const EmployeeSchemasCountry$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type EmployeeSchemasCountry$Outbound = {
+export type EmployeeSchemasWorkLocationCountry$Outbound = {
   source_value?:
     | EmployeeSchemasWorkLocation4$Outbound
     | string
@@ -3816,10 +4413,10 @@ export type EmployeeSchemasCountry$Outbound = {
 };
 
 /** @internal */
-export const EmployeeSchemasCountry$outboundSchema: z.ZodType<
-  EmployeeSchemasCountry$Outbound,
+export const EmployeeSchemasWorkLocationCountry$outboundSchema: z.ZodType<
+  EmployeeSchemasWorkLocationCountry$Outbound,
   z.ZodTypeDef,
-  EmployeeSchemasCountry
+  EmployeeSchemasWorkLocationCountry
 > = z.object({
   sourceValue: z.nullable(
     z.union([
@@ -3841,13 +4438,14 @@ export const EmployeeSchemasCountry$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace EmployeeSchemasCountry$ {
-  /** @deprecated use `EmployeeSchemasCountry$inboundSchema` instead. */
-  export const inboundSchema = EmployeeSchemasCountry$inboundSchema;
-  /** @deprecated use `EmployeeSchemasCountry$outboundSchema` instead. */
-  export const outboundSchema = EmployeeSchemasCountry$outboundSchema;
-  /** @deprecated use `EmployeeSchemasCountry$Outbound` instead. */
-  export type Outbound = EmployeeSchemasCountry$Outbound;
+export namespace EmployeeSchemasWorkLocationCountry$ {
+  /** @deprecated use `EmployeeSchemasWorkLocationCountry$inboundSchema` instead. */
+  export const inboundSchema = EmployeeSchemasWorkLocationCountry$inboundSchema;
+  /** @deprecated use `EmployeeSchemasWorkLocationCountry$outboundSchema` instead. */
+  export const outboundSchema =
+    EmployeeSchemasWorkLocationCountry$outboundSchema;
+  /** @deprecated use `EmployeeSchemasWorkLocationCountry$Outbound` instead. */
+  export type Outbound = EmployeeSchemasWorkLocationCountry$Outbound;
 }
 
 /** @internal */
@@ -4049,8 +4647,9 @@ export const WorkLocation$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   city: z.nullable(z.string()).optional(),
-  country: z.nullable(z.lazy(() => EmployeeSchemasCountry$inboundSchema))
-    .optional(),
+  country: z.nullable(
+    z.lazy(() => EmployeeSchemasWorkLocationCountry$inboundSchema),
+  ).optional(),
   created_at: z.nullable(
     z.string().datetime({ offset: true }).transform(v => new Date(v)),
   ).optional(),
@@ -4090,7 +4689,7 @@ export const WorkLocation$inboundSchema: z.ZodType<
 /** @internal */
 export type WorkLocation$Outbound = {
   city?: string | null | undefined;
-  country?: EmployeeSchemasCountry$Outbound | null | undefined;
+  country?: EmployeeSchemasWorkLocationCountry$Outbound | null | undefined;
   created_at?: string | null | undefined;
   employee_id?: string | null | undefined;
   id?: string | null | undefined;
@@ -4114,8 +4713,9 @@ export const WorkLocation$outboundSchema: z.ZodType<
   WorkLocation
 > = z.object({
   city: z.nullable(z.string()).optional(),
-  country: z.nullable(z.lazy(() => EmployeeSchemasCountry$outboundSchema))
-    .optional(),
+  country: z.nullable(
+    z.lazy(() => EmployeeSchemasWorkLocationCountry$outboundSchema),
+  ).optional(),
   createdAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
   employeeId: z.nullable(z.string()).optional(),
   id: z.nullable(z.string()).optional(),

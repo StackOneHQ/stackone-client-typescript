@@ -198,12 +198,14 @@ run();
 
 * [batchUploadEmployeeDocument](docs/sdks/hris/README.md#batchuploademployeedocument) - Batch Upload Employee Document
 * [createEmployee](docs/sdks/hris/README.md#createemployee) - Creates an employee
+* [createEmployeeEmployment](docs/sdks/hris/README.md#createemployeeemployment) - Create Employee Employment
 * [createEmployeeTimeOffRequest](docs/sdks/hris/README.md#createemployeetimeoffrequest) - Create Employee Time Off Request
 * [createEmployeeWorkEligibilityRequest](docs/sdks/hris/README.md#createemployeeworkeligibilityrequest) - Create Employee Work Eligibility Request
 * [createTimeOffRequest](docs/sdks/hris/README.md#createtimeoffrequest) - Creates a time off request
 * [downloadEmployeeDocument](docs/sdks/hris/README.md#downloademployeedocument) - Download Employee Document
 * [getBenefit](docs/sdks/hris/README.md#getbenefit) - Get Benefit
 * [getCompany](docs/sdks/hris/README.md#getcompany) - Get Company
+* [getCostCenterGroup](docs/sdks/hris/README.md#getcostcentergroup) - Get Cost Center Group
 * [getDepartmentGroup](docs/sdks/hris/README.md#getdepartmentgroup) - Get Department Group
 * [getEmployee](docs/sdks/hris/README.md#getemployee) - Get Employee
 * [getEmployeeDocument](docs/sdks/hris/README.md#getemployeedocument) - Get Employee Document
@@ -218,6 +220,7 @@ run();
 * [getTimeOffRequest](docs/sdks/hris/README.md#gettimeoffrequest) - Get time off request
 * [listBenefits](docs/sdks/hris/README.md#listbenefits) - List benefits
 * [listCompanies](docs/sdks/hris/README.md#listcompanies) - List Companies
+* [listCostCenterGroups](docs/sdks/hris/README.md#listcostcentergroups) - List Cost Center Groups
 * [listDepartmentGroups](docs/sdks/hris/README.md#listdepartmentgroups) - List Department Groups
 * [listEmployeeCategories](docs/sdks/hris/README.md#listemployeecategories) - List Employee Document Categories
 * [listEmployeeDocuments](docs/sdks/hris/README.md#listemployeedocuments) - List Employee Documents
@@ -231,6 +234,7 @@ run();
 * [listLocations](docs/sdks/hris/README.md#listlocations) - List locations
 * [listTimeOffRequests](docs/sdks/hris/README.md#listtimeoffrequests) - List time off requests
 * [updateEmployee](docs/sdks/hris/README.md#updateemployee) - Updates an employee
+* [updateEmployeeEmployment](docs/sdks/hris/README.md#updateemployeeemployment) - Update Employee Employment
 * [updateEmployeeWorkEligibilityRequest](docs/sdks/hris/README.md#updateemployeeworkeligibilityrequest) - Update Employee Work Eligibility Request
 * [updateTimeOffRequest](docs/sdks/hris/README.md#updatetimeoffrequest) - Update time off request
 * [uploadEmployeeDocument](docs/sdks/hris/README.md#uploademployeedocument) - Upload Employee Document
@@ -305,6 +309,10 @@ run();
 
 * [proxyRequest](docs/sdks/proxy/README.md#proxyrequest) - Proxy Request
 
+
+### [webhooks](docs/sdks/webhooks/README.md)
+
+* [create](docs/sdks/webhooks/README.md#create)
 
 </details>
 <!-- End Available Resources and Operations [operations] -->
@@ -682,12 +690,14 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`crmUpdateContact`](docs/sdks/crm/README.md#updatecontact) - Update Contact (early access)
 - [`hrisBatchUploadEmployeeDocument`](docs/sdks/hris/README.md#batchuploademployeedocument) - Batch Upload Employee Document
 - [`hrisCreateEmployee`](docs/sdks/hris/README.md#createemployee) - Creates an employee
+- [`hrisCreateEmployeeEmployment`](docs/sdks/hris/README.md#createemployeeemployment) - Create Employee Employment
 - [`hrisCreateEmployeeTimeOffRequest`](docs/sdks/hris/README.md#createemployeetimeoffrequest) - Create Employee Time Off Request
 - [`hrisCreateEmployeeWorkEligibilityRequest`](docs/sdks/hris/README.md#createemployeeworkeligibilityrequest) - Create Employee Work Eligibility Request
 - [`hrisCreateTimeOffRequest`](docs/sdks/hris/README.md#createtimeoffrequest) - Creates a time off request
 - [`hrisDownloadEmployeeDocument`](docs/sdks/hris/README.md#downloademployeedocument) - Download Employee Document
 - [`hrisGetBenefit`](docs/sdks/hris/README.md#getbenefit) - Get Benefit
 - [`hrisGetCompany`](docs/sdks/hris/README.md#getcompany) - Get Company
+- [`hrisGetCostCenterGroup`](docs/sdks/hris/README.md#getcostcentergroup) - Get Cost Center Group
 - [`hrisGetDepartmentGroup`](docs/sdks/hris/README.md#getdepartmentgroup) - Get Department Group
 - [`hrisGetEmployee`](docs/sdks/hris/README.md#getemployee) - Get Employee
 - [`hrisGetEmployeeDocument`](docs/sdks/hris/README.md#getemployeedocument) - Get Employee Document
@@ -702,6 +712,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`hrisGetTimeOffRequest`](docs/sdks/hris/README.md#gettimeoffrequest) - Get time off request
 - [`hrisListBenefits`](docs/sdks/hris/README.md#listbenefits) - List benefits
 - [`hrisListCompanies`](docs/sdks/hris/README.md#listcompanies) - List Companies
+- [`hrisListCostCenterGroups`](docs/sdks/hris/README.md#listcostcentergroups) - List Cost Center Groups
 - [`hrisListDepartmentGroups`](docs/sdks/hris/README.md#listdepartmentgroups) - List Department Groups
 - [`hrisListEmployeeCategories`](docs/sdks/hris/README.md#listemployeecategories) - List Employee Document Categories
 - [`hrisListEmployeeDocuments`](docs/sdks/hris/README.md#listemployeedocuments) - List Employee Documents
@@ -715,6 +726,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`hrisListLocations`](docs/sdks/hris/README.md#listlocations) - List locations
 - [`hrisListTimeOffRequests`](docs/sdks/hris/README.md#listtimeoffrequests) - List time off requests
 - [`hrisUpdateEmployee`](docs/sdks/hris/README.md#updateemployee) - Updates an employee
+- [`hrisUpdateEmployeeEmployment`](docs/sdks/hris/README.md#updateemployeeemployment) - Update Employee Employment
 - [`hrisUpdateEmployeeWorkEligibilityRequest`](docs/sdks/hris/README.md#updateemployeeworkeligibilityrequest) - Update Employee Work Eligibility Request
 - [`hrisUpdateTimeOffRequest`](docs/sdks/hris/README.md#updatetimeoffrequest) - Update time off request
 - [`hrisUploadEmployeeDocument`](docs/sdks/hris/README.md#uploademployeedocument) - Upload Employee Document
@@ -772,6 +784,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`marketingUpdatePushTemplate`](docs/sdks/marketing/README.md#updatepushtemplate) - Update Push Template
 - [`marketingUpdateSmsTemplate`](docs/sdks/marketing/README.md#updatesmstemplate) - Update SMS Template
 - [`proxyProxyRequest`](docs/sdks/proxy/README.md#proxyrequest) - Proxy Request
+- [`webhooksCreate`](docs/sdks/webhooks/README.md#create)
 - ~~[`marketingCreateOmniChannelTemplate`](docs/sdks/marketing/README.md#createomnichanneltemplate)~~ - Create Omni-Channel Template :warning: **Deprecated**
 - ~~[`marketingGetOmniChannelTemplate`](docs/sdks/marketing/README.md#getomnichanneltemplate)~~ - Get Omni-Channel Template :warning: **Deprecated**
 - ~~[`marketingListOmniChannelTemplates`](docs/sdks/marketing/README.md#listomnichanneltemplates)~~ - List Omni-Channel Templates :warning: **Deprecated**

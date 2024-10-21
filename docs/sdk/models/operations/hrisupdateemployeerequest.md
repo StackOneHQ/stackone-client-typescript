@@ -11,6 +11,7 @@ import {
   CreateEmploymentApiModelSchemasValue,
   HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue,
   HrisCreateEmployeeRequestDtoSchemasHomeLocationValue,
+  HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberTypeValue,
   HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberValue,
   HrisCreateEmployeeRequestDtoSchemasPreferredLanguageValue,
   HrisCreateEmployeeRequestDtoSchemasWorkLocationValue,
@@ -59,7 +60,6 @@ let value: HrisUpdateEmployeeRequest = {
     },
     employments: [
       {
-        createdAt: new Date("2021-01-01T01:01:01.000Z"),
         effectiveDate: new Date("2021-01-01T01:01:01.000Z"),
         employeeId: "1687-3",
         employmentContractType: {},
@@ -83,7 +83,6 @@ let value: HrisUpdateEmployeeRequest = {
           "my_project_custom_field_1": "REF-1236",
           "my_project_custom_field_2": "some other value",
         },
-        updatedAt: new Date("2021-01-01T01:01:01.000Z"),
       },
     ],
     ethnicity: {},
@@ -113,9 +112,14 @@ let value: HrisUpdateEmployeeRequest = {
     maritalStatus: {},
     name: "Issac Newton",
     nationalIdentityNumber: {
+      country: {
+        value:
+          HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberValue.Us,
+      },
       type: {
         value:
-          HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberValue.Ssn,
+          HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberTypeValue
+            .Ssn,
       },
       value: "123456789",
     },

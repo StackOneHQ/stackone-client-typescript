@@ -9,6 +9,7 @@ import {
   EmployeeSchemasEmploymentTypeValue,
   EmployeeSchemasHomeLocationLocationTypeValue,
   EmployeeSchemasHomeLocationValue,
+  EmployeeSchemasNationalIdentityNumberTypeValue,
   EmployeeSchemasNationalIdentityNumberValue,
   EmployeeSchemasPreferredLanguageValue,
   EmployeeSchemasWorkLocationLocationTypeValue,
@@ -120,7 +121,24 @@ let value: EmployeeResult = {
     groups: [
       {
         id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        name: "Engineering",
+        ownerIds: [
+          "cxIQNjUyEDM0",
+          "cxIQNjQzNzA0MQ",
+        ],
+        parentIds: [
+          "cxIQNjUyNDM0",
+          "cxIQNjQzNzI0MQ",
+        ],
         remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        remoteOwnerIds: [
+          "475364",
+          "4327652",
+        ],
+        remoteParentIds: [
+          "652434",
+          "6437241",
+        ],
         type: {
           value: HRISGroupValue.Team,
         },
@@ -168,8 +186,11 @@ let value: EmployeeResult = {
     maritalStatus: {},
     name: "Issac Newton",
     nationalIdentityNumber: {
+      country: {
+        value: EmployeeSchemasNationalIdentityNumberValue.Us,
+      },
       type: {
-        value: EmployeeSchemasNationalIdentityNumberValue.Ssn,
+        value: EmployeeSchemasNationalIdentityNumberTypeValue.Ssn,
       },
       value: "123456789",
     },

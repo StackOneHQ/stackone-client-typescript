@@ -6,7 +6,7 @@
 import { ConnectSessionTokenCategories } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: ConnectSessionTokenCategories =
-  ConnectSessionTokenCategories.HrisLegacy;
+  ConnectSessionTokenCategories.Stackone;
 ```
 
 ## Values
