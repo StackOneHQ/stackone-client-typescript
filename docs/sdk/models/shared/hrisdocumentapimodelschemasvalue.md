@@ -1227,4 +1227,5 @@ This is an open enum. Unrecognized values will be captured as the `Unrecognized<
 | `Movie`                   | movie                     |
 | `Smv`                     | smv                       |
 | `Ice`                     | ice                       |
+| `Mht`                     | mht                       |
 | -                         | `Unrecognized<string>`    |

@@ -2369,6 +2369,32 @@ actions:
                     "account-123",
                     "account-456",
                   ],
+                  customFields: [
+                    {
+                      id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+                      remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+                      name: "Training Completion Status",
+                      value: "Completed",
+                      valueId: "value_456",
+                      remoteValueId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
+                    },
+                    {
+                      id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+                      remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+                      name: "Training Completion Status",
+                      value: "Completed",
+                      valueId: "value_456",
+                      remoteValueId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
+                    },
+                    {
+                      id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+                      remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+                      name: "Training Completion Status",
+                      value: "Completed",
+                      valueId: "value_456",
+                      remoteValueId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
+                    },
+                  ],
                   passthrough: {
                     "other_known_names": "John Doe",
                   },
@@ -2445,10 +2471,81 @@ actions:
                     "account-123",
                     "account-456",
                   ],
+                  customFields: [
+                    {
+                      id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+                      remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+                      name: "Training Completion Status",
+                      value: "Completed",
+                      valueId: "value_456",
+                      remoteValueId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
+                    },
+                  ],
                   passthrough: {
                     "other_known_names": "John Doe",
                   },
                 },
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/unified/crm/custom_field_definitions/contacts"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: crm_list_contact_custom_field_definitions
+          source: |-
+            import { StackOne } from "@stackone/stackone-client-ts";
+
+            const stackOne = new StackOne({
+              security: {
+                username: "",
+                password: "",
+              },
+            });
+
+            async function run() {
+              const result = await stackOne.crm.listContactCustomFieldDefinitions({
+                fields: "id,remote_id,name,description,type,options",
+                filter: {
+                  updatedAfter: "2020-01-01T00:00:00.000Z",
+                },
+                updatedAfter: "2020-01-01T00:00:00.000Z",
+                xAccountId: "<id>",
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/unified/crm/custom_field_definitions/contacts/{id}"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: crm_get_contact_custom_field_definition
+          source: |-
+            import { StackOne } from "@stackone/stackone-client-ts";
+
+            const stackOne = new StackOne({
+              security: {
+                username: "",
+                password: "",
+              },
+            });
+
+            async function run() {
+              const result = await stackOne.crm.getContactCustomFieldDefinition({
+                id: "<id>",
+                fields: "id,remote_id,name,description,type,options",
+                filter: {
+                  updatedAfter: "2020-01-01T00:00:00.000Z",
+                },
+                updatedAfter: "2020-01-01T00:00:00.000Z",
+                xAccountId: "<id>",
               });
 
               // Handle the result
@@ -2814,6 +2911,7 @@ actions:
                         sourceValue: "Permanent",
                       },
                       employmentContractType: {},
+                      timeWorked: "P0Y0M0DT8H0M0S",
                     },
                   ],
                   customFields: [
@@ -3046,6 +3144,7 @@ actions:
                         sourceValue: "Permanent",
                       },
                       employmentContractType: {},
+                      timeWorked: "P0Y0M0DT8H0M0S",
                     },
                   ],
                   customFields: [
@@ -3327,7 +3426,7 @@ actions:
             async function run() {
               const result = await stackOne.hris.listEmployeeEmployments({
                 id: "<id>",
-                fields: "id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,employment_type,employment_contract_type,created_at,updated_at",
+                fields: "id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,employment_type,employment_contract_type,time_worked,created_at,updated_at",
                 filter: {
                   updatedAfter: "2020-01-01T00:00:00.000Z",
                 },
@@ -3389,6 +3488,7 @@ actions:
                     sourceValue: "Permanent",
                   },
                   employmentContractType: {},
+                  timeWorked: "P0Y0M0DT8H0M0S",
                   passthrough: {
                     "other_known_names": "John Doe",
                   },
@@ -3419,7 +3519,7 @@ actions:
               const result = await stackOne.hris.getEmployeeEmployment({
                 id: "<id>",
                 subResourceId: "<id>",
-                fields: "id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,employment_type,employment_contract_type,created_at,updated_at",
+                fields: "id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,employment_type,employment_contract_type,time_worked,created_at,updated_at",
                 expand: "groups",
                 xAccountId: "<id>",
               });
@@ -3478,6 +3578,7 @@ actions:
                     sourceValue: "Permanent",
                   },
                   employmentContractType: {},
+                  timeWorked: "P0Y0M0DT8H0M0S",
                   passthrough: {
                     "other_known_names": "John Doe",
                   },
@@ -3778,7 +3879,7 @@ actions:
 
             async function run() {
               const result = await stackOne.hris.listEmployments({
-                fields: "id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,employment_type,employment_contract_type,created_at,updated_at",
+                fields: "id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,employment_type,employment_contract_type,time_worked,created_at,updated_at",
                 filter: {
                   updatedAfter: "2020-01-01T00:00:00.000Z",
                 },
@@ -3810,7 +3911,7 @@ actions:
             async function run() {
               const result = await stackOne.hris.getEmployment({
                 id: "<id>",
-                fields: "id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,employment_type,employment_contract_type,created_at,updated_at",
+                fields: "id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,employment_type,employment_contract_type,time_worked,created_at,updated_at",
                 expand: "groups",
                 xAccountId: "<id>",
               });
@@ -4488,13 +4589,11 @@ actions:
 
             async function run() {
               const result = await stackOne.lms.listAssignments({
-                fields: "id,remote_id,user_id,remote_user_id,course_id,remote_course_id,updated_at,created_at,due_date,status",
+                fields: "id,remote_id,user_id,remote_user_id,course_id,remote_course_id,updated_at,created_at,due_date,status,progress,learning_object_type,learning_object_id,remote_learning_object_id,learning_object_external_reference",
                 filter: {
                   updatedAfter: "2020-01-01T00:00:00.000Z",
                 },
                 updatedAfter: "2020-01-01T00:00:00.000Z",
-                userId: "c28xyrc55866bvuv",
-                remoteUserId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
                 xAccountId: "<id>",
               });
 
@@ -4659,7 +4758,7 @@ actions:
 
             async function run() {
               const result = await stackOne.lms.listContent({
-                fields: "id,remote_id,external_reference,course_ids,remote_course_ids,title,description,languages,content_url,content_type,cover_url,active,duration,categories,order",
+                fields: "id,remote_id,external_reference,course_ids,remote_course_ids,title,description,languages,content_url,content_type,cover_url,active,duration,categories,order,content_launch_method",
                 filter: {
                   updatedAfter: "2020-01-01T00:00:00.000Z",
                 },
@@ -4711,6 +4810,7 @@ actions:
                   coverUrl: "https://www.googledrive.com/?v=16873",
                   active: true,
                   duration: "P3Y6M4DT12H30M5S",
+                  contentLaunchMethod: {},
                   order: 1,
                   categories: [
                     {
@@ -4769,6 +4869,7 @@ actions:
                   coverUrl: "https://www.googledrive.com/?v=16873",
                   active: true,
                   duration: "P3Y6M4DT12H30M5S",
+                  contentLaunchMethod: {},
                   order: 1,
                   categories: [
                     {
@@ -4832,6 +4933,7 @@ actions:
                       coverUrl: "https://www.googledrive.com/?v=16873",
                       active: true,
                       duration: "P3Y6M4DT12H30M5S",
+                      contentLaunchMethod: {},
                       order: 1,
                       categories: [
                         {
@@ -4864,6 +4966,7 @@ actions:
                       coverUrl: "https://www.googledrive.com/?v=16873",
                       active: true,
                       duration: "P3Y6M4DT12H30M5S",
+                      contentLaunchMethod: {},
                       order: 1,
                       categories: [
                         {
@@ -4878,6 +4981,32 @@ actions:
                     },
                   ],
                 },
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/unified/lms/content/{id}"]["delete"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: lms_delete_content
+          source: |-
+            import { StackOne } from "@stackone/stackone-client-ts";
+
+            const stackOne = new StackOne({
+              security: {
+                username: "",
+                password: "",
+              },
+            });
+
+            async function run() {
+              const result = await stackOne.lms.deleteContent({
+                id: "<id>",
+                xAccountId: "<id>",
               });
 
               // Handle the result
@@ -4903,7 +5032,7 @@ actions:
             async function run() {
               const result = await stackOne.lms.getContent({
                 id: "<id>",
-                fields: "id,remote_id,external_reference,course_ids,remote_course_ids,title,description,languages,content_url,content_type,cover_url,active,duration,categories,order",
+                fields: "id,remote_id,external_reference,course_ids,remote_course_ids,title,description,languages,content_url,content_type,cover_url,active,duration,categories,order,content_launch_method",
                 xAccountId: "<id>",
               });
 
@@ -4958,6 +5087,7 @@ actions:
                   coverUrl: "https://www.googledrive.com/?v=16873",
                   active: true,
                   duration: "P3Y6M4DT12H30M5S",
+                  contentLaunchMethod: {},
                   order: 1,
                   categories: [
                     {
@@ -5166,13 +5296,11 @@ actions:
             async function run() {
               const result = await stackOne.lms.listUserAssignments({
                 id: "<id>",
-                fields: "id,remote_id,user_id,remote_user_id,course_id,remote_course_id,updated_at,created_at,due_date,status",
+                fields: "id,remote_id,user_id,remote_user_id,course_id,remote_course_id,updated_at,created_at,due_date,status,progress,learning_object_type,learning_object_id,remote_learning_object_id,learning_object_external_reference",
                 filter: {
                   updatedAfter: "2020-01-01T00:00:00.000Z",
                 },
                 updatedAfter: "2020-01-01T00:00:00.000Z",
-                userId: "c28xyrc55866bvuv",
-                remoteUserId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
                 xAccountId: "<id>",
               });
 

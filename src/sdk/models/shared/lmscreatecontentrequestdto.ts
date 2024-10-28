@@ -44,18 +44,17 @@ export type LmsCreateContentRequestDtoSourceValue =
   | Array<any>;
 
 export enum LmsCreateContentRequestDtoValue {
-  Video = "video",
-  Quiz = "quiz",
-  Document = "document",
+  Automatic = "automatic",
+  Browser = "browser",
 }
 export type LmsCreateContentRequestDtoValueOpen = OpenEnum<
   typeof LmsCreateContentRequestDtoValue
 >;
 
 /**
- * The type of content
+ * The content launch method associated with this content
  */
-export type LmsCreateContentRequestDtoContentType = {
+export type LmsCreateContentRequestDtoContentLaunchMethod = {
   sourceValue?:
     | LmsCreateContentRequestDto4
     | string
@@ -67,6 +66,39 @@ export type LmsCreateContentRequestDtoContentType = {
   value?: LmsCreateContentRequestDtoValueOpen | null | undefined;
 };
 
+export type LmsCreateContentRequestDtoSchemas4 = {};
+
+export type LmsCreateContentRequestDtoSchemasSourceValue =
+  | LmsCreateContentRequestDtoSchemas4
+  | string
+  | number
+  | boolean
+  | Array<any>;
+
+export enum LmsCreateContentRequestDtoSchemasValue {
+  Video = "video",
+  Quiz = "quiz",
+  Document = "document",
+}
+export type LmsCreateContentRequestDtoSchemasValueOpen = OpenEnum<
+  typeof LmsCreateContentRequestDtoSchemasValue
+>;
+
+/**
+ * The type of content
+ */
+export type LmsCreateContentRequestDtoContentType = {
+  sourceValue?:
+    | LmsCreateContentRequestDtoSchemas4
+    | string
+    | number
+    | boolean
+    | Array<any>
+    | null
+    | undefined;
+  value?: LmsCreateContentRequestDtoSchemasValueOpen | null | undefined;
+};
+
 export type LmsCreateContentRequestDto = {
   /**
    * Whether the content is active and available for users.
@@ -76,6 +108,13 @@ export type LmsCreateContentRequestDto = {
    * The categories associated with this content
    */
   categories?: Array<CreateCategoriesApiModel> | null | undefined;
+  /**
+   * The content launch method associated with this content
+   */
+  contentLaunchMethod?:
+    | LmsCreateContentRequestDtoContentLaunchMethod
+    | null
+    | undefined;
   /**
    * The type of content
    */
@@ -97,7 +136,7 @@ export type LmsCreateContentRequestDto = {
    */
   description?: string | null | undefined;
   /**
-   * The duration of the content following the ISO8601 standard. If duration_unit is applicable we will derive this from the smallest unit given in the duration string
+   * The duration of the content following the ISO8601 standard. If duration_unit is applicable we will derive this from the smallest unit given in the duration string or the minimum unit accepted by the provider.
    */
   duration?: string | null | undefined;
   /**
@@ -285,6 +324,197 @@ export namespace LmsCreateContentRequestDtoValue$ {
 }
 
 /** @internal */
+export const LmsCreateContentRequestDtoContentLaunchMethod$inboundSchema:
+  z.ZodType<
+    LmsCreateContentRequestDtoContentLaunchMethod,
+    z.ZodTypeDef,
+    unknown
+  > = z.object({
+    source_value: z.nullable(
+      z.union([
+        z.lazy(() => LmsCreateContentRequestDto4$inboundSchema),
+        z.string(),
+        z.number(),
+        z.boolean(),
+        z.array(z.any()),
+      ]),
+    ).optional(),
+    value: z.nullable(LmsCreateContentRequestDtoValue$inboundSchema).optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      "source_value": "sourceValue",
+    });
+  });
+
+/** @internal */
+export type LmsCreateContentRequestDtoContentLaunchMethod$Outbound = {
+  source_value?:
+    | LmsCreateContentRequestDto4$Outbound
+    | string
+    | number
+    | boolean
+    | Array<any>
+    | null
+    | undefined;
+  value?: string | null | undefined;
+};
+
+/** @internal */
+export const LmsCreateContentRequestDtoContentLaunchMethod$outboundSchema:
+  z.ZodType<
+    LmsCreateContentRequestDtoContentLaunchMethod$Outbound,
+    z.ZodTypeDef,
+    LmsCreateContentRequestDtoContentLaunchMethod
+  > = z.object({
+    sourceValue: z.nullable(
+      z.union([
+        z.lazy(() => LmsCreateContentRequestDto4$outboundSchema),
+        z.string(),
+        z.number(),
+        z.boolean(),
+        z.array(z.any()),
+      ]),
+    ).optional(),
+    value: z.nullable(LmsCreateContentRequestDtoValue$outboundSchema)
+      .optional(),
+  }).transform((v) => {
+    return remap$(v, {
+      sourceValue: "source_value",
+    });
+  });
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace LmsCreateContentRequestDtoContentLaunchMethod$ {
+  /** @deprecated use `LmsCreateContentRequestDtoContentLaunchMethod$inboundSchema` instead. */
+  export const inboundSchema =
+    LmsCreateContentRequestDtoContentLaunchMethod$inboundSchema;
+  /** @deprecated use `LmsCreateContentRequestDtoContentLaunchMethod$outboundSchema` instead. */
+  export const outboundSchema =
+    LmsCreateContentRequestDtoContentLaunchMethod$outboundSchema;
+  /** @deprecated use `LmsCreateContentRequestDtoContentLaunchMethod$Outbound` instead. */
+  export type Outbound = LmsCreateContentRequestDtoContentLaunchMethod$Outbound;
+}
+
+/** @internal */
+export const LmsCreateContentRequestDtoSchemas4$inboundSchema: z.ZodType<
+  LmsCreateContentRequestDtoSchemas4,
+  z.ZodTypeDef,
+  unknown
+> = z.object({});
+
+/** @internal */
+export type LmsCreateContentRequestDtoSchemas4$Outbound = {};
+
+/** @internal */
+export const LmsCreateContentRequestDtoSchemas4$outboundSchema: z.ZodType<
+  LmsCreateContentRequestDtoSchemas4$Outbound,
+  z.ZodTypeDef,
+  LmsCreateContentRequestDtoSchemas4
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace LmsCreateContentRequestDtoSchemas4$ {
+  /** @deprecated use `LmsCreateContentRequestDtoSchemas4$inboundSchema` instead. */
+  export const inboundSchema = LmsCreateContentRequestDtoSchemas4$inboundSchema;
+  /** @deprecated use `LmsCreateContentRequestDtoSchemas4$outboundSchema` instead. */
+  export const outboundSchema =
+    LmsCreateContentRequestDtoSchemas4$outboundSchema;
+  /** @deprecated use `LmsCreateContentRequestDtoSchemas4$Outbound` instead. */
+  export type Outbound = LmsCreateContentRequestDtoSchemas4$Outbound;
+}
+
+/** @internal */
+export const LmsCreateContentRequestDtoSchemasSourceValue$inboundSchema:
+  z.ZodType<
+    LmsCreateContentRequestDtoSchemasSourceValue,
+    z.ZodTypeDef,
+    unknown
+  > = z.union([
+    z.lazy(() => LmsCreateContentRequestDtoSchemas4$inboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+    z.array(z.any()),
+  ]);
+
+/** @internal */
+export type LmsCreateContentRequestDtoSchemasSourceValue$Outbound =
+  | LmsCreateContentRequestDtoSchemas4$Outbound
+  | string
+  | number
+  | boolean
+  | Array<any>;
+
+/** @internal */
+export const LmsCreateContentRequestDtoSchemasSourceValue$outboundSchema:
+  z.ZodType<
+    LmsCreateContentRequestDtoSchemasSourceValue$Outbound,
+    z.ZodTypeDef,
+    LmsCreateContentRequestDtoSchemasSourceValue
+  > = z.union([
+    z.lazy(() => LmsCreateContentRequestDtoSchemas4$outboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+    z.array(z.any()),
+  ]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace LmsCreateContentRequestDtoSchemasSourceValue$ {
+  /** @deprecated use `LmsCreateContentRequestDtoSchemasSourceValue$inboundSchema` instead. */
+  export const inboundSchema =
+    LmsCreateContentRequestDtoSchemasSourceValue$inboundSchema;
+  /** @deprecated use `LmsCreateContentRequestDtoSchemasSourceValue$outboundSchema` instead. */
+  export const outboundSchema =
+    LmsCreateContentRequestDtoSchemasSourceValue$outboundSchema;
+  /** @deprecated use `LmsCreateContentRequestDtoSchemasSourceValue$Outbound` instead. */
+  export type Outbound = LmsCreateContentRequestDtoSchemasSourceValue$Outbound;
+}
+
+/** @internal */
+export const LmsCreateContentRequestDtoSchemasValue$inboundSchema: z.ZodType<
+  LmsCreateContentRequestDtoSchemasValueOpen,
+  z.ZodTypeDef,
+  unknown
+> = z
+  .union([
+    z.nativeEnum(LmsCreateContentRequestDtoSchemasValue),
+    z.string().transform(catchUnrecognizedEnum),
+  ]);
+
+/** @internal */
+export const LmsCreateContentRequestDtoSchemasValue$outboundSchema: z.ZodType<
+  LmsCreateContentRequestDtoSchemasValueOpen,
+  z.ZodTypeDef,
+  LmsCreateContentRequestDtoSchemasValueOpen
+> = z.union([
+  z.nativeEnum(LmsCreateContentRequestDtoSchemasValue),
+  z.string().and(z.custom<Unrecognized<string>>()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace LmsCreateContentRequestDtoSchemasValue$ {
+  /** @deprecated use `LmsCreateContentRequestDtoSchemasValue$inboundSchema` instead. */
+  export const inboundSchema =
+    LmsCreateContentRequestDtoSchemasValue$inboundSchema;
+  /** @deprecated use `LmsCreateContentRequestDtoSchemasValue$outboundSchema` instead. */
+  export const outboundSchema =
+    LmsCreateContentRequestDtoSchemasValue$outboundSchema;
+}
+
+/** @internal */
 export const LmsCreateContentRequestDtoContentType$inboundSchema: z.ZodType<
   LmsCreateContentRequestDtoContentType,
   z.ZodTypeDef,
@@ -292,14 +522,15 @@ export const LmsCreateContentRequestDtoContentType$inboundSchema: z.ZodType<
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => LmsCreateContentRequestDto4$inboundSchema),
+      z.lazy(() => LmsCreateContentRequestDtoSchemas4$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
       z.array(z.any()),
     ]),
   ).optional(),
-  value: z.nullable(LmsCreateContentRequestDtoValue$inboundSchema).optional(),
+  value: z.nullable(LmsCreateContentRequestDtoSchemasValue$inboundSchema)
+    .optional(),
 }).transform((v) => {
   return remap$(v, {
     "source_value": "sourceValue",
@@ -309,7 +540,7 @@ export const LmsCreateContentRequestDtoContentType$inboundSchema: z.ZodType<
 /** @internal */
 export type LmsCreateContentRequestDtoContentType$Outbound = {
   source_value?:
-    | LmsCreateContentRequestDto4$Outbound
+    | LmsCreateContentRequestDtoSchemas4$Outbound
     | string
     | number
     | boolean
@@ -327,14 +558,15 @@ export const LmsCreateContentRequestDtoContentType$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => LmsCreateContentRequestDto4$outboundSchema),
+      z.lazy(() => LmsCreateContentRequestDtoSchemas4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
       z.array(z.any()),
     ]),
   ).optional(),
-  value: z.nullable(LmsCreateContentRequestDtoValue$outboundSchema).optional(),
+  value: z.nullable(LmsCreateContentRequestDtoSchemasValue$outboundSchema)
+    .optional(),
 }).transform((v) => {
   return remap$(v, {
     sourceValue: "source_value",
@@ -367,6 +599,9 @@ export const LmsCreateContentRequestDto$inboundSchema: z.ZodType<
   ).optional(),
   categories: z.nullable(z.array(CreateCategoriesApiModel$inboundSchema))
     .optional(),
+  content_launch_method: z.nullable(
+    z.lazy(() => LmsCreateContentRequestDtoContentLaunchMethod$inboundSchema),
+  ).optional(),
   content_type: z.nullable(
     z.lazy(() => LmsCreateContentRequestDtoContentType$inboundSchema),
   ).optional(),
@@ -382,6 +617,7 @@ export const LmsCreateContentRequestDto$inboundSchema: z.ZodType<
   unified_custom_fields: z.nullable(z.record(z.any())).optional(),
 }).transform((v) => {
   return remap$(v, {
+    "content_launch_method": "contentLaunchMethod",
     "content_type": "contentType",
     "content_url": "contentUrl",
     "course_ids": "courseIds",
@@ -395,6 +631,10 @@ export const LmsCreateContentRequestDto$inboundSchema: z.ZodType<
 export type LmsCreateContentRequestDto$Outbound = {
   active?: boolean | string | null | undefined;
   categories?: Array<CreateCategoriesApiModel$Outbound> | null | undefined;
+  content_launch_method?:
+    | LmsCreateContentRequestDtoContentLaunchMethod$Outbound
+    | null
+    | undefined;
   content_type?:
     | LmsCreateContentRequestDtoContentType$Outbound
     | null
@@ -422,6 +662,9 @@ export const LmsCreateContentRequestDto$outboundSchema: z.ZodType<
   ).optional(),
   categories: z.nullable(z.array(CreateCategoriesApiModel$outboundSchema))
     .optional(),
+  contentLaunchMethod: z.nullable(
+    z.lazy(() => LmsCreateContentRequestDtoContentLaunchMethod$outboundSchema),
+  ).optional(),
   contentType: z.nullable(
     z.lazy(() => LmsCreateContentRequestDtoContentType$outboundSchema),
   ).optional(),
@@ -437,6 +680,7 @@ export const LmsCreateContentRequestDto$outboundSchema: z.ZodType<
   unifiedCustomFields: z.nullable(z.record(z.any())).optional(),
 }).transform((v) => {
   return remap$(v, {
+    contentLaunchMethod: "content_launch_method",
     contentType: "content_type",
     contentUrl: "content_url",
     courseIds: "course_ids",

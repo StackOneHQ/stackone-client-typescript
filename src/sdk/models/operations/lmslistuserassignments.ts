@@ -7,9 +7,13 @@ import { remap as remap$ } from "../../../lib/primitives.js";
 import * as shared from "../shared/index.js";
 
 /**
- * Filter parameters that allow greater customisation of the list response
+ * LMS Assignment Filter
  */
 export type LmsListUserAssignmentsQueryParamFilter = {
+  /**
+   * Filter to select assignment by completed status
+   */
+  completed?: boolean | null | undefined;
   /**
    * Use a string with a date to only select results updated after that given date
    */
@@ -22,7 +26,7 @@ export type LmsListUserAssignmentsRequest = {
    */
   fields?: string | null | undefined;
   /**
-   * Filter parameters that allow greater customisation of the list response
+   * LMS Assignment Filter
    */
   filter?: LmsListUserAssignmentsQueryParamFilter | null | undefined;
   id: string;
@@ -49,19 +53,11 @@ export type LmsListUserAssignmentsRequest = {
    */
   raw?: boolean | null | undefined;
   /**
-   * Provider's unique identifier of the user related to the assignment
-   */
-  remoteUserId?: string | null | undefined;
-  /**
    * Use a string with a date to only select results updated after that given date
    *
    * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   updatedAfter?: string | null | undefined;
-  /**
-   * The user ID associated with this assignment
-   */
-  userId?: string | null | undefined;
   /**
    * The account identifier
    */
@@ -93,6 +89,7 @@ export const LmsListUserAssignmentsQueryParamFilter$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  completed: z.nullable(z.boolean()).optional(),
   updated_after: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -102,6 +99,7 @@ export const LmsListUserAssignmentsQueryParamFilter$inboundSchema: z.ZodType<
 
 /** @internal */
 export type LmsListUserAssignmentsQueryParamFilter$Outbound = {
+  completed?: boolean | null | undefined;
   updated_after?: string | null | undefined;
 };
 
@@ -111,6 +109,7 @@ export const LmsListUserAssignmentsQueryParamFilter$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   LmsListUserAssignmentsQueryParamFilter
 > = z.object({
+  completed: z.nullable(z.boolean()).optional(),
   updatedAfter: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -149,16 +148,12 @@ export const LmsListUserAssignmentsRequest$inboundSchema: z.ZodType<
   page_size: z.nullable(z.string().default("25")),
   proxy: z.nullable(z.record(z.any())).optional(),
   raw: z.nullable(z.boolean().default(false)),
-  remote_user_id: z.nullable(z.string()).optional(),
   updated_after: z.nullable(z.string()).optional(),
-  user_id: z.nullable(z.string()).optional(),
   "x-account-id": z.string(),
 }).transform((v) => {
   return remap$(v, {
     "page_size": "pageSize",
-    "remote_user_id": "remoteUserId",
     "updated_after": "updatedAfter",
-    "user_id": "userId",
     "x-account-id": "xAccountId",
   });
 });
@@ -173,9 +168,7 @@ export type LmsListUserAssignmentsRequest$Outbound = {
   page_size: string | null;
   proxy?: { [k: string]: any } | null | undefined;
   raw: boolean | null;
-  remote_user_id?: string | null | undefined;
   updated_after?: string | null | undefined;
-  user_id?: string | null | undefined;
   "x-account-id": string;
 };
 
@@ -195,16 +188,12 @@ export const LmsListUserAssignmentsRequest$outboundSchema: z.ZodType<
   pageSize: z.nullable(z.string().default("25")),
   proxy: z.nullable(z.record(z.any())).optional(),
   raw: z.nullable(z.boolean().default(false)),
-  remoteUserId: z.nullable(z.string()).optional(),
   updatedAfter: z.nullable(z.string()).optional(),
-  userId: z.nullable(z.string()).optional(),
   xAccountId: z.string(),
 }).transform((v) => {
   return remap$(v, {
     pageSize: "page_size",
-    remoteUserId: "remote_user_id",
     updatedAfter: "updated_after",
-    userId: "user_id",
     xAccountId: "x-account-id",
   });
 });

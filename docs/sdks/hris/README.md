@@ -277,6 +277,7 @@ async function run() {
             value: CreateEmploymentApiModelSchemasPayPeriodValue.Hour,
           },
           payRate: "40.00",
+          timeWorked: "P0Y0M0DT8H0M0S",
           unifiedCustomFields: {
             "my_project_custom_field_1": "REF-1236",
             "my_project_custom_field_2": "some other value",
@@ -451,6 +452,7 @@ async function run() {
             value: CreateEmploymentApiModelSchemasPayPeriodValue.Hour,
           },
           payRate: "40.00",
+          timeWorked: "P0Y0M0DT8H0M0S",
           unifiedCustomFields: {
             "my_project_custom_field_1": "REF-1236",
             "my_project_custom_field_2": "some other value",
@@ -604,6 +606,7 @@ async function run() {
         value: HrisCreateEmploymentRequestDtoSchemasPayPeriodValue.Hour,
       },
       payRate: "40.00",
+      timeWorked: "P0Y0M0DT8H0M0S",
       unifiedCustomFields: {
         "my_project_custom_field_1": "REF-1236",
         "my_project_custom_field_2": "some other value",
@@ -667,6 +670,7 @@ async function run() {
         value: HrisCreateEmploymentRequestDtoSchemasPayPeriodValue.Hour,
       },
       payRate: "40.00",
+      timeWorked: "P0Y0M0DT8H0M0S",
       unifiedCustomFields: {
         "my_project_custom_field_1": "REF-1236",
         "my_project_custom_field_2": "some other value",
@@ -1781,7 +1785,7 @@ const stackOne = new StackOne({
 async function run() {
   const result = await stackOne.hris.getEmployeeEmployment({
     expand: "groups",
-    fields: "id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,employment_type,employment_contract_type,created_at,updated_at",
+    fields: "id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,employment_type,employment_contract_type,time_worked,created_at,updated_at",
     id: "<id>",
     subResourceId: "<value>",
     xAccountId: "<value>",
@@ -1814,7 +1818,7 @@ const stackOne = new StackOneCore({
 async function run() {
   const res = await hrisGetEmployeeEmployment(stackOne, {
     expand: "groups",
-    fields: "id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,employment_type,employment_contract_type,created_at,updated_at",
+    fields: "id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,employment_type,employment_contract_type,time_worked,created_at,updated_at",
     id: "<id>",
     subResourceId: "<value>",
     xAccountId: "<value>",
@@ -2047,7 +2051,7 @@ const stackOne = new StackOne({
 async function run() {
   const result = await stackOne.hris.getEmployment({
     expand: "groups",
-    fields: "id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,employment_type,employment_contract_type,created_at,updated_at",
+    fields: "id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,employment_type,employment_contract_type,time_worked,created_at,updated_at",
     id: "<id>",
     xAccountId: "<value>",
   });
@@ -2079,7 +2083,7 @@ const stackOne = new StackOneCore({
 async function run() {
   const res = await hrisGetEmployment(stackOne, {
     expand: "groups",
-    fields: "id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,employment_type,employment_contract_type,created_at,updated_at",
+    fields: "id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,employment_type,employment_contract_type,time_worked,created_at,updated_at",
     id: "<id>",
     xAccountId: "<value>",
   });
@@ -3033,7 +3037,7 @@ const stackOne = new StackOne({
 async function run() {
   const result = await stackOne.hris.listEmployeeEmployments({
     expand: "groups",
-    fields: "id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,employment_type,employment_contract_type,created_at,updated_at",
+    fields: "id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,employment_type,employment_contract_type,time_worked,created_at,updated_at",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
@@ -3069,7 +3073,7 @@ const stackOne = new StackOneCore({
 async function run() {
   const res = await hrisListEmployeeEmployments(stackOne, {
     expand: "groups",
-    fields: "id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,employment_type,employment_contract_type,created_at,updated_at",
+    fields: "id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,employment_type,employment_contract_type,time_worked,created_at,updated_at",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
@@ -3417,7 +3421,7 @@ const stackOne = new StackOne({
 async function run() {
   const result = await stackOne.hris.listEmployments({
     expand: "groups",
-    fields: "id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,employment_type,employment_contract_type,created_at,updated_at",
+    fields: "id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,employment_type,employment_contract_type,time_worked,created_at,updated_at",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
@@ -3452,7 +3456,7 @@ const stackOne = new StackOneCore({
 async function run() {
   const res = await hrisListEmployments(stackOne, {
     expand: "groups",
-    fields: "id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,employment_type,employment_contract_type,created_at,updated_at",
+    fields: "id,remote_id,employee_id,remote_employee_id,job_title,pay_rate,pay_period,pay_frequency,pay_currency,effective_date,employment_type,employment_contract_type,time_worked,created_at,updated_at",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
@@ -3951,6 +3955,7 @@ async function run() {
             value: CreateEmploymentApiModelSchemasPayPeriodValue.Hour,
           },
           payRate: "40.00",
+          timeWorked: "P0Y0M0DT8H0M0S",
           unifiedCustomFields: {
             "my_project_custom_field_1": "REF-1236",
             "my_project_custom_field_2": "some other value",
@@ -4126,6 +4131,7 @@ async function run() {
             value: CreateEmploymentApiModelSchemasPayPeriodValue.Hour,
           },
           payRate: "40.00",
+          timeWorked: "P0Y0M0DT8H0M0S",
           unifiedCustomFields: {
             "my_project_custom_field_1": "REF-1236",
             "my_project_custom_field_2": "some other value",
@@ -4280,6 +4286,7 @@ async function run() {
         value: HrisCreateEmploymentRequestDtoSchemasPayPeriodValue.Hour,
       },
       payRate: "40.00",
+      timeWorked: "P0Y0M0DT8H0M0S",
       unifiedCustomFields: {
         "my_project_custom_field_1": "REF-1236",
         "my_project_custom_field_2": "some other value",
@@ -4344,6 +4351,7 @@ async function run() {
         value: HrisCreateEmploymentRequestDtoSchemasPayPeriodValue.Hour,
       },
       payRate: "40.00",
+      timeWorked: "P0Y0M0DT8H0M0S",
       unifiedCustomFields: {
         "my_project_custom_field_1": "REF-1236",
         "my_project_custom_field_2": "some other value",

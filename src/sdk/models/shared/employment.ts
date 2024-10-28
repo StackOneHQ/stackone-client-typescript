@@ -276,6 +276,10 @@ export type Employment = {
    */
   remoteId?: string | null | undefined;
   /**
+   * The time worked for the employee in ISO 8601 duration format
+   */
+  timeWorked?: string | null | undefined;
+  /**
    * Custom Unified Fields configured in your StackOne project
    */
   unifiedCustomFields?: { [k: string]: any } | null | undefined;
@@ -1037,6 +1041,7 @@ export const Employment$inboundSchema: z.ZodType<
   pay_rate: z.nullable(z.string()).optional(),
   remote_employee_id: z.nullable(z.string()).optional(),
   remote_id: z.nullable(z.string()).optional(),
+  time_worked: z.nullable(z.string()).optional(),
   unified_custom_fields: z.nullable(z.record(z.any())).optional(),
   updated_at: z.nullable(
     z.string().datetime({ offset: true }).transform(v => new Date(v)),
@@ -1055,6 +1060,7 @@ export const Employment$inboundSchema: z.ZodType<
     "pay_rate": "payRate",
     "remote_employee_id": "remoteEmployeeId",
     "remote_id": "remoteId",
+    "time_worked": "timeWorked",
     "unified_custom_fields": "unifiedCustomFields",
     "updated_at": "updatedAt",
   });
@@ -1078,6 +1084,7 @@ export type Employment$Outbound = {
   pay_rate?: string | null | undefined;
   remote_employee_id?: string | null | undefined;
   remote_id?: string | null | undefined;
+  time_worked?: string | null | undefined;
   unified_custom_fields?: { [k: string]: any } | null | undefined;
   updated_at?: string | null | undefined;
 };
@@ -1108,6 +1115,7 @@ export const Employment$outboundSchema: z.ZodType<
   payRate: z.nullable(z.string()).optional(),
   remoteEmployeeId: z.nullable(z.string()).optional(),
   remoteId: z.nullable(z.string()).optional(),
+  timeWorked: z.nullable(z.string()).optional(),
   unifiedCustomFields: z.nullable(z.record(z.any())).optional(),
   updatedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
 }).transform((v) => {
@@ -1124,6 +1132,7 @@ export const Employment$outboundSchema: z.ZodType<
     payRate: "pay_rate",
     remoteEmployeeId: "remote_employee_id",
     remoteId: "remote_id",
+    timeWorked: "time_worked",
     unifiedCustomFields: "unified_custom_fields",
     updatedAt: "updated_at",
   });

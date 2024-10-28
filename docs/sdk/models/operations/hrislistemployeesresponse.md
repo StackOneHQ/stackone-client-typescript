@@ -111,6 +111,7 @@ let value: HrisListEmployeesResponse = {
             payRate: "40.00",
             remoteEmployeeId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
             remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+            timeWorked: "P0Y0M0DT8H0M0S",
             unifiedCustomFields: {
               "my_project_custom_field_1": "REF-1236",
               "my_project_custom_field_2": "some other value",
@@ -244,7 +245,7 @@ let value: HrisListEmployeesResponse = {
       },
     ],
   },
-  statusCode: 405,
+  statusCode: 226,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

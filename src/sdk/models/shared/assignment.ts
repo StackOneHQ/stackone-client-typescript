@@ -10,6 +10,12 @@ import {
   AssignmentStatusEnum$Outbound,
   AssignmentStatusEnum$outboundSchema,
 } from "./assignmentstatusenum.js";
+import {
+  LearningObjectTypeEnum,
+  LearningObjectTypeEnum$inboundSchema,
+  LearningObjectTypeEnum$Outbound,
+  LearningObjectTypeEnum$outboundSchema,
+} from "./learningobjecttypeenum.js";
 
 export type Assignment = {
   /**
@@ -29,6 +35,22 @@ export type Assignment = {
    */
   id?: string | null | undefined;
   /**
+   * The learning_object_external_reference associated with this assignment
+   */
+  learningObjectExternalReference?: string | null | undefined;
+  /**
+   * The learning_object_id associated with this assignment
+   */
+  learningObjectId?: string | null | undefined;
+  /**
+   * The learning object type of the assignment
+   */
+  learningObjectType?: Array<LearningObjectTypeEnum> | null | undefined;
+  /**
+   * The progress associated with this assigment
+   */
+  progress?: number | null | undefined;
+  /**
    * Provider's unique identifier of the course related to the assignment
    */
   remoteCourseId?: string | null | undefined;
@@ -36,6 +58,14 @@ export type Assignment = {
    * Provider's unique identifier
    */
   remoteId?: string | null | undefined;
+  /**
+   * Provider's unique identifier of the learning object related to the assignment
+   */
+  remoteLearningObjectId?: string | null | undefined;
+  /**
+   * Provider's unique identifier of the user related to the assignment
+   */
+  remoteUserId?: string | null | undefined;
   /**
    * The status of the assignment
    */
@@ -48,6 +78,10 @@ export type Assignment = {
    * The date the assignment was last updated
    */
   updatedAt?: string | null | undefined;
+  /**
+   * The user ID associated with this assignment
+   */
+  userId?: string | null | undefined;
 };
 
 /** @internal */
@@ -60,20 +94,35 @@ export const Assignment$inboundSchema: z.ZodType<
   created_at: z.nullable(z.string()).optional(),
   due_date: z.nullable(z.string()).optional(),
   id: z.nullable(z.string()).optional(),
+  learning_object_external_reference: z.nullable(z.string()).optional(),
+  learning_object_id: z.nullable(z.string()).optional(),
+  learning_object_type: z.nullable(
+    z.array(LearningObjectTypeEnum$inboundSchema),
+  ).optional(),
+  progress: z.nullable(z.number()).optional(),
   remote_course_id: z.nullable(z.string()).optional(),
   remote_id: z.nullable(z.string()).optional(),
+  remote_learning_object_id: z.nullable(z.string()).optional(),
+  remote_user_id: z.nullable(z.string()).optional(),
   status: z.nullable(z.array(AssignmentStatusEnum$inboundSchema)).optional(),
   unified_custom_fields: z.nullable(z.record(z.any())).optional(),
   updated_at: z.nullable(z.string()).optional(),
+  user_id: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
     "course_id": "courseId",
     "created_at": "createdAt",
     "due_date": "dueDate",
+    "learning_object_external_reference": "learningObjectExternalReference",
+    "learning_object_id": "learningObjectId",
+    "learning_object_type": "learningObjectType",
     "remote_course_id": "remoteCourseId",
     "remote_id": "remoteId",
+    "remote_learning_object_id": "remoteLearningObjectId",
+    "remote_user_id": "remoteUserId",
     "unified_custom_fields": "unifiedCustomFields",
     "updated_at": "updatedAt",
+    "user_id": "userId",
   });
 });
 
@@ -83,11 +132,21 @@ export type Assignment$Outbound = {
   created_at?: string | null | undefined;
   due_date?: string | null | undefined;
   id?: string | null | undefined;
+  learning_object_external_reference?: string | null | undefined;
+  learning_object_id?: string | null | undefined;
+  learning_object_type?:
+    | Array<LearningObjectTypeEnum$Outbound>
+    | null
+    | undefined;
+  progress?: number | null | undefined;
   remote_course_id?: string | null | undefined;
   remote_id?: string | null | undefined;
+  remote_learning_object_id?: string | null | undefined;
+  remote_user_id?: string | null | undefined;
   status?: Array<AssignmentStatusEnum$Outbound> | null | undefined;
   unified_custom_fields?: { [k: string]: any } | null | undefined;
   updated_at?: string | null | undefined;
+  user_id?: string | null | undefined;
 };
 
 /** @internal */
@@ -100,20 +159,34 @@ export const Assignment$outboundSchema: z.ZodType<
   createdAt: z.nullable(z.string()).optional(),
   dueDate: z.nullable(z.string()).optional(),
   id: z.nullable(z.string()).optional(),
+  learningObjectExternalReference: z.nullable(z.string()).optional(),
+  learningObjectId: z.nullable(z.string()).optional(),
+  learningObjectType: z.nullable(z.array(LearningObjectTypeEnum$outboundSchema))
+    .optional(),
+  progress: z.nullable(z.number()).optional(),
   remoteCourseId: z.nullable(z.string()).optional(),
   remoteId: z.nullable(z.string()).optional(),
+  remoteLearningObjectId: z.nullable(z.string()).optional(),
+  remoteUserId: z.nullable(z.string()).optional(),
   status: z.nullable(z.array(AssignmentStatusEnum$outboundSchema)).optional(),
   unifiedCustomFields: z.nullable(z.record(z.any())).optional(),
   updatedAt: z.nullable(z.string()).optional(),
+  userId: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
     courseId: "course_id",
     createdAt: "created_at",
     dueDate: "due_date",
+    learningObjectExternalReference: "learning_object_external_reference",
+    learningObjectId: "learning_object_id",
+    learningObjectType: "learning_object_type",
     remoteCourseId: "remote_course_id",
     remoteId: "remote_id",
+    remoteLearningObjectId: "remote_learning_object_id",
+    remoteUserId: "remote_user_id",
     unifiedCustomFields: "unified_custom_fields",
     updatedAt: "updated_at",
+    userId: "user_id",
   });
 });
 
