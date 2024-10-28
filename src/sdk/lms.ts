@@ -5,6 +5,7 @@
 import { lmsBatchUpsertContent } from "../funcs/lmsBatchUpsertContent.js";
 import { lmsCreateContent } from "../funcs/lmsCreateContent.js";
 import { lmsCreateUserCompletion } from "../funcs/lmsCreateUserCompletion.js";
+import { lmsDeleteContent } from "../funcs/lmsDeleteContent.js";
 import { lmsGetAssignment } from "../funcs/lmsGetAssignment.js";
 import { lmsGetCategory } from "../funcs/lmsGetCategory.js";
 import { lmsGetCompletion } from "../funcs/lmsGetCompletion.js";
@@ -66,6 +67,20 @@ export class Lms extends ClientSDK {
     options?: RequestOptions,
   ): Promise<operations.LmsCreateUserCompletionResponse> {
     return unwrapAsync(lmsCreateUserCompletion(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Delete Content
+   */
+  async deleteContent(
+    request: operations.LmsDeleteContentRequest,
+    options?: RequestOptions,
+  ): Promise<operations.LmsDeleteContentResponse> {
+    return unwrapAsync(lmsDeleteContent(
       this,
       request,
       options,

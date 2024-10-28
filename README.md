@@ -188,8 +188,10 @@ run();
 * [createContact](docs/sdks/crm/README.md#createcontact) - Creates a new Contact
 * [getAccount](docs/sdks/crm/README.md#getaccount) - Get Account
 * [getContact](docs/sdks/crm/README.md#getcontact) - Get Contact
+* [getContactCustomFieldDefinition](docs/sdks/crm/README.md#getcontactcustomfielddefinition) - Get Contact Custom Field Definition
 * [getList](docs/sdks/crm/README.md#getlist) - Get List
 * [listAccounts](docs/sdks/crm/README.md#listaccounts) - List Accounts
+* [listContactCustomFieldDefinitions](docs/sdks/crm/README.md#listcontactcustomfielddefinitions) - List Contact Custom Field Definitions
 * [listContacts](docs/sdks/crm/README.md#listcontacts) - List Contacts
 * [listLists](docs/sdks/crm/README.md#listlists) - Get all Lists
 * [updateContact](docs/sdks/crm/README.md#updatecontact) - Update Contact (early access)
@@ -255,6 +257,7 @@ run();
 * [batchUpsertContent](docs/sdks/lms/README.md#batchupsertcontent) - Batch Upsert Content
 * [createContent](docs/sdks/lms/README.md#createcontent) - Create Content
 * [createUserCompletion](docs/sdks/lms/README.md#createusercompletion) - Create User Completion
+* [deleteContent](docs/sdks/lms/README.md#deletecontent) - Delete Content
 * [getAssignment](docs/sdks/lms/README.md#getassignment) - Get Assignment
 * [getCategory](docs/sdks/lms/README.md#getcategory) - Get Category
 * [getCompletion](docs/sdks/lms/README.md#getcompletion) - Get Completion
@@ -683,8 +686,10 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`crmCreateContact`](docs/sdks/crm/README.md#createcontact) - Creates a new Contact
 - [`crmGetAccount`](docs/sdks/crm/README.md#getaccount) - Get Account
 - [`crmGetContact`](docs/sdks/crm/README.md#getcontact) - Get Contact
+- [`crmGetContactCustomFieldDefinition`](docs/sdks/crm/README.md#getcontactcustomfielddefinition) - Get Contact Custom Field Definition
 - [`crmGetList`](docs/sdks/crm/README.md#getlist) - Get List
 - [`crmListAccounts`](docs/sdks/crm/README.md#listaccounts) - List Accounts
+- [`crmListContactCustomFieldDefinitions`](docs/sdks/crm/README.md#listcontactcustomfielddefinitions) - List Contact Custom Field Definitions
 - [`crmListContacts`](docs/sdks/crm/README.md#listcontacts) - List Contacts
 - [`crmListLists`](docs/sdks/crm/README.md#listlists) - Get all Lists
 - [`crmUpdateContact`](docs/sdks/crm/README.md#updatecontact) - Update Contact (early access)
@@ -741,6 +746,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`lmsBatchUpsertContent`](docs/sdks/lms/README.md#batchupsertcontent) - Batch Upsert Content
 - [`lmsCreateContent`](docs/sdks/lms/README.md#createcontent) - Create Content
 - [`lmsCreateUserCompletion`](docs/sdks/lms/README.md#createusercompletion) - Create User Completion
+- [`lmsDeleteContent`](docs/sdks/lms/README.md#deletecontent) - Delete Content
 - [`lmsGetAssignment`](docs/sdks/lms/README.md#getassignment) - Get Assignment
 - [`lmsGetCategory`](docs/sdks/lms/README.md#getcategory) - Get Category
 - [`lmsGetCompletion`](docs/sdks/lms/README.md#getcompletion) - Get Completion

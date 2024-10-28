@@ -42,16 +42,15 @@ export type ContentSourceValue =
   | Array<any>;
 
 export enum ContentValue {
-  Video = "video",
-  Quiz = "quiz",
-  Document = "document",
+  Automatic = "automatic",
+  Browser = "browser",
 }
 export type ContentValueOpen = OpenEnum<typeof ContentValue>;
 
 /**
- * The type of content
+ * The content launch method associated with this content
  */
-export type ContentContentType = {
+export type ContentLaunchMethod = {
   sourceValue?:
     | Content4
     | string
@@ -63,6 +62,37 @@ export type ContentContentType = {
   value?: ContentValueOpen | null | undefined;
 };
 
+export type ContentSchemas4 = {};
+
+export type ContentSchemasSourceValue =
+  | ContentSchemas4
+  | string
+  | number
+  | boolean
+  | Array<any>;
+
+export enum ContentSchemasValue {
+  Video = "video",
+  Quiz = "quiz",
+  Document = "document",
+}
+export type ContentSchemasValueOpen = OpenEnum<typeof ContentSchemasValue>;
+
+/**
+ * The type of content
+ */
+export type ContentContentType = {
+  sourceValue?:
+    | ContentSchemas4
+    | string
+    | number
+    | boolean
+    | Array<any>
+    | null
+    | undefined;
+  value?: ContentSchemasValueOpen | null | undefined;
+};
+
 export type Content = {
   /**
    * Whether the content is active and available for users.
@@ -72,6 +102,10 @@ export type Content = {
    * The categories associated with this content
    */
   categories?: Array<Category> | null | undefined;
+  /**
+   * The content launch method associated with this content
+   */
+  contentLaunchMethod?: ContentLaunchMethod | null | undefined;
   /**
    * The type of content
    */
@@ -93,7 +127,7 @@ export type Content = {
    */
   description?: string | null | undefined;
   /**
-   * The duration of the content following the ISO8601 standard. If duration_unit is applicable we will derive this from the smallest unit given in the duration string
+   * The duration of the content following the ISO8601 standard. If duration_unit is applicable we will derive this from the smallest unit given in the duration string or the minimum unit accepted by the provider.
    */
   duration?: string | null | undefined;
   /**
@@ -286,8 +320,8 @@ export namespace ContentValue$ {
 }
 
 /** @internal */
-export const ContentContentType$inboundSchema: z.ZodType<
-  ContentContentType,
+export const ContentLaunchMethod$inboundSchema: z.ZodType<
+  ContentLaunchMethod,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -308,9 +342,188 @@ export const ContentContentType$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type ContentContentType$Outbound = {
+export type ContentLaunchMethod$Outbound = {
   source_value?:
     | Content4$Outbound
+    | string
+    | number
+    | boolean
+    | Array<any>
+    | null
+    | undefined;
+  value?: string | null | undefined;
+};
+
+/** @internal */
+export const ContentLaunchMethod$outboundSchema: z.ZodType<
+  ContentLaunchMethod$Outbound,
+  z.ZodTypeDef,
+  ContentLaunchMethod
+> = z.object({
+  sourceValue: z.nullable(
+    z.union([
+      z.lazy(() => Content4$outboundSchema),
+      z.string(),
+      z.number(),
+      z.boolean(),
+      z.array(z.any()),
+    ]),
+  ).optional(),
+  value: z.nullable(ContentValue$outboundSchema).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    sourceValue: "source_value",
+  });
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ContentLaunchMethod$ {
+  /** @deprecated use `ContentLaunchMethod$inboundSchema` instead. */
+  export const inboundSchema = ContentLaunchMethod$inboundSchema;
+  /** @deprecated use `ContentLaunchMethod$outboundSchema` instead. */
+  export const outboundSchema = ContentLaunchMethod$outboundSchema;
+  /** @deprecated use `ContentLaunchMethod$Outbound` instead. */
+  export type Outbound = ContentLaunchMethod$Outbound;
+}
+
+/** @internal */
+export const ContentSchemas4$inboundSchema: z.ZodType<
+  ContentSchemas4,
+  z.ZodTypeDef,
+  unknown
+> = z.object({});
+
+/** @internal */
+export type ContentSchemas4$Outbound = {};
+
+/** @internal */
+export const ContentSchemas4$outboundSchema: z.ZodType<
+  ContentSchemas4$Outbound,
+  z.ZodTypeDef,
+  ContentSchemas4
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ContentSchemas4$ {
+  /** @deprecated use `ContentSchemas4$inboundSchema` instead. */
+  export const inboundSchema = ContentSchemas4$inboundSchema;
+  /** @deprecated use `ContentSchemas4$outboundSchema` instead. */
+  export const outboundSchema = ContentSchemas4$outboundSchema;
+  /** @deprecated use `ContentSchemas4$Outbound` instead. */
+  export type Outbound = ContentSchemas4$Outbound;
+}
+
+/** @internal */
+export const ContentSchemasSourceValue$inboundSchema: z.ZodType<
+  ContentSchemasSourceValue,
+  z.ZodTypeDef,
+  unknown
+> = z.union([
+  z.lazy(() => ContentSchemas4$inboundSchema),
+  z.string(),
+  z.number(),
+  z.boolean(),
+  z.array(z.any()),
+]);
+
+/** @internal */
+export type ContentSchemasSourceValue$Outbound =
+  | ContentSchemas4$Outbound
+  | string
+  | number
+  | boolean
+  | Array<any>;
+
+/** @internal */
+export const ContentSchemasSourceValue$outboundSchema: z.ZodType<
+  ContentSchemasSourceValue$Outbound,
+  z.ZodTypeDef,
+  ContentSchemasSourceValue
+> = z.union([
+  z.lazy(() => ContentSchemas4$outboundSchema),
+  z.string(),
+  z.number(),
+  z.boolean(),
+  z.array(z.any()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ContentSchemasSourceValue$ {
+  /** @deprecated use `ContentSchemasSourceValue$inboundSchema` instead. */
+  export const inboundSchema = ContentSchemasSourceValue$inboundSchema;
+  /** @deprecated use `ContentSchemasSourceValue$outboundSchema` instead. */
+  export const outboundSchema = ContentSchemasSourceValue$outboundSchema;
+  /** @deprecated use `ContentSchemasSourceValue$Outbound` instead. */
+  export type Outbound = ContentSchemasSourceValue$Outbound;
+}
+
+/** @internal */
+export const ContentSchemasValue$inboundSchema: z.ZodType<
+  ContentSchemasValueOpen,
+  z.ZodTypeDef,
+  unknown
+> = z
+  .union([
+    z.nativeEnum(ContentSchemasValue),
+    z.string().transform(catchUnrecognizedEnum),
+  ]);
+
+/** @internal */
+export const ContentSchemasValue$outboundSchema: z.ZodType<
+  ContentSchemasValueOpen,
+  z.ZodTypeDef,
+  ContentSchemasValueOpen
+> = z.union([
+  z.nativeEnum(ContentSchemasValue),
+  z.string().and(z.custom<Unrecognized<string>>()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ContentSchemasValue$ {
+  /** @deprecated use `ContentSchemasValue$inboundSchema` instead. */
+  export const inboundSchema = ContentSchemasValue$inboundSchema;
+  /** @deprecated use `ContentSchemasValue$outboundSchema` instead. */
+  export const outboundSchema = ContentSchemasValue$outboundSchema;
+}
+
+/** @internal */
+export const ContentContentType$inboundSchema: z.ZodType<
+  ContentContentType,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  source_value: z.nullable(
+    z.union([
+      z.lazy(() => ContentSchemas4$inboundSchema),
+      z.string(),
+      z.number(),
+      z.boolean(),
+      z.array(z.any()),
+    ]),
+  ).optional(),
+  value: z.nullable(ContentSchemasValue$inboundSchema).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    "source_value": "sourceValue",
+  });
+});
+
+/** @internal */
+export type ContentContentType$Outbound = {
+  source_value?:
+    | ContentSchemas4$Outbound
     | string
     | number
     | boolean
@@ -328,14 +541,14 @@ export const ContentContentType$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => Content4$outboundSchema),
+      z.lazy(() => ContentSchemas4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
       z.array(z.any()),
     ]),
   ).optional(),
-  value: z.nullable(ContentValue$outboundSchema).optional(),
+  value: z.nullable(ContentSchemasValue$outboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {
     sourceValue: "source_value",
@@ -361,6 +574,9 @@ export const Content$inboundSchema: z.ZodType<Content, z.ZodTypeDef, unknown> =
     active: z.nullable(z.union([z.boolean(), Content2$inboundSchema]))
       .optional(),
     categories: z.nullable(z.array(Category$inboundSchema)).optional(),
+    content_launch_method: z.nullable(
+      z.lazy(() => ContentLaunchMethod$inboundSchema),
+    ).optional(),
     content_type: z.nullable(z.lazy(() => ContentContentType$inboundSchema))
       .optional(),
     content_url: z.nullable(z.string()).optional(),
@@ -379,6 +595,7 @@ export const Content$inboundSchema: z.ZodType<Content, z.ZodTypeDef, unknown> =
     unified_custom_fields: z.nullable(z.record(z.any())).optional(),
   }).transform((v) => {
     return remap$(v, {
+      "content_launch_method": "contentLaunchMethod",
       "content_type": "contentType",
       "content_url": "contentUrl",
       "course_ids": "courseIds",
@@ -394,6 +611,7 @@ export const Content$inboundSchema: z.ZodType<Content, z.ZodTypeDef, unknown> =
 export type Content$Outbound = {
   active?: boolean | string | null | undefined;
   categories?: Array<Category$Outbound> | null | undefined;
+  content_launch_method?: ContentLaunchMethod$Outbound | null | undefined;
   content_type?: ContentContentType$Outbound | null | undefined;
   content_url?: string | null | undefined;
   course_ids?: Array<string> | null | undefined;
@@ -419,6 +637,9 @@ export const Content$outboundSchema: z.ZodType<
   active: z.nullable(z.union([z.boolean(), Content2$outboundSchema]))
     .optional(),
   categories: z.nullable(z.array(Category$outboundSchema)).optional(),
+  contentLaunchMethod: z.nullable(
+    z.lazy(() => ContentLaunchMethod$outboundSchema),
+  ).optional(),
   contentType: z.nullable(z.lazy(() => ContentContentType$outboundSchema))
     .optional(),
   contentUrl: z.nullable(z.string()).optional(),
@@ -436,6 +657,7 @@ export const Content$outboundSchema: z.ZodType<
   unifiedCustomFields: z.nullable(z.record(z.any())).optional(),
 }).transform((v) => {
   return remap$(v, {
+    contentLaunchMethod: "content_launch_method",
     contentType: "content_type",
     contentUrl: "content_url",
     courseIds: "course_ids",

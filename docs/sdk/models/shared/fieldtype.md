@@ -7,7 +7,7 @@ The type of the field
 ```typescript
 import { FieldType } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: FieldType = FieldType.MultiSelect;
+let value: FieldType = FieldType.Boolean;
 ```
 
 ## Values

@@ -5,8 +5,10 @@
 import { crmCreateContact } from "../funcs/crmCreateContact.js";
 import { crmGetAccount } from "../funcs/crmGetAccount.js";
 import { crmGetContact } from "../funcs/crmGetContact.js";
+import { crmGetContactCustomFieldDefinition } from "../funcs/crmGetContactCustomFieldDefinition.js";
 import { crmGetList } from "../funcs/crmGetList.js";
 import { crmListAccounts } from "../funcs/crmListAccounts.js";
+import { crmListContactCustomFieldDefinitions } from "../funcs/crmListContactCustomFieldDefinitions.js";
 import { crmListContacts } from "../funcs/crmListContacts.js";
 import { crmListLists } from "../funcs/crmListLists.js";
 import { crmUpdateContact } from "../funcs/crmUpdateContact.js";
@@ -58,6 +60,20 @@ export class Crm extends ClientSDK {
   }
 
   /**
+   * Get Contact Custom Field Definition
+   */
+  async getContactCustomFieldDefinition(
+    request: operations.CrmGetContactCustomFieldDefinitionRequest,
+    options?: RequestOptions,
+  ): Promise<operations.CrmGetContactCustomFieldDefinitionResponse> {
+    return unwrapAsync(crmGetContactCustomFieldDefinition(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
    * Get List
    */
   async getList(
@@ -79,6 +95,20 @@ export class Crm extends ClientSDK {
     options?: RequestOptions,
   ): Promise<operations.CrmListAccountsResponse> {
     return unwrapAsync(crmListAccounts(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * List Contact Custom Field Definitions
+   */
+  async listContactCustomFieldDefinitions(
+    request: operations.CrmListContactCustomFieldDefinitionsRequest,
+    options?: RequestOptions,
+  ): Promise<operations.CrmListContactCustomFieldDefinitionsResponse> {
+    return unwrapAsync(crmListContactCustomFieldDefinitions(
       this,
       request,
       options,

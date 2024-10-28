@@ -6,7 +6,7 @@
 import { LmsCreateContentRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: LmsCreateContentRequestDtoValue =
-  LmsCreateContentRequestDtoValue.Document;
+  LmsCreateContentRequestDtoValue.Automatic;
 ```
 
 ## Values
@@ -15,7 +15,6 @@ This is an open enum. Unrecognized values will be captured as the `Unrecognized<
 
 | Name                   | Value                  |
 | ---------------------- | ---------------------- |
-| `Video`                | video                  |
-| `Quiz`                 | quiz                   |
-| `Document`             | document               |
+| `Automatic`            | automatic              |
+| `Browser`              | browser                |
 | -                      | `Unrecognized<string>` |

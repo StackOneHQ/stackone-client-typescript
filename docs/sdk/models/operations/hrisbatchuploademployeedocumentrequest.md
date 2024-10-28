@@ -16,7 +16,7 @@ let value: HrisBatchUploadEmployeeDocumentRequest = {
       {
         category: {
           sourceValue: "550e8400-e29b-41d4-a716-446655440000",
-          value: HrisDocumentsUploadRequestDtoValue.Signed,
+          value: HrisDocumentsUploadRequestDtoValue.Application,
         },
         categoryId: "6530",
         confidential: {

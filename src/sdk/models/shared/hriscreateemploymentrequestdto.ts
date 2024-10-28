@@ -281,6 +281,10 @@ export type HrisCreateEmploymentRequestDto = {
    */
   payRate?: string | null | undefined;
   /**
+   * The time worked for the employee in ISO 8601 duration format
+   */
+  timeWorked?: string | null | undefined;
+  /**
    * Custom Unified Fields configured in your StackOne project
    */
   unifiedCustomFields?: { [k: string]: any } | null | undefined;
@@ -1113,6 +1117,7 @@ export const HrisCreateEmploymentRequestDto$inboundSchema: z.ZodType<
     z.lazy(() => HrisCreateEmploymentRequestDtoPayPeriod$inboundSchema),
   ).optional(),
   pay_rate: z.nullable(z.string()).optional(),
+  time_worked: z.nullable(z.string()).optional(),
   unified_custom_fields: z.nullable(z.record(z.any())).optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -1125,6 +1130,7 @@ export const HrisCreateEmploymentRequestDto$inboundSchema: z.ZodType<
     "pay_frequency": "payFrequency",
     "pay_period": "payPeriod",
     "pay_rate": "payRate",
+    "time_worked": "timeWorked",
     "unified_custom_fields": "unifiedCustomFields",
   });
 });
@@ -1154,6 +1160,7 @@ export type HrisCreateEmploymentRequestDto$Outbound = {
     | null
     | undefined;
   pay_rate?: string | null | undefined;
+  time_worked?: string | null | undefined;
   unified_custom_fields?: { [k: string]: any } | null | undefined;
 };
 
@@ -1185,6 +1192,7 @@ export const HrisCreateEmploymentRequestDto$outboundSchema: z.ZodType<
     z.lazy(() => HrisCreateEmploymentRequestDtoPayPeriod$outboundSchema),
   ).optional(),
   payRate: z.nullable(z.string()).optional(),
+  timeWorked: z.nullable(z.string()).optional(),
   unifiedCustomFields: z.nullable(z.record(z.any())).optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -1197,6 +1205,7 @@ export const HrisCreateEmploymentRequestDto$outboundSchema: z.ZodType<
     payFrequency: "pay_frequency",
     payPeriod: "pay_period",
     payRate: "pay_rate",
+    timeWorked: "time_worked",
     unifiedCustomFields: "unified_custom_fields",
   });
 });

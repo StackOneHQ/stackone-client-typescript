@@ -8,6 +8,7 @@
 * [batchUpsertContent](#batchupsertcontent) - Batch Upsert Content
 * [createContent](#createcontent) - Create Content
 * [createUserCompletion](#createusercompletion) - Create User Completion
+* [deleteContent](#deletecontent) - Delete Content
 * [getAssignment](#getassignment) - Get Assignment
 * [getCategory](#getcategory) - Get Category
 * [getCompletion](#getcompletion) - Get Completion
@@ -62,6 +63,7 @@ async function run() {
               },
             },
           ],
+          contentLaunchMethod: {},
           contentUrl: "https://www.youtube.com/watch?v=16873",
           courseIds: [
             "16873-SOFTWARE-ENG-COURSE",
@@ -128,6 +130,7 @@ async function run() {
               },
             },
           ],
+          contentLaunchMethod: {},
           contentUrl: "https://www.youtube.com/watch?v=16873",
           courseIds: [
             "16873-SOFTWARE-ENG-COURSE",
@@ -216,6 +219,7 @@ async function run() {
           },
         },
       ],
+      contentLaunchMethod: {},
       contentUrl: "https://www.youtube.com/watch?v=16873",
       courseIds: [
         "16873-SOFTWARE-ENG-COURSE",
@@ -278,6 +282,7 @@ async function run() {
           },
         },
       ],
+      contentLaunchMethod: {},
       contentUrl: "https://www.youtube.com/watch?v=16873",
       courseIds: [
         "16873-SOFTWARE-ENG-COURSE",
@@ -428,6 +433,90 @@ run();
 ### Response
 
 **Promise\<[operations.LmsCreateUserCompletionResponse](../../sdk/models/operations/lmscreateusercompletionresponse.md)\>**
+
+### Errors
+
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |
+
+## deleteContent
+
+Delete Content
+
+### Example Usage
+
+```typescript
+import { StackOne } from "@stackone/stackone-client-ts";
+
+const stackOne = new StackOne({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const result = await stackOne.lms.deleteContent({
+    id: "<id>",
+    xAccountId: "<id>",
+  });
+
+  // Handle the result
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
+import { lmsDeleteContent } from "@stackone/stackone-client-ts/funcs/lmsDeleteContent.js";
+
+// Use `StackOneCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const stackOne = new StackOneCore({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const res = await lmsDeleteContent(stackOne, {
+    id: "<id>",
+    xAccountId: "<id>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.LmsDeleteContentRequest](../../sdk/models/operations/lmsdeletecontentrequest.md)                                                                                   | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[operations.LmsDeleteContentResponse](../../sdk/models/operations/lmsdeletecontentresponse.md)\>**
 
 ### Errors
 
@@ -707,7 +796,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.lms.getContent({
-    fields: "id,remote_id,external_reference,course_ids,remote_course_ids,title,description,languages,content_url,content_type,cover_url,active,duration,categories,order",
+    fields: "id,remote_id,external_reference,course_ids,remote_course_ids,title,description,languages,content_url,content_type,cover_url,active,duration,categories,order,content_launch_method",
     id: "<id>",
     xAccountId: "<value>",
   });
@@ -738,7 +827,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await lmsGetContent(stackOne, {
-    fields: "id,remote_id,external_reference,course_ids,remote_course_ids,title,description,languages,content_url,content_type,cover_url,active,duration,categories,order",
+    fields: "id,remote_id,external_reference,course_ids,remote_course_ids,title,description,languages,content_url,content_type,cover_url,active,duration,categories,order,content_launch_method",
     id: "<id>",
     xAccountId: "<value>",
   });
@@ -1223,13 +1312,11 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.lms.listAssignments({
-    fields: "id,remote_id,user_id,remote_user_id,course_id,remote_course_id,updated_at,created_at,due_date,status",
+    fields: "id,remote_id,user_id,remote_user_id,course_id,remote_course_id,updated_at,created_at,due_date,status,progress,learning_object_type,learning_object_id,remote_learning_object_id,learning_object_external_reference",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    remoteUserId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
     updatedAfter: "2020-01-01T00:00:00.000Z",
-    userId: "c28xyrc55866bvuv",
     xAccountId: "<value>",
   });
 
@@ -1259,13 +1346,11 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await lmsListAssignments(stackOne, {
-    fields: "id,remote_id,user_id,remote_user_id,course_id,remote_course_id,updated_at,created_at,due_date,status",
+    fields: "id,remote_id,user_id,remote_user_id,course_id,remote_course_id,updated_at,created_at,due_date,status,progress,learning_object_type,learning_object_id,remote_learning_object_id,learning_object_external_reference",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
-    remoteUserId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
     updatedAfter: "2020-01-01T00:00:00.000Z",
-    userId: "c28xyrc55866bvuv",
     xAccountId: "<value>",
   });
 
@@ -1503,7 +1588,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.lms.listContent({
-    fields: "id,remote_id,external_reference,course_ids,remote_course_ids,title,description,languages,content_url,content_type,cover_url,active,duration,categories,order",
+    fields: "id,remote_id,external_reference,course_ids,remote_course_ids,title,description,languages,content_url,content_type,cover_url,active,duration,categories,order,content_launch_method",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
@@ -1537,7 +1622,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await lmsListContent(stackOne, {
-    fields: "id,remote_id,external_reference,course_ids,remote_course_ids,title,description,languages,content_url,content_type,cover_url,active,duration,categories,order",
+    fields: "id,remote_id,external_reference,course_ids,remote_course_ids,title,description,languages,content_url,content_type,cover_url,active,duration,categories,order,content_launch_method",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
@@ -1779,14 +1864,12 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.lms.listUserAssignments({
-    fields: "id,remote_id,user_id,remote_user_id,course_id,remote_course_id,updated_at,created_at,due_date,status",
+    fields: "id,remote_id,user_id,remote_user_id,course_id,remote_course_id,updated_at,created_at,due_date,status,progress,learning_object_type,learning_object_id,remote_learning_object_id,learning_object_external_reference",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
     id: "<id>",
-    remoteUserId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
     updatedAfter: "2020-01-01T00:00:00.000Z",
-    userId: "c28xyrc55866bvuv",
     xAccountId: "<value>",
   });
 
@@ -1816,14 +1899,12 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await lmsListUserAssignments(stackOne, {
-    fields: "id,remote_id,user_id,remote_user_id,course_id,remote_course_id,updated_at,created_at,due_date,status",
+    fields: "id,remote_id,user_id,remote_user_id,course_id,remote_course_id,updated_at,created_at,due_date,status,progress,learning_object_type,learning_object_id,remote_learning_object_id,learning_object_external_reference",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
     id: "<id>",
-    remoteUserId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
     updatedAfter: "2020-01-01T00:00:00.000Z",
-    userId: "c28xyrc55866bvuv",
     xAccountId: "<value>",
   });
 
@@ -2076,6 +2157,7 @@ async function run() {
           },
         },
       ],
+      contentLaunchMethod: {},
       contentUrl: "https://www.youtube.com/watch?v=16873",
       courseIds: [
         "16873-SOFTWARE-ENG-COURSE",
@@ -2139,6 +2221,7 @@ async function run() {
           },
         },
       ],
+      contentLaunchMethod: {},
       contentUrl: "https://www.youtube.com/watch?v=16873",
       courseIds: [
         "16873-SOFTWARE-ENG-COURSE",
@@ -2226,6 +2309,7 @@ async function run() {
           },
         },
       ],
+      contentLaunchMethod: {},
       contentUrl: "https://www.youtube.com/watch?v=16873",
       courseIds: [
         "16873-SOFTWARE-ENG-COURSE",
@@ -2288,6 +2372,7 @@ async function run() {
           },
         },
       ],
+      contentLaunchMethod: {},
       contentUrl: "https://www.youtube.com/watch?v=16873",
       courseIds: [
         "16873-SOFTWARE-ENG-COURSE",

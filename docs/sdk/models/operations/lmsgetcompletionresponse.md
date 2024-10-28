@@ -29,7 +29,7 @@ let value: LmsGetCompletionResponse = {
     },
   },
   contentType: "<value>",
-  statusCode: 226,
+  statusCode: 428,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

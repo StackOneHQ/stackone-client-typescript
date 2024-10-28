@@ -1266,6 +1266,7 @@ export enum HrisCreateWorkEligibilityRequestDtoSchemasDocumentValue {
   Movie = "movie",
   Smv = "smv",
   Ice = "ice",
+  Mht = "mht",
 }
 /**
  * The file format of the file, expressed as a file extension

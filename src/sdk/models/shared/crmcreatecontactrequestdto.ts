@@ -4,6 +4,12 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import {
+  ContactsCustomFields,
+  ContactsCustomFields$inboundSchema,
+  ContactsCustomFields$Outbound,
+  ContactsCustomFields$outboundSchema,
+} from "./contactscustomfields.js";
 
 export type CrmCreateContactRequestDto = {
   /**
@@ -14,6 +20,10 @@ export type CrmCreateContactRequestDto = {
    * The contact company name
    */
   companyName?: string | null | undefined;
+  /**
+   * Contact custom fields
+   */
+  customFields?: Array<ContactsCustomFields> | null | undefined;
   /**
    * List of associated deal IDs
    */
@@ -48,6 +58,8 @@ export const CrmCreateContactRequestDto$inboundSchema: z.ZodType<
 > = z.object({
   account_ids: z.nullable(z.array(z.string())).optional(),
   company_name: z.nullable(z.string()).optional(),
+  custom_fields: z.nullable(z.array(ContactsCustomFields$inboundSchema))
+    .optional(),
   deal_ids: z.nullable(z.array(z.string())).optional(),
   emails: z.nullable(z.array(z.string())).optional(),
   first_name: z.nullable(z.string()).optional(),
@@ -58,6 +70,7 @@ export const CrmCreateContactRequestDto$inboundSchema: z.ZodType<
   return remap$(v, {
     "account_ids": "accountIds",
     "company_name": "companyName",
+    "custom_fields": "customFields",
     "deal_ids": "dealIds",
     "first_name": "firstName",
     "last_name": "lastName",
@@ -69,6 +82,7 @@ export const CrmCreateContactRequestDto$inboundSchema: z.ZodType<
 export type CrmCreateContactRequestDto$Outbound = {
   account_ids?: Array<string> | null | undefined;
   company_name?: string | null | undefined;
+  custom_fields?: Array<ContactsCustomFields$Outbound> | null | undefined;
   deal_ids?: Array<string> | null | undefined;
   emails?: Array<string> | null | undefined;
   first_name?: string | null | undefined;
@@ -85,6 +99,8 @@ export const CrmCreateContactRequestDto$outboundSchema: z.ZodType<
 > = z.object({
   accountIds: z.nullable(z.array(z.string())).optional(),
   companyName: z.nullable(z.string()).optional(),
+  customFields: z.nullable(z.array(ContactsCustomFields$outboundSchema))
+    .optional(),
   dealIds: z.nullable(z.array(z.string())).optional(),
   emails: z.nullable(z.array(z.string())).optional(),
   firstName: z.nullable(z.string()).optional(),
@@ -95,6 +111,7 @@ export const CrmCreateContactRequestDto$outboundSchema: z.ZodType<
   return remap$(v, {
     accountIds: "account_ids",
     companyName: "company_name",
+    customFields: "custom_fields",
     dealIds: "deal_ids",
     firstName: "first_name",
     lastName: "last_name",
