@@ -21,3 +21,5 @@ targets:
                 token: $NPM_TOKEN
         codeSamples:
             output: codeSamples.yaml
+            registry:
+                location: registry.speakeasyapi.dev/stackone/stackone/code-samples-typescript-stackonetypescriptclient
