@@ -9,7 +9,7 @@ import { ContentBlockSchemasValue, ContentBlockType } from "@stackone/stackone-c
 
 let value: ContentBlockType = {
   sourceValue: "text",
-  value: ContentBlockSchemasValue.Text,
+  value: ContentBlockSchemasValue.Html,
 };
 ```
 
@@ -18,4 +18,4 @@ let value: ContentBlockType = {
 | Field                                                                                     | Type                                                                                      | Required                                                                                  | Description                                                                               | Example                                                                                   |
 | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
 | `sourceValue`                                                                             | *shared.ContentBlockSchemasSourceValue*                                                   | :heavy_minus_sign:                                                                        | The source value of the type.                                                             | text                                                                                      |
-| `value`                                                                                   | [shared.ContentBlockSchemasValue](../../../sdk/models/shared/contentblockschemasvalue.md) | :heavy_minus_sign:                                                                        | The type of the content blocks.                                                           | email                                                                                     |
+| `value`                                                                                   | [shared.ContentBlockSchemasValue](../../../sdk/models/shared/contentblockschemasvalue.md) | :heavy_minus_sign:                                                                        | The type of the content blocks.                                                           | html                                                                                      |

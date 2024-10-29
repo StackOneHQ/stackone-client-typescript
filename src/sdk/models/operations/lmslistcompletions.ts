@@ -7,9 +7,13 @@ import { remap as remap$ } from "../../../lib/primitives.js";
 import * as shared from "../shared/index.js";
 
 /**
- * Filter parameters that allow greater customisation of the list response
+ * LMS Completions Filter
  */
 export type LmsListCompletionsQueryParamFilter = {
+  /**
+   * Filter to select completions by learning object type.
+   */
+  learningObjectType?: string | null | undefined;
   /**
    * Use a string with a date to only select results updated after that given date
    */
@@ -22,7 +26,7 @@ export type LmsListCompletionsRequest = {
    */
   fields?: string | null | undefined;
   /**
-   * Filter parameters that allow greater customisation of the list response
+   * LMS Completions Filter
    */
   filter?: LmsListCompletionsQueryParamFilter | null | undefined;
   /**
@@ -84,15 +88,18 @@ export const LmsListCompletionsQueryParamFilter$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  learning_object_type: z.nullable(z.string()).optional(),
   updated_after: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
+    "learning_object_type": "learningObjectType",
     "updated_after": "updatedAfter",
   });
 });
 
 /** @internal */
 export type LmsListCompletionsQueryParamFilter$Outbound = {
+  learning_object_type?: string | null | undefined;
   updated_after?: string | null | undefined;
 };
 
@@ -102,9 +109,11 @@ export const LmsListCompletionsQueryParamFilter$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   LmsListCompletionsQueryParamFilter
 > = z.object({
+  learningObjectType: z.nullable(z.string()).optional(),
   updatedAfter: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
+    learningObjectType: "learning_object_type",
     updatedAfter: "updated_after",
   });
 });

@@ -1,13 +1,14 @@
-# ContentBlockSchemasValue
+# MarketingCreateContentBlocksRequestDtoValue
 
 The type of the content blocks.
 
 ## Example Usage
 
 ```typescript
-import { ContentBlockSchemasValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { MarketingCreateContentBlocksRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: ContentBlockSchemasValue = ContentBlockSchemasValue.Html;
+let value: MarketingCreateContentBlocksRequestDtoValue =
+  MarketingCreateContentBlocksRequestDtoValue.Html;
 ```
 
 ## Values

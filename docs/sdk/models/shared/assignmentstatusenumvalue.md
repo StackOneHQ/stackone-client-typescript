@@ -5,7 +5,7 @@
 ```typescript
 import { AssignmentStatusEnumValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: AssignmentStatusEnumValue = AssignmentStatusEnumValue.Pending;
+let value: AssignmentStatusEnumValue = AssignmentStatusEnumValue.Completed;
 ```
 
 ## Values

@@ -22,7 +22,7 @@ export type LearningObjectTypeEnumSourceValue =
 export enum LearningObjectTypeEnumValue {
   Content = "content",
   Course = "course",
-  LearningPath = "learning_path",
+  Collection = "collection",
 }
 export type LearningObjectTypeEnumValueOpen = OpenEnum<
   typeof LearningObjectTypeEnumValue

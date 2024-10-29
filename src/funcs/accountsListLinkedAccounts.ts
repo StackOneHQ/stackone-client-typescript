@@ -61,6 +61,7 @@ export async function accountsListLinkedAccounts(
     "page_size": payload.page_size,
     "provider": payload.provider,
     "providers": payload.providers,
+    "status": payload.status,
   });
 
   const headers = new Headers({

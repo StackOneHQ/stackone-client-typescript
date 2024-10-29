@@ -14,7 +14,6 @@ import {
   JobPostingSchemasValue,
   JobPostingsPaginated,
   JobPostingValue,
-  Question2,
   QuestionValue,
 } from "@stackone/stackone-client-ts/sdk/models/shared";
 
@@ -132,7 +131,7 @@ let value: JobPostingsPaginated = {
                 },
               ],
               remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-              required: Question2.True,
+              required: false,
               text: "What are your hobbies?",
               type: {
                 sourceValue: "ShortText",

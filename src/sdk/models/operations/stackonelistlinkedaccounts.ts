@@ -33,6 +33,10 @@ export type StackoneListLinkedAccountsRequest = {
    * The providers list of the results to fetch
    */
   providers?: Array<string> | undefined;
+  /**
+   * The status of the results to fetch
+   */
+  status?: Array<string> | undefined;
 };
 
 export type StackoneListLinkedAccountsResponse = {
@@ -66,6 +70,7 @@ export const StackoneListLinkedAccountsRequest$inboundSchema: z.ZodType<
   page_size: z.nullable(z.number().default(25)),
   provider: z.nullable(z.string()).optional(),
   providers: z.array(z.string()).optional(),
+  status: z.array(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
     "account_ids": "accountIds",
@@ -82,6 +87,7 @@ export type StackoneListLinkedAccountsRequest$Outbound = {
   page_size: number | null;
   provider?: string | null | undefined;
   providers?: Array<string> | undefined;
+  status?: Array<string> | undefined;
 };
 
 /** @internal */
@@ -96,6 +102,7 @@ export const StackoneListLinkedAccountsRequest$outboundSchema: z.ZodType<
   pageSize: z.nullable(z.number().default(25)),
   provider: z.nullable(z.string()).optional(),
   providers: z.array(z.string()).optional(),
+  status: z.array(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
     accountIds: "account_ids",

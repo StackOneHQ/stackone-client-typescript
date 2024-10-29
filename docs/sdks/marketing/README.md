@@ -40,6 +40,7 @@ Create Content Block
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
+import { MarketingCreateContentBlocksRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 const stackOne = new StackOne({
   security: {
@@ -53,6 +54,10 @@ async function run() {
     marketingCreateContentBlocksRequestDto: {
       passthrough: {
         "other_known_names": "John Doe",
+      },
+      type: {
+        sourceValue: "text",
+        value: MarketingCreateContentBlocksRequestDtoValue.Html,
       },
     },
     xAccountId: "<value>",
@@ -72,6 +77,7 @@ The standalone function version of this method:
 ```typescript
 import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
 import { marketingCreateContentBlock } from "@stackone/stackone-client-ts/funcs/marketingCreateContentBlock.js";
+import { MarketingCreateContentBlocksRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 // Use `StackOneCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -87,6 +93,10 @@ async function run() {
     marketingCreateContentBlocksRequestDto: {
       passthrough: {
         "other_known_names": "John Doe",
+      },
+      type: {
+        sourceValue: "text",
+        value: MarketingCreateContentBlocksRequestDtoValue.Html,
       },
     },
     xAccountId: "<value>",
@@ -1932,6 +1942,7 @@ Update Content Block
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
+import { MarketingCreateContentBlocksRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 const stackOne = new StackOne({
   security: {
@@ -1945,6 +1956,10 @@ async function run() {
     marketingCreateContentBlocksRequestDto: {
       passthrough: {
         "other_known_names": "John Doe",
+      },
+      type: {
+        sourceValue: "text",
+        value: MarketingCreateContentBlocksRequestDtoValue.Html,
       },
     },
     id: "<id>",
@@ -1965,6 +1980,7 @@ The standalone function version of this method:
 ```typescript
 import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
 import { marketingUpdateContentBlock } from "@stackone/stackone-client-ts/funcs/marketingUpdateContentBlock.js";
+import { MarketingCreateContentBlocksRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 // Use `StackOneCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -1980,6 +1996,10 @@ async function run() {
     marketingCreateContentBlocksRequestDto: {
       passthrough: {
         "other_known_names": "John Doe",
+      },
+      type: {
+        sourceValue: "text",
+        value: MarketingCreateContentBlocksRequestDtoValue.Html,
       },
     },
     id: "<id>",

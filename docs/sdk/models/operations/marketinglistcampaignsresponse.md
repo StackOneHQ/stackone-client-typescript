@@ -71,14 +71,14 @@ let value: MarketingListCampaignsResponse = {
         },
         status: {
           sourceValue: "Email",
-          value: CampaignSchemasValue.Archived,
+          value: CampaignSchemasValue.Draft,
         },
         updatedAt: new Date("2021-01-01T01:01:01.000Z"),
       },
     ],
   },
   contentType: "<value>",
-  statusCode: 103,
+  statusCode: 300,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

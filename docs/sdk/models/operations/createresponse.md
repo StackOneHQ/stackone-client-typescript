@@ -7,7 +7,7 @@ import { CreateResponse } from "@stackone/stackone-client-ts/sdk/models/operatio
 
 let value: CreateResponse = {
   contentType: "<value>",
-  statusCode: 406,
+  statusCode: 207,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),
