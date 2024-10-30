@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 7fa83af8-9e8e-4410-b7e2-cf1d0eaf688b
 management:
-  docChecksum: 3612d408934b9e1d5d1402e6429d74da
+  docChecksum: 24dad0cc6e424dd123c89605928b9e25
   docVersion: 1.0.0
-  speakeasyVersion: 1.422.1
-  generationVersion: 2.438.15
-  releaseVersion: 4.16.4
-  configChecksum: 6bdcc4975923ee8a3285a6d8bc0a2b2e
+  speakeasyVersion: 1.423.1
+  generationVersion: 2.442.11
+  releaseVersion: 4.16.5
+  configChecksum: 08b623ca5e6b15809f0a0d668c7e6e81
   repoURL: https://github.com/StackOneHQ/stackone-client-typescript.git
   repoSubDirectory: .
   installationURL: https://github.com/StackOneHQ/stackone-client-typescript
@@ -1148,6 +1148,10 @@ generatedFiles:
   - docs/sdk/models/shared/locationtype.md
   - docs/sdk/models/shared/maritalstatus.md
   - docs/sdk/models/shared/marketingcreatecontentblocksrequestdto.md
+  - docs/sdk/models/shared/marketingcreatecontentblocksrequestdto4.md
+  - docs/sdk/models/shared/marketingcreatecontentblocksrequestdtosourcevalue.md
+  - docs/sdk/models/shared/marketingcreatecontentblocksrequestdtotype.md
+  - docs/sdk/models/shared/marketingcreatecontentblocksrequestdtovalue.md
   - docs/sdk/models/shared/marketingcreateemailtemplaterequestdto.md
   - docs/sdk/models/shared/marketingcreateinapptemplaterequestdto.md
   - docs/sdk/models/shared/marketingcreatepushtemplaterequestdto.md
@@ -3552,7 +3556,7 @@ examples:
     "":
       parameters:
         query:
-          fields: "id,remote_id,external_id,remote_external_id,content_id,remote_content_id,course_id,remote_course_id,user_id,remote_user_id,completed_at,updated_at,created_at,result,content_external_reference"
+          fields: "id,remote_id,external_id,remote_external_id,content_id,remote_content_id,course_id,remote_course_id,user_id,remote_user_id,completed_at,updated_at,created_at,result,content_external_reference,learning_object_type,learning_object_id,remote_learning_object_id,learning_object_external_reference"
           filter: {"updated_after": "2020-01-01T00:00:00.000Z"}
           updated_after: "2020-01-01T00:00:00.000Z"
           user_id: "746359"
@@ -3620,7 +3624,7 @@ examples:
         path:
           id: "<id>"
         query:
-          fields: "id,remote_id,external_id,remote_external_id,content_id,remote_content_id,course_id,remote_course_id,user_id,remote_user_id,completed_at,updated_at,created_at,result,content_external_reference"
+          fields: "id,remote_id,external_id,remote_external_id,content_id,remote_content_id,course_id,remote_course_id,user_id,remote_user_id,completed_at,updated_at,created_at,result,content_external_reference,learning_object_type,learning_object_id,remote_learning_object_id,learning_object_external_reference"
           filter: {"updated_after": "2020-01-01T00:00:00.000Z"}
           updated_after: "2020-01-01T00:00:00.000Z"
           user_id: "746359"
@@ -3670,7 +3674,7 @@ examples:
         header:
           x-account-id: "<value>"
       requestBody:
-        application/json: {"passthrough": {"other_known_names": "John Doe"}}
+        application/json: {"passthrough": {"other_known_names": "John Doe"}, "type": {"source_value": "text", "value": "html"}}
       responses:
         "201":
           application/json: {"data": {"external_reference": "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1", "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}, "message": "Record created successfully.", "statusCode": 201, "timestamp": "2021-01-01T01:01:01.000Z"}
@@ -3900,7 +3904,7 @@ examples:
         header:
           x-account-id: "<value>"
       requestBody:
-        application/json: {"passthrough": {"other_known_names": "John Doe"}}
+        application/json: {"passthrough": {"other_known_names": "John Doe"}, "type": {"source_value": "text", "value": "html"}}
       responses:
         "200":
           application/json: {"data": {"external_reference": "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1", "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}, "message": "Record created successfully.", "statusCode": 201, "timestamp": "2021-01-01T01:01:01.000Z"}

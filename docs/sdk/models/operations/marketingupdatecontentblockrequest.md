@@ -4,11 +4,16 @@
 
 ```typescript
 import { MarketingUpdateContentBlockRequest } from "@stackone/stackone-client-ts/sdk/models/operations";
+import { MarketingCreateContentBlocksRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: MarketingUpdateContentBlockRequest = {
   marketingCreateContentBlocksRequestDto: {
     passthrough: {
       "other_known_names": "John Doe",
+    },
+    type: {
+      sourceValue: "text",
+      value: MarketingCreateContentBlocksRequestDtoValue.Html,
     },
   },
   id: "<id>",

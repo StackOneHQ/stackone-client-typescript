@@ -1316,7 +1316,9 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
+    remoteUserId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
     updatedAfter: "2020-01-01T00:00:00.000Z",
+    userId: "c28xyrc55866bvuv",
     xAccountId: "<value>",
   });
 
@@ -1350,7 +1352,9 @@ async function run() {
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
+    remoteUserId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
     updatedAfter: "2020-01-01T00:00:00.000Z",
+    userId: "c28xyrc55866bvuv",
     xAccountId: "<value>",
   });
 
@@ -1496,7 +1500,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.lms.listCompletions({
-    fields: "id,remote_id,external_id,remote_external_id,content_id,remote_content_id,course_id,remote_course_id,user_id,remote_user_id,completed_at,updated_at,created_at,result,content_external_reference",
+    fields: "id,remote_id,external_id,remote_external_id,content_id,remote_content_id,course_id,remote_course_id,user_id,remote_user_id,completed_at,updated_at,created_at,result,content_external_reference,learning_object_type,learning_object_id,remote_learning_object_id,learning_object_external_reference",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
@@ -1530,7 +1534,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await lmsListCompletions(stackOne, {
-    fields: "id,remote_id,external_id,remote_external_id,content_id,remote_content_id,course_id,remote_course_id,user_id,remote_user_id,completed_at,updated_at,created_at,result,content_external_reference",
+    fields: "id,remote_id,external_id,remote_external_id,content_id,remote_content_id,course_id,remote_course_id,user_id,remote_user_id,completed_at,updated_at,created_at,result,content_external_reference,learning_object_type,learning_object_id,remote_learning_object_id,learning_object_external_reference",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
@@ -1869,7 +1873,9 @@ async function run() {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
     id: "<id>",
+    remoteUserId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
     updatedAfter: "2020-01-01T00:00:00.000Z",
+    userId: "c28xyrc55866bvuv",
     xAccountId: "<value>",
   });
 
@@ -1904,7 +1910,9 @@ async function run() {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
     id: "<id>",
+    remoteUserId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
     updatedAfter: "2020-01-01T00:00:00.000Z",
+    userId: "c28xyrc55866bvuv",
     xAccountId: "<value>",
   });
 
@@ -1958,7 +1966,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.lms.listUserCompletions({
-    fields: "id,remote_id,external_id,remote_external_id,content_id,remote_content_id,course_id,remote_course_id,user_id,remote_user_id,completed_at,updated_at,created_at,result,content_external_reference",
+    fields: "id,remote_id,external_id,remote_external_id,content_id,remote_content_id,course_id,remote_course_id,user_id,remote_user_id,completed_at,updated_at,created_at,result,content_external_reference,learning_object_type,learning_object_id,remote_learning_object_id,learning_object_external_reference",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
@@ -1993,7 +2001,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await lmsListUserCompletions(stackOne, {
-    fields: "id,remote_id,external_id,remote_external_id,content_id,remote_content_id,course_id,remote_course_id,user_id,remote_user_id,completed_at,updated_at,created_at,result,content_external_reference",
+    fields: "id,remote_id,external_id,remote_external_id,content_id,remote_content_id,course_id,remote_course_id,user_id,remote_user_id,completed_at,updated_at,created_at,result,content_external_reference,learning_object_type,learning_object_id,remote_learning_object_id,learning_object_external_reference",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
