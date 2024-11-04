@@ -78,6 +78,14 @@ async function run() {
             },
           ],
           order: 1,
+          skills: [
+            {
+              active: true,
+              id: "12345",
+              name: "Sales Techniques",
+              remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+            },
+          ],
           title: "Software Engineer Lv 1",
           unifiedCustomFields: {
             "my_project_custom_field_1": "REF-1236",
@@ -145,6 +153,14 @@ async function run() {
             },
           ],
           order: 1,
+          skills: [
+            {
+              active: true,
+              id: "12345",
+              name: "Sales Techniques",
+              remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+            },
+          ],
           title: "Software Engineer Lv 1",
           unifiedCustomFields: {
             "my_project_custom_field_1": "REF-1236",
@@ -234,6 +250,14 @@ async function run() {
         },
       ],
       order: 1,
+      skills: [
+        {
+          active: true,
+          id: "16873-IT345",
+          name: "Information-Technology",
+          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        },
+      ],
       title: "Software Engineer Lv 1",
       unifiedCustomFields: {
         "my_project_custom_field_1": "REF-1236",
@@ -297,6 +321,14 @@ async function run() {
         },
       ],
       order: 1,
+      skills: [
+        {
+          active: true,
+          id: "16873-IT345",
+          name: "Information-Technology",
+          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        },
+      ],
       title: "Software Engineer Lv 1",
       unifiedCustomFields: {
         "my_project_custom_field_1": "REF-1236",
@@ -796,7 +828,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.lms.getContent({
-    fields: "id,remote_id,external_reference,course_ids,remote_course_ids,title,description,languages,content_url,content_type,cover_url,active,duration,categories,order,content_launch_method",
+    fields: "id,remote_id,external_reference,course_ids,remote_course_ids,title,description,languages,content_url,content_type,cover_url,active,duration,categories,skills,order,content_launch_method,updated_at,created_at",
     id: "<id>",
     xAccountId: "<value>",
   });
@@ -827,7 +859,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await lmsGetContent(stackOne, {
-    fields: "id,remote_id,external_reference,course_ids,remote_course_ids,title,description,languages,content_url,content_type,cover_url,active,duration,categories,order,content_launch_method",
+    fields: "id,remote_id,external_reference,course_ids,remote_course_ids,title,description,languages,content_url,content_type,cover_url,active,duration,categories,skills,order,content_launch_method,updated_at,created_at",
     id: "<id>",
     xAccountId: "<value>",
   });
@@ -1592,7 +1624,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.lms.listContent({
-    fields: "id,remote_id,external_reference,course_ids,remote_course_ids,title,description,languages,content_url,content_type,cover_url,active,duration,categories,order,content_launch_method",
+    fields: "id,remote_id,external_reference,course_ids,remote_course_ids,title,description,languages,content_url,content_type,cover_url,active,duration,categories,skills,order,content_launch_method,updated_at,created_at",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
@@ -1626,7 +1658,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await lmsListContent(stackOne, {
-    fields: "id,remote_id,external_reference,course_ids,remote_course_ids,title,description,languages,content_url,content_type,cover_url,active,duration,categories,order,content_launch_method",
+    fields: "id,remote_id,external_reference,course_ids,remote_course_ids,title,description,languages,content_url,content_type,cover_url,active,duration,categories,skills,order,content_launch_method,updated_at,created_at",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
@@ -2180,6 +2212,14 @@ async function run() {
         },
       ],
       order: 1,
+      skills: [
+        {
+          active: true,
+          id: "16873-IT345",
+          name: "Information-Technology",
+          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        },
+      ],
       title: "Software Engineer Lv 1",
       unifiedCustomFields: {
         "my_project_custom_field_1": "REF-1236",
@@ -2244,6 +2284,14 @@ async function run() {
         },
       ],
       order: 1,
+      skills: [
+        {
+          active: true,
+          id: "16873-IT345",
+          name: "Information-Technology",
+          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        },
+      ],
       title: "Software Engineer Lv 1",
       unifiedCustomFields: {
         "my_project_custom_field_1": "REF-1236",
@@ -2332,6 +2380,14 @@ async function run() {
         },
       ],
       order: 1,
+      skills: [
+        {
+          active: true,
+          id: "16873-IT345",
+          name: "Information-Technology",
+          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        },
+      ],
       title: "Software Engineer Lv 1",
       unifiedCustomFields: {
         "my_project_custom_field_1": "REF-1236",
@@ -2395,6 +2451,14 @@ async function run() {
         },
       ],
       order: 1,
+      skills: [
+        {
+          active: true,
+          id: "16873-IT345",
+          name: "Information-Technology",
+          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        },
+      ],
       title: "Software Engineer Lv 1",
       unifiedCustomFields: {
         "my_project_custom_field_1": "REF-1236",

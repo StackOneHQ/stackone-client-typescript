@@ -46,6 +46,14 @@ let value: LmsListContentResponse = {
           "e3cb75bf-aa84-466e-a6c1-b8322b257a49",
         ],
         remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        skills: [
+          {
+            active: true,
+            id: "12345",
+            name: "Sales Techniques",
+            remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          },
+        ],
         title: "Software Engineer Lv 1",
         unifiedCustomFields: {
           "my_project_custom_field_1": "REF-1236",

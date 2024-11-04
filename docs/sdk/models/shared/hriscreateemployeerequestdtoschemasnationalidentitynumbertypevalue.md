@@ -22,6 +22,7 @@ This is an open enum. Unrecognized values will be captured as the `Unrecognized<
 | `Sin`                  | sin                    |
 | `Nid`                  | nid                    |
 | `Pin`                  | pin                    |
+| `Pn`                   | pn                     |
 | `Umcn`                 | umcn                   |
 | `Pic`                  | pic                    |
 | `Ric`                  | ric                    |
@@ -32,6 +33,7 @@ This is an open enum. Unrecognized values will be captured as the `Unrecognized<
 | `Aadhaar`              | aadhaar                |
 | `Epic`                 | epic                   |
 | `Ptn`                  | ptn                    |
+| `Itin`                 | itin                   |
 | `Tin`                  | tin                    |
 | `Uprc`                 | uprc                   |
 | `Pcode`                | pcode                  |

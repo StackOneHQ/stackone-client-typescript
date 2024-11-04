@@ -1,4 +1,4 @@
-# LearningObjectTypeEnumSourceValue
+# CompletionSchemasSourceValue
 
 
 ## Supported Types
@@ -12,7 +12,7 @@ const value: string = "<value>";
 ### `number`
 
 ```typescript
-const value: number = 894.95;
+const value: number = 1157.03;
 ```
 
 ### `boolean`
@@ -21,10 +21,10 @@ const value: number = 894.95;
 const value: boolean = false;
 ```
 
-### `shared.LearningObjectTypeEnum4`
+### `shared.CompletionSchemas4`
 
 ```typescript
-const value: shared.LearningObjectTypeEnum4 = {};
+const value: shared.CompletionSchemas4 = {};
 ```
 
 ### `any[]`

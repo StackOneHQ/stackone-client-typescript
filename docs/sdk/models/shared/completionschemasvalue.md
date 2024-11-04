@@ -1,13 +1,11 @@
-# JobConfidential
-
-Confidential status of the job
+# CompletionSchemasValue
 
 ## Example Usage
 
 ```typescript
-import { JobConfidential } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { CompletionSchemasValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: JobConfidential = JobConfidential.False;
+let value: CompletionSchemasValue = CompletionSchemasValue.Fail;
 ```
 
 ## Values
@@ -16,6 +14,6 @@ This is an open enum. Unrecognized values will be captured as the `Unrecognized<
 
 | Name                   | Value                  |
 | ---------------------- | ---------------------- |
-| `True`                 | true                   |
-| `False`                | false                  |
+| `Pass`                 | Pass                   |
+| `Fail`                 | Fail                   |
 | -                      | `Unrecognized<string>` |

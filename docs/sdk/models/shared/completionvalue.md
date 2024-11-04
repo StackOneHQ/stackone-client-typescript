@@ -5,7 +5,7 @@
 ```typescript
 import { CompletionValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: CompletionValue = CompletionValue.Pass;
+let value: CompletionValue = CompletionValue.Content;
 ```
 
 ## Values
@@ -14,6 +14,7 @@ This is an open enum. Unrecognized values will be captured as the `Unrecognized<
 
 | Name                   | Value                  |
 | ---------------------- | ---------------------- |
-| `Pass`                 | Pass                   |
-| `Fail`                 | Fail                   |
+| `Content`              | content                |
+| `Course`               | course                 |
+| `Collection`           | collection             |
 | -                      | `Unrecognized<string>` |

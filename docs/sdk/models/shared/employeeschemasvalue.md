@@ -5,7 +5,7 @@
 ```typescript
 import { EmployeeSchemasValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: EmployeeSchemasValue = EmployeeSchemasValue.Terminated;
+let value: EmployeeSchemasValue = EmployeeSchemasValue.Active;
 ```
 
 ## Values

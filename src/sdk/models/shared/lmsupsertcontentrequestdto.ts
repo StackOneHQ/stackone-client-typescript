@@ -21,6 +21,12 @@ import {
   CreateCategoriesApiModel$Outbound,
   CreateCategoriesApiModel$outboundSchema,
 } from "./createcategoriesapimodel.js";
+import {
+  Skills,
+  Skills$inboundSchema,
+  Skills$Outbound,
+  Skills$outboundSchema,
+} from "./skills.js";
 
 export enum LmsUpsertContentRequestDto2 {
   True = "true",
@@ -151,6 +157,10 @@ export type LmsUpsertContentRequestDto = {
    * The order of the individual content within a content grouping. This is not applicable for pushing individual content.
    */
   order?: number | null | undefined;
+  /**
+   * The skills associated with this course
+   */
+  skills?: Array<Skills> | null | undefined;
   /**
    * The title of the content
    */
@@ -613,6 +623,7 @@ export const LmsUpsertContentRequestDto$inboundSchema: z.ZodType<
   external_reference: z.nullable(z.string()).optional(),
   languages: z.nullable(z.array(ContentLanguageEnum$inboundSchema)).optional(),
   order: z.nullable(z.number()).optional(),
+  skills: z.nullable(z.array(Skills$inboundSchema)).optional(),
   title: z.nullable(z.string()).optional(),
   unified_custom_fields: z.nullable(z.record(z.any())).optional(),
 }).transform((v) => {
@@ -647,6 +658,7 @@ export type LmsUpsertContentRequestDto$Outbound = {
   external_reference?: string | null | undefined;
   languages?: Array<ContentLanguageEnum$Outbound> | null | undefined;
   order?: number | null | undefined;
+  skills?: Array<Skills$Outbound> | null | undefined;
   title?: string | null | undefined;
   unified_custom_fields?: { [k: string]: any } | null | undefined;
 };
@@ -676,6 +688,7 @@ export const LmsUpsertContentRequestDto$outboundSchema: z.ZodType<
   externalReference: z.nullable(z.string()).optional(),
   languages: z.nullable(z.array(ContentLanguageEnum$outboundSchema)).optional(),
   order: z.nullable(z.number()).optional(),
+  skills: z.nullable(z.array(Skills$outboundSchema)).optional(),
   title: z.nullable(z.string()).optional(),
   unifiedCustomFields: z.nullable(z.record(z.any())).optional(),
 }).transform((v) => {

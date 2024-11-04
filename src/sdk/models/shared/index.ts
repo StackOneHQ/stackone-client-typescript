@@ -163,7 +163,6 @@ export * from "./jobpostingresult.js";
 export * from "./jobpostingspaginated.js";
 export * from "./jobresult.js";
 export * from "./jobspaginated.js";
-export * from "./learningobjecttypeenum.js";
 export * from "./linkedaccount.js";
 export * from "./linkedaccountmeta.js";
 export * from "./list.js";

@@ -21,6 +21,12 @@ import {
   ContentLanguageEnum$Outbound,
   ContentLanguageEnum$outboundSchema,
 } from "./contentlanguageenum.js";
+import {
+  Skills,
+  Skills$inboundSchema,
+  Skills$Outbound,
+  Skills$outboundSchema,
+} from "./skills.js";
 
 export enum Content2 {
   True = "true",
@@ -154,6 +160,10 @@ export type Content = {
    * Provider's unique identifier
    */
   remoteId?: string | null | undefined;
+  /**
+   * The skills associated with this course
+   */
+  skills?: Array<Skills> | null | undefined;
   /**
    * The title of the content
    */
@@ -591,6 +601,7 @@ export const Content$inboundSchema: z.ZodType<Content, z.ZodTypeDef, unknown> =
     order: z.nullable(z.number()).optional(),
     remote_course_ids: z.nullable(z.array(z.string())).optional(),
     remote_id: z.nullable(z.string()).optional(),
+    skills: z.nullable(z.array(Skills$inboundSchema)).optional(),
     title: z.nullable(z.string()).optional(),
     unified_custom_fields: z.nullable(z.record(z.any())).optional(),
   }).transform((v) => {
@@ -624,6 +635,7 @@ export type Content$Outbound = {
   order?: number | null | undefined;
   remote_course_ids?: Array<string> | null | undefined;
   remote_id?: string | null | undefined;
+  skills?: Array<Skills$Outbound> | null | undefined;
   title?: string | null | undefined;
   unified_custom_fields?: { [k: string]: any } | null | undefined;
 };
@@ -653,6 +665,7 @@ export const Content$outboundSchema: z.ZodType<
   order: z.nullable(z.number()).optional(),
   remoteCourseIds: z.nullable(z.array(z.string())).optional(),
   remoteId: z.nullable(z.string()).optional(),
+  skills: z.nullable(z.array(Skills$outboundSchema)).optional(),
   title: z.nullable(z.string()).optional(),
   unifiedCustomFields: z.nullable(z.record(z.any())).optional(),
 }).transform((v) => {
