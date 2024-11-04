@@ -1,11 +1,11 @@
-# LearningObjectTypeEnumValue
+# AssignmentValue
 
 ## Example Usage
 
 ```typescript
-import { LearningObjectTypeEnumValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { AssignmentValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: LearningObjectTypeEnumValue = LearningObjectTypeEnumValue.Course;
+let value: AssignmentValue = AssignmentValue.Content;
 ```
 
 ## Values

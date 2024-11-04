@@ -1,11 +1,11 @@
-# LearningObjectTypeEnum4
+# CompletionSchemas4
 
 ## Example Usage
 
 ```typescript
-import { LearningObjectTypeEnum4 } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { CompletionSchemas4 } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: LearningObjectTypeEnum4 = {};
+let value: CompletionSchemas4 = {};
 ```
 
 ## Fields

@@ -5,17 +5,47 @@
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
 import {
+  catchUnrecognizedEnum,
+  OpenEnum,
+  Unrecognized,
+} from "../../types/enums.js";
+import {
   AssignmentStatusEnum,
   AssignmentStatusEnum$inboundSchema,
   AssignmentStatusEnum$Outbound,
   AssignmentStatusEnum$outboundSchema,
 } from "./assignmentstatusenum.js";
-import {
-  LearningObjectTypeEnum,
-  LearningObjectTypeEnum$inboundSchema,
-  LearningObjectTypeEnum$Outbound,
-  LearningObjectTypeEnum$outboundSchema,
-} from "./learningobjecttypeenum.js";
+
+export type Assignment4 = {};
+
+export type AssignmentSourceValue =
+  | Assignment4
+  | string
+  | number
+  | boolean
+  | Array<any>;
+
+export enum AssignmentValue {
+  Content = "content",
+  Course = "course",
+  Collection = "collection",
+}
+export type AssignmentValueOpen = OpenEnum<typeof AssignmentValue>;
+
+/**
+ * The learning object type of the assignment
+ */
+export type LearningObjectType = {
+  sourceValue?:
+    | Assignment4
+    | string
+    | number
+    | boolean
+    | Array<any>
+    | null
+    | undefined;
+  value?: AssignmentValueOpen | null | undefined;
+};
 
 export type Assignment = {
   /**
@@ -45,7 +75,7 @@ export type Assignment = {
   /**
    * The learning object type of the assignment
    */
-  learningObjectType?: Array<LearningObjectTypeEnum> | null | undefined;
+  learningObjectType?: LearningObjectType | null | undefined;
   /**
    * The progress associated with this assigment
    */
@@ -85,6 +115,185 @@ export type Assignment = {
 };
 
 /** @internal */
+export const Assignment4$inboundSchema: z.ZodType<
+  Assignment4,
+  z.ZodTypeDef,
+  unknown
+> = z.object({});
+
+/** @internal */
+export type Assignment4$Outbound = {};
+
+/** @internal */
+export const Assignment4$outboundSchema: z.ZodType<
+  Assignment4$Outbound,
+  z.ZodTypeDef,
+  Assignment4
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace Assignment4$ {
+  /** @deprecated use `Assignment4$inboundSchema` instead. */
+  export const inboundSchema = Assignment4$inboundSchema;
+  /** @deprecated use `Assignment4$outboundSchema` instead. */
+  export const outboundSchema = Assignment4$outboundSchema;
+  /** @deprecated use `Assignment4$Outbound` instead. */
+  export type Outbound = Assignment4$Outbound;
+}
+
+/** @internal */
+export const AssignmentSourceValue$inboundSchema: z.ZodType<
+  AssignmentSourceValue,
+  z.ZodTypeDef,
+  unknown
+> = z.union([
+  z.lazy(() => Assignment4$inboundSchema),
+  z.string(),
+  z.number(),
+  z.boolean(),
+  z.array(z.any()),
+]);
+
+/** @internal */
+export type AssignmentSourceValue$Outbound =
+  | Assignment4$Outbound
+  | string
+  | number
+  | boolean
+  | Array<any>;
+
+/** @internal */
+export const AssignmentSourceValue$outboundSchema: z.ZodType<
+  AssignmentSourceValue$Outbound,
+  z.ZodTypeDef,
+  AssignmentSourceValue
+> = z.union([
+  z.lazy(() => Assignment4$outboundSchema),
+  z.string(),
+  z.number(),
+  z.boolean(),
+  z.array(z.any()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace AssignmentSourceValue$ {
+  /** @deprecated use `AssignmentSourceValue$inboundSchema` instead. */
+  export const inboundSchema = AssignmentSourceValue$inboundSchema;
+  /** @deprecated use `AssignmentSourceValue$outboundSchema` instead. */
+  export const outboundSchema = AssignmentSourceValue$outboundSchema;
+  /** @deprecated use `AssignmentSourceValue$Outbound` instead. */
+  export type Outbound = AssignmentSourceValue$Outbound;
+}
+
+/** @internal */
+export const AssignmentValue$inboundSchema: z.ZodType<
+  AssignmentValueOpen,
+  z.ZodTypeDef,
+  unknown
+> = z
+  .union([
+    z.nativeEnum(AssignmentValue),
+    z.string().transform(catchUnrecognizedEnum),
+  ]);
+
+/** @internal */
+export const AssignmentValue$outboundSchema: z.ZodType<
+  AssignmentValueOpen,
+  z.ZodTypeDef,
+  AssignmentValueOpen
+> = z.union([
+  z.nativeEnum(AssignmentValue),
+  z.string().and(z.custom<Unrecognized<string>>()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace AssignmentValue$ {
+  /** @deprecated use `AssignmentValue$inboundSchema` instead. */
+  export const inboundSchema = AssignmentValue$inboundSchema;
+  /** @deprecated use `AssignmentValue$outboundSchema` instead. */
+  export const outboundSchema = AssignmentValue$outboundSchema;
+}
+
+/** @internal */
+export const LearningObjectType$inboundSchema: z.ZodType<
+  LearningObjectType,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  source_value: z.nullable(
+    z.union([
+      z.lazy(() => Assignment4$inboundSchema),
+      z.string(),
+      z.number(),
+      z.boolean(),
+      z.array(z.any()),
+    ]),
+  ).optional(),
+  value: z.nullable(AssignmentValue$inboundSchema).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    "source_value": "sourceValue",
+  });
+});
+
+/** @internal */
+export type LearningObjectType$Outbound = {
+  source_value?:
+    | Assignment4$Outbound
+    | string
+    | number
+    | boolean
+    | Array<any>
+    | null
+    | undefined;
+  value?: string | null | undefined;
+};
+
+/** @internal */
+export const LearningObjectType$outboundSchema: z.ZodType<
+  LearningObjectType$Outbound,
+  z.ZodTypeDef,
+  LearningObjectType
+> = z.object({
+  sourceValue: z.nullable(
+    z.union([
+      z.lazy(() => Assignment4$outboundSchema),
+      z.string(),
+      z.number(),
+      z.boolean(),
+      z.array(z.any()),
+    ]),
+  ).optional(),
+  value: z.nullable(AssignmentValue$outboundSchema).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    sourceValue: "source_value",
+  });
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace LearningObjectType$ {
+  /** @deprecated use `LearningObjectType$inboundSchema` instead. */
+  export const inboundSchema = LearningObjectType$inboundSchema;
+  /** @deprecated use `LearningObjectType$outboundSchema` instead. */
+  export const outboundSchema = LearningObjectType$outboundSchema;
+  /** @deprecated use `LearningObjectType$Outbound` instead. */
+  export type Outbound = LearningObjectType$Outbound;
+}
+
+/** @internal */
 export const Assignment$inboundSchema: z.ZodType<
   Assignment,
   z.ZodTypeDef,
@@ -97,7 +306,7 @@ export const Assignment$inboundSchema: z.ZodType<
   learning_object_external_reference: z.nullable(z.string()).optional(),
   learning_object_id: z.nullable(z.string()).optional(),
   learning_object_type: z.nullable(
-    z.array(LearningObjectTypeEnum$inboundSchema),
+    z.lazy(() => LearningObjectType$inboundSchema),
   ).optional(),
   progress: z.nullable(z.number()).optional(),
   remote_course_id: z.nullable(z.string()).optional(),
@@ -134,10 +343,7 @@ export type Assignment$Outbound = {
   id?: string | null | undefined;
   learning_object_external_reference?: string | null | undefined;
   learning_object_id?: string | null | undefined;
-  learning_object_type?:
-    | Array<LearningObjectTypeEnum$Outbound>
-    | null
-    | undefined;
+  learning_object_type?: LearningObjectType$Outbound | null | undefined;
   progress?: number | null | undefined;
   remote_course_id?: string | null | undefined;
   remote_id?: string | null | undefined;
@@ -161,8 +367,9 @@ export const Assignment$outboundSchema: z.ZodType<
   id: z.nullable(z.string()).optional(),
   learningObjectExternalReference: z.nullable(z.string()).optional(),
   learningObjectId: z.nullable(z.string()).optional(),
-  learningObjectType: z.nullable(z.array(LearningObjectTypeEnum$outboundSchema))
-    .optional(),
+  learningObjectType: z.nullable(
+    z.lazy(() => LearningObjectType$outboundSchema),
+  ).optional(),
   progress: z.nullable(z.number()).optional(),
   remoteCourseId: z.nullable(z.string()).optional(),
   remoteId: z.nullable(z.string()).optional(),

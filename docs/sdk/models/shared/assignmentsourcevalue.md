@@ -1,4 +1,4 @@
-# CreateHRISBenefitSourceValue
+# AssignmentSourceValue
 
 
 ## Supported Types
@@ -12,7 +12,7 @@ const value: string = "<value>";
 ### `number`
 
 ```typescript
-const value: number = 7487.88;
+const value: number = 4059.42;
 ```
 
 ### `boolean`
@@ -21,10 +21,10 @@ const value: number = 7487.88;
 const value: boolean = false;
 ```
 
-### `shared.CreateHRISBenefit4`
+### `shared.Assignment4`
 
 ```typescript
-const value: shared.CreateHRISBenefit4 = {};
+const value: shared.Assignment4 = {};
 ```
 
 ### `any[]`

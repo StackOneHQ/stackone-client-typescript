@@ -20,15 +20,16 @@ export type CompletionSourceValue =
   | Array<any>;
 
 export enum CompletionValue {
-  Pass = "Pass",
-  Fail = "Fail",
+  Content = "content",
+  Course = "course",
+  Collection = "collection",
 }
 export type CompletionValueOpen = OpenEnum<typeof CompletionValue>;
 
 /**
- * The result of the completion
+ * The learning object type of the assignment
  */
-export type CompletionSchemasResult = {
+export type CompletionLearningObjectType = {
   sourceValue?:
     | Completion4
     | string
@@ -38,6 +39,38 @@ export type CompletionSchemasResult = {
     | null
     | undefined;
   value?: CompletionValueOpen | null | undefined;
+};
+
+export type CompletionSchemas4 = {};
+
+export type CompletionSchemasSourceValue =
+  | CompletionSchemas4
+  | string
+  | number
+  | boolean
+  | Array<any>;
+
+export enum CompletionSchemasValue {
+  Pass = "Pass",
+  Fail = "Fail",
+}
+export type CompletionSchemasValueOpen = OpenEnum<
+  typeof CompletionSchemasValue
+>;
+
+/**
+ * The result of the completion
+ */
+export type CompletionSchemasResult = {
+  sourceValue?:
+    | CompletionSchemas4
+    | string
+    | number
+    | boolean
+    | Array<any>
+    | null
+    | undefined;
+  value?: CompletionSchemasValueOpen | null | undefined;
 };
 
 export type Completion = {
@@ -70,6 +103,18 @@ export type Completion = {
    */
   id?: string | null | undefined;
   /**
+   * The learning_object_external_reference associated with this assignment
+   */
+  learningObjectExternalReference?: string | null | undefined;
+  /**
+   * The learning_object_id associated with this assignment
+   */
+  learningObjectId?: string | null | undefined;
+  /**
+   * The learning object type of the assignment
+   */
+  learningObjectType?: CompletionLearningObjectType | null | undefined;
+  /**
    * Provider's unique identifier of the content associated with the completion
    */
   remoteContentId?: string | null | undefined;
@@ -85,6 +130,10 @@ export type Completion = {
    * Provider's unique identifier
    */
   remoteId?: string | null | undefined;
+  /**
+   * Provider's unique identifier of the learning object related to the assignment
+   */
+  remoteLearningObjectId?: string | null | undefined;
   /**
    * Provider's unique identifier of the user related to the completion
    */
@@ -217,8 +266,8 @@ export namespace CompletionValue$ {
 }
 
 /** @internal */
-export const CompletionSchemasResult$inboundSchema: z.ZodType<
-  CompletionSchemasResult,
+export const CompletionLearningObjectType$inboundSchema: z.ZodType<
+  CompletionLearningObjectType,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -239,9 +288,188 @@ export const CompletionSchemasResult$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type CompletionSchemasResult$Outbound = {
+export type CompletionLearningObjectType$Outbound = {
   source_value?:
     | Completion4$Outbound
+    | string
+    | number
+    | boolean
+    | Array<any>
+    | null
+    | undefined;
+  value?: string | null | undefined;
+};
+
+/** @internal */
+export const CompletionLearningObjectType$outboundSchema: z.ZodType<
+  CompletionLearningObjectType$Outbound,
+  z.ZodTypeDef,
+  CompletionLearningObjectType
+> = z.object({
+  sourceValue: z.nullable(
+    z.union([
+      z.lazy(() => Completion4$outboundSchema),
+      z.string(),
+      z.number(),
+      z.boolean(),
+      z.array(z.any()),
+    ]),
+  ).optional(),
+  value: z.nullable(CompletionValue$outboundSchema).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    sourceValue: "source_value",
+  });
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace CompletionLearningObjectType$ {
+  /** @deprecated use `CompletionLearningObjectType$inboundSchema` instead. */
+  export const inboundSchema = CompletionLearningObjectType$inboundSchema;
+  /** @deprecated use `CompletionLearningObjectType$outboundSchema` instead. */
+  export const outboundSchema = CompletionLearningObjectType$outboundSchema;
+  /** @deprecated use `CompletionLearningObjectType$Outbound` instead. */
+  export type Outbound = CompletionLearningObjectType$Outbound;
+}
+
+/** @internal */
+export const CompletionSchemas4$inboundSchema: z.ZodType<
+  CompletionSchemas4,
+  z.ZodTypeDef,
+  unknown
+> = z.object({});
+
+/** @internal */
+export type CompletionSchemas4$Outbound = {};
+
+/** @internal */
+export const CompletionSchemas4$outboundSchema: z.ZodType<
+  CompletionSchemas4$Outbound,
+  z.ZodTypeDef,
+  CompletionSchemas4
+> = z.object({});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace CompletionSchemas4$ {
+  /** @deprecated use `CompletionSchemas4$inboundSchema` instead. */
+  export const inboundSchema = CompletionSchemas4$inboundSchema;
+  /** @deprecated use `CompletionSchemas4$outboundSchema` instead. */
+  export const outboundSchema = CompletionSchemas4$outboundSchema;
+  /** @deprecated use `CompletionSchemas4$Outbound` instead. */
+  export type Outbound = CompletionSchemas4$Outbound;
+}
+
+/** @internal */
+export const CompletionSchemasSourceValue$inboundSchema: z.ZodType<
+  CompletionSchemasSourceValue,
+  z.ZodTypeDef,
+  unknown
+> = z.union([
+  z.lazy(() => CompletionSchemas4$inboundSchema),
+  z.string(),
+  z.number(),
+  z.boolean(),
+  z.array(z.any()),
+]);
+
+/** @internal */
+export type CompletionSchemasSourceValue$Outbound =
+  | CompletionSchemas4$Outbound
+  | string
+  | number
+  | boolean
+  | Array<any>;
+
+/** @internal */
+export const CompletionSchemasSourceValue$outboundSchema: z.ZodType<
+  CompletionSchemasSourceValue$Outbound,
+  z.ZodTypeDef,
+  CompletionSchemasSourceValue
+> = z.union([
+  z.lazy(() => CompletionSchemas4$outboundSchema),
+  z.string(),
+  z.number(),
+  z.boolean(),
+  z.array(z.any()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace CompletionSchemasSourceValue$ {
+  /** @deprecated use `CompletionSchemasSourceValue$inboundSchema` instead. */
+  export const inboundSchema = CompletionSchemasSourceValue$inboundSchema;
+  /** @deprecated use `CompletionSchemasSourceValue$outboundSchema` instead. */
+  export const outboundSchema = CompletionSchemasSourceValue$outboundSchema;
+  /** @deprecated use `CompletionSchemasSourceValue$Outbound` instead. */
+  export type Outbound = CompletionSchemasSourceValue$Outbound;
+}
+
+/** @internal */
+export const CompletionSchemasValue$inboundSchema: z.ZodType<
+  CompletionSchemasValueOpen,
+  z.ZodTypeDef,
+  unknown
+> = z
+  .union([
+    z.nativeEnum(CompletionSchemasValue),
+    z.string().transform(catchUnrecognizedEnum),
+  ]);
+
+/** @internal */
+export const CompletionSchemasValue$outboundSchema: z.ZodType<
+  CompletionSchemasValueOpen,
+  z.ZodTypeDef,
+  CompletionSchemasValueOpen
+> = z.union([
+  z.nativeEnum(CompletionSchemasValue),
+  z.string().and(z.custom<Unrecognized<string>>()),
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace CompletionSchemasValue$ {
+  /** @deprecated use `CompletionSchemasValue$inboundSchema` instead. */
+  export const inboundSchema = CompletionSchemasValue$inboundSchema;
+  /** @deprecated use `CompletionSchemasValue$outboundSchema` instead. */
+  export const outboundSchema = CompletionSchemasValue$outboundSchema;
+}
+
+/** @internal */
+export const CompletionSchemasResult$inboundSchema: z.ZodType<
+  CompletionSchemasResult,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  source_value: z.nullable(
+    z.union([
+      z.lazy(() => CompletionSchemas4$inboundSchema),
+      z.string(),
+      z.number(),
+      z.boolean(),
+      z.array(z.any()),
+    ]),
+  ).optional(),
+  value: z.nullable(CompletionSchemasValue$inboundSchema).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    "source_value": "sourceValue",
+  });
+});
+
+/** @internal */
+export type CompletionSchemasResult$Outbound = {
+  source_value?:
+    | CompletionSchemas4$Outbound
     | string
     | number
     | boolean
@@ -259,14 +487,14 @@ export const CompletionSchemasResult$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => Completion4$outboundSchema),
+      z.lazy(() => CompletionSchemas4$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
       z.array(z.any()),
     ]),
   ).optional(),
-  value: z.nullable(CompletionValue$outboundSchema).optional(),
+  value: z.nullable(CompletionSchemasValue$outboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {
     sourceValue: "source_value",
@@ -299,10 +527,16 @@ export const Completion$inboundSchema: z.ZodType<
   created_at: z.nullable(z.string()).optional(),
   external_id: z.nullable(z.string()).optional(),
   id: z.nullable(z.string()).optional(),
+  learning_object_external_reference: z.nullable(z.string()).optional(),
+  learning_object_id: z.nullable(z.string()).optional(),
+  learning_object_type: z.nullable(
+    z.lazy(() => CompletionLearningObjectType$inboundSchema),
+  ).optional(),
   remote_content_id: z.nullable(z.string()).optional(),
   remote_course_id: z.nullable(z.string()).optional(),
   remote_external_id: z.nullable(z.string()).optional(),
   remote_id: z.nullable(z.string()).optional(),
+  remote_learning_object_id: z.nullable(z.string()).optional(),
   remote_user_id: z.nullable(z.string()).optional(),
   result: z.nullable(z.lazy(() => CompletionSchemasResult$inboundSchema))
     .optional(),
@@ -317,10 +551,14 @@ export const Completion$inboundSchema: z.ZodType<
     "course_id": "courseId",
     "created_at": "createdAt",
     "external_id": "externalId",
+    "learning_object_external_reference": "learningObjectExternalReference",
+    "learning_object_id": "learningObjectId",
+    "learning_object_type": "learningObjectType",
     "remote_content_id": "remoteContentId",
     "remote_course_id": "remoteCourseId",
     "remote_external_id": "remoteExternalId",
     "remote_id": "remoteId",
+    "remote_learning_object_id": "remoteLearningObjectId",
     "remote_user_id": "remoteUserId",
     "unified_custom_fields": "unifiedCustomFields",
     "updated_at": "updatedAt",
@@ -337,10 +575,17 @@ export type Completion$Outbound = {
   created_at?: string | null | undefined;
   external_id?: string | null | undefined;
   id?: string | null | undefined;
+  learning_object_external_reference?: string | null | undefined;
+  learning_object_id?: string | null | undefined;
+  learning_object_type?:
+    | CompletionLearningObjectType$Outbound
+    | null
+    | undefined;
   remote_content_id?: string | null | undefined;
   remote_course_id?: string | null | undefined;
   remote_external_id?: string | null | undefined;
   remote_id?: string | null | undefined;
+  remote_learning_object_id?: string | null | undefined;
   remote_user_id?: string | null | undefined;
   result?: CompletionSchemasResult$Outbound | null | undefined;
   unified_custom_fields?: { [k: string]: any } | null | undefined;
@@ -361,10 +606,16 @@ export const Completion$outboundSchema: z.ZodType<
   createdAt: z.nullable(z.string()).optional(),
   externalId: z.nullable(z.string()).optional(),
   id: z.nullable(z.string()).optional(),
+  learningObjectExternalReference: z.nullable(z.string()).optional(),
+  learningObjectId: z.nullable(z.string()).optional(),
+  learningObjectType: z.nullable(
+    z.lazy(() => CompletionLearningObjectType$outboundSchema),
+  ).optional(),
   remoteContentId: z.nullable(z.string()).optional(),
   remoteCourseId: z.nullable(z.string()).optional(),
   remoteExternalId: z.nullable(z.string()).optional(),
   remoteId: z.nullable(z.string()).optional(),
+  remoteLearningObjectId: z.nullable(z.string()).optional(),
   remoteUserId: z.nullable(z.string()).optional(),
   result: z.nullable(z.lazy(() => CompletionSchemasResult$outboundSchema))
     .optional(),
@@ -379,10 +630,14 @@ export const Completion$outboundSchema: z.ZodType<
     courseId: "course_id",
     createdAt: "created_at",
     externalId: "external_id",
+    learningObjectExternalReference: "learning_object_external_reference",
+    learningObjectId: "learning_object_id",
+    learningObjectType: "learning_object_type",
     remoteContentId: "remote_content_id",
     remoteCourseId: "remote_course_id",
     remoteExternalId: "remote_external_id",
     remoteId: "remote_id",
+    remoteLearningObjectId: "remote_learning_object_id",
     remoteUserId: "remote_user_id",
     unifiedCustomFields: "unified_custom_fields",
     updatedAt: "updated_at",

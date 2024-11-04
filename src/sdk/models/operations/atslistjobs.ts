@@ -7,9 +7,20 @@ import { remap as remap$ } from "../../../lib/primitives.js";
 import * as shared from "../shared/index.js";
 
 /**
- * Filter parameters that allow greater customisation of the list response
+ * The status of the job
+ */
+export enum Status {
+  Open = "open",
+}
+
+/**
+ * ATS Jobs filters
  */
 export type AtsListJobsQueryParamFilter = {
+  /**
+   * The status of the job
+   */
+  status?: Status | null | undefined;
   /**
    * Use a string with a date to only select results updated after that given date
    */
@@ -26,7 +37,7 @@ export type AtsListJobsRequest = {
    */
   fields?: string | null | undefined;
   /**
-   * Filter parameters that allow greater customisation of the list response
+   * ATS Jobs filters
    */
   filter?: AtsListJobsQueryParamFilter | null | undefined;
   /**
@@ -93,11 +104,31 @@ export type AtsListJobsResponse = {
 };
 
 /** @internal */
+export const Status$inboundSchema: z.ZodNativeEnum<typeof Status> = z
+  .nativeEnum(Status);
+
+/** @internal */
+export const Status$outboundSchema: z.ZodNativeEnum<typeof Status> =
+  Status$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace Status$ {
+  /** @deprecated use `Status$inboundSchema` instead. */
+  export const inboundSchema = Status$inboundSchema;
+  /** @deprecated use `Status$outboundSchema` instead. */
+  export const outboundSchema = Status$outboundSchema;
+}
+
+/** @internal */
 export const AtsListJobsQueryParamFilter$inboundSchema: z.ZodType<
   AtsListJobsQueryParamFilter,
   z.ZodTypeDef,
   unknown
 > = z.object({
+  status: z.nullable(Status$inboundSchema).optional(),
   updated_after: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -107,6 +138,7 @@ export const AtsListJobsQueryParamFilter$inboundSchema: z.ZodType<
 
 /** @internal */
 export type AtsListJobsQueryParamFilter$Outbound = {
+  status?: string | null | undefined;
   updated_after?: string | null | undefined;
 };
 
@@ -116,6 +148,7 @@ export const AtsListJobsQueryParamFilter$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   AtsListJobsQueryParamFilter
 > = z.object({
+  status: z.nullable(Status$outboundSchema).optional(),
   updatedAfter: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {

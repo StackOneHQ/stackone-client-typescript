@@ -4760,7 +4760,7 @@ actions:
 
             async function run() {
               const result = await stackOne.lms.listContent({
-                fields: "id,remote_id,external_reference,course_ids,remote_course_ids,title,description,languages,content_url,content_type,cover_url,active,duration,categories,order,content_launch_method",
+                fields: "id,remote_id,external_reference,course_ids,remote_course_ids,title,description,languages,content_url,content_type,cover_url,active,duration,categories,skills,order,content_launch_method,updated_at,created_at",
                 filter: {
                   updatedAfter: "2020-01-01T00:00:00.000Z",
                 },
@@ -4812,6 +4812,14 @@ actions:
                   coverUrl: "https://www.googledrive.com/?v=16873",
                   active: true,
                   duration: "P3Y6M4DT12H30M5S",
+                  skills: [
+                    {
+                      id: "16873-IT345",
+                      remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+                      name: "Information-Technology",
+                      active: true,
+                    },
+                  ],
                   contentLaunchMethod: {},
                   order: 1,
                   categories: [
@@ -4871,6 +4879,14 @@ actions:
                   coverUrl: "https://www.googledrive.com/?v=16873",
                   active: true,
                   duration: "P3Y6M4DT12H30M5S",
+                  skills: [
+                    {
+                      id: "16873-IT345",
+                      remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+                      name: "Information-Technology",
+                      active: true,
+                    },
+                  ],
                   contentLaunchMethod: {},
                   order: 1,
                   categories: [
@@ -4935,6 +4951,14 @@ actions:
                       coverUrl: "https://www.googledrive.com/?v=16873",
                       active: true,
                       duration: "P3Y6M4DT12H30M5S",
+                      skills: [
+                        {
+                          id: "16873-IT345",
+                          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+                          name: "Information-Technology",
+                          active: true,
+                        },
+                      ],
                       contentLaunchMethod: {},
                       order: 1,
                       categories: [
@@ -4968,6 +4992,14 @@ actions:
                       coverUrl: "https://www.googledrive.com/?v=16873",
                       active: true,
                       duration: "P3Y6M4DT12H30M5S",
+                      skills: [
+                        {
+                          id: "16873-IT345",
+                          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+                          name: "Information-Technology",
+                          active: true,
+                        },
+                      ],
                       contentLaunchMethod: {},
                       order: 1,
                       categories: [
@@ -5034,7 +5066,7 @@ actions:
             async function run() {
               const result = await stackOne.lms.getContent({
                 id: "<id>",
-                fields: "id,remote_id,external_reference,course_ids,remote_course_ids,title,description,languages,content_url,content_type,cover_url,active,duration,categories,order,content_launch_method",
+                fields: "id,remote_id,external_reference,course_ids,remote_course_ids,title,description,languages,content_url,content_type,cover_url,active,duration,categories,skills,order,content_launch_method,updated_at,created_at",
                 xAccountId: "<id>",
               });
 
@@ -5089,6 +5121,14 @@ actions:
                   coverUrl: "https://www.googledrive.com/?v=16873",
                   active: true,
                   duration: "P3Y6M4DT12H30M5S",
+                  skills: [
+                    {
+                      id: "16873-IT345",
+                      remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+                      name: "Information-Technology",
+                      active: true,
+                    },
+                  ],
                   contentLaunchMethod: {},
                   order: 1,
                   categories: [
