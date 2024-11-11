@@ -7,7 +7,7 @@ The method of the request
 ```typescript
 import { Method } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: Method = Method.Delete;
+let value: Method = Method.Patch;
 ```
 
 ## Values

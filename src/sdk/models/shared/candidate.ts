@@ -5,17 +5,17 @@
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
 import {
-  CandidateCustomFields,
-  CandidateCustomFields$inboundSchema,
-  CandidateCustomFields$Outbound,
-  CandidateCustomFields$outboundSchema,
-} from "./candidatecustomfields.js";
-import {
   CandidateEmail,
   CandidateEmail$inboundSchema,
   CandidateEmail$Outbound,
   CandidateEmail$outboundSchema,
 } from "./candidateemail.js";
+import {
+  CustomFields,
+  CustomFields$inboundSchema,
+  CustomFields$Outbound,
+  CustomFields$outboundSchema,
+} from "./customfields.js";
 import {
   PhoneNumber,
   PhoneNumber$inboundSchema,
@@ -49,7 +49,7 @@ export type Candidate = {
   /**
    * The candidate custom fields
    */
-  customFields?: Array<CandidateCustomFields> | null | undefined;
+  customFields?: Array<CustomFields> | null | undefined;
   /**
    * Candidate email
    */
@@ -126,8 +126,7 @@ export const Candidate$inboundSchema: z.ZodType<
   created_at: z.nullable(
     z.string().datetime({ offset: true }).transform(v => new Date(v)),
   ).optional(),
-  custom_fields: z.nullable(z.array(CandidateCustomFields$inboundSchema))
-    .optional(),
+  custom_fields: z.nullable(z.array(CustomFields$inboundSchema)).optional(),
   email: z.nullable(z.string()).optional(),
   emails: z.nullable(z.array(CandidateEmail$inboundSchema)).optional(),
   first_name: z.nullable(z.string()).optional(),
@@ -170,7 +169,7 @@ export type Candidate$Outbound = {
   company?: string | null | undefined;
   country?: string | null | undefined;
   created_at?: string | null | undefined;
-  custom_fields?: Array<CandidateCustomFields$Outbound> | null | undefined;
+  custom_fields?: Array<CustomFields$Outbound> | null | undefined;
   email?: string | null | undefined;
   emails?: Array<CandidateEmail$Outbound> | null | undefined;
   first_name?: string | null | undefined;
@@ -198,8 +197,7 @@ export const Candidate$outboundSchema: z.ZodType<
   company: z.nullable(z.string()).optional(),
   country: z.nullable(z.string()).optional(),
   createdAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-  customFields: z.nullable(z.array(CandidateCustomFields$outboundSchema))
-    .optional(),
+  customFields: z.nullable(z.array(CustomFields$outboundSchema)).optional(),
   email: z.nullable(z.string()).optional(),
   emails: z.nullable(z.array(CandidateEmail$outboundSchema)).optional(),
   firstName: z.nullable(z.string()).optional(),

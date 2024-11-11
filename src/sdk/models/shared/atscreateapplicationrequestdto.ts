@@ -10,17 +10,17 @@ import {
   Unrecognized,
 } from "../../types/enums.js";
 import {
-  CandidateCustomFields,
-  CandidateCustomFields$inboundSchema,
-  CandidateCustomFields$Outbound,
-  CandidateCustomFields$outboundSchema,
-} from "./candidatecustomfields.js";
-import {
   CreateQuestionnaire,
   CreateQuestionnaire$inboundSchema,
   CreateQuestionnaire$Outbound,
   CreateQuestionnaire$outboundSchema,
 } from "./createquestionnaire.js";
+import {
+  CustomFields,
+  CustomFields$inboundSchema,
+  CustomFields$Outbound,
+  CustomFields$outboundSchema,
+} from "./customfields.js";
 import {
   SocialLink,
   SocialLink$inboundSchema,
@@ -105,7 +105,7 @@ export type AtsCreateApplicationRequestDtoCandidate = {
   /**
    * The candidate custom fields
    */
-  customFields?: Array<CandidateCustomFields> | null | undefined;
+  customFields?: Array<CustomFields> | null | undefined;
   /**
    * Candidate email
    */
@@ -390,8 +390,7 @@ export const AtsCreateApplicationRequestDtoCandidate$inboundSchema: z.ZodType<
 > = z.object({
   company: z.nullable(z.string()).optional(),
   country: z.nullable(z.string()).optional(),
-  custom_fields: z.nullable(z.array(CandidateCustomFields$inboundSchema))
-    .optional(),
+  custom_fields: z.nullable(z.array(CustomFields$inboundSchema)).optional(),
   email: z.nullable(z.string()).optional(),
   first_name: z.nullable(z.string()).optional(),
   hired_at: z.nullable(
@@ -420,7 +419,7 @@ export const AtsCreateApplicationRequestDtoCandidate$inboundSchema: z.ZodType<
 export type AtsCreateApplicationRequestDtoCandidate$Outbound = {
   company?: string | null | undefined;
   country?: string | null | undefined;
-  custom_fields?: Array<CandidateCustomFields$Outbound> | null | undefined;
+  custom_fields?: Array<CustomFields$Outbound> | null | undefined;
   email?: string | null | undefined;
   first_name?: string | null | undefined;
   hired_at?: string | null | undefined;
@@ -441,8 +440,7 @@ export const AtsCreateApplicationRequestDtoCandidate$outboundSchema: z.ZodType<
 > = z.object({
   company: z.nullable(z.string()).optional(),
   country: z.nullable(z.string()).optional(),
-  customFields: z.nullable(z.array(CandidateCustomFields$outboundSchema))
-    .optional(),
+  customFields: z.nullable(z.array(CustomFields$outboundSchema)).optional(),
   email: z.nullable(z.string()).optional(),
   firstName: z.nullable(z.string()).optional(),
   hiredAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),

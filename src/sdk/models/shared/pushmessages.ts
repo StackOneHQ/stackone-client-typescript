@@ -4,6 +4,11 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import {
+  catchUnrecognizedEnum,
+  OpenEnum,
+  Unrecognized,
+} from "../../types/enums.js";
 
 export type PushMessagesMessageContent = {
   body?: string | null | undefined;
@@ -24,7 +29,24 @@ export type PushMessagesSourceValue =
 /**
  * The unified message type.
  */
-export type PushMessagesValue = {};
+export enum PushMessagesValue {
+  Email = "email",
+  Sms = "sms",
+  Push = "push",
+  WebPush = "web_push",
+  IosPush = "ios_push",
+  AndroidPush = "android_push",
+  AppPush = "app_push",
+  OmniChannel = "omni_channel",
+  ContentBlock = "content_block",
+  InApp = "in_app",
+  Unknown = "unknown",
+  UnmappedValue = "unmapped_value",
+}
+/**
+ * The unified message type.
+ */
+export type PushMessagesValueOpen = OpenEnum<typeof PushMessagesValue>;
 
 export type PushMessagesMessageType = {
   /**
@@ -41,7 +63,7 @@ export type PushMessagesMessageType = {
   /**
    * The unified message type.
    */
-  value?: PushMessagesValue | null | undefined;
+  value?: PushMessagesValueOpen | null | undefined;
 };
 
 export type PushMessages = {
@@ -173,20 +195,24 @@ export namespace PushMessagesSourceValue$ {
 
 /** @internal */
 export const PushMessagesValue$inboundSchema: z.ZodType<
-  PushMessagesValue,
+  PushMessagesValueOpen,
   z.ZodTypeDef,
   unknown
-> = z.object({});
-
-/** @internal */
-export type PushMessagesValue$Outbound = {};
+> = z
+  .union([
+    z.nativeEnum(PushMessagesValue),
+    z.string().transform(catchUnrecognizedEnum),
+  ]);
 
 /** @internal */
 export const PushMessagesValue$outboundSchema: z.ZodType<
-  PushMessagesValue$Outbound,
+  PushMessagesValueOpen,
   z.ZodTypeDef,
-  PushMessagesValue
-> = z.object({});
+  PushMessagesValueOpen
+> = z.union([
+  z.nativeEnum(PushMessagesValue),
+  z.string().and(z.custom<Unrecognized<string>>()),
+]);
 
 /**
  * @internal
@@ -197,8 +223,6 @@ export namespace PushMessagesValue$ {
   export const inboundSchema = PushMessagesValue$inboundSchema;
   /** @deprecated use `PushMessagesValue$outboundSchema` instead. */
   export const outboundSchema = PushMessagesValue$outboundSchema;
-  /** @deprecated use `PushMessagesValue$Outbound` instead. */
-  export type Outbound = PushMessagesValue$Outbound;
 }
 
 /** @internal */
@@ -216,7 +240,7 @@ export const PushMessagesMessageType$inboundSchema: z.ZodType<
       z.array(z.any()),
     ]),
   ).optional(),
-  value: z.nullable(z.lazy(() => PushMessagesValue$inboundSchema)).optional(),
+  value: z.nullable(PushMessagesValue$inboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {
     "source_value": "sourceValue",
@@ -233,7 +257,7 @@ export type PushMessagesMessageType$Outbound = {
     | Array<any>
     | null
     | undefined;
-  value?: PushMessagesValue$Outbound | null | undefined;
+  value?: string | null | undefined;
 };
 
 /** @internal */
@@ -251,7 +275,7 @@ export const PushMessagesMessageType$outboundSchema: z.ZodType<
       z.array(z.any()),
     ]),
   ).optional(),
-  value: z.nullable(z.lazy(() => PushMessagesValue$outboundSchema)).optional(),
+  value: z.nullable(PushMessagesValue$outboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {
     sourceValue: "source_value",

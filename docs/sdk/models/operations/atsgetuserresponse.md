@@ -7,7 +7,7 @@ import { AtsGetUserResponse } from "@stackone/stackone-client-ts/sdk/models/oper
 
 let value: AtsGetUserResponse = {
   contentType: "<value>",
-  statusCode: 300,
+  statusCode: 102,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

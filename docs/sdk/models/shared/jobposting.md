@@ -130,7 +130,7 @@ let value: JobPosting = {
             },
           ],
           remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-          required: Question2.True,
+          required: Question2.False,
           text: "What are your hobbies?",
           type: {
             sourceValue: "ShortText",

@@ -30,7 +30,7 @@ export type MarketingGetContentBlockResponse = {
   /**
    * The Content Block with the given identifier was retrieved
    */
-  contentBlocksPaginated?: shared.ContentBlocksPaginated | undefined;
+  contentBlockResult?: shared.ContentBlockResult | undefined;
   /**
    * HTTP response content type for this operation
    */
@@ -107,14 +107,13 @@ export const MarketingGetContentBlockResponse$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  ContentBlocksPaginated: shared.ContentBlocksPaginated$inboundSchema
-    .optional(),
+  ContentBlockResult: shared.ContentBlockResult$inboundSchema.optional(),
   ContentType: z.string(),
   StatusCode: z.number().int(),
   RawResponse: z.instanceof(Response),
 }).transform((v) => {
   return remap$(v, {
-    "ContentBlocksPaginated": "contentBlocksPaginated",
+    "ContentBlockResult": "contentBlockResult",
     "ContentType": "contentType",
     "StatusCode": "statusCode",
     "RawResponse": "rawResponse",
@@ -123,7 +122,7 @@ export const MarketingGetContentBlockResponse$inboundSchema: z.ZodType<
 
 /** @internal */
 export type MarketingGetContentBlockResponse$Outbound = {
-  ContentBlocksPaginated?: shared.ContentBlocksPaginated$Outbound | undefined;
+  ContentBlockResult?: shared.ContentBlockResult$Outbound | undefined;
   ContentType: string;
   StatusCode: number;
   RawResponse: never;
@@ -135,8 +134,7 @@ export const MarketingGetContentBlockResponse$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   MarketingGetContentBlockResponse
 > = z.object({
-  contentBlocksPaginated: shared.ContentBlocksPaginated$outboundSchema
-    .optional(),
+  contentBlockResult: shared.ContentBlockResult$outboundSchema.optional(),
   contentType: z.string(),
   statusCode: z.number().int(),
   rawResponse: z.instanceof(Response).transform(() => {
@@ -144,7 +142,7 @@ export const MarketingGetContentBlockResponse$outboundSchema: z.ZodType<
   }),
 }).transform((v) => {
   return remap$(v, {
-    contentBlocksPaginated: "ContentBlocksPaginated",
+    contentBlockResult: "ContentBlockResult",
     contentType: "ContentType",
     statusCode: "StatusCode",
     rawResponse: "RawResponse",

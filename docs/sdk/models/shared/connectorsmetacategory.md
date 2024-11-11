@@ -24,4 +24,5 @@ This is an open enum. Unrecognized values will be captured as the `Unrecognized<
 | `Marketing`            | marketing              |
 | `Lms`                  | lms                    |
 | `Stackone`             | stackone               |
+| `FileStorage`          | file-storage           |
 | -                      | `Unrecognized<string>` |

@@ -51,12 +51,6 @@ export type AtsListApplicationCustomFieldDefinitionsRequest = {
    */
   raw?: boolean | null | undefined;
   /**
-   * The sync token to select the only updated results
-   *
-   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
-   */
-  syncToken?: string | null | undefined;
-  /**
    * Use a string with a date to only select results updated after that given date
    *
    * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
@@ -157,13 +151,11 @@ export const AtsListApplicationCustomFieldDefinitionsRequest$inboundSchema:
     page_size: z.nullable(z.string().default("25")),
     proxy: z.nullable(z.record(z.any())).optional(),
     raw: z.nullable(z.boolean().default(false)),
-    sync_token: z.nullable(z.string()).optional(),
     updated_after: z.nullable(z.string()).optional(),
     "x-account-id": z.string(),
   }).transform((v) => {
     return remap$(v, {
       "page_size": "pageSize",
-      "sync_token": "syncToken",
       "updated_after": "updatedAfter",
       "x-account-id": "xAccountId",
     });
@@ -181,7 +173,6 @@ export type AtsListApplicationCustomFieldDefinitionsRequest$Outbound = {
   page_size: string | null;
   proxy?: { [k: string]: any } | null | undefined;
   raw: boolean | null;
-  sync_token?: string | null | undefined;
   updated_after?: string | null | undefined;
   "x-account-id": string;
 };
@@ -204,13 +195,11 @@ export const AtsListApplicationCustomFieldDefinitionsRequest$outboundSchema:
     pageSize: z.nullable(z.string().default("25")),
     proxy: z.nullable(z.record(z.any())).optional(),
     raw: z.nullable(z.boolean().default(false)),
-    syncToken: z.nullable(z.string()).optional(),
     updatedAfter: z.nullable(z.string()).optional(),
     xAccountId: z.string(),
   }).transform((v) => {
     return remap$(v, {
       pageSize: "page_size",
-      syncToken: "sync_token",
       updatedAfter: "updated_after",
       xAccountId: "x-account-id",
     });

@@ -65,6 +65,10 @@ export type MarketingListSmsTemplatesResponse = {
    */
   contentType: string;
   /**
+   * The list of SMS templates was retrieved.
+   */
+  smsTemplatesPaginated?: shared.SmsTemplatesPaginated | undefined;
+  /**
    * HTTP response status code for this operation
    */
   statusCode: number;
@@ -72,10 +76,6 @@ export type MarketingListSmsTemplatesResponse = {
    * Raw HTTP response; suitable for custom response parsing
    */
   rawResponse: Response;
-  /**
-   * The list of SMS templates was retrieved.
-   */
-  templatesPaginated?: shared.TemplatesPaginated | undefined;
 };
 
 /** @internal */
@@ -211,24 +211,24 @@ export const MarketingListSmsTemplatesResponse$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   ContentType: z.string(),
+  SmsTemplatesPaginated: shared.SmsTemplatesPaginated$inboundSchema.optional(),
   StatusCode: z.number().int(),
   RawResponse: z.instanceof(Response),
-  TemplatesPaginated: shared.TemplatesPaginated$inboundSchema.optional(),
 }).transform((v) => {
   return remap$(v, {
     "ContentType": "contentType",
+    "SmsTemplatesPaginated": "smsTemplatesPaginated",
     "StatusCode": "statusCode",
     "RawResponse": "rawResponse",
-    "TemplatesPaginated": "templatesPaginated",
   });
 });
 
 /** @internal */
 export type MarketingListSmsTemplatesResponse$Outbound = {
   ContentType: string;
+  SmsTemplatesPaginated?: shared.SmsTemplatesPaginated$Outbound | undefined;
   StatusCode: number;
   RawResponse: never;
-  TemplatesPaginated?: shared.TemplatesPaginated$Outbound | undefined;
 };
 
 /** @internal */
@@ -238,17 +238,17 @@ export const MarketingListSmsTemplatesResponse$outboundSchema: z.ZodType<
   MarketingListSmsTemplatesResponse
 > = z.object({
   contentType: z.string(),
+  smsTemplatesPaginated: shared.SmsTemplatesPaginated$outboundSchema.optional(),
   statusCode: z.number().int(),
   rawResponse: z.instanceof(Response).transform(() => {
     throw new Error("Response cannot be serialized");
   }),
-  templatesPaginated: shared.TemplatesPaginated$outboundSchema.optional(),
 }).transform((v) => {
   return remap$(v, {
     contentType: "ContentType",
+    smsTemplatesPaginated: "SmsTemplatesPaginated",
     statusCode: "StatusCode",
     rawResponse: "RawResponse",
-    templatesPaginated: "TemplatesPaginated",
   });
 });
 

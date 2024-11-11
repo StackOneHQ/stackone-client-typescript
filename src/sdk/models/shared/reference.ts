@@ -13,7 +13,7 @@ export enum Reference2 {
 /**
  * The reference status
  */
-export type ReferenceActive = boolean | Reference2;
+export type Active = boolean | Reference2;
 
 export type Reference = {
   /**
@@ -54,33 +54,30 @@ export namespace Reference2$ {
 }
 
 /** @internal */
-export const ReferenceActive$inboundSchema: z.ZodType<
-  ReferenceActive,
-  z.ZodTypeDef,
-  unknown
-> = z.union([z.boolean(), Reference2$inboundSchema]);
+export const Active$inboundSchema: z.ZodType<Active, z.ZodTypeDef, unknown> = z
+  .union([z.boolean(), Reference2$inboundSchema]);
 
 /** @internal */
-export type ReferenceActive$Outbound = boolean | string;
+export type Active$Outbound = boolean | string;
 
 /** @internal */
-export const ReferenceActive$outboundSchema: z.ZodType<
-  ReferenceActive$Outbound,
+export const Active$outboundSchema: z.ZodType<
+  Active$Outbound,
   z.ZodTypeDef,
-  ReferenceActive
+  Active
 > = z.union([z.boolean(), Reference2$outboundSchema]);
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace ReferenceActive$ {
-  /** @deprecated use `ReferenceActive$inboundSchema` instead. */
-  export const inboundSchema = ReferenceActive$inboundSchema;
-  /** @deprecated use `ReferenceActive$outboundSchema` instead. */
-  export const outboundSchema = ReferenceActive$outboundSchema;
-  /** @deprecated use `ReferenceActive$Outbound` instead. */
-  export type Outbound = ReferenceActive$Outbound;
+export namespace Active$ {
+  /** @deprecated use `Active$inboundSchema` instead. */
+  export const inboundSchema = Active$inboundSchema;
+  /** @deprecated use `Active$outboundSchema` instead. */
+  export const outboundSchema = Active$outboundSchema;
+  /** @deprecated use `Active$Outbound` instead. */
+  export type Outbound = Active$Outbound;
 }
 
 /** @internal */

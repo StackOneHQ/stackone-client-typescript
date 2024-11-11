@@ -65,6 +65,10 @@ export type MarketingListInAppTemplatesResponse = {
    */
   contentType: string;
   /**
+   * The list of in-app templates was retrieved.
+   */
+  inAppTemplatesPaginated?: shared.InAppTemplatesPaginated | undefined;
+  /**
    * HTTP response status code for this operation
    */
   statusCode: number;
@@ -72,10 +76,6 @@ export type MarketingListInAppTemplatesResponse = {
    * Raw HTTP response; suitable for custom response parsing
    */
   rawResponse: Response;
-  /**
-   * The list of in-app templates was retrieved.
-   */
-  templatesPaginated?: shared.TemplatesPaginated | undefined;
 };
 
 /** @internal */
@@ -213,24 +213,25 @@ export const MarketingListInAppTemplatesResponse$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   ContentType: z.string(),
+  InAppTemplatesPaginated: shared.InAppTemplatesPaginated$inboundSchema
+    .optional(),
   StatusCode: z.number().int(),
   RawResponse: z.instanceof(Response),
-  TemplatesPaginated: shared.TemplatesPaginated$inboundSchema.optional(),
 }).transform((v) => {
   return remap$(v, {
     "ContentType": "contentType",
+    "InAppTemplatesPaginated": "inAppTemplatesPaginated",
     "StatusCode": "statusCode",
     "RawResponse": "rawResponse",
-    "TemplatesPaginated": "templatesPaginated",
   });
 });
 
 /** @internal */
 export type MarketingListInAppTemplatesResponse$Outbound = {
   ContentType: string;
+  InAppTemplatesPaginated?: shared.InAppTemplatesPaginated$Outbound | undefined;
   StatusCode: number;
   RawResponse: never;
-  TemplatesPaginated?: shared.TemplatesPaginated$Outbound | undefined;
 };
 
 /** @internal */
@@ -240,17 +241,18 @@ export const MarketingListInAppTemplatesResponse$outboundSchema: z.ZodType<
   MarketingListInAppTemplatesResponse
 > = z.object({
   contentType: z.string(),
+  inAppTemplatesPaginated: shared.InAppTemplatesPaginated$outboundSchema
+    .optional(),
   statusCode: z.number().int(),
   rawResponse: z.instanceof(Response).transform(() => {
     throw new Error("Response cannot be serialized");
   }),
-  templatesPaginated: shared.TemplatesPaginated$outboundSchema.optional(),
 }).transform((v) => {
   return remap$(v, {
     contentType: "ContentType",
+    inAppTemplatesPaginated: "InAppTemplatesPaginated",
     statusCode: "StatusCode",
     rawResponse: "RawResponse",
-    templatesPaginated: "TemplatesPaginated",
   });
 });
 

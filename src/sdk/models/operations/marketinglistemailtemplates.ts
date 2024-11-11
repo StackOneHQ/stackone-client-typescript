@@ -65,6 +65,10 @@ export type MarketingListEmailTemplatesResponse = {
    */
   contentType: string;
   /**
+   * The list of email templates was retrieved.
+   */
+  emailTemplatesPaginated?: shared.EmailTemplatesPaginated | undefined;
+  /**
    * HTTP response status code for this operation
    */
   statusCode: number;
@@ -72,10 +76,6 @@ export type MarketingListEmailTemplatesResponse = {
    * Raw HTTP response; suitable for custom response parsing
    */
   rawResponse: Response;
-  /**
-   * The list of email templates was retrieved.
-   */
-  templatesPaginated?: shared.TemplatesPaginated | undefined;
 };
 
 /** @internal */
@@ -213,24 +213,25 @@ export const MarketingListEmailTemplatesResponse$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   ContentType: z.string(),
+  EmailTemplatesPaginated: shared.EmailTemplatesPaginated$inboundSchema
+    .optional(),
   StatusCode: z.number().int(),
   RawResponse: z.instanceof(Response),
-  TemplatesPaginated: shared.TemplatesPaginated$inboundSchema.optional(),
 }).transform((v) => {
   return remap$(v, {
     "ContentType": "contentType",
+    "EmailTemplatesPaginated": "emailTemplatesPaginated",
     "StatusCode": "statusCode",
     "RawResponse": "rawResponse",
-    "TemplatesPaginated": "templatesPaginated",
   });
 });
 
 /** @internal */
 export type MarketingListEmailTemplatesResponse$Outbound = {
   ContentType: string;
+  EmailTemplatesPaginated?: shared.EmailTemplatesPaginated$Outbound | undefined;
   StatusCode: number;
   RawResponse: never;
-  TemplatesPaginated?: shared.TemplatesPaginated$Outbound | undefined;
 };
 
 /** @internal */
@@ -240,17 +241,18 @@ export const MarketingListEmailTemplatesResponse$outboundSchema: z.ZodType<
   MarketingListEmailTemplatesResponse
 > = z.object({
   contentType: z.string(),
+  emailTemplatesPaginated: shared.EmailTemplatesPaginated$outboundSchema
+    .optional(),
   statusCode: z.number().int(),
   rawResponse: z.instanceof(Response).transform(() => {
     throw new Error("Response cannot be serialized");
   }),
-  templatesPaginated: shared.TemplatesPaginated$outboundSchema.optional(),
 }).transform((v) => {
   return remap$(v, {
     contentType: "ContentType",
+    emailTemplatesPaginated: "EmailTemplatesPaginated",
     statusCode: "StatusCode",
     rawResponse: "RawResponse",
-    templatesPaginated: "TemplatesPaginated",
   });
 });
 

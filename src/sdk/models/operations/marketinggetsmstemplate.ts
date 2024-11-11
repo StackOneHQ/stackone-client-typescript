@@ -32,6 +32,10 @@ export type MarketingGetSmsTemplateResponse = {
    */
   contentType: string;
   /**
+   * The SMS template with the given identifier was retrieved.
+   */
+  smsTemplateResult?: shared.SmsTemplateResult | undefined;
+  /**
    * HTTP response status code for this operation
    */
   statusCode: number;
@@ -39,10 +43,6 @@ export type MarketingGetSmsTemplateResponse = {
    * Raw HTTP response; suitable for custom response parsing
    */
   rawResponse: Response;
-  /**
-   * The SMS template with the given identifier was retrieved.
-   */
-  templateResult?: shared.TemplateResult | undefined;
 };
 
 /** @internal */
@@ -108,24 +108,24 @@ export const MarketingGetSmsTemplateResponse$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   ContentType: z.string(),
+  SmsTemplateResult: shared.SmsTemplateResult$inboundSchema.optional(),
   StatusCode: z.number().int(),
   RawResponse: z.instanceof(Response),
-  TemplateResult: shared.TemplateResult$inboundSchema.optional(),
 }).transform((v) => {
   return remap$(v, {
     "ContentType": "contentType",
+    "SmsTemplateResult": "smsTemplateResult",
     "StatusCode": "statusCode",
     "RawResponse": "rawResponse",
-    "TemplateResult": "templateResult",
   });
 });
 
 /** @internal */
 export type MarketingGetSmsTemplateResponse$Outbound = {
   ContentType: string;
+  SmsTemplateResult?: shared.SmsTemplateResult$Outbound | undefined;
   StatusCode: number;
   RawResponse: never;
-  TemplateResult?: shared.TemplateResult$Outbound | undefined;
 };
 
 /** @internal */
@@ -135,17 +135,17 @@ export const MarketingGetSmsTemplateResponse$outboundSchema: z.ZodType<
   MarketingGetSmsTemplateResponse
 > = z.object({
   contentType: z.string(),
+  smsTemplateResult: shared.SmsTemplateResult$outboundSchema.optional(),
   statusCode: z.number().int(),
   rawResponse: z.instanceof(Response).transform(() => {
     throw new Error("Response cannot be serialized");
   }),
-  templateResult: shared.TemplateResult$outboundSchema.optional(),
 }).transform((v) => {
   return remap$(v, {
     contentType: "ContentType",
+    smsTemplateResult: "SmsTemplateResult",
     statusCode: "StatusCode",
     rawResponse: "RawResponse",
-    templateResult: "TemplateResult",
   });
 });
 

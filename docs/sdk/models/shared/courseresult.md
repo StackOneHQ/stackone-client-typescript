@@ -3,10 +3,11 @@
 ## Example Usage
 
 ```typescript
-import { ContentLanguageEnumValue, CourseResult } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { CourseResult, LanguageEnumValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: CourseResult = {
   data: {
+    active: true,
     categories: [
       {
         active: true,
@@ -28,10 +29,10 @@ let value: CourseResult = {
     description: "This course acts as learning content for software engineers.",
     duration: "P3Y6M4DT12H30M5S",
     externalReference: "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1",
-    id: "16873-ENG-VIDEO-1",
+    id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
     languages: [
       {
-        value: ContentLanguageEnumValue.EnGB,
+        value: LanguageEnumValue.EnGB,
       },
     ],
     remoteContentIds: [

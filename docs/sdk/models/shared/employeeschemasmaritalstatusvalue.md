@@ -6,7 +6,7 @@
 import { EmployeeSchemasMaritalStatusValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: EmployeeSchemasMaritalStatusValue =
-  EmployeeSchemasMaritalStatusValue.DomesticPartnership;
+  EmployeeSchemasMaritalStatusValue.CommonLaw;
 ```
 
 ## Values

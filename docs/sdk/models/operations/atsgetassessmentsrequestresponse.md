@@ -41,7 +41,7 @@ let value: AtsGetAssessmentsRequestResponse = {
     },
   },
   contentType: "<value>",
-  statusCode: 201,
+  statusCode: 407,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

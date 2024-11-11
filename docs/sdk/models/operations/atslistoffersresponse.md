@@ -35,7 +35,7 @@ let value: AtsListOffersResponse = {
       },
     ],
   },
-  statusCode: 408,
+  statusCode: 412,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

@@ -32,6 +32,10 @@ export type MarketingGetEmailTemplateResponse = {
    */
   contentType: string;
   /**
+   * The email template with the given identifier was retrieved.
+   */
+  emailTemplateResult?: shared.EmailTemplateResult | undefined;
+  /**
    * HTTP response status code for this operation
    */
   statusCode: number;
@@ -39,10 +43,6 @@ export type MarketingGetEmailTemplateResponse = {
    * Raw HTTP response; suitable for custom response parsing
    */
   rawResponse: Response;
-  /**
-   * The email template with the given identifier was retrieved.
-   */
-  templateResult?: shared.TemplateResult | undefined;
 };
 
 /** @internal */
@@ -108,24 +108,24 @@ export const MarketingGetEmailTemplateResponse$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   ContentType: z.string(),
+  EmailTemplateResult: shared.EmailTemplateResult$inboundSchema.optional(),
   StatusCode: z.number().int(),
   RawResponse: z.instanceof(Response),
-  TemplateResult: shared.TemplateResult$inboundSchema.optional(),
 }).transform((v) => {
   return remap$(v, {
     "ContentType": "contentType",
+    "EmailTemplateResult": "emailTemplateResult",
     "StatusCode": "statusCode",
     "RawResponse": "rawResponse",
-    "TemplateResult": "templateResult",
   });
 });
 
 /** @internal */
 export type MarketingGetEmailTemplateResponse$Outbound = {
   ContentType: string;
+  EmailTemplateResult?: shared.EmailTemplateResult$Outbound | undefined;
   StatusCode: number;
   RawResponse: never;
-  TemplateResult?: shared.TemplateResult$Outbound | undefined;
 };
 
 /** @internal */
@@ -135,17 +135,17 @@ export const MarketingGetEmailTemplateResponse$outboundSchema: z.ZodType<
   MarketingGetEmailTemplateResponse
 > = z.object({
   contentType: z.string(),
+  emailTemplateResult: shared.EmailTemplateResult$outboundSchema.optional(),
   statusCode: z.number().int(),
   rawResponse: z.instanceof(Response).transform(() => {
     throw new Error("Response cannot be serialized");
   }),
-  templateResult: shared.TemplateResult$outboundSchema.optional(),
 }).transform((v) => {
   return remap$(v, {
     contentType: "ContentType",
+    emailTemplateResult: "EmailTemplateResult",
     statusCode: "StatusCode",
     rawResponse: "RawResponse",
-    templateResult: "TemplateResult",
   });
 });
 

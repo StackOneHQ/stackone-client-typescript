@@ -11,6 +11,7 @@ import * as shared from "../shared/index.js";
  */
 export enum Status {
   Open = "open",
+  Draft = "draft",
 }
 
 /**

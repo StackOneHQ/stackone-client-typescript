@@ -6,7 +6,7 @@
 import { LmsUpsertContentRequestDtoSchemasValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: LmsUpsertContentRequestDtoSchemasValue =
-  LmsUpsertContentRequestDtoSchemasValue.Quiz;
+  LmsUpsertContentRequestDtoSchemasValue.Document;
 ```
 
 ## Values

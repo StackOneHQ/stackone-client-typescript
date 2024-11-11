@@ -3,9 +3,9 @@
  */
 
 import { lmsBatchUpsertContent } from "../funcs/lmsBatchUpsertContent.js";
-import { lmsCreateContent } from "../funcs/lmsCreateContent.js";
+import { lmsBatchUpsertCourse } from "../funcs/lmsBatchUpsertCourse.js";
+import { lmsCreateCollection } from "../funcs/lmsCreateCollection.js";
 import { lmsCreateUserCompletion } from "../funcs/lmsCreateUserCompletion.js";
-import { lmsDeleteContent } from "../funcs/lmsDeleteContent.js";
 import { lmsGetAssignment } from "../funcs/lmsGetAssignment.js";
 import { lmsGetCategory } from "../funcs/lmsGetCategory.js";
 import { lmsGetCompletion } from "../funcs/lmsGetCompletion.js";
@@ -24,8 +24,9 @@ import { lmsListSkills } from "../funcs/lmsListSkills.js";
 import { lmsListUserAssignments } from "../funcs/lmsListUserAssignments.js";
 import { lmsListUserCompletions } from "../funcs/lmsListUserCompletions.js";
 import { lmsListUsers } from "../funcs/lmsListUsers.js";
-import { lmsUpdateContent } from "../funcs/lmsUpdateContent.js";
+import { lmsUpdateCollection } from "../funcs/lmsUpdateCollection.js";
 import { lmsUpsertContent } from "../funcs/lmsUpsertContent.js";
+import { lmsUpsertCourse } from "../funcs/lmsUpsertCourse.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as operations from "./models/operations/index.js";
 import { unwrapAsync } from "./types/fp.js";
@@ -46,13 +47,27 @@ export class Lms extends ClientSDK {
   }
 
   /**
-   * Create Content
+   * Batch Upsert Course
    */
-  async createContent(
-    request: operations.LmsCreateContentRequest,
+  async batchUpsertCourse(
+    request: operations.LmsBatchUpsertCourseRequest,
     options?: RequestOptions,
-  ): Promise<operations.LmsCreateContentResponse> {
-    return unwrapAsync(lmsCreateContent(
+  ): Promise<operations.LmsBatchUpsertCourseResponse> {
+    return unwrapAsync(lmsBatchUpsertCourse(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Create Collection
+   */
+  async createCollection(
+    request: operations.LmsCreateCollectionRequest,
+    options?: RequestOptions,
+  ): Promise<operations.LmsCreateCollectionResponse> {
+    return unwrapAsync(lmsCreateCollection(
       this,
       request,
       options,
@@ -67,20 +82,6 @@ export class Lms extends ClientSDK {
     options?: RequestOptions,
   ): Promise<operations.LmsCreateUserCompletionResponse> {
     return unwrapAsync(lmsCreateUserCompletion(
-      this,
-      request,
-      options,
-    ));
-  }
-
-  /**
-   * Delete Content
-   */
-  async deleteContent(
-    request: operations.LmsDeleteContentRequest,
-    options?: RequestOptions,
-  ): Promise<operations.LmsDeleteContentResponse> {
-    return unwrapAsync(lmsDeleteContent(
       this,
       request,
       options,
@@ -340,13 +341,13 @@ export class Lms extends ClientSDK {
   }
 
   /**
-   * Update Content
+   * Update Collection
    */
-  async updateContent(
-    request: operations.LmsUpdateContentRequest,
+  async updateCollection(
+    request: operations.LmsUpdateCollectionRequest,
     options?: RequestOptions,
-  ): Promise<operations.LmsUpdateContentResponse> {
-    return unwrapAsync(lmsUpdateContent(
+  ): Promise<operations.LmsUpdateCollectionResponse> {
+    return unwrapAsync(lmsUpdateCollection(
       this,
       request,
       options,
@@ -361,6 +362,20 @@ export class Lms extends ClientSDK {
     options?: RequestOptions,
   ): Promise<operations.LmsUpsertContentResponse> {
     return unwrapAsync(lmsUpsertContent(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Upsert Course
+   */
+  async upsertCourse(
+    request: operations.LmsUpsertCourseRequest,
+    options?: RequestOptions,
+  ): Promise<operations.LmsUpsertCourseResponse> {
+    return unwrapAsync(lmsUpsertCourse(
       this,
       request,
       options,

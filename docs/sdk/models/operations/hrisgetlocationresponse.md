@@ -36,7 +36,7 @@ let value: HrisGetLocationResponse = {
       zipCode: "NG33 5NR",
     },
   },
-  statusCode: 102,
+  statusCode: 304,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

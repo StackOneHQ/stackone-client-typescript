@@ -10,17 +10,17 @@ import {
   Unrecognized,
 } from "../../types/enums.js";
 import {
+  CustomFields,
+  CustomFields$inboundSchema,
+  CustomFields$Outbound,
+  CustomFields$outboundSchema,
+} from "./customfields.js";
+import {
   InterviewStage,
   InterviewStage$inboundSchema,
   InterviewStage$Outbound,
   InterviewStage$outboundSchema,
 } from "./interviewstage.js";
-import {
-  JobCustomFields,
-  JobCustomFields$inboundSchema,
-  JobCustomFields$Outbound,
-  JobCustomFields$outboundSchema,
-} from "./jobcustomfields.js";
 import {
   JobHiringTeam,
   JobHiringTeam$inboundSchema,
@@ -107,7 +107,7 @@ export type AtsCreateJobRequestDto = {
   /**
    * The job custom fields
    */
-  customFields?: Array<JobCustomFields> | null | undefined;
+  customFields?: Array<CustomFields> | null | undefined;
   /**
    * Department ids of the job
    */
@@ -368,7 +368,7 @@ export const AtsCreateJobRequestDto$inboundSchema: z.ZodType<
 > = z.object({
   code: z.nullable(z.string()).optional(),
   confidential: z.nullable(Confidential$inboundSchema).optional(),
-  custom_fields: z.nullable(z.array(JobCustomFields$inboundSchema)).optional(),
+  custom_fields: z.nullable(z.array(CustomFields$inboundSchema)).optional(),
   department_ids: z.nullable(z.array(z.string())).optional(),
   hiring_team: z.nullable(z.array(JobHiringTeam$inboundSchema)).optional(),
   interview_stages: z.nullable(z.array(InterviewStage$inboundSchema))
@@ -395,7 +395,7 @@ export const AtsCreateJobRequestDto$inboundSchema: z.ZodType<
 export type AtsCreateJobRequestDto$Outbound = {
   code?: string | null | undefined;
   confidential?: string | null | undefined;
-  custom_fields?: Array<JobCustomFields$Outbound> | null | undefined;
+  custom_fields?: Array<CustomFields$Outbound> | null | undefined;
   department_ids?: Array<string> | null | undefined;
   hiring_team?: Array<JobHiringTeam$Outbound> | null | undefined;
   interview_stages?: Array<InterviewStage$Outbound> | null | undefined;
@@ -415,7 +415,7 @@ export const AtsCreateJobRequestDto$outboundSchema: z.ZodType<
 > = z.object({
   code: z.nullable(z.string()).optional(),
   confidential: z.nullable(Confidential$outboundSchema).optional(),
-  customFields: z.nullable(z.array(JobCustomFields$outboundSchema)).optional(),
+  customFields: z.nullable(z.array(CustomFields$outboundSchema)).optional(),
   departmentIds: z.nullable(z.array(z.string())).optional(),
   hiringTeam: z.nullable(z.array(JobHiringTeam$outboundSchema)).optional(),
   interviewStages: z.nullable(z.array(InterviewStage$outboundSchema))

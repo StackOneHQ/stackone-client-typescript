@@ -4,7 +4,7 @@
 
 ```typescript
 import { LmsListContentResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
-import { ContentLanguageEnumValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { LanguageEnumValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: LmsListContentResponse = {
   contentPaginated: {
@@ -34,10 +34,10 @@ let value: LmsListContentResponse = {
           "This video acts as learning content for software engineers.",
         duration: "P3Y6M4DT12H30M5S",
         externalReference: "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1",
-        id: "16873-ENG-VIDEO-1",
+        id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         languages: [
           {
-            value: ContentLanguageEnumValue.EnGB,
+            value: LanguageEnumValue.EnGB,
           },
         ],
         order: 1,
@@ -63,7 +63,7 @@ let value: LmsListContentResponse = {
     ],
   },
   contentType: "<value>",
-  statusCode: 511,
+  statusCode: 508,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

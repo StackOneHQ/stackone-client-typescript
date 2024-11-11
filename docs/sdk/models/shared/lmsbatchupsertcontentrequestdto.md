@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { ContentLanguageEnumValue, LmsBatchUpsertContentRequestDto } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { LanguageEnumValue, LmsBatchUpsertContentRequestDto } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: LmsBatchUpsertContentRequestDto = {
   items: [
@@ -11,7 +11,6 @@ let value: LmsBatchUpsertContentRequestDto = {
       active: true,
       categories: [
         {
-          active: true,
           name: "Technology",
           unifiedCustomFields: {
             "my_project_custom_field_1": "REF-1236",
@@ -31,16 +30,15 @@ let value: LmsBatchUpsertContentRequestDto = {
       externalReference: "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1",
       languages: [
         {
-          value: ContentLanguageEnumValue.EnGB,
+          value: LanguageEnumValue.EnGB,
         },
       ],
       order: 1,
       skills: [
         {
-          active: true,
-          id: "12345",
-          name: "Sales Techniques",
-          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          id: "cx2367ndc8dgsbjhka9ry4",
+          name: "Software Engineering",
+          remoteId: "SE-001",
         },
       ],
       title: "Software Engineer Lv 1",

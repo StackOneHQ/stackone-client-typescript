@@ -6,9 +6,9 @@
 ### Available Operations
 
 * [batchUpsertContent](#batchupsertcontent) - Batch Upsert Content
-* [createContent](#createcontent) - Create Content
+* [batchUpsertCourse](#batchupsertcourse) - Batch Upsert Course
+* [createCollection](#createcollection) - Create Collection
 * [createUserCompletion](#createusercompletion) - Create User Completion
-* [deleteContent](#deletecontent) - Delete Content
 * [getAssignment](#getassignment) - Get Assignment
 * [getCategory](#getcategory) - Get Category
 * [getCompletion](#getcompletion) - Get Completion
@@ -27,8 +27,9 @@
 * [listUserAssignments](#listuserassignments) - List User Assignments
 * [listUserCompletions](#listusercompletions) - List User Completions
 * [listUsers](#listusers) - List Users
-* [updateContent](#updatecontent) - Update Content
+* [updateCollection](#updatecollection) - Update Collection
 * [upsertContent](#upsertcontent) - Upsert Content
+* [upsertCourse](#upsertcourse) - Upsert Course
 
 ## batchUpsertContent
 
@@ -38,7 +39,7 @@ Batch Upsert Content
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
-import { ContentLanguageEnumValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { LanguageEnumValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 const stackOne = new StackOne({
   security: {
@@ -55,7 +56,6 @@ async function run() {
           active: true,
           categories: [
             {
-              active: true,
               name: "Technology",
               unifiedCustomFields: {
                 "my_project_custom_field_1": "REF-1236",
@@ -74,16 +74,15 @@ async function run() {
           externalReference: "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1",
           languages: [
             {
-              value: ContentLanguageEnumValue.EnGB,
+              value: LanguageEnumValue.EnGB,
             },
           ],
           order: 1,
           skills: [
             {
-              active: true,
-              id: "12345",
-              name: "Sales Techniques",
-              remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+              id: "cx2367ndc8dgsbjhka9ry4",
+              name: "Software Engineering",
+              remoteId: "SE-001",
             },
           ],
           title: "Software Engineer Lv 1",
@@ -111,7 +110,7 @@ The standalone function version of this method:
 ```typescript
 import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
 import { lmsBatchUpsertContent } from "@stackone/stackone-client-ts/funcs/lmsBatchUpsertContent.js";
-import { ContentLanguageEnumValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { LanguageEnumValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 // Use `StackOneCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -130,7 +129,6 @@ async function run() {
           active: true,
           categories: [
             {
-              active: true,
               name: "Technology",
               unifiedCustomFields: {
                 "my_project_custom_field_1": "REF-1236",
@@ -149,16 +147,15 @@ async function run() {
           externalReference: "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1",
           languages: [
             {
-              value: ContentLanguageEnumValue.EnGB,
+              value: LanguageEnumValue.EnGB,
             },
           ],
           order: 1,
           skills: [
             {
-              active: true,
-              id: "12345",
-              name: "Sales Techniques",
-              remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+              id: "cx2367ndc8dgsbjhka9ry4",
+              name: "Software Engineering",
+              remoteId: "SE-001",
             },
           ],
           title: "Software Engineer Lv 1",
@@ -204,15 +201,15 @@ run();
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 4XX, 5XX        | \*/\*           |
 
-## createContent
+## batchUpsertCourse
 
-Create Content
+Batch Upsert Course
 
 ### Example Usage
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
-import { ContentLanguageEnumValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { LanguageEnumValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 const stackOne = new StackOne({
   security: {
@@ -222,49 +219,115 @@ const stackOne = new StackOne({
 });
 
 async function run() {
-  const result = await stackOne.lms.createContent({
-    lmsCreateContentRequestDto: {
-      active: true,
-      categories: [
+  const result = await stackOne.lms.batchUpsertCourse({
+    lmsBatchUpsertCourseRequestDto: {
+      items: [
         {
           active: true,
-          name: "Information-Technology",
+          categories: [
+            {
+              name: "Information-Technology",
+              unifiedCustomFields: {
+                "my_project_custom_field_1": "REF-1236",
+                "my_project_custom_field_2": "some other value",
+              },
+            },
+          ],
+          content: [
+            {
+              contentUrl: "https://www.youtube.com/watch?v=16873",
+              description: "This video acts as learning content for software engineers.",
+              order: 1,
+              title: "Software Engineer Lv 1",
+            },
+          ],
+          contentIds: [
+            "16873-SOFTWARE-ENG-Content",
+          ],
+          coverUrl: "https://www.googledrive.com/?v=16873",
+          createdAt: "2021-07-21T14:00:00.000Z",
+          description: "This course acts as learning content for software engineers.",
+          duration: "P3Y6M4DT12H30M5S",
+          externalReference: "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1",
+          languages: [
+            {
+              value: LanguageEnumValue.EnGB,
+            },
+            {
+              value: LanguageEnumValue.EnGB,
+            },
+          ],
+          skills: [
+            {
+              id: "16873-IT345",
+              name: "Information-Technology",
+              remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+            },
+          ],
+          title: "Software Engineer Lv 1",
           unifiedCustomFields: {
             "my_project_custom_field_1": "REF-1236",
             "my_project_custom_field_2": "some other value",
           },
+          updatedAt: "2021-07-21T14:00:00.000Z",
+          url: "https://www.linkedinlearning.com/?v=16873",
         },
-      ],
-      contentLaunchMethod: {},
-      contentUrl: "https://www.youtube.com/watch?v=16873",
-      courseIds: [
-        "16873-SOFTWARE-ENG-COURSE",
-      ],
-      coverUrl: "https://www.googledrive.com/?v=16873",
-      description: "This video acts as learning content for software engineers.",
-      duration: "P3Y6M4DT12H30M5S",
-      externalReference: "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1",
-      languages: [
-        {
-          value: ContentLanguageEnumValue.EnGB,
-        },
-      ],
-      order: 1,
-      skills: [
         {
           active: true,
-          id: "16873-IT345",
-          name: "Information-Technology",
-          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          categories: [
+            {
+              name: "Information-Technology",
+              unifiedCustomFields: {
+                "my_project_custom_field_1": "REF-1236",
+                "my_project_custom_field_2": "some other value",
+              },
+            },
+          ],
+          content: [
+            {
+              contentUrl: "https://www.youtube.com/watch?v=16873",
+              description: "This video acts as learning content for software engineers.",
+              order: 1,
+              title: "Software Engineer Lv 1",
+            },
+            {
+              contentUrl: "https://www.youtube.com/watch?v=16873",
+              description: "This video acts as learning content for software engineers.",
+              order: 1,
+              title: "Software Engineer Lv 1",
+            },
+          ],
+          contentIds: [
+            "16873-SOFTWARE-ENG-Content",
+          ],
+          coverUrl: "https://www.googledrive.com/?v=16873",
+          createdAt: "2021-07-21T14:00:00.000Z",
+          description: "This course acts as learning content for software engineers.",
+          duration: "P3Y6M4DT12H30M5S",
+          externalReference: "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1",
+          languages: [
+            {
+              value: LanguageEnumValue.EnGB,
+            },
+          ],
+          skills: [
+            {
+              id: "16873-IT345",
+              name: "Information-Technology",
+              remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+            },
+          ],
+          title: "Software Engineer Lv 1",
+          unifiedCustomFields: {
+            "my_project_custom_field_1": "REF-1236",
+            "my_project_custom_field_2": "some other value",
+          },
+          updatedAt: "2021-07-21T14:00:00.000Z",
+          url: "https://www.linkedinlearning.com/?v=16873",
         },
       ],
-      title: "Software Engineer Lv 1",
-      unifiedCustomFields: {
-        "my_project_custom_field_1": "REF-1236",
-        "my_project_custom_field_2": "some other value",
-      },
     },
-    xAccountId: "<value>",
+    xAccountId: "<id>",
   });
 
   // Handle the result
@@ -280,8 +343,8 @@ The standalone function version of this method:
 
 ```typescript
 import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
-import { lmsCreateContent } from "@stackone/stackone-client-ts/funcs/lmsCreateContent.js";
-import { ContentLanguageEnumValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { lmsBatchUpsertCourse } from "@stackone/stackone-client-ts/funcs/lmsBatchUpsertCourse.js";
+import { LanguageEnumValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 // Use `StackOneCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -293,49 +356,115 @@ const stackOne = new StackOneCore({
 });
 
 async function run() {
-  const res = await lmsCreateContent(stackOne, {
-    lmsCreateContentRequestDto: {
-      active: true,
-      categories: [
+  const res = await lmsBatchUpsertCourse(stackOne, {
+    lmsBatchUpsertCourseRequestDto: {
+      items: [
         {
           active: true,
-          name: "Information-Technology",
+          categories: [
+            {
+              name: "Information-Technology",
+              unifiedCustomFields: {
+                "my_project_custom_field_1": "REF-1236",
+                "my_project_custom_field_2": "some other value",
+              },
+            },
+          ],
+          content: [
+            {
+              contentUrl: "https://www.youtube.com/watch?v=16873",
+              description: "This video acts as learning content for software engineers.",
+              order: 1,
+              title: "Software Engineer Lv 1",
+            },
+          ],
+          contentIds: [
+            "16873-SOFTWARE-ENG-Content",
+          ],
+          coverUrl: "https://www.googledrive.com/?v=16873",
+          createdAt: "2021-07-21T14:00:00.000Z",
+          description: "This course acts as learning content for software engineers.",
+          duration: "P3Y6M4DT12H30M5S",
+          externalReference: "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1",
+          languages: [
+            {
+              value: LanguageEnumValue.EnGB,
+            },
+            {
+              value: LanguageEnumValue.EnGB,
+            },
+          ],
+          skills: [
+            {
+              id: "16873-IT345",
+              name: "Information-Technology",
+              remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+            },
+          ],
+          title: "Software Engineer Lv 1",
           unifiedCustomFields: {
             "my_project_custom_field_1": "REF-1236",
             "my_project_custom_field_2": "some other value",
           },
+          updatedAt: "2021-07-21T14:00:00.000Z",
+          url: "https://www.linkedinlearning.com/?v=16873",
         },
-      ],
-      contentLaunchMethod: {},
-      contentUrl: "https://www.youtube.com/watch?v=16873",
-      courseIds: [
-        "16873-SOFTWARE-ENG-COURSE",
-      ],
-      coverUrl: "https://www.googledrive.com/?v=16873",
-      description: "This video acts as learning content for software engineers.",
-      duration: "P3Y6M4DT12H30M5S",
-      externalReference: "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1",
-      languages: [
-        {
-          value: ContentLanguageEnumValue.EnGB,
-        },
-      ],
-      order: 1,
-      skills: [
         {
           active: true,
-          id: "16873-IT345",
-          name: "Information-Technology",
-          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          categories: [
+            {
+              name: "Information-Technology",
+              unifiedCustomFields: {
+                "my_project_custom_field_1": "REF-1236",
+                "my_project_custom_field_2": "some other value",
+              },
+            },
+          ],
+          content: [
+            {
+              contentUrl: "https://www.youtube.com/watch?v=16873",
+              description: "This video acts as learning content for software engineers.",
+              order: 1,
+              title: "Software Engineer Lv 1",
+            },
+            {
+              contentUrl: "https://www.youtube.com/watch?v=16873",
+              description: "This video acts as learning content for software engineers.",
+              order: 1,
+              title: "Software Engineer Lv 1",
+            },
+          ],
+          contentIds: [
+            "16873-SOFTWARE-ENG-Content",
+          ],
+          coverUrl: "https://www.googledrive.com/?v=16873",
+          createdAt: "2021-07-21T14:00:00.000Z",
+          description: "This course acts as learning content for software engineers.",
+          duration: "P3Y6M4DT12H30M5S",
+          externalReference: "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1",
+          languages: [
+            {
+              value: LanguageEnumValue.EnGB,
+            },
+          ],
+          skills: [
+            {
+              id: "16873-IT345",
+              name: "Information-Technology",
+              remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+            },
+          ],
+          title: "Software Engineer Lv 1",
+          unifiedCustomFields: {
+            "my_project_custom_field_1": "REF-1236",
+            "my_project_custom_field_2": "some other value",
+          },
+          updatedAt: "2021-07-21T14:00:00.000Z",
+          url: "https://www.linkedinlearning.com/?v=16873",
         },
       ],
-      title: "Software Engineer Lv 1",
-      unifiedCustomFields: {
-        "my_project_custom_field_1": "REF-1236",
-        "my_project_custom_field_2": "some other value",
-      },
     },
-    xAccountId: "<value>",
+    xAccountId: "<id>",
   });
 
   if (!res.ok) {
@@ -355,14 +484,164 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.LmsCreateContentRequest](../../sdk/models/operations/lmscreatecontentrequest.md)                                                                                   | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.LmsBatchUpsertCourseRequest](../../sdk/models/operations/lmsbatchupsertcourserequest.md)                                                                           | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[operations.LmsCreateContentResponse](../../sdk/models/operations/lmscreatecontentresponse.md)\>**
+**Promise\<[operations.LmsBatchUpsertCourseResponse](../../sdk/models/operations/lmsbatchupsertcourseresponse.md)\>**
+
+### Errors
+
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |
+
+## createCollection
+
+Create Collection
+
+### Example Usage
+
+```typescript
+import { StackOne } from "@stackone/stackone-client-ts";
+
+const stackOne = new StackOne({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const result = await stackOne.lms.createCollection({
+    lmsCreateCollectionRequestDto: {
+      categories: [
+        {
+          name: "Information-Technology",
+          unifiedCustomFields: {
+            "my_project_custom_field_1": "REF-1236",
+            "my_project_custom_field_2": "some other value",
+          },
+        },
+      ],
+      coverUrl: "https://www.googledrive.com/?v=16873",
+      description: "This collection acts as learning pathway for software engineers.",
+      externalReference: "SOFTWARE-ENG-LV1-TRAINING-collection-1",
+      learningObjectIds: [
+        "16873-SOFTWARE-ENG-COURSE",
+        "16874-SOFTWARE-ENG-COURSE",
+      ],
+      remoteLearningObjectIds: [
+        "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
+        "e3cb75bf-aa84-466e-a6c1-b8322b257a49",
+      ],
+      skills: [
+        {
+          id: "16873-IT345",
+          name: "Information-Technology",
+          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        },
+      ],
+      title: "Software Engineer Lv 1 Collection",
+      unifiedCustomFields: {
+        "my_project_custom_field_1": "REF-1236",
+        "my_project_custom_field_2": "some other value",
+      },
+    },
+    xAccountId: "<id>",
+  });
+
+  // Handle the result
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
+import { lmsCreateCollection } from "@stackone/stackone-client-ts/funcs/lmsCreateCollection.js";
+
+// Use `StackOneCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const stackOne = new StackOneCore({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const res = await lmsCreateCollection(stackOne, {
+    lmsCreateCollectionRequestDto: {
+      categories: [
+        {
+          name: "Information-Technology",
+          unifiedCustomFields: {
+            "my_project_custom_field_1": "REF-1236",
+            "my_project_custom_field_2": "some other value",
+          },
+        },
+      ],
+      coverUrl: "https://www.googledrive.com/?v=16873",
+      description: "This collection acts as learning pathway for software engineers.",
+      externalReference: "SOFTWARE-ENG-LV1-TRAINING-collection-1",
+      learningObjectIds: [
+        "16873-SOFTWARE-ENG-COURSE",
+        "16874-SOFTWARE-ENG-COURSE",
+      ],
+      remoteLearningObjectIds: [
+        "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
+        "e3cb75bf-aa84-466e-a6c1-b8322b257a49",
+      ],
+      skills: [
+        {
+          id: "16873-IT345",
+          name: "Information-Technology",
+          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        },
+      ],
+      title: "Software Engineer Lv 1 Collection",
+      unifiedCustomFields: {
+        "my_project_custom_field_1": "REF-1236",
+        "my_project_custom_field_2": "some other value",
+      },
+    },
+    xAccountId: "<id>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.LmsCreateCollectionRequest](../../sdk/models/operations/lmscreatecollectionrequest.md)                                                                             | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[operations.LmsCreateCollectionResponse](../../sdk/models/operations/lmscreatecollectionresponse.md)\>**
 
 ### Errors
 
@@ -465,90 +744,6 @@ run();
 ### Response
 
 **Promise\<[operations.LmsCreateUserCompletionResponse](../../sdk/models/operations/lmscreateusercompletionresponse.md)\>**
-
-### Errors
-
-| Error Type      | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 4XX, 5XX        | \*/\*           |
-
-## deleteContent
-
-Delete Content
-
-### Example Usage
-
-```typescript
-import { StackOne } from "@stackone/stackone-client-ts";
-
-const stackOne = new StackOne({
-  security: {
-    password: "",
-    username: "",
-  },
-});
-
-async function run() {
-  const result = await stackOne.lms.deleteContent({
-    id: "<id>",
-    xAccountId: "<id>",
-  });
-
-  // Handle the result
-  console.log(result);
-}
-
-run();
-```
-
-### Standalone function
-
-The standalone function version of this method:
-
-```typescript
-import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
-import { lmsDeleteContent } from "@stackone/stackone-client-ts/funcs/lmsDeleteContent.js";
-
-// Use `StackOneCore` for best tree-shaking performance.
-// You can create one instance of it to use across an application.
-const stackOne = new StackOneCore({
-  security: {
-    password: "",
-    username: "",
-  },
-});
-
-async function run() {
-  const res = await lmsDeleteContent(stackOne, {
-    id: "<id>",
-    xAccountId: "<id>",
-  });
-
-  if (!res.ok) {
-    throw res.error;
-  }
-
-  const { value: result } = res;
-
-  // Handle the result
-  console.log(result);
-}
-
-run();
-```
-
-### Parameters
-
-| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.LmsDeleteContentRequest](../../sdk/models/operations/lmsdeletecontentrequest.md)                                                                                   | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
-| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
-| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
-| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
-
-### Response
-
-**Promise\<[operations.LmsDeleteContentResponse](../../sdk/models/operations/lmsdeletecontentresponse.md)\>**
 
 ### Errors
 
@@ -828,7 +1023,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.lms.getContent({
-    fields: "id,remote_id,external_reference,course_ids,remote_course_ids,title,description,languages,content_url,content_type,cover_url,active,duration,categories,skills,order,content_launch_method,updated_at,created_at",
+    fields: "id,remote_id,external_reference,course_ids,remote_course_ids,title,description,languages,content_url,content_type,cover_url,active,duration,order,content_launch_method,categories,skills,updated_at,created_at",
     id: "<id>",
     xAccountId: "<value>",
   });
@@ -859,7 +1054,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await lmsGetContent(stackOne, {
-    fields: "id,remote_id,external_reference,course_ids,remote_course_ids,title,description,languages,content_url,content_type,cover_url,active,duration,categories,skills,order,content_launch_method,updated_at,created_at",
+    fields: "id,remote_id,external_reference,course_ids,remote_course_ids,title,description,languages,content_url,content_type,cover_url,active,duration,order,content_launch_method,categories,skills,updated_at,created_at",
     id: "<id>",
     xAccountId: "<value>",
   });
@@ -914,7 +1109,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.lms.getCourse({
-    fields: "id,remote_id,external_reference,content_ids,remote_content_ids,title,description,languages,course_type,cover_url,url,active,duration,categories,skills,updated_at,created_at",
+    fields: "id,remote_id,external_reference,content_ids,remote_content_ids,title,description,languages,cover_url,url,active,duration,categories,skills,updated_at,created_at,content",
     id: "<id>",
     xAccountId: "<value>",
   });
@@ -945,7 +1140,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await lmsGetCourse(stackOne, {
-    fields: "id,remote_id,external_reference,content_ids,remote_content_ids,title,description,languages,course_type,cover_url,url,active,duration,categories,skills,updated_at,created_at",
+    fields: "id,remote_id,external_reference,content_ids,remote_content_ids,title,description,languages,cover_url,url,active,duration,categories,skills,updated_at,created_at,content",
     id: "<id>",
     xAccountId: "<value>",
   });
@@ -1624,7 +1819,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.lms.listContent({
-    fields: "id,remote_id,external_reference,course_ids,remote_course_ids,title,description,languages,content_url,content_type,cover_url,active,duration,categories,skills,order,content_launch_method,updated_at,created_at",
+    fields: "id,remote_id,external_reference,course_ids,remote_course_ids,title,description,languages,content_url,content_type,cover_url,active,duration,order,content_launch_method,categories,skills,updated_at,created_at",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
@@ -1658,7 +1853,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await lmsListContent(stackOne, {
-    fields: "id,remote_id,external_reference,course_ids,remote_course_ids,title,description,languages,content_url,content_type,cover_url,active,duration,categories,skills,order,content_launch_method,updated_at,created_at",
+    fields: "id,remote_id,external_reference,course_ids,remote_course_ids,title,description,languages,content_url,content_type,cover_url,active,duration,order,content_launch_method,categories,skills,updated_at,created_at",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
@@ -1716,7 +1911,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.lms.listCourses({
-    fields: "id,remote_id,external_reference,content_ids,remote_content_ids,title,description,languages,course_type,cover_url,url,active,duration,categories,skills,updated_at,created_at",
+    fields: "id,remote_id,external_reference,content_ids,remote_content_ids,title,description,languages,cover_url,url,active,duration,categories,skills,updated_at,created_at,content",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
@@ -1750,7 +1945,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await lmsListCourses(stackOne, {
-    fields: "id,remote_id,external_reference,content_ids,remote_content_ids,title,description,languages,course_type,cover_url,url,active,duration,categories,skills,updated_at,created_at",
+    fields: "id,remote_id,external_reference,content_ids,remote_content_ids,title,description,languages,cover_url,url,active,duration,categories,skills,updated_at,created_at,content",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
@@ -2166,15 +2361,14 @@ run();
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 4XX, 5XX        | \*/\*           |
 
-## updateContent
+## updateCollection
 
-Update Content
+Update Collection
 
 ### Example Usage
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
-import { ContentLanguageEnumValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 const stackOne = new StackOne({
   security: {
@@ -2184,12 +2378,10 @@ const stackOne = new StackOne({
 });
 
 async function run() {
-  const result = await stackOne.lms.updateContent({
-    lmsCreateContentRequestDto: {
-      active: true,
+  const result = await stackOne.lms.updateCollection({
+    lmsCreateCollectionRequestDto: {
       categories: [
         {
-          active: true,
           name: "Information-Technology",
           unifiedCustomFields: {
             "my_project_custom_field_1": "REF-1236",
@@ -2197,37 +2389,32 @@ async function run() {
           },
         },
       ],
-      contentLaunchMethod: {},
-      contentUrl: "https://www.youtube.com/watch?v=16873",
-      courseIds: [
-        "16873-SOFTWARE-ENG-COURSE",
-      ],
       coverUrl: "https://www.googledrive.com/?v=16873",
-      description: "This video acts as learning content for software engineers.",
-      duration: "P3Y6M4DT12H30M5S",
-      externalReference: "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1",
-      languages: [
-        {
-          value: ContentLanguageEnumValue.EnGB,
-        },
+      description: "This collection acts as learning pathway for software engineers.",
+      externalReference: "SOFTWARE-ENG-LV1-TRAINING-collection-1",
+      learningObjectIds: [
+        "16873-SOFTWARE-ENG-COURSE",
+        "16874-SOFTWARE-ENG-COURSE",
       ],
-      order: 1,
+      remoteLearningObjectIds: [
+        "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
+        "e3cb75bf-aa84-466e-a6c1-b8322b257a49",
+      ],
       skills: [
         {
-          active: true,
           id: "16873-IT345",
           name: "Information-Technology",
           remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         },
       ],
-      title: "Software Engineer Lv 1",
+      title: "Software Engineer Lv 1 Collection",
       unifiedCustomFields: {
         "my_project_custom_field_1": "REF-1236",
         "my_project_custom_field_2": "some other value",
       },
     },
     id: "<id>",
-    xAccountId: "<value>",
+    xAccountId: "<id>",
   });
 
   // Handle the result
@@ -2243,8 +2430,7 @@ The standalone function version of this method:
 
 ```typescript
 import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
-import { lmsUpdateContent } from "@stackone/stackone-client-ts/funcs/lmsUpdateContent.js";
-import { ContentLanguageEnumValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { lmsUpdateCollection } from "@stackone/stackone-client-ts/funcs/lmsUpdateCollection.js";
 
 // Use `StackOneCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -2256,12 +2442,10 @@ const stackOne = new StackOneCore({
 });
 
 async function run() {
-  const res = await lmsUpdateContent(stackOne, {
-    lmsCreateContentRequestDto: {
-      active: true,
+  const res = await lmsUpdateCollection(stackOne, {
+    lmsCreateCollectionRequestDto: {
       categories: [
         {
-          active: true,
           name: "Information-Technology",
           unifiedCustomFields: {
             "my_project_custom_field_1": "REF-1236",
@@ -2269,37 +2453,32 @@ async function run() {
           },
         },
       ],
-      contentLaunchMethod: {},
-      contentUrl: "https://www.youtube.com/watch?v=16873",
-      courseIds: [
-        "16873-SOFTWARE-ENG-COURSE",
-      ],
       coverUrl: "https://www.googledrive.com/?v=16873",
-      description: "This video acts as learning content for software engineers.",
-      duration: "P3Y6M4DT12H30M5S",
-      externalReference: "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1",
-      languages: [
-        {
-          value: ContentLanguageEnumValue.EnGB,
-        },
+      description: "This collection acts as learning pathway for software engineers.",
+      externalReference: "SOFTWARE-ENG-LV1-TRAINING-collection-1",
+      learningObjectIds: [
+        "16873-SOFTWARE-ENG-COURSE",
+        "16874-SOFTWARE-ENG-COURSE",
       ],
-      order: 1,
+      remoteLearningObjectIds: [
+        "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
+        "e3cb75bf-aa84-466e-a6c1-b8322b257a49",
+      ],
       skills: [
         {
-          active: true,
           id: "16873-IT345",
           name: "Information-Technology",
           remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         },
       ],
-      title: "Software Engineer Lv 1",
+      title: "Software Engineer Lv 1 Collection",
       unifiedCustomFields: {
         "my_project_custom_field_1": "REF-1236",
         "my_project_custom_field_2": "some other value",
       },
     },
     id: "<id>",
-    xAccountId: "<value>",
+    xAccountId: "<id>",
   });
 
   if (!res.ok) {
@@ -2319,14 +2498,14 @@ run();
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                      | [operations.LmsUpdateContentRequest](../../sdk/models/operations/lmsupdatecontentrequest.md)                                                                                   | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `request`                                                                                                                                                                      | [operations.LmsUpdateCollectionRequest](../../sdk/models/operations/lmsupdatecollectionrequest.md)                                                                             | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
 | `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
 | `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
 | `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
 
 ### Response
 
-**Promise\<[operations.LmsUpdateContentResponse](../../sdk/models/operations/lmsupdatecontentresponse.md)\>**
+**Promise\<[operations.LmsUpdateCollectionResponse](../../sdk/models/operations/lmsupdatecollectionresponse.md)\>**
 
 ### Errors
 
@@ -2342,7 +2521,7 @@ Upsert Content
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
-import { ContentLanguageEnumValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { LanguageEnumValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 const stackOne = new StackOne({
   security: {
@@ -2357,7 +2536,6 @@ async function run() {
       active: true,
       categories: [
         {
-          active: true,
           name: "Information-Technology",
           unifiedCustomFields: {
             "my_project_custom_field_1": "REF-1236",
@@ -2376,13 +2554,12 @@ async function run() {
       externalReference: "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1",
       languages: [
         {
-          value: ContentLanguageEnumValue.EnGB,
+          value: LanguageEnumValue.EnGB,
         },
       ],
       order: 1,
       skills: [
         {
-          active: true,
           id: "16873-IT345",
           name: "Information-Technology",
           remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
@@ -2411,7 +2588,7 @@ The standalone function version of this method:
 ```typescript
 import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
 import { lmsUpsertContent } from "@stackone/stackone-client-ts/funcs/lmsUpsertContent.js";
-import { ContentLanguageEnumValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { LanguageEnumValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 // Use `StackOneCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -2428,7 +2605,6 @@ async function run() {
       active: true,
       categories: [
         {
-          active: true,
           name: "Information-Technology",
           unifiedCustomFields: {
             "my_project_custom_field_1": "REF-1236",
@@ -2447,13 +2623,12 @@ async function run() {
       externalReference: "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1",
       languages: [
         {
-          value: ContentLanguageEnumValue.EnGB,
+          value: LanguageEnumValue.EnGB,
         },
       ],
       order: 1,
       skills: [
         {
-          active: true,
           id: "16873-IT345",
           name: "Information-Technology",
           remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
@@ -2493,6 +2668,184 @@ run();
 ### Response
 
 **Promise\<[operations.LmsUpsertContentResponse](../../sdk/models/operations/lmsupsertcontentresponse.md)\>**
+
+### Errors
+
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |
+
+## upsertCourse
+
+Upsert Course
+
+### Example Usage
+
+```typescript
+import { StackOne } from "@stackone/stackone-client-ts";
+import { LanguageEnumValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+const stackOne = new StackOne({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const result = await stackOne.lms.upsertCourse({
+    lmsUpsertCourseRequestDto: {
+      active: true,
+      categories: [
+        {
+          name: "Information-Technology",
+          unifiedCustomFields: {
+            "my_project_custom_field_1": "REF-1236",
+            "my_project_custom_field_2": "some other value",
+          },
+        },
+      ],
+      content: [
+        {
+          contentUrl: "https://www.youtube.com/watch?v=16873",
+          description: "This video acts as learning content for software engineers.",
+          order: 1,
+          title: "Software Engineer Lv 1",
+        },
+      ],
+      contentIds: [
+        "16873-SOFTWARE-ENG-Content",
+      ],
+      coverUrl: "https://www.googledrive.com/?v=16873",
+      createdAt: "2021-07-21T14:00:00.000Z",
+      description: "This course acts as learning content for software engineers.",
+      duration: "P3Y6M4DT12H30M5S",
+      externalReference: "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1",
+      languages: [
+        {
+          value: LanguageEnumValue.EnGB,
+        },
+      ],
+      skills: [
+        {
+          id: "16873-IT345",
+          name: "Information-Technology",
+          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        },
+      ],
+      title: "Software Engineer Lv 1",
+      unifiedCustomFields: {
+        "my_project_custom_field_1": "REF-1236",
+        "my_project_custom_field_2": "some other value",
+      },
+      updatedAt: "2021-07-21T14:00:00.000Z",
+      url: "https://www.linkedinlearning.com/?v=16873",
+    },
+    xAccountId: "<id>",
+  });
+
+  // Handle the result
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
+import { lmsUpsertCourse } from "@stackone/stackone-client-ts/funcs/lmsUpsertCourse.js";
+import { LanguageEnumValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+// Use `StackOneCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const stackOne = new StackOneCore({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const res = await lmsUpsertCourse(stackOne, {
+    lmsUpsertCourseRequestDto: {
+      active: true,
+      categories: [
+        {
+          name: "Information-Technology",
+          unifiedCustomFields: {
+            "my_project_custom_field_1": "REF-1236",
+            "my_project_custom_field_2": "some other value",
+          },
+        },
+      ],
+      content: [
+        {
+          contentUrl: "https://www.youtube.com/watch?v=16873",
+          description: "This video acts as learning content for software engineers.",
+          order: 1,
+          title: "Software Engineer Lv 1",
+        },
+      ],
+      contentIds: [
+        "16873-SOFTWARE-ENG-Content",
+      ],
+      coverUrl: "https://www.googledrive.com/?v=16873",
+      createdAt: "2021-07-21T14:00:00.000Z",
+      description: "This course acts as learning content for software engineers.",
+      duration: "P3Y6M4DT12H30M5S",
+      externalReference: "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1",
+      languages: [
+        {
+          value: LanguageEnumValue.EnGB,
+        },
+      ],
+      skills: [
+        {
+          id: "16873-IT345",
+          name: "Information-Technology",
+          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        },
+      ],
+      title: "Software Engineer Lv 1",
+      unifiedCustomFields: {
+        "my_project_custom_field_1": "REF-1236",
+        "my_project_custom_field_2": "some other value",
+      },
+      updatedAt: "2021-07-21T14:00:00.000Z",
+      url: "https://www.linkedinlearning.com/?v=16873",
+    },
+    xAccountId: "<id>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.LmsUpsertCourseRequest](../../sdk/models/operations/lmsupsertcourserequest.md)                                                                                     | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[operations.LmsUpsertCourseResponse](../../sdk/models/operations/lmsupsertcourseresponse.md)\>**
 
 ### Errors
 

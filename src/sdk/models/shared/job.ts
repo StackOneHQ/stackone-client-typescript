@@ -10,17 +10,17 @@ import {
   Unrecognized,
 } from "../../types/enums.js";
 import {
+  CustomFields,
+  CustomFields$inboundSchema,
+  CustomFields$Outbound,
+  CustomFields$outboundSchema,
+} from "./customfields.js";
+import {
   InterviewStage,
   InterviewStage$inboundSchema,
   InterviewStage$Outbound,
   InterviewStage$outboundSchema,
 } from "./interviewstage.js";
-import {
-  JobCustomFields,
-  JobCustomFields$inboundSchema,
-  JobCustomFields$Outbound,
-  JobCustomFields$outboundSchema,
-} from "./jobcustomfields.js";
 import {
   JobHiringTeam,
   JobHiringTeam$inboundSchema,
@@ -104,7 +104,7 @@ export type Job = {
   /**
    * The job custom fields
    */
-  customFields?: Array<JobCustomFields> | null | undefined;
+  customFields?: Array<CustomFields> | null | undefined;
   /**
    * Department ids of the job
    */
@@ -374,8 +374,7 @@ export const Job$inboundSchema: z.ZodType<Job, z.ZodTypeDef, unknown> = z
     created_at: z.nullable(
       z.string().datetime({ offset: true }).transform(v => new Date(v)),
     ).optional(),
-    custom_fields: z.nullable(z.array(JobCustomFields$inboundSchema))
-      .optional(),
+    custom_fields: z.nullable(z.array(CustomFields$inboundSchema)).optional(),
     department_ids: z.nullable(z.array(z.string())).optional(),
     hiring_team: z.nullable(z.array(JobHiringTeam$inboundSchema)).optional(),
     id: z.nullable(z.string()).optional(),
@@ -414,7 +413,7 @@ export type Job$Outbound = {
   code?: string | null | undefined;
   confidential?: string | null | undefined;
   created_at?: string | null | undefined;
-  custom_fields?: Array<JobCustomFields$Outbound> | null | undefined;
+  custom_fields?: Array<CustomFields$Outbound> | null | undefined;
   department_ids?: Array<string> | null | undefined;
   hiring_team?: Array<JobHiringTeam$Outbound> | null | undefined;
   id?: string | null | undefined;
@@ -436,8 +435,7 @@ export const Job$outboundSchema: z.ZodType<Job$Outbound, z.ZodTypeDef, Job> = z
     code: z.nullable(z.string()).optional(),
     confidential: z.nullable(JobConfidential$outboundSchema).optional(),
     createdAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-    customFields: z.nullable(z.array(JobCustomFields$outboundSchema))
-      .optional(),
+    customFields: z.nullable(z.array(CustomFields$outboundSchema)).optional(),
     departmentIds: z.nullable(z.array(z.string())).optional(),
     hiringTeam: z.nullable(z.array(JobHiringTeam$outboundSchema)).optional(),
     id: z.nullable(z.string()).optional(),

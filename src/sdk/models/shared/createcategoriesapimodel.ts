@@ -4,53 +4,8 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
-import {
-  catchUnrecognizedEnum,
-  OpenEnum,
-  Unrecognized,
-} from "../../types/enums.js";
-
-export type CreateCategoriesApiModel4 = {};
-
-export type CreateCategoriesApiModelSourceValue =
-  | CreateCategoriesApiModel4
-  | string
-  | number
-  | boolean
-  | Array<any>;
-
-export enum CreateCategoriesApiModelValue {
-  Primary = "primary",
-  Secondary = "secondary",
-}
-export type CreateCategoriesApiModelValueOpen = OpenEnum<
-  typeof CreateCategoriesApiModelValue
->;
-
-/**
- * The hierarchal level of the category
- */
-export type CreateCategoriesApiModelLevel = {
-  sourceValue?:
-    | CreateCategoriesApiModel4
-    | string
-    | number
-    | boolean
-    | Array<any>
-    | null
-    | undefined;
-  value?: CreateCategoriesApiModelValueOpen | null | undefined;
-};
 
 export type CreateCategoriesApiModel = {
-  /**
-   * Whether the category is active and therefore available for use
-   */
-  active?: boolean | null | undefined;
-  /**
-   * The hierarchal level of the category
-   */
-  level?: CreateCategoriesApiModelLevel | null | undefined;
   /**
    * The name associated with this category
    */
@@ -62,195 +17,11 @@ export type CreateCategoriesApiModel = {
 };
 
 /** @internal */
-export const CreateCategoriesApiModel4$inboundSchema: z.ZodType<
-  CreateCategoriesApiModel4,
-  z.ZodTypeDef,
-  unknown
-> = z.object({});
-
-/** @internal */
-export type CreateCategoriesApiModel4$Outbound = {};
-
-/** @internal */
-export const CreateCategoriesApiModel4$outboundSchema: z.ZodType<
-  CreateCategoriesApiModel4$Outbound,
-  z.ZodTypeDef,
-  CreateCategoriesApiModel4
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateCategoriesApiModel4$ {
-  /** @deprecated use `CreateCategoriesApiModel4$inboundSchema` instead. */
-  export const inboundSchema = CreateCategoriesApiModel4$inboundSchema;
-  /** @deprecated use `CreateCategoriesApiModel4$outboundSchema` instead. */
-  export const outboundSchema = CreateCategoriesApiModel4$outboundSchema;
-  /** @deprecated use `CreateCategoriesApiModel4$Outbound` instead. */
-  export type Outbound = CreateCategoriesApiModel4$Outbound;
-}
-
-/** @internal */
-export const CreateCategoriesApiModelSourceValue$inboundSchema: z.ZodType<
-  CreateCategoriesApiModelSourceValue,
-  z.ZodTypeDef,
-  unknown
-> = z.union([
-  z.lazy(() => CreateCategoriesApiModel4$inboundSchema),
-  z.string(),
-  z.number(),
-  z.boolean(),
-  z.array(z.any()),
-]);
-
-/** @internal */
-export type CreateCategoriesApiModelSourceValue$Outbound =
-  | CreateCategoriesApiModel4$Outbound
-  | string
-  | number
-  | boolean
-  | Array<any>;
-
-/** @internal */
-export const CreateCategoriesApiModelSourceValue$outboundSchema: z.ZodType<
-  CreateCategoriesApiModelSourceValue$Outbound,
-  z.ZodTypeDef,
-  CreateCategoriesApiModelSourceValue
-> = z.union([
-  z.lazy(() => CreateCategoriesApiModel4$outboundSchema),
-  z.string(),
-  z.number(),
-  z.boolean(),
-  z.array(z.any()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateCategoriesApiModelSourceValue$ {
-  /** @deprecated use `CreateCategoriesApiModelSourceValue$inboundSchema` instead. */
-  export const inboundSchema =
-    CreateCategoriesApiModelSourceValue$inboundSchema;
-  /** @deprecated use `CreateCategoriesApiModelSourceValue$outboundSchema` instead. */
-  export const outboundSchema =
-    CreateCategoriesApiModelSourceValue$outboundSchema;
-  /** @deprecated use `CreateCategoriesApiModelSourceValue$Outbound` instead. */
-  export type Outbound = CreateCategoriesApiModelSourceValue$Outbound;
-}
-
-/** @internal */
-export const CreateCategoriesApiModelValue$inboundSchema: z.ZodType<
-  CreateCategoriesApiModelValueOpen,
-  z.ZodTypeDef,
-  unknown
-> = z
-  .union([
-    z.nativeEnum(CreateCategoriesApiModelValue),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
-
-/** @internal */
-export const CreateCategoriesApiModelValue$outboundSchema: z.ZodType<
-  CreateCategoriesApiModelValueOpen,
-  z.ZodTypeDef,
-  CreateCategoriesApiModelValueOpen
-> = z.union([
-  z.nativeEnum(CreateCategoriesApiModelValue),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateCategoriesApiModelValue$ {
-  /** @deprecated use `CreateCategoriesApiModelValue$inboundSchema` instead. */
-  export const inboundSchema = CreateCategoriesApiModelValue$inboundSchema;
-  /** @deprecated use `CreateCategoriesApiModelValue$outboundSchema` instead. */
-  export const outboundSchema = CreateCategoriesApiModelValue$outboundSchema;
-}
-
-/** @internal */
-export const CreateCategoriesApiModelLevel$inboundSchema: z.ZodType<
-  CreateCategoriesApiModelLevel,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  source_value: z.nullable(
-    z.union([
-      z.lazy(() => CreateCategoriesApiModel4$inboundSchema),
-      z.string(),
-      z.number(),
-      z.boolean(),
-      z.array(z.any()),
-    ]),
-  ).optional(),
-  value: z.nullable(CreateCategoriesApiModelValue$inboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "source_value": "sourceValue",
-  });
-});
-
-/** @internal */
-export type CreateCategoriesApiModelLevel$Outbound = {
-  source_value?:
-    | CreateCategoriesApiModel4$Outbound
-    | string
-    | number
-    | boolean
-    | Array<any>
-    | null
-    | undefined;
-  value?: string | null | undefined;
-};
-
-/** @internal */
-export const CreateCategoriesApiModelLevel$outboundSchema: z.ZodType<
-  CreateCategoriesApiModelLevel$Outbound,
-  z.ZodTypeDef,
-  CreateCategoriesApiModelLevel
-> = z.object({
-  sourceValue: z.nullable(
-    z.union([
-      z.lazy(() => CreateCategoriesApiModel4$outboundSchema),
-      z.string(),
-      z.number(),
-      z.boolean(),
-      z.array(z.any()),
-    ]),
-  ).optional(),
-  value: z.nullable(CreateCategoriesApiModelValue$outboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    sourceValue: "source_value",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CreateCategoriesApiModelLevel$ {
-  /** @deprecated use `CreateCategoriesApiModelLevel$inboundSchema` instead. */
-  export const inboundSchema = CreateCategoriesApiModelLevel$inboundSchema;
-  /** @deprecated use `CreateCategoriesApiModelLevel$outboundSchema` instead. */
-  export const outboundSchema = CreateCategoriesApiModelLevel$outboundSchema;
-  /** @deprecated use `CreateCategoriesApiModelLevel$Outbound` instead. */
-  export type Outbound = CreateCategoriesApiModelLevel$Outbound;
-}
-
-/** @internal */
 export const CreateCategoriesApiModel$inboundSchema: z.ZodType<
   CreateCategoriesApiModel,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  active: z.nullable(z.boolean()).optional(),
-  level: z.nullable(z.lazy(() => CreateCategoriesApiModelLevel$inboundSchema))
-    .optional(),
   name: z.nullable(z.string()).optional(),
   unified_custom_fields: z.nullable(z.record(z.any())).optional(),
 }).transform((v) => {
@@ -261,8 +32,6 @@ export const CreateCategoriesApiModel$inboundSchema: z.ZodType<
 
 /** @internal */
 export type CreateCategoriesApiModel$Outbound = {
-  active?: boolean | null | undefined;
-  level?: CreateCategoriesApiModelLevel$Outbound | null | undefined;
   name?: string | null | undefined;
   unified_custom_fields?: { [k: string]: any } | null | undefined;
 };
@@ -273,9 +42,6 @@ export const CreateCategoriesApiModel$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CreateCategoriesApiModel
 > = z.object({
-  active: z.nullable(z.boolean()).optional(),
-  level: z.nullable(z.lazy(() => CreateCategoriesApiModelLevel$outboundSchema))
-    .optional(),
   name: z.nullable(z.string()).optional(),
   unifiedCustomFields: z.nullable(z.record(z.any())).optional(),
 }).transform((v) => {

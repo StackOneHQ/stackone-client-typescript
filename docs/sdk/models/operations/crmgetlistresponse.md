@@ -30,7 +30,7 @@ let value: CrmGetListResponse = {
       updatedAt: new Date("2021-01-01T01:01:01.000Z"),
     },
   },
-  statusCode: 103,
+  statusCode: 506,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

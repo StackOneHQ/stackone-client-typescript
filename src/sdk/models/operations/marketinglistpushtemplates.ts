@@ -65,6 +65,10 @@ export type MarketingListPushTemplatesResponse = {
    */
   contentType: string;
   /**
+   * The list of push templates was retrieved.
+   */
+  pushTemplatesPaginated?: shared.PushTemplatesPaginated | undefined;
+  /**
    * HTTP response status code for this operation
    */
   statusCode: number;
@@ -72,10 +76,6 @@ export type MarketingListPushTemplatesResponse = {
    * Raw HTTP response; suitable for custom response parsing
    */
   rawResponse: Response;
-  /**
-   * The list of push templates was retrieved.
-   */
-  templatesPaginated?: shared.TemplatesPaginated | undefined;
 };
 
 /** @internal */
@@ -210,24 +210,25 @@ export const MarketingListPushTemplatesResponse$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   ContentType: z.string(),
+  PushTemplatesPaginated: shared.PushTemplatesPaginated$inboundSchema
+    .optional(),
   StatusCode: z.number().int(),
   RawResponse: z.instanceof(Response),
-  TemplatesPaginated: shared.TemplatesPaginated$inboundSchema.optional(),
 }).transform((v) => {
   return remap$(v, {
     "ContentType": "contentType",
+    "PushTemplatesPaginated": "pushTemplatesPaginated",
     "StatusCode": "statusCode",
     "RawResponse": "rawResponse",
-    "TemplatesPaginated": "templatesPaginated",
   });
 });
 
 /** @internal */
 export type MarketingListPushTemplatesResponse$Outbound = {
   ContentType: string;
+  PushTemplatesPaginated?: shared.PushTemplatesPaginated$Outbound | undefined;
   StatusCode: number;
   RawResponse: never;
-  TemplatesPaginated?: shared.TemplatesPaginated$Outbound | undefined;
 };
 
 /** @internal */
@@ -237,17 +238,18 @@ export const MarketingListPushTemplatesResponse$outboundSchema: z.ZodType<
   MarketingListPushTemplatesResponse
 > = z.object({
   contentType: z.string(),
+  pushTemplatesPaginated: shared.PushTemplatesPaginated$outboundSchema
+    .optional(),
   statusCode: z.number().int(),
   rawResponse: z.instanceof(Response).transform(() => {
     throw new Error("Response cannot be serialized");
   }),
-  templatesPaginated: shared.TemplatesPaginated$outboundSchema.optional(),
 }).transform((v) => {
   return remap$(v, {
     contentType: "ContentType",
+    pushTemplatesPaginated: "PushTemplatesPaginated",
     statusCode: "StatusCode",
     rawResponse: "RawResponse",
-    templatesPaginated: "TemplatesPaginated",
   });
 });
 

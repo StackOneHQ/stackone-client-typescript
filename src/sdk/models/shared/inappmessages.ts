@@ -4,6 +4,11 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import {
+  catchUnrecognizedEnum,
+  OpenEnum,
+  Unrecognized,
+} from "../../types/enums.js";
 
 export type InAppMessagesMessageContent = {
   body?: string | null | undefined;
@@ -24,7 +29,24 @@ export type InAppMessagesSourceValue =
 /**
  * The unified message type.
  */
-export type InAppMessagesValue = {};
+export enum InAppMessagesValue {
+  Email = "email",
+  Sms = "sms",
+  Push = "push",
+  WebPush = "web_push",
+  IosPush = "ios_push",
+  AndroidPush = "android_push",
+  AppPush = "app_push",
+  OmniChannel = "omni_channel",
+  ContentBlock = "content_block",
+  InApp = "in_app",
+  Unknown = "unknown",
+  UnmappedValue = "unmapped_value",
+}
+/**
+ * The unified message type.
+ */
+export type InAppMessagesValueOpen = OpenEnum<typeof InAppMessagesValue>;
 
 export type InAppMessagesMessageType = {
   /**
@@ -41,7 +63,7 @@ export type InAppMessagesMessageType = {
   /**
    * The unified message type.
    */
-  value?: InAppMessagesValue | null | undefined;
+  value?: InAppMessagesValueOpen | null | undefined;
 };
 
 export type InAppMessages = {
@@ -173,20 +195,24 @@ export namespace InAppMessagesSourceValue$ {
 
 /** @internal */
 export const InAppMessagesValue$inboundSchema: z.ZodType<
-  InAppMessagesValue,
+  InAppMessagesValueOpen,
   z.ZodTypeDef,
   unknown
-> = z.object({});
-
-/** @internal */
-export type InAppMessagesValue$Outbound = {};
+> = z
+  .union([
+    z.nativeEnum(InAppMessagesValue),
+    z.string().transform(catchUnrecognizedEnum),
+  ]);
 
 /** @internal */
 export const InAppMessagesValue$outboundSchema: z.ZodType<
-  InAppMessagesValue$Outbound,
+  InAppMessagesValueOpen,
   z.ZodTypeDef,
-  InAppMessagesValue
-> = z.object({});
+  InAppMessagesValueOpen
+> = z.union([
+  z.nativeEnum(InAppMessagesValue),
+  z.string().and(z.custom<Unrecognized<string>>()),
+]);
 
 /**
  * @internal
@@ -197,8 +223,6 @@ export namespace InAppMessagesValue$ {
   export const inboundSchema = InAppMessagesValue$inboundSchema;
   /** @deprecated use `InAppMessagesValue$outboundSchema` instead. */
   export const outboundSchema = InAppMessagesValue$outboundSchema;
-  /** @deprecated use `InAppMessagesValue$Outbound` instead. */
-  export type Outbound = InAppMessagesValue$Outbound;
 }
 
 /** @internal */
@@ -216,7 +240,7 @@ export const InAppMessagesMessageType$inboundSchema: z.ZodType<
       z.array(z.any()),
     ]),
   ).optional(),
-  value: z.nullable(z.lazy(() => InAppMessagesValue$inboundSchema)).optional(),
+  value: z.nullable(InAppMessagesValue$inboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {
     "source_value": "sourceValue",
@@ -233,7 +257,7 @@ export type InAppMessagesMessageType$Outbound = {
     | Array<any>
     | null
     | undefined;
-  value?: InAppMessagesValue$Outbound | null | undefined;
+  value?: string | null | undefined;
 };
 
 /** @internal */
@@ -251,7 +275,7 @@ export const InAppMessagesMessageType$outboundSchema: z.ZodType<
       z.array(z.any()),
     ]),
   ).optional(),
-  value: z.nullable(z.lazy(() => InAppMessagesValue$outboundSchema)).optional(),
+  value: z.nullable(InAppMessagesValue$outboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {
     sourceValue: "source_value",

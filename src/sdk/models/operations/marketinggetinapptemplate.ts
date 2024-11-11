@@ -32,6 +32,10 @@ export type MarketingGetInAppTemplateResponse = {
    */
   contentType: string;
   /**
+   * The in-app template with the given identifier was retrieved.
+   */
+  inAppTemplateResult?: shared.InAppTemplateResult | undefined;
+  /**
    * HTTP response status code for this operation
    */
   statusCode: number;
@@ -39,10 +43,6 @@ export type MarketingGetInAppTemplateResponse = {
    * Raw HTTP response; suitable for custom response parsing
    */
   rawResponse: Response;
-  /**
-   * The in-app template with the given identifier was retrieved.
-   */
-  templateResult?: shared.TemplateResult | undefined;
 };
 
 /** @internal */
@@ -108,24 +108,24 @@ export const MarketingGetInAppTemplateResponse$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   ContentType: z.string(),
+  InAppTemplateResult: shared.InAppTemplateResult$inboundSchema.optional(),
   StatusCode: z.number().int(),
   RawResponse: z.instanceof(Response),
-  TemplateResult: shared.TemplateResult$inboundSchema.optional(),
 }).transform((v) => {
   return remap$(v, {
     "ContentType": "contentType",
+    "InAppTemplateResult": "inAppTemplateResult",
     "StatusCode": "statusCode",
     "RawResponse": "rawResponse",
-    "TemplateResult": "templateResult",
   });
 });
 
 /** @internal */
 export type MarketingGetInAppTemplateResponse$Outbound = {
   ContentType: string;
+  InAppTemplateResult?: shared.InAppTemplateResult$Outbound | undefined;
   StatusCode: number;
   RawResponse: never;
-  TemplateResult?: shared.TemplateResult$Outbound | undefined;
 };
 
 /** @internal */
@@ -135,17 +135,17 @@ export const MarketingGetInAppTemplateResponse$outboundSchema: z.ZodType<
   MarketingGetInAppTemplateResponse
 > = z.object({
   contentType: z.string(),
+  inAppTemplateResult: shared.InAppTemplateResult$outboundSchema.optional(),
   statusCode: z.number().int(),
   rawResponse: z.instanceof(Response).transform(() => {
     throw new Error("Response cannot be serialized");
   }),
-  templateResult: shared.TemplateResult$outboundSchema.optional(),
 }).transform((v) => {
   return remap$(v, {
     contentType: "ContentType",
+    inAppTemplateResult: "InAppTemplateResult",
     statusCode: "StatusCode",
     rawResponse: "RawResponse",
-    templateResult: "TemplateResult",
   });
 });
 
