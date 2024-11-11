@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 7fa83af8-9e8e-4410-b7e2-cf1d0eaf688b
 management:
-  docChecksum: b84f62b0f15a6809d5b01a798ab1d5d2
+  docChecksum: 5af335f5ff22bab74955133d023c9916
   docVersion: 1.0.0
-  speakeasyVersion: 1.424.0
-  generationVersion: 2.445.1
-  releaseVersion: 4.16.6
-  configChecksum: 05de1f5fb43f30184546aff0e51749e0
+  speakeasyVersion: 1.436.0
+  generationVersion: 2.455.2
+  releaseVersion: 4.17.0
+  configChecksum: ae92757d94cef78bc36eeb9ef3a81059
   repoURL: https://github.com/StackOneHQ/stackone-client-typescript.git
   repoSubDirectory: .
   installationURL: https://github.com/StackOneHQ/stackone-client-typescript
@@ -15,12 +15,12 @@ features:
   typescript:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.11
-    core: 3.18.2
+    core: 3.18.3
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
     downloadStreams: 0.1.1
     enumUnions: 0.1.0
-    envVarSecurityUsage: 0.1.1
+    envVarSecurityUsage: 0.1.2
     examples: 2.81.4
     globalSecurity: 2.82.11
     globalSecurityCallbacks: 0.1.0
@@ -32,8 +32,8 @@ features:
     pagination: 2.82.7
     responseFormat: 0.2.3
     retries: 2.83.0
-    sdkHooks: 0.1.0
-    unions: 2.85.7
+    sdkHooks: 0.2.0
+    unions: 2.85.8
 generatedFiles:
   - .eslintrc.cjs
   - .gitattributes
@@ -326,12 +326,12 @@ generatedFiles:
   - docs/sdk/models/operations/iamlistusersresponse.md
   - docs/sdk/models/operations/lmsbatchupsertcontentrequest.md
   - docs/sdk/models/operations/lmsbatchupsertcontentresponse.md
-  - docs/sdk/models/operations/lmscreatecontentrequest.md
-  - docs/sdk/models/operations/lmscreatecontentresponse.md
+  - docs/sdk/models/operations/lmsbatchupsertcourserequest.md
+  - docs/sdk/models/operations/lmsbatchupsertcourseresponse.md
+  - docs/sdk/models/operations/lmscreatecollectionrequest.md
+  - docs/sdk/models/operations/lmscreatecollectionresponse.md
   - docs/sdk/models/operations/lmscreateusercompletionrequest.md
   - docs/sdk/models/operations/lmscreateusercompletionresponse.md
-  - docs/sdk/models/operations/lmsdeletecontentrequest.md
-  - docs/sdk/models/operations/lmsdeletecontentresponse.md
   - docs/sdk/models/operations/lmsgetassignmentrequest.md
   - docs/sdk/models/operations/lmsgetassignmentresponse.md
   - docs/sdk/models/operations/lmsgetcategoryrequest.md
@@ -377,10 +377,12 @@ generatedFiles:
   - docs/sdk/models/operations/lmslistusersqueryparamfilter.md
   - docs/sdk/models/operations/lmslistusersrequest.md
   - docs/sdk/models/operations/lmslistusersresponse.md
-  - docs/sdk/models/operations/lmsupdatecontentrequest.md
-  - docs/sdk/models/operations/lmsupdatecontentresponse.md
+  - docs/sdk/models/operations/lmsupdatecollectionrequest.md
+  - docs/sdk/models/operations/lmsupdatecollectionresponse.md
   - docs/sdk/models/operations/lmsupsertcontentrequest.md
   - docs/sdk/models/operations/lmsupsertcontentresponse.md
+  - docs/sdk/models/operations/lmsupsertcourserequest.md
+  - docs/sdk/models/operations/lmsupsertcourseresponse.md
   - docs/sdk/models/operations/marketingcreatecontentblockrequest.md
   - docs/sdk/models/operations/marketingcreatecontentblockresponse.md
   - docs/sdk/models/operations/marketingcreateemailtemplaterequest.md
@@ -582,9 +584,6 @@ generatedFiles:
   - docs/sdk/models/shared/campaignspaginated.md
   - docs/sdk/models/shared/campaignvalue.md
   - docs/sdk/models/shared/candidate.md
-  - docs/sdk/models/shared/candidatecustomfields.md
-  - docs/sdk/models/shared/candidatecustomfields4.md
-  - docs/sdk/models/shared/candidatecustomfieldsvalue.md
   - docs/sdk/models/shared/candidateemail.md
   - docs/sdk/models/shared/candidateresult.md
   - docs/sdk/models/shared/candidatespaginated.md
@@ -624,15 +623,12 @@ generatedFiles:
   - docs/sdk/models/shared/connectsessiontokencategories.md
   - docs/sdk/models/shared/contact.md
   - docs/sdk/models/shared/contactresult.md
-  - docs/sdk/models/shared/contactscustomfields.md
-  - docs/sdk/models/shared/contactscustomfields4.md
-  - docs/sdk/models/shared/contactscustomfieldsvalue.md
   - docs/sdk/models/shared/contactspaginated.md
   - docs/sdk/models/shared/content.md
-  - docs/sdk/models/shared/content2.md
   - docs/sdk/models/shared/content4.md
   - docs/sdk/models/shared/contentblock.md
   - docs/sdk/models/shared/contentblock4.md
+  - docs/sdk/models/shared/contentblockresult.md
   - docs/sdk/models/shared/contentblockschemas4.md
   - docs/sdk/models/shared/contentblockschemassourcevalue.md
   - docs/sdk/models/shared/contentblockschemasvalue.md
@@ -642,10 +638,6 @@ generatedFiles:
   - docs/sdk/models/shared/contentblocktype.md
   - docs/sdk/models/shared/contentblockvalue.md
   - docs/sdk/models/shared/contentcontenttype.md
-  - docs/sdk/models/shared/contentlanguageenum.md
-  - docs/sdk/models/shared/contentlanguageenum4.md
-  - docs/sdk/models/shared/contentlanguageenumsourcevalue.md
-  - docs/sdk/models/shared/contentlanguageenumvalue.md
   - docs/sdk/models/shared/contentlaunchmethod.md
   - docs/sdk/models/shared/contentpaginated.md
   - docs/sdk/models/shared/contentresult.md
@@ -662,26 +654,15 @@ generatedFiles:
   - docs/sdk/models/shared/countrycodeenumsourcevalue.md
   - docs/sdk/models/shared/countrycodeenumvalue.md
   - docs/sdk/models/shared/course.md
-  - docs/sdk/models/shared/course4.md
-  - docs/sdk/models/shared/courseactive.md
   - docs/sdk/models/shared/coursepaginated.md
   - docs/sdk/models/shared/courseresult.md
-  - docs/sdk/models/shared/courseschemas4.md
-  - docs/sdk/models/shared/courseschemassourcevalue.md
-  - docs/sdk/models/shared/courseschemasvalue.md
-  - docs/sdk/models/shared/coursesourcevalue.md
-  - docs/sdk/models/shared/coursetype.md
-  - docs/sdk/models/shared/coursevalue.md
   - docs/sdk/models/shared/createanswer.md
   - docs/sdk/models/shared/createanswer4.md
   - docs/sdk/models/shared/createanswersourcevalue.md
   - docs/sdk/models/shared/createanswertype.md
   - docs/sdk/models/shared/createanswervalue.md
   - docs/sdk/models/shared/createcategoriesapimodel.md
-  - docs/sdk/models/shared/createcategoriesapimodel4.md
-  - docs/sdk/models/shared/createcategoriesapimodellevel.md
-  - docs/sdk/models/shared/createcategoriesapimodelsourcevalue.md
-  - docs/sdk/models/shared/createcategoriesapimodelvalue.md
+  - docs/sdk/models/shared/createcontentapimodel.md
   - docs/sdk/models/shared/createemploymentapimodel.md
   - docs/sdk/models/shared/createemploymentapimodel4.md
   - docs/sdk/models/shared/createemploymentapimodelschemas4.md
@@ -708,6 +689,7 @@ generatedFiles:
   - docs/sdk/models/shared/createquestionnaire.md
   - docs/sdk/models/shared/createresult.md
   - docs/sdk/models/shared/createresultdataapimodel.md
+  - docs/sdk/models/shared/createskillsapimodel.md
   - docs/sdk/models/shared/credentials.md
   - docs/sdk/models/shared/crmcreatecontactrequestdto.md
   - docs/sdk/models/shared/customfielddefinition.md
@@ -718,7 +700,9 @@ generatedFiles:
   - docs/sdk/models/shared/customfielddefinitionspaginated.md
   - docs/sdk/models/shared/customfielddefinitiontype.md
   - docs/sdk/models/shared/customfielddefinitionvalue.md
-  - docs/sdk/models/shared/deleteresult.md
+  - docs/sdk/models/shared/customfields.md
+  - docs/sdk/models/shared/customfields4.md
+  - docs/sdk/models/shared/customfieldsvalue.md
   - docs/sdk/models/shared/department.md
   - docs/sdk/models/shared/departmentresult.md
   - docs/sdk/models/shared/departmentspaginated.md
@@ -730,13 +714,13 @@ generatedFiles:
   - docs/sdk/models/shared/emailmessagesmessagetype.md
   - docs/sdk/models/shared/emailmessagessourcevalue.md
   - docs/sdk/models/shared/emailmessagesvalue.md
+  - docs/sdk/models/shared/emailtemplate.md
+  - docs/sdk/models/shared/emailtemplateresult.md
+  - docs/sdk/models/shared/emailtemplatespaginated.md
   - docs/sdk/models/shared/employee.md
   - docs/sdk/models/shared/employee4.md
   - docs/sdk/models/shared/employeecompany.md
   - docs/sdk/models/shared/employeecountry.md
-  - docs/sdk/models/shared/employeecustomfields.md
-  - docs/sdk/models/shared/employeecustomfields4.md
-  - docs/sdk/models/shared/employeecustomfieldsvalue.md
   - docs/sdk/models/shared/employeeemploymentcontracttype.md
   - docs/sdk/models/shared/employeeemploymenttype.md
   - docs/sdk/models/shared/employeelocationtype.md
@@ -1034,6 +1018,9 @@ generatedFiles:
   - docs/sdk/models/shared/inappmessagesmessagetype.md
   - docs/sdk/models/shared/inappmessagessourcevalue.md
   - docs/sdk/models/shared/inappmessagesvalue.md
+  - docs/sdk/models/shared/inapptemplate.md
+  - docs/sdk/models/shared/inapptemplateresult.md
+  - docs/sdk/models/shared/inapptemplatespaginated.md
   - docs/sdk/models/shared/internal.md
   - docs/sdk/models/shared/interview.md
   - docs/sdk/models/shared/interview4.md
@@ -1057,9 +1044,6 @@ generatedFiles:
   - docs/sdk/models/shared/job.md
   - docs/sdk/models/shared/job4.md
   - docs/sdk/models/shared/jobconfidential.md
-  - docs/sdk/models/shared/jobcustomfields.md
-  - docs/sdk/models/shared/jobcustomfields4.md
-  - docs/sdk/models/shared/jobcustomfieldsvalue.md
   - docs/sdk/models/shared/jobdescription.md
   - docs/sdk/models/shared/jobhiringteam.md
   - docs/sdk/models/shared/jobjobstatus.md
@@ -1107,6 +1091,10 @@ generatedFiles:
   - docs/sdk/models/shared/jobstatus.md
   - docs/sdk/models/shared/jobvalue.md
   - docs/sdk/models/shared/label.md
+  - docs/sdk/models/shared/languageenum.md
+  - docs/sdk/models/shared/languageenum4.md
+  - docs/sdk/models/shared/languageenumsourcevalue.md
+  - docs/sdk/models/shared/languageenumvalue.md
   - docs/sdk/models/shared/learningobjecttype.md
   - docs/sdk/models/shared/level.md
   - docs/sdk/models/shared/linkedaccount.md
@@ -1122,26 +1110,15 @@ generatedFiles:
   - docs/sdk/models/shared/listtype.md
   - docs/sdk/models/shared/listvalue.md
   - docs/sdk/models/shared/lmsbatchupsertcontentrequestdto.md
+  - docs/sdk/models/shared/lmsbatchupsertcourserequestdto.md
+  - docs/sdk/models/shared/lmscreatecollectionrequestdto.md
   - docs/sdk/models/shared/lmscreatecompletionrequestdto.md
   - docs/sdk/models/shared/lmscreatecompletionrequestdto4.md
   - docs/sdk/models/shared/lmscreatecompletionrequestdtoresult.md
   - docs/sdk/models/shared/lmscreatecompletionrequestdtosourcevalue.md
   - docs/sdk/models/shared/lmscreatecompletionrequestdtovalue.md
-  - docs/sdk/models/shared/lmscreatecontentrequestdto.md
-  - docs/sdk/models/shared/lmscreatecontentrequestdto2.md
-  - docs/sdk/models/shared/lmscreatecontentrequestdto4.md
-  - docs/sdk/models/shared/lmscreatecontentrequestdtoactive.md
-  - docs/sdk/models/shared/lmscreatecontentrequestdtocontentlaunchmethod.md
-  - docs/sdk/models/shared/lmscreatecontentrequestdtocontenttype.md
-  - docs/sdk/models/shared/lmscreatecontentrequestdtoschemas4.md
-  - docs/sdk/models/shared/lmscreatecontentrequestdtoschemassourcevalue.md
-  - docs/sdk/models/shared/lmscreatecontentrequestdtoschemasvalue.md
-  - docs/sdk/models/shared/lmscreatecontentrequestdtosourcevalue.md
-  - docs/sdk/models/shared/lmscreatecontentrequestdtovalue.md
   - docs/sdk/models/shared/lmsupsertcontentrequestdto.md
-  - docs/sdk/models/shared/lmsupsertcontentrequestdto2.md
   - docs/sdk/models/shared/lmsupsertcontentrequestdto4.md
-  - docs/sdk/models/shared/lmsupsertcontentrequestdtoactive.md
   - docs/sdk/models/shared/lmsupsertcontentrequestdtocontentlaunchmethod.md
   - docs/sdk/models/shared/lmsupsertcontentrequestdtocontenttype.md
   - docs/sdk/models/shared/lmsupsertcontentrequestdtoschemas4.md
@@ -1149,6 +1126,7 @@ generatedFiles:
   - docs/sdk/models/shared/lmsupsertcontentrequestdtoschemasvalue.md
   - docs/sdk/models/shared/lmsupsertcontentrequestdtosourcevalue.md
   - docs/sdk/models/shared/lmsupsertcontentrequestdtovalue.md
+  - docs/sdk/models/shared/lmsupsertcourserequestdto.md
   - docs/sdk/models/shared/lmsuser.md
   - docs/sdk/models/shared/locationtype.md
   - docs/sdk/models/shared/maritalstatus.md
@@ -1210,6 +1188,9 @@ generatedFiles:
   - docs/sdk/models/shared/pushmessagesmessagetype.md
   - docs/sdk/models/shared/pushmessagessourcevalue.md
   - docs/sdk/models/shared/pushmessagesvalue.md
+  - docs/sdk/models/shared/pushtemplate.md
+  - docs/sdk/models/shared/pushtemplateresult.md
+  - docs/sdk/models/shared/pushtemplatespaginated.md
   - docs/sdk/models/shared/question.md
   - docs/sdk/models/shared/question2.md
   - docs/sdk/models/shared/question4.md
@@ -1223,7 +1204,6 @@ generatedFiles:
   - docs/sdk/models/shared/rawresponse.md
   - docs/sdk/models/shared/reference.md
   - docs/sdk/models/shared/reference2.md
-  - docs/sdk/models/shared/referenceactive.md
   - docs/sdk/models/shared/referencepaginated.md
   - docs/sdk/models/shared/referenceresult.md
   - docs/sdk/models/shared/rejectapplicationresult.md
@@ -1270,6 +1250,9 @@ generatedFiles:
   - docs/sdk/models/shared/smsmessagesmessagetype.md
   - docs/sdk/models/shared/smsmessagessourcevalue.md
   - docs/sdk/models/shared/smsmessagesvalue.md
+  - docs/sdk/models/shared/smstemplate.md
+  - docs/sdk/models/shared/smstemplateresult.md
+  - docs/sdk/models/shared/smstemplatespaginated.md
   - docs/sdk/models/shared/sociallink.md
   - docs/sdk/models/shared/source.md
   - docs/sdk/models/shared/sourcetype.md
@@ -1475,9 +1458,9 @@ generatedFiles:
   - src/funcs/iamListRoles.ts
   - src/funcs/iamListUsers.ts
   - src/funcs/lmsBatchUpsertContent.ts
-  - src/funcs/lmsCreateContent.ts
+  - src/funcs/lmsBatchUpsertCourse.ts
+  - src/funcs/lmsCreateCollection.ts
   - src/funcs/lmsCreateUserCompletion.ts
-  - src/funcs/lmsDeleteContent.ts
   - src/funcs/lmsGetAssignment.ts
   - src/funcs/lmsGetCategory.ts
   - src/funcs/lmsGetCompletion.ts
@@ -1496,8 +1479,9 @@ generatedFiles:
   - src/funcs/lmsListUserAssignments.ts
   - src/funcs/lmsListUserCompletions.ts
   - src/funcs/lmsListUsers.ts
-  - src/funcs/lmsUpdateContent.ts
+  - src/funcs/lmsUpdateCollection.ts
   - src/funcs/lmsUpsertContent.ts
+  - src/funcs/lmsUpsertCourse.ts
   - src/funcs/marketingCreateContentBlock.ts
   - src/funcs/marketingCreateEmailTemplate.ts
   - src/funcs/marketingCreateInAppTemplate.ts
@@ -1678,9 +1662,9 @@ generatedFiles:
   - src/sdk/models/operations/iamlistusers.ts
   - src/sdk/models/operations/index.ts
   - src/sdk/models/operations/lmsbatchupsertcontent.ts
-  - src/sdk/models/operations/lmscreatecontent.ts
+  - src/sdk/models/operations/lmsbatchupsertcourse.ts
+  - src/sdk/models/operations/lmscreatecollection.ts
   - src/sdk/models/operations/lmscreateusercompletion.ts
-  - src/sdk/models/operations/lmsdeletecontent.ts
   - src/sdk/models/operations/lmsgetassignment.ts
   - src/sdk/models/operations/lmsgetcategory.ts
   - src/sdk/models/operations/lmsgetcompletion.ts
@@ -1699,8 +1683,9 @@ generatedFiles:
   - src/sdk/models/operations/lmslistuserassignments.ts
   - src/sdk/models/operations/lmslistusercompletions.ts
   - src/sdk/models/operations/lmslistusers.ts
-  - src/sdk/models/operations/lmsupdatecontent.ts
+  - src/sdk/models/operations/lmsupdatecollection.ts
   - src/sdk/models/operations/lmsupsertcontent.ts
+  - src/sdk/models/operations/lmsupsertcourse.ts
   - src/sdk/models/operations/marketingcreatecontentblock.ts
   - src/sdk/models/operations/marketingcreateemailtemplate.ts
   - src/sdk/models/operations/marketingcreateinapptemplate.ts
@@ -1777,7 +1762,6 @@ generatedFiles:
   - src/sdk/models/shared/campaignresult.ts
   - src/sdk/models/shared/campaignspaginated.ts
   - src/sdk/models/shared/candidate.ts
-  - src/sdk/models/shared/candidatecustomfields.ts
   - src/sdk/models/shared/candidateemail.ts
   - src/sdk/models/shared/candidateresult.ts
   - src/sdk/models/shared/candidatespaginated.ts
@@ -1798,12 +1782,11 @@ generatedFiles:
   - src/sdk/models/shared/connectsessiontoken.ts
   - src/sdk/models/shared/contact.ts
   - src/sdk/models/shared/contactresult.ts
-  - src/sdk/models/shared/contactscustomfields.ts
   - src/sdk/models/shared/contactspaginated.ts
   - src/sdk/models/shared/content.ts
   - src/sdk/models/shared/contentblock.ts
+  - src/sdk/models/shared/contentblockresult.ts
   - src/sdk/models/shared/contentblockspaginated.ts
-  - src/sdk/models/shared/contentlanguageenum.ts
   - src/sdk/models/shared/contentpaginated.ts
   - src/sdk/models/shared/contentresult.ts
   - src/sdk/models/shared/costcenters.ts
@@ -1813,6 +1796,7 @@ generatedFiles:
   - src/sdk/models/shared/courseresult.ts
   - src/sdk/models/shared/createanswer.ts
   - src/sdk/models/shared/createcategoriesapimodel.ts
+  - src/sdk/models/shared/createcontentapimodel.ts
   - src/sdk/models/shared/createemploymentapimodel.ts
   - src/sdk/models/shared/createevent.ts
   - src/sdk/models/shared/createeventresponse.ts
@@ -1821,17 +1805,20 @@ generatedFiles:
   - src/sdk/models/shared/createquestionnaire.ts
   - src/sdk/models/shared/createresult.ts
   - src/sdk/models/shared/createresultdataapimodel.ts
+  - src/sdk/models/shared/createskillsapimodel.ts
   - src/sdk/models/shared/crmcreatecontactrequestdto.ts
   - src/sdk/models/shared/customfielddefinition.ts
   - src/sdk/models/shared/customfielddefinitionresultapimodel.ts
   - src/sdk/models/shared/customfielddefinitionspaginated.ts
-  - src/sdk/models/shared/deleteresult.ts
+  - src/sdk/models/shared/customfields.ts
   - src/sdk/models/shared/department.ts
   - src/sdk/models/shared/departmentresult.ts
   - src/sdk/models/shared/departmentspaginated.ts
   - src/sdk/models/shared/emailmessages.ts
+  - src/sdk/models/shared/emailtemplate.ts
+  - src/sdk/models/shared/emailtemplateresult.ts
+  - src/sdk/models/shared/emailtemplatespaginated.ts
   - src/sdk/models/shared/employee.ts
-  - src/sdk/models/shared/employeecustomfields.ts
   - src/sdk/models/shared/employeeresult.ts
   - src/sdk/models/shared/employeespaginated.ts
   - src/sdk/models/shared/employment.ts
@@ -1878,6 +1865,9 @@ generatedFiles:
   - src/sdk/models/shared/iamuserresult.ts
   - src/sdk/models/shared/iamuserspaginated.ts
   - src/sdk/models/shared/inappmessages.ts
+  - src/sdk/models/shared/inapptemplate.ts
+  - src/sdk/models/shared/inapptemplateresult.ts
+  - src/sdk/models/shared/inapptemplatespaginated.ts
   - src/sdk/models/shared/index.ts
   - src/sdk/models/shared/interview.ts
   - src/sdk/models/shared/interviewer.ts
@@ -1888,7 +1878,6 @@ generatedFiles:
   - src/sdk/models/shared/interviewstageresult.ts
   - src/sdk/models/shared/interviewstagespaginated.ts
   - src/sdk/models/shared/job.ts
-  - src/sdk/models/shared/jobcustomfields.ts
   - src/sdk/models/shared/jobhiringteam.ts
   - src/sdk/models/shared/jobposting.ts
   - src/sdk/models/shared/jobpostingcompensation.ts
@@ -1899,6 +1888,7 @@ generatedFiles:
   - src/sdk/models/shared/jobpostingspaginated.ts
   - src/sdk/models/shared/jobresult.ts
   - src/sdk/models/shared/jobspaginated.ts
+  - src/sdk/models/shared/languageenum.ts
   - src/sdk/models/shared/linkedaccount.ts
   - src/sdk/models/shared/linkedaccountmeta.ts
   - src/sdk/models/shared/list.ts
@@ -1906,9 +1896,11 @@ generatedFiles:
   - src/sdk/models/shared/listresult.ts
   - src/sdk/models/shared/listspaginated.ts
   - src/sdk/models/shared/lmsbatchupsertcontentrequestdto.ts
+  - src/sdk/models/shared/lmsbatchupsertcourserequestdto.ts
+  - src/sdk/models/shared/lmscreatecollectionrequestdto.ts
   - src/sdk/models/shared/lmscreatecompletionrequestdto.ts
-  - src/sdk/models/shared/lmscreatecontentrequestdto.ts
   - src/sdk/models/shared/lmsupsertcontentrequestdto.ts
+  - src/sdk/models/shared/lmsupsertcourserequestdto.ts
   - src/sdk/models/shared/lmsuser.ts
   - src/sdk/models/shared/marketingcreatecontentblocksrequestdto.ts
   - src/sdk/models/shared/marketingcreateemailtemplaterequestdto.ts
@@ -1930,6 +1922,9 @@ generatedFiles:
   - src/sdk/models/shared/providererrorapimodel.ts
   - src/sdk/models/shared/proxyrequestbody.ts
   - src/sdk/models/shared/pushmessages.ts
+  - src/sdk/models/shared/pushtemplate.ts
+  - src/sdk/models/shared/pushtemplateresult.ts
+  - src/sdk/models/shared/pushtemplatespaginated.ts
   - src/sdk/models/shared/question.ts
   - src/sdk/models/shared/questionmultiplechoiceanswers.ts
   - src/sdk/models/shared/questionnaire.ts
@@ -1954,6 +1949,9 @@ generatedFiles:
   - src/sdk/models/shared/skills.ts
   - src/sdk/models/shared/skillspaginated.ts
   - src/sdk/models/shared/smsmessages.ts
+  - src/sdk/models/shared/smstemplate.ts
+  - src/sdk/models/shared/smstemplateresult.ts
+  - src/sdk/models/shared/smstemplatespaginated.ts
   - src/sdk/models/shared/sociallink.ts
   - src/sdk/models/shared/statusreason.ts
   - src/sdk/models/shared/template.ts
@@ -2026,14 +2024,14 @@ examples:
         application/json: {"token": "<value>"}
       responses:
         "201":
-          application/json: {"categories": ["ats", "hris", "hris-legacy", "crm", "iam", "marketing", "lms", "hris-legacy"], "created_at": "2022-11-06T21:29:11.002Z", "id": "2863.15", "organization_id": "5844.8", "origin_owner_id": "<value>", "origin_owner_name": "<value>", "project_id": "<value>"}
+          application/json: {"categories": ["ats", "hris", "crm", "crm", "iam", "marketing", "lms", "hris-legacy", "marketing"], "created_at": "2022-11-06T21:29:11.002Z", "id": "2863.15", "organization_id": "5844.8", "origin_owner_id": "<value>", "origin_owner_name": "<value>", "project_id": "<value>"}
   stackone_create_connect_session:
     speakeasy-default-stackone-create-connect-session:
       requestBody:
-        application/json: {"categories": ["ats", "hris", "hris-legacy", "crm", "iam", "marketing", "lms", "ats"], "origin_owner_id": "<value>", "origin_owner_name": "<value>"}
+        application/json: {"categories": ["ats", "hris", "crm", "crm", "iam", "marketing", "lms", "ats", "lms"], "origin_owner_id": "<value>", "origin_owner_name": "<value>"}
       responses:
         "201":
-          application/json: {"categories": ["ats", "hris", "marketing", "crm", "iam", "marketing", "lms", "marketing"], "created_at": "2024-01-28T04:32:28.342Z", "id": "4207.79", "organization_id": "6497.42", "origin_owner_id": "<value>", "origin_owner_name": "<value>", "project_id": "<value>", "token": "<value>"}
+          application/json: {"categories": ["ats", "hris", "marketing", "crm", "iam", "marketing", "lms", "ats", "ats"], "created_at": "2024-01-28T04:32:28.342Z", "id": "4207.79", "organization_id": "6497.42", "origin_owner_id": "<value>", "origin_owner_name": "<value>", "project_id": "<value>", "token": "<value>"}
   stackone_get_connector_meta:
     "":
       parameters:
@@ -3464,7 +3462,7 @@ examples:
         path:
           id: "<id>"
         query:
-          fields: "id,remote_id,external_reference,course_ids,remote_course_ids,title,description,languages,content_url,content_type,cover_url,active,duration,categories,skills,order,content_launch_method,updated_at,created_at"
+          fields: "id,remote_id,external_reference,course_ids,remote_course_ids,title,description,languages,content_url,content_type,cover_url,active,duration,order,content_launch_method,categories,skills,updated_at,created_at"
         header:
           x-account-id: "<value>"
       responses:
@@ -3476,12 +3474,12 @@ examples:
         path:
           id: "<id>"
         query:
-          fields: "id,remote_id,external_reference,content_ids,remote_content_ids,title,description,languages,course_type,cover_url,url,active,duration,categories,skills,updated_at,created_at"
+          fields: "id,remote_id,external_reference,content_ids,remote_content_ids,title,description,languages,cover_url,url,active,duration,categories,skills,updated_at,created_at,content"
         header:
           x-account-id: "<value>"
       responses:
         "200":
-          application/json: {"data": {"categories": [{"active": true, "id": "12345", "name": "Technology", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}}], "content_ids": ["16873-SOFTWARE-ENG-COURSE", "16874-SOFTWARE-ENG-COURSE"], "cover_url": "https://www.googledrive.com/?v=16873", "created_at": "2021-07-21T14:00:00.000Z", "description": "This course acts as learning content for software engineers.", "duration": "P3Y6M4DT12H30M5S", "external_reference": "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1", "id": "16873-ENG-VIDEO-1", "languages": [], "remote_content_ids": ["e3cb75bf-aa84-466e-a6c1-b8322b257a48", "e3cb75bf-aa84-466e-a6c1-b8322b257a49"], "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "skills": [{"active": true, "id": "12345", "name": "Sales Techniques", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}], "title": "Software Engineer Lv 1", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}, "updated_at": "2021-07-21T14:00:00.000Z", "url": "https://www.linkedinlearning.com/?v=16873"}}
+          application/json: {"data": {"active": true, "categories": [{"active": true, "id": "12345", "name": "Technology", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}}], "content_ids": ["16873-SOFTWARE-ENG-COURSE", "16874-SOFTWARE-ENG-COURSE"], "cover_url": "https://www.googledrive.com/?v=16873", "created_at": "2021-07-21T14:00:00.000Z", "description": "This course acts as learning content for software engineers.", "duration": "P3Y6M4DT12H30M5S", "external_reference": "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1", "id": "16873-ENG-VIDEO-1", "languages": [], "remote_content_ids": ["e3cb75bf-aa84-466e-a6c1-b8322b257a48", "e3cb75bf-aa84-466e-a6c1-b8322b257a49"], "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "skills": [{"active": true, "id": "12345", "name": "Sales Techniques", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}], "title": "Software Engineer Lv 1", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}, "updated_at": "2021-07-21T14:00:00.000Z", "url": "https://www.linkedinlearning.com/?v=16873"}}
   lms_get_skill:
     "":
       parameters:
@@ -3574,7 +3572,7 @@ examples:
     "":
       parameters:
         query:
-          fields: "id,remote_id,external_reference,course_ids,remote_course_ids,title,description,languages,content_url,content_type,cover_url,active,duration,categories,skills,order,content_launch_method,updated_at,created_at"
+          fields: "id,remote_id,external_reference,course_ids,remote_course_ids,title,description,languages,content_url,content_type,cover_url,active,duration,order,content_launch_method,categories,skills,updated_at,created_at"
           filter: {"updated_after": "2020-01-01T00:00:00.000Z"}
           updated_after: "2020-01-01T00:00:00.000Z"
         header:
@@ -3586,7 +3584,7 @@ examples:
     "":
       parameters:
         query:
-          fields: "id,remote_id,external_reference,content_ids,remote_content_ids,title,description,languages,course_type,cover_url,url,active,duration,categories,skills,updated_at,created_at"
+          fields: "id,remote_id,external_reference,content_ids,remote_content_ids,title,description,languages,cover_url,url,active,duration,categories,skills,updated_at,created_at,content"
           filter: {"updated_after": "2020-01-01T00:00:00.000Z"}
           updated_after: "2020-01-01T00:00:00.000Z"
         header:
@@ -3668,7 +3666,7 @@ examples:
         header:
           x-account-id: "<value>"
       requestBody:
-        application/json: {"active": true, "categories": [{"active": true, "name": "Information-Technology", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}}], "content_url": "https://www.youtube.com/watch?v=16873", "course_ids": ["16873-SOFTWARE-ENG-COURSE"], "cover_url": "https://www.googledrive.com/?v=16873", "description": "This video acts as learning content for software engineers.", "duration": "P3Y6M4DT12H30M5S", "external_reference": "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1", "languages": [], "order": 1, "skills": [{"active": true, "id": "16873-IT345", "name": "Information-Technology", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}], "title": "Software Engineer Lv 1", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}}
+        application/json: {"active": true, "categories": [{"name": "Information-Technology", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}}], "content_url": "https://www.youtube.com/watch?v=16873", "course_ids": ["16873-SOFTWARE-ENG-COURSE"], "cover_url": "https://www.googledrive.com/?v=16873", "description": "This video acts as learning content for software engineers.", "duration": "P3Y6M4DT12H30M5S", "external_reference": "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1", "languages": [], "order": 1, "skills": [{"id": "16873-IT345", "name": "Information-Technology", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}], "title": "Software Engineer Lv 1", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}}
       responses:
         "201":
           application/json: {"data": {"external_reference": "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1", "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}, "message": "Record created successfully.", "statusCode": 201, "timestamp": "2021-01-01T01:01:01.000Z"}
@@ -3743,7 +3741,7 @@ examples:
           x-account-id: "<value>"
       responses:
         "200":
-          application/json: {"data": {"channels": [], "created_at": "2021-01-01T01:01:01.000Z", "first_sent_at": "2021-01-01T01:01:01.000Z", "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "last_sent_at": "2021-01-01T01:01:01.000Z", "messages": [{"id": "message-id-1", "message_content": {"body": "This is an example SMS body.", "from": "1-555-123-4567"}, "message_type": {"source_value": "Email"}, "name": "SMS Message", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}, {"id": "message-id-2", "message_content": {"body": "<h1>This is an example</h1>\n            <p>email body</p>", "from": "Jane Smith", "preheader": "This is the preheader of the email.", "reply-to": "reply@example.com", "subject": "Example Email Subject"}, "message_type": {"source_value": "Email"}, "name": "Email Message", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}, {"id": "message-id-3", "message_content": {"body": "This is an example push notification body."}, "message_type": {"source_value": "Email"}, "name": "iOS Push Message", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}], "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "schedule_type": {"source_value": "Immediate", "value": "immediate"}, "status": {"source_value": "Email", "value": "draft"}, "updated_at": "2021-01-01T01:01:01.000Z"}}
+          application/json: {"data": {"channels": [], "created_at": "2021-01-01T01:01:01.000Z", "first_sent_at": "2021-01-01T01:01:01.000Z", "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "last_sent_at": "2021-01-01T01:01:01.000Z", "messages": [{"id": "message-id-1", "message_content": {"body": "This is an example SMS body.", "from": "1-555-123-4567"}, "message_type": {"source_value": "Email", "value": "email"}, "name": "SMS Message", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}, {"id": "message-id-2", "message_content": {"body": "<h1>This is an example</h1>\n            <p>email body</p>", "from": "Jane Smith", "preheader": "This is the preheader of the email.", "reply-to": "reply@example.com", "subject": "Example Email Subject"}, "message_type": {"source_value": "Email", "value": "email"}, "name": "Email Message", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}, {"id": "message-id-3", "message_content": {"body": "This is an example push notification body."}, "message_type": {"source_value": "Email", "value": "email"}, "name": "iOS Push Message", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}], "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "schedule_type": {"source_value": "Immediate", "value": "immediate"}, "status": {"source_value": "Email", "value": "draft"}, "updated_at": "2021-01-01T01:01:01.000Z"}}
   marketing_get_content_block:
     "":
       parameters:
@@ -3755,7 +3753,7 @@ examples:
           x-account-id: "<value>"
       responses:
         "200":
-          application/json: {"data": []}
+          application/json: {"data": {}}
   marketing_get_email_template:
     "":
       parameters:
@@ -3767,7 +3765,7 @@ examples:
           x-account-id: "<value>"
       responses:
         "200":
-          application/json: {"data": {"created_at": "2021-01-01T00:00:00.000Z", "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "updated_at": "2021-01-01T00:00:00.000Z"}}
+          application/json: {"data": {"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "messages": [{"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "message_type": {"source_value": "Email", "value": "email"}, "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}, {"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "message_type": {"source_value": "Email", "value": "email"}, "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}], "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}}
   marketing_get_in_app_template:
     "":
       parameters:
@@ -3779,7 +3777,7 @@ examples:
           x-account-id: "<value>"
       responses:
         "200":
-          application/json: {"data": {"created_at": "2021-01-01T00:00:00.000Z", "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "updated_at": "2021-01-01T00:00:00.000Z"}}
+          application/json: {"data": {"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "messages": [], "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}}
   marketing_get_omni_channel_template:
     "":
       parameters:
@@ -3803,7 +3801,7 @@ examples:
           x-account-id: "<value>"
       responses:
         "200":
-          application/json: {"data": {"created_at": "2021-01-01T00:00:00.000Z", "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "updated_at": "2021-01-01T00:00:00.000Z"}}
+          application/json: {"data": {"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "messages": [{"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "message_type": {"source_value": "Email", "value": "email"}, "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}], "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}}
   marketing_get_sms_template:
     "":
       parameters:
@@ -3815,7 +3813,7 @@ examples:
           x-account-id: "<value>"
       responses:
         "200":
-          application/json: {"data": {"created_at": "2021-01-01T00:00:00.000Z", "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "updated_at": "2021-01-01T00:00:00.000Z"}}
+          application/json: {"data": {"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "messages": [{"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "message_type": {"source_value": "Email", "value": "email"}, "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}], "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}}
   marketing_list_campaigns:
     "":
       parameters:
@@ -4098,3 +4096,45 @@ examples:
       responses:
         "200":
           application/json: {"message": "Record deleted successfully.", "statusCode": 200, "timestamp": "2021-01-01T01:01:01.000Z"}
+  lms_batch_upsert_course:
+    speakeasy-default-lms-batch-upsert-course:
+      parameters:
+        header:
+          x-account-id: "<id>"
+      requestBody:
+        application/json: {"items": [{"active": true, "categories": [{"name": "Information-Technology", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}}], "content": [], "content_ids": ["16873-SOFTWARE-ENG-Content"], "cover_url": "https://www.googledrive.com/?v=16873", "created_at": "2021-07-21T14:00:00.000Z", "description": "This course acts as learning content for software engineers.", "duration": "P3Y6M4DT12H30M5S", "external_reference": "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1", "languages": [{"value": "en_GB"}, {"value": "en_GB"}], "skills": [{"id": "16873-IT345", "name": "Information-Technology", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}], "title": "Software Engineer Lv 1", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}, "updated_at": "2021-07-21T14:00:00.000Z", "url": "https://www.linkedinlearning.com/?v=16873"}, {"active": true, "categories": [{"name": "Information-Technology", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}}], "content": [{"content_url": "https://www.youtube.com/watch?v=16873", "description": "This video acts as learning content for software engineers.", "order": 1, "title": "Software Engineer Lv 1"}, {"content_url": "https://www.youtube.com/watch?v=16873", "description": "This video acts as learning content for software engineers.", "order": 1, "title": "Software Engineer Lv 1"}], "content_ids": ["16873-SOFTWARE-ENG-Content"], "cover_url": "https://www.googledrive.com/?v=16873", "created_at": "2021-07-21T14:00:00.000Z", "description": "This course acts as learning content for software engineers.", "duration": "P3Y6M4DT12H30M5S", "external_reference": "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1", "languages": [], "skills": [{"id": "16873-IT345", "name": "Information-Technology", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}], "title": "Software Engineer Lv 1", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}, "updated_at": "2021-07-21T14:00:00.000Z", "url": "https://www.linkedinlearning.com/?v=16873"}]}
+      responses:
+        "202":
+          application/json: {"errors": [["Missing field: name"], [], []], "message": "Batch operation accepted", "statusCode": 202, "timestamp": "2021-01-01T01:01:01.000Z"}
+  lms_create_collection:
+    speakeasy-default-lms-create-collection:
+      parameters:
+        header:
+          x-account-id: "<id>"
+      requestBody:
+        application/json: {"categories": [{"name": "Information-Technology", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}}], "cover_url": "https://www.googledrive.com/?v=16873", "description": "This collection acts as learning pathway for software engineers.", "external_reference": "SOFTWARE-ENG-LV1-TRAINING-collection-1", "learning_object_ids": ["16873-SOFTWARE-ENG-COURSE", "16874-SOFTWARE-ENG-COURSE"], "remote_learning_object_ids": ["e3cb75bf-aa84-466e-a6c1-b8322b257a48", "e3cb75bf-aa84-466e-a6c1-b8322b257a49"], "skills": [{"id": "16873-IT345", "name": "Information-Technology", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}], "title": "Software Engineer Lv 1 Collection", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}}
+      responses:
+        "201":
+          application/json: {"data": {"external_reference": "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1", "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}, "message": "Record created successfully.", "statusCode": 201, "timestamp": "2021-01-01T01:01:01.000Z"}
+  lms_update_collection:
+    speakeasy-default-lms-update-collection:
+      parameters:
+        path:
+          id: "<id>"
+        header:
+          x-account-id: "<id>"
+      requestBody:
+        application/json: {"categories": [{"name": "Information-Technology", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}}], "cover_url": "https://www.googledrive.com/?v=16873", "description": "This collection acts as learning pathway for software engineers.", "external_reference": "SOFTWARE-ENG-LV1-TRAINING-collection-1", "learning_object_ids": ["16873-SOFTWARE-ENG-COURSE", "16874-SOFTWARE-ENG-COURSE"], "remote_learning_object_ids": ["e3cb75bf-aa84-466e-a6c1-b8322b257a48", "e3cb75bf-aa84-466e-a6c1-b8322b257a49"], "skills": [{"id": "16873-IT345", "name": "Information-Technology", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}], "title": "Software Engineer Lv 1 Collection", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}}
+      responses:
+        "201":
+          application/json: {"message": "Record updated successfully.", "statusCode": 200, "timestamp": "2021-01-01T01:01:01.000Z"}
+  lms_upsert_course:
+    speakeasy-default-lms-upsert-course:
+      parameters:
+        header:
+          x-account-id: "<id>"
+      requestBody:
+        application/json: {"active": true, "categories": [{"name": "Information-Technology", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}}], "content": [{"content_url": "https://www.youtube.com/watch?v=16873", "description": "This video acts as learning content for software engineers.", "order": 1, "title": "Software Engineer Lv 1"}], "content_ids": ["16873-SOFTWARE-ENG-Content"], "cover_url": "https://www.googledrive.com/?v=16873", "created_at": "2021-07-21T14:00:00.000Z", "description": "This course acts as learning content for software engineers.", "duration": "P3Y6M4DT12H30M5S", "external_reference": "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1", "languages": [{"value": "en_GB"}], "skills": [{"id": "16873-IT345", "name": "Information-Technology", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}], "title": "Software Engineer Lv 1", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}, "updated_at": "2021-07-21T14:00:00.000Z", "url": "https://www.linkedinlearning.com/?v=16873"}
+      responses:
+        "201":
+          application/json: {"data": {"external_reference": "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1", "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}, "message": "Record created successfully.", "statusCode": 201, "timestamp": "2021-01-01T01:01:01.000Z"}

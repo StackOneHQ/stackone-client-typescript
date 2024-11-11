@@ -32,6 +32,10 @@ export type MarketingGetPushTemplateResponse = {
    */
   contentType: string;
   /**
+   * The push template with the given identifier was retrieved.
+   */
+  pushTemplateResult?: shared.PushTemplateResult | undefined;
+  /**
    * HTTP response status code for this operation
    */
   statusCode: number;
@@ -39,10 +43,6 @@ export type MarketingGetPushTemplateResponse = {
    * Raw HTTP response; suitable for custom response parsing
    */
   rawResponse: Response;
-  /**
-   * The push template with the given identifier was retrieved.
-   */
-  templateResult?: shared.TemplateResult | undefined;
 };
 
 /** @internal */
@@ -108,24 +108,24 @@ export const MarketingGetPushTemplateResponse$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   ContentType: z.string(),
+  PushTemplateResult: shared.PushTemplateResult$inboundSchema.optional(),
   StatusCode: z.number().int(),
   RawResponse: z.instanceof(Response),
-  TemplateResult: shared.TemplateResult$inboundSchema.optional(),
 }).transform((v) => {
   return remap$(v, {
     "ContentType": "contentType",
+    "PushTemplateResult": "pushTemplateResult",
     "StatusCode": "statusCode",
     "RawResponse": "rawResponse",
-    "TemplateResult": "templateResult",
   });
 });
 
 /** @internal */
 export type MarketingGetPushTemplateResponse$Outbound = {
   ContentType: string;
+  PushTemplateResult?: shared.PushTemplateResult$Outbound | undefined;
   StatusCode: number;
   RawResponse: never;
-  TemplateResult?: shared.TemplateResult$Outbound | undefined;
 };
 
 /** @internal */
@@ -135,17 +135,17 @@ export const MarketingGetPushTemplateResponse$outboundSchema: z.ZodType<
   MarketingGetPushTemplateResponse
 > = z.object({
   contentType: z.string(),
+  pushTemplateResult: shared.PushTemplateResult$outboundSchema.optional(),
   statusCode: z.number().int(),
   rawResponse: z.instanceof(Response).transform(() => {
     throw new Error("Response cannot be serialized");
   }),
-  templateResult: shared.TemplateResult$outboundSchema.optional(),
 }).transform((v) => {
   return remap$(v, {
     contentType: "ContentType",
+    pushTemplateResult: "PushTemplateResult",
     statusCode: "StatusCode",
     rawResponse: "RawResponse",
-    templateResult: "TemplateResult",
   });
 });
 

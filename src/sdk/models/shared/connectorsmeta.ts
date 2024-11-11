@@ -22,6 +22,7 @@ export enum ConnectorsMetaCategory {
   Marketing = "marketing",
   Lms = "lms",
   Stackone = "stackone",
+  FileStorage = "file-storage",
 }
 /**
  * The provider service category

@@ -9,16 +9,17 @@ let value: ConnectSessionToken = {
   categories: [
     ConnectSessionTokenCategories.Ats,
     ConnectSessionTokenCategories.Hris,
-    ConnectSessionTokenCategories.Hris,
+    ConnectSessionTokenCategories.HrisLegacy,
     ConnectSessionTokenCategories.Crm,
     ConnectSessionTokenCategories.Iam,
     ConnectSessionTokenCategories.Marketing,
     ConnectSessionTokenCategories.Lms,
-    ConnectSessionTokenCategories.Marketing,
+    ConnectSessionTokenCategories.Stackone,
+    ConnectSessionTokenCategories.Ats,
   ],
-  createdAt: new Date("2023-03-13T16:24:53.059Z"),
-  id: 627.13,
-  organizationId: 4240.32,
+  createdAt: new Date("2024-11-17T01:04:53.458Z"),
+  id: 3553.69,
+  organizationId: 3567.07,
   originOwnerId: "<id>",
   originOwnerName: "<value>",
   projectId: "<id>",
@@ -31,7 +32,7 @@ let value: ConnectSessionToken = {
 | Field                                                                                                 | Type                                                                                                  | Required                                                                                              | Description                                                                                           | Example                                                                                               |
 | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
 | `accountId`                                                                                           | *string*                                                                                              | :heavy_minus_sign:                                                                                    | N/A                                                                                                   |                                                                                                       |
-| `categories`                                                                                          | [shared.ConnectSessionTokenCategories](../../../sdk/models/shared/connectsessiontokencategories.md)[] | :heavy_minus_sign:                                                                                    | N/A                                                                                                   | [<br/>"ats",<br/>"hris",<br/>"hrisLegacy",<br/>"crm",<br/>"iam",<br/>"marketing",<br/>"lms",<br/>"stackOne"<br/>] |
+| `categories`                                                                                          | [shared.ConnectSessionTokenCategories](../../../sdk/models/shared/connectsessiontokencategories.md)[] | :heavy_minus_sign:                                                                                    | N/A                                                                                                   | [<br/>"ats",<br/>"hris",<br/>"hrisLegacy",<br/>"crm",<br/>"iam",<br/>"marketing",<br/>"lms",<br/>"stackOne",<br/>"fileStorage"<br/>] |
 | `createdAt`                                                                                           | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)         | :heavy_check_mark:                                                                                    | N/A                                                                                                   |                                                                                                       |
 | `id`                                                                                                  | *number*                                                                                              | :heavy_check_mark:                                                                                    | N/A                                                                                                   |                                                                                                       |
 | `label`                                                                                               | *string*                                                                                              | :heavy_minus_sign:                                                                                    | N/A                                                                                                   |                                                                                                       |

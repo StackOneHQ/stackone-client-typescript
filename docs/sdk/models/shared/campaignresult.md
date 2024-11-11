@@ -3,7 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { CampaignResult, CampaignSchemasValue, CampaignValue, ChannelsEnumValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+import {
+  CampaignResult,
+  CampaignSchemasValue,
+  CampaignValue,
+  ChannelsEnumValue,
+  MessageValue,
+} from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: CampaignResult = {
   data: {
@@ -26,7 +32,7 @@ let value: CampaignResult = {
         },
         messageType: {
           sourceValue: "Email",
-          value: {},
+          value: MessageValue.Sms,
         },
         name: "SMS Message",
         remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
@@ -43,7 +49,7 @@ let value: CampaignResult = {
         },
         messageType: {
           sourceValue: "Email",
-          value: {},
+          value: MessageValue.Email,
         },
         name: "Email Message",
         remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
@@ -55,7 +61,7 @@ let value: CampaignResult = {
         },
         messageType: {
           sourceValue: "Email",
-          value: {},
+          value: MessageValue.IosPush,
         },
         name: "iOS Push Message",
         remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
@@ -68,7 +74,7 @@ let value: CampaignResult = {
     },
     status: {
       sourceValue: "Email",
-      value: CampaignSchemasValue.Archived,
+      value: CampaignSchemasValue.Live,
     },
     updatedAt: new Date("2021-01-01T01:01:01.000Z"),
   },

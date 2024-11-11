@@ -4,7 +4,7 @@
 
 ```typescript
 import { MarketingListCampaignsResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
-import { CampaignSchemasValue, CampaignValue, ChannelsEnumValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { CampaignSchemasValue, CampaignValue, ChannelsEnumValue, MessageValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: MarketingListCampaignsResponse = {
   campaignsPaginated: {
@@ -29,7 +29,7 @@ let value: MarketingListCampaignsResponse = {
             },
             messageType: {
               sourceValue: "Email",
-              value: {},
+              value: MessageValue.Sms,
             },
             name: "SMS Message",
             remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
@@ -46,7 +46,7 @@ let value: MarketingListCampaignsResponse = {
             },
             messageType: {
               sourceValue: "Email",
-              value: {},
+              value: MessageValue.Email,
             },
             name: "Email Message",
             remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
@@ -58,7 +58,7 @@ let value: MarketingListCampaignsResponse = {
             },
             messageType: {
               sourceValue: "Email",
-              value: {},
+              value: MessageValue.IosPush,
             },
             name: "iOS Push Message",
             remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
@@ -78,7 +78,7 @@ let value: MarketingListCampaignsResponse = {
     ],
   },
   contentType: "<value>",
-  statusCode: 300,
+  statusCode: 302,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

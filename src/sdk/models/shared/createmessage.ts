@@ -4,6 +4,11 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import {
+  catchUnrecognizedEnum,
+  OpenEnum,
+  Unrecognized,
+} from "../../types/enums.js";
 
 export type PushMessageContentsSchemas = {
   body?: string | null | undefined;
@@ -42,7 +47,24 @@ export type CreateMessageSourceValue =
 /**
  * The unified message type.
  */
-export type CreateMessageValue = {};
+export enum CreateMessageValue {
+  Email = "email",
+  Sms = "sms",
+  Push = "push",
+  WebPush = "web_push",
+  IosPush = "ios_push",
+  AndroidPush = "android_push",
+  AppPush = "app_push",
+  OmniChannel = "omni_channel",
+  ContentBlock = "content_block",
+  InApp = "in_app",
+  Unknown = "unknown",
+  UnmappedValue = "unmapped_value",
+}
+/**
+ * The unified message type.
+ */
+export type CreateMessageValueOpen = OpenEnum<typeof CreateMessageValue>;
 
 /**
  * Stackone enum identifying the type of message associated with the content.
@@ -62,7 +84,7 @@ export type MessageType = {
   /**
    * The unified message type.
    */
-  value?: CreateMessageValue | null | undefined;
+  value?: CreateMessageValueOpen | null | undefined;
 };
 
 export type CreateMessage = {
@@ -103,7 +125,24 @@ export type MessageSourceValue =
 /**
  * The unified message type.
  */
-export type MessageValue = {};
+export enum MessageValue {
+  Email = "email",
+  Sms = "sms",
+  Push = "push",
+  WebPush = "web_push",
+  IosPush = "ios_push",
+  AndroidPush = "android_push",
+  AppPush = "app_push",
+  OmniChannel = "omni_channel",
+  ContentBlock = "content_block",
+  InApp = "in_app",
+  Unknown = "unknown",
+  UnmappedValue = "unmapped_value",
+}
+/**
+ * The unified message type.
+ */
+export type MessageValueOpen = OpenEnum<typeof MessageValue>;
 
 /**
  * Stackone enum identifying the type of message associated with the content.
@@ -123,7 +162,7 @@ export type MessageMessageType = {
   /**
    * The unified message type.
    */
-  value?: MessageValue | null | undefined;
+  value?: MessageValueOpen | null | undefined;
 };
 
 export type Message = {
@@ -396,20 +435,24 @@ export namespace CreateMessageSourceValue$ {
 
 /** @internal */
 export const CreateMessageValue$inboundSchema: z.ZodType<
-  CreateMessageValue,
+  CreateMessageValueOpen,
   z.ZodTypeDef,
   unknown
-> = z.object({});
-
-/** @internal */
-export type CreateMessageValue$Outbound = {};
+> = z
+  .union([
+    z.nativeEnum(CreateMessageValue),
+    z.string().transform(catchUnrecognizedEnum),
+  ]);
 
 /** @internal */
 export const CreateMessageValue$outboundSchema: z.ZodType<
-  CreateMessageValue$Outbound,
+  CreateMessageValueOpen,
   z.ZodTypeDef,
-  CreateMessageValue
-> = z.object({});
+  CreateMessageValueOpen
+> = z.union([
+  z.nativeEnum(CreateMessageValue),
+  z.string().and(z.custom<Unrecognized<string>>()),
+]);
 
 /**
  * @internal
@@ -420,8 +463,6 @@ export namespace CreateMessageValue$ {
   export const inboundSchema = CreateMessageValue$inboundSchema;
   /** @deprecated use `CreateMessageValue$outboundSchema` instead. */
   export const outboundSchema = CreateMessageValue$outboundSchema;
-  /** @deprecated use `CreateMessageValue$Outbound` instead. */
-  export type Outbound = CreateMessageValue$Outbound;
 }
 
 /** @internal */
@@ -439,7 +480,7 @@ export const MessageType$inboundSchema: z.ZodType<
       z.array(z.any()),
     ]),
   ).optional(),
-  value: z.nullable(z.lazy(() => CreateMessageValue$inboundSchema)).optional(),
+  value: z.nullable(CreateMessageValue$inboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {
     "source_value": "sourceValue",
@@ -456,7 +497,7 @@ export type MessageType$Outbound = {
     | Array<any>
     | null
     | undefined;
-  value?: CreateMessageValue$Outbound | null | undefined;
+  value?: string | null | undefined;
 };
 
 /** @internal */
@@ -474,7 +515,7 @@ export const MessageType$outboundSchema: z.ZodType<
       z.array(z.any()),
     ]),
   ).optional(),
-  value: z.nullable(z.lazy(() => CreateMessageValue$outboundSchema)).optional(),
+  value: z.nullable(CreateMessageValue$outboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {
     sourceValue: "source_value",
@@ -686,20 +727,24 @@ export namespace MessageSourceValue$ {
 
 /** @internal */
 export const MessageValue$inboundSchema: z.ZodType<
-  MessageValue,
+  MessageValueOpen,
   z.ZodTypeDef,
   unknown
-> = z.object({});
-
-/** @internal */
-export type MessageValue$Outbound = {};
+> = z
+  .union([
+    z.nativeEnum(MessageValue),
+    z.string().transform(catchUnrecognizedEnum),
+  ]);
 
 /** @internal */
 export const MessageValue$outboundSchema: z.ZodType<
-  MessageValue$Outbound,
+  MessageValueOpen,
   z.ZodTypeDef,
-  MessageValue
-> = z.object({});
+  MessageValueOpen
+> = z.union([
+  z.nativeEnum(MessageValue),
+  z.string().and(z.custom<Unrecognized<string>>()),
+]);
 
 /**
  * @internal
@@ -710,8 +755,6 @@ export namespace MessageValue$ {
   export const inboundSchema = MessageValue$inboundSchema;
   /** @deprecated use `MessageValue$outboundSchema` instead. */
   export const outboundSchema = MessageValue$outboundSchema;
-  /** @deprecated use `MessageValue$Outbound` instead. */
-  export type Outbound = MessageValue$Outbound;
 }
 
 /** @internal */
@@ -729,7 +772,7 @@ export const MessageMessageType$inboundSchema: z.ZodType<
       z.array(z.any()),
     ]),
   ).optional(),
-  value: z.nullable(z.lazy(() => MessageValue$inboundSchema)).optional(),
+  value: z.nullable(MessageValue$inboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {
     "source_value": "sourceValue",
@@ -746,7 +789,7 @@ export type MessageMessageType$Outbound = {
     | Array<any>
     | null
     | undefined;
-  value?: MessageValue$Outbound | null | undefined;
+  value?: string | null | undefined;
 };
 
 /** @internal */
@@ -764,7 +807,7 @@ export const MessageMessageType$outboundSchema: z.ZodType<
       z.array(z.any()),
     ]),
   ).optional(),
-  value: z.nullable(z.lazy(() => MessageValue$outboundSchema)).optional(),
+  value: z.nullable(MessageValue$outboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {
     sourceValue: "source_value",

@@ -255,9 +255,9 @@ run();
 ### [lms](docs/sdks/lms/README.md)
 
 * [batchUpsertContent](docs/sdks/lms/README.md#batchupsertcontent) - Batch Upsert Content
-* [createContent](docs/sdks/lms/README.md#createcontent) - Create Content
+* [batchUpsertCourse](docs/sdks/lms/README.md#batchupsertcourse) - Batch Upsert Course
+* [createCollection](docs/sdks/lms/README.md#createcollection) - Create Collection
 * [createUserCompletion](docs/sdks/lms/README.md#createusercompletion) - Create User Completion
-* [deleteContent](docs/sdks/lms/README.md#deletecontent) - Delete Content
 * [getAssignment](docs/sdks/lms/README.md#getassignment) - Get Assignment
 * [getCategory](docs/sdks/lms/README.md#getcategory) - Get Category
 * [getCompletion](docs/sdks/lms/README.md#getcompletion) - Get Completion
@@ -276,8 +276,9 @@ run();
 * [listUserAssignments](docs/sdks/lms/README.md#listuserassignments) - List User Assignments
 * [listUserCompletions](docs/sdks/lms/README.md#listusercompletions) - List User Completions
 * [listUsers](docs/sdks/lms/README.md#listusers) - List Users
-* [updateContent](docs/sdks/lms/README.md#updatecontent) - Update Content
+* [updateCollection](docs/sdks/lms/README.md#updatecollection) - Update Collection
 * [upsertContent](docs/sdks/lms/README.md#upsertcontent) - Upsert Content
+* [upsertCourse](docs/sdks/lms/README.md#upsertcourse) - Upsert Course
 
 ### [marketing](docs/sdks/marketing/README.md)
 
@@ -384,9 +385,9 @@ If a HTTP request fails, an operation my also throw an error from the `sdk/model
 
 In addition, when custom error responses are specified for an operation, the SDK may throw their associated Error type. You can refer to respective *Errors* tables in SDK docs for more details on possible error types for each operation. For example, the `deleteAccount` method may throw the following errors:
 
-| Error Type      | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 4XX, 5XX        | \*/\*           |
+| Error Type      | Status Code | Content Type |
+| --------------- | ----------- | ------------ |
+| errors.SDKError | 4XX, 5XX    | \*/\*        |
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
@@ -493,9 +494,9 @@ const sdk = new StackOne({ httpClient });
 
 This SDK supports the following security scheme globally:
 
-| Name                  | Type                  | Scheme                |
-| --------------------- | --------------------- | --------------------- |
-| `username` `password` | http                  | HTTP Basic            |
+| Name                      | Type | Scheme     |
+| ------------------------- | ---- | ---------- |
+| `username`<br/>`password` | http | HTTP Basic |
 
 You can set the security parameters through the `security` optional parameter when initializing the SDK client instance. For example:
 ```typescript
@@ -744,9 +745,9 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`iamListRoles`](docs/sdks/iam/README.md#listroles) - List Roles
 - [`iamListUsers`](docs/sdks/iam/README.md#listusers) - List Users
 - [`lmsBatchUpsertContent`](docs/sdks/lms/README.md#batchupsertcontent) - Batch Upsert Content
-- [`lmsCreateContent`](docs/sdks/lms/README.md#createcontent) - Create Content
+- [`lmsBatchUpsertCourse`](docs/sdks/lms/README.md#batchupsertcourse) - Batch Upsert Course
+- [`lmsCreateCollection`](docs/sdks/lms/README.md#createcollection) - Create Collection
 - [`lmsCreateUserCompletion`](docs/sdks/lms/README.md#createusercompletion) - Create User Completion
-- [`lmsDeleteContent`](docs/sdks/lms/README.md#deletecontent) - Delete Content
 - [`lmsGetAssignment`](docs/sdks/lms/README.md#getassignment) - Get Assignment
 - [`lmsGetCategory`](docs/sdks/lms/README.md#getcategory) - Get Category
 - [`lmsGetCompletion`](docs/sdks/lms/README.md#getcompletion) - Get Completion
@@ -765,8 +766,9 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`lmsListUserAssignments`](docs/sdks/lms/README.md#listuserassignments) - List User Assignments
 - [`lmsListUserCompletions`](docs/sdks/lms/README.md#listusercompletions) - List User Completions
 - [`lmsListUsers`](docs/sdks/lms/README.md#listusers) - List Users
-- [`lmsUpdateContent`](docs/sdks/lms/README.md#updatecontent) - Update Content
+- [`lmsUpdateCollection`](docs/sdks/lms/README.md#updatecollection) - Update Collection
 - [`lmsUpsertContent`](docs/sdks/lms/README.md#upsertcontent) - Upsert Content
+- [`lmsUpsertCourse`](docs/sdks/lms/README.md#upsertcourse) - Upsert Course
 - [`marketingCreateContentBlock`](docs/sdks/marketing/README.md#createcontentblock) - Create Content Block
 - [`marketingCreateEmailTemplate`](docs/sdks/marketing/README.md#createemailtemplate) - Create Email Templates
 - [`marketingCreateInAppTemplate`](docs/sdks/marketing/README.md#createinapptemplate) - Create In-App Template

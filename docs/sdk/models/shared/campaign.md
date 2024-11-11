@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { Campaign, CampaignSchemasValue, CampaignValue, ChannelsEnumValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { Campaign, CampaignSchemasValue, CampaignValue, ChannelsEnumValue, MessageValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: Campaign = {
   channels: [
@@ -25,7 +25,7 @@ let value: Campaign = {
       },
       messageType: {
         sourceValue: "Email",
-        value: {},
+        value: MessageValue.Sms,
       },
       name: "SMS Message",
       remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
@@ -42,7 +42,7 @@ let value: Campaign = {
       },
       messageType: {
         sourceValue: "Email",
-        value: {},
+        value: MessageValue.Email,
       },
       name: "Email Message",
       remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
@@ -54,7 +54,7 @@ let value: Campaign = {
       },
       messageType: {
         sourceValue: "Email",
-        value: {},
+        value: MessageValue.IosPush,
       },
       name: "iOS Push Message",
       remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
@@ -67,7 +67,7 @@ let value: Campaign = {
   },
   status: {
     sourceValue: "Email",
-    value: CampaignSchemasValue.Archived,
+    value: CampaignSchemasValue.Draft,
   },
   updatedAt: new Date("2021-01-01T01:01:01.000Z"),
 };

@@ -3,7 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { CampaignSchemasValue, CampaignsPaginated, CampaignValue, ChannelsEnumValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+import {
+  CampaignSchemasValue,
+  CampaignsPaginated,
+  CampaignValue,
+  ChannelsEnumValue,
+  MessageValue,
+} from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: CampaignsPaginated = {
   data: [
@@ -27,7 +33,7 @@ let value: CampaignsPaginated = {
           },
           messageType: {
             sourceValue: "Email",
-            value: {},
+            value: MessageValue.Sms,
           },
           name: "SMS Message",
           remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
@@ -44,7 +50,7 @@ let value: CampaignsPaginated = {
           },
           messageType: {
             sourceValue: "Email",
-            value: {},
+            value: MessageValue.Email,
           },
           name: "Email Message",
           remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
@@ -56,7 +62,7 @@ let value: CampaignsPaginated = {
           },
           messageType: {
             sourceValue: "Email",
-            value: {},
+            value: MessageValue.IosPush,
           },
           name: "iOS Push Message",
           remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
@@ -69,7 +75,7 @@ let value: CampaignsPaginated = {
       },
       status: {
         sourceValue: "Email",
-        value: CampaignSchemasValue.Archived,
+        value: CampaignSchemasValue.Live,
       },
       updatedAt: new Date("2021-01-01T01:01:01.000Z"),
     },

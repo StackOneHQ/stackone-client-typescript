@@ -1,6 +1,6 @@
 # Active
 
-Whether the content is active and available for users.
+The reference status
 
 
 ## Supported Types
@@ -11,9 +11,9 @@ Whether the content is active and available for users.
 const value: boolean = true;
 ```
 
-### `shared.Content2`
+### `shared.Reference2`
 
 ```typescript
-const value: shared.Content2 = Content2.True;
+const value: shared.Reference2 = Reference2.True;
 ```
 

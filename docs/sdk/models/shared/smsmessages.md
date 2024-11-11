@@ -3,12 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { SmsMessages } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { SmsMessages, SmsMessagesValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: SmsMessages = {
   id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
   messageType: {
     sourceValue: "Email",
+    value: SmsMessagesValue.Email,
   },
   remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
 };

@@ -4,7 +4,7 @@
 
 ```typescript
 import { MarketingGetCampaignResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
-import { CampaignSchemasValue, CampaignValue, ChannelsEnumValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { CampaignSchemasValue, CampaignValue, ChannelsEnumValue, MessageValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: MarketingGetCampaignResponse = {
   campaignResult: {
@@ -28,7 +28,7 @@ let value: MarketingGetCampaignResponse = {
           },
           messageType: {
             sourceValue: "Email",
-            value: {},
+            value: MessageValue.Sms,
           },
           name: "SMS Message",
           remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
@@ -45,7 +45,7 @@ let value: MarketingGetCampaignResponse = {
           },
           messageType: {
             sourceValue: "Email",
-            value: {},
+            value: MessageValue.Email,
           },
           name: "Email Message",
           remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
@@ -57,7 +57,7 @@ let value: MarketingGetCampaignResponse = {
           },
           messageType: {
             sourceValue: "Email",
-            value: {},
+            value: MessageValue.IosPush,
           },
           name: "iOS Push Message",
           remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
@@ -70,13 +70,13 @@ let value: MarketingGetCampaignResponse = {
       },
       status: {
         sourceValue: "Email",
-        value: CampaignSchemasValue.Live,
+        value: CampaignSchemasValue.Draft,
       },
       updatedAt: new Date("2021-01-01T01:01:01.000Z"),
     },
   },
   contentType: "<value>",
-  statusCode: 408,
+  statusCode: 401,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

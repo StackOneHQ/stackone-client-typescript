@@ -3,11 +3,12 @@
 ## Example Usage
 
 ```typescript
-import { ContentLanguageEnumValue, CoursePaginated } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { CoursePaginated, LanguageEnumValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: CoursePaginated = {
   data: [
     {
+      active: true,
       categories: [
         {
           active: true,
@@ -30,10 +31,10 @@ let value: CoursePaginated = {
         "This course acts as learning content for software engineers.",
       duration: "P3Y6M4DT12H30M5S",
       externalReference: "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1",
-      id: "16873-ENG-VIDEO-1",
+      id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
       languages: [
         {
-          value: ContentLanguageEnumValue.EnGB,
+          value: LanguageEnumValue.EnGB,
         },
       ],
       remoteContentIds: [

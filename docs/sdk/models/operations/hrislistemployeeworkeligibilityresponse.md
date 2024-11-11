@@ -8,7 +8,7 @@ import { WorkEligibilitySchemasDocumentValue, WorkEligibilityValue } from "@stac
 
 let value: HrisListEmployeeWorkEligibilityResponse = {
   contentType: "<value>",
-  statusCode: 507,
+  statusCode: 226,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

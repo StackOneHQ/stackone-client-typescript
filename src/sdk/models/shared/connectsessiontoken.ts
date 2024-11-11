@@ -14,6 +14,7 @@ export enum ConnectSessionTokenCategories {
   Marketing = "marketing",
   Lms = "lms",
   Stackone = "stackone",
+  FileStorage = "file-storage",
 }
 
 export type ConnectSessionToken = {

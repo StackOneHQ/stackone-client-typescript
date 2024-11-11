@@ -93,12 +93,17 @@ export async function hrisListEmployeeEmployments(
   });
 
   const securityInput = await extractSecurity(client._options.security);
+  const requestSecurity = resolveGlobalSecurity(securityInput);
+
   const context = {
     operationID: "hris_list_employee_employments",
     oAuth2Scopes: [],
     securitySource: client._options.security,
+    retryConfig: options?.retries
+      || client._options.retryConfig
+      || { strategy: "none" },
+    retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
   };
-  const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const requestRes = client._createRequest(context, {
     security: requestSecurity,
@@ -117,9 +122,8 @@ export async function hrisListEmployeeEmployments(
   const doResult = await client._do(req, {
     context,
     errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
-    retryConfig: options?.retries
-      || client._options.retryConfig,
-    retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
+    retryConfig: context.retryConfig,
+    retryCodes: context.retryCodes,
   });
   if (!doResult.ok) {
     return doResult;

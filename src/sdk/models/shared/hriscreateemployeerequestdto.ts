@@ -28,11 +28,11 @@ import {
   CreateHRISBenefit$outboundSchema,
 } from "./createhrisbenefit.js";
 import {
-  EmployeeCustomFields,
-  EmployeeCustomFields$inboundSchema,
-  EmployeeCustomFields$Outbound,
-  EmployeeCustomFields$outboundSchema,
-} from "./employeecustomfields.js";
+  CustomFields,
+  CustomFields$inboundSchema,
+  CustomFields$Outbound,
+  CustomFields$outboundSchema,
+} from "./customfields.js";
 
 /**
  * The employee avatar
@@ -4909,6 +4909,34 @@ export enum HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberTypeValue {
   Peid = "peid",
   Asmens = "asmens",
   Pvm = "pvm",
+  Ctps = "ctps",
+  Vrn = "vrn",
+  Vtk = "vtk",
+  Int = "int",
+  Tk = "tk",
+  Pas = "pas",
+  Rne = "rne",
+  Rg = "rg",
+  Nci = "nci",
+  Crnm = "crnm",
+  Pis = "pis",
+  Insee = "insee",
+  Tax = "tax",
+  Mpf = "mpf",
+  Epfo = "epfo",
+  Esi = "esi",
+  Pran = "pran",
+  Uan = "uan",
+  Idk = "idk",
+  Bsn = "bsn",
+  Mid = "mid",
+  Sss = "sss",
+  Nie = "nie",
+  Nss = "nss",
+  Arc = "arc",
+  Curp = "curp",
+  Imss = "imss",
+  Rfc = "rfc",
   Other = "other",
   Unknown = "unknown",
 }
@@ -9313,7 +9341,7 @@ export type HrisCreateEmployeeRequestDto = {
   /**
    * The employee custom fields
    */
-  customFields?: Array<EmployeeCustomFields> | null | undefined;
+  customFields?: Array<CustomFields> | null | undefined;
   /**
    * The employee date_of_birth
    */
@@ -12392,8 +12420,7 @@ export const HrisCreateEmployeeRequestDto$inboundSchema: z.ZodType<
   ).optional(),
   citizenships: z.nullable(z.array(CountryCodeEnum$inboundSchema)).optional(),
   company_name: z.nullable(z.string()).optional(),
-  custom_fields: z.nullable(z.array(EmployeeCustomFields$inboundSchema))
-    .optional(),
+  custom_fields: z.nullable(z.array(CustomFields$inboundSchema)).optional(),
   date_of_birth: z.nullable(
     z.string().datetime({ offset: true }).transform(v => new Date(v)),
   ).optional(),
@@ -12500,7 +12527,7 @@ export type HrisCreateEmployeeRequestDto$Outbound = {
   birthday?: string | null | undefined;
   citizenships?: Array<CountryCodeEnum$Outbound> | null | undefined;
   company_name?: string | null | undefined;
-  custom_fields?: Array<EmployeeCustomFields$Outbound> | null | undefined;
+  custom_fields?: Array<CustomFields$Outbound> | null | undefined;
   date_of_birth?: string | null | undefined;
   department?: string | null | undefined;
   department_id?: string | null | undefined;
@@ -12572,8 +12599,7 @@ export const HrisCreateEmployeeRequestDto$outboundSchema: z.ZodType<
   birthday: z.nullable(z.date().transform(v => v.toISOString())).optional(),
   citizenships: z.nullable(z.array(CountryCodeEnum$outboundSchema)).optional(),
   companyName: z.nullable(z.string()).optional(),
-  customFields: z.nullable(z.array(EmployeeCustomFields$outboundSchema))
-    .optional(),
+  customFields: z.nullable(z.array(CustomFields$outboundSchema)).optional(),
   dateOfBirth: z.nullable(z.date().transform(v => v.toISOString())).optional(),
   department: z.nullable(z.string()).optional(),
   departmentId: z.nullable(z.string()).optional(),

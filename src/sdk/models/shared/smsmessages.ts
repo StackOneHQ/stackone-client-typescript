@@ -4,6 +4,11 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import {
+  catchUnrecognizedEnum,
+  OpenEnum,
+  Unrecognized,
+} from "../../types/enums.js";
 
 export type SmsMessagesMessageContent = {
   body?: string | null | undefined;
@@ -25,7 +30,24 @@ export type SmsMessagesSourceValue =
 /**
  * The unified message type.
  */
-export type SmsMessagesValue = {};
+export enum SmsMessagesValue {
+  Email = "email",
+  Sms = "sms",
+  Push = "push",
+  WebPush = "web_push",
+  IosPush = "ios_push",
+  AndroidPush = "android_push",
+  AppPush = "app_push",
+  OmniChannel = "omni_channel",
+  ContentBlock = "content_block",
+  InApp = "in_app",
+  Unknown = "unknown",
+  UnmappedValue = "unmapped_value",
+}
+/**
+ * The unified message type.
+ */
+export type SmsMessagesValueOpen = OpenEnum<typeof SmsMessagesValue>;
 
 export type SmsMessagesMessageType = {
   /**
@@ -42,7 +64,7 @@ export type SmsMessagesMessageType = {
   /**
    * The unified message type.
    */
-  value?: SmsMessagesValue | null | undefined;
+  value?: SmsMessagesValueOpen | null | undefined;
 };
 
 export type SmsMessages = {
@@ -177,20 +199,24 @@ export namespace SmsMessagesSourceValue$ {
 
 /** @internal */
 export const SmsMessagesValue$inboundSchema: z.ZodType<
-  SmsMessagesValue,
+  SmsMessagesValueOpen,
   z.ZodTypeDef,
   unknown
-> = z.object({});
-
-/** @internal */
-export type SmsMessagesValue$Outbound = {};
+> = z
+  .union([
+    z.nativeEnum(SmsMessagesValue),
+    z.string().transform(catchUnrecognizedEnum),
+  ]);
 
 /** @internal */
 export const SmsMessagesValue$outboundSchema: z.ZodType<
-  SmsMessagesValue$Outbound,
+  SmsMessagesValueOpen,
   z.ZodTypeDef,
-  SmsMessagesValue
-> = z.object({});
+  SmsMessagesValueOpen
+> = z.union([
+  z.nativeEnum(SmsMessagesValue),
+  z.string().and(z.custom<Unrecognized<string>>()),
+]);
 
 /**
  * @internal
@@ -201,8 +227,6 @@ export namespace SmsMessagesValue$ {
   export const inboundSchema = SmsMessagesValue$inboundSchema;
   /** @deprecated use `SmsMessagesValue$outboundSchema` instead. */
   export const outboundSchema = SmsMessagesValue$outboundSchema;
-  /** @deprecated use `SmsMessagesValue$Outbound` instead. */
-  export type Outbound = SmsMessagesValue$Outbound;
 }
 
 /** @internal */
@@ -220,7 +244,7 @@ export const SmsMessagesMessageType$inboundSchema: z.ZodType<
       z.array(z.any()),
     ]),
   ).optional(),
-  value: z.nullable(z.lazy(() => SmsMessagesValue$inboundSchema)).optional(),
+  value: z.nullable(SmsMessagesValue$inboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {
     "source_value": "sourceValue",
@@ -237,7 +261,7 @@ export type SmsMessagesMessageType$Outbound = {
     | Array<any>
     | null
     | undefined;
-  value?: SmsMessagesValue$Outbound | null | undefined;
+  value?: string | null | undefined;
 };
 
 /** @internal */
@@ -255,7 +279,7 @@ export const SmsMessagesMessageType$outboundSchema: z.ZodType<
       z.array(z.any()),
     ]),
   ).optional(),
-  value: z.nullable(z.lazy(() => SmsMessagesValue$outboundSchema)).optional(),
+  value: z.nullable(SmsMessagesValue$outboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {
     sourceValue: "source_value",

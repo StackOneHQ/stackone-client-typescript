@@ -10,35 +10,23 @@ import {
   Unrecognized,
 } from "../../types/enums.js";
 import {
-  ContentLanguageEnum,
-  ContentLanguageEnum$inboundSchema,
-  ContentLanguageEnum$Outbound,
-  ContentLanguageEnum$outboundSchema,
-} from "./contentlanguageenum.js";
-import {
   CreateCategoriesApiModel,
   CreateCategoriesApiModel$inboundSchema,
   CreateCategoriesApiModel$Outbound,
   CreateCategoriesApiModel$outboundSchema,
 } from "./createcategoriesapimodel.js";
 import {
-  Skills,
-  Skills$inboundSchema,
-  Skills$Outbound,
-  Skills$outboundSchema,
-} from "./skills.js";
-
-export enum LmsUpsertContentRequestDto2 {
-  True = "true",
-  False = "false",
-}
-
-/**
- * Whether the content is active and available for users.
- */
-export type LmsUpsertContentRequestDtoActive =
-  | boolean
-  | LmsUpsertContentRequestDto2;
+  CreateSkillsApiModel,
+  CreateSkillsApiModel$inboundSchema,
+  CreateSkillsApiModel$Outbound,
+  CreateSkillsApiModel$outboundSchema,
+} from "./createskillsapimodel.js";
+import {
+  LanguageEnum,
+  LanguageEnum$inboundSchema,
+  LanguageEnum$Outbound,
+  LanguageEnum$outboundSchema,
+} from "./languageenum.js";
 
 export type LmsUpsertContentRequestDto4 = {};
 
@@ -109,7 +97,7 @@ export type LmsUpsertContentRequestDto = {
   /**
    * Whether the content is active and available for users.
    */
-  active?: boolean | LmsUpsertContentRequestDto2 | null | undefined;
+  active?: boolean | null | undefined;
   /**
    * The categories associated with this content
    */
@@ -152,15 +140,15 @@ export type LmsUpsertContentRequestDto = {
   /**
    * The languages associated with this content
    */
-  languages?: Array<ContentLanguageEnum> | null | undefined;
+  languages?: Array<LanguageEnum> | null | undefined;
   /**
    * The order of the individual content within a content grouping. This is not applicable for pushing individual content.
    */
   order?: number | null | undefined;
   /**
-   * The skills associated with this course
+   * The skills associated with this content
    */
-  skills?: Array<Skills> | null | undefined;
+  skills?: Array<CreateSkillsApiModel> | null | undefined;
   /**
    * The title of the content
    */
@@ -170,57 +158,6 @@ export type LmsUpsertContentRequestDto = {
    */
   unifiedCustomFields?: { [k: string]: any } | null | undefined;
 };
-
-/** @internal */
-export const LmsUpsertContentRequestDto2$inboundSchema: z.ZodNativeEnum<
-  typeof LmsUpsertContentRequestDto2
-> = z.nativeEnum(LmsUpsertContentRequestDto2);
-
-/** @internal */
-export const LmsUpsertContentRequestDto2$outboundSchema: z.ZodNativeEnum<
-  typeof LmsUpsertContentRequestDto2
-> = LmsUpsertContentRequestDto2$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LmsUpsertContentRequestDto2$ {
-  /** @deprecated use `LmsUpsertContentRequestDto2$inboundSchema` instead. */
-  export const inboundSchema = LmsUpsertContentRequestDto2$inboundSchema;
-  /** @deprecated use `LmsUpsertContentRequestDto2$outboundSchema` instead. */
-  export const outboundSchema = LmsUpsertContentRequestDto2$outboundSchema;
-}
-
-/** @internal */
-export const LmsUpsertContentRequestDtoActive$inboundSchema: z.ZodType<
-  LmsUpsertContentRequestDtoActive,
-  z.ZodTypeDef,
-  unknown
-> = z.union([z.boolean(), LmsUpsertContentRequestDto2$inboundSchema]);
-
-/** @internal */
-export type LmsUpsertContentRequestDtoActive$Outbound = boolean | string;
-
-/** @internal */
-export const LmsUpsertContentRequestDtoActive$outboundSchema: z.ZodType<
-  LmsUpsertContentRequestDtoActive$Outbound,
-  z.ZodTypeDef,
-  LmsUpsertContentRequestDtoActive
-> = z.union([z.boolean(), LmsUpsertContentRequestDto2$outboundSchema]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace LmsUpsertContentRequestDtoActive$ {
-  /** @deprecated use `LmsUpsertContentRequestDtoActive$inboundSchema` instead. */
-  export const inboundSchema = LmsUpsertContentRequestDtoActive$inboundSchema;
-  /** @deprecated use `LmsUpsertContentRequestDtoActive$outboundSchema` instead. */
-  export const outboundSchema = LmsUpsertContentRequestDtoActive$outboundSchema;
-  /** @deprecated use `LmsUpsertContentRequestDtoActive$Outbound` instead. */
-  export type Outbound = LmsUpsertContentRequestDtoActive$Outbound;
-}
 
 /** @internal */
 export const LmsUpsertContentRequestDto4$inboundSchema: z.ZodType<
@@ -604,9 +541,7 @@ export const LmsUpsertContentRequestDto$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  active: z.nullable(
-    z.union([z.boolean(), LmsUpsertContentRequestDto2$inboundSchema]),
-  ).optional(),
+  active: z.nullable(z.boolean()).optional(),
   categories: z.nullable(z.array(CreateCategoriesApiModel$inboundSchema))
     .optional(),
   content_launch_method: z.nullable(
@@ -621,9 +556,9 @@ export const LmsUpsertContentRequestDto$inboundSchema: z.ZodType<
   description: z.nullable(z.string()).optional(),
   duration: z.nullable(z.string()).optional(),
   external_reference: z.nullable(z.string()).optional(),
-  languages: z.nullable(z.array(ContentLanguageEnum$inboundSchema)).optional(),
+  languages: z.nullable(z.array(LanguageEnum$inboundSchema)).optional(),
   order: z.nullable(z.number()).optional(),
-  skills: z.nullable(z.array(Skills$inboundSchema)).optional(),
+  skills: z.nullable(z.array(CreateSkillsApiModel$inboundSchema)).optional(),
   title: z.nullable(z.string()).optional(),
   unified_custom_fields: z.nullable(z.record(z.any())).optional(),
 }).transform((v) => {
@@ -640,7 +575,7 @@ export const LmsUpsertContentRequestDto$inboundSchema: z.ZodType<
 
 /** @internal */
 export type LmsUpsertContentRequestDto$Outbound = {
-  active?: boolean | string | null | undefined;
+  active?: boolean | null | undefined;
   categories?: Array<CreateCategoriesApiModel$Outbound> | null | undefined;
   content_launch_method?:
     | LmsUpsertContentRequestDtoContentLaunchMethod$Outbound
@@ -656,9 +591,9 @@ export type LmsUpsertContentRequestDto$Outbound = {
   description?: string | null | undefined;
   duration?: string | null | undefined;
   external_reference?: string | null | undefined;
-  languages?: Array<ContentLanguageEnum$Outbound> | null | undefined;
+  languages?: Array<LanguageEnum$Outbound> | null | undefined;
   order?: number | null | undefined;
-  skills?: Array<Skills$Outbound> | null | undefined;
+  skills?: Array<CreateSkillsApiModel$Outbound> | null | undefined;
   title?: string | null | undefined;
   unified_custom_fields?: { [k: string]: any } | null | undefined;
 };
@@ -669,9 +604,7 @@ export const LmsUpsertContentRequestDto$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   LmsUpsertContentRequestDto
 > = z.object({
-  active: z.nullable(
-    z.union([z.boolean(), LmsUpsertContentRequestDto2$outboundSchema]),
-  ).optional(),
+  active: z.nullable(z.boolean()).optional(),
   categories: z.nullable(z.array(CreateCategoriesApiModel$outboundSchema))
     .optional(),
   contentLaunchMethod: z.nullable(
@@ -686,9 +619,9 @@ export const LmsUpsertContentRequestDto$outboundSchema: z.ZodType<
   description: z.nullable(z.string()).optional(),
   duration: z.nullable(z.string()).optional(),
   externalReference: z.nullable(z.string()).optional(),
-  languages: z.nullable(z.array(ContentLanguageEnum$outboundSchema)).optional(),
+  languages: z.nullable(z.array(LanguageEnum$outboundSchema)).optional(),
   order: z.nullable(z.number()).optional(),
-  skills: z.nullable(z.array(Skills$outboundSchema)).optional(),
+  skills: z.nullable(z.array(CreateSkillsApiModel$outboundSchema)).optional(),
   title: z.nullable(z.string()).optional(),
   unifiedCustomFields: z.nullable(z.record(z.any())).optional(),
 }).transform((v) => {

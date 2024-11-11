@@ -4,6 +4,7 @@
 
 ```typescript
 import { MarketingCreatePushTemplateRequest } from "@stackone/stackone-client-ts/sdk/models/operations";
+import { PushMessagesValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: MarketingCreatePushTemplateRequest = {
   marketingCreatePushTemplateRequestDto: {
@@ -12,6 +13,7 @@ let value: MarketingCreatePushTemplateRequest = {
         id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         messageType: {
           sourceValue: "Email",
+          value: PushMessagesValue.Email,
         },
         remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
       },

@@ -5,11 +5,11 @@
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
 import {
-  ContactsCustomFields,
-  ContactsCustomFields$inboundSchema,
-  ContactsCustomFields$Outbound,
-  ContactsCustomFields$outboundSchema,
-} from "./contactscustomfields.js";
+  CustomFields,
+  CustomFields$inboundSchema,
+  CustomFields$Outbound,
+  CustomFields$outboundSchema,
+} from "./customfields.js";
 
 export type Contact = {
   /**
@@ -27,7 +27,7 @@ export type Contact = {
   /**
    * Contact custom fields
    */
-  customFields?: Array<ContactsCustomFields> | null | undefined;
+  customFields?: Array<CustomFields> | null | undefined;
   /**
    * List of associated deal IDs
    */
@@ -82,8 +82,7 @@ export const Contact$inboundSchema: z.ZodType<Contact, z.ZodTypeDef, unknown> =
     created_at: z.nullable(
       z.string().datetime({ offset: true }).transform(v => new Date(v)),
     ).optional(),
-    custom_fields: z.nullable(z.array(ContactsCustomFields$inboundSchema))
-      .optional(),
+    custom_fields: z.nullable(z.array(CustomFields$inboundSchema)).optional(),
     deal_ids: z.nullable(z.array(z.string())).optional(),
     emails: z.nullable(z.array(z.string())).optional(),
     first_name: z.nullable(z.string()).optional(),
@@ -120,7 +119,7 @@ export type Contact$Outbound = {
   account_ids?: Array<string> | null | undefined;
   company_name?: string | null | undefined;
   created_at?: string | null | undefined;
-  custom_fields?: Array<ContactsCustomFields$Outbound> | null | undefined;
+  custom_fields?: Array<CustomFields$Outbound> | null | undefined;
   deal_ids?: Array<string> | null | undefined;
   emails?: Array<string> | null | undefined;
   first_name?: string | null | undefined;
@@ -143,8 +142,7 @@ export const Contact$outboundSchema: z.ZodType<
   accountIds: z.nullable(z.array(z.string())).optional(),
   companyName: z.nullable(z.string()).optional(),
   createdAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-  customFields: z.nullable(z.array(ContactsCustomFields$outboundSchema))
-    .optional(),
+  customFields: z.nullable(z.array(CustomFields$outboundSchema)).optional(),
   dealIds: z.nullable(z.array(z.string())).optional(),
   emails: z.nullable(z.array(z.string())).optional(),
   firstName: z.nullable(z.string()).optional(),

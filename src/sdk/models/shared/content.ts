@@ -16,27 +16,17 @@ import {
   Category$outboundSchema,
 } from "./category.js";
 import {
-  ContentLanguageEnum,
-  ContentLanguageEnum$inboundSchema,
-  ContentLanguageEnum$Outbound,
-  ContentLanguageEnum$outboundSchema,
-} from "./contentlanguageenum.js";
+  LanguageEnum,
+  LanguageEnum$inboundSchema,
+  LanguageEnum$Outbound,
+  LanguageEnum$outboundSchema,
+} from "./languageenum.js";
 import {
   Skills,
   Skills$inboundSchema,
   Skills$Outbound,
   Skills$outboundSchema,
 } from "./skills.js";
-
-export enum Content2 {
-  True = "true",
-  False = "false",
-}
-
-/**
- * Whether the content is active and available for users.
- */
-export type Active = boolean | Content2;
 
 export type Content4 = {};
 
@@ -103,7 +93,7 @@ export type Content = {
   /**
    * Whether the content is active and available for users.
    */
-  active?: boolean | Content2 | null | undefined;
+  active?: boolean | null | undefined;
   /**
    * The categories associated with this content
    */
@@ -141,13 +131,13 @@ export type Content = {
    */
   externalReference?: string | null | undefined;
   /**
-   * The ID associated with this content
+   * Unique identifier
    */
   id?: string | null | undefined;
   /**
    * The languages associated with this content
    */
-  languages?: Array<ContentLanguageEnum> | null | undefined;
+  languages?: Array<LanguageEnum> | null | undefined;
   /**
    * The order of the individual content within a content grouping. This is not applicable for pushing individual content.
    */
@@ -173,52 +163,6 @@ export type Content = {
    */
   unifiedCustomFields?: { [k: string]: any } | null | undefined;
 };
-
-/** @internal */
-export const Content2$inboundSchema: z.ZodNativeEnum<typeof Content2> = z
-  .nativeEnum(Content2);
-
-/** @internal */
-export const Content2$outboundSchema: z.ZodNativeEnum<typeof Content2> =
-  Content2$inboundSchema;
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Content2$ {
-  /** @deprecated use `Content2$inboundSchema` instead. */
-  export const inboundSchema = Content2$inboundSchema;
-  /** @deprecated use `Content2$outboundSchema` instead. */
-  export const outboundSchema = Content2$outboundSchema;
-}
-
-/** @internal */
-export const Active$inboundSchema: z.ZodType<Active, z.ZodTypeDef, unknown> = z
-  .union([z.boolean(), Content2$inboundSchema]);
-
-/** @internal */
-export type Active$Outbound = boolean | string;
-
-/** @internal */
-export const Active$outboundSchema: z.ZodType<
-  Active$Outbound,
-  z.ZodTypeDef,
-  Active
-> = z.union([z.boolean(), Content2$outboundSchema]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Active$ {
-  /** @deprecated use `Active$inboundSchema` instead. */
-  export const inboundSchema = Active$inboundSchema;
-  /** @deprecated use `Active$outboundSchema` instead. */
-  export const outboundSchema = Active$outboundSchema;
-  /** @deprecated use `Active$Outbound` instead. */
-  export type Outbound = Active$Outbound;
-}
 
 /** @internal */
 export const Content4$inboundSchema: z.ZodType<
@@ -581,8 +525,7 @@ export namespace ContentContentType$ {
 /** @internal */
 export const Content$inboundSchema: z.ZodType<Content, z.ZodTypeDef, unknown> =
   z.object({
-    active: z.nullable(z.union([z.boolean(), Content2$inboundSchema]))
-      .optional(),
+    active: z.nullable(z.boolean()).optional(),
     categories: z.nullable(z.array(Category$inboundSchema)).optional(),
     content_launch_method: z.nullable(
       z.lazy(() => ContentLaunchMethod$inboundSchema),
@@ -596,8 +539,7 @@ export const Content$inboundSchema: z.ZodType<Content, z.ZodTypeDef, unknown> =
     duration: z.nullable(z.string()).optional(),
     external_reference: z.nullable(z.string()).optional(),
     id: z.nullable(z.string()).optional(),
-    languages: z.nullable(z.array(ContentLanguageEnum$inboundSchema))
-      .optional(),
+    languages: z.nullable(z.array(LanguageEnum$inboundSchema)).optional(),
     order: z.nullable(z.number()).optional(),
     remote_course_ids: z.nullable(z.array(z.string())).optional(),
     remote_id: z.nullable(z.string()).optional(),
@@ -620,7 +562,7 @@ export const Content$inboundSchema: z.ZodType<Content, z.ZodTypeDef, unknown> =
 
 /** @internal */
 export type Content$Outbound = {
-  active?: boolean | string | null | undefined;
+  active?: boolean | null | undefined;
   categories?: Array<Category$Outbound> | null | undefined;
   content_launch_method?: ContentLaunchMethod$Outbound | null | undefined;
   content_type?: ContentContentType$Outbound | null | undefined;
@@ -631,7 +573,7 @@ export type Content$Outbound = {
   duration?: string | null | undefined;
   external_reference?: string | null | undefined;
   id?: string | null | undefined;
-  languages?: Array<ContentLanguageEnum$Outbound> | null | undefined;
+  languages?: Array<LanguageEnum$Outbound> | null | undefined;
   order?: number | null | undefined;
   remote_course_ids?: Array<string> | null | undefined;
   remote_id?: string | null | undefined;
@@ -646,8 +588,7 @@ export const Content$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   Content
 > = z.object({
-  active: z.nullable(z.union([z.boolean(), Content2$outboundSchema]))
-    .optional(),
+  active: z.nullable(z.boolean()).optional(),
   categories: z.nullable(z.array(Category$outboundSchema)).optional(),
   contentLaunchMethod: z.nullable(
     z.lazy(() => ContentLaunchMethod$outboundSchema),
@@ -661,7 +602,7 @@ export const Content$outboundSchema: z.ZodType<
   duration: z.nullable(z.string()).optional(),
   externalReference: z.nullable(z.string()).optional(),
   id: z.nullable(z.string()).optional(),
-  languages: z.nullable(z.array(ContentLanguageEnum$outboundSchema)).optional(),
+  languages: z.nullable(z.array(LanguageEnum$outboundSchema)).optional(),
   order: z.nullable(z.number()).optional(),
   remoteCourseIds: z.nullable(z.array(z.string())).optional(),
   remoteId: z.nullable(z.string()).optional(),

@@ -5,22 +5,17 @@
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
 import {
-  catchUnrecognizedEnum,
-  OpenEnum,
-  Unrecognized,
-} from "../../types/enums.js";
-import {
   Category,
   Category$inboundSchema,
   Category$Outbound,
   Category$outboundSchema,
 } from "./category.js";
 import {
-  ContentLanguageEnum,
-  ContentLanguageEnum$inboundSchema,
-  ContentLanguageEnum$Outbound,
-  ContentLanguageEnum$outboundSchema,
-} from "./contentlanguageenum.js";
+  LanguageEnum,
+  LanguageEnum$inboundSchema,
+  LanguageEnum$Outbound,
+  LanguageEnum$outboundSchema,
+} from "./languageenum.js";
 import {
   Skills,
   Skills$inboundSchema,
@@ -28,72 +23,11 @@ import {
   Skills$outboundSchema,
 } from "./skills.js";
 
-export type Course4 = {};
-
-export type CourseSourceValue =
-  | Course4
-  | string
-  | number
-  | boolean
-  | Array<any>;
-
-export enum CourseValue {
-  Active = "ACTIVE",
-  Inactive = "INACTIVE",
-}
-export type CourseValueOpen = OpenEnum<typeof CourseValue>;
-
-/**
- * Whether the course is active and available for users.
- */
-export type CourseActive = {
-  sourceValue?:
-    | Course4
-    | string
-    | number
-    | boolean
-    | Array<any>
-    | null
-    | undefined;
-  value?: CourseValueOpen | null | undefined;
-};
-
-export type CourseSchemas4 = {};
-
-export type CourseSchemasSourceValue =
-  | CourseSchemas4
-  | string
-  | number
-  | boolean
-  | Array<any>;
-
-export enum CourseSchemasValue {
-  Video = "video",
-  Quiz = "quiz",
-  Document = "document",
-}
-export type CourseSchemasValueOpen = OpenEnum<typeof CourseSchemasValue>;
-
-/**
- * The media type for the course
- */
-export type CourseType = {
-  sourceValue?:
-    | CourseSchemas4
-    | string
-    | number
-    | boolean
-    | Array<any>
-    | null
-    | undefined;
-  value?: CourseSchemasValueOpen | null | undefined;
-};
-
 export type Course = {
   /**
    * Whether the course is active and available for users.
    */
-  active?: CourseActive | null | undefined;
+  active?: boolean | null | undefined;
   /**
    * The categories associated with this course
    */
@@ -102,10 +36,6 @@ export type Course = {
    * The child ID/IDs associated with this course
    */
   contentIds?: Array<string> | null | undefined;
-  /**
-   * The media type for the course
-   */
-  courseType?: CourseType | null | undefined;
   /**
    * The URL of the thumbnail image associated with the course.
    */
@@ -127,13 +57,13 @@ export type Course = {
    */
   externalReference?: string | null | undefined;
   /**
-   * The ID associated with this course
+   * Unique identifier
    */
   id?: string | null | undefined;
   /**
    * The languages associated with this course
    */
-  languages?: Array<ContentLanguageEnum> | null | undefined;
+  languages?: Array<LanguageEnum> | null | undefined;
   /**
    * Provider's unique identifier of the child content IDs associated with this course
    */
@@ -165,375 +95,18 @@ export type Course = {
 };
 
 /** @internal */
-export const Course4$inboundSchema: z.ZodType<Course4, z.ZodTypeDef, unknown> =
-  z.object({});
-
-/** @internal */
-export type Course4$Outbound = {};
-
-/** @internal */
-export const Course4$outboundSchema: z.ZodType<
-  Course4$Outbound,
-  z.ZodTypeDef,
-  Course4
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Course4$ {
-  /** @deprecated use `Course4$inboundSchema` instead. */
-  export const inboundSchema = Course4$inboundSchema;
-  /** @deprecated use `Course4$outboundSchema` instead. */
-  export const outboundSchema = Course4$outboundSchema;
-  /** @deprecated use `Course4$Outbound` instead. */
-  export type Outbound = Course4$Outbound;
-}
-
-/** @internal */
-export const CourseSourceValue$inboundSchema: z.ZodType<
-  CourseSourceValue,
-  z.ZodTypeDef,
-  unknown
-> = z.union([
-  z.lazy(() => Course4$inboundSchema),
-  z.string(),
-  z.number(),
-  z.boolean(),
-  z.array(z.any()),
-]);
-
-/** @internal */
-export type CourseSourceValue$Outbound =
-  | Course4$Outbound
-  | string
-  | number
-  | boolean
-  | Array<any>;
-
-/** @internal */
-export const CourseSourceValue$outboundSchema: z.ZodType<
-  CourseSourceValue$Outbound,
-  z.ZodTypeDef,
-  CourseSourceValue
-> = z.union([
-  z.lazy(() => Course4$outboundSchema),
-  z.string(),
-  z.number(),
-  z.boolean(),
-  z.array(z.any()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CourseSourceValue$ {
-  /** @deprecated use `CourseSourceValue$inboundSchema` instead. */
-  export const inboundSchema = CourseSourceValue$inboundSchema;
-  /** @deprecated use `CourseSourceValue$outboundSchema` instead. */
-  export const outboundSchema = CourseSourceValue$outboundSchema;
-  /** @deprecated use `CourseSourceValue$Outbound` instead. */
-  export type Outbound = CourseSourceValue$Outbound;
-}
-
-/** @internal */
-export const CourseValue$inboundSchema: z.ZodType<
-  CourseValueOpen,
-  z.ZodTypeDef,
-  unknown
-> = z
-  .union([
-    z.nativeEnum(CourseValue),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
-
-/** @internal */
-export const CourseValue$outboundSchema: z.ZodType<
-  CourseValueOpen,
-  z.ZodTypeDef,
-  CourseValueOpen
-> = z.union([
-  z.nativeEnum(CourseValue),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CourseValue$ {
-  /** @deprecated use `CourseValue$inboundSchema` instead. */
-  export const inboundSchema = CourseValue$inboundSchema;
-  /** @deprecated use `CourseValue$outboundSchema` instead. */
-  export const outboundSchema = CourseValue$outboundSchema;
-}
-
-/** @internal */
-export const CourseActive$inboundSchema: z.ZodType<
-  CourseActive,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  source_value: z.nullable(
-    z.union([
-      z.lazy(() => Course4$inboundSchema),
-      z.string(),
-      z.number(),
-      z.boolean(),
-      z.array(z.any()),
-    ]),
-  ).optional(),
-  value: z.nullable(CourseValue$inboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "source_value": "sourceValue",
-  });
-});
-
-/** @internal */
-export type CourseActive$Outbound = {
-  source_value?:
-    | Course4$Outbound
-    | string
-    | number
-    | boolean
-    | Array<any>
-    | null
-    | undefined;
-  value?: string | null | undefined;
-};
-
-/** @internal */
-export const CourseActive$outboundSchema: z.ZodType<
-  CourseActive$Outbound,
-  z.ZodTypeDef,
-  CourseActive
-> = z.object({
-  sourceValue: z.nullable(
-    z.union([
-      z.lazy(() => Course4$outboundSchema),
-      z.string(),
-      z.number(),
-      z.boolean(),
-      z.array(z.any()),
-    ]),
-  ).optional(),
-  value: z.nullable(CourseValue$outboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    sourceValue: "source_value",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CourseActive$ {
-  /** @deprecated use `CourseActive$inboundSchema` instead. */
-  export const inboundSchema = CourseActive$inboundSchema;
-  /** @deprecated use `CourseActive$outboundSchema` instead. */
-  export const outboundSchema = CourseActive$outboundSchema;
-  /** @deprecated use `CourseActive$Outbound` instead. */
-  export type Outbound = CourseActive$Outbound;
-}
-
-/** @internal */
-export const CourseSchemas4$inboundSchema: z.ZodType<
-  CourseSchemas4,
-  z.ZodTypeDef,
-  unknown
-> = z.object({});
-
-/** @internal */
-export type CourseSchemas4$Outbound = {};
-
-/** @internal */
-export const CourseSchemas4$outboundSchema: z.ZodType<
-  CourseSchemas4$Outbound,
-  z.ZodTypeDef,
-  CourseSchemas4
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CourseSchemas4$ {
-  /** @deprecated use `CourseSchemas4$inboundSchema` instead. */
-  export const inboundSchema = CourseSchemas4$inboundSchema;
-  /** @deprecated use `CourseSchemas4$outboundSchema` instead. */
-  export const outboundSchema = CourseSchemas4$outboundSchema;
-  /** @deprecated use `CourseSchemas4$Outbound` instead. */
-  export type Outbound = CourseSchemas4$Outbound;
-}
-
-/** @internal */
-export const CourseSchemasSourceValue$inboundSchema: z.ZodType<
-  CourseSchemasSourceValue,
-  z.ZodTypeDef,
-  unknown
-> = z.union([
-  z.lazy(() => CourseSchemas4$inboundSchema),
-  z.string(),
-  z.number(),
-  z.boolean(),
-  z.array(z.any()),
-]);
-
-/** @internal */
-export type CourseSchemasSourceValue$Outbound =
-  | CourseSchemas4$Outbound
-  | string
-  | number
-  | boolean
-  | Array<any>;
-
-/** @internal */
-export const CourseSchemasSourceValue$outboundSchema: z.ZodType<
-  CourseSchemasSourceValue$Outbound,
-  z.ZodTypeDef,
-  CourseSchemasSourceValue
-> = z.union([
-  z.lazy(() => CourseSchemas4$outboundSchema),
-  z.string(),
-  z.number(),
-  z.boolean(),
-  z.array(z.any()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CourseSchemasSourceValue$ {
-  /** @deprecated use `CourseSchemasSourceValue$inboundSchema` instead. */
-  export const inboundSchema = CourseSchemasSourceValue$inboundSchema;
-  /** @deprecated use `CourseSchemasSourceValue$outboundSchema` instead. */
-  export const outboundSchema = CourseSchemasSourceValue$outboundSchema;
-  /** @deprecated use `CourseSchemasSourceValue$Outbound` instead. */
-  export type Outbound = CourseSchemasSourceValue$Outbound;
-}
-
-/** @internal */
-export const CourseSchemasValue$inboundSchema: z.ZodType<
-  CourseSchemasValueOpen,
-  z.ZodTypeDef,
-  unknown
-> = z
-  .union([
-    z.nativeEnum(CourseSchemasValue),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
-
-/** @internal */
-export const CourseSchemasValue$outboundSchema: z.ZodType<
-  CourseSchemasValueOpen,
-  z.ZodTypeDef,
-  CourseSchemasValueOpen
-> = z.union([
-  z.nativeEnum(CourseSchemasValue),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CourseSchemasValue$ {
-  /** @deprecated use `CourseSchemasValue$inboundSchema` instead. */
-  export const inboundSchema = CourseSchemasValue$inboundSchema;
-  /** @deprecated use `CourseSchemasValue$outboundSchema` instead. */
-  export const outboundSchema = CourseSchemasValue$outboundSchema;
-}
-
-/** @internal */
-export const CourseType$inboundSchema: z.ZodType<
-  CourseType,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  source_value: z.nullable(
-    z.union([
-      z.lazy(() => CourseSchemas4$inboundSchema),
-      z.string(),
-      z.number(),
-      z.boolean(),
-      z.array(z.any()),
-    ]),
-  ).optional(),
-  value: z.nullable(CourseSchemasValue$inboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "source_value": "sourceValue",
-  });
-});
-
-/** @internal */
-export type CourseType$Outbound = {
-  source_value?:
-    | CourseSchemas4$Outbound
-    | string
-    | number
-    | boolean
-    | Array<any>
-    | null
-    | undefined;
-  value?: string | null | undefined;
-};
-
-/** @internal */
-export const CourseType$outboundSchema: z.ZodType<
-  CourseType$Outbound,
-  z.ZodTypeDef,
-  CourseType
-> = z.object({
-  sourceValue: z.nullable(
-    z.union([
-      z.lazy(() => CourseSchemas4$outboundSchema),
-      z.string(),
-      z.number(),
-      z.boolean(),
-      z.array(z.any()),
-    ]),
-  ).optional(),
-  value: z.nullable(CourseSchemasValue$outboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    sourceValue: "source_value",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace CourseType$ {
-  /** @deprecated use `CourseType$inboundSchema` instead. */
-  export const inboundSchema = CourseType$inboundSchema;
-  /** @deprecated use `CourseType$outboundSchema` instead. */
-  export const outboundSchema = CourseType$outboundSchema;
-  /** @deprecated use `CourseType$Outbound` instead. */
-  export type Outbound = CourseType$Outbound;
-}
-
-/** @internal */
 export const Course$inboundSchema: z.ZodType<Course, z.ZodTypeDef, unknown> = z
   .object({
-    active: z.nullable(z.lazy(() => CourseActive$inboundSchema)).optional(),
+    active: z.nullable(z.boolean()).optional(),
     categories: z.nullable(z.array(Category$inboundSchema)).optional(),
     content_ids: z.nullable(z.array(z.string())).optional(),
-    course_type: z.nullable(z.lazy(() => CourseType$inboundSchema)).optional(),
     cover_url: z.nullable(z.string()).optional(),
     created_at: z.nullable(z.string()).optional(),
     description: z.nullable(z.string()).optional(),
     duration: z.nullable(z.string()).optional(),
     external_reference: z.nullable(z.string()).optional(),
     id: z.nullable(z.string()).optional(),
-    languages: z.nullable(z.array(ContentLanguageEnum$inboundSchema))
-      .optional(),
+    languages: z.nullable(z.array(LanguageEnum$inboundSchema)).optional(),
     remote_content_ids: z.nullable(z.array(z.string())).optional(),
     remote_id: z.nullable(z.string()).optional(),
     skills: z.nullable(z.array(Skills$inboundSchema)).optional(),
@@ -544,7 +117,6 @@ export const Course$inboundSchema: z.ZodType<Course, z.ZodTypeDef, unknown> = z
   }).transform((v) => {
     return remap$(v, {
       "content_ids": "contentIds",
-      "course_type": "courseType",
       "cover_url": "coverUrl",
       "created_at": "createdAt",
       "external_reference": "externalReference",
@@ -557,17 +129,16 @@ export const Course$inboundSchema: z.ZodType<Course, z.ZodTypeDef, unknown> = z
 
 /** @internal */
 export type Course$Outbound = {
-  active?: CourseActive$Outbound | null | undefined;
+  active?: boolean | null | undefined;
   categories?: Array<Category$Outbound> | null | undefined;
   content_ids?: Array<string> | null | undefined;
-  course_type?: CourseType$Outbound | null | undefined;
   cover_url?: string | null | undefined;
   created_at?: string | null | undefined;
   description?: string | null | undefined;
   duration?: string | null | undefined;
   external_reference?: string | null | undefined;
   id?: string | null | undefined;
-  languages?: Array<ContentLanguageEnum$Outbound> | null | undefined;
+  languages?: Array<LanguageEnum$Outbound> | null | undefined;
   remote_content_ids?: Array<string> | null | undefined;
   remote_id?: string | null | undefined;
   skills?: Array<Skills$Outbound> | null | undefined;
@@ -583,17 +154,16 @@ export const Course$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   Course
 > = z.object({
-  active: z.nullable(z.lazy(() => CourseActive$outboundSchema)).optional(),
+  active: z.nullable(z.boolean()).optional(),
   categories: z.nullable(z.array(Category$outboundSchema)).optional(),
   contentIds: z.nullable(z.array(z.string())).optional(),
-  courseType: z.nullable(z.lazy(() => CourseType$outboundSchema)).optional(),
   coverUrl: z.nullable(z.string()).optional(),
   createdAt: z.nullable(z.string()).optional(),
   description: z.nullable(z.string()).optional(),
   duration: z.nullable(z.string()).optional(),
   externalReference: z.nullable(z.string()).optional(),
   id: z.nullable(z.string()).optional(),
-  languages: z.nullable(z.array(ContentLanguageEnum$outboundSchema)).optional(),
+  languages: z.nullable(z.array(LanguageEnum$outboundSchema)).optional(),
   remoteContentIds: z.nullable(z.array(z.string())).optional(),
   remoteId: z.nullable(z.string()).optional(),
   skills: z.nullable(z.array(Skills$outboundSchema)).optional(),
@@ -604,7 +174,6 @@ export const Course$outboundSchema: z.ZodType<
 }).transform((v) => {
   return remap$(v, {
     contentIds: "content_ids",
-    courseType: "course_type",
     coverUrl: "cover_url",
     createdAt: "created_at",
     externalReference: "external_reference",

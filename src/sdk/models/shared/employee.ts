@@ -22,11 +22,11 @@ import {
   CountryCodeEnum$outboundSchema,
 } from "./countrycodeenum.js";
 import {
-  EmployeeCustomFields,
-  EmployeeCustomFields$inboundSchema,
-  EmployeeCustomFields$Outbound,
-  EmployeeCustomFields$outboundSchema,
-} from "./employeecustomfields.js";
+  CustomFields,
+  CustomFields$inboundSchema,
+  CustomFields$Outbound,
+  CustomFields$outboundSchema,
+} from "./customfields.js";
 import {
   Employment,
   Employment$inboundSchema,
@@ -1160,6 +1160,34 @@ export enum EmployeeSchemasNationalIdentityNumberTypeValue {
   Peid = "peid",
   Asmens = "asmens",
   Pvm = "pvm",
+  Ctps = "ctps",
+  Vrn = "vrn",
+  Vtk = "vtk",
+  Int = "int",
+  Tk = "tk",
+  Pas = "pas",
+  Rne = "rne",
+  Rg = "rg",
+  Nci = "nci",
+  Crnm = "crnm",
+  Pis = "pis",
+  Insee = "insee",
+  Tax = "tax",
+  Mpf = "mpf",
+  Epfo = "epfo",
+  Esi = "esi",
+  Pran = "pran",
+  Uan = "uan",
+  Idk = "idk",
+  Bsn = "bsn",
+  Mid = "mid",
+  Sss = "sss",
+  Nie = "nie",
+  Nss = "nss",
+  Arc = "arc",
+  Curp = "curp",
+  Imss = "imss",
+  Rfc = "rfc",
   Other = "other",
   Unknown = "unknown",
 }
@@ -1780,7 +1808,7 @@ export type Employee = {
   /**
    * The employee custom fields
    */
-  customFields?: Array<EmployeeCustomFields> | null | undefined;
+  customFields?: Array<CustomFields> | null | undefined;
   /**
    * The employee date_of_birth
    */
@@ -4782,8 +4810,7 @@ export const Employee$inboundSchema: z.ZodType<
   created_at: z.nullable(
     z.string().datetime({ offset: true }).transform(v => new Date(v)),
   ).optional(),
-  custom_fields: z.nullable(z.array(EmployeeCustomFields$inboundSchema))
-    .optional(),
+  custom_fields: z.nullable(z.array(CustomFields$inboundSchema)).optional(),
   date_of_birth: z.nullable(
     z.string().datetime({ offset: true }).transform(v => new Date(v)),
   ).optional(),
@@ -4897,7 +4924,7 @@ export type Employee$Outbound = {
   company_name?: string | null | undefined;
   cost_centers?: Array<CostCenters$Outbound> | null | undefined;
   created_at?: string | null | undefined;
-  custom_fields?: Array<EmployeeCustomFields$Outbound> | null | undefined;
+  custom_fields?: Array<CustomFields$Outbound> | null | undefined;
   date_of_birth?: string | null | undefined;
   department?: string | null | undefined;
   department_id?: string | null | undefined;
@@ -4956,8 +4983,7 @@ export const Employee$outboundSchema: z.ZodType<
   companyName: z.nullable(z.string()).optional(),
   costCenters: z.nullable(z.array(CostCenters$outboundSchema)).optional(),
   createdAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-  customFields: z.nullable(z.array(EmployeeCustomFields$outboundSchema))
-    .optional(),
+  customFields: z.nullable(z.array(CustomFields$outboundSchema)).optional(),
   dateOfBirth: z.nullable(z.date().transform(v => v.toISOString())).optional(),
   department: z.nullable(z.string()).optional(),
   departmentId: z.nullable(z.string()).optional(),

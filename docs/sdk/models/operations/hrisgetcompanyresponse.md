@@ -21,7 +21,7 @@ let value: HrisGetCompanyResponse = {
     },
   },
   contentType: "<value>",
-  statusCode: 416,
+  statusCode: 226,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

@@ -23,7 +23,7 @@ let value: AtsListAssessmentsPackagesResponse = {
     ],
   },
   contentType: "<value>",
-  statusCode: 431,
+  statusCode: 502,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

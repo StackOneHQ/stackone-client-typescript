@@ -4,6 +4,7 @@
 
 ```typescript
 import { MarketingCreateInAppTemplateRequest } from "@stackone/stackone-client-ts/sdk/models/operations";
+import { InAppMessagesValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: MarketingCreateInAppTemplateRequest = {
   marketingCreateInAppTemplateRequestDto: {
@@ -12,6 +13,7 @@ let value: MarketingCreateInAppTemplateRequest = {
         id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         messageType: {
           sourceValue: "Email",
+          value: InAppMessagesValue.Email,
         },
         remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
       },

@@ -9,8 +9,9 @@ generation:
     requestResponseComponentNamesFeb2024: false
   auth:
     oAuth2ClientCredentialsEnabled: false
+    oAuth2PasswordEnabled: false
 typescript:
-  version: 4.16.6
+  version: 4.17.0
   additionalDependencies:
     dependencies: {}
     devDependencies: {}
@@ -18,6 +19,7 @@ typescript:
   additionalPackageJSON: {}
   author: StackOne
   clientServerStatusCodesAsErrors: true
+  defaultErrorName: SDKError
   enumFormat: enum
   flattenGlobalSecurity: false
   flatteningOrder: body-first
