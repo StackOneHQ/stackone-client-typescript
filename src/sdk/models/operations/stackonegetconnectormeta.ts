@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type StackoneGetConnectorMetaRequest = {
@@ -72,6 +75,26 @@ export namespace StackoneGetConnectorMetaRequest$ {
   export type Outbound = StackoneGetConnectorMetaRequest$Outbound;
 }
 
+export function stackoneGetConnectorMetaRequestToJSON(
+  stackoneGetConnectorMetaRequest: StackoneGetConnectorMetaRequest,
+): string {
+  return JSON.stringify(
+    StackoneGetConnectorMetaRequest$outboundSchema.parse(
+      stackoneGetConnectorMetaRequest,
+    ),
+  );
+}
+
+export function stackoneGetConnectorMetaRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<StackoneGetConnectorMetaRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => StackoneGetConnectorMetaRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'StackoneGetConnectorMetaRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const StackoneGetConnectorMetaResponse$inboundSchema: z.ZodType<
   StackoneGetConnectorMetaResponse,
@@ -131,4 +154,24 @@ export namespace StackoneGetConnectorMetaResponse$ {
   export const outboundSchema = StackoneGetConnectorMetaResponse$outboundSchema;
   /** @deprecated use `StackoneGetConnectorMetaResponse$Outbound` instead. */
   export type Outbound = StackoneGetConnectorMetaResponse$Outbound;
+}
+
+export function stackoneGetConnectorMetaResponseToJSON(
+  stackoneGetConnectorMetaResponse: StackoneGetConnectorMetaResponse,
+): string {
+  return JSON.stringify(
+    StackoneGetConnectorMetaResponse$outboundSchema.parse(
+      stackoneGetConnectorMetaResponse,
+    ),
+  );
+}
+
+export function stackoneGetConnectorMetaResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<StackoneGetConnectorMetaResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => StackoneGetConnectorMetaResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'StackoneGetConnectorMetaResponse' from JSON`,
+  );
 }

@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   AccountAddress,
   AccountAddress$inboundSchema,
@@ -148,4 +151,18 @@ export namespace Account$ {
   export const outboundSchema = Account$outboundSchema;
   /** @deprecated use `Account$Outbound` instead. */
   export type Outbound = Account$Outbound;
+}
+
+export function accountToJSON(account: Account): string {
+  return JSON.stringify(Account$outboundSchema.parse(account));
+}
+
+export function accountFromJSON(
+  jsonString: string,
+): SafeParseResult<Account, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Account$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Account' from JSON`,
+  );
 }

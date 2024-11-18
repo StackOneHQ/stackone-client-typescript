@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type StackoneProxyRequestRequest = {
@@ -81,6 +84,26 @@ export namespace StackoneProxyRequestRequest$ {
   export type Outbound = StackoneProxyRequestRequest$Outbound;
 }
 
+export function stackoneProxyRequestRequestToJSON(
+  stackoneProxyRequestRequest: StackoneProxyRequestRequest,
+): string {
+  return JSON.stringify(
+    StackoneProxyRequestRequest$outboundSchema.parse(
+      stackoneProxyRequestRequest,
+    ),
+  );
+}
+
+export function stackoneProxyRequestRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<StackoneProxyRequestRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => StackoneProxyRequestRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'StackoneProxyRequestRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const StackoneProxyRequestResponse$inboundSchema: z.ZodType<
   StackoneProxyRequestResponse,
@@ -135,4 +158,24 @@ export namespace StackoneProxyRequestResponse$ {
   export const outboundSchema = StackoneProxyRequestResponse$outboundSchema;
   /** @deprecated use `StackoneProxyRequestResponse$Outbound` instead. */
   export type Outbound = StackoneProxyRequestResponse$Outbound;
+}
+
+export function stackoneProxyRequestResponseToJSON(
+  stackoneProxyRequestResponse: StackoneProxyRequestResponse,
+): string {
+  return JSON.stringify(
+    StackoneProxyRequestResponse$outboundSchema.parse(
+      stackoneProxyRequestResponse,
+    ),
+  );
+}
+
+export function stackoneProxyRequestResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<StackoneProxyRequestResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => StackoneProxyRequestResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'StackoneProxyRequestResponse' from JSON`,
+  );
 }

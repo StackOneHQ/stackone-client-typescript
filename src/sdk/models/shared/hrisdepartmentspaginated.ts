@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   HRISDepartment,
   HRISDepartment$inboundSchema,
@@ -78,4 +81,22 @@ export namespace HRISDepartmentsPaginated$ {
   export const outboundSchema = HRISDepartmentsPaginated$outboundSchema;
   /** @deprecated use `HRISDepartmentsPaginated$Outbound` instead. */
   export type Outbound = HRISDepartmentsPaginated$Outbound;
+}
+
+export function hrisDepartmentsPaginatedToJSON(
+  hrisDepartmentsPaginated: HRISDepartmentsPaginated,
+): string {
+  return JSON.stringify(
+    HRISDepartmentsPaginated$outboundSchema.parse(hrisDepartmentsPaginated),
+  );
+}
+
+export function hrisDepartmentsPaginatedFromJSON(
+  jsonString: string,
+): SafeParseResult<HRISDepartmentsPaginated, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => HRISDepartmentsPaginated$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HRISDepartmentsPaginated' from JSON`,
+  );
 }

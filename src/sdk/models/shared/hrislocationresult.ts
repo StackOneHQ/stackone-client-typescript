@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   HRISLocation,
   HRISLocation$inboundSchema,
@@ -58,4 +61,22 @@ export namespace HRISLocationResult$ {
   export const outboundSchema = HRISLocationResult$outboundSchema;
   /** @deprecated use `HRISLocationResult$Outbound` instead. */
   export type Outbound = HRISLocationResult$Outbound;
+}
+
+export function hrisLocationResultToJSON(
+  hrisLocationResult: HRISLocationResult,
+): string {
+  return JSON.stringify(
+    HRISLocationResult$outboundSchema.parse(hrisLocationResult),
+  );
+}
+
+export function hrisLocationResultFromJSON(
+  jsonString: string,
+): SafeParseResult<HRISLocationResult, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => HRISLocationResult$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HRISLocationResult' from JSON`,
+  );
 }

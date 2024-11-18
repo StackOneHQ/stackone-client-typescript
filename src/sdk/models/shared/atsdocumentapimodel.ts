@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   Content,
   Content$inboundSchema,
@@ -1438,6 +1441,24 @@ export namespace AtsDocumentApiModel4$ {
   export type Outbound = AtsDocumentApiModel4$Outbound;
 }
 
+export function atsDocumentApiModel4ToJSON(
+  atsDocumentApiModel4: AtsDocumentApiModel4,
+): string {
+  return JSON.stringify(
+    AtsDocumentApiModel4$outboundSchema.parse(atsDocumentApiModel4),
+  );
+}
+
+export function atsDocumentApiModel4FromJSON(
+  jsonString: string,
+): SafeParseResult<AtsDocumentApiModel4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AtsDocumentApiModel4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AtsDocumentApiModel4' from JSON`,
+  );
+}
+
 /** @internal */
 export const AtsDocumentApiModelSourceValue$inboundSchema: z.ZodType<
   AtsDocumentApiModelSourceValue,
@@ -1483,6 +1504,26 @@ export namespace AtsDocumentApiModelSourceValue$ {
   export const outboundSchema = AtsDocumentApiModelSourceValue$outboundSchema;
   /** @deprecated use `AtsDocumentApiModelSourceValue$Outbound` instead. */
   export type Outbound = AtsDocumentApiModelSourceValue$Outbound;
+}
+
+export function atsDocumentApiModelSourceValueToJSON(
+  atsDocumentApiModelSourceValue: AtsDocumentApiModelSourceValue,
+): string {
+  return JSON.stringify(
+    AtsDocumentApiModelSourceValue$outboundSchema.parse(
+      atsDocumentApiModelSourceValue,
+    ),
+  );
+}
+
+export function atsDocumentApiModelSourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<AtsDocumentApiModelSourceValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AtsDocumentApiModelSourceValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AtsDocumentApiModelSourceValue' from JSON`,
+  );
 }
 
 /** @internal */
@@ -1555,6 +1596,26 @@ export namespace AtsDocumentApiModelCategory$ {
   export type Outbound = AtsDocumentApiModelCategory$Outbound;
 }
 
+export function atsDocumentApiModelCategoryToJSON(
+  atsDocumentApiModelCategory: AtsDocumentApiModelCategory,
+): string {
+  return JSON.stringify(
+    AtsDocumentApiModelCategory$outboundSchema.parse(
+      atsDocumentApiModelCategory,
+    ),
+  );
+}
+
+export function atsDocumentApiModelCategoryFromJSON(
+  jsonString: string,
+): SafeParseResult<AtsDocumentApiModelCategory, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AtsDocumentApiModelCategory$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AtsDocumentApiModelCategory' from JSON`,
+  );
+}
+
 /** @internal */
 export const AtsDocumentApiModelSchemas4$inboundSchema: z.ZodType<
   AtsDocumentApiModelSchemas4,
@@ -1583,6 +1644,26 @@ export namespace AtsDocumentApiModelSchemas4$ {
   export const outboundSchema = AtsDocumentApiModelSchemas4$outboundSchema;
   /** @deprecated use `AtsDocumentApiModelSchemas4$Outbound` instead. */
   export type Outbound = AtsDocumentApiModelSchemas4$Outbound;
+}
+
+export function atsDocumentApiModelSchemas4ToJSON(
+  atsDocumentApiModelSchemas4: AtsDocumentApiModelSchemas4,
+): string {
+  return JSON.stringify(
+    AtsDocumentApiModelSchemas4$outboundSchema.parse(
+      atsDocumentApiModelSchemas4,
+    ),
+  );
+}
+
+export function atsDocumentApiModelSchemas4FromJSON(
+  jsonString: string,
+): SafeParseResult<AtsDocumentApiModelSchemas4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AtsDocumentApiModelSchemas4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AtsDocumentApiModelSchemas4' from JSON`,
+  );
 }
 
 /** @internal */
@@ -1632,6 +1713,27 @@ export namespace AtsDocumentApiModelSchemasSourceValue$ {
     AtsDocumentApiModelSchemasSourceValue$outboundSchema;
   /** @deprecated use `AtsDocumentApiModelSchemasSourceValue$Outbound` instead. */
   export type Outbound = AtsDocumentApiModelSchemasSourceValue$Outbound;
+}
+
+export function atsDocumentApiModelSchemasSourceValueToJSON(
+  atsDocumentApiModelSchemasSourceValue: AtsDocumentApiModelSchemasSourceValue,
+): string {
+  return JSON.stringify(
+    AtsDocumentApiModelSchemasSourceValue$outboundSchema.parse(
+      atsDocumentApiModelSchemasSourceValue,
+    ),
+  );
+}
+
+export function atsDocumentApiModelSchemasSourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<AtsDocumentApiModelSchemasSourceValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      AtsDocumentApiModelSchemasSourceValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AtsDocumentApiModelSchemasSourceValue' from JSON`,
+  );
 }
 
 /** @internal */
@@ -1736,6 +1838,20 @@ export namespace FileFormat$ {
   export type Outbound = FileFormat$Outbound;
 }
 
+export function fileFormatToJSON(fileFormat: FileFormat): string {
+  return JSON.stringify(FileFormat$outboundSchema.parse(fileFormat));
+}
+
+export function fileFormatFromJSON(
+  jsonString: string,
+): SafeParseResult<FileFormat, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => FileFormat$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'FileFormat' from JSON`,
+  );
+}
+
 /** @internal */
 export const AtsDocumentApiModelSchemasType4$inboundSchema: z.ZodType<
   AtsDocumentApiModelSchemasType4,
@@ -1764,6 +1880,26 @@ export namespace AtsDocumentApiModelSchemasType4$ {
   export const outboundSchema = AtsDocumentApiModelSchemasType4$outboundSchema;
   /** @deprecated use `AtsDocumentApiModelSchemasType4$Outbound` instead. */
   export type Outbound = AtsDocumentApiModelSchemasType4$Outbound;
+}
+
+export function atsDocumentApiModelSchemasType4ToJSON(
+  atsDocumentApiModelSchemasType4: AtsDocumentApiModelSchemasType4,
+): string {
+  return JSON.stringify(
+    AtsDocumentApiModelSchemasType4$outboundSchema.parse(
+      atsDocumentApiModelSchemasType4,
+    ),
+  );
+}
+
+export function atsDocumentApiModelSchemasType4FromJSON(
+  jsonString: string,
+): SafeParseResult<AtsDocumentApiModelSchemasType4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AtsDocumentApiModelSchemasType4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AtsDocumentApiModelSchemasType4' from JSON`,
+  );
 }
 
 /** @internal */
@@ -1814,6 +1950,33 @@ export namespace AtsDocumentApiModelSchemasTypeSourceValue$ {
     AtsDocumentApiModelSchemasTypeSourceValue$outboundSchema;
   /** @deprecated use `AtsDocumentApiModelSchemasTypeSourceValue$Outbound` instead. */
   export type Outbound = AtsDocumentApiModelSchemasTypeSourceValue$Outbound;
+}
+
+export function atsDocumentApiModelSchemasTypeSourceValueToJSON(
+  atsDocumentApiModelSchemasTypeSourceValue:
+    AtsDocumentApiModelSchemasTypeSourceValue,
+): string {
+  return JSON.stringify(
+    AtsDocumentApiModelSchemasTypeSourceValue$outboundSchema.parse(
+      atsDocumentApiModelSchemasTypeSourceValue,
+    ),
+  );
+}
+
+export function atsDocumentApiModelSchemasTypeSourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  AtsDocumentApiModelSchemasTypeSourceValue,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      AtsDocumentApiModelSchemasTypeSourceValue$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'AtsDocumentApiModelSchemasTypeSourceValue' from JSON`,
+  );
 }
 
 /** @internal */
@@ -1918,6 +2081,24 @@ export namespace AtsDocumentApiModelType$ {
   export type Outbound = AtsDocumentApiModelType$Outbound;
 }
 
+export function atsDocumentApiModelTypeToJSON(
+  atsDocumentApiModelType: AtsDocumentApiModelType,
+): string {
+  return JSON.stringify(
+    AtsDocumentApiModelType$outboundSchema.parse(atsDocumentApiModelType),
+  );
+}
+
+export function atsDocumentApiModelTypeFromJSON(
+  jsonString: string,
+): SafeParseResult<AtsDocumentApiModelType, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AtsDocumentApiModelType$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AtsDocumentApiModelType' from JSON`,
+  );
+}
+
 /** @internal */
 export const AtsDocumentApiModel$inboundSchema: z.ZodType<
   AtsDocumentApiModel,
@@ -2016,4 +2197,22 @@ export namespace AtsDocumentApiModel$ {
   export const outboundSchema = AtsDocumentApiModel$outboundSchema;
   /** @deprecated use `AtsDocumentApiModel$Outbound` instead. */
   export type Outbound = AtsDocumentApiModel$Outbound;
+}
+
+export function atsDocumentApiModelToJSON(
+  atsDocumentApiModel: AtsDocumentApiModel,
+): string {
+  return JSON.stringify(
+    AtsDocumentApiModel$outboundSchema.parse(atsDocumentApiModel),
+  );
+}
+
+export function atsDocumentApiModelFromJSON(
+  jsonString: string,
+): SafeParseResult<AtsDocumentApiModel, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AtsDocumentApiModel$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AtsDocumentApiModel' from JSON`,
+  );
 }

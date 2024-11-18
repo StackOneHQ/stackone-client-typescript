@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   CreateResultDataApiModel,
   CreateResultDataApiModel$inboundSchema,
@@ -60,4 +63,18 @@ export namespace CreateResult$ {
   export const outboundSchema = CreateResult$outboundSchema;
   /** @deprecated use `CreateResult$Outbound` instead. */
   export type Outbound = CreateResult$Outbound;
+}
+
+export function createResultToJSON(createResult: CreateResult): string {
+  return JSON.stringify(CreateResult$outboundSchema.parse(createResult));
+}
+
+export function createResultFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateResult, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateResult$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateResult' from JSON`,
+  );
 }

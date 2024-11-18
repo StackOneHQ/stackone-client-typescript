@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export enum TimeOff2 {
   True = "true",
@@ -220,6 +223,24 @@ export namespace TimeOffEndHalfDay$ {
   export type Outbound = TimeOffEndHalfDay$Outbound;
 }
 
+export function timeOffEndHalfDayToJSON(
+  timeOffEndHalfDay: TimeOffEndHalfDay,
+): string {
+  return JSON.stringify(
+    TimeOffEndHalfDay$outboundSchema.parse(timeOffEndHalfDay),
+  );
+}
+
+export function timeOffEndHalfDayFromJSON(
+  jsonString: string,
+): SafeParseResult<TimeOffEndHalfDay, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TimeOffEndHalfDay$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TimeOffEndHalfDay' from JSON`,
+  );
+}
+
 /** @internal */
 export const TimeOffSchemas2$inboundSchema: z.ZodNativeEnum<
   typeof TimeOffSchemas2
@@ -271,6 +292,24 @@ export namespace TimeOffStartHalfDay$ {
   export type Outbound = TimeOffStartHalfDay$Outbound;
 }
 
+export function timeOffStartHalfDayToJSON(
+  timeOffStartHalfDay: TimeOffStartHalfDay,
+): string {
+  return JSON.stringify(
+    TimeOffStartHalfDay$outboundSchema.parse(timeOffStartHalfDay),
+  );
+}
+
+export function timeOffStartHalfDayFromJSON(
+  jsonString: string,
+): SafeParseResult<TimeOffStartHalfDay, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TimeOffStartHalfDay$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TimeOffStartHalfDay' from JSON`,
+  );
+}
+
 /** @internal */
 export const TimeOff4$inboundSchema: z.ZodType<
   TimeOff4,
@@ -299,6 +338,20 @@ export namespace TimeOff4$ {
   export const outboundSchema = TimeOff4$outboundSchema;
   /** @deprecated use `TimeOff4$Outbound` instead. */
   export type Outbound = TimeOff4$Outbound;
+}
+
+export function timeOff4ToJSON(timeOff4: TimeOff4): string {
+  return JSON.stringify(TimeOff4$outboundSchema.parse(timeOff4));
+}
+
+export function timeOff4FromJSON(
+  jsonString: string,
+): SafeParseResult<TimeOff4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TimeOff4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TimeOff4' from JSON`,
+  );
 }
 
 /** @internal */
@@ -346,6 +399,24 @@ export namespace TimeOffSourceValue$ {
   export const outboundSchema = TimeOffSourceValue$outboundSchema;
   /** @deprecated use `TimeOffSourceValue$Outbound` instead. */
   export type Outbound = TimeOffSourceValue$Outbound;
+}
+
+export function timeOffSourceValueToJSON(
+  timeOffSourceValue: TimeOffSourceValue,
+): string {
+  return JSON.stringify(
+    TimeOffSourceValue$outboundSchema.parse(timeOffSourceValue),
+  );
+}
+
+export function timeOffSourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<TimeOffSourceValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TimeOffSourceValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TimeOffSourceValue' from JSON`,
+  );
 }
 
 /** @internal */
@@ -450,6 +521,20 @@ export namespace TimeOffStatus$ {
   export type Outbound = TimeOffStatus$Outbound;
 }
 
+export function timeOffStatusToJSON(timeOffStatus: TimeOffStatus): string {
+  return JSON.stringify(TimeOffStatus$outboundSchema.parse(timeOffStatus));
+}
+
+export function timeOffStatusFromJSON(
+  jsonString: string,
+): SafeParseResult<TimeOffStatus, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TimeOffStatus$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TimeOffStatus' from JSON`,
+  );
+}
+
 /** @internal */
 export const TimeOffSchemas4$inboundSchema: z.ZodType<
   TimeOffSchemas4,
@@ -478,6 +563,22 @@ export namespace TimeOffSchemas4$ {
   export const outboundSchema = TimeOffSchemas4$outboundSchema;
   /** @deprecated use `TimeOffSchemas4$Outbound` instead. */
   export type Outbound = TimeOffSchemas4$Outbound;
+}
+
+export function timeOffSchemas4ToJSON(
+  timeOffSchemas4: TimeOffSchemas4,
+): string {
+  return JSON.stringify(TimeOffSchemas4$outboundSchema.parse(timeOffSchemas4));
+}
+
+export function timeOffSchemas4FromJSON(
+  jsonString: string,
+): SafeParseResult<TimeOffSchemas4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TimeOffSchemas4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TimeOffSchemas4' from JSON`,
+  );
 }
 
 /** @internal */
@@ -525,6 +626,24 @@ export namespace TimeOffSchemasSourceValue$ {
   export const outboundSchema = TimeOffSchemasSourceValue$outboundSchema;
   /** @deprecated use `TimeOffSchemasSourceValue$Outbound` instead. */
   export type Outbound = TimeOffSchemasSourceValue$Outbound;
+}
+
+export function timeOffSchemasSourceValueToJSON(
+  timeOffSchemasSourceValue: TimeOffSchemasSourceValue,
+): string {
+  return JSON.stringify(
+    TimeOffSchemasSourceValue$outboundSchema.parse(timeOffSchemasSourceValue),
+  );
+}
+
+export function timeOffSchemasSourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<TimeOffSchemasSourceValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TimeOffSchemasSourceValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TimeOffSchemasSourceValue' from JSON`,
+  );
 }
 
 /** @internal */
@@ -627,6 +746,20 @@ export namespace TimeOffType$ {
   export const outboundSchema = TimeOffType$outboundSchema;
   /** @deprecated use `TimeOffType$Outbound` instead. */
   export type Outbound = TimeOffType$Outbound;
+}
+
+export function timeOffTypeToJSON(timeOffType: TimeOffType): string {
+  return JSON.stringify(TimeOffType$outboundSchema.parse(timeOffType));
+}
+
+export function timeOffTypeFromJSON(
+  jsonString: string,
+): SafeParseResult<TimeOffType, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TimeOffType$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TimeOffType' from JSON`,
+  );
 }
 
 /** @internal */
@@ -744,4 +877,18 @@ export namespace TimeOff$ {
   export const outboundSchema = TimeOff$outboundSchema;
   /** @deprecated use `TimeOff$Outbound` instead. */
   export type Outbound = TimeOff$Outbound;
+}
+
+export function timeOffToJSON(timeOff: TimeOff): string {
+  return JSON.stringify(TimeOff$outboundSchema.parse(timeOff));
+}
+
+export function timeOffFromJSON(
+  jsonString: string,
+): SafeParseResult<TimeOff, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TimeOff$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TimeOff' from JSON`,
+  );
 }

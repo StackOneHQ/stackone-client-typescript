@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   CostCenters,
   CostCenters$inboundSchema,
@@ -1999,6 +2002,20 @@ export namespace Avatar$ {
   export type Outbound = Avatar$Outbound;
 }
 
+export function avatarToJSON(avatar: Avatar): string {
+  return JSON.stringify(Avatar$outboundSchema.parse(avatar));
+}
+
+export function avatarFromJSON(
+  jsonString: string,
+): SafeParseResult<Avatar, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Avatar$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Avatar' from JSON`,
+  );
+}
+
 /** @internal */
 export const EmployeeCompany$inboundSchema: z.ZodType<
   EmployeeCompany,
@@ -2073,6 +2090,22 @@ export namespace EmployeeCompany$ {
   export type Outbound = EmployeeCompany$Outbound;
 }
 
+export function employeeCompanyToJSON(
+  employeeCompany: EmployeeCompany,
+): string {
+  return JSON.stringify(EmployeeCompany$outboundSchema.parse(employeeCompany));
+}
+
+export function employeeCompanyFromJSON(
+  jsonString: string,
+): SafeParseResult<EmployeeCompany, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => EmployeeCompany$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'EmployeeCompany' from JSON`,
+  );
+}
+
 /** @internal */
 export const Employee4$inboundSchema: z.ZodType<
   Employee4,
@@ -2101,6 +2134,20 @@ export namespace Employee4$ {
   export const outboundSchema = Employee4$outboundSchema;
   /** @deprecated use `Employee4$Outbound` instead. */
   export type Outbound = Employee4$Outbound;
+}
+
+export function employee4ToJSON(employee4: Employee4): string {
+  return JSON.stringify(Employee4$outboundSchema.parse(employee4));
+}
+
+export function employee4FromJSON(
+  jsonString: string,
+): SafeParseResult<Employee4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Employee4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Employee4' from JSON`,
+  );
 }
 
 /** @internal */
@@ -2148,6 +2195,24 @@ export namespace EmployeeSourceValue$ {
   export const outboundSchema = EmployeeSourceValue$outboundSchema;
   /** @deprecated use `EmployeeSourceValue$Outbound` instead. */
   export type Outbound = EmployeeSourceValue$Outbound;
+}
+
+export function employeeSourceValueToJSON(
+  employeeSourceValue: EmployeeSourceValue,
+): string {
+  return JSON.stringify(
+    EmployeeSourceValue$outboundSchema.parse(employeeSourceValue),
+  );
+}
+
+export function employeeSourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<EmployeeSourceValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => EmployeeSourceValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'EmployeeSourceValue' from JSON`,
+  );
 }
 
 /** @internal */
@@ -2252,6 +2317,26 @@ export namespace EmployeeEmploymentContractType$ {
   export type Outbound = EmployeeEmploymentContractType$Outbound;
 }
 
+export function employeeEmploymentContractTypeToJSON(
+  employeeEmploymentContractType: EmployeeEmploymentContractType,
+): string {
+  return JSON.stringify(
+    EmployeeEmploymentContractType$outboundSchema.parse(
+      employeeEmploymentContractType,
+    ),
+  );
+}
+
+export function employeeEmploymentContractTypeFromJSON(
+  jsonString: string,
+): SafeParseResult<EmployeeEmploymentContractType, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => EmployeeEmploymentContractType$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'EmployeeEmploymentContractType' from JSON`,
+  );
+}
+
 /** @internal */
 export const EmployeeSchemas4$inboundSchema: z.ZodType<
   EmployeeSchemas4,
@@ -2280,6 +2365,24 @@ export namespace EmployeeSchemas4$ {
   export const outboundSchema = EmployeeSchemas4$outboundSchema;
   /** @deprecated use `EmployeeSchemas4$Outbound` instead. */
   export type Outbound = EmployeeSchemas4$Outbound;
+}
+
+export function employeeSchemas4ToJSON(
+  employeeSchemas4: EmployeeSchemas4,
+): string {
+  return JSON.stringify(
+    EmployeeSchemas4$outboundSchema.parse(employeeSchemas4),
+  );
+}
+
+export function employeeSchemas4FromJSON(
+  jsonString: string,
+): SafeParseResult<EmployeeSchemas4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => EmployeeSchemas4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'EmployeeSchemas4' from JSON`,
+  );
 }
 
 /** @internal */
@@ -2327,6 +2430,24 @@ export namespace EmployeeSchemasSourceValue$ {
   export const outboundSchema = EmployeeSchemasSourceValue$outboundSchema;
   /** @deprecated use `EmployeeSchemasSourceValue$Outbound` instead. */
   export type Outbound = EmployeeSchemasSourceValue$Outbound;
+}
+
+export function employeeSchemasSourceValueToJSON(
+  employeeSchemasSourceValue: EmployeeSchemasSourceValue,
+): string {
+  return JSON.stringify(
+    EmployeeSchemasSourceValue$outboundSchema.parse(employeeSchemasSourceValue),
+  );
+}
+
+export function employeeSchemasSourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<EmployeeSchemasSourceValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => EmployeeSchemasSourceValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'EmployeeSchemasSourceValue' from JSON`,
+  );
 }
 
 /** @internal */
@@ -2431,6 +2552,24 @@ export namespace EmploymentStatus$ {
   export type Outbound = EmploymentStatus$Outbound;
 }
 
+export function employmentStatusToJSON(
+  employmentStatus: EmploymentStatus,
+): string {
+  return JSON.stringify(
+    EmploymentStatus$outboundSchema.parse(employmentStatus),
+  );
+}
+
+export function employmentStatusFromJSON(
+  jsonString: string,
+): SafeParseResult<EmploymentStatus, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => EmploymentStatus$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'EmploymentStatus' from JSON`,
+  );
+}
+
 /** @internal */
 export const EmployeeSchemasEmploymentType4$inboundSchema: z.ZodType<
   EmployeeSchemasEmploymentType4,
@@ -2459,6 +2598,26 @@ export namespace EmployeeSchemasEmploymentType4$ {
   export const outboundSchema = EmployeeSchemasEmploymentType4$outboundSchema;
   /** @deprecated use `EmployeeSchemasEmploymentType4$Outbound` instead. */
   export type Outbound = EmployeeSchemasEmploymentType4$Outbound;
+}
+
+export function employeeSchemasEmploymentType4ToJSON(
+  employeeSchemasEmploymentType4: EmployeeSchemasEmploymentType4,
+): string {
+  return JSON.stringify(
+    EmployeeSchemasEmploymentType4$outboundSchema.parse(
+      employeeSchemasEmploymentType4,
+    ),
+  );
+}
+
+export function employeeSchemasEmploymentType4FromJSON(
+  jsonString: string,
+): SafeParseResult<EmployeeSchemasEmploymentType4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => EmployeeSchemasEmploymentType4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'EmployeeSchemasEmploymentType4' from JSON`,
+  );
 }
 
 /** @internal */
@@ -2508,6 +2667,33 @@ export namespace EmployeeSchemasEmploymentTypeSourceValue$ {
     EmployeeSchemasEmploymentTypeSourceValue$outboundSchema;
   /** @deprecated use `EmployeeSchemasEmploymentTypeSourceValue$Outbound` instead. */
   export type Outbound = EmployeeSchemasEmploymentTypeSourceValue$Outbound;
+}
+
+export function employeeSchemasEmploymentTypeSourceValueToJSON(
+  employeeSchemasEmploymentTypeSourceValue:
+    EmployeeSchemasEmploymentTypeSourceValue,
+): string {
+  return JSON.stringify(
+    EmployeeSchemasEmploymentTypeSourceValue$outboundSchema.parse(
+      employeeSchemasEmploymentTypeSourceValue,
+    ),
+  );
+}
+
+export function employeeSchemasEmploymentTypeSourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  EmployeeSchemasEmploymentTypeSourceValue,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      EmployeeSchemasEmploymentTypeSourceValue$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'EmployeeSchemasEmploymentTypeSourceValue' from JSON`,
+  );
 }
 
 /** @internal */
@@ -2615,6 +2801,24 @@ export namespace EmployeeEmploymentType$ {
   export type Outbound = EmployeeEmploymentType$Outbound;
 }
 
+export function employeeEmploymentTypeToJSON(
+  employeeEmploymentType: EmployeeEmploymentType,
+): string {
+  return JSON.stringify(
+    EmployeeEmploymentType$outboundSchema.parse(employeeEmploymentType),
+  );
+}
+
+export function employeeEmploymentTypeFromJSON(
+  jsonString: string,
+): SafeParseResult<EmployeeEmploymentType, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => EmployeeEmploymentType$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'EmployeeEmploymentType' from JSON`,
+  );
+}
+
 /** @internal */
 export const EmployeeSchemasEthnicity4$inboundSchema: z.ZodType<
   EmployeeSchemasEthnicity4,
@@ -2643,6 +2847,24 @@ export namespace EmployeeSchemasEthnicity4$ {
   export const outboundSchema = EmployeeSchemasEthnicity4$outboundSchema;
   /** @deprecated use `EmployeeSchemasEthnicity4$Outbound` instead. */
   export type Outbound = EmployeeSchemasEthnicity4$Outbound;
+}
+
+export function employeeSchemasEthnicity4ToJSON(
+  employeeSchemasEthnicity4: EmployeeSchemasEthnicity4,
+): string {
+  return JSON.stringify(
+    EmployeeSchemasEthnicity4$outboundSchema.parse(employeeSchemasEthnicity4),
+  );
+}
+
+export function employeeSchemasEthnicity4FromJSON(
+  jsonString: string,
+): SafeParseResult<EmployeeSchemasEthnicity4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => EmployeeSchemasEthnicity4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'EmployeeSchemasEthnicity4' from JSON`,
+  );
 }
 
 /** @internal */
@@ -2692,6 +2914,27 @@ export namespace EmployeeSchemasEthnicitySourceValue$ {
     EmployeeSchemasEthnicitySourceValue$outboundSchema;
   /** @deprecated use `EmployeeSchemasEthnicitySourceValue$Outbound` instead. */
   export type Outbound = EmployeeSchemasEthnicitySourceValue$Outbound;
+}
+
+export function employeeSchemasEthnicitySourceValueToJSON(
+  employeeSchemasEthnicitySourceValue: EmployeeSchemasEthnicitySourceValue,
+): string {
+  return JSON.stringify(
+    EmployeeSchemasEthnicitySourceValue$outboundSchema.parse(
+      employeeSchemasEthnicitySourceValue,
+    ),
+  );
+}
+
+export function employeeSchemasEthnicitySourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<EmployeeSchemasEthnicitySourceValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      EmployeeSchemasEthnicitySourceValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'EmployeeSchemasEthnicitySourceValue' from JSON`,
+  );
 }
 
 /** @internal */
@@ -2796,6 +3039,20 @@ export namespace Ethnicity$ {
   export type Outbound = Ethnicity$Outbound;
 }
 
+export function ethnicityToJSON(ethnicity: Ethnicity): string {
+  return JSON.stringify(Ethnicity$outboundSchema.parse(ethnicity));
+}
+
+export function ethnicityFromJSON(
+  jsonString: string,
+): SafeParseResult<Ethnicity, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Ethnicity$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Ethnicity' from JSON`,
+  );
+}
+
 /** @internal */
 export const EmployeeSchemasGender4$inboundSchema: z.ZodType<
   EmployeeSchemasGender4,
@@ -2824,6 +3081,24 @@ export namespace EmployeeSchemasGender4$ {
   export const outboundSchema = EmployeeSchemasGender4$outboundSchema;
   /** @deprecated use `EmployeeSchemasGender4$Outbound` instead. */
   export type Outbound = EmployeeSchemasGender4$Outbound;
+}
+
+export function employeeSchemasGender4ToJSON(
+  employeeSchemasGender4: EmployeeSchemasGender4,
+): string {
+  return JSON.stringify(
+    EmployeeSchemasGender4$outboundSchema.parse(employeeSchemasGender4),
+  );
+}
+
+export function employeeSchemasGender4FromJSON(
+  jsonString: string,
+): SafeParseResult<EmployeeSchemasGender4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => EmployeeSchemasGender4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'EmployeeSchemasGender4' from JSON`,
+  );
 }
 
 /** @internal */
@@ -2871,6 +3146,26 @@ export namespace EmployeeSchemasGenderSourceValue$ {
   export const outboundSchema = EmployeeSchemasGenderSourceValue$outboundSchema;
   /** @deprecated use `EmployeeSchemasGenderSourceValue$Outbound` instead. */
   export type Outbound = EmployeeSchemasGenderSourceValue$Outbound;
+}
+
+export function employeeSchemasGenderSourceValueToJSON(
+  employeeSchemasGenderSourceValue: EmployeeSchemasGenderSourceValue,
+): string {
+  return JSON.stringify(
+    EmployeeSchemasGenderSourceValue$outboundSchema.parse(
+      employeeSchemasGenderSourceValue,
+    ),
+  );
+}
+
+export function employeeSchemasGenderSourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<EmployeeSchemasGenderSourceValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => EmployeeSchemasGenderSourceValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'EmployeeSchemasGenderSourceValue' from JSON`,
+  );
 }
 
 /** @internal */
@@ -2972,6 +3267,20 @@ export namespace Gender$ {
   export type Outbound = Gender$Outbound;
 }
 
+export function genderToJSON(gender: Gender): string {
+  return JSON.stringify(Gender$outboundSchema.parse(gender));
+}
+
+export function genderFromJSON(
+  jsonString: string,
+): SafeParseResult<Gender, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Gender$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Gender' from JSON`,
+  );
+}
+
 /** @internal */
 export const EmployeeSchemasHomeLocation4$inboundSchema: z.ZodType<
   EmployeeSchemasHomeLocation4,
@@ -3000,6 +3309,26 @@ export namespace EmployeeSchemasHomeLocation4$ {
   export const outboundSchema = EmployeeSchemasHomeLocation4$outboundSchema;
   /** @deprecated use `EmployeeSchemasHomeLocation4$Outbound` instead. */
   export type Outbound = EmployeeSchemasHomeLocation4$Outbound;
+}
+
+export function employeeSchemasHomeLocation4ToJSON(
+  employeeSchemasHomeLocation4: EmployeeSchemasHomeLocation4,
+): string {
+  return JSON.stringify(
+    EmployeeSchemasHomeLocation4$outboundSchema.parse(
+      employeeSchemasHomeLocation4,
+    ),
+  );
+}
+
+export function employeeSchemasHomeLocation4FromJSON(
+  jsonString: string,
+): SafeParseResult<EmployeeSchemasHomeLocation4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => EmployeeSchemasHomeLocation4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'EmployeeSchemasHomeLocation4' from JSON`,
+  );
 }
 
 /** @internal */
@@ -3049,6 +3378,28 @@ export namespace EmployeeSchemasHomeLocationSourceValue$ {
     EmployeeSchemasHomeLocationSourceValue$outboundSchema;
   /** @deprecated use `EmployeeSchemasHomeLocationSourceValue$Outbound` instead. */
   export type Outbound = EmployeeSchemasHomeLocationSourceValue$Outbound;
+}
+
+export function employeeSchemasHomeLocationSourceValueToJSON(
+  employeeSchemasHomeLocationSourceValue:
+    EmployeeSchemasHomeLocationSourceValue,
+): string {
+  return JSON.stringify(
+    EmployeeSchemasHomeLocationSourceValue$outboundSchema.parse(
+      employeeSchemasHomeLocationSourceValue,
+    ),
+  );
+}
+
+export function employeeSchemasHomeLocationSourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<EmployeeSchemasHomeLocationSourceValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      EmployeeSchemasHomeLocationSourceValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'EmployeeSchemasHomeLocationSourceValue' from JSON`,
+  );
 }
 
 /** @internal */
@@ -3153,6 +3504,22 @@ export namespace EmployeeCountry$ {
   export type Outbound = EmployeeCountry$Outbound;
 }
 
+export function employeeCountryToJSON(
+  employeeCountry: EmployeeCountry,
+): string {
+  return JSON.stringify(EmployeeCountry$outboundSchema.parse(employeeCountry));
+}
+
+export function employeeCountryFromJSON(
+  jsonString: string,
+): SafeParseResult<EmployeeCountry, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => EmployeeCountry$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'EmployeeCountry' from JSON`,
+  );
+}
+
 /** @internal */
 export const EmployeeSchemasHomeLocationLocationType4$inboundSchema: z.ZodType<
   EmployeeSchemasHomeLocationLocationType4,
@@ -3183,6 +3550,33 @@ export namespace EmployeeSchemasHomeLocationLocationType4$ {
     EmployeeSchemasHomeLocationLocationType4$outboundSchema;
   /** @deprecated use `EmployeeSchemasHomeLocationLocationType4$Outbound` instead. */
   export type Outbound = EmployeeSchemasHomeLocationLocationType4$Outbound;
+}
+
+export function employeeSchemasHomeLocationLocationType4ToJSON(
+  employeeSchemasHomeLocationLocationType4:
+    EmployeeSchemasHomeLocationLocationType4,
+): string {
+  return JSON.stringify(
+    EmployeeSchemasHomeLocationLocationType4$outboundSchema.parse(
+      employeeSchemasHomeLocationLocationType4,
+    ),
+  );
+}
+
+export function employeeSchemasHomeLocationLocationType4FromJSON(
+  jsonString: string,
+): SafeParseResult<
+  EmployeeSchemasHomeLocationLocationType4,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      EmployeeSchemasHomeLocationLocationType4$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'EmployeeSchemasHomeLocationLocationType4' from JSON`,
+  );
 }
 
 /** @internal */
@@ -3235,6 +3629,33 @@ export namespace EmployeeSchemasHomeLocationLocationTypeSourceValue$ {
   /** @deprecated use `EmployeeSchemasHomeLocationLocationTypeSourceValue$Outbound` instead. */
   export type Outbound =
     EmployeeSchemasHomeLocationLocationTypeSourceValue$Outbound;
+}
+
+export function employeeSchemasHomeLocationLocationTypeSourceValueToJSON(
+  employeeSchemasHomeLocationLocationTypeSourceValue:
+    EmployeeSchemasHomeLocationLocationTypeSourceValue,
+): string {
+  return JSON.stringify(
+    EmployeeSchemasHomeLocationLocationTypeSourceValue$outboundSchema.parse(
+      employeeSchemasHomeLocationLocationTypeSourceValue,
+    ),
+  );
+}
+
+export function employeeSchemasHomeLocationLocationTypeSourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  EmployeeSchemasHomeLocationLocationTypeSourceValue,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      EmployeeSchemasHomeLocationLocationTypeSourceValue$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'EmployeeSchemasHomeLocationLocationTypeSourceValue' from JSON`,
+  );
 }
 
 /** @internal */
@@ -3343,6 +3764,24 @@ export namespace EmployeeLocationType$ {
   export const outboundSchema = EmployeeLocationType$outboundSchema;
   /** @deprecated use `EmployeeLocationType$Outbound` instead. */
   export type Outbound = EmployeeLocationType$Outbound;
+}
+
+export function employeeLocationTypeToJSON(
+  employeeLocationType: EmployeeLocationType,
+): string {
+  return JSON.stringify(
+    EmployeeLocationType$outboundSchema.parse(employeeLocationType),
+  );
+}
+
+export function employeeLocationTypeFromJSON(
+  jsonString: string,
+): SafeParseResult<EmployeeLocationType, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => EmployeeLocationType$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'EmployeeLocationType' from JSON`,
+  );
 }
 
 /** @internal */
@@ -3460,6 +3899,20 @@ export namespace HomeLocation$ {
   export type Outbound = HomeLocation$Outbound;
 }
 
+export function homeLocationToJSON(homeLocation: HomeLocation): string {
+  return JSON.stringify(HomeLocation$outboundSchema.parse(homeLocation));
+}
+
+export function homeLocationFromJSON(
+  jsonString: string,
+): SafeParseResult<HomeLocation, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => HomeLocation$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HomeLocation' from JSON`,
+  );
+}
+
 /** @internal */
 export const JobDescription$inboundSchema: z.ZodType<
   JobDescription,
@@ -3496,6 +3949,20 @@ export namespace JobDescription$ {
   export type Outbound = JobDescription$Outbound;
 }
 
+export function jobDescriptionToJSON(jobDescription: JobDescription): string {
+  return JSON.stringify(JobDescription$outboundSchema.parse(jobDescription));
+}
+
+export function jobDescriptionFromJSON(
+  jsonString: string,
+): SafeParseResult<JobDescription, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => JobDescription$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'JobDescription' from JSON`,
+  );
+}
+
 /** @internal */
 export const EmployeeSchemasMaritalStatus4$inboundSchema: z.ZodType<
   EmployeeSchemasMaritalStatus4,
@@ -3524,6 +3991,26 @@ export namespace EmployeeSchemasMaritalStatus4$ {
   export const outboundSchema = EmployeeSchemasMaritalStatus4$outboundSchema;
   /** @deprecated use `EmployeeSchemasMaritalStatus4$Outbound` instead. */
   export type Outbound = EmployeeSchemasMaritalStatus4$Outbound;
+}
+
+export function employeeSchemasMaritalStatus4ToJSON(
+  employeeSchemasMaritalStatus4: EmployeeSchemasMaritalStatus4,
+): string {
+  return JSON.stringify(
+    EmployeeSchemasMaritalStatus4$outboundSchema.parse(
+      employeeSchemasMaritalStatus4,
+    ),
+  );
+}
+
+export function employeeSchemasMaritalStatus4FromJSON(
+  jsonString: string,
+): SafeParseResult<EmployeeSchemasMaritalStatus4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => EmployeeSchemasMaritalStatus4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'EmployeeSchemasMaritalStatus4' from JSON`,
+  );
 }
 
 /** @internal */
@@ -3573,6 +4060,33 @@ export namespace EmployeeSchemasMaritalStatusSourceValue$ {
     EmployeeSchemasMaritalStatusSourceValue$outboundSchema;
   /** @deprecated use `EmployeeSchemasMaritalStatusSourceValue$Outbound` instead. */
   export type Outbound = EmployeeSchemasMaritalStatusSourceValue$Outbound;
+}
+
+export function employeeSchemasMaritalStatusSourceValueToJSON(
+  employeeSchemasMaritalStatusSourceValue:
+    EmployeeSchemasMaritalStatusSourceValue,
+): string {
+  return JSON.stringify(
+    EmployeeSchemasMaritalStatusSourceValue$outboundSchema.parse(
+      employeeSchemasMaritalStatusSourceValue,
+    ),
+  );
+}
+
+export function employeeSchemasMaritalStatusSourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  EmployeeSchemasMaritalStatusSourceValue,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      EmployeeSchemasMaritalStatusSourceValue$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'EmployeeSchemasMaritalStatusSourceValue' from JSON`,
+  );
 }
 
 /** @internal */
@@ -3679,6 +4193,20 @@ export namespace MaritalStatus$ {
   export type Outbound = MaritalStatus$Outbound;
 }
 
+export function maritalStatusToJSON(maritalStatus: MaritalStatus): string {
+  return JSON.stringify(MaritalStatus$outboundSchema.parse(maritalStatus));
+}
+
+export function maritalStatusFromJSON(
+  jsonString: string,
+): SafeParseResult<MaritalStatus, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => MaritalStatus$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'MaritalStatus' from JSON`,
+  );
+}
+
 /** @internal */
 export const EmployeeSchemasNationalIdentityNumber4$inboundSchema: z.ZodType<
   EmployeeSchemasNationalIdentityNumber4,
@@ -3709,6 +4237,28 @@ export namespace EmployeeSchemasNationalIdentityNumber4$ {
     EmployeeSchemasNationalIdentityNumber4$outboundSchema;
   /** @deprecated use `EmployeeSchemasNationalIdentityNumber4$Outbound` instead. */
   export type Outbound = EmployeeSchemasNationalIdentityNumber4$Outbound;
+}
+
+export function employeeSchemasNationalIdentityNumber4ToJSON(
+  employeeSchemasNationalIdentityNumber4:
+    EmployeeSchemasNationalIdentityNumber4,
+): string {
+  return JSON.stringify(
+    EmployeeSchemasNationalIdentityNumber4$outboundSchema.parse(
+      employeeSchemasNationalIdentityNumber4,
+    ),
+  );
+}
+
+export function employeeSchemasNationalIdentityNumber4FromJSON(
+  jsonString: string,
+): SafeParseResult<EmployeeSchemasNationalIdentityNumber4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      EmployeeSchemasNationalIdentityNumber4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'EmployeeSchemasNationalIdentityNumber4' from JSON`,
+  );
 }
 
 /** @internal */
@@ -3761,6 +4311,33 @@ export namespace EmployeeSchemasNationalIdentityNumberSourceValue$ {
   /** @deprecated use `EmployeeSchemasNationalIdentityNumberSourceValue$Outbound` instead. */
   export type Outbound =
     EmployeeSchemasNationalIdentityNumberSourceValue$Outbound;
+}
+
+export function employeeSchemasNationalIdentityNumberSourceValueToJSON(
+  employeeSchemasNationalIdentityNumberSourceValue:
+    EmployeeSchemasNationalIdentityNumberSourceValue,
+): string {
+  return JSON.stringify(
+    EmployeeSchemasNationalIdentityNumberSourceValue$outboundSchema.parse(
+      employeeSchemasNationalIdentityNumberSourceValue,
+    ),
+  );
+}
+
+export function employeeSchemasNationalIdentityNumberSourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  EmployeeSchemasNationalIdentityNumberSourceValue,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      EmployeeSchemasNationalIdentityNumberSourceValue$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'EmployeeSchemasNationalIdentityNumberSourceValue' from JSON`,
+  );
 }
 
 /** @internal */
@@ -3871,6 +4448,24 @@ export namespace EmployeeSchemasCountry$ {
   export type Outbound = EmployeeSchemasCountry$Outbound;
 }
 
+export function employeeSchemasCountryToJSON(
+  employeeSchemasCountry: EmployeeSchemasCountry,
+): string {
+  return JSON.stringify(
+    EmployeeSchemasCountry$outboundSchema.parse(employeeSchemasCountry),
+  );
+}
+
+export function employeeSchemasCountryFromJSON(
+  jsonString: string,
+): SafeParseResult<EmployeeSchemasCountry, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => EmployeeSchemasCountry$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'EmployeeSchemasCountry' from JSON`,
+  );
+}
+
 /** @internal */
 export const EmployeeSchemasNationalIdentityNumberType4$inboundSchema:
   z.ZodType<EmployeeSchemasNationalIdentityNumberType4, z.ZodTypeDef, unknown> =
@@ -3900,6 +4495,33 @@ export namespace EmployeeSchemasNationalIdentityNumberType4$ {
     EmployeeSchemasNationalIdentityNumberType4$outboundSchema;
   /** @deprecated use `EmployeeSchemasNationalIdentityNumberType4$Outbound` instead. */
   export type Outbound = EmployeeSchemasNationalIdentityNumberType4$Outbound;
+}
+
+export function employeeSchemasNationalIdentityNumberType4ToJSON(
+  employeeSchemasNationalIdentityNumberType4:
+    EmployeeSchemasNationalIdentityNumberType4,
+): string {
+  return JSON.stringify(
+    EmployeeSchemasNationalIdentityNumberType4$outboundSchema.parse(
+      employeeSchemasNationalIdentityNumberType4,
+    ),
+  );
+}
+
+export function employeeSchemasNationalIdentityNumberType4FromJSON(
+  jsonString: string,
+): SafeParseResult<
+  EmployeeSchemasNationalIdentityNumberType4,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      EmployeeSchemasNationalIdentityNumberType4$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'EmployeeSchemasNationalIdentityNumberType4' from JSON`,
+  );
 }
 
 /** @internal */
@@ -3952,6 +4574,33 @@ export namespace EmployeeSchemasNationalIdentityNumberTypeSourceValue$ {
   /** @deprecated use `EmployeeSchemasNationalIdentityNumberTypeSourceValue$Outbound` instead. */
   export type Outbound =
     EmployeeSchemasNationalIdentityNumberTypeSourceValue$Outbound;
+}
+
+export function employeeSchemasNationalIdentityNumberTypeSourceValueToJSON(
+  employeeSchemasNationalIdentityNumberTypeSourceValue:
+    EmployeeSchemasNationalIdentityNumberTypeSourceValue,
+): string {
+  return JSON.stringify(
+    EmployeeSchemasNationalIdentityNumberTypeSourceValue$outboundSchema.parse(
+      employeeSchemasNationalIdentityNumberTypeSourceValue,
+    ),
+  );
+}
+
+export function employeeSchemasNationalIdentityNumberTypeSourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  EmployeeSchemasNationalIdentityNumberTypeSourceValue,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      EmployeeSchemasNationalIdentityNumberTypeSourceValue$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'EmployeeSchemasNationalIdentityNumberTypeSourceValue' from JSON`,
+  );
 }
 
 /** @internal */
@@ -4064,6 +4713,20 @@ export namespace EmployeeType$ {
   export type Outbound = EmployeeType$Outbound;
 }
 
+export function employeeTypeToJSON(employeeType: EmployeeType): string {
+  return JSON.stringify(EmployeeType$outboundSchema.parse(employeeType));
+}
+
+export function employeeTypeFromJSON(
+  jsonString: string,
+): SafeParseResult<EmployeeType, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => EmployeeType$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'EmployeeType' from JSON`,
+  );
+}
+
 /** @internal */
 export const NationalIdentityNumber$inboundSchema: z.ZodType<
   NationalIdentityNumber,
@@ -4108,6 +4771,24 @@ export namespace NationalIdentityNumber$ {
   export type Outbound = NationalIdentityNumber$Outbound;
 }
 
+export function nationalIdentityNumberToJSON(
+  nationalIdentityNumber: NationalIdentityNumber,
+): string {
+  return JSON.stringify(
+    NationalIdentityNumber$outboundSchema.parse(nationalIdentityNumber),
+  );
+}
+
+export function nationalIdentityNumberFromJSON(
+  jsonString: string,
+): SafeParseResult<NationalIdentityNumber, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => NationalIdentityNumber$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'NationalIdentityNumber' from JSON`,
+  );
+}
+
 /** @internal */
 export const EmployeeSchemasPreferredLanguage4$inboundSchema: z.ZodType<
   EmployeeSchemasPreferredLanguage4,
@@ -4137,6 +4818,26 @@ export namespace EmployeeSchemasPreferredLanguage4$ {
     EmployeeSchemasPreferredLanguage4$outboundSchema;
   /** @deprecated use `EmployeeSchemasPreferredLanguage4$Outbound` instead. */
   export type Outbound = EmployeeSchemasPreferredLanguage4$Outbound;
+}
+
+export function employeeSchemasPreferredLanguage4ToJSON(
+  employeeSchemasPreferredLanguage4: EmployeeSchemasPreferredLanguage4,
+): string {
+  return JSON.stringify(
+    EmployeeSchemasPreferredLanguage4$outboundSchema.parse(
+      employeeSchemasPreferredLanguage4,
+    ),
+  );
+}
+
+export function employeeSchemasPreferredLanguage4FromJSON(
+  jsonString: string,
+): SafeParseResult<EmployeeSchemasPreferredLanguage4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => EmployeeSchemasPreferredLanguage4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'EmployeeSchemasPreferredLanguage4' from JSON`,
+  );
 }
 
 /** @internal */
@@ -4188,6 +4889,33 @@ export namespace EmployeeSchemasPreferredLanguageSourceValue$ {
     EmployeeSchemasPreferredLanguageSourceValue$outboundSchema;
   /** @deprecated use `EmployeeSchemasPreferredLanguageSourceValue$Outbound` instead. */
   export type Outbound = EmployeeSchemasPreferredLanguageSourceValue$Outbound;
+}
+
+export function employeeSchemasPreferredLanguageSourceValueToJSON(
+  employeeSchemasPreferredLanguageSourceValue:
+    EmployeeSchemasPreferredLanguageSourceValue,
+): string {
+  return JSON.stringify(
+    EmployeeSchemasPreferredLanguageSourceValue$outboundSchema.parse(
+      employeeSchemasPreferredLanguageSourceValue,
+    ),
+  );
+}
+
+export function employeeSchemasPreferredLanguageSourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  EmployeeSchemasPreferredLanguageSourceValue,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      EmployeeSchemasPreferredLanguageSourceValue$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'EmployeeSchemasPreferredLanguageSourceValue' from JSON`,
+  );
 }
 
 /** @internal */
@@ -4296,6 +5024,24 @@ export namespace PreferredLanguage$ {
   export type Outbound = PreferredLanguage$Outbound;
 }
 
+export function preferredLanguageToJSON(
+  preferredLanguage: PreferredLanguage,
+): string {
+  return JSON.stringify(
+    PreferredLanguage$outboundSchema.parse(preferredLanguage),
+  );
+}
+
+export function preferredLanguageFromJSON(
+  jsonString: string,
+): SafeParseResult<PreferredLanguage, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PreferredLanguage$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PreferredLanguage' from JSON`,
+  );
+}
+
 /** @internal */
 export const EmployeeSchemasWorkLocation4$inboundSchema: z.ZodType<
   EmployeeSchemasWorkLocation4,
@@ -4324,6 +5070,26 @@ export namespace EmployeeSchemasWorkLocation4$ {
   export const outboundSchema = EmployeeSchemasWorkLocation4$outboundSchema;
   /** @deprecated use `EmployeeSchemasWorkLocation4$Outbound` instead. */
   export type Outbound = EmployeeSchemasWorkLocation4$Outbound;
+}
+
+export function employeeSchemasWorkLocation4ToJSON(
+  employeeSchemasWorkLocation4: EmployeeSchemasWorkLocation4,
+): string {
+  return JSON.stringify(
+    EmployeeSchemasWorkLocation4$outboundSchema.parse(
+      employeeSchemasWorkLocation4,
+    ),
+  );
+}
+
+export function employeeSchemasWorkLocation4FromJSON(
+  jsonString: string,
+): SafeParseResult<EmployeeSchemasWorkLocation4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => EmployeeSchemasWorkLocation4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'EmployeeSchemasWorkLocation4' from JSON`,
+  );
 }
 
 /** @internal */
@@ -4373,6 +5139,28 @@ export namespace EmployeeSchemasWorkLocationSourceValue$ {
     EmployeeSchemasWorkLocationSourceValue$outboundSchema;
   /** @deprecated use `EmployeeSchemasWorkLocationSourceValue$Outbound` instead. */
   export type Outbound = EmployeeSchemasWorkLocationSourceValue$Outbound;
+}
+
+export function employeeSchemasWorkLocationSourceValueToJSON(
+  employeeSchemasWorkLocationSourceValue:
+    EmployeeSchemasWorkLocationSourceValue,
+): string {
+  return JSON.stringify(
+    EmployeeSchemasWorkLocationSourceValue$outboundSchema.parse(
+      employeeSchemasWorkLocationSourceValue,
+    ),
+  );
+}
+
+export function employeeSchemasWorkLocationSourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<EmployeeSchemasWorkLocationSourceValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      EmployeeSchemasWorkLocationSourceValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'EmployeeSchemasWorkLocationSourceValue' from JSON`,
+  );
 }
 
 /** @internal */
@@ -4478,6 +5266,27 @@ export namespace EmployeeSchemasWorkLocationCountry$ {
   export type Outbound = EmployeeSchemasWorkLocationCountry$Outbound;
 }
 
+export function employeeSchemasWorkLocationCountryToJSON(
+  employeeSchemasWorkLocationCountry: EmployeeSchemasWorkLocationCountry,
+): string {
+  return JSON.stringify(
+    EmployeeSchemasWorkLocationCountry$outboundSchema.parse(
+      employeeSchemasWorkLocationCountry,
+    ),
+  );
+}
+
+export function employeeSchemasWorkLocationCountryFromJSON(
+  jsonString: string,
+): SafeParseResult<EmployeeSchemasWorkLocationCountry, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      EmployeeSchemasWorkLocationCountry$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'EmployeeSchemasWorkLocationCountry' from JSON`,
+  );
+}
+
 /** @internal */
 export const EmployeeSchemasWorkLocationLocationType4$inboundSchema: z.ZodType<
   EmployeeSchemasWorkLocationLocationType4,
@@ -4508,6 +5317,33 @@ export namespace EmployeeSchemasWorkLocationLocationType4$ {
     EmployeeSchemasWorkLocationLocationType4$outboundSchema;
   /** @deprecated use `EmployeeSchemasWorkLocationLocationType4$Outbound` instead. */
   export type Outbound = EmployeeSchemasWorkLocationLocationType4$Outbound;
+}
+
+export function employeeSchemasWorkLocationLocationType4ToJSON(
+  employeeSchemasWorkLocationLocationType4:
+    EmployeeSchemasWorkLocationLocationType4,
+): string {
+  return JSON.stringify(
+    EmployeeSchemasWorkLocationLocationType4$outboundSchema.parse(
+      employeeSchemasWorkLocationLocationType4,
+    ),
+  );
+}
+
+export function employeeSchemasWorkLocationLocationType4FromJSON(
+  jsonString: string,
+): SafeParseResult<
+  EmployeeSchemasWorkLocationLocationType4,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      EmployeeSchemasWorkLocationLocationType4$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'EmployeeSchemasWorkLocationLocationType4' from JSON`,
+  );
 }
 
 /** @internal */
@@ -4560,6 +5396,33 @@ export namespace EmployeeSchemasWorkLocationLocationTypeSourceValue$ {
   /** @deprecated use `EmployeeSchemasWorkLocationLocationTypeSourceValue$Outbound` instead. */
   export type Outbound =
     EmployeeSchemasWorkLocationLocationTypeSourceValue$Outbound;
+}
+
+export function employeeSchemasWorkLocationLocationTypeSourceValueToJSON(
+  employeeSchemasWorkLocationLocationTypeSourceValue:
+    EmployeeSchemasWorkLocationLocationTypeSourceValue,
+): string {
+  return JSON.stringify(
+    EmployeeSchemasWorkLocationLocationTypeSourceValue$outboundSchema.parse(
+      employeeSchemasWorkLocationLocationTypeSourceValue,
+    ),
+  );
+}
+
+export function employeeSchemasWorkLocationLocationTypeSourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  EmployeeSchemasWorkLocationLocationTypeSourceValue,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      EmployeeSchemasWorkLocationLocationTypeSourceValue$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'EmployeeSchemasWorkLocationLocationTypeSourceValue' from JSON`,
+  );
 }
 
 /** @internal */
@@ -4668,6 +5531,26 @@ export namespace EmployeeSchemasLocationType$ {
   export const outboundSchema = EmployeeSchemasLocationType$outboundSchema;
   /** @deprecated use `EmployeeSchemasLocationType$Outbound` instead. */
   export type Outbound = EmployeeSchemasLocationType$Outbound;
+}
+
+export function employeeSchemasLocationTypeToJSON(
+  employeeSchemasLocationType: EmployeeSchemasLocationType,
+): string {
+  return JSON.stringify(
+    EmployeeSchemasLocationType$outboundSchema.parse(
+      employeeSchemasLocationType,
+    ),
+  );
+}
+
+export function employeeSchemasLocationTypeFromJSON(
+  jsonString: string,
+): SafeParseResult<EmployeeSchemasLocationType, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => EmployeeSchemasLocationType$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'EmployeeSchemasLocationType' from JSON`,
+  );
 }
 
 /** @internal */
@@ -4789,6 +5672,20 @@ export namespace WorkLocation$ {
   export const outboundSchema = WorkLocation$outboundSchema;
   /** @deprecated use `WorkLocation$Outbound` instead. */
   export type Outbound = WorkLocation$Outbound;
+}
+
+export function workLocationToJSON(workLocation: WorkLocation): string {
+  return JSON.stringify(WorkLocation$outboundSchema.parse(workLocation));
+}
+
+export function workLocationFromJSON(
+  jsonString: string,
+): SafeParseResult<WorkLocation, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => WorkLocation$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'WorkLocation' from JSON`,
+  );
 }
 
 /** @internal */
@@ -5087,4 +5984,18 @@ export namespace Employee$ {
   export const outboundSchema = Employee$outboundSchema;
   /** @deprecated use `Employee$Outbound` instead. */
   export type Outbound = Employee$Outbound;
+}
+
+export function employeeToJSON(employee: Employee): string {
+  return JSON.stringify(Employee$outboundSchema.parse(employee));
+}
+
+export function employeeFromJSON(
+  jsonString: string,
+): SafeParseResult<Employee, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Employee$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Employee' from JSON`,
+  );
 }

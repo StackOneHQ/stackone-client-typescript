@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type MarketingGetEmailTemplateRequest = {
@@ -101,6 +104,26 @@ export namespace MarketingGetEmailTemplateRequest$ {
   export type Outbound = MarketingGetEmailTemplateRequest$Outbound;
 }
 
+export function marketingGetEmailTemplateRequestToJSON(
+  marketingGetEmailTemplateRequest: MarketingGetEmailTemplateRequest,
+): string {
+  return JSON.stringify(
+    MarketingGetEmailTemplateRequest$outboundSchema.parse(
+      marketingGetEmailTemplateRequest,
+    ),
+  );
+}
+
+export function marketingGetEmailTemplateRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<MarketingGetEmailTemplateRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => MarketingGetEmailTemplateRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'MarketingGetEmailTemplateRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const MarketingGetEmailTemplateResponse$inboundSchema: z.ZodType<
   MarketingGetEmailTemplateResponse,
@@ -161,4 +184,24 @@ export namespace MarketingGetEmailTemplateResponse$ {
     MarketingGetEmailTemplateResponse$outboundSchema;
   /** @deprecated use `MarketingGetEmailTemplateResponse$Outbound` instead. */
   export type Outbound = MarketingGetEmailTemplateResponse$Outbound;
+}
+
+export function marketingGetEmailTemplateResponseToJSON(
+  marketingGetEmailTemplateResponse: MarketingGetEmailTemplateResponse,
+): string {
+  return JSON.stringify(
+    MarketingGetEmailTemplateResponse$outboundSchema.parse(
+      marketingGetEmailTemplateResponse,
+    ),
+  );
+}
+
+export function marketingGetEmailTemplateResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<MarketingGetEmailTemplateResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => MarketingGetEmailTemplateResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'MarketingGetEmailTemplateResponse' from JSON`,
+  );
 }

@@ -12,7 +12,7 @@ let value: CreateRequest = {
       recordId: "<id>",
     },
   ],
-  id: 2400.20,
+  id: 9518.74,
   xAccountId: "<id>",
 };
 ```

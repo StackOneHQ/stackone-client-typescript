@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type AtsDownloadApplicationDocumentRequest = {
   /**
@@ -92,6 +95,27 @@ export namespace AtsDownloadApplicationDocumentRequest$ {
   export type Outbound = AtsDownloadApplicationDocumentRequest$Outbound;
 }
 
+export function atsDownloadApplicationDocumentRequestToJSON(
+  atsDownloadApplicationDocumentRequest: AtsDownloadApplicationDocumentRequest,
+): string {
+  return JSON.stringify(
+    AtsDownloadApplicationDocumentRequest$outboundSchema.parse(
+      atsDownloadApplicationDocumentRequest,
+    ),
+  );
+}
+
+export function atsDownloadApplicationDocumentRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<AtsDownloadApplicationDocumentRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      AtsDownloadApplicationDocumentRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AtsDownloadApplicationDocumentRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const AtsDownloadApplicationDocumentResponse$inboundSchema: z.ZodType<
   AtsDownloadApplicationDocumentResponse,
@@ -153,4 +177,26 @@ export namespace AtsDownloadApplicationDocumentResponse$ {
     AtsDownloadApplicationDocumentResponse$outboundSchema;
   /** @deprecated use `AtsDownloadApplicationDocumentResponse$Outbound` instead. */
   export type Outbound = AtsDownloadApplicationDocumentResponse$Outbound;
+}
+
+export function atsDownloadApplicationDocumentResponseToJSON(
+  atsDownloadApplicationDocumentResponse:
+    AtsDownloadApplicationDocumentResponse,
+): string {
+  return JSON.stringify(
+    AtsDownloadApplicationDocumentResponse$outboundSchema.parse(
+      atsDownloadApplicationDocumentResponse,
+    ),
+  );
+}
+
+export function atsDownloadApplicationDocumentResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<AtsDownloadApplicationDocumentResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      AtsDownloadApplicationDocumentResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AtsDownloadApplicationDocumentResponse' from JSON`,
+  );
 }

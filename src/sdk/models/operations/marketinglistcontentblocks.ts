@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 /**
@@ -123,6 +126,33 @@ export namespace MarketingListContentBlocksQueryParamFilter$ {
   export type Outbound = MarketingListContentBlocksQueryParamFilter$Outbound;
 }
 
+export function marketingListContentBlocksQueryParamFilterToJSON(
+  marketingListContentBlocksQueryParamFilter:
+    MarketingListContentBlocksQueryParamFilter,
+): string {
+  return JSON.stringify(
+    MarketingListContentBlocksQueryParamFilter$outboundSchema.parse(
+      marketingListContentBlocksQueryParamFilter,
+    ),
+  );
+}
+
+export function marketingListContentBlocksQueryParamFilterFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  MarketingListContentBlocksQueryParamFilter,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      MarketingListContentBlocksQueryParamFilter$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'MarketingListContentBlocksQueryParamFilter' from JSON`,
+  );
+}
+
 /** @internal */
 export const MarketingListContentBlocksRequest$inboundSchema: z.ZodType<
   MarketingListContentBlocksRequest,
@@ -203,6 +233,26 @@ export namespace MarketingListContentBlocksRequest$ {
   export type Outbound = MarketingListContentBlocksRequest$Outbound;
 }
 
+export function marketingListContentBlocksRequestToJSON(
+  marketingListContentBlocksRequest: MarketingListContentBlocksRequest,
+): string {
+  return JSON.stringify(
+    MarketingListContentBlocksRequest$outboundSchema.parse(
+      marketingListContentBlocksRequest,
+    ),
+  );
+}
+
+export function marketingListContentBlocksRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<MarketingListContentBlocksRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => MarketingListContentBlocksRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'MarketingListContentBlocksRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const MarketingListContentBlocksResponse$inboundSchema: z.ZodType<
   MarketingListContentBlocksResponse,
@@ -265,4 +315,25 @@ export namespace MarketingListContentBlocksResponse$ {
     MarketingListContentBlocksResponse$outboundSchema;
   /** @deprecated use `MarketingListContentBlocksResponse$Outbound` instead. */
   export type Outbound = MarketingListContentBlocksResponse$Outbound;
+}
+
+export function marketingListContentBlocksResponseToJSON(
+  marketingListContentBlocksResponse: MarketingListContentBlocksResponse,
+): string {
+  return JSON.stringify(
+    MarketingListContentBlocksResponse$outboundSchema.parse(
+      marketingListContentBlocksResponse,
+    ),
+  );
+}
+
+export function marketingListContentBlocksResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<MarketingListContentBlocksResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      MarketingListContentBlocksResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'MarketingListContentBlocksResponse' from JSON`,
+  );
 }

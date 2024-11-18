@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type HrisCreateEmployeeEmploymentRequest = {
@@ -91,6 +94,27 @@ export namespace HrisCreateEmployeeEmploymentRequest$ {
   export type Outbound = HrisCreateEmployeeEmploymentRequest$Outbound;
 }
 
+export function hrisCreateEmployeeEmploymentRequestToJSON(
+  hrisCreateEmployeeEmploymentRequest: HrisCreateEmployeeEmploymentRequest,
+): string {
+  return JSON.stringify(
+    HrisCreateEmployeeEmploymentRequest$outboundSchema.parse(
+      hrisCreateEmployeeEmploymentRequest,
+    ),
+  );
+}
+
+export function hrisCreateEmployeeEmploymentRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<HrisCreateEmployeeEmploymentRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      HrisCreateEmployeeEmploymentRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HrisCreateEmployeeEmploymentRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const HrisCreateEmployeeEmploymentResponse$inboundSchema: z.ZodType<
   HrisCreateEmployeeEmploymentResponse,
@@ -152,4 +176,25 @@ export namespace HrisCreateEmployeeEmploymentResponse$ {
     HrisCreateEmployeeEmploymentResponse$outboundSchema;
   /** @deprecated use `HrisCreateEmployeeEmploymentResponse$Outbound` instead. */
   export type Outbound = HrisCreateEmployeeEmploymentResponse$Outbound;
+}
+
+export function hrisCreateEmployeeEmploymentResponseToJSON(
+  hrisCreateEmployeeEmploymentResponse: HrisCreateEmployeeEmploymentResponse,
+): string {
+  return JSON.stringify(
+    HrisCreateEmployeeEmploymentResponse$outboundSchema.parse(
+      hrisCreateEmployeeEmploymentResponse,
+    ),
+  );
+}
+
+export function hrisCreateEmployeeEmploymentResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<HrisCreateEmployeeEmploymentResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      HrisCreateEmployeeEmploymentResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HrisCreateEmployeeEmploymentResponse' from JSON`,
+  );
 }

@@ -97,6 +97,9 @@ export async function atsGetApplicationScheduledInterview(
   const context = {
     operationID: "ats_get_application_scheduled_interview",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.security,
     retryConfig: options?.retries
       || client._options.retryConfig

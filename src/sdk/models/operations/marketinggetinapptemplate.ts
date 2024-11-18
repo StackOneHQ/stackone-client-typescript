@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type MarketingGetInAppTemplateRequest = {
@@ -101,6 +104,26 @@ export namespace MarketingGetInAppTemplateRequest$ {
   export type Outbound = MarketingGetInAppTemplateRequest$Outbound;
 }
 
+export function marketingGetInAppTemplateRequestToJSON(
+  marketingGetInAppTemplateRequest: MarketingGetInAppTemplateRequest,
+): string {
+  return JSON.stringify(
+    MarketingGetInAppTemplateRequest$outboundSchema.parse(
+      marketingGetInAppTemplateRequest,
+    ),
+  );
+}
+
+export function marketingGetInAppTemplateRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<MarketingGetInAppTemplateRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => MarketingGetInAppTemplateRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'MarketingGetInAppTemplateRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const MarketingGetInAppTemplateResponse$inboundSchema: z.ZodType<
   MarketingGetInAppTemplateResponse,
@@ -161,4 +184,24 @@ export namespace MarketingGetInAppTemplateResponse$ {
     MarketingGetInAppTemplateResponse$outboundSchema;
   /** @deprecated use `MarketingGetInAppTemplateResponse$Outbound` instead. */
   export type Outbound = MarketingGetInAppTemplateResponse$Outbound;
+}
+
+export function marketingGetInAppTemplateResponseToJSON(
+  marketingGetInAppTemplateResponse: MarketingGetInAppTemplateResponse,
+): string {
+  return JSON.stringify(
+    MarketingGetInAppTemplateResponse$outboundSchema.parse(
+      marketingGetInAppTemplateResponse,
+    ),
+  );
+}
+
+export function marketingGetInAppTemplateResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<MarketingGetInAppTemplateResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => MarketingGetInAppTemplateResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'MarketingGetInAppTemplateResponse' from JSON`,
+  );
 }

@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   RawResponse,
   RawResponse$inboundSchema,
@@ -58,4 +61,22 @@ export namespace SmsTemplateResult$ {
   export const outboundSchema = SmsTemplateResult$outboundSchema;
   /** @deprecated use `SmsTemplateResult$Outbound` instead. */
   export type Outbound = SmsTemplateResult$Outbound;
+}
+
+export function smsTemplateResultToJSON(
+  smsTemplateResult: SmsTemplateResult,
+): string {
+  return JSON.stringify(
+    SmsTemplateResult$outboundSchema.parse(smsTemplateResult),
+  );
+}
+
+export function smsTemplateResultFromJSON(
+  jsonString: string,
+): SafeParseResult<SmsTemplateResult, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => SmsTemplateResult$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SmsTemplateResult' from JSON`,
+  );
 }

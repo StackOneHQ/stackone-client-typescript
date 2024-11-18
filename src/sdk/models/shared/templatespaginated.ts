@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   RawResponse,
   RawResponse$inboundSchema,
@@ -78,4 +81,22 @@ export namespace TemplatesPaginated$ {
   export const outboundSchema = TemplatesPaginated$outboundSchema;
   /** @deprecated use `TemplatesPaginated$Outbound` instead. */
   export type Outbound = TemplatesPaginated$Outbound;
+}
+
+export function templatesPaginatedToJSON(
+  templatesPaginated: TemplatesPaginated,
+): string {
+  return JSON.stringify(
+    TemplatesPaginated$outboundSchema.parse(templatesPaginated),
+  );
+}
+
+export function templatesPaginatedFromJSON(
+  jsonString: string,
+): SafeParseResult<TemplatesPaginated, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TemplatesPaginated$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TemplatesPaginated' from JSON`,
+  );
 }

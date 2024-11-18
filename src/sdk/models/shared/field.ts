@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export enum Field2 {
   True = "true",
@@ -118,6 +121,20 @@ export namespace RequiredT$ {
   export type Outbound = RequiredT$Outbound;
 }
 
+export function requiredTToJSON(requiredT: RequiredT): string {
+  return JSON.stringify(RequiredT$outboundSchema.parse(requiredT));
+}
+
+export function requiredTFromJSON(
+  jsonString: string,
+): SafeParseResult<RequiredT, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => RequiredT$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RequiredT' from JSON`,
+  );
+}
+
 /** @internal */
 export const FieldType$inboundSchema: z.ZodType<
   FieldTypeOpen,
@@ -206,4 +223,18 @@ export namespace Field$ {
   export const outboundSchema = Field$outboundSchema;
   /** @deprecated use `Field$Outbound` instead. */
   export type Outbound = Field$Outbound;
+}
+
+export function fieldToJSON(field: Field): string {
+  return JSON.stringify(Field$outboundSchema.parse(field));
+}
+
+export function fieldFromJSON(
+  jsonString: string,
+): SafeParseResult<Field, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Field$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Field' from JSON`,
+  );
 }

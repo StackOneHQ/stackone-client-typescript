@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type HrisGetDepartmentGroupRequest = {
@@ -101,6 +104,26 @@ export namespace HrisGetDepartmentGroupRequest$ {
   export type Outbound = HrisGetDepartmentGroupRequest$Outbound;
 }
 
+export function hrisGetDepartmentGroupRequestToJSON(
+  hrisGetDepartmentGroupRequest: HrisGetDepartmentGroupRequest,
+): string {
+  return JSON.stringify(
+    HrisGetDepartmentGroupRequest$outboundSchema.parse(
+      hrisGetDepartmentGroupRequest,
+    ),
+  );
+}
+
+export function hrisGetDepartmentGroupRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<HrisGetDepartmentGroupRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => HrisGetDepartmentGroupRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HrisGetDepartmentGroupRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const HrisGetDepartmentGroupResponse$inboundSchema: z.ZodType<
   HrisGetDepartmentGroupResponse,
@@ -160,4 +183,24 @@ export namespace HrisGetDepartmentGroupResponse$ {
   export const outboundSchema = HrisGetDepartmentGroupResponse$outboundSchema;
   /** @deprecated use `HrisGetDepartmentGroupResponse$Outbound` instead. */
   export type Outbound = HrisGetDepartmentGroupResponse$Outbound;
+}
+
+export function hrisGetDepartmentGroupResponseToJSON(
+  hrisGetDepartmentGroupResponse: HrisGetDepartmentGroupResponse,
+): string {
+  return JSON.stringify(
+    HrisGetDepartmentGroupResponse$outboundSchema.parse(
+      hrisGetDepartmentGroupResponse,
+    ),
+  );
+}
+
+export function hrisGetDepartmentGroupResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<HrisGetDepartmentGroupResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => HrisGetDepartmentGroupResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HrisGetDepartmentGroupResponse' from JSON`,
+  );
 }

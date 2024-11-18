@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   List,
   List$inboundSchema,
@@ -58,4 +61,18 @@ export namespace ListResult$ {
   export const outboundSchema = ListResult$outboundSchema;
   /** @deprecated use `ListResult$Outbound` instead. */
   export type Outbound = ListResult$Outbound;
+}
+
+export function listResultToJSON(listResult: ListResult): string {
+  return JSON.stringify(ListResult$outboundSchema.parse(listResult));
+}
+
+export function listResultFromJSON(
+  jsonString: string,
+): SafeParseResult<ListResult, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListResult$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListResult' from JSON`,
+  );
 }

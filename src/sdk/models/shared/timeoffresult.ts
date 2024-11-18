@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   RawResponse,
   RawResponse$inboundSchema,
@@ -58,4 +61,18 @@ export namespace TimeOffResult$ {
   export const outboundSchema = TimeOffResult$outboundSchema;
   /** @deprecated use `TimeOffResult$Outbound` instead. */
   export type Outbound = TimeOffResult$Outbound;
+}
+
+export function timeOffResultToJSON(timeOffResult: TimeOffResult): string {
+  return JSON.stringify(TimeOffResult$outboundSchema.parse(timeOffResult));
+}
+
+export function timeOffResultFromJSON(
+  jsonString: string,
+): SafeParseResult<TimeOffResult, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TimeOffResult$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TimeOffResult' from JSON`,
+  );
 }

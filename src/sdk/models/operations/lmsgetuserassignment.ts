@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type LmsGetUserAssignmentRequest = {
@@ -105,6 +108,26 @@ export namespace LmsGetUserAssignmentRequest$ {
   export type Outbound = LmsGetUserAssignmentRequest$Outbound;
 }
 
+export function lmsGetUserAssignmentRequestToJSON(
+  lmsGetUserAssignmentRequest: LmsGetUserAssignmentRequest,
+): string {
+  return JSON.stringify(
+    LmsGetUserAssignmentRequest$outboundSchema.parse(
+      lmsGetUserAssignmentRequest,
+    ),
+  );
+}
+
+export function lmsGetUserAssignmentRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<LmsGetUserAssignmentRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LmsGetUserAssignmentRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LmsGetUserAssignmentRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const LmsGetUserAssignmentResponse$inboundSchema: z.ZodType<
   LmsGetUserAssignmentResponse,
@@ -164,4 +187,24 @@ export namespace LmsGetUserAssignmentResponse$ {
   export const outboundSchema = LmsGetUserAssignmentResponse$outboundSchema;
   /** @deprecated use `LmsGetUserAssignmentResponse$Outbound` instead. */
   export type Outbound = LmsGetUserAssignmentResponse$Outbound;
+}
+
+export function lmsGetUserAssignmentResponseToJSON(
+  lmsGetUserAssignmentResponse: LmsGetUserAssignmentResponse,
+): string {
+  return JSON.stringify(
+    LmsGetUserAssignmentResponse$outboundSchema.parse(
+      lmsGetUserAssignmentResponse,
+    ),
+  );
+}
+
+export function lmsGetUserAssignmentResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<LmsGetUserAssignmentResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LmsGetUserAssignmentResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LmsGetUserAssignmentResponse' from JSON`,
+  );
 }

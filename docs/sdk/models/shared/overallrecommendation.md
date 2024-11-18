@@ -7,7 +7,7 @@ The overall recommendation
 ```typescript
 import { OverallRecommendation } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: OverallRecommendation = OverallRecommendation.No;
+let value: OverallRecommendation = OverallRecommendation.StrongNo;
 ```
 
 ## Values

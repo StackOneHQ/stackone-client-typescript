@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type CrmGetListRequest = {
@@ -101,6 +104,24 @@ export namespace CrmGetListRequest$ {
   export type Outbound = CrmGetListRequest$Outbound;
 }
 
+export function crmGetListRequestToJSON(
+  crmGetListRequest: CrmGetListRequest,
+): string {
+  return JSON.stringify(
+    CrmGetListRequest$outboundSchema.parse(crmGetListRequest),
+  );
+}
+
+export function crmGetListRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<CrmGetListRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CrmGetListRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CrmGetListRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const CrmGetListResponse$inboundSchema: z.ZodType<
   CrmGetListResponse,
@@ -160,4 +181,22 @@ export namespace CrmGetListResponse$ {
   export const outboundSchema = CrmGetListResponse$outboundSchema;
   /** @deprecated use `CrmGetListResponse$Outbound` instead. */
   export type Outbound = CrmGetListResponse$Outbound;
+}
+
+export function crmGetListResponseToJSON(
+  crmGetListResponse: CrmGetListResponse,
+): string {
+  return JSON.stringify(
+    CrmGetListResponse$outboundSchema.parse(crmGetListResponse),
+  );
+}
+
+export function crmGetListResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<CrmGetListResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CrmGetListResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CrmGetListResponse' from JSON`,
+  );
 }

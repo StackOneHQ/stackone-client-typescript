@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type AtsGetApplicationRequest = {
@@ -115,6 +118,24 @@ export namespace AtsGetApplicationRequest$ {
   export type Outbound = AtsGetApplicationRequest$Outbound;
 }
 
+export function atsGetApplicationRequestToJSON(
+  atsGetApplicationRequest: AtsGetApplicationRequest,
+): string {
+  return JSON.stringify(
+    AtsGetApplicationRequest$outboundSchema.parse(atsGetApplicationRequest),
+  );
+}
+
+export function atsGetApplicationRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<AtsGetApplicationRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AtsGetApplicationRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AtsGetApplicationRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const AtsGetApplicationResponse$inboundSchema: z.ZodType<
   AtsGetApplicationResponse,
@@ -174,4 +195,22 @@ export namespace AtsGetApplicationResponse$ {
   export const outboundSchema = AtsGetApplicationResponse$outboundSchema;
   /** @deprecated use `AtsGetApplicationResponse$Outbound` instead. */
   export type Outbound = AtsGetApplicationResponse$Outbound;
+}
+
+export function atsGetApplicationResponseToJSON(
+  atsGetApplicationResponse: AtsGetApplicationResponse,
+): string {
+  return JSON.stringify(
+    AtsGetApplicationResponse$outboundSchema.parse(atsGetApplicationResponse),
+  );
+}
+
+export function atsGetApplicationResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<AtsGetApplicationResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AtsGetApplicationResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AtsGetApplicationResponse' from JSON`,
+  );
 }

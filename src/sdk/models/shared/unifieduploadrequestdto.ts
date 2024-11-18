@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * The category object for associating uploaded files. If both an ID and a name are provided, the ID takes precedence.
@@ -1393,6 +1396,26 @@ export namespace UnifiedUploadRequestDtoCategory$ {
   export type Outbound = UnifiedUploadRequestDtoCategory$Outbound;
 }
 
+export function unifiedUploadRequestDtoCategoryToJSON(
+  unifiedUploadRequestDtoCategory: UnifiedUploadRequestDtoCategory,
+): string {
+  return JSON.stringify(
+    UnifiedUploadRequestDtoCategory$outboundSchema.parse(
+      unifiedUploadRequestDtoCategory,
+    ),
+  );
+}
+
+export function unifiedUploadRequestDtoCategoryFromJSON(
+  jsonString: string,
+): SafeParseResult<UnifiedUploadRequestDtoCategory, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UnifiedUploadRequestDtoCategory$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UnifiedUploadRequestDtoCategory' from JSON`,
+  );
+}
+
 /** @internal */
 export const UnifiedUploadRequestDto4$inboundSchema: z.ZodType<
   UnifiedUploadRequestDto4,
@@ -1421,6 +1444,24 @@ export namespace UnifiedUploadRequestDto4$ {
   export const outboundSchema = UnifiedUploadRequestDto4$outboundSchema;
   /** @deprecated use `UnifiedUploadRequestDto4$Outbound` instead. */
   export type Outbound = UnifiedUploadRequestDto4$Outbound;
+}
+
+export function unifiedUploadRequestDto4ToJSON(
+  unifiedUploadRequestDto4: UnifiedUploadRequestDto4,
+): string {
+  return JSON.stringify(
+    UnifiedUploadRequestDto4$outboundSchema.parse(unifiedUploadRequestDto4),
+  );
+}
+
+export function unifiedUploadRequestDto4FromJSON(
+  jsonString: string,
+): SafeParseResult<UnifiedUploadRequestDto4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UnifiedUploadRequestDto4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UnifiedUploadRequestDto4' from JSON`,
+  );
 }
 
 /** @internal */
@@ -1469,6 +1510,27 @@ export namespace UnifiedUploadRequestDtoSourceValue$ {
     UnifiedUploadRequestDtoSourceValue$outboundSchema;
   /** @deprecated use `UnifiedUploadRequestDtoSourceValue$Outbound` instead. */
   export type Outbound = UnifiedUploadRequestDtoSourceValue$Outbound;
+}
+
+export function unifiedUploadRequestDtoSourceValueToJSON(
+  unifiedUploadRequestDtoSourceValue: UnifiedUploadRequestDtoSourceValue,
+): string {
+  return JSON.stringify(
+    UnifiedUploadRequestDtoSourceValue$outboundSchema.parse(
+      unifiedUploadRequestDtoSourceValue,
+    ),
+  );
+}
+
+export function unifiedUploadRequestDtoSourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<UnifiedUploadRequestDtoSourceValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UnifiedUploadRequestDtoSourceValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UnifiedUploadRequestDtoSourceValue' from JSON`,
+  );
 }
 
 /** @internal */
@@ -1575,6 +1637,27 @@ export namespace UnifiedUploadRequestDtoConfidential$ {
   export type Outbound = UnifiedUploadRequestDtoConfidential$Outbound;
 }
 
+export function unifiedUploadRequestDtoConfidentialToJSON(
+  unifiedUploadRequestDtoConfidential: UnifiedUploadRequestDtoConfidential,
+): string {
+  return JSON.stringify(
+    UnifiedUploadRequestDtoConfidential$outboundSchema.parse(
+      unifiedUploadRequestDtoConfidential,
+    ),
+  );
+}
+
+export function unifiedUploadRequestDtoConfidentialFromJSON(
+  jsonString: string,
+): SafeParseResult<UnifiedUploadRequestDtoConfidential, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UnifiedUploadRequestDtoConfidential$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UnifiedUploadRequestDtoConfidential' from JSON`,
+  );
+}
+
 /** @internal */
 export const UnifiedUploadRequestDtoSchemas4$inboundSchema: z.ZodType<
   UnifiedUploadRequestDtoSchemas4,
@@ -1603,6 +1686,26 @@ export namespace UnifiedUploadRequestDtoSchemas4$ {
   export const outboundSchema = UnifiedUploadRequestDtoSchemas4$outboundSchema;
   /** @deprecated use `UnifiedUploadRequestDtoSchemas4$Outbound` instead. */
   export type Outbound = UnifiedUploadRequestDtoSchemas4$Outbound;
+}
+
+export function unifiedUploadRequestDtoSchemas4ToJSON(
+  unifiedUploadRequestDtoSchemas4: UnifiedUploadRequestDtoSchemas4,
+): string {
+  return JSON.stringify(
+    UnifiedUploadRequestDtoSchemas4$outboundSchema.parse(
+      unifiedUploadRequestDtoSchemas4,
+    ),
+  );
+}
+
+export function unifiedUploadRequestDtoSchemas4FromJSON(
+  jsonString: string,
+): SafeParseResult<UnifiedUploadRequestDtoSchemas4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UnifiedUploadRequestDtoSchemas4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UnifiedUploadRequestDtoSchemas4' from JSON`,
+  );
 }
 
 /** @internal */
@@ -1653,6 +1756,33 @@ export namespace UnifiedUploadRequestDtoSchemasSourceValue$ {
     UnifiedUploadRequestDtoSchemasSourceValue$outboundSchema;
   /** @deprecated use `UnifiedUploadRequestDtoSchemasSourceValue$Outbound` instead. */
   export type Outbound = UnifiedUploadRequestDtoSchemasSourceValue$Outbound;
+}
+
+export function unifiedUploadRequestDtoSchemasSourceValueToJSON(
+  unifiedUploadRequestDtoSchemasSourceValue:
+    UnifiedUploadRequestDtoSchemasSourceValue,
+): string {
+  return JSON.stringify(
+    UnifiedUploadRequestDtoSchemasSourceValue$outboundSchema.parse(
+      unifiedUploadRequestDtoSchemasSourceValue,
+    ),
+  );
+}
+
+export function unifiedUploadRequestDtoSchemasSourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  UnifiedUploadRequestDtoSchemasSourceValue,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      UnifiedUploadRequestDtoSchemasSourceValue$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'UnifiedUploadRequestDtoSchemasSourceValue' from JSON`,
+  );
 }
 
 /** @internal */
@@ -1762,6 +1892,26 @@ export namespace UnifiedUploadRequestDtoFileFormat$ {
   export type Outbound = UnifiedUploadRequestDtoFileFormat$Outbound;
 }
 
+export function unifiedUploadRequestDtoFileFormatToJSON(
+  unifiedUploadRequestDtoFileFormat: UnifiedUploadRequestDtoFileFormat,
+): string {
+  return JSON.stringify(
+    UnifiedUploadRequestDtoFileFormat$outboundSchema.parse(
+      unifiedUploadRequestDtoFileFormat,
+    ),
+  );
+}
+
+export function unifiedUploadRequestDtoFileFormatFromJSON(
+  jsonString: string,
+): SafeParseResult<UnifiedUploadRequestDtoFileFormat, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UnifiedUploadRequestDtoFileFormat$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UnifiedUploadRequestDtoFileFormat' from JSON`,
+  );
+}
+
 /** @internal */
 export const UnifiedUploadRequestDto$inboundSchema: z.ZodType<
   UnifiedUploadRequestDto,
@@ -1839,4 +1989,22 @@ export namespace UnifiedUploadRequestDto$ {
   export const outboundSchema = UnifiedUploadRequestDto$outboundSchema;
   /** @deprecated use `UnifiedUploadRequestDto$Outbound` instead. */
   export type Outbound = UnifiedUploadRequestDto$Outbound;
+}
+
+export function unifiedUploadRequestDtoToJSON(
+  unifiedUploadRequestDto: UnifiedUploadRequestDto,
+): string {
+  return JSON.stringify(
+    UnifiedUploadRequestDto$outboundSchema.parse(unifiedUploadRequestDto),
+  );
+}
+
+export function unifiedUploadRequestDtoFromJSON(
+  jsonString: string,
+): SafeParseResult<UnifiedUploadRequestDto, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => UnifiedUploadRequestDto$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'UnifiedUploadRequestDto' from JSON`,
+  );
 }

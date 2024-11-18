@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type CrmUpdateContactRequest = {
@@ -86,6 +89,24 @@ export namespace CrmUpdateContactRequest$ {
   export type Outbound = CrmUpdateContactRequest$Outbound;
 }
 
+export function crmUpdateContactRequestToJSON(
+  crmUpdateContactRequest: CrmUpdateContactRequest,
+): string {
+  return JSON.stringify(
+    CrmUpdateContactRequest$outboundSchema.parse(crmUpdateContactRequest),
+  );
+}
+
+export function crmUpdateContactRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<CrmUpdateContactRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CrmUpdateContactRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CrmUpdateContactRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const CrmUpdateContactResponse$inboundSchema: z.ZodType<
   CrmUpdateContactResponse,
@@ -145,4 +166,22 @@ export namespace CrmUpdateContactResponse$ {
   export const outboundSchema = CrmUpdateContactResponse$outboundSchema;
   /** @deprecated use `CrmUpdateContactResponse$Outbound` instead. */
   export type Outbound = CrmUpdateContactResponse$Outbound;
+}
+
+export function crmUpdateContactResponseToJSON(
+  crmUpdateContactResponse: CrmUpdateContactResponse,
+): string {
+  return JSON.stringify(
+    CrmUpdateContactResponse$outboundSchema.parse(crmUpdateContactResponse),
+  );
+}
+
+export function crmUpdateContactResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<CrmUpdateContactResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CrmUpdateContactResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CrmUpdateContactResponse' from JSON`,
+  );
 }

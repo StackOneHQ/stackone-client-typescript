@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   CustomFields,
   CustomFields$inboundSchema,
@@ -183,4 +186,18 @@ export namespace Contact$ {
   export const outboundSchema = Contact$outboundSchema;
   /** @deprecated use `Contact$Outbound` instead. */
   export type Outbound = Contact$Outbound;
+}
+
+export function contactToJSON(contact: Contact): string {
+  return JSON.stringify(Contact$outboundSchema.parse(contact));
+}
+
+export function contactFromJSON(
+  jsonString: string,
+): SafeParseResult<Contact, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Contact$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Contact' from JSON`,
+  );
 }

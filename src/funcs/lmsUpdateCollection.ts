@@ -78,6 +78,9 @@ export async function lmsUpdateCollection(
   const context = {
     operationID: "lms_update_collection",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.security,
     retryConfig: options?.retries
       || client._options.retryConfig

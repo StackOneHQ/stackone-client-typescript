@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type HrisGetEmployeeDocumentCategoryRequest = {
@@ -103,6 +106,28 @@ export namespace HrisGetEmployeeDocumentCategoryRequest$ {
   export type Outbound = HrisGetEmployeeDocumentCategoryRequest$Outbound;
 }
 
+export function hrisGetEmployeeDocumentCategoryRequestToJSON(
+  hrisGetEmployeeDocumentCategoryRequest:
+    HrisGetEmployeeDocumentCategoryRequest,
+): string {
+  return JSON.stringify(
+    HrisGetEmployeeDocumentCategoryRequest$outboundSchema.parse(
+      hrisGetEmployeeDocumentCategoryRequest,
+    ),
+  );
+}
+
+export function hrisGetEmployeeDocumentCategoryRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<HrisGetEmployeeDocumentCategoryRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      HrisGetEmployeeDocumentCategoryRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HrisGetEmployeeDocumentCategoryRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const HrisGetEmployeeDocumentCategoryResponse$inboundSchema: z.ZodType<
   HrisGetEmployeeDocumentCategoryResponse,
@@ -164,4 +189,31 @@ export namespace HrisGetEmployeeDocumentCategoryResponse$ {
     HrisGetEmployeeDocumentCategoryResponse$outboundSchema;
   /** @deprecated use `HrisGetEmployeeDocumentCategoryResponse$Outbound` instead. */
   export type Outbound = HrisGetEmployeeDocumentCategoryResponse$Outbound;
+}
+
+export function hrisGetEmployeeDocumentCategoryResponseToJSON(
+  hrisGetEmployeeDocumentCategoryResponse:
+    HrisGetEmployeeDocumentCategoryResponse,
+): string {
+  return JSON.stringify(
+    HrisGetEmployeeDocumentCategoryResponse$outboundSchema.parse(
+      hrisGetEmployeeDocumentCategoryResponse,
+    ),
+  );
+}
+
+export function hrisGetEmployeeDocumentCategoryResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  HrisGetEmployeeDocumentCategoryResponse,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      HrisGetEmployeeDocumentCategoryResponse$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'HrisGetEmployeeDocumentCategoryResponse' from JSON`,
+  );
 }

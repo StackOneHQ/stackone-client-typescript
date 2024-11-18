@@ -88,6 +88,9 @@ export async function iamListGroups(
   const context = {
     operationID: "iam_list_groups",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.security,
     retryConfig: options?.retries
       || client._options.retryConfig

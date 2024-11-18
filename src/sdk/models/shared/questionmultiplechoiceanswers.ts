@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type QuestionMultipleChoiceAnswers = {
   /**
@@ -65,4 +68,24 @@ export namespace QuestionMultipleChoiceAnswers$ {
   export const outboundSchema = QuestionMultipleChoiceAnswers$outboundSchema;
   /** @deprecated use `QuestionMultipleChoiceAnswers$Outbound` instead. */
   export type Outbound = QuestionMultipleChoiceAnswers$Outbound;
+}
+
+export function questionMultipleChoiceAnswersToJSON(
+  questionMultipleChoiceAnswers: QuestionMultipleChoiceAnswers,
+): string {
+  return JSON.stringify(
+    QuestionMultipleChoiceAnswers$outboundSchema.parse(
+      questionMultipleChoiceAnswers,
+    ),
+  );
+}
+
+export function questionMultipleChoiceAnswersFromJSON(
+  jsonString: string,
+): SafeParseResult<QuestionMultipleChoiceAnswers, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => QuestionMultipleChoiceAnswers$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'QuestionMultipleChoiceAnswers' from JSON`,
+  );
 }

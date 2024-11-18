@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   RawResponse,
   RawResponse$inboundSchema,
@@ -58,4 +61,22 @@ export namespace ScheduledInterviewsResult$ {
   export const outboundSchema = ScheduledInterviewsResult$outboundSchema;
   /** @deprecated use `ScheduledInterviewsResult$Outbound` instead. */
   export type Outbound = ScheduledInterviewsResult$Outbound;
+}
+
+export function scheduledInterviewsResultToJSON(
+  scheduledInterviewsResult: ScheduledInterviewsResult,
+): string {
+  return JSON.stringify(
+    ScheduledInterviewsResult$outboundSchema.parse(scheduledInterviewsResult),
+  );
+}
+
+export function scheduledInterviewsResultFromJSON(
+  jsonString: string,
+): SafeParseResult<ScheduledInterviewsResult, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ScheduledInterviewsResult$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ScheduledInterviewsResult' from JSON`,
+  );
 }

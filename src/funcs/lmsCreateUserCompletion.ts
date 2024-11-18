@@ -78,6 +78,9 @@ export async function lmsCreateUserCompletion(
   const context = {
     operationID: "lms_create_user_completion",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.security,
     retryConfig: options?.retries
       || client._options.retryConfig

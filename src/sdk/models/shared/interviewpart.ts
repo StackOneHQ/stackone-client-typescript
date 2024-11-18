@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type InterviewPart4 = {};
 
@@ -139,6 +142,20 @@ export namespace InterviewPart4$ {
   export type Outbound = InterviewPart4$Outbound;
 }
 
+export function interviewPart4ToJSON(interviewPart4: InterviewPart4): string {
+  return JSON.stringify(InterviewPart4$outboundSchema.parse(interviewPart4));
+}
+
+export function interviewPart4FromJSON(
+  jsonString: string,
+): SafeParseResult<InterviewPart4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => InterviewPart4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'InterviewPart4' from JSON`,
+  );
+}
+
 /** @internal */
 export const InterviewPartSourceValue$inboundSchema: z.ZodType<
   InterviewPartSourceValue,
@@ -184,6 +201,24 @@ export namespace InterviewPartSourceValue$ {
   export const outboundSchema = InterviewPartSourceValue$outboundSchema;
   /** @deprecated use `InterviewPartSourceValue$Outbound` instead. */
   export type Outbound = InterviewPartSourceValue$Outbound;
+}
+
+export function interviewPartSourceValueToJSON(
+  interviewPartSourceValue: InterviewPartSourceValue,
+): string {
+  return JSON.stringify(
+    InterviewPartSourceValue$outboundSchema.parse(interviewPartSourceValue),
+  );
+}
+
+export function interviewPartSourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<InterviewPartSourceValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => InterviewPartSourceValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'InterviewPartSourceValue' from JSON`,
+  );
 }
 
 /** @internal */
@@ -288,6 +323,24 @@ export namespace InterviewPartType$ {
   export type Outbound = InterviewPartType$Outbound;
 }
 
+export function interviewPartTypeToJSON(
+  interviewPartType: InterviewPartType,
+): string {
+  return JSON.stringify(
+    InterviewPartType$outboundSchema.parse(interviewPartType),
+  );
+}
+
+export function interviewPartTypeFromJSON(
+  jsonString: string,
+): SafeParseResult<InterviewPartType, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => InterviewPartType$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'InterviewPartType' from JSON`,
+  );
+}
+
 /** @internal */
 export const InterviewPart$inboundSchema: z.ZodType<
   InterviewPart,
@@ -387,4 +440,18 @@ export namespace InterviewPart$ {
   export const outboundSchema = InterviewPart$outboundSchema;
   /** @deprecated use `InterviewPart$Outbound` instead. */
   export type Outbound = InterviewPart$Outbound;
+}
+
+export function interviewPartToJSON(interviewPart: InterviewPart): string {
+  return JSON.stringify(InterviewPart$outboundSchema.parse(interviewPart));
+}
+
+export function interviewPartFromJSON(
+  jsonString: string,
+): SafeParseResult<InterviewPart, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => InterviewPart$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'InterviewPart' from JSON`,
+  );
 }

@@ -89,6 +89,9 @@ export async function atsListInterviewStages(
   const context = {
     operationID: "ats_list_interview_stages",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.security,
     retryConfig: options?.retries
       || client._options.retryConfig

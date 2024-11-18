@@ -70,6 +70,9 @@ export async function atsCreateCandidate(
   const context = {
     operationID: "ats_create_candidate",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.security,
     retryConfig: options?.retries
       || client._options.retryConfig

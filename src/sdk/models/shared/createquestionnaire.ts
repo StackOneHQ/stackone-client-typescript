@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   CreateAnswer,
   CreateAnswer$inboundSchema,
@@ -55,4 +58,22 @@ export namespace CreateQuestionnaire$ {
   export const outboundSchema = CreateQuestionnaire$outboundSchema;
   /** @deprecated use `CreateQuestionnaire$Outbound` instead. */
   export type Outbound = CreateQuestionnaire$Outbound;
+}
+
+export function createQuestionnaireToJSON(
+  createQuestionnaire: CreateQuestionnaire,
+): string {
+  return JSON.stringify(
+    CreateQuestionnaire$outboundSchema.parse(createQuestionnaire),
+  );
+}
+
+export function createQuestionnaireFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateQuestionnaire, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateQuestionnaire$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateQuestionnaire' from JSON`,
+  );
 }

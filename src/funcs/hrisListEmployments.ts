@@ -89,6 +89,9 @@ export async function hrisListEmployments(
   const context = {
     operationID: "hris_list_employments",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.security,
     retryConfig: options?.retries
       || client._options.retryConfig

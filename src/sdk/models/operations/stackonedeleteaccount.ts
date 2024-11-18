@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type StackoneDeleteAccountRequest = {
@@ -65,6 +68,26 @@ export namespace StackoneDeleteAccountRequest$ {
   export type Outbound = StackoneDeleteAccountRequest$Outbound;
 }
 
+export function stackoneDeleteAccountRequestToJSON(
+  stackoneDeleteAccountRequest: StackoneDeleteAccountRequest,
+): string {
+  return JSON.stringify(
+    StackoneDeleteAccountRequest$outboundSchema.parse(
+      stackoneDeleteAccountRequest,
+    ),
+  );
+}
+
+export function stackoneDeleteAccountRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<StackoneDeleteAccountRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => StackoneDeleteAccountRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'StackoneDeleteAccountRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const StackoneDeleteAccountResponse$inboundSchema: z.ZodType<
   StackoneDeleteAccountResponse,
@@ -124,4 +147,24 @@ export namespace StackoneDeleteAccountResponse$ {
   export const outboundSchema = StackoneDeleteAccountResponse$outboundSchema;
   /** @deprecated use `StackoneDeleteAccountResponse$Outbound` instead. */
   export type Outbound = StackoneDeleteAccountResponse$Outbound;
+}
+
+export function stackoneDeleteAccountResponseToJSON(
+  stackoneDeleteAccountResponse: StackoneDeleteAccountResponse,
+): string {
+  return JSON.stringify(
+    StackoneDeleteAccountResponse$outboundSchema.parse(
+      stackoneDeleteAccountResponse,
+    ),
+  );
+}
+
+export function stackoneDeleteAccountResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<StackoneDeleteAccountResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => StackoneDeleteAccountResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'StackoneDeleteAccountResponse' from JSON`,
+  );
 }

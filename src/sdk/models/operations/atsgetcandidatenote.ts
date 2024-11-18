@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type AtsGetCandidateNoteRequest = {
@@ -105,6 +108,24 @@ export namespace AtsGetCandidateNoteRequest$ {
   export type Outbound = AtsGetCandidateNoteRequest$Outbound;
 }
 
+export function atsGetCandidateNoteRequestToJSON(
+  atsGetCandidateNoteRequest: AtsGetCandidateNoteRequest,
+): string {
+  return JSON.stringify(
+    AtsGetCandidateNoteRequest$outboundSchema.parse(atsGetCandidateNoteRequest),
+  );
+}
+
+export function atsGetCandidateNoteRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<AtsGetCandidateNoteRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AtsGetCandidateNoteRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AtsGetCandidateNoteRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const AtsGetCandidateNoteResponse$inboundSchema: z.ZodType<
   AtsGetCandidateNoteResponse,
@@ -164,4 +185,24 @@ export namespace AtsGetCandidateNoteResponse$ {
   export const outboundSchema = AtsGetCandidateNoteResponse$outboundSchema;
   /** @deprecated use `AtsGetCandidateNoteResponse$Outbound` instead. */
   export type Outbound = AtsGetCandidateNoteResponse$Outbound;
+}
+
+export function atsGetCandidateNoteResponseToJSON(
+  atsGetCandidateNoteResponse: AtsGetCandidateNoteResponse,
+): string {
+  return JSON.stringify(
+    AtsGetCandidateNoteResponse$outboundSchema.parse(
+      atsGetCandidateNoteResponse,
+    ),
+  );
+}
+
+export function atsGetCandidateNoteResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<AtsGetCandidateNoteResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AtsGetCandidateNoteResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AtsGetCandidateNoteResponse' from JSON`,
+  );
 }

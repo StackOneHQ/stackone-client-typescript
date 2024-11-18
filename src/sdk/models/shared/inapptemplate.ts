@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   InAppMessages,
   InAppMessages$inboundSchema,
@@ -79,4 +82,18 @@ export namespace InAppTemplate$ {
   export const outboundSchema = InAppTemplate$outboundSchema;
   /** @deprecated use `InAppTemplate$Outbound` instead. */
   export type Outbound = InAppTemplate$Outbound;
+}
+
+export function inAppTemplateToJSON(inAppTemplate: InAppTemplate): string {
+  return JSON.stringify(InAppTemplate$outboundSchema.parse(inAppTemplate));
+}
+
+export function inAppTemplateFromJSON(
+  jsonString: string,
+): SafeParseResult<InAppTemplate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => InAppTemplate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'InAppTemplate' from JSON`,
+  );
 }

@@ -84,6 +84,9 @@ export async function marketingUpdateOmniChannelTemplate(
   const context = {
     operationID: "marketing_update_omni_channel_template",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.security,
     retryConfig: options?.retries
       || client._options.retryConfig

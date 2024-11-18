@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   Content,
   Content$inboundSchema,
@@ -45,7 +48,7 @@ export type HrisCreateWorkEligibilityRequestDtoCategory = {
 
 export type HrisCreateWorkEligibilityRequestDtoSchemasDocumentFileFormat4 = {};
 
-export type HrisCreateWorkEligibilityRequestDtoSchemasSourceValue =
+export type HrisCreateWorkEligibilityRequestDtoSchemasDocumentFileFormatSourceValue =
   | HrisCreateWorkEligibilityRequestDtoSchemasDocumentFileFormat4
   | string
   | number
@@ -1634,7 +1637,7 @@ export type IssuedBy = {
 
 export type HrisCreateWorkEligibilityRequestDtoSchemas4 = {};
 
-export type SourceType =
+export type HrisCreateWorkEligibilityRequestDtoSchemasSourceValue =
   | HrisCreateWorkEligibilityRequestDtoSchemas4
   | string
   | number
@@ -1653,7 +1656,7 @@ export type HrisCreateWorkEligibilityRequestDtoSchemasValueOpen = OpenEnum<
 >;
 
 export type HrisCreateWorkEligibilityRequestDtoType = {
-  sourceType?:
+  sourceValue?:
     | HrisCreateWorkEligibilityRequestDtoSchemas4
     | string
     | number
@@ -1719,6 +1722,33 @@ export namespace HrisCreateWorkEligibilityRequestDtoSchemasDocument4$ {
     HrisCreateWorkEligibilityRequestDtoSchemasDocument4$Outbound;
 }
 
+export function hrisCreateWorkEligibilityRequestDtoSchemasDocument4ToJSON(
+  hrisCreateWorkEligibilityRequestDtoSchemasDocument4:
+    HrisCreateWorkEligibilityRequestDtoSchemasDocument4,
+): string {
+  return JSON.stringify(
+    HrisCreateWorkEligibilityRequestDtoSchemasDocument4$outboundSchema.parse(
+      hrisCreateWorkEligibilityRequestDtoSchemasDocument4,
+    ),
+  );
+}
+
+export function hrisCreateWorkEligibilityRequestDtoSchemasDocument4FromJSON(
+  jsonString: string,
+): SafeParseResult<
+  HrisCreateWorkEligibilityRequestDtoSchemasDocument4,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      HrisCreateWorkEligibilityRequestDtoSchemasDocument4$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'HrisCreateWorkEligibilityRequestDtoSchemasDocument4' from JSON`,
+  );
+}
+
 /** @internal */
 export const HrisCreateWorkEligibilityRequestDtoSchemasDocumentSourceValue$inboundSchema:
   z.ZodType<
@@ -1773,6 +1803,31 @@ export namespace HrisCreateWorkEligibilityRequestDtoSchemasDocumentSourceValue$ 
   /** @deprecated use `HrisCreateWorkEligibilityRequestDtoSchemasDocumentSourceValue$Outbound` instead. */
   export type Outbound =
     HrisCreateWorkEligibilityRequestDtoSchemasDocumentSourceValue$Outbound;
+}
+
+export function hrisCreateWorkEligibilityRequestDtoSchemasDocumentSourceValueToJSON(
+  hrisCreateWorkEligibilityRequestDtoSchemasDocumentSourceValue:
+    HrisCreateWorkEligibilityRequestDtoSchemasDocumentSourceValue,
+): string {
+  return JSON.stringify(
+    HrisCreateWorkEligibilityRequestDtoSchemasDocumentSourceValue$outboundSchema
+      .parse(hrisCreateWorkEligibilityRequestDtoSchemasDocumentSourceValue),
+  );
+}
+
+export function hrisCreateWorkEligibilityRequestDtoSchemasDocumentSourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  HrisCreateWorkEligibilityRequestDtoSchemasDocumentSourceValue,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      HrisCreateWorkEligibilityRequestDtoSchemasDocumentSourceValue$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'HrisCreateWorkEligibilityRequestDtoSchemasDocumentSourceValue' from JSON`,
+  );
 }
 
 /** @internal */
@@ -1853,6 +1908,33 @@ export namespace HrisCreateWorkEligibilityRequestDtoCategory$ {
   export type Outbound = HrisCreateWorkEligibilityRequestDtoCategory$Outbound;
 }
 
+export function hrisCreateWorkEligibilityRequestDtoCategoryToJSON(
+  hrisCreateWorkEligibilityRequestDtoCategory:
+    HrisCreateWorkEligibilityRequestDtoCategory,
+): string {
+  return JSON.stringify(
+    HrisCreateWorkEligibilityRequestDtoCategory$outboundSchema.parse(
+      hrisCreateWorkEligibilityRequestDtoCategory,
+    ),
+  );
+}
+
+export function hrisCreateWorkEligibilityRequestDtoCategoryFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  HrisCreateWorkEligibilityRequestDtoCategory,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      HrisCreateWorkEligibilityRequestDtoCategory$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'HrisCreateWorkEligibilityRequestDtoCategory' from JSON`,
+  );
+}
+
 /** @internal */
 export const HrisCreateWorkEligibilityRequestDtoSchemasDocumentFileFormat4$inboundSchema:
   z.ZodType<
@@ -1889,10 +1971,35 @@ export namespace HrisCreateWorkEligibilityRequestDtoSchemasDocumentFileFormat4$ 
     HrisCreateWorkEligibilityRequestDtoSchemasDocumentFileFormat4$Outbound;
 }
 
+export function hrisCreateWorkEligibilityRequestDtoSchemasDocumentFileFormat4ToJSON(
+  hrisCreateWorkEligibilityRequestDtoSchemasDocumentFileFormat4:
+    HrisCreateWorkEligibilityRequestDtoSchemasDocumentFileFormat4,
+): string {
+  return JSON.stringify(
+    HrisCreateWorkEligibilityRequestDtoSchemasDocumentFileFormat4$outboundSchema
+      .parse(hrisCreateWorkEligibilityRequestDtoSchemasDocumentFileFormat4),
+  );
+}
+
+export function hrisCreateWorkEligibilityRequestDtoSchemasDocumentFileFormat4FromJSON(
+  jsonString: string,
+): SafeParseResult<
+  HrisCreateWorkEligibilityRequestDtoSchemasDocumentFileFormat4,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      HrisCreateWorkEligibilityRequestDtoSchemasDocumentFileFormat4$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'HrisCreateWorkEligibilityRequestDtoSchemasDocumentFileFormat4' from JSON`,
+  );
+}
+
 /** @internal */
-export const HrisCreateWorkEligibilityRequestDtoSchemasSourceValue$inboundSchema:
+export const HrisCreateWorkEligibilityRequestDtoSchemasDocumentFileFormatSourceValue$inboundSchema:
   z.ZodType<
-    HrisCreateWorkEligibilityRequestDtoSchemasSourceValue,
+    HrisCreateWorkEligibilityRequestDtoSchemasDocumentFileFormatSourceValue,
     z.ZodTypeDef,
     unknown
   > = z.union([
@@ -1906,7 +2013,7 @@ export const HrisCreateWorkEligibilityRequestDtoSchemasSourceValue$inboundSchema
   ]);
 
 /** @internal */
-export type HrisCreateWorkEligibilityRequestDtoSchemasSourceValue$Outbound =
+export type HrisCreateWorkEligibilityRequestDtoSchemasDocumentFileFormatSourceValue$Outbound =
   | HrisCreateWorkEligibilityRequestDtoSchemasDocumentFileFormat4$Outbound
   | string
   | number
@@ -1914,11 +2021,11 @@ export type HrisCreateWorkEligibilityRequestDtoSchemasSourceValue$Outbound =
   | Array<any>;
 
 /** @internal */
-export const HrisCreateWorkEligibilityRequestDtoSchemasSourceValue$outboundSchema:
+export const HrisCreateWorkEligibilityRequestDtoSchemasDocumentFileFormatSourceValue$outboundSchema:
   z.ZodType<
-    HrisCreateWorkEligibilityRequestDtoSchemasSourceValue$Outbound,
+    HrisCreateWorkEligibilityRequestDtoSchemasDocumentFileFormatSourceValue$Outbound,
     z.ZodTypeDef,
-    HrisCreateWorkEligibilityRequestDtoSchemasSourceValue
+    HrisCreateWorkEligibilityRequestDtoSchemasDocumentFileFormatSourceValue
   > = z.union([
     z.lazy(() =>
       HrisCreateWorkEligibilityRequestDtoSchemasDocumentFileFormat4$outboundSchema
@@ -1933,16 +2040,43 @@ export const HrisCreateWorkEligibilityRequestDtoSchemasSourceValue$outboundSchem
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace HrisCreateWorkEligibilityRequestDtoSchemasSourceValue$ {
-  /** @deprecated use `HrisCreateWorkEligibilityRequestDtoSchemasSourceValue$inboundSchema` instead. */
+export namespace HrisCreateWorkEligibilityRequestDtoSchemasDocumentFileFormatSourceValue$ {
+  /** @deprecated use `HrisCreateWorkEligibilityRequestDtoSchemasDocumentFileFormatSourceValue$inboundSchema` instead. */
   export const inboundSchema =
-    HrisCreateWorkEligibilityRequestDtoSchemasSourceValue$inboundSchema;
-  /** @deprecated use `HrisCreateWorkEligibilityRequestDtoSchemasSourceValue$outboundSchema` instead. */
+    HrisCreateWorkEligibilityRequestDtoSchemasDocumentFileFormatSourceValue$inboundSchema;
+  /** @deprecated use `HrisCreateWorkEligibilityRequestDtoSchemasDocumentFileFormatSourceValue$outboundSchema` instead. */
   export const outboundSchema =
-    HrisCreateWorkEligibilityRequestDtoSchemasSourceValue$outboundSchema;
-  /** @deprecated use `HrisCreateWorkEligibilityRequestDtoSchemasSourceValue$Outbound` instead. */
+    HrisCreateWorkEligibilityRequestDtoSchemasDocumentFileFormatSourceValue$outboundSchema;
+  /** @deprecated use `HrisCreateWorkEligibilityRequestDtoSchemasDocumentFileFormatSourceValue$Outbound` instead. */
   export type Outbound =
-    HrisCreateWorkEligibilityRequestDtoSchemasSourceValue$Outbound;
+    HrisCreateWorkEligibilityRequestDtoSchemasDocumentFileFormatSourceValue$Outbound;
+}
+
+export function hrisCreateWorkEligibilityRequestDtoSchemasDocumentFileFormatSourceValueToJSON(
+  hrisCreateWorkEligibilityRequestDtoSchemasDocumentFileFormatSourceValue:
+    HrisCreateWorkEligibilityRequestDtoSchemasDocumentFileFormatSourceValue,
+): string {
+  return JSON.stringify(
+    HrisCreateWorkEligibilityRequestDtoSchemasDocumentFileFormatSourceValue$outboundSchema
+      .parse(
+        hrisCreateWorkEligibilityRequestDtoSchemasDocumentFileFormatSourceValue,
+      ),
+  );
+}
+
+export function hrisCreateWorkEligibilityRequestDtoSchemasDocumentFileFormatSourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  HrisCreateWorkEligibilityRequestDtoSchemasDocumentFileFormatSourceValue,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      HrisCreateWorkEligibilityRequestDtoSchemasDocumentFileFormatSourceValue$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'HrisCreateWorkEligibilityRequestDtoSchemasDocumentFileFormatSourceValue' from JSON`,
+  );
 }
 
 /** @internal */
@@ -2063,6 +2197,33 @@ export namespace HrisCreateWorkEligibilityRequestDtoFileFormat$ {
   export type Outbound = HrisCreateWorkEligibilityRequestDtoFileFormat$Outbound;
 }
 
+export function hrisCreateWorkEligibilityRequestDtoFileFormatToJSON(
+  hrisCreateWorkEligibilityRequestDtoFileFormat:
+    HrisCreateWorkEligibilityRequestDtoFileFormat,
+): string {
+  return JSON.stringify(
+    HrisCreateWorkEligibilityRequestDtoFileFormat$outboundSchema.parse(
+      hrisCreateWorkEligibilityRequestDtoFileFormat,
+    ),
+  );
+}
+
+export function hrisCreateWorkEligibilityRequestDtoFileFormatFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  HrisCreateWorkEligibilityRequestDtoFileFormat,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      HrisCreateWorkEligibilityRequestDtoFileFormat$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'HrisCreateWorkEligibilityRequestDtoFileFormat' from JSON`,
+  );
+}
+
 /** @internal */
 export const Document$inboundSchema: z.ZodType<
   Document,
@@ -2165,6 +2326,20 @@ export namespace Document$ {
   export type Outbound = Document$Outbound;
 }
 
+export function documentToJSON(document: Document): string {
+  return JSON.stringify(Document$outboundSchema.parse(document));
+}
+
+export function documentFromJSON(
+  jsonString: string,
+): SafeParseResult<Document, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Document$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Document' from JSON`,
+  );
+}
+
 /** @internal */
 export const HrisCreateWorkEligibilityRequestDto4$inboundSchema: z.ZodType<
   HrisCreateWorkEligibilityRequestDto4,
@@ -2195,6 +2370,27 @@ export namespace HrisCreateWorkEligibilityRequestDto4$ {
     HrisCreateWorkEligibilityRequestDto4$outboundSchema;
   /** @deprecated use `HrisCreateWorkEligibilityRequestDto4$Outbound` instead. */
   export type Outbound = HrisCreateWorkEligibilityRequestDto4$Outbound;
+}
+
+export function hrisCreateWorkEligibilityRequestDto4ToJSON(
+  hrisCreateWorkEligibilityRequestDto4: HrisCreateWorkEligibilityRequestDto4,
+): string {
+  return JSON.stringify(
+    HrisCreateWorkEligibilityRequestDto4$outboundSchema.parse(
+      hrisCreateWorkEligibilityRequestDto4,
+    ),
+  );
+}
+
+export function hrisCreateWorkEligibilityRequestDto4FromJSON(
+  jsonString: string,
+): SafeParseResult<HrisCreateWorkEligibilityRequestDto4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      HrisCreateWorkEligibilityRequestDto4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HrisCreateWorkEligibilityRequestDto4' from JSON`,
+  );
 }
 
 /** @internal */
@@ -2247,6 +2443,33 @@ export namespace HrisCreateWorkEligibilityRequestDtoSourceValue$ {
   /** @deprecated use `HrisCreateWorkEligibilityRequestDtoSourceValue$Outbound` instead. */
   export type Outbound =
     HrisCreateWorkEligibilityRequestDtoSourceValue$Outbound;
+}
+
+export function hrisCreateWorkEligibilityRequestDtoSourceValueToJSON(
+  hrisCreateWorkEligibilityRequestDtoSourceValue:
+    HrisCreateWorkEligibilityRequestDtoSourceValue,
+): string {
+  return JSON.stringify(
+    HrisCreateWorkEligibilityRequestDtoSourceValue$outboundSchema.parse(
+      hrisCreateWorkEligibilityRequestDtoSourceValue,
+    ),
+  );
+}
+
+export function hrisCreateWorkEligibilityRequestDtoSourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  HrisCreateWorkEligibilityRequestDtoSourceValue,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      HrisCreateWorkEligibilityRequestDtoSourceValue$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'HrisCreateWorkEligibilityRequestDtoSourceValue' from JSON`,
+  );
 }
 
 /** @internal */
@@ -2355,6 +2578,20 @@ export namespace IssuedBy$ {
   export type Outbound = IssuedBy$Outbound;
 }
 
+export function issuedByToJSON(issuedBy: IssuedBy): string {
+  return JSON.stringify(IssuedBy$outboundSchema.parse(issuedBy));
+}
+
+export function issuedByFromJSON(
+  jsonString: string,
+): SafeParseResult<IssuedBy, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => IssuedBy$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'IssuedBy' from JSON`,
+  );
+}
+
 /** @internal */
 export const HrisCreateWorkEligibilityRequestDtoSchemas4$inboundSchema:
   z.ZodType<
@@ -2389,21 +2626,49 @@ export namespace HrisCreateWorkEligibilityRequestDtoSchemas4$ {
   export type Outbound = HrisCreateWorkEligibilityRequestDtoSchemas4$Outbound;
 }
 
-/** @internal */
-export const SourceType$inboundSchema: z.ZodType<
-  SourceType,
-  z.ZodTypeDef,
-  unknown
-> = z.union([
-  z.lazy(() => HrisCreateWorkEligibilityRequestDtoSchemas4$inboundSchema),
-  z.string(),
-  z.number(),
-  z.boolean(),
-  z.array(z.any()),
-]);
+export function hrisCreateWorkEligibilityRequestDtoSchemas4ToJSON(
+  hrisCreateWorkEligibilityRequestDtoSchemas4:
+    HrisCreateWorkEligibilityRequestDtoSchemas4,
+): string {
+  return JSON.stringify(
+    HrisCreateWorkEligibilityRequestDtoSchemas4$outboundSchema.parse(
+      hrisCreateWorkEligibilityRequestDtoSchemas4,
+    ),
+  );
+}
+
+export function hrisCreateWorkEligibilityRequestDtoSchemas4FromJSON(
+  jsonString: string,
+): SafeParseResult<
+  HrisCreateWorkEligibilityRequestDtoSchemas4,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      HrisCreateWorkEligibilityRequestDtoSchemas4$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'HrisCreateWorkEligibilityRequestDtoSchemas4' from JSON`,
+  );
+}
 
 /** @internal */
-export type SourceType$Outbound =
+export const HrisCreateWorkEligibilityRequestDtoSchemasSourceValue$inboundSchema:
+  z.ZodType<
+    HrisCreateWorkEligibilityRequestDtoSchemasSourceValue,
+    z.ZodTypeDef,
+    unknown
+  > = z.union([
+    z.lazy(() => HrisCreateWorkEligibilityRequestDtoSchemas4$inboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+    z.array(z.any()),
+  ]);
+
+/** @internal */
+export type HrisCreateWorkEligibilityRequestDtoSchemasSourceValue$Outbound =
   | HrisCreateWorkEligibilityRequestDtoSchemas4$Outbound
   | string
   | number
@@ -2411,29 +2676,60 @@ export type SourceType$Outbound =
   | Array<any>;
 
 /** @internal */
-export const SourceType$outboundSchema: z.ZodType<
-  SourceType$Outbound,
-  z.ZodTypeDef,
-  SourceType
-> = z.union([
-  z.lazy(() => HrisCreateWorkEligibilityRequestDtoSchemas4$outboundSchema),
-  z.string(),
-  z.number(),
-  z.boolean(),
-  z.array(z.any()),
-]);
+export const HrisCreateWorkEligibilityRequestDtoSchemasSourceValue$outboundSchema:
+  z.ZodType<
+    HrisCreateWorkEligibilityRequestDtoSchemasSourceValue$Outbound,
+    z.ZodTypeDef,
+    HrisCreateWorkEligibilityRequestDtoSchemasSourceValue
+  > = z.union([
+    z.lazy(() => HrisCreateWorkEligibilityRequestDtoSchemas4$outboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+    z.array(z.any()),
+  ]);
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace SourceType$ {
-  /** @deprecated use `SourceType$inboundSchema` instead. */
-  export const inboundSchema = SourceType$inboundSchema;
-  /** @deprecated use `SourceType$outboundSchema` instead. */
-  export const outboundSchema = SourceType$outboundSchema;
-  /** @deprecated use `SourceType$Outbound` instead. */
-  export type Outbound = SourceType$Outbound;
+export namespace HrisCreateWorkEligibilityRequestDtoSchemasSourceValue$ {
+  /** @deprecated use `HrisCreateWorkEligibilityRequestDtoSchemasSourceValue$inboundSchema` instead. */
+  export const inboundSchema =
+    HrisCreateWorkEligibilityRequestDtoSchemasSourceValue$inboundSchema;
+  /** @deprecated use `HrisCreateWorkEligibilityRequestDtoSchemasSourceValue$outboundSchema` instead. */
+  export const outboundSchema =
+    HrisCreateWorkEligibilityRequestDtoSchemasSourceValue$outboundSchema;
+  /** @deprecated use `HrisCreateWorkEligibilityRequestDtoSchemasSourceValue$Outbound` instead. */
+  export type Outbound =
+    HrisCreateWorkEligibilityRequestDtoSchemasSourceValue$Outbound;
+}
+
+export function hrisCreateWorkEligibilityRequestDtoSchemasSourceValueToJSON(
+  hrisCreateWorkEligibilityRequestDtoSchemasSourceValue:
+    HrisCreateWorkEligibilityRequestDtoSchemasSourceValue,
+): string {
+  return JSON.stringify(
+    HrisCreateWorkEligibilityRequestDtoSchemasSourceValue$outboundSchema.parse(
+      hrisCreateWorkEligibilityRequestDtoSchemasSourceValue,
+    ),
+  );
+}
+
+export function hrisCreateWorkEligibilityRequestDtoSchemasSourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  HrisCreateWorkEligibilityRequestDtoSchemasSourceValue,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      HrisCreateWorkEligibilityRequestDtoSchemasSourceValue$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'HrisCreateWorkEligibilityRequestDtoSchemasSourceValue' from JSON`,
+  );
 }
 
 /** @internal */
@@ -2478,7 +2774,7 @@ export const HrisCreateWorkEligibilityRequestDtoType$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  source_type: z.nullable(
+  source_value: z.nullable(
     z.union([
       z.lazy(() => HrisCreateWorkEligibilityRequestDtoSchemas4$inboundSchema),
       z.string(),
@@ -2492,13 +2788,13 @@ export const HrisCreateWorkEligibilityRequestDtoType$inboundSchema: z.ZodType<
   ).optional(),
 }).transform((v) => {
   return remap$(v, {
-    "source_type": "sourceType",
+    "source_value": "sourceValue",
   });
 });
 
 /** @internal */
 export type HrisCreateWorkEligibilityRequestDtoType$Outbound = {
-  source_type?:
+  source_value?:
     | HrisCreateWorkEligibilityRequestDtoSchemas4$Outbound
     | string
     | number
@@ -2515,7 +2811,7 @@ export const HrisCreateWorkEligibilityRequestDtoType$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   HrisCreateWorkEligibilityRequestDtoType
 > = z.object({
-  sourceType: z.nullable(
+  sourceValue: z.nullable(
     z.union([
       z.lazy(() => HrisCreateWorkEligibilityRequestDtoSchemas4$outboundSchema),
       z.string(),
@@ -2529,7 +2825,7 @@ export const HrisCreateWorkEligibilityRequestDtoType$outboundSchema: z.ZodType<
   ).optional(),
 }).transform((v) => {
   return remap$(v, {
-    sourceType: "source_type",
+    sourceValue: "source_value",
   });
 });
 
@@ -2546,6 +2842,33 @@ export namespace HrisCreateWorkEligibilityRequestDtoType$ {
     HrisCreateWorkEligibilityRequestDtoType$outboundSchema;
   /** @deprecated use `HrisCreateWorkEligibilityRequestDtoType$Outbound` instead. */
   export type Outbound = HrisCreateWorkEligibilityRequestDtoType$Outbound;
+}
+
+export function hrisCreateWorkEligibilityRequestDtoTypeToJSON(
+  hrisCreateWorkEligibilityRequestDtoType:
+    HrisCreateWorkEligibilityRequestDtoType,
+): string {
+  return JSON.stringify(
+    HrisCreateWorkEligibilityRequestDtoType$outboundSchema.parse(
+      hrisCreateWorkEligibilityRequestDtoType,
+    ),
+  );
+}
+
+export function hrisCreateWorkEligibilityRequestDtoTypeFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  HrisCreateWorkEligibilityRequestDtoType,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      HrisCreateWorkEligibilityRequestDtoType$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'HrisCreateWorkEligibilityRequestDtoType' from JSON`,
+  );
 }
 
 /** @internal */
@@ -2627,4 +2950,25 @@ export namespace HrisCreateWorkEligibilityRequestDto$ {
     HrisCreateWorkEligibilityRequestDto$outboundSchema;
   /** @deprecated use `HrisCreateWorkEligibilityRequestDto$Outbound` instead. */
   export type Outbound = HrisCreateWorkEligibilityRequestDto$Outbound;
+}
+
+export function hrisCreateWorkEligibilityRequestDtoToJSON(
+  hrisCreateWorkEligibilityRequestDto: HrisCreateWorkEligibilityRequestDto,
+): string {
+  return JSON.stringify(
+    HrisCreateWorkEligibilityRequestDto$outboundSchema.parse(
+      hrisCreateWorkEligibilityRequestDto,
+    ),
+  );
+}
+
+export function hrisCreateWorkEligibilityRequestDtoFromJSON(
+  jsonString: string,
+): SafeParseResult<HrisCreateWorkEligibilityRequestDto, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      HrisCreateWorkEligibilityRequestDto$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HrisCreateWorkEligibilityRequestDto' from JSON`,
+  );
 }

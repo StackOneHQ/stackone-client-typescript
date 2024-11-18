@@ -92,6 +92,9 @@ export async function marketingGetInAppTemplate(
   const context = {
     operationID: "marketing_get_in_app_template",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.security,
     retryConfig: options?.retries
       || client._options.retryConfig

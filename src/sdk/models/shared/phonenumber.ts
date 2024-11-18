@@ -3,11 +3,14 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * Type of phone number
@@ -105,4 +108,18 @@ export namespace PhoneNumber$ {
   export const outboundSchema = PhoneNumber$outboundSchema;
   /** @deprecated use `PhoneNumber$Outbound` instead. */
   export type Outbound = PhoneNumber$Outbound;
+}
+
+export function phoneNumberToJSON(phoneNumber: PhoneNumber): string {
+  return JSON.stringify(PhoneNumber$outboundSchema.parse(phoneNumber));
+}
+
+export function phoneNumberFromJSON(
+  jsonString: string,
+): SafeParseResult<PhoneNumber, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PhoneNumber$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PhoneNumber' from JSON`,
+  );
 }

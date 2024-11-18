@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   RawResponse,
   RawResponse$inboundSchema,
@@ -58,4 +61,18 @@ export namespace TemplateResult$ {
   export const outboundSchema = TemplateResult$outboundSchema;
   /** @deprecated use `TemplateResult$Outbound` instead. */
   export type Outbound = TemplateResult$Outbound;
+}
+
+export function templateResultToJSON(templateResult: TemplateResult): string {
+  return JSON.stringify(TemplateResult$outboundSchema.parse(templateResult));
+}
+
+export function templateResultFromJSON(
+  jsonString: string,
+): SafeParseResult<TemplateResult, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TemplateResult$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TemplateResult' from JSON`,
+  );
 }

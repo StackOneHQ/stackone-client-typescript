@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   RawResponse,
   RawResponse$inboundSchema,
@@ -78,4 +81,22 @@ export namespace SmsTemplatesPaginated$ {
   export const outboundSchema = SmsTemplatesPaginated$outboundSchema;
   /** @deprecated use `SmsTemplatesPaginated$Outbound` instead. */
   export type Outbound = SmsTemplatesPaginated$Outbound;
+}
+
+export function smsTemplatesPaginatedToJSON(
+  smsTemplatesPaginated: SmsTemplatesPaginated,
+): string {
+  return JSON.stringify(
+    SmsTemplatesPaginated$outboundSchema.parse(smsTemplatesPaginated),
+  );
+}
+
+export function smsTemplatesPaginatedFromJSON(
+  jsonString: string,
+): SafeParseResult<SmsTemplatesPaginated, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => SmsTemplatesPaginated$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SmsTemplatesPaginated' from JSON`,
+  );
 }

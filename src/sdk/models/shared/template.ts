@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type Template = {
   /**
@@ -91,4 +94,18 @@ export namespace Template$ {
   export const outboundSchema = Template$outboundSchema;
   /** @deprecated use `Template$Outbound` instead. */
   export type Outbound = Template$Outbound;
+}
+
+export function templateToJSON(template: Template): string {
+  return JSON.stringify(Template$outboundSchema.parse(template));
+}
+
+export function templateFromJSON(
+  jsonString: string,
+): SafeParseResult<Template, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Template$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Template' from JSON`,
+  );
 }

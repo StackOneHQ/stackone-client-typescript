@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type AtsGetAssessmentsResultRequest = {
@@ -101,6 +104,26 @@ export namespace AtsGetAssessmentsResultRequest$ {
   export type Outbound = AtsGetAssessmentsResultRequest$Outbound;
 }
 
+export function atsGetAssessmentsResultRequestToJSON(
+  atsGetAssessmentsResultRequest: AtsGetAssessmentsResultRequest,
+): string {
+  return JSON.stringify(
+    AtsGetAssessmentsResultRequest$outboundSchema.parse(
+      atsGetAssessmentsResultRequest,
+    ),
+  );
+}
+
+export function atsGetAssessmentsResultRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<AtsGetAssessmentsResultRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AtsGetAssessmentsResultRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AtsGetAssessmentsResultRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const AtsGetAssessmentsResultResponse$inboundSchema: z.ZodType<
   AtsGetAssessmentsResultResponse,
@@ -164,4 +187,24 @@ export namespace AtsGetAssessmentsResultResponse$ {
   export const outboundSchema = AtsGetAssessmentsResultResponse$outboundSchema;
   /** @deprecated use `AtsGetAssessmentsResultResponse$Outbound` instead. */
   export type Outbound = AtsGetAssessmentsResultResponse$Outbound;
+}
+
+export function atsGetAssessmentsResultResponseToJSON(
+  atsGetAssessmentsResultResponse: AtsGetAssessmentsResultResponse,
+): string {
+  return JSON.stringify(
+    AtsGetAssessmentsResultResponse$outboundSchema.parse(
+      atsGetAssessmentsResultResponse,
+    ),
+  );
+}
+
+export function atsGetAssessmentsResultResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<AtsGetAssessmentsResultResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AtsGetAssessmentsResultResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AtsGetAssessmentsResultResponse' from JSON`,
+  );
 }

@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 /**
@@ -170,6 +173,26 @@ export namespace AtsListJobsQueryParamFilter$ {
   export type Outbound = AtsListJobsQueryParamFilter$Outbound;
 }
 
+export function atsListJobsQueryParamFilterToJSON(
+  atsListJobsQueryParamFilter: AtsListJobsQueryParamFilter,
+): string {
+  return JSON.stringify(
+    AtsListJobsQueryParamFilter$outboundSchema.parse(
+      atsListJobsQueryParamFilter,
+    ),
+  );
+}
+
+export function atsListJobsQueryParamFilterFromJSON(
+  jsonString: string,
+): SafeParseResult<AtsListJobsQueryParamFilter, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AtsListJobsQueryParamFilter$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AtsListJobsQueryParamFilter' from JSON`,
+  );
+}
+
 /** @internal */
 export const AtsListJobsRequest$inboundSchema: z.ZodType<
   AtsListJobsRequest,
@@ -255,6 +278,24 @@ export namespace AtsListJobsRequest$ {
   export type Outbound = AtsListJobsRequest$Outbound;
 }
 
+export function atsListJobsRequestToJSON(
+  atsListJobsRequest: AtsListJobsRequest,
+): string {
+  return JSON.stringify(
+    AtsListJobsRequest$outboundSchema.parse(atsListJobsRequest),
+  );
+}
+
+export function atsListJobsRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<AtsListJobsRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AtsListJobsRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AtsListJobsRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const AtsListJobsResponse$inboundSchema: z.ZodType<
   AtsListJobsResponse,
@@ -314,4 +355,22 @@ export namespace AtsListJobsResponse$ {
   export const outboundSchema = AtsListJobsResponse$outboundSchema;
   /** @deprecated use `AtsListJobsResponse$Outbound` instead. */
   export type Outbound = AtsListJobsResponse$Outbound;
+}
+
+export function atsListJobsResponseToJSON(
+  atsListJobsResponse: AtsListJobsResponse,
+): string {
+  return JSON.stringify(
+    AtsListJobsResponse$outboundSchema.parse(atsListJobsResponse),
+  );
+}
+
+export function atsListJobsResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<AtsListJobsResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AtsListJobsResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AtsListJobsResponse' from JSON`,
+  );
 }

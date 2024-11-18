@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type CustomFields4 = {};
 
@@ -81,6 +84,20 @@ export namespace CustomFields4$ {
   export type Outbound = CustomFields4$Outbound;
 }
 
+export function customFields4ToJSON(customFields4: CustomFields4): string {
+  return JSON.stringify(CustomFields4$outboundSchema.parse(customFields4));
+}
+
+export function customFields4FromJSON(
+  jsonString: string,
+): SafeParseResult<CustomFields4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CustomFields4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CustomFields4' from JSON`,
+  );
+}
+
 /** @internal */
 export const CustomFieldsValue$inboundSchema: z.ZodType<
   CustomFieldsValue,
@@ -126,6 +143,24 @@ export namespace CustomFieldsValue$ {
   export const outboundSchema = CustomFieldsValue$outboundSchema;
   /** @deprecated use `CustomFieldsValue$Outbound` instead. */
   export type Outbound = CustomFieldsValue$Outbound;
+}
+
+export function customFieldsValueToJSON(
+  customFieldsValue: CustomFieldsValue,
+): string {
+  return JSON.stringify(
+    CustomFieldsValue$outboundSchema.parse(customFieldsValue),
+  );
+}
+
+export function customFieldsValueFromJSON(
+  jsonString: string,
+): SafeParseResult<CustomFieldsValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CustomFieldsValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CustomFieldsValue' from JSON`,
+  );
 }
 
 /** @internal */
@@ -212,4 +247,18 @@ export namespace CustomFields$ {
   export const outboundSchema = CustomFields$outboundSchema;
   /** @deprecated use `CustomFields$Outbound` instead. */
   export type Outbound = CustomFields$Outbound;
+}
+
+export function customFieldsToJSON(customFields: CustomFields): string {
+  return JSON.stringify(CustomFields$outboundSchema.parse(customFields));
+}
+
+export function customFieldsFromJSON(
+  jsonString: string,
+): SafeParseResult<CustomFields, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CustomFields$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CustomFields' from JSON`,
+  );
 }

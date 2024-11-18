@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type HrisUploadEmployeeDocumentRequest = {
@@ -89,6 +92,26 @@ export namespace HrisUploadEmployeeDocumentRequest$ {
   export type Outbound = HrisUploadEmployeeDocumentRequest$Outbound;
 }
 
+export function hrisUploadEmployeeDocumentRequestToJSON(
+  hrisUploadEmployeeDocumentRequest: HrisUploadEmployeeDocumentRequest,
+): string {
+  return JSON.stringify(
+    HrisUploadEmployeeDocumentRequest$outboundSchema.parse(
+      hrisUploadEmployeeDocumentRequest,
+    ),
+  );
+}
+
+export function hrisUploadEmployeeDocumentRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<HrisUploadEmployeeDocumentRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => HrisUploadEmployeeDocumentRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HrisUploadEmployeeDocumentRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const HrisUploadEmployeeDocumentResponse$inboundSchema: z.ZodType<
   HrisUploadEmployeeDocumentResponse,
@@ -149,4 +172,25 @@ export namespace HrisUploadEmployeeDocumentResponse$ {
     HrisUploadEmployeeDocumentResponse$outboundSchema;
   /** @deprecated use `HrisUploadEmployeeDocumentResponse$Outbound` instead. */
   export type Outbound = HrisUploadEmployeeDocumentResponse$Outbound;
+}
+
+export function hrisUploadEmployeeDocumentResponseToJSON(
+  hrisUploadEmployeeDocumentResponse: HrisUploadEmployeeDocumentResponse,
+): string {
+  return JSON.stringify(
+    HrisUploadEmployeeDocumentResponse$outboundSchema.parse(
+      hrisUploadEmployeeDocumentResponse,
+    ),
+  );
+}
+
+export function hrisUploadEmployeeDocumentResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<HrisUploadEmployeeDocumentResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      HrisUploadEmployeeDocumentResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HrisUploadEmployeeDocumentResponse' from JSON`,
+  );
 }

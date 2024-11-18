@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   ListItem,
   ListItem$inboundSchema,
@@ -114,6 +117,20 @@ export namespace List4$ {
   export type Outbound = List4$Outbound;
 }
 
+export function list4ToJSON(list4: List4): string {
+  return JSON.stringify(List4$outboundSchema.parse(list4));
+}
+
+export function list4FromJSON(
+  jsonString: string,
+): SafeParseResult<List4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => List4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'List4' from JSON`,
+  );
+}
+
 /** @internal */
 export const ListSourceValue$inboundSchema: z.ZodType<
   ListSourceValue,
@@ -159,6 +176,22 @@ export namespace ListSourceValue$ {
   export const outboundSchema = ListSourceValue$outboundSchema;
   /** @deprecated use `ListSourceValue$Outbound` instead. */
   export type Outbound = ListSourceValue$Outbound;
+}
+
+export function listSourceValueToJSON(
+  listSourceValue: ListSourceValue,
+): string {
+  return JSON.stringify(ListSourceValue$outboundSchema.parse(listSourceValue));
+}
+
+export function listSourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<ListSourceValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListSourceValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListSourceValue' from JSON`,
+  );
 }
 
 /** @internal */
@@ -263,6 +296,20 @@ export namespace ListType$ {
   export type Outbound = ListType$Outbound;
 }
 
+export function listTypeToJSON(listType: ListType): string {
+  return JSON.stringify(ListType$outboundSchema.parse(listType));
+}
+
+export function listTypeFromJSON(
+  jsonString: string,
+): SafeParseResult<ListType, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ListType$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ListType' from JSON`,
+  );
+}
+
 /** @internal */
 export const List$inboundSchema: z.ZodType<List, z.ZodTypeDef, unknown> = z
   .object({
@@ -330,4 +377,18 @@ export namespace List$ {
   export const outboundSchema = List$outboundSchema;
   /** @deprecated use `List$Outbound` instead. */
   export type Outbound = List$Outbound;
+}
+
+export function listToJSON(list: List): string {
+  return JSON.stringify(List$outboundSchema.parse(list));
+}
+
+export function listFromJSON(
+  jsonString: string,
+): SafeParseResult<List, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => List$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'List' from JSON`,
+  );
 }

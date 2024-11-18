@@ -3,11 +3,14 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * The method of the request
@@ -125,4 +128,22 @@ export namespace ProxyRequestBody$ {
   export const outboundSchema = ProxyRequestBody$outboundSchema;
   /** @deprecated use `ProxyRequestBody$Outbound` instead. */
   export type Outbound = ProxyRequestBody$Outbound;
+}
+
+export function proxyRequestBodyToJSON(
+  proxyRequestBody: ProxyRequestBody,
+): string {
+  return JSON.stringify(
+    ProxyRequestBody$outboundSchema.parse(proxyRequestBody),
+  );
+}
+
+export function proxyRequestBodyFromJSON(
+  jsonString: string,
+): SafeParseResult<ProxyRequestBody, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ProxyRequestBody$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ProxyRequestBody' from JSON`,
+  );
 }

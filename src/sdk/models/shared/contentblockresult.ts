@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   ContentBlock,
   ContentBlock$inboundSchema,
@@ -58,4 +61,22 @@ export namespace ContentBlockResult$ {
   export const outboundSchema = ContentBlockResult$outboundSchema;
   /** @deprecated use `ContentBlockResult$Outbound` instead. */
   export type Outbound = ContentBlockResult$Outbound;
+}
+
+export function contentBlockResultToJSON(
+  contentBlockResult: ContentBlockResult,
+): string {
+  return JSON.stringify(
+    ContentBlockResult$outboundSchema.parse(contentBlockResult),
+  );
+}
+
+export function contentBlockResultFromJSON(
+  jsonString: string,
+): SafeParseResult<ContentBlockResult, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ContentBlockResult$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ContentBlockResult' from JSON`,
+  );
 }

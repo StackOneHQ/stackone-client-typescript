@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type HrisGetEmployeeDocumentRequest = {
@@ -105,6 +108,26 @@ export namespace HrisGetEmployeeDocumentRequest$ {
   export type Outbound = HrisGetEmployeeDocumentRequest$Outbound;
 }
 
+export function hrisGetEmployeeDocumentRequestToJSON(
+  hrisGetEmployeeDocumentRequest: HrisGetEmployeeDocumentRequest,
+): string {
+  return JSON.stringify(
+    HrisGetEmployeeDocumentRequest$outboundSchema.parse(
+      hrisGetEmployeeDocumentRequest,
+    ),
+  );
+}
+
+export function hrisGetEmployeeDocumentRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<HrisGetEmployeeDocumentRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => HrisGetEmployeeDocumentRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HrisGetEmployeeDocumentRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const HrisGetEmployeeDocumentResponse$inboundSchema: z.ZodType<
   HrisGetEmployeeDocumentResponse,
@@ -164,4 +187,24 @@ export namespace HrisGetEmployeeDocumentResponse$ {
   export const outboundSchema = HrisGetEmployeeDocumentResponse$outboundSchema;
   /** @deprecated use `HrisGetEmployeeDocumentResponse$Outbound` instead. */
   export type Outbound = HrisGetEmployeeDocumentResponse$Outbound;
+}
+
+export function hrisGetEmployeeDocumentResponseToJSON(
+  hrisGetEmployeeDocumentResponse: HrisGetEmployeeDocumentResponse,
+): string {
+  return JSON.stringify(
+    HrisGetEmployeeDocumentResponse$outboundSchema.parse(
+      hrisGetEmployeeDocumentResponse,
+    ),
+  );
+}
+
+export function hrisGetEmployeeDocumentResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<HrisGetEmployeeDocumentResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => HrisGetEmployeeDocumentResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HrisGetEmployeeDocumentResponse' from JSON`,
+  );
 }

@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type CountryCodeEnum4 = {};
 
@@ -323,6 +326,24 @@ export namespace CountryCodeEnum4$ {
   export type Outbound = CountryCodeEnum4$Outbound;
 }
 
+export function countryCodeEnum4ToJSON(
+  countryCodeEnum4: CountryCodeEnum4,
+): string {
+  return JSON.stringify(
+    CountryCodeEnum4$outboundSchema.parse(countryCodeEnum4),
+  );
+}
+
+export function countryCodeEnum4FromJSON(
+  jsonString: string,
+): SafeParseResult<CountryCodeEnum4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CountryCodeEnum4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CountryCodeEnum4' from JSON`,
+  );
+}
+
 /** @internal */
 export const CountryCodeEnumSourceValue$inboundSchema: z.ZodType<
   CountryCodeEnumSourceValue,
@@ -368,6 +389,24 @@ export namespace CountryCodeEnumSourceValue$ {
   export const outboundSchema = CountryCodeEnumSourceValue$outboundSchema;
   /** @deprecated use `CountryCodeEnumSourceValue$Outbound` instead. */
   export type Outbound = CountryCodeEnumSourceValue$Outbound;
+}
+
+export function countryCodeEnumSourceValueToJSON(
+  countryCodeEnumSourceValue: CountryCodeEnumSourceValue,
+): string {
+  return JSON.stringify(
+    CountryCodeEnumSourceValue$outboundSchema.parse(countryCodeEnumSourceValue),
+  );
+}
+
+export function countryCodeEnumSourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<CountryCodeEnumSourceValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CountryCodeEnumSourceValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CountryCodeEnumSourceValue' from JSON`,
+  );
 }
 
 /** @internal */
@@ -470,4 +509,20 @@ export namespace CountryCodeEnum$ {
   export const outboundSchema = CountryCodeEnum$outboundSchema;
   /** @deprecated use `CountryCodeEnum$Outbound` instead. */
   export type Outbound = CountryCodeEnum$Outbound;
+}
+
+export function countryCodeEnumToJSON(
+  countryCodeEnum: CountryCodeEnum,
+): string {
+  return JSON.stringify(CountryCodeEnum$outboundSchema.parse(countryCodeEnum));
+}
+
+export function countryCodeEnumFromJSON(
+  jsonString: string,
+): SafeParseResult<CountryCodeEnum, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CountryCodeEnum$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CountryCodeEnum' from JSON`,
+  );
 }

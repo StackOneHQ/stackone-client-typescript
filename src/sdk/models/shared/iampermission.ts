@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   IamResource,
   IamResource$inboundSchema,
@@ -110,6 +113,20 @@ export namespace IamPermission4$ {
   export type Outbound = IamPermission4$Outbound;
 }
 
+export function iamPermission4ToJSON(iamPermission4: IamPermission4): string {
+  return JSON.stringify(IamPermission4$outboundSchema.parse(iamPermission4));
+}
+
+export function iamPermission4FromJSON(
+  jsonString: string,
+): SafeParseResult<IamPermission4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => IamPermission4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'IamPermission4' from JSON`,
+  );
+}
+
 /** @internal */
 export const IamPermissionSourceValue$inboundSchema: z.ZodType<
   IamPermissionSourceValue,
@@ -155,6 +172,24 @@ export namespace IamPermissionSourceValue$ {
   export const outboundSchema = IamPermissionSourceValue$outboundSchema;
   /** @deprecated use `IamPermissionSourceValue$Outbound` instead. */
   export type Outbound = IamPermissionSourceValue$Outbound;
+}
+
+export function iamPermissionSourceValueToJSON(
+  iamPermissionSourceValue: IamPermissionSourceValue,
+): string {
+  return JSON.stringify(
+    IamPermissionSourceValue$outboundSchema.parse(iamPermissionSourceValue),
+  );
+}
+
+export function iamPermissionSourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<IamPermissionSourceValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => IamPermissionSourceValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'IamPermissionSourceValue' from JSON`,
+  );
 }
 
 /** @internal */
@@ -259,6 +294,24 @@ export namespace IamPermissionType$ {
   export type Outbound = IamPermissionType$Outbound;
 }
 
+export function iamPermissionTypeToJSON(
+  iamPermissionType: IamPermissionType,
+): string {
+  return JSON.stringify(
+    IamPermissionType$outboundSchema.parse(iamPermissionType),
+  );
+}
+
+export function iamPermissionTypeFromJSON(
+  jsonString: string,
+): SafeParseResult<IamPermissionType, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => IamPermissionType$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'IamPermissionType' from JSON`,
+  );
+}
+
 /** @internal */
 export const IamPermission$inboundSchema: z.ZodType<
   IamPermission,
@@ -330,4 +383,18 @@ export namespace IamPermission$ {
   export const outboundSchema = IamPermission$outboundSchema;
   /** @deprecated use `IamPermission$Outbound` instead. */
   export type Outbound = IamPermission$Outbound;
+}
+
+export function iamPermissionToJSON(iamPermission: IamPermission): string {
+  return JSON.stringify(IamPermission$outboundSchema.parse(iamPermission));
+}
+
+export function iamPermissionFromJSON(
+  jsonString: string,
+): SafeParseResult<IamPermission, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => IamPermission$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'IamPermission' from JSON`,
+  );
 }

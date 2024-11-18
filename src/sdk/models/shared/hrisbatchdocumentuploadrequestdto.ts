@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   HrisDocumentsUploadRequestDto,
   HrisDocumentsUploadRequestDto$inboundSchema,
@@ -52,4 +55,24 @@ export namespace HrisBatchDocumentUploadRequestDto$ {
     HrisBatchDocumentUploadRequestDto$outboundSchema;
   /** @deprecated use `HrisBatchDocumentUploadRequestDto$Outbound` instead. */
   export type Outbound = HrisBatchDocumentUploadRequestDto$Outbound;
+}
+
+export function hrisBatchDocumentUploadRequestDtoToJSON(
+  hrisBatchDocumentUploadRequestDto: HrisBatchDocumentUploadRequestDto,
+): string {
+  return JSON.stringify(
+    HrisBatchDocumentUploadRequestDto$outboundSchema.parse(
+      hrisBatchDocumentUploadRequestDto,
+    ),
+  );
+}
+
+export function hrisBatchDocumentUploadRequestDtoFromJSON(
+  jsonString: string,
+): SafeParseResult<HrisBatchDocumentUploadRequestDto, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => HrisBatchDocumentUploadRequestDto$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HrisBatchDocumentUploadRequestDto' from JSON`,
+  );
 }

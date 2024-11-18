@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type IamGetGroupRequest = {
@@ -108,6 +111,24 @@ export namespace IamGetGroupRequest$ {
   export type Outbound = IamGetGroupRequest$Outbound;
 }
 
+export function iamGetGroupRequestToJSON(
+  iamGetGroupRequest: IamGetGroupRequest,
+): string {
+  return JSON.stringify(
+    IamGetGroupRequest$outboundSchema.parse(iamGetGroupRequest),
+  );
+}
+
+export function iamGetGroupRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<IamGetGroupRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => IamGetGroupRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'IamGetGroupRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const IamGetGroupResponse$inboundSchema: z.ZodType<
   IamGetGroupResponse,
@@ -167,4 +188,22 @@ export namespace IamGetGroupResponse$ {
   export const outboundSchema = IamGetGroupResponse$outboundSchema;
   /** @deprecated use `IamGetGroupResponse$Outbound` instead. */
   export type Outbound = IamGetGroupResponse$Outbound;
+}
+
+export function iamGetGroupResponseToJSON(
+  iamGetGroupResponse: IamGetGroupResponse,
+): string {
+  return JSON.stringify(
+    IamGetGroupResponse$outboundSchema.parse(iamGetGroupResponse),
+  );
+}
+
+export function iamGetGroupResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<IamGetGroupResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => IamGetGroupResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'IamGetGroupResponse' from JSON`,
+  );
 }

@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type HRISBenefit4 = {};
 
@@ -117,6 +120,20 @@ export namespace HRISBenefit4$ {
   export type Outbound = HRISBenefit4$Outbound;
 }
 
+export function hrisBenefit4ToJSON(hrisBenefit4: HRISBenefit4): string {
+  return JSON.stringify(HRISBenefit4$outboundSchema.parse(hrisBenefit4));
+}
+
+export function hrisBenefit4FromJSON(
+  jsonString: string,
+): SafeParseResult<HRISBenefit4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => HRISBenefit4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HRISBenefit4' from JSON`,
+  );
+}
+
 /** @internal */
 export const HRISBenefitSourceValue$inboundSchema: z.ZodType<
   HRISBenefitSourceValue,
@@ -162,6 +179,24 @@ export namespace HRISBenefitSourceValue$ {
   export const outboundSchema = HRISBenefitSourceValue$outboundSchema;
   /** @deprecated use `HRISBenefitSourceValue$Outbound` instead. */
   export type Outbound = HRISBenefitSourceValue$Outbound;
+}
+
+export function hrisBenefitSourceValueToJSON(
+  hrisBenefitSourceValue: HRISBenefitSourceValue,
+): string {
+  return JSON.stringify(
+    HRISBenefitSourceValue$outboundSchema.parse(hrisBenefitSourceValue),
+  );
+}
+
+export function hrisBenefitSourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<HRISBenefitSourceValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => HRISBenefitSourceValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HRISBenefitSourceValue' from JSON`,
+  );
 }
 
 /** @internal */
@@ -266,6 +301,24 @@ export namespace HRISBenefitBenefitType$ {
   export type Outbound = HRISBenefitBenefitType$Outbound;
 }
 
+export function hrisBenefitBenefitTypeToJSON(
+  hrisBenefitBenefitType: HRISBenefitBenefitType,
+): string {
+  return JSON.stringify(
+    HRISBenefitBenefitType$outboundSchema.parse(hrisBenefitBenefitType),
+  );
+}
+
+export function hrisBenefitBenefitTypeFromJSON(
+  jsonString: string,
+): SafeParseResult<HRISBenefitBenefitType, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => HRISBenefitBenefitType$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HRISBenefitBenefitType' from JSON`,
+  );
+}
+
 /** @internal */
 export const HRISBenefit$inboundSchema: z.ZodType<
   HRISBenefit,
@@ -341,4 +394,18 @@ export namespace HRISBenefit$ {
   export const outboundSchema = HRISBenefit$outboundSchema;
   /** @deprecated use `HRISBenefit$Outbound` instead. */
   export type Outbound = HRISBenefit$Outbound;
+}
+
+export function hrisBenefitToJSON(hrisBenefit: HRISBenefit): string {
+  return JSON.stringify(HRISBenefit$outboundSchema.parse(hrisBenefit));
+}
+
+export function hrisBenefitFromJSON(
+  jsonString: string,
+): SafeParseResult<HRISBenefit, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => HRISBenefit$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HRISBenefit' from JSON`,
+  );
 }

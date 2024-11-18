@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * The category name to associate with the file
@@ -1470,6 +1473,27 @@ export namespace HrisDocumentsUploadRequestDtoCategory$ {
   export type Outbound = HrisDocumentsUploadRequestDtoCategory$Outbound;
 }
 
+export function hrisDocumentsUploadRequestDtoCategoryToJSON(
+  hrisDocumentsUploadRequestDtoCategory: HrisDocumentsUploadRequestDtoCategory,
+): string {
+  return JSON.stringify(
+    HrisDocumentsUploadRequestDtoCategory$outboundSchema.parse(
+      hrisDocumentsUploadRequestDtoCategory,
+    ),
+  );
+}
+
+export function hrisDocumentsUploadRequestDtoCategoryFromJSON(
+  jsonString: string,
+): SafeParseResult<HrisDocumentsUploadRequestDtoCategory, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      HrisDocumentsUploadRequestDtoCategory$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HrisDocumentsUploadRequestDtoCategory' from JSON`,
+  );
+}
+
 /** @internal */
 export const HrisDocumentsUploadRequestDto4$inboundSchema: z.ZodType<
   HrisDocumentsUploadRequestDto4,
@@ -1498,6 +1522,26 @@ export namespace HrisDocumentsUploadRequestDto4$ {
   export const outboundSchema = HrisDocumentsUploadRequestDto4$outboundSchema;
   /** @deprecated use `HrisDocumentsUploadRequestDto4$Outbound` instead. */
   export type Outbound = HrisDocumentsUploadRequestDto4$Outbound;
+}
+
+export function hrisDocumentsUploadRequestDto4ToJSON(
+  hrisDocumentsUploadRequestDto4: HrisDocumentsUploadRequestDto4,
+): string {
+  return JSON.stringify(
+    HrisDocumentsUploadRequestDto4$outboundSchema.parse(
+      hrisDocumentsUploadRequestDto4,
+    ),
+  );
+}
+
+export function hrisDocumentsUploadRequestDto4FromJSON(
+  jsonString: string,
+): SafeParseResult<HrisDocumentsUploadRequestDto4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => HrisDocumentsUploadRequestDto4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HrisDocumentsUploadRequestDto4' from JSON`,
+  );
 }
 
 /** @internal */
@@ -1547,6 +1591,33 @@ export namespace HrisDocumentsUploadRequestDtoSourceValue$ {
     HrisDocumentsUploadRequestDtoSourceValue$outboundSchema;
   /** @deprecated use `HrisDocumentsUploadRequestDtoSourceValue$Outbound` instead. */
   export type Outbound = HrisDocumentsUploadRequestDtoSourceValue$Outbound;
+}
+
+export function hrisDocumentsUploadRequestDtoSourceValueToJSON(
+  hrisDocumentsUploadRequestDtoSourceValue:
+    HrisDocumentsUploadRequestDtoSourceValue,
+): string {
+  return JSON.stringify(
+    HrisDocumentsUploadRequestDtoSourceValue$outboundSchema.parse(
+      hrisDocumentsUploadRequestDtoSourceValue,
+    ),
+  );
+}
+
+export function hrisDocumentsUploadRequestDtoSourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  HrisDocumentsUploadRequestDtoSourceValue,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      HrisDocumentsUploadRequestDtoSourceValue$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'HrisDocumentsUploadRequestDtoSourceValue' from JSON`,
+  );
 }
 
 /** @internal */
@@ -1659,6 +1730,33 @@ export namespace HrisDocumentsUploadRequestDtoConfidential$ {
   export type Outbound = HrisDocumentsUploadRequestDtoConfidential$Outbound;
 }
 
+export function hrisDocumentsUploadRequestDtoConfidentialToJSON(
+  hrisDocumentsUploadRequestDtoConfidential:
+    HrisDocumentsUploadRequestDtoConfidential,
+): string {
+  return JSON.stringify(
+    HrisDocumentsUploadRequestDtoConfidential$outboundSchema.parse(
+      hrisDocumentsUploadRequestDtoConfidential,
+    ),
+  );
+}
+
+export function hrisDocumentsUploadRequestDtoConfidentialFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  HrisDocumentsUploadRequestDtoConfidential,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      HrisDocumentsUploadRequestDtoConfidential$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'HrisDocumentsUploadRequestDtoConfidential' from JSON`,
+  );
+}
+
 /** @internal */
 export const HrisDocumentsUploadRequestDtoSchemas4$inboundSchema: z.ZodType<
   HrisDocumentsUploadRequestDtoSchemas4,
@@ -1689,6 +1787,27 @@ export namespace HrisDocumentsUploadRequestDtoSchemas4$ {
     HrisDocumentsUploadRequestDtoSchemas4$outboundSchema;
   /** @deprecated use `HrisDocumentsUploadRequestDtoSchemas4$Outbound` instead. */
   export type Outbound = HrisDocumentsUploadRequestDtoSchemas4$Outbound;
+}
+
+export function hrisDocumentsUploadRequestDtoSchemas4ToJSON(
+  hrisDocumentsUploadRequestDtoSchemas4: HrisDocumentsUploadRequestDtoSchemas4,
+): string {
+  return JSON.stringify(
+    HrisDocumentsUploadRequestDtoSchemas4$outboundSchema.parse(
+      hrisDocumentsUploadRequestDtoSchemas4,
+    ),
+  );
+}
+
+export function hrisDocumentsUploadRequestDtoSchemas4FromJSON(
+  jsonString: string,
+): SafeParseResult<HrisDocumentsUploadRequestDtoSchemas4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      HrisDocumentsUploadRequestDtoSchemas4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HrisDocumentsUploadRequestDtoSchemas4' from JSON`,
+  );
 }
 
 /** @internal */
@@ -1741,6 +1860,33 @@ export namespace HrisDocumentsUploadRequestDtoSchemasSourceValue$ {
   /** @deprecated use `HrisDocumentsUploadRequestDtoSchemasSourceValue$Outbound` instead. */
   export type Outbound =
     HrisDocumentsUploadRequestDtoSchemasSourceValue$Outbound;
+}
+
+export function hrisDocumentsUploadRequestDtoSchemasSourceValueToJSON(
+  hrisDocumentsUploadRequestDtoSchemasSourceValue:
+    HrisDocumentsUploadRequestDtoSchemasSourceValue,
+): string {
+  return JSON.stringify(
+    HrisDocumentsUploadRequestDtoSchemasSourceValue$outboundSchema.parse(
+      hrisDocumentsUploadRequestDtoSchemasSourceValue,
+    ),
+  );
+}
+
+export function hrisDocumentsUploadRequestDtoSchemasSourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  HrisDocumentsUploadRequestDtoSchemasSourceValue,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      HrisDocumentsUploadRequestDtoSchemasSourceValue$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'HrisDocumentsUploadRequestDtoSchemasSourceValue' from JSON`,
+  );
 }
 
 /** @internal */
@@ -1855,6 +2001,33 @@ export namespace HrisDocumentsUploadRequestDtoFileFormat$ {
   export type Outbound = HrisDocumentsUploadRequestDtoFileFormat$Outbound;
 }
 
+export function hrisDocumentsUploadRequestDtoFileFormatToJSON(
+  hrisDocumentsUploadRequestDtoFileFormat:
+    HrisDocumentsUploadRequestDtoFileFormat,
+): string {
+  return JSON.stringify(
+    HrisDocumentsUploadRequestDtoFileFormat$outboundSchema.parse(
+      hrisDocumentsUploadRequestDtoFileFormat,
+    ),
+  );
+}
+
+export function hrisDocumentsUploadRequestDtoFileFormatFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  HrisDocumentsUploadRequestDtoFileFormat,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      HrisDocumentsUploadRequestDtoFileFormat$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'HrisDocumentsUploadRequestDtoFileFormat' from JSON`,
+  );
+}
+
 /** @internal */
 export const HrisDocumentsUploadRequestDto$inboundSchema: z.ZodType<
   HrisDocumentsUploadRequestDto,
@@ -1935,4 +2108,24 @@ export namespace HrisDocumentsUploadRequestDto$ {
   export const outboundSchema = HrisDocumentsUploadRequestDto$outboundSchema;
   /** @deprecated use `HrisDocumentsUploadRequestDto$Outbound` instead. */
   export type Outbound = HrisDocumentsUploadRequestDto$Outbound;
+}
+
+export function hrisDocumentsUploadRequestDtoToJSON(
+  hrisDocumentsUploadRequestDto: HrisDocumentsUploadRequestDto,
+): string {
+  return JSON.stringify(
+    HrisDocumentsUploadRequestDto$outboundSchema.parse(
+      hrisDocumentsUploadRequestDto,
+    ),
+  );
+}
+
+export function hrisDocumentsUploadRequestDtoFromJSON(
+  jsonString: string,
+): SafeParseResult<HrisDocumentsUploadRequestDto, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => HrisDocumentsUploadRequestDto$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HrisDocumentsUploadRequestDto' from JSON`,
+  );
 }

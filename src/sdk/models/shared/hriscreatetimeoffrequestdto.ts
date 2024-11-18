@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export enum HrisCreateTimeOffRequestDto2 {
   True = "true",
@@ -206,6 +209,20 @@ export namespace EndHalfDay$ {
   export type Outbound = EndHalfDay$Outbound;
 }
 
+export function endHalfDayToJSON(endHalfDay: EndHalfDay): string {
+  return JSON.stringify(EndHalfDay$outboundSchema.parse(endHalfDay));
+}
+
+export function endHalfDayFromJSON(
+  jsonString: string,
+): SafeParseResult<EndHalfDay, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => EndHalfDay$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'EndHalfDay' from JSON`,
+  );
+}
+
 /** @internal */
 export const HrisCreateTimeOffRequestDtoSchemas2$inboundSchema: z.ZodNativeEnum<
   typeof HrisCreateTimeOffRequestDtoSchemas2
@@ -259,6 +276,20 @@ export namespace StartHalfDay$ {
   export type Outbound = StartHalfDay$Outbound;
 }
 
+export function startHalfDayToJSON(startHalfDay: StartHalfDay): string {
+  return JSON.stringify(StartHalfDay$outboundSchema.parse(startHalfDay));
+}
+
+export function startHalfDayFromJSON(
+  jsonString: string,
+): SafeParseResult<StartHalfDay, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => StartHalfDay$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'StartHalfDay' from JSON`,
+  );
+}
+
 /** @internal */
 export const HrisCreateTimeOffRequestDto4$inboundSchema: z.ZodType<
   HrisCreateTimeOffRequestDto4,
@@ -287,6 +318,26 @@ export namespace HrisCreateTimeOffRequestDto4$ {
   export const outboundSchema = HrisCreateTimeOffRequestDto4$outboundSchema;
   /** @deprecated use `HrisCreateTimeOffRequestDto4$Outbound` instead. */
   export type Outbound = HrisCreateTimeOffRequestDto4$Outbound;
+}
+
+export function hrisCreateTimeOffRequestDto4ToJSON(
+  hrisCreateTimeOffRequestDto4: HrisCreateTimeOffRequestDto4,
+): string {
+  return JSON.stringify(
+    HrisCreateTimeOffRequestDto4$outboundSchema.parse(
+      hrisCreateTimeOffRequestDto4,
+    ),
+  );
+}
+
+export function hrisCreateTimeOffRequestDto4FromJSON(
+  jsonString: string,
+): SafeParseResult<HrisCreateTimeOffRequestDto4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => HrisCreateTimeOffRequestDto4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HrisCreateTimeOffRequestDto4' from JSON`,
+  );
 }
 
 /** @internal */
@@ -336,6 +387,28 @@ export namespace HrisCreateTimeOffRequestDtoSourceValue$ {
     HrisCreateTimeOffRequestDtoSourceValue$outboundSchema;
   /** @deprecated use `HrisCreateTimeOffRequestDtoSourceValue$Outbound` instead. */
   export type Outbound = HrisCreateTimeOffRequestDtoSourceValue$Outbound;
+}
+
+export function hrisCreateTimeOffRequestDtoSourceValueToJSON(
+  hrisCreateTimeOffRequestDtoSourceValue:
+    HrisCreateTimeOffRequestDtoSourceValue,
+): string {
+  return JSON.stringify(
+    HrisCreateTimeOffRequestDtoSourceValue$outboundSchema.parse(
+      hrisCreateTimeOffRequestDtoSourceValue,
+    ),
+  );
+}
+
+export function hrisCreateTimeOffRequestDtoSourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<HrisCreateTimeOffRequestDtoSourceValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      HrisCreateTimeOffRequestDtoSourceValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HrisCreateTimeOffRequestDtoSourceValue' from JSON`,
+  );
 }
 
 /** @internal */
@@ -441,6 +514,26 @@ export namespace HrisCreateTimeOffRequestDtoStatus$ {
   export type Outbound = HrisCreateTimeOffRequestDtoStatus$Outbound;
 }
 
+export function hrisCreateTimeOffRequestDtoStatusToJSON(
+  hrisCreateTimeOffRequestDtoStatus: HrisCreateTimeOffRequestDtoStatus,
+): string {
+  return JSON.stringify(
+    HrisCreateTimeOffRequestDtoStatus$outboundSchema.parse(
+      hrisCreateTimeOffRequestDtoStatus,
+    ),
+  );
+}
+
+export function hrisCreateTimeOffRequestDtoStatusFromJSON(
+  jsonString: string,
+): SafeParseResult<HrisCreateTimeOffRequestDtoStatus, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => HrisCreateTimeOffRequestDtoStatus$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HrisCreateTimeOffRequestDtoStatus' from JSON`,
+  );
+}
+
 /** @internal */
 export const HrisCreateTimeOffRequestDtoSchemas4$inboundSchema: z.ZodType<
   HrisCreateTimeOffRequestDtoSchemas4,
@@ -471,6 +564,27 @@ export namespace HrisCreateTimeOffRequestDtoSchemas4$ {
     HrisCreateTimeOffRequestDtoSchemas4$outboundSchema;
   /** @deprecated use `HrisCreateTimeOffRequestDtoSchemas4$Outbound` instead. */
   export type Outbound = HrisCreateTimeOffRequestDtoSchemas4$Outbound;
+}
+
+export function hrisCreateTimeOffRequestDtoSchemas4ToJSON(
+  hrisCreateTimeOffRequestDtoSchemas4: HrisCreateTimeOffRequestDtoSchemas4,
+): string {
+  return JSON.stringify(
+    HrisCreateTimeOffRequestDtoSchemas4$outboundSchema.parse(
+      hrisCreateTimeOffRequestDtoSchemas4,
+    ),
+  );
+}
+
+export function hrisCreateTimeOffRequestDtoSchemas4FromJSON(
+  jsonString: string,
+): SafeParseResult<HrisCreateTimeOffRequestDtoSchemas4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      HrisCreateTimeOffRequestDtoSchemas4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HrisCreateTimeOffRequestDtoSchemas4' from JSON`,
+  );
 }
 
 /** @internal */
@@ -522,6 +636,33 @@ export namespace HrisCreateTimeOffRequestDtoSchemasSourceValue$ {
     HrisCreateTimeOffRequestDtoSchemasSourceValue$outboundSchema;
   /** @deprecated use `HrisCreateTimeOffRequestDtoSchemasSourceValue$Outbound` instead. */
   export type Outbound = HrisCreateTimeOffRequestDtoSchemasSourceValue$Outbound;
+}
+
+export function hrisCreateTimeOffRequestDtoSchemasSourceValueToJSON(
+  hrisCreateTimeOffRequestDtoSchemasSourceValue:
+    HrisCreateTimeOffRequestDtoSchemasSourceValue,
+): string {
+  return JSON.stringify(
+    HrisCreateTimeOffRequestDtoSchemasSourceValue$outboundSchema.parse(
+      hrisCreateTimeOffRequestDtoSchemasSourceValue,
+    ),
+  );
+}
+
+export function hrisCreateTimeOffRequestDtoSchemasSourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  HrisCreateTimeOffRequestDtoSchemasSourceValue,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      HrisCreateTimeOffRequestDtoSchemasSourceValue$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'HrisCreateTimeOffRequestDtoSchemasSourceValue' from JSON`,
+  );
 }
 
 /** @internal */
@@ -630,6 +771,26 @@ export namespace HrisCreateTimeOffRequestDtoType$ {
   export type Outbound = HrisCreateTimeOffRequestDtoType$Outbound;
 }
 
+export function hrisCreateTimeOffRequestDtoTypeToJSON(
+  hrisCreateTimeOffRequestDtoType: HrisCreateTimeOffRequestDtoType,
+): string {
+  return JSON.stringify(
+    HrisCreateTimeOffRequestDtoType$outboundSchema.parse(
+      hrisCreateTimeOffRequestDtoType,
+    ),
+  );
+}
+
+export function hrisCreateTimeOffRequestDtoTypeFromJSON(
+  jsonString: string,
+): SafeParseResult<HrisCreateTimeOffRequestDtoType, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => HrisCreateTimeOffRequestDtoType$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HrisCreateTimeOffRequestDtoType' from JSON`,
+  );
+}
+
 /** @internal */
 export const HrisCreateTimeOffRequestDto$inboundSchema: z.ZodType<
   HrisCreateTimeOffRequestDto,
@@ -724,4 +885,24 @@ export namespace HrisCreateTimeOffRequestDto$ {
   export const outboundSchema = HrisCreateTimeOffRequestDto$outboundSchema;
   /** @deprecated use `HrisCreateTimeOffRequestDto$Outbound` instead. */
   export type Outbound = HrisCreateTimeOffRequestDto$Outbound;
+}
+
+export function hrisCreateTimeOffRequestDtoToJSON(
+  hrisCreateTimeOffRequestDto: HrisCreateTimeOffRequestDto,
+): string {
+  return JSON.stringify(
+    HrisCreateTimeOffRequestDto$outboundSchema.parse(
+      hrisCreateTimeOffRequestDto,
+    ),
+  );
+}
+
+export function hrisCreateTimeOffRequestDtoFromJSON(
+  jsonString: string,
+): SafeParseResult<HrisCreateTimeOffRequestDto, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => HrisCreateTimeOffRequestDto$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HrisCreateTimeOffRequestDto' from JSON`,
+  );
 }

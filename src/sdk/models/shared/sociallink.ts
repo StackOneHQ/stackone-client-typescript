@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type SocialLink = {
   /**
@@ -52,4 +55,18 @@ export namespace SocialLink$ {
   export const outboundSchema = SocialLink$outboundSchema;
   /** @deprecated use `SocialLink$Outbound` instead. */
   export type Outbound = SocialLink$Outbound;
+}
+
+export function socialLinkToJSON(socialLink: SocialLink): string {
+  return JSON.stringify(SocialLink$outboundSchema.parse(socialLink));
+}
+
+export function socialLinkFromJSON(
+  jsonString: string,
+): SafeParseResult<SocialLink, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => SocialLink$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SocialLink' from JSON`,
+  );
 }

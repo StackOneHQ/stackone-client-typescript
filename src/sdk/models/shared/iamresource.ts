@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type IamResource4 = {};
 
@@ -104,6 +107,20 @@ export namespace IamResource4$ {
   export type Outbound = IamResource4$Outbound;
 }
 
+export function iamResource4ToJSON(iamResource4: IamResource4): string {
+  return JSON.stringify(IamResource4$outboundSchema.parse(iamResource4));
+}
+
+export function iamResource4FromJSON(
+  jsonString: string,
+): SafeParseResult<IamResource4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => IamResource4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'IamResource4' from JSON`,
+  );
+}
+
 /** @internal */
 export const IamResourceSourceValue$inboundSchema: z.ZodType<
   IamResourceSourceValue,
@@ -149,6 +166,24 @@ export namespace IamResourceSourceValue$ {
   export const outboundSchema = IamResourceSourceValue$outboundSchema;
   /** @deprecated use `IamResourceSourceValue$Outbound` instead. */
   export type Outbound = IamResourceSourceValue$Outbound;
+}
+
+export function iamResourceSourceValueToJSON(
+  iamResourceSourceValue: IamResourceSourceValue,
+): string {
+  return JSON.stringify(
+    IamResourceSourceValue$outboundSchema.parse(iamResourceSourceValue),
+  );
+}
+
+export function iamResourceSourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<IamResourceSourceValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => IamResourceSourceValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'IamResourceSourceValue' from JSON`,
+  );
 }
 
 /** @internal */
@@ -253,6 +288,22 @@ export namespace IamResourceType$ {
   export type Outbound = IamResourceType$Outbound;
 }
 
+export function iamResourceTypeToJSON(
+  iamResourceType: IamResourceType,
+): string {
+  return JSON.stringify(IamResourceType$outboundSchema.parse(iamResourceType));
+}
+
+export function iamResourceTypeFromJSON(
+  jsonString: string,
+): SafeParseResult<IamResourceType, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => IamResourceType$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'IamResourceType' from JSON`,
+  );
+}
+
 /** @internal */
 export const IamResource$inboundSchema: z.ZodType<
   IamResource,
@@ -324,4 +375,18 @@ export namespace IamResource$ {
   export const outboundSchema = IamResource$outboundSchema;
   /** @deprecated use `IamResource$Outbound` instead. */
   export type Outbound = IamResource$Outbound;
+}
+
+export function iamResourceToJSON(iamResource: IamResource): string {
+  return JSON.stringify(IamResource$outboundSchema.parse(iamResource));
+}
+
+export function iamResourceFromJSON(
+  jsonString: string,
+): SafeParseResult<IamResource, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => IamResource$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'IamResource' from JSON`,
+  );
 }

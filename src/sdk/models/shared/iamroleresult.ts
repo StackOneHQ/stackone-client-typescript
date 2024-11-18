@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   IamRole,
   IamRole$inboundSchema,
@@ -58,4 +61,18 @@ export namespace IamRoleResult$ {
   export const outboundSchema = IamRoleResult$outboundSchema;
   /** @deprecated use `IamRoleResult$Outbound` instead. */
   export type Outbound = IamRoleResult$Outbound;
+}
+
+export function iamRoleResultToJSON(iamRoleResult: IamRoleResult): string {
+  return JSON.stringify(IamRoleResult$outboundSchema.parse(iamRoleResult));
+}
+
+export function iamRoleResultFromJSON(
+  jsonString: string,
+): SafeParseResult<IamRoleResult, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => IamRoleResult$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'IamRoleResult' from JSON`,
+  );
 }

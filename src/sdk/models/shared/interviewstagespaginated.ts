@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   InterviewStage,
   InterviewStage$inboundSchema,
@@ -78,4 +81,22 @@ export namespace InterviewStagesPaginated$ {
   export const outboundSchema = InterviewStagesPaginated$outboundSchema;
   /** @deprecated use `InterviewStagesPaginated$Outbound` instead. */
   export type Outbound = InterviewStagesPaginated$Outbound;
+}
+
+export function interviewStagesPaginatedToJSON(
+  interviewStagesPaginated: InterviewStagesPaginated,
+): string {
+  return JSON.stringify(
+    InterviewStagesPaginated$outboundSchema.parse(interviewStagesPaginated),
+  );
+}
+
+export function interviewStagesPaginatedFromJSON(
+  jsonString: string,
+): SafeParseResult<InterviewStagesPaginated, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => InterviewStagesPaginated$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'InterviewStagesPaginated' from JSON`,
+  );
 }

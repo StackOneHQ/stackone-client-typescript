@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type LmsGetCategoryRequest = {
@@ -101,6 +104,24 @@ export namespace LmsGetCategoryRequest$ {
   export type Outbound = LmsGetCategoryRequest$Outbound;
 }
 
+export function lmsGetCategoryRequestToJSON(
+  lmsGetCategoryRequest: LmsGetCategoryRequest,
+): string {
+  return JSON.stringify(
+    LmsGetCategoryRequest$outboundSchema.parse(lmsGetCategoryRequest),
+  );
+}
+
+export function lmsGetCategoryRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<LmsGetCategoryRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LmsGetCategoryRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LmsGetCategoryRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const LmsGetCategoryResponse$inboundSchema: z.ZodType<
   LmsGetCategoryResponse,
@@ -160,4 +181,22 @@ export namespace LmsGetCategoryResponse$ {
   export const outboundSchema = LmsGetCategoryResponse$outboundSchema;
   /** @deprecated use `LmsGetCategoryResponse$Outbound` instead. */
   export type Outbound = LmsGetCategoryResponse$Outbound;
+}
+
+export function lmsGetCategoryResponseToJSON(
+  lmsGetCategoryResponse: LmsGetCategoryResponse,
+): string {
+  return JSON.stringify(
+    LmsGetCategoryResponse$outboundSchema.parse(lmsGetCategoryResponse),
+  );
+}
+
+export function lmsGetCategoryResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<LmsGetCategoryResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LmsGetCategoryResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LmsGetCategoryResponse' from JSON`,
+  );
 }

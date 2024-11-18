@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type LmsGetContentRequest = {
@@ -101,6 +104,24 @@ export namespace LmsGetContentRequest$ {
   export type Outbound = LmsGetContentRequest$Outbound;
 }
 
+export function lmsGetContentRequestToJSON(
+  lmsGetContentRequest: LmsGetContentRequest,
+): string {
+  return JSON.stringify(
+    LmsGetContentRequest$outboundSchema.parse(lmsGetContentRequest),
+  );
+}
+
+export function lmsGetContentRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<LmsGetContentRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LmsGetContentRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LmsGetContentRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const LmsGetContentResponse$inboundSchema: z.ZodType<
   LmsGetContentResponse,
@@ -160,4 +181,22 @@ export namespace LmsGetContentResponse$ {
   export const outboundSchema = LmsGetContentResponse$outboundSchema;
   /** @deprecated use `LmsGetContentResponse$Outbound` instead. */
   export type Outbound = LmsGetContentResponse$Outbound;
+}
+
+export function lmsGetContentResponseToJSON(
+  lmsGetContentResponse: LmsGetContentResponse,
+): string {
+  return JSON.stringify(
+    LmsGetContentResponse$outboundSchema.parse(lmsGetContentResponse),
+  );
+}
+
+export function lmsGetContentResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<LmsGetContentResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LmsGetContentResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LmsGetContentResponse' from JSON`,
+  );
 }

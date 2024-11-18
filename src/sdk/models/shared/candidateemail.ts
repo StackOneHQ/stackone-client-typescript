@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type CandidateEmail = {
   /**
@@ -52,4 +55,18 @@ export namespace CandidateEmail$ {
   export const outboundSchema = CandidateEmail$outboundSchema;
   /** @deprecated use `CandidateEmail$Outbound` instead. */
   export type Outbound = CandidateEmail$Outbound;
+}
+
+export function candidateEmailToJSON(candidateEmail: CandidateEmail): string {
+  return JSON.stringify(CandidateEmail$outboundSchema.parse(candidateEmail));
+}
+
+export function candidateEmailFromJSON(
+  jsonString: string,
+): SafeParseResult<CandidateEmail, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CandidateEmail$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CandidateEmail' from JSON`,
+  );
 }

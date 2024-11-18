@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   Campaign,
   Campaign$inboundSchema,
@@ -78,4 +81,22 @@ export namespace CampaignsPaginated$ {
   export const outboundSchema = CampaignsPaginated$outboundSchema;
   /** @deprecated use `CampaignsPaginated$Outbound` instead. */
   export type Outbound = CampaignsPaginated$Outbound;
+}
+
+export function campaignsPaginatedToJSON(
+  campaignsPaginated: CampaignsPaginated,
+): string {
+  return JSON.stringify(
+    CampaignsPaginated$outboundSchema.parse(campaignsPaginated),
+  );
+}
+
+export function campaignsPaginatedFromJSON(
+  jsonString: string,
+): SafeParseResult<CampaignsPaginated, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CampaignsPaginated$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CampaignsPaginated' from JSON`,
+  );
 }

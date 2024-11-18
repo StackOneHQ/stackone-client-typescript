@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   HrisDocumentApiModel,
   HrisDocumentApiModel$inboundSchema,
@@ -58,4 +61,22 @@ export namespace HrisDocumentResult$ {
   export const outboundSchema = HrisDocumentResult$outboundSchema;
   /** @deprecated use `HrisDocumentResult$Outbound` instead. */
   export type Outbound = HrisDocumentResult$Outbound;
+}
+
+export function hrisDocumentResultToJSON(
+  hrisDocumentResult: HrisDocumentResult,
+): string {
+  return JSON.stringify(
+    HrisDocumentResult$outboundSchema.parse(hrisDocumentResult),
+  );
+}
+
+export function hrisDocumentResultFromJSON(
+  jsonString: string,
+): SafeParseResult<HrisDocumentResult, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => HrisDocumentResult$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HrisDocumentResult' from JSON`,
+  );
 }

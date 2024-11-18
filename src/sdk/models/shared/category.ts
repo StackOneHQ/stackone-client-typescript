@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type Category4 = {};
 
@@ -97,6 +100,20 @@ export namespace Category4$ {
   export type Outbound = Category4$Outbound;
 }
 
+export function category4ToJSON(category4: Category4): string {
+  return JSON.stringify(Category4$outboundSchema.parse(category4));
+}
+
+export function category4FromJSON(
+  jsonString: string,
+): SafeParseResult<Category4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Category4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Category4' from JSON`,
+  );
+}
+
 /** @internal */
 export const CategorySourceValue$inboundSchema: z.ZodType<
   CategorySourceValue,
@@ -142,6 +159,24 @@ export namespace CategorySourceValue$ {
   export const outboundSchema = CategorySourceValue$outboundSchema;
   /** @deprecated use `CategorySourceValue$Outbound` instead. */
   export type Outbound = CategorySourceValue$Outbound;
+}
+
+export function categorySourceValueToJSON(
+  categorySourceValue: CategorySourceValue,
+): string {
+  return JSON.stringify(
+    CategorySourceValue$outboundSchema.parse(categorySourceValue),
+  );
+}
+
+export function categorySourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<CategorySourceValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CategorySourceValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CategorySourceValue' from JSON`,
+  );
 }
 
 /** @internal */
@@ -243,6 +278,20 @@ export namespace Level$ {
   export type Outbound = Level$Outbound;
 }
 
+export function levelToJSON(level: Level): string {
+  return JSON.stringify(Level$outboundSchema.parse(level));
+}
+
+export function levelFromJSON(
+  jsonString: string,
+): SafeParseResult<Level, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Level$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Level' from JSON`,
+  );
+}
+
 /** @internal */
 export const Category$inboundSchema: z.ZodType<
   Category,
@@ -302,4 +351,18 @@ export namespace Category$ {
   export const outboundSchema = Category$outboundSchema;
   /** @deprecated use `Category$Outbound` instead. */
   export type Outbound = Category$Outbound;
+}
+
+export function categoryToJSON(category: Category): string {
+  return JSON.stringify(Category$outboundSchema.parse(category));
+}
+
+export function categoryFromJSON(
+  jsonString: string,
+): SafeParseResult<Category, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Category$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Category' from JSON`,
+  );
 }

@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   Question,
   Question$inboundSchema,
@@ -85,6 +88,26 @@ export namespace JobPostingQuestionnaireInternal$ {
   export type Outbound = JobPostingQuestionnaireInternal$Outbound;
 }
 
+export function jobPostingQuestionnaireInternalToJSON(
+  jobPostingQuestionnaireInternal: JobPostingQuestionnaireInternal,
+): string {
+  return JSON.stringify(
+    JobPostingQuestionnaireInternal$outboundSchema.parse(
+      jobPostingQuestionnaireInternal,
+    ),
+  );
+}
+
+export function jobPostingQuestionnaireInternalFromJSON(
+  jsonString: string,
+): SafeParseResult<JobPostingQuestionnaireInternal, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => JobPostingQuestionnaireInternal$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'JobPostingQuestionnaireInternal' from JSON`,
+  );
+}
+
 /** @internal */
 export const JobPostingQuestionnaire$inboundSchema: z.ZodType<
   JobPostingQuestionnaire,
@@ -143,4 +166,22 @@ export namespace JobPostingQuestionnaire$ {
   export const outboundSchema = JobPostingQuestionnaire$outboundSchema;
   /** @deprecated use `JobPostingQuestionnaire$Outbound` instead. */
   export type Outbound = JobPostingQuestionnaire$Outbound;
+}
+
+export function jobPostingQuestionnaireToJSON(
+  jobPostingQuestionnaire: JobPostingQuestionnaire,
+): string {
+  return JSON.stringify(
+    JobPostingQuestionnaire$outboundSchema.parse(jobPostingQuestionnaire),
+  );
+}
+
+export function jobPostingQuestionnaireFromJSON(
+  jsonString: string,
+): SafeParseResult<JobPostingQuestionnaire, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => JobPostingQuestionnaire$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'JobPostingQuestionnaire' from JSON`,
+  );
 }

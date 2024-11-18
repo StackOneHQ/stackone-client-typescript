@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 /**
@@ -132,6 +135,27 @@ export namespace LmsListCompletionsQueryParamFilter$ {
   export type Outbound = LmsListCompletionsQueryParamFilter$Outbound;
 }
 
+export function lmsListCompletionsQueryParamFilterToJSON(
+  lmsListCompletionsQueryParamFilter: LmsListCompletionsQueryParamFilter,
+): string {
+  return JSON.stringify(
+    LmsListCompletionsQueryParamFilter$outboundSchema.parse(
+      lmsListCompletionsQueryParamFilter,
+    ),
+  );
+}
+
+export function lmsListCompletionsQueryParamFilterFromJSON(
+  jsonString: string,
+): SafeParseResult<LmsListCompletionsQueryParamFilter, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      LmsListCompletionsQueryParamFilter$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LmsListCompletionsQueryParamFilter' from JSON`,
+  );
+}
+
 /** @internal */
 export const LmsListCompletionsRequest$inboundSchema: z.ZodType<
   LmsListCompletionsRequest,
@@ -208,6 +232,24 @@ export namespace LmsListCompletionsRequest$ {
   export type Outbound = LmsListCompletionsRequest$Outbound;
 }
 
+export function lmsListCompletionsRequestToJSON(
+  lmsListCompletionsRequest: LmsListCompletionsRequest,
+): string {
+  return JSON.stringify(
+    LmsListCompletionsRequest$outboundSchema.parse(lmsListCompletionsRequest),
+  );
+}
+
+export function lmsListCompletionsRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<LmsListCompletionsRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LmsListCompletionsRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LmsListCompletionsRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const LmsListCompletionsResponse$inboundSchema: z.ZodType<
   LmsListCompletionsResponse,
@@ -267,4 +309,22 @@ export namespace LmsListCompletionsResponse$ {
   export const outboundSchema = LmsListCompletionsResponse$outboundSchema;
   /** @deprecated use `LmsListCompletionsResponse$Outbound` instead. */
   export type Outbound = LmsListCompletionsResponse$Outbound;
+}
+
+export function lmsListCompletionsResponseToJSON(
+  lmsListCompletionsResponse: LmsListCompletionsResponse,
+): string {
+  return JSON.stringify(
+    LmsListCompletionsResponse$outboundSchema.parse(lmsListCompletionsResponse),
+  );
+}
+
+export function lmsListCompletionsResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<LmsListCompletionsResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LmsListCompletionsResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LmsListCompletionsResponse' from JSON`,
+  );
 }

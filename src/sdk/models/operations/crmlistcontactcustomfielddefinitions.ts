@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 /**
@@ -132,6 +135,33 @@ export namespace CrmListContactCustomFieldDefinitionsQueryParamFilter$ {
     CrmListContactCustomFieldDefinitionsQueryParamFilter$Outbound;
 }
 
+export function crmListContactCustomFieldDefinitionsQueryParamFilterToJSON(
+  crmListContactCustomFieldDefinitionsQueryParamFilter:
+    CrmListContactCustomFieldDefinitionsQueryParamFilter,
+): string {
+  return JSON.stringify(
+    CrmListContactCustomFieldDefinitionsQueryParamFilter$outboundSchema.parse(
+      crmListContactCustomFieldDefinitionsQueryParamFilter,
+    ),
+  );
+}
+
+export function crmListContactCustomFieldDefinitionsQueryParamFilterFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CrmListContactCustomFieldDefinitionsQueryParamFilter,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CrmListContactCustomFieldDefinitionsQueryParamFilter$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'CrmListContactCustomFieldDefinitionsQueryParamFilter' from JSON`,
+  );
+}
+
 /** @internal */
 export const CrmListContactCustomFieldDefinitionsRequest$inboundSchema:
   z.ZodType<
@@ -219,6 +249,33 @@ export namespace CrmListContactCustomFieldDefinitionsRequest$ {
   export type Outbound = CrmListContactCustomFieldDefinitionsRequest$Outbound;
 }
 
+export function crmListContactCustomFieldDefinitionsRequestToJSON(
+  crmListContactCustomFieldDefinitionsRequest:
+    CrmListContactCustomFieldDefinitionsRequest,
+): string {
+  return JSON.stringify(
+    CrmListContactCustomFieldDefinitionsRequest$outboundSchema.parse(
+      crmListContactCustomFieldDefinitionsRequest,
+    ),
+  );
+}
+
+export function crmListContactCustomFieldDefinitionsRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CrmListContactCustomFieldDefinitionsRequest,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CrmListContactCustomFieldDefinitionsRequest$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'CrmListContactCustomFieldDefinitionsRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const CrmListContactCustomFieldDefinitionsResponse$inboundSchema:
   z.ZodType<
@@ -286,4 +343,31 @@ export namespace CrmListContactCustomFieldDefinitionsResponse$ {
     CrmListContactCustomFieldDefinitionsResponse$outboundSchema;
   /** @deprecated use `CrmListContactCustomFieldDefinitionsResponse$Outbound` instead. */
   export type Outbound = CrmListContactCustomFieldDefinitionsResponse$Outbound;
+}
+
+export function crmListContactCustomFieldDefinitionsResponseToJSON(
+  crmListContactCustomFieldDefinitionsResponse:
+    CrmListContactCustomFieldDefinitionsResponse,
+): string {
+  return JSON.stringify(
+    CrmListContactCustomFieldDefinitionsResponse$outboundSchema.parse(
+      crmListContactCustomFieldDefinitionsResponse,
+    ),
+  );
+}
+
+export function crmListContactCustomFieldDefinitionsResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CrmListContactCustomFieldDefinitionsResponse,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CrmListContactCustomFieldDefinitionsResponse$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'CrmListContactCustomFieldDefinitionsResponse' from JSON`,
+  );
 }

@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   InterviewStage,
   InterviewStage$inboundSchema,
@@ -58,4 +61,22 @@ export namespace InterviewStageResult$ {
   export const outboundSchema = InterviewStageResult$outboundSchema;
   /** @deprecated use `InterviewStageResult$Outbound` instead. */
   export type Outbound = InterviewStageResult$Outbound;
+}
+
+export function interviewStageResultToJSON(
+  interviewStageResult: InterviewStageResult,
+): string {
+  return JSON.stringify(
+    InterviewStageResult$outboundSchema.parse(interviewStageResult),
+  );
+}
+
+export function interviewStageResultFromJSON(
+  jsonString: string,
+): SafeParseResult<InterviewStageResult, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => InterviewStageResult$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'InterviewStageResult' from JSON`,
+  );
 }

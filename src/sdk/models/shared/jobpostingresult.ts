@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   JobPosting,
   JobPosting$inboundSchema,
@@ -58,4 +61,22 @@ export namespace JobPostingResult$ {
   export const outboundSchema = JobPostingResult$outboundSchema;
   /** @deprecated use `JobPostingResult$Outbound` instead. */
   export type Outbound = JobPostingResult$Outbound;
+}
+
+export function jobPostingResultToJSON(
+  jobPostingResult: JobPostingResult,
+): string {
+  return JSON.stringify(
+    JobPostingResult$outboundSchema.parse(jobPostingResult),
+  );
+}
+
+export function jobPostingResultFromJSON(
+  jsonString: string,
+): SafeParseResult<JobPostingResult, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => JobPostingResult$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'JobPostingResult' from JSON`,
+  );
 }

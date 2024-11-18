@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   Category,
   Category$inboundSchema,
@@ -38,15 +41,16 @@ export type ContentSourceValue =
   | Array<any>;
 
 export enum ContentValue {
-  Automatic = "automatic",
-  Browser = "browser",
+  Video = "video",
+  Quiz = "quiz",
+  Document = "document",
 }
 export type ContentValueOpen = OpenEnum<typeof ContentValue>;
 
 /**
- * The content launch method associated with this content
+ * The type of content
  */
-export type ContentLaunchMethod = {
+export type ContentContentType = {
   sourceValue?:
     | Content4
     | string
@@ -58,37 +62,6 @@ export type ContentLaunchMethod = {
   value?: ContentValueOpen | null | undefined;
 };
 
-export type ContentSchemas4 = {};
-
-export type ContentSchemasSourceValue =
-  | ContentSchemas4
-  | string
-  | number
-  | boolean
-  | Array<any>;
-
-export enum ContentSchemasValue {
-  Video = "video",
-  Quiz = "quiz",
-  Document = "document",
-}
-export type ContentSchemasValueOpen = OpenEnum<typeof ContentSchemasValue>;
-
-/**
- * The type of content
- */
-export type ContentContentType = {
-  sourceValue?:
-    | ContentSchemas4
-    | string
-    | number
-    | boolean
-    | Array<any>
-    | null
-    | undefined;
-  value?: ContentSchemasValueOpen | null | undefined;
-};
-
 export type Content = {
   /**
    * Whether the content is active and available for users.
@@ -98,10 +71,6 @@ export type Content = {
    * The categories associated with this content
    */
   categories?: Array<Category> | null | undefined;
-  /**
-   * The content launch method associated with this content
-   */
-  contentLaunchMethod?: ContentLaunchMethod | null | undefined;
   /**
    * The type of content
    */
@@ -194,6 +163,20 @@ export namespace Content4$ {
   export type Outbound = Content4$Outbound;
 }
 
+export function content4ToJSON(content4: Content4): string {
+  return JSON.stringify(Content4$outboundSchema.parse(content4));
+}
+
+export function content4FromJSON(
+  jsonString: string,
+): SafeParseResult<Content4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Content4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Content4' from JSON`,
+  );
+}
+
 /** @internal */
 export const ContentSourceValue$inboundSchema: z.ZodType<
   ContentSourceValue,
@@ -241,6 +224,24 @@ export namespace ContentSourceValue$ {
   export type Outbound = ContentSourceValue$Outbound;
 }
 
+export function contentSourceValueToJSON(
+  contentSourceValue: ContentSourceValue,
+): string {
+  return JSON.stringify(
+    ContentSourceValue$outboundSchema.parse(contentSourceValue),
+  );
+}
+
+export function contentSourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<ContentSourceValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ContentSourceValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ContentSourceValue' from JSON`,
+  );
+}
+
 /** @internal */
 export const ContentValue$inboundSchema: z.ZodType<
   ContentValueOpen,
@@ -274,8 +275,8 @@ export namespace ContentValue$ {
 }
 
 /** @internal */
-export const ContentLaunchMethod$inboundSchema: z.ZodType<
-  ContentLaunchMethod,
+export const ContentContentType$inboundSchema: z.ZodType<
+  ContentContentType,
   z.ZodTypeDef,
   unknown
 > = z.object({
@@ -296,7 +297,7 @@ export const ContentLaunchMethod$inboundSchema: z.ZodType<
 });
 
 /** @internal */
-export type ContentLaunchMethod$Outbound = {
+export type ContentContentType$Outbound = {
   source_value?:
     | Content4$Outbound
     | string
@@ -309,10 +310,10 @@ export type ContentLaunchMethod$Outbound = {
 };
 
 /** @internal */
-export const ContentLaunchMethod$outboundSchema: z.ZodType<
-  ContentLaunchMethod$Outbound,
+export const ContentContentType$outboundSchema: z.ZodType<
+  ContentContentType$Outbound,
   z.ZodTypeDef,
-  ContentLaunchMethod
+  ContentContentType
 > = z.object({
   sourceValue: z.nullable(
     z.union([
@@ -334,185 +335,6 @@ export const ContentLaunchMethod$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace ContentLaunchMethod$ {
-  /** @deprecated use `ContentLaunchMethod$inboundSchema` instead. */
-  export const inboundSchema = ContentLaunchMethod$inboundSchema;
-  /** @deprecated use `ContentLaunchMethod$outboundSchema` instead. */
-  export const outboundSchema = ContentLaunchMethod$outboundSchema;
-  /** @deprecated use `ContentLaunchMethod$Outbound` instead. */
-  export type Outbound = ContentLaunchMethod$Outbound;
-}
-
-/** @internal */
-export const ContentSchemas4$inboundSchema: z.ZodType<
-  ContentSchemas4,
-  z.ZodTypeDef,
-  unknown
-> = z.object({});
-
-/** @internal */
-export type ContentSchemas4$Outbound = {};
-
-/** @internal */
-export const ContentSchemas4$outboundSchema: z.ZodType<
-  ContentSchemas4$Outbound,
-  z.ZodTypeDef,
-  ContentSchemas4
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ContentSchemas4$ {
-  /** @deprecated use `ContentSchemas4$inboundSchema` instead. */
-  export const inboundSchema = ContentSchemas4$inboundSchema;
-  /** @deprecated use `ContentSchemas4$outboundSchema` instead. */
-  export const outboundSchema = ContentSchemas4$outboundSchema;
-  /** @deprecated use `ContentSchemas4$Outbound` instead. */
-  export type Outbound = ContentSchemas4$Outbound;
-}
-
-/** @internal */
-export const ContentSchemasSourceValue$inboundSchema: z.ZodType<
-  ContentSchemasSourceValue,
-  z.ZodTypeDef,
-  unknown
-> = z.union([
-  z.lazy(() => ContentSchemas4$inboundSchema),
-  z.string(),
-  z.number(),
-  z.boolean(),
-  z.array(z.any()),
-]);
-
-/** @internal */
-export type ContentSchemasSourceValue$Outbound =
-  | ContentSchemas4$Outbound
-  | string
-  | number
-  | boolean
-  | Array<any>;
-
-/** @internal */
-export const ContentSchemasSourceValue$outboundSchema: z.ZodType<
-  ContentSchemasSourceValue$Outbound,
-  z.ZodTypeDef,
-  ContentSchemasSourceValue
-> = z.union([
-  z.lazy(() => ContentSchemas4$outboundSchema),
-  z.string(),
-  z.number(),
-  z.boolean(),
-  z.array(z.any()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ContentSchemasSourceValue$ {
-  /** @deprecated use `ContentSchemasSourceValue$inboundSchema` instead. */
-  export const inboundSchema = ContentSchemasSourceValue$inboundSchema;
-  /** @deprecated use `ContentSchemasSourceValue$outboundSchema` instead. */
-  export const outboundSchema = ContentSchemasSourceValue$outboundSchema;
-  /** @deprecated use `ContentSchemasSourceValue$Outbound` instead. */
-  export type Outbound = ContentSchemasSourceValue$Outbound;
-}
-
-/** @internal */
-export const ContentSchemasValue$inboundSchema: z.ZodType<
-  ContentSchemasValueOpen,
-  z.ZodTypeDef,
-  unknown
-> = z
-  .union([
-    z.nativeEnum(ContentSchemasValue),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
-
-/** @internal */
-export const ContentSchemasValue$outboundSchema: z.ZodType<
-  ContentSchemasValueOpen,
-  z.ZodTypeDef,
-  ContentSchemasValueOpen
-> = z.union([
-  z.nativeEnum(ContentSchemasValue),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace ContentSchemasValue$ {
-  /** @deprecated use `ContentSchemasValue$inboundSchema` instead. */
-  export const inboundSchema = ContentSchemasValue$inboundSchema;
-  /** @deprecated use `ContentSchemasValue$outboundSchema` instead. */
-  export const outboundSchema = ContentSchemasValue$outboundSchema;
-}
-
-/** @internal */
-export const ContentContentType$inboundSchema: z.ZodType<
-  ContentContentType,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  source_value: z.nullable(
-    z.union([
-      z.lazy(() => ContentSchemas4$inboundSchema),
-      z.string(),
-      z.number(),
-      z.boolean(),
-      z.array(z.any()),
-    ]),
-  ).optional(),
-  value: z.nullable(ContentSchemasValue$inboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "source_value": "sourceValue",
-  });
-});
-
-/** @internal */
-export type ContentContentType$Outbound = {
-  source_value?:
-    | ContentSchemas4$Outbound
-    | string
-    | number
-    | boolean
-    | Array<any>
-    | null
-    | undefined;
-  value?: string | null | undefined;
-};
-
-/** @internal */
-export const ContentContentType$outboundSchema: z.ZodType<
-  ContentContentType$Outbound,
-  z.ZodTypeDef,
-  ContentContentType
-> = z.object({
-  sourceValue: z.nullable(
-    z.union([
-      z.lazy(() => ContentSchemas4$outboundSchema),
-      z.string(),
-      z.number(),
-      z.boolean(),
-      z.array(z.any()),
-    ]),
-  ).optional(),
-  value: z.nullable(ContentSchemasValue$outboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    sourceValue: "source_value",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
 export namespace ContentContentType$ {
   /** @deprecated use `ContentContentType$inboundSchema` instead. */
   export const inboundSchema = ContentContentType$inboundSchema;
@@ -522,14 +344,29 @@ export namespace ContentContentType$ {
   export type Outbound = ContentContentType$Outbound;
 }
 
+export function contentContentTypeToJSON(
+  contentContentType: ContentContentType,
+): string {
+  return JSON.stringify(
+    ContentContentType$outboundSchema.parse(contentContentType),
+  );
+}
+
+export function contentContentTypeFromJSON(
+  jsonString: string,
+): SafeParseResult<ContentContentType, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ContentContentType$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ContentContentType' from JSON`,
+  );
+}
+
 /** @internal */
 export const Content$inboundSchema: z.ZodType<Content, z.ZodTypeDef, unknown> =
   z.object({
     active: z.nullable(z.boolean()).optional(),
     categories: z.nullable(z.array(Category$inboundSchema)).optional(),
-    content_launch_method: z.nullable(
-      z.lazy(() => ContentLaunchMethod$inboundSchema),
-    ).optional(),
     content_type: z.nullable(z.lazy(() => ContentContentType$inboundSchema))
       .optional(),
     content_url: z.nullable(z.string()).optional(),
@@ -548,7 +385,6 @@ export const Content$inboundSchema: z.ZodType<Content, z.ZodTypeDef, unknown> =
     unified_custom_fields: z.nullable(z.record(z.any())).optional(),
   }).transform((v) => {
     return remap$(v, {
-      "content_launch_method": "contentLaunchMethod",
       "content_type": "contentType",
       "content_url": "contentUrl",
       "course_ids": "courseIds",
@@ -564,7 +400,6 @@ export const Content$inboundSchema: z.ZodType<Content, z.ZodTypeDef, unknown> =
 export type Content$Outbound = {
   active?: boolean | null | undefined;
   categories?: Array<Category$Outbound> | null | undefined;
-  content_launch_method?: ContentLaunchMethod$Outbound | null | undefined;
   content_type?: ContentContentType$Outbound | null | undefined;
   content_url?: string | null | undefined;
   course_ids?: Array<string> | null | undefined;
@@ -590,9 +425,6 @@ export const Content$outboundSchema: z.ZodType<
 > = z.object({
   active: z.nullable(z.boolean()).optional(),
   categories: z.nullable(z.array(Category$outboundSchema)).optional(),
-  contentLaunchMethod: z.nullable(
-    z.lazy(() => ContentLaunchMethod$outboundSchema),
-  ).optional(),
   contentType: z.nullable(z.lazy(() => ContentContentType$outboundSchema))
     .optional(),
   contentUrl: z.nullable(z.string()).optional(),
@@ -611,7 +443,6 @@ export const Content$outboundSchema: z.ZodType<
   unifiedCustomFields: z.nullable(z.record(z.any())).optional(),
 }).transform((v) => {
   return remap$(v, {
-    contentLaunchMethod: "content_launch_method",
     contentType: "content_type",
     contentUrl: "content_url",
     courseIds: "course_ids",
@@ -634,4 +465,18 @@ export namespace Content$ {
   export const outboundSchema = Content$outboundSchema;
   /** @deprecated use `Content$Outbound` instead. */
   export type Outbound = Content$Outbound;
+}
+
+export function contentToJSON(content: Content): string {
+  return JSON.stringify(Content$outboundSchema.parse(content));
+}
+
+export function contentFromJSON(
+  jsonString: string,
+): SafeParseResult<Content, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Content$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Content' from JSON`,
+  );
 }

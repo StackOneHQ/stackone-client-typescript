@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type AtsGetInterviewStageRequest = {
@@ -101,6 +104,26 @@ export namespace AtsGetInterviewStageRequest$ {
   export type Outbound = AtsGetInterviewStageRequest$Outbound;
 }
 
+export function atsGetInterviewStageRequestToJSON(
+  atsGetInterviewStageRequest: AtsGetInterviewStageRequest,
+): string {
+  return JSON.stringify(
+    AtsGetInterviewStageRequest$outboundSchema.parse(
+      atsGetInterviewStageRequest,
+    ),
+  );
+}
+
+export function atsGetInterviewStageRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<AtsGetInterviewStageRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AtsGetInterviewStageRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AtsGetInterviewStageRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const AtsGetInterviewStageResponse$inboundSchema: z.ZodType<
   AtsGetInterviewStageResponse,
@@ -160,4 +183,24 @@ export namespace AtsGetInterviewStageResponse$ {
   export const outboundSchema = AtsGetInterviewStageResponse$outboundSchema;
   /** @deprecated use `AtsGetInterviewStageResponse$Outbound` instead. */
   export type Outbound = AtsGetInterviewStageResponse$Outbound;
+}
+
+export function atsGetInterviewStageResponseToJSON(
+  atsGetInterviewStageResponse: AtsGetInterviewStageResponse,
+): string {
+  return JSON.stringify(
+    AtsGetInterviewStageResponse$outboundSchema.parse(
+      atsGetInterviewStageResponse,
+    ),
+  );
+}
+
+export function atsGetInterviewStageResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<AtsGetInterviewStageResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AtsGetInterviewStageResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AtsGetInterviewStageResponse' from JSON`,
+  );
 }

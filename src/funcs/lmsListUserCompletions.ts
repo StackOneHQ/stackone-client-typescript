@@ -86,6 +86,9 @@ export async function lmsListUserCompletions(
   const context = {
     operationID: "lms_list_user_completions",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.security,
     retryConfig: options?.retries
       || client._options.retryConfig

@@ -6,32 +6,32 @@
 ### `string`
 
 ```typescript
-const value: string = "abc";
+const value: string = "<value>";
 ```
 
 ### `number`
 
 ```typescript
-const value: number = abc;
+const value: number = 5436.78;
 ```
 
 ### `boolean`
 
 ```typescript
-const value: boolean = true;
+const value: boolean = false;
 ```
 
-### `shared.WorkEligibilitySchemasDocumentFileFormat4`
+### `shared.WorkEligibilitySchemas4`
 
 ```typescript
-const value: shared.WorkEligibilitySchemasDocumentFileFormat4 = {};
+const value: shared.WorkEligibilitySchemas4 = {};
 ```
 
 ### `any[]`
 
 ```typescript
 const value: any[] = [
-  "abc",
+  "<value>",
 ];
 ```
 

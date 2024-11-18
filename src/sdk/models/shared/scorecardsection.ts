@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   Field,
   Field$inboundSchema,
@@ -81,4 +84,22 @@ export namespace ScorecardSection$ {
   export const outboundSchema = ScorecardSection$outboundSchema;
   /** @deprecated use `ScorecardSection$Outbound` instead. */
   export type Outbound = ScorecardSection$Outbound;
+}
+
+export function scorecardSectionToJSON(
+  scorecardSection: ScorecardSection,
+): string {
+  return JSON.stringify(
+    ScorecardSection$outboundSchema.parse(scorecardSection),
+  );
+}
+
+export function scorecardSectionFromJSON(
+  jsonString: string,
+): SafeParseResult<ScorecardSection, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ScorecardSection$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ScorecardSection' from JSON`,
+  );
 }

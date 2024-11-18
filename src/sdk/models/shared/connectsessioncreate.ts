@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export enum ConnectSessionCreateCategories {
   Ats = "ats",
@@ -116,6 +119,20 @@ export namespace Metadata$ {
   export type Outbound = Metadata$Outbound;
 }
 
+export function metadataToJSON(metadata: Metadata): string {
+  return JSON.stringify(Metadata$outboundSchema.parse(metadata));
+}
+
+export function metadataFromJSON(
+  jsonString: string,
+): SafeParseResult<Metadata, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Metadata$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Metadata' from JSON`,
+  );
+}
+
 /** @internal */
 export const ConnectSessionCreate$inboundSchema: z.ZodType<
   ConnectSessionCreate,
@@ -195,4 +212,22 @@ export namespace ConnectSessionCreate$ {
   export const outboundSchema = ConnectSessionCreate$outboundSchema;
   /** @deprecated use `ConnectSessionCreate$Outbound` instead. */
   export type Outbound = ConnectSessionCreate$Outbound;
+}
+
+export function connectSessionCreateToJSON(
+  connectSessionCreate: ConnectSessionCreate,
+): string {
+  return JSON.stringify(
+    ConnectSessionCreate$outboundSchema.parse(connectSessionCreate),
+  );
+}
+
+export function connectSessionCreateFromJSON(
+  jsonString: string,
+): SafeParseResult<ConnectSessionCreate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ConnectSessionCreate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ConnectSessionCreate' from JSON`,
+  );
 }

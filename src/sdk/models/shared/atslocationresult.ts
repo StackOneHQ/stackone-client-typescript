@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   ATSLocation,
   ATSLocation$inboundSchema,
@@ -58,4 +61,22 @@ export namespace ATSLocationResult$ {
   export const outboundSchema = ATSLocationResult$outboundSchema;
   /** @deprecated use `ATSLocationResult$Outbound` instead. */
   export type Outbound = ATSLocationResult$Outbound;
+}
+
+export function atsLocationResultToJSON(
+  atsLocationResult: ATSLocationResult,
+): string {
+  return JSON.stringify(
+    ATSLocationResult$outboundSchema.parse(atsLocationResult),
+  );
+}
+
+export function atsLocationResultFromJSON(
+  jsonString: string,
+): SafeParseResult<ATSLocationResult, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ATSLocationResult$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ATSLocationResult' from JSON`,
+  );
 }

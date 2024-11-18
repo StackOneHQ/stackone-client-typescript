@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   HRISCostCenter,
   HRISCostCenter$inboundSchema,
@@ -58,4 +61,22 @@ export namespace HRISCostCenterResult$ {
   export const outboundSchema = HRISCostCenterResult$outboundSchema;
   /** @deprecated use `HRISCostCenterResult$Outbound` instead. */
   export type Outbound = HRISCostCenterResult$Outbound;
+}
+
+export function hrisCostCenterResultToJSON(
+  hrisCostCenterResult: HRISCostCenterResult,
+): string {
+  return JSON.stringify(
+    HRISCostCenterResult$outboundSchema.parse(hrisCostCenterResult),
+  );
+}
+
+export function hrisCostCenterResultFromJSON(
+  jsonString: string,
+): SafeParseResult<HRISCostCenterResult, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => HRISCostCenterResult$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HRISCostCenterResult' from JSON`,
+  );
 }

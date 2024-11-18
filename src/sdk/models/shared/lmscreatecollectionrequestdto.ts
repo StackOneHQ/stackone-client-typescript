@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   CreateCategoriesApiModel,
   CreateCategoriesApiModel$inboundSchema,
@@ -139,4 +142,24 @@ export namespace LmsCreateCollectionRequestDto$ {
   export const outboundSchema = LmsCreateCollectionRequestDto$outboundSchema;
   /** @deprecated use `LmsCreateCollectionRequestDto$Outbound` instead. */
   export type Outbound = LmsCreateCollectionRequestDto$Outbound;
+}
+
+export function lmsCreateCollectionRequestDtoToJSON(
+  lmsCreateCollectionRequestDto: LmsCreateCollectionRequestDto,
+): string {
+  return JSON.stringify(
+    LmsCreateCollectionRequestDto$outboundSchema.parse(
+      lmsCreateCollectionRequestDto,
+    ),
+  );
+}
+
+export function lmsCreateCollectionRequestDtoFromJSON(
+  jsonString: string,
+): SafeParseResult<LmsCreateCollectionRequestDto, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LmsCreateCollectionRequestDto$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LmsCreateCollectionRequestDto' from JSON`,
+  );
 }

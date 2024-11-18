@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 /**
@@ -128,6 +131,26 @@ export namespace AtsListOffersQueryParamFilter$ {
   export type Outbound = AtsListOffersQueryParamFilter$Outbound;
 }
 
+export function atsListOffersQueryParamFilterToJSON(
+  atsListOffersQueryParamFilter: AtsListOffersQueryParamFilter,
+): string {
+  return JSON.stringify(
+    AtsListOffersQueryParamFilter$outboundSchema.parse(
+      atsListOffersQueryParamFilter,
+    ),
+  );
+}
+
+export function atsListOffersQueryParamFilterFromJSON(
+  jsonString: string,
+): SafeParseResult<AtsListOffersQueryParamFilter, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AtsListOffersQueryParamFilter$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AtsListOffersQueryParamFilter' from JSON`,
+  );
+}
+
 /** @internal */
 export const AtsListOffersRequest$inboundSchema: z.ZodType<
   AtsListOffersRequest,
@@ -207,6 +230,24 @@ export namespace AtsListOffersRequest$ {
   export type Outbound = AtsListOffersRequest$Outbound;
 }
 
+export function atsListOffersRequestToJSON(
+  atsListOffersRequest: AtsListOffersRequest,
+): string {
+  return JSON.stringify(
+    AtsListOffersRequest$outboundSchema.parse(atsListOffersRequest),
+  );
+}
+
+export function atsListOffersRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<AtsListOffersRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AtsListOffersRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AtsListOffersRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const AtsListOffersResponse$inboundSchema: z.ZodType<
   AtsListOffersResponse,
@@ -266,4 +307,22 @@ export namespace AtsListOffersResponse$ {
   export const outboundSchema = AtsListOffersResponse$outboundSchema;
   /** @deprecated use `AtsListOffersResponse$Outbound` instead. */
   export type Outbound = AtsListOffersResponse$Outbound;
+}
+
+export function atsListOffersResponseToJSON(
+  atsListOffersResponse: AtsListOffersResponse,
+): string {
+  return JSON.stringify(
+    AtsListOffersResponse$outboundSchema.parse(atsListOffersResponse),
+  );
+}
+
+export function atsListOffersResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<AtsListOffersResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AtsListOffersResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AtsListOffersResponse' from JSON`,
+  );
 }

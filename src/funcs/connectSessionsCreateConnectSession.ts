@@ -65,6 +65,9 @@ export async function connectSessionsCreateConnectSession(
   const context = {
     operationID: "stackone_create_connect_session",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.security,
     retryConfig: options?.retries
       || client._options.retryConfig

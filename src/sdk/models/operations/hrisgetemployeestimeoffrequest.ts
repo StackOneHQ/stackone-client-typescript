@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type HrisGetEmployeesTimeOffRequestRequest = {
@@ -107,6 +110,27 @@ export namespace HrisGetEmployeesTimeOffRequestRequest$ {
   export type Outbound = HrisGetEmployeesTimeOffRequestRequest$Outbound;
 }
 
+export function hrisGetEmployeesTimeOffRequestRequestToJSON(
+  hrisGetEmployeesTimeOffRequestRequest: HrisGetEmployeesTimeOffRequestRequest,
+): string {
+  return JSON.stringify(
+    HrisGetEmployeesTimeOffRequestRequest$outboundSchema.parse(
+      hrisGetEmployeesTimeOffRequestRequest,
+    ),
+  );
+}
+
+export function hrisGetEmployeesTimeOffRequestRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<HrisGetEmployeesTimeOffRequestRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      HrisGetEmployeesTimeOffRequestRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HrisGetEmployeesTimeOffRequestRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const HrisGetEmployeesTimeOffRequestResponse$inboundSchema: z.ZodType<
   HrisGetEmployeesTimeOffRequestResponse,
@@ -168,4 +192,26 @@ export namespace HrisGetEmployeesTimeOffRequestResponse$ {
     HrisGetEmployeesTimeOffRequestResponse$outboundSchema;
   /** @deprecated use `HrisGetEmployeesTimeOffRequestResponse$Outbound` instead. */
   export type Outbound = HrisGetEmployeesTimeOffRequestResponse$Outbound;
+}
+
+export function hrisGetEmployeesTimeOffRequestResponseToJSON(
+  hrisGetEmployeesTimeOffRequestResponse:
+    HrisGetEmployeesTimeOffRequestResponse,
+): string {
+  return JSON.stringify(
+    HrisGetEmployeesTimeOffRequestResponse$outboundSchema.parse(
+      hrisGetEmployeesTimeOffRequestResponse,
+    ),
+  );
+}
+
+export function hrisGetEmployeesTimeOffRequestResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<HrisGetEmployeesTimeOffRequestResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      HrisGetEmployeesTimeOffRequestResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HrisGetEmployeesTimeOffRequestResponse' from JSON`,
+  );
 }

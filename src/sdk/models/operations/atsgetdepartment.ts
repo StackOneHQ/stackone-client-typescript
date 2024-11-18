@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type AtsGetDepartmentRequest = {
@@ -101,6 +104,24 @@ export namespace AtsGetDepartmentRequest$ {
   export type Outbound = AtsGetDepartmentRequest$Outbound;
 }
 
+export function atsGetDepartmentRequestToJSON(
+  atsGetDepartmentRequest: AtsGetDepartmentRequest,
+): string {
+  return JSON.stringify(
+    AtsGetDepartmentRequest$outboundSchema.parse(atsGetDepartmentRequest),
+  );
+}
+
+export function atsGetDepartmentRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<AtsGetDepartmentRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AtsGetDepartmentRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AtsGetDepartmentRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const AtsGetDepartmentResponse$inboundSchema: z.ZodType<
   AtsGetDepartmentResponse,
@@ -160,4 +181,22 @@ export namespace AtsGetDepartmentResponse$ {
   export const outboundSchema = AtsGetDepartmentResponse$outboundSchema;
   /** @deprecated use `AtsGetDepartmentResponse$Outbound` instead. */
   export type Outbound = AtsGetDepartmentResponse$Outbound;
+}
+
+export function atsGetDepartmentResponseToJSON(
+  atsGetDepartmentResponse: AtsGetDepartmentResponse,
+): string {
+  return JSON.stringify(
+    AtsGetDepartmentResponse$outboundSchema.parse(atsGetDepartmentResponse),
+  );
+}
+
+export function atsGetDepartmentResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<AtsGetDepartmentResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AtsGetDepartmentResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AtsGetDepartmentResponse' from JSON`,
+  );
 }

@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type MarketingUpdateEmailTemplateRequest = {
@@ -94,6 +97,27 @@ export namespace MarketingUpdateEmailTemplateRequest$ {
   export type Outbound = MarketingUpdateEmailTemplateRequest$Outbound;
 }
 
+export function marketingUpdateEmailTemplateRequestToJSON(
+  marketingUpdateEmailTemplateRequest: MarketingUpdateEmailTemplateRequest,
+): string {
+  return JSON.stringify(
+    MarketingUpdateEmailTemplateRequest$outboundSchema.parse(
+      marketingUpdateEmailTemplateRequest,
+    ),
+  );
+}
+
+export function marketingUpdateEmailTemplateRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<MarketingUpdateEmailTemplateRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      MarketingUpdateEmailTemplateRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'MarketingUpdateEmailTemplateRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const MarketingUpdateEmailTemplateResponse$inboundSchema: z.ZodType<
   MarketingUpdateEmailTemplateResponse,
@@ -155,4 +179,25 @@ export namespace MarketingUpdateEmailTemplateResponse$ {
     MarketingUpdateEmailTemplateResponse$outboundSchema;
   /** @deprecated use `MarketingUpdateEmailTemplateResponse$Outbound` instead. */
   export type Outbound = MarketingUpdateEmailTemplateResponse$Outbound;
+}
+
+export function marketingUpdateEmailTemplateResponseToJSON(
+  marketingUpdateEmailTemplateResponse: MarketingUpdateEmailTemplateResponse,
+): string {
+  return JSON.stringify(
+    MarketingUpdateEmailTemplateResponse$outboundSchema.parse(
+      marketingUpdateEmailTemplateResponse,
+    ),
+  );
+}
+
+export function marketingUpdateEmailTemplateResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<MarketingUpdateEmailTemplateResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      MarketingUpdateEmailTemplateResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'MarketingUpdateEmailTemplateResponse' from JSON`,
+  );
 }

@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   ScorecardSection,
   ScorecardSection$inboundSchema,
@@ -239,4 +242,18 @@ export namespace Scorecard$ {
   export const outboundSchema = Scorecard$outboundSchema;
   /** @deprecated use `Scorecard$Outbound` instead. */
   export type Outbound = Scorecard$Outbound;
+}
+
+export function scorecardToJSON(scorecard: Scorecard): string {
+  return JSON.stringify(Scorecard$outboundSchema.parse(scorecard));
+}
+
+export function scorecardFromJSON(
+  jsonString: string,
+): SafeParseResult<Scorecard, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Scorecard$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Scorecard' from JSON`,
+  );
 }

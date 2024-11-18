@@ -22,7 +22,6 @@ let value: LmsGetContentResponse = {
           },
         },
       ],
-      contentLaunchMethod: {},
       contentUrl: "https://www.youtube.com/watch?v=16873",
       courseIds: [
         "16873-SOFTWARE-ENG-COURSE",
@@ -61,7 +60,7 @@ let value: LmsGetContentResponse = {
     },
   },
   contentType: "<value>",
-  statusCode: 400,
+  statusCode: 201,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

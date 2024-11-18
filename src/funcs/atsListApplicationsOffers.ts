@@ -96,6 +96,9 @@ export async function atsListApplicationsOffers(
   const context = {
     operationID: "ats_list_applications_offers",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.security,
     retryConfig: options?.retries
       || client._options.retryConfig

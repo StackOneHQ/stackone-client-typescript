@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type Department = {
   /**
@@ -74,4 +77,18 @@ export namespace Department$ {
   export const outboundSchema = Department$outboundSchema;
   /** @deprecated use `Department$Outbound` instead. */
   export type Outbound = Department$Outbound;
+}
+
+export function departmentToJSON(department: Department): string {
+  return JSON.stringify(Department$outboundSchema.parse(department));
+}
+
+export function departmentFromJSON(
+  jsonString: string,
+): SafeParseResult<Department, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Department$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Department' from JSON`,
+  );
 }

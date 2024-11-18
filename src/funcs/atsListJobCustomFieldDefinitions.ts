@@ -90,6 +90,9 @@ export async function atsListJobCustomFieldDefinitions(
   const context = {
     operationID: "ats_list_job_custom_field_definitions",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.security,
     retryConfig: options?.retries
       || client._options.retryConfig

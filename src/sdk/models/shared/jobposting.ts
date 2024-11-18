@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   JobPostingCompensation,
   JobPostingCompensation$inboundSchema,
@@ -282,6 +285,24 @@ export namespace JobPostingContent$ {
   export type Outbound = JobPostingContent$Outbound;
 }
 
+export function jobPostingContentToJSON(
+  jobPostingContent: JobPostingContent,
+): string {
+  return JSON.stringify(
+    JobPostingContent$outboundSchema.parse(jobPostingContent),
+  );
+}
+
+export function jobPostingContentFromJSON(
+  jsonString: string,
+): SafeParseResult<JobPostingContent, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => JobPostingContent$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'JobPostingContent' from JSON`,
+  );
+}
+
 /** @internal */
 export const JobPosting4$inboundSchema: z.ZodType<
   JobPosting4,
@@ -310,6 +331,20 @@ export namespace JobPosting4$ {
   export const outboundSchema = JobPosting4$outboundSchema;
   /** @deprecated use `JobPosting4$Outbound` instead. */
   export type Outbound = JobPosting4$Outbound;
+}
+
+export function jobPosting4ToJSON(jobPosting4: JobPosting4): string {
+  return JSON.stringify(JobPosting4$outboundSchema.parse(jobPosting4));
+}
+
+export function jobPosting4FromJSON(
+  jsonString: string,
+): SafeParseResult<JobPosting4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => JobPosting4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'JobPosting4' from JSON`,
+  );
 }
 
 /** @internal */
@@ -357,6 +392,24 @@ export namespace JobPostingSourceValue$ {
   export const outboundSchema = JobPostingSourceValue$outboundSchema;
   /** @deprecated use `JobPostingSourceValue$Outbound` instead. */
   export type Outbound = JobPostingSourceValue$Outbound;
+}
+
+export function jobPostingSourceValueToJSON(
+  jobPostingSourceValue: JobPostingSourceValue,
+): string {
+  return JSON.stringify(
+    JobPostingSourceValue$outboundSchema.parse(jobPostingSourceValue),
+  );
+}
+
+export function jobPostingSourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<JobPostingSourceValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => JobPostingSourceValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'JobPostingSourceValue' from JSON`,
+  );
 }
 
 /** @internal */
@@ -461,6 +514,26 @@ export namespace JobPostingEmploymentContractType$ {
   export type Outbound = JobPostingEmploymentContractType$Outbound;
 }
 
+export function jobPostingEmploymentContractTypeToJSON(
+  jobPostingEmploymentContractType: JobPostingEmploymentContractType,
+): string {
+  return JSON.stringify(
+    JobPostingEmploymentContractType$outboundSchema.parse(
+      jobPostingEmploymentContractType,
+    ),
+  );
+}
+
+export function jobPostingEmploymentContractTypeFromJSON(
+  jsonString: string,
+): SafeParseResult<JobPostingEmploymentContractType, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => JobPostingEmploymentContractType$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'JobPostingEmploymentContractType' from JSON`,
+  );
+}
+
 /** @internal */
 export const JobPostingSchemas4$inboundSchema: z.ZodType<
   JobPostingSchemas4,
@@ -489,6 +562,24 @@ export namespace JobPostingSchemas4$ {
   export const outboundSchema = JobPostingSchemas4$outboundSchema;
   /** @deprecated use `JobPostingSchemas4$Outbound` instead. */
   export type Outbound = JobPostingSchemas4$Outbound;
+}
+
+export function jobPostingSchemas4ToJSON(
+  jobPostingSchemas4: JobPostingSchemas4,
+): string {
+  return JSON.stringify(
+    JobPostingSchemas4$outboundSchema.parse(jobPostingSchemas4),
+  );
+}
+
+export function jobPostingSchemas4FromJSON(
+  jsonString: string,
+): SafeParseResult<JobPostingSchemas4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => JobPostingSchemas4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'JobPostingSchemas4' from JSON`,
+  );
 }
 
 /** @internal */
@@ -536,6 +627,26 @@ export namespace JobPostingSchemasSourceValue$ {
   export const outboundSchema = JobPostingSchemasSourceValue$outboundSchema;
   /** @deprecated use `JobPostingSchemasSourceValue$Outbound` instead. */
   export type Outbound = JobPostingSchemasSourceValue$Outbound;
+}
+
+export function jobPostingSchemasSourceValueToJSON(
+  jobPostingSchemasSourceValue: JobPostingSchemasSourceValue,
+): string {
+  return JSON.stringify(
+    JobPostingSchemasSourceValue$outboundSchema.parse(
+      jobPostingSchemasSourceValue,
+    ),
+  );
+}
+
+export function jobPostingSchemasSourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<JobPostingSchemasSourceValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => JobPostingSchemasSourceValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'JobPostingSchemasSourceValue' from JSON`,
+  );
 }
 
 /** @internal */
@@ -640,6 +751,24 @@ export namespace JobPostingEmploymentType$ {
   export type Outbound = JobPostingEmploymentType$Outbound;
 }
 
+export function jobPostingEmploymentTypeToJSON(
+  jobPostingEmploymentType: JobPostingEmploymentType,
+): string {
+  return JSON.stringify(
+    JobPostingEmploymentType$outboundSchema.parse(jobPostingEmploymentType),
+  );
+}
+
+export function jobPostingEmploymentTypeFromJSON(
+  jsonString: string,
+): SafeParseResult<JobPostingEmploymentType, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => JobPostingEmploymentType$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'JobPostingEmploymentType' from JSON`,
+  );
+}
+
 /** @internal */
 export const Internal$inboundSchema: z.ZodType<
   InternalOpen,
@@ -702,6 +831,24 @@ export namespace JobPostingSchemasStatus4$ {
   export type Outbound = JobPostingSchemasStatus4$Outbound;
 }
 
+export function jobPostingSchemasStatus4ToJSON(
+  jobPostingSchemasStatus4: JobPostingSchemasStatus4,
+): string {
+  return JSON.stringify(
+    JobPostingSchemasStatus4$outboundSchema.parse(jobPostingSchemasStatus4),
+  );
+}
+
+export function jobPostingSchemasStatus4FromJSON(
+  jsonString: string,
+): SafeParseResult<JobPostingSchemasStatus4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => JobPostingSchemasStatus4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'JobPostingSchemasStatus4' from JSON`,
+  );
+}
+
 /** @internal */
 export const JobPostingSchemasStatusSourceValue$inboundSchema: z.ZodType<
   JobPostingSchemasStatusSourceValue,
@@ -748,6 +895,27 @@ export namespace JobPostingSchemasStatusSourceValue$ {
     JobPostingSchemasStatusSourceValue$outboundSchema;
   /** @deprecated use `JobPostingSchemasStatusSourceValue$Outbound` instead. */
   export type Outbound = JobPostingSchemasStatusSourceValue$Outbound;
+}
+
+export function jobPostingSchemasStatusSourceValueToJSON(
+  jobPostingSchemasStatusSourceValue: JobPostingSchemasStatusSourceValue,
+): string {
+  return JSON.stringify(
+    JobPostingSchemasStatusSourceValue$outboundSchema.parse(
+      jobPostingSchemasStatusSourceValue,
+    ),
+  );
+}
+
+export function jobPostingSchemasStatusSourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<JobPostingSchemasStatusSourceValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      JobPostingSchemasStatusSourceValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'JobPostingSchemasStatusSourceValue' from JSON`,
+  );
 }
 
 /** @internal */
@@ -850,6 +1018,24 @@ export namespace JobPostingStatus$ {
   export const outboundSchema = JobPostingStatus$outboundSchema;
   /** @deprecated use `JobPostingStatus$Outbound` instead. */
   export type Outbound = JobPostingStatus$Outbound;
+}
+
+export function jobPostingStatusToJSON(
+  jobPostingStatus: JobPostingStatus,
+): string {
+  return JSON.stringify(
+    JobPostingStatus$outboundSchema.parse(jobPostingStatus),
+  );
+}
+
+export function jobPostingStatusFromJSON(
+  jsonString: string,
+): SafeParseResult<JobPostingStatus, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => JobPostingStatus$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'JobPostingStatus' from JSON`,
+  );
 }
 
 /** @internal */
@@ -983,4 +1169,18 @@ export namespace JobPosting$ {
   export const outboundSchema = JobPosting$outboundSchema;
   /** @deprecated use `JobPosting$Outbound` instead. */
   export type Outbound = JobPosting$Outbound;
+}
+
+export function jobPostingToJSON(jobPosting: JobPosting): string {
+  return JSON.stringify(JobPosting$outboundSchema.parse(jobPosting));
+}
+
+export function jobPostingFromJSON(
+  jsonString: string,
+): SafeParseResult<JobPosting, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => JobPosting$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'JobPosting' from JSON`,
+  );
 }

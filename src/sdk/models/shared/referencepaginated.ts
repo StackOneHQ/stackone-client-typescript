@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   RawResponse,
   RawResponse$inboundSchema,
@@ -78,4 +81,22 @@ export namespace ReferencePaginated$ {
   export const outboundSchema = ReferencePaginated$outboundSchema;
   /** @deprecated use `ReferencePaginated$Outbound` instead. */
   export type Outbound = ReferencePaginated$Outbound;
+}
+
+export function referencePaginatedToJSON(
+  referencePaginated: ReferencePaginated,
+): string {
+  return JSON.stringify(
+    ReferencePaginated$outboundSchema.parse(referencePaginated),
+  );
+}
+
+export function referencePaginatedFromJSON(
+  jsonString: string,
+): SafeParseResult<ReferencePaginated, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ReferencePaginated$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ReferencePaginated' from JSON`,
+  );
 }

@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type HrisDownloadEmployeeDocumentRequest = {
   /**
@@ -92,6 +95,27 @@ export namespace HrisDownloadEmployeeDocumentRequest$ {
   export type Outbound = HrisDownloadEmployeeDocumentRequest$Outbound;
 }
 
+export function hrisDownloadEmployeeDocumentRequestToJSON(
+  hrisDownloadEmployeeDocumentRequest: HrisDownloadEmployeeDocumentRequest,
+): string {
+  return JSON.stringify(
+    HrisDownloadEmployeeDocumentRequest$outboundSchema.parse(
+      hrisDownloadEmployeeDocumentRequest,
+    ),
+  );
+}
+
+export function hrisDownloadEmployeeDocumentRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<HrisDownloadEmployeeDocumentRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      HrisDownloadEmployeeDocumentRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HrisDownloadEmployeeDocumentRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const HrisDownloadEmployeeDocumentResponse$inboundSchema: z.ZodType<
   HrisDownloadEmployeeDocumentResponse,
@@ -153,4 +177,25 @@ export namespace HrisDownloadEmployeeDocumentResponse$ {
     HrisDownloadEmployeeDocumentResponse$outboundSchema;
   /** @deprecated use `HrisDownloadEmployeeDocumentResponse$Outbound` instead. */
   export type Outbound = HrisDownloadEmployeeDocumentResponse$Outbound;
+}
+
+export function hrisDownloadEmployeeDocumentResponseToJSON(
+  hrisDownloadEmployeeDocumentResponse: HrisDownloadEmployeeDocumentResponse,
+): string {
+  return JSON.stringify(
+    HrisDownloadEmployeeDocumentResponse$outboundSchema.parse(
+      hrisDownloadEmployeeDocumentResponse,
+    ),
+  );
+}
+
+export function hrisDownloadEmployeeDocumentResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<HrisDownloadEmployeeDocumentResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      HrisDownloadEmployeeDocumentResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HrisDownloadEmployeeDocumentResponse' from JSON`,
+  );
 }

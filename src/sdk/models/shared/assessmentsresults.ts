@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type AssessmentsResultsSchemas4 = {};
 
@@ -203,6 +206,24 @@ export namespace AssessmentsResultsSchemas4$ {
   export type Outbound = AssessmentsResultsSchemas4$Outbound;
 }
 
+export function assessmentsResultsSchemas4ToJSON(
+  assessmentsResultsSchemas4: AssessmentsResultsSchemas4,
+): string {
+  return JSON.stringify(
+    AssessmentsResultsSchemas4$outboundSchema.parse(assessmentsResultsSchemas4),
+  );
+}
+
+export function assessmentsResultsSchemas4FromJSON(
+  jsonString: string,
+): SafeParseResult<AssessmentsResultsSchemas4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AssessmentsResultsSchemas4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AssessmentsResultsSchemas4' from JSON`,
+  );
+}
+
 /** @internal */
 export const AssessmentsResultsSchemasSourceValue$inboundSchema: z.ZodType<
   AssessmentsResultsSchemasSourceValue,
@@ -250,6 +271,27 @@ export namespace AssessmentsResultsSchemasSourceValue$ {
     AssessmentsResultsSchemasSourceValue$outboundSchema;
   /** @deprecated use `AssessmentsResultsSchemasSourceValue$Outbound` instead. */
   export type Outbound = AssessmentsResultsSchemasSourceValue$Outbound;
+}
+
+export function assessmentsResultsSchemasSourceValueToJSON(
+  assessmentsResultsSchemasSourceValue: AssessmentsResultsSchemasSourceValue,
+): string {
+  return JSON.stringify(
+    AssessmentsResultsSchemasSourceValue$outboundSchema.parse(
+      assessmentsResultsSchemasSourceValue,
+    ),
+  );
+}
+
+export function assessmentsResultsSchemasSourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<AssessmentsResultsSchemasSourceValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      AssessmentsResultsSchemasSourceValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AssessmentsResultsSchemasSourceValue' from JSON`,
+  );
 }
 
 /** @internal */
@@ -354,6 +396,26 @@ export namespace AssessmentsResultsContentType$ {
   export type Outbound = AssessmentsResultsContentType$Outbound;
 }
 
+export function assessmentsResultsContentTypeToJSON(
+  assessmentsResultsContentType: AssessmentsResultsContentType,
+): string {
+  return JSON.stringify(
+    AssessmentsResultsContentType$outboundSchema.parse(
+      assessmentsResultsContentType,
+    ),
+  );
+}
+
+export function assessmentsResultsContentTypeFromJSON(
+  jsonString: string,
+): SafeParseResult<AssessmentsResultsContentType, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AssessmentsResultsContentType$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AssessmentsResultsContentType' from JSON`,
+  );
+}
+
 /** @internal */
 export const Attachments$inboundSchema: z.ZodType<
   Attachments,
@@ -405,6 +467,20 @@ export namespace Attachments$ {
   export type Outbound = Attachments$Outbound;
 }
 
+export function attachmentsToJSON(attachments: Attachments): string {
+  return JSON.stringify(Attachments$outboundSchema.parse(attachments));
+}
+
+export function attachmentsFromJSON(
+  jsonString: string,
+): SafeParseResult<Attachments, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Attachments$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Attachments' from JSON`,
+  );
+}
+
 /** @internal */
 export const AssessmentsResultsCandidate$inboundSchema: z.ZodType<
   AssessmentsResultsCandidate,
@@ -452,6 +528,26 @@ export namespace AssessmentsResultsCandidate$ {
   export type Outbound = AssessmentsResultsCandidate$Outbound;
 }
 
+export function assessmentsResultsCandidateToJSON(
+  assessmentsResultsCandidate: AssessmentsResultsCandidate,
+): string {
+  return JSON.stringify(
+    AssessmentsResultsCandidate$outboundSchema.parse(
+      assessmentsResultsCandidate,
+    ),
+  );
+}
+
+export function assessmentsResultsCandidateFromJSON(
+  jsonString: string,
+): SafeParseResult<AssessmentsResultsCandidate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AssessmentsResultsCandidate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AssessmentsResultsCandidate' from JSON`,
+  );
+}
+
 /** @internal */
 export const AssessmentsResults4$inboundSchema: z.ZodType<
   AssessmentsResults4,
@@ -480,6 +576,24 @@ export namespace AssessmentsResults4$ {
   export const outboundSchema = AssessmentsResults4$outboundSchema;
   /** @deprecated use `AssessmentsResults4$Outbound` instead. */
   export type Outbound = AssessmentsResults4$Outbound;
+}
+
+export function assessmentsResults4ToJSON(
+  assessmentsResults4: AssessmentsResults4,
+): string {
+  return JSON.stringify(
+    AssessmentsResults4$outboundSchema.parse(assessmentsResults4),
+  );
+}
+
+export function assessmentsResults4FromJSON(
+  jsonString: string,
+): SafeParseResult<AssessmentsResults4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AssessmentsResults4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AssessmentsResults4' from JSON`,
+  );
 }
 
 /** @internal */
@@ -527,6 +641,26 @@ export namespace AssessmentsResultsSourceValue$ {
   export const outboundSchema = AssessmentsResultsSourceValue$outboundSchema;
   /** @deprecated use `AssessmentsResultsSourceValue$Outbound` instead. */
   export type Outbound = AssessmentsResultsSourceValue$Outbound;
+}
+
+export function assessmentsResultsSourceValueToJSON(
+  assessmentsResultsSourceValue: AssessmentsResultsSourceValue,
+): string {
+  return JSON.stringify(
+    AssessmentsResultsSourceValue$outboundSchema.parse(
+      assessmentsResultsSourceValue,
+    ),
+  );
+}
+
+export function assessmentsResultsSourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<AssessmentsResultsSourceValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AssessmentsResultsSourceValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AssessmentsResultsSourceValue' from JSON`,
+  );
 }
 
 /** @internal */
@@ -628,6 +762,20 @@ export namespace Result$ {
   export type Outbound = Result$Outbound;
 }
 
+export function resultToJSON(result: Result): string {
+  return JSON.stringify(Result$outboundSchema.parse(result));
+}
+
+export function resultFromJSON(
+  jsonString: string,
+): SafeParseResult<Result, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Result$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Result' from JSON`,
+  );
+}
+
 /** @internal */
 export const Score$inboundSchema: z.ZodType<Score, z.ZodTypeDef, unknown> = z
   .object({
@@ -668,6 +816,20 @@ export namespace Score$ {
   export const outboundSchema = Score$outboundSchema;
   /** @deprecated use `Score$Outbound` instead. */
   export type Outbound = Score$Outbound;
+}
+
+export function scoreToJSON(score: Score): string {
+  return JSON.stringify(Score$outboundSchema.parse(score));
+}
+
+export function scoreFromJSON(
+  jsonString: string,
+): SafeParseResult<Score, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Score$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Score' from JSON`,
+  );
 }
 
 /** @internal */
@@ -759,4 +921,22 @@ export namespace AssessmentsResults$ {
   export const outboundSchema = AssessmentsResults$outboundSchema;
   /** @deprecated use `AssessmentsResults$Outbound` instead. */
   export type Outbound = AssessmentsResults$Outbound;
+}
+
+export function assessmentsResultsToJSON(
+  assessmentsResults: AssessmentsResults,
+): string {
+  return JSON.stringify(
+    AssessmentsResults$outboundSchema.parse(assessmentsResults),
+  );
+}
+
+export function assessmentsResultsFromJSON(
+  jsonString: string,
+): SafeParseResult<AssessmentsResults, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AssessmentsResults$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AssessmentsResults' from JSON`,
+  );
 }

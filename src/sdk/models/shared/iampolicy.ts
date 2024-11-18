@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   IamPermission,
   IamPermission$inboundSchema,
@@ -101,4 +104,18 @@ export namespace IamPolicy$ {
   export const outboundSchema = IamPolicy$outboundSchema;
   /** @deprecated use `IamPolicy$Outbound` instead. */
   export type Outbound = IamPolicy$Outbound;
+}
+
+export function iamPolicyToJSON(iamPolicy: IamPolicy): string {
+  return JSON.stringify(IamPolicy$outboundSchema.parse(iamPolicy));
+}
+
+export function iamPolicyFromJSON(
+  jsonString: string,
+): SafeParseResult<IamPolicy, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => IamPolicy$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'IamPolicy' from JSON`,
+  );
 }

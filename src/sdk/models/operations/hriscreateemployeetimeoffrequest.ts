@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type HrisCreateEmployeeTimeOffRequestRequest = {
@@ -89,6 +92,33 @@ export namespace HrisCreateEmployeeTimeOffRequestRequest$ {
   export type Outbound = HrisCreateEmployeeTimeOffRequestRequest$Outbound;
 }
 
+export function hrisCreateEmployeeTimeOffRequestRequestToJSON(
+  hrisCreateEmployeeTimeOffRequestRequest:
+    HrisCreateEmployeeTimeOffRequestRequest,
+): string {
+  return JSON.stringify(
+    HrisCreateEmployeeTimeOffRequestRequest$outboundSchema.parse(
+      hrisCreateEmployeeTimeOffRequestRequest,
+    ),
+  );
+}
+
+export function hrisCreateEmployeeTimeOffRequestRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  HrisCreateEmployeeTimeOffRequestRequest,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      HrisCreateEmployeeTimeOffRequestRequest$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'HrisCreateEmployeeTimeOffRequestRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const HrisCreateEmployeeTimeOffRequestResponse$inboundSchema: z.ZodType<
   HrisCreateEmployeeTimeOffRequestResponse,
@@ -150,4 +180,31 @@ export namespace HrisCreateEmployeeTimeOffRequestResponse$ {
     HrisCreateEmployeeTimeOffRequestResponse$outboundSchema;
   /** @deprecated use `HrisCreateEmployeeTimeOffRequestResponse$Outbound` instead. */
   export type Outbound = HrisCreateEmployeeTimeOffRequestResponse$Outbound;
+}
+
+export function hrisCreateEmployeeTimeOffRequestResponseToJSON(
+  hrisCreateEmployeeTimeOffRequestResponse:
+    HrisCreateEmployeeTimeOffRequestResponse,
+): string {
+  return JSON.stringify(
+    HrisCreateEmployeeTimeOffRequestResponse$outboundSchema.parse(
+      hrisCreateEmployeeTimeOffRequestResponse,
+    ),
+  );
+}
+
+export function hrisCreateEmployeeTimeOffRequestResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  HrisCreateEmployeeTimeOffRequestResponse,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      HrisCreateEmployeeTimeOffRequestResponse$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'HrisCreateEmployeeTimeOffRequestResponse' from JSON`,
+  );
 }

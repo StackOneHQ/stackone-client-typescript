@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   HrisDocumentApiModel,
   HrisDocumentApiModel$inboundSchema,
@@ -78,4 +81,22 @@ export namespace HrisDocumentsPaginated$ {
   export const outboundSchema = HrisDocumentsPaginated$outboundSchema;
   /** @deprecated use `HrisDocumentsPaginated$Outbound` instead. */
   export type Outbound = HrisDocumentsPaginated$Outbound;
+}
+
+export function hrisDocumentsPaginatedToJSON(
+  hrisDocumentsPaginated: HrisDocumentsPaginated,
+): string {
+  return JSON.stringify(
+    HrisDocumentsPaginated$outboundSchema.parse(hrisDocumentsPaginated),
+  );
+}
+
+export function hrisDocumentsPaginatedFromJSON(
+  jsonString: string,
+): SafeParseResult<HrisDocumentsPaginated, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => HrisDocumentsPaginated$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HrisDocumentsPaginated' from JSON`,
+  );
 }

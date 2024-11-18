@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type StackoneAuthenticateConnectSessionResponse = {
@@ -85,4 +88,31 @@ export namespace StackoneAuthenticateConnectSessionResponse$ {
     StackoneAuthenticateConnectSessionResponse$outboundSchema;
   /** @deprecated use `StackoneAuthenticateConnectSessionResponse$Outbound` instead. */
   export type Outbound = StackoneAuthenticateConnectSessionResponse$Outbound;
+}
+
+export function stackoneAuthenticateConnectSessionResponseToJSON(
+  stackoneAuthenticateConnectSessionResponse:
+    StackoneAuthenticateConnectSessionResponse,
+): string {
+  return JSON.stringify(
+    StackoneAuthenticateConnectSessionResponse$outboundSchema.parse(
+      stackoneAuthenticateConnectSessionResponse,
+    ),
+  );
+}
+
+export function stackoneAuthenticateConnectSessionResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  StackoneAuthenticateConnectSessionResponse,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      StackoneAuthenticateConnectSessionResponse$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'StackoneAuthenticateConnectSessionResponse' from JSON`,
+  );
 }

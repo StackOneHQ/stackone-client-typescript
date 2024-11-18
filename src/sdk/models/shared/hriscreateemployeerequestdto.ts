@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   CountryCodeEnum,
   CountryCodeEnum$inboundSchema,
@@ -9523,6 +9526,27 @@ export namespace HrisCreateEmployeeRequestDtoAvatar$ {
   export type Outbound = HrisCreateEmployeeRequestDtoAvatar$Outbound;
 }
 
+export function hrisCreateEmployeeRequestDtoAvatarToJSON(
+  hrisCreateEmployeeRequestDtoAvatar: HrisCreateEmployeeRequestDtoAvatar,
+): string {
+  return JSON.stringify(
+    HrisCreateEmployeeRequestDtoAvatar$outboundSchema.parse(
+      hrisCreateEmployeeRequestDtoAvatar,
+    ),
+  );
+}
+
+export function hrisCreateEmployeeRequestDtoAvatarFromJSON(
+  jsonString: string,
+): SafeParseResult<HrisCreateEmployeeRequestDtoAvatar, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      HrisCreateEmployeeRequestDtoAvatar$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HrisCreateEmployeeRequestDtoAvatar' from JSON`,
+  );
+}
+
 /** @internal */
 export const HrisCreateEmployeeRequestDto4$inboundSchema: z.ZodType<
   HrisCreateEmployeeRequestDto4,
@@ -9551,6 +9575,26 @@ export namespace HrisCreateEmployeeRequestDto4$ {
   export const outboundSchema = HrisCreateEmployeeRequestDto4$outboundSchema;
   /** @deprecated use `HrisCreateEmployeeRequestDto4$Outbound` instead. */
   export type Outbound = HrisCreateEmployeeRequestDto4$Outbound;
+}
+
+export function hrisCreateEmployeeRequestDto4ToJSON(
+  hrisCreateEmployeeRequestDto4: HrisCreateEmployeeRequestDto4,
+): string {
+  return JSON.stringify(
+    HrisCreateEmployeeRequestDto4$outboundSchema.parse(
+      hrisCreateEmployeeRequestDto4,
+    ),
+  );
+}
+
+export function hrisCreateEmployeeRequestDto4FromJSON(
+  jsonString: string,
+): SafeParseResult<HrisCreateEmployeeRequestDto4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => HrisCreateEmployeeRequestDto4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HrisCreateEmployeeRequestDto4' from JSON`,
+  );
 }
 
 /** @internal */
@@ -9600,6 +9644,33 @@ export namespace HrisCreateEmployeeRequestDtoSourceValue$ {
     HrisCreateEmployeeRequestDtoSourceValue$outboundSchema;
   /** @deprecated use `HrisCreateEmployeeRequestDtoSourceValue$Outbound` instead. */
   export type Outbound = HrisCreateEmployeeRequestDtoSourceValue$Outbound;
+}
+
+export function hrisCreateEmployeeRequestDtoSourceValueToJSON(
+  hrisCreateEmployeeRequestDtoSourceValue:
+    HrisCreateEmployeeRequestDtoSourceValue,
+): string {
+  return JSON.stringify(
+    HrisCreateEmployeeRequestDtoSourceValue$outboundSchema.parse(
+      hrisCreateEmployeeRequestDtoSourceValue,
+    ),
+  );
+}
+
+export function hrisCreateEmployeeRequestDtoSourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  HrisCreateEmployeeRequestDtoSourceValue,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      HrisCreateEmployeeRequestDtoSourceValue$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'HrisCreateEmployeeRequestDtoSourceValue' from JSON`,
+  );
 }
 
 /** @internal */
@@ -9712,6 +9783,33 @@ export namespace HrisCreateEmployeeRequestDtoEmploymentContractType$ {
     HrisCreateEmployeeRequestDtoEmploymentContractType$Outbound;
 }
 
+export function hrisCreateEmployeeRequestDtoEmploymentContractTypeToJSON(
+  hrisCreateEmployeeRequestDtoEmploymentContractType:
+    HrisCreateEmployeeRequestDtoEmploymentContractType,
+): string {
+  return JSON.stringify(
+    HrisCreateEmployeeRequestDtoEmploymentContractType$outboundSchema.parse(
+      hrisCreateEmployeeRequestDtoEmploymentContractType,
+    ),
+  );
+}
+
+export function hrisCreateEmployeeRequestDtoEmploymentContractTypeFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  HrisCreateEmployeeRequestDtoEmploymentContractType,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      HrisCreateEmployeeRequestDtoEmploymentContractType$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'HrisCreateEmployeeRequestDtoEmploymentContractType' from JSON`,
+  );
+}
+
 /** @internal */
 export const HrisCreateEmployeeRequestDtoSchemas4$inboundSchema: z.ZodType<
   HrisCreateEmployeeRequestDtoSchemas4,
@@ -9742,6 +9840,27 @@ export namespace HrisCreateEmployeeRequestDtoSchemas4$ {
     HrisCreateEmployeeRequestDtoSchemas4$outboundSchema;
   /** @deprecated use `HrisCreateEmployeeRequestDtoSchemas4$Outbound` instead. */
   export type Outbound = HrisCreateEmployeeRequestDtoSchemas4$Outbound;
+}
+
+export function hrisCreateEmployeeRequestDtoSchemas4ToJSON(
+  hrisCreateEmployeeRequestDtoSchemas4: HrisCreateEmployeeRequestDtoSchemas4,
+): string {
+  return JSON.stringify(
+    HrisCreateEmployeeRequestDtoSchemas4$outboundSchema.parse(
+      hrisCreateEmployeeRequestDtoSchemas4,
+    ),
+  );
+}
+
+export function hrisCreateEmployeeRequestDtoSchemas4FromJSON(
+  jsonString: string,
+): SafeParseResult<HrisCreateEmployeeRequestDtoSchemas4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      HrisCreateEmployeeRequestDtoSchemas4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HrisCreateEmployeeRequestDtoSchemas4' from JSON`,
+  );
 }
 
 /** @internal */
@@ -9794,6 +9913,33 @@ export namespace HrisCreateEmployeeRequestDtoSchemasSourceValue$ {
   /** @deprecated use `HrisCreateEmployeeRequestDtoSchemasSourceValue$Outbound` instead. */
   export type Outbound =
     HrisCreateEmployeeRequestDtoSchemasSourceValue$Outbound;
+}
+
+export function hrisCreateEmployeeRequestDtoSchemasSourceValueToJSON(
+  hrisCreateEmployeeRequestDtoSchemasSourceValue:
+    HrisCreateEmployeeRequestDtoSchemasSourceValue,
+): string {
+  return JSON.stringify(
+    HrisCreateEmployeeRequestDtoSchemasSourceValue$outboundSchema.parse(
+      hrisCreateEmployeeRequestDtoSchemasSourceValue,
+    ),
+  );
+}
+
+export function hrisCreateEmployeeRequestDtoSchemasSourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  HrisCreateEmployeeRequestDtoSchemasSourceValue,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      HrisCreateEmployeeRequestDtoSchemasSourceValue$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'HrisCreateEmployeeRequestDtoSchemasSourceValue' from JSON`,
+  );
 }
 
 /** @internal */
@@ -9906,6 +10052,33 @@ export namespace HrisCreateEmployeeRequestDtoEmploymentStatus$ {
   export type Outbound = HrisCreateEmployeeRequestDtoEmploymentStatus$Outbound;
 }
 
+export function hrisCreateEmployeeRequestDtoEmploymentStatusToJSON(
+  hrisCreateEmployeeRequestDtoEmploymentStatus:
+    HrisCreateEmployeeRequestDtoEmploymentStatus,
+): string {
+  return JSON.stringify(
+    HrisCreateEmployeeRequestDtoEmploymentStatus$outboundSchema.parse(
+      hrisCreateEmployeeRequestDtoEmploymentStatus,
+    ),
+  );
+}
+
+export function hrisCreateEmployeeRequestDtoEmploymentStatusFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  HrisCreateEmployeeRequestDtoEmploymentStatus,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      HrisCreateEmployeeRequestDtoEmploymentStatus$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'HrisCreateEmployeeRequestDtoEmploymentStatus' from JSON`,
+  );
+}
+
 /** @internal */
 export const HrisCreateEmployeeRequestDtoSchemasEmploymentType4$inboundSchema:
   z.ZodType<
@@ -9939,6 +10112,33 @@ export namespace HrisCreateEmployeeRequestDtoSchemasEmploymentType4$ {
   /** @deprecated use `HrisCreateEmployeeRequestDtoSchemasEmploymentType4$Outbound` instead. */
   export type Outbound =
     HrisCreateEmployeeRequestDtoSchemasEmploymentType4$Outbound;
+}
+
+export function hrisCreateEmployeeRequestDtoSchemasEmploymentType4ToJSON(
+  hrisCreateEmployeeRequestDtoSchemasEmploymentType4:
+    HrisCreateEmployeeRequestDtoSchemasEmploymentType4,
+): string {
+  return JSON.stringify(
+    HrisCreateEmployeeRequestDtoSchemasEmploymentType4$outboundSchema.parse(
+      hrisCreateEmployeeRequestDtoSchemasEmploymentType4,
+    ),
+  );
+}
+
+export function hrisCreateEmployeeRequestDtoSchemasEmploymentType4FromJSON(
+  jsonString: string,
+): SafeParseResult<
+  HrisCreateEmployeeRequestDtoSchemasEmploymentType4,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      HrisCreateEmployeeRequestDtoSchemasEmploymentType4$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'HrisCreateEmployeeRequestDtoSchemasEmploymentType4' from JSON`,
+  );
 }
 
 /** @internal */
@@ -9995,6 +10195,31 @@ export namespace HrisCreateEmployeeRequestDtoSchemasEmploymentTypeSourceValue$ {
   /** @deprecated use `HrisCreateEmployeeRequestDtoSchemasEmploymentTypeSourceValue$Outbound` instead. */
   export type Outbound =
     HrisCreateEmployeeRequestDtoSchemasEmploymentTypeSourceValue$Outbound;
+}
+
+export function hrisCreateEmployeeRequestDtoSchemasEmploymentTypeSourceValueToJSON(
+  hrisCreateEmployeeRequestDtoSchemasEmploymentTypeSourceValue:
+    HrisCreateEmployeeRequestDtoSchemasEmploymentTypeSourceValue,
+): string {
+  return JSON.stringify(
+    HrisCreateEmployeeRequestDtoSchemasEmploymentTypeSourceValue$outboundSchema
+      .parse(hrisCreateEmployeeRequestDtoSchemasEmploymentTypeSourceValue),
+  );
+}
+
+export function hrisCreateEmployeeRequestDtoSchemasEmploymentTypeSourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  HrisCreateEmployeeRequestDtoSchemasEmploymentTypeSourceValue,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      HrisCreateEmployeeRequestDtoSchemasEmploymentTypeSourceValue$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'HrisCreateEmployeeRequestDtoSchemasEmploymentTypeSourceValue' from JSON`,
+  );
 }
 
 /** @internal */
@@ -10112,6 +10337,33 @@ export namespace HrisCreateEmployeeRequestDtoEmploymentType$ {
   export type Outbound = HrisCreateEmployeeRequestDtoEmploymentType$Outbound;
 }
 
+export function hrisCreateEmployeeRequestDtoEmploymentTypeToJSON(
+  hrisCreateEmployeeRequestDtoEmploymentType:
+    HrisCreateEmployeeRequestDtoEmploymentType,
+): string {
+  return JSON.stringify(
+    HrisCreateEmployeeRequestDtoEmploymentType$outboundSchema.parse(
+      hrisCreateEmployeeRequestDtoEmploymentType,
+    ),
+  );
+}
+
+export function hrisCreateEmployeeRequestDtoEmploymentTypeFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  HrisCreateEmployeeRequestDtoEmploymentType,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      HrisCreateEmployeeRequestDtoEmploymentType$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'HrisCreateEmployeeRequestDtoEmploymentType' from JSON`,
+  );
+}
+
 /** @internal */
 export const HrisCreateEmployeeRequestDtoSchemasEthnicity4$inboundSchema:
   z.ZodType<
@@ -10144,6 +10396,33 @@ export namespace HrisCreateEmployeeRequestDtoSchemasEthnicity4$ {
     HrisCreateEmployeeRequestDtoSchemasEthnicity4$outboundSchema;
   /** @deprecated use `HrisCreateEmployeeRequestDtoSchemasEthnicity4$Outbound` instead. */
   export type Outbound = HrisCreateEmployeeRequestDtoSchemasEthnicity4$Outbound;
+}
+
+export function hrisCreateEmployeeRequestDtoSchemasEthnicity4ToJSON(
+  hrisCreateEmployeeRequestDtoSchemasEthnicity4:
+    HrisCreateEmployeeRequestDtoSchemasEthnicity4,
+): string {
+  return JSON.stringify(
+    HrisCreateEmployeeRequestDtoSchemasEthnicity4$outboundSchema.parse(
+      hrisCreateEmployeeRequestDtoSchemasEthnicity4,
+    ),
+  );
+}
+
+export function hrisCreateEmployeeRequestDtoSchemasEthnicity4FromJSON(
+  jsonString: string,
+): SafeParseResult<
+  HrisCreateEmployeeRequestDtoSchemasEthnicity4,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      HrisCreateEmployeeRequestDtoSchemasEthnicity4$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'HrisCreateEmployeeRequestDtoSchemasEthnicity4' from JSON`,
+  );
 }
 
 /** @internal */
@@ -10196,6 +10475,31 @@ export namespace HrisCreateEmployeeRequestDtoSchemasEthnicitySourceValue$ {
   /** @deprecated use `HrisCreateEmployeeRequestDtoSchemasEthnicitySourceValue$Outbound` instead. */
   export type Outbound =
     HrisCreateEmployeeRequestDtoSchemasEthnicitySourceValue$Outbound;
+}
+
+export function hrisCreateEmployeeRequestDtoSchemasEthnicitySourceValueToJSON(
+  hrisCreateEmployeeRequestDtoSchemasEthnicitySourceValue:
+    HrisCreateEmployeeRequestDtoSchemasEthnicitySourceValue,
+): string {
+  return JSON.stringify(
+    HrisCreateEmployeeRequestDtoSchemasEthnicitySourceValue$outboundSchema
+      .parse(hrisCreateEmployeeRequestDtoSchemasEthnicitySourceValue),
+  );
+}
+
+export function hrisCreateEmployeeRequestDtoSchemasEthnicitySourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  HrisCreateEmployeeRequestDtoSchemasEthnicitySourceValue,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      HrisCreateEmployeeRequestDtoSchemasEthnicitySourceValue$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'HrisCreateEmployeeRequestDtoSchemasEthnicitySourceValue' from JSON`,
+  );
 }
 
 /** @internal */
@@ -10312,6 +10616,27 @@ export namespace HrisCreateEmployeeRequestDtoEthnicity$ {
   export type Outbound = HrisCreateEmployeeRequestDtoEthnicity$Outbound;
 }
 
+export function hrisCreateEmployeeRequestDtoEthnicityToJSON(
+  hrisCreateEmployeeRequestDtoEthnicity: HrisCreateEmployeeRequestDtoEthnicity,
+): string {
+  return JSON.stringify(
+    HrisCreateEmployeeRequestDtoEthnicity$outboundSchema.parse(
+      hrisCreateEmployeeRequestDtoEthnicity,
+    ),
+  );
+}
+
+export function hrisCreateEmployeeRequestDtoEthnicityFromJSON(
+  jsonString: string,
+): SafeParseResult<HrisCreateEmployeeRequestDtoEthnicity, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      HrisCreateEmployeeRequestDtoEthnicity$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HrisCreateEmployeeRequestDtoEthnicity' from JSON`,
+  );
+}
+
 /** @internal */
 export const HrisCreateEmployeeRequestDtoSchemasGender4$inboundSchema:
   z.ZodType<HrisCreateEmployeeRequestDtoSchemasGender4, z.ZodTypeDef, unknown> =
@@ -10341,6 +10666,33 @@ export namespace HrisCreateEmployeeRequestDtoSchemasGender4$ {
     HrisCreateEmployeeRequestDtoSchemasGender4$outboundSchema;
   /** @deprecated use `HrisCreateEmployeeRequestDtoSchemasGender4$Outbound` instead. */
   export type Outbound = HrisCreateEmployeeRequestDtoSchemasGender4$Outbound;
+}
+
+export function hrisCreateEmployeeRequestDtoSchemasGender4ToJSON(
+  hrisCreateEmployeeRequestDtoSchemasGender4:
+    HrisCreateEmployeeRequestDtoSchemasGender4,
+): string {
+  return JSON.stringify(
+    HrisCreateEmployeeRequestDtoSchemasGender4$outboundSchema.parse(
+      hrisCreateEmployeeRequestDtoSchemasGender4,
+    ),
+  );
+}
+
+export function hrisCreateEmployeeRequestDtoSchemasGender4FromJSON(
+  jsonString: string,
+): SafeParseResult<
+  HrisCreateEmployeeRequestDtoSchemasGender4,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      HrisCreateEmployeeRequestDtoSchemasGender4$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'HrisCreateEmployeeRequestDtoSchemasGender4' from JSON`,
+  );
 }
 
 /** @internal */
@@ -10393,6 +10745,33 @@ export namespace HrisCreateEmployeeRequestDtoSchemasGenderSourceValue$ {
   /** @deprecated use `HrisCreateEmployeeRequestDtoSchemasGenderSourceValue$Outbound` instead. */
   export type Outbound =
     HrisCreateEmployeeRequestDtoSchemasGenderSourceValue$Outbound;
+}
+
+export function hrisCreateEmployeeRequestDtoSchemasGenderSourceValueToJSON(
+  hrisCreateEmployeeRequestDtoSchemasGenderSourceValue:
+    HrisCreateEmployeeRequestDtoSchemasGenderSourceValue,
+): string {
+  return JSON.stringify(
+    HrisCreateEmployeeRequestDtoSchemasGenderSourceValue$outboundSchema.parse(
+      hrisCreateEmployeeRequestDtoSchemasGenderSourceValue,
+    ),
+  );
+}
+
+export function hrisCreateEmployeeRequestDtoSchemasGenderSourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  HrisCreateEmployeeRequestDtoSchemasGenderSourceValue,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      HrisCreateEmployeeRequestDtoSchemasGenderSourceValue$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'HrisCreateEmployeeRequestDtoSchemasGenderSourceValue' from JSON`,
+  );
 }
 
 /** @internal */
@@ -10506,6 +10885,27 @@ export namespace HrisCreateEmployeeRequestDtoGender$ {
   export type Outbound = HrisCreateEmployeeRequestDtoGender$Outbound;
 }
 
+export function hrisCreateEmployeeRequestDtoGenderToJSON(
+  hrisCreateEmployeeRequestDtoGender: HrisCreateEmployeeRequestDtoGender,
+): string {
+  return JSON.stringify(
+    HrisCreateEmployeeRequestDtoGender$outboundSchema.parse(
+      hrisCreateEmployeeRequestDtoGender,
+    ),
+  );
+}
+
+export function hrisCreateEmployeeRequestDtoGenderFromJSON(
+  jsonString: string,
+): SafeParseResult<HrisCreateEmployeeRequestDtoGender, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      HrisCreateEmployeeRequestDtoGender$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HrisCreateEmployeeRequestDtoGender' from JSON`,
+  );
+}
+
 /** @internal */
 export const HrisCreateEmployeeRequestDtoSchemasHomeLocation4$inboundSchema:
   z.ZodType<
@@ -10539,6 +10939,33 @@ export namespace HrisCreateEmployeeRequestDtoSchemasHomeLocation4$ {
   /** @deprecated use `HrisCreateEmployeeRequestDtoSchemasHomeLocation4$Outbound` instead. */
   export type Outbound =
     HrisCreateEmployeeRequestDtoSchemasHomeLocation4$Outbound;
+}
+
+export function hrisCreateEmployeeRequestDtoSchemasHomeLocation4ToJSON(
+  hrisCreateEmployeeRequestDtoSchemasHomeLocation4:
+    HrisCreateEmployeeRequestDtoSchemasHomeLocation4,
+): string {
+  return JSON.stringify(
+    HrisCreateEmployeeRequestDtoSchemasHomeLocation4$outboundSchema.parse(
+      hrisCreateEmployeeRequestDtoSchemasHomeLocation4,
+    ),
+  );
+}
+
+export function hrisCreateEmployeeRequestDtoSchemasHomeLocation4FromJSON(
+  jsonString: string,
+): SafeParseResult<
+  HrisCreateEmployeeRequestDtoSchemasHomeLocation4,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      HrisCreateEmployeeRequestDtoSchemasHomeLocation4$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'HrisCreateEmployeeRequestDtoSchemasHomeLocation4' from JSON`,
+  );
 }
 
 /** @internal */
@@ -10595,6 +11022,31 @@ export namespace HrisCreateEmployeeRequestDtoSchemasHomeLocationSourceValue$ {
   /** @deprecated use `HrisCreateEmployeeRequestDtoSchemasHomeLocationSourceValue$Outbound` instead. */
   export type Outbound =
     HrisCreateEmployeeRequestDtoSchemasHomeLocationSourceValue$Outbound;
+}
+
+export function hrisCreateEmployeeRequestDtoSchemasHomeLocationSourceValueToJSON(
+  hrisCreateEmployeeRequestDtoSchemasHomeLocationSourceValue:
+    HrisCreateEmployeeRequestDtoSchemasHomeLocationSourceValue,
+): string {
+  return JSON.stringify(
+    HrisCreateEmployeeRequestDtoSchemasHomeLocationSourceValue$outboundSchema
+      .parse(hrisCreateEmployeeRequestDtoSchemasHomeLocationSourceValue),
+  );
+}
+
+export function hrisCreateEmployeeRequestDtoSchemasHomeLocationSourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  HrisCreateEmployeeRequestDtoSchemasHomeLocationSourceValue,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      HrisCreateEmployeeRequestDtoSchemasHomeLocationSourceValue$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'HrisCreateEmployeeRequestDtoSchemasHomeLocationSourceValue' from JSON`,
+  );
 }
 
 /** @internal */
@@ -10713,6 +11165,27 @@ export namespace HrisCreateEmployeeRequestDtoCountry$ {
   export type Outbound = HrisCreateEmployeeRequestDtoCountry$Outbound;
 }
 
+export function hrisCreateEmployeeRequestDtoCountryToJSON(
+  hrisCreateEmployeeRequestDtoCountry: HrisCreateEmployeeRequestDtoCountry,
+): string {
+  return JSON.stringify(
+    HrisCreateEmployeeRequestDtoCountry$outboundSchema.parse(
+      hrisCreateEmployeeRequestDtoCountry,
+    ),
+  );
+}
+
+export function hrisCreateEmployeeRequestDtoCountryFromJSON(
+  jsonString: string,
+): SafeParseResult<HrisCreateEmployeeRequestDtoCountry, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      HrisCreateEmployeeRequestDtoCountry$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HrisCreateEmployeeRequestDtoCountry' from JSON`,
+  );
+}
+
 /** @internal */
 export const HrisCreateEmployeeRequestDtoSchemasHomeLocationState4$inboundSchema:
   z.ZodType<
@@ -10746,6 +11219,33 @@ export namespace HrisCreateEmployeeRequestDtoSchemasHomeLocationState4$ {
   /** @deprecated use `HrisCreateEmployeeRequestDtoSchemasHomeLocationState4$Outbound` instead. */
   export type Outbound =
     HrisCreateEmployeeRequestDtoSchemasHomeLocationState4$Outbound;
+}
+
+export function hrisCreateEmployeeRequestDtoSchemasHomeLocationState4ToJSON(
+  hrisCreateEmployeeRequestDtoSchemasHomeLocationState4:
+    HrisCreateEmployeeRequestDtoSchemasHomeLocationState4,
+): string {
+  return JSON.stringify(
+    HrisCreateEmployeeRequestDtoSchemasHomeLocationState4$outboundSchema.parse(
+      hrisCreateEmployeeRequestDtoSchemasHomeLocationState4,
+    ),
+  );
+}
+
+export function hrisCreateEmployeeRequestDtoSchemasHomeLocationState4FromJSON(
+  jsonString: string,
+): SafeParseResult<
+  HrisCreateEmployeeRequestDtoSchemasHomeLocationState4,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      HrisCreateEmployeeRequestDtoSchemasHomeLocationState4$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'HrisCreateEmployeeRequestDtoSchemasHomeLocationState4' from JSON`,
+  );
 }
 
 /** @internal */
@@ -10802,6 +11302,31 @@ export namespace HrisCreateEmployeeRequestDtoSchemasHomeLocationStateSourceValue
   /** @deprecated use `HrisCreateEmployeeRequestDtoSchemasHomeLocationStateSourceValue$Outbound` instead. */
   export type Outbound =
     HrisCreateEmployeeRequestDtoSchemasHomeLocationStateSourceValue$Outbound;
+}
+
+export function hrisCreateEmployeeRequestDtoSchemasHomeLocationStateSourceValueToJSON(
+  hrisCreateEmployeeRequestDtoSchemasHomeLocationStateSourceValue:
+    HrisCreateEmployeeRequestDtoSchemasHomeLocationStateSourceValue,
+): string {
+  return JSON.stringify(
+    HrisCreateEmployeeRequestDtoSchemasHomeLocationStateSourceValue$outboundSchema
+      .parse(hrisCreateEmployeeRequestDtoSchemasHomeLocationStateSourceValue),
+  );
+}
+
+export function hrisCreateEmployeeRequestDtoSchemasHomeLocationStateSourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  HrisCreateEmployeeRequestDtoSchemasHomeLocationStateSourceValue,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      HrisCreateEmployeeRequestDtoSchemasHomeLocationStateSourceValue$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'HrisCreateEmployeeRequestDtoSchemasHomeLocationStateSourceValue' from JSON`,
+  );
 }
 
 /** @internal */
@@ -10915,6 +11440,20 @@ export namespace State$ {
   export type Outbound = State$Outbound;
 }
 
+export function stateToJSON(state: State): string {
+  return JSON.stringify(State$outboundSchema.parse(state));
+}
+
+export function stateFromJSON(
+  jsonString: string,
+): SafeParseResult<State, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => State$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'State' from JSON`,
+  );
+}
+
 /** @internal */
 export const HrisCreateEmployeeRequestDtoHomeLocation$inboundSchema: z.ZodType<
   HrisCreateEmployeeRequestDtoHomeLocation,
@@ -10998,6 +11537,33 @@ export namespace HrisCreateEmployeeRequestDtoHomeLocation$ {
   export type Outbound = HrisCreateEmployeeRequestDtoHomeLocation$Outbound;
 }
 
+export function hrisCreateEmployeeRequestDtoHomeLocationToJSON(
+  hrisCreateEmployeeRequestDtoHomeLocation:
+    HrisCreateEmployeeRequestDtoHomeLocation,
+): string {
+  return JSON.stringify(
+    HrisCreateEmployeeRequestDtoHomeLocation$outboundSchema.parse(
+      hrisCreateEmployeeRequestDtoHomeLocation,
+    ),
+  );
+}
+
+export function hrisCreateEmployeeRequestDtoHomeLocationFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  HrisCreateEmployeeRequestDtoHomeLocation,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      HrisCreateEmployeeRequestDtoHomeLocation$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'HrisCreateEmployeeRequestDtoHomeLocation' from JSON`,
+  );
+}
+
 /** @internal */
 export const HrisCreateEmployeeRequestDtoSchemasMaritalStatus4$inboundSchema:
   z.ZodType<
@@ -11031,6 +11597,33 @@ export namespace HrisCreateEmployeeRequestDtoSchemasMaritalStatus4$ {
   /** @deprecated use `HrisCreateEmployeeRequestDtoSchemasMaritalStatus4$Outbound` instead. */
   export type Outbound =
     HrisCreateEmployeeRequestDtoSchemasMaritalStatus4$Outbound;
+}
+
+export function hrisCreateEmployeeRequestDtoSchemasMaritalStatus4ToJSON(
+  hrisCreateEmployeeRequestDtoSchemasMaritalStatus4:
+    HrisCreateEmployeeRequestDtoSchemasMaritalStatus4,
+): string {
+  return JSON.stringify(
+    HrisCreateEmployeeRequestDtoSchemasMaritalStatus4$outboundSchema.parse(
+      hrisCreateEmployeeRequestDtoSchemasMaritalStatus4,
+    ),
+  );
+}
+
+export function hrisCreateEmployeeRequestDtoSchemasMaritalStatus4FromJSON(
+  jsonString: string,
+): SafeParseResult<
+  HrisCreateEmployeeRequestDtoSchemasMaritalStatus4,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      HrisCreateEmployeeRequestDtoSchemasMaritalStatus4$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'HrisCreateEmployeeRequestDtoSchemasMaritalStatus4' from JSON`,
+  );
 }
 
 /** @internal */
@@ -11087,6 +11680,31 @@ export namespace HrisCreateEmployeeRequestDtoSchemasMaritalStatusSourceValue$ {
   /** @deprecated use `HrisCreateEmployeeRequestDtoSchemasMaritalStatusSourceValue$Outbound` instead. */
   export type Outbound =
     HrisCreateEmployeeRequestDtoSchemasMaritalStatusSourceValue$Outbound;
+}
+
+export function hrisCreateEmployeeRequestDtoSchemasMaritalStatusSourceValueToJSON(
+  hrisCreateEmployeeRequestDtoSchemasMaritalStatusSourceValue:
+    HrisCreateEmployeeRequestDtoSchemasMaritalStatusSourceValue,
+): string {
+  return JSON.stringify(
+    HrisCreateEmployeeRequestDtoSchemasMaritalStatusSourceValue$outboundSchema
+      .parse(hrisCreateEmployeeRequestDtoSchemasMaritalStatusSourceValue),
+  );
+}
+
+export function hrisCreateEmployeeRequestDtoSchemasMaritalStatusSourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  HrisCreateEmployeeRequestDtoSchemasMaritalStatusSourceValue,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      HrisCreateEmployeeRequestDtoSchemasMaritalStatusSourceValue$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'HrisCreateEmployeeRequestDtoSchemasMaritalStatusSourceValue' from JSON`,
+  );
 }
 
 /** @internal */
@@ -11206,6 +11824,33 @@ export namespace HrisCreateEmployeeRequestDtoMaritalStatus$ {
   export type Outbound = HrisCreateEmployeeRequestDtoMaritalStatus$Outbound;
 }
 
+export function hrisCreateEmployeeRequestDtoMaritalStatusToJSON(
+  hrisCreateEmployeeRequestDtoMaritalStatus:
+    HrisCreateEmployeeRequestDtoMaritalStatus,
+): string {
+  return JSON.stringify(
+    HrisCreateEmployeeRequestDtoMaritalStatus$outboundSchema.parse(
+      hrisCreateEmployeeRequestDtoMaritalStatus,
+    ),
+  );
+}
+
+export function hrisCreateEmployeeRequestDtoMaritalStatusFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  HrisCreateEmployeeRequestDtoMaritalStatus,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      HrisCreateEmployeeRequestDtoMaritalStatus$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'HrisCreateEmployeeRequestDtoMaritalStatus' from JSON`,
+  );
+}
+
 /** @internal */
 export const HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumber4$inboundSchema:
   z.ZodType<
@@ -11240,6 +11885,31 @@ export namespace HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumber4$ {
   /** @deprecated use `HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumber4$Outbound` instead. */
   export type Outbound =
     HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumber4$Outbound;
+}
+
+export function hrisCreateEmployeeRequestDtoSchemasNationalIdentityNumber4ToJSON(
+  hrisCreateEmployeeRequestDtoSchemasNationalIdentityNumber4:
+    HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumber4,
+): string {
+  return JSON.stringify(
+    HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumber4$outboundSchema
+      .parse(hrisCreateEmployeeRequestDtoSchemasNationalIdentityNumber4),
+  );
+}
+
+export function hrisCreateEmployeeRequestDtoSchemasNationalIdentityNumber4FromJSON(
+  jsonString: string,
+): SafeParseResult<
+  HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumber4,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumber4$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumber4' from JSON`,
+  );
 }
 
 /** @internal */
@@ -11296,6 +11966,33 @@ export namespace HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberSource
   /** @deprecated use `HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberSourceValue$Outbound` instead. */
   export type Outbound =
     HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberSourceValue$Outbound;
+}
+
+export function hrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberSourceValueToJSON(
+  hrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberSourceValue:
+    HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberSourceValue,
+): string {
+  return JSON.stringify(
+    HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberSourceValue$outboundSchema
+      .parse(
+        hrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberSourceValue,
+      ),
+  );
+}
+
+export function hrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberSourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberSourceValue,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberSourceValue$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberSourceValue' from JSON`,
+  );
 }
 
 /** @internal */
@@ -11417,6 +12114,33 @@ export namespace HrisCreateEmployeeRequestDtoSchemasCountry$ {
   export type Outbound = HrisCreateEmployeeRequestDtoSchemasCountry$Outbound;
 }
 
+export function hrisCreateEmployeeRequestDtoSchemasCountryToJSON(
+  hrisCreateEmployeeRequestDtoSchemasCountry:
+    HrisCreateEmployeeRequestDtoSchemasCountry,
+): string {
+  return JSON.stringify(
+    HrisCreateEmployeeRequestDtoSchemasCountry$outboundSchema.parse(
+      hrisCreateEmployeeRequestDtoSchemasCountry,
+    ),
+  );
+}
+
+export function hrisCreateEmployeeRequestDtoSchemasCountryFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  HrisCreateEmployeeRequestDtoSchemasCountry,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      HrisCreateEmployeeRequestDtoSchemasCountry$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'HrisCreateEmployeeRequestDtoSchemasCountry' from JSON`,
+  );
+}
+
 /** @internal */
 export const HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberType4$inboundSchema:
   z.ZodType<
@@ -11451,6 +12175,31 @@ export namespace HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberType4$
   /** @deprecated use `HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberType4$Outbound` instead. */
   export type Outbound =
     HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberType4$Outbound;
+}
+
+export function hrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberType4ToJSON(
+  hrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberType4:
+    HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberType4,
+): string {
+  return JSON.stringify(
+    HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberType4$outboundSchema
+      .parse(hrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberType4),
+  );
+}
+
+export function hrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberType4FromJSON(
+  jsonString: string,
+): SafeParseResult<
+  HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberType4,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberType4$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberType4' from JSON`,
+  );
 }
 
 /** @internal */
@@ -11507,6 +12256,33 @@ export namespace HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberTypeSo
   /** @deprecated use `HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberTypeSourceValue$Outbound` instead. */
   export type Outbound =
     HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberTypeSourceValue$Outbound;
+}
+
+export function hrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberTypeSourceValueToJSON(
+  hrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberTypeSourceValue:
+    HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberTypeSourceValue,
+): string {
+  return JSON.stringify(
+    HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberTypeSourceValue$outboundSchema
+      .parse(
+        hrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberTypeSourceValue,
+      ),
+  );
+}
+
+export function hrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberTypeSourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberTypeSourceValue,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberTypeSourceValue$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberTypeSourceValue' from JSON`,
+  );
 }
 
 /** @internal */
@@ -11627,6 +12403,26 @@ export namespace HrisCreateEmployeeRequestDtoType$ {
   export type Outbound = HrisCreateEmployeeRequestDtoType$Outbound;
 }
 
+export function hrisCreateEmployeeRequestDtoTypeToJSON(
+  hrisCreateEmployeeRequestDtoType: HrisCreateEmployeeRequestDtoType,
+): string {
+  return JSON.stringify(
+    HrisCreateEmployeeRequestDtoType$outboundSchema.parse(
+      hrisCreateEmployeeRequestDtoType,
+    ),
+  );
+}
+
+export function hrisCreateEmployeeRequestDtoTypeFromJSON(
+  jsonString: string,
+): SafeParseResult<HrisCreateEmployeeRequestDtoType, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => HrisCreateEmployeeRequestDtoType$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HrisCreateEmployeeRequestDtoType' from JSON`,
+  );
+}
+
 /** @internal */
 export const HrisCreateEmployeeRequestDtoNationalIdentityNumber$inboundSchema:
   z.ZodType<
@@ -11685,6 +12481,33 @@ export namespace HrisCreateEmployeeRequestDtoNationalIdentityNumber$ {
     HrisCreateEmployeeRequestDtoNationalIdentityNumber$Outbound;
 }
 
+export function hrisCreateEmployeeRequestDtoNationalIdentityNumberToJSON(
+  hrisCreateEmployeeRequestDtoNationalIdentityNumber:
+    HrisCreateEmployeeRequestDtoNationalIdentityNumber,
+): string {
+  return JSON.stringify(
+    HrisCreateEmployeeRequestDtoNationalIdentityNumber$outboundSchema.parse(
+      hrisCreateEmployeeRequestDtoNationalIdentityNumber,
+    ),
+  );
+}
+
+export function hrisCreateEmployeeRequestDtoNationalIdentityNumberFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  HrisCreateEmployeeRequestDtoNationalIdentityNumber,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      HrisCreateEmployeeRequestDtoNationalIdentityNumber$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'HrisCreateEmployeeRequestDtoNationalIdentityNumber' from JSON`,
+  );
+}
+
 /** @internal */
 export const HrisCreateEmployeeRequestDtoSchemasPreferredLanguage4$inboundSchema:
   z.ZodType<
@@ -11718,6 +12541,33 @@ export namespace HrisCreateEmployeeRequestDtoSchemasPreferredLanguage4$ {
   /** @deprecated use `HrisCreateEmployeeRequestDtoSchemasPreferredLanguage4$Outbound` instead. */
   export type Outbound =
     HrisCreateEmployeeRequestDtoSchemasPreferredLanguage4$Outbound;
+}
+
+export function hrisCreateEmployeeRequestDtoSchemasPreferredLanguage4ToJSON(
+  hrisCreateEmployeeRequestDtoSchemasPreferredLanguage4:
+    HrisCreateEmployeeRequestDtoSchemasPreferredLanguage4,
+): string {
+  return JSON.stringify(
+    HrisCreateEmployeeRequestDtoSchemasPreferredLanguage4$outboundSchema.parse(
+      hrisCreateEmployeeRequestDtoSchemasPreferredLanguage4,
+    ),
+  );
+}
+
+export function hrisCreateEmployeeRequestDtoSchemasPreferredLanguage4FromJSON(
+  jsonString: string,
+): SafeParseResult<
+  HrisCreateEmployeeRequestDtoSchemasPreferredLanguage4,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      HrisCreateEmployeeRequestDtoSchemasPreferredLanguage4$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'HrisCreateEmployeeRequestDtoSchemasPreferredLanguage4' from JSON`,
+  );
 }
 
 /** @internal */
@@ -11774,6 +12624,31 @@ export namespace HrisCreateEmployeeRequestDtoSchemasPreferredLanguageSourceValue
   /** @deprecated use `HrisCreateEmployeeRequestDtoSchemasPreferredLanguageSourceValue$Outbound` instead. */
   export type Outbound =
     HrisCreateEmployeeRequestDtoSchemasPreferredLanguageSourceValue$Outbound;
+}
+
+export function hrisCreateEmployeeRequestDtoSchemasPreferredLanguageSourceValueToJSON(
+  hrisCreateEmployeeRequestDtoSchemasPreferredLanguageSourceValue:
+    HrisCreateEmployeeRequestDtoSchemasPreferredLanguageSourceValue,
+): string {
+  return JSON.stringify(
+    HrisCreateEmployeeRequestDtoSchemasPreferredLanguageSourceValue$outboundSchema
+      .parse(hrisCreateEmployeeRequestDtoSchemasPreferredLanguageSourceValue),
+  );
+}
+
+export function hrisCreateEmployeeRequestDtoSchemasPreferredLanguageSourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  HrisCreateEmployeeRequestDtoSchemasPreferredLanguageSourceValue,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      HrisCreateEmployeeRequestDtoSchemasPreferredLanguageSourceValue$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'HrisCreateEmployeeRequestDtoSchemasPreferredLanguageSourceValue' from JSON`,
+  );
 }
 
 /** @internal */
@@ -11894,6 +12769,33 @@ export namespace HrisCreateEmployeeRequestDtoPreferredLanguage$ {
   export type Outbound = HrisCreateEmployeeRequestDtoPreferredLanguage$Outbound;
 }
 
+export function hrisCreateEmployeeRequestDtoPreferredLanguageToJSON(
+  hrisCreateEmployeeRequestDtoPreferredLanguage:
+    HrisCreateEmployeeRequestDtoPreferredLanguage,
+): string {
+  return JSON.stringify(
+    HrisCreateEmployeeRequestDtoPreferredLanguage$outboundSchema.parse(
+      hrisCreateEmployeeRequestDtoPreferredLanguage,
+    ),
+  );
+}
+
+export function hrisCreateEmployeeRequestDtoPreferredLanguageFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  HrisCreateEmployeeRequestDtoPreferredLanguage,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      HrisCreateEmployeeRequestDtoPreferredLanguage$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'HrisCreateEmployeeRequestDtoPreferredLanguage' from JSON`,
+  );
+}
+
 /** @internal */
 export const HrisCreateEmployeeRequestDtoSchemasWorkLocation4$inboundSchema:
   z.ZodType<
@@ -11927,6 +12829,33 @@ export namespace HrisCreateEmployeeRequestDtoSchemasWorkLocation4$ {
   /** @deprecated use `HrisCreateEmployeeRequestDtoSchemasWorkLocation4$Outbound` instead. */
   export type Outbound =
     HrisCreateEmployeeRequestDtoSchemasWorkLocation4$Outbound;
+}
+
+export function hrisCreateEmployeeRequestDtoSchemasWorkLocation4ToJSON(
+  hrisCreateEmployeeRequestDtoSchemasWorkLocation4:
+    HrisCreateEmployeeRequestDtoSchemasWorkLocation4,
+): string {
+  return JSON.stringify(
+    HrisCreateEmployeeRequestDtoSchemasWorkLocation4$outboundSchema.parse(
+      hrisCreateEmployeeRequestDtoSchemasWorkLocation4,
+    ),
+  );
+}
+
+export function hrisCreateEmployeeRequestDtoSchemasWorkLocation4FromJSON(
+  jsonString: string,
+): SafeParseResult<
+  HrisCreateEmployeeRequestDtoSchemasWorkLocation4,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      HrisCreateEmployeeRequestDtoSchemasWorkLocation4$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'HrisCreateEmployeeRequestDtoSchemasWorkLocation4' from JSON`,
+  );
 }
 
 /** @internal */
@@ -11983,6 +12912,31 @@ export namespace HrisCreateEmployeeRequestDtoSchemasWorkLocationSourceValue$ {
   /** @deprecated use `HrisCreateEmployeeRequestDtoSchemasWorkLocationSourceValue$Outbound` instead. */
   export type Outbound =
     HrisCreateEmployeeRequestDtoSchemasWorkLocationSourceValue$Outbound;
+}
+
+export function hrisCreateEmployeeRequestDtoSchemasWorkLocationSourceValueToJSON(
+  hrisCreateEmployeeRequestDtoSchemasWorkLocationSourceValue:
+    HrisCreateEmployeeRequestDtoSchemasWorkLocationSourceValue,
+): string {
+  return JSON.stringify(
+    HrisCreateEmployeeRequestDtoSchemasWorkLocationSourceValue$outboundSchema
+      .parse(hrisCreateEmployeeRequestDtoSchemasWorkLocationSourceValue),
+  );
+}
+
+export function hrisCreateEmployeeRequestDtoSchemasWorkLocationSourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  HrisCreateEmployeeRequestDtoSchemasWorkLocationSourceValue,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      HrisCreateEmployeeRequestDtoSchemasWorkLocationSourceValue$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'HrisCreateEmployeeRequestDtoSchemasWorkLocationSourceValue' from JSON`,
+  );
 }
 
 /** @internal */
@@ -12104,6 +13058,32 @@ export namespace HrisCreateEmployeeRequestDtoSchemasWorkLocationCountry$ {
     HrisCreateEmployeeRequestDtoSchemasWorkLocationCountry$Outbound;
 }
 
+export function hrisCreateEmployeeRequestDtoSchemasWorkLocationCountryToJSON(
+  hrisCreateEmployeeRequestDtoSchemasWorkLocationCountry:
+    HrisCreateEmployeeRequestDtoSchemasWorkLocationCountry,
+): string {
+  return JSON.stringify(
+    HrisCreateEmployeeRequestDtoSchemasWorkLocationCountry$outboundSchema.parse(
+      hrisCreateEmployeeRequestDtoSchemasWorkLocationCountry,
+    ),
+  );
+}
+
+export function hrisCreateEmployeeRequestDtoSchemasWorkLocationCountryFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  HrisCreateEmployeeRequestDtoSchemasWorkLocationCountry,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      HrisCreateEmployeeRequestDtoSchemasWorkLocationCountry$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'HrisCreateEmployeeRequestDtoSchemasWorkLocationCountry' from JSON`,
+  );
+}
+
 /** @internal */
 export const HrisCreateEmployeeRequestDtoSchemasWorkLocationState4$inboundSchema:
   z.ZodType<
@@ -12137,6 +13117,33 @@ export namespace HrisCreateEmployeeRequestDtoSchemasWorkLocationState4$ {
   /** @deprecated use `HrisCreateEmployeeRequestDtoSchemasWorkLocationState4$Outbound` instead. */
   export type Outbound =
     HrisCreateEmployeeRequestDtoSchemasWorkLocationState4$Outbound;
+}
+
+export function hrisCreateEmployeeRequestDtoSchemasWorkLocationState4ToJSON(
+  hrisCreateEmployeeRequestDtoSchemasWorkLocationState4:
+    HrisCreateEmployeeRequestDtoSchemasWorkLocationState4,
+): string {
+  return JSON.stringify(
+    HrisCreateEmployeeRequestDtoSchemasWorkLocationState4$outboundSchema.parse(
+      hrisCreateEmployeeRequestDtoSchemasWorkLocationState4,
+    ),
+  );
+}
+
+export function hrisCreateEmployeeRequestDtoSchemasWorkLocationState4FromJSON(
+  jsonString: string,
+): SafeParseResult<
+  HrisCreateEmployeeRequestDtoSchemasWorkLocationState4,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      HrisCreateEmployeeRequestDtoSchemasWorkLocationState4$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'HrisCreateEmployeeRequestDtoSchemasWorkLocationState4' from JSON`,
+  );
 }
 
 /** @internal */
@@ -12193,6 +13200,31 @@ export namespace HrisCreateEmployeeRequestDtoSchemasWorkLocationStateSourceValue
   /** @deprecated use `HrisCreateEmployeeRequestDtoSchemasWorkLocationStateSourceValue$Outbound` instead. */
   export type Outbound =
     HrisCreateEmployeeRequestDtoSchemasWorkLocationStateSourceValue$Outbound;
+}
+
+export function hrisCreateEmployeeRequestDtoSchemasWorkLocationStateSourceValueToJSON(
+  hrisCreateEmployeeRequestDtoSchemasWorkLocationStateSourceValue:
+    HrisCreateEmployeeRequestDtoSchemasWorkLocationStateSourceValue,
+): string {
+  return JSON.stringify(
+    HrisCreateEmployeeRequestDtoSchemasWorkLocationStateSourceValue$outboundSchema
+      .parse(hrisCreateEmployeeRequestDtoSchemasWorkLocationStateSourceValue),
+  );
+}
+
+export function hrisCreateEmployeeRequestDtoSchemasWorkLocationStateSourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  HrisCreateEmployeeRequestDtoSchemasWorkLocationStateSourceValue,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      HrisCreateEmployeeRequestDtoSchemasWorkLocationStateSourceValue$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'HrisCreateEmployeeRequestDtoSchemasWorkLocationStateSourceValue' from JSON`,
+  );
 }
 
 /** @internal */
@@ -12310,6 +13342,26 @@ export namespace HrisCreateEmployeeRequestDtoState$ {
   export type Outbound = HrisCreateEmployeeRequestDtoState$Outbound;
 }
 
+export function hrisCreateEmployeeRequestDtoStateToJSON(
+  hrisCreateEmployeeRequestDtoState: HrisCreateEmployeeRequestDtoState,
+): string {
+  return JSON.stringify(
+    HrisCreateEmployeeRequestDtoState$outboundSchema.parse(
+      hrisCreateEmployeeRequestDtoState,
+    ),
+  );
+}
+
+export function hrisCreateEmployeeRequestDtoStateFromJSON(
+  jsonString: string,
+): SafeParseResult<HrisCreateEmployeeRequestDtoState, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => HrisCreateEmployeeRequestDtoState$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HrisCreateEmployeeRequestDtoState' from JSON`,
+  );
+}
+
 /** @internal */
 export const HrisCreateEmployeeRequestDtoWorkLocation$inboundSchema: z.ZodType<
   HrisCreateEmployeeRequestDtoWorkLocation,
@@ -12402,6 +13454,33 @@ export namespace HrisCreateEmployeeRequestDtoWorkLocation$ {
     HrisCreateEmployeeRequestDtoWorkLocation$outboundSchema;
   /** @deprecated use `HrisCreateEmployeeRequestDtoWorkLocation$Outbound` instead. */
   export type Outbound = HrisCreateEmployeeRequestDtoWorkLocation$Outbound;
+}
+
+export function hrisCreateEmployeeRequestDtoWorkLocationToJSON(
+  hrisCreateEmployeeRequestDtoWorkLocation:
+    HrisCreateEmployeeRequestDtoWorkLocation,
+): string {
+  return JSON.stringify(
+    HrisCreateEmployeeRequestDtoWorkLocation$outboundSchema.parse(
+      hrisCreateEmployeeRequestDtoWorkLocation,
+    ),
+  );
+}
+
+export function hrisCreateEmployeeRequestDtoWorkLocationFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  HrisCreateEmployeeRequestDtoWorkLocation,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      HrisCreateEmployeeRequestDtoWorkLocation$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'HrisCreateEmployeeRequestDtoWorkLocation' from JSON`,
+  );
 }
 
 /** @internal */
@@ -12701,4 +13780,24 @@ export namespace HrisCreateEmployeeRequestDto$ {
   export const outboundSchema = HrisCreateEmployeeRequestDto$outboundSchema;
   /** @deprecated use `HrisCreateEmployeeRequestDto$Outbound` instead. */
   export type Outbound = HrisCreateEmployeeRequestDto$Outbound;
+}
+
+export function hrisCreateEmployeeRequestDtoToJSON(
+  hrisCreateEmployeeRequestDto: HrisCreateEmployeeRequestDto,
+): string {
+  return JSON.stringify(
+    HrisCreateEmployeeRequestDto$outboundSchema.parse(
+      hrisCreateEmployeeRequestDto,
+    ),
+  );
+}
+
+export function hrisCreateEmployeeRequestDtoFromJSON(
+  jsonString: string,
+): SafeParseResult<HrisCreateEmployeeRequestDto, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => HrisCreateEmployeeRequestDto$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HrisCreateEmployeeRequestDto' from JSON`,
+  );
 }

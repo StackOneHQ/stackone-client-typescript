@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type ConnectSessionAuthenticate = {
   /**
@@ -45,4 +48,22 @@ export namespace ConnectSessionAuthenticate$ {
   export const outboundSchema = ConnectSessionAuthenticate$outboundSchema;
   /** @deprecated use `ConnectSessionAuthenticate$Outbound` instead. */
   export type Outbound = ConnectSessionAuthenticate$Outbound;
+}
+
+export function connectSessionAuthenticateToJSON(
+  connectSessionAuthenticate: ConnectSessionAuthenticate,
+): string {
+  return JSON.stringify(
+    ConnectSessionAuthenticate$outboundSchema.parse(connectSessionAuthenticate),
+  );
+}
+
+export function connectSessionAuthenticateFromJSON(
+  jsonString: string,
+): SafeParseResult<ConnectSessionAuthenticate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ConnectSessionAuthenticate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ConnectSessionAuthenticate' from JSON`,
+  );
 }

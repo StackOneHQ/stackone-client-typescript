@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type EmailMessagesMessageContent = {
   body?: string | null | undefined;
@@ -140,6 +143,26 @@ export namespace EmailMessagesMessageContent$ {
   export type Outbound = EmailMessagesMessageContent$Outbound;
 }
 
+export function emailMessagesMessageContentToJSON(
+  emailMessagesMessageContent: EmailMessagesMessageContent,
+): string {
+  return JSON.stringify(
+    EmailMessagesMessageContent$outboundSchema.parse(
+      emailMessagesMessageContent,
+    ),
+  );
+}
+
+export function emailMessagesMessageContentFromJSON(
+  jsonString: string,
+): SafeParseResult<EmailMessagesMessageContent, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => EmailMessagesMessageContent$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'EmailMessagesMessageContent' from JSON`,
+  );
+}
+
 /** @internal */
 export const EmailMessages4$inboundSchema: z.ZodType<
   EmailMessages4,
@@ -168,6 +191,20 @@ export namespace EmailMessages4$ {
   export const outboundSchema = EmailMessages4$outboundSchema;
   /** @deprecated use `EmailMessages4$Outbound` instead. */
   export type Outbound = EmailMessages4$Outbound;
+}
+
+export function emailMessages4ToJSON(emailMessages4: EmailMessages4): string {
+  return JSON.stringify(EmailMessages4$outboundSchema.parse(emailMessages4));
+}
+
+export function emailMessages4FromJSON(
+  jsonString: string,
+): SafeParseResult<EmailMessages4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => EmailMessages4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'EmailMessages4' from JSON`,
+  );
 }
 
 /** @internal */
@@ -215,6 +252,24 @@ export namespace EmailMessagesSourceValue$ {
   export const outboundSchema = EmailMessagesSourceValue$outboundSchema;
   /** @deprecated use `EmailMessagesSourceValue$Outbound` instead. */
   export type Outbound = EmailMessagesSourceValue$Outbound;
+}
+
+export function emailMessagesSourceValueToJSON(
+  emailMessagesSourceValue: EmailMessagesSourceValue,
+): string {
+  return JSON.stringify(
+    EmailMessagesSourceValue$outboundSchema.parse(emailMessagesSourceValue),
+  );
+}
+
+export function emailMessagesSourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<EmailMessagesSourceValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => EmailMessagesSourceValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'EmailMessagesSourceValue' from JSON`,
+  );
 }
 
 /** @internal */
@@ -319,6 +374,24 @@ export namespace EmailMessagesMessageType$ {
   export type Outbound = EmailMessagesMessageType$Outbound;
 }
 
+export function emailMessagesMessageTypeToJSON(
+  emailMessagesMessageType: EmailMessagesMessageType,
+): string {
+  return JSON.stringify(
+    EmailMessagesMessageType$outboundSchema.parse(emailMessagesMessageType),
+  );
+}
+
+export function emailMessagesMessageTypeFromJSON(
+  jsonString: string,
+): SafeParseResult<EmailMessagesMessageType, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => EmailMessagesMessageType$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'EmailMessagesMessageType' from JSON`,
+  );
+}
+
 /** @internal */
 export const EmailMessages$inboundSchema: z.ZodType<
   EmailMessages,
@@ -383,4 +456,18 @@ export namespace EmailMessages$ {
   export const outboundSchema = EmailMessages$outboundSchema;
   /** @deprecated use `EmailMessages$Outbound` instead. */
   export type Outbound = EmailMessages$Outbound;
+}
+
+export function emailMessagesToJSON(emailMessages: EmailMessages): string {
+  return JSON.stringify(EmailMessages$outboundSchema.parse(emailMessages));
+}
+
+export function emailMessagesFromJSON(
+  jsonString: string,
+): SafeParseResult<EmailMessages, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => EmailMessages$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'EmailMessages' from JSON`,
+  );
 }

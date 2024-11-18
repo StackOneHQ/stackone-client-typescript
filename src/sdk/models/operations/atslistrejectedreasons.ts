@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 /**
@@ -130,6 +133,28 @@ export namespace AtsListRejectedReasonsQueryParamFilter$ {
   export type Outbound = AtsListRejectedReasonsQueryParamFilter$Outbound;
 }
 
+export function atsListRejectedReasonsQueryParamFilterToJSON(
+  atsListRejectedReasonsQueryParamFilter:
+    AtsListRejectedReasonsQueryParamFilter,
+): string {
+  return JSON.stringify(
+    AtsListRejectedReasonsQueryParamFilter$outboundSchema.parse(
+      atsListRejectedReasonsQueryParamFilter,
+    ),
+  );
+}
+
+export function atsListRejectedReasonsQueryParamFilterFromJSON(
+  jsonString: string,
+): SafeParseResult<AtsListRejectedReasonsQueryParamFilter, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      AtsListRejectedReasonsQueryParamFilter$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AtsListRejectedReasonsQueryParamFilter' from JSON`,
+  );
+}
+
 /** @internal */
 export const AtsListRejectedReasonsRequest$inboundSchema: z.ZodType<
   AtsListRejectedReasonsRequest,
@@ -211,6 +236,26 @@ export namespace AtsListRejectedReasonsRequest$ {
   export type Outbound = AtsListRejectedReasonsRequest$Outbound;
 }
 
+export function atsListRejectedReasonsRequestToJSON(
+  atsListRejectedReasonsRequest: AtsListRejectedReasonsRequest,
+): string {
+  return JSON.stringify(
+    AtsListRejectedReasonsRequest$outboundSchema.parse(
+      atsListRejectedReasonsRequest,
+    ),
+  );
+}
+
+export function atsListRejectedReasonsRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<AtsListRejectedReasonsRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AtsListRejectedReasonsRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AtsListRejectedReasonsRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const AtsListRejectedReasonsResponse$inboundSchema: z.ZodType<
   AtsListRejectedReasonsResponse,
@@ -274,4 +319,24 @@ export namespace AtsListRejectedReasonsResponse$ {
   export const outboundSchema = AtsListRejectedReasonsResponse$outboundSchema;
   /** @deprecated use `AtsListRejectedReasonsResponse$Outbound` instead. */
   export type Outbound = AtsListRejectedReasonsResponse$Outbound;
+}
+
+export function atsListRejectedReasonsResponseToJSON(
+  atsListRejectedReasonsResponse: AtsListRejectedReasonsResponse,
+): string {
+  return JSON.stringify(
+    AtsListRejectedReasonsResponse$outboundSchema.parse(
+      atsListRejectedReasonsResponse,
+    ),
+  );
+}
+
+export function atsListRejectedReasonsResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<AtsListRejectedReasonsResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AtsListRejectedReasonsResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AtsListRejectedReasonsResponse' from JSON`,
+  );
 }

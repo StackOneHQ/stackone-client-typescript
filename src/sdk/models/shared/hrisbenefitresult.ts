@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   HRISBenefit,
   HRISBenefit$inboundSchema,
@@ -58,4 +61,22 @@ export namespace HRISBenefitResult$ {
   export const outboundSchema = HRISBenefitResult$outboundSchema;
   /** @deprecated use `HRISBenefitResult$Outbound` instead. */
   export type Outbound = HRISBenefitResult$Outbound;
+}
+
+export function hrisBenefitResultToJSON(
+  hrisBenefitResult: HRISBenefitResult,
+): string {
+  return JSON.stringify(
+    HRISBenefitResult$outboundSchema.parse(hrisBenefitResult),
+  );
+}
+
+export function hrisBenefitResultFromJSON(
+  jsonString: string,
+): SafeParseResult<HRISBenefitResult, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => HRISBenefitResult$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HRISBenefitResult' from JSON`,
+  );
 }

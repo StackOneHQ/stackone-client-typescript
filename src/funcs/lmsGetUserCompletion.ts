@@ -96,6 +96,9 @@ export async function lmsGetUserCompletion(
   const context = {
     operationID: "lms_get_user_completion",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.security,
     retryConfig: options?.retries
       || client._options.retryConfig

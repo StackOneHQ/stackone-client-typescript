@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type HrisGetJobRequest = {
@@ -101,6 +104,24 @@ export namespace HrisGetJobRequest$ {
   export type Outbound = HrisGetJobRequest$Outbound;
 }
 
+export function hrisGetJobRequestToJSON(
+  hrisGetJobRequest: HrisGetJobRequest,
+): string {
+  return JSON.stringify(
+    HrisGetJobRequest$outboundSchema.parse(hrisGetJobRequest),
+  );
+}
+
+export function hrisGetJobRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<HrisGetJobRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => HrisGetJobRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HrisGetJobRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const HrisGetJobResponse$inboundSchema: z.ZodType<
   HrisGetJobResponse,
@@ -160,4 +181,22 @@ export namespace HrisGetJobResponse$ {
   export const outboundSchema = HrisGetJobResponse$outboundSchema;
   /** @deprecated use `HrisGetJobResponse$Outbound` instead. */
   export type Outbound = HrisGetJobResponse$Outbound;
+}
+
+export function hrisGetJobResponseToJSON(
+  hrisGetJobResponse: HrisGetJobResponse,
+): string {
+  return JSON.stringify(
+    HrisGetJobResponse$outboundSchema.parse(hrisGetJobResponse),
+  );
+}
+
+export function hrisGetJobResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<HrisGetJobResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => HrisGetJobResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HrisGetJobResponse' from JSON`,
+  );
 }

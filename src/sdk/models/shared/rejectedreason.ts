@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type RejectedReason4 = {};
 
@@ -111,6 +114,22 @@ export namespace RejectedReason4$ {
   export type Outbound = RejectedReason4$Outbound;
 }
 
+export function rejectedReason4ToJSON(
+  rejectedReason4: RejectedReason4,
+): string {
+  return JSON.stringify(RejectedReason4$outboundSchema.parse(rejectedReason4));
+}
+
+export function rejectedReason4FromJSON(
+  jsonString: string,
+): SafeParseResult<RejectedReason4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => RejectedReason4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RejectedReason4' from JSON`,
+  );
+}
+
 /** @internal */
 export const RejectedReasonSourceValue$inboundSchema: z.ZodType<
   RejectedReasonSourceValue,
@@ -156,6 +175,24 @@ export namespace RejectedReasonSourceValue$ {
   export const outboundSchema = RejectedReasonSourceValue$outboundSchema;
   /** @deprecated use `RejectedReasonSourceValue$Outbound` instead. */
   export type Outbound = RejectedReasonSourceValue$Outbound;
+}
+
+export function rejectedReasonSourceValueToJSON(
+  rejectedReasonSourceValue: RejectedReasonSourceValue,
+): string {
+  return JSON.stringify(
+    RejectedReasonSourceValue$outboundSchema.parse(rejectedReasonSourceValue),
+  );
+}
+
+export function rejectedReasonSourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<RejectedReasonSourceValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => RejectedReasonSourceValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RejectedReasonSourceValue' from JSON`,
+  );
 }
 
 /** @internal */
@@ -260,6 +297,24 @@ export namespace RejectedReasonType$ {
   export type Outbound = RejectedReasonType$Outbound;
 }
 
+export function rejectedReasonTypeToJSON(
+  rejectedReasonType: RejectedReasonType,
+): string {
+  return JSON.stringify(
+    RejectedReasonType$outboundSchema.parse(rejectedReasonType),
+  );
+}
+
+export function rejectedReasonTypeFromJSON(
+  jsonString: string,
+): SafeParseResult<RejectedReasonType, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => RejectedReasonType$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RejectedReasonType' from JSON`,
+  );
+}
+
 /** @internal */
 export const RejectedReason$inboundSchema: z.ZodType<
   RejectedReason,
@@ -325,4 +380,18 @@ export namespace RejectedReason$ {
   export const outboundSchema = RejectedReason$outboundSchema;
   /** @deprecated use `RejectedReason$Outbound` instead. */
   export type Outbound = RejectedReason$Outbound;
+}
+
+export function rejectedReasonToJSON(rejectedReason: RejectedReason): string {
+  return JSON.stringify(RejectedReason$outboundSchema.parse(rejectedReason));
+}
+
+export function rejectedReasonFromJSON(
+  jsonString: string,
+): SafeParseResult<RejectedReason, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => RejectedReason$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RejectedReason' from JSON`,
+  );
 }

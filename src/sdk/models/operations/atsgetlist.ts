@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type AtsGetListRequest = {
@@ -101,6 +104,24 @@ export namespace AtsGetListRequest$ {
   export type Outbound = AtsGetListRequest$Outbound;
 }
 
+export function atsGetListRequestToJSON(
+  atsGetListRequest: AtsGetListRequest,
+): string {
+  return JSON.stringify(
+    AtsGetListRequest$outboundSchema.parse(atsGetListRequest),
+  );
+}
+
+export function atsGetListRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<AtsGetListRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AtsGetListRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AtsGetListRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const AtsGetListResponse$inboundSchema: z.ZodType<
   AtsGetListResponse,
@@ -160,4 +181,22 @@ export namespace AtsGetListResponse$ {
   export const outboundSchema = AtsGetListResponse$outboundSchema;
   /** @deprecated use `AtsGetListResponse$Outbound` instead. */
   export type Outbound = AtsGetListResponse$Outbound;
+}
+
+export function atsGetListResponseToJSON(
+  atsGetListResponse: AtsGetListResponse,
+): string {
+  return JSON.stringify(
+    AtsGetListResponse$outboundSchema.parse(atsGetListResponse),
+  );
+}
+
+export function atsGetListResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<AtsGetListResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AtsGetListResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AtsGetListResponse' from JSON`,
+  );
 }

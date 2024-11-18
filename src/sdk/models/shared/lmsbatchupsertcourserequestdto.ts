@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   LmsUpsertCourseRequestDto,
   LmsUpsertCourseRequestDto$inboundSchema,
@@ -51,4 +54,24 @@ export namespace LmsBatchUpsertCourseRequestDto$ {
   export const outboundSchema = LmsBatchUpsertCourseRequestDto$outboundSchema;
   /** @deprecated use `LmsBatchUpsertCourseRequestDto$Outbound` instead. */
   export type Outbound = LmsBatchUpsertCourseRequestDto$Outbound;
+}
+
+export function lmsBatchUpsertCourseRequestDtoToJSON(
+  lmsBatchUpsertCourseRequestDto: LmsBatchUpsertCourseRequestDto,
+): string {
+  return JSON.stringify(
+    LmsBatchUpsertCourseRequestDto$outboundSchema.parse(
+      lmsBatchUpsertCourseRequestDto,
+    ),
+  );
+}
+
+export function lmsBatchUpsertCourseRequestDtoFromJSON(
+  jsonString: string,
+): SafeParseResult<LmsBatchUpsertCourseRequestDto, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LmsBatchUpsertCourseRequestDto$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LmsBatchUpsertCourseRequestDto' from JSON`,
+  );
 }

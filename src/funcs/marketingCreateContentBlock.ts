@@ -73,6 +73,9 @@ export async function marketingCreateContentBlock(
   const context = {
     operationID: "marketing_create_content_block",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.security,
     retryConfig: options?.retries
       || client._options.retryConfig

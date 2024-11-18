@@ -74,6 +74,9 @@ export async function accountsListLinkedAccounts(
   const context = {
     operationID: "stackone_list_linked_accounts",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.security,
     retryConfig: options?.retries
       || client._options.retryConfig

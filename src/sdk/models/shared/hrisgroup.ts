@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type HRISGroup4 = {};
 
@@ -114,6 +117,20 @@ export namespace HRISGroup4$ {
   export type Outbound = HRISGroup4$Outbound;
 }
 
+export function hrisGroup4ToJSON(hrisGroup4: HRISGroup4): string {
+  return JSON.stringify(HRISGroup4$outboundSchema.parse(hrisGroup4));
+}
+
+export function hrisGroup4FromJSON(
+  jsonString: string,
+): SafeParseResult<HRISGroup4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => HRISGroup4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HRISGroup4' from JSON`,
+  );
+}
+
 /** @internal */
 export const HRISGroupSourceValue$inboundSchema: z.ZodType<
   HRISGroupSourceValue,
@@ -159,6 +176,24 @@ export namespace HRISGroupSourceValue$ {
   export const outboundSchema = HRISGroupSourceValue$outboundSchema;
   /** @deprecated use `HRISGroupSourceValue$Outbound` instead. */
   export type Outbound = HRISGroupSourceValue$Outbound;
+}
+
+export function hrisGroupSourceValueToJSON(
+  hrisGroupSourceValue: HRISGroupSourceValue,
+): string {
+  return JSON.stringify(
+    HRISGroupSourceValue$outboundSchema.parse(hrisGroupSourceValue),
+  );
+}
+
+export function hrisGroupSourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<HRISGroupSourceValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => HRISGroupSourceValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HRISGroupSourceValue' from JSON`,
+  );
 }
 
 /** @internal */
@@ -263,6 +298,20 @@ export namespace HRISGroupType$ {
   export type Outbound = HRISGroupType$Outbound;
 }
 
+export function hrisGroupTypeToJSON(hrisGroupType: HRISGroupType): string {
+  return JSON.stringify(HRISGroupType$outboundSchema.parse(hrisGroupType));
+}
+
+export function hrisGroupTypeFromJSON(
+  jsonString: string,
+): SafeParseResult<HRISGroupType, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => HRISGroupType$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HRISGroupType' from JSON`,
+  );
+}
+
 /** @internal */
 export const HRISGroup$inboundSchema: z.ZodType<
   HRISGroup,
@@ -339,4 +388,18 @@ export namespace HRISGroup$ {
   export const outboundSchema = HRISGroup$outboundSchema;
   /** @deprecated use `HRISGroup$Outbound` instead. */
   export type Outbound = HRISGroup$Outbound;
+}
+
+export function hrisGroupToJSON(hrisGroup: HRISGroup): string {
+  return JSON.stringify(HRISGroup$outboundSchema.parse(hrisGroup));
+}
+
+export function hrisGroupFromJSON(
+  jsonString: string,
+): SafeParseResult<HRISGroup, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => HRISGroup$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HRISGroup' from JSON`,
+  );
 }

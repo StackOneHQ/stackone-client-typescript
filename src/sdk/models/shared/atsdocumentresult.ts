@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   AtsDocumentApiModel,
   AtsDocumentApiModel$inboundSchema,
@@ -58,4 +61,22 @@ export namespace AtsDocumentResult$ {
   export const outboundSchema = AtsDocumentResult$outboundSchema;
   /** @deprecated use `AtsDocumentResult$Outbound` instead. */
   export type Outbound = AtsDocumentResult$Outbound;
+}
+
+export function atsDocumentResultToJSON(
+  atsDocumentResult: AtsDocumentResult,
+): string {
+  return JSON.stringify(
+    AtsDocumentResult$outboundSchema.parse(atsDocumentResult),
+  );
+}
+
+export function atsDocumentResultFromJSON(
+  jsonString: string,
+): SafeParseResult<AtsDocumentResult, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AtsDocumentResult$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AtsDocumentResult' from JSON`,
+  );
 }

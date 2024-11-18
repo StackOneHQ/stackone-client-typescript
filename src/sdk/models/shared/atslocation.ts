@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type ATSLocation = {
   /**
@@ -74,4 +77,18 @@ export namespace ATSLocation$ {
   export const outboundSchema = ATSLocation$outboundSchema;
   /** @deprecated use `ATSLocation$Outbound` instead. */
   export type Outbound = ATSLocation$Outbound;
+}
+
+export function atsLocationToJSON(atsLocation: ATSLocation): string {
+  return JSON.stringify(ATSLocation$outboundSchema.parse(atsLocation));
+}
+
+export function atsLocationFromJSON(
+  jsonString: string,
+): SafeParseResult<ATSLocation, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ATSLocation$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ATSLocation' from JSON`,
+  );
 }

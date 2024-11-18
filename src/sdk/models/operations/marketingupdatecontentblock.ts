@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type MarketingUpdateContentBlockRequest = {
@@ -93,6 +96,27 @@ export namespace MarketingUpdateContentBlockRequest$ {
   export type Outbound = MarketingUpdateContentBlockRequest$Outbound;
 }
 
+export function marketingUpdateContentBlockRequestToJSON(
+  marketingUpdateContentBlockRequest: MarketingUpdateContentBlockRequest,
+): string {
+  return JSON.stringify(
+    MarketingUpdateContentBlockRequest$outboundSchema.parse(
+      marketingUpdateContentBlockRequest,
+    ),
+  );
+}
+
+export function marketingUpdateContentBlockRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<MarketingUpdateContentBlockRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      MarketingUpdateContentBlockRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'MarketingUpdateContentBlockRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const MarketingUpdateContentBlockResponse$inboundSchema: z.ZodType<
   MarketingUpdateContentBlockResponse,
@@ -154,4 +178,25 @@ export namespace MarketingUpdateContentBlockResponse$ {
     MarketingUpdateContentBlockResponse$outboundSchema;
   /** @deprecated use `MarketingUpdateContentBlockResponse$Outbound` instead. */
   export type Outbound = MarketingUpdateContentBlockResponse$Outbound;
+}
+
+export function marketingUpdateContentBlockResponseToJSON(
+  marketingUpdateContentBlockResponse: MarketingUpdateContentBlockResponse,
+): string {
+  return JSON.stringify(
+    MarketingUpdateContentBlockResponse$outboundSchema.parse(
+      marketingUpdateContentBlockResponse,
+    ),
+  );
+}
+
+export function marketingUpdateContentBlockResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<MarketingUpdateContentBlockResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      MarketingUpdateContentBlockResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'MarketingUpdateContentBlockResponse' from JSON`,
+  );
 }

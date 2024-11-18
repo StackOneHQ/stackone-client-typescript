@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   IamPolicy,
   IamPolicy$inboundSchema,
@@ -78,4 +81,22 @@ export namespace IamPoliciesPaginated$ {
   export const outboundSchema = IamPoliciesPaginated$outboundSchema;
   /** @deprecated use `IamPoliciesPaginated$Outbound` instead. */
   export type Outbound = IamPoliciesPaginated$Outbound;
+}
+
+export function iamPoliciesPaginatedToJSON(
+  iamPoliciesPaginated: IamPoliciesPaginated,
+): string {
+  return JSON.stringify(
+    IamPoliciesPaginated$outboundSchema.parse(iamPoliciesPaginated),
+  );
+}
+
+export function iamPoliciesPaginatedFromJSON(
+  jsonString: string,
+): SafeParseResult<IamPoliciesPaginated, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => IamPoliciesPaginated$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'IamPoliciesPaginated' from JSON`,
+  );
 }

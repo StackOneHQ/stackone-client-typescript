@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   CustomFields,
   CustomFields$inboundSchema,
@@ -128,4 +131,22 @@ export namespace CrmCreateContactRequestDto$ {
   export const outboundSchema = CrmCreateContactRequestDto$outboundSchema;
   /** @deprecated use `CrmCreateContactRequestDto$Outbound` instead. */
   export type Outbound = CrmCreateContactRequestDto$Outbound;
+}
+
+export function crmCreateContactRequestDtoToJSON(
+  crmCreateContactRequestDto: CrmCreateContactRequestDto,
+): string {
+  return JSON.stringify(
+    CrmCreateContactRequestDto$outboundSchema.parse(crmCreateContactRequestDto),
+  );
+}
+
+export function crmCreateContactRequestDtoFromJSON(
+  jsonString: string,
+): SafeParseResult<CrmCreateContactRequestDto, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CrmCreateContactRequestDto$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CrmCreateContactRequestDto' from JSON`,
+  );
 }

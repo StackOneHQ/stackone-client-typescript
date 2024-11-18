@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 /**
@@ -122,6 +125,26 @@ export namespace HrisListBenefitsQueryParamFilter$ {
   export type Outbound = HrisListBenefitsQueryParamFilter$Outbound;
 }
 
+export function hrisListBenefitsQueryParamFilterToJSON(
+  hrisListBenefitsQueryParamFilter: HrisListBenefitsQueryParamFilter,
+): string {
+  return JSON.stringify(
+    HrisListBenefitsQueryParamFilter$outboundSchema.parse(
+      hrisListBenefitsQueryParamFilter,
+    ),
+  );
+}
+
+export function hrisListBenefitsQueryParamFilterFromJSON(
+  jsonString: string,
+): SafeParseResult<HrisListBenefitsQueryParamFilter, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => HrisListBenefitsQueryParamFilter$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HrisListBenefitsQueryParamFilter' from JSON`,
+  );
+}
+
 /** @internal */
 export const HrisListBenefitsRequest$inboundSchema: z.ZodType<
   HrisListBenefitsRequest,
@@ -198,6 +221,24 @@ export namespace HrisListBenefitsRequest$ {
   export type Outbound = HrisListBenefitsRequest$Outbound;
 }
 
+export function hrisListBenefitsRequestToJSON(
+  hrisListBenefitsRequest: HrisListBenefitsRequest,
+): string {
+  return JSON.stringify(
+    HrisListBenefitsRequest$outboundSchema.parse(hrisListBenefitsRequest),
+  );
+}
+
+export function hrisListBenefitsRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<HrisListBenefitsRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => HrisListBenefitsRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HrisListBenefitsRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const HrisListBenefitsResponse$inboundSchema: z.ZodType<
   HrisListBenefitsResponse,
@@ -257,4 +298,22 @@ export namespace HrisListBenefitsResponse$ {
   export const outboundSchema = HrisListBenefitsResponse$outboundSchema;
   /** @deprecated use `HrisListBenefitsResponse$Outbound` instead. */
   export type Outbound = HrisListBenefitsResponse$Outbound;
+}
+
+export function hrisListBenefitsResponseToJSON(
+  hrisListBenefitsResponse: HrisListBenefitsResponse,
+): string {
+  return JSON.stringify(
+    HrisListBenefitsResponse$outboundSchema.parse(hrisListBenefitsResponse),
+  );
+}
+
+export function hrisListBenefitsResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<HrisListBenefitsResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => HrisListBenefitsResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HrisListBenefitsResponse' from JSON`,
+  );
 }

@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   Department,
   Department$inboundSchema,
@@ -58,4 +61,22 @@ export namespace DepartmentResult$ {
   export const outboundSchema = DepartmentResult$outboundSchema;
   /** @deprecated use `DepartmentResult$Outbound` instead. */
   export type Outbound = DepartmentResult$Outbound;
+}
+
+export function departmentResultToJSON(
+  departmentResult: DepartmentResult,
+): string {
+  return JSON.stringify(
+    DepartmentResult$outboundSchema.parse(departmentResult),
+  );
+}
+
+export function departmentResultFromJSON(
+  jsonString: string,
+): SafeParseResult<DepartmentResult, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DepartmentResult$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DepartmentResult' from JSON`,
+  );
 }

@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 /**
@@ -129,6 +132,26 @@ export namespace AtsListInterviewsQueryParamFilter$ {
   export type Outbound = AtsListInterviewsQueryParamFilter$Outbound;
 }
 
+export function atsListInterviewsQueryParamFilterToJSON(
+  atsListInterviewsQueryParamFilter: AtsListInterviewsQueryParamFilter,
+): string {
+  return JSON.stringify(
+    AtsListInterviewsQueryParamFilter$outboundSchema.parse(
+      atsListInterviewsQueryParamFilter,
+    ),
+  );
+}
+
+export function atsListInterviewsQueryParamFilterFromJSON(
+  jsonString: string,
+): SafeParseResult<AtsListInterviewsQueryParamFilter, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AtsListInterviewsQueryParamFilter$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AtsListInterviewsQueryParamFilter' from JSON`,
+  );
+}
+
 /** @internal */
 export const AtsListInterviewsRequest$inboundSchema: z.ZodType<
   AtsListInterviewsRequest,
@@ -210,6 +233,24 @@ export namespace AtsListInterviewsRequest$ {
   export type Outbound = AtsListInterviewsRequest$Outbound;
 }
 
+export function atsListInterviewsRequestToJSON(
+  atsListInterviewsRequest: AtsListInterviewsRequest,
+): string {
+  return JSON.stringify(
+    AtsListInterviewsRequest$outboundSchema.parse(atsListInterviewsRequest),
+  );
+}
+
+export function atsListInterviewsRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<AtsListInterviewsRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AtsListInterviewsRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AtsListInterviewsRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const AtsListInterviewsResponse$inboundSchema: z.ZodType<
   AtsListInterviewsResponse,
@@ -269,4 +310,22 @@ export namespace AtsListInterviewsResponse$ {
   export const outboundSchema = AtsListInterviewsResponse$outboundSchema;
   /** @deprecated use `AtsListInterviewsResponse$Outbound` instead. */
   export type Outbound = AtsListInterviewsResponse$Outbound;
+}
+
+export function atsListInterviewsResponseToJSON(
+  atsListInterviewsResponse: AtsListInterviewsResponse,
+): string {
+  return JSON.stringify(
+    AtsListInterviewsResponse$outboundSchema.parse(atsListInterviewsResponse),
+  );
+}
+
+export function atsListInterviewsResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<AtsListInterviewsResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AtsListInterviewsResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AtsListInterviewsResponse' from JSON`,
+  );
 }

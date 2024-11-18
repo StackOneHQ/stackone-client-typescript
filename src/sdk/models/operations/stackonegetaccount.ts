@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type StackoneGetAccountRequest = {
@@ -65,6 +68,24 @@ export namespace StackoneGetAccountRequest$ {
   export type Outbound = StackoneGetAccountRequest$Outbound;
 }
 
+export function stackoneGetAccountRequestToJSON(
+  stackoneGetAccountRequest: StackoneGetAccountRequest,
+): string {
+  return JSON.stringify(
+    StackoneGetAccountRequest$outboundSchema.parse(stackoneGetAccountRequest),
+  );
+}
+
+export function stackoneGetAccountRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<StackoneGetAccountRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => StackoneGetAccountRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'StackoneGetAccountRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const StackoneGetAccountResponse$inboundSchema: z.ZodType<
   StackoneGetAccountResponse,
@@ -124,4 +145,22 @@ export namespace StackoneGetAccountResponse$ {
   export const outboundSchema = StackoneGetAccountResponse$outboundSchema;
   /** @deprecated use `StackoneGetAccountResponse$Outbound` instead. */
   export type Outbound = StackoneGetAccountResponse$Outbound;
+}
+
+export function stackoneGetAccountResponseToJSON(
+  stackoneGetAccountResponse: StackoneGetAccountResponse,
+): string {
+  return JSON.stringify(
+    StackoneGetAccountResponse$outboundSchema.parse(stackoneGetAccountResponse),
+  );
+}
+
+export function stackoneGetAccountResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<StackoneGetAccountResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => StackoneGetAccountResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'StackoneGetAccountResponse' from JSON`,
+  );
 }

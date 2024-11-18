@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type JobPostingContentSection4 = {};
 
@@ -29,6 +32,9 @@ export enum JobPostingContentSectionValue {
   Responsibilities = "responsibilities",
   Skills = "skills",
   Benefits = "benefits",
+  CompanyOverview = "company_overview",
+  Description = "description",
+  Other = "other",
 }
 /**
  * The type of the description.
@@ -99,6 +105,24 @@ export namespace JobPostingContentSection4$ {
   export type Outbound = JobPostingContentSection4$Outbound;
 }
 
+export function jobPostingContentSection4ToJSON(
+  jobPostingContentSection4: JobPostingContentSection4,
+): string {
+  return JSON.stringify(
+    JobPostingContentSection4$outboundSchema.parse(jobPostingContentSection4),
+  );
+}
+
+export function jobPostingContentSection4FromJSON(
+  jsonString: string,
+): SafeParseResult<JobPostingContentSection4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => JobPostingContentSection4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'JobPostingContentSection4' from JSON`,
+  );
+}
+
 /** @internal */
 export const JobPostingContentSectionSourceValue$inboundSchema: z.ZodType<
   JobPostingContentSectionSourceValue,
@@ -146,6 +170,27 @@ export namespace JobPostingContentSectionSourceValue$ {
     JobPostingContentSectionSourceValue$outboundSchema;
   /** @deprecated use `JobPostingContentSectionSourceValue$Outbound` instead. */
   export type Outbound = JobPostingContentSectionSourceValue$Outbound;
+}
+
+export function jobPostingContentSectionSourceValueToJSON(
+  jobPostingContentSectionSourceValue: JobPostingContentSectionSourceValue,
+): string {
+  return JSON.stringify(
+    JobPostingContentSectionSourceValue$outboundSchema.parse(
+      jobPostingContentSectionSourceValue,
+    ),
+  );
+}
+
+export function jobPostingContentSectionSourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<JobPostingContentSectionSourceValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      JobPostingContentSectionSourceValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'JobPostingContentSectionSourceValue' from JSON`,
+  );
 }
 
 /** @internal */
@@ -250,6 +295,26 @@ export namespace JobPostingContentSectionType$ {
   export type Outbound = JobPostingContentSectionType$Outbound;
 }
 
+export function jobPostingContentSectionTypeToJSON(
+  jobPostingContentSectionType: JobPostingContentSectionType,
+): string {
+  return JSON.stringify(
+    JobPostingContentSectionType$outboundSchema.parse(
+      jobPostingContentSectionType,
+    ),
+  );
+}
+
+export function jobPostingContentSectionTypeFromJSON(
+  jsonString: string,
+): SafeParseResult<JobPostingContentSectionType, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => JobPostingContentSectionType$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'JobPostingContentSectionType' from JSON`,
+  );
+}
+
 /** @internal */
 export const JobPostingContentSection$inboundSchema: z.ZodType<
   JobPostingContentSection,
@@ -306,4 +371,22 @@ export namespace JobPostingContentSection$ {
   export const outboundSchema = JobPostingContentSection$outboundSchema;
   /** @deprecated use `JobPostingContentSection$Outbound` instead. */
   export type Outbound = JobPostingContentSection$Outbound;
+}
+
+export function jobPostingContentSectionToJSON(
+  jobPostingContentSection: JobPostingContentSection,
+): string {
+  return JSON.stringify(
+    JobPostingContentSection$outboundSchema.parse(jobPostingContentSection),
+  );
+}
+
+export function jobPostingContentSectionFromJSON(
+  jsonString: string,
+): SafeParseResult<JobPostingContentSection, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => JobPostingContentSection$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'JobPostingContentSection' from JSON`,
+  );
 }

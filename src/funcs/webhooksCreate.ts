@@ -72,6 +72,9 @@ export async function webhooksCreate(
   const context = {
     operationID: "create",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.security,
     retryConfig: options?.retries
       || client._options.retryConfig

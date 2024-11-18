@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 /**
@@ -160,6 +163,27 @@ export namespace AtsListApplicationsQueryParamFilter$ {
   export type Outbound = AtsListApplicationsQueryParamFilter$Outbound;
 }
 
+export function atsListApplicationsQueryParamFilterToJSON(
+  atsListApplicationsQueryParamFilter: AtsListApplicationsQueryParamFilter,
+): string {
+  return JSON.stringify(
+    AtsListApplicationsQueryParamFilter$outboundSchema.parse(
+      atsListApplicationsQueryParamFilter,
+    ),
+  );
+}
+
+export function atsListApplicationsQueryParamFilterFromJSON(
+  jsonString: string,
+): SafeParseResult<AtsListApplicationsQueryParamFilter, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      AtsListApplicationsQueryParamFilter$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AtsListApplicationsQueryParamFilter' from JSON`,
+  );
+}
+
 /** @internal */
 export const AtsListApplicationsRequest$inboundSchema: z.ZodType<
   AtsListApplicationsRequest,
@@ -252,6 +276,24 @@ export namespace AtsListApplicationsRequest$ {
   export type Outbound = AtsListApplicationsRequest$Outbound;
 }
 
+export function atsListApplicationsRequestToJSON(
+  atsListApplicationsRequest: AtsListApplicationsRequest,
+): string {
+  return JSON.stringify(
+    AtsListApplicationsRequest$outboundSchema.parse(atsListApplicationsRequest),
+  );
+}
+
+export function atsListApplicationsRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<AtsListApplicationsRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AtsListApplicationsRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AtsListApplicationsRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const AtsListApplicationsResponse$inboundSchema: z.ZodType<
   AtsListApplicationsResponse,
@@ -311,4 +353,24 @@ export namespace AtsListApplicationsResponse$ {
   export const outboundSchema = AtsListApplicationsResponse$outboundSchema;
   /** @deprecated use `AtsListApplicationsResponse$Outbound` instead. */
   export type Outbound = AtsListApplicationsResponse$Outbound;
+}
+
+export function atsListApplicationsResponseToJSON(
+  atsListApplicationsResponse: AtsListApplicationsResponse,
+): string {
+  return JSON.stringify(
+    AtsListApplicationsResponse$outboundSchema.parse(
+      atsListApplicationsResponse,
+    ),
+  );
+}
+
+export function atsListApplicationsResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<AtsListApplicationsResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AtsListApplicationsResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AtsListApplicationsResponse' from JSON`,
+  );
 }

@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 /**
@@ -129,6 +132,33 @@ export namespace AtsListJobCustomFieldDefinitionsQueryParamFilter$ {
     AtsListJobCustomFieldDefinitionsQueryParamFilter$Outbound;
 }
 
+export function atsListJobCustomFieldDefinitionsQueryParamFilterToJSON(
+  atsListJobCustomFieldDefinitionsQueryParamFilter:
+    AtsListJobCustomFieldDefinitionsQueryParamFilter,
+): string {
+  return JSON.stringify(
+    AtsListJobCustomFieldDefinitionsQueryParamFilter$outboundSchema.parse(
+      atsListJobCustomFieldDefinitionsQueryParamFilter,
+    ),
+  );
+}
+
+export function atsListJobCustomFieldDefinitionsQueryParamFilterFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  AtsListJobCustomFieldDefinitionsQueryParamFilter,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      AtsListJobCustomFieldDefinitionsQueryParamFilter$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'AtsListJobCustomFieldDefinitionsQueryParamFilter' from JSON`,
+  );
+}
+
 /** @internal */
 export const AtsListJobCustomFieldDefinitionsRequest$inboundSchema: z.ZodType<
   AtsListJobCustomFieldDefinitionsRequest,
@@ -214,6 +244,33 @@ export namespace AtsListJobCustomFieldDefinitionsRequest$ {
   export type Outbound = AtsListJobCustomFieldDefinitionsRequest$Outbound;
 }
 
+export function atsListJobCustomFieldDefinitionsRequestToJSON(
+  atsListJobCustomFieldDefinitionsRequest:
+    AtsListJobCustomFieldDefinitionsRequest,
+): string {
+  return JSON.stringify(
+    AtsListJobCustomFieldDefinitionsRequest$outboundSchema.parse(
+      atsListJobCustomFieldDefinitionsRequest,
+    ),
+  );
+}
+
+export function atsListJobCustomFieldDefinitionsRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  AtsListJobCustomFieldDefinitionsRequest,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      AtsListJobCustomFieldDefinitionsRequest$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'AtsListJobCustomFieldDefinitionsRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const AtsListJobCustomFieldDefinitionsResponse$inboundSchema: z.ZodType<
   AtsListJobCustomFieldDefinitionsResponse,
@@ -279,4 +336,31 @@ export namespace AtsListJobCustomFieldDefinitionsResponse$ {
     AtsListJobCustomFieldDefinitionsResponse$outboundSchema;
   /** @deprecated use `AtsListJobCustomFieldDefinitionsResponse$Outbound` instead. */
   export type Outbound = AtsListJobCustomFieldDefinitionsResponse$Outbound;
+}
+
+export function atsListJobCustomFieldDefinitionsResponseToJSON(
+  atsListJobCustomFieldDefinitionsResponse:
+    AtsListJobCustomFieldDefinitionsResponse,
+): string {
+  return JSON.stringify(
+    AtsListJobCustomFieldDefinitionsResponse$outboundSchema.parse(
+      atsListJobCustomFieldDefinitionsResponse,
+    ),
+  );
+}
+
+export function atsListJobCustomFieldDefinitionsResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  AtsListJobCustomFieldDefinitionsResponse,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      AtsListJobCustomFieldDefinitionsResponse$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'AtsListJobCustomFieldDefinitionsResponse' from JSON`,
+  );
 }

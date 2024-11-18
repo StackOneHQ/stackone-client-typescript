@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type Skills4 = {};
 
@@ -90,6 +93,20 @@ export namespace Skills4$ {
   export type Outbound = Skills4$Outbound;
 }
 
+export function skills4ToJSON(skills4: Skills4): string {
+  return JSON.stringify(Skills4$outboundSchema.parse(skills4));
+}
+
+export function skills4FromJSON(
+  jsonString: string,
+): SafeParseResult<Skills4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Skills4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Skills4' from JSON`,
+  );
+}
+
 /** @internal */
 export const SkillsSourceValue$inboundSchema: z.ZodType<
   SkillsSourceValue,
@@ -135,6 +152,24 @@ export namespace SkillsSourceValue$ {
   export const outboundSchema = SkillsSourceValue$outboundSchema;
   /** @deprecated use `SkillsSourceValue$Outbound` instead. */
   export type Outbound = SkillsSourceValue$Outbound;
+}
+
+export function skillsSourceValueToJSON(
+  skillsSourceValue: SkillsSourceValue,
+): string {
+  return JSON.stringify(
+    SkillsSourceValue$outboundSchema.parse(skillsSourceValue),
+  );
+}
+
+export function skillsSourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<SkillsSourceValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => SkillsSourceValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SkillsSourceValue' from JSON`,
+  );
 }
 
 /** @internal */
@@ -239,6 +274,20 @@ export namespace SkillsLevel$ {
   export type Outbound = SkillsLevel$Outbound;
 }
 
+export function skillsLevelToJSON(skillsLevel: SkillsLevel): string {
+  return JSON.stringify(SkillsLevel$outboundSchema.parse(skillsLevel));
+}
+
+export function skillsLevelFromJSON(
+  jsonString: string,
+): SafeParseResult<SkillsLevel, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => SkillsLevel$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SkillsLevel' from JSON`,
+  );
+}
+
 /** @internal */
 export const Skills$inboundSchema: z.ZodType<Skills, z.ZodTypeDef, unknown> = z
   .object({
@@ -290,4 +339,18 @@ export namespace Skills$ {
   export const outboundSchema = Skills$outboundSchema;
   /** @deprecated use `Skills$Outbound` instead. */
   export type Outbound = Skills$Outbound;
+}
+
+export function skillsToJSON(skills: Skills): string {
+  return JSON.stringify(Skills$outboundSchema.parse(skills));
+}
+
+export function skillsFromJSON(
+  jsonString: string,
+): SafeParseResult<Skills, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Skills$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Skills' from JSON`,
+  );
 }

@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   RawResponse,
   RawResponse$inboundSchema,
@@ -58,4 +61,22 @@ export namespace RejectedReasonResult$ {
   export const outboundSchema = RejectedReasonResult$outboundSchema;
   /** @deprecated use `RejectedReasonResult$Outbound` instead. */
   export type Outbound = RejectedReasonResult$Outbound;
+}
+
+export function rejectedReasonResultToJSON(
+  rejectedReasonResult: RejectedReasonResult,
+): string {
+  return JSON.stringify(
+    RejectedReasonResult$outboundSchema.parse(rejectedReasonResult),
+  );
+}
+
+export function rejectedReasonResultFromJSON(
+  jsonString: string,
+): SafeParseResult<RejectedReasonResult, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => RejectedReasonResult$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RejectedReasonResult' from JSON`,
+  );
 }

@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   AssignmentStatusEnum,
   AssignmentStatusEnum$inboundSchema,
@@ -50,6 +53,8 @@ export type LearningObjectType = {
 export type Assignment = {
   /**
    * The course ID associated with this assignment
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   courseId?: string | null | undefined;
   /**
@@ -82,6 +87,8 @@ export type Assignment = {
   progress?: number | null | undefined;
   /**
    * Provider's unique identifier of the course related to the assignment
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   remoteCourseId?: string | null | undefined;
   /**
@@ -144,6 +151,20 @@ export namespace Assignment4$ {
   export type Outbound = Assignment4$Outbound;
 }
 
+export function assignment4ToJSON(assignment4: Assignment4): string {
+  return JSON.stringify(Assignment4$outboundSchema.parse(assignment4));
+}
+
+export function assignment4FromJSON(
+  jsonString: string,
+): SafeParseResult<Assignment4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Assignment4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Assignment4' from JSON`,
+  );
+}
+
 /** @internal */
 export const AssignmentSourceValue$inboundSchema: z.ZodType<
   AssignmentSourceValue,
@@ -189,6 +210,24 @@ export namespace AssignmentSourceValue$ {
   export const outboundSchema = AssignmentSourceValue$outboundSchema;
   /** @deprecated use `AssignmentSourceValue$Outbound` instead. */
   export type Outbound = AssignmentSourceValue$Outbound;
+}
+
+export function assignmentSourceValueToJSON(
+  assignmentSourceValue: AssignmentSourceValue,
+): string {
+  return JSON.stringify(
+    AssignmentSourceValue$outboundSchema.parse(assignmentSourceValue),
+  );
+}
+
+export function assignmentSourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<AssignmentSourceValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AssignmentSourceValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AssignmentSourceValue' from JSON`,
+  );
 }
 
 /** @internal */
@@ -291,6 +330,24 @@ export namespace LearningObjectType$ {
   export const outboundSchema = LearningObjectType$outboundSchema;
   /** @deprecated use `LearningObjectType$Outbound` instead. */
   export type Outbound = LearningObjectType$Outbound;
+}
+
+export function learningObjectTypeToJSON(
+  learningObjectType: LearningObjectType,
+): string {
+  return JSON.stringify(
+    LearningObjectType$outboundSchema.parse(learningObjectType),
+  );
+}
+
+export function learningObjectTypeFromJSON(
+  jsonString: string,
+): SafeParseResult<LearningObjectType, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LearningObjectType$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LearningObjectType' from JSON`,
+  );
 }
 
 /** @internal */
@@ -408,4 +465,18 @@ export namespace Assignment$ {
   export const outboundSchema = Assignment$outboundSchema;
   /** @deprecated use `Assignment$Outbound` instead. */
   export type Outbound = Assignment$Outbound;
+}
+
+export function assignmentToJSON(assignment: Assignment): string {
+  return JSON.stringify(Assignment$outboundSchema.parse(assignment));
+}
+
+export function assignmentFromJSON(
+  jsonString: string,
+): SafeParseResult<Assignment, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Assignment$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Assignment' from JSON`,
+  );
 }

@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   Content,
   Content$inboundSchema,
@@ -45,7 +48,7 @@ export type WorkEligibilityCategory = {
 
 export type WorkEligibilitySchemasDocumentFileFormat4 = {};
 
-export type WorkEligibilitySchemasSourceValue =
+export type WorkEligibilitySchemasDocumentFileFormatSourceValue =
   | WorkEligibilitySchemasDocumentFileFormat4
   | string
   | number
@@ -1630,7 +1633,7 @@ export type WorkEligibilityIssuedBy = {
 
 export type WorkEligibilitySchemas4 = {};
 
-export type WorkEligibilitySourceType =
+export type WorkEligibilitySchemasSourceValue =
   | WorkEligibilitySchemas4
   | string
   | number
@@ -1649,7 +1652,7 @@ export type WorkEligibilitySchemasValueOpen = OpenEnum<
 >;
 
 export type WorkEligibilityType = {
-  sourceType?:
+  sourceValue?:
     | WorkEligibilitySchemas4
     | string
     | number
@@ -1711,6 +1714,26 @@ export namespace WorkEligibilitySchemasDocument4$ {
   export type Outbound = WorkEligibilitySchemasDocument4$Outbound;
 }
 
+export function workEligibilitySchemasDocument4ToJSON(
+  workEligibilitySchemasDocument4: WorkEligibilitySchemasDocument4,
+): string {
+  return JSON.stringify(
+    WorkEligibilitySchemasDocument4$outboundSchema.parse(
+      workEligibilitySchemasDocument4,
+    ),
+  );
+}
+
+export function workEligibilitySchemasDocument4FromJSON(
+  jsonString: string,
+): SafeParseResult<WorkEligibilitySchemasDocument4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => WorkEligibilitySchemasDocument4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'WorkEligibilitySchemasDocument4' from JSON`,
+  );
+}
+
 /** @internal */
 export const WorkEligibilitySchemasDocumentSourceValue$inboundSchema: z.ZodType<
   WorkEligibilitySchemasDocumentSourceValue,
@@ -1759,6 +1782,33 @@ export namespace WorkEligibilitySchemasDocumentSourceValue$ {
     WorkEligibilitySchemasDocumentSourceValue$outboundSchema;
   /** @deprecated use `WorkEligibilitySchemasDocumentSourceValue$Outbound` instead. */
   export type Outbound = WorkEligibilitySchemasDocumentSourceValue$Outbound;
+}
+
+export function workEligibilitySchemasDocumentSourceValueToJSON(
+  workEligibilitySchemasDocumentSourceValue:
+    WorkEligibilitySchemasDocumentSourceValue,
+): string {
+  return JSON.stringify(
+    WorkEligibilitySchemasDocumentSourceValue$outboundSchema.parse(
+      workEligibilitySchemasDocumentSourceValue,
+    ),
+  );
+}
+
+export function workEligibilitySchemasDocumentSourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  WorkEligibilitySchemasDocumentSourceValue,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      WorkEligibilitySchemasDocumentSourceValue$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'WorkEligibilitySchemasDocumentSourceValue' from JSON`,
+  );
 }
 
 /** @internal */
@@ -1831,6 +1881,24 @@ export namespace WorkEligibilityCategory$ {
   export type Outbound = WorkEligibilityCategory$Outbound;
 }
 
+export function workEligibilityCategoryToJSON(
+  workEligibilityCategory: WorkEligibilityCategory,
+): string {
+  return JSON.stringify(
+    WorkEligibilityCategory$outboundSchema.parse(workEligibilityCategory),
+  );
+}
+
+export function workEligibilityCategoryFromJSON(
+  jsonString: string,
+): SafeParseResult<WorkEligibilityCategory, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => WorkEligibilityCategory$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'WorkEligibilityCategory' from JSON`,
+  );
+}
+
 /** @internal */
 export const WorkEligibilitySchemasDocumentFileFormat4$inboundSchema: z.ZodType<
   WorkEligibilitySchemasDocumentFileFormat4,
@@ -1864,21 +1932,49 @@ export namespace WorkEligibilitySchemasDocumentFileFormat4$ {
   export type Outbound = WorkEligibilitySchemasDocumentFileFormat4$Outbound;
 }
 
-/** @internal */
-export const WorkEligibilitySchemasSourceValue$inboundSchema: z.ZodType<
-  WorkEligibilitySchemasSourceValue,
-  z.ZodTypeDef,
-  unknown
-> = z.union([
-  z.lazy(() => WorkEligibilitySchemasDocumentFileFormat4$inboundSchema),
-  z.string(),
-  z.number(),
-  z.boolean(),
-  z.array(z.any()),
-]);
+export function workEligibilitySchemasDocumentFileFormat4ToJSON(
+  workEligibilitySchemasDocumentFileFormat4:
+    WorkEligibilitySchemasDocumentFileFormat4,
+): string {
+  return JSON.stringify(
+    WorkEligibilitySchemasDocumentFileFormat4$outboundSchema.parse(
+      workEligibilitySchemasDocumentFileFormat4,
+    ),
+  );
+}
+
+export function workEligibilitySchemasDocumentFileFormat4FromJSON(
+  jsonString: string,
+): SafeParseResult<
+  WorkEligibilitySchemasDocumentFileFormat4,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      WorkEligibilitySchemasDocumentFileFormat4$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'WorkEligibilitySchemasDocumentFileFormat4' from JSON`,
+  );
+}
 
 /** @internal */
-export type WorkEligibilitySchemasSourceValue$Outbound =
+export const WorkEligibilitySchemasDocumentFileFormatSourceValue$inboundSchema:
+  z.ZodType<
+    WorkEligibilitySchemasDocumentFileFormatSourceValue,
+    z.ZodTypeDef,
+    unknown
+  > = z.union([
+    z.lazy(() => WorkEligibilitySchemasDocumentFileFormat4$inboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+    z.array(z.any()),
+  ]);
+
+/** @internal */
+export type WorkEligibilitySchemasDocumentFileFormatSourceValue$Outbound =
   | WorkEligibilitySchemasDocumentFileFormat4$Outbound
   | string
   | number
@@ -1886,30 +1982,60 @@ export type WorkEligibilitySchemasSourceValue$Outbound =
   | Array<any>;
 
 /** @internal */
-export const WorkEligibilitySchemasSourceValue$outboundSchema: z.ZodType<
-  WorkEligibilitySchemasSourceValue$Outbound,
-  z.ZodTypeDef,
-  WorkEligibilitySchemasSourceValue
-> = z.union([
-  z.lazy(() => WorkEligibilitySchemasDocumentFileFormat4$outboundSchema),
-  z.string(),
-  z.number(),
-  z.boolean(),
-  z.array(z.any()),
-]);
+export const WorkEligibilitySchemasDocumentFileFormatSourceValue$outboundSchema:
+  z.ZodType<
+    WorkEligibilitySchemasDocumentFileFormatSourceValue$Outbound,
+    z.ZodTypeDef,
+    WorkEligibilitySchemasDocumentFileFormatSourceValue
+  > = z.union([
+    z.lazy(() => WorkEligibilitySchemasDocumentFileFormat4$outboundSchema),
+    z.string(),
+    z.number(),
+    z.boolean(),
+    z.array(z.any()),
+  ]);
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace WorkEligibilitySchemasSourceValue$ {
-  /** @deprecated use `WorkEligibilitySchemasSourceValue$inboundSchema` instead. */
-  export const inboundSchema = WorkEligibilitySchemasSourceValue$inboundSchema;
-  /** @deprecated use `WorkEligibilitySchemasSourceValue$outboundSchema` instead. */
+export namespace WorkEligibilitySchemasDocumentFileFormatSourceValue$ {
+  /** @deprecated use `WorkEligibilitySchemasDocumentFileFormatSourceValue$inboundSchema` instead. */
+  export const inboundSchema =
+    WorkEligibilitySchemasDocumentFileFormatSourceValue$inboundSchema;
+  /** @deprecated use `WorkEligibilitySchemasDocumentFileFormatSourceValue$outboundSchema` instead. */
   export const outboundSchema =
-    WorkEligibilitySchemasSourceValue$outboundSchema;
-  /** @deprecated use `WorkEligibilitySchemasSourceValue$Outbound` instead. */
-  export type Outbound = WorkEligibilitySchemasSourceValue$Outbound;
+    WorkEligibilitySchemasDocumentFileFormatSourceValue$outboundSchema;
+  /** @deprecated use `WorkEligibilitySchemasDocumentFileFormatSourceValue$Outbound` instead. */
+  export type Outbound =
+    WorkEligibilitySchemasDocumentFileFormatSourceValue$Outbound;
+}
+
+export function workEligibilitySchemasDocumentFileFormatSourceValueToJSON(
+  workEligibilitySchemasDocumentFileFormatSourceValue:
+    WorkEligibilitySchemasDocumentFileFormatSourceValue,
+): string {
+  return JSON.stringify(
+    WorkEligibilitySchemasDocumentFileFormatSourceValue$outboundSchema.parse(
+      workEligibilitySchemasDocumentFileFormatSourceValue,
+    ),
+  );
+}
+
+export function workEligibilitySchemasDocumentFileFormatSourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  WorkEligibilitySchemasDocumentFileFormatSourceValue,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      WorkEligibilitySchemasDocumentFileFormatSourceValue$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'WorkEligibilitySchemasDocumentFileFormatSourceValue' from JSON`,
+  );
 }
 
 /** @internal */
@@ -2018,6 +2144,24 @@ export namespace WorkEligibilityFileFormat$ {
   export type Outbound = WorkEligibilityFileFormat$Outbound;
 }
 
+export function workEligibilityFileFormatToJSON(
+  workEligibilityFileFormat: WorkEligibilityFileFormat,
+): string {
+  return JSON.stringify(
+    WorkEligibilityFileFormat$outboundSchema.parse(workEligibilityFileFormat),
+  );
+}
+
+export function workEligibilityFileFormatFromJSON(
+  jsonString: string,
+): SafeParseResult<WorkEligibilityFileFormat, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => WorkEligibilityFileFormat$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'WorkEligibilityFileFormat' from JSON`,
+  );
+}
+
 /** @internal */
 export const WorkEligibilityDocument$inboundSchema: z.ZodType<
   WorkEligibilityDocument,
@@ -2110,6 +2254,24 @@ export namespace WorkEligibilityDocument$ {
   export type Outbound = WorkEligibilityDocument$Outbound;
 }
 
+export function workEligibilityDocumentToJSON(
+  workEligibilityDocument: WorkEligibilityDocument,
+): string {
+  return JSON.stringify(
+    WorkEligibilityDocument$outboundSchema.parse(workEligibilityDocument),
+  );
+}
+
+export function workEligibilityDocumentFromJSON(
+  jsonString: string,
+): SafeParseResult<WorkEligibilityDocument, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => WorkEligibilityDocument$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'WorkEligibilityDocument' from JSON`,
+  );
+}
+
 /** @internal */
 export const WorkEligibility4$inboundSchema: z.ZodType<
   WorkEligibility4,
@@ -2138,6 +2300,24 @@ export namespace WorkEligibility4$ {
   export const outboundSchema = WorkEligibility4$outboundSchema;
   /** @deprecated use `WorkEligibility4$Outbound` instead. */
   export type Outbound = WorkEligibility4$Outbound;
+}
+
+export function workEligibility4ToJSON(
+  workEligibility4: WorkEligibility4,
+): string {
+  return JSON.stringify(
+    WorkEligibility4$outboundSchema.parse(workEligibility4),
+  );
+}
+
+export function workEligibility4FromJSON(
+  jsonString: string,
+): SafeParseResult<WorkEligibility4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => WorkEligibility4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'WorkEligibility4' from JSON`,
+  );
 }
 
 /** @internal */
@@ -2185,6 +2365,24 @@ export namespace WorkEligibilitySourceValue$ {
   export const outboundSchema = WorkEligibilitySourceValue$outboundSchema;
   /** @deprecated use `WorkEligibilitySourceValue$Outbound` instead. */
   export type Outbound = WorkEligibilitySourceValue$Outbound;
+}
+
+export function workEligibilitySourceValueToJSON(
+  workEligibilitySourceValue: WorkEligibilitySourceValue,
+): string {
+  return JSON.stringify(
+    WorkEligibilitySourceValue$outboundSchema.parse(workEligibilitySourceValue),
+  );
+}
+
+export function workEligibilitySourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<WorkEligibilitySourceValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => WorkEligibilitySourceValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'WorkEligibilitySourceValue' from JSON`,
+  );
 }
 
 /** @internal */
@@ -2289,6 +2487,24 @@ export namespace WorkEligibilityIssuedBy$ {
   export type Outbound = WorkEligibilityIssuedBy$Outbound;
 }
 
+export function workEligibilityIssuedByToJSON(
+  workEligibilityIssuedBy: WorkEligibilityIssuedBy,
+): string {
+  return JSON.stringify(
+    WorkEligibilityIssuedBy$outboundSchema.parse(workEligibilityIssuedBy),
+  );
+}
+
+export function workEligibilityIssuedByFromJSON(
+  jsonString: string,
+): SafeParseResult<WorkEligibilityIssuedBy, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => WorkEligibilityIssuedBy$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'WorkEligibilityIssuedBy' from JSON`,
+  );
+}
+
 /** @internal */
 export const WorkEligibilitySchemas4$inboundSchema: z.ZodType<
   WorkEligibilitySchemas4,
@@ -2319,9 +2535,27 @@ export namespace WorkEligibilitySchemas4$ {
   export type Outbound = WorkEligibilitySchemas4$Outbound;
 }
 
+export function workEligibilitySchemas4ToJSON(
+  workEligibilitySchemas4: WorkEligibilitySchemas4,
+): string {
+  return JSON.stringify(
+    WorkEligibilitySchemas4$outboundSchema.parse(workEligibilitySchemas4),
+  );
+}
+
+export function workEligibilitySchemas4FromJSON(
+  jsonString: string,
+): SafeParseResult<WorkEligibilitySchemas4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => WorkEligibilitySchemas4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'WorkEligibilitySchemas4' from JSON`,
+  );
+}
+
 /** @internal */
-export const WorkEligibilitySourceType$inboundSchema: z.ZodType<
-  WorkEligibilitySourceType,
+export const WorkEligibilitySchemasSourceValue$inboundSchema: z.ZodType<
+  WorkEligibilitySchemasSourceValue,
   z.ZodTypeDef,
   unknown
 > = z.union([
@@ -2333,7 +2567,7 @@ export const WorkEligibilitySourceType$inboundSchema: z.ZodType<
 ]);
 
 /** @internal */
-export type WorkEligibilitySourceType$Outbound =
+export type WorkEligibilitySchemasSourceValue$Outbound =
   | WorkEligibilitySchemas4$Outbound
   | string
   | number
@@ -2341,10 +2575,10 @@ export type WorkEligibilitySourceType$Outbound =
   | Array<any>;
 
 /** @internal */
-export const WorkEligibilitySourceType$outboundSchema: z.ZodType<
-  WorkEligibilitySourceType$Outbound,
+export const WorkEligibilitySchemasSourceValue$outboundSchema: z.ZodType<
+  WorkEligibilitySchemasSourceValue$Outbound,
   z.ZodTypeDef,
-  WorkEligibilitySourceType
+  WorkEligibilitySchemasSourceValue
 > = z.union([
   z.lazy(() => WorkEligibilitySchemas4$outboundSchema),
   z.string(),
@@ -2357,13 +2591,34 @@ export const WorkEligibilitySourceType$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace WorkEligibilitySourceType$ {
-  /** @deprecated use `WorkEligibilitySourceType$inboundSchema` instead. */
-  export const inboundSchema = WorkEligibilitySourceType$inboundSchema;
-  /** @deprecated use `WorkEligibilitySourceType$outboundSchema` instead. */
-  export const outboundSchema = WorkEligibilitySourceType$outboundSchema;
-  /** @deprecated use `WorkEligibilitySourceType$Outbound` instead. */
-  export type Outbound = WorkEligibilitySourceType$Outbound;
+export namespace WorkEligibilitySchemasSourceValue$ {
+  /** @deprecated use `WorkEligibilitySchemasSourceValue$inboundSchema` instead. */
+  export const inboundSchema = WorkEligibilitySchemasSourceValue$inboundSchema;
+  /** @deprecated use `WorkEligibilitySchemasSourceValue$outboundSchema` instead. */
+  export const outboundSchema =
+    WorkEligibilitySchemasSourceValue$outboundSchema;
+  /** @deprecated use `WorkEligibilitySchemasSourceValue$Outbound` instead. */
+  export type Outbound = WorkEligibilitySchemasSourceValue$Outbound;
+}
+
+export function workEligibilitySchemasSourceValueToJSON(
+  workEligibilitySchemasSourceValue: WorkEligibilitySchemasSourceValue,
+): string {
+  return JSON.stringify(
+    WorkEligibilitySchemasSourceValue$outboundSchema.parse(
+      workEligibilitySchemasSourceValue,
+    ),
+  );
+}
+
+export function workEligibilitySchemasSourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<WorkEligibilitySchemasSourceValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => WorkEligibilitySchemasSourceValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'WorkEligibilitySchemasSourceValue' from JSON`,
+  );
 }
 
 /** @internal */
@@ -2404,7 +2659,7 @@ export const WorkEligibilityType$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  source_type: z.nullable(
+  source_value: z.nullable(
     z.union([
       z.lazy(() => WorkEligibilitySchemas4$inboundSchema),
       z.string(),
@@ -2416,13 +2671,13 @@ export const WorkEligibilityType$inboundSchema: z.ZodType<
   value: z.nullable(WorkEligibilitySchemasValue$inboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {
-    "source_type": "sourceType",
+    "source_value": "sourceValue",
   });
 });
 
 /** @internal */
 export type WorkEligibilityType$Outbound = {
-  source_type?:
+  source_value?:
     | WorkEligibilitySchemas4$Outbound
     | string
     | number
@@ -2439,7 +2694,7 @@ export const WorkEligibilityType$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   WorkEligibilityType
 > = z.object({
-  sourceType: z.nullable(
+  sourceValue: z.nullable(
     z.union([
       z.lazy(() => WorkEligibilitySchemas4$outboundSchema),
       z.string(),
@@ -2451,7 +2706,7 @@ export const WorkEligibilityType$outboundSchema: z.ZodType<
   value: z.nullable(WorkEligibilitySchemasValue$outboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {
-    sourceType: "source_type",
+    sourceValue: "source_value",
   });
 });
 
@@ -2466,6 +2721,24 @@ export namespace WorkEligibilityType$ {
   export const outboundSchema = WorkEligibilityType$outboundSchema;
   /** @deprecated use `WorkEligibilityType$Outbound` instead. */
   export type Outbound = WorkEligibilityType$Outbound;
+}
+
+export function workEligibilityTypeToJSON(
+  workEligibilityType: WorkEligibilityType,
+): string {
+  return JSON.stringify(
+    WorkEligibilityType$outboundSchema.parse(workEligibilityType),
+  );
+}
+
+export function workEligibilityTypeFromJSON(
+  jsonString: string,
+): SafeParseResult<WorkEligibilityType, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => WorkEligibilityType$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'WorkEligibilityType' from JSON`,
+  );
 }
 
 /** @internal */
@@ -2550,4 +2823,20 @@ export namespace WorkEligibility$ {
   export const outboundSchema = WorkEligibility$outboundSchema;
   /** @deprecated use `WorkEligibility$Outbound` instead. */
   export type Outbound = WorkEligibility$Outbound;
+}
+
+export function workEligibilityToJSON(
+  workEligibility: WorkEligibility,
+): string {
+  return JSON.stringify(WorkEligibility$outboundSchema.parse(workEligibility));
+}
+
+export function workEligibilityFromJSON(
+  jsonString: string,
+): SafeParseResult<WorkEligibility, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => WorkEligibility$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'WorkEligibility' from JSON`,
+  );
 }

@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   PushMessages,
   PushMessages$inboundSchema,
@@ -65,4 +68,25 @@ export namespace MarketingCreatePushTemplateRequestDto$ {
     MarketingCreatePushTemplateRequestDto$outboundSchema;
   /** @deprecated use `MarketingCreatePushTemplateRequestDto$Outbound` instead. */
   export type Outbound = MarketingCreatePushTemplateRequestDto$Outbound;
+}
+
+export function marketingCreatePushTemplateRequestDtoToJSON(
+  marketingCreatePushTemplateRequestDto: MarketingCreatePushTemplateRequestDto,
+): string {
+  return JSON.stringify(
+    MarketingCreatePushTemplateRequestDto$outboundSchema.parse(
+      marketingCreatePushTemplateRequestDto,
+    ),
+  );
+}
+
+export function marketingCreatePushTemplateRequestDtoFromJSON(
+  jsonString: string,
+): SafeParseResult<MarketingCreatePushTemplateRequestDto, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      MarketingCreatePushTemplateRequestDto$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'MarketingCreatePushTemplateRequestDto' from JSON`,
+  );
 }

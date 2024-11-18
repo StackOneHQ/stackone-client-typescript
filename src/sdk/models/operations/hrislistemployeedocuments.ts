@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 /**
@@ -126,6 +129,33 @@ export namespace HrisListEmployeeDocumentsQueryParamFilter$ {
   export type Outbound = HrisListEmployeeDocumentsQueryParamFilter$Outbound;
 }
 
+export function hrisListEmployeeDocumentsQueryParamFilterToJSON(
+  hrisListEmployeeDocumentsQueryParamFilter:
+    HrisListEmployeeDocumentsQueryParamFilter,
+): string {
+  return JSON.stringify(
+    HrisListEmployeeDocumentsQueryParamFilter$outboundSchema.parse(
+      hrisListEmployeeDocumentsQueryParamFilter,
+    ),
+  );
+}
+
+export function hrisListEmployeeDocumentsQueryParamFilterFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  HrisListEmployeeDocumentsQueryParamFilter,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      HrisListEmployeeDocumentsQueryParamFilter$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'HrisListEmployeeDocumentsQueryParamFilter' from JSON`,
+  );
+}
+
 /** @internal */
 export const HrisListEmployeeDocumentsRequest$inboundSchema: z.ZodType<
   HrisListEmployeeDocumentsRequest,
@@ -208,6 +238,26 @@ export namespace HrisListEmployeeDocumentsRequest$ {
   export type Outbound = HrisListEmployeeDocumentsRequest$Outbound;
 }
 
+export function hrisListEmployeeDocumentsRequestToJSON(
+  hrisListEmployeeDocumentsRequest: HrisListEmployeeDocumentsRequest,
+): string {
+  return JSON.stringify(
+    HrisListEmployeeDocumentsRequest$outboundSchema.parse(
+      hrisListEmployeeDocumentsRequest,
+    ),
+  );
+}
+
+export function hrisListEmployeeDocumentsRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<HrisListEmployeeDocumentsRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => HrisListEmployeeDocumentsRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HrisListEmployeeDocumentsRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const HrisListEmployeeDocumentsResponse$inboundSchema: z.ZodType<
   HrisListEmployeeDocumentsResponse,
@@ -270,4 +320,24 @@ export namespace HrisListEmployeeDocumentsResponse$ {
     HrisListEmployeeDocumentsResponse$outboundSchema;
   /** @deprecated use `HrisListEmployeeDocumentsResponse$Outbound` instead. */
   export type Outbound = HrisListEmployeeDocumentsResponse$Outbound;
+}
+
+export function hrisListEmployeeDocumentsResponseToJSON(
+  hrisListEmployeeDocumentsResponse: HrisListEmployeeDocumentsResponse,
+): string {
+  return JSON.stringify(
+    HrisListEmployeeDocumentsResponse$outboundSchema.parse(
+      hrisListEmployeeDocumentsResponse,
+    ),
+  );
+}
+
+export function hrisListEmployeeDocumentsResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<HrisListEmployeeDocumentsResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => HrisListEmployeeDocumentsResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HrisListEmployeeDocumentsResponse' from JSON`,
+  );
 }

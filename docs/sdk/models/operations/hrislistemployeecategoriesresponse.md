@@ -17,7 +17,7 @@ let value: HrisListEmployeeCategoriesResponse = {
       },
     ],
   },
-  statusCode: 506,
+  statusCode: 405,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

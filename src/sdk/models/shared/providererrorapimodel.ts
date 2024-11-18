@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type Headers = {};
 
@@ -42,6 +45,20 @@ export namespace Headers$ {
   export type Outbound = Headers$Outbound;
 }
 
+export function headersToJSON(headers: Headers): string {
+  return JSON.stringify(Headers$outboundSchema.parse(headers));
+}
+
+export function headersFromJSON(
+  jsonString: string,
+): SafeParseResult<Headers, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Headers$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Headers' from JSON`,
+  );
+}
+
 /** @internal */
 export const Raw$inboundSchema: z.ZodType<Raw, z.ZodTypeDef, unknown> = z
   .object({});
@@ -64,6 +81,20 @@ export namespace Raw$ {
   export const outboundSchema = Raw$outboundSchema;
   /** @deprecated use `Raw$Outbound` instead. */
   export type Outbound = Raw$Outbound;
+}
+
+export function rawToJSON(raw: Raw): string {
+  return JSON.stringify(Raw$outboundSchema.parse(raw));
+}
+
+export function rawFromJSON(
+  jsonString: string,
+): SafeParseResult<Raw, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Raw$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Raw' from JSON`,
+  );
 }
 
 /** @internal */
@@ -109,4 +140,22 @@ export namespace ProviderErrorApiModel$ {
   export const outboundSchema = ProviderErrorApiModel$outboundSchema;
   /** @deprecated use `ProviderErrorApiModel$Outbound` instead. */
   export type Outbound = ProviderErrorApiModel$Outbound;
+}
+
+export function providerErrorApiModelToJSON(
+  providerErrorApiModel: ProviderErrorApiModel,
+): string {
+  return JSON.stringify(
+    ProviderErrorApiModel$outboundSchema.parse(providerErrorApiModel),
+  );
+}
+
+export function providerErrorApiModelFromJSON(
+  jsonString: string,
+): SafeParseResult<ProviderErrorApiModel, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ProviderErrorApiModel$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ProviderErrorApiModel' from JSON`,
+  );
 }

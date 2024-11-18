@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   CreateCategoriesApiModel,
   CreateCategoriesApiModel$inboundSchema,
@@ -51,10 +54,6 @@ export type LmsUpsertCourseRequestDto = {
    */
   coverUrl?: string | null | undefined;
   /**
-   * The date on which the course was created.
-   */
-  createdAt?: string | null | undefined;
-  /**
    * The description of the course
    */
   description?: string | null | undefined;
@@ -83,10 +82,6 @@ export type LmsUpsertCourseRequestDto = {
    */
   unifiedCustomFields?: { [k: string]: any } | null | undefined;
   /**
-   * The date on which the course was last updated.
-   */
-  updatedAt?: string | null | undefined;
-  /**
    * The redirect URL of the course.
    */
   url?: string | null | undefined;
@@ -104,7 +99,6 @@ export const LmsUpsertCourseRequestDto$inboundSchema: z.ZodType<
   content: z.nullable(z.array(CreateContentApiModel$inboundSchema)).optional(),
   content_ids: z.nullable(z.array(z.string())).optional(),
   cover_url: z.nullable(z.string()).optional(),
-  created_at: z.nullable(z.string()).optional(),
   description: z.nullable(z.string()).optional(),
   duration: z.nullable(z.string()).optional(),
   external_reference: z.nullable(z.string()).optional(),
@@ -112,16 +106,13 @@ export const LmsUpsertCourseRequestDto$inboundSchema: z.ZodType<
   skills: z.nullable(z.array(CreateSkillsApiModel$inboundSchema)).optional(),
   title: z.nullable(z.string()).optional(),
   unified_custom_fields: z.nullable(z.record(z.any())).optional(),
-  updated_at: z.nullable(z.string()).optional(),
   url: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
     "content_ids": "contentIds",
     "cover_url": "coverUrl",
-    "created_at": "createdAt",
     "external_reference": "externalReference",
     "unified_custom_fields": "unifiedCustomFields",
-    "updated_at": "updatedAt",
   });
 });
 
@@ -132,7 +123,6 @@ export type LmsUpsertCourseRequestDto$Outbound = {
   content?: Array<CreateContentApiModel$Outbound> | null | undefined;
   content_ids?: Array<string> | null | undefined;
   cover_url?: string | null | undefined;
-  created_at?: string | null | undefined;
   description?: string | null | undefined;
   duration?: string | null | undefined;
   external_reference?: string | null | undefined;
@@ -140,7 +130,6 @@ export type LmsUpsertCourseRequestDto$Outbound = {
   skills?: Array<CreateSkillsApiModel$Outbound> | null | undefined;
   title?: string | null | undefined;
   unified_custom_fields?: { [k: string]: any } | null | undefined;
-  updated_at?: string | null | undefined;
   url?: string | null | undefined;
 };
 
@@ -156,7 +145,6 @@ export const LmsUpsertCourseRequestDto$outboundSchema: z.ZodType<
   content: z.nullable(z.array(CreateContentApiModel$outboundSchema)).optional(),
   contentIds: z.nullable(z.array(z.string())).optional(),
   coverUrl: z.nullable(z.string()).optional(),
-  createdAt: z.nullable(z.string()).optional(),
   description: z.nullable(z.string()).optional(),
   duration: z.nullable(z.string()).optional(),
   externalReference: z.nullable(z.string()).optional(),
@@ -164,16 +152,13 @@ export const LmsUpsertCourseRequestDto$outboundSchema: z.ZodType<
   skills: z.nullable(z.array(CreateSkillsApiModel$outboundSchema)).optional(),
   title: z.nullable(z.string()).optional(),
   unifiedCustomFields: z.nullable(z.record(z.any())).optional(),
-  updatedAt: z.nullable(z.string()).optional(),
   url: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
     contentIds: "content_ids",
     coverUrl: "cover_url",
-    createdAt: "created_at",
     externalReference: "external_reference",
     unifiedCustomFields: "unified_custom_fields",
-    updatedAt: "updated_at",
   });
 });
 
@@ -188,4 +173,22 @@ export namespace LmsUpsertCourseRequestDto$ {
   export const outboundSchema = LmsUpsertCourseRequestDto$outboundSchema;
   /** @deprecated use `LmsUpsertCourseRequestDto$Outbound` instead. */
   export type Outbound = LmsUpsertCourseRequestDto$Outbound;
+}
+
+export function lmsUpsertCourseRequestDtoToJSON(
+  lmsUpsertCourseRequestDto: LmsUpsertCourseRequestDto,
+): string {
+  return JSON.stringify(
+    LmsUpsertCourseRequestDto$outboundSchema.parse(lmsUpsertCourseRequestDto),
+  );
+}
+
+export function lmsUpsertCourseRequestDtoFromJSON(
+  jsonString: string,
+): SafeParseResult<LmsUpsertCourseRequestDto, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LmsUpsertCourseRequestDto$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LmsUpsertCourseRequestDto' from JSON`,
+  );
 }

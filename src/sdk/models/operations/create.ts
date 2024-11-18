@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type CreateRequest = {
@@ -86,6 +89,20 @@ export namespace CreateRequest$ {
   export type Outbound = CreateRequest$Outbound;
 }
 
+export function createRequestToJSON(createRequest: CreateRequest): string {
+  return JSON.stringify(CreateRequest$outboundSchema.parse(createRequest));
+}
+
+export function createRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const CreateResponse$inboundSchema: z.ZodType<
   CreateResponse,
@@ -143,4 +160,18 @@ export namespace CreateResponse$ {
   export const outboundSchema = CreateResponse$outboundSchema;
   /** @deprecated use `CreateResponse$Outbound` instead. */
   export type Outbound = CreateResponse$Outbound;
+}
+
+export function createResponseToJSON(createResponse: CreateResponse): string {
+  return JSON.stringify(CreateResponse$outboundSchema.parse(createResponse));
+}
+
+export function createResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateResponse' from JSON`,
+  );
 }

@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type LmsUpsertCourseRequest = {
@@ -20,10 +23,6 @@ export type LmsUpsertCourseResponse = {
    */
   contentType: string;
   /**
-   * The course was upserted successfully.
-   */
-  createResult?: shared.CreateResult | undefined;
-  /**
    * HTTP response status code for this operation
    */
   statusCode: number;
@@ -31,6 +30,10 @@ export type LmsUpsertCourseResponse = {
    * Raw HTTP response; suitable for custom response parsing
    */
   rawResponse: Response;
+  /**
+   * The course was upserted successfully.
+   */
+  upsertResult?: shared.UpsertResult | undefined;
 };
 
 /** @internal */
@@ -82,6 +85,24 @@ export namespace LmsUpsertCourseRequest$ {
   export type Outbound = LmsUpsertCourseRequest$Outbound;
 }
 
+export function lmsUpsertCourseRequestToJSON(
+  lmsUpsertCourseRequest: LmsUpsertCourseRequest,
+): string {
+  return JSON.stringify(
+    LmsUpsertCourseRequest$outboundSchema.parse(lmsUpsertCourseRequest),
+  );
+}
+
+export function lmsUpsertCourseRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<LmsUpsertCourseRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LmsUpsertCourseRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LmsUpsertCourseRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const LmsUpsertCourseResponse$inboundSchema: z.ZodType<
   LmsUpsertCourseResponse,
@@ -89,24 +110,24 @@ export const LmsUpsertCourseResponse$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   ContentType: z.string(),
-  CreateResult: shared.CreateResult$inboundSchema.optional(),
   StatusCode: z.number().int(),
   RawResponse: z.instanceof(Response),
+  UpsertResult: shared.UpsertResult$inboundSchema.optional(),
 }).transform((v) => {
   return remap$(v, {
     "ContentType": "contentType",
-    "CreateResult": "createResult",
     "StatusCode": "statusCode",
     "RawResponse": "rawResponse",
+    "UpsertResult": "upsertResult",
   });
 });
 
 /** @internal */
 export type LmsUpsertCourseResponse$Outbound = {
   ContentType: string;
-  CreateResult?: shared.CreateResult$Outbound | undefined;
   StatusCode: number;
   RawResponse: never;
+  UpsertResult?: shared.UpsertResult$Outbound | undefined;
 };
 
 /** @internal */
@@ -116,17 +137,17 @@ export const LmsUpsertCourseResponse$outboundSchema: z.ZodType<
   LmsUpsertCourseResponse
 > = z.object({
   contentType: z.string(),
-  createResult: shared.CreateResult$outboundSchema.optional(),
   statusCode: z.number().int(),
   rawResponse: z.instanceof(Response).transform(() => {
     throw new Error("Response cannot be serialized");
   }),
+  upsertResult: shared.UpsertResult$outboundSchema.optional(),
 }).transform((v) => {
   return remap$(v, {
     contentType: "ContentType",
-    createResult: "CreateResult",
     statusCode: "StatusCode",
     rawResponse: "RawResponse",
+    upsertResult: "UpsertResult",
   });
 });
 
@@ -141,4 +162,22 @@ export namespace LmsUpsertCourseResponse$ {
   export const outboundSchema = LmsUpsertCourseResponse$outboundSchema;
   /** @deprecated use `LmsUpsertCourseResponse$Outbound` instead. */
   export type Outbound = LmsUpsertCourseResponse$Outbound;
+}
+
+export function lmsUpsertCourseResponseToJSON(
+  lmsUpsertCourseResponse: LmsUpsertCourseResponse,
+): string {
+  return JSON.stringify(
+    LmsUpsertCourseResponse$outboundSchema.parse(lmsUpsertCourseResponse),
+  );
+}
+
+export function lmsUpsertCourseResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<LmsUpsertCourseResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LmsUpsertCourseResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LmsUpsertCourseResponse' from JSON`,
+  );
 }

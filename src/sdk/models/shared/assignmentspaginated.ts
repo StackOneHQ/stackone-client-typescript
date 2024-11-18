@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   Assignment,
   Assignment$inboundSchema,
@@ -62,4 +65,22 @@ export namespace AssignmentsPaginated$ {
   export const outboundSchema = AssignmentsPaginated$outboundSchema;
   /** @deprecated use `AssignmentsPaginated$Outbound` instead. */
   export type Outbound = AssignmentsPaginated$Outbound;
+}
+
+export function assignmentsPaginatedToJSON(
+  assignmentsPaginated: AssignmentsPaginated,
+): string {
+  return JSON.stringify(
+    AssignmentsPaginated$outboundSchema.parse(assignmentsPaginated),
+  );
+}
+
+export function assignmentsPaginatedFromJSON(
+  jsonString: string,
+): SafeParseResult<AssignmentsPaginated, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AssignmentsPaginated$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AssignmentsPaginated' from JSON`,
+  );
 }

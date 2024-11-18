@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 /**
@@ -127,6 +130,33 @@ export namespace MarketingListOmniChannelTemplatesQueryParamFilter$ {
     MarketingListOmniChannelTemplatesQueryParamFilter$Outbound;
 }
 
+export function marketingListOmniChannelTemplatesQueryParamFilterToJSON(
+  marketingListOmniChannelTemplatesQueryParamFilter:
+    MarketingListOmniChannelTemplatesQueryParamFilter,
+): string {
+  return JSON.stringify(
+    MarketingListOmniChannelTemplatesQueryParamFilter$outboundSchema.parse(
+      marketingListOmniChannelTemplatesQueryParamFilter,
+    ),
+  );
+}
+
+export function marketingListOmniChannelTemplatesQueryParamFilterFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  MarketingListOmniChannelTemplatesQueryParamFilter,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      MarketingListOmniChannelTemplatesQueryParamFilter$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'MarketingListOmniChannelTemplatesQueryParamFilter' from JSON`,
+  );
+}
+
 /** @internal */
 export const MarketingListOmniChannelTemplatesRequest$inboundSchema: z.ZodType<
   MarketingListOmniChannelTemplatesRequest,
@@ -212,6 +242,33 @@ export namespace MarketingListOmniChannelTemplatesRequest$ {
   export type Outbound = MarketingListOmniChannelTemplatesRequest$Outbound;
 }
 
+export function marketingListOmniChannelTemplatesRequestToJSON(
+  marketingListOmniChannelTemplatesRequest:
+    MarketingListOmniChannelTemplatesRequest,
+): string {
+  return JSON.stringify(
+    MarketingListOmniChannelTemplatesRequest$outboundSchema.parse(
+      marketingListOmniChannelTemplatesRequest,
+    ),
+  );
+}
+
+export function marketingListOmniChannelTemplatesRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  MarketingListOmniChannelTemplatesRequest,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      MarketingListOmniChannelTemplatesRequest$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'MarketingListOmniChannelTemplatesRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const MarketingListOmniChannelTemplatesResponse$inboundSchema: z.ZodType<
   MarketingListOmniChannelTemplatesResponse,
@@ -274,4 +331,31 @@ export namespace MarketingListOmniChannelTemplatesResponse$ {
     MarketingListOmniChannelTemplatesResponse$outboundSchema;
   /** @deprecated use `MarketingListOmniChannelTemplatesResponse$Outbound` instead. */
   export type Outbound = MarketingListOmniChannelTemplatesResponse$Outbound;
+}
+
+export function marketingListOmniChannelTemplatesResponseToJSON(
+  marketingListOmniChannelTemplatesResponse:
+    MarketingListOmniChannelTemplatesResponse,
+): string {
+  return JSON.stringify(
+    MarketingListOmniChannelTemplatesResponse$outboundSchema.parse(
+      marketingListOmniChannelTemplatesResponse,
+    ),
+  );
+}
+
+export function marketingListOmniChannelTemplatesResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  MarketingListOmniChannelTemplatesResponse,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      MarketingListOmniChannelTemplatesResponse$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'MarketingListOmniChannelTemplatesResponse' from JSON`,
+  );
 }

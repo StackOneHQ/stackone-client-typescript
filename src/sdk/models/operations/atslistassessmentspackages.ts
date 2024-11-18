@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 /**
@@ -125,6 +128,33 @@ export namespace AtsListAssessmentsPackagesQueryParamFilter$ {
   export type Outbound = AtsListAssessmentsPackagesQueryParamFilter$Outbound;
 }
 
+export function atsListAssessmentsPackagesQueryParamFilterToJSON(
+  atsListAssessmentsPackagesQueryParamFilter:
+    AtsListAssessmentsPackagesQueryParamFilter,
+): string {
+  return JSON.stringify(
+    AtsListAssessmentsPackagesQueryParamFilter$outboundSchema.parse(
+      atsListAssessmentsPackagesQueryParamFilter,
+    ),
+  );
+}
+
+export function atsListAssessmentsPackagesQueryParamFilterFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  AtsListAssessmentsPackagesQueryParamFilter,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      AtsListAssessmentsPackagesQueryParamFilter$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'AtsListAssessmentsPackagesQueryParamFilter' from JSON`,
+  );
+}
+
 /** @internal */
 export const AtsListAssessmentsPackagesRequest$inboundSchema: z.ZodType<
   AtsListAssessmentsPackagesRequest,
@@ -205,6 +235,26 @@ export namespace AtsListAssessmentsPackagesRequest$ {
   export type Outbound = AtsListAssessmentsPackagesRequest$Outbound;
 }
 
+export function atsListAssessmentsPackagesRequestToJSON(
+  atsListAssessmentsPackagesRequest: AtsListAssessmentsPackagesRequest,
+): string {
+  return JSON.stringify(
+    AtsListAssessmentsPackagesRequest$outboundSchema.parse(
+      atsListAssessmentsPackagesRequest,
+    ),
+  );
+}
+
+export function atsListAssessmentsPackagesRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<AtsListAssessmentsPackagesRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AtsListAssessmentsPackagesRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AtsListAssessmentsPackagesRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const AtsListAssessmentsPackagesResponse$inboundSchema: z.ZodType<
   AtsListAssessmentsPackagesResponse,
@@ -269,4 +319,25 @@ export namespace AtsListAssessmentsPackagesResponse$ {
     AtsListAssessmentsPackagesResponse$outboundSchema;
   /** @deprecated use `AtsListAssessmentsPackagesResponse$Outbound` instead. */
   export type Outbound = AtsListAssessmentsPackagesResponse$Outbound;
+}
+
+export function atsListAssessmentsPackagesResponseToJSON(
+  atsListAssessmentsPackagesResponse: AtsListAssessmentsPackagesResponse,
+): string {
+  return JSON.stringify(
+    AtsListAssessmentsPackagesResponse$outboundSchema.parse(
+      atsListAssessmentsPackagesResponse,
+    ),
+  );
+}
+
+export function atsListAssessmentsPackagesResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<AtsListAssessmentsPackagesResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      AtsListAssessmentsPackagesResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AtsListAssessmentsPackagesResponse' from JSON`,
+  );
 }

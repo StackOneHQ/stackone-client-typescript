@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export enum Categories {
   Ats = "ats",
@@ -134,4 +137,18 @@ export namespace ConnectSession$ {
   export const outboundSchema = ConnectSession$outboundSchema;
   /** @deprecated use `ConnectSession$Outbound` instead. */
   export type Outbound = ConnectSession$Outbound;
+}
+
+export function connectSessionToJSON(connectSession: ConnectSession): string {
+  return JSON.stringify(ConnectSession$outboundSchema.parse(connectSession));
+}
+
+export function connectSessionFromJSON(
+  jsonString: string,
+): SafeParseResult<ConnectSession, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ConnectSession$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ConnectSession' from JSON`,
+  );
 }

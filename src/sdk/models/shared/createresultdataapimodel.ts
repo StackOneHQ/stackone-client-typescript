@@ -4,12 +4,11 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type CreateResultDataApiModel = {
-  /**
-   * The external identifier
-   */
-  externalReference?: string | null | undefined;
   /**
    * Unique identifier
    */
@@ -26,19 +25,16 @@ export const CreateResultDataApiModel$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  external_reference: z.nullable(z.string()).optional(),
   id: z.nullable(z.string()).optional(),
   remote_id: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
-    "external_reference": "externalReference",
     "remote_id": "remoteId",
   });
 });
 
 /** @internal */
 export type CreateResultDataApiModel$Outbound = {
-  external_reference?: string | null | undefined;
   id?: string | null | undefined;
   remote_id?: string | null | undefined;
 };
@@ -49,12 +45,10 @@ export const CreateResultDataApiModel$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   CreateResultDataApiModel
 > = z.object({
-  externalReference: z.nullable(z.string()).optional(),
   id: z.nullable(z.string()).optional(),
   remoteId: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
-    externalReference: "external_reference",
     remoteId: "remote_id",
   });
 });
@@ -70,4 +64,22 @@ export namespace CreateResultDataApiModel$ {
   export const outboundSchema = CreateResultDataApiModel$outboundSchema;
   /** @deprecated use `CreateResultDataApiModel$Outbound` instead. */
   export type Outbound = CreateResultDataApiModel$Outbound;
+}
+
+export function createResultDataApiModelToJSON(
+  createResultDataApiModel: CreateResultDataApiModel,
+): string {
+  return JSON.stringify(
+    CreateResultDataApiModel$outboundSchema.parse(createResultDataApiModel),
+  );
+}
+
+export function createResultDataApiModelFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateResultDataApiModel, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateResultDataApiModel$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateResultDataApiModel' from JSON`,
+  );
 }

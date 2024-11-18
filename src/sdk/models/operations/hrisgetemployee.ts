@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type HrisGetEmployeeRequest = {
@@ -115,6 +118,24 @@ export namespace HrisGetEmployeeRequest$ {
   export type Outbound = HrisGetEmployeeRequest$Outbound;
 }
 
+export function hrisGetEmployeeRequestToJSON(
+  hrisGetEmployeeRequest: HrisGetEmployeeRequest,
+): string {
+  return JSON.stringify(
+    HrisGetEmployeeRequest$outboundSchema.parse(hrisGetEmployeeRequest),
+  );
+}
+
+export function hrisGetEmployeeRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<HrisGetEmployeeRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => HrisGetEmployeeRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HrisGetEmployeeRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const HrisGetEmployeeResponse$inboundSchema: z.ZodType<
   HrisGetEmployeeResponse,
@@ -174,4 +195,22 @@ export namespace HrisGetEmployeeResponse$ {
   export const outboundSchema = HrisGetEmployeeResponse$outboundSchema;
   /** @deprecated use `HrisGetEmployeeResponse$Outbound` instead. */
   export type Outbound = HrisGetEmployeeResponse$Outbound;
+}
+
+export function hrisGetEmployeeResponseToJSON(
+  hrisGetEmployeeResponse: HrisGetEmployeeResponse,
+): string {
+  return JSON.stringify(
+    HrisGetEmployeeResponse$outboundSchema.parse(hrisGetEmployeeResponse),
+  );
+}
+
+export function hrisGetEmployeeResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<HrisGetEmployeeResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => HrisGetEmployeeResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HrisGetEmployeeResponse' from JSON`,
+  );
 }

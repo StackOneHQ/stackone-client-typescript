@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   IamRole,
   IamRole$inboundSchema,
@@ -103,6 +106,20 @@ export namespace IamGroup4$ {
   export type Outbound = IamGroup4$Outbound;
 }
 
+export function iamGroup4ToJSON(iamGroup4: IamGroup4): string {
+  return JSON.stringify(IamGroup4$outboundSchema.parse(iamGroup4));
+}
+
+export function iamGroup4FromJSON(
+  jsonString: string,
+): SafeParseResult<IamGroup4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => IamGroup4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'IamGroup4' from JSON`,
+  );
+}
+
 /** @internal */
 export const IamGroupSourceValue$inboundSchema: z.ZodType<
   IamGroupSourceValue,
@@ -148,6 +165,24 @@ export namespace IamGroupSourceValue$ {
   export const outboundSchema = IamGroupSourceValue$outboundSchema;
   /** @deprecated use `IamGroupSourceValue$Outbound` instead. */
   export type Outbound = IamGroupSourceValue$Outbound;
+}
+
+export function iamGroupSourceValueToJSON(
+  iamGroupSourceValue: IamGroupSourceValue,
+): string {
+  return JSON.stringify(
+    IamGroupSourceValue$outboundSchema.parse(iamGroupSourceValue),
+  );
+}
+
+export function iamGroupSourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<IamGroupSourceValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => IamGroupSourceValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'IamGroupSourceValue' from JSON`,
+  );
 }
 
 /** @internal */
@@ -252,6 +287,20 @@ export namespace IamGroupType$ {
   export type Outbound = IamGroupType$Outbound;
 }
 
+export function iamGroupTypeToJSON(iamGroupType: IamGroupType): string {
+  return JSON.stringify(IamGroupType$outboundSchema.parse(iamGroupType));
+}
+
+export function iamGroupTypeFromJSON(
+  jsonString: string,
+): SafeParseResult<IamGroupType, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => IamGroupType$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'IamGroupType' from JSON`,
+  );
+}
+
 /** @internal */
 export const IamGroup$inboundSchema: z.ZodType<
   IamGroup,
@@ -333,4 +382,18 @@ export namespace IamGroup$ {
   export const outboundSchema = IamGroup$outboundSchema;
   /** @deprecated use `IamGroup$Outbound` instead. */
   export type Outbound = IamGroup$Outbound;
+}
+
+export function iamGroupToJSON(iamGroup: IamGroup): string {
+  return JSON.stringify(IamGroup$outboundSchema.parse(iamGroup));
+}
+
+export function iamGroupFromJSON(
+  jsonString: string,
+): SafeParseResult<IamGroup, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => IamGroup$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'IamGroup' from JSON`,
+  );
 }

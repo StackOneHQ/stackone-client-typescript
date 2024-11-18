@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type LmsGetCompletionRequest = {
@@ -101,6 +104,24 @@ export namespace LmsGetCompletionRequest$ {
   export type Outbound = LmsGetCompletionRequest$Outbound;
 }
 
+export function lmsGetCompletionRequestToJSON(
+  lmsGetCompletionRequest: LmsGetCompletionRequest,
+): string {
+  return JSON.stringify(
+    LmsGetCompletionRequest$outboundSchema.parse(lmsGetCompletionRequest),
+  );
+}
+
+export function lmsGetCompletionRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<LmsGetCompletionRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LmsGetCompletionRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LmsGetCompletionRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const LmsGetCompletionResponse$inboundSchema: z.ZodType<
   LmsGetCompletionResponse,
@@ -160,4 +181,22 @@ export namespace LmsGetCompletionResponse$ {
   export const outboundSchema = LmsGetCompletionResponse$outboundSchema;
   /** @deprecated use `LmsGetCompletionResponse$Outbound` instead. */
   export type Outbound = LmsGetCompletionResponse$Outbound;
+}
+
+export function lmsGetCompletionResponseToJSON(
+  lmsGetCompletionResponse: LmsGetCompletionResponse,
+): string {
+  return JSON.stringify(
+    LmsGetCompletionResponse$outboundSchema.parse(lmsGetCompletionResponse),
+  );
+}
+
+export function lmsGetCompletionResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<LmsGetCompletionResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LmsGetCompletionResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LmsGetCompletionResponse' from JSON`,
+  );
 }

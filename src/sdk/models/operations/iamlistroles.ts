@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 /**
@@ -126,6 +129,26 @@ export namespace IamListRolesQueryParamFilter$ {
   export type Outbound = IamListRolesQueryParamFilter$Outbound;
 }
 
+export function iamListRolesQueryParamFilterToJSON(
+  iamListRolesQueryParamFilter: IamListRolesQueryParamFilter,
+): string {
+  return JSON.stringify(
+    IamListRolesQueryParamFilter$outboundSchema.parse(
+      iamListRolesQueryParamFilter,
+    ),
+  );
+}
+
+export function iamListRolesQueryParamFilterFromJSON(
+  jsonString: string,
+): SafeParseResult<IamListRolesQueryParamFilter, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => IamListRolesQueryParamFilter$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'IamListRolesQueryParamFilter' from JSON`,
+  );
+}
+
 /** @internal */
 export const IamListRolesRequest$inboundSchema: z.ZodType<
   IamListRolesRequest,
@@ -203,6 +226,24 @@ export namespace IamListRolesRequest$ {
   export type Outbound = IamListRolesRequest$Outbound;
 }
 
+export function iamListRolesRequestToJSON(
+  iamListRolesRequest: IamListRolesRequest,
+): string {
+  return JSON.stringify(
+    IamListRolesRequest$outboundSchema.parse(iamListRolesRequest),
+  );
+}
+
+export function iamListRolesRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<IamListRolesRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => IamListRolesRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'IamListRolesRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const IamListRolesResponse$inboundSchema: z.ZodType<
   IamListRolesResponse,
@@ -262,4 +303,22 @@ export namespace IamListRolesResponse$ {
   export const outboundSchema = IamListRolesResponse$outboundSchema;
   /** @deprecated use `IamListRolesResponse$Outbound` instead. */
   export type Outbound = IamListRolesResponse$Outbound;
+}
+
+export function iamListRolesResponseToJSON(
+  iamListRolesResponse: IamListRolesResponse,
+): string {
+  return JSON.stringify(
+    IamListRolesResponse$outboundSchema.parse(iamListRolesResponse),
+  );
+}
+
+export function iamListRolesResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<IamListRolesResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => IamListRolesResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'IamListRolesResponse' from JSON`,
+  );
 }

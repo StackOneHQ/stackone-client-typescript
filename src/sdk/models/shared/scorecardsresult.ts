@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   RawResponse,
   RawResponse$inboundSchema,
@@ -58,4 +61,22 @@ export namespace ScorecardsResult$ {
   export const outboundSchema = ScorecardsResult$outboundSchema;
   /** @deprecated use `ScorecardsResult$Outbound` instead. */
   export type Outbound = ScorecardsResult$Outbound;
+}
+
+export function scorecardsResultToJSON(
+  scorecardsResult: ScorecardsResult,
+): string {
+  return JSON.stringify(
+    ScorecardsResult$outboundSchema.parse(scorecardsResult),
+  );
+}
+
+export function scorecardsResultFromJSON(
+  jsonString: string,
+): SafeParseResult<ScorecardsResult, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ScorecardsResult$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ScorecardsResult' from JSON`,
+  );
 }

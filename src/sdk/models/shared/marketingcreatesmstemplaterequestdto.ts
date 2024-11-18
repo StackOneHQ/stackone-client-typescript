@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   SmsMessages,
   SmsMessages$inboundSchema,
@@ -65,4 +68,25 @@ export namespace MarketingCreateSmsTemplateRequestDto$ {
     MarketingCreateSmsTemplateRequestDto$outboundSchema;
   /** @deprecated use `MarketingCreateSmsTemplateRequestDto$Outbound` instead. */
   export type Outbound = MarketingCreateSmsTemplateRequestDto$Outbound;
+}
+
+export function marketingCreateSmsTemplateRequestDtoToJSON(
+  marketingCreateSmsTemplateRequestDto: MarketingCreateSmsTemplateRequestDto,
+): string {
+  return JSON.stringify(
+    MarketingCreateSmsTemplateRequestDto$outboundSchema.parse(
+      marketingCreateSmsTemplateRequestDto,
+    ),
+  );
+}
+
+export function marketingCreateSmsTemplateRequestDtoFromJSON(
+  jsonString: string,
+): SafeParseResult<MarketingCreateSmsTemplateRequestDto, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      MarketingCreateSmsTemplateRequestDto$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'MarketingCreateSmsTemplateRequestDto' from JSON`,
+  );
 }

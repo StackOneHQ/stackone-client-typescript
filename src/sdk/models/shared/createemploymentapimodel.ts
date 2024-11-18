@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type CreateEmploymentApiModel4 = {};
 
@@ -308,6 +311,24 @@ export namespace CreateEmploymentApiModel4$ {
   export type Outbound = CreateEmploymentApiModel4$Outbound;
 }
 
+export function createEmploymentApiModel4ToJSON(
+  createEmploymentApiModel4: CreateEmploymentApiModel4,
+): string {
+  return JSON.stringify(
+    CreateEmploymentApiModel4$outboundSchema.parse(createEmploymentApiModel4),
+  );
+}
+
+export function createEmploymentApiModel4FromJSON(
+  jsonString: string,
+): SafeParseResult<CreateEmploymentApiModel4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateEmploymentApiModel4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateEmploymentApiModel4' from JSON`,
+  );
+}
+
 /** @internal */
 export const CreateEmploymentApiModelSourceValue$inboundSchema: z.ZodType<
   CreateEmploymentApiModelSourceValue,
@@ -355,6 +376,27 @@ export namespace CreateEmploymentApiModelSourceValue$ {
     CreateEmploymentApiModelSourceValue$outboundSchema;
   /** @deprecated use `CreateEmploymentApiModelSourceValue$Outbound` instead. */
   export type Outbound = CreateEmploymentApiModelSourceValue$Outbound;
+}
+
+export function createEmploymentApiModelSourceValueToJSON(
+  createEmploymentApiModelSourceValue: CreateEmploymentApiModelSourceValue,
+): string {
+  return JSON.stringify(
+    CreateEmploymentApiModelSourceValue$outboundSchema.parse(
+      createEmploymentApiModelSourceValue,
+    ),
+  );
+}
+
+export function createEmploymentApiModelSourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateEmploymentApiModelSourceValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateEmploymentApiModelSourceValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateEmploymentApiModelSourceValue' from JSON`,
+  );
 }
 
 /** @internal */
@@ -459,6 +501,24 @@ export namespace EmploymentContractType$ {
   export type Outbound = EmploymentContractType$Outbound;
 }
 
+export function employmentContractTypeToJSON(
+  employmentContractType: EmploymentContractType,
+): string {
+  return JSON.stringify(
+    EmploymentContractType$outboundSchema.parse(employmentContractType),
+  );
+}
+
+export function employmentContractTypeFromJSON(
+  jsonString: string,
+): SafeParseResult<EmploymentContractType, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => EmploymentContractType$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'EmploymentContractType' from JSON`,
+  );
+}
+
 /** @internal */
 export const CreateEmploymentApiModelSchemas4$inboundSchema: z.ZodType<
   CreateEmploymentApiModelSchemas4,
@@ -487,6 +547,26 @@ export namespace CreateEmploymentApiModelSchemas4$ {
   export const outboundSchema = CreateEmploymentApiModelSchemas4$outboundSchema;
   /** @deprecated use `CreateEmploymentApiModelSchemas4$Outbound` instead. */
   export type Outbound = CreateEmploymentApiModelSchemas4$Outbound;
+}
+
+export function createEmploymentApiModelSchemas4ToJSON(
+  createEmploymentApiModelSchemas4: CreateEmploymentApiModelSchemas4,
+): string {
+  return JSON.stringify(
+    CreateEmploymentApiModelSchemas4$outboundSchema.parse(
+      createEmploymentApiModelSchemas4,
+    ),
+  );
+}
+
+export function createEmploymentApiModelSchemas4FromJSON(
+  jsonString: string,
+): SafeParseResult<CreateEmploymentApiModelSchemas4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateEmploymentApiModelSchemas4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateEmploymentApiModelSchemas4' from JSON`,
+  );
 }
 
 /** @internal */
@@ -535,6 +615,33 @@ export namespace CreateEmploymentApiModelSchemasSourceValue$ {
     CreateEmploymentApiModelSchemasSourceValue$outboundSchema;
   /** @deprecated use `CreateEmploymentApiModelSchemasSourceValue$Outbound` instead. */
   export type Outbound = CreateEmploymentApiModelSchemasSourceValue$Outbound;
+}
+
+export function createEmploymentApiModelSchemasSourceValueToJSON(
+  createEmploymentApiModelSchemasSourceValue:
+    CreateEmploymentApiModelSchemasSourceValue,
+): string {
+  return JSON.stringify(
+    CreateEmploymentApiModelSchemasSourceValue$outboundSchema.parse(
+      createEmploymentApiModelSchemasSourceValue,
+    ),
+  );
+}
+
+export function createEmploymentApiModelSchemasSourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CreateEmploymentApiModelSchemasSourceValue,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateEmploymentApiModelSchemasSourceValue$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'CreateEmploymentApiModelSchemasSourceValue' from JSON`,
+  );
 }
 
 /** @internal */
@@ -643,6 +750,20 @@ export namespace EmploymentType$ {
   export type Outbound = EmploymentType$Outbound;
 }
 
+export function employmentTypeToJSON(employmentType: EmploymentType): string {
+  return JSON.stringify(EmploymentType$outboundSchema.parse(employmentType));
+}
+
+export function employmentTypeFromJSON(
+  jsonString: string,
+): SafeParseResult<EmploymentType, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => EmploymentType$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'EmploymentType' from JSON`,
+  );
+}
+
 /** @internal */
 export const CreateEmploymentApiModelSchemasPayFrequency4$inboundSchema:
   z.ZodType<
@@ -675,6 +796,33 @@ export namespace CreateEmploymentApiModelSchemasPayFrequency4$ {
     CreateEmploymentApiModelSchemasPayFrequency4$outboundSchema;
   /** @deprecated use `CreateEmploymentApiModelSchemasPayFrequency4$Outbound` instead. */
   export type Outbound = CreateEmploymentApiModelSchemasPayFrequency4$Outbound;
+}
+
+export function createEmploymentApiModelSchemasPayFrequency4ToJSON(
+  createEmploymentApiModelSchemasPayFrequency4:
+    CreateEmploymentApiModelSchemasPayFrequency4,
+): string {
+  return JSON.stringify(
+    CreateEmploymentApiModelSchemasPayFrequency4$outboundSchema.parse(
+      createEmploymentApiModelSchemasPayFrequency4,
+    ),
+  );
+}
+
+export function createEmploymentApiModelSchemasPayFrequency4FromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CreateEmploymentApiModelSchemasPayFrequency4,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateEmploymentApiModelSchemasPayFrequency4$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'CreateEmploymentApiModelSchemasPayFrequency4' from JSON`,
+  );
 }
 
 /** @internal */
@@ -727,6 +875,32 @@ export namespace CreateEmploymentApiModelSchemasPayFrequencySourceValue$ {
   /** @deprecated use `CreateEmploymentApiModelSchemasPayFrequencySourceValue$Outbound` instead. */
   export type Outbound =
     CreateEmploymentApiModelSchemasPayFrequencySourceValue$Outbound;
+}
+
+export function createEmploymentApiModelSchemasPayFrequencySourceValueToJSON(
+  createEmploymentApiModelSchemasPayFrequencySourceValue:
+    CreateEmploymentApiModelSchemasPayFrequencySourceValue,
+): string {
+  return JSON.stringify(
+    CreateEmploymentApiModelSchemasPayFrequencySourceValue$outboundSchema.parse(
+      createEmploymentApiModelSchemasPayFrequencySourceValue,
+    ),
+  );
+}
+
+export function createEmploymentApiModelSchemasPayFrequencySourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CreateEmploymentApiModelSchemasPayFrequencySourceValue,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateEmploymentApiModelSchemasPayFrequencySourceValue$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'CreateEmploymentApiModelSchemasPayFrequencySourceValue' from JSON`,
+  );
 }
 
 /** @internal */
@@ -839,6 +1013,20 @@ export namespace PayFrequency$ {
   export type Outbound = PayFrequency$Outbound;
 }
 
+export function payFrequencyToJSON(payFrequency: PayFrequency): string {
+  return JSON.stringify(PayFrequency$outboundSchema.parse(payFrequency));
+}
+
+export function payFrequencyFromJSON(
+  jsonString: string,
+): SafeParseResult<PayFrequency, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PayFrequency$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PayFrequency' from JSON`,
+  );
+}
+
 /** @internal */
 export const CreateEmploymentApiModelSchemasPayPeriod4$inboundSchema: z.ZodType<
   CreateEmploymentApiModelSchemasPayPeriod4,
@@ -870,6 +1058,33 @@ export namespace CreateEmploymentApiModelSchemasPayPeriod4$ {
     CreateEmploymentApiModelSchemasPayPeriod4$outboundSchema;
   /** @deprecated use `CreateEmploymentApiModelSchemasPayPeriod4$Outbound` instead. */
   export type Outbound = CreateEmploymentApiModelSchemasPayPeriod4$Outbound;
+}
+
+export function createEmploymentApiModelSchemasPayPeriod4ToJSON(
+  createEmploymentApiModelSchemasPayPeriod4:
+    CreateEmploymentApiModelSchemasPayPeriod4,
+): string {
+  return JSON.stringify(
+    CreateEmploymentApiModelSchemasPayPeriod4$outboundSchema.parse(
+      createEmploymentApiModelSchemasPayPeriod4,
+    ),
+  );
+}
+
+export function createEmploymentApiModelSchemasPayPeriod4FromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CreateEmploymentApiModelSchemasPayPeriod4,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateEmploymentApiModelSchemasPayPeriod4$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'CreateEmploymentApiModelSchemasPayPeriod4' from JSON`,
+  );
 }
 
 /** @internal */
@@ -922,6 +1137,33 @@ export namespace CreateEmploymentApiModelSchemasPayPeriodSourceValue$ {
   /** @deprecated use `CreateEmploymentApiModelSchemasPayPeriodSourceValue$Outbound` instead. */
   export type Outbound =
     CreateEmploymentApiModelSchemasPayPeriodSourceValue$Outbound;
+}
+
+export function createEmploymentApiModelSchemasPayPeriodSourceValueToJSON(
+  createEmploymentApiModelSchemasPayPeriodSourceValue:
+    CreateEmploymentApiModelSchemasPayPeriodSourceValue,
+): string {
+  return JSON.stringify(
+    CreateEmploymentApiModelSchemasPayPeriodSourceValue$outboundSchema.parse(
+      createEmploymentApiModelSchemasPayPeriodSourceValue,
+    ),
+  );
+}
+
+export function createEmploymentApiModelSchemasPayPeriodSourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  CreateEmploymentApiModelSchemasPayPeriodSourceValue,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CreateEmploymentApiModelSchemasPayPeriodSourceValue$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'CreateEmploymentApiModelSchemasPayPeriodSourceValue' from JSON`,
+  );
 }
 
 /** @internal */
@@ -1033,6 +1275,20 @@ export namespace PayPeriod$ {
   export type Outbound = PayPeriod$Outbound;
 }
 
+export function payPeriodToJSON(payPeriod: PayPeriod): string {
+  return JSON.stringify(PayPeriod$outboundSchema.parse(payPeriod));
+}
+
+export function payPeriodFromJSON(
+  jsonString: string,
+): SafeParseResult<PayPeriod, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PayPeriod$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PayPeriod' from JSON`,
+  );
+}
+
 /** @internal */
 export const CreateEmploymentApiModel$inboundSchema: z.ZodType<
   CreateEmploymentApiModel,
@@ -1139,4 +1395,22 @@ export namespace CreateEmploymentApiModel$ {
   export const outboundSchema = CreateEmploymentApiModel$outboundSchema;
   /** @deprecated use `CreateEmploymentApiModel$Outbound` instead. */
   export type Outbound = CreateEmploymentApiModel$Outbound;
+}
+
+export function createEmploymentApiModelToJSON(
+  createEmploymentApiModel: CreateEmploymentApiModel,
+): string {
+  return JSON.stringify(
+    CreateEmploymentApiModel$outboundSchema.parse(createEmploymentApiModel),
+  );
+}
+
+export function createEmploymentApiModelFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateEmploymentApiModel, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateEmploymentApiModel$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateEmploymentApiModel' from JSON`,
+  );
 }

@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type RawResponse = {
   body?: string | null | undefined;
@@ -54,4 +57,18 @@ export namespace RawResponse$ {
   export const outboundSchema = RawResponse$outboundSchema;
   /** @deprecated use `RawResponse$Outbound` instead. */
   export type Outbound = RawResponse$Outbound;
+}
+
+export function rawResponseToJSON(rawResponse: RawResponse): string {
+  return JSON.stringify(RawResponse$outboundSchema.parse(rawResponse));
+}
+
+export function rawResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<RawResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => RawResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RawResponse' from JSON`,
+  );
 }

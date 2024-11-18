@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type StackoneGetAccountMetaInfoRequest = {
@@ -66,6 +69,26 @@ export namespace StackoneGetAccountMetaInfoRequest$ {
   export type Outbound = StackoneGetAccountMetaInfoRequest$Outbound;
 }
 
+export function stackoneGetAccountMetaInfoRequestToJSON(
+  stackoneGetAccountMetaInfoRequest: StackoneGetAccountMetaInfoRequest,
+): string {
+  return JSON.stringify(
+    StackoneGetAccountMetaInfoRequest$outboundSchema.parse(
+      stackoneGetAccountMetaInfoRequest,
+    ),
+  );
+}
+
+export function stackoneGetAccountMetaInfoRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<StackoneGetAccountMetaInfoRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => StackoneGetAccountMetaInfoRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'StackoneGetAccountMetaInfoRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const StackoneGetAccountMetaInfoResponse$inboundSchema: z.ZodType<
   StackoneGetAccountMetaInfoResponse,
@@ -126,4 +149,25 @@ export namespace StackoneGetAccountMetaInfoResponse$ {
     StackoneGetAccountMetaInfoResponse$outboundSchema;
   /** @deprecated use `StackoneGetAccountMetaInfoResponse$Outbound` instead. */
   export type Outbound = StackoneGetAccountMetaInfoResponse$Outbound;
+}
+
+export function stackoneGetAccountMetaInfoResponseToJSON(
+  stackoneGetAccountMetaInfoResponse: StackoneGetAccountMetaInfoResponse,
+): string {
+  return JSON.stringify(
+    StackoneGetAccountMetaInfoResponse$outboundSchema.parse(
+      stackoneGetAccountMetaInfoResponse,
+    ),
+  );
+}
+
+export function stackoneGetAccountMetaInfoResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<StackoneGetAccountMetaInfoResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      StackoneGetAccountMetaInfoResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'StackoneGetAccountMetaInfoResponse' from JSON`,
+  );
 }

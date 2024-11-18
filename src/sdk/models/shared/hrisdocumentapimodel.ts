@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   Content,
   Content$inboundSchema,
@@ -1485,6 +1488,24 @@ export namespace HrisDocumentApiModel4$ {
   export type Outbound = HrisDocumentApiModel4$Outbound;
 }
 
+export function hrisDocumentApiModel4ToJSON(
+  hrisDocumentApiModel4: HrisDocumentApiModel4,
+): string {
+  return JSON.stringify(
+    HrisDocumentApiModel4$outboundSchema.parse(hrisDocumentApiModel4),
+  );
+}
+
+export function hrisDocumentApiModel4FromJSON(
+  jsonString: string,
+): SafeParseResult<HrisDocumentApiModel4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => HrisDocumentApiModel4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HrisDocumentApiModel4' from JSON`,
+  );
+}
+
 /** @internal */
 export const HrisDocumentApiModelSourceValue$inboundSchema: z.ZodType<
   HrisDocumentApiModelSourceValue,
@@ -1530,6 +1551,26 @@ export namespace HrisDocumentApiModelSourceValue$ {
   export const outboundSchema = HrisDocumentApiModelSourceValue$outboundSchema;
   /** @deprecated use `HrisDocumentApiModelSourceValue$Outbound` instead. */
   export type Outbound = HrisDocumentApiModelSourceValue$Outbound;
+}
+
+export function hrisDocumentApiModelSourceValueToJSON(
+  hrisDocumentApiModelSourceValue: HrisDocumentApiModelSourceValue,
+): string {
+  return JSON.stringify(
+    HrisDocumentApiModelSourceValue$outboundSchema.parse(
+      hrisDocumentApiModelSourceValue,
+    ),
+  );
+}
+
+export function hrisDocumentApiModelSourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<HrisDocumentApiModelSourceValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => HrisDocumentApiModelSourceValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HrisDocumentApiModelSourceValue' from JSON`,
+  );
 }
 
 /** @internal */
@@ -1634,6 +1675,26 @@ export namespace HrisDocumentApiModelCategory$ {
   export type Outbound = HrisDocumentApiModelCategory$Outbound;
 }
 
+export function hrisDocumentApiModelCategoryToJSON(
+  hrisDocumentApiModelCategory: HrisDocumentApiModelCategory,
+): string {
+  return JSON.stringify(
+    HrisDocumentApiModelCategory$outboundSchema.parse(
+      hrisDocumentApiModelCategory,
+    ),
+  );
+}
+
+export function hrisDocumentApiModelCategoryFromJSON(
+  jsonString: string,
+): SafeParseResult<HrisDocumentApiModelCategory, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => HrisDocumentApiModelCategory$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HrisDocumentApiModelCategory' from JSON`,
+  );
+}
+
 /** @internal */
 export const HrisDocumentApiModelSchemas4$inboundSchema: z.ZodType<
   HrisDocumentApiModelSchemas4,
@@ -1662,6 +1723,26 @@ export namespace HrisDocumentApiModelSchemas4$ {
   export const outboundSchema = HrisDocumentApiModelSchemas4$outboundSchema;
   /** @deprecated use `HrisDocumentApiModelSchemas4$Outbound` instead. */
   export type Outbound = HrisDocumentApiModelSchemas4$Outbound;
+}
+
+export function hrisDocumentApiModelSchemas4ToJSON(
+  hrisDocumentApiModelSchemas4: HrisDocumentApiModelSchemas4,
+): string {
+  return JSON.stringify(
+    HrisDocumentApiModelSchemas4$outboundSchema.parse(
+      hrisDocumentApiModelSchemas4,
+    ),
+  );
+}
+
+export function hrisDocumentApiModelSchemas4FromJSON(
+  jsonString: string,
+): SafeParseResult<HrisDocumentApiModelSchemas4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => HrisDocumentApiModelSchemas4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HrisDocumentApiModelSchemas4' from JSON`,
+  );
 }
 
 /** @internal */
@@ -1711,6 +1792,28 @@ export namespace HrisDocumentApiModelSchemasSourceValue$ {
     HrisDocumentApiModelSchemasSourceValue$outboundSchema;
   /** @deprecated use `HrisDocumentApiModelSchemasSourceValue$Outbound` instead. */
   export type Outbound = HrisDocumentApiModelSchemasSourceValue$Outbound;
+}
+
+export function hrisDocumentApiModelSchemasSourceValueToJSON(
+  hrisDocumentApiModelSchemasSourceValue:
+    HrisDocumentApiModelSchemasSourceValue,
+): string {
+  return JSON.stringify(
+    HrisDocumentApiModelSchemasSourceValue$outboundSchema.parse(
+      hrisDocumentApiModelSchemasSourceValue,
+    ),
+  );
+}
+
+export function hrisDocumentApiModelSchemasSourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<HrisDocumentApiModelSchemasSourceValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      HrisDocumentApiModelSchemasSourceValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HrisDocumentApiModelSchemasSourceValue' from JSON`,
+  );
 }
 
 /** @internal */
@@ -1815,6 +1918,26 @@ export namespace HrisDocumentApiModelFileFormat$ {
   export type Outbound = HrisDocumentApiModelFileFormat$Outbound;
 }
 
+export function hrisDocumentApiModelFileFormatToJSON(
+  hrisDocumentApiModelFileFormat: HrisDocumentApiModelFileFormat,
+): string {
+  return JSON.stringify(
+    HrisDocumentApiModelFileFormat$outboundSchema.parse(
+      hrisDocumentApiModelFileFormat,
+    ),
+  );
+}
+
+export function hrisDocumentApiModelFileFormatFromJSON(
+  jsonString: string,
+): SafeParseResult<HrisDocumentApiModelFileFormat, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => HrisDocumentApiModelFileFormat$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HrisDocumentApiModelFileFormat' from JSON`,
+  );
+}
+
 /** @internal */
 export const HrisDocumentApiModelSchemasType4$inboundSchema: z.ZodType<
   HrisDocumentApiModelSchemasType4,
@@ -1843,6 +1966,26 @@ export namespace HrisDocumentApiModelSchemasType4$ {
   export const outboundSchema = HrisDocumentApiModelSchemasType4$outboundSchema;
   /** @deprecated use `HrisDocumentApiModelSchemasType4$Outbound` instead. */
   export type Outbound = HrisDocumentApiModelSchemasType4$Outbound;
+}
+
+export function hrisDocumentApiModelSchemasType4ToJSON(
+  hrisDocumentApiModelSchemasType4: HrisDocumentApiModelSchemasType4,
+): string {
+  return JSON.stringify(
+    HrisDocumentApiModelSchemasType4$outboundSchema.parse(
+      hrisDocumentApiModelSchemasType4,
+    ),
+  );
+}
+
+export function hrisDocumentApiModelSchemasType4FromJSON(
+  jsonString: string,
+): SafeParseResult<HrisDocumentApiModelSchemasType4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => HrisDocumentApiModelSchemasType4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HrisDocumentApiModelSchemasType4' from JSON`,
+  );
 }
 
 /** @internal */
@@ -1891,6 +2034,33 @@ export namespace HrisDocumentApiModelSchemasTypeSourceValue$ {
     HrisDocumentApiModelSchemasTypeSourceValue$outboundSchema;
   /** @deprecated use `HrisDocumentApiModelSchemasTypeSourceValue$Outbound` instead. */
   export type Outbound = HrisDocumentApiModelSchemasTypeSourceValue$Outbound;
+}
+
+export function hrisDocumentApiModelSchemasTypeSourceValueToJSON(
+  hrisDocumentApiModelSchemasTypeSourceValue:
+    HrisDocumentApiModelSchemasTypeSourceValue,
+): string {
+  return JSON.stringify(
+    HrisDocumentApiModelSchemasTypeSourceValue$outboundSchema.parse(
+      hrisDocumentApiModelSchemasTypeSourceValue,
+    ),
+  );
+}
+
+export function hrisDocumentApiModelSchemasTypeSourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  HrisDocumentApiModelSchemasTypeSourceValue,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      HrisDocumentApiModelSchemasTypeSourceValue$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'HrisDocumentApiModelSchemasTypeSourceValue' from JSON`,
+  );
 }
 
 /** @internal */
@@ -1999,6 +2169,24 @@ export namespace HrisDocumentApiModelType$ {
   export type Outbound = HrisDocumentApiModelType$Outbound;
 }
 
+export function hrisDocumentApiModelTypeToJSON(
+  hrisDocumentApiModelType: HrisDocumentApiModelType,
+): string {
+  return JSON.stringify(
+    HrisDocumentApiModelType$outboundSchema.parse(hrisDocumentApiModelType),
+  );
+}
+
+export function hrisDocumentApiModelTypeFromJSON(
+  jsonString: string,
+): SafeParseResult<HrisDocumentApiModelType, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => HrisDocumentApiModelType$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HrisDocumentApiModelType' from JSON`,
+  );
+}
+
 /** @internal */
 export const HrisDocumentApiModel$inboundSchema: z.ZodType<
   HrisDocumentApiModel,
@@ -2102,4 +2290,22 @@ export namespace HrisDocumentApiModel$ {
   export const outboundSchema = HrisDocumentApiModel$outboundSchema;
   /** @deprecated use `HrisDocumentApiModel$Outbound` instead. */
   export type Outbound = HrisDocumentApiModel$Outbound;
+}
+
+export function hrisDocumentApiModelToJSON(
+  hrisDocumentApiModel: HrisDocumentApiModel,
+): string {
+  return JSON.stringify(
+    HrisDocumentApiModel$outboundSchema.parse(hrisDocumentApiModel),
+  );
+}
+
+export function hrisDocumentApiModelFromJSON(
+  jsonString: string,
+): SafeParseResult<HrisDocumentApiModel, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => HrisDocumentApiModel$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HrisDocumentApiModel' from JSON`,
+  );
 }

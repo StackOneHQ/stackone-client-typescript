@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type HrisGetEmployeesWorkEligibilityRequest = {
@@ -107,6 +110,28 @@ export namespace HrisGetEmployeesWorkEligibilityRequest$ {
   export type Outbound = HrisGetEmployeesWorkEligibilityRequest$Outbound;
 }
 
+export function hrisGetEmployeesWorkEligibilityRequestToJSON(
+  hrisGetEmployeesWorkEligibilityRequest:
+    HrisGetEmployeesWorkEligibilityRequest,
+): string {
+  return JSON.stringify(
+    HrisGetEmployeesWorkEligibilityRequest$outboundSchema.parse(
+      hrisGetEmployeesWorkEligibilityRequest,
+    ),
+  );
+}
+
+export function hrisGetEmployeesWorkEligibilityRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<HrisGetEmployeesWorkEligibilityRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      HrisGetEmployeesWorkEligibilityRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HrisGetEmployeesWorkEligibilityRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const HrisGetEmployeesWorkEligibilityResponse$inboundSchema: z.ZodType<
   HrisGetEmployeesWorkEligibilityResponse,
@@ -168,4 +193,31 @@ export namespace HrisGetEmployeesWorkEligibilityResponse$ {
     HrisGetEmployeesWorkEligibilityResponse$outboundSchema;
   /** @deprecated use `HrisGetEmployeesWorkEligibilityResponse$Outbound` instead. */
   export type Outbound = HrisGetEmployeesWorkEligibilityResponse$Outbound;
+}
+
+export function hrisGetEmployeesWorkEligibilityResponseToJSON(
+  hrisGetEmployeesWorkEligibilityResponse:
+    HrisGetEmployeesWorkEligibilityResponse,
+): string {
+  return JSON.stringify(
+    HrisGetEmployeesWorkEligibilityResponse$outboundSchema.parse(
+      hrisGetEmployeesWorkEligibilityResponse,
+    ),
+  );
+}
+
+export function hrisGetEmployeesWorkEligibilityResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  HrisGetEmployeesWorkEligibilityResponse,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      HrisGetEmployeesWorkEligibilityResponse$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'HrisGetEmployeesWorkEligibilityResponse' from JSON`,
+  );
 }

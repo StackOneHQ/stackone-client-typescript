@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 /**
@@ -126,6 +129,26 @@ export namespace IamListPoliciesQueryParamFilter$ {
   export type Outbound = IamListPoliciesQueryParamFilter$Outbound;
 }
 
+export function iamListPoliciesQueryParamFilterToJSON(
+  iamListPoliciesQueryParamFilter: IamListPoliciesQueryParamFilter,
+): string {
+  return JSON.stringify(
+    IamListPoliciesQueryParamFilter$outboundSchema.parse(
+      iamListPoliciesQueryParamFilter,
+    ),
+  );
+}
+
+export function iamListPoliciesQueryParamFilterFromJSON(
+  jsonString: string,
+): SafeParseResult<IamListPoliciesQueryParamFilter, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => IamListPoliciesQueryParamFilter$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'IamListPoliciesQueryParamFilter' from JSON`,
+  );
+}
+
 /** @internal */
 export const IamListPoliciesRequest$inboundSchema: z.ZodType<
   IamListPoliciesRequest,
@@ -205,6 +228,24 @@ export namespace IamListPoliciesRequest$ {
   export type Outbound = IamListPoliciesRequest$Outbound;
 }
 
+export function iamListPoliciesRequestToJSON(
+  iamListPoliciesRequest: IamListPoliciesRequest,
+): string {
+  return JSON.stringify(
+    IamListPoliciesRequest$outboundSchema.parse(iamListPoliciesRequest),
+  );
+}
+
+export function iamListPoliciesRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<IamListPoliciesRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => IamListPoliciesRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'IamListPoliciesRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const IamListPoliciesResponse$inboundSchema: z.ZodType<
   IamListPoliciesResponse,
@@ -264,4 +305,22 @@ export namespace IamListPoliciesResponse$ {
   export const outboundSchema = IamListPoliciesResponse$outboundSchema;
   /** @deprecated use `IamListPoliciesResponse$Outbound` instead. */
   export type Outbound = IamListPoliciesResponse$Outbound;
+}
+
+export function iamListPoliciesResponseToJSON(
+  iamListPoliciesResponse: IamListPoliciesResponse,
+): string {
+  return JSON.stringify(
+    IamListPoliciesResponse$outboundSchema.parse(iamListPoliciesResponse),
+  );
+}
+
+export function iamListPoliciesResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<IamListPoliciesResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => IamListPoliciesResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'IamListPoliciesResponse' from JSON`,
+  );
 }

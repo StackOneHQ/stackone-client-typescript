@@ -9,7 +9,6 @@ let value: MarketingUpdateContentBlockResponse = {
   contentType: "<value>",
   createResult: {
     data: {
-      externalReference: "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1",
       id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
       remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
     },
@@ -17,7 +16,7 @@ let value: MarketingUpdateContentBlockResponse = {
     statusCode: 201,
     timestamp: new Date("2021-01-01T01:01:01.000Z"),
   },
-  statusCode: 103,
+  statusCode: 507,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 /**
@@ -123,6 +126,26 @@ export namespace HrisListCompaniesQueryParamFilter$ {
   export type Outbound = HrisListCompaniesQueryParamFilter$Outbound;
 }
 
+export function hrisListCompaniesQueryParamFilterToJSON(
+  hrisListCompaniesQueryParamFilter: HrisListCompaniesQueryParamFilter,
+): string {
+  return JSON.stringify(
+    HrisListCompaniesQueryParamFilter$outboundSchema.parse(
+      hrisListCompaniesQueryParamFilter,
+    ),
+  );
+}
+
+export function hrisListCompaniesQueryParamFilterFromJSON(
+  jsonString: string,
+): SafeParseResult<HrisListCompaniesQueryParamFilter, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => HrisListCompaniesQueryParamFilter$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HrisListCompaniesQueryParamFilter' from JSON`,
+  );
+}
+
 /** @internal */
 export const HrisListCompaniesRequest$inboundSchema: z.ZodType<
   HrisListCompaniesRequest,
@@ -199,6 +222,24 @@ export namespace HrisListCompaniesRequest$ {
   export type Outbound = HrisListCompaniesRequest$Outbound;
 }
 
+export function hrisListCompaniesRequestToJSON(
+  hrisListCompaniesRequest: HrisListCompaniesRequest,
+): string {
+  return JSON.stringify(
+    HrisListCompaniesRequest$outboundSchema.parse(hrisListCompaniesRequest),
+  );
+}
+
+export function hrisListCompaniesRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<HrisListCompaniesRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => HrisListCompaniesRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HrisListCompaniesRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const HrisListCompaniesResponse$inboundSchema: z.ZodType<
   HrisListCompaniesResponse,
@@ -258,4 +299,22 @@ export namespace HrisListCompaniesResponse$ {
   export const outboundSchema = HrisListCompaniesResponse$outboundSchema;
   /** @deprecated use `HrisListCompaniesResponse$Outbound` instead. */
   export type Outbound = HrisListCompaniesResponse$Outbound;
+}
+
+export function hrisListCompaniesResponseToJSON(
+  hrisListCompaniesResponse: HrisListCompaniesResponse,
+): string {
+  return JSON.stringify(
+    HrisListCompaniesResponse$outboundSchema.parse(hrisListCompaniesResponse),
+  );
+}
+
+export function hrisListCompaniesResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<HrisListCompaniesResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => HrisListCompaniesResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HrisListCompaniesResponse' from JSON`,
+  );
 }
