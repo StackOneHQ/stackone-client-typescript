@@ -241,6 +241,8 @@ export * from "./timeoffpaginated.js";
 export * from "./timeoffresult.js";
 export * from "./unifieduploadrequestdto.js";
 export * from "./updateresult.js";
+export * from "./upsertresult.js";
+export * from "./upsertresultdataexternalreferencemodel.js";
 export * from "./userresult.js";
 export * from "./userspaginated.js";
 export * from "./workeligibility.js";

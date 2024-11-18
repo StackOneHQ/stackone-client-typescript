@@ -88,6 +88,9 @@ export async function marketingListInAppTemplates(
   const context = {
     operationID: "marketing_list_in_app_templates",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.security,
     retryConfig: options?.retries
       || client._options.retryConfig

@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   QuestionMultipleChoiceAnswers,
   QuestionMultipleChoiceAnswers$inboundSchema,
@@ -140,6 +143,24 @@ export namespace QuestionRequired$ {
   export type Outbound = QuestionRequired$Outbound;
 }
 
+export function questionRequiredToJSON(
+  questionRequired: QuestionRequired,
+): string {
+  return JSON.stringify(
+    QuestionRequired$outboundSchema.parse(questionRequired),
+  );
+}
+
+export function questionRequiredFromJSON(
+  jsonString: string,
+): SafeParseResult<QuestionRequired, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => QuestionRequired$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'QuestionRequired' from JSON`,
+  );
+}
+
 /** @internal */
 export const Question4$inboundSchema: z.ZodType<
   Question4,
@@ -168,6 +189,20 @@ export namespace Question4$ {
   export const outboundSchema = Question4$outboundSchema;
   /** @deprecated use `Question4$Outbound` instead. */
   export type Outbound = Question4$Outbound;
+}
+
+export function question4ToJSON(question4: Question4): string {
+  return JSON.stringify(Question4$outboundSchema.parse(question4));
+}
+
+export function question4FromJSON(
+  jsonString: string,
+): SafeParseResult<Question4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Question4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Question4' from JSON`,
+  );
 }
 
 /** @internal */
@@ -215,6 +250,24 @@ export namespace QuestionSourceValue$ {
   export const outboundSchema = QuestionSourceValue$outboundSchema;
   /** @deprecated use `QuestionSourceValue$Outbound` instead. */
   export type Outbound = QuestionSourceValue$Outbound;
+}
+
+export function questionSourceValueToJSON(
+  questionSourceValue: QuestionSourceValue,
+): string {
+  return JSON.stringify(
+    QuestionSourceValue$outboundSchema.parse(questionSourceValue),
+  );
+}
+
+export function questionSourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<QuestionSourceValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => QuestionSourceValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'QuestionSourceValue' from JSON`,
+  );
 }
 
 /** @internal */
@@ -319,6 +372,20 @@ export namespace QuestionType$ {
   export type Outbound = QuestionType$Outbound;
 }
 
+export function questionTypeToJSON(questionType: QuestionType): string {
+  return JSON.stringify(QuestionType$outboundSchema.parse(questionType));
+}
+
+export function questionTypeFromJSON(
+  jsonString: string,
+): SafeParseResult<QuestionType, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => QuestionType$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'QuestionType' from JSON`,
+  );
+}
+
 /** @internal */
 export const Question$inboundSchema: z.ZodType<
   Question,
@@ -390,4 +457,18 @@ export namespace Question$ {
   export const outboundSchema = Question$outboundSchema;
   /** @deprecated use `Question$Outbound` instead. */
   export type Outbound = Question$Outbound;
+}
+
+export function questionToJSON(question: Question): string {
+  return JSON.stringify(Question$outboundSchema.parse(question));
+}
+
+export function questionFromJSON(
+  jsonString: string,
+): SafeParseResult<Question, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Question$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Question' from JSON`,
+  );
 }

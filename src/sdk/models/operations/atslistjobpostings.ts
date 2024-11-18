@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 /**
@@ -133,6 +136,27 @@ export namespace AtsListJobPostingsQueryParamFilter$ {
   export type Outbound = AtsListJobPostingsQueryParamFilter$Outbound;
 }
 
+export function atsListJobPostingsQueryParamFilterToJSON(
+  atsListJobPostingsQueryParamFilter: AtsListJobPostingsQueryParamFilter,
+): string {
+  return JSON.stringify(
+    AtsListJobPostingsQueryParamFilter$outboundSchema.parse(
+      atsListJobPostingsQueryParamFilter,
+    ),
+  );
+}
+
+export function atsListJobPostingsQueryParamFilterFromJSON(
+  jsonString: string,
+): SafeParseResult<AtsListJobPostingsQueryParamFilter, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      AtsListJobPostingsQueryParamFilter$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AtsListJobPostingsQueryParamFilter' from JSON`,
+  );
+}
+
 /** @internal */
 export const AtsListJobPostingsRequest$inboundSchema: z.ZodType<
   AtsListJobPostingsRequest,
@@ -217,6 +241,24 @@ export namespace AtsListJobPostingsRequest$ {
   export type Outbound = AtsListJobPostingsRequest$Outbound;
 }
 
+export function atsListJobPostingsRequestToJSON(
+  atsListJobPostingsRequest: AtsListJobPostingsRequest,
+): string {
+  return JSON.stringify(
+    AtsListJobPostingsRequest$outboundSchema.parse(atsListJobPostingsRequest),
+  );
+}
+
+export function atsListJobPostingsRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<AtsListJobPostingsRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AtsListJobPostingsRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AtsListJobPostingsRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const AtsListJobPostingsResponse$inboundSchema: z.ZodType<
   AtsListJobPostingsResponse,
@@ -276,4 +318,22 @@ export namespace AtsListJobPostingsResponse$ {
   export const outboundSchema = AtsListJobPostingsResponse$outboundSchema;
   /** @deprecated use `AtsListJobPostingsResponse$Outbound` instead. */
   export type Outbound = AtsListJobPostingsResponse$Outbound;
+}
+
+export function atsListJobPostingsResponseToJSON(
+  atsListJobPostingsResponse: AtsListJobPostingsResponse,
+): string {
+  return JSON.stringify(
+    AtsListJobPostingsResponse$outboundSchema.parse(atsListJobPostingsResponse),
+  );
+}
+
+export function atsListJobPostingsResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<AtsListJobPostingsResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AtsListJobPostingsResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AtsListJobPostingsResponse' from JSON`,
+  );
 }

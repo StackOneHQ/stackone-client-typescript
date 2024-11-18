@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 /**
@@ -122,6 +125,26 @@ export namespace LmsListContentQueryParamFilter$ {
   export type Outbound = LmsListContentQueryParamFilter$Outbound;
 }
 
+export function lmsListContentQueryParamFilterToJSON(
+  lmsListContentQueryParamFilter: LmsListContentQueryParamFilter,
+): string {
+  return JSON.stringify(
+    LmsListContentQueryParamFilter$outboundSchema.parse(
+      lmsListContentQueryParamFilter,
+    ),
+  );
+}
+
+export function lmsListContentQueryParamFilterFromJSON(
+  jsonString: string,
+): SafeParseResult<LmsListContentQueryParamFilter, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LmsListContentQueryParamFilter$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LmsListContentQueryParamFilter' from JSON`,
+  );
+}
+
 /** @internal */
 export const LmsListContentRequest$inboundSchema: z.ZodType<
   LmsListContentRequest,
@@ -197,6 +220,24 @@ export namespace LmsListContentRequest$ {
   export type Outbound = LmsListContentRequest$Outbound;
 }
 
+export function lmsListContentRequestToJSON(
+  lmsListContentRequest: LmsListContentRequest,
+): string {
+  return JSON.stringify(
+    LmsListContentRequest$outboundSchema.parse(lmsListContentRequest),
+  );
+}
+
+export function lmsListContentRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<LmsListContentRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LmsListContentRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LmsListContentRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const LmsListContentResponse$inboundSchema: z.ZodType<
   LmsListContentResponse,
@@ -256,4 +297,22 @@ export namespace LmsListContentResponse$ {
   export const outboundSchema = LmsListContentResponse$outboundSchema;
   /** @deprecated use `LmsListContentResponse$Outbound` instead. */
   export type Outbound = LmsListContentResponse$Outbound;
+}
+
+export function lmsListContentResponseToJSON(
+  lmsListContentResponse: LmsListContentResponse,
+): string {
+  return JSON.stringify(
+    LmsListContentResponse$outboundSchema.parse(lmsListContentResponse),
+  );
+}
+
+export function lmsListContentResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<LmsListContentResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LmsListContentResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LmsListContentResponse' from JSON`,
+  );
 }

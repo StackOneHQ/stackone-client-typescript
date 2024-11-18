@@ -89,6 +89,9 @@ export async function crmListContactCustomFieldDefinitions(
   const context = {
     operationID: "crm_list_contact_custom_field_definitions",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.security,
     retryConfig: options?.retries
       || client._options.retryConfig

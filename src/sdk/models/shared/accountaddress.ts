@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type AccountAddressSchemas4 = {};
 
@@ -395,6 +398,24 @@ export namespace AccountAddressSchemas4$ {
   export type Outbound = AccountAddressSchemas4$Outbound;
 }
 
+export function accountAddressSchemas4ToJSON(
+  accountAddressSchemas4: AccountAddressSchemas4,
+): string {
+  return JSON.stringify(
+    AccountAddressSchemas4$outboundSchema.parse(accountAddressSchemas4),
+  );
+}
+
+export function accountAddressSchemas4FromJSON(
+  jsonString: string,
+): SafeParseResult<AccountAddressSchemas4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AccountAddressSchemas4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AccountAddressSchemas4' from JSON`,
+  );
+}
+
 /** @internal */
 export const AccountAddressSchemasSourceValue$inboundSchema: z.ZodType<
   AccountAddressSchemasSourceValue,
@@ -440,6 +461,26 @@ export namespace AccountAddressSchemasSourceValue$ {
   export const outboundSchema = AccountAddressSchemasSourceValue$outboundSchema;
   /** @deprecated use `AccountAddressSchemasSourceValue$Outbound` instead. */
   export type Outbound = AccountAddressSchemasSourceValue$Outbound;
+}
+
+export function accountAddressSchemasSourceValueToJSON(
+  accountAddressSchemasSourceValue: AccountAddressSchemasSourceValue,
+): string {
+  return JSON.stringify(
+    AccountAddressSchemasSourceValue$outboundSchema.parse(
+      accountAddressSchemasSourceValue,
+    ),
+  );
+}
+
+export function accountAddressSchemasSourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<AccountAddressSchemasSourceValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AccountAddressSchemasSourceValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AccountAddressSchemasSourceValue' from JSON`,
+  );
 }
 
 /** @internal */
@@ -541,6 +582,20 @@ export namespace Country$ {
   export type Outbound = Country$Outbound;
 }
 
+export function countryToJSON(country: Country): string {
+  return JSON.stringify(Country$outboundSchema.parse(country));
+}
+
+export function countryFromJSON(
+  jsonString: string,
+): SafeParseResult<Country, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Country$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Country' from JSON`,
+  );
+}
+
 /** @internal */
 export const AccountAddress4$inboundSchema: z.ZodType<
   AccountAddress4,
@@ -569,6 +624,22 @@ export namespace AccountAddress4$ {
   export const outboundSchema = AccountAddress4$outboundSchema;
   /** @deprecated use `AccountAddress4$Outbound` instead. */
   export type Outbound = AccountAddress4$Outbound;
+}
+
+export function accountAddress4ToJSON(
+  accountAddress4: AccountAddress4,
+): string {
+  return JSON.stringify(AccountAddress4$outboundSchema.parse(accountAddress4));
+}
+
+export function accountAddress4FromJSON(
+  jsonString: string,
+): SafeParseResult<AccountAddress4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AccountAddress4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AccountAddress4' from JSON`,
+  );
 }
 
 /** @internal */
@@ -616,6 +687,24 @@ export namespace AccountAddressSourceValue$ {
   export const outboundSchema = AccountAddressSourceValue$outboundSchema;
   /** @deprecated use `AccountAddressSourceValue$Outbound` instead. */
   export type Outbound = AccountAddressSourceValue$Outbound;
+}
+
+export function accountAddressSourceValueToJSON(
+  accountAddressSourceValue: AccountAddressSourceValue,
+): string {
+  return JSON.stringify(
+    AccountAddressSourceValue$outboundSchema.parse(accountAddressSourceValue),
+  );
+}
+
+export function accountAddressSourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<AccountAddressSourceValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AccountAddressSourceValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AccountAddressSourceValue' from JSON`,
+  );
 }
 
 /** @internal */
@@ -720,6 +809,20 @@ export namespace LocationType$ {
   export type Outbound = LocationType$Outbound;
 }
 
+export function locationTypeToJSON(locationType: LocationType): string {
+  return JSON.stringify(LocationType$outboundSchema.parse(locationType));
+}
+
+export function locationTypeFromJSON(
+  jsonString: string,
+): SafeParseResult<LocationType, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LocationType$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LocationType' from JSON`,
+  );
+}
+
 /** @internal */
 export const AccountAddress$inboundSchema: z.ZodType<
   AccountAddress,
@@ -788,4 +891,18 @@ export namespace AccountAddress$ {
   export const outboundSchema = AccountAddress$outboundSchema;
   /** @deprecated use `AccountAddress$Outbound` instead. */
   export type Outbound = AccountAddress$Outbound;
+}
+
+export function accountAddressToJSON(accountAddress: AccountAddress): string {
+  return JSON.stringify(AccountAddress$outboundSchema.parse(accountAddress));
+}
+
+export function accountAddressFromJSON(
+  jsonString: string,
+): SafeParseResult<AccountAddress, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AccountAddress$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AccountAddress' from JSON`,
+  );
 }

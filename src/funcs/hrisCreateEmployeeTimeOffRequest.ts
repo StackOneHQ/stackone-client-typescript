@@ -80,6 +80,9 @@ export async function hrisCreateEmployeeTimeOffRequest(
   const context = {
     operationID: "hris_create_employee_time_off_request",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.security,
     retryConfig: options?.retries
       || client._options.retryConfig

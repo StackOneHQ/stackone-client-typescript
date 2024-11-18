@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type CrmGetAccountRequest = {
@@ -101,6 +104,24 @@ export namespace CrmGetAccountRequest$ {
   export type Outbound = CrmGetAccountRequest$Outbound;
 }
 
+export function crmGetAccountRequestToJSON(
+  crmGetAccountRequest: CrmGetAccountRequest,
+): string {
+  return JSON.stringify(
+    CrmGetAccountRequest$outboundSchema.parse(crmGetAccountRequest),
+  );
+}
+
+export function crmGetAccountRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<CrmGetAccountRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CrmGetAccountRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CrmGetAccountRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const CrmGetAccountResponse$inboundSchema: z.ZodType<
   CrmGetAccountResponse,
@@ -160,4 +181,22 @@ export namespace CrmGetAccountResponse$ {
   export const outboundSchema = CrmGetAccountResponse$outboundSchema;
   /** @deprecated use `CrmGetAccountResponse$Outbound` instead. */
   export type Outbound = CrmGetAccountResponse$Outbound;
+}
+
+export function crmGetAccountResponseToJSON(
+  crmGetAccountResponse: CrmGetAccountResponse,
+): string {
+  return JSON.stringify(
+    CrmGetAccountResponse$outboundSchema.parse(crmGetAccountResponse),
+  );
+}
+
+export function crmGetAccountResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<CrmGetAccountResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CrmGetAccountResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CrmGetAccountResponse' from JSON`,
+  );
 }

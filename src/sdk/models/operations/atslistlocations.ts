@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 /**
@@ -128,6 +131,26 @@ export namespace AtsListLocationsQueryParamFilter$ {
   export type Outbound = AtsListLocationsQueryParamFilter$Outbound;
 }
 
+export function atsListLocationsQueryParamFilterToJSON(
+  atsListLocationsQueryParamFilter: AtsListLocationsQueryParamFilter,
+): string {
+  return JSON.stringify(
+    AtsListLocationsQueryParamFilter$outboundSchema.parse(
+      atsListLocationsQueryParamFilter,
+    ),
+  );
+}
+
+export function atsListLocationsQueryParamFilterFromJSON(
+  jsonString: string,
+): SafeParseResult<AtsListLocationsQueryParamFilter, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AtsListLocationsQueryParamFilter$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AtsListLocationsQueryParamFilter' from JSON`,
+  );
+}
+
 /** @internal */
 export const AtsListLocationsRequest$inboundSchema: z.ZodType<
   AtsListLocationsRequest,
@@ -209,6 +232,24 @@ export namespace AtsListLocationsRequest$ {
   export type Outbound = AtsListLocationsRequest$Outbound;
 }
 
+export function atsListLocationsRequestToJSON(
+  atsListLocationsRequest: AtsListLocationsRequest,
+): string {
+  return JSON.stringify(
+    AtsListLocationsRequest$outboundSchema.parse(atsListLocationsRequest),
+  );
+}
+
+export function atsListLocationsRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<AtsListLocationsRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AtsListLocationsRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AtsListLocationsRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const AtsListLocationsResponse$inboundSchema: z.ZodType<
   AtsListLocationsResponse,
@@ -268,4 +309,22 @@ export namespace AtsListLocationsResponse$ {
   export const outboundSchema = AtsListLocationsResponse$outboundSchema;
   /** @deprecated use `AtsListLocationsResponse$Outbound` instead. */
   export type Outbound = AtsListLocationsResponse$Outbound;
+}
+
+export function atsListLocationsResponseToJSON(
+  atsListLocationsResponse: AtsListLocationsResponse,
+): string {
+  return JSON.stringify(
+    AtsListLocationsResponse$outboundSchema.parse(atsListLocationsResponse),
+  );
+}
+
+export function atsListLocationsResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<AtsListLocationsResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AtsListLocationsResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AtsListLocationsResponse' from JSON`,
+  );
 }

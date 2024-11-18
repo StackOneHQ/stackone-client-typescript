@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 /**
@@ -124,6 +127,28 @@ export namespace MarketingListCampaignsQueryParamFilter$ {
   export type Outbound = MarketingListCampaignsQueryParamFilter$Outbound;
 }
 
+export function marketingListCampaignsQueryParamFilterToJSON(
+  marketingListCampaignsQueryParamFilter:
+    MarketingListCampaignsQueryParamFilter,
+): string {
+  return JSON.stringify(
+    MarketingListCampaignsQueryParamFilter$outboundSchema.parse(
+      marketingListCampaignsQueryParamFilter,
+    ),
+  );
+}
+
+export function marketingListCampaignsQueryParamFilterFromJSON(
+  jsonString: string,
+): SafeParseResult<MarketingListCampaignsQueryParamFilter, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      MarketingListCampaignsQueryParamFilter$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'MarketingListCampaignsQueryParamFilter' from JSON`,
+  );
+}
+
 /** @internal */
 export const MarketingListCampaignsRequest$inboundSchema: z.ZodType<
   MarketingListCampaignsRequest,
@@ -200,6 +225,26 @@ export namespace MarketingListCampaignsRequest$ {
   export type Outbound = MarketingListCampaignsRequest$Outbound;
 }
 
+export function marketingListCampaignsRequestToJSON(
+  marketingListCampaignsRequest: MarketingListCampaignsRequest,
+): string {
+  return JSON.stringify(
+    MarketingListCampaignsRequest$outboundSchema.parse(
+      marketingListCampaignsRequest,
+    ),
+  );
+}
+
+export function marketingListCampaignsRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<MarketingListCampaignsRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => MarketingListCampaignsRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'MarketingListCampaignsRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const MarketingListCampaignsResponse$inboundSchema: z.ZodType<
   MarketingListCampaignsResponse,
@@ -259,4 +304,24 @@ export namespace MarketingListCampaignsResponse$ {
   export const outboundSchema = MarketingListCampaignsResponse$outboundSchema;
   /** @deprecated use `MarketingListCampaignsResponse$Outbound` instead. */
   export type Outbound = MarketingListCampaignsResponse$Outbound;
+}
+
+export function marketingListCampaignsResponseToJSON(
+  marketingListCampaignsResponse: MarketingListCampaignsResponse,
+): string {
+  return JSON.stringify(
+    MarketingListCampaignsResponse$outboundSchema.parse(
+      marketingListCampaignsResponse,
+    ),
+  );
+}
+
+export function marketingListCampaignsResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<MarketingListCampaignsResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => MarketingListCampaignsResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'MarketingListCampaignsResponse' from JSON`,
+  );
 }

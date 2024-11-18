@@ -4,12 +4,19 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 /**
- * Filter parameters that allow greater customisation of the list response
+ * HRIS Time Off filters
  */
 export type HrisListEmployeeTimeOffRequestsQueryParamFilter = {
+  /**
+   * List of time off type ids to filter by.
+   */
+  type?: Array<string> | null | undefined;
   /**
    * Use a string with a date to only select results updated after that given date
    */
@@ -22,7 +29,7 @@ export type HrisListEmployeeTimeOffRequestsRequest = {
    */
   fields?: string | null | undefined;
   /**
-   * Filter parameters that allow greater customisation of the list response
+   * HRIS Time Off filters
    */
   filter?: HrisListEmployeeTimeOffRequestsQueryParamFilter | null | undefined;
   id: string;
@@ -86,6 +93,7 @@ export const HrisListEmployeeTimeOffRequestsQueryParamFilter$inboundSchema:
     z.ZodTypeDef,
     unknown
   > = z.object({
+    type: z.nullable(z.array(z.string())).optional(),
     updated_after: z.nullable(z.string()).optional(),
   }).transform((v) => {
     return remap$(v, {
@@ -95,6 +103,7 @@ export const HrisListEmployeeTimeOffRequestsQueryParamFilter$inboundSchema:
 
 /** @internal */
 export type HrisListEmployeeTimeOffRequestsQueryParamFilter$Outbound = {
+  type?: Array<string> | null | undefined;
   updated_after?: string | null | undefined;
 };
 
@@ -105,6 +114,7 @@ export const HrisListEmployeeTimeOffRequestsQueryParamFilter$outboundSchema:
     z.ZodTypeDef,
     HrisListEmployeeTimeOffRequestsQueryParamFilter
   > = z.object({
+    type: z.nullable(z.array(z.string())).optional(),
     updatedAfter: z.nullable(z.string()).optional(),
   }).transform((v) => {
     return remap$(v, {
@@ -126,6 +136,33 @@ export namespace HrisListEmployeeTimeOffRequestsQueryParamFilter$ {
   /** @deprecated use `HrisListEmployeeTimeOffRequestsQueryParamFilter$Outbound` instead. */
   export type Outbound =
     HrisListEmployeeTimeOffRequestsQueryParamFilter$Outbound;
+}
+
+export function hrisListEmployeeTimeOffRequestsQueryParamFilterToJSON(
+  hrisListEmployeeTimeOffRequestsQueryParamFilter:
+    HrisListEmployeeTimeOffRequestsQueryParamFilter,
+): string {
+  return JSON.stringify(
+    HrisListEmployeeTimeOffRequestsQueryParamFilter$outboundSchema.parse(
+      hrisListEmployeeTimeOffRequestsQueryParamFilter,
+    ),
+  );
+}
+
+export function hrisListEmployeeTimeOffRequestsQueryParamFilterFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  HrisListEmployeeTimeOffRequestsQueryParamFilter,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      HrisListEmployeeTimeOffRequestsQueryParamFilter$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'HrisListEmployeeTimeOffRequestsQueryParamFilter' from JSON`,
+  );
 }
 
 /** @internal */
@@ -214,6 +251,28 @@ export namespace HrisListEmployeeTimeOffRequestsRequest$ {
   export type Outbound = HrisListEmployeeTimeOffRequestsRequest$Outbound;
 }
 
+export function hrisListEmployeeTimeOffRequestsRequestToJSON(
+  hrisListEmployeeTimeOffRequestsRequest:
+    HrisListEmployeeTimeOffRequestsRequest,
+): string {
+  return JSON.stringify(
+    HrisListEmployeeTimeOffRequestsRequest$outboundSchema.parse(
+      hrisListEmployeeTimeOffRequestsRequest,
+    ),
+  );
+}
+
+export function hrisListEmployeeTimeOffRequestsRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<HrisListEmployeeTimeOffRequestsRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      HrisListEmployeeTimeOffRequestsRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HrisListEmployeeTimeOffRequestsRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const HrisListEmployeeTimeOffRequestsResponse$inboundSchema: z.ZodType<
   HrisListEmployeeTimeOffRequestsResponse,
@@ -275,4 +334,31 @@ export namespace HrisListEmployeeTimeOffRequestsResponse$ {
     HrisListEmployeeTimeOffRequestsResponse$outboundSchema;
   /** @deprecated use `HrisListEmployeeTimeOffRequestsResponse$Outbound` instead. */
   export type Outbound = HrisListEmployeeTimeOffRequestsResponse$Outbound;
+}
+
+export function hrisListEmployeeTimeOffRequestsResponseToJSON(
+  hrisListEmployeeTimeOffRequestsResponse:
+    HrisListEmployeeTimeOffRequestsResponse,
+): string {
+  return JSON.stringify(
+    HrisListEmployeeTimeOffRequestsResponse$outboundSchema.parse(
+      hrisListEmployeeTimeOffRequestsResponse,
+    ),
+  );
+}
+
+export function hrisListEmployeeTimeOffRequestsResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  HrisListEmployeeTimeOffRequestsResponse,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      HrisListEmployeeTimeOffRequestsResponse$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'HrisListEmployeeTimeOffRequestsResponse' from JSON`,
+  );
 }

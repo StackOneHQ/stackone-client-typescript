@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type PatchAccountExternalDtoCredentials = {};
 
@@ -57,6 +60,27 @@ export namespace PatchAccountExternalDtoCredentials$ {
   export type Outbound = PatchAccountExternalDtoCredentials$Outbound;
 }
 
+export function patchAccountExternalDtoCredentialsToJSON(
+  patchAccountExternalDtoCredentials: PatchAccountExternalDtoCredentials,
+): string {
+  return JSON.stringify(
+    PatchAccountExternalDtoCredentials$outboundSchema.parse(
+      patchAccountExternalDtoCredentials,
+    ),
+  );
+}
+
+export function patchAccountExternalDtoCredentialsFromJSON(
+  jsonString: string,
+): SafeParseResult<PatchAccountExternalDtoCredentials, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      PatchAccountExternalDtoCredentials$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PatchAccountExternalDtoCredentials' from JSON`,
+  );
+}
+
 /** @internal */
 export const Label$inboundSchema: z.ZodType<Label, z.ZodTypeDef, unknown> = z
   .object({});
@@ -84,6 +108,20 @@ export namespace Label$ {
   export type Outbound = Label$Outbound;
 }
 
+export function labelToJSON(label: Label): string {
+  return JSON.stringify(Label$outboundSchema.parse(label));
+}
+
+export function labelFromJSON(
+  jsonString: string,
+): SafeParseResult<Label, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Label$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Label' from JSON`,
+  );
+}
+
 /** @internal */
 export const Secrets$inboundSchema: z.ZodType<Secrets, z.ZodTypeDef, unknown> =
   z.object({});
@@ -109,6 +147,20 @@ export namespace Secrets$ {
   export const outboundSchema = Secrets$outboundSchema;
   /** @deprecated use `Secrets$Outbound` instead. */
   export type Outbound = Secrets$Outbound;
+}
+
+export function secretsToJSON(secrets: Secrets): string {
+  return JSON.stringify(Secrets$outboundSchema.parse(secrets));
+}
+
+export function secretsFromJSON(
+  jsonString: string,
+): SafeParseResult<Secrets, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Secrets$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Secrets' from JSON`,
+  );
 }
 
 /** @internal */
@@ -141,6 +193,33 @@ export namespace PatchAccountExternalDtoSetupInformation$ {
     PatchAccountExternalDtoSetupInformation$outboundSchema;
   /** @deprecated use `PatchAccountExternalDtoSetupInformation$Outbound` instead. */
   export type Outbound = PatchAccountExternalDtoSetupInformation$Outbound;
+}
+
+export function patchAccountExternalDtoSetupInformationToJSON(
+  patchAccountExternalDtoSetupInformation:
+    PatchAccountExternalDtoSetupInformation,
+): string {
+  return JSON.stringify(
+    PatchAccountExternalDtoSetupInformation$outboundSchema.parse(
+      patchAccountExternalDtoSetupInformation,
+    ),
+  );
+}
+
+export function patchAccountExternalDtoSetupInformationFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  PatchAccountExternalDtoSetupInformation,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      PatchAccountExternalDtoSetupInformation$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'PatchAccountExternalDtoSetupInformation' from JSON`,
+  );
 }
 
 /** @internal */
@@ -231,4 +310,22 @@ export namespace PatchAccountExternalDto$ {
   export const outboundSchema = PatchAccountExternalDto$outboundSchema;
   /** @deprecated use `PatchAccountExternalDto$Outbound` instead. */
   export type Outbound = PatchAccountExternalDto$Outbound;
+}
+
+export function patchAccountExternalDtoToJSON(
+  patchAccountExternalDto: PatchAccountExternalDto,
+): string {
+  return JSON.stringify(
+    PatchAccountExternalDto$outboundSchema.parse(patchAccountExternalDto),
+  );
+}
+
+export function patchAccountExternalDtoFromJSON(
+  jsonString: string,
+): SafeParseResult<PatchAccountExternalDto, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PatchAccountExternalDto$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PatchAccountExternalDto' from JSON`,
+  );
 }

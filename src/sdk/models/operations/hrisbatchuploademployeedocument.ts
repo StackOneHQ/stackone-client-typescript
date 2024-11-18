@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type HrisBatchUploadEmployeeDocumentRequest = {
@@ -91,6 +94,28 @@ export namespace HrisBatchUploadEmployeeDocumentRequest$ {
   export type Outbound = HrisBatchUploadEmployeeDocumentRequest$Outbound;
 }
 
+export function hrisBatchUploadEmployeeDocumentRequestToJSON(
+  hrisBatchUploadEmployeeDocumentRequest:
+    HrisBatchUploadEmployeeDocumentRequest,
+): string {
+  return JSON.stringify(
+    HrisBatchUploadEmployeeDocumentRequest$outboundSchema.parse(
+      hrisBatchUploadEmployeeDocumentRequest,
+    ),
+  );
+}
+
+export function hrisBatchUploadEmployeeDocumentRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<HrisBatchUploadEmployeeDocumentRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      HrisBatchUploadEmployeeDocumentRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HrisBatchUploadEmployeeDocumentRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const HrisBatchUploadEmployeeDocumentResponse$inboundSchema: z.ZodType<
   HrisBatchUploadEmployeeDocumentResponse,
@@ -152,4 +177,31 @@ export namespace HrisBatchUploadEmployeeDocumentResponse$ {
     HrisBatchUploadEmployeeDocumentResponse$outboundSchema;
   /** @deprecated use `HrisBatchUploadEmployeeDocumentResponse$Outbound` instead. */
   export type Outbound = HrisBatchUploadEmployeeDocumentResponse$Outbound;
+}
+
+export function hrisBatchUploadEmployeeDocumentResponseToJSON(
+  hrisBatchUploadEmployeeDocumentResponse:
+    HrisBatchUploadEmployeeDocumentResponse,
+): string {
+  return JSON.stringify(
+    HrisBatchUploadEmployeeDocumentResponse$outboundSchema.parse(
+      hrisBatchUploadEmployeeDocumentResponse,
+    ),
+  );
+}
+
+export function hrisBatchUploadEmployeeDocumentResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  HrisBatchUploadEmployeeDocumentResponse,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      HrisBatchUploadEmployeeDocumentResponse$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'HrisBatchUploadEmployeeDocumentResponse' from JSON`,
+  );
 }

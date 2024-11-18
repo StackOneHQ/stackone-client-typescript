@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type BatchResultApiModel = {
   errors?: Array<Array<string>> | null | undefined;
@@ -56,4 +59,22 @@ export namespace BatchResultApiModel$ {
   export const outboundSchema = BatchResultApiModel$outboundSchema;
   /** @deprecated use `BatchResultApiModel$Outbound` instead. */
   export type Outbound = BatchResultApiModel$Outbound;
+}
+
+export function batchResultApiModelToJSON(
+  batchResultApiModel: BatchResultApiModel,
+): string {
+  return JSON.stringify(
+    BatchResultApiModel$outboundSchema.parse(batchResultApiModel),
+  );
+}
+
+export function batchResultApiModelFromJSON(
+  jsonString: string,
+): SafeParseResult<BatchResultApiModel, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => BatchResultApiModel$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'BatchResultApiModel' from JSON`,
+  );
 }

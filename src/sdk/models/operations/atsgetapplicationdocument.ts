@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type AtsGetApplicationDocumentRequest = {
@@ -105,6 +108,26 @@ export namespace AtsGetApplicationDocumentRequest$ {
   export type Outbound = AtsGetApplicationDocumentRequest$Outbound;
 }
 
+export function atsGetApplicationDocumentRequestToJSON(
+  atsGetApplicationDocumentRequest: AtsGetApplicationDocumentRequest,
+): string {
+  return JSON.stringify(
+    AtsGetApplicationDocumentRequest$outboundSchema.parse(
+      atsGetApplicationDocumentRequest,
+    ),
+  );
+}
+
+export function atsGetApplicationDocumentRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<AtsGetApplicationDocumentRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AtsGetApplicationDocumentRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AtsGetApplicationDocumentRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const AtsGetApplicationDocumentResponse$inboundSchema: z.ZodType<
   AtsGetApplicationDocumentResponse,
@@ -165,4 +188,24 @@ export namespace AtsGetApplicationDocumentResponse$ {
     AtsGetApplicationDocumentResponse$outboundSchema;
   /** @deprecated use `AtsGetApplicationDocumentResponse$Outbound` instead. */
   export type Outbound = AtsGetApplicationDocumentResponse$Outbound;
+}
+
+export function atsGetApplicationDocumentResponseToJSON(
+  atsGetApplicationDocumentResponse: AtsGetApplicationDocumentResponse,
+): string {
+  return JSON.stringify(
+    AtsGetApplicationDocumentResponse$outboundSchema.parse(
+      atsGetApplicationDocumentResponse,
+    ),
+  );
+}
+
+export function atsGetApplicationDocumentResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<AtsGetApplicationDocumentResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AtsGetApplicationDocumentResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AtsGetApplicationDocumentResponse' from JSON`,
+  );
 }

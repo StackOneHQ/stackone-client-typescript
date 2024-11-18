@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   NoteContentApiModel,
   NoteContentApiModel$inboundSchema,
@@ -109,6 +112,24 @@ export namespace AtsCreateNotesRequestDto4$ {
   export type Outbound = AtsCreateNotesRequestDto4$Outbound;
 }
 
+export function atsCreateNotesRequestDto4ToJSON(
+  atsCreateNotesRequestDto4: AtsCreateNotesRequestDto4,
+): string {
+  return JSON.stringify(
+    AtsCreateNotesRequestDto4$outboundSchema.parse(atsCreateNotesRequestDto4),
+  );
+}
+
+export function atsCreateNotesRequestDto4FromJSON(
+  jsonString: string,
+): SafeParseResult<AtsCreateNotesRequestDto4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AtsCreateNotesRequestDto4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AtsCreateNotesRequestDto4' from JSON`,
+  );
+}
+
 /** @internal */
 export const AtsCreateNotesRequestDtoSourceValue$inboundSchema: z.ZodType<
   AtsCreateNotesRequestDtoSourceValue,
@@ -156,6 +177,27 @@ export namespace AtsCreateNotesRequestDtoSourceValue$ {
     AtsCreateNotesRequestDtoSourceValue$outboundSchema;
   /** @deprecated use `AtsCreateNotesRequestDtoSourceValue$Outbound` instead. */
   export type Outbound = AtsCreateNotesRequestDtoSourceValue$Outbound;
+}
+
+export function atsCreateNotesRequestDtoSourceValueToJSON(
+  atsCreateNotesRequestDtoSourceValue: AtsCreateNotesRequestDtoSourceValue,
+): string {
+  return JSON.stringify(
+    AtsCreateNotesRequestDtoSourceValue$outboundSchema.parse(
+      atsCreateNotesRequestDtoSourceValue,
+    ),
+  );
+}
+
+export function atsCreateNotesRequestDtoSourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<AtsCreateNotesRequestDtoSourceValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      AtsCreateNotesRequestDtoSourceValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AtsCreateNotesRequestDtoSourceValue' from JSON`,
+  );
 }
 
 /** @internal */
@@ -260,6 +302,20 @@ export namespace Visibility$ {
   export type Outbound = Visibility$Outbound;
 }
 
+export function visibilityToJSON(visibility: Visibility): string {
+  return JSON.stringify(Visibility$outboundSchema.parse(visibility));
+}
+
+export function visibilityFromJSON(
+  jsonString: string,
+): SafeParseResult<Visibility, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Visibility$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Visibility' from JSON`,
+  );
+}
+
 /** @internal */
 export const AtsCreateNotesRequestDto$inboundSchema: z.ZodType<
   AtsCreateNotesRequestDto,
@@ -311,4 +367,22 @@ export namespace AtsCreateNotesRequestDto$ {
   export const outboundSchema = AtsCreateNotesRequestDto$outboundSchema;
   /** @deprecated use `AtsCreateNotesRequestDto$Outbound` instead. */
   export type Outbound = AtsCreateNotesRequestDto$Outbound;
+}
+
+export function atsCreateNotesRequestDtoToJSON(
+  atsCreateNotesRequestDto: AtsCreateNotesRequestDto,
+): string {
+  return JSON.stringify(
+    AtsCreateNotesRequestDto$outboundSchema.parse(atsCreateNotesRequestDto),
+  );
+}
+
+export function atsCreateNotesRequestDtoFromJSON(
+  jsonString: string,
+): SafeParseResult<AtsCreateNotesRequestDto, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AtsCreateNotesRequestDto$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AtsCreateNotesRequestDto' from JSON`,
+  );
 }

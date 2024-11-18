@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type StackoneListLinkedAccountsRequest = {
@@ -125,6 +128,26 @@ export namespace StackoneListLinkedAccountsRequest$ {
   export type Outbound = StackoneListLinkedAccountsRequest$Outbound;
 }
 
+export function stackoneListLinkedAccountsRequestToJSON(
+  stackoneListLinkedAccountsRequest: StackoneListLinkedAccountsRequest,
+): string {
+  return JSON.stringify(
+    StackoneListLinkedAccountsRequest$outboundSchema.parse(
+      stackoneListLinkedAccountsRequest,
+    ),
+  );
+}
+
+export function stackoneListLinkedAccountsRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<StackoneListLinkedAccountsRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => StackoneListLinkedAccountsRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'StackoneListLinkedAccountsRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const StackoneListLinkedAccountsResponse$inboundSchema: z.ZodType<
   StackoneListLinkedAccountsResponse,
@@ -183,4 +206,25 @@ export namespace StackoneListLinkedAccountsResponse$ {
     StackoneListLinkedAccountsResponse$outboundSchema;
   /** @deprecated use `StackoneListLinkedAccountsResponse$Outbound` instead. */
   export type Outbound = StackoneListLinkedAccountsResponse$Outbound;
+}
+
+export function stackoneListLinkedAccountsResponseToJSON(
+  stackoneListLinkedAccountsResponse: StackoneListLinkedAccountsResponse,
+): string {
+  return JSON.stringify(
+    StackoneListLinkedAccountsResponse$outboundSchema.parse(
+      stackoneListLinkedAccountsResponse,
+    ),
+  );
+}
+
+export function stackoneListLinkedAccountsResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<StackoneListLinkedAccountsResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      StackoneListLinkedAccountsResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'StackoneListLinkedAccountsResponse' from JSON`,
+  );
 }

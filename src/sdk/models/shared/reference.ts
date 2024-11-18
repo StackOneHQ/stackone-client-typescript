@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export enum Reference2 {
   True = "true",
@@ -80,6 +83,20 @@ export namespace Active$ {
   export type Outbound = Active$Outbound;
 }
 
+export function activeToJSON(active: Active): string {
+  return JSON.stringify(Active$outboundSchema.parse(active));
+}
+
+export function activeFromJSON(
+  jsonString: string,
+): SafeParseResult<Active, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Active$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Active' from JSON`,
+  );
+}
+
 /** @internal */
 export const Reference$inboundSchema: z.ZodType<
   Reference,
@@ -133,4 +150,18 @@ export namespace Reference$ {
   export const outboundSchema = Reference$outboundSchema;
   /** @deprecated use `Reference$Outbound` instead. */
   export type Outbound = Reference$Outbound;
+}
+
+export function referenceToJSON(reference: Reference): string {
+  return JSON.stringify(Reference$outboundSchema.parse(reference));
+}
+
+export function referenceFromJSON(
+  jsonString: string,
+): SafeParseResult<Reference, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Reference$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Reference' from JSON`,
+  );
 }

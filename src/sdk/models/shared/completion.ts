@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type Completion4 = {};
 
@@ -80,14 +83,20 @@ export type Completion = {
   completedAt?: string | null | undefined;
   /**
    * The external reference associated with this content
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   contentExternalReference?: string | null | undefined;
   /**
    * The content ID associated with this completion
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   contentId?: string | null | undefined;
   /**
    * The course ID associated with this completion
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   courseId?: string | null | undefined;
   /**
@@ -96,6 +105,8 @@ export type Completion = {
   createdAt?: string | null | undefined;
   /**
    * The external ID associated with this completion
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   externalId?: string | null | undefined;
   /**
@@ -116,14 +127,20 @@ export type Completion = {
   learningObjectType?: CompletionLearningObjectType | null | undefined;
   /**
    * Provider's unique identifier of the content associated with the completion
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   remoteContentId?: string | null | undefined;
   /**
    * Provider's unique identifier of the course associated with the completion
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   remoteCourseId?: string | null | undefined;
   /**
    * Provider's unique identifier of the content external reference
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   remoteExternalId?: string | null | undefined;
   /**
@@ -186,6 +203,20 @@ export namespace Completion4$ {
   export type Outbound = Completion4$Outbound;
 }
 
+export function completion4ToJSON(completion4: Completion4): string {
+  return JSON.stringify(Completion4$outboundSchema.parse(completion4));
+}
+
+export function completion4FromJSON(
+  jsonString: string,
+): SafeParseResult<Completion4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Completion4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Completion4' from JSON`,
+  );
+}
+
 /** @internal */
 export const CompletionSourceValue$inboundSchema: z.ZodType<
   CompletionSourceValue,
@@ -231,6 +262,24 @@ export namespace CompletionSourceValue$ {
   export const outboundSchema = CompletionSourceValue$outboundSchema;
   /** @deprecated use `CompletionSourceValue$Outbound` instead. */
   export type Outbound = CompletionSourceValue$Outbound;
+}
+
+export function completionSourceValueToJSON(
+  completionSourceValue: CompletionSourceValue,
+): string {
+  return JSON.stringify(
+    CompletionSourceValue$outboundSchema.parse(completionSourceValue),
+  );
+}
+
+export function completionSourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<CompletionSourceValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CompletionSourceValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CompletionSourceValue' from JSON`,
+  );
 }
 
 /** @internal */
@@ -335,6 +384,26 @@ export namespace CompletionLearningObjectType$ {
   export type Outbound = CompletionLearningObjectType$Outbound;
 }
 
+export function completionLearningObjectTypeToJSON(
+  completionLearningObjectType: CompletionLearningObjectType,
+): string {
+  return JSON.stringify(
+    CompletionLearningObjectType$outboundSchema.parse(
+      completionLearningObjectType,
+    ),
+  );
+}
+
+export function completionLearningObjectTypeFromJSON(
+  jsonString: string,
+): SafeParseResult<CompletionLearningObjectType, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CompletionLearningObjectType$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CompletionLearningObjectType' from JSON`,
+  );
+}
+
 /** @internal */
 export const CompletionSchemas4$inboundSchema: z.ZodType<
   CompletionSchemas4,
@@ -363,6 +432,24 @@ export namespace CompletionSchemas4$ {
   export const outboundSchema = CompletionSchemas4$outboundSchema;
   /** @deprecated use `CompletionSchemas4$Outbound` instead. */
   export type Outbound = CompletionSchemas4$Outbound;
+}
+
+export function completionSchemas4ToJSON(
+  completionSchemas4: CompletionSchemas4,
+): string {
+  return JSON.stringify(
+    CompletionSchemas4$outboundSchema.parse(completionSchemas4),
+  );
+}
+
+export function completionSchemas4FromJSON(
+  jsonString: string,
+): SafeParseResult<CompletionSchemas4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CompletionSchemas4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CompletionSchemas4' from JSON`,
+  );
 }
 
 /** @internal */
@@ -410,6 +497,26 @@ export namespace CompletionSchemasSourceValue$ {
   export const outboundSchema = CompletionSchemasSourceValue$outboundSchema;
   /** @deprecated use `CompletionSchemasSourceValue$Outbound` instead. */
   export type Outbound = CompletionSchemasSourceValue$Outbound;
+}
+
+export function completionSchemasSourceValueToJSON(
+  completionSchemasSourceValue: CompletionSchemasSourceValue,
+): string {
+  return JSON.stringify(
+    CompletionSchemasSourceValue$outboundSchema.parse(
+      completionSchemasSourceValue,
+    ),
+  );
+}
+
+export function completionSchemasSourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<CompletionSchemasSourceValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CompletionSchemasSourceValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CompletionSchemasSourceValue' from JSON`,
+  );
 }
 
 /** @internal */
@@ -512,6 +619,24 @@ export namespace CompletionSchemasResult$ {
   export const outboundSchema = CompletionSchemasResult$outboundSchema;
   /** @deprecated use `CompletionSchemasResult$Outbound` instead. */
   export type Outbound = CompletionSchemasResult$Outbound;
+}
+
+export function completionSchemasResultToJSON(
+  completionSchemasResult: CompletionSchemasResult,
+): string {
+  return JSON.stringify(
+    CompletionSchemasResult$outboundSchema.parse(completionSchemasResult),
+  );
+}
+
+export function completionSchemasResultFromJSON(
+  jsonString: string,
+): SafeParseResult<CompletionSchemasResult, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CompletionSchemasResult$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CompletionSchemasResult' from JSON`,
+  );
 }
 
 /** @internal */
@@ -656,4 +781,18 @@ export namespace Completion$ {
   export const outboundSchema = Completion$outboundSchema;
   /** @deprecated use `Completion$Outbound` instead. */
   export type Outbound = Completion$Outbound;
+}
+
+export function completionToJSON(completion: Completion): string {
+  return JSON.stringify(Completion$outboundSchema.parse(completion));
+}
+
+export function completionFromJSON(
+  jsonString: string,
+): SafeParseResult<Completion, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Completion$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Completion' from JSON`,
+  );
 }

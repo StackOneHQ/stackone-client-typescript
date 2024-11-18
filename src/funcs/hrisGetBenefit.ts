@@ -89,6 +89,9 @@ export async function hrisGetBenefit(
   const context = {
     operationID: "hris_get_benefit",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.security,
     retryConfig: options?.retries
       || client._options.retryConfig

@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type MarketingUpdateOmniChannelTemplateRequest = {
@@ -92,6 +95,33 @@ export namespace MarketingUpdateOmniChannelTemplateRequest$ {
   export type Outbound = MarketingUpdateOmniChannelTemplateRequest$Outbound;
 }
 
+export function marketingUpdateOmniChannelTemplateRequestToJSON(
+  marketingUpdateOmniChannelTemplateRequest:
+    MarketingUpdateOmniChannelTemplateRequest,
+): string {
+  return JSON.stringify(
+    MarketingUpdateOmniChannelTemplateRequest$outboundSchema.parse(
+      marketingUpdateOmniChannelTemplateRequest,
+    ),
+  );
+}
+
+export function marketingUpdateOmniChannelTemplateRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  MarketingUpdateOmniChannelTemplateRequest,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      MarketingUpdateOmniChannelTemplateRequest$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'MarketingUpdateOmniChannelTemplateRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const MarketingUpdateOmniChannelTemplateResponse$inboundSchema:
   z.ZodType<MarketingUpdateOmniChannelTemplateResponse, z.ZodTypeDef, unknown> =
@@ -152,4 +182,31 @@ export namespace MarketingUpdateOmniChannelTemplateResponse$ {
     MarketingUpdateOmniChannelTemplateResponse$outboundSchema;
   /** @deprecated use `MarketingUpdateOmniChannelTemplateResponse$Outbound` instead. */
   export type Outbound = MarketingUpdateOmniChannelTemplateResponse$Outbound;
+}
+
+export function marketingUpdateOmniChannelTemplateResponseToJSON(
+  marketingUpdateOmniChannelTemplateResponse:
+    MarketingUpdateOmniChannelTemplateResponse,
+): string {
+  return JSON.stringify(
+    MarketingUpdateOmniChannelTemplateResponse$outboundSchema.parse(
+      marketingUpdateOmniChannelTemplateResponse,
+    ),
+  );
+}
+
+export function marketingUpdateOmniChannelTemplateResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  MarketingUpdateOmniChannelTemplateResponse,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      MarketingUpdateOmniChannelTemplateResponse$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'MarketingUpdateOmniChannelTemplateResponse' from JSON`,
+  );
 }

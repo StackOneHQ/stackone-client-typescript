@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type HrisGetCostCenterGroupRequest = {
@@ -101,6 +104,26 @@ export namespace HrisGetCostCenterGroupRequest$ {
   export type Outbound = HrisGetCostCenterGroupRequest$Outbound;
 }
 
+export function hrisGetCostCenterGroupRequestToJSON(
+  hrisGetCostCenterGroupRequest: HrisGetCostCenterGroupRequest,
+): string {
+  return JSON.stringify(
+    HrisGetCostCenterGroupRequest$outboundSchema.parse(
+      hrisGetCostCenterGroupRequest,
+    ),
+  );
+}
+
+export function hrisGetCostCenterGroupRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<HrisGetCostCenterGroupRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => HrisGetCostCenterGroupRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HrisGetCostCenterGroupRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const HrisGetCostCenterGroupResponse$inboundSchema: z.ZodType<
   HrisGetCostCenterGroupResponse,
@@ -160,4 +183,24 @@ export namespace HrisGetCostCenterGroupResponse$ {
   export const outboundSchema = HrisGetCostCenterGroupResponse$outboundSchema;
   /** @deprecated use `HrisGetCostCenterGroupResponse$Outbound` instead. */
   export type Outbound = HrisGetCostCenterGroupResponse$Outbound;
+}
+
+export function hrisGetCostCenterGroupResponseToJSON(
+  hrisGetCostCenterGroupResponse: HrisGetCostCenterGroupResponse,
+): string {
+  return JSON.stringify(
+    HrisGetCostCenterGroupResponse$outboundSchema.parse(
+      hrisGetCostCenterGroupResponse,
+    ),
+  );
+}
+
+export function hrisGetCostCenterGroupResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<HrisGetCostCenterGroupResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => HrisGetCostCenterGroupResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HrisGetCostCenterGroupResponse' from JSON`,
+  );
 }

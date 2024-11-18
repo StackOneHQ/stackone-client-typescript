@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   HRISCostCenter,
   HRISCostCenter$inboundSchema,
@@ -78,4 +81,22 @@ export namespace HRISCostCenterPaginated$ {
   export const outboundSchema = HRISCostCenterPaginated$outboundSchema;
   /** @deprecated use `HRISCostCenterPaginated$Outbound` instead. */
   export type Outbound = HRISCostCenterPaginated$Outbound;
+}
+
+export function hrisCostCenterPaginatedToJSON(
+  hrisCostCenterPaginated: HRISCostCenterPaginated,
+): string {
+  return JSON.stringify(
+    HRISCostCenterPaginated$outboundSchema.parse(hrisCostCenterPaginated),
+  );
+}
+
+export function hrisCostCenterPaginatedFromJSON(
+  jsonString: string,
+): SafeParseResult<HRISCostCenterPaginated, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => HRISCostCenterPaginated$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HRISCostCenterPaginated' from JSON`,
+  );
 }

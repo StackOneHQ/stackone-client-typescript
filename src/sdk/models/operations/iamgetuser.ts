@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type IamGetUserRequest = {
@@ -108,6 +111,24 @@ export namespace IamGetUserRequest$ {
   export type Outbound = IamGetUserRequest$Outbound;
 }
 
+export function iamGetUserRequestToJSON(
+  iamGetUserRequest: IamGetUserRequest,
+): string {
+  return JSON.stringify(
+    IamGetUserRequest$outboundSchema.parse(iamGetUserRequest),
+  );
+}
+
+export function iamGetUserRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<IamGetUserRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => IamGetUserRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'IamGetUserRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const IamGetUserResponse$inboundSchema: z.ZodType<
   IamGetUserResponse,
@@ -167,4 +188,22 @@ export namespace IamGetUserResponse$ {
   export const outboundSchema = IamGetUserResponse$outboundSchema;
   /** @deprecated use `IamGetUserResponse$Outbound` instead. */
   export type Outbound = IamGetUserResponse$Outbound;
+}
+
+export function iamGetUserResponseToJSON(
+  iamGetUserResponse: IamGetUserResponse,
+): string {
+  return JSON.stringify(
+    IamGetUserResponse$outboundSchema.parse(iamGetUserResponse),
+  );
+}
+
+export function iamGetUserResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<IamGetUserResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => IamGetUserResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'IamGetUserResponse' from JSON`,
+  );
 }

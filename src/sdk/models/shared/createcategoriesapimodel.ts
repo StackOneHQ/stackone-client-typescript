@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type CreateCategoriesApiModel = {
   /**
@@ -61,4 +64,22 @@ export namespace CreateCategoriesApiModel$ {
   export const outboundSchema = CreateCategoriesApiModel$outboundSchema;
   /** @deprecated use `CreateCategoriesApiModel$Outbound` instead. */
   export type Outbound = CreateCategoriesApiModel$Outbound;
+}
+
+export function createCategoriesApiModelToJSON(
+  createCategoriesApiModel: CreateCategoriesApiModel,
+): string {
+  return JSON.stringify(
+    CreateCategoriesApiModel$outboundSchema.parse(createCategoriesApiModel),
+  );
+}
+
+export function createCategoriesApiModelFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateCategoriesApiModel, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateCategoriesApiModel$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateCategoriesApiModel' from JSON`,
+  );
 }

@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   PushTemplate,
   PushTemplate$inboundSchema,
@@ -58,4 +61,22 @@ export namespace PushTemplateResult$ {
   export const outboundSchema = PushTemplateResult$outboundSchema;
   /** @deprecated use `PushTemplateResult$Outbound` instead. */
   export type Outbound = PushTemplateResult$Outbound;
+}
+
+export function pushTemplateResultToJSON(
+  pushTemplateResult: PushTemplateResult,
+): string {
+  return JSON.stringify(
+    PushTemplateResult$outboundSchema.parse(pushTemplateResult),
+  );
+}
+
+export function pushTemplateResultFromJSON(
+  jsonString: string,
+): SafeParseResult<PushTemplateResult, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PushTemplateResult$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PushTemplateResult' from JSON`,
+  );
 }

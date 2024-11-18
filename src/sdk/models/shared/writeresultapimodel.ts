@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   ProviderErrorApiModel,
   ProviderErrorApiModel$inboundSchema,
@@ -73,4 +76,22 @@ export namespace WriteResultApiModel$ {
   export const outboundSchema = WriteResultApiModel$outboundSchema;
   /** @deprecated use `WriteResultApiModel$Outbound` instead. */
   export type Outbound = WriteResultApiModel$Outbound;
+}
+
+export function writeResultApiModelToJSON(
+  writeResultApiModel: WriteResultApiModel,
+): string {
+  return JSON.stringify(
+    WriteResultApiModel$outboundSchema.parse(writeResultApiModel),
+  );
+}
+
+export function writeResultApiModelFromJSON(
+  jsonString: string,
+): SafeParseResult<WriteResultApiModel, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => WriteResultApiModel$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'WriteResultApiModel' from JSON`,
+  );
 }

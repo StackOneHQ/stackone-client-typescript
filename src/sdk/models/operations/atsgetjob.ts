@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type AtsGetJobRequest = {
@@ -115,6 +118,24 @@ export namespace AtsGetJobRequest$ {
   export type Outbound = AtsGetJobRequest$Outbound;
 }
 
+export function atsGetJobRequestToJSON(
+  atsGetJobRequest: AtsGetJobRequest,
+): string {
+  return JSON.stringify(
+    AtsGetJobRequest$outboundSchema.parse(atsGetJobRequest),
+  );
+}
+
+export function atsGetJobRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<AtsGetJobRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AtsGetJobRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AtsGetJobRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const AtsGetJobResponse$inboundSchema: z.ZodType<
   AtsGetJobResponse,
@@ -174,4 +195,22 @@ export namespace AtsGetJobResponse$ {
   export const outboundSchema = AtsGetJobResponse$outboundSchema;
   /** @deprecated use `AtsGetJobResponse$Outbound` instead. */
   export type Outbound = AtsGetJobResponse$Outbound;
+}
+
+export function atsGetJobResponseToJSON(
+  atsGetJobResponse: AtsGetJobResponse,
+): string {
+  return JSON.stringify(
+    AtsGetJobResponse$outboundSchema.parse(atsGetJobResponse),
+  );
+}
+
+export function atsGetJobResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<AtsGetJobResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AtsGetJobResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AtsGetJobResponse' from JSON`,
+  );
 }

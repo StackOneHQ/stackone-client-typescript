@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type CreateAnswer4 = {};
 
@@ -107,6 +110,20 @@ export namespace CreateAnswer4$ {
   export type Outbound = CreateAnswer4$Outbound;
 }
 
+export function createAnswer4ToJSON(createAnswer4: CreateAnswer4): string {
+  return JSON.stringify(CreateAnswer4$outboundSchema.parse(createAnswer4));
+}
+
+export function createAnswer4FromJSON(
+  jsonString: string,
+): SafeParseResult<CreateAnswer4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateAnswer4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateAnswer4' from JSON`,
+  );
+}
+
 /** @internal */
 export const CreateAnswerSourceValue$inboundSchema: z.ZodType<
   CreateAnswerSourceValue,
@@ -152,6 +169,24 @@ export namespace CreateAnswerSourceValue$ {
   export const outboundSchema = CreateAnswerSourceValue$outboundSchema;
   /** @deprecated use `CreateAnswerSourceValue$Outbound` instead. */
   export type Outbound = CreateAnswerSourceValue$Outbound;
+}
+
+export function createAnswerSourceValueToJSON(
+  createAnswerSourceValue: CreateAnswerSourceValue,
+): string {
+  return JSON.stringify(
+    CreateAnswerSourceValue$outboundSchema.parse(createAnswerSourceValue),
+  );
+}
+
+export function createAnswerSourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateAnswerSourceValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateAnswerSourceValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateAnswerSourceValue' from JSON`,
+  );
 }
 
 /** @internal */
@@ -256,6 +291,24 @@ export namespace CreateAnswerType$ {
   export type Outbound = CreateAnswerType$Outbound;
 }
 
+export function createAnswerTypeToJSON(
+  createAnswerType: CreateAnswerType,
+): string {
+  return JSON.stringify(
+    CreateAnswerType$outboundSchema.parse(createAnswerType),
+  );
+}
+
+export function createAnswerTypeFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateAnswerType, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateAnswerType$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateAnswerType' from JSON`,
+  );
+}
+
 /** @internal */
 export const CreateAnswer$inboundSchema: z.ZodType<
   CreateAnswer,
@@ -296,4 +349,18 @@ export namespace CreateAnswer$ {
   export const outboundSchema = CreateAnswer$outboundSchema;
   /** @deprecated use `CreateAnswer$Outbound` instead. */
   export type Outbound = CreateAnswer$Outbound;
+}
+
+export function createAnswerToJSON(createAnswer: CreateAnswer): string {
+  return JSON.stringify(CreateAnswer$outboundSchema.parse(createAnswer));
+}
+
+export function createAnswerFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateAnswer, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateAnswer$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateAnswer' from JSON`,
+  );
 }

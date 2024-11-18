@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type LmsBatchUpsertCourseRequest = {
@@ -85,6 +88,26 @@ export namespace LmsBatchUpsertCourseRequest$ {
   export type Outbound = LmsBatchUpsertCourseRequest$Outbound;
 }
 
+export function lmsBatchUpsertCourseRequestToJSON(
+  lmsBatchUpsertCourseRequest: LmsBatchUpsertCourseRequest,
+): string {
+  return JSON.stringify(
+    LmsBatchUpsertCourseRequest$outboundSchema.parse(
+      lmsBatchUpsertCourseRequest,
+    ),
+  );
+}
+
+export function lmsBatchUpsertCourseRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<LmsBatchUpsertCourseRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LmsBatchUpsertCourseRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LmsBatchUpsertCourseRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const LmsBatchUpsertCourseResponse$inboundSchema: z.ZodType<
   LmsBatchUpsertCourseResponse,
@@ -144,4 +167,24 @@ export namespace LmsBatchUpsertCourseResponse$ {
   export const outboundSchema = LmsBatchUpsertCourseResponse$outboundSchema;
   /** @deprecated use `LmsBatchUpsertCourseResponse$Outbound` instead. */
   export type Outbound = LmsBatchUpsertCourseResponse$Outbound;
+}
+
+export function lmsBatchUpsertCourseResponseToJSON(
+  lmsBatchUpsertCourseResponse: LmsBatchUpsertCourseResponse,
+): string {
+  return JSON.stringify(
+    LmsBatchUpsertCourseResponse$outboundSchema.parse(
+      lmsBatchUpsertCourseResponse,
+    ),
+  );
+}
+
+export function lmsBatchUpsertCourseResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<LmsBatchUpsertCourseResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LmsBatchUpsertCourseResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LmsBatchUpsertCourseResponse' from JSON`,
+  );
 }

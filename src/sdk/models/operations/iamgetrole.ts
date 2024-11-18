@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type IamGetRoleRequest = {
@@ -108,6 +111,24 @@ export namespace IamGetRoleRequest$ {
   export type Outbound = IamGetRoleRequest$Outbound;
 }
 
+export function iamGetRoleRequestToJSON(
+  iamGetRoleRequest: IamGetRoleRequest,
+): string {
+  return JSON.stringify(
+    IamGetRoleRequest$outboundSchema.parse(iamGetRoleRequest),
+  );
+}
+
+export function iamGetRoleRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<IamGetRoleRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => IamGetRoleRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'IamGetRoleRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const IamGetRoleResponse$inboundSchema: z.ZodType<
   IamGetRoleResponse,
@@ -167,4 +188,22 @@ export namespace IamGetRoleResponse$ {
   export const outboundSchema = IamGetRoleResponse$outboundSchema;
   /** @deprecated use `IamGetRoleResponse$Outbound` instead. */
   export type Outbound = IamGetRoleResponse$Outbound;
+}
+
+export function iamGetRoleResponseToJSON(
+  iamGetRoleResponse: IamGetRoleResponse,
+): string {
+  return JSON.stringify(
+    IamGetRoleResponse$outboundSchema.parse(iamGetRoleResponse),
+  );
+}
+
+export function iamGetRoleResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<IamGetRoleResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => IamGetRoleResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'IamGetRoleResponse' from JSON`,
+  );
 }

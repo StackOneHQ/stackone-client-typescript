@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   CandidateEmail,
   CandidateEmail$inboundSchema,
@@ -241,4 +244,18 @@ export namespace Candidate$ {
   export const outboundSchema = Candidate$outboundSchema;
   /** @deprecated use `Candidate$Outbound` instead. */
   export type Outbound = Candidate$Outbound;
+}
+
+export function candidateToJSON(candidate: Candidate): string {
+  return JSON.stringify(Candidate$outboundSchema.parse(candidate));
+}
+
+export function candidateFromJSON(
+  jsonString: string,
+): SafeParseResult<Candidate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Candidate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Candidate' from JSON`,
+  );
 }

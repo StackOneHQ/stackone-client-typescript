@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type LmsCreateCollectionRequest = {
@@ -84,6 +87,24 @@ export namespace LmsCreateCollectionRequest$ {
   export type Outbound = LmsCreateCollectionRequest$Outbound;
 }
 
+export function lmsCreateCollectionRequestToJSON(
+  lmsCreateCollectionRequest: LmsCreateCollectionRequest,
+): string {
+  return JSON.stringify(
+    LmsCreateCollectionRequest$outboundSchema.parse(lmsCreateCollectionRequest),
+  );
+}
+
+export function lmsCreateCollectionRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<LmsCreateCollectionRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LmsCreateCollectionRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LmsCreateCollectionRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const LmsCreateCollectionResponse$inboundSchema: z.ZodType<
   LmsCreateCollectionResponse,
@@ -143,4 +164,24 @@ export namespace LmsCreateCollectionResponse$ {
   export const outboundSchema = LmsCreateCollectionResponse$outboundSchema;
   /** @deprecated use `LmsCreateCollectionResponse$Outbound` instead. */
   export type Outbound = LmsCreateCollectionResponse$Outbound;
+}
+
+export function lmsCreateCollectionResponseToJSON(
+  lmsCreateCollectionResponse: LmsCreateCollectionResponse,
+): string {
+  return JSON.stringify(
+    LmsCreateCollectionResponse$outboundSchema.parse(
+      lmsCreateCollectionResponse,
+    ),
+  );
+}
+
+export function lmsCreateCollectionResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<LmsCreateCollectionResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LmsCreateCollectionResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LmsCreateCollectionResponse' from JSON`,
+  );
 }

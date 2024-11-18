@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   CustomFieldDefinition,
   CustomFieldDefinition$inboundSchema,
@@ -78,4 +81,24 @@ export namespace CustomFieldDefinitionsPaginated$ {
   export const outboundSchema = CustomFieldDefinitionsPaginated$outboundSchema;
   /** @deprecated use `CustomFieldDefinitionsPaginated$Outbound` instead. */
   export type Outbound = CustomFieldDefinitionsPaginated$Outbound;
+}
+
+export function customFieldDefinitionsPaginatedToJSON(
+  customFieldDefinitionsPaginated: CustomFieldDefinitionsPaginated,
+): string {
+  return JSON.stringify(
+    CustomFieldDefinitionsPaginated$outboundSchema.parse(
+      customFieldDefinitionsPaginated,
+    ),
+  );
+}
+
+export function customFieldDefinitionsPaginatedFromJSON(
+  jsonString: string,
+): SafeParseResult<CustomFieldDefinitionsPaginated, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CustomFieldDefinitionsPaginated$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CustomFieldDefinitionsPaginated' from JSON`,
+  );
 }

@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type AssessmentsPackages4 = {};
 
@@ -29,6 +32,9 @@ export enum AssessmentsPackagesValue {
   Responsibilities = "responsibilities",
   Skills = "skills",
   Benefits = "benefits",
+  CompanyOverview = "company_overview",
+  Description = "description",
+  Other = "other",
 }
 /**
  * The type of the description.
@@ -105,6 +111,24 @@ export namespace AssessmentsPackages4$ {
   export type Outbound = AssessmentsPackages4$Outbound;
 }
 
+export function assessmentsPackages4ToJSON(
+  assessmentsPackages4: AssessmentsPackages4,
+): string {
+  return JSON.stringify(
+    AssessmentsPackages4$outboundSchema.parse(assessmentsPackages4),
+  );
+}
+
+export function assessmentsPackages4FromJSON(
+  jsonString: string,
+): SafeParseResult<AssessmentsPackages4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AssessmentsPackages4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AssessmentsPackages4' from JSON`,
+  );
+}
+
 /** @internal */
 export const AssessmentsPackagesSourceValue$inboundSchema: z.ZodType<
   AssessmentsPackagesSourceValue,
@@ -150,6 +174,26 @@ export namespace AssessmentsPackagesSourceValue$ {
   export const outboundSchema = AssessmentsPackagesSourceValue$outboundSchema;
   /** @deprecated use `AssessmentsPackagesSourceValue$Outbound` instead. */
   export type Outbound = AssessmentsPackagesSourceValue$Outbound;
+}
+
+export function assessmentsPackagesSourceValueToJSON(
+  assessmentsPackagesSourceValue: AssessmentsPackagesSourceValue,
+): string {
+  return JSON.stringify(
+    AssessmentsPackagesSourceValue$outboundSchema.parse(
+      assessmentsPackagesSourceValue,
+    ),
+  );
+}
+
+export function assessmentsPackagesSourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<AssessmentsPackagesSourceValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AssessmentsPackagesSourceValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AssessmentsPackagesSourceValue' from JSON`,
+  );
 }
 
 /** @internal */
@@ -254,6 +298,24 @@ export namespace AssessmentsPackagesType$ {
   export type Outbound = AssessmentsPackagesType$Outbound;
 }
 
+export function assessmentsPackagesTypeToJSON(
+  assessmentsPackagesType: AssessmentsPackagesType,
+): string {
+  return JSON.stringify(
+    AssessmentsPackagesType$outboundSchema.parse(assessmentsPackagesType),
+  );
+}
+
+export function assessmentsPackagesTypeFromJSON(
+  jsonString: string,
+): SafeParseResult<AssessmentsPackagesType, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AssessmentsPackagesType$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AssessmentsPackagesType' from JSON`,
+  );
+}
+
 /** @internal */
 export const AssessmentsPackages$inboundSchema: z.ZodType<
   AssessmentsPackages,
@@ -310,4 +372,22 @@ export namespace AssessmentsPackages$ {
   export const outboundSchema = AssessmentsPackages$outboundSchema;
   /** @deprecated use `AssessmentsPackages$Outbound` instead. */
   export type Outbound = AssessmentsPackages$Outbound;
+}
+
+export function assessmentsPackagesToJSON(
+  assessmentsPackages: AssessmentsPackages,
+): string {
+  return JSON.stringify(
+    AssessmentsPackages$outboundSchema.parse(assessmentsPackages),
+  );
+}
+
+export function assessmentsPackagesFromJSON(
+  jsonString: string,
+): SafeParseResult<AssessmentsPackages, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AssessmentsPackages$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AssessmentsPackages' from JSON`,
+  );
 }

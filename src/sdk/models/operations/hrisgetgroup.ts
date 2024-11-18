@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type HrisGetGroupRequest = {
@@ -101,6 +104,24 @@ export namespace HrisGetGroupRequest$ {
   export type Outbound = HrisGetGroupRequest$Outbound;
 }
 
+export function hrisGetGroupRequestToJSON(
+  hrisGetGroupRequest: HrisGetGroupRequest,
+): string {
+  return JSON.stringify(
+    HrisGetGroupRequest$outboundSchema.parse(hrisGetGroupRequest),
+  );
+}
+
+export function hrisGetGroupRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<HrisGetGroupRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => HrisGetGroupRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HrisGetGroupRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const HrisGetGroupResponse$inboundSchema: z.ZodType<
   HrisGetGroupResponse,
@@ -160,4 +181,22 @@ export namespace HrisGetGroupResponse$ {
   export const outboundSchema = HrisGetGroupResponse$outboundSchema;
   /** @deprecated use `HrisGetGroupResponse$Outbound` instead. */
   export type Outbound = HrisGetGroupResponse$Outbound;
+}
+
+export function hrisGetGroupResponseToJSON(
+  hrisGetGroupResponse: HrisGetGroupResponse,
+): string {
+  return JSON.stringify(
+    HrisGetGroupResponse$outboundSchema.parse(hrisGetGroupResponse),
+  );
+}
+
+export function hrisGetGroupResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<HrisGetGroupResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => HrisGetGroupResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HrisGetGroupResponse' from JSON`,
+  );
 }

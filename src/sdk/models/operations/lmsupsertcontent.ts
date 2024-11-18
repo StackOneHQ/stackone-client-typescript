@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type LmsUpsertContentRequest = {
@@ -20,10 +23,6 @@ export type LmsUpsertContentResponse = {
    */
   contentType: string;
   /**
-   * The content was upserted successfully.
-   */
-  createResult?: shared.CreateResult | undefined;
-  /**
    * HTTP response status code for this operation
    */
   statusCode: number;
@@ -31,6 +30,10 @@ export type LmsUpsertContentResponse = {
    * Raw HTTP response; suitable for custom response parsing
    */
   rawResponse: Response;
+  /**
+   * The content was upserted successfully.
+   */
+  upsertResult?: shared.UpsertResult | undefined;
 };
 
 /** @internal */
@@ -82,6 +85,24 @@ export namespace LmsUpsertContentRequest$ {
   export type Outbound = LmsUpsertContentRequest$Outbound;
 }
 
+export function lmsUpsertContentRequestToJSON(
+  lmsUpsertContentRequest: LmsUpsertContentRequest,
+): string {
+  return JSON.stringify(
+    LmsUpsertContentRequest$outboundSchema.parse(lmsUpsertContentRequest),
+  );
+}
+
+export function lmsUpsertContentRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<LmsUpsertContentRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LmsUpsertContentRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LmsUpsertContentRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const LmsUpsertContentResponse$inboundSchema: z.ZodType<
   LmsUpsertContentResponse,
@@ -89,24 +110,24 @@ export const LmsUpsertContentResponse$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   ContentType: z.string(),
-  CreateResult: shared.CreateResult$inboundSchema.optional(),
   StatusCode: z.number().int(),
   RawResponse: z.instanceof(Response),
+  UpsertResult: shared.UpsertResult$inboundSchema.optional(),
 }).transform((v) => {
   return remap$(v, {
     "ContentType": "contentType",
-    "CreateResult": "createResult",
     "StatusCode": "statusCode",
     "RawResponse": "rawResponse",
+    "UpsertResult": "upsertResult",
   });
 });
 
 /** @internal */
 export type LmsUpsertContentResponse$Outbound = {
   ContentType: string;
-  CreateResult?: shared.CreateResult$Outbound | undefined;
   StatusCode: number;
   RawResponse: never;
+  UpsertResult?: shared.UpsertResult$Outbound | undefined;
 };
 
 /** @internal */
@@ -116,17 +137,17 @@ export const LmsUpsertContentResponse$outboundSchema: z.ZodType<
   LmsUpsertContentResponse
 > = z.object({
   contentType: z.string(),
-  createResult: shared.CreateResult$outboundSchema.optional(),
   statusCode: z.number().int(),
   rawResponse: z.instanceof(Response).transform(() => {
     throw new Error("Response cannot be serialized");
   }),
+  upsertResult: shared.UpsertResult$outboundSchema.optional(),
 }).transform((v) => {
   return remap$(v, {
     contentType: "ContentType",
-    createResult: "CreateResult",
     statusCode: "StatusCode",
     rawResponse: "RawResponse",
+    upsertResult: "UpsertResult",
   });
 });
 
@@ -141,4 +162,22 @@ export namespace LmsUpsertContentResponse$ {
   export const outboundSchema = LmsUpsertContentResponse$outboundSchema;
   /** @deprecated use `LmsUpsertContentResponse$Outbound` instead. */
   export type Outbound = LmsUpsertContentResponse$Outbound;
+}
+
+export function lmsUpsertContentResponseToJSON(
+  lmsUpsertContentResponse: LmsUpsertContentResponse,
+): string {
+  return JSON.stringify(
+    LmsUpsertContentResponse$outboundSchema.parse(lmsUpsertContentResponse),
+  );
+}
+
+export function lmsUpsertContentResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<LmsUpsertContentResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LmsUpsertContentResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LmsUpsertContentResponse' from JSON`,
+  );
 }

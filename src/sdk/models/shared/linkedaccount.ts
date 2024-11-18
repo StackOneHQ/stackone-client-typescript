@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   StatusReason,
   StatusReason$inboundSchema,
@@ -72,6 +75,20 @@ export namespace Credentials$ {
   export type Outbound = Credentials$Outbound;
 }
 
+export function credentialsToJSON(credentials: Credentials): string {
+  return JSON.stringify(Credentials$outboundSchema.parse(credentials));
+}
+
+export function credentialsFromJSON(
+  jsonString: string,
+): SafeParseResult<Credentials, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Credentials$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Credentials' from JSON`,
+  );
+}
+
 /** @internal */
 export const SetupInformation$inboundSchema: z.ZodType<
   SetupInformation,
@@ -100,6 +117,24 @@ export namespace SetupInformation$ {
   export const outboundSchema = SetupInformation$outboundSchema;
   /** @deprecated use `SetupInformation$Outbound` instead. */
   export type Outbound = SetupInformation$Outbound;
+}
+
+export function setupInformationToJSON(
+  setupInformation: SetupInformation,
+): string {
+  return JSON.stringify(
+    SetupInformation$outboundSchema.parse(setupInformation),
+  );
+}
+
+export function setupInformationFromJSON(
+  jsonString: string,
+): SafeParseResult<SetupInformation, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => SetupInformation$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SetupInformation' from JSON`,
+  );
 }
 
 /** @internal */
@@ -223,4 +258,18 @@ export namespace LinkedAccount$ {
   export const outboundSchema = LinkedAccount$outboundSchema;
   /** @deprecated use `LinkedAccount$Outbound` instead. */
   export type Outbound = LinkedAccount$Outbound;
+}
+
+export function linkedAccountToJSON(linkedAccount: LinkedAccount): string {
+  return JSON.stringify(LinkedAccount$outboundSchema.parse(linkedAccount));
+}
+
+export function linkedAccountFromJSON(
+  jsonString: string,
+): SafeParseResult<LinkedAccount, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LinkedAccount$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LinkedAccount' from JSON`,
+  );
 }

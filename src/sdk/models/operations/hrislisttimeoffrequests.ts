@@ -4,12 +4,19 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 /**
- * Filter parameters that allow greater customisation of the list response
+ * HRIS Time Off filters
  */
 export type HrisListTimeOffRequestsQueryParamFilter = {
+  /**
+   * List of time off type ids to filter by.
+   */
+  type?: Array<string> | null | undefined;
   /**
    * Use a string with a date to only select results updated after that given date
    */
@@ -22,7 +29,7 @@ export type HrisListTimeOffRequestsRequest = {
    */
   fields?: string | null | undefined;
   /**
-   * Filter parameters that allow greater customisation of the list response
+   * HRIS Time Off filters
    */
   filter?: HrisListTimeOffRequestsQueryParamFilter | null | undefined;
   /**
@@ -84,6 +91,7 @@ export const HrisListTimeOffRequestsQueryParamFilter$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  type: z.nullable(z.array(z.string())).optional(),
   updated_after: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -93,6 +101,7 @@ export const HrisListTimeOffRequestsQueryParamFilter$inboundSchema: z.ZodType<
 
 /** @internal */
 export type HrisListTimeOffRequestsQueryParamFilter$Outbound = {
+  type?: Array<string> | null | undefined;
   updated_after?: string | null | undefined;
 };
 
@@ -102,6 +111,7 @@ export const HrisListTimeOffRequestsQueryParamFilter$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   HrisListTimeOffRequestsQueryParamFilter
 > = z.object({
+  type: z.nullable(z.array(z.string())).optional(),
   updatedAfter: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -122,6 +132,33 @@ export namespace HrisListTimeOffRequestsQueryParamFilter$ {
     HrisListTimeOffRequestsQueryParamFilter$outboundSchema;
   /** @deprecated use `HrisListTimeOffRequestsQueryParamFilter$Outbound` instead. */
   export type Outbound = HrisListTimeOffRequestsQueryParamFilter$Outbound;
+}
+
+export function hrisListTimeOffRequestsQueryParamFilterToJSON(
+  hrisListTimeOffRequestsQueryParamFilter:
+    HrisListTimeOffRequestsQueryParamFilter,
+): string {
+  return JSON.stringify(
+    HrisListTimeOffRequestsQueryParamFilter$outboundSchema.parse(
+      hrisListTimeOffRequestsQueryParamFilter,
+    ),
+  );
+}
+
+export function hrisListTimeOffRequestsQueryParamFilterFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  HrisListTimeOffRequestsQueryParamFilter,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      HrisListTimeOffRequestsQueryParamFilter$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'HrisListTimeOffRequestsQueryParamFilter' from JSON`,
+  );
 }
 
 /** @internal */
@@ -200,6 +237,26 @@ export namespace HrisListTimeOffRequestsRequest$ {
   export type Outbound = HrisListTimeOffRequestsRequest$Outbound;
 }
 
+export function hrisListTimeOffRequestsRequestToJSON(
+  hrisListTimeOffRequestsRequest: HrisListTimeOffRequestsRequest,
+): string {
+  return JSON.stringify(
+    HrisListTimeOffRequestsRequest$outboundSchema.parse(
+      hrisListTimeOffRequestsRequest,
+    ),
+  );
+}
+
+export function hrisListTimeOffRequestsRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<HrisListTimeOffRequestsRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => HrisListTimeOffRequestsRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HrisListTimeOffRequestsRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const HrisListTimeOffRequestsResponse$inboundSchema: z.ZodType<
   HrisListTimeOffRequestsResponse,
@@ -259,4 +316,24 @@ export namespace HrisListTimeOffRequestsResponse$ {
   export const outboundSchema = HrisListTimeOffRequestsResponse$outboundSchema;
   /** @deprecated use `HrisListTimeOffRequestsResponse$Outbound` instead. */
   export type Outbound = HrisListTimeOffRequestsResponse$Outbound;
+}
+
+export function hrisListTimeOffRequestsResponseToJSON(
+  hrisListTimeOffRequestsResponse: HrisListTimeOffRequestsResponse,
+): string {
+  return JSON.stringify(
+    HrisListTimeOffRequestsResponse$outboundSchema.parse(
+      hrisListTimeOffRequestsResponse,
+    ),
+  );
+}
+
+export function hrisListTimeOffRequestsResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<HrisListTimeOffRequestsResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => HrisListTimeOffRequestsResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HrisListTimeOffRequestsResponse' from JSON`,
+  );
 }

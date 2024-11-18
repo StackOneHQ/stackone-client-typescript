@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type HRISCostCenter4 = {};
 
@@ -114,6 +117,22 @@ export namespace HRISCostCenter4$ {
   export type Outbound = HRISCostCenter4$Outbound;
 }
 
+export function hrisCostCenter4ToJSON(
+  hrisCostCenter4: HRISCostCenter4,
+): string {
+  return JSON.stringify(HRISCostCenter4$outboundSchema.parse(hrisCostCenter4));
+}
+
+export function hrisCostCenter4FromJSON(
+  jsonString: string,
+): SafeParseResult<HRISCostCenter4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => HRISCostCenter4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HRISCostCenter4' from JSON`,
+  );
+}
+
 /** @internal */
 export const HRISCostCenterSourceValue$inboundSchema: z.ZodType<
   HRISCostCenterSourceValue,
@@ -159,6 +178,24 @@ export namespace HRISCostCenterSourceValue$ {
   export const outboundSchema = HRISCostCenterSourceValue$outboundSchema;
   /** @deprecated use `HRISCostCenterSourceValue$Outbound` instead. */
   export type Outbound = HRISCostCenterSourceValue$Outbound;
+}
+
+export function hrisCostCenterSourceValueToJSON(
+  hrisCostCenterSourceValue: HRISCostCenterSourceValue,
+): string {
+  return JSON.stringify(
+    HRISCostCenterSourceValue$outboundSchema.parse(hrisCostCenterSourceValue),
+  );
+}
+
+export function hrisCostCenterSourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<HRISCostCenterSourceValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => HRISCostCenterSourceValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HRISCostCenterSourceValue' from JSON`,
+  );
 }
 
 /** @internal */
@@ -263,6 +300,24 @@ export namespace HRISCostCenterType$ {
   export type Outbound = HRISCostCenterType$Outbound;
 }
 
+export function hrisCostCenterTypeToJSON(
+  hrisCostCenterType: HRISCostCenterType,
+): string {
+  return JSON.stringify(
+    HRISCostCenterType$outboundSchema.parse(hrisCostCenterType),
+  );
+}
+
+export function hrisCostCenterTypeFromJSON(
+  jsonString: string,
+): SafeParseResult<HRISCostCenterType, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => HRISCostCenterType$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HRISCostCenterType' from JSON`,
+  );
+}
+
 /** @internal */
 export const HRISCostCenter$inboundSchema: z.ZodType<
   HRISCostCenter,
@@ -339,4 +394,18 @@ export namespace HRISCostCenter$ {
   export const outboundSchema = HRISCostCenter$outboundSchema;
   /** @deprecated use `HRISCostCenter$Outbound` instead. */
   export type Outbound = HRISCostCenter$Outbound;
+}
+
+export function hrisCostCenterToJSON(hrisCostCenter: HRISCostCenter): string {
+  return JSON.stringify(HRISCostCenter$outboundSchema.parse(hrisCostCenter));
+}
+
+export function hrisCostCenterFromJSON(
+  jsonString: string,
+): SafeParseResult<HRISCostCenter, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => HRISCostCenter$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HRISCostCenter' from JSON`,
+  );
 }

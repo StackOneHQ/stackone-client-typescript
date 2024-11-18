@@ -92,6 +92,9 @@ export async function marketingGetEmailTemplate(
   const context = {
     operationID: "marketing_get_email_template",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.security,
     retryConfig: options?.retries
       || client._options.retryConfig

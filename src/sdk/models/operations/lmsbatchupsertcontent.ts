@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type LmsBatchUpsertContentRequest = {
@@ -85,6 +88,26 @@ export namespace LmsBatchUpsertContentRequest$ {
   export type Outbound = LmsBatchUpsertContentRequest$Outbound;
 }
 
+export function lmsBatchUpsertContentRequestToJSON(
+  lmsBatchUpsertContentRequest: LmsBatchUpsertContentRequest,
+): string {
+  return JSON.stringify(
+    LmsBatchUpsertContentRequest$outboundSchema.parse(
+      lmsBatchUpsertContentRequest,
+    ),
+  );
+}
+
+export function lmsBatchUpsertContentRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<LmsBatchUpsertContentRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LmsBatchUpsertContentRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LmsBatchUpsertContentRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const LmsBatchUpsertContentResponse$inboundSchema: z.ZodType<
   LmsBatchUpsertContentResponse,
@@ -144,4 +167,24 @@ export namespace LmsBatchUpsertContentResponse$ {
   export const outboundSchema = LmsBatchUpsertContentResponse$outboundSchema;
   /** @deprecated use `LmsBatchUpsertContentResponse$Outbound` instead. */
   export type Outbound = LmsBatchUpsertContentResponse$Outbound;
+}
+
+export function lmsBatchUpsertContentResponseToJSON(
+  lmsBatchUpsertContentResponse: LmsBatchUpsertContentResponse,
+): string {
+  return JSON.stringify(
+    LmsBatchUpsertContentResponse$outboundSchema.parse(
+      lmsBatchUpsertContentResponse,
+    ),
+  );
+}
+
+export function lmsBatchUpsertContentResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<LmsBatchUpsertContentResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LmsBatchUpsertContentResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LmsBatchUpsertContentResponse' from JSON`,
+  );
 }

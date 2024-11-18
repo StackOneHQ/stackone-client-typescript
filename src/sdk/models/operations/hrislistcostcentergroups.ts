@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 /**
@@ -124,6 +127,33 @@ export namespace HrisListCostCenterGroupsQueryParamFilter$ {
   export type Outbound = HrisListCostCenterGroupsQueryParamFilter$Outbound;
 }
 
+export function hrisListCostCenterGroupsQueryParamFilterToJSON(
+  hrisListCostCenterGroupsQueryParamFilter:
+    HrisListCostCenterGroupsQueryParamFilter,
+): string {
+  return JSON.stringify(
+    HrisListCostCenterGroupsQueryParamFilter$outboundSchema.parse(
+      hrisListCostCenterGroupsQueryParamFilter,
+    ),
+  );
+}
+
+export function hrisListCostCenterGroupsQueryParamFilterFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  HrisListCostCenterGroupsQueryParamFilter,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      HrisListCostCenterGroupsQueryParamFilter$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'HrisListCostCenterGroupsQueryParamFilter' from JSON`,
+  );
+}
+
 /** @internal */
 export const HrisListCostCenterGroupsRequest$inboundSchema: z.ZodType<
   HrisListCostCenterGroupsRequest,
@@ -200,6 +230,26 @@ export namespace HrisListCostCenterGroupsRequest$ {
   export type Outbound = HrisListCostCenterGroupsRequest$Outbound;
 }
 
+export function hrisListCostCenterGroupsRequestToJSON(
+  hrisListCostCenterGroupsRequest: HrisListCostCenterGroupsRequest,
+): string {
+  return JSON.stringify(
+    HrisListCostCenterGroupsRequest$outboundSchema.parse(
+      hrisListCostCenterGroupsRequest,
+    ),
+  );
+}
+
+export function hrisListCostCenterGroupsRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<HrisListCostCenterGroupsRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => HrisListCostCenterGroupsRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HrisListCostCenterGroupsRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const HrisListCostCenterGroupsResponse$inboundSchema: z.ZodType<
   HrisListCostCenterGroupsResponse,
@@ -261,4 +311,24 @@ export namespace HrisListCostCenterGroupsResponse$ {
   export const outboundSchema = HrisListCostCenterGroupsResponse$outboundSchema;
   /** @deprecated use `HrisListCostCenterGroupsResponse$Outbound` instead. */
   export type Outbound = HrisListCostCenterGroupsResponse$Outbound;
+}
+
+export function hrisListCostCenterGroupsResponseToJSON(
+  hrisListCostCenterGroupsResponse: HrisListCostCenterGroupsResponse,
+): string {
+  return JSON.stringify(
+    HrisListCostCenterGroupsResponse$outboundSchema.parse(
+      hrisListCostCenterGroupsResponse,
+    ),
+  );
+}
+
+export function hrisListCostCenterGroupsResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<HrisListCostCenterGroupsResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => HrisListCostCenterGroupsResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HrisListCostCenterGroupsResponse' from JSON`,
+  );
 }

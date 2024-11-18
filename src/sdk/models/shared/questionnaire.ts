@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   Answer,
   Answer$inboundSchema,
@@ -71,4 +74,18 @@ export namespace Questionnaire$ {
   export const outboundSchema = Questionnaire$outboundSchema;
   /** @deprecated use `Questionnaire$Outbound` instead. */
   export type Outbound = Questionnaire$Outbound;
+}
+
+export function questionnaireToJSON(questionnaire: Questionnaire): string {
+  return JSON.stringify(Questionnaire$outboundSchema.parse(questionnaire));
+}
+
+export function questionnaireFromJSON(
+  jsonString: string,
+): SafeParseResult<Questionnaire, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Questionnaire$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Questionnaire' from JSON`,
+  );
 }

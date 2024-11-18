@@ -4,12 +4,19 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 /**
  * HRIS Employees filters
  */
 export type HrisListEmployeesQueryParamFilter = {
+  /**
+   * Filter to select employees by email
+   */
+  email?: string | null | undefined;
   /**
    * Filter to select employees by employee_number
    */
@@ -96,6 +103,7 @@ export const HrisListEmployeesQueryParamFilter$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  email: z.nullable(z.string()).optional(),
   employee_number: z.nullable(z.string()).optional(),
   updated_after: z.nullable(z.string()).optional(),
 }).transform((v) => {
@@ -107,6 +115,7 @@ export const HrisListEmployeesQueryParamFilter$inboundSchema: z.ZodType<
 
 /** @internal */
 export type HrisListEmployeesQueryParamFilter$Outbound = {
+  email?: string | null | undefined;
   employee_number?: string | null | undefined;
   updated_after?: string | null | undefined;
 };
@@ -117,6 +126,7 @@ export const HrisListEmployeesQueryParamFilter$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   HrisListEmployeesQueryParamFilter
 > = z.object({
+  email: z.nullable(z.string()).optional(),
   employeeNumber: z.nullable(z.string()).optional(),
   updatedAfter: z.nullable(z.string()).optional(),
 }).transform((v) => {
@@ -138,6 +148,26 @@ export namespace HrisListEmployeesQueryParamFilter$ {
     HrisListEmployeesQueryParamFilter$outboundSchema;
   /** @deprecated use `HrisListEmployeesQueryParamFilter$Outbound` instead. */
   export type Outbound = HrisListEmployeesQueryParamFilter$Outbound;
+}
+
+export function hrisListEmployeesQueryParamFilterToJSON(
+  hrisListEmployeesQueryParamFilter: HrisListEmployeesQueryParamFilter,
+): string {
+  return JSON.stringify(
+    HrisListEmployeesQueryParamFilter$outboundSchema.parse(
+      hrisListEmployeesQueryParamFilter,
+    ),
+  );
+}
+
+export function hrisListEmployeesQueryParamFilterFromJSON(
+  jsonString: string,
+): SafeParseResult<HrisListEmployeesQueryParamFilter, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => HrisListEmployeesQueryParamFilter$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HrisListEmployeesQueryParamFilter' from JSON`,
+  );
 }
 
 /** @internal */
@@ -222,6 +252,24 @@ export namespace HrisListEmployeesRequest$ {
   export type Outbound = HrisListEmployeesRequest$Outbound;
 }
 
+export function hrisListEmployeesRequestToJSON(
+  hrisListEmployeesRequest: HrisListEmployeesRequest,
+): string {
+  return JSON.stringify(
+    HrisListEmployeesRequest$outboundSchema.parse(hrisListEmployeesRequest),
+  );
+}
+
+export function hrisListEmployeesRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<HrisListEmployeesRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => HrisListEmployeesRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HrisListEmployeesRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const HrisListEmployeesResponse$inboundSchema: z.ZodType<
   HrisListEmployeesResponse,
@@ -281,4 +329,22 @@ export namespace HrisListEmployeesResponse$ {
   export const outboundSchema = HrisListEmployeesResponse$outboundSchema;
   /** @deprecated use `HrisListEmployeesResponse$Outbound` instead. */
   export type Outbound = HrisListEmployeesResponse$Outbound;
+}
+
+export function hrisListEmployeesResponseToJSON(
+  hrisListEmployeesResponse: HrisListEmployeesResponse,
+): string {
+  return JSON.stringify(
+    HrisListEmployeesResponse$outboundSchema.parse(hrisListEmployeesResponse),
+  );
+}
+
+export function hrisListEmployeesResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<HrisListEmployeesResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => HrisListEmployeesResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HrisListEmployeesResponse' from JSON`,
+  );
 }

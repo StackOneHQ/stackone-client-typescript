@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type IamGetPolicyRequest = {
@@ -108,6 +111,24 @@ export namespace IamGetPolicyRequest$ {
   export type Outbound = IamGetPolicyRequest$Outbound;
 }
 
+export function iamGetPolicyRequestToJSON(
+  iamGetPolicyRequest: IamGetPolicyRequest,
+): string {
+  return JSON.stringify(
+    IamGetPolicyRequest$outboundSchema.parse(iamGetPolicyRequest),
+  );
+}
+
+export function iamGetPolicyRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<IamGetPolicyRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => IamGetPolicyRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'IamGetPolicyRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const IamGetPolicyResponse$inboundSchema: z.ZodType<
   IamGetPolicyResponse,
@@ -167,4 +188,22 @@ export namespace IamGetPolicyResponse$ {
   export const outboundSchema = IamGetPolicyResponse$outboundSchema;
   /** @deprecated use `IamGetPolicyResponse$Outbound` instead. */
   export type Outbound = IamGetPolicyResponse$Outbound;
+}
+
+export function iamGetPolicyResponseToJSON(
+  iamGetPolicyResponse: IamGetPolicyResponse,
+): string {
+  return JSON.stringify(
+    IamGetPolicyResponse$outboundSchema.parse(iamGetPolicyResponse),
+  );
+}
+
+export function iamGetPolicyResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<IamGetPolicyResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => IamGetPolicyResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'IamGetPolicyResponse' from JSON`,
+  );
 }

@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 /**
@@ -122,6 +125,26 @@ export namespace HrisListGroupsQueryParamFilter$ {
   export type Outbound = HrisListGroupsQueryParamFilter$Outbound;
 }
 
+export function hrisListGroupsQueryParamFilterToJSON(
+  hrisListGroupsQueryParamFilter: HrisListGroupsQueryParamFilter,
+): string {
+  return JSON.stringify(
+    HrisListGroupsQueryParamFilter$outboundSchema.parse(
+      hrisListGroupsQueryParamFilter,
+    ),
+  );
+}
+
+export function hrisListGroupsQueryParamFilterFromJSON(
+  jsonString: string,
+): SafeParseResult<HrisListGroupsQueryParamFilter, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => HrisListGroupsQueryParamFilter$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HrisListGroupsQueryParamFilter' from JSON`,
+  );
+}
+
 /** @internal */
 export const HrisListGroupsRequest$inboundSchema: z.ZodType<
   HrisListGroupsRequest,
@@ -197,6 +220,24 @@ export namespace HrisListGroupsRequest$ {
   export type Outbound = HrisListGroupsRequest$Outbound;
 }
 
+export function hrisListGroupsRequestToJSON(
+  hrisListGroupsRequest: HrisListGroupsRequest,
+): string {
+  return JSON.stringify(
+    HrisListGroupsRequest$outboundSchema.parse(hrisListGroupsRequest),
+  );
+}
+
+export function hrisListGroupsRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<HrisListGroupsRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => HrisListGroupsRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HrisListGroupsRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const HrisListGroupsResponse$inboundSchema: z.ZodType<
   HrisListGroupsResponse,
@@ -256,4 +297,22 @@ export namespace HrisListGroupsResponse$ {
   export const outboundSchema = HrisListGroupsResponse$outboundSchema;
   /** @deprecated use `HrisListGroupsResponse$Outbound` instead. */
   export type Outbound = HrisListGroupsResponse$Outbound;
+}
+
+export function hrisListGroupsResponseToJSON(
+  hrisListGroupsResponse: HrisListGroupsResponse,
+): string {
+  return JSON.stringify(
+    HrisListGroupsResponse$outboundSchema.parse(hrisListGroupsResponse),
+  );
+}
+
+export function hrisListGroupsResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<HrisListGroupsResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => HrisListGroupsResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HrisListGroupsResponse' from JSON`,
+  );
 }

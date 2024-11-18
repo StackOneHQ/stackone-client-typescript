@@ -31,7 +31,6 @@ let value: LmsBatchUpsertCourseRequestDto = {
         "16873-SOFTWARE-ENG-Content",
       ],
       coverUrl: "https://www.googledrive.com/?v=16873",
-      createdAt: "2021-07-21T14:00:00.000Z",
       description:
         "This course acts as learning content for software engineers.",
       duration: "P3Y6M4DT12H30M5S",
@@ -53,7 +52,6 @@ let value: LmsBatchUpsertCourseRequestDto = {
         "my_project_custom_field_1": "REF-1236",
         "my_project_custom_field_2": "some other value",
       },
-      updatedAt: "2021-07-21T14:00:00.000Z",
       url: "https://www.linkedinlearning.com/?v=16873",
     },
   ],

@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type Interviewer = {
   email?: string | null | undefined;
@@ -81,4 +84,18 @@ export namespace Interviewer$ {
   export const outboundSchema = Interviewer$outboundSchema;
   /** @deprecated use `Interviewer$Outbound` instead. */
   export type Outbound = Interviewer$Outbound;
+}
+
+export function interviewerToJSON(interviewer: Interviewer): string {
+  return JSON.stringify(Interviewer$outboundSchema.parse(interviewer));
+}
+
+export function interviewerFromJSON(
+  jsonString: string,
+): SafeParseResult<Interviewer, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Interviewer$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Interviewer' from JSON`,
+  );
 }

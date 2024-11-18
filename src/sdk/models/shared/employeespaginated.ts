@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   Employee,
   Employee$inboundSchema,
@@ -78,4 +81,22 @@ export namespace EmployeesPaginated$ {
   export const outboundSchema = EmployeesPaginated$outboundSchema;
   /** @deprecated use `EmployeesPaginated$Outbound` instead. */
   export type Outbound = EmployeesPaginated$Outbound;
+}
+
+export function employeesPaginatedToJSON(
+  employeesPaginated: EmployeesPaginated,
+): string {
+  return JSON.stringify(
+    EmployeesPaginated$outboundSchema.parse(employeesPaginated),
+  );
+}
+
+export function employeesPaginatedFromJSON(
+  jsonString: string,
+): SafeParseResult<EmployeesPaginated, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => EmployeesPaginated$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'EmployeesPaginated' from JSON`,
+  );
 }

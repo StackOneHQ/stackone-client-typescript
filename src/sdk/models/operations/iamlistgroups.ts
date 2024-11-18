@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 /**
@@ -126,6 +129,26 @@ export namespace IamListGroupsQueryParamFilter$ {
   export type Outbound = IamListGroupsQueryParamFilter$Outbound;
 }
 
+export function iamListGroupsQueryParamFilterToJSON(
+  iamListGroupsQueryParamFilter: IamListGroupsQueryParamFilter,
+): string {
+  return JSON.stringify(
+    IamListGroupsQueryParamFilter$outboundSchema.parse(
+      iamListGroupsQueryParamFilter,
+    ),
+  );
+}
+
+export function iamListGroupsQueryParamFilterFromJSON(
+  jsonString: string,
+): SafeParseResult<IamListGroupsQueryParamFilter, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => IamListGroupsQueryParamFilter$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'IamListGroupsQueryParamFilter' from JSON`,
+  );
+}
+
 /** @internal */
 export const IamListGroupsRequest$inboundSchema: z.ZodType<
   IamListGroupsRequest,
@@ -203,6 +226,24 @@ export namespace IamListGroupsRequest$ {
   export type Outbound = IamListGroupsRequest$Outbound;
 }
 
+export function iamListGroupsRequestToJSON(
+  iamListGroupsRequest: IamListGroupsRequest,
+): string {
+  return JSON.stringify(
+    IamListGroupsRequest$outboundSchema.parse(iamListGroupsRequest),
+  );
+}
+
+export function iamListGroupsRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<IamListGroupsRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => IamListGroupsRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'IamListGroupsRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const IamListGroupsResponse$inboundSchema: z.ZodType<
   IamListGroupsResponse,
@@ -262,4 +303,22 @@ export namespace IamListGroupsResponse$ {
   export const outboundSchema = IamListGroupsResponse$outboundSchema;
   /** @deprecated use `IamListGroupsResponse$Outbound` instead. */
   export type Outbound = IamListGroupsResponse$Outbound;
+}
+
+export function iamListGroupsResponseToJSON(
+  iamListGroupsResponse: IamListGroupsResponse,
+): string {
+  return JSON.stringify(
+    IamListGroupsResponse$outboundSchema.parse(iamListGroupsResponse),
+  );
+}
+
+export function iamListGroupsResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<IamListGroupsResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => IamListGroupsResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'IamListGroupsResponse' from JSON`,
+  );
 }

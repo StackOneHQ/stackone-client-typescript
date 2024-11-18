@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type HrisCreateEmploymentRequestDto4 = {};
 
@@ -320,6 +323,26 @@ export namespace HrisCreateEmploymentRequestDto4$ {
   export type Outbound = HrisCreateEmploymentRequestDto4$Outbound;
 }
 
+export function hrisCreateEmploymentRequestDto4ToJSON(
+  hrisCreateEmploymentRequestDto4: HrisCreateEmploymentRequestDto4,
+): string {
+  return JSON.stringify(
+    HrisCreateEmploymentRequestDto4$outboundSchema.parse(
+      hrisCreateEmploymentRequestDto4,
+    ),
+  );
+}
+
+export function hrisCreateEmploymentRequestDto4FromJSON(
+  jsonString: string,
+): SafeParseResult<HrisCreateEmploymentRequestDto4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => HrisCreateEmploymentRequestDto4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HrisCreateEmploymentRequestDto4' from JSON`,
+  );
+}
+
 /** @internal */
 export const HrisCreateEmploymentRequestDtoSourceValue$inboundSchema: z.ZodType<
   HrisCreateEmploymentRequestDtoSourceValue,
@@ -368,6 +391,33 @@ export namespace HrisCreateEmploymentRequestDtoSourceValue$ {
     HrisCreateEmploymentRequestDtoSourceValue$outboundSchema;
   /** @deprecated use `HrisCreateEmploymentRequestDtoSourceValue$Outbound` instead. */
   export type Outbound = HrisCreateEmploymentRequestDtoSourceValue$Outbound;
+}
+
+export function hrisCreateEmploymentRequestDtoSourceValueToJSON(
+  hrisCreateEmploymentRequestDtoSourceValue:
+    HrisCreateEmploymentRequestDtoSourceValue,
+): string {
+  return JSON.stringify(
+    HrisCreateEmploymentRequestDtoSourceValue$outboundSchema.parse(
+      hrisCreateEmploymentRequestDtoSourceValue,
+    ),
+  );
+}
+
+export function hrisCreateEmploymentRequestDtoSourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  HrisCreateEmploymentRequestDtoSourceValue,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      HrisCreateEmploymentRequestDtoSourceValue$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'HrisCreateEmploymentRequestDtoSourceValue' from JSON`,
+  );
 }
 
 /** @internal */
@@ -481,6 +531,33 @@ export namespace HrisCreateEmploymentRequestDtoEmploymentContractType$ {
     HrisCreateEmploymentRequestDtoEmploymentContractType$Outbound;
 }
 
+export function hrisCreateEmploymentRequestDtoEmploymentContractTypeToJSON(
+  hrisCreateEmploymentRequestDtoEmploymentContractType:
+    HrisCreateEmploymentRequestDtoEmploymentContractType,
+): string {
+  return JSON.stringify(
+    HrisCreateEmploymentRequestDtoEmploymentContractType$outboundSchema.parse(
+      hrisCreateEmploymentRequestDtoEmploymentContractType,
+    ),
+  );
+}
+
+export function hrisCreateEmploymentRequestDtoEmploymentContractTypeFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  HrisCreateEmploymentRequestDtoEmploymentContractType,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      HrisCreateEmploymentRequestDtoEmploymentContractType$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'HrisCreateEmploymentRequestDtoEmploymentContractType' from JSON`,
+  );
+}
+
 /** @internal */
 export const HrisCreateEmploymentRequestDtoSchemas4$inboundSchema: z.ZodType<
   HrisCreateEmploymentRequestDtoSchemas4,
@@ -511,6 +588,28 @@ export namespace HrisCreateEmploymentRequestDtoSchemas4$ {
     HrisCreateEmploymentRequestDtoSchemas4$outboundSchema;
   /** @deprecated use `HrisCreateEmploymentRequestDtoSchemas4$Outbound` instead. */
   export type Outbound = HrisCreateEmploymentRequestDtoSchemas4$Outbound;
+}
+
+export function hrisCreateEmploymentRequestDtoSchemas4ToJSON(
+  hrisCreateEmploymentRequestDtoSchemas4:
+    HrisCreateEmploymentRequestDtoSchemas4,
+): string {
+  return JSON.stringify(
+    HrisCreateEmploymentRequestDtoSchemas4$outboundSchema.parse(
+      hrisCreateEmploymentRequestDtoSchemas4,
+    ),
+  );
+}
+
+export function hrisCreateEmploymentRequestDtoSchemas4FromJSON(
+  jsonString: string,
+): SafeParseResult<HrisCreateEmploymentRequestDtoSchemas4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      HrisCreateEmploymentRequestDtoSchemas4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HrisCreateEmploymentRequestDtoSchemas4' from JSON`,
+  );
 }
 
 /** @internal */
@@ -563,6 +662,33 @@ export namespace HrisCreateEmploymentRequestDtoSchemasSourceValue$ {
   /** @deprecated use `HrisCreateEmploymentRequestDtoSchemasSourceValue$Outbound` instead. */
   export type Outbound =
     HrisCreateEmploymentRequestDtoSchemasSourceValue$Outbound;
+}
+
+export function hrisCreateEmploymentRequestDtoSchemasSourceValueToJSON(
+  hrisCreateEmploymentRequestDtoSchemasSourceValue:
+    HrisCreateEmploymentRequestDtoSchemasSourceValue,
+): string {
+  return JSON.stringify(
+    HrisCreateEmploymentRequestDtoSchemasSourceValue$outboundSchema.parse(
+      hrisCreateEmploymentRequestDtoSchemasSourceValue,
+    ),
+  );
+}
+
+export function hrisCreateEmploymentRequestDtoSchemasSourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  HrisCreateEmploymentRequestDtoSchemasSourceValue,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      HrisCreateEmploymentRequestDtoSchemasSourceValue$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'HrisCreateEmploymentRequestDtoSchemasSourceValue' from JSON`,
+  );
 }
 
 /** @internal */
@@ -677,6 +803,33 @@ export namespace HrisCreateEmploymentRequestDtoEmploymentType$ {
   export type Outbound = HrisCreateEmploymentRequestDtoEmploymentType$Outbound;
 }
 
+export function hrisCreateEmploymentRequestDtoEmploymentTypeToJSON(
+  hrisCreateEmploymentRequestDtoEmploymentType:
+    HrisCreateEmploymentRequestDtoEmploymentType,
+): string {
+  return JSON.stringify(
+    HrisCreateEmploymentRequestDtoEmploymentType$outboundSchema.parse(
+      hrisCreateEmploymentRequestDtoEmploymentType,
+    ),
+  );
+}
+
+export function hrisCreateEmploymentRequestDtoEmploymentTypeFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  HrisCreateEmploymentRequestDtoEmploymentType,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      HrisCreateEmploymentRequestDtoEmploymentType$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'HrisCreateEmploymentRequestDtoEmploymentType' from JSON`,
+  );
+}
+
 /** @internal */
 export const HrisCreateEmploymentRequestDtoSchemasPayFrequency4$inboundSchema:
   z.ZodType<
@@ -710,6 +863,33 @@ export namespace HrisCreateEmploymentRequestDtoSchemasPayFrequency4$ {
   /** @deprecated use `HrisCreateEmploymentRequestDtoSchemasPayFrequency4$Outbound` instead. */
   export type Outbound =
     HrisCreateEmploymentRequestDtoSchemasPayFrequency4$Outbound;
+}
+
+export function hrisCreateEmploymentRequestDtoSchemasPayFrequency4ToJSON(
+  hrisCreateEmploymentRequestDtoSchemasPayFrequency4:
+    HrisCreateEmploymentRequestDtoSchemasPayFrequency4,
+): string {
+  return JSON.stringify(
+    HrisCreateEmploymentRequestDtoSchemasPayFrequency4$outboundSchema.parse(
+      hrisCreateEmploymentRequestDtoSchemasPayFrequency4,
+    ),
+  );
+}
+
+export function hrisCreateEmploymentRequestDtoSchemasPayFrequency4FromJSON(
+  jsonString: string,
+): SafeParseResult<
+  HrisCreateEmploymentRequestDtoSchemasPayFrequency4,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      HrisCreateEmploymentRequestDtoSchemasPayFrequency4$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'HrisCreateEmploymentRequestDtoSchemasPayFrequency4' from JSON`,
+  );
 }
 
 /** @internal */
@@ -766,6 +946,31 @@ export namespace HrisCreateEmploymentRequestDtoSchemasPayFrequencySourceValue$ {
   /** @deprecated use `HrisCreateEmploymentRequestDtoSchemasPayFrequencySourceValue$Outbound` instead. */
   export type Outbound =
     HrisCreateEmploymentRequestDtoSchemasPayFrequencySourceValue$Outbound;
+}
+
+export function hrisCreateEmploymentRequestDtoSchemasPayFrequencySourceValueToJSON(
+  hrisCreateEmploymentRequestDtoSchemasPayFrequencySourceValue:
+    HrisCreateEmploymentRequestDtoSchemasPayFrequencySourceValue,
+): string {
+  return JSON.stringify(
+    HrisCreateEmploymentRequestDtoSchemasPayFrequencySourceValue$outboundSchema
+      .parse(hrisCreateEmploymentRequestDtoSchemasPayFrequencySourceValue),
+  );
+}
+
+export function hrisCreateEmploymentRequestDtoSchemasPayFrequencySourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  HrisCreateEmploymentRequestDtoSchemasPayFrequencySourceValue,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      HrisCreateEmploymentRequestDtoSchemasPayFrequencySourceValue$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'HrisCreateEmploymentRequestDtoSchemasPayFrequencySourceValue' from JSON`,
+  );
 }
 
 /** @internal */
@@ -883,6 +1088,33 @@ export namespace HrisCreateEmploymentRequestDtoPayFrequency$ {
   export type Outbound = HrisCreateEmploymentRequestDtoPayFrequency$Outbound;
 }
 
+export function hrisCreateEmploymentRequestDtoPayFrequencyToJSON(
+  hrisCreateEmploymentRequestDtoPayFrequency:
+    HrisCreateEmploymentRequestDtoPayFrequency,
+): string {
+  return JSON.stringify(
+    HrisCreateEmploymentRequestDtoPayFrequency$outboundSchema.parse(
+      hrisCreateEmploymentRequestDtoPayFrequency,
+    ),
+  );
+}
+
+export function hrisCreateEmploymentRequestDtoPayFrequencyFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  HrisCreateEmploymentRequestDtoPayFrequency,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      HrisCreateEmploymentRequestDtoPayFrequency$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'HrisCreateEmploymentRequestDtoPayFrequency' from JSON`,
+  );
+}
+
 /** @internal */
 export const HrisCreateEmploymentRequestDtoSchemasPayPeriod4$inboundSchema:
   z.ZodType<
@@ -916,6 +1148,33 @@ export namespace HrisCreateEmploymentRequestDtoSchemasPayPeriod4$ {
   /** @deprecated use `HrisCreateEmploymentRequestDtoSchemasPayPeriod4$Outbound` instead. */
   export type Outbound =
     HrisCreateEmploymentRequestDtoSchemasPayPeriod4$Outbound;
+}
+
+export function hrisCreateEmploymentRequestDtoSchemasPayPeriod4ToJSON(
+  hrisCreateEmploymentRequestDtoSchemasPayPeriod4:
+    HrisCreateEmploymentRequestDtoSchemasPayPeriod4,
+): string {
+  return JSON.stringify(
+    HrisCreateEmploymentRequestDtoSchemasPayPeriod4$outboundSchema.parse(
+      hrisCreateEmploymentRequestDtoSchemasPayPeriod4,
+    ),
+  );
+}
+
+export function hrisCreateEmploymentRequestDtoSchemasPayPeriod4FromJSON(
+  jsonString: string,
+): SafeParseResult<
+  HrisCreateEmploymentRequestDtoSchemasPayPeriod4,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      HrisCreateEmploymentRequestDtoSchemasPayPeriod4$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'HrisCreateEmploymentRequestDtoSchemasPayPeriod4' from JSON`,
+  );
 }
 
 /** @internal */
@@ -970,6 +1229,31 @@ export namespace HrisCreateEmploymentRequestDtoSchemasPayPeriodSourceValue$ {
   /** @deprecated use `HrisCreateEmploymentRequestDtoSchemasPayPeriodSourceValue$Outbound` instead. */
   export type Outbound =
     HrisCreateEmploymentRequestDtoSchemasPayPeriodSourceValue$Outbound;
+}
+
+export function hrisCreateEmploymentRequestDtoSchemasPayPeriodSourceValueToJSON(
+  hrisCreateEmploymentRequestDtoSchemasPayPeriodSourceValue:
+    HrisCreateEmploymentRequestDtoSchemasPayPeriodSourceValue,
+): string {
+  return JSON.stringify(
+    HrisCreateEmploymentRequestDtoSchemasPayPeriodSourceValue$outboundSchema
+      .parse(hrisCreateEmploymentRequestDtoSchemasPayPeriodSourceValue),
+  );
+}
+
+export function hrisCreateEmploymentRequestDtoSchemasPayPeriodSourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  HrisCreateEmploymentRequestDtoSchemasPayPeriodSourceValue,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      HrisCreateEmploymentRequestDtoSchemasPayPeriodSourceValue$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'HrisCreateEmploymentRequestDtoSchemasPayPeriodSourceValue' from JSON`,
+  );
 }
 
 /** @internal */
@@ -1086,6 +1370,33 @@ export namespace HrisCreateEmploymentRequestDtoPayPeriod$ {
     HrisCreateEmploymentRequestDtoPayPeriod$outboundSchema;
   /** @deprecated use `HrisCreateEmploymentRequestDtoPayPeriod$Outbound` instead. */
   export type Outbound = HrisCreateEmploymentRequestDtoPayPeriod$Outbound;
+}
+
+export function hrisCreateEmploymentRequestDtoPayPeriodToJSON(
+  hrisCreateEmploymentRequestDtoPayPeriod:
+    HrisCreateEmploymentRequestDtoPayPeriod,
+): string {
+  return JSON.stringify(
+    HrisCreateEmploymentRequestDtoPayPeriod$outboundSchema.parse(
+      hrisCreateEmploymentRequestDtoPayPeriod,
+    ),
+  );
+}
+
+export function hrisCreateEmploymentRequestDtoPayPeriodFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  HrisCreateEmploymentRequestDtoPayPeriod,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      HrisCreateEmploymentRequestDtoPayPeriod$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'HrisCreateEmploymentRequestDtoPayPeriod' from JSON`,
+  );
 }
 
 /** @internal */
@@ -1221,4 +1532,24 @@ export namespace HrisCreateEmploymentRequestDto$ {
   export const outboundSchema = HrisCreateEmploymentRequestDto$outboundSchema;
   /** @deprecated use `HrisCreateEmploymentRequestDto$Outbound` instead. */
   export type Outbound = HrisCreateEmploymentRequestDto$Outbound;
+}
+
+export function hrisCreateEmploymentRequestDtoToJSON(
+  hrisCreateEmploymentRequestDto: HrisCreateEmploymentRequestDto,
+): string {
+  return JSON.stringify(
+    HrisCreateEmploymentRequestDto$outboundSchema.parse(
+      hrisCreateEmploymentRequestDto,
+    ),
+  );
+}
+
+export function hrisCreateEmploymentRequestDtoFromJSON(
+  jsonString: string,
+): SafeParseResult<HrisCreateEmploymentRequestDto, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => HrisCreateEmploymentRequestDto$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HrisCreateEmploymentRequestDto' from JSON`,
+  );
 }

@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type HrisGetBenefitRequest = {
@@ -101,6 +104,24 @@ export namespace HrisGetBenefitRequest$ {
   export type Outbound = HrisGetBenefitRequest$Outbound;
 }
 
+export function hrisGetBenefitRequestToJSON(
+  hrisGetBenefitRequest: HrisGetBenefitRequest,
+): string {
+  return JSON.stringify(
+    HrisGetBenefitRequest$outboundSchema.parse(hrisGetBenefitRequest),
+  );
+}
+
+export function hrisGetBenefitRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<HrisGetBenefitRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => HrisGetBenefitRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HrisGetBenefitRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const HrisGetBenefitResponse$inboundSchema: z.ZodType<
   HrisGetBenefitResponse,
@@ -160,4 +181,22 @@ export namespace HrisGetBenefitResponse$ {
   export const outboundSchema = HrisGetBenefitResponse$outboundSchema;
   /** @deprecated use `HrisGetBenefitResponse$Outbound` instead. */
   export type Outbound = HrisGetBenefitResponse$Outbound;
+}
+
+export function hrisGetBenefitResponseToJSON(
+  hrisGetBenefitResponse: HrisGetBenefitResponse,
+): string {
+  return JSON.stringify(
+    HrisGetBenefitResponse$outboundSchema.parse(hrisGetBenefitResponse),
+  );
+}
+
+export function hrisGetBenefitResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<HrisGetBenefitResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => HrisGetBenefitResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HrisGetBenefitResponse' from JSON`,
+  );
 }

@@ -90,6 +90,9 @@ export async function atsGetAssessmentsRequest(
   const context = {
     operationID: "ats_get_assessments_request",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.security,
     retryConfig: options?.retries
       || client._options.retryConfig

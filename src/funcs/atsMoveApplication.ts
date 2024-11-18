@@ -77,6 +77,9 @@ export async function atsMoveApplication(
   const context = {
     operationID: "ats_move_application",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.security,
     retryConfig: options?.retries
       || client._options.retryConfig

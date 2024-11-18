@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type LmsCreateCompletionRequestDto4 = {};
 
@@ -49,16 +52,30 @@ export type LmsCreateCompletionRequestDto = {
   completedAt?: string | null | undefined;
   /**
    * The external reference associated with this content
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   contentExternalReference?: string | null | undefined;
   /**
    * The content ID associated with this completion
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   contentId?: string | null | undefined;
   /**
    * The external ID associated with this completion
+   *
+   * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
    */
   externalId?: string | null | undefined;
+  /**
+   * The learning_object_external_reference associated with this assignment
+   */
+  learningObjectExternalReference?: string | null | undefined;
+  /**
+   * The learning_object_id associated with this assignment
+   */
+  learningObjectId?: string | null | undefined;
   /**
    * Value to pass through to the provider
    */
@@ -97,6 +114,26 @@ export namespace LmsCreateCompletionRequestDto4$ {
   export const outboundSchema = LmsCreateCompletionRequestDto4$outboundSchema;
   /** @deprecated use `LmsCreateCompletionRequestDto4$Outbound` instead. */
   export type Outbound = LmsCreateCompletionRequestDto4$Outbound;
+}
+
+export function lmsCreateCompletionRequestDto4ToJSON(
+  lmsCreateCompletionRequestDto4: LmsCreateCompletionRequestDto4,
+): string {
+  return JSON.stringify(
+    LmsCreateCompletionRequestDto4$outboundSchema.parse(
+      lmsCreateCompletionRequestDto4,
+    ),
+  );
+}
+
+export function lmsCreateCompletionRequestDto4FromJSON(
+  jsonString: string,
+): SafeParseResult<LmsCreateCompletionRequestDto4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LmsCreateCompletionRequestDto4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LmsCreateCompletionRequestDto4' from JSON`,
+  );
 }
 
 /** @internal */
@@ -146,6 +183,33 @@ export namespace LmsCreateCompletionRequestDtoSourceValue$ {
     LmsCreateCompletionRequestDtoSourceValue$outboundSchema;
   /** @deprecated use `LmsCreateCompletionRequestDtoSourceValue$Outbound` instead. */
   export type Outbound = LmsCreateCompletionRequestDtoSourceValue$Outbound;
+}
+
+export function lmsCreateCompletionRequestDtoSourceValueToJSON(
+  lmsCreateCompletionRequestDtoSourceValue:
+    LmsCreateCompletionRequestDtoSourceValue,
+): string {
+  return JSON.stringify(
+    LmsCreateCompletionRequestDtoSourceValue$outboundSchema.parse(
+      lmsCreateCompletionRequestDtoSourceValue,
+    ),
+  );
+}
+
+export function lmsCreateCompletionRequestDtoSourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  LmsCreateCompletionRequestDtoSourceValue,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      LmsCreateCompletionRequestDtoSourceValue$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'LmsCreateCompletionRequestDtoSourceValue' from JSON`,
+  );
 }
 
 /** @internal */
@@ -255,6 +319,27 @@ export namespace LmsCreateCompletionRequestDtoResult$ {
   export type Outbound = LmsCreateCompletionRequestDtoResult$Outbound;
 }
 
+export function lmsCreateCompletionRequestDtoResultToJSON(
+  lmsCreateCompletionRequestDtoResult: LmsCreateCompletionRequestDtoResult,
+): string {
+  return JSON.stringify(
+    LmsCreateCompletionRequestDtoResult$outboundSchema.parse(
+      lmsCreateCompletionRequestDtoResult,
+    ),
+  );
+}
+
+export function lmsCreateCompletionRequestDtoResultFromJSON(
+  jsonString: string,
+): SafeParseResult<LmsCreateCompletionRequestDtoResult, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      LmsCreateCompletionRequestDtoResult$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LmsCreateCompletionRequestDtoResult' from JSON`,
+  );
+}
+
 /** @internal */
 export const LmsCreateCompletionRequestDto$inboundSchema: z.ZodType<
   LmsCreateCompletionRequestDto,
@@ -265,6 +350,8 @@ export const LmsCreateCompletionRequestDto$inboundSchema: z.ZodType<
   content_external_reference: z.nullable(z.string()).optional(),
   content_id: z.nullable(z.string()).optional(),
   external_id: z.nullable(z.string()).optional(),
+  learning_object_external_reference: z.nullable(z.string()).optional(),
+  learning_object_id: z.nullable(z.string()).optional(),
   passthrough: z.nullable(z.record(z.any())).optional(),
   result: z.nullable(
     z.lazy(() => LmsCreateCompletionRequestDtoResult$inboundSchema),
@@ -275,6 +362,8 @@ export const LmsCreateCompletionRequestDto$inboundSchema: z.ZodType<
     "content_external_reference": "contentExternalReference",
     "content_id": "contentId",
     "external_id": "externalId",
+    "learning_object_external_reference": "learningObjectExternalReference",
+    "learning_object_id": "learningObjectId",
   });
 });
 
@@ -284,6 +373,8 @@ export type LmsCreateCompletionRequestDto$Outbound = {
   content_external_reference?: string | null | undefined;
   content_id?: string | null | undefined;
   external_id?: string | null | undefined;
+  learning_object_external_reference?: string | null | undefined;
+  learning_object_id?: string | null | undefined;
   passthrough?: { [k: string]: any } | null | undefined;
   result?: LmsCreateCompletionRequestDtoResult$Outbound | null | undefined;
 };
@@ -298,6 +389,8 @@ export const LmsCreateCompletionRequestDto$outboundSchema: z.ZodType<
   contentExternalReference: z.nullable(z.string()).optional(),
   contentId: z.nullable(z.string()).optional(),
   externalId: z.nullable(z.string()).optional(),
+  learningObjectExternalReference: z.nullable(z.string()).optional(),
+  learningObjectId: z.nullable(z.string()).optional(),
   passthrough: z.nullable(z.record(z.any())).optional(),
   result: z.nullable(
     z.lazy(() => LmsCreateCompletionRequestDtoResult$outboundSchema),
@@ -308,6 +401,8 @@ export const LmsCreateCompletionRequestDto$outboundSchema: z.ZodType<
     contentExternalReference: "content_external_reference",
     contentId: "content_id",
     externalId: "external_id",
+    learningObjectExternalReference: "learning_object_external_reference",
+    learningObjectId: "learning_object_id",
   });
 });
 
@@ -322,4 +417,24 @@ export namespace LmsCreateCompletionRequestDto$ {
   export const outboundSchema = LmsCreateCompletionRequestDto$outboundSchema;
   /** @deprecated use `LmsCreateCompletionRequestDto$Outbound` instead. */
   export type Outbound = LmsCreateCompletionRequestDto$Outbound;
+}
+
+export function lmsCreateCompletionRequestDtoToJSON(
+  lmsCreateCompletionRequestDto: LmsCreateCompletionRequestDto,
+): string {
+  return JSON.stringify(
+    LmsCreateCompletionRequestDto$outboundSchema.parse(
+      lmsCreateCompletionRequestDto,
+    ),
+  );
+}
+
+export function lmsCreateCompletionRequestDtoFromJSON(
+  jsonString: string,
+): SafeParseResult<LmsCreateCompletionRequestDto, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LmsCreateCompletionRequestDto$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LmsCreateCompletionRequestDto' from JSON`,
+  );
 }

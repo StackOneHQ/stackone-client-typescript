@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 /**
@@ -129,6 +132,26 @@ export namespace LmsListUsersQueryParamFilter$ {
   export type Outbound = LmsListUsersQueryParamFilter$Outbound;
 }
 
+export function lmsListUsersQueryParamFilterToJSON(
+  lmsListUsersQueryParamFilter: LmsListUsersQueryParamFilter,
+): string {
+  return JSON.stringify(
+    LmsListUsersQueryParamFilter$outboundSchema.parse(
+      lmsListUsersQueryParamFilter,
+    ),
+  );
+}
+
+export function lmsListUsersQueryParamFilterFromJSON(
+  jsonString: string,
+): SafeParseResult<LmsListUsersQueryParamFilter, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LmsListUsersQueryParamFilter$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LmsListUsersQueryParamFilter' from JSON`,
+  );
+}
+
 /** @internal */
 export const LmsListUsersRequest$inboundSchema: z.ZodType<
   LmsListUsersRequest,
@@ -203,6 +226,24 @@ export namespace LmsListUsersRequest$ {
   export type Outbound = LmsListUsersRequest$Outbound;
 }
 
+export function lmsListUsersRequestToJSON(
+  lmsListUsersRequest: LmsListUsersRequest,
+): string {
+  return JSON.stringify(
+    LmsListUsersRequest$outboundSchema.parse(lmsListUsersRequest),
+  );
+}
+
+export function lmsListUsersRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<LmsListUsersRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LmsListUsersRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LmsListUsersRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const LmsListUsersResponse$inboundSchema: z.ZodType<
   LmsListUsersResponse,
@@ -262,4 +303,22 @@ export namespace LmsListUsersResponse$ {
   export const outboundSchema = LmsListUsersResponse$outboundSchema;
   /** @deprecated use `LmsListUsersResponse$Outbound` instead. */
   export type Outbound = LmsListUsersResponse$Outbound;
+}
+
+export function lmsListUsersResponseToJSON(
+  lmsListUsersResponse: LmsListUsersResponse,
+): string {
+  return JSON.stringify(
+    LmsListUsersResponse$outboundSchema.parse(lmsListUsersResponse),
+  );
+}
+
+export function lmsListUsersResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<LmsListUsersResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LmsListUsersResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LmsListUsersResponse' from JSON`,
+  );
 }

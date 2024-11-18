@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type HrisCreateTimeOffRequestRequest = {
@@ -83,6 +86,26 @@ export namespace HrisCreateTimeOffRequestRequest$ {
   export type Outbound = HrisCreateTimeOffRequestRequest$Outbound;
 }
 
+export function hrisCreateTimeOffRequestRequestToJSON(
+  hrisCreateTimeOffRequestRequest: HrisCreateTimeOffRequestRequest,
+): string {
+  return JSON.stringify(
+    HrisCreateTimeOffRequestRequest$outboundSchema.parse(
+      hrisCreateTimeOffRequestRequest,
+    ),
+  );
+}
+
+export function hrisCreateTimeOffRequestRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<HrisCreateTimeOffRequestRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => HrisCreateTimeOffRequestRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HrisCreateTimeOffRequestRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const HrisCreateTimeOffRequestResponse$inboundSchema: z.ZodType<
   HrisCreateTimeOffRequestResponse,
@@ -142,4 +165,24 @@ export namespace HrisCreateTimeOffRequestResponse$ {
   export const outboundSchema = HrisCreateTimeOffRequestResponse$outboundSchema;
   /** @deprecated use `HrisCreateTimeOffRequestResponse$Outbound` instead. */
   export type Outbound = HrisCreateTimeOffRequestResponse$Outbound;
+}
+
+export function hrisCreateTimeOffRequestResponseToJSON(
+  hrisCreateTimeOffRequestResponse: HrisCreateTimeOffRequestResponse,
+): string {
+  return JSON.stringify(
+    HrisCreateTimeOffRequestResponse$outboundSchema.parse(
+      hrisCreateTimeOffRequestResponse,
+    ),
+  );
+}
+
+export function hrisCreateTimeOffRequestResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<HrisCreateTimeOffRequestResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => HrisCreateTimeOffRequestResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HrisCreateTimeOffRequestResponse' from JSON`,
+  );
 }

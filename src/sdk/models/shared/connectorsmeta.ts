@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * The provider service category
@@ -157,6 +160,20 @@ export namespace Images$ {
   export type Outbound = Images$Outbound;
 }
 
+export function imagesToJSON(images: Images): string {
+  return JSON.stringify(Images$outboundSchema.parse(images));
+}
+
+export function imagesFromJSON(
+  jsonString: string,
+): SafeParseResult<Images, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Images$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Images' from JSON`,
+  );
+}
+
 /** @internal */
 export const Resources$inboundSchema: z.ZodType<
   Resources,
@@ -191,6 +208,20 @@ export namespace Resources$ {
   export const outboundSchema = Resources$outboundSchema;
   /** @deprecated use `Resources$Outbound` instead. */
   export type Outbound = Resources$Outbound;
+}
+
+export function resourcesToJSON(resources: Resources): string {
+  return JSON.stringify(Resources$outboundSchema.parse(resources));
+}
+
+export function resourcesFromJSON(
+  jsonString: string,
+): SafeParseResult<Resources, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Resources$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Resources' from JSON`,
+  );
 }
 
 /** @internal */
@@ -250,4 +281,18 @@ export namespace ConnectorsMeta$ {
   export const outboundSchema = ConnectorsMeta$outboundSchema;
   /** @deprecated use `ConnectorsMeta$Outbound` instead. */
   export type Outbound = ConnectorsMeta$Outbound;
+}
+
+export function connectorsMetaToJSON(connectorsMeta: ConnectorsMeta): string {
+  return JSON.stringify(ConnectorsMeta$outboundSchema.parse(connectorsMeta));
+}
+
+export function connectorsMetaFromJSON(
+  jsonString: string,
+): SafeParseResult<ConnectorsMeta, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ConnectorsMeta$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ConnectorsMeta' from JSON`,
+  );
 }

@@ -9,7 +9,6 @@ let value: AtsCreateCandidateNoteResponse = {
   contentType: "<value>",
   createResult: {
     data: {
-      externalReference: "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1",
       id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
       remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
     },

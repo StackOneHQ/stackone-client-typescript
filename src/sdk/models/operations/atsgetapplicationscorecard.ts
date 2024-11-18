@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type AtsGetApplicationScorecardRequest = {
@@ -106,6 +109,26 @@ export namespace AtsGetApplicationScorecardRequest$ {
   export type Outbound = AtsGetApplicationScorecardRequest$Outbound;
 }
 
+export function atsGetApplicationScorecardRequestToJSON(
+  atsGetApplicationScorecardRequest: AtsGetApplicationScorecardRequest,
+): string {
+  return JSON.stringify(
+    AtsGetApplicationScorecardRequest$outboundSchema.parse(
+      atsGetApplicationScorecardRequest,
+    ),
+  );
+}
+
+export function atsGetApplicationScorecardRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<AtsGetApplicationScorecardRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AtsGetApplicationScorecardRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AtsGetApplicationScorecardRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const AtsGetApplicationScorecardResponse$inboundSchema: z.ZodType<
   AtsGetApplicationScorecardResponse,
@@ -166,4 +189,25 @@ export namespace AtsGetApplicationScorecardResponse$ {
     AtsGetApplicationScorecardResponse$outboundSchema;
   /** @deprecated use `AtsGetApplicationScorecardResponse$Outbound` instead. */
   export type Outbound = AtsGetApplicationScorecardResponse$Outbound;
+}
+
+export function atsGetApplicationScorecardResponseToJSON(
+  atsGetApplicationScorecardResponse: AtsGetApplicationScorecardResponse,
+): string {
+  return JSON.stringify(
+    AtsGetApplicationScorecardResponse$outboundSchema.parse(
+      atsGetApplicationScorecardResponse,
+    ),
+  );
+}
+
+export function atsGetApplicationScorecardResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<AtsGetApplicationScorecardResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      AtsGetApplicationScorecardResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AtsGetApplicationScorecardResponse' from JSON`,
+  );
 }

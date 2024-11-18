@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type LmsUpdateCollectionRequest = {
@@ -88,6 +91,24 @@ export namespace LmsUpdateCollectionRequest$ {
   export type Outbound = LmsUpdateCollectionRequest$Outbound;
 }
 
+export function lmsUpdateCollectionRequestToJSON(
+  lmsUpdateCollectionRequest: LmsUpdateCollectionRequest,
+): string {
+  return JSON.stringify(
+    LmsUpdateCollectionRequest$outboundSchema.parse(lmsUpdateCollectionRequest),
+  );
+}
+
+export function lmsUpdateCollectionRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<LmsUpdateCollectionRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LmsUpdateCollectionRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LmsUpdateCollectionRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const LmsUpdateCollectionResponse$inboundSchema: z.ZodType<
   LmsUpdateCollectionResponse,
@@ -147,4 +168,24 @@ export namespace LmsUpdateCollectionResponse$ {
   export const outboundSchema = LmsUpdateCollectionResponse$outboundSchema;
   /** @deprecated use `LmsUpdateCollectionResponse$Outbound` instead. */
   export type Outbound = LmsUpdateCollectionResponse$Outbound;
+}
+
+export function lmsUpdateCollectionResponseToJSON(
+  lmsUpdateCollectionResponse: LmsUpdateCollectionResponse,
+): string {
+  return JSON.stringify(
+    LmsUpdateCollectionResponse$outboundSchema.parse(
+      lmsUpdateCollectionResponse,
+    ),
+  );
+}
+
+export function lmsUpdateCollectionResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<LmsUpdateCollectionResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LmsUpdateCollectionResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LmsUpdateCollectionResponse' from JSON`,
+  );
 }

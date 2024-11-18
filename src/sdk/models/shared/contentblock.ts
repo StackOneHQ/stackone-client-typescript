@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type ContentBlock4 = {};
 
@@ -165,6 +168,20 @@ export namespace ContentBlock4$ {
   export type Outbound = ContentBlock4$Outbound;
 }
 
+export function contentBlock4ToJSON(contentBlock4: ContentBlock4): string {
+  return JSON.stringify(ContentBlock4$outboundSchema.parse(contentBlock4));
+}
+
+export function contentBlock4FromJSON(
+  jsonString: string,
+): SafeParseResult<ContentBlock4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ContentBlock4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ContentBlock4' from JSON`,
+  );
+}
+
 /** @internal */
 export const ContentBlockSourceValue$inboundSchema: z.ZodType<
   ContentBlockSourceValue,
@@ -210,6 +227,24 @@ export namespace ContentBlockSourceValue$ {
   export const outboundSchema = ContentBlockSourceValue$outboundSchema;
   /** @deprecated use `ContentBlockSourceValue$Outbound` instead. */
   export type Outbound = ContentBlockSourceValue$Outbound;
+}
+
+export function contentBlockSourceValueToJSON(
+  contentBlockSourceValue: ContentBlockSourceValue,
+): string {
+  return JSON.stringify(
+    ContentBlockSourceValue$outboundSchema.parse(contentBlockSourceValue),
+  );
+}
+
+export function contentBlockSourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<ContentBlockSourceValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ContentBlockSourceValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ContentBlockSourceValue' from JSON`,
+  );
 }
 
 /** @internal */
@@ -314,6 +349,24 @@ export namespace ContentBlockStatus$ {
   export type Outbound = ContentBlockStatus$Outbound;
 }
 
+export function contentBlockStatusToJSON(
+  contentBlockStatus: ContentBlockStatus,
+): string {
+  return JSON.stringify(
+    ContentBlockStatus$outboundSchema.parse(contentBlockStatus),
+  );
+}
+
+export function contentBlockStatusFromJSON(
+  jsonString: string,
+): SafeParseResult<ContentBlockStatus, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ContentBlockStatus$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ContentBlockStatus' from JSON`,
+  );
+}
+
 /** @internal */
 export const ContentBlockSchemas4$inboundSchema: z.ZodType<
   ContentBlockSchemas4,
@@ -342,6 +395,24 @@ export namespace ContentBlockSchemas4$ {
   export const outboundSchema = ContentBlockSchemas4$outboundSchema;
   /** @deprecated use `ContentBlockSchemas4$Outbound` instead. */
   export type Outbound = ContentBlockSchemas4$Outbound;
+}
+
+export function contentBlockSchemas4ToJSON(
+  contentBlockSchemas4: ContentBlockSchemas4,
+): string {
+  return JSON.stringify(
+    ContentBlockSchemas4$outboundSchema.parse(contentBlockSchemas4),
+  );
+}
+
+export function contentBlockSchemas4FromJSON(
+  jsonString: string,
+): SafeParseResult<ContentBlockSchemas4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ContentBlockSchemas4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ContentBlockSchemas4' from JSON`,
+  );
 }
 
 /** @internal */
@@ -389,6 +460,26 @@ export namespace ContentBlockSchemasSourceValue$ {
   export const outboundSchema = ContentBlockSchemasSourceValue$outboundSchema;
   /** @deprecated use `ContentBlockSchemasSourceValue$Outbound` instead. */
   export type Outbound = ContentBlockSchemasSourceValue$Outbound;
+}
+
+export function contentBlockSchemasSourceValueToJSON(
+  contentBlockSchemasSourceValue: ContentBlockSchemasSourceValue,
+): string {
+  return JSON.stringify(
+    ContentBlockSchemasSourceValue$outboundSchema.parse(
+      contentBlockSchemasSourceValue,
+    ),
+  );
+}
+
+export function contentBlockSchemasSourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<ContentBlockSchemasSourceValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ContentBlockSchemasSourceValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ContentBlockSchemasSourceValue' from JSON`,
+  );
 }
 
 /** @internal */
@@ -493,6 +584,24 @@ export namespace ContentBlockType$ {
   export type Outbound = ContentBlockType$Outbound;
 }
 
+export function contentBlockTypeToJSON(
+  contentBlockType: ContentBlockType,
+): string {
+  return JSON.stringify(
+    ContentBlockType$outboundSchema.parse(contentBlockType),
+  );
+}
+
+export function contentBlockTypeFromJSON(
+  jsonString: string,
+): SafeParseResult<ContentBlockType, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ContentBlockType$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ContentBlockType' from JSON`,
+  );
+}
+
 /** @internal */
 export const ContentBlock$inboundSchema: z.ZodType<
   ContentBlock,
@@ -568,4 +677,18 @@ export namespace ContentBlock$ {
   export const outboundSchema = ContentBlock$outboundSchema;
   /** @deprecated use `ContentBlock$Outbound` instead. */
   export type Outbound = ContentBlock$Outbound;
+}
+
+export function contentBlockToJSON(contentBlock: ContentBlock): string {
+  return JSON.stringify(ContentBlock$outboundSchema.parse(contentBlock));
+}
+
+export function contentBlockFromJSON(
+  jsonString: string,
+): SafeParseResult<ContentBlock, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ContentBlock$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ContentBlock' from JSON`,
+  );
 }

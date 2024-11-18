@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   RawResponse,
   RawResponse$inboundSchema,
@@ -78,4 +81,22 @@ export namespace RejectedReasonsPaginated$ {
   export const outboundSchema = RejectedReasonsPaginated$outboundSchema;
   /** @deprecated use `RejectedReasonsPaginated$Outbound` instead. */
   export type Outbound = RejectedReasonsPaginated$Outbound;
+}
+
+export function rejectedReasonsPaginatedToJSON(
+  rejectedReasonsPaginated: RejectedReasonsPaginated,
+): string {
+  return JSON.stringify(
+    RejectedReasonsPaginated$outboundSchema.parse(rejectedReasonsPaginated),
+  );
+}
+
+export function rejectedReasonsPaginatedFromJSON(
+  jsonString: string,
+): SafeParseResult<RejectedReasonsPaginated, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => RejectedReasonsPaginated$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RejectedReasonsPaginated' from JSON`,
+  );
 }

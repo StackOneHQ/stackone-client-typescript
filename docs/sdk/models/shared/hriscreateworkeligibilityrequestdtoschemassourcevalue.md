@@ -6,33 +6,32 @@
 ### `string`
 
 ```typescript
-const value: string = "abc";
+const value: string = "<value>";
 ```
 
 ### `number`
 
 ```typescript
-const value: number = abc;
+const value: number = 9677.95;
 ```
 
 ### `boolean`
 
 ```typescript
-const value: boolean = true;
+const value: boolean = false;
 ```
 
-### `shared.HrisCreateWorkEligibilityRequestDtoSchemasDocumentFileFormat4`
+### `shared.HrisCreateWorkEligibilityRequestDtoSchemas4`
 
 ```typescript
-const value:
-  shared.HrisCreateWorkEligibilityRequestDtoSchemasDocumentFileFormat4 = {};
+const value: shared.HrisCreateWorkEligibilityRequestDtoSchemas4 = {};
 ```
 
 ### `any[]`
 
 ```typescript
 const value: any[] = [
-  "abc",
+  "<value>",
 ];
 ```
 

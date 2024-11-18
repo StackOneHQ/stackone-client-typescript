@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type IamMfaTypeEnum4 = {};
 
@@ -85,6 +88,22 @@ export namespace IamMfaTypeEnum4$ {
   export type Outbound = IamMfaTypeEnum4$Outbound;
 }
 
+export function iamMfaTypeEnum4ToJSON(
+  iamMfaTypeEnum4: IamMfaTypeEnum4,
+): string {
+  return JSON.stringify(IamMfaTypeEnum4$outboundSchema.parse(iamMfaTypeEnum4));
+}
+
+export function iamMfaTypeEnum4FromJSON(
+  jsonString: string,
+): SafeParseResult<IamMfaTypeEnum4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => IamMfaTypeEnum4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'IamMfaTypeEnum4' from JSON`,
+  );
+}
+
 /** @internal */
 export const IamMfaTypeEnumSourceValue$inboundSchema: z.ZodType<
   IamMfaTypeEnumSourceValue,
@@ -130,6 +149,24 @@ export namespace IamMfaTypeEnumSourceValue$ {
   export const outboundSchema = IamMfaTypeEnumSourceValue$outboundSchema;
   /** @deprecated use `IamMfaTypeEnumSourceValue$Outbound` instead. */
   export type Outbound = IamMfaTypeEnumSourceValue$Outbound;
+}
+
+export function iamMfaTypeEnumSourceValueToJSON(
+  iamMfaTypeEnumSourceValue: IamMfaTypeEnumSourceValue,
+): string {
+  return JSON.stringify(
+    IamMfaTypeEnumSourceValue$outboundSchema.parse(iamMfaTypeEnumSourceValue),
+  );
+}
+
+export function iamMfaTypeEnumSourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<IamMfaTypeEnumSourceValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => IamMfaTypeEnumSourceValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'IamMfaTypeEnumSourceValue' from JSON`,
+  );
 }
 
 /** @internal */
@@ -232,4 +269,18 @@ export namespace IamMfaTypeEnum$ {
   export const outboundSchema = IamMfaTypeEnum$outboundSchema;
   /** @deprecated use `IamMfaTypeEnum$Outbound` instead. */
   export type Outbound = IamMfaTypeEnum$Outbound;
+}
+
+export function iamMfaTypeEnumToJSON(iamMfaTypeEnum: IamMfaTypeEnum): string {
+  return JSON.stringify(IamMfaTypeEnum$outboundSchema.parse(iamMfaTypeEnum));
+}
+
+export function iamMfaTypeEnumFromJSON(
+  jsonString: string,
+): SafeParseResult<IamMfaTypeEnum, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => IamMfaTypeEnum$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'IamMfaTypeEnum' from JSON`,
+  );
 }

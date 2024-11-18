@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type Four = {};
 
@@ -63,6 +66,20 @@ export namespace Four$ {
   export type Outbound = Four$Outbound;
 }
 
+export function fourToJSON(four: Four): string {
+  return JSON.stringify(Four$outboundSchema.parse(four));
+}
+
+export function fourFromJSON(
+  jsonString: string,
+): SafeParseResult<Four, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Four$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Four' from JSON`,
+  );
+}
+
 /** @internal */
 export const Value$inboundSchema: z.ZodType<Value, z.ZodTypeDef, unknown> = z
   .union([
@@ -105,6 +122,20 @@ export namespace Value$ {
   export const outboundSchema = Value$outboundSchema;
   /** @deprecated use `Value$Outbound` instead. */
   export type Outbound = Value$Outbound;
+}
+
+export function valueToJSON(value: Value): string {
+  return JSON.stringify(Value$outboundSchema.parse(value));
+}
+
+export function valueFromJSON(
+  jsonString: string,
+): SafeParseResult<Value, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Value$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Value' from JSON`,
+  );
 }
 
 /** @internal */
@@ -191,4 +222,22 @@ export namespace ApplicationCustomFields$ {
   export const outboundSchema = ApplicationCustomFields$outboundSchema;
   /** @deprecated use `ApplicationCustomFields$Outbound` instead. */
   export type Outbound = ApplicationCustomFields$Outbound;
+}
+
+export function applicationCustomFieldsToJSON(
+  applicationCustomFields: ApplicationCustomFields,
+): string {
+  return JSON.stringify(
+    ApplicationCustomFields$outboundSchema.parse(applicationCustomFields),
+  );
+}
+
+export function applicationCustomFieldsFromJSON(
+  jsonString: string,
+): SafeParseResult<ApplicationCustomFields, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ApplicationCustomFields$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ApplicationCustomFields' from JSON`,
+  );
 }

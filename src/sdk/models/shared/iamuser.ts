@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   Content,
   Content$inboundSchema,
@@ -1502,6 +1505,24 @@ export namespace IamUserSchemasAvatar4$ {
   export type Outbound = IamUserSchemasAvatar4$Outbound;
 }
 
+export function iamUserSchemasAvatar4ToJSON(
+  iamUserSchemasAvatar4: IamUserSchemasAvatar4,
+): string {
+  return JSON.stringify(
+    IamUserSchemasAvatar4$outboundSchema.parse(iamUserSchemasAvatar4),
+  );
+}
+
+export function iamUserSchemasAvatar4FromJSON(
+  jsonString: string,
+): SafeParseResult<IamUserSchemasAvatar4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => IamUserSchemasAvatar4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'IamUserSchemasAvatar4' from JSON`,
+  );
+}
+
 /** @internal */
 export const IamUserSchemasAvatarSourceValue$inboundSchema: z.ZodType<
   IamUserSchemasAvatarSourceValue,
@@ -1547,6 +1568,26 @@ export namespace IamUserSchemasAvatarSourceValue$ {
   export const outboundSchema = IamUserSchemasAvatarSourceValue$outboundSchema;
   /** @deprecated use `IamUserSchemasAvatarSourceValue$Outbound` instead. */
   export type Outbound = IamUserSchemasAvatarSourceValue$Outbound;
+}
+
+export function iamUserSchemasAvatarSourceValueToJSON(
+  iamUserSchemasAvatarSourceValue: IamUserSchemasAvatarSourceValue,
+): string {
+  return JSON.stringify(
+    IamUserSchemasAvatarSourceValue$outboundSchema.parse(
+      iamUserSchemasAvatarSourceValue,
+    ),
+  );
+}
+
+export function iamUserSchemasAvatarSourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<IamUserSchemasAvatarSourceValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => IamUserSchemasAvatarSourceValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'IamUserSchemasAvatarSourceValue' from JSON`,
+  );
 }
 
 /** @internal */
@@ -1619,6 +1660,22 @@ export namespace IamUserCategory$ {
   export type Outbound = IamUserCategory$Outbound;
 }
 
+export function iamUserCategoryToJSON(
+  iamUserCategory: IamUserCategory,
+): string {
+  return JSON.stringify(IamUserCategory$outboundSchema.parse(iamUserCategory));
+}
+
+export function iamUserCategoryFromJSON(
+  jsonString: string,
+): SafeParseResult<IamUserCategory, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => IamUserCategory$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'IamUserCategory' from JSON`,
+  );
+}
+
 /** @internal */
 export const IamUserSchemas4$inboundSchema: z.ZodType<
   IamUserSchemas4,
@@ -1647,6 +1704,22 @@ export namespace IamUserSchemas4$ {
   export const outboundSchema = IamUserSchemas4$outboundSchema;
   /** @deprecated use `IamUserSchemas4$Outbound` instead. */
   export type Outbound = IamUserSchemas4$Outbound;
+}
+
+export function iamUserSchemas4ToJSON(
+  iamUserSchemas4: IamUserSchemas4,
+): string {
+  return JSON.stringify(IamUserSchemas4$outboundSchema.parse(iamUserSchemas4));
+}
+
+export function iamUserSchemas4FromJSON(
+  jsonString: string,
+): SafeParseResult<IamUserSchemas4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => IamUserSchemas4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'IamUserSchemas4' from JSON`,
+  );
 }
 
 /** @internal */
@@ -1694,6 +1767,24 @@ export namespace IamUserSchemasSourceValue$ {
   export const outboundSchema = IamUserSchemasSourceValue$outboundSchema;
   /** @deprecated use `IamUserSchemasSourceValue$Outbound` instead. */
   export type Outbound = IamUserSchemasSourceValue$Outbound;
+}
+
+export function iamUserSchemasSourceValueToJSON(
+  iamUserSchemasSourceValue: IamUserSchemasSourceValue,
+): string {
+  return JSON.stringify(
+    IamUserSchemasSourceValue$outboundSchema.parse(iamUserSchemasSourceValue),
+  );
+}
+
+export function iamUserSchemasSourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<IamUserSchemasSourceValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => IamUserSchemasSourceValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'IamUserSchemasSourceValue' from JSON`,
+  );
 }
 
 /** @internal */
@@ -1798,6 +1889,24 @@ export namespace IamUserFileFormat$ {
   export type Outbound = IamUserFileFormat$Outbound;
 }
 
+export function iamUserFileFormatToJSON(
+  iamUserFileFormat: IamUserFileFormat,
+): string {
+  return JSON.stringify(
+    IamUserFileFormat$outboundSchema.parse(iamUserFileFormat),
+  );
+}
+
+export function iamUserFileFormatFromJSON(
+  jsonString: string,
+): SafeParseResult<IamUserFileFormat, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => IamUserFileFormat$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'IamUserFileFormat' from JSON`,
+  );
+}
+
 /** @internal */
 export const IamUserAvatar$inboundSchema: z.ZodType<
   IamUserAvatar,
@@ -1888,6 +1997,20 @@ export namespace IamUserAvatar$ {
   export type Outbound = IamUserAvatar$Outbound;
 }
 
+export function iamUserAvatarToJSON(iamUserAvatar: IamUserAvatar): string {
+  return JSON.stringify(IamUserAvatar$outboundSchema.parse(iamUserAvatar));
+}
+
+export function iamUserAvatarFromJSON(
+  jsonString: string,
+): SafeParseResult<IamUserAvatar, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => IamUserAvatar$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'IamUserAvatar' from JSON`,
+  );
+}
+
 /** @internal */
 export const IamUser2$inboundSchema: z.ZodNativeEnum<typeof IamUser2> = z
   .nativeEnum(IamUser2);
@@ -1937,6 +2060,20 @@ export namespace IsBotUser$ {
   export type Outbound = IsBotUser$Outbound;
 }
 
+export function isBotUserToJSON(isBotUser: IsBotUser): string {
+  return JSON.stringify(IsBotUser$outboundSchema.parse(isBotUser));
+}
+
+export function isBotUserFromJSON(
+  jsonString: string,
+): SafeParseResult<IsBotUser, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => IsBotUser$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'IsBotUser' from JSON`,
+  );
+}
+
 /** @internal */
 export const IamUser4$inboundSchema: z.ZodType<
   IamUser4,
@@ -1965,6 +2102,20 @@ export namespace IamUser4$ {
   export const outboundSchema = IamUser4$outboundSchema;
   /** @deprecated use `IamUser4$Outbound` instead. */
   export type Outbound = IamUser4$Outbound;
+}
+
+export function iamUser4ToJSON(iamUser4: IamUser4): string {
+  return JSON.stringify(IamUser4$outboundSchema.parse(iamUser4));
+}
+
+export function iamUser4FromJSON(
+  jsonString: string,
+): SafeParseResult<IamUser4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => IamUser4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'IamUser4' from JSON`,
+  );
 }
 
 /** @internal */
@@ -2012,6 +2163,24 @@ export namespace IamUserSourceValue$ {
   export const outboundSchema = IamUserSourceValue$outboundSchema;
   /** @deprecated use `IamUserSourceValue$Outbound` instead. */
   export type Outbound = IamUserSourceValue$Outbound;
+}
+
+export function iamUserSourceValueToJSON(
+  iamUserSourceValue: IamUserSourceValue,
+): string {
+  return JSON.stringify(
+    IamUserSourceValue$outboundSchema.parse(iamUserSourceValue),
+  );
+}
+
+export function iamUserSourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<IamUserSourceValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => IamUserSourceValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'IamUserSourceValue' from JSON`,
+  );
 }
 
 /** @internal */
@@ -2114,6 +2283,20 @@ export namespace IamUserStatus$ {
   export const outboundSchema = IamUserStatus$outboundSchema;
   /** @deprecated use `IamUserStatus$Outbound` instead. */
   export type Outbound = IamUserStatus$Outbound;
+}
+
+export function iamUserStatusToJSON(iamUserStatus: IamUserStatus): string {
+  return JSON.stringify(IamUserStatus$outboundSchema.parse(iamUserStatus));
+}
+
+export function iamUserStatusFromJSON(
+  jsonString: string,
+): SafeParseResult<IamUserStatus, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => IamUserStatus$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'IamUserStatus' from JSON`,
+  );
 }
 
 /** @internal */
@@ -2238,4 +2421,18 @@ export namespace IamUser$ {
   export const outboundSchema = IamUser$outboundSchema;
   /** @deprecated use `IamUser$Outbound` instead. */
   export type Outbound = IamUser$Outbound;
+}
+
+export function iamUserToJSON(iamUser: IamUser): string {
+  return JSON.stringify(IamUser$outboundSchema.parse(iamUser));
+}
+
+export function iamUserFromJSON(
+  jsonString: string,
+): SafeParseResult<IamUser, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => IamUser$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'IamUser' from JSON`,
+  );
 }

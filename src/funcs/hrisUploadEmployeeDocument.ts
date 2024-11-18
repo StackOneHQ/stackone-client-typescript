@@ -80,6 +80,9 @@ export async function hrisUploadEmployeeDocument(
   const context = {
     operationID: "hris_upload_employee_document",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.security,
     retryConfig: options?.retries
       || client._options.retryConfig

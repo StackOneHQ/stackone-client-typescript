@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type AtsCreateApplicationRequest = {
@@ -85,6 +88,26 @@ export namespace AtsCreateApplicationRequest$ {
   export type Outbound = AtsCreateApplicationRequest$Outbound;
 }
 
+export function atsCreateApplicationRequestToJSON(
+  atsCreateApplicationRequest: AtsCreateApplicationRequest,
+): string {
+  return JSON.stringify(
+    AtsCreateApplicationRequest$outboundSchema.parse(
+      atsCreateApplicationRequest,
+    ),
+  );
+}
+
+export function atsCreateApplicationRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<AtsCreateApplicationRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AtsCreateApplicationRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AtsCreateApplicationRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const AtsCreateApplicationResponse$inboundSchema: z.ZodType<
   AtsCreateApplicationResponse,
@@ -144,4 +167,24 @@ export namespace AtsCreateApplicationResponse$ {
   export const outboundSchema = AtsCreateApplicationResponse$outboundSchema;
   /** @deprecated use `AtsCreateApplicationResponse$Outbound` instead. */
   export type Outbound = AtsCreateApplicationResponse$Outbound;
+}
+
+export function atsCreateApplicationResponseToJSON(
+  atsCreateApplicationResponse: AtsCreateApplicationResponse,
+): string {
+  return JSON.stringify(
+    AtsCreateApplicationResponse$outboundSchema.parse(
+      atsCreateApplicationResponse,
+    ),
+  );
+}
+
+export function atsCreateApplicationResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<AtsCreateApplicationResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AtsCreateApplicationResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AtsCreateApplicationResponse' from JSON`,
+  );
 }

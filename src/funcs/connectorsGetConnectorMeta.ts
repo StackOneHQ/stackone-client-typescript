@@ -75,6 +75,9 @@ export async function connectorsGetConnectorMeta(
   const context = {
     operationID: "stackone_get_connector_meta",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.security,
     retryConfig: options?.retries
       || client._options.retryConfig

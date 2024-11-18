@@ -88,6 +88,9 @@ export async function atsListDepartments(
   const context = {
     operationID: "ats_list_departments",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.security,
     retryConfig: options?.retries
       || client._options.retryConfig

@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type MarketingCreateContentBlocksRequestDto4 = {};
 
@@ -105,6 +108,33 @@ export namespace MarketingCreateContentBlocksRequestDto4$ {
   export type Outbound = MarketingCreateContentBlocksRequestDto4$Outbound;
 }
 
+export function marketingCreateContentBlocksRequestDto4ToJSON(
+  marketingCreateContentBlocksRequestDto4:
+    MarketingCreateContentBlocksRequestDto4,
+): string {
+  return JSON.stringify(
+    MarketingCreateContentBlocksRequestDto4$outboundSchema.parse(
+      marketingCreateContentBlocksRequestDto4,
+    ),
+  );
+}
+
+export function marketingCreateContentBlocksRequestDto4FromJSON(
+  jsonString: string,
+): SafeParseResult<
+  MarketingCreateContentBlocksRequestDto4,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      MarketingCreateContentBlocksRequestDto4$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'MarketingCreateContentBlocksRequestDto4' from JSON`,
+  );
+}
+
 /** @internal */
 export const MarketingCreateContentBlocksRequestDtoSourceValue$inboundSchema:
   z.ZodType<
@@ -155,6 +185,33 @@ export namespace MarketingCreateContentBlocksRequestDtoSourceValue$ {
   /** @deprecated use `MarketingCreateContentBlocksRequestDtoSourceValue$Outbound` instead. */
   export type Outbound =
     MarketingCreateContentBlocksRequestDtoSourceValue$Outbound;
+}
+
+export function marketingCreateContentBlocksRequestDtoSourceValueToJSON(
+  marketingCreateContentBlocksRequestDtoSourceValue:
+    MarketingCreateContentBlocksRequestDtoSourceValue,
+): string {
+  return JSON.stringify(
+    MarketingCreateContentBlocksRequestDtoSourceValue$outboundSchema.parse(
+      marketingCreateContentBlocksRequestDtoSourceValue,
+    ),
+  );
+}
+
+export function marketingCreateContentBlocksRequestDtoSourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  MarketingCreateContentBlocksRequestDtoSourceValue,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      MarketingCreateContentBlocksRequestDtoSourceValue$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'MarketingCreateContentBlocksRequestDtoSourceValue' from JSON`,
+  );
 }
 
 /** @internal */
@@ -268,6 +325,33 @@ export namespace MarketingCreateContentBlocksRequestDtoType$ {
   export type Outbound = MarketingCreateContentBlocksRequestDtoType$Outbound;
 }
 
+export function marketingCreateContentBlocksRequestDtoTypeToJSON(
+  marketingCreateContentBlocksRequestDtoType:
+    MarketingCreateContentBlocksRequestDtoType,
+): string {
+  return JSON.stringify(
+    MarketingCreateContentBlocksRequestDtoType$outboundSchema.parse(
+      marketingCreateContentBlocksRequestDtoType,
+    ),
+  );
+}
+
+export function marketingCreateContentBlocksRequestDtoTypeFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  MarketingCreateContentBlocksRequestDtoType,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      MarketingCreateContentBlocksRequestDtoType$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'MarketingCreateContentBlocksRequestDtoType' from JSON`,
+  );
+}
+
 /** @internal */
 export const MarketingCreateContentBlocksRequestDto$inboundSchema: z.ZodType<
   MarketingCreateContentBlocksRequestDto,
@@ -320,4 +404,26 @@ export namespace MarketingCreateContentBlocksRequestDto$ {
     MarketingCreateContentBlocksRequestDto$outboundSchema;
   /** @deprecated use `MarketingCreateContentBlocksRequestDto$Outbound` instead. */
   export type Outbound = MarketingCreateContentBlocksRequestDto$Outbound;
+}
+
+export function marketingCreateContentBlocksRequestDtoToJSON(
+  marketingCreateContentBlocksRequestDto:
+    MarketingCreateContentBlocksRequestDto,
+): string {
+  return JSON.stringify(
+    MarketingCreateContentBlocksRequestDto$outboundSchema.parse(
+      marketingCreateContentBlocksRequestDto,
+    ),
+  );
+}
+
+export function marketingCreateContentBlocksRequestDtoFromJSON(
+  jsonString: string,
+): SafeParseResult<MarketingCreateContentBlocksRequestDto, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      MarketingCreateContentBlocksRequestDto$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'MarketingCreateContentBlocksRequestDto' from JSON`,
+  );
 }

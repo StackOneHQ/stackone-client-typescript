@@ -89,6 +89,9 @@ export async function lmsGetAssignment(
   const context = {
     operationID: "lms_get_assignment",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.security,
     retryConfig: options?.retries
       || client._options.retryConfig

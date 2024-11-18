@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type HRISDepartment4 = {};
 
@@ -112,6 +115,22 @@ export namespace HRISDepartment4$ {
   export type Outbound = HRISDepartment4$Outbound;
 }
 
+export function hrisDepartment4ToJSON(
+  hrisDepartment4: HRISDepartment4,
+): string {
+  return JSON.stringify(HRISDepartment4$outboundSchema.parse(hrisDepartment4));
+}
+
+export function hrisDepartment4FromJSON(
+  jsonString: string,
+): SafeParseResult<HRISDepartment4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => HRISDepartment4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HRISDepartment4' from JSON`,
+  );
+}
+
 /** @internal */
 export const HRISDepartmentSourceValue$inboundSchema: z.ZodType<
   HRISDepartmentSourceValue,
@@ -157,6 +176,24 @@ export namespace HRISDepartmentSourceValue$ {
   export const outboundSchema = HRISDepartmentSourceValue$outboundSchema;
   /** @deprecated use `HRISDepartmentSourceValue$Outbound` instead. */
   export type Outbound = HRISDepartmentSourceValue$Outbound;
+}
+
+export function hrisDepartmentSourceValueToJSON(
+  hrisDepartmentSourceValue: HRISDepartmentSourceValue,
+): string {
+  return JSON.stringify(
+    HRISDepartmentSourceValue$outboundSchema.parse(hrisDepartmentSourceValue),
+  );
+}
+
+export function hrisDepartmentSourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<HRISDepartmentSourceValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => HRISDepartmentSourceValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HRISDepartmentSourceValue' from JSON`,
+  );
 }
 
 /** @internal */
@@ -261,6 +298,24 @@ export namespace HRISDepartmentType$ {
   export type Outbound = HRISDepartmentType$Outbound;
 }
 
+export function hrisDepartmentTypeToJSON(
+  hrisDepartmentType: HRISDepartmentType,
+): string {
+  return JSON.stringify(
+    HRISDepartmentType$outboundSchema.parse(hrisDepartmentType),
+  );
+}
+
+export function hrisDepartmentTypeFromJSON(
+  jsonString: string,
+): SafeParseResult<HRISDepartmentType, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => HRISDepartmentType$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HRISDepartmentType' from JSON`,
+  );
+}
+
 /** @internal */
 export const HRISDepartment$inboundSchema: z.ZodType<
   HRISDepartment,
@@ -337,4 +392,18 @@ export namespace HRISDepartment$ {
   export const outboundSchema = HRISDepartment$outboundSchema;
   /** @deprecated use `HRISDepartment$Outbound` instead. */
   export type Outbound = HRISDepartment$Outbound;
+}
+
+export function hrisDepartmentToJSON(hrisDepartment: HRISDepartment): string {
+  return JSON.stringify(HRISDepartment$outboundSchema.parse(hrisDepartment));
+}
+
+export function hrisDepartmentFromJSON(
+  jsonString: string,
+): SafeParseResult<HRISDepartment, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => HRISDepartment$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HRISDepartment' from JSON`,
+  );
 }

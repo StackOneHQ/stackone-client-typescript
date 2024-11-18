@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type AtsCreateCandidateNoteRequest = {
@@ -86,6 +89,26 @@ export namespace AtsCreateCandidateNoteRequest$ {
   export type Outbound = AtsCreateCandidateNoteRequest$Outbound;
 }
 
+export function atsCreateCandidateNoteRequestToJSON(
+  atsCreateCandidateNoteRequest: AtsCreateCandidateNoteRequest,
+): string {
+  return JSON.stringify(
+    AtsCreateCandidateNoteRequest$outboundSchema.parse(
+      atsCreateCandidateNoteRequest,
+    ),
+  );
+}
+
+export function atsCreateCandidateNoteRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<AtsCreateCandidateNoteRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AtsCreateCandidateNoteRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AtsCreateCandidateNoteRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const AtsCreateCandidateNoteResponse$inboundSchema: z.ZodType<
   AtsCreateCandidateNoteResponse,
@@ -145,4 +168,24 @@ export namespace AtsCreateCandidateNoteResponse$ {
   export const outboundSchema = AtsCreateCandidateNoteResponse$outboundSchema;
   /** @deprecated use `AtsCreateCandidateNoteResponse$Outbound` instead. */
   export type Outbound = AtsCreateCandidateNoteResponse$Outbound;
+}
+
+export function atsCreateCandidateNoteResponseToJSON(
+  atsCreateCandidateNoteResponse: AtsCreateCandidateNoteResponse,
+): string {
+  return JSON.stringify(
+    AtsCreateCandidateNoteResponse$outboundSchema.parse(
+      atsCreateCandidateNoteResponse,
+    ),
+  );
+}
+
+export function atsCreateCandidateNoteResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<AtsCreateCandidateNoteResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AtsCreateCandidateNoteResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AtsCreateCandidateNoteResponse' from JSON`,
+  );
 }

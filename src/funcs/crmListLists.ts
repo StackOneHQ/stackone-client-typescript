@@ -87,6 +87,9 @@ export async function crmListLists(
   const context = {
     operationID: "crm_list_lists",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.security,
     retryConfig: options?.retries
       || client._options.retryConfig

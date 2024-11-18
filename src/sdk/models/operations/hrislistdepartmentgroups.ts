@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 /**
@@ -124,6 +127,33 @@ export namespace HrisListDepartmentGroupsQueryParamFilter$ {
   export type Outbound = HrisListDepartmentGroupsQueryParamFilter$Outbound;
 }
 
+export function hrisListDepartmentGroupsQueryParamFilterToJSON(
+  hrisListDepartmentGroupsQueryParamFilter:
+    HrisListDepartmentGroupsQueryParamFilter,
+): string {
+  return JSON.stringify(
+    HrisListDepartmentGroupsQueryParamFilter$outboundSchema.parse(
+      hrisListDepartmentGroupsQueryParamFilter,
+    ),
+  );
+}
+
+export function hrisListDepartmentGroupsQueryParamFilterFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  HrisListDepartmentGroupsQueryParamFilter,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      HrisListDepartmentGroupsQueryParamFilter$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'HrisListDepartmentGroupsQueryParamFilter' from JSON`,
+  );
+}
+
 /** @internal */
 export const HrisListDepartmentGroupsRequest$inboundSchema: z.ZodType<
   HrisListDepartmentGroupsRequest,
@@ -200,6 +230,26 @@ export namespace HrisListDepartmentGroupsRequest$ {
   export type Outbound = HrisListDepartmentGroupsRequest$Outbound;
 }
 
+export function hrisListDepartmentGroupsRequestToJSON(
+  hrisListDepartmentGroupsRequest: HrisListDepartmentGroupsRequest,
+): string {
+  return JSON.stringify(
+    HrisListDepartmentGroupsRequest$outboundSchema.parse(
+      hrisListDepartmentGroupsRequest,
+    ),
+  );
+}
+
+export function hrisListDepartmentGroupsRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<HrisListDepartmentGroupsRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => HrisListDepartmentGroupsRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HrisListDepartmentGroupsRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const HrisListDepartmentGroupsResponse$inboundSchema: z.ZodType<
   HrisListDepartmentGroupsResponse,
@@ -263,4 +313,24 @@ export namespace HrisListDepartmentGroupsResponse$ {
   export const outboundSchema = HrisListDepartmentGroupsResponse$outboundSchema;
   /** @deprecated use `HrisListDepartmentGroupsResponse$Outbound` instead. */
   export type Outbound = HrisListDepartmentGroupsResponse$Outbound;
+}
+
+export function hrisListDepartmentGroupsResponseToJSON(
+  hrisListDepartmentGroupsResponse: HrisListDepartmentGroupsResponse,
+): string {
+  return JSON.stringify(
+    HrisListDepartmentGroupsResponse$outboundSchema.parse(
+      hrisListDepartmentGroupsResponse,
+    ),
+  );
+}
+
+export function hrisListDepartmentGroupsResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<HrisListDepartmentGroupsResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => HrisListDepartmentGroupsResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HrisListDepartmentGroupsResponse' from JSON`,
+  );
 }

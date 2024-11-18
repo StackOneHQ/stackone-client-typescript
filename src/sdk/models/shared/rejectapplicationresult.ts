@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   CreateResultDataApiModel,
   CreateResultDataApiModel$inboundSchema,
@@ -60,4 +63,22 @@ export namespace RejectApplicationResult$ {
   export const outboundSchema = RejectApplicationResult$outboundSchema;
   /** @deprecated use `RejectApplicationResult$Outbound` instead. */
   export type Outbound = RejectApplicationResult$Outbound;
+}
+
+export function rejectApplicationResultToJSON(
+  rejectApplicationResult: RejectApplicationResult,
+): string {
+  return JSON.stringify(
+    RejectApplicationResult$outboundSchema.parse(rejectApplicationResult),
+  );
+}
+
+export function rejectApplicationResultFromJSON(
+  jsonString: string,
+): SafeParseResult<RejectApplicationResult, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => RejectApplicationResult$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RejectApplicationResult' from JSON`,
+  );
 }

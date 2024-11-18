@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   ATSLocation,
   ATSLocation$inboundSchema,
@@ -78,4 +81,22 @@ export namespace ATSLocationsPaginated$ {
   export const outboundSchema = ATSLocationsPaginated$outboundSchema;
   /** @deprecated use `ATSLocationsPaginated$Outbound` instead. */
   export type Outbound = ATSLocationsPaginated$Outbound;
+}
+
+export function atsLocationsPaginatedToJSON(
+  atsLocationsPaginated: ATSLocationsPaginated,
+): string {
+  return JSON.stringify(
+    ATSLocationsPaginated$outboundSchema.parse(atsLocationsPaginated),
+  );
+}
+
+export function atsLocationsPaginatedFromJSON(
+  jsonString: string,
+): SafeParseResult<ATSLocationsPaginated, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ATSLocationsPaginated$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ATSLocationsPaginated' from JSON`,
+  );
 }

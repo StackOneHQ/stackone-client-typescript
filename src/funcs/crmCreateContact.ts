@@ -70,6 +70,9 @@ export async function crmCreateContact(
   const context = {
     operationID: "crm_create_contact",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.security,
     retryConfig: options?.retries
       || client._options.retryConfig

@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type StackoneUpdateAccountRequest = {
@@ -77,6 +80,26 @@ export namespace StackoneUpdateAccountRequest$ {
   export type Outbound = StackoneUpdateAccountRequest$Outbound;
 }
 
+export function stackoneUpdateAccountRequestToJSON(
+  stackoneUpdateAccountRequest: StackoneUpdateAccountRequest,
+): string {
+  return JSON.stringify(
+    StackoneUpdateAccountRequest$outboundSchema.parse(
+      stackoneUpdateAccountRequest,
+    ),
+  );
+}
+
+export function stackoneUpdateAccountRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<StackoneUpdateAccountRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => StackoneUpdateAccountRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'StackoneUpdateAccountRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const StackoneUpdateAccountResponse$inboundSchema: z.ZodType<
   StackoneUpdateAccountResponse,
@@ -136,4 +159,24 @@ export namespace StackoneUpdateAccountResponse$ {
   export const outboundSchema = StackoneUpdateAccountResponse$outboundSchema;
   /** @deprecated use `StackoneUpdateAccountResponse$Outbound` instead. */
   export type Outbound = StackoneUpdateAccountResponse$Outbound;
+}
+
+export function stackoneUpdateAccountResponseToJSON(
+  stackoneUpdateAccountResponse: StackoneUpdateAccountResponse,
+): string {
+  return JSON.stringify(
+    StackoneUpdateAccountResponse$outboundSchema.parse(
+      stackoneUpdateAccountResponse,
+    ),
+  );
+}
+
+export function stackoneUpdateAccountResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<StackoneUpdateAccountResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => StackoneUpdateAccountResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'StackoneUpdateAccountResponse' from JSON`,
+  );
 }

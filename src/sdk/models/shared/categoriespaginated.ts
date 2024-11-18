@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   Category,
   Category$inboundSchema,
@@ -62,4 +65,22 @@ export namespace CategoriesPaginated$ {
   export const outboundSchema = CategoriesPaginated$outboundSchema;
   /** @deprecated use `CategoriesPaginated$Outbound` instead. */
   export type Outbound = CategoriesPaginated$Outbound;
+}
+
+export function categoriesPaginatedToJSON(
+  categoriesPaginated: CategoriesPaginated,
+): string {
+  return JSON.stringify(
+    CategoriesPaginated$outboundSchema.parse(categoriesPaginated),
+  );
+}
+
+export function categoriesPaginatedFromJSON(
+  jsonString: string,
+): SafeParseResult<CategoriesPaginated, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CategoriesPaginated$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CategoriesPaginated' from JSON`,
+  );
 }

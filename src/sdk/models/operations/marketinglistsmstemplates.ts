@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 /**
@@ -125,6 +128,33 @@ export namespace MarketingListSmsTemplatesQueryParamFilter$ {
   export type Outbound = MarketingListSmsTemplatesQueryParamFilter$Outbound;
 }
 
+export function marketingListSmsTemplatesQueryParamFilterToJSON(
+  marketingListSmsTemplatesQueryParamFilter:
+    MarketingListSmsTemplatesQueryParamFilter,
+): string {
+  return JSON.stringify(
+    MarketingListSmsTemplatesQueryParamFilter$outboundSchema.parse(
+      marketingListSmsTemplatesQueryParamFilter,
+    ),
+  );
+}
+
+export function marketingListSmsTemplatesQueryParamFilterFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  MarketingListSmsTemplatesQueryParamFilter,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      MarketingListSmsTemplatesQueryParamFilter$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'MarketingListSmsTemplatesQueryParamFilter' from JSON`,
+  );
+}
+
 /** @internal */
 export const MarketingListSmsTemplatesRequest$inboundSchema: z.ZodType<
   MarketingListSmsTemplatesRequest,
@@ -204,6 +234,26 @@ export namespace MarketingListSmsTemplatesRequest$ {
   export type Outbound = MarketingListSmsTemplatesRequest$Outbound;
 }
 
+export function marketingListSmsTemplatesRequestToJSON(
+  marketingListSmsTemplatesRequest: MarketingListSmsTemplatesRequest,
+): string {
+  return JSON.stringify(
+    MarketingListSmsTemplatesRequest$outboundSchema.parse(
+      marketingListSmsTemplatesRequest,
+    ),
+  );
+}
+
+export function marketingListSmsTemplatesRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<MarketingListSmsTemplatesRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => MarketingListSmsTemplatesRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'MarketingListSmsTemplatesRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const MarketingListSmsTemplatesResponse$inboundSchema: z.ZodType<
   MarketingListSmsTemplatesResponse,
@@ -264,4 +314,24 @@ export namespace MarketingListSmsTemplatesResponse$ {
     MarketingListSmsTemplatesResponse$outboundSchema;
   /** @deprecated use `MarketingListSmsTemplatesResponse$Outbound` instead. */
   export type Outbound = MarketingListSmsTemplatesResponse$Outbound;
+}
+
+export function marketingListSmsTemplatesResponseToJSON(
+  marketingListSmsTemplatesResponse: MarketingListSmsTemplatesResponse,
+): string {
+  return JSON.stringify(
+    MarketingListSmsTemplatesResponse$outboundSchema.parse(
+      marketingListSmsTemplatesResponse,
+    ),
+  );
+}
+
+export function marketingListSmsTemplatesResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<MarketingListSmsTemplatesResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => MarketingListSmsTemplatesResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'MarketingListSmsTemplatesResponse' from JSON`,
+  );
 }

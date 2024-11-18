@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type LanguageEnum4 = {};
 
@@ -479,6 +482,20 @@ export namespace LanguageEnum4$ {
   export type Outbound = LanguageEnum4$Outbound;
 }
 
+export function languageEnum4ToJSON(languageEnum4: LanguageEnum4): string {
+  return JSON.stringify(LanguageEnum4$outboundSchema.parse(languageEnum4));
+}
+
+export function languageEnum4FromJSON(
+  jsonString: string,
+): SafeParseResult<LanguageEnum4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LanguageEnum4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LanguageEnum4' from JSON`,
+  );
+}
+
 /** @internal */
 export const LanguageEnumSourceValue$inboundSchema: z.ZodType<
   LanguageEnumSourceValue,
@@ -524,6 +541,24 @@ export namespace LanguageEnumSourceValue$ {
   export const outboundSchema = LanguageEnumSourceValue$outboundSchema;
   /** @deprecated use `LanguageEnumSourceValue$Outbound` instead. */
   export type Outbound = LanguageEnumSourceValue$Outbound;
+}
+
+export function languageEnumSourceValueToJSON(
+  languageEnumSourceValue: LanguageEnumSourceValue,
+): string {
+  return JSON.stringify(
+    LanguageEnumSourceValue$outboundSchema.parse(languageEnumSourceValue),
+  );
+}
+
+export function languageEnumSourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<LanguageEnumSourceValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LanguageEnumSourceValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LanguageEnumSourceValue' from JSON`,
+  );
 }
 
 /** @internal */
@@ -626,4 +661,18 @@ export namespace LanguageEnum$ {
   export const outboundSchema = LanguageEnum$outboundSchema;
   /** @deprecated use `LanguageEnum$Outbound` instead. */
   export type Outbound = LanguageEnum$Outbound;
+}
+
+export function languageEnumToJSON(languageEnum: LanguageEnum): string {
+  return JSON.stringify(LanguageEnum$outboundSchema.parse(languageEnum));
+}
+
+export function languageEnumFromJSON(
+  jsonString: string,
+): SafeParseResult<LanguageEnum, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LanguageEnum$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LanguageEnum' from JSON`,
+  );
 }

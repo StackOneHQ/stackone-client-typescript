@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   CustomFields,
   CustomFields$inboundSchema,
@@ -213,6 +216,24 @@ export namespace AtsUpdateJobRequestDto4$ {
   export type Outbound = AtsUpdateJobRequestDto4$Outbound;
 }
 
+export function atsUpdateJobRequestDto4ToJSON(
+  atsUpdateJobRequestDto4: AtsUpdateJobRequestDto4,
+): string {
+  return JSON.stringify(
+    AtsUpdateJobRequestDto4$outboundSchema.parse(atsUpdateJobRequestDto4),
+  );
+}
+
+export function atsUpdateJobRequestDto4FromJSON(
+  jsonString: string,
+): SafeParseResult<AtsUpdateJobRequestDto4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AtsUpdateJobRequestDto4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AtsUpdateJobRequestDto4' from JSON`,
+  );
+}
+
 /** @internal */
 export const AtsUpdateJobRequestDtoSourceValue$inboundSchema: z.ZodType<
   AtsUpdateJobRequestDtoSourceValue,
@@ -259,6 +280,26 @@ export namespace AtsUpdateJobRequestDtoSourceValue$ {
     AtsUpdateJobRequestDtoSourceValue$outboundSchema;
   /** @deprecated use `AtsUpdateJobRequestDtoSourceValue$Outbound` instead. */
   export type Outbound = AtsUpdateJobRequestDtoSourceValue$Outbound;
+}
+
+export function atsUpdateJobRequestDtoSourceValueToJSON(
+  atsUpdateJobRequestDtoSourceValue: AtsUpdateJobRequestDtoSourceValue,
+): string {
+  return JSON.stringify(
+    AtsUpdateJobRequestDtoSourceValue$outboundSchema.parse(
+      atsUpdateJobRequestDtoSourceValue,
+    ),
+  );
+}
+
+export function atsUpdateJobRequestDtoSourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<AtsUpdateJobRequestDtoSourceValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AtsUpdateJobRequestDtoSourceValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AtsUpdateJobRequestDtoSourceValue' from JSON`,
+  );
 }
 
 /** @internal */
@@ -363,6 +404,26 @@ export namespace AtsUpdateJobRequestDtoJobStatus$ {
   export type Outbound = AtsUpdateJobRequestDtoJobStatus$Outbound;
 }
 
+export function atsUpdateJobRequestDtoJobStatusToJSON(
+  atsUpdateJobRequestDtoJobStatus: AtsUpdateJobRequestDtoJobStatus,
+): string {
+  return JSON.stringify(
+    AtsUpdateJobRequestDtoJobStatus$outboundSchema.parse(
+      atsUpdateJobRequestDtoJobStatus,
+    ),
+  );
+}
+
+export function atsUpdateJobRequestDtoJobStatusFromJSON(
+  jsonString: string,
+): SafeParseResult<AtsUpdateJobRequestDtoJobStatus, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AtsUpdateJobRequestDtoJobStatus$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AtsUpdateJobRequestDtoJobStatus' from JSON`,
+  );
+}
+
 /** @internal */
 export const AtsUpdateJobRequestDto$inboundSchema: z.ZodType<
   AtsUpdateJobRequestDto,
@@ -458,4 +519,22 @@ export namespace AtsUpdateJobRequestDto$ {
   export const outboundSchema = AtsUpdateJobRequestDto$outboundSchema;
   /** @deprecated use `AtsUpdateJobRequestDto$Outbound` instead. */
   export type Outbound = AtsUpdateJobRequestDto$Outbound;
+}
+
+export function atsUpdateJobRequestDtoToJSON(
+  atsUpdateJobRequestDto: AtsUpdateJobRequestDto,
+): string {
+  return JSON.stringify(
+    AtsUpdateJobRequestDto$outboundSchema.parse(atsUpdateJobRequestDto),
+  );
+}
+
+export function atsUpdateJobRequestDtoFromJSON(
+  jsonString: string,
+): SafeParseResult<AtsUpdateJobRequestDto, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AtsUpdateJobRequestDto$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AtsUpdateJobRequestDto' from JSON`,
+  );
 }

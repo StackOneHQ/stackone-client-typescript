@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type HRISLocation4 = {};
 
@@ -441,6 +444,20 @@ export namespace HRISLocation4$ {
   export type Outbound = HRISLocation4$Outbound;
 }
 
+export function hrisLocation4ToJSON(hrisLocation4: HRISLocation4): string {
+  return JSON.stringify(HRISLocation4$outboundSchema.parse(hrisLocation4));
+}
+
+export function hrisLocation4FromJSON(
+  jsonString: string,
+): SafeParseResult<HRISLocation4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => HRISLocation4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HRISLocation4' from JSON`,
+  );
+}
+
 /** @internal */
 export const HRISLocationSourceValue$inboundSchema: z.ZodType<
   HRISLocationSourceValue,
@@ -486,6 +503,24 @@ export namespace HRISLocationSourceValue$ {
   export const outboundSchema = HRISLocationSourceValue$outboundSchema;
   /** @deprecated use `HRISLocationSourceValue$Outbound` instead. */
   export type Outbound = HRISLocationSourceValue$Outbound;
+}
+
+export function hrisLocationSourceValueToJSON(
+  hrisLocationSourceValue: HRISLocationSourceValue,
+): string {
+  return JSON.stringify(
+    HRISLocationSourceValue$outboundSchema.parse(hrisLocationSourceValue),
+  );
+}
+
+export function hrisLocationSourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<HRISLocationSourceValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => HRISLocationSourceValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HRISLocationSourceValue' from JSON`,
+  );
 }
 
 /** @internal */
@@ -590,6 +625,24 @@ export namespace HRISLocationCountry$ {
   export type Outbound = HRISLocationCountry$Outbound;
 }
 
+export function hrisLocationCountryToJSON(
+  hrisLocationCountry: HRISLocationCountry,
+): string {
+  return JSON.stringify(
+    HRISLocationCountry$outboundSchema.parse(hrisLocationCountry),
+  );
+}
+
+export function hrisLocationCountryFromJSON(
+  jsonString: string,
+): SafeParseResult<HRISLocationCountry, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => HRISLocationCountry$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HRISLocationCountry' from JSON`,
+  );
+}
+
 /** @internal */
 export const HRISLocationSchemas4$inboundSchema: z.ZodType<
   HRISLocationSchemas4,
@@ -618,6 +671,24 @@ export namespace HRISLocationSchemas4$ {
   export const outboundSchema = HRISLocationSchemas4$outboundSchema;
   /** @deprecated use `HRISLocationSchemas4$Outbound` instead. */
   export type Outbound = HRISLocationSchemas4$Outbound;
+}
+
+export function hrisLocationSchemas4ToJSON(
+  hrisLocationSchemas4: HRISLocationSchemas4,
+): string {
+  return JSON.stringify(
+    HRISLocationSchemas4$outboundSchema.parse(hrisLocationSchemas4),
+  );
+}
+
+export function hrisLocationSchemas4FromJSON(
+  jsonString: string,
+): SafeParseResult<HRISLocationSchemas4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => HRISLocationSchemas4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HRISLocationSchemas4' from JSON`,
+  );
 }
 
 /** @internal */
@@ -665,6 +736,26 @@ export namespace HRISLocationSchemasSourceValue$ {
   export const outboundSchema = HRISLocationSchemasSourceValue$outboundSchema;
   /** @deprecated use `HRISLocationSchemasSourceValue$Outbound` instead. */
   export type Outbound = HRISLocationSchemasSourceValue$Outbound;
+}
+
+export function hrisLocationSchemasSourceValueToJSON(
+  hrisLocationSchemasSourceValue: HRISLocationSchemasSourceValue,
+): string {
+  return JSON.stringify(
+    HRISLocationSchemasSourceValue$outboundSchema.parse(
+      hrisLocationSchemasSourceValue,
+    ),
+  );
+}
+
+export function hrisLocationSchemasSourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<HRISLocationSchemasSourceValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => HRISLocationSchemasSourceValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HRISLocationSchemasSourceValue' from JSON`,
+  );
 }
 
 /** @internal */
@@ -767,6 +858,24 @@ export namespace HRISLocationLocationType$ {
   export const outboundSchema = HRISLocationLocationType$outboundSchema;
   /** @deprecated use `HRISLocationLocationType$Outbound` instead. */
   export type Outbound = HRISLocationLocationType$Outbound;
+}
+
+export function hrisLocationLocationTypeToJSON(
+  hrisLocationLocationType: HRISLocationLocationType,
+): string {
+  return JSON.stringify(
+    HRISLocationLocationType$outboundSchema.parse(hrisLocationLocationType),
+  );
+}
+
+export function hrisLocationLocationTypeFromJSON(
+  jsonString: string,
+): SafeParseResult<HRISLocationLocationType, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => HRISLocationLocationType$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HRISLocationLocationType' from JSON`,
+  );
 }
 
 /** @internal */
@@ -886,4 +995,18 @@ export namespace HRISLocation$ {
   export const outboundSchema = HRISLocation$outboundSchema;
   /** @deprecated use `HRISLocation$Outbound` instead. */
   export type Outbound = HRISLocation$Outbound;
+}
+
+export function hrisLocationToJSON(hrisLocation: HRISLocation): string {
+  return JSON.stringify(HRISLocation$outboundSchema.parse(hrisLocation));
+}
+
+export function hrisLocationFromJSON(
+  jsonString: string,
+): SafeParseResult<HRISLocation, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => HRISLocation$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HRISLocation' from JSON`,
+  );
 }

@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type LmsGetUserCompletionRequest = {
@@ -105,6 +108,26 @@ export namespace LmsGetUserCompletionRequest$ {
   export type Outbound = LmsGetUserCompletionRequest$Outbound;
 }
 
+export function lmsGetUserCompletionRequestToJSON(
+  lmsGetUserCompletionRequest: LmsGetUserCompletionRequest,
+): string {
+  return JSON.stringify(
+    LmsGetUserCompletionRequest$outboundSchema.parse(
+      lmsGetUserCompletionRequest,
+    ),
+  );
+}
+
+export function lmsGetUserCompletionRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<LmsGetUserCompletionRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LmsGetUserCompletionRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LmsGetUserCompletionRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const LmsGetUserCompletionResponse$inboundSchema: z.ZodType<
   LmsGetUserCompletionResponse,
@@ -164,4 +187,24 @@ export namespace LmsGetUserCompletionResponse$ {
   export const outboundSchema = LmsGetUserCompletionResponse$outboundSchema;
   /** @deprecated use `LmsGetUserCompletionResponse$Outbound` instead. */
   export type Outbound = LmsGetUserCompletionResponse$Outbound;
+}
+
+export function lmsGetUserCompletionResponseToJSON(
+  lmsGetUserCompletionResponse: LmsGetUserCompletionResponse,
+): string {
+  return JSON.stringify(
+    LmsGetUserCompletionResponse$outboundSchema.parse(
+      lmsGetUserCompletionResponse,
+    ),
+  );
+}
+
+export function lmsGetUserCompletionResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<LmsGetUserCompletionResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LmsGetUserCompletionResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LmsGetUserCompletionResponse' from JSON`,
+  );
 }

@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type AtsGetApplicationScheduledInterviewRequest = {
@@ -106,6 +109,33 @@ export namespace AtsGetApplicationScheduledInterviewRequest$ {
   export type Outbound = AtsGetApplicationScheduledInterviewRequest$Outbound;
 }
 
+export function atsGetApplicationScheduledInterviewRequestToJSON(
+  atsGetApplicationScheduledInterviewRequest:
+    AtsGetApplicationScheduledInterviewRequest,
+): string {
+  return JSON.stringify(
+    AtsGetApplicationScheduledInterviewRequest$outboundSchema.parse(
+      atsGetApplicationScheduledInterviewRequest,
+    ),
+  );
+}
+
+export function atsGetApplicationScheduledInterviewRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  AtsGetApplicationScheduledInterviewRequest,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      AtsGetApplicationScheduledInterviewRequest$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'AtsGetApplicationScheduledInterviewRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const AtsGetApplicationScheduledInterviewResponse$inboundSchema:
   z.ZodType<
@@ -173,4 +203,31 @@ export namespace AtsGetApplicationScheduledInterviewResponse$ {
     AtsGetApplicationScheduledInterviewResponse$outboundSchema;
   /** @deprecated use `AtsGetApplicationScheduledInterviewResponse$Outbound` instead. */
   export type Outbound = AtsGetApplicationScheduledInterviewResponse$Outbound;
+}
+
+export function atsGetApplicationScheduledInterviewResponseToJSON(
+  atsGetApplicationScheduledInterviewResponse:
+    AtsGetApplicationScheduledInterviewResponse,
+): string {
+  return JSON.stringify(
+    AtsGetApplicationScheduledInterviewResponse$outboundSchema.parse(
+      atsGetApplicationScheduledInterviewResponse,
+    ),
+  );
+}
+
+export function atsGetApplicationScheduledInterviewResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  AtsGetApplicationScheduledInterviewResponse,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      AtsGetApplicationScheduledInterviewResponse$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'AtsGetApplicationScheduledInterviewResponse' from JSON`,
+  );
 }

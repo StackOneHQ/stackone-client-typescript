@@ -77,6 +77,9 @@ export async function crmUpdateContact(
   const context = {
     operationID: "crm_update_contact",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.security,
     retryConfig: options?.retries
       || client._options.retryConfig

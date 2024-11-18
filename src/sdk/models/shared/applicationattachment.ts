@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type ApplicationAttachment4 = {};
 
@@ -100,6 +103,24 @@ export namespace ApplicationAttachment4$ {
   export type Outbound = ApplicationAttachment4$Outbound;
 }
 
+export function applicationAttachment4ToJSON(
+  applicationAttachment4: ApplicationAttachment4,
+): string {
+  return JSON.stringify(
+    ApplicationAttachment4$outboundSchema.parse(applicationAttachment4),
+  );
+}
+
+export function applicationAttachment4FromJSON(
+  jsonString: string,
+): SafeParseResult<ApplicationAttachment4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ApplicationAttachment4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ApplicationAttachment4' from JSON`,
+  );
+}
+
 /** @internal */
 export const ApplicationAttachmentSourceValue$inboundSchema: z.ZodType<
   ApplicationAttachmentSourceValue,
@@ -145,6 +166,26 @@ export namespace ApplicationAttachmentSourceValue$ {
   export const outboundSchema = ApplicationAttachmentSourceValue$outboundSchema;
   /** @deprecated use `ApplicationAttachmentSourceValue$Outbound` instead. */
   export type Outbound = ApplicationAttachmentSourceValue$Outbound;
+}
+
+export function applicationAttachmentSourceValueToJSON(
+  applicationAttachmentSourceValue: ApplicationAttachmentSourceValue,
+): string {
+  return JSON.stringify(
+    ApplicationAttachmentSourceValue$outboundSchema.parse(
+      applicationAttachmentSourceValue,
+    ),
+  );
+}
+
+export function applicationAttachmentSourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<ApplicationAttachmentSourceValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ApplicationAttachmentSourceValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ApplicationAttachmentSourceValue' from JSON`,
+  );
 }
 
 /** @internal */
@@ -249,6 +290,20 @@ export namespace ContentType$ {
   export type Outbound = ContentType$Outbound;
 }
 
+export function contentTypeToJSON(contentType: ContentType): string {
+  return JSON.stringify(ContentType$outboundSchema.parse(contentType));
+}
+
+export function contentTypeFromJSON(
+  jsonString: string,
+): SafeParseResult<ContentType, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ContentType$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ContentType' from JSON`,
+  );
+}
+
 /** @internal */
 export const ApplicationAttachment$inboundSchema: z.ZodType<
   ApplicationAttachment,
@@ -302,4 +357,22 @@ export namespace ApplicationAttachment$ {
   export const outboundSchema = ApplicationAttachment$outboundSchema;
   /** @deprecated use `ApplicationAttachment$Outbound` instead. */
   export type Outbound = ApplicationAttachment$Outbound;
+}
+
+export function applicationAttachmentToJSON(
+  applicationAttachment: ApplicationAttachment,
+): string {
+  return JSON.stringify(
+    ApplicationAttachment$outboundSchema.parse(applicationAttachment),
+  );
+}
+
+export function applicationAttachmentFromJSON(
+  jsonString: string,
+): SafeParseResult<ApplicationAttachment, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ApplicationAttachment$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ApplicationAttachment' from JSON`,
+  );
 }

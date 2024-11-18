@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type MarketingCreateOmniChannelTemplateRequest = {
@@ -88,6 +91,33 @@ export namespace MarketingCreateOmniChannelTemplateRequest$ {
   export type Outbound = MarketingCreateOmniChannelTemplateRequest$Outbound;
 }
 
+export function marketingCreateOmniChannelTemplateRequestToJSON(
+  marketingCreateOmniChannelTemplateRequest:
+    MarketingCreateOmniChannelTemplateRequest,
+): string {
+  return JSON.stringify(
+    MarketingCreateOmniChannelTemplateRequest$outboundSchema.parse(
+      marketingCreateOmniChannelTemplateRequest,
+    ),
+  );
+}
+
+export function marketingCreateOmniChannelTemplateRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  MarketingCreateOmniChannelTemplateRequest,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      MarketingCreateOmniChannelTemplateRequest$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'MarketingCreateOmniChannelTemplateRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const MarketingCreateOmniChannelTemplateResponse$inboundSchema:
   z.ZodType<MarketingCreateOmniChannelTemplateResponse, z.ZodTypeDef, unknown> =
@@ -148,4 +178,31 @@ export namespace MarketingCreateOmniChannelTemplateResponse$ {
     MarketingCreateOmniChannelTemplateResponse$outboundSchema;
   /** @deprecated use `MarketingCreateOmniChannelTemplateResponse$Outbound` instead. */
   export type Outbound = MarketingCreateOmniChannelTemplateResponse$Outbound;
+}
+
+export function marketingCreateOmniChannelTemplateResponseToJSON(
+  marketingCreateOmniChannelTemplateResponse:
+    MarketingCreateOmniChannelTemplateResponse,
+): string {
+  return JSON.stringify(
+    MarketingCreateOmniChannelTemplateResponse$outboundSchema.parse(
+      marketingCreateOmniChannelTemplateResponse,
+    ),
+  );
+}
+
+export function marketingCreateOmniChannelTemplateResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  MarketingCreateOmniChannelTemplateResponse,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      MarketingCreateOmniChannelTemplateResponse$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'MarketingCreateOmniChannelTemplateResponse' from JSON`,
+  );
 }

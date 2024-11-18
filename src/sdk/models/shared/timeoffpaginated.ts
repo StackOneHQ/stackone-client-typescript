@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   RawResponse,
   RawResponse$inboundSchema,
@@ -78,4 +81,22 @@ export namespace TimeOffPaginated$ {
   export const outboundSchema = TimeOffPaginated$outboundSchema;
   /** @deprecated use `TimeOffPaginated$Outbound` instead. */
   export type Outbound = TimeOffPaginated$Outbound;
+}
+
+export function timeOffPaginatedToJSON(
+  timeOffPaginated: TimeOffPaginated,
+): string {
+  return JSON.stringify(
+    TimeOffPaginated$outboundSchema.parse(timeOffPaginated),
+  );
+}
+
+export function timeOffPaginatedFromJSON(
+  jsonString: string,
+): SafeParseResult<TimeOffPaginated, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => TimeOffPaginated$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'TimeOffPaginated' from JSON`,
+  );
 }

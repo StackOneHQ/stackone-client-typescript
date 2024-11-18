@@ -80,6 +80,9 @@ export async function lmsGetContent(
   const context = {
     operationID: "lms_get_content",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.security,
     retryConfig: options?.retries
       || client._options.retryConfig

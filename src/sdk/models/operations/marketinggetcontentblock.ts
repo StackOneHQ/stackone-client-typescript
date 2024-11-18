@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type MarketingGetContentBlockRequest = {
@@ -101,6 +104,26 @@ export namespace MarketingGetContentBlockRequest$ {
   export type Outbound = MarketingGetContentBlockRequest$Outbound;
 }
 
+export function marketingGetContentBlockRequestToJSON(
+  marketingGetContentBlockRequest: MarketingGetContentBlockRequest,
+): string {
+  return JSON.stringify(
+    MarketingGetContentBlockRequest$outboundSchema.parse(
+      marketingGetContentBlockRequest,
+    ),
+  );
+}
+
+export function marketingGetContentBlockRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<MarketingGetContentBlockRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => MarketingGetContentBlockRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'MarketingGetContentBlockRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const MarketingGetContentBlockResponse$inboundSchema: z.ZodType<
   MarketingGetContentBlockResponse,
@@ -160,4 +183,24 @@ export namespace MarketingGetContentBlockResponse$ {
   export const outboundSchema = MarketingGetContentBlockResponse$outboundSchema;
   /** @deprecated use `MarketingGetContentBlockResponse$Outbound` instead. */
   export type Outbound = MarketingGetContentBlockResponse$Outbound;
+}
+
+export function marketingGetContentBlockResponseToJSON(
+  marketingGetContentBlockResponse: MarketingGetContentBlockResponse,
+): string {
+  return JSON.stringify(
+    MarketingGetContentBlockResponse$outboundSchema.parse(
+      marketingGetContentBlockResponse,
+    ),
+  );
+}
+
+export function marketingGetContentBlockResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<MarketingGetContentBlockResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => MarketingGetContentBlockResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'MarketingGetContentBlockResponse' from JSON`,
+  );
 }

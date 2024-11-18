@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type HrisGetLocationRequest = {
@@ -101,6 +104,24 @@ export namespace HrisGetLocationRequest$ {
   export type Outbound = HrisGetLocationRequest$Outbound;
 }
 
+export function hrisGetLocationRequestToJSON(
+  hrisGetLocationRequest: HrisGetLocationRequest,
+): string {
+  return JSON.stringify(
+    HrisGetLocationRequest$outboundSchema.parse(hrisGetLocationRequest),
+  );
+}
+
+export function hrisGetLocationRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<HrisGetLocationRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => HrisGetLocationRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HrisGetLocationRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const HrisGetLocationResponse$inboundSchema: z.ZodType<
   HrisGetLocationResponse,
@@ -160,4 +181,22 @@ export namespace HrisGetLocationResponse$ {
   export const outboundSchema = HrisGetLocationResponse$outboundSchema;
   /** @deprecated use `HrisGetLocationResponse$Outbound` instead. */
   export type Outbound = HrisGetLocationResponse$Outbound;
+}
+
+export function hrisGetLocationResponseToJSON(
+  hrisGetLocationResponse: HrisGetLocationResponse,
+): string {
+  return JSON.stringify(
+    HrisGetLocationResponse$outboundSchema.parse(hrisGetLocationResponse),
+  );
+}
+
+export function hrisGetLocationResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<HrisGetLocationResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => HrisGetLocationResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HrisGetLocationResponse' from JSON`,
+  );
 }

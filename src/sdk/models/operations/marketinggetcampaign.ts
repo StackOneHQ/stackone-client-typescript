@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type MarketingGetCampaignRequest = {
@@ -101,6 +104,26 @@ export namespace MarketingGetCampaignRequest$ {
   export type Outbound = MarketingGetCampaignRequest$Outbound;
 }
 
+export function marketingGetCampaignRequestToJSON(
+  marketingGetCampaignRequest: MarketingGetCampaignRequest,
+): string {
+  return JSON.stringify(
+    MarketingGetCampaignRequest$outboundSchema.parse(
+      marketingGetCampaignRequest,
+    ),
+  );
+}
+
+export function marketingGetCampaignRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<MarketingGetCampaignRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => MarketingGetCampaignRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'MarketingGetCampaignRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const MarketingGetCampaignResponse$inboundSchema: z.ZodType<
   MarketingGetCampaignResponse,
@@ -160,4 +183,24 @@ export namespace MarketingGetCampaignResponse$ {
   export const outboundSchema = MarketingGetCampaignResponse$outboundSchema;
   /** @deprecated use `MarketingGetCampaignResponse$Outbound` instead. */
   export type Outbound = MarketingGetCampaignResponse$Outbound;
+}
+
+export function marketingGetCampaignResponseToJSON(
+  marketingGetCampaignResponse: MarketingGetCampaignResponse,
+): string {
+  return JSON.stringify(
+    MarketingGetCampaignResponse$outboundSchema.parse(
+      marketingGetCampaignResponse,
+    ),
+  );
+}
+
+export function marketingGetCampaignResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<MarketingGetCampaignResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => MarketingGetCampaignResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'MarketingGetCampaignResponse' from JSON`,
+  );
 }

@@ -87,6 +87,9 @@ export async function atsDownloadApplicationDocument(
   const context = {
     operationID: "ats_download_application_document",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.security,
     retryConfig: options?.retries
       || client._options.retryConfig

@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type StackoneListConnectorsMetaRequest = {
@@ -69,6 +72,26 @@ export namespace StackoneListConnectorsMetaRequest$ {
   export type Outbound = StackoneListConnectorsMetaRequest$Outbound;
 }
 
+export function stackoneListConnectorsMetaRequestToJSON(
+  stackoneListConnectorsMetaRequest: StackoneListConnectorsMetaRequest,
+): string {
+  return JSON.stringify(
+    StackoneListConnectorsMetaRequest$outboundSchema.parse(
+      stackoneListConnectorsMetaRequest,
+    ),
+  );
+}
+
+export function stackoneListConnectorsMetaRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<StackoneListConnectorsMetaRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => StackoneListConnectorsMetaRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'StackoneListConnectorsMetaRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const StackoneListConnectorsMetaResponse$inboundSchema: z.ZodType<
   StackoneListConnectorsMetaResponse,
@@ -127,4 +150,25 @@ export namespace StackoneListConnectorsMetaResponse$ {
     StackoneListConnectorsMetaResponse$outboundSchema;
   /** @deprecated use `StackoneListConnectorsMetaResponse$Outbound` instead. */
   export type Outbound = StackoneListConnectorsMetaResponse$Outbound;
+}
+
+export function stackoneListConnectorsMetaResponseToJSON(
+  stackoneListConnectorsMetaResponse: StackoneListConnectorsMetaResponse,
+): string {
+  return JSON.stringify(
+    StackoneListConnectorsMetaResponse$outboundSchema.parse(
+      stackoneListConnectorsMetaResponse,
+    ),
+  );
+}
+
+export function stackoneListConnectorsMetaResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<StackoneListConnectorsMetaResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      StackoneListConnectorsMetaResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'StackoneListConnectorsMetaResponse' from JSON`,
+  );
 }

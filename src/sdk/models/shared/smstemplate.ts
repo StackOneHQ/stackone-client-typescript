@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   SmsMessages,
   SmsMessages$inboundSchema,
@@ -79,4 +82,18 @@ export namespace SmsTemplate$ {
   export const outboundSchema = SmsTemplate$outboundSchema;
   /** @deprecated use `SmsTemplate$Outbound` instead. */
   export type Outbound = SmsTemplate$Outbound;
+}
+
+export function smsTemplateToJSON(smsTemplate: SmsTemplate): string {
+  return JSON.stringify(SmsTemplate$outboundSchema.parse(smsTemplate));
+}
+
+export function smsTemplateFromJSON(
+  jsonString: string,
+): SafeParseResult<SmsTemplate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => SmsTemplate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SmsTemplate' from JSON`,
+  );
 }

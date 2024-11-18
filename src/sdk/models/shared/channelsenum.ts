@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type ChannelsEnum4 = {};
 
@@ -87,6 +90,20 @@ export namespace ChannelsEnum4$ {
   export type Outbound = ChannelsEnum4$Outbound;
 }
 
+export function channelsEnum4ToJSON(channelsEnum4: ChannelsEnum4): string {
+  return JSON.stringify(ChannelsEnum4$outboundSchema.parse(channelsEnum4));
+}
+
+export function channelsEnum4FromJSON(
+  jsonString: string,
+): SafeParseResult<ChannelsEnum4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ChannelsEnum4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ChannelsEnum4' from JSON`,
+  );
+}
+
 /** @internal */
 export const ChannelsEnumSourceValue$inboundSchema: z.ZodType<
   ChannelsEnumSourceValue,
@@ -132,6 +149,24 @@ export namespace ChannelsEnumSourceValue$ {
   export const outboundSchema = ChannelsEnumSourceValue$outboundSchema;
   /** @deprecated use `ChannelsEnumSourceValue$Outbound` instead. */
   export type Outbound = ChannelsEnumSourceValue$Outbound;
+}
+
+export function channelsEnumSourceValueToJSON(
+  channelsEnumSourceValue: ChannelsEnumSourceValue,
+): string {
+  return JSON.stringify(
+    ChannelsEnumSourceValue$outboundSchema.parse(channelsEnumSourceValue),
+  );
+}
+
+export function channelsEnumSourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<ChannelsEnumSourceValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ChannelsEnumSourceValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ChannelsEnumSourceValue' from JSON`,
+  );
 }
 
 /** @internal */
@@ -234,4 +269,18 @@ export namespace ChannelsEnum$ {
   export const outboundSchema = ChannelsEnum$outboundSchema;
   /** @deprecated use `ChannelsEnum$Outbound` instead. */
   export type Outbound = ChannelsEnum$Outbound;
+}
+
+export function channelsEnumToJSON(channelsEnum: ChannelsEnum): string {
+  return JSON.stringify(ChannelsEnum$outboundSchema.parse(channelsEnum));
+}
+
+export function channelsEnumFromJSON(
+  jsonString: string,
+): SafeParseResult<ChannelsEnum, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ChannelsEnum$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ChannelsEnum' from JSON`,
+  );
 }

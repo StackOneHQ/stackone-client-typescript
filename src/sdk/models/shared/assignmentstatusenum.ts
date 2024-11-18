@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type AssignmentStatusEnum4 = {};
 
@@ -70,6 +73,24 @@ export namespace AssignmentStatusEnum4$ {
   export type Outbound = AssignmentStatusEnum4$Outbound;
 }
 
+export function assignmentStatusEnum4ToJSON(
+  assignmentStatusEnum4: AssignmentStatusEnum4,
+): string {
+  return JSON.stringify(
+    AssignmentStatusEnum4$outboundSchema.parse(assignmentStatusEnum4),
+  );
+}
+
+export function assignmentStatusEnum4FromJSON(
+  jsonString: string,
+): SafeParseResult<AssignmentStatusEnum4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AssignmentStatusEnum4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AssignmentStatusEnum4' from JSON`,
+  );
+}
+
 /** @internal */
 export const SourceValue$inboundSchema: z.ZodType<
   SourceValue,
@@ -115,6 +136,20 @@ export namespace SourceValue$ {
   export const outboundSchema = SourceValue$outboundSchema;
   /** @deprecated use `SourceValue$Outbound` instead. */
   export type Outbound = SourceValue$Outbound;
+}
+
+export function sourceValueToJSON(sourceValue: SourceValue): string {
+  return JSON.stringify(SourceValue$outboundSchema.parse(sourceValue));
+}
+
+export function sourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<SourceValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => SourceValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SourceValue' from JSON`,
+  );
 }
 
 /** @internal */
@@ -217,4 +252,22 @@ export namespace AssignmentStatusEnum$ {
   export const outboundSchema = AssignmentStatusEnum$outboundSchema;
   /** @deprecated use `AssignmentStatusEnum$Outbound` instead. */
   export type Outbound = AssignmentStatusEnum$Outbound;
+}
+
+export function assignmentStatusEnumToJSON(
+  assignmentStatusEnum: AssignmentStatusEnum,
+): string {
+  return JSON.stringify(
+    AssignmentStatusEnum$outboundSchema.parse(assignmentStatusEnum),
+  );
+}
+
+export function assignmentStatusEnumFromJSON(
+  jsonString: string,
+): SafeParseResult<AssignmentStatusEnum, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AssignmentStatusEnum$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AssignmentStatusEnum' from JSON`,
+  );
 }

@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   IamPolicy,
   IamPolicy$inboundSchema,
@@ -58,4 +61,20 @@ export namespace IamPolicyResult$ {
   export const outboundSchema = IamPolicyResult$outboundSchema;
   /** @deprecated use `IamPolicyResult$Outbound` instead. */
   export type Outbound = IamPolicyResult$Outbound;
+}
+
+export function iamPolicyResultToJSON(
+  iamPolicyResult: IamPolicyResult,
+): string {
+  return JSON.stringify(IamPolicyResult$outboundSchema.parse(iamPolicyResult));
+}
+
+export function iamPolicyResultFromJSON(
+  jsonString: string,
+): SafeParseResult<IamPolicyResult, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => IamPolicyResult$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'IamPolicyResult' from JSON`,
+  );
 }

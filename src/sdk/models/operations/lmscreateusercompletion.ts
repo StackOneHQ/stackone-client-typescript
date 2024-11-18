@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type LmsCreateUserCompletionRequest = {
@@ -88,6 +91,26 @@ export namespace LmsCreateUserCompletionRequest$ {
   export type Outbound = LmsCreateUserCompletionRequest$Outbound;
 }
 
+export function lmsCreateUserCompletionRequestToJSON(
+  lmsCreateUserCompletionRequest: LmsCreateUserCompletionRequest,
+): string {
+  return JSON.stringify(
+    LmsCreateUserCompletionRequest$outboundSchema.parse(
+      lmsCreateUserCompletionRequest,
+    ),
+  );
+}
+
+export function lmsCreateUserCompletionRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<LmsCreateUserCompletionRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LmsCreateUserCompletionRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LmsCreateUserCompletionRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const LmsCreateUserCompletionResponse$inboundSchema: z.ZodType<
   LmsCreateUserCompletionResponse,
@@ -147,4 +170,24 @@ export namespace LmsCreateUserCompletionResponse$ {
   export const outboundSchema = LmsCreateUserCompletionResponse$outboundSchema;
   /** @deprecated use `LmsCreateUserCompletionResponse$Outbound` instead. */
   export type Outbound = LmsCreateUserCompletionResponse$Outbound;
+}
+
+export function lmsCreateUserCompletionResponseToJSON(
+  lmsCreateUserCompletionResponse: LmsCreateUserCompletionResponse,
+): string {
+  return JSON.stringify(
+    LmsCreateUserCompletionResponse$outboundSchema.parse(
+      lmsCreateUserCompletionResponse,
+    ),
+  );
+}
+
+export function lmsCreateUserCompletionResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<LmsCreateUserCompletionResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LmsCreateUserCompletionResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LmsCreateUserCompletionResponse' from JSON`,
+  );
 }

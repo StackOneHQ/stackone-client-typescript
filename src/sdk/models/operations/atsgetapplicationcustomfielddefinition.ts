@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 /**
@@ -122,6 +125,20 @@ export namespace Filter$ {
   export type Outbound = Filter$Outbound;
 }
 
+export function filterToJSON(filter: Filter): string {
+  return JSON.stringify(Filter$outboundSchema.parse(filter));
+}
+
+export function filterFromJSON(
+  jsonString: string,
+): SafeParseResult<Filter, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Filter$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Filter' from JSON`,
+  );
+}
+
 /** @internal */
 export const AtsGetApplicationCustomFieldDefinitionRequest$inboundSchema:
   z.ZodType<
@@ -201,6 +218,33 @@ export namespace AtsGetApplicationCustomFieldDefinitionRequest$ {
   export type Outbound = AtsGetApplicationCustomFieldDefinitionRequest$Outbound;
 }
 
+export function atsGetApplicationCustomFieldDefinitionRequestToJSON(
+  atsGetApplicationCustomFieldDefinitionRequest:
+    AtsGetApplicationCustomFieldDefinitionRequest,
+): string {
+  return JSON.stringify(
+    AtsGetApplicationCustomFieldDefinitionRequest$outboundSchema.parse(
+      atsGetApplicationCustomFieldDefinitionRequest,
+    ),
+  );
+}
+
+export function atsGetApplicationCustomFieldDefinitionRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  AtsGetApplicationCustomFieldDefinitionRequest,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      AtsGetApplicationCustomFieldDefinitionRequest$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'AtsGetApplicationCustomFieldDefinitionRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const AtsGetApplicationCustomFieldDefinitionResponse$inboundSchema:
   z.ZodType<
@@ -271,4 +315,31 @@ export namespace AtsGetApplicationCustomFieldDefinitionResponse$ {
   /** @deprecated use `AtsGetApplicationCustomFieldDefinitionResponse$Outbound` instead. */
   export type Outbound =
     AtsGetApplicationCustomFieldDefinitionResponse$Outbound;
+}
+
+export function atsGetApplicationCustomFieldDefinitionResponseToJSON(
+  atsGetApplicationCustomFieldDefinitionResponse:
+    AtsGetApplicationCustomFieldDefinitionResponse,
+): string {
+  return JSON.stringify(
+    AtsGetApplicationCustomFieldDefinitionResponse$outboundSchema.parse(
+      atsGetApplicationCustomFieldDefinitionResponse,
+    ),
+  );
+}
+
+export function atsGetApplicationCustomFieldDefinitionResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  AtsGetApplicationCustomFieldDefinitionResponse,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      AtsGetApplicationCustomFieldDefinitionResponse$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'AtsGetApplicationCustomFieldDefinitionResponse' from JSON`,
+  );
 }

@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   ApplicationAttachment,
   ApplicationAttachment$inboundSchema,
@@ -332,6 +335,20 @@ export namespace Application4$ {
   export type Outbound = Application4$Outbound;
 }
 
+export function application4ToJSON(application4: Application4): string {
+  return JSON.stringify(Application4$outboundSchema.parse(application4));
+}
+
+export function application4FromJSON(
+  jsonString: string,
+): SafeParseResult<Application4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Application4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Application4' from JSON`,
+  );
+}
+
 /** @internal */
 export const ApplicationSourceValue$inboundSchema: z.ZodType<
   ApplicationSourceValue,
@@ -377,6 +394,24 @@ export namespace ApplicationSourceValue$ {
   export const outboundSchema = ApplicationSourceValue$outboundSchema;
   /** @deprecated use `ApplicationSourceValue$Outbound` instead. */
   export type Outbound = ApplicationSourceValue$Outbound;
+}
+
+export function applicationSourceValueToJSON(
+  applicationSourceValue: ApplicationSourceValue,
+): string {
+  return JSON.stringify(
+    ApplicationSourceValue$outboundSchema.parse(applicationSourceValue),
+  );
+}
+
+export function applicationSourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<ApplicationSourceValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ApplicationSourceValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ApplicationSourceValue' from JSON`,
+  );
 }
 
 /** @internal */
@@ -481,6 +516,24 @@ export namespace ApplicationStatus$ {
   export type Outbound = ApplicationStatus$Outbound;
 }
 
+export function applicationStatusToJSON(
+  applicationStatus: ApplicationStatus,
+): string {
+  return JSON.stringify(
+    ApplicationStatus$outboundSchema.parse(applicationStatus),
+  );
+}
+
+export function applicationStatusFromJSON(
+  jsonString: string,
+): SafeParseResult<ApplicationStatus, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ApplicationStatus$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ApplicationStatus' from JSON`,
+  );
+}
+
 /** @internal */
 export const ApplicationCandidate$inboundSchema: z.ZodType<
   ApplicationCandidate,
@@ -555,6 +608,24 @@ export namespace ApplicationCandidate$ {
   export type Outbound = ApplicationCandidate$Outbound;
 }
 
+export function applicationCandidateToJSON(
+  applicationCandidate: ApplicationCandidate,
+): string {
+  return JSON.stringify(
+    ApplicationCandidate$outboundSchema.parse(applicationCandidate),
+  );
+}
+
+export function applicationCandidateFromJSON(
+  jsonString: string,
+): SafeParseResult<ApplicationCandidate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ApplicationCandidate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ApplicationCandidate' from JSON`,
+  );
+}
+
 /** @internal */
 export const ApplicationInterviewStage$inboundSchema: z.ZodType<
   ApplicationInterviewStage,
@@ -627,6 +698,24 @@ export namespace ApplicationInterviewStage$ {
   export type Outbound = ApplicationInterviewStage$Outbound;
 }
 
+export function applicationInterviewStageToJSON(
+  applicationInterviewStage: ApplicationInterviewStage,
+): string {
+  return JSON.stringify(
+    ApplicationInterviewStage$outboundSchema.parse(applicationInterviewStage),
+  );
+}
+
+export function applicationInterviewStageFromJSON(
+  jsonString: string,
+): SafeParseResult<ApplicationInterviewStage, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ApplicationInterviewStage$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ApplicationInterviewStage' from JSON`,
+  );
+}
+
 /** @internal */
 export const Source$inboundSchema: z.ZodType<Source, z.ZodTypeDef, unknown> = z
   .object({
@@ -672,6 +761,20 @@ export namespace Source$ {
   export const outboundSchema = Source$outboundSchema;
   /** @deprecated use `Source$Outbound` instead. */
   export type Outbound = Source$Outbound;
+}
+
+export function sourceToJSON(source: Source): string {
+  return JSON.stringify(Source$outboundSchema.parse(source));
+}
+
+export function sourceFromJSON(
+  jsonString: string,
+): SafeParseResult<Source, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Source$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Source' from JSON`,
+  );
 }
 
 /** @internal */
@@ -859,4 +962,18 @@ export namespace Application$ {
   export const outboundSchema = Application$outboundSchema;
   /** @deprecated use `Application$Outbound` instead. */
   export type Outbound = Application$Outbound;
+}
+
+export function applicationToJSON(application: Application): string {
+  return JSON.stringify(Application$outboundSchema.parse(application));
+}
+
+export function applicationFromJSON(
+  jsonString: string,
+): SafeParseResult<Application, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Application$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Application' from JSON`,
+  );
 }

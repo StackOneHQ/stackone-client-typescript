@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   HRISDepartment,
   HRISDepartment$inboundSchema,
@@ -58,4 +61,22 @@ export namespace HRISDepartmentsResult$ {
   export const outboundSchema = HRISDepartmentsResult$outboundSchema;
   /** @deprecated use `HRISDepartmentsResult$Outbound` instead. */
   export type Outbound = HRISDepartmentsResult$Outbound;
+}
+
+export function hrisDepartmentsResultToJSON(
+  hrisDepartmentsResult: HRISDepartmentsResult,
+): string {
+  return JSON.stringify(
+    HRISDepartmentsResult$outboundSchema.parse(hrisDepartmentsResult),
+  );
+}
+
+export function hrisDepartmentsResultFromJSON(
+  jsonString: string,
+): SafeParseResult<HRISDepartmentsResult, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => HRISDepartmentsResult$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HRISDepartmentsResult' from JSON`,
+  );
 }

@@ -71,6 +71,9 @@ export async function accountsGetAccountMetaInfo(
   const context = {
     operationID: "stackone_get_account_meta_info",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.security,
     retryConfig: options?.retries
       || client._options.retryConfig

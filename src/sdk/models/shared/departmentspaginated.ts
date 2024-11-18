@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   Department,
   Department$inboundSchema,
@@ -78,4 +81,22 @@ export namespace DepartmentsPaginated$ {
   export const outboundSchema = DepartmentsPaginated$outboundSchema;
   /** @deprecated use `DepartmentsPaginated$Outbound` instead. */
   export type Outbound = DepartmentsPaginated$Outbound;
+}
+
+export function departmentsPaginatedToJSON(
+  departmentsPaginated: DepartmentsPaginated,
+): string {
+  return JSON.stringify(
+    DepartmentsPaginated$outboundSchema.parse(departmentsPaginated),
+  );
+}
+
+export function departmentsPaginatedFromJSON(
+  jsonString: string,
+): SafeParseResult<DepartmentsPaginated, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DepartmentsPaginated$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DepartmentsPaginated' from JSON`,
+  );
 }

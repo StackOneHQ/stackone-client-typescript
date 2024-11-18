@@ -86,6 +86,9 @@ export async function hrisUpdateEmployeeEmployment(
   const context = {
     operationID: "hris_update_employee_employment",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.security,
     retryConfig: options?.retries
       || client._options.retryConfig

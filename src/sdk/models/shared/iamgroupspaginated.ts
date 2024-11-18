@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   IamGroup,
   IamGroup$inboundSchema,
@@ -78,4 +81,22 @@ export namespace IamGroupsPaginated$ {
   export const outboundSchema = IamGroupsPaginated$outboundSchema;
   /** @deprecated use `IamGroupsPaginated$Outbound` instead. */
   export type Outbound = IamGroupsPaginated$Outbound;
+}
+
+export function iamGroupsPaginatedToJSON(
+  iamGroupsPaginated: IamGroupsPaginated,
+): string {
+  return JSON.stringify(
+    IamGroupsPaginated$outboundSchema.parse(iamGroupsPaginated),
+  );
+}
+
+export function iamGroupsPaginatedFromJSON(
+  jsonString: string,
+): SafeParseResult<IamGroupsPaginated, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => IamGroupsPaginated$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'IamGroupsPaginated' from JSON`,
+  );
 }

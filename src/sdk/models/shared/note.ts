@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   NoteContentApiModel,
   NoteContentApiModel$inboundSchema,
@@ -123,6 +126,20 @@ export namespace Note4$ {
   export type Outbound = Note4$Outbound;
 }
 
+export function note4ToJSON(note4: Note4): string {
+  return JSON.stringify(Note4$outboundSchema.parse(note4));
+}
+
+export function note4FromJSON(
+  jsonString: string,
+): SafeParseResult<Note4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Note4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Note4' from JSON`,
+  );
+}
+
 /** @internal */
 export const NoteSourceValue$inboundSchema: z.ZodType<
   NoteSourceValue,
@@ -168,6 +185,22 @@ export namespace NoteSourceValue$ {
   export const outboundSchema = NoteSourceValue$outboundSchema;
   /** @deprecated use `NoteSourceValue$Outbound` instead. */
   export type Outbound = NoteSourceValue$Outbound;
+}
+
+export function noteSourceValueToJSON(
+  noteSourceValue: NoteSourceValue,
+): string {
+  return JSON.stringify(NoteSourceValue$outboundSchema.parse(noteSourceValue));
+}
+
+export function noteSourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<NoteSourceValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => NoteSourceValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'NoteSourceValue' from JSON`,
+  );
 }
 
 /** @internal */
@@ -272,6 +305,20 @@ export namespace NoteVisibility$ {
   export type Outbound = NoteVisibility$Outbound;
 }
 
+export function noteVisibilityToJSON(noteVisibility: NoteVisibility): string {
+  return JSON.stringify(NoteVisibility$outboundSchema.parse(noteVisibility));
+}
+
+export function noteVisibilityFromJSON(
+  jsonString: string,
+): SafeParseResult<NoteVisibility, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => NoteVisibility$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'NoteVisibility' from JSON`,
+  );
+}
+
 /** @internal */
 export const Note$inboundSchema: z.ZodType<Note, z.ZodTypeDef, unknown> = z
   .object({
@@ -355,4 +402,18 @@ export namespace Note$ {
   export const outboundSchema = Note$outboundSchema;
   /** @deprecated use `Note$Outbound` instead. */
   export type Outbound = Note$Outbound;
+}
+
+export function noteToJSON(note: Note): string {
+  return JSON.stringify(Note$outboundSchema.parse(note));
+}
+
+export function noteFromJSON(
+  jsonString: string,
+): SafeParseResult<Note, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Note$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Note' from JSON`,
+  );
 }

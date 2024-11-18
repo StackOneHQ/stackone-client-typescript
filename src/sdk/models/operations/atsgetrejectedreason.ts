@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type AtsGetRejectedReasonRequest = {
@@ -101,6 +104,26 @@ export namespace AtsGetRejectedReasonRequest$ {
   export type Outbound = AtsGetRejectedReasonRequest$Outbound;
 }
 
+export function atsGetRejectedReasonRequestToJSON(
+  atsGetRejectedReasonRequest: AtsGetRejectedReasonRequest,
+): string {
+  return JSON.stringify(
+    AtsGetRejectedReasonRequest$outboundSchema.parse(
+      atsGetRejectedReasonRequest,
+    ),
+  );
+}
+
+export function atsGetRejectedReasonRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<AtsGetRejectedReasonRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AtsGetRejectedReasonRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AtsGetRejectedReasonRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const AtsGetRejectedReasonResponse$inboundSchema: z.ZodType<
   AtsGetRejectedReasonResponse,
@@ -160,4 +183,24 @@ export namespace AtsGetRejectedReasonResponse$ {
   export const outboundSchema = AtsGetRejectedReasonResponse$outboundSchema;
   /** @deprecated use `AtsGetRejectedReasonResponse$Outbound` instead. */
   export type Outbound = AtsGetRejectedReasonResponse$Outbound;
+}
+
+export function atsGetRejectedReasonResponseToJSON(
+  atsGetRejectedReasonResponse: AtsGetRejectedReasonResponse,
+): string {
+  return JSON.stringify(
+    AtsGetRejectedReasonResponse$outboundSchema.parse(
+      atsGetRejectedReasonResponse,
+    ),
+  );
+}
+
+export function atsGetRejectedReasonResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<AtsGetRejectedReasonResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AtsGetRejectedReasonResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AtsGetRejectedReasonResponse' from JSON`,
+  );
 }

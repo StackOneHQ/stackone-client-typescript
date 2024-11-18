@@ -90,6 +90,9 @@ export async function iamGetPolicy(
   const context = {
     operationID: "iam_get_policy",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.security,
     retryConfig: options?.retries
       || client._options.retryConfig

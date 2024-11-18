@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type CostCenters = {
   distributionPercentage?: number | null | undefined;
@@ -71,4 +74,18 @@ export namespace CostCenters$ {
   export const outboundSchema = CostCenters$outboundSchema;
   /** @deprecated use `CostCenters$Outbound` instead. */
   export type Outbound = CostCenters$Outbound;
+}
+
+export function costCentersToJSON(costCenters: CostCenters): string {
+  return JSON.stringify(CostCenters$outboundSchema.parse(costCenters));
+}
+
+export function costCentersFromJSON(
+  jsonString: string,
+): SafeParseResult<CostCenters, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CostCenters$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CostCenters' from JSON`,
+  );
 }

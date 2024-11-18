@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   RawResponse,
   RawResponse$inboundSchema,
@@ -78,4 +81,22 @@ export namespace WorkEligibilityPaginated$ {
   export const outboundSchema = WorkEligibilityPaginated$outboundSchema;
   /** @deprecated use `WorkEligibilityPaginated$Outbound` instead. */
   export type Outbound = WorkEligibilityPaginated$Outbound;
+}
+
+export function workEligibilityPaginatedToJSON(
+  workEligibilityPaginated: WorkEligibilityPaginated,
+): string {
+  return JSON.stringify(
+    WorkEligibilityPaginated$outboundSchema.parse(workEligibilityPaginated),
+  );
+}
+
+export function workEligibilityPaginatedFromJSON(
+  jsonString: string,
+): SafeParseResult<WorkEligibilityPaginated, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => WorkEligibilityPaginated$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'WorkEligibilityPaginated' from JSON`,
+  );
 }

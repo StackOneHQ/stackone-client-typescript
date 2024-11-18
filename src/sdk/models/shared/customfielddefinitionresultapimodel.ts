@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   CustomFieldDefinition,
   CustomFieldDefinition$inboundSchema,
@@ -60,4 +63,25 @@ export namespace CustomFieldDefinitionResultApiModel$ {
     CustomFieldDefinitionResultApiModel$outboundSchema;
   /** @deprecated use `CustomFieldDefinitionResultApiModel$Outbound` instead. */
   export type Outbound = CustomFieldDefinitionResultApiModel$Outbound;
+}
+
+export function customFieldDefinitionResultApiModelToJSON(
+  customFieldDefinitionResultApiModel: CustomFieldDefinitionResultApiModel,
+): string {
+  return JSON.stringify(
+    CustomFieldDefinitionResultApiModel$outboundSchema.parse(
+      customFieldDefinitionResultApiModel,
+    ),
+  );
+}
+
+export function customFieldDefinitionResultApiModelFromJSON(
+  jsonString: string,
+): SafeParseResult<CustomFieldDefinitionResultApiModel, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      CustomFieldDefinitionResultApiModel$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CustomFieldDefinitionResultApiModel' from JSON`,
+  );
 }

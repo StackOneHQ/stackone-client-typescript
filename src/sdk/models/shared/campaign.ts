@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   ChannelsEnum,
   ChannelsEnum$inboundSchema,
@@ -223,6 +226,20 @@ export namespace Archived$ {
   export type Outbound = Archived$Outbound;
 }
 
+export function archivedToJSON(archived: Archived): string {
+  return JSON.stringify(Archived$outboundSchema.parse(archived));
+}
+
+export function archivedFromJSON(
+  jsonString: string,
+): SafeParseResult<Archived, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Archived$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Archived' from JSON`,
+  );
+}
+
 /** @internal */
 export const Campaign2$inboundSchema: z.ZodNativeEnum<typeof Campaign2> = z
   .nativeEnum(Campaign2);
@@ -269,6 +286,20 @@ export namespace Draft$ {
   export type Outbound = Draft$Outbound;
 }
 
+export function draftToJSON(draft: Draft): string {
+  return JSON.stringify(Draft$outboundSchema.parse(draft));
+}
+
+export function draftFromJSON(
+  jsonString: string,
+): SafeParseResult<Draft, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Draft$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Draft' from JSON`,
+  );
+}
+
 /** @internal */
 export const Campaign4$inboundSchema: z.ZodType<
   Campaign4,
@@ -297,6 +328,20 @@ export namespace Campaign4$ {
   export const outboundSchema = Campaign4$outboundSchema;
   /** @deprecated use `Campaign4$Outbound` instead. */
   export type Outbound = Campaign4$Outbound;
+}
+
+export function campaign4ToJSON(campaign4: Campaign4): string {
+  return JSON.stringify(Campaign4$outboundSchema.parse(campaign4));
+}
+
+export function campaign4FromJSON(
+  jsonString: string,
+): SafeParseResult<Campaign4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Campaign4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Campaign4' from JSON`,
+  );
 }
 
 /** @internal */
@@ -344,6 +389,24 @@ export namespace CampaignSourceValue$ {
   export const outboundSchema = CampaignSourceValue$outboundSchema;
   /** @deprecated use `CampaignSourceValue$Outbound` instead. */
   export type Outbound = CampaignSourceValue$Outbound;
+}
+
+export function campaignSourceValueToJSON(
+  campaignSourceValue: CampaignSourceValue,
+): string {
+  return JSON.stringify(
+    CampaignSourceValue$outboundSchema.parse(campaignSourceValue),
+  );
+}
+
+export function campaignSourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<CampaignSourceValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CampaignSourceValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CampaignSourceValue' from JSON`,
+  );
 }
 
 /** @internal */
@@ -448,6 +511,20 @@ export namespace ScheduleType$ {
   export type Outbound = ScheduleType$Outbound;
 }
 
+export function scheduleTypeToJSON(scheduleType: ScheduleType): string {
+  return JSON.stringify(ScheduleType$outboundSchema.parse(scheduleType));
+}
+
+export function scheduleTypeFromJSON(
+  jsonString: string,
+): SafeParseResult<ScheduleType, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ScheduleType$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ScheduleType' from JSON`,
+  );
+}
+
 /** @internal */
 export const CampaignSchemas4$inboundSchema: z.ZodType<
   CampaignSchemas4,
@@ -476,6 +553,24 @@ export namespace CampaignSchemas4$ {
   export const outboundSchema = CampaignSchemas4$outboundSchema;
   /** @deprecated use `CampaignSchemas4$Outbound` instead. */
   export type Outbound = CampaignSchemas4$Outbound;
+}
+
+export function campaignSchemas4ToJSON(
+  campaignSchemas4: CampaignSchemas4,
+): string {
+  return JSON.stringify(
+    CampaignSchemas4$outboundSchema.parse(campaignSchemas4),
+  );
+}
+
+export function campaignSchemas4FromJSON(
+  jsonString: string,
+): SafeParseResult<CampaignSchemas4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CampaignSchemas4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CampaignSchemas4' from JSON`,
+  );
 }
 
 /** @internal */
@@ -523,6 +618,24 @@ export namespace CampaignSchemasSourceValue$ {
   export const outboundSchema = CampaignSchemasSourceValue$outboundSchema;
   /** @deprecated use `CampaignSchemasSourceValue$Outbound` instead. */
   export type Outbound = CampaignSchemasSourceValue$Outbound;
+}
+
+export function campaignSchemasSourceValueToJSON(
+  campaignSchemasSourceValue: CampaignSchemasSourceValue,
+): string {
+  return JSON.stringify(
+    CampaignSchemasSourceValue$outboundSchema.parse(campaignSchemasSourceValue),
+  );
+}
+
+export function campaignSchemasSourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<CampaignSchemasSourceValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CampaignSchemasSourceValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CampaignSchemasSourceValue' from JSON`,
+  );
 }
 
 /** @internal */
@@ -622,6 +735,20 @@ export namespace Status$ {
   export const outboundSchema = Status$outboundSchema;
   /** @deprecated use `Status$Outbound` instead. */
   export type Outbound = Status$Outbound;
+}
+
+export function statusToJSON(status: Status): string {
+  return JSON.stringify(Status$outboundSchema.parse(status));
+}
+
+export function statusFromJSON(
+  jsonString: string,
+): SafeParseResult<Status, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Status$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Status' from JSON`,
+  );
 }
 
 /** @internal */
@@ -729,4 +856,18 @@ export namespace Campaign$ {
   export const outboundSchema = Campaign$outboundSchema;
   /** @deprecated use `Campaign$Outbound` instead. */
   export type Outbound = Campaign$Outbound;
+}
+
+export function campaignToJSON(campaign: Campaign): string {
+  return JSON.stringify(Campaign$outboundSchema.parse(campaign));
+}
+
+export function campaignFromJSON(
+  jsonString: string,
+): SafeParseResult<Campaign, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Campaign$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Campaign' from JSON`,
+  );
 }

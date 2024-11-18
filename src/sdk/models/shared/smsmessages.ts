@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type SmsMessagesMessageContent = {
   body?: string | null | undefined;
@@ -120,6 +123,24 @@ export namespace SmsMessagesMessageContent$ {
   export type Outbound = SmsMessagesMessageContent$Outbound;
 }
 
+export function smsMessagesMessageContentToJSON(
+  smsMessagesMessageContent: SmsMessagesMessageContent,
+): string {
+  return JSON.stringify(
+    SmsMessagesMessageContent$outboundSchema.parse(smsMessagesMessageContent),
+  );
+}
+
+export function smsMessagesMessageContentFromJSON(
+  jsonString: string,
+): SafeParseResult<SmsMessagesMessageContent, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => SmsMessagesMessageContent$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SmsMessagesMessageContent' from JSON`,
+  );
+}
+
 /** @internal */
 export const SmsMessages4$inboundSchema: z.ZodType<
   SmsMessages4,
@@ -148,6 +169,20 @@ export namespace SmsMessages4$ {
   export const outboundSchema = SmsMessages4$outboundSchema;
   /** @deprecated use `SmsMessages4$Outbound` instead. */
   export type Outbound = SmsMessages4$Outbound;
+}
+
+export function smsMessages4ToJSON(smsMessages4: SmsMessages4): string {
+  return JSON.stringify(SmsMessages4$outboundSchema.parse(smsMessages4));
+}
+
+export function smsMessages4FromJSON(
+  jsonString: string,
+): SafeParseResult<SmsMessages4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => SmsMessages4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SmsMessages4' from JSON`,
+  );
 }
 
 /** @internal */
@@ -195,6 +230,24 @@ export namespace SmsMessagesSourceValue$ {
   export const outboundSchema = SmsMessagesSourceValue$outboundSchema;
   /** @deprecated use `SmsMessagesSourceValue$Outbound` instead. */
   export type Outbound = SmsMessagesSourceValue$Outbound;
+}
+
+export function smsMessagesSourceValueToJSON(
+  smsMessagesSourceValue: SmsMessagesSourceValue,
+): string {
+  return JSON.stringify(
+    SmsMessagesSourceValue$outboundSchema.parse(smsMessagesSourceValue),
+  );
+}
+
+export function smsMessagesSourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<SmsMessagesSourceValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => SmsMessagesSourceValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SmsMessagesSourceValue' from JSON`,
+  );
 }
 
 /** @internal */
@@ -299,6 +352,24 @@ export namespace SmsMessagesMessageType$ {
   export type Outbound = SmsMessagesMessageType$Outbound;
 }
 
+export function smsMessagesMessageTypeToJSON(
+  smsMessagesMessageType: SmsMessagesMessageType,
+): string {
+  return JSON.stringify(
+    SmsMessagesMessageType$outboundSchema.parse(smsMessagesMessageType),
+  );
+}
+
+export function smsMessagesMessageTypeFromJSON(
+  jsonString: string,
+): SafeParseResult<SmsMessagesMessageType, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => SmsMessagesMessageType$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SmsMessagesMessageType' from JSON`,
+  );
+}
+
 /** @internal */
 export const SmsMessages$inboundSchema: z.ZodType<
   SmsMessages,
@@ -363,4 +434,18 @@ export namespace SmsMessages$ {
   export const outboundSchema = SmsMessages$outboundSchema;
   /** @deprecated use `SmsMessages$Outbound` instead. */
   export type Outbound = SmsMessages$Outbound;
+}
+
+export function smsMessagesToJSON(smsMessages: SmsMessages): string {
+  return JSON.stringify(SmsMessages$outboundSchema.parse(smsMessages));
+}
+
+export function smsMessagesFromJSON(
+  jsonString: string,
+): SafeParseResult<SmsMessages, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => SmsMessages$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SmsMessages' from JSON`,
+  );
 }

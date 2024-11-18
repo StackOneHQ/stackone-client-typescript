@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 /**
@@ -139,6 +142,32 @@ export namespace AtsListApplicationsScheduledInterviewsQueryParamFilter$ {
     AtsListApplicationsScheduledInterviewsQueryParamFilter$Outbound;
 }
 
+export function atsListApplicationsScheduledInterviewsQueryParamFilterToJSON(
+  atsListApplicationsScheduledInterviewsQueryParamFilter:
+    AtsListApplicationsScheduledInterviewsQueryParamFilter,
+): string {
+  return JSON.stringify(
+    AtsListApplicationsScheduledInterviewsQueryParamFilter$outboundSchema.parse(
+      atsListApplicationsScheduledInterviewsQueryParamFilter,
+    ),
+  );
+}
+
+export function atsListApplicationsScheduledInterviewsQueryParamFilterFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  AtsListApplicationsScheduledInterviewsQueryParamFilter,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      AtsListApplicationsScheduledInterviewsQueryParamFilter$inboundSchema
+        .parse(JSON.parse(x)),
+    `Failed to parse 'AtsListApplicationsScheduledInterviewsQueryParamFilter' from JSON`,
+  );
+}
+
 /** @internal */
 export const AtsListApplicationsScheduledInterviewsRequest$inboundSchema:
   z.ZodType<
@@ -234,6 +263,33 @@ export namespace AtsListApplicationsScheduledInterviewsRequest$ {
   export type Outbound = AtsListApplicationsScheduledInterviewsRequest$Outbound;
 }
 
+export function atsListApplicationsScheduledInterviewsRequestToJSON(
+  atsListApplicationsScheduledInterviewsRequest:
+    AtsListApplicationsScheduledInterviewsRequest,
+): string {
+  return JSON.stringify(
+    AtsListApplicationsScheduledInterviewsRequest$outboundSchema.parse(
+      atsListApplicationsScheduledInterviewsRequest,
+    ),
+  );
+}
+
+export function atsListApplicationsScheduledInterviewsRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  AtsListApplicationsScheduledInterviewsRequest,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      AtsListApplicationsScheduledInterviewsRequest$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'AtsListApplicationsScheduledInterviewsRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const AtsListApplicationsScheduledInterviewsResponse$inboundSchema:
   z.ZodType<
@@ -302,4 +358,31 @@ export namespace AtsListApplicationsScheduledInterviewsResponse$ {
   /** @deprecated use `AtsListApplicationsScheduledInterviewsResponse$Outbound` instead. */
   export type Outbound =
     AtsListApplicationsScheduledInterviewsResponse$Outbound;
+}
+
+export function atsListApplicationsScheduledInterviewsResponseToJSON(
+  atsListApplicationsScheduledInterviewsResponse:
+    AtsListApplicationsScheduledInterviewsResponse,
+): string {
+  return JSON.stringify(
+    AtsListApplicationsScheduledInterviewsResponse$outboundSchema.parse(
+      atsListApplicationsScheduledInterviewsResponse,
+    ),
+  );
+}
+
+export function atsListApplicationsScheduledInterviewsResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  AtsListApplicationsScheduledInterviewsResponse,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      AtsListApplicationsScheduledInterviewsResponse$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'AtsListApplicationsScheduledInterviewsResponse' from JSON`,
+  );
 }

@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type PushMessageContentsSchemas = {
   body?: string | null | undefined;
@@ -223,6 +226,24 @@ export namespace PushMessageContentsSchemas$ {
   export type Outbound = PushMessageContentsSchemas$Outbound;
 }
 
+export function pushMessageContentsSchemasToJSON(
+  pushMessageContentsSchemas: PushMessageContentsSchemas,
+): string {
+  return JSON.stringify(
+    PushMessageContentsSchemas$outboundSchema.parse(pushMessageContentsSchemas),
+  );
+}
+
+export function pushMessageContentsSchemasFromJSON(
+  jsonString: string,
+): SafeParseResult<PushMessageContentsSchemas, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PushMessageContentsSchemas$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PushMessageContentsSchemas' from JSON`,
+  );
+}
+
 /** @internal */
 export const Schemas$inboundSchema: z.ZodType<Schemas, z.ZodTypeDef, unknown> =
   z.object({
@@ -276,6 +297,20 @@ export namespace Schemas$ {
   export type Outbound = Schemas$Outbound;
 }
 
+export function schemasToJSON(schemas: Schemas): string {
+  return JSON.stringify(Schemas$outboundSchema.parse(schemas));
+}
+
+export function schemasFromJSON(
+  jsonString: string,
+): SafeParseResult<Schemas, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Schemas$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Schemas' from JSON`,
+  );
+}
+
 /** @internal */
 export const SmsMessageContentsSchemas$inboundSchema: z.ZodType<
   SmsMessageContentsSchemas,
@@ -313,6 +348,24 @@ export namespace SmsMessageContentsSchemas$ {
   export const outboundSchema = SmsMessageContentsSchemas$outboundSchema;
   /** @deprecated use `SmsMessageContentsSchemas$Outbound` instead. */
   export type Outbound = SmsMessageContentsSchemas$Outbound;
+}
+
+export function smsMessageContentsSchemasToJSON(
+  smsMessageContentsSchemas: SmsMessageContentsSchemas,
+): string {
+  return JSON.stringify(
+    SmsMessageContentsSchemas$outboundSchema.parse(smsMessageContentsSchemas),
+  );
+}
+
+export function smsMessageContentsSchemasFromJSON(
+  jsonString: string,
+): SafeParseResult<SmsMessageContentsSchemas, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => SmsMessageContentsSchemas$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SmsMessageContentsSchemas' from JSON`,
+  );
 }
 
 /** @internal */
@@ -356,6 +409,20 @@ export namespace MessageContent$ {
   export type Outbound = MessageContent$Outbound;
 }
 
+export function messageContentToJSON(messageContent: MessageContent): string {
+  return JSON.stringify(MessageContent$outboundSchema.parse(messageContent));
+}
+
+export function messageContentFromJSON(
+  jsonString: string,
+): SafeParseResult<MessageContent, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => MessageContent$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'MessageContent' from JSON`,
+  );
+}
+
 /** @internal */
 export const CreateMessage4$inboundSchema: z.ZodType<
   CreateMessage4,
@@ -384,6 +451,20 @@ export namespace CreateMessage4$ {
   export const outboundSchema = CreateMessage4$outboundSchema;
   /** @deprecated use `CreateMessage4$Outbound` instead. */
   export type Outbound = CreateMessage4$Outbound;
+}
+
+export function createMessage4ToJSON(createMessage4: CreateMessage4): string {
+  return JSON.stringify(CreateMessage4$outboundSchema.parse(createMessage4));
+}
+
+export function createMessage4FromJSON(
+  jsonString: string,
+): SafeParseResult<CreateMessage4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateMessage4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateMessage4' from JSON`,
+  );
 }
 
 /** @internal */
@@ -431,6 +512,24 @@ export namespace CreateMessageSourceValue$ {
   export const outboundSchema = CreateMessageSourceValue$outboundSchema;
   /** @deprecated use `CreateMessageSourceValue$Outbound` instead. */
   export type Outbound = CreateMessageSourceValue$Outbound;
+}
+
+export function createMessageSourceValueToJSON(
+  createMessageSourceValue: CreateMessageSourceValue,
+): string {
+  return JSON.stringify(
+    CreateMessageSourceValue$outboundSchema.parse(createMessageSourceValue),
+  );
+}
+
+export function createMessageSourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateMessageSourceValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateMessageSourceValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateMessageSourceValue' from JSON`,
+  );
 }
 
 /** @internal */
@@ -535,6 +634,20 @@ export namespace MessageType$ {
   export type Outbound = MessageType$Outbound;
 }
 
+export function messageTypeToJSON(messageType: MessageType): string {
+  return JSON.stringify(MessageType$outboundSchema.parse(messageType));
+}
+
+export function messageTypeFromJSON(
+  jsonString: string,
+): SafeParseResult<MessageType, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => MessageType$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'MessageType' from JSON`,
+  );
+}
+
 /** @internal */
 export const CreateMessage$inboundSchema: z.ZodType<
   CreateMessage,
@@ -607,6 +720,20 @@ export namespace CreateMessage$ {
   export type Outbound = CreateMessage$Outbound;
 }
 
+export function createMessageToJSON(createMessage: CreateMessage): string {
+  return JSON.stringify(CreateMessage$outboundSchema.parse(createMessage));
+}
+
+export function createMessageFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateMessage, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateMessage$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateMessage' from JSON`,
+  );
+}
+
 /** @internal */
 export const MessageMessageContent$inboundSchema: z.ZodType<
   MessageMessageContent,
@@ -648,6 +775,24 @@ export namespace MessageMessageContent$ {
   export type Outbound = MessageMessageContent$Outbound;
 }
 
+export function messageMessageContentToJSON(
+  messageMessageContent: MessageMessageContent,
+): string {
+  return JSON.stringify(
+    MessageMessageContent$outboundSchema.parse(messageMessageContent),
+  );
+}
+
+export function messageMessageContentFromJSON(
+  jsonString: string,
+): SafeParseResult<MessageMessageContent, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => MessageMessageContent$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'MessageMessageContent' from JSON`,
+  );
+}
+
 /** @internal */
 export const Message4$inboundSchema: z.ZodType<
   Message4,
@@ -676,6 +821,20 @@ export namespace Message4$ {
   export const outboundSchema = Message4$outboundSchema;
   /** @deprecated use `Message4$Outbound` instead. */
   export type Outbound = Message4$Outbound;
+}
+
+export function message4ToJSON(message4: Message4): string {
+  return JSON.stringify(Message4$outboundSchema.parse(message4));
+}
+
+export function message4FromJSON(
+  jsonString: string,
+): SafeParseResult<Message4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Message4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Message4' from JSON`,
+  );
 }
 
 /** @internal */
@@ -723,6 +882,24 @@ export namespace MessageSourceValue$ {
   export const outboundSchema = MessageSourceValue$outboundSchema;
   /** @deprecated use `MessageSourceValue$Outbound` instead. */
   export type Outbound = MessageSourceValue$Outbound;
+}
+
+export function messageSourceValueToJSON(
+  messageSourceValue: MessageSourceValue,
+): string {
+  return JSON.stringify(
+    MessageSourceValue$outboundSchema.parse(messageSourceValue),
+  );
+}
+
+export function messageSourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<MessageSourceValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => MessageSourceValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'MessageSourceValue' from JSON`,
+  );
 }
 
 /** @internal */
@@ -827,6 +1004,24 @@ export namespace MessageMessageType$ {
   export type Outbound = MessageMessageType$Outbound;
 }
 
+export function messageMessageTypeToJSON(
+  messageMessageType: MessageMessageType,
+): string {
+  return JSON.stringify(
+    MessageMessageType$outboundSchema.parse(messageMessageType),
+  );
+}
+
+export function messageMessageTypeFromJSON(
+  jsonString: string,
+): SafeParseResult<MessageMessageType, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => MessageMessageType$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'MessageMessageType' from JSON`,
+  );
+}
+
 /** @internal */
 export const Message$inboundSchema: z.ZodType<Message, z.ZodTypeDef, unknown> =
   z.object({
@@ -901,4 +1096,18 @@ export namespace Message$ {
   export const outboundSchema = Message$outboundSchema;
   /** @deprecated use `Message$Outbound` instead. */
   export type Outbound = Message$Outbound;
+}
+
+export function messageToJSON(message: Message): string {
+  return JSON.stringify(Message$outboundSchema.parse(message));
+}
+
+export function messageFromJSON(
+  jsonString: string,
+): SafeParseResult<Message, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Message$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Message' from JSON`,
+  );
 }

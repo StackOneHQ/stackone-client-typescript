@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 /**
@@ -129,6 +132,27 @@ export namespace AtsListDepartmentsQueryParamFilter$ {
   export type Outbound = AtsListDepartmentsQueryParamFilter$Outbound;
 }
 
+export function atsListDepartmentsQueryParamFilterToJSON(
+  atsListDepartmentsQueryParamFilter: AtsListDepartmentsQueryParamFilter,
+): string {
+  return JSON.stringify(
+    AtsListDepartmentsQueryParamFilter$outboundSchema.parse(
+      atsListDepartmentsQueryParamFilter,
+    ),
+  );
+}
+
+export function atsListDepartmentsQueryParamFilterFromJSON(
+  jsonString: string,
+): SafeParseResult<AtsListDepartmentsQueryParamFilter, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      AtsListDepartmentsQueryParamFilter$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AtsListDepartmentsQueryParamFilter' from JSON`,
+  );
+}
+
 /** @internal */
 export const AtsListDepartmentsRequest$inboundSchema: z.ZodType<
   AtsListDepartmentsRequest,
@@ -210,6 +234,24 @@ export namespace AtsListDepartmentsRequest$ {
   export type Outbound = AtsListDepartmentsRequest$Outbound;
 }
 
+export function atsListDepartmentsRequestToJSON(
+  atsListDepartmentsRequest: AtsListDepartmentsRequest,
+): string {
+  return JSON.stringify(
+    AtsListDepartmentsRequest$outboundSchema.parse(atsListDepartmentsRequest),
+  );
+}
+
+export function atsListDepartmentsRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<AtsListDepartmentsRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AtsListDepartmentsRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AtsListDepartmentsRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const AtsListDepartmentsResponse$inboundSchema: z.ZodType<
   AtsListDepartmentsResponse,
@@ -269,4 +311,22 @@ export namespace AtsListDepartmentsResponse$ {
   export const outboundSchema = AtsListDepartmentsResponse$outboundSchema;
   /** @deprecated use `AtsListDepartmentsResponse$Outbound` instead. */
   export type Outbound = AtsListDepartmentsResponse$Outbound;
+}
+
+export function atsListDepartmentsResponseToJSON(
+  atsListDepartmentsResponse: AtsListDepartmentsResponse,
+): string {
+  return JSON.stringify(
+    AtsListDepartmentsResponse$outboundSchema.parse(atsListDepartmentsResponse),
+  );
+}
+
+export function atsListDepartmentsResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<AtsListDepartmentsResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AtsListDepartmentsResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AtsListDepartmentsResponse' from JSON`,
+  );
 }

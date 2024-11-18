@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   Account,
   Account$inboundSchema,
@@ -58,4 +61,18 @@ export namespace AccountResult$ {
   export const outboundSchema = AccountResult$outboundSchema;
   /** @deprecated use `AccountResult$Outbound` instead. */
   export type Outbound = AccountResult$Outbound;
+}
+
+export function accountResultToJSON(accountResult: AccountResult): string {
+  return JSON.stringify(AccountResult$outboundSchema.parse(accountResult));
+}
+
+export function accountResultFromJSON(
+  jsonString: string,
+): SafeParseResult<AccountResult, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AccountResult$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AccountResult' from JSON`,
+  );
 }

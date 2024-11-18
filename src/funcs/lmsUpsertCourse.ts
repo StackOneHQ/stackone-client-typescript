@@ -70,6 +70,9 @@ export async function lmsUpsertCourse(
   const context = {
     operationID: "lms_upsert_course",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.security,
     retryConfig: options?.retries
       || client._options.retryConfig
@@ -120,7 +123,7 @@ export async function lmsUpsertCourse(
     | ConnectionError
   >(
     M.json(201, operations.LmsUpsertCourseResponse$inboundSchema, {
-      key: "CreateResult",
+      key: "UpsertResult",
     }),
     M.fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"]),
   )(response, { extraFields: responseFields });

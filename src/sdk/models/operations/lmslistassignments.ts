@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 /**
@@ -147,6 +150,27 @@ export namespace LmsListAssignmentsQueryParamFilter$ {
   export type Outbound = LmsListAssignmentsQueryParamFilter$Outbound;
 }
 
+export function lmsListAssignmentsQueryParamFilterToJSON(
+  lmsListAssignmentsQueryParamFilter: LmsListAssignmentsQueryParamFilter,
+): string {
+  return JSON.stringify(
+    LmsListAssignmentsQueryParamFilter$outboundSchema.parse(
+      lmsListAssignmentsQueryParamFilter,
+    ),
+  );
+}
+
+export function lmsListAssignmentsQueryParamFilterFromJSON(
+  jsonString: string,
+): SafeParseResult<LmsListAssignmentsQueryParamFilter, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      LmsListAssignmentsQueryParamFilter$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LmsListAssignmentsQueryParamFilter' from JSON`,
+  );
+}
+
 /** @internal */
 export const LmsListAssignmentsRequest$inboundSchema: z.ZodType<
   LmsListAssignmentsRequest,
@@ -233,6 +257,24 @@ export namespace LmsListAssignmentsRequest$ {
   export type Outbound = LmsListAssignmentsRequest$Outbound;
 }
 
+export function lmsListAssignmentsRequestToJSON(
+  lmsListAssignmentsRequest: LmsListAssignmentsRequest,
+): string {
+  return JSON.stringify(
+    LmsListAssignmentsRequest$outboundSchema.parse(lmsListAssignmentsRequest),
+  );
+}
+
+export function lmsListAssignmentsRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<LmsListAssignmentsRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LmsListAssignmentsRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LmsListAssignmentsRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const LmsListAssignmentsResponse$inboundSchema: z.ZodType<
   LmsListAssignmentsResponse,
@@ -292,4 +334,22 @@ export namespace LmsListAssignmentsResponse$ {
   export const outboundSchema = LmsListAssignmentsResponse$outboundSchema;
   /** @deprecated use `LmsListAssignmentsResponse$Outbound` instead. */
   export type Outbound = LmsListAssignmentsResponse$Outbound;
+}
+
+export function lmsListAssignmentsResponseToJSON(
+  lmsListAssignmentsResponse: LmsListAssignmentsResponse,
+): string {
+  return JSON.stringify(
+    LmsListAssignmentsResponse$outboundSchema.parse(lmsListAssignmentsResponse),
+  );
+}
+
+export function lmsListAssignmentsResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<LmsListAssignmentsResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LmsListAssignmentsResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LmsListAssignmentsResponse' from JSON`,
+  );
 }

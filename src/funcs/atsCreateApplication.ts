@@ -71,6 +71,9 @@ export async function atsCreateApplication(
   const context = {
     operationID: "ats_create_application",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.security,
     retryConfig: options?.retries
       || client._options.retryConfig

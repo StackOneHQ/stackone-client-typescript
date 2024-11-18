@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   IamPolicy,
   IamPolicy$inboundSchema,
@@ -99,6 +102,20 @@ export namespace IamRole4$ {
   export type Outbound = IamRole4$Outbound;
 }
 
+export function iamRole4ToJSON(iamRole4: IamRole4): string {
+  return JSON.stringify(IamRole4$outboundSchema.parse(iamRole4));
+}
+
+export function iamRole4FromJSON(
+  jsonString: string,
+): SafeParseResult<IamRole4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => IamRole4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'IamRole4' from JSON`,
+  );
+}
+
 /** @internal */
 export const IamRoleSourceValue$inboundSchema: z.ZodType<
   IamRoleSourceValue,
@@ -144,6 +161,24 @@ export namespace IamRoleSourceValue$ {
   export const outboundSchema = IamRoleSourceValue$outboundSchema;
   /** @deprecated use `IamRoleSourceValue$Outbound` instead. */
   export type Outbound = IamRoleSourceValue$Outbound;
+}
+
+export function iamRoleSourceValueToJSON(
+  iamRoleSourceValue: IamRoleSourceValue,
+): string {
+  return JSON.stringify(
+    IamRoleSourceValue$outboundSchema.parse(iamRoleSourceValue),
+  );
+}
+
+export function iamRoleSourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<IamRoleSourceValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => IamRoleSourceValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'IamRoleSourceValue' from JSON`,
+  );
 }
 
 /** @internal */
@@ -248,6 +283,20 @@ export namespace IamRoleType$ {
   export type Outbound = IamRoleType$Outbound;
 }
 
+export function iamRoleTypeToJSON(iamRoleType: IamRoleType): string {
+  return JSON.stringify(IamRoleType$outboundSchema.parse(iamRoleType));
+}
+
+export function iamRoleTypeFromJSON(
+  jsonString: string,
+): SafeParseResult<IamRoleType, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => IamRoleType$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'IamRoleType' from JSON`,
+  );
+}
+
 /** @internal */
 export const IamRole$inboundSchema: z.ZodType<IamRole, z.ZodTypeDef, unknown> =
   z.object({
@@ -316,4 +365,18 @@ export namespace IamRole$ {
   export const outboundSchema = IamRole$outboundSchema;
   /** @deprecated use `IamRole$Outbound` instead. */
   export type Outbound = IamRole$Outbound;
+}
+
+export function iamRoleToJSON(iamRole: IamRole): string {
+  return JSON.stringify(IamRole$outboundSchema.parse(iamRole));
+}
+
+export function iamRoleFromJSON(
+  jsonString: string,
+): SafeParseResult<IamRole, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => IamRole$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'IamRole' from JSON`,
+  );
 }

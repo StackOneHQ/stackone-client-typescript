@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 /**
@@ -125,6 +128,24 @@ export namespace QueryParamFilter$ {
   export type Outbound = QueryParamFilter$Outbound;
 }
 
+export function queryParamFilterToJSON(
+  queryParamFilter: QueryParamFilter,
+): string {
+  return JSON.stringify(
+    QueryParamFilter$outboundSchema.parse(queryParamFilter),
+  );
+}
+
+export function queryParamFilterFromJSON(
+  jsonString: string,
+): SafeParseResult<QueryParamFilter, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => QueryParamFilter$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'QueryParamFilter' from JSON`,
+  );
+}
+
 /** @internal */
 export const AtsGetCandidateCustomFieldDefinitionRequest$inboundSchema:
   z.ZodType<
@@ -205,6 +226,33 @@ export namespace AtsGetCandidateCustomFieldDefinitionRequest$ {
   export type Outbound = AtsGetCandidateCustomFieldDefinitionRequest$Outbound;
 }
 
+export function atsGetCandidateCustomFieldDefinitionRequestToJSON(
+  atsGetCandidateCustomFieldDefinitionRequest:
+    AtsGetCandidateCustomFieldDefinitionRequest,
+): string {
+  return JSON.stringify(
+    AtsGetCandidateCustomFieldDefinitionRequest$outboundSchema.parse(
+      atsGetCandidateCustomFieldDefinitionRequest,
+    ),
+  );
+}
+
+export function atsGetCandidateCustomFieldDefinitionRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  AtsGetCandidateCustomFieldDefinitionRequest,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      AtsGetCandidateCustomFieldDefinitionRequest$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'AtsGetCandidateCustomFieldDefinitionRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const AtsGetCandidateCustomFieldDefinitionResponse$inboundSchema:
   z.ZodType<
@@ -274,4 +322,31 @@ export namespace AtsGetCandidateCustomFieldDefinitionResponse$ {
     AtsGetCandidateCustomFieldDefinitionResponse$outboundSchema;
   /** @deprecated use `AtsGetCandidateCustomFieldDefinitionResponse$Outbound` instead. */
   export type Outbound = AtsGetCandidateCustomFieldDefinitionResponse$Outbound;
+}
+
+export function atsGetCandidateCustomFieldDefinitionResponseToJSON(
+  atsGetCandidateCustomFieldDefinitionResponse:
+    AtsGetCandidateCustomFieldDefinitionResponse,
+): string {
+  return JSON.stringify(
+    AtsGetCandidateCustomFieldDefinitionResponse$outboundSchema.parse(
+      atsGetCandidateCustomFieldDefinitionResponse,
+    ),
+  );
+}
+
+export function atsGetCandidateCustomFieldDefinitionResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  AtsGetCandidateCustomFieldDefinitionResponse,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      AtsGetCandidateCustomFieldDefinitionResponse$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'AtsGetCandidateCustomFieldDefinitionResponse' from JSON`,
+  );
 }

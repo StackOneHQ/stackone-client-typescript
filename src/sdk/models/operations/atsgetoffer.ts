@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type AtsGetOfferRequest = {
@@ -101,6 +104,24 @@ export namespace AtsGetOfferRequest$ {
   export type Outbound = AtsGetOfferRequest$Outbound;
 }
 
+export function atsGetOfferRequestToJSON(
+  atsGetOfferRequest: AtsGetOfferRequest,
+): string {
+  return JSON.stringify(
+    AtsGetOfferRequest$outboundSchema.parse(atsGetOfferRequest),
+  );
+}
+
+export function atsGetOfferRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<AtsGetOfferRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AtsGetOfferRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AtsGetOfferRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const AtsGetOfferResponse$inboundSchema: z.ZodType<
   AtsGetOfferResponse,
@@ -160,4 +181,22 @@ export namespace AtsGetOfferResponse$ {
   export const outboundSchema = AtsGetOfferResponse$outboundSchema;
   /** @deprecated use `AtsGetOfferResponse$Outbound` instead. */
   export type Outbound = AtsGetOfferResponse$Outbound;
+}
+
+export function atsGetOfferResponseToJSON(
+  atsGetOfferResponse: AtsGetOfferResponse,
+): string {
+  return JSON.stringify(
+    AtsGetOfferResponse$outboundSchema.parse(atsGetOfferResponse),
+  );
+}
+
+export function atsGetOfferResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<AtsGetOfferResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AtsGetOfferResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AtsGetOfferResponse' from JSON`,
+  );
 }

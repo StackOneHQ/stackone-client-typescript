@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   ApplicationCustomFields,
   ApplicationCustomFields$inboundSchema,
@@ -145,6 +148,26 @@ export namespace AtsUpdateApplicationRequestDto4$ {
   export type Outbound = AtsUpdateApplicationRequestDto4$Outbound;
 }
 
+export function atsUpdateApplicationRequestDto4ToJSON(
+  atsUpdateApplicationRequestDto4: AtsUpdateApplicationRequestDto4,
+): string {
+  return JSON.stringify(
+    AtsUpdateApplicationRequestDto4$outboundSchema.parse(
+      atsUpdateApplicationRequestDto4,
+    ),
+  );
+}
+
+export function atsUpdateApplicationRequestDto4FromJSON(
+  jsonString: string,
+): SafeParseResult<AtsUpdateApplicationRequestDto4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AtsUpdateApplicationRequestDto4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AtsUpdateApplicationRequestDto4' from JSON`,
+  );
+}
+
 /** @internal */
 export const AtsUpdateApplicationRequestDtoSourceValue$inboundSchema: z.ZodType<
   AtsUpdateApplicationRequestDtoSourceValue,
@@ -193,6 +216,33 @@ export namespace AtsUpdateApplicationRequestDtoSourceValue$ {
     AtsUpdateApplicationRequestDtoSourceValue$outboundSchema;
   /** @deprecated use `AtsUpdateApplicationRequestDtoSourceValue$Outbound` instead. */
   export type Outbound = AtsUpdateApplicationRequestDtoSourceValue$Outbound;
+}
+
+export function atsUpdateApplicationRequestDtoSourceValueToJSON(
+  atsUpdateApplicationRequestDtoSourceValue:
+    AtsUpdateApplicationRequestDtoSourceValue,
+): string {
+  return JSON.stringify(
+    AtsUpdateApplicationRequestDtoSourceValue$outboundSchema.parse(
+      atsUpdateApplicationRequestDtoSourceValue,
+    ),
+  );
+}
+
+export function atsUpdateApplicationRequestDtoSourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  AtsUpdateApplicationRequestDtoSourceValue,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      AtsUpdateApplicationRequestDtoSourceValue$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'AtsUpdateApplicationRequestDtoSourceValue' from JSON`,
+  );
 }
 
 /** @internal */
@@ -306,6 +356,33 @@ export namespace AtsUpdateApplicationRequestDtoApplicationStatus$ {
     AtsUpdateApplicationRequestDtoApplicationStatus$Outbound;
 }
 
+export function atsUpdateApplicationRequestDtoApplicationStatusToJSON(
+  atsUpdateApplicationRequestDtoApplicationStatus:
+    AtsUpdateApplicationRequestDtoApplicationStatus,
+): string {
+  return JSON.stringify(
+    AtsUpdateApplicationRequestDtoApplicationStatus$outboundSchema.parse(
+      atsUpdateApplicationRequestDtoApplicationStatus,
+    ),
+  );
+}
+
+export function atsUpdateApplicationRequestDtoApplicationStatusFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  AtsUpdateApplicationRequestDtoApplicationStatus,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      AtsUpdateApplicationRequestDtoApplicationStatus$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'AtsUpdateApplicationRequestDtoApplicationStatus' from JSON`,
+  );
+}
+
 /** @internal */
 export const AtsUpdateApplicationRequestDtoSource$inboundSchema: z.ZodType<
   AtsUpdateApplicationRequestDtoSource,
@@ -345,6 +422,27 @@ export namespace AtsUpdateApplicationRequestDtoSource$ {
     AtsUpdateApplicationRequestDtoSource$outboundSchema;
   /** @deprecated use `AtsUpdateApplicationRequestDtoSource$Outbound` instead. */
   export type Outbound = AtsUpdateApplicationRequestDtoSource$Outbound;
+}
+
+export function atsUpdateApplicationRequestDtoSourceToJSON(
+  atsUpdateApplicationRequestDtoSource: AtsUpdateApplicationRequestDtoSource,
+): string {
+  return JSON.stringify(
+    AtsUpdateApplicationRequestDtoSource$outboundSchema.parse(
+      atsUpdateApplicationRequestDtoSource,
+    ),
+  );
+}
+
+export function atsUpdateApplicationRequestDtoSourceFromJSON(
+  jsonString: string,
+): SafeParseResult<AtsUpdateApplicationRequestDtoSource, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      AtsUpdateApplicationRequestDtoSource$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AtsUpdateApplicationRequestDtoSource' from JSON`,
+  );
 }
 
 /** @internal */
@@ -425,4 +523,24 @@ export namespace AtsUpdateApplicationRequestDto$ {
   export const outboundSchema = AtsUpdateApplicationRequestDto$outboundSchema;
   /** @deprecated use `AtsUpdateApplicationRequestDto$Outbound` instead. */
   export type Outbound = AtsUpdateApplicationRequestDto$Outbound;
+}
+
+export function atsUpdateApplicationRequestDtoToJSON(
+  atsUpdateApplicationRequestDto: AtsUpdateApplicationRequestDto,
+): string {
+  return JSON.stringify(
+    AtsUpdateApplicationRequestDto$outboundSchema.parse(
+      atsUpdateApplicationRequestDto,
+    ),
+  );
+}
+
+export function atsUpdateApplicationRequestDtoFromJSON(
+  jsonString: string,
+): SafeParseResult<AtsUpdateApplicationRequestDto, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AtsUpdateApplicationRequestDto$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AtsUpdateApplicationRequestDto' from JSON`,
+  );
 }

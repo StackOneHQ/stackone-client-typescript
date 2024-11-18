@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 /**
@@ -122,6 +125,26 @@ export namespace CrmListAccountsQueryParamFilter$ {
   export type Outbound = CrmListAccountsQueryParamFilter$Outbound;
 }
 
+export function crmListAccountsQueryParamFilterToJSON(
+  crmListAccountsQueryParamFilter: CrmListAccountsQueryParamFilter,
+): string {
+  return JSON.stringify(
+    CrmListAccountsQueryParamFilter$outboundSchema.parse(
+      crmListAccountsQueryParamFilter,
+    ),
+  );
+}
+
+export function crmListAccountsQueryParamFilterFromJSON(
+  jsonString: string,
+): SafeParseResult<CrmListAccountsQueryParamFilter, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CrmListAccountsQueryParamFilter$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CrmListAccountsQueryParamFilter' from JSON`,
+  );
+}
+
 /** @internal */
 export const CrmListAccountsRequest$inboundSchema: z.ZodType<
   CrmListAccountsRequest,
@@ -198,6 +221,24 @@ export namespace CrmListAccountsRequest$ {
   export type Outbound = CrmListAccountsRequest$Outbound;
 }
 
+export function crmListAccountsRequestToJSON(
+  crmListAccountsRequest: CrmListAccountsRequest,
+): string {
+  return JSON.stringify(
+    CrmListAccountsRequest$outboundSchema.parse(crmListAccountsRequest),
+  );
+}
+
+export function crmListAccountsRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<CrmListAccountsRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CrmListAccountsRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CrmListAccountsRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const CrmListAccountsResponse$inboundSchema: z.ZodType<
   CrmListAccountsResponse,
@@ -257,4 +298,22 @@ export namespace CrmListAccountsResponse$ {
   export const outboundSchema = CrmListAccountsResponse$outboundSchema;
   /** @deprecated use `CrmListAccountsResponse$Outbound` instead. */
   export type Outbound = CrmListAccountsResponse$Outbound;
+}
+
+export function crmListAccountsResponseToJSON(
+  crmListAccountsResponse: CrmListAccountsResponse,
+): string {
+  return JSON.stringify(
+    CrmListAccountsResponse$outboundSchema.parse(crmListAccountsResponse),
+  );
+}
+
+export function crmListAccountsResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<CrmListAccountsResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CrmListAccountsResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CrmListAccountsResponse' from JSON`,
+  );
 }

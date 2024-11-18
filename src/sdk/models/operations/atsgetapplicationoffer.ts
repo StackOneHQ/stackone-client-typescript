@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type AtsGetApplicationOfferRequest = {
@@ -105,6 +108,26 @@ export namespace AtsGetApplicationOfferRequest$ {
   export type Outbound = AtsGetApplicationOfferRequest$Outbound;
 }
 
+export function atsGetApplicationOfferRequestToJSON(
+  atsGetApplicationOfferRequest: AtsGetApplicationOfferRequest,
+): string {
+  return JSON.stringify(
+    AtsGetApplicationOfferRequest$outboundSchema.parse(
+      atsGetApplicationOfferRequest,
+    ),
+  );
+}
+
+export function atsGetApplicationOfferRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<AtsGetApplicationOfferRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AtsGetApplicationOfferRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AtsGetApplicationOfferRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const AtsGetApplicationOfferResponse$inboundSchema: z.ZodType<
   AtsGetApplicationOfferResponse,
@@ -164,4 +187,24 @@ export namespace AtsGetApplicationOfferResponse$ {
   export const outboundSchema = AtsGetApplicationOfferResponse$outboundSchema;
   /** @deprecated use `AtsGetApplicationOfferResponse$Outbound` instead. */
   export type Outbound = AtsGetApplicationOfferResponse$Outbound;
+}
+
+export function atsGetApplicationOfferResponseToJSON(
+  atsGetApplicationOfferResponse: AtsGetApplicationOfferResponse,
+): string {
+  return JSON.stringify(
+    AtsGetApplicationOfferResponse$outboundSchema.parse(
+      atsGetApplicationOfferResponse,
+    ),
+  );
+}
+
+export function atsGetApplicationOfferResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<AtsGetApplicationOfferResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AtsGetApplicationOfferResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AtsGetApplicationOfferResponse' from JSON`,
+  );
 }

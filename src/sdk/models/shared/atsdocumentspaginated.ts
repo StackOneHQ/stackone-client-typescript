@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   AtsDocumentApiModel,
   AtsDocumentApiModel$inboundSchema,
@@ -78,4 +81,22 @@ export namespace AtsDocumentsPaginated$ {
   export const outboundSchema = AtsDocumentsPaginated$outboundSchema;
   /** @deprecated use `AtsDocumentsPaginated$Outbound` instead. */
   export type Outbound = AtsDocumentsPaginated$Outbound;
+}
+
+export function atsDocumentsPaginatedToJSON(
+  atsDocumentsPaginated: AtsDocumentsPaginated,
+): string {
+  return JSON.stringify(
+    AtsDocumentsPaginated$outboundSchema.parse(atsDocumentsPaginated),
+  );
+}
+
+export function atsDocumentsPaginatedFromJSON(
+  jsonString: string,
+): SafeParseResult<AtsDocumentsPaginated, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AtsDocumentsPaginated$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AtsDocumentsPaginated' from JSON`,
+  );
 }

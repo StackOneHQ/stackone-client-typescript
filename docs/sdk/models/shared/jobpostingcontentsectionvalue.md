@@ -20,4 +20,7 @@ This is an open enum. Unrecognized values will be captured as the `Unrecognized<
 | `Responsibilities`     | responsibilities       |
 | `Skills`               | skills                 |
 | `Benefits`             | benefits               |
+| `CompanyOverview`      | company_overview       |
+| `Description`          | description            |
+| `Other`                | other                  |
 | -                      | `Unrecognized<string>` |

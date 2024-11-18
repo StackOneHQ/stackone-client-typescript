@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type AtsGetLocationRequest = {
@@ -101,6 +104,24 @@ export namespace AtsGetLocationRequest$ {
   export type Outbound = AtsGetLocationRequest$Outbound;
 }
 
+export function atsGetLocationRequestToJSON(
+  atsGetLocationRequest: AtsGetLocationRequest,
+): string {
+  return JSON.stringify(
+    AtsGetLocationRequest$outboundSchema.parse(atsGetLocationRequest),
+  );
+}
+
+export function atsGetLocationRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<AtsGetLocationRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AtsGetLocationRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AtsGetLocationRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const AtsGetLocationResponse$inboundSchema: z.ZodType<
   AtsGetLocationResponse,
@@ -160,4 +181,22 @@ export namespace AtsGetLocationResponse$ {
   export const outboundSchema = AtsGetLocationResponse$outboundSchema;
   /** @deprecated use `AtsGetLocationResponse$Outbound` instead. */
   export type Outbound = AtsGetLocationResponse$Outbound;
+}
+
+export function atsGetLocationResponseToJSON(
+  atsGetLocationResponse: AtsGetLocationResponse,
+): string {
+  return JSON.stringify(
+    AtsGetLocationResponse$outboundSchema.parse(atsGetLocationResponse),
+  );
+}
+
+export function atsGetLocationResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<AtsGetLocationResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AtsGetLocationResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AtsGetLocationResponse' from JSON`,
+  );
 }

@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type LmsGetUserRequest = {
@@ -101,6 +104,24 @@ export namespace LmsGetUserRequest$ {
   export type Outbound = LmsGetUserRequest$Outbound;
 }
 
+export function lmsGetUserRequestToJSON(
+  lmsGetUserRequest: LmsGetUserRequest,
+): string {
+  return JSON.stringify(
+    LmsGetUserRequest$outboundSchema.parse(lmsGetUserRequest),
+  );
+}
+
+export function lmsGetUserRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<LmsGetUserRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LmsGetUserRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LmsGetUserRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const LmsGetUserResponse$inboundSchema: z.ZodType<
   LmsGetUserResponse,
@@ -160,4 +181,22 @@ export namespace LmsGetUserResponse$ {
   export const outboundSchema = LmsGetUserResponse$outboundSchema;
   /** @deprecated use `LmsGetUserResponse$Outbound` instead. */
   export type Outbound = LmsGetUserResponse$Outbound;
+}
+
+export function lmsGetUserResponseToJSON(
+  lmsGetUserResponse: LmsGetUserResponse,
+): string {
+  return JSON.stringify(
+    LmsGetUserResponse$outboundSchema.parse(lmsGetUserResponse),
+  );
+}
+
+export function lmsGetUserResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<LmsGetUserResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LmsGetUserResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LmsGetUserResponse' from JSON`,
+  );
 }

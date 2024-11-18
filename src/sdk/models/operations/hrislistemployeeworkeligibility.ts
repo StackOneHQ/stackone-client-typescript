@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 /**
@@ -128,6 +131,33 @@ export namespace HrisListEmployeeWorkEligibilityQueryParamFilter$ {
     HrisListEmployeeWorkEligibilityQueryParamFilter$Outbound;
 }
 
+export function hrisListEmployeeWorkEligibilityQueryParamFilterToJSON(
+  hrisListEmployeeWorkEligibilityQueryParamFilter:
+    HrisListEmployeeWorkEligibilityQueryParamFilter,
+): string {
+  return JSON.stringify(
+    HrisListEmployeeWorkEligibilityQueryParamFilter$outboundSchema.parse(
+      hrisListEmployeeWorkEligibilityQueryParamFilter,
+    ),
+  );
+}
+
+export function hrisListEmployeeWorkEligibilityQueryParamFilterFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  HrisListEmployeeWorkEligibilityQueryParamFilter,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      HrisListEmployeeWorkEligibilityQueryParamFilter$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'HrisListEmployeeWorkEligibilityQueryParamFilter' from JSON`,
+  );
+}
+
 /** @internal */
 export const HrisListEmployeeWorkEligibilityRequest$inboundSchema: z.ZodType<
   HrisListEmployeeWorkEligibilityRequest,
@@ -214,6 +244,28 @@ export namespace HrisListEmployeeWorkEligibilityRequest$ {
   export type Outbound = HrisListEmployeeWorkEligibilityRequest$Outbound;
 }
 
+export function hrisListEmployeeWorkEligibilityRequestToJSON(
+  hrisListEmployeeWorkEligibilityRequest:
+    HrisListEmployeeWorkEligibilityRequest,
+): string {
+  return JSON.stringify(
+    HrisListEmployeeWorkEligibilityRequest$outboundSchema.parse(
+      hrisListEmployeeWorkEligibilityRequest,
+    ),
+  );
+}
+
+export function hrisListEmployeeWorkEligibilityRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<HrisListEmployeeWorkEligibilityRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      HrisListEmployeeWorkEligibilityRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HrisListEmployeeWorkEligibilityRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const HrisListEmployeeWorkEligibilityResponse$inboundSchema: z.ZodType<
   HrisListEmployeeWorkEligibilityResponse,
@@ -279,4 +331,31 @@ export namespace HrisListEmployeeWorkEligibilityResponse$ {
     HrisListEmployeeWorkEligibilityResponse$outboundSchema;
   /** @deprecated use `HrisListEmployeeWorkEligibilityResponse$Outbound` instead. */
   export type Outbound = HrisListEmployeeWorkEligibilityResponse$Outbound;
+}
+
+export function hrisListEmployeeWorkEligibilityResponseToJSON(
+  hrisListEmployeeWorkEligibilityResponse:
+    HrisListEmployeeWorkEligibilityResponse,
+): string {
+  return JSON.stringify(
+    HrisListEmployeeWorkEligibilityResponse$outboundSchema.parse(
+      hrisListEmployeeWorkEligibilityResponse,
+    ),
+  );
+}
+
+export function hrisListEmployeeWorkEligibilityResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  HrisListEmployeeWorkEligibilityResponse,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      HrisListEmployeeWorkEligibilityResponse$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'HrisListEmployeeWorkEligibilityResponse' from JSON`,
+  );
 }

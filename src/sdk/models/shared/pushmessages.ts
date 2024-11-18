@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type PushMessagesMessageContent = {
   body?: string | null | undefined;
@@ -116,6 +119,24 @@ export namespace PushMessagesMessageContent$ {
   export type Outbound = PushMessagesMessageContent$Outbound;
 }
 
+export function pushMessagesMessageContentToJSON(
+  pushMessagesMessageContent: PushMessagesMessageContent,
+): string {
+  return JSON.stringify(
+    PushMessagesMessageContent$outboundSchema.parse(pushMessagesMessageContent),
+  );
+}
+
+export function pushMessagesMessageContentFromJSON(
+  jsonString: string,
+): SafeParseResult<PushMessagesMessageContent, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PushMessagesMessageContent$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PushMessagesMessageContent' from JSON`,
+  );
+}
+
 /** @internal */
 export const PushMessages4$inboundSchema: z.ZodType<
   PushMessages4,
@@ -144,6 +165,20 @@ export namespace PushMessages4$ {
   export const outboundSchema = PushMessages4$outboundSchema;
   /** @deprecated use `PushMessages4$Outbound` instead. */
   export type Outbound = PushMessages4$Outbound;
+}
+
+export function pushMessages4ToJSON(pushMessages4: PushMessages4): string {
+  return JSON.stringify(PushMessages4$outboundSchema.parse(pushMessages4));
+}
+
+export function pushMessages4FromJSON(
+  jsonString: string,
+): SafeParseResult<PushMessages4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PushMessages4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PushMessages4' from JSON`,
+  );
 }
 
 /** @internal */
@@ -191,6 +226,24 @@ export namespace PushMessagesSourceValue$ {
   export const outboundSchema = PushMessagesSourceValue$outboundSchema;
   /** @deprecated use `PushMessagesSourceValue$Outbound` instead. */
   export type Outbound = PushMessagesSourceValue$Outbound;
+}
+
+export function pushMessagesSourceValueToJSON(
+  pushMessagesSourceValue: PushMessagesSourceValue,
+): string {
+  return JSON.stringify(
+    PushMessagesSourceValue$outboundSchema.parse(pushMessagesSourceValue),
+  );
+}
+
+export function pushMessagesSourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<PushMessagesSourceValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PushMessagesSourceValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PushMessagesSourceValue' from JSON`,
+  );
 }
 
 /** @internal */
@@ -295,6 +348,24 @@ export namespace PushMessagesMessageType$ {
   export type Outbound = PushMessagesMessageType$Outbound;
 }
 
+export function pushMessagesMessageTypeToJSON(
+  pushMessagesMessageType: PushMessagesMessageType,
+): string {
+  return JSON.stringify(
+    PushMessagesMessageType$outboundSchema.parse(pushMessagesMessageType),
+  );
+}
+
+export function pushMessagesMessageTypeFromJSON(
+  jsonString: string,
+): SafeParseResult<PushMessagesMessageType, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PushMessagesMessageType$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PushMessagesMessageType' from JSON`,
+  );
+}
+
 /** @internal */
 export const PushMessages$inboundSchema: z.ZodType<
   PushMessages,
@@ -359,4 +430,18 @@ export namespace PushMessages$ {
   export const outboundSchema = PushMessages$outboundSchema;
   /** @deprecated use `PushMessages$Outbound` instead. */
   export type Outbound = PushMessages$Outbound;
+}
+
+export function pushMessagesToJSON(pushMessages: PushMessages): string {
+  return JSON.stringify(PushMessages$outboundSchema.parse(pushMessages));
+}
+
+export function pushMessagesFromJSON(
+  jsonString: string,
+): SafeParseResult<PushMessages, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PushMessages$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PushMessages' from JSON`,
+  );
 }

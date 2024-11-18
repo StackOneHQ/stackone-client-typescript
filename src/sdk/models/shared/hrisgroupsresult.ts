@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   HRISGroup,
   HRISGroup$inboundSchema,
@@ -58,4 +61,22 @@ export namespace HRISGroupsResult$ {
   export const outboundSchema = HRISGroupsResult$outboundSchema;
   /** @deprecated use `HRISGroupsResult$Outbound` instead. */
   export type Outbound = HRISGroupsResult$Outbound;
+}
+
+export function hrisGroupsResultToJSON(
+  hrisGroupsResult: HRISGroupsResult,
+): string {
+  return JSON.stringify(
+    HRISGroupsResult$outboundSchema.parse(hrisGroupsResult),
+  );
+}
+
+export function hrisGroupsResultFromJSON(
+  jsonString: string,
+): SafeParseResult<HRISGroupsResult, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => HRISGroupsResult$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HRISGroupsResult' from JSON`,
+  );
 }

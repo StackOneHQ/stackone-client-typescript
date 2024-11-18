@@ -3,11 +3,14 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export enum LinkedAccountMetaCategory {
   Ats = "ats",
@@ -102,4 +105,22 @@ export namespace LinkedAccountMeta$ {
   export const outboundSchema = LinkedAccountMeta$outboundSchema;
   /** @deprecated use `LinkedAccountMeta$Outbound` instead. */
   export type Outbound = LinkedAccountMeta$Outbound;
+}
+
+export function linkedAccountMetaToJSON(
+  linkedAccountMeta: LinkedAccountMeta,
+): string {
+  return JSON.stringify(
+    LinkedAccountMeta$outboundSchema.parse(linkedAccountMeta),
+  );
+}
+
+export function linkedAccountMetaFromJSON(
+  jsonString: string,
+): SafeParseResult<LinkedAccountMeta, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LinkedAccountMeta$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LinkedAccountMeta' from JSON`,
+  );
 }

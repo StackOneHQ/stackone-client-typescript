@@ -78,6 +78,9 @@ export async function atsRejectApplication(
   const context = {
     operationID: "ats_reject_application",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.security,
     retryConfig: options?.retries
       || client._options.retryConfig

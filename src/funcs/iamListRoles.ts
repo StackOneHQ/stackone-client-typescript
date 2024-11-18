@@ -88,6 +88,9 @@ export async function iamListRoles(
   const context = {
     operationID: "iam_list_roles",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.security,
     retryConfig: options?.retries
       || client._options.retryConfig

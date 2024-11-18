@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type AtsGetInterviewRequest = {
@@ -101,6 +104,24 @@ export namespace AtsGetInterviewRequest$ {
   export type Outbound = AtsGetInterviewRequest$Outbound;
 }
 
+export function atsGetInterviewRequestToJSON(
+  atsGetInterviewRequest: AtsGetInterviewRequest,
+): string {
+  return JSON.stringify(
+    AtsGetInterviewRequest$outboundSchema.parse(atsGetInterviewRequest),
+  );
+}
+
+export function atsGetInterviewRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<AtsGetInterviewRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AtsGetInterviewRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AtsGetInterviewRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const AtsGetInterviewResponse$inboundSchema: z.ZodType<
   AtsGetInterviewResponse,
@@ -160,4 +181,22 @@ export namespace AtsGetInterviewResponse$ {
   export const outboundSchema = AtsGetInterviewResponse$outboundSchema;
   /** @deprecated use `AtsGetInterviewResponse$Outbound` instead. */
   export type Outbound = AtsGetInterviewResponse$Outbound;
+}
+
+export function atsGetInterviewResponseToJSON(
+  atsGetInterviewResponse: AtsGetInterviewResponse,
+): string {
+  return JSON.stringify(
+    AtsGetInterviewResponse$outboundSchema.parse(atsGetInterviewResponse),
+  );
+}
+
+export function atsGetInterviewResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<AtsGetInterviewResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AtsGetInterviewResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AtsGetInterviewResponse' from JSON`,
+  );
 }

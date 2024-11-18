@@ -210,6 +210,7 @@ run();
 * [getCostCenterGroup](docs/sdks/hris/README.md#getcostcentergroup) - Get Cost Center Group
 * [getDepartmentGroup](docs/sdks/hris/README.md#getdepartmentgroup) - Get Department Group
 * [getEmployee](docs/sdks/hris/README.md#getemployee) - Get Employee
+* [getEmployeeCustomFieldDefinition](docs/sdks/hris/README.md#getemployeecustomfielddefinition) - Get employee Custom Field Definition
 * [getEmployeeDocument](docs/sdks/hris/README.md#getemployeedocument) - Get Employee Document
 * [getEmployeeDocumentCategory](docs/sdks/hris/README.md#getemployeedocumentcategory) - Get Employee Document Category
 * [getEmployeeEmployment](docs/sdks/hris/README.md#getemployeeemployment) - Get Employee Employment
@@ -220,11 +221,13 @@ run();
 * [getJob](docs/sdks/hris/README.md#getjob) - Get Job
 * [getLocation](docs/sdks/hris/README.md#getlocation) - Get Location
 * [getTimeOffRequest](docs/sdks/hris/README.md#gettimeoffrequest) - Get time off request
+* [getTimeOffType](docs/sdks/hris/README.md#gettimeofftype) - Get time off type
 * [listBenefits](docs/sdks/hris/README.md#listbenefits) - List benefits
 * [listCompanies](docs/sdks/hris/README.md#listcompanies) - List Companies
 * [listCostCenterGroups](docs/sdks/hris/README.md#listcostcentergroups) - List Cost Center Groups
 * [listDepartmentGroups](docs/sdks/hris/README.md#listdepartmentgroups) - List Department Groups
 * [listEmployeeCategories](docs/sdks/hris/README.md#listemployeecategories) - List Employee Document Categories
+* [listEmployeeCustomFieldDefinitions](docs/sdks/hris/README.md#listemployeecustomfielddefinitions) - List employee Custom Field Definitions
 * [listEmployeeDocuments](docs/sdks/hris/README.md#listemployeedocuments) - List Employee Documents
 * [listEmployeeEmployments](docs/sdks/hris/README.md#listemployeeemployments) - List Employee Employments
 * [listEmployeeTimeOffRequests](docs/sdks/hris/README.md#listemployeetimeoffrequests) - List Employee Time Off Requests
@@ -235,6 +238,7 @@ run();
 * [listJobs](docs/sdks/hris/README.md#listjobs) - List Jobs
 * [listLocations](docs/sdks/hris/README.md#listlocations) - List locations
 * [listTimeOffRequests](docs/sdks/hris/README.md#listtimeoffrequests) - List time off requests
+* [listTimeOffTypes](docs/sdks/hris/README.md#listtimeofftypes) - List time off types
 * [updateEmployee](docs/sdks/hris/README.md#updateemployee) - Updates an employee
 * [updateEmployeeEmployment](docs/sdks/hris/README.md#updateemployeeemployment) - Update Employee Employment
 * [updateEmployeeWorkEligibilityRequest](docs/sdks/hris/README.md#updateemployeeworkeligibilityrequest) - Update Employee Work Eligibility Request
@@ -706,6 +710,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`hrisGetCostCenterGroup`](docs/sdks/hris/README.md#getcostcentergroup) - Get Cost Center Group
 - [`hrisGetDepartmentGroup`](docs/sdks/hris/README.md#getdepartmentgroup) - Get Department Group
 - [`hrisGetEmployee`](docs/sdks/hris/README.md#getemployee) - Get Employee
+- [`hrisGetEmployeeCustomFieldDefinition`](docs/sdks/hris/README.md#getemployeecustomfielddefinition) - Get employee Custom Field Definition
 - [`hrisGetEmployeeDocument`](docs/sdks/hris/README.md#getemployeedocument) - Get Employee Document
 - [`hrisGetEmployeeDocumentCategory`](docs/sdks/hris/README.md#getemployeedocumentcategory) - Get Employee Document Category
 - [`hrisGetEmployeeEmployment`](docs/sdks/hris/README.md#getemployeeemployment) - Get Employee Employment
@@ -716,11 +721,13 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`hrisGetJob`](docs/sdks/hris/README.md#getjob) - Get Job
 - [`hrisGetLocation`](docs/sdks/hris/README.md#getlocation) - Get Location
 - [`hrisGetTimeOffRequest`](docs/sdks/hris/README.md#gettimeoffrequest) - Get time off request
+- [`hrisGetTimeOffType`](docs/sdks/hris/README.md#gettimeofftype) - Get time off type
 - [`hrisListBenefits`](docs/sdks/hris/README.md#listbenefits) - List benefits
 - [`hrisListCompanies`](docs/sdks/hris/README.md#listcompanies) - List Companies
 - [`hrisListCostCenterGroups`](docs/sdks/hris/README.md#listcostcentergroups) - List Cost Center Groups
 - [`hrisListDepartmentGroups`](docs/sdks/hris/README.md#listdepartmentgroups) - List Department Groups
 - [`hrisListEmployeeCategories`](docs/sdks/hris/README.md#listemployeecategories) - List Employee Document Categories
+- [`hrisListEmployeeCustomFieldDefinitions`](docs/sdks/hris/README.md#listemployeecustomfielddefinitions) - List employee Custom Field Definitions
 - [`hrisListEmployeeDocuments`](docs/sdks/hris/README.md#listemployeedocuments) - List Employee Documents
 - [`hrisListEmployeeEmployments`](docs/sdks/hris/README.md#listemployeeemployments) - List Employee Employments
 - [`hrisListEmployees`](docs/sdks/hris/README.md#listemployees) - List Employees
@@ -731,6 +738,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`hrisListJobs`](docs/sdks/hris/README.md#listjobs) - List Jobs
 - [`hrisListLocations`](docs/sdks/hris/README.md#listlocations) - List locations
 - [`hrisListTimeOffRequests`](docs/sdks/hris/README.md#listtimeoffrequests) - List time off requests
+- [`hrisListTimeOffTypes`](docs/sdks/hris/README.md#listtimeofftypes) - List time off types
 - [`hrisUpdateEmployee`](docs/sdks/hris/README.md#updateemployee) - Updates an employee
 - [`hrisUpdateEmployeeEmployment`](docs/sdks/hris/README.md#updateemployeeemployment) - Update Employee Employment
 - [`hrisUpdateEmployeeWorkEligibilityRequest`](docs/sdks/hris/README.md#updateemployeeworkeligibilityrequest) - Update Employee Work Eligibility Request

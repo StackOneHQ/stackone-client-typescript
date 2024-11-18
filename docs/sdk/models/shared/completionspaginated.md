@@ -9,17 +9,10 @@ let value: CompletionsPaginated = {
   data: [
     {
       completedAt: "2021-07-21T14:00:00.000Z",
-      contentExternalReference: "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1-CONTENT",
-      contentId: "16873-ENG-VIDEO-1",
-      courseId: "16873-ENG-COURSE-1",
       createdAt: "2021-07-21T14:00:00.000Z",
-      externalId: "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1-COMPLETION",
       id: "123456",
-      learningObjectExternalReference: "e3gd34-23tr21-er234-345er56",
+      learningObjectExternalReference: "learning-content-123",
       learningObjectId: "e3gd34-23tr21-er234-345er56",
-      remoteContentId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
-      remoteCourseId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
-      remoteExternalId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
       remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
       remoteLearningObjectId: "e3cb55bf-aa84-466e-a6c1-b8302b257a49",
       remoteUserId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",

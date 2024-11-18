@@ -20,7 +20,6 @@ let value: LmsBatchUpsertContentRequest = {
             },
           },
         ],
-        contentLaunchMethod: {},
         contentUrl: "https://www.youtube.com/watch?v=16873",
         courseIds: [
           "16873-SOFTWARE-ENG-COURSE",

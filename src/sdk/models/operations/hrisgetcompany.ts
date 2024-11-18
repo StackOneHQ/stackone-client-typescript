@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type HrisGetCompanyRequest = {
@@ -101,6 +104,24 @@ export namespace HrisGetCompanyRequest$ {
   export type Outbound = HrisGetCompanyRequest$Outbound;
 }
 
+export function hrisGetCompanyRequestToJSON(
+  hrisGetCompanyRequest: HrisGetCompanyRequest,
+): string {
+  return JSON.stringify(
+    HrisGetCompanyRequest$outboundSchema.parse(hrisGetCompanyRequest),
+  );
+}
+
+export function hrisGetCompanyRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<HrisGetCompanyRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => HrisGetCompanyRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HrisGetCompanyRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const HrisGetCompanyResponse$inboundSchema: z.ZodType<
   HrisGetCompanyResponse,
@@ -160,4 +181,22 @@ export namespace HrisGetCompanyResponse$ {
   export const outboundSchema = HrisGetCompanyResponse$outboundSchema;
   /** @deprecated use `HrisGetCompanyResponse$Outbound` instead. */
   export type Outbound = HrisGetCompanyResponse$Outbound;
+}
+
+export function hrisGetCompanyResponseToJSON(
+  hrisGetCompanyResponse: HrisGetCompanyResponse,
+): string {
+  return JSON.stringify(
+    HrisGetCompanyResponse$outboundSchema.parse(hrisGetCompanyResponse),
+  );
+}
+
+export function hrisGetCompanyResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<HrisGetCompanyResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => HrisGetCompanyResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HrisGetCompanyResponse' from JSON`,
+  );
 }

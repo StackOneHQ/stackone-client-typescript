@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type CustomFieldDefinition4 = {};
 
@@ -114,6 +117,24 @@ export namespace CustomFieldDefinition4$ {
   export type Outbound = CustomFieldDefinition4$Outbound;
 }
 
+export function customFieldDefinition4ToJSON(
+  customFieldDefinition4: CustomFieldDefinition4,
+): string {
+  return JSON.stringify(
+    CustomFieldDefinition4$outboundSchema.parse(customFieldDefinition4),
+  );
+}
+
+export function customFieldDefinition4FromJSON(
+  jsonString: string,
+): SafeParseResult<CustomFieldDefinition4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CustomFieldDefinition4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CustomFieldDefinition4' from JSON`,
+  );
+}
+
 /** @internal */
 export const Options$inboundSchema: z.ZodType<Options, z.ZodTypeDef, unknown> =
   z.union([
@@ -158,6 +179,20 @@ export namespace Options$ {
   export type Outbound = Options$Outbound;
 }
 
+export function optionsToJSON(options: Options): string {
+  return JSON.stringify(Options$outboundSchema.parse(options));
+}
+
+export function optionsFromJSON(
+  jsonString: string,
+): SafeParseResult<Options, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Options$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Options' from JSON`,
+  );
+}
+
 /** @internal */
 export const CustomFieldDefinitionSchemas4$inboundSchema: z.ZodType<
   CustomFieldDefinitionSchemas4,
@@ -186,6 +221,26 @@ export namespace CustomFieldDefinitionSchemas4$ {
   export const outboundSchema = CustomFieldDefinitionSchemas4$outboundSchema;
   /** @deprecated use `CustomFieldDefinitionSchemas4$Outbound` instead. */
   export type Outbound = CustomFieldDefinitionSchemas4$Outbound;
+}
+
+export function customFieldDefinitionSchemas4ToJSON(
+  customFieldDefinitionSchemas4: CustomFieldDefinitionSchemas4,
+): string {
+  return JSON.stringify(
+    CustomFieldDefinitionSchemas4$outboundSchema.parse(
+      customFieldDefinitionSchemas4,
+    ),
+  );
+}
+
+export function customFieldDefinitionSchemas4FromJSON(
+  jsonString: string,
+): SafeParseResult<CustomFieldDefinitionSchemas4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CustomFieldDefinitionSchemas4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CustomFieldDefinitionSchemas4' from JSON`,
+  );
 }
 
 /** @internal */
@@ -233,6 +288,26 @@ export namespace CustomFieldDefinitionSourceValue$ {
   export const outboundSchema = CustomFieldDefinitionSourceValue$outboundSchema;
   /** @deprecated use `CustomFieldDefinitionSourceValue$Outbound` instead. */
   export type Outbound = CustomFieldDefinitionSourceValue$Outbound;
+}
+
+export function customFieldDefinitionSourceValueToJSON(
+  customFieldDefinitionSourceValue: CustomFieldDefinitionSourceValue,
+): string {
+  return JSON.stringify(
+    CustomFieldDefinitionSourceValue$outboundSchema.parse(
+      customFieldDefinitionSourceValue,
+    ),
+  );
+}
+
+export function customFieldDefinitionSourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<CustomFieldDefinitionSourceValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CustomFieldDefinitionSourceValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CustomFieldDefinitionSourceValue' from JSON`,
+  );
 }
 
 /** @internal */
@@ -337,6 +412,24 @@ export namespace CustomFieldDefinitionType$ {
   export type Outbound = CustomFieldDefinitionType$Outbound;
 }
 
+export function customFieldDefinitionTypeToJSON(
+  customFieldDefinitionType: CustomFieldDefinitionType,
+): string {
+  return JSON.stringify(
+    CustomFieldDefinitionType$outboundSchema.parse(customFieldDefinitionType),
+  );
+}
+
+export function customFieldDefinitionTypeFromJSON(
+  jsonString: string,
+): SafeParseResult<CustomFieldDefinitionType, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CustomFieldDefinitionType$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CustomFieldDefinitionType' from JSON`,
+  );
+}
+
 /** @internal */
 export const CustomFieldDefinition$inboundSchema: z.ZodType<
   CustomFieldDefinition,
@@ -417,4 +510,22 @@ export namespace CustomFieldDefinition$ {
   export const outboundSchema = CustomFieldDefinition$outboundSchema;
   /** @deprecated use `CustomFieldDefinition$Outbound` instead. */
   export type Outbound = CustomFieldDefinition$Outbound;
+}
+
+export function customFieldDefinitionToJSON(
+  customFieldDefinition: CustomFieldDefinition,
+): string {
+  return JSON.stringify(
+    CustomFieldDefinition$outboundSchema.parse(customFieldDefinition),
+  );
+}
+
+export function customFieldDefinitionFromJSON(
+  jsonString: string,
+): SafeParseResult<CustomFieldDefinition, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CustomFieldDefinition$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CustomFieldDefinition' from JSON`,
+  );
 }

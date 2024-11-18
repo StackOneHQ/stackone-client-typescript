@@ -7,7 +7,7 @@ import { LmsUpdateCollectionResponse } from "@stackone/stackone-client-ts/sdk/mo
 
 let value: LmsUpdateCollectionResponse = {
   contentType: "<value>",
-  statusCode: 100,
+  statusCode: 201,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

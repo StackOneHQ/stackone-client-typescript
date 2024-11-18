@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   IamGroup,
   IamGroup$inboundSchema,
@@ -58,4 +61,18 @@ export namespace IamGroupResult$ {
   export const outboundSchema = IamGroupResult$outboundSchema;
   /** @deprecated use `IamGroupResult$Outbound` instead. */
   export type Outbound = IamGroupResult$Outbound;
+}
+
+export function iamGroupResultToJSON(iamGroupResult: IamGroupResult): string {
+  return JSON.stringify(IamGroupResult$outboundSchema.parse(iamGroupResult));
+}
+
+export function iamGroupResultFromJSON(
+  jsonString: string,
+): SafeParseResult<IamGroupResult, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => IamGroupResult$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'IamGroupResult' from JSON`,
+  );
 }

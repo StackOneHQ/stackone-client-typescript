@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 /**
@@ -123,6 +126,26 @@ export namespace HrisListLocationsQueryParamFilter$ {
   export type Outbound = HrisListLocationsQueryParamFilter$Outbound;
 }
 
+export function hrisListLocationsQueryParamFilterToJSON(
+  hrisListLocationsQueryParamFilter: HrisListLocationsQueryParamFilter,
+): string {
+  return JSON.stringify(
+    HrisListLocationsQueryParamFilter$outboundSchema.parse(
+      hrisListLocationsQueryParamFilter,
+    ),
+  );
+}
+
+export function hrisListLocationsQueryParamFilterFromJSON(
+  jsonString: string,
+): SafeParseResult<HrisListLocationsQueryParamFilter, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => HrisListLocationsQueryParamFilter$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HrisListLocationsQueryParamFilter' from JSON`,
+  );
+}
+
 /** @internal */
 export const HrisListLocationsRequest$inboundSchema: z.ZodType<
   HrisListLocationsRequest,
@@ -199,6 +222,24 @@ export namespace HrisListLocationsRequest$ {
   export type Outbound = HrisListLocationsRequest$Outbound;
 }
 
+export function hrisListLocationsRequestToJSON(
+  hrisListLocationsRequest: HrisListLocationsRequest,
+): string {
+  return JSON.stringify(
+    HrisListLocationsRequest$outboundSchema.parse(hrisListLocationsRequest),
+  );
+}
+
+export function hrisListLocationsRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<HrisListLocationsRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => HrisListLocationsRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HrisListLocationsRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const HrisListLocationsResponse$inboundSchema: z.ZodType<
   HrisListLocationsResponse,
@@ -260,4 +301,22 @@ export namespace HrisListLocationsResponse$ {
   export const outboundSchema = HrisListLocationsResponse$outboundSchema;
   /** @deprecated use `HrisListLocationsResponse$Outbound` instead. */
   export type Outbound = HrisListLocationsResponse$Outbound;
+}
+
+export function hrisListLocationsResponseToJSON(
+  hrisListLocationsResponse: HrisListLocationsResponse,
+): string {
+  return JSON.stringify(
+    HrisListLocationsResponse$outboundSchema.parse(hrisListLocationsResponse),
+  );
+}
+
+export function hrisListLocationsResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<HrisListLocationsResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => HrisListLocationsResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'HrisListLocationsResponse' from JSON`,
+  );
 }

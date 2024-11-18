@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type LmsGetAssignmentRequest = {
@@ -101,6 +104,24 @@ export namespace LmsGetAssignmentRequest$ {
   export type Outbound = LmsGetAssignmentRequest$Outbound;
 }
 
+export function lmsGetAssignmentRequestToJSON(
+  lmsGetAssignmentRequest: LmsGetAssignmentRequest,
+): string {
+  return JSON.stringify(
+    LmsGetAssignmentRequest$outboundSchema.parse(lmsGetAssignmentRequest),
+  );
+}
+
+export function lmsGetAssignmentRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<LmsGetAssignmentRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LmsGetAssignmentRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LmsGetAssignmentRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const LmsGetAssignmentResponse$inboundSchema: z.ZodType<
   LmsGetAssignmentResponse,
@@ -160,4 +181,22 @@ export namespace LmsGetAssignmentResponse$ {
   export const outboundSchema = LmsGetAssignmentResponse$outboundSchema;
   /** @deprecated use `LmsGetAssignmentResponse$Outbound` instead. */
   export type Outbound = LmsGetAssignmentResponse$Outbound;
+}
+
+export function lmsGetAssignmentResponseToJSON(
+  lmsGetAssignmentResponse: LmsGetAssignmentResponse,
+): string {
+  return JSON.stringify(
+    LmsGetAssignmentResponse$outboundSchema.parse(lmsGetAssignmentResponse),
+  );
+}
+
+export function lmsGetAssignmentResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<LmsGetAssignmentResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LmsGetAssignmentResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LmsGetAssignmentResponse' from JSON`,
+  );
 }

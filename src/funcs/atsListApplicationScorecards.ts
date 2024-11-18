@@ -100,6 +100,9 @@ export async function atsListApplicationScorecards(
   const context = {
     operationID: "ats_list_application_scorecards",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.security,
     retryConfig: options?.retries
       || client._options.retryConfig

@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type InAppMessagesMessageContent = {
   body?: string | null | undefined;
@@ -116,6 +119,26 @@ export namespace InAppMessagesMessageContent$ {
   export type Outbound = InAppMessagesMessageContent$Outbound;
 }
 
+export function inAppMessagesMessageContentToJSON(
+  inAppMessagesMessageContent: InAppMessagesMessageContent,
+): string {
+  return JSON.stringify(
+    InAppMessagesMessageContent$outboundSchema.parse(
+      inAppMessagesMessageContent,
+    ),
+  );
+}
+
+export function inAppMessagesMessageContentFromJSON(
+  jsonString: string,
+): SafeParseResult<InAppMessagesMessageContent, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => InAppMessagesMessageContent$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'InAppMessagesMessageContent' from JSON`,
+  );
+}
+
 /** @internal */
 export const InAppMessages4$inboundSchema: z.ZodType<
   InAppMessages4,
@@ -144,6 +167,20 @@ export namespace InAppMessages4$ {
   export const outboundSchema = InAppMessages4$outboundSchema;
   /** @deprecated use `InAppMessages4$Outbound` instead. */
   export type Outbound = InAppMessages4$Outbound;
+}
+
+export function inAppMessages4ToJSON(inAppMessages4: InAppMessages4): string {
+  return JSON.stringify(InAppMessages4$outboundSchema.parse(inAppMessages4));
+}
+
+export function inAppMessages4FromJSON(
+  jsonString: string,
+): SafeParseResult<InAppMessages4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => InAppMessages4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'InAppMessages4' from JSON`,
+  );
 }
 
 /** @internal */
@@ -191,6 +228,24 @@ export namespace InAppMessagesSourceValue$ {
   export const outboundSchema = InAppMessagesSourceValue$outboundSchema;
   /** @deprecated use `InAppMessagesSourceValue$Outbound` instead. */
   export type Outbound = InAppMessagesSourceValue$Outbound;
+}
+
+export function inAppMessagesSourceValueToJSON(
+  inAppMessagesSourceValue: InAppMessagesSourceValue,
+): string {
+  return JSON.stringify(
+    InAppMessagesSourceValue$outboundSchema.parse(inAppMessagesSourceValue),
+  );
+}
+
+export function inAppMessagesSourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<InAppMessagesSourceValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => InAppMessagesSourceValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'InAppMessagesSourceValue' from JSON`,
+  );
 }
 
 /** @internal */
@@ -295,6 +350,24 @@ export namespace InAppMessagesMessageType$ {
   export type Outbound = InAppMessagesMessageType$Outbound;
 }
 
+export function inAppMessagesMessageTypeToJSON(
+  inAppMessagesMessageType: InAppMessagesMessageType,
+): string {
+  return JSON.stringify(
+    InAppMessagesMessageType$outboundSchema.parse(inAppMessagesMessageType),
+  );
+}
+
+export function inAppMessagesMessageTypeFromJSON(
+  jsonString: string,
+): SafeParseResult<InAppMessagesMessageType, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => InAppMessagesMessageType$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'InAppMessagesMessageType' from JSON`,
+  );
+}
+
 /** @internal */
 export const InAppMessages$inboundSchema: z.ZodType<
   InAppMessages,
@@ -359,4 +432,18 @@ export namespace InAppMessages$ {
   export const outboundSchema = InAppMessages$outboundSchema;
   /** @deprecated use `InAppMessages$Outbound` instead. */
   export type Outbound = InAppMessages$Outbound;
+}
+
+export function inAppMessagesToJSON(inAppMessages: InAppMessages): string {
+  return JSON.stringify(InAppMessages$outboundSchema.parse(inAppMessages));
+}
+
+export function inAppMessagesFromJSON(
+  jsonString: string,
+): SafeParseResult<InAppMessages, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => InAppMessages$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'InAppMessages' from JSON`,
+  );
 }

@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   Interviewer,
   Interviewer$inboundSchema,
@@ -214,6 +217,26 @@ export namespace ScheduledInterviewInterviewStage$ {
   export type Outbound = ScheduledInterviewInterviewStage$Outbound;
 }
 
+export function scheduledInterviewInterviewStageToJSON(
+  scheduledInterviewInterviewStage: ScheduledInterviewInterviewStage,
+): string {
+  return JSON.stringify(
+    ScheduledInterviewInterviewStage$outboundSchema.parse(
+      scheduledInterviewInterviewStage,
+    ),
+  );
+}
+
+export function scheduledInterviewInterviewStageFromJSON(
+  jsonString: string,
+): SafeParseResult<ScheduledInterviewInterviewStage, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ScheduledInterviewInterviewStage$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ScheduledInterviewInterviewStage' from JSON`,
+  );
+}
+
 /** @internal */
 export const ScheduledInterview4$inboundSchema: z.ZodType<
   ScheduledInterview4,
@@ -242,6 +265,24 @@ export namespace ScheduledInterview4$ {
   export const outboundSchema = ScheduledInterview4$outboundSchema;
   /** @deprecated use `ScheduledInterview4$Outbound` instead. */
   export type Outbound = ScheduledInterview4$Outbound;
+}
+
+export function scheduledInterview4ToJSON(
+  scheduledInterview4: ScheduledInterview4,
+): string {
+  return JSON.stringify(
+    ScheduledInterview4$outboundSchema.parse(scheduledInterview4),
+  );
+}
+
+export function scheduledInterview4FromJSON(
+  jsonString: string,
+): SafeParseResult<ScheduledInterview4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ScheduledInterview4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ScheduledInterview4' from JSON`,
+  );
 }
 
 /** @internal */
@@ -289,6 +330,26 @@ export namespace ScheduledInterviewSourceValue$ {
   export const outboundSchema = ScheduledInterviewSourceValue$outboundSchema;
   /** @deprecated use `ScheduledInterviewSourceValue$Outbound` instead. */
   export type Outbound = ScheduledInterviewSourceValue$Outbound;
+}
+
+export function scheduledInterviewSourceValueToJSON(
+  scheduledInterviewSourceValue: ScheduledInterviewSourceValue,
+): string {
+  return JSON.stringify(
+    ScheduledInterviewSourceValue$outboundSchema.parse(
+      scheduledInterviewSourceValue,
+    ),
+  );
+}
+
+export function scheduledInterviewSourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<ScheduledInterviewSourceValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ScheduledInterviewSourceValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ScheduledInterviewSourceValue' from JSON`,
+  );
 }
 
 /** @internal */
@@ -392,6 +453,26 @@ export namespace ScheduledInterviewInterviewStatus$ {
     ScheduledInterviewInterviewStatus$outboundSchema;
   /** @deprecated use `ScheduledInterviewInterviewStatus$Outbound` instead. */
   export type Outbound = ScheduledInterviewInterviewStatus$Outbound;
+}
+
+export function scheduledInterviewInterviewStatusToJSON(
+  scheduledInterviewInterviewStatus: ScheduledInterviewInterviewStatus,
+): string {
+  return JSON.stringify(
+    ScheduledInterviewInterviewStatus$outboundSchema.parse(
+      scheduledInterviewInterviewStatus,
+    ),
+  );
+}
+
+export function scheduledInterviewInterviewStatusFromJSON(
+  jsonString: string,
+): SafeParseResult<ScheduledInterviewInterviewStatus, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ScheduledInterviewInterviewStatus$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ScheduledInterviewInterviewStatus' from JSON`,
+  );
 }
 
 /** @internal */
@@ -534,4 +615,22 @@ export namespace ScheduledInterview$ {
   export const outboundSchema = ScheduledInterview$outboundSchema;
   /** @deprecated use `ScheduledInterview$Outbound` instead. */
   export type Outbound = ScheduledInterview$Outbound;
+}
+
+export function scheduledInterviewToJSON(
+  scheduledInterview: ScheduledInterview,
+): string {
+  return JSON.stringify(
+    ScheduledInterview$outboundSchema.parse(scheduledInterview),
+  );
+}
+
+export function scheduledInterviewFromJSON(
+  jsonString: string,
+): SafeParseResult<ScheduledInterview, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => ScheduledInterview$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'ScheduledInterview' from JSON`,
+  );
 }

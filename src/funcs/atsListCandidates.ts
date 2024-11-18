@@ -89,6 +89,9 @@ export async function atsListCandidates(
   const context = {
     operationID: "ats_list_candidates",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.security,
     retryConfig: options?.retries
       || client._options.retryConfig

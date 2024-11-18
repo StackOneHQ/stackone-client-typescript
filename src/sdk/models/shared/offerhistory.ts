@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type OfferHistory = {
   /**
@@ -86,4 +89,18 @@ export namespace OfferHistory$ {
   export const outboundSchema = OfferHistory$outboundSchema;
   /** @deprecated use `OfferHistory$Outbound` instead. */
   export type Outbound = OfferHistory$Outbound;
+}
+
+export function offerHistoryToJSON(offerHistory: OfferHistory): string {
+  return JSON.stringify(OfferHistory$outboundSchema.parse(offerHistory));
+}
+
+export function offerHistoryFromJSON(
+  jsonString: string,
+): SafeParseResult<OfferHistory, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => OfferHistory$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'OfferHistory' from JSON`,
+  );
 }

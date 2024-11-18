@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   OfferHistory,
   OfferHistory$inboundSchema,
@@ -122,6 +125,20 @@ export namespace Offer4$ {
   export type Outbound = Offer4$Outbound;
 }
 
+export function offer4ToJSON(offer4: Offer4): string {
+  return JSON.stringify(Offer4$outboundSchema.parse(offer4));
+}
+
+export function offer4FromJSON(
+  jsonString: string,
+): SafeParseResult<Offer4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Offer4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Offer4' from JSON`,
+  );
+}
+
 /** @internal */
 export const OfferSourceValue$inboundSchema: z.ZodType<
   OfferSourceValue,
@@ -167,6 +184,24 @@ export namespace OfferSourceValue$ {
   export const outboundSchema = OfferSourceValue$outboundSchema;
   /** @deprecated use `OfferSourceValue$Outbound` instead. */
   export type Outbound = OfferSourceValue$Outbound;
+}
+
+export function offerSourceValueToJSON(
+  offerSourceValue: OfferSourceValue,
+): string {
+  return JSON.stringify(
+    OfferSourceValue$outboundSchema.parse(offerSourceValue),
+  );
+}
+
+export function offerSourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<OfferSourceValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => OfferSourceValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'OfferSourceValue' from JSON`,
+  );
 }
 
 /** @internal */
@@ -271,6 +306,24 @@ export namespace OfferOfferStatus$ {
   export type Outbound = OfferOfferStatus$Outbound;
 }
 
+export function offerOfferStatusToJSON(
+  offerOfferStatus: OfferOfferStatus,
+): string {
+  return JSON.stringify(
+    OfferOfferStatus$outboundSchema.parse(offerOfferStatus),
+  );
+}
+
+export function offerOfferStatusFromJSON(
+  jsonString: string,
+): SafeParseResult<OfferOfferStatus, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => OfferOfferStatus$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'OfferOfferStatus' from JSON`,
+  );
+}
+
 /** @internal */
 export const Offer$inboundSchema: z.ZodType<Offer, z.ZodTypeDef, unknown> = z
   .object({
@@ -367,4 +420,18 @@ export namespace Offer$ {
   export const outboundSchema = Offer$outboundSchema;
   /** @deprecated use `Offer$Outbound` instead. */
   export type Outbound = Offer$Outbound;
+}
+
+export function offerToJSON(offer: Offer): string {
+  return JSON.stringify(Offer$outboundSchema.parse(offer));
+}
+
+export function offerFromJSON(
+  jsonString: string,
+): SafeParseResult<Offer, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Offer$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Offer' from JSON`,
+  );
 }

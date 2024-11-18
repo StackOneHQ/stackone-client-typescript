@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   Completion,
   Completion$inboundSchema,
@@ -58,4 +61,22 @@ export namespace CompletionResult$ {
   export const outboundSchema = CompletionResult$outboundSchema;
   /** @deprecated use `CompletionResult$Outbound` instead. */
   export type Outbound = CompletionResult$Outbound;
+}
+
+export function completionResultToJSON(
+  completionResult: CompletionResult,
+): string {
+  return JSON.stringify(
+    CompletionResult$outboundSchema.parse(completionResult),
+  );
+}
+
+export function completionResultFromJSON(
+  jsonString: string,
+): SafeParseResult<CompletionResult, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CompletionResult$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CompletionResult' from JSON`,
+  );
 }

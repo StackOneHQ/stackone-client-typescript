@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 /**
@@ -122,6 +125,26 @@ export namespace CrmListListsQueryParamFilter$ {
   export type Outbound = CrmListListsQueryParamFilter$Outbound;
 }
 
+export function crmListListsQueryParamFilterToJSON(
+  crmListListsQueryParamFilter: CrmListListsQueryParamFilter,
+): string {
+  return JSON.stringify(
+    CrmListListsQueryParamFilter$outboundSchema.parse(
+      crmListListsQueryParamFilter,
+    ),
+  );
+}
+
+export function crmListListsQueryParamFilterFromJSON(
+  jsonString: string,
+): SafeParseResult<CrmListListsQueryParamFilter, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CrmListListsQueryParamFilter$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CrmListListsQueryParamFilter' from JSON`,
+  );
+}
+
 /** @internal */
 export const CrmListListsRequest$inboundSchema: z.ZodType<
   CrmListListsRequest,
@@ -196,6 +219,24 @@ export namespace CrmListListsRequest$ {
   export type Outbound = CrmListListsRequest$Outbound;
 }
 
+export function crmListListsRequestToJSON(
+  crmListListsRequest: CrmListListsRequest,
+): string {
+  return JSON.stringify(
+    CrmListListsRequest$outboundSchema.parse(crmListListsRequest),
+  );
+}
+
+export function crmListListsRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<CrmListListsRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CrmListListsRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CrmListListsRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const CrmListListsResponse$inboundSchema: z.ZodType<
   CrmListListsResponse,
@@ -255,4 +296,22 @@ export namespace CrmListListsResponse$ {
   export const outboundSchema = CrmListListsResponse$outboundSchema;
   /** @deprecated use `CrmListListsResponse$Outbound` instead. */
   export type Outbound = CrmListListsResponse$Outbound;
+}
+
+export function crmListListsResponseToJSON(
+  crmListListsResponse: CrmListListsResponse,
+): string {
+  return JSON.stringify(
+    CrmListListsResponse$outboundSchema.parse(crmListListsResponse),
+  );
+}
+
+export function crmListListsResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<CrmListListsResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CrmListListsResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CrmListListsResponse' from JSON`,
+  );
 }

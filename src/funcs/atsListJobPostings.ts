@@ -89,6 +89,9 @@ export async function atsListJobPostings(
   const context = {
     operationID: "ats_list_job_postings",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.security,
     retryConfig: options?.retries
       || client._options.retryConfig

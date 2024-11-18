@@ -7,7 +7,7 @@ import { HrisListTimeOffRequestsResponse } from "@stackone/stackone-client-ts/sd
 
 let value: HrisListTimeOffRequestsResponse = {
   contentType: "<value>",
-  statusCode: 307,
+  statusCode: 205,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

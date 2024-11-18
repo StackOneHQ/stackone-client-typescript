@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   PushMessages,
   PushMessages$inboundSchema,
@@ -79,4 +82,18 @@ export namespace PushTemplate$ {
   export const outboundSchema = PushTemplate$outboundSchema;
   /** @deprecated use `PushTemplate$Outbound` instead. */
   export type Outbound = PushTemplate$Outbound;
+}
+
+export function pushTemplateToJSON(pushTemplate: PushTemplate): string {
+  return JSON.stringify(PushTemplate$outboundSchema.parse(pushTemplate));
+}
+
+export function pushTemplateFromJSON(
+  jsonString: string,
+): SafeParseResult<PushTemplate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => PushTemplate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'PushTemplate' from JSON`,
+  );
 }

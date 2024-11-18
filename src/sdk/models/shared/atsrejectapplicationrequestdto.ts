@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type AtsRejectApplicationRequestDto = {
   /**
@@ -61,4 +64,24 @@ export namespace AtsRejectApplicationRequestDto$ {
   export const outboundSchema = AtsRejectApplicationRequestDto$outboundSchema;
   /** @deprecated use `AtsRejectApplicationRequestDto$Outbound` instead. */
   export type Outbound = AtsRejectApplicationRequestDto$Outbound;
+}
+
+export function atsRejectApplicationRequestDtoToJSON(
+  atsRejectApplicationRequestDto: AtsRejectApplicationRequestDto,
+): string {
+  return JSON.stringify(
+    AtsRejectApplicationRequestDto$outboundSchema.parse(
+      atsRejectApplicationRequestDto,
+    ),
+  );
+}
+
+export function atsRejectApplicationRequestDtoFromJSON(
+  jsonString: string,
+): SafeParseResult<AtsRejectApplicationRequestDto, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AtsRejectApplicationRequestDto$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AtsRejectApplicationRequestDto' from JSON`,
+  );
 }

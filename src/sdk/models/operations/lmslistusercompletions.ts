@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 /**
@@ -134,6 +137,28 @@ export namespace LmsListUserCompletionsQueryParamFilter$ {
   export type Outbound = LmsListUserCompletionsQueryParamFilter$Outbound;
 }
 
+export function lmsListUserCompletionsQueryParamFilterToJSON(
+  lmsListUserCompletionsQueryParamFilter:
+    LmsListUserCompletionsQueryParamFilter,
+): string {
+  return JSON.stringify(
+    LmsListUserCompletionsQueryParamFilter$outboundSchema.parse(
+      lmsListUserCompletionsQueryParamFilter,
+    ),
+  );
+}
+
+export function lmsListUserCompletionsQueryParamFilterFromJSON(
+  jsonString: string,
+): SafeParseResult<LmsListUserCompletionsQueryParamFilter, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      LmsListUserCompletionsQueryParamFilter$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LmsListUserCompletionsQueryParamFilter' from JSON`,
+  );
+}
+
 /** @internal */
 export const LmsListUserCompletionsRequest$inboundSchema: z.ZodType<
   LmsListUserCompletionsRequest,
@@ -213,6 +238,26 @@ export namespace LmsListUserCompletionsRequest$ {
   export type Outbound = LmsListUserCompletionsRequest$Outbound;
 }
 
+export function lmsListUserCompletionsRequestToJSON(
+  lmsListUserCompletionsRequest: LmsListUserCompletionsRequest,
+): string {
+  return JSON.stringify(
+    LmsListUserCompletionsRequest$outboundSchema.parse(
+      lmsListUserCompletionsRequest,
+    ),
+  );
+}
+
+export function lmsListUserCompletionsRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<LmsListUserCompletionsRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LmsListUserCompletionsRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LmsListUserCompletionsRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const LmsListUserCompletionsResponse$inboundSchema: z.ZodType<
   LmsListUserCompletionsResponse,
@@ -272,4 +317,24 @@ export namespace LmsListUserCompletionsResponse$ {
   export const outboundSchema = LmsListUserCompletionsResponse$outboundSchema;
   /** @deprecated use `LmsListUserCompletionsResponse$Outbound` instead. */
   export type Outbound = LmsListUserCompletionsResponse$Outbound;
+}
+
+export function lmsListUserCompletionsResponseToJSON(
+  lmsListUserCompletionsResponse: LmsListUserCompletionsResponse,
+): string {
+  return JSON.stringify(
+    LmsListUserCompletionsResponse$outboundSchema.parse(
+      lmsListUserCompletionsResponse,
+    ),
+  );
+}
+
+export function lmsListUserCompletionsResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<LmsListUserCompletionsResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LmsListUserCompletionsResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LmsListUserCompletionsResponse' from JSON`,
+  );
 }

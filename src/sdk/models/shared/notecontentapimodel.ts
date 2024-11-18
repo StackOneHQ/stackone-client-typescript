@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type NoteContentApiModel = {
   /**
@@ -45,4 +48,22 @@ export namespace NoteContentApiModel$ {
   export const outboundSchema = NoteContentApiModel$outboundSchema;
   /** @deprecated use `NoteContentApiModel$Outbound` instead. */
   export type Outbound = NoteContentApiModel$Outbound;
+}
+
+export function noteContentApiModelToJSON(
+  noteContentApiModel: NoteContentApiModel,
+): string {
+  return JSON.stringify(
+    NoteContentApiModel$outboundSchema.parse(noteContentApiModel),
+  );
+}
+
+export function noteContentApiModelFromJSON(
+  jsonString: string,
+): SafeParseResult<NoteContentApiModel, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => NoteContentApiModel$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'NoteContentApiModel' from JSON`,
+  );
 }

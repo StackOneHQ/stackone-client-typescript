@@ -95,6 +95,9 @@ export async function hrisListEmployeeDocuments(
   const context = {
     operationID: "hris_list_employee_documents",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.security,
     retryConfig: options?.retries
       || client._options.retryConfig

@@ -63,7 +63,6 @@ async function run() {
               },
             },
           ],
-          contentLaunchMethod: {},
           contentUrl: "https://www.youtube.com/watch?v=16873",
           courseIds: [
             "16873-SOFTWARE-ENG-COURSE",
@@ -136,7 +135,6 @@ async function run() {
               },
             },
           ],
-          contentLaunchMethod: {},
           contentUrl: "https://www.youtube.com/watch?v=16873",
           courseIds: [
             "16873-SOFTWARE-ENG-COURSE",
@@ -245,7 +243,6 @@ async function run() {
             "16873-SOFTWARE-ENG-Content",
           ],
           coverUrl: "https://www.googledrive.com/?v=16873",
-          createdAt: "2021-07-21T14:00:00.000Z",
           description: "This course acts as learning content for software engineers.",
           duration: "P3Y6M4DT12H30M5S",
           externalReference: "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1",
@@ -269,7 +266,6 @@ async function run() {
             "my_project_custom_field_1": "REF-1236",
             "my_project_custom_field_2": "some other value",
           },
-          updatedAt: "2021-07-21T14:00:00.000Z",
           url: "https://www.linkedinlearning.com/?v=16873",
         },
         {
@@ -301,7 +297,6 @@ async function run() {
             "16873-SOFTWARE-ENG-Content",
           ],
           coverUrl: "https://www.googledrive.com/?v=16873",
-          createdAt: "2021-07-21T14:00:00.000Z",
           description: "This course acts as learning content for software engineers.",
           duration: "P3Y6M4DT12H30M5S",
           externalReference: "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1",
@@ -322,7 +317,6 @@ async function run() {
             "my_project_custom_field_1": "REF-1236",
             "my_project_custom_field_2": "some other value",
           },
-          updatedAt: "2021-07-21T14:00:00.000Z",
           url: "https://www.linkedinlearning.com/?v=16873",
         },
       ],
@@ -382,7 +376,6 @@ async function run() {
             "16873-SOFTWARE-ENG-Content",
           ],
           coverUrl: "https://www.googledrive.com/?v=16873",
-          createdAt: "2021-07-21T14:00:00.000Z",
           description: "This course acts as learning content for software engineers.",
           duration: "P3Y6M4DT12H30M5S",
           externalReference: "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1",
@@ -406,7 +399,6 @@ async function run() {
             "my_project_custom_field_1": "REF-1236",
             "my_project_custom_field_2": "some other value",
           },
-          updatedAt: "2021-07-21T14:00:00.000Z",
           url: "https://www.linkedinlearning.com/?v=16873",
         },
         {
@@ -438,7 +430,6 @@ async function run() {
             "16873-SOFTWARE-ENG-Content",
           ],
           coverUrl: "https://www.googledrive.com/?v=16873",
-          createdAt: "2021-07-21T14:00:00.000Z",
           description: "This course acts as learning content for software engineers.",
           duration: "P3Y6M4DT12H30M5S",
           externalReference: "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1",
@@ -459,7 +450,6 @@ async function run() {
             "my_project_custom_field_1": "REF-1236",
             "my_project_custom_field_2": "some other value",
           },
-          updatedAt: "2021-07-21T14:00:00.000Z",
           url: "https://www.linkedinlearning.com/?v=16873",
         },
       ],
@@ -672,6 +662,8 @@ async function run() {
       contentExternalReference: "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1-CONTENT",
       contentId: "16873-ENG-VIDEO-1",
       externalId: "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1-COMPLETION",
+      learningObjectExternalReference: "learning-content-123",
+      learningObjectId: "e3gd34-23tr21-er234-345er56",
       passthrough: {
         "other_known_names": "John Doe",
       },
@@ -711,6 +703,8 @@ async function run() {
       contentExternalReference: "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1-CONTENT",
       contentId: "16873-ENG-VIDEO-1",
       externalId: "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1-COMPLETION",
+      learningObjectExternalReference: "learning-content-123",
+      learningObjectId: "e3gd34-23tr21-er234-345er56",
       passthrough: {
         "other_known_names": "John Doe",
       },
@@ -1023,7 +1017,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.lms.getContent({
-    fields: "id,remote_id,external_reference,course_ids,remote_course_ids,title,description,languages,content_url,content_type,cover_url,active,duration,order,content_launch_method,categories,skills,updated_at,created_at",
+    fields: "id,remote_id,external_reference,course_ids,remote_course_ids,title,description,languages,content_url,content_type,cover_url,active,duration,order,categories,skills,updated_at,created_at",
     id: "<id>",
     xAccountId: "<value>",
   });
@@ -1054,7 +1048,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await lmsGetContent(stackOne, {
-    fields: "id,remote_id,external_reference,course_ids,remote_course_ids,title,description,languages,content_url,content_type,cover_url,active,duration,order,content_launch_method,categories,skills,updated_at,created_at",
+    fields: "id,remote_id,external_reference,course_ids,remote_course_ids,title,description,languages,content_url,content_type,cover_url,active,duration,order,categories,skills,updated_at,created_at",
     id: "<id>",
     xAccountId: "<value>",
   });
@@ -1819,7 +1813,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.lms.listContent({
-    fields: "id,remote_id,external_reference,course_ids,remote_course_ids,title,description,languages,content_url,content_type,cover_url,active,duration,order,content_launch_method,categories,skills,updated_at,created_at",
+    fields: "id,remote_id,external_reference,course_ids,remote_course_ids,title,description,languages,content_url,content_type,cover_url,active,duration,order,categories,skills,updated_at,created_at",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
@@ -1853,7 +1847,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await lmsListContent(stackOne, {
-    fields: "id,remote_id,external_reference,course_ids,remote_course_ids,title,description,languages,content_url,content_type,cover_url,active,duration,order,content_launch_method,categories,skills,updated_at,created_at",
+    fields: "id,remote_id,external_reference,course_ids,remote_course_ids,title,description,languages,content_url,content_type,cover_url,active,duration,order,categories,skills,updated_at,created_at",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
@@ -2543,7 +2537,6 @@ async function run() {
           },
         },
       ],
-      contentLaunchMethod: {},
       contentUrl: "https://www.youtube.com/watch?v=16873",
       courseIds: [
         "16873-SOFTWARE-ENG-COURSE",
@@ -2612,7 +2605,6 @@ async function run() {
           },
         },
       ],
-      contentLaunchMethod: {},
       contentUrl: "https://www.youtube.com/watch?v=16873",
       courseIds: [
         "16873-SOFTWARE-ENG-COURSE",
@@ -2717,7 +2709,6 @@ async function run() {
         "16873-SOFTWARE-ENG-Content",
       ],
       coverUrl: "https://www.googledrive.com/?v=16873",
-      createdAt: "2021-07-21T14:00:00.000Z",
       description: "This course acts as learning content for software engineers.",
       duration: "P3Y6M4DT12H30M5S",
       externalReference: "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1",
@@ -2738,7 +2729,6 @@ async function run() {
         "my_project_custom_field_1": "REF-1236",
         "my_project_custom_field_2": "some other value",
       },
-      updatedAt: "2021-07-21T14:00:00.000Z",
       url: "https://www.linkedinlearning.com/?v=16873",
     },
     xAccountId: "<id>",
@@ -2794,7 +2784,6 @@ async function run() {
         "16873-SOFTWARE-ENG-Content",
       ],
       coverUrl: "https://www.googledrive.com/?v=16873",
-      createdAt: "2021-07-21T14:00:00.000Z",
       description: "This course acts as learning content for software engineers.",
       duration: "P3Y6M4DT12H30M5S",
       externalReference: "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1",
@@ -2815,7 +2804,6 @@ async function run() {
         "my_project_custom_field_1": "REF-1236",
         "my_project_custom_field_2": "some other value",
       },
-      updatedAt: "2021-07-21T14:00:00.000Z",
       url: "https://www.linkedinlearning.com/?v=16873",
     },
     xAccountId: "<id>",

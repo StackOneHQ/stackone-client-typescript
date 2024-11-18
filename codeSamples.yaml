@@ -2725,6 +2725,67 @@ actions:
             }
 
             run();
+  - target: $["paths"]["/unified/hris/custom_field_definitions/employees"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: hris_list_employee_custom_field_definitions
+          source: |-
+            import { StackOne } from "@stackone/stackone-client-ts";
+
+            const stackOne = new StackOne({
+              security: {
+                username: "",
+                password: "",
+              },
+            });
+
+            async function run() {
+              const result = await stackOne.hris.listEmployeeCustomFieldDefinitions({
+                fields: "id,remote_id,name,description,type,options",
+                filter: {
+                  updatedAfter: "2020-01-01T00:00:00.000Z",
+                },
+                updatedAfter: "2020-01-01T00:00:00.000Z",
+                xAccountId: "<id>",
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/unified/hris/custom_field_definitions/employees/{id}"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: hris_get_employee_custom_field_definition
+          source: |-
+            import { StackOne } from "@stackone/stackone-client-ts";
+
+            const stackOne = new StackOne({
+              security: {
+                username: "",
+                password: "",
+              },
+            });
+
+            async function run() {
+              const result = await stackOne.hris.getEmployeeCustomFieldDefinition({
+                id: "<id>",
+                fields: "id,remote_id,name,description,type,options",
+                filter: {
+                  updatedAfter: "2020-01-01T00:00:00.000Z",
+                },
+                updatedAfter: "2020-01-01T00:00:00.000Z",
+                xAccountId: "<id>",
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
   - target: $["paths"]["/unified/hris/documents/employee_categories"]["get"]
     update:
       x-codeSamples:
@@ -4337,6 +4398,63 @@ actions:
             }
 
             run();
+  - target: $["paths"]["/unified/hris/time_off_types"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: hris_list_time_off_types
+          source: |-
+            import { StackOne } from "@stackone/stackone-client-ts";
+
+            const stackOne = new StackOne({
+              security: {
+                username: "",
+                password: "",
+              },
+            });
+
+            async function run() {
+              const result = await stackOne.hris.listTimeOffTypes({
+                fields: "id,remote_id,name,active",
+                filter: {
+                  updatedAfter: "2020-01-01T00:00:00.000Z",
+                },
+                updatedAfter: "2020-01-01T00:00:00.000Z",
+                xAccountId: "<id>",
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/unified/hris/time_off_types/{id}"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: hris_get_time_off_type
+          source: |-
+            import { StackOne } from "@stackone/stackone-client-ts";
+
+            const stackOne = new StackOne({
+              security: {
+                username: "",
+                password: "",
+              },
+            });
+
+            async function run() {
+              const result = await stackOne.hris.getTimeOffType({
+                id: "<id>",
+                fields: "id,remote_id,name,active",
+                xAccountId: "<id>",
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
   - target: $["paths"]["/unified/iam/groups"]["get"]
     update:
       x-codeSamples:
@@ -4880,7 +4998,7 @@ actions:
 
             async function run() {
               const result = await stackOne.lms.listContent({
-                fields: "id,remote_id,external_reference,course_ids,remote_course_ids,title,description,languages,content_url,content_type,cover_url,active,duration,order,content_launch_method,categories,skills,updated_at,created_at",
+                fields: "id,remote_id,external_reference,course_ids,remote_course_ids,title,description,languages,content_url,content_type,cover_url,active,duration,order,categories,skills,updated_at,created_at",
                 filter: {
                   updatedAfter: "2020-01-01T00:00:00.000Z",
                 },
@@ -4939,7 +5057,6 @@ actions:
                       name: "Information-Technology",
                     },
                   ],
-                  contentLaunchMethod: {},
                   order: 1,
                   categories: [
                     {
@@ -5009,7 +5126,6 @@ actions:
                           name: "Information-Technology",
                         },
                       ],
-                      contentLaunchMethod: {},
                       order: 1,
                       categories: [
                         {
@@ -5048,7 +5164,6 @@ actions:
                           name: "Information-Technology",
                         },
                       ],
-                      contentLaunchMethod: {},
                       order: 1,
                       categories: [
                         {
@@ -5087,7 +5202,7 @@ actions:
             async function run() {
               const result = await stackOne.lms.getContent({
                 id: "<id>",
-                fields: "id,remote_id,external_reference,course_ids,remote_course_ids,title,description,languages,content_url,content_type,cover_url,active,duration,order,content_launch_method,categories,skills,updated_at,created_at",
+                fields: "id,remote_id,external_reference,course_ids,remote_course_ids,title,description,languages,content_url,content_type,cover_url,active,duration,order,categories,skills,updated_at,created_at",
                 xAccountId: "<id>",
               });
 
@@ -5172,8 +5287,6 @@ actions:
                       name: "Information-Technology",
                     },
                   ],
-                  updatedAt: "2021-07-21T14:00:00.000Z",
-                  createdAt: "2021-07-21T14:00:00.000Z",
                   categories: [
                     {
                       unifiedCustomFields: {
@@ -5247,8 +5360,6 @@ actions:
                           name: "Information-Technology",
                         },
                       ],
-                      updatedAt: "2021-07-21T14:00:00.000Z",
-                      createdAt: "2021-07-21T14:00:00.000Z",
                       categories: [
                         {
                           unifiedCustomFields: {
@@ -5303,8 +5414,6 @@ actions:
                           name: "Information-Technology",
                         },
                       ],
-                      updatedAt: "2021-07-21T14:00:00.000Z",
-                      createdAt: "2021-07-21T14:00:00.000Z",
                       categories: [
                         {
                           unifiedCustomFields: {
@@ -5587,10 +5696,9 @@ actions:
                   passthrough: {
                     "other_known_names": "John Doe",
                   },
-                  externalId: "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1-COMPLETION",
-                  contentExternalReference: "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1-CONTENT",
-                  contentId: "16873-ENG-VIDEO-1",
                   completedAt: "2021-07-21T14:00:00.000Z",
+                  learningObjectId: "e3gd34-23tr21-er234-345er56",
+                  learningObjectExternalReference: "learning-content-123",
                 },
               });
 

@@ -4,11 +4,14 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
 import {
   catchUnrecognizedEnum,
   OpenEnum,
   Unrecognized,
 } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type Employment4 = {};
 
@@ -319,6 +322,20 @@ export namespace Employment4$ {
   export type Outbound = Employment4$Outbound;
 }
 
+export function employment4ToJSON(employment4: Employment4): string {
+  return JSON.stringify(Employment4$outboundSchema.parse(employment4));
+}
+
+export function employment4FromJSON(
+  jsonString: string,
+): SafeParseResult<Employment4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Employment4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Employment4' from JSON`,
+  );
+}
+
 /** @internal */
 export const EmploymentSourceValue$inboundSchema: z.ZodType<
   EmploymentSourceValue,
@@ -364,6 +381,24 @@ export namespace EmploymentSourceValue$ {
   export const outboundSchema = EmploymentSourceValue$outboundSchema;
   /** @deprecated use `EmploymentSourceValue$Outbound` instead. */
   export type Outbound = EmploymentSourceValue$Outbound;
+}
+
+export function employmentSourceValueToJSON(
+  employmentSourceValue: EmploymentSourceValue,
+): string {
+  return JSON.stringify(
+    EmploymentSourceValue$outboundSchema.parse(employmentSourceValue),
+  );
+}
+
+export function employmentSourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<EmploymentSourceValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => EmploymentSourceValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'EmploymentSourceValue' from JSON`,
+  );
 }
 
 /** @internal */
@@ -468,6 +503,26 @@ export namespace EmploymentEmploymentContractType$ {
   export type Outbound = EmploymentEmploymentContractType$Outbound;
 }
 
+export function employmentEmploymentContractTypeToJSON(
+  employmentEmploymentContractType: EmploymentEmploymentContractType,
+): string {
+  return JSON.stringify(
+    EmploymentEmploymentContractType$outboundSchema.parse(
+      employmentEmploymentContractType,
+    ),
+  );
+}
+
+export function employmentEmploymentContractTypeFromJSON(
+  jsonString: string,
+): SafeParseResult<EmploymentEmploymentContractType, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => EmploymentEmploymentContractType$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'EmploymentEmploymentContractType' from JSON`,
+  );
+}
+
 /** @internal */
 export const EmploymentSchemas4$inboundSchema: z.ZodType<
   EmploymentSchemas4,
@@ -496,6 +551,24 @@ export namespace EmploymentSchemas4$ {
   export const outboundSchema = EmploymentSchemas4$outboundSchema;
   /** @deprecated use `EmploymentSchemas4$Outbound` instead. */
   export type Outbound = EmploymentSchemas4$Outbound;
+}
+
+export function employmentSchemas4ToJSON(
+  employmentSchemas4: EmploymentSchemas4,
+): string {
+  return JSON.stringify(
+    EmploymentSchemas4$outboundSchema.parse(employmentSchemas4),
+  );
+}
+
+export function employmentSchemas4FromJSON(
+  jsonString: string,
+): SafeParseResult<EmploymentSchemas4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => EmploymentSchemas4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'EmploymentSchemas4' from JSON`,
+  );
 }
 
 /** @internal */
@@ -543,6 +616,26 @@ export namespace EmploymentSchemasSourceValue$ {
   export const outboundSchema = EmploymentSchemasSourceValue$outboundSchema;
   /** @deprecated use `EmploymentSchemasSourceValue$Outbound` instead. */
   export type Outbound = EmploymentSchemasSourceValue$Outbound;
+}
+
+export function employmentSchemasSourceValueToJSON(
+  employmentSchemasSourceValue: EmploymentSchemasSourceValue,
+): string {
+  return JSON.stringify(
+    EmploymentSchemasSourceValue$outboundSchema.parse(
+      employmentSchemasSourceValue,
+    ),
+  );
+}
+
+export function employmentSchemasSourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<EmploymentSchemasSourceValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => EmploymentSchemasSourceValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'EmploymentSchemasSourceValue' from JSON`,
+  );
 }
 
 /** @internal */
@@ -647,6 +740,24 @@ export namespace EmploymentEmploymentType$ {
   export type Outbound = EmploymentEmploymentType$Outbound;
 }
 
+export function employmentEmploymentTypeToJSON(
+  employmentEmploymentType: EmploymentEmploymentType,
+): string {
+  return JSON.stringify(
+    EmploymentEmploymentType$outboundSchema.parse(employmentEmploymentType),
+  );
+}
+
+export function employmentEmploymentTypeFromJSON(
+  jsonString: string,
+): SafeParseResult<EmploymentEmploymentType, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => EmploymentEmploymentType$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'EmploymentEmploymentType' from JSON`,
+  );
+}
+
 /** @internal */
 export const EmploymentSchemasPayFrequency4$inboundSchema: z.ZodType<
   EmploymentSchemasPayFrequency4,
@@ -675,6 +786,26 @@ export namespace EmploymentSchemasPayFrequency4$ {
   export const outboundSchema = EmploymentSchemasPayFrequency4$outboundSchema;
   /** @deprecated use `EmploymentSchemasPayFrequency4$Outbound` instead. */
   export type Outbound = EmploymentSchemasPayFrequency4$Outbound;
+}
+
+export function employmentSchemasPayFrequency4ToJSON(
+  employmentSchemasPayFrequency4: EmploymentSchemasPayFrequency4,
+): string {
+  return JSON.stringify(
+    EmploymentSchemasPayFrequency4$outboundSchema.parse(
+      employmentSchemasPayFrequency4,
+    ),
+  );
+}
+
+export function employmentSchemasPayFrequency4FromJSON(
+  jsonString: string,
+): SafeParseResult<EmploymentSchemasPayFrequency4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => EmploymentSchemasPayFrequency4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'EmploymentSchemasPayFrequency4' from JSON`,
+  );
 }
 
 /** @internal */
@@ -724,6 +855,33 @@ export namespace EmploymentSchemasPayFrequencySourceValue$ {
     EmploymentSchemasPayFrequencySourceValue$outboundSchema;
   /** @deprecated use `EmploymentSchemasPayFrequencySourceValue$Outbound` instead. */
   export type Outbound = EmploymentSchemasPayFrequencySourceValue$Outbound;
+}
+
+export function employmentSchemasPayFrequencySourceValueToJSON(
+  employmentSchemasPayFrequencySourceValue:
+    EmploymentSchemasPayFrequencySourceValue,
+): string {
+  return JSON.stringify(
+    EmploymentSchemasPayFrequencySourceValue$outboundSchema.parse(
+      employmentSchemasPayFrequencySourceValue,
+    ),
+  );
+}
+
+export function employmentSchemasPayFrequencySourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<
+  EmploymentSchemasPayFrequencySourceValue,
+  SDKValidationError
+> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      EmploymentSchemasPayFrequencySourceValue$inboundSchema.parse(
+        JSON.parse(x),
+      ),
+    `Failed to parse 'EmploymentSchemasPayFrequencySourceValue' from JSON`,
+  );
 }
 
 /** @internal */
@@ -831,6 +989,24 @@ export namespace EmploymentPayFrequency$ {
   export type Outbound = EmploymentPayFrequency$Outbound;
 }
 
+export function employmentPayFrequencyToJSON(
+  employmentPayFrequency: EmploymentPayFrequency,
+): string {
+  return JSON.stringify(
+    EmploymentPayFrequency$outboundSchema.parse(employmentPayFrequency),
+  );
+}
+
+export function employmentPayFrequencyFromJSON(
+  jsonString: string,
+): SafeParseResult<EmploymentPayFrequency, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => EmploymentPayFrequency$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'EmploymentPayFrequency' from JSON`,
+  );
+}
+
 /** @internal */
 export const EmploymentSchemasPayPeriod4$inboundSchema: z.ZodType<
   EmploymentSchemasPayPeriod4,
@@ -859,6 +1035,26 @@ export namespace EmploymentSchemasPayPeriod4$ {
   export const outboundSchema = EmploymentSchemasPayPeriod4$outboundSchema;
   /** @deprecated use `EmploymentSchemasPayPeriod4$Outbound` instead. */
   export type Outbound = EmploymentSchemasPayPeriod4$Outbound;
+}
+
+export function employmentSchemasPayPeriod4ToJSON(
+  employmentSchemasPayPeriod4: EmploymentSchemasPayPeriod4,
+): string {
+  return JSON.stringify(
+    EmploymentSchemasPayPeriod4$outboundSchema.parse(
+      employmentSchemasPayPeriod4,
+    ),
+  );
+}
+
+export function employmentSchemasPayPeriod4FromJSON(
+  jsonString: string,
+): SafeParseResult<EmploymentSchemasPayPeriod4, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => EmploymentSchemasPayPeriod4$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'EmploymentSchemasPayPeriod4' from JSON`,
+  );
 }
 
 /** @internal */
@@ -908,6 +1104,27 @@ export namespace EmploymentSchemasPayPeriodSourceValue$ {
     EmploymentSchemasPayPeriodSourceValue$outboundSchema;
   /** @deprecated use `EmploymentSchemasPayPeriodSourceValue$Outbound` instead. */
   export type Outbound = EmploymentSchemasPayPeriodSourceValue$Outbound;
+}
+
+export function employmentSchemasPayPeriodSourceValueToJSON(
+  employmentSchemasPayPeriodSourceValue: EmploymentSchemasPayPeriodSourceValue,
+): string {
+  return JSON.stringify(
+    EmploymentSchemasPayPeriodSourceValue$outboundSchema.parse(
+      employmentSchemasPayPeriodSourceValue,
+    ),
+  );
+}
+
+export function employmentSchemasPayPeriodSourceValueFromJSON(
+  jsonString: string,
+): SafeParseResult<EmploymentSchemasPayPeriodSourceValue, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) =>
+      EmploymentSchemasPayPeriodSourceValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'EmploymentSchemasPayPeriodSourceValue' from JSON`,
+  );
 }
 
 /** @internal */
@@ -1010,6 +1227,24 @@ export namespace EmploymentPayPeriod$ {
   export const outboundSchema = EmploymentPayPeriod$outboundSchema;
   /** @deprecated use `EmploymentPayPeriod$Outbound` instead. */
   export type Outbound = EmploymentPayPeriod$Outbound;
+}
+
+export function employmentPayPeriodToJSON(
+  employmentPayPeriod: EmploymentPayPeriod,
+): string {
+  return JSON.stringify(
+    EmploymentPayPeriod$outboundSchema.parse(employmentPayPeriod),
+  );
+}
+
+export function employmentPayPeriodFromJSON(
+  jsonString: string,
+): SafeParseResult<EmploymentPayPeriod, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => EmploymentPayPeriod$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'EmploymentPayPeriod' from JSON`,
+  );
 }
 
 /** @internal */
@@ -1149,4 +1384,18 @@ export namespace Employment$ {
   export const outboundSchema = Employment$outboundSchema;
   /** @deprecated use `Employment$Outbound` instead. */
   export type Outbound = Employment$Outbound;
+}
+
+export function employmentToJSON(employment: Employment): string {
+  return JSON.stringify(Employment$outboundSchema.parse(employment));
+}
+
+export function employmentFromJSON(
+  jsonString: string,
+): SafeParseResult<Employment, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Employment$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Employment' from JSON`,
+  );
 }

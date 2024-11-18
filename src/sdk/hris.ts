@@ -14,6 +14,7 @@ import { hrisGetCompany } from "../funcs/hrisGetCompany.js";
 import { hrisGetCostCenterGroup } from "../funcs/hrisGetCostCenterGroup.js";
 import { hrisGetDepartmentGroup } from "../funcs/hrisGetDepartmentGroup.js";
 import { hrisGetEmployee } from "../funcs/hrisGetEmployee.js";
+import { hrisGetEmployeeCustomFieldDefinition } from "../funcs/hrisGetEmployeeCustomFieldDefinition.js";
 import { hrisGetEmployeeDocument } from "../funcs/hrisGetEmployeeDocument.js";
 import { hrisGetEmployeeDocumentCategory } from "../funcs/hrisGetEmployeeDocumentCategory.js";
 import { hrisGetEmployeeEmployment } from "../funcs/hrisGetEmployeeEmployment.js";
@@ -24,11 +25,13 @@ import { hrisGetGroup } from "../funcs/hrisGetGroup.js";
 import { hrisGetJob } from "../funcs/hrisGetJob.js";
 import { hrisGetLocation } from "../funcs/hrisGetLocation.js";
 import { hrisGetTimeOffRequest } from "../funcs/hrisGetTimeOffRequest.js";
+import { hrisGetTimeOffType } from "../funcs/hrisGetTimeOffType.js";
 import { hrisListBenefits } from "../funcs/hrisListBenefits.js";
 import { hrisListCompanies } from "../funcs/hrisListCompanies.js";
 import { hrisListCostCenterGroups } from "../funcs/hrisListCostCenterGroups.js";
 import { hrisListDepartmentGroups } from "../funcs/hrisListDepartmentGroups.js";
 import { hrisListEmployeeCategories } from "../funcs/hrisListEmployeeCategories.js";
+import { hrisListEmployeeCustomFieldDefinitions } from "../funcs/hrisListEmployeeCustomFieldDefinitions.js";
 import { hrisListEmployeeDocuments } from "../funcs/hrisListEmployeeDocuments.js";
 import { hrisListEmployeeEmployments } from "../funcs/hrisListEmployeeEmployments.js";
 import { hrisListEmployees } from "../funcs/hrisListEmployees.js";
@@ -39,6 +42,7 @@ import { hrisListGroups } from "../funcs/hrisListGroups.js";
 import { hrisListJobs } from "../funcs/hrisListJobs.js";
 import { hrisListLocations } from "../funcs/hrisListLocations.js";
 import { hrisListTimeOffRequests } from "../funcs/hrisListTimeOffRequests.js";
+import { hrisListTimeOffTypes } from "../funcs/hrisListTimeOffTypes.js";
 import { hrisUpdateEmployee } from "../funcs/hrisUpdateEmployee.js";
 import { hrisUpdateEmployeeEmployment } from "../funcs/hrisUpdateEmployeeEmployment.js";
 import { hrisUpdateEmployeeWorkEligibilityRequest } from "../funcs/hrisUpdateEmployeeWorkEligibilityRequest.js";
@@ -219,6 +223,20 @@ export class Hris extends ClientSDK {
   }
 
   /**
+   * Get employee Custom Field Definition
+   */
+  async getEmployeeCustomFieldDefinition(
+    request: operations.HrisGetEmployeeCustomFieldDefinitionRequest,
+    options?: RequestOptions,
+  ): Promise<operations.HrisGetEmployeeCustomFieldDefinitionResponse> {
+    return unwrapAsync(hrisGetEmployeeCustomFieldDefinition(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
    * Get Employee Document
    */
   async getEmployeeDocument(
@@ -359,6 +377,20 @@ export class Hris extends ClientSDK {
   }
 
   /**
+   * Get time off type
+   */
+  async getTimeOffType(
+    request: operations.HrisGetTimeOffTypeRequest,
+    options?: RequestOptions,
+  ): Promise<operations.HrisGetTimeOffTypeResponse> {
+    return unwrapAsync(hrisGetTimeOffType(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
    * List benefits
    */
   async listBenefits(
@@ -422,6 +454,20 @@ export class Hris extends ClientSDK {
     options?: RequestOptions,
   ): Promise<operations.HrisListEmployeeCategoriesResponse> {
     return unwrapAsync(hrisListEmployeeCategories(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * List employee Custom Field Definitions
+   */
+  async listEmployeeCustomFieldDefinitions(
+    request: operations.HrisListEmployeeCustomFieldDefinitionsRequest,
+    options?: RequestOptions,
+  ): Promise<operations.HrisListEmployeeCustomFieldDefinitionsResponse> {
+    return unwrapAsync(hrisListEmployeeCustomFieldDefinitions(
       this,
       request,
       options,
@@ -562,6 +608,20 @@ export class Hris extends ClientSDK {
     options?: RequestOptions,
   ): Promise<operations.HrisListTimeOffRequestsResponse> {
     return unwrapAsync(hrisListTimeOffRequests(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * List time off types
+   */
+  async listTimeOffTypes(
+    request: operations.HrisListTimeOffTypesRequest,
+    options?: RequestOptions,
+  ): Promise<operations.HrisListTimeOffTypesResponse> {
+    return unwrapAsync(hrisListTimeOffTypes(
       this,
       request,
       options,

@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../../lib/primitives.js";
+import { safeParse } from "../../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type MarketingGetPushTemplateRequest = {
@@ -101,6 +104,26 @@ export namespace MarketingGetPushTemplateRequest$ {
   export type Outbound = MarketingGetPushTemplateRequest$Outbound;
 }
 
+export function marketingGetPushTemplateRequestToJSON(
+  marketingGetPushTemplateRequest: MarketingGetPushTemplateRequest,
+): string {
+  return JSON.stringify(
+    MarketingGetPushTemplateRequest$outboundSchema.parse(
+      marketingGetPushTemplateRequest,
+    ),
+  );
+}
+
+export function marketingGetPushTemplateRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<MarketingGetPushTemplateRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => MarketingGetPushTemplateRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'MarketingGetPushTemplateRequest' from JSON`,
+  );
+}
+
 /** @internal */
 export const MarketingGetPushTemplateResponse$inboundSchema: z.ZodType<
   MarketingGetPushTemplateResponse,
@@ -160,4 +183,24 @@ export namespace MarketingGetPushTemplateResponse$ {
   export const outboundSchema = MarketingGetPushTemplateResponse$outboundSchema;
   /** @deprecated use `MarketingGetPushTemplateResponse$Outbound` instead. */
   export type Outbound = MarketingGetPushTemplateResponse$Outbound;
+}
+
+export function marketingGetPushTemplateResponseToJSON(
+  marketingGetPushTemplateResponse: MarketingGetPushTemplateResponse,
+): string {
+  return JSON.stringify(
+    MarketingGetPushTemplateResponse$outboundSchema.parse(
+      marketingGetPushTemplateResponse,
+    ),
+  );
+}
+
+export function marketingGetPushTemplateResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<MarketingGetPushTemplateResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => MarketingGetPushTemplateResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'MarketingGetPushTemplateResponse' from JSON`,
+  );
 }
