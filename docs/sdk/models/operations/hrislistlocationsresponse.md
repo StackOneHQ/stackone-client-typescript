@@ -38,7 +38,7 @@ let value: HrisListLocationsResponse = {
       },
     ],
   },
-  statusCode: 102,
+  statusCode: 201,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

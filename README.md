@@ -117,6 +117,7 @@ run();
 ### [ats](docs/sdks/ats/README.md)
 
 * [createApplication](docs/sdks/ats/README.md#createapplication) - Create Application
+* [createBackgroundCheckPackage](docs/sdks/ats/README.md#createbackgroundcheckpackage) - Create Background Check Package
 * [createCandidate](docs/sdks/ats/README.md#createcandidate) - Create Candidate
 * [createCandidateNote](docs/sdks/ats/README.md#createcandidatenote) - Create Candidate Note
 * [createJob](docs/sdks/ats/README.md#createjob) - Create Job
@@ -131,6 +132,9 @@ run();
 * [getAssessmentsPackage](docs/sdks/ats/README.md#getassessmentspackage) - Get Assessments Package
 * [getAssessmentsRequest](docs/sdks/ats/README.md#getassessmentsrequest) - Get Assessments Requests
 * [getAssessmentsResult](docs/sdks/ats/README.md#getassessmentsresult) - Get Assessments Results
+* [getBackgroundCheckPackage](docs/sdks/ats/README.md#getbackgroundcheckpackage) - Get Background Check Package
+* [getBackgroundCheckRequest](docs/sdks/ats/README.md#getbackgroundcheckrequest) - Get Background Check Request
+* [getBackgroundCheckResult](docs/sdks/ats/README.md#getbackgroundcheckresult) - Get Background Check Results
 * [getCandidate](docs/sdks/ats/README.md#getcandidate) - Get Candidate
 * [getCandidateCustomFieldDefinition](docs/sdks/ats/README.md#getcandidatecustomfielddefinition) - Get Candidate Custom Field Definition
 * [getCandidateNote](docs/sdks/ats/README.md#getcandidatenote) - Get Candidate Note
@@ -152,6 +156,8 @@ run();
 * [listApplicationsOffers](docs/sdks/ats/README.md#listapplicationsoffers) - List Application Offers
 * [listApplicationsScheduledInterviews](docs/sdks/ats/README.md#listapplicationsscheduledinterviews) - List Applications scheduled interviews
 * [listAssessmentsPackages](docs/sdks/ats/README.md#listassessmentspackages) - List Assessments Packages
+* [listBackgroundCheckPackages](docs/sdks/ats/README.md#listbackgroundcheckpackages) - List Background Check Packages
+* [listBackgroundCheckRequest](docs/sdks/ats/README.md#listbackgroundcheckrequest) - List Background Check Request
 * [listCandidateCustomFieldDefinitions](docs/sdks/ats/README.md#listcandidatecustomfielddefinitions) - List Candidate Custom Field Definitions
 * [listCandidateNotes](docs/sdks/ats/README.md#listcandidatenotes) - List Candidate Notes
 * [listCandidates](docs/sdks/ats/README.md#listcandidates) - List Candidates
@@ -629,6 +635,7 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`accountsListLinkedAccounts`](docs/sdks/accounts/README.md#listlinkedaccounts) - List Accounts
 - [`accountsUpdateAccount`](docs/sdks/accounts/README.md#updateaccount) - Update Account
 - [`atsCreateApplication`](docs/sdks/ats/README.md#createapplication) - Create Application
+- [`atsCreateBackgroundCheckPackage`](docs/sdks/ats/README.md#createbackgroundcheckpackage) - Create Background Check Package
 - [`atsCreateCandidate`](docs/sdks/ats/README.md#createcandidate) - Create Candidate
 - [`atsCreateCandidateNote`](docs/sdks/ats/README.md#createcandidatenote) - Create Candidate Note
 - [`atsCreateJob`](docs/sdks/ats/README.md#createjob) - Create Job
@@ -643,6 +650,9 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`atsGetAssessmentsPackage`](docs/sdks/ats/README.md#getassessmentspackage) - Get Assessments Package
 - [`atsGetAssessmentsRequest`](docs/sdks/ats/README.md#getassessmentsrequest) - Get Assessments Requests
 - [`atsGetAssessmentsResult`](docs/sdks/ats/README.md#getassessmentsresult) - Get Assessments Results
+- [`atsGetBackgroundCheckPackage`](docs/sdks/ats/README.md#getbackgroundcheckpackage) - Get Background Check Package
+- [`atsGetBackgroundCheckRequest`](docs/sdks/ats/README.md#getbackgroundcheckrequest) - Get Background Check Request
+- [`atsGetBackgroundCheckResult`](docs/sdks/ats/README.md#getbackgroundcheckresult) - Get Background Check Results
 - [`atsGetCandidate`](docs/sdks/ats/README.md#getcandidate) - Get Candidate
 - [`atsGetCandidateCustomFieldDefinition`](docs/sdks/ats/README.md#getcandidatecustomfielddefinition) - Get Candidate Custom Field Definition
 - [`atsGetCandidateNote`](docs/sdks/ats/README.md#getcandidatenote) - Get Candidate Note
@@ -664,6 +674,8 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 - [`atsListApplicationsOffers`](docs/sdks/ats/README.md#listapplicationsoffers) - List Application Offers
 - [`atsListApplicationsScheduledInterviews`](docs/sdks/ats/README.md#listapplicationsscheduledinterviews) - List Applications scheduled interviews
 - [`atsListAssessmentsPackages`](docs/sdks/ats/README.md#listassessmentspackages) - List Assessments Packages
+- [`atsListBackgroundCheckPackages`](docs/sdks/ats/README.md#listbackgroundcheckpackages) - List Background Check Packages
+- [`atsListBackgroundCheckRequest`](docs/sdks/ats/README.md#listbackgroundcheckrequest) - List Background Check Request
 - [`atsListCandidateCustomFieldDefinitions`](docs/sdks/ats/README.md#listcandidatecustomfielddefinitions) - List Candidate Custom Field Definitions
 - [`atsListCandidateNotes`](docs/sdks/ats/README.md#listcandidatenotes) - List Candidate Notes
 - [`atsListCandidates`](docs/sdks/ats/README.md#listcandidates) - List Candidates

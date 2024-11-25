@@ -19,6 +19,57 @@ let value: Course = {
       },
     },
   ],
+  content: [
+    {
+      active: true,
+      categories: [
+        {
+          active: true,
+          id: "12345",
+          name: "Technology",
+          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+          unifiedCustomFields: {
+            "my_project_custom_field_1": "REF-1236",
+            "my_project_custom_field_2": "some other value",
+          },
+        },
+      ],
+      contentUrl: "https://www.google.com",
+      courseIds: [
+        "16873-SOFTWARE-ENG-COURSE",
+        "16874-SOFTWARE-ENG-COURSE",
+      ],
+      coverUrl: "https://www.googledrive.com/?v=16873",
+      description: "This is a software engineering course",
+      duration: "P3Y6M4DT12H30M5S",
+      externalReference: "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1",
+      id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+      languages: [
+        {
+          value: LanguageEnumValue.EnGB,
+        },
+      ],
+      order: 1,
+      remoteCourseIds: [
+        "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
+        "e3cb75bf-aa84-466e-a6c1-b8322b257a49",
+      ],
+      remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+      skills: [
+        {
+          active: true,
+          id: "12345",
+          name: "Sales Techniques",
+          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        },
+      ],
+      title: "Software Engineering",
+      unifiedCustomFields: {
+        "my_project_custom_field_1": "REF-1236",
+        "my_project_custom_field_2": "some other value",
+      },
+    },
+  ],
   contentIds: [
     "16873-SOFTWARE-ENG-COURSE",
     "16874-SOFTWARE-ENG-COURSE",
@@ -63,6 +114,7 @@ let value: Course = {
 | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `active`                                                                                                                                                          | *boolean*                                                                                                                                                         | :heavy_minus_sign:                                                                                                                                                | Whether the course is active and available for users.                                                                                                             | true                                                                                                                                                              |
 | `categories`                                                                                                                                                      | [shared.Category](../../../sdk/models/shared/category.md)[]                                                                                                       | :heavy_minus_sign:                                                                                                                                                | The categories associated with this course                                                                                                                        | [<br/>{<br/>"id": "12345",<br/>"name": "Technology"<br/>}<br/>]                                                                                                   |
+| `content`                                                                                                                                                         | [shared.Content](../../../sdk/models/shared/content.md)[]                                                                                                         | :heavy_minus_sign:                                                                                                                                                | The content associated with this course                                                                                                                           | [<br/>{<br/>"title": "Software Engineering",<br/>"description": "This is a software engineering course",<br/>"content_url": "https://www.google.com"<br/>}<br/>]  |
 | `contentIds`                                                                                                                                                      | *string*[]                                                                                                                                                        | :heavy_minus_sign:                                                                                                                                                | The child ID/IDs associated with this course                                                                                                                      | [<br/>"16873-SOFTWARE-ENG-COURSE",<br/>"16874-SOFTWARE-ENG-COURSE"<br/>]                                                                                          |
 | `coverUrl`                                                                                                                                                        | *string*                                                                                                                                                          | :heavy_minus_sign:                                                                                                                                                | The URL of the thumbnail image associated with the course.                                                                                                        | https://www.googledrive.com/?v=16873                                                                                                                              |
 | `createdAt`                                                                                                                                                       | *string*                                                                                                                                                          | :heavy_minus_sign:                                                                                                                                                | The date on which the course was created.                                                                                                                         | 2021-07-21T14:00:00.000Z                                                                                                                                          |

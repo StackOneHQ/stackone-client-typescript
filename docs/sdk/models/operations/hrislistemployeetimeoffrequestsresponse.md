@@ -7,7 +7,7 @@ import { HrisListEmployeeTimeOffRequestsResponse } from "@stackone/stackone-clie
 
 let value: HrisListEmployeeTimeOffRequestsResponse = {
   contentType: "<value>",
-  statusCode: 205,
+  statusCode: 101,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

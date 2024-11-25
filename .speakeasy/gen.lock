@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 7fa83af8-9e8e-4410-b7e2-cf1d0eaf688b
 management:
-  docChecksum: 7b46b68feb854c7d130acb06a56346bf
+  docChecksum: 99115f79af16451122304ffb702ccd82
   docVersion: 1.0.0
-  speakeasyVersion: 1.440.1
-  generationVersion: 2.460.1
-  releaseVersion: 4.17.1
-  configChecksum: 4e088bbb07a1f9e478342683768b44bb
+  speakeasyVersion: 1.444.4
+  generationVersion: 2.461.4
+  releaseVersion: 4.17.2
+  configChecksum: d0f322c8371744dbebafa5a19bd48a73
   repoURL: https://github.com/StackOneHQ/stackone-client-typescript.git
   repoSubDirectory: .
   installationURL: https://github.com/StackOneHQ/stackone-client-typescript
@@ -15,7 +15,7 @@ features:
   typescript:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.1.11
-    core: 3.18.5
+    core: 3.18.6
     defaultEnabledRetries: 0.1.0
     deprecations: 2.81.1
     downloadStreams: 0.1.1
@@ -45,6 +45,8 @@ generatedFiles:
   - docs/lib/utils/retryconfig.md
   - docs/sdk/models/operations/atscreateapplicationrequest.md
   - docs/sdk/models/operations/atscreateapplicationresponse.md
+  - docs/sdk/models/operations/atscreatebackgroundcheckpackagerequest.md
+  - docs/sdk/models/operations/atscreatebackgroundcheckpackageresponse.md
   - docs/sdk/models/operations/atscreatecandidatenoterequest.md
   - docs/sdk/models/operations/atscreatecandidatenoteresponse.md
   - docs/sdk/models/operations/atscreatecandidaterequest.md
@@ -73,6 +75,12 @@ generatedFiles:
   - docs/sdk/models/operations/atsgetassessmentsrequestresponse.md
   - docs/sdk/models/operations/atsgetassessmentsresultrequest.md
   - docs/sdk/models/operations/atsgetassessmentsresultresponse.md
+  - docs/sdk/models/operations/atsgetbackgroundcheckpackagerequest.md
+  - docs/sdk/models/operations/atsgetbackgroundcheckpackageresponse.md
+  - docs/sdk/models/operations/atsgetbackgroundcheckrequestrequest.md
+  - docs/sdk/models/operations/atsgetbackgroundcheckrequestresponse.md
+  - docs/sdk/models/operations/atsgetbackgroundcheckresultrequest.md
+  - docs/sdk/models/operations/atsgetbackgroundcheckresultresponse.md
   - docs/sdk/models/operations/atsgetcandidatecustomfielddefinitionrequest.md
   - docs/sdk/models/operations/atsgetcandidatecustomfielddefinitionresponse.md
   - docs/sdk/models/operations/atsgetcandidatenoterequest.md
@@ -123,6 +131,12 @@ generatedFiles:
   - docs/sdk/models/operations/atslistassessmentspackagesqueryparamfilter.md
   - docs/sdk/models/operations/atslistassessmentspackagesrequest.md
   - docs/sdk/models/operations/atslistassessmentspackagesresponse.md
+  - docs/sdk/models/operations/atslistbackgroundcheckpackagesqueryparamfilter.md
+  - docs/sdk/models/operations/atslistbackgroundcheckpackagesrequest.md
+  - docs/sdk/models/operations/atslistbackgroundcheckpackagesresponse.md
+  - docs/sdk/models/operations/atslistbackgroundcheckrequestqueryparamfilter.md
+  - docs/sdk/models/operations/atslistbackgroundcheckrequestrequest.md
+  - docs/sdk/models/operations/atslistbackgroundcheckrequestresponse.md
   - docs/sdk/models/operations/atslistcandidatecustomfielddefinitionsqueryparamfilter.md
   - docs/sdk/models/operations/atslistcandidatecustomfielddefinitionsrequest.md
   - docs/sdk/models/operations/atslistcandidatecustomfielddefinitionsresponse.md
@@ -495,7 +509,6 @@ generatedFiles:
   - docs/sdk/models/shared/applicationattachmentsourcevalue.md
   - docs/sdk/models/shared/applicationattachmentvalue.md
   - docs/sdk/models/shared/applicationcandidate.md
-  - docs/sdk/models/shared/applicationcustomfields.md
   - docs/sdk/models/shared/applicationinterviewstage.md
   - docs/sdk/models/shared/applicationresult.md
   - docs/sdk/models/shared/applicationsourcevalue.md
@@ -503,21 +516,41 @@ generatedFiles:
   - docs/sdk/models/shared/applicationstatus.md
   - docs/sdk/models/shared/applicationvalue.md
   - docs/sdk/models/shared/archived.md
+  - docs/sdk/models/shared/assessmentsattachment.md
+  - docs/sdk/models/shared/assessmentsattachment4.md
+  - docs/sdk/models/shared/assessmentsattachmentcontenttype.md
+  - docs/sdk/models/shared/assessmentsattachmentsourcevalue.md
+  - docs/sdk/models/shared/assessmentsattachmentvalue.md
+  - docs/sdk/models/shared/assessmentsorder.md
+  - docs/sdk/models/shared/assessmentsorder4.md
+  - docs/sdk/models/shared/assessmentsorderapplication.md
+  - docs/sdk/models/shared/assessmentsorderapplicationstatus.md
+  - docs/sdk/models/shared/assessmentsordercandidate.md
+  - docs/sdk/models/shared/assessmentsorderjob.md
+  - docs/sdk/models/shared/assessmentsorderresult.md
+  - docs/sdk/models/shared/assessmentsorderschemas4.md
+  - docs/sdk/models/shared/assessmentsorderschemassourcevalue.md
+  - docs/sdk/models/shared/assessmentsorderschemasvalue.md
+  - docs/sdk/models/shared/assessmentsordersourcevalue.md
+  - docs/sdk/models/shared/assessmentsordertype.md
+  - docs/sdk/models/shared/assessmentsordervalue.md
   - docs/sdk/models/shared/assessmentspackages.md
   - docs/sdk/models/shared/assessmentspackages4.md
   - docs/sdk/models/shared/assessmentspackagespaginated.md
   - docs/sdk/models/shared/assessmentspackagesresult.md
   - docs/sdk/models/shared/assessmentspackagessourcevalue.md
+  - docs/sdk/models/shared/assessmentspackagestestapimodel.md
+  - docs/sdk/models/shared/assessmentspackagestestapimodel4.md
+  - docs/sdk/models/shared/assessmentspackagestestapimodelsourcevalue.md
+  - docs/sdk/models/shared/assessmentspackagestestapimodeltype.md
+  - docs/sdk/models/shared/assessmentspackagestestapimodelvalue.md
   - docs/sdk/models/shared/assessmentspackagestype.md
   - docs/sdk/models/shared/assessmentspackagesvalue.md
+  - docs/sdk/models/shared/assessmentsrequestsjobhiringteamapimodel.md
   - docs/sdk/models/shared/assessmentsresults.md
   - docs/sdk/models/shared/assessmentsresults4.md
   - docs/sdk/models/shared/assessmentsresultscandidate.md
-  - docs/sdk/models/shared/assessmentsresultscontenttype.md
   - docs/sdk/models/shared/assessmentsresultsresult.md
-  - docs/sdk/models/shared/assessmentsresultsschemas4.md
-  - docs/sdk/models/shared/assessmentsresultsschemassourcevalue.md
-  - docs/sdk/models/shared/assessmentsresultsschemasvalue.md
   - docs/sdk/models/shared/assessmentsresultssourcevalue.md
   - docs/sdk/models/shared/assessmentsresultsvalue.md
   - docs/sdk/models/shared/assignment.md
@@ -526,8 +559,6 @@ generatedFiles:
   - docs/sdk/models/shared/assignmentsourcevalue.md
   - docs/sdk/models/shared/assignmentspaginated.md
   - docs/sdk/models/shared/assignmentstatusenum.md
-  - docs/sdk/models/shared/assignmentstatusenum4.md
-  - docs/sdk/models/shared/assignmentstatusenumvalue.md
   - docs/sdk/models/shared/assignmentvalue.md
   - docs/sdk/models/shared/atscreateapplicationrequestdto.md
   - docs/sdk/models/shared/atscreateapplicationrequestdto4.md
@@ -536,6 +567,7 @@ generatedFiles:
   - docs/sdk/models/shared/atscreateapplicationrequestdtosource.md
   - docs/sdk/models/shared/atscreateapplicationrequestdtosourcevalue.md
   - docs/sdk/models/shared/atscreateapplicationrequestdtovalue.md
+  - docs/sdk/models/shared/atscreatebackgroundcheckpackagesrequestdto.md
   - docs/sdk/models/shared/atscreatecandidaterequestdto.md
   - docs/sdk/models/shared/atscreatejobrequestdto.md
   - docs/sdk/models/shared/atscreatejobrequestdto4.md
@@ -580,8 +612,28 @@ generatedFiles:
   - docs/sdk/models/shared/atsupdatejobrequestdtojobstatus.md
   - docs/sdk/models/shared/atsupdatejobrequestdtosourcevalue.md
   - docs/sdk/models/shared/atsupdatejobrequestdtovalue.md
-  - docs/sdk/models/shared/attachments.md
   - docs/sdk/models/shared/avatar.md
+  - docs/sdk/models/shared/backgroundcheckorder.md
+  - docs/sdk/models/shared/backgroundcheckorder4.md
+  - docs/sdk/models/shared/backgroundcheckorderapplication.md
+  - docs/sdk/models/shared/backgroundcheckorderapplicationstatus.md
+  - docs/sdk/models/shared/backgroundcheckordercandidate.md
+  - docs/sdk/models/shared/backgroundcheckorderjob.md
+  - docs/sdk/models/shared/backgroundcheckorderpackage.md
+  - docs/sdk/models/shared/backgroundcheckorderpaginated.md
+  - docs/sdk/models/shared/backgroundcheckorderrequester.md
+  - docs/sdk/models/shared/backgroundcheckorderresult.md
+  - docs/sdk/models/shared/backgroundcheckordersourcevalue.md
+  - docs/sdk/models/shared/backgroundcheckordervalue.md
+  - docs/sdk/models/shared/backgroundcheckpackage.md
+  - docs/sdk/models/shared/backgroundcheckpackagepaginated.md
+  - docs/sdk/models/shared/backgroundcheckpackageresult.md
+  - docs/sdk/models/shared/backgroundcheckresultsresult.md
+  - docs/sdk/models/shared/backgroundcheckresultsresult4.md
+  - docs/sdk/models/shared/backgroundcheckresultsresultcandidate.md
+  - docs/sdk/models/shared/backgroundcheckresultsresultresult.md
+  - docs/sdk/models/shared/backgroundcheckresultsresultsourcevalue.md
+  - docs/sdk/models/shared/backgroundcheckresultsresultvalue.md
   - docs/sdk/models/shared/batchresultapimodel.md
   - docs/sdk/models/shared/benefittype.md
   - docs/sdk/models/shared/campaign.md
@@ -630,8 +682,8 @@ generatedFiles:
   - docs/sdk/models/shared/connectsessionauthenticate.md
   - docs/sdk/models/shared/connectsessioncreate.md
   - docs/sdk/models/shared/connectsessioncreatecategories.md
-  - docs/sdk/models/shared/connectsessiontoken.md
-  - docs/sdk/models/shared/connectsessiontokencategories.md
+  - docs/sdk/models/shared/connectsessiontokenauthlink.md
+  - docs/sdk/models/shared/connectsessiontokenauthlinkcategories.md
   - docs/sdk/models/shared/contact.md
   - docs/sdk/models/shared/contactresult.md
   - docs/sdk/models/shared/contactspaginated.md
@@ -668,6 +720,11 @@ generatedFiles:
   - docs/sdk/models/shared/createanswersourcevalue.md
   - docs/sdk/models/shared/createanswertype.md
   - docs/sdk/models/shared/createanswervalue.md
+  - docs/sdk/models/shared/createassessmentspackages.md
+  - docs/sdk/models/shared/createassessmentspackages4.md
+  - docs/sdk/models/shared/createassessmentspackagessourcevalue.md
+  - docs/sdk/models/shared/createassessmentspackagestype.md
+  - docs/sdk/models/shared/createassessmentspackagesvalue.md
   - docs/sdk/models/shared/createcategoriesapimodel.md
   - docs/sdk/models/shared/createcontentapimodel.md
   - docs/sdk/models/shared/createemploymentapimodel.md
@@ -1175,6 +1232,7 @@ generatedFiles:
   - docs/sdk/models/shared/offervalue.md
   - docs/sdk/models/shared/options.md
   - docs/sdk/models/shared/overallrecommendation.md
+  - docs/sdk/models/shared/package.md
   - docs/sdk/models/shared/patchaccountexternaldto.md
   - docs/sdk/models/shared/patchaccountexternaldtocredentials.md
   - docs/sdk/models/shared/patchaccountexternaldtosetupinformation.md
@@ -1218,6 +1276,7 @@ generatedFiles:
   - docs/sdk/models/shared/rejectedreasonspaginated.md
   - docs/sdk/models/shared/rejectedreasontype.md
   - docs/sdk/models/shared/rejectedreasonvalue.md
+  - docs/sdk/models/shared/requester.md
   - docs/sdk/models/shared/requiredt.md
   - docs/sdk/models/shared/resources.md
   - docs/sdk/models/shared/result.md
@@ -1343,6 +1402,7 @@ generatedFiles:
   - src/funcs/accountsListLinkedAccounts.ts
   - src/funcs/accountsUpdateAccount.ts
   - src/funcs/atsCreateApplication.ts
+  - src/funcs/atsCreateBackgroundCheckPackage.ts
   - src/funcs/atsCreateCandidate.ts
   - src/funcs/atsCreateCandidateNote.ts
   - src/funcs/atsCreateJob.ts
@@ -1357,6 +1417,9 @@ generatedFiles:
   - src/funcs/atsGetAssessmentsPackage.ts
   - src/funcs/atsGetAssessmentsRequest.ts
   - src/funcs/atsGetAssessmentsResult.ts
+  - src/funcs/atsGetBackgroundCheckPackage.ts
+  - src/funcs/atsGetBackgroundCheckRequest.ts
+  - src/funcs/atsGetBackgroundCheckResult.ts
   - src/funcs/atsGetCandidate.ts
   - src/funcs/atsGetCandidateCustomFieldDefinition.ts
   - src/funcs/atsGetCandidateNote.ts
@@ -1378,6 +1441,8 @@ generatedFiles:
   - src/funcs/atsListApplicationsOffers.ts
   - src/funcs/atsListApplicationsScheduledInterviews.ts
   - src/funcs/atsListAssessmentsPackages.ts
+  - src/funcs/atsListBackgroundCheckPackages.ts
+  - src/funcs/atsListBackgroundCheckRequest.ts
   - src/funcs/atsListCandidateCustomFieldDefinitions.ts
   - src/funcs/atsListCandidateNotes.ts
   - src/funcs/atsListCandidates.ts
@@ -1553,6 +1618,7 @@ generatedFiles:
   - src/sdk/models/errors/sdkerror.ts
   - src/sdk/models/errors/sdkvalidationerror.ts
   - src/sdk/models/operations/atscreateapplication.ts
+  - src/sdk/models/operations/atscreatebackgroundcheckpackage.ts
   - src/sdk/models/operations/atscreatecandidate.ts
   - src/sdk/models/operations/atscreatecandidatenote.ts
   - src/sdk/models/operations/atscreatejob.ts
@@ -1567,6 +1633,9 @@ generatedFiles:
   - src/sdk/models/operations/atsgetassessmentspackage.ts
   - src/sdk/models/operations/atsgetassessmentsrequest.ts
   - src/sdk/models/operations/atsgetassessmentsresult.ts
+  - src/sdk/models/operations/atsgetbackgroundcheckpackage.ts
+  - src/sdk/models/operations/atsgetbackgroundcheckrequest.ts
+  - src/sdk/models/operations/atsgetbackgroundcheckresult.ts
   - src/sdk/models/operations/atsgetcandidate.ts
   - src/sdk/models/operations/atsgetcandidatecustomfielddefinition.ts
   - src/sdk/models/operations/atsgetcandidatenote.ts
@@ -1588,6 +1657,8 @@ generatedFiles:
   - src/sdk/models/operations/atslistapplicationsoffers.ts
   - src/sdk/models/operations/atslistapplicationsscheduledinterviews.ts
   - src/sdk/models/operations/atslistassessmentspackages.ts
+  - src/sdk/models/operations/atslistbackgroundcheckpackages.ts
+  - src/sdk/models/operations/atslistbackgroundcheckrequest.ts
   - src/sdk/models/operations/atslistcandidatecustomfielddefinitions.ts
   - src/sdk/models/operations/atslistcandidatenotes.ts
   - src/sdk/models/operations/atslistcandidates.ts
@@ -1742,12 +1813,16 @@ generatedFiles:
   - src/sdk/models/shared/answer.ts
   - src/sdk/models/shared/application.ts
   - src/sdk/models/shared/applicationattachment.ts
-  - src/sdk/models/shared/applicationcustomfields.ts
   - src/sdk/models/shared/applicationresult.ts
   - src/sdk/models/shared/applicationspaginated.ts
+  - src/sdk/models/shared/assessmentsattachment.ts
+  - src/sdk/models/shared/assessmentsorder.ts
+  - src/sdk/models/shared/assessmentsorderresult.ts
   - src/sdk/models/shared/assessmentspackages.ts
   - src/sdk/models/shared/assessmentspackagespaginated.ts
   - src/sdk/models/shared/assessmentspackagesresult.ts
+  - src/sdk/models/shared/assessmentspackagestestapimodel.ts
+  - src/sdk/models/shared/assessmentsrequestsjobhiringteamapimodel.ts
   - src/sdk/models/shared/assessmentsresults.ts
   - src/sdk/models/shared/assessmentsresultsresult.ts
   - src/sdk/models/shared/assignment.ts
@@ -1755,6 +1830,7 @@ generatedFiles:
   - src/sdk/models/shared/assignmentspaginated.ts
   - src/sdk/models/shared/assignmentstatusenum.ts
   - src/sdk/models/shared/atscreateapplicationrequestdto.ts
+  - src/sdk/models/shared/atscreatebackgroundcheckpackagesrequestdto.ts
   - src/sdk/models/shared/atscreatecandidaterequestdto.ts
   - src/sdk/models/shared/atscreatejobrequestdto.ts
   - src/sdk/models/shared/atscreatenotesrequestdto.ts
@@ -1770,6 +1846,13 @@ generatedFiles:
   - src/sdk/models/shared/atsupdateapplicationrequestdto.ts
   - src/sdk/models/shared/atsupdatecandidaterequestdto.ts
   - src/sdk/models/shared/atsupdatejobrequestdto.ts
+  - src/sdk/models/shared/backgroundcheckorder.ts
+  - src/sdk/models/shared/backgroundcheckorderpaginated.ts
+  - src/sdk/models/shared/backgroundcheckorderresult.ts
+  - src/sdk/models/shared/backgroundcheckpackage.ts
+  - src/sdk/models/shared/backgroundcheckpackagepaginated.ts
+  - src/sdk/models/shared/backgroundcheckpackageresult.ts
+  - src/sdk/models/shared/backgroundcheckresultsresult.ts
   - src/sdk/models/shared/batchresultapimodel.ts
   - src/sdk/models/shared/campaign.ts
   - src/sdk/models/shared/campaignresult.ts
@@ -1792,7 +1875,7 @@ generatedFiles:
   - src/sdk/models/shared/connectsession.ts
   - src/sdk/models/shared/connectsessionauthenticate.ts
   - src/sdk/models/shared/connectsessioncreate.ts
-  - src/sdk/models/shared/connectsessiontoken.ts
+  - src/sdk/models/shared/connectsessiontokenauthlink.ts
   - src/sdk/models/shared/contact.ts
   - src/sdk/models/shared/contactresult.ts
   - src/sdk/models/shared/contactspaginated.ts
@@ -1808,6 +1891,7 @@ generatedFiles:
   - src/sdk/models/shared/coursepaginated.ts
   - src/sdk/models/shared/courseresult.ts
   - src/sdk/models/shared/createanswer.ts
+  - src/sdk/models/shared/createassessmentspackages.ts
   - src/sdk/models/shared/createcategoriesapimodel.ts
   - src/sdk/models/shared/createcontentapimodel.ts
   - src/sdk/models/shared/createemploymentapimodel.ts
@@ -2046,7 +2130,7 @@ examples:
         application/json: {"categories": ["ats", "hris", "crm", "crm", "iam", "marketing", "lms", "ats", "lms"], "origin_owner_id": "<value>", "origin_owner_name": "<value>"}
       responses:
         "201":
-          application/json: {"categories": ["ats", "hris", "marketing", "crm", "iam", "marketing", "lms", "ats", "ats"], "created_at": "2024-01-28T04:32:28.342Z", "id": "4207.79", "organization_id": "6497.42", "origin_owner_id": "<value>", "origin_owner_name": "<value>", "project_id": "<value>", "token": "<value>"}
+          application/json: {"auth_link_url": "https://animated-bonnet.org", "categories": ["ats", "hris", "hris-legacy", "crm", "iam", "marketing", "lms", "file-storage", "lms"], "created_at": "2024-01-28T04:32:28.342Z", "id": "4207.79", "organization_id": "6497.42", "origin_owner_id": "<value>", "origin_owner_name": "<value>", "project_id": "<value>", "token": "<value>"}
   stackone_get_connector_meta:
     "":
       parameters:
@@ -2207,31 +2291,31 @@ examples:
           x-account-id: "<value>"
       responses:
         "200":
-          application/json: {"data": {"description": "Skills test to gauge a candidate's proficiency in job-specific skills", "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "name": "Skill Assessment", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "type": {"source_value": "key_responsibilities", "value": "responsibilities"}}}
+          application/json: {"data": {"description": "Skills test to gauge a candidate's proficiency in job-specific skills", "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "name": "Test 1", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "type": {"source_value": "key_responsibilities", "value": "responsibilities"}}}
   ats_get_assessments_request:
     "":
       parameters:
         path:
           id: "<id>"
         query:
-          fields: "assessment_id,remote_assessment_id,candidate,score,assessment_date,submission_date,summary,result,result_url,attachments"
+          fields: "id,remote_id,package,application,job,candidate,requester,results_update_url"
         header:
           x-account-id: "<value>"
       responses:
         "200":
-          application/json: {"data": {"assessment_date": "2021-01-01T01:01:01.000Z", "assessment_id": "f15aad8e-8db6-4194-8299-a525eb8fc30f", "attachments": {"content_type": {"source_value": "Text", "value": "text"}, "url": "http://example.com/resume.pdf"}, "candidate": {"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "profile_url": "https://exmaple.com/candidate?id=xyz"}, "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "result": {"source_value": "Passed", "value": "passed"}, "result_url": "https://exmaple.com/result?id=xyz", "score": {"label": "Percentage", "max": "100", "min": "0", "value": "80"}, "submission_date": "2021-01-01T01:01:01.000Z", "summary": "Candidate demonstrates strong understanding of core concepts, but struggles with application"}}
+          application/json: {"data": {"application": {"application_status": {"source_value": "Hired", "value": "hired"}, "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "passthrough": {"other_known_names": "John Doe"}}, "candidate": {"emails": [{"type": "personal", "value": "sestier.romain123@gmail.com"}, {"type": "personal", "value": "sestier.romain123@gmail.com"}, {"type": "personal", "value": "sestier.romain123@gmail.com"}], "first_name": "Romain", "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "last_name": "Sestier", "passthrough": {"other_known_names": "John Doe"}, "profile_url": "https://exmaple.com/candidate?id=xyz"}, "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "job": {"hiring_team": [{"email": "john.doe@gmail.com", "first_name": "John", "last_name": "Doe", "role": "Software Engineer", "user_id": "123456"}, {"email": "john.doe@gmail.com", "first_name": "John", "last_name": "Doe", "role": "Software Engineer", "user_id": "123456"}, {"email": "john.doe@gmail.com", "first_name": "John", "last_name": "Doe", "role": "Software Engineer", "user_id": "123456"}], "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "passthrough": {"other_known_names": "John Doe"}, "title": "Software Engineer"}, "package": {"description": "Skills test to gauge a candidate's proficiency in job-specific skills", "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "name": "Test 1", "type": {"source_value": "key_responsibilities", "value": "responsibilities"}}, "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "requester": {"emails": [{"type": "personal", "value": "sestier.romain123@gmail.com"}, {"type": "personal", "value": "sestier.romain123@gmail.com"}], "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "passthrough": {"other_known_names": "John Doe"}}, "results_update_url": "https://exmaple.com/integrations/results/update"}}
   ats_get_assessments_result:
     "":
       parameters:
         path:
           id: "<id>"
         query:
-          fields: "assessment_id,remote_assessment_id,candidate,score,assessment_date,submission_date,summary,result,result_url,attachments"
+          fields: "id,remote_id,candidate,score,start_date,submission_date,summary,result,result_url,attachments"
         header:
           x-account-id: "<value>"
       responses:
         "200":
-          application/json: {"data": {"assessment_date": "2021-01-01T01:01:01.000Z", "assessment_id": "f15aad8e-8db6-4194-8299-a525eb8fc30f", "attachments": {"content_type": {"source_value": "Text", "value": "text"}, "url": "http://example.com/resume.pdf"}, "candidate": {"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "profile_url": "https://exmaple.com/candidate?id=xyz"}, "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "result": {"source_value": "Passed", "value": "passed"}, "result_url": "https://exmaple.com/result?id=xyz", "score": {"label": "Percentage", "max": "100", "min": "0", "value": "80"}, "submission_date": "2021-01-01T01:01:01.000Z", "summary": "Candidate demonstrates strong understanding of core concepts, but struggles with application"}}
+          application/json: {"data": {"attachments": [{"content_type": {"source_value": "Text", "value": "text"}, "url": "http://example.com/resume.pdf"}], "candidate": {"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "profile_url": "https://exmaple.com/candidate?id=xyz"}, "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "result": {"source_value": "Passed", "value": "passed"}, "result_url": "https://exmaple.com/result?id=xyz", "score": {"label": "Percentage", "max": "100", "min": "0", "value": "80"}, "start_date": "2021-01-01T01:01:01.000Z", "submission_date": "2021-01-01T01:01:01.000Z", "summary": "Candidate demonstrates strong understanding of core concepts, but struggles with application"}}
   ats_get_candidate:
     "":
       parameters:
@@ -3494,7 +3578,7 @@ examples:
           x-account-id: "<value>"
       responses:
         "200":
-          application/json: {"data": {"active": true, "categories": [{"active": true, "id": "12345", "name": "Technology", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}}], "content_ids": ["16873-SOFTWARE-ENG-COURSE", "16874-SOFTWARE-ENG-COURSE"], "cover_url": "https://www.googledrive.com/?v=16873", "created_at": "2021-07-21T14:00:00.000Z", "description": "This course acts as learning content for software engineers.", "duration": "P3Y6M4DT12H30M5S", "external_reference": "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1", "id": "16873-ENG-VIDEO-1", "languages": [], "remote_content_ids": ["e3cb75bf-aa84-466e-a6c1-b8322b257a48", "e3cb75bf-aa84-466e-a6c1-b8322b257a49"], "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "skills": [{"active": true, "id": "12345", "name": "Sales Techniques", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}], "title": "Software Engineer Lv 1", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}, "updated_at": "2021-07-21T14:00:00.000Z", "url": "https://www.linkedinlearning.com/?v=16873"}}
+          application/json: {"data": {"active": true, "categories": [{"active": true, "id": "12345", "name": "Technology", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}}], "content": [{"active": true, "categories": [{"active": true, "id": "12345", "name": "Technology", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}}], "content_url": "https://www.google.com", "course_ids": ["16873-SOFTWARE-ENG-COURSE", "16874-SOFTWARE-ENG-COURSE"], "cover_url": "https://www.googledrive.com/?v=16873", "description": "This is a software engineering course", "duration": "P3Y6M4DT12H30M5S", "external_reference": "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1", "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "languages": [], "order": 1, "remote_course_ids": ["e3cb75bf-aa84-466e-a6c1-b8322b257a48", "e3cb75bf-aa84-466e-a6c1-b8322b257a49"], "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "skills": [{"active": true, "id": "12345", "name": "Sales Techniques", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}], "title": "Software Engineering", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}}], "content_ids": ["16873-SOFTWARE-ENG-COURSE", "16874-SOFTWARE-ENG-COURSE"], "cover_url": "https://www.googledrive.com/?v=16873", "created_at": "2021-07-21T14:00:00.000Z", "description": "This course acts as learning content for software engineers.", "duration": "P3Y6M4DT12H30M5S", "external_reference": "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1", "id": "16873-ENG-VIDEO-1", "languages": [], "remote_content_ids": ["e3cb75bf-aa84-466e-a6c1-b8322b257a48", "e3cb75bf-aa84-466e-a6c1-b8322b257a49"], "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "skills": [{"active": true, "id": "12345", "name": "Sales Techniques", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}], "title": "Software Engineer Lv 1", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}, "updated_at": "2021-07-21T14:00:00.000Z", "url": "https://www.linkedinlearning.com/?v=16873"}}
   lms_get_skill:
     "":
       parameters:
@@ -4117,7 +4201,7 @@ examples:
         header:
           x-account-id: "<id>"
       requestBody:
-        application/json: {"items": [{"active": true, "categories": [{"name": "Information-Technology", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}}], "content": [], "content_ids": ["16873-SOFTWARE-ENG-Content"], "cover_url": "https://www.googledrive.com/?v=16873", "description": "This course acts as learning content for software engineers.", "duration": "P3Y6M4DT12H30M5S", "external_reference": "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1", "languages": [{"value": "en_GB"}, {"value": "en_GB"}], "skills": [{"id": "16873-IT345", "name": "Information-Technology", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}], "title": "Software Engineer Lv 1", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}, "url": "https://www.linkedinlearning.com/?v=16873"}, {"active": true, "categories": [{"name": "Information-Technology", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}}], "content": [{"content_url": "https://www.youtube.com/watch?v=16873", "description": "This video acts as learning content for software engineers.", "order": 1, "title": "Software Engineer Lv 1"}, {"content_url": "https://www.youtube.com/watch?v=16873", "description": "This video acts as learning content for software engineers.", "order": 1, "title": "Software Engineer Lv 1"}], "content_ids": ["16873-SOFTWARE-ENG-Content"], "cover_url": "https://www.googledrive.com/?v=16873", "description": "This course acts as learning content for software engineers.", "duration": "P3Y6M4DT12H30M5S", "external_reference": "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1", "languages": [], "skills": [{"id": "16873-IT345", "name": "Information-Technology", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}], "title": "Software Engineer Lv 1", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}, "url": "https://www.linkedinlearning.com/?v=16873"}]}
+        application/json: {"items": [{"active": true, "categories": [{"name": "Information-Technology", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}}], "content": [{"content_url": "https://www.youtube.com/watch?v=16873", "description": "This video acts as learning content for software engineers.", "order": 1, "title": "Software Engineer Lv 1"}], "content_ids": ["16873-SOFTWARE-ENG-Content"], "cover_url": "https://www.googledrive.com/?v=16873", "description": "This course acts as learning content for software engineers.", "duration": "P3Y6M4DT12H30M5S", "external_reference": "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1", "languages": [{"value": "en_GB"}, {"value": "en_GB"}], "skills": [{"id": "16873-IT345", "name": "Information-Technology", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}], "title": "Software Engineer Lv 1", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}, "url": "https://www.linkedinlearning.com/?v=16873"}, {"active": true, "categories": [{"name": "Information-Technology", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}}], "content": [{"content_url": "https://www.youtube.com/watch?v=16873", "description": "This video acts as learning content for software engineers.", "order": 1, "title": "Software Engineer Lv 1"}], "content_ids": ["16873-SOFTWARE-ENG-Content"], "cover_url": "https://www.googledrive.com/?v=16873", "description": "This course acts as learning content for software engineers.", "duration": "P3Y6M4DT12H30M5S", "external_reference": "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1", "languages": [], "skills": [{"id": "16873-IT345", "name": "Information-Technology", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}], "title": "Software Engineer Lv 1", "unified_custom_fields": {"my_project_custom_field_1": "REF-1236", "my_project_custom_field_2": "some other value"}, "url": "https://www.linkedinlearning.com/?v=16873"}]}
       responses:
         "202":
           application/json: {"errors": [["Missing field: name"], [], []], "message": "Batch operation accepted", "statusCode": 202, "timestamp": "2021-01-01T01:01:01.000Z"}
@@ -4203,3 +4287,73 @@ examples:
       responses:
         "200":
           application/json: {"data": [{"active": true, "id": "1687-3", "name": "1687-4", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}]}
+  ats_create_background_check_package:
+    speakeasy-default-ats-create-background-check-package:
+      parameters:
+        header:
+          x-account-id: "<id>"
+      requestBody:
+        application/json: {"description": "Standard background package for hires", "name": "Standard Background Check", "passthrough": {"other_known_names": "John Doe"}, "tests": [{"description": "Skills test to gauge a candidate's proficiency in job-specific skills", "name": "Test 1", "type": {"source_value": "key_responsibilities", "value": "responsibilities"}}, {"description": "Skills test to gauge a candidate's proficiency in job-specific skills", "name": "Test 1", "type": {"source_value": "key_responsibilities", "value": "responsibilities"}}]}
+      responses:
+        "201":
+          application/json: {"data": {"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3"}, "message": "Record created successfully.", "statusCode": 201, "timestamp": "2021-01-01T01:01:01.000Z"}
+  ats_get_background_check_package:
+    "":
+      parameters:
+        path:
+          id: "<id>"
+        query:
+          fields: "id,remote_id,name,description,tests"
+        header:
+          x-account-id: "<id>"
+      responses:
+        "200":
+          application/json: {"data": {"description": "Standard background package for hires", "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "name": "Standard Background Check", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "tests": []}}
+  ats_get_background_check_request:
+    "":
+      parameters:
+        path:
+          id: "<id>"
+        query:
+          fields: "id,remote_id,package,application,job,candidate,requester,results_update_url"
+        header:
+          x-account-id: "<id>"
+      responses:
+        "200":
+          application/json: {"data": {"application": {"application_status": {"source_value": "Hired", "value": "hired"}, "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "passthrough": {"other_known_names": "John Doe"}}, "candidate": {"emails": [{"type": "personal", "value": "sestier.romain123@gmail.com"}], "first_name": "Romain", "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "last_name": "Sestier", "passthrough": {"other_known_names": "John Doe"}, "profile_url": "https://exmaple.com/candidate?id=xyz"}, "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "job": {"hiring_team": [{"email": "john.doe@gmail.com", "first_name": "John", "last_name": "Doe", "role": "Software Engineer", "user_id": "123456"}, {"email": "john.doe@gmail.com", "first_name": "John", "last_name": "Doe", "role": "Software Engineer", "user_id": "123456"}], "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "passthrough": {"other_known_names": "John Doe"}, "title": "Software Engineer"}, "package": {"description": "Standard background package for hires", "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "name": "Standard Background Check", "tests": [{"description": "Skills test to gauge a candidate's proficiency in job-specific skills", "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "name": "Test 1", "type": {"source_value": "key_responsibilities", "value": "responsibilities"}}, {"description": "Skills test to gauge a candidate's proficiency in job-specific skills", "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "name": "Test 1", "type": {"source_value": "key_responsibilities", "value": "responsibilities"}}]}, "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "requester": {"emails": [{"type": "personal", "value": "sestier.romain123@gmail.com"}, {"type": "personal", "value": "sestier.romain123@gmail.com"}, {"type": "personal", "value": "sestier.romain123@gmail.com"}], "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "passthrough": {"other_known_names": "John Doe"}}, "results_update_url": "https://exmaple.com/integrations/results/update"}}
+  ats_get_background_check_result:
+    "":
+      parameters:
+        path:
+          id: "<id>"
+        query:
+          fields: "id,remote_id,candidate,start_date,submission_date,summary,result,result_url,attachments"
+        header:
+          x-account-id: "<id>"
+      responses:
+        "200":
+          application/json: {"attachments": [{"content_type": {"source_value": "Text", "value": "text"}, "url": "http://example.com/resume.pdf"}, {"content_type": {"source_value": "Text", "value": "text"}, "url": "http://example.com/resume.pdf"}, {"content_type": {"source_value": "Text", "value": "text"}, "url": "http://example.com/resume.pdf"}], "candidate": {"id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "profile_url": "https://exmaple.com/candidate?id=xyz"}, "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "result": {"source_value": "Passed", "value": "passed"}, "result_url": "https://exmaple.com/result?id=xyz", "start_date": "2021-01-01T01:01:01.000Z", "submission_date": "2021-01-01T01:01:01.000Z", "summary": "Test is passed"}
+  ats_list_background_check_packages:
+    "":
+      parameters:
+        query:
+          fields: "id,remote_id,name,description,tests"
+          filter: {"updated_after": "2020-01-01T00:00:00.000Z"}
+          updated_after: "2020-01-01T00:00:00.000Z"
+        header:
+          x-account-id: "<id>"
+      responses:
+        "200":
+          application/json: {"data": [{"description": "Standard background package for hires", "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "name": "Standard Background Check", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "tests": [{"description": "Skills test to gauge a candidate's proficiency in job-specific skills", "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "name": "Test 1", "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "type": {"source_value": "key_responsibilities", "value": "responsibilities"}}]}]}
+  ats_list_background_check_request:
+    "":
+      parameters:
+        query:
+          fields: "id,remote_id,package,application,job,candidate,requester,results_update_url"
+          filter: {"updated_after": "2020-01-01T00:00:00.000Z"}
+          updated_after: "2020-01-01T00:00:00.000Z"
+        header:
+          x-account-id: "<id>"
+      responses:
+        "200":
+          application/json: {"data": [{"application": {"application_status": {"source_value": "Hired", "value": "hired"}, "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "passthrough": {"other_known_names": "John Doe"}}, "candidate": {"emails": [{"type": "personal", "value": "sestier.romain123@gmail.com"}], "first_name": "Romain", "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "last_name": "Sestier", "passthrough": {"other_known_names": "John Doe"}, "profile_url": "https://exmaple.com/candidate?id=xyz"}, "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "job": {"hiring_team": [{"email": "john.doe@gmail.com", "first_name": "John", "last_name": "Doe", "role": "Software Engineer", "user_id": "123456"}, {"email": "john.doe@gmail.com", "first_name": "John", "last_name": "Doe", "role": "Software Engineer", "user_id": "123456"}], "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "passthrough": {"other_known_names": "John Doe"}, "title": "Software Engineer"}, "package": {"description": "Standard background package for hires", "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "name": "Standard Background Check", "tests": [{"description": "Skills test to gauge a candidate's proficiency in job-specific skills", "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "name": "Test 1", "type": {"source_value": "key_responsibilities", "value": "responsibilities"}}, {"description": "Skills test to gauge a candidate's proficiency in job-specific skills", "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "name": "Test 1", "type": {"source_value": "key_responsibilities", "value": "responsibilities"}}, {"description": "Skills test to gauge a candidate's proficiency in job-specific skills", "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "name": "Test 1", "type": {"source_value": "key_responsibilities", "value": "responsibilities"}}]}, "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "requester": {"emails": [{"type": "personal", "value": "sestier.romain123@gmail.com"}, {"type": "personal", "value": "sestier.romain123@gmail.com"}], "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "passthrough": {"other_known_names": "John Doe"}}, "results_update_url": "https://exmaple.com/integrations/results/update"}, {"application": {"application_status": {"source_value": "Hired", "value": "hired"}, "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "passthrough": {"other_known_names": "John Doe"}}, "candidate": {"emails": [{"type": "personal", "value": "sestier.romain123@gmail.com"}, {"type": "personal", "value": "sestier.romain123@gmail.com"}], "first_name": "Romain", "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "last_name": "Sestier", "passthrough": {"other_known_names": "John Doe"}, "profile_url": "https://exmaple.com/candidate?id=xyz"}, "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "job": {"hiring_team": [{"email": "john.doe@gmail.com", "first_name": "John", "last_name": "Doe", "role": "Software Engineer", "user_id": "123456"}, {"email": "john.doe@gmail.com", "first_name": "John", "last_name": "Doe", "role": "Software Engineer", "user_id": "123456"}, {"email": "john.doe@gmail.com", "first_name": "John", "last_name": "Doe", "role": "Software Engineer", "user_id": "123456"}], "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "passthrough": {"other_known_names": "John Doe"}, "title": "Software Engineer"}, "package": {"description": "Standard background package for hires", "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "name": "Standard Background Check", "tests": [{"description": "Skills test to gauge a candidate's proficiency in job-specific skills", "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "name": "Test 1", "type": {"source_value": "key_responsibilities", "value": "responsibilities"}}, {"description": "Skills test to gauge a candidate's proficiency in job-specific skills", "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "name": "Test 1", "type": {"source_value": "key_responsibilities", "value": "responsibilities"}}]}, "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "requester": {"emails": [{"type": "personal", "value": "sestier.romain123@gmail.com"}, {"type": "personal", "value": "sestier.romain123@gmail.com"}], "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "passthrough": {"other_known_names": "John Doe"}}, "results_update_url": "https://exmaple.com/integrations/results/update"}, {"application": {"application_status": {"source_value": "Hired", "value": "hired"}, "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "passthrough": {"other_known_names": "John Doe"}}, "candidate": {"emails": [{"type": "personal", "value": "sestier.romain123@gmail.com"}, {"type": "personal", "value": "sestier.romain123@gmail.com"}], "first_name": "Romain", "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "last_name": "Sestier", "passthrough": {"other_known_names": "John Doe"}, "profile_url": "https://exmaple.com/candidate?id=xyz"}, "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "job": {"hiring_team": [{"email": "john.doe@gmail.com", "first_name": "John", "last_name": "Doe", "role": "Software Engineer", "user_id": "123456"}, {"email": "john.doe@gmail.com", "first_name": "John", "last_name": "Doe", "role": "Software Engineer", "user_id": "123456"}], "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "passthrough": {"other_known_names": "John Doe"}, "title": "Software Engineer"}, "package": {"description": "Standard background package for hires", "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "name": "Standard Background Check", "tests": [{"description": "Skills test to gauge a candidate's proficiency in job-specific skills", "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "name": "Test 1", "type": {"source_value": "key_responsibilities", "value": "responsibilities"}}]}, "remote_id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "requester": {"emails": [{"type": "personal", "value": "sestier.romain123@gmail.com"}, {"type": "personal", "value": "sestier.romain123@gmail.com"}], "id": "8187e5da-dc77-475e-9949-af0f1fa4e4e3", "passthrough": {"other_known_names": "John Doe"}}, "results_update_url": "https://exmaple.com/integrations/results/update"}]}

@@ -40,7 +40,7 @@ let value: HrisListDepartmentGroupsResponse = {
       },
     ],
   },
-  statusCode: 503,
+  statusCode: 205,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

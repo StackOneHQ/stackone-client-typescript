@@ -243,7 +243,7 @@ let value: HrisGetEmployeeResponse = {
       workPhoneNumber: "+1234567890",
     },
   },
-  statusCode: 203,
+  statusCode: 413,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

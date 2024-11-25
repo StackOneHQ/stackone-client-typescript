@@ -22,7 +22,7 @@ let value: AtsListApplicationCustomFieldDefinitionsResponse = {
       },
     ],
   },
-  statusCode: 503,
+  statusCode: 431,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

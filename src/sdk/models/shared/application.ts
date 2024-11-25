@@ -19,12 +19,6 @@ import {
   ApplicationAttachment$outboundSchema,
 } from "./applicationattachment.js";
 import {
-  ApplicationCustomFields,
-  ApplicationCustomFields$inboundSchema,
-  ApplicationCustomFields$Outbound,
-  ApplicationCustomFields$outboundSchema,
-} from "./applicationcustomfields.js";
-import {
   AtsDocumentApiModel,
   AtsDocumentApiModel$inboundSchema,
   AtsDocumentApiModel$Outbound,
@@ -36,6 +30,12 @@ import {
   CandidateEmail$Outbound,
   CandidateEmail$outboundSchema,
 } from "./candidateemail.js";
+import {
+  CustomFields,
+  CustomFields$inboundSchema,
+  CustomFields$Outbound,
+  CustomFields$outboundSchema,
+} from "./customfields.js";
 import {
   PhoneNumber,
   PhoneNumber$inboundSchema,
@@ -226,7 +226,7 @@ export type Application = {
   /**
    * The application custom fields
    */
-  customFields?: Array<ApplicationCustomFields> | null | undefined;
+  customFields?: Array<CustomFields> | null | undefined;
   /**
    * The documents attached to this application (eg. resume, cover letter etc.)
    */
@@ -793,8 +793,7 @@ export const Application$inboundSchema: z.ZodType<
   created_at: z.nullable(
     z.string().datetime({ offset: true }).transform(v => new Date(v)),
   ).optional(),
-  custom_fields: z.nullable(z.array(ApplicationCustomFields$inboundSchema))
-    .optional(),
+  custom_fields: z.nullable(z.array(CustomFields$inboundSchema)).optional(),
   documents: z.nullable(z.array(AtsDocumentApiModel$inboundSchema)).optional(),
   id: z.nullable(z.string()).optional(),
   interview_stage: z.nullable(
@@ -858,7 +857,7 @@ export type Application$Outbound = {
   candidate?: ApplicationCandidate$Outbound | null | undefined;
   candidate_id?: string | null | undefined;
   created_at?: string | null | undefined;
-  custom_fields?: Array<ApplicationCustomFields$Outbound> | null | undefined;
+  custom_fields?: Array<CustomFields$Outbound> | null | undefined;
   documents?: Array<AtsDocumentApiModel$Outbound> | null | undefined;
   id?: string | null | undefined;
   interview_stage?: ApplicationInterviewStage$Outbound | null | undefined;
@@ -897,8 +896,7 @@ export const Application$outboundSchema: z.ZodType<
     .optional(),
   candidateId: z.nullable(z.string()).optional(),
   createdAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
-  customFields: z.nullable(z.array(ApplicationCustomFields$outboundSchema))
-    .optional(),
+  customFields: z.nullable(z.array(CustomFields$outboundSchema)).optional(),
   documents: z.nullable(z.array(AtsDocumentApiModel$outboundSchema)).optional(),
   id: z.nullable(z.string()).optional(),
   interviewStage: z.nullable(

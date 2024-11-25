@@ -12,7 +12,7 @@ let value: AtsGetAssessmentsPackageResponse = {
       description:
         "Skills test to gauge a candidate's proficiency in job-specific skills",
       id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-      name: "Skill Assessment",
+      name: "Test 1",
       remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
       type: {
         sourceValue: "key_responsibilities",
@@ -21,7 +21,7 @@ let value: AtsGetAssessmentsPackageResponse = {
     },
   },
   contentType: "<value>",
-  statusCode: 201,
+  statusCode: 100,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

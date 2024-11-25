@@ -1,6 +1,6 @@
 # AssessmentsResultsValue
 
-The result of the assessment.
+The result of the test.
 
 ## Example Usage
 

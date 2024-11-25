@@ -854,7 +854,7 @@ actions:
             async function run() {
               const result = await stackOne.ats.getAssessmentsRequest({
                 id: "<id>",
-                fields: "assessment_id,remote_assessment_id,candidate,score,assessment_date,submission_date,summary,result,result_url,attachments",
+                fields: "id,remote_id,package,application,job,candidate,requester,results_update_url",
                 xAccountId: "<id>",
               });
 
@@ -881,7 +881,7 @@ actions:
             async function run() {
               const result = await stackOne.ats.getAssessmentsResult({
                 id: "<id>",
-                fields: "assessment_id,remote_assessment_id,candidate,score,assessment_date,submission_date,summary,result,result_url,attachments",
+                fields: "id,remote_id,candidate,score,start_date,submission_date,summary,result,result_url,attachments",
                 xAccountId: "<id>",
               });
 
@@ -937,6 +937,198 @@ actions:
             async function run() {
               const result = await stackOne.ats.getAssessmentsPackage({
                 id: "<id>",
+                xAccountId: "<id>",
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/unified/ats/background-checks/orders"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: ats_list_background_check_request
+          source: |-
+            import { StackOne } from "@stackone/stackone-client-ts";
+
+            const stackOne = new StackOne({
+              security: {
+                username: "",
+                password: "",
+              },
+            });
+
+            async function run() {
+              const result = await stackOne.ats.listBackgroundCheckRequest({
+                fields: "id,remote_id,package,application,job,candidate,requester,results_update_url",
+                filter: {
+                  updatedAfter: "2020-01-01T00:00:00.000Z",
+                },
+                updatedAfter: "2020-01-01T00:00:00.000Z",
+                xAccountId: "<id>",
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/unified/ats/background-checks/orders/{id}"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: ats_get_background_check_request
+          source: |-
+            import { StackOne } from "@stackone/stackone-client-ts";
+
+            const stackOne = new StackOne({
+              security: {
+                username: "",
+                password: "",
+              },
+            });
+
+            async function run() {
+              const result = await stackOne.ats.getBackgroundCheckRequest({
+                id: "<id>",
+                fields: "id,remote_id,package,application,job,candidate,requester,results_update_url",
+                xAccountId: "<id>",
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/unified/ats/background-checks/orders/{id}/results"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: ats_get_background_check_result
+          source: |-
+            import { StackOne } from "@stackone/stackone-client-ts";
+
+            const stackOne = new StackOne({
+              security: {
+                username: "",
+                password: "",
+              },
+            });
+
+            async function run() {
+              const result = await stackOne.ats.getBackgroundCheckResult({
+                id: "<id>",
+                fields: "id,remote_id,candidate,start_date,submission_date,summary,result,result_url,attachments",
+                xAccountId: "<id>",
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/unified/ats/background-checks/packages"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: ats_list_background_check_packages
+          source: |-
+            import { StackOne } from "@stackone/stackone-client-ts";
+
+            const stackOne = new StackOne({
+              security: {
+                username: "",
+                password: "",
+              },
+            });
+
+            async function run() {
+              const result = await stackOne.ats.listBackgroundCheckPackages({
+                fields: "id,remote_id,name,description,tests",
+                filter: {
+                  updatedAfter: "2020-01-01T00:00:00.000Z",
+                },
+                updatedAfter: "2020-01-01T00:00:00.000Z",
+                xAccountId: "<id>",
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/unified/ats/background-checks/packages"]["post"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: ats_create_background_check_package
+          source: |-
+            import { StackOne } from "@stackone/stackone-client-ts";
+            import { CreateAssessmentsPackagesValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+            const stackOne = new StackOne({
+              security: {
+                username: "",
+                password: "",
+              },
+            });
+
+            async function run() {
+              const result = await stackOne.ats.createBackgroundCheckPackage({
+                xAccountId: "<id>",
+                atsCreateBackgroundCheckPackagesRequestDto: {
+                  name: "Standard Background Check",
+                  description: "Standard background package for hires",
+                  tests: [
+                    {
+                      name: "Test 1",
+                      type: {
+                        value: CreateAssessmentsPackagesValue.Responsibilities,
+                        sourceValue: "key_responsibilities",
+                      },
+                      description: "Skills test to gauge a candidate's proficiency in job-specific skills",
+                    },
+                    {
+                      name: "Test 1",
+                      type: {
+                        value: CreateAssessmentsPackagesValue.Responsibilities,
+                        sourceValue: "key_responsibilities",
+                      },
+                      description: "Skills test to gauge a candidate's proficiency in job-specific skills",
+                    },
+                  ],
+                  passthrough: {
+                    "other_known_names": "John Doe",
+                  },
+                },
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/unified/ats/background-checks/packages/{id}"]["get"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: ats_get_background_check_package
+          source: |-
+            import { StackOne } from "@stackone/stackone-client-ts";
+
+            const stackOne = new StackOne({
+              security: {
+                username: "",
+                password: "",
+              },
+            });
+
+            async function run() {
+              const result = await stackOne.ats.getBackgroundCheckPackage({
+                id: "<id>",
+                fields: "id,remote_id,name,description,tests",
                 xAccountId: "<id>",
               });
 
@@ -5287,6 +5479,14 @@ actions:
                       name: "Information-Technology",
                     },
                   ],
+                  content: [
+                    {
+                      title: "Software Engineer Lv 1",
+                      description: "This video acts as learning content for software engineers.",
+                      contentUrl: "https://www.youtube.com/watch?v=16873",
+                      order: 1,
+                    },
+                  ],
                   categories: [
                     {
                       unifiedCustomFields: {
@@ -5294,14 +5494,6 @@ actions:
                         "my_project_custom_field_2": "some other value",
                       },
                       name: "Information-Technology",
-                    },
-                  ],
-                  content: [
-                    {
-                      title: "Software Engineer Lv 1",
-                      description: "This video acts as learning content for software engineers.",
-                      contentUrl: "https://www.youtube.com/watch?v=16873",
-                      order: 1,
                     },
                   ],
                 },
@@ -5360,15 +5552,6 @@ actions:
                           name: "Information-Technology",
                         },
                       ],
-                      categories: [
-                        {
-                          unifiedCustomFields: {
-                            "my_project_custom_field_1": "REF-1236",
-                            "my_project_custom_field_2": "some other value",
-                          },
-                          name: "Information-Technology",
-                        },
-                      ],
                       content: [
                         {
                           title: "Software Engineer Lv 1",
@@ -5376,11 +5559,14 @@ actions:
                           contentUrl: "https://www.youtube.com/watch?v=16873",
                           order: 1,
                         },
+                      ],
+                      categories: [
                         {
-                          title: "Software Engineer Lv 1",
-                          description: "This video acts as learning content for software engineers.",
-                          contentUrl: "https://www.youtube.com/watch?v=16873",
-                          order: 1,
+                          unifiedCustomFields: {
+                            "my_project_custom_field_1": "REF-1236",
+                            "my_project_custom_field_2": "some other value",
+                          },
+                          name: "Information-Technology",
                         },
                       ],
                     },
@@ -5414,6 +5600,14 @@ actions:
                           name: "Information-Technology",
                         },
                       ],
+                      content: [
+                        {
+                          title: "Software Engineer Lv 1",
+                          description: "This video acts as learning content for software engineers.",
+                          contentUrl: "https://www.youtube.com/watch?v=16873",
+                          order: 1,
+                        },
+                      ],
                       categories: [
                         {
                           unifiedCustomFields: {
@@ -5421,14 +5615,6 @@ actions:
                             "my_project_custom_field_2": "some other value",
                           },
                           name: "Information-Technology",
-                        },
-                      ],
-                      content: [
-                        {
-                          title: "Software Engineer Lv 1",
-                          description: "This video acts as learning content for software engineers.",
-                          contentUrl: "https://www.youtube.com/watch?v=16873",
-                          order: 1,
                         },
                       ],
                     },

@@ -43,6 +43,9 @@ export type AssessmentsPackagesValueOpen = OpenEnum<
   typeof AssessmentsPackagesValue
 >;
 
+/**
+ * Package type
+ */
 export type AssessmentsPackagesType = {
   /**
    * The source value of the description type.
@@ -63,7 +66,7 @@ export type AssessmentsPackagesType = {
 
 export type AssessmentsPackages = {
   /**
-   * Assessment description
+   * Package description
    */
   description?: string | null | undefined;
   /**
@@ -71,13 +74,16 @@ export type AssessmentsPackages = {
    */
   id?: string | null | undefined;
   /**
-   * Assessment name
+   * Package name
    */
   name?: string | null | undefined;
   /**
    * Provider's unique identifier
    */
   remoteId?: string | null | undefined;
+  /**
+   * Package type
+   */
   type?: AssessmentsPackagesType | null | undefined;
 };
 

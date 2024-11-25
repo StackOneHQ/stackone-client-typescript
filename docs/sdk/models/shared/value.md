@@ -1,39 +1,20 @@
 # Value
 
-The value associated with the custom field.
-
-
-## Supported Types
-
-### `string`
+## Example Usage
 
 ```typescript
-const value: string = "Completed";
+import { Value } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+let value: Value = Value.InProgress;
 ```
 
-### `number`
+## Values
 
-```typescript
-const value: number = Completed;
-```
+This is an open enum. Unrecognized values will be captured as the `Unrecognized<string>` branded type.
 
-### `boolean`
-
-```typescript
-const value: boolean = true;
-```
-
-### `shared.Four`
-
-```typescript
-const value: shared.Four = {};
-```
-
-### `any[]`
-
-```typescript
-const value: any[] = [
-  "Completed",
-];
-```
-
+| Name                   | Value                  |
+| ---------------------- | ---------------------- |
+| `Pending`              | pending                |
+| `InProgress`           | in_progress            |
+| `Completed`            | completed              |
+| -                      | `Unrecognized<string>` |

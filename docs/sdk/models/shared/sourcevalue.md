@@ -12,7 +12,7 @@ const value: string = "<value>";
 ### `number`
 
 ```typescript
-const value: number = 5771.40;
+const value: number = 4103.02;
 ```
 
 ### `boolean`
@@ -21,10 +21,10 @@ const value: number = 5771.40;
 const value: boolean = false;
 ```
 
-### `shared.AssignmentStatusEnum4`
+### `shared.Four`
 
 ```typescript
-const value: shared.AssignmentStatusEnum4 = {};
+const value: shared.Four = {};
 ```
 
 ### `any[]`

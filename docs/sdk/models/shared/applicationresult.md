@@ -143,8 +143,8 @@ let value: ApplicationResult = {
     ],
     resultLinks: [
       {
-        label: "assessment result link",
-        url: "http://example.com/assessment-result/4565765/data",
+        label: "test result link",
+        url: "http://example.com/test-result/4565765/data",
       },
     ],
     source: {

@@ -13,11 +13,11 @@ import {
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
-  ApplicationCustomFields,
-  ApplicationCustomFields$inboundSchema,
-  ApplicationCustomFields$Outbound,
-  ApplicationCustomFields$outboundSchema,
-} from "./applicationcustomfields.js";
+  CustomFields,
+  CustomFields$inboundSchema,
+  CustomFields$Outbound,
+  CustomFields$outboundSchema,
+} from "./customfields.js";
 
 export type AtsUpdateApplicationRequestDto4 = {};
 
@@ -100,7 +100,7 @@ export type AtsUpdateApplicationRequestDto = {
   /**
    * The application custom fields
    */
-  customFields?: Array<ApplicationCustomFields> | null | undefined;
+  customFields?: Array<CustomFields> | null | undefined;
   /**
    * Unique identifier of the interview stage
    */
@@ -454,8 +454,7 @@ export const AtsUpdateApplicationRequestDto$inboundSchema: z.ZodType<
   application_status: z.nullable(
     z.lazy(() => AtsUpdateApplicationRequestDtoApplicationStatus$inboundSchema),
   ).optional(),
-  custom_fields: z.nullable(z.array(ApplicationCustomFields$inboundSchema))
-    .optional(),
+  custom_fields: z.nullable(z.array(CustomFields$inboundSchema)).optional(),
   interview_stage_id: z.nullable(z.string()).optional(),
   passthrough: z.nullable(z.record(z.any())).optional(),
   rejected_reason_id: z.nullable(z.string()).optional(),
@@ -477,7 +476,7 @@ export type AtsUpdateApplicationRequestDto$Outbound = {
     | AtsUpdateApplicationRequestDtoApplicationStatus$Outbound
     | null
     | undefined;
-  custom_fields?: Array<ApplicationCustomFields$Outbound> | null | undefined;
+  custom_fields?: Array<CustomFields$Outbound> | null | undefined;
   interview_stage_id?: string | null | undefined;
   passthrough?: { [k: string]: any } | null | undefined;
   rejected_reason_id?: string | null | undefined;
@@ -495,8 +494,7 @@ export const AtsUpdateApplicationRequestDto$outboundSchema: z.ZodType<
       AtsUpdateApplicationRequestDtoApplicationStatus$outboundSchema
     ),
   ).optional(),
-  customFields: z.nullable(z.array(ApplicationCustomFields$outboundSchema))
-    .optional(),
+  customFields: z.nullable(z.array(CustomFields$outboundSchema)).optional(),
   interviewStageId: z.nullable(z.string()).optional(),
   passthrough: z.nullable(z.record(z.any())).optional(),
   rejectedReasonId: z.nullable(z.string()).optional(),

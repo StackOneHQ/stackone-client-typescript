@@ -12,58 +12,12 @@ import {
 } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
-
-export type AssessmentsResultsSchemas4 = {};
-
-/**
- * The source value of the content type.
- */
-export type AssessmentsResultsSchemasSourceValue =
-  | AssessmentsResultsSchemas4
-  | string
-  | number
-  | boolean
-  | Array<any>;
-
-/**
- * The content type of the attachment.
- */
-export enum AssessmentsResultsSchemasValue {
-  Text = "text",
-  UnmappedValue = "unmapped_value",
-}
-/**
- * The content type of the attachment.
- */
-export type AssessmentsResultsSchemasValueOpen = OpenEnum<
-  typeof AssessmentsResultsSchemasValue
->;
-
-export type AssessmentsResultsContentType = {
-  /**
-   * The source value of the content type.
-   */
-  sourceValue?:
-    | AssessmentsResultsSchemas4
-    | string
-    | number
-    | boolean
-    | Array<any>
-    | null
-    | undefined;
-  /**
-   * The content type of the attachment.
-   */
-  value?: AssessmentsResultsSchemasValueOpen | null | undefined;
-};
-
-export type Attachments = {
-  contentType?: AssessmentsResultsContentType | null | undefined;
-  /**
-   * The URL of the attachment.
-   */
-  url?: string | null | undefined;
-};
+import {
+  AssessmentsAttachment,
+  AssessmentsAttachment$inboundSchema,
+  AssessmentsAttachment$Outbound,
+  AssessmentsAttachment$outboundSchema,
+} from "./assessmentsattachment.js";
 
 export type AssessmentsResultsCandidate = {
   /**
@@ -79,7 +33,7 @@ export type AssessmentsResultsCandidate = {
 export type AssessmentsResults4 = {};
 
 /**
- * The source value of the assessment result.
+ * The source value of the test result.
  */
 export type AssessmentsResultsSourceValue =
   | AssessmentsResults4
@@ -89,7 +43,7 @@ export type AssessmentsResultsSourceValue =
   | Array<any>;
 
 /**
- * The result of the assessment.
+ * The result of the test.
  */
 export enum AssessmentsResultsValue {
   Cancelled = "cancelled",
@@ -98,7 +52,7 @@ export enum AssessmentsResultsValue {
   Passed = "passed",
 }
 /**
- * The result of the assessment.
+ * The result of the test.
  */
 export type AssessmentsResultsValueOpen = OpenEnum<
   typeof AssessmentsResultsValue
@@ -106,7 +60,7 @@ export type AssessmentsResultsValueOpen = OpenEnum<
 
 export type Result = {
   /**
-   * The source value of the assessment result.
+   * The source value of the test result.
    */
   sourceValue?:
     | AssessmentsResults4
@@ -117,7 +71,7 @@ export type Result = {
     | null
     | undefined;
   /**
-   * The result of the assessment.
+   * The result of the test.
    */
   value?: AssessmentsResultsValueOpen | null | undefined;
 };
@@ -142,15 +96,7 @@ export type Score = {
 };
 
 export type AssessmentsResults = {
-  /**
-   * The start date of the candidate assessment
-   */
-  assessmentDate?: Date | null | undefined;
-  /**
-   * The id of the candidate assessment
-   */
-  assessmentId?: string | null | undefined;
-  attachments?: Attachments | null | undefined;
+  attachments?: Array<AssessmentsAttachment> | null | undefined;
   candidate?: AssessmentsResultsCandidate | null | undefined;
   /**
    * Unique identifier
@@ -162,324 +108,23 @@ export type AssessmentsResults = {
   remoteId?: string | null | undefined;
   result?: Result | null | undefined;
   /**
-   * The assessment`s result url
+   * The test`s result url
    */
   resultUrl?: string | null | undefined;
   score?: Score | null | undefined;
   /**
-   * The submission date of the candidate assessment
+   * The start date of the candidate test
+   */
+  startDate?: Date | null | undefined;
+  /**
+   * The submission date of the candidate test
    */
   submissionDate?: Date | null | undefined;
   /**
-   * The summary about the result of the assessments
+   * The summary about the result of the test
    */
   summary?: string | null | undefined;
 };
-
-/** @internal */
-export const AssessmentsResultsSchemas4$inboundSchema: z.ZodType<
-  AssessmentsResultsSchemas4,
-  z.ZodTypeDef,
-  unknown
-> = z.object({});
-
-/** @internal */
-export type AssessmentsResultsSchemas4$Outbound = {};
-
-/** @internal */
-export const AssessmentsResultsSchemas4$outboundSchema: z.ZodType<
-  AssessmentsResultsSchemas4$Outbound,
-  z.ZodTypeDef,
-  AssessmentsResultsSchemas4
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AssessmentsResultsSchemas4$ {
-  /** @deprecated use `AssessmentsResultsSchemas4$inboundSchema` instead. */
-  export const inboundSchema = AssessmentsResultsSchemas4$inboundSchema;
-  /** @deprecated use `AssessmentsResultsSchemas4$outboundSchema` instead. */
-  export const outboundSchema = AssessmentsResultsSchemas4$outboundSchema;
-  /** @deprecated use `AssessmentsResultsSchemas4$Outbound` instead. */
-  export type Outbound = AssessmentsResultsSchemas4$Outbound;
-}
-
-export function assessmentsResultsSchemas4ToJSON(
-  assessmentsResultsSchemas4: AssessmentsResultsSchemas4,
-): string {
-  return JSON.stringify(
-    AssessmentsResultsSchemas4$outboundSchema.parse(assessmentsResultsSchemas4),
-  );
-}
-
-export function assessmentsResultsSchemas4FromJSON(
-  jsonString: string,
-): SafeParseResult<AssessmentsResultsSchemas4, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => AssessmentsResultsSchemas4$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AssessmentsResultsSchemas4' from JSON`,
-  );
-}
-
-/** @internal */
-export const AssessmentsResultsSchemasSourceValue$inboundSchema: z.ZodType<
-  AssessmentsResultsSchemasSourceValue,
-  z.ZodTypeDef,
-  unknown
-> = z.union([
-  z.lazy(() => AssessmentsResultsSchemas4$inboundSchema),
-  z.string(),
-  z.number(),
-  z.boolean(),
-  z.array(z.any()),
-]);
-
-/** @internal */
-export type AssessmentsResultsSchemasSourceValue$Outbound =
-  | AssessmentsResultsSchemas4$Outbound
-  | string
-  | number
-  | boolean
-  | Array<any>;
-
-/** @internal */
-export const AssessmentsResultsSchemasSourceValue$outboundSchema: z.ZodType<
-  AssessmentsResultsSchemasSourceValue$Outbound,
-  z.ZodTypeDef,
-  AssessmentsResultsSchemasSourceValue
-> = z.union([
-  z.lazy(() => AssessmentsResultsSchemas4$outboundSchema),
-  z.string(),
-  z.number(),
-  z.boolean(),
-  z.array(z.any()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AssessmentsResultsSchemasSourceValue$ {
-  /** @deprecated use `AssessmentsResultsSchemasSourceValue$inboundSchema` instead. */
-  export const inboundSchema =
-    AssessmentsResultsSchemasSourceValue$inboundSchema;
-  /** @deprecated use `AssessmentsResultsSchemasSourceValue$outboundSchema` instead. */
-  export const outboundSchema =
-    AssessmentsResultsSchemasSourceValue$outboundSchema;
-  /** @deprecated use `AssessmentsResultsSchemasSourceValue$Outbound` instead. */
-  export type Outbound = AssessmentsResultsSchemasSourceValue$Outbound;
-}
-
-export function assessmentsResultsSchemasSourceValueToJSON(
-  assessmentsResultsSchemasSourceValue: AssessmentsResultsSchemasSourceValue,
-): string {
-  return JSON.stringify(
-    AssessmentsResultsSchemasSourceValue$outboundSchema.parse(
-      assessmentsResultsSchemasSourceValue,
-    ),
-  );
-}
-
-export function assessmentsResultsSchemasSourceValueFromJSON(
-  jsonString: string,
-): SafeParseResult<AssessmentsResultsSchemasSourceValue, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      AssessmentsResultsSchemasSourceValue$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AssessmentsResultsSchemasSourceValue' from JSON`,
-  );
-}
-
-/** @internal */
-export const AssessmentsResultsSchemasValue$inboundSchema: z.ZodType<
-  AssessmentsResultsSchemasValueOpen,
-  z.ZodTypeDef,
-  unknown
-> = z
-  .union([
-    z.nativeEnum(AssessmentsResultsSchemasValue),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
-
-/** @internal */
-export const AssessmentsResultsSchemasValue$outboundSchema: z.ZodType<
-  AssessmentsResultsSchemasValueOpen,
-  z.ZodTypeDef,
-  AssessmentsResultsSchemasValueOpen
-> = z.union([
-  z.nativeEnum(AssessmentsResultsSchemasValue),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AssessmentsResultsSchemasValue$ {
-  /** @deprecated use `AssessmentsResultsSchemasValue$inboundSchema` instead. */
-  export const inboundSchema = AssessmentsResultsSchemasValue$inboundSchema;
-  /** @deprecated use `AssessmentsResultsSchemasValue$outboundSchema` instead. */
-  export const outboundSchema = AssessmentsResultsSchemasValue$outboundSchema;
-}
-
-/** @internal */
-export const AssessmentsResultsContentType$inboundSchema: z.ZodType<
-  AssessmentsResultsContentType,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  source_value: z.nullable(
-    z.union([
-      z.lazy(() => AssessmentsResultsSchemas4$inboundSchema),
-      z.string(),
-      z.number(),
-      z.boolean(),
-      z.array(z.any()),
-    ]),
-  ).optional(),
-  value: z.nullable(AssessmentsResultsSchemasValue$inboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "source_value": "sourceValue",
-  });
-});
-
-/** @internal */
-export type AssessmentsResultsContentType$Outbound = {
-  source_value?:
-    | AssessmentsResultsSchemas4$Outbound
-    | string
-    | number
-    | boolean
-    | Array<any>
-    | null
-    | undefined;
-  value?: string | null | undefined;
-};
-
-/** @internal */
-export const AssessmentsResultsContentType$outboundSchema: z.ZodType<
-  AssessmentsResultsContentType$Outbound,
-  z.ZodTypeDef,
-  AssessmentsResultsContentType
-> = z.object({
-  sourceValue: z.nullable(
-    z.union([
-      z.lazy(() => AssessmentsResultsSchemas4$outboundSchema),
-      z.string(),
-      z.number(),
-      z.boolean(),
-      z.array(z.any()),
-    ]),
-  ).optional(),
-  value: z.nullable(AssessmentsResultsSchemasValue$outboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    sourceValue: "source_value",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AssessmentsResultsContentType$ {
-  /** @deprecated use `AssessmentsResultsContentType$inboundSchema` instead. */
-  export const inboundSchema = AssessmentsResultsContentType$inboundSchema;
-  /** @deprecated use `AssessmentsResultsContentType$outboundSchema` instead. */
-  export const outboundSchema = AssessmentsResultsContentType$outboundSchema;
-  /** @deprecated use `AssessmentsResultsContentType$Outbound` instead. */
-  export type Outbound = AssessmentsResultsContentType$Outbound;
-}
-
-export function assessmentsResultsContentTypeToJSON(
-  assessmentsResultsContentType: AssessmentsResultsContentType,
-): string {
-  return JSON.stringify(
-    AssessmentsResultsContentType$outboundSchema.parse(
-      assessmentsResultsContentType,
-    ),
-  );
-}
-
-export function assessmentsResultsContentTypeFromJSON(
-  jsonString: string,
-): SafeParseResult<AssessmentsResultsContentType, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => AssessmentsResultsContentType$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AssessmentsResultsContentType' from JSON`,
-  );
-}
-
-/** @internal */
-export const Attachments$inboundSchema: z.ZodType<
-  Attachments,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  content_type: z.nullable(
-    z.lazy(() => AssessmentsResultsContentType$inboundSchema),
-  ).optional(),
-  url: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "content_type": "contentType",
-  });
-});
-
-/** @internal */
-export type Attachments$Outbound = {
-  content_type?: AssessmentsResultsContentType$Outbound | null | undefined;
-  url?: string | null | undefined;
-};
-
-/** @internal */
-export const Attachments$outboundSchema: z.ZodType<
-  Attachments$Outbound,
-  z.ZodTypeDef,
-  Attachments
-> = z.object({
-  contentType: z.nullable(
-    z.lazy(() => AssessmentsResultsContentType$outboundSchema),
-  ).optional(),
-  url: z.nullable(z.string()).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    contentType: "content_type",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace Attachments$ {
-  /** @deprecated use `Attachments$inboundSchema` instead. */
-  export const inboundSchema = Attachments$inboundSchema;
-  /** @deprecated use `Attachments$outboundSchema` instead. */
-  export const outboundSchema = Attachments$outboundSchema;
-  /** @deprecated use `Attachments$Outbound` instead. */
-  export type Outbound = Attachments$Outbound;
-}
-
-export function attachmentsToJSON(attachments: Attachments): string {
-  return JSON.stringify(Attachments$outboundSchema.parse(attachments));
-}
-
-export function attachmentsFromJSON(
-  jsonString: string,
-): SafeParseResult<Attachments, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => Attachments$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Attachments' from JSON`,
-  );
-}
 
 /** @internal */
 export const AssessmentsResultsCandidate$inboundSchema: z.ZodType<
@@ -838,11 +483,8 @@ export const AssessmentsResults$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  assessment_date: z.nullable(
-    z.string().datetime({ offset: true }).transform(v => new Date(v)),
-  ).optional(),
-  assessment_id: z.nullable(z.string()).optional(),
-  attachments: z.nullable(z.lazy(() => Attachments$inboundSchema)).optional(),
+  attachments: z.nullable(z.array(AssessmentsAttachment$inboundSchema))
+    .optional(),
   candidate: z.nullable(z.lazy(() => AssessmentsResultsCandidate$inboundSchema))
     .optional(),
   id: z.nullable(z.string()).optional(),
@@ -850,31 +492,32 @@ export const AssessmentsResults$inboundSchema: z.ZodType<
   result: z.nullable(z.lazy(() => Result$inboundSchema)).optional(),
   result_url: z.nullable(z.string()).optional(),
   score: z.nullable(z.lazy(() => Score$inboundSchema)).optional(),
+  start_date: z.nullable(
+    z.string().datetime({ offset: true }).transform(v => new Date(v)),
+  ).optional(),
   submission_date: z.nullable(
     z.string().datetime({ offset: true }).transform(v => new Date(v)),
   ).optional(),
   summary: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
-    "assessment_date": "assessmentDate",
-    "assessment_id": "assessmentId",
     "remote_id": "remoteId",
     "result_url": "resultUrl",
+    "start_date": "startDate",
     "submission_date": "submissionDate",
   });
 });
 
 /** @internal */
 export type AssessmentsResults$Outbound = {
-  assessment_date?: string | null | undefined;
-  assessment_id?: string | null | undefined;
-  attachments?: Attachments$Outbound | null | undefined;
+  attachments?: Array<AssessmentsAttachment$Outbound> | null | undefined;
   candidate?: AssessmentsResultsCandidate$Outbound | null | undefined;
   id?: string | null | undefined;
   remote_id?: string | null | undefined;
   result?: Result$Outbound | null | undefined;
   result_url?: string | null | undefined;
   score?: Score$Outbound | null | undefined;
+  start_date?: string | null | undefined;
   submission_date?: string | null | undefined;
   summary?: string | null | undefined;
 };
@@ -885,10 +528,8 @@ export const AssessmentsResults$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   AssessmentsResults
 > = z.object({
-  assessmentDate: z.nullable(z.date().transform(v => v.toISOString()))
+  attachments: z.nullable(z.array(AssessmentsAttachment$outboundSchema))
     .optional(),
-  assessmentId: z.nullable(z.string()).optional(),
-  attachments: z.nullable(z.lazy(() => Attachments$outboundSchema)).optional(),
   candidate: z.nullable(
     z.lazy(() => AssessmentsResultsCandidate$outboundSchema),
   ).optional(),
@@ -897,15 +538,15 @@ export const AssessmentsResults$outboundSchema: z.ZodType<
   result: z.nullable(z.lazy(() => Result$outboundSchema)).optional(),
   resultUrl: z.nullable(z.string()).optional(),
   score: z.nullable(z.lazy(() => Score$outboundSchema)).optional(),
+  startDate: z.nullable(z.date().transform(v => v.toISOString())).optional(),
   submissionDate: z.nullable(z.date().transform(v => v.toISOString()))
     .optional(),
   summary: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
-    assessmentDate: "assessment_date",
-    assessmentId: "assessment_id",
     remoteId: "remote_id",
     resultUrl: "result_url",
+    startDate: "start_date",
     submissionDate: "submission_date",
   });
 });
