@@ -13,81 +13,64 @@ import {
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-export type AssignmentStatusEnum4 = {};
+export type Four = {};
 
-export type SourceValue =
-  | AssignmentStatusEnum4
-  | string
-  | number
-  | boolean
-  | Array<any>;
+export type SourceValue = Four | string | number | boolean | Array<any>;
 
-export enum AssignmentStatusEnumValue {
+export enum Value {
   Pending = "pending",
   InProgress = "in_progress",
   Completed = "completed",
 }
-export type AssignmentStatusEnumValueOpen = OpenEnum<
-  typeof AssignmentStatusEnumValue
->;
+export type ValueOpen = OpenEnum<typeof Value>;
 
 export type AssignmentStatusEnum = {
   sourceValue?:
-    | AssignmentStatusEnum4
+    | Four
     | string
     | number
     | boolean
     | Array<any>
     | null
     | undefined;
-  value?: AssignmentStatusEnumValueOpen | null | undefined;
+  value?: ValueOpen | null | undefined;
 };
 
 /** @internal */
-export const AssignmentStatusEnum4$inboundSchema: z.ZodType<
-  AssignmentStatusEnum4,
-  z.ZodTypeDef,
-  unknown
-> = z.object({});
+export const Four$inboundSchema: z.ZodType<Four, z.ZodTypeDef, unknown> = z
+  .object({});
 
 /** @internal */
-export type AssignmentStatusEnum4$Outbound = {};
+export type Four$Outbound = {};
 
 /** @internal */
-export const AssignmentStatusEnum4$outboundSchema: z.ZodType<
-  AssignmentStatusEnum4$Outbound,
-  z.ZodTypeDef,
-  AssignmentStatusEnum4
-> = z.object({});
+export const Four$outboundSchema: z.ZodType<Four$Outbound, z.ZodTypeDef, Four> =
+  z.object({});
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace AssignmentStatusEnum4$ {
-  /** @deprecated use `AssignmentStatusEnum4$inboundSchema` instead. */
-  export const inboundSchema = AssignmentStatusEnum4$inboundSchema;
-  /** @deprecated use `AssignmentStatusEnum4$outboundSchema` instead. */
-  export const outboundSchema = AssignmentStatusEnum4$outboundSchema;
-  /** @deprecated use `AssignmentStatusEnum4$Outbound` instead. */
-  export type Outbound = AssignmentStatusEnum4$Outbound;
+export namespace Four$ {
+  /** @deprecated use `Four$inboundSchema` instead. */
+  export const inboundSchema = Four$inboundSchema;
+  /** @deprecated use `Four$outboundSchema` instead. */
+  export const outboundSchema = Four$outboundSchema;
+  /** @deprecated use `Four$Outbound` instead. */
+  export type Outbound = Four$Outbound;
 }
 
-export function assignmentStatusEnum4ToJSON(
-  assignmentStatusEnum4: AssignmentStatusEnum4,
-): string {
-  return JSON.stringify(
-    AssignmentStatusEnum4$outboundSchema.parse(assignmentStatusEnum4),
-  );
+export function fourToJSON(four: Four): string {
+  return JSON.stringify(Four$outboundSchema.parse(four));
 }
 
-export function assignmentStatusEnum4FromJSON(
+export function fourFromJSON(
   jsonString: string,
-): SafeParseResult<AssignmentStatusEnum4, SDKValidationError> {
+): SafeParseResult<Four, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => AssignmentStatusEnum4$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AssignmentStatusEnum4' from JSON`,
+    (x) => Four$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Four' from JSON`,
   );
 }
 
@@ -97,7 +80,7 @@ export const SourceValue$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => AssignmentStatusEnum4$inboundSchema),
+  z.lazy(() => Four$inboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
@@ -106,7 +89,7 @@ export const SourceValue$inboundSchema: z.ZodType<
 
 /** @internal */
 export type SourceValue$Outbound =
-  | AssignmentStatusEnum4$Outbound
+  | Four$Outbound
   | string
   | number
   | boolean
@@ -118,7 +101,7 @@ export const SourceValue$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   SourceValue
 > = z.union([
-  z.lazy(() => AssignmentStatusEnum4$outboundSchema),
+  z.lazy(() => Four$outboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
@@ -153,23 +136,20 @@ export function sourceValueFromJSON(
 }
 
 /** @internal */
-export const AssignmentStatusEnumValue$inboundSchema: z.ZodType<
-  AssignmentStatusEnumValueOpen,
-  z.ZodTypeDef,
-  unknown
-> = z
-  .union([
-    z.nativeEnum(AssignmentStatusEnumValue),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
+export const Value$inboundSchema: z.ZodType<ValueOpen, z.ZodTypeDef, unknown> =
+  z
+    .union([
+      z.nativeEnum(Value),
+      z.string().transform(catchUnrecognizedEnum),
+    ]);
 
 /** @internal */
-export const AssignmentStatusEnumValue$outboundSchema: z.ZodType<
-  AssignmentStatusEnumValueOpen,
+export const Value$outboundSchema: z.ZodType<
+  ValueOpen,
   z.ZodTypeDef,
-  AssignmentStatusEnumValueOpen
+  ValueOpen
 > = z.union([
-  z.nativeEnum(AssignmentStatusEnumValue),
+  z.nativeEnum(Value),
   z.string().and(z.custom<Unrecognized<string>>()),
 ]);
 
@@ -177,11 +157,11 @@ export const AssignmentStatusEnumValue$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace AssignmentStatusEnumValue$ {
-  /** @deprecated use `AssignmentStatusEnumValue$inboundSchema` instead. */
-  export const inboundSchema = AssignmentStatusEnumValue$inboundSchema;
-  /** @deprecated use `AssignmentStatusEnumValue$outboundSchema` instead. */
-  export const outboundSchema = AssignmentStatusEnumValue$outboundSchema;
+export namespace Value$ {
+  /** @deprecated use `Value$inboundSchema` instead. */
+  export const inboundSchema = Value$inboundSchema;
+  /** @deprecated use `Value$outboundSchema` instead. */
+  export const outboundSchema = Value$outboundSchema;
 }
 
 /** @internal */
@@ -192,14 +172,14 @@ export const AssignmentStatusEnum$inboundSchema: z.ZodType<
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => AssignmentStatusEnum4$inboundSchema),
+      z.lazy(() => Four$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
       z.array(z.any()),
     ]),
   ).optional(),
-  value: z.nullable(AssignmentStatusEnumValue$inboundSchema).optional(),
+  value: z.nullable(Value$inboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {
     "source_value": "sourceValue",
@@ -209,7 +189,7 @@ export const AssignmentStatusEnum$inboundSchema: z.ZodType<
 /** @internal */
 export type AssignmentStatusEnum$Outbound = {
   source_value?:
-    | AssignmentStatusEnum4$Outbound
+    | Four$Outbound
     | string
     | number
     | boolean
@@ -227,14 +207,14 @@ export const AssignmentStatusEnum$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => AssignmentStatusEnum4$outboundSchema),
+      z.lazy(() => Four$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
       z.array(z.any()),
     ]),
   ).optional(),
-  value: z.nullable(AssignmentStatusEnumValue$outboundSchema).optional(),
+  value: z.nullable(Value$outboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {
     sourceValue: "source_value",

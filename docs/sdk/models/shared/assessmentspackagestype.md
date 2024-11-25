@@ -1,5 +1,7 @@
 # AssessmentsPackagesType
 
+Package type
+
 ## Example Usage
 
 ```typescript

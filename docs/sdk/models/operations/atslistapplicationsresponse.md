@@ -140,8 +140,8 @@ let value: AtsListApplicationsResponse = {
         ],
         resultLinks: [
           {
-            label: "assessment result link",
-            url: "http://example.com/assessment-result/4565765/data",
+            label: "test result link",
+            url: "http://example.com/test-result/4565765/data",
           },
         ],
         source: {
@@ -158,7 +158,7 @@ let value: AtsListApplicationsResponse = {
     ],
   },
   contentType: "<value>",
-  statusCode: 103,
+  statusCode: 307,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

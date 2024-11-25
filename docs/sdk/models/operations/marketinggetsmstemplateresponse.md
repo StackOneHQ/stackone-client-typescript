@@ -24,7 +24,7 @@ let value: MarketingGetSmsTemplateResponse = {
       remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
     },
   },
-  statusCode: 101,
+  statusCode: 507,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

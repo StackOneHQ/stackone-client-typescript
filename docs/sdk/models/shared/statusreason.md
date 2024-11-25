@@ -6,7 +6,7 @@
 import { StatusReason } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: StatusReason = {
-  timestamp: new Date("2023-03-13T16:24:53.059Z"),
+  timestamp: new Date("2022-12-25T01:32:23.978Z"),
 };
 ```
 

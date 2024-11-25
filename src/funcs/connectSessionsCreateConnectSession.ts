@@ -118,7 +118,7 @@ export async function connectSessionsCreateConnectSession(
     | ConnectionError
   >(
     M.json(201, operations.StackoneCreateConnectSessionResponse$inboundSchema, {
-      key: "ConnectSessionToken",
+      key: "ConnectSessionTokenAuthLink",
     }),
     M.fail([400, 403, 429, "4XX", 500, 501, "5XX"]),
   )(response, { extraFields: responseFields });

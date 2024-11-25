@@ -7,7 +7,7 @@ import { LmsUpsertCourseResponse } from "@stackone/stackone-client-ts/sdk/models
 
 let value: LmsUpsertCourseResponse = {
   contentType: "<value>",
-  statusCode: 204,
+  statusCode: 101,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

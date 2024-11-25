@@ -22,11 +22,10 @@ let value: LmsBatchUpsertCourseRequest = {
         ],
         content: [
           {
-            contentUrl: "https://www.youtube.com/watch?v=16873",
-            description:
-              "This video acts as learning content for software engineers.",
+            contentUrl: "https://www.google.com",
+            description: "This is a software engineering course",
             order: 1,
-            title: "Software Engineer Lv 1",
+            title: "Software Engineering",
           },
         ],
         contentIds: [

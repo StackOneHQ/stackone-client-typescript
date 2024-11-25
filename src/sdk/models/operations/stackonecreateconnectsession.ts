@@ -11,9 +11,9 @@ import * as shared from "../shared/index.js";
 
 export type StackoneCreateConnectSessionResponse = {
   /**
-   * The details of the connect session created with token.
+   * The details of the connect session created with token and auth link
    */
-  connectSessionToken?: shared.ConnectSessionToken | undefined;
+  connectSessionTokenAuthLink?: shared.ConnectSessionTokenAuthLink | undefined;
   /**
    * HTTP response content type for this operation
    */
@@ -34,13 +34,14 @@ export const StackoneCreateConnectSessionResponse$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  ConnectSessionToken: shared.ConnectSessionToken$inboundSchema.optional(),
+  ConnectSessionTokenAuthLink: shared.ConnectSessionTokenAuthLink$inboundSchema
+    .optional(),
   ContentType: z.string(),
   StatusCode: z.number().int(),
   RawResponse: z.instanceof(Response),
 }).transform((v) => {
   return remap$(v, {
-    "ConnectSessionToken": "connectSessionToken",
+    "ConnectSessionTokenAuthLink": "connectSessionTokenAuthLink",
     "ContentType": "contentType",
     "StatusCode": "statusCode",
     "RawResponse": "rawResponse",
@@ -49,7 +50,9 @@ export const StackoneCreateConnectSessionResponse$inboundSchema: z.ZodType<
 
 /** @internal */
 export type StackoneCreateConnectSessionResponse$Outbound = {
-  ConnectSessionToken?: shared.ConnectSessionToken$Outbound | undefined;
+  ConnectSessionTokenAuthLink?:
+    | shared.ConnectSessionTokenAuthLink$Outbound
+    | undefined;
   ContentType: string;
   StatusCode: number;
   RawResponse: never;
@@ -61,7 +64,8 @@ export const StackoneCreateConnectSessionResponse$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   StackoneCreateConnectSessionResponse
 > = z.object({
-  connectSessionToken: shared.ConnectSessionToken$outboundSchema.optional(),
+  connectSessionTokenAuthLink: shared.ConnectSessionTokenAuthLink$outboundSchema
+    .optional(),
   contentType: z.string(),
   statusCode: z.number().int(),
   rawResponse: z.instanceof(Response).transform(() => {
@@ -69,7 +73,7 @@ export const StackoneCreateConnectSessionResponse$outboundSchema: z.ZodType<
   }),
 }).transform((v) => {
   return remap$(v, {
-    connectSessionToken: "ConnectSessionToken",
+    connectSessionTokenAuthLink: "ConnectSessionTokenAuthLink",
     contentType: "ContentType",
     statusCode: "StatusCode",
     rawResponse: "RawResponse",

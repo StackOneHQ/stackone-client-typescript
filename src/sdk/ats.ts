@@ -3,6 +3,7 @@
  */
 
 import { atsCreateApplication } from "../funcs/atsCreateApplication.js";
+import { atsCreateBackgroundCheckPackage } from "../funcs/atsCreateBackgroundCheckPackage.js";
 import { atsCreateCandidate } from "../funcs/atsCreateCandidate.js";
 import { atsCreateCandidateNote } from "../funcs/atsCreateCandidateNote.js";
 import { atsCreateJob } from "../funcs/atsCreateJob.js";
@@ -17,6 +18,9 @@ import { atsGetApplicationScorecard } from "../funcs/atsGetApplicationScorecard.
 import { atsGetAssessmentsPackage } from "../funcs/atsGetAssessmentsPackage.js";
 import { atsGetAssessmentsRequest } from "../funcs/atsGetAssessmentsRequest.js";
 import { atsGetAssessmentsResult } from "../funcs/atsGetAssessmentsResult.js";
+import { atsGetBackgroundCheckPackage } from "../funcs/atsGetBackgroundCheckPackage.js";
+import { atsGetBackgroundCheckRequest } from "../funcs/atsGetBackgroundCheckRequest.js";
+import { atsGetBackgroundCheckResult } from "../funcs/atsGetBackgroundCheckResult.js";
 import { atsGetCandidate } from "../funcs/atsGetCandidate.js";
 import { atsGetCandidateCustomFieldDefinition } from "../funcs/atsGetCandidateCustomFieldDefinition.js";
 import { atsGetCandidateNote } from "../funcs/atsGetCandidateNote.js";
@@ -38,6 +42,8 @@ import { atsListApplicationScorecards } from "../funcs/atsListApplicationScoreca
 import { atsListApplicationsOffers } from "../funcs/atsListApplicationsOffers.js";
 import { atsListApplicationsScheduledInterviews } from "../funcs/atsListApplicationsScheduledInterviews.js";
 import { atsListAssessmentsPackages } from "../funcs/atsListAssessmentsPackages.js";
+import { atsListBackgroundCheckPackages } from "../funcs/atsListBackgroundCheckPackages.js";
+import { atsListBackgroundCheckRequest } from "../funcs/atsListBackgroundCheckRequest.js";
 import { atsListCandidateCustomFieldDefinitions } from "../funcs/atsListCandidateCustomFieldDefinitions.js";
 import { atsListCandidateNotes } from "../funcs/atsListCandidateNotes.js";
 import { atsListCandidates } from "../funcs/atsListCandidates.js";
@@ -71,6 +77,20 @@ export class Ats extends ClientSDK {
     options?: RequestOptions,
   ): Promise<operations.AtsCreateApplicationResponse> {
     return unwrapAsync(atsCreateApplication(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Create Background Check Package
+   */
+  async createBackgroundCheckPackage(
+    request: operations.AtsCreateBackgroundCheckPackageRequest,
+    options?: RequestOptions,
+  ): Promise<operations.AtsCreateBackgroundCheckPackageResponse> {
+    return unwrapAsync(atsCreateBackgroundCheckPackage(
       this,
       request,
       options,
@@ -267,6 +287,48 @@ export class Ats extends ClientSDK {
     options?: RequestOptions,
   ): Promise<operations.AtsGetAssessmentsResultResponse> {
     return unwrapAsync(atsGetAssessmentsResult(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Get Background Check Package
+   */
+  async getBackgroundCheckPackage(
+    request: operations.AtsGetBackgroundCheckPackageRequest,
+    options?: RequestOptions,
+  ): Promise<operations.AtsGetBackgroundCheckPackageResponse> {
+    return unwrapAsync(atsGetBackgroundCheckPackage(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Get Background Check Request
+   */
+  async getBackgroundCheckRequest(
+    request: operations.AtsGetBackgroundCheckRequestRequest,
+    options?: RequestOptions,
+  ): Promise<operations.AtsGetBackgroundCheckRequestResponse> {
+    return unwrapAsync(atsGetBackgroundCheckRequest(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Get Background Check Results
+   */
+  async getBackgroundCheckResult(
+    request: operations.AtsGetBackgroundCheckResultRequest,
+    options?: RequestOptions,
+  ): Promise<operations.AtsGetBackgroundCheckResultResponse> {
+    return unwrapAsync(atsGetBackgroundCheckResult(
       this,
       request,
       options,
@@ -561,6 +623,34 @@ export class Ats extends ClientSDK {
     options?: RequestOptions,
   ): Promise<operations.AtsListAssessmentsPackagesResponse> {
     return unwrapAsync(atsListAssessmentsPackages(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * List Background Check Packages
+   */
+  async listBackgroundCheckPackages(
+    request: operations.AtsListBackgroundCheckPackagesRequest,
+    options?: RequestOptions,
+  ): Promise<operations.AtsListBackgroundCheckPackagesResponse> {
+    return unwrapAsync(atsListBackgroundCheckPackages(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * List Background Check Request
+   */
+  async listBackgroundCheckRequest(
+    request: operations.AtsListBackgroundCheckRequestRequest,
+    options?: RequestOptions,
+  ): Promise<operations.AtsListBackgroundCheckRequestResponse> {
+    return unwrapAsync(atsListBackgroundCheckRequest(
       this,
       request,
       options,

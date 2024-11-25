@@ -286,12 +286,6 @@ async function run() {
               order: 1,
               title: "Software Engineer Lv 1",
             },
-            {
-              contentUrl: "https://www.youtube.com/watch?v=16873",
-              description: "This video acts as learning content for software engineers.",
-              order: 1,
-              title: "Software Engineer Lv 1",
-            },
           ],
           contentIds: [
             "16873-SOFTWARE-ENG-Content",
@@ -413,12 +407,6 @@ async function run() {
             },
           ],
           content: [
-            {
-              contentUrl: "https://www.youtube.com/watch?v=16873",
-              description: "This video acts as learning content for software engineers.",
-              order: 1,
-              title: "Software Engineer Lv 1",
-            },
             {
               contentUrl: "https://www.youtube.com/watch?v=16873",
               description: "This video acts as learning content for software engineers.",

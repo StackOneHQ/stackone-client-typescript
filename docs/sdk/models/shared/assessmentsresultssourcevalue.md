@@ -1,6 +1,6 @@
 # AssessmentsResultsSourceValue
 
-The source value of the assessment result.
+The source value of the test result.
 
 
 ## Supported Types

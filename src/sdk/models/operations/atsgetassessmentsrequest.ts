@@ -33,7 +33,7 @@ export type AtsGetAssessmentsRequestResponse = {
   /**
    * The assessments order with the given identifier was retrieved.
    */
-  assessmentsResultsResult?: shared.AssessmentsResultsResult | undefined;
+  assessmentsOrderResult?: shared.AssessmentsOrderResult | undefined;
   /**
    * HTTP response content type for this operation
    */
@@ -130,14 +130,14 @@ export const AtsGetAssessmentsRequestResponse$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  AssessmentsResultsResult: shared.AssessmentsResultsResult$inboundSchema
+  AssessmentsOrderResult: shared.AssessmentsOrderResult$inboundSchema
     .optional(),
   ContentType: z.string(),
   StatusCode: z.number().int(),
   RawResponse: z.instanceof(Response),
 }).transform((v) => {
   return remap$(v, {
-    "AssessmentsResultsResult": "assessmentsResultsResult",
+    "AssessmentsOrderResult": "assessmentsOrderResult",
     "ContentType": "contentType",
     "StatusCode": "statusCode",
     "RawResponse": "rawResponse",
@@ -146,9 +146,7 @@ export const AtsGetAssessmentsRequestResponse$inboundSchema: z.ZodType<
 
 /** @internal */
 export type AtsGetAssessmentsRequestResponse$Outbound = {
-  AssessmentsResultsResult?:
-    | shared.AssessmentsResultsResult$Outbound
-    | undefined;
+  AssessmentsOrderResult?: shared.AssessmentsOrderResult$Outbound | undefined;
   ContentType: string;
   StatusCode: number;
   RawResponse: never;
@@ -160,7 +158,7 @@ export const AtsGetAssessmentsRequestResponse$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   AtsGetAssessmentsRequestResponse
 > = z.object({
-  assessmentsResultsResult: shared.AssessmentsResultsResult$outboundSchema
+  assessmentsOrderResult: shared.AssessmentsOrderResult$outboundSchema
     .optional(),
   contentType: z.string(),
   statusCode: z.number().int(),
@@ -169,7 +167,7 @@ export const AtsGetAssessmentsRequestResponse$outboundSchema: z.ZodType<
   }),
 }).transform((v) => {
   return remap$(v, {
-    assessmentsResultsResult: "AssessmentsResultsResult",
+    assessmentsOrderResult: "AssessmentsOrderResult",
     contentType: "ContentType",
     statusCode: "StatusCode",
     rawResponse: "RawResponse",

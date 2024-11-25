@@ -4,44 +4,81 @@
 
 ```typescript
 import { AtsGetAssessmentsRequestResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
-import { AssessmentsResultsSchemasValue, AssessmentsResultsValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { AssessmentsOrderSchemasValue, AssessmentsOrderValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: AtsGetAssessmentsRequestResponse = {
-  assessmentsResultsResult: {
+  assessmentsOrderResult: {
     data: {
-      assessmentDate: new Date("2021-01-01T01:01:01.000Z"),
-      assessmentId: "f15aad8e-8db6-4194-8299-a525eb8fc30f",
-      attachments: {
-        contentType: {
-          sourceValue: "Text",
-          value: AssessmentsResultsSchemasValue.Text,
+      application: {
+        applicationStatus: {
+          sourceValue: "Hired",
+          value: AssessmentsOrderValue.Hired,
         },
-        url: "http://example.com/resume.pdf",
+        id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        passthrough: {
+          "other_known_names": "John Doe",
+        },
       },
       candidate: {
+        emails: [
+          {
+            type: "personal",
+            value: "sestier.romain123@gmail.com",
+          },
+        ],
+        firstName: "Romain",
         id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        lastName: "Sestier",
+        passthrough: {
+          "other_known_names": "John Doe",
+        },
         profileUrl: "https://exmaple.com/candidate?id=xyz",
       },
       id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+      job: {
+        hiringTeam: [
+          {
+            email: "john.doe@gmail.com",
+            firstName: "John",
+            lastName: "Doe",
+            role: "Software Engineer",
+            userId: "123456",
+          },
+        ],
+        id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        passthrough: {
+          "other_known_names": "John Doe",
+        },
+        title: "Software Engineer",
+      },
+      package: {
+        description:
+          "Skills test to gauge a candidate's proficiency in job-specific skills",
+        id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        name: "Test 1",
+        type: {
+          sourceValue: "key_responsibilities",
+          value: AssessmentsOrderSchemasValue.Responsibilities,
+        },
+      },
       remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-      result: {
-        sourceValue: "Passed",
-        value: AssessmentsResultsValue.Passed,
+      requester: {
+        emails: [
+          {
+            type: "personal",
+            value: "sestier.romain123@gmail.com",
+          },
+        ],
+        id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+        passthrough: {
+          "other_known_names": "John Doe",
+        },
       },
-      resultUrl: "https://exmaple.com/result?id=xyz",
-      score: {
-        label: "Percentage",
-        max: "100",
-        min: "0",
-        value: "80",
-      },
-      submissionDate: new Date("2021-01-01T01:01:01.000Z"),
-      summary:
-        "Candidate demonstrates strong understanding of core concepts, but struggles with application",
+      resultsUpdateUrl: "https://exmaple.com/integrations/results/update",
     },
   },
   contentType: "<value>",
-  statusCode: 407,
+  statusCode: 404,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),
@@ -50,9 +87,9 @@ let value: AtsGetAssessmentsRequestResponse = {
 
 ## Fields
 
-| Field                                                                                     | Type                                                                                      | Required                                                                                  | Description                                                                               |
-| ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
-| `assessmentsResultsResult`                                                                | [shared.AssessmentsResultsResult](../../../sdk/models/shared/assessmentsresultsresult.md) | :heavy_minus_sign:                                                                        | The assessments order with the given identifier was retrieved.                            |
-| `contentType`                                                                             | *string*                                                                                  | :heavy_check_mark:                                                                        | HTTP response content type for this operation                                             |
-| `statusCode`                                                                              | *number*                                                                                  | :heavy_check_mark:                                                                        | HTTP response status code for this operation                                              |
-| `rawResponse`                                                                             | [Response](https://developer.mozilla.org/en-US/docs/Web/API/Response)                     | :heavy_check_mark:                                                                        | Raw HTTP response; suitable for custom response parsing                                   |
+| Field                                                                                 | Type                                                                                  | Required                                                                              | Description                                                                           |
+| ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| `assessmentsOrderResult`                                                              | [shared.AssessmentsOrderResult](../../../sdk/models/shared/assessmentsorderresult.md) | :heavy_minus_sign:                                                                    | The assessments order with the given identifier was retrieved.                        |
+| `contentType`                                                                         | *string*                                                                              | :heavy_check_mark:                                                                    | HTTP response content type for this operation                                         |
+| `statusCode`                                                                          | *number*                                                                              | :heavy_check_mark:                                                                    | HTTP response status code for this operation                                          |
+| `rawResponse`                                                                         | [Response](https://developer.mozilla.org/en-US/docs/Web/API/Response)                 | :heavy_check_mark:                                                                    | Raw HTTP response; suitable for custom response parsing                               |

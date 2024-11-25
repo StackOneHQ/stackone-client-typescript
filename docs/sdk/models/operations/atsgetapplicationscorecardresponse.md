@@ -31,7 +31,7 @@ let value: AtsGetApplicationScorecardResponse = {
               label: "Problem Solving",
               remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
               required: true,
-              type: FieldType.Number,
+              type: FieldType.SingleSelect,
               values: [
                 "Excellent",
                 "Good",
@@ -48,7 +48,7 @@ let value: AtsGetApplicationScorecardResponse = {
       updatedAt: new Date("2021-01-01T00:00.000Z"),
     },
   },
-  statusCode: 501,
+  statusCode: 302,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

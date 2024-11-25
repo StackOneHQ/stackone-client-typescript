@@ -5,8 +5,7 @@
 ```typescript
 import { ConnectSessionCreateCategories } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: ConnectSessionCreateCategories =
-  ConnectSessionCreateCategories.HrisLegacy;
+let value: ConnectSessionCreateCategories = ConnectSessionCreateCategories.Ats;
 ```
 
 ## Values
