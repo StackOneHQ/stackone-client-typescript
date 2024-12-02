@@ -33,7 +33,7 @@ let value: AtsGetBackgroundCheckResultResponse = {
     summary: "Test is passed",
   },
   contentType: "<value>",
-  statusCode: 505,
+  statusCode: 501,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

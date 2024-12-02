@@ -57,7 +57,7 @@ let value: StackoneGetConnectorMetaResponse = {
     },
   },
   contentType: "<value>",
-  statusCode: 207,
+  statusCode: 303,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

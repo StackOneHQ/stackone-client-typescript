@@ -24,11 +24,9 @@ let value: Campaign = {
         from: "1-555-123-4567",
       },
       messageType: {
-        sourceValue: "Email",
         value: MessageValue.Sms,
       },
       name: "SMS Message",
-      remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
     },
     {
       id: "message-id-2",
@@ -41,11 +39,9 @@ let value: Campaign = {
         subject: "Example Email Subject",
       },
       messageType: {
-        sourceValue: "Email",
         value: MessageValue.Email,
       },
       name: "Email Message",
-      remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
     },
     {
       id: "message-id-3",
@@ -53,11 +49,9 @@ let value: Campaign = {
         body: "This is an example push notification body.",
       },
       messageType: {
-        sourceValue: "Email",
         value: MessageValue.IosPush,
       },
       name: "iOS Push Message",
-      remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
     },
   ],
   remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
@@ -67,7 +61,7 @@ let value: Campaign = {
   },
   status: {
     sourceValue: "Email",
-    value: CampaignSchemasValue.Live,
+    value: CampaignSchemasValue.Archived,
   },
   updatedAt: new Date("2021-01-01T01:01:01.000Z"),
 };

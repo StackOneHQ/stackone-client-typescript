@@ -6,21 +6,21 @@
 import { ConnectSessionTokenAuthLink, ConnectSessionTokenAuthLinkCategories } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: ConnectSessionTokenAuthLink = {
-  authLinkUrl: "https://clean-octave.org/",
+  authLinkUrl: "https://failing-dead.biz/",
   categories: [
     ConnectSessionTokenAuthLinkCategories.Ats,
     ConnectSessionTokenAuthLinkCategories.Hris,
-    ConnectSessionTokenAuthLinkCategories.FileStorage,
+    ConnectSessionTokenAuthLinkCategories.Hris,
     ConnectSessionTokenAuthLinkCategories.Crm,
     ConnectSessionTokenAuthLinkCategories.Iam,
     ConnectSessionTokenAuthLinkCategories.Marketing,
     ConnectSessionTokenAuthLinkCategories.Lms,
-    ConnectSessionTokenAuthLinkCategories.Crm,
-    ConnectSessionTokenAuthLinkCategories.Hris,
+    ConnectSessionTokenAuthLinkCategories.Ats,
+    ConnectSessionTokenAuthLinkCategories.Documents,
   ],
-  createdAt: new Date("2023-12-02T01:59:21.357Z"),
-  id: 4903.05,
-  organizationId: 9894.10,
+  createdAt: new Date("2022-05-07T13:41:56.227Z"),
+  id: 6184.80,
+  organizationId: 9742.56,
   originOwnerId: "<id>",
   originOwnerName: "<value>",
   projectId: "<id>",
@@ -34,7 +34,7 @@ let value: ConnectSessionTokenAuthLink = {
 | --------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
 | `accountId`                                                                                                           | *string*                                                                                                              | :heavy_minus_sign:                                                                                                    | N/A                                                                                                                   |                                                                                                                       |
 | `authLinkUrl`                                                                                                         | *string*                                                                                                              | :heavy_check_mark:                                                                                                    | N/A                                                                                                                   |                                                                                                                       |
-| `categories`                                                                                                          | [shared.ConnectSessionTokenAuthLinkCategories](../../../sdk/models/shared/connectsessiontokenauthlinkcategories.md)[] | :heavy_minus_sign:                                                                                                    | N/A                                                                                                                   | [<br/>"ats",<br/>"hris",<br/>"hrisLegacy",<br/>"crm",<br/>"iam",<br/>"marketing",<br/>"lms",<br/>"stackOne",<br/>"fileStorage"<br/>] |
+| `categories`                                                                                                          | [shared.ConnectSessionTokenAuthLinkCategories](../../../sdk/models/shared/connectsessiontokenauthlinkcategories.md)[] | :heavy_minus_sign:                                                                                                    | N/A                                                                                                                   | [<br/>"ats",<br/>"hris",<br/>"hrisLegacy",<br/>"crm",<br/>"iam",<br/>"marketing",<br/>"lms",<br/>"stackOne",<br/>"documents"<br/>] |
 | `createdAt`                                                                                                           | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)                         | :heavy_check_mark:                                                                                                    | N/A                                                                                                                   |                                                                                                                       |
 | `id`                                                                                                                  | *number*                                                                                                              | :heavy_check_mark:                                                                                                    | N/A                                                                                                                   |                                                                                                                       |
 | `label`                                                                                                               | *string*                                                                                                              | :heavy_minus_sign:                                                                                                    | N/A                                                                                                                   |                                                                                                                       |

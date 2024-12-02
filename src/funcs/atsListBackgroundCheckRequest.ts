@@ -59,7 +59,7 @@ export async function atsListBackgroundCheckRequest(
   const payload = parsed.value;
   const body = null;
 
-  const path = pathToFunc("/unified/ats/background-checks/orders")();
+  const path = pathToFunc("/unified/ats/background_checks/orders")();
 
   const query = queryJoin(
     encodeDeepObjectQuery({

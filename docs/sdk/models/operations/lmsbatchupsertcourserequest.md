@@ -14,17 +14,12 @@ let value: LmsBatchUpsertCourseRequest = {
         categories: [
           {
             name: "Technology",
-            unifiedCustomFields: {
-              "my_project_custom_field_1": "REF-1236",
-              "my_project_custom_field_2": "some other value",
-            },
           },
         ],
         content: [
           {
             contentUrl: "https://www.google.com",
             description: "This is a software engineering course",
-            order: 1,
             title: "Software Engineering",
           },
         ],

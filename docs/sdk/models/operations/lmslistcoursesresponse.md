@@ -14,65 +14,15 @@ let value: LmsListCoursesResponse = {
         active: true,
         categories: [
           {
-            active: true,
             id: "12345",
             name: "Technology",
-            remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-            unifiedCustomFields: {
-              "my_project_custom_field_1": "REF-1236",
-              "my_project_custom_field_2": "some other value",
-            },
           },
         ],
         content: [
           {
-            active: true,
-            categories: [
-              {
-                active: true,
-                id: "12345",
-                name: "Technology",
-                remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-                unifiedCustomFields: {
-                  "my_project_custom_field_1": "REF-1236",
-                  "my_project_custom_field_2": "some other value",
-                },
-              },
-            ],
             contentUrl: "https://www.google.com",
-            courseIds: [
-              "16873-SOFTWARE-ENG-COURSE",
-              "16874-SOFTWARE-ENG-COURSE",
-            ],
-            coverUrl: "https://www.googledrive.com/?v=16873",
             description: "This is a software engineering course",
-            duration: "P3Y6M4DT12H30M5S",
-            externalReference: "SOFTWARE-ENG-LV1-TRAINING-VIDEO-1",
-            id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-            languages: [
-              {
-                value: LanguageEnumValue.EnGB,
-              },
-            ],
-            order: 1,
-            remoteCourseIds: [
-              "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
-              "e3cb75bf-aa84-466e-a6c1-b8322b257a49",
-            ],
-            remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-            skills: [
-              {
-                active: true,
-                id: "12345",
-                name: "Sales Techniques",
-                remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-              },
-            ],
             title: "Software Engineering",
-            unifiedCustomFields: {
-              "my_project_custom_field_1": "REF-1236",
-              "my_project_custom_field_2": "some other value",
-            },
           },
         ],
         contentIds: [
@@ -98,10 +48,8 @@ let value: LmsListCoursesResponse = {
         remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         skills: [
           {
-            active: true,
             id: "12345",
             name: "Sales Techniques",
-            remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
           },
         ],
         title: "Software Engineer Lv 1",
@@ -114,7 +62,7 @@ let value: LmsListCoursesResponse = {
       },
     ],
   },
-  statusCode: 408,
+  statusCode: 202,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

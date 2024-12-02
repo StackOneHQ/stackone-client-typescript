@@ -154,7 +154,7 @@ actions:
                   Categories.Marketing,
                   Categories.Lms,
                   Categories.Ats,
-                  Categories.Lms,
+                  Categories.Documents,
                 ],
                 originOwnerId: "<id>",
                 originOwnerName: "<value>",
@@ -281,7 +281,7 @@ actions:
           label: ats_create_application
           source: |-
             import { StackOne } from "@stackone/stackone-client-ts";
-            import { AtsCreateApplicationRequestDtoValue, CreateAnswerValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+            import { AtsCreateApplicationRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
             const stackOne = new StackOne({
               security: {
@@ -309,10 +309,6 @@ actions:
                       answers: [
                         {
                           id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-                          type: {
-                            value: CreateAnswerValue.ShortText,
-                            sourceValue: "Short Text",
-                          },
                           values: [
                             "Yes",
                             "No Travel",
@@ -945,7 +941,7 @@ actions:
             }
 
             run();
-  - target: $["paths"]["/unified/ats/background-checks/orders"]["get"]
+  - target: $["paths"]["/unified/ats/background_checks/orders"]["get"]
     update:
       x-codeSamples:
         - lang: typescript
@@ -975,7 +971,7 @@ actions:
             }
 
             run();
-  - target: $["paths"]["/unified/ats/background-checks/orders/{id}"]["get"]
+  - target: $["paths"]["/unified/ats/background_checks/orders/{id}"]["get"]
     update:
       x-codeSamples:
         - lang: typescript
@@ -1002,7 +998,7 @@ actions:
             }
 
             run();
-  - target: $["paths"]["/unified/ats/background-checks/orders/{id}/results"]["get"]
+  - target: $["paths"]["/unified/ats/background_checks/orders/{id}/results"]["get"]
     update:
       x-codeSamples:
         - lang: typescript
@@ -1029,7 +1025,7 @@ actions:
             }
 
             run();
-  - target: $["paths"]["/unified/ats/background-checks/packages"]["get"]
+  - target: $["paths"]["/unified/ats/background_checks/packages"]["get"]
     update:
       x-codeSamples:
         - lang: typescript
@@ -1059,7 +1055,7 @@ actions:
             }
 
             run();
-  - target: $["paths"]["/unified/ats/background-checks/packages"]["post"]
+  - target: $["paths"]["/unified/ats/background_checks/packages"]["post"]
     update:
       x-codeSamples:
         - lang: typescript
@@ -1110,7 +1106,7 @@ actions:
             }
 
             run();
-  - target: $["paths"]["/unified/ats/background-checks/packages/{id}"]["get"]
+  - target: $["paths"]["/unified/ats/background_checks/packages/{id}"]["get"]
     update:
       x-codeSamples:
         - lang: typescript
@@ -1154,7 +1150,7 @@ actions:
 
             async function run() {
               const result = await stackOne.ats.listCandidates({
-                fields: "id,remote_id,name,first_name,last_name,email,emails,social_links,phone,phone_numbers,company,title,application_ids,remote_application_ids,hired_at,custom_fields,created_at,updated_at",
+                fields: "id,remote_id,name,first_name,last_name,email,emails,social_links,phone,phone_numbers,company,country,title,application_ids,remote_application_ids,hired_at,custom_fields,created_at,updated_at",
                 filter: {
                   updatedAfter: "2020-01-01T00:00:00.000Z",
                 },
@@ -1245,7 +1241,7 @@ actions:
             async function run() {
               const result = await stackOne.ats.getCandidate({
                 id: "<id>",
-                fields: "id,remote_id,name,first_name,last_name,email,emails,social_links,phone,phone_numbers,company,title,application_ids,remote_application_ids,hired_at,custom_fields,created_at,updated_at",
+                fields: "id,remote_id,name,first_name,last_name,email,emails,social_links,phone,phone_numbers,company,country,title,application_ids,remote_application_ids,hired_at,custom_fields,created_at,updated_at",
                 include: "custom_fields",
                 xAccountId: "<id>",
               });
@@ -1375,7 +1371,6 @@ actions:
           label: ats_create_candidate_note
           source: |-
             import { StackOne } from "@stackone/stackone-client-ts";
-            import { AtsCreateNotesRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
             const stackOne = new StackOne({
               security: {
@@ -1395,10 +1390,6 @@ actions:
                     },
                   ],
                   authorId: "1234567890",
-                  visibility: {
-                    value: AtsCreateNotesRequestDtoValue.Public,
-                    sourceValue: "Public",
-                  },
                   passthrough: {
                     "other_known_names": "John Doe",
                   },
@@ -3052,7 +3043,7 @@ actions:
 
             async function run() {
               const result = await stackOne.hris.listEmployees({
-                fields: "id,remote_id,first_name,last_name,name,display_name,gender,ethnicity,date_of_birth,birthday,marital_status,avatar_url,avatar,personal_email,personal_phone_number,work_email,work_phone_number,job_id,remote_job_id,job_title,job_description,department_id,remote_department_id,department,cost_centers,benefits,manager_id,remote_manager_id,hire_date,start_date,tenure,work_anniversary,employment_type,employment_contract_type,employment_status,termination_date,company_name,preferred_language,citizenships,home_location,work_location,employments,custom_fields,documents,created_at,updated_at,employee_number,national_identity_number",
+                fields: "id,remote_id,first_name,last_name,name,display_name,gender,ethnicity,date_of_birth,birthday,marital_status,avatar_url,avatar,personal_email,personal_phone_number,work_email,work_phone_number,job_id,remote_job_id,job_title,job_description,department_id,remote_department_id,department,cost_centers,benefits,company,manager_id,remote_manager_id,hire_date,start_date,tenure,work_anniversary,employment_type,employment_contract_type,employment_status,termination_date,company_name,preferred_language,citizenships,home_location,work_location,employments,custom_fields,documents,created_at,updated_at,employee_number,national_identity_number",
                 filter: {
                   updatedAfter: "2020-01-01T00:00:00.000Z",
                 },
@@ -3077,14 +3068,9 @@ actions:
           source: |-
             import { StackOne } from "@stackone/stackone-client-ts";
             import {
-              CreateEmploymentApiModelSchemasEmploymentTypeValue,
-              CreateEmploymentApiModelSchemasValue,
-              CreateEmploymentApiModelValue,
-              HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue,
               HrisCreateEmployeeRequestDtoSchemasHomeLocationValue,
               HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberCountryValue,
               HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberValue,
-              HrisCreateEmployeeRequestDtoSchemasValue,
               HrisCreateEmployeeRequestDtoSchemasWorkLocationValue,
               Value,
             } from "@stackone/stackone-client-ts/sdk/models/shared";
@@ -3114,25 +3100,12 @@ actions:
                   departmentId: "3093",
                   department: "Physics",
                   managerId: "67890",
-                  gender: {},
-                  preferredLanguage: {
-                    value: HrisCreateEmployeeRequestDtoSchemasValue.Eng,
-                  },
-                  ethnicity: {},
                   dateOfBirth: new Date("1990-01-01T00:00.000Z"),
                   birthday: new Date("2021-01-01T00:00:00Z"),
-                  maritalStatus: {},
-                  avatar: {},
                   hireDate: new Date("2021-01-01T00:00.000Z"),
                   startDate: new Date("2021-01-01T00:00.000Z"),
                   tenure: 2,
                   workAnniversary: new Date("2021-01-01T00:00:00Z"),
-                  employmentType: {
-                    value: HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue.Permanent,
-                    sourceValue: "Permanent",
-                  },
-                  employmentContractType: {},
-                  employmentStatus: {},
                   terminationDate: new Date("2021-01-01T00:00:00Z"),
                   companyName: "Example Corp",
                   citizenships: [
@@ -3150,20 +3123,11 @@ actions:
                       employeeId: "1687-3",
                       jobTitle: "Software Engineer",
                       payRate: "40.00",
-                      payPeriod: {
-                        value: CreateEmploymentApiModelValue.Hour,
-                        sourceValue: "Hour",
-                      },
-                      payFrequency: {
-                        value: CreateEmploymentApiModelSchemasValue.Hourly,
-                        sourceValue: "Hourly",
-                      },
+                      payPeriod: {},
+                      payFrequency: {},
                       payCurrency: "USD",
                       effectiveDate: new Date("2021-01-01T01:01:01.000Z"),
-                      employmentType: {
-                        value: CreateEmploymentApiModelSchemasEmploymentTypeValue.Permanent,
-                        sourceValue: "Permanent",
-                      },
+                      employmentType: {},
                       employmentContractType: {},
                       timeWorked: "P0Y0M0DT8H0M0S",
                     },
@@ -3243,7 +3207,6 @@ actions:
                     passthrough: {
                       "other_known_names": "John Doe",
                     },
-                    state: {},
                   },
                   workLocation: {
                     id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
@@ -3259,7 +3222,6 @@ actions:
                     passthrough: {
                       "other_known_names": "John Doe",
                     },
-                    state: {},
                   },
                   passthrough: {
                     "other_known_names": "John Doe",
@@ -3290,7 +3252,7 @@ actions:
             async function run() {
               const result = await stackOne.hris.getEmployee({
                 id: "<id>",
-                fields: "id,remote_id,first_name,last_name,name,display_name,gender,ethnicity,date_of_birth,birthday,marital_status,avatar_url,avatar,personal_email,personal_phone_number,work_email,work_phone_number,job_id,remote_job_id,job_title,job_description,department_id,remote_department_id,department,cost_centers,benefits,manager_id,remote_manager_id,hire_date,start_date,tenure,work_anniversary,employment_type,employment_contract_type,employment_status,termination_date,company_name,preferred_language,citizenships,home_location,work_location,employments,custom_fields,documents,created_at,updated_at,employee_number,national_identity_number",
+                fields: "id,remote_id,first_name,last_name,name,display_name,gender,ethnicity,date_of_birth,birthday,marital_status,avatar_url,avatar,personal_email,personal_phone_number,work_email,work_phone_number,job_id,remote_job_id,job_title,job_description,department_id,remote_department_id,department,cost_centers,benefits,company,manager_id,remote_manager_id,hire_date,start_date,tenure,work_anniversary,employment_type,employment_contract_type,employment_status,termination_date,company_name,preferred_language,citizenships,home_location,work_location,employments,custom_fields,documents,created_at,updated_at,employee_number,national_identity_number",
                 expand: "company,employments,work_location,home_location,custom_fields,groups",
                 include: "avatar_url,avatar,custom_fields,job_description,benefits",
                 xAccountId: "<id>",
@@ -3309,14 +3271,9 @@ actions:
           source: |-
             import { StackOne } from "@stackone/stackone-client-ts";
             import {
-              CreateEmploymentApiModelSchemasEmploymentTypeValue,
-              CreateEmploymentApiModelSchemasValue,
-              CreateEmploymentApiModelValue,
-              HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue,
               HrisCreateEmployeeRequestDtoSchemasHomeLocationValue,
               HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberCountryValue,
               HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberValue,
-              HrisCreateEmployeeRequestDtoSchemasValue,
               HrisCreateEmployeeRequestDtoSchemasWorkLocationValue,
               Value,
             } from "@stackone/stackone-client-ts/sdk/models/shared";
@@ -3347,25 +3304,12 @@ actions:
                   departmentId: "3093",
                   department: "Physics",
                   managerId: "67890",
-                  gender: {},
-                  preferredLanguage: {
-                    value: HrisCreateEmployeeRequestDtoSchemasValue.Eng,
-                  },
-                  ethnicity: {},
                   dateOfBirth: new Date("1990-01-01T00:00.000Z"),
                   birthday: new Date("2021-01-01T00:00:00Z"),
-                  maritalStatus: {},
-                  avatar: {},
                   hireDate: new Date("2021-01-01T00:00.000Z"),
                   startDate: new Date("2021-01-01T00:00.000Z"),
                   tenure: 2,
                   workAnniversary: new Date("2021-01-01T00:00:00Z"),
-                  employmentType: {
-                    value: HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue.Permanent,
-                    sourceValue: "Permanent",
-                  },
-                  employmentContractType: {},
-                  employmentStatus: {},
                   terminationDate: new Date("2021-01-01T00:00:00Z"),
                   companyName: "Example Corp",
                   citizenships: [
@@ -3383,21 +3327,8 @@ actions:
                       employeeId: "1687-3",
                       jobTitle: "Software Engineer",
                       payRate: "40.00",
-                      payPeriod: {
-                        value: CreateEmploymentApiModelValue.Hour,
-                        sourceValue: "Hour",
-                      },
-                      payFrequency: {
-                        value: CreateEmploymentApiModelSchemasValue.Hourly,
-                        sourceValue: "Hourly",
-                      },
                       payCurrency: "USD",
                       effectiveDate: new Date("2021-01-01T01:01:01.000Z"),
-                      employmentType: {
-                        value: CreateEmploymentApiModelSchemasEmploymentTypeValue.Permanent,
-                        sourceValue: "Permanent",
-                      },
-                      employmentContractType: {},
                       timeWorked: "P0Y0M0DT8H0M0S",
                     },
                   ],
@@ -3444,7 +3375,6 @@ actions:
                     passthrough: {
                       "other_known_names": "John Doe",
                     },
-                    state: {},
                   },
                   workLocation: {
                     id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
@@ -3460,7 +3390,6 @@ actions:
                     passthrough: {
                       "other_known_names": "John Doe",
                     },
-                    state: {},
                   },
                   passthrough: {
                     "other_known_names": "John Doe",
@@ -3513,7 +3442,6 @@ actions:
             import { StackOne } from "@stackone/stackone-client-ts";
             import {
               HrisDocumentsUploadRequestDtoSchemasConfidentialValue,
-              HrisDocumentsUploadRequestDtoSchemasValue,
               HrisDocumentsUploadRequestDtoValue,
             } from "@stackone/stackone-client-ts/sdk/models/shared";
 
@@ -3537,10 +3465,6 @@ actions:
                   content: "VGhpcyBpc24ndCByZWFsbHkgYSBzYW1wbGUgZmlsZSwgYnV0IG5vIG9uZSB3aWxsIGV2ZXIga25vdyE",
                   categoryId: "6530",
                   path: "/path/to/file",
-                  category: {
-                    value: HrisDocumentsUploadRequestDtoSchemasValue.UnmappedValue,
-                    sourceValue: "550e8400-e29b-41d4-a716-446655440000",
-                  },
                   confidential: {
                     value: HrisDocumentsUploadRequestDtoSchemasConfidentialValue.True,
                     sourceValue: "public",
@@ -3562,7 +3486,6 @@ actions:
             import { StackOne } from "@stackone/stackone-client-ts";
             import {
               HrisDocumentsUploadRequestDtoSchemasConfidentialValue,
-              HrisDocumentsUploadRequestDtoSchemasValue,
               HrisDocumentsUploadRequestDtoValue,
             } from "@stackone/stackone-client-ts/sdk/models/shared";
 
@@ -3588,10 +3511,7 @@ actions:
                       content: "VGhpcyBpc24ndCByZWFsbHkgYSBzYW1wbGUgZmlsZSwgYnV0IG5vIG9uZSB3aWxsIGV2ZXIga25vdyE",
                       categoryId: "6530",
                       path: "/path/to/file",
-                      category: {
-                        value: HrisDocumentsUploadRequestDtoSchemasValue.Academic,
-                        sourceValue: "550e8400-e29b-41d4-a716-446655440000",
-                      },
+                      category: {},
                       confidential: {
                         value: HrisDocumentsUploadRequestDtoSchemasConfidentialValue.True,
                         sourceValue: "public",
@@ -3701,11 +3621,6 @@ actions:
           label: hris_create_employee_employment
           source: |-
             import { StackOne } from "@stackone/stackone-client-ts";
-            import {
-              HrisCreateEmploymentRequestDtoSchemasEmploymentTypeValue,
-              HrisCreateEmploymentRequestDtoSchemasValue,
-              HrisCreateEmploymentRequestDtoValue,
-            } from "@stackone/stackone-client-ts/sdk/models/shared";
 
             const stackOne = new StackOne({
               security: {
@@ -3727,21 +3642,8 @@ actions:
                   employeeId: "1687-3",
                   jobTitle: "Software Engineer",
                   payRate: "40.00",
-                  payPeriod: {
-                    value: HrisCreateEmploymentRequestDtoValue.Hour,
-                    sourceValue: "Hour",
-                  },
-                  payFrequency: {
-                    value: HrisCreateEmploymentRequestDtoSchemasValue.Hourly,
-                    sourceValue: "Hourly",
-                  },
                   payCurrency: "USD",
                   effectiveDate: new Date("2021-01-01T01:01:01.000Z"),
-                  employmentType: {
-                    value: HrisCreateEmploymentRequestDtoSchemasEmploymentTypeValue.Permanent,
-                    sourceValue: "Permanent",
-                  },
-                  employmentContractType: {},
                   timeWorked: "P0Y0M0DT8H0M0S",
                   passthrough: {
                     "other_known_names": "John Doe",
@@ -3790,11 +3692,6 @@ actions:
           label: hris_update_employee_employment
           source: |-
             import { StackOne } from "@stackone/stackone-client-ts";
-            import {
-              HrisCreateEmploymentRequestDtoSchemasEmploymentTypeValue,
-              HrisCreateEmploymentRequestDtoSchemasValue,
-              HrisCreateEmploymentRequestDtoValue,
-            } from "@stackone/stackone-client-ts/sdk/models/shared";
 
             const stackOne = new StackOne({
               security: {
@@ -3817,21 +3714,8 @@ actions:
                   employeeId: "1687-3",
                   jobTitle: "Software Engineer",
                   payRate: "40.00",
-                  payPeriod: {
-                    value: HrisCreateEmploymentRequestDtoValue.Hour,
-                    sourceValue: "Hour",
-                  },
-                  payFrequency: {
-                    value: HrisCreateEmploymentRequestDtoSchemasValue.Hourly,
-                    sourceValue: "Hourly",
-                  },
                   payCurrency: "USD",
                   effectiveDate: new Date("2021-01-01T01:01:01.000Z"),
-                  employmentType: {
-                    value: HrisCreateEmploymentRequestDtoSchemasEmploymentTypeValue.Permanent,
-                    sourceValue: "Permanent",
-                  },
-                  employmentContractType: {},
                   timeWorked: "P0Y0M0DT8H0M0S",
                   passthrough: {
                     "other_known_names": "John Doe",
@@ -4000,7 +3884,6 @@ actions:
                     remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
                     name: "My Document",
                     path: "/path/to/file",
-                    category: {},
                     categoryId: "6530",
                     createdAt: new Date("2021-01-01T01:01:01.000Z"),
                     updatedAt: new Date("2021-01-02T01:01:01.000Z"),
@@ -4015,7 +3898,6 @@ actions:
                   },
                   number: "1234567890",
                   subType: "H1B",
-                  type: {},
                   validFrom: new Date("2021-01-01T00:00.000Z"),
                   validTo: new Date("2021-01-01T00:00.000Z"),
                   passthrough: {
@@ -4087,7 +3969,6 @@ actions:
                     remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
                     name: "My Document",
                     path: "/path/to/file",
-                    category: {},
                     categoryId: "6530",
                     createdAt: new Date("2021-01-01T01:01:01.000Z"),
                     updatedAt: new Date("2021-01-02T01:01:01.000Z"),
@@ -4102,7 +3983,6 @@ actions:
                   },
                   number: "1234567890",
                   subType: "H1B",
-                  type: {},
                   validFrom: new Date("2021-01-01T00:00.000Z"),
                   validTo: new Date("2021-01-01T00:00.000Z"),
                   passthrough: {
@@ -5035,17 +4915,11 @@ actions:
                   coverUrl: "https://www.googledrive.com/?v=16873",
                   skills: [
                     {
-                      id: "16873-IT345",
-                      remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
                       name: "Information-Technology",
                     },
                   ],
                   categories: [
                     {
-                      unifiedCustomFields: {
-                        "my_project_custom_field_1": "REF-1236",
-                        "my_project_custom_field_2": "some other value",
-                      },
                       name: "Information-Technology",
                     },
                   ],
@@ -5095,17 +4969,11 @@ actions:
                   coverUrl: "https://www.googledrive.com/?v=16873",
                   skills: [
                     {
-                      id: "16873-IT345",
-                      remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
                       name: "Information-Technology",
                     },
                   ],
                   categories: [
                     {
-                      unifiedCustomFields: {
-                        "my_project_custom_field_1": "REF-1236",
-                        "my_project_custom_field_2": "some other value",
-                      },
                       name: "Information-Technology",
                     },
                   ],
@@ -5252,10 +5120,6 @@ actions:
                   order: 1,
                   categories: [
                     {
-                      unifiedCustomFields: {
-                        "my_project_custom_field_1": "REF-1236",
-                        "my_project_custom_field_2": "some other value",
-                      },
                       name: "Information-Technology",
                     },
                   ],
@@ -5321,10 +5185,6 @@ actions:
                       order: 1,
                       categories: [
                         {
-                          unifiedCustomFields: {
-                            "my_project_custom_field_1": "REF-1236",
-                            "my_project_custom_field_2": "some other value",
-                          },
                           name: "Information-Technology",
                         },
                       ],
@@ -5359,10 +5219,6 @@ actions:
                       order: 1,
                       categories: [
                         {
-                          unifiedCustomFields: {
-                            "my_project_custom_field_1": "REF-1236",
-                            "my_project_custom_field_2": "some other value",
-                          },
                           name: "Information-Technology",
                         },
                       ],
@@ -5484,15 +5340,10 @@ actions:
                       title: "Software Engineer Lv 1",
                       description: "This video acts as learning content for software engineers.",
                       contentUrl: "https://www.youtube.com/watch?v=16873",
-                      order: 1,
                     },
                   ],
                   categories: [
                     {
-                      unifiedCustomFields: {
-                        "my_project_custom_field_1": "REF-1236",
-                        "my_project_custom_field_2": "some other value",
-                      },
                       name: "Information-Technology",
                     },
                   ],
@@ -5557,15 +5408,10 @@ actions:
                           title: "Software Engineer Lv 1",
                           description: "This video acts as learning content for software engineers.",
                           contentUrl: "https://www.youtube.com/watch?v=16873",
-                          order: 1,
                         },
                       ],
                       categories: [
                         {
-                          unifiedCustomFields: {
-                            "my_project_custom_field_1": "REF-1236",
-                            "my_project_custom_field_2": "some other value",
-                          },
                           name: "Information-Technology",
                         },
                       ],
@@ -5605,15 +5451,10 @@ actions:
                           title: "Software Engineer Lv 1",
                           description: "This video acts as learning content for software engineers.",
                           contentUrl: "https://www.youtube.com/watch?v=16873",
-                          order: 1,
                         },
                       ],
                       categories: [
                         {
-                          unifiedCustomFields: {
-                            "my_project_custom_field_1": "REF-1236",
-                            "my_project_custom_field_2": "some other value",
-                          },
                           name: "Information-Technology",
                         },
                       ],

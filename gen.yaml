@@ -11,7 +11,7 @@ generation:
     oAuth2ClientCredentialsEnabled: false
     oAuth2PasswordEnabled: false
 typescript:
-  version: 4.17.2
+  version: 4.17.3
   additionalDependencies:
     dependencies: {}
     devDependencies: {}
@@ -20,6 +20,7 @@ typescript:
   author: StackOne
   clientServerStatusCodesAsErrors: true
   defaultErrorName: SDKError
+  enableReactQuery: false
   enumFormat: enum
   flattenGlobalSecurity: false
   flatteningOrder: body-first

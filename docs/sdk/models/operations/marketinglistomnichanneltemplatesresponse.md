@@ -7,7 +7,7 @@ import { MarketingListOmniChannelTemplatesResponse } from "@stackone/stackone-cl
 
 let value: MarketingListOmniChannelTemplatesResponse = {
   contentType: "<value>",
-  statusCode: 307,
+  statusCode: 103,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

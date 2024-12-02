@@ -4,35 +4,21 @@
 
 ```typescript
 import { HrisUpdateEmployeeEmploymentRequest } from "@stackone/stackone-client-ts/sdk/models/operations";
-import {
-  HrisCreateEmploymentRequestDtoSchemasPayFrequencyValue,
-  HrisCreateEmploymentRequestDtoSchemasPayPeriodValue,
-  HrisCreateEmploymentRequestDtoSchemasValue,
-} from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: HrisUpdateEmployeeEmploymentRequest = {
   hrisCreateEmploymentRequestDto: {
     effectiveDate: new Date("2021-01-01T01:01:01.000Z"),
     employeeId: "1687-3",
     employmentContractType: {},
-    employmentType: {
-      sourceValue: "Permanent",
-      value: HrisCreateEmploymentRequestDtoSchemasValue.Permanent,
-    },
+    employmentType: {},
     id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
     jobTitle: "Software Engineer",
     passthrough: {
       "other_known_names": "John Doe",
     },
     payCurrency: "USD",
-    payFrequency: {
-      sourceValue: "Hourly",
-      value: HrisCreateEmploymentRequestDtoSchemasPayFrequencyValue.Hourly,
-    },
-    payPeriod: {
-      sourceValue: "Hour",
-      value: HrisCreateEmploymentRequestDtoSchemasPayPeriodValue.Hour,
-    },
+    payFrequency: {},
+    payPeriod: {},
     payRate: "40.00",
     timeWorked: "P0Y0M0DT8H0M0S",
     unifiedCustomFields: {

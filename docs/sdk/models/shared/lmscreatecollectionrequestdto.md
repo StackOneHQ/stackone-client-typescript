@@ -9,10 +9,6 @@ let value: LmsCreateCollectionRequestDto = {
   categories: [
     {
       name: "Technology",
-      unifiedCustomFields: {
-        "my_project_custom_field_1": "REF-1236",
-        "my_project_custom_field_2": "some other value",
-      },
     },
   ],
   coverUrl: "https://www.googledrive.com/?v=16873",
@@ -29,9 +25,7 @@ let value: LmsCreateCollectionRequestDto = {
   ],
   skills: [
     {
-      id: "16873-IT345",
       name: "Technology",
-      remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
     },
   ],
   title: "Software Engineer Lv 1 Collection",

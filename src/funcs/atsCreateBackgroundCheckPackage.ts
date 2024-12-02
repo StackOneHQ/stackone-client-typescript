@@ -58,7 +58,7 @@ export async function atsCreateBackgroundCheckPackage(
     { explode: true },
   );
 
-  const path = pathToFunc("/unified/ats/background-checks/packages")();
+  const path = pathToFunc("/unified/ats/background_checks/packages")();
 
   const headers = new Headers({
     "Content-Type": "application/json",

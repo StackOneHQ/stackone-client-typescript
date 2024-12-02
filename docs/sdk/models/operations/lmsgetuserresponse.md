@@ -7,7 +7,7 @@ import { LmsGetUserResponse } from "@stackone/stackone-client-ts/sdk/models/oper
 
 let value: LmsGetUserResponse = {
   contentType: "<value>",
-  statusCode: 102,
+  statusCode: 103,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

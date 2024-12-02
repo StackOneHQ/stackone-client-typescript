@@ -5,12 +5,9 @@ The pay period
 ## Example Usage
 
 ```typescript
-import { EmploymentPayPeriod, EmploymentSchemasPayPeriodValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { EmploymentPayPeriod } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: EmploymentPayPeriod = {
-  sourceValue: "Hour",
-  value: EmploymentSchemasPayPeriodValue.Hour,
-};
+let value: EmploymentPayPeriod = {};
 ```
 
 ## Fields

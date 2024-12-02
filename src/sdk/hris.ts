@@ -536,7 +536,9 @@ export class Hris extends ClientSDK {
   async listEmployees(
     request: operations.HrisListEmployeesRequest,
     options?: RequestOptions,
-  ): Promise<PageIterator<operations.HrisListEmployeesResponse>> {
+  ): Promise<
+    PageIterator<operations.HrisListEmployeesResponse, { cursor: string }>
+  > {
     return unwrapResultIterator(hrisListEmployees(
       this,
       request,

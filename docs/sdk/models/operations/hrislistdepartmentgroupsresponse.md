@@ -4,7 +4,6 @@
 
 ```typescript
 import { HrisListDepartmentGroupsResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
-import { HRISDepartmentValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: HrisListDepartmentGroupsResponse = {
   contentType: "<value>",
@@ -30,9 +29,7 @@ let value: HrisListDepartmentGroupsResponse = {
           "652434",
           "6437241",
         ],
-        type: {
-          value: HRISDepartmentValue.Department,
-        },
+        type: {},
         unifiedCustomFields: {
           "my_project_custom_field_1": "REF-1236",
           "my_project_custom_field_2": "some other value",
@@ -40,7 +37,7 @@ let value: HrisListDepartmentGroupsResponse = {
       },
     ],
   },
-  statusCode: 205,
+  statusCode: 303,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

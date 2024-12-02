@@ -32,7 +32,7 @@ let value: AtsListListsResponse = {
       },
     ],
   },
-  statusCode: 508,
+  statusCode: 204,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

@@ -5,18 +5,11 @@
 ```typescript
 import {
   CountryCodeEnumValue,
-  EmployeeSchemasEmploymentTypeValue,
-  EmployeeSchemasHomeLocationLocationTypeValue,
   EmployeeSchemasHomeLocationValue,
   EmployeeSchemasNationalIdentityNumberTypeValue,
   EmployeeSchemasNationalIdentityNumberValue,
-  EmployeeSchemasPreferredLanguageValue,
-  EmployeeSchemasWorkLocationLocationTypeValue,
   EmployeeSchemasWorkLocationValue,
   EmployeesPaginated,
-  EmploymentSchemasPayFrequencyValue,
-  EmploymentSchemasPayPeriodValue,
-  EmploymentSchemasValue,
   HRISGroupValue,
 } from "@stackone/stackone-client-ts/sdk/models/shared";
 
@@ -81,31 +74,19 @@ let value: EmployeesPaginated = {
       employeeNumber: "125",
       employmentContractType: {},
       employmentStatus: {},
-      employmentType: {
-        sourceValue: "Permanent",
-        value: EmployeeSchemasEmploymentTypeValue.Permanent,
-      },
+      employmentType: {},
       employments: [
         {
           createdAt: new Date("2021-01-01T01:01:01.000Z"),
           effectiveDate: new Date("2021-01-01T01:01:01.000Z"),
           employeeId: "1687-3",
           employmentContractType: {},
-          employmentType: {
-            sourceValue: "Permanent",
-            value: EmploymentSchemasValue.Permanent,
-          },
+          employmentType: {},
           id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
           jobTitle: "Software Engineer",
           payCurrency: "USD",
-          payFrequency: {
-            sourceValue: "Hourly",
-            value: EmploymentSchemasPayFrequencyValue.Hourly,
-          },
-          payPeriod: {
-            sourceValue: "Hour",
-            value: EmploymentSchemasPayPeriodValue.Hour,
-          },
+          payFrequency: {},
+          payPeriod: {},
           payRate: "40.00",
           remoteEmployeeId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
           remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
@@ -159,10 +140,7 @@ let value: EmployeesPaginated = {
         createdAt: new Date("2021-01-01T01:01:01.000Z"),
         employeeId: "1687-3",
         id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-        locationType: {
-          sourceValue: "Home",
-          value: EmployeeSchemasHomeLocationLocationTypeValue.Home,
-        },
+        locationType: {},
         name: "Woolsthorpe Manor",
         phoneNumber: "+44 1476 860 364",
         remoteEmployeeId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
@@ -178,9 +156,7 @@ let value: EmployeesPaginated = {
         zipCode: "NG33 5NR",
       },
       id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-      jobDescription: {
-        text: "Testing the laws of motion",
-      },
+      jobDescription: {},
       jobId: "5290",
       jobTitle: "Physicist",
       lastName: "Newton",
@@ -198,9 +174,7 @@ let value: EmployeesPaginated = {
       },
       personalEmail: "isaac.newton@example.com",
       personalPhoneNumber: "+1234567890",
-      preferredLanguage: {
-        value: EmployeeSchemasPreferredLanguageValue.Eng,
-      },
+      preferredLanguage: {},
       remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
       remoteManagerId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
       startDate: new Date("2021-01-01T00:00.000Z"),
@@ -221,10 +195,7 @@ let value: EmployeesPaginated = {
         createdAt: new Date("2021-01-01T01:01:01.000Z"),
         employeeId: "1687-3",
         id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-        locationType: {
-          sourceValue: "Home",
-          value: EmployeeSchemasWorkLocationLocationTypeValue.Home,
-        },
+        locationType: {},
         name: "Woolsthorpe Manor",
         phoneNumber: "+44 1476 860 364",
         remoteEmployeeId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",

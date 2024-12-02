@@ -13,14 +13,8 @@ let value: LmsListContentResponse = {
         active: true,
         categories: [
           {
-            active: true,
             id: "12345",
             name: "Technology",
-            remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-            unifiedCustomFields: {
-              "my_project_custom_field_1": "REF-1236",
-              "my_project_custom_field_2": "some other value",
-            },
           },
         ],
         contentUrl: "https://www.youtube.com/watch?v=16873",
@@ -47,10 +41,8 @@ let value: LmsListContentResponse = {
         remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         skills: [
           {
-            active: true,
             id: "12345",
             name: "Sales Techniques",
-            remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
           },
         ],
         title: "Software Engineer Lv 1",
@@ -62,7 +54,7 @@ let value: LmsListContentResponse = {
     ],
   },
   contentType: "<value>",
-  statusCode: 306,
+  statusCode: 100,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

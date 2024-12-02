@@ -57,10 +57,6 @@ async function run() {
           categories: [
             {
               name: "Technology",
-              unifiedCustomFields: {
-                "my_project_custom_field_1": "REF-1236",
-                "my_project_custom_field_2": "some other value",
-              },
             },
           ],
           contentUrl: "https://www.youtube.com/watch?v=16873",
@@ -129,10 +125,6 @@ async function run() {
           categories: [
             {
               name: "Technology",
-              unifiedCustomFields: {
-                "my_project_custom_field_1": "REF-1236",
-                "my_project_custom_field_2": "some other value",
-              },
             },
           ],
           contentUrl: "https://www.youtube.com/watch?v=16873",
@@ -225,17 +217,12 @@ async function run() {
           categories: [
             {
               name: "Information-Technology",
-              unifiedCustomFields: {
-                "my_project_custom_field_1": "REF-1236",
-                "my_project_custom_field_2": "some other value",
-              },
             },
           ],
           content: [
             {
               contentUrl: "https://www.youtube.com/watch?v=16873",
               description: "This video acts as learning content for software engineers.",
-              order: 1,
               title: "Software Engineer Lv 1",
             },
           ],
@@ -273,17 +260,12 @@ async function run() {
           categories: [
             {
               name: "Information-Technology",
-              unifiedCustomFields: {
-                "my_project_custom_field_1": "REF-1236",
-                "my_project_custom_field_2": "some other value",
-              },
             },
           ],
           content: [
             {
               contentUrl: "https://www.youtube.com/watch?v=16873",
               description: "This video acts as learning content for software engineers.",
-              order: 1,
               title: "Software Engineer Lv 1",
             },
           ],
@@ -352,17 +334,12 @@ async function run() {
           categories: [
             {
               name: "Information-Technology",
-              unifiedCustomFields: {
-                "my_project_custom_field_1": "REF-1236",
-                "my_project_custom_field_2": "some other value",
-              },
             },
           ],
           content: [
             {
               contentUrl: "https://www.youtube.com/watch?v=16873",
               description: "This video acts as learning content for software engineers.",
-              order: 1,
               title: "Software Engineer Lv 1",
             },
           ],
@@ -400,17 +377,12 @@ async function run() {
           categories: [
             {
               name: "Information-Technology",
-              unifiedCustomFields: {
-                "my_project_custom_field_1": "REF-1236",
-                "my_project_custom_field_2": "some other value",
-              },
             },
           ],
           content: [
             {
               contentUrl: "https://www.youtube.com/watch?v=16873",
               description: "This video acts as learning content for software engineers.",
-              order: 1,
               title: "Software Engineer Lv 1",
             },
           ],
@@ -499,10 +471,6 @@ async function run() {
       categories: [
         {
           name: "Information-Technology",
-          unifiedCustomFields: {
-            "my_project_custom_field_1": "REF-1236",
-            "my_project_custom_field_2": "some other value",
-          },
         },
       ],
       coverUrl: "https://www.googledrive.com/?v=16873",
@@ -518,9 +486,7 @@ async function run() {
       ],
       skills: [
         {
-          id: "16873-IT345",
           name: "Information-Technology",
-          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         },
       ],
       title: "Software Engineer Lv 1 Collection",
@@ -562,10 +528,6 @@ async function run() {
       categories: [
         {
           name: "Information-Technology",
-          unifiedCustomFields: {
-            "my_project_custom_field_1": "REF-1236",
-            "my_project_custom_field_2": "some other value",
-          },
         },
       ],
       coverUrl: "https://www.googledrive.com/?v=16873",
@@ -581,9 +543,7 @@ async function run() {
       ],
       skills: [
         {
-          id: "16873-IT345",
           name: "Information-Technology",
-          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         },
       ],
       title: "Software Engineer Lv 1 Collection",
@@ -2365,10 +2325,6 @@ async function run() {
       categories: [
         {
           name: "Information-Technology",
-          unifiedCustomFields: {
-            "my_project_custom_field_1": "REF-1236",
-            "my_project_custom_field_2": "some other value",
-          },
         },
       ],
       coverUrl: "https://www.googledrive.com/?v=16873",
@@ -2384,9 +2340,7 @@ async function run() {
       ],
       skills: [
         {
-          id: "16873-IT345",
           name: "Information-Technology",
-          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         },
       ],
       title: "Software Engineer Lv 1 Collection",
@@ -2429,10 +2383,6 @@ async function run() {
       categories: [
         {
           name: "Information-Technology",
-          unifiedCustomFields: {
-            "my_project_custom_field_1": "REF-1236",
-            "my_project_custom_field_2": "some other value",
-          },
         },
       ],
       coverUrl: "https://www.googledrive.com/?v=16873",
@@ -2448,9 +2398,7 @@ async function run() {
       ],
       skills: [
         {
-          id: "16873-IT345",
           name: "Information-Technology",
-          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         },
       ],
       title: "Software Engineer Lv 1 Collection",
@@ -2519,10 +2467,6 @@ async function run() {
       categories: [
         {
           name: "Information-Technology",
-          unifiedCustomFields: {
-            "my_project_custom_field_1": "REF-1236",
-            "my_project_custom_field_2": "some other value",
-          },
         },
       ],
       contentUrl: "https://www.youtube.com/watch?v=16873",
@@ -2587,10 +2531,6 @@ async function run() {
       categories: [
         {
           name: "Information-Technology",
-          unifiedCustomFields: {
-            "my_project_custom_field_1": "REF-1236",
-            "my_project_custom_field_2": "some other value",
-          },
         },
       ],
       contentUrl: "https://www.youtube.com/watch?v=16873",
@@ -2679,17 +2619,12 @@ async function run() {
       categories: [
         {
           name: "Information-Technology",
-          unifiedCustomFields: {
-            "my_project_custom_field_1": "REF-1236",
-            "my_project_custom_field_2": "some other value",
-          },
         },
       ],
       content: [
         {
           contentUrl: "https://www.youtube.com/watch?v=16873",
           description: "This video acts as learning content for software engineers.",
-          order: 1,
           title: "Software Engineer Lv 1",
         },
       ],
@@ -2754,17 +2689,12 @@ async function run() {
       categories: [
         {
           name: "Information-Technology",
-          unifiedCustomFields: {
-            "my_project_custom_field_1": "REF-1236",
-            "my_project_custom_field_2": "some other value",
-          },
         },
       ],
       content: [
         {
           contentUrl: "https://www.youtube.com/watch?v=16873",
           description: "This video acts as learning content for software engineers.",
-          order: 1,
           title: "Software Engineer Lv 1",
         },
       ],

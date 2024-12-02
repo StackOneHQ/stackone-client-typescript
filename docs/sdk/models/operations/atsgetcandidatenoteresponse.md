@@ -4,7 +4,6 @@
 
 ```typescript
 import { AtsGetCandidateNoteResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
-import { NoteValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: AtsGetCandidateNoteResponse = {
   contentType: "<value>",
@@ -26,13 +25,10 @@ let value: AtsGetCandidateNoteResponse = {
         "my_project_custom_field_2": "some other value",
       },
       updatedAt: new Date("2021-01-01T01:01:01.000Z"),
-      visibility: {
-        sourceValue: "Public",
-        value: NoteValue.Public,
-      },
+      visibility: {},
     },
   },
-  statusCode: 201,
+  statusCode: 401,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

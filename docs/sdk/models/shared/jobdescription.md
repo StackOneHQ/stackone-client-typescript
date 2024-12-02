@@ -7,9 +7,7 @@ The employee job description
 ```typescript
 import { JobDescription } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: JobDescription = {
-  text: "Testing the laws of motion",
-};
+let value: JobDescription = {};
 ```
 
 ## Fields

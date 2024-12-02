@@ -5,12 +5,9 @@ The location type
 ## Example Usage
 
 ```typescript
-import { EmployeeSchemasLocationType, EmployeeSchemasWorkLocationLocationTypeValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { EmployeeSchemasLocationType } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: EmployeeSchemasLocationType = {
-  sourceValue: "Home",
-  value: EmployeeSchemasWorkLocationLocationTypeValue.Home,
-};
+let value: EmployeeSchemasLocationType = {};
 ```
 
 ## Fields
