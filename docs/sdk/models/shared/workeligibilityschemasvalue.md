@@ -5,8 +5,7 @@
 ```typescript
 import { WorkEligibilitySchemasValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: WorkEligibilitySchemasValue =
-  WorkEligibilitySchemasValue.BirthCertificate;
+let value: WorkEligibilitySchemasValue = WorkEligibilitySchemasValue.Visa;
 ```
 
 ## Values

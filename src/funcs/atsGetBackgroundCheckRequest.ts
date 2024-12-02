@@ -66,7 +66,7 @@ export async function atsGetBackgroundCheckRequest(
     }),
   };
 
-  const path = pathToFunc("/unified/ats/background-checks/orders/{id}")(
+  const path = pathToFunc("/unified/ats/background_checks/orders/{id}")(
     pathParams,
   );
 

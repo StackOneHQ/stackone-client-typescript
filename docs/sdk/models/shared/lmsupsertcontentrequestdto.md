@@ -10,10 +10,6 @@ let value: LmsUpsertContentRequestDto = {
   categories: [
     {
       name: "Technology",
-      unifiedCustomFields: {
-        "my_project_custom_field_1": "REF-1236",
-        "my_project_custom_field_2": "some other value",
-      },
     },
   ],
   contentUrl: "https://www.youtube.com/watch?v=16873",

@@ -4,7 +4,6 @@
 
 ```typescript
 import {
-  AnswerValue,
   ApplicationResult,
   ApplicationValue,
   AtsDocumentApiModelValue,
@@ -97,18 +96,13 @@ let value: ApplicationResult = {
         answers: [
           {
             id: "answer1",
-            remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-            type: {
-              sourceValue: "Short Text",
-              value: AnswerValue.ShortText,
-            },
+            type: {},
             values: [
               "Yes",
             ],
           },
         ],
         id: "right_to_work",
-        remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
       },
     ],
     rejectedAt: new Date("2021-01-01T01:01:01.000Z"),

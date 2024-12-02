@@ -4,7 +4,7 @@
 
 ```typescript
 import { AtsCreateApplicationRequest } from "@stackone/stackone-client-ts/sdk/models/operations";
-import { AtsCreateApplicationRequestDtoValue, CreateAnswerValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { AtsCreateApplicationRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: AtsCreateApplicationRequest = {
   atsCreateApplicationRequestDto: {
@@ -57,10 +57,7 @@ let value: AtsCreateApplicationRequest = {
         answers: [
           {
             id: "answer1",
-            type: {
-              sourceValue: "Short Text",
-              value: CreateAnswerValue.ShortText,
-            },
+            type: {},
             values: [
               "Yes",
             ],

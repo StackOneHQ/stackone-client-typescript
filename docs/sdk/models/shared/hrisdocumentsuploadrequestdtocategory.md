@@ -5,12 +5,9 @@ The category to be associated with the file to be uploaded. Id will take precede
 ## Example Usage
 
 ```typescript
-import { HrisDocumentsUploadRequestDtoCategory, HrisDocumentsUploadRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { HrisDocumentsUploadRequestDtoCategory } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: HrisDocumentsUploadRequestDtoCategory = {
-  sourceValue: "550e8400-e29b-41d4-a716-446655440000",
-  value: HrisDocumentsUploadRequestDtoValue.Benefit,
-};
+let value: HrisDocumentsUploadRequestDtoCategory = {};
 ```
 
 ## Fields

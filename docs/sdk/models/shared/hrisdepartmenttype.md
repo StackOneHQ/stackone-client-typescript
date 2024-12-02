@@ -5,11 +5,9 @@ The type of the department group
 ## Example Usage
 
 ```typescript
-import { HRISDepartmentType, HRISDepartmentValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { HRISDepartmentType } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: HRISDepartmentType = {
-  value: HRISDepartmentValue.Department,
-};
+let value: HRISDepartmentType = {};
 ```
 
 ## Fields

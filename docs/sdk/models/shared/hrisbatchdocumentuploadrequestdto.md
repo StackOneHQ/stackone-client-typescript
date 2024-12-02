@@ -7,16 +7,12 @@ import {
   HrisBatchDocumentUploadRequestDto,
   HrisDocumentsUploadRequestDtoSchemasFileFormatValue,
   HrisDocumentsUploadRequestDtoSchemasValue,
-  HrisDocumentsUploadRequestDtoValue,
 } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: HrisBatchDocumentUploadRequestDto = {
   items: [
     {
-      category: {
-        sourceValue: "550e8400-e29b-41d4-a716-446655440000",
-        value: HrisDocumentsUploadRequestDtoValue.BackgroundCheck,
-      },
+      category: {},
       categoryId: "6530",
       confidential: {
         sourceValue: "public",

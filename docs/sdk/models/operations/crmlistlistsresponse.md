@@ -32,7 +32,7 @@ let value: CrmListListsResponse = {
       },
     ],
   },
-  statusCode: 416,
+  statusCode: 100,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

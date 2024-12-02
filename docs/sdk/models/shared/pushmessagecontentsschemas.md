@@ -13,3 +13,5 @@ let value: PushMessageContentsSchemas = {};
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
 | `body`             | *string*           | :heavy_minus_sign: | N/A                |
+| `subtitle`         | *string*           | :heavy_minus_sign: | N/A                |
+| `title`            | *string*           | :heavy_minus_sign: | N/A                |

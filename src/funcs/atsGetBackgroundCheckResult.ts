@@ -64,7 +64,7 @@ export async function atsGetBackgroundCheckResult(
     }),
   };
 
-  const path = pathToFunc("/unified/ats/background-checks/orders/{id}/results")(
+  const path = pathToFunc("/unified/ats/background_checks/orders/{id}/results")(
     pathParams,
   );
 

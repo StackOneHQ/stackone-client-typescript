@@ -17,7 +17,7 @@ export enum Categories {
   Marketing = "marketing",
   Lms = "lms",
   Stackone = "stackone",
-  FileStorage = "file-storage",
+  Documents = "documents",
 }
 
 export type ConnectSession = {

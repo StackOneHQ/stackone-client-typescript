@@ -54,7 +54,7 @@ let value: CrmUpdateContactResponse = {
     },
   },
   contentType: "<value>",
-  statusCode: 226,
+  statusCode: 416,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

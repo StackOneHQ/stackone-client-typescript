@@ -4,7 +4,6 @@
 
 ```typescript
 import { AtsCreateCandidateNoteRequest } from "@stackone/stackone-client-ts/sdk/models/operations";
-import { AtsCreateNotesRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: AtsCreateCandidateNoteRequest = {
   atsCreateNotesRequestDto: {
@@ -17,10 +16,7 @@ let value: AtsCreateCandidateNoteRequest = {
     passthrough: {
       "other_known_names": "John Doe",
     },
-    visibility: {
-      sourceValue: "Public",
-      value: AtsCreateNotesRequestDtoValue.Public,
-    },
+    visibility: {},
   },
   id: "<id>",
   xAccountId: "<id>",

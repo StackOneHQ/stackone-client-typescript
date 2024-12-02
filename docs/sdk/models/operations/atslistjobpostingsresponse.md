@@ -6,16 +6,11 @@
 import { AtsListJobPostingsResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
 import {
   Internal,
-  JobPostingCompensationSchemasTypeValue,
-  JobPostingCompensationSchemasValue,
-  JobPostingCompensationValue,
-  JobPostingContentSectionValue,
   JobPostingQuestionnaire2,
   JobPostingSchemasStatusValue,
   JobPostingSchemasValue,
   JobPostingValue,
   Question2,
-  QuestionValue,
 } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: AtsListJobPostingsResponse = {
@@ -29,53 +24,22 @@ let value: AtsListJobPostingsResponse = {
             maxValue: "55000",
             minValue: "45000",
             name: "Base Salary",
-            payFrequency: {
-              sourceValue: "Hourly",
-              value: JobPostingCompensationValue.Hourly,
-            },
-            payPeriod: {
-              sourceValue: "Hour",
-              value: JobPostingCompensationSchemasValue.Hour,
-            },
-            type: {
-              sourceValue: "Salary",
-              value: JobPostingCompensationSchemasTypeValue.Salary,
-            },
+            payFrequency: {},
+            payPeriod: {},
+            type: {},
             value: "50000",
           },
           {
             currency: "USD",
             name: "Bonus",
-            payFrequency: {
-              sourceValue: "Hourly",
-              value: JobPostingCompensationValue.Hourly,
-            },
-            payPeriod: {
-              sourceValue: "Hour",
-              value: JobPostingCompensationSchemasValue.Hour,
-            },
-            type: {
-              sourceValue: "Salary",
-              value: JobPostingCompensationSchemasTypeValue.Salary,
-            },
+            payFrequency: {},
+            type: {},
             value: "10%",
           },
         ],
         content: {
           html: "<p>This is an HTML description</p>",
           plain: "This is a plain text description",
-          sections: [
-            {
-              content: "This is a plain description",
-              id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-              label: "Key Responsibilities",
-              remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-              type: {
-                sourceValue: "key_responsibilities",
-                value: JobPostingContentSectionValue.Responsibilities,
-              },
-            },
-          ],
         },
         createdAt: new Date("2021-01-01T01:01:01.000Z"),
         employmentContractType: {
@@ -95,12 +59,10 @@ let value: AtsListJobPostingsResponse = {
           {
             id: "12345",
             name: "New York",
-            remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
           },
           {
             id: "67890",
             name: "Remote",
-            remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
           },
         ],
         questionnaires: [
@@ -111,70 +73,88 @@ let value: AtsListJobPostingsResponse = {
             questions: [
               {
                 id: "question001",
-                multipleChoiceAnswers: [
-                  {
-                    id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-                    remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-                  },
-                ],
-                remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+                parentQuestion: null,
                 required: true,
                 text: "What is your name?",
-                type: {
-                  sourceValue: "ShortText",
-                  value: QuestionValue.ShortText,
-                },
+                type: {},
               },
               {
                 id: "question002",
-                multipleChoiceAnswers: [
-                  {
-                    id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-                    remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-                  },
-                ],
-                remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+                parentQuestion: null,
                 required: Question2.False,
                 text: "What are your hobbies?",
-                type: {
-                  sourceValue: "ShortText",
-                  value: QuestionValue.ShortText,
-                },
+                type: {},
               },
               {
                 id: "question003",
                 multipleChoiceAnswers: [
                   {
                     id: "1",
-                    remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
                     text: "Dog",
                   },
                   {
                     id: "2",
-                    remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
                     text: "Cat",
                   },
                   {
                     id: "3",
-                    remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
                     text: "Bird",
                   },
                   {
                     id: "4",
-                    remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
                     text: "Other",
                   },
                 ],
-                remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+                parentQuestion: null,
                 required: true,
                 text: "What is your favorite animal?",
-                type: {
-                  sourceValue: "ShortText",
-                  value: QuestionValue.ShortText,
+                type: {},
+              },
+              {
+                id: "question004",
+                multipleChoiceAnswers: [
+                  {
+                    id: "1",
+                    text: "Yes",
+                  },
+                  {
+                    id: "2",
+                    text: "No",
+                  },
+                ],
+                parentQuestion: null,
+                required: true,
+                text: "Do you have previous work experience??",
+                type: {},
+              },
+              {
+                id: "question005",
+                multipleChoiceAnswers: [
+                  {
+                    id: "1",
+                    text: "Less than 1 year",
+                  },
+                  {
+                    id: "2",
+                    text: "1-2 years",
+                  },
+                  {
+                    id: "2",
+                    text: "More than 2 year",
+                  },
+                ],
+                parentQuestion: {
+                  conditionType: {},
+                  id: "question004",
+                  optionIds: [
+                    "1",
+                  ],
                 },
+                required: true,
+                text: "What was the duration of your last employment?",
+                type: {},
               },
             ],
-            remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
           },
           {
             id: "experience001",
@@ -183,94 +163,98 @@ let value: AtsListJobPostingsResponse = {
             questions: [
               {
                 id: "question004",
-                multipleChoiceAnswers: [
-                  {
-                    id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-                    remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-                  },
-                ],
-                remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+                parentQuestion: null,
                 required: true,
                 text: "Please upload your resume.",
-                type: {
-                  sourceValue: "ShortText",
-                  value: QuestionValue.ShortText,
-                },
+                type: {},
               },
               {
                 id: "question005",
                 multipleChoiceAnswers: [
                   {
                     id: "1",
-                    remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
                     text: "JavaScript",
                   },
                   {
                     id: "2",
-                    remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
                     text: "Python",
                   },
                   {
                     id: "3",
-                    remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
                     text: "Java",
                   },
                 ],
-                remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+                parentQuestion: null,
                 required: true,
                 text: "Select the programming languages you are proficient in.",
-                type: {
-                  sourceValue: "ShortText",
-                  value: QuestionValue.ShortText,
-                },
+                type: {},
               },
               {
                 id: "question006",
-                multipleChoiceAnswers: [
-                  {
-                    id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-                    remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-                  },
-                ],
-                remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+                parentQuestion: null,
                 text: "Are you willing to relocate?",
-                type: {
-                  sourceValue: "ShortText",
-                  value: QuestionValue.ShortText,
-                },
+                type: {},
               },
               {
                 id: "question007",
-                multipleChoiceAnswers: [
-                  {
-                    id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-                    remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-                  },
-                ],
-                remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+                parentQuestion: null,
                 text: "How many years of experience do you have?",
-                type: {
-                  sourceValue: "ShortText",
-                  value: QuestionValue.ShortText,
-                },
+                type: {},
               },
               {
                 id: "question008",
+                parentQuestion: null,
+                text: "When did you start your most recent position?",
+                type: {},
+              },
+              {
+                id: "question009",
                 multipleChoiceAnswers: [
                   {
-                    id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-                    remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+                    id: "1",
+                    text: "Yes",
+                  },
+                  {
+                    id: "2",
+                    text: "No",
                   },
                 ],
-                remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-                text: "When did you start your most recent position?",
-                type: {
-                  sourceValue: "ShortText",
-                  value: QuestionValue.ShortText,
+                parentQuestion: null,
+                required: true,
+                text: "Do you have Project Management Experience?",
+                type: {},
+              },
+              {
+                id: "question010",
+                multipleChoiceAnswers: [
+                  {
+                    id: "1",
+                    text: "1-3 years",
+                  },
+                  {
+                    id: "2",
+                    text: "3-5 years",
+                  },
+                  {
+                    id: "3",
+                    text: "5-10 years",
+                  },
+                  {
+                    id: "4",
+                    text: "More than 10 years",
+                  },
+                ],
+                parentQuestion: {
+                  conditionType: {},
+                  id: "question009",
+                  optionIds: [
+                    "1",
+                  ],
                 },
+                text: "How much Project Management experience do you have?",
+                type: {},
               },
             ],
-            remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
           },
         ],
         remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
@@ -288,7 +272,7 @@ let value: AtsListJobPostingsResponse = {
       },
     ],
   },
-  statusCode: 412,
+  statusCode: 305,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

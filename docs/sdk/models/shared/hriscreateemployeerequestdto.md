@@ -5,15 +5,10 @@
 ```typescript
 import {
   CountryCodeEnumValue,
-  CreateEmploymentApiModelSchemasPayFrequencyValue,
-  CreateEmploymentApiModelSchemasPayPeriodValue,
-  CreateEmploymentApiModelSchemasValue,
   HrisCreateEmployeeRequestDto,
-  HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue,
   HrisCreateEmployeeRequestDtoSchemasHomeLocationValue,
   HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberTypeValue,
   HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberValue,
-  HrisCreateEmployeeRequestDtoSchemasPreferredLanguageValue,
   HrisCreateEmployeeRequestDtoSchemasWorkLocationValue,
 } from "@stackone/stackone-client-ts/sdk/models/shared";
 
@@ -53,30 +48,18 @@ let value: HrisCreateEmployeeRequestDto = {
   displayName: "Sir Issac Newton",
   employmentContractType: {},
   employmentStatus: {},
-  employmentType: {
-    sourceValue: "Permanent",
-    value: HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue.Permanent,
-  },
+  employmentType: {},
   employments: [
     {
       effectiveDate: new Date("2021-01-01T01:01:01.000Z"),
       employeeId: "1687-3",
       employmentContractType: {},
-      employmentType: {
-        sourceValue: "Permanent",
-        value: CreateEmploymentApiModelSchemasValue.Permanent,
-      },
+      employmentType: {},
       id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
       jobTitle: "Software Engineer",
       payCurrency: "USD",
-      payFrequency: {
-        sourceValue: "Hourly",
-        value: CreateEmploymentApiModelSchemasPayFrequencyValue.Hourly,
-      },
-      payPeriod: {
-        sourceValue: "Hour",
-        value: CreateEmploymentApiModelSchemasPayPeriodValue.Hour,
-      },
+      payFrequency: {},
+      payPeriod: {},
       payRate: "40.00",
       timeWorked: "P0Y0M0DT8H0M0S",
       unifiedCustomFields: {
@@ -126,9 +109,7 @@ let value: HrisCreateEmployeeRequestDto = {
   },
   personalEmail: "isaac.newton@example.com",
   personalPhoneNumber: "+1234567890",
-  preferredLanguage: {
-    value: HrisCreateEmployeeRequestDtoSchemasPreferredLanguageValue.Eng,
-  },
+  preferredLanguage: {},
   startDate: new Date("2021-01-01T00:00.000Z"),
   tenure: 2,
   terminationDate: new Date("2021-01-01T00:00:00Z"),

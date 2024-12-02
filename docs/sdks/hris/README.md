@@ -63,7 +63,6 @@ import { StackOne } from "@stackone/stackone-client-ts";
 import {
   HrisDocumentsUploadRequestDtoSchemasFileFormatValue,
   HrisDocumentsUploadRequestDtoSchemasValue,
-  HrisDocumentsUploadRequestDtoValue,
 } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 const stackOne = new StackOne({
@@ -78,10 +77,7 @@ async function run() {
     hrisBatchDocumentUploadRequestDto: {
       items: [
         {
-          category: {
-            sourceValue: "550e8400-e29b-41d4-a716-446655440000",
-            value: HrisDocumentsUploadRequestDtoValue.Academic,
-          },
+          category: {},
           categoryId: "6530",
           confidential: {
             sourceValue: "public",
@@ -118,7 +114,6 @@ import { hrisBatchUploadEmployeeDocument } from "@stackone/stackone-client-ts/fu
 import {
   HrisDocumentsUploadRequestDtoSchemasFileFormatValue,
   HrisDocumentsUploadRequestDtoSchemasValue,
-  HrisDocumentsUploadRequestDtoValue,
 } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 // Use `StackOneCore` for best tree-shaking performance.
@@ -135,10 +130,7 @@ async function run() {
     hrisBatchDocumentUploadRequestDto: {
       items: [
         {
-          category: {
-            sourceValue: "550e8400-e29b-41d4-a716-446655440000",
-            value: HrisDocumentsUploadRequestDtoValue.OfferLetter,
-          },
+          category: {},
           categoryId: "6530",
           confidential: {
             sourceValue: "public",
@@ -200,14 +192,9 @@ Creates an employee
 import { StackOne } from "@stackone/stackone-client-ts";
 import {
   CountryCodeEnumValue,
-  CreateEmploymentApiModelSchemasPayFrequencyValue,
-  CreateEmploymentApiModelSchemasPayPeriodValue,
-  CreateEmploymentApiModelSchemasValue,
-  HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue,
   HrisCreateEmployeeRequestDtoSchemasHomeLocationValue,
   HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberTypeValue,
   HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberValue,
-  HrisCreateEmployeeRequestDtoSchemasPreferredLanguageValue,
   HrisCreateEmployeeRequestDtoSchemasWorkLocationValue,
 } from "@stackone/stackone-client-ts/sdk/models/shared";
 
@@ -221,7 +208,6 @@ const stackOne = new StackOne({
 async function run() {
   const result = await stackOne.hris.createEmployee({
     hrisCreateEmployeeRequestDto: {
-      avatar: {},
       avatarUrl: "https://example.com/avatar.png",
       benefits: [
         {
@@ -254,32 +240,17 @@ async function run() {
       department: "Physics",
       departmentId: "3093",
       displayName: "Sir Issac Newton",
-      employmentContractType: {},
-      employmentStatus: {},
-      employmentType: {
-        sourceValue: "Permanent",
-        value: HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue.Permanent,
-      },
       employments: [
         {
           effectiveDate: new Date("2021-01-01T01:01:01.000Z"),
           employeeId: "1687-3",
           employmentContractType: {},
-          employmentType: {
-            sourceValue: "Permanent",
-            value: CreateEmploymentApiModelSchemasValue.Permanent,
-          },
+          employmentType: {},
           id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
           jobTitle: "Software Engineer",
           payCurrency: "USD",
-          payFrequency: {
-            sourceValue: "Hourly",
-            value: CreateEmploymentApiModelSchemasPayFrequencyValue.Hourly,
-          },
-          payPeriod: {
-            sourceValue: "Hour",
-            value: CreateEmploymentApiModelSchemasPayPeriodValue.Hour,
-          },
+          payFrequency: {},
+          payPeriod: {},
           payRate: "40.00",
           timeWorked: "P0Y0M0DT8H0M0S",
           unifiedCustomFields: {
@@ -288,9 +259,7 @@ async function run() {
           },
         },
       ],
-      ethnicity: {},
       firstName: "Issac",
-      gender: {},
       hireDate: new Date("2021-01-01T00:00.000Z"),
       homeLocation: {
         city: "Grantham",
@@ -303,7 +272,6 @@ async function run() {
           "other_known_names": "John Doe",
         },
         phoneNumber: "+44 1476 860 364",
-        state: {},
         street1: "Water Lane",
         street2: "Woolsthorpe by Colsterworth",
         zipCode: "NG33 5NR",
@@ -312,7 +280,6 @@ async function run() {
       jobTitle: "Physicist",
       lastName: "Newton",
       managerId: "67890",
-      maritalStatus: {},
       name: "Issac Newton",
       nationalIdentityNumber: {
         country: {
@@ -328,9 +295,6 @@ async function run() {
       },
       personalEmail: "isaac.newton@example.com",
       personalPhoneNumber: "+1234567890",
-      preferredLanguage: {
-        value: HrisCreateEmployeeRequestDtoSchemasPreferredLanguageValue.Eng,
-      },
       startDate: new Date("2021-01-01T00:00.000Z"),
       tenure: 2,
       terminationDate: new Date("2021-01-01T00:00:00Z"),
@@ -347,7 +311,6 @@ async function run() {
           "other_known_names": "John Doe",
         },
         phoneNumber: "+44 1476 860 364",
-        state: {},
         street1: "Water Lane",
         street2: "Woolsthorpe by Colsterworth",
         zipCode: "NG33 5NR",
@@ -373,14 +336,9 @@ import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
 import { hrisCreateEmployee } from "@stackone/stackone-client-ts/funcs/hrisCreateEmployee.js";
 import {
   CountryCodeEnumValue,
-  CreateEmploymentApiModelSchemasPayFrequencyValue,
-  CreateEmploymentApiModelSchemasPayPeriodValue,
-  CreateEmploymentApiModelSchemasValue,
-  HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue,
   HrisCreateEmployeeRequestDtoSchemasHomeLocationValue,
   HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberTypeValue,
   HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberValue,
-  HrisCreateEmployeeRequestDtoSchemasPreferredLanguageValue,
   HrisCreateEmployeeRequestDtoSchemasWorkLocationValue,
 } from "@stackone/stackone-client-ts/sdk/models/shared";
 
@@ -396,7 +354,6 @@ const stackOne = new StackOneCore({
 async function run() {
   const res = await hrisCreateEmployee(stackOne, {
     hrisCreateEmployeeRequestDto: {
-      avatar: {},
       avatarUrl: "https://example.com/avatar.png",
       benefits: [
         {
@@ -429,32 +386,17 @@ async function run() {
       department: "Physics",
       departmentId: "3093",
       displayName: "Sir Issac Newton",
-      employmentContractType: {},
-      employmentStatus: {},
-      employmentType: {
-        sourceValue: "Permanent",
-        value: HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue.Permanent,
-      },
       employments: [
         {
           effectiveDate: new Date("2021-01-01T01:01:01.000Z"),
           employeeId: "1687-3",
           employmentContractType: {},
-          employmentType: {
-            sourceValue: "Permanent",
-            value: CreateEmploymentApiModelSchemasValue.Permanent,
-          },
+          employmentType: {},
           id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
           jobTitle: "Software Engineer",
           payCurrency: "USD",
-          payFrequency: {
-            sourceValue: "Hourly",
-            value: CreateEmploymentApiModelSchemasPayFrequencyValue.Hourly,
-          },
-          payPeriod: {
-            sourceValue: "Hour",
-            value: CreateEmploymentApiModelSchemasPayPeriodValue.Hour,
-          },
+          payFrequency: {},
+          payPeriod: {},
           payRate: "40.00",
           timeWorked: "P0Y0M0DT8H0M0S",
           unifiedCustomFields: {
@@ -463,9 +405,7 @@ async function run() {
           },
         },
       ],
-      ethnicity: {},
       firstName: "Issac",
-      gender: {},
       hireDate: new Date("2021-01-01T00:00.000Z"),
       homeLocation: {
         city: "Grantham",
@@ -478,7 +418,6 @@ async function run() {
           "other_known_names": "John Doe",
         },
         phoneNumber: "+44 1476 860 364",
-        state: {},
         street1: "Water Lane",
         street2: "Woolsthorpe by Colsterworth",
         zipCode: "NG33 5NR",
@@ -487,7 +426,6 @@ async function run() {
       jobTitle: "Physicist",
       lastName: "Newton",
       managerId: "67890",
-      maritalStatus: {},
       name: "Issac Newton",
       nationalIdentityNumber: {
         country: {
@@ -503,9 +441,6 @@ async function run() {
       },
       personalEmail: "isaac.newton@example.com",
       personalPhoneNumber: "+1234567890",
-      preferredLanguage: {
-        value: HrisCreateEmployeeRequestDtoSchemasPreferredLanguageValue.Eng,
-      },
       startDate: new Date("2021-01-01T00:00.000Z"),
       tenure: 2,
       terminationDate: new Date("2021-01-01T00:00:00Z"),
@@ -522,7 +457,6 @@ async function run() {
           "other_known_names": "John Doe",
         },
         phoneNumber: "+44 1476 860 364",
-        state: {},
         street1: "Water Lane",
         street2: "Woolsthorpe by Colsterworth",
         zipCode: "NG33 5NR",
@@ -572,11 +506,6 @@ Create Employee Employment
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
-import {
-  HrisCreateEmploymentRequestDtoSchemasPayFrequencyValue,
-  HrisCreateEmploymentRequestDtoSchemasPayPeriodValue,
-  HrisCreateEmploymentRequestDtoSchemasValue,
-} from "@stackone/stackone-client-ts/sdk/models/shared";
 
 const stackOne = new StackOne({
   security: {
@@ -590,25 +519,12 @@ async function run() {
     hrisCreateEmploymentRequestDto: {
       effectiveDate: new Date("2021-01-01T01:01:01.000Z"),
       employeeId: "1687-3",
-      employmentContractType: {},
-      employmentType: {
-        sourceValue: "Permanent",
-        value: HrisCreateEmploymentRequestDtoSchemasValue.Permanent,
-      },
       id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
       jobTitle: "Software Engineer",
       passthrough: {
         "other_known_names": "John Doe",
       },
       payCurrency: "USD",
-      payFrequency: {
-        sourceValue: "Hourly",
-        value: HrisCreateEmploymentRequestDtoSchemasPayFrequencyValue.Hourly,
-      },
-      payPeriod: {
-        sourceValue: "Hour",
-        value: HrisCreateEmploymentRequestDtoSchemasPayPeriodValue.Hour,
-      },
       payRate: "40.00",
       timeWorked: "P0Y0M0DT8H0M0S",
       unifiedCustomFields: {
@@ -634,11 +550,6 @@ The standalone function version of this method:
 ```typescript
 import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
 import { hrisCreateEmployeeEmployment } from "@stackone/stackone-client-ts/funcs/hrisCreateEmployeeEmployment.js";
-import {
-  HrisCreateEmploymentRequestDtoSchemasPayFrequencyValue,
-  HrisCreateEmploymentRequestDtoSchemasPayPeriodValue,
-  HrisCreateEmploymentRequestDtoSchemasValue,
-} from "@stackone/stackone-client-ts/sdk/models/shared";
 
 // Use `StackOneCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -654,25 +565,12 @@ async function run() {
     hrisCreateEmploymentRequestDto: {
       effectiveDate: new Date("2021-01-01T01:01:01.000Z"),
       employeeId: "1687-3",
-      employmentContractType: {},
-      employmentType: {
-        sourceValue: "Permanent",
-        value: HrisCreateEmploymentRequestDtoSchemasValue.Permanent,
-      },
       id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
       jobTitle: "Software Engineer",
       passthrough: {
         "other_known_names": "John Doe",
       },
       payCurrency: "USD",
-      payFrequency: {
-        sourceValue: "Hourly",
-        value: HrisCreateEmploymentRequestDtoSchemasPayFrequencyValue.Hourly,
-      },
-      payPeriod: {
-        sourceValue: "Hour",
-        value: HrisCreateEmploymentRequestDtoSchemasPayPeriodValue.Hour,
-      },
       payRate: "40.00",
       timeWorked: "P0Y0M0DT8H0M0S",
       unifiedCustomFields: {
@@ -846,7 +744,6 @@ async function run() {
   const result = await stackOne.hris.createEmployeeWorkEligibilityRequest({
     hrisCreateWorkEligibilityRequestDto: {
       document: {
-        category: {},
         categoryId: "6530",
         createdAt: new Date("2021-01-01T01:01:01.000Z"),
         fileFormat: {
@@ -868,7 +765,6 @@ async function run() {
         "other_known_names": "John Doe",
       },
       subType: "H1B",
-      type: {},
       validFrom: new Date("2021-01-01T00:00.000Z"),
       validTo: new Date("2021-01-01T00:00.000Z"),
     },
@@ -908,7 +804,6 @@ async function run() {
   const res = await hrisCreateEmployeeWorkEligibilityRequest(stackOne, {
     hrisCreateWorkEligibilityRequestDto: {
       document: {
-        category: {},
         categoryId: "6530",
         createdAt: new Date("2021-01-01T01:01:01.000Z"),
         fileFormat: {
@@ -930,7 +825,6 @@ async function run() {
         "other_known_names": "John Doe",
       },
       subType: "H1B",
-      type: {},
       validFrom: new Date("2021-01-01T00:00.000Z"),
       validTo: new Date("2021-01-01T00:00.000Z"),
     },
@@ -1525,7 +1419,7 @@ const stackOne = new StackOne({
 async function run() {
   const result = await stackOne.hris.getEmployee({
     expand: "company,employments,work_location,home_location,custom_fields,groups",
-    fields: "id,remote_id,first_name,last_name,name,display_name,gender,ethnicity,date_of_birth,birthday,marital_status,avatar_url,avatar,personal_email,personal_phone_number,work_email,work_phone_number,job_id,remote_job_id,job_title,job_description,department_id,remote_department_id,department,cost_centers,benefits,manager_id,remote_manager_id,hire_date,start_date,tenure,work_anniversary,employment_type,employment_contract_type,employment_status,termination_date,company_name,preferred_language,citizenships,home_location,work_location,employments,custom_fields,documents,created_at,updated_at,employee_number,national_identity_number",
+    fields: "id,remote_id,first_name,last_name,name,display_name,gender,ethnicity,date_of_birth,birthday,marital_status,avatar_url,avatar,personal_email,personal_phone_number,work_email,work_phone_number,job_id,remote_job_id,job_title,job_description,department_id,remote_department_id,department,cost_centers,benefits,company,manager_id,remote_manager_id,hire_date,start_date,tenure,work_anniversary,employment_type,employment_contract_type,employment_status,termination_date,company_name,preferred_language,citizenships,home_location,work_location,employments,custom_fields,documents,created_at,updated_at,employee_number,national_identity_number",
     id: "<id>",
     include: "avatar_url,avatar,custom_fields,job_description,benefits",
     xAccountId: "<value>",
@@ -1558,7 +1452,7 @@ const stackOne = new StackOneCore({
 async function run() {
   const res = await hrisGetEmployee(stackOne, {
     expand: "company,employments,work_location,home_location,custom_fields,groups",
-    fields: "id,remote_id,first_name,last_name,name,display_name,gender,ethnicity,date_of_birth,birthday,marital_status,avatar_url,avatar,personal_email,personal_phone_number,work_email,work_phone_number,job_id,remote_job_id,job_title,job_description,department_id,remote_department_id,department,cost_centers,benefits,manager_id,remote_manager_id,hire_date,start_date,tenure,work_anniversary,employment_type,employment_contract_type,employment_status,termination_date,company_name,preferred_language,citizenships,home_location,work_location,employments,custom_fields,documents,created_at,updated_at,employee_number,national_identity_number",
+    fields: "id,remote_id,first_name,last_name,name,display_name,gender,ethnicity,date_of_birth,birthday,marital_status,avatar_url,avatar,personal_email,personal_phone_number,work_email,work_phone_number,job_id,remote_job_id,job_title,job_description,department_id,remote_department_id,department,cost_centers,benefits,company,manager_id,remote_manager_id,hire_date,start_date,tenure,work_anniversary,employment_type,employment_contract_type,employment_status,termination_date,company_name,preferred_language,citizenships,home_location,work_location,employments,custom_fields,documents,created_at,updated_at,employee_number,national_identity_number",
     id: "<id>",
     include: "avatar_url,avatar,custom_fields,job_description,benefits",
     xAccountId: "<value>",
@@ -3597,7 +3491,7 @@ const stackOne = new StackOne({
 async function run() {
   const result = await stackOne.hris.listEmployees({
     expand: "company,employments,work_location,home_location,custom_fields,groups",
-    fields: "id,remote_id,first_name,last_name,name,display_name,gender,ethnicity,date_of_birth,birthday,marital_status,avatar_url,avatar,personal_email,personal_phone_number,work_email,work_phone_number,job_id,remote_job_id,job_title,job_description,department_id,remote_department_id,department,cost_centers,benefits,manager_id,remote_manager_id,hire_date,start_date,tenure,work_anniversary,employment_type,employment_contract_type,employment_status,termination_date,company_name,preferred_language,citizenships,home_location,work_location,employments,custom_fields,documents,created_at,updated_at,employee_number,national_identity_number",
+    fields: "id,remote_id,first_name,last_name,name,display_name,gender,ethnicity,date_of_birth,birthday,marital_status,avatar_url,avatar,personal_email,personal_phone_number,work_email,work_phone_number,job_id,remote_job_id,job_title,job_description,department_id,remote_department_id,department,cost_centers,benefits,company,manager_id,remote_manager_id,hire_date,start_date,tenure,work_anniversary,employment_type,employment_contract_type,employment_status,termination_date,company_name,preferred_language,citizenships,home_location,work_location,employments,custom_fields,documents,created_at,updated_at,employee_number,national_identity_number",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
@@ -3635,7 +3529,7 @@ const stackOne = new StackOneCore({
 async function run() {
   const res = await hrisListEmployees(stackOne, {
     expand: "company,employments,work_location,home_location,custom_fields,groups",
-    fields: "id,remote_id,first_name,last_name,name,display_name,gender,ethnicity,date_of_birth,birthday,marital_status,avatar_url,avatar,personal_email,personal_phone_number,work_email,work_phone_number,job_id,remote_job_id,job_title,job_description,department_id,remote_department_id,department,cost_centers,benefits,manager_id,remote_manager_id,hire_date,start_date,tenure,work_anniversary,employment_type,employment_contract_type,employment_status,termination_date,company_name,preferred_language,citizenships,home_location,work_location,employments,custom_fields,documents,created_at,updated_at,employee_number,national_identity_number",
+    fields: "id,remote_id,first_name,last_name,name,display_name,gender,ethnicity,date_of_birth,birthday,marital_status,avatar_url,avatar,personal_email,personal_phone_number,work_email,work_phone_number,job_id,remote_job_id,job_title,job_description,department_id,remote_department_id,department,cost_centers,benefits,company,manager_id,remote_manager_id,hire_date,start_date,tenure,work_anniversary,employment_type,employment_contract_type,employment_status,termination_date,company_name,preferred_language,citizenships,home_location,work_location,employments,custom_fields,documents,created_at,updated_at,employee_number,national_identity_number",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
@@ -4242,14 +4136,9 @@ Updates an employee
 import { StackOne } from "@stackone/stackone-client-ts";
 import {
   CountryCodeEnumValue,
-  CreateEmploymentApiModelSchemasPayFrequencyValue,
-  CreateEmploymentApiModelSchemasPayPeriodValue,
-  CreateEmploymentApiModelSchemasValue,
-  HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue,
   HrisCreateEmployeeRequestDtoSchemasHomeLocationValue,
   HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberTypeValue,
   HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberValue,
-  HrisCreateEmployeeRequestDtoSchemasPreferredLanguageValue,
   HrisCreateEmployeeRequestDtoSchemasWorkLocationValue,
 } from "@stackone/stackone-client-ts/sdk/models/shared";
 
@@ -4263,7 +4152,6 @@ const stackOne = new StackOne({
 async function run() {
   const result = await stackOne.hris.updateEmployee({
     hrisCreateEmployeeRequestDto: {
-      avatar: {},
       avatarUrl: "https://example.com/avatar.png",
       benefits: [
         {
@@ -4296,32 +4184,17 @@ async function run() {
       department: "Physics",
       departmentId: "3093",
       displayName: "Sir Issac Newton",
-      employmentContractType: {},
-      employmentStatus: {},
-      employmentType: {
-        sourceValue: "Permanent",
-        value: HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue.Permanent,
-      },
       employments: [
         {
           effectiveDate: new Date("2021-01-01T01:01:01.000Z"),
           employeeId: "1687-3",
           employmentContractType: {},
-          employmentType: {
-            sourceValue: "Permanent",
-            value: CreateEmploymentApiModelSchemasValue.Permanent,
-          },
+          employmentType: {},
           id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
           jobTitle: "Software Engineer",
           payCurrency: "USD",
-          payFrequency: {
-            sourceValue: "Hourly",
-            value: CreateEmploymentApiModelSchemasPayFrequencyValue.Hourly,
-          },
-          payPeriod: {
-            sourceValue: "Hour",
-            value: CreateEmploymentApiModelSchemasPayPeriodValue.Hour,
-          },
+          payFrequency: {},
+          payPeriod: {},
           payRate: "40.00",
           timeWorked: "P0Y0M0DT8H0M0S",
           unifiedCustomFields: {
@@ -4330,9 +4203,7 @@ async function run() {
           },
         },
       ],
-      ethnicity: {},
       firstName: "Issac",
-      gender: {},
       hireDate: new Date("2021-01-01T00:00.000Z"),
       homeLocation: {
         city: "Grantham",
@@ -4345,7 +4216,6 @@ async function run() {
           "other_known_names": "John Doe",
         },
         phoneNumber: "+44 1476 860 364",
-        state: {},
         street1: "Water Lane",
         street2: "Woolsthorpe by Colsterworth",
         zipCode: "NG33 5NR",
@@ -4354,7 +4224,6 @@ async function run() {
       jobTitle: "Physicist",
       lastName: "Newton",
       managerId: "67890",
-      maritalStatus: {},
       name: "Issac Newton",
       nationalIdentityNumber: {
         country: {
@@ -4370,9 +4239,6 @@ async function run() {
       },
       personalEmail: "isaac.newton@example.com",
       personalPhoneNumber: "+1234567890",
-      preferredLanguage: {
-        value: HrisCreateEmployeeRequestDtoSchemasPreferredLanguageValue.Eng,
-      },
       startDate: new Date("2021-01-01T00:00.000Z"),
       tenure: 2,
       terminationDate: new Date("2021-01-01T00:00:00Z"),
@@ -4389,7 +4255,6 @@ async function run() {
           "other_known_names": "John Doe",
         },
         phoneNumber: "+44 1476 860 364",
-        state: {},
         street1: "Water Lane",
         street2: "Woolsthorpe by Colsterworth",
         zipCode: "NG33 5NR",
@@ -4416,14 +4281,9 @@ import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
 import { hrisUpdateEmployee } from "@stackone/stackone-client-ts/funcs/hrisUpdateEmployee.js";
 import {
   CountryCodeEnumValue,
-  CreateEmploymentApiModelSchemasPayFrequencyValue,
-  CreateEmploymentApiModelSchemasPayPeriodValue,
-  CreateEmploymentApiModelSchemasValue,
-  HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue,
   HrisCreateEmployeeRequestDtoSchemasHomeLocationValue,
   HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberTypeValue,
   HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberValue,
-  HrisCreateEmployeeRequestDtoSchemasPreferredLanguageValue,
   HrisCreateEmployeeRequestDtoSchemasWorkLocationValue,
 } from "@stackone/stackone-client-ts/sdk/models/shared";
 
@@ -4439,7 +4299,6 @@ const stackOne = new StackOneCore({
 async function run() {
   const res = await hrisUpdateEmployee(stackOne, {
     hrisCreateEmployeeRequestDto: {
-      avatar: {},
       avatarUrl: "https://example.com/avatar.png",
       benefits: [
         {
@@ -4472,32 +4331,17 @@ async function run() {
       department: "Physics",
       departmentId: "3093",
       displayName: "Sir Issac Newton",
-      employmentContractType: {},
-      employmentStatus: {},
-      employmentType: {
-        sourceValue: "Permanent",
-        value: HrisCreateEmployeeRequestDtoSchemasEmploymentTypeValue.Permanent,
-      },
       employments: [
         {
           effectiveDate: new Date("2021-01-01T01:01:01.000Z"),
           employeeId: "1687-3",
           employmentContractType: {},
-          employmentType: {
-            sourceValue: "Permanent",
-            value: CreateEmploymentApiModelSchemasValue.Permanent,
-          },
+          employmentType: {},
           id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
           jobTitle: "Software Engineer",
           payCurrency: "USD",
-          payFrequency: {
-            sourceValue: "Hourly",
-            value: CreateEmploymentApiModelSchemasPayFrequencyValue.Hourly,
-          },
-          payPeriod: {
-            sourceValue: "Hour",
-            value: CreateEmploymentApiModelSchemasPayPeriodValue.Hour,
-          },
+          payFrequency: {},
+          payPeriod: {},
           payRate: "40.00",
           timeWorked: "P0Y0M0DT8H0M0S",
           unifiedCustomFields: {
@@ -4506,9 +4350,7 @@ async function run() {
           },
         },
       ],
-      ethnicity: {},
       firstName: "Issac",
-      gender: {},
       hireDate: new Date("2021-01-01T00:00.000Z"),
       homeLocation: {
         city: "Grantham",
@@ -4521,7 +4363,6 @@ async function run() {
           "other_known_names": "John Doe",
         },
         phoneNumber: "+44 1476 860 364",
-        state: {},
         street1: "Water Lane",
         street2: "Woolsthorpe by Colsterworth",
         zipCode: "NG33 5NR",
@@ -4530,7 +4371,6 @@ async function run() {
       jobTitle: "Physicist",
       lastName: "Newton",
       managerId: "67890",
-      maritalStatus: {},
       name: "Issac Newton",
       nationalIdentityNumber: {
         country: {
@@ -4546,9 +4386,6 @@ async function run() {
       },
       personalEmail: "isaac.newton@example.com",
       personalPhoneNumber: "+1234567890",
-      preferredLanguage: {
-        value: HrisCreateEmployeeRequestDtoSchemasPreferredLanguageValue.Eng,
-      },
       startDate: new Date("2021-01-01T00:00.000Z"),
       tenure: 2,
       terminationDate: new Date("2021-01-01T00:00:00Z"),
@@ -4565,7 +4402,6 @@ async function run() {
           "other_known_names": "John Doe",
         },
         phoneNumber: "+44 1476 860 364",
-        state: {},
         street1: "Water Lane",
         street2: "Woolsthorpe by Colsterworth",
         zipCode: "NG33 5NR",
@@ -4616,11 +4452,6 @@ Update Employee Employment
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
-import {
-  HrisCreateEmploymentRequestDtoSchemasPayFrequencyValue,
-  HrisCreateEmploymentRequestDtoSchemasPayPeriodValue,
-  HrisCreateEmploymentRequestDtoSchemasValue,
-} from "@stackone/stackone-client-ts/sdk/models/shared";
 
 const stackOne = new StackOne({
   security: {
@@ -4634,25 +4465,12 @@ async function run() {
     hrisCreateEmploymentRequestDto: {
       effectiveDate: new Date("2021-01-01T01:01:01.000Z"),
       employeeId: "1687-3",
-      employmentContractType: {},
-      employmentType: {
-        sourceValue: "Permanent",
-        value: HrisCreateEmploymentRequestDtoSchemasValue.Permanent,
-      },
       id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
       jobTitle: "Software Engineer",
       passthrough: {
         "other_known_names": "John Doe",
       },
       payCurrency: "USD",
-      payFrequency: {
-        sourceValue: "Hourly",
-        value: HrisCreateEmploymentRequestDtoSchemasPayFrequencyValue.Hourly,
-      },
-      payPeriod: {
-        sourceValue: "Hour",
-        value: HrisCreateEmploymentRequestDtoSchemasPayPeriodValue.Hour,
-      },
       payRate: "40.00",
       timeWorked: "P0Y0M0DT8H0M0S",
       unifiedCustomFields: {
@@ -4679,11 +4497,6 @@ The standalone function version of this method:
 ```typescript
 import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
 import { hrisUpdateEmployeeEmployment } from "@stackone/stackone-client-ts/funcs/hrisUpdateEmployeeEmployment.js";
-import {
-  HrisCreateEmploymentRequestDtoSchemasPayFrequencyValue,
-  HrisCreateEmploymentRequestDtoSchemasPayPeriodValue,
-  HrisCreateEmploymentRequestDtoSchemasValue,
-} from "@stackone/stackone-client-ts/sdk/models/shared";
 
 // Use `StackOneCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -4699,25 +4512,12 @@ async function run() {
     hrisCreateEmploymentRequestDto: {
       effectiveDate: new Date("2021-01-01T01:01:01.000Z"),
       employeeId: "1687-3",
-      employmentContractType: {},
-      employmentType: {
-        sourceValue: "Permanent",
-        value: HrisCreateEmploymentRequestDtoSchemasValue.Permanent,
-      },
       id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
       jobTitle: "Software Engineer",
       passthrough: {
         "other_known_names": "John Doe",
       },
       payCurrency: "USD",
-      payFrequency: {
-        sourceValue: "Hourly",
-        value: HrisCreateEmploymentRequestDtoSchemasPayFrequencyValue.Hourly,
-      },
-      payPeriod: {
-        sourceValue: "Hour",
-        value: HrisCreateEmploymentRequestDtoSchemasPayPeriodValue.Hour,
-      },
       payRate: "40.00",
       timeWorked: "P0Y0M0DT8H0M0S",
       unifiedCustomFields: {
@@ -4786,7 +4586,6 @@ async function run() {
   const result = await stackOne.hris.updateEmployeeWorkEligibilityRequest({
     hrisCreateWorkEligibilityRequestDto: {
       document: {
-        category: {},
         categoryId: "6530",
         createdAt: new Date("2021-01-01T01:01:01.000Z"),
         fileFormat: {
@@ -4808,7 +4607,6 @@ async function run() {
         "other_known_names": "John Doe",
       },
       subType: "H1B",
-      type: {},
       validFrom: new Date("2021-01-01T00:00.000Z"),
       validTo: new Date("2021-01-01T00:00.000Z"),
     },
@@ -4849,7 +4647,6 @@ async function run() {
   const res = await hrisUpdateEmployeeWorkEligibilityRequest(stackOne, {
     hrisCreateWorkEligibilityRequestDto: {
       document: {
-        category: {},
         categoryId: "6530",
         createdAt: new Date("2021-01-01T01:01:01.000Z"),
         fileFormat: {
@@ -4871,7 +4668,6 @@ async function run() {
         "other_known_names": "John Doe",
       },
       subType: "H1B",
-      type: {},
       validFrom: new Date("2021-01-01T00:00.000Z"),
       validTo: new Date("2021-01-01T00:00.000Z"),
     },

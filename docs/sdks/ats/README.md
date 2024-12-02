@@ -76,7 +76,7 @@ Create Application
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
-import { AtsCreateApplicationRequestDtoValue, CreateAnswerValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { AtsCreateApplicationRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 const stackOne = new StackOne({
   security: {
@@ -137,10 +137,6 @@ async function run() {
           answers: [
             {
               id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-              type: {
-                sourceValue: "Short Text",
-                value: CreateAnswerValue.ShortText,
-              },
               values: [
                 "Yes",
                 "No Travel",
@@ -175,7 +171,7 @@ The standalone function version of this method:
 ```typescript
 import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
 import { atsCreateApplication } from "@stackone/stackone-client-ts/funcs/atsCreateApplication.js";
-import { AtsCreateApplicationRequestDtoValue, CreateAnswerValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { AtsCreateApplicationRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 // Use `StackOneCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -238,10 +234,6 @@ async function run() {
           answers: [
             {
               id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-              type: {
-                sourceValue: "Short Text",
-                value: CreateAnswerValue.ShortText,
-              },
               values: [
                 "Yes",
                 "No Travel",
@@ -586,7 +578,6 @@ Create Candidate Note
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
-import { AtsCreateNotesRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 const stackOne = new StackOne({
   security: {
@@ -607,10 +598,6 @@ async function run() {
       passthrough: {
         "other_known_names": "John Doe",
       },
-      visibility: {
-        sourceValue: "Public",
-        value: AtsCreateNotesRequestDtoValue.Public,
-      },
     },
     id: "<id>",
     xAccountId: "<value>",
@@ -630,7 +617,6 @@ The standalone function version of this method:
 ```typescript
 import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
 import { atsCreateCandidateNote } from "@stackone/stackone-client-ts/funcs/atsCreateCandidateNote.js";
-import { AtsCreateNotesRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 // Use `StackOneCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -652,10 +638,6 @@ async function run() {
       ],
       passthrough: {
         "other_known_names": "John Doe",
-      },
-      visibility: {
-        sourceValue: "Public",
-        value: AtsCreateNotesRequestDtoValue.Public,
       },
     },
     id: "<id>",
@@ -2198,7 +2180,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.getCandidate({
-    fields: "id,remote_id,name,first_name,last_name,email,emails,social_links,phone,phone_numbers,company,title,application_ids,remote_application_ids,hired_at,custom_fields,created_at,updated_at",
+    fields: "id,remote_id,name,first_name,last_name,email,emails,social_links,phone,phone_numbers,company,country,title,application_ids,remote_application_ids,hired_at,custom_fields,created_at,updated_at",
     id: "<id>",
     include: "custom_fields",
     xAccountId: "<value>",
@@ -2230,7 +2212,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await atsGetCandidate(stackOne, {
-    fields: "id,remote_id,name,first_name,last_name,email,emails,social_links,phone,phone_numbers,company,title,application_ids,remote_application_ids,hired_at,custom_fields,created_at,updated_at",
+    fields: "id,remote_id,name,first_name,last_name,email,emails,social_links,phone,phone_numbers,company,country,title,application_ids,remote_application_ids,hired_at,custom_fields,created_at,updated_at",
     id: "<id>",
     include: "custom_fields",
     xAccountId: "<value>",
@@ -4454,7 +4436,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.listCandidates({
-    fields: "id,remote_id,name,first_name,last_name,email,emails,social_links,phone,phone_numbers,company,title,application_ids,remote_application_ids,hired_at,custom_fields,created_at,updated_at",
+    fields: "id,remote_id,name,first_name,last_name,email,emails,social_links,phone,phone_numbers,company,country,title,application_ids,remote_application_ids,hired_at,custom_fields,created_at,updated_at",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
@@ -4489,7 +4471,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await atsListCandidates(stackOne, {
-    fields: "id,remote_id,name,first_name,last_name,email,emails,social_links,phone,phone_numbers,company,title,application_ids,remote_application_ids,hired_at,custom_fields,created_at,updated_at",
+    fields: "id,remote_id,name,first_name,last_name,email,emails,social_links,phone,phone_numbers,company,country,title,application_ids,remote_application_ids,hired_at,custom_fields,created_at,updated_at",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },

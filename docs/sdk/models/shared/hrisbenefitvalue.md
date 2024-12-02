@@ -7,7 +7,7 @@ The type of the benefit
 ```typescript
 import { HRISBenefitValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: HRISBenefitValue = HRISBenefitValue.HealthInsurance;
+let value: HRISBenefitValue = HRISBenefitValue.HealthSavings;
 ```
 
 ## Values

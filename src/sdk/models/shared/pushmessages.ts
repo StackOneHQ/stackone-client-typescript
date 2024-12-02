@@ -15,6 +15,8 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type PushMessagesMessageContent = {
   body?: string | null | undefined;
+  subtitle?: string | null | undefined;
+  title?: string | null | undefined;
 };
 
 export type PushMessages4 = {};
@@ -90,11 +92,15 @@ export const PushMessagesMessageContent$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   body: z.nullable(z.string()).optional(),
+  subtitle: z.nullable(z.string()).optional(),
+  title: z.nullable(z.string()).optional(),
 });
 
 /** @internal */
 export type PushMessagesMessageContent$Outbound = {
   body?: string | null | undefined;
+  subtitle?: string | null | undefined;
+  title?: string | null | undefined;
 };
 
 /** @internal */
@@ -104,6 +110,8 @@ export const PushMessagesMessageContent$outboundSchema: z.ZodType<
   PushMessagesMessageContent
 > = z.object({
   body: z.nullable(z.string()).optional(),
+  subtitle: z.nullable(z.string()).optional(),
+  title: z.nullable(z.string()).optional(),
 });
 
 /**

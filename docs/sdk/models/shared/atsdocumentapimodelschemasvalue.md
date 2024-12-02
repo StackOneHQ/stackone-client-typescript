@@ -8,7 +8,7 @@ The category of the file
 import { AtsDocumentApiModelSchemasValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: AtsDocumentApiModelSchemasValue =
-  AtsDocumentApiModelSchemasValue.SignedOfferLetter;
+  AtsDocumentApiModelSchemasValue.OfferLetter;
 ```
 
 ## Values

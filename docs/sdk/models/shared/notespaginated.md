@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { NotesPaginated, NoteValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { NotesPaginated } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: NotesPaginated = {
   data: [
@@ -24,10 +24,7 @@ let value: NotesPaginated = {
         "my_project_custom_field_2": "some other value",
       },
       updatedAt: new Date("2021-01-01T01:01:01.000Z"),
-      visibility: {
-        sourceValue: "Public",
-        value: NoteValue.Public,
-      },
+      visibility: {},
     },
   ],
 };

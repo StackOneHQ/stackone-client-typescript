@@ -5,12 +5,9 @@ The pay frequency
 ## Example Usage
 
 ```typescript
-import { EmploymentPayFrequency, EmploymentSchemasPayFrequencyValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { EmploymentPayFrequency } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: EmploymentPayFrequency = {
-  sourceValue: "Hourly",
-  value: EmploymentSchemasPayFrequencyValue.Hourly,
-};
+let value: EmploymentPayFrequency = {};
 ```
 
 ## Fields

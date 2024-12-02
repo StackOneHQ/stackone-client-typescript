@@ -87,7 +87,7 @@ let value: AtsListBackgroundCheckRequestResponse = {
     ],
   },
   contentType: "<value>",
-  statusCode: 414,
+  statusCode: 507,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

@@ -5,12 +5,9 @@ The type of employment (e.g., contractor, permanent)
 ## Example Usage
 
 ```typescript
-import { CreateEmploymentApiModelSchemasValue, EmploymentType } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { EmploymentType } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: EmploymentType = {
-  sourceValue: "Permanent",
-  value: CreateEmploymentApiModelSchemasValue.Permanent,
-};
+let value: EmploymentType = {};
 ```
 
 ## Fields
