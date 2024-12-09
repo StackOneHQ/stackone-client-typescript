@@ -10,6 +10,15 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 /**
+ * Filter to select assignment by learning object type.
+ */
+export enum LmsListUserAssignmentsQueryParamLearningObjectType {
+  Content = "content",
+  Course = "course",
+  Collection = "collection",
+}
+
+/**
  * LMS Assignment Filter
  */
 export type LmsListUserAssignmentsQueryParamFilter = {
@@ -20,7 +29,10 @@ export type LmsListUserAssignmentsQueryParamFilter = {
   /**
    * Filter to select assignment by learning object type.
    */
-  learningObjectType?: string | null | undefined;
+  learningObjectType?:
+    | LmsListUserAssignmentsQueryParamLearningObjectType
+    | null
+    | undefined;
   /**
    * Use a string with a date to only select results updated after that given date
    */
@@ -99,13 +111,38 @@ export type LmsListUserAssignmentsResponse = {
 };
 
 /** @internal */
+export const LmsListUserAssignmentsQueryParamLearningObjectType$inboundSchema:
+  z.ZodNativeEnum<typeof LmsListUserAssignmentsQueryParamLearningObjectType> = z
+    .nativeEnum(LmsListUserAssignmentsQueryParamLearningObjectType);
+
+/** @internal */
+export const LmsListUserAssignmentsQueryParamLearningObjectType$outboundSchema:
+  z.ZodNativeEnum<typeof LmsListUserAssignmentsQueryParamLearningObjectType> =
+    LmsListUserAssignmentsQueryParamLearningObjectType$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace LmsListUserAssignmentsQueryParamLearningObjectType$ {
+  /** @deprecated use `LmsListUserAssignmentsQueryParamLearningObjectType$inboundSchema` instead. */
+  export const inboundSchema =
+    LmsListUserAssignmentsQueryParamLearningObjectType$inboundSchema;
+  /** @deprecated use `LmsListUserAssignmentsQueryParamLearningObjectType$outboundSchema` instead. */
+  export const outboundSchema =
+    LmsListUserAssignmentsQueryParamLearningObjectType$outboundSchema;
+}
+
+/** @internal */
 export const LmsListUserAssignmentsQueryParamFilter$inboundSchema: z.ZodType<
   LmsListUserAssignmentsQueryParamFilter,
   z.ZodTypeDef,
   unknown
 > = z.object({
   completed: z.nullable(z.boolean()).optional(),
-  learning_object_type: z.nullable(z.string()).optional(),
+  learning_object_type: z.nullable(
+    LmsListUserAssignmentsQueryParamLearningObjectType$inboundSchema,
+  ).optional(),
   updated_after: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -128,7 +165,9 @@ export const LmsListUserAssignmentsQueryParamFilter$outboundSchema: z.ZodType<
   LmsListUserAssignmentsQueryParamFilter
 > = z.object({
   completed: z.nullable(z.boolean()).optional(),
-  learningObjectType: z.nullable(z.string()).optional(),
+  learningObjectType: z.nullable(
+    LmsListUserAssignmentsQueryParamLearningObjectType$outboundSchema,
+  ).optional(),
   updatedAfter: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {

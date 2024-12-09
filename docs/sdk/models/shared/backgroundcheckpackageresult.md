@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { AssessmentsPackagesValue, BackgroundCheckPackageResult } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { BackgroundCheckPackageResult } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: BackgroundCheckPackageResult = {
   data: {
@@ -18,10 +18,6 @@ let value: BackgroundCheckPackageResult = {
         id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         name: "Test 1",
         remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-        type: {
-          sourceValue: "key_responsibilities",
-          value: AssessmentsPackagesValue.Responsibilities,
-        },
       },
     ],
   },

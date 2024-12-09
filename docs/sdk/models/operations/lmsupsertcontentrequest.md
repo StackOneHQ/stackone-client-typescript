@@ -28,6 +28,8 @@ let value: LmsUpsertContentRequest = {
       },
     ],
     order: 1,
+    shortDescription:
+      "This course is a valuable resource and acts as learning content for...",
     skills: [
       {
         id: "cx2367ndc8dgsbjhka9ry4",

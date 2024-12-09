@@ -4,7 +4,6 @@
 
 ```typescript
 import { AtsCreateBackgroundCheckPackageRequest } from "@stackone/stackone-client-ts/sdk/models/operations";
-import { CreateAssessmentsPackagesValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: AtsCreateBackgroundCheckPackageRequest = {
   atsCreateBackgroundCheckPackagesRequestDto: {
@@ -18,10 +17,6 @@ let value: AtsCreateBackgroundCheckPackageRequest = {
         description:
           "Skills test to gauge a candidate's proficiency in job-specific skills",
         name: "Test 1",
-        type: {
-          sourceValue: "key_responsibilities",
-          value: CreateAssessmentsPackagesValue.Responsibilities,
-        },
       },
     ],
   },

@@ -5,7 +5,7 @@
 ```typescript
 import { Value } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: Value = Value.Completed;
+let value: Value = Value.InProgress;
 ```
 
 ## Values

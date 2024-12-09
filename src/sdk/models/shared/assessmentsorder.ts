@@ -146,57 +146,6 @@ export type AssessmentsOrderJob = {
   title?: string | null | undefined;
 };
 
-export type AssessmentsOrderSchemas4 = {};
-
-/**
- * The source value of the description type.
- */
-export type AssessmentsOrderSchemasSourceValue =
-  | AssessmentsOrderSchemas4
-  | string
-  | number
-  | boolean
-  | Array<any>;
-
-/**
- * The type of the description.
- */
-export enum AssessmentsOrderSchemasValue {
-  Responsibilities = "responsibilities",
-  Skills = "skills",
-  Benefits = "benefits",
-  CompanyOverview = "company_overview",
-  Description = "description",
-  Other = "other",
-}
-/**
- * The type of the description.
- */
-export type AssessmentsOrderSchemasValueOpen = OpenEnum<
-  typeof AssessmentsOrderSchemasValue
->;
-
-/**
- * Package type
- */
-export type AssessmentsOrderType = {
-  /**
-   * The source value of the description type.
-   */
-  sourceValue?:
-    | AssessmentsOrderSchemas4
-    | string
-    | number
-    | boolean
-    | Array<any>
-    | null
-    | undefined;
-  /**
-   * The type of the description.
-   */
-  value?: AssessmentsOrderSchemasValueOpen | null | undefined;
-};
-
 export type Package = {
   /**
    * Package description
@@ -210,10 +159,6 @@ export type Package = {
    * Package name
    */
   name?: string | null | undefined;
-  /**
-   * Package type
-   */
-  type?: AssessmentsOrderType | null | undefined;
 };
 
 export type Requester = {
@@ -726,250 +671,11 @@ export function assessmentsOrderJobFromJSON(
 }
 
 /** @internal */
-export const AssessmentsOrderSchemas4$inboundSchema: z.ZodType<
-  AssessmentsOrderSchemas4,
-  z.ZodTypeDef,
-  unknown
-> = z.object({});
-
-/** @internal */
-export type AssessmentsOrderSchemas4$Outbound = {};
-
-/** @internal */
-export const AssessmentsOrderSchemas4$outboundSchema: z.ZodType<
-  AssessmentsOrderSchemas4$Outbound,
-  z.ZodTypeDef,
-  AssessmentsOrderSchemas4
-> = z.object({});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AssessmentsOrderSchemas4$ {
-  /** @deprecated use `AssessmentsOrderSchemas4$inboundSchema` instead. */
-  export const inboundSchema = AssessmentsOrderSchemas4$inboundSchema;
-  /** @deprecated use `AssessmentsOrderSchemas4$outboundSchema` instead. */
-  export const outboundSchema = AssessmentsOrderSchemas4$outboundSchema;
-  /** @deprecated use `AssessmentsOrderSchemas4$Outbound` instead. */
-  export type Outbound = AssessmentsOrderSchemas4$Outbound;
-}
-
-export function assessmentsOrderSchemas4ToJSON(
-  assessmentsOrderSchemas4: AssessmentsOrderSchemas4,
-): string {
-  return JSON.stringify(
-    AssessmentsOrderSchemas4$outboundSchema.parse(assessmentsOrderSchemas4),
-  );
-}
-
-export function assessmentsOrderSchemas4FromJSON(
-  jsonString: string,
-): SafeParseResult<AssessmentsOrderSchemas4, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => AssessmentsOrderSchemas4$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AssessmentsOrderSchemas4' from JSON`,
-  );
-}
-
-/** @internal */
-export const AssessmentsOrderSchemasSourceValue$inboundSchema: z.ZodType<
-  AssessmentsOrderSchemasSourceValue,
-  z.ZodTypeDef,
-  unknown
-> = z.union([
-  z.lazy(() => AssessmentsOrderSchemas4$inboundSchema),
-  z.string(),
-  z.number(),
-  z.boolean(),
-  z.array(z.any()),
-]);
-
-/** @internal */
-export type AssessmentsOrderSchemasSourceValue$Outbound =
-  | AssessmentsOrderSchemas4$Outbound
-  | string
-  | number
-  | boolean
-  | Array<any>;
-
-/** @internal */
-export const AssessmentsOrderSchemasSourceValue$outboundSchema: z.ZodType<
-  AssessmentsOrderSchemasSourceValue$Outbound,
-  z.ZodTypeDef,
-  AssessmentsOrderSchemasSourceValue
-> = z.union([
-  z.lazy(() => AssessmentsOrderSchemas4$outboundSchema),
-  z.string(),
-  z.number(),
-  z.boolean(),
-  z.array(z.any()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AssessmentsOrderSchemasSourceValue$ {
-  /** @deprecated use `AssessmentsOrderSchemasSourceValue$inboundSchema` instead. */
-  export const inboundSchema = AssessmentsOrderSchemasSourceValue$inboundSchema;
-  /** @deprecated use `AssessmentsOrderSchemasSourceValue$outboundSchema` instead. */
-  export const outboundSchema =
-    AssessmentsOrderSchemasSourceValue$outboundSchema;
-  /** @deprecated use `AssessmentsOrderSchemasSourceValue$Outbound` instead. */
-  export type Outbound = AssessmentsOrderSchemasSourceValue$Outbound;
-}
-
-export function assessmentsOrderSchemasSourceValueToJSON(
-  assessmentsOrderSchemasSourceValue: AssessmentsOrderSchemasSourceValue,
-): string {
-  return JSON.stringify(
-    AssessmentsOrderSchemasSourceValue$outboundSchema.parse(
-      assessmentsOrderSchemasSourceValue,
-    ),
-  );
-}
-
-export function assessmentsOrderSchemasSourceValueFromJSON(
-  jsonString: string,
-): SafeParseResult<AssessmentsOrderSchemasSourceValue, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) =>
-      AssessmentsOrderSchemasSourceValue$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AssessmentsOrderSchemasSourceValue' from JSON`,
-  );
-}
-
-/** @internal */
-export const AssessmentsOrderSchemasValue$inboundSchema: z.ZodType<
-  AssessmentsOrderSchemasValueOpen,
-  z.ZodTypeDef,
-  unknown
-> = z
-  .union([
-    z.nativeEnum(AssessmentsOrderSchemasValue),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
-
-/** @internal */
-export const AssessmentsOrderSchemasValue$outboundSchema: z.ZodType<
-  AssessmentsOrderSchemasValueOpen,
-  z.ZodTypeDef,
-  AssessmentsOrderSchemasValueOpen
-> = z.union([
-  z.nativeEnum(AssessmentsOrderSchemasValue),
-  z.string().and(z.custom<Unrecognized<string>>()),
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AssessmentsOrderSchemasValue$ {
-  /** @deprecated use `AssessmentsOrderSchemasValue$inboundSchema` instead. */
-  export const inboundSchema = AssessmentsOrderSchemasValue$inboundSchema;
-  /** @deprecated use `AssessmentsOrderSchemasValue$outboundSchema` instead. */
-  export const outboundSchema = AssessmentsOrderSchemasValue$outboundSchema;
-}
-
-/** @internal */
-export const AssessmentsOrderType$inboundSchema: z.ZodType<
-  AssessmentsOrderType,
-  z.ZodTypeDef,
-  unknown
-> = z.object({
-  source_value: z.nullable(
-    z.union([
-      z.lazy(() => AssessmentsOrderSchemas4$inboundSchema),
-      z.string(),
-      z.number(),
-      z.boolean(),
-      z.array(z.any()),
-    ]),
-  ).optional(),
-  value: z.nullable(AssessmentsOrderSchemasValue$inboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "source_value": "sourceValue",
-  });
-});
-
-/** @internal */
-export type AssessmentsOrderType$Outbound = {
-  source_value?:
-    | AssessmentsOrderSchemas4$Outbound
-    | string
-    | number
-    | boolean
-    | Array<any>
-    | null
-    | undefined;
-  value?: string | null | undefined;
-};
-
-/** @internal */
-export const AssessmentsOrderType$outboundSchema: z.ZodType<
-  AssessmentsOrderType$Outbound,
-  z.ZodTypeDef,
-  AssessmentsOrderType
-> = z.object({
-  sourceValue: z.nullable(
-    z.union([
-      z.lazy(() => AssessmentsOrderSchemas4$outboundSchema),
-      z.string(),
-      z.number(),
-      z.boolean(),
-      z.array(z.any()),
-    ]),
-  ).optional(),
-  value: z.nullable(AssessmentsOrderSchemasValue$outboundSchema).optional(),
-}).transform((v) => {
-  return remap$(v, {
-    sourceValue: "source_value",
-  });
-});
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace AssessmentsOrderType$ {
-  /** @deprecated use `AssessmentsOrderType$inboundSchema` instead. */
-  export const inboundSchema = AssessmentsOrderType$inboundSchema;
-  /** @deprecated use `AssessmentsOrderType$outboundSchema` instead. */
-  export const outboundSchema = AssessmentsOrderType$outboundSchema;
-  /** @deprecated use `AssessmentsOrderType$Outbound` instead. */
-  export type Outbound = AssessmentsOrderType$Outbound;
-}
-
-export function assessmentsOrderTypeToJSON(
-  assessmentsOrderType: AssessmentsOrderType,
-): string {
-  return JSON.stringify(
-    AssessmentsOrderType$outboundSchema.parse(assessmentsOrderType),
-  );
-}
-
-export function assessmentsOrderTypeFromJSON(
-  jsonString: string,
-): SafeParseResult<AssessmentsOrderType, SDKValidationError> {
-  return safeParse(
-    jsonString,
-    (x) => AssessmentsOrderType$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'AssessmentsOrderType' from JSON`,
-  );
-}
-
-/** @internal */
 export const Package$inboundSchema: z.ZodType<Package, z.ZodTypeDef, unknown> =
   z.object({
     description: z.nullable(z.string()).optional(),
     id: z.nullable(z.string()).optional(),
     name: z.nullable(z.string()).optional(),
-    type: z.nullable(z.lazy(() => AssessmentsOrderType$inboundSchema))
-      .optional(),
   });
 
 /** @internal */
@@ -977,7 +683,6 @@ export type Package$Outbound = {
   description?: string | null | undefined;
   id?: string | null | undefined;
   name?: string | null | undefined;
-  type?: AssessmentsOrderType$Outbound | null | undefined;
 };
 
 /** @internal */
@@ -989,8 +694,6 @@ export const Package$outboundSchema: z.ZodType<
   description: z.nullable(z.string()).optional(),
   id: z.nullable(z.string()).optional(),
   name: z.nullable(z.string()).optional(),
-  type: z.nullable(z.lazy(() => AssessmentsOrderType$outboundSchema))
-    .optional(),
 });
 
 /**

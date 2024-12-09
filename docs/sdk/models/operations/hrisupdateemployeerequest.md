@@ -47,6 +47,7 @@ let value: HrisUpdateEmployeeRequest = {
     department: "Physics",
     departmentId: "3093",
     displayName: "Sir Issac Newton",
+    employeeNumber: "125",
     employmentContractType: {},
     employmentStatus: {},
     employmentType: {},

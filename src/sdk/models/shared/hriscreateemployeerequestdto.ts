@@ -9362,6 +9362,10 @@ export type HrisCreateEmployeeRequestDto = {
    */
   displayName?: string | null | undefined;
   /**
+   * The assigned employee number
+   */
+  employeeNumber?: string | null | undefined;
+  /**
    * The employment work schedule type (e.g., full-time, part-time)
    */
   employmentContractType?:
@@ -13506,6 +13510,7 @@ export const HrisCreateEmployeeRequestDto$inboundSchema: z.ZodType<
   department: z.nullable(z.string()).optional(),
   department_id: z.nullable(z.string()).optional(),
   display_name: z.nullable(z.string()).optional(),
+  employee_number: z.nullable(z.string()).optional(),
   employment_contract_type: z.nullable(
     z.lazy(() =>
       HrisCreateEmployeeRequestDtoEmploymentContractType$inboundSchema
@@ -13574,6 +13579,7 @@ export const HrisCreateEmployeeRequestDto$inboundSchema: z.ZodType<
     "date_of_birth": "dateOfBirth",
     "department_id": "departmentId",
     "display_name": "displayName",
+    "employee_number": "employeeNumber",
     "employment_contract_type": "employmentContractType",
     "employment_status": "employmentStatus",
     "employment_type": "employmentType",
@@ -13611,6 +13617,7 @@ export type HrisCreateEmployeeRequestDto$Outbound = {
   department?: string | null | undefined;
   department_id?: string | null | undefined;
   display_name?: string | null | undefined;
+  employee_number?: string | null | undefined;
   employment_contract_type?:
     | HrisCreateEmployeeRequestDtoEmploymentContractType$Outbound
     | null
@@ -13683,6 +13690,7 @@ export const HrisCreateEmployeeRequestDto$outboundSchema: z.ZodType<
   department: z.nullable(z.string()).optional(),
   departmentId: z.nullable(z.string()).optional(),
   displayName: z.nullable(z.string()).optional(),
+  employeeNumber: z.nullable(z.string()).optional(),
   employmentContractType: z.nullable(
     z.lazy(() =>
       HrisCreateEmployeeRequestDtoEmploymentContractType$outboundSchema
@@ -13745,6 +13753,7 @@ export const HrisCreateEmployeeRequestDto$outboundSchema: z.ZodType<
     dateOfBirth: "date_of_birth",
     departmentId: "department_id",
     displayName: "display_name",
+    employeeNumber: "employee_number",
     employmentContractType: "employment_contract_type",
     employmentStatus: "employment_status",
     employmentType: "employment_type",

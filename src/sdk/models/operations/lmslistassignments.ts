@@ -10,6 +10,15 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 /**
+ * Filter to select assignment by learning object type.
+ */
+export enum LearningObjectType {
+  Content = "content",
+  Course = "course",
+  Collection = "collection",
+}
+
+/**
  * LMS Assignment Filter
  */
 export type LmsListAssignmentsQueryParamFilter = {
@@ -20,7 +29,7 @@ export type LmsListAssignmentsQueryParamFilter = {
   /**
    * Filter to select assignment by learning object type.
    */
-  learningObjectType?: string | null | undefined;
+  learningObjectType?: LearningObjectType | null | undefined;
   /**
    * Use a string with a date to only select results updated after that given date
    */
@@ -98,13 +107,34 @@ export type LmsListAssignmentsResponse = {
 };
 
 /** @internal */
+export const LearningObjectType$inboundSchema: z.ZodNativeEnum<
+  typeof LearningObjectType
+> = z.nativeEnum(LearningObjectType);
+
+/** @internal */
+export const LearningObjectType$outboundSchema: z.ZodNativeEnum<
+  typeof LearningObjectType
+> = LearningObjectType$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace LearningObjectType$ {
+  /** @deprecated use `LearningObjectType$inboundSchema` instead. */
+  export const inboundSchema = LearningObjectType$inboundSchema;
+  /** @deprecated use `LearningObjectType$outboundSchema` instead. */
+  export const outboundSchema = LearningObjectType$outboundSchema;
+}
+
+/** @internal */
 export const LmsListAssignmentsQueryParamFilter$inboundSchema: z.ZodType<
   LmsListAssignmentsQueryParamFilter,
   z.ZodTypeDef,
   unknown
 > = z.object({
   completed: z.nullable(z.boolean()).optional(),
-  learning_object_type: z.nullable(z.string()).optional(),
+  learning_object_type: z.nullable(LearningObjectType$inboundSchema).optional(),
   updated_after: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -127,7 +157,7 @@ export const LmsListAssignmentsQueryParamFilter$outboundSchema: z.ZodType<
   LmsListAssignmentsQueryParamFilter
 > = z.object({
   completed: z.nullable(z.boolean()).optional(),
-  learningObjectType: z.nullable(z.string()).optional(),
+  learningObjectType: z.nullable(LearningObjectType$outboundSchema).optional(),
   updatedAfter: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {

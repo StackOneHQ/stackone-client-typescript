@@ -4,7 +4,7 @@
 
 ```typescript
 import { AtsGetBackgroundCheckRequestResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
-import { AssessmentsPackagesTestApiModelValue, BackgroundCheckOrderValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { BackgroundCheckOrderValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: AtsGetBackgroundCheckRequestResponse = {
   backgroundCheckOrderResult: {
@@ -61,10 +61,6 @@ let value: AtsGetBackgroundCheckRequestResponse = {
               "Skills test to gauge a candidate's proficiency in job-specific skills",
             id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
             name: "Test 1",
-            type: {
-              sourceValue: "key_responsibilities",
-              value: AssessmentsPackagesTestApiModelValue.Responsibilities,
-            },
           },
         ],
       },

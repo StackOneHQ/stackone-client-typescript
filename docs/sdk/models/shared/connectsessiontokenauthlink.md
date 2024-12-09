@@ -6,21 +6,21 @@
 import { ConnectSessionTokenAuthLink, ConnectSessionTokenAuthLinkCategories } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: ConnectSessionTokenAuthLink = {
-  authLinkUrl: "https://failing-dead.biz/",
+  authLinkUrl: "https://affectionate-captain.name/",
   categories: [
     ConnectSessionTokenAuthLinkCategories.Ats,
     ConnectSessionTokenAuthLinkCategories.Hris,
-    ConnectSessionTokenAuthLinkCategories.Hris,
+    ConnectSessionTokenAuthLinkCategories.Documents,
     ConnectSessionTokenAuthLinkCategories.Crm,
     ConnectSessionTokenAuthLinkCategories.Iam,
     ConnectSessionTokenAuthLinkCategories.Marketing,
     ConnectSessionTokenAuthLinkCategories.Lms,
-    ConnectSessionTokenAuthLinkCategories.Ats,
+    ConnectSessionTokenAuthLinkCategories.Documents,
     ConnectSessionTokenAuthLinkCategories.Documents,
   ],
-  createdAt: new Date("2022-05-07T13:41:56.227Z"),
-  id: 6184.80,
-  organizationId: 9742.56,
+  createdAt: new Date("2023-03-25T07:45:32.129Z"),
+  id: 1629.54,
+  organizationId: 6387.62,
   originOwnerId: "<id>",
   originOwnerName: "<value>",
   projectId: "<id>",

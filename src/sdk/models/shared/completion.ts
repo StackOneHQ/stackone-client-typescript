@@ -30,7 +30,7 @@ export enum CompletionValue {
 export type CompletionValueOpen = OpenEnum<typeof CompletionValue>;
 
 /**
- * The learning object type of the assignment
+ * The learning object type of the completion
  */
 export type CompletionLearningObjectType = {
   sourceValue?:
@@ -114,15 +114,15 @@ export type Completion = {
    */
   id?: string | null | undefined;
   /**
-   * The learning_object_external_reference associated with this assignment
+   * The external reference of the learning object associated with this completion
    */
   learningObjectExternalReference?: string | null | undefined;
   /**
-   * The learning_object_id associated with this assignment
+   * The id of the learning object associated with this completion
    */
   learningObjectId?: string | null | undefined;
   /**
-   * The learning object type of the assignment
+   * The learning object type of the completion
    */
   learningObjectType?: CompletionLearningObjectType | null | undefined;
   /**
@@ -148,7 +148,7 @@ export type Completion = {
    */
   remoteId?: string | null | undefined;
   /**
-   * Provider's unique identifier of the learning object related to the assignment
+   * Provider's unique identifier of the learning object related to the completion
    */
   remoteLearningObjectId?: string | null | undefined;
   /**

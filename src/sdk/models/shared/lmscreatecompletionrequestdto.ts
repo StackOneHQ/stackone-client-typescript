@@ -69,11 +69,11 @@ export type LmsCreateCompletionRequestDto = {
    */
   externalId?: string | null | undefined;
   /**
-   * The learning_object_external_reference associated with this assignment
+   * The external reference of the learning object associated with this completion
    */
   learningObjectExternalReference?: string | null | undefined;
   /**
-   * The learning_object_id associated with this assignment
+   * The id of the learning object associated with this completion
    */
   learningObjectId?: string | null | undefined;
   /**

@@ -70,7 +70,7 @@ export type Assignment = {
    */
   id?: string | null | undefined;
   /**
-   * The learning_object_external_reference associated with this assignment
+   * The external reference of the learning object associated with this assignment
    */
   learningObjectExternalReference?: string | null | undefined;
   /**
