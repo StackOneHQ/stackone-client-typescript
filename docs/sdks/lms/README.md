@@ -73,6 +73,7 @@ async function run() {
             },
           ],
           order: 1,
+          shortDescription: "This course is a valuable resource and acts as learning content for...",
           skills: [
             {
               id: "cx2367ndc8dgsbjhka9ry4",
@@ -141,6 +142,7 @@ async function run() {
             },
           ],
           order: 1,
+          shortDescription: "This course is a valuable resource and acts as learning content for...",
           skills: [
             {
               id: "cx2367ndc8dgsbjhka9ry4",
@@ -965,7 +967,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.lms.getContent({
-    fields: "id,remote_id,external_reference,course_ids,remote_course_ids,title,description,languages,content_url,content_type,cover_url,active,duration,order,categories,skills,updated_at,created_at",
+    fields: "id,remote_id,external_reference,course_ids,remote_course_ids,title,description,short_description,languages,content_url,content_type,cover_url,active,duration,order,categories,skills,updated_at,created_at",
     id: "<id>",
     xAccountId: "<value>",
   });
@@ -996,7 +998,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await lmsGetContent(stackOne, {
-    fields: "id,remote_id,external_reference,course_ids,remote_course_ids,title,description,languages,content_url,content_type,cover_url,active,duration,order,categories,skills,updated_at,created_at",
+    fields: "id,remote_id,external_reference,course_ids,remote_course_ids,title,description,short_description,languages,content_url,content_type,cover_url,active,duration,order,categories,skills,updated_at,created_at",
     id: "<id>",
     xAccountId: "<value>",
   });
@@ -1761,7 +1763,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.lms.listContent({
-    fields: "id,remote_id,external_reference,course_ids,remote_course_ids,title,description,languages,content_url,content_type,cover_url,active,duration,order,categories,skills,updated_at,created_at",
+    fields: "id,remote_id,external_reference,course_ids,remote_course_ids,title,description,short_description,languages,content_url,content_type,cover_url,active,duration,order,categories,skills,updated_at,created_at",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },
@@ -1795,7 +1797,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await lmsListContent(stackOne, {
-    fields: "id,remote_id,external_reference,course_ids,remote_course_ids,title,description,languages,content_url,content_type,cover_url,active,duration,order,categories,skills,updated_at,created_at",
+    fields: "id,remote_id,external_reference,course_ids,remote_course_ids,title,description,short_description,languages,content_url,content_type,cover_url,active,duration,order,categories,skills,updated_at,created_at",
     filter: {
       updatedAfter: "2020-01-01T00:00:00.000Z",
     },

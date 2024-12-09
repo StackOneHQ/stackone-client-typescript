@@ -294,7 +294,6 @@ Create Background Check Package
 
 ```typescript
 import { StackOne } from "@stackone/stackone-client-ts";
-import { CreateAssessmentsPackagesValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 const stackOne = new StackOne({
   security: {
@@ -315,18 +314,10 @@ async function run() {
         {
           description: "Skills test to gauge a candidate's proficiency in job-specific skills",
           name: "Test 1",
-          type: {
-            sourceValue: "key_responsibilities",
-            value: CreateAssessmentsPackagesValue.Responsibilities,
-          },
         },
         {
           description: "Skills test to gauge a candidate's proficiency in job-specific skills",
           name: "Test 1",
-          type: {
-            sourceValue: "key_responsibilities",
-            value: CreateAssessmentsPackagesValue.Responsibilities,
-          },
         },
       ],
     },
@@ -347,7 +338,6 @@ The standalone function version of this method:
 ```typescript
 import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
 import { atsCreateBackgroundCheckPackage } from "@stackone/stackone-client-ts/funcs/atsCreateBackgroundCheckPackage.js";
-import { CreateAssessmentsPackagesValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 // Use `StackOneCore` for best tree-shaking performance.
 // You can create one instance of it to use across an application.
@@ -370,18 +360,10 @@ async function run() {
         {
           description: "Skills test to gauge a candidate's proficiency in job-specific skills",
           name: "Test 1",
-          type: {
-            sourceValue: "key_responsibilities",
-            value: CreateAssessmentsPackagesValue.Responsibilities,
-          },
         },
         {
           description: "Skills test to gauge a candidate's proficiency in job-specific skills",
           name: "Test 1",
-          type: {
-            sourceValue: "key_responsibilities",
-            value: CreateAssessmentsPackagesValue.Responsibilities,
-          },
         },
       ],
     },
@@ -2094,7 +2076,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.ats.getBackgroundCheckResult({
-    fields: "id,remote_id,candidate,start_date,submission_date,summary,result,result_url,attachments",
+    fields: "id,remote_id,candidate,score,start_date,submission_date,summary,result,result_url,attachments",
     id: "<id>",
     xAccountId: "<id>",
   });
@@ -2125,7 +2107,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await atsGetBackgroundCheckResult(stackOne, {
-    fields: "id,remote_id,candidate,start_date,submission_date,summary,result,result_url,attachments",
+    fields: "id,remote_id,candidate,score,start_date,submission_date,summary,result,result_url,attachments",
     id: "<id>",
     xAccountId: "<id>",
   });

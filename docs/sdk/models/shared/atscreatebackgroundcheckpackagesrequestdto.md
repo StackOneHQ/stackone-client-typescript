@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { AtsCreateBackgroundCheckPackagesRequestDto, CreateAssessmentsPackagesValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { AtsCreateBackgroundCheckPackagesRequestDto } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: AtsCreateBackgroundCheckPackagesRequestDto = {
   description: "Standard background package for hires",
@@ -16,10 +16,6 @@ let value: AtsCreateBackgroundCheckPackagesRequestDto = {
       description:
         "Skills test to gauge a candidate's proficiency in job-specific skills",
       name: "Test 1",
-      type: {
-        sourceValue: "key_responsibilities",
-        value: CreateAssessmentsPackagesValue.Responsibilities,
-      },
     },
   ],
 };

@@ -1,6 +1,6 @@
 # CompletionLearningObjectType
 
-The learning object type of the assignment
+The learning object type of the completion
 
 ## Example Usage
 

@@ -121,11 +121,11 @@ export namespace RequiredT$ {
   export type Outbound = RequiredT$Outbound;
 }
 
-export function requiredTToJSON(requiredT: RequiredT): string {
+export function requiredToJSON(requiredT: RequiredT): string {
   return JSON.stringify(RequiredT$outboundSchema.parse(requiredT));
 }
 
-export function requiredTFromJSON(
+export function requiredFromJSON(
   jsonString: string,
 ): SafeParseResult<RequiredT, SDKValidationError> {
   return safeParse(

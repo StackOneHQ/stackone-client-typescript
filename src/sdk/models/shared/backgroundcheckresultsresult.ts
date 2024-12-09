@@ -76,6 +76,25 @@ export type BackgroundCheckResultsResultResult = {
   value?: BackgroundCheckResultsResultValueOpen | null | undefined;
 };
 
+export type BackgroundCheckResultsResultScore = {
+  /**
+   * The label of the score
+   */
+  label?: string | null | undefined;
+  /**
+   * The maximum value of the score
+   */
+  max?: string | null | undefined;
+  /**
+   * The minimum value of the score
+   */
+  min?: string | null | undefined;
+  /**
+   * The value is the actual score
+   */
+  value?: string | null | undefined;
+};
+
 export type BackgroundCheckResultsResult = {
   attachments?: Array<AssessmentsAttachment> | null | undefined;
   candidate?: BackgroundCheckResultsResultCandidate | null | undefined;
@@ -92,6 +111,7 @@ export type BackgroundCheckResultsResult = {
    * The test`s result url
    */
   resultUrl?: string | null | undefined;
+  score?: BackgroundCheckResultsResultScore | null | undefined;
   /**
    * The start date of the candidate test
    */
@@ -429,6 +449,72 @@ export function backgroundCheckResultsResultResultFromJSON(
 }
 
 /** @internal */
+export const BackgroundCheckResultsResultScore$inboundSchema: z.ZodType<
+  BackgroundCheckResultsResultScore,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  label: z.nullable(z.string()).optional(),
+  max: z.nullable(z.string()).optional(),
+  min: z.nullable(z.string()).optional(),
+  value: z.nullable(z.string()).optional(),
+});
+
+/** @internal */
+export type BackgroundCheckResultsResultScore$Outbound = {
+  label?: string | null | undefined;
+  max?: string | null | undefined;
+  min?: string | null | undefined;
+  value?: string | null | undefined;
+};
+
+/** @internal */
+export const BackgroundCheckResultsResultScore$outboundSchema: z.ZodType<
+  BackgroundCheckResultsResultScore$Outbound,
+  z.ZodTypeDef,
+  BackgroundCheckResultsResultScore
+> = z.object({
+  label: z.nullable(z.string()).optional(),
+  max: z.nullable(z.string()).optional(),
+  min: z.nullable(z.string()).optional(),
+  value: z.nullable(z.string()).optional(),
+});
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace BackgroundCheckResultsResultScore$ {
+  /** @deprecated use `BackgroundCheckResultsResultScore$inboundSchema` instead. */
+  export const inboundSchema = BackgroundCheckResultsResultScore$inboundSchema;
+  /** @deprecated use `BackgroundCheckResultsResultScore$outboundSchema` instead. */
+  export const outboundSchema =
+    BackgroundCheckResultsResultScore$outboundSchema;
+  /** @deprecated use `BackgroundCheckResultsResultScore$Outbound` instead. */
+  export type Outbound = BackgroundCheckResultsResultScore$Outbound;
+}
+
+export function backgroundCheckResultsResultScoreToJSON(
+  backgroundCheckResultsResultScore: BackgroundCheckResultsResultScore,
+): string {
+  return JSON.stringify(
+    BackgroundCheckResultsResultScore$outboundSchema.parse(
+      backgroundCheckResultsResultScore,
+    ),
+  );
+}
+
+export function backgroundCheckResultsResultScoreFromJSON(
+  jsonString: string,
+): SafeParseResult<BackgroundCheckResultsResultScore, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => BackgroundCheckResultsResultScore$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'BackgroundCheckResultsResultScore' from JSON`,
+  );
+}
+
+/** @internal */
 export const BackgroundCheckResultsResult$inboundSchema: z.ZodType<
   BackgroundCheckResultsResult,
   z.ZodTypeDef,
@@ -445,6 +531,9 @@ export const BackgroundCheckResultsResult$inboundSchema: z.ZodType<
     z.lazy(() => BackgroundCheckResultsResultResult$inboundSchema),
   ).optional(),
   result_url: z.nullable(z.string()).optional(),
+  score: z.nullable(
+    z.lazy(() => BackgroundCheckResultsResultScore$inboundSchema),
+  ).optional(),
   start_date: z.nullable(
     z.string().datetime({ offset: true }).transform(v => new Date(v)),
   ).optional(),
@@ -469,6 +558,7 @@ export type BackgroundCheckResultsResult$Outbound = {
   remote_id?: string | null | undefined;
   result?: BackgroundCheckResultsResultResult$Outbound | null | undefined;
   result_url?: string | null | undefined;
+  score?: BackgroundCheckResultsResultScore$Outbound | null | undefined;
   start_date?: string | null | undefined;
   submission_date?: string | null | undefined;
   summary?: string | null | undefined;
@@ -491,6 +581,9 @@ export const BackgroundCheckResultsResult$outboundSchema: z.ZodType<
     z.lazy(() => BackgroundCheckResultsResultResult$outboundSchema),
   ).optional(),
   resultUrl: z.nullable(z.string()).optional(),
+  score: z.nullable(
+    z.lazy(() => BackgroundCheckResultsResultScore$outboundSchema),
+  ).optional(),
   startDate: z.nullable(z.date().transform(v => v.toISOString())).optional(),
   submissionDate: z.nullable(z.date().transform(v => v.toISOString()))
     .optional(),

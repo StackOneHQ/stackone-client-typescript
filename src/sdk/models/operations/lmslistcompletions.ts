@@ -10,13 +10,22 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 /**
+ * Filter to select completions by learning object type.
+ */
+export enum QueryParamLearningObjectType {
+  Content = "content",
+  Course = "course",
+  Collection = "collection",
+}
+
+/**
  * LMS Completions Filter
  */
 export type LmsListCompletionsQueryParamFilter = {
   /**
    * Filter to select completions by learning object type.
    */
-  learningObjectType?: string | null | undefined;
+  learningObjectType?: QueryParamLearningObjectType | null | undefined;
   /**
    * Use a string with a date to only select results updated after that given date
    */
@@ -86,12 +95,34 @@ export type LmsListCompletionsResponse = {
 };
 
 /** @internal */
+export const QueryParamLearningObjectType$inboundSchema: z.ZodNativeEnum<
+  typeof QueryParamLearningObjectType
+> = z.nativeEnum(QueryParamLearningObjectType);
+
+/** @internal */
+export const QueryParamLearningObjectType$outboundSchema: z.ZodNativeEnum<
+  typeof QueryParamLearningObjectType
+> = QueryParamLearningObjectType$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace QueryParamLearningObjectType$ {
+  /** @deprecated use `QueryParamLearningObjectType$inboundSchema` instead. */
+  export const inboundSchema = QueryParamLearningObjectType$inboundSchema;
+  /** @deprecated use `QueryParamLearningObjectType$outboundSchema` instead. */
+  export const outboundSchema = QueryParamLearningObjectType$outboundSchema;
+}
+
+/** @internal */
 export const LmsListCompletionsQueryParamFilter$inboundSchema: z.ZodType<
   LmsListCompletionsQueryParamFilter,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  learning_object_type: z.nullable(z.string()).optional(),
+  learning_object_type: z.nullable(QueryParamLearningObjectType$inboundSchema)
+    .optional(),
   updated_after: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -112,7 +143,8 @@ export const LmsListCompletionsQueryParamFilter$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   LmsListCompletionsQueryParamFilter
 > = z.object({
-  learningObjectType: z.nullable(z.string()).optional(),
+  learningObjectType: z.nullable(QueryParamLearningObjectType$outboundSchema)
+    .optional(),
   updatedAfter: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {

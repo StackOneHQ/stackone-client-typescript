@@ -1016,7 +1016,7 @@ actions:
             async function run() {
               const result = await stackOne.ats.getBackgroundCheckResult({
                 id: "<id>",
-                fields: "id,remote_id,candidate,start_date,submission_date,summary,result,result_url,attachments",
+                fields: "id,remote_id,candidate,score,start_date,submission_date,summary,result,result_url,attachments",
                 xAccountId: "<id>",
               });
 
@@ -1062,7 +1062,6 @@ actions:
           label: ats_create_background_check_package
           source: |-
             import { StackOne } from "@stackone/stackone-client-ts";
-            import { CreateAssessmentsPackagesValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
             const stackOne = new StackOne({
               security: {
@@ -1080,18 +1079,10 @@ actions:
                   tests: [
                     {
                       name: "Test 1",
-                      type: {
-                        value: CreateAssessmentsPackagesValue.Responsibilities,
-                        sourceValue: "key_responsibilities",
-                      },
                       description: "Skills test to gauge a candidate's proficiency in job-specific skills",
                     },
                     {
                       name: "Test 1",
-                      type: {
-                        value: CreateAssessmentsPackagesValue.Responsibilities,
-                        sourceValue: "key_responsibilities",
-                      },
                       description: "Skills test to gauge a candidate's proficiency in job-specific skills",
                     },
                   ],
@@ -3184,6 +3175,7 @@ actions:
                       updatedAt: new Date("2021-01-01T00:00:00Z"),
                     },
                   ],
+                  employeeNumber: "125",
                   nationalIdentityNumber: {
                     value: "123456789",
                     type: {
@@ -3352,6 +3344,7 @@ actions:
                       updatedAt: new Date("2021-01-01T00:00:00Z"),
                     },
                   ],
+                  employeeNumber: "125",
                   nationalIdentityNumber: {
                     value: "123456789",
                     type: {
@@ -5058,7 +5051,7 @@ actions:
 
             async function run() {
               const result = await stackOne.lms.listContent({
-                fields: "id,remote_id,external_reference,course_ids,remote_course_ids,title,description,languages,content_url,content_type,cover_url,active,duration,order,categories,skills,updated_at,created_at",
+                fields: "id,remote_id,external_reference,course_ids,remote_course_ids,title,description,short_description,languages,content_url,content_type,cover_url,active,duration,order,categories,skills,updated_at,created_at",
                 filter: {
                   updatedAfter: "2020-01-01T00:00:00.000Z",
                 },
@@ -5101,6 +5094,7 @@ actions:
                   ],
                   title: "Software Engineer Lv 1",
                   description: "This video acts as learning content for software engineers.",
+                  shortDescription: "This course is a valuable resource and acts as learning content for...",
                   languages: [
                     {
                       value: LanguageEnumValue.EnGB,
@@ -5163,6 +5157,7 @@ actions:
                       ],
                       title: "Software Engineer Lv 1",
                       description: "This video acts as learning content for software engineers.",
+                      shortDescription: "This course is a valuable resource and acts as learning content for...",
                       languages: [
                         {
                           value: LanguageEnumValue.EnGB,
@@ -5200,6 +5195,7 @@ actions:
                       ],
                       title: "Software Engineer Lv 1",
                       description: "This video acts as learning content for software engineers.",
+                      shortDescription: "This course is a valuable resource and acts as learning content for...",
                       languages: [
                         {
                           value: LanguageEnumValue.EnGB,
@@ -5250,7 +5246,7 @@ actions:
             async function run() {
               const result = await stackOne.lms.getContent({
                 id: "<id>",
-                fields: "id,remote_id,external_reference,course_ids,remote_course_ids,title,description,languages,content_url,content_type,cover_url,active,duration,order,categories,skills,updated_at,created_at",
+                fields: "id,remote_id,external_reference,course_ids,remote_course_ids,title,description,short_description,languages,content_url,content_type,cover_url,active,duration,order,categories,skills,updated_at,created_at",
                 xAccountId: "<id>",
               });
 

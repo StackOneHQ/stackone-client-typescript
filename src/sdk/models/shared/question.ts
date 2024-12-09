@@ -75,6 +75,10 @@ export type ParentQuestion = {
    * Provider's unique identifier
    */
   remoteId?: string | null | undefined;
+  /**
+   * Provider's list of parent questions's option IDs
+   */
+  remoteOptionIds?: Array<string> | null | undefined;
 };
 
 export enum Question2 {
@@ -393,11 +397,13 @@ export const ParentQuestion$inboundSchema: z.ZodType<
   id: z.nullable(z.string()).optional(),
   option_ids: z.nullable(z.array(z.string())).optional(),
   remote_id: z.nullable(z.string()).optional(),
+  remote_option_ids: z.nullable(z.array(z.string())).optional(),
 }).transform((v) => {
   return remap$(v, {
     "condition_type": "conditionType",
     "option_ids": "optionIds",
     "remote_id": "remoteId",
+    "remote_option_ids": "remoteOptionIds",
   });
 });
 
@@ -407,6 +413,7 @@ export type ParentQuestion$Outbound = {
   id?: string | null | undefined;
   option_ids?: Array<string> | null | undefined;
   remote_id?: string | null | undefined;
+  remote_option_ids?: Array<string> | null | undefined;
 };
 
 /** @internal */
@@ -420,11 +427,13 @@ export const ParentQuestion$outboundSchema: z.ZodType<
   id: z.nullable(z.string()).optional(),
   optionIds: z.nullable(z.array(z.string())).optional(),
   remoteId: z.nullable(z.string()).optional(),
+  remoteOptionIds: z.nullable(z.array(z.string())).optional(),
 }).transform((v) => {
   return remap$(v, {
     conditionType: "condition_type",
     optionIds: "option_ids",
     remoteId: "remote_id",
+    remoteOptionIds: "remote_option_ids",
   });
 });
 

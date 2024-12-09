@@ -120,6 +120,10 @@ export type Content = {
    */
   remoteId?: string | null | undefined;
   /**
+   * A short description or summary for the content
+   */
+  shortDescription?: string | null | undefined;
+  /**
    * The skills associated with this course
    */
   skills?: Array<Skills> | null | undefined;
@@ -380,6 +384,7 @@ export const Content$inboundSchema: z.ZodType<Content, z.ZodTypeDef, unknown> =
     order: z.nullable(z.number()).optional(),
     remote_course_ids: z.nullable(z.array(z.string())).optional(),
     remote_id: z.nullable(z.string()).optional(),
+    short_description: z.nullable(z.string()).optional(),
     skills: z.nullable(z.array(Skills$inboundSchema)).optional(),
     title: z.nullable(z.string()).optional(),
     unified_custom_fields: z.nullable(z.record(z.any())).optional(),
@@ -392,6 +397,7 @@ export const Content$inboundSchema: z.ZodType<Content, z.ZodTypeDef, unknown> =
       "external_reference": "externalReference",
       "remote_course_ids": "remoteCourseIds",
       "remote_id": "remoteId",
+      "short_description": "shortDescription",
       "unified_custom_fields": "unifiedCustomFields",
     });
   });
@@ -412,6 +418,7 @@ export type Content$Outbound = {
   order?: number | null | undefined;
   remote_course_ids?: Array<string> | null | undefined;
   remote_id?: string | null | undefined;
+  short_description?: string | null | undefined;
   skills?: Array<Skills$Outbound> | null | undefined;
   title?: string | null | undefined;
   unified_custom_fields?: { [k: string]: any } | null | undefined;
@@ -438,6 +445,7 @@ export const Content$outboundSchema: z.ZodType<
   order: z.nullable(z.number()).optional(),
   remoteCourseIds: z.nullable(z.array(z.string())).optional(),
   remoteId: z.nullable(z.string()).optional(),
+  shortDescription: z.nullable(z.string()).optional(),
   skills: z.nullable(z.array(Skills$outboundSchema)).optional(),
   title: z.nullable(z.string()).optional(),
   unifiedCustomFields: z.nullable(z.record(z.any())).optional(),
@@ -450,6 +458,7 @@ export const Content$outboundSchema: z.ZodType<
     externalReference: "external_reference",
     remoteCourseIds: "remote_course_ids",
     remoteId: "remote_id",
+    shortDescription: "short_description",
     unifiedCustomFields: "unified_custom_fields",
   });
 });
