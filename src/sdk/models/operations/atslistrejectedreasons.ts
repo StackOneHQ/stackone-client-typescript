@@ -73,6 +73,7 @@ export type AtsListRejectedReasonsResponse = {
    * HTTP response content type for this operation
    */
   contentType: string;
+  headers: { [k: string]: Array<string> };
   /**
    * The list of rejected reasons was retrieved.
    */
@@ -263,6 +264,7 @@ export const AtsListRejectedReasonsResponse$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   ContentType: z.string(),
+  Headers: z.record(z.array(z.string())),
   RejectedReasonsPaginated: shared.RejectedReasonsPaginated$inboundSchema
     .optional(),
   StatusCode: z.number().int(),
@@ -270,6 +272,7 @@ export const AtsListRejectedReasonsResponse$inboundSchema: z.ZodType<
 }).transform((v) => {
   return remap$(v, {
     "ContentType": "contentType",
+    "Headers": "headers",
     "RejectedReasonsPaginated": "rejectedReasonsPaginated",
     "StatusCode": "statusCode",
     "RawResponse": "rawResponse",
@@ -279,6 +282,7 @@ export const AtsListRejectedReasonsResponse$inboundSchema: z.ZodType<
 /** @internal */
 export type AtsListRejectedReasonsResponse$Outbound = {
   ContentType: string;
+  Headers: { [k: string]: Array<string> };
   RejectedReasonsPaginated?:
     | shared.RejectedReasonsPaginated$Outbound
     | undefined;
@@ -293,6 +297,7 @@ export const AtsListRejectedReasonsResponse$outboundSchema: z.ZodType<
   AtsListRejectedReasonsResponse
 > = z.object({
   contentType: z.string(),
+  headers: z.record(z.array(z.string())),
   rejectedReasonsPaginated: shared.RejectedReasonsPaginated$outboundSchema
     .optional(),
   statusCode: z.number().int(),
@@ -302,6 +307,7 @@ export const AtsListRejectedReasonsResponse$outboundSchema: z.ZodType<
 }).transform((v) => {
   return remap$(v, {
     contentType: "ContentType",
+    headers: "Headers",
     rejectedReasonsPaginated: "RejectedReasonsPaginated",
     statusCode: "StatusCode",
     rawResponse: "RawResponse",

@@ -22,6 +22,7 @@ export type LmsUpsertContentResponse = {
    * HTTP response content type for this operation
    */
   contentType: string;
+  headers: { [k: string]: Array<string> };
   /**
    * HTTP response status code for this operation
    */
@@ -110,12 +111,14 @@ export const LmsUpsertContentResponse$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   ContentType: z.string(),
+  Headers: z.record(z.array(z.string())),
   StatusCode: z.number().int(),
   RawResponse: z.instanceof(Response),
   UpsertResult: shared.UpsertResult$inboundSchema.optional(),
 }).transform((v) => {
   return remap$(v, {
     "ContentType": "contentType",
+    "Headers": "headers",
     "StatusCode": "statusCode",
     "RawResponse": "rawResponse",
     "UpsertResult": "upsertResult",
@@ -125,6 +128,7 @@ export const LmsUpsertContentResponse$inboundSchema: z.ZodType<
 /** @internal */
 export type LmsUpsertContentResponse$Outbound = {
   ContentType: string;
+  Headers: { [k: string]: Array<string> };
   StatusCode: number;
   RawResponse: never;
   UpsertResult?: shared.UpsertResult$Outbound | undefined;
@@ -137,6 +141,7 @@ export const LmsUpsertContentResponse$outboundSchema: z.ZodType<
   LmsUpsertContentResponse
 > = z.object({
   contentType: z.string(),
+  headers: z.record(z.array(z.string())),
   statusCode: z.number().int(),
   rawResponse: z.instanceof(Response).transform(() => {
     throw new Error("Response cannot be serialized");
@@ -145,6 +150,7 @@ export const LmsUpsertContentResponse$outboundSchema: z.ZodType<
 }).transform((v) => {
   return remap$(v, {
     contentType: "ContentType",
+    headers: "Headers",
     statusCode: "StatusCode",
     rawResponse: "RawResponse",
     upsertResult: "UpsertResult",

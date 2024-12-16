@@ -38,6 +38,7 @@ export type AtsGetAssessmentsResultResponse = {
    * HTTP response content type for this operation
    */
   contentType: string;
+  headers: { [k: string]: Array<string> };
   /**
    * HTTP response status code for this operation
    */
@@ -133,12 +134,14 @@ export const AtsGetAssessmentsResultResponse$inboundSchema: z.ZodType<
   AssessmentsResultsResult: shared.AssessmentsResultsResult$inboundSchema
     .optional(),
   ContentType: z.string(),
+  Headers: z.record(z.array(z.string())),
   StatusCode: z.number().int(),
   RawResponse: z.instanceof(Response),
 }).transform((v) => {
   return remap$(v, {
     "AssessmentsResultsResult": "assessmentsResultsResult",
     "ContentType": "contentType",
+    "Headers": "headers",
     "StatusCode": "statusCode",
     "RawResponse": "rawResponse",
   });
@@ -150,6 +153,7 @@ export type AtsGetAssessmentsResultResponse$Outbound = {
     | shared.AssessmentsResultsResult$Outbound
     | undefined;
   ContentType: string;
+  Headers: { [k: string]: Array<string> };
   StatusCode: number;
   RawResponse: never;
 };
@@ -163,6 +167,7 @@ export const AtsGetAssessmentsResultResponse$outboundSchema: z.ZodType<
   assessmentsResultsResult: shared.AssessmentsResultsResult$outboundSchema
     .optional(),
   contentType: z.string(),
+  headers: z.record(z.array(z.string())),
   statusCode: z.number().int(),
   rawResponse: z.instanceof(Response).transform(() => {
     throw new Error("Response cannot be serialized");
@@ -171,6 +176,7 @@ export const AtsGetAssessmentsResultResponse$outboundSchema: z.ZodType<
   return remap$(v, {
     assessmentsResultsResult: "AssessmentsResultsResult",
     contentType: "ContentType",
+    headers: "Headers",
     statusCode: "StatusCode",
     rawResponse: "RawResponse",
   });

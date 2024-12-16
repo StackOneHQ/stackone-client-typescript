@@ -38,6 +38,7 @@ export type IamGetGroupResponse = {
    * HTTP response content type for this operation
    */
   contentType: string;
+  headers: { [k: string]: Array<string> };
   /**
    * The group with the given identifier was retrieved.
    */
@@ -136,12 +137,14 @@ export const IamGetGroupResponse$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   ContentType: z.string(),
+  Headers: z.record(z.array(z.string())),
   IamGroupResult: shared.IamGroupResult$inboundSchema.optional(),
   StatusCode: z.number().int(),
   RawResponse: z.instanceof(Response),
 }).transform((v) => {
   return remap$(v, {
     "ContentType": "contentType",
+    "Headers": "headers",
     "IamGroupResult": "iamGroupResult",
     "StatusCode": "statusCode",
     "RawResponse": "rawResponse",
@@ -151,6 +154,7 @@ export const IamGetGroupResponse$inboundSchema: z.ZodType<
 /** @internal */
 export type IamGetGroupResponse$Outbound = {
   ContentType: string;
+  Headers: { [k: string]: Array<string> };
   IamGroupResult?: shared.IamGroupResult$Outbound | undefined;
   StatusCode: number;
   RawResponse: never;
@@ -163,6 +167,7 @@ export const IamGetGroupResponse$outboundSchema: z.ZodType<
   IamGetGroupResponse
 > = z.object({
   contentType: z.string(),
+  headers: z.record(z.array(z.string())),
   iamGroupResult: shared.IamGroupResult$outboundSchema.optional(),
   statusCode: z.number().int(),
   rawResponse: z.instanceof(Response).transform(() => {
@@ -171,6 +176,7 @@ export const IamGetGroupResponse$outboundSchema: z.ZodType<
 }).transform((v) => {
   return remap$(v, {
     contentType: "ContentType",
+    headers: "Headers",
     iamGroupResult: "IamGroupResult",
     statusCode: "StatusCode",
     rawResponse: "RawResponse",

@@ -34,6 +34,7 @@ export type LmsGetSkillResponse = {
    * HTTP response content type for this operation
    */
   contentType: string;
+  headers: { [k: string]: Array<string> };
   /**
    * The skill with the given identifier was retrieved.
    */
@@ -129,12 +130,14 @@ export const LmsGetSkillResponse$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   ContentType: z.string(),
+  Headers: z.record(z.array(z.string())),
   SkillResult: shared.SkillResult$inboundSchema.optional(),
   StatusCode: z.number().int(),
   RawResponse: z.instanceof(Response),
 }).transform((v) => {
   return remap$(v, {
     "ContentType": "contentType",
+    "Headers": "headers",
     "SkillResult": "skillResult",
     "StatusCode": "statusCode",
     "RawResponse": "rawResponse",
@@ -144,6 +147,7 @@ export const LmsGetSkillResponse$inboundSchema: z.ZodType<
 /** @internal */
 export type LmsGetSkillResponse$Outbound = {
   ContentType: string;
+  Headers: { [k: string]: Array<string> };
   SkillResult?: shared.SkillResult$Outbound | undefined;
   StatusCode: number;
   RawResponse: never;
@@ -156,6 +160,7 @@ export const LmsGetSkillResponse$outboundSchema: z.ZodType<
   LmsGetSkillResponse
 > = z.object({
   contentType: z.string(),
+  headers: z.record(z.array(z.string())),
   skillResult: shared.SkillResult$outboundSchema.optional(),
   statusCode: z.number().int(),
   rawResponse: z.instanceof(Response).transform(() => {
@@ -164,6 +169,7 @@ export const LmsGetSkillResponse$outboundSchema: z.ZodType<
 }).transform((v) => {
   return remap$(v, {
     contentType: "ContentType",
+    headers: "Headers",
     skillResult: "SkillResult",
     statusCode: "StatusCode",
     rawResponse: "RawResponse",

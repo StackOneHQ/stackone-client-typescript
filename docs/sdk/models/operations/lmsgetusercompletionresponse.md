@@ -25,7 +25,12 @@ let value: LmsGetUserCompletionResponse = {
     },
   },
   contentType: "<value>",
-  statusCode: 102,
+  headers: {
+    "key": [
+      "<value>",
+    ],
+  },
+  statusCode: 507,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),
@@ -38,5 +43,6 @@ let value: LmsGetUserCompletionResponse = {
 | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
 | `completionResult`                                                        | [shared.CompletionResult](../../../sdk/models/shared/completionresult.md) | :heavy_minus_sign:                                                        | The completion with the given identifier was retrieved.                   |
 | `contentType`                                                             | *string*                                                                  | :heavy_check_mark:                                                        | HTTP response content type for this operation                             |
+| `headers`                                                                 | Record<string, *string*[]>                                                | :heavy_check_mark:                                                        | N/A                                                                       |
 | `statusCode`                                                              | *number*                                                                  | :heavy_check_mark:                                                        | HTTP response status code for this operation                              |
 | `rawResponse`                                                             | [Response](https://developer.mozilla.org/en-US/docs/Web/API/Response)     | :heavy_check_mark:                                                        | Raw HTTP response; suitable for custom response parsing                   |

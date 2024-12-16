@@ -18,6 +18,7 @@ export type StackoneAuthenticateConnectSessionResponse = {
    * HTTP response content type for this operation
    */
   contentType: string;
+  headers: { [k: string]: Array<string> };
   /**
    * HTTP response status code for this operation
    */
@@ -34,12 +35,14 @@ export const StackoneAuthenticateConnectSessionResponse$inboundSchema:
     z.object({
       ConnectSession: shared.ConnectSession$inboundSchema.optional(),
       ContentType: z.string(),
+      Headers: z.record(z.array(z.string())),
       StatusCode: z.number().int(),
       RawResponse: z.instanceof(Response),
     }).transform((v) => {
       return remap$(v, {
         "ConnectSession": "connectSession",
         "ContentType": "contentType",
+        "Headers": "headers",
         "StatusCode": "statusCode",
         "RawResponse": "rawResponse",
       });
@@ -49,6 +52,7 @@ export const StackoneAuthenticateConnectSessionResponse$inboundSchema:
 export type StackoneAuthenticateConnectSessionResponse$Outbound = {
   ConnectSession?: shared.ConnectSession$Outbound | undefined;
   ContentType: string;
+  Headers: { [k: string]: Array<string> };
   StatusCode: number;
   RawResponse: never;
 };
@@ -62,6 +66,7 @@ export const StackoneAuthenticateConnectSessionResponse$outboundSchema:
   > = z.object({
     connectSession: shared.ConnectSession$outboundSchema.optional(),
     contentType: z.string(),
+    headers: z.record(z.array(z.string())),
     statusCode: z.number().int(),
     rawResponse: z.instanceof(Response).transform(() => {
       throw new Error("Response cannot be serialized");
@@ -70,6 +75,7 @@ export const StackoneAuthenticateConnectSessionResponse$outboundSchema:
     return remap$(v, {
       connectSession: "ConnectSession",
       contentType: "ContentType",
+      headers: "Headers",
       statusCode: "StatusCode",
       rawResponse: "RawResponse",
     });

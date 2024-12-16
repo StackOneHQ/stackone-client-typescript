@@ -71,6 +71,7 @@ export type HrisListGroupsResponse = {
    * The list of groups was retrieved.
    */
   hrisGroupsPaginated?: shared.HRISGroupsPaginated | undefined;
+  headers: { [k: string]: Array<string> };
   /**
    * HTTP response status code for this operation
    */
@@ -246,12 +247,14 @@ export const HrisListGroupsResponse$inboundSchema: z.ZodType<
 > = z.object({
   ContentType: z.string(),
   HRISGroupsPaginated: shared.HRISGroupsPaginated$inboundSchema.optional(),
+  Headers: z.record(z.array(z.string())),
   StatusCode: z.number().int(),
   RawResponse: z.instanceof(Response),
 }).transform((v) => {
   return remap$(v, {
     "ContentType": "contentType",
     "HRISGroupsPaginated": "hrisGroupsPaginated",
+    "Headers": "headers",
     "StatusCode": "statusCode",
     "RawResponse": "rawResponse",
   });
@@ -261,6 +264,7 @@ export const HrisListGroupsResponse$inboundSchema: z.ZodType<
 export type HrisListGroupsResponse$Outbound = {
   ContentType: string;
   HRISGroupsPaginated?: shared.HRISGroupsPaginated$Outbound | undefined;
+  Headers: { [k: string]: Array<string> };
   StatusCode: number;
   RawResponse: never;
 };
@@ -273,6 +277,7 @@ export const HrisListGroupsResponse$outboundSchema: z.ZodType<
 > = z.object({
   contentType: z.string(),
   hrisGroupsPaginated: shared.HRISGroupsPaginated$outboundSchema.optional(),
+  headers: z.record(z.array(z.string())),
   statusCode: z.number().int(),
   rawResponse: z.instanceof(Response).transform(() => {
     throw new Error("Response cannot be serialized");
@@ -281,6 +286,7 @@ export const HrisListGroupsResponse$outboundSchema: z.ZodType<
   return remap$(v, {
     contentType: "ContentType",
     hrisGroupsPaginated: "HRISGroupsPaginated",
+    headers: "Headers",
     statusCode: "StatusCode",
     rawResponse: "RawResponse",
   });

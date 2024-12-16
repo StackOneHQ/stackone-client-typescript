@@ -38,6 +38,7 @@ export type HrisGetCostCenterGroupResponse = {
    * The cost center group with the given identifier was retrieved.
    */
   hrisCostCenterResult?: shared.HRISCostCenterResult | undefined;
+  headers: { [k: string]: Array<string> };
   /**
    * HTTP response status code for this operation
    */
@@ -132,12 +133,14 @@ export const HrisGetCostCenterGroupResponse$inboundSchema: z.ZodType<
 > = z.object({
   ContentType: z.string(),
   HRISCostCenterResult: shared.HRISCostCenterResult$inboundSchema.optional(),
+  Headers: z.record(z.array(z.string())),
   StatusCode: z.number().int(),
   RawResponse: z.instanceof(Response),
 }).transform((v) => {
   return remap$(v, {
     "ContentType": "contentType",
     "HRISCostCenterResult": "hrisCostCenterResult",
+    "Headers": "headers",
     "StatusCode": "statusCode",
     "RawResponse": "rawResponse",
   });
@@ -147,6 +150,7 @@ export const HrisGetCostCenterGroupResponse$inboundSchema: z.ZodType<
 export type HrisGetCostCenterGroupResponse$Outbound = {
   ContentType: string;
   HRISCostCenterResult?: shared.HRISCostCenterResult$Outbound | undefined;
+  Headers: { [k: string]: Array<string> };
   StatusCode: number;
   RawResponse: never;
 };
@@ -159,6 +163,7 @@ export const HrisGetCostCenterGroupResponse$outboundSchema: z.ZodType<
 > = z.object({
   contentType: z.string(),
   hrisCostCenterResult: shared.HRISCostCenterResult$outboundSchema.optional(),
+  headers: z.record(z.array(z.string())),
   statusCode: z.number().int(),
   rawResponse: z.instanceof(Response).transform(() => {
     throw new Error("Response cannot be serialized");
@@ -167,6 +172,7 @@ export const HrisGetCostCenterGroupResponse$outboundSchema: z.ZodType<
   return remap$(v, {
     contentType: "ContentType",
     hrisCostCenterResult: "HRISCostCenterResult",
+    headers: "Headers",
     statusCode: "StatusCode",
     rawResponse: "RawResponse",
   });

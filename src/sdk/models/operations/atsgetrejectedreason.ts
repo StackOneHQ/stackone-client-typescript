@@ -34,6 +34,7 @@ export type AtsGetRejectedReasonResponse = {
    * HTTP response content type for this operation
    */
   contentType: string;
+  headers: { [k: string]: Array<string> };
   /**
    * The rejected reason with the given identifier was retrieved.
    */
@@ -131,12 +132,14 @@ export const AtsGetRejectedReasonResponse$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   ContentType: z.string(),
+  Headers: z.record(z.array(z.string())),
   RejectedReasonResult: shared.RejectedReasonResult$inboundSchema.optional(),
   StatusCode: z.number().int(),
   RawResponse: z.instanceof(Response),
 }).transform((v) => {
   return remap$(v, {
     "ContentType": "contentType",
+    "Headers": "headers",
     "RejectedReasonResult": "rejectedReasonResult",
     "StatusCode": "statusCode",
     "RawResponse": "rawResponse",
@@ -146,6 +149,7 @@ export const AtsGetRejectedReasonResponse$inboundSchema: z.ZodType<
 /** @internal */
 export type AtsGetRejectedReasonResponse$Outbound = {
   ContentType: string;
+  Headers: { [k: string]: Array<string> };
   RejectedReasonResult?: shared.RejectedReasonResult$Outbound | undefined;
   StatusCode: number;
   RawResponse: never;
@@ -158,6 +162,7 @@ export const AtsGetRejectedReasonResponse$outboundSchema: z.ZodType<
   AtsGetRejectedReasonResponse
 > = z.object({
   contentType: z.string(),
+  headers: z.record(z.array(z.string())),
   rejectedReasonResult: shared.RejectedReasonResult$outboundSchema.optional(),
   statusCode: z.number().int(),
   rawResponse: z.instanceof(Response).transform(() => {
@@ -166,6 +171,7 @@ export const AtsGetRejectedReasonResponse$outboundSchema: z.ZodType<
 }).transform((v) => {
   return remap$(v, {
     contentType: "ContentType",
+    headers: "Headers",
     rejectedReasonResult: "RejectedReasonResult",
     statusCode: "StatusCode",
     rawResponse: "RawResponse",

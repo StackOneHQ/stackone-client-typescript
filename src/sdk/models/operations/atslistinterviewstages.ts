@@ -73,6 +73,7 @@ export type AtsListInterviewStagesResponse = {
    * HTTP response content type for this operation
    */
   contentType: string;
+  headers: { [k: string]: Array<string> };
   /**
    * The list of interview-stages was retrieved.
    */
@@ -263,6 +264,7 @@ export const AtsListInterviewStagesResponse$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   ContentType: z.string(),
+  Headers: z.record(z.array(z.string())),
   InterviewStagesPaginated: shared.InterviewStagesPaginated$inboundSchema
     .optional(),
   StatusCode: z.number().int(),
@@ -270,6 +272,7 @@ export const AtsListInterviewStagesResponse$inboundSchema: z.ZodType<
 }).transform((v) => {
   return remap$(v, {
     "ContentType": "contentType",
+    "Headers": "headers",
     "InterviewStagesPaginated": "interviewStagesPaginated",
     "StatusCode": "statusCode",
     "RawResponse": "rawResponse",
@@ -279,6 +282,7 @@ export const AtsListInterviewStagesResponse$inboundSchema: z.ZodType<
 /** @internal */
 export type AtsListInterviewStagesResponse$Outbound = {
   ContentType: string;
+  Headers: { [k: string]: Array<string> };
   InterviewStagesPaginated?:
     | shared.InterviewStagesPaginated$Outbound
     | undefined;
@@ -293,6 +297,7 @@ export const AtsListInterviewStagesResponse$outboundSchema: z.ZodType<
   AtsListInterviewStagesResponse
 > = z.object({
   contentType: z.string(),
+  headers: z.record(z.array(z.string())),
   interviewStagesPaginated: shared.InterviewStagesPaginated$outboundSchema
     .optional(),
   statusCode: z.number().int(),
@@ -302,6 +307,7 @@ export const AtsListInterviewStagesResponse$outboundSchema: z.ZodType<
 }).transform((v) => {
   return remap$(v, {
     contentType: "ContentType",
+    headers: "Headers",
     interviewStagesPaginated: "InterviewStagesPaginated",
     statusCode: "StatusCode",
     rawResponse: "RawResponse",

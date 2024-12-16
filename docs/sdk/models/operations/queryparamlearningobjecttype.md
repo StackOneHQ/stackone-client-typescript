@@ -7,7 +7,8 @@ Filter to select completions by learning object type.
 ```typescript
 import { QueryParamLearningObjectType } from "@stackone/stackone-client-ts/sdk/models/operations";
 
-let value: QueryParamLearningObjectType = QueryParamLearningObjectType.Content;
+let value: QueryParamLearningObjectType =
+  QueryParamLearningObjectType.Collection;
 ```
 
 ## Values

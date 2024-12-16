@@ -115,7 +115,7 @@ export type CampaignSchemasValueOpen = OpenEnum<typeof CampaignSchemasValue>;
 /**
  * Status of the Campaign
  */
-export type Status = {
+export type CampaignStatus = {
   /**
    * The source value of the Status.
    */
@@ -170,7 +170,7 @@ export type Campaign = {
   /**
    * Status of the Campaign
    */
-  status?: Status | null | undefined;
+  status?: CampaignStatus | null | undefined;
   tags?: Array<string> | null | undefined;
   /**
    * The updated_at date
@@ -671,26 +671,29 @@ export namespace CampaignSchemasValue$ {
 }
 
 /** @internal */
-export const Status$inboundSchema: z.ZodType<Status, z.ZodTypeDef, unknown> = z
-  .object({
-    source_value: z.nullable(
-      z.union([
-        z.lazy(() => CampaignSchemas4$inboundSchema),
-        z.string(),
-        z.number(),
-        z.boolean(),
-        z.array(z.any()),
-      ]),
-    ).optional(),
-    value: z.nullable(CampaignSchemasValue$inboundSchema).optional(),
-  }).transform((v) => {
-    return remap$(v, {
-      "source_value": "sourceValue",
-    });
+export const CampaignStatus$inboundSchema: z.ZodType<
+  CampaignStatus,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  source_value: z.nullable(
+    z.union([
+      z.lazy(() => CampaignSchemas4$inboundSchema),
+      z.string(),
+      z.number(),
+      z.boolean(),
+      z.array(z.any()),
+    ]),
+  ).optional(),
+  value: z.nullable(CampaignSchemasValue$inboundSchema).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    "source_value": "sourceValue",
   });
+});
 
 /** @internal */
-export type Status$Outbound = {
+export type CampaignStatus$Outbound = {
   source_value?:
     | CampaignSchemas4$Outbound
     | string
@@ -703,10 +706,10 @@ export type Status$Outbound = {
 };
 
 /** @internal */
-export const Status$outboundSchema: z.ZodType<
-  Status$Outbound,
+export const CampaignStatus$outboundSchema: z.ZodType<
+  CampaignStatus$Outbound,
   z.ZodTypeDef,
-  Status
+  CampaignStatus
 > = z.object({
   sourceValue: z.nullable(
     z.union([
@@ -728,26 +731,26 @@ export const Status$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace Status$ {
-  /** @deprecated use `Status$inboundSchema` instead. */
-  export const inboundSchema = Status$inboundSchema;
-  /** @deprecated use `Status$outboundSchema` instead. */
-  export const outboundSchema = Status$outboundSchema;
-  /** @deprecated use `Status$Outbound` instead. */
-  export type Outbound = Status$Outbound;
+export namespace CampaignStatus$ {
+  /** @deprecated use `CampaignStatus$inboundSchema` instead. */
+  export const inboundSchema = CampaignStatus$inboundSchema;
+  /** @deprecated use `CampaignStatus$outboundSchema` instead. */
+  export const outboundSchema = CampaignStatus$outboundSchema;
+  /** @deprecated use `CampaignStatus$Outbound` instead. */
+  export type Outbound = CampaignStatus$Outbound;
 }
 
-export function statusToJSON(status: Status): string {
-  return JSON.stringify(Status$outboundSchema.parse(status));
+export function campaignStatusToJSON(campaignStatus: CampaignStatus): string {
+  return JSON.stringify(CampaignStatus$outboundSchema.parse(campaignStatus));
 }
 
-export function statusFromJSON(
+export function campaignStatusFromJSON(
   jsonString: string,
-): SafeParseResult<Status, SDKValidationError> {
+): SafeParseResult<CampaignStatus, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => Status$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'Status' from JSON`,
+    (x) => CampaignStatus$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CampaignStatus' from JSON`,
   );
 }
 
@@ -776,7 +779,7 @@ export const Campaign$inboundSchema: z.ZodType<
   remote_id: z.nullable(z.string()).optional(),
   schedule_type: z.nullable(z.lazy(() => ScheduleType$inboundSchema))
     .optional(),
-  status: z.nullable(z.lazy(() => Status$inboundSchema)).optional(),
+  status: z.nullable(z.lazy(() => CampaignStatus$inboundSchema)).optional(),
   tags: z.nullable(z.array(z.string())).optional(),
   updated_at: z.nullable(
     z.string().datetime({ offset: true }).transform(v => new Date(v)),
@@ -806,7 +809,7 @@ export type Campaign$Outbound = {
   name?: string | null | undefined;
   remote_id?: string | null | undefined;
   schedule_type?: ScheduleType$Outbound | null | undefined;
-  status?: Status$Outbound | null | undefined;
+  status?: CampaignStatus$Outbound | null | undefined;
   tags?: Array<string> | null | undefined;
   updated_at?: string | null | undefined;
 };
@@ -831,7 +834,7 @@ export const Campaign$outboundSchema: z.ZodType<
   remoteId: z.nullable(z.string()).optional(),
   scheduleType: z.nullable(z.lazy(() => ScheduleType$outboundSchema))
     .optional(),
-  status: z.nullable(z.lazy(() => Status$outboundSchema)).optional(),
+  status: z.nullable(z.lazy(() => CampaignStatus$outboundSchema)).optional(),
   tags: z.nullable(z.array(z.string())).optional(),
   updatedAt: z.nullable(z.date().transform(v => v.toISOString())).optional(),
 }).transform((v) => {

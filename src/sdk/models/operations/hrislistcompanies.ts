@@ -71,6 +71,7 @@ export type HrisListCompaniesResponse = {
    * HTTP response content type for this operation
    */
   contentType: string;
+  headers: { [k: string]: Array<string> };
   /**
    * HTTP response status code for this operation
    */
@@ -248,12 +249,14 @@ export const HrisListCompaniesResponse$inboundSchema: z.ZodType<
 > = z.object({
   CompaniesPaginated: shared.CompaniesPaginated$inboundSchema.optional(),
   ContentType: z.string(),
+  Headers: z.record(z.array(z.string())),
   StatusCode: z.number().int(),
   RawResponse: z.instanceof(Response),
 }).transform((v) => {
   return remap$(v, {
     "CompaniesPaginated": "companiesPaginated",
     "ContentType": "contentType",
+    "Headers": "headers",
     "StatusCode": "statusCode",
     "RawResponse": "rawResponse",
   });
@@ -263,6 +266,7 @@ export const HrisListCompaniesResponse$inboundSchema: z.ZodType<
 export type HrisListCompaniesResponse$Outbound = {
   CompaniesPaginated?: shared.CompaniesPaginated$Outbound | undefined;
   ContentType: string;
+  Headers: { [k: string]: Array<string> };
   StatusCode: number;
   RawResponse: never;
 };
@@ -275,6 +279,7 @@ export const HrisListCompaniesResponse$outboundSchema: z.ZodType<
 > = z.object({
   companiesPaginated: shared.CompaniesPaginated$outboundSchema.optional(),
   contentType: z.string(),
+  headers: z.record(z.array(z.string())),
   statusCode: z.number().int(),
   rawResponse: z.instanceof(Response).transform(() => {
     throw new Error("Response cannot be serialized");
@@ -283,6 +288,7 @@ export const HrisListCompaniesResponse$outboundSchema: z.ZodType<
   return remap$(v, {
     companiesPaginated: "CompaniesPaginated",
     contentType: "ContentType",
+    headers: "Headers",
     statusCode: "StatusCode",
     rawResponse: "RawResponse",
   });

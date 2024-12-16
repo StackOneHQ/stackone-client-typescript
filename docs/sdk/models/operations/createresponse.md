@@ -7,7 +7,12 @@ import { CreateResponse } from "@stackone/stackone-client-ts/sdk/models/operatio
 
 let value: CreateResponse = {
   contentType: "<value>",
-  statusCode: 308,
+  headers: {
+    "key": [
+      "<value>",
+    ],
+  },
+  statusCode: 206,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),
@@ -27,6 +32,7 @@ let value: CreateResponse = {
 | Field                                                                             | Type                                                                              | Required                                                                          | Description                                                                       |
 | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
 | `contentType`                                                                     | *string*                                                                          | :heavy_check_mark:                                                                | HTTP response content type for this operation                                     |
+| `headers`                                                                         | Record<string, *string*[]>                                                        | :heavy_check_mark:                                                                | N/A                                                                               |
 | `statusCode`                                                                      | *number*                                                                          | :heavy_check_mark:                                                                | HTTP response status code for this operation                                      |
 | `rawResponse`                                                                     | [Response](https://developer.mozilla.org/en-US/docs/Web/API/Response)             | :heavy_check_mark:                                                                | Raw HTTP response; suitable for custom response parsing                           |
 | `classes`                                                                         | [shared.CreateEventResponse](../../../sdk/models/shared/createeventresponse.md)[] | :heavy_minus_sign:                                                                | Multiple status returned. Check the response body for details.                    |

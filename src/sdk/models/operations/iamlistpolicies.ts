@@ -71,6 +71,7 @@ export type IamListPoliciesResponse = {
    * HTTP response content type for this operation
    */
   contentType: string;
+  headers: { [k: string]: Array<string> };
   /**
    * The list of policies was retrieved.
    */
@@ -253,12 +254,14 @@ export const IamListPoliciesResponse$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   ContentType: z.string(),
+  Headers: z.record(z.array(z.string())),
   IamPoliciesPaginated: shared.IamPoliciesPaginated$inboundSchema.optional(),
   StatusCode: z.number().int(),
   RawResponse: z.instanceof(Response),
 }).transform((v) => {
   return remap$(v, {
     "ContentType": "contentType",
+    "Headers": "headers",
     "IamPoliciesPaginated": "iamPoliciesPaginated",
     "StatusCode": "statusCode",
     "RawResponse": "rawResponse",
@@ -268,6 +271,7 @@ export const IamListPoliciesResponse$inboundSchema: z.ZodType<
 /** @internal */
 export type IamListPoliciesResponse$Outbound = {
   ContentType: string;
+  Headers: { [k: string]: Array<string> };
   IamPoliciesPaginated?: shared.IamPoliciesPaginated$Outbound | undefined;
   StatusCode: number;
   RawResponse: never;
@@ -280,6 +284,7 @@ export const IamListPoliciesResponse$outboundSchema: z.ZodType<
   IamListPoliciesResponse
 > = z.object({
   contentType: z.string(),
+  headers: z.record(z.array(z.string())),
   iamPoliciesPaginated: shared.IamPoliciesPaginated$outboundSchema.optional(),
   statusCode: z.number().int(),
   rawResponse: z.instanceof(Response).transform(() => {
@@ -288,6 +293,7 @@ export const IamListPoliciesResponse$outboundSchema: z.ZodType<
 }).transform((v) => {
   return remap$(v, {
     contentType: "ContentType",
+    headers: "Headers",
     iamPoliciesPaginated: "IamPoliciesPaginated",
     statusCode: "StatusCode",
     rawResponse: "RawResponse",

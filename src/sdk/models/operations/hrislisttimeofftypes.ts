@@ -67,6 +67,7 @@ export type HrisListTimeOffTypesResponse = {
    * HTTP response content type for this operation
    */
   contentType: string;
+  headers: { [k: string]: Array<string> };
   /**
    * The list of time off types was retrieved.
    */
@@ -251,12 +252,14 @@ export const HrisListTimeOffTypesResponse$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   ContentType: z.string(),
+  Headers: z.record(z.array(z.string())),
   ReferencePaginated: shared.ReferencePaginated$inboundSchema.optional(),
   StatusCode: z.number().int(),
   RawResponse: z.instanceof(Response),
 }).transform((v) => {
   return remap$(v, {
     "ContentType": "contentType",
+    "Headers": "headers",
     "ReferencePaginated": "referencePaginated",
     "StatusCode": "statusCode",
     "RawResponse": "rawResponse",
@@ -266,6 +269,7 @@ export const HrisListTimeOffTypesResponse$inboundSchema: z.ZodType<
 /** @internal */
 export type HrisListTimeOffTypesResponse$Outbound = {
   ContentType: string;
+  Headers: { [k: string]: Array<string> };
   ReferencePaginated?: shared.ReferencePaginated$Outbound | undefined;
   StatusCode: number;
   RawResponse: never;
@@ -278,6 +282,7 @@ export const HrisListTimeOffTypesResponse$outboundSchema: z.ZodType<
   HrisListTimeOffTypesResponse
 > = z.object({
   contentType: z.string(),
+  headers: z.record(z.array(z.string())),
   referencePaginated: shared.ReferencePaginated$outboundSchema.optional(),
   statusCode: z.number().int(),
   rawResponse: z.instanceof(Response).transform(() => {
@@ -286,6 +291,7 @@ export const HrisListTimeOffTypesResponse$outboundSchema: z.ZodType<
 }).transform((v) => {
   return remap$(v, {
     contentType: "ContentType",
+    headers: "Headers",
     referencePaginated: "ReferencePaginated",
     statusCode: "StatusCode",
     rawResponse: "RawResponse",

@@ -5,7 +5,7 @@
 ```typescript
 import { TimeOffValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: TimeOffValue = TimeOffValue.Approved;
+let value: TimeOffValue = TimeOffValue.Pending;
 ```
 
 ## Values

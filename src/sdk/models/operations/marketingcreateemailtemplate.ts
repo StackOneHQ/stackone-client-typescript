@@ -27,6 +27,7 @@ export type MarketingCreateEmailTemplateResponse = {
    * Record created successfully.
    */
   createResult?: shared.CreateResult | undefined;
+  headers: { [k: string]: Array<string> };
   /**
    * HTTP response status code for this operation
    */
@@ -122,12 +123,14 @@ export const MarketingCreateEmailTemplateResponse$inboundSchema: z.ZodType<
 > = z.object({
   ContentType: z.string(),
   CreateResult: shared.CreateResult$inboundSchema.optional(),
+  Headers: z.record(z.array(z.string())),
   StatusCode: z.number().int(),
   RawResponse: z.instanceof(Response),
 }).transform((v) => {
   return remap$(v, {
     "ContentType": "contentType",
     "CreateResult": "createResult",
+    "Headers": "headers",
     "StatusCode": "statusCode",
     "RawResponse": "rawResponse",
   });
@@ -137,6 +140,7 @@ export const MarketingCreateEmailTemplateResponse$inboundSchema: z.ZodType<
 export type MarketingCreateEmailTemplateResponse$Outbound = {
   ContentType: string;
   CreateResult?: shared.CreateResult$Outbound | undefined;
+  Headers: { [k: string]: Array<string> };
   StatusCode: number;
   RawResponse: never;
 };
@@ -149,6 +153,7 @@ export const MarketingCreateEmailTemplateResponse$outboundSchema: z.ZodType<
 > = z.object({
   contentType: z.string(),
   createResult: shared.CreateResult$outboundSchema.optional(),
+  headers: z.record(z.array(z.string())),
   statusCode: z.number().int(),
   rawResponse: z.instanceof(Response).transform(() => {
     throw new Error("Response cannot be serialized");
@@ -157,6 +162,7 @@ export const MarketingCreateEmailTemplateResponse$outboundSchema: z.ZodType<
   return remap$(v, {
     contentType: "ContentType",
     createResult: "CreateResult",
+    headers: "Headers",
     statusCode: "StatusCode",
     rawResponse: "RawResponse",
   });

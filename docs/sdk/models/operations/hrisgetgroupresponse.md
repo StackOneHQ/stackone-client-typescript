@@ -38,6 +38,11 @@ let value: HrisGetGroupResponse = {
       },
     },
   },
+  headers: {
+    "key": [
+      "<value>",
+    ],
+  },
   statusCode: 506,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
@@ -51,5 +56,6 @@ let value: HrisGetGroupResponse = {
 | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
 | `contentType`                                                             | *string*                                                                  | :heavy_check_mark:                                                        | HTTP response content type for this operation                             |
 | `hrisGroupsResult`                                                        | [shared.HRISGroupsResult](../../../sdk/models/shared/hrisgroupsresult.md) | :heavy_minus_sign:                                                        | The group with the given identifier was retrieved.                        |
+| `headers`                                                                 | Record<string, *string*[]>                                                | :heavy_check_mark:                                                        | N/A                                                                       |
 | `statusCode`                                                              | *number*                                                                  | :heavy_check_mark:                                                        | HTTP response status code for this operation                              |
 | `rawResponse`                                                             | [Response](https://developer.mozilla.org/en-US/docs/Web/API/Response)     | :heavy_check_mark:                                                        | Raw HTTP response; suitable for custom response parsing                   |

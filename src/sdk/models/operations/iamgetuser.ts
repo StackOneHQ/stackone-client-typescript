@@ -38,6 +38,7 @@ export type IamGetUserResponse = {
    * HTTP response content type for this operation
    */
   contentType: string;
+  headers: { [k: string]: Array<string> };
   /**
    * The user with the given identifier was retrieved.
    */
@@ -136,12 +137,14 @@ export const IamGetUserResponse$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   ContentType: z.string(),
+  Headers: z.record(z.array(z.string())),
   IamUserResult: shared.IamUserResult$inboundSchema.optional(),
   StatusCode: z.number().int(),
   RawResponse: z.instanceof(Response),
 }).transform((v) => {
   return remap$(v, {
     "ContentType": "contentType",
+    "Headers": "headers",
     "IamUserResult": "iamUserResult",
     "StatusCode": "statusCode",
     "RawResponse": "rawResponse",
@@ -151,6 +154,7 @@ export const IamGetUserResponse$inboundSchema: z.ZodType<
 /** @internal */
 export type IamGetUserResponse$Outbound = {
   ContentType: string;
+  Headers: { [k: string]: Array<string> };
   IamUserResult?: shared.IamUserResult$Outbound | undefined;
   StatusCode: number;
   RawResponse: never;
@@ -163,6 +167,7 @@ export const IamGetUserResponse$outboundSchema: z.ZodType<
   IamGetUserResponse
 > = z.object({
   contentType: z.string(),
+  headers: z.record(z.array(z.string())),
   iamUserResult: shared.IamUserResult$outboundSchema.optional(),
   statusCode: z.number().int(),
   rawResponse: z.instanceof(Response).transform(() => {
@@ -171,6 +176,7 @@ export const IamGetUserResponse$outboundSchema: z.ZodType<
 }).transform((v) => {
   return remap$(v, {
     contentType: "ContentType",
+    headers: "Headers",
     iamUserResult: "IamUserResult",
     statusCode: "StatusCode",
     rawResponse: "RawResponse",

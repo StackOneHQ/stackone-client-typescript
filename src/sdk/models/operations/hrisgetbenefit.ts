@@ -38,6 +38,7 @@ export type HrisGetBenefitResponse = {
    * The Benefit with the given identifier was retrieved.
    */
   hrisBenefitResult?: shared.HRISBenefitResult | undefined;
+  headers: { [k: string]: Array<string> };
   /**
    * HTTP response status code for this operation
    */
@@ -130,12 +131,14 @@ export const HrisGetBenefitResponse$inboundSchema: z.ZodType<
 > = z.object({
   ContentType: z.string(),
   HRISBenefitResult: shared.HRISBenefitResult$inboundSchema.optional(),
+  Headers: z.record(z.array(z.string())),
   StatusCode: z.number().int(),
   RawResponse: z.instanceof(Response),
 }).transform((v) => {
   return remap$(v, {
     "ContentType": "contentType",
     "HRISBenefitResult": "hrisBenefitResult",
+    "Headers": "headers",
     "StatusCode": "statusCode",
     "RawResponse": "rawResponse",
   });
@@ -145,6 +148,7 @@ export const HrisGetBenefitResponse$inboundSchema: z.ZodType<
 export type HrisGetBenefitResponse$Outbound = {
   ContentType: string;
   HRISBenefitResult?: shared.HRISBenefitResult$Outbound | undefined;
+  Headers: { [k: string]: Array<string> };
   StatusCode: number;
   RawResponse: never;
 };
@@ -157,6 +161,7 @@ export const HrisGetBenefitResponse$outboundSchema: z.ZodType<
 > = z.object({
   contentType: z.string(),
   hrisBenefitResult: shared.HRISBenefitResult$outboundSchema.optional(),
+  headers: z.record(z.array(z.string())),
   statusCode: z.number().int(),
   rawResponse: z.instanceof(Response).transform(() => {
     throw new Error("Response cannot be serialized");
@@ -165,6 +170,7 @@ export const HrisGetBenefitResponse$outboundSchema: z.ZodType<
   return remap$(v, {
     contentType: "ContentType",
     hrisBenefitResult: "HRISBenefitResult",
+    headers: "Headers",
     statusCode: "StatusCode",
     rawResponse: "RawResponse",
   });

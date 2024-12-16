@@ -34,6 +34,7 @@ export type HrisGetJobResponse = {
    * HTTP response content type for this operation
    */
   contentType: string;
+  headers: { [k: string]: Array<string> };
   /**
    * The job with the given identifier was retrieved.
    */
@@ -129,12 +130,14 @@ export const HrisGetJobResponse$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   ContentType: z.string(),
+  Headers: z.record(z.array(z.string())),
   JobResult: shared.JobResult$inboundSchema.optional(),
   StatusCode: z.number().int(),
   RawResponse: z.instanceof(Response),
 }).transform((v) => {
   return remap$(v, {
     "ContentType": "contentType",
+    "Headers": "headers",
     "JobResult": "jobResult",
     "StatusCode": "statusCode",
     "RawResponse": "rawResponse",
@@ -144,6 +147,7 @@ export const HrisGetJobResponse$inboundSchema: z.ZodType<
 /** @internal */
 export type HrisGetJobResponse$Outbound = {
   ContentType: string;
+  Headers: { [k: string]: Array<string> };
   JobResult?: shared.JobResult$Outbound | undefined;
   StatusCode: number;
   RawResponse: never;
@@ -156,6 +160,7 @@ export const HrisGetJobResponse$outboundSchema: z.ZodType<
   HrisGetJobResponse
 > = z.object({
   contentType: z.string(),
+  headers: z.record(z.array(z.string())),
   jobResult: shared.JobResult$outboundSchema.optional(),
   statusCode: z.number().int(),
   rawResponse: z.instanceof(Response).transform(() => {
@@ -164,6 +169,7 @@ export const HrisGetJobResponse$outboundSchema: z.ZodType<
 }).transform((v) => {
   return remap$(v, {
     contentType: "ContentType",
+    headers: "Headers",
     jobResult: "JobResult",
     statusCode: "StatusCode",
     rawResponse: "RawResponse",

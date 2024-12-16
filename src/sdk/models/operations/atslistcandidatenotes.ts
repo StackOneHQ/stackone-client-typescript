@@ -74,6 +74,7 @@ export type AtsListCandidateNotesResponse = {
    * HTTP response content type for this operation
    */
   contentType: string;
+  headers: { [k: string]: Array<string> };
   /**
    * The notes related to the candidate with the given identifier was retrieved.
    */
@@ -266,12 +267,14 @@ export const AtsListCandidateNotesResponse$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   ContentType: z.string(),
+  Headers: z.record(z.array(z.string())),
   NotesPaginated: shared.NotesPaginated$inboundSchema.optional(),
   StatusCode: z.number().int(),
   RawResponse: z.instanceof(Response),
 }).transform((v) => {
   return remap$(v, {
     "ContentType": "contentType",
+    "Headers": "headers",
     "NotesPaginated": "notesPaginated",
     "StatusCode": "statusCode",
     "RawResponse": "rawResponse",
@@ -281,6 +284,7 @@ export const AtsListCandidateNotesResponse$inboundSchema: z.ZodType<
 /** @internal */
 export type AtsListCandidateNotesResponse$Outbound = {
   ContentType: string;
+  Headers: { [k: string]: Array<string> };
   NotesPaginated?: shared.NotesPaginated$Outbound | undefined;
   StatusCode: number;
   RawResponse: never;
@@ -293,6 +297,7 @@ export const AtsListCandidateNotesResponse$outboundSchema: z.ZodType<
   AtsListCandidateNotesResponse
 > = z.object({
   contentType: z.string(),
+  headers: z.record(z.array(z.string())),
   notesPaginated: shared.NotesPaginated$outboundSchema.optional(),
   statusCode: z.number().int(),
   rawResponse: z.instanceof(Response).transform(() => {
@@ -301,6 +306,7 @@ export const AtsListCandidateNotesResponse$outboundSchema: z.ZodType<
 }).transform((v) => {
   return remap$(v, {
     contentType: "ContentType",
+    headers: "Headers",
     notesPaginated: "NotesPaginated",
     statusCode: "StatusCode",
     rawResponse: "RawResponse",

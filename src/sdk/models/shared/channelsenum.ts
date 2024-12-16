@@ -13,22 +13,17 @@ import {
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
-export type ChannelsEnum4 = {};
+export type Four = {};
 
 /**
  * The source value of the Channels.
  */
-export type ChannelsEnumSourceValue =
-  | ChannelsEnum4
-  | string
-  | number
-  | boolean
-  | Array<any>;
+export type SourceValue = Four | string | number | boolean | Array<any>;
 
 /**
  * The Channels of the campaign.
  */
-export enum ChannelsEnumValue {
+export enum Value {
   Email = "email",
   Sms = "sms",
   WebPush = "web_push",
@@ -40,14 +35,14 @@ export enum ChannelsEnumValue {
 /**
  * The Channels of the campaign.
  */
-export type ChannelsEnumValueOpen = OpenEnum<typeof ChannelsEnumValue>;
+export type ValueOpen = OpenEnum<typeof Value>;
 
 export type ChannelsEnum = {
   /**
    * The source value of the Channels.
    */
   sourceValue?:
-    | ChannelsEnum4
+    | Four
     | string
     | number
     | boolean
@@ -57,60 +52,54 @@ export type ChannelsEnum = {
   /**
    * The Channels of the campaign.
    */
-  value?: ChannelsEnumValueOpen | null | undefined;
+  value?: ValueOpen | null | undefined;
 };
 
 /** @internal */
-export const ChannelsEnum4$inboundSchema: z.ZodType<
-  ChannelsEnum4,
-  z.ZodTypeDef,
-  unknown
-> = z.object({});
+export const Four$inboundSchema: z.ZodType<Four, z.ZodTypeDef, unknown> = z
+  .object({});
 
 /** @internal */
-export type ChannelsEnum4$Outbound = {};
+export type Four$Outbound = {};
 
 /** @internal */
-export const ChannelsEnum4$outboundSchema: z.ZodType<
-  ChannelsEnum4$Outbound,
-  z.ZodTypeDef,
-  ChannelsEnum4
-> = z.object({});
+export const Four$outboundSchema: z.ZodType<Four$Outbound, z.ZodTypeDef, Four> =
+  z.object({});
 
 /**
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace ChannelsEnum4$ {
-  /** @deprecated use `ChannelsEnum4$inboundSchema` instead. */
-  export const inboundSchema = ChannelsEnum4$inboundSchema;
-  /** @deprecated use `ChannelsEnum4$outboundSchema` instead. */
-  export const outboundSchema = ChannelsEnum4$outboundSchema;
-  /** @deprecated use `ChannelsEnum4$Outbound` instead. */
-  export type Outbound = ChannelsEnum4$Outbound;
+export namespace Four$ {
+  /** @deprecated use `Four$inboundSchema` instead. */
+  export const inboundSchema = Four$inboundSchema;
+  /** @deprecated use `Four$outboundSchema` instead. */
+  export const outboundSchema = Four$outboundSchema;
+  /** @deprecated use `Four$Outbound` instead. */
+  export type Outbound = Four$Outbound;
 }
 
-export function channelsEnum4ToJSON(channelsEnum4: ChannelsEnum4): string {
-  return JSON.stringify(ChannelsEnum4$outboundSchema.parse(channelsEnum4));
+export function fourToJSON(four: Four): string {
+  return JSON.stringify(Four$outboundSchema.parse(four));
 }
 
-export function channelsEnum4FromJSON(
+export function fourFromJSON(
   jsonString: string,
-): SafeParseResult<ChannelsEnum4, SDKValidationError> {
+): SafeParseResult<Four, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => ChannelsEnum4$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ChannelsEnum4' from JSON`,
+    (x) => Four$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Four' from JSON`,
   );
 }
 
 /** @internal */
-export const ChannelsEnumSourceValue$inboundSchema: z.ZodType<
-  ChannelsEnumSourceValue,
+export const SourceValue$inboundSchema: z.ZodType<
+  SourceValue,
   z.ZodTypeDef,
   unknown
 > = z.union([
-  z.lazy(() => ChannelsEnum4$inboundSchema),
+  z.lazy(() => Four$inboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
@@ -118,20 +107,20 @@ export const ChannelsEnumSourceValue$inboundSchema: z.ZodType<
 ]);
 
 /** @internal */
-export type ChannelsEnumSourceValue$Outbound =
-  | ChannelsEnum4$Outbound
+export type SourceValue$Outbound =
+  | Four$Outbound
   | string
   | number
   | boolean
   | Array<any>;
 
 /** @internal */
-export const ChannelsEnumSourceValue$outboundSchema: z.ZodType<
-  ChannelsEnumSourceValue$Outbound,
+export const SourceValue$outboundSchema: z.ZodType<
+  SourceValue$Outbound,
   z.ZodTypeDef,
-  ChannelsEnumSourceValue
+  SourceValue
 > = z.union([
-  z.lazy(() => ChannelsEnum4$outboundSchema),
+  z.lazy(() => Four$outboundSchema),
   z.string(),
   z.number(),
   z.boolean(),
@@ -142,51 +131,44 @@ export const ChannelsEnumSourceValue$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace ChannelsEnumSourceValue$ {
-  /** @deprecated use `ChannelsEnumSourceValue$inboundSchema` instead. */
-  export const inboundSchema = ChannelsEnumSourceValue$inboundSchema;
-  /** @deprecated use `ChannelsEnumSourceValue$outboundSchema` instead. */
-  export const outboundSchema = ChannelsEnumSourceValue$outboundSchema;
-  /** @deprecated use `ChannelsEnumSourceValue$Outbound` instead. */
-  export type Outbound = ChannelsEnumSourceValue$Outbound;
+export namespace SourceValue$ {
+  /** @deprecated use `SourceValue$inboundSchema` instead. */
+  export const inboundSchema = SourceValue$inboundSchema;
+  /** @deprecated use `SourceValue$outboundSchema` instead. */
+  export const outboundSchema = SourceValue$outboundSchema;
+  /** @deprecated use `SourceValue$Outbound` instead. */
+  export type Outbound = SourceValue$Outbound;
 }
 
-export function channelsEnumSourceValueToJSON(
-  channelsEnumSourceValue: ChannelsEnumSourceValue,
-): string {
-  return JSON.stringify(
-    ChannelsEnumSourceValue$outboundSchema.parse(channelsEnumSourceValue),
-  );
+export function sourceValueToJSON(sourceValue: SourceValue): string {
+  return JSON.stringify(SourceValue$outboundSchema.parse(sourceValue));
 }
 
-export function channelsEnumSourceValueFromJSON(
+export function sourceValueFromJSON(
   jsonString: string,
-): SafeParseResult<ChannelsEnumSourceValue, SDKValidationError> {
+): SafeParseResult<SourceValue, SDKValidationError> {
   return safeParse(
     jsonString,
-    (x) => ChannelsEnumSourceValue$inboundSchema.parse(JSON.parse(x)),
-    `Failed to parse 'ChannelsEnumSourceValue' from JSON`,
+    (x) => SourceValue$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'SourceValue' from JSON`,
   );
 }
 
 /** @internal */
-export const ChannelsEnumValue$inboundSchema: z.ZodType<
-  ChannelsEnumValueOpen,
-  z.ZodTypeDef,
-  unknown
-> = z
-  .union([
-    z.nativeEnum(ChannelsEnumValue),
-    z.string().transform(catchUnrecognizedEnum),
-  ]);
+export const Value$inboundSchema: z.ZodType<ValueOpen, z.ZodTypeDef, unknown> =
+  z
+    .union([
+      z.nativeEnum(Value),
+      z.string().transform(catchUnrecognizedEnum),
+    ]);
 
 /** @internal */
-export const ChannelsEnumValue$outboundSchema: z.ZodType<
-  ChannelsEnumValueOpen,
+export const Value$outboundSchema: z.ZodType<
+  ValueOpen,
   z.ZodTypeDef,
-  ChannelsEnumValueOpen
+  ValueOpen
 > = z.union([
-  z.nativeEnum(ChannelsEnumValue),
+  z.nativeEnum(Value),
   z.string().and(z.custom<Unrecognized<string>>()),
 ]);
 
@@ -194,11 +176,11 @@ export const ChannelsEnumValue$outboundSchema: z.ZodType<
  * @internal
  * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
  */
-export namespace ChannelsEnumValue$ {
-  /** @deprecated use `ChannelsEnumValue$inboundSchema` instead. */
-  export const inboundSchema = ChannelsEnumValue$inboundSchema;
-  /** @deprecated use `ChannelsEnumValue$outboundSchema` instead. */
-  export const outboundSchema = ChannelsEnumValue$outboundSchema;
+export namespace Value$ {
+  /** @deprecated use `Value$inboundSchema` instead. */
+  export const inboundSchema = Value$inboundSchema;
+  /** @deprecated use `Value$outboundSchema` instead. */
+  export const outboundSchema = Value$outboundSchema;
 }
 
 /** @internal */
@@ -209,14 +191,14 @@ export const ChannelsEnum$inboundSchema: z.ZodType<
 > = z.object({
   source_value: z.nullable(
     z.union([
-      z.lazy(() => ChannelsEnum4$inboundSchema),
+      z.lazy(() => Four$inboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
       z.array(z.any()),
     ]),
   ).optional(),
-  value: z.nullable(ChannelsEnumValue$inboundSchema).optional(),
+  value: z.nullable(Value$inboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {
     "source_value": "sourceValue",
@@ -226,7 +208,7 @@ export const ChannelsEnum$inboundSchema: z.ZodType<
 /** @internal */
 export type ChannelsEnum$Outbound = {
   source_value?:
-    | ChannelsEnum4$Outbound
+    | Four$Outbound
     | string
     | number
     | boolean
@@ -244,14 +226,14 @@ export const ChannelsEnum$outboundSchema: z.ZodType<
 > = z.object({
   sourceValue: z.nullable(
     z.union([
-      z.lazy(() => ChannelsEnum4$outboundSchema),
+      z.lazy(() => Four$outboundSchema),
       z.string(),
       z.number(),
       z.boolean(),
       z.array(z.any()),
     ]),
   ).optional(),
-  value: z.nullable(ChannelsEnumValue$outboundSchema).optional(),
+  value: z.nullable(Value$outboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {
     sourceValue: "source_value",

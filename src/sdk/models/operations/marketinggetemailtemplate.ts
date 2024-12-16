@@ -38,6 +38,7 @@ export type MarketingGetEmailTemplateResponse = {
    * The email template with the given identifier was retrieved.
    */
   emailTemplateResult?: shared.EmailTemplateResult | undefined;
+  headers: { [k: string]: Array<string> };
   /**
    * HTTP response status code for this operation
    */
@@ -132,12 +133,14 @@ export const MarketingGetEmailTemplateResponse$inboundSchema: z.ZodType<
 > = z.object({
   ContentType: z.string(),
   EmailTemplateResult: shared.EmailTemplateResult$inboundSchema.optional(),
+  Headers: z.record(z.array(z.string())),
   StatusCode: z.number().int(),
   RawResponse: z.instanceof(Response),
 }).transform((v) => {
   return remap$(v, {
     "ContentType": "contentType",
     "EmailTemplateResult": "emailTemplateResult",
+    "Headers": "headers",
     "StatusCode": "statusCode",
     "RawResponse": "rawResponse",
   });
@@ -147,6 +150,7 @@ export const MarketingGetEmailTemplateResponse$inboundSchema: z.ZodType<
 export type MarketingGetEmailTemplateResponse$Outbound = {
   ContentType: string;
   EmailTemplateResult?: shared.EmailTemplateResult$Outbound | undefined;
+  Headers: { [k: string]: Array<string> };
   StatusCode: number;
   RawResponse: never;
 };
@@ -159,6 +163,7 @@ export const MarketingGetEmailTemplateResponse$outboundSchema: z.ZodType<
 > = z.object({
   contentType: z.string(),
   emailTemplateResult: shared.EmailTemplateResult$outboundSchema.optional(),
+  headers: z.record(z.array(z.string())),
   statusCode: z.number().int(),
   rawResponse: z.instanceof(Response).transform(() => {
     throw new Error("Response cannot be serialized");
@@ -167,6 +172,7 @@ export const MarketingGetEmailTemplateResponse$outboundSchema: z.ZodType<
   return remap$(v, {
     contentType: "ContentType",
     emailTemplateResult: "EmailTemplateResult",
+    headers: "Headers",
     statusCode: "StatusCode",
     rawResponse: "RawResponse",
   });

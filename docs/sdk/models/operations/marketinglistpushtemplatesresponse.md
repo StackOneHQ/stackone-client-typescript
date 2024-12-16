@@ -8,6 +8,11 @@ import { PushMessagesValue } from "@stackone/stackone-client-ts/sdk/models/share
 
 let value: MarketingListPushTemplatesResponse = {
   contentType: "<value>",
+  headers: {
+    "key": [
+      "<value>",
+    ],
+  },
   pushTemplatesPaginated: {
     data: [
       {
@@ -26,7 +31,7 @@ let value: MarketingListPushTemplatesResponse = {
       },
     ],
   },
-  statusCode: 308,
+  statusCode: 411,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),
@@ -38,6 +43,7 @@ let value: MarketingListPushTemplatesResponse = {
 | Field                                                                                 | Type                                                                                  | Required                                                                              | Description                                                                           |
 | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
 | `contentType`                                                                         | *string*                                                                              | :heavy_check_mark:                                                                    | HTTP response content type for this operation                                         |
+| `headers`                                                                             | Record<string, *string*[]>                                                            | :heavy_check_mark:                                                                    | N/A                                                                                   |
 | `pushTemplatesPaginated`                                                              | [shared.PushTemplatesPaginated](../../../sdk/models/shared/pushtemplatespaginated.md) | :heavy_minus_sign:                                                                    | The list of push templates was retrieved.                                             |
 | `statusCode`                                                                          | *number*                                                                              | :heavy_check_mark:                                                                    | HTTP response status code for this operation                                          |
 | `rawResponse`                                                                         | [Response](https://developer.mozilla.org/en-US/docs/Web/API/Response)                 | :heavy_check_mark:                                                                    | Raw HTTP response; suitable for custom response parsing                               |

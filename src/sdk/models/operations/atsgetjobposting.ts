@@ -38,6 +38,7 @@ export type AtsGetJobPostingResponse = {
    * HTTP response content type for this operation
    */
   contentType: string;
+  headers: { [k: string]: Array<string> };
   /**
    * The job with the given identifier was retrieved.
    */
@@ -136,12 +137,14 @@ export const AtsGetJobPostingResponse$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   ContentType: z.string(),
+  Headers: z.record(z.array(z.string())),
   JobPostingResult: shared.JobPostingResult$inboundSchema.optional(),
   StatusCode: z.number().int(),
   RawResponse: z.instanceof(Response),
 }).transform((v) => {
   return remap$(v, {
     "ContentType": "contentType",
+    "Headers": "headers",
     "JobPostingResult": "jobPostingResult",
     "StatusCode": "statusCode",
     "RawResponse": "rawResponse",
@@ -151,6 +154,7 @@ export const AtsGetJobPostingResponse$inboundSchema: z.ZodType<
 /** @internal */
 export type AtsGetJobPostingResponse$Outbound = {
   ContentType: string;
+  Headers: { [k: string]: Array<string> };
   JobPostingResult?: shared.JobPostingResult$Outbound | undefined;
   StatusCode: number;
   RawResponse: never;
@@ -163,6 +167,7 @@ export const AtsGetJobPostingResponse$outboundSchema: z.ZodType<
   AtsGetJobPostingResponse
 > = z.object({
   contentType: z.string(),
+  headers: z.record(z.array(z.string())),
   jobPostingResult: shared.JobPostingResult$outboundSchema.optional(),
   statusCode: z.number().int(),
   rawResponse: z.instanceof(Response).transform(() => {
@@ -171,6 +176,7 @@ export const AtsGetJobPostingResponse$outboundSchema: z.ZodType<
 }).transform((v) => {
   return remap$(v, {
     contentType: "ContentType",
+    headers: "Headers",
     jobPostingResult: "JobPostingResult",
     statusCode: "StatusCode",
     rawResponse: "RawResponse",

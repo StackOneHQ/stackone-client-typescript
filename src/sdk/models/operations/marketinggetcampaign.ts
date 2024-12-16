@@ -38,6 +38,7 @@ export type MarketingGetCampaignResponse = {
    * HTTP response content type for this operation
    */
   contentType: string;
+  headers: { [k: string]: Array<string> };
   /**
    * HTTP response status code for this operation
    */
@@ -132,12 +133,14 @@ export const MarketingGetCampaignResponse$inboundSchema: z.ZodType<
 > = z.object({
   CampaignResult: shared.CampaignResult$inboundSchema.optional(),
   ContentType: z.string(),
+  Headers: z.record(z.array(z.string())),
   StatusCode: z.number().int(),
   RawResponse: z.instanceof(Response),
 }).transform((v) => {
   return remap$(v, {
     "CampaignResult": "campaignResult",
     "ContentType": "contentType",
+    "Headers": "headers",
     "StatusCode": "statusCode",
     "RawResponse": "rawResponse",
   });
@@ -147,6 +150,7 @@ export const MarketingGetCampaignResponse$inboundSchema: z.ZodType<
 export type MarketingGetCampaignResponse$Outbound = {
   CampaignResult?: shared.CampaignResult$Outbound | undefined;
   ContentType: string;
+  Headers: { [k: string]: Array<string> };
   StatusCode: number;
   RawResponse: never;
 };
@@ -159,6 +163,7 @@ export const MarketingGetCampaignResponse$outboundSchema: z.ZodType<
 > = z.object({
   campaignResult: shared.CampaignResult$outboundSchema.optional(),
   contentType: z.string(),
+  headers: z.record(z.array(z.string())),
   statusCode: z.number().int(),
   rawResponse: z.instanceof(Response).transform(() => {
     throw new Error("Response cannot be serialized");
@@ -167,6 +172,7 @@ export const MarketingGetCampaignResponse$outboundSchema: z.ZodType<
   return remap$(v, {
     campaignResult: "CampaignResult",
     contentType: "ContentType",
+    headers: "Headers",
     statusCode: "StatusCode",
     rawResponse: "RawResponse",
   });

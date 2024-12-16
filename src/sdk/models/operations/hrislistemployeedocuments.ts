@@ -68,6 +68,7 @@ export type HrisListEmployeeDocumentsResponse = {
    * HTTP response content type for this operation
    */
   contentType: string;
+  headers: { [k: string]: Array<string> };
   /**
    * The documents related to the employee with the given identifier were retrieved.
    */
@@ -265,6 +266,7 @@ export const HrisListEmployeeDocumentsResponse$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   ContentType: z.string(),
+  Headers: z.record(z.array(z.string())),
   HrisDocumentsPaginated: shared.HrisDocumentsPaginated$inboundSchema
     .optional(),
   StatusCode: z.number().int(),
@@ -272,6 +274,7 @@ export const HrisListEmployeeDocumentsResponse$inboundSchema: z.ZodType<
 }).transform((v) => {
   return remap$(v, {
     "ContentType": "contentType",
+    "Headers": "headers",
     "HrisDocumentsPaginated": "hrisDocumentsPaginated",
     "StatusCode": "statusCode",
     "RawResponse": "rawResponse",
@@ -281,6 +284,7 @@ export const HrisListEmployeeDocumentsResponse$inboundSchema: z.ZodType<
 /** @internal */
 export type HrisListEmployeeDocumentsResponse$Outbound = {
   ContentType: string;
+  Headers: { [k: string]: Array<string> };
   HrisDocumentsPaginated?: shared.HrisDocumentsPaginated$Outbound | undefined;
   StatusCode: number;
   RawResponse: never;
@@ -293,6 +297,7 @@ export const HrisListEmployeeDocumentsResponse$outboundSchema: z.ZodType<
   HrisListEmployeeDocumentsResponse
 > = z.object({
   contentType: z.string(),
+  headers: z.record(z.array(z.string())),
   hrisDocumentsPaginated: shared.HrisDocumentsPaginated$outboundSchema
     .optional(),
   statusCode: z.number().int(),
@@ -302,6 +307,7 @@ export const HrisListEmployeeDocumentsResponse$outboundSchema: z.ZodType<
 }).transform((v) => {
   return remap$(v, {
     contentType: "ContentType",
+    headers: "Headers",
     hrisDocumentsPaginated: "HrisDocumentsPaginated",
     statusCode: "StatusCode",
     rawResponse: "RawResponse",

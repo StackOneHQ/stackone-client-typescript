@@ -27,6 +27,7 @@ export type HrisBatchUploadEmployeeDocumentResponse = {
    * HTTP response content type for this operation
    */
   contentType: string;
+  headers: { [k: string]: Array<string> };
   /**
    * HTTP response status code for this operation
    */
@@ -124,12 +125,14 @@ export const HrisBatchUploadEmployeeDocumentResponse$inboundSchema: z.ZodType<
 > = z.object({
   BatchResultApiModel: shared.BatchResultApiModel$inboundSchema.optional(),
   ContentType: z.string(),
+  Headers: z.record(z.array(z.string())),
   StatusCode: z.number().int(),
   RawResponse: z.instanceof(Response),
 }).transform((v) => {
   return remap$(v, {
     "BatchResultApiModel": "batchResultApiModel",
     "ContentType": "contentType",
+    "Headers": "headers",
     "StatusCode": "statusCode",
     "RawResponse": "rawResponse",
   });
@@ -139,6 +142,7 @@ export const HrisBatchUploadEmployeeDocumentResponse$inboundSchema: z.ZodType<
 export type HrisBatchUploadEmployeeDocumentResponse$Outbound = {
   BatchResultApiModel?: shared.BatchResultApiModel$Outbound | undefined;
   ContentType: string;
+  Headers: { [k: string]: Array<string> };
   StatusCode: number;
   RawResponse: never;
 };
@@ -151,6 +155,7 @@ export const HrisBatchUploadEmployeeDocumentResponse$outboundSchema: z.ZodType<
 > = z.object({
   batchResultApiModel: shared.BatchResultApiModel$outboundSchema.optional(),
   contentType: z.string(),
+  headers: z.record(z.array(z.string())),
   statusCode: z.number().int(),
   rawResponse: z.instanceof(Response).transform(() => {
     throw new Error("Response cannot be serialized");
@@ -159,6 +164,7 @@ export const HrisBatchUploadEmployeeDocumentResponse$outboundSchema: z.ZodType<
   return remap$(v, {
     batchResultApiModel: "BatchResultApiModel",
     contentType: "ContentType",
+    headers: "Headers",
     statusCode: "StatusCode",
     rawResponse: "RawResponse",
   });

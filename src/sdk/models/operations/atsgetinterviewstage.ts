@@ -34,6 +34,7 @@ export type AtsGetInterviewStageResponse = {
    * HTTP response content type for this operation
    */
   contentType: string;
+  headers: { [k: string]: Array<string> };
   /**
    * The interview-stage with the given identifier was retrieved.
    */
@@ -131,12 +132,14 @@ export const AtsGetInterviewStageResponse$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   ContentType: z.string(),
+  Headers: z.record(z.array(z.string())),
   InterviewStageResult: shared.InterviewStageResult$inboundSchema.optional(),
   StatusCode: z.number().int(),
   RawResponse: z.instanceof(Response),
 }).transform((v) => {
   return remap$(v, {
     "ContentType": "contentType",
+    "Headers": "headers",
     "InterviewStageResult": "interviewStageResult",
     "StatusCode": "statusCode",
     "RawResponse": "rawResponse",
@@ -146,6 +149,7 @@ export const AtsGetInterviewStageResponse$inboundSchema: z.ZodType<
 /** @internal */
 export type AtsGetInterviewStageResponse$Outbound = {
   ContentType: string;
+  Headers: { [k: string]: Array<string> };
   InterviewStageResult?: shared.InterviewStageResult$Outbound | undefined;
   StatusCode: number;
   RawResponse: never;
@@ -158,6 +162,7 @@ export const AtsGetInterviewStageResponse$outboundSchema: z.ZodType<
   AtsGetInterviewStageResponse
 > = z.object({
   contentType: z.string(),
+  headers: z.record(z.array(z.string())),
   interviewStageResult: shared.InterviewStageResult$outboundSchema.optional(),
   statusCode: z.number().int(),
   rawResponse: z.instanceof(Response).transform(() => {
@@ -166,6 +171,7 @@ export const AtsGetInterviewStageResponse$outboundSchema: z.ZodType<
 }).transform((v) => {
   return remap$(v, {
     contentType: "ContentType",
+    headers: "Headers",
     interviewStageResult: "InterviewStageResult",
     statusCode: "StatusCode",
     rawResponse: "RawResponse",

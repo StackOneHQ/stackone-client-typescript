@@ -38,6 +38,7 @@ export type HrisGetLocationResponse = {
    * The Location with the given identifier was retrieved.
    */
   hrisLocationResult?: shared.HRISLocationResult | undefined;
+  headers: { [k: string]: Array<string> };
   /**
    * HTTP response status code for this operation
    */
@@ -130,12 +131,14 @@ export const HrisGetLocationResponse$inboundSchema: z.ZodType<
 > = z.object({
   ContentType: z.string(),
   HRISLocationResult: shared.HRISLocationResult$inboundSchema.optional(),
+  Headers: z.record(z.array(z.string())),
   StatusCode: z.number().int(),
   RawResponse: z.instanceof(Response),
 }).transform((v) => {
   return remap$(v, {
     "ContentType": "contentType",
     "HRISLocationResult": "hrisLocationResult",
+    "Headers": "headers",
     "StatusCode": "statusCode",
     "RawResponse": "rawResponse",
   });
@@ -145,6 +148,7 @@ export const HrisGetLocationResponse$inboundSchema: z.ZodType<
 export type HrisGetLocationResponse$Outbound = {
   ContentType: string;
   HRISLocationResult?: shared.HRISLocationResult$Outbound | undefined;
+  Headers: { [k: string]: Array<string> };
   StatusCode: number;
   RawResponse: never;
 };
@@ -157,6 +161,7 @@ export const HrisGetLocationResponse$outboundSchema: z.ZodType<
 > = z.object({
   contentType: z.string(),
   hrisLocationResult: shared.HRISLocationResult$outboundSchema.optional(),
+  headers: z.record(z.array(z.string())),
   statusCode: z.number().int(),
   rawResponse: z.instanceof(Response).transform(() => {
     throw new Error("Response cannot be serialized");
@@ -165,6 +170,7 @@ export const HrisGetLocationResponse$outboundSchema: z.ZodType<
   return remap$(v, {
     contentType: "ContentType",
     hrisLocationResult: "HRISLocationResult",
+    headers: "Headers",
     statusCode: "StatusCode",
     rawResponse: "RawResponse",
   });

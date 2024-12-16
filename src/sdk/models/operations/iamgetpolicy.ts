@@ -38,6 +38,7 @@ export type IamGetPolicyResponse = {
    * HTTP response content type for this operation
    */
   contentType: string;
+  headers: { [k: string]: Array<string> };
   /**
    * The policy with the given identifier was retrieved.
    */
@@ -136,12 +137,14 @@ export const IamGetPolicyResponse$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   ContentType: z.string(),
+  Headers: z.record(z.array(z.string())),
   IamPolicyResult: shared.IamPolicyResult$inboundSchema.optional(),
   StatusCode: z.number().int(),
   RawResponse: z.instanceof(Response),
 }).transform((v) => {
   return remap$(v, {
     "ContentType": "contentType",
+    "Headers": "headers",
     "IamPolicyResult": "iamPolicyResult",
     "StatusCode": "statusCode",
     "RawResponse": "rawResponse",
@@ -151,6 +154,7 @@ export const IamGetPolicyResponse$inboundSchema: z.ZodType<
 /** @internal */
 export type IamGetPolicyResponse$Outbound = {
   ContentType: string;
+  Headers: { [k: string]: Array<string> };
   IamPolicyResult?: shared.IamPolicyResult$Outbound | undefined;
   StatusCode: number;
   RawResponse: never;
@@ -163,6 +167,7 @@ export const IamGetPolicyResponse$outboundSchema: z.ZodType<
   IamGetPolicyResponse
 > = z.object({
   contentType: z.string(),
+  headers: z.record(z.array(z.string())),
   iamPolicyResult: shared.IamPolicyResult$outboundSchema.optional(),
   statusCode: z.number().int(),
   rawResponse: z.instanceof(Response).transform(() => {
@@ -171,6 +176,7 @@ export const IamGetPolicyResponse$outboundSchema: z.ZodType<
 }).transform((v) => {
   return remap$(v, {
     contentType: "ContentType",
+    headers: "Headers",
     iamPolicyResult: "IamPolicyResult",
     statusCode: "StatusCode",
     rawResponse: "RawResponse",

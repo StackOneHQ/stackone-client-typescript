@@ -28,6 +28,7 @@ export type HrisCreateEmployeeWorkEligibilityRequestResponse = {
    * Record created successfully.
    */
   createResult?: shared.CreateResult | undefined;
+  headers: { [k: string]: Array<string> };
   /**
    * HTTP response status code for this operation
    */
@@ -136,12 +137,14 @@ export const HrisCreateEmployeeWorkEligibilityRequestResponse$inboundSchema:
   > = z.object({
     ContentType: z.string(),
     CreateResult: shared.CreateResult$inboundSchema.optional(),
+    Headers: z.record(z.array(z.string())),
     StatusCode: z.number().int(),
     RawResponse: z.instanceof(Response),
   }).transform((v) => {
     return remap$(v, {
       "ContentType": "contentType",
       "CreateResult": "createResult",
+      "Headers": "headers",
       "StatusCode": "statusCode",
       "RawResponse": "rawResponse",
     });
@@ -151,6 +154,7 @@ export const HrisCreateEmployeeWorkEligibilityRequestResponse$inboundSchema:
 export type HrisCreateEmployeeWorkEligibilityRequestResponse$Outbound = {
   ContentType: string;
   CreateResult?: shared.CreateResult$Outbound | undefined;
+  Headers: { [k: string]: Array<string> };
   StatusCode: number;
   RawResponse: never;
 };
@@ -164,6 +168,7 @@ export const HrisCreateEmployeeWorkEligibilityRequestResponse$outboundSchema:
   > = z.object({
     contentType: z.string(),
     createResult: shared.CreateResult$outboundSchema.optional(),
+    headers: z.record(z.array(z.string())),
     statusCode: z.number().int(),
     rawResponse: z.instanceof(Response).transform(() => {
       throw new Error("Response cannot be serialized");
@@ -172,6 +177,7 @@ export const HrisCreateEmployeeWorkEligibilityRequestResponse$outboundSchema:
     return remap$(v, {
       contentType: "ContentType",
       createResult: "CreateResult",
+      headers: "Headers",
       statusCode: "StatusCode",
       rawResponse: "RawResponse",
     });

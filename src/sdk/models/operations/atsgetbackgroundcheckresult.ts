@@ -40,6 +40,7 @@ export type AtsGetBackgroundCheckResultResponse = {
    * HTTP response content type for this operation
    */
   contentType: string;
+  headers: { [k: string]: Array<string> };
   /**
    * HTTP response status code for this operation
    */
@@ -137,12 +138,14 @@ export const AtsGetBackgroundCheckResultResponse$inboundSchema: z.ZodType<
   BackgroundCheckResultsResult: shared
     .BackgroundCheckResultsResult$inboundSchema.optional(),
   ContentType: z.string(),
+  Headers: z.record(z.array(z.string())),
   StatusCode: z.number().int(),
   RawResponse: z.instanceof(Response),
 }).transform((v) => {
   return remap$(v, {
     "BackgroundCheckResultsResult": "backgroundCheckResultsResult",
     "ContentType": "contentType",
+    "Headers": "headers",
     "StatusCode": "statusCode",
     "RawResponse": "rawResponse",
   });
@@ -154,6 +157,7 @@ export type AtsGetBackgroundCheckResultResponse$Outbound = {
     | shared.BackgroundCheckResultsResult$Outbound
     | undefined;
   ContentType: string;
+  Headers: { [k: string]: Array<string> };
   StatusCode: number;
   RawResponse: never;
 };
@@ -167,6 +171,7 @@ export const AtsGetBackgroundCheckResultResponse$outboundSchema: z.ZodType<
   backgroundCheckResultsResult: shared
     .BackgroundCheckResultsResult$outboundSchema.optional(),
   contentType: z.string(),
+  headers: z.record(z.array(z.string())),
   statusCode: z.number().int(),
   rawResponse: z.instanceof(Response).transform(() => {
     throw new Error("Response cannot be serialized");
@@ -175,6 +180,7 @@ export const AtsGetBackgroundCheckResultResponse$outboundSchema: z.ZodType<
   return remap$(v, {
     backgroundCheckResultsResult: "BackgroundCheckResultsResult",
     contentType: "ContentType",
+    headers: "Headers",
     statusCode: "StatusCode",
     rawResponse: "RawResponse",
   });

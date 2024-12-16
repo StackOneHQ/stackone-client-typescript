@@ -3,7 +3,7 @@
 ## Example Usage
 
 ```typescript
-import { AssignmentsPaginated } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { AssignmentSchemasValue, AssignmentsPaginated } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: AssignmentsPaginated = {
   data: [
@@ -17,6 +17,9 @@ let value: AssignmentsPaginated = {
       remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
       remoteLearningObjectId: "e3cb55bf-aa84-466e-a6c1-b8302b257a49",
       remoteUserId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
+      status: {
+        value: AssignmentSchemasValue.Pending,
+      },
       unifiedCustomFields: {
         "my_project_custom_field_1": "REF-1236",
         "my_project_custom_field_2": "some other value",

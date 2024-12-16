@@ -34,6 +34,7 @@ export type HrisGetTimeOffTypeResponse = {
    * HTTP response content type for this operation
    */
   contentType: string;
+  headers: { [k: string]: Array<string> };
   /**
    * The time off type with the given identifier was retrieved.
    */
@@ -129,12 +130,14 @@ export const HrisGetTimeOffTypeResponse$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   ContentType: z.string(),
+  Headers: z.record(z.array(z.string())),
   ReferenceResult: shared.ReferenceResult$inboundSchema.optional(),
   StatusCode: z.number().int(),
   RawResponse: z.instanceof(Response),
 }).transform((v) => {
   return remap$(v, {
     "ContentType": "contentType",
+    "Headers": "headers",
     "ReferenceResult": "referenceResult",
     "StatusCode": "statusCode",
     "RawResponse": "rawResponse",
@@ -144,6 +147,7 @@ export const HrisGetTimeOffTypeResponse$inboundSchema: z.ZodType<
 /** @internal */
 export type HrisGetTimeOffTypeResponse$Outbound = {
   ContentType: string;
+  Headers: { [k: string]: Array<string> };
   ReferenceResult?: shared.ReferenceResult$Outbound | undefined;
   StatusCode: number;
   RawResponse: never;
@@ -156,6 +160,7 @@ export const HrisGetTimeOffTypeResponse$outboundSchema: z.ZodType<
   HrisGetTimeOffTypeResponse
 > = z.object({
   contentType: z.string(),
+  headers: z.record(z.array(z.string())),
   referenceResult: shared.ReferenceResult$outboundSchema.optional(),
   statusCode: z.number().int(),
   rawResponse: z.instanceof(Response).transform(() => {
@@ -164,6 +169,7 @@ export const HrisGetTimeOffTypeResponse$outboundSchema: z.ZodType<
 }).transform((v) => {
   return remap$(v, {
     contentType: "ContentType",
+    headers: "Headers",
     referenceResult: "ReferenceResult",
     statusCode: "StatusCode",
     rawResponse: "RawResponse",

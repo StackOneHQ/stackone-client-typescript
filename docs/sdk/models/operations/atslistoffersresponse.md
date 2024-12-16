@@ -8,6 +8,11 @@ import { OfferValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: AtsListOffersResponse = {
   contentType: "<value>",
+  headers: {
+    "key": [
+      "<value>",
+    ],
+  },
   offersPaginated: {
     data: [
       {
@@ -47,6 +52,7 @@ let value: AtsListOffersResponse = {
 | Field                                                                   | Type                                                                    | Required                                                                | Description                                                             |
 | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- |
 | `contentType`                                                           | *string*                                                                | :heavy_check_mark:                                                      | HTTP response content type for this operation                           |
+| `headers`                                                               | Record<string, *string*[]>                                              | :heavy_check_mark:                                                      | N/A                                                                     |
 | `offersPaginated`                                                       | [shared.OffersPaginated](../../../sdk/models/shared/offerspaginated.md) | :heavy_minus_sign:                                                      | The list of offers was retrieved.                                       |
 | `statusCode`                                                            | *number*                                                                | :heavy_check_mark:                                                      | HTTP response status code for this operation                            |
 | `rawResponse`                                                           | [Response](https://developer.mozilla.org/en-US/docs/Web/API/Response)   | :heavy_check_mark:                                                      | Raw HTTP response; suitable for custom response parsing                 |

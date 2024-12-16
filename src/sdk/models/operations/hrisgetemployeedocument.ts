@@ -35,6 +35,7 @@ export type HrisGetEmployeeDocumentResponse = {
    * HTTP response content type for this operation
    */
   contentType: string;
+  headers: { [k: string]: Array<string> };
   /**
    * The document related to the employee with the given identifiers was retrieved.
    */
@@ -135,12 +136,14 @@ export const HrisGetEmployeeDocumentResponse$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   ContentType: z.string(),
+  Headers: z.record(z.array(z.string())),
   HrisDocumentResult: shared.HrisDocumentResult$inboundSchema.optional(),
   StatusCode: z.number().int(),
   RawResponse: z.instanceof(Response),
 }).transform((v) => {
   return remap$(v, {
     "ContentType": "contentType",
+    "Headers": "headers",
     "HrisDocumentResult": "hrisDocumentResult",
     "StatusCode": "statusCode",
     "RawResponse": "rawResponse",
@@ -150,6 +153,7 @@ export const HrisGetEmployeeDocumentResponse$inboundSchema: z.ZodType<
 /** @internal */
 export type HrisGetEmployeeDocumentResponse$Outbound = {
   ContentType: string;
+  Headers: { [k: string]: Array<string> };
   HrisDocumentResult?: shared.HrisDocumentResult$Outbound | undefined;
   StatusCode: number;
   RawResponse: never;
@@ -162,6 +166,7 @@ export const HrisGetEmployeeDocumentResponse$outboundSchema: z.ZodType<
   HrisGetEmployeeDocumentResponse
 > = z.object({
   contentType: z.string(),
+  headers: z.record(z.array(z.string())),
   hrisDocumentResult: shared.HrisDocumentResult$outboundSchema.optional(),
   statusCode: z.number().int(),
   rawResponse: z.instanceof(Response).transform(() => {
@@ -170,6 +175,7 @@ export const HrisGetEmployeeDocumentResponse$outboundSchema: z.ZodType<
 }).transform((v) => {
   return remap$(v, {
     contentType: "ContentType",
+    headers: "Headers",
     hrisDocumentResult: "HrisDocumentResult",
     statusCode: "StatusCode",
     rawResponse: "RawResponse",

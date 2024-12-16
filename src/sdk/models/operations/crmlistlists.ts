@@ -67,6 +67,7 @@ export type CrmListListsResponse = {
    * HTTP response content type for this operation
    */
   contentType: string;
+  headers: { [k: string]: Array<string> };
   /**
    * The collection of lists was retrieved.
    */
@@ -244,12 +245,14 @@ export const CrmListListsResponse$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   ContentType: z.string(),
+  Headers: z.record(z.array(z.string())),
   ListsPaginated: shared.ListsPaginated$inboundSchema.optional(),
   StatusCode: z.number().int(),
   RawResponse: z.instanceof(Response),
 }).transform((v) => {
   return remap$(v, {
     "ContentType": "contentType",
+    "Headers": "headers",
     "ListsPaginated": "listsPaginated",
     "StatusCode": "statusCode",
     "RawResponse": "rawResponse",
@@ -259,6 +262,7 @@ export const CrmListListsResponse$inboundSchema: z.ZodType<
 /** @internal */
 export type CrmListListsResponse$Outbound = {
   ContentType: string;
+  Headers: { [k: string]: Array<string> };
   ListsPaginated?: shared.ListsPaginated$Outbound | undefined;
   StatusCode: number;
   RawResponse: never;
@@ -271,6 +275,7 @@ export const CrmListListsResponse$outboundSchema: z.ZodType<
   CrmListListsResponse
 > = z.object({
   contentType: z.string(),
+  headers: z.record(z.array(z.string())),
   listsPaginated: shared.ListsPaginated$outboundSchema.optional(),
   statusCode: z.number().int(),
   rawResponse: z.instanceof(Response).transform(() => {
@@ -279,6 +284,7 @@ export const CrmListListsResponse$outboundSchema: z.ZodType<
 }).transform((v) => {
   return remap$(v, {
     contentType: "ContentType",
+    headers: "Headers",
     listsPaginated: "ListsPaginated",
     statusCode: "StatusCode",
     rawResponse: "RawResponse",

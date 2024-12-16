@@ -8,6 +8,11 @@ import { InAppMessagesValue } from "@stackone/stackone-client-ts/sdk/models/shar
 
 let value: MarketingListInAppTemplatesResponse = {
   contentType: "<value>",
+  headers: {
+    "key": [
+      "<value>",
+    ],
+  },
   inAppTemplatesPaginated: {
     data: [
       {
@@ -26,7 +31,7 @@ let value: MarketingListInAppTemplatesResponse = {
       },
     ],
   },
-  statusCode: 505,
+  statusCode: 510,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),
@@ -38,6 +43,7 @@ let value: MarketingListInAppTemplatesResponse = {
 | Field                                                                                   | Type                                                                                    | Required                                                                                | Description                                                                             |
 | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
 | `contentType`                                                                           | *string*                                                                                | :heavy_check_mark:                                                                      | HTTP response content type for this operation                                           |
+| `headers`                                                                               | Record<string, *string*[]>                                                              | :heavy_check_mark:                                                                      | N/A                                                                                     |
 | `inAppTemplatesPaginated`                                                               | [shared.InAppTemplatesPaginated](../../../sdk/models/shared/inapptemplatespaginated.md) | :heavy_minus_sign:                                                                      | The list of in-app templates was retrieved.                                             |
 | `statusCode`                                                                            | *number*                                                                                | :heavy_check_mark:                                                                      | HTTP response status code for this operation                                            |
 | `rawResponse`                                                                           | [Response](https://developer.mozilla.org/en-US/docs/Web/API/Response)                   | :heavy_check_mark:                                                                      | Raw HTTP response; suitable for custom response parsing                                 |

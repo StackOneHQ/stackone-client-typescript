@@ -38,6 +38,7 @@ export type AtsGetDepartmentResponse = {
    * The department with the given identifier was retrieved.
    */
   departmentResult?: shared.DepartmentResult | undefined;
+  headers: { [k: string]: Array<string> };
   /**
    * HTTP response status code for this operation
    */
@@ -130,12 +131,14 @@ export const AtsGetDepartmentResponse$inboundSchema: z.ZodType<
 > = z.object({
   ContentType: z.string(),
   DepartmentResult: shared.DepartmentResult$inboundSchema.optional(),
+  Headers: z.record(z.array(z.string())),
   StatusCode: z.number().int(),
   RawResponse: z.instanceof(Response),
 }).transform((v) => {
   return remap$(v, {
     "ContentType": "contentType",
     "DepartmentResult": "departmentResult",
+    "Headers": "headers",
     "StatusCode": "statusCode",
     "RawResponse": "rawResponse",
   });
@@ -145,6 +148,7 @@ export const AtsGetDepartmentResponse$inboundSchema: z.ZodType<
 export type AtsGetDepartmentResponse$Outbound = {
   ContentType: string;
   DepartmentResult?: shared.DepartmentResult$Outbound | undefined;
+  Headers: { [k: string]: Array<string> };
   StatusCode: number;
   RawResponse: never;
 };
@@ -157,6 +161,7 @@ export const AtsGetDepartmentResponse$outboundSchema: z.ZodType<
 > = z.object({
   contentType: z.string(),
   departmentResult: shared.DepartmentResult$outboundSchema.optional(),
+  headers: z.record(z.array(z.string())),
   statusCode: z.number().int(),
   rawResponse: z.instanceof(Response).transform(() => {
     throw new Error("Response cannot be serialized");
@@ -165,6 +170,7 @@ export const AtsGetDepartmentResponse$outboundSchema: z.ZodType<
   return remap$(v, {
     contentType: "ContentType",
     departmentResult: "DepartmentResult",
+    headers: "Headers",
     statusCode: "StatusCode",
     rawResponse: "RawResponse",
   });

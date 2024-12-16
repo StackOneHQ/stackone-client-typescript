@@ -71,6 +71,7 @@ export type MarketingListEmailTemplatesResponse = {
    * The list of email templates was retrieved.
    */
   emailTemplatesPaginated?: shared.EmailTemplatesPaginated | undefined;
+  headers: { [k: string]: Array<string> };
   /**
    * HTTP response status code for this operation
    */
@@ -266,12 +267,14 @@ export const MarketingListEmailTemplatesResponse$inboundSchema: z.ZodType<
   ContentType: z.string(),
   EmailTemplatesPaginated: shared.EmailTemplatesPaginated$inboundSchema
     .optional(),
+  Headers: z.record(z.array(z.string())),
   StatusCode: z.number().int(),
   RawResponse: z.instanceof(Response),
 }).transform((v) => {
   return remap$(v, {
     "ContentType": "contentType",
     "EmailTemplatesPaginated": "emailTemplatesPaginated",
+    "Headers": "headers",
     "StatusCode": "statusCode",
     "RawResponse": "rawResponse",
   });
@@ -281,6 +284,7 @@ export const MarketingListEmailTemplatesResponse$inboundSchema: z.ZodType<
 export type MarketingListEmailTemplatesResponse$Outbound = {
   ContentType: string;
   EmailTemplatesPaginated?: shared.EmailTemplatesPaginated$Outbound | undefined;
+  Headers: { [k: string]: Array<string> };
   StatusCode: number;
   RawResponse: never;
 };
@@ -294,6 +298,7 @@ export const MarketingListEmailTemplatesResponse$outboundSchema: z.ZodType<
   contentType: z.string(),
   emailTemplatesPaginated: shared.EmailTemplatesPaginated$outboundSchema
     .optional(),
+  headers: z.record(z.array(z.string())),
   statusCode: z.number().int(),
   rawResponse: z.instanceof(Response).transform(() => {
     throw new Error("Response cannot be serialized");
@@ -302,6 +307,7 @@ export const MarketingListEmailTemplatesResponse$outboundSchema: z.ZodType<
   return remap$(v, {
     contentType: "ContentType",
     emailTemplatesPaginated: "EmailTemplatesPaginated",
+    headers: "Headers",
     statusCode: "StatusCode",
     rawResponse: "RawResponse",
   });

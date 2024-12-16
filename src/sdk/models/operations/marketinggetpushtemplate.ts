@@ -34,6 +34,7 @@ export type MarketingGetPushTemplateResponse = {
    * HTTP response content type for this operation
    */
   contentType: string;
+  headers: { [k: string]: Array<string> };
   /**
    * The push template with the given identifier was retrieved.
    */
@@ -131,12 +132,14 @@ export const MarketingGetPushTemplateResponse$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   ContentType: z.string(),
+  Headers: z.record(z.array(z.string())),
   PushTemplateResult: shared.PushTemplateResult$inboundSchema.optional(),
   StatusCode: z.number().int(),
   RawResponse: z.instanceof(Response),
 }).transform((v) => {
   return remap$(v, {
     "ContentType": "contentType",
+    "Headers": "headers",
     "PushTemplateResult": "pushTemplateResult",
     "StatusCode": "statusCode",
     "RawResponse": "rawResponse",
@@ -146,6 +149,7 @@ export const MarketingGetPushTemplateResponse$inboundSchema: z.ZodType<
 /** @internal */
 export type MarketingGetPushTemplateResponse$Outbound = {
   ContentType: string;
+  Headers: { [k: string]: Array<string> };
   PushTemplateResult?: shared.PushTemplateResult$Outbound | undefined;
   StatusCode: number;
   RawResponse: never;
@@ -158,6 +162,7 @@ export const MarketingGetPushTemplateResponse$outboundSchema: z.ZodType<
   MarketingGetPushTemplateResponse
 > = z.object({
   contentType: z.string(),
+  headers: z.record(z.array(z.string())),
   pushTemplateResult: shared.PushTemplateResult$outboundSchema.optional(),
   statusCode: z.number().int(),
   rawResponse: z.instanceof(Response).transform(() => {
@@ -166,6 +171,7 @@ export const MarketingGetPushTemplateResponse$outboundSchema: z.ZodType<
 }).transform((v) => {
   return remap$(v, {
     contentType: "ContentType",
+    headers: "Headers",
     pushTemplateResult: "PushTemplateResult",
     statusCode: "StatusCode",
     rawResponse: "RawResponse",

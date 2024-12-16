@@ -18,6 +18,7 @@ export type StackoneGetAccountMetaInfoResponse = {
    * HTTP response content type for this operation
    */
   contentType: string;
+  headers: { [k: string]: Array<string> };
   /**
    * The meta information of the account was retrieved
    */
@@ -96,12 +97,14 @@ export const StackoneGetAccountMetaInfoResponse$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   ContentType: z.string(),
+  Headers: z.record(z.array(z.string())),
   LinkedAccountMeta: shared.LinkedAccountMeta$inboundSchema.optional(),
   StatusCode: z.number().int(),
   RawResponse: z.instanceof(Response),
 }).transform((v) => {
   return remap$(v, {
     "ContentType": "contentType",
+    "Headers": "headers",
     "LinkedAccountMeta": "linkedAccountMeta",
     "StatusCode": "statusCode",
     "RawResponse": "rawResponse",
@@ -111,6 +114,7 @@ export const StackoneGetAccountMetaInfoResponse$inboundSchema: z.ZodType<
 /** @internal */
 export type StackoneGetAccountMetaInfoResponse$Outbound = {
   ContentType: string;
+  Headers: { [k: string]: Array<string> };
   LinkedAccountMeta?: shared.LinkedAccountMeta$Outbound | undefined;
   StatusCode: number;
   RawResponse: never;
@@ -123,6 +127,7 @@ export const StackoneGetAccountMetaInfoResponse$outboundSchema: z.ZodType<
   StackoneGetAccountMetaInfoResponse
 > = z.object({
   contentType: z.string(),
+  headers: z.record(z.array(z.string())),
   linkedAccountMeta: shared.LinkedAccountMeta$outboundSchema.optional(),
   statusCode: z.number().int(),
   rawResponse: z.instanceof(Response).transform(() => {
@@ -131,6 +136,7 @@ export const StackoneGetAccountMetaInfoResponse$outboundSchema: z.ZodType<
 }).transform((v) => {
   return remap$(v, {
     contentType: "ContentType",
+    headers: "Headers",
     linkedAccountMeta: "LinkedAccountMeta",
     statusCode: "StatusCode",
     rawResponse: "RawResponse",

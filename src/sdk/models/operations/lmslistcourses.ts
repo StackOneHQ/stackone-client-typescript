@@ -71,6 +71,7 @@ export type LmsListCoursesResponse = {
    * The list of courses was retrieved.
    */
   coursePaginated?: shared.CoursePaginated | undefined;
+  headers: { [k: string]: Array<string> };
   /**
    * HTTP response status code for this operation
    */
@@ -246,12 +247,14 @@ export const LmsListCoursesResponse$inboundSchema: z.ZodType<
 > = z.object({
   ContentType: z.string(),
   CoursePaginated: shared.CoursePaginated$inboundSchema.optional(),
+  Headers: z.record(z.array(z.string())),
   StatusCode: z.number().int(),
   RawResponse: z.instanceof(Response),
 }).transform((v) => {
   return remap$(v, {
     "ContentType": "contentType",
     "CoursePaginated": "coursePaginated",
+    "Headers": "headers",
     "StatusCode": "statusCode",
     "RawResponse": "rawResponse",
   });
@@ -261,6 +264,7 @@ export const LmsListCoursesResponse$inboundSchema: z.ZodType<
 export type LmsListCoursesResponse$Outbound = {
   ContentType: string;
   CoursePaginated?: shared.CoursePaginated$Outbound | undefined;
+  Headers: { [k: string]: Array<string> };
   StatusCode: number;
   RawResponse: never;
 };
@@ -273,6 +277,7 @@ export const LmsListCoursesResponse$outboundSchema: z.ZodType<
 > = z.object({
   contentType: z.string(),
   coursePaginated: shared.CoursePaginated$outboundSchema.optional(),
+  headers: z.record(z.array(z.string())),
   statusCode: z.number().int(),
   rawResponse: z.instanceof(Response).transform(() => {
     throw new Error("Response cannot be serialized");
@@ -281,6 +286,7 @@ export const LmsListCoursesResponse$outboundSchema: z.ZodType<
   return remap$(v, {
     contentType: "ContentType",
     coursePaginated: "CoursePaginated",
+    headers: "Headers",
     statusCode: "StatusCode",
     rawResponse: "RawResponse",
   });
