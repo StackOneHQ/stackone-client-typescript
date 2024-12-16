@@ -77,6 +77,7 @@ export type AtsListDepartmentsResponse = {
    * The list of departments was retrieved.
    */
   departmentsPaginated?: shared.DepartmentsPaginated | undefined;
+  headers: { [k: string]: Array<string> };
   /**
    * HTTP response status code for this operation
    */
@@ -260,12 +261,14 @@ export const AtsListDepartmentsResponse$inboundSchema: z.ZodType<
 > = z.object({
   ContentType: z.string(),
   DepartmentsPaginated: shared.DepartmentsPaginated$inboundSchema.optional(),
+  Headers: z.record(z.array(z.string())),
   StatusCode: z.number().int(),
   RawResponse: z.instanceof(Response),
 }).transform((v) => {
   return remap$(v, {
     "ContentType": "contentType",
     "DepartmentsPaginated": "departmentsPaginated",
+    "Headers": "headers",
     "StatusCode": "statusCode",
     "RawResponse": "rawResponse",
   });
@@ -275,6 +278,7 @@ export const AtsListDepartmentsResponse$inboundSchema: z.ZodType<
 export type AtsListDepartmentsResponse$Outbound = {
   ContentType: string;
   DepartmentsPaginated?: shared.DepartmentsPaginated$Outbound | undefined;
+  Headers: { [k: string]: Array<string> };
   StatusCode: number;
   RawResponse: never;
 };
@@ -287,6 +291,7 @@ export const AtsListDepartmentsResponse$outboundSchema: z.ZodType<
 > = z.object({
   contentType: z.string(),
   departmentsPaginated: shared.DepartmentsPaginated$outboundSchema.optional(),
+  headers: z.record(z.array(z.string())),
   statusCode: z.number().int(),
   rawResponse: z.instanceof(Response).transform(() => {
     throw new Error("Response cannot be serialized");
@@ -295,6 +300,7 @@ export const AtsListDepartmentsResponse$outboundSchema: z.ZodType<
   return remap$(v, {
     contentType: "ContentType",
     departmentsPaginated: "DepartmentsPaginated",
+    headers: "Headers",
     statusCode: "StatusCode",
     rawResponse: "RawResponse",
   });

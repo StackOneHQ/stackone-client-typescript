@@ -73,6 +73,7 @@ export type AtsListAssessmentsPackagesResponse = {
    * HTTP response content type for this operation
    */
   contentType: string;
+  headers: { [k: string]: Array<string> };
   /**
    * HTTP response status code for this operation
    */
@@ -264,12 +265,14 @@ export const AtsListAssessmentsPackagesResponse$inboundSchema: z.ZodType<
   AssessmentsPackagesPaginated: shared
     .AssessmentsPackagesPaginated$inboundSchema.optional(),
   ContentType: z.string(),
+  Headers: z.record(z.array(z.string())),
   StatusCode: z.number().int(),
   RawResponse: z.instanceof(Response),
 }).transform((v) => {
   return remap$(v, {
     "AssessmentsPackagesPaginated": "assessmentsPackagesPaginated",
     "ContentType": "contentType",
+    "Headers": "headers",
     "StatusCode": "statusCode",
     "RawResponse": "rawResponse",
   });
@@ -281,6 +284,7 @@ export type AtsListAssessmentsPackagesResponse$Outbound = {
     | shared.AssessmentsPackagesPaginated$Outbound
     | undefined;
   ContentType: string;
+  Headers: { [k: string]: Array<string> };
   StatusCode: number;
   RawResponse: never;
 };
@@ -294,6 +298,7 @@ export const AtsListAssessmentsPackagesResponse$outboundSchema: z.ZodType<
   assessmentsPackagesPaginated: shared
     .AssessmentsPackagesPaginated$outboundSchema.optional(),
   contentType: z.string(),
+  headers: z.record(z.array(z.string())),
   statusCode: z.number().int(),
   rawResponse: z.instanceof(Response).transform(() => {
     throw new Error("Response cannot be serialized");
@@ -302,6 +307,7 @@ export const AtsListAssessmentsPackagesResponse$outboundSchema: z.ZodType<
   return remap$(v, {
     assessmentsPackagesPaginated: "AssessmentsPackagesPaginated",
     contentType: "ContentType",
+    headers: "Headers",
     statusCode: "StatusCode",
     rawResponse: "RawResponse",
   });

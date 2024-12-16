@@ -34,6 +34,7 @@ export type MarketingGetSmsTemplateResponse = {
    * HTTP response content type for this operation
    */
   contentType: string;
+  headers: { [k: string]: Array<string> };
   /**
    * The SMS template with the given identifier was retrieved.
    */
@@ -131,12 +132,14 @@ export const MarketingGetSmsTemplateResponse$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   ContentType: z.string(),
+  Headers: z.record(z.array(z.string())),
   SmsTemplateResult: shared.SmsTemplateResult$inboundSchema.optional(),
   StatusCode: z.number().int(),
   RawResponse: z.instanceof(Response),
 }).transform((v) => {
   return remap$(v, {
     "ContentType": "contentType",
+    "Headers": "headers",
     "SmsTemplateResult": "smsTemplateResult",
     "StatusCode": "statusCode",
     "RawResponse": "rawResponse",
@@ -146,6 +149,7 @@ export const MarketingGetSmsTemplateResponse$inboundSchema: z.ZodType<
 /** @internal */
 export type MarketingGetSmsTemplateResponse$Outbound = {
   ContentType: string;
+  Headers: { [k: string]: Array<string> };
   SmsTemplateResult?: shared.SmsTemplateResult$Outbound | undefined;
   StatusCode: number;
   RawResponse: never;
@@ -158,6 +162,7 @@ export const MarketingGetSmsTemplateResponse$outboundSchema: z.ZodType<
   MarketingGetSmsTemplateResponse
 > = z.object({
   contentType: z.string(),
+  headers: z.record(z.array(z.string())),
   smsTemplateResult: shared.SmsTemplateResult$outboundSchema.optional(),
   statusCode: z.number().int(),
   rawResponse: z.instanceof(Response).transform(() => {
@@ -166,6 +171,7 @@ export const MarketingGetSmsTemplateResponse$outboundSchema: z.ZodType<
 }).transform((v) => {
   return remap$(v, {
     contentType: "ContentType",
+    headers: "Headers",
     smsTemplateResult: "SmsTemplateResult",
     statusCode: "StatusCode",
     rawResponse: "RawResponse",

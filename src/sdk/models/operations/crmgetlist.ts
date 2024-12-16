@@ -34,6 +34,7 @@ export type CrmGetListResponse = {
    * HTTP response content type for this operation
    */
   contentType: string;
+  headers: { [k: string]: Array<string> };
   /**
    * The list with the given identifier was retrieved.
    */
@@ -129,12 +130,14 @@ export const CrmGetListResponse$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   ContentType: z.string(),
+  Headers: z.record(z.array(z.string())),
   ListResult: shared.ListResult$inboundSchema.optional(),
   StatusCode: z.number().int(),
   RawResponse: z.instanceof(Response),
 }).transform((v) => {
   return remap$(v, {
     "ContentType": "contentType",
+    "Headers": "headers",
     "ListResult": "listResult",
     "StatusCode": "statusCode",
     "RawResponse": "rawResponse",
@@ -144,6 +147,7 @@ export const CrmGetListResponse$inboundSchema: z.ZodType<
 /** @internal */
 export type CrmGetListResponse$Outbound = {
   ContentType: string;
+  Headers: { [k: string]: Array<string> };
   ListResult?: shared.ListResult$Outbound | undefined;
   StatusCode: number;
   RawResponse: never;
@@ -156,6 +160,7 @@ export const CrmGetListResponse$outboundSchema: z.ZodType<
   CrmGetListResponse
 > = z.object({
   contentType: z.string(),
+  headers: z.record(z.array(z.string())),
   listResult: shared.ListResult$outboundSchema.optional(),
   statusCode: z.number().int(),
   rawResponse: z.instanceof(Response).transform(() => {
@@ -164,6 +169,7 @@ export const CrmGetListResponse$outboundSchema: z.ZodType<
 }).transform((v) => {
   return remap$(v, {
     contentType: "ContentType",
+    headers: "Headers",
     listResult: "ListResult",
     statusCode: "StatusCode",
     rawResponse: "RawResponse",

@@ -23,6 +23,7 @@ export type AtsRejectApplicationResponse = {
    * HTTP response content type for this operation
    */
   contentType: string;
+  headers: { [k: string]: Array<string> };
   /**
    * The application was rejected successfully.
    */
@@ -119,6 +120,7 @@ export const AtsRejectApplicationResponse$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   ContentType: z.string(),
+  Headers: z.record(z.array(z.string())),
   RejectApplicationResult: shared.RejectApplicationResult$inboundSchema
     .optional(),
   StatusCode: z.number().int(),
@@ -126,6 +128,7 @@ export const AtsRejectApplicationResponse$inboundSchema: z.ZodType<
 }).transform((v) => {
   return remap$(v, {
     "ContentType": "contentType",
+    "Headers": "headers",
     "RejectApplicationResult": "rejectApplicationResult",
     "StatusCode": "statusCode",
     "RawResponse": "rawResponse",
@@ -135,6 +138,7 @@ export const AtsRejectApplicationResponse$inboundSchema: z.ZodType<
 /** @internal */
 export type AtsRejectApplicationResponse$Outbound = {
   ContentType: string;
+  Headers: { [k: string]: Array<string> };
   RejectApplicationResult?: shared.RejectApplicationResult$Outbound | undefined;
   StatusCode: number;
   RawResponse: never;
@@ -147,6 +151,7 @@ export const AtsRejectApplicationResponse$outboundSchema: z.ZodType<
   AtsRejectApplicationResponse
 > = z.object({
   contentType: z.string(),
+  headers: z.record(z.array(z.string())),
   rejectApplicationResult: shared.RejectApplicationResult$outboundSchema
     .optional(),
   statusCode: z.number().int(),
@@ -156,6 +161,7 @@ export const AtsRejectApplicationResponse$outboundSchema: z.ZodType<
 }).transform((v) => {
   return remap$(v, {
     contentType: "ContentType",
+    headers: "Headers",
     rejectApplicationResult: "RejectApplicationResult",
     statusCode: "StatusCode",
     rawResponse: "RawResponse",

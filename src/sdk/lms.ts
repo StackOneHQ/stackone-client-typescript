@@ -5,6 +5,7 @@
 import { lmsBatchUpsertContent } from "../funcs/lmsBatchUpsertContent.js";
 import { lmsBatchUpsertCourse } from "../funcs/lmsBatchUpsertCourse.js";
 import { lmsCreateCollection } from "../funcs/lmsCreateCollection.js";
+import { lmsCreateUserAssignment } from "../funcs/lmsCreateUserAssignment.js";
 import { lmsCreateUserCompletion } from "../funcs/lmsCreateUserCompletion.js";
 import { lmsGetAssignment } from "../funcs/lmsGetAssignment.js";
 import { lmsGetCategory } from "../funcs/lmsGetCategory.js";
@@ -68,6 +69,20 @@ export class Lms extends ClientSDK {
     options?: RequestOptions,
   ): Promise<operations.LmsCreateCollectionResponse> {
     return unwrapAsync(lmsCreateCollection(
+      this,
+      request,
+      options,
+    ));
+  }
+
+  /**
+   * Create User Assignment
+   */
+  async createUserAssignment(
+    request: operations.LmsCreateUserAssignmentRequest,
+    options?: RequestOptions,
+  ): Promise<operations.LmsCreateUserAssignmentResponse> {
+    return unwrapAsync(lmsCreateUserAssignment(
       this,
       request,
       options,

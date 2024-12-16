@@ -18,6 +18,7 @@ export type StackoneDeleteAccountResponse = {
    * HTTP response content type for this operation
    */
   contentType: string;
+  headers: { [k: string]: Array<string> };
   /**
    * The account with the given identifier was deleted.
    */
@@ -95,12 +96,14 @@ export const StackoneDeleteAccountResponse$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   ContentType: z.string(),
+  Headers: z.record(z.array(z.string())),
   LinkedAccount: shared.LinkedAccount$inboundSchema.optional(),
   StatusCode: z.number().int(),
   RawResponse: z.instanceof(Response),
 }).transform((v) => {
   return remap$(v, {
     "ContentType": "contentType",
+    "Headers": "headers",
     "LinkedAccount": "linkedAccount",
     "StatusCode": "statusCode",
     "RawResponse": "rawResponse",
@@ -110,6 +113,7 @@ export const StackoneDeleteAccountResponse$inboundSchema: z.ZodType<
 /** @internal */
 export type StackoneDeleteAccountResponse$Outbound = {
   ContentType: string;
+  Headers: { [k: string]: Array<string> };
   LinkedAccount?: shared.LinkedAccount$Outbound | undefined;
   StatusCode: number;
   RawResponse: never;
@@ -122,6 +126,7 @@ export const StackoneDeleteAccountResponse$outboundSchema: z.ZodType<
   StackoneDeleteAccountResponse
 > = z.object({
   contentType: z.string(),
+  headers: z.record(z.array(z.string())),
   linkedAccount: shared.LinkedAccount$outboundSchema.optional(),
   statusCode: z.number().int(),
   rawResponse: z.instanceof(Response).transform(() => {
@@ -130,6 +135,7 @@ export const StackoneDeleteAccountResponse$outboundSchema: z.ZodType<
 }).transform((v) => {
   return remap$(v, {
     contentType: "ContentType",
+    headers: "Headers",
     linkedAccount: "LinkedAccount",
     statusCode: "StatusCode",
     rawResponse: "RawResponse",

@@ -125,7 +125,7 @@ export async function hrisListEmployees(
 
   const doResult = await client._do(req, {
     context,
-    errorCodes: ["400", "403", "412", "429", "4XX", "500", "501", "5XX"],
+    errorCodes: ["400", "403", "408", "412", "429", "4XX", "500", "501", "5XX"],
     retryConfig: context.retryConfig,
     retryCodes: context.retryCodes,
   });
@@ -156,6 +156,7 @@ export async function hrisListEmployees(
       key: "EmployeesPaginated",
     }),
     M.fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"]),
+    M.fail(408),
   )(response, { extraFields: responseFields });
   if (!result.ok) {
     return haltIterator(result);

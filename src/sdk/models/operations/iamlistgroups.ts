@@ -71,6 +71,7 @@ export type IamListGroupsResponse = {
    * HTTP response content type for this operation
    */
   contentType: string;
+  headers: { [k: string]: Array<string> };
   /**
    * The list of groups was retrieved.
    */
@@ -251,12 +252,14 @@ export const IamListGroupsResponse$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   ContentType: z.string(),
+  Headers: z.record(z.array(z.string())),
   IamGroupsPaginated: shared.IamGroupsPaginated$inboundSchema.optional(),
   StatusCode: z.number().int(),
   RawResponse: z.instanceof(Response),
 }).transform((v) => {
   return remap$(v, {
     "ContentType": "contentType",
+    "Headers": "headers",
     "IamGroupsPaginated": "iamGroupsPaginated",
     "StatusCode": "statusCode",
     "RawResponse": "rawResponse",
@@ -266,6 +269,7 @@ export const IamListGroupsResponse$inboundSchema: z.ZodType<
 /** @internal */
 export type IamListGroupsResponse$Outbound = {
   ContentType: string;
+  Headers: { [k: string]: Array<string> };
   IamGroupsPaginated?: shared.IamGroupsPaginated$Outbound | undefined;
   StatusCode: number;
   RawResponse: never;
@@ -278,6 +282,7 @@ export const IamListGroupsResponse$outboundSchema: z.ZodType<
   IamListGroupsResponse
 > = z.object({
   contentType: z.string(),
+  headers: z.record(z.array(z.string())),
   iamGroupsPaginated: shared.IamGroupsPaginated$outboundSchema.optional(),
   statusCode: z.number().int(),
   rawResponse: z.instanceof(Response).transform(() => {
@@ -286,6 +291,7 @@ export const IamListGroupsResponse$outboundSchema: z.ZodType<
 }).transform((v) => {
   return remap$(v, {
     contentType: "ContentType",
+    headers: "Headers",
     iamGroupsPaginated: "IamGroupsPaginated",
     statusCode: "StatusCode",
     rawResponse: "RawResponse",

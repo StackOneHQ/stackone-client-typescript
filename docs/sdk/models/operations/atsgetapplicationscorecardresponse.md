@@ -8,6 +8,11 @@ import { FieldType, OverallRecommendation } from "@stackone/stackone-client-ts/s
 
 let value: AtsGetApplicationScorecardResponse = {
   contentType: "<value>",
+  headers: {
+    "key": [
+      "<value>",
+    ],
+  },
   scorecardsResult: {
     data: {
       applicationId: "1011-12",
@@ -60,6 +65,7 @@ let value: AtsGetApplicationScorecardResponse = {
 | Field                                                                              | Type                                                                               | Required                                                                           | Description                                                                        |
 | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
 | `contentType`                                                                      | *string*                                                                           | :heavy_check_mark:                                                                 | HTTP response content type for this operation                                      |
+| `headers`                                                                          | Record<string, *string*[]>                                                         | :heavy_check_mark:                                                                 | N/A                                                                                |
 | `scorecardsResult`                                                                 | [shared.ScorecardsResult](../../../sdk/models/shared/scorecardsresult.md)          | :heavy_minus_sign:                                                                 | The scorecard related to the application with the given identifiers was retrieved. |
 | `statusCode`                                                                       | *number*                                                                           | :heavy_check_mark:                                                                 | HTTP response status code for this operation                                       |
 | `rawResponse`                                                                      | [Response](https://developer.mozilla.org/en-US/docs/Web/API/Response)              | :heavy_check_mark:                                                                 | Raw HTTP response; suitable for custom response parsing                            |

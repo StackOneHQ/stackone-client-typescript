@@ -35,6 +35,7 @@ export type HrisGetEmployeesTimeOffRequestResponse = {
    * HTTP response content type for this operation
    */
   contentType: string;
+  headers: { [k: string]: Array<string> };
   /**
    * HTTP response status code for this operation
    */
@@ -138,12 +139,14 @@ export const HrisGetEmployeesTimeOffRequestResponse$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   ContentType: z.string(),
+  Headers: z.record(z.array(z.string())),
   StatusCode: z.number().int(),
   RawResponse: z.instanceof(Response),
   TimeOffResult: shared.TimeOffResult$inboundSchema.optional(),
 }).transform((v) => {
   return remap$(v, {
     "ContentType": "contentType",
+    "Headers": "headers",
     "StatusCode": "statusCode",
     "RawResponse": "rawResponse",
     "TimeOffResult": "timeOffResult",
@@ -153,6 +156,7 @@ export const HrisGetEmployeesTimeOffRequestResponse$inboundSchema: z.ZodType<
 /** @internal */
 export type HrisGetEmployeesTimeOffRequestResponse$Outbound = {
   ContentType: string;
+  Headers: { [k: string]: Array<string> };
   StatusCode: number;
   RawResponse: never;
   TimeOffResult?: shared.TimeOffResult$Outbound | undefined;
@@ -165,6 +169,7 @@ export const HrisGetEmployeesTimeOffRequestResponse$outboundSchema: z.ZodType<
   HrisGetEmployeesTimeOffRequestResponse
 > = z.object({
   contentType: z.string(),
+  headers: z.record(z.array(z.string())),
   statusCode: z.number().int(),
   rawResponse: z.instanceof(Response).transform(() => {
     throw new Error("Response cannot be serialized");
@@ -173,6 +178,7 @@ export const HrisGetEmployeesTimeOffRequestResponse$outboundSchema: z.ZodType<
 }).transform((v) => {
   return remap$(v, {
     contentType: "ContentType",
+    headers: "Headers",
     statusCode: "StatusCode",
     rawResponse: "RawResponse",
     timeOffResult: "TimeOffResult",

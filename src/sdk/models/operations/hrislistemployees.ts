@@ -87,6 +87,7 @@ export type HrisListEmployeesResponse = {
    * The list of employees was retrieved.
    */
   employeesPaginated?: shared.EmployeesPaginated | undefined;
+  headers: { [k: string]: Array<string> };
   /**
    * HTTP response status code for this operation
    */
@@ -278,12 +279,14 @@ export const HrisListEmployeesResponse$inboundSchema: z.ZodType<
 > = z.object({
   ContentType: z.string(),
   EmployeesPaginated: shared.EmployeesPaginated$inboundSchema.optional(),
+  Headers: z.record(z.array(z.string())),
   StatusCode: z.number().int(),
   RawResponse: z.instanceof(Response),
 }).transform((v) => {
   return remap$(v, {
     "ContentType": "contentType",
     "EmployeesPaginated": "employeesPaginated",
+    "Headers": "headers",
     "StatusCode": "statusCode",
     "RawResponse": "rawResponse",
   });
@@ -293,6 +296,7 @@ export const HrisListEmployeesResponse$inboundSchema: z.ZodType<
 export type HrisListEmployeesResponse$Outbound = {
   ContentType: string;
   EmployeesPaginated?: shared.EmployeesPaginated$Outbound | undefined;
+  Headers: { [k: string]: Array<string> };
   StatusCode: number;
   RawResponse: never;
 };
@@ -305,6 +309,7 @@ export const HrisListEmployeesResponse$outboundSchema: z.ZodType<
 > = z.object({
   contentType: z.string(),
   employeesPaginated: shared.EmployeesPaginated$outboundSchema.optional(),
+  headers: z.record(z.array(z.string())),
   statusCode: z.number().int(),
   rawResponse: z.instanceof(Response).transform(() => {
     throw new Error("Response cannot be serialized");
@@ -313,6 +318,7 @@ export const HrisListEmployeesResponse$outboundSchema: z.ZodType<
   return remap$(v, {
     contentType: "ContentType",
     employeesPaginated: "EmployeesPaginated",
+    headers: "Headers",
     statusCode: "StatusCode",
     rawResponse: "RawResponse",
   });

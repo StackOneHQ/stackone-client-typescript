@@ -77,6 +77,7 @@ export type AtsListApplicationsScheduledInterviewsResponse = {
    * HTTP response content type for this operation
    */
   contentType: string;
+  headers: { [k: string]: Array<string> };
   /**
    * The list of applications scheduled interviews was retrieved.
    */
@@ -298,6 +299,7 @@ export const AtsListApplicationsScheduledInterviewsResponse$inboundSchema:
     unknown
   > = z.object({
     ContentType: z.string(),
+    Headers: z.record(z.array(z.string())),
     ScheduledInterviewsPaginated: shared
       .ScheduledInterviewsPaginated$inboundSchema.optional(),
     StatusCode: z.number().int(),
@@ -305,6 +307,7 @@ export const AtsListApplicationsScheduledInterviewsResponse$inboundSchema:
   }).transform((v) => {
     return remap$(v, {
       "ContentType": "contentType",
+      "Headers": "headers",
       "ScheduledInterviewsPaginated": "scheduledInterviewsPaginated",
       "StatusCode": "statusCode",
       "RawResponse": "rawResponse",
@@ -314,6 +317,7 @@ export const AtsListApplicationsScheduledInterviewsResponse$inboundSchema:
 /** @internal */
 export type AtsListApplicationsScheduledInterviewsResponse$Outbound = {
   ContentType: string;
+  Headers: { [k: string]: Array<string> };
   ScheduledInterviewsPaginated?:
     | shared.ScheduledInterviewsPaginated$Outbound
     | undefined;
@@ -329,6 +333,7 @@ export const AtsListApplicationsScheduledInterviewsResponse$outboundSchema:
     AtsListApplicationsScheduledInterviewsResponse
   > = z.object({
     contentType: z.string(),
+    headers: z.record(z.array(z.string())),
     scheduledInterviewsPaginated: shared
       .ScheduledInterviewsPaginated$outboundSchema.optional(),
     statusCode: z.number().int(),
@@ -338,6 +343,7 @@ export const AtsListApplicationsScheduledInterviewsResponse$outboundSchema:
   }).transform((v) => {
     return remap$(v, {
       contentType: "ContentType",
+      headers: "Headers",
       scheduledInterviewsPaginated: "ScheduledInterviewsPaginated",
       statusCode: "StatusCode",
       rawResponse: "RawResponse",

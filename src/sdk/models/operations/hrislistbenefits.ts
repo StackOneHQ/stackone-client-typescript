@@ -71,6 +71,7 @@ export type HrisListBenefitsResponse = {
    * The list of Benefits was retrieved.
    */
   hrisBenefitsPaginated?: shared.HRISBenefitsPaginated | undefined;
+  headers: { [k: string]: Array<string> };
   /**
    * HTTP response status code for this operation
    */
@@ -247,12 +248,14 @@ export const HrisListBenefitsResponse$inboundSchema: z.ZodType<
 > = z.object({
   ContentType: z.string(),
   HRISBenefitsPaginated: shared.HRISBenefitsPaginated$inboundSchema.optional(),
+  Headers: z.record(z.array(z.string())),
   StatusCode: z.number().int(),
   RawResponse: z.instanceof(Response),
 }).transform((v) => {
   return remap$(v, {
     "ContentType": "contentType",
     "HRISBenefitsPaginated": "hrisBenefitsPaginated",
+    "Headers": "headers",
     "StatusCode": "statusCode",
     "RawResponse": "rawResponse",
   });
@@ -262,6 +265,7 @@ export const HrisListBenefitsResponse$inboundSchema: z.ZodType<
 export type HrisListBenefitsResponse$Outbound = {
   ContentType: string;
   HRISBenefitsPaginated?: shared.HRISBenefitsPaginated$Outbound | undefined;
+  Headers: { [k: string]: Array<string> };
   StatusCode: number;
   RawResponse: never;
 };
@@ -274,6 +278,7 @@ export const HrisListBenefitsResponse$outboundSchema: z.ZodType<
 > = z.object({
   contentType: z.string(),
   hrisBenefitsPaginated: shared.HRISBenefitsPaginated$outboundSchema.optional(),
+  headers: z.record(z.array(z.string())),
   statusCode: z.number().int(),
   rawResponse: z.instanceof(Response).transform(() => {
     throw new Error("Response cannot be serialized");
@@ -282,6 +287,7 @@ export const HrisListBenefitsResponse$outboundSchema: z.ZodType<
   return remap$(v, {
     contentType: "ContentType",
     hrisBenefitsPaginated: "HRISBenefitsPaginated",
+    headers: "Headers",
     statusCode: "StatusCode",
     rawResponse: "RawResponse",
   });

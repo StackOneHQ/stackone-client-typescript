@@ -7,6 +7,11 @@ import { LmsListSkillsResponse } from "@stackone/stackone-client-ts/sdk/models/o
 
 let value: LmsListSkillsResponse = {
   contentType: "<value>",
+  headers: {
+    "key": [
+      "<value>",
+    ],
+  },
   skillsPaginated: {
     data: [
       {
@@ -17,7 +22,7 @@ let value: LmsListSkillsResponse = {
       },
     ],
   },
-  statusCode: 408,
+  statusCode: 424,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),
@@ -29,6 +34,7 @@ let value: LmsListSkillsResponse = {
 | Field                                                                   | Type                                                                    | Required                                                                | Description                                                             |
 | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- |
 | `contentType`                                                           | *string*                                                                | :heavy_check_mark:                                                      | HTTP response content type for this operation                           |
+| `headers`                                                               | Record<string, *string*[]>                                              | :heavy_check_mark:                                                      | N/A                                                                     |
 | `skillsPaginated`                                                       | [shared.SkillsPaginated](../../../sdk/models/shared/skillspaginated.md) | :heavy_minus_sign:                                                      | The list of skills was retrieved.                                       |
 | `statusCode`                                                            | *number*                                                                | :heavy_check_mark:                                                      | HTTP response status code for this operation                            |
 | `rawResponse`                                                           | [Response](https://developer.mozilla.org/en-US/docs/Web/API/Response)   | :heavy_check_mark:                                                      | Raw HTTP response; suitable for custom response parsing                 |

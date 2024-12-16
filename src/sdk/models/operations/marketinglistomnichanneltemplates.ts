@@ -67,6 +67,7 @@ export type MarketingListOmniChannelTemplatesResponse = {
    * HTTP response content type for this operation
    */
   contentType: string;
+  headers: { [k: string]: Array<string> };
   /**
    * HTTP response status code for this operation
    */
@@ -276,12 +277,14 @@ export const MarketingListOmniChannelTemplatesResponse$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   ContentType: z.string(),
+  Headers: z.record(z.array(z.string())),
   StatusCode: z.number().int(),
   RawResponse: z.instanceof(Response),
   TemplatesPaginated: shared.TemplatesPaginated$inboundSchema.optional(),
 }).transform((v) => {
   return remap$(v, {
     "ContentType": "contentType",
+    "Headers": "headers",
     "StatusCode": "statusCode",
     "RawResponse": "rawResponse",
     "TemplatesPaginated": "templatesPaginated",
@@ -291,6 +294,7 @@ export const MarketingListOmniChannelTemplatesResponse$inboundSchema: z.ZodType<
 /** @internal */
 export type MarketingListOmniChannelTemplatesResponse$Outbound = {
   ContentType: string;
+  Headers: { [k: string]: Array<string> };
   StatusCode: number;
   RawResponse: never;
   TemplatesPaginated?: shared.TemplatesPaginated$Outbound | undefined;
@@ -304,6 +308,7 @@ export const MarketingListOmniChannelTemplatesResponse$outboundSchema:
     MarketingListOmniChannelTemplatesResponse
   > = z.object({
     contentType: z.string(),
+    headers: z.record(z.array(z.string())),
     statusCode: z.number().int(),
     rawResponse: z.instanceof(Response).transform(() => {
       throw new Error("Response cannot be serialized");
@@ -312,6 +317,7 @@ export const MarketingListOmniChannelTemplatesResponse$outboundSchema:
   }).transform((v) => {
     return remap$(v, {
       contentType: "ContentType",
+      headers: "Headers",
       statusCode: "StatusCode",
       rawResponse: "RawResponse",
       templatesPaginated: "TemplatesPaginated",

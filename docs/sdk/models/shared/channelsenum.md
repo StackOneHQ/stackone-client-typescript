@@ -3,17 +3,17 @@
 ## Example Usage
 
 ```typescript
-import { ChannelsEnum, ChannelsEnumValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { ChannelsEnum, Value } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: ChannelsEnum = {
   sourceValue: "SMS",
-  value: ChannelsEnumValue.Sms,
+  value: Value.Sms,
 };
 ```
 
 ## Fields
 
-| Field                                                                       | Type                                                                        | Required                                                                    | Description                                                                 | Example                                                                     |
-| --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
-| `sourceValue`                                                               | *shared.ChannelsEnumSourceValue*                                            | :heavy_minus_sign:                                                          | The source value of the Channels.                                           | SMS                                                                         |
-| `value`                                                                     | [shared.ChannelsEnumValue](../../../sdk/models/shared/channelsenumvalue.md) | :heavy_minus_sign:                                                          | The Channels of the campaign.                                               | sms                                                                         |
+| Field                                               | Type                                                | Required                                            | Description                                         | Example                                             |
+| --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- |
+| `sourceValue`                                       | *shared.SourceValue*                                | :heavy_minus_sign:                                  | The source value of the Channels.                   | SMS                                                 |
+| `value`                                             | [shared.Value](../../../sdk/models/shared/value.md) | :heavy_minus_sign:                                  | The Channels of the campaign.                       | sms                                                 |

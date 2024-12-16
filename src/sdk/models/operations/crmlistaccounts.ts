@@ -71,6 +71,7 @@ export type CrmListAccountsResponse = {
    * HTTP response content type for this operation
    */
   contentType: string;
+  headers: { [k: string]: Array<string> };
   /**
    * HTTP response status code for this operation
    */
@@ -247,12 +248,14 @@ export const CrmListAccountsResponse$inboundSchema: z.ZodType<
 > = z.object({
   AccountsPaginated: shared.AccountsPaginated$inboundSchema.optional(),
   ContentType: z.string(),
+  Headers: z.record(z.array(z.string())),
   StatusCode: z.number().int(),
   RawResponse: z.instanceof(Response),
 }).transform((v) => {
   return remap$(v, {
     "AccountsPaginated": "accountsPaginated",
     "ContentType": "contentType",
+    "Headers": "headers",
     "StatusCode": "statusCode",
     "RawResponse": "rawResponse",
   });
@@ -262,6 +265,7 @@ export const CrmListAccountsResponse$inboundSchema: z.ZodType<
 export type CrmListAccountsResponse$Outbound = {
   AccountsPaginated?: shared.AccountsPaginated$Outbound | undefined;
   ContentType: string;
+  Headers: { [k: string]: Array<string> };
   StatusCode: number;
   RawResponse: never;
 };
@@ -274,6 +278,7 @@ export const CrmListAccountsResponse$outboundSchema: z.ZodType<
 > = z.object({
   accountsPaginated: shared.AccountsPaginated$outboundSchema.optional(),
   contentType: z.string(),
+  headers: z.record(z.array(z.string())),
   statusCode: z.number().int(),
   rawResponse: z.instanceof(Response).transform(() => {
     throw new Error("Response cannot be serialized");
@@ -282,6 +287,7 @@ export const CrmListAccountsResponse$outboundSchema: z.ZodType<
   return remap$(v, {
     accountsPaginated: "AccountsPaginated",
     contentType: "ContentType",
+    headers: "Headers",
     statusCode: "StatusCode",
     rawResponse: "RawResponse",
   });

@@ -8,6 +8,11 @@ import { IamGroupValue, IamPermissionValue, IamResourceValue, IamRoleValue } fro
 
 let value: IamGetGroupResponse = {
   contentType: "<value>",
+  headers: {
+    "key": [
+      "<value>",
+    ],
+  },
   iamGroupResult: {
     data: {
       createdAt: new Date("2021-01-01T01:01:01.000Z"),
@@ -77,6 +82,7 @@ let value: IamGetGroupResponse = {
 | Field                                                                 | Type                                                                  | Required                                                              | Description                                                           |
 | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
 | `contentType`                                                         | *string*                                                              | :heavy_check_mark:                                                    | HTTP response content type for this operation                         |
+| `headers`                                                             | Record<string, *string*[]>                                            | :heavy_check_mark:                                                    | N/A                                                                   |
 | `iamGroupResult`                                                      | [shared.IamGroupResult](../../../sdk/models/shared/iamgroupresult.md) | :heavy_minus_sign:                                                    | The group with the given identifier was retrieved.                    |
 | `statusCode`                                                          | *number*                                                              | :heavy_check_mark:                                                    | HTTP response status code for this operation                          |
 | `rawResponse`                                                         | [Response](https://developer.mozilla.org/en-US/docs/Web/API/Response) | :heavy_check_mark:                                                    | Raw HTTP response; suitable for custom response parsing               |

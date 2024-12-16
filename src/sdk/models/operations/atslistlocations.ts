@@ -77,6 +77,7 @@ export type AtsListLocationsResponse = {
    * HTTP response content type for this operation
    */
   contentType: string;
+  headers: { [k: string]: Array<string> };
   /**
    * HTTP response status code for this operation
    */
@@ -258,12 +259,14 @@ export const AtsListLocationsResponse$inboundSchema: z.ZodType<
 > = z.object({
   ATSLocationsPaginated: shared.ATSLocationsPaginated$inboundSchema.optional(),
   ContentType: z.string(),
+  Headers: z.record(z.array(z.string())),
   StatusCode: z.number().int(),
   RawResponse: z.instanceof(Response),
 }).transform((v) => {
   return remap$(v, {
     "ATSLocationsPaginated": "atsLocationsPaginated",
     "ContentType": "contentType",
+    "Headers": "headers",
     "StatusCode": "statusCode",
     "RawResponse": "rawResponse",
   });
@@ -273,6 +276,7 @@ export const AtsListLocationsResponse$inboundSchema: z.ZodType<
 export type AtsListLocationsResponse$Outbound = {
   ATSLocationsPaginated?: shared.ATSLocationsPaginated$Outbound | undefined;
   ContentType: string;
+  Headers: { [k: string]: Array<string> };
   StatusCode: number;
   RawResponse: never;
 };
@@ -285,6 +289,7 @@ export const AtsListLocationsResponse$outboundSchema: z.ZodType<
 > = z.object({
   atsLocationsPaginated: shared.ATSLocationsPaginated$outboundSchema.optional(),
   contentType: z.string(),
+  headers: z.record(z.array(z.string())),
   statusCode: z.number().int(),
   rawResponse: z.instanceof(Response).transform(() => {
     throw new Error("Response cannot be serialized");
@@ -293,6 +298,7 @@ export const AtsListLocationsResponse$outboundSchema: z.ZodType<
   return remap$(v, {
     atsLocationsPaginated: "ATSLocationsPaginated",
     contentType: "ContentType",
+    headers: "Headers",
     statusCode: "StatusCode",
     rawResponse: "RawResponse",
   });

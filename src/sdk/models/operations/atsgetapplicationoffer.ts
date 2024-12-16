@@ -35,6 +35,7 @@ export type AtsGetApplicationOfferResponse = {
    * HTTP response content type for this operation
    */
   contentType: string;
+  headers: { [k: string]: Array<string> };
   /**
    * The offer related to the application with the given identifiers was retrieved.
    */
@@ -135,12 +136,14 @@ export const AtsGetApplicationOfferResponse$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   ContentType: z.string(),
+  Headers: z.record(z.array(z.string())),
   OffersResult: shared.OffersResult$inboundSchema.optional(),
   StatusCode: z.number().int(),
   RawResponse: z.instanceof(Response),
 }).transform((v) => {
   return remap$(v, {
     "ContentType": "contentType",
+    "Headers": "headers",
     "OffersResult": "offersResult",
     "StatusCode": "statusCode",
     "RawResponse": "rawResponse",
@@ -150,6 +153,7 @@ export const AtsGetApplicationOfferResponse$inboundSchema: z.ZodType<
 /** @internal */
 export type AtsGetApplicationOfferResponse$Outbound = {
   ContentType: string;
+  Headers: { [k: string]: Array<string> };
   OffersResult?: shared.OffersResult$Outbound | undefined;
   StatusCode: number;
   RawResponse: never;
@@ -162,6 +166,7 @@ export const AtsGetApplicationOfferResponse$outboundSchema: z.ZodType<
   AtsGetApplicationOfferResponse
 > = z.object({
   contentType: z.string(),
+  headers: z.record(z.array(z.string())),
   offersResult: shared.OffersResult$outboundSchema.optional(),
   statusCode: z.number().int(),
   rawResponse: z.instanceof(Response).transform(() => {
@@ -170,6 +175,7 @@ export const AtsGetApplicationOfferResponse$outboundSchema: z.ZodType<
 }).transform((v) => {
   return remap$(v, {
     contentType: "ContentType",
+    headers: "Headers",
     offersResult: "OffersResult",
     statusCode: "StatusCode",
     rawResponse: "RawResponse",

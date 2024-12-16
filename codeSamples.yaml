@@ -258,7 +258,7 @@ actions:
 
             async function run() {
               const result = await stackOne.ats.listApplications({
-                fields: "id,remote_id,candidate_id,remote_candidate_id,job_id,remote_job_id,interview_stage,interview_stage_id,remote_interview_stage_id,rejected_reason,rejected_reason_id,remote_rejected_reason_id,rejected_reason_ids,remote_rejected_reason_ids,rejected_reasons,rejected_at,location_id,remote_location_id,location_ids,remote_location_ids,status,application_status,questionnaires,attachments,result_links,source,created_at,updated_at,documents,custom_fields,candidate",
+                fields: "id,remote_id,candidate_id,remote_candidate_id,job_id,remote_job_id,job_posting_id,remote_job_posting_id,interview_stage,interview_stage_id,remote_interview_stage_id,rejected_reason,rejected_reason_id,remote_rejected_reason_id,rejected_reason_ids,remote_rejected_reason_ids,rejected_reasons,rejected_at,location_id,remote_location_id,location_ids,remote_location_ids,status,application_status,questionnaires,attachments,result_links,source,created_at,updated_at,documents,custom_fields,candidate",
                 filter: {
                   updatedAfter: "2020-01-01T00:00:00.000Z",
                 },
@@ -298,6 +298,7 @@ actions:
                     "other_known_names": "John Doe",
                   },
                   jobId: "4071538b-3cac-4fbf-ac76-f78ed250ffdd",
+                  jobPostingId: "1c702a20-8de8-4d03-ac18-cbf4ac42eb51",
                   locationId: "dd8d41d1-5eb8-4408-9c87-9ba44604eae4",
                   applicationStatus: {
                     value: AtsCreateApplicationRequestDtoValue.Hired,
@@ -397,7 +398,7 @@ actions:
             async function run() {
               const result = await stackOne.ats.getApplication({
                 id: "<id>",
-                fields: "id,remote_id,candidate_id,remote_candidate_id,job_id,remote_job_id,interview_stage,interview_stage_id,remote_interview_stage_id,rejected_reason,rejected_reason_id,remote_rejected_reason_id,rejected_reason_ids,remote_rejected_reason_ids,rejected_reasons,rejected_at,location_id,remote_location_id,location_ids,remote_location_ids,status,application_status,questionnaires,attachments,result_links,source,created_at,updated_at,documents,custom_fields,candidate",
+                fields: "id,remote_id,candidate_id,remote_candidate_id,job_id,remote_job_id,job_posting_id,remote_job_posting_id,interview_stage,interview_stage_id,remote_interview_stage_id,rejected_reason,rejected_reason_id,remote_rejected_reason_id,rejected_reason_ids,remote_rejected_reason_ids,rejected_reasons,rejected_at,location_id,remote_location_id,location_ids,remote_location_ids,status,application_status,questionnaires,attachments,result_links,source,created_at,updated_at,documents,custom_fields,candidate",
                 expand: "documents",
                 include: "attachments,custom_fields",
                 xAccountId: "<id>",
@@ -764,7 +765,7 @@ actions:
               const result = await stackOne.ats.getApplicationScheduledInterview({
                 id: "<id>",
                 subResourceId: "<id>",
-                fields: "id,remote_id,candidate_id,remote_candidate_id,job_id,remote_job_id,interview_stage,interview_stage_id,remote_interview_stage_id,rejected_reason,rejected_reason_id,remote_rejected_reason_id,rejected_reason_ids,remote_rejected_reason_ids,rejected_reasons,rejected_at,location_id,remote_location_id,location_ids,remote_location_ids,status,application_status,questionnaires,attachments,result_links,source,created_at,updated_at,documents,custom_fields,candidate",
+                fields: "id,remote_id,candidate_id,remote_candidate_id,job_id,remote_job_id,job_posting_id,remote_job_posting_id,interview_stage,interview_stage_id,remote_interview_stage_id,rejected_reason,rejected_reason_id,remote_rejected_reason_id,rejected_reason_ids,remote_rejected_reason_ids,rejected_reasons,rejected_at,location_id,remote_location_id,location_ids,remote_location_ids,status,application_status,questionnaires,attachments,result_links,source,created_at,updated_at,documents,custom_fields,candidate",
                 xAccountId: "<id>",
               });
 
@@ -3039,7 +3040,7 @@ actions:
                   updatedAfter: "2020-01-01T00:00:00.000Z",
                 },
                 updatedAfter: "2020-01-01T00:00:00.000Z",
-                expand: "company,employments,work_location,home_location,custom_fields,groups",
+                expand: "company,employments,work_location,home_location,groups",
                 include: "avatar_url,avatar,custom_fields,job_description,benefits",
                 xAccountId: "<id>",
               });
@@ -3215,6 +3216,13 @@ actions:
                       "other_known_names": "John Doe",
                     },
                   },
+                  costCenters: [
+                    {
+                      id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+                      name: "R&D",
+                      distributionPercentage: 100,
+                    },
+                  ],
                   passthrough: {
                     "other_known_names": "John Doe",
                   },
@@ -3245,7 +3253,7 @@ actions:
               const result = await stackOne.hris.getEmployee({
                 id: "<id>",
                 fields: "id,remote_id,first_name,last_name,name,display_name,gender,ethnicity,date_of_birth,birthday,marital_status,avatar_url,avatar,personal_email,personal_phone_number,work_email,work_phone_number,job_id,remote_job_id,job_title,job_description,department_id,remote_department_id,department,cost_centers,benefits,company,manager_id,remote_manager_id,hire_date,start_date,tenure,work_anniversary,employment_type,employment_contract_type,employment_status,termination_date,company_name,preferred_language,citizenships,home_location,work_location,employments,custom_fields,documents,created_at,updated_at,employee_number,national_identity_number",
-                expand: "company,employments,work_location,home_location,custom_fields,groups",
+                expand: "company,employments,work_location,home_location,groups",
                 include: "avatar_url,avatar,custom_fields,job_description,benefits",
                 xAccountId: "<id>",
               });
@@ -3384,6 +3392,18 @@ actions:
                       "other_known_names": "John Doe",
                     },
                   },
+                  costCenters: [
+                    {
+                      id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+                      name: "R&D",
+                      distributionPercentage: 100,
+                    },
+                    {
+                      id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+                      name: "R&D",
+                      distributionPercentage: 100,
+                    },
+                  ],
                   passthrough: {
                     "other_known_names": "John Doe",
                   },
@@ -5631,6 +5651,46 @@ actions:
                 userId: "c28xyrc55866bvuv",
                 remoteUserId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
                 xAccountId: "<id>",
+              });
+
+              // Handle the result
+              console.log(result);
+            }
+
+            run();
+  - target: $["paths"]["/unified/lms/users/{id}/assignments"]["post"]
+    update:
+      x-codeSamples:
+        - lang: typescript
+          label: lms_create_user_assignment
+          source: |-
+            import { StackOne } from "@stackone/stackone-client-ts";
+            import { LmsCreateAssignmentRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+            const stackOne = new StackOne({
+              security: {
+                username: "",
+                password: "",
+              },
+            });
+
+            async function run() {
+              const result = await stackOne.lms.createUserAssignment({
+                id: "<id>",
+                xAccountId: "<id>",
+                lmsCreateAssignmentRequestDto: {
+                  passthrough: {
+                    "other_known_names": "John Doe",
+                  },
+                  learningObjectId: "e3gd34-23tr21-er234-345er56",
+                  learningObjectExternalReference: "learning-content-123",
+                  progress: 40,
+                  createdAt: "2021-07-21T14:00:00.000Z",
+                  dueDate: "2021-07-21T14:00:00.000Z",
+                  status: {
+                    value: LmsCreateAssignmentRequestDtoValue.Pending,
+                  },
+                },
               });
 
               // Handle the result

@@ -67,6 +67,7 @@ export type MarketingListInAppTemplatesResponse = {
    * HTTP response content type for this operation
    */
   contentType: string;
+  headers: { [k: string]: Array<string> };
   /**
    * The list of in-app templates was retrieved.
    */
@@ -264,6 +265,7 @@ export const MarketingListInAppTemplatesResponse$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   ContentType: z.string(),
+  Headers: z.record(z.array(z.string())),
   InAppTemplatesPaginated: shared.InAppTemplatesPaginated$inboundSchema
     .optional(),
   StatusCode: z.number().int(),
@@ -271,6 +273,7 @@ export const MarketingListInAppTemplatesResponse$inboundSchema: z.ZodType<
 }).transform((v) => {
   return remap$(v, {
     "ContentType": "contentType",
+    "Headers": "headers",
     "InAppTemplatesPaginated": "inAppTemplatesPaginated",
     "StatusCode": "statusCode",
     "RawResponse": "rawResponse",
@@ -280,6 +283,7 @@ export const MarketingListInAppTemplatesResponse$inboundSchema: z.ZodType<
 /** @internal */
 export type MarketingListInAppTemplatesResponse$Outbound = {
   ContentType: string;
+  Headers: { [k: string]: Array<string> };
   InAppTemplatesPaginated?: shared.InAppTemplatesPaginated$Outbound | undefined;
   StatusCode: number;
   RawResponse: never;
@@ -292,6 +296,7 @@ export const MarketingListInAppTemplatesResponse$outboundSchema: z.ZodType<
   MarketingListInAppTemplatesResponse
 > = z.object({
   contentType: z.string(),
+  headers: z.record(z.array(z.string())),
   inAppTemplatesPaginated: shared.InAppTemplatesPaginated$outboundSchema
     .optional(),
   statusCode: z.number().int(),
@@ -301,6 +306,7 @@ export const MarketingListInAppTemplatesResponse$outboundSchema: z.ZodType<
 }).transform((v) => {
   return remap$(v, {
     contentType: "ContentType",
+    headers: "Headers",
     inAppTemplatesPaginated: "InAppTemplatesPaginated",
     statusCode: "StatusCode",
     rawResponse: "RawResponse",

@@ -77,6 +77,7 @@ export type AtsListJobPostingsResponse = {
    * HTTP response content type for this operation
    */
   contentType: string;
+  headers: { [k: string]: Array<string> };
   /**
    * The list of job postings was retrieved.
    */
@@ -266,12 +267,14 @@ export const AtsListJobPostingsResponse$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   ContentType: z.string(),
+  Headers: z.record(z.array(z.string())),
   JobPostingsPaginated: shared.JobPostingsPaginated$inboundSchema.optional(),
   StatusCode: z.number().int(),
   RawResponse: z.instanceof(Response),
 }).transform((v) => {
   return remap$(v, {
     "ContentType": "contentType",
+    "Headers": "headers",
     "JobPostingsPaginated": "jobPostingsPaginated",
     "StatusCode": "statusCode",
     "RawResponse": "rawResponse",
@@ -281,6 +284,7 @@ export const AtsListJobPostingsResponse$inboundSchema: z.ZodType<
 /** @internal */
 export type AtsListJobPostingsResponse$Outbound = {
   ContentType: string;
+  Headers: { [k: string]: Array<string> };
   JobPostingsPaginated?: shared.JobPostingsPaginated$Outbound | undefined;
   StatusCode: number;
   RawResponse: never;
@@ -293,6 +297,7 @@ export const AtsListJobPostingsResponse$outboundSchema: z.ZodType<
   AtsListJobPostingsResponse
 > = z.object({
   contentType: z.string(),
+  headers: z.record(z.array(z.string())),
   jobPostingsPaginated: shared.JobPostingsPaginated$outboundSchema.optional(),
   statusCode: z.number().int(),
   rawResponse: z.instanceof(Response).transform(() => {
@@ -301,6 +306,7 @@ export const AtsListJobPostingsResponse$outboundSchema: z.ZodType<
 }).transform((v) => {
   return remap$(v, {
     contentType: "ContentType",
+    headers: "Headers",
     jobPostingsPaginated: "JobPostingsPaginated",
     statusCode: "StatusCode",
     rawResponse: "RawResponse",

@@ -7,7 +7,12 @@ import { MarketingListOmniChannelTemplatesResponse } from "@stackone/stackone-cl
 
 let value: MarketingListOmniChannelTemplatesResponse = {
   contentType: "<value>",
-  statusCode: 307,
+  headers: {
+    "key": [
+      "<value>",
+    ],
+  },
+  statusCode: 501,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),
@@ -29,6 +34,7 @@ let value: MarketingListOmniChannelTemplatesResponse = {
 | Field                                                                         | Type                                                                          | Required                                                                      | Description                                                                   |
 | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
 | `contentType`                                                                 | *string*                                                                      | :heavy_check_mark:                                                            | HTTP response content type for this operation                                 |
+| `headers`                                                                     | Record<string, *string*[]>                                                    | :heavy_check_mark:                                                            | N/A                                                                           |
 | `statusCode`                                                                  | *number*                                                                      | :heavy_check_mark:                                                            | HTTP response status code for this operation                                  |
 | `rawResponse`                                                                 | [Response](https://developer.mozilla.org/en-US/docs/Web/API/Response)         | :heavy_check_mark:                                                            | Raw HTTP response; suitable for custom response parsing                       |
 | `templatesPaginated`                                                          | [shared.TemplatesPaginated](../../../sdk/models/shared/templatespaginated.md) | :heavy_minus_sign:                                                            | The list of omni-channel templates was retrieved.                             |

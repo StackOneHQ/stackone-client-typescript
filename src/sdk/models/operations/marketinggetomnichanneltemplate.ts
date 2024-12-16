@@ -34,6 +34,7 @@ export type MarketingGetOmniChannelTemplateResponse = {
    * HTTP response content type for this operation
    */
   contentType: string;
+  headers: { [k: string]: Array<string> };
   /**
    * HTTP response status code for this operation
    */
@@ -135,12 +136,14 @@ export const MarketingGetOmniChannelTemplateResponse$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   ContentType: z.string(),
+  Headers: z.record(z.array(z.string())),
   StatusCode: z.number().int(),
   RawResponse: z.instanceof(Response),
   TemplateResult: shared.TemplateResult$inboundSchema.optional(),
 }).transform((v) => {
   return remap$(v, {
     "ContentType": "contentType",
+    "Headers": "headers",
     "StatusCode": "statusCode",
     "RawResponse": "rawResponse",
     "TemplateResult": "templateResult",
@@ -150,6 +153,7 @@ export const MarketingGetOmniChannelTemplateResponse$inboundSchema: z.ZodType<
 /** @internal */
 export type MarketingGetOmniChannelTemplateResponse$Outbound = {
   ContentType: string;
+  Headers: { [k: string]: Array<string> };
   StatusCode: number;
   RawResponse: never;
   TemplateResult?: shared.TemplateResult$Outbound | undefined;
@@ -162,6 +166,7 @@ export const MarketingGetOmniChannelTemplateResponse$outboundSchema: z.ZodType<
   MarketingGetOmniChannelTemplateResponse
 > = z.object({
   contentType: z.string(),
+  headers: z.record(z.array(z.string())),
   statusCode: z.number().int(),
   rawResponse: z.instanceof(Response).transform(() => {
     throw new Error("Response cannot be serialized");
@@ -170,6 +175,7 @@ export const MarketingGetOmniChannelTemplateResponse$outboundSchema: z.ZodType<
 }).transform((v) => {
   return remap$(v, {
     contentType: "ContentType",
+    headers: "Headers",
     statusCode: "StatusCode",
     rawResponse: "RawResponse",
     templateResult: "TemplateResult",

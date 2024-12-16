@@ -5,8 +5,7 @@
 ```typescript
 import { EmployeeSchemasEthnicityValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: EmployeeSchemasEthnicityValue =
-  EmployeeSchemasEthnicityValue.TwoOrMoreRaces;
+let value: EmployeeSchemasEthnicityValue = EmployeeSchemasEthnicityValue.Asian;
 ```
 
 ## Values

@@ -46,6 +46,7 @@ export type HrisGetEmployeeResponse = {
    * The employee with the given identifier was retrieved.
    */
   employeeResult?: shared.EmployeeResult | undefined;
+  headers: { [k: string]: Array<string> };
   /**
    * HTTP response status code for this operation
    */
@@ -144,12 +145,14 @@ export const HrisGetEmployeeResponse$inboundSchema: z.ZodType<
 > = z.object({
   ContentType: z.string(),
   EmployeeResult: shared.EmployeeResult$inboundSchema.optional(),
+  Headers: z.record(z.array(z.string())),
   StatusCode: z.number().int(),
   RawResponse: z.instanceof(Response),
 }).transform((v) => {
   return remap$(v, {
     "ContentType": "contentType",
     "EmployeeResult": "employeeResult",
+    "Headers": "headers",
     "StatusCode": "statusCode",
     "RawResponse": "rawResponse",
   });
@@ -159,6 +162,7 @@ export const HrisGetEmployeeResponse$inboundSchema: z.ZodType<
 export type HrisGetEmployeeResponse$Outbound = {
   ContentType: string;
   EmployeeResult?: shared.EmployeeResult$Outbound | undefined;
+  Headers: { [k: string]: Array<string> };
   StatusCode: number;
   RawResponse: never;
 };
@@ -171,6 +175,7 @@ export const HrisGetEmployeeResponse$outboundSchema: z.ZodType<
 > = z.object({
   contentType: z.string(),
   employeeResult: shared.EmployeeResult$outboundSchema.optional(),
+  headers: z.record(z.array(z.string())),
   statusCode: z.number().int(),
   rawResponse: z.instanceof(Response).transform(() => {
     throw new Error("Response cannot be serialized");
@@ -179,6 +184,7 @@ export const HrisGetEmployeeResponse$outboundSchema: z.ZodType<
   return remap$(v, {
     contentType: "ContentType",
     employeeResult: "EmployeeResult",
+    headers: "Headers",
     statusCode: "StatusCode",
     rawResponse: "RawResponse",
   });

@@ -74,6 +74,7 @@ export type AtsGetApplicationCustomFieldDefinitionResponse = {
   customFieldDefinitionResultApiModel?:
     | shared.CustomFieldDefinitionResultApiModel
     | undefined;
+  headers: { [k: string]: Array<string> };
   /**
    * HTTP response status code for this operation
    */
@@ -255,6 +256,7 @@ export const AtsGetApplicationCustomFieldDefinitionResponse$inboundSchema:
     ContentType: z.string(),
     CustomFieldDefinitionResultApiModel: shared
       .CustomFieldDefinitionResultApiModel$inboundSchema.optional(),
+    Headers: z.record(z.array(z.string())),
     StatusCode: z.number().int(),
     RawResponse: z.instanceof(Response),
   }).transform((v) => {
@@ -262,6 +264,7 @@ export const AtsGetApplicationCustomFieldDefinitionResponse$inboundSchema:
       "ContentType": "contentType",
       "CustomFieldDefinitionResultApiModel":
         "customFieldDefinitionResultApiModel",
+      "Headers": "headers",
       "StatusCode": "statusCode",
       "RawResponse": "rawResponse",
     });
@@ -273,6 +276,7 @@ export type AtsGetApplicationCustomFieldDefinitionResponse$Outbound = {
   CustomFieldDefinitionResultApiModel?:
     | shared.CustomFieldDefinitionResultApiModel$Outbound
     | undefined;
+  Headers: { [k: string]: Array<string> };
   StatusCode: number;
   RawResponse: never;
 };
@@ -287,6 +291,7 @@ export const AtsGetApplicationCustomFieldDefinitionResponse$outboundSchema:
     contentType: z.string(),
     customFieldDefinitionResultApiModel: shared
       .CustomFieldDefinitionResultApiModel$outboundSchema.optional(),
+    headers: z.record(z.array(z.string())),
     statusCode: z.number().int(),
     rawResponse: z.instanceof(Response).transform(() => {
       throw new Error("Response cannot be serialized");
@@ -296,6 +301,7 @@ export const AtsGetApplicationCustomFieldDefinitionResponse$outboundSchema:
       contentType: "ContentType",
       customFieldDefinitionResultApiModel:
         "CustomFieldDefinitionResultApiModel",
+      headers: "Headers",
       statusCode: "StatusCode",
       rawResponse: "RawResponse",
     });

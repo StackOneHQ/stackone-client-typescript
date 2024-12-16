@@ -35,6 +35,7 @@ export type AtsGetApplicationScorecardResponse = {
    * HTTP response content type for this operation
    */
   contentType: string;
+  headers: { [k: string]: Array<string> };
   /**
    * The scorecard related to the application with the given identifiers was retrieved.
    */
@@ -136,12 +137,14 @@ export const AtsGetApplicationScorecardResponse$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   ContentType: z.string(),
+  Headers: z.record(z.array(z.string())),
   ScorecardsResult: shared.ScorecardsResult$inboundSchema.optional(),
   StatusCode: z.number().int(),
   RawResponse: z.instanceof(Response),
 }).transform((v) => {
   return remap$(v, {
     "ContentType": "contentType",
+    "Headers": "headers",
     "ScorecardsResult": "scorecardsResult",
     "StatusCode": "statusCode",
     "RawResponse": "rawResponse",
@@ -151,6 +154,7 @@ export const AtsGetApplicationScorecardResponse$inboundSchema: z.ZodType<
 /** @internal */
 export type AtsGetApplicationScorecardResponse$Outbound = {
   ContentType: string;
+  Headers: { [k: string]: Array<string> };
   ScorecardsResult?: shared.ScorecardsResult$Outbound | undefined;
   StatusCode: number;
   RawResponse: never;
@@ -163,6 +167,7 @@ export const AtsGetApplicationScorecardResponse$outboundSchema: z.ZodType<
   AtsGetApplicationScorecardResponse
 > = z.object({
   contentType: z.string(),
+  headers: z.record(z.array(z.string())),
   scorecardsResult: shared.ScorecardsResult$outboundSchema.optional(),
   statusCode: z.number().int(),
   rawResponse: z.instanceof(Response).transform(() => {
@@ -171,6 +176,7 @@ export const AtsGetApplicationScorecardResponse$outboundSchema: z.ZodType<
 }).transform((v) => {
   return remap$(v, {
     contentType: "ContentType",
+    headers: "Headers",
     scorecardsResult: "ScorecardsResult",
     statusCode: "StatusCode",
     rawResponse: "RawResponse",

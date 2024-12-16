@@ -71,6 +71,7 @@ export type HrisListLocationsResponse = {
    * The list of Locations was retrieved.
    */
   hrisLocationsPaginated?: shared.HRISLocationsPaginated | undefined;
+  headers: { [k: string]: Array<string> };
   /**
    * HTTP response status code for this operation
    */
@@ -249,12 +250,14 @@ export const HrisListLocationsResponse$inboundSchema: z.ZodType<
   ContentType: z.string(),
   HRISLocationsPaginated: shared.HRISLocationsPaginated$inboundSchema
     .optional(),
+  Headers: z.record(z.array(z.string())),
   StatusCode: z.number().int(),
   RawResponse: z.instanceof(Response),
 }).transform((v) => {
   return remap$(v, {
     "ContentType": "contentType",
     "HRISLocationsPaginated": "hrisLocationsPaginated",
+    "Headers": "headers",
     "StatusCode": "statusCode",
     "RawResponse": "rawResponse",
   });
@@ -264,6 +267,7 @@ export const HrisListLocationsResponse$inboundSchema: z.ZodType<
 export type HrisListLocationsResponse$Outbound = {
   ContentType: string;
   HRISLocationsPaginated?: shared.HRISLocationsPaginated$Outbound | undefined;
+  Headers: { [k: string]: Array<string> };
   StatusCode: number;
   RawResponse: never;
 };
@@ -277,6 +281,7 @@ export const HrisListLocationsResponse$outboundSchema: z.ZodType<
   contentType: z.string(),
   hrisLocationsPaginated: shared.HRISLocationsPaginated$outboundSchema
     .optional(),
+  headers: z.record(z.array(z.string())),
   statusCode: z.number().int(),
   rawResponse: z.instanceof(Response).transform(() => {
     throw new Error("Response cannot be serialized");
@@ -285,6 +290,7 @@ export const HrisListLocationsResponse$outboundSchema: z.ZodType<
   return remap$(v, {
     contentType: "ContentType",
     hrisLocationsPaginated: "HRISLocationsPaginated",
+    headers: "Headers",
     statusCode: "StatusCode",
     rawResponse: "RawResponse",
   });

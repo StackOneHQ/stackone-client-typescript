@@ -8,6 +8,11 @@ import { HrisDocumentApiModelSchemasValue } from "@stackone/stackone-client-ts/s
 
 let value: HrisGetEmployeeDocumentResponse = {
   contentType: "<value>",
+  headers: {
+    "key": [
+      "<value>",
+    ],
+  },
   hrisDocumentResult: {
     data: {
       category: {},
@@ -41,6 +46,7 @@ let value: HrisGetEmployeeDocumentResponse = {
 | Field                                                                          | Type                                                                           | Required                                                                       | Description                                                                    |
 | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
 | `contentType`                                                                  | *string*                                                                       | :heavy_check_mark:                                                             | HTTP response content type for this operation                                  |
+| `headers`                                                                      | Record<string, *string*[]>                                                     | :heavy_check_mark:                                                             | N/A                                                                            |
 | `hrisDocumentResult`                                                           | [shared.HrisDocumentResult](../../../sdk/models/shared/hrisdocumentresult.md)  | :heavy_minus_sign:                                                             | The document related to the employee with the given identifiers was retrieved. |
 | `statusCode`                                                                   | *number*                                                                       | :heavy_check_mark:                                                             | HTTP response status code for this operation                                   |
 | `rawResponse`                                                                  | [Response](https://developer.mozilla.org/en-US/docs/Web/API/Response)          | :heavy_check_mark:                                                             | Raw HTTP response; suitable for custom response parsing                        |

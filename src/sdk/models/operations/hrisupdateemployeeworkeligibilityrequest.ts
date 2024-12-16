@@ -25,6 +25,7 @@ export type HrisUpdateEmployeeWorkEligibilityRequestResponse = {
    * HTTP response content type for this operation
    */
   contentType: string;
+  headers: { [k: string]: Array<string> };
   /**
    * HTTP response status code for this operation
    */
@@ -135,11 +136,13 @@ export const HrisUpdateEmployeeWorkEligibilityRequestResponse$inboundSchema:
     unknown
   > = z.object({
     ContentType: z.string(),
+    Headers: z.record(z.array(z.string())),
     StatusCode: z.number().int(),
     RawResponse: z.instanceof(Response),
   }).transform((v) => {
     return remap$(v, {
       "ContentType": "contentType",
+      "Headers": "headers",
       "StatusCode": "statusCode",
       "RawResponse": "rawResponse",
     });
@@ -148,6 +151,7 @@ export const HrisUpdateEmployeeWorkEligibilityRequestResponse$inboundSchema:
 /** @internal */
 export type HrisUpdateEmployeeWorkEligibilityRequestResponse$Outbound = {
   ContentType: string;
+  Headers: { [k: string]: Array<string> };
   StatusCode: number;
   RawResponse: never;
 };
@@ -160,6 +164,7 @@ export const HrisUpdateEmployeeWorkEligibilityRequestResponse$outboundSchema:
     HrisUpdateEmployeeWorkEligibilityRequestResponse
   > = z.object({
     contentType: z.string(),
+    headers: z.record(z.array(z.string())),
     statusCode: z.number().int(),
     rawResponse: z.instanceof(Response).transform(() => {
       throw new Error("Response cannot be serialized");
@@ -167,6 +172,7 @@ export const HrisUpdateEmployeeWorkEligibilityRequestResponse$outboundSchema:
   }).transform((v) => {
     return remap$(v, {
       contentType: "ContentType",
+      headers: "Headers",
       statusCode: "StatusCode",
       rawResponse: "RawResponse",
     });

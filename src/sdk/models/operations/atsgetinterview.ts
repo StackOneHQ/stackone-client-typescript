@@ -34,6 +34,7 @@ export type AtsGetInterviewResponse = {
    * HTTP response content type for this operation
    */
   contentType: string;
+  headers: { [k: string]: Array<string> };
   /**
    * The interview with the given identifier was retrieved.
    */
@@ -129,12 +130,14 @@ export const AtsGetInterviewResponse$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   ContentType: z.string(),
+  Headers: z.record(z.array(z.string())),
   InterviewsResult: shared.InterviewsResult$inboundSchema.optional(),
   StatusCode: z.number().int(),
   RawResponse: z.instanceof(Response),
 }).transform((v) => {
   return remap$(v, {
     "ContentType": "contentType",
+    "Headers": "headers",
     "InterviewsResult": "interviewsResult",
     "StatusCode": "statusCode",
     "RawResponse": "rawResponse",
@@ -144,6 +147,7 @@ export const AtsGetInterviewResponse$inboundSchema: z.ZodType<
 /** @internal */
 export type AtsGetInterviewResponse$Outbound = {
   ContentType: string;
+  Headers: { [k: string]: Array<string> };
   InterviewsResult?: shared.InterviewsResult$Outbound | undefined;
   StatusCode: number;
   RawResponse: never;
@@ -156,6 +160,7 @@ export const AtsGetInterviewResponse$outboundSchema: z.ZodType<
   AtsGetInterviewResponse
 > = z.object({
   contentType: z.string(),
+  headers: z.record(z.array(z.string())),
   interviewsResult: shared.InterviewsResult$outboundSchema.optional(),
   statusCode: z.number().int(),
   rawResponse: z.instanceof(Response).transform(() => {
@@ -164,6 +169,7 @@ export const AtsGetInterviewResponse$outboundSchema: z.ZodType<
 }).transform((v) => {
   return remap$(v, {
     contentType: "ContentType",
+    headers: "Headers",
     interviewsResult: "InterviewsResult",
     statusCode: "StatusCode",
     rawResponse: "RawResponse",

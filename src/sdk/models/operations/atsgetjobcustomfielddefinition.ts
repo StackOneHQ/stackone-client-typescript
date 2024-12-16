@@ -74,6 +74,7 @@ export type AtsGetJobCustomFieldDefinitionResponse = {
   customFieldDefinitionResultApiModel?:
     | shared.CustomFieldDefinitionResultApiModel
     | undefined;
+  headers: { [k: string]: Array<string> };
   /**
    * HTTP response status code for this operation
    */
@@ -274,6 +275,7 @@ export const AtsGetJobCustomFieldDefinitionResponse$inboundSchema: z.ZodType<
   ContentType: z.string(),
   CustomFieldDefinitionResultApiModel: shared
     .CustomFieldDefinitionResultApiModel$inboundSchema.optional(),
+  Headers: z.record(z.array(z.string())),
   StatusCode: z.number().int(),
   RawResponse: z.instanceof(Response),
 }).transform((v) => {
@@ -281,6 +283,7 @@ export const AtsGetJobCustomFieldDefinitionResponse$inboundSchema: z.ZodType<
     "ContentType": "contentType",
     "CustomFieldDefinitionResultApiModel":
       "customFieldDefinitionResultApiModel",
+    "Headers": "headers",
     "StatusCode": "statusCode",
     "RawResponse": "rawResponse",
   });
@@ -292,6 +295,7 @@ export type AtsGetJobCustomFieldDefinitionResponse$Outbound = {
   CustomFieldDefinitionResultApiModel?:
     | shared.CustomFieldDefinitionResultApiModel$Outbound
     | undefined;
+  Headers: { [k: string]: Array<string> };
   StatusCode: number;
   RawResponse: never;
 };
@@ -305,6 +309,7 @@ export const AtsGetJobCustomFieldDefinitionResponse$outboundSchema: z.ZodType<
   contentType: z.string(),
   customFieldDefinitionResultApiModel: shared
     .CustomFieldDefinitionResultApiModel$outboundSchema.optional(),
+  headers: z.record(z.array(z.string())),
   statusCode: z.number().int(),
   rawResponse: z.instanceof(Response).transform(() => {
     throw new Error("Response cannot be serialized");
@@ -313,6 +318,7 @@ export const AtsGetJobCustomFieldDefinitionResponse$outboundSchema: z.ZodType<
   return remap$(v, {
     contentType: "ContentType",
     customFieldDefinitionResultApiModel: "CustomFieldDefinitionResultApiModel",
+    headers: "Headers",
     statusCode: "StatusCode",
     rawResponse: "RawResponse",
   });

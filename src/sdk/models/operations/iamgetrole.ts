@@ -38,6 +38,7 @@ export type IamGetRoleResponse = {
    * HTTP response content type for this operation
    */
   contentType: string;
+  headers: { [k: string]: Array<string> };
   /**
    * The role with the given identifier was retrieved.
    */
@@ -136,12 +137,14 @@ export const IamGetRoleResponse$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   ContentType: z.string(),
+  Headers: z.record(z.array(z.string())),
   IamRoleResult: shared.IamRoleResult$inboundSchema.optional(),
   StatusCode: z.number().int(),
   RawResponse: z.instanceof(Response),
 }).transform((v) => {
   return remap$(v, {
     "ContentType": "contentType",
+    "Headers": "headers",
     "IamRoleResult": "iamRoleResult",
     "StatusCode": "statusCode",
     "RawResponse": "rawResponse",
@@ -151,6 +154,7 @@ export const IamGetRoleResponse$inboundSchema: z.ZodType<
 /** @internal */
 export type IamGetRoleResponse$Outbound = {
   ContentType: string;
+  Headers: { [k: string]: Array<string> };
   IamRoleResult?: shared.IamRoleResult$Outbound | undefined;
   StatusCode: number;
   RawResponse: never;
@@ -163,6 +167,7 @@ export const IamGetRoleResponse$outboundSchema: z.ZodType<
   IamGetRoleResponse
 > = z.object({
   contentType: z.string(),
+  headers: z.record(z.array(z.string())),
   iamRoleResult: shared.IamRoleResult$outboundSchema.optional(),
   statusCode: z.number().int(),
   rawResponse: z.instanceof(Response).transform(() => {
@@ -171,6 +176,7 @@ export const IamGetRoleResponse$outboundSchema: z.ZodType<
 }).transform((v) => {
   return remap$(v, {
     contentType: "ContentType",
+    headers: "Headers",
     iamRoleResult: "IamRoleResult",
     statusCode: "StatusCode",
     rawResponse: "RawResponse",

@@ -1,24 +1,26 @@
 # SourceValue
 
+The source value of the Channels.
+
 
 ## Supported Types
 
 ### `string`
 
 ```typescript
-const value: string = "<value>";
+const value: string = "SMS";
 ```
 
 ### `number`
 
 ```typescript
-const value: number = 972.43;
+const value: number = SMS;
 ```
 
 ### `boolean`
 
 ```typescript
-const value: boolean = false;
+const value: boolean = true;
 ```
 
 ### `shared.Four`
@@ -31,7 +33,7 @@ const value: shared.Four = {};
 
 ```typescript
 const value: any[] = [
-  "<value>",
+  "SMS",
 ];
 ```
 

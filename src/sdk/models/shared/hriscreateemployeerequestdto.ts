@@ -19,6 +19,12 @@ import {
   CountryCodeEnum$outboundSchema,
 } from "./countrycodeenum.js";
 import {
+  CreateCostCenterApiModel,
+  CreateCostCenterApiModel$inboundSchema,
+  CreateCostCenterApiModel$Outbound,
+  CreateCostCenterApiModel$outboundSchema,
+} from "./createcostcenterapimodel.js";
+import {
   CreateEmploymentApiModel,
   CreateEmploymentApiModel$inboundSchema,
   CreateEmploymentApiModel$Outbound,
@@ -9342,6 +9348,10 @@ export type HrisCreateEmployeeRequestDto = {
    */
   companyName?: string | null | undefined;
   /**
+   * The employee cost centers
+   */
+  costCenters?: Array<CreateCostCenterApiModel> | null | undefined;
+  /**
    * The employee custom fields
    */
   customFields?: Array<CustomFields> | null | undefined;
@@ -13503,6 +13513,8 @@ export const HrisCreateEmployeeRequestDto$inboundSchema: z.ZodType<
   ).optional(),
   citizenships: z.nullable(z.array(CountryCodeEnum$inboundSchema)).optional(),
   company_name: z.nullable(z.string()).optional(),
+  cost_centers: z.nullable(z.array(CreateCostCenterApiModel$inboundSchema))
+    .optional(),
   custom_fields: z.nullable(z.array(CustomFields$inboundSchema)).optional(),
   date_of_birth: z.nullable(
     z.string().datetime({ offset: true }).transform(v => new Date(v)),
@@ -13575,6 +13587,7 @@ export const HrisCreateEmployeeRequestDto$inboundSchema: z.ZodType<
   return remap$(v, {
     "avatar_url": "avatarUrl",
     "company_name": "companyName",
+    "cost_centers": "costCenters",
     "custom_fields": "customFields",
     "date_of_birth": "dateOfBirth",
     "department_id": "departmentId",
@@ -13612,6 +13625,7 @@ export type HrisCreateEmployeeRequestDto$Outbound = {
   birthday?: string | null | undefined;
   citizenships?: Array<CountryCodeEnum$Outbound> | null | undefined;
   company_name?: string | null | undefined;
+  cost_centers?: Array<CreateCostCenterApiModel$Outbound> | null | undefined;
   custom_fields?: Array<CustomFields$Outbound> | null | undefined;
   date_of_birth?: string | null | undefined;
   department?: string | null | undefined;
@@ -13685,6 +13699,8 @@ export const HrisCreateEmployeeRequestDto$outboundSchema: z.ZodType<
   birthday: z.nullable(z.date().transform(v => v.toISOString())).optional(),
   citizenships: z.nullable(z.array(CountryCodeEnum$outboundSchema)).optional(),
   companyName: z.nullable(z.string()).optional(),
+  costCenters: z.nullable(z.array(CreateCostCenterApiModel$outboundSchema))
+    .optional(),
   customFields: z.nullable(z.array(CustomFields$outboundSchema)).optional(),
   dateOfBirth: z.nullable(z.date().transform(v => v.toISOString())).optional(),
   department: z.nullable(z.string()).optional(),
@@ -13749,6 +13765,7 @@ export const HrisCreateEmployeeRequestDto$outboundSchema: z.ZodType<
   return remap$(v, {
     avatarUrl: "avatar_url",
     companyName: "company_name",
+    costCenters: "cost_centers",
     customFields: "custom_fields",
     dateOfBirth: "date_of_birth",
     departmentId: "department_id",

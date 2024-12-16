@@ -71,6 +71,7 @@ export type MarketingListCampaignsResponse = {
    * HTTP response content type for this operation
    */
   contentType: string;
+  headers: { [k: string]: Array<string> };
   /**
    * HTTP response status code for this operation
    */
@@ -253,12 +254,14 @@ export const MarketingListCampaignsResponse$inboundSchema: z.ZodType<
 > = z.object({
   CampaignsPaginated: shared.CampaignsPaginated$inboundSchema.optional(),
   ContentType: z.string(),
+  Headers: z.record(z.array(z.string())),
   StatusCode: z.number().int(),
   RawResponse: z.instanceof(Response),
 }).transform((v) => {
   return remap$(v, {
     "CampaignsPaginated": "campaignsPaginated",
     "ContentType": "contentType",
+    "Headers": "headers",
     "StatusCode": "statusCode",
     "RawResponse": "rawResponse",
   });
@@ -268,6 +271,7 @@ export const MarketingListCampaignsResponse$inboundSchema: z.ZodType<
 export type MarketingListCampaignsResponse$Outbound = {
   CampaignsPaginated?: shared.CampaignsPaginated$Outbound | undefined;
   ContentType: string;
+  Headers: { [k: string]: Array<string> };
   StatusCode: number;
   RawResponse: never;
 };
@@ -280,6 +284,7 @@ export const MarketingListCampaignsResponse$outboundSchema: z.ZodType<
 > = z.object({
   campaignsPaginated: shared.CampaignsPaginated$outboundSchema.optional(),
   contentType: z.string(),
+  headers: z.record(z.array(z.string())),
   statusCode: z.number().int(),
   rawResponse: z.instanceof(Response).transform(() => {
     throw new Error("Response cannot be serialized");
@@ -288,6 +293,7 @@ export const MarketingListCampaignsResponse$outboundSchema: z.ZodType<
   return remap$(v, {
     campaignsPaginated: "CampaignsPaginated",
     contentType: "ContentType",
+    headers: "Headers",
     statusCode: "StatusCode",
     rawResponse: "RawResponse",
   });

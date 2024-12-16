@@ -132,6 +132,7 @@ export * from "./iamlistusers.js";
 export * from "./lmsbatchupsertcontent.js";
 export * from "./lmsbatchupsertcourse.js";
 export * from "./lmscreatecollection.js";
+export * from "./lmscreateuserassignment.js";
 export * from "./lmscreateusercompletion.js";
 export * from "./lmsgetassignment.js";
 export * from "./lmsgetcategory.js";

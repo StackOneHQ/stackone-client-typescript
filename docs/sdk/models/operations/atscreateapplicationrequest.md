@@ -48,6 +48,7 @@ let value: AtsCreateApplicationRequest = {
     },
     candidateId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
     jobId: "4071538b-3cac-4fbf-ac76-f78ed250ffdd",
+    jobPostingId: "1c702a20-8de8-4d03-ac18-cbf4ac42eb51",
     locationId: "dd8d41d1-5eb8-4408-9c87-9ba44604eae4",
     passthrough: {
       "other_known_names": "John Doe",

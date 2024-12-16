@@ -60,7 +60,12 @@ let value: LmsGetCourseResponse = {
       url: "https://www.linkedinlearning.com/?v=16873",
     },
   },
-  statusCode: 201,
+  headers: {
+    "key": [
+      "<value>",
+    ],
+  },
+  statusCode: 103,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),
@@ -73,5 +78,6 @@ let value: LmsGetCourseResponse = {
 | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
 | `contentType`                                                         | *string*                                                              | :heavy_check_mark:                                                    | HTTP response content type for this operation                         |
 | `courseResult`                                                        | [shared.CourseResult](../../../sdk/models/shared/courseresult.md)     | :heavy_minus_sign:                                                    | The course with the given identifier was retrieved.                   |
+| `headers`                                                             | Record<string, *string*[]>                                            | :heavy_check_mark:                                                    | N/A                                                                   |
 | `statusCode`                                                          | *number*                                                              | :heavy_check_mark:                                                    | HTTP response status code for this operation                          |
 | `rawResponse`                                                         | [Response](https://developer.mozilla.org/en-US/docs/Web/API/Response) | :heavy_check_mark:                                                    | Raw HTTP response; suitable for custom response parsing               |

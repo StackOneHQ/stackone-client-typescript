@@ -180,6 +180,10 @@ export type AtsCreateApplicationRequestDto = {
    */
   jobId?: string | null | undefined;
   /**
+   * Unique identifier of the job posting that is associated with application
+   */
+  jobPostingId?: string | null | undefined;
+  /**
    * Unique identifier of the location
    */
   locationId?: string | null | undefined;
@@ -658,6 +662,7 @@ export const AtsCreateApplicationRequestDto$inboundSchema: z.ZodType<
   ).optional(),
   candidate_id: z.nullable(z.string()).optional(),
   job_id: z.nullable(z.string()).optional(),
+  job_posting_id: z.nullable(z.string()).optional(),
   location_id: z.nullable(z.string()).optional(),
   passthrough: z.nullable(z.record(z.any())).optional(),
   questionnaires: z.nullable(z.array(CreateQuestionnaire$inboundSchema))
@@ -670,6 +675,7 @@ export const AtsCreateApplicationRequestDto$inboundSchema: z.ZodType<
     "application_status": "applicationStatus",
     "candidate_id": "candidateId",
     "job_id": "jobId",
+    "job_posting_id": "jobPostingId",
     "location_id": "locationId",
   });
 });
@@ -686,6 +692,7 @@ export type AtsCreateApplicationRequestDto$Outbound = {
     | undefined;
   candidate_id?: string | null | undefined;
   job_id?: string | null | undefined;
+  job_posting_id?: string | null | undefined;
   location_id?: string | null | undefined;
   passthrough?: { [k: string]: any } | null | undefined;
   questionnaires?: Array<CreateQuestionnaire$Outbound> | null | undefined;
@@ -708,6 +715,7 @@ export const AtsCreateApplicationRequestDto$outboundSchema: z.ZodType<
   ).optional(),
   candidateId: z.nullable(z.string()).optional(),
   jobId: z.nullable(z.string()).optional(),
+  jobPostingId: z.nullable(z.string()).optional(),
   locationId: z.nullable(z.string()).optional(),
   passthrough: z.nullable(z.record(z.any())).optional(),
   questionnaires: z.nullable(z.array(CreateQuestionnaire$outboundSchema))
@@ -720,6 +728,7 @@ export const AtsCreateApplicationRequestDto$outboundSchema: z.ZodType<
     applicationStatus: "application_status",
     candidateId: "candidate_id",
     jobId: "job_id",
+    jobPostingId: "job_posting_id",
     locationId: "location_id",
   });
 });

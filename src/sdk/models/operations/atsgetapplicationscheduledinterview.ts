@@ -35,6 +35,7 @@ export type AtsGetApplicationScheduledInterviewResponse = {
    * HTTP response content type for this operation
    */
   contentType: string;
+  headers: { [k: string]: Array<string> };
   /**
    * The applications scheduled interview with the given identifier was retrieved.
    */
@@ -144,6 +145,7 @@ export const AtsGetApplicationScheduledInterviewResponse$inboundSchema:
     unknown
   > = z.object({
     ContentType: z.string(),
+    Headers: z.record(z.array(z.string())),
     ScheduledInterviewsResult: shared.ScheduledInterviewsResult$inboundSchema
       .optional(),
     StatusCode: z.number().int(),
@@ -151,6 +153,7 @@ export const AtsGetApplicationScheduledInterviewResponse$inboundSchema:
   }).transform((v) => {
     return remap$(v, {
       "ContentType": "contentType",
+      "Headers": "headers",
       "ScheduledInterviewsResult": "scheduledInterviewsResult",
       "StatusCode": "statusCode",
       "RawResponse": "rawResponse",
@@ -160,6 +163,7 @@ export const AtsGetApplicationScheduledInterviewResponse$inboundSchema:
 /** @internal */
 export type AtsGetApplicationScheduledInterviewResponse$Outbound = {
   ContentType: string;
+  Headers: { [k: string]: Array<string> };
   ScheduledInterviewsResult?:
     | shared.ScheduledInterviewsResult$Outbound
     | undefined;
@@ -175,6 +179,7 @@ export const AtsGetApplicationScheduledInterviewResponse$outboundSchema:
     AtsGetApplicationScheduledInterviewResponse
   > = z.object({
     contentType: z.string(),
+    headers: z.record(z.array(z.string())),
     scheduledInterviewsResult: shared.ScheduledInterviewsResult$outboundSchema
       .optional(),
     statusCode: z.number().int(),
@@ -184,6 +189,7 @@ export const AtsGetApplicationScheduledInterviewResponse$outboundSchema:
   }).transform((v) => {
     return remap$(v, {
       contentType: "ContentType",
+      headers: "Headers",
       scheduledInterviewsResult: "ScheduledInterviewsResult",
       statusCode: "StatusCode",
       rawResponse: "RawResponse",

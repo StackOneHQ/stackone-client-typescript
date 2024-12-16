@@ -8,6 +8,7 @@
 * [batchUpsertContent](#batchupsertcontent) - Batch Upsert Content
 * [batchUpsertCourse](#batchupsertcourse) - Batch Upsert Course
 * [createCollection](#createcollection) - Create Collection
+* [createUserAssignment](#createuserassignment) - Create User Assignment
 * [createUserCompletion](#createusercompletion) - Create User Completion
 * [getAssignment](#getassignment) - Get Assignment
 * [getCategory](#getcategory) - Get Category
@@ -582,6 +583,118 @@ run();
 ### Response
 
 **Promise\<[operations.LmsCreateCollectionResponse](../../sdk/models/operations/lmscreatecollectionresponse.md)\>**
+
+### Errors
+
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |
+
+## createUserAssignment
+
+Create User Assignment
+
+### Example Usage
+
+```typescript
+import { StackOne } from "@stackone/stackone-client-ts";
+import { LmsCreateAssignmentRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+const stackOne = new StackOne({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const result = await stackOne.lms.createUserAssignment({
+    lmsCreateAssignmentRequestDto: {
+      createdAt: "2021-07-21T14:00:00.000Z",
+      dueDate: "2021-07-21T14:00:00.000Z",
+      learningObjectExternalReference: "learning-content-123",
+      learningObjectId: "e3gd34-23tr21-er234-345er56",
+      passthrough: {
+        "other_known_names": "John Doe",
+      },
+      progress: 40,
+      status: {
+        value: LmsCreateAssignmentRequestDtoValue.Pending,
+      },
+    },
+    id: "<id>",
+    xAccountId: "<id>",
+  });
+
+  // Handle the result
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
+import { lmsCreateUserAssignment } from "@stackone/stackone-client-ts/funcs/lmsCreateUserAssignment.js";
+import { LmsCreateAssignmentRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+
+// Use `StackOneCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const stackOne = new StackOneCore({
+  security: {
+    password: "",
+    username: "",
+  },
+});
+
+async function run() {
+  const res = await lmsCreateUserAssignment(stackOne, {
+    lmsCreateAssignmentRequestDto: {
+      createdAt: "2021-07-21T14:00:00.000Z",
+      dueDate: "2021-07-21T14:00:00.000Z",
+      learningObjectExternalReference: "learning-content-123",
+      learningObjectId: "e3gd34-23tr21-er234-345er56",
+      passthrough: {
+        "other_known_names": "John Doe",
+      },
+      progress: 40,
+      status: {
+        value: LmsCreateAssignmentRequestDtoValue.Pending,
+      },
+    },
+    id: "<id>",
+    xAccountId: "<id>",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                      | [operations.LmsCreateUserAssignmentRequest](../../sdk/models/operations/lmscreateuserassignmentrequest.md)                                                                     | :heavy_check_mark:                                                                                                                                                             | The request object to use for the request.                                                                                                                                     |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[operations.LmsCreateUserAssignmentResponse](../../sdk/models/operations/lmscreateuserassignmentresponse.md)\>**
 
 ### Errors
 

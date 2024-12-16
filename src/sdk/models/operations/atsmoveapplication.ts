@@ -23,6 +23,7 @@ export type AtsMoveApplicationResponse = {
    * HTTP response content type for this operation
    */
   contentType: string;
+  headers: { [k: string]: Array<string> };
   /**
    * The application was moved successfully.
    */
@@ -116,12 +117,14 @@ export const AtsMoveApplicationResponse$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   ContentType: z.string(),
+  Headers: z.record(z.array(z.string())),
   MoveApplicationResult: shared.MoveApplicationResult$inboundSchema.optional(),
   StatusCode: z.number().int(),
   RawResponse: z.instanceof(Response),
 }).transform((v) => {
   return remap$(v, {
     "ContentType": "contentType",
+    "Headers": "headers",
     "MoveApplicationResult": "moveApplicationResult",
     "StatusCode": "statusCode",
     "RawResponse": "rawResponse",
@@ -131,6 +134,7 @@ export const AtsMoveApplicationResponse$inboundSchema: z.ZodType<
 /** @internal */
 export type AtsMoveApplicationResponse$Outbound = {
   ContentType: string;
+  Headers: { [k: string]: Array<string> };
   MoveApplicationResult?: shared.MoveApplicationResult$Outbound | undefined;
   StatusCode: number;
   RawResponse: never;
@@ -143,6 +147,7 @@ export const AtsMoveApplicationResponse$outboundSchema: z.ZodType<
   AtsMoveApplicationResponse
 > = z.object({
   contentType: z.string(),
+  headers: z.record(z.array(z.string())),
   moveApplicationResult: shared.MoveApplicationResult$outboundSchema.optional(),
   statusCode: z.number().int(),
   rawResponse: z.instanceof(Response).transform(() => {
@@ -151,6 +156,7 @@ export const AtsMoveApplicationResponse$outboundSchema: z.ZodType<
 }).transform((v) => {
   return remap$(v, {
     contentType: "ContentType",
+    headers: "Headers",
     moveApplicationResult: "MoveApplicationResult",
     statusCode: "StatusCode",
     rawResponse: "RawResponse",
