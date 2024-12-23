@@ -14,6 +14,7 @@ let value: AssessmentsOrderApplication = {
   passthrough: {
     "other_known_names": "John Doe",
   },
+  remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
 };
 ```
 
@@ -24,3 +25,4 @@ let value: AssessmentsOrderApplication = {
 | `applicationStatus`                                                                                         | [shared.AssessmentsOrderApplicationStatus](../../../sdk/models/shared/assessmentsorderapplicationstatus.md) | :heavy_minus_sign:                                                                                          | N/A                                                                                                         |                                                                                                             |
 | `id`                                                                                                        | *string*                                                                                                    | :heavy_minus_sign:                                                                                          | Unique identifier                                                                                           | 8187e5da-dc77-475e-9949-af0f1fa4e4e3                                                                        |
 | `passthrough`                                                                                               | Record<string, *any*>                                                                                       | :heavy_minus_sign:                                                                                          | Value to pass through to the provider                                                                       | {<br/>"other_known_names": "John Doe"<br/>}                                                                 |
+| `remoteId`                                                                                                  | *string*                                                                                                    | :heavy_minus_sign:                                                                                          | Provider's unique identifier                                                                                | 8187e5da-dc77-475e-9949-af0f1fa4e4e3                                                                        |

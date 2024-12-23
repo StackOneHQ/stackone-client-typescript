@@ -31,7 +31,7 @@ let value: MarketingListInAppTemplatesResponse = {
       },
     ],
   },
-  statusCode: 510,
+  statusCode: 501,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

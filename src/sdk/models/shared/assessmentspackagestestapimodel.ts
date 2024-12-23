@@ -3,6 +3,7 @@
  */
 
 import * as z from "zod";
+import { remap as remap$ } from "../../../lib/primitives.js";
 import { safeParse } from "../../../lib/schemas.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
@@ -20,6 +21,10 @@ export type AssessmentsPackagesTestApiModel = {
    * Package name
    */
   name?: string | null | undefined;
+  /**
+   * Provider's unique identifier
+   */
+  remoteId?: string | null | undefined;
 };
 
 /** @internal */
@@ -31,6 +36,11 @@ export const AssessmentsPackagesTestApiModel$inboundSchema: z.ZodType<
   description: z.nullable(z.string()).optional(),
   id: z.nullable(z.string()).optional(),
   name: z.nullable(z.string()).optional(),
+  remote_id: z.nullable(z.string()).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    "remote_id": "remoteId",
+  });
 });
 
 /** @internal */
@@ -38,6 +48,7 @@ export type AssessmentsPackagesTestApiModel$Outbound = {
   description?: string | null | undefined;
   id?: string | null | undefined;
   name?: string | null | undefined;
+  remote_id?: string | null | undefined;
 };
 
 /** @internal */
@@ -49,6 +60,11 @@ export const AssessmentsPackagesTestApiModel$outboundSchema: z.ZodType<
   description: z.nullable(z.string()).optional(),
   id: z.nullable(z.string()).optional(),
   name: z.nullable(z.string()).optional(),
+  remoteId: z.nullable(z.string()).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    remoteId: "remote_id",
+  });
 });
 
 /**

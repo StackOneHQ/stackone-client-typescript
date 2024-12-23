@@ -14,12 +14,6 @@ import {
   Category$outboundSchema,
 } from "./category.js";
 import {
-  Content,
-  Content$inboundSchema,
-  Content$Outbound,
-  Content$outboundSchema,
-} from "./content.js";
-import {
   LanguageEnum,
   LanguageEnum$inboundSchema,
   LanguageEnum$Outbound,
@@ -41,10 +35,6 @@ export type Course = {
    * The categories associated with this course
    */
   categories?: Array<Category> | null | undefined;
-  /**
-   * The content associated with this course
-   */
-  content?: Array<Content> | null | undefined;
   /**
    * The child ID/IDs associated with this course
    */
@@ -112,7 +102,6 @@ export const Course$inboundSchema: z.ZodType<Course, z.ZodTypeDef, unknown> = z
   .object({
     active: z.nullable(z.boolean()).optional(),
     categories: z.nullable(z.array(Category$inboundSchema)).optional(),
-    content: z.nullable(z.array(Content$inboundSchema)).optional(),
     content_ids: z.nullable(z.array(z.string())).optional(),
     cover_url: z.nullable(z.string()).optional(),
     created_at: z.nullable(z.string()).optional(),
@@ -145,7 +134,6 @@ export const Course$inboundSchema: z.ZodType<Course, z.ZodTypeDef, unknown> = z
 export type Course$Outbound = {
   active?: boolean | null | undefined;
   categories?: Array<Category$Outbound> | null | undefined;
-  content?: Array<Content$Outbound> | null | undefined;
   content_ids?: Array<string> | null | undefined;
   cover_url?: string | null | undefined;
   created_at?: string | null | undefined;
@@ -171,7 +159,6 @@ export const Course$outboundSchema: z.ZodType<
 > = z.object({
   active: z.nullable(z.boolean()).optional(),
   categories: z.nullable(z.array(Category$outboundSchema)).optional(),
-  content: z.nullable(z.array(Content$outboundSchema)).optional(),
   contentIds: z.nullable(z.array(z.string())).optional(),
   coverUrl: z.nullable(z.string()).optional(),
   createdAt: z.nullable(z.string()).optional(),

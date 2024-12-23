@@ -22,6 +22,10 @@ export type AssessmentsRequestsJobHiringTeamApiModel = {
    */
   lastName?: string | null | undefined;
   /**
+   * Provider's unique identifier of the user
+   */
+  remoteUserId?: string | null | undefined;
+  /**
    * Role of the hiring team member.
    */
   role?: string | null | undefined;
@@ -40,12 +44,14 @@ export const AssessmentsRequestsJobHiringTeamApiModel$inboundSchema: z.ZodType<
   email: z.nullable(z.string()).optional(),
   first_name: z.nullable(z.string()).optional(),
   last_name: z.nullable(z.string()).optional(),
+  remote_user_id: z.nullable(z.string()).optional(),
   role: z.nullable(z.string()).optional(),
   user_id: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
     "first_name": "firstName",
     "last_name": "lastName",
+    "remote_user_id": "remoteUserId",
     "user_id": "userId",
   });
 });
@@ -55,6 +61,7 @@ export type AssessmentsRequestsJobHiringTeamApiModel$Outbound = {
   email?: string | null | undefined;
   first_name?: string | null | undefined;
   last_name?: string | null | undefined;
+  remote_user_id?: string | null | undefined;
   role?: string | null | undefined;
   user_id?: string | null | undefined;
 };
@@ -68,12 +75,14 @@ export const AssessmentsRequestsJobHiringTeamApiModel$outboundSchema: z.ZodType<
   email: z.nullable(z.string()).optional(),
   firstName: z.nullable(z.string()).optional(),
   lastName: z.nullable(z.string()).optional(),
+  remoteUserId: z.nullable(z.string()).optional(),
   role: z.nullable(z.string()).optional(),
   userId: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
     firstName: "first_name",
     lastName: "last_name",
+    remoteUserId: "remote_user_id",
     userId: "user_id",
   });
 });

@@ -6,23 +6,22 @@
 import { BackgroundCheckOrderRequester } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: BackgroundCheckOrderRequester = {
-  emails: [
-    {
-      type: "personal",
-      value: "sestier.romain123@gmail.com",
-    },
-  ],
-  id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-  passthrough: {
-    "other_known_names": "John Doe",
-  },
+  email: "john.doe@gmail.com",
+  firstName: "John",
+  lastName: "Doe",
+  remoteUserId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
+  role: "Software Engineer",
+  userId: "123456",
 };
 ```
 
 ## Fields
 
-| Field                                                                   | Type                                                                    | Required                                                                | Description                                                             | Example                                                                 |
-| ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- |
-| `emails`                                                                | [shared.CandidateEmail](../../../sdk/models/shared/candidateemail.md)[] | :heavy_minus_sign:                                                      | List of candidate emails                                                |                                                                         |
-| `id`                                                                    | *string*                                                                | :heavy_minus_sign:                                                      | Unique identifier                                                       | 8187e5da-dc77-475e-9949-af0f1fa4e4e3                                    |
-| `passthrough`                                                           | Record<string, *any*>                                                   | :heavy_minus_sign:                                                      | Value to pass through to the provider                                   | {<br/>"other_known_names": "John Doe"<br/>}                             |
+| Field                                    | Type                                     | Required                                 | Description                              | Example                                  |
+| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+| `email`                                  | *string*                                 | :heavy_minus_sign:                       | Email of the hiring team member.         | john.doe@gmail.com                       |
+| `firstName`                              | *string*                                 | :heavy_minus_sign:                       | First name of the hiring team member.    | John                                     |
+| `lastName`                               | *string*                                 | :heavy_minus_sign:                       | Last name of the hiring team member.     | Doe                                      |
+| `remoteUserId`                           | *string*                                 | :heavy_minus_sign:                       | Provider's unique identifier of the user | e3cb75bf-aa84-466e-a6c1-b8322b257a48     |
+| `role`                                   | *string*                                 | :heavy_minus_sign:                       | Role of the hiring team member.          | Software Engineer                        |
+| `userId`                                 | *string*                                 | :heavy_minus_sign:                       | User ID of the hiring team member.       | 123456                                   |

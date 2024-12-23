@@ -6,7 +6,7 @@
 import { HrisCreateEmployeeRequestDtoSchemasEthnicityValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: HrisCreateEmployeeRequestDtoSchemasEthnicityValue =
-  HrisCreateEmployeeRequestDtoSchemasEthnicityValue.Asian;
+  HrisCreateEmployeeRequestDtoSchemasEthnicityValue.BlackOrAfricanAmerican;
 ```
 
 ## Values

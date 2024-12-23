@@ -157,6 +157,7 @@ This is an open enum. Unrecognized values will be captured as the `Unrecognized<
 | `Curp`                 | curp                   |
 | `Imss`                 | imss                   |
 | `Rfc`                  | rfc                    |
+| `Ein`                  | ein                    |
 | `Other`                | other                  |
 | `Unknown`              | unknown                |
 | -                      | `Unrecognized<string>` |

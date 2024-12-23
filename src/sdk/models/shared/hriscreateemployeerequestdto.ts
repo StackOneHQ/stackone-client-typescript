@@ -4946,6 +4946,7 @@ export enum HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberTypeValue {
   Curp = "curp",
   Imss = "imss",
   Rfc = "rfc",
+  Ein = "ein",
   Other = "other",
   Unknown = "unknown",
 }

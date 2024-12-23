@@ -65,7 +65,7 @@ let value: MarketingListCampaignsResponse = {
         },
         status: {
           sourceValue: "Email",
-          value: CampaignSchemasValue.Live,
+          value: CampaignSchemasValue.Archived,
         },
         updatedAt: new Date("2021-01-01T01:01:01.000Z"),
       },
@@ -77,7 +77,7 @@ let value: MarketingListCampaignsResponse = {
       "<value>",
     ],
   },
-  statusCode: 305,
+  statusCode: 505,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

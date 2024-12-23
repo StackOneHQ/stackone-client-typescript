@@ -6,21 +6,21 @@
 import { ConnectSessionTokenAuthLink, ConnectSessionTokenAuthLinkCategories } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: ConnectSessionTokenAuthLink = {
-  authLinkUrl: "https://probable-jungle.org/",
+  authLinkUrl: "https://wrong-baseboard.net/",
   categories: [
     ConnectSessionTokenAuthLinkCategories.Ats,
     ConnectSessionTokenAuthLinkCategories.Hris,
-    ConnectSessionTokenAuthLinkCategories.Ats,
+    ConnectSessionTokenAuthLinkCategories.HrisLegacy,
     ConnectSessionTokenAuthLinkCategories.Crm,
     ConnectSessionTokenAuthLinkCategories.Iam,
     ConnectSessionTokenAuthLinkCategories.Marketing,
     ConnectSessionTokenAuthLinkCategories.Lms,
-    ConnectSessionTokenAuthLinkCategories.Stackone,
+    ConnectSessionTokenAuthLinkCategories.HrisLegacy,
     ConnectSessionTokenAuthLinkCategories.Documents,
   ],
-  createdAt: new Date("2022-11-13T02:02:02.665Z"),
-  id: 2414.19,
-  organizationId: 6625.05,
+  createdAt: new Date("2023-12-28T02:31:12.899Z"),
+  id: 2460.63,
+  organizationId: 6658.59,
   originOwnerId: "<id>",
   originOwnerName: "<value>",
   projectId: "<id>",
