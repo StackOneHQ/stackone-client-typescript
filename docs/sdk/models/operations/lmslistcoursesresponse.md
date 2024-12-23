@@ -18,13 +18,6 @@ let value: LmsListCoursesResponse = {
             name: "Technology",
           },
         ],
-        content: [
-          {
-            contentUrl: "https://www.google.com",
-            description: "This is a software engineering course",
-            title: "Software Engineering",
-          },
-        ],
         contentIds: [
           "16873-SOFTWARE-ENG-COURSE",
           "16874-SOFTWARE-ENG-COURSE",
@@ -67,7 +60,7 @@ let value: LmsListCoursesResponse = {
       "<value>",
     ],
   },
-  statusCode: 401,
+  statusCode: 102,
   rawResponse: new Response("{\"message\": \"hello world\"}", {
     headers: { "Content-Type": "application/json" },
   }),

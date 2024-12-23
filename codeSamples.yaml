@@ -5351,16 +5351,17 @@ actions:
                       name: "Information-Technology",
                     },
                   ],
+                  categories: [
+                    {
+                      name: "Information-Technology",
+                    },
+                  ],
                   content: [
                     {
                       title: "Software Engineer Lv 1",
                       description: "This video acts as learning content for software engineers.",
                       contentUrl: "https://www.youtube.com/watch?v=16873",
-                    },
-                  ],
-                  categories: [
-                    {
-                      name: "Information-Technology",
+                      order: 1,
                     },
                   ],
                 },
@@ -5419,16 +5420,23 @@ actions:
                           name: "Information-Technology",
                         },
                       ],
+                      categories: [
+                        {
+                          name: "Information-Technology",
+                        },
+                      ],
                       content: [
                         {
                           title: "Software Engineer Lv 1",
                           description: "This video acts as learning content for software engineers.",
                           contentUrl: "https://www.youtube.com/watch?v=16873",
+                          order: 1,
                         },
-                      ],
-                      categories: [
                         {
-                          name: "Information-Technology",
+                          title: "Software Engineer Lv 1",
+                          description: "This video acts as learning content for software engineers.",
+                          contentUrl: "https://www.youtube.com/watch?v=16873",
+                          order: 1,
                         },
                       ],
                     },
@@ -5462,16 +5470,17 @@ actions:
                           name: "Information-Technology",
                         },
                       ],
+                      categories: [
+                        {
+                          name: "Information-Technology",
+                        },
+                      ],
                       content: [
                         {
                           title: "Software Engineer Lv 1",
                           description: "This video acts as learning content for software engineers.",
                           contentUrl: "https://www.youtube.com/watch?v=16873",
-                        },
-                      ],
-                      categories: [
-                        {
-                          name: "Information-Technology",
+                          order: 1,
                         },
                       ],
                     },

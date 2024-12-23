@@ -14,7 +14,7 @@ let value: ScorecardsResult = {
     id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
     interviewId: "1314-15",
     label: "Technical Interview",
-    overallRecommendation: OverallRecommendation.UnmappedValue,
+    overallRecommendation: OverallRecommendation.NoDecision,
     remoteApplicationId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
     remoteAuthorId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
     remoteCandidateId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
@@ -28,7 +28,7 @@ let value: ScorecardsResult = {
             label: "Problem Solving",
             remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
             required: true,
-            type: FieldType.MultiSelect,
+            type: FieldType.ShortText,
             values: [
               "Excellent",
               "Good",

@@ -16,9 +16,11 @@ let value: LmsUpsertCourseRequest = {
     ],
     content: [
       {
-        contentUrl: "https://www.google.com",
-        description: "This is a software engineering course",
-        title: "Software Engineering",
+        contentUrl: "https://www.youtube.com/watch?v=16873",
+        description:
+          "This video acts as learning content for software engineers.",
+        order: 1,
+        title: "Software Engineer Lv 1",
       },
     ],
     contentIds: [

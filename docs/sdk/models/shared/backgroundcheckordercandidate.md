@@ -19,6 +19,7 @@ let value: BackgroundCheckOrderCandidate = {
     "other_known_names": "John Doe",
   },
   profileUrl: "https://exmaple.com/candidate?id=xyz",
+  remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
 };
 ```
 
@@ -32,3 +33,4 @@ let value: BackgroundCheckOrderCandidate = {
 | `lastName`                                                              | *string*                                                                | :heavy_minus_sign:                                                      | Candidate last name                                                     | Sestier                                                                 |
 | `passthrough`                                                           | Record<string, *any*>                                                   | :heavy_minus_sign:                                                      | Value to pass through to the provider                                   | {<br/>"other_known_names": "John Doe"<br/>}                             |
 | `profileUrl`                                                            | *string*                                                                | :heavy_minus_sign:                                                      | Candidate profile url                                                   | https://exmaple.com/candidate?id=xyz                                    |
+| `remoteId`                                                              | *string*                                                                | :heavy_minus_sign:                                                      | Provider's unique identifier                                            | 8187e5da-dc77-475e-9949-af0f1fa4e4e3                                    |

@@ -28,6 +28,10 @@ export type AssessmentsResultsCandidate = {
    * Candidate profile url
    */
   profileUrl?: string | null | undefined;
+  /**
+   * Provider's unique identifier
+   */
+  remoteId?: string | null | undefined;
 };
 
 export type AssessmentsResults4 = {};
@@ -134,9 +138,11 @@ export const AssessmentsResultsCandidate$inboundSchema: z.ZodType<
 > = z.object({
   id: z.nullable(z.string()).optional(),
   profile_url: z.nullable(z.string()).optional(),
+  remote_id: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
     "profile_url": "profileUrl",
+    "remote_id": "remoteId",
   });
 });
 
@@ -144,6 +150,7 @@ export const AssessmentsResultsCandidate$inboundSchema: z.ZodType<
 export type AssessmentsResultsCandidate$Outbound = {
   id?: string | null | undefined;
   profile_url?: string | null | undefined;
+  remote_id?: string | null | undefined;
 };
 
 /** @internal */
@@ -154,9 +161,11 @@ export const AssessmentsResultsCandidate$outboundSchema: z.ZodType<
 > = z.object({
   id: z.nullable(z.string()).optional(),
   profileUrl: z.nullable(z.string()).optional(),
+  remoteId: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
     profileUrl: "profile_url",
+    remoteId: "remote_id",
   });
 });
 

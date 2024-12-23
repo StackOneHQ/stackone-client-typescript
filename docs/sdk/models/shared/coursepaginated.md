@@ -15,13 +15,6 @@ let value: CoursePaginated = {
           name: "Technology",
         },
       ],
-      content: [
-        {
-          contentUrl: "https://www.google.com",
-          description: "This is a software engineering course",
-          title: "Software Engineering",
-        },
-      ],
       contentIds: [
         "16873-SOFTWARE-ENG-COURSE",
         "16874-SOFTWARE-ENG-COURSE",

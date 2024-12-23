@@ -103,6 +103,10 @@ export type BackgroundCheckOrderApplication = {
    * Value to pass through to the provider
    */
   passthrough?: { [k: string]: any } | null | undefined;
+  /**
+   * Provider's unique identifier
+   */
+  remoteId?: string | null | undefined;
 };
 
 export type BackgroundCheckOrderCandidate = {
@@ -130,6 +134,10 @@ export type BackgroundCheckOrderCandidate = {
    * Candidate profile url
    */
   profileUrl?: string | null | undefined;
+  /**
+   * Provider's unique identifier
+   */
+  remoteId?: string | null | undefined;
 };
 
 export type BackgroundCheckOrderJob = {
@@ -148,6 +156,10 @@ export type BackgroundCheckOrderJob = {
    * Value to pass through to the provider
    */
   passthrough?: { [k: string]: any } | null | undefined;
+  /**
+   * Provider's unique identifier
+   */
+  remoteId?: string | null | undefined;
   /**
    * Title of the job
    */
@@ -168,6 +180,10 @@ export type BackgroundCheckOrderPackage = {
    */
   name?: string | null | undefined;
   /**
+   * Provider's unique identifier
+   */
+  remoteId?: string | null | undefined;
+  /**
    * Package tests
    */
   tests?: Array<AssessmentsPackagesTestApiModel> | null | undefined;
@@ -175,17 +191,29 @@ export type BackgroundCheckOrderPackage = {
 
 export type BackgroundCheckOrderRequester = {
   /**
-   * List of candidate emails
+   * Email of the hiring team member.
    */
-  emails?: Array<CandidateEmail> | null | undefined;
+  email?: string | null | undefined;
   /**
-   * Unique identifier
+   * First name of the hiring team member.
    */
-  id?: string | null | undefined;
+  firstName?: string | null | undefined;
   /**
-   * Value to pass through to the provider
+   * Last name of the hiring team member.
    */
-  passthrough?: { [k: string]: any } | null | undefined;
+  lastName?: string | null | undefined;
+  /**
+   * Provider's unique identifier of the user
+   */
+  remoteUserId?: string | null | undefined;
+  /**
+   * Role of the hiring team member.
+   */
+  role?: string | null | undefined;
+  /**
+   * User ID of the hiring team member.
+   */
+  userId?: string | null | undefined;
 };
 
 export type BackgroundCheckOrder = {
@@ -459,9 +487,11 @@ export const BackgroundCheckOrderApplication$inboundSchema: z.ZodType<
   ).optional(),
   id: z.nullable(z.string()).optional(),
   passthrough: z.nullable(z.record(z.any())).optional(),
+  remote_id: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
     "application_status": "applicationStatus",
+    "remote_id": "remoteId",
   });
 });
 
@@ -473,6 +503,7 @@ export type BackgroundCheckOrderApplication$Outbound = {
     | undefined;
   id?: string | null | undefined;
   passthrough?: { [k: string]: any } | null | undefined;
+  remote_id?: string | null | undefined;
 };
 
 /** @internal */
@@ -486,9 +517,11 @@ export const BackgroundCheckOrderApplication$outboundSchema: z.ZodType<
   ).optional(),
   id: z.nullable(z.string()).optional(),
   passthrough: z.nullable(z.record(z.any())).optional(),
+  remoteId: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
     applicationStatus: "application_status",
+    remoteId: "remote_id",
   });
 });
 
@@ -537,11 +570,13 @@ export const BackgroundCheckOrderCandidate$inboundSchema: z.ZodType<
   last_name: z.nullable(z.string()).optional(),
   passthrough: z.nullable(z.record(z.any())).optional(),
   profile_url: z.nullable(z.string()).optional(),
+  remote_id: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
     "first_name": "firstName",
     "last_name": "lastName",
     "profile_url": "profileUrl",
+    "remote_id": "remoteId",
   });
 });
 
@@ -553,6 +588,7 @@ export type BackgroundCheckOrderCandidate$Outbound = {
   last_name?: string | null | undefined;
   passthrough?: { [k: string]: any } | null | undefined;
   profile_url?: string | null | undefined;
+  remote_id?: string | null | undefined;
 };
 
 /** @internal */
@@ -567,11 +603,13 @@ export const BackgroundCheckOrderCandidate$outboundSchema: z.ZodType<
   lastName: z.nullable(z.string()).optional(),
   passthrough: z.nullable(z.record(z.any())).optional(),
   profileUrl: z.nullable(z.string()).optional(),
+  remoteId: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
     firstName: "first_name",
     lastName: "last_name",
     profileUrl: "profile_url",
+    remoteId: "remote_id",
   });
 });
 
@@ -619,10 +657,12 @@ export const BackgroundCheckOrderJob$inboundSchema: z.ZodType<
   ).optional(),
   id: z.nullable(z.string()).optional(),
   passthrough: z.nullable(z.record(z.any())).optional(),
+  remote_id: z.nullable(z.string()).optional(),
   title: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
     "hiring_team": "hiringTeam",
+    "remote_id": "remoteId",
   });
 });
 
@@ -634,6 +674,7 @@ export type BackgroundCheckOrderJob$Outbound = {
     | undefined;
   id?: string | null | undefined;
   passthrough?: { [k: string]: any } | null | undefined;
+  remote_id?: string | null | undefined;
   title?: string | null | undefined;
 };
 
@@ -648,10 +689,12 @@ export const BackgroundCheckOrderJob$outboundSchema: z.ZodType<
   ).optional(),
   id: z.nullable(z.string()).optional(),
   passthrough: z.nullable(z.record(z.any())).optional(),
+  remoteId: z.nullable(z.string()).optional(),
   title: z.nullable(z.string()).optional(),
 }).transform((v) => {
   return remap$(v, {
     hiringTeam: "hiring_team",
+    remoteId: "remote_id",
   });
 });
 
@@ -695,8 +738,13 @@ export const BackgroundCheckOrderPackage$inboundSchema: z.ZodType<
   description: z.nullable(z.string()).optional(),
   id: z.nullable(z.string()).optional(),
   name: z.nullable(z.string()).optional(),
+  remote_id: z.nullable(z.string()).optional(),
   tests: z.nullable(z.array(AssessmentsPackagesTestApiModel$inboundSchema))
     .optional(),
+}).transform((v) => {
+  return remap$(v, {
+    "remote_id": "remoteId",
+  });
 });
 
 /** @internal */
@@ -704,6 +752,7 @@ export type BackgroundCheckOrderPackage$Outbound = {
   description?: string | null | undefined;
   id?: string | null | undefined;
   name?: string | null | undefined;
+  remote_id?: string | null | undefined;
   tests?: Array<AssessmentsPackagesTestApiModel$Outbound> | null | undefined;
 };
 
@@ -716,8 +765,13 @@ export const BackgroundCheckOrderPackage$outboundSchema: z.ZodType<
   description: z.nullable(z.string()).optional(),
   id: z.nullable(z.string()).optional(),
   name: z.nullable(z.string()).optional(),
+  remoteId: z.nullable(z.string()).optional(),
   tests: z.nullable(z.array(AssessmentsPackagesTestApiModel$outboundSchema))
     .optional(),
+}).transform((v) => {
+  return remap$(v, {
+    remoteId: "remote_id",
+  });
 });
 
 /**
@@ -759,16 +813,29 @@ export const BackgroundCheckOrderRequester$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  emails: z.nullable(z.array(CandidateEmail$inboundSchema)).optional(),
-  id: z.nullable(z.string()).optional(),
-  passthrough: z.nullable(z.record(z.any())).optional(),
+  email: z.nullable(z.string()).optional(),
+  first_name: z.nullable(z.string()).optional(),
+  last_name: z.nullable(z.string()).optional(),
+  remote_user_id: z.nullable(z.string()).optional(),
+  role: z.nullable(z.string()).optional(),
+  user_id: z.nullable(z.string()).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    "first_name": "firstName",
+    "last_name": "lastName",
+    "remote_user_id": "remoteUserId",
+    "user_id": "userId",
+  });
 });
 
 /** @internal */
 export type BackgroundCheckOrderRequester$Outbound = {
-  emails?: Array<CandidateEmail$Outbound> | null | undefined;
-  id?: string | null | undefined;
-  passthrough?: { [k: string]: any } | null | undefined;
+  email?: string | null | undefined;
+  first_name?: string | null | undefined;
+  last_name?: string | null | undefined;
+  remote_user_id?: string | null | undefined;
+  role?: string | null | undefined;
+  user_id?: string | null | undefined;
 };
 
 /** @internal */
@@ -777,9 +844,19 @@ export const BackgroundCheckOrderRequester$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   BackgroundCheckOrderRequester
 > = z.object({
-  emails: z.nullable(z.array(CandidateEmail$outboundSchema)).optional(),
-  id: z.nullable(z.string()).optional(),
-  passthrough: z.nullable(z.record(z.any())).optional(),
+  email: z.nullable(z.string()).optional(),
+  firstName: z.nullable(z.string()).optional(),
+  lastName: z.nullable(z.string()).optional(),
+  remoteUserId: z.nullable(z.string()).optional(),
+  role: z.nullable(z.string()).optional(),
+  userId: z.nullable(z.string()).optional(),
+}).transform((v) => {
+  return remap$(v, {
+    firstName: "first_name",
+    lastName: "last_name",
+    remoteUserId: "remote_user_id",
+    userId: "user_id",
+  });
 });
 
 /**

@@ -5,7 +5,7 @@
 ```typescript
 import { CompletionSchemasValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: CompletionSchemasValue = CompletionSchemasValue.Fail;
+let value: CompletionSchemasValue = CompletionSchemasValue.Pass;
 ```
 
 ## Values

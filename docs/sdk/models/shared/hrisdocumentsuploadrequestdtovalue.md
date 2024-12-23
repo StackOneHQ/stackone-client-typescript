@@ -8,7 +8,7 @@ The category name to associate with the file
 import { HrisDocumentsUploadRequestDtoValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: HrisDocumentsUploadRequestDtoValue =
-  HrisDocumentsUploadRequestDtoValue.Signed;
+  HrisDocumentsUploadRequestDtoValue.Confidential;
 ```
 
 ## Values
