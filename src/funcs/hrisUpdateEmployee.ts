@@ -49,7 +49,7 @@ export async function hrisUpdateEmployee(
     return parsed;
   }
   const payload = parsed.value;
-  const body = encodeJSON("body", payload.HrisCreateEmployeeRequestDto, {
+  const body = encodeJSON("body", payload.HrisUpdateEmployeeRequestDto, {
     explode: true,
   });
 
@@ -131,7 +131,7 @@ export async function hrisUpdateEmployee(
     | ConnectionError
   >(
     M.json(200, operations.HrisUpdateEmployeeResponse$inboundSchema, {
-      key: "CreateResult",
+      key: "UpdateEmployeeApiModel",
     }),
     M.fail([400, 403, 412, 429, "4XX", 500, 501, "5XX"]),
     M.fail(408),

@@ -4136,10 +4136,10 @@ Updates an employee
 import { StackOne } from "@stackone/stackone-client-ts";
 import {
   CountryCodeEnumValue,
-  HrisCreateEmployeeRequestDtoSchemasHomeLocationValue,
-  HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberTypeValue,
-  HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberValue,
-  HrisCreateEmployeeRequestDtoSchemasWorkLocationValue,
+  HrisUpdateEmployeeRequestDtoSchemasHomeLocationValue,
+  HrisUpdateEmployeeRequestDtoSchemasNationalIdentityNumberTypeValue,
+  HrisUpdateEmployeeRequestDtoSchemasNationalIdentityNumberValue,
+  HrisUpdateEmployeeRequestDtoSchemasWorkLocationValue,
 } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 const stackOne = new StackOne({
@@ -4151,7 +4151,7 @@ const stackOne = new StackOne({
 
 async function run() {
   const result = await stackOne.hris.updateEmployee({
-    hrisCreateEmployeeRequestDto: {
+    hrisUpdateEmployeeRequestDto: {
       avatarUrl: "https://example.com/avatar.png",
       benefits: [
         {
@@ -4208,7 +4208,7 @@ async function run() {
       homeLocation: {
         city: "Grantham",
         country: {
-          value: HrisCreateEmployeeRequestDtoSchemasHomeLocationValue.Us,
+          value: HrisUpdateEmployeeRequestDtoSchemasHomeLocationValue.Us,
         },
         id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         name: "Woolsthorpe Manor",
@@ -4227,10 +4227,10 @@ async function run() {
       name: "Issac Newton",
       nationalIdentityNumber: {
         country: {
-          value: HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberValue.Us,
+          value: HrisUpdateEmployeeRequestDtoSchemasNationalIdentityNumberValue.Us,
         },
         type: {
-          value: HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberTypeValue.Ssn,
+          value: HrisUpdateEmployeeRequestDtoSchemasNationalIdentityNumberTypeValue.Ssn,
         },
         value: "123456789",
       },
@@ -4247,7 +4247,7 @@ async function run() {
       workLocation: {
         city: "Grantham",
         country: {
-          value: HrisCreateEmployeeRequestDtoSchemasWorkLocationValue.Us,
+          value: HrisUpdateEmployeeRequestDtoSchemasWorkLocationValue.Us,
         },
         id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         name: "Woolsthorpe Manor",
@@ -4281,10 +4281,10 @@ import { StackOneCore } from "@stackone/stackone-client-ts/core.js";
 import { hrisUpdateEmployee } from "@stackone/stackone-client-ts/funcs/hrisUpdateEmployee.js";
 import {
   CountryCodeEnumValue,
-  HrisCreateEmployeeRequestDtoSchemasHomeLocationValue,
-  HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberTypeValue,
-  HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberValue,
-  HrisCreateEmployeeRequestDtoSchemasWorkLocationValue,
+  HrisUpdateEmployeeRequestDtoSchemasHomeLocationValue,
+  HrisUpdateEmployeeRequestDtoSchemasNationalIdentityNumberTypeValue,
+  HrisUpdateEmployeeRequestDtoSchemasNationalIdentityNumberValue,
+  HrisUpdateEmployeeRequestDtoSchemasWorkLocationValue,
 } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 // Use `StackOneCore` for best tree-shaking performance.
@@ -4298,7 +4298,7 @@ const stackOne = new StackOneCore({
 
 async function run() {
   const res = await hrisUpdateEmployee(stackOne, {
-    hrisCreateEmployeeRequestDto: {
+    hrisUpdateEmployeeRequestDto: {
       avatarUrl: "https://example.com/avatar.png",
       benefits: [
         {
@@ -4355,7 +4355,7 @@ async function run() {
       homeLocation: {
         city: "Grantham",
         country: {
-          value: HrisCreateEmployeeRequestDtoSchemasHomeLocationValue.Us,
+          value: HrisUpdateEmployeeRequestDtoSchemasHomeLocationValue.Us,
         },
         id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         name: "Woolsthorpe Manor",
@@ -4374,10 +4374,10 @@ async function run() {
       name: "Issac Newton",
       nationalIdentityNumber: {
         country: {
-          value: HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberValue.Us,
+          value: HrisUpdateEmployeeRequestDtoSchemasNationalIdentityNumberValue.Us,
         },
         type: {
-          value: HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberTypeValue.Ssn,
+          value: HrisUpdateEmployeeRequestDtoSchemasNationalIdentityNumberTypeValue.Ssn,
         },
         value: "123456789",
       },
@@ -4394,7 +4394,7 @@ async function run() {
       workLocation: {
         city: "Grantham",
         country: {
-          value: HrisCreateEmployeeRequestDtoSchemasWorkLocationValue.Us,
+          value: HrisUpdateEmployeeRequestDtoSchemasWorkLocationValue.Us,
         },
         id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         name: "Woolsthorpe Manor",

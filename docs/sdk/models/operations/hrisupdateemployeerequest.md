@@ -6,14 +6,14 @@
 import { HrisUpdateEmployeeRequest } from "@stackone/stackone-client-ts/sdk/models/operations";
 import {
   CountryCodeEnumValue,
-  HrisCreateEmployeeRequestDtoSchemasHomeLocationValue,
-  HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberTypeValue,
-  HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberValue,
-  HrisCreateEmployeeRequestDtoSchemasWorkLocationValue,
+  HrisUpdateEmployeeRequestDtoSchemasHomeLocationValue,
+  HrisUpdateEmployeeRequestDtoSchemasNationalIdentityNumberTypeValue,
+  HrisUpdateEmployeeRequestDtoSchemasNationalIdentityNumberValue,
+  HrisUpdateEmployeeRequestDtoSchemasWorkLocationValue,
 } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: HrisUpdateEmployeeRequest = {
-  hrisCreateEmployeeRequestDto: {
+  hrisUpdateEmployeeRequestDto: {
     avatar: {},
     avatarUrl: "https://example.com/avatar.png",
     benefits: [
@@ -33,13 +33,6 @@ let value: HrisUpdateEmployeeRequest = {
       },
     ],
     companyName: "Example Corp",
-    costCenters: [
-      {
-        distributionPercentage: 100,
-        id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
-        name: "R&D",
-      },
-    ],
     customFields: [
       {
         id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
@@ -84,7 +77,7 @@ let value: HrisUpdateEmployeeRequest = {
     homeLocation: {
       city: "Grantham",
       country: {
-        value: HrisCreateEmployeeRequestDtoSchemasHomeLocationValue.Us,
+        value: HrisUpdateEmployeeRequestDtoSchemasHomeLocationValue.Us,
       },
       id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
       name: "Woolsthorpe Manor",
@@ -106,11 +99,11 @@ let value: HrisUpdateEmployeeRequest = {
     nationalIdentityNumber: {
       country: {
         value:
-          HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberValue.Us,
+          HrisUpdateEmployeeRequestDtoSchemasNationalIdentityNumberValue.Us,
       },
       type: {
         value:
-          HrisCreateEmployeeRequestDtoSchemasNationalIdentityNumberTypeValue
+          HrisUpdateEmployeeRequestDtoSchemasNationalIdentityNumberTypeValue
             .Ssn,
       },
       value: "123456789",
@@ -129,7 +122,7 @@ let value: HrisUpdateEmployeeRequest = {
     workLocation: {
       city: "Grantham",
       country: {
-        value: HrisCreateEmployeeRequestDtoSchemasWorkLocationValue.Us,
+        value: HrisUpdateEmployeeRequestDtoSchemasWorkLocationValue.Us,
       },
       id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
       name: "Woolsthorpe Manor",
@@ -153,6 +146,6 @@ let value: HrisUpdateEmployeeRequest = {
 
 | Field                                                                                             | Type                                                                                              | Required                                                                                          | Description                                                                                       |
 | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
-| `hrisCreateEmployeeRequestDto`                                                                    | [shared.HrisCreateEmployeeRequestDto](../../../sdk/models/shared/hriscreateemployeerequestdto.md) | :heavy_check_mark:                                                                                | N/A                                                                                               |
+| `hrisUpdateEmployeeRequestDto`                                                                    | [shared.HrisUpdateEmployeeRequestDto](../../../sdk/models/shared/hrisupdateemployeerequestdto.md) | :heavy_check_mark:                                                                                | N/A                                                                                               |
 | `id`                                                                                              | *string*                                                                                          | :heavy_check_mark:                                                                                | N/A                                                                                               |
 | `xAccountId`                                                                                      | *string*                                                                                          | :heavy_check_mark:                                                                                | The account identifier                                                                            |
