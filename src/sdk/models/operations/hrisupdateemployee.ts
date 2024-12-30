@@ -10,7 +10,7 @@ import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import * as shared from "../shared/index.js";
 
 export type HrisUpdateEmployeeRequest = {
-  hrisCreateEmployeeRequestDto: shared.HrisCreateEmployeeRequestDto;
+  hrisUpdateEmployeeRequestDto: shared.HrisUpdateEmployeeRequestDto;
   id: string;
   /**
    * The account identifier
@@ -23,10 +23,6 @@ export type HrisUpdateEmployeeResponse = {
    * HTTP response content type for this operation
    */
   contentType: string;
-  /**
-   * Record updated successfully
-   */
-  createResult?: shared.CreateResult | undefined;
   headers: { [k: string]: Array<string> };
   /**
    * HTTP response status code for this operation
@@ -36,6 +32,10 @@ export type HrisUpdateEmployeeResponse = {
    * Raw HTTP response; suitable for custom response parsing
    */
   rawResponse: Response;
+  /**
+   * Record updated successfully
+   */
+  updateEmployeeApiModel?: shared.UpdateEmployeeApiModel | undefined;
 };
 
 /** @internal */
@@ -44,20 +44,20 @@ export const HrisUpdateEmployeeRequest$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  HrisCreateEmployeeRequestDto:
-    shared.HrisCreateEmployeeRequestDto$inboundSchema,
+  HrisUpdateEmployeeRequestDto:
+    shared.HrisUpdateEmployeeRequestDto$inboundSchema,
   id: z.string(),
   "x-account-id": z.string(),
 }).transform((v) => {
   return remap$(v, {
-    "HrisCreateEmployeeRequestDto": "hrisCreateEmployeeRequestDto",
+    "HrisUpdateEmployeeRequestDto": "hrisUpdateEmployeeRequestDto",
     "x-account-id": "xAccountId",
   });
 });
 
 /** @internal */
 export type HrisUpdateEmployeeRequest$Outbound = {
-  HrisCreateEmployeeRequestDto: shared.HrisCreateEmployeeRequestDto$Outbound;
+  HrisUpdateEmployeeRequestDto: shared.HrisUpdateEmployeeRequestDto$Outbound;
   id: string;
   "x-account-id": string;
 };
@@ -68,13 +68,13 @@ export const HrisUpdateEmployeeRequest$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   HrisUpdateEmployeeRequest
 > = z.object({
-  hrisCreateEmployeeRequestDto:
-    shared.HrisCreateEmployeeRequestDto$outboundSchema,
+  hrisUpdateEmployeeRequestDto:
+    shared.HrisUpdateEmployeeRequestDto$outboundSchema,
   id: z.string(),
   xAccountId: z.string(),
 }).transform((v) => {
   return remap$(v, {
-    hrisCreateEmployeeRequestDto: "HrisCreateEmployeeRequestDto",
+    hrisUpdateEmployeeRequestDto: "HrisUpdateEmployeeRequestDto",
     xAccountId: "x-account-id",
   });
 });
@@ -117,27 +117,28 @@ export const HrisUpdateEmployeeResponse$inboundSchema: z.ZodType<
   unknown
 > = z.object({
   ContentType: z.string(),
-  CreateResult: shared.CreateResult$inboundSchema.optional(),
   Headers: z.record(z.array(z.string())),
   StatusCode: z.number().int(),
   RawResponse: z.instanceof(Response),
+  UpdateEmployeeApiModel: shared.UpdateEmployeeApiModel$inboundSchema
+    .optional(),
 }).transform((v) => {
   return remap$(v, {
     "ContentType": "contentType",
-    "CreateResult": "createResult",
     "Headers": "headers",
     "StatusCode": "statusCode",
     "RawResponse": "rawResponse",
+    "UpdateEmployeeApiModel": "updateEmployeeApiModel",
   });
 });
 
 /** @internal */
 export type HrisUpdateEmployeeResponse$Outbound = {
   ContentType: string;
-  CreateResult?: shared.CreateResult$Outbound | undefined;
   Headers: { [k: string]: Array<string> };
   StatusCode: number;
   RawResponse: never;
+  UpdateEmployeeApiModel?: shared.UpdateEmployeeApiModel$Outbound | undefined;
 };
 
 /** @internal */
@@ -147,19 +148,20 @@ export const HrisUpdateEmployeeResponse$outboundSchema: z.ZodType<
   HrisUpdateEmployeeResponse
 > = z.object({
   contentType: z.string(),
-  createResult: shared.CreateResult$outboundSchema.optional(),
   headers: z.record(z.array(z.string())),
   statusCode: z.number().int(),
   rawResponse: z.instanceof(Response).transform(() => {
     throw new Error("Response cannot be serialized");
   }),
+  updateEmployeeApiModel: shared.UpdateEmployeeApiModel$outboundSchema
+    .optional(),
 }).transform((v) => {
   return remap$(v, {
     contentType: "ContentType",
-    createResult: "CreateResult",
     headers: "Headers",
     statusCode: "StatusCode",
     rawResponse: "RawResponse",
+    updateEmployeeApiModel: "UpdateEmployeeApiModel",
   });
 });
 
