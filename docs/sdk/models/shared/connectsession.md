@@ -17,7 +17,7 @@ let value: ConnectSession = {
     Categories.Documents,
     Categories.Documents,
   ],
-  createdAt: new Date("2024-12-21T10:02:05.716Z"),
+  createdAt: new Date("2025-12-21T10:02:05.716Z"),
   id: 4090.54,
   organizationId: 1629.54,
   originOwnerId: "<id>",

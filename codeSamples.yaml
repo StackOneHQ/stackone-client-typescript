@@ -1075,8 +1075,8 @@ actions:
               const result = await stackOne.ats.createBackgroundCheckPackage({
                 xAccountId: "<id>",
                 atsCreateBackgroundCheckPackagesRequestDto: {
-                  name: "Standard Background Check",
-                  description: "Standard background package for hires",
+                  name: "Test 1",
+                  description: "Skills test to gauge a candidate's proficiency in job-specific skills",
                   tests: [
                     {
                       name: "Test 1",
@@ -4781,7 +4781,7 @@ actions:
 
             async function run() {
               const result = await stackOne.lms.listAssignments({
-                fields: "id,remote_id,user_id,remote_user_id,course_id,remote_course_id,updated_at,created_at,due_date,status,progress,learning_object_type,learning_object_id,remote_learning_object_id,learning_object_external_reference",
+                fields: "id,remote_id,external_reference,user_id,remote_user_id,course_id,remote_course_id,updated_at,created_at,due_date,status,progress,learning_object_type,learning_object_id,remote_learning_object_id,learning_object_external_reference",
                 filter: {
                   updatedAfter: "2020-01-01T00:00:00.000Z",
                 },
@@ -4914,13 +4914,31 @@ actions:
                   title: "Software Engineer Lv 1 Collection",
                   description: "This collection acts as learning pathway for software engineers.",
                   coverUrl: "https://www.googledrive.com/?v=16873",
-                  skills: [
+                  categories: [
                     {
+                      id: "16873-IT345",
+                      unifiedCustomFields: {
+                        "my_project_custom_field_1": "REF-1236",
+                        "my_project_custom_field_2": "some other value",
+                      },
+                      name: "Information-Technology",
+                    },
+                    {
+                      id: "16873-IT345",
+                      unifiedCustomFields: {
+                        "my_project_custom_field_1": "REF-1236",
+                        "my_project_custom_field_2": "some other value",
+                      },
                       name: "Information-Technology",
                     },
                   ],
-                  categories: [
+                  skills: [
                     {
+                      id: "16873-IT345",
+                      name: "Information-Technology",
+                    },
+                    {
+                      id: "16873-IT345",
                       name: "Information-Technology",
                     },
                   ],
@@ -4968,13 +4986,35 @@ actions:
                   title: "Software Engineer Lv 1 Collection",
                   description: "This collection acts as learning pathway for software engineers.",
                   coverUrl: "https://www.googledrive.com/?v=16873",
-                  skills: [
+                  categories: [
                     {
+                      id: "16873-IT345",
+                      unifiedCustomFields: {
+                        "my_project_custom_field_1": "REF-1236",
+                        "my_project_custom_field_2": "some other value",
+                      },
+                      name: "Information-Technology",
+                    },
+                    {
+                      id: "16873-IT345",
+                      unifiedCustomFields: {
+                        "my_project_custom_field_1": "REF-1236",
+                        "my_project_custom_field_2": "some other value",
+                      },
+                      name: "Information-Technology",
+                    },
+                    {
+                      id: "16873-IT345",
+                      unifiedCustomFields: {
+                        "my_project_custom_field_1": "REF-1236",
+                        "my_project_custom_field_2": "some other value",
+                      },
                       name: "Information-Technology",
                     },
                   ],
-                  categories: [
+                  skills: [
                     {
+                      id: "16873-IT345",
                       name: "Information-Technology",
                     },
                   ],
@@ -5003,7 +5043,7 @@ actions:
 
             async function run() {
               const result = await stackOne.lms.listCompletions({
-                fields: "id,remote_id,external_id,remote_external_id,content_id,remote_content_id,course_id,remote_course_id,user_id,remote_user_id,completed_at,updated_at,created_at,result,content_external_reference,learning_object_type,learning_object_id,remote_learning_object_id,learning_object_external_reference",
+                fields: "id,remote_id,external_id,remote_external_id,external_reference,content_id,remote_content_id,course_id,remote_course_id,user_id,remote_user_id,completed_at,updated_at,created_at,result,content_external_reference,learning_object_type,learning_object_id,remote_learning_object_id,learning_object_external_reference",
                 filter: {
                   updatedAfter: "2020-01-01T00:00:00.000Z",
                 },
@@ -5115,13 +5155,17 @@ actions:
                   skills: [
                     {
                       id: "16873-IT345",
-                      remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
                       name: "Information-Technology",
                     },
                   ],
                   order: 1,
                   categories: [
                     {
+                      id: "16873-IT345",
+                      unifiedCustomFields: {
+                        "my_project_custom_field_1": "REF-1236",
+                        "my_project_custom_field_2": "some other value",
+                      },
                       name: "Information-Technology",
                     },
                   ],
@@ -5181,13 +5225,17 @@ actions:
                       skills: [
                         {
                           id: "16873-IT345",
-                          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
                           name: "Information-Technology",
                         },
                       ],
                       order: 1,
                       categories: [
                         {
+                          id: "16873-IT345",
+                          unifiedCustomFields: {
+                            "my_project_custom_field_1": "REF-1236",
+                            "my_project_custom_field_2": "some other value",
+                          },
                           name: "Information-Technology",
                         },
                       ],
@@ -5216,13 +5264,33 @@ actions:
                       skills: [
                         {
                           id: "16873-IT345",
-                          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
                           name: "Information-Technology",
                         },
                       ],
                       order: 1,
                       categories: [
                         {
+                          id: "16873-IT345",
+                          unifiedCustomFields: {
+                            "my_project_custom_field_1": "REF-1236",
+                            "my_project_custom_field_2": "some other value",
+                          },
+                          name: "Information-Technology",
+                        },
+                        {
+                          id: "16873-IT345",
+                          unifiedCustomFields: {
+                            "my_project_custom_field_1": "REF-1236",
+                            "my_project_custom_field_2": "some other value",
+                          },
+                          name: "Information-Technology",
+                        },
+                        {
+                          id: "16873-IT345",
+                          unifiedCustomFields: {
+                            "my_project_custom_field_1": "REF-1236",
+                            "my_project_custom_field_2": "some other value",
+                          },
                           name: "Information-Technology",
                         },
                       ],
@@ -5332,15 +5400,19 @@ actions:
                   url: "https://www.linkedinlearning.com/?v=16873",
                   active: true,
                   duration: "P3Y6M4DT12H30M5S",
-                  skills: [
+                  categories: [
                     {
                       id: "16873-IT345",
-                      remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+                      unifiedCustomFields: {
+                        "my_project_custom_field_1": "REF-1236",
+                        "my_project_custom_field_2": "some other value",
+                      },
                       name: "Information-Technology",
                     },
                   ],
-                  categories: [
+                  skills: [
                     {
+                      id: "16873-IT345",
                       name: "Information-Technology",
                     },
                   ],
@@ -5401,25 +5473,35 @@ actions:
                       url: "https://www.linkedinlearning.com/?v=16873",
                       active: true,
                       duration: "P3Y6M4DT12H30M5S",
-                      skills: [
+                      categories: [
                         {
                           id: "16873-IT345",
-                          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+                          unifiedCustomFields: {
+                            "my_project_custom_field_1": "REF-1236",
+                            "my_project_custom_field_2": "some other value",
+                          },
+                          name: "Information-Technology",
+                        },
+                        {
+                          id: "16873-IT345",
+                          unifiedCustomFields: {
+                            "my_project_custom_field_1": "REF-1236",
+                            "my_project_custom_field_2": "some other value",
+                          },
                           name: "Information-Technology",
                         },
                       ],
-                      categories: [
+                      skills: [
                         {
+                          id: "16873-IT345",
+                          name: "Information-Technology",
+                        },
+                        {
+                          id: "16873-IT345",
                           name: "Information-Technology",
                         },
                       ],
                       content: [
-                        {
-                          title: "Software Engineer Lv 1",
-                          description: "This video acts as learning content for software engineers.",
-                          contentUrl: "https://www.youtube.com/watch?v=16873",
-                          order: 1,
-                        },
                         {
                           title: "Software Engineer Lv 1",
                           description: "This video acts as learning content for software engineers.",
@@ -5446,24 +5528,55 @@ actions:
                         {
                           value: LanguageEnumValue.EnGB,
                         },
+                        {
+                          value: LanguageEnumValue.EnGB,
+                        },
                       ],
                       coverUrl: "https://www.googledrive.com/?v=16873",
                       url: "https://www.linkedinlearning.com/?v=16873",
                       active: true,
                       duration: "P3Y6M4DT12H30M5S",
-                      skills: [
+                      categories: [
                         {
                           id: "16873-IT345",
-                          remoteId: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
+                          unifiedCustomFields: {
+                            "my_project_custom_field_1": "REF-1236",
+                            "my_project_custom_field_2": "some other value",
+                          },
+                          name: "Information-Technology",
+                        },
+                        {
+                          id: "16873-IT345",
+                          unifiedCustomFields: {
+                            "my_project_custom_field_1": "REF-1236",
+                            "my_project_custom_field_2": "some other value",
+                          },
                           name: "Information-Technology",
                         },
                       ],
-                      categories: [
+                      skills: [
                         {
+                          id: "16873-IT345",
+                          name: "Information-Technology",
+                        },
+                        {
+                          id: "16873-IT345",
                           name: "Information-Technology",
                         },
                       ],
                       content: [
+                        {
+                          title: "Software Engineer Lv 1",
+                          description: "This video acts as learning content for software engineers.",
+                          contentUrl: "https://www.youtube.com/watch?v=16873",
+                          order: 1,
+                        },
+                        {
+                          title: "Software Engineer Lv 1",
+                          description: "This video acts as learning content for software engineers.",
+                          contentUrl: "https://www.youtube.com/watch?v=16873",
+                          order: 1,
+                        },
                         {
                           title: "Software Engineer Lv 1",
                           description: "This video acts as learning content for software engineers.",
@@ -5640,7 +5753,7 @@ actions:
             async function run() {
               const result = await stackOne.lms.listUserAssignments({
                 id: "<id>",
-                fields: "id,remote_id,user_id,remote_user_id,course_id,remote_course_id,updated_at,created_at,due_date,status,progress,learning_object_type,learning_object_id,remote_learning_object_id,learning_object_external_reference",
+                fields: "id,remote_id,external_reference,user_id,remote_user_id,course_id,remote_course_id,updated_at,created_at,due_date,status,progress,learning_object_type,learning_object_id,remote_learning_object_id,learning_object_external_reference",
                 filter: {
                   updatedAfter: "2020-01-01T00:00:00.000Z",
                 },
@@ -5679,6 +5792,7 @@ actions:
                   passthrough: {
                     "other_known_names": "John Doe",
                   },
+                  externalReference: "e3gd34-23tr21-er234-345er56",
                   learningObjectId: "e3gd34-23tr21-er234-345er56",
                   learningObjectExternalReference: "learning-content-123",
                   progress: 40,
@@ -5740,7 +5854,7 @@ actions:
             async function run() {
               const result = await stackOne.lms.listUserCompletions({
                 id: "<id>",
-                fields: "id,remote_id,external_id,remote_external_id,content_id,remote_content_id,course_id,remote_course_id,user_id,remote_user_id,completed_at,updated_at,created_at,result,content_external_reference,learning_object_type,learning_object_id,remote_learning_object_id,learning_object_external_reference",
+                fields: "id,remote_id,external_id,remote_external_id,external_reference,content_id,remote_content_id,course_id,remote_course_id,user_id,remote_user_id,completed_at,updated_at,created_at,result,content_external_reference,learning_object_type,learning_object_id,remote_learning_object_id,learning_object_external_reference",
                 filter: {
                   updatedAfter: "2020-01-01T00:00:00.000Z",
                 },
@@ -5776,6 +5890,7 @@ actions:
                   passthrough: {
                     "other_known_names": "John Doe",
                   },
+                  externalReference: "e3gd34-23tr21-er234-345er56",
                   completedAt: "2021-07-21T14:00:00.000Z",
                   learningObjectId: "e3gd34-23tr21-er234-345er56",
                   learningObjectExternalReference: "learning-content-123",

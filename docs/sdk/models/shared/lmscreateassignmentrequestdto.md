@@ -8,6 +8,7 @@ import { LmsCreateAssignmentRequestDto, LmsCreateAssignmentRequestDtoValue } fro
 let value: LmsCreateAssignmentRequestDto = {
   createdAt: "2021-07-21T14:00:00.000Z",
   dueDate: "2021-07-21T14:00:00.000Z",
+  externalReference: "e3gd34-23tr21-er234-345er56",
   learningObjectExternalReference: "learning-content-123",
   learningObjectId: "e3gd34-23tr21-er234-345er56",
   passthrough: {
@@ -15,7 +16,7 @@ let value: LmsCreateAssignmentRequestDto = {
   },
   progress: 40,
   status: {
-    value: LmsCreateAssignmentRequestDtoValue.InProgress,
+    value: LmsCreateAssignmentRequestDtoValue.Pending,
   },
 };
 ```
@@ -26,6 +27,7 @@ let value: LmsCreateAssignmentRequestDto = {
 | --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
 | `createdAt`                                                                                                     | *string*                                                                                                        | :heavy_minus_sign:                                                                                              | The date the assignment was created                                                                             | 2021-07-21T14:00:00.000Z                                                                                        |
 | `dueDate`                                                                                                       | *string*                                                                                                        | :heavy_minus_sign:                                                                                              | The date the assignment is due to be completed                                                                  | 2021-07-21T14:00:00.000Z                                                                                        |
+| `externalReference`                                                                                             | *string*                                                                                                        | :heavy_minus_sign:                                                                                              | The external reference associated with this assignment                                                          | e3gd34-23tr21-er234-345er56                                                                                     |
 | `learningObjectExternalReference`                                                                               | *string*                                                                                                        | :heavy_minus_sign:                                                                                              | The external reference of the learning object associated with this assignment                                   | learning-content-123                                                                                            |
 | `learningObjectId`                                                                                              | *string*                                                                                                        | :heavy_minus_sign:                                                                                              | The learning_object_id associated with this assignment                                                          | e3gd34-23tr21-er234-345er56                                                                                     |
 | `passthrough`                                                                                                   | Record<string, *any*>                                                                                           | :heavy_minus_sign:                                                                                              | Value to pass through to the provider                                                                           | {<br/>"other_known_names": "John Doe"<br/>}                                                                     |

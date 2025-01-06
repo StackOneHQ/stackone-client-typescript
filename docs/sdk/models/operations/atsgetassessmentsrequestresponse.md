@@ -4,15 +4,15 @@
 
 ```typescript
 import { AtsGetAssessmentsRequestResponse } from "@stackone/stackone-client-ts/sdk/models/operations";
-import { AssessmentsOrderValue } from "@stackone/stackone-client-ts/sdk/models/shared";
+import { AssessmentOrderValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
 let value: AtsGetAssessmentsRequestResponse = {
-  assessmentsOrderResult: {
+  assessmentOrderResult: {
     data: {
       application: {
         applicationStatus: {
           sourceValue: "Hired",
-          value: AssessmentsOrderValue.Hired,
+          value: AssessmentOrderValue.Hired,
         },
         id: "8187e5da-dc77-475e-9949-af0f1fa4e4e3",
         passthrough: {
@@ -89,10 +89,10 @@ let value: AtsGetAssessmentsRequestResponse = {
 
 ## Fields
 
-| Field                                                                                 | Type                                                                                  | Required                                                                              | Description                                                                           |
-| ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
-| `assessmentsOrderResult`                                                              | [shared.AssessmentsOrderResult](../../../sdk/models/shared/assessmentsorderresult.md) | :heavy_minus_sign:                                                                    | The assessments order with the given identifier was retrieved.                        |
-| `contentType`                                                                         | *string*                                                                              | :heavy_check_mark:                                                                    | HTTP response content type for this operation                                         |
-| `headers`                                                                             | Record<string, *string*[]>                                                            | :heavy_check_mark:                                                                    | N/A                                                                                   |
-| `statusCode`                                                                          | *number*                                                                              | :heavy_check_mark:                                                                    | HTTP response status code for this operation                                          |
-| `rawResponse`                                                                         | [Response](https://developer.mozilla.org/en-US/docs/Web/API/Response)                 | :heavy_check_mark:                                                                    | Raw HTTP response; suitable for custom response parsing                               |
+| Field                                                                               | Type                                                                                | Required                                                                            | Description                                                                         |
+| ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
+| `assessmentOrderResult`                                                             | [shared.AssessmentOrderResult](../../../sdk/models/shared/assessmentorderresult.md) | :heavy_minus_sign:                                                                  | The assessments order with the given identifier was retrieved.                      |
+| `contentType`                                                                       | *string*                                                                            | :heavy_check_mark:                                                                  | HTTP response content type for this operation                                       |
+| `headers`                                                                           | Record<string, *string*[]>                                                          | :heavy_check_mark:                                                                  | N/A                                                                                 |
+| `statusCode`                                                                        | *number*                                                                            | :heavy_check_mark:                                                                  | HTTP response status code for this operation                                        |
+| `rawResponse`                                                                       | [Response](https://developer.mozilla.org/en-US/docs/Web/API/Response)               | :heavy_check_mark:                                                                  | Raw HTTP response; suitable for custom response parsing                             |

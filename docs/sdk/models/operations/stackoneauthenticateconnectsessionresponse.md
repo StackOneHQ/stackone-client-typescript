@@ -19,7 +19,7 @@ let value: StackoneAuthenticateConnectSessionResponse = {
       Categories.Iam,
       Categories.Documents,
     ],
-    createdAt: new Date("2023-09-15T13:50:38.886Z"),
+    createdAt: new Date("2024-09-14T13:50:38.886Z"),
     id: 9255.97,
     organizationId: 710.36,
     originOwnerId: "<id>",

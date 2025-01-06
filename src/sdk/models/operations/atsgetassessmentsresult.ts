@@ -33,7 +33,7 @@ export type AtsGetAssessmentsResultResponse = {
   /**
    * The assessments result with the given identifier was retrieved.
    */
-  assessmentsResultsResult?: shared.AssessmentsResultsResult | undefined;
+  assessmentResultsResult?: shared.AssessmentResultsResult | undefined;
   /**
    * HTTP response content type for this operation
    */
@@ -131,7 +131,7 @@ export const AtsGetAssessmentsResultResponse$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  AssessmentsResultsResult: shared.AssessmentsResultsResult$inboundSchema
+  AssessmentResultsResult: shared.AssessmentResultsResult$inboundSchema
     .optional(),
   ContentType: z.string(),
   Headers: z.record(z.array(z.string())),
@@ -139,7 +139,7 @@ export const AtsGetAssessmentsResultResponse$inboundSchema: z.ZodType<
   RawResponse: z.instanceof(Response),
 }).transform((v) => {
   return remap$(v, {
-    "AssessmentsResultsResult": "assessmentsResultsResult",
+    "AssessmentResultsResult": "assessmentResultsResult",
     "ContentType": "contentType",
     "Headers": "headers",
     "StatusCode": "statusCode",
@@ -149,9 +149,7 @@ export const AtsGetAssessmentsResultResponse$inboundSchema: z.ZodType<
 
 /** @internal */
 export type AtsGetAssessmentsResultResponse$Outbound = {
-  AssessmentsResultsResult?:
-    | shared.AssessmentsResultsResult$Outbound
-    | undefined;
+  AssessmentResultsResult?: shared.AssessmentResultsResult$Outbound | undefined;
   ContentType: string;
   Headers: { [k: string]: Array<string> };
   StatusCode: number;
@@ -164,7 +162,7 @@ export const AtsGetAssessmentsResultResponse$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   AtsGetAssessmentsResultResponse
 > = z.object({
-  assessmentsResultsResult: shared.AssessmentsResultsResult$outboundSchema
+  assessmentResultsResult: shared.AssessmentResultsResult$outboundSchema
     .optional(),
   contentType: z.string(),
   headers: z.record(z.array(z.string())),
@@ -174,7 +172,7 @@ export const AtsGetAssessmentsResultResponse$outboundSchema: z.ZodType<
   }),
 }).transform((v) => {
   return remap$(v, {
-    assessmentsResultsResult: "AssessmentsResultsResult",
+    assessmentResultsResult: "AssessmentResultsResult",
     contentType: "ContentType",
     headers: "Headers",
     statusCode: "StatusCode",

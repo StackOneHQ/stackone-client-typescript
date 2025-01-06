@@ -38,7 +38,7 @@ export type LmsUpsertCourseRequestDto = {
    */
   active?: boolean | null | undefined;
   /**
-   * The categories associated with this course
+   * The categories associated with this content
    */
   categories?: Array<CreateCategoriesApiModel> | null | undefined;
   /**
@@ -70,7 +70,7 @@ export type LmsUpsertCourseRequestDto = {
    */
   languages?: Array<LanguageEnum> | null | undefined;
   /**
-   * The skills associated with this course
+   * The skills associated with this content
    */
   skills?: Array<CreateSkillsApiModel> | null | undefined;
   /**

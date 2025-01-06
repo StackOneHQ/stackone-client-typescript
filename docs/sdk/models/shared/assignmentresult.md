@@ -9,6 +9,7 @@ let value: AssignmentResult = {
   data: {
     createdAt: "2021-07-21T14:00:00.000Z",
     dueDate: "2021-07-21T14:00:00.000Z",
+    externalReference: "e3gd34-23tr21-er234-345er56",
     id: "123456",
     learningObjectExternalReference: "learning-content-123",
     learningObjectId: "e3gd34-23tr21-er234-345er56",
@@ -17,7 +18,7 @@ let value: AssignmentResult = {
     remoteLearningObjectId: "e3cb55bf-aa84-466e-a6c1-b8302b257a49",
     remoteUserId: "e3cb75bf-aa84-466e-a6c1-b8322b257a48",
     status: {
-      value: AssignmentSchemasValue.Completed,
+      value: AssignmentSchemasValue.Pending,
     },
     unifiedCustomFields: {
       "my_project_custom_field_1": "REF-1236",

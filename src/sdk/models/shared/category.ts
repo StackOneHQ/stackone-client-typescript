@@ -25,6 +25,7 @@ export type CategorySourceValue =
 export enum CategoryValue {
   Primary = "primary",
   Secondary = "secondary",
+  Tertiary = "tertiary",
 }
 export type CategoryValueOpen = OpenEnum<typeof CategoryValue>;
 

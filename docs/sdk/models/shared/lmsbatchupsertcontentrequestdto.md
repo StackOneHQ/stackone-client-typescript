@@ -11,7 +11,12 @@ let value: LmsBatchUpsertContentRequestDto = {
       active: true,
       categories: [
         {
-          name: "Technology",
+          id: "16873-IT345",
+          name: "Information-Technology",
+          unifiedCustomFields: {
+            "my_project_custom_field_1": "REF-1236",
+            "my_project_custom_field_2": "some other value",
+          },
         },
       ],
       contentUrl: "https://www.youtube.com/watch?v=16873",
@@ -33,9 +38,8 @@ let value: LmsBatchUpsertContentRequestDto = {
         "This course is a valuable resource and acts as learning content for...",
       skills: [
         {
-          id: "cx2367ndc8dgsbjhka9ry4",
-          name: "Software Engineering",
-          remoteId: "SE-001",
+          id: "12345",
+          name: "Sales Techniques",
         },
       ],
       title: "Software Engineer Lv 1",

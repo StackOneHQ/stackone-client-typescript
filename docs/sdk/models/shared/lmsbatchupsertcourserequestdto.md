@@ -11,7 +11,12 @@ let value: LmsBatchUpsertCourseRequestDto = {
       active: true,
       categories: [
         {
-          name: "Technology",
+          id: "16873-IT345",
+          name: "Information-Technology",
+          unifiedCustomFields: {
+            "my_project_custom_field_1": "REF-1236",
+            "my_project_custom_field_2": "some other value",
+          },
         },
       ],
       content: [
@@ -38,9 +43,8 @@ let value: LmsBatchUpsertCourseRequestDto = {
       ],
       skills: [
         {
-          id: "cx2367ndc8dgsbjhka9ry4",
-          name: "Software Engineering",
-          remoteId: "SE-001",
+          id: "16873-IT345",
+          name: "Information-Technology",
         },
       ],
       title: "Software Engineer Lv 1",

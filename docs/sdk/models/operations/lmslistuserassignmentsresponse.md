@@ -12,6 +12,7 @@ let value: LmsListUserAssignmentsResponse = {
       {
         createdAt: "2021-07-21T14:00:00.000Z",
         dueDate: "2021-07-21T14:00:00.000Z",
+        externalReference: "e3gd34-23tr21-er234-345er56",
         id: "123456",
         learningObjectExternalReference: "learning-content-123",
         learningObjectId: "e3gd34-23tr21-er234-345er56",

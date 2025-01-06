@@ -5,7 +5,7 @@
 ```typescript
 import { CategoryValue } from "@stackone/stackone-client-ts/sdk/models/shared";
 
-let value: CategoryValue = CategoryValue.Secondary;
+let value: CategoryValue = CategoryValue.Tertiary;
 ```
 
 ## Values
@@ -16,4 +16,5 @@ This is an open enum. Unrecognized values will be captured as the `Unrecognized<
 | ---------------------- | ---------------------- |
 | `Primary`              | primary                |
 | `Secondary`            | secondary              |
+| `Tertiary`             | tertiary               |
 | -                      | `Unrecognized<string>` |

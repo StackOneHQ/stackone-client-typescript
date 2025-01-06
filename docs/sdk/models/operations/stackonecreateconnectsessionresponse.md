@@ -20,7 +20,7 @@ let value: StackoneCreateConnectSessionResponse = {
       ConnectSessionTokenAuthLinkCategories.Iam,
       ConnectSessionTokenAuthLinkCategories.Documents,
     ],
-    createdAt: new Date("2024-05-05T11:02:22.031Z"),
+    createdAt: new Date("2025-05-05T11:02:22.031Z"),
     id: 1182.74,
     organizationId: 6399.21,
     originOwnerId: "<id>",

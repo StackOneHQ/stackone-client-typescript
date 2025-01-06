@@ -13,23 +13,23 @@ import {
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
-  AssessmentsPackagesTestApiModel,
-  AssessmentsPackagesTestApiModel$inboundSchema,
-  AssessmentsPackagesTestApiModel$Outbound,
-  AssessmentsPackagesTestApiModel$outboundSchema,
-} from "./assessmentspackagestestapimodel.js";
-import {
-  AssessmentsRequestsJobHiringTeamApiModel,
-  AssessmentsRequestsJobHiringTeamApiModel$inboundSchema,
-  AssessmentsRequestsJobHiringTeamApiModel$Outbound,
-  AssessmentsRequestsJobHiringTeamApiModel$outboundSchema,
-} from "./assessmentsrequestsjobhiringteamapimodel.js";
-import {
   CandidateEmail,
   CandidateEmail$inboundSchema,
   CandidateEmail$Outbound,
   CandidateEmail$outboundSchema,
 } from "./candidateemail.js";
+import {
+  JobHiringTeam,
+  JobHiringTeam$inboundSchema,
+  JobHiringTeam$Outbound,
+  JobHiringTeam$outboundSchema,
+} from "./jobhiringteam.js";
+import {
+  Package,
+  Package$inboundSchema,
+  Package$Outbound,
+  Package$outboundSchema,
+} from "./package.js";
 
 export type BackgroundCheckOrder4 = {};
 
@@ -144,10 +144,7 @@ export type BackgroundCheckOrderJob = {
   /**
    * Hiring team for the job.
    */
-  hiringTeam?:
-    | Array<AssessmentsRequestsJobHiringTeamApiModel>
-    | null
-    | undefined;
+  hiringTeam?: Array<JobHiringTeam> | null | undefined;
   /**
    * Unique identifier
    */
@@ -186,7 +183,7 @@ export type BackgroundCheckOrderPackage = {
   /**
    * Package tests
    */
-  tests?: Array<AssessmentsPackagesTestApiModel> | null | undefined;
+  tests?: Array<Package> | null | undefined;
 };
 
 export type BackgroundCheckOrderRequester = {
@@ -652,9 +649,7 @@ export const BackgroundCheckOrderJob$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
-  hiring_team: z.nullable(
-    z.array(AssessmentsRequestsJobHiringTeamApiModel$inboundSchema),
-  ).optional(),
+  hiring_team: z.nullable(z.array(JobHiringTeam$inboundSchema)).optional(),
   id: z.nullable(z.string()).optional(),
   passthrough: z.nullable(z.record(z.any())).optional(),
   remote_id: z.nullable(z.string()).optional(),
@@ -668,10 +663,7 @@ export const BackgroundCheckOrderJob$inboundSchema: z.ZodType<
 
 /** @internal */
 export type BackgroundCheckOrderJob$Outbound = {
-  hiring_team?:
-    | Array<AssessmentsRequestsJobHiringTeamApiModel$Outbound>
-    | null
-    | undefined;
+  hiring_team?: Array<JobHiringTeam$Outbound> | null | undefined;
   id?: string | null | undefined;
   passthrough?: { [k: string]: any } | null | undefined;
   remote_id?: string | null | undefined;
@@ -684,9 +676,7 @@ export const BackgroundCheckOrderJob$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   BackgroundCheckOrderJob
 > = z.object({
-  hiringTeam: z.nullable(
-    z.array(AssessmentsRequestsJobHiringTeamApiModel$outboundSchema),
-  ).optional(),
+  hiringTeam: z.nullable(z.array(JobHiringTeam$outboundSchema)).optional(),
   id: z.nullable(z.string()).optional(),
   passthrough: z.nullable(z.record(z.any())).optional(),
   remoteId: z.nullable(z.string()).optional(),
@@ -739,8 +729,7 @@ export const BackgroundCheckOrderPackage$inboundSchema: z.ZodType<
   id: z.nullable(z.string()).optional(),
   name: z.nullable(z.string()).optional(),
   remote_id: z.nullable(z.string()).optional(),
-  tests: z.nullable(z.array(AssessmentsPackagesTestApiModel$inboundSchema))
-    .optional(),
+  tests: z.nullable(z.array(Package$inboundSchema)).optional(),
 }).transform((v) => {
   return remap$(v, {
     "remote_id": "remoteId",
@@ -753,7 +742,7 @@ export type BackgroundCheckOrderPackage$Outbound = {
   id?: string | null | undefined;
   name?: string | null | undefined;
   remote_id?: string | null | undefined;
-  tests?: Array<AssessmentsPackagesTestApiModel$Outbound> | null | undefined;
+  tests?: Array<Package$Outbound> | null | undefined;
 };
 
 /** @internal */
@@ -766,8 +755,7 @@ export const BackgroundCheckOrderPackage$outboundSchema: z.ZodType<
   id: z.nullable(z.string()).optional(),
   name: z.nullable(z.string()).optional(),
   remoteId: z.nullable(z.string()).optional(),
-  tests: z.nullable(z.array(AssessmentsPackagesTestApiModel$outboundSchema))
-    .optional(),
+  tests: z.nullable(z.array(Package$outboundSchema)).optional(),
 }).transform((v) => {
   return remap$(v, {
     remoteId: "remote_id",
